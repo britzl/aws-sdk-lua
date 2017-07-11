@@ -1,0 +1,118 @@
+--- GENERATED CODE - DO NOT MODIFY
+-- {{metadata.serviceFullName}} ({{metadata.uid}})
+
+local M = {}
+
+M.metadata = {
+    api_version = {{metadata.apiVersion}},
+    endpoint_prefix = {{metadata.endpointPrefix}},
+    service_abbreviation = {{metadata.serviceAbbreviation}},
+    service_full_name = {{metadata.serviceFullName}},
+    signature_version = {{metadata.signatureVersion}},
+    target_prefix = {{metadata.targetPrefix}},
+    uid = {{metadata.uid}},
+}
+
+--
+--- SHAPES
+--
+{{#shapes.structure}}
+{{#documentation}}-- {{documentation}}{{/documentation}}
+function M.struct_{{name}}({{member_names}})
+  local t = {}
+  return t
+end
+
+{{/shapes.structure}}
+
+{{#shapes.string}}
+{{#documentation}}-- {{documentation}}{{/documentation}}
+function M.string_{{name}}(s){{#max}}
+  assert(#s <= {{max}}){{/max}}{{#min}}
+  assert(#s >= {{min}}){{/min}}
+  return s
+end
+
+{{/shapes.string}}
+
+{{#shapes.float}}
+{{#documentation}}-- {{documentation}}{{/documentation}}
+function M.float_{{name}}(float) return float end
+{{/shapes.float}}
+{{#shapes.double}}
+{{#documentation}}-- {{documentation}}{{/documentation}}
+function M.double_{{name}}(double) return double end
+{{/shapes.double}}
+{{#shapes.long}}
+{{#documentation}}-- {{documentation}}{{/documentation}}
+function M.long_{{name}}(long) return long end
+{{/shapes.long}}
+{{#shapes.integer}}
+{{#documentation}}-- {{documentation}}{{/documentation}}
+function M.integer_{{name}}(integer) return integer end
+{{/shapes.integer}}
+{{#shapes.boolean}}
+{{#documentation}}-- {{documentation}}{{/documentation}}
+function M.boolean_{{name}}(boolean) return boolean end
+{{/shapes.boolean}}
+
+{{#shapes.list}}
+{{#documentation}}-- {{documentation}}{{/documentation}}
+function M.list_{{name}}(...)
+  local list = {...}{{#max}}
+  assert(#list <= {{max}}){{/max}}{{#min}}
+  assert(#list >= {{min}}){{/min}}
+  return list
+end
+
+{{/shapes.list}}
+
+local scheme_mapper = require "aws-sdk.scheme_mapper"
+
+local uri = ""
+
+local function endpoint_for_region(region, use_dualstack)
+    if not use_dualstack then
+        if region == "us-east-1" then
+            return "{{metadata.endpointPrefix}}.amazonaws.com"
+        end
+    end
+    local ss = { "{{metadata.endpointPrefix}}" }
+    if use_dualstack then
+        ss[#ss + 1] = "dualstack"
+    end
+    ss[#ss + 1] = region
+    ss[#ss + 1] = "amazonaws.com"
+    if region == "cn-north-1" then
+        ss[#ss + 1] = "cn"
+    end
+    return table.concat(ss, ".")
+end
+
+
+function M.init(config)
+    assert(config, "You must provide a config table")
+    uri = scheme_mapper.from_String(config.scheme) .. "://"
+    uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+end
+
+
+--
+-- OPERATIONS
+--
+{{#operations}}
+--- {{name}}{{#input}}
+-- @param {{shape}}{{/input}}
+function M.{{name}}(shape, cb)
+    local post_data = assert(pcall(json.encode, shape))
+    local headers = {
+        ["content-type"] =
+    }
+    http.request(uri .. "/", "POST", function(self, id, response)
+
+    end, headers, post_data)
+end
+
+{{/operations}}
+
+return M
