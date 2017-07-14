@@ -31,9 +31,9 @@ function M.AssertDescribeEventCategoriesMessage(struct)
 end
 
 --- Create a structure of type DescribeEventCategoriesMessage
--- &lt;p/&gt;
--- @param SourceType [String] &lt;p&gt; The type of AWS DMS resource that generates events. &lt;/p&gt; &lt;p&gt;Valid values: replication-instance | migration-task&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Filters applied to the action.&lt;/p&gt;
+-- <p/>
+-- @param SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | migration-task</p>
+-- @param Filters [FilterList] <p>Filters applied to the action.</p>
 function M.DescribeEventCategoriesMessage(SourceType, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventCategoriesMessage")
 	local t = { 
@@ -57,9 +57,9 @@ function M.AssertDescribeConnectionsResponse(struct)
 end
 
 --- Create a structure of type DescribeConnectionsResponse
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param Connections [ConnectionList] &lt;p&gt;A description of the connections.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param Connections [ConnectionList] <p>A description of the connections.</p>
 function M.DescribeConnectionsResponse(Marker, Connections, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionsResponse")
 	local t = { 
@@ -81,7 +81,7 @@ function M.AssertDeleteReplicationSubnetGroupResponse(struct)
 end
 
 --- Create a structure of type DeleteReplicationSubnetGroupResponse
--- &lt;p/&gt;
+-- <p/>
 function M.DeleteReplicationSubnetGroupResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationSubnetGroupResponse")
 	local t = { 
@@ -102,8 +102,8 @@ function M.AssertDescribeRefreshSchemasStatusResponse(struct)
 end
 
 --- Create a structure of type DescribeRefreshSchemasStatusResponse
--- &lt;p/&gt;
--- @param RefreshSchemasStatus [RefreshSchemasStatus] &lt;p&gt;The status of the schema.&lt;/p&gt;
+-- <p/>
+-- @param RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the schema.</p>
 function M.DescribeRefreshSchemasStatusResponse(RefreshSchemasStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRefreshSchemasStatusResponse")
 	local t = { 
@@ -127,10 +127,10 @@ function M.AssertDescribeTableStatisticsResponse(struct)
 end
 
 --- Create a structure of type DescribeTableStatisticsResponse
--- &lt;p/&gt;
--- @param ReplicationTaskArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication task.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param TableStatistics [TableStatisticsList] &lt;p&gt;The table statistics.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param TableStatistics [TableStatisticsList] <p>The table statistics.</p>
 function M.DescribeTableStatisticsResponse(ReplicationTaskArn, Marker, TableStatistics, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTableStatisticsResponse")
 	local t = { 
@@ -156,7 +156,7 @@ end
 
 --- Create a structure of type DeleteCertificateMessage
 --  
--- @param CertificateArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the deleted certificate.&lt;/p&gt;
+-- @param CertificateArn [String] <p>The Amazon Resource Name (ARN) of the deleted certificate.</p>
 -- Required parameter: CertificateArn
 function M.DeleteCertificateMessage(CertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCertificateMessage")
@@ -184,12 +184,12 @@ function M.AssertModifyEventSubscriptionMessage(struct)
 end
 
 --- Create a structure of type ModifyEventSubscriptionMessage
--- &lt;p/&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt; A list of event categories for a source type that you want to subscribe to. Use the &lt;code&gt;DescribeEventCategories&lt;/code&gt; action to see a list of event categories. &lt;/p&gt;
--- @param Enabled [BooleanOptional] &lt;p&gt; A Boolean value; set to &lt;b&gt;true&lt;/b&gt; to activate the subscription. &lt;/p&gt;
--- @param SourceType [String] &lt;p&gt; The type of AWS DMS resource that generates the events you want to subscribe to. &lt;/p&gt; &lt;p&gt;Valid values: replication-instance | migration-task&lt;/p&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the AWS DMS event notification subscription to be modified.&lt;/p&gt;
--- @param SnsTopicArn [String] &lt;p&gt; The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.&lt;/p&gt;
+-- <p/>
+-- @param EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. Use the <code>DescribeEventCategories</code> action to see a list of event categories. </p>
+-- @param Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription. </p>
+-- @param SourceType [String] <p> The type of AWS DMS resource that generates the events you want to subscribe to. </p> <p>Valid values: replication-instance | migration-task</p>
+-- @param SubscriptionName [String] <p>The name of the AWS DMS event notification subscription to be modified.</p>
+-- @param SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.</p>
 -- Required parameter: SubscriptionName
 function M.ModifyEventSubscriptionMessage(EventCategories, Enabled, SourceType, SubscriptionName, SnsTopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEventSubscriptionMessage")
@@ -218,10 +218,10 @@ function M.AssertAccountQuota(struct)
 end
 
 --- Create a structure of type AccountQuota
--- &lt;p&gt;Describes a quota for an AWS account, for example, the number of replication instances allowed.&lt;/p&gt;
--- @param Max [Long] &lt;p&gt;The maximum allowed value for the quota.&lt;/p&gt;
--- @param AccountQuotaName [String] &lt;p&gt;The name of the AWS DMS quota for this AWS account.&lt;/p&gt;
--- @param Used [Long] &lt;p&gt;The amount currently used toward the quota maximum.&lt;/p&gt;
+-- <p>Describes a quota for an AWS account, for example, the number of replication instances allowed.</p>
+-- @param Max [Long] <p>The maximum allowed value for the quota.</p>
+-- @param AccountQuotaName [String] <p>The name of the AWS DMS quota for this AWS account.</p>
+-- @param Used [Long] <p>The amount currently used toward the quota maximum.</p>
 function M.AccountQuota(Max, AccountQuotaName, Used, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountQuota")
 	local t = { 
@@ -245,8 +245,8 @@ function M.AssertInvalidCertificateFault(struct)
 end
 
 --- Create a structure of type InvalidCertificateFault
--- &lt;p&gt;The certificate was not valid.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The certificate was not valid.&lt;/p&gt;
+-- <p>The certificate was not valid.</p>
+-- @param message [ExceptionMessage] <p>The certificate was not valid.</p>
 function M.InvalidCertificateFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCertificateFault")
 	local t = { 
@@ -278,18 +278,18 @@ function M.AssertMongoDbSettings(struct)
 end
 
 --- Create a structure of type MongoDbSettings
--- &lt;p/&gt;
--- @param Username [String] &lt;p&gt;The user name you use to access the MongoDB source endpoint. &lt;/p&gt;
--- @param NestingLevel [NestingLevelValue] &lt;p&gt; Specifies either document or table mode. &lt;/p&gt; &lt;p&gt;Valid values: NONE, ONE&lt;/p&gt; &lt;p&gt;Default value is NONE. Specify NONE to use document mode. Specify ONE to use table mode.&lt;/p&gt;
--- @param AuthType [AuthTypeValue] &lt;p&gt; The authentication type you use to access the MongoDB source endpoint.&lt;/p&gt; &lt;p&gt;Valid values: NO, PASSWORD &lt;/p&gt; &lt;p&gt;When NO is selected, user name and password parameters are not used and can be empty. &lt;/p&gt;
--- @param AuthSource [String] &lt;p&gt; The MongoDB database name. This attribute is not used when &lt;code&gt;authType=NO&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;The default is admin.&lt;/p&gt;
--- @param ServerName [String] &lt;p&gt; The name of the server on the MongoDB source endpoint. &lt;/p&gt;
--- @param AuthMechanism [AuthMechanismValue] &lt;p&gt; The authentication mechanism you use to access the MongoDB source endpoint.&lt;/p&gt; &lt;p&gt;Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1 &lt;/p&gt; &lt;p&gt;DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This attribute is not used when authType=No.&lt;/p&gt;
--- @param DocsToInvestigate [String] &lt;p&gt; Indicates the number of documents to preview to determine the document organization. Use this attribute when &lt;code&gt;NestingLevel&lt;/code&gt; is set to ONE. &lt;/p&gt; &lt;p&gt;Must be a positive value greater than 0. Default value is 1000.&lt;/p&gt;
--- @param DatabaseName [String] &lt;p&gt; The database name on the MongoDB source endpoint. &lt;/p&gt;
--- @param ExtractDocId [String] &lt;p&gt; Specifies the document ID. Use this attribute when &lt;code&gt;NestingLevel&lt;/code&gt; is set to NONE. &lt;/p&gt; &lt;p&gt;Default value is false. &lt;/p&gt;
--- @param Password [SecretString] &lt;p&gt; The password for the user account you use to access the MongoDB source endpoint. &lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt; The port value for the MongoDB source endpoint. &lt;/p&gt;
+-- <p/>
+-- @param Username [String] <p>The user name you use to access the MongoDB source endpoint. </p>
+-- @param NestingLevel [NestingLevelValue] <p> Specifies either document or table mode. </p> <p>Valid values: NONE, ONE</p> <p>Default value is NONE. Specify NONE to use document mode. Specify ONE to use table mode.</p>
+-- @param AuthType [AuthTypeValue] <p> The authentication type you use to access the MongoDB source endpoint.</p> <p>Valid values: NO, PASSWORD </p> <p>When NO is selected, user name and password parameters are not used and can be empty. </p>
+-- @param AuthSource [String] <p> The MongoDB database name. This attribute is not used when <code>authType=NO</code>. </p> <p>The default is admin.</p>
+-- @param ServerName [String] <p> The name of the server on the MongoDB source endpoint. </p>
+-- @param AuthMechanism [AuthMechanismValue] <p> The authentication mechanism you use to access the MongoDB source endpoint.</p> <p>Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1 </p> <p>DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This attribute is not used when authType=No.</p>
+-- @param DocsToInvestigate [String] <p> Indicates the number of documents to preview to determine the document organization. Use this attribute when <code>NestingLevel</code> is set to ONE. </p> <p>Must be a positive value greater than 0. Default value is 1000.</p>
+-- @param DatabaseName [String] <p> The database name on the MongoDB source endpoint. </p>
+-- @param ExtractDocId [String] <p> Specifies the document ID. Use this attribute when <code>NestingLevel</code> is set to NONE. </p> <p>Default value is false. </p>
+-- @param Password [SecretString] <p> The password for the user account you use to access the MongoDB source endpoint. </p>
+-- @param Port [IntegerOptional] <p> The port value for the MongoDB source endpoint. </p>
 function M.MongoDbSettings(Username, NestingLevel, AuthType, AuthSource, ServerName, AuthMechanism, DocsToInvestigate, DatabaseName, ExtractDocId, Password, Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MongoDbSettings")
 	local t = { 
@@ -321,8 +321,8 @@ function M.AssertModifyEventSubscriptionResponse(struct)
 end
 
 --- Create a structure of type ModifyEventSubscriptionResponse
--- &lt;p/&gt;
--- @param EventSubscription [EventSubscription] &lt;p&gt;The modified event subscription.&lt;/p&gt;
+-- <p/>
+-- @param EventSubscription [EventSubscription] <p>The modified event subscription.</p>
 function M.ModifyEventSubscriptionResponse(EventSubscription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEventSubscriptionResponse")
 	local t = { 
@@ -349,13 +349,13 @@ function M.AssertReplicationTaskStats(struct)
 end
 
 --- Create a structure of type ReplicationTaskStats
--- &lt;p/&gt;
--- @param TablesLoading [Integer] &lt;p&gt;The number of tables currently loading for this task.&lt;/p&gt;
--- @param TablesQueued [Integer] &lt;p&gt;The number of tables queued for this task.&lt;/p&gt;
--- @param TablesErrored [Integer] &lt;p&gt;The number of errors that have occurred during this task.&lt;/p&gt;
--- @param FullLoadProgressPercent [Integer] &lt;p&gt;The percent complete for the full load migration task.&lt;/p&gt;
--- @param TablesLoaded [Integer] &lt;p&gt;The number of tables loaded for this task.&lt;/p&gt;
--- @param ElapsedTimeMillis [Long] &lt;p&gt;The elapsed time of the task, in milliseconds.&lt;/p&gt;
+-- <p/>
+-- @param TablesLoading [Integer] <p>The number of tables currently loading for this task.</p>
+-- @param TablesQueued [Integer] <p>The number of tables queued for this task.</p>
+-- @param TablesErrored [Integer] <p>The number of errors that have occurred during this task.</p>
+-- @param FullLoadProgressPercent [Integer] <p>The percent complete for the full load migration task.</p>
+-- @param TablesLoaded [Integer] <p>The number of tables loaded for this task.</p>
+-- @param ElapsedTimeMillis [Long] <p>The elapsed time of the task, in milliseconds.</p>
 function M.ReplicationTaskStats(TablesLoading, TablesQueued, TablesErrored, FullLoadProgressPercent, TablesLoaded, ElapsedTimeMillis, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationTaskStats")
 	local t = { 
@@ -383,8 +383,8 @@ function M.AssertDynamoDbSettings(struct)
 end
 
 --- Create a structure of type DynamoDbSettings
--- &lt;p/&gt;
--- @param ServiceAccessRoleArn [String] &lt;p&gt; The Amazon Resource Name (ARN) used by the service access IAM role. &lt;/p&gt;
+-- <p/>
+-- @param ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
 -- Required parameter: ServiceAccessRoleArn
 function M.DynamoDbSettings(ServiceAccessRoleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DynamoDbSettings")
@@ -407,8 +407,8 @@ function M.AssertDeleteEndpointResponse(struct)
 end
 
 --- Create a structure of type DeleteEndpointResponse
--- &lt;p/&gt;
--- @param Endpoint [Endpoint] &lt;p&gt;The endpoint that was deleted.&lt;/p&gt;
+-- <p/>
+-- @param Endpoint [Endpoint] <p>The endpoint that was deleted.</p>
 function M.DeleteEndpointResponse(Endpoint, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEndpointResponse")
 	local t = { 
@@ -430,8 +430,8 @@ function M.AssertAccessDeniedFault(struct)
 end
 
 --- Create a structure of type AccessDeniedFault
--- &lt;p&gt;AWS DMS was denied access to the endpoint.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>AWS DMS was denied access to the endpoint.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.AccessDeniedFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedFault")
 	local t = { 
@@ -456,10 +456,10 @@ function M.AssertDescribeTableStatisticsMessage(struct)
 end
 
 --- Create a structure of type DescribeTableStatisticsMessage
--- &lt;p/&gt;
--- @param ReplicationTaskArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication task.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
 -- Required parameter: ReplicationTaskArn
 function M.DescribeTableStatisticsMessage(ReplicationTaskArn, Marker, MaxRecords, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTableStatisticsMessage")
@@ -484,8 +484,8 @@ function M.AssertInsufficientResourceCapacityFault(struct)
 end
 
 --- Create a structure of type InsufficientResourceCapacityFault
--- &lt;p&gt;There are not enough resources allocated to the database migration.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>There are not enough resources allocated to the database migration.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.InsufficientResourceCapacityFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientResourceCapacityFault")
 	local t = { 
@@ -509,10 +509,10 @@ function M.AssertDescribeReplicationInstancesMessage(struct)
 end
 
 --- Create a structure of type DescribeReplicationInstancesMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Filters applied to the describe action.&lt;/p&gt; &lt;p&gt;Valid filter names: replication-instance-arn | replication-instance-id | replication-instance-class | engine-version&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-instance-arn | replication-instance-id | replication-instance-class | engine-version</p>
 function M.DescribeReplicationInstancesMessage(Marker, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationInstancesMessage")
 	local t = { 
@@ -550,16 +550,16 @@ function M.AssertCreateReplicationTaskMessage(struct)
 end
 
 --- Create a structure of type CreateReplicationTaskMessage
--- &lt;p/&gt;
--- @param SourceEndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
--- @param ReplicationTaskIdentifier [String] &lt;p&gt;The replication task identifier.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ReplicationInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;Tags to be added to the replication instance.&lt;/p&gt;
--- @param TableMappings [String] &lt;p&gt;When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with &quot;file://&quot;. When working with the DMS API, provide the JSON as the parameter value.&lt;/p&gt; &lt;p&gt;For example, --table-mappings file://mappingfile.json&lt;/p&gt;
--- @param MigrationType [MigrationTypeValue] &lt;p&gt;The migration type.&lt;/p&gt;
--- @param TargetEndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
--- @param ReplicationTaskSettings [String] &lt;p&gt;Settings for the task, such as target metadata settings. For a complete list of task settings, see &lt;a href=&quot;http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html&quot;&gt;Task Settings for AWS Database Migration Service Tasks&lt;/a&gt;.&lt;/p&gt;
--- @param CdcStartTime [TStamp] &lt;p&gt;The start time for the Change Data Capture (CDC) operation.&lt;/p&gt;
+-- <p/>
+-- @param SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param Tags [TagList] <p>Tags to be added to the replication instance.</p>
+-- @param TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
+-- @param MigrationType [MigrationTypeValue] <p>The migration type.</p>
+-- @param TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param ReplicationTaskSettings [String] <p>Settings for the task, such as target metadata settings. For a complete list of task settings, see <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task Settings for AWS Database Migration Service Tasks</a>.</p>
+-- @param CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
 -- Required parameter: ReplicationTaskIdentifier
 -- Required parameter: SourceEndpointArn
 -- Required parameter: TargetEndpointArn
@@ -595,8 +595,8 @@ function M.AssertInvalidResourceStateFault(struct)
 end
 
 --- Create a structure of type InvalidResourceStateFault
--- &lt;p&gt;The resource is in a state that prevents it from being used for database migration.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>The resource is in a state that prevents it from being used for database migration.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.InvalidResourceStateFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceStateFault")
 	local t = { 
@@ -618,8 +618,8 @@ function M.AssertTestConnectionResponse(struct)
 end
 
 --- Create a structure of type TestConnectionResponse
--- &lt;p/&gt;
--- @param Connection [Connection] &lt;p&gt;The connection tested.&lt;/p&gt;
+-- <p/>
+-- @param Connection [Connection] <p>The connection tested.</p>
 function M.TestConnectionResponse(Connection, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestConnectionResponse")
 	local t = { 
@@ -649,16 +649,16 @@ function M.AssertDescribeEventsMessage(struct)
 end
 
 --- Create a structure of type DescribeEventsMessage
--- &lt;p/&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt;A list of event categories for a source type that you want to subscribe to.&lt;/p&gt;
--- @param SourceType [SourceType] &lt;p&gt;The type of AWS DMS resource that generates events.&lt;/p&gt; &lt;p&gt;Valid values: replication-instance | migration-task&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param StartTime [TStamp] &lt;p&gt;The start time for the events to be listed.&lt;/p&gt;
--- @param Duration [IntegerOptional] &lt;p&gt;The duration of the events to be listed.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Filters applied to the action.&lt;/p&gt;
--- @param SourceIdentifier [String] &lt;p&gt; The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens. It cannot end with a hyphen or contain two consecutive hyphens. &lt;/p&gt;
--- @param EndTime [TStamp] &lt;p&gt;The end time for the events to be listed.&lt;/p&gt;
+-- <p/>
+-- @param EventCategories [EventCategoriesList] <p>A list of event categories for a source type that you want to subscribe to.</p>
+-- @param SourceType [SourceType] <p>The type of AWS DMS resource that generates events.</p> <p>Valid values: replication-instance | migration-task</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param StartTime [TStamp] <p>The start time for the events to be listed.</p>
+-- @param Duration [IntegerOptional] <p>The duration of the events to be listed.</p>
+-- @param Filters [FilterList] <p>Filters applied to the action.</p>
+-- @param SourceIdentifier [String] <p> The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens. It cannot end with a hyphen or contain two consecutive hyphens. </p>
+-- @param EndTime [TStamp] <p>The end time for the events to be listed.</p>
 function M.DescribeEventsMessage(EventCategories, SourceType, Marker, MaxRecords, StartTime, Duration, Filters, SourceIdentifier, EndTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsMessage")
 	local t = { 
@@ -688,8 +688,8 @@ function M.AssertCreateReplicationTaskResponse(struct)
 end
 
 --- Create a structure of type CreateReplicationTaskResponse
--- &lt;p/&gt;
--- @param ReplicationTask [ReplicationTask] &lt;p&gt;The replication task that was created.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTask [ReplicationTask] <p>The replication task that was created.</p>
 function M.CreateReplicationTaskResponse(ReplicationTask, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationTaskResponse")
 	local t = { 
@@ -711,8 +711,8 @@ function M.AssertStorageQuotaExceededFault(struct)
 end
 
 --- Create a structure of type StorageQuotaExceededFault
--- &lt;p&gt;The storage quota has been exceeded.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>The storage quota has been exceeded.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.StorageQuotaExceededFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageQuotaExceededFault")
 	local t = { 
@@ -735,9 +735,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p/&gt;
--- @param Value [String] &lt;p&gt;A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with &quot;aws:&quot; or &quot;dms:&quot;. The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: &quot;^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$&quot;).&lt;/p&gt;
--- @param Key [String] &lt;p&gt;A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with &quot;aws:&quot; or &quot;dms:&quot;. The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: &quot;^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$&quot;).&lt;/p&gt;
+-- <p/>
+-- @param Value [String] <p>A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
+-- @param Key [String] <p>A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
@@ -763,9 +763,9 @@ function M.AssertAddTagsToResourceMessage(struct)
 end
 
 --- Create a structure of type AddTagsToResourceMessage
--- &lt;p/&gt;
--- @param ResourceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be added to. AWS DMS resources include a replication instance, endpoint, and a replication task.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tag to be assigned to the DMS resource.&lt;/p&gt;
+-- <p/>
+-- @param ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be added to. AWS DMS resources include a replication instance, endpoint, and a replication task.</p>
+-- @param Tags [TagList] <p>The tag to be assigned to the DMS resource.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: Tags
 function M.AddTagsToResourceMessage(ResourceArn, Tags, ...)
@@ -794,12 +794,12 @@ function M.AssertEvent(struct)
 end
 
 --- Create a structure of type Event
--- &lt;p/&gt;
--- @param Date [TStamp] &lt;p&gt;The date of the event.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The event message.&lt;/p&gt;
--- @param SourceIdentifier [String] &lt;p&gt; The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. &lt;/p&gt; &lt;p&gt;Constraints:replication instance, endpoint, migration task&lt;/p&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt;The event categories available for the specified source type.&lt;/p&gt;
--- @param SourceType [SourceType] &lt;p&gt; The type of AWS DMS resource that generates events. &lt;/p&gt; &lt;p&gt;Valid values: replication-instance | endpoint | migration-task&lt;/p&gt;
+-- <p/>
+-- @param Date [TStamp] <p>The date of the event.</p>
+-- @param Message [String] <p>The event message.</p>
+-- @param SourceIdentifier [String] <p> The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p> <p>Constraints:replication instance, endpoint, migration task</p>
+-- @param EventCategories [EventCategoriesList] <p>The event categories available for the specified source type.</p>
+-- @param SourceType [SourceType] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | endpoint | migration-task</p>
 function M.Event(Date, Message, SourceIdentifier, EventCategories, SourceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Event")
 	local t = { 
@@ -826,8 +826,8 @@ function M.AssertDeleteReplicationSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type DeleteReplicationSubnetGroupMessage
--- &lt;p/&gt;
--- @param ReplicationSubnetGroupIdentifier [String] &lt;p&gt;The subnet group name of the replication instance.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationSubnetGroupIdentifier [String] <p>The subnet group name of the replication instance.</p>
 -- Required parameter: ReplicationSubnetGroupIdentifier
 function M.DeleteReplicationSubnetGroupMessage(ReplicationSubnetGroupIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationSubnetGroupMessage")
@@ -851,8 +851,8 @@ function M.AssertDescribeRefreshSchemasStatusMessage(struct)
 end
 
 --- Create a structure of type DescribeRefreshSchemasStatusMessage
--- &lt;p/&gt;
--- @param EndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
+-- <p/>
+-- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
 -- Required parameter: EndpointArn
 function M.DescribeRefreshSchemasStatusMessage(EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRefreshSchemasStatusMessage")
@@ -878,9 +878,9 @@ function M.AssertTestConnectionMessage(struct)
 end
 
 --- Create a structure of type TestConnectionMessage
--- &lt;p/&gt;
--- @param EndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
--- @param ReplicationInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance.&lt;/p&gt;
+-- <p/>
+-- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
 -- Required parameter: ReplicationInstanceArn
 -- Required parameter: EndpointArn
 function M.TestConnectionMessage(EndpointArn, ReplicationInstanceArn, ...)
@@ -905,8 +905,8 @@ function M.AssertInvalidSubnet(struct)
 end
 
 --- Create a structure of type InvalidSubnet
--- &lt;p&gt;The subnet provided is invalid.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>The subnet provided is invalid.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.InvalidSubnet(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnet")
 	local t = { 
@@ -929,9 +929,9 @@ function M.AssertTableToReload(struct)
 end
 
 --- Create a structure of type TableToReload
--- &lt;p/&gt;
--- @param SchemaName [String] &lt;p&gt;The schema name of the table to be reloaded.&lt;/p&gt;
--- @param TableName [String] &lt;p&gt;The table name of the table to be reloaded.&lt;/p&gt;
+-- <p/>
+-- @param SchemaName [String] <p>The schema name of the table to be reloaded.</p>
+-- @param TableName [String] <p>The table name of the table to be reloaded.</p>
 function M.TableToReload(SchemaName, TableName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TableToReload")
 	local t = { 
@@ -958,8 +958,8 @@ end
 
 --- Create a structure of type ReloadTablesMessage
 --  
--- @param ReplicationTaskArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance. &lt;/p&gt;
--- @param TablesToReload [TableListToReload] &lt;p&gt;The name and schema of the table to be reloaded. &lt;/p&gt;
+-- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication instance. </p>
+-- @param TablesToReload [TableListToReload] <p>The name and schema of the table to be reloaded. </p>
 -- Required parameter: ReplicationTaskArn
 -- Required parameter: TablesToReload
 function M.ReloadTablesMessage(ReplicationTaskArn, TablesToReload, ...)
@@ -984,8 +984,8 @@ function M.AssertResourceNotFoundFault(struct)
 end
 
 --- Create a structure of type ResourceNotFoundFault
--- &lt;p&gt;The resource could not be found.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>The resource could not be found.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.ResourceNotFoundFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundFault")
 	local t = { 
@@ -1006,7 +1006,7 @@ function M.AssertRemoveTagsFromResourceResponse(struct)
 end
 
 --- Create a structure of type RemoveTagsFromResourceResponse
--- &lt;p/&gt;
+-- <p/>
 function M.RemoveTagsFromResourceResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceResponse")
 	local t = { 
@@ -1028,9 +1028,9 @@ function M.AssertDescribeReplicationSubnetGroupsResponse(struct)
 end
 
 --- Create a structure of type DescribeReplicationSubnetGroupsResponse
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param ReplicationSubnetGroups [ReplicationSubnetGroups] &lt;p&gt;A description of the replication subnet groups.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param ReplicationSubnetGroups [ReplicationSubnetGroups] <p>A description of the replication subnet groups.</p>
 function M.DescribeReplicationSubnetGroupsResponse(Marker, ReplicationSubnetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationSubnetGroupsResponse")
 	local t = { 
@@ -1053,8 +1053,8 @@ function M.AssertCreateEventSubscriptionResponse(struct)
 end
 
 --- Create a structure of type CreateEventSubscriptionResponse
--- &lt;p/&gt;
--- @param EventSubscription [EventSubscription] &lt;p&gt;The event subscription that was created.&lt;/p&gt;
+-- <p/>
+-- @param EventSubscription [EventSubscription] <p>The event subscription that was created.</p>
 function M.CreateEventSubscriptionResponse(EventSubscription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEventSubscriptionResponse")
 	local t = { 
@@ -1077,9 +1077,9 @@ function M.AssertDescribeOrderableReplicationInstancesResponse(struct)
 end
 
 --- Create a structure of type DescribeOrderableReplicationInstancesResponse
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param OrderableReplicationInstances [OrderableReplicationInstanceList] &lt;p&gt;The order-able replication instances available.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param OrderableReplicationInstances [OrderableReplicationInstanceList] <p>The order-able replication instances available.</p>
 function M.DescribeOrderableReplicationInstancesResponse(Marker, OrderableReplicationInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrderableReplicationInstancesResponse")
 	local t = { 
@@ -1108,13 +1108,13 @@ function M.AssertModifyReplicationTaskMessage(struct)
 end
 
 --- Create a structure of type ModifyReplicationTaskMessage
--- &lt;p/&gt;
--- @param ReplicationTaskIdentifier [String] &lt;p&gt;The replication task identifier.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ReplicationTaskArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication task.&lt;/p&gt;
--- @param MigrationType [MigrationTypeValue] &lt;p&gt;The migration type.&lt;/p&gt; &lt;p&gt;Valid values: full-load | cdc | full-load-and-cdc&lt;/p&gt;
--- @param TableMappings [String] &lt;p&gt;When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with &quot;file://&quot;. When working with the DMS API, provide the JSON as the parameter value.&lt;/p&gt; &lt;p&gt;For example, --table-mappings file://mappingfile.json&lt;/p&gt;
--- @param ReplicationTaskSettings [String] &lt;p&gt;JSON file that contains settings for the task, such as target metadata settings.&lt;/p&gt;
--- @param CdcStartTime [TStamp] &lt;p&gt;The start time for the Change Data Capture (CDC) operation.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- @param MigrationType [MigrationTypeValue] <p>The migration type.</p> <p>Valid values: full-load | cdc | full-load-and-cdc</p>
+-- @param TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
+-- @param ReplicationTaskSettings [String] <p>JSON file that contains settings for the task, such as target metadata settings.</p>
+-- @param CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
 -- Required parameter: ReplicationTaskArn
 function M.ModifyReplicationTaskMessage(ReplicationTaskIdentifier, ReplicationTaskArn, MigrationType, TableMappings, ReplicationTaskSettings, CdcStartTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationTaskMessage")
@@ -1144,10 +1144,10 @@ function M.AssertDescribeConnectionsMessage(struct)
 end
 
 --- Create a structure of type DescribeConnectionsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;The filters applied to the connection.&lt;/p&gt; &lt;p&gt;Valid filter names: endpoint-arn | replication-instance-arn&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>The filters applied to the connection.</p> <p>Valid filter names: endpoint-arn | replication-instance-arn</p>
 function M.DescribeConnectionsMessage(Marker, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionsMessage")
 	local t = { 
@@ -1172,9 +1172,9 @@ function M.AssertDescribeReplicationInstancesResponse(struct)
 end
 
 --- Create a structure of type DescribeReplicationInstancesResponse
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param ReplicationInstances [ReplicationInstanceList] &lt;p&gt;The replication instances described.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param ReplicationInstances [ReplicationInstanceList] <p>The replication instances described.</p>
 function M.DescribeReplicationInstancesResponse(Marker, ReplicationInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationInstancesResponse")
 	local t = { 
@@ -1198,9 +1198,9 @@ function M.AssertDescribeSchemasResponse(struct)
 end
 
 --- Create a structure of type DescribeSchemasResponse
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param Schemas [SchemaList] &lt;p&gt;The described schema.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param Schemas [SchemaList] <p>The described schema.</p>
 function M.DescribeSchemasResponse(Marker, Schemas, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSchemasResponse")
 	local t = { 
@@ -1224,9 +1224,9 @@ function M.AssertVpcSecurityGroupMembership(struct)
 end
 
 --- Create a structure of type VpcSecurityGroupMembership
--- &lt;p/&gt;
--- @param Status [String] &lt;p&gt;The status of the VPC security group.&lt;/p&gt;
--- @param VpcSecurityGroupId [String] &lt;p&gt;The VPC security group Id.&lt;/p&gt;
+-- <p/>
+-- @param Status [String] <p>The status of the VPC security group.</p>
+-- @param VpcSecurityGroupId [String] <p>The VPC security group Id.</p>
 function M.VpcSecurityGroupMembership(Status, VpcSecurityGroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VpcSecurityGroupMembership")
 	local t = { 
@@ -1255,14 +1255,14 @@ function M.AssertS3Settings(struct)
 end
 
 --- Create a structure of type S3Settings
--- &lt;p/&gt;
--- @param CompressionType [CompressionTypeValue] &lt;p&gt; An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed. &lt;/p&gt;
--- @param BucketFolder [String] &lt;p&gt; An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path &amp;lt;bucketFolder&amp;gt;/&amp;lt;schema_name&amp;gt;/&amp;lt;table_name&amp;gt;/. If this parameter is not specified, then the path used is &amp;lt;schema_name&amp;gt;/&amp;lt;table_name&amp;gt;/. &lt;/p&gt;
--- @param CsvRowDelimiter [String] &lt;p&gt; The delimiter used to separate rows in the source files. The default is a carriage return (\n). &lt;/p&gt;
--- @param CsvDelimiter [String] &lt;p&gt; The delimiter used to separate columns in the source files. The default is a comma. &lt;/p&gt;
--- @param ServiceAccessRoleArn [String] &lt;p&gt; The Amazon Resource Name (ARN) used by the service access IAM role. &lt;/p&gt;
--- @param ExternalTableDefinition [String] &lt;p&gt; &lt;/p&gt;
--- @param BucketName [String] &lt;p&gt; The name of the S3 bucket. &lt;/p&gt;
+-- <p/>
+-- @param CompressionType [CompressionTypeValue] <p> An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed. </p>
+-- @param BucketFolder [String] <p> An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path &lt;bucketFolder&gt;/&lt;schema_name&gt;/&lt;table_name&gt;/. If this parameter is not specified, then the path used is &lt;schema_name&gt;/&lt;table_name&gt;/. </p>
+-- @param CsvRowDelimiter [String] <p> The delimiter used to separate rows in the source files. The default is a carriage return (\n). </p>
+-- @param CsvDelimiter [String] <p> The delimiter used to separate columns in the source files. The default is a comma. </p>
+-- @param ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
+-- @param ExternalTableDefinition [String] <p> </p>
+-- @param BucketName [String] <p> The name of the S3 bucket. </p>
 function M.S3Settings(CompressionType, BucketFolder, CsvRowDelimiter, CsvDelimiter, ServiceAccessRoleArn, ExternalTableDefinition, BucketName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3Settings")
 	local t = { 
@@ -1291,9 +1291,9 @@ function M.AssertDescribeEndpointsResponse(struct)
 end
 
 --- Create a structure of type DescribeEndpointsResponse
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param Endpoints [EndpointList] &lt;p&gt;Endpoint description.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param Endpoints [EndpointList] <p>Endpoint description.</p>
 function M.DescribeEndpointsResponse(Marker, Endpoints, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointsResponse")
 	local t = { 
@@ -1316,8 +1316,8 @@ function M.AssertCreateEndpointResponse(struct)
 end
 
 --- Create a structure of type CreateEndpointResponse
--- &lt;p/&gt;
--- @param Endpoint [Endpoint] &lt;p&gt;The endpoint that was created.&lt;/p&gt;
+-- <p/>
+-- @param Endpoint [Endpoint] <p>The endpoint that was created.</p>
 function M.CreateEndpointResponse(Endpoint, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEndpointResponse")
 	local t = { 
@@ -1345,11 +1345,11 @@ function M.AssertCreateReplicationSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type CreateReplicationSubnetGroupMessage
--- &lt;p/&gt;
--- @param ReplicationSubnetGroupDescription [String] &lt;p&gt;The description for the subnet group.&lt;/p&gt;
--- @param SubnetIds [SubnetIdentifierList] &lt;p&gt;The EC2 subnet IDs for the subnet group.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tag to be assigned to the subnet group.&lt;/p&gt;
--- @param ReplicationSubnetGroupIdentifier [String] &lt;p&gt;The name for the replication subnet group. This value is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be &quot;default&quot;.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param ReplicationSubnetGroupDescription [String] <p>The description for the subnet group.</p>
+-- @param SubnetIds [SubnetIdentifierList] <p>The EC2 subnet IDs for the subnet group.</p>
+-- @param Tags [TagList] <p>The tag to be assigned to the subnet group.</p>
+-- @param ReplicationSubnetGroupIdentifier [String] <p>The name for the replication subnet group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default".</p> <p>Example: <code>mySubnetgroup</code> </p>
 -- Required parameter: ReplicationSubnetGroupIdentifier
 -- Required parameter: ReplicationSubnetGroupDescription
 -- Required parameter: SubnetIds
@@ -1379,10 +1379,10 @@ function M.AssertDescribeReplicationSubnetGroupsMessage(struct)
 end
 
 --- Create a structure of type DescribeReplicationSubnetGroupsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Filters applied to the describe action.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>Filters applied to the describe action.</p>
 function M.DescribeReplicationSubnetGroupsMessage(Marker, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationSubnetGroupsMessage")
 	local t = { 
@@ -1410,12 +1410,12 @@ function M.AssertReplicationSubnetGroup(struct)
 end
 
 --- Create a structure of type ReplicationSubnetGroup
--- &lt;p/&gt;
--- @param ReplicationSubnetGroupDescription [String] &lt;p&gt;The description of the replication subnet group.&lt;/p&gt;
--- @param Subnets [SubnetList] &lt;p&gt;The subnets that are in the subnet group.&lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;The ID of the VPC.&lt;/p&gt;
--- @param SubnetGroupStatus [String] &lt;p&gt;The status of the subnet group.&lt;/p&gt;
--- @param ReplicationSubnetGroupIdentifier [String] &lt;p&gt;The identifier of the replication instance subnet group.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationSubnetGroupDescription [String] <p>The description of the replication subnet group.</p>
+-- @param Subnets [SubnetList] <p>The subnets that are in the subnet group.</p>
+-- @param VpcId [String] <p>The ID of the VPC.</p>
+-- @param SubnetGroupStatus [String] <p>The status of the subnet group.</p>
+-- @param ReplicationSubnetGroupIdentifier [String] <p>The identifier of the replication instance subnet group.</p>
 function M.ReplicationSubnetGroup(ReplicationSubnetGroupDescription, Subnets, VpcId, SubnetGroupStatus, ReplicationSubnetGroupIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationSubnetGroup")
 	local t = { 
@@ -1441,8 +1441,8 @@ function M.AssertModifyReplicationInstanceResponse(struct)
 end
 
 --- Create a structure of type ModifyReplicationInstanceResponse
--- &lt;p/&gt;
--- @param ReplicationInstance [ReplicationInstance] &lt;p&gt;The modified replication instance.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationInstance [ReplicationInstance] <p>The modified replication instance.</p>
 function M.ModifyReplicationInstanceResponse(ReplicationInstance, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationInstanceResponse")
 	local t = { 
@@ -1464,8 +1464,8 @@ function M.AssertRefreshSchemasResponse(struct)
 end
 
 --- Create a structure of type RefreshSchemasResponse
--- &lt;p/&gt;
--- @param RefreshSchemasStatus [RefreshSchemasStatus] &lt;p&gt;The status of the refreshed schema.&lt;/p&gt;
+-- <p/>
+-- @param RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the refreshed schema.</p>
 function M.RefreshSchemasResponse(RefreshSchemasStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RefreshSchemasResponse")
 	local t = { 
@@ -1489,8 +1489,8 @@ end
 
 --- Create a structure of type DescribeCertificatesResponse
 --  
--- @param Marker [String] &lt;p&gt;The pagination token.&lt;/p&gt;
--- @param Certificates [CertificateList] &lt;p&gt;The Secure Sockets Layer (SSL) certificates associated with the replication instance.&lt;/p&gt;
+-- @param Marker [String] <p>The pagination token.</p>
+-- @param Certificates [CertificateList] <p>The Secure Sockets Layer (SSL) certificates associated with the replication instance.</p>
 function M.DescribeCertificatesResponse(Marker, Certificates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificatesResponse")
 	local t = { 
@@ -1517,10 +1517,10 @@ function M.AssertStartReplicationTaskMessage(struct)
 end
 
 --- Create a structure of type StartReplicationTaskMessage
--- &lt;p/&gt;
--- @param ReplicationTaskArn [String] &lt;p&gt;The Amazon Resource Number (ARN) of the replication task to be started.&lt;/p&gt;
--- @param StartReplicationTaskType [StartReplicationTaskTypeValue] &lt;p&gt;The type of replication task.&lt;/p&gt;
--- @param CdcStartTime [TStamp] &lt;p&gt;The start time for the Change Data Capture (CDC) operation.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTaskArn [String] <p>The Amazon Resource Number (ARN) of the replication task to be started.</p>
+-- @param StartReplicationTaskType [StartReplicationTaskTypeValue] <p>The type of replication task.</p>
+-- @param CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
 -- Required parameter: ReplicationTaskArn
 -- Required parameter: StartReplicationTaskType
 function M.StartReplicationTaskMessage(ReplicationTaskArn, StartReplicationTaskType, CdcStartTime, ...)
@@ -1546,8 +1546,8 @@ function M.AssertResourceQuotaExceededFault(struct)
 end
 
 --- Create a structure of type ResourceQuotaExceededFault
--- &lt;p&gt;The quota for this resource quota has been exceeded.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>The quota for this resource quota has been exceeded.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.ResourceQuotaExceededFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceQuotaExceededFault")
 	local t = { 
@@ -1569,8 +1569,8 @@ function M.AssertStartReplicationTaskResponse(struct)
 end
 
 --- Create a structure of type StartReplicationTaskResponse
--- &lt;p/&gt;
--- @param ReplicationTask [ReplicationTask] &lt;p&gt;The replication task started.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTask [ReplicationTask] <p>The replication task started.</p>
 function M.StartReplicationTaskResponse(ReplicationTask, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartReplicationTaskResponse")
 	local t = { 
@@ -1596,10 +1596,10 @@ function M.AssertModifyReplicationSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type ModifyReplicationSubnetGroupMessage
--- &lt;p/&gt;
--- @param ReplicationSubnetGroupDescription [String] &lt;p&gt;The description of the replication instance subnet group.&lt;/p&gt;
--- @param SubnetIds [SubnetIdentifierList] &lt;p&gt;A list of subnet IDs.&lt;/p&gt;
--- @param ReplicationSubnetGroupIdentifier [String] &lt;p&gt;The name of the replication instance subnet group.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationSubnetGroupDescription [String] <p>The description of the replication instance subnet group.</p>
+-- @param SubnetIds [SubnetIdentifierList] <p>A list of subnet IDs.</p>
+-- @param ReplicationSubnetGroupIdentifier [String] <p>The name of the replication instance subnet group.</p>
 -- Required parameter: ReplicationSubnetGroupIdentifier
 -- Required parameter: SubnetIds
 function M.ModifyReplicationSubnetGroupMessage(ReplicationSubnetGroupDescription, SubnetIds, ReplicationSubnetGroupIdentifier, ...)
@@ -1625,8 +1625,8 @@ function M.AssertAvailabilityZone(struct)
 end
 
 --- Create a structure of type AvailabilityZone
--- &lt;p/&gt;
--- @param Name [String] &lt;p&gt;The name of the availability zone.&lt;/p&gt;
+-- <p/>
+-- @param Name [String] <p>The name of the availability zone.</p>
 function M.AvailabilityZone(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityZone")
 	local t = { 
@@ -1658,18 +1658,18 @@ function M.AssertTableStatistics(struct)
 end
 
 --- Create a structure of type TableStatistics
--- &lt;p/&gt;
--- @param Inserts [Long] &lt;p&gt;The number of insert actions performed on a table.&lt;/p&gt;
--- @param LastUpdateTime [TStamp] &lt;p&gt;The last time the table was updated.&lt;/p&gt;
--- @param FullLoadErrorRows [Long] &lt;p&gt;The number of rows that failed to load during the Full Load operation (valid only for DynamoDB as a target migrations).&lt;/p&gt;
--- @param FullLoadCondtnlChkFailedRows [Long] &lt;p&gt;The number of rows that failed conditional checks during the Full Load operation (valid only for DynamoDB as a target migrations).&lt;/p&gt;
--- @param Ddls [Long] &lt;p&gt;The Data Definition Language (DDL) used to build and modify the structure of your tables.&lt;/p&gt;
--- @param TableName [String] &lt;p&gt;The name of the table.&lt;/p&gt;
--- @param Updates [Long] &lt;p&gt;The number of update actions performed on a table.&lt;/p&gt;
--- @param FullLoadRows [Long] &lt;p&gt;The number of rows added during the Full Load operation.&lt;/p&gt;
--- @param TableState [String] &lt;p&gt;The state of the table.&lt;/p&gt;
--- @param SchemaName [String] &lt;p&gt;The schema name.&lt;/p&gt;
--- @param Deletes [Long] &lt;p&gt;The number of delete actions performed on a table.&lt;/p&gt;
+-- <p/>
+-- @param Inserts [Long] <p>The number of insert actions performed on a table.</p>
+-- @param LastUpdateTime [TStamp] <p>The last time the table was updated.</p>
+-- @param FullLoadErrorRows [Long] <p>The number of rows that failed to load during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
+-- @param FullLoadCondtnlChkFailedRows [Long] <p>The number of rows that failed conditional checks during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
+-- @param Ddls [Long] <p>The Data Definition Language (DDL) used to build and modify the structure of your tables.</p>
+-- @param TableName [String] <p>The name of the table.</p>
+-- @param Updates [Long] <p>The number of update actions performed on a table.</p>
+-- @param FullLoadRows [Long] <p>The number of rows added during the Full Load operation.</p>
+-- @param TableState [String] <p>The state of the table.</p>
+-- @param SchemaName [String] <p>The schema name.</p>
+-- @param Deletes [Long] <p>The number of delete actions performed on a table.</p>
 function M.TableStatistics(Inserts, LastUpdateTime, FullLoadErrorRows, FullLoadCondtnlChkFailedRows, Ddls, TableName, Updates, FullLoadRows, TableState, SchemaName, Deletes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TableStatistics")
 	local t = { 
@@ -1712,18 +1712,18 @@ function M.AssertModifyReplicationInstanceMessage(struct)
 end
 
 --- Create a structure of type ModifyReplicationInstanceMessage
--- &lt;p/&gt;
--- @param MultiAZ [BooleanOptional] &lt;p&gt; Specifies if the replication instance is a Multi-AZ deployment. You cannot set the &lt;code&gt;AvailabilityZone&lt;/code&gt; parameter if the Multi-AZ parameter is set to &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
--- @param AllowMajorVersionUpgrade [Boolean] &lt;p&gt;Indicates that major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.&lt;/p&gt; &lt;p&gt;Constraints: This parameter must be set to true when specifying a value for the &lt;code&gt;EngineVersion&lt;/code&gt; parameter that is a different major version than the replication instance's current version.&lt;/p&gt;
--- @param ReplicationInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance.&lt;/p&gt;
--- @param ReplicationInstanceClass [String] &lt;p&gt;The compute and memory capacity of the replication instance.&lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge &lt;/code&gt; &lt;/p&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt; Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. &lt;/p&gt;
--- @param ApplyImmediately [Boolean] &lt;p&gt;Indicates whether the changes should be applied immediately or during the next maintenance window.&lt;/p&gt;
--- @param AutoMinorVersionUpgrade [BooleanOptional] &lt;p&gt; Indicates that minor version upgrades will be applied automatically to the replication instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to &lt;code&gt;true&lt;/code&gt; during the maintenance window, and a newer minor version is available, and AWS DMS has enabled auto patching for that engine version. &lt;/p&gt;
--- @param AllocatedStorage [IntegerOptional] &lt;p&gt;The amount of storage (in gigabytes) to be allocated for the replication instance.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The engine version number of the replication instance.&lt;/p&gt;
--- @param ReplicationInstanceIdentifier [String] &lt;p&gt;The replication instance identifier. This parameter is stored as a lowercase string.&lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage. Changing this parameter does not result in an outage, except in the following situation, and the change is asynchronously applied as soon as possible. If moving this window to the current time, there must be at least 30 minutes between the current time and end of the window to ensure pending changes are applied.&lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Format: ddd:hh24:mi-ddd:hh24:mi&lt;/p&gt; &lt;p&gt;Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun&lt;/p&gt; &lt;p&gt;Constraints: Must be at least 30 minutes&lt;/p&gt;
+-- <p/>
+-- @param MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- @param AllowMajorVersionUpgrade [Boolean] <p>Indicates that major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.</p> <p>Constraints: This parameter must be set to true when specifying a value for the <code>EngineVersion</code> parameter that is a different major version than the replication instance's current version.</p>
+-- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p> Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. </p>
+-- @param ApplyImmediately [Boolean] <p>Indicates whether the changes should be applied immediately or during the next maintenance window.</p>
+-- @param AutoMinorVersionUpgrade [BooleanOptional] <p> Indicates that minor version upgrades will be applied automatically to the replication instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code> during the maintenance window, and a newer minor version is available, and AWS DMS has enabled auto patching for that engine version. </p>
+-- @param AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be allocated for the replication instance.</p>
+-- @param EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- @param ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p>
+-- @param PreferredMaintenanceWindow [String] <p>The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage. Changing this parameter does not result in an outage, except in the following situation, and the change is asynchronously applied as soon as possible. If moving this window to the current time, there must be at least 30 minutes between the current time and end of the window to ensure pending changes are applied.</p> <p>Default: Uses existing setting</p> <p>Format: ddd:hh24:mi-ddd:hh24:mi</p> <p>Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Must be at least 30 minutes</p>
 -- Required parameter: ReplicationInstanceArn
 function M.ModifyReplicationInstanceMessage(MultiAZ, AllowMajorVersionUpgrade, ReplicationInstanceArn, ReplicationInstanceClass, VpcSecurityGroupIds, ApplyImmediately, AutoMinorVersionUpgrade, AllocatedStorage, EngineVersion, ReplicationInstanceIdentifier, PreferredMaintenanceWindow, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationInstanceMessage")
@@ -1756,8 +1756,8 @@ function M.AssertModifyReplicationTaskResponse(struct)
 end
 
 --- Create a structure of type ModifyReplicationTaskResponse
--- &lt;p/&gt;
--- @param ReplicationTask [ReplicationTask] &lt;p&gt;The replication task that was modified.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTask [ReplicationTask] <p>The replication task that was modified.</p>
 function M.ModifyReplicationTaskResponse(ReplicationTask, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationTaskResponse")
 	local t = { 
@@ -1781,10 +1781,10 @@ function M.AssertSubnet(struct)
 end
 
 --- Create a structure of type Subnet
--- &lt;p/&gt;
--- @param SubnetStatus [String] &lt;p&gt;The status of the subnet.&lt;/p&gt;
--- @param SubnetIdentifier [String] &lt;p&gt;The subnet identifier.&lt;/p&gt;
--- @param SubnetAvailabilityZone [AvailabilityZone] &lt;p&gt;The Availability Zone of the subnet.&lt;/p&gt;
+-- <p/>
+-- @param SubnetStatus [String] <p>The status of the subnet.</p>
+-- @param SubnetIdentifier [String] <p>The subnet identifier.</p>
+-- @param SubnetAvailabilityZone [AvailabilityZone] <p>The Availability Zone of the subnet.</p>
 function M.Subnet(SubnetStatus, SubnetIdentifier, SubnetAvailabilityZone, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subnet")
 	local t = { 
@@ -1808,8 +1808,8 @@ function M.AssertDeleteReplicationTaskResponse(struct)
 end
 
 --- Create a structure of type DeleteReplicationTaskResponse
--- &lt;p/&gt;
--- @param ReplicationTask [ReplicationTask] &lt;p&gt;The deleted replication task.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTask [ReplicationTask] <p>The deleted replication task.</p>
 function M.DeleteReplicationTaskResponse(ReplicationTask, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationTaskResponse")
 	local t = { 
@@ -1840,17 +1840,17 @@ function M.AssertCertificate(struct)
 end
 
 --- Create a structure of type Certificate
--- &lt;p&gt;The SSL certificate that can be used to encrypt connections between the endpoints and the replication instance.&lt;/p&gt;
--- @param CertificateArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the certificate.&lt;/p&gt;
--- @param CertificateCreationDate [TStamp] &lt;p&gt;The date that the certificate was created.&lt;/p&gt;
--- @param CertificatePem [String] &lt;p&gt;The contents of the .pem X.509 certificate file for the certificate.&lt;/p&gt;
--- @param CertificateOwner [String] &lt;p&gt;The owner of the certificate.&lt;/p&gt;
--- @param CertificateWallet [CertificateWallet] &lt;p&gt;The location of the imported Oracle Wallet certificate for use with SSL.&lt;/p&gt;
--- @param ValidToDate [TStamp] &lt;p&gt;The final date that the certificate is valid.&lt;/p&gt;
--- @param KeyLength [IntegerOptional] &lt;p&gt;The key length of the cryptographic algorithm being used.&lt;/p&gt;
--- @param CertificateIdentifier [String] &lt;p&gt;The customer-assigned name of the certificate. Valid characters are A-z and 0-9.&lt;/p&gt;
--- @param SigningAlgorithm [String] &lt;p&gt;The signing algorithm for the certificate.&lt;/p&gt;
--- @param ValidFromDate [TStamp] &lt;p&gt;The beginning date that the certificate is valid.&lt;/p&gt;
+-- <p>The SSL certificate that can be used to encrypt connections between the endpoints and the replication instance.</p>
+-- @param CertificateArn [String] <p>The Amazon Resource Name (ARN) for the certificate.</p>
+-- @param CertificateCreationDate [TStamp] <p>The date that the certificate was created.</p>
+-- @param CertificatePem [String] <p>The contents of the .pem X.509 certificate file for the certificate.</p>
+-- @param CertificateOwner [String] <p>The owner of the certificate.</p>
+-- @param CertificateWallet [CertificateWallet] <p>The location of the imported Oracle Wallet certificate for use with SSL.</p>
+-- @param ValidToDate [TStamp] <p>The final date that the certificate is valid.</p>
+-- @param KeyLength [IntegerOptional] <p>The key length of the cryptographic algorithm being used.</p>
+-- @param CertificateIdentifier [String] <p>The customer-assigned name of the certificate. Valid characters are A-z and 0-9.</p>
+-- @param SigningAlgorithm [String] <p>The signing algorithm for the certificate.</p>
+-- @param ValidFromDate [TStamp] <p>The beginning date that the certificate is valid.</p>
 function M.Certificate(CertificateArn, CertificateCreationDate, CertificatePem, CertificateOwner, CertificateWallet, ValidToDate, KeyLength, CertificateIdentifier, SigningAlgorithm, ValidFromDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Certificate")
 	local t = { 
@@ -1882,9 +1882,9 @@ function M.AssertDescribeOrderableReplicationInstancesMessage(struct)
 end
 
 --- Create a structure of type DescribeOrderableReplicationInstancesMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
 function M.DescribeOrderableReplicationInstancesMessage(Marker, MaxRecords, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrderableReplicationInstancesMessage")
 	local t = { 
@@ -1910,11 +1910,11 @@ function M.AssertDescribeEventSubscriptionsMessage(struct)
 end
 
 --- Create a structure of type DescribeEventSubscriptionsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Filters applied to the action.&lt;/p&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the AWS DMS event subscription to be described.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>Filters applied to the action.</p>
+-- @param SubscriptionName [String] <p>The name of the AWS DMS event subscription to be described.</p>
 function M.DescribeEventSubscriptionsMessage(Marker, MaxRecords, Filters, SubscriptionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventSubscriptionsMessage")
 	local t = { 
@@ -1940,9 +1940,9 @@ function M.AssertDescribeEventsResponse(struct)
 end
 
 --- Create a structure of type DescribeEventsResponse
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param Events [EventList] &lt;p&gt;The events described.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param Events [EventList] <p>The events described.</p>
 function M.DescribeEventsResponse(Marker, Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsResponse")
 	local t = { 
@@ -1966,8 +1966,8 @@ function M.AssertDeleteReplicationInstanceMessage(struct)
 end
 
 --- Create a structure of type DeleteReplicationInstanceMessage
--- &lt;p/&gt;
--- @param ReplicationInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance to be deleted.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance to be deleted.</p>
 -- Required parameter: ReplicationInstanceArn
 function M.DeleteReplicationInstanceMessage(ReplicationInstanceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationInstanceMessage")
@@ -1991,8 +1991,8 @@ function M.AssertDeleteEndpointMessage(struct)
 end
 
 --- Create a structure of type DeleteEndpointMessage
--- &lt;p/&gt;
--- @param EndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
+-- <p/>
+-- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
 -- Required parameter: EndpointArn
 function M.DeleteEndpointMessage(EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEndpointMessage")
@@ -2016,9 +2016,9 @@ function M.AssertEventCategoryGroup(struct)
 end
 
 --- Create a structure of type EventCategoryGroup
--- &lt;p/&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt; A list of event categories for a &lt;code&gt;SourceType&lt;/code&gt; that you want to subscribe to. &lt;/p&gt;
--- @param SourceType [String] &lt;p&gt; The type of AWS DMS resource that generates events. &lt;/p&gt; &lt;p&gt;Valid values: replication-instance | replication-server | security-group | migration-task&lt;/p&gt;
+-- <p/>
+-- @param EventCategories [EventCategoriesList] <p> A list of event categories for a <code>SourceType</code> that you want to subscribe to. </p>
+-- @param SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
 function M.EventCategoryGroup(EventCategories, SourceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventCategoryGroup")
 	local t = { 
@@ -2043,10 +2043,10 @@ function M.AssertSupportedEndpointType(struct)
 end
 
 --- Create a structure of type SupportedEndpointType
--- &lt;p/&gt;
--- @param EngineName [String] &lt;p&gt;The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.&lt;/p&gt;
--- @param SupportsCDC [Boolean] &lt;p&gt;Indicates if Change Data Capture (CDC) is supported.&lt;/p&gt;
--- @param EndpointType [ReplicationEndpointTypeValue] &lt;p&gt;The type of endpoint.&lt;/p&gt;
+-- <p/>
+-- @param EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- @param SupportsCDC [Boolean] <p>Indicates if Change Data Capture (CDC) is supported.</p>
+-- @param EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
 function M.SupportedEndpointType(EngineName, SupportsCDC, EndpointType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SupportedEndpointType")
 	local t = { 
@@ -2071,7 +2071,7 @@ end
 
 --- Create a structure of type DeleteCertificateResponse
 --  
--- @param Certificate [Certificate] &lt;p&gt;The Secure Sockets Layer (SSL) certificate.&lt;/p&gt;
+-- @param Certificate [Certificate] <p>The Secure Sockets Layer (SSL) certificate.</p>
 function M.DeleteCertificateResponse(Certificate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCertificateResponse")
 	local t = { 
@@ -2093,8 +2093,8 @@ function M.AssertDescribeEventCategoriesResponse(struct)
 end
 
 --- Create a structure of type DescribeEventCategoriesResponse
--- &lt;p/&gt;
--- @param EventCategoryGroupList [EventCategoryGroupList] &lt;p&gt;A list of event categories.&lt;/p&gt;
+-- <p/>
+-- @param EventCategoryGroupList [EventCategoryGroupList] <p>A list of event categories.</p>
 function M.DescribeEventCategoriesResponse(EventCategoryGroupList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventCategoriesResponse")
 	local t = { 
@@ -2116,8 +2116,8 @@ function M.AssertDeleteReplicationInstanceResponse(struct)
 end
 
 --- Create a structure of type DeleteReplicationInstanceResponse
--- &lt;p/&gt;
--- @param ReplicationInstance [ReplicationInstance] &lt;p&gt;The replication instance that was deleted.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationInstance [ReplicationInstance] <p>The replication instance that was deleted.</p>
 function M.DeleteReplicationInstanceResponse(ReplicationInstance, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationInstanceResponse")
 	local t = { 
@@ -2140,8 +2140,8 @@ function M.AssertListTagsForResourceMessage(struct)
 end
 
 --- Create a structure of type ListTagsForResourceMessage
--- &lt;p/&gt;
--- @param ResourceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the AWS DMS resource.&lt;/p&gt;
+-- <p/>
+-- @param ResourceArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the AWS DMS resource.</p>
 -- Required parameter: ResourceArn
 function M.ListTagsForResourceMessage(ResourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceMessage")
@@ -2165,8 +2165,8 @@ function M.AssertDeleteReplicationTaskMessage(struct)
 end
 
 --- Create a structure of type DeleteReplicationTaskMessage
--- &lt;p/&gt;
--- @param ReplicationTaskArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication task to be deleted.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task to be deleted.</p>
 -- Required parameter: ReplicationTaskArn
 function M.DeleteReplicationTaskMessage(ReplicationTaskArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationTaskMessage")
@@ -2191,10 +2191,10 @@ function M.AssertDescribeEndpointsMessage(struct)
 end
 
 --- Create a structure of type DescribeEndpointsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Filters applied to the describe action.&lt;/p&gt; &lt;p&gt;Valid filter names: endpoint-arn | endpoint-type | endpoint-id | engine-name&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: endpoint-arn | endpoint-type | endpoint-id | engine-name</p>
 function M.DescribeEndpointsMessage(Marker, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointsMessage")
 	local t = { 
@@ -2221,9 +2221,9 @@ function M.AssertFilter(struct)
 end
 
 --- Create a structure of type Filter
--- &lt;p/&gt;
--- @param Values [FilterValueList] &lt;p&gt;The filter value.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the filter.&lt;/p&gt;
+-- <p/>
+-- @param Values [FilterValueList] <p>The filter value.</p>
+-- @param Name [String] <p>The name of the filter.</p>
 -- Required parameter: Name
 -- Required parameter: Values
 function M.Filter(Values, Name, ...)
@@ -2253,13 +2253,13 @@ function M.AssertConnection(struct)
 end
 
 --- Create a structure of type Connection
--- &lt;p/&gt;
--- @param Status [String] &lt;p&gt;The connection status.&lt;/p&gt;
--- @param ReplicationInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance.&lt;/p&gt;
--- @param LastFailureMessage [String] &lt;p&gt;The error message when the connection last failed.&lt;/p&gt;
--- @param EndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
--- @param ReplicationInstanceIdentifier [String] &lt;p&gt;The replication instance identifier. This parameter is stored as a lowercase string.&lt;/p&gt;
--- @param EndpointIdentifier [String] &lt;p&gt;The identifier of the endpoint. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.&lt;/p&gt;
+-- <p/>
+-- @param Status [String] <p>The connection status.</p>
+-- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param LastFailureMessage [String] <p>The error message when the connection last failed.</p>
+-- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p>
+-- @param EndpointIdentifier [String] <p>The identifier of the endpoint. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
 function M.Connection(Status, ReplicationInstanceArn, LastFailureMessage, EndpointArn, ReplicationInstanceIdentifier, EndpointIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Connection")
 	local t = { 
@@ -2287,9 +2287,9 @@ function M.AssertDescribeEndpointTypesResponse(struct)
 end
 
 --- Create a structure of type DescribeEndpointTypesResponse
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param SupportedEndpointTypes [SupportedEndpointTypeList] &lt;p&gt;The type of endpoints that are supported.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param SupportedEndpointTypes [SupportedEndpointTypeList] <p>The type of endpoints that are supported.</p>
 function M.DescribeEndpointTypesResponse(Marker, SupportedEndpointTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointTypesResponse")
 	local t = { 
@@ -2312,8 +2312,8 @@ function M.AssertUpgradeDependencyFailureFault(struct)
 end
 
 --- Create a structure of type UpgradeDependencyFailureFault
--- &lt;p&gt;An upgrade dependency is preventing the database migration.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>An upgrade dependency is preventing the database migration.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.UpgradeDependencyFailureFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpgradeDependencyFailureFault")
 	local t = { 
@@ -2338,9 +2338,9 @@ end
 
 --- Create a structure of type DescribeCertificatesMessage
 --  
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 10&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Filters applied to the certificate described in the form of key-value pairs.&lt;/p&gt;
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 10</p>
+-- @param Filters [FilterList] <p>Filters applied to the certificate described in the form of key-value pairs.</p>
 function M.DescribeCertificatesMessage(Marker, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificatesMessage")
 	local t = { 
@@ -2367,11 +2367,11 @@ function M.AssertReplicationPendingModifiedValues(struct)
 end
 
 --- Create a structure of type ReplicationPendingModifiedValues
--- &lt;p/&gt;
--- @param ReplicationInstanceClass [String] &lt;p&gt;The compute and memory capacity of the replication instance.&lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge &lt;/code&gt; &lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The engine version number of the replication instance.&lt;/p&gt;
--- @param AllocatedStorage [IntegerOptional] &lt;p&gt;The amount of storage (in gigabytes) that is allocated for the replication instance.&lt;/p&gt;
--- @param MultiAZ [BooleanOptional] &lt;p&gt; Specifies if the replication instance is a Multi-AZ deployment. You cannot set the &lt;code&gt;AvailabilityZone&lt;/code&gt; parameter if the Multi-AZ parameter is set to &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
+-- <p/>
+-- @param ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- @param EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- @param AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- @param MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
 function M.ReplicationPendingModifiedValues(ReplicationInstanceClass, EngineVersion, AllocatedStorage, MultiAZ, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationPendingModifiedValues")
 	local t = { 
@@ -2398,10 +2398,10 @@ function M.AssertDescribeReplicationTasksMessage(struct)
 end
 
 --- Create a structure of type DescribeReplicationTasksMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Filters applied to the describe action.&lt;/p&gt; &lt;p&gt;Valid filter names: replication-task-arn | replication-task-id | migration-type | endpoint-arn | replication-instance-arn&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-task-arn | replication-task-id | migration-type | endpoint-arn | replication-instance-arn</p>
 function M.DescribeReplicationTasksMessage(Marker, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationTasksMessage")
 	local t = { 
@@ -2439,20 +2439,20 @@ function M.AssertCreateReplicationInstanceMessage(struct)
 end
 
 --- Create a structure of type CreateReplicationInstanceMessage
--- &lt;p/&gt;
--- @param MultiAZ [BooleanOptional] &lt;p&gt; Specifies if the replication instance is a Multi-AZ deployment. You cannot set the &lt;code&gt;AvailabilityZone&lt;/code&gt; parameter if the Multi-AZ parameter is set to &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The EC2 Availability Zone that the replication instance will be created in.&lt;/p&gt; &lt;p&gt;Default: A random, system-chosen Availability Zone in the endpoint's region.&lt;/p&gt; &lt;p&gt; Example: &lt;code&gt;us-east-1d&lt;/code&gt; &lt;/p&gt;
--- @param PubliclyAccessible [BooleanOptional] &lt;p&gt; Specifies the accessibility options for the replication instance. A value of &lt;code&gt;true&lt;/code&gt; represents an instance with a public IP address. A value of &lt;code&gt;false&lt;/code&gt; represents an instance with a private IP address. The default value is &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;Tags to be associated with the replication instance.&lt;/p&gt;
--- @param ReplicationInstanceClass [String] &lt;p&gt;The compute and memory capacity of the replication instance as specified by the replication instance class.&lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge &lt;/code&gt; &lt;/p&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt; Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. &lt;/p&gt;
--- @param AutoMinorVersionUpgrade [BooleanOptional] &lt;p&gt;Indicates that minor engine upgrades will be applied automatically to the replication instance during the maintenance window.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The KMS key identifier that will be used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.&lt;/p&gt;
--- @param AllocatedStorage [IntegerOptional] &lt;p&gt;The amount of storage (in gigabytes) to be initially allocated for the replication instance.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The engine version number of the replication instance.&lt;/p&gt;
--- @param ReplicationInstanceIdentifier [String] &lt;p&gt;The replication instance identifier. This parameter is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;myrepinstance&lt;/code&gt; &lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).&lt;/p&gt; &lt;p&gt; Format: &lt;code&gt;ddd:hh24:mi-ddd:hh24:mi&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week.&lt;/p&gt; &lt;p&gt;Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun&lt;/p&gt; &lt;p&gt;Constraints: Minimum 30-minute window.&lt;/p&gt;
--- @param ReplicationSubnetGroupIdentifier [String] &lt;p&gt;A subnet group to associate with the replication instance.&lt;/p&gt;
+-- <p/>
+-- @param MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- @param AvailabilityZone [String] <p>The EC2 Availability Zone that the replication instance will be created in.</p> <p>Default: A random, system-chosen Availability Zone in the endpoint's region.</p> <p> Example: <code>us-east-1d</code> </p>
+-- @param PubliclyAccessible [BooleanOptional] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
+-- @param Tags [TagList] <p>Tags to be associated with the replication instance.</p>
+-- @param ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance as specified by the replication instance class.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p> Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. </p>
+-- @param AutoMinorVersionUpgrade [BooleanOptional] <p>Indicates that minor engine upgrades will be applied automatically to the replication instance during the maintenance window.</p> <p>Default: <code>true</code> </p>
+-- @param KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- @param AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be initially allocated for the replication instance.</p>
+-- @param EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- @param ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
+-- @param PreferredMaintenanceWindow [String] <p>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week.</p> <p>Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute window.</p>
+-- @param ReplicationSubnetGroupIdentifier [String] <p>A subnet group to associate with the replication instance.</p>
 -- Required parameter: ReplicationInstanceIdentifier
 -- Required parameter: ReplicationInstanceClass
 function M.CreateReplicationInstanceMessage(MultiAZ, AvailabilityZone, PubliclyAccessible, Tags, ReplicationInstanceClass, VpcSecurityGroupIds, AutoMinorVersionUpgrade, KmsKeyId, AllocatedStorage, EngineVersion, ReplicationInstanceIdentifier, PreferredMaintenanceWindow, ReplicationSubnetGroupIdentifier, ...)
@@ -2488,8 +2488,8 @@ function M.AssertModifyEndpointResponse(struct)
 end
 
 --- Create a structure of type ModifyEndpointResponse
--- &lt;p/&gt;
--- @param Endpoint [Endpoint] &lt;p&gt;The modified endpoint.&lt;/p&gt;
+-- <p/>
+-- @param Endpoint [Endpoint] <p>The modified endpoint.</p>
 function M.ModifyEndpointResponse(Endpoint, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEndpointResponse")
 	local t = { 
@@ -2526,22 +2526,22 @@ function M.AssertModifyEndpointMessage(struct)
 end
 
 --- Create a structure of type ModifyEndpointMessage
--- &lt;p/&gt;
--- @param Username [String] &lt;p&gt;The user name to be used to login to the endpoint database.&lt;/p&gt;
--- @param CertificateArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the certificate used for SSL connection.&lt;/p&gt;
--- @param MongoDbSettings [MongoDbSettings] &lt;p&gt;Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the &lt;b&gt;Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service&lt;/b&gt; section at &lt;a href=&quot;http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html&quot;&gt; Using Amazon S3 as a Target for AWS Database Migration Service&lt;/a&gt;. &lt;/p&gt;
--- @param S3Settings [S3Settings] &lt;p&gt;Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the &lt;b&gt;Extra Connection Attributes&lt;/b&gt; section at &lt;a href=&quot;http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html&quot;&gt; Using Amazon S3 as a Target for AWS Database Migration Service&lt;/a&gt;. &lt;/p&gt;
--- @param ServerName [String] &lt;p&gt;The name of the server where the endpoint database resides.&lt;/p&gt;
--- @param EndpointType [ReplicationEndpointTypeValue] &lt;p&gt;The type of endpoint.&lt;/p&gt;
--- @param EndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
--- @param ExtraConnectionAttributes [String] &lt;p&gt;Additional attributes associated with the connection.&lt;/p&gt;
--- @param DatabaseName [String] &lt;p&gt;The name of the endpoint database.&lt;/p&gt;
--- @param DynamoDbSettings [DynamoDbSettings] &lt;p&gt;Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the &lt;b&gt;Using Object Mapping to Migrate Data to DynamoDB&lt;/b&gt; section at &lt;a href=&quot;http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html&quot;&gt; Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service&lt;/a&gt;. &lt;/p&gt;
--- @param SslMode [DmsSslModeValue] &lt;p&gt;The SSL mode to be used.&lt;/p&gt; &lt;p&gt;SSL mode can be one of four values: none, require, verify-ca, verify-full. &lt;/p&gt; &lt;p&gt;The default value is none.&lt;/p&gt;
--- @param EngineName [String] &lt;p&gt;The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.&lt;/p&gt;
--- @param Password [SecretString] &lt;p&gt;The password to be used to login to the endpoint database.&lt;/p&gt;
--- @param EndpointIdentifier [String] &lt;p&gt;The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port used by the endpoint database.&lt;/p&gt;
+-- <p/>
+-- @param Username [String] <p>The user name to be used to login to the endpoint database.</p>
+-- @param CertificateArn [String] <p>The Amazon Resource Name (ARN) of the certificate used for SSL connection.</p>
+-- @param MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- @param S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- @param ServerName [String] <p>The name of the server where the endpoint database resides.</p>
+-- @param EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
+-- @param DatabaseName [String] <p>The name of the endpoint database.</p>
+-- @param DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
+-- @param SslMode [DmsSslModeValue] <p>The SSL mode to be used.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
+-- @param EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.</p>
+-- @param Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
+-- @param EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+-- @param Port [IntegerOptional] <p>The port used by the endpoint database.</p>
 -- Required parameter: EndpointArn
 function M.ModifyEndpointMessage(Username, CertificateArn, MongoDbSettings, S3Settings, ServerName, EndpointType, EndpointArn, ExtraConnectionAttributes, DatabaseName, DynamoDbSettings, SslMode, EngineName, Password, EndpointIdentifier, Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEndpointMessage")
@@ -2581,9 +2581,9 @@ function M.AssertRefreshSchemasMessage(struct)
 end
 
 --- Create a structure of type RefreshSchemasMessage
--- &lt;p/&gt;
--- @param EndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
--- @param ReplicationInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance.&lt;/p&gt;
+-- <p/>
+-- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
 -- Required parameter: EndpointArn
 -- Required parameter: ReplicationInstanceArn
 function M.RefreshSchemasMessage(EndpointArn, ReplicationInstanceArn, ...)
@@ -2608,8 +2608,8 @@ function M.AssertStopReplicationTaskResponse(struct)
 end
 
 --- Create a structure of type StopReplicationTaskResponse
--- &lt;p/&gt;
--- @param ReplicationTask [ReplicationTask] &lt;p&gt;The replication task stopped.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTask [ReplicationTask] <p>The replication task stopped.</p>
 function M.StopReplicationTaskResponse(ReplicationTask, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopReplicationTaskResponse")
 	local t = { 
@@ -2631,8 +2631,8 @@ function M.AssertKMSKeyNotAccessibleFault(struct)
 end
 
 --- Create a structure of type KMSKeyNotAccessibleFault
--- &lt;p&gt;AWS DMS cannot access the KMS key.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>AWS DMS cannot access the KMS key.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.KMSKeyNotAccessibleFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KMSKeyNotAccessibleFault")
 	local t = { 
@@ -2654,8 +2654,8 @@ function M.AssertDescribeAccountAttributesResponse(struct)
 end
 
 --- Create a structure of type DescribeAccountAttributesResponse
--- &lt;p/&gt;
--- @param AccountQuotas [AccountQuotaList] &lt;p&gt;Account quota information.&lt;/p&gt;
+-- <p/>
+-- @param AccountQuotas [AccountQuotaList] <p>Account quota information.</p>
 function M.DescribeAccountAttributesResponse(AccountQuotas, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountAttributesResponse")
 	local t = { 
@@ -2680,10 +2680,10 @@ function M.AssertDescribeSchemasMessage(struct)
 end
 
 --- Create a structure of type DescribeSchemasMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param EndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
 -- Required parameter: EndpointArn
 function M.DescribeSchemasMessage(Marker, MaxRecords, EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSchemasMessage")
@@ -2709,7 +2709,7 @@ end
 
 --- Create a structure of type ReloadTablesResponse
 --  
--- @param ReplicationTaskArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication task. &lt;/p&gt;
+-- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task. </p>
 function M.ReloadTablesResponse(ReplicationTaskArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReloadTablesResponse")
 	local t = { 
@@ -2731,8 +2731,8 @@ function M.AssertSNSNoAuthorizationFault(struct)
 end
 
 --- Create a structure of type SNSNoAuthorizationFault
--- &lt;p&gt;You are not authorized for the SNS subscription.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>You are not authorized for the SNS subscription.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.SNSNoAuthorizationFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSNoAuthorizationFault")
 	local t = { 
@@ -2754,8 +2754,8 @@ function M.AssertCreateReplicationInstanceResponse(struct)
 end
 
 --- Create a structure of type CreateReplicationInstanceResponse
--- &lt;p/&gt;
--- @param ReplicationInstance [ReplicationInstance] &lt;p&gt;The replication instance that was created.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationInstance [ReplicationInstance] <p>The replication instance that was created.</p>
 function M.CreateReplicationInstanceResponse(ReplicationInstance, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationInstanceResponse")
 	local t = { 
@@ -2777,8 +2777,8 @@ function M.AssertListTagsForResourceResponse(struct)
 end
 
 --- Create a structure of type ListTagsForResourceResponse
--- &lt;p/&gt;
--- @param TagList [TagList] &lt;p&gt;A list of tags for the resource.&lt;/p&gt;
+-- <p/>
+-- @param TagList [TagList] <p>A list of tags for the resource.</p>
 function M.ListTagsForResourceResponse(TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
 	local t = { 
@@ -2801,8 +2801,8 @@ function M.AssertDeleteEventSubscriptionMessage(struct)
 end
 
 --- Create a structure of type DeleteEventSubscriptionMessage
--- &lt;p/&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the DMS event notification subscription to be deleted.&lt;/p&gt;
+-- <p/>
+-- @param SubscriptionName [String] <p>The name of the DMS event notification subscription to be deleted.</p>
 -- Required parameter: SubscriptionName
 function M.DeleteEventSubscriptionMessage(SubscriptionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEventSubscriptionMessage")
@@ -2825,8 +2825,8 @@ function M.AssertSNSInvalidTopicFault(struct)
 end
 
 --- Create a structure of type SNSInvalidTopicFault
--- &lt;p&gt;The SNS topic is invalid.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>The SNS topic is invalid.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.SNSInvalidTopicFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSInvalidTopicFault")
 	local t = { 
@@ -2861,21 +2861,21 @@ function M.AssertReplicationTask(struct)
 end
 
 --- Create a structure of type ReplicationTask
--- &lt;p/&gt;
--- @param SourceEndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
--- @param ReplicationTaskIdentifier [String] &lt;p&gt;The replication task identifier.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ReplicationInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance.&lt;/p&gt;
--- @param TableMappings [String] &lt;p&gt;Table mappings specified in the task.&lt;/p&gt;
--- @param ReplicationTaskStartDate [TStamp] &lt;p&gt;The date the replication task is scheduled to start.&lt;/p&gt;
--- @param ReplicationTaskStats [ReplicationTaskStats] &lt;p&gt;The statistics for the task, including elapsed time, tables loaded, and table errors.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the replication task.&lt;/p&gt;
--- @param ReplicationTaskArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication task.&lt;/p&gt;
--- @param LastFailureMessage [String] &lt;p&gt;The last error (failure) message generated for the replication instance.&lt;/p&gt;
--- @param StopReason [String] &lt;p&gt;The reason the replication task was stopped.&lt;/p&gt;
--- @param ReplicationTaskCreationDate [TStamp] &lt;p&gt;The date the replication task was created.&lt;/p&gt;
--- @param MigrationType [MigrationTypeValue] &lt;p&gt;The type of migration.&lt;/p&gt;
--- @param TargetEndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
--- @param ReplicationTaskSettings [String] &lt;p&gt;The settings for the replication task.&lt;/p&gt;
+-- <p/>
+-- @param SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param TableMappings [String] <p>Table mappings specified in the task.</p>
+-- @param ReplicationTaskStartDate [TStamp] <p>The date the replication task is scheduled to start.</p>
+-- @param ReplicationTaskStats [ReplicationTaskStats] <p>The statistics for the task, including elapsed time, tables loaded, and table errors.</p>
+-- @param Status [String] <p>The status of the replication task.</p>
+-- @param ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- @param LastFailureMessage [String] <p>The last error (failure) message generated for the replication instance.</p>
+-- @param StopReason [String] <p>The reason the replication task was stopped.</p>
+-- @param ReplicationTaskCreationDate [TStamp] <p>The date the replication task was created.</p>
+-- @param MigrationType [MigrationTypeValue] <p>The type of migration.</p>
+-- @param TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param ReplicationTaskSettings [String] <p>The settings for the replication task.</p>
 function M.ReplicationTask(SourceEndpointArn, ReplicationTaskIdentifier, ReplicationInstanceArn, TableMappings, ReplicationTaskStartDate, ReplicationTaskStats, Status, ReplicationTaskArn, LastFailureMessage, StopReason, ReplicationTaskCreationDate, MigrationType, TargetEndpointArn, ReplicationTaskSettings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationTask")
 	local t = { 
@@ -2926,24 +2926,24 @@ function M.AssertEndpoint(struct)
 end
 
 --- Create a structure of type Endpoint
--- &lt;p/&gt;
--- @param Username [String] &lt;p&gt;The user name used to connect to the endpoint.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the endpoint.&lt;/p&gt;
--- @param MongoDbSettings [MongoDbSettings] &lt;p&gt;The settings for the MongoDB source endpoint. For more information, see the &lt;code&gt;MongoDbSettings&lt;/code&gt; structure.&lt;/p&gt;
--- @param S3Settings [S3Settings] &lt;p&gt;The settings for the S3 target endpoint. For more information, see the &lt;code&gt;S3Settings&lt;/code&gt; structure.&lt;/p&gt;
--- @param EndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
--- @param ServerName [String] &lt;p&gt;The name of the server at the endpoint.&lt;/p&gt;
--- @param CertificateArn [String] &lt;p&gt;The Amazon Resource Name (ARN) used for SSL connection to the endpoint.&lt;/p&gt;
--- @param EndpointType [ReplicationEndpointTypeValue] &lt;p&gt;The type of endpoint.&lt;/p&gt;
--- @param ExternalId [String] &lt;p&gt; Value returned by a call to CreateEndpoint that can be used for cross-account validation. Use it on a subsequent call to CreateEndpoint to create the endpoint with a cross-account. &lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.&lt;/p&gt;
--- @param ExtraConnectionAttributes [String] &lt;p&gt;Additional connection attributes used to connect to the endpoint.&lt;/p&gt;
--- @param DatabaseName [String] &lt;p&gt;The name of the database at the endpoint.&lt;/p&gt;
--- @param DynamoDbSettings [DynamoDbSettings] &lt;p&gt;The settings for the target DynamoDB database. For more information, see the &lt;code&gt;DynamoDBSettings&lt;/code&gt; structure.&lt;/p&gt;
--- @param SslMode [DmsSslModeValue] &lt;p&gt;The SSL mode used to connect to the endpoint.&lt;/p&gt; &lt;p&gt;SSL mode can be one of four values: none, require, verify-ca, verify-full. &lt;/p&gt; &lt;p&gt;The default value is none.&lt;/p&gt;
--- @param EngineName [String] &lt;p&gt;The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.&lt;/p&gt;
--- @param EndpointIdentifier [String] &lt;p&gt;The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port value used to access the endpoint.&lt;/p&gt;
+-- <p/>
+-- @param Username [String] <p>The user name used to connect to the endpoint.</p>
+-- @param Status [String] <p>The status of the endpoint.</p>
+-- @param MongoDbSettings [MongoDbSettings] <p>The settings for the MongoDB source endpoint. For more information, see the <code>MongoDbSettings</code> structure.</p>
+-- @param S3Settings [S3Settings] <p>The settings for the S3 target endpoint. For more information, see the <code>S3Settings</code> structure.</p>
+-- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param ServerName [String] <p>The name of the server at the endpoint.</p>
+-- @param CertificateArn [String] <p>The Amazon Resource Name (ARN) used for SSL connection to the endpoint.</p>
+-- @param EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- @param ExternalId [String] <p> Value returned by a call to CreateEndpoint that can be used for cross-account validation. Use it on a subsequent call to CreateEndpoint to create the endpoint with a cross-account. </p>
+-- @param KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- @param ExtraConnectionAttributes [String] <p>Additional connection attributes used to connect to the endpoint.</p>
+-- @param DatabaseName [String] <p>The name of the database at the endpoint.</p>
+-- @param DynamoDbSettings [DynamoDbSettings] <p>The settings for the target DynamoDB database. For more information, see the <code>DynamoDBSettings</code> structure.</p>
+-- @param SslMode [DmsSslModeValue] <p>The SSL mode used to connect to the endpoint.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
+-- @param EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- @param EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+-- @param Port [IntegerOptional] <p>The port value used to access the endpoint.</p>
 function M.Endpoint(Username, Status, MongoDbSettings, S3Settings, EndpointArn, ServerName, CertificateArn, EndpointType, ExternalId, KmsKeyId, ExtraConnectionAttributes, DatabaseName, DynamoDbSettings, SslMode, EngineName, EndpointIdentifier, Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Endpoint")
 	local t = { 
@@ -2982,7 +2982,7 @@ end
 
 --- Create a structure of type ImportCertificateResponse
 --  
--- @param Certificate [Certificate] &lt;p&gt;The certificate to be uploaded.&lt;/p&gt;
+-- @param Certificate [Certificate] <p>The certificate to be uploaded.</p>
 function M.ImportCertificateResponse(Certificate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportCertificateResponse")
 	local t = { 
@@ -3022,23 +3022,23 @@ function M.AssertCreateEndpointMessage(struct)
 end
 
 --- Create a structure of type CreateEndpointMessage
--- &lt;p/&gt;
--- @param Username [String] &lt;p&gt;The user name to be used to login to the endpoint database.&lt;/p&gt;
--- @param CertificateArn [String] &lt;p&gt;The Amazon Resource Number (ARN) for the certificate.&lt;/p&gt;
--- @param MongoDbSettings [MongoDbSettings] &lt;p&gt;Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the &lt;b&gt;Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service&lt;/b&gt; section at &lt;a href=&quot;http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html&quot;&gt; Using Amazon S3 as a Target for AWS Database Migration Service&lt;/a&gt;. &lt;/p&gt;
--- @param S3Settings [S3Settings] &lt;p&gt;Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the &lt;b&gt;Extra Connection Attributes&lt;/b&gt; section at &lt;a href=&quot;http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html&quot;&gt; Using Amazon S3 as a Target for AWS Database Migration Service&lt;/a&gt;. &lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;Tags to be added to the endpoint.&lt;/p&gt;
--- @param ServerName [String] &lt;p&gt;The name of the server where the endpoint database resides.&lt;/p&gt;
--- @param EndpointType [ReplicationEndpointTypeValue] &lt;p&gt;The type of endpoint.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.&lt;/p&gt;
--- @param ExtraConnectionAttributes [String] &lt;p&gt;Additional attributes associated with the connection.&lt;/p&gt;
--- @param DatabaseName [String] &lt;p&gt;The name of the endpoint database.&lt;/p&gt;
--- @param DynamoDbSettings [DynamoDbSettings] &lt;p&gt;Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the &lt;b&gt;Using Object Mapping to Migrate Data to DynamoDB&lt;/b&gt; section at &lt;a href=&quot;http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html&quot;&gt; Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service&lt;/a&gt;. &lt;/p&gt;
--- @param SslMode [DmsSslModeValue] &lt;p&gt;The SSL mode to use for the SSL connection.&lt;/p&gt; &lt;p&gt;SSL mode can be one of four values: none, require, verify-ca, verify-full. &lt;/p&gt; &lt;p&gt;The default value is none.&lt;/p&gt;
--- @param EngineName [String] &lt;p&gt;The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.&lt;/p&gt;
--- @param Password [SecretString] &lt;p&gt;The password to be used to login to the endpoint database.&lt;/p&gt;
--- @param EndpointIdentifier [String] &lt;p&gt;The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port used by the endpoint database.&lt;/p&gt;
+-- <p/>
+-- @param Username [String] <p>The user name to be used to login to the endpoint database.</p>
+-- @param CertificateArn [String] <p>The Amazon Resource Number (ARN) for the certificate.</p>
+-- @param MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- @param S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- @param Tags [TagList] <p>Tags to be added to the endpoint.</p>
+-- @param ServerName [String] <p>The name of the server where the endpoint database resides.</p>
+-- @param EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- @param KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- @param ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
+-- @param DatabaseName [String] <p>The name of the endpoint database.</p>
+-- @param DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
+-- @param SslMode [DmsSslModeValue] <p>The SSL mode to use for the SSL connection.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
+-- @param EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- @param Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
+-- @param EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+-- @param Port [IntegerOptional] <p>The port used by the endpoint database.</p>
 -- Required parameter: EndpointIdentifier
 -- Required parameter: EndpointType
 -- Required parameter: EngineName
@@ -3081,9 +3081,9 @@ function M.AssertRemoveTagsFromResourceMessage(struct)
 end
 
 --- Create a structure of type RemoveTagsFromResourceMessage
--- &lt;p/&gt;
--- @param ResourceArn [String] &lt;p&gt;&amp;gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.&lt;/p&gt;
--- @param TagKeys [KeyList] &lt;p&gt;The tag key (name) of the tag to be removed.&lt;/p&gt;
+-- <p/>
+-- @param ResourceArn [String] <p>&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.</p>
+-- @param TagKeys [KeyList] <p>The tag key (name) of the tag to be removed.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: TagKeys
 function M.RemoveTagsFromResourceMessage(ResourceArn, TagKeys, ...)
@@ -3114,14 +3114,14 @@ function M.AssertOrderableReplicationInstance(struct)
 end
 
 --- Create a structure of type OrderableReplicationInstance
--- &lt;p/&gt;
--- @param StorageType [String] &lt;p&gt;The type of storage used by the replication instance.&lt;/p&gt;
--- @param ReplicationInstanceClass [String] &lt;p&gt;The compute and memory capacity of the replication instance.&lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge &lt;/code&gt; &lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The version of the replication engine.&lt;/p&gt;
--- @param IncludedAllocatedStorage [Integer] &lt;p&gt;The amount of storage (in gigabytes) that is allocated for the replication instance.&lt;/p&gt;
--- @param DefaultAllocatedStorage [Integer] &lt;p&gt;The default amount of storage (in gigabytes) that is allocated for the replication instance.&lt;/p&gt;
--- @param MinAllocatedStorage [Integer] &lt;p&gt;The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.&lt;/p&gt;
--- @param MaxAllocatedStorage [Integer] &lt;p&gt;The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.&lt;/p&gt;
+-- <p/>
+-- @param StorageType [String] <p>The type of storage used by the replication instance.</p>
+-- @param ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- @param EngineVersion [String] <p>The version of the replication engine.</p>
+-- @param IncludedAllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- @param DefaultAllocatedStorage [Integer] <p>The default amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- @param MinAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
+-- @param MaxAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
 function M.OrderableReplicationInstance(StorageType, ReplicationInstanceClass, EngineVersion, IncludedAllocatedStorage, DefaultAllocatedStorage, MinAllocatedStorage, MaxAllocatedStorage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrderableReplicationInstance")
 	local t = { 
@@ -3169,28 +3169,28 @@ function M.AssertReplicationInstance(struct)
 end
 
 --- Create a structure of type ReplicationInstance
--- &lt;p/&gt;
--- @param MultiAZ [Boolean] &lt;p&gt; Specifies if the replication instance is a Multi-AZ deployment. You cannot set the &lt;code&gt;AvailabilityZone&lt;/code&gt; parameter if the Multi-AZ parameter is set to &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The Availability Zone for the instance.&lt;/p&gt;
--- @param ReplicationInstancePrivateIpAddress [String] &lt;p&gt;The private IP address of the replication instance.&lt;/p&gt;
--- @param ReplicationInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance.&lt;/p&gt;
--- @param ReplicationInstancePrivateIpAddresses [ReplicationInstancePrivateIpAddressList] &lt;p&gt;The private IP address of the replication instance.&lt;/p&gt;
--- @param ReplicationInstanceClass [String] &lt;p&gt;The compute and memory capacity of the replication instance.&lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge &lt;/code&gt; &lt;/p&gt;
--- @param ReplicationSubnetGroup [ReplicationSubnetGroup] &lt;p&gt;The subnet group for the replication instance.&lt;/p&gt;
--- @param AutoMinorVersionUpgrade [Boolean] &lt;p&gt;Boolean value indicating if minor version upgrades will be automatically applied to the instance.&lt;/p&gt;
--- @param ReplicationInstanceStatus [String] &lt;p&gt;The status of the replication instance.&lt;/p&gt;
--- @param VpcSecurityGroups [VpcSecurityGroupMembershipList] &lt;p&gt;The VPC security group for the instance.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.&lt;/p&gt;
--- @param InstanceCreateTime [TStamp] &lt;p&gt;The time the replication instance was created.&lt;/p&gt;
--- @param ReplicationInstancePublicIpAddress [String] &lt;p&gt;The public IP address of the replication instance.&lt;/p&gt;
--- @param AllocatedStorage [Integer] &lt;p&gt;The amount of storage (in gigabytes) that is allocated for the replication instance.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The engine version number of the replication instance.&lt;/p&gt;
--- @param ReplicationInstancePublicIpAddresses [ReplicationInstancePublicIpAddressList] &lt;p&gt;The public IP address of the replication instance.&lt;/p&gt;
--- @param SecondaryAvailabilityZone [String] &lt;p&gt;The availability zone of the standby replication instance in a Multi-AZ deployment.&lt;/p&gt;
--- @param ReplicationInstanceIdentifier [String] &lt;p&gt;The replication instance identifier. This parameter is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;myrepinstance&lt;/code&gt; &lt;/p&gt;
--- @param PubliclyAccessible [Boolean] &lt;p&gt; Specifies the accessibility options for the replication instance. A value of &lt;code&gt;true&lt;/code&gt; represents an instance with a public IP address. A value of &lt;code&gt;false&lt;/code&gt; represents an instance with a private IP address. The default value is &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The maintenance window times for the replication instance.&lt;/p&gt;
--- @param PendingModifiedValues [ReplicationPendingModifiedValues] &lt;p&gt;The pending modification values.&lt;/p&gt;
+-- <p/>
+-- @param MultiAZ [Boolean] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- @param AvailabilityZone [String] <p>The Availability Zone for the instance.</p>
+-- @param ReplicationInstancePrivateIpAddress [String] <p>The private IP address of the replication instance.</p>
+-- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @param ReplicationInstancePrivateIpAddresses [ReplicationInstancePrivateIpAddressList] <p>The private IP address of the replication instance.</p>
+-- @param ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- @param ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The subnet group for the replication instance.</p>
+-- @param AutoMinorVersionUpgrade [Boolean] <p>Boolean value indicating if minor version upgrades will be automatically applied to the instance.</p>
+-- @param ReplicationInstanceStatus [String] <p>The status of the replication instance.</p>
+-- @param VpcSecurityGroups [VpcSecurityGroupMembershipList] <p>The VPC security group for the instance.</p>
+-- @param KmsKeyId [String] <p>The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- @param InstanceCreateTime [TStamp] <p>The time the replication instance was created.</p>
+-- @param ReplicationInstancePublicIpAddress [String] <p>The public IP address of the replication instance.</p>
+-- @param AllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- @param EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- @param ReplicationInstancePublicIpAddresses [ReplicationInstancePublicIpAddressList] <p>The public IP address of the replication instance.</p>
+-- @param SecondaryAvailabilityZone [String] <p>The availability zone of the standby replication instance in a Multi-AZ deployment.</p>
+-- @param ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
+-- @param PubliclyAccessible [Boolean] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
+-- @param PreferredMaintenanceWindow [String] <p>The maintenance window times for the replication instance.</p>
+-- @param PendingModifiedValues [ReplicationPendingModifiedValues] <p>The pending modification values.</p>
 function M.ReplicationInstance(MultiAZ, AvailabilityZone, ReplicationInstancePrivateIpAddress, ReplicationInstanceArn, ReplicationInstancePrivateIpAddresses, ReplicationInstanceClass, ReplicationSubnetGroup, AutoMinorVersionUpgrade, ReplicationInstanceStatus, VpcSecurityGroups, KmsKeyId, InstanceCreateTime, ReplicationInstancePublicIpAddress, AllocatedStorage, EngineVersion, ReplicationInstancePublicIpAddresses, SecondaryAvailabilityZone, ReplicationInstanceIdentifier, PubliclyAccessible, PreferredMaintenanceWindow, PendingModifiedValues, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationInstance")
 	local t = { 
@@ -3231,7 +3231,7 @@ function M.AssertAddTagsToResourceResponse(struct)
 end
 
 --- Create a structure of type AddTagsToResourceResponse
--- &lt;p/&gt;
+-- <p/>
 function M.AddTagsToResourceResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceResponse")
 	local t = { 
@@ -3252,8 +3252,8 @@ function M.AssertResourceAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type ResourceAlreadyExistsFault
--- &lt;p&gt;The resource you are attempting to create already exists.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>The resource you are attempting to create already exists.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.ResourceAlreadyExistsFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsFault")
 	local t = { 
@@ -3275,8 +3275,8 @@ function M.AssertReplicationSubnetGroupDoesNotCoverEnoughAZs(struct)
 end
 
 --- Create a structure of type ReplicationSubnetGroupDoesNotCoverEnoughAZs
--- &lt;p&gt;The replication subnet group does not cover enough Availability Zones (AZs). Edit the replication subnet group and add more AZs.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>The replication subnet group does not cover enough Availability Zones (AZs). Edit the replication subnet group and add more AZs.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.ReplicationSubnetGroupDoesNotCoverEnoughAZs(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationSubnetGroupDoesNotCoverEnoughAZs")
 	local t = { 
@@ -3299,9 +3299,9 @@ function M.AssertDescribeReplicationTasksResponse(struct)
 end
 
 --- Create a structure of type DescribeReplicationTasksResponse
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param ReplicationTasks [ReplicationTaskList] &lt;p&gt;A description of the replication tasks.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param ReplicationTasks [ReplicationTaskList] <p>A description of the replication tasks.</p>
 function M.DescribeReplicationTasksResponse(Marker, ReplicationTasks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationTasksResponse")
 	local t = { 
@@ -3329,10 +3329,10 @@ end
 
 --- Create a structure of type ImportCertificateMessage
 --  
--- @param CertificateIdentifier [String] &lt;p&gt;The customer-assigned name of the certificate. Valid characters are A-z and 0-9.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tags associated with the certificate.&lt;/p&gt;
--- @param CertificatePem [String] &lt;p&gt;The contents of the .pem X.509 certificate file for the certificate.&lt;/p&gt;
--- @param CertificateWallet [CertificateWallet] &lt;p&gt;The location of the imported Oracle Wallet certificate for use with SSL.&lt;/p&gt;
+-- @param CertificateIdentifier [String] <p>The customer-assigned name of the certificate. Valid characters are A-z and 0-9.</p>
+-- @param Tags [TagList] <p>The tags associated with the certificate.</p>
+-- @param CertificatePem [String] <p>The contents of the .pem X.509 certificate file for the certificate.</p>
+-- @param CertificateWallet [CertificateWallet] <p>The location of the imported Oracle Wallet certificate for use with SSL.</p>
 -- Required parameter: CertificateIdentifier
 function M.ImportCertificateMessage(CertificateIdentifier, Tags, CertificatePem, CertificateWallet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportCertificateMessage")
@@ -3358,8 +3358,8 @@ function M.AssertCreateReplicationSubnetGroupResponse(struct)
 end
 
 --- Create a structure of type CreateReplicationSubnetGroupResponse
--- &lt;p/&gt;
--- @param ReplicationSubnetGroup [ReplicationSubnetGroup] &lt;p&gt;The replication subnet group that was created.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The replication subnet group that was created.</p>
 function M.CreateReplicationSubnetGroupResponse(ReplicationSubnetGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationSubnetGroupResponse")
 	local t = { 
@@ -3383,10 +3383,10 @@ function M.AssertDescribeEndpointTypesMessage(struct)
 end
 
 --- Create a structure of type DescribeEndpointTypesMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Filters applied to the describe action.&lt;/p&gt; &lt;p&gt;Valid filter names: engine-name | endpoint-type&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: engine-name | endpoint-type</p>
 function M.DescribeEndpointTypesMessage(Marker, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointTypesMessage")
 	local t = { 
@@ -3410,8 +3410,8 @@ function M.AssertModifyReplicationSubnetGroupResponse(struct)
 end
 
 --- Create a structure of type ModifyReplicationSubnetGroupResponse
--- &lt;p/&gt;
--- @param ReplicationSubnetGroup [ReplicationSubnetGroup] &lt;p&gt;The modified replication subnet group.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The modified replication subnet group.</p>
 function M.ModifyReplicationSubnetGroupResponse(ReplicationSubnetGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationSubnetGroupResponse")
 	local t = { 
@@ -3434,9 +3434,9 @@ function M.AssertDescribeEventSubscriptionsResponse(struct)
 end
 
 --- Create a structure of type DescribeEventSubscriptionsResponse
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param EventSubscriptionsList [EventSubscriptionsList] &lt;p&gt;A list of event subscriptions.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param EventSubscriptionsList [EventSubscriptionsList] <p>A list of event subscriptions.</p>
 function M.DescribeEventSubscriptionsResponse(Marker, EventSubscriptionsList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventSubscriptionsResponse")
 	local t = { 
@@ -3467,14 +3467,14 @@ function M.AssertCreateEventSubscriptionMessage(struct)
 end
 
 --- Create a structure of type CreateEventSubscriptionMessage
--- &lt;p/&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt; A list of event categories for a source type that you want to subscribe to. You can see a list of the categories for a given source type by calling the &lt;b&gt;DescribeEventCategories&lt;/b&gt; action or in the topic &lt;a href=&quot;http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html&quot;&gt; Working with Events and Notifications&lt;/a&gt; in the AWS Database Migration Service User Guide. &lt;/p&gt;
--- @param SourceType [String] &lt;p&gt; The type of AWS DMS resource that generates the events. For example, if you want to be notified of events generated by a replication instance, you set this parameter to &lt;code&gt;replication-instance&lt;/code&gt;. If this value is not specified, all events are returned. &lt;/p&gt; &lt;p&gt;Valid values: replication-instance | migration-task&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A tag to be attached to the event subscription.&lt;/p&gt;
--- @param Enabled [BooleanOptional] &lt;p&gt; A Boolean value; set to &lt;b&gt;true&lt;/b&gt; to activate the subscription, or set to &lt;b&gt;false&lt;/b&gt; to create the subscription but not activate it. &lt;/p&gt;
--- @param SnsTopicArn [String] &lt;p&gt; The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it. &lt;/p&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the DMS event notification subscription. &lt;/p&gt; &lt;p&gt;Constraints: The name must be less than 255 characters. &lt;/p&gt;
--- @param SourceIds [SourceIdsList] &lt;p&gt; The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. &lt;/p&gt;
+-- <p/>
+-- @param EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. You can see a list of the categories for a given source type by calling the <b>DescribeEventCategories</b> action or in the topic <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html"> Working with Events and Notifications</a> in the AWS Database Migration Service User Guide. </p>
+-- @param SourceType [String] <p> The type of AWS DMS resource that generates the events. For example, if you want to be notified of events generated by a replication instance, you set this parameter to <code>replication-instance</code>. If this value is not specified, all events are returned. </p> <p>Valid values: replication-instance | migration-task</p>
+-- @param Tags [TagList] <p>A tag to be attached to the event subscription.</p>
+-- @param Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription, or set to <b>false</b> to create the subscription but not activate it. </p>
+-- @param SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it. </p>
+-- @param SubscriptionName [String] <p>The name of the DMS event notification subscription. </p> <p>Constraints: The name must be less than 255 characters. </p>
+-- @param SourceIds [SourceIdsList] <p> The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p>
 -- Required parameter: SubscriptionName
 -- Required parameter: SnsTopicArn
 function M.CreateEventSubscriptionMessage(EventCategories, SourceType, Tags, Enabled, SnsTopicArn, SubscriptionName, SourceIds, ...)
@@ -3504,8 +3504,8 @@ function M.AssertDeleteEventSubscriptionResponse(struct)
 end
 
 --- Create a structure of type DeleteEventSubscriptionResponse
--- &lt;p/&gt;
--- @param EventSubscription [EventSubscription] &lt;p&gt;The event subscription that was deleted.&lt;/p&gt;
+-- <p/>
+-- @param EventSubscription [EventSubscription] <p>The event subscription that was deleted.</p>
 function M.DeleteEventSubscriptionResponse(EventSubscription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEventSubscriptionResponse")
 	local t = { 
@@ -3526,7 +3526,7 @@ function M.AssertDescribeAccountAttributesMessage(struct)
 end
 
 --- Create a structure of type DescribeAccountAttributesMessage
--- &lt;p/&gt;
+-- <p/>
 function M.DescribeAccountAttributesMessage(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountAttributesMessage")
 	local t = { 
@@ -3551,12 +3551,12 @@ function M.AssertRefreshSchemasStatus(struct)
 end
 
 --- Create a structure of type RefreshSchemasStatus
--- &lt;p/&gt;
--- @param Status [RefreshSchemasStatusTypeValue] &lt;p&gt;The status of the schema.&lt;/p&gt;
--- @param LastFailureMessage [String] &lt;p&gt;The last failure message for the schema.&lt;/p&gt;
--- @param LastRefreshDate [TStamp] &lt;p&gt;The date the schema was last refreshed.&lt;/p&gt;
--- @param EndpointArn [String] &lt;p&gt;The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.&lt;/p&gt;
--- @param ReplicationInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the replication instance.&lt;/p&gt;
+-- <p/>
+-- @param Status [RefreshSchemasStatusTypeValue] <p>The status of the schema.</p>
+-- @param LastFailureMessage [String] <p>The last failure message for the schema.</p>
+-- @param LastRefreshDate [TStamp] <p>The date the schema was last refreshed.</p>
+-- @param EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- @param ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
 function M.RefreshSchemasStatus(Status, LastFailureMessage, LastRefreshDate, EndpointArn, ReplicationInstanceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RefreshSchemasStatus")
 	local t = { 
@@ -3590,16 +3590,16 @@ function M.AssertEventSubscription(struct)
 end
 
 --- Create a structure of type EventSubscription
--- &lt;p/&gt;
--- @param Status [String] &lt;p&gt;The status of the AWS DMS event notification subscription.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;p&gt;Can be one of the following: creating | modifying | deleting | active | no-permission | topic-not-exist&lt;/p&gt; &lt;p&gt;The status &quot;no-permission&quot; indicates that AWS DMS no longer has permission to post to the SNS topic. The status &quot;topic-not-exist&quot; indicates that the topic was deleted after the subscription was created.&lt;/p&gt;
--- @param SubscriptionCreationTime [String] &lt;p&gt;The time the RDS event notification subscription was created.&lt;/p&gt;
--- @param SourceType [String] &lt;p&gt; The type of AWS DMS resource that generates events. &lt;/p&gt; &lt;p&gt;Valid values: replication-instance | replication-server | security-group | migration-task&lt;/p&gt;
--- @param EventCategoriesList [EventCategoriesList] &lt;p&gt;A lists of event categories.&lt;/p&gt;
--- @param SourceIdsList [SourceIdsList] &lt;p&gt;A list of source Ids for the event subscription.&lt;/p&gt;
--- @param CustSubscriptionId [String] &lt;p&gt;The AWS DMS event notification subscription Id.&lt;/p&gt;
--- @param Enabled [Boolean] &lt;p&gt;Boolean value that indicates if the event subscription is enabled.&lt;/p&gt;
--- @param SnsTopicArn [String] &lt;p&gt;The topic ARN of the AWS DMS event notification subscription.&lt;/p&gt;
--- @param CustomerAwsId [String] &lt;p&gt;The AWS customer account associated with the AWS DMS event notification subscription.&lt;/p&gt;
+-- <p/>
+-- @param Status [String] <p>The status of the AWS DMS event notification subscription.</p> <p>Constraints:</p> <p>Can be one of the following: creating | modifying | deleting | active | no-permission | topic-not-exist</p> <p>The status "no-permission" indicates that AWS DMS no longer has permission to post to the SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.</p>
+-- @param SubscriptionCreationTime [String] <p>The time the RDS event notification subscription was created.</p>
+-- @param SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
+-- @param EventCategoriesList [EventCategoriesList] <p>A lists of event categories.</p>
+-- @param SourceIdsList [SourceIdsList] <p>A list of source Ids for the event subscription.</p>
+-- @param CustSubscriptionId [String] <p>The AWS DMS event notification subscription Id.</p>
+-- @param Enabled [Boolean] <p>Boolean value that indicates if the event subscription is enabled.</p>
+-- @param SnsTopicArn [String] <p>The topic ARN of the AWS DMS event notification subscription.</p>
+-- @param CustomerAwsId [String] <p>The AWS customer account associated with the AWS DMS event notification subscription.</p>
 function M.EventSubscription(Status, SubscriptionCreationTime, SourceType, EventCategoriesList, SourceIdsList, CustSubscriptionId, Enabled, SnsTopicArn, CustomerAwsId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscription")
 	local t = { 
@@ -3629,8 +3629,8 @@ function M.AssertSubnetAlreadyInUse(struct)
 end
 
 --- Create a structure of type SubnetAlreadyInUse
--- &lt;p&gt;The specified subnet is already in use.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p/&gt;
+-- <p>The specified subnet is already in use.</p>
+-- @param message [ExceptionMessage] <p/>
 function M.SubnetAlreadyInUse(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetAlreadyInUse")
 	local t = { 
@@ -3653,8 +3653,8 @@ function M.AssertStopReplicationTaskMessage(struct)
 end
 
 --- Create a structure of type StopReplicationTaskMessage
--- &lt;p/&gt;
--- @param ReplicationTaskArn [String] &lt;p&gt;The Amazon Resource Number(ARN) of the replication task to be stopped.&lt;/p&gt;
+-- <p/>
+-- @param ReplicationTaskArn [String] <p>The Amazon Resource Number(ARN) of the replication task to be stopped.</p>
 -- Required parameter: ReplicationTaskArn
 function M.StopReplicationTaskMessage(ReplicationTaskArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopReplicationTaskMessage")

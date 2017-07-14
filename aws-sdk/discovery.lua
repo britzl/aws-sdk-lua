@@ -51,7 +51,7 @@ end
 
 --- Create a structure of type DescribeConfigurationsResponse
 --  
--- @param configurations [DescribeConfigurationsAttributes] &lt;p&gt;A key in the response map. The value is an array of data.&lt;/p&gt;
+-- @param configurations [DescribeConfigurationsAttributes] <p>A key in the response map. The value is an array of data.</p>
 function M.DescribeConfigurationsResponse(configurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationsResponse")
 	local t = { 
@@ -82,17 +82,17 @@ function M.AssertAgentInfo(struct)
 end
 
 --- Create a structure of type AgentInfo
--- &lt;p&gt;Information about agents or connectors associated with the user’s AWS account. Information includes agent or connector IDs, IP addresses, media access control (MAC) addresses, agent or connector health, hostname where the agent or connector resides, and agent version for each agent.&lt;/p&gt;
--- @param version [String] &lt;p&gt;The agent or connector version.&lt;/p&gt;
--- @param connectorId [String] &lt;p&gt;The ID of the connector.&lt;/p&gt;
--- @param agentType [String] &lt;p&gt;Type of agent.&lt;/p&gt;
--- @param hostName [String] &lt;p&gt;The name of the host where the agent or connector resides. The host can be a server or virtual machine.&lt;/p&gt;
--- @param collectionStatus [String] &lt;p&gt;Status of the collection process for an agent or connector.&lt;/p&gt;
--- @param agentNetworkInfoList [AgentNetworkInfoList] &lt;p&gt;Network details about the host where the agent or connector resides.&lt;/p&gt;
--- @param health [AgentStatus] &lt;p&gt;The health of the agent or connector.&lt;/p&gt;
--- @param agentId [AgentId] &lt;p&gt;The agent or connector ID.&lt;/p&gt;
--- @param registeredTime [String] &lt;p&gt;Agent's first registration timestamp in UTC.&lt;/p&gt;
--- @param lastHealthPingTime [String] &lt;p&gt;Time since agent or connector health was reported.&lt;/p&gt;
+-- <p>Information about agents or connectors associated with the user’s AWS account. Information includes agent or connector IDs, IP addresses, media access control (MAC) addresses, agent or connector health, hostname where the agent or connector resides, and agent version for each agent.</p>
+-- @param version [String] <p>The agent or connector version.</p>
+-- @param connectorId [String] <p>The ID of the connector.</p>
+-- @param agentType [String] <p>Type of agent.</p>
+-- @param hostName [String] <p>The name of the host where the agent or connector resides. The host can be a server or virtual machine.</p>
+-- @param collectionStatus [String] <p>Status of the collection process for an agent or connector.</p>
+-- @param agentNetworkInfoList [AgentNetworkInfoList] <p>Network details about the host where the agent or connector resides.</p>
+-- @param health [AgentStatus] <p>The health of the agent or connector.</p>
+-- @param agentId [AgentId] <p>The agent or connector ID.</p>
+-- @param registeredTime [String] <p>Agent's first registration timestamp in UTC.</p>
+-- @param lastHealthPingTime [String] <p>Time since agent or connector health was reported.</p>
 function M.AgentInfo(version, connectorId, agentType, hostName, collectionStatus, agentNetworkInfoList, health, agentId, registeredTime, lastHealthPingTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentInfo")
 	local t = { 
@@ -126,9 +126,9 @@ end
 
 --- Create a structure of type DescribeTagsRequest
 --  
--- @param nextToken [NextToken] &lt;p&gt;A token to start the list. Use this token to get the next set of results.&lt;/p&gt;
--- @param maxResults [Integer] &lt;p&gt;The total number of items to return in a single page of output. The maximum value is 100.&lt;/p&gt;
--- @param filters [TagFilters] &lt;p&gt;You can filter the list using a &lt;i&gt;key&lt;/i&gt;-&lt;i&gt;value&lt;/i&gt; format. You can separate these items by using logical operators. Allowed filters include &lt;code&gt;tagKey&lt;/code&gt;, &lt;code&gt;tagValue&lt;/code&gt;, and &lt;code&gt;configurationId&lt;/code&gt;. &lt;/p&gt;
+-- @param nextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results.</p>
+-- @param maxResults [Integer] <p>The total number of items to return in a single page of output. The maximum value is 100.</p>
+-- @param filters [TagFilters] <p>You can filter the list using a <i>key</i>-<i>value</i> format. You can separate these items by using logical operators. Allowed filters include <code>tagKey</code>, <code>tagValue</code>, and <code>configurationId</code>. </p>
 function M.DescribeTagsRequest(nextToken, maxResults, filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsRequest")
 	local t = { 
@@ -152,8 +152,8 @@ function M.AssertOperationNotPermittedException(struct)
 end
 
 --- Create a structure of type OperationNotPermittedException
--- &lt;p&gt;This operation is not permitted.&lt;/p&gt;
--- @param message [Message] &lt;p&gt;This operation is not permitted.&lt;/p&gt;
+-- <p>This operation is not permitted.</p>
+-- @param message [Message] <p>This operation is not permitted.</p>
 function M.OperationNotPermittedException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
 	local t = { 
@@ -179,9 +179,9 @@ end
 
 --- Create a structure of type UpdateApplicationRequest
 --  
--- @param configurationId [ApplicationId] &lt;p&gt;Configuration ID of the application to be updated.&lt;/p&gt;
--- @param name [String] &lt;p&gt;New name of the application to be updated.&lt;/p&gt;
--- @param description [String] &lt;p&gt;New description of the application to be updated.&lt;/p&gt;
+-- @param configurationId [ApplicationId] <p>Configuration ID of the application to be updated.</p>
+-- @param name [String] <p>New name of the application to be updated.</p>
+-- @param description [String] <p>New description of the application to be updated.</p>
 -- Required parameter: configurationId
 function M.UpdateApplicationRequest(configurationId, name, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApplicationRequest")
@@ -207,9 +207,9 @@ function M.AssertAgentNetworkInfo(struct)
 end
 
 --- Create a structure of type AgentNetworkInfo
--- &lt;p&gt;Network details about the host where the agent/connector resides.&lt;/p&gt;
--- @param macAddress [String] &lt;p&gt;The MAC address for the host where the agent/connector resides.&lt;/p&gt;
--- @param ipAddress [String] &lt;p&gt;The IP address for the host where the agent/connector resides.&lt;/p&gt;
+-- <p>Network details about the host where the agent/connector resides.</p>
+-- @param macAddress [String] <p>The MAC address for the host where the agent/connector resides.</p>
+-- @param ipAddress [String] <p>The IP address for the host where the agent/connector resides.</p>
 function M.AgentNetworkInfo(macAddress, ipAddress, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentNetworkInfo")
 	local t = { 
@@ -234,7 +234,7 @@ end
 
 --- Create a structure of type DeleteApplicationsRequest
 --  
--- @param configurationIds [ApplicationIdsList] &lt;p&gt;Configuration ID of an application to be deleted.&lt;/p&gt;
+-- @param configurationIds [ApplicationIdsList] <p>Configuration ID of an application to be deleted.</p>
 -- Required parameter: configurationIds
 function M.DeleteApplicationsRequest(configurationIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApplicationsRequest")
@@ -261,8 +261,8 @@ end
 
 --- Create a structure of type CreateTagsRequest
 --  
--- @param configurationIds [ConfigurationIdList] &lt;p&gt;A list of configuration items that you want to tag.&lt;/p&gt;
--- @param tags [TagSet] &lt;p&gt;Tags that you want to associate with one or more configuration items. Specify the tags that you want to create in a &lt;i&gt;key&lt;/i&gt;-&lt;i&gt;value&lt;/i&gt; format. For example:&lt;/p&gt; &lt;p&gt; &lt;code&gt;{&quot;key&quot;: &quot;serverType&quot;, &quot;value&quot;: &quot;webServer&quot;}&lt;/code&gt; &lt;/p&gt;
+-- @param configurationIds [ConfigurationIdList] <p>A list of configuration items that you want to tag.</p>
+-- @param tags [TagSet] <p>Tags that you want to associate with one or more configuration items. Specify the tags that you want to create in a <i>key</i>-<i>value</i> format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p>
 -- Required parameter: configurationIds
 -- Required parameter: tags
 function M.CreateTagsRequest(configurationIds, tags, ...)
@@ -289,8 +289,8 @@ end
 
 --- Create a structure of type ListConfigurationsResponse
 --  
--- @param nextToken [NextToken] &lt;p&gt;Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items, but you set &lt;code&gt;ListConfigurationsRequest$maxResults&lt;/code&gt; to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.&lt;/p&gt;
--- @param configurations [Configurations] &lt;p&gt;Returns configuration details, including the configuration ID, attribute names, and attribute values.&lt;/p&gt;
+-- @param nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
+-- @param configurations [Configurations] <p>Returns configuration details, including the configuration ID, attribute names, and attribute values.</p>
 function M.ListConfigurationsResponse(nextToken, configurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListConfigurationsResponse")
 	local t = { 
@@ -316,9 +316,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Metadata that help you categorize IT assets.&lt;/p&gt;
--- @param value [TagValue] &lt;p&gt;A value for a tag key on which to filter.&lt;/p&gt;
--- @param key [TagKey] &lt;p&gt;The type of tag on which to filter.&lt;/p&gt;
+-- <p>Metadata that help you categorize IT assets.</p>
+-- @param value [TagValue] <p>A value for a tag key on which to filter.</p>
+-- @param key [TagKey] <p>The type of tag on which to filter.</p>
 -- Required parameter: key
 -- Required parameter: value
 function M.Tag(value, key, ...)
@@ -347,10 +347,10 @@ end
 
 --- Create a structure of type DescribeAgentsRequest
 --  
--- @param nextToken [NextToken] &lt;p&gt;Token to retrieve the next set of results. For example, if you previously specified 100 IDs for &lt;code&gt;DescribeAgentsRequest$agentIds&lt;/code&gt; but set &lt;code&gt;DescribeAgentsRequest$maxResults&lt;/code&gt; to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.&lt;/p&gt;
--- @param maxResults [Integer] &lt;p&gt;The total number of agents/Connectors to return in a single page of output. The maximum value is 100.&lt;/p&gt;
--- @param filters [Filters] &lt;p&gt;You can filter the request using various logical operators and a &lt;i&gt;key&lt;/i&gt;-&lt;i&gt;value&lt;/i&gt; format. For example: &lt;/p&gt; &lt;p&gt; &lt;code&gt;{&quot;key&quot;: &quot;collectionStatus&quot;, &quot;value&quot;: &quot;STARTED&quot;}&lt;/code&gt; &lt;/p&gt;
--- @param agentIds [AgentIds] &lt;p&gt;The agent or the Connector IDs for which you want information. If you specify no IDs, the system returns information about all agents/Connectors associated with your AWS user account.&lt;/p&gt;
+-- @param nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you previously specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
+-- @param maxResults [Integer] <p>The total number of agents/Connectors to return in a single page of output. The maximum value is 100.</p>
+-- @param filters [Filters] <p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "collectionStatus", "value": "STARTED"}</code> </p>
+-- @param agentIds [AgentIds] <p>The agent or the Connector IDs for which you want information. If you specify no IDs, the system returns information about all agents/Connectors associated with your AWS user account.</p>
 function M.DescribeAgentsRequest(nextToken, maxResults, filters, agentIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAgentsRequest")
 	local t = { 
@@ -381,11 +381,11 @@ end
 
 --- Create a structure of type ListConfigurationsRequest
 --  
--- @param orderBy [OrderByList] &lt;p&gt;Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see &lt;a href=&quot;http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations&quot;&gt;Using the ListConfigurations Action&lt;/a&gt;.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;Token to retrieve the next set of results. For example, if a previous call to ListConfigurations returned 100 items, but you set &lt;code&gt;ListConfigurationsRequest$maxResults&lt;/code&gt; to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.&lt;/p&gt;
--- @param maxResults [Integer] &lt;p&gt;The total number of items to return. The maximum value is 100.&lt;/p&gt;
--- @param filters [Filters] &lt;p&gt;You can filter the request using various logical operators and a &lt;i&gt;key&lt;/i&gt;-&lt;i&gt;value&lt;/i&gt; format. For example: &lt;/p&gt; &lt;p&gt; &lt;code&gt;{&quot;key&quot;: &quot;serverType&quot;, &quot;value&quot;: &quot;webServer&quot;}&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For a complete list of filter options and guidance about using them with this action, see &lt;a href=&quot;http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations&quot;&gt;Querying Discovered Configuration Items&lt;/a&gt;. &lt;/p&gt;
--- @param configurationType [ConfigurationItemType] &lt;p&gt;A valid configuration identified by Application Discovery Service. &lt;/p&gt;
+-- @param orderBy [OrderByList] <p>Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Using the ListConfigurations Action</a>.</p>
+-- @param nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if a previous call to ListConfigurations returned 100 items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
+-- @param maxResults [Integer] <p>The total number of items to return. The maximum value is 100.</p>
+-- @param filters [Filters] <p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p> <p>For a complete list of filter options and guidance about using them with this action, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Querying Discovered Configuration Items</a>. </p>
+-- @param configurationType [ConfigurationItemType] <p>A valid configuration identified by Application Discovery Service. </p>
 -- Required parameter: configurationType
 function M.ListConfigurationsRequest(orderBy, nextToken, maxResults, filters, configurationType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListConfigurationsRequest")
@@ -414,8 +414,8 @@ end
 
 --- Create a structure of type DescribeAgentsResponse
 --  
--- @param agentsInfo [AgentsInfo] &lt;p&gt;Lists agents or the Connector by ID or lists all agents/Connectors associated with your user account if you did not specify an agent/Connector ID. The output includes agent/Connector IDs, IP addresses, media access control (MAC) addresses, agent/Connector health, host name where the agent/Connector resides, and the version number of each agent/Connector.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;Token to retrieve the next set of results. For example, if you specified 100 IDs for &lt;code&gt;DescribeAgentsRequest$agentIds&lt;/code&gt; but set &lt;code&gt;DescribeAgentsRequest$maxResults&lt;/code&gt; to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.&lt;/p&gt;
+-- @param agentsInfo [AgentsInfo] <p>Lists agents or the Connector by ID or lists all agents/Connectors associated with your user account if you did not specify an agent/Connector ID. The output includes agent/Connector IDs, IP addresses, media access control (MAC) addresses, agent/Connector health, host name where the agent/Connector resides, and the version number of each agent/Connector.</p>
+-- @param nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
 function M.DescribeAgentsResponse(agentsInfo, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAgentsResponse")
 	local t = { 
@@ -439,7 +439,7 @@ end
 
 --- Create a structure of type ExportConfigurationsResponse
 --  
--- @param exportId [ConfigurationsExportId] &lt;p&gt;A unique identifier that you can use to query the export status.&lt;/p&gt;
+-- @param exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export status.</p>
 function M.ExportConfigurationsResponse(exportId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExportConfigurationsResponse")
 	local t = { 
@@ -461,8 +461,8 @@ function M.AssertServerInternalErrorException(struct)
 end
 
 --- Create a structure of type ServerInternalErrorException
--- &lt;p&gt;The server experienced an internal error. Try again.&lt;/p&gt;
--- @param message [Message] &lt;p&gt;The server experienced an internal error. Try again.&lt;/p&gt;
+-- <p>The server experienced an internal error. Try again.</p>
+-- @param message [Message] <p>The server experienced an internal error. Try again.</p>
 function M.ServerInternalErrorException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServerInternalErrorException")
 	local t = { 
@@ -486,7 +486,7 @@ end
 
 --- Create a structure of type StartDataCollectionByAgentIdsRequest
 --  
--- @param agentIds [AgentIds] &lt;p&gt;The IDs of the agents or connectors from which to start collecting data. If you send a request to an agent/connector ID that you do not have permission to contact, according to your AWS account, the service does not throw an exception. Instead, it returns the error in the &lt;i&gt;Description&lt;/i&gt; field. If you send a request to multiple agents/connectors and you do not have permission to contact some of those agents/connectors, the system does not throw an exception. Instead, the system shows &lt;code&gt;Failed&lt;/code&gt; in the &lt;i&gt;Description&lt;/i&gt; field.&lt;/p&gt;
+-- @param agentIds [AgentIds] <p>The IDs of the agents or connectors from which to start collecting data. If you send a request to an agent/connector ID that you do not have permission to contact, according to your AWS account, the service does not throw an exception. Instead, it returns the error in the <i>Description</i> field. If you send a request to multiple agents/connectors and you do not have permission to contact some of those agents/connectors, the system does not throw an exception. Instead, the system shows <code>Failed</code> in the <i>Description</i> field.</p>
 -- Required parameter: agentIds
 function M.StartDataCollectionByAgentIdsRequest(agentIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartDataCollectionByAgentIdsRequest")
@@ -533,8 +533,8 @@ end
 
 --- Create a structure of type AssociateConfigurationItemsToApplicationRequest
 --  
--- @param applicationConfigurationId [ApplicationId] &lt;p&gt;The configuration ID of an application with which items are to be associated.&lt;/p&gt;
--- @param configurationIds [ConfigurationIdList] &lt;p&gt;The ID of each configuration item to be associated with an application.&lt;/p&gt;
+-- @param applicationConfigurationId [ApplicationId] <p>The configuration ID of an application with which items are to be associated.</p>
+-- @param configurationIds [ConfigurationIdList] <p>The ID of each configuration item to be associated with an application.</p>
 -- Required parameter: applicationConfigurationId
 -- Required parameter: configurationIds
 function M.AssociateConfigurationItemsToApplicationRequest(applicationConfigurationId, configurationIds, ...)
@@ -563,9 +563,9 @@ end
 
 --- Create a structure of type ListServerNeighborsResponse
 --  
--- @param neighbors [NeighborDetailsList] &lt;p&gt;List of distinct servers that are one hop away from the given server.&lt;/p&gt;
--- @param nextToken [String] &lt;p&gt;Token to retrieve the next set of results. For example, if you specified 100 IDs for &lt;code&gt;ListServerNeighborsRequest$neighborConfigurationIds&lt;/code&gt; but set &lt;code&gt;ListServerNeighborsRequest$maxResults&lt;/code&gt; to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.&lt;/p&gt;
--- @param knownDependencyCount [Long] &lt;p&gt;Count of distinct servers that are one hop away from the given server.&lt;/p&gt;
+-- @param neighbors [NeighborDetailsList] <p>List of distinct servers that are one hop away from the given server.</p>
+-- @param nextToken [String] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>ListServerNeighborsRequest$neighborConfigurationIds</code> but set <code>ListServerNeighborsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
+-- @param knownDependencyCount [Long] <p>Count of distinct servers that are one hop away from the given server.</p>
 -- Required parameter: neighbors
 function M.ListServerNeighborsResponse(neighbors, nextToken, knownDependencyCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListServerNeighborsResponse")
@@ -591,7 +591,7 @@ end
 
 --- Create a structure of type StopDataCollectionByAgentIdsResponse
 --  
--- @param agentsConfigurationStatus [AgentConfigurationStatusList] &lt;p&gt;Information about the agents or connector that were instructed to stop collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.&lt;/p&gt;
+-- @param agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about the agents or connector that were instructed to stop collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
 function M.StopDataCollectionByAgentIdsResponse(agentsConfigurationStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopDataCollectionByAgentIdsResponse")
 	local t = { 
@@ -620,12 +620,12 @@ function M.AssertNeighborConnectionDetail(struct)
 end
 
 --- Create a structure of type NeighborConnectionDetail
--- &lt;p&gt;Details about neighboring servers.&lt;/p&gt;
--- @param connectionsCount [Long] &lt;p&gt;The number of open network connections with the neighboring server.&lt;/p&gt;
--- @param destinationServerId [ConfigurationId] &lt;p&gt;The ID of the server that accepted the network connection.&lt;/p&gt;
--- @param sourceServerId [ConfigurationId] &lt;p&gt;The ID of the server that opened the network connection.&lt;/p&gt;
--- @param transportProtocol [String] &lt;p&gt;The network protocol used for the connection.&lt;/p&gt;
--- @param destinationPort [BoxedInteger] &lt;p&gt;The destination network port for the connection.&lt;/p&gt;
+-- <p>Details about neighboring servers.</p>
+-- @param connectionsCount [Long] <p>The number of open network connections with the neighboring server.</p>
+-- @param destinationServerId [ConfigurationId] <p>The ID of the server that accepted the network connection.</p>
+-- @param sourceServerId [ConfigurationId] <p>The ID of the server that opened the network connection.</p>
+-- @param transportProtocol [String] <p>The network protocol used for the connection.</p>
+-- @param destinationPort [BoxedInteger] <p>The destination network port for the connection.</p>
 -- Required parameter: sourceServerId
 -- Required parameter: destinationServerId
 -- Required parameter: connectionsCount
@@ -655,7 +655,7 @@ end
 
 --- Create a structure of type StartDataCollectionByAgentIdsResponse
 --  
--- @param agentsConfigurationStatus [AgentConfigurationStatusList] &lt;p&gt;Information about agents or the connector that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.&lt;/p&gt;
+-- @param agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about agents or the connector that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
 function M.StartDataCollectionByAgentIdsResponse(agentsConfigurationStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartDataCollectionByAgentIdsResponse")
 	local t = { 
@@ -698,7 +698,7 @@ end
 
 --- Create a structure of type StartExportTaskRequest
 --  
--- @param exportDataFormat [ExportDataFormats] &lt;p&gt;The file format for the returned export data. Default value is &lt;code&gt;CSV&lt;/code&gt;.&lt;/p&gt;
+-- @param exportDataFormat [ExportDataFormats] <p>The file format for the returned export data. Default value is <code>CSV</code>.</p>
 function M.StartExportTaskRequest(exportDataFormat, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartExportTaskRequest")
 	local t = { 
@@ -722,8 +722,8 @@ end
 
 --- Create a structure of type DescribeExportTasksResponse
 --  
--- @param exportsInfo [ExportsInfo] &lt;p&gt;Contains one or more sets of export request details. When the status of a request is &lt;code&gt;SUCCEEDED&lt;/code&gt;, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value to include in a future &lt;code&gt;DescribeExportTasks&lt;/code&gt; request. When the results of a &lt;code&gt;DescribeExportTasks&lt;/code&gt; request exceed &lt;code&gt;maxResults&lt;/code&gt;, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.&lt;/p&gt;
+-- @param exportsInfo [ExportsInfo] <p>Contains one or more sets of export request details. When the status of a request is <code>SUCCEEDED</code>, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
+-- @param nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeExportTasks</code> request. When the results of a <code>DescribeExportTasks</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.</p>
 function M.DescribeExportTasksResponse(exportsInfo, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportTasksResponse")
 	local t = { 
@@ -749,8 +749,8 @@ end
 
 --- Create a structure of type DeleteTagsRequest
 --  
--- @param configurationIds [ConfigurationIdList] &lt;p&gt;A list of configuration items with tags that you want to delete.&lt;/p&gt;
--- @param tags [TagSet] &lt;p&gt;Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a &lt;i&gt;key&lt;/i&gt;-&lt;i&gt;value&lt;/i&gt; format. For example:&lt;/p&gt; &lt;p&gt; &lt;code&gt;{&quot;key&quot;: &quot;serverType&quot;, &quot;value&quot;: &quot;webServer&quot;}&lt;/code&gt; &lt;/p&gt;
+-- @param configurationIds [ConfigurationIdList] <p>A list of configuration items with tags that you want to delete.</p>
+-- @param tags [TagSet] <p>Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a <i>key</i>-<i>value</i> format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p>
 -- Required parameter: configurationIds
 function M.DeleteTagsRequest(configurationIds, tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsRequest")
@@ -776,10 +776,10 @@ function M.AssertAgentConfigurationStatus(struct)
 end
 
 --- Create a structure of type AgentConfigurationStatus
--- &lt;p&gt;Information about agents or connectors that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation, and whether the agent/connector configuration was updated.&lt;/p&gt;
--- @param operationSucceeded [Boolean] &lt;p&gt;Information about the status of the &lt;code&gt;StartDataCollection&lt;/code&gt; and &lt;code&gt;StopDataCollection&lt;/code&gt; operations. The system has recorded the data collection operation. The agent/connector receives this command the next time it polls for a new command. &lt;/p&gt;
--- @param agentId [String] &lt;p&gt;The agent/connector ID.&lt;/p&gt;
--- @param description [String] &lt;p&gt;A description of the operation performed.&lt;/p&gt;
+-- <p>Information about agents or connectors that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation, and whether the agent/connector configuration was updated.</p>
+-- @param operationSucceeded [Boolean] <p>Information about the status of the <code>StartDataCollection</code> and <code>StopDataCollection</code> operations. The system has recorded the data collection operation. The agent/connector receives this command the next time it polls for a new command. </p>
+-- @param agentId [String] <p>The agent/connector ID.</p>
+-- @param description [String] <p>A description of the operation performed.</p>
 function M.AgentConfigurationStatus(operationSucceeded, agentId, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentConfigurationStatus")
 	local t = { 
@@ -823,8 +823,8 @@ function M.AssertAuthorizationErrorException(struct)
 end
 
 --- Create a structure of type AuthorizationErrorException
--- &lt;p&gt;The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.&lt;/p&gt;
--- @param message [Message] &lt;p&gt;The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.&lt;/p&gt;
+-- <p>The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.</p>
+-- @param message [Message] <p>The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.</p>
 function M.AuthorizationErrorException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationErrorException")
 	local t = { 
@@ -848,9 +848,9 @@ function M.AssertOrderByElement(struct)
 end
 
 --- Create a structure of type OrderByElement
--- &lt;p&gt;A field and direction for ordered output.&lt;/p&gt;
--- @param fieldName [String] &lt;p&gt;The field on which to order.&lt;/p&gt;
--- @param sortOrder [orderString] &lt;p&gt;Ordering direction.&lt;/p&gt;
+-- <p>A field and direction for ordered output.</p>
+-- @param fieldName [String] <p>The field on which to order.</p>
+-- @param sortOrder [orderString] <p>Ordering direction.</p>
 -- Required parameter: fieldName
 function M.OrderByElement(fieldName, sortOrder, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrderByElement")
@@ -880,11 +880,11 @@ end
 
 --- Create a structure of type ListServerNeighborsRequest
 --  
--- @param nextToken [String] &lt;p&gt;Token to retrieve the next set of results. For example, if you previously specified 100 IDs for &lt;code&gt;ListServerNeighborsRequest$neighborConfigurationIds&lt;/code&gt; but set &lt;code&gt;ListServerNeighborsRequest$maxResults&lt;/code&gt; to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.&lt;/p&gt;
--- @param configurationId [ConfigurationId] &lt;p&gt;Configuration ID of the server for which neighbors are being listed.&lt;/p&gt;
--- @param portInformationNeeded [Boolean] &lt;p&gt;Flag to indicate if port and protocol information is needed as part of the response.&lt;/p&gt;
--- @param maxResults [Integer] &lt;p&gt;Maximum number of results to return in a single page of output.&lt;/p&gt;
--- @param neighborConfigurationIds [ConfigurationIdList] &lt;p&gt;List of configuration IDs to test for one-hop-away.&lt;/p&gt;
+-- @param nextToken [String] <p>Token to retrieve the next set of results. For example, if you previously specified 100 IDs for <code>ListServerNeighborsRequest$neighborConfigurationIds</code> but set <code>ListServerNeighborsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
+-- @param configurationId [ConfigurationId] <p>Configuration ID of the server for which neighbors are being listed.</p>
+-- @param portInformationNeeded [Boolean] <p>Flag to indicate if port and protocol information is needed as part of the response.</p>
+-- @param maxResults [Integer] <p>Maximum number of results to return in a single page of output.</p>
+-- @param neighborConfigurationIds [ConfigurationIdList] <p>List of configuration IDs to test for one-hop-away.</p>
 -- Required parameter: configurationId
 function M.ListServerNeighborsRequest(nextToken, configurationId, portInformationNeeded, maxResults, neighborConfigurationIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListServerNeighborsRequest")
@@ -913,7 +913,7 @@ end
 
 --- Create a structure of type StopDataCollectionByAgentIdsRequest
 --  
--- @param agentIds [AgentIds] &lt;p&gt;The IDs of the agents or connectors from which to stop collecting data.&lt;/p&gt;
+-- @param agentIds [AgentIds] <p>The IDs of the agents or connectors from which to stop collecting data.</p>
 -- Required parameter: agentIds
 function M.StopDataCollectionByAgentIdsRequest(agentIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopDataCollectionByAgentIdsRequest")
@@ -941,10 +941,10 @@ function M.AssertFilter(struct)
 end
 
 --- Create a structure of type Filter
--- &lt;p&gt;A filter that can use conditional operators.&lt;/p&gt; &lt;p&gt;For more information about filters, see &lt;a href=&quot;http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html&quot;&gt;Querying Discovered Configuration Items&lt;/a&gt;. &lt;/p&gt;
--- @param values [FilterValues] &lt;p&gt;A string value on which to filter. For example, if you choose the &lt;code&gt;destinationServer.osVersion&lt;/code&gt; filter name, you could specify &lt;code&gt;Ubuntu&lt;/code&gt; for the value.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the filter.&lt;/p&gt;
--- @param condition [Condition] &lt;p&gt;A conditional operator. The following operators are valid: EQUALS, NOT_EQUALS, CONTAINS, NOT_CONTAINS. If you specify multiple filters, the system utilizes all filters as though concatenated by &lt;i&gt;AND&lt;/i&gt;. If you specify multiple values for a particular filter, the system differentiates the values using &lt;i&gt;OR&lt;/i&gt;. Calling either &lt;i&gt;DescribeConfigurations&lt;/i&gt; or &lt;i&gt;ListConfigurations&lt;/i&gt; returns attributes of matching configuration items.&lt;/p&gt;
+-- <p>A filter that can use conditional operators.</p> <p>For more information about filters, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html">Querying Discovered Configuration Items</a>. </p>
+-- @param values [FilterValues] <p>A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.</p>
+-- @param name [String] <p>The name of the filter.</p>
+-- @param condition [Condition] <p>A conditional operator. The following operators are valid: EQUALS, NOT_EQUALS, CONTAINS, NOT_CONTAINS. If you specify multiple filters, the system utilizes all filters as though concatenated by <i>AND</i>. If you specify multiple values for a particular filter, the system differentiates the values using <i>OR</i>. Calling either <i>DescribeConfigurations</i> or <i>ListConfigurations</i> returns attributes of matching configuration items.</p>
 -- Required parameter: name
 -- Required parameter: values
 -- Required parameter: condition
@@ -971,8 +971,8 @@ function M.AssertInvalidParameterValueException(struct)
 end
 
 --- Create a structure of type InvalidParameterValueException
--- &lt;p&gt;The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.&lt;/p&gt;
--- @param message [Message] &lt;p&gt;The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.&lt;/p&gt;
+-- <p>The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.</p>
+-- @param message [Message] <p>The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.</p>
 function M.InvalidParameterValueException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
 	local t = { 
@@ -1002,12 +1002,12 @@ function M.AssertExportInfo(struct)
 end
 
 --- Create a structure of type ExportInfo
--- &lt;p&gt;Information regarding the export status of the discovered data. The value is an array of objects.&lt;/p&gt;
--- @param exportId [ConfigurationsExportId] &lt;p&gt;A unique identifier that you can use to query the export.&lt;/p&gt;
--- @param exportRequestTime [ExportRequestTime] &lt;p&gt;The time that the configuration data export was initiated.&lt;/p&gt;
--- @param exportStatus [ExportStatus] &lt;p&gt;The status of the configuration data export. The status can succeed, fail, or be in-progress.&lt;/p&gt;
--- @param statusMessage [ExportStatusMessage] &lt;p&gt;Helpful status messages for API callers. For example: Too many exports in the last 6 hours. Export in progress. Export was successful.&lt;/p&gt;
--- @param configurationsDownloadUrl [ConfigurationsDownloadUrl] &lt;p&gt;A URL for an Amazon S3 bucket where you can review the configuration data. The URL is displayed only if the export succeeded.&lt;/p&gt;
+-- <p>Information regarding the export status of the discovered data. The value is an array of objects.</p>
+-- @param exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export.</p>
+-- @param exportRequestTime [ExportRequestTime] <p>The time that the configuration data export was initiated.</p>
+-- @param exportStatus [ExportStatus] <p>The status of the configuration data export. The status can succeed, fail, or be in-progress.</p>
+-- @param statusMessage [ExportStatusMessage] <p>Helpful status messages for API callers. For example: Too many exports in the last 6 hours. Export in progress. Export was successful.</p>
+-- @param configurationsDownloadUrl [ConfigurationsDownloadUrl] <p>A URL for an Amazon S3 bucket where you can review the configuration data. The URL is displayed only if the export succeeded.</p>
 -- Required parameter: exportId
 -- Required parameter: exportStatus
 -- Required parameter: statusMessage
@@ -1038,7 +1038,7 @@ end
 
 --- Create a structure of type StartExportTaskResponse
 --  
--- @param exportId [ConfigurationsExportId] &lt;p&gt; A unique identifier used to query the status of an export request.&lt;/p&gt;
+-- @param exportId [ConfigurationsExportId] <p> A unique identifier used to query the status of an export request.</p>
 function M.StartExportTaskResponse(exportId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartExportTaskResponse")
 	local t = { 
@@ -1100,8 +1100,8 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The specified configuration ID was not located. Verify the configuration ID and try again.&lt;/p&gt;
--- @param message [Message] &lt;p&gt;The specified configuration ID was not located. Verify the configuration ID and try again.&lt;/p&gt;
+-- <p>The specified configuration ID was not located. Verify the configuration ID and try again.</p>
+-- @param message [Message] <p>The specified configuration ID was not located. Verify the configuration ID and try again.</p>
 function M.ResourceNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -1129,12 +1129,12 @@ end
 
 --- Create a structure of type GetDiscoverySummaryResponse
 --  
--- @param serversMappedtoTags [Long] &lt;p&gt;The number of servers mapped to tags.&lt;/p&gt;
--- @param agentSummary [CustomerAgentInfo] &lt;p&gt;Details about discovered agents, including agent status and health.&lt;/p&gt;
--- @param servers [Long] &lt;p&gt;The number of servers discovered.&lt;/p&gt;
--- @param applications [Long] &lt;p&gt;The number of applications discovered.&lt;/p&gt;
--- @param serversMappedToApplications [Long] &lt;p&gt;The number of servers mapped to applications.&lt;/p&gt;
--- @param connectorSummary [CustomerConnectorInfo] &lt;p&gt;Details about discovered connectors, including connector status and health.&lt;/p&gt;
+-- @param serversMappedtoTags [Long] <p>The number of servers mapped to tags.</p>
+-- @param agentSummary [CustomerAgentInfo] <p>Details about discovered agents, including agent status and health.</p>
+-- @param servers [Long] <p>The number of servers discovered.</p>
+-- @param applications [Long] <p>The number of applications discovered.</p>
+-- @param serversMappedToApplications [Long] <p>The number of servers mapped to applications.</p>
+-- @param connectorSummary [CustomerConnectorInfo] <p>Details about discovered connectors, including connector status and health.</p>
 function M.GetDiscoverySummaryResponse(serversMappedtoTags, agentSummary, servers, applications, serversMappedToApplications, connectorSummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDiscoverySummaryResponse")
 	local t = { 
@@ -1163,8 +1163,8 @@ end
 
 --- Create a structure of type DescribeExportConfigurationsResponse
 --  
--- @param exportsInfo [ExportsInfo] &lt;p&gt;Returns export details. When the status is complete, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;A token to get the next set of results. For example, if you specify 100 IDs for &lt;code&gt;DescribeExportConfigurationsRequest$exportIds&lt;/code&gt; but set &lt;code&gt;DescribeExportConfigurationsRequest$maxResults&lt;/code&gt; to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.&lt;/p&gt;
+-- @param exportsInfo [ExportsInfo] <p>Returns export details. When the status is complete, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
+-- @param nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
 function M.DescribeExportConfigurationsResponse(exportsInfo, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportConfigurationsResponse")
 	local t = { 
@@ -1189,8 +1189,8 @@ end
 
 --- Create a structure of type DescribeTagsResponse
 --  
--- @param nextToken [NextToken] &lt;p&gt;The call returns a token. Use this token to get the next set of results.&lt;/p&gt;
--- @param tags [ConfigurationTagSet] &lt;p&gt;Depending on the input, this is a list of configuration items tagged with a specific tag, or a list of tags for a specific configuration item.&lt;/p&gt;
+-- @param nextToken [NextToken] <p>The call returns a token. Use this token to get the next set of results.</p>
+-- @param tags [ConfigurationTagSet] <p>Depending on the input, this is a list of configuration items tagged with a specific tag, or a list of tags for a specific configuration item.</p>
 function M.DescribeTagsResponse(nextToken, tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsResponse")
 	local t = { 
@@ -1215,7 +1215,7 @@ end
 
 --- Create a structure of type DescribeConfigurationsRequest
 --  
--- @param configurationIds [ConfigurationIdList] &lt;p&gt;One or more configuration IDs.&lt;/p&gt;
+-- @param configurationIds [ConfigurationIdList] <p>One or more configuration IDs.</p>
 -- Required parameter: configurationIds
 function M.DescribeConfigurationsRequest(configurationIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationsRequest")
@@ -1271,14 +1271,14 @@ function M.AssertCustomerConnectorInfo(struct)
 end
 
 --- Create a structure of type CustomerConnectorInfo
--- &lt;p&gt;Inventory data for installed discovery connectors.&lt;/p&gt;
--- @param shutdownConnectors [Integer] &lt;p&gt;Number of discovery connectors with status SHUTDOWN,&lt;/p&gt;
--- @param activeConnectors [Integer] &lt;p&gt;Number of active discovery connectors.&lt;/p&gt;
--- @param unhealthyConnectors [Integer] &lt;p&gt;Number of unhealthy discovery connectors.&lt;/p&gt;
--- @param blackListedConnectors [Integer] &lt;p&gt;Number of blacklisted discovery connectors.&lt;/p&gt;
--- @param unknownConnectors [Integer] &lt;p&gt;Number of unknown discovery connectors.&lt;/p&gt;
--- @param totalConnectors [Integer] &lt;p&gt;Total number of discovery connectors.&lt;/p&gt;
--- @param healthyConnectors [Integer] &lt;p&gt;Number of healthy discovery connectors.&lt;/p&gt;
+-- <p>Inventory data for installed discovery connectors.</p>
+-- @param shutdownConnectors [Integer] <p>Number of discovery connectors with status SHUTDOWN,</p>
+-- @param activeConnectors [Integer] <p>Number of active discovery connectors.</p>
+-- @param unhealthyConnectors [Integer] <p>Number of unhealthy discovery connectors.</p>
+-- @param blackListedConnectors [Integer] <p>Number of blacklisted discovery connectors.</p>
+-- @param unknownConnectors [Integer] <p>Number of unknown discovery connectors.</p>
+-- @param totalConnectors [Integer] <p>Total number of discovery connectors.</p>
+-- @param healthyConnectors [Integer] <p>Number of healthy discovery connectors.</p>
 -- Required parameter: activeConnectors
 -- Required parameter: healthyConnectors
 -- Required parameter: blackListedConnectors
@@ -1316,9 +1316,9 @@ end
 
 --- Create a structure of type DescribeExportTasksRequest
 --  
--- @param exportIds [ExportIds] &lt;p&gt;One or more unique identifiers used to query the status of an export request.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value returned from a previous paginated &lt;code&gt;DescribeExportTasks&lt;/code&gt; request where &lt;code&gt;maxResults&lt;/code&gt; was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the &lt;code&gt;nextToken&lt;/code&gt; value. This value is null when there are no more results to return.&lt;/p&gt;
--- @param maxResults [Integer] &lt;p&gt;The maximum number of volume results returned by &lt;code&gt;DescribeExportTasks&lt;/code&gt; in paginated output. When this parameter is used, &lt;code&gt;DescribeExportTasks&lt;/code&gt; only returns &lt;code&gt;maxResults&lt;/code&gt; results in a single page along with a &lt;code&gt;nextToken&lt;/code&gt; response element.&lt;/p&gt;
+-- @param exportIds [ExportIds] <p>One or more unique identifiers used to query the status of an export request.</p>
+-- @param nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeExportTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is null when there are no more results to return.</p>
+-- @param maxResults [Integer] <p>The maximum number of volume results returned by <code>DescribeExportTasks</code> in paginated output. When this parameter is used, <code>DescribeExportTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element.</p>
 function M.DescribeExportTasksRequest(exportIds, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportTasksRequest")
 	local t = { 
@@ -1342,8 +1342,8 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;One or more parameters are not valid. Verify the parameters and try again.&lt;/p&gt;
--- @param message [Message] &lt;p&gt;One or more parameters are not valid. Verify the parameters and try again.&lt;/p&gt;
+-- <p>One or more parameters are not valid. Verify the parameters and try again.</p>
+-- @param message [Message] <p>One or more parameters are not valid. Verify the parameters and try again.</p>
 function M.InvalidParameterException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -1368,8 +1368,8 @@ end
 
 --- Create a structure of type CreateApplicationRequest
 --  
--- @param name [String] &lt;p&gt;Name of the application to be created.&lt;/p&gt;
--- @param description [String] &lt;p&gt;Description of the application to be created.&lt;/p&gt;
+-- @param name [String] <p>Name of the application to be created.</p>
+-- @param description [String] <p>Description of the application to be created.</p>
 -- Required parameter: name
 function M.CreateApplicationRequest(name, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationRequest")
@@ -1397,12 +1397,12 @@ function M.AssertConfigurationTag(struct)
 end
 
 --- Create a structure of type ConfigurationTag
--- &lt;p&gt;Tags for a configuration item. Tags are metadata that help you categorize IT assets.&lt;/p&gt;
--- @param timeOfCreation [TimeStamp] &lt;p&gt;The time the configuration tag was created in Coordinated Universal Time (UTC).&lt;/p&gt;
--- @param configurationId [ConfigurationId] &lt;p&gt;The configuration ID for the item to tag. You can specify a list of keys and values.&lt;/p&gt;
--- @param value [TagValue] &lt;p&gt;A value on which to filter. For example &lt;i&gt;key = serverType&lt;/i&gt; and &lt;i&gt;value = web server&lt;/i&gt;.&lt;/p&gt;
--- @param key [TagKey] &lt;p&gt;A type of tag on which to filter. For example, &lt;i&gt;serverType&lt;/i&gt;.&lt;/p&gt;
--- @param configurationType [ConfigurationItemType] &lt;p&gt;A type of IT asset to tag.&lt;/p&gt;
+-- <p>Tags for a configuration item. Tags are metadata that help you categorize IT assets.</p>
+-- @param timeOfCreation [TimeStamp] <p>The time the configuration tag was created in Coordinated Universal Time (UTC).</p>
+-- @param configurationId [ConfigurationId] <p>The configuration ID for the item to tag. You can specify a list of keys and values.</p>
+-- @param value [TagValue] <p>A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.</p>
+-- @param key [TagKey] <p>A type of tag on which to filter. For example, <i>serverType</i>.</p>
+-- @param configurationType [ConfigurationItemType] <p>A type of IT asset to tag.</p>
 function M.ConfigurationTag(timeOfCreation, configurationId, value, key, configurationType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationTag")
 	local t = { 
@@ -1431,9 +1431,9 @@ function M.AssertTagFilter(struct)
 end
 
 --- Create a structure of type TagFilter
--- &lt;p&gt;The tag filter. Valid names are: &lt;code&gt;tagKey&lt;/code&gt;, &lt;code&gt;tagValue&lt;/code&gt;, &lt;code&gt;configurationId&lt;/code&gt;.&lt;/p&gt;
--- @param values [FilterValues] &lt;p&gt;Values for the tag filter.&lt;/p&gt;
--- @param name [FilterName] &lt;p&gt;A name of the tag filter.&lt;/p&gt;
+-- <p>The tag filter. Valid names are: <code>tagKey</code>, <code>tagValue</code>, <code>configurationId</code>.</p>
+-- @param values [FilterValues] <p>Values for the tag filter.</p>
+-- @param name [FilterName] <p>A name of the tag filter.</p>
 -- Required parameter: name
 -- Required parameter: values
 function M.TagFilter(values, name, ...)
@@ -1459,7 +1459,7 @@ end
 
 --- Create a structure of type CreateApplicationResponse
 --  
--- @param configurationId [String] &lt;p&gt;Configuration ID of an application to be created.&lt;/p&gt;
+-- @param configurationId [String] <p>Configuration ID of an application to be created.</p>
 function M.CreateApplicationResponse(configurationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationResponse")
 	local t = { 
@@ -1494,14 +1494,14 @@ function M.AssertCustomerAgentInfo(struct)
 end
 
 --- Create a structure of type CustomerAgentInfo
--- &lt;p&gt;Inventory data for installed discovery agents.&lt;/p&gt;
--- @param healthyAgents [Integer] &lt;p&gt;Number of healthy discovery agents&lt;/p&gt;
--- @param unhealthyAgents [Integer] &lt;p&gt;Number of unhealthy discovery agents.&lt;/p&gt;
--- @param unknownAgents [Integer] &lt;p&gt;Number of unknown discovery agents.&lt;/p&gt;
--- @param activeAgents [Integer] &lt;p&gt;Number of active discovery agents.&lt;/p&gt;
--- @param shutdownAgents [Integer] &lt;p&gt;Number of discovery agents with status SHUTDOWN.&lt;/p&gt;
--- @param totalAgents [Integer] &lt;p&gt;Total number of discovery agents.&lt;/p&gt;
--- @param blackListedAgents [Integer] &lt;p&gt;Number of blacklisted discovery agents.&lt;/p&gt;
+-- <p>Inventory data for installed discovery agents.</p>
+-- @param healthyAgents [Integer] <p>Number of healthy discovery agents</p>
+-- @param unhealthyAgents [Integer] <p>Number of unhealthy discovery agents.</p>
+-- @param unknownAgents [Integer] <p>Number of unknown discovery agents.</p>
+-- @param activeAgents [Integer] <p>Number of active discovery agents.</p>
+-- @param shutdownAgents [Integer] <p>Number of discovery agents with status SHUTDOWN.</p>
+-- @param totalAgents [Integer] <p>Total number of discovery agents.</p>
+-- @param blackListedAgents [Integer] <p>Number of blacklisted discovery agents.</p>
 -- Required parameter: activeAgents
 -- Required parameter: healthyAgents
 -- Required parameter: blackListedAgents
@@ -1539,9 +1539,9 @@ end
 
 --- Create a structure of type DescribeExportConfigurationsRequest
 --  
--- @param exportIds [ExportIds] &lt;p&gt;A unique identifier that you can use to query the export status.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;A token to get the next set of results. For example, if you specify 100 IDs for &lt;code&gt;DescribeExportConfigurationsRequest$exportIds&lt;/code&gt; but set &lt;code&gt;DescribeExportConfigurationsRequest$maxResults&lt;/code&gt; to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.&lt;/p&gt;
--- @param maxResults [Integer] &lt;p&gt;The maximum number of results that you want to display as a part of the query.&lt;/p&gt;
+-- @param exportIds [ExportIds] <p>A unique identifier that you can use to query the export status.</p>
+-- @param nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
+-- @param maxResults [Integer] <p>The maximum number of results that you want to display as a part of the query.</p>
 function M.DescribeExportConfigurationsRequest(exportIds, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportConfigurationsRequest")
 	local t = { 
@@ -1569,8 +1569,8 @@ end
 
 --- Create a structure of type DisassociateConfigurationItemsFromApplicationRequest
 --  
--- @param applicationConfigurationId [ApplicationId] &lt;p&gt;Configuration ID of an application from which each item is disassociated.&lt;/p&gt;
--- @param configurationIds [ConfigurationIdList] &lt;p&gt;Configuration ID of each item to be disassociated from an application.&lt;/p&gt;
+-- @param applicationConfigurationId [ApplicationId] <p>Configuration ID of an application from which each item is disassociated.</p>
+-- @param configurationIds [ConfigurationIdList] <p>Configuration ID of each item to be disassociated from an application.</p>
 -- Required parameter: applicationConfigurationId
 -- Required parameter: configurationIds
 function M.DisassociateConfigurationItemsFromApplicationRequest(applicationConfigurationId, configurationIds, ...)

@@ -31,9 +31,9 @@ function M.AssertListAssociatedStacksResult(struct)
 end
 
 --- Create a structure of type ListAssociatedStacksResult
--- &lt;p&gt;The response from a successful operation.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param Names [StringList] &lt;p&gt;The names of associated stacks.&lt;/p&gt;
+-- <p>The response from a successful operation.</p>
+-- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param Names [StringList] <p>The names of associated stacks.</p>
 function M.ListAssociatedStacksResult(NextToken, Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedStacksResult")
 	local t = { 
@@ -77,7 +77,7 @@ end
 
 --- Create a structure of type DescribeImagesResult
 --  
--- @param Images [ImageList] &lt;p&gt;The list of images.&lt;/p&gt;
+-- @param Images [ImageList] <p>The list of images.</p>
 function M.DescribeImagesResult(Images, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesResult")
 	local t = { 
@@ -99,8 +99,8 @@ function M.AssertOperationNotPermittedException(struct)
 end
 
 --- Create a structure of type OperationNotPermittedException
--- &lt;p&gt;The attempted operation is not permitted.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;The attempted operation is not permitted.&lt;/p&gt;
+-- <p>The attempted operation is not permitted.</p>
+-- @param Message [ErrorMessage] <p>The attempted operation is not permitted.</p>
 function M.OperationNotPermittedException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
 	local t = { 
@@ -124,7 +124,7 @@ end
 
 --- Create a structure of type DeleteFleetRequest
 --  
--- @param Name [String] &lt;p&gt;The name of the fleet to be deleted.&lt;/p&gt;
+-- @param Name [String] <p>The name of the fleet to be deleted.</p>
 -- Required parameter: Name
 function M.DeleteFleetRequest(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFleetRequest")
@@ -152,10 +152,10 @@ end
 
 --- Create a structure of type CreateStackRequest
 --  
--- @param DisplayName [DisplayName] &lt;p&gt;The name displayed to end users on the AppStream 2.0 portal.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The unique identifier for this stack.&lt;/p&gt;
--- @param StorageConnectors [StorageConnectorList] &lt;p&gt;The storage connectors to be enabled for the stack.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The description displayed to end users on the AppStream 2.0 portal.&lt;/p&gt;
+-- @param DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- @param Name [String] <p>The unique identifier for this stack.</p>
+-- @param StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
+-- @param Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
 -- Required parameter: Name
 function M.CreateStackRequest(DisplayName, Name, StorageConnectors, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackRequest")
@@ -183,8 +183,8 @@ end
 
 --- Create a structure of type DescribeSessionsResult
 --  
--- @param NextToken [String] &lt;p&gt;The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param Sessions [SessionList] &lt;p&gt;The list of streaming sessions.&lt;/p&gt;
+-- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param Sessions [SessionList] <p>The list of streaming sessions.</p>
 function M.DescribeSessionsResult(NextToken, Sessions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSessionsResult")
 	local t = { 
@@ -214,14 +214,14 @@ function M.AssertStack(struct)
 end
 
 --- Create a structure of type Stack
--- &lt;p&gt;Details about a stack.&lt;/p&gt;
--- @param DisplayName [String] &lt;p&gt;A display name for the stack.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The unique identifier of the stack.&lt;/p&gt;
--- @param StorageConnectors [StorageConnectorList] &lt;p&gt;The storage connectors to be enabled for the stack.&lt;/p&gt;
--- @param StackErrors [StackErrors] &lt;p&gt;The list of errors associated with the stack.&lt;/p&gt;
--- @param CreatedTime [Timestamp] &lt;p&gt;The timestamp when the stack was created.&lt;/p&gt;
--- @param Arn [Arn] &lt;p&gt;The ARN of the stack.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A meaningful description for the stack.&lt;/p&gt;
+-- <p>Details about a stack.</p>
+-- @param DisplayName [String] <p>A display name for the stack.</p>
+-- @param Name [String] <p>The unique identifier of the stack.</p>
+-- @param StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
+-- @param StackErrors [StackErrors] <p>The list of errors associated with the stack.</p>
+-- @param CreatedTime [Timestamp] <p>The timestamp when the stack was created.</p>
+-- @param Arn [Arn] <p>The ARN of the stack.</p>
+-- @param Description [String] <p>A meaningful description for the stack.</p>
 -- Required parameter: Name
 function M.Stack(DisplayName, Name, StorageConnectors, StackErrors, CreatedTime, Arn, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Stack")
@@ -274,11 +274,11 @@ function M.AssertComputeCapacityStatus(struct)
 end
 
 --- Create a structure of type ComputeCapacityStatus
--- &lt;p&gt;The capacity information for the fleet.&lt;/p&gt;
--- @param Available [Integer] &lt;p&gt;The number of currently available instances that can be used to stream sessions.&lt;/p&gt;
--- @param Desired [Integer] &lt;p&gt;The desired number of streaming instances.&lt;/p&gt;
--- @param Running [Integer] &lt;p&gt;The total number of simultaneous streaming instances that are running.&lt;/p&gt;
--- @param InUse [Integer] &lt;p&gt;The number of instances that are being used for streaming.&lt;/p&gt;
+-- <p>The capacity information for the fleet.</p>
+-- @param Available [Integer] <p>The number of currently available instances that can be used to stream sessions.</p>
+-- @param Desired [Integer] <p>The desired number of streaming instances.</p>
+-- @param Running [Integer] <p>The total number of simultaneous streaming instances that are running.</p>
+-- @param InUse [Integer] <p>The number of instances that are being used for streaming.</p>
 -- Required parameter: Desired
 function M.ComputeCapacityStatus(Available, Desired, Running, InUse, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComputeCapacityStatus")
@@ -304,8 +304,8 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;The requested limit exceeds the permitted limit for an account.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;The requested limit exceeds the permitted limit for an account.&lt;/p&gt;
+-- <p>The requested limit exceeds the permitted limit for an account.</p>
+-- @param Message [ErrorMessage] <p>The requested limit exceeds the permitted limit for an account.</p>
 function M.LimitExceededException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -327,8 +327,8 @@ function M.AssertConcurrentModificationException(struct)
 end
 
 --- Create a structure of type ConcurrentModificationException
--- &lt;p&gt;An API error occurred. Wait a few minutes and try again.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;An API error occurred. Wait a few minutes and try again.&lt;/p&gt;
+-- <p>An API error occurred. Wait a few minutes and try again.</p>
+-- @param Message [ErrorMessage] <p>An API error occurred. Wait a few minutes and try again.</p>
 function M.ConcurrentModificationException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
@@ -352,7 +352,7 @@ end
 
 --- Create a structure of type StartFleetRequest
 --  
--- @param Name [String] &lt;p&gt;The name of the fleet to start.&lt;/p&gt;
+-- @param Name [String] <p>The name of the fleet to start.</p>
 -- Required parameter: Name
 function M.StartFleetRequest(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartFleetRequest")
@@ -377,8 +377,8 @@ end
 
 --- Create a structure of type DescribeStacksRequest
 --  
--- @param NextToken [String] &lt;p&gt;The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.&lt;/p&gt;
--- @param Names [StringList] &lt;p&gt;The stack names to describe. Use null to describe all the stacks for the AWS account.&lt;/p&gt;
+-- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- @param Names [StringList] <p>The stack names to describe. Use null to describe all the stacks for the AWS account.</p>
 function M.DescribeStacksRequest(NextToken, Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksRequest")
 	local t = { 
@@ -410,12 +410,12 @@ end
 
 --- Create a structure of type CreateStreamingURLRequest
 --  
--- @param FleetName [String] &lt;p&gt;The fleet for which the URL is generated.&lt;/p&gt;
--- @param UserId [UserId] &lt;p&gt;A unique user ID for whom the URL is generated.&lt;/p&gt;
--- @param Validity [Long] &lt;p&gt;The duration up to which the URL returned by this action is valid. The input can be any numeric value in seconds between 1 and 604800 seconds.&lt;/p&gt;
--- @param StackName [String] &lt;p&gt;The stack for which the URL is generated.&lt;/p&gt;
--- @param SessionContext [String] &lt;p&gt;The sessionContext of the streaming URL.&lt;/p&gt;
--- @param ApplicationId [String] &lt;p&gt;The ID of the application that must be launched after the session starts.&lt;/p&gt;
+-- @param FleetName [String] <p>The fleet for which the URL is generated.</p>
+-- @param UserId [UserId] <p>A unique user ID for whom the URL is generated.</p>
+-- @param Validity [Long] <p>The duration up to which the URL returned by this action is valid. The input can be any numeric value in seconds between 1 and 604800 seconds.</p>
+-- @param StackName [String] <p>The stack for which the URL is generated.</p>
+-- @param SessionContext [String] <p>The sessionContext of the streaming URL.</p>
+-- @param ApplicationId [String] <p>The ID of the application that must be launched after the session starts.</p>
 -- Required parameter: StackName
 -- Required parameter: FleetName
 -- Required parameter: UserId
@@ -451,14 +451,14 @@ function M.AssertApplication(struct)
 end
 
 --- Create a structure of type Application
--- &lt;p&gt;An entry for a single application in the application catalog.&lt;/p&gt;
--- @param DisplayName [String] &lt;p&gt;The name of the application shown to the end users.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The unique identifier for the application.&lt;/p&gt;
--- @param LaunchParameters [String] &lt;p&gt;A list of arguments that are passed to the application at launch.&lt;/p&gt;
--- @param Enabled [Boolean] &lt;p&gt;An application can be disabled after image creation if there is a problem.&lt;/p&gt;
--- @param IconURL [String] &lt;p&gt;The URL for the application icon. This URL may be time-limited.&lt;/p&gt;
--- @param LaunchPath [String] &lt;p&gt;The path to the application executable in the instance.&lt;/p&gt;
--- @param Metadata [Metadata] &lt;p&gt;Additional attributes that describe the application.&lt;/p&gt;
+-- <p>An entry for a single application in the application catalog.</p>
+-- @param DisplayName [String] <p>The name of the application shown to the end users.</p>
+-- @param Name [String] <p>The unique identifier for the application.</p>
+-- @param LaunchParameters [String] <p>A list of arguments that are passed to the application at launch.</p>
+-- @param Enabled [Boolean] <p>An application can be disabled after image creation if there is a problem.</p>
+-- @param IconURL [String] <p>The URL for the application icon. This URL may be time-limited.</p>
+-- @param LaunchPath [String] <p>The path to the application executable in the instance.</p>
+-- @param Metadata [Metadata] <p>Additional attributes that describe the application.</p>
 function M.Application(DisplayName, Name, LaunchParameters, Enabled, IconURL, LaunchPath, Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Application")
 	local t = { 
@@ -512,11 +512,11 @@ end
 
 --- Create a structure of type UpdateStackRequest
 --  
--- @param DeleteStorageConnectors [Boolean] &lt;p&gt;Remove all the storage connectors currently enabled for the stack.&lt;/p&gt;
--- @param DisplayName [DisplayName] &lt;p&gt;The name displayed to end users on the AppStream 2.0 portal.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The description displayed to end users on the AppStream 2.0 portal.&lt;/p&gt;
--- @param StorageConnectors [StorageConnectorList] &lt;p&gt;The storage connectors to be enabled for the stack.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the stack to update.&lt;/p&gt;
+-- @param DeleteStorageConnectors [Boolean] <p>Remove all the storage connectors currently enabled for the stack.</p>
+-- @param DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- @param Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
+-- @param StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
+-- @param Name [String] <p>The name of the stack to update.</p>
 -- Required parameter: Name
 function M.UpdateStackRequest(DeleteStorageConnectors, DisplayName, Description, StorageConnectors, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStackRequest")
@@ -544,9 +544,9 @@ function M.AssertListAssociatedFleetsResult(struct)
 end
 
 --- Create a structure of type ListAssociatedFleetsResult
--- &lt;p&gt;The response from a successful operation.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param Names [StringList] &lt;p&gt;The names of associated fleets.&lt;/p&gt;
+-- <p>The response from a successful operation.</p>
+-- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param Names [StringList] <p>The names of associated fleets.</p>
 function M.ListAssociatedFleetsResult(NextToken, Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedFleetsResult")
 	local t = { 
@@ -569,8 +569,8 @@ function M.AssertInvalidParameterCombinationException(struct)
 end
 
 --- Create a structure of type InvalidParameterCombinationException
--- &lt;p&gt;Indicates an incorrect combination of parameters, or a missing parameter.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Indicates an incorrect combination of parameters, or a missing parameter.&lt;/p&gt;
+-- <p>Indicates an incorrect combination of parameters, or a missing parameter.</p>
+-- @param Message [ErrorMessage] <p>Indicates an incorrect combination of parameters, or a missing parameter.</p>
 function M.InvalidParameterCombinationException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterCombinationException")
 	local t = { 
@@ -593,7 +593,7 @@ end
 
 --- Create a structure of type UpdateStackResult
 --  
--- @param Stack [Stack] &lt;p&gt;A list of stack details.&lt;/p&gt;
+-- @param Stack [Stack] <p>A list of stack details.</p>
 function M.UpdateStackResult(Stack, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStackResult")
 	local t = { 
@@ -616,8 +616,8 @@ function M.AssertComputeCapacity(struct)
 end
 
 --- Create a structure of type ComputeCapacity
--- &lt;p&gt;The capacity configuration for the fleet.&lt;/p&gt;
--- @param DesiredInstances [Integer] &lt;p&gt;The desired number of streaming instances.&lt;/p&gt;
+-- <p>The capacity configuration for the fleet.</p>
+-- @param DesiredInstances [Integer] <p>The desired number of streaming instances.</p>
 -- Required parameter: DesiredInstances
 function M.ComputeCapacity(DesiredInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComputeCapacity")
@@ -642,7 +642,7 @@ end
 
 --- Create a structure of type ExpireSessionRequest
 --  
--- @param SessionId [String] &lt;p&gt;The unique identifier of the streaming session to be stopped.&lt;/p&gt;
+-- @param SessionId [String] <p>The unique identifier of the streaming session to be stopped.</p>
 -- Required parameter: SessionId
 function M.ExpireSessionRequest(SessionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpireSessionRequest")
@@ -665,8 +665,8 @@ function M.AssertIncompatibleImageException(struct)
 end
 
 --- Create a structure of type IncompatibleImageException
--- &lt;p&gt;The image does not support storage connectors.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;The image does not support storage connectors.&lt;/p&gt;
+-- <p>The image does not support storage connectors.</p>
+-- @param Message [ErrorMessage] <p>The image does not support storage connectors.</p>
 function M.IncompatibleImageException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IncompatibleImageException")
 	local t = { 
@@ -688,8 +688,8 @@ function M.AssertResourceAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ResourceAlreadyExistsException
--- &lt;p&gt;The specified resource already exists.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;The specified resource already exists.&lt;/p&gt;
+-- <p>The specified resource already exists.</p>
+-- @param Message [ErrorMessage] <p>The specified resource already exists.</p>
 function M.ResourceAlreadyExistsException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
 	local t = { 
@@ -713,7 +713,7 @@ end
 
 --- Create a structure of type DeleteStackRequest
 --  
--- @param Name [String] &lt;p&gt;The name of the stack to delete.&lt;/p&gt;
+-- @param Name [String] <p>The name of the stack to delete.</p>
 -- Required parameter: Name
 function M.DeleteStackRequest(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStackRequest")
@@ -737,7 +737,7 @@ end
 
 --- Create a structure of type CreateStackResult
 --  
--- @param Stack [Stack] &lt;p&gt;The details for the created stack.&lt;/p&gt;
+-- @param Stack [Stack] <p>The details for the created stack.</p>
 function M.CreateStackResult(Stack, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackResult")
 	local t = { 
@@ -772,20 +772,20 @@ function M.AssertImage(struct)
 end
 
 --- Create a structure of type Image
--- &lt;p&gt;New streaming instances are booted from images. The image stores the application catalog and is connected to fleets.&lt;/p&gt;
--- @param PublicBaseImageReleasedDate [Timestamp] &lt;p&gt;The AWS release date of the public base image. For private images, this date is the release date of the base image from which the image was created.&lt;/p&gt;
--- @param DisplayName [String] &lt;p&gt;The display name for the image.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The unique identifier for the image.&lt;/p&gt;
--- @param Applications [Applications] &lt;p&gt;The applications associated with an image.&lt;/p&gt;
--- @param BaseImageArn [Arn] &lt;p&gt;The source image ARN from which this image was created.&lt;/p&gt;
--- @param Visibility [VisibilityType] &lt;p&gt;The visibility of an image to the user; images can be public or private.&lt;/p&gt;
--- @param Platform [PlatformType] &lt;p&gt;The operating system platform of the image.&lt;/p&gt;
--- @param State [ImageState] &lt;p&gt;The image starts in the &lt;b&gt;PENDING&lt;/b&gt; state, and then moves to &lt;b&gt;AVAILABLE&lt;/b&gt; if image creation succeeds and &lt;b&gt;FAILED&lt;/b&gt; if image creation has failed.&lt;/p&gt;
--- @param CreatedTime [Timestamp] &lt;p&gt;The timestamp when the image was created.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A meaningful description for the image.&lt;/p&gt;
--- @param StateChangeReason [ImageStateChangeReason] &lt;p&gt;The reason why the last state change occurred.&lt;/p&gt;
--- @param Arn [Arn] &lt;p&gt;The ARN for the image.&lt;/p&gt;
--- @param ImageBuilderSupported [Boolean] &lt;p&gt;Whether an image builder can be launched from this image.&lt;/p&gt;
+-- <p>New streaming instances are booted from images. The image stores the application catalog and is connected to fleets.</p>
+-- @param PublicBaseImageReleasedDate [Timestamp] <p>The AWS release date of the public base image. For private images, this date is the release date of the base image from which the image was created.</p>
+-- @param DisplayName [String] <p>The display name for the image.</p>
+-- @param Name [String] <p>The unique identifier for the image.</p>
+-- @param Applications [Applications] <p>The applications associated with an image.</p>
+-- @param BaseImageArn [Arn] <p>The source image ARN from which this image was created.</p>
+-- @param Visibility [VisibilityType] <p>The visibility of an image to the user; images can be public or private.</p>
+-- @param Platform [PlatformType] <p>The operating system platform of the image.</p>
+-- @param State [ImageState] <p>The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and <b>FAILED</b> if image creation has failed.</p>
+-- @param CreatedTime [Timestamp] <p>The timestamp when the image was created.</p>
+-- @param Description [String] <p>A meaningful description for the image.</p>
+-- @param StateChangeReason [ImageStateChangeReason] <p>The reason why the last state change occurred.</p>
+-- @param Arn [Arn] <p>The ARN for the image.</p>
+-- @param ImageBuilderSupported [Boolean] <p>Whether an image builder can be launched from this image.</p>
 -- Required parameter: Name
 function M.Image(PublicBaseImageReleasedDate, DisplayName, Name, Applications, BaseImageArn, Visibility, Platform, State, CreatedTime, Description, StateChangeReason, Arn, ImageBuilderSupported, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Image")
@@ -830,13 +830,13 @@ function M.AssertSession(struct)
 end
 
 --- Create a structure of type Session
--- &lt;p&gt;Contains the parameters for a streaming session.&lt;/p&gt;
--- @param AuthenticationType [AuthenticationType] &lt;p&gt;The authentication method of the user for whom the session was created. It can be &lt;code&gt;API&lt;/code&gt; for a user authenticated using a streaming URL or &lt;code&gt;SAML&lt;/code&gt; for a SAML federated user.&lt;/p&gt;
--- @param UserId [UserId] &lt;p&gt;The identifier of the user for whom the session was created.&lt;/p&gt;
--- @param FleetName [String] &lt;p&gt;The name of the fleet for which the streaming session was created.&lt;/p&gt;
--- @param StackName [String] &lt;p&gt;The name of the stack for which the streaming session was created.&lt;/p&gt;
--- @param State [SessionState] &lt;p&gt;The current state of the streaming session.&lt;/p&gt;
--- @param Id [String] &lt;p&gt;The unique ID for a streaming session.&lt;/p&gt;
+-- <p>Contains the parameters for a streaming session.</p>
+-- @param AuthenticationType [AuthenticationType] <p>The authentication method of the user for whom the session was created. It can be <code>API</code> for a user authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.</p>
+-- @param UserId [UserId] <p>The identifier of the user for whom the session was created.</p>
+-- @param FleetName [String] <p>The name of the fleet for which the streaming session was created.</p>
+-- @param StackName [String] <p>The name of the stack for which the streaming session was created.</p>
+-- @param State [SessionState] <p>The current state of the streaming session.</p>
+-- @param Id [String] <p>The unique ID for a streaming session.</p>
 -- Required parameter: Id
 -- Required parameter: UserId
 -- Required parameter: StackName
@@ -870,7 +870,7 @@ end
 
 --- Create a structure of type StopFleetRequest
 --  
--- @param Name [String] &lt;p&gt;The name of the fleet to stop.&lt;/p&gt;
+-- @param Name [String] <p>The name of the fleet to stop.</p>
 -- Required parameter: Name
 function M.StopFleetRequest(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopFleetRequest")
@@ -894,9 +894,9 @@ function M.AssertImageStateChangeReason(struct)
 end
 
 --- Create a structure of type ImageStateChangeReason
--- &lt;p&gt;The reason why the last state change occurred.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The state change reason message to the end user.&lt;/p&gt;
--- @param Code [ImageStateChangeReasonCode] &lt;p&gt;The state change reason code of the image.&lt;/p&gt;
+-- <p>The reason why the last state change occurred.</p>
+-- @param Message [String] <p>The state change reason message to the end user.</p>
+-- @param Code [ImageStateChangeReasonCode] <p>The state change reason code of the image.</p>
 function M.ImageStateChangeReason(Message, Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImageStateChangeReason")
 	local t = { 
@@ -942,8 +942,8 @@ end
 
 --- Create a structure of type ListAssociatedFleetsRequest
 --  
--- @param StackName [String] &lt;p&gt;The name of the stack whose associated fleets are listed.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.&lt;/p&gt;
+-- @param StackName [String] <p>The name of the stack whose associated fleets are listed.</p>
+-- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
 -- Required parameter: StackName
 function M.ListAssociatedFleetsRequest(StackName, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedFleetsRequest")
@@ -969,8 +969,8 @@ end
 
 --- Create a structure of type DescribeStacksResult
 --  
--- @param NextToken [String] &lt;p&gt;The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param Stacks [StackList] &lt;p&gt;The list of stack details.&lt;/p&gt;
+-- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param Stacks [StackList] <p>The list of stack details.</p>
 function M.DescribeStacksResult(NextToken, Stacks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksResult")
 	local t = { 
@@ -1006,17 +1006,17 @@ function M.AssertCreateFleetRequest(struct)
 end
 
 --- Create a structure of type CreateFleetRequest
--- &lt;p&gt;Contains the parameters for the new fleet to create.&lt;/p&gt;
--- @param DisplayName [DisplayName] &lt;p&gt;The display name of the fleet.&lt;/p&gt;
--- @param MaxUserDurationInSeconds [Integer] &lt;p&gt;The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.&lt;/p&gt;
--- @param VpcConfig [VpcConfig] &lt;p&gt;The VPC configuration for the fleet.&lt;/p&gt;
--- @param DisconnectTimeoutInSeconds [Integer] &lt;p&gt;The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600. &lt;/p&gt;
--- @param EnableDefaultInternetAccess [BooleanObject] &lt;p&gt;Enables or disables default Internet access for the fleet.&lt;/p&gt;
--- @param ImageName [String] &lt;p&gt;Unique name of the image used by the fleet.&lt;/p&gt;
--- @param ComputeCapacity [ComputeCapacity] &lt;p&gt;The parameters for the capacity allocated to the fleet.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The description of the fleet.&lt;/p&gt;
--- @param InstanceType [String] &lt;p&gt;The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.&lt;/p&gt;
--- @param Name [Name] &lt;p&gt;A unique identifier for the fleet.&lt;/p&gt;
+-- <p>Contains the parameters for the new fleet to create.</p>
+-- @param DisplayName [DisplayName] <p>The display name of the fleet.</p>
+-- @param MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.</p>
+-- @param VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
+-- @param DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600. </p>
+-- @param EnableDefaultInternetAccess [BooleanObject] <p>Enables or disables default Internet access for the fleet.</p>
+-- @param ImageName [String] <p>Unique name of the image used by the fleet.</p>
+-- @param ComputeCapacity [ComputeCapacity] <p>The parameters for the capacity allocated to the fleet.</p>
+-- @param Description [Description] <p>The description of the fleet.</p>
+-- @param InstanceType [String] <p>The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.</p>
+-- @param Name [Name] <p>A unique identifier for the fleet.</p>
 -- Required parameter: Name
 -- Required parameter: ImageName
 -- Required parameter: InstanceType
@@ -1052,7 +1052,7 @@ end
 
 --- Create a structure of type UpdateFleetResult
 --  
--- @param Fleet [Fleet] &lt;p&gt;A list of fleet details.&lt;/p&gt;
+-- @param Fleet [Fleet] <p>A list of fleet details.</p>
 function M.UpdateFleetResult(Fleet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetResult")
 	local t = { 
@@ -1074,8 +1074,8 @@ function M.AssertInvalidRoleException(struct)
 end
 
 --- Create a structure of type InvalidRoleException
--- &lt;p&gt;The specified role is invalid.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;The specified role is invalid.&lt;/p&gt;
+-- <p>The specified role is invalid.</p>
+-- @param Message [ErrorMessage] <p>The specified role is invalid.</p>
 function M.InvalidRoleException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRoleException")
 	local t = { 
@@ -1100,8 +1100,8 @@ end
 
 --- Create a structure of type ListAssociatedStacksRequest
 --  
--- @param NextToken [String] &lt;p&gt;The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.&lt;/p&gt;
--- @param FleetName [String] &lt;p&gt;The name of the fleet whose associated stacks are listed.&lt;/p&gt;
+-- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- @param FleetName [String] <p>The name of the fleet whose associated stacks are listed.</p>
 -- Required parameter: FleetName
 function M.ListAssociatedStacksRequest(NextToken, FleetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedStacksRequest")
@@ -1164,21 +1164,21 @@ function M.AssertFleet(struct)
 end
 
 --- Create a structure of type Fleet
--- &lt;p&gt;Contains the parameters for a fleet.&lt;/p&gt;
--- @param ComputeCapacityStatus [ComputeCapacityStatus] &lt;p&gt;The capacity information for the fleet.&lt;/p&gt;
--- @param DisplayName [String] &lt;p&gt;The name displayed to end users on the AppStream 2.0 portal.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the fleet.&lt;/p&gt;
--- @param VpcConfig [VpcConfig] &lt;p&gt;The VPC configuration for the fleet.&lt;/p&gt;
--- @param FleetErrors [FleetErrors] &lt;p&gt;The list of fleet errors is appended to this list.&lt;/p&gt;
--- @param DisconnectTimeoutInSeconds [Integer] &lt;p&gt;The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.&lt;/p&gt;
--- @param EnableDefaultInternetAccess [BooleanObject] &lt;p&gt;Whether default Internet access is enabled for the fleet. &lt;/p&gt;
--- @param State [FleetState] &lt;p&gt;The current state for the fleet.&lt;/p&gt;
--- @param ImageName [String] &lt;p&gt;The image used by the fleet.&lt;/p&gt;
--- @param CreatedTime [Timestamp] &lt;p&gt;The time at which the fleet was created.&lt;/p&gt;
--- @param MaxUserDurationInSeconds [Integer] &lt;p&gt;The maximum time for which a streaming session can run. The value can be any numeric value in seconds between 600 and 57600.&lt;/p&gt;
--- @param InstanceType [String] &lt;p&gt;The instance type of compute resources for the fleet. The fleet instances are launched from this instance type. &lt;/p&gt;
--- @param Arn [Arn] &lt;p&gt;The ARN for the fleet.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description displayed to end users on the AppStream 2.0 portal.&lt;/p&gt;
+-- <p>Contains the parameters for a fleet.</p>
+-- @param ComputeCapacityStatus [ComputeCapacityStatus] <p>The capacity information for the fleet.</p>
+-- @param DisplayName [String] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- @param Name [String] <p>The name of the fleet.</p>
+-- @param VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
+-- @param FleetErrors [FleetErrors] <p>The list of fleet errors is appended to this list.</p>
+-- @param DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.</p>
+-- @param EnableDefaultInternetAccess [BooleanObject] <p>Whether default Internet access is enabled for the fleet. </p>
+-- @param State [FleetState] <p>The current state for the fleet.</p>
+-- @param ImageName [String] <p>The image used by the fleet.</p>
+-- @param CreatedTime [Timestamp] <p>The time at which the fleet was created.</p>
+-- @param MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The value can be any numeric value in seconds between 600 and 57600.</p>
+-- @param InstanceType [String] <p>The instance type of compute resources for the fleet. The fleet instances are launched from this instance type. </p>
+-- @param Arn [Arn] <p>The ARN for the fleet.</p>
+-- @param Description [String] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
 -- Required parameter: Arn
 -- Required parameter: Name
 -- Required parameter: ImageName
@@ -1221,8 +1221,8 @@ end
 
 --- Create a structure of type DescribeFleetsRequest
 --  
--- @param NextToken [String] &lt;p&gt;The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.&lt;/p&gt;
--- @param Names [StringList] &lt;p&gt;The fleet names to describe. Use null to describe all the fleets for the AWS account.&lt;/p&gt;
+-- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- @param Names [StringList] <p>The fleet names to describe. Use null to describe all the fleets for the AWS account.</p>
 function M.DescribeFleetsRequest(NextToken, Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetsRequest")
 	local t = { 
@@ -1247,8 +1247,8 @@ end
 
 --- Create a structure of type DescribeFleetsResult
 --  
--- @param Fleets [FleetList] &lt;p&gt;The list of fleet details.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
+-- @param Fleets [FleetList] <p>The list of fleet details.</p>
+-- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
 function M.DescribeFleetsResult(Fleets, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetsResult")
 	local t = { 
@@ -1271,8 +1271,8 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The specified resource was not found.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;The specified resource was not found.&lt;/p&gt;
+-- <p>The specified resource was not found.</p>
+-- @param Message [ErrorMessage] <p>The specified resource was not found.</p>
 function M.ResourceNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -1307,18 +1307,18 @@ end
 
 --- Create a structure of type UpdateFleetRequest
 --  
--- @param AttributesToDelete [FleetAttributes] &lt;p&gt;Fleet attributes to be deleted.&lt;/p&gt;
--- @param DeleteVpcConfig [Boolean] &lt;p&gt;Delete the VPC association for the specified fleet.&lt;/p&gt;
--- @param DisplayName [DisplayName] &lt;p&gt;The name displayed to end users on the AppStream 2.0 portal.&lt;/p&gt;
--- @param MaxUserDurationInSeconds [Integer] &lt;p&gt;The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.&lt;/p&gt;
--- @param VpcConfig [VpcConfig] &lt;p&gt;The VPC configuration for the fleet.&lt;/p&gt;
--- @param DisconnectTimeoutInSeconds [Integer] &lt;p&gt;The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.&lt;/p&gt;
--- @param EnableDefaultInternetAccess [BooleanObject] &lt;p&gt;Enables or disables default Internet access for the fleet.&lt;/p&gt;
--- @param ImageName [String] &lt;p&gt;The image name from which a fleet is created.&lt;/p&gt;
--- @param ComputeCapacity [ComputeCapacity] &lt;p&gt;The parameters for the capacity allocated to the fleet. &lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The description displayed to end users on the AppStream 2.0 portal.&lt;/p&gt;
--- @param InstanceType [String] &lt;p&gt;The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the fleet.&lt;/p&gt;
+-- @param AttributesToDelete [FleetAttributes] <p>Fleet attributes to be deleted.</p>
+-- @param DeleteVpcConfig [Boolean] <p>Delete the VPC association for the specified fleet.</p>
+-- @param DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- @param MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.</p>
+-- @param VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
+-- @param DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.</p>
+-- @param EnableDefaultInternetAccess [BooleanObject] <p>Enables or disables default Internet access for the fleet.</p>
+-- @param ImageName [String] <p>The image name from which a fleet is created.</p>
+-- @param ComputeCapacity [ComputeCapacity] <p>The parameters for the capacity allocated to the fleet. </p>
+-- @param Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
+-- @param InstanceType [String] <p>The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.</p>
+-- @param Name [String] <p>The name of the fleet.</p>
 -- Required parameter: Name
 function M.UpdateFleetRequest(AttributesToDelete, DeleteVpcConfig, DisplayName, MaxUserDurationInSeconds, VpcConfig, DisconnectTimeoutInSeconds, EnableDefaultInternetAccess, ImageName, ComputeCapacity, Description, InstanceType, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetRequest")
@@ -1353,9 +1353,9 @@ function M.AssertFleetError(struct)
 end
 
 --- Create a structure of type FleetError
--- &lt;p&gt;The details of the fleet error.&lt;/p&gt;
--- @param ErrorCode [FleetErrorCode] &lt;p&gt;The error code for the fleet error.&lt;/p&gt;
--- @param ErrorMessage [String] &lt;p&gt;The error message generated when the fleet has errors.&lt;/p&gt;
+-- <p>The details of the fleet error.</p>
+-- @param ErrorCode [FleetErrorCode] <p>The error code for the fleet error.</p>
+-- @param ErrorMessage [String] <p>The error message generated when the fleet has errors.</p>
 function M.FleetError(ErrorCode, ErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FleetError")
 	local t = { 
@@ -1386,12 +1386,12 @@ end
 
 --- Create a structure of type DescribeSessionsRequest
 --  
--- @param AuthenticationType [AuthenticationType] &lt;p&gt;The authentication method of the user. It can be &lt;code&gt;API&lt;/code&gt; for a user authenticated using a streaming URL, or &lt;code&gt;SAML&lt;/code&gt; for a SAML federated user. If an authentication type is not provided, the operation defaults to users authenticated using a streaming URL.&lt;/p&gt;
--- @param FleetName [String] &lt;p&gt;The name of the fleet for which to list sessions.&lt;/p&gt;
--- @param UserId [UserId] &lt;p&gt;The user for whom to list sessions. Use null to describe all the sessions for the stack and fleet.&lt;/p&gt;
--- @param StackName [String] &lt;p&gt;The name of the stack for which to list sessions.&lt;/p&gt;
--- @param Limit [Integer] &lt;p&gt;The size of each page of results. The default value is 20 and the maximum supported value is 50.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.&lt;/p&gt;
+-- @param AuthenticationType [AuthenticationType] <p>The authentication method of the user. It can be <code>API</code> for a user authenticated using a streaming URL, or <code>SAML</code> for a SAML federated user. If an authentication type is not provided, the operation defaults to users authenticated using a streaming URL.</p>
+-- @param FleetName [String] <p>The name of the fleet for which to list sessions.</p>
+-- @param UserId [UserId] <p>The user for whom to list sessions. Use null to describe all the sessions for the stack and fleet.</p>
+-- @param StackName [String] <p>The name of the stack for which to list sessions.</p>
+-- @param Limit [Integer] <p>The size of each page of results. The default value is 20 and the maximum supported value is 50.</p>
+-- @param NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
 -- Required parameter: StackName
 -- Required parameter: FleetName
 function M.DescribeSessionsRequest(AuthenticationType, FleetName, UserId, StackName, Limit, NextToken, ...)
@@ -1424,8 +1424,8 @@ end
 
 --- Create a structure of type AssociateFleetRequest
 --  
--- @param StackName [String] &lt;p&gt;The name of the stack to which the fleet is associated.&lt;/p&gt;
--- @param FleetName [String] &lt;p&gt;The name of the fleet to associate.&lt;/p&gt;
+-- @param StackName [String] <p>The name of the stack to which the fleet is associated.</p>
+-- @param FleetName [String] <p>The name of the fleet to associate.</p>
 -- Required parameter: FleetName
 -- Required parameter: StackName
 function M.AssociateFleetRequest(StackName, FleetName, ...)
@@ -1450,8 +1450,8 @@ function M.AssertResourceNotAvailableException(struct)
 end
 
 --- Create a structure of type ResourceNotAvailableException
--- &lt;p&gt;The specified resource exists and is not in use, but isn't available.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;The specified resource exists and is not in use, but isn't available.&lt;/p&gt;
+-- <p>The specified resource exists and is not in use, but isn't available.</p>
+-- @param Message [ErrorMessage] <p>The specified resource exists and is not in use, but isn't available.</p>
 function M.ResourceNotAvailableException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotAvailableException")
 	local t = { 
@@ -1474,7 +1474,7 @@ end
 
 --- Create a structure of type CreateFleetResult
 --  
--- @param Fleet [Fleet] &lt;p&gt;The details for the created fleet.&lt;/p&gt;
+-- @param Fleet [Fleet] <p>The details for the created fleet.</p>
 function M.CreateFleetResult(Fleet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFleetResult")
 	local t = { 
@@ -1498,9 +1498,9 @@ function M.AssertStorageConnector(struct)
 end
 
 --- Create a structure of type StorageConnector
--- &lt;p&gt;Contains the parameters for a storage connector.&lt;/p&gt;
--- @param ConnectorType [StorageConnectorType] &lt;p&gt;The type of storage connector. The possible values include: HOMEFOLDERS.&lt;/p&gt;
--- @param ResourceIdentifier [ResourceIdentifier] &lt;p&gt;The ARN associated with the storage connector.&lt;/p&gt;
+-- <p>Contains the parameters for a storage connector.</p>
+-- @param ConnectorType [StorageConnectorType] <p>The type of storage connector. The possible values include: HOMEFOLDERS.</p>
+-- @param ResourceIdentifier [ResourceIdentifier] <p>The ARN associated with the storage connector.</p>
 -- Required parameter: ConnectorType
 function M.StorageConnector(ConnectorType, ResourceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageConnector")
@@ -1525,7 +1525,7 @@ end
 
 --- Create a structure of type DescribeImagesRequest
 --  
--- @param Names [StringList] &lt;p&gt;A specific list of images to describe.&lt;/p&gt;
+-- @param Names [StringList] <p>A specific list of images to describe.</p>
 function M.DescribeImagesRequest(Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesRequest")
 	local t = { 
@@ -1548,9 +1548,9 @@ function M.AssertStackError(struct)
 end
 
 --- Create a structure of type StackError
--- &lt;p&gt;Contains the parameters for a stack error.&lt;/p&gt;
--- @param ErrorCode [StackErrorCode] &lt;p&gt;The error code of a stack error.&lt;/p&gt;
--- @param ErrorMessage [String] &lt;p&gt;The error message of a stack error.&lt;/p&gt;
+-- <p>Contains the parameters for a stack error.</p>
+-- @param ErrorCode [StackErrorCode] <p>The error code of a stack error.</p>
+-- @param ErrorMessage [String] <p>The error message of a stack error.</p>
 function M.StackError(ErrorCode, ErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StackError")
 	local t = { 
@@ -1615,8 +1615,8 @@ end
 
 --- Create a structure of type CreateStreamingURLResult
 --  
--- @param Expires [Timestamp] &lt;p&gt;Elapsed seconds after the Unix epoch, at which time this URL expires.&lt;/p&gt;
--- @param StreamingURL [String] &lt;p&gt;The URL to start the AppStream 2.0 streaming session.&lt;/p&gt;
+-- @param Expires [Timestamp] <p>Elapsed seconds after the Unix epoch, at which time this URL expires.</p>
+-- @param StreamingURL [String] <p>The URL to start the AppStream 2.0 streaming session.</p>
 function M.CreateStreamingURLResult(Expires, StreamingURL, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamingURLResult")
 	local t = { 
@@ -1643,8 +1643,8 @@ end
 
 --- Create a structure of type DisassociateFleetRequest
 --  
--- @param StackName [String] &lt;p&gt;The name of the stack with which the fleet is associated.&lt;/p&gt;
--- @param FleetName [String] &lt;p&gt;The name of the fleet to disassociate.&lt;/p&gt;
+-- @param StackName [String] <p>The name of the stack with which the fleet is associated.</p>
+-- @param FleetName [String] <p>The name of the fleet to disassociate.</p>
 -- Required parameter: FleetName
 -- Required parameter: StackName
 function M.DisassociateFleetRequest(StackName, FleetName, ...)
@@ -1670,9 +1670,9 @@ function M.AssertVpcConfig(struct)
 end
 
 --- Create a structure of type VpcConfig
--- &lt;p&gt;VPC configuration information.&lt;/p&gt;
--- @param SubnetIds [SubnetIdList] &lt;p&gt;The list of subnets to which a network interface is established from the fleet instance.&lt;/p&gt;
--- @param SecurityGroupIds [SecurityGroupIdList] &lt;p&gt;Security groups associated with the fleet.&lt;/p&gt;
+-- <p>VPC configuration information.</p>
+-- @param SubnetIds [SubnetIdList] <p>The list of subnets to which a network interface is established from the fleet instance.</p>
+-- @param SecurityGroupIds [SecurityGroupIdList] <p>Security groups associated with the fleet.</p>
 function M.VpcConfig(SubnetIds, SecurityGroupIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VpcConfig")
 	local t = { 
@@ -1695,8 +1695,8 @@ function M.AssertResourceInUseException(struct)
 end
 
 --- Create a structure of type ResourceInUseException
--- &lt;p&gt;The specified resource is in use.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;The specified resource is in use.&lt;/p&gt;
+-- <p>The specified resource is in use.</p>
+-- @param Message [ErrorMessage] <p>The specified resource is in use.</p>
 function M.ResourceInUseException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
 	local t = { 
@@ -1711,7 +1711,7 @@ function M.AssertSessionState(str)
 	assert(type(str) == "string", "Expected SessionState to be of type 'string'")
 end
 
--- &lt;p&gt;Possible values for the state of a streaming session.&lt;/p&gt;
+-- <p>Possible values for the state of a streaming session.</p>
 function M.SessionState(str)
 	M.AssertSessionState(str)
 	return str
@@ -1744,7 +1744,7 @@ function M.AssertFleetAttribute(str)
 	assert(type(str) == "string", "Expected FleetAttribute to be of type 'string'")
 end
 
--- &lt;p&gt;Fleet attribute.&lt;/p&gt;
+-- <p>Fleet attribute.</p>
 function M.FleetAttribute(str)
 	M.AssertFleetAttribute(str)
 	return str
@@ -1837,7 +1837,7 @@ function M.AssertResourceIdentifier(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;The ARN of the resource.&lt;/p&gt;
+-- <p>The ARN of the resource.</p>
 function M.ResourceIdentifier(str)
 	M.AssertResourceIdentifier(str)
 	return str
@@ -1859,7 +1859,7 @@ function M.AssertErrorMessage(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
--- &lt;p&gt;The error message in the exception.&lt;/p&gt;
+-- <p>The error message in the exception.</p>
 function M.ErrorMessage(str)
 	M.AssertErrorMessage(str)
 	return str
@@ -1917,7 +1917,7 @@ function M.AssertStorageConnectorType(str)
 	assert(type(str) == "string", "Expected StorageConnectorType to be of type 'string'")
 end
 
--- &lt;p&gt;The type of storage connector. The possible values include: HOMEFOLDERS.&lt;/p&gt;
+-- <p>The type of storage connector. The possible values include: HOMEFOLDERS.</p>
 function M.StorageConnectorType(str)
 	M.AssertStorageConnectorType(str)
 	return str
@@ -1997,7 +1997,7 @@ function M.AssertStorageConnectorList(list)
 	end
 end
 
--- &lt;p&gt;A list of storage connectors.&lt;/p&gt;
+-- <p>A list of storage connectors.</p>
 -- List of StorageConnector objects
 function M.StorageConnectorList(list)
 	M.AssertStorageConnectorList(list)
@@ -2012,7 +2012,7 @@ function M.AssertFleetAttributes(list)
 	end
 end
 
--- &lt;p&gt;A list of fleet attributes.&lt;/p&gt;
+-- <p>A list of fleet attributes.</p>
 -- List of FleetAttribute objects
 function M.FleetAttributes(list)
 	M.AssertFleetAttributes(list)
@@ -2042,7 +2042,7 @@ function M.AssertSessionList(list)
 	end
 end
 
--- &lt;p&gt;List of sessions.&lt;/p&gt;
+-- <p>List of sessions.</p>
 -- List of Session objects
 function M.SessionList(list)
 	M.AssertSessionList(list)
@@ -2072,7 +2072,7 @@ function M.AssertStackList(list)
 	end
 end
 
--- &lt;p&gt;A list of stacks.&lt;/p&gt;
+-- <p>A list of stacks.</p>
 -- List of Stack objects
 function M.StackList(list)
 	M.AssertStackList(list)
@@ -2102,7 +2102,7 @@ function M.AssertSubnetIdList(list)
 	end
 end
 
--- &lt;p&gt;A list of subnet IDs.&lt;/p&gt;
+-- <p>A list of subnet IDs.</p>
 -- List of String objects
 function M.SubnetIdList(list)
 	M.AssertSubnetIdList(list)
@@ -2117,7 +2117,7 @@ function M.AssertFleetList(list)
 	end
 end
 
--- &lt;p&gt;A list of fleets.&lt;/p&gt;
+-- <p>A list of fleets.</p>
 -- List of Fleet objects
 function M.FleetList(list)
 	M.AssertFleetList(list)
@@ -2147,7 +2147,7 @@ function M.AssertStackErrors(list)
 	end
 end
 
--- &lt;p&gt;A list of stack errors.&lt;/p&gt;
+-- <p>A list of stack errors.</p>
 -- List of StackError objects
 function M.StackErrors(list)
 	M.AssertStackErrors(list)
@@ -2163,7 +2163,7 @@ function M.AssertSecurityGroupIdList(list)
 	end
 end
 
--- &lt;p&gt;A list of security groups.&lt;/p&gt;
+-- <p>A list of security groups.</p>
 -- List of String objects
 function M.SecurityGroupIdList(list)
 	M.AssertSecurityGroupIdList(list)

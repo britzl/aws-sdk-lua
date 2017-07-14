@@ -33,11 +33,11 @@ function M.AssertEntitlementValue(struct)
 end
 
 --- Create a structure of type EntitlementValue
--- &lt;p&gt;The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.&lt;/p&gt;
--- @param StringValue [String] &lt;p&gt;The StringValue field will be populated with a string value when the entitlement is a string type. Otherwise, the field will not be set.&lt;/p&gt;
--- @param BooleanValue [Boolean] &lt;p&gt;The BooleanValue field will be populated with a boolean value when the entitlement is a boolean type. Otherwise, the field will not be set.&lt;/p&gt;
--- @param IntegerValue [Integer] &lt;p&gt;The IntegerValue field will be populated with an integer value when the entitlement is an integer type. Otherwise, the field will not be set.&lt;/p&gt;
--- @param DoubleValue [Double] &lt;p&gt;The DoubleValue field will be populated with a double value when the entitlement is a double type. Otherwise, the field will not be set.&lt;/p&gt;
+-- <p>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</p>
+-- @param StringValue [String] <p>The StringValue field will be populated with a string value when the entitlement is a string type. Otherwise, the field will not be set.</p>
+-- @param BooleanValue [Boolean] <p>The BooleanValue field will be populated with a boolean value when the entitlement is a boolean type. Otherwise, the field will not be set.</p>
+-- @param IntegerValue [Integer] <p>The IntegerValue field will be populated with an integer value when the entitlement is an integer type. Otherwise, the field will not be set.</p>
+-- @param DoubleValue [Double] <p>The DoubleValue field will be populated with a double value when the entitlement is a double type. Otherwise, the field will not be set.</p>
 function M.EntitlementValue(StringValue, BooleanValue, IntegerValue, DoubleValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntitlementValue")
 	local t = { 
@@ -66,11 +66,11 @@ function M.AssertGetEntitlementsRequest(struct)
 end
 
 --- Create a structure of type GetEntitlementsRequest
--- &lt;p&gt;The GetEntitlementsRequest contains parameters for the GetEntitlements operation.&lt;/p&gt;
--- @param Filter [GetEntitlementFilters] &lt;p&gt;Filter is used to return entitlements for a specific customer or for a specific dimension. Filters are described as keys mapped to a lists of values. Filtered requests are &lt;i&gt;unioned&lt;/i&gt; for each value in the value list, and then &lt;i&gt;intersected&lt;/i&gt; for each filter key.&lt;/p&gt;
--- @param ProductCode [ProductCode] &lt;p&gt;Product code is used to uniquely identify a product in AWS Marketplace. The product code will be provided by AWS Marketplace when the product listing is created.&lt;/p&gt;
--- @param NextToken [NonEmptyString] &lt;p&gt;For paginated calls to GetEntitlements, pass the NextToken from the previous GetEntitlementsResult.&lt;/p&gt;
--- @param MaxResults [Integer] &lt;p&gt;The maximum number of items to retrieve from the GetEntitlements operation. For pagination, use the NextToken field in subsequent calls to GetEntitlements.&lt;/p&gt;
+-- <p>The GetEntitlementsRequest contains parameters for the GetEntitlements operation.</p>
+-- @param Filter [GetEntitlementFilters] <p>Filter is used to return entitlements for a specific customer or for a specific dimension. Filters are described as keys mapped to a lists of values. Filtered requests are <i>unioned</i> for each value in the value list, and then <i>intersected</i> for each filter key.</p>
+-- @param ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code will be provided by AWS Marketplace when the product listing is created.</p>
+-- @param NextToken [NonEmptyString] <p>For paginated calls to GetEntitlements, pass the NextToken from the previous GetEntitlementsResult.</p>
+-- @param MaxResults [Integer] <p>The maximum number of items to retrieve from the GetEntitlements operation. For pagination, use the NextToken field in subsequent calls to GetEntitlements.</p>
 -- Required parameter: ProductCode
 function M.GetEntitlementsRequest(Filter, ProductCode, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEntitlementsRequest")
@@ -100,12 +100,12 @@ function M.AssertEntitlement(struct)
 end
 
 --- Create a structure of type Entitlement
--- &lt;p&gt;An entitlement represents capacity in a product owned by the customer. For example, a customer might own some number of users or seats in an SaaS application or some amount of data capacity in a multi-tenant database.&lt;/p&gt;
--- @param ProductCode [ProductCode] &lt;p&gt;The product code for which the given entitlement applies. Product codes are provided by AWS Marketplace when the product listing is created.&lt;/p&gt;
--- @param CustomerIdentifier [NonEmptyString] &lt;p&gt;The customer identifier is a handle to each unique customer in an application. Customer identifiers are obtained through the ResolveCustomer operation in AWS Marketplace Metering Service.&lt;/p&gt;
--- @param Dimension [NonEmptyString] &lt;p&gt;The dimension for which the given entitlement applies. Dimensions represent categories of capacity in a product and are specified when the product is listed in AWS Marketplace.&lt;/p&gt;
--- @param Value [EntitlementValue] &lt;p&gt;The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.&lt;/p&gt;
--- @param ExpirationDate [Timestamp] &lt;p&gt;The expiration date represents the minimum date through which this entitlement is expected to remain valid. For contractual products listed on AWS Marketplace, the expiration date is the date at which the customer will renew or cancel their contract. Customers who are opting to renew their contract will still have entitlements with an expiration date.&lt;/p&gt;
+-- <p>An entitlement represents capacity in a product owned by the customer. For example, a customer might own some number of users or seats in an SaaS application or some amount of data capacity in a multi-tenant database.</p>
+-- @param ProductCode [ProductCode] <p>The product code for which the given entitlement applies. Product codes are provided by AWS Marketplace when the product listing is created.</p>
+-- @param CustomerIdentifier [NonEmptyString] <p>The customer identifier is a handle to each unique customer in an application. Customer identifiers are obtained through the ResolveCustomer operation in AWS Marketplace Metering Service.</p>
+-- @param Dimension [NonEmptyString] <p>The dimension for which the given entitlement applies. Dimensions represent categories of capacity in a product and are specified when the product is listed in AWS Marketplace.</p>
+-- @param Value [EntitlementValue] <p>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</p>
+-- @param ExpirationDate [Timestamp] <p>The expiration date represents the minimum date through which this entitlement is expected to remain valid. For contractual products listed on AWS Marketplace, the expiration date is the date at which the customer will renew or cancel their contract. Customers who are opting to renew their contract will still have entitlements with an expiration date.</p>
 function M.Entitlement(ProductCode, CustomerIdentifier, Dimension, Value, ExpirationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Entitlement")
 	local t = { 
@@ -132,9 +132,9 @@ function M.AssertGetEntitlementsResult(struct)
 end
 
 --- Create a structure of type GetEntitlementsResult
--- &lt;p&gt;The GetEntitlementsRequest contains results from the GetEntitlements operation.&lt;/p&gt;
--- @param Entitlements [EntitlementList] &lt;p&gt;The set of entitlements found through the GetEntitlements operation. If the result contains an empty set of entitlements, NextToken might still be present and should be used.&lt;/p&gt;
--- @param NextToken [NonEmptyString] &lt;p&gt;For paginated results, use NextToken in subsequent calls to GetEntitlements. If the result contains an empty set of entitlements, NextToken might still be present and should be used.&lt;/p&gt;
+-- <p>The GetEntitlementsRequest contains results from the GetEntitlements operation.</p>
+-- @param Entitlements [EntitlementList] <p>The set of entitlements found through the GetEntitlements operation. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
+-- @param NextToken [NonEmptyString] <p>For paginated results, use NextToken in subsequent calls to GetEntitlements. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
 function M.GetEntitlementsResult(Entitlements, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEntitlementsResult")
 	local t = { 
@@ -157,8 +157,8 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;One or more parameters in your request was invalid.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;One or more parameters in your request was invalid.&lt;/p&gt;
+-- <p>One or more parameters in your request was invalid.</p>
+-- @param message [ErrorMessage] <p>One or more parameters in your request was invalid.</p>
 function M.InvalidParameterException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -180,8 +180,8 @@ function M.AssertInternalServiceErrorException(struct)
 end
 
 --- Create a structure of type InternalServiceErrorException
--- &lt;p&gt;An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.&lt;/p&gt;
+-- <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
+-- @param message [ErrorMessage] <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
 function M.InternalServiceErrorException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceErrorException")
 	local t = { 
@@ -203,8 +203,8 @@ function M.AssertThrottlingException(struct)
 end
 
 --- Create a structure of type ThrottlingException
--- &lt;p&gt;The calls to the GetEntitlements API are throttled.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The calls to the GetEntitlements API are throttled.&lt;/p&gt;
+-- <p>The calls to the GetEntitlements API are throttled.</p>
+-- @param message [ErrorMessage] <p>The calls to the GetEntitlements API are throttled.</p>
 function M.ThrottlingException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
 	local t = { 

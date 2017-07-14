@@ -30,8 +30,8 @@ function M.AssertExecutionDoesNotExist(struct)
 end
 
 --- Create a structure of type ExecutionDoesNotExist
--- &lt;p&gt;The specified execution does not exist.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The specified execution does not exist.&lt;/p&gt;
+-- <p>The specified execution does not exist.</p>
+-- @param message [ErrorMessage] <p>The specified execution does not exist.</p>
 function M.ExecutionDoesNotExist(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionDoesNotExist")
 	local t = { 
@@ -57,9 +57,9 @@ end
 
 --- Create a structure of type StartExecutionInput
 --  
--- @param input [Data] &lt;p&gt;The JSON input data for the execution.&lt;/p&gt;
--- @param stateMachineArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the state machine to execute.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the execution. This name must be unique for your AWS account and region.&lt;/p&gt;
+-- @param input [Data] <p>The JSON input data for the execution.</p>
+-- @param stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine to execute.</p>
+-- @param name [Name] <p>The name of the execution. This name must be unique for your AWS account and region.</p>
 -- Required parameter: stateMachineArn
 function M.StartExecutionInput(input, stateMachineArn, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartExecutionInput")
@@ -87,8 +87,8 @@ end
 
 --- Create a structure of type StateExitedEventDetails
 --  
--- @param output [Data] &lt;p&gt;The JSON output data of the state.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the state.&lt;/p&gt;
+-- @param output [Data] <p>The JSON output data of the state.</p>
+-- @param name [Name] <p>The name of the state.</p>
 -- Required parameter: name
 function M.StateExitedEventDetails(output, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StateExitedEventDetails")
@@ -118,9 +118,9 @@ end
 
 --- Create a structure of type ActivityListItem
 --  
--- @param creationDate [Timestamp] &lt;p&gt;The date the activity was created.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the activity.&lt;/p&gt;
--- @param activityArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the activity.&lt;/p&gt;
+-- @param creationDate [Timestamp] <p>The date the activity was created.</p>
+-- @param name [Name] <p>The name of the activity.</p>
+-- @param activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the activity.</p>
 -- Required parameter: activityArn
 -- Required parameter: name
 -- Required parameter: creationDate
@@ -148,7 +148,7 @@ end
 
 --- Create a structure of type ActivityStartedEventDetails
 --  
--- @param workerName [Identity] &lt;p&gt;The name of the worker that the task was assigned to. These names are provided by the workers when calling &lt;a&gt;GetActivityTask&lt;/a&gt;.&lt;/p&gt;
+-- @param workerName [Identity] <p>The name of the worker that the task was assigned to. These names are provided by the workers when calling <a>GetActivityTask</a>.</p>
 function M.ActivityStartedEventDetails(workerName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivityStartedEventDetails")
 	local t = { 
@@ -175,10 +175,10 @@ end
 
 --- Create a structure of type ListExecutionsInput
 --  
--- @param statusFilter [ExecutionStatus] &lt;p&gt;If specified, only list the executions whose current execution status matches the given filter.&lt;/p&gt;
--- @param nextToken [PageToken] &lt;p&gt;If a &lt;code&gt;nextToken&lt;/code&gt; was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in &lt;code&gt;nextToken&lt;/code&gt;. Keep all other arguments unchanged.&lt;/p&gt; &lt;p&gt;The configured &lt;code&gt;maxResults&lt;/code&gt; determines how many results can be returned in a single call.&lt;/p&gt;
--- @param stateMachineArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the state machine whose executions will be listed.&lt;/p&gt;
--- @param maxResults [PageSize] &lt;p&gt;The maximum number of results that will be returned per call. &lt;code&gt;nextToken&lt;/code&gt; can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.&lt;/p&gt; &lt;p&gt;This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.&lt;/p&gt;
+-- @param statusFilter [ExecutionStatus] <p>If specified, only list the executions whose current execution status matches the given filter.</p>
+-- @param nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- @param stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine whose executions will be listed.</p>
+-- @param maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
 -- Required parameter: stateMachineArn
 function M.ListExecutionsInput(statusFilter, nextToken, stateMachineArn, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListExecutionsInput")
@@ -204,8 +204,8 @@ function M.AssertStateMachineLimitExceeded(struct)
 end
 
 --- Create a structure of type StateMachineLimitExceeded
--- &lt;p&gt;The maximum number of state machines has been reached. Existing state machines must be deleted before a new state machine can be created.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The maximum number of state machines has been reached. Existing state machines must be deleted before a new state machine can be created.&lt;/p&gt;
+-- <p>The maximum number of state machines has been reached. Existing state machines must be deleted before a new state machine can be created.</p>
+-- @param message [ErrorMessage] <p>The maximum number of state machines has been reached. Existing state machines must be deleted before a new state machine can be created.</p>
 function M.StateMachineLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StateMachineLimitExceeded")
 	local t = { 
@@ -229,7 +229,7 @@ end
 
 --- Create a structure of type DescribeStateMachineInput
 --  
--- @param stateMachineArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the state machine to describe.&lt;/p&gt;
+-- @param stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine to describe.</p>
 -- Required parameter: stateMachineArn
 function M.DescribeStateMachineInput(stateMachineArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStateMachineInput")
@@ -258,9 +258,9 @@ end
 
 --- Create a structure of type CreateStateMachineInput
 --  
--- @param definition [Definition] &lt;p&gt;The Amazon States Language definition of the state machine.&lt;/p&gt;
--- @param roleArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role to use for this state machine.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the state machine. This name must be unique for your AWS account and region.&lt;/p&gt;
+-- @param definition [Definition] <p>The Amazon States Language definition of the state machine.</p>
+-- @param roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role to use for this state machine.</p>
+-- @param name [Name] <p>The name of the state machine. This name must be unique for your AWS account and region.</p>
 -- Required parameter: name
 -- Required parameter: definition
 -- Required parameter: roleArn
@@ -291,8 +291,8 @@ end
 
 --- Create a structure of type CreateStateMachineOutput
 --  
--- @param creationDate [Timestamp] &lt;p&gt;The date the state machine was created.&lt;/p&gt;
--- @param stateMachineArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the created state machine.&lt;/p&gt;
+-- @param creationDate [Timestamp] <p>The date the state machine was created.</p>
+-- @param stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the created state machine.</p>
 -- Required parameter: stateMachineArn
 -- Required parameter: creationDate
 function M.CreateStateMachineOutput(creationDate, stateMachineArn, ...)
@@ -319,7 +319,7 @@ end
 
 --- Create a structure of type DescribeActivityInput
 --  
--- @param activityArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the activity to describe.&lt;/p&gt;
+-- @param activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to describe.</p>
 -- Required parameter: activityArn
 function M.DescribeActivityInput(activityArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivityInput")
@@ -342,8 +342,8 @@ function M.AssertActivityLimitExceeded(struct)
 end
 
 --- Create a structure of type ActivityLimitExceeded
--- &lt;p&gt;The maximum number of activities has been reached. Existing activities must be deleted before a new activity can be created.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The maximum number of activities has been reached. Existing activities must be deleted before a new activity can be created.&lt;/p&gt;
+-- <p>The maximum number of activities has been reached. Existing activities must be deleted before a new activity can be created.</p>
+-- @param message [ErrorMessage] <p>The maximum number of activities has been reached. Existing activities must be deleted before a new activity can be created.</p>
 function M.ActivityLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivityLimitExceeded")
 	local t = { 
@@ -370,10 +370,10 @@ end
 
 --- Create a structure of type GetExecutionHistoryInput
 --  
--- @param nextToken [PageToken] &lt;p&gt;If a &lt;code&gt;nextToken&lt;/code&gt; was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in &lt;code&gt;nextToken&lt;/code&gt;. Keep all other arguments unchanged.&lt;/p&gt; &lt;p&gt;The configured &lt;code&gt;maxResults&lt;/code&gt; determines how many results can be returned in a single call.&lt;/p&gt;
--- @param reverseOrder [ReverseOrder] &lt;p&gt;Lists events in descending order of their &lt;code&gt;timeStamp&lt;/code&gt;.&lt;/p&gt;
--- @param maxResults [PageSize] &lt;p&gt;The maximum number of results that will be returned per call. &lt;code&gt;nextToken&lt;/code&gt; can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.&lt;/p&gt; &lt;p&gt;This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.&lt;/p&gt;
--- @param executionArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the execution.&lt;/p&gt;
+-- @param nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- @param reverseOrder [ReverseOrder] <p>Lists events in descending order of their <code>timeStamp</code>.</p>
+-- @param maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- @param executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution.</p>
 -- Required parameter: executionArn
 function M.GetExecutionHistoryInput(nextToken, reverseOrder, maxResults, executionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetExecutionHistoryInput")
@@ -403,9 +403,9 @@ end
 
 --- Create a structure of type StopExecutionInput
 --  
--- @param error [Error] &lt;p&gt;An arbitrary error code that identifies the cause of the termination.&lt;/p&gt;
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the termination.&lt;/p&gt;
--- @param executionArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the execution to stop.&lt;/p&gt;
+-- @param error [Error] <p>An arbitrary error code that identifies the cause of the termination.</p>
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the termination.</p>
+-- @param executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
 -- Required parameter: executionArn
 function M.StopExecutionInput(error, cause, executionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopExecutionInput")
@@ -433,8 +433,8 @@ end
 
 --- Create a structure of type StateEnteredEventDetails
 --  
--- @param input [Data] &lt;p&gt;The JSON input data to the state.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the state.&lt;/p&gt;
+-- @param input [Data] <p>The JSON input data to the state.</p>
+-- @param name [Name] <p>The name of the state.</p>
 -- Required parameter: name
 function M.StateEnteredEventDetails(input, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StateEnteredEventDetails")
@@ -461,8 +461,8 @@ end
 
 --- Create a structure of type GetActivityTaskInput
 --  
--- @param workerName [Name] &lt;p&gt;An arbitrary name may be provided in order to identify the worker that the task is assigned to. This name will be used when it is logged in the execution history.&lt;/p&gt;
--- @param activityArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the activity to retrieve tasks from.&lt;/p&gt;
+-- @param workerName [Name] <p>An arbitrary name may be provided in order to identify the worker that the task is assigned to. This name will be used when it is logged in the execution history.</p>
+-- @param activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to retrieve tasks from.</p>
 -- Required parameter: activityArn
 function M.GetActivityTaskInput(workerName, activityArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetActivityTaskInput")
@@ -489,8 +489,8 @@ end
 
 --- Create a structure of type ListExecutionsOutput
 --  
--- @param nextToken [PageToken] &lt;p&gt;If a &lt;code&gt;nextToken&lt;/code&gt; is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in &lt;code&gt;nextToken&lt;/code&gt;. Keep all other arguments unchanged.&lt;/p&gt; &lt;p&gt;The configured &lt;code&gt;maxResults&lt;/code&gt; determines how many results can be returned in a single call.&lt;/p&gt;
--- @param executions [ExecutionList] &lt;p&gt;The list of matching executions.&lt;/p&gt;
+-- @param nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- @param executions [ExecutionList] <p>The list of matching executions.</p>
 -- Required parameter: executions
 function M.ListExecutionsOutput(nextToken, executions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListExecutionsOutput")
@@ -516,8 +516,8 @@ end
 
 --- Create a structure of type ActivityFailedEventDetails
 --  
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the failure.&lt;/p&gt;
--- @param error [Error] &lt;p&gt;The error code of the failure.&lt;/p&gt;
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- @param error [Error] <p>The error code of the failure.</p>
 function M.ActivityFailedEventDetails(cause, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivityFailedEventDetails")
 	local t = { 
@@ -542,8 +542,8 @@ end
 
 --- Create a structure of type ListActivitiesInput
 --  
--- @param nextToken [PageToken] &lt;p&gt;If a &lt;code&gt;nextToken&lt;/code&gt; was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in &lt;code&gt;nextToken&lt;/code&gt;. Keep all other arguments unchanged.&lt;/p&gt; &lt;p&gt;The configured &lt;code&gt;maxResults&lt;/code&gt; determines how many results can be returned in a single call.&lt;/p&gt;
--- @param maxResults [PageSize] &lt;p&gt;The maximum number of results that will be returned per call. &lt;code&gt;nextToken&lt;/code&gt; can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.&lt;/p&gt; &lt;p&gt;This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.&lt;/p&gt;
+-- @param nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- @param maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
 function M.ListActivitiesInput(nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListActivitiesInput")
 	local t = { 
@@ -566,8 +566,8 @@ function M.AssertInvalidToken(struct)
 end
 
 --- Create a structure of type InvalidToken
--- &lt;p&gt;The provided token is invalid.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The provided token is invalid.&lt;/p&gt;
+-- <p>The provided token is invalid.</p>
+-- @param message [ErrorMessage] <p>The provided token is invalid.</p>
 function M.InvalidToken(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidToken")
 	local t = { 
@@ -591,7 +591,7 @@ end
 
 --- Create a structure of type SendTaskHeartbeatInput
 --  
--- @param taskToken [TaskToken] &lt;p&gt;The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).&lt;/p&gt;
+-- @param taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
 -- Required parameter: taskToken
 function M.SendTaskHeartbeatInput(taskToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SendTaskHeartbeatInput")
@@ -616,8 +616,8 @@ end
 
 --- Create a structure of type ListStateMachinesInput
 --  
--- @param nextToken [PageToken] &lt;p&gt;If a &lt;code&gt;nextToken&lt;/code&gt; was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in &lt;code&gt;nextToken&lt;/code&gt;. Keep all other arguments unchanged.&lt;/p&gt; &lt;p&gt;The configured &lt;code&gt;maxResults&lt;/code&gt; determines how many results can be returned in a single call.&lt;/p&gt;
--- @param maxResults [PageSize] &lt;p&gt;The maximum number of results that will be returned per call. &lt;code&gt;nextToken&lt;/code&gt; can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.&lt;/p&gt; &lt;p&gt;This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.&lt;/p&gt;
+-- @param nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- @param maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
 function M.ListStateMachinesInput(nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStateMachinesInput")
 	local t = { 
@@ -662,7 +662,7 @@ end
 
 --- Create a structure of type DescribeExecutionInput
 --  
--- @param executionArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the execution to describe.&lt;/p&gt;
+-- @param executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution to describe.</p>
 -- Required parameter: executionArn
 function M.DescribeExecutionInput(executionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExecutionInput")
@@ -715,19 +715,19 @@ end
 -- @param lambdaFunctionTimedOutEventDetails [LambdaFunctionTimedOutEventDetails]  
 -- @param activityScheduleFailedEventDetails [ActivityScheduleFailedEventDetails]  
 -- @param lambdaFunctionStartFailedEventDetails [LambdaFunctionStartFailedEventDetails]  
--- @param id [EventId] &lt;p&gt;The id of the event. Events are numbered sequentially, starting at one.&lt;/p&gt;
+-- @param id [EventId] <p>The id of the event. Events are numbered sequentially, starting at one.</p>
 -- @param activityScheduledEventDetails [ActivityScheduledEventDetails]  
 -- @param executionSucceededEventDetails [ExecutionSucceededEventDetails]  
 -- @param activitySucceededEventDetails [ActivitySucceededEventDetails]  
--- @param type [HistoryEventType] &lt;p&gt;The type of the event.&lt;/p&gt;
+-- @param type [HistoryEventType] <p>The type of the event.</p>
 -- @param executionTimedOutEventDetails [ExecutionTimedOutEventDetails]  
--- @param timestamp [Timestamp] &lt;p&gt;The date the event occured.&lt;/p&gt;
+-- @param timestamp [Timestamp] <p>The date the event occured.</p>
 -- @param activityTimedOutEventDetails [ActivityTimedOutEventDetails]  
 -- @param executionFailedEventDetails [ExecutionFailedEventDetails]  
 -- @param lambdaFunctionFailedEventDetails [LambdaFunctionFailedEventDetails]  
 -- @param executionAbortedEventDetails [ExecutionAbortedEventDetails]  
 -- @param stateEnteredEventDetails [StateEnteredEventDetails]  
--- @param previousEventId [EventId] &lt;p&gt;The id of the previous event.&lt;/p&gt;
+-- @param previousEventId [EventId] <p>The id of the previous event.</p>
 -- @param activityStartedEventDetails [ActivityStartedEventDetails]  
 -- @param lambdaFunctionScheduleFailedEventDetails [LambdaFunctionScheduleFailedEventDetails]  
 -- @param activityFailedEventDetails [ActivityFailedEventDetails]  
@@ -809,9 +809,9 @@ end
 
 --- Create a structure of type DescribeActivityOutput
 --  
--- @param creationDate [Timestamp] &lt;p&gt;The date the activity was created.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the activity.&lt;/p&gt;
--- @param activityArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the activity.&lt;/p&gt;
+-- @param creationDate [Timestamp] <p>The date the activity was created.</p>
+-- @param name [Name] <p>The name of the activity.</p>
+-- @param activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the activity.</p>
 -- Required parameter: activityArn
 -- Required parameter: name
 -- Required parameter: creationDate
@@ -841,8 +841,8 @@ end
 
 --- Create a structure of type ListActivitiesOutput
 --  
--- @param activities [ActivityList] &lt;p&gt;The list of activities.&lt;/p&gt;
--- @param nextToken [PageToken] &lt;p&gt;If a &lt;code&gt;nextToken&lt;/code&gt; is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in &lt;code&gt;nextToken&lt;/code&gt;. Keep all other arguments unchanged.&lt;/p&gt; &lt;p&gt;The configured &lt;code&gt;maxResults&lt;/code&gt; determines how many results can be returned in a single call.&lt;/p&gt;
+-- @param activities [ActivityList] <p>The list of activities.</p>
+-- @param nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
 -- Required parameter: activities
 function M.ListActivitiesOutput(activities, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListActivitiesOutput")
@@ -868,7 +868,7 @@ end
 
 --- Create a structure of type CreateActivityInput
 --  
--- @param name [Name] &lt;p&gt;The name of the activity to create. This name must be unique for your AWS account and region.&lt;/p&gt;
+-- @param name [Name] <p>The name of the activity to create. This name must be unique for your AWS account and region.</p>
 -- Required parameter: name
 function M.CreateActivityInput(name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateActivityInput")
@@ -891,8 +891,8 @@ function M.AssertStateMachineDeleting(struct)
 end
 
 --- Create a structure of type StateMachineDeleting
--- &lt;p&gt;The specified state machine is being deleted.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The specified state machine is being deleted.&lt;/p&gt;
+-- <p>The specified state machine is being deleted.</p>
+-- @param message [ErrorMessage] <p>The specified state machine is being deleted.</p>
 function M.StateMachineDeleting(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StateMachineDeleting")
 	local t = { 
@@ -918,8 +918,8 @@ end
 
 --- Create a structure of type CreateActivityOutput
 --  
--- @param creationDate [Timestamp] &lt;p&gt;The date the activity was created.&lt;/p&gt;
--- @param activityArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the created activity.&lt;/p&gt;
+-- @param creationDate [Timestamp] <p>The date the activity was created.</p>
+-- @param activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the created activity.</p>
 -- Required parameter: activityArn
 -- Required parameter: creationDate
 function M.CreateActivityOutput(creationDate, activityArn, ...)
@@ -945,7 +945,7 @@ end
 
 --- Create a structure of type ExecutionSucceededEventDetails
 --  
--- @param output [Data] &lt;p&gt;The JSON data output by the execution.&lt;/p&gt;
+-- @param output [Data] <p>The JSON data output by the execution.</p>
 function M.ExecutionSucceededEventDetails(output, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionSucceededEventDetails")
 	local t = { 
@@ -968,7 +968,7 @@ end
 
 --- Create a structure of type ActivitySucceededEventDetails
 --  
--- @param output [Data] &lt;p&gt;The JSON data output by the activity task.&lt;/p&gt;
+-- @param output [Data] <p>The JSON data output by the activity task.</p>
 function M.ActivitySucceededEventDetails(output, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivitySucceededEventDetails")
 	local t = { 
@@ -992,7 +992,7 @@ end
 
 --- Create a structure of type StopExecutionOutput
 --  
--- @param stopDate [Timestamp] &lt;p&gt;The date the execution was stopped.&lt;/p&gt;
+-- @param stopDate [Timestamp] <p>The date the execution was stopped.</p>
 -- Required parameter: stopDate
 function M.StopExecutionOutput(stopDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopExecutionOutput")
@@ -1019,9 +1019,9 @@ end
 
 --- Create a structure of type SendTaskFailureInput
 --  
--- @param error [Error] &lt;p&gt;An arbitrary error code that identifies the cause of the failure.&lt;/p&gt;
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the failure.&lt;/p&gt;
--- @param taskToken [TaskToken] &lt;p&gt;The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).&lt;/p&gt;
+-- @param error [Error] <p>An arbitrary error code that identifies the cause of the failure.</p>
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- @param taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
 -- Required parameter: taskToken
 function M.SendTaskFailureInput(error, cause, taskToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SendTaskFailureInput")
@@ -1071,8 +1071,8 @@ end
 
 --- Create a structure of type LambdaFunctionTimedOutEventDetails
 --  
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the timeout.&lt;/p&gt;
--- @param error [Error] &lt;p&gt;The error code of the failure.&lt;/p&gt;
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
+-- @param error [Error] <p>The error code of the failure.</p>
 function M.LambdaFunctionTimedOutEventDetails(cause, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionTimedOutEventDetails")
 	local t = { 
@@ -1097,8 +1097,8 @@ end
 
 --- Create a structure of type ExecutionAbortedEventDetails
 --  
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the failure.&lt;/p&gt;
--- @param error [Error] &lt;p&gt;The error code of the failure.&lt;/p&gt;
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- @param error [Error] <p>The error code of the failure.</p>
 function M.ExecutionAbortedEventDetails(cause, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionAbortedEventDetails")
 	local t = { 
@@ -1121,8 +1121,8 @@ function M.AssertActivityWorkerLimitExceeded(struct)
 end
 
 --- Create a structure of type ActivityWorkerLimitExceeded
--- &lt;p&gt;The maximum number of workers concurrently polling for activity tasks has been reached.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The maximum number of workers concurrently polling for activity tasks has been reached.&lt;/p&gt;
+-- <p>The maximum number of workers concurrently polling for activity tasks has been reached.</p>
+-- @param message [ErrorMessage] <p>The maximum number of workers concurrently polling for activity tasks has been reached.</p>
 function M.ActivityWorkerLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivityWorkerLimitExceeded")
 	local t = { 
@@ -1144,8 +1144,8 @@ function M.AssertInvalidName(struct)
 end
 
 --- Create a structure of type InvalidName
--- &lt;p&gt;The provided name is invalid.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The provided name is invalid.&lt;/p&gt;
+-- <p>The provided name is invalid.</p>
+-- @param message [ErrorMessage] <p>The provided name is invalid.</p>
 function M.InvalidName(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidName")
 	local t = { 
@@ -1169,8 +1169,8 @@ end
 
 --- Create a structure of type ExecutionStartedEventDetails
 --  
--- @param input [Data] &lt;p&gt;The JSON data input to the execution.&lt;/p&gt;
--- @param roleArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role used for executing AWS Lambda tasks.&lt;/p&gt;
+-- @param input [Data] <p>The JSON data input to the execution.</p>
+-- @param roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role used for executing AWS Lambda tasks.</p>
 function M.ExecutionStartedEventDetails(input, roleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionStartedEventDetails")
 	local t = { 
@@ -1214,7 +1214,7 @@ end
 
 --- Create a structure of type LambdaFunctionSucceededEventDetails
 --  
--- @param output [Data] &lt;p&gt;The JSON data output by the lambda function.&lt;/p&gt;
+-- @param output [Data] <p>The JSON data output by the lambda function.</p>
 function M.LambdaFunctionSucceededEventDetails(output, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionSucceededEventDetails")
 	local t = { 
@@ -1238,8 +1238,8 @@ end
 
 --- Create a structure of type ActivityScheduleFailedEventDetails
 --  
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the failure.&lt;/p&gt;
--- @param error [Error] &lt;p&gt;The error code of the failure.&lt;/p&gt;
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- @param error [Error] <p>The error code of the failure.</p>
 function M.ActivityScheduleFailedEventDetails(cause, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivityScheduleFailedEventDetails")
 	local t = { 
@@ -1262,8 +1262,8 @@ function M.AssertInvalidOutput(struct)
 end
 
 --- Create a structure of type InvalidOutput
--- &lt;p&gt;The provided JSON output data is invalid.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The provided JSON output data is invalid.&lt;/p&gt;
+-- <p>The provided JSON output data is invalid.</p>
+-- @param message [ErrorMessage] <p>The provided JSON output data is invalid.</p>
 function M.InvalidOutput(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOutput")
 	local t = { 
@@ -1287,8 +1287,8 @@ end
 
 --- Create a structure of type GetActivityTaskOutput
 --  
--- @param input [Data] &lt;p&gt;The JSON input data for the task.&lt;/p&gt;
--- @param taskToken [TaskToken] &lt;p&gt;A token that identifies the scheduled task. This token must be copied and included in subsequent calls to &lt;a&gt;SendTaskHeartbeat&lt;/a&gt;, &lt;a&gt;SendTaskSuccess&lt;/a&gt; or &lt;a&gt;SendTaskFailure&lt;/a&gt; in order to report the progress or completion of the task.&lt;/p&gt;
+-- @param input [Data] <p>The JSON input data for the task.</p>
+-- @param taskToken [TaskToken] <p>A token that identifies the scheduled task. This token must be copied and included in subsequent calls to <a>SendTaskHeartbeat</a>, <a>SendTaskSuccess</a> or <a>SendTaskFailure</a> in order to report the progress or completion of the task.</p>
 function M.GetActivityTaskOutput(input, taskToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetActivityTaskOutput")
 	local t = { 
@@ -1311,8 +1311,8 @@ function M.AssertInvalidExecutionInput(struct)
 end
 
 --- Create a structure of type InvalidExecutionInput
--- &lt;p&gt;The provided JSON input data is invalid.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The provided JSON input data is invalid.&lt;/p&gt;
+-- <p>The provided JSON input data is invalid.</p>
+-- @param message [ErrorMessage] <p>The provided JSON input data is invalid.</p>
 function M.InvalidExecutionInput(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidExecutionInput")
 	local t = { 
@@ -1334,8 +1334,8 @@ function M.AssertStateMachineDoesNotExist(struct)
 end
 
 --- Create a structure of type StateMachineDoesNotExist
--- &lt;p&gt;The specified state machine does not exist.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The specified state machine does not exist.&lt;/p&gt;
+-- <p>The specified state machine does not exist.</p>
+-- @param message [ErrorMessage] <p>The specified state machine does not exist.</p>
 function M.StateMachineDoesNotExist(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StateMachineDoesNotExist")
 	local t = { 
@@ -1357,8 +1357,8 @@ function M.AssertStateMachineAlreadyExists(struct)
 end
 
 --- Create a structure of type StateMachineAlreadyExists
--- &lt;p&gt;A state machine with the same name but a different definition or role ARN already exists.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;A state machine with the same name but a different definition or role ARN already exists.&lt;/p&gt;
+-- <p>A state machine with the same name but a different definition or role ARN already exists.</p>
+-- @param message [ErrorMessage] <p>A state machine with the same name but a different definition or role ARN already exists.</p>
 function M.StateMachineAlreadyExists(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StateMachineAlreadyExists")
 	local t = { 
@@ -1380,8 +1380,8 @@ function M.AssertExecutionAlreadyExists(struct)
 end
 
 --- Create a structure of type ExecutionAlreadyExists
--- &lt;p&gt;An execution with the same name already exists.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;An execution with the same name already exists.&lt;/p&gt;
+-- <p>An execution with the same name already exists.</p>
+-- @param message [ErrorMessage] <p>An execution with the same name already exists.</p>
 function M.ExecutionAlreadyExists(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionAlreadyExists")
 	local t = { 
@@ -1425,8 +1425,8 @@ end
 
 --- Create a structure of type LambdaFunctionStartFailedEventDetails
 --  
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the failure.&lt;/p&gt;
--- @param error [Error] &lt;p&gt;The error code of the failure.&lt;/p&gt;
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- @param error [Error] <p>The error code of the failure.</p>
 function M.LambdaFunctionStartFailedEventDetails(cause, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionStartFailedEventDetails")
 	local t = { 
@@ -1455,9 +1455,9 @@ end
 
 --- Create a structure of type StateMachineListItem
 --  
--- @param creationDate [Timestamp] &lt;p&gt;The date the state machine was created.&lt;/p&gt;
--- @param stateMachineArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the state machine.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the state machine.&lt;/p&gt;
+-- @param creationDate [Timestamp] <p>The date the state machine was created.</p>
+-- @param stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
+-- @param name [Name] <p>The name of the state machine.</p>
 -- Required parameter: stateMachineArn
 -- Required parameter: name
 -- Required parameter: creationDate
@@ -1486,7 +1486,7 @@ end
 
 --- Create a structure of type DeleteStateMachineInput
 --  
--- @param stateMachineArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the state machine to delete.&lt;/p&gt;
+-- @param stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine to delete.</p>
 -- Required parameter: stateMachineArn
 function M.DeleteStateMachineInput(stateMachineArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStateMachineInput")
@@ -1513,8 +1513,8 @@ end
 
 --- Create a structure of type StartExecutionOutput
 --  
--- @param startDate [Timestamp] &lt;p&gt;The date the execution was started.&lt;/p&gt;
--- @param executionArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the execution.&lt;/p&gt;
+-- @param startDate [Timestamp] <p>The date the execution was started.</p>
+-- @param executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
 -- Required parameter: executionArn
 -- Required parameter: startDate
 function M.StartExecutionOutput(startDate, executionArn, ...)
@@ -1552,14 +1552,14 @@ end
 
 --- Create a structure of type DescribeExecutionOutput
 --  
--- @param status [ExecutionStatus] &lt;p&gt;The current status of the execution.&lt;/p&gt;
--- @param startDate [Timestamp] &lt;p&gt;The date the execution was started.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the execution.&lt;/p&gt;
--- @param executionArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the execution.&lt;/p&gt;
--- @param stateMachineArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the executed stated machine.&lt;/p&gt;
--- @param stopDate [Timestamp] &lt;p&gt;If the execution has already ended, the date the execution stopped.&lt;/p&gt;
--- @param output [Data] &lt;p&gt;The JSON output data of the execution.&lt;/p&gt;
--- @param input [Data] &lt;p&gt;The JSON input data of the execution.&lt;/p&gt;
+-- @param status [ExecutionStatus] <p>The current status of the execution.</p>
+-- @param startDate [Timestamp] <p>The date the execution was started.</p>
+-- @param name [Name] <p>The name of the execution.</p>
+-- @param executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
+-- @param stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the executed stated machine.</p>
+-- @param stopDate [Timestamp] <p>If the execution has already ended, the date the execution stopped.</p>
+-- @param output [Data] <p>The JSON output data of the execution.</p>
+-- @param input [Data] <p>The JSON input data of the execution.</p>
 -- Required parameter: executionArn
 -- Required parameter: stateMachineArn
 -- Required parameter: status
@@ -1596,8 +1596,8 @@ end
 
 --- Create a structure of type GetExecutionHistoryOutput
 --  
--- @param nextToken [PageToken] &lt;p&gt;If a &lt;code&gt;nextToken&lt;/code&gt; is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in &lt;code&gt;nextToken&lt;/code&gt;. Keep all other arguments unchanged.&lt;/p&gt; &lt;p&gt;The configured &lt;code&gt;maxResults&lt;/code&gt; determines how many results can be returned in a single call.&lt;/p&gt;
--- @param events [HistoryEventList] &lt;p&gt;The list of events that occurred in the execution.&lt;/p&gt;
+-- @param nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- @param events [HistoryEventList] <p>The list of events that occurred in the execution.</p>
 -- Required parameter: events
 function M.GetExecutionHistoryOutput(nextToken, events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetExecutionHistoryOutput")
@@ -1621,8 +1621,8 @@ function M.AssertExecutionLimitExceeded(struct)
 end
 
 --- Create a structure of type ExecutionLimitExceeded
--- &lt;p&gt;The maximum number of running executions has been reached. Running executions must end or be stopped before a new execution can be started.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The maximum number of running executions has been reached. Running executions must end or be stopped before a new execution can be started.&lt;/p&gt;
+-- <p>The maximum number of running executions has been reached. Running executions must end or be stopped before a new execution can be started.</p>
+-- @param message [ErrorMessage] <p>The maximum number of running executions has been reached. Running executions must end or be stopped before a new execution can be started.</p>
 function M.ExecutionLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionLimitExceeded")
 	local t = { 
@@ -1648,9 +1648,9 @@ end
 
 --- Create a structure of type LambdaFunctionScheduledEventDetails
 --  
--- @param input [Data] &lt;p&gt;The JSON data input to the lambda function.&lt;/p&gt;
--- @param resource [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the scheduled lambda function.&lt;/p&gt;
--- @param timeoutInSeconds [TimeoutInSeconds] &lt;p&gt;The maximum allowed duration of the lambda function.&lt;/p&gt;
+-- @param input [Data] <p>The JSON data input to the lambda function.</p>
+-- @param resource [Arn] <p>The Amazon Resource Name (ARN) of the scheduled lambda function.</p>
+-- @param timeoutInSeconds [TimeoutInSeconds] <p>The maximum allowed duration of the lambda function.</p>
 -- Required parameter: resource
 function M.LambdaFunctionScheduledEventDetails(input, resource, timeoutInSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionScheduledEventDetails")
@@ -1677,8 +1677,8 @@ end
 
 --- Create a structure of type ExecutionTimedOutEventDetails
 --  
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the timeout.&lt;/p&gt;
--- @param error [Error] &lt;p&gt;The error code of the failure.&lt;/p&gt;
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
+-- @param error [Error] <p>The error code of the failure.</p>
 function M.ExecutionTimedOutEventDetails(cause, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionTimedOutEventDetails")
 	local t = { 
@@ -1703,8 +1703,8 @@ end
 
 --- Create a structure of type ActivityTimedOutEventDetails
 --  
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the timeout.&lt;/p&gt;
--- @param error [Error] &lt;p&gt;The error code of the failure.&lt;/p&gt;
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
+-- @param error [Error] <p>The error code of the failure.</p>
 function M.ActivityTimedOutEventDetails(cause, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTimedOutEventDetails")
 	local t = { 
@@ -1731,7 +1731,7 @@ end
 --- Create a structure of type ListStateMachinesOutput
 --  
 -- @param stateMachines [StateMachineList]  
--- @param nextToken [PageToken] &lt;p&gt;If a &lt;code&gt;nextToken&lt;/code&gt; is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in &lt;code&gt;nextToken&lt;/code&gt;. Keep all other arguments unchanged.&lt;/p&gt; &lt;p&gt;The configured &lt;code&gt;maxResults&lt;/code&gt; determines how many results can be returned in a single call.&lt;/p&gt;
+-- @param nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
 -- Required parameter: stateMachines
 function M.ListStateMachinesOutput(stateMachines, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStateMachinesOutput")
@@ -1766,12 +1766,12 @@ end
 
 --- Create a structure of type ExecutionListItem
 --  
--- @param status [ExecutionStatus] &lt;p&gt;The current status of the execution.&lt;/p&gt;
--- @param startDate [Timestamp] &lt;p&gt;The date the execution started.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the execution.&lt;/p&gt;
--- @param executionArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the execution.&lt;/p&gt;
--- @param stateMachineArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the executed state machine.&lt;/p&gt;
--- @param stopDate [Timestamp] &lt;p&gt;If the execution already ended, the date the execution stopped.&lt;/p&gt;
+-- @param status [ExecutionStatus] <p>The current status of the execution.</p>
+-- @param startDate [Timestamp] <p>The date the execution started.</p>
+-- @param name [Name] <p>The name of the execution.</p>
+-- @param executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
+-- @param stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the executed state machine.</p>
+-- @param stopDate [Timestamp] <p>If the execution already ended, the date the execution stopped.</p>
 -- Required parameter: executionArn
 -- Required parameter: stateMachineArn
 -- Required parameter: name
@@ -1808,10 +1808,10 @@ end
 
 --- Create a structure of type ActivityScheduledEventDetails
 --  
--- @param input [Data] &lt;p&gt;The JSON data input to the activity task.&lt;/p&gt;
--- @param resource [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the scheduled activity.&lt;/p&gt;
--- @param heartbeatInSeconds [TimeoutInSeconds] &lt;p&gt;The maximum allowed duration between two heartbeats for the activity task.&lt;/p&gt;
--- @param timeoutInSeconds [TimeoutInSeconds] &lt;p&gt;The maximum allowed duration of the activity task.&lt;/p&gt;
+-- @param input [Data] <p>The JSON data input to the activity task.</p>
+-- @param resource [Arn] <p>The Amazon Resource Name (ARN) of the scheduled activity.</p>
+-- @param heartbeatInSeconds [TimeoutInSeconds] <p>The maximum allowed duration between two heartbeats for the activity task.</p>
+-- @param timeoutInSeconds [TimeoutInSeconds] <p>The maximum allowed duration of the activity task.</p>
 -- Required parameter: resource
 function M.ActivityScheduledEventDetails(input, resource, heartbeatInSeconds, timeoutInSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivityScheduledEventDetails")
@@ -1839,8 +1839,8 @@ end
 
 --- Create a structure of type LambdaFunctionScheduleFailedEventDetails
 --  
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the failure.&lt;/p&gt;
--- @param error [Error] &lt;p&gt;The error code of the failure.&lt;/p&gt;
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- @param error [Error] <p>The error code of the failure.</p>
 function M.LambdaFunctionScheduleFailedEventDetails(cause, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionScheduleFailedEventDetails")
 	local t = { 
@@ -1863,8 +1863,8 @@ function M.AssertInvalidArn(struct)
 end
 
 --- Create a structure of type InvalidArn
--- &lt;p&gt;The provided Amazon Resource Name (ARN) is invalid.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The provided Amazon Resource Name (ARN) is invalid.&lt;/p&gt;
+-- <p>The provided Amazon Resource Name (ARN) is invalid.</p>
+-- @param message [ErrorMessage] <p>The provided Amazon Resource Name (ARN) is invalid.</p>
 function M.InvalidArn(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArn")
 	local t = { 
@@ -1886,8 +1886,8 @@ function M.AssertActivityDoesNotExist(struct)
 end
 
 --- Create a structure of type ActivityDoesNotExist
--- &lt;p&gt;The specified activity does not exist.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The specified activity does not exist.&lt;/p&gt;
+-- <p>The specified activity does not exist.</p>
+-- @param message [ErrorMessage] <p>The specified activity does not exist.</p>
 function M.ActivityDoesNotExist(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivityDoesNotExist")
 	local t = { 
@@ -1920,12 +1920,12 @@ end
 
 --- Create a structure of type DescribeStateMachineOutput
 --  
--- @param status [StateMachineStatus] &lt;p&gt;The current status of the state machine.&lt;/p&gt;
--- @param definition [Definition] &lt;p&gt;The Amazon States Language definition of the state machine.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the state machine.&lt;/p&gt;
--- @param roleArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.&lt;/p&gt;
--- @param stateMachineArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the state machine.&lt;/p&gt;
--- @param creationDate [Timestamp] &lt;p&gt;The date the state machine was created.&lt;/p&gt;
+-- @param status [StateMachineStatus] <p>The current status of the state machine.</p>
+-- @param definition [Definition] <p>The Amazon States Language definition of the state machine.</p>
+-- @param name [Name] <p>The name of the state machine.</p>
+-- @param roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.</p>
+-- @param stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
+-- @param creationDate [Timestamp] <p>The date the state machine was created.</p>
 -- Required parameter: stateMachineArn
 -- Required parameter: name
 -- Required parameter: definition
@@ -1961,8 +1961,8 @@ end
 
 --- Create a structure of type SendTaskSuccessInput
 --  
--- @param output [Data] &lt;p&gt;The JSON output of the task.&lt;/p&gt;
--- @param taskToken [TaskToken] &lt;p&gt;The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).&lt;/p&gt;
+-- @param output [Data] <p>The JSON output of the task.</p>
+-- @param taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
 -- Required parameter: taskToken
 -- Required parameter: output
 function M.SendTaskSuccessInput(output, taskToken, ...)
@@ -1987,8 +1987,8 @@ function M.AssertInvalidDefinition(struct)
 end
 
 --- Create a structure of type InvalidDefinition
--- &lt;p&gt;The provided Amazon States Language definition is invalid.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The provided Amazon States Language definition is invalid.&lt;/p&gt;
+-- <p>The provided Amazon States Language definition is invalid.</p>
+-- @param message [ErrorMessage] <p>The provided Amazon States Language definition is invalid.</p>
 function M.InvalidDefinition(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDefinition")
 	local t = { 
@@ -2032,8 +2032,8 @@ end
 
 --- Create a structure of type ExecutionFailedEventDetails
 --  
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the failure.&lt;/p&gt;
--- @param error [Error] &lt;p&gt;The error code of the failure.&lt;/p&gt;
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- @param error [Error] <p>The error code of the failure.</p>
 function M.ExecutionFailedEventDetails(cause, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionFailedEventDetails")
 	local t = { 
@@ -2078,8 +2078,8 @@ end
 
 --- Create a structure of type LambdaFunctionFailedEventDetails
 --  
--- @param cause [Cause] &lt;p&gt;A more detailed explanation of the cause of the failure.&lt;/p&gt;
--- @param error [Error] &lt;p&gt;The error code of the failure.&lt;/p&gt;
+-- @param cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- @param error [Error] <p>The error code of the failure.</p>
 function M.LambdaFunctionFailedEventDetails(cause, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionFailedEventDetails")
 	local t = { 
@@ -2104,7 +2104,7 @@ end
 
 --- Create a structure of type DeleteActivityInput
 --  
--- @param activityArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the activity to delete.&lt;/p&gt;
+-- @param activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to delete.</p>
 -- Required parameter: activityArn
 function M.DeleteActivityInput(activityArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteActivityInput")

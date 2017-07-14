@@ -33,9 +33,9 @@ function M.AssertDirectoryVpcSettings(struct)
 end
 
 --- Create a structure of type DirectoryVpcSettings
--- &lt;p&gt;Contains VPC information for the &lt;a&gt;CreateDirectory&lt;/a&gt; or &lt;a&gt;CreateMicrosoftAD&lt;/a&gt; operation.&lt;/p&gt;
--- @param SubnetIds [SubnetIds] &lt;p&gt;The identifiers of the subnets for the directory servers. The two subnets must be in different Availability Zones. AWS Directory Service creates a directory server and a DNS server in each of these subnets.&lt;/p&gt;
--- @param VpcId [VpcId] &lt;p&gt;The identifier of the VPC in which to create the directory.&lt;/p&gt;
+-- <p>Contains VPC information for the <a>CreateDirectory</a> or <a>CreateMicrosoftAD</a> operation.</p>
+-- @param SubnetIds [SubnetIds] <p>The identifiers of the subnets for the directory servers. The two subnets must be in different Availability Zones. AWS Directory Service creates a directory server and a DNS server in each of these subnets.</p>
+-- @param VpcId [VpcId] <p>The identifier of the VPC in which to create the directory.</p>
 -- Required parameter: VpcId
 -- Required parameter: SubnetIds
 function M.DirectoryVpcSettings(SubnetIds, VpcId, ...)
@@ -61,9 +61,9 @@ function M.AssertUnsupportedOperationException(struct)
 end
 
 --- Create a structure of type UnsupportedOperationException
--- &lt;p&gt;The operation is not supported.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The operation is not supported.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The operation is not supported.&lt;/p&gt;
+-- <p>The operation is not supported.</p>
+-- @param Message [ExceptionMessage] <p>The operation is not supported.</p>
+-- @param RequestId [RequestId] <p>The operation is not supported.</p>
 function M.UnsupportedOperationException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedOperationException")
 	local t = { 
@@ -89,10 +89,10 @@ function M.AssertDisableSsoRequest(struct)
 end
 
 --- Create a structure of type DisableSsoRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DisableSso&lt;/a&gt; operation.&lt;/p&gt;
--- @param UserName [UserName] &lt;p&gt;The username of an alternate account to use to disable single-sign on. This is only used for AD Connector directories. This account must have privileges to remove a service principal name.&lt;/p&gt; &lt;p&gt;If the AD Connector service account does not have privileges to remove a service principal name, you can specify an alternate account with the &lt;i&gt;UserName&lt;/i&gt; and &lt;i&gt;Password&lt;/i&gt; parameters. These credentials are only used to disable single sign-on and are not stored by the service. The AD Connector service account is not changed.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory for which to disable single-sign on.&lt;/p&gt;
--- @param Password [ConnectPassword] &lt;p&gt;The password of an alternate account to use to disable single-sign on. This is only used for AD Connector directories. For more information, see the &lt;i&gt;UserName&lt;/i&gt; parameter.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DisableSso</a> operation.</p>
+-- @param UserName [UserName] <p>The username of an alternate account to use to disable single-sign on. This is only used for AD Connector directories. This account must have privileges to remove a service principal name.</p> <p>If the AD Connector service account does not have privileges to remove a service principal name, you can specify an alternate account with the <i>UserName</i> and <i>Password</i> parameters. These credentials are only used to disable single sign-on and are not stored by the service. The AD Connector service account is not changed.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory for which to disable single-sign on.</p>
+-- @param Password [ConnectPassword] <p>The password of an alternate account to use to disable single-sign on. This is only used for AD Connector directories. For more information, see the <i>UserName</i> parameter.</p>
 -- Required parameter: DirectoryId
 function M.DisableSsoRequest(UserName, DirectoryId, Password, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableSsoRequest")
@@ -119,9 +119,9 @@ function M.AssertDeleteTrustRequest(struct)
 end
 
 --- Create a structure of type DeleteTrustRequest
--- &lt;p&gt;Deletes the local side of an existing trust relationship between the Microsoft AD in the AWS cloud and the external domain.&lt;/p&gt;
--- @param TrustId [TrustId] &lt;p&gt;The Trust ID of the trust relationship to be deleted.&lt;/p&gt;
--- @param DeleteAssociatedConditionalForwarder [DeleteAssociatedConditionalForwarder] &lt;p&gt;Delete a conditional forwarder as part of a DeleteTrustRequest.&lt;/p&gt;
+-- <p>Deletes the local side of an existing trust relationship between the Microsoft AD in the AWS cloud and the external domain.</p>
+-- @param TrustId [TrustId] <p>The Trust ID of the trust relationship to be deleted.</p>
+-- @param DeleteAssociatedConditionalForwarder [DeleteAssociatedConditionalForwarder] <p>Delete a conditional forwarder as part of a DeleteTrustRequest.</p>
 -- Required parameter: TrustId
 function M.DeleteTrustRequest(TrustId, DeleteAssociatedConditionalForwarder, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTrustRequest")
@@ -146,9 +146,9 @@ function M.AssertDescribeTrustsResult(struct)
 end
 
 --- Create a structure of type DescribeTrustsResult
--- &lt;p&gt;The result of a DescribeTrust request.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If not null, more results are available. Pass this value for the &lt;i&gt;NextToken&lt;/i&gt; parameter in a subsequent call to &lt;a&gt;DescribeTrusts&lt;/a&gt; to retrieve the next set of items.&lt;/p&gt;
--- @param Trusts [Trusts] &lt;p&gt;The list of Trust objects that were retrieved.&lt;/p&gt; &lt;p&gt;It is possible that this list contains less than the number of items specified in the &lt;i&gt;Limit&lt;/i&gt; member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.&lt;/p&gt;
+-- <p>The result of a DescribeTrust request.</p>
+-- @param NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>DescribeTrusts</a> to retrieve the next set of items.</p>
+-- @param Trusts [Trusts] <p>The list of Trust objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
 function M.DescribeTrustsResult(NextToken, Trusts, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustsResult")
 	local t = { 
@@ -171,8 +171,8 @@ function M.AssertDeleteDirectoryResult(struct)
 end
 
 --- Create a structure of type DeleteDirectoryResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;DeleteDirectory&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The directory identifier.&lt;/p&gt;
+-- <p>Contains the results of the <a>DeleteDirectory</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The directory identifier.</p>
 function M.DeleteDirectoryResult(DirectoryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDirectoryResult")
 	local t = { 
@@ -195,9 +195,9 @@ function M.AssertDirectoryUnavailableException(struct)
 end
 
 --- Create a structure of type DirectoryUnavailableException
--- &lt;p&gt;The specified directory is unavailable or could not be found.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The specified directory is unavailable or could not be found.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The specified directory is unavailable or could not be found.&lt;/p&gt;
+-- <p>The specified directory is unavailable or could not be found.</p>
+-- @param Message [ExceptionMessage] <p>The specified directory is unavailable or could not be found.</p>
+-- @param RequestId [RequestId] <p>The specified directory is unavailable or could not be found.</p>
 function M.DirectoryUnavailableException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryUnavailableException")
 	local t = { 
@@ -221,9 +221,9 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;One or more parameters are not valid.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;One or more parameters are not valid.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;One or more parameters are not valid.&lt;/p&gt;
+-- <p>One or more parameters are not valid.</p>
+-- @param Message [ExceptionMessage] <p>One or more parameters are not valid.</p>
+-- @param RequestId [RequestId] <p>One or more parameters are not valid.</p>
 function M.InvalidParameterException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -247,9 +247,9 @@ function M.AssertCreateAliasResult(struct)
 end
 
 --- Create a structure of type CreateAliasResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;CreateAlias&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory.&lt;/p&gt;
--- @param Alias [AliasName] &lt;p&gt;The alias for the directory.&lt;/p&gt;
+-- <p>Contains the results of the <a>CreateAlias</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory.</p>
+-- @param Alias [AliasName] <p>The alias for the directory.</p>
 function M.CreateAliasResult(DirectoryId, Alias, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAliasResult")
 	local t = { 
@@ -272,8 +272,8 @@ function M.AssertCreateDirectoryResult(struct)
 end
 
 --- Create a structure of type CreateDirectoryResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;CreateDirectory&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory that was created.&lt;/p&gt;
+-- <p>Contains the results of the <a>CreateDirectory</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory that was created.</p>
 function M.CreateDirectoryResult(DirectoryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDirectoryResult")
 	local t = { 
@@ -299,9 +299,9 @@ end
 
 --- Create a structure of type ListIpRoutesRequest
 --  
--- @param DirectoryId [DirectoryId] &lt;p&gt;Identifier (ID) of the directory for which you want to retrieve the IP addresses.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The &lt;i&gt;ListIpRoutes.NextToken&lt;/i&gt; value from a previous call to &lt;a&gt;ListIpRoutes&lt;/a&gt;. Pass null if this is the first call.&lt;/p&gt;
--- @param Limit [Limit] &lt;p&gt;Maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.&lt;/p&gt;
+-- @param DirectoryId [DirectoryId] <p>Identifier (ID) of the directory for which you want to retrieve the IP addresses.</p>
+-- @param NextToken [NextToken] <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
+-- @param Limit [Limit] <p>Maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.</p>
 -- Required parameter: DirectoryId
 function M.ListIpRoutesRequest(DirectoryId, NextToken, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIpRoutesRequest")
@@ -326,8 +326,8 @@ function M.AssertGetSnapshotLimitsResult(struct)
 end
 
 --- Create a structure of type GetSnapshotLimitsResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;GetSnapshotLimits&lt;/a&gt; operation.&lt;/p&gt;
--- @param SnapshotLimits [SnapshotLimits] &lt;p&gt;A &lt;a&gt;SnapshotLimits&lt;/a&gt; object that contains the manual snapshot limits for the specified directory.&lt;/p&gt;
+-- <p>Contains the results of the <a>GetSnapshotLimits</a> operation.</p>
+-- @param SnapshotLimits [SnapshotLimits] <p>A <a>SnapshotLimits</a> object that contains the manual snapshot limits for the specified directory.</p>
 function M.GetSnapshotLimitsResult(SnapshotLimits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSnapshotLimitsResult")
 	local t = { 
@@ -348,7 +348,7 @@ function M.AssertDisableSsoResult(struct)
 end
 
 --- Create a structure of type DisableSsoResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;DisableSso&lt;/a&gt; operation.&lt;/p&gt;
+-- <p>Contains the results of the <a>DisableSso</a> operation.</p>
 function M.DisableSsoResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableSsoResult")
 	local t = { 
@@ -372,11 +372,11 @@ function M.AssertDescribeSnapshotsRequest(struct)
 end
 
 --- Create a structure of type DescribeSnapshotsRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DescribeSnapshots&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory for which to retrieve snapshot information.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The &lt;i&gt;DescribeSnapshotsResult.NextToken&lt;/i&gt; value from a previous call to &lt;a&gt;DescribeSnapshots&lt;/a&gt;. Pass null if this is the first call.&lt;/p&gt;
--- @param Limit [Limit] &lt;p&gt;The maximum number of objects to return.&lt;/p&gt;
--- @param SnapshotIds [SnapshotIds] &lt;p&gt;A list of identifiers of the snapshots to obtain the information for. If this member is null or empty, all snapshots are returned using the &lt;i&gt;Limit&lt;/i&gt; and &lt;i&gt;NextToken&lt;/i&gt; members.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DescribeSnapshots</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory for which to retrieve snapshot information.</p>
+-- @param NextToken [NextToken] <p>The <i>DescribeSnapshotsResult.NextToken</i> value from a previous call to <a>DescribeSnapshots</a>. Pass null if this is the first call.</p>
+-- @param Limit [Limit] <p>The maximum number of objects to return.</p>
+-- @param SnapshotIds [SnapshotIds] <p>A list of identifiers of the snapshots to obtain the information for. If this member is null or empty, all snapshots are returned using the <i>Limit</i> and <i>NextToken</i> members.</p>
 function M.DescribeSnapshotsRequest(DirectoryId, NextToken, Limit, SnapshotIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSnapshotsRequest")
 	local t = { 
@@ -402,8 +402,8 @@ function M.AssertDeleteSnapshotRequest(struct)
 end
 
 --- Create a structure of type DeleteSnapshotRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DeleteSnapshot&lt;/a&gt; operation.&lt;/p&gt;
--- @param SnapshotId [SnapshotId] &lt;p&gt;The identifier of the directory snapshot to be deleted.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DeleteSnapshot</a> operation.</p>
+-- @param SnapshotId [SnapshotId] <p>The identifier of the directory snapshot to be deleted.</p>
 -- Required parameter: SnapshotId
 function M.DeleteSnapshotRequest(SnapshotId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSnapshotRequest")
@@ -428,8 +428,8 @@ end
 
 --- Create a structure of type ListTagsForResourceResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;List of tags returned by the ListTagsForResource operation.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>Reserved for future use.</p>
+-- @param Tags [Tags] <p>List of tags returned by the ListTagsForResource operation.</p>
 function M.ListTagsForResourceResult(NextToken, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResult")
 	local t = { 
@@ -452,8 +452,8 @@ function M.AssertDeleteSnapshotResult(struct)
 end
 
 --- Create a structure of type DeleteSnapshotResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;DeleteSnapshot&lt;/a&gt; operation.&lt;/p&gt;
--- @param SnapshotId [SnapshotId] &lt;p&gt;The identifier of the directory snapshot that was deleted.&lt;/p&gt;
+-- <p>Contains the results of the <a>DeleteSnapshot</a> operation.</p>
+-- @param SnapshotId [SnapshotId] <p>The identifier of the directory snapshot that was deleted.</p>
 function M.DeleteSnapshotResult(SnapshotId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSnapshotResult")
 	local t = { 
@@ -476,9 +476,9 @@ function M.AssertInsufficientPermissionsException(struct)
 end
 
 --- Create a structure of type InsufficientPermissionsException
--- &lt;p&gt;The account does not have sufficient permission to perform the operation.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The account does not have sufficient permission to perform the operation.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The account does not have sufficient permission to perform the operation.&lt;/p&gt;
+-- <p>The account does not have sufficient permission to perform the operation.</p>
+-- @param Message [ExceptionMessage] <p>The account does not have sufficient permission to perform the operation.</p>
+-- @param RequestId [RequestId] <p>The account does not have sufficient permission to perform the operation.</p>
 function M.InsufficientPermissionsException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientPermissionsException")
 	local t = { 
@@ -518,25 +518,25 @@ function M.AssertDirectoryDescription(struct)
 end
 
 --- Create a structure of type DirectoryDescription
--- &lt;p&gt;Contains information about an AWS Directory Service directory.&lt;/p&gt;
--- @param AccessUrl [AccessUrl] &lt;p&gt;The access URL for the directory, such as &lt;code&gt;http://&amp;lt;alias&amp;gt;.awsapps.com&lt;/code&gt;. If no alias has been created for the directory, &lt;code&gt;&amp;lt;alias&amp;gt;&lt;/code&gt; is the directory identifier, such as &lt;code&gt;d-XXXXXXXXXX&lt;/code&gt;.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The directory identifier.&lt;/p&gt;
--- @param SsoEnabled [SsoEnabled] &lt;p&gt;Indicates if single-sign on is enabled for the directory. For more information, see &lt;a&gt;EnableSso&lt;/a&gt; and &lt;a&gt;DisableSso&lt;/a&gt;.&lt;/p&gt;
--- @param Name [DirectoryName] &lt;p&gt;The fully-qualified name of the directory.&lt;/p&gt;
--- @param RadiusStatus [RadiusStatus] &lt;p&gt;The status of the RADIUS MFA server connection.&lt;/p&gt;
--- @param DnsIpAddrs [DnsIpAddrs] &lt;p&gt;The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is connected.&lt;/p&gt;
--- @param VpcSettings [DirectoryVpcSettingsDescription] &lt;p&gt;A &lt;a&gt;DirectoryVpcSettingsDescription&lt;/a&gt; object that contains additional information about a directory. This member is only present if the directory is a Simple AD or Managed AD directory.&lt;/p&gt;
--- @param ConnectSettings [DirectoryConnectSettingsDescription] &lt;p&gt;A &lt;a&gt;DirectoryConnectSettingsDescription&lt;/a&gt; object that contains additional information about an AD Connector directory. This member is only present if the directory is an AD Connector directory.&lt;/p&gt;
--- @param RadiusSettings [RadiusSettings] &lt;p&gt;A &lt;a&gt;RadiusSettings&lt;/a&gt; object that contains information about the RADIUS server configured for this directory.&lt;/p&gt;
--- @param StageLastUpdatedDateTime [LastUpdatedDateTime] &lt;p&gt;The date and time that the stage was last updated.&lt;/p&gt;
--- @param Alias [AliasName] &lt;p&gt;The alias for the directory. If no alias has been created for the directory, the alias is the directory identifier, such as &lt;code&gt;d-XXXXXXXXXX&lt;/code&gt;.&lt;/p&gt;
--- @param LaunchTime [LaunchTime] &lt;p&gt;Specifies when the directory was created.&lt;/p&gt;
--- @param StageReason [StageReason] &lt;p&gt;Additional information about the directory stage.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The textual description for the directory.&lt;/p&gt;
--- @param ShortName [DirectoryShortName] &lt;p&gt;The short name of the directory.&lt;/p&gt;
--- @param Stage [DirectoryStage] &lt;p&gt;The current stage of the directory.&lt;/p&gt;
--- @param Type [DirectoryType] &lt;p&gt;The directory size.&lt;/p&gt;
--- @param Size [DirectorySize] &lt;p&gt;The directory size.&lt;/p&gt;
+-- <p>Contains information about an AWS Directory Service directory.</p>
+-- @param AccessUrl [AccessUrl] <p>The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as <code>d-XXXXXXXXXX</code>.</p>
+-- @param DirectoryId [DirectoryId] <p>The directory identifier.</p>
+-- @param SsoEnabled [SsoEnabled] <p>Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and <a>DisableSso</a>.</p>
+-- @param Name [DirectoryName] <p>The fully-qualified name of the directory.</p>
+-- @param RadiusStatus [RadiusStatus] <p>The status of the RADIUS MFA server connection.</p>
+-- @param DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is connected.</p>
+-- @param VpcSettings [DirectoryVpcSettingsDescription] <p>A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory. This member is only present if the directory is a Simple AD or Managed AD directory.</p>
+-- @param ConnectSettings [DirectoryConnectSettingsDescription] <p>A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD Connector directory. This member is only present if the directory is an AD Connector directory.</p>
+-- @param RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this directory.</p>
+-- @param StageLastUpdatedDateTime [LastUpdatedDateTime] <p>The date and time that the stage was last updated.</p>
+-- @param Alias [AliasName] <p>The alias for the directory. If no alias has been created for the directory, the alias is the directory identifier, such as <code>d-XXXXXXXXXX</code>.</p>
+-- @param LaunchTime [LaunchTime] <p>Specifies when the directory was created.</p>
+-- @param StageReason [StageReason] <p>Additional information about the directory stage.</p>
+-- @param Description [Description] <p>The textual description for the directory.</p>
+-- @param ShortName [DirectoryShortName] <p>The short name of the directory.</p>
+-- @param Stage [DirectoryStage] <p>The current stage of the directory.</p>
+-- @param Type [DirectoryType] <p>The directory size.</p>
+-- @param Size [DirectorySize] <p>The directory size.</p>
 function M.DirectoryDescription(AccessUrl, DirectoryId, SsoEnabled, Name, RadiusStatus, DnsIpAddrs, VpcSettings, ConnectSettings, RadiusSettings, StageLastUpdatedDateTime, Alias, LaunchTime, StageReason, Description, ShortName, Stage, Type, Size, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryDescription")
 	local t = { 
@@ -578,9 +578,9 @@ function M.AssertRegisterEventTopicRequest(struct)
 end
 
 --- Create a structure of type RegisterEventTopicRequest
--- &lt;p&gt;Registers a new event topic.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The Directory ID that will publish status messages to the SNS topic.&lt;/p&gt;
--- @param TopicName [TopicName] &lt;p&gt;The SNS topic name to which the directory will publish status messages. This SNS topic must be in the same region as the specified Directory ID.&lt;/p&gt;
+-- <p>Registers a new event topic.</p>
+-- @param DirectoryId [DirectoryId] <p>The Directory ID that will publish status messages to the SNS topic.</p>
+-- @param TopicName [TopicName] <p>The SNS topic name to which the directory will publish status messages. This SNS topic must be in the same region as the specified Directory ID.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: TopicName
 function M.RegisterEventTopicRequest(DirectoryId, TopicName, ...)
@@ -606,9 +606,9 @@ function M.AssertIpRouteLimitExceededException(struct)
 end
 
 --- Create a structure of type IpRouteLimitExceededException
--- &lt;p&gt;The maximum allowed number of IP addresses was exceeded. The default limit is 100 IP address blocks.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The maximum allowed number of IP addresses was exceeded. The default limit is 100 IP address blocks.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The maximum allowed number of IP addresses was exceeded. The default limit is 100 IP address blocks.&lt;/p&gt;
+-- <p>The maximum allowed number of IP addresses was exceeded. The default limit is 100 IP address blocks.</p>
+-- @param Message [ExceptionMessage] <p>The maximum allowed number of IP addresses was exceeded. The default limit is 100 IP address blocks.</p>
+-- @param RequestId [RequestId] <p>The maximum allowed number of IP addresses was exceeded. The default limit is 100 IP address blocks.</p>
 function M.IpRouteLimitExceededException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IpRouteLimitExceededException")
 	local t = { 
@@ -640,17 +640,17 @@ function M.AssertTrust(struct)
 end
 
 --- Create a structure of type Trust
--- &lt;p&gt;Describes a trust relationship between an Microsoft AD in the AWS cloud and an external domain.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The Directory ID of the AWS directory involved in the trust relationship.&lt;/p&gt;
--- @param StateLastUpdatedDateTime [StateLastUpdatedDateTime] &lt;p&gt;The date and time that the TrustState was last updated.&lt;/p&gt;
--- @param LastUpdatedDateTime [LastUpdatedDateTime] &lt;p&gt;The date and time that the trust relationship was last updated.&lt;/p&gt;
--- @param CreatedDateTime [CreatedDateTime] &lt;p&gt;The date and time that the trust relationship was created.&lt;/p&gt;
--- @param TrustStateReason [TrustStateReason] &lt;p&gt;The reason for the TrustState.&lt;/p&gt;
--- @param RemoteDomainName [RemoteDomainName] &lt;p&gt;The Fully Qualified Domain Name (FQDN) of the external domain involved in the trust relationship.&lt;/p&gt;
--- @param TrustType [TrustType] &lt;p&gt;The trust relationship type.&lt;/p&gt;
--- @param TrustId [TrustId] &lt;p&gt;The unique ID of the trust relationship.&lt;/p&gt;
--- @param TrustDirection [TrustDirection] &lt;p&gt;The trust relationship direction.&lt;/p&gt;
--- @param TrustState [TrustState] &lt;p&gt;The trust relationship state.&lt;/p&gt;
+-- <p>Describes a trust relationship between an Microsoft AD in the AWS cloud and an external domain.</p>
+-- @param DirectoryId [DirectoryId] <p>The Directory ID of the AWS directory involved in the trust relationship.</p>
+-- @param StateLastUpdatedDateTime [StateLastUpdatedDateTime] <p>The date and time that the TrustState was last updated.</p>
+-- @param LastUpdatedDateTime [LastUpdatedDateTime] <p>The date and time that the trust relationship was last updated.</p>
+-- @param CreatedDateTime [CreatedDateTime] <p>The date and time that the trust relationship was created.</p>
+-- @param TrustStateReason [TrustStateReason] <p>The reason for the TrustState.</p>
+-- @param RemoteDomainName [RemoteDomainName] <p>The Fully Qualified Domain Name (FQDN) of the external domain involved in the trust relationship.</p>
+-- @param TrustType [TrustType] <p>The trust relationship type.</p>
+-- @param TrustId [TrustId] <p>The unique ID of the trust relationship.</p>
+-- @param TrustDirection [TrustDirection] <p>The trust relationship direction.</p>
+-- @param TrustState [TrustState] <p>The trust relationship state.</p>
 function M.Trust(DirectoryId, StateLastUpdatedDateTime, LastUpdatedDateTime, CreatedDateTime, TrustStateReason, RemoteDomainName, TrustType, TrustId, TrustDirection, TrustState, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Trust")
 	local t = { 
@@ -681,8 +681,8 @@ function M.AssertDescribeConditionalForwardersResult(struct)
 end
 
 --- Create a structure of type DescribeConditionalForwardersResult
--- &lt;p&gt;The result of a DescribeConditionalForwarder request.&lt;/p&gt;
--- @param ConditionalForwarders [ConditionalForwarders] &lt;p&gt;The list of conditional forwarders that have been created.&lt;/p&gt;
+-- <p>The result of a DescribeConditionalForwarder request.</p>
+-- @param ConditionalForwarders [ConditionalForwarders] <p>The list of conditional forwarders that have been created.</p>
 function M.DescribeConditionalForwardersResult(ConditionalForwarders, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConditionalForwardersResult")
 	local t = { 
@@ -726,8 +726,8 @@ end
 
 --- Create a structure of type ListSchemaExtensionsResult
 --  
--- @param SchemaExtensionsInfo [SchemaExtensionsInfo] &lt;p&gt;Information about the schema extensions applied to the directory.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If not null, more results are available. Pass this value for the &lt;code&gt;NextToken&lt;/code&gt; parameter in a subsequent call to &lt;code&gt;ListSchemaExtensions&lt;/code&gt; to retrieve the next set of items.&lt;/p&gt;
+-- @param SchemaExtensionsInfo [SchemaExtensionsInfo] <p>Information about the schema extensions applied to the directory.</p>
+-- @param NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to <code>ListSchemaExtensions</code> to retrieve the next set of items.</p>
 function M.ListSchemaExtensionsResult(SchemaExtensionsInfo, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSchemaExtensionsResult")
 	local t = { 
@@ -751,9 +751,9 @@ function M.AssertDirectoryLimitExceededException(struct)
 end
 
 --- Create a structure of type DirectoryLimitExceededException
--- &lt;p&gt;The maximum number of directories in the region has been reached. You can use the &lt;a&gt;GetDirectoryLimits&lt;/a&gt; operation to determine your directory limits in the region.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The maximum number of directories in the region has been reached. You can use the &lt;a&gt;GetDirectoryLimits&lt;/a&gt; operation to determine your directory limits in the region.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The maximum number of directories in the region has been reached. You can use the &lt;a&gt;GetDirectoryLimits&lt;/a&gt; operation to determine your directory limits in the region.&lt;/p&gt;
+-- <p>The maximum number of directories in the region has been reached. You can use the <a>GetDirectoryLimits</a> operation to determine your directory limits in the region.</p>
+-- @param Message [ExceptionMessage] <p>The maximum number of directories in the region has been reached. You can use the <a>GetDirectoryLimits</a> operation to determine your directory limits in the region.</p>
+-- @param RequestId [RequestId] <p>The maximum number of directories in the region has been reached. You can use the <a>GetDirectoryLimits</a> operation to determine your directory limits in the region.</p>
 function M.DirectoryLimitExceededException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryLimitExceededException")
 	local t = { 
@@ -780,8 +780,8 @@ end
 
 --- Create a structure of type AddTagsToResourceRequest
 --  
--- @param ResourceId [ResourceId] &lt;p&gt;Identifier (ID) for the directory to which to add the tag.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;The tags to be assigned to the directory.&lt;/p&gt;
+-- @param ResourceId [ResourceId] <p>Identifier (ID) for the directory to which to add the tag.</p>
+-- @param Tags [Tags] <p>The tags to be assigned to the directory.</p>
 -- Required parameter: ResourceId
 -- Required parameter: Tags
 function M.AddTagsToResourceRequest(ResourceId, Tags, ...)
@@ -807,9 +807,9 @@ function M.AssertInvalidNextTokenException(struct)
 end
 
 --- Create a structure of type InvalidNextTokenException
--- &lt;p&gt;The &lt;i&gt;NextToken&lt;/i&gt; value is not valid.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The &lt;i&gt;NextToken&lt;/i&gt; value is not valid.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The &lt;i&gt;NextToken&lt;/i&gt; value is not valid.&lt;/p&gt;
+-- <p>The <i>NextToken</i> value is not valid.</p>
+-- @param Message [ExceptionMessage] <p>The <i>NextToken</i> value is not valid.</p>
+-- @param RequestId [RequestId] <p>The <i>NextToken</i> value is not valid.</p>
 function M.InvalidNextTokenException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
 	local t = { 
@@ -836,8 +836,8 @@ end
 
 --- Create a structure of type RemoveIpRoutesRequest
 --  
--- @param DirectoryId [DirectoryId] &lt;p&gt;Identifier (ID) of the directory from which you want to remove the IP addresses.&lt;/p&gt;
--- @param CidrIps [CidrIps] &lt;p&gt;IP address blocks that you want to remove.&lt;/p&gt;
+-- @param DirectoryId [DirectoryId] <p>Identifier (ID) of the directory from which you want to remove the IP addresses.</p>
+-- @param CidrIps [CidrIps] <p>IP address blocks that you want to remove.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: CidrIps
 function M.RemoveIpRoutesRequest(DirectoryId, CidrIps, ...)
@@ -864,9 +864,9 @@ function M.AssertDescribeConditionalForwardersRequest(struct)
 end
 
 --- Create a structure of type DescribeConditionalForwardersRequest
--- &lt;p&gt;Describes a conditional forwarder.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The directory ID for which to get the list of associated conditional forwarders.&lt;/p&gt;
--- @param RemoteDomainNames [RemoteDomainNames] &lt;p&gt;The fully qualified domain names (FQDN) of the remote domains for which to get the list of associated conditional forwarders. If this member is null, all conditional forwarders are returned.&lt;/p&gt;
+-- <p>Describes a conditional forwarder.</p>
+-- @param DirectoryId [DirectoryId] <p>The directory ID for which to get the list of associated conditional forwarders.</p>
+-- @param RemoteDomainNames [RemoteDomainNames] <p>The fully qualified domain names (FQDN) of the remote domains for which to get the list of associated conditional forwarders. If this member is null, all conditional forwarders are returned.</p>
 -- Required parameter: DirectoryId
 function M.DescribeConditionalForwardersRequest(DirectoryId, RemoteDomainNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConditionalForwardersRequest")
@@ -895,13 +895,13 @@ function M.AssertDirectoryConnectSettingsDescription(struct)
 end
 
 --- Create a structure of type DirectoryConnectSettingsDescription
--- &lt;p&gt;Contains information about an AD Connector directory.&lt;/p&gt;
--- @param CustomerUserName [UserName] &lt;p&gt;The username of the service account in the on-premises directory.&lt;/p&gt;
--- @param VpcId [VpcId] &lt;p&gt;The identifier of the VPC that the AD Connector is in.&lt;/p&gt;
--- @param SubnetIds [SubnetIds] &lt;p&gt;A list of subnet identifiers in the VPC that the AD connector is in.&lt;/p&gt;
--- @param SecurityGroupId [SecurityGroupId] &lt;p&gt;The security group identifier for the AD Connector directory.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;A list of the Availability Zones that the directory is in.&lt;/p&gt;
--- @param ConnectIps [IpAddrs] &lt;p&gt;The IP addresses of the AD Connector servers.&lt;/p&gt;
+-- <p>Contains information about an AD Connector directory.</p>
+-- @param CustomerUserName [UserName] <p>The username of the service account in the on-premises directory.</p>
+-- @param VpcId [VpcId] <p>The identifier of the VPC that the AD Connector is in.</p>
+-- @param SubnetIds [SubnetIds] <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+-- @param SecurityGroupId [SecurityGroupId] <p>The security group identifier for the AD Connector directory.</p>
+-- @param AvailabilityZones [AvailabilityZones] <p>A list of the Availability Zones that the directory is in.</p>
+-- @param ConnectIps [IpAddrs] <p>The IP addresses of the AD Connector servers.</p>
 function M.DirectoryConnectSettingsDescription(CustomerUserName, VpcId, SubnetIds, SecurityGroupId, AvailabilityZones, ConnectIps, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryConnectSettingsDescription")
 	local t = { 
@@ -937,13 +937,13 @@ function M.AssertConnectDirectoryRequest(struct)
 end
 
 --- Create a structure of type ConnectDirectoryRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;ConnectDirectory&lt;/a&gt; operation.&lt;/p&gt;
--- @param Name [DirectoryName] &lt;p&gt;The fully-qualified name of the on-premises directory, such as &lt;code&gt;corp.example.com&lt;/code&gt;.&lt;/p&gt;
--- @param ConnectSettings [DirectoryConnectSettings] &lt;p&gt;A &lt;a&gt;DirectoryConnectSettings&lt;/a&gt; object that contains additional information for the operation.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;A textual description for the directory.&lt;/p&gt;
--- @param ShortName [DirectoryShortName] &lt;p&gt;The NetBIOS name of the on-premises directory, such as &lt;code&gt;CORP&lt;/code&gt;.&lt;/p&gt;
--- @param Password [ConnectPassword] &lt;p&gt;The password for the on-premises user account.&lt;/p&gt;
--- @param Size [DirectorySize] &lt;p&gt;The size of the directory.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>ConnectDirectory</a> operation.</p>
+-- @param Name [DirectoryName] <p>The fully-qualified name of the on-premises directory, such as <code>corp.example.com</code>.</p>
+-- @param ConnectSettings [DirectoryConnectSettings] <p>A <a>DirectoryConnectSettings</a> object that contains additional information for the operation.</p>
+-- @param Description [Description] <p>A textual description for the directory.</p>
+-- @param ShortName [DirectoryShortName] <p>The NetBIOS name of the on-premises directory, such as <code>CORP</code>.</p>
+-- @param Password [ConnectPassword] <p>The password for the on-premises user account.</p>
+-- @param Size [DirectorySize] <p>The size of the directory.</p>
 -- Required parameter: Name
 -- Required parameter: Password
 -- Required parameter: Size
@@ -975,8 +975,8 @@ function M.AssertVerifyTrustRequest(struct)
 end
 
 --- Create a structure of type VerifyTrustRequest
--- &lt;p&gt;Initiates the verification of an existing trust relationship between a Microsoft AD in the AWS cloud and an external domain.&lt;/p&gt;
--- @param TrustId [TrustId] &lt;p&gt;The unique Trust ID of the trust relationship to verify.&lt;/p&gt;
+-- <p>Initiates the verification of an existing trust relationship between a Microsoft AD in the AWS cloud and an external domain.</p>
+-- @param TrustId [TrustId] <p>The unique Trust ID of the trust relationship to verify.</p>
 -- Required parameter: TrustId
 function M.VerifyTrustRequest(TrustId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyTrustRequest")
@@ -1002,9 +1002,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Metadata assigned to a directory consisting of a key-value pair.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The optional value of the tag. The string value can be Unicode characters. The string can contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: &quot;^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$&quot;).&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;Required name of the tag. The string value can be Unicode characters and cannot be prefixed with &quot;aws:&quot;. The string can contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: &quot;^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$&quot;).&lt;/p&gt;
+-- <p>Metadata assigned to a directory consisting of a key-value pair.</p>
+-- @param Value [TagValue] <p>The optional value of the tag. The string value can be Unicode characters. The string can contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
+-- @param Key [TagKey] <p>Required name of the tag. The string value can be Unicode characters and cannot be prefixed with "aws:". The string can contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
 -- Required parameter: Key
 -- Required parameter: Value
 function M.Tag(Value, Key, ...)
@@ -1056,12 +1056,12 @@ function M.AssertCreateComputerRequest(struct)
 end
 
 --- Create a structure of type CreateComputerRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;CreateComputer&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory in which to create the computer account.&lt;/p&gt;
--- @param ComputerName [ComputerName] &lt;p&gt;The name of the computer account.&lt;/p&gt;
--- @param Password [ComputerPassword] &lt;p&gt;A one-time password that is used to join the computer to the directory. You should generate a random, strong password to use for this parameter.&lt;/p&gt;
--- @param ComputerAttributes [Attributes] &lt;p&gt;An array of &lt;a&gt;Attribute&lt;/a&gt; objects that contain any LDAP attributes to apply to the computer account.&lt;/p&gt;
--- @param OrganizationalUnitDistinguishedName [OrganizationalUnitDN] &lt;p&gt;The fully-qualified distinguished name of the organizational unit to place the computer account in.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>CreateComputer</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory in which to create the computer account.</p>
+-- @param ComputerName [ComputerName] <p>The name of the computer account.</p>
+-- @param Password [ComputerPassword] <p>A one-time password that is used to join the computer to the directory. You should generate a random, strong password to use for this parameter.</p>
+-- @param ComputerAttributes [Attributes] <p>An array of <a>Attribute</a> objects that contain any LDAP attributes to apply to the computer account.</p>
+-- @param OrganizationalUnitDistinguishedName [OrganizationalUnitDN] <p>The fully-qualified distinguished name of the organizational unit to place the computer account in.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: ComputerName
 -- Required parameter: Password
@@ -1093,9 +1093,9 @@ function M.AssertEnableRadiusRequest(struct)
 end
 
 --- Create a structure of type EnableRadiusRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;EnableRadius&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory for which to enable MFA.&lt;/p&gt;
--- @param RadiusSettings [RadiusSettings] &lt;p&gt;A &lt;a&gt;RadiusSettings&lt;/a&gt; object that contains information about the RADIUS server.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>EnableRadius</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory for which to enable MFA.</p>
+-- @param RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: RadiusSettings
 function M.EnableRadiusRequest(DirectoryId, RadiusSettings, ...)
@@ -1123,11 +1123,11 @@ function M.AssertDirectoryVpcSettingsDescription(struct)
 end
 
 --- Create a structure of type DirectoryVpcSettingsDescription
--- &lt;p&gt;Contains information about the directory.&lt;/p&gt;
--- @param SubnetIds [SubnetIds] &lt;p&gt;The identifiers of the subnets for the directory servers.&lt;/p&gt;
--- @param VpcId [VpcId] &lt;p&gt;The identifier of the VPC that the directory is in.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;The list of Availability Zones that the directory is in.&lt;/p&gt;
--- @param SecurityGroupId [SecurityGroupId] &lt;p&gt;The security group identifier for the directory. If the directory was created before 8/1/2014, this is the identifier of the directory members security group that was created when the directory was created. If the directory was created after this date, this value is null.&lt;/p&gt;
+-- <p>Contains information about the directory.</p>
+-- @param SubnetIds [SubnetIds] <p>The identifiers of the subnets for the directory servers.</p>
+-- @param VpcId [VpcId] <p>The identifier of the VPC that the directory is in.</p>
+-- @param AvailabilityZones [AvailabilityZones] <p>The list of Availability Zones that the directory is in.</p>
+-- @param SecurityGroupId [SecurityGroupId] <p>The security group identifier for the directory. If the directory was created before 8/1/2014, this is the identifier of the directory members security group that was created when the directory was created. If the directory was created after this date, this value is null.</p>
 function M.DirectoryVpcSettingsDescription(SubnetIds, VpcId, AvailabilityZones, SecurityGroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryVpcSettingsDescription")
 	local t = { 
@@ -1153,9 +1153,9 @@ function M.AssertClientException(struct)
 end
 
 --- Create a structure of type ClientException
--- &lt;p&gt;A client exception has occurred.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;A client exception has occurred.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;A client exception has occurred.&lt;/p&gt;
+-- <p>A client exception has occurred.</p>
+-- @param Message [ExceptionMessage] <p>A client exception has occurred.</p>
+-- @param RequestId [RequestId] <p>A client exception has occurred.</p>
 function M.ClientException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClientException")
 	local t = { 
@@ -1178,8 +1178,8 @@ function M.AssertCreateTrustResult(struct)
 end
 
 --- Create a structure of type CreateTrustResult
--- &lt;p&gt;The result of a CreateTrust request.&lt;/p&gt;
--- @param TrustId [TrustId] &lt;p&gt;A unique identifier for the trust relationship that was created.&lt;/p&gt;
+-- <p>The result of a CreateTrust request.</p>
+-- @param TrustId [TrustId] <p>A unique identifier for the trust relationship that was created.</p>
 function M.CreateTrustResult(TrustId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrustResult")
 	local t = { 
@@ -1207,14 +1207,14 @@ function M.AssertSchemaExtensionInfo(struct)
 end
 
 --- Create a structure of type SchemaExtensionInfo
--- &lt;p&gt;Information about a schema extension.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory to which the schema extension is applied.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;A description of the schema extension.&lt;/p&gt;
--- @param SchemaExtensionStatus [SchemaExtensionStatus] &lt;p&gt;The current status of the schema extension.&lt;/p&gt;
--- @param SchemaExtensionId [SchemaExtensionId] &lt;p&gt;The identifier of the schema extension.&lt;/p&gt;
--- @param EndDateTime [EndDateTime] &lt;p&gt;The date and time that the schema extension was completed.&lt;/p&gt;
--- @param StartDateTime [StartDateTime] &lt;p&gt;The date and time that the schema extension started being applied to the directory.&lt;/p&gt;
--- @param SchemaExtensionStatusReason [SchemaExtensionStatusReason] &lt;p&gt;The reason for the &lt;code&gt;SchemaExtensionStatus&lt;/code&gt;.&lt;/p&gt;
+-- <p>Information about a schema extension.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory to which the schema extension is applied.</p>
+-- @param Description [Description] <p>A description of the schema extension.</p>
+-- @param SchemaExtensionStatus [SchemaExtensionStatus] <p>The current status of the schema extension.</p>
+-- @param SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension.</p>
+-- @param EndDateTime [EndDateTime] <p>The date and time that the schema extension was completed.</p>
+-- @param StartDateTime [StartDateTime] <p>The date and time that the schema extension started being applied to the directory.</p>
+-- @param SchemaExtensionStatusReason [SchemaExtensionStatusReason] <p>The reason for the <code>SchemaExtensionStatus</code>.</p>
 function M.SchemaExtensionInfo(DirectoryId, Description, SchemaExtensionStatus, SchemaExtensionId, EndDateTime, StartDateTime, SchemaExtensionStatusReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SchemaExtensionInfo")
 	local t = { 
@@ -1264,8 +1264,8 @@ end
 
 --- Create a structure of type ListIpRoutesResult
 --  
--- @param IpRoutesInfo [IpRoutesInfo] &lt;p&gt;A list of &lt;a&gt;IpRoute&lt;/a&gt;s.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If not null, more results are available. Pass this value for the &lt;i&gt;NextToken&lt;/i&gt; parameter in a subsequent call to &lt;a&gt;ListIpRoutes&lt;/a&gt; to retrieve the next set of items.&lt;/p&gt;
+-- @param IpRoutesInfo [IpRoutesInfo] <p>A list of <a>IpRoute</a>s.</p>
+-- @param NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>ListIpRoutes</a> to retrieve the next set of items.</p>
 function M.ListIpRoutesResult(IpRoutesInfo, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIpRoutesResult")
 	local t = { 
@@ -1291,9 +1291,9 @@ function M.AssertDeleteConditionalForwarderRequest(struct)
 end
 
 --- Create a structure of type DeleteConditionalForwarderRequest
--- &lt;p&gt;Deletes a conditional forwarder.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The directory ID for which you are deleting the conditional forwarder.&lt;/p&gt;
--- @param RemoteDomainName [RemoteDomainName] &lt;p&gt;The fully qualified domain name (FQDN) of the remote domain with which you are deleting the conditional forwarder.&lt;/p&gt;
+-- <p>Deletes a conditional forwarder.</p>
+-- @param DirectoryId [DirectoryId] <p>The directory ID for which you are deleting the conditional forwarder.</p>
+-- @param RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domain with which you are deleting the conditional forwarder.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: RemoteDomainName
 function M.DeleteConditionalForwarderRequest(DirectoryId, RemoteDomainName, ...)
@@ -1320,10 +1320,10 @@ function M.AssertComputer(struct)
 end
 
 --- Create a structure of type Computer
--- &lt;p&gt;Contains information about a computer account in a directory.&lt;/p&gt;
--- @param ComputerName [ComputerName] &lt;p&gt;The computer name.&lt;/p&gt;
--- @param ComputerAttributes [Attributes] &lt;p&gt;An array of &lt;a&gt;Attribute&lt;/a&gt; objects containing the LDAP attributes that belong to the computer account.&lt;/p&gt;
--- @param ComputerId [SID] &lt;p&gt;The identifier of the computer.&lt;/p&gt;
+-- <p>Contains information about a computer account in a directory.</p>
+-- @param ComputerName [ComputerName] <p>The computer name.</p>
+-- @param ComputerAttributes [Attributes] <p>An array of <a>Attribute</a> objects containing the LDAP attributes that belong to the computer account.</p>
+-- @param ComputerId [SID] <p>The identifier of the computer.</p>
 function M.Computer(ComputerName, ComputerAttributes, ComputerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Computer")
 	local t = { 
@@ -1354,11 +1354,11 @@ function M.AssertDirectoryConnectSettings(struct)
 end
 
 --- Create a structure of type DirectoryConnectSettings
--- &lt;p&gt;Contains information for the &lt;a&gt;ConnectDirectory&lt;/a&gt; operation when an AD Connector directory is being created.&lt;/p&gt;
--- @param CustomerDnsIps [DnsIpAddrs] &lt;p&gt;A list of one or more IP addresses of DNS servers or domain controllers in the on-premises directory.&lt;/p&gt;
--- @param CustomerUserName [UserName] &lt;p&gt;The username of an account in the on-premises directory that is used to connect to the directory. This account must have the following privileges:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Read users and groups&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Create computer objects&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Join computers to the domain&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SubnetIds [SubnetIds] &lt;p&gt;A list of subnet identifiers in the VPC in which the AD Connector is created.&lt;/p&gt;
--- @param VpcId [VpcId] &lt;p&gt;The identifier of the VPC in which the AD Connector is created.&lt;/p&gt;
+-- <p>Contains information for the <a>ConnectDirectory</a> operation when an AD Connector directory is being created.</p>
+-- @param CustomerDnsIps [DnsIpAddrs] <p>A list of one or more IP addresses of DNS servers or domain controllers in the on-premises directory.</p>
+-- @param CustomerUserName [UserName] <p>The username of an account in the on-premises directory that is used to connect to the directory. This account must have the following privileges:</p> <ul> <li> <p>Read users and groups</p> </li> <li> <p>Create computer objects</p> </li> <li> <p>Join computers to the domain</p> </li> </ul>
+-- @param SubnetIds [SubnetIds] <p>A list of subnet identifiers in the VPC in which the AD Connector is created.</p>
+-- @param VpcId [VpcId] <p>The identifier of the VPC in which the AD Connector is created.</p>
 -- Required parameter: VpcId
 -- Required parameter: SubnetIds
 -- Required parameter: CustomerDnsIps
@@ -1391,9 +1391,9 @@ end
 
 --- Create a structure of type ListSchemaExtensionsRequest
 --  
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory from which to retrieve the schema extension information.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The &lt;code&gt;ListSchemaExtensions.NextToken&lt;/code&gt; value from a previous call to &lt;code&gt;ListSchemaExtensions&lt;/code&gt;. Pass null if this is the first call.&lt;/p&gt;
--- @param Limit [Limit] &lt;p&gt;The maximum number of items to return.&lt;/p&gt;
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory from which to retrieve the schema extension information.</p>
+-- @param NextToken [NextToken] <p>The <code>ListSchemaExtensions.NextToken</code> value from a previous call to <code>ListSchemaExtensions</code>. Pass null if this is the first call.</p>
+-- @param Limit [Limit] <p>The maximum number of items to return.</p>
 -- Required parameter: DirectoryId
 function M.ListSchemaExtensionsRequest(DirectoryId, NextToken, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSchemaExtensionsRequest")
@@ -1418,8 +1418,8 @@ function M.AssertDescribeEventTopicsResult(struct)
 end
 
 --- Create a structure of type DescribeEventTopicsResult
--- &lt;p&gt;The result of a DescribeEventTopic request.&lt;/p&gt;
--- @param EventTopics [EventTopics] &lt;p&gt;A list of SNS topic names that receive status messages from the specified Directory ID.&lt;/p&gt;
+-- <p>The result of a DescribeEventTopic request.</p>
+-- @param EventTopics [EventTopics] <p>A list of SNS topic names that receive status messages from the specified Directory ID.</p>
 function M.DescribeEventTopicsResult(EventTopics, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventTopicsResult")
 	local t = { 
@@ -1444,9 +1444,9 @@ function M.AssertDeregisterEventTopicRequest(struct)
 end
 
 --- Create a structure of type DeregisterEventTopicRequest
--- &lt;p&gt;Removes the specified directory as a publisher to the specified SNS topic.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The Directory ID to remove as a publisher. This directory will no longer send messages to the specified SNS topic.&lt;/p&gt;
--- @param TopicName [TopicName] &lt;p&gt;The name of the SNS topic from which to remove the directory as a publisher.&lt;/p&gt;
+-- <p>Removes the specified directory as a publisher to the specified SNS topic.</p>
+-- @param DirectoryId [DirectoryId] <p>The Directory ID to remove as a publisher. This directory will no longer send messages to the specified SNS topic.</p>
+-- @param TopicName [TopicName] <p>The name of the SNS topic from which to remove the directory as a publisher.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: TopicName
 function M.DeregisterEventTopicRequest(DirectoryId, TopicName, ...)
@@ -1471,8 +1471,8 @@ function M.AssertVerifyTrustResult(struct)
 end
 
 --- Create a structure of type VerifyTrustResult
--- &lt;p&gt;Result of a VerifyTrust request.&lt;/p&gt;
--- @param TrustId [TrustId] &lt;p&gt;The unique Trust ID of the trust relationship that was verified.&lt;/p&gt;
+-- <p>Result of a VerifyTrust request.</p>
+-- @param TrustId [TrustId] <p>The unique Trust ID of the trust relationship that was verified.</p>
 function M.VerifyTrustResult(TrustId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyTrustResult")
 	local t = { 
@@ -1493,7 +1493,7 @@ function M.AssertCreateConditionalForwarderResult(struct)
 end
 
 --- Create a structure of type CreateConditionalForwarderResult
--- &lt;p&gt;The result of a CreateConditinalForwarder request.&lt;/p&gt;
+-- <p>The result of a CreateConditinalForwarder request.</p>
 function M.CreateConditionalForwarderResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateConditionalForwarderResult")
 	local t = { 
@@ -1515,9 +1515,9 @@ function M.AssertDescribeDirectoriesResult(struct)
 end
 
 --- Create a structure of type DescribeDirectoriesResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;DescribeDirectories&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryDescriptions [DirectoryDescriptions] &lt;p&gt;The list of &lt;a&gt;DirectoryDescription&lt;/a&gt; objects that were retrieved.&lt;/p&gt; &lt;p&gt;It is possible that this list contains less than the number of items specified in the &lt;i&gt;Limit&lt;/i&gt; member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If not null, more results are available. Pass this value for the &lt;i&gt;NextToken&lt;/i&gt; parameter in a subsequent call to &lt;a&gt;DescribeDirectories&lt;/a&gt; to retrieve the next set of items.&lt;/p&gt;
+-- <p>Contains the results of the <a>DescribeDirectories</a> operation.</p>
+-- @param DirectoryDescriptions [DirectoryDescriptions] <p>The list of <a>DirectoryDescription</a> objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
+-- @param NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>DescribeDirectories</a> to retrieve the next set of items.</p>
 function M.DescribeDirectoriesResult(DirectoryDescriptions, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDirectoriesResult")
 	local t = { 
@@ -1541,8 +1541,8 @@ function M.AssertGetSnapshotLimitsRequest(struct)
 end
 
 --- Create a structure of type GetSnapshotLimitsRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;GetSnapshotLimits&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;Contains the identifier of the directory to obtain the limits for.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>GetSnapshotLimits</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>Contains the identifier of the directory to obtain the limits for.</p>
 -- Required parameter: DirectoryId
 function M.GetSnapshotLimitsRequest(DirectoryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSnapshotLimitsRequest")
@@ -1572,12 +1572,12 @@ function M.AssertCreateMicrosoftADRequest(struct)
 end
 
 --- Create a structure of type CreateMicrosoftADRequest
--- &lt;p&gt;Creates a Microsoft AD in the AWS cloud.&lt;/p&gt;
--- @param ShortName [DirectoryShortName] &lt;p&gt;The NetBIOS name for your domain. A short identifier for your domain, such as &lt;code&gt;CORP&lt;/code&gt;. If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, &lt;code&gt;CORP&lt;/code&gt; for the directory DNS &lt;code&gt;corp.example.com&lt;/code&gt;. &lt;/p&gt;
--- @param Password [Password] &lt;p&gt;The password for the default administrative user named &lt;code&gt;Admin&lt;/code&gt;.&lt;/p&gt;
--- @param Name [DirectoryName] &lt;p&gt;The fully qualified domain name for the directory, such as &lt;code&gt;corp.example.com&lt;/code&gt;. This name will resolve inside your VPC only. It does not need to be publicly resolvable.&lt;/p&gt;
--- @param VpcSettings [DirectoryVpcSettings] &lt;p&gt;Creates a Microsoft AD in the AWS cloud.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;A textual description for the directory. This label will appear on the AWS console &lt;code&gt;Directory Details&lt;/code&gt; page after the directory is created.&lt;/p&gt;
+-- <p>Creates a Microsoft AD in the AWS cloud.</p>
+-- @param ShortName [DirectoryShortName] <p>The NetBIOS name for your domain. A short identifier for your domain, such as <code>CORP</code>. If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, <code>CORP</code> for the directory DNS <code>corp.example.com</code>. </p>
+-- @param Password [Password] <p>The password for the default administrative user named <code>Admin</code>.</p>
+-- @param Name [DirectoryName] <p>The fully qualified domain name for the directory, such as <code>corp.example.com</code>. This name will resolve inside your VPC only. It does not need to be publicly resolvable.</p>
+-- @param VpcSettings [DirectoryVpcSettings] <p>Creates a Microsoft AD in the AWS cloud.</p>
+-- @param Description [Description] <p>A textual description for the directory. This label will appear on the AWS console <code>Directory Details</code> page after the directory is created.</p>
 -- Required parameter: Name
 -- Required parameter: Password
 -- Required parameter: VpcSettings
@@ -1607,9 +1607,9 @@ function M.AssertDescribeEventTopicsRequest(struct)
 end
 
 --- Create a structure of type DescribeEventTopicsRequest
--- &lt;p&gt;Describes event topics.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The Directory ID for which to get the list of associated SNS topics. If this member is null, associations for all Directory IDs are returned.&lt;/p&gt;
--- @param TopicNames [TopicNames] &lt;p&gt;A list of SNS topic names for which to obtain the information. If this member is null, all associations for the specified Directory ID are returned.&lt;/p&gt; &lt;p&gt;An empty list results in an &lt;code&gt;InvalidParameterException&lt;/code&gt; being thrown.&lt;/p&gt;
+-- <p>Describes event topics.</p>
+-- @param DirectoryId [DirectoryId] <p>The Directory ID for which to get the list of associated SNS topics. If this member is null, associations for all Directory IDs are returned.</p>
+-- @param TopicNames [TopicNames] <p>A list of SNS topic names for which to obtain the information. If this member is null, all associations for the specified Directory ID are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
 function M.DescribeEventTopicsRequest(DirectoryId, TopicNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventTopicsRequest")
 	local t = { 
@@ -1635,11 +1635,11 @@ function M.AssertDescribeTrustsRequest(struct)
 end
 
 --- Create a structure of type DescribeTrustsRequest
--- &lt;p&gt;Describes the trust relationships for a particular Microsoft AD in the AWS cloud. If no input parameters are are provided, such as directory ID or trust ID, this request describes all the trust relationships.&lt;/p&gt;
--- @param Limit [Limit] &lt;p&gt;The maximum number of objects to return.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The Directory ID of the AWS directory that is a part of the requested trust relationship.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The &lt;i&gt;DescribeTrustsResult.NextToken&lt;/i&gt; value from a previous call to &lt;a&gt;DescribeTrusts&lt;/a&gt;. Pass null if this is the first call.&lt;/p&gt;
--- @param TrustIds [TrustIds] &lt;p&gt;A list of identifiers of the trust relationships for which to obtain the information. If this member is null, all trust relationships that belong to the current account are returned.&lt;/p&gt; &lt;p&gt;An empty list results in an &lt;code&gt;InvalidParameterException&lt;/code&gt; being thrown.&lt;/p&gt;
+-- <p>Describes the trust relationships for a particular Microsoft AD in the AWS cloud. If no input parameters are are provided, such as directory ID or trust ID, this request describes all the trust relationships.</p>
+-- @param Limit [Limit] <p>The maximum number of objects to return.</p>
+-- @param DirectoryId [DirectoryId] <p>The Directory ID of the AWS directory that is a part of the requested trust relationship.</p>
+-- @param NextToken [NextToken] <p>The <i>DescribeTrustsResult.NextToken</i> value from a previous call to <a>DescribeTrusts</a>. Pass null if this is the first call.</p>
+-- @param TrustIds [TrustIds] <p>A list of identifiers of the trust relationships for which to obtain the information. If this member is null, all trust relationships that belong to the current account are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
 function M.DescribeTrustsRequest(Limit, DirectoryId, NextToken, TrustIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustsRequest")
 	local t = { 
@@ -1668,9 +1668,9 @@ end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param ResourceId [ResourceId] &lt;p&gt;Identifier (ID) of the directory for which you want to retrieve tags.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param Limit [Limit] &lt;p&gt;Reserved for future use.&lt;/p&gt;
+-- @param ResourceId [ResourceId] <p>Identifier (ID) of the directory for which you want to retrieve tags.</p>
+-- @param NextToken [NextToken] <p>Reserved for future use.</p>
+-- @param Limit [Limit] <p>Reserved for future use.</p>
 -- Required parameter: ResourceId
 function M.ListTagsForResourceRequest(ResourceId, NextToken, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
@@ -1694,7 +1694,7 @@ function M.AssertUpdateRadiusResult(struct)
 end
 
 --- Create a structure of type UpdateRadiusResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;UpdateRadius&lt;/a&gt; operation.&lt;/p&gt;
+-- <p>Contains the results of the <a>UpdateRadius</a> operation.</p>
 function M.UpdateRadiusResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRadiusResult")
 	local t = { 
@@ -1716,8 +1716,8 @@ function M.AssertDisableRadiusRequest(struct)
 end
 
 --- Create a structure of type DisableRadiusRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DisableRadius&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory for which to disable MFA.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DisableRadius</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory for which to disable MFA.</p>
 -- Required parameter: DirectoryId
 function M.DisableRadiusRequest(DirectoryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableRadiusRequest")
@@ -1741,9 +1741,9 @@ function M.AssertAuthenticationFailedException(struct)
 end
 
 --- Create a structure of type AuthenticationFailedException
--- &lt;p&gt;An authentication error occurred.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The textual message for the exception.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The identifier of the request that caused the exception.&lt;/p&gt;
+-- <p>An authentication error occurred.</p>
+-- @param Message [ExceptionMessage] <p>The textual message for the exception.</p>
+-- @param RequestId [RequestId] <p>The identifier of the request that caused the exception.</p>
 function M.AuthenticationFailedException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthenticationFailedException")
 	local t = { 
@@ -1767,9 +1767,9 @@ function M.AssertServiceException(struct)
 end
 
 --- Create a structure of type ServiceException
--- &lt;p&gt;An exception has occurred in AWS Directory Service.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;An exception has occurred in AWS Directory Service.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;An exception has occurred in AWS Directory Service.&lt;/p&gt;
+-- <p>An exception has occurred in AWS Directory Service.</p>
+-- @param Message [ExceptionMessage] <p>An exception has occurred in AWS Directory Service.</p>
+-- @param RequestId [RequestId] <p>An exception has occurred in AWS Directory Service.</p>
 function M.ServiceException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceException")
 	local t = { 
@@ -1795,9 +1795,9 @@ function M.AssertCreateAliasRequest(struct)
 end
 
 --- Create a structure of type CreateAliasRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;CreateAlias&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory for which to create the alias.&lt;/p&gt;
--- @param Alias [AliasName] &lt;p&gt;The requested alias.&lt;/p&gt; &lt;p&gt;The alias must be unique amongst all aliases in AWS. This operation throws an &lt;code&gt;EntityAlreadyExistsException&lt;/code&gt; error if the alias already exists.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>CreateAlias</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory for which to create the alias.</p>
+-- @param Alias [AliasName] <p>The requested alias.</p> <p>The alias must be unique amongst all aliases in AWS. This operation throws an <code>EntityAlreadyExistsException</code> error if the alias already exists.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: Alias
 function M.CreateAliasRequest(DirectoryId, Alias, ...)
@@ -1824,10 +1824,10 @@ function M.AssertConditionalForwarder(struct)
 end
 
 --- Create a structure of type ConditionalForwarder
--- &lt;p&gt;Points to a remote domain with which you are setting up a trust relationship. Conditional forwarders are required in order to set up a trust relationship with another domain.&lt;/p&gt;
--- @param RemoteDomainName [RemoteDomainName] &lt;p&gt;The fully qualified domain name (FQDN) of the remote domains pointed to by the conditional forwarder.&lt;/p&gt;
--- @param DnsIpAddrs [DnsIpAddrs] &lt;p&gt;The IP addresses of the remote DNS server associated with RemoteDomainName. This is the IP address of the DNS server that your conditional forwarder points to.&lt;/p&gt;
--- @param ReplicationScope [ReplicationScope] &lt;p&gt;The replication scope of the conditional forwarder. The only allowed value is &lt;code&gt;Domain&lt;/code&gt;, which will replicate the conditional forwarder to all of the domain controllers for your AWS directory.&lt;/p&gt;
+-- <p>Points to a remote domain with which you are setting up a trust relationship. Conditional forwarders are required in order to set up a trust relationship with another domain.</p>
+-- @param RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domains pointed to by the conditional forwarder.</p>
+-- @param DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the remote DNS server associated with RemoteDomainName. This is the IP address of the DNS server that your conditional forwarder points to.</p>
+-- @param ReplicationScope [ReplicationScope] <p>The replication scope of the conditional forwarder. The only allowed value is <code>Domain</code>, which will replicate the conditional forwarder to all of the domain controllers for your AWS directory.</p>
 function M.ConditionalForwarder(RemoteDomainName, DnsIpAddrs, ReplicationScope, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConditionalForwarder")
 	local t = { 
@@ -1856,9 +1856,9 @@ end
 
 --- Create a structure of type AddIpRoutesRequest
 --  
--- @param DirectoryId [DirectoryId] &lt;p&gt;Identifier (ID) of the directory to which to add the address block.&lt;/p&gt;
--- @param UpdateSecurityGroupForDirectoryControllers [UpdateSecurityGroupForDirectoryControllers] &lt;p&gt;If set to true, updates the inbound and outbound rules of the security group that has the description: &quot;AWS created security group for &lt;i&gt;directory ID&lt;/i&gt; directory controllers.&quot; Following are the new rules: &lt;/p&gt; &lt;p&gt;Inbound:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Type: Custom UDP Rule, Protocol: UDP, Range: 88, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom UDP Rule, Protocol: UDP, Range: 123, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom UDP Rule, Protocol: UDP, Range: 138, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom UDP Rule, Protocol: UDP, Range: 389, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom UDP Rule, Protocol: UDP, Range: 464, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom UDP Rule, Protocol: UDP, Range: 445, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom TCP Rule, Protocol: TCP, Range: 88, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom TCP Rule, Protocol: TCP, Range: 135, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom TCP Rule, Protocol: TCP, Range: 445, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom TCP Rule, Protocol: TCP, Range: 464, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom TCP Rule, Protocol: TCP, Range: 636, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom TCP Rule, Protocol: TCP, Range: 1024-65535, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: Custom TCP Rule, Protocol: TCP, Range: 3268-33269, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: DNS (UDP), Protocol: UDP, Range: 53, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: DNS (TCP), Protocol: TCP, Range: 53, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: LDAP, Protocol: TCP, Range: 389, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Type: All ICMP, Protocol: All, Range: N/A, Source: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p/&gt; &lt;p&gt;Outbound:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Type: All traffic, Protocol: All, Range: All, Destination: 0.0.0.0/0&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;These security rules impact an internal network interface that is not exposed publicly.&lt;/p&gt;
--- @param IpRoutes [IpRoutes] &lt;p&gt;IP address blocks, using CIDR format, of the traffic to route. This is often the IP address block of the DNS server used for your on-premises domain.&lt;/p&gt;
+-- @param DirectoryId [DirectoryId] <p>Identifier (ID) of the directory to which to add the address block.</p>
+-- @param UpdateSecurityGroupForDirectoryControllers [UpdateSecurityGroupForDirectoryControllers] <p>If set to true, updates the inbound and outbound rules of the security group that has the description: "AWS created security group for <i>directory ID</i> directory controllers." Following are the new rules: </p> <p>Inbound:</p> <ul> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 88, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 123, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 138, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 389, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 464, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 445, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 88, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 135, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 445, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 464, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 636, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 1024-65535, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 3268-33269, Source: 0.0.0.0/0</p> </li> <li> <p>Type: DNS (UDP), Protocol: UDP, Range: 53, Source: 0.0.0.0/0</p> </li> <li> <p>Type: DNS (TCP), Protocol: TCP, Range: 53, Source: 0.0.0.0/0</p> </li> <li> <p>Type: LDAP, Protocol: TCP, Range: 389, Source: 0.0.0.0/0</p> </li> <li> <p>Type: All ICMP, Protocol: All, Range: N/A, Source: 0.0.0.0/0</p> </li> </ul> <p/> <p>Outbound:</p> <ul> <li> <p>Type: All traffic, Protocol: All, Range: All, Destination: 0.0.0.0/0</p> </li> </ul> <p>These security rules impact an internal network interface that is not exposed publicly.</p>
+-- @param IpRoutes [IpRoutes] <p>IP address blocks, using CIDR format, of the traffic to route. This is often the IP address block of the DNS server used for your on-premises domain.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: IpRoutes
 function M.AddIpRoutesRequest(DirectoryId, UpdateSecurityGroupForDirectoryControllers, IpRoutes, ...)
@@ -1883,7 +1883,7 @@ function M.AssertRegisterEventTopicResult(struct)
 end
 
 --- Create a structure of type RegisterEventTopicResult
--- &lt;p&gt;The result of a RegisterEventTopic request.&lt;/p&gt;
+-- <p>The result of a RegisterEventTopic request.</p>
 function M.RegisterEventTopicResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterEventTopicResult")
 	local t = { 
@@ -1908,8 +1908,8 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceRequest
 --  
--- @param ResourceId [ResourceId] &lt;p&gt;Identifier (ID) of the directory from which to remove the tag.&lt;/p&gt;
--- @param TagKeys [TagKeys] &lt;p&gt;The tag key (name) of the tag to be removed.&lt;/p&gt;
+-- @param ResourceId [ResourceId] <p>Identifier (ID) of the directory from which to remove the tag.</p>
+-- @param TagKeys [TagKeys] <p>The tag key (name) of the tag to be removed.</p>
 -- Required parameter: ResourceId
 -- Required parameter: TagKeys
 function M.RemoveTagsFromResourceRequest(ResourceId, TagKeys, ...)
@@ -1943,13 +1943,13 @@ function M.AssertCreateTrustRequest(struct)
 end
 
 --- Create a structure of type CreateTrustRequest
--- &lt;p&gt;AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your Microsoft AD in the AWS cloud, and your existing on-premises Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.&lt;/p&gt; &lt;p&gt;This action initiates the creation of the AWS side of a trust relationship between a Microsoft AD in the AWS cloud and an external domain.&lt;/p&gt;
--- @param TrustPassword [TrustPassword] &lt;p&gt;The trust password. The must be the same password that was used when creating the trust relationship on the external domain.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The Directory ID of the Microsoft AD in the AWS cloud for which to establish the trust relationship.&lt;/p&gt;
--- @param RemoteDomainName [RemoteDomainName] &lt;p&gt;The Fully Qualified Domain Name (FQDN) of the external domain for which to create the trust relationship.&lt;/p&gt;
--- @param ConditionalForwarderIpAddrs [DnsIpAddrs] &lt;p&gt;The IP addresses of the remote DNS server associated with RemoteDomainName.&lt;/p&gt;
--- @param TrustType [TrustType] &lt;p&gt;The trust relationship type.&lt;/p&gt;
--- @param TrustDirection [TrustDirection] &lt;p&gt;The direction of the trust relationship.&lt;/p&gt;
+-- <p>AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your Microsoft AD in the AWS cloud, and your existing on-premises Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.</p> <p>This action initiates the creation of the AWS side of a trust relationship between a Microsoft AD in the AWS cloud and an external domain.</p>
+-- @param TrustPassword [TrustPassword] <p>The trust password. The must be the same password that was used when creating the trust relationship on the external domain.</p>
+-- @param DirectoryId [DirectoryId] <p>The Directory ID of the Microsoft AD in the AWS cloud for which to establish the trust relationship.</p>
+-- @param RemoteDomainName [RemoteDomainName] <p>The Fully Qualified Domain Name (FQDN) of the external domain for which to create the trust relationship.</p>
+-- @param ConditionalForwarderIpAddrs [DnsIpAddrs] <p>The IP addresses of the remote DNS server associated with RemoteDomainName.</p>
+-- @param TrustType [TrustType] <p>The trust relationship type.</p>
+-- @param TrustDirection [TrustDirection] <p>The direction of the trust relationship.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: RemoteDomainName
 -- Required parameter: TrustPassword
@@ -1984,8 +1984,8 @@ end
 
 --- Create a structure of type CancelSchemaExtensionRequest
 --  
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory whose schema extension will be canceled.&lt;/p&gt;
--- @param SchemaExtensionId [SchemaExtensionId] &lt;p&gt;The identifier of the schema extension that will be canceled.&lt;/p&gt;
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory whose schema extension will be canceled.</p>
+-- @param SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension that will be canceled.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: SchemaExtensionId
 function M.CancelSchemaExtensionRequest(DirectoryId, SchemaExtensionId, ...)
@@ -2013,9 +2013,9 @@ function M.AssertUpdateRadiusRequest(struct)
 end
 
 --- Create a structure of type UpdateRadiusRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;UpdateRadius&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory for which to update the RADIUS server information.&lt;/p&gt;
--- @param RadiusSettings [RadiusSettings] &lt;p&gt;A &lt;a&gt;RadiusSettings&lt;/a&gt; object that contains information about the RADIUS server.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>UpdateRadius</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory for which to update the RADIUS server information.</p>
+-- @param RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: RadiusSettings
 function M.UpdateRadiusRequest(DirectoryId, RadiusSettings, ...)
@@ -2045,13 +2045,13 @@ function M.AssertSnapshot(struct)
 end
 
 --- Create a structure of type Snapshot
--- &lt;p&gt;Describes a directory snapshot.&lt;/p&gt;
--- @param Status [SnapshotStatus] &lt;p&gt;The snapshot status.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The directory identifier.&lt;/p&gt;
--- @param Name [SnapshotName] &lt;p&gt;The descriptive name of the snapshot.&lt;/p&gt;
--- @param StartTime [StartTime] &lt;p&gt;The date and time that the snapshot was taken.&lt;/p&gt;
--- @param SnapshotId [SnapshotId] &lt;p&gt;The snapshot identifier.&lt;/p&gt;
--- @param Type [SnapshotType] &lt;p&gt;The snapshot type.&lt;/p&gt;
+-- <p>Describes a directory snapshot.</p>
+-- @param Status [SnapshotStatus] <p>The snapshot status.</p>
+-- @param DirectoryId [DirectoryId] <p>The directory identifier.</p>
+-- @param Name [SnapshotName] <p>The descriptive name of the snapshot.</p>
+-- @param StartTime [StartTime] <p>The date and time that the snapshot was taken.</p>
+-- @param SnapshotId [SnapshotId] <p>The snapshot identifier.</p>
+-- @param Type [SnapshotType] <p>The snapshot type.</p>
 function M.Snapshot(Status, DirectoryId, Name, StartTime, SnapshotId, Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Snapshot")
 	local t = { 
@@ -2078,8 +2078,8 @@ function M.AssertCreateMicrosoftADResult(struct)
 end
 
 --- Create a structure of type CreateMicrosoftADResult
--- &lt;p&gt;Result of a CreateMicrosoftAD request.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory that was created.&lt;/p&gt;
+-- <p>Result of a CreateMicrosoftAD request.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory that was created.</p>
 function M.CreateMicrosoftADResult(DirectoryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateMicrosoftADResult")
 	local t = { 
@@ -2100,7 +2100,7 @@ function M.AssertEnableSsoResult(struct)
 end
 
 --- Create a structure of type EnableSsoResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;EnableSso&lt;/a&gt; operation.&lt;/p&gt;
+-- <p>Contains the results of the <a>EnableSso</a> operation.</p>
 function M.EnableSsoResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableSsoResult")
 	local t = { 
@@ -2129,13 +2129,13 @@ function M.AssertCreateDirectoryRequest(struct)
 end
 
 --- Create a structure of type CreateDirectoryRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;CreateDirectory&lt;/a&gt; operation. &lt;/p&gt;
--- @param Name [DirectoryName] &lt;p&gt;The fully qualified name for the directory, such as &lt;code&gt;corp.example.com&lt;/code&gt;.&lt;/p&gt;
--- @param VpcSettings [DirectoryVpcSettings] &lt;p&gt;A &lt;a&gt;DirectoryVpcSettings&lt;/a&gt; object that contains additional information for the operation.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;A textual description for the directory.&lt;/p&gt;
--- @param ShortName [DirectoryShortName] &lt;p&gt;The short name of the directory, such as &lt;code&gt;CORP&lt;/code&gt;.&lt;/p&gt;
--- @param Password [Password] &lt;p&gt;The password for the directory administrator. The directory creation process creates a directory administrator account with the username &lt;code&gt;Administrator&lt;/code&gt; and this password.&lt;/p&gt;
--- @param Size [DirectorySize] &lt;p&gt;The size of the directory.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>CreateDirectory</a> operation. </p>
+-- @param Name [DirectoryName] <p>The fully qualified name for the directory, such as <code>corp.example.com</code>.</p>
+-- @param VpcSettings [DirectoryVpcSettings] <p>A <a>DirectoryVpcSettings</a> object that contains additional information for the operation.</p>
+-- @param Description [Description] <p>A textual description for the directory.</p>
+-- @param ShortName [DirectoryShortName] <p>The short name of the directory, such as <code>CORP</code>.</p>
+-- @param Password [Password] <p>The password for the directory administrator. The directory creation process creates a directory administrator account with the username <code>Administrator</code> and this password.</p>
+-- @param Size [DirectorySize] <p>The size of the directory.</p>
 -- Required parameter: Name
 -- Required parameter: Password
 -- Required parameter: Size
@@ -2166,8 +2166,8 @@ function M.AssertRestoreFromSnapshotRequest(struct)
 end
 
 --- Create a structure of type RestoreFromSnapshotRequest
--- &lt;p&gt;An object representing the inputs for the &lt;a&gt;RestoreFromSnapshot&lt;/a&gt; operation.&lt;/p&gt;
--- @param SnapshotId [SnapshotId] &lt;p&gt;The identifier of the snapshot to restore from.&lt;/p&gt;
+-- <p>An object representing the inputs for the <a>RestoreFromSnapshot</a> operation.</p>
+-- @param SnapshotId [SnapshotId] <p>The identifier of the snapshot to restore from.</p>
 -- Required parameter: SnapshotId
 function M.RestoreFromSnapshotRequest(SnapshotId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RestoreFromSnapshotRequest")
@@ -2191,9 +2191,9 @@ function M.AssertAttribute(struct)
 end
 
 --- Create a structure of type Attribute
--- &lt;p&gt;Represents a named directory attribute.&lt;/p&gt;
--- @param Name [AttributeName] &lt;p&gt;The name of the attribute.&lt;/p&gt;
--- @param Value [AttributeValue] &lt;p&gt;The value of the attribute.&lt;/p&gt;
+-- <p>Represents a named directory attribute.</p>
+-- @param Name [AttributeName] <p>The name of the attribute.</p>
+-- @param Value [AttributeValue] <p>The value of the attribute.</p>
 function M.Attribute(Name, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Attribute")
 	local t = { 
@@ -2217,9 +2217,9 @@ function M.AssertDescribeSnapshotsResult(struct)
 end
 
 --- Create a structure of type DescribeSnapshotsResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;DescribeSnapshots&lt;/a&gt; operation.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If not null, more results are available. Pass this value in the &lt;i&gt;NextToken&lt;/i&gt; member of a subsequent call to &lt;a&gt;DescribeSnapshots&lt;/a&gt;.&lt;/p&gt;
--- @param Snapshots [Snapshots] &lt;p&gt;The list of &lt;a&gt;Snapshot&lt;/a&gt; objects that were retrieved.&lt;/p&gt; &lt;p&gt;It is possible that this list contains less than the number of items specified in the &lt;i&gt;Limit&lt;/i&gt; member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.&lt;/p&gt;
+-- <p>Contains the results of the <a>DescribeSnapshots</a> operation.</p>
+-- @param NextToken [NextToken] <p>If not null, more results are available. Pass this value in the <i>NextToken</i> member of a subsequent call to <a>DescribeSnapshots</a>.</p>
+-- @param Snapshots [Snapshots] <p>The list of <a>Snapshot</a> objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
 function M.DescribeSnapshotsResult(NextToken, Snapshots, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSnapshotsResult")
 	local t = { 
@@ -2241,7 +2241,7 @@ function M.AssertGetDirectoryLimitsRequest(struct)
 end
 
 --- Create a structure of type GetDirectoryLimitsRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;GetDirectoryLimits&lt;/a&gt; operation.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>GetDirectoryLimits</a> operation.</p>
 function M.GetDirectoryLimitsRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDirectoryLimitsRequest")
 	local t = { 
@@ -2264,9 +2264,9 @@ function M.AssertCreateSnapshotRequest(struct)
 end
 
 --- Create a structure of type CreateSnapshotRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;CreateSnapshot&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory of which to take a snapshot.&lt;/p&gt;
--- @param Name [SnapshotName] &lt;p&gt;The descriptive name to apply to the snapshot.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>CreateSnapshot</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory of which to take a snapshot.</p>
+-- @param Name [SnapshotName] <p>The descriptive name to apply to the snapshot.</p>
 -- Required parameter: DirectoryId
 function M.CreateSnapshotRequest(DirectoryId, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSnapshotRequest")
@@ -2292,10 +2292,10 @@ function M.AssertDescribeDirectoriesRequest(struct)
 end
 
 --- Create a structure of type DescribeDirectoriesRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DescribeDirectories&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryIds [DirectoryIds] &lt;p&gt;A list of identifiers of the directories for which to obtain the information. If this member is null, all directories that belong to the current account are returned.&lt;/p&gt; &lt;p&gt;An empty list results in an &lt;code&gt;InvalidParameterException&lt;/code&gt; being thrown.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The &lt;i&gt;DescribeDirectoriesResult.NextToken&lt;/i&gt; value from a previous call to &lt;a&gt;DescribeDirectories&lt;/a&gt;. Pass null if this is the first call.&lt;/p&gt;
--- @param Limit [Limit] &lt;p&gt;The maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DescribeDirectories</a> operation.</p>
+-- @param DirectoryIds [DirectoryIds] <p>A list of identifiers of the directories for which to obtain the information. If this member is null, all directories that belong to the current account are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
+-- @param NextToken [NextToken] <p>The <i>DescribeDirectoriesResult.NextToken</i> value from a previous call to <a>DescribeDirectories</a>. Pass null if this is the first call.</p>
+-- @param Limit [Limit] <p>The maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.</p>
 function M.DescribeDirectoriesRequest(DirectoryIds, NextToken, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDirectoriesRequest")
 	local t = { 
@@ -2319,8 +2319,8 @@ function M.AssertCreateSnapshotResult(struct)
 end
 
 --- Create a structure of type CreateSnapshotResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;CreateSnapshot&lt;/a&gt; operation.&lt;/p&gt;
--- @param SnapshotId [SnapshotId] &lt;p&gt;The identifier of the snapshot that was created.&lt;/p&gt;
+-- <p>Contains the results of the <a>CreateSnapshot</a> operation.</p>
+-- @param SnapshotId [SnapshotId] <p>The identifier of the snapshot that was created.</p>
 function M.CreateSnapshotResult(SnapshotId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSnapshotResult")
 	local t = { 
@@ -2367,10 +2367,10 @@ function M.AssertUpdateConditionalForwarderRequest(struct)
 end
 
 --- Create a structure of type UpdateConditionalForwarderRequest
--- &lt;p&gt;Updates a conditional forwarder.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The directory ID of the AWS directory for which to update the conditional forwarder.&lt;/p&gt;
--- @param RemoteDomainName [RemoteDomainName] &lt;p&gt;The fully qualified domain name (FQDN) of the remote domain with which you will set up a trust relationship.&lt;/p&gt;
--- @param DnsIpAddrs [DnsIpAddrs] &lt;p&gt;The updated IP addresses of the remote DNS server associated with the conditional forwarder.&lt;/p&gt;
+-- <p>Updates a conditional forwarder.</p>
+-- @param DirectoryId [DirectoryId] <p>The directory ID of the AWS directory for which to update the conditional forwarder.</p>
+-- @param RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domain with which you will set up a trust relationship.</p>
+-- @param DnsIpAddrs [DnsIpAddrs] <p>The updated IP addresses of the remote DNS server associated with the conditional forwarder.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: RemoteDomainName
 -- Required parameter: DnsIpAddrs
@@ -2402,10 +2402,10 @@ function M.AssertCreateConditionalForwarderRequest(struct)
 end
 
 --- Create a structure of type CreateConditionalForwarderRequest
--- &lt;p&gt;Initiates the creation of a conditional forwarder for your AWS Directory Service for Microsoft Active Directory. Conditional forwarders are required in order to set up a trust relationship with another domain.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The directory ID of the AWS directory for which you are creating the conditional forwarder.&lt;/p&gt;
--- @param RemoteDomainName [RemoteDomainName] &lt;p&gt;The fully qualified domain name (FQDN) of the remote domain with which you will set up a trust relationship.&lt;/p&gt;
--- @param DnsIpAddrs [DnsIpAddrs] &lt;p&gt;The IP addresses of the remote DNS server associated with RemoteDomainName.&lt;/p&gt;
+-- <p>Initiates the creation of a conditional forwarder for your AWS Directory Service for Microsoft Active Directory. Conditional forwarders are required in order to set up a trust relationship with another domain.</p>
+-- @param DirectoryId [DirectoryId] <p>The directory ID of the AWS directory for which you are creating the conditional forwarder.</p>
+-- @param RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domain with which you will set up a trust relationship.</p>
+-- @param DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the remote DNS server associated with RemoteDomainName.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: RemoteDomainName
 -- Required parameter: DnsIpAddrs
@@ -2451,7 +2451,7 @@ function M.AssertDeregisterEventTopicResult(struct)
 end
 
 --- Create a structure of type DeregisterEventTopicResult
--- &lt;p&gt;The result of a DeregisterEventTopic request.&lt;/p&gt;
+-- <p>The result of a DeregisterEventTopic request.</p>
 function M.DeregisterEventTopicResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterEventTopicResult")
 	local t = { 
@@ -2471,7 +2471,7 @@ function M.AssertDeleteConditionalForwarderResult(struct)
 end
 
 --- Create a structure of type DeleteConditionalForwarderResult
--- &lt;p&gt;The result of a DeleteConditionalForwarder request.&lt;/p&gt;
+-- <p>The result of a DeleteConditionalForwarder request.</p>
 function M.DeleteConditionalForwarderResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConditionalForwarderResult")
 	local t = { 
@@ -2492,8 +2492,8 @@ function M.AssertConnectDirectoryResult(struct)
 end
 
 --- Create a structure of type ConnectDirectoryResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;ConnectDirectory&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the new directory.&lt;/p&gt;
+-- <p>Contains the results of the <a>ConnectDirectory</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the new directory.</p>
 function M.ConnectDirectoryResult(DirectoryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConnectDirectoryResult")
 	local t = { 
@@ -2516,7 +2516,7 @@ end
 
 --- Create a structure of type StartSchemaExtensionResult
 --  
--- @param SchemaExtensionId [SchemaExtensionId] &lt;p&gt;The identifier of the schema extension that will be applied.&lt;/p&gt;
+-- @param SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension that will be applied.</p>
 function M.StartSchemaExtensionResult(SchemaExtensionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartSchemaExtensionResult")
 	local t = { 
@@ -2539,9 +2539,9 @@ function M.AssertEntityDoesNotExistException(struct)
 end
 
 --- Create a structure of type EntityDoesNotExistException
--- &lt;p&gt;The specified entity could not be found.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The specified entity could not be found.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The specified entity could not be found.&lt;/p&gt;
+-- <p>The specified entity could not be found.</p>
+-- @param Message [ExceptionMessage] <p>The specified entity could not be found.</p>
+-- @param RequestId [RequestId] <p>The specified entity could not be found.</p>
 function M.EntityDoesNotExistException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntityDoesNotExistException")
 	local t = { 
@@ -2571,15 +2571,15 @@ function M.AssertRadiusSettings(struct)
 end
 
 --- Create a structure of type RadiusSettings
--- &lt;p&gt;Contains information about a Remote Authentication Dial In User Service (RADIUS) server.&lt;/p&gt;
--- @param DisplayLabel [RadiusDisplayLabel] &lt;p&gt;Not currently used.&lt;/p&gt;
--- @param UseSameUsername [UseSameUsername] &lt;p&gt;Not currently used.&lt;/p&gt;
--- @param RadiusTimeout [RadiusTimeout] &lt;p&gt;The amount of time, in seconds, to wait for the RADIUS server to respond.&lt;/p&gt;
--- @param AuthenticationProtocol [RadiusAuthenticationProtocol] &lt;p&gt;The protocol specified for your RADIUS endpoints.&lt;/p&gt;
--- @param RadiusPort [PortNumber] &lt;p&gt;The port that your RADIUS server is using for communications. Your on-premises network must allow inbound traffic over this port from the AWS Directory Service servers.&lt;/p&gt;
--- @param RadiusRetries [RadiusRetries] &lt;p&gt;The maximum number of times that communication with the RADIUS server is attempted.&lt;/p&gt;
--- @param RadiusServers [Servers] &lt;p&gt;An array of strings that contains the IP addresses of the RADIUS server endpoints, or the IP addresses of your RADIUS server load balancer.&lt;/p&gt;
--- @param SharedSecret [RadiusSharedSecret] &lt;p&gt;Not currently used.&lt;/p&gt;
+-- <p>Contains information about a Remote Authentication Dial In User Service (RADIUS) server.</p>
+-- @param DisplayLabel [RadiusDisplayLabel] <p>Not currently used.</p>
+-- @param UseSameUsername [UseSameUsername] <p>Not currently used.</p>
+-- @param RadiusTimeout [RadiusTimeout] <p>The amount of time, in seconds, to wait for the RADIUS server to respond.</p>
+-- @param AuthenticationProtocol [RadiusAuthenticationProtocol] <p>The protocol specified for your RADIUS endpoints.</p>
+-- @param RadiusPort [PortNumber] <p>The port that your RADIUS server is using for communications. Your on-premises network must allow inbound traffic over this port from the AWS Directory Service servers.</p>
+-- @param RadiusRetries [RadiusRetries] <p>The maximum number of times that communication with the RADIUS server is attempted.</p>
+-- @param RadiusServers [Servers] <p>An array of strings that contains the IP addresses of the RADIUS server endpoints, or the IP addresses of your RADIUS server load balancer.</p>
+-- @param SharedSecret [RadiusSharedSecret] <p>Not currently used.</p>
 function M.RadiusSettings(DisplayLabel, UseSameUsername, RadiusTimeout, AuthenticationProtocol, RadiusPort, RadiusRetries, RadiusServers, SharedSecret, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RadiusSettings")
 	local t = { 
@@ -2608,8 +2608,8 @@ function M.AssertCreateComputerResult(struct)
 end
 
 --- Create a structure of type CreateComputerResult
--- &lt;p&gt;Contains the results for the &lt;a&gt;CreateComputer&lt;/a&gt; operation.&lt;/p&gt;
--- @param Computer [Computer] &lt;p&gt;A &lt;a&gt;Computer&lt;/a&gt; object that represents the computer account.&lt;/p&gt;
+-- <p>Contains the results for the <a>CreateComputer</a> operation.</p>
+-- @param Computer [Computer] <p>A <a>Computer</a> object that represents the computer account.</p>
 function M.CreateComputerResult(Computer, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateComputerResult")
 	local t = { 
@@ -2634,10 +2634,10 @@ function M.AssertEnableSsoRequest(struct)
 end
 
 --- Create a structure of type EnableSsoRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;EnableSso&lt;/a&gt; operation.&lt;/p&gt;
--- @param UserName [UserName] &lt;p&gt;The username of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. This account must have privileges to add a service principal name.&lt;/p&gt; &lt;p&gt;If the AD Connector service account does not have privileges to add a service principal name, you can specify an alternate account with the &lt;i&gt;UserName&lt;/i&gt; and &lt;i&gt;Password&lt;/i&gt; parameters. These credentials are only used to enable single sign-on and are not stored by the service. The AD Connector service account is not changed.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory for which to enable single-sign on.&lt;/p&gt;
--- @param Password [ConnectPassword] &lt;p&gt;The password of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. For more information, see the &lt;i&gt;UserName&lt;/i&gt; parameter.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>EnableSso</a> operation.</p>
+-- @param UserName [UserName] <p>The username of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. This account must have privileges to add a service principal name.</p> <p>If the AD Connector service account does not have privileges to add a service principal name, you can specify an alternate account with the <i>UserName</i> and <i>Password</i> parameters. These credentials are only used to enable single sign-on and are not stored by the service. The AD Connector service account is not changed.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory for which to enable single-sign on.</p>
+-- @param Password [ConnectPassword] <p>The password of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. For more information, see the <i>UserName</i> parameter.</p>
 -- Required parameter: DirectoryId
 function M.EnableSsoRequest(UserName, DirectoryId, Password, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableSsoRequest")
@@ -2661,7 +2661,7 @@ function M.AssertEnableRadiusResult(struct)
 end
 
 --- Create a structure of type EnableRadiusResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;EnableRadius&lt;/a&gt; operation.&lt;/p&gt;
+-- <p>Contains the results of the <a>EnableRadius</a> operation.</p>
 function M.EnableRadiusResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableRadiusResult")
 	local t = { 
@@ -2686,12 +2686,12 @@ function M.AssertEventTopic(struct)
 end
 
 --- Create a structure of type EventTopic
--- &lt;p&gt;Information about SNS topic and AWS Directory Service directory associations.&lt;/p&gt;
--- @param CreatedDateTime [CreatedDateTime] &lt;p&gt;The date and time of when you associated your directory with the SNS topic.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The Directory ID of an AWS Directory Service directory that will publish status messages to an SNS topic.&lt;/p&gt;
--- @param TopicName [TopicName] &lt;p&gt;The name of an AWS SNS topic the receives status messages from the directory.&lt;/p&gt;
--- @param TopicArn [TopicArn] &lt;p&gt;The SNS topic ARN (Amazon Resource Name).&lt;/p&gt;
--- @param Status [TopicStatus] &lt;p&gt;The topic registration status.&lt;/p&gt;
+-- <p>Information about SNS topic and AWS Directory Service directory associations.</p>
+-- @param CreatedDateTime [CreatedDateTime] <p>The date and time of when you associated your directory with the SNS topic.</p>
+-- @param DirectoryId [DirectoryId] <p>The Directory ID of an AWS Directory Service directory that will publish status messages to an SNS topic.</p>
+-- @param TopicName [TopicName] <p>The name of an AWS SNS topic the receives status messages from the directory.</p>
+-- @param TopicArn [TopicArn] <p>The SNS topic ARN (Amazon Resource Name).</p>
+-- @param Status [TopicStatus] <p>The topic registration status.</p>
 function M.EventTopic(CreatedDateTime, DirectoryId, TopicName, TopicArn, Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventTopic")
 	local t = { 
@@ -2718,8 +2718,8 @@ function M.AssertDeleteDirectoryRequest(struct)
 end
 
 --- Create a structure of type DeleteDirectoryRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DeleteDirectory&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory to delete.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DeleteDirectory</a> operation.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory to delete.</p>
 -- Required parameter: DirectoryId
 function M.DeleteDirectoryRequest(DirectoryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDirectoryRequest")
@@ -2747,13 +2747,13 @@ function M.AssertIpRouteInfo(struct)
 end
 
 --- Create a structure of type IpRouteInfo
--- &lt;p&gt;Information about one or more IP address blocks.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;Identifier (ID) of the directory associated with the IP addresses.&lt;/p&gt;
--- @param IpRouteStatusReason [IpRouteStatusReason] &lt;p&gt;The reason for the IpRouteStatusMsg.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;Description of the &lt;a&gt;IpRouteInfo&lt;/a&gt;.&lt;/p&gt;
--- @param AddedDateTime [AddedDateTime] &lt;p&gt;The date and time the address block was added to the directory.&lt;/p&gt;
--- @param CidrIp [CidrIp] &lt;p&gt;IP address block in the &lt;a&gt;IpRoute&lt;/a&gt;.&lt;/p&gt;
--- @param IpRouteStatusMsg [IpRouteStatusMsg] &lt;p&gt;The status of the IP address block.&lt;/p&gt;
+-- <p>Information about one or more IP address blocks.</p>
+-- @param DirectoryId [DirectoryId] <p>Identifier (ID) of the directory associated with the IP addresses.</p>
+-- @param IpRouteStatusReason [IpRouteStatusReason] <p>The reason for the IpRouteStatusMsg.</p>
+-- @param Description [Description] <p>Description of the <a>IpRouteInfo</a>.</p>
+-- @param AddedDateTime [AddedDateTime] <p>The date and time the address block was added to the directory.</p>
+-- @param CidrIp [CidrIp] <p>IP address block in the <a>IpRoute</a>.</p>
+-- @param IpRouteStatusMsg [IpRouteStatusMsg] <p>The status of the IP address block.</p>
 function M.IpRouteInfo(DirectoryId, IpRouteStatusReason, Description, AddedDateTime, CidrIp, IpRouteStatusMsg, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IpRouteInfo")
 	local t = { 
@@ -2780,8 +2780,8 @@ function M.AssertGetDirectoryLimitsResult(struct)
 end
 
 --- Create a structure of type GetDirectoryLimitsResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;GetDirectoryLimits&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryLimits [DirectoryLimits] &lt;p&gt;A &lt;a&gt;DirectoryLimits&lt;/a&gt; object that contains the directory limits for the current region.&lt;/p&gt;
+-- <p>Contains the results of the <a>GetDirectoryLimits</a> operation.</p>
+-- @param DirectoryLimits [DirectoryLimits] <p>A <a>DirectoryLimits</a> object that contains the directory limits for the current region.</p>
 function M.GetDirectoryLimitsResult(DirectoryLimits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDirectoryLimitsResult")
 	local t = { 
@@ -2804,9 +2804,9 @@ function M.AssertSnapshotLimitExceededException(struct)
 end
 
 --- Create a structure of type SnapshotLimitExceededException
--- &lt;p&gt;The maximum number of manual snapshots for the directory has been reached. You can use the &lt;a&gt;GetSnapshotLimits&lt;/a&gt; operation to determine the snapshot limits for a directory.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The maximum number of manual snapshots for the directory has been reached. You can use the &lt;a&gt;GetSnapshotLimits&lt;/a&gt; operation to determine the snapshot limits for a directory.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The maximum number of manual snapshots for the directory has been reached. You can use the &lt;a&gt;GetSnapshotLimits&lt;/a&gt; operation to determine the snapshot limits for a directory.&lt;/p&gt;
+-- <p>The maximum number of manual snapshots for the directory has been reached. You can use the <a>GetSnapshotLimits</a> operation to determine the snapshot limits for a directory.</p>
+-- @param Message [ExceptionMessage] <p>The maximum number of manual snapshots for the directory has been reached. You can use the <a>GetSnapshotLimits</a> operation to determine the snapshot limits for a directory.</p>
+-- @param RequestId [RequestId] <p>The maximum number of manual snapshots for the directory has been reached. You can use the <a>GetSnapshotLimits</a> operation to determine the snapshot limits for a directory.</p>
 function M.SnapshotLimitExceededException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotLimitExceededException")
 	local t = { 
@@ -2831,10 +2831,10 @@ function M.AssertSnapshotLimits(struct)
 end
 
 --- Create a structure of type SnapshotLimits
--- &lt;p&gt;Contains manual snapshot limit information for a directory.&lt;/p&gt;
--- @param ManualSnapshotsCurrentCount [Limit] &lt;p&gt;The current number of manual snapshots of the directory.&lt;/p&gt;
--- @param ManualSnapshotsLimit [Limit] &lt;p&gt;The maximum number of manual snapshots allowed.&lt;/p&gt;
--- @param ManualSnapshotsLimitReached [ManualSnapshotsLimitReached] &lt;p&gt;Indicates if the manual snapshot limit has been reached.&lt;/p&gt;
+-- <p>Contains manual snapshot limit information for a directory.</p>
+-- @param ManualSnapshotsCurrentCount [Limit] <p>The current number of manual snapshots of the directory.</p>
+-- @param ManualSnapshotsLimit [Limit] <p>The maximum number of manual snapshots allowed.</p>
+-- @param ManualSnapshotsLimitReached [ManualSnapshotsLimitReached] <p>Indicates if the manual snapshot limit has been reached.</p>
 function M.SnapshotLimits(ManualSnapshotsCurrentCount, ManualSnapshotsLimit, ManualSnapshotsLimitReached, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotLimits")
 	local t = { 
@@ -2859,9 +2859,9 @@ function M.AssertIpRoute(struct)
 end
 
 --- Create a structure of type IpRoute
--- &lt;p&gt;IP address block. This is often the address block of the DNS server used for your on-premises domain. &lt;/p&gt;
--- @param Description [Description] &lt;p&gt;Description of the address block.&lt;/p&gt;
--- @param CidrIp [CidrIp] &lt;p&gt;IP address block using CIDR format, for example 10.0.0.0/24. This is often the address block of the DNS server used for your on-premises domain. For a single IP address use a CIDR address block with /32. For example 10.0.0.0/32.&lt;/p&gt;
+-- <p>IP address block. This is often the address block of the DNS server used for your on-premises domain. </p>
+-- @param Description [Description] <p>Description of the address block.</p>
+-- @param CidrIp [CidrIp] <p>IP address block using CIDR format, for example 10.0.0.0/24. This is often the address block of the DNS server used for your on-premises domain. For a single IP address use a CIDR address block with /32. For example 10.0.0.0/32.</p>
 function M.IpRoute(Description, CidrIp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IpRoute")
 	local t = { 
@@ -2892,16 +2892,16 @@ function M.AssertDirectoryLimits(struct)
 end
 
 --- Create a structure of type DirectoryLimits
--- &lt;p&gt;Contains directory limit information for a region.&lt;/p&gt;
--- @param CloudOnlyMicrosoftADCurrentCount [Limit] &lt;p&gt;The current number of Microsoft AD directories in the region.&lt;/p&gt;
--- @param ConnectedDirectoriesLimitReached [ConnectedDirectoriesLimitReached] &lt;p&gt;Indicates if the connected directory limit has been reached.&lt;/p&gt;
--- @param ConnectedDirectoriesLimit [Limit] &lt;p&gt;The maximum number of connected directories allowed in the region.&lt;/p&gt;
--- @param CloudOnlyDirectoriesLimit [Limit] &lt;p&gt;The maximum number of cloud directories allowed in the region.&lt;/p&gt;
--- @param CloudOnlyMicrosoftADLimit [Limit] &lt;p&gt;The maximum number of Microsoft AD directories allowed in the region.&lt;/p&gt;
--- @param ConnectedDirectoriesCurrentCount [Limit] &lt;p&gt;The current number of connected directories in the region.&lt;/p&gt;
--- @param CloudOnlyMicrosoftADLimitReached [CloudOnlyDirectoriesLimitReached] &lt;p&gt;Indicates if the Microsoft AD directory limit has been reached.&lt;/p&gt;
--- @param CloudOnlyDirectoriesCurrentCount [Limit] &lt;p&gt;The current number of cloud directories in the region.&lt;/p&gt;
--- @param CloudOnlyDirectoriesLimitReached [CloudOnlyDirectoriesLimitReached] &lt;p&gt;Indicates if the cloud directory limit has been reached.&lt;/p&gt;
+-- <p>Contains directory limit information for a region.</p>
+-- @param CloudOnlyMicrosoftADCurrentCount [Limit] <p>The current number of Microsoft AD directories in the region.</p>
+-- @param ConnectedDirectoriesLimitReached [ConnectedDirectoriesLimitReached] <p>Indicates if the connected directory limit has been reached.</p>
+-- @param ConnectedDirectoriesLimit [Limit] <p>The maximum number of connected directories allowed in the region.</p>
+-- @param CloudOnlyDirectoriesLimit [Limit] <p>The maximum number of cloud directories allowed in the region.</p>
+-- @param CloudOnlyMicrosoftADLimit [Limit] <p>The maximum number of Microsoft AD directories allowed in the region.</p>
+-- @param ConnectedDirectoriesCurrentCount [Limit] <p>The current number of connected directories in the region.</p>
+-- @param CloudOnlyMicrosoftADLimitReached [CloudOnlyDirectoriesLimitReached] <p>Indicates if the Microsoft AD directory limit has been reached.</p>
+-- @param CloudOnlyDirectoriesCurrentCount [Limit] <p>The current number of cloud directories in the region.</p>
+-- @param CloudOnlyDirectoriesLimitReached [CloudOnlyDirectoriesLimitReached] <p>Indicates if the cloud directory limit has been reached.</p>
 function M.DirectoryLimits(CloudOnlyMicrosoftADCurrentCount, ConnectedDirectoriesLimitReached, ConnectedDirectoriesLimit, CloudOnlyDirectoriesLimit, CloudOnlyMicrosoftADLimit, ConnectedDirectoriesCurrentCount, CloudOnlyMicrosoftADLimitReached, CloudOnlyDirectoriesCurrentCount, CloudOnlyDirectoriesLimitReached, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryLimits")
 	local t = { 
@@ -2931,8 +2931,8 @@ function M.AssertDeleteTrustResult(struct)
 end
 
 --- Create a structure of type DeleteTrustResult
--- &lt;p&gt;The result of a DeleteTrust request.&lt;/p&gt;
--- @param TrustId [TrustId] &lt;p&gt;The Trust ID of the trust relationship that was deleted.&lt;/p&gt;
+-- <p>The result of a DeleteTrust request.</p>
+-- @param TrustId [TrustId] <p>The Trust ID of the trust relationship that was deleted.</p>
 function M.DeleteTrustResult(TrustId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTrustResult")
 	local t = { 
@@ -2953,7 +2953,7 @@ function M.AssertUpdateConditionalForwarderResult(struct)
 end
 
 --- Create a structure of type UpdateConditionalForwarderResult
--- &lt;p&gt;The result of an UpdateConditionalForwarder request.&lt;/p&gt;
+-- <p>The result of an UpdateConditionalForwarder request.</p>
 function M.UpdateConditionalForwarderResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConditionalForwarderResult")
 	local t = { 
@@ -2973,7 +2973,7 @@ function M.AssertDisableRadiusResult(struct)
 end
 
 --- Create a structure of type DisableRadiusResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;DisableRadius&lt;/a&gt; operation.&lt;/p&gt;
+-- <p>Contains the results of the <a>DisableRadius</a> operation.</p>
 function M.DisableRadiusResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableRadiusResult")
 	local t = { 
@@ -3002,10 +3002,10 @@ end
 
 --- Create a structure of type StartSchemaExtensionRequest
 --  
--- @param CreateSnapshotBeforeSchemaExtension [CreateSnapshotBeforeSchemaExtension] &lt;p&gt;If true, creates a snapshot of the directory before applying the schema extension.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the directory for which the schema extension will be applied to.&lt;/p&gt;
--- @param LdifContent [LdifContent] &lt;p&gt;The LDIF file represented as a string. To construct the LdifContent string, precede each line as it would be formatted in an ldif file with \n. See the example request below for more details. The file size can be no larger than 1MB.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;A description of the schema extension.&lt;/p&gt;
+-- @param CreateSnapshotBeforeSchemaExtension [CreateSnapshotBeforeSchemaExtension] <p>If true, creates a snapshot of the directory before applying the schema extension.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the directory for which the schema extension will be applied to.</p>
+-- @param LdifContent [LdifContent] <p>The LDIF file represented as a string. To construct the LdifContent string, precede each line as it would be formatted in an ldif file with \n. See the example request below for more details. The file size can be no larger than 1MB.</p>
+-- @param Description [Description] <p>A description of the schema extension.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: CreateSnapshotBeforeSchemaExtension
 -- Required parameter: LdifContent
@@ -3035,9 +3035,9 @@ function M.AssertEntityAlreadyExistsException(struct)
 end
 
 --- Create a structure of type EntityAlreadyExistsException
--- &lt;p&gt;The specified entity already exists.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The specified entity already exists.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The specified entity already exists.&lt;/p&gt;
+-- <p>The specified entity already exists.</p>
+-- @param Message [ExceptionMessage] <p>The specified entity already exists.</p>
+-- @param RequestId [RequestId] <p>The specified entity already exists.</p>
 function M.EntityAlreadyExistsException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntityAlreadyExistsException")
 	local t = { 
@@ -3059,7 +3059,7 @@ function M.AssertRestoreFromSnapshotResult(struct)
 end
 
 --- Create a structure of type RestoreFromSnapshotResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;RestoreFromSnapshot&lt;/a&gt; operation.&lt;/p&gt;
+-- <p>Contains the results of the <a>RestoreFromSnapshot</a> operation.</p>
 function M.RestoreFromSnapshotResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RestoreFromSnapshotResult")
 	local t = { 
@@ -3081,9 +3081,9 @@ function M.AssertTagLimitExceededException(struct)
 end
 
 --- Create a structure of type TagLimitExceededException
--- &lt;p&gt;The maximum allowed number of tags was exceeded.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The maximum allowed number of tags was exceeded.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The maximum allowed number of tags was exceeded.&lt;/p&gt;
+-- <p>The maximum allowed number of tags was exceeded.</p>
+-- @param Message [ExceptionMessage] <p>The maximum allowed number of tags was exceeded.</p>
+-- @param RequestId [RequestId] <p>The maximum allowed number of tags was exceeded.</p>
 function M.TagLimitExceededException(Message, RequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagLimitExceededException")
 	local t = { 
@@ -3498,7 +3498,7 @@ function M.AssertSID(str)
 	assert(type(str) == "string", "Expected SID to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[&amp;%w+-.@]+"), "Expected string to match pattern '[&amp;%w+-.@]+'")
+	assert(str:match("[&%w+-.@]+"), "Expected string to match pattern '[&%w+-.@]+'")
 end
 
 --  
@@ -3560,7 +3560,7 @@ function M.AssertRequestId(str)
 	assert(str:match("^([A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12})$"), "Expected string to match pattern '^([A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12})$'")
 end
 
--- &lt;p&gt;The AWS request identifier.&lt;/p&gt;
+-- <p>The AWS request identifier.</p>
 function M.RequestId(str)
 	M.AssertRequestId(str)
 	return str
@@ -3582,7 +3582,7 @@ end
 function M.AssertDirectoryShortName(str)
 	assert(str)
 	assert(type(str) == "string", "Expected DirectoryShortName to be of type 'string'")
-	assert(str:match("^[^%%/:*?%&quot;%&lt;%&gt;|.]+[^%%/:*?%&quot;&lt;&gt;|]*$"), "Expected string to match pattern '^[^%%/:*?%&quot;%&lt;%&gt;|.]+[^%%/:*?%&quot;&lt;&gt;|]*$'")
+	assert(str:match("^[^%%/:*?%"%<%>|.]+[^%%/:*?%"<>|]*$"), "Expected string to match pattern '^[^%%/:*?%"%<%>|.]+[^%%/:*?%"<>|]*$'")
 end
 
 --  
@@ -3607,7 +3607,7 @@ function M.AssertExceptionMessage(str)
 	assert(type(str) == "string", "Expected ExceptionMessage to be of type 'string'")
 end
 
--- &lt;p&gt;The descriptive message for the exception.&lt;/p&gt;
+-- <p>The descriptive message for the exception.</p>
 function M.ExceptionMessage(str)
 	M.AssertExceptionMessage(str)
 	return str
@@ -4085,7 +4085,7 @@ function M.AssertSnapshotIds(list)
 	end
 end
 
--- &lt;p&gt;A list of directory snapshot identifiers.&lt;/p&gt;
+-- <p>A list of directory snapshot identifiers.</p>
 -- List of SnapshotId objects
 function M.SnapshotIds(list)
 	M.AssertSnapshotIds(list)
@@ -4100,7 +4100,7 @@ function M.AssertSnapshots(list)
 	end
 end
 
--- &lt;p&gt;A list of descriptions of directory snapshots.&lt;/p&gt;
+-- <p>A list of descriptions of directory snapshots.</p>
 -- List of Snapshot objects
 function M.Snapshots(list)
 	M.AssertSnapshots(list)
@@ -4130,7 +4130,7 @@ function M.AssertDirectoryDescriptions(list)
 	end
 end
 
--- &lt;p&gt;A list of directory descriptions.&lt;/p&gt;
+-- <p>A list of directory descriptions.</p>
 -- List of DirectoryDescription objects
 function M.DirectoryDescriptions(list)
 	M.AssertDirectoryDescriptions(list)
@@ -4280,7 +4280,7 @@ function M.AssertDirectoryIds(list)
 	end
 end
 
--- &lt;p&gt;A list of directory identifiers.&lt;/p&gt;
+-- <p>A list of directory identifiers.</p>
 -- List of DirectoryId objects
 function M.DirectoryIds(list)
 	M.AssertDirectoryIds(list)

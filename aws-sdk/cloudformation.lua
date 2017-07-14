@@ -32,9 +32,9 @@ function M.AssertListStackResourcesInput(struct)
 end
 
 --- Create a structure of type ListStackResourcesInput
--- &lt;p&gt;The input for the &lt;a&gt;ListStackResource&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or the unique stack ID that is associated with the stack, which are not always interchangeable:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Running stacks: You can specify either the stack's name or its unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Deleted stacks: You must specify the unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: There is no default value.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A string that identifies the next page of stack resources that you want to retrieve.&lt;/p&gt;
+-- <p>The input for the <a>ListStackResource</a> action.</p>
+-- @param StackName [StackName] <p>The name or the unique stack ID that is associated with the stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks: You can specify either the stack's name or its unique stack ID.</p> </li> <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li> </ul> <p>Default: There is no default value.</p>
+-- @param NextToken [NextToken] <p>A string that identifies the next page of stack resources that you want to retrieve.</p>
 -- Required parameter: StackName
 function M.ListStackResourcesInput(StackName, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStackResourcesInput")
@@ -58,8 +58,8 @@ function M.AssertParameterConstraints(struct)
 end
 
 --- Create a structure of type ParameterConstraints
--- &lt;p&gt;A set of criteria that AWS CloudFormation uses to validate parameter values. Although other constraints might be defined in the stack template, AWS CloudFormation returns only the &lt;code&gt;AllowedValues&lt;/code&gt; property.&lt;/p&gt;
--- @param AllowedValues [AllowedValues] &lt;p&gt;A list of values that are permitted for a parameter.&lt;/p&gt;
+-- <p>A set of criteria that AWS CloudFormation uses to validate parameter values. Although other constraints might be defined in the stack template, AWS CloudFormation returns only the <code>AllowedValues</code> property.</p>
+-- @param AllowedValues [AllowedValues] <p>A list of values that are permitted for a parameter.</p>
 function M.ParameterConstraints(AllowedValues, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterConstraints")
 	local t = { 
@@ -83,10 +83,10 @@ function M.AssertGetTemplateSummaryInput(struct)
 end
 
 --- Create a structure of type GetTemplateSummaryInput
--- &lt;p&gt;The input for the &lt;a&gt;GetTemplateSummary&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackNameOrId] &lt;p&gt;The name or the stack ID that is associated with the stack, which are not always interchangeable. For running stacks, you can specify either the stack's name or its unique stack ID. For deleted stack, you must specify the unique stack ID.&lt;/p&gt; &lt;p&gt;Conditional: You must specify only one of the following parameters: &lt;code&gt;StackName&lt;/code&gt;, &lt;code&gt;TemplateBody&lt;/code&gt;, or &lt;code&gt;TemplateURL&lt;/code&gt;.&lt;/p&gt;
--- @param TemplateURL [TemplateURL] &lt;p&gt;Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that is located in an Amazon S3 bucket. For more information about templates, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt; &lt;p&gt;Conditional: You must specify only one of the following parameters: &lt;code&gt;StackName&lt;/code&gt;, &lt;code&gt;TemplateBody&lt;/code&gt;, or &lt;code&gt;TemplateURL&lt;/code&gt;.&lt;/p&gt;
--- @param TemplateBody [TemplateBody] &lt;p&gt;Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information about templates, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt; &lt;p&gt;Conditional: You must specify only one of the following parameters: &lt;code&gt;StackName&lt;/code&gt;, &lt;code&gt;TemplateBody&lt;/code&gt;, or &lt;code&gt;TemplateURL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The input for the <a>GetTemplateSummary</a> action.</p>
+-- @param StackName [StackNameOrId] <p>The name or the stack ID that is associated with the stack, which are not always interchangeable. For running stacks, you can specify either the stack's name or its unique stack ID. For deleted stack, you must specify the unique stack ID.</p> <p>Conditional: You must specify only one of the following parameters: <code>StackName</code>, <code>TemplateBody</code>, or <code>TemplateURL</code>.</p>
+-- @param TemplateURL [TemplateURL] <p>Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that is located in an Amazon S3 bucket. For more information about templates, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You must specify only one of the following parameters: <code>StackName</code>, <code>TemplateBody</code>, or <code>TemplateURL</code>.</p>
+-- @param TemplateBody [TemplateBody] <p>Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information about templates, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You must specify only one of the following parameters: <code>StackName</code>, <code>TemplateBody</code>, or <code>TemplateURL</code>.</p>
 function M.GetTemplateSummaryInput(StackName, TemplateURL, TemplateBody, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTemplateSummaryInput")
 	local t = { 
@@ -113,10 +113,10 @@ function M.AssertDescribeChangeSetInput(struct)
 end
 
 --- Create a structure of type DescribeChangeSetInput
--- &lt;p&gt;The input for the &lt;a&gt;DescribeChangeSet&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackNameOrId] &lt;p&gt;If you specified the name of a change set, specify the stack name or ID (ARN) of the change set you want to describe.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A string (provided by the &lt;a&gt;DescribeChangeSet&lt;/a&gt; response output) that identifies the next page of information that you want to retrieve.&lt;/p&gt;
--- @param ChangeSetName [ChangeSetNameOrId] &lt;p&gt;The name or Amazon Resource Name (ARN) of the change set that you want to describe.&lt;/p&gt;
+-- <p>The input for the <a>DescribeChangeSet</a> action.</p>
+-- @param StackName [StackNameOrId] <p>If you specified the name of a change set, specify the stack name or ID (ARN) of the change set you want to describe.</p>
+-- @param NextToken [NextToken] <p>A string (provided by the <a>DescribeChangeSet</a> response output) that identifies the next page of information that you want to retrieve.</p>
+-- @param ChangeSetName [ChangeSetNameOrId] <p>The name or Amazon Resource Name (ARN) of the change set that you want to describe.</p>
 -- Required parameter: ChangeSetName
 function M.DescribeChangeSetInput(StackName, NextToken, ChangeSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeChangeSetInput")
@@ -142,9 +142,9 @@ function M.AssertChange(struct)
 end
 
 --- Create a structure of type Change
--- &lt;p&gt;The &lt;code&gt;Change&lt;/code&gt; structure describes the changes AWS CloudFormation will perform if you execute the change set.&lt;/p&gt;
--- @param ResourceChange [ResourceChange] &lt;p&gt;A &lt;code&gt;ResourceChange&lt;/code&gt; structure that describes the resource and action that AWS CloudFormation will perform.&lt;/p&gt;
--- @param Type [ChangeType] &lt;p&gt;The type of entity that AWS CloudFormation changes. Currently, the only entity type is &lt;code&gt;Resource&lt;/code&gt;.&lt;/p&gt;
+-- <p>The <code>Change</code> structure describes the changes AWS CloudFormation will perform if you execute the change set.</p>
+-- @param ResourceChange [ResourceChange] <p>A <code>ResourceChange</code> structure that describes the resource and action that AWS CloudFormation will perform.</p>
+-- @param Type [ChangeType] <p>The type of entity that AWS CloudFormation changes. Currently, the only entity type is <code>Resource</code>.</p>
 function M.Change(ResourceChange, Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Change")
 	local t = { 
@@ -177,15 +177,15 @@ function M.AssertStackSummary(struct)
 end
 
 --- Create a structure of type StackSummary
--- &lt;p&gt;The StackSummary Data Type&lt;/p&gt;
--- @param StackId [StackId] &lt;p&gt;Unique stack identifier.&lt;/p&gt;
--- @param DeletionTime [DeletionTime] &lt;p&gt;The time the stack was deleted.&lt;/p&gt;
--- @param TemplateDescription [TemplateDescription] &lt;p&gt;The template description of the template used to create the stack.&lt;/p&gt;
--- @param StackStatusReason [StackStatusReason] &lt;p&gt;Success/Failure message associated with the stack status.&lt;/p&gt;
--- @param CreationTime [CreationTime] &lt;p&gt;The time the stack was created.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name associated with the stack.&lt;/p&gt;
--- @param StackStatus [StackStatus] &lt;p&gt;The current status of the stack.&lt;/p&gt;
--- @param LastUpdatedTime [LastUpdatedTime] &lt;p&gt;The time the stack was last updated. This field will only be returned if the stack has been updated at least once.&lt;/p&gt;
+-- <p>The StackSummary Data Type</p>
+-- @param StackId [StackId] <p>Unique stack identifier.</p>
+-- @param DeletionTime [DeletionTime] <p>The time the stack was deleted.</p>
+-- @param TemplateDescription [TemplateDescription] <p>The template description of the template used to create the stack.</p>
+-- @param StackStatusReason [StackStatusReason] <p>Success/Failure message associated with the stack status.</p>
+-- @param CreationTime [CreationTime] <p>The time the stack was created.</p>
+-- @param StackName [StackName] <p>The name associated with the stack.</p>
+-- @param StackStatus [StackStatus] <p>The current status of the stack.</p>
+-- @param LastUpdatedTime [LastUpdatedTime] <p>The time the stack was last updated. This field will only be returned if the stack has been updated at least once.</p>
 -- Required parameter: StackName
 -- Required parameter: CreationTime
 -- Required parameter: StackStatus
@@ -216,7 +216,7 @@ function M.AssertTokenAlreadyExistsException(struct)
 end
 
 --- Create a structure of type TokenAlreadyExistsException
--- &lt;p&gt;A client request token already exists.&lt;/p&gt;
+-- <p>A client request token already exists.</p>
 function M.TokenAlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TokenAlreadyExistsException")
 	local t = { 
@@ -237,8 +237,8 @@ function M.AssertDescribeAccountLimitsInput(struct)
 end
 
 --- Create a structure of type DescribeAccountLimitsInput
--- &lt;p&gt;The input for the &lt;a&gt;DescribeAccountLimits&lt;/a&gt; action.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A string that identifies the next page of limits that you want to retrieve.&lt;/p&gt;
+-- <p>The input for the <a>DescribeAccountLimits</a> action.</p>
+-- @param NextToken [NextToken] <p>A string that identifies the next page of limits that you want to retrieve.</p>
 function M.DescribeAccountLimitsInput(NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountLimitsInput")
 	local t = { 
@@ -273,17 +273,17 @@ function M.AssertStackResourceDetail(struct)
 end
 
 --- Create a structure of type StackResourceDetail
--- &lt;p&gt;Contains detailed information about the specified stack resource.&lt;/p&gt;
--- @param StackId [StackId] &lt;p&gt;Unique identifier of the stack.&lt;/p&gt;
--- @param ResourceStatus [ResourceStatus] &lt;p&gt;Current status of the resource.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;User defined description associated with the resource.&lt;/p&gt;
--- @param ResourceType [ResourceType] &lt;p&gt;Type of resource. ((For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html&quot;&gt; AWS Resource Types Reference&lt;/a&gt; in the AWS CloudFormation User Guide.)&lt;/p&gt;
--- @param ResourceStatusReason [ResourceStatusReason] &lt;p&gt;Success/failure message associated with the resource.&lt;/p&gt;
--- @param LastUpdatedTimestamp [Timestamp] &lt;p&gt;Time the status was updated.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name associated with the stack.&lt;/p&gt;
--- @param PhysicalResourceId [PhysicalResourceId] &lt;p&gt;The name or unique identifier that corresponds to a physical instance ID of a resource supported by AWS CloudFormation.&lt;/p&gt;
--- @param Metadata [Metadata] &lt;p&gt;The content of the &lt;code&gt;Metadata&lt;/code&gt; attribute declared for the resource. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-metadata.html&quot;&gt;Metadata Attribute&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt;
--- @param LogicalResourceId [LogicalResourceId] &lt;p&gt;The logical name of the resource specified in the template.&lt;/p&gt;
+-- <p>Contains detailed information about the specified stack resource.</p>
+-- @param StackId [StackId] <p>Unique identifier of the stack.</p>
+-- @param ResourceStatus [ResourceStatus] <p>Current status of the resource.</p>
+-- @param Description [Description] <p>User defined description associated with the resource.</p>
+-- @param ResourceType [ResourceType] <p>Type of resource. ((For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html"> AWS Resource Types Reference</a> in the AWS CloudFormation User Guide.)</p>
+-- @param ResourceStatusReason [ResourceStatusReason] <p>Success/failure message associated with the resource.</p>
+-- @param LastUpdatedTimestamp [Timestamp] <p>Time the status was updated.</p>
+-- @param StackName [StackName] <p>The name associated with the stack.</p>
+-- @param PhysicalResourceId [PhysicalResourceId] <p>The name or unique identifier that corresponds to a physical instance ID of a resource supported by AWS CloudFormation.</p>
+-- @param Metadata [Metadata] <p>The content of the <code>Metadata</code> attribute declared for the resource. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-metadata.html">Metadata Attribute</a> in the AWS CloudFormation User Guide.</p>
+-- @param LogicalResourceId [LogicalResourceId] <p>The logical name of the resource specified in the template.</p>
 -- Required parameter: LogicalResourceId
 -- Required parameter: ResourceType
 -- Required parameter: LastUpdatedTimestamp
@@ -317,7 +317,7 @@ function M.AssertContinueUpdateRollbackOutput(struct)
 end
 
 --- Create a structure of type ContinueUpdateRollbackOutput
--- &lt;p&gt;The output for a &lt;a&gt;ContinueUpdateRollback&lt;/a&gt; action.&lt;/p&gt;
+-- <p>The output for a <a>ContinueUpdateRollback</a> action.</p>
 function M.ContinueUpdateRollbackOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ContinueUpdateRollbackOutput")
 	local t = { 
@@ -340,9 +340,9 @@ function M.AssertListChangeSetsInput(struct)
 end
 
 --- Create a structure of type ListChangeSetsInput
--- &lt;p&gt;The input for the &lt;a&gt;ListChangeSets&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackNameOrId] &lt;p&gt;The name or the Amazon Resource Name (ARN) of the stack for which you want to list change sets.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A string (provided by the &lt;a&gt;ListChangeSets&lt;/a&gt; response output) that identifies the next page of change sets that you want to retrieve.&lt;/p&gt;
+-- <p>The input for the <a>ListChangeSets</a> action.</p>
+-- @param StackName [StackNameOrId] <p>The name or the Amazon Resource Name (ARN) of the stack for which you want to list change sets.</p>
+-- @param NextToken [NextToken] <p>A string (provided by the <a>ListChangeSets</a> response output) that identifies the next page of change sets that you want to retrieve.</p>
 -- Required parameter: StackName
 function M.ListChangeSetsInput(StackName, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListChangeSetsInput")
@@ -370,11 +370,11 @@ function M.AssertDeleteStackInput(struct)
 end
 
 --- Create a structure of type DeleteStackInput
--- &lt;p&gt;The input for &lt;a&gt;DeleteStack&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or the unique stack ID that is associated with the stack.&lt;/p&gt;
--- @param RetainResources [RetainResources] &lt;p&gt;For stacks in the &lt;code&gt;DELETE_FAILED&lt;/code&gt; state, a list of resource logical IDs that are associated with the resources you want to retain. During deletion, AWS CloudFormation deletes the stack but does not delete the retained resources.&lt;/p&gt; &lt;p&gt;Retaining resources is useful when you cannot delete a resource, such as a non-empty S3 bucket, but you want to delete the stack.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to delete the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf.&lt;/p&gt; &lt;p&gt;If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.&lt;/p&gt;
--- @param ClientRequestToken [ClientRequestToken] &lt;p&gt;A unique identifier for this &lt;code&gt;DeleteStack&lt;/code&gt; request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to delete a stack with the same name. You might retry &lt;code&gt;DeleteStack&lt;/code&gt; requests to ensure that AWS CloudFormation successfully received them.&lt;/p&gt;
+-- <p>The input for <a>DeleteStack</a> action.</p>
+-- @param StackName [StackName] <p>The name or the unique stack ID that is associated with the stack.</p>
+-- @param RetainResources [RetainResources] <p>For stacks in the <code>DELETE_FAILED</code> state, a list of resource logical IDs that are associated with the resources you want to retain. During deletion, AWS CloudFormation deletes the stack but does not delete the retained resources.</p> <p>Retaining resources is useful when you cannot delete a resource, such as a non-empty S3 bucket, but you want to delete the stack.</p>
+-- @param RoleARN [RoleARN] <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to delete the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf.</p> <p>If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.</p>
+-- @param ClientRequestToken [ClientRequestToken] <p>A unique identifier for this <code>DeleteStack</code> request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to delete a stack with the same name. You might retry <code>DeleteStack</code> requests to ensure that AWS CloudFormation successfully received them.</p>
 -- Required parameter: StackName
 function M.DeleteStackInput(StackName, RetainResources, RoleARN, ClientRequestToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStackInput")
@@ -401,9 +401,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;The Tag type enables you to specify a key-value pair that can be used to store information about an AWS CloudFormation stack.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt; &lt;i&gt;Required&lt;/i&gt;. A string containing the value for this tag. You can specify a maximum of 256 characters for a tag value.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt; &lt;i&gt;Required&lt;/i&gt;. A string used to identify this tag. You can specify a maximum of 128 characters for a tag key. Tags owned by Amazon Web Services (AWS) have the reserved prefix: &lt;code&gt;aws:&lt;/code&gt;.&lt;/p&gt;
+-- <p>The Tag type enables you to specify a key-value pair that can be used to store information about an AWS CloudFormation stack.</p>
+-- @param Value [TagValue] <p> <i>Required</i>. A string containing the value for this tag. You can specify a maximum of 256 characters for a tag value.</p>
+-- @param Key [TagKey] <p> <i>Required</i>. A string used to identify this tag. You can specify a maximum of 128 characters for a tag key. Tags owned by Amazon Web Services (AWS) have the reserved prefix: <code>aws:</code>.</p>
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
@@ -441,21 +441,21 @@ function M.AssertCreateChangeSetInput(struct)
 end
 
 --- Create a structure of type CreateChangeSetInput
--- &lt;p&gt;The input for the &lt;a&gt;CreateChangeSet&lt;/a&gt; action.&lt;/p&gt;
--- @param ChangeSetName [ChangeSetName] &lt;p&gt;The name of the change set. The name must be unique among all change sets that are associated with the specified stack.&lt;/p&gt; &lt;p&gt;A change set name can contain only alphanumeric, case sensitive characters and hyphens. It must start with an alphabetic character and cannot exceed 128 characters.&lt;/p&gt;
--- @param TemplateBody [TemplateBody] &lt;p&gt;A structure that contains the body of the revised template, with a minimum length of 1 byte and a maximum length of 51,200 bytes. AWS CloudFormation generates the change set by comparing this template with the template of the stack that you specified.&lt;/p&gt; &lt;p&gt;Conditional: You must specify only &lt;code&gt;TemplateBody&lt;/code&gt; or &lt;code&gt;TemplateURL&lt;/code&gt;.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;A list of &lt;code&gt;Parameter&lt;/code&gt; structures that specify input parameters for the change set. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html&quot;&gt;Parameter&lt;/a&gt; data type.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to resources in the stack. You can specify a maximum of 10 tags.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes when executing the change set. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.&lt;/p&gt; &lt;p&gt;If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.&lt;/p&gt;
--- @param UsePreviousTemplate [UsePreviousTemplate] &lt;p&gt;Whether to reuse the template that is associated with the stack to create the change set.&lt;/p&gt;
--- @param Capabilities [Capabilities] &lt;p&gt;A list of values that you must specify before AWS CloudFormation can update certain stacks. Some stack templates might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge their capabilities by specifying this parameter.&lt;/p&gt; &lt;p&gt;The only valid values are &lt;code&gt;CAPABILITY_IAM&lt;/code&gt; and &lt;code&gt;CAPABILITY_NAMED_IAM&lt;/code&gt;. The following resources require you to specify this parameter: &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html&quot;&gt; AWS::IAM::AccessKey&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html&quot;&gt; AWS::IAM::Group&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html&quot;&gt; AWS::IAM::InstanceProfile&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html&quot;&gt; AWS::IAM::Policy&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html&quot;&gt; AWS::IAM::Role&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html&quot;&gt; AWS::IAM::User&lt;/a&gt;, and &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html&quot;&gt; AWS::IAM::UserToGroupAddition&lt;/a&gt;. If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.&lt;/p&gt; &lt;p&gt;If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify &lt;code&gt;CAPABILITY_NAMED_IAM&lt;/code&gt;. If you don't specify this parameter, this action returns an &lt;code&gt;InsufficientCapabilities&lt;/code&gt; error.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities&quot;&gt;Acknowledging IAM Resources in AWS CloudFormation Templates&lt;/a&gt;.&lt;/p&gt;
--- @param StackName [StackNameOrId] &lt;p&gt;The name or the unique ID of the stack for which you are creating a change set. AWS CloudFormation generates the change set by comparing this stack's information with the information that you submit, such as a modified template or different parameter input values.&lt;/p&gt;
--- @param NotificationARNs [NotificationARNs] &lt;p&gt;The Amazon Resource Names (ARNs) of Amazon Simple Notification Service (Amazon SNS) topics that AWS CloudFormation associates with the stack. To remove all associated notification topics, specify an empty list.&lt;/p&gt;
--- @param ResourceTypes [ResourceTypes] &lt;p&gt;The template resource types that you have permissions to work with if you execute this change set, such as &lt;code&gt;AWS::EC2::Instance&lt;/code&gt;, &lt;code&gt;AWS::EC2::*&lt;/code&gt;, or &lt;code&gt;Custom::MyCustomInstance&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If the list of resource types doesn't include a resource type that you're updating, the stack update fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for condition keys in IAM policies for AWS CloudFormation. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html&quot;&gt;Controlling Access with AWS Identity and Access Management&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt;
--- @param ClientToken [ClientToken] &lt;p&gt;A unique identifier for this &lt;code&gt;CreateChangeSet&lt;/code&gt; request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to create another change set with the same name. You might retry &lt;code&gt;CreateChangeSet&lt;/code&gt; requests to ensure that AWS CloudFormation successfully received them.&lt;/p&gt;
--- @param TemplateURL [TemplateURL] &lt;p&gt;The location of the file that contains the revised template. The URL must point to a template (max size: 460,800 bytes) that is located in an S3 bucket. AWS CloudFormation generates the change set by comparing this template with the stack that you specified.&lt;/p&gt; &lt;p&gt;Conditional: You must specify only &lt;code&gt;TemplateBody&lt;/code&gt; or &lt;code&gt;TemplateURL&lt;/code&gt;.&lt;/p&gt;
--- @param ChangeSetType [ChangeSetType] &lt;p&gt;The type of change set operation. To create a change set for a new stack, specify &lt;code&gt;CREATE&lt;/code&gt;. To create a change set for an existing stack, specify &lt;code&gt;UPDATE&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but no template or resources. The stack will be in the &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995&quot;&gt; &lt;code&gt;REVIEW_IN_PROGRESS&lt;/code&gt; &lt;/a&gt; state until you execute the change set.&lt;/p&gt; &lt;p&gt;By default, AWS CloudFormation specifies &lt;code&gt;UPDATE&lt;/code&gt;. You can't use the &lt;code&gt;UPDATE&lt;/code&gt; type to create a change set for a new stack or the &lt;code&gt;CREATE&lt;/code&gt; type to create a change set for an existing stack.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;A description to help you identify this change set.&lt;/p&gt;
+-- <p>The input for the <a>CreateChangeSet</a> action.</p>
+-- @param ChangeSetName [ChangeSetName] <p>The name of the change set. The name must be unique among all change sets that are associated with the specified stack.</p> <p>A change set name can contain only alphanumeric, case sensitive characters and hyphens. It must start with an alphabetic character and cannot exceed 128 characters.</p>
+-- @param TemplateBody [TemplateBody] <p>A structure that contains the body of the revised template, with a minimum length of 1 byte and a maximum length of 51,200 bytes. AWS CloudFormation generates the change set by comparing this template with the template of the stack that you specified.</p> <p>Conditional: You must specify only <code>TemplateBody</code> or <code>TemplateURL</code>.</p>
+-- @param Parameters [Parameters] <p>A list of <code>Parameter</code> structures that specify input parameters for the change set. For more information, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a> data type.</p>
+-- @param Tags [Tags] <p>Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to resources in the stack. You can specify a maximum of 10 tags.</p>
+-- @param RoleARN [RoleARN] <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes when executing the change set. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.</p>
+-- @param UsePreviousTemplate [UsePreviousTemplate] <p>Whether to reuse the template that is associated with the stack to create the change set.</p>
+-- @param Capabilities [Capabilities] <p>A list of values that you must specify before AWS CloudFormation can update certain stacks. Some stack templates might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge their capabilities by specifying this parameter.</p> <p>The only valid values are <code>CAPABILITY_IAM</code> and <code>CAPABILITY_NAMED_IAM</code>. The following resources require you to specify this parameter: <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html"> AWS::IAM::AccessKey</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html"> AWS::IAM::Group</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html"> AWS::IAM::InstanceProfile</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html"> AWS::IAM::Policy</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html"> AWS::IAM::Role</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html"> AWS::IAM::User</a>, and <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html"> AWS::IAM::UserToGroupAddition</a>. If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.</p> <p>If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify <code>CAPABILITY_NAMED_IAM</code>. If you don't specify this parameter, this action returns an <code>InsufficientCapabilities</code> error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging IAM Resources in AWS CloudFormation Templates</a>.</p>
+-- @param StackName [StackNameOrId] <p>The name or the unique ID of the stack for which you are creating a change set. AWS CloudFormation generates the change set by comparing this stack's information with the information that you submit, such as a modified template or different parameter input values.</p>
+-- @param NotificationARNs [NotificationARNs] <p>The Amazon Resource Names (ARNs) of Amazon Simple Notification Service (Amazon SNS) topics that AWS CloudFormation associates with the stack. To remove all associated notification topics, specify an empty list.</p>
+-- @param ResourceTypes [ResourceTypes] <p>The template resource types that you have permissions to work with if you execute this change set, such as <code>AWS::EC2::Instance</code>, <code>AWS::EC2::*</code>, or <code>Custom::MyCustomInstance</code>.</p> <p>If the list of resource types doesn't include a resource type that you're updating, the stack update fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for condition keys in IAM policies for AWS CloudFormation. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html">Controlling Access with AWS Identity and Access Management</a> in the AWS CloudFormation User Guide.</p>
+-- @param ClientToken [ClientToken] <p>A unique identifier for this <code>CreateChangeSet</code> request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to create another change set with the same name. You might retry <code>CreateChangeSet</code> requests to ensure that AWS CloudFormation successfully received them.</p>
+-- @param TemplateURL [TemplateURL] <p>The location of the file that contains the revised template. The URL must point to a template (max size: 460,800 bytes) that is located in an S3 bucket. AWS CloudFormation generates the change set by comparing this template with the stack that you specified.</p> <p>Conditional: You must specify only <code>TemplateBody</code> or <code>TemplateURL</code>.</p>
+-- @param ChangeSetType [ChangeSetType] <p>The type of change set operation. To create a change set for a new stack, specify <code>CREATE</code>. To create a change set for an existing stack, specify <code>UPDATE</code>.</p> <p>If you create a change set for a new stack, AWS Cloudformation creates a stack with a unique stack ID, but no template or resources. The stack will be in the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995"> <code>REVIEW_IN_PROGRESS</code> </a> state until you execute the change set.</p> <p>By default, AWS CloudFormation specifies <code>UPDATE</code>. You can't use the <code>UPDATE</code> type to create a change set for a new stack or the <code>CREATE</code> type to create a change set for an existing stack.</p>
+-- @param Description [Description] <p>A description to help you identify this change set.</p>
 -- Required parameter: StackName
 -- Required parameter: ChangeSetName
 function M.CreateChangeSetInput(ChangeSetName, TemplateBody, Parameters, Tags, RoleARN, UsePreviousTemplate, Capabilities, StackName, NotificationARNs, ResourceTypes, ClientToken, TemplateURL, ChangeSetType, Description, ...)
@@ -493,9 +493,9 @@ function M.AssertDescribeStackEventsOutput(struct)
 end
 
 --- Create a structure of type DescribeStackEventsOutput
--- &lt;p&gt;The output for a &lt;a&gt;DescribeStackEvents&lt;/a&gt; action.&lt;/p&gt;
--- @param StackEvents [StackEvents] &lt;p&gt;A list of &lt;code&gt;StackEvents&lt;/code&gt; structures.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If the output exceeds 1 MB in size, a string that identifies the next page of events. If no additional page exists, this value is null.&lt;/p&gt;
+-- <p>The output for a <a>DescribeStackEvents</a> action.</p>
+-- @param StackEvents [StackEvents] <p>A list of <code>StackEvents</code> structures.</p>
+-- @param NextToken [NextToken] <p>If the output exceeds 1 MB in size, a string that identifies the next page of events. If no additional page exists, this value is null.</p>
 function M.DescribeStackEventsOutput(StackEvents, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackEventsOutput")
 	local t = { 
@@ -522,12 +522,12 @@ function M.AssertValidateTemplateOutput(struct)
 end
 
 --- Create a structure of type ValidateTemplateOutput
--- &lt;p&gt;The output for &lt;a&gt;ValidateTemplate&lt;/a&gt; action.&lt;/p&gt;
--- @param DeclaredTransforms [TransformsList] &lt;p&gt;A list of the transforms that are declared in the template.&lt;/p&gt;
--- @param CapabilitiesReason [CapabilitiesReason] &lt;p&gt;The list of resources that generated the values in the &lt;code&gt;Capabilities&lt;/code&gt; response element.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The description found within the template.&lt;/p&gt;
--- @param Parameters [TemplateParameters] &lt;p&gt;A list of &lt;code&gt;TemplateParameter&lt;/code&gt; structures.&lt;/p&gt;
--- @param Capabilities [Capabilities] &lt;p&gt;The capabilities found within the template. If your template contains IAM resources, you must specify the CAPABILITY_IAM or CAPABILITY_NAMED_IAM value for this parameter when you use the &lt;a&gt;CreateStack&lt;/a&gt; or &lt;a&gt;UpdateStack&lt;/a&gt; actions with your template; otherwise, those actions return an InsufficientCapabilities error.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities&quot;&gt;Acknowledging IAM Resources in AWS CloudFormation Templates&lt;/a&gt;.&lt;/p&gt;
+-- <p>The output for <a>ValidateTemplate</a> action.</p>
+-- @param DeclaredTransforms [TransformsList] <p>A list of the transforms that are declared in the template.</p>
+-- @param CapabilitiesReason [CapabilitiesReason] <p>The list of resources that generated the values in the <code>Capabilities</code> response element.</p>
+-- @param Description [Description] <p>The description found within the template.</p>
+-- @param Parameters [TemplateParameters] <p>A list of <code>TemplateParameter</code> structures.</p>
+-- @param Capabilities [Capabilities] <p>The capabilities found within the template. If your template contains IAM resources, you must specify the CAPABILITY_IAM or CAPABILITY_NAMED_IAM value for this parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a> actions with your template; otherwise, those actions return an InsufficientCapabilities error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging IAM Resources in AWS CloudFormation Templates</a>.</p>
 function M.ValidateTemplateOutput(DeclaredTransforms, CapabilitiesReason, Description, Parameters, Capabilities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidateTemplateOutput")
 	local t = { 
@@ -555,10 +555,10 @@ function M.AssertResourceTargetDefinition(struct)
 end
 
 --- Create a structure of type ResourceTargetDefinition
--- &lt;p&gt;The field that AWS CloudFormation will change, such as the name of a resource's property, and whether the resource will be recreated.&lt;/p&gt;
--- @param Attribute [ResourceAttribute] &lt;p&gt;Indicates which resource attribute is triggering this update, such as a change in the resource attribute's &lt;code&gt;Metadata&lt;/code&gt;, &lt;code&gt;Properties&lt;/code&gt;, or &lt;code&gt;Tags&lt;/code&gt;.&lt;/p&gt;
--- @param Name [PropertyName] &lt;p&gt;If the &lt;code&gt;Attribute&lt;/code&gt; value is &lt;code&gt;Properties&lt;/code&gt;, the name of the property. For all other attributes, the value is null.&lt;/p&gt;
--- @param RequiresRecreation [RequiresRecreation] &lt;p&gt;If the &lt;code&gt;Attribute&lt;/code&gt; value is &lt;code&gt;Properties&lt;/code&gt;, indicates whether a change to this property causes the resource to be recreated. The value can be &lt;code&gt;Never&lt;/code&gt;, &lt;code&gt;Always&lt;/code&gt;, or &lt;code&gt;Conditionally&lt;/code&gt;. To determine the conditions for a &lt;code&gt;Conditionally&lt;/code&gt; recreation, see the update behavior for that &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html&quot;&gt;property&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt;
+-- <p>The field that AWS CloudFormation will change, such as the name of a resource's property, and whether the resource will be recreated.</p>
+-- @param Attribute [ResourceAttribute] <p>Indicates which resource attribute is triggering this update, such as a change in the resource attribute's <code>Metadata</code>, <code>Properties</code>, or <code>Tags</code>.</p>
+-- @param Name [PropertyName] <p>If the <code>Attribute</code> value is <code>Properties</code>, the name of the property. For all other attributes, the value is null.</p>
+-- @param RequiresRecreation [RequiresRecreation] <p>If the <code>Attribute</code> value is <code>Properties</code>, indicates whether a change to this property causes the resource to be recreated. The value can be <code>Never</code>, <code>Always</code>, or <code>Conditionally</code>. To determine the conditions for a <code>Conditionally</code> recreation, see the update behavior for that <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">property</a> in the AWS CloudFormation User Guide.</p>
 function M.ResourceTargetDefinition(Attribute, Name, RequiresRecreation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceTargetDefinition")
 	local t = { 
@@ -581,7 +581,7 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;Quota for the resource has already been reached.&lt;/p&gt;
+-- <p>Quota for the resource has already been reached.</p>
 function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -605,11 +605,11 @@ function M.AssertTemplateParameter(struct)
 end
 
 --- Create a structure of type TemplateParameter
--- &lt;p&gt;The TemplateParameter data type.&lt;/p&gt;
--- @param DefaultValue [ParameterValue] &lt;p&gt;The default value associated with the parameter.&lt;/p&gt;
--- @param NoEcho [NoEcho] &lt;p&gt;Flag indicating whether the parameter should be displayed as plain text in logs and UIs.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;User defined description associated with the parameter.&lt;/p&gt;
--- @param ParameterKey [ParameterKey] &lt;p&gt;The name associated with the parameter.&lt;/p&gt;
+-- <p>The TemplateParameter data type.</p>
+-- @param DefaultValue [ParameterValue] <p>The default value associated with the parameter.</p>
+-- @param NoEcho [NoEcho] <p>Flag indicating whether the parameter should be displayed as plain text in logs and UIs.</p>
+-- @param Description [Description] <p>User defined description associated with the parameter.</p>
+-- @param ParameterKey [ParameterKey] <p>The name associated with the parameter.</p>
 function M.TemplateParameter(DefaultValue, NoEcho, Description, ParameterKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TemplateParameter")
 	local t = { 
@@ -635,9 +635,9 @@ function M.AssertListStacksOutput(struct)
 end
 
 --- Create a structure of type ListStacksOutput
--- &lt;p&gt;The output for &lt;a&gt;ListStacks&lt;/a&gt; action.&lt;/p&gt;
--- @param StackSummaries [StackSummaries] &lt;p&gt;A list of &lt;code&gt;StackSummary&lt;/code&gt; structures containing information about the specified stacks.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no additional page exists, this value is null.&lt;/p&gt;
+-- <p>The output for <a>ListStacks</a> action.</p>
+-- @param StackSummaries [StackSummaries] <p>A list of <code>StackSummary</code> structures containing information about the specified stacks.</p>
+-- @param NextToken [NextToken] <p>If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no additional page exists, this value is null.</p>
 function M.ListStacksOutput(StackSummaries, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStacksOutput")
 	local t = { 
@@ -674,22 +674,22 @@ function M.AssertDescribeChangeSetOutput(struct)
 end
 
 --- Create a structure of type DescribeChangeSetOutput
--- &lt;p&gt;The output for the &lt;a&gt;DescribeChangeSet&lt;/a&gt; action.&lt;/p&gt;
--- @param StackId [StackId] &lt;p&gt;The ARN of the stack that is associated with the change set.&lt;/p&gt;
--- @param Status [ChangeSetStatus] &lt;p&gt;The current status of the change set, such as &lt;code&gt;CREATE_IN_PROGRESS&lt;/code&gt;, &lt;code&gt;CREATE_COMPLETE&lt;/code&gt;, or &lt;code&gt;FAILED&lt;/code&gt;.&lt;/p&gt;
--- @param ChangeSetName [ChangeSetName] &lt;p&gt;The name of the change set.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;Information about the change set.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;A list of &lt;code&gt;Parameter&lt;/code&gt; structures that describes the input parameters and their values used to create the change set. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html&quot;&gt;Parameter&lt;/a&gt; data type.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;If you execute the change set, the tags that will be associated with the stack.&lt;/p&gt;
--- @param Changes [Changes] &lt;p&gt;A list of &lt;code&gt;Change&lt;/code&gt; structures that describes the resources AWS CloudFormation changes if you execute the change set.&lt;/p&gt;
--- @param CreationTime [CreationTime] &lt;p&gt;The start time when the change set was created, in UTC.&lt;/p&gt;
--- @param StatusReason [ChangeSetStatusReason] &lt;p&gt;A description of the change set's status. For example, if your attempt to create a change set failed, AWS CloudFormation shows the error message.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name of the stack that is associated with the change set.&lt;/p&gt;
--- @param NotificationARNs [NotificationARNs] &lt;p&gt;The ARNs of the Amazon Simple Notification Service (Amazon SNS) topics that will be associated with the stack if you execute the change set.&lt;/p&gt;
--- @param Capabilities [Capabilities] &lt;p&gt;If you execute the change set, the list of capabilities that were explicitly acknowledged when the change set was created.&lt;/p&gt;
--- @param ExecutionStatus [ExecutionStatus] &lt;p&gt;If the change set execution status is &lt;code&gt;AVAILABLE&lt;/code&gt;, you can execute the change set. If you can’t execute the change set, the status indicates why. For example, a change set might be in an &lt;code&gt;UNAVAILABLE&lt;/code&gt; state because AWS CloudFormation is still creating it or in an &lt;code&gt;OBSOLETE&lt;/code&gt; state because the stack was already updated.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If the output exceeds 1 MB, a string that identifies the next page of changes. If there is no additional page, this value is null.&lt;/p&gt;
--- @param ChangeSetId [ChangeSetId] &lt;p&gt;The ARN of the change set.&lt;/p&gt;
+-- <p>The output for the <a>DescribeChangeSet</a> action.</p>
+-- @param StackId [StackId] <p>The ARN of the stack that is associated with the change set.</p>
+-- @param Status [ChangeSetStatus] <p>The current status of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.</p>
+-- @param ChangeSetName [ChangeSetName] <p>The name of the change set.</p>
+-- @param Description [Description] <p>Information about the change set.</p>
+-- @param Parameters [Parameters] <p>A list of <code>Parameter</code> structures that describes the input parameters and their values used to create the change set. For more information, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a> data type.</p>
+-- @param Tags [Tags] <p>If you execute the change set, the tags that will be associated with the stack.</p>
+-- @param Changes [Changes] <p>A list of <code>Change</code> structures that describes the resources AWS CloudFormation changes if you execute the change set.</p>
+-- @param CreationTime [CreationTime] <p>The start time when the change set was created, in UTC.</p>
+-- @param StatusReason [ChangeSetStatusReason] <p>A description of the change set's status. For example, if your attempt to create a change set failed, AWS CloudFormation shows the error message.</p>
+-- @param StackName [StackName] <p>The name of the stack that is associated with the change set.</p>
+-- @param NotificationARNs [NotificationARNs] <p>The ARNs of the Amazon Simple Notification Service (Amazon SNS) topics that will be associated with the stack if you execute the change set.</p>
+-- @param Capabilities [Capabilities] <p>If you execute the change set, the list of capabilities that were explicitly acknowledged when the change set was created.</p>
+-- @param ExecutionStatus [ExecutionStatus] <p>If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t execute the change set, the status indicates why. For example, a change set might be in an <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an <code>OBSOLETE</code> state because the stack was already updated.</p>
+-- @param NextToken [NextToken] <p>If the output exceeds 1 MB, a string that identifies the next page of changes. If there is no additional page, this value is null.</p>
+-- @param ChangeSetId [ChangeSetId] <p>The ARN of the change set.</p>
 function M.DescribeChangeSetOutput(StackId, Status, ChangeSetName, Description, Parameters, Tags, Changes, CreationTime, StatusReason, StackName, NotificationARNs, Capabilities, ExecutionStatus, NextToken, ChangeSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeChangeSetOutput")
 	local t = { 
@@ -740,22 +740,22 @@ function M.AssertUpdateStackInput(struct)
 end
 
 --- Create a structure of type UpdateStackInput
--- &lt;p&gt;The input for an &lt;a&gt;UpdateStack&lt;/a&gt; action.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to supported resources in the stack. You can specify a maximum number of 10 tags.&lt;/p&gt; &lt;p&gt;If you don't specify this parameter, AWS CloudFormation doesn't modify the stack's tags. If you specify an empty value, AWS CloudFormation removes all associated tags.&lt;/p&gt;
--- @param StackPolicyDuringUpdateURL [StackPolicyDuringUpdateURL] &lt;p&gt;Location of a file containing the temporary overriding stack policy. The URL must point to a policy (max size: 16KB) located in an S3 bucket in the same region as the stack. You can specify either the &lt;code&gt;StackPolicyDuringUpdateBody&lt;/code&gt; or the &lt;code&gt;StackPolicyDuringUpdateURL&lt;/code&gt; parameter, but not both.&lt;/p&gt; &lt;p&gt;If you want to update protected resources, specify a temporary overriding stack policy during this update. If you do not specify a stack policy, the current policy that is associated with the stack will be used.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;A list of &lt;code&gt;Parameter&lt;/code&gt; structures that specify input parameters for the stack. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html&quot;&gt;Parameter&lt;/a&gt; data type.&lt;/p&gt;
--- @param TemplateBody [TemplateBody] &lt;p&gt;Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. (For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.)&lt;/p&gt; &lt;p&gt;Conditional: You must specify only one of the following parameters: &lt;code&gt;TemplateBody&lt;/code&gt;, &lt;code&gt;TemplateURL&lt;/code&gt;, or set the &lt;code&gt;UsePreviousTemplate&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
--- @param StackPolicyURL [StackPolicyURL] &lt;p&gt;Location of a file containing the updated stack policy. The URL must point to a policy (max size: 16KB) located in an S3 bucket in the same region as the stack. You can specify either the &lt;code&gt;StackPolicyBody&lt;/code&gt; or the &lt;code&gt;StackPolicyURL&lt;/code&gt; parameter, but not both.&lt;/p&gt; &lt;p&gt;You might update the stack policy, for example, in order to protect a new resource that you created during a stack update. If you do not specify a stack policy, the current policy that is associated with the stack is unchanged.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to update the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.&lt;/p&gt; &lt;p&gt;If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.&lt;/p&gt;
--- @param UsePreviousTemplate [UsePreviousTemplate] &lt;p&gt;Reuse the existing template that is associated with the stack that you are updating.&lt;/p&gt; &lt;p&gt;Conditional: You must specify only one of the following parameters: &lt;code&gt;TemplateBody&lt;/code&gt;, &lt;code&gt;TemplateURL&lt;/code&gt;, or set the &lt;code&gt;UsePreviousTemplate&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
--- @param StackPolicyBody [StackPolicyBody] &lt;p&gt;Structure containing a new stack policy body. You can specify either the &lt;code&gt;StackPolicyBody&lt;/code&gt; or the &lt;code&gt;StackPolicyURL&lt;/code&gt; parameter, but not both.&lt;/p&gt; &lt;p&gt;You might update the stack policy, for example, in order to protect a new resource that you created during a stack update. If you do not specify a stack policy, the current policy that is associated with the stack is unchanged.&lt;/p&gt;
--- @param Capabilities [Capabilities] &lt;p&gt;A list of values that you must specify before AWS CloudFormation can update certain stacks. Some stack templates might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge their capabilities by specifying this parameter.&lt;/p&gt; &lt;p&gt;The only valid values are &lt;code&gt;CAPABILITY_IAM&lt;/code&gt; and &lt;code&gt;CAPABILITY_NAMED_IAM&lt;/code&gt;. The following resources require you to specify this parameter: &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html&quot;&gt; AWS::IAM::AccessKey&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html&quot;&gt; AWS::IAM::Group&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html&quot;&gt; AWS::IAM::InstanceProfile&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html&quot;&gt; AWS::IAM::Policy&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html&quot;&gt; AWS::IAM::Role&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html&quot;&gt; AWS::IAM::User&lt;/a&gt;, and &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html&quot;&gt; AWS::IAM::UserToGroupAddition&lt;/a&gt;. If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.&lt;/p&gt; &lt;p&gt;If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify &lt;code&gt;CAPABILITY_NAMED_IAM&lt;/code&gt;. If you don't specify this parameter, this action returns an &lt;code&gt;InsufficientCapabilities&lt;/code&gt; error.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities&quot;&gt;Acknowledging IAM Resources in AWS CloudFormation Templates&lt;/a&gt;.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or unique stack ID of the stack to update.&lt;/p&gt;
--- @param StackPolicyDuringUpdateBody [StackPolicyDuringUpdateBody] &lt;p&gt;Structure containing the temporary overriding stack policy body. You can specify either the &lt;code&gt;StackPolicyDuringUpdateBody&lt;/code&gt; or the &lt;code&gt;StackPolicyDuringUpdateURL&lt;/code&gt; parameter, but not both.&lt;/p&gt; &lt;p&gt;If you want to update protected resources, specify a temporary overriding stack policy during this update. If you do not specify a stack policy, the current policy that is associated with the stack will be used.&lt;/p&gt;
--- @param ResourceTypes [ResourceTypes] &lt;p&gt;The template resource types that you have permissions to work with for this update stack action, such as &lt;code&gt;AWS::EC2::Instance&lt;/code&gt;, &lt;code&gt;AWS::EC2::*&lt;/code&gt;, or &lt;code&gt;Custom::MyCustomInstance&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If the list of resource types doesn't include a resource that you're updating, the stack update fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for AWS CloudFormation-specific condition keys in IAM policies. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html&quot;&gt;Controlling Access with AWS Identity and Access Management&lt;/a&gt;.&lt;/p&gt;
--- @param NotificationARNs [NotificationARNs] &lt;p&gt;Amazon Simple Notification Service topic Amazon Resource Names (ARNs) that AWS CloudFormation associates with the stack. Specify an empty list to remove all notification topics.&lt;/p&gt;
--- @param ClientRequestToken [ClientRequestToken] &lt;p&gt;A unique identifier for this &lt;code&gt;UpdateStack&lt;/code&gt; request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to update a stack with the same name. You might retry &lt;code&gt;UpdateStack&lt;/code&gt; requests to ensure that AWS CloudFormation successfully received them.&lt;/p&gt;
--- @param TemplateURL [TemplateURL] &lt;p&gt;Location of file containing the template body. The URL must point to a template that is located in an Amazon S3 bucket. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt; &lt;p&gt;Conditional: You must specify only one of the following parameters: &lt;code&gt;TemplateBody&lt;/code&gt;, &lt;code&gt;TemplateURL&lt;/code&gt;, or set the &lt;code&gt;UsePreviousTemplate&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
+-- <p>The input for an <a>UpdateStack</a> action.</p>
+-- @param Tags [Tags] <p>Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to supported resources in the stack. You can specify a maximum number of 10 tags.</p> <p>If you don't specify this parameter, AWS CloudFormation doesn't modify the stack's tags. If you specify an empty value, AWS CloudFormation removes all associated tags.</p>
+-- @param StackPolicyDuringUpdateURL [StackPolicyDuringUpdateURL] <p>Location of a file containing the temporary overriding stack policy. The URL must point to a policy (max size: 16KB) located in an S3 bucket in the same region as the stack. You can specify either the <code>StackPolicyDuringUpdateBody</code> or the <code>StackPolicyDuringUpdateURL</code> parameter, but not both.</p> <p>If you want to update protected resources, specify a temporary overriding stack policy during this update. If you do not specify a stack policy, the current policy that is associated with the stack will be used.</p>
+-- @param Parameters [Parameters] <p>A list of <code>Parameter</code> structures that specify input parameters for the stack. For more information, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a> data type.</p>
+-- @param TemplateBody [TemplateBody] <p>Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.)</p> <p>Conditional: You must specify only one of the following parameters: <code>TemplateBody</code>, <code>TemplateURL</code>, or set the <code>UsePreviousTemplate</code> to <code>true</code>.</p>
+-- @param StackPolicyURL [StackPolicyURL] <p>Location of a file containing the updated stack policy. The URL must point to a policy (max size: 16KB) located in an S3 bucket in the same region as the stack. You can specify either the <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p> <p>You might update the stack policy, for example, in order to protect a new resource that you created during a stack update. If you do not specify a stack policy, the current policy that is associated with the stack is unchanged.</p>
+-- @param RoleARN [RoleARN] <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to update the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.</p>
+-- @param UsePreviousTemplate [UsePreviousTemplate] <p>Reuse the existing template that is associated with the stack that you are updating.</p> <p>Conditional: You must specify only one of the following parameters: <code>TemplateBody</code>, <code>TemplateURL</code>, or set the <code>UsePreviousTemplate</code> to <code>true</code>.</p>
+-- @param StackPolicyBody [StackPolicyBody] <p>Structure containing a new stack policy body. You can specify either the <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p> <p>You might update the stack policy, for example, in order to protect a new resource that you created during a stack update. If you do not specify a stack policy, the current policy that is associated with the stack is unchanged.</p>
+-- @param Capabilities [Capabilities] <p>A list of values that you must specify before AWS CloudFormation can update certain stacks. Some stack templates might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge their capabilities by specifying this parameter.</p> <p>The only valid values are <code>CAPABILITY_IAM</code> and <code>CAPABILITY_NAMED_IAM</code>. The following resources require you to specify this parameter: <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html"> AWS::IAM::AccessKey</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html"> AWS::IAM::Group</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html"> AWS::IAM::InstanceProfile</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html"> AWS::IAM::Policy</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html"> AWS::IAM::Role</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html"> AWS::IAM::User</a>, and <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html"> AWS::IAM::UserToGroupAddition</a>. If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.</p> <p>If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify <code>CAPABILITY_NAMED_IAM</code>. If you don't specify this parameter, this action returns an <code>InsufficientCapabilities</code> error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging IAM Resources in AWS CloudFormation Templates</a>.</p>
+-- @param StackName [StackName] <p>The name or unique stack ID of the stack to update.</p>
+-- @param StackPolicyDuringUpdateBody [StackPolicyDuringUpdateBody] <p>Structure containing the temporary overriding stack policy body. You can specify either the <code>StackPolicyDuringUpdateBody</code> or the <code>StackPolicyDuringUpdateURL</code> parameter, but not both.</p> <p>If you want to update protected resources, specify a temporary overriding stack policy during this update. If you do not specify a stack policy, the current policy that is associated with the stack will be used.</p>
+-- @param ResourceTypes [ResourceTypes] <p>The template resource types that you have permissions to work with for this update stack action, such as <code>AWS::EC2::Instance</code>, <code>AWS::EC2::*</code>, or <code>Custom::MyCustomInstance</code>.</p> <p>If the list of resource types doesn't include a resource that you're updating, the stack update fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for AWS CloudFormation-specific condition keys in IAM policies. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html">Controlling Access with AWS Identity and Access Management</a>.</p>
+-- @param NotificationARNs [NotificationARNs] <p>Amazon Simple Notification Service topic Amazon Resource Names (ARNs) that AWS CloudFormation associates with the stack. Specify an empty list to remove all notification topics.</p>
+-- @param ClientRequestToken [ClientRequestToken] <p>A unique identifier for this <code>UpdateStack</code> request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to update a stack with the same name. You might retry <code>UpdateStack</code> requests to ensure that AWS CloudFormation successfully received them.</p>
+-- @param TemplateURL [TemplateURL] <p>Location of file containing the template body. The URL must point to a template that is located in an Amazon S3 bucket. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You must specify only one of the following parameters: <code>TemplateBody</code>, <code>TemplateURL</code>, or set the <code>UsePreviousTemplate</code> to <code>true</code>.</p>
 -- Required parameter: StackName
 function M.UpdateStackInput(Tags, StackPolicyDuringUpdateURL, Parameters, TemplateBody, StackPolicyURL, RoleARN, UsePreviousTemplate, StackPolicyBody, Capabilities, StackName, StackPolicyDuringUpdateBody, ResourceTypes, NotificationARNs, ClientRequestToken, TemplateURL, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStackInput")
@@ -804,16 +804,16 @@ function M.AssertStackResource(struct)
 end
 
 --- Create a structure of type StackResource
--- &lt;p&gt;The StackResource data type.&lt;/p&gt;
--- @param StackId [StackId] &lt;p&gt;Unique identifier of the stack.&lt;/p&gt;
--- @param ResourceStatus [ResourceStatus] &lt;p&gt;Current status of the resource.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;User defined description associated with the resource.&lt;/p&gt;
--- @param ResourceType [ResourceType] &lt;p&gt;Type of resource. (For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html&quot;&gt; AWS Resource Types Reference&lt;/a&gt; in the AWS CloudFormation User Guide.)&lt;/p&gt;
--- @param Timestamp [Timestamp] &lt;p&gt;Time the status was updated.&lt;/p&gt;
--- @param ResourceStatusReason [ResourceStatusReason] &lt;p&gt;Success/failure message associated with the resource.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name associated with the stack.&lt;/p&gt;
--- @param PhysicalResourceId [PhysicalResourceId] &lt;p&gt;The name or unique identifier that corresponds to a physical instance ID of a resource supported by AWS CloudFormation.&lt;/p&gt;
--- @param LogicalResourceId [LogicalResourceId] &lt;p&gt;The logical name of the resource specified in the template.&lt;/p&gt;
+-- <p>The StackResource data type.</p>
+-- @param StackId [StackId] <p>Unique identifier of the stack.</p>
+-- @param ResourceStatus [ResourceStatus] <p>Current status of the resource.</p>
+-- @param Description [Description] <p>User defined description associated with the resource.</p>
+-- @param ResourceType [ResourceType] <p>Type of resource. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html"> AWS Resource Types Reference</a> in the AWS CloudFormation User Guide.)</p>
+-- @param Timestamp [Timestamp] <p>Time the status was updated.</p>
+-- @param ResourceStatusReason [ResourceStatusReason] <p>Success/failure message associated with the resource.</p>
+-- @param StackName [StackName] <p>The name associated with the stack.</p>
+-- @param PhysicalResourceId [PhysicalResourceId] <p>The name or unique identifier that corresponds to a physical instance ID of a resource supported by AWS CloudFormation.</p>
+-- @param LogicalResourceId [LogicalResourceId] <p>The logical name of the resource specified in the template.</p>
 -- Required parameter: LogicalResourceId
 -- Required parameter: ResourceType
 -- Required parameter: Timestamp
@@ -849,10 +849,10 @@ function M.AssertParameter(struct)
 end
 
 --- Create a structure of type Parameter
--- &lt;p&gt;The Parameter data type.&lt;/p&gt;
--- @param ParameterValue [ParameterValue] &lt;p&gt;The value associated with the parameter.&lt;/p&gt;
--- @param UsePreviousValue [UsePreviousValue] &lt;p&gt;During a stack update, use the existing parameter value that the stack is using for a given parameter key. If you specify &lt;code&gt;true&lt;/code&gt;, do not specify a parameter value.&lt;/p&gt;
--- @param ParameterKey [ParameterKey] &lt;p&gt;The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.&lt;/p&gt;
+-- <p>The Parameter data type.</p>
+-- @param ParameterValue [ParameterValue] <p>The value associated with the parameter.</p>
+-- @param UsePreviousValue [UsePreviousValue] <p>During a stack update, use the existing parameter value that the stack is using for a given parameter key. If you specify <code>true</code>, do not specify a parameter value.</p>
+-- @param ParameterKey [ParameterKey] <p>The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.</p>
 function M.Parameter(ParameterValue, UsePreviousValue, ParameterKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Parameter")
 	local t = { 
@@ -878,8 +878,8 @@ end
 
 --- Create a structure of type ListImportsOutput
 --  
--- @param Imports [Imports] &lt;p&gt;A list of stack names that are importing the specified exported output value. &lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A string that identifies the next page of exports. If there is no additional page, this value is null.&lt;/p&gt;
+-- @param Imports [Imports] <p>A list of stack names that are importing the specified exported output value. </p>
+-- @param NextToken [NextToken] <p>A string that identifies the next page of exports. If there is no additional page, this value is null.</p>
 function M.ListImportsOutput(Imports, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListImportsOutput")
 	local t = { 
@@ -902,8 +902,8 @@ function M.AssertDescribeStackResourceOutput(struct)
 end
 
 --- Create a structure of type DescribeStackResourceOutput
--- &lt;p&gt;The output for a &lt;a&gt;DescribeStackResource&lt;/a&gt; action.&lt;/p&gt;
--- @param StackResourceDetail [StackResourceDetail] &lt;p&gt;A &lt;code&gt;StackResourceDetail&lt;/code&gt; structure containing the description of the specified resource in the specified stack.&lt;/p&gt;
+-- <p>The output for a <a>DescribeStackResource</a> action.</p>
+-- @param StackResourceDetail [StackResourceDetail] <p>A <code>StackResourceDetail</code> structure containing the description of the specified resource in the specified stack.</p>
 function M.DescribeStackResourceOutput(StackResourceDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackResourceOutput")
 	local t = { 
@@ -932,15 +932,15 @@ function M.AssertGetTemplateSummaryOutput(struct)
 end
 
 --- Create a structure of type GetTemplateSummaryOutput
--- &lt;p&gt;The output for the &lt;a&gt;GetTemplateSummary&lt;/a&gt; action.&lt;/p&gt;
--- @param CapabilitiesReason [CapabilitiesReason] &lt;p&gt;The list of resources that generated the values in the &lt;code&gt;Capabilities&lt;/code&gt; response element.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The value that is defined in the &lt;code&gt;Description&lt;/code&gt; property of the template.&lt;/p&gt;
--- @param Parameters [ParameterDeclarations] &lt;p&gt;A list of parameter declarations that describe various properties for each parameter.&lt;/p&gt;
--- @param Capabilities [Capabilities] &lt;p&gt;The capabilities found within the template. If your template contains IAM resources, you must specify the CAPABILITY_IAM or CAPABILITY_NAMED_IAM value for this parameter when you use the &lt;a&gt;CreateStack&lt;/a&gt; or &lt;a&gt;UpdateStack&lt;/a&gt; actions with your template; otherwise, those actions return an InsufficientCapabilities error.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities&quot;&gt;Acknowledging IAM Resources in AWS CloudFormation Templates&lt;/a&gt;.&lt;/p&gt;
--- @param ResourceTypes [ResourceTypes] &lt;p&gt;A list of all the template resource types that are defined in the template, such as &lt;code&gt;AWS::EC2::Instance&lt;/code&gt;, &lt;code&gt;AWS::Dynamo::Table&lt;/code&gt;, and &lt;code&gt;Custom::MyCustomInstance&lt;/code&gt;.&lt;/p&gt;
--- @param Version [Version] &lt;p&gt;The AWS template format version, which identifies the capabilities of the template.&lt;/p&gt;
--- @param DeclaredTransforms [TransformsList] &lt;p&gt;A list of the transforms that are declared in the template.&lt;/p&gt;
--- @param Metadata [Metadata] &lt;p&gt;The value that is defined for the &lt;code&gt;Metadata&lt;/code&gt; property of the template.&lt;/p&gt;
+-- <p>The output for the <a>GetTemplateSummary</a> action.</p>
+-- @param CapabilitiesReason [CapabilitiesReason] <p>The list of resources that generated the values in the <code>Capabilities</code> response element.</p>
+-- @param Description [Description] <p>The value that is defined in the <code>Description</code> property of the template.</p>
+-- @param Parameters [ParameterDeclarations] <p>A list of parameter declarations that describe various properties for each parameter.</p>
+-- @param Capabilities [Capabilities] <p>The capabilities found within the template. If your template contains IAM resources, you must specify the CAPABILITY_IAM or CAPABILITY_NAMED_IAM value for this parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a> actions with your template; otherwise, those actions return an InsufficientCapabilities error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging IAM Resources in AWS CloudFormation Templates</a>.</p>
+-- @param ResourceTypes [ResourceTypes] <p>A list of all the template resource types that are defined in the template, such as <code>AWS::EC2::Instance</code>, <code>AWS::Dynamo::Table</code>, and <code>Custom::MyCustomInstance</code>.</p>
+-- @param Version [Version] <p>The AWS template format version, which identifies the capabilities of the template.</p>
+-- @param DeclaredTransforms [TransformsList] <p>A list of the transforms that are declared in the template.</p>
+-- @param Metadata [Metadata] <p>The value that is defined for the <code>Metadata</code> property of the template.</p>
 function M.GetTemplateSummaryOutput(CapabilitiesReason, Description, Parameters, Capabilities, ResourceTypes, Version, DeclaredTransforms, Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTemplateSummaryOutput")
 	local t = { 
@@ -972,11 +972,11 @@ function M.AssertResourceChangeDetail(struct)
 end
 
 --- Create a structure of type ResourceChangeDetail
--- &lt;p&gt;For a resource with &lt;code&gt;Modify&lt;/code&gt; as the action, the &lt;code&gt;ResourceChange&lt;/code&gt; structure describes the changes AWS CloudFormation will make to that resource.&lt;/p&gt;
--- @param CausingEntity [CausingEntity] &lt;p&gt;The identity of the entity that triggered this change. This entity is a member of the group that is specified by the &lt;code&gt;ChangeSource&lt;/code&gt; field. For example, if you modified the value of the &lt;code&gt;KeyPairName&lt;/code&gt; parameter, the &lt;code&gt;CausingEntity&lt;/code&gt; is the name of the parameter (&lt;code&gt;KeyPairName&lt;/code&gt;).&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;ChangeSource&lt;/code&gt; value is &lt;code&gt;DirectModification&lt;/code&gt;, no value is given for &lt;code&gt;CausingEntity&lt;/code&gt;.&lt;/p&gt;
--- @param ChangeSource [ChangeSource] &lt;p&gt;The group to which the &lt;code&gt;CausingEntity&lt;/code&gt; value belongs. There are five entity groups:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ResourceReference&lt;/code&gt; entities are &lt;code&gt;Ref&lt;/code&gt; intrinsic functions that refer to resources in the template, such as &lt;code&gt;{ &quot;Ref&quot; : &quot;MyEC2InstanceResource&quot; }&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ParameterReference&lt;/code&gt; entities are &lt;code&gt;Ref&lt;/code&gt; intrinsic functions that get template parameter values, such as &lt;code&gt;{ &quot;Ref&quot; : &quot;MyPasswordParameter&quot; }&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ResourceAttribute&lt;/code&gt; entities are &lt;code&gt;Fn::GetAtt&lt;/code&gt; intrinsic functions that get resource attribute values, such as &lt;code&gt;{ &quot;Fn::GetAtt&quot; : [ &quot;MyEC2InstanceResource&quot;, &quot;PublicDnsName&quot; ] }&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DirectModification&lt;/code&gt; entities are changes that are made directly to the template.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Automatic&lt;/code&gt; entities are &lt;code&gt;AWS::CloudFormation::Stack&lt;/code&gt; resource types, which are also known as nested stacks. If you made no changes to the &lt;code&gt;AWS::CloudFormation::Stack&lt;/code&gt; resource, AWS CloudFormation sets the &lt;code&gt;ChangeSource&lt;/code&gt; to &lt;code&gt;Automatic&lt;/code&gt; because the nested stack's template might have changed. Changes to a nested stack's template aren't visible to AWS CloudFormation until you run an update on the parent stack.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Evaluation [EvaluationType] &lt;p&gt;Indicates whether AWS CloudFormation can determine the target value, and whether the target value will change before you execute a change set.&lt;/p&gt; &lt;p&gt;For &lt;code&gt;Static&lt;/code&gt; evaluations, AWS CloudFormation can determine that the target value will change, and its value. For example, if you directly modify the &lt;code&gt;InstanceType&lt;/code&gt; property of an EC2 instance, AWS CloudFormation knows that this property value will change, and its value, so this is a &lt;code&gt;Static&lt;/code&gt; evaluation.&lt;/p&gt; &lt;p&gt;For &lt;code&gt;Dynamic&lt;/code&gt; evaluations, cannot determine the target value because it depends on the result of an intrinsic function, such as a &lt;code&gt;Ref&lt;/code&gt; or &lt;code&gt;Fn::GetAtt&lt;/code&gt; intrinsic function, when the stack is updated. For example, if your template includes a reference to a resource that is conditionally recreated, the value of the reference (the physical ID of the resource) might change, depending on if the resource is recreated. If the resource is recreated, it will have a new physical ID, so all references to that resource will also be updated.&lt;/p&gt;
--- @param Target [ResourceTargetDefinition] &lt;p&gt;A &lt;code&gt;ResourceTargetDefinition&lt;/code&gt; structure that describes the field that AWS CloudFormation will change and whether the resource will be recreated.&lt;/p&gt;
+-- <p>For a resource with <code>Modify</code> as the action, the <code>ResourceChange</code> structure describes the changes AWS CloudFormation will make to that resource.</p>
+-- @param CausingEntity [CausingEntity] <p>The identity of the entity that triggered this change. This entity is a member of the group that is specified by the <code>ChangeSource</code> field. For example, if you modified the value of the <code>KeyPairName</code> parameter, the <code>CausingEntity</code> is the name of the parameter (<code>KeyPairName</code>).</p> <p>If the <code>ChangeSource</code> value is <code>DirectModification</code>, no value is given for <code>CausingEntity</code>.</p>
+-- @param ChangeSource [ChangeSource] <p>The group to which the <code>CausingEntity</code> value belongs. There are five entity groups:</p> <ul> <li> <p> <code>ResourceReference</code> entities are <code>Ref</code> intrinsic functions that refer to resources in the template, such as <code>{ "Ref" : "MyEC2InstanceResource" }</code>.</p> </li> <li> <p> <code>ParameterReference</code> entities are <code>Ref</code> intrinsic functions that get template parameter values, such as <code>{ "Ref" : "MyPasswordParameter" }</code>.</p> </li> <li> <p> <code>ResourceAttribute</code> entities are <code>Fn::GetAtt</code> intrinsic functions that get resource attribute values, such as <code>{ "Fn::GetAtt" : [ "MyEC2InstanceResource", "PublicDnsName" ] }</code>.</p> </li> <li> <p> <code>DirectModification</code> entities are changes that are made directly to the template.</p> </li> <li> <p> <code>Automatic</code> entities are <code>AWS::CloudFormation::Stack</code> resource types, which are also known as nested stacks. If you made no changes to the <code>AWS::CloudFormation::Stack</code> resource, AWS CloudFormation sets the <code>ChangeSource</code> to <code>Automatic</code> because the nested stack's template might have changed. Changes to a nested stack's template aren't visible to AWS CloudFormation until you run an update on the parent stack.</p> </li> </ul>
+-- @param Evaluation [EvaluationType] <p>Indicates whether AWS CloudFormation can determine the target value, and whether the target value will change before you execute a change set.</p> <p>For <code>Static</code> evaluations, AWS CloudFormation can determine that the target value will change, and its value. For example, if you directly modify the <code>InstanceType</code> property of an EC2 instance, AWS CloudFormation knows that this property value will change, and its value, so this is a <code>Static</code> evaluation.</p> <p>For <code>Dynamic</code> evaluations, cannot determine the target value because it depends on the result of an intrinsic function, such as a <code>Ref</code> or <code>Fn::GetAtt</code> intrinsic function, when the stack is updated. For example, if your template includes a reference to a resource that is conditionally recreated, the value of the reference (the physical ID of the resource) might change, depending on if the resource is recreated. If the resource is recreated, it will have a new physical ID, so all references to that resource will also be updated.</p>
+-- @param Target [ResourceTargetDefinition] <p>A <code>ResourceTargetDefinition</code> structure that describes the field that AWS CloudFormation will change and whether the resource will be recreated.</p>
 function M.ResourceChangeDetail(CausingEntity, ChangeSource, Evaluation, Target, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceChangeDetail")
 	local t = { 
@@ -1003,10 +1003,10 @@ function M.AssertGetTemplateInput(struct)
 end
 
 --- Create a structure of type GetTemplateInput
--- &lt;p&gt;The input for a &lt;a&gt;GetTemplate&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or the unique stack ID that is associated with the stack, which are not always interchangeable:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Running stacks: You can specify either the stack's name or its unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Deleted stacks: You must specify the unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: There is no default value.&lt;/p&gt;
--- @param TemplateStage [TemplateStage] &lt;p&gt;For templates that include transforms, the stage of the template that AWS CloudFormation returns. To get the user-submitted template, specify &lt;code&gt;Original&lt;/code&gt;. To get the template after AWS CloudFormation has processed all transforms, specify &lt;code&gt;Processed&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;If the template doesn't include transforms, &lt;code&gt;Original&lt;/code&gt; and &lt;code&gt;Processed&lt;/code&gt; return the same template. By default, AWS CloudFormation specifies &lt;code&gt;Original&lt;/code&gt;. &lt;/p&gt;
--- @param ChangeSetName [ChangeSetNameOrId] &lt;p&gt;The name or Amazon Resource Name (ARN) of a change set for which AWS CloudFormation returns the associated template. If you specify a name, you must also specify the &lt;code&gt;StackName&lt;/code&gt;.&lt;/p&gt;
+-- <p>The input for a <a>GetTemplate</a> action.</p>
+-- @param StackName [StackName] <p>The name or the unique stack ID that is associated with the stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks: You can specify either the stack's name or its unique stack ID.</p> </li> <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li> </ul> <p>Default: There is no default value.</p>
+-- @param TemplateStage [TemplateStage] <p>For templates that include transforms, the stage of the template that AWS CloudFormation returns. To get the user-submitted template, specify <code>Original</code>. To get the template after AWS CloudFormation has processed all transforms, specify <code>Processed</code>. </p> <p>If the template doesn't include transforms, <code>Original</code> and <code>Processed</code> return the same template. By default, AWS CloudFormation specifies <code>Original</code>. </p>
+-- @param ChangeSetName [ChangeSetNameOrId] <p>The name or Amazon Resource Name (ARN) of a change set for which AWS CloudFormation returns the associated template. If you specify a name, you must also specify the <code>StackName</code>.</p>
 function M.GetTemplateInput(StackName, TemplateStage, ChangeSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTemplateInput")
 	local t = { 
@@ -1033,8 +1033,8 @@ end
 
 --- Create a structure of type ListImportsInput
 --  
--- @param NextToken [NextToken] &lt;p&gt;A string (provided by the &lt;a&gt;ListImports&lt;/a&gt; response output) that identifies the next page of stacks that are importing the specified exported output value. &lt;/p&gt;
--- @param ExportName [ExportName] &lt;p&gt;The name of the exported output value. AWS CloudFormation returns the stack names that are importing this value. &lt;/p&gt;
+-- @param NextToken [NextToken] <p>A string (provided by the <a>ListImports</a> response output) that identifies the next page of stacks that are importing the specified exported output value. </p>
+-- @param ExportName [ExportName] <p>The name of the exported output value. AWS CloudFormation returns the stack names that are importing this value. </p>
 -- Required parameter: ExportName
 function M.ListImportsInput(NextToken, ExportName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListImportsInput")
@@ -1059,9 +1059,9 @@ function M.AssertListStackResourcesOutput(struct)
 end
 
 --- Create a structure of type ListStackResourcesOutput
--- &lt;p&gt;The output for a &lt;a&gt;ListStackResources&lt;/a&gt; action.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If the output exceeds 1 MB, a string that identifies the next page of stack resources. If no additional page exists, this value is null.&lt;/p&gt;
--- @param StackResourceSummaries [StackResourceSummaries] &lt;p&gt;A list of &lt;code&gt;StackResourceSummary&lt;/code&gt; structures.&lt;/p&gt;
+-- <p>The output for a <a>ListStackResources</a> action.</p>
+-- @param NextToken [NextToken] <p>If the output exceeds 1 MB, a string that identifies the next page of stack resources. If no additional page exists, this value is null.</p>
+-- @param StackResourceSummaries [StackResourceSummaries] <p>A list of <code>StackResourceSummary</code> structures.</p>
 function M.ListStackResourcesOutput(NextToken, StackResourceSummaries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStackResourcesOutput")
 	local t = { 
@@ -1090,14 +1090,14 @@ function M.AssertResourceChange(struct)
 end
 
 --- Create a structure of type ResourceChange
--- &lt;p&gt;The &lt;code&gt;ResourceChange&lt;/code&gt; structure describes the resource and the action that AWS CloudFormation will perform on it if you execute this change set.&lt;/p&gt;
--- @param ResourceType [ResourceType] &lt;p&gt;The type of AWS CloudFormation resource, such as &lt;code&gt;AWS::S3::Bucket&lt;/code&gt;.&lt;/p&gt;
--- @param PhysicalResourceId [PhysicalResourceId] &lt;p&gt;The resource's physical ID (resource name). Resources that you are adding don't have physical IDs because they haven't been created.&lt;/p&gt;
--- @param Details [ResourceChangeDetails] &lt;p&gt;For the &lt;code&gt;Modify&lt;/code&gt; action, a list of &lt;code&gt;ResourceChangeDetail&lt;/code&gt; structures that describes the changes that AWS CloudFormation will make to the resource. &lt;/p&gt;
--- @param Action [ChangeAction] &lt;p&gt;The action that AWS CloudFormation takes on the resource, such as &lt;code&gt;Add&lt;/code&gt; (adds a new resource), &lt;code&gt;Modify&lt;/code&gt; (changes a resource), or &lt;code&gt;Remove&lt;/code&gt; (deletes a resource).&lt;/p&gt;
--- @param Scope [Scope] &lt;p&gt;For the &lt;code&gt;Modify&lt;/code&gt; action, indicates which resource attribute is triggering this update, such as a change in the resource attribute's &lt;code&gt;Metadata&lt;/code&gt;, &lt;code&gt;Properties&lt;/code&gt;, or &lt;code&gt;Tags&lt;/code&gt;.&lt;/p&gt;
--- @param LogicalResourceId [LogicalResourceId] &lt;p&gt;The resource's logical ID, which is defined in the stack's template.&lt;/p&gt;
--- @param Replacement [Replacement] &lt;p&gt;For the &lt;code&gt;Modify&lt;/code&gt; action, indicates whether AWS CloudFormation will replace the resource by creating a new one and deleting the old one. This value depends on the value of the &lt;code&gt;RequiresRecreation&lt;/code&gt; property in the &lt;code&gt;ResourceTargetDefinition&lt;/code&gt; structure. For example, if the &lt;code&gt;RequiresRecreation&lt;/code&gt; field is &lt;code&gt;Always&lt;/code&gt; and the &lt;code&gt;Evaluation&lt;/code&gt; field is &lt;code&gt;Static&lt;/code&gt;, &lt;code&gt;Replacement&lt;/code&gt; is &lt;code&gt;True&lt;/code&gt;. If the &lt;code&gt;RequiresRecreation&lt;/code&gt; field is &lt;code&gt;Always&lt;/code&gt; and the &lt;code&gt;Evaluation&lt;/code&gt; field is &lt;code&gt;Dynamic&lt;/code&gt;, &lt;code&gt;Replacement&lt;/code&gt; is &lt;code&gt;Conditionally&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If you have multiple changes with different &lt;code&gt;RequiresRecreation&lt;/code&gt; values, the &lt;code&gt;Replacement&lt;/code&gt; value depends on the change with the most impact. A &lt;code&gt;RequiresRecreation&lt;/code&gt; value of &lt;code&gt;Always&lt;/code&gt; has the most impact, followed by &lt;code&gt;Conditionally&lt;/code&gt;, and then &lt;code&gt;Never&lt;/code&gt;.&lt;/p&gt;
+-- <p>The <code>ResourceChange</code> structure describes the resource and the action that AWS CloudFormation will perform on it if you execute this change set.</p>
+-- @param ResourceType [ResourceType] <p>The type of AWS CloudFormation resource, such as <code>AWS::S3::Bucket</code>.</p>
+-- @param PhysicalResourceId [PhysicalResourceId] <p>The resource's physical ID (resource name). Resources that you are adding don't have physical IDs because they haven't been created.</p>
+-- @param Details [ResourceChangeDetails] <p>For the <code>Modify</code> action, a list of <code>ResourceChangeDetail</code> structures that describes the changes that AWS CloudFormation will make to the resource. </p>
+-- @param Action [ChangeAction] <p>The action that AWS CloudFormation takes on the resource, such as <code>Add</code> (adds a new resource), <code>Modify</code> (changes a resource), or <code>Remove</code> (deletes a resource).</p>
+-- @param Scope [Scope] <p>For the <code>Modify</code> action, indicates which resource attribute is triggering this update, such as a change in the resource attribute's <code>Metadata</code>, <code>Properties</code>, or <code>Tags</code>.</p>
+-- @param LogicalResourceId [LogicalResourceId] <p>The resource's logical ID, which is defined in the stack's template.</p>
+-- @param Replacement [Replacement] <p>For the <code>Modify</code> action, indicates whether AWS CloudFormation will replace the resource by creating a new one and deleting the old one. This value depends on the value of the <code>RequiresRecreation</code> property in the <code>ResourceTargetDefinition</code> structure. For example, if the <code>RequiresRecreation</code> field is <code>Always</code> and the <code>Evaluation</code> field is <code>Static</code>, <code>Replacement</code> is <code>True</code>. If the <code>RequiresRecreation</code> field is <code>Always</code> and the <code>Evaluation</code> field is <code>Dynamic</code>, <code>Replacement</code> is <code>Conditionally</code>.</p> <p>If you have multiple changes with different <code>RequiresRecreation</code> values, the <code>Replacement</code> value depends on the change with the most impact. A <code>RequiresRecreation</code> value of <code>Always</code> has the most impact, followed by <code>Conditionally</code>, and then <code>Never</code>.</p>
 function M.ResourceChange(ResourceType, PhysicalResourceId, Details, Action, Scope, LogicalResourceId, Replacement, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceChange")
 	local t = { 
@@ -1127,10 +1127,10 @@ function M.AssertDescribeStackResourcesInput(struct)
 end
 
 --- Create a structure of type DescribeStackResourcesInput
--- &lt;p&gt;The input for &lt;a&gt;DescribeStackResources&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or the unique stack ID that is associated with the stack, which are not always interchangeable:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Running stacks: You can specify either the stack's name or its unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Deleted stacks: You must specify the unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: There is no default value.&lt;/p&gt; &lt;p&gt;Required: Conditional. If you do not specify &lt;code&gt;StackName&lt;/code&gt;, you must specify &lt;code&gt;PhysicalResourceId&lt;/code&gt;.&lt;/p&gt;
--- @param PhysicalResourceId [PhysicalResourceId] &lt;p&gt;The name or unique identifier that corresponds to a physical instance ID of a resource supported by AWS CloudFormation.&lt;/p&gt; &lt;p&gt;For example, for an Amazon Elastic Compute Cloud (EC2) instance, &lt;code&gt;PhysicalResourceId&lt;/code&gt; corresponds to the &lt;code&gt;InstanceId&lt;/code&gt;. You can pass the EC2 &lt;code&gt;InstanceId&lt;/code&gt; to &lt;code&gt;DescribeStackResources&lt;/code&gt; to find which stack the instance belongs to and what other resources are part of the stack.&lt;/p&gt; &lt;p&gt;Required: Conditional. If you do not specify &lt;code&gt;PhysicalResourceId&lt;/code&gt;, you must specify &lt;code&gt;StackName&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Default: There is no default value.&lt;/p&gt;
--- @param LogicalResourceId [LogicalResourceId] &lt;p&gt;The logical name of the resource as specified in the template.&lt;/p&gt; &lt;p&gt;Default: There is no default value.&lt;/p&gt;
+-- <p>The input for <a>DescribeStackResources</a> action.</p>
+-- @param StackName [StackName] <p>The name or the unique stack ID that is associated with the stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks: You can specify either the stack's name or its unique stack ID.</p> </li> <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li> </ul> <p>Default: There is no default value.</p> <p>Required: Conditional. If you do not specify <code>StackName</code>, you must specify <code>PhysicalResourceId</code>.</p>
+-- @param PhysicalResourceId [PhysicalResourceId] <p>The name or unique identifier that corresponds to a physical instance ID of a resource supported by AWS CloudFormation.</p> <p>For example, for an Amazon Elastic Compute Cloud (EC2) instance, <code>PhysicalResourceId</code> corresponds to the <code>InstanceId</code>. You can pass the EC2 <code>InstanceId</code> to <code>DescribeStackResources</code> to find which stack the instance belongs to and what other resources are part of the stack.</p> <p>Required: Conditional. If you do not specify <code>PhysicalResourceId</code>, you must specify <code>StackName</code>.</p> <p>Default: There is no default value.</p>
+-- @param LogicalResourceId [LogicalResourceId] <p>The logical name of the resource as specified in the template.</p> <p>Default: There is no default value.</p>
 function M.DescribeStackResourcesInput(StackName, PhysicalResourceId, LogicalResourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackResourcesInput")
 	local t = { 
@@ -1156,9 +1156,9 @@ function M.AssertDeleteChangeSetInput(struct)
 end
 
 --- Create a structure of type DeleteChangeSetInput
--- &lt;p&gt;The input for the &lt;a&gt;DeleteChangeSet&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackNameOrId] &lt;p&gt;If you specified the name of a change set to delete, specify the stack name or ID (ARN) that is associated with it.&lt;/p&gt;
--- @param ChangeSetName [ChangeSetNameOrId] &lt;p&gt;The name or Amazon Resource Name (ARN) of the change set that you want to delete.&lt;/p&gt;
+-- <p>The input for the <a>DeleteChangeSet</a> action.</p>
+-- @param StackName [StackNameOrId] <p>If you specified the name of a change set to delete, specify the stack name or ID (ARN) that is associated with it.</p>
+-- @param ChangeSetName [ChangeSetNameOrId] <p>The name or Amazon Resource Name (ARN) of the change set that you want to delete.</p>
 -- Required parameter: ChangeSetName
 function M.DeleteChangeSetInput(StackName, ChangeSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteChangeSetInput")
@@ -1185,10 +1185,10 @@ function M.AssertExecuteChangeSetInput(struct)
 end
 
 --- Create a structure of type ExecuteChangeSetInput
--- &lt;p&gt;The input for the &lt;a&gt;ExecuteChangeSet&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackNameOrId] &lt;p&gt;If you specified the name of a change set, specify the stack name or ID (ARN) that is associated with the change set you want to execute.&lt;/p&gt;
--- @param ChangeSetName [ChangeSetNameOrId] &lt;p&gt;The name or ARN of the change set that you want use to update the specified stack.&lt;/p&gt;
--- @param ClientRequestToken [ClientRequestToken] &lt;p&gt;A unique identifier for this &lt;code&gt;ExecuteChangeSet&lt;/code&gt; request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to execute a change set to update a stack with the same name. You might retry &lt;code&gt;ExecuteChangeSet&lt;/code&gt; requests to ensure that AWS CloudFormation successfully received them.&lt;/p&gt;
+-- <p>The input for the <a>ExecuteChangeSet</a> action.</p>
+-- @param StackName [StackNameOrId] <p>If you specified the name of a change set, specify the stack name or ID (ARN) that is associated with the change set you want to execute.</p>
+-- @param ChangeSetName [ChangeSetNameOrId] <p>The name or ARN of the change set that you want use to update the specified stack.</p>
+-- @param ClientRequestToken [ClientRequestToken] <p>A unique identifier for this <code>ExecuteChangeSet</code> request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to execute a change set to update a stack with the same name. You might retry <code>ExecuteChangeSet</code> requests to ensure that AWS CloudFormation successfully received them.</p>
 -- Required parameter: ChangeSetName
 function M.ExecuteChangeSetInput(StackName, ChangeSetName, ClientRequestToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecuteChangeSetInput")
@@ -1218,13 +1218,13 @@ function M.AssertParameterDeclaration(struct)
 end
 
 --- Create a structure of type ParameterDeclaration
--- &lt;p&gt;The ParameterDeclaration data type.&lt;/p&gt;
--- @param ParameterType [ParameterType] &lt;p&gt;The type of parameter.&lt;/p&gt;
--- @param ParameterConstraints [ParameterConstraints] &lt;p&gt;The criteria that AWS CloudFormation uses to validate parameter values.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The description that is associate with the parameter.&lt;/p&gt;
--- @param DefaultValue [ParameterValue] &lt;p&gt;The default value of the parameter.&lt;/p&gt;
--- @param NoEcho [NoEcho] &lt;p&gt;Flag that indicates whether the parameter value is shown as plain text in logs and in the AWS Management Console.&lt;/p&gt;
--- @param ParameterKey [ParameterKey] &lt;p&gt;The name that is associated with the parameter.&lt;/p&gt;
+-- <p>The ParameterDeclaration data type.</p>
+-- @param ParameterType [ParameterType] <p>The type of parameter.</p>
+-- @param ParameterConstraints [ParameterConstraints] <p>The criteria that AWS CloudFormation uses to validate parameter values.</p>
+-- @param Description [Description] <p>The description that is associate with the parameter.</p>
+-- @param DefaultValue [ParameterValue] <p>The default value of the parameter.</p>
+-- @param NoEcho [NoEcho] <p>Flag that indicates whether the parameter value is shown as plain text in logs and in the AWS Management Console.</p>
+-- @param ParameterKey [ParameterKey] <p>The name that is associated with the parameter.</p>
 function M.ParameterDeclaration(ParameterType, ParameterConstraints, Description, DefaultValue, NoEcho, ParameterKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterDeclaration")
 	local t = { 
@@ -1252,9 +1252,9 @@ function M.AssertDescribeStacksInput(struct)
 end
 
 --- Create a structure of type DescribeStacksInput
--- &lt;p&gt;The input for &lt;a&gt;DescribeStacks&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or the unique stack ID that is associated with the stack, which are not always interchangeable:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Running stacks: You can specify either the stack's name or its unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Deleted stacks: You must specify the unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: There is no default value.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A string that identifies the next page of stacks that you want to retrieve.&lt;/p&gt;
+-- <p>The input for <a>DescribeStacks</a> action.</p>
+-- @param StackName [StackName] <p>The name or the unique stack ID that is associated with the stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks: You can specify either the stack's name or its unique stack ID.</p> </li> <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li> </ul> <p>Default: There is no default value.</p>
+-- @param NextToken [NextToken] <p>A string that identifies the next page of stacks that you want to retrieve.</p>
 function M.DescribeStacksInput(StackName, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksInput")
 	local t = { 
@@ -1276,7 +1276,7 @@ function M.AssertExecuteChangeSetOutput(struct)
 end
 
 --- Create a structure of type ExecuteChangeSetOutput
--- &lt;p&gt;The output for the &lt;a&gt;ExecuteChangeSet&lt;/a&gt; action.&lt;/p&gt;
+-- <p>The output for the <a>ExecuteChangeSet</a> action.</p>
 function M.ExecuteChangeSetOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecuteChangeSetOutput")
 	local t = { 
@@ -1296,7 +1296,7 @@ function M.AssertAlreadyExistsException(struct)
 end
 
 --- Create a structure of type AlreadyExistsException
--- &lt;p&gt;Resource with the name requested already exists.&lt;/p&gt;
+-- <p>Resource with the name requested already exists.</p>
 function M.AlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyExistsException")
 	local t = { 
@@ -1331,18 +1331,18 @@ function M.AssertStackEvent(struct)
 end
 
 --- Create a structure of type StackEvent
--- &lt;p&gt;The StackEvent data type.&lt;/p&gt;
--- @param StackId [StackId] &lt;p&gt;The unique ID name of the instance of the stack.&lt;/p&gt;
--- @param EventId [EventId] &lt;p&gt;The unique ID of this event.&lt;/p&gt;
--- @param ResourceStatus [ResourceStatus] &lt;p&gt;Current status of the resource.&lt;/p&gt;
--- @param ResourceType [ResourceType] &lt;p&gt;Type of resource. (For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html&quot;&gt; AWS Resource Types Reference&lt;/a&gt; in the AWS CloudFormation User Guide.)&lt;/p&gt;
--- @param Timestamp [Timestamp] &lt;p&gt;Time the status was updated.&lt;/p&gt;
--- @param ResourceStatusReason [ResourceStatusReason] &lt;p&gt;Success/failure message associated with the resource.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name associated with a stack.&lt;/p&gt;
--- @param ResourceProperties [ResourceProperties] &lt;p&gt;BLOB of the properties used to create the resource.&lt;/p&gt;
--- @param PhysicalResourceId [PhysicalResourceId] &lt;p&gt;The name or unique identifier associated with the physical instance of the resource.&lt;/p&gt;
--- @param ClientRequestToken [ClientRequestToken] &lt;p&gt;The token passed to the operation that generated this event.&lt;/p&gt; &lt;p&gt;For example, if you execute a &lt;code&gt;CreateStack&lt;/code&gt; operation with the token &lt;code&gt;token1&lt;/code&gt;, then all the &lt;code&gt;StackEvents&lt;/code&gt; generated by that operation will have &lt;code&gt;ClientRequestToken&lt;/code&gt; set as &lt;code&gt;token1&lt;/code&gt;.&lt;/p&gt;
--- @param LogicalResourceId [LogicalResourceId] &lt;p&gt;The logical name of the resource specified in the template.&lt;/p&gt;
+-- <p>The StackEvent data type.</p>
+-- @param StackId [StackId] <p>The unique ID name of the instance of the stack.</p>
+-- @param EventId [EventId] <p>The unique ID of this event.</p>
+-- @param ResourceStatus [ResourceStatus] <p>Current status of the resource.</p>
+-- @param ResourceType [ResourceType] <p>Type of resource. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html"> AWS Resource Types Reference</a> in the AWS CloudFormation User Guide.)</p>
+-- @param Timestamp [Timestamp] <p>Time the status was updated.</p>
+-- @param ResourceStatusReason [ResourceStatusReason] <p>Success/failure message associated with the resource.</p>
+-- @param StackName [StackName] <p>The name associated with a stack.</p>
+-- @param ResourceProperties [ResourceProperties] <p>BLOB of the properties used to create the resource.</p>
+-- @param PhysicalResourceId [PhysicalResourceId] <p>The name or unique identifier associated with the physical instance of the resource.</p>
+-- @param ClientRequestToken [ClientRequestToken] <p>The token passed to the operation that generated this event.</p> <p>For example, if you execute a <code>CreateStack</code> operation with the token <code>token1</code>, then all the <code>StackEvents</code> generated by that operation will have <code>ClientRequestToken</code> set as <code>token1</code>.</p>
+-- @param LogicalResourceId [LogicalResourceId] <p>The logical name of the resource specified in the template.</p>
 -- Required parameter: StackId
 -- Required parameter: EventId
 -- Required parameter: StackName
@@ -1386,16 +1386,16 @@ function M.AssertChangeSetSummary(struct)
 end
 
 --- Create a structure of type ChangeSetSummary
--- &lt;p&gt;The &lt;code&gt;ChangeSetSummary&lt;/code&gt; structure describes a change set, its status, and the stack with which it's associated.&lt;/p&gt;
--- @param StackId [StackId] &lt;p&gt;The ID of the stack with which the change set is associated.&lt;/p&gt;
--- @param Status [ChangeSetStatus] &lt;p&gt;The state of the change set, such as &lt;code&gt;CREATE_IN_PROGRESS&lt;/code&gt;, &lt;code&gt;CREATE_COMPLETE&lt;/code&gt;, or &lt;code&gt;FAILED&lt;/code&gt;.&lt;/p&gt;
--- @param ChangeSetName [ChangeSetName] &lt;p&gt;The name of the change set.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;Descriptive information about the change set.&lt;/p&gt;
--- @param CreationTime [CreationTime] &lt;p&gt;The start time when the change set was created, in UTC.&lt;/p&gt;
--- @param StatusReason [ChangeSetStatusReason] &lt;p&gt;A description of the change set's status. For example, if your change set is in the &lt;code&gt;FAILED&lt;/code&gt; state, AWS CloudFormation shows the error message.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name of the stack with which the change set is associated.&lt;/p&gt;
--- @param ExecutionStatus [ExecutionStatus] &lt;p&gt;If the change set execution status is &lt;code&gt;AVAILABLE&lt;/code&gt;, you can execute the change set. If you can’t execute the change set, the status indicates why. For example, a change set might be in an &lt;code&gt;UNAVAILABLE&lt;/code&gt; state because AWS CloudFormation is still creating it or in an &lt;code&gt;OBSOLETE&lt;/code&gt; state because the stack was already updated.&lt;/p&gt;
--- @param ChangeSetId [ChangeSetId] &lt;p&gt;The ID of the change set.&lt;/p&gt;
+-- <p>The <code>ChangeSetSummary</code> structure describes a change set, its status, and the stack with which it's associated.</p>
+-- @param StackId [StackId] <p>The ID of the stack with which the change set is associated.</p>
+-- @param Status [ChangeSetStatus] <p>The state of the change set, such as <code>CREATE_IN_PROGRESS</code>, <code>CREATE_COMPLETE</code>, or <code>FAILED</code>.</p>
+-- @param ChangeSetName [ChangeSetName] <p>The name of the change set.</p>
+-- @param Description [Description] <p>Descriptive information about the change set.</p>
+-- @param CreationTime [CreationTime] <p>The start time when the change set was created, in UTC.</p>
+-- @param StatusReason [ChangeSetStatusReason] <p>A description of the change set's status. For example, if your change set is in the <code>FAILED</code> state, AWS CloudFormation shows the error message.</p>
+-- @param StackName [StackName] <p>The name of the stack with which the change set is associated.</p>
+-- @param ExecutionStatus [ExecutionStatus] <p>If the change set execution status is <code>AVAILABLE</code>, you can execute the change set. If you can’t execute the change set, the status indicates why. For example, a change set might be in an <code>UNAVAILABLE</code> state because AWS CloudFormation is still creating it or in an <code>OBSOLETE</code> state because the stack was already updated.</p>
+-- @param ChangeSetId [ChangeSetId] <p>The ID of the change set.</p>
 function M.ChangeSetSummary(StackId, Status, ChangeSetName, Description, CreationTime, StatusReason, StackName, ExecutionStatus, ChangeSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ChangeSetSummary")
 	local t = { 
@@ -1426,9 +1426,9 @@ function M.AssertValidateTemplateInput(struct)
 end
 
 --- Create a structure of type ValidateTemplateInput
--- &lt;p&gt;The input for &lt;a&gt;ValidateTemplate&lt;/a&gt; action.&lt;/p&gt;
--- @param TemplateURL [TemplateURL] &lt;p&gt;Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that is located in an Amazon S3 bucket. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt; &lt;p&gt;Conditional: You must pass &lt;code&gt;TemplateURL&lt;/code&gt; or &lt;code&gt;TemplateBody&lt;/code&gt;. If both are passed, only &lt;code&gt;TemplateBody&lt;/code&gt; is used.&lt;/p&gt;
--- @param TemplateBody [TemplateBody] &lt;p&gt;Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt; &lt;p&gt;Conditional: You must pass &lt;code&gt;TemplateURL&lt;/code&gt; or &lt;code&gt;TemplateBody&lt;/code&gt;. If both are passed, only &lt;code&gt;TemplateBody&lt;/code&gt; is used.&lt;/p&gt;
+-- <p>The input for <a>ValidateTemplate</a> action.</p>
+-- @param TemplateURL [TemplateURL] <p>Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that is located in an Amazon S3 bucket. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You must pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both are passed, only <code>TemplateBody</code> is used.</p>
+-- @param TemplateBody [TemplateBody] <p>Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You must pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both are passed, only <code>TemplateBody</code> is used.</p>
 function M.ValidateTemplateInput(TemplateURL, TemplateBody, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidateTemplateInput")
 	local t = { 
@@ -1452,8 +1452,8 @@ function M.AssertGetStackPolicyInput(struct)
 end
 
 --- Create a structure of type GetStackPolicyInput
--- &lt;p&gt;The input for the &lt;a&gt;GetStackPolicy&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or unique stack ID that is associated with the stack whose policy you want to get.&lt;/p&gt;
+-- <p>The input for the <a>GetStackPolicy</a> action.</p>
+-- @param StackName [StackName] <p>The name or unique stack ID that is associated with the stack whose policy you want to get.</p>
 -- Required parameter: StackName
 function M.GetStackPolicyInput(StackName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStackPolicyInput")
@@ -1476,8 +1476,8 @@ function M.AssertGetStackPolicyOutput(struct)
 end
 
 --- Create a structure of type GetStackPolicyOutput
--- &lt;p&gt;The output for the &lt;a&gt;GetStackPolicy&lt;/a&gt; action.&lt;/p&gt;
--- @param StackPolicyBody [StackPolicyBody] &lt;p&gt;Structure containing the stack policy body. (For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html&quot;&gt; Prevent Updates to Stack Resources&lt;/a&gt; in the AWS CloudFormation User Guide.)&lt;/p&gt;
+-- <p>The output for the <a>GetStackPolicy</a> action.</p>
+-- @param StackPolicyBody [StackPolicyBody] <p>Structure containing the stack policy body. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide.)</p>
 function M.GetStackPolicyOutput(StackPolicyBody, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStackPolicyOutput")
 	local t = { 
@@ -1500,9 +1500,9 @@ function M.AssertDescribeAccountLimitsOutput(struct)
 end
 
 --- Create a structure of type DescribeAccountLimitsOutput
--- &lt;p&gt;The output for the &lt;a&gt;DescribeAccountLimits&lt;/a&gt; action.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If the output exceeds 1 MB in size, a string that identifies the next page of limits. If no additional page exists, this value is null.&lt;/p&gt;
--- @param AccountLimits [AccountLimitList] &lt;p&gt;An account limit structure that contain a list of AWS CloudFormation account limits and their values.&lt;/p&gt;
+-- <p>The output for the <a>DescribeAccountLimits</a> action.</p>
+-- @param NextToken [NextToken] <p>If the output exceeds 1 MB in size, a string that identifies the next page of limits. If no additional page exists, this value is null.</p>
+-- @param AccountLimits [AccountLimitList] <p>An account limit structure that contain a list of AWS CloudFormation account limits and their values.</p>
 function M.DescribeAccountLimitsOutput(NextToken, AccountLimits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountLimitsOutput")
 	local t = { 
@@ -1540,22 +1540,22 @@ function M.AssertCreateStackInput(struct)
 end
 
 --- Create a structure of type CreateStackInput
--- &lt;p&gt;The input for &lt;a&gt;CreateStack&lt;/a&gt; action.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to the resources created in the stack. A maximum number of 10 tags can be specified.&lt;/p&gt;
--- @param TemplateBody [TemplateBody] &lt;p&gt;Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt; &lt;p&gt;Conditional: You must specify either the &lt;code&gt;TemplateBody&lt;/code&gt; or the &lt;code&gt;TemplateURL&lt;/code&gt; parameter, but not both.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;A list of &lt;code&gt;Parameter&lt;/code&gt; structures that specify input parameters for the stack. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html&quot;&gt;Parameter&lt;/a&gt; data type.&lt;/p&gt;
--- @param StackPolicyURL [StackPolicyURL] &lt;p&gt;Location of a file containing the stack policy. The URL must point to a policy (maximum size: 16 KB) located in an S3 bucket in the same region as the stack. You can specify either the &lt;code&gt;StackPolicyBody&lt;/code&gt; or the &lt;code&gt;StackPolicyURL&lt;/code&gt; parameter, but not both.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to create the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.&lt;/p&gt; &lt;p&gt;If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.&lt;/p&gt;
--- @param TimeoutInMinutes [TimeoutMinutes] &lt;p&gt;The amount of time that can pass before the stack status becomes CREATE_FAILED; if &lt;code&gt;DisableRollback&lt;/code&gt; is not set or is set to &lt;code&gt;false&lt;/code&gt;, the stack will be rolled back.&lt;/p&gt;
--- @param StackPolicyBody [StackPolicyBody] &lt;p&gt;Structure containing the stack policy body. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html&quot;&gt; Prevent Updates to Stack Resources&lt;/a&gt; in the &lt;i&gt;AWS CloudFormation User Guide&lt;/i&gt;. You can specify either the &lt;code&gt;StackPolicyBody&lt;/code&gt; or the &lt;code&gt;StackPolicyURL&lt;/code&gt; parameter, but not both.&lt;/p&gt;
--- @param Capabilities [Capabilities] &lt;p&gt;A list of values that you must specify before AWS CloudFormation can create certain stacks. Some stack templates might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge their capabilities by specifying this parameter.&lt;/p&gt; &lt;p&gt;The only valid values are &lt;code&gt;CAPABILITY_IAM&lt;/code&gt; and &lt;code&gt;CAPABILITY_NAMED_IAM&lt;/code&gt;. The following resources require you to specify this parameter: &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html&quot;&gt; AWS::IAM::AccessKey&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html&quot;&gt; AWS::IAM::Group&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html&quot;&gt; AWS::IAM::InstanceProfile&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html&quot;&gt; AWS::IAM::Policy&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html&quot;&gt; AWS::IAM::Role&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html&quot;&gt; AWS::IAM::User&lt;/a&gt;, and &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html&quot;&gt; AWS::IAM::UserToGroupAddition&lt;/a&gt;. If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.&lt;/p&gt; &lt;p&gt;If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify &lt;code&gt;CAPABILITY_NAMED_IAM&lt;/code&gt;. If you don't specify this parameter, this action returns an &lt;code&gt;InsufficientCapabilities&lt;/code&gt; error.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities&quot;&gt;Acknowledging IAM Resources in AWS CloudFormation Templates&lt;/a&gt;.&lt;/p&gt;
--- @param OnFailure [OnFailure] &lt;p&gt;Determines what action will be taken if stack creation fails. This must be one of: DO_NOTHING, ROLLBACK, or DELETE. You can specify either &lt;code&gt;OnFailure&lt;/code&gt; or &lt;code&gt;DisableRollback&lt;/code&gt;, but not both.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;ROLLBACK&lt;/code&gt; &lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name that is associated with the stack. The name must be unique in the region in which you are creating the stack.&lt;/p&gt; &lt;note&gt; &lt;p&gt;A stack name can contain only alphanumeric characters (case sensitive) and hyphens. It must start with an alphabetic character and cannot be longer than 128 characters.&lt;/p&gt; &lt;/note&gt;
--- @param NotificationARNs [NotificationARNs] &lt;p&gt;The Simple Notification Service (SNS) topic ARNs to publish stack related events. You can find your SNS topic ARNs using the SNS console or your Command Line Interface (CLI).&lt;/p&gt;
--- @param ResourceTypes [ResourceTypes] &lt;p&gt;The template resource types that you have permissions to work with for this create stack action, such as &lt;code&gt;AWS::EC2::Instance&lt;/code&gt;, &lt;code&gt;AWS::EC2::*&lt;/code&gt;, or &lt;code&gt;Custom::MyCustomInstance&lt;/code&gt;. Use the following syntax to describe template resource types: &lt;code&gt;AWS::*&lt;/code&gt; (for all AWS resource), &lt;code&gt;Custom::*&lt;/code&gt; (for all custom resources), &lt;code&gt;Custom::&lt;i&gt;logical_ID&lt;/i&gt; &lt;/code&gt; (for a specific custom resource), &lt;code&gt;AWS::&lt;i&gt;service_name&lt;/i&gt;::*&lt;/code&gt; (for all resources of a particular AWS service), and &lt;code&gt;AWS::&lt;i&gt;service_name&lt;/i&gt;::&lt;i&gt;resource_logical_ID&lt;/i&gt; &lt;/code&gt; (for a specific AWS resource).&lt;/p&gt; &lt;p&gt;If the list of resource types doesn't include a resource that you're creating, the stack creation fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for AWS CloudFormation-specific condition keys in IAM policies. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html&quot;&gt;Controlling Access with AWS Identity and Access Management&lt;/a&gt;.&lt;/p&gt;
--- @param ClientRequestToken [ClientRequestToken] &lt;p&gt;A unique identifier for this &lt;code&gt;CreateStack&lt;/code&gt; request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to create a stack with the same name. You might retry &lt;code&gt;CreateStack&lt;/code&gt; requests to ensure that AWS CloudFormation successfully received them.&lt;/p&gt;
--- @param DisableRollback [DisableRollback] &lt;p&gt;Set to &lt;code&gt;true&lt;/code&gt; to disable rollback of the stack if stack creation failed. You can specify either &lt;code&gt;DisableRollback&lt;/code&gt; or &lt;code&gt;OnFailure&lt;/code&gt;, but not both.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param TemplateURL [TemplateURL] &lt;p&gt;Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that is located in an Amazon S3 bucket. For more information, go to the &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt; &lt;p&gt;Conditional: You must specify either the &lt;code&gt;TemplateBody&lt;/code&gt; or the &lt;code&gt;TemplateURL&lt;/code&gt; parameter, but not both.&lt;/p&gt;
+-- <p>The input for <a>CreateStack</a> action.</p>
+-- @param Tags [Tags] <p>Key-value pairs to associate with this stack. AWS CloudFormation also propagates these tags to the resources created in the stack. A maximum number of 10 tags can be specified.</p>
+-- @param TemplateBody [TemplateBody] <p>Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You must specify either the <code>TemplateBody</code> or the <code>TemplateURL</code> parameter, but not both.</p>
+-- @param Parameters [Parameters] <p>A list of <code>Parameter</code> structures that specify input parameters for the stack. For more information, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a> data type.</p>
+-- @param StackPolicyURL [StackPolicyURL] <p>Location of a file containing the stack policy. The URL must point to a policy (maximum size: 16 KB) located in an S3 bucket in the same region as the stack. You can specify either the <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p>
+-- @param RoleARN [RoleARN] <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to create the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.</p>
+-- @param TimeoutInMinutes [TimeoutMinutes] <p>The amount of time that can pass before the stack status becomes CREATE_FAILED; if <code>DisableRollback</code> is not set or is set to <code>false</code>, the stack will be rolled back.</p>
+-- @param StackPolicyBody [StackPolicyBody] <p>Structure containing the stack policy body. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent Updates to Stack Resources</a> in the <i>AWS CloudFormation User Guide</i>. You can specify either the <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p>
+-- @param Capabilities [Capabilities] <p>A list of values that you must specify before AWS CloudFormation can create certain stacks. Some stack templates might include resources that can affect permissions in your AWS account, for example, by creating new AWS Identity and Access Management (IAM) users. For those stacks, you must explicitly acknowledge their capabilities by specifying this parameter.</p> <p>The only valid values are <code>CAPABILITY_IAM</code> and <code>CAPABILITY_NAMED_IAM</code>. The following resources require you to specify this parameter: <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html"> AWS::IAM::AccessKey</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html"> AWS::IAM::Group</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html"> AWS::IAM::InstanceProfile</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html"> AWS::IAM::Policy</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html"> AWS::IAM::Role</a>, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html"> AWS::IAM::User</a>, and <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html"> AWS::IAM::UserToGroupAddition</a>. If your stack template contains these resources, we recommend that you review all permissions associated with them and edit their permissions if necessary.</p> <p>If you have IAM resources, you can specify either capability. If you have IAM resources with custom names, you must specify <code>CAPABILITY_NAMED_IAM</code>. If you don't specify this parameter, this action returns an <code>InsufficientCapabilities</code> error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging IAM Resources in AWS CloudFormation Templates</a>.</p>
+-- @param OnFailure [OnFailure] <p>Determines what action will be taken if stack creation fails. This must be one of: DO_NOTHING, ROLLBACK, or DELETE. You can specify either <code>OnFailure</code> or <code>DisableRollback</code>, but not both.</p> <p>Default: <code>ROLLBACK</code> </p>
+-- @param StackName [StackName] <p>The name that is associated with the stack. The name must be unique in the region in which you are creating the stack.</p> <note> <p>A stack name can contain only alphanumeric characters (case sensitive) and hyphens. It must start with an alphabetic character and cannot be longer than 128 characters.</p> </note>
+-- @param NotificationARNs [NotificationARNs] <p>The Simple Notification Service (SNS) topic ARNs to publish stack related events. You can find your SNS topic ARNs using the SNS console or your Command Line Interface (CLI).</p>
+-- @param ResourceTypes [ResourceTypes] <p>The template resource types that you have permissions to work with for this create stack action, such as <code>AWS::EC2::Instance</code>, <code>AWS::EC2::*</code>, or <code>Custom::MyCustomInstance</code>. Use the following syntax to describe template resource types: <code>AWS::*</code> (for all AWS resource), <code>Custom::*</code> (for all custom resources), <code>Custom::<i>logical_ID</i> </code> (for a specific custom resource), <code>AWS::<i>service_name</i>::*</code> (for all resources of a particular AWS service), and <code>AWS::<i>service_name</i>::<i>resource_logical_ID</i> </code> (for a specific AWS resource).</p> <p>If the list of resource types doesn't include a resource that you're creating, the stack creation fails. By default, AWS CloudFormation grants permissions to all resource types. AWS Identity and Access Management (IAM) uses this parameter for AWS CloudFormation-specific condition keys in IAM policies. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html">Controlling Access with AWS Identity and Access Management</a>.</p>
+-- @param ClientRequestToken [ClientRequestToken] <p>A unique identifier for this <code>CreateStack</code> request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to create a stack with the same name. You might retry <code>CreateStack</code> requests to ensure that AWS CloudFormation successfully received them.</p>
+-- @param DisableRollback [DisableRollback] <p>Set to <code>true</code> to disable rollback of the stack if stack creation failed. You can specify either <code>DisableRollback</code> or <code>OnFailure</code>, but not both.</p> <p>Default: <code>false</code> </p>
+-- @param TemplateURL [TemplateURL] <p>Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that is located in an Amazon S3 bucket. For more information, go to the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You must specify either the <code>TemplateBody</code> or the <code>TemplateURL</code> parameter, but not both.</p>
 -- Required parameter: StackName
 function M.CreateStackInput(Tags, TemplateBody, Parameters, StackPolicyURL, RoleARN, TimeoutInMinutes, StackPolicyBody, Capabilities, OnFailure, StackName, NotificationARNs, ResourceTypes, ClientRequestToken, DisableRollback, TemplateURL, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackInput")
@@ -1592,8 +1592,8 @@ function M.AssertUpdateStackOutput(struct)
 end
 
 --- Create a structure of type UpdateStackOutput
--- &lt;p&gt;The output for an &lt;a&gt;UpdateStack&lt;/a&gt; action.&lt;/p&gt;
--- @param StackId [StackId] &lt;p&gt;Unique identifier of the stack.&lt;/p&gt;
+-- <p>The output for an <a>UpdateStack</a> action.</p>
+-- @param StackId [StackId] <p>Unique identifier of the stack.</p>
 function M.UpdateStackOutput(StackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStackOutput")
 	local t = { 
@@ -1614,7 +1614,7 @@ function M.AssertInsufficientCapabilitiesException(struct)
 end
 
 --- Create a structure of type InsufficientCapabilitiesException
--- &lt;p&gt;The template contains resources with capabilities that were not specified in the Capabilities parameter.&lt;/p&gt;
+-- <p>The template contains resources with capabilities that were not specified in the Capabilities parameter.</p>
 function M.InsufficientCapabilitiesException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientCapabilitiesException")
 	local t = { 
@@ -1636,7 +1636,7 @@ end
 
 --- Create a structure of type ListExportsInput
 --  
--- @param NextToken [NextToken] &lt;p&gt;A string (provided by the &lt;a&gt;ListExports&lt;/a&gt; response output) that identifies the next page of exported output values that you asked to retrieve.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>A string (provided by the <a>ListExports</a> response output) that identifies the next page of exported output values that you asked to retrieve.</p>
 function M.ListExportsInput(NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListExportsInput")
 	local t = { 
@@ -1667,13 +1667,13 @@ function M.AssertStackResourceSummary(struct)
 end
 
 --- Create a structure of type StackResourceSummary
--- &lt;p&gt;Contains high-level information about the specified stack resource.&lt;/p&gt;
--- @param ResourceStatus [ResourceStatus] &lt;p&gt;Current status of the resource.&lt;/p&gt;
--- @param ResourceType [ResourceType] &lt;p&gt;Type of resource. (For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html&quot;&gt; AWS Resource Types Reference&lt;/a&gt; in the AWS CloudFormation User Guide.)&lt;/p&gt;
--- @param ResourceStatusReason [ResourceStatusReason] &lt;p&gt;Success/failure message associated with the resource.&lt;/p&gt;
--- @param LastUpdatedTimestamp [Timestamp] &lt;p&gt;Time the status was updated.&lt;/p&gt;
--- @param PhysicalResourceId [PhysicalResourceId] &lt;p&gt;The name or unique identifier that corresponds to a physical instance ID of the resource.&lt;/p&gt;
--- @param LogicalResourceId [LogicalResourceId] &lt;p&gt;The logical name of the resource specified in the template.&lt;/p&gt;
+-- <p>Contains high-level information about the specified stack resource.</p>
+-- @param ResourceStatus [ResourceStatus] <p>Current status of the resource.</p>
+-- @param ResourceType [ResourceType] <p>Type of resource. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html"> AWS Resource Types Reference</a> in the AWS CloudFormation User Guide.)</p>
+-- @param ResourceStatusReason [ResourceStatusReason] <p>Success/failure message associated with the resource.</p>
+-- @param LastUpdatedTimestamp [Timestamp] <p>Time the status was updated.</p>
+-- @param PhysicalResourceId [PhysicalResourceId] <p>The name or unique identifier that corresponds to a physical instance ID of the resource.</p>
+-- @param LogicalResourceId [LogicalResourceId] <p>The logical name of the resource specified in the template.</p>
 -- Required parameter: LogicalResourceId
 -- Required parameter: ResourceType
 -- Required parameter: LastUpdatedTimestamp
@@ -1704,8 +1704,8 @@ function M.AssertCreateStackOutput(struct)
 end
 
 --- Create a structure of type CreateStackOutput
--- &lt;p&gt;The output for a &lt;a&gt;CreateStack&lt;/a&gt; action.&lt;/p&gt;
--- @param StackId [StackId] &lt;p&gt;Unique identifier of the stack.&lt;/p&gt;
+-- <p>The output for a <a>CreateStack</a> action.</p>
+-- @param StackId [StackId] <p>Unique identifier of the stack.</p>
 function M.CreateStackOutput(StackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackOutput")
 	local t = { 
@@ -1729,8 +1729,8 @@ end
 
 --- Create a structure of type ListExportsOutput
 --  
--- @param Exports [Exports] &lt;p&gt;The output for the &lt;a&gt;ListExports&lt;/a&gt; action.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If the output exceeds 100 exported output values, a string that identifies the next page of exports. If there is no additional page, this value is null.&lt;/p&gt;
+-- @param Exports [Exports] <p>The output for the <a>ListExports</a> action.</p>
+-- @param NextToken [NextToken] <p>If the output exceeds 100 exported output values, a string that identifies the next page of exports. If there is no additional page, this value is null.</p>
 function M.ListExportsOutput(Exports, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListExportsOutput")
 	local t = { 
@@ -1756,10 +1756,10 @@ function M.AssertSetStackPolicyInput(struct)
 end
 
 --- Create a structure of type SetStackPolicyInput
--- &lt;p&gt;The input for the &lt;a&gt;SetStackPolicy&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or unique stack ID that you want to associate a policy with.&lt;/p&gt;
--- @param StackPolicyBody [StackPolicyBody] &lt;p&gt;Structure containing the stack policy body. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html&quot;&gt; Prevent Updates to Stack Resources&lt;/a&gt; in the AWS CloudFormation User Guide. You can specify either the &lt;code&gt;StackPolicyBody&lt;/code&gt; or the &lt;code&gt;StackPolicyURL&lt;/code&gt; parameter, but not both.&lt;/p&gt;
--- @param StackPolicyURL [StackPolicyURL] &lt;p&gt;Location of a file containing the stack policy. The URL must point to a policy (maximum size: 16 KB) located in an S3 bucket in the same region as the stack. You can specify either the &lt;code&gt;StackPolicyBody&lt;/code&gt; or the &lt;code&gt;StackPolicyURL&lt;/code&gt; parameter, but not both.&lt;/p&gt;
+-- <p>The input for the <a>SetStackPolicy</a> action.</p>
+-- @param StackName [StackName] <p>The name or unique stack ID that you want to associate a policy with.</p>
+-- @param StackPolicyBody [StackPolicyBody] <p>Structure containing the stack policy body. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide. You can specify either the <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p>
+-- @param StackPolicyURL [StackPolicyURL] <p>Location of a file containing the stack policy. The URL must point to a policy (maximum size: 16 KB) located in an S3 bucket in the same region as the stack. You can specify either the <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p>
 -- Required parameter: StackName
 function M.SetStackPolicyInput(StackName, StackPolicyBody, StackPolicyURL, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetStackPolicyInput")
@@ -1788,11 +1788,11 @@ function M.AssertContinueUpdateRollbackInput(struct)
 end
 
 --- Create a structure of type ContinueUpdateRollbackInput
--- &lt;p&gt;The input for the &lt;a&gt;ContinueUpdateRollback&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackNameOrId] &lt;p&gt;The name or the unique ID of the stack that you want to continue rolling back.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Don't specify the name of a nested stack (a stack that was created by using the &lt;code&gt;AWS::CloudFormation::Stack&lt;/code&gt; resource). Instead, use this operation on the parent stack (the stack that contains the &lt;code&gt;AWS::CloudFormation::Stack&lt;/code&gt; resource).&lt;/p&gt; &lt;/note&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to roll back the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.&lt;/p&gt; &lt;p&gt;If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.&lt;/p&gt;
--- @param ClientRequestToken [ClientRequestToken] &lt;p&gt;A unique identifier for this &lt;code&gt;ContinueUpdateRollback&lt;/code&gt; request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to continue the rollback to a stack with the same name. You might retry &lt;code&gt;ContinueUpdateRollback&lt;/code&gt; requests to ensure that AWS CloudFormation successfully received them.&lt;/p&gt;
--- @param ResourcesToSkip [ResourcesToSkip] &lt;p&gt;A list of the logical IDs of the resources that AWS CloudFormation skips during the continue update rollback operation. You can specify only resources that are in the &lt;code&gt;UPDATE_FAILED&lt;/code&gt; state because a rollback failed. You can't specify resources that are in the &lt;code&gt;UPDATE_FAILED&lt;/code&gt; state for other reasons, for example, because an update was canceled. To check why a resource update failed, use the &lt;a&gt;DescribeStackResources&lt;/a&gt; action, and view the resource status reason. &lt;/p&gt; &lt;important&gt; &lt;p&gt;Specify this property to skip rolling back resources that AWS CloudFormation can't successfully roll back. We recommend that you &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed&quot;&gt; troubleshoot&lt;/a&gt; resources before skipping them. AWS CloudFormation sets the status of the specified resources to &lt;code&gt;UPDATE_COMPLETE&lt;/code&gt; and continues to roll back the stack. After the rollback is complete, the state of the skipped resources will be inconsistent with the state of the resources in the stack template. Before performing another stack update, you must update the stack or resources to be consistent with each other. If you don't, subsequent stack updates might fail, and the stack will become unrecoverable. &lt;/p&gt; &lt;/important&gt; &lt;p&gt;Specify the minimum number of resources required to successfully roll back your stack. For example, a failed resource update might cause dependent resources to fail. In this case, it might not be necessary to skip the dependent resources. &lt;/p&gt; &lt;p&gt;To specify resources in a nested stack, use the following format: &lt;code&gt;NestedStackName.ResourceLogicalID&lt;/code&gt;. If the &lt;code&gt;ResourceLogicalID&lt;/code&gt; is a stack resource (&lt;code&gt;Type: AWS::CloudFormation::Stack&lt;/code&gt;), it must be in one of the following states: &lt;code&gt;DELETE_IN_PROGRESS&lt;/code&gt;, &lt;code&gt;DELETE_COMPLETE&lt;/code&gt;, or &lt;code&gt;DELETE_FAILED&lt;/code&gt;. &lt;/p&gt;
+-- <p>The input for the <a>ContinueUpdateRollback</a> action.</p>
+-- @param StackName [StackNameOrId] <p>The name or the unique ID of the stack that you want to continue rolling back.</p> <note> <p>Don't specify the name of a nested stack (a stack that was created by using the <code>AWS::CloudFormation::Stack</code> resource). Instead, use this operation on the parent stack (the stack that contains the <code>AWS::CloudFormation::Stack</code> resource).</p> </note>
+-- @param RoleARN [RoleARN] <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that AWS CloudFormation assumes to roll back the stack. AWS CloudFormation uses the role's credentials to make calls on your behalf. AWS CloudFormation always uses this role for all future operations on the stack. As long as users have permission to operate on the stack, AWS CloudFormation uses this role even if the users don't have permission to pass it. Ensure that the role grants least privilege.</p> <p>If you don't specify a value, AWS CloudFormation uses the role that was previously associated with the stack. If no role is available, AWS CloudFormation uses a temporary session that is generated from your user credentials.</p>
+-- @param ClientRequestToken [ClientRequestToken] <p>A unique identifier for this <code>ContinueUpdateRollback</code> request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to continue the rollback to a stack with the same name. You might retry <code>ContinueUpdateRollback</code> requests to ensure that AWS CloudFormation successfully received them.</p>
+-- @param ResourcesToSkip [ResourcesToSkip] <p>A list of the logical IDs of the resources that AWS CloudFormation skips during the continue update rollback operation. You can specify only resources that are in the <code>UPDATE_FAILED</code> state because a rollback failed. You can't specify resources that are in the <code>UPDATE_FAILED</code> state for other reasons, for example, because an update was canceled. To check why a resource update failed, use the <a>DescribeStackResources</a> action, and view the resource status reason. </p> <important> <p>Specify this property to skip rolling back resources that AWS CloudFormation can't successfully roll back. We recommend that you <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed"> troubleshoot</a> resources before skipping them. AWS CloudFormation sets the status of the specified resources to <code>UPDATE_COMPLETE</code> and continues to roll back the stack. After the rollback is complete, the state of the skipped resources will be inconsistent with the state of the resources in the stack template. Before performing another stack update, you must update the stack or resources to be consistent with each other. If you don't, subsequent stack updates might fail, and the stack will become unrecoverable. </p> </important> <p>Specify the minimum number of resources required to successfully roll back your stack. For example, a failed resource update might cause dependent resources to fail. In this case, it might not be necessary to skip the dependent resources. </p> <p>To specify resources in a nested stack, use the following format: <code>NestedStackName.ResourceLogicalID</code>. If the <code>ResourceLogicalID</code> is a stack resource (<code>Type: AWS::CloudFormation::Stack</code>), it must be in one of the following states: <code>DELETE_IN_PROGRESS</code>, <code>DELETE_COMPLETE</code>, or <code>DELETE_FAILED</code>. </p>
 -- Required parameter: StackName
 function M.ContinueUpdateRollbackInput(StackName, RoleARN, ClientRequestToken, ResourcesToSkip, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ContinueUpdateRollbackInput")
@@ -1819,9 +1819,9 @@ function M.AssertDescribeStackEventsInput(struct)
 end
 
 --- Create a structure of type DescribeStackEventsInput
--- &lt;p&gt;The input for &lt;a&gt;DescribeStackEvents&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or the unique stack ID that is associated with the stack, which are not always interchangeable:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Running stacks: You can specify either the stack's name or its unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Deleted stacks: You must specify the unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: There is no default value.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A string that identifies the next page of events that you want to retrieve.&lt;/p&gt;
+-- <p>The input for <a>DescribeStackEvents</a> action.</p>
+-- @param StackName [StackName] <p>The name or the unique stack ID that is associated with the stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks: You can specify either the stack's name or its unique stack ID.</p> </li> <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li> </ul> <p>Default: There is no default value.</p>
+-- @param NextToken [NextToken] <p>A string that identifies the next page of events that you want to retrieve.</p>
 function M.DescribeStackEventsInput(StackName, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackEventsInput")
 	local t = { 
@@ -1844,8 +1844,8 @@ function M.AssertDescribeStackResourcesOutput(struct)
 end
 
 --- Create a structure of type DescribeStackResourcesOutput
--- &lt;p&gt;The output for a &lt;a&gt;DescribeStackResources&lt;/a&gt; action.&lt;/p&gt;
--- @param StackResources [StackResources] &lt;p&gt;A list of &lt;code&gt;StackResource&lt;/code&gt; structures.&lt;/p&gt;
+-- <p>The output for a <a>DescribeStackResources</a> action.</p>
+-- @param StackResources [StackResources] <p>A list of <code>StackResource</code> structures.</p>
 function M.DescribeStackResourcesOutput(StackResources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackResourcesOutput")
 	local t = { 
@@ -1870,9 +1870,9 @@ function M.AssertDescribeStackResourceInput(struct)
 end
 
 --- Create a structure of type DescribeStackResourceInput
--- &lt;p&gt;The input for &lt;a&gt;DescribeStackResource&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or the unique stack ID that is associated with the stack, which are not always interchangeable:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Running stacks: You can specify either the stack's name or its unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Deleted stacks: You must specify the unique stack ID.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: There is no default value.&lt;/p&gt;
--- @param LogicalResourceId [LogicalResourceId] &lt;p&gt;The logical name of the resource as specified in the template.&lt;/p&gt; &lt;p&gt;Default: There is no default value.&lt;/p&gt;
+-- <p>The input for <a>DescribeStackResource</a> action.</p>
+-- @param StackName [StackName] <p>The name or the unique stack ID that is associated with the stack, which are not always interchangeable:</p> <ul> <li> <p>Running stacks: You can specify either the stack's name or its unique stack ID.</p> </li> <li> <p>Deleted stacks: You must specify the unique stack ID.</p> </li> </ul> <p>Default: There is no default value.</p>
+-- @param LogicalResourceId [LogicalResourceId] <p>The logical name of the resource as specified in the template.</p> <p>Default: There is no default value.</p>
 -- Required parameter: StackName
 -- Required parameter: LogicalResourceId
 function M.DescribeStackResourceInput(StackName, LogicalResourceId, ...)
@@ -1899,9 +1899,9 @@ function M.AssertCancelUpdateStackInput(struct)
 end
 
 --- Create a structure of type CancelUpdateStackInput
--- &lt;p&gt;The input for the &lt;a&gt;CancelUpdateStack&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name or the unique stack ID that is associated with the stack.&lt;/p&gt;
--- @param ClientRequestToken [ClientRequestToken] &lt;p&gt;A unique identifier for this &lt;code&gt;CancelUpdateStack&lt;/code&gt; request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to cancel an update on a stack with the same name. You might retry &lt;code&gt;CancelUpdateStack&lt;/code&gt; requests to ensure that AWS CloudFormation successfully received them.&lt;/p&gt;
+-- <p>The input for the <a>CancelUpdateStack</a> action.</p>
+-- @param StackName [StackName] <p>The name or the unique stack ID that is associated with the stack.</p>
+-- @param ClientRequestToken [ClientRequestToken] <p>A unique identifier for this <code>CancelUpdateStack</code> request. Specify this token if you plan to retry requests so that AWS CloudFormation knows that you're not attempting to cancel an update on a stack with the same name. You might retry <code>CancelUpdateStack</code> requests to ensure that AWS CloudFormation successfully received them.</p>
 -- Required parameter: StackName
 function M.CancelUpdateStackInput(StackName, ClientRequestToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelUpdateStackInput")
@@ -1927,10 +1927,10 @@ function M.AssertEstimateTemplateCostInput(struct)
 end
 
 --- Create a structure of type EstimateTemplateCostInput
--- &lt;p&gt;The input for an &lt;a&gt;EstimateTemplateCost&lt;/a&gt; action.&lt;/p&gt;
--- @param TemplateURL [TemplateURL] &lt;p&gt;Location of file containing the template body. The URL must point to a template that is located in an Amazon S3 bucket. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.&lt;/p&gt; &lt;p&gt;Conditional: You must pass &lt;code&gt;TemplateURL&lt;/code&gt; or &lt;code&gt;TemplateBody&lt;/code&gt;. If both are passed, only &lt;code&gt;TemplateBody&lt;/code&gt; is used.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;A list of &lt;code&gt;Parameter&lt;/code&gt; structures that specify input parameters.&lt;/p&gt;
--- @param TemplateBody [TemplateBody] &lt;p&gt;Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. (For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.)&lt;/p&gt; &lt;p&gt;Conditional: You must pass &lt;code&gt;TemplateBody&lt;/code&gt; or &lt;code&gt;TemplateURL&lt;/code&gt;. If both are passed, only &lt;code&gt;TemplateBody&lt;/code&gt; is used.&lt;/p&gt;
+-- <p>The input for an <a>EstimateTemplateCost</a> action.</p>
+-- @param TemplateURL [TemplateURL] <p>Location of file containing the template body. The URL must point to a template that is located in an Amazon S3 bucket. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You must pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both are passed, only <code>TemplateBody</code> is used.</p>
+-- @param Parameters [Parameters] <p>A list of <code>Parameter</code> structures that specify input parameters.</p>
+-- @param TemplateBody [TemplateBody] <p>Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.)</p> <p>Conditional: You must pass <code>TemplateBody</code> or <code>TemplateURL</code>. If both are passed, only <code>TemplateBody</code> is used.</p>
 function M.EstimateTemplateCostInput(TemplateURL, Parameters, TemplateBody, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EstimateTemplateCostInput")
 	local t = { 
@@ -1953,7 +1953,7 @@ function M.AssertDeleteChangeSetOutput(struct)
 end
 
 --- Create a structure of type DeleteChangeSetOutput
--- &lt;p&gt;The output for the &lt;a&gt;DeleteChangeSet&lt;/a&gt; action.&lt;/p&gt;
+-- <p>The output for the <a>DeleteChangeSet</a> action.</p>
 function M.DeleteChangeSetOutput(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteChangeSetOutput")
 	local t = { 
@@ -1975,9 +1975,9 @@ function M.AssertAccountLimit(struct)
 end
 
 --- Create a structure of type AccountLimit
--- &lt;p&gt;The AccountLimit data type.&lt;/p&gt;
--- @param Name [LimitName] &lt;p&gt;The name of the account limit. Currently, the only account limit is &lt;code&gt;StackLimit&lt;/code&gt;.&lt;/p&gt;
--- @param Value [LimitValue] &lt;p&gt;The value that is associated with the account limit name.&lt;/p&gt;
+-- <p>The AccountLimit data type.</p>
+-- @param Name [LimitName] <p>The name of the account limit. Currently, the only account limit is <code>StackLimit</code>.</p>
+-- @param Value [LimitValue] <p>The value that is associated with the account limit name.</p>
 function M.AccountLimit(Name, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountLimit")
 	local t = { 
@@ -1999,7 +1999,7 @@ function M.AssertInvalidChangeSetStatusException(struct)
 end
 
 --- Create a structure of type InvalidChangeSetStatusException
--- &lt;p&gt;The specified change set cannot be used to update the stack. For example, the change set status might be &lt;code&gt;CREATE_IN_PROGRESS&lt;/code&gt; or the stack status might be &lt;code&gt;UPDATE_IN_PROGRESS&lt;/code&gt;.&lt;/p&gt;
+-- <p>The specified change set cannot be used to update the stack. For example, the change set status might be <code>CREATE_IN_PROGRESS</code> or the stack status might be <code>UPDATE_IN_PROGRESS</code>.</p>
 function M.InvalidChangeSetStatusException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidChangeSetStatusException")
 	local t = { 
@@ -2021,9 +2021,9 @@ function M.AssertListStacksInput(struct)
 end
 
 --- Create a structure of type ListStacksInput
--- &lt;p&gt;The input for &lt;a&gt;ListStacks&lt;/a&gt; action.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A string that identifies the next page of stacks that you want to retrieve.&lt;/p&gt;
--- @param StackStatusFilter [StackStatusFilter] &lt;p&gt;Stack status to use as a filter. Specify one or more stack status codes to list only stacks with the specified status codes. For a complete list of stack status codes, see the &lt;code&gt;StackStatus&lt;/code&gt; parameter of the &lt;a&gt;Stack&lt;/a&gt; data type.&lt;/p&gt;
+-- <p>The input for <a>ListStacks</a> action.</p>
+-- @param NextToken [NextToken] <p>A string that identifies the next page of stacks that you want to retrieve.</p>
+-- @param StackStatusFilter [StackStatusFilter] <p>Stack status to use as a filter. Specify one or more stack status codes to list only stacks with the specified status codes. For a complete list of stack status codes, see the <code>StackStatus</code> parameter of the <a>Stack</a> data type.</p>
 function M.ListStacksInput(NextToken, StackStatusFilter, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStacksInput")
 	local t = { 
@@ -2047,9 +2047,9 @@ function M.AssertDescribeStacksOutput(struct)
 end
 
 --- Create a structure of type DescribeStacksOutput
--- &lt;p&gt;The output for a &lt;a&gt;DescribeStacks&lt;/a&gt; action.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no additional page exists, this value is null.&lt;/p&gt;
--- @param Stacks [Stacks] &lt;p&gt;A list of stack structures.&lt;/p&gt;
+-- <p>The output for a <a>DescribeStacks</a> action.</p>
+-- @param NextToken [NextToken] <p>If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no additional page exists, this value is null.</p>
+-- @param Stacks [Stacks] <p>A list of stack structures.</p>
 function M.DescribeStacksOutput(NextToken, Stacks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksOutput")
 	local t = { 
@@ -2073,9 +2073,9 @@ function M.AssertCreateChangeSetOutput(struct)
 end
 
 --- Create a structure of type CreateChangeSetOutput
--- &lt;p&gt;The output for the &lt;a&gt;CreateChangeSet&lt;/a&gt; action.&lt;/p&gt;
--- @param StackId [StackId] &lt;p&gt;The unique ID of the stack.&lt;/p&gt;
--- @param Id [ChangeSetId] &lt;p&gt;The Amazon Resource Name (ARN) of the change set.&lt;/p&gt;
+-- <p>The output for the <a>CreateChangeSet</a> action.</p>
+-- @param StackId [StackId] <p>The unique ID of the stack.</p>
+-- @param Id [ChangeSetId] <p>The Amazon Resource Name (ARN) of the change set.</p>
 function M.CreateChangeSetOutput(StackId, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateChangeSetOutput")
 	local t = { 
@@ -2105,11 +2105,11 @@ function M.AssertSignalResourceInput(struct)
 end
 
 --- Create a structure of type SignalResourceInput
--- &lt;p&gt;The input for the &lt;a&gt;SignalResource&lt;/a&gt; action.&lt;/p&gt;
--- @param StackName [StackNameOrId] &lt;p&gt;The stack name or unique stack ID that includes the resource that you want to signal.&lt;/p&gt;
--- @param Status [ResourceSignalStatus] &lt;p&gt;The status of the signal, which is either success or failure. A failure signal causes AWS CloudFormation to immediately fail the stack creation or update.&lt;/p&gt;
--- @param UniqueId [ResourceSignalUniqueId] &lt;p&gt;A unique ID of the signal. When you signal Amazon EC2 instances or Auto Scaling groups, specify the instance ID that you are signaling as the unique ID. If you send multiple signals to a single resource (such as signaling a wait condition), each signal requires a different unique ID.&lt;/p&gt;
--- @param LogicalResourceId [LogicalResourceId] &lt;p&gt;The logical ID of the resource that you want to signal. The logical ID is the name of the resource that given in the template.&lt;/p&gt;
+-- <p>The input for the <a>SignalResource</a> action.</p>
+-- @param StackName [StackNameOrId] <p>The stack name or unique stack ID that includes the resource that you want to signal.</p>
+-- @param Status [ResourceSignalStatus] <p>The status of the signal, which is either success or failure. A failure signal causes AWS CloudFormation to immediately fail the stack creation or update.</p>
+-- @param UniqueId [ResourceSignalUniqueId] <p>A unique ID of the signal. When you signal Amazon EC2 instances or Auto Scaling groups, specify the instance ID that you are signaling as the unique ID. If you send multiple signals to a single resource (such as signaling a wait condition), each signal requires a different unique ID.</p>
+-- @param LogicalResourceId [LogicalResourceId] <p>The logical ID of the resource that you want to signal. The logical ID is the name of the resource that given in the template.</p>
 -- Required parameter: StackName
 -- Required parameter: LogicalResourceId
 -- Required parameter: UniqueId
@@ -2140,10 +2140,10 @@ function M.AssertExport(struct)
 end
 
 --- Create a structure of type Export
--- &lt;p&gt;The &lt;code&gt;Export&lt;/code&gt; structure describes the exported output values for a stack.&lt;/p&gt;
--- @param ExportingStackId [StackId] &lt;p&gt;The stack that contains the exported output name and value.&lt;/p&gt;
--- @param Value [ExportValue] &lt;p&gt;The value of the exported output, such as a resource physical ID. This value is defined in the &lt;code&gt;Export&lt;/code&gt; field in the associated stack's &lt;code&gt;Outputs&lt;/code&gt; section.&lt;/p&gt;
--- @param Name [ExportName] &lt;p&gt;The name of exported output value. Use this name and the &lt;code&gt;Fn::ImportValue&lt;/code&gt; function to import the associated value into other stacks. The name is defined in the &lt;code&gt;Export&lt;/code&gt; field in the associated stack's &lt;code&gt;Outputs&lt;/code&gt; section.&lt;/p&gt;
+-- <p>The <code>Export</code> structure describes the exported output values for a stack.</p>
+-- @param ExportingStackId [StackId] <p>The stack that contains the exported output name and value.</p>
+-- @param Value [ExportValue] <p>The value of the exported output, such as a resource physical ID. This value is defined in the <code>Export</code> field in the associated stack's <code>Outputs</code> section.</p>
+-- @param Name [ExportName] <p>The name of exported output value. Use this name and the <code>Fn::ImportValue</code> function to import the associated value into other stacks. The name is defined in the <code>Export</code> field in the associated stack's <code>Outputs</code> section.</p>
 function M.Export(ExportingStackId, Value, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Export")
 	local t = { 
@@ -2185,23 +2185,23 @@ function M.AssertStack(struct)
 end
 
 --- Create a structure of type Stack
--- &lt;p&gt;The Stack data type.&lt;/p&gt;
--- @param StackId [StackId] &lt;p&gt;Unique identifier of the stack.&lt;/p&gt;
--- @param TimeoutInMinutes [TimeoutMinutes] &lt;p&gt;The amount of time within which stack creation should complete.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;A user-defined description associated with the stack.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;A list of &lt;code&gt;Parameter&lt;/code&gt; structures.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;A list of &lt;code&gt;Tag&lt;/code&gt;s that specify information about the stack.&lt;/p&gt;
--- @param Outputs [Outputs] &lt;p&gt;A list of output structures.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that is associated with the stack. During a stack operation, AWS CloudFormation uses this role's credentials to make calls on your behalf.&lt;/p&gt;
--- @param StackStatusReason [StackStatusReason] &lt;p&gt;Success/failure message associated with the stack status.&lt;/p&gt;
--- @param CreationTime [CreationTime] &lt;p&gt;The time at which the stack was created.&lt;/p&gt;
--- @param Capabilities [Capabilities] &lt;p&gt;The capabilities allowed in the stack.&lt;/p&gt;
--- @param StackName [StackName] &lt;p&gt;The name associated with the stack.&lt;/p&gt;
--- @param NotificationARNs [NotificationARNs] &lt;p&gt;SNS topic ARNs to which stack related events are published.&lt;/p&gt;
--- @param StackStatus [StackStatus] &lt;p&gt;Current status of the stack.&lt;/p&gt;
--- @param DisableRollback [DisableRollback] &lt;p&gt;Boolean to enable or disable rollback on stack creation failures:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;true&lt;/code&gt;: disable rollback&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;false&lt;/code&gt;: enable rollback&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ChangeSetId [ChangeSetId] &lt;p&gt;The unique ID of the change set.&lt;/p&gt;
--- @param LastUpdatedTime [LastUpdatedTime] &lt;p&gt;The time the stack was last updated. This field will only be returned if the stack has been updated at least once.&lt;/p&gt;
+-- <p>The Stack data type.</p>
+-- @param StackId [StackId] <p>Unique identifier of the stack.</p>
+-- @param TimeoutInMinutes [TimeoutMinutes] <p>The amount of time within which stack creation should complete.</p>
+-- @param Description [Description] <p>A user-defined description associated with the stack.</p>
+-- @param Parameters [Parameters] <p>A list of <code>Parameter</code> structures.</p>
+-- @param Tags [Tags] <p>A list of <code>Tag</code>s that specify information about the stack.</p>
+-- @param Outputs [Outputs] <p>A list of output structures.</p>
+-- @param RoleARN [RoleARN] <p>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that is associated with the stack. During a stack operation, AWS CloudFormation uses this role's credentials to make calls on your behalf.</p>
+-- @param StackStatusReason [StackStatusReason] <p>Success/failure message associated with the stack status.</p>
+-- @param CreationTime [CreationTime] <p>The time at which the stack was created.</p>
+-- @param Capabilities [Capabilities] <p>The capabilities allowed in the stack.</p>
+-- @param StackName [StackName] <p>The name associated with the stack.</p>
+-- @param NotificationARNs [NotificationARNs] <p>SNS topic ARNs to which stack related events are published.</p>
+-- @param StackStatus [StackStatus] <p>Current status of the stack.</p>
+-- @param DisableRollback [DisableRollback] <p>Boolean to enable or disable rollback on stack creation failures:</p> <ul> <li> <p> <code>true</code>: disable rollback</p> </li> <li> <p> <code>false</code>: enable rollback</p> </li> </ul>
+-- @param ChangeSetId [ChangeSetId] <p>The unique ID of the change set.</p>
+-- @param LastUpdatedTime [LastUpdatedTime] <p>The time the stack was last updated. This field will only be returned if the stack has been updated at least once.</p>
 -- Required parameter: StackName
 -- Required parameter: CreationTime
 -- Required parameter: StackStatus
@@ -2240,7 +2240,7 @@ function M.AssertChangeSetNotFoundException(struct)
 end
 
 --- Create a structure of type ChangeSetNotFoundException
--- &lt;p&gt;The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the &lt;code&gt;ListChangeSets&lt;/code&gt; action.&lt;/p&gt;
+-- <p>The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the <code>ListChangeSets</code> action.</p>
 function M.ChangeSetNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ChangeSetNotFoundException")
 	local t = { 
@@ -2263,10 +2263,10 @@ function M.AssertOutput(struct)
 end
 
 --- Create a structure of type Output
--- &lt;p&gt;The Output data type.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;User defined description associated with the output.&lt;/p&gt;
--- @param OutputKey [OutputKey] &lt;p&gt;The key associated with the output.&lt;/p&gt;
--- @param OutputValue [OutputValue] &lt;p&gt;The value associated with the output.&lt;/p&gt;
+-- <p>The Output data type.</p>
+-- @param Description [Description] <p>User defined description associated with the output.</p>
+-- @param OutputKey [OutputKey] <p>The key associated with the output.</p>
+-- @param OutputValue [OutputValue] <p>The value associated with the output.</p>
 function M.Output(Description, OutputKey, OutputValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Output")
 	local t = { 
@@ -2290,8 +2290,8 @@ function M.AssertEstimateTemplateCostOutput(struct)
 end
 
 --- Create a structure of type EstimateTemplateCostOutput
--- &lt;p&gt;The output for a &lt;a&gt;EstimateTemplateCost&lt;/a&gt; action.&lt;/p&gt;
--- @param Url [Url] &lt;p&gt;An AWS Simple Monthly Calculator URL with a query string that describes the resources required to run the template.&lt;/p&gt;
+-- <p>The output for a <a>EstimateTemplateCost</a> action.</p>
+-- @param Url [Url] <p>An AWS Simple Monthly Calculator URL with a query string that describes the resources required to run the template.</p>
 function M.EstimateTemplateCostOutput(Url, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EstimateTemplateCostOutput")
 	local t = { 
@@ -2314,9 +2314,9 @@ function M.AssertGetTemplateOutput(struct)
 end
 
 --- Create a structure of type GetTemplateOutput
--- &lt;p&gt;The output for &lt;a&gt;GetTemplate&lt;/a&gt; action.&lt;/p&gt;
--- @param StagesAvailable [StageList] &lt;p&gt;The stage of the template that you can retrieve. For stacks, the &lt;code&gt;Original&lt;/code&gt; and &lt;code&gt;Processed&lt;/code&gt; templates are always available. For change sets, the &lt;code&gt;Original&lt;/code&gt; template is always available. After AWS CloudFormation finishes creating the change set, the &lt;code&gt;Processed&lt;/code&gt; template becomes available.&lt;/p&gt;
--- @param TemplateBody [TemplateBody] &lt;p&gt;Structure containing the template body. (For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html&quot;&gt;Template Anatomy&lt;/a&gt; in the AWS CloudFormation User Guide.)&lt;/p&gt; &lt;p&gt;AWS CloudFormation returns the same template that was used when the stack was created.&lt;/p&gt;
+-- <p>The output for <a>GetTemplate</a> action.</p>
+-- @param StagesAvailable [StageList] <p>The stage of the template that you can retrieve. For stacks, the <code>Original</code> and <code>Processed</code> templates are always available. For change sets, the <code>Original</code> template is always available. After AWS CloudFormation finishes creating the change set, the <code>Processed</code> template becomes available.</p>
+-- @param TemplateBody [TemplateBody] <p>Structure containing the template body. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.)</p> <p>AWS CloudFormation returns the same template that was used when the stack was created.</p>
 function M.GetTemplateOutput(StagesAvailable, TemplateBody, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTemplateOutput")
 	local t = { 
@@ -2340,9 +2340,9 @@ function M.AssertListChangeSetsOutput(struct)
 end
 
 --- Create a structure of type ListChangeSetsOutput
--- &lt;p&gt;The output for the &lt;a&gt;ListChangeSets&lt;/a&gt; action.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If the output exceeds 1 MB, a string that identifies the next page of change sets. If there is no additional page, this value is null.&lt;/p&gt;
--- @param Summaries [ChangeSetSummaries] &lt;p&gt;A list of &lt;code&gt;ChangeSetSummary&lt;/code&gt; structures that provides the ID and status of each change set for the specified stack.&lt;/p&gt;
+-- <p>The output for the <a>ListChangeSets</a> action.</p>
+-- @param NextToken [NextToken] <p>If the output exceeds 1 MB, a string that identifies the next page of change sets. If there is no additional page, this value is null.</p>
+-- @param Summaries [ChangeSetSummaries] <p>A list of <code>ChangeSetSummary</code> structures that provides the ID and status of each change set for the specified stack.</p>
 function M.ListChangeSetsOutput(NextToken, Summaries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListChangeSetsOutput")
 	local t = { 

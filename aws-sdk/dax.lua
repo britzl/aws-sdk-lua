@@ -29,7 +29,7 @@ function M.AssertClusterNotFoundFault(struct)
 end
 
 --- Create a structure of type ClusterNotFoundFault
--- &lt;p&gt;The requested cluster ID does not refer to an existing DAX cluster.&lt;/p&gt;
+-- <p>The requested cluster ID does not refer to an existing DAX cluster.</p>
 function M.ClusterNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterNotFoundFault")
 	local t = { 
@@ -52,8 +52,8 @@ end
 
 --- Create a structure of type DescribeParametersResponse
 --  
--- @param NextToken [String] &lt;p&gt;Provides an identifier to allow retrieval of paginated results.&lt;/p&gt;
--- @param Parameters [ParameterList] &lt;p&gt;A list of parameters within a parameter group. Each element in the list represents one parameter.&lt;/p&gt;
+-- @param NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- @param Parameters [ParameterList] <p>A list of parameters within a parameter group. Each element in the list represents one parameter.</p>
 function M.DescribeParametersResponse(NextToken, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParametersResponse")
 	local t = { 
@@ -79,8 +79,8 @@ end
 
 --- Create a structure of type ListTagsRequest
 --  
--- @param ResourceName [String] &lt;p&gt;The name of the DAX resource to which the tags belong.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token.&lt;/p&gt;
+-- @param ResourceName [String] <p>The name of the DAX resource to which the tags belong.</p>
+-- @param NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token.</p>
 -- Required parameter: ResourceName
 function M.ListTagsRequest(ResourceName, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsRequest")
@@ -108,8 +108,8 @@ end
 
 --- Create a structure of type UpdateParameterGroupRequest
 --  
--- @param ParameterGroupName [String] &lt;p&gt;The name of the parameter group.&lt;/p&gt;
--- @param ParameterNameValues [ParameterNameValueList] &lt;p&gt;An array of name-value pairs for the parameters in the group. Each element in the array represents a single parameter.&lt;/p&gt;
+-- @param ParameterGroupName [String] <p>The name of the parameter group.</p>
+-- @param ParameterNameValues [ParameterNameValueList] <p>An array of name-value pairs for the parameters in the group. Each element in the array represents a single parameter.</p>
 -- Required parameter: ParameterGroupName
 -- Required parameter: ParameterNameValues
 function M.UpdateParameterGroupRequest(ParameterGroupName, ParameterNameValues, ...)
@@ -135,7 +135,7 @@ end
 
 --- Create a structure of type DeleteClusterResponse
 --  
--- @param Cluster [Cluster] &lt;p&gt;A description of the DAX cluster that is being deleted.&lt;/p&gt;
+-- @param Cluster [Cluster] <p>A description of the DAX cluster that is being deleted.</p>
 function M.DeleteClusterResponse(Cluster, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterResponse")
 	local t = { 
@@ -158,7 +158,7 @@ end
 
 --- Create a structure of type DeleteParameterGroupResponse
 --  
--- @param DeletionMessage [String] &lt;p&gt;A user-specified message for this action (i.e., a reason for deleting the parameter group).&lt;/p&gt;
+-- @param DeletionMessage [String] <p>A user-specified message for this action (i.e., a reason for deleting the parameter group).</p>
 function M.DeleteParameterGroupResponse(DeletionMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParameterGroupResponse")
 	local t = { 
@@ -179,7 +179,7 @@ function M.AssertInvalidClusterStateFault(struct)
 end
 
 --- Create a structure of type InvalidClusterStateFault
--- &lt;p&gt;The requested DAX cluster is not in the &lt;i&gt;available&lt;/i&gt; state.&lt;/p&gt;
+-- <p>The requested DAX cluster is not in the <i>available</i> state.</p>
 function M.InvalidClusterStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidClusterStateFault")
 	local t = { 
@@ -201,7 +201,7 @@ end
 
 --- Create a structure of type IncreaseReplicationFactorResponse
 --  
--- @param Cluster [Cluster] &lt;p&gt;A description of the DAX cluster. with its new replication factor.&lt;/p&gt;
+-- @param Cluster [Cluster] <p>A description of the DAX cluster. with its new replication factor.</p>
 function M.IncreaseReplicationFactorResponse(Cluster, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IncreaseReplicationFactorResponse")
 	local t = { 
@@ -225,7 +225,7 @@ end
 
 --- Create a structure of type DeleteParameterGroupRequest
 --  
--- @param ParameterGroupName [String] &lt;p&gt;The name of the parameter group to delete.&lt;/p&gt;
+-- @param ParameterGroupName [String] <p>The name of the parameter group to delete.</p>
 -- Required parameter: ParameterGroupName
 function M.DeleteParameterGroupRequest(ParameterGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParameterGroupRequest")
@@ -249,9 +249,9 @@ function M.AssertParameterGroup(struct)
 end
 
 --- Create a structure of type ParameterGroup
--- &lt;p&gt;A named set of parameters that are applied to all of the nodes in a DAX cluster.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of the parameter group.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description of the parameter group.&lt;/p&gt;
+-- <p>A named set of parameters that are applied to all of the nodes in a DAX cluster.</p>
+-- @param ParameterGroupName [String] <p>The name of the parameter group.</p>
+-- @param Description [String] <p>A description of the parameter group.</p>
 function M.ParameterGroup(ParameterGroupName, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterGroup")
 	local t = { 
@@ -273,7 +273,7 @@ function M.AssertInsufficientClusterCapacityFault(struct)
 end
 
 --- Create a structure of type InsufficientClusterCapacityFault
--- &lt;p&gt;There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster). &lt;/p&gt;
+-- <p>There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster). </p>
 function M.InsufficientClusterCapacityFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientClusterCapacityFault")
 	local t = { 
@@ -296,7 +296,7 @@ end
 
 --- Create a structure of type DeleteClusterRequest
 --  
--- @param ClusterName [String] &lt;p&gt;The name of the cluster to be deleted.&lt;/p&gt;
+-- @param ClusterName [String] <p>The name of the cluster to be deleted.</p>
 -- Required parameter: ClusterName
 function M.DeleteClusterRequest(ClusterName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterRequest")
@@ -318,7 +318,7 @@ function M.AssertInvalidParameterGroupStateFault(struct)
 end
 
 --- Create a structure of type InvalidParameterGroupStateFault
--- &lt;p&gt;One or more parameters in a parameter group are in an invalid state.&lt;/p&gt;
+-- <p>One or more parameters in a parameter group are in an invalid state.</p>
 function M.InvalidParameterGroupStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterGroupStateFault")
 	local t = { 
@@ -340,7 +340,7 @@ end
 
 --- Create a structure of type DeleteSubnetGroupResponse
 --  
--- @param DeletionMessage [String] &lt;p&gt;A user-specified message for this action (i.e., a reason for deleting the subnet group).&lt;/p&gt;
+-- @param DeletionMessage [String] <p>A user-specified message for this action (i.e., a reason for deleting the subnet group).</p>
 function M.DeleteSubnetGroupResponse(DeletionMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubnetGroupResponse")
 	local t = { 
@@ -363,7 +363,7 @@ end
 
 --- Create a structure of type CreateSubnetGroupResponse
 --  
--- @param SubnetGroup [SubnetGroup] &lt;p&gt;Represents the output of a &lt;i&gt;CreateSubnetGroup&lt;/i&gt; operation.&lt;/p&gt;
+-- @param SubnetGroup [SubnetGroup] <p>Represents the output of a <i>CreateSubnetGroup</i> operation.</p>
 function M.CreateSubnetGroupResponse(SubnetGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubnetGroupResponse")
 	local t = { 
@@ -387,8 +387,8 @@ end
 
 --- Create a structure of type DescribeDefaultParametersRequest
 --  
--- @param NextToken [String] &lt;p&gt;An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by &lt;code&gt;MaxResults&lt;/code&gt;.&lt;/p&gt;
--- @param MaxResults [IntegerOptional] &lt;p&gt;The maximum number of results to include in the response. If more results exist than the specified &lt;code&gt;MaxResults&lt;/code&gt; value, a token is included in the response so that the remaining results can be retrieved.&lt;/p&gt; &lt;p&gt;The value for &lt;code&gt;MaxResults&lt;/code&gt; must be between 20 and 100.&lt;/p&gt;
+-- @param NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- @param MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
 function M.DescribeDefaultParametersRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDefaultParametersRequest")
 	local t = { 
@@ -414,9 +414,9 @@ end
 
 --- Create a structure of type DescribeSubnetGroupsRequest
 --  
--- @param NextToken [String] &lt;p&gt;An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by &lt;code&gt;MaxResults&lt;/code&gt;.&lt;/p&gt;
--- @param SubnetGroupNames [SubnetGroupNameList] &lt;p&gt;The name of the subnet group.&lt;/p&gt;
--- @param MaxResults [IntegerOptional] &lt;p&gt;The maximum number of results to include in the response. If more results exist than the specified &lt;code&gt;MaxResults&lt;/code&gt; value, a token is included in the response so that the remaining results can be retrieved.&lt;/p&gt; &lt;p&gt;The value for &lt;code&gt;MaxResults&lt;/code&gt; must be between 20 and 100.&lt;/p&gt;
+-- @param NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- @param SubnetGroupNames [SubnetGroupNameList] <p>The name of the subnet group.</p>
+-- @param MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
 function M.DescribeSubnetGroupsRequest(NextToken, SubnetGroupNames, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubnetGroupsRequest")
 	local t = { 
@@ -442,7 +442,7 @@ end
 
 --- Create a structure of type DeleteSubnetGroupRequest
 --  
--- @param SubnetGroupName [String] &lt;p&gt;The name of the subnet group to delete.&lt;/p&gt;
+-- @param SubnetGroupName [String] <p>The name of the subnet group to delete.</p>
 -- Required parameter: SubnetGroupName
 function M.DeleteSubnetGroupRequest(SubnetGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubnetGroupRequest")
@@ -464,7 +464,7 @@ function M.AssertSubnetGroupQuotaExceededFault(struct)
 end
 
 --- Create a structure of type SubnetGroupQuotaExceededFault
--- &lt;p&gt;The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.&lt;/p&gt;
+-- <p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>
 function M.SubnetGroupQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetGroupQuotaExceededFault")
 	local t = { 
@@ -486,7 +486,7 @@ end
 
 --- Create a structure of type DecreaseReplicationFactorResponse
 --  
--- @param Cluster [Cluster] &lt;p&gt;A description of the DAX cluster, after you have decreased its replication factor.&lt;/p&gt;
+-- @param Cluster [Cluster] <p>A description of the DAX cluster, after you have decreased its replication factor.</p>
 function M.DecreaseReplicationFactorResponse(Cluster, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DecreaseReplicationFactorResponse")
 	local t = { 
@@ -509,9 +509,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;A description of a tag. Every tag is a key-value pair. You can add up to 50 tags to a single DAX cluster.&lt;/p&gt; &lt;p&gt;AWS-assigned tag names and values are automatically assigned the &lt;code&gt;aws:&lt;/code&gt; prefix, which the user cannot assign. AWS-assigned tag names do not count towards the tag limit of 50. User-assigned tag names have the prefix &lt;code&gt;user:&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;You cannot backdate the application of a tag.&lt;/p&gt;
--- @param Value [String] &lt;p&gt;The value of the tag. Tag values are case-sensitive and can be null. &lt;/p&gt;
--- @param Key [String] &lt;p&gt;The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.&lt;/p&gt;
+-- <p>A description of a tag. Every tag is a key-value pair. You can add up to 50 tags to a single DAX cluster.</p> <p>AWS-assigned tag names and values are automatically assigned the <code>aws:</code> prefix, which the user cannot assign. AWS-assigned tag names do not count towards the tag limit of 50. User-assigned tag names have the prefix <code>user:</code>.</p> <p>You cannot backdate the application of a tag.</p>
+-- @param Value [String] <p>The value of the tag. Tag values are case-sensitive and can be null. </p>
+-- @param Key [String] <p>The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.</p>
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
@@ -539,10 +539,10 @@ end
 
 --- Create a structure of type DescribeParametersRequest
 --  
--- @param Source [String] &lt;p&gt;How the parameter is defined. For example, &lt;code&gt;system&lt;/code&gt; denotes a system-defined parameter.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by &lt;code&gt;MaxResults&lt;/code&gt;.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of the parameter group.&lt;/p&gt;
--- @param MaxResults [IntegerOptional] &lt;p&gt;The maximum number of results to include in the response. If more results exist than the specified &lt;code&gt;MaxResults&lt;/code&gt; value, a token is included in the response so that the remaining results can be retrieved.&lt;/p&gt; &lt;p&gt;The value for &lt;code&gt;MaxResults&lt;/code&gt; must be between 20 and 100.&lt;/p&gt;
+-- @param Source [String] <p>How the parameter is defined. For example, <code>system</code> denotes a system-defined parameter.</p>
+-- @param NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- @param ParameterGroupName [String] <p>The name of the parameter group.</p>
+-- @param MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
 -- Required parameter: ParameterGroupName
 function M.DescribeParametersRequest(Source, NextToken, ParameterGroupName, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParametersRequest")
@@ -572,8 +572,8 @@ end
 
 --- Create a structure of type RebootNodeRequest
 --  
--- @param ClusterName [String] &lt;p&gt;The name of the DAX cluster containing the node to be rebooted.&lt;/p&gt;
--- @param NodeId [String] &lt;p&gt;The system-assigned ID of the node to be rebooted.&lt;/p&gt;
+-- @param ClusterName [String] <p>The name of the DAX cluster containing the node to be rebooted.</p>
+-- @param NodeId [String] <p>The system-assigned ID of the node to be rebooted.</p>
 -- Required parameter: ClusterName
 -- Required parameter: NodeId
 function M.RebootNodeRequest(ClusterName, NodeId, ...)
@@ -599,9 +599,9 @@ function M.AssertNotificationConfiguration(struct)
 end
 
 --- Create a structure of type NotificationConfiguration
--- &lt;p&gt;Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).&lt;/p&gt;
--- @param TopicStatus [String] &lt;p&gt;The current state of the topic.&lt;/p&gt;
--- @param TopicArn [String] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the topic. &lt;/p&gt;
+-- <p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>
+-- @param TopicStatus [String] <p>The current state of the topic.</p>
+-- @param TopicArn [String] <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
 function M.NotificationConfiguration(TopicStatus, TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotificationConfiguration")
 	local t = { 
@@ -627,11 +627,11 @@ function M.AssertEvent(struct)
 end
 
 --- Create a structure of type Event
--- &lt;p&gt;Represents a single occurrence of something interesting within the system. Some examples of events are creating a DAX cluster, adding or removing a node, or rebooting a node.&lt;/p&gt;
--- @param SourceName [String] &lt;p&gt;The source of the event. For example, if the event occurred at the node level, the source would be the node ID.&lt;/p&gt;
--- @param Date [TStamp] &lt;p&gt;The date and time when the event occurred.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;A user-defined message associated with the event.&lt;/p&gt;
--- @param SourceType [SourceType] &lt;p&gt;Specifies the origin of this event - a cluster, a parameter group, a node ID, etc.&lt;/p&gt;
+-- <p>Represents a single occurrence of something interesting within the system. Some examples of events are creating a DAX cluster, adding or removing a node, or rebooting a node.</p>
+-- @param SourceName [String] <p>The source of the event. For example, if the event occurred at the node level, the source would be the node ID.</p>
+-- @param Date [TStamp] <p>The date and time when the event occurred.</p>
+-- @param Message [String] <p>A user-defined message associated with the event.</p>
+-- @param SourceType [SourceType] <p>Specifies the origin of this event - a cluster, a parameter group, a node ID, etc.</p>
 function M.Event(SourceName, Date, Message, SourceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Event")
 	local t = { 
@@ -659,9 +659,9 @@ end
 
 --- Create a structure of type DescribeClustersRequest
 --  
--- @param NextToken [String] &lt;p&gt;An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by &lt;code&gt;MaxResults&lt;/code&gt;.&lt;/p&gt;
--- @param MaxResults [IntegerOptional] &lt;p&gt;The maximum number of results to include in the response. If more results exist than the specified &lt;code&gt;MaxResults&lt;/code&gt; value, a token is included in the response so that the remaining results can be retrieved.&lt;/p&gt; &lt;p&gt;The value for &lt;code&gt;MaxResults&lt;/code&gt; must be between 20 and 100.&lt;/p&gt;
--- @param ClusterNames [ClusterNameList] &lt;p&gt;The names of the DAX clusters being described.&lt;/p&gt;
+-- @param NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- @param MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
+-- @param ClusterNames [ClusterNameList] <p>The names of the DAX clusters being described.</p>
 function M.DescribeClustersRequest(NextToken, MaxResults, ClusterNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClustersRequest")
 	local t = { 
@@ -684,7 +684,7 @@ function M.AssertInvalidSubnet(struct)
 end
 
 --- Create a structure of type InvalidSubnet
--- &lt;p&gt;An invalid subnet identifier was specified.&lt;/p&gt;
+-- <p>An invalid subnet identifier was specified.</p>
 function M.InvalidSubnet(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnet")
 	local t = { 
@@ -714,17 +714,17 @@ function M.AssertParameter(struct)
 end
 
 --- Create a structure of type Parameter
--- &lt;p&gt;Describes an individual setting that controls some aspect of DAX behavior.&lt;/p&gt;
--- @param ParameterType [ParameterType] &lt;p&gt;Determines whether the parameter can be applied to any nodes, or only nodes of a particular type.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description of the parameter&lt;/p&gt;
--- @param DataType [String] &lt;p&gt;The data type of the parameter. For example, &lt;code&gt;integer&lt;/code&gt;:&lt;/p&gt;
--- @param ChangeType [ChangeType] &lt;p&gt;The conditions under which changes to this parameter can be applied. For example, &lt;code&gt;requires-reboot&lt;/code&gt; indicates that a new value for this parameter will only take effect if a node is rebooted.&lt;/p&gt;
--- @param IsModifiable [IsModifiable] &lt;p&gt;Whether the customer is allowed to modify the parameter.&lt;/p&gt;
--- @param AllowedValues [String] &lt;p&gt;A range of values within which the parameter can be set.&lt;/p&gt;
--- @param NodeTypeSpecificValues [NodeTypeSpecificValueList] &lt;p&gt;A list of node types, and specific parameter values for each node.&lt;/p&gt;
--- @param Source [String] &lt;p&gt;How the parameter is defined. For example, &lt;code&gt;system&lt;/code&gt; denotes a system-defined parameter.&lt;/p&gt;
--- @param ParameterValue [String] &lt;p&gt;The value for the parameter.&lt;/p&gt;
--- @param ParameterName [String] &lt;p&gt;The name of the parameter.&lt;/p&gt;
+-- <p>Describes an individual setting that controls some aspect of DAX behavior.</p>
+-- @param ParameterType [ParameterType] <p>Determines whether the parameter can be applied to any nodes, or only nodes of a particular type.</p>
+-- @param Description [String] <p>A description of the parameter</p>
+-- @param DataType [String] <p>The data type of the parameter. For example, <code>integer</code>:</p>
+-- @param ChangeType [ChangeType] <p>The conditions under which changes to this parameter can be applied. For example, <code>requires-reboot</code> indicates that a new value for this parameter will only take effect if a node is rebooted.</p>
+-- @param IsModifiable [IsModifiable] <p>Whether the customer is allowed to modify the parameter.</p>
+-- @param AllowedValues [String] <p>A range of values within which the parameter can be set.</p>
+-- @param NodeTypeSpecificValues [NodeTypeSpecificValueList] <p>A list of node types, and specific parameter values for each node.</p>
+-- @param Source [String] <p>How the parameter is defined. For example, <code>system</code> denotes a system-defined parameter.</p>
+-- @param ParameterValue [String] <p>The value for the parameter.</p>
+-- @param ParameterName [String] <p>The name of the parameter.</p>
 function M.Parameter(ParameterType, Description, DataType, ChangeType, IsModifiable, AllowedValues, NodeTypeSpecificValues, Source, ParameterValue, ParameterName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Parameter")
 	local t = { 
@@ -757,8 +757,8 @@ end
 
 --- Create a structure of type DescribeDefaultParametersResponse
 --  
--- @param NextToken [String] &lt;p&gt;Provides an identifier to allow retrieval of paginated results.&lt;/p&gt;
--- @param Parameters [ParameterList] &lt;p&gt;A list of parameters. Each element in the list represents one parameter.&lt;/p&gt;
+-- @param NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- @param Parameters [ParameterList] <p>A list of parameters. Each element in the list represents one parameter.</p>
 function M.DescribeDefaultParametersResponse(NextToken, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDefaultParametersResponse")
 	local t = { 
@@ -780,7 +780,7 @@ function M.AssertParameterGroupQuotaExceededFault(struct)
 end
 
 --- Create a structure of type ParameterGroupQuotaExceededFault
--- &lt;p&gt;You have attempted to exceed the maximum number of parameter groups.&lt;/p&gt;
+-- <p>You have attempted to exceed the maximum number of parameter groups.</p>
 function M.ParameterGroupQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterGroupQuotaExceededFault")
 	local t = { 
@@ -801,8 +801,8 @@ function M.AssertInvalidParameterCombinationException(struct)
 end
 
 --- Create a structure of type InvalidParameterCombinationException
--- &lt;p&gt;Two or more incompatible parameters were specified.&lt;/p&gt;
--- @param message [AwsQueryErrorMessage] &lt;p&gt;Two or more incompatible parameters were specified.&lt;/p&gt;
+-- <p>Two or more incompatible parameters were specified.</p>
+-- @param message [AwsQueryErrorMessage] <p>Two or more incompatible parameters were specified.</p>
 function M.InvalidParameterCombinationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterCombinationException")
 	local t = { 
@@ -823,7 +823,7 @@ function M.AssertParameterGroupAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type ParameterGroupAlreadyExistsFault
--- &lt;p&gt;The specified parameter group already exists.&lt;/p&gt;
+-- <p>The specified parameter group already exists.</p>
 function M.ParameterGroupAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterGroupAlreadyExistsFault")
 	local t = { 
@@ -852,13 +852,13 @@ end
 
 --- Create a structure of type UpdateClusterRequest
 --  
--- @param Description [String] &lt;p&gt;A description of the changes being made to the cluster.&lt;/p&gt;
--- @param ClusterName [String] &lt;p&gt;The name of the DAX cluster to be modified.&lt;/p&gt;
--- @param SecurityGroupIds [SecurityGroupIdentifierList] &lt;p&gt;A list of user-specified security group IDs to be assigned to each node in the DAX cluster. If this parameter is not specified, DAX assigns the default VPC security group to each node.&lt;/p&gt;
--- @param NotificationTopicStatus [String] &lt;p&gt;The current state of the topic.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of a parameter group for this cluster.&lt;/p&gt;
--- @param NotificationTopicArn [String] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the topic.&lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;A range of time when maintenance of DAX cluster software will be performed. For example: &lt;code&gt;sun:01:00-sun:09:00&lt;/code&gt;. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.&lt;/p&gt;
+-- @param Description [String] <p>A description of the changes being made to the cluster.</p>
+-- @param ClusterName [String] <p>The name of the DAX cluster to be modified.</p>
+-- @param SecurityGroupIds [SecurityGroupIdentifierList] <p>A list of user-specified security group IDs to be assigned to each node in the DAX cluster. If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>
+-- @param NotificationTopicStatus [String] <p>The current state of the topic.</p>
+-- @param ParameterGroupName [String] <p>The name of a parameter group for this cluster.</p>
+-- @param NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) that identifies the topic.</p>
+-- @param PreferredMaintenanceWindow [String] <p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>
 -- Required parameter: ClusterName
 function M.UpdateClusterRequest(Description, ClusterName, SecurityGroupIds, NotificationTopicStatus, ParameterGroupName, NotificationTopicArn, PreferredMaintenanceWindow, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateClusterRequest")
@@ -888,7 +888,7 @@ end
 
 --- Create a structure of type RebootNodeResponse
 --  
--- @param Cluster [Cluster] &lt;p&gt;A description of the DAX cluster after a node has been rebooted.&lt;/p&gt;
+-- @param Cluster [Cluster] <p>A description of the DAX cluster after a node has been rebooted.</p>
 function M.RebootNodeResponse(Cluster, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootNodeResponse")
 	local t = { 
@@ -909,7 +909,7 @@ function M.AssertParameterGroupNotFoundFault(struct)
 end
 
 --- Create a structure of type ParameterGroupNotFoundFault
--- &lt;p&gt;The specified parameter group does not exist.&lt;/p&gt;
+-- <p>The specified parameter group does not exist.</p>
 function M.ParameterGroupNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterGroupNotFoundFault")
 	local t = { 
@@ -931,7 +931,7 @@ end
 
 --- Create a structure of type CreateParameterGroupResponse
 --  
--- @param ParameterGroup [ParameterGroup] &lt;p&gt;Represents the output of a &lt;i&gt;CreateParameterGroup&lt;/i&gt; action.&lt;/p&gt;
+-- @param ParameterGroup [ParameterGroup] <p>Represents the output of a <i>CreateParameterGroup</i> action.</p>
 function M.CreateParameterGroupResponse(ParameterGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateParameterGroupResponse")
 	local t = { 
@@ -954,9 +954,9 @@ function M.AssertSecurityGroupMembership(struct)
 end
 
 --- Create a structure of type SecurityGroupMembership
--- &lt;p&gt;An individual VPC security group and its status.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of this security group.&lt;/p&gt;
--- @param SecurityGroupIdentifier [String] &lt;p&gt;The unique ID for this security group.&lt;/p&gt;
+-- <p>An individual VPC security group and its status.</p>
+-- @param Status [String] <p>The status of this security group.</p>
+-- @param SecurityGroupIdentifier [String] <p>The unique ID for this security group.</p>
 function M.SecurityGroupMembership(Status, SecurityGroupIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SecurityGroupMembership")
 	local t = { 
@@ -984,9 +984,9 @@ end
 
 --- Create a structure of type IncreaseReplicationFactorRequest
 --  
--- @param ClusterName [String] &lt;p&gt;The name of the DAX cluster that will receive additional nodes.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZoneList] &lt;p&gt;The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.&lt;/p&gt;
--- @param NewReplicationFactor [Integer] &lt;p&gt;The new number of nodes for the DAX cluster.&lt;/p&gt;
+-- @param ClusterName [String] <p>The name of the DAX cluster that will receive additional nodes.</p>
+-- @param AvailabilityZones [AvailabilityZoneList] <p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>
+-- @param NewReplicationFactor [Integer] <p>The new number of nodes for the DAX cluster.</p>
 -- Required parameter: ClusterName
 -- Required parameter: NewReplicationFactor
 function M.IncreaseReplicationFactorRequest(ClusterName, AvailabilityZones, NewReplicationFactor, ...)
@@ -1015,11 +1015,11 @@ function M.AssertSubnetGroup(struct)
 end
 
 --- Create a structure of type SubnetGroup
--- &lt;p&gt;Represents the output of one of the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;CreateSubnetGroup&lt;/i&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;ModifySubnetGroup&lt;/i&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Subnets [SubnetList] &lt;p&gt;A list of subnets associated with the subnet group. &lt;/p&gt;
--- @param SubnetGroupName [String] &lt;p&gt;The name of the subnet group.&lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;The Amazon Virtual Private Cloud identifier (VPC ID) of the subnet group.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description of the subnet group.&lt;/p&gt;
+-- <p>Represents the output of one of the following actions:</p> <ul> <li> <p> <i>CreateSubnetGroup</i> </p> </li> <li> <p> <i>ModifySubnetGroup</i> </p> </li> </ul>
+-- @param Subnets [SubnetList] <p>A list of subnets associated with the subnet group. </p>
+-- @param SubnetGroupName [String] <p>The name of the subnet group.</p>
+-- @param VpcId [String] <p>The Amazon Virtual Private Cloud identifier (VPC ID) of the subnet group.</p>
+-- @param Description [String] <p>The description of the subnet group.</p>
 function M.SubnetGroup(Subnets, SubnetGroupName, VpcId, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetGroup")
 	local t = { 
@@ -1046,8 +1046,8 @@ end
 
 --- Create a structure of type DescribeClustersResponse
 --  
--- @param Clusters [ClusterList] &lt;p&gt;The descriptions of your DAX clusters, in response to a &lt;i&gt;DescribeClusters&lt;/i&gt; request.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;Provides an identifier to allow retrieval of paginated results.&lt;/p&gt;
+-- @param Clusters [ClusterList] <p>The descriptions of your DAX clusters, in response to a <i>DescribeClusters</i> request.</p>
+-- @param NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
 function M.DescribeClustersResponse(Clusters, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClustersResponse")
 	local t = { 
@@ -1074,8 +1074,8 @@ end
 
 --- Create a structure of type UntagResourceRequest
 --  
--- @param ResourceName [String] &lt;p&gt;The name of the DAX resource from which the tags should be removed.&lt;/p&gt;
--- @param TagKeys [KeyList] &lt;p&gt;A list of tag keys. If the DAX cluster has any tags with these keys, then the tags are removed from the cluster.&lt;/p&gt;
+-- @param ResourceName [String] <p>The name of the DAX resource from which the tags should be removed.</p>
+-- @param TagKeys [KeyList] <p>A list of tag keys. If the DAX cluster has any tags with these keys, then the tags are removed from the cluster.</p>
 -- Required parameter: ResourceName
 -- Required parameter: TagKeys
 function M.UntagResourceRequest(ResourceName, TagKeys, ...)
@@ -1102,8 +1102,8 @@ end
 
 --- Create a structure of type DescribeParameterGroupsResponse
 --  
--- @param ParameterGroups [ParameterGroupList] &lt;p&gt;An array of parameter groups. Each element in the array represents one parameter group.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;Provides an identifier to allow retrieval of paginated results.&lt;/p&gt;
+-- @param ParameterGroups [ParameterGroupList] <p>An array of parameter groups. Each element in the array represents one parameter group.</p>
+-- @param NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
 function M.DescribeParameterGroupsResponse(ParameterGroups, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParameterGroupsResponse")
 	local t = { 
@@ -1127,9 +1127,9 @@ function M.AssertSubnet(struct)
 end
 
 --- Create a structure of type Subnet
--- &lt;p&gt;Represents the subnet associated with a DAX cluster. This parameter refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used with DAX.&lt;/p&gt;
--- @param SubnetIdentifier [String] &lt;p&gt;The system-assigned identifier for the subnet.&lt;/p&gt;
--- @param SubnetAvailabilityZone [String] &lt;p&gt;The Availability Zone (AZ) for subnet subnet.&lt;/p&gt;
+-- <p>Represents the subnet associated with a DAX cluster. This parameter refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used with DAX.</p>
+-- @param SubnetIdentifier [String] <p>The system-assigned identifier for the subnet.</p>
+-- @param SubnetAvailabilityZone [String] <p>The Availability Zone (AZ) for subnet subnet.</p>
 function M.Subnet(SubnetIdentifier, SubnetAvailabilityZone, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subnet")
 	local t = { 
@@ -1151,7 +1151,7 @@ function M.AssertInvalidARNFault(struct)
 end
 
 --- Create a structure of type InvalidARNFault
--- &lt;p&gt;The Amazon Resource Name (ARN) supplied in the request is not valid.&lt;/p&gt;
+-- <p>The Amazon Resource Name (ARN) supplied in the request is not valid.</p>
 function M.InvalidARNFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidARNFault")
 	local t = { 
@@ -1173,7 +1173,7 @@ end
 
 --- Create a structure of type CreateClusterResponse
 --  
--- @param Cluster [Cluster] &lt;p&gt;A description of the DAX cluster that you have created.&lt;/p&gt;
+-- @param Cluster [Cluster] <p>A description of the DAX cluster that you have created.</p>
 function M.CreateClusterResponse(Cluster, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateClusterResponse")
 	local t = { 
@@ -1200,13 +1200,13 @@ function M.AssertNode(struct)
 end
 
 --- Create a structure of type Node
--- &lt;p&gt;Represents an individual node within a DAX cluster.&lt;/p&gt;
--- @param Endpoint [Endpoint] &lt;p&gt;The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.&lt;/p&gt;
--- @param NodeStatus [String] &lt;p&gt;The current status of the node. For example: &lt;code&gt;available&lt;/code&gt;.&lt;/p&gt;
--- @param ParameterGroupStatus [String] &lt;p&gt;The status of the parameter group associated with this node. For example, &lt;code&gt;in-sync&lt;/code&gt;.&lt;/p&gt;
--- @param NodeId [String] &lt;p&gt;A system-generated identifier for the node.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The Availability Zone (AZ) in which the node has been deployed.&lt;/p&gt;
--- @param NodeCreateTime [TStamp] &lt;p&gt;The date and time (in UNIX epoch format) when the node was launched.&lt;/p&gt;
+-- <p>Represents an individual node within a DAX cluster.</p>
+-- @param Endpoint [Endpoint] <p>The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>
+-- @param NodeStatus [String] <p>The current status of the node. For example: <code>available</code>.</p>
+-- @param ParameterGroupStatus [String] <p>The status of the parameter group associated with this node. For example, <code>in-sync</code>.</p>
+-- @param NodeId [String] <p>A system-generated identifier for the node.</p>
+-- @param AvailabilityZone [String] <p>The Availability Zone (AZ) in which the node has been deployed.</p>
+-- @param NodeCreateTime [TStamp] <p>The date and time (in UNIX epoch format) when the node was launched.</p>
 function M.Node(Endpoint, NodeStatus, ParameterGroupStatus, NodeId, AvailabilityZone, NodeCreateTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Node")
 	local t = { 
@@ -1235,8 +1235,8 @@ end
 
 --- Create a structure of type DescribeEventsResponse
 --  
--- @param NextToken [String] &lt;p&gt;Provides an identifier to allow retrieval of paginated results.&lt;/p&gt;
--- @param Events [EventList] &lt;p&gt;An array of events. Each element in the array represents one event.&lt;/p&gt;
+-- @param NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- @param Events [EventList] <p>An array of events. Each element in the array represents one event.</p>
 function M.DescribeEventsResponse(NextToken, Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsResponse")
 	local t = { 
@@ -1275,18 +1275,18 @@ end
 
 --- Create a structure of type CreateClusterRequest
 --  
--- @param ReplicationFactor [Integer] &lt;p&gt;The number of nodes in the DAX cluster. A replication factor of 1 will create a single-node cluster, without any read replicas. For additional fault tolerance, you can create a multiple node cluster with one or more read replicas. To do this, set &lt;i&gt;ReplicationFactor&lt;/i&gt; to 2 or more.&lt;/p&gt; &lt;note&gt; &lt;p&gt;AWS recommends that you have at least two read replicas per cluster.&lt;/p&gt; &lt;/note&gt;
--- @param NotificationTopicArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications will be sent.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The Amazon SNS topic owner must be same as the DAX cluster owner.&lt;/p&gt; &lt;/note&gt;
--- @param NodeType [String] &lt;p&gt;The compute and memory capacity of the nodes in the cluster.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description of the cluster.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A set of tags to associate with the DAX cluster. &lt;/p&gt;
--- @param ClusterName [String] &lt;p&gt;The cluster identifier. This parameter is stored as a lowercase string.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Constraints:&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A name must contain from 1 to 20 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The first character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A name cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SubnetGroupName [String] &lt;p&gt;The name of the subnet group to be used for the replication group.&lt;/p&gt; &lt;important&gt; &lt;p&gt;DAX clusters can only run in an Amazon VPC environment. All of the subnets that you specify in a subnet group must exist in the same VPC.&lt;/p&gt; &lt;/important&gt;
--- @param IamRoleArn [String] &lt;p&gt;A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.&lt;/p&gt;
--- @param SecurityGroupIds [SecurityGroupIdentifierList] &lt;p&gt;A list of security group IDs to be assigned to each node in the DAX cluster. (Each of the security group ID is system-generated.)&lt;/p&gt; &lt;p&gt;If this parameter is not specified, DAX assigns the default VPC security group to each node.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The parameter group to be associated with the DAX cluster.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZoneList] &lt;p&gt;The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.&lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for &lt;code&gt;ddd&lt;/code&gt; are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;sun&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;mon&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;tue&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;wed&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;thu&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;fri&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;sat&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;sun:05:00-sun:09:00&lt;/code&gt; &lt;/p&gt; &lt;note&gt; &lt;p&gt;If you don't specify a preferred maintenance window when you create or modify a cache cluster, DAX assigns a 60-minute maintenance window on a randomly selected day of the week.&lt;/p&gt; &lt;/note&gt;
+-- @param ReplicationFactor [Integer] <p>The number of nodes in the DAX cluster. A replication factor of 1 will create a single-node cluster, without any read replicas. For additional fault tolerance, you can create a multiple node cluster with one or more read replicas. To do this, set <i>ReplicationFactor</i> to 2 or more.</p> <note> <p>AWS recommends that you have at least two read replicas per cluster.</p> </note>
+-- @param NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications will be sent.</p> <note> <p>The Amazon SNS topic owner must be same as the DAX cluster owner.</p> </note>
+-- @param NodeType [String] <p>The compute and memory capacity of the nodes in the cluster.</p>
+-- @param Description [String] <p>A description of the cluster.</p>
+-- @param Tags [TagList] <p>A set of tags to associate with the DAX cluster. </p>
+-- @param ClusterName [String] <p>The cluster identifier. This parameter is stored as a lowercase string.</p> <p> <b>Constraints:</b> </p> <ul> <li> <p>A name must contain from 1 to 20 alphanumeric characters or hyphens.</p> </li> <li> <p>The first character must be a letter.</p> </li> <li> <p>A name cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param SubnetGroupName [String] <p>The name of the subnet group to be used for the replication group.</p> <important> <p>DAX clusters can only run in an Amazon VPC environment. All of the subnets that you specify in a subnet group must exist in the same VPC.</p> </important>
+-- @param IamRoleArn [String] <p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>
+-- @param SecurityGroupIds [SecurityGroupIdentifierList] <p>A list of security group IDs to be assigned to each node in the DAX cluster. (Each of the security group ID is system-generated.)</p> <p>If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>
+-- @param ParameterGroupName [String] <p>The parameter group to be associated with the DAX cluster.</p>
+-- @param AvailabilityZones [AvailabilityZoneList] <p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>
+-- @param PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:05:00-sun:09:00</code> </p> <note> <p>If you don't specify a preferred maintenance window when you create or modify a cache cluster, DAX assigns a 60-minute maintenance window on a randomly selected day of the week.</p> </note>
 -- Required parameter: ClusterName
 -- Required parameter: NodeType
 -- Required parameter: ReplicationFactor
@@ -1325,8 +1325,8 @@ end
 
 --- Create a structure of type DescribeSubnetGroupsResponse
 --  
--- @param NextToken [String] &lt;p&gt;Provides an identifier to allow retrieval of paginated results.&lt;/p&gt;
--- @param SubnetGroups [SubnetGroupList] &lt;p&gt;An array of subnet groups. Each element in the array represents a single subnet group.&lt;/p&gt;
+-- @param NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- @param SubnetGroups [SubnetGroupList] <p>An array of subnet groups. Each element in the array represents a single subnet group.</p>
 function M.DescribeSubnetGroupsResponse(NextToken, SubnetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubnetGroupsResponse")
 	local t = { 
@@ -1348,7 +1348,7 @@ function M.AssertSubnetGroupInUseFault(struct)
 end
 
 --- Create a structure of type SubnetGroupInUseFault
--- &lt;p&gt;The specified subnet group is currently in use.&lt;/p&gt;
+-- <p>The specified subnet group is currently in use.</p>
 function M.SubnetGroupInUseFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetGroupInUseFault")
 	local t = { 
@@ -1371,8 +1371,8 @@ end
 
 --- Create a structure of type ListTagsResponse
 --  
--- @param NextToken [String] &lt;p&gt;If this value is present, there are additional results to be displayed. To retrieve them, call &lt;code&gt;ListTags&lt;/code&gt; again, with &lt;code&gt;NextToken&lt;/code&gt; set to this value.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tags currently associated with the DAX cluster.&lt;/p&gt;
+-- @param NextToken [String] <p>If this value is present, there are additional results to be displayed. To retrieve them, call <code>ListTags</code> again, with <code>NextToken</code> set to this value.</p>
+-- @param Tags [TagList] <p>A list of tags currently associated with the DAX cluster.</p>
 function M.ListTagsResponse(NextToken, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsResponse")
 	local t = { 
@@ -1396,7 +1396,7 @@ end
 
 --- Create a structure of type UntagResourceResponse
 --  
--- @param Tags [TagList] &lt;p&gt;The tag keys that have been removed from the cluster.&lt;/p&gt;
+-- @param Tags [TagList] <p>The tag keys that have been removed from the cluster.</p>
 function M.UntagResourceResponse(Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceResponse")
 	local t = { 
@@ -1419,7 +1419,7 @@ end
 
 --- Create a structure of type UpdateClusterResponse
 --  
--- @param Cluster [Cluster] &lt;p&gt;A description of the DAX cluster, after it has been modified.&lt;/p&gt;
+-- @param Cluster [Cluster] <p>A description of the DAX cluster, after it has been modified.</p>
 function M.UpdateClusterResponse(Cluster, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateClusterResponse")
 	local t = { 
@@ -1442,9 +1442,9 @@ function M.AssertParameterNameValue(struct)
 end
 
 --- Create a structure of type ParameterNameValue
--- &lt;p&gt;An individual DAX parameter.&lt;/p&gt;
--- @param ParameterName [String] &lt;p&gt;The name of the parameter.&lt;/p&gt;
--- @param ParameterValue [String] &lt;p&gt;The value of the parameter.&lt;/p&gt;
+-- <p>An individual DAX parameter.</p>
+-- @param ParameterName [String] <p>The name of the parameter.</p>
+-- @param ParameterValue [String] <p>The value of the parameter.</p>
 function M.ParameterNameValue(ParameterName, ParameterValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterNameValue")
 	local t = { 
@@ -1467,8 +1467,8 @@ function M.AssertInvalidParameterValueException(struct)
 end
 
 --- Create a structure of type InvalidParameterValueException
--- &lt;p&gt;The value for a parameter is invalid.&lt;/p&gt;
--- @param message [AwsQueryErrorMessage] &lt;p&gt;The value for a parameter is invalid.&lt;/p&gt;
+-- <p>The value for a parameter is invalid.</p>
+-- @param message [AwsQueryErrorMessage] <p>The value for a parameter is invalid.</p>
 function M.InvalidParameterValueException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
 	local t = { 
@@ -1496,10 +1496,10 @@ end
 
 --- Create a structure of type DecreaseReplicationFactorRequest
 --  
--- @param ClusterName [String] &lt;p&gt;The name of the DAX cluster from which you want to remove nodes.&lt;/p&gt;
--- @param NodeIdsToRemove [NodeIdentifierList] &lt;p&gt;The unique identifiers of the nodes to be removed from the cluster.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZoneList] &lt;p&gt;The Availability Zone(s) from which to remove nodes.&lt;/p&gt;
--- @param NewReplicationFactor [Integer] &lt;p&gt;The new number of nodes for the DAX cluster.&lt;/p&gt;
+-- @param ClusterName [String] <p>The name of the DAX cluster from which you want to remove nodes.</p>
+-- @param NodeIdsToRemove [NodeIdentifierList] <p>The unique identifiers of the nodes to be removed from the cluster.</p>
+-- @param AvailabilityZones [AvailabilityZoneList] <p>The Availability Zone(s) from which to remove nodes.</p>
+-- @param NewReplicationFactor [Integer] <p>The new number of nodes for the DAX cluster.</p>
 -- Required parameter: ClusterName
 -- Required parameter: NewReplicationFactor
 function M.DecreaseReplicationFactorRequest(ClusterName, NodeIdsToRemove, AvailabilityZones, NewReplicationFactor, ...)
@@ -1525,7 +1525,7 @@ function M.AssertNodeQuotaForCustomerExceededFault(struct)
 end
 
 --- Create a structure of type NodeQuotaForCustomerExceededFault
--- &lt;p&gt;You have attempted to exceed the maximum number of nodes for your AWS account.&lt;/p&gt;
+-- <p>You have attempted to exceed the maximum number of nodes for your AWS account.</p>
 function M.NodeQuotaForCustomerExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NodeQuotaForCustomerExceededFault")
 	local t = { 
@@ -1545,7 +1545,7 @@ function M.AssertInvalidVPCNetworkStateFault(struct)
 end
 
 --- Create a structure of type InvalidVPCNetworkStateFault
--- &lt;p&gt;The VPC network is in an invalid state.&lt;/p&gt;
+-- <p>The VPC network is in an invalid state.</p>
 function M.InvalidVPCNetworkStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidVPCNetworkStateFault")
 	local t = { 
@@ -1565,7 +1565,7 @@ function M.AssertSubnetGroupNotFoundFault(struct)
 end
 
 --- Create a structure of type SubnetGroupNotFoundFault
--- &lt;p&gt;The requested subnet group name does not refer to an existing subnet group.&lt;/p&gt;
+-- <p>The requested subnet group name does not refer to an existing subnet group.</p>
 function M.SubnetGroupNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetGroupNotFoundFault")
 	local t = { 
@@ -1585,7 +1585,7 @@ function M.AssertSubnetGroupAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type SubnetGroupAlreadyExistsFault
--- &lt;p&gt;The specified subnet group already exists.&lt;/p&gt;
+-- <p>The specified subnet group already exists.</p>
 function M.SubnetGroupAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetGroupAlreadyExistsFault")
 	local t = { 
@@ -1621,23 +1621,23 @@ function M.AssertCluster(struct)
 end
 
 --- Create a structure of type Cluster
--- &lt;p&gt;Contains all of the attributes of a specific DAX cluster.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The current status of the cluster.&lt;/p&gt;
--- @param SubnetGroup [String] &lt;p&gt;The subnet group where the DAX cluster is running.&lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The node type for the nodes in the cluster. (All nodes in a DAX cluster are of the same type.)&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description of the cluster.&lt;/p&gt;
--- @param ClusterName [String] &lt;p&gt;The name of the DAX cluster.&lt;/p&gt;
--- @param ParameterGroup [ParameterGroupStatus] &lt;p&gt;The parameter group being used by nodes in the cluster.&lt;/p&gt;
--- @param ActiveNodes [IntegerOptional] &lt;p&gt;The number of nodes in the cluster that are active (i.e., capable of serving requests).&lt;/p&gt;
--- @param TotalNodes [IntegerOptional] &lt;p&gt;The total number of nodes in the cluster.&lt;/p&gt;
--- @param IamRoleArn [String] &lt;p&gt;A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.&lt;/p&gt;
--- @param NodeIdsToRemove [NodeIdentifierList] &lt;p&gt;A list of nodes to be removed from the cluster.&lt;/p&gt;
--- @param SecurityGroups [SecurityGroupMembershipList] &lt;p&gt;A list of security groups, and the status of each, for the nodes in the cluster.&lt;/p&gt;
--- @param ClusterArn [String] &lt;p&gt;The Amazon Resource Name (ARN) that uniquely identifies the cluster. &lt;/p&gt;
--- @param Nodes [NodeList] &lt;p&gt;A list of nodes that are currently in the cluster.&lt;/p&gt;
--- @param ClusterDiscoveryEndpoint [Endpoint] &lt;p&gt;The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. Client applications can specify this endpoint, rather than an individual node endpoint, and allow the DAX client software to intelligently route requests and responses to nodes in the DAX cluster.&lt;/p&gt;
--- @param NotificationConfiguration [NotificationConfiguration] &lt;p&gt;Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).&lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;A range of time when maintenance of DAX cluster software will be performed. For example: &lt;code&gt;sun:01:00-sun:09:00&lt;/code&gt;. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.&lt;/p&gt;
+-- <p>Contains all of the attributes of a specific DAX cluster.</p>
+-- @param Status [String] <p>The current status of the cluster.</p>
+-- @param SubnetGroup [String] <p>The subnet group where the DAX cluster is running.</p>
+-- @param NodeType [String] <p>The node type for the nodes in the cluster. (All nodes in a DAX cluster are of the same type.)</p>
+-- @param Description [String] <p>The description of the cluster.</p>
+-- @param ClusterName [String] <p>The name of the DAX cluster.</p>
+-- @param ParameterGroup [ParameterGroupStatus] <p>The parameter group being used by nodes in the cluster.</p>
+-- @param ActiveNodes [IntegerOptional] <p>The number of nodes in the cluster that are active (i.e., capable of serving requests).</p>
+-- @param TotalNodes [IntegerOptional] <p>The total number of nodes in the cluster.</p>
+-- @param IamRoleArn [String] <p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>
+-- @param NodeIdsToRemove [NodeIdentifierList] <p>A list of nodes to be removed from the cluster.</p>
+-- @param SecurityGroups [SecurityGroupMembershipList] <p>A list of security groups, and the status of each, for the nodes in the cluster.</p>
+-- @param ClusterArn [String] <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster. </p>
+-- @param Nodes [NodeList] <p>A list of nodes that are currently in the cluster.</p>
+-- @param ClusterDiscoveryEndpoint [Endpoint] <p>The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. Client applications can specify this endpoint, rather than an individual node endpoint, and allow the DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>
+-- @param NotificationConfiguration [NotificationConfiguration] <p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>
+-- @param PreferredMaintenanceWindow [String] <p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>
 function M.Cluster(Status, SubnetGroup, NodeType, Description, ClusterName, ParameterGroup, ActiveNodes, TotalNodes, IamRoleArn, NodeIdsToRemove, SecurityGroups, ClusterArn, Nodes, ClusterDiscoveryEndpoint, NotificationConfiguration, PreferredMaintenanceWindow, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Cluster")
 	local t = { 
@@ -1679,9 +1679,9 @@ end
 
 --- Create a structure of type CreateSubnetGroupRequest
 --  
--- @param SubnetIds [SubnetIdentifierList] &lt;p&gt;A list of VPC subnet IDs for the subnet group.&lt;/p&gt;
--- @param SubnetGroupName [String] &lt;p&gt;A name for the subnet group. This value is stored as a lowercase string. &lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description for the subnet group&lt;/p&gt;
+-- @param SubnetIds [SubnetIdentifierList] <p>A list of VPC subnet IDs for the subnet group.</p>
+-- @param SubnetGroupName [String] <p>A name for the subnet group. This value is stored as a lowercase string. </p>
+-- @param Description [String] <p>A description for the subnet group</p>
 -- Required parameter: SubnetGroupName
 -- Required parameter: SubnetIds
 function M.CreateSubnetGroupRequest(SubnetIds, SubnetGroupName, Description, ...)
@@ -1710,8 +1710,8 @@ end
 
 --- Create a structure of type CreateParameterGroupRequest
 --  
--- @param ParameterGroupName [String] &lt;p&gt;The name of the parameter group to apply to all of the clusters in this replication group.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description of the parameter group.&lt;/p&gt;
+-- @param ParameterGroupName [String] <p>The name of the parameter group to apply to all of the clusters in this replication group.</p>
+-- @param Description [String] <p>A description of the parameter group.</p>
 -- Required parameter: ParameterGroupName
 function M.CreateParameterGroupRequest(ParameterGroupName, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateParameterGroupRequest")
@@ -1738,9 +1738,9 @@ end
 
 --- Create a structure of type DescribeParameterGroupsRequest
 --  
--- @param NextToken [String] &lt;p&gt;An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by &lt;code&gt;MaxResults&lt;/code&gt;.&lt;/p&gt;
--- @param ParameterGroupNames [ParameterGroupNameList] &lt;p&gt;The names of the parameter groups.&lt;/p&gt;
--- @param MaxResults [IntegerOptional] &lt;p&gt;The maximum number of results to include in the response. If more results exist than the specified &lt;code&gt;MaxResults&lt;/code&gt; value, a token is included in the response so that the remaining results can be retrieved.&lt;/p&gt; &lt;p&gt;The value for &lt;code&gt;MaxResults&lt;/code&gt; must be between 20 and 100.&lt;/p&gt;
+-- @param NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- @param ParameterGroupNames [ParameterGroupNameList] <p>The names of the parameter groups.</p>
+-- @param MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
 function M.DescribeParameterGroupsRequest(NextToken, ParameterGroupNames, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParameterGroupsRequest")
 	local t = { 
@@ -1765,7 +1765,7 @@ end
 
 --- Create a structure of type TagResourceResponse
 --  
--- @param Tags [TagList] &lt;p&gt;The list of tags that are associated with the DAX resource.&lt;/p&gt;
+-- @param Tags [TagList] <p>The list of tags that are associated with the DAX resource.</p>
 function M.TagResourceResponse(Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceResponse")
 	local t = { 
@@ -1786,7 +1786,7 @@ function M.AssertSubnetInUse(struct)
 end
 
 --- Create a structure of type SubnetInUse
--- &lt;p&gt;The requested subnet is being used by another subnet group.&lt;/p&gt;
+-- <p>The requested subnet is being used by another subnet group.</p>
 function M.SubnetInUse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetInUse")
 	local t = { 
@@ -1806,7 +1806,7 @@ function M.AssertNodeNotFoundFault(struct)
 end
 
 --- Create a structure of type NodeNotFoundFault
--- &lt;p&gt;None of the nodes in the cluster have the given node ID.&lt;/p&gt;
+-- <p>None of the nodes in the cluster have the given node ID.</p>
 function M.NodeNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NodeNotFoundFault")
 	local t = { 
@@ -1826,7 +1826,7 @@ function M.AssertTagNotFoundFault(struct)
 end
 
 --- Create a structure of type TagNotFoundFault
--- &lt;p&gt;The tag does not exist.&lt;/p&gt;
+-- <p>The tag does not exist.</p>
 function M.TagNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagNotFoundFault")
 	local t = { 
@@ -1848,7 +1848,7 @@ end
 
 --- Create a structure of type UpdateSubnetGroupResponse
 --  
--- @param SubnetGroup [SubnetGroup] &lt;p&gt;The subnet group that has been modified.&lt;/p&gt;
+-- @param SubnetGroup [SubnetGroup] <p>The subnet group that has been modified.</p>
 function M.UpdateSubnetGroupResponse(SubnetGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSubnetGroupResponse")
 	local t = { 
@@ -1869,7 +1869,7 @@ function M.AssertTagQuotaPerResourceExceeded(struct)
 end
 
 --- Create a structure of type TagQuotaPerResourceExceeded
--- &lt;p&gt;You have exceeded the maximum number of tags for this DAX cluster.&lt;/p&gt;
+-- <p>You have exceeded the maximum number of tags for this DAX cluster.</p>
 function M.TagQuotaPerResourceExceeded(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagQuotaPerResourceExceeded")
 	local t = { 
@@ -1891,9 +1891,9 @@ function M.AssertEndpoint(struct)
 end
 
 --- Create a structure of type Endpoint
--- &lt;p&gt;Represents the information required for client programs to connect to the configuration endpoint for a DAX cluster, or to an individual node within the cluster.&lt;/p&gt;
--- @param Port [Integer] &lt;p&gt;The port number that applications should use to connect to the endpoint.&lt;/p&gt;
--- @param Address [String] &lt;p&gt;The DNS hostname of the endpoint.&lt;/p&gt;
+-- <p>Represents the information required for client programs to connect to the configuration endpoint for a DAX cluster, or to an individual node within the cluster.</p>
+-- @param Port [Integer] <p>The port number that applications should use to connect to the endpoint.</p>
+-- @param Address [String] <p>The DNS hostname of the endpoint.</p>
 function M.Endpoint(Port, Address, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Endpoint")
 	local t = { 
@@ -1918,10 +1918,10 @@ function M.AssertParameterGroupStatus(struct)
 end
 
 --- Create a structure of type ParameterGroupStatus
--- &lt;p&gt;The status of a parameter group.&lt;/p&gt;
--- @param NodeIdsToReboot [NodeIdentifierList] &lt;p&gt;The node IDs of one or more nodes to be rebooted.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of the parameter group.&lt;/p&gt;
--- @param ParameterApplyStatus [String] &lt;p&gt;The status of parameter updates. &lt;/p&gt;
+-- <p>The status of a parameter group.</p>
+-- @param NodeIdsToReboot [NodeIdentifierList] <p>The node IDs of one or more nodes to be rebooted.</p>
+-- @param ParameterGroupName [String] <p>The name of the parameter group.</p>
+-- @param ParameterApplyStatus [String] <p>The status of parameter updates. </p>
 function M.ParameterGroupStatus(NodeIdsToReboot, ParameterGroupName, ParameterApplyStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterGroupStatus")
 	local t = { 
@@ -1944,7 +1944,7 @@ function M.AssertNodeQuotaForClusterExceededFault(struct)
 end
 
 --- Create a structure of type NodeQuotaForClusterExceededFault
--- &lt;p&gt;You have attempted to exceed the maximum number of nodes for a DAX cluster.&lt;/p&gt;
+-- <p>You have attempted to exceed the maximum number of nodes for a DAX cluster.</p>
 function M.NodeQuotaForClusterExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NodeQuotaForClusterExceededFault")
 	local t = { 
@@ -1966,7 +1966,7 @@ end
 
 --- Create a structure of type UpdateParameterGroupResponse
 --  
--- @param ParameterGroup [ParameterGroup] &lt;p&gt;The parameter group that has been modified.&lt;/p&gt;
+-- @param ParameterGroup [ParameterGroup] <p>The parameter group that has been modified.</p>
 function M.UpdateParameterGroupResponse(ParameterGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateParameterGroupResponse")
 	local t = { 
@@ -1992,8 +1992,8 @@ end
 
 --- Create a structure of type TagResourceRequest
 --  
--- @param ResourceName [String] &lt;p&gt;The name of the DAX resource to which tags should be added.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tags to be assigned to the DAX resource. &lt;/p&gt;
+-- @param ResourceName [String] <p>The name of the DAX resource to which tags should be added.</p>
+-- @param Tags [TagList] <p>The tags to be assigned to the DAX resource. </p>
 -- Required parameter: ResourceName
 -- Required parameter: Tags
 function M.TagResourceRequest(ResourceName, Tags, ...)
@@ -2025,13 +2025,13 @@ end
 
 --- Create a structure of type DescribeEventsRequest
 --  
--- @param NextToken [String] &lt;p&gt;An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by &lt;code&gt;MaxResults&lt;/code&gt;.&lt;/p&gt;
--- @param SourceType [SourceType] &lt;p&gt;The event source to retrieve events for. If no value is specified, all events are returned.&lt;/p&gt;
--- @param SourceName [String] &lt;p&gt;The identifier of the event source for which events will be returned. If not specified, then all sources are included in the response.&lt;/p&gt;
--- @param MaxResults [IntegerOptional] &lt;p&gt;The maximum number of results to include in the response. If more results exist than the specified &lt;code&gt;MaxResults&lt;/code&gt; value, a token is included in the response so that the remaining results can be retrieved.&lt;/p&gt; &lt;p&gt;The value for &lt;code&gt;MaxResults&lt;/code&gt; must be between 20 and 100.&lt;/p&gt;
--- @param StartTime [TStamp] &lt;p&gt;The beginning of the time interval to retrieve events for, specified in ISO 8601 format.&lt;/p&gt;
--- @param Duration [IntegerOptional] &lt;p&gt;The number of minutes' worth of events to retrieve.&lt;/p&gt;
--- @param EndTime [TStamp] &lt;p&gt;The end of the time interval for which to retrieve events, specified in ISO 8601 format.&lt;/p&gt;
+-- @param NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- @param SourceType [SourceType] <p>The event source to retrieve events for. If no value is specified, all events are returned.</p>
+-- @param SourceName [String] <p>The identifier of the event source for which events will be returned. If not specified, then all sources are included in the response.</p>
+-- @param MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
+-- @param StartTime [TStamp] <p>The beginning of the time interval to retrieve events for, specified in ISO 8601 format.</p>
+-- @param Duration [IntegerOptional] <p>The number of minutes' worth of events to retrieve.</p>
+-- @param EndTime [TStamp] <p>The end of the time interval for which to retrieve events, specified in ISO 8601 format.</p>
 function M.DescribeEventsRequest(NextToken, SourceType, SourceName, MaxResults, StartTime, Duration, EndTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsRequest")
 	local t = { 
@@ -2058,7 +2058,7 @@ function M.AssertClusterQuotaForCustomerExceededFault(struct)
 end
 
 --- Create a structure of type ClusterQuotaForCustomerExceededFault
--- &lt;p&gt;You have attempted to exceed the maximum number of DAX clusters for your AWS account.&lt;/p&gt;
+-- <p>You have attempted to exceed the maximum number of DAX clusters for your AWS account.</p>
 function M.ClusterQuotaForCustomerExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterQuotaForCustomerExceededFault")
 	local t = { 
@@ -2083,9 +2083,9 @@ end
 
 --- Create a structure of type UpdateSubnetGroupRequest
 --  
--- @param SubnetIds [SubnetIdentifierList] &lt;p&gt;A list of subnet IDs in the subnet group.&lt;/p&gt;
--- @param SubnetGroupName [String] &lt;p&gt;The name of the subnet group.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description of the subnet group.&lt;/p&gt;
+-- @param SubnetIds [SubnetIdentifierList] <p>A list of subnet IDs in the subnet group.</p>
+-- @param SubnetGroupName [String] <p>The name of the subnet group.</p>
+-- @param Description [String] <p>A description of the subnet group.</p>
 -- Required parameter: SubnetGroupName
 function M.UpdateSubnetGroupRequest(SubnetIds, SubnetGroupName, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSubnetGroupRequest")
@@ -2109,7 +2109,7 @@ function M.AssertClusterAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type ClusterAlreadyExistsFault
--- &lt;p&gt;You already have a DAX cluster with the given identifier.&lt;/p&gt;
+-- <p>You already have a DAX cluster with the given identifier.</p>
 function M.ClusterAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterAlreadyExistsFault")
 	local t = { 
@@ -2131,9 +2131,9 @@ function M.AssertNodeTypeSpecificValue(struct)
 end
 
 --- Create a structure of type NodeTypeSpecificValue
--- &lt;p&gt;Represents a parameter value that is applicable to a particular node type.&lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;A node type to which the parameter value applies.&lt;/p&gt;
--- @param Value [String] &lt;p&gt;The parameter value for this node type.&lt;/p&gt;
+-- <p>Represents a parameter value that is applicable to a particular node type.</p>
+-- @param NodeType [String] <p>A node type to which the parameter value applies.</p>
+-- @param Value [String] <p>The parameter value for this node type.</p>
 function M.NodeTypeSpecificValue(NodeType, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NodeTypeSpecificValue")
 	local t = { 
@@ -2155,7 +2155,7 @@ function M.AssertSubnetQuotaExceededFault(struct)
 end
 
 --- Create a structure of type SubnetQuotaExceededFault
--- &lt;p&gt;The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.&lt;/p&gt;
+-- <p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>
 function M.SubnetQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetQuotaExceededFault")
 	local t = { 

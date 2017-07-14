@@ -30,8 +30,8 @@ function M.AssertInvalidRequestException(struct)
 end
 
 --- Create a structure of type InvalidRequestException
--- &lt;p&gt;The request is not valid.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The request is not valid.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.InvalidRequestException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
@@ -53,8 +53,8 @@ function M.AssertServiceUnavailableException(struct)
 end
 
 --- Create a structure of type ServiceUnavailableException
--- &lt;p&gt;The service is temporarily unavailable.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The service is temporarily unavailable.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.ServiceUnavailableException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
 	local t = { 
@@ -76,8 +76,8 @@ function M.AssertRequestEntityTooLargeException(struct)
 end
 
 --- Create a structure of type RequestEntityTooLargeException
--- &lt;p&gt;The payload exceeds the maximum size allowed.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The payload exceeds the maximum size allowed.</p>
+-- @param message [ErrorMessage] <p>The message for the exception.</p>
 function M.RequestEntityTooLargeException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestEntityTooLargeException")
 	local t = { 
@@ -99,8 +99,8 @@ function M.AssertUnauthorizedException(struct)
 end
 
 --- Create a structure of type UnauthorizedException
--- &lt;p&gt;You are not authorized to perform this operation.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>You are not authorized to perform this operation.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.UnauthorizedException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedException")
 	local t = { 
@@ -125,10 +125,10 @@ function M.AssertPublishRequest(struct)
 end
 
 --- Create a structure of type PublishRequest
--- &lt;p&gt;The input for the Publish operation.&lt;/p&gt;
--- @param topic [Topic] &lt;p&gt;The name of the MQTT topic.&lt;/p&gt;
--- @param qos [Qos] &lt;p&gt;The Quality of Service (QoS) level.&lt;/p&gt;
--- @param payload [Payload] &lt;p&gt;The state information, in JSON format.&lt;/p&gt;
+-- <p>The input for the Publish operation.</p>
+-- @param topic [Topic] <p>The name of the MQTT topic.</p>
+-- @param qos [Qos] <p>The Quality of Service (QoS) level.</p>
+-- @param payload [Payload] <p>The state information, in JSON format.</p>
 -- Required parameter: topic
 function M.PublishRequest(topic, qos, payload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PublishRequest")
@@ -156,9 +156,9 @@ function M.AssertUpdateThingShadowRequest(struct)
 end
 
 --- Create a structure of type UpdateThingShadowRequest
--- &lt;p&gt;The input for the UpdateThingShadow operation.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing.&lt;/p&gt;
--- @param payload [JsonDocument] &lt;p&gt;The state information, in JSON format.&lt;/p&gt;
+-- <p>The input for the UpdateThingShadow operation.</p>
+-- @param thingName [ThingName] <p>The name of the thing.</p>
+-- @param payload [JsonDocument] <p>The state information, in JSON format.</p>
 -- Required parameter: thingName
 -- Required parameter: payload
 function M.UpdateThingShadowRequest(thingName, payload, ...)
@@ -183,8 +183,8 @@ function M.AssertUnsupportedDocumentEncodingException(struct)
 end
 
 --- Create a structure of type UnsupportedDocumentEncodingException
--- &lt;p&gt;The document encoding is not supported.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The document encoding is not supported.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.UnsupportedDocumentEncodingException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedDocumentEncodingException")
 	local t = { 
@@ -206,8 +206,8 @@ function M.AssertUpdateThingShadowResponse(struct)
 end
 
 --- Create a structure of type UpdateThingShadowResponse
--- &lt;p&gt;The output from the UpdateThingShadow operation.&lt;/p&gt;
--- @param payload [JsonDocument] &lt;p&gt;The state information, in JSON format.&lt;/p&gt;
+-- <p>The output from the UpdateThingShadow operation.</p>
+-- @param payload [JsonDocument] <p>The state information, in JSON format.</p>
 function M.UpdateThingShadowResponse(payload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateThingShadowResponse")
 	local t = { 
@@ -230,8 +230,8 @@ function M.AssertGetThingShadowRequest(struct)
 end
 
 --- Create a structure of type GetThingShadowRequest
--- &lt;p&gt;The input for the GetThingShadow operation.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing.&lt;/p&gt;
+-- <p>The input for the GetThingShadow operation.</p>
+-- @param thingName [ThingName] <p>The name of the thing.</p>
 -- Required parameter: thingName
 function M.GetThingShadowRequest(thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetThingShadowRequest")
@@ -255,8 +255,8 @@ function M.AssertDeleteThingShadowResponse(struct)
 end
 
 --- Create a structure of type DeleteThingShadowResponse
--- &lt;p&gt;The output from the DeleteThingShadow operation.&lt;/p&gt;
--- @param payload [JsonDocument] &lt;p&gt;The state information, in JSON format.&lt;/p&gt;
+-- <p>The output from the DeleteThingShadow operation.</p>
+-- @param payload [JsonDocument] <p>The state information, in JSON format.</p>
 -- Required parameter: payload
 function M.DeleteThingShadowResponse(payload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingShadowResponse")
@@ -279,8 +279,8 @@ function M.AssertInternalFailureException(struct)
 end
 
 --- Create a structure of type InternalFailureException
--- &lt;p&gt;An unexpected error has occurred.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>An unexpected error has occurred.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.InternalFailureException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalFailureException")
 	local t = { 
@@ -302,8 +302,8 @@ function M.AssertConflictException(struct)
 end
 
 --- Create a structure of type ConflictException
--- &lt;p&gt;The specified version does not match the version of the document.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The specified version does not match the version of the document.</p>
+-- @param message [ErrorMessage] <p>The message for the exception.</p>
 function M.ConflictException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConflictException")
 	local t = { 
@@ -325,8 +325,8 @@ function M.AssertGetThingShadowResponse(struct)
 end
 
 --- Create a structure of type GetThingShadowResponse
--- &lt;p&gt;The output from the GetThingShadow operation.&lt;/p&gt;
--- @param payload [JsonDocument] &lt;p&gt;The state information, in JSON format.&lt;/p&gt;
+-- <p>The output from the GetThingShadow operation.</p>
+-- @param payload [JsonDocument] <p>The state information, in JSON format.</p>
 function M.GetThingShadowResponse(payload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetThingShadowResponse")
 	local t = { 
@@ -348,8 +348,8 @@ function M.AssertMethodNotAllowedException(struct)
 end
 
 --- Create a structure of type MethodNotAllowedException
--- &lt;p&gt;The specified combination of HTTP verb and URI is not supported.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The specified combination of HTTP verb and URI is not supported.</p>
+-- @param message [ErrorMessage] <p>The message for the exception.</p>
 function M.MethodNotAllowedException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MethodNotAllowedException")
 	local t = { 
@@ -371,8 +371,8 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The specified resource does not exist.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The specified resource does not exist.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.ResourceNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -394,8 +394,8 @@ function M.AssertThrottlingException(struct)
 end
 
 --- Create a structure of type ThrottlingException
--- &lt;p&gt;The rate exceeds the limit.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The rate exceeds the limit.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.ThrottlingException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
 	local t = { 
@@ -418,8 +418,8 @@ function M.AssertDeleteThingShadowRequest(struct)
 end
 
 --- Create a structure of type DeleteThingShadowRequest
--- &lt;p&gt;The input for the DeleteThingShadow operation.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing.&lt;/p&gt;
+-- <p>The input for the DeleteThingShadow operation.</p>
+-- @param thingName [ThingName] <p>The name of the thing.</p>
 -- Required parameter: thingName
 function M.DeleteThingShadowRequest(thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingShadowRequest")

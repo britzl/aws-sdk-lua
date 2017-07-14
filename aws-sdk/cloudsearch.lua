@@ -33,9 +33,9 @@ function M.AssertExpressionStatus(struct)
 end
 
 --- Create a structure of type ExpressionStatus
--- &lt;p&gt;The value of an &lt;code&gt;Expression&lt;/code&gt; and its current status.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt;The value of an &lt;code&gt;Expression&lt;/code&gt; and its current status.&lt;/p&gt;
--- @param Options [Expression] &lt;p&gt;The expression that is evaluated for sorting while processing a search request.&lt;/p&gt;
+-- <p>The value of an <code>Expression</code> and its current status.</p>
+-- @param Status [OptionStatus] <p>The value of an <code>Expression</code> and its current status.</p>
+-- @param Options [Expression] <p>The expression that is evaluated for sorting while processing a search request.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.ExpressionStatus(Status, Options, ...)
@@ -61,8 +61,8 @@ function M.AssertDescribeAnalysisSchemesResponse(struct)
 end
 
 --- Create a structure of type DescribeAnalysisSchemesResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeAnalysisSchemes&lt;/code&gt; request. Contains the analysis schemes configured for the domain specified in the request.&lt;/p&gt;
--- @param AnalysisSchemes [AnalysisSchemeStatusList] &lt;p&gt;The analysis scheme descriptions.&lt;/p&gt;
+-- <p>The result of a <code>DescribeAnalysisSchemes</code> request. Contains the analysis schemes configured for the domain specified in the request.</p>
+-- @param AnalysisSchemes [AnalysisSchemeStatusList] <p>The analysis scheme descriptions.</p>
 -- Required parameter: AnalysisSchemes
 function M.DescribeAnalysisSchemesResponse(AnalysisSchemes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAnalysisSchemesResponse")
@@ -88,9 +88,9 @@ function M.AssertDeleteAnalysisSchemeRequest(struct)
 end
 
 --- Create a structure of type DeleteAnalysisSchemeRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DeleteAnalysisScheme&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the analysis scheme you want to delete. &lt;/p&gt;
--- @param AnalysisSchemeName [StandardName] &lt;p&gt;The name of the analysis scheme you want to delete.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DeleteAnalysisScheme&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the analysis scheme you want to delete. &lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DeleteAnalysisScheme</a></code> operation. Specifies the name of the domain you want to update and the analysis scheme you want to delete. </p>
+-- @param AnalysisSchemeName [StandardName] <p>The name of the analysis scheme you want to delete.</p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>DeleteAnalysisScheme</a></code> operation. Specifies the name of the domain you want to update and the analysis scheme you want to delete. </p>
 -- Required parameter: DomainName
 -- Required parameter: AnalysisSchemeName
 function M.DeleteAnalysisSchemeRequest(AnalysisSchemeName, DomainName, ...)
@@ -115,8 +115,8 @@ function M.AssertIndexDocumentsResponse(struct)
 end
 
 --- Create a structure of type IndexDocumentsResponse
--- &lt;p&gt;The result of an &lt;code&gt;IndexDocuments&lt;/code&gt; request. Contains the status of the indexing operation, including the fields being indexed.&lt;/p&gt;
--- @param FieldNames [FieldNameList] &lt;p&gt;The names of the fields that are currently being indexed.&lt;/p&gt;
+-- <p>The result of an <code>IndexDocuments</code> request. Contains the status of the indexing operation, including the fields being indexed.</p>
+-- @param FieldNames [FieldNameList] <p>The names of the fields that are currently being indexed.</p>
 function M.IndexDocumentsResponse(FieldNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IndexDocumentsResponse")
 	local t = { 
@@ -141,9 +141,9 @@ function M.AssertUpdateServiceAccessPoliciesRequest(struct)
 end
 
 --- Create a structure of type UpdateServiceAccessPoliciesRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;UpdateServiceAccessPolicies&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the access rules you want to configure.&lt;/p&gt;
--- @param AccessPolicies [PolicyDocument] &lt;p&gt;The access rules you want to configure. These rules replace any existing rules. &lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;UpdateServiceAccessPolicies&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the access rules you want to configure.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>UpdateServiceAccessPolicies</a></code> operation. Specifies the name of the domain you want to update and the access rules you want to configure.</p>
+-- @param AccessPolicies [PolicyDocument] <p>The access rules you want to configure. These rules replace any existing rules. </p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>UpdateServiceAccessPolicies</a></code> operation. Specifies the name of the domain you want to update and the access rules you want to configure.</p>
 -- Required parameter: DomainName
 -- Required parameter: AccessPolicies
 function M.UpdateServiceAccessPoliciesRequest(AccessPolicies, DomainName, ...)
@@ -169,8 +169,8 @@ function M.AssertDeleteIndexFieldResponse(struct)
 end
 
 --- Create a structure of type DeleteIndexFieldResponse
--- &lt;p&gt;The result of a &lt;code&gt;&lt;a&gt;DeleteIndexField&lt;/a&gt;&lt;/code&gt; request.&lt;/p&gt;
--- @param IndexField [IndexFieldStatus] &lt;p&gt;The status of the index field being deleted.&lt;/p&gt;
+-- <p>The result of a <code><a>DeleteIndexField</a></code> request.</p>
+-- @param IndexField [IndexFieldStatus] <p>The status of the index field being deleted.</p>
 -- Required parameter: IndexField
 function M.DeleteIndexFieldResponse(IndexField, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIndexFieldResponse")
@@ -198,13 +198,13 @@ function M.AssertDoubleOptions(struct)
 end
 
 --- Create a structure of type DoubleOptions
--- &lt;p&gt;Options for a double-precision 64-bit floating point field. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;double&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
--- @param SourceField [FieldName] &lt;p&gt;The name of the source field to map to the field. &lt;/p&gt;
--- @param DefaultValue [Double] &lt;p&gt;A value to use for the field if the field isn't specified for a document. This can be important if you are using the field in an expression and that field is not present in every document.&lt;/p&gt;
--- @param FacetEnabled [Boolean] &lt;p&gt;Whether facet information can be returned for the field.&lt;/p&gt;
--- @param SearchEnabled [Boolean] &lt;p&gt;Whether the contents of the field are searchable.&lt;/p&gt;
--- @param SortEnabled [Boolean] &lt;p&gt;Whether the field can be used to sort the search results.&lt;/p&gt;
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
+-- <p>Options for a double-precision 64-bit floating point field. Present if <code>IndexFieldType</code> specifies the field is of type <code>double</code>. All options are enabled by default.</p>
+-- @param SourceField [FieldName] <p>The name of the source field to map to the field. </p>
+-- @param DefaultValue [Double] <p>A value to use for the field if the field isn't specified for a document. This can be important if you are using the field in an expression and that field is not present in every document.</p>
+-- @param FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- @param SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- @param SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 function M.DoubleOptions(SourceField, DefaultValue, FacetEnabled, SearchEnabled, SortEnabled, ReturnEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DoubleOptions")
 	local t = { 
@@ -231,8 +231,8 @@ function M.AssertListDomainNamesResponse(struct)
 end
 
 --- Create a structure of type ListDomainNamesResponse
--- &lt;p&gt;The result of a &lt;code&gt;ListDomainNames&lt;/code&gt; request. Contains a list of the domains owned by an account.&lt;/p&gt;
--- @param DomainNames [DomainNameMap] &lt;p&gt;The names of the search domains owned by an account.&lt;/p&gt;
+-- <p>The result of a <code>ListDomainNames</code> request. Contains a list of the domains owned by an account.</p>
+-- @param DomainNames [DomainNameMap] <p>The names of the search domains owned by an account.</p>
 function M.ListDomainNamesResponse(DomainNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainNamesResponse")
 	local t = { 
@@ -257,9 +257,9 @@ function M.AssertAnalysisSchemeStatus(struct)
 end
 
 --- Create a structure of type AnalysisSchemeStatus
--- &lt;p&gt;The status and configuration of an &lt;code&gt;AnalysisScheme&lt;/code&gt;.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt;The status and configuration of an &lt;code&gt;AnalysisScheme&lt;/code&gt;.&lt;/p&gt;
--- @param Options [AnalysisScheme] &lt;p&gt;The status and configuration of an &lt;code&gt;AnalysisScheme&lt;/code&gt;.&lt;/p&gt;
+-- <p>The status and configuration of an <code>AnalysisScheme</code>.</p>
+-- @param Status [OptionStatus] <p>The status and configuration of an <code>AnalysisScheme</code>.</p>
+-- @param Options [AnalysisScheme] <p>The status and configuration of an <code>AnalysisScheme</code>.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.AnalysisSchemeStatus(Status, Options, ...)
@@ -288,12 +288,12 @@ function M.AssertDateArrayOptions(struct)
 end
 
 --- Create a structure of type DateArrayOptions
--- &lt;p&gt;Options for a field that contains an array of dates. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;date-array&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
--- @param SourceFields [FieldNameCommaList] &lt;p&gt;A list of source fields to map to the field. &lt;/p&gt;
--- @param FacetEnabled [Boolean] &lt;p&gt;Whether facet information can be returned for the field.&lt;/p&gt;
+-- <p>Options for a field that contains an array of dates. Present if <code>IndexFieldType</code> specifies the field is of type <code>date-array</code>. All options are enabled by default.</p>
+-- @param SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
+-- @param FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
 -- @param DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
--- @param SearchEnabled [Boolean] &lt;p&gt;Whether the contents of the field are searchable.&lt;/p&gt;
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @param SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
 function M.DateArrayOptions(SourceFields, FacetEnabled, DefaultValue, ReturnEnabled, SearchEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DateArrayOptions")
 	local t = { 
@@ -320,8 +320,8 @@ function M.AssertDescribeDomainsResponse(struct)
 end
 
 --- Create a structure of type DescribeDomainsResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeDomains&lt;/code&gt; request. Contains the status of the domains specified in the request or all domains owned by the account.&lt;/p&gt;
--- @param DomainStatusList [DomainStatusList] &lt;p&gt;The result of a &lt;code&gt;DescribeDomains&lt;/code&gt; request. Contains the status of the domains specified in the request or all domains owned by the account.&lt;/p&gt;
+-- <p>The result of a <code>DescribeDomains</code> request. Contains the status of the domains specified in the request or all domains owned by the account.</p>
+-- @param DomainStatusList [DomainStatusList] <p>The result of a <code>DescribeDomains</code> request. Contains the status of the domains specified in the request or all domains owned by the account.</p>
 -- Required parameter: DomainStatusList
 function M.DescribeDomainsResponse(DomainStatusList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDomainsResponse")
@@ -347,9 +347,9 @@ function M.AssertAvailabilityOptionsStatus(struct)
 end
 
 --- Create a structure of type AvailabilityOptionsStatus
--- &lt;p&gt;The status and configuration of the domain's availability options.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt;The status and configuration of the domain's availability options.&lt;/p&gt;
--- @param Options [MultiAZ] &lt;p&gt;The availability options configured for the domain.&lt;/p&gt;
+-- <p>The status and configuration of the domain's availability options.</p>
+-- @param Status [OptionStatus] <p>The status and configuration of the domain's availability options.</p>
+-- @param Options [MultiAZ] <p>The availability options configured for the domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.AvailabilityOptionsStatus(Status, Options, ...)
@@ -376,9 +376,9 @@ function M.AssertDescribeServiceAccessPoliciesRequest(struct)
 end
 
 --- Create a structure of type DescribeServiceAccessPoliciesRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeServiceAccessPolicies&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to describe. To show the active configuration and exclude any pending changes, set the &lt;code&gt;Deployed&lt;/code&gt; option to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
--- @param Deployed [Boolean] &lt;p&gt;Whether to display the deployed configuration (&lt;code&gt;true&lt;/code&gt;) or include any pending changes (&lt;code&gt;false&lt;/code&gt;). Defaults to &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain you want to describe.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DescribeServiceAccessPolicies</a></code> operation. Specifies the name of the domain you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
+-- @param Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- @param DomainName [DomainName] <p>The name of the domain you want to describe.</p>
 -- Required parameter: DomainName
 function M.DescribeServiceAccessPoliciesRequest(Deployed, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServiceAccessPoliciesRequest")
@@ -405,9 +405,9 @@ function M.AssertDefineExpressionRequest(struct)
 end
 
 --- Create a structure of type DefineExpressionRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineExpression&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the expression you want to configure.&lt;/p&gt;
--- @param Expression [Expression] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineExpression&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the expression you want to configure.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineExpression&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the expression you want to configure.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DefineExpression</a></code> operation. Specifies the name of the domain you want to update and the expression you want to configure.</p>
+-- @param Expression [Expression] <p>Container for the parameters to the <code><a>DefineExpression</a></code> operation. Specifies the name of the domain you want to update and the expression you want to configure.</p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>DefineExpression</a></code> operation. Specifies the name of the domain you want to update and the expression you want to configure.</p>
 -- Required parameter: DomainName
 -- Required parameter: Expression
 function M.DefineExpressionRequest(Expression, DomainName, ...)
@@ -435,9 +435,9 @@ function M.AssertDeleteIndexFieldRequest(struct)
 end
 
 --- Create a structure of type DeleteIndexFieldRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DeleteIndexField&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the name of the index field you want to delete.&lt;/p&gt;
--- @param IndexFieldName [DynamicFieldName] &lt;p&gt;The name of the index field your want to remove from the domain's indexing options.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DeleteIndexField&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the name of the index field you want to delete.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DeleteIndexField</a></code> operation. Specifies the name of the domain you want to update and the name of the index field you want to delete.</p>
+-- @param IndexFieldName [DynamicFieldName] <p>The name of the index field your want to remove from the domain's indexing options.</p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>DeleteIndexField</a></code> operation. Specifies the name of the domain you want to update and the name of the index field you want to delete.</p>
 -- Required parameter: DomainName
 -- Required parameter: IndexFieldName
 function M.DeleteIndexFieldRequest(IndexFieldName, DomainName, ...)
@@ -466,12 +466,12 @@ function M.AssertLiteralArrayOptions(struct)
 end
 
 --- Create a structure of type LiteralArrayOptions
--- &lt;p&gt;Options for a field that contains an array of literal strings. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;literal-array&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
--- @param SourceFields [FieldNameCommaList] &lt;p&gt;A list of source fields to map to the field. &lt;/p&gt;
--- @param FacetEnabled [Boolean] &lt;p&gt;Whether facet information can be returned for the field.&lt;/p&gt;
+-- <p>Options for a field that contains an array of literal strings. Present if <code>IndexFieldType</code> specifies the field is of type <code>literal-array</code>. All options are enabled by default.</p>
+-- @param SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
+-- @param FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
 -- @param DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
--- @param SearchEnabled [Boolean] &lt;p&gt;Whether the contents of the field are searchable.&lt;/p&gt;
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @param SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
 function M.LiteralArrayOptions(SourceFields, FacetEnabled, DefaultValue, ReturnEnabled, SearchEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LiteralArrayOptions")
 	local t = { 
@@ -500,9 +500,9 @@ function M.AssertAccessPoliciesStatus(struct)
 end
 
 --- Create a structure of type AccessPoliciesStatus
--- &lt;p&gt;The configured access rules for the domain's document and search endpoints, and the current status of those rules.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt;The configured access rules for the domain's document and search endpoints, and the current status of those rules.&lt;/p&gt;
--- @param Options [PolicyDocument] &lt;p&gt;The configured access rules for the domain's document and search endpoints, and the current status of those rules.&lt;/p&gt;
+-- <p>The configured access rules for the domain's document and search endpoints, and the current status of those rules.</p>
+-- @param Status [OptionStatus] <p>The configured access rules for the domain's document and search endpoints, and the current status of those rules.</p>
+-- @param Options [PolicyDocument] <p>The configured access rules for the domain's document and search endpoints, and the current status of those rules.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.AccessPoliciesStatus(Status, Options, ...)
@@ -527,8 +527,8 @@ function M.AssertUpdateAvailabilityOptionsResponse(struct)
 end
 
 --- Create a structure of type UpdateAvailabilityOptionsResponse
--- &lt;p&gt;The result of a &lt;code&gt;UpdateAvailabilityOptions&lt;/code&gt; request. Contains the status of the domain's availability options. &lt;/p&gt;
--- @param AvailabilityOptions [AvailabilityOptionsStatus] &lt;p&gt;The newly-configured availability options. Indicates whether Multi-AZ is enabled for the domain. &lt;/p&gt;
+-- <p>The result of a <code>UpdateAvailabilityOptions</code> request. Contains the status of the domain's availability options. </p>
+-- @param AvailabilityOptions [AvailabilityOptionsStatus] <p>The newly-configured availability options. Indicates whether Multi-AZ is enabled for the domain. </p>
 function M.UpdateAvailabilityOptionsResponse(AvailabilityOptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAvailabilityOptionsResponse")
 	local t = { 
@@ -551,8 +551,8 @@ function M.AssertDefineExpressionResponse(struct)
 end
 
 --- Create a structure of type DefineExpressionResponse
--- &lt;p&gt;The result of a &lt;code&gt;DefineExpression&lt;/code&gt; request. Contains the status of the newly-configured expression.&lt;/p&gt;
--- @param Expression [ExpressionStatus] &lt;p&gt;The result of a &lt;code&gt;DefineExpression&lt;/code&gt; request. Contains the status of the newly-configured expression.&lt;/p&gt;
+-- <p>The result of a <code>DefineExpression</code> request. Contains the status of the newly-configured expression.</p>
+-- @param Expression [ExpressionStatus] <p>The result of a <code>DefineExpression</code> request. Contains the status of the newly-configured expression.</p>
 -- Required parameter: Expression
 function M.DefineExpressionResponse(Expression, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DefineExpressionResponse")
@@ -578,10 +578,10 @@ function M.AssertDocumentSuggesterOptions(struct)
 end
 
 --- Create a structure of type DocumentSuggesterOptions
--- &lt;p&gt;Options for a search suggester.&lt;/p&gt;
--- @param SortExpression [String] &lt;p&gt;An expression that computes a score for each suggestion to control how they are sorted. The scores are rounded to the nearest integer, with a floor of 0 and a ceiling of 2^31-1. A document's relevance score is not computed for suggestions, so sort expressions cannot reference the &lt;code&gt;_score&lt;/code&gt; value. To sort suggestions using a numeric field or existing expression, simply specify the name of the field or expression. If no expression is configured for the suggester, the suggestions are sorted with the closest matches listed first.&lt;/p&gt;
--- @param FuzzyMatching [SuggesterFuzzyMatching] &lt;p&gt;The level of fuzziness allowed when suggesting matches for a string: &lt;code&gt;none&lt;/code&gt;, &lt;code&gt;low&lt;/code&gt;, or &lt;code&gt;high&lt;/code&gt;. With none, the specified string is treated as an exact prefix. With low, suggestions must differ from the specified string by no more than one character. With high, suggestions can differ by up to two characters. The default is none. &lt;/p&gt;
--- @param SourceField [FieldName] &lt;p&gt;The name of the index field you want to use for suggestions. &lt;/p&gt;
+-- <p>Options for a search suggester.</p>
+-- @param SortExpression [String] <p>An expression that computes a score for each suggestion to control how they are sorted. The scores are rounded to the nearest integer, with a floor of 0 and a ceiling of 2^31-1. A document's relevance score is not computed for suggestions, so sort expressions cannot reference the <code>_score</code> value. To sort suggestions using a numeric field or existing expression, simply specify the name of the field or expression. If no expression is configured for the suggester, the suggestions are sorted with the closest matches listed first.</p>
+-- @param FuzzyMatching [SuggesterFuzzyMatching] <p>The level of fuzziness allowed when suggesting matches for a string: <code>none</code>, <code>low</code>, or <code>high</code>. With none, the specified string is treated as an exact prefix. With low, suggestions must differ from the specified string by no more than one character. With high, suggestions can differ by up to two characters. The default is none. </p>
+-- @param SourceField [FieldName] <p>The name of the index field you want to use for suggestions. </p>
 -- Required parameter: SourceField
 function M.DocumentSuggesterOptions(SortExpression, FuzzyMatching, SourceField, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentSuggesterOptions")
@@ -607,8 +607,8 @@ function M.AssertDefineAnalysisSchemeResponse(struct)
 end
 
 --- Create a structure of type DefineAnalysisSchemeResponse
--- &lt;p&gt;The result of a &lt;code&gt;&lt;a&gt;DefineAnalysisScheme&lt;/a&gt;&lt;/code&gt; request. Contains the status of the newly-configured analysis scheme.&lt;/p&gt;
--- @param AnalysisScheme [AnalysisSchemeStatus] &lt;p&gt;The result of a &lt;code&gt;&lt;a&gt;DefineAnalysisScheme&lt;/a&gt;&lt;/code&gt; request. Contains the status of the newly-configured analysis scheme.&lt;/p&gt;
+-- <p>The result of a <code><a>DefineAnalysisScheme</a></code> request. Contains the status of the newly-configured analysis scheme.</p>
+-- @param AnalysisScheme [AnalysisSchemeStatus] <p>The result of a <code><a>DefineAnalysisScheme</a></code> request. Contains the status of the newly-configured analysis scheme.</p>
 -- Required parameter: AnalysisScheme
 function M.DefineAnalysisSchemeResponse(AnalysisScheme, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DefineAnalysisSchemeResponse")
@@ -632,8 +632,8 @@ function M.AssertDeleteDomainRequest(struct)
 end
 
 --- Create a structure of type DeleteDomainRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DeleteDomain&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to delete.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain you want to permanently delete.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DeleteDomain</a></code> operation. Specifies the name of the domain you want to delete.</p>
+-- @param DomainName [DomainName] <p>The name of the domain you want to permanently delete.</p>
 -- Required parameter: DomainName
 function M.DeleteDomainRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainRequest")
@@ -657,8 +657,8 @@ function M.AssertUpdateScalingParametersResponse(struct)
 end
 
 --- Create a structure of type UpdateScalingParametersResponse
--- &lt;p&gt;The result of a &lt;code&gt;UpdateScalingParameters&lt;/code&gt; request. Contains the status of the newly-configured scaling parameters.&lt;/p&gt;
--- @param ScalingParameters [ScalingParametersStatus] &lt;p&gt;The result of a &lt;code&gt;UpdateScalingParameters&lt;/code&gt; request. Contains the status of the newly-configured scaling parameters.&lt;/p&gt;
+-- <p>The result of a <code>UpdateScalingParameters</code> request. Contains the status of the newly-configured scaling parameters.</p>
+-- @param ScalingParameters [ScalingParametersStatus] <p>The result of a <code>UpdateScalingParameters</code> request. Contains the status of the newly-configured scaling parameters.</p>
 -- Required parameter: ScalingParameters
 function M.UpdateScalingParametersResponse(ScalingParameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateScalingParametersResponse")
@@ -684,9 +684,9 @@ function M.AssertSuggesterStatus(struct)
 end
 
 --- Create a structure of type SuggesterStatus
--- &lt;p&gt;The value of a &lt;code&gt;Suggester&lt;/code&gt; and its current status.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt;The value of a &lt;code&gt;Suggester&lt;/code&gt; and its current status.&lt;/p&gt;
--- @param Options [Suggester] &lt;p&gt;The value of a &lt;code&gt;Suggester&lt;/code&gt; and its current status.&lt;/p&gt;
+-- <p>The value of a <code>Suggester</code> and its current status.</p>
+-- @param Status [OptionStatus] <p>The value of a <code>Suggester</code> and its current status.</p>
+-- @param Options [Suggester] <p>The value of a <code>Suggester</code> and its current status.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.SuggesterStatus(Status, Options, ...)
@@ -712,8 +712,8 @@ function M.AssertDescribeScalingParametersRequest(struct)
 end
 
 --- Create a structure of type DescribeScalingParametersRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeScalingParameters&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to describe. &lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeScalingParameters&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to describe. &lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DescribeScalingParameters</a></code> operation. Specifies the name of the domain you want to describe. </p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>DescribeScalingParameters</a></code> operation. Specifies the name of the domain you want to describe. </p>
 -- Required parameter: DomainName
 function M.DescribeScalingParametersRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScalingParametersRequest")
@@ -737,8 +737,8 @@ function M.AssertDeleteSuggesterResponse(struct)
 end
 
 --- Create a structure of type DeleteSuggesterResponse
--- &lt;p&gt;The result of a &lt;code&gt;DeleteSuggester&lt;/code&gt; request. Contains the status of the deleted suggester.&lt;/p&gt;
--- @param Suggester [SuggesterStatus] &lt;p&gt;The status of the suggester being deleted.&lt;/p&gt;
+-- <p>The result of a <code>DeleteSuggester</code> request. Contains the status of the deleted suggester.</p>
+-- @param Suggester [SuggesterStatus] <p>The status of the suggester being deleted.</p>
 -- Required parameter: Suggester
 function M.DeleteSuggesterResponse(Suggester, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSuggesterResponse")
@@ -762,8 +762,8 @@ function M.AssertDeleteExpressionResponse(struct)
 end
 
 --- Create a structure of type DeleteExpressionResponse
--- &lt;p&gt;The result of a &lt;code&gt;&lt;a&gt;DeleteExpression&lt;/a&gt;&lt;/code&gt; request. Specifies the expression being deleted.&lt;/p&gt;
--- @param Expression [ExpressionStatus] &lt;p&gt;The status of the expression being deleted.&lt;/p&gt;
+-- <p>The result of a <code><a>DeleteExpression</a></code> request. Specifies the expression being deleted.</p>
+-- @param Expression [ExpressionStatus] <p>The status of the expression being deleted.</p>
 -- Required parameter: Expression
 function M.DeleteExpressionResponse(Expression, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteExpressionResponse")
@@ -788,10 +788,10 @@ function M.AssertScalingParameters(struct)
 end
 
 --- Create a structure of type ScalingParameters
--- &lt;p&gt;The desired instance type and desired number of replicas of each index partition.&lt;/p&gt;
--- @param DesiredPartitionCount [UIntValue] &lt;p&gt;The number of partitions you want to preconfigure for your domain. Only valid when you select &lt;code&gt;m2.2xlarge&lt;/code&gt; as the desired instance type.&lt;/p&gt;
--- @param DesiredInstanceType [PartitionInstanceType] &lt;p&gt;The instance type that you want to preconfigure for your domain. For example, &lt;code&gt;search.m1.small&lt;/code&gt;.&lt;/p&gt;
--- @param DesiredReplicationCount [UIntValue] &lt;p&gt;The number of replicas you want to preconfigure for each index partition.&lt;/p&gt;
+-- <p>The desired instance type and desired number of replicas of each index partition.</p>
+-- @param DesiredPartitionCount [UIntValue] <p>The number of partitions you want to preconfigure for your domain. Only valid when you select <code>m2.2xlarge</code> as the desired instance type.</p>
+-- @param DesiredInstanceType [PartitionInstanceType] <p>The instance type that you want to preconfigure for your domain. For example, <code>search.m1.small</code>.</p>
+-- @param DesiredReplicationCount [UIntValue] <p>The number of replicas you want to preconfigure for each index partition.</p>
 function M.ScalingParameters(DesiredPartitionCount, DesiredInstanceType, DesiredReplicationCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingParameters")
 	local t = { 
@@ -816,8 +816,8 @@ function M.AssertDeleteAnalysisSchemeResponse(struct)
 end
 
 --- Create a structure of type DeleteAnalysisSchemeResponse
--- &lt;p&gt;The result of a &lt;code&gt;DeleteAnalysisScheme&lt;/code&gt; request. Contains the status of the deleted analysis scheme.&lt;/p&gt;
--- @param AnalysisScheme [AnalysisSchemeStatus] &lt;p&gt;The status of the analysis scheme being deleted.&lt;/p&gt;
+-- <p>The result of a <code>DeleteAnalysisScheme</code> request. Contains the status of the deleted analysis scheme.</p>
+-- @param AnalysisScheme [AnalysisSchemeStatus] <p>The status of the analysis scheme being deleted.</p>
 -- Required parameter: AnalysisScheme
 function M.DeleteAnalysisSchemeResponse(AnalysisScheme, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAnalysisSchemeResponse")
@@ -843,9 +843,9 @@ function M.AssertDefineSuggesterRequest(struct)
 end
 
 --- Create a structure of type DefineSuggesterRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineSuggester&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the suggester configuration.&lt;/p&gt;
--- @param Suggester [Suggester] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineSuggester&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the suggester configuration.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineSuggester&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the suggester configuration.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DefineSuggester</a></code> operation. Specifies the name of the domain you want to update and the suggester configuration.</p>
+-- @param Suggester [Suggester] <p>Container for the parameters to the <code><a>DefineSuggester</a></code> operation. Specifies the name of the domain you want to update and the suggester configuration.</p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>DefineSuggester</a></code> operation. Specifies the name of the domain you want to update and the suggester configuration.</p>
 -- Required parameter: DomainName
 -- Required parameter: Suggester
 function M.DefineSuggesterRequest(Suggester, DomainName, ...)
@@ -869,7 +869,7 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;The request was rejected because a resource limit has already been met.&lt;/p&gt;
+-- <p>The request was rejected because a resource limit has already been met.</p>
 function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -893,9 +893,9 @@ function M.AssertSuggester(struct)
 end
 
 --- Create a structure of type Suggester
--- &lt;p&gt;Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: &lt;code&gt;FuzzyMatching&lt;/code&gt;, &lt;code&gt;SortExpression&lt;/code&gt;. &lt;/p&gt;
--- @param DocumentSuggesterOptions [DocumentSuggesterOptions] &lt;p&gt;Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: &lt;code&gt;FuzzyMatching&lt;/code&gt;, &lt;code&gt;SortExpression&lt;/code&gt;. &lt;/p&gt;
--- @param SuggesterName [StandardName] &lt;p&gt;Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: &lt;code&gt;FuzzyMatching&lt;/code&gt;, &lt;code&gt;SortExpression&lt;/code&gt;. &lt;/p&gt;
+-- <p>Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: <code>FuzzyMatching</code>, <code>SortExpression</code>. </p>
+-- @param DocumentSuggesterOptions [DocumentSuggesterOptions] <p>Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: <code>FuzzyMatching</code>, <code>SortExpression</code>. </p>
+-- @param SuggesterName [StandardName] <p>Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: <code>FuzzyMatching</code>, <code>SortExpression</code>. </p>
 -- Required parameter: SuggesterName
 -- Required parameter: DocumentSuggesterOptions
 function M.Suggester(DocumentSuggesterOptions, SuggesterName, ...)
@@ -921,8 +921,8 @@ function M.AssertDescribeExpressionsResponse(struct)
 end
 
 --- Create a structure of type DescribeExpressionsResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeExpressions&lt;/code&gt; request. Contains the expressions configured for the domain specified in the request.&lt;/p&gt;
--- @param Expressions [ExpressionStatusList] &lt;p&gt;The expressions configured for the domain.&lt;/p&gt;
+-- <p>The result of a <code>DescribeExpressions</code> request. Contains the expressions configured for the domain specified in the request.</p>
+-- @param Expressions [ExpressionStatusList] <p>The expressions configured for the domain.</p>
 -- Required parameter: Expressions
 function M.DescribeExpressionsResponse(Expressions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExpressionsResponse")
@@ -948,9 +948,9 @@ function M.AssertUpdateScalingParametersRequest(struct)
 end
 
 --- Create a structure of type UpdateScalingParametersRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;UpdateScalingParameters&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the scaling parameters you want to configure.&lt;/p&gt;
--- @param ScalingParameters [ScalingParameters] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;UpdateScalingParameters&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the scaling parameters you want to configure.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;UpdateScalingParameters&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the scaling parameters you want to configure.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>UpdateScalingParameters</a></code> operation. Specifies the name of the domain you want to update and the scaling parameters you want to configure.</p>
+-- @param ScalingParameters [ScalingParameters] <p>Container for the parameters to the <code><a>UpdateScalingParameters</a></code> operation. Specifies the name of the domain you want to update and the scaling parameters you want to configure.</p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>UpdateScalingParameters</a></code> operation. Specifies the name of the domain you want to update and the scaling parameters you want to configure.</p>
 -- Required parameter: DomainName
 -- Required parameter: ScalingParameters
 function M.UpdateScalingParametersRequest(ScalingParameters, DomainName, ...)
@@ -980,13 +980,13 @@ function M.AssertLiteralOptions(struct)
 end
 
 --- Create a structure of type LiteralOptions
--- &lt;p&gt;Options for literal field. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;literal&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
--- @param SourceField [FieldName] &lt;p&gt;Options for literal field. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;literal&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
+-- <p>Options for literal field. Present if <code>IndexFieldType</code> specifies the field is of type <code>literal</code>. All options are enabled by default.</p>
+-- @param SourceField [FieldName] <p>Options for literal field. Present if <code>IndexFieldType</code> specifies the field is of type <code>literal</code>. All options are enabled by default.</p>
 -- @param DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param FacetEnabled [Boolean] &lt;p&gt;Whether facet information can be returned for the field.&lt;/p&gt;
--- @param SearchEnabled [Boolean] &lt;p&gt;Whether the contents of the field are searchable.&lt;/p&gt;
--- @param SortEnabled [Boolean] &lt;p&gt;Whether the field can be used to sort the search results.&lt;/p&gt;
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
+-- @param FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- @param SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- @param SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 function M.LiteralOptions(SourceField, DefaultValue, FacetEnabled, SearchEnabled, SortEnabled, ReturnEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LiteralOptions")
 	local t = { 
@@ -1013,8 +1013,8 @@ function M.AssertCreateDomainResponse(struct)
 end
 
 --- Create a structure of type CreateDomainResponse
--- &lt;p&gt;The result of a &lt;code&gt;CreateDomainRequest&lt;/code&gt;. Contains the status of a newly created domain.&lt;/p&gt;
--- @param DomainStatus [DomainStatus] &lt;p&gt;The result of a &lt;code&gt;CreateDomainRequest&lt;/code&gt;. Contains the status of a newly created domain.&lt;/p&gt;
+-- <p>The result of a <code>CreateDomainRequest</code>. Contains the status of a newly created domain.</p>
+-- @param DomainStatus [DomainStatus] <p>The result of a <code>CreateDomainRequest</code>. Contains the status of a newly created domain.</p>
 function M.CreateDomainResponse(DomainStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainResponse")
 	local t = { 
@@ -1036,8 +1036,8 @@ function M.AssertServiceEndpoint(struct)
 end
 
 --- Create a structure of type ServiceEndpoint
--- &lt;p&gt;The endpoint to which service requests can be submitted.&lt;/p&gt;
--- @param Endpoint [ServiceUrl] &lt;p&gt;The endpoint to which service requests can be submitted.&lt;/p&gt;
+-- <p>The endpoint to which service requests can be submitted.</p>
+-- @param Endpoint [ServiceUrl] <p>The endpoint to which service requests can be submitted.</p>
 function M.ServiceEndpoint(Endpoint, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceEndpoint")
 	local t = { 
@@ -1060,9 +1060,9 @@ function M.AssertBaseException(struct)
 end
 
 --- Create a structure of type BaseException
--- &lt;p&gt;An error occurred while processing the request.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;An error occurred while processing the request.&lt;/p&gt;
--- @param Code [ErrorCode] &lt;p&gt;An error occurred while processing the request.&lt;/p&gt;
+-- <p>An error occurred while processing the request.</p>
+-- @param Message [ErrorMessage] <p>An error occurred while processing the request.</p>
+-- @param Code [ErrorCode] <p>An error occurred while processing the request.</p>
 function M.BaseException(Message, Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BaseException")
 	local t = { 
@@ -1088,9 +1088,9 @@ function M.AssertDeleteSuggesterRequest(struct)
 end
 
 --- Create a structure of type DeleteSuggesterRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DeleteSuggester&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and name of the suggester you want to delete.&lt;/p&gt;
--- @param SuggesterName [StandardName] &lt;p&gt;Specifies the name of the suggester you want to delete.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DeleteSuggester&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and name of the suggester you want to delete.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DeleteSuggester</a></code> operation. Specifies the name of the domain you want to update and name of the suggester you want to delete.</p>
+-- @param SuggesterName [StandardName] <p>Specifies the name of the suggester you want to delete.</p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>DeleteSuggester</a></code> operation. Specifies the name of the domain you want to update and name of the suggester you want to delete.</p>
 -- Required parameter: DomainName
 -- Required parameter: SuggesterName
 function M.DeleteSuggesterRequest(SuggesterName, DomainName, ...)
@@ -1118,10 +1118,10 @@ function M.AssertDescribeExpressionsRequest(struct)
 end
 
 --- Create a structure of type DescribeExpressionsRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeDomains&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to describe. To restrict the response to particular expressions, specify the names of the expressions you want to describe. To show the active configuration and exclude any pending changes, set the &lt;code&gt;Deployed&lt;/code&gt; option to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
--- @param ExpressionNames [StandardNameList] &lt;p&gt;Limits the &lt;code&gt;&lt;a&gt;DescribeExpressions&lt;/a&gt;&lt;/code&gt; response to the specified expressions. If not specified, all expressions are shown.&lt;/p&gt;
--- @param Deployed [Boolean] &lt;p&gt;Whether to display the deployed configuration (&lt;code&gt;true&lt;/code&gt;) or include any pending changes (&lt;code&gt;false&lt;/code&gt;). Defaults to &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain you want to describe.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DescribeDomains</a></code> operation. Specifies the name of the domain you want to describe. To restrict the response to particular expressions, specify the names of the expressions you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
+-- @param ExpressionNames [StandardNameList] <p>Limits the <code><a>DescribeExpressions</a></code> response to the specified expressions. If not specified, all expressions are shown.</p>
+-- @param Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- @param DomainName [DomainName] <p>The name of the domain you want to describe.</p>
 -- Required parameter: DomainName
 function M.DescribeExpressionsRequest(ExpressionNames, Deployed, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExpressionsRequest")
@@ -1151,13 +1151,13 @@ function M.AssertLatLonOptions(struct)
 end
 
 --- Create a structure of type LatLonOptions
--- &lt;p&gt;Options for a latlon field. A latlon field contains a location stored as a latitude and longitude value pair. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;latlon&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
--- @param SourceField [FieldName] &lt;p&gt;Options for a latlon field. A latlon field contains a location stored as a latitude and longitude value pair. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;latlon&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
+-- <p>Options for a latlon field. A latlon field contains a location stored as a latitude and longitude value pair. Present if <code>IndexFieldType</code> specifies the field is of type <code>latlon</code>. All options are enabled by default.</p>
+-- @param SourceField [FieldName] <p>Options for a latlon field. A latlon field contains a location stored as a latitude and longitude value pair. Present if <code>IndexFieldType</code> specifies the field is of type <code>latlon</code>. All options are enabled by default.</p>
 -- @param DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param FacetEnabled [Boolean] &lt;p&gt;Whether facet information can be returned for the field.&lt;/p&gt;
--- @param SearchEnabled [Boolean] &lt;p&gt;Whether the contents of the field are searchable.&lt;/p&gt;
--- @param SortEnabled [Boolean] &lt;p&gt;Whether the field can be used to sort the search results.&lt;/p&gt;
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
+-- @param FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- @param SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- @param SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 function M.LatLonOptions(SourceField, DefaultValue, FacetEnabled, SearchEnabled, SortEnabled, ReturnEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LatLonOptions")
 	local t = { 
@@ -1189,13 +1189,13 @@ function M.AssertDateOptions(struct)
 end
 
 --- Create a structure of type DateOptions
--- &lt;p&gt;Options for a date field. Dates and times are specified in UTC (Coordinated Universal Time) according to IETF RFC3339: yyyy-mm-ddT00:00:00Z. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;date&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
--- @param SourceField [FieldName] &lt;p&gt;Options for a date field. Dates and times are specified in UTC (Coordinated Universal Time) according to IETF RFC3339: yyyy-mm-ddT00:00:00Z. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;date&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
+-- <p>Options for a date field. Dates and times are specified in UTC (Coordinated Universal Time) according to IETF RFC3339: yyyy-mm-ddT00:00:00Z. Present if <code>IndexFieldType</code> specifies the field is of type <code>date</code>. All options are enabled by default.</p>
+-- @param SourceField [FieldName] <p>Options for a date field. Dates and times are specified in UTC (Coordinated Universal Time) according to IETF RFC3339: yyyy-mm-ddT00:00:00Z. Present if <code>IndexFieldType</code> specifies the field is of type <code>date</code>. All options are enabled by default.</p>
 -- @param DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param FacetEnabled [Boolean] &lt;p&gt;Whether facet information can be returned for the field.&lt;/p&gt;
--- @param SearchEnabled [Boolean] &lt;p&gt;Whether the contents of the field are searchable.&lt;/p&gt;
--- @param SortEnabled [Boolean] &lt;p&gt;Whether the field can be used to sort the search results.&lt;/p&gt;
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
+-- @param FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- @param SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- @param SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 function M.DateOptions(SourceField, DefaultValue, FacetEnabled, SearchEnabled, SortEnabled, ReturnEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DateOptions")
 	local t = { 
@@ -1225,9 +1225,9 @@ function M.AssertDefineIndexFieldRequest(struct)
 end
 
 --- Create a structure of type DefineIndexFieldRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineIndexField&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the index field configuration.&lt;/p&gt;
--- @param IndexField [IndexField] &lt;p&gt;The index field and field options you want to configure. &lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineIndexField&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the index field configuration.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DefineIndexField</a></code> operation. Specifies the name of the domain you want to update and the index field configuration.</p>
+-- @param IndexField [IndexField] <p>The index field and field options you want to configure. </p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>DefineIndexField</a></code> operation. Specifies the name of the domain you want to update and the index field configuration.</p>
 -- Required parameter: DomainName
 -- Required parameter: IndexField
 function M.DefineIndexFieldRequest(IndexField, DomainName, ...)
@@ -1253,8 +1253,8 @@ function M.AssertDescribeScalingParametersResponse(struct)
 end
 
 --- Create a structure of type DescribeScalingParametersResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeScalingParameters&lt;/code&gt; request. Contains the scaling parameters configured for the domain specified in the request.&lt;/p&gt;
--- @param ScalingParameters [ScalingParametersStatus] &lt;p&gt;The result of a &lt;code&gt;DescribeScalingParameters&lt;/code&gt; request. Contains the scaling parameters configured for the domain specified in the request.&lt;/p&gt;
+-- <p>The result of a <code>DescribeScalingParameters</code> request. Contains the scaling parameters configured for the domain specified in the request.</p>
+-- @param ScalingParameters [ScalingParametersStatus] <p>The result of a <code>DescribeScalingParameters</code> request. Contains the scaling parameters configured for the domain specified in the request.</p>
 -- Required parameter: ScalingParameters
 function M.DescribeScalingParametersResponse(ScalingParameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScalingParametersResponse")
@@ -1278,8 +1278,8 @@ function M.AssertCreateDomainRequest(struct)
 end
 
 --- Create a structure of type CreateDomainRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;CreateDomain&lt;/a&gt;&lt;/code&gt; operation. Specifies a name for the new search domain.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;A name for the domain you are creating. Allowed characters are a-z (lower-case letters), 0-9, and hyphen (-). Domain names must start with a letter or number and be at least 3 and no more than 28 characters long.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>CreateDomain</a></code> operation. Specifies a name for the new search domain.</p>
+-- @param DomainName [DomainName] <p>A name for the domain you are creating. Allowed characters are a-z (lower-case letters), 0-9, and hyphen (-). Domain names must start with a letter or number and be at least 3 and no more than 28 characters long.</p>
 -- Required parameter: DomainName
 function M.CreateDomainRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainRequest")
@@ -1331,7 +1331,7 @@ function M.AssertInternalException(struct)
 end
 
 --- Create a structure of type InternalException
--- &lt;p&gt;An internal error occurred while processing the request. If this problem persists, report an issue from the &lt;a href=&quot;http://status.aws.amazon.com/&quot; target=&quot;_blank&quot;&gt;Service Health Dashboard&lt;/a&gt;.&lt;/p&gt;
+-- <p>An internal error occurred while processing the request. If this problem persists, report an issue from the <a href="http://status.aws.amazon.com/" target="_blank">Service Health Dashboard</a>.</p>
 function M.InternalException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalException")
 	local t = { 
@@ -1367,20 +1367,20 @@ function M.AssertDomainStatus(struct)
 end
 
 --- Create a structure of type DomainStatus
--- &lt;p&gt;The current status of the search domain.&lt;/p&gt;
--- @param SearchInstanceType [SearchInstanceType] &lt;p&gt;The instance type that is being used to process search requests.&lt;/p&gt;
--- @param DomainId [DomainId] &lt;p&gt;The current status of the search domain.&lt;/p&gt;
--- @param Limits [Limits] &lt;p&gt;The current status of the search domain.&lt;/p&gt;
--- @param Created [Boolean] &lt;p&gt;True if the search domain is created. It can take several minutes to initialize a domain when &lt;a&gt;CreateDomain&lt;/a&gt; is called. Newly created search domains are returned from &lt;a&gt;DescribeDomains&lt;/a&gt; with a false value for Created until domain creation is complete.&lt;/p&gt;
--- @param Deleted [Boolean] &lt;p&gt;True if the search domain has been deleted. The system must clean up resources dedicated to the search domain when &lt;a&gt;DeleteDomain&lt;/a&gt; is called. Newly deleted search domains are returned from &lt;a&gt;DescribeDomains&lt;/a&gt; with a true value for IsDeleted for several minutes until resource cleanup is complete.&lt;/p&gt;
--- @param SearchInstanceCount [InstanceCount] &lt;p&gt;The number of search instances that are available to process search requests.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The current status of the search domain.&lt;/p&gt;
--- @param SearchService [ServiceEndpoint] &lt;p&gt;The service endpoint for requesting search results from a search domain.&lt;/p&gt;
--- @param RequiresIndexDocuments [Boolean] &lt;p&gt;True if &lt;a&gt;IndexDocuments&lt;/a&gt; needs to be called to activate the current domain configuration.&lt;/p&gt;
--- @param Processing [Boolean] &lt;p&gt;True if processing is being done to activate the current domain configuration.&lt;/p&gt;
--- @param DocService [ServiceEndpoint] &lt;p&gt;The service endpoint for updating documents in a search domain.&lt;/p&gt;
--- @param ARN [ARN] &lt;p&gt;The current status of the search domain.&lt;/p&gt;
--- @param SearchPartitionCount [PartitionCount] &lt;p&gt;The number of partitions across which the search index is spread.&lt;/p&gt;
+-- <p>The current status of the search domain.</p>
+-- @param SearchInstanceType [SearchInstanceType] <p>The instance type that is being used to process search requests.</p>
+-- @param DomainId [DomainId] <p>The current status of the search domain.</p>
+-- @param Limits [Limits] <p>The current status of the search domain.</p>
+-- @param Created [Boolean] <p>True if the search domain is created. It can take several minutes to initialize a domain when <a>CreateDomain</a> is called. Newly created search domains are returned from <a>DescribeDomains</a> with a false value for Created until domain creation is complete.</p>
+-- @param Deleted [Boolean] <p>True if the search domain has been deleted. The system must clean up resources dedicated to the search domain when <a>DeleteDomain</a> is called. Newly deleted search domains are returned from <a>DescribeDomains</a> with a true value for IsDeleted for several minutes until resource cleanup is complete.</p>
+-- @param SearchInstanceCount [InstanceCount] <p>The number of search instances that are available to process search requests.</p>
+-- @param DomainName [DomainName] <p>The current status of the search domain.</p>
+-- @param SearchService [ServiceEndpoint] <p>The service endpoint for requesting search results from a search domain.</p>
+-- @param RequiresIndexDocuments [Boolean] <p>True if <a>IndexDocuments</a> needs to be called to activate the current domain configuration.</p>
+-- @param Processing [Boolean] <p>True if processing is being done to activate the current domain configuration.</p>
+-- @param DocService [ServiceEndpoint] <p>The service endpoint for updating documents in a search domain.</p>
+-- @param ARN [ARN] <p>The current status of the search domain.</p>
+-- @param SearchPartitionCount [PartitionCount] <p>The number of partitions across which the search index is spread.</p>
 -- Required parameter: DomainId
 -- Required parameter: DomainName
 -- Required parameter: RequiresIndexDocuments
@@ -1418,8 +1418,8 @@ function M.AssertUpdateServiceAccessPoliciesResponse(struct)
 end
 
 --- Create a structure of type UpdateServiceAccessPoliciesResponse
--- &lt;p&gt;The result of an &lt;code&gt;UpdateServiceAccessPolicies&lt;/code&gt; request. Contains the new access policies.&lt;/p&gt;
--- @param AccessPolicies [AccessPoliciesStatus] &lt;p&gt;The access rules configured for the domain.&lt;/p&gt;
+-- <p>The result of an <code>UpdateServiceAccessPolicies</code> request. Contains the new access policies.</p>
+-- @param AccessPolicies [AccessPoliciesStatus] <p>The access rules configured for the domain.</p>
 -- Required parameter: AccessPolicies
 function M.UpdateServiceAccessPoliciesResponse(AccessPolicies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServiceAccessPoliciesResponse")
@@ -1445,9 +1445,9 @@ function M.AssertExpression(struct)
 end
 
 --- Create a structure of type Expression
--- &lt;p&gt;A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results. &lt;/p&gt;
--- @param ExpressionName [StandardName] &lt;p&gt;A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results. &lt;/p&gt;
--- @param ExpressionValue [ExpressionValue] &lt;p&gt;A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results. &lt;/p&gt;
+-- <p>A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results. </p>
+-- @param ExpressionName [StandardName] <p>A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results. </p>
+-- @param ExpressionValue [ExpressionValue] <p>A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results. </p>
 -- Required parameter: ExpressionName
 -- Required parameter: ExpressionValue
 function M.Expression(ExpressionName, ExpressionValue, ...)
@@ -1473,8 +1473,8 @@ function M.AssertDefineSuggesterResponse(struct)
 end
 
 --- Create a structure of type DefineSuggesterResponse
--- &lt;p&gt;The result of a &lt;code&gt;DefineSuggester&lt;/code&gt; request. Contains the status of the newly-configured suggester.&lt;/p&gt;
--- @param Suggester [SuggesterStatus] &lt;p&gt;The result of a &lt;code&gt;DefineSuggester&lt;/code&gt; request. Contains the status of the newly-configured suggester.&lt;/p&gt;
+-- <p>The result of a <code>DefineSuggester</code> request. Contains the status of the newly-configured suggester.</p>
+-- @param Suggester [SuggesterStatus] <p>The result of a <code>DefineSuggester</code> request. Contains the status of the newly-configured suggester.</p>
 -- Required parameter: Suggester
 function M.DefineSuggesterResponse(Suggester, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DefineSuggesterResponse")
@@ -1501,10 +1501,10 @@ function M.AssertAnalysisScheme(struct)
 end
 
 --- Create a structure of type AnalysisScheme
--- &lt;p&gt;Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: &lt;code&gt;Synonyms&lt;/code&gt;, &lt;code&gt;Stopwords&lt;/code&gt;, &lt;code&gt;StemmingDictionary&lt;/code&gt;, &lt;code&gt;JapaneseTokenizationDictionary&lt;/code&gt; and &lt;code&gt;AlgorithmicStemming&lt;/code&gt;.&lt;/p&gt;
--- @param AnalysisSchemeLanguage [AnalysisSchemeLanguage] &lt;p&gt;Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: &lt;code&gt;Synonyms&lt;/code&gt;, &lt;code&gt;Stopwords&lt;/code&gt;, &lt;code&gt;StemmingDictionary&lt;/code&gt;, &lt;code&gt;JapaneseTokenizationDictionary&lt;/code&gt; and &lt;code&gt;AlgorithmicStemming&lt;/code&gt;.&lt;/p&gt;
--- @param AnalysisSchemeName [StandardName] &lt;p&gt;Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: &lt;code&gt;Synonyms&lt;/code&gt;, &lt;code&gt;Stopwords&lt;/code&gt;, &lt;code&gt;StemmingDictionary&lt;/code&gt;, &lt;code&gt;JapaneseTokenizationDictionary&lt;/code&gt; and &lt;code&gt;AlgorithmicStemming&lt;/code&gt;.&lt;/p&gt;
--- @param AnalysisOptions [AnalysisOptions] &lt;p&gt;Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: &lt;code&gt;Synonyms&lt;/code&gt;, &lt;code&gt;Stopwords&lt;/code&gt;, &lt;code&gt;StemmingDictionary&lt;/code&gt;, &lt;code&gt;JapaneseTokenizationDictionary&lt;/code&gt; and &lt;code&gt;AlgorithmicStemming&lt;/code&gt;.&lt;/p&gt;
+-- <p>Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: <code>Synonyms</code>, <code>Stopwords</code>, <code>StemmingDictionary</code>, <code>JapaneseTokenizationDictionary</code> and <code>AlgorithmicStemming</code>.</p>
+-- @param AnalysisSchemeLanguage [AnalysisSchemeLanguage] <p>Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: <code>Synonyms</code>, <code>Stopwords</code>, <code>StemmingDictionary</code>, <code>JapaneseTokenizationDictionary</code> and <code>AlgorithmicStemming</code>.</p>
+-- @param AnalysisSchemeName [StandardName] <p>Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: <code>Synonyms</code>, <code>Stopwords</code>, <code>StemmingDictionary</code>, <code>JapaneseTokenizationDictionary</code> and <code>AlgorithmicStemming</code>.</p>
+-- @param AnalysisOptions [AnalysisOptions] <p>Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: <code>Synonyms</code>, <code>Stopwords</code>, <code>StemmingDictionary</code>, <code>JapaneseTokenizationDictionary</code> and <code>AlgorithmicStemming</code>.</p>
 -- Required parameter: AnalysisSchemeName
 -- Required parameter: AnalysisSchemeLanguage
 function M.AnalysisScheme(AnalysisSchemeLanguage, AnalysisSchemeName, AnalysisOptions, ...)
@@ -1534,12 +1534,12 @@ function M.AssertAnalysisOptions(struct)
 end
 
 --- Create a structure of type AnalysisOptions
--- &lt;p&gt;Synonyms, stopwords, and stemming options for an analysis scheme. Includes tokenization dictionary for Japanese.&lt;/p&gt;
--- @param AlgorithmicStemming [AlgorithmicStemming] &lt;p&gt;The level of algorithmic stemming to perform: &lt;code&gt;none&lt;/code&gt;, &lt;code&gt;minimal&lt;/code&gt;, &lt;code&gt;light&lt;/code&gt;, or &lt;code&gt;full&lt;/code&gt;. The available levels vary depending on the language. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/cloudsearch/latest/developerguide/text-processing.html#text-processing-settings&quot; target=&quot;_blank&quot;&gt;Language Specific Text Processing Settings&lt;/a&gt; in the &lt;i&gt;Amazon CloudSearch Developer Guide&lt;/i&gt; &lt;/p&gt;
--- @param Synonyms [String] &lt;p&gt;A JSON object that defines synonym groups and aliases. A synonym group is an array of arrays, where each sub-array is a group of terms where each term in the group is considered a synonym of every other term in the group. The aliases value is an object that contains a collection of string:value pairs where the string specifies a term and the array of values specifies each of the aliases for that term. An alias is considered a synonym of the specified term, but the term is not considered a synonym of the alias. For more information about specifying synonyms, see &lt;a href=&quot;http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html#synonyms&quot;&gt;Synonyms&lt;/a&gt; in the &lt;i&gt;Amazon CloudSearch Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param StemmingDictionary [String] &lt;p&gt;A JSON object that contains a collection of string:value pairs that each map a term to its stem. For example, &lt;code&gt;{&quot;term1&quot;: &quot;stem1&quot;, &quot;term2&quot;: &quot;stem2&quot;, &quot;term3&quot;: &quot;stem3&quot;}&lt;/code&gt;. The stemming dictionary is applied in addition to any algorithmic stemming. This enables you to override the results of the algorithmic stemming to correct specific cases of overstemming or understemming. The maximum size of a stemming dictionary is 500 KB.&lt;/p&gt;
--- @param Stopwords [String] &lt;p&gt;A JSON array of terms to ignore during indexing and searching. For example, &lt;code&gt;[&quot;a&quot;, &quot;an&quot;, &quot;the&quot;, &quot;of&quot;]&lt;/code&gt;. The stopwords dictionary must explicitly list each word you want to ignore. Wildcards and regular expressions are not supported. &lt;/p&gt;
--- @param JapaneseTokenizationDictionary [String] &lt;p&gt;A JSON array that contains a collection of terms, tokens, readings and part of speech for Japanese Tokenizaiton. The Japanese tokenization dictionary enables you to override the default tokenization for selected terms. This is only valid for Japanese language fields.&lt;/p&gt;
+-- <p>Synonyms, stopwords, and stemming options for an analysis scheme. Includes tokenization dictionary for Japanese.</p>
+-- @param AlgorithmicStemming [AlgorithmicStemming] <p>The level of algorithmic stemming to perform: <code>none</code>, <code>minimal</code>, <code>light</code>, or <code>full</code>. The available levels vary depending on the language. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/text-processing.html#text-processing-settings" target="_blank">Language Specific Text Processing Settings</a> in the <i>Amazon CloudSearch Developer Guide</i> </p>
+-- @param Synonyms [String] <p>A JSON object that defines synonym groups and aliases. A synonym group is an array of arrays, where each sub-array is a group of terms where each term in the group is considered a synonym of every other term in the group. The aliases value is an object that contains a collection of string:value pairs where the string specifies a term and the array of values specifies each of the aliases for that term. An alias is considered a synonym of the specified term, but the term is not considered a synonym of the alias. For more information about specifying synonyms, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html#synonyms">Synonyms</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
+-- @param StemmingDictionary [String] <p>A JSON object that contains a collection of string:value pairs that each map a term to its stem. For example, <code>{"term1": "stem1", "term2": "stem2", "term3": "stem3"}</code>. The stemming dictionary is applied in addition to any algorithmic stemming. This enables you to override the results of the algorithmic stemming to correct specific cases of overstemming or understemming. The maximum size of a stemming dictionary is 500 KB.</p>
+-- @param Stopwords [String] <p>A JSON array of terms to ignore during indexing and searching. For example, <code>["a", "an", "the", "of"]</code>. The stopwords dictionary must explicitly list each word you want to ignore. Wildcards and regular expressions are not supported. </p>
+-- @param JapaneseTokenizationDictionary [String] <p>A JSON array that contains a collection of terms, tokens, readings and part of speech for Japanese Tokenizaiton. The Japanese tokenization dictionary enables you to override the default tokenization for selected terms. This is only valid for Japanese language fields.</p>
 function M.AnalysisOptions(AlgorithmicStemming, Synonyms, StemmingDictionary, Stopwords, JapaneseTokenizationDictionary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AnalysisOptions")
 	local t = { 
@@ -1565,8 +1565,8 @@ function M.AssertDeleteDomainResponse(struct)
 end
 
 --- Create a structure of type DeleteDomainResponse
--- &lt;p&gt;The result of a &lt;code&gt;DeleteDomain&lt;/code&gt; request. Contains the status of a newly deleted domain, or no status if the domain has already been completely deleted.&lt;/p&gt;
--- @param DomainStatus [DomainStatus] &lt;p&gt;The result of a &lt;code&gt;DeleteDomain&lt;/code&gt; request. Contains the status of a newly deleted domain, or no status if the domain has already been completely deleted.&lt;/p&gt;
+-- <p>The result of a <code>DeleteDomain</code> request. Contains the status of a newly deleted domain, or no status if the domain has already been completely deleted.</p>
+-- @param DomainStatus [DomainStatus] <p>The result of a <code>DeleteDomain</code> request. Contains the status of a newly deleted domain, or no status if the domain has already been completely deleted.</p>
 function M.DeleteDomainResponse(DomainStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainResponse")
 	local t = { 
@@ -1587,7 +1587,7 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The request was rejected because it attempted to reference a resource that does not exist.&lt;/p&gt;
+-- <p>The request was rejected because it attempted to reference a resource that does not exist.</p>
 function M.ResourceNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -1609,8 +1609,8 @@ function M.AssertDescribeServiceAccessPoliciesResponse(struct)
 end
 
 --- Create a structure of type DescribeServiceAccessPoliciesResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeServiceAccessPolicies&lt;/code&gt; request.&lt;/p&gt;
--- @param AccessPolicies [AccessPoliciesStatus] &lt;p&gt;The access rules configured for the domain specified in the request.&lt;/p&gt;
+-- <p>The result of a <code>DescribeServiceAccessPolicies</code> request.</p>
+-- @param AccessPolicies [AccessPoliciesStatus] <p>The access rules configured for the domain specified in the request.</p>
 -- Required parameter: AccessPolicies
 function M.DescribeServiceAccessPoliciesResponse(AccessPolicies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServiceAccessPoliciesResponse")
@@ -1632,7 +1632,7 @@ function M.AssertDisabledOperationException(struct)
 end
 
 --- Create a structure of type DisabledOperationException
--- &lt;p&gt;The request was rejected because it attempted an operation which is not enabled.&lt;/p&gt;
+-- <p>The request was rejected because it attempted an operation which is not enabled.</p>
 function M.DisabledOperationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisabledOperationException")
 	local t = { 
@@ -1657,12 +1657,12 @@ function M.AssertTextArrayOptions(struct)
 end
 
 --- Create a structure of type TextArrayOptions
--- &lt;p&gt;Options for a field that contains an array of text strings. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;text-array&lt;/code&gt;. A &lt;code&gt;text-array&lt;/code&gt; field is always searchable. All options are enabled by default.&lt;/p&gt;
--- @param SourceFields [FieldNameCommaList] &lt;p&gt;A list of source fields to map to the field. &lt;/p&gt;
+-- <p>Options for a field that contains an array of text strings. Present if <code>IndexFieldType</code> specifies the field is of type <code>text-array</code>. A <code>text-array</code> field is always searchable. All options are enabled by default.</p>
+-- @param SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
 -- @param DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param HighlightEnabled [Boolean] &lt;p&gt;Whether highlights can be returned for the field.&lt;/p&gt;
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
--- @param AnalysisScheme [Word] &lt;p&gt;The name of an analysis scheme for a &lt;code&gt;text-array&lt;/code&gt; field.&lt;/p&gt;
+-- @param HighlightEnabled [Boolean] <p>Whether highlights can be returned for the field.</p>
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @param AnalysisScheme [Word] <p>The name of an analysis scheme for a <code>text-array</code> field.</p>
 function M.TextArrayOptions(SourceFields, DefaultValue, HighlightEnabled, ReturnEnabled, AnalysisScheme, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TextArrayOptions")
 	local t = { 
@@ -1688,8 +1688,8 @@ function M.AssertDescribeAvailabilityOptionsResponse(struct)
 end
 
 --- Create a structure of type DescribeAvailabilityOptionsResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeAvailabilityOptions&lt;/code&gt; request. Indicates whether or not the Multi-AZ option is enabled for the domain specified in the request. &lt;/p&gt;
--- @param AvailabilityOptions [AvailabilityOptionsStatus] &lt;p&gt;The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain. &lt;/p&gt;
+-- <p>The result of a <code>DescribeAvailabilityOptions</code> request. Indicates whether or not the Multi-AZ option is enabled for the domain specified in the request. </p>
+-- @param AvailabilityOptions [AvailabilityOptionsStatus] <p>The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain. </p>
 function M.DescribeAvailabilityOptionsResponse(AvailabilityOptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAvailabilityOptionsResponse")
 	local t = { 
@@ -1714,9 +1714,9 @@ function M.AssertIndexFieldStatus(struct)
 end
 
 --- Create a structure of type IndexFieldStatus
--- &lt;p&gt;The value of an &lt;code&gt;IndexField&lt;/code&gt; and its current status.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt;The value of an &lt;code&gt;IndexField&lt;/code&gt; and its current status.&lt;/p&gt;
--- @param Options [IndexField] &lt;p&gt;The value of an &lt;code&gt;IndexField&lt;/code&gt; and its current status.&lt;/p&gt;
+-- <p>The value of an <code>IndexField</code> and its current status.</p>
+-- @param Status [OptionStatus] <p>The value of an <code>IndexField</code> and its current status.</p>
+-- @param Options [IndexField] <p>The value of an <code>IndexField</code> and its current status.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.IndexFieldStatus(Status, Options, ...)
@@ -1744,10 +1744,10 @@ function M.AssertDescribeAnalysisSchemesRequest(struct)
 end
 
 --- Create a structure of type DescribeAnalysisSchemesRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeAnalysisSchemes&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to describe. To limit the response to particular analysis schemes, specify the names of the analysis schemes you want to describe. To show the active configuration and exclude any pending changes, set the &lt;code&gt;Deployed&lt;/code&gt; option to &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
--- @param AnalysisSchemeNames [StandardNameList] &lt;p&gt;The analysis schemes you want to describe.&lt;/p&gt;
--- @param Deployed [Boolean] &lt;p&gt;Whether to display the deployed configuration (&lt;code&gt;true&lt;/code&gt;) or include any pending changes (&lt;code&gt;false&lt;/code&gt;). Defaults to &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain you want to describe.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DescribeAnalysisSchemes</a></code> operation. Specifies the name of the domain you want to describe. To limit the response to particular analysis schemes, specify the names of the analysis schemes you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>. </p>
+-- @param AnalysisSchemeNames [StandardNameList] <p>The analysis schemes you want to describe.</p>
+-- @param Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- @param DomainName [DomainName] <p>The name of the domain you want to describe.</p>
 -- Required parameter: DomainName
 function M.DescribeAnalysisSchemesRequest(AnalysisSchemeNames, Deployed, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAnalysisSchemesRequest")
@@ -1775,9 +1775,9 @@ function M.AssertDeleteExpressionRequest(struct)
 end
 
 --- Create a structure of type DeleteExpressionRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DeleteExpression&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the name of the expression you want to delete.&lt;/p&gt;
--- @param ExpressionName [StandardName] &lt;p&gt;The name of the &lt;code&gt;&lt;a&gt;Expression&lt;/a&gt;&lt;/code&gt; to delete.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DeleteExpression&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the name of the expression you want to delete.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DeleteExpression</a></code> operation. Specifies the name of the domain you want to update and the name of the expression you want to delete.</p>
+-- @param ExpressionName [StandardName] <p>The name of the <code><a>Expression</a></code> to delete.</p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>DeleteExpression</a></code> operation. Specifies the name of the domain you want to update and the name of the expression you want to delete.</p>
 -- Required parameter: DomainName
 -- Required parameter: ExpressionName
 function M.DeleteExpressionRequest(ExpressionName, DomainName, ...)
@@ -1801,7 +1801,7 @@ function M.AssertInvalidTypeException(struct)
 end
 
 --- Create a structure of type InvalidTypeException
--- &lt;p&gt;The request was rejected because it specified an invalid type definition.&lt;/p&gt;
+-- <p>The request was rejected because it specified an invalid type definition.</p>
 function M.InvalidTypeException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTypeException")
 	local t = { 
@@ -1829,12 +1829,12 @@ function M.AssertOptionStatus(struct)
 end
 
 --- Create a structure of type OptionStatus
--- &lt;p&gt;The status of domain configuration option.&lt;/p&gt;
--- @param PendingDeletion [Boolean] &lt;p&gt;Indicates that the option will be deleted once processing is complete.&lt;/p&gt;
--- @param State [OptionState] &lt;p&gt;The state of processing a change to an option. Possible values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;RequiresIndexDocuments&lt;/code&gt;: the option's latest value will not be deployed until &lt;a&gt;IndexDocuments&lt;/a&gt; has been called and indexing is complete.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Processing&lt;/code&gt;: the option's latest value is in the process of being activated. &lt;/li&gt; &lt;li&gt; &lt;code&gt;Active&lt;/code&gt;: the option's latest value is completely deployed.&lt;/li&gt; &lt;li&gt; &lt;code&gt;FailedToValidate&lt;/code&gt;: the option value is not compatible with the domain's data and cannot be used to index the data. You must either modify the option value or update or remove the incompatible documents.&lt;/li&gt; &lt;/ul&gt;
--- @param CreationDate [UpdateTimestamp] &lt;p&gt;A timestamp for when this option was created.&lt;/p&gt;
--- @param UpdateVersion [UIntValue] &lt;p&gt;A unique integer that indicates when this option was last updated.&lt;/p&gt;
--- @param UpdateDate [UpdateTimestamp] &lt;p&gt;A timestamp for when this option was last updated.&lt;/p&gt;
+-- <p>The status of domain configuration option.</p>
+-- @param PendingDeletion [Boolean] <p>Indicates that the option will be deleted once processing is complete.</p>
+-- @param State [OptionState] <p>The state of processing a change to an option. Possible values:</p> <ul> <li> <code>RequiresIndexDocuments</code>: the option's latest value will not be deployed until <a>IndexDocuments</a> has been called and indexing is complete.</li> <li> <code>Processing</code>: the option's latest value is in the process of being activated. </li> <li> <code>Active</code>: the option's latest value is completely deployed.</li> <li> <code>FailedToValidate</code>: the option value is not compatible with the domain's data and cannot be used to index the data. You must either modify the option value or update or remove the incompatible documents.</li> </ul>
+-- @param CreationDate [UpdateTimestamp] <p>A timestamp for when this option was created.</p>
+-- @param UpdateVersion [UIntValue] <p>A unique integer that indicates when this option was last updated.</p>
+-- @param UpdateDate [UpdateTimestamp] <p>A timestamp for when this option was last updated.</p>
 -- Required parameter: CreationDate
 -- Required parameter: UpdateDate
 -- Required parameter: State
@@ -1877,20 +1877,20 @@ function M.AssertIndexField(struct)
 end
 
 --- Create a structure of type IndexField
--- &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param IntArrayOptions [IntArrayOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param LiteralArrayOptions [LiteralArrayOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param LiteralOptions [LiteralOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param LatLonOptions [LatLonOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param DateArrayOptions [DateArrayOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param DoubleArrayOptions [DoubleArrayOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param TextArrayOptions [TextArrayOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param IndexFieldName [DynamicFieldName] &lt;p&gt;A string that represents the name of an index field. CloudSearch supports regular index fields as well as dynamic fields. A dynamic field's name defines a pattern that begins or ends with a wildcard. Any document fields that don't map to a regular index field but do match a dynamic field's pattern are configured with the dynamic field's indexing options. &lt;/p&gt; &lt;p&gt;Regular field names begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard (*). The wildcard can also be the only character in a dynamic field name. Multiple wildcards, and wildcards embedded within a string are not supported. &lt;/p&gt; &lt;p&gt;The name &lt;code&gt;score&lt;/code&gt; is reserved and cannot be used as a field name. To reference a document's ID, you can use the name &lt;code&gt;_id&lt;/code&gt;. &lt;/p&gt;
--- @param DoubleOptions [DoubleOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param DateOptions [DateOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param IndexFieldType [IndexFieldType] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param IntOptions [IntOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
--- @param TextOptions [TextOptions] &lt;p&gt;Configuration information for a field in the index, including its name, type, and options. The supported options depend on the &lt;code&gt;&lt;a&gt;IndexFieldType&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;
+-- <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param IntArrayOptions [IntArrayOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param LiteralArrayOptions [LiteralArrayOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param LiteralOptions [LiteralOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param LatLonOptions [LatLonOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param DateArrayOptions [DateArrayOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param DoubleArrayOptions [DoubleArrayOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param TextArrayOptions [TextArrayOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param IndexFieldName [DynamicFieldName] <p>A string that represents the name of an index field. CloudSearch supports regular index fields as well as dynamic fields. A dynamic field's name defines a pattern that begins or ends with a wildcard. Any document fields that don't map to a regular index field but do match a dynamic field's pattern are configured with the dynamic field's indexing options. </p> <p>Regular field names begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard (*). The wildcard can also be the only character in a dynamic field name. Multiple wildcards, and wildcards embedded within a string are not supported. </p> <p>The name <code>score</code> is reserved and cannot be used as a field name. To reference a document's ID, you can use the name <code>_id</code>. </p>
+-- @param DoubleOptions [DoubleOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param DateOptions [DateOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param IndexFieldType [IndexFieldType] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param IntOptions [IntOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
+-- @param TextOptions [TextOptions] <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
 -- Required parameter: IndexFieldName
 -- Required parameter: IndexFieldType
 function M.IndexField(IntArrayOptions, LiteralArrayOptions, LiteralOptions, LatLonOptions, DateArrayOptions, DoubleArrayOptions, TextArrayOptions, IndexFieldName, DoubleOptions, DateOptions, IndexFieldType, IntOptions, TextOptions, ...)
@@ -1929,10 +1929,10 @@ function M.AssertDescribeSuggestersRequest(struct)
 end
 
 --- Create a structure of type DescribeSuggestersRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeSuggester&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to describe. To restrict the response to particular suggesters, specify the names of the suggesters you want to describe. To show the active configuration and exclude any pending changes, set the &lt;code&gt;Deployed&lt;/code&gt; option to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
--- @param SuggesterNames [StandardNameList] &lt;p&gt;The suggesters you want to describe.&lt;/p&gt;
--- @param Deployed [Boolean] &lt;p&gt;Whether to display the deployed configuration (&lt;code&gt;true&lt;/code&gt;) or include any pending changes (&lt;code&gt;false&lt;/code&gt;). Defaults to &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain you want to describe.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DescribeSuggester</a></code> operation. Specifies the name of the domain you want to describe. To restrict the response to particular suggesters, specify the names of the suggesters you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
+-- @param SuggesterNames [StandardNameList] <p>The suggesters you want to describe.</p>
+-- @param Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- @param DomainName [DomainName] <p>The name of the domain you want to describe.</p>
 -- Required parameter: DomainName
 function M.DescribeSuggestersRequest(SuggesterNames, Deployed, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSuggestersRequest")
@@ -1960,10 +1960,10 @@ function M.AssertDescribeIndexFieldsRequest(struct)
 end
 
 --- Create a structure of type DescribeIndexFieldsRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeIndexFields&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to describe. To restrict the response to particular index fields, specify the names of the index fields you want to describe. To show the active configuration and exclude any pending changes, set the &lt;code&gt;Deployed&lt;/code&gt; option to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
--- @param Deployed [Boolean] &lt;p&gt;Whether to display the deployed configuration (&lt;code&gt;true&lt;/code&gt;) or include any pending changes (&lt;code&gt;false&lt;/code&gt;). Defaults to &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param FieldNames [DynamicFieldNameList] &lt;p&gt;A list of the index fields you want to describe. If not specified, information is returned for all configured index fields.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain you want to describe.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DescribeIndexFields</a></code> operation. Specifies the name of the domain you want to describe. To restrict the response to particular index fields, specify the names of the index fields you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
+-- @param Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- @param FieldNames [DynamicFieldNameList] <p>A list of the index fields you want to describe. If not specified, information is returned for all configured index fields.</p>
+-- @param DomainName [DomainName] <p>The name of the domain you want to describe.</p>
 -- Required parameter: DomainName
 function M.DescribeIndexFieldsRequest(Deployed, FieldNames, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIndexFieldsRequest")
@@ -1991,9 +1991,9 @@ function M.AssertScalingParametersStatus(struct)
 end
 
 --- Create a structure of type ScalingParametersStatus
--- &lt;p&gt;The status and configuration of a search domain's scaling parameters. &lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt;The status and configuration of a search domain's scaling parameters. &lt;/p&gt;
--- @param Options [ScalingParameters] &lt;p&gt;The status and configuration of a search domain's scaling parameters. &lt;/p&gt;
+-- <p>The status and configuration of a search domain's scaling parameters. </p>
+-- @param Status [OptionStatus] <p>The status and configuration of a search domain's scaling parameters. </p>
+-- @param Options [ScalingParameters] <p>The status and configuration of a search domain's scaling parameters. </p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.ScalingParametersStatus(Status, Options, ...)
@@ -2019,8 +2019,8 @@ function M.AssertBuildSuggestersRequest(struct)
 end
 
 --- Create a structure of type BuildSuggestersRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;BuildSuggester&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;BuildSuggester&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>BuildSuggester</a></code> operation. Specifies the name of the domain you want to update.</p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>BuildSuggester</a></code> operation. Specifies the name of the domain you want to update.</p>
 -- Required parameter: DomainName
 function M.BuildSuggestersRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BuildSuggestersRequest")
@@ -2046,9 +2046,9 @@ function M.AssertDefineAnalysisSchemeRequest(struct)
 end
 
 --- Create a structure of type DefineAnalysisSchemeRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineAnalysisScheme&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the analysis scheme configuration.&lt;/p&gt;
--- @param AnalysisScheme [AnalysisScheme] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineAnalysisScheme&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the analysis scheme configuration.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DefineAnalysisScheme&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the analysis scheme configuration.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DefineAnalysisScheme</a></code> operation. Specifies the name of the domain you want to update and the analysis scheme configuration.</p>
+-- @param AnalysisScheme [AnalysisScheme] <p>Container for the parameters to the <code><a>DefineAnalysisScheme</a></code> operation. Specifies the name of the domain you want to update and the analysis scheme configuration.</p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>DefineAnalysisScheme</a></code> operation. Specifies the name of the domain you want to update and the analysis scheme configuration.</p>
 -- Required parameter: DomainName
 -- Required parameter: AnalysisScheme
 function M.DefineAnalysisSchemeRequest(AnalysisScheme, DomainName, ...)
@@ -2077,12 +2077,12 @@ function M.AssertIntArrayOptions(struct)
 end
 
 --- Create a structure of type IntArrayOptions
--- &lt;p&gt;Options for a field that contains an array of 64-bit signed integers. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;int-array&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
--- @param SourceFields [FieldNameCommaList] &lt;p&gt;A list of source fields to map to the field. &lt;/p&gt;
--- @param FacetEnabled [Boolean] &lt;p&gt;Whether facet information can be returned for the field.&lt;/p&gt;
+-- <p>Options for a field that contains an array of 64-bit signed integers. Present if <code>IndexFieldType</code> specifies the field is of type <code>int-array</code>. All options are enabled by default.</p>
+-- @param SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
+-- @param FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
 -- @param DefaultValue [Long] A value to use for the field if the field isn't specified for a document.
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
--- @param SearchEnabled [Boolean] &lt;p&gt;Whether the contents of the field are searchable.&lt;/p&gt;
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @param SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
 function M.IntArrayOptions(SourceFields, FacetEnabled, DefaultValue, ReturnEnabled, SearchEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IntArrayOptions")
 	local t = { 
@@ -2113,13 +2113,13 @@ function M.AssertTextOptions(struct)
 end
 
 --- Create a structure of type TextOptions
--- &lt;p&gt;Options for text field. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;text&lt;/code&gt;. A &lt;code&gt;text&lt;/code&gt; field is always searchable. All options are enabled by default.&lt;/p&gt;
--- @param AnalysisScheme [Word] &lt;p&gt;The name of an analysis scheme for a &lt;code&gt;text&lt;/code&gt; field.&lt;/p&gt;
--- @param SourceField [FieldName] &lt;p&gt;Options for text field. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;text&lt;/code&gt;. A &lt;code&gt;text&lt;/code&gt; field is always searchable. All options are enabled by default.&lt;/p&gt;
+-- <p>Options for text field. Present if <code>IndexFieldType</code> specifies the field is of type <code>text</code>. A <code>text</code> field is always searchable. All options are enabled by default.</p>
+-- @param AnalysisScheme [Word] <p>The name of an analysis scheme for a <code>text</code> field.</p>
+-- @param SourceField [FieldName] <p>Options for text field. Present if <code>IndexFieldType</code> specifies the field is of type <code>text</code>. A <code>text</code> field is always searchable. All options are enabled by default.</p>
 -- @param DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param HighlightEnabled [Boolean] &lt;p&gt;Whether highlights can be returned for the field.&lt;/p&gt;
--- @param SortEnabled [Boolean] &lt;p&gt;Whether the field can be used to sort the search results.&lt;/p&gt;
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
+-- @param HighlightEnabled [Boolean] <p>Whether highlights can be returned for the field.</p>
+-- @param SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 function M.TextOptions(AnalysisScheme, SourceField, DefaultValue, HighlightEnabled, SortEnabled, ReturnEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TextOptions")
 	local t = { 
@@ -2147,8 +2147,8 @@ function M.AssertIndexDocumentsRequest(struct)
 end
 
 --- Create a structure of type IndexDocumentsRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;IndexDocuments&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to re-index.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;IndexDocuments&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to re-index.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>IndexDocuments</a></code> operation. Specifies the name of the domain you want to re-index.</p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>IndexDocuments</a></code> operation. Specifies the name of the domain you want to re-index.</p>
 -- Required parameter: DomainName
 function M.IndexDocumentsRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IndexDocumentsRequest")
@@ -2173,9 +2173,9 @@ function M.AssertDescribeAvailabilityOptionsRequest(struct)
 end
 
 --- Create a structure of type DescribeAvailabilityOptionsRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeAvailabilityOptions&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to describe. To show the active configuration and exclude any pending changes, set the Deployed option to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
--- @param Deployed [Boolean] &lt;p&gt;Whether to display the deployed configuration (&lt;code&gt;true&lt;/code&gt;) or include any pending changes (&lt;code&gt;false&lt;/code&gt;). Defaults to &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain you want to describe.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DescribeAvailabilityOptions</a></code> operation. Specifies the name of the domain you want to describe. To show the active configuration and exclude any pending changes, set the Deployed option to <code>true</code>.</p>
+-- @param Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- @param DomainName [DomainName] <p>The name of the domain you want to describe.</p>
 -- Required parameter: DomainName
 function M.DescribeAvailabilityOptionsRequest(Deployed, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAvailabilityOptionsRequest")
@@ -2200,8 +2200,8 @@ function M.AssertDefineIndexFieldResponse(struct)
 end
 
 --- Create a structure of type DefineIndexFieldResponse
--- &lt;p&gt;The result of a &lt;code&gt;&lt;a&gt;DefineIndexField&lt;/a&gt;&lt;/code&gt; request. Contains the status of the newly-configured index field.&lt;/p&gt;
--- @param IndexField [IndexFieldStatus] &lt;p&gt;The result of a &lt;code&gt;&lt;a&gt;DefineIndexField&lt;/a&gt;&lt;/code&gt; request. Contains the status of the newly-configured index field.&lt;/p&gt;
+-- <p>The result of a <code><a>DefineIndexField</a></code> request. Contains the status of the newly-configured index field.</p>
+-- @param IndexField [IndexFieldStatus] <p>The result of a <code><a>DefineIndexField</a></code> request. Contains the status of the newly-configured index field.</p>
 -- Required parameter: IndexField
 function M.DefineIndexFieldResponse(IndexField, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DefineIndexFieldResponse")
@@ -2225,8 +2225,8 @@ function M.AssertDescribeIndexFieldsResponse(struct)
 end
 
 --- Create a structure of type DescribeIndexFieldsResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeIndexFields&lt;/code&gt; request. Contains the index fields configured for the domain specified in the request.&lt;/p&gt;
--- @param IndexFields [IndexFieldStatusList] &lt;p&gt;The index fields configured for the domain.&lt;/p&gt;
+-- <p>The result of a <code>DescribeIndexFields</code> request. Contains the index fields configured for the domain specified in the request.</p>
+-- @param IndexFields [IndexFieldStatusList] <p>The index fields configured for the domain.</p>
 -- Required parameter: IndexFields
 function M.DescribeIndexFieldsResponse(IndexFields, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIndexFieldsResponse")
@@ -2253,12 +2253,12 @@ function M.AssertDoubleArrayOptions(struct)
 end
 
 --- Create a structure of type DoubleArrayOptions
--- &lt;p&gt;Options for a field that contains an array of double-precision 64-bit floating point values. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;double-array&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
--- @param SourceFields [FieldNameCommaList] &lt;p&gt;A list of source fields to map to the field. &lt;/p&gt;
--- @param FacetEnabled [Boolean] &lt;p&gt;Whether facet information can be returned for the field.&lt;/p&gt;
+-- <p>Options for a field that contains an array of double-precision 64-bit floating point values. Present if <code>IndexFieldType</code> specifies the field is of type <code>double-array</code>. All options are enabled by default.</p>
+-- @param SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
+-- @param FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
 -- @param DefaultValue [Double] A value to use for the field if the field isn't specified for a document.
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
--- @param SearchEnabled [Boolean] &lt;p&gt;Whether the contents of the field are searchable.&lt;/p&gt;
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @param SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
 function M.DoubleArrayOptions(SourceFields, FacetEnabled, DefaultValue, ReturnEnabled, SearchEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DoubleArrayOptions")
 	local t = { 
@@ -2284,8 +2284,8 @@ function M.AssertDescribeDomainsRequest(struct)
 end
 
 --- Create a structure of type DescribeDomainsRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeDomains&lt;/a&gt;&lt;/code&gt; operation. By default shows the status of all domains. To restrict the response to particular domains, specify the names of the domains you want to describe.&lt;/p&gt;
--- @param DomainNames [DomainNameList] &lt;p&gt;The names of the domains you want to include in the response.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DescribeDomains</a></code> operation. By default shows the status of all domains. To restrict the response to particular domains, specify the names of the domains you want to describe.</p>
+-- @param DomainNames [DomainNameList] <p>The names of the domains you want to include in the response.</p>
 function M.DescribeDomainsRequest(DomainNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDomainsRequest")
 	local t = { 
@@ -2310,9 +2310,9 @@ function M.AssertUpdateAvailabilityOptionsRequest(struct)
 end
 
 --- Create a structure of type UpdateAvailabilityOptionsRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;UpdateAvailabilityOptions&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the Multi-AZ availability option.&lt;/p&gt;
--- @param MultiAZ [Boolean] &lt;p&gt;You expand an existing search domain to a second Availability Zone by setting the Multi-AZ option to true. Similarly, you can turn off the Multi-AZ option to downgrade the domain to a single Availability Zone by setting the Multi-AZ option to &lt;code&gt;false&lt;/code&gt;. &lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;UpdateAvailabilityOptions&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the domain you want to update and the Multi-AZ availability option.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>UpdateAvailabilityOptions</a></code> operation. Specifies the name of the domain you want to update and the Multi-AZ availability option.</p>
+-- @param MultiAZ [Boolean] <p>You expand an existing search domain to a second Availability Zone by setting the Multi-AZ option to true. Similarly, you can turn off the Multi-AZ option to downgrade the domain to a single Availability Zone by setting the Multi-AZ option to <code>false</code>. </p>
+-- @param DomainName [DomainName] <p>Container for the parameters to the <code><a>UpdateAvailabilityOptions</a></code> operation. Specifies the name of the domain you want to update and the Multi-AZ availability option.</p>
 -- Required parameter: DomainName
 -- Required parameter: MultiAZ
 function M.UpdateAvailabilityOptionsRequest(MultiAZ, DomainName, ...)
@@ -2337,8 +2337,8 @@ function M.AssertBuildSuggestersResponse(struct)
 end
 
 --- Create a structure of type BuildSuggestersResponse
--- &lt;p&gt;The result of a &lt;code&gt;BuildSuggester&lt;/code&gt; request. Contains a list of the fields used for suggestions.&lt;/p&gt;
--- @param FieldNames [FieldNameList] &lt;p&gt;The result of a &lt;code&gt;BuildSuggester&lt;/code&gt; request. Contains a list of the fields used for suggestions.&lt;/p&gt;
+-- <p>The result of a <code>BuildSuggester</code> request. Contains a list of the fields used for suggestions.</p>
+-- @param FieldNames [FieldNameList] <p>The result of a <code>BuildSuggester</code> request. Contains a list of the fields used for suggestions.</p>
 function M.BuildSuggestersResponse(FieldNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BuildSuggestersResponse")
 	local t = { 
@@ -2365,13 +2365,13 @@ function M.AssertIntOptions(struct)
 end
 
 --- Create a structure of type IntOptions
--- &lt;p&gt;Options for a 64-bit signed integer field. Present if &lt;code&gt;IndexFieldType&lt;/code&gt; specifies the field is of type &lt;code&gt;int&lt;/code&gt;. All options are enabled by default.&lt;/p&gt;
--- @param SourceField [FieldName] &lt;p&gt;The name of the source field to map to the field. &lt;/p&gt;
+-- <p>Options for a 64-bit signed integer field. Present if <code>IndexFieldType</code> specifies the field is of type <code>int</code>. All options are enabled by default.</p>
+-- @param SourceField [FieldName] <p>The name of the source field to map to the field. </p>
 -- @param DefaultValue [Long] A value to use for the field if the field isn't specified for a document. This can be important if you are using the field in an expression and that field is not present in every document.
--- @param FacetEnabled [Boolean] &lt;p&gt;Whether facet information can be returned for the field.&lt;/p&gt;
--- @param SearchEnabled [Boolean] &lt;p&gt;Whether the contents of the field are searchable.&lt;/p&gt;
--- @param SortEnabled [Boolean] &lt;p&gt;Whether the field can be used to sort the search results.&lt;/p&gt;
--- @param ReturnEnabled [Boolean] &lt;p&gt;Whether the contents of the field can be returned in the search results.&lt;/p&gt;
+-- @param FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- @param SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- @param SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- @param ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 function M.IntOptions(SourceField, DefaultValue, FacetEnabled, SearchEnabled, SortEnabled, ReturnEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IntOptions")
 	local t = { 
@@ -2399,8 +2399,8 @@ function M.AssertDescribeSuggestersResponse(struct)
 end
 
 --- Create a structure of type DescribeSuggestersResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeSuggesters&lt;/code&gt; request.&lt;/p&gt;
--- @param Suggesters [SuggesterStatusList] &lt;p&gt;The suggesters configured for the domain specified in the request.&lt;/p&gt;
+-- <p>The result of a <code>DescribeSuggesters</code> request.</p>
+-- @param Suggesters [SuggesterStatusList] <p>The suggesters configured for the domain specified in the request.</p>
 -- Required parameter: Suggesters
 function M.DescribeSuggestersResponse(Suggesters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSuggestersResponse")
@@ -2416,7 +2416,7 @@ function M.AssertOptionState(str)
 	assert(type(str) == "string", "Expected OptionState to be of type 'string'")
 end
 
--- &lt;p&gt;The state of processing a change to an option. One of:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;RequiresIndexDocuments: The option's latest value will not be deployed until &lt;a&gt;IndexDocuments&lt;/a&gt; has been called and indexing is complete.&lt;/li&gt; &lt;li&gt;Processing: The option's latest value is in the process of being activated.&lt;/li&gt; &lt;li&gt;Active: The option's latest value is fully deployed. &lt;/li&gt; &lt;li&gt;FailedToValidate: The option value is not compatible with the domain's data and cannot be used to index the data. You must either modify the option value or update or remove the incompatible documents.&lt;/li&gt; &lt;/ul&gt;
+-- <p>The state of processing a change to an option. One of:</p> <ul> <li>RequiresIndexDocuments: The option's latest value will not be deployed until <a>IndexDocuments</a> has been called and indexing is complete.</li> <li>Processing: The option's latest value is in the process of being activated.</li> <li>Active: The option's latest value is fully deployed. </li> <li>FailedToValidate: The option value is not compatible with the domain's data and cannot be used to index the data. You must either modify the option value or update or remove the incompatible documents.</li> </ul>
 function M.OptionState(str)
 	M.AssertOptionState(str)
 	return str
@@ -2427,7 +2427,7 @@ function M.AssertPolicyDocument(str)
 	assert(type(str) == "string", "Expected PolicyDocument to be of type 'string'")
 end
 
--- &lt;p&gt;Access rules for a domain's document or search service endpoints. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html&quot; target=&quot;_blank&quot;&gt;Configuring Access for a Search Domain&lt;/a&gt; in the &lt;i&gt;Amazon CloudSearch Developer Guide&lt;/i&gt;. The maximum size of a policy document is 100 KB.&lt;/p&gt;
+-- <p>Access rules for a domain's document or search service endpoints. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for a Search Domain</a> in the <i>Amazon CloudSearch Developer Guide</i>. The maximum size of a policy document is 100 KB.</p>
 function M.PolicyDocument(str)
 	M.AssertPolicyDocument(str)
 	return str
@@ -2441,7 +2441,7 @@ function M.AssertFieldName(str)
 	assert(str:match("[a-z][a-z0-9_]*"), "Expected string to match pattern '[a-z][a-z0-9_]*'")
 end
 
--- &lt;p&gt;A string that represents the name of an index field. CloudSearch supports regular index fields as well as dynamic fields. A dynamic field's name defines a pattern that begins or ends with a wildcard. Any document fields that don't map to a regular index field but do match a dynamic field's pattern are configured with the dynamic field's indexing options. &lt;/p&gt; &lt;p&gt;Regular field names begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard (*). The wildcard can also be the only character in a dynamic field name. Multiple wildcards, and wildcards embedded within a string are not supported. &lt;/p&gt; &lt;p&gt;The name &lt;code&gt;score&lt;/code&gt; is reserved and cannot be used as a field name. To reference a document's ID, you can use the name &lt;code&gt;_id&lt;/code&gt;. &lt;/p&gt;
+-- <p>A string that represents the name of an index field. CloudSearch supports regular index fields as well as dynamic fields. A dynamic field's name defines a pattern that begins or ends with a wildcard. Any document fields that don't map to a regular index field but do match a dynamic field's pattern are configured with the dynamic field's indexing options. </p> <p>Regular field names begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard (*). The wildcard can also be the only character in a dynamic field name. Multiple wildcards, and wildcards embedded within a string are not supported. </p> <p>The name <code>score</code> is reserved and cannot be used as a field name. To reference a document's ID, you can use the name <code>_id</code>. </p>
 function M.FieldName(str)
 	M.AssertFieldName(str)
 	return str
@@ -2477,7 +2477,7 @@ function M.AssertDomainName(str)
 	assert(str:match("[a-z][a-z0-9%-]+"), "Expected string to match pattern '[a-z][a-z0-9%-]+'")
 end
 
--- &lt;p&gt;A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).&lt;/p&gt;
+-- <p>A string that represents the name of a domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
 function M.DomainName(str)
 	M.AssertDomainName(str)
 	return str
@@ -2488,7 +2488,7 @@ function M.AssertAPIVersion(str)
 	assert(type(str) == "string", "Expected APIVersion to be of type 'string'")
 end
 
--- &lt;p&gt;The Amazon CloudSearch API version for a domain: 2011-02-01 or 2013-01-01.&lt;/p&gt;
+-- <p>The Amazon CloudSearch API version for a domain: 2011-02-01 or 2013-01-01.</p>
 function M.APIVersion(str)
 	M.AssertAPIVersion(str)
 	return str
@@ -2522,7 +2522,7 @@ function M.AssertServiceUrl(str)
 	assert(type(str) == "string", "Expected ServiceUrl to be of type 'string'")
 end
 
--- &lt;p&gt;The endpoint to which service requests can be submitted. For example, &lt;code&gt;search-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.cloudsearch.amazonaws.com&lt;/code&gt; or &lt;code&gt;doc-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.cloudsearch.amazonaws.com&lt;/code&gt;.&lt;/p&gt;
+-- <p>The endpoint to which service requests can be submitted. For example, <code>search-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.cloudsearch.amazonaws.com</code> or <code>doc-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.cloudsearch.amazonaws.com</code>.</p>
 function M.ServiceUrl(str)
 	M.AssertServiceUrl(str)
 	return str
@@ -2533,7 +2533,7 @@ function M.AssertErrorMessage(str)
 	assert(type(str) == "string", "Expected ErrorMessage to be of type 'string'")
 end
 
--- &lt;p&gt;A human-readable string error or warning message.&lt;/p&gt;
+-- <p>A human-readable string error or warning message.</p>
 function M.ErrorMessage(str)
 	M.AssertErrorMessage(str)
 	return str
@@ -2546,7 +2546,7 @@ function M.AssertDomainId(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;An internally generated unique identifier for a domain.&lt;/p&gt;
+-- <p>An internally generated unique identifier for a domain.</p>
 function M.DomainId(str)
 	M.AssertDomainId(str)
 	return str
@@ -2571,7 +2571,7 @@ function M.AssertExpressionValue(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;The expression to evaluate for sorting while processing a search request. The &lt;code&gt;Expression&lt;/code&gt; syntax is based on JavaScript expressions. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html&quot; target=&quot;_blank&quot;&gt;Configuring Expressions&lt;/a&gt; in the &lt;i&gt;Amazon CloudSearch Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>The expression to evaluate for sorting while processing a search request. The <code>Expression</code> syntax is based on JavaScript expressions. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
 function M.ExpressionValue(str)
 	M.AssertExpressionValue(str)
 	return str
@@ -2582,7 +2582,7 @@ function M.AssertSearchInstanceType(str)
 	assert(type(str) == "string", "Expected SearchInstanceType to be of type 'string'")
 end
 
--- &lt;p&gt;The instance type (such as &lt;code&gt;search.m1.small&lt;/code&gt;) that is being used to process search requests.&lt;/p&gt;
+-- <p>The instance type (such as <code>search.m1.small</code>) that is being used to process search requests.</p>
 function M.SearchInstanceType(str)
 	M.AssertSearchInstanceType(str)
 	return str
@@ -2593,7 +2593,7 @@ function M.AssertErrorCode(str)
 	assert(type(str) == "string", "Expected ErrorCode to be of type 'string'")
 end
 
--- &lt;p&gt;A machine-parsable string error or warning code.&lt;/p&gt;
+-- <p>A machine-parsable string error or warning code.</p>
 function M.ErrorCode(str)
 	M.AssertErrorCode(str)
 	return str
@@ -2604,7 +2604,7 @@ function M.AssertIndexFieldType(str)
 	assert(type(str) == "string", "Expected IndexFieldType to be of type 'string'")
 end
 
--- &lt;p&gt;The type of field. The valid options for a field depend on the field type. For more information about the supported field types, see &lt;a href=&quot;http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html&quot; target=&quot;_blank&quot;&gt;Configuring Index Fields&lt;/a&gt; in the &lt;i&gt;Amazon CloudSearch Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>The type of field. The valid options for a field depend on the field type. For more information about the supported field types, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">Configuring Index Fields</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
 function M.IndexFieldType(str)
 	M.AssertIndexFieldType(str)
 	return str
@@ -2618,7 +2618,7 @@ function M.AssertStandardName(str)
 	assert(str:match("[a-z][a-z0-9_]*"), "Expected string to match pattern '[a-z][a-z0-9_]*'")
 end
 
--- &lt;p&gt;Names must begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore).&lt;/p&gt;
+-- <p>Names must begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore).</p>
 function M.StandardName(str)
 	M.AssertStandardName(str)
 	return str
@@ -2629,7 +2629,7 @@ function M.AssertAnalysisSchemeLanguage(str)
 	assert(type(str) == "string", "Expected AnalysisSchemeLanguage to be of type 'string'")
 end
 
--- &lt;p&gt;An &lt;a href=&quot;http://tools.ietf.org/html/rfc4646&quot; target=&quot;_blank&quot;&gt;IETF RFC 4646&lt;/a&gt; language code or &lt;code&gt;mul&lt;/code&gt; for multiple languages.&lt;/p&gt;
+-- <p>An <a href="http://tools.ietf.org/html/rfc4646" target="_blank">IETF RFC 4646</a> language code or <code>mul</code> for multiple languages.</p>
 function M.AnalysisSchemeLanguage(str)
 	M.AssertAnalysisSchemeLanguage(str)
 	return str
@@ -2641,7 +2641,7 @@ function M.AssertFieldValue(str)
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
 end
 
--- &lt;p&gt;The value of a field attribute.&lt;/p&gt;
+-- <p>The value of a field attribute.</p>
 function M.FieldValue(str)
 	M.AssertFieldValue(str)
 	return str
@@ -2666,7 +2666,7 @@ function M.AssertPartitionInstanceType(str)
 	assert(type(str) == "string", "Expected PartitionInstanceType to be of type 'string'")
 end
 
--- &lt;p&gt;The instance type (such as &lt;code&gt;search.m1.small&lt;/code&gt;) on which an index partition is hosted.&lt;/p&gt;
+-- <p>The instance type (such as <code>search.m1.small</code>) on which an index partition is hosted.</p>
 function M.PartitionInstanceType(str)
 	M.AssertPartitionInstanceType(str)
 	return str
@@ -2677,7 +2677,7 @@ function M.AssertARN(str)
 	assert(type(str) == "string", "Expected ARN to be of type 'string'")
 end
 
--- &lt;p&gt;The Amazon Resource Name (ARN) of the search domain. See &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html&quot; target=&quot;_blank&quot;&gt;Identifiers for IAM Entities&lt;/a&gt; in &lt;i&gt;Using AWS Identity and Access Management&lt;/i&gt; for more information.&lt;/p&gt;
+-- <p>The Amazon Resource Name (ARN) of the search domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.</p>
 function M.ARN(str)
 	M.AssertARN(str)
 	return str
@@ -2815,7 +2815,7 @@ function M.AssertAnalysisSchemeStatusList(list)
 	end
 end
 
--- &lt;p&gt;A list of the analysis schemes configured for a domain.&lt;/p&gt;
+-- <p>A list of the analysis schemes configured for a domain.</p>
 -- List of AnalysisSchemeStatus objects
 function M.AnalysisSchemeStatusList(list)
 	M.AssertAnalysisSchemeStatusList(list)
@@ -2830,7 +2830,7 @@ function M.AssertIndexFieldStatusList(list)
 	end
 end
 
--- &lt;p&gt;Contains the status of multiple index fields.&lt;/p&gt;
+-- <p>Contains the status of multiple index fields.</p>
 -- List of IndexFieldStatus objects
 function M.IndexFieldStatusList(list)
 	M.AssertIndexFieldStatusList(list)
@@ -2845,7 +2845,7 @@ function M.AssertDomainNameList(list)
 	end
 end
 
--- &lt;p&gt;A list of domain names.&lt;/p&gt;
+-- <p>A list of domain names.</p>
 -- List of DomainName objects
 function M.DomainNameList(list)
 	M.AssertDomainNameList(list)
@@ -2860,7 +2860,7 @@ function M.AssertDomainStatusList(list)
 	end
 end
 
--- &lt;p&gt;A list that contains the status of each requested domain.&lt;/p&gt;
+-- <p>A list that contains the status of each requested domain.</p>
 -- List of DomainStatus objects
 function M.DomainStatusList(list)
 	M.AssertDomainStatusList(list)
@@ -2875,7 +2875,7 @@ function M.AssertFieldNameList(list)
 	end
 end
 
--- &lt;p&gt;A list of field names.&lt;/p&gt;
+-- <p>A list of field names.</p>
 -- List of FieldName objects
 function M.FieldNameList(list)
 	M.AssertFieldNameList(list)
@@ -2920,7 +2920,7 @@ function M.AssertExpressionStatusList(list)
 	end
 end
 
--- &lt;p&gt;Contains the status of multiple expressions.&lt;/p&gt;
+-- <p>Contains the status of multiple expressions.</p>
 -- List of ExpressionStatus objects
 function M.ExpressionStatusList(list)
 	M.AssertExpressionStatusList(list)
@@ -2935,7 +2935,7 @@ function M.AssertSuggesterStatusList(list)
 	end
 end
 
--- &lt;p&gt;Contains the status of multiple suggesters.&lt;/p&gt;
+-- <p>Contains the status of multiple suggesters.</p>
 -- List of SuggesterStatus objects
 function M.SuggesterStatusList(list)
 	M.AssertSuggesterStatusList(list)

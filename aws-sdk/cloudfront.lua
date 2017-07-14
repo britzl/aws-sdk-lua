@@ -31,8 +31,8 @@ function M.AssertGetCloudFrontOriginAccessIdentityRequest(struct)
 end
 
 --- Create a structure of type GetCloudFrontOriginAccessIdentityRequest
--- &lt;p&gt;The request to get an origin access identity's information.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The identity's ID.&lt;/p&gt;
+-- <p>The request to get an origin access identity's information.</p>
+-- @param Id [string] <p>The identity's ID.</p>
 -- Required parameter: Id
 function M.GetCloudFrontOriginAccessIdentityRequest(Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCloudFrontOriginAccessIdentityRequest")
@@ -59,11 +59,11 @@ function M.AssertCustomErrorResponse(struct)
 end
 
 --- Create a structure of type CustomErrorResponse
--- &lt;p&gt;A complex type that controls:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Whether CloudFront replaces HTTP status codes in the 4xx and 5xx range with custom error messages before returning the response to the viewer. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;How long CloudFront caches HTTP status codes in the 4xx and 5xx range.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about custom error pages, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html&quot;&gt;Customizing Error Responses&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param ErrorCode [integer] &lt;p&gt;The HTTP status code for which you want to specify a custom error page and/or a caching duration.&lt;/p&gt;
--- @param ResponsePagePath [string] &lt;p&gt;The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by &lt;code&gt;ErrorCode&lt;/code&gt;, for example, &lt;code&gt;/4xx-errors/403-forbidden.html&lt;/code&gt;. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The value of &lt;code&gt;PathPattern&lt;/code&gt; matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named &lt;code&gt;/4xx-errors&lt;/code&gt;. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, &lt;code&gt;/4xx-errors/*&lt;/code&gt;. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The value of &lt;code&gt;TargetOriginId&lt;/code&gt; specifies the value of the &lt;code&gt;ID&lt;/code&gt; element for the origin that contains your custom error pages.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you specify a value for &lt;code&gt;ResponsePagePath&lt;/code&gt;, you must also specify a value for &lt;code&gt;ResponseCode&lt;/code&gt;. If you don't want to specify a value, include an empty element, &lt;code&gt;&amp;lt;ResponsePagePath&amp;gt;&lt;/code&gt;, in the XML document.&lt;/p&gt; &lt;p&gt;We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.&lt;/p&gt;
--- @param ResponseCode [string] &lt;p&gt;The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute &lt;code&gt;200&lt;/code&gt;, the response typically won't be intercepted.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If you don't care about distinguishing among different client errors or server errors, you can specify &lt;code&gt;400&lt;/code&gt; or &lt;code&gt;500&lt;/code&gt; as the &lt;code&gt;ResponseCode&lt;/code&gt; for all 4xx or 5xx errors.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You might want to return a &lt;code&gt;200&lt;/code&gt; status code (OK) and static website so your customers don't know that your website is down.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you specify a value for &lt;code&gt;ResponseCode&lt;/code&gt;, you must also specify a value for &lt;code&gt;ResponsePagePath&lt;/code&gt;. If you don't want to specify a value, include an empty element, &lt;code&gt;&amp;lt;ResponseCode&amp;gt;&lt;/code&gt;, in the XML document.&lt;/p&gt;
--- @param ErrorCachingMinTTL [long] &lt;p&gt;The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in &lt;code&gt;ErrorCode&lt;/code&gt;. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available.&lt;/p&gt; &lt;p&gt;If you don't want to specify a value, include an empty element, &lt;code&gt;&amp;lt;ErrorCachingMinTTL&amp;gt;&lt;/code&gt;, in the XML document.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html&quot;&gt;Customizing Error Responses&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>A complex type that controls:</p> <ul> <li> <p>Whether CloudFront replaces HTTP status codes in the 4xx and 5xx range with custom error messages before returning the response to the viewer. </p> </li> <li> <p>How long CloudFront caches HTTP status codes in the 4xx and 5xx range.</p> </li> </ul> <p>For more information about custom error pages, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html">Customizing Error Responses</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param ErrorCode [integer] <p>The HTTP status code for which you want to specify a custom error page and/or a caching duration.</p>
+-- @param ResponsePagePath [string] <p>The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by <code>ErrorCode</code>, for example, <code>/4xx-errors/403-forbidden.html</code>. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:</p> <ul> <li> <p>The value of <code>PathPattern</code> matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named <code>/4xx-errors</code>. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, <code>/4xx-errors/*</code>. </p> </li> <li> <p>The value of <code>TargetOriginId</code> specifies the value of the <code>ID</code> element for the origin that contains your custom error pages.</p> </li> </ul> <p>If you specify a value for <code>ResponsePagePath</code>, you must also specify a value for <code>ResponseCode</code>. If you don't want to specify a value, include an empty element, <code>&lt;ResponsePagePath&gt;</code>, in the XML document.</p> <p>We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.</p>
+-- @param ResponseCode [string] <p>The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:</p> <ul> <li> <p>Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute <code>200</code>, the response typically won't be intercepted.</p> </li> <li> <p>If you don't care about distinguishing among different client errors or server errors, you can specify <code>400</code> or <code>500</code> as the <code>ResponseCode</code> for all 4xx or 5xx errors.</p> </li> <li> <p>You might want to return a <code>200</code> status code (OK) and static website so your customers don't know that your website is down.</p> </li> </ul> <p>If you specify a value for <code>ResponseCode</code>, you must also specify a value for <code>ResponsePagePath</code>. If you don't want to specify a value, include an empty element, <code>&lt;ResponseCode&gt;</code>, in the XML document.</p>
+-- @param ErrorCachingMinTTL [long] <p>The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in <code>ErrorCode</code>. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available.</p> <p>If you don't want to specify a value, include an empty element, <code>&lt;ErrorCachingMinTTL&gt;</code>, in the XML document.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html">Customizing Error Responses</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
 -- Required parameter: ErrorCode
 function M.CustomErrorResponse(ErrorCode, ResponsePagePath, ResponseCode, ErrorCachingMinTTL, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CustomErrorResponse")
@@ -89,8 +89,8 @@ function M.AssertInvalidArgument(struct)
 end
 
 --- Create a structure of type InvalidArgument
--- &lt;p&gt;The argument is invalid.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The argument is invalid.&lt;/p&gt;
+-- <p>The argument is invalid.</p>
+-- @param Message [string] <p>The argument is invalid.</p>
 function M.InvalidArgument(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArgument")
 	local t = { 
@@ -181,8 +181,8 @@ function M.AssertInvalidRelativePath(struct)
 end
 
 --- Create a structure of type InvalidRelativePath
--- &lt;p&gt;The relative path is too big, is not URL-encoded, or does not begin with a slash (/).&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The relative path is too big, is not URL-encoded, or does not begin with a slash (/).&lt;/p&gt;
+-- <p>The relative path is too big, is not URL-encoded, or does not begin with a slash (/).</p>
+-- @param Message [string] <p>The relative path is too big, is not URL-encoded, or does not begin with a slash (/).</p>
 function M.InvalidRelativePath(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRelativePath")
 	local t = { 
@@ -207,9 +207,9 @@ function M.AssertCloudFrontOriginAccessIdentityConfig(struct)
 end
 
 --- Create a structure of type CloudFrontOriginAccessIdentityConfig
--- &lt;p&gt;Origin access identity configuration. Send a &lt;code&gt;GET&lt;/code&gt; request to the &lt;code&gt;/&lt;i&gt;CloudFront API version&lt;/i&gt;/CloudFront/identity ID/config&lt;/code&gt; resource. &lt;/p&gt;
--- @param Comment [string] &lt;p&gt;Any comments you want to include about the origin access identity. &lt;/p&gt;
--- @param CallerReference [string] &lt;p&gt;A unique number that ensures the request can't be replayed.&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;CallerReference&lt;/code&gt; is new (no matter the content of the &lt;code&gt;CloudFrontOriginAccessIdentityConfig&lt;/code&gt; object), a new origin access identity is created.&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;CallerReference&lt;/code&gt; is a value already sent in a previous identity request, and the content of the &lt;code&gt;CloudFrontOriginAccessIdentityConfig&lt;/code&gt; is identical to the original request (ignoring white space), the response includes the same information returned to the original request. &lt;/p&gt; &lt;p&gt;If the &lt;code&gt;CallerReference&lt;/code&gt; is a value you already sent in a previous request to create an identity, but the content of the &lt;code&gt;CloudFrontOriginAccessIdentityConfig&lt;/code&gt; is different from the original request, CloudFront returns a &lt;code&gt;CloudFrontOriginAccessIdentityAlreadyExists&lt;/code&gt; error. &lt;/p&gt;
+-- <p>Origin access identity configuration. Send a <code>GET</code> request to the <code>/<i>CloudFront API version</i>/CloudFront/identity ID/config</code> resource. </p>
+-- @param Comment [string] <p>Any comments you want to include about the origin access identity. </p>
+-- @param CallerReference [string] <p>A unique number that ensures the request can't be replayed.</p> <p>If the <code>CallerReference</code> is new (no matter the content of the <code>CloudFrontOriginAccessIdentityConfig</code> object), a new origin access identity is created.</p> <p>If the <code>CallerReference</code> is a value already sent in a previous identity request, and the content of the <code>CloudFrontOriginAccessIdentityConfig</code> is identical to the original request (ignoring white space), the response includes the same information returned to the original request. </p> <p>If the <code>CallerReference</code> is a value you already sent in a previous request to create an identity, but the content of the <code>CloudFrontOriginAccessIdentityConfig</code> is different from the original request, CloudFront returns a <code>CloudFrontOriginAccessIdentityAlreadyExists</code> error. </p>
 -- Required parameter: CallerReference
 -- Required parameter: Comment
 function M.CloudFrontOriginAccessIdentityConfig(Comment, CallerReference, ...)
@@ -235,8 +235,8 @@ function M.AssertListTagsForResourceResult(struct)
 end
 
 --- Create a structure of type ListTagsForResourceResult
--- &lt;p&gt; The returned result of the corresponding request.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt; A complex type that contains zero or more &lt;code&gt;Tag&lt;/code&gt; elements.&lt;/p&gt;
+-- <p> The returned result of the corresponding request.</p>
+-- @param Tags [Tags] <p> A complex type that contains zero or more <code>Tag</code> elements.</p>
 -- Required parameter: Tags
 function M.ListTagsForResourceResult(Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResult")
@@ -259,8 +259,8 @@ function M.AssertTooManyDistributionsWithLambdaAssociations(struct)
 end
 
 --- Create a structure of type TooManyDistributionsWithLambdaAssociations
--- &lt;p&gt;Processing your request would cause the maximum number of distributions with Lambda function associations per owner to be exceeded.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;Processing your request would cause the maximum number of distributions with Lambda function associations per owner to be exceeded.&lt;/p&gt;
+-- <p>Processing your request would cause the maximum number of distributions with Lambda function associations per owner to be exceeded.</p>
+-- @param Message [string] <p>Processing your request would cause the maximum number of distributions with Lambda function associations per owner to be exceeded.</p>
 function M.TooManyDistributionsWithLambdaAssociations(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyDistributionsWithLambdaAssociations")
 	local t = { 
@@ -283,8 +283,8 @@ function M.AssertGetDistributionRequest(struct)
 end
 
 --- Create a structure of type GetDistributionRequest
--- &lt;p&gt;The request to get a distribution's information.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The distribution's ID.&lt;/p&gt;
+-- <p>The request to get a distribution's information.</p>
+-- @param Id [string] <p>The distribution's ID.</p>
 -- Required parameter: Id
 function M.GetDistributionRequest(Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDistributionRequest")
@@ -330,8 +330,8 @@ function M.AssertNoSuchCloudFrontOriginAccessIdentity(struct)
 end
 
 --- Create a structure of type NoSuchCloudFrontOriginAccessIdentity
--- &lt;p&gt;The specified origin access identity does not exist.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The specified origin access identity does not exist.&lt;/p&gt;
+-- <p>The specified origin access identity does not exist.</p>
+-- @param Message [string] <p>The specified origin access identity does not exist.</p>
 function M.NoSuchCloudFrontOriginAccessIdentity(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchCloudFrontOriginAccessIdentity")
 	local t = { 
@@ -353,8 +353,8 @@ function M.AssertTooManyLambdaFunctionAssociations(struct)
 end
 
 --- Create a structure of type TooManyLambdaFunctionAssociations
--- &lt;p&gt;Your request contains more Lambda function associations than are allowed per distribution.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;Your request contains more Lambda function associations than are allowed per distribution.&lt;/p&gt;
+-- <p>Your request contains more Lambda function associations than are allowed per distribution.</p>
+-- @param Message [string] <p>Your request contains more Lambda function associations than are allowed per distribution.</p>
 function M.TooManyLambdaFunctionAssociations(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyLambdaFunctionAssociations")
 	local t = { 
@@ -376,8 +376,8 @@ function M.AssertInvalidRequiredProtocol(struct)
 end
 
 --- Create a structure of type InvalidRequiredProtocol
--- &lt;p&gt;This operation requires the HTTPS protocol. Ensure that you specify the HTTPS protocol in your request, or omit the &lt;code&gt;RequiredProtocols&lt;/code&gt; element from your distribution configuration.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;This operation requires the HTTPS protocol. Ensure that you specify the HTTPS protocol in your request, or omit the &lt;code&gt;RequiredProtocols&lt;/code&gt; element from your distribution configuration.&lt;/p&gt;
+-- <p>This operation requires the HTTPS protocol. Ensure that you specify the HTTPS protocol in your request, or omit the <code>RequiredProtocols</code> element from your distribution configuration.</p>
+-- @param Message [string] <p>This operation requires the HTTPS protocol. Ensure that you specify the HTTPS protocol in your request, or omit the <code>RequiredProtocols</code> element from your distribution configuration.</p>
 function M.InvalidRequiredProtocol(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequiredProtocol")
 	local t = { 
@@ -402,9 +402,9 @@ function M.AssertOriginSslProtocols(struct)
 end
 
 --- Create a structure of type OriginSslProtocols
--- &lt;p&gt;A complex type that contains information about the SSL/TLS protocols that CloudFront can use when establishing an HTTPS connection with your origin. &lt;/p&gt;
--- @param Items [SslProtocolsList] &lt;p&gt;A list that contains allowed SSL/TLS protocols for this distribution.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of SSL/TLS protocols that you want to allow CloudFront to use when establishing an HTTPS connection with this origin. &lt;/p&gt;
+-- <p>A complex type that contains information about the SSL/TLS protocols that CloudFront can use when establishing an HTTPS connection with your origin. </p>
+-- @param Items [SslProtocolsList] <p>A list that contains allowed SSL/TLS protocols for this distribution.</p>
+-- @param Quantity [integer] <p>The number of SSL/TLS protocols that you want to allow CloudFront to use when establishing an HTTPS connection with this origin. </p>
 -- Required parameter: Quantity
 -- Required parameter: Items
 function M.OriginSslProtocols(Items, Quantity, ...)
@@ -438,13 +438,13 @@ function M.AssertInvalidationList(struct)
 end
 
 --- Create a structure of type InvalidationList
--- &lt;p&gt;The &lt;code&gt;InvalidationList&lt;/code&gt; complex type describes the list of invalidation objects. For more information about invalidation, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html&quot;&gt;Invalidating Objects (Web Distributions Only)&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Items [InvalidationSummaryList] &lt;p&gt;A complex type that contains one &lt;code&gt;InvalidationSummary&lt;/code&gt; element for each invalidation batch created by the current AWS account.&lt;/p&gt;
--- @param NextMarker [string] &lt;p&gt;If &lt;code&gt;IsTruncated&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;, this element is present and contains the value that you can use for the &lt;code&gt;Marker&lt;/code&gt; request parameter to continue listing your invalidation batches where they left off.&lt;/p&gt;
--- @param MaxItems [integer] &lt;p&gt;The value that you provided for the &lt;code&gt;MaxItems&lt;/code&gt; request parameter.&lt;/p&gt;
--- @param Marker [string] &lt;p&gt;The value that you provided for the &lt;code&gt;Marker&lt;/code&gt; request parameter.&lt;/p&gt;
--- @param IsTruncated [boolean] &lt;p&gt;A flag that indicates whether more invalidation batch requests remain to be listed. If your results were truncated, you can make a follow-up pagination request using the &lt;code&gt;Marker&lt;/code&gt; request parameter to retrieve more invalidation batches in the list.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of invalidation batches that were created by the current AWS account. &lt;/p&gt;
+-- <p>The <code>InvalidationList</code> complex type describes the list of invalidation objects. For more information about invalidation, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html">Invalidating Objects (Web Distributions Only)</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param Items [InvalidationSummaryList] <p>A complex type that contains one <code>InvalidationSummary</code> element for each invalidation batch created by the current AWS account.</p>
+-- @param NextMarker [string] <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value that you can use for the <code>Marker</code> request parameter to continue listing your invalidation batches where they left off.</p>
+-- @param MaxItems [integer] <p>The value that you provided for the <code>MaxItems</code> request parameter.</p>
+-- @param Marker [string] <p>The value that you provided for the <code>Marker</code> request parameter.</p>
+-- @param IsTruncated [boolean] <p>A flag that indicates whether more invalidation batch requests remain to be listed. If your results were truncated, you can make a follow-up pagination request using the <code>Marker</code> request parameter to retrieve more invalidation batches in the list.</p>
+-- @param Quantity [integer] <p>The number of invalidation batches that were created by the current AWS account. </p>
 -- Required parameter: Marker
 -- Required parameter: MaxItems
 -- Required parameter: IsTruncated
@@ -482,13 +482,13 @@ function M.AssertOrigin(struct)
 end
 
 --- Create a structure of type Origin
--- &lt;p&gt;A complex type that describes the Amazon S3 bucket or the HTTP server (for example, a web server) from which CloudFront gets your files. You must create at least one origin.&lt;/p&gt; &lt;p&gt;For the current limit on the number of origins that you can create for a distribution, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront&quot;&gt;Amazon CloudFront Limits&lt;/a&gt; in the &lt;i&gt;AWS General Reference&lt;/i&gt;.&lt;/p&gt;
--- @param OriginPath [string] &lt;p&gt;An optional element that causes CloudFront to request your content from a directory in your Amazon S3 bucket or your custom origin. When you include the &lt;code&gt;OriginPath&lt;/code&gt; element, specify the directory name, beginning with a &lt;code&gt;/&lt;/code&gt;. CloudFront appends the directory name to the value of &lt;code&gt;DomainName&lt;/code&gt;, for example, &lt;code&gt;example.com/production&lt;/code&gt;. Do not include a &lt;code&gt;/&lt;/code&gt; at the end of the directory name.&lt;/p&gt; &lt;p&gt;For example, suppose you've specified the following values for your distribution:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DomainName&lt;/code&gt;: An Amazon S3 bucket named &lt;code&gt;myawsbucket&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;OriginPath&lt;/code&gt;: &lt;code&gt;/production&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CNAME&lt;/code&gt;: &lt;code&gt;example.com&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;When a user enters &lt;code&gt;example.com/index.html&lt;/code&gt; in a browser, CloudFront sends a request to Amazon S3 for &lt;code&gt;myawsbucket/production/index.html&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;When a user enters &lt;code&gt;example.com/acme/index.html&lt;/code&gt; in a browser, CloudFront sends a request to Amazon S3 for &lt;code&gt;myawsbucket/production/acme/index.html&lt;/code&gt;.&lt;/p&gt;
--- @param DomainName [string] &lt;p&gt; &lt;b&gt;Amazon S3 origins&lt;/b&gt;: The DNS name of the Amazon S3 bucket from which you want CloudFront to get objects for this origin, for example, &lt;code&gt;myawsbucket.s3.amazonaws.com&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Constraints for Amazon S3 origins: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If you configured Amazon S3 Transfer Acceleration for your bucket, do not specify the &lt;code&gt;s3-accelerate&lt;/code&gt; endpoint for &lt;code&gt;DomainName&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The bucket name must be between 3 and 63 characters long (inclusive).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The bucket name must contain only lowercase characters, numbers, periods, underscores, and dashes.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The bucket name must not contain adjacent periods.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;Custom Origins&lt;/b&gt;: The DNS domain name for the HTTP server from which you want CloudFront to get objects for this origin, for example, &lt;code&gt;www.example.com&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;Constraints for custom origins:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DomainName&lt;/code&gt; must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.), hyphen (-), or underscore (_) characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The name cannot exceed 128 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param CustomOriginConfig [CustomOriginConfig] &lt;p&gt;A complex type that contains information about a custom origin. If the origin is an Amazon S3 bucket, use the &lt;code&gt;S3OriginConfig&lt;/code&gt; element instead.&lt;/p&gt;
--- @param CustomHeaders [CustomHeaders] &lt;p&gt;A complex type that contains names and values for the custom headers that you want.&lt;/p&gt;
--- @param S3OriginConfig [S3OriginConfig] &lt;p&gt;A complex type that contains information about the Amazon S3 origin. If the origin is a custom origin, use the &lt;code&gt;CustomOriginConfig&lt;/code&gt; element instead.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;A unique identifier for the origin. The value of &lt;code&gt;Id&lt;/code&gt; must be unique within the distribution.&lt;/p&gt; &lt;p&gt;When you specify the value of &lt;code&gt;TargetOriginId&lt;/code&gt; for the default cache behavior or for another cache behavior, you indicate the origin to which you want the cache behavior to route requests by specifying the value of the &lt;code&gt;Id&lt;/code&gt; element for that origin. When a request matches the path pattern for that cache behavior, CloudFront routes the request to the specified origin. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior&quot;&gt;Cache Behavior Settings&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>A complex type that describes the Amazon S3 bucket or the HTTP server (for example, a web server) from which CloudFront gets your files. You must create at least one origin.</p> <p>For the current limit on the number of origins that you can create for a distribution, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront">Amazon CloudFront Limits</a> in the <i>AWS General Reference</i>.</p>
+-- @param OriginPath [string] <p>An optional element that causes CloudFront to request your content from a directory in your Amazon S3 bucket or your custom origin. When you include the <code>OriginPath</code> element, specify the directory name, beginning with a <code>/</code>. CloudFront appends the directory name to the value of <code>DomainName</code>, for example, <code>example.com/production</code>. Do not include a <code>/</code> at the end of the directory name.</p> <p>For example, suppose you've specified the following values for your distribution:</p> <ul> <li> <p> <code>DomainName</code>: An Amazon S3 bucket named <code>myawsbucket</code>.</p> </li> <li> <p> <code>OriginPath</code>: <code>/production</code> </p> </li> <li> <p> <code>CNAME</code>: <code>example.com</code> </p> </li> </ul> <p>When a user enters <code>example.com/index.html</code> in a browser, CloudFront sends a request to Amazon S3 for <code>myawsbucket/production/index.html</code>.</p> <p>When a user enters <code>example.com/acme/index.html</code> in a browser, CloudFront sends a request to Amazon S3 for <code>myawsbucket/production/acme/index.html</code>.</p>
+-- @param DomainName [string] <p> <b>Amazon S3 origins</b>: The DNS name of the Amazon S3 bucket from which you want CloudFront to get objects for this origin, for example, <code>myawsbucket.s3.amazonaws.com</code>.</p> <p>Constraints for Amazon S3 origins: </p> <ul> <li> <p>If you configured Amazon S3 Transfer Acceleration for your bucket, do not specify the <code>s3-accelerate</code> endpoint for <code>DomainName</code>.</p> </li> <li> <p>The bucket name must be between 3 and 63 characters long (inclusive).</p> </li> <li> <p>The bucket name must contain only lowercase characters, numbers, periods, underscores, and dashes.</p> </li> <li> <p>The bucket name must not contain adjacent periods.</p> </li> </ul> <p> <b>Custom Origins</b>: The DNS domain name for the HTTP server from which you want CloudFront to get objects for this origin, for example, <code>www.example.com</code>. </p> <p>Constraints for custom origins:</p> <ul> <li> <p> <code>DomainName</code> must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.), hyphen (-), or underscore (_) characters.</p> </li> <li> <p>The name cannot exceed 128 characters.</p> </li> </ul>
+-- @param CustomOriginConfig [CustomOriginConfig] <p>A complex type that contains information about a custom origin. If the origin is an Amazon S3 bucket, use the <code>S3OriginConfig</code> element instead.</p>
+-- @param CustomHeaders [CustomHeaders] <p>A complex type that contains names and values for the custom headers that you want.</p>
+-- @param S3OriginConfig [S3OriginConfig] <p>A complex type that contains information about the Amazon S3 origin. If the origin is a custom origin, use the <code>CustomOriginConfig</code> element instead.</p>
+-- @param Id [string] <p>A unique identifier for the origin. The value of <code>Id</code> must be unique within the distribution.</p> <p>When you specify the value of <code>TargetOriginId</code> for the default cache behavior or for another cache behavior, you indicate the origin to which you want the cache behavior to route requests by specifying the value of the <code>Id</code> element for that origin. When a request matches the path pattern for that cache behavior, CloudFront routes the request to the specified origin. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior">Cache Behavior Settings</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
 -- Required parameter: Id
 -- Required parameter: DomainName
 function M.Origin(OriginPath, DomainName, CustomOriginConfig, CustomHeaders, S3OriginConfig, Id, ...)
@@ -518,9 +518,9 @@ function M.AssertUpdateCloudFrontOriginAccessIdentityResult(struct)
 end
 
 --- Create a structure of type UpdateCloudFrontOriginAccessIdentityResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param CloudFrontOriginAccessIdentity [CloudFrontOriginAccessIdentity] &lt;p&gt;The origin access identity's information.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the configuration. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param CloudFrontOriginAccessIdentity [CloudFrontOriginAccessIdentity] <p>The origin access identity's information.</p>
+-- @param ETag [string] <p>The current version of the configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 function M.UpdateCloudFrontOriginAccessIdentityResult(CloudFrontOriginAccessIdentity, ETag, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateCloudFrontOriginAccessIdentityResult")
 	local t = { 
@@ -546,9 +546,9 @@ function M.AssertDistributionConfigWithTags(struct)
 end
 
 --- Create a structure of type DistributionConfigWithTags
--- &lt;p&gt;A distribution Configuration and a list of tags to be associated with the distribution.&lt;/p&gt;
--- @param DistributionConfig [DistributionConfig] &lt;p&gt;A distribution configuration.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;A complex type that contains zero or more &lt;code&gt;Tag&lt;/code&gt; elements.&lt;/p&gt;
+-- <p>A distribution Configuration and a list of tags to be associated with the distribution.</p>
+-- @param DistributionConfig [DistributionConfig] <p>A distribution configuration.</p>
+-- @param Tags [Tags] <p>A complex type that contains zero or more <code>Tag</code> elements.</p>
 -- Required parameter: DistributionConfig
 -- Required parameter: Tags
 function M.DistributionConfigWithTags(DistributionConfig, Tags, ...)
@@ -574,9 +574,9 @@ function M.AssertGetCloudFrontOriginAccessIdentityConfigResult(struct)
 end
 
 --- Create a structure of type GetCloudFrontOriginAccessIdentityConfigResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param CloudFrontOriginAccessIdentityConfig [CloudFrontOriginAccessIdentityConfig] &lt;p&gt;The origin access identity's configuration information. &lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the configuration. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param CloudFrontOriginAccessIdentityConfig [CloudFrontOriginAccessIdentityConfig] <p>The origin access identity's configuration information. </p>
+-- @param ETag [string] <p>The current version of the configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 function M.GetCloudFrontOriginAccessIdentityConfigResult(CloudFrontOriginAccessIdentityConfig, ETag, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCloudFrontOriginAccessIdentityConfigResult")
 	local t = { 
@@ -599,8 +599,8 @@ function M.AssertInvalidForwardCookies(struct)
 end
 
 --- Create a structure of type InvalidForwardCookies
--- &lt;p&gt;Your request contains forward cookies option which doesn't match with the expectation for the &lt;code&gt;whitelisted&lt;/code&gt; list of cookie names. Either list of cookie names has been specified when not allowed or list of cookie names is missing when expected.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;Your request contains forward cookies option which doesn't match with the expectation for the &lt;code&gt;whitelisted&lt;/code&gt; list of cookie names. Either list of cookie names has been specified when not allowed or list of cookie names is missing when expected.&lt;/p&gt;
+-- <p>Your request contains forward cookies option which doesn't match with the expectation for the <code>whitelisted</code> list of cookie names. Either list of cookie names has been specified when not allowed or list of cookie names is missing when expected.</p>
+-- @param Message [string] <p>Your request contains forward cookies option which doesn't match with the expectation for the <code>whitelisted</code> list of cookie names. Either list of cookie names has been specified when not allowed or list of cookie names is missing when expected.</p>
 function M.InvalidForwardCookies(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidForwardCookies")
 	local t = { 
@@ -624,9 +624,9 @@ function M.AssertHeaders(struct)
 end
 
 --- Create a structure of type Headers
--- &lt;p&gt;A complex type that specifies the headers that you want CloudFront to forward to the origin for this cache behavior.&lt;/p&gt; &lt;p&gt;For the headers that you specify, CloudFront also caches separate versions of a specified object based on the header values in viewer requests. For example, suppose viewer requests for &lt;code&gt;logo.jpg&lt;/code&gt; contain a custom &lt;code&gt;Product&lt;/code&gt; header that has a value of either &lt;code&gt;Acme&lt;/code&gt; or &lt;code&gt;Apex&lt;/code&gt;, and you configure CloudFront to cache your content based on values in the &lt;code&gt;Product&lt;/code&gt; header. CloudFront forwards the &lt;code&gt;Product&lt;/code&gt; header to the origin and caches the response from the origin once for each header value. For more information about caching based on header values, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html&quot;&gt;How CloudFront Forwards and Caches Headers&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Items [HeaderList] &lt;p&gt;A complex type that contains one &lt;code&gt;Name&lt;/code&gt; element for each header that you want CloudFront to forward to the origin and to vary on for this cache behavior. If &lt;code&gt;Quantity&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt;, omit &lt;code&gt;Items&lt;/code&gt;.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of different headers that you want CloudFront to forward to the origin for this cache behavior. You can configure each cache behavior in a web distribution to do one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Forward all headers to your origin&lt;/b&gt;: Specify &lt;code&gt;1&lt;/code&gt; for &lt;code&gt;Quantity&lt;/code&gt; and &lt;code&gt;*&lt;/code&gt; for &lt;code&gt;Name&lt;/code&gt;.&lt;/p&gt; &lt;important&gt; &lt;p&gt;If you configure CloudFront to forward all headers to your origin, CloudFront doesn't cache the objects associated with this cache behavior. Instead, it sends every request to the origin.&lt;/p&gt; &lt;/important&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;Forward a whitelist of headers you specify&lt;/i&gt;: Specify the number of headers that you want to forward, and specify the header names in &lt;code&gt;Name&lt;/code&gt; elements. CloudFront caches your objects based on the values in all of the specified headers. CloudFront also forwards the headers that it forwards by default, but it caches your objects based only on the headers that you specify. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Forward only the default headers&lt;/b&gt;: Specify &lt;code&gt;0&lt;/code&gt; for &lt;code&gt;Quantity&lt;/code&gt; and omit &lt;code&gt;Items&lt;/code&gt;. In this configuration, CloudFront doesn't cache based on the values in the request headers.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>A complex type that specifies the headers that you want CloudFront to forward to the origin for this cache behavior.</p> <p>For the headers that you specify, CloudFront also caches separate versions of a specified object based on the header values in viewer requests. For example, suppose viewer requests for <code>logo.jpg</code> contain a custom <code>Product</code> header that has a value of either <code>Acme</code> or <code>Apex</code>, and you configure CloudFront to cache your content based on values in the <code>Product</code> header. CloudFront forwards the <code>Product</code> header to the origin and caches the response from the origin once for each header value. For more information about caching based on header values, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html">How CloudFront Forwards and Caches Headers</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param Items [HeaderList] <p>A complex type that contains one <code>Name</code> element for each header that you want CloudFront to forward to the origin and to vary on for this cache behavior. If <code>Quantity</code> is <code>0</code>, omit <code>Items</code>.</p>
+-- @param Quantity [integer] <p>The number of different headers that you want CloudFront to forward to the origin for this cache behavior. You can configure each cache behavior in a web distribution to do one of the following:</p> <ul> <li> <p> <b>Forward all headers to your origin</b>: Specify <code>1</code> for <code>Quantity</code> and <code>*</code> for <code>Name</code>.</p> <important> <p>If you configure CloudFront to forward all headers to your origin, CloudFront doesn't cache the objects associated with this cache behavior. Instead, it sends every request to the origin.</p> </important> </li> <li> <p> <i>Forward a whitelist of headers you specify</i>: Specify the number of headers that you want to forward, and specify the header names in <code>Name</code> elements. CloudFront caches your objects based on the values in all of the specified headers. CloudFront also forwards the headers that it forwards by default, but it caches your objects based only on the headers that you specify. </p> </li> <li> <p> <b>Forward only the default headers</b>: Specify <code>0</code> for <code>Quantity</code> and omit <code>Items</code>. In this configuration, CloudFront doesn't cache based on the values in the request headers.</p> </li> </ul>
 -- Required parameter: Quantity
 function M.Headers(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Headers")
@@ -651,8 +651,8 @@ function M.AssertGetCloudFrontOriginAccessIdentityConfigRequest(struct)
 end
 
 --- Create a structure of type GetCloudFrontOriginAccessIdentityConfigRequest
--- &lt;p&gt;The origin access identity's configuration information. For more information, see &lt;a&gt;CloudFrontOriginAccessIdentityConfigComplexType&lt;/a&gt;.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The identity's ID. &lt;/p&gt;
+-- <p>The origin access identity's configuration information. For more information, see <a>CloudFrontOriginAccessIdentityConfigComplexType</a>.</p>
+-- @param Id [string] <p>The identity's ID. </p>
 -- Required parameter: Id
 function M.GetCloudFrontOriginAccessIdentityConfigRequest(Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCloudFrontOriginAccessIdentityConfigRequest")
@@ -695,23 +695,23 @@ function M.AssertDistributionConfig(struct)
 end
 
 --- Create a structure of type DistributionConfig
--- &lt;p&gt;A distribution configuration.&lt;/p&gt;
--- @param Comment [string] &lt;p&gt;Any comments you want to include about the distribution.&lt;/p&gt; &lt;p&gt;If you don't want to specify a comment, include an empty &lt;code&gt;Comment&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;To delete an existing comment, update the distribution configuration and include an empty &lt;code&gt;Comment&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;To add or change a comment, update the distribution configuration and specify the new comment.&lt;/p&gt;
--- @param CacheBehaviors [CacheBehaviors] &lt;p&gt;A complex type that contains zero or more &lt;code&gt;CacheBehavior&lt;/code&gt; elements. &lt;/p&gt;
--- @param IsIPV6Enabled [boolean] &lt;p&gt;If you want CloudFront to respond to IPv6 DNS requests with an IPv6 address for your distribution, specify &lt;code&gt;true&lt;/code&gt;. If you specify &lt;code&gt;false&lt;/code&gt;, CloudFront responds to IPv6 DNS requests with the DNS response code &lt;code&gt;NOERROR&lt;/code&gt; and with no IP addresses. This allows viewers to submit a second request, for an IPv4 address for your distribution. &lt;/p&gt; &lt;p&gt;In general, you should enable IPv6 if you have users on IPv6 networks who want to access your content. However, if you're using signed URLs or signed cookies to restrict access to your content, and if you're using a custom policy that includes the &lt;code&gt;IpAddress&lt;/code&gt; parameter to restrict the IP addresses that can access your content, do not enable IPv6. If you want to restrict access to some content by IP address and not restrict access to other content (or restrict access but not by IP address), you can create two distributions. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-custom-policy.html&quot;&gt;Creating a Signed URL Using a Custom Policy&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;If you're using an Amazon Route 53 alias resource record set to route traffic to your CloudFront distribution, you need to create a second alias resource record set when both of the following are true:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You enable IPv6 for the distribution&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You're using alternate domain names in the URLs for your objects&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html&quot;&gt;Routing Traffic to an Amazon CloudFront Web Distribution by Using Your Domain Name&lt;/a&gt; in the &lt;i&gt;Amazon Route 53 Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;If you created a CNAME resource record set, either with Amazon Route 53 or with another DNS service, you don't need to make any changes. A CNAME record will route traffic to your distribution regardless of the IP address format of the viewer request.&lt;/p&gt;
--- @param Logging [LoggingConfig] &lt;p&gt;A complex type that controls whether access logs are written for the distribution.&lt;/p&gt; &lt;p&gt;For more information about logging, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html&quot;&gt;Access Logs&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param WebACLId [string] &lt;p&gt;A unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution.&lt;/p&gt; &lt;p&gt;AWS WAF is a web application firewall that lets you monitor the HTTP and HTTPS requests that are forwarded to CloudFront, and lets you control access to your content. Based on conditions that you specify, such as the IP addresses that requests originate from or the values of query strings, CloudFront responds to requests either with the requested content or with an HTTP 403 status code (Forbidden). You can also configure CloudFront to return a custom error page when a request is blocked. For more information about AWS WAF, see the &lt;a href=&quot;http://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html&quot;&gt;AWS WAF Developer Guide&lt;/a&gt;. &lt;/p&gt;
--- @param Origins [Origins] &lt;p&gt;A complex type that contains information about origins for this distribution. &lt;/p&gt;
--- @param DefaultRootObject [string] &lt;p&gt;The object that you want CloudFront to request from your origin (for example, &lt;code&gt;index.html&lt;/code&gt;) when a viewer requests the root URL for your distribution (&lt;code&gt;http://www.example.com&lt;/code&gt;) instead of an object in your distribution (&lt;code&gt;http://www.example.com/product-description.html&lt;/code&gt;). Specifying a default root object avoids exposing the contents of your distribution.&lt;/p&gt; &lt;p&gt;Specify only the object name, for example, &lt;code&gt;index.html&lt;/code&gt;. Do not add a &lt;code&gt;/&lt;/code&gt; before the object name.&lt;/p&gt; &lt;p&gt;If you don't want to specify a default root object when you create a distribution, include an empty &lt;code&gt;DefaultRootObject&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;To delete the default root object from an existing distribution, update the distribution configuration and include an empty &lt;code&gt;DefaultRootObject&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;To replace the default root object, update the distribution configuration and specify the new object.&lt;/p&gt; &lt;p&gt;For more information about the default root object, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html&quot;&gt;Creating a Default Root Object&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param PriceClass [PriceClass] &lt;p&gt;The price class that corresponds with the maximum price that you want to pay for CloudFront service. If you specify &lt;code&gt;PriceClass_All&lt;/code&gt;, CloudFront responds to requests for your objects from all CloudFront edge locations.&lt;/p&gt; &lt;p&gt;If you specify a price class other than &lt;code&gt;PriceClass_All&lt;/code&gt;, CloudFront serves your objects from the CloudFront edge location that has the lowest latency among the edge locations in your price class. Viewers who are in or near regions that are excluded from your specified price class may encounter slower performance.&lt;/p&gt; &lt;p&gt;For more information about price classes, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PriceClass.html&quot;&gt;Choosing the Price Class for a CloudFront Distribution&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;. For information about CloudFront pricing, including how price classes map to CloudFront regions, see &lt;a href=&quot;https://aws.amazon.com/cloudfront/pricing/&quot;&gt;Amazon CloudFront Pricing&lt;/a&gt;.&lt;/p&gt;
--- @param Enabled [boolean] &lt;p&gt;From this field, you can enable or disable the selected distribution.&lt;/p&gt; &lt;p&gt;If you specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt; but you specify values for &lt;code&gt;Bucket&lt;/code&gt; and &lt;code&gt;Prefix&lt;/code&gt;, the values are automatically deleted.&lt;/p&gt;
--- @param DefaultCacheBehavior [DefaultCacheBehavior] &lt;p&gt;A complex type that describes the default cache behavior if you do not specify a &lt;code&gt;CacheBehavior&lt;/code&gt; element or if files don't match any of the values of &lt;code&gt;PathPattern&lt;/code&gt; in &lt;code&gt;CacheBehavior&lt;/code&gt; elements. You must create exactly one default cache behavior.&lt;/p&gt;
--- @param CallerReference [string] &lt;p&gt;A unique value (for example, a date-time stamp) that ensures that the request can't be replayed.&lt;/p&gt; &lt;p&gt;If the value of &lt;code&gt;CallerReference&lt;/code&gt; is new (regardless of the content of the &lt;code&gt;DistributionConfig&lt;/code&gt; object), CloudFront creates a new distribution.&lt;/p&gt; &lt;p&gt;If &lt;code&gt;CallerReference&lt;/code&gt; is a value you already sent in a previous request to create a distribution, and if the content of the &lt;code&gt;DistributionConfig&lt;/code&gt; is identical to the original request (ignoring white space), CloudFront returns the same the response that it returned to the original request.&lt;/p&gt; &lt;p&gt;If &lt;code&gt;CallerReference&lt;/code&gt; is a value you already sent in a previous request to create a distribution but the content of the &lt;code&gt;DistributionConfig&lt;/code&gt; is different from the original request, CloudFront returns a &lt;code&gt;DistributionAlreadyExists&lt;/code&gt; error.&lt;/p&gt;
--- @param ViewerCertificate [ViewerCertificate] &lt;p&gt;A distribution configuration.&lt;/p&gt;
--- @param CustomErrorResponses [CustomErrorResponses] &lt;p&gt;A complex type that controls the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Whether CloudFront replaces HTTP status codes in the 4xx and 5xx range with custom error messages before returning the response to the viewer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;How long CloudFront caches HTTP status codes in the 4xx and 5xx range.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about custom error pages, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html&quot;&gt;Customizing Error Responses&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param HttpVersion [HttpVersion] &lt;p&gt;(Optional) Specify the maximum HTTP version that you want viewers to use to communicate with CloudFront. The default value for new web distributions is http2. Viewers that don't support HTTP/2 automatically use an earlier HTTP version.&lt;/p&gt; &lt;p&gt;For viewers and CloudFront to use HTTP/2, viewers must support TLS 1.2 or later, and must support Server Name Identification (SNI).&lt;/p&gt; &lt;p&gt;In general, configuring CloudFront to communicate with viewers using HTTP/2 reduces latency. You can improve performance by optimizing for HTTP/2. For more information, do an Internet search for &quot;http/2 optimization.&quot; &lt;/p&gt;
--- @param Restrictions [Restrictions] &lt;p&gt;A distribution configuration.&lt;/p&gt;
--- @param Aliases [Aliases] &lt;p&gt;A complex type that contains information about CNAMEs (alternate domain names), if any, for this distribution.&lt;/p&gt;
+-- <p>A distribution configuration.</p>
+-- @param Comment [string] <p>Any comments you want to include about the distribution.</p> <p>If you don't want to specify a comment, include an empty <code>Comment</code> element.</p> <p>To delete an existing comment, update the distribution configuration and include an empty <code>Comment</code> element.</p> <p>To add or change a comment, update the distribution configuration and specify the new comment.</p>
+-- @param CacheBehaviors [CacheBehaviors] <p>A complex type that contains zero or more <code>CacheBehavior</code> elements. </p>
+-- @param IsIPV6Enabled [boolean] <p>If you want CloudFront to respond to IPv6 DNS requests with an IPv6 address for your distribution, specify <code>true</code>. If you specify <code>false</code>, CloudFront responds to IPv6 DNS requests with the DNS response code <code>NOERROR</code> and with no IP addresses. This allows viewers to submit a second request, for an IPv4 address for your distribution. </p> <p>In general, you should enable IPv6 if you have users on IPv6 networks who want to access your content. However, if you're using signed URLs or signed cookies to restrict access to your content, and if you're using a custom policy that includes the <code>IpAddress</code> parameter to restrict the IP addresses that can access your content, do not enable IPv6. If you want to restrict access to some content by IP address and not restrict access to other content (or restrict access but not by IP address), you can create two distributions. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-custom-policy.html">Creating a Signed URL Using a Custom Policy</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> <p>If you're using an Amazon Route 53 alias resource record set to route traffic to your CloudFront distribution, you need to create a second alias resource record set when both of the following are true:</p> <ul> <li> <p>You enable IPv6 for the distribution</p> </li> <li> <p>You're using alternate domain names in the URLs for your objects</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html">Routing Traffic to an Amazon CloudFront Web Distribution by Using Your Domain Name</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>If you created a CNAME resource record set, either with Amazon Route 53 or with another DNS service, you don't need to make any changes. A CNAME record will route traffic to your distribution regardless of the IP address format of the viewer request.</p>
+-- @param Logging [LoggingConfig] <p>A complex type that controls whether access logs are written for the distribution.</p> <p>For more information about logging, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html">Access Logs</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param WebACLId [string] <p>A unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution.</p> <p>AWS WAF is a web application firewall that lets you monitor the HTTP and HTTPS requests that are forwarded to CloudFront, and lets you control access to your content. Based on conditions that you specify, such as the IP addresses that requests originate from or the values of query strings, CloudFront responds to requests either with the requested content or with an HTTP 403 status code (Forbidden). You can also configure CloudFront to return a custom error page when a request is blocked. For more information about AWS WAF, see the <a href="http://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html">AWS WAF Developer Guide</a>. </p>
+-- @param Origins [Origins] <p>A complex type that contains information about origins for this distribution. </p>
+-- @param DefaultRootObject [string] <p>The object that you want CloudFront to request from your origin (for example, <code>index.html</code>) when a viewer requests the root URL for your distribution (<code>http://www.example.com</code>) instead of an object in your distribution (<code>http://www.example.com/product-description.html</code>). Specifying a default root object avoids exposing the contents of your distribution.</p> <p>Specify only the object name, for example, <code>index.html</code>. Do not add a <code>/</code> before the object name.</p> <p>If you don't want to specify a default root object when you create a distribution, include an empty <code>DefaultRootObject</code> element.</p> <p>To delete the default root object from an existing distribution, update the distribution configuration and include an empty <code>DefaultRootObject</code> element.</p> <p>To replace the default root object, update the distribution configuration and specify the new object.</p> <p>For more information about the default root object, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html">Creating a Default Root Object</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param PriceClass [PriceClass] <p>The price class that corresponds with the maximum price that you want to pay for CloudFront service. If you specify <code>PriceClass_All</code>, CloudFront responds to requests for your objects from all CloudFront edge locations.</p> <p>If you specify a price class other than <code>PriceClass_All</code>, CloudFront serves your objects from the CloudFront edge location that has the lowest latency among the edge locations in your price class. Viewers who are in or near regions that are excluded from your specified price class may encounter slower performance.</p> <p>For more information about price classes, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PriceClass.html">Choosing the Price Class for a CloudFront Distribution</a> in the <i>Amazon CloudFront Developer Guide</i>. For information about CloudFront pricing, including how price classes map to CloudFront regions, see <a href="https://aws.amazon.com/cloudfront/pricing/">Amazon CloudFront Pricing</a>.</p>
+-- @param Enabled [boolean] <p>From this field, you can enable or disable the selected distribution.</p> <p>If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code> and <code>Prefix</code>, the values are automatically deleted.</p>
+-- @param DefaultCacheBehavior [DefaultCacheBehavior] <p>A complex type that describes the default cache behavior if you do not specify a <code>CacheBehavior</code> element or if files don't match any of the values of <code>PathPattern</code> in <code>CacheBehavior</code> elements. You must create exactly one default cache behavior.</p>
+-- @param CallerReference [string] <p>A unique value (for example, a date-time stamp) that ensures that the request can't be replayed.</p> <p>If the value of <code>CallerReference</code> is new (regardless of the content of the <code>DistributionConfig</code> object), CloudFront creates a new distribution.</p> <p>If <code>CallerReference</code> is a value you already sent in a previous request to create a distribution, and if the content of the <code>DistributionConfig</code> is identical to the original request (ignoring white space), CloudFront returns the same the response that it returned to the original request.</p> <p>If <code>CallerReference</code> is a value you already sent in a previous request to create a distribution but the content of the <code>DistributionConfig</code> is different from the original request, CloudFront returns a <code>DistributionAlreadyExists</code> error.</p>
+-- @param ViewerCertificate [ViewerCertificate] <p>A distribution configuration.</p>
+-- @param CustomErrorResponses [CustomErrorResponses] <p>A complex type that controls the following:</p> <ul> <li> <p>Whether CloudFront replaces HTTP status codes in the 4xx and 5xx range with custom error messages before returning the response to the viewer.</p> </li> <li> <p>How long CloudFront caches HTTP status codes in the 4xx and 5xx range.</p> </li> </ul> <p>For more information about custom error pages, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html">Customizing Error Responses</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param HttpVersion [HttpVersion] <p>(Optional) Specify the maximum HTTP version that you want viewers to use to communicate with CloudFront. The default value for new web distributions is http2. Viewers that don't support HTTP/2 automatically use an earlier HTTP version.</p> <p>For viewers and CloudFront to use HTTP/2, viewers must support TLS 1.2 or later, and must support Server Name Identification (SNI).</p> <p>In general, configuring CloudFront to communicate with viewers using HTTP/2 reduces latency. You can improve performance by optimizing for HTTP/2. For more information, do an Internet search for "http/2 optimization." </p>
+-- @param Restrictions [Restrictions] <p>A distribution configuration.</p>
+-- @param Aliases [Aliases] <p>A complex type that contains information about CNAMEs (alternate domain names), if any, for this distribution.</p>
 -- Required parameter: CallerReference
 -- Required parameter: Origins
 -- Required parameter: DefaultCacheBehavior
@@ -755,9 +755,9 @@ function M.AssertCustomErrorResponses(struct)
 end
 
 --- Create a structure of type CustomErrorResponses
--- &lt;p&gt;A complex type that controls:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Whether CloudFront replaces HTTP status codes in the 4xx and 5xx range with custom error messages before returning the response to the viewer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;How long CloudFront caches HTTP status codes in the 4xx and 5xx range.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about custom error pages, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html&quot;&gt;Customizing Error Responses&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Items [CustomErrorResponseList] &lt;p&gt;A complex type that contains a &lt;code&gt;CustomErrorResponse&lt;/code&gt; element for each HTTP status code for which you want to specify a custom error page and/or a caching duration. &lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of HTTP status codes for which you want to specify a custom error page and/or a caching duration. If &lt;code&gt;Quantity&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt;, you can omit &lt;code&gt;Items&lt;/code&gt;.&lt;/p&gt;
+-- <p>A complex type that controls:</p> <ul> <li> <p>Whether CloudFront replaces HTTP status codes in the 4xx and 5xx range with custom error messages before returning the response to the viewer.</p> </li> <li> <p>How long CloudFront caches HTTP status codes in the 4xx and 5xx range.</p> </li> </ul> <p>For more information about custom error pages, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html">Customizing Error Responses</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param Items [CustomErrorResponseList] <p>A complex type that contains a <code>CustomErrorResponse</code> element for each HTTP status code for which you want to specify a custom error page and/or a caching duration. </p>
+-- @param Quantity [integer] <p>The number of HTTP status codes for which you want to specify a custom error page and/or a caching duration. If <code>Quantity</code> is <code>0</code>, you can omit <code>Items</code>.</p>
 -- Required parameter: Quantity
 function M.CustomErrorResponses(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CustomErrorResponses")
@@ -785,10 +785,10 @@ function M.AssertCloudFrontOriginAccessIdentity(struct)
 end
 
 --- Create a structure of type CloudFrontOriginAccessIdentity
--- &lt;p&gt;CloudFront origin access identity.&lt;/p&gt;
--- @param CloudFrontOriginAccessIdentityConfig [CloudFrontOriginAccessIdentityConfig] &lt;p&gt;The current configuration information for the identity. &lt;/p&gt;
--- @param S3CanonicalUserId [string] &lt;p&gt;The Amazon S3 canonical user ID for the origin access identity, used when giving the origin access identity read permission to an object in Amazon S3. &lt;/p&gt;
--- @param Id [string] &lt;p&gt;The ID for the origin access identity. For example: &lt;code&gt;E74FTE3AJFJ256A&lt;/code&gt;. &lt;/p&gt;
+-- <p>CloudFront origin access identity.</p>
+-- @param CloudFrontOriginAccessIdentityConfig [CloudFrontOriginAccessIdentityConfig] <p>The current configuration information for the identity. </p>
+-- @param S3CanonicalUserId [string] <p>The Amazon S3 canonical user ID for the origin access identity, used when giving the origin access identity read permission to an object in Amazon S3. </p>
+-- @param Id [string] <p>The ID for the origin access identity. For example: <code>E74FTE3AJFJ256A</code>. </p>
 -- Required parameter: Id
 -- Required parameter: S3CanonicalUserId
 function M.CloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentityConfig, S3CanonicalUserId, Id, ...)
@@ -814,8 +814,8 @@ function M.AssertMissingBody(struct)
 end
 
 --- Create a structure of type MissingBody
--- &lt;p&gt;This operation requires a body. Ensure that the body is present and the Content-Type header is set.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;This operation requires a body. Ensure that the body is present and the Content-Type header is set.&lt;/p&gt;
+-- <p>This operation requires a body. Ensure that the body is present and the Content-Type header is set.</p>
+-- @param Message [string] <p>This operation requires a body. Ensure that the body is present and the Content-Type header is set.</p>
 function M.MissingBody(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MissingBody")
 	local t = { 
@@ -838,8 +838,8 @@ function M.AssertS3OriginConfig(struct)
 end
 
 --- Create a structure of type S3OriginConfig
--- &lt;p&gt;A complex type that contains information about the Amazon S3 origin. If the origin is a custom origin, use the &lt;code&gt;CustomOriginConfig&lt;/code&gt; element instead.&lt;/p&gt;
--- @param OriginAccessIdentity [string] &lt;p&gt;The CloudFront origin access identity to associate with the origin. Use an origin access identity to configure the origin so that viewers can &lt;i&gt;only&lt;/i&gt; access objects in an Amazon S3 bucket through CloudFront. The format of the value is:&lt;/p&gt; &lt;p&gt;origin-access-identity/cloudfront/&lt;i&gt;ID-of-origin-access-identity&lt;/i&gt; &lt;/p&gt; &lt;p&gt;where &lt;code&gt; &lt;i&gt;ID-of-origin-access-identity&lt;/i&gt; &lt;/code&gt; is the value that CloudFront returned in the &lt;code&gt;ID&lt;/code&gt; element when you created the origin access identity.&lt;/p&gt; &lt;p&gt;If you want viewers to be able to access objects using either the CloudFront URL or the Amazon S3 URL, specify an empty &lt;code&gt;OriginAccessIdentity&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;To delete the origin access identity from an existing distribution, update the distribution configuration and include an empty &lt;code&gt;OriginAccessIdentity&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;To replace the origin access identity, update the distribution configuration and specify the new origin access identity.&lt;/p&gt; &lt;p&gt;For more information about the origin access identity, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html&quot;&gt;Serving Private Content through CloudFront&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>A complex type that contains information about the Amazon S3 origin. If the origin is a custom origin, use the <code>CustomOriginConfig</code> element instead.</p>
+-- @param OriginAccessIdentity [string] <p>The CloudFront origin access identity to associate with the origin. Use an origin access identity to configure the origin so that viewers can <i>only</i> access objects in an Amazon S3 bucket through CloudFront. The format of the value is:</p> <p>origin-access-identity/cloudfront/<i>ID-of-origin-access-identity</i> </p> <p>where <code> <i>ID-of-origin-access-identity</i> </code> is the value that CloudFront returned in the <code>ID</code> element when you created the origin access identity.</p> <p>If you want viewers to be able to access objects using either the CloudFront URL or the Amazon S3 URL, specify an empty <code>OriginAccessIdentity</code> element.</p> <p>To delete the origin access identity from an existing distribution, update the distribution configuration and include an empty <code>OriginAccessIdentity</code> element.</p> <p>To replace the origin access identity, update the distribution configuration and specify the new origin access identity.</p> <p>For more information about the origin access identity, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">Serving Private Content through CloudFront</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
 -- Required parameter: OriginAccessIdentity
 function M.S3OriginConfig(OriginAccessIdentity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3OriginConfig")
@@ -908,8 +908,8 @@ function M.AssertTooManyCacheBehaviors(struct)
 end
 
 --- Create a structure of type TooManyCacheBehaviors
--- &lt;p&gt;You cannot create more cache behaviors for the distribution.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;You cannot create more cache behaviors for the distribution.&lt;/p&gt;
+-- <p>You cannot create more cache behaviors for the distribution.</p>
+-- @param Message [string] <p>You cannot create more cache behaviors for the distribution.</p>
 function M.TooManyCacheBehaviors(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyCacheBehaviors")
 	local t = { 
@@ -954,8 +954,8 @@ function M.AssertTooManyDistributions(struct)
 end
 
 --- Create a structure of type TooManyDistributions
--- &lt;p&gt;Processing your request would cause you to exceed the maximum number of distributions allowed.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;Processing your request would cause you to exceed the maximum number of distributions allowed.&lt;/p&gt;
+-- <p>Processing your request would cause you to exceed the maximum number of distributions allowed.</p>
+-- @param Message [string] <p>Processing your request would cause you to exceed the maximum number of distributions allowed.</p>
 function M.TooManyDistributions(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyDistributions")
 	local t = { 
@@ -1015,18 +1015,18 @@ function M.AssertDefaultCacheBehavior(struct)
 end
 
 --- Create a structure of type DefaultCacheBehavior
--- &lt;p&gt;A complex type that describes the default cache behavior if you do not specify a &lt;code&gt;CacheBehavior&lt;/code&gt; element or if files don't match any of the values of &lt;code&gt;PathPattern&lt;/code&gt; in &lt;code&gt;CacheBehavior&lt;/code&gt; elements. You must create exactly one default cache behavior.&lt;/p&gt;
--- @param TrustedSigners [TrustedSigners] &lt;p&gt;A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content.&lt;/p&gt; &lt;p&gt;If you want to require signed URLs in requests for objects in the target origin that match the &lt;code&gt;PathPattern&lt;/code&gt; for this cache behavior, specify &lt;code&gt;true&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt;, and specify the applicable values for &lt;code&gt;Quantity&lt;/code&gt; and &lt;code&gt;Items&lt;/code&gt;. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html&quot;&gt;Serving Private Content through CloudFront&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;If you don't want to require signed URLs in requests for objects that match &lt;code&gt;PathPattern&lt;/code&gt;, specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt; and &lt;code&gt;0&lt;/code&gt; for &lt;code&gt;Quantity&lt;/code&gt;. Omit &lt;code&gt;Items&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To add, change, or remove one or more trusted signers, change &lt;code&gt;Enabled&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; (if it's currently &lt;code&gt;false&lt;/code&gt;), change &lt;code&gt;Quantity&lt;/code&gt; as applicable, and specify all of the trusted signers that you want to include in the updated distribution.&lt;/p&gt;
--- @param LambdaFunctionAssociations [LambdaFunctionAssociations] &lt;p&gt;A complex type that contains zero or more Lambda function associations for a cache behavior.&lt;/p&gt;
--- @param TargetOriginId [string] &lt;p&gt;The value of &lt;code&gt;ID&lt;/code&gt; for the origin that you want CloudFront to route requests to when a request matches the path pattern either for a cache behavior or for the default cache behavior.&lt;/p&gt;
--- @param ViewerProtocolPolicy [ViewerProtocolPolicy] &lt;p&gt;The protocol that viewers can use to access the files in the origin specified by &lt;code&gt;TargetOriginId&lt;/code&gt; when a request matches the path pattern in &lt;code&gt;PathPattern&lt;/code&gt;. You can specify the following options:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;allow-all&lt;/code&gt;: Viewers can use HTTP or HTTPS.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;redirect-to-https&lt;/code&gt;: If a viewer submits an HTTP request, CloudFront returns an HTTP status code of 301 (Moved Permanently) to the viewer along with the HTTPS URL. The viewer then resubmits the request using the new URL.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;https-only&lt;/code&gt;: If a viewer sends an HTTP request, CloudFront returns an HTTP status code of 403 (Forbidden).&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about requiring the HTTPS protocol, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html&quot;&gt;Using an HTTPS Connection to Access Your Objects&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The only way to guarantee that viewers retrieve an object that was fetched from the origin using HTTPS is never to use any other protocol to fetch the object. If you have recently changed from HTTP to HTTPS, we recommend that you clear your objects' cache because cached objects are protocol agnostic. That means that an edge location will return an object from the cache regardless of whether the current request protocol matches the protocol used previously. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html&quot;&gt;Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param ForwardedValues [ForwardedValues] &lt;p&gt;A complex type that specifies how CloudFront handles query strings and cookies.&lt;/p&gt;
--- @param MaxTTL [long] &lt;p&gt;A complex type that describes the default cache behavior if you do not specify a &lt;code&gt;CacheBehavior&lt;/code&gt; element or if files don't match any of the values of &lt;code&gt;PathPattern&lt;/code&gt; in &lt;code&gt;CacheBehavior&lt;/code&gt; elements. You must create exactly one default cache behavior.&lt;/p&gt;
--- @param SmoothStreaming [boolean] &lt;p&gt;Indicates whether you want to distribute media files in the Microsoft Smooth Streaming format using the origin that is associated with this cache behavior. If so, specify &lt;code&gt;true&lt;/code&gt;; if not, specify &lt;code&gt;false&lt;/code&gt;. If you specify &lt;code&gt;true&lt;/code&gt; for &lt;code&gt;SmoothStreaming&lt;/code&gt;, you can still distribute other content using this cache behavior if the content matches the value of &lt;code&gt;PathPattern&lt;/code&gt;. &lt;/p&gt;
--- @param DefaultTTL [long] &lt;p&gt;The default amount of time that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated. The value that you specify applies only when your origin does not add HTTP headers such as &lt;code&gt;Cache-Control max-age&lt;/code&gt;, &lt;code&gt;Cache-Control s-maxage&lt;/code&gt;, and &lt;code&gt;Expires&lt;/code&gt; to objects. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html&quot;&gt;Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param AllowedMethods [AllowedMethods] &lt;p&gt;A complex type that describes the default cache behavior if you do not specify a &lt;code&gt;CacheBehavior&lt;/code&gt; element or if files don't match any of the values of &lt;code&gt;PathPattern&lt;/code&gt; in &lt;code&gt;CacheBehavior&lt;/code&gt; elements. You must create exactly one default cache behavior.&lt;/p&gt;
--- @param MinTTL [long] &lt;p&gt;The minimum amount of time that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html&quot;&gt;Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;You must specify &lt;code&gt;0&lt;/code&gt; for &lt;code&gt;MinTTL&lt;/code&gt; if you configure CloudFront to forward all headers to your origin (under &lt;code&gt;Headers&lt;/code&gt;, if you specify &lt;code&gt;1&lt;/code&gt; for &lt;code&gt;Quantity&lt;/code&gt; and &lt;code&gt;*&lt;/code&gt; for &lt;code&gt;Name&lt;/code&gt;).&lt;/p&gt;
--- @param Compress [boolean] &lt;p&gt;Whether you want CloudFront to automatically compress certain files for this cache behavior. If so, specify &lt;code&gt;true&lt;/code&gt;; if not, specify &lt;code&gt;false&lt;/code&gt;. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html&quot;&gt;Serving Compressed Files&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>A complex type that describes the default cache behavior if you do not specify a <code>CacheBehavior</code> element or if files don't match any of the values of <code>PathPattern</code> in <code>CacheBehavior</code> elements. You must create exactly one default cache behavior.</p>
+-- @param TrustedSigners [TrustedSigners] <p>A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content.</p> <p>If you want to require signed URLs in requests for objects in the target origin that match the <code>PathPattern</code> for this cache behavior, specify <code>true</code> for <code>Enabled</code>, and specify the applicable values for <code>Quantity</code> and <code>Items</code>. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">Serving Private Content through CloudFront</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p> <p>If you don't want to require signed URLs in requests for objects that match <code>PathPattern</code>, specify <code>false</code> for <code>Enabled</code> and <code>0</code> for <code>Quantity</code>. Omit <code>Items</code>.</p> <p>To add, change, or remove one or more trusted signers, change <code>Enabled</code> to <code>true</code> (if it's currently <code>false</code>), change <code>Quantity</code> as applicable, and specify all of the trusted signers that you want to include in the updated distribution.</p>
+-- @param LambdaFunctionAssociations [LambdaFunctionAssociations] <p>A complex type that contains zero or more Lambda function associations for a cache behavior.</p>
+-- @param TargetOriginId [string] <p>The value of <code>ID</code> for the origin that you want CloudFront to route requests to when a request matches the path pattern either for a cache behavior or for the default cache behavior.</p>
+-- @param ViewerProtocolPolicy [ViewerProtocolPolicy] <p>The protocol that viewers can use to access the files in the origin specified by <code>TargetOriginId</code> when a request matches the path pattern in <code>PathPattern</code>. You can specify the following options:</p> <ul> <li> <p> <code>allow-all</code>: Viewers can use HTTP or HTTPS.</p> </li> <li> <p> <code>redirect-to-https</code>: If a viewer submits an HTTP request, CloudFront returns an HTTP status code of 301 (Moved Permanently) to the viewer along with the HTTPS URL. The viewer then resubmits the request using the new URL.</p> </li> <li> <p> <code>https-only</code>: If a viewer sends an HTTP request, CloudFront returns an HTTP status code of 403 (Forbidden).</p> </li> </ul> <p>For more information about requiring the HTTPS protocol, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html">Using an HTTPS Connection to Access Your Objects</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> <note> <p>The only way to guarantee that viewers retrieve an object that was fetched from the origin using HTTPS is never to use any other protocol to fetch the object. If you have recently changed from HTTP to HTTPS, we recommend that you clear your objects' cache because cached objects are protocol agnostic. That means that an edge location will return an object from the cache regardless of whether the current request protocol matches the protocol used previously. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html">Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> </note>
+-- @param ForwardedValues [ForwardedValues] <p>A complex type that specifies how CloudFront handles query strings and cookies.</p>
+-- @param MaxTTL [long] <p>A complex type that describes the default cache behavior if you do not specify a <code>CacheBehavior</code> element or if files don't match any of the values of <code>PathPattern</code> in <code>CacheBehavior</code> elements. You must create exactly one default cache behavior.</p>
+-- @param SmoothStreaming [boolean] <p>Indicates whether you want to distribute media files in the Microsoft Smooth Streaming format using the origin that is associated with this cache behavior. If so, specify <code>true</code>; if not, specify <code>false</code>. If you specify <code>true</code> for <code>SmoothStreaming</code>, you can still distribute other content using this cache behavior if the content matches the value of <code>PathPattern</code>. </p>
+-- @param DefaultTTL [long] <p>The default amount of time that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated. The value that you specify applies only when your origin does not add HTTP headers such as <code>Cache-Control max-age</code>, <code>Cache-Control s-maxage</code>, and <code>Expires</code> to objects. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html">Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param AllowedMethods [AllowedMethods] <p>A complex type that describes the default cache behavior if you do not specify a <code>CacheBehavior</code> element or if files don't match any of the values of <code>PathPattern</code> in <code>CacheBehavior</code> elements. You must create exactly one default cache behavior.</p>
+-- @param MinTTL [long] <p>The minimum amount of time that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html">Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p> <p>You must specify <code>0</code> for <code>MinTTL</code> if you configure CloudFront to forward all headers to your origin (under <code>Headers</code>, if you specify <code>1</code> for <code>Quantity</code> and <code>*</code> for <code>Name</code>).</p>
+-- @param Compress [boolean] <p>Whether you want CloudFront to automatically compress certain files for this cache behavior. If so, specify <code>true</code>; if not, specify <code>false</code>. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html">Serving Compressed Files</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
 -- Required parameter: TargetOriginId
 -- Required parameter: ForwardedValues
 -- Required parameter: TrustedSigners
@@ -1065,9 +1065,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt; A complex type that contains &lt;code&gt;Tag&lt;/code&gt; key and &lt;code&gt;Tag&lt;/code&gt; value.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt; A string that contains an optional &lt;code&gt;Tag&lt;/code&gt; value.&lt;/p&gt; &lt;p&gt;The string length should be between 0 and 256 characters. Valid characters include &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;, space, and the special characters &lt;code&gt;_ - . : / = + @&lt;/code&gt;.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt; A string that contains &lt;code&gt;Tag&lt;/code&gt; key.&lt;/p&gt; &lt;p&gt;The string length should be between 1 and 128 characters. Valid characters include &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;, space, and the special characters &lt;code&gt;_ - . : / = + @&lt;/code&gt;.&lt;/p&gt;
+-- <p> A complex type that contains <code>Tag</code> key and <code>Tag</code> value.</p>
+-- @param Value [TagValue] <p> A string that contains an optional <code>Tag</code> value.</p> <p>The string length should be between 0 and 256 characters. Valid characters include <code>a-z</code>, <code>A-Z</code>, <code>0-9</code>, space, and the special characters <code>_ - . : / = + @</code>.</p>
+-- @param Key [TagKey] <p> A string that contains <code>Tag</code> key.</p> <p>The string length should be between 1 and 128 characters. Valid characters include <code>a-z</code>, <code>A-Z</code>, <code>0-9</code>, space, and the special characters <code>_ - . : / = + @</code>.</p>
 -- Required parameter: Key
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
@@ -1094,9 +1094,9 @@ function M.AssertCachedMethods(struct)
 end
 
 --- Create a structure of type CachedMethods
--- &lt;p&gt;A complex type that controls whether CloudFront caches the response to requests using the specified HTTP methods. There are two choices:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;CloudFront caches responses to &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;HEAD&lt;/code&gt; requests.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;CloudFront caches responses to &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;HEAD&lt;/code&gt;, and &lt;code&gt;OPTIONS&lt;/code&gt; requests.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you pick the second choice for your Amazon S3 Origin, you may need to forward Access-Control-Request-Method, Access-Control-Request-Headers, and Origin headers for the responses to be cached correctly. &lt;/p&gt;
--- @param Items [MethodsList] &lt;p&gt;A complex type that contains the HTTP methods that you want CloudFront to cache responses to.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of HTTP methods for which you want CloudFront to cache responses. Valid values are &lt;code&gt;2&lt;/code&gt; (for caching responses to &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;HEAD&lt;/code&gt; requests) and &lt;code&gt;3&lt;/code&gt; (for caching responses to &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;HEAD&lt;/code&gt;, and &lt;code&gt;OPTIONS&lt;/code&gt; requests).&lt;/p&gt;
+-- <p>A complex type that controls whether CloudFront caches the response to requests using the specified HTTP methods. There are two choices:</p> <ul> <li> <p>CloudFront caches responses to <code>GET</code> and <code>HEAD</code> requests.</p> </li> <li> <p>CloudFront caches responses to <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code> requests.</p> </li> </ul> <p>If you pick the second choice for your Amazon S3 Origin, you may need to forward Access-Control-Request-Method, Access-Control-Request-Headers, and Origin headers for the responses to be cached correctly. </p>
+-- @param Items [MethodsList] <p>A complex type that contains the HTTP methods that you want CloudFront to cache responses to.</p>
+-- @param Quantity [integer] <p>The number of HTTP methods for which you want CloudFront to cache responses. Valid values are <code>2</code> (for caching responses to <code>GET</code> and <code>HEAD</code> requests) and <code>3</code> (for caching responses to <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code> requests).</p>
 -- Required parameter: Quantity
 -- Required parameter: Items
 function M.CachedMethods(Items, Quantity, ...)
@@ -1125,10 +1125,10 @@ function M.AssertAllowedMethods(struct)
 end
 
 --- Create a structure of type AllowedMethods
--- &lt;p&gt;A complex type that controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin. There are three choices:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;CloudFront forwards only &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;HEAD&lt;/code&gt; requests.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;CloudFront forwards only &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;HEAD&lt;/code&gt;, and &lt;code&gt;OPTIONS&lt;/code&gt; requests.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;CloudFront forwards &lt;code&gt;GET, HEAD, OPTIONS, PUT, PATCH, POST&lt;/code&gt;, and &lt;code&gt;DELETE&lt;/code&gt; requests.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you pick the third choice, you may need to restrict access to your Amazon S3 bucket or to your custom origin so users can't perform operations that you don't want them to. For example, you might not want users to have permissions to delete objects from your origin.&lt;/p&gt;
--- @param Items [MethodsList] &lt;p&gt;A complex type that contains the HTTP methods that you want CloudFront to process and forward to your origin.&lt;/p&gt;
--- @param CachedMethods [CachedMethods] &lt;p&gt;A complex type that controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin. There are three choices:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;CloudFront forwards only &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;HEAD&lt;/code&gt; requests.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;CloudFront forwards only &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;HEAD&lt;/code&gt;, and &lt;code&gt;OPTIONS&lt;/code&gt; requests.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;CloudFront forwards &lt;code&gt;GET, HEAD, OPTIONS, PUT, PATCH, POST&lt;/code&gt;, and &lt;code&gt;DELETE&lt;/code&gt; requests.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you pick the third choice, you may need to restrict access to your Amazon S3 bucket or to your custom origin so users can't perform operations that you don't want them to. For example, you might not want users to have permissions to delete objects from your origin.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of HTTP methods that you want CloudFront to forward to your origin. Valid values are 2 (for &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;HEAD&lt;/code&gt; requests), 3 (for &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;HEAD&lt;/code&gt;, and &lt;code&gt;OPTIONS&lt;/code&gt; requests) and 7 (for &lt;code&gt;GET, HEAD, OPTIONS, PUT, PATCH, POST&lt;/code&gt;, and &lt;code&gt;DELETE&lt;/code&gt; requests).&lt;/p&gt;
+-- <p>A complex type that controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin. There are three choices:</p> <ul> <li> <p>CloudFront forwards only <code>GET</code> and <code>HEAD</code> requests.</p> </li> <li> <p>CloudFront forwards only <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code> requests.</p> </li> <li> <p>CloudFront forwards <code>GET, HEAD, OPTIONS, PUT, PATCH, POST</code>, and <code>DELETE</code> requests.</p> </li> </ul> <p>If you pick the third choice, you may need to restrict access to your Amazon S3 bucket or to your custom origin so users can't perform operations that you don't want them to. For example, you might not want users to have permissions to delete objects from your origin.</p>
+-- @param Items [MethodsList] <p>A complex type that contains the HTTP methods that you want CloudFront to process and forward to your origin.</p>
+-- @param CachedMethods [CachedMethods] <p>A complex type that controls which HTTP methods CloudFront processes and forwards to your Amazon S3 bucket or your custom origin. There are three choices:</p> <ul> <li> <p>CloudFront forwards only <code>GET</code> and <code>HEAD</code> requests.</p> </li> <li> <p>CloudFront forwards only <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code> requests.</p> </li> <li> <p>CloudFront forwards <code>GET, HEAD, OPTIONS, PUT, PATCH, POST</code>, and <code>DELETE</code> requests.</p> </li> </ul> <p>If you pick the third choice, you may need to restrict access to your Amazon S3 bucket or to your custom origin so users can't perform operations that you don't want them to. For example, you might not want users to have permissions to delete objects from your origin.</p>
+-- @param Quantity [integer] <p>The number of HTTP methods that you want CloudFront to forward to your origin. Valid values are 2 (for <code>GET</code> and <code>HEAD</code> requests), 3 (for <code>GET</code>, <code>HEAD</code>, and <code>OPTIONS</code> requests) and 7 (for <code>GET, HEAD, OPTIONS, PUT, PATCH, POST</code>, and <code>DELETE</code> requests).</p>
 -- Required parameter: Quantity
 -- Required parameter: Items
 function M.AllowedMethods(Items, CachedMethods, Quantity, ...)
@@ -1154,8 +1154,8 @@ function M.AssertListInvalidationsResult(struct)
 end
 
 --- Create a structure of type ListInvalidationsResult
--- &lt;p&gt;The returned result of the corresponding request. &lt;/p&gt;
--- @param InvalidationList [InvalidationList] &lt;p&gt;Information about invalidation batches. &lt;/p&gt;
+-- <p>The returned result of the corresponding request. </p>
+-- @param InvalidationList [InvalidationList] <p>Information about invalidation batches. </p>
 function M.ListInvalidationsResult(InvalidationList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListInvalidationsResult")
 	local t = { 
@@ -1177,8 +1177,8 @@ function M.AssertInvalidOrigin(struct)
 end
 
 --- Create a structure of type InvalidOrigin
--- &lt;p&gt;The Amazon S3 origin server specified does not refer to a valid Amazon S3 bucket.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The Amazon S3 origin server specified does not refer to a valid Amazon S3 bucket.&lt;/p&gt;
+-- <p>The Amazon S3 origin server specified does not refer to a valid Amazon S3 bucket.</p>
+-- @param Message [string] <p>The Amazon S3 origin server specified does not refer to a valid Amazon S3 bucket.</p>
 function M.InvalidOrigin(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOrigin")
 	local t = { 
@@ -1200,8 +1200,8 @@ function M.AssertTooManyInvalidationsInProgress(struct)
 end
 
 --- Create a structure of type TooManyInvalidationsInProgress
--- &lt;p&gt;You have exceeded the maximum number of allowable InProgress invalidation batch requests, or invalidation objects.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;You have exceeded the maximum number of allowable InProgress invalidation batch requests, or invalidation objects.&lt;/p&gt;
+-- <p>You have exceeded the maximum number of allowable InProgress invalidation batch requests, or invalidation objects.</p>
+-- @param Message [string] <p>You have exceeded the maximum number of allowable InProgress invalidation batch requests, or invalidation objects.</p>
 function M.TooManyInvalidationsInProgress(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyInvalidationsInProgress")
 	local t = { 
@@ -1223,8 +1223,8 @@ function M.AssertNoSuchStreamingDistribution(struct)
 end
 
 --- Create a structure of type NoSuchStreamingDistribution
--- &lt;p&gt;The specified streaming distribution does not exist.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The specified streaming distribution does not exist.&lt;/p&gt;
+-- <p>The specified streaming distribution does not exist.</p>
+-- @param Message [string] <p>The specified streaming distribution does not exist.</p>
 function M.NoSuchStreamingDistribution(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchStreamingDistribution")
 	local t = { 
@@ -1250,10 +1250,10 @@ function M.AssertUpdateDistributionRequest(struct)
 end
 
 --- Create a structure of type UpdateDistributionRequest
--- &lt;p&gt;The request to update a distribution.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The distribution's id.&lt;/p&gt;
--- @param DistributionConfig [DistributionConfig] &lt;p&gt;The distribution's configuration information.&lt;/p&gt;
--- @param IfMatch [string] &lt;p&gt;The value of the &lt;code&gt;ETag&lt;/code&gt; header that you received when retrieving the distribution's configuration. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The request to update a distribution.</p>
+-- @param Id [string] <p>The distribution's id.</p>
+-- @param DistributionConfig [DistributionConfig] <p>The distribution's configuration information.</p>
+-- @param IfMatch [string] <p>The value of the <code>ETag</code> header that you received when retrieving the distribution's configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- Required parameter: DistributionConfig
 -- Required parameter: Id
 function M.UpdateDistributionRequest(Id, DistributionConfig, IfMatch, ...)
@@ -1285,14 +1285,14 @@ function M.AssertViewerCertificate(struct)
 end
 
 --- Create a structure of type ViewerCertificate
--- &lt;p&gt;A complex type that specifies the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Which SSL/TLS certificate to use when viewers request objects using HTTPS&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Whether you want CloudFront to use dedicated IP addresses or SNI when you're using alternate domain names in your object names&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The minimum protocol version that you want CloudFront to use when communicating with viewers&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html&quot;&gt;Using an HTTPS Connection to Access Your Objects&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Certificate [string] &lt;p&gt;Include one of these values to specify the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Whether you want viewers to use HTTP or HTTPS to request your objects.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If you want viewers to use HTTPS, whether you're using an alternate domain name such as example.com or the CloudFront domain name for your distribution, such as &lt;code&gt;d111111abcdef8.cloudfront.net&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If you're using an alternate domain name, whether AWS Certificate Manager (ACM) provided the certificate, or you purchased a certificate from a third-party certificate authority and imported it into ACM or uploaded it to the IAM certificate store.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;You must specify one (and only one) of the three values. Do not specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;CloudFrontDefaultCertificate&lt;/code&gt;.&lt;/p&gt; &lt;p&gt; &lt;b&gt;If you want viewers to use HTTP to request your objects&lt;/b&gt;: Specify the following value:&lt;/p&gt; &lt;p&gt; &lt;code&gt;&amp;lt;CloudFrontDefaultCertificate&amp;gt;true&amp;lt;CloudFrontDefaultCertificate&amp;gt;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;In addition, specify &lt;code&gt;allow-all&lt;/code&gt; for &lt;code&gt;ViewerProtocolPolicy&lt;/code&gt; for all of your cache behaviors.&lt;/p&gt; &lt;p&gt; &lt;b&gt;If you want viewers to use HTTPS to request your objects&lt;/b&gt;: Choose the type of certificate that you want to use based on whether you're using an alternate domain name for your objects or the CloudFront domain name:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;If you're using an alternate domain name, such as example.com&lt;/b&gt;: Specify one of the following values, depending on whether ACM provided your certificate or you purchased your certificate from third-party certificate authority:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;&amp;lt;ACMCertificateArn&amp;gt;ARN for ACM SSL/TLS certificate&amp;lt;ACMCertificateArn&amp;gt;&lt;/code&gt; where ARN for ACM SSL/TLS certificate is the ARN for the ACM SSL/TLS certificate that you want to use for this distribution.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;&amp;lt;IAMCertificateId&amp;gt;IAM certificate ID&amp;lt;IAMCertificateId&amp;gt;&lt;/code&gt; where IAM certificate ID is the ID that IAM returned when you added the certificate to the IAM certificate store.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you specify &lt;code&gt;ACMCertificateArn&lt;/code&gt; or &lt;code&gt;IAMCertificateId&lt;/code&gt;, you must also specify a value for &lt;code&gt;SSLSupportMethod&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If you choose to use an ACM certificate or a certificate in the IAM certificate store, we recommend that you use only an alternate domain name in your object URLs (&lt;code&gt;https://example.com/logo.jpg&lt;/code&gt;). If you use the domain name that is associated with your CloudFront distribution (&lt;code&gt;https://d111111abcdef8.cloudfront.net/logo.jpg&lt;/code&gt;) and the viewer supports &lt;code&gt;SNI&lt;/code&gt;, then CloudFront behaves normally. However, if the browser does not support SNI, the user's experience depends on the value that you choose for &lt;code&gt;SSLSupportMethod&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;vip&lt;/code&gt;: The viewer displays a warning because there is a mismatch between the CloudFront domain name and the domain name in your SSL/TLS certificate.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;sni-only&lt;/code&gt;: CloudFront drops the connection with the browser without returning the object.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;If you're using the CloudFront domain name for your distribution, such as &lt;code&gt;d111111abcdef8.cloudfront.net&lt;/code&gt; &lt;/b&gt;: Specify the following value:&lt;/p&gt; &lt;p&gt; &lt;code&gt; &amp;lt;CloudFrontDefaultCertificate&amp;gt;true&amp;lt;CloudFrontDefaultCertificate&amp;gt; &lt;/code&gt; &lt;/p&gt; &lt;p&gt;If you want viewers to use HTTPS, you must also specify one of the following values in your cache behaviors:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt; &amp;lt;ViewerProtocolPolicy&amp;gt;https-only&amp;lt;ViewerProtocolPolicy&amp;gt; &lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt; &amp;lt;ViewerProtocolPolicy&amp;gt;redirect-to-https&amp;lt;ViewerProtocolPolicy&amp;gt; &lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;You can also optionally require that CloudFront use HTTPS to communicate with your origin by specifying one of the following values for the applicable origins:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt; &amp;lt;OriginProtocolPolicy&amp;gt;https-only&amp;lt;OriginProtocolPolicy&amp;gt; &lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt; &amp;lt;OriginProtocolPolicy&amp;gt;match-viewer&amp;lt;OriginProtocolPolicy&amp;gt; &lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS&quot;&gt;Using Alternate Domain Names and HTTPS&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param CloudFrontDefaultCertificate [boolean] &lt;p&gt;A complex type that specifies the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Which SSL/TLS certificate to use when viewers request objects using HTTPS&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Whether you want CloudFront to use dedicated IP addresses or SNI when you're using alternate domain names in your object names&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The minimum protocol version that you want CloudFront to use when communicating with viewers&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html&quot;&gt;Using an HTTPS Connection to Access Your Objects&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param ACMCertificateArn [string] &lt;p&gt;A complex type that specifies the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Which SSL/TLS certificate to use when viewers request objects using HTTPS&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Whether you want CloudFront to use dedicated IP addresses or SNI when you're using alternate domain names in your object names&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The minimum protocol version that you want CloudFront to use when communicating with viewers&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html&quot;&gt;Using an HTTPS Connection to Access Your Objects&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param SSLSupportMethod [SSLSupportMethod] &lt;p&gt;If you specify a value for &lt;code&gt;ACMCertificateArn&lt;/code&gt; or for &lt;code&gt;IAMCertificateId&lt;/code&gt;, you must also specify how you want CloudFront to serve HTTPS requests: using a method that works for all clients or one that works for most clients:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;vip&lt;/code&gt;: CloudFront uses dedicated IP addresses for your content and can respond to HTTPS requests from any viewer. However, you will incur additional monthly charges.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;sni-only&lt;/code&gt;: CloudFront can respond to HTTPS requests from viewers that support Server Name Indication (SNI). All modern browsers support SNI, but some browsers still in use don't support SNI. If some of your users' browsers don't support SNI, we recommend that you do one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Use the &lt;code&gt;vip&lt;/code&gt; option (dedicated IP addresses) instead of &lt;code&gt;sni-only&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Use the CloudFront SSL/TLS certificate instead of a custom certificate. This requires that you use the CloudFront domain name of your distribution in the URLs for your objects, for example, &lt;code&gt;https://d111111abcdef8.cloudfront.net/logo.png&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If you can control which browser your users use, upgrade the browser to one that supports SNI.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Use HTTP instead of HTTPS.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Do not specify a value for &lt;code&gt;SSLSupportMethod&lt;/code&gt; if you specified &lt;code&gt;&amp;lt;CloudFrontDefaultCertificate&amp;gt;true&amp;lt;CloudFrontDefaultCertificate&amp;gt;&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS.html&quot;&gt;Using Alternate Domain Names and HTTPS&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param IAMCertificateId [string] &lt;p&gt;A complex type that specifies the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Which SSL/TLS certificate to use when viewers request objects using HTTPS&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Whether you want CloudFront to use dedicated IP addresses or SNI when you're using alternate domain names in your object names&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The minimum protocol version that you want CloudFront to use when communicating with viewers&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html&quot;&gt;Using an HTTPS Connection to Access Your Objects&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param CertificateSource [CertificateSource] &lt;note&gt; &lt;p&gt;This field is deprecated. You can use one of the following: &lt;code&gt;[ACMCertificateArn&lt;/code&gt;, &lt;code&gt;IAMCertificateId&lt;/code&gt;, or &lt;code&gt;CloudFrontDefaultCertificate]&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param MinimumProtocolVersion [MinimumProtocolVersion] &lt;p&gt;Specify the minimum version of the SSL/TLS protocol that you want CloudFront to use for HTTPS connections between viewers and CloudFront: &lt;code&gt;SSLv3&lt;/code&gt; or &lt;code&gt;TLSv1&lt;/code&gt;. CloudFront serves your objects only to viewers that support SSL/TLS version that you specify and later versions. The &lt;code&gt;TLSv1&lt;/code&gt; protocol is more secure, so we recommend that you specify &lt;code&gt;SSLv3&lt;/code&gt; only if your users are using browsers or devices that don't support &lt;code&gt;TLSv1&lt;/code&gt;. Note the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If you specify &amp;lt;CloudFrontDefaultCertificate&amp;gt;true&amp;lt;CloudFrontDefaultCertificate&amp;gt;, the minimum SSL protocol version is &lt;code&gt;TLSv1&lt;/code&gt; and can't be changed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If you're using a custom certificate (if you specify a value for &lt;code&gt;ACMCertificateArn&lt;/code&gt; or for &lt;code&gt;IAMCertificateId&lt;/code&gt;) and if you're using SNI (if you specify &lt;code&gt;sni-only&lt;/code&gt; for &lt;code&gt;SSLSupportMethod&lt;/code&gt;), you must specify &lt;code&gt;TLSv1&lt;/code&gt; for &lt;code&gt;MinimumProtocolVersion&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>A complex type that specifies the following:</p> <ul> <li> <p>Which SSL/TLS certificate to use when viewers request objects using HTTPS</p> </li> <li> <p>Whether you want CloudFront to use dedicated IP addresses or SNI when you're using alternate domain names in your object names</p> </li> <li> <p>The minimum protocol version that you want CloudFront to use when communicating with viewers</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html">Using an HTTPS Connection to Access Your Objects</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p>
+-- @param Certificate [string] <p>Include one of these values to specify the following:</p> <ul> <li> <p>Whether you want viewers to use HTTP or HTTPS to request your objects.</p> </li> <li> <p>If you want viewers to use HTTPS, whether you're using an alternate domain name such as example.com or the CloudFront domain name for your distribution, such as <code>d111111abcdef8.cloudfront.net</code>.</p> </li> <li> <p>If you're using an alternate domain name, whether AWS Certificate Manager (ACM) provided the certificate, or you purchased a certificate from a third-party certificate authority and imported it into ACM or uploaded it to the IAM certificate store.</p> </li> </ul> <p>You must specify one (and only one) of the three values. Do not specify <code>false</code> for <code>CloudFrontDefaultCertificate</code>.</p> <p> <b>If you want viewers to use HTTP to request your objects</b>: Specify the following value:</p> <p> <code>&lt;CloudFrontDefaultCertificate&gt;true&lt;CloudFrontDefaultCertificate&gt;</code> </p> <p>In addition, specify <code>allow-all</code> for <code>ViewerProtocolPolicy</code> for all of your cache behaviors.</p> <p> <b>If you want viewers to use HTTPS to request your objects</b>: Choose the type of certificate that you want to use based on whether you're using an alternate domain name for your objects or the CloudFront domain name:</p> <ul> <li> <p> <b>If you're using an alternate domain name, such as example.com</b>: Specify one of the following values, depending on whether ACM provided your certificate or you purchased your certificate from third-party certificate authority:</p> <ul> <li> <p> <code>&lt;ACMCertificateArn&gt;ARN for ACM SSL/TLS certificate&lt;ACMCertificateArn&gt;</code> where ARN for ACM SSL/TLS certificate is the ARN for the ACM SSL/TLS certificate that you want to use for this distribution.</p> </li> <li> <p> <code>&lt;IAMCertificateId&gt;IAM certificate ID&lt;IAMCertificateId&gt;</code> where IAM certificate ID is the ID that IAM returned when you added the certificate to the IAM certificate store.</p> </li> </ul> <p>If you specify <code>ACMCertificateArn</code> or <code>IAMCertificateId</code>, you must also specify a value for <code>SSLSupportMethod</code>.</p> <p>If you choose to use an ACM certificate or a certificate in the IAM certificate store, we recommend that you use only an alternate domain name in your object URLs (<code>https://example.com/logo.jpg</code>). If you use the domain name that is associated with your CloudFront distribution (<code>https://d111111abcdef8.cloudfront.net/logo.jpg</code>) and the viewer supports <code>SNI</code>, then CloudFront behaves normally. However, if the browser does not support SNI, the user's experience depends on the value that you choose for <code>SSLSupportMethod</code>:</p> <ul> <li> <p> <code>vip</code>: The viewer displays a warning because there is a mismatch between the CloudFront domain name and the domain name in your SSL/TLS certificate.</p> </li> <li> <p> <code>sni-only</code>: CloudFront drops the connection with the browser without returning the object.</p> </li> </ul> </li> <li> <p> <b>If you're using the CloudFront domain name for your distribution, such as <code>d111111abcdef8.cloudfront.net</code> </b>: Specify the following value:</p> <p> <code> &lt;CloudFrontDefaultCertificate&gt;true&lt;CloudFrontDefaultCertificate&gt; </code> </p> <p>If you want viewers to use HTTPS, you must also specify one of the following values in your cache behaviors:</p> <ul> <li> <p> <code> &lt;ViewerProtocolPolicy&gt;https-only&lt;ViewerProtocolPolicy&gt; </code> </p> </li> <li> <p> <code> &lt;ViewerProtocolPolicy&gt;redirect-to-https&lt;ViewerProtocolPolicy&gt; </code> </p> </li> </ul> <p>You can also optionally require that CloudFront use HTTPS to communicate with your origin by specifying one of the following values for the applicable origins:</p> <ul> <li> <p> <code> &lt;OriginProtocolPolicy&gt;https-only&lt;OriginProtocolPolicy&gt; </code> </p> </li> <li> <p> <code> &lt;OriginProtocolPolicy&gt;match-viewer&lt;OriginProtocolPolicy&gt; </code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS">Using Alternate Domain Names and HTTPS</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> </li> </ul>
+-- @param CloudFrontDefaultCertificate [boolean] <p>A complex type that specifies the following:</p> <ul> <li> <p>Which SSL/TLS certificate to use when viewers request objects using HTTPS</p> </li> <li> <p>Whether you want CloudFront to use dedicated IP addresses or SNI when you're using alternate domain names in your object names</p> </li> <li> <p>The minimum protocol version that you want CloudFront to use when communicating with viewers</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html">Using an HTTPS Connection to Access Your Objects</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p>
+-- @param ACMCertificateArn [string] <p>A complex type that specifies the following:</p> <ul> <li> <p>Which SSL/TLS certificate to use when viewers request objects using HTTPS</p> </li> <li> <p>Whether you want CloudFront to use dedicated IP addresses or SNI when you're using alternate domain names in your object names</p> </li> <li> <p>The minimum protocol version that you want CloudFront to use when communicating with viewers</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html">Using an HTTPS Connection to Access Your Objects</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p>
+-- @param SSLSupportMethod [SSLSupportMethod] <p>If you specify a value for <code>ACMCertificateArn</code> or for <code>IAMCertificateId</code>, you must also specify how you want CloudFront to serve HTTPS requests: using a method that works for all clients or one that works for most clients:</p> <ul> <li> <p> <code>vip</code>: CloudFront uses dedicated IP addresses for your content and can respond to HTTPS requests from any viewer. However, you will incur additional monthly charges.</p> </li> <li> <p> <code>sni-only</code>: CloudFront can respond to HTTPS requests from viewers that support Server Name Indication (SNI). All modern browsers support SNI, but some browsers still in use don't support SNI. If some of your users' browsers don't support SNI, we recommend that you do one of the following:</p> <ul> <li> <p>Use the <code>vip</code> option (dedicated IP addresses) instead of <code>sni-only</code>.</p> </li> <li> <p>Use the CloudFront SSL/TLS certificate instead of a custom certificate. This requires that you use the CloudFront domain name of your distribution in the URLs for your objects, for example, <code>https://d111111abcdef8.cloudfront.net/logo.png</code>.</p> </li> <li> <p>If you can control which browser your users use, upgrade the browser to one that supports SNI.</p> </li> <li> <p>Use HTTP instead of HTTPS.</p> </li> </ul> </li> </ul> <p>Do not specify a value for <code>SSLSupportMethod</code> if you specified <code>&lt;CloudFrontDefaultCertificate&gt;true&lt;CloudFrontDefaultCertificate&gt;</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html#CNAMEsAndHTTPS.html">Using Alternate Domain Names and HTTPS</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param IAMCertificateId [string] <p>A complex type that specifies the following:</p> <ul> <li> <p>Which SSL/TLS certificate to use when viewers request objects using HTTPS</p> </li> <li> <p>Whether you want CloudFront to use dedicated IP addresses or SNI when you're using alternate domain names in your object names</p> </li> <li> <p>The minimum protocol version that you want CloudFront to use when communicating with viewers</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html">Using an HTTPS Connection to Access Your Objects</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p>
+-- @param CertificateSource [CertificateSource] <note> <p>This field is deprecated. You can use one of the following: <code>[ACMCertificateArn</code>, <code>IAMCertificateId</code>, or <code>CloudFrontDefaultCertificate]</code>.</p> </note>
+-- @param MinimumProtocolVersion [MinimumProtocolVersion] <p>Specify the minimum version of the SSL/TLS protocol that you want CloudFront to use for HTTPS connections between viewers and CloudFront: <code>SSLv3</code> or <code>TLSv1</code>. CloudFront serves your objects only to viewers that support SSL/TLS version that you specify and later versions. The <code>TLSv1</code> protocol is more secure, so we recommend that you specify <code>SSLv3</code> only if your users are using browsers or devices that don't support <code>TLSv1</code>. Note the following:</p> <ul> <li> <p>If you specify &lt;CloudFrontDefaultCertificate&gt;true&lt;CloudFrontDefaultCertificate&gt;, the minimum SSL protocol version is <code>TLSv1</code> and can't be changed.</p> </li> <li> <p>If you're using a custom certificate (if you specify a value for <code>ACMCertificateArn</code> or for <code>IAMCertificateId</code>) and if you're using SNI (if you specify <code>sni-only</code> for <code>SSLSupportMethod</code>), you must specify <code>TLSv1</code> for <code>MinimumProtocolVersion</code>.</p> </li> </ul>
 function M.ViewerCertificate(Certificate, CloudFrontDefaultCertificate, ACMCertificateArn, SSLSupportMethod, IAMCertificateId, CertificateSource, MinimumProtocolVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ViewerCertificate")
 	local t = { 
@@ -1320,8 +1320,8 @@ function M.AssertInconsistentQuantities(struct)
 end
 
 --- Create a structure of type InconsistentQuantities
--- &lt;p&gt;The value of &lt;code&gt;Quantity&lt;/code&gt; and the size of &lt;code&gt;Items&lt;/code&gt; do not match.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The value of &lt;code&gt;Quantity&lt;/code&gt; and the size of &lt;code&gt;Items&lt;/code&gt; do not match.&lt;/p&gt;
+-- <p>The value of <code>Quantity</code> and the size of <code>Items</code> do not match.</p>
+-- @param Message [string] <p>The value of <code>Quantity</code> and the size of <code>Items</code> do not match.</p>
 function M.InconsistentQuantities(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InconsistentQuantities")
 	local t = { 
@@ -1355,14 +1355,14 @@ function M.AssertStreamingDistribution(struct)
 end
 
 --- Create a structure of type StreamingDistribution
--- &lt;p&gt;A streaming distribution. &lt;/p&gt;
--- @param Status [string] &lt;p&gt;The current status of the RTMP distribution. When the status is &lt;code&gt;Deployed&lt;/code&gt;, the distribution's information is propagated to all CloudFront edge locations.&lt;/p&gt;
--- @param DomainName [string] &lt;p&gt;The domain name that corresponds to the streaming distribution. For example: &lt;code&gt;s5c39gqb8ow64r.cloudfront.net&lt;/code&gt;. &lt;/p&gt;
--- @param StreamingDistributionConfig [StreamingDistributionConfig] &lt;p&gt;The current configuration information for the RTMP distribution.&lt;/p&gt;
--- @param ActiveTrustedSigners [ActiveTrustedSigners] &lt;p&gt;A complex type that lists the AWS accounts, if any, that you included in the &lt;code&gt;TrustedSigners&lt;/code&gt; complex type for this distribution. These are the accounts that you want to allow to create signed URLs for private content.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;Signer&lt;/code&gt; complex type lists the AWS account number of the trusted signer or &lt;code&gt;self&lt;/code&gt; if the signer is the AWS account that created the distribution. The &lt;code&gt;Signer&lt;/code&gt; element also includes the IDs of any active CloudFront key pairs that are associated with the trusted signer's AWS account. If no &lt;code&gt;KeyPairId&lt;/code&gt; element appears for a &lt;code&gt;Signer&lt;/code&gt;, that signer can't create signed URLs.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html&quot;&gt;Serving Private Content through CloudFront&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;. &lt;/p&gt;
--- @param LastModifiedTime [timestamp] &lt;p&gt;The date and time that the distribution was last modified. &lt;/p&gt;
--- @param Id [string] &lt;p&gt;The identifier for the RTMP distribution. For example: &lt;code&gt;EGTXBD79EXAMPLE&lt;/code&gt;.&lt;/p&gt;
--- @param ARN [string] &lt;p&gt;A streaming distribution. &lt;/p&gt;
+-- <p>A streaming distribution. </p>
+-- @param Status [string] <p>The current status of the RTMP distribution. When the status is <code>Deployed</code>, the distribution's information is propagated to all CloudFront edge locations.</p>
+-- @param DomainName [string] <p>The domain name that corresponds to the streaming distribution. For example: <code>s5c39gqb8ow64r.cloudfront.net</code>. </p>
+-- @param StreamingDistributionConfig [StreamingDistributionConfig] <p>The current configuration information for the RTMP distribution.</p>
+-- @param ActiveTrustedSigners [ActiveTrustedSigners] <p>A complex type that lists the AWS accounts, if any, that you included in the <code>TrustedSigners</code> complex type for this distribution. These are the accounts that you want to allow to create signed URLs for private content.</p> <p>The <code>Signer</code> complex type lists the AWS account number of the trusted signer or <code>self</code> if the signer is the AWS account that created the distribution. The <code>Signer</code> element also includes the IDs of any active CloudFront key pairs that are associated with the trusted signer's AWS account. If no <code>KeyPairId</code> element appears for a <code>Signer</code>, that signer can't create signed URLs.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">Serving Private Content through CloudFront</a> in the <i>Amazon CloudFront Developer Guide</i>. </p>
+-- @param LastModifiedTime [timestamp] <p>The date and time that the distribution was last modified. </p>
+-- @param Id [string] <p>The identifier for the RTMP distribution. For example: <code>EGTXBD79EXAMPLE</code>.</p>
+-- @param ARN [string] <p>A streaming distribution. </p>
 -- Required parameter: Id
 -- Required parameter: ARN
 -- Required parameter: Status
@@ -1396,8 +1396,8 @@ function M.AssertInvalidProtocolSettings(struct)
 end
 
 --- Create a structure of type InvalidProtocolSettings
--- &lt;p&gt;You cannot specify SSLv3 as the minimum protocol version if you only want to support only clients that support Server Name Indication (SNI).&lt;/p&gt;
--- @param Message [string] &lt;p&gt;You cannot specify SSLv3 as the minimum protocol version if you only want to support only clients that support Server Name Indication (SNI).&lt;/p&gt;
+-- <p>You cannot specify SSLv3 as the minimum protocol version if you only want to support only clients that support Server Name Indication (SNI).</p>
+-- @param Message [string] <p>You cannot specify SSLv3 as the minimum protocol version if you only want to support only clients that support Server Name Indication (SNI).</p>
 function M.InvalidProtocolSettings(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidProtocolSettings")
 	local t = { 
@@ -1419,8 +1419,8 @@ function M.AssertNoSuchOrigin(struct)
 end
 
 --- Create a structure of type NoSuchOrigin
--- &lt;p&gt;No origin exists with the specified &lt;code&gt;Origin Id&lt;/code&gt;. &lt;/p&gt;
--- @param Message [string] &lt;p&gt;No origin exists with the specified &lt;code&gt;Origin Id&lt;/code&gt;. &lt;/p&gt;
+-- <p>No origin exists with the specified <code>Origin Id</code>. </p>
+-- @param Message [string] <p>No origin exists with the specified <code>Origin Id</code>. </p>
 function M.NoSuchOrigin(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchOrigin")
 	local t = { 
@@ -1443,9 +1443,9 @@ function M.AssertListCloudFrontOriginAccessIdentitiesRequest(struct)
 end
 
 --- Create a structure of type ListCloudFrontOriginAccessIdentitiesRequest
--- &lt;p&gt;The request to list origin access identities. &lt;/p&gt;
--- @param Marker [string] &lt;p&gt;Use this when paginating results to indicate where to begin in your list of origin access identities. The results include identities in the list that occur after the marker. To get the next page of results, set the &lt;code&gt;Marker&lt;/code&gt; to the value of the &lt;code&gt;NextMarker&lt;/code&gt; from the current page's response (which is also the ID of the last identity on that page).&lt;/p&gt;
--- @param MaxItems [string] &lt;p&gt;The maximum number of origin access identities you want in the response body. &lt;/p&gt;
+-- <p>The request to list origin access identities. </p>
+-- @param Marker [string] <p>Use this when paginating results to indicate where to begin in your list of origin access identities. The results include identities in the list that occur after the marker. To get the next page of results, set the <code>Marker</code> to the value of the <code>NextMarker</code> from the current page's response (which is also the ID of the last identity on that page).</p>
+-- @param MaxItems [string] <p>The maximum number of origin access identities you want in the response body. </p>
 function M.ListCloudFrontOriginAccessIdentitiesRequest(Marker, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCloudFrontOriginAccessIdentitiesRequest")
 	local t = { 
@@ -1469,9 +1469,9 @@ function M.AssertGetStreamingDistributionConfigResult(struct)
 end
 
 --- Create a structure of type GetStreamingDistributionConfigResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the configuration. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;. &lt;/p&gt;
--- @param StreamingDistributionConfig [StreamingDistributionConfig] &lt;p&gt;The streaming distribution's configuration information.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param ETag [string] <p>The current version of the configuration. For example: <code>E2QWRUHAPOMQZL</code>. </p>
+-- @param StreamingDistributionConfig [StreamingDistributionConfig] <p>The streaming distribution's configuration information.</p>
 function M.GetStreamingDistributionConfigResult(ETag, StreamingDistributionConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStreamingDistributionConfigResult")
 	local t = { 
@@ -1494,8 +1494,8 @@ function M.AssertDistributionAlreadyExists(struct)
 end
 
 --- Create a structure of type DistributionAlreadyExists
--- &lt;p&gt;The caller reference you attempted to create the distribution with is associated with another distribution.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The caller reference you attempted to create the distribution with is associated with another distribution.&lt;/p&gt;
+-- <p>The caller reference you attempted to create the distribution with is associated with another distribution.</p>
+-- @param Message [string] <p>The caller reference you attempted to create the distribution with is associated with another distribution.</p>
 function M.DistributionAlreadyExists(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DistributionAlreadyExists")
 	local t = { 
@@ -1519,10 +1519,10 @@ function M.AssertCreateDistributionResult(struct)
 end
 
 --- Create a structure of type CreateDistributionResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param Distribution [Distribution] &lt;p&gt;The distribution's information.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the distribution created.&lt;/p&gt;
--- @param Location [string] &lt;p&gt;The fully qualified URI of the new distribution resource just created. For example: &lt;code&gt;https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5&lt;/code&gt;.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param Distribution [Distribution] <p>The distribution's information.</p>
+-- @param ETag [string] <p>The current version of the distribution created.</p>
+-- @param Location [string] <p>The fully qualified URI of the new distribution resource just created. For example: <code>https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5</code>.</p>
 function M.CreateDistributionResult(Distribution, ETag, Location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDistributionResult")
 	local t = { 
@@ -1574,10 +1574,10 @@ function M.AssertInvalidationSummary(struct)
 end
 
 --- Create a structure of type InvalidationSummary
--- &lt;p&gt;A summary of an invalidation request.&lt;/p&gt;
--- @param Status [string] &lt;p&gt;The status of an invalidation request.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The unique ID for an invalidation request.&lt;/p&gt;
--- @param CreateTime [timestamp] &lt;p&gt;A summary of an invalidation request.&lt;/p&gt;
+-- <p>A summary of an invalidation request.</p>
+-- @param Status [string] <p>The status of an invalidation request.</p>
+-- @param Id [string] <p>The unique ID for an invalidation request.</p>
+-- @param CreateTime [timestamp] <p>A summary of an invalidation request.</p>
 -- Required parameter: Id
 -- Required parameter: CreateTime
 -- Required parameter: Status
@@ -1636,13 +1636,13 @@ function M.AssertDistributionList(struct)
 end
 
 --- Create a structure of type DistributionList
--- &lt;p&gt;A distribution list.&lt;/p&gt;
--- @param Items [DistributionSummaryList] &lt;p&gt;A complex type that contains one &lt;code&gt;DistributionSummary&lt;/code&gt; element for each distribution that was created by the current AWS account.&lt;/p&gt;
--- @param NextMarker [string] &lt;p&gt;If &lt;code&gt;IsTruncated&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;, this element is present and contains the value you can use for the &lt;code&gt;Marker&lt;/code&gt; request parameter to continue listing your distributions where they left off. &lt;/p&gt;
--- @param MaxItems [integer] &lt;p&gt;The value you provided for the &lt;code&gt;MaxItems&lt;/code&gt; request parameter.&lt;/p&gt;
--- @param Marker [string] &lt;p&gt;The value you provided for the &lt;code&gt;Marker&lt;/code&gt; request parameter.&lt;/p&gt;
--- @param IsTruncated [boolean] &lt;p&gt;A flag that indicates whether more distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the &lt;code&gt;Marker&lt;/code&gt; request parameter to retrieve more distributions in the list.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of distributions that were created by the current AWS account. &lt;/p&gt;
+-- <p>A distribution list.</p>
+-- @param Items [DistributionSummaryList] <p>A complex type that contains one <code>DistributionSummary</code> element for each distribution that was created by the current AWS account.</p>
+-- @param NextMarker [string] <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value you can use for the <code>Marker</code> request parameter to continue listing your distributions where they left off. </p>
+-- @param MaxItems [integer] <p>The value you provided for the <code>MaxItems</code> request parameter.</p>
+-- @param Marker [string] <p>The value you provided for the <code>Marker</code> request parameter.</p>
+-- @param IsTruncated [boolean] <p>A flag that indicates whether more distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the <code>Marker</code> request parameter to retrieve more distributions in the list.</p>
+-- @param Quantity [integer] <p>The number of distributions that were created by the current AWS account. </p>
 -- Required parameter: Marker
 -- Required parameter: MaxItems
 -- Required parameter: IsTruncated
@@ -1694,18 +1694,18 @@ function M.AssertStreamingDistributionSummary(struct)
 end
 
 --- Create a structure of type StreamingDistributionSummary
--- &lt;p&gt; A summary of the information for an Amazon CloudFront streaming distribution.&lt;/p&gt;
--- @param Status [string] &lt;p&gt; Indicates the current status of the distribution. When the status is &lt;code&gt;Deployed&lt;/code&gt;, the distribution's information is fully propagated throughout the Amazon CloudFront system.&lt;/p&gt;
--- @param S3Origin [S3Origin] &lt;p&gt;A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution.&lt;/p&gt;
--- @param DomainName [string] &lt;p&gt;The domain name corresponding to the distribution. For example: &lt;code&gt;d604721fxaaqy9.cloudfront.net&lt;/code&gt;.&lt;/p&gt;
--- @param Enabled [boolean] &lt;p&gt;Whether the distribution is enabled to accept end user requests for content.&lt;/p&gt;
--- @param PriceClass [PriceClass] &lt;p&gt; A summary of the information for an Amazon CloudFront streaming distribution.&lt;/p&gt;
--- @param TrustedSigners [TrustedSigners] &lt;p&gt;A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content. If you want to require signed URLs in requests for objects in the target origin that match the &lt;code&gt;PathPattern&lt;/code&gt; for this cache behavior, specify &lt;code&gt;true&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt;, and specify the applicable values for &lt;code&gt;Quantity&lt;/code&gt; and &lt;code&gt;Items&lt;/code&gt;.If you don't want to require signed URLs in requests for objects that match &lt;code&gt;PathPattern&lt;/code&gt;, specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt; and &lt;code&gt;0&lt;/code&gt; for &lt;code&gt;Quantity&lt;/code&gt;. Omit &lt;code&gt;Items&lt;/code&gt;. To add, change, or remove one or more trusted signers, change &lt;code&gt;Enabled&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; (if it's currently &lt;code&gt;false&lt;/code&gt;), change &lt;code&gt;Quantity&lt;/code&gt; as applicable, and specify all of the trusted signers that you want to include in the updated distribution.&lt;/p&gt;
--- @param Comment [string] &lt;p&gt;The comment originally specified when this distribution was created.&lt;/p&gt;
--- @param LastModifiedTime [timestamp] &lt;p&gt;The date and time the distribution was last modified.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The identifier for the distribution. For example: &lt;code&gt;EDFDVBD632BHDS5&lt;/code&gt;.&lt;/p&gt;
--- @param ARN [string] &lt;p&gt; The ARN (Amazon Resource Name) for the streaming distribution. For example: &lt;code&gt;arn:aws:cloudfront::123456789012:streaming-distribution/EDFDVBD632BHDS5&lt;/code&gt;, where &lt;code&gt;123456789012&lt;/code&gt; is your AWS account ID.&lt;/p&gt;
--- @param Aliases [Aliases] &lt;p&gt;A complex type that contains information about CNAMEs (alternate domain names), if any, for this streaming distribution.&lt;/p&gt;
+-- <p> A summary of the information for an Amazon CloudFront streaming distribution.</p>
+-- @param Status [string] <p> Indicates the current status of the distribution. When the status is <code>Deployed</code>, the distribution's information is fully propagated throughout the Amazon CloudFront system.</p>
+-- @param S3Origin [S3Origin] <p>A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution.</p>
+-- @param DomainName [string] <p>The domain name corresponding to the distribution. For example: <code>d604721fxaaqy9.cloudfront.net</code>.</p>
+-- @param Enabled [boolean] <p>Whether the distribution is enabled to accept end user requests for content.</p>
+-- @param PriceClass [PriceClass] <p> A summary of the information for an Amazon CloudFront streaming distribution.</p>
+-- @param TrustedSigners [TrustedSigners] <p>A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content. If you want to require signed URLs in requests for objects in the target origin that match the <code>PathPattern</code> for this cache behavior, specify <code>true</code> for <code>Enabled</code>, and specify the applicable values for <code>Quantity</code> and <code>Items</code>.If you don't want to require signed URLs in requests for objects that match <code>PathPattern</code>, specify <code>false</code> for <code>Enabled</code> and <code>0</code> for <code>Quantity</code>. Omit <code>Items</code>. To add, change, or remove one or more trusted signers, change <code>Enabled</code> to <code>true</code> (if it's currently <code>false</code>), change <code>Quantity</code> as applicable, and specify all of the trusted signers that you want to include in the updated distribution.</p>
+-- @param Comment [string] <p>The comment originally specified when this distribution was created.</p>
+-- @param LastModifiedTime [timestamp] <p>The date and time the distribution was last modified.</p>
+-- @param Id [string] <p>The identifier for the distribution. For example: <code>EDFDVBD632BHDS5</code>.</p>
+-- @param ARN [string] <p> The ARN (Amazon Resource Name) for the streaming distribution. For example: <code>arn:aws:cloudfront::123456789012:streaming-distribution/EDFDVBD632BHDS5</code>, where <code>123456789012</code> is your AWS account ID.</p>
+-- @param Aliases [Aliases] <p>A complex type that contains information about CNAMEs (alternate domain names), if any, for this streaming distribution.</p>
 -- Required parameter: Id
 -- Required parameter: ARN
 -- Required parameter: Status
@@ -1749,8 +1749,8 @@ function M.AssertGetDistributionConfigRequest(struct)
 end
 
 --- Create a structure of type GetDistributionConfigRequest
--- &lt;p&gt;The request to get a distribution configuration.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The distribution's ID.&lt;/p&gt;
+-- <p>The request to get a distribution configuration.</p>
+-- @param Id [string] <p>The distribution's ID.</p>
 -- Required parameter: Id
 function M.GetDistributionConfigRequest(Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDistributionConfigRequest")
@@ -1773,8 +1773,8 @@ function M.AssertTooManyCertificates(struct)
 end
 
 --- Create a structure of type TooManyCertificates
--- &lt;p&gt;You cannot create anymore custom SSL/TLS certificates.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;You cannot create anymore custom SSL/TLS certificates.&lt;/p&gt;
+-- <p>You cannot create anymore custom SSL/TLS certificates.</p>
+-- @param Message [string] <p>You cannot create anymore custom SSL/TLS certificates.</p>
 function M.TooManyCertificates(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyCertificates")
 	local t = { 
@@ -1796,8 +1796,8 @@ function M.AssertPreconditionFailed(struct)
 end
 
 --- Create a structure of type PreconditionFailed
--- &lt;p&gt;The precondition given in one or more of the request-header fields evaluated to &lt;code&gt;false&lt;/code&gt;. &lt;/p&gt;
--- @param Message [string] &lt;p&gt;The precondition given in one or more of the request-header fields evaluated to &lt;code&gt;false&lt;/code&gt;. &lt;/p&gt;
+-- <p>The precondition given in one or more of the request-header fields evaluated to <code>false</code>. </p>
+-- @param Message [string] <p>The precondition given in one or more of the request-header fields evaluated to <code>false</code>. </p>
 function M.PreconditionFailed(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PreconditionFailed")
 	local t = { 
@@ -1821,9 +1821,9 @@ function M.AssertOrigins(struct)
 end
 
 --- Create a structure of type Origins
--- &lt;p&gt;A complex type that contains information about origins for this distribution. &lt;/p&gt;
--- @param Items [OriginList] &lt;p&gt;A complex type that contains origins for this distribution.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of origins for this distribution.&lt;/p&gt;
+-- <p>A complex type that contains information about origins for this distribution. </p>
+-- @param Items [OriginList] <p>A complex type that contains origins for this distribution.</p>
+-- @param Quantity [integer] <p>The number of origins for this distribution.</p>
 -- Required parameter: Quantity
 function M.Origins(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Origins")
@@ -1847,8 +1847,8 @@ function M.AssertGetInvalidationResult(struct)
 end
 
 --- Create a structure of type GetInvalidationResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param Invalidation [Invalidation] &lt;p&gt;The invalidation's information. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/InvalidationDatatype.html&quot;&gt;Invalidation Complex Type&lt;/a&gt;. &lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param Invalidation [Invalidation] <p>The invalidation's information. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/InvalidationDatatype.html">Invalidation Complex Type</a>. </p>
 function M.GetInvalidationResult(Invalidation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInvalidationResult")
 	local t = { 
@@ -1870,8 +1870,8 @@ function M.AssertTooManyStreamingDistributions(struct)
 end
 
 --- Create a structure of type TooManyStreamingDistributions
--- &lt;p&gt;Processing your request would cause you to exceed the maximum number of streaming distributions allowed.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;Processing your request would cause you to exceed the maximum number of streaming distributions allowed.&lt;/p&gt;
+-- <p>Processing your request would cause you to exceed the maximum number of streaming distributions allowed.</p>
+-- @param Message [string] <p>Processing your request would cause you to exceed the maximum number of streaming distributions allowed.</p>
 function M.TooManyStreamingDistributions(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyStreamingDistributions")
 	local t = { 
@@ -1895,9 +1895,9 @@ function M.AssertCookieNames(struct)
 end
 
 --- Create a structure of type CookieNames
--- &lt;p&gt;A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so, which ones. For more information about forwarding cookies to the origin, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html&quot;&gt;How CloudFront Forwards, Caches, and Logs Cookies&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Items [CookieNameList] &lt;p&gt;A complex type that contains one &lt;code&gt;Name&lt;/code&gt; element for each cookie that you want CloudFront to forward to the origin for this cache behavior.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of different cookies that you want CloudFront to forward to the origin for this cache behavior.&lt;/p&gt;
+-- <p>A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so, which ones. For more information about forwarding cookies to the origin, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">How CloudFront Forwards, Caches, and Logs Cookies</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param Items [CookieNameList] <p>A complex type that contains one <code>Name</code> element for each cookie that you want CloudFront to forward to the origin for this cache behavior.</p>
+-- @param Quantity [integer] <p>The number of different cookies that you want CloudFront to forward to the origin for this cache behavior.</p>
 -- Required parameter: Quantity
 function M.CookieNames(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CookieNames")
@@ -1921,8 +1921,8 @@ function M.AssertListDistributionsByWebACLIdResult(struct)
 end
 
 --- Create a structure of type ListDistributionsByWebACLIdResult
--- &lt;p&gt;The response to a request to list the distributions that are associated with a specified AWS WAF web ACL. &lt;/p&gt;
--- @param DistributionList [DistributionList] &lt;p&gt;The &lt;code&gt;DistributionList&lt;/code&gt; type. &lt;/p&gt;
+-- <p>The response to a request to list the distributions that are associated with a specified AWS WAF web ACL. </p>
+-- @param DistributionList [DistributionList] <p>The <code>DistributionList</code> type. </p>
 function M.ListDistributionsByWebACLIdResult(DistributionList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDistributionsByWebACLIdResult")
 	local t = { 
@@ -1945,9 +1945,9 @@ function M.AssertSigner(struct)
 end
 
 --- Create a structure of type Signer
--- &lt;p&gt;A complex type that lists the AWS accounts that were included in the &lt;code&gt;TrustedSigners&lt;/code&gt; complex type, as well as their active CloudFront key pair IDs, if any. &lt;/p&gt;
--- @param KeyPairIds [KeyPairIds] &lt;p&gt;A complex type that lists the active CloudFront key pairs, if any, that are associated with &lt;code&gt;AwsAccountNumber&lt;/code&gt;.&lt;/p&gt;
--- @param AwsAccountNumber [string] &lt;p&gt;An AWS account that is included in the &lt;code&gt;TrustedSigners&lt;/code&gt; complex type for this RTMP distribution. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;self&lt;/code&gt;, which is the AWS account used to create the distribution.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An AWS account number.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>A complex type that lists the AWS accounts that were included in the <code>TrustedSigners</code> complex type, as well as their active CloudFront key pair IDs, if any. </p>
+-- @param KeyPairIds [KeyPairIds] <p>A complex type that lists the active CloudFront key pairs, if any, that are associated with <code>AwsAccountNumber</code>.</p>
+-- @param AwsAccountNumber [string] <p>An AWS account that is included in the <code>TrustedSigners</code> complex type for this RTMP distribution. Valid values include:</p> <ul> <li> <p> <code>self</code>, which is the AWS account used to create the distribution.</p> </li> <li> <p>An AWS account number.</p> </li> </ul>
 function M.Signer(KeyPairIds, AwsAccountNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Signer")
 	local t = { 
@@ -1985,15 +1985,15 @@ function M.AssertDistribution(struct)
 end
 
 --- Create a structure of type Distribution
--- &lt;p&gt;The distribution's information.&lt;/p&gt;
--- @param Status [string] &lt;p&gt;This response element indicates the current status of the distribution. When the status is &lt;code&gt;Deployed&lt;/code&gt;, the distribution's information is fully propagated to all CloudFront edge locations. &lt;/p&gt;
--- @param DomainName [string] &lt;p&gt;The domain name corresponding to the distribution. For example: &lt;code&gt;d604721fxaaqy9.cloudfront.net&lt;/code&gt;. &lt;/p&gt;
--- @param InProgressInvalidationBatches [integer] &lt;p&gt;The number of invalidation batches currently in progress. &lt;/p&gt;
--- @param DistributionConfig [DistributionConfig] &lt;p&gt;The current configuration information for the distribution. Send a &lt;code&gt;GET&lt;/code&gt; request to the &lt;code&gt;/&lt;i&gt;CloudFront API version&lt;/i&gt;/distribution ID/config&lt;/code&gt; resource.&lt;/p&gt;
--- @param ActiveTrustedSigners [ActiveTrustedSigners] &lt;p&gt;CloudFront automatically adds this element to the response only if you've set up the distribution to serve private content with signed URLs. The element lists the key pair IDs that CloudFront is aware of for each trusted signer. The &lt;code&gt;Signer&lt;/code&gt; child element lists the AWS account number of the trusted signer (or an empty &lt;code&gt;Self&lt;/code&gt; element if the signer is you). The &lt;code&gt;Signer&lt;/code&gt; element also includes the IDs of any active key pairs associated with the trusted signer's AWS account. If no &lt;code&gt;KeyPairId&lt;/code&gt; element appears for a &lt;code&gt;Signer&lt;/code&gt;, that signer can't create working signed URLs.&lt;/p&gt;
--- @param LastModifiedTime [timestamp] &lt;p&gt;The date and time the distribution was last modified. &lt;/p&gt;
--- @param Id [string] &lt;p&gt;The identifier for the distribution. For example: &lt;code&gt;EDFDVBD632BHDS5&lt;/code&gt;. &lt;/p&gt;
--- @param ARN [string] &lt;p&gt;The ARN (Amazon Resource Name) for the distribution. For example: &lt;code&gt;arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5&lt;/code&gt;, where &lt;code&gt;123456789012&lt;/code&gt; is your AWS account ID.&lt;/p&gt;
+-- <p>The distribution's information.</p>
+-- @param Status [string] <p>This response element indicates the current status of the distribution. When the status is <code>Deployed</code>, the distribution's information is fully propagated to all CloudFront edge locations. </p>
+-- @param DomainName [string] <p>The domain name corresponding to the distribution. For example: <code>d604721fxaaqy9.cloudfront.net</code>. </p>
+-- @param InProgressInvalidationBatches [integer] <p>The number of invalidation batches currently in progress. </p>
+-- @param DistributionConfig [DistributionConfig] <p>The current configuration information for the distribution. Send a <code>GET</code> request to the <code>/<i>CloudFront API version</i>/distribution ID/config</code> resource.</p>
+-- @param ActiveTrustedSigners [ActiveTrustedSigners] <p>CloudFront automatically adds this element to the response only if you've set up the distribution to serve private content with signed URLs. The element lists the key pair IDs that CloudFront is aware of for each trusted signer. The <code>Signer</code> child element lists the AWS account number of the trusted signer (or an empty <code>Self</code> element if the signer is you). The <code>Signer</code> element also includes the IDs of any active key pairs associated with the trusted signer's AWS account. If no <code>KeyPairId</code> element appears for a <code>Signer</code>, that signer can't create working signed URLs.</p>
+-- @param LastModifiedTime [timestamp] <p>The date and time the distribution was last modified. </p>
+-- @param Id [string] <p>The identifier for the distribution. For example: <code>EDFDVBD632BHDS5</code>. </p>
+-- @param ARN [string] <p>The ARN (Amazon Resource Name) for the distribution. For example: <code>arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5</code>, where <code>123456789012</code> is your AWS account ID.</p>
 -- Required parameter: Id
 -- Required parameter: ARN
 -- Required parameter: Status
@@ -2030,8 +2030,8 @@ function M.AssertInvalidOriginAccessIdentity(struct)
 end
 
 --- Create a structure of type InvalidOriginAccessIdentity
--- &lt;p&gt;The origin access identity is not valid or doesn't exist.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The origin access identity is not valid or doesn't exist.&lt;/p&gt;
+-- <p>The origin access identity is not valid or doesn't exist.</p>
+-- @param Message [string] <p>The origin access identity is not valid or doesn't exist.</p>
 function M.InvalidOriginAccessIdentity(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOriginAccessIdentity")
 	local t = { 
@@ -2053,8 +2053,8 @@ function M.AssertInvalidDefaultRootObject(struct)
 end
 
 --- Create a structure of type InvalidDefaultRootObject
--- &lt;p&gt;The default root object file name is too big or contains an invalid character.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The default root object file name is too big or contains an invalid character.&lt;/p&gt;
+-- <p>The default root object file name is too big or contains an invalid character.</p>
+-- @param Message [string] <p>The default root object file name is too big or contains an invalid character.</p>
 function M.InvalidDefaultRootObject(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDefaultRootObject")
 	local t = { 
@@ -2103,10 +2103,10 @@ function M.AssertTrustedSigners(struct)
 end
 
 --- Create a structure of type TrustedSigners
--- &lt;p&gt;A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content.&lt;/p&gt; &lt;p&gt;If you want to require signed URLs in requests for objects in the target origin that match the &lt;code&gt;PathPattern&lt;/code&gt; for this cache behavior, specify &lt;code&gt;true&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt;, and specify the applicable values for &lt;code&gt;Quantity&lt;/code&gt; and &lt;code&gt;Items&lt;/code&gt;. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html&quot;&gt;Serving Private Content through CloudFront&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;If you don't want to require signed URLs in requests for objects that match &lt;code&gt;PathPattern&lt;/code&gt;, specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt; and &lt;code&gt;0&lt;/code&gt; for &lt;code&gt;Quantity&lt;/code&gt;. Omit &lt;code&gt;Items&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To add, change, or remove one or more trusted signers, change &lt;code&gt;Enabled&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; (if it's currently &lt;code&gt;false&lt;/code&gt;), change &lt;code&gt;Quantity&lt;/code&gt; as applicable, and specify all of the trusted signers that you want to include in the updated distribution.&lt;/p&gt; &lt;p&gt;For more information about updating the distribution configuration, see &lt;a&gt;DistributionConfig&lt;/a&gt; .&lt;/p&gt;
--- @param Items [AwsAccountNumberList] &lt;p&gt; &lt;b&gt;Optional&lt;/b&gt;: A complex type that contains trusted signers for this cache behavior. If &lt;code&gt;Quantity&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt;, you can omit &lt;code&gt;Items&lt;/code&gt;.&lt;/p&gt;
--- @param Enabled [boolean] &lt;p&gt;Specifies whether you want to require viewers to use signed URLs to access the files specified by &lt;code&gt;PathPattern&lt;/code&gt; and &lt;code&gt;TargetOriginId&lt;/code&gt;.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of trusted signers for this cache behavior.&lt;/p&gt;
+-- <p>A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content.</p> <p>If you want to require signed URLs in requests for objects in the target origin that match the <code>PathPattern</code> for this cache behavior, specify <code>true</code> for <code>Enabled</code>, and specify the applicable values for <code>Quantity</code> and <code>Items</code>. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">Serving Private Content through CloudFront</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p> <p>If you don't want to require signed URLs in requests for objects that match <code>PathPattern</code>, specify <code>false</code> for <code>Enabled</code> and <code>0</code> for <code>Quantity</code>. Omit <code>Items</code>.</p> <p>To add, change, or remove one or more trusted signers, change <code>Enabled</code> to <code>true</code> (if it's currently <code>false</code>), change <code>Quantity</code> as applicable, and specify all of the trusted signers that you want to include in the updated distribution.</p> <p>For more information about updating the distribution configuration, see <a>DistributionConfig</a> .</p>
+-- @param Items [AwsAccountNumberList] <p> <b>Optional</b>: A complex type that contains trusted signers for this cache behavior. If <code>Quantity</code> is <code>0</code>, you can omit <code>Items</code>.</p>
+-- @param Enabled [boolean] <p>Specifies whether you want to require viewers to use signed URLs to access the files specified by <code>PathPattern</code> and <code>TargetOriginId</code>.</p>
+-- @param Quantity [integer] <p>The number of trusted signers for this cache behavior.</p>
 -- Required parameter: Enabled
 -- Required parameter: Quantity
 function M.TrustedSigners(Items, Enabled, Quantity, ...)
@@ -2132,8 +2132,8 @@ function M.AssertTooManyOrigins(struct)
 end
 
 --- Create a structure of type TooManyOrigins
--- &lt;p&gt;You cannot create more origins for the distribution.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;You cannot create more origins for the distribution.&lt;/p&gt;
+-- <p>You cannot create more origins for the distribution.</p>
+-- @param Message [string] <p>You cannot create more origins for the distribution.</p>
 function M.TooManyOrigins(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyOrigins")
 	local t = { 
@@ -2160,10 +2160,10 @@ function M.AssertCloudFrontOriginAccessIdentitySummary(struct)
 end
 
 --- Create a structure of type CloudFrontOriginAccessIdentitySummary
--- &lt;p&gt;Summary of the information about a CloudFront origin access identity.&lt;/p&gt;
--- @param Comment [string] &lt;p&gt;The comment for this origin access identity, as originally specified when created.&lt;/p&gt;
--- @param S3CanonicalUserId [string] &lt;p&gt;The Amazon S3 canonical user ID for the origin access identity, which you use when giving the origin access identity read permission to an object in Amazon S3.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The ID for the origin access identity. For example: &lt;code&gt;E74FTE3AJFJ256A&lt;/code&gt;.&lt;/p&gt;
+-- <p>Summary of the information about a CloudFront origin access identity.</p>
+-- @param Comment [string] <p>The comment for this origin access identity, as originally specified when created.</p>
+-- @param S3CanonicalUserId [string] <p>The Amazon S3 canonical user ID for the origin access identity, which you use when giving the origin access identity read permission to an object in Amazon S3.</p>
+-- @param Id [string] <p>The ID for the origin access identity. For example: <code>E74FTE3AJFJ256A</code>.</p>
 -- Required parameter: Id
 -- Required parameter: S3CanonicalUserId
 -- Required parameter: Comment
@@ -2191,8 +2191,8 @@ function M.AssertCreateDistributionRequest(struct)
 end
 
 --- Create a structure of type CreateDistributionRequest
--- &lt;p&gt;The request to create a new distribution.&lt;/p&gt;
--- @param DistributionConfig [DistributionConfig] &lt;p&gt;The distribution's configuration information.&lt;/p&gt;
+-- <p>The request to create a new distribution.</p>
+-- @param DistributionConfig [DistributionConfig] <p>The distribution's configuration information.</p>
 -- Required parameter: DistributionConfig
 function M.CreateDistributionRequest(DistributionConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDistributionRequest")
@@ -2218,9 +2218,9 @@ function M.AssertUntagResourceRequest(struct)
 end
 
 --- Create a structure of type UntagResourceRequest
--- &lt;p&gt; The request to remove tags from a CloudFront resource.&lt;/p&gt;
--- @param TagKeys [TagKeys] &lt;p&gt; A complex type that contains zero or more &lt;code&gt;Tag&lt;/code&gt; key elements.&lt;/p&gt;
--- @param Resource [ResourceARN] &lt;p&gt; An ARN of a CloudFront resource.&lt;/p&gt;
+-- <p> The request to remove tags from a CloudFront resource.</p>
+-- @param TagKeys [TagKeys] <p> A complex type that contains zero or more <code>Tag</code> key elements.</p>
+-- @param Resource [ResourceARN] <p> An ARN of a CloudFront resource.</p>
 -- Required parameter: Resource
 -- Required parameter: TagKeys
 function M.UntagResourceRequest(TagKeys, Resource, ...)
@@ -2245,8 +2245,8 @@ function M.AssertCloudFrontOriginAccessIdentityAlreadyExists(struct)
 end
 
 --- Create a structure of type CloudFrontOriginAccessIdentityAlreadyExists
--- &lt;p&gt;If the &lt;code&gt;CallerReference&lt;/code&gt; is a value you already sent in a previous request to create an identity but the content of the &lt;code&gt;CloudFrontOriginAccessIdentityConfig&lt;/code&gt; is different from the original request, CloudFront returns a &lt;code&gt;CloudFrontOriginAccessIdentityAlreadyExists&lt;/code&gt; error. &lt;/p&gt;
--- @param Message [string] &lt;p&gt;If the &lt;code&gt;CallerReference&lt;/code&gt; is a value you already sent in a previous request to create an identity but the content of the &lt;code&gt;CloudFrontOriginAccessIdentityConfig&lt;/code&gt; is different from the original request, CloudFront returns a &lt;code&gt;CloudFrontOriginAccessIdentityAlreadyExists&lt;/code&gt; error. &lt;/p&gt;
+-- <p>If the <code>CallerReference</code> is a value you already sent in a previous request to create an identity but the content of the <code>CloudFrontOriginAccessIdentityConfig</code> is different from the original request, CloudFront returns a <code>CloudFrontOriginAccessIdentityAlreadyExists</code> error. </p>
+-- @param Message [string] <p>If the <code>CallerReference</code> is a value you already sent in a previous request to create an identity but the content of the <code>CloudFrontOriginAccessIdentityConfig</code> is different from the original request, CloudFront returns a <code>CloudFrontOriginAccessIdentityAlreadyExists</code> error. </p>
 function M.CloudFrontOriginAccessIdentityAlreadyExists(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloudFrontOriginAccessIdentityAlreadyExists")
 	local t = { 
@@ -2293,9 +2293,9 @@ function M.AssertAliases(struct)
 end
 
 --- Create a structure of type Aliases
--- &lt;p&gt;A complex type that contains information about CNAMEs (alternate domain names), if any, for this distribution. &lt;/p&gt;
--- @param Items [AliasList] &lt;p&gt;A complex type that contains the CNAME aliases, if any, that you want to associate with this distribution.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of CNAME aliases, if any, that you want to associate with this distribution.&lt;/p&gt;
+-- <p>A complex type that contains information about CNAMEs (alternate domain names), if any, for this distribution. </p>
+-- @param Items [AliasList] <p>A complex type that contains the CNAME aliases, if any, that you want to associate with this distribution.</p>
+-- @param Quantity [integer] <p>The number of CNAME aliases, if any, that you want to associate with this distribution.</p>
 -- Required parameter: Quantity
 function M.Aliases(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Aliases")
@@ -2326,11 +2326,11 @@ function M.AssertInvalidation(struct)
 end
 
 --- Create a structure of type Invalidation
--- &lt;p&gt;An invalidation. &lt;/p&gt;
--- @param Status [string] &lt;p&gt;The status of the invalidation request. When the invalidation batch is finished, the status is &lt;code&gt;Completed&lt;/code&gt;.&lt;/p&gt;
--- @param InvalidationBatch [InvalidationBatch] &lt;p&gt;The current invalidation information for the batch request. &lt;/p&gt;
--- @param Id [string] &lt;p&gt;The identifier for the invalidation request. For example: &lt;code&gt;IDFDVBD632BHDS5&lt;/code&gt;.&lt;/p&gt;
--- @param CreateTime [timestamp] &lt;p&gt;The date and time the invalidation request was first made. &lt;/p&gt;
+-- <p>An invalidation. </p>
+-- @param Status [string] <p>The status of the invalidation request. When the invalidation batch is finished, the status is <code>Completed</code>.</p>
+-- @param InvalidationBatch [InvalidationBatch] <p>The current invalidation information for the batch request. </p>
+-- @param Id [string] <p>The identifier for the invalidation request. For example: <code>IDFDVBD632BHDS5</code>.</p>
+-- @param CreateTime [timestamp] <p>The date and time the invalidation request was first made. </p>
 -- Required parameter: Id
 -- Required parameter: Status
 -- Required parameter: CreateTime
@@ -2383,9 +2383,9 @@ function M.AssertListStreamingDistributionsRequest(struct)
 end
 
 --- Create a structure of type ListStreamingDistributionsRequest
--- &lt;p&gt;The request to list your streaming distributions. &lt;/p&gt;
--- @param Marker [string] &lt;p&gt;The value that you provided for the &lt;code&gt;Marker&lt;/code&gt; request parameter.&lt;/p&gt;
--- @param MaxItems [string] &lt;p&gt;The value that you provided for the &lt;code&gt;MaxItems&lt;/code&gt; request parameter.&lt;/p&gt;
+-- <p>The request to list your streaming distributions. </p>
+-- @param Marker [string] <p>The value that you provided for the <code>Marker</code> request parameter.</p>
+-- @param MaxItems [string] <p>The value that you provided for the <code>MaxItems</code> request parameter.</p>
 function M.ListStreamingDistributionsRequest(Marker, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStreamingDistributionsRequest")
 	local t = { 
@@ -2410,9 +2410,9 @@ function M.AssertLambdaFunctionAssociations(struct)
 end
 
 --- Create a structure of type LambdaFunctionAssociations
--- &lt;p&gt;A complex type that specifies a list of Lambda functions associations for a cache behavior.&lt;/p&gt; &lt;p&gt;If you want to invoke one or more Lambda functions triggered by requests that match the &lt;code&gt;PathPattern&lt;/code&gt; of the cache behavior, specify the applicable values for &lt;code&gt;Quantity&lt;/code&gt; and &lt;code&gt;Items&lt;/code&gt;. Note that there can be up to 4 &lt;code&gt;LambdaFunctionAssociation&lt;/code&gt; items in this list (one for each possible value of &lt;code&gt;EventType&lt;/code&gt;) and each &lt;code&gt;EventType&lt;/code&gt; can be associated with the Lambda function only once.&lt;/p&gt; &lt;p&gt;If you don't want to invoke any Lambda functions for the requests that match &lt;code&gt;PathPattern&lt;/code&gt;, specify &lt;code&gt;0&lt;/code&gt; for &lt;code&gt;Quantity&lt;/code&gt; and omit &lt;code&gt;Items&lt;/code&gt;. &lt;/p&gt;
--- @param Items [LambdaFunctionAssociationList] &lt;p&gt; &lt;b&gt;Optional&lt;/b&gt;: A complex type that contains &lt;code&gt;LambdaFunctionAssociation&lt;/code&gt; items for this cache behavior. If &lt;code&gt;Quantity&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt;, you can omit &lt;code&gt;Items&lt;/code&gt;.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of Lambda function associations for this cache behavior.&lt;/p&gt;
+-- <p>A complex type that specifies a list of Lambda functions associations for a cache behavior.</p> <p>If you want to invoke one or more Lambda functions triggered by requests that match the <code>PathPattern</code> of the cache behavior, specify the applicable values for <code>Quantity</code> and <code>Items</code>. Note that there can be up to 4 <code>LambdaFunctionAssociation</code> items in this list (one for each possible value of <code>EventType</code>) and each <code>EventType</code> can be associated with the Lambda function only once.</p> <p>If you don't want to invoke any Lambda functions for the requests that match <code>PathPattern</code>, specify <code>0</code> for <code>Quantity</code> and omit <code>Items</code>. </p>
+-- @param Items [LambdaFunctionAssociationList] <p> <b>Optional</b>: A complex type that contains <code>LambdaFunctionAssociation</code> items for this cache behavior. If <code>Quantity</code> is <code>0</code>, you can omit <code>Items</code>.</p>
+-- @param Quantity [integer] <p>The number of Lambda function associations for this cache behavior.</p>
 -- Required parameter: Quantity
 function M.LambdaFunctionAssociations(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionAssociations")
@@ -2460,8 +2460,8 @@ function M.AssertListTagsForResourceRequest(struct)
 end
 
 --- Create a structure of type ListTagsForResourceRequest
--- &lt;p&gt; The request to list tags for a CloudFront resource.&lt;/p&gt;
--- @param Resource [ResourceARN] &lt;p&gt; An ARN of a CloudFront resource.&lt;/p&gt;
+-- <p> The request to list tags for a CloudFront resource.</p>
+-- @param Resource [ResourceARN] <p> An ARN of a CloudFront resource.</p>
 -- Required parameter: Resource
 function M.ListTagsForResourceRequest(Resource, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
@@ -2485,9 +2485,9 @@ function M.AssertCreateInvalidationResult(struct)
 end
 
 --- Create a structure of type CreateInvalidationResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param Invalidation [Invalidation] &lt;p&gt;The invalidation's information.&lt;/p&gt;
--- @param Location [string] &lt;p&gt;The fully qualified URI of the distribution and invalidation batch request, including the &lt;code&gt;Invalidation ID&lt;/code&gt;.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param Invalidation [Invalidation] <p>The invalidation's information.</p>
+-- @param Location [string] <p>The fully qualified URI of the distribution and invalidation batch request, including the <code>Invalidation ID</code>.</p>
 function M.CreateInvalidationResult(Invalidation, Location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateInvalidationResult")
 	local t = { 
@@ -2512,9 +2512,9 @@ function M.AssertCacheBehaviors(struct)
 end
 
 --- Create a structure of type CacheBehaviors
--- &lt;p&gt;A complex type that contains zero or more &lt;code&gt;CacheBehavior&lt;/code&gt; elements. &lt;/p&gt;
--- @param Items [CacheBehaviorList] &lt;p&gt;Optional: A complex type that contains cache behaviors for this distribution. If &lt;code&gt;Quantity&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt;, you can omit &lt;code&gt;Items&lt;/code&gt;.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of cache behaviors for this distribution. &lt;/p&gt;
+-- <p>A complex type that contains zero or more <code>CacheBehavior</code> elements. </p>
+-- @param Items [CacheBehaviorList] <p>Optional: A complex type that contains cache behaviors for this distribution. If <code>Quantity</code> is <code>0</code>, you can omit <code>Items</code>.</p>
+-- @param Quantity [integer] <p>The number of cache behaviors for this distribution. </p>
 -- Required parameter: Quantity
 function M.CacheBehaviors(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CacheBehaviors")
@@ -2538,8 +2538,8 @@ function M.AssertTagKeys(struct)
 end
 
 --- Create a structure of type TagKeys
--- &lt;p&gt; A complex type that contains zero or more &lt;code&gt;Tag&lt;/code&gt; elements.&lt;/p&gt;
--- @param Items [TagKeyList] &lt;p&gt; A complex type that contains &lt;code&gt;Tag&lt;/code&gt; key elements.&lt;/p&gt;
+-- <p> A complex type that contains zero or more <code>Tag</code> elements.</p>
+-- @param Items [TagKeyList] <p> A complex type that contains <code>Tag</code> key elements.</p>
 function M.TagKeys(Items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagKeys")
 	local t = { 
@@ -2564,9 +2564,9 @@ function M.AssertOriginCustomHeader(struct)
 end
 
 --- Create a structure of type OriginCustomHeader
--- &lt;p&gt;A complex type that contains &lt;code&gt;HeaderName&lt;/code&gt; and &lt;code&gt;HeaderValue&lt;/code&gt; elements, if any, for this distribution. &lt;/p&gt;
--- @param HeaderName [string] &lt;p&gt;The name of a header that you want CloudFront to forward to your origin. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html&quot;&gt;Forwarding Custom Headers to Your Origin (Web Distributions Only)&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param HeaderValue [string] &lt;p&gt;The value for the header that you specified in the &lt;code&gt;HeaderName&lt;/code&gt; field.&lt;/p&gt;
+-- <p>A complex type that contains <code>HeaderName</code> and <code>HeaderValue</code> elements, if any, for this distribution. </p>
+-- @param HeaderName [string] <p>The name of a header that you want CloudFront to forward to your origin. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html">Forwarding Custom Headers to Your Origin (Web Distributions Only)</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p>
+-- @param HeaderValue [string] <p>The value for the header that you specified in the <code>HeaderName</code> field.</p>
 -- Required parameter: HeaderName
 -- Required parameter: HeaderValue
 function M.OriginCustomHeader(HeaderName, HeaderValue, ...)
@@ -2591,8 +2591,8 @@ function M.AssertTags(struct)
 end
 
 --- Create a structure of type Tags
--- &lt;p&gt; A complex type that contains zero or more &lt;code&gt;Tag&lt;/code&gt; elements.&lt;/p&gt;
--- @param Items [TagList] &lt;p&gt; A complex type that contains &lt;code&gt;Tag&lt;/code&gt; elements.&lt;/p&gt;
+-- <p> A complex type that contains zero or more <code>Tag</code> elements.</p>
+-- @param Items [TagList] <p> A complex type that contains <code>Tag</code> elements.</p>
 function M.Tags(Items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tags")
 	local t = { 
@@ -2623,13 +2623,13 @@ function M.AssertCloudFrontOriginAccessIdentityList(struct)
 end
 
 --- Create a structure of type CloudFrontOriginAccessIdentityList
--- &lt;p&gt;Lists the origin access identities for CloudFront.Send a &lt;code&gt;GET&lt;/code&gt; request to the &lt;code&gt;/&lt;i&gt;CloudFront API version&lt;/i&gt;/origin-access-identity/cloudfront&lt;/code&gt; resource. The response includes a &lt;code&gt;CloudFrontOriginAccessIdentityList&lt;/code&gt; element with zero or more &lt;code&gt;CloudFrontOriginAccessIdentitySummary&lt;/code&gt; child elements. By default, your entire list of origin access identities is returned in one single page. If the list is long, you can paginate it using the &lt;code&gt;MaxItems&lt;/code&gt; and &lt;code&gt;Marker&lt;/code&gt; parameters.&lt;/p&gt;
--- @param Items [CloudFrontOriginAccessIdentitySummaryList] &lt;p&gt;A complex type that contains one &lt;code&gt;CloudFrontOriginAccessIdentitySummary&lt;/code&gt; element for each origin access identity that was created by the current AWS account.&lt;/p&gt;
--- @param NextMarker [string] &lt;p&gt;If &lt;code&gt;IsTruncated&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;, this element is present and contains the value you can use for the &lt;code&gt;Marker&lt;/code&gt; request parameter to continue listing your origin access identities where they left off. &lt;/p&gt;
--- @param MaxItems [integer] &lt;p&gt;The maximum number of origin access identities you want in the response body. &lt;/p&gt;
--- @param Marker [string] &lt;p&gt;Use this when paginating results to indicate where to begin in your list of origin access identities. The results include identities in the list that occur after the marker. To get the next page of results, set the &lt;code&gt;Marker&lt;/code&gt; to the value of the &lt;code&gt;NextMarker&lt;/code&gt; from the current page's response (which is also the ID of the last identity on that page). &lt;/p&gt;
--- @param IsTruncated [boolean] &lt;p&gt;A flag that indicates whether more origin access identities remain to be listed. If your results were truncated, you can make a follow-up pagination request using the &lt;code&gt;Marker&lt;/code&gt; request parameter to retrieve more items in the list.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of CloudFront origin access identities that were created by the current AWS account. &lt;/p&gt;
+-- <p>Lists the origin access identities for CloudFront.Send a <code>GET</code> request to the <code>/<i>CloudFront API version</i>/origin-access-identity/cloudfront</code> resource. The response includes a <code>CloudFrontOriginAccessIdentityList</code> element with zero or more <code>CloudFrontOriginAccessIdentitySummary</code> child elements. By default, your entire list of origin access identities is returned in one single page. If the list is long, you can paginate it using the <code>MaxItems</code> and <code>Marker</code> parameters.</p>
+-- @param Items [CloudFrontOriginAccessIdentitySummaryList] <p>A complex type that contains one <code>CloudFrontOriginAccessIdentitySummary</code> element for each origin access identity that was created by the current AWS account.</p>
+-- @param NextMarker [string] <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value you can use for the <code>Marker</code> request parameter to continue listing your origin access identities where they left off. </p>
+-- @param MaxItems [integer] <p>The maximum number of origin access identities you want in the response body. </p>
+-- @param Marker [string] <p>Use this when paginating results to indicate where to begin in your list of origin access identities. The results include identities in the list that occur after the marker. To get the next page of results, set the <code>Marker</code> to the value of the <code>NextMarker</code> from the current page's response (which is also the ID of the last identity on that page). </p>
+-- @param IsTruncated [boolean] <p>A flag that indicates whether more origin access identities remain to be listed. If your results were truncated, you can make a follow-up pagination request using the <code>Marker</code> request parameter to retrieve more items in the list.</p>
+-- @param Quantity [integer] <p>The number of CloudFront origin access identities that were created by the current AWS account. </p>
 -- Required parameter: Marker
 -- Required parameter: MaxItems
 -- Required parameter: IsTruncated
@@ -2683,8 +2683,8 @@ function M.AssertNoSuchInvalidation(struct)
 end
 
 --- Create a structure of type NoSuchInvalidation
--- &lt;p&gt;The specified invalidation does not exist.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The specified invalidation does not exist.&lt;/p&gt;
+-- <p>The specified invalidation does not exist.</p>
+-- @param Message [string] <p>The specified invalidation does not exist.</p>
 function M.NoSuchInvalidation(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchInvalidation")
 	local t = { 
@@ -2706,8 +2706,8 @@ function M.AssertInvalidIfMatchVersion(struct)
 end
 
 --- Create a structure of type InvalidIfMatchVersion
--- &lt;p&gt;The &lt;code&gt;If-Match&lt;/code&gt; version is missing or not valid for the distribution.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The &lt;code&gt;If-Match&lt;/code&gt; version is missing or not valid for the distribution.&lt;/p&gt;
+-- <p>The <code>If-Match</code> version is missing or not valid for the distribution.</p>
+-- @param Message [string] <p>The <code>If-Match</code> version is missing or not valid for the distribution.</p>
 function M.InvalidIfMatchVersion(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidIfMatchVersion")
 	local t = { 
@@ -2732,9 +2732,9 @@ function M.AssertTagResourceRequest(struct)
 end
 
 --- Create a structure of type TagResourceRequest
--- &lt;p&gt; The request to add tags to a CloudFront resource.&lt;/p&gt;
--- @param Resource [ResourceARN] &lt;p&gt; An ARN of a CloudFront resource.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt; A complex type that contains zero or more &lt;code&gt;Tag&lt;/code&gt; elements.&lt;/p&gt;
+-- <p> The request to add tags to a CloudFront resource.</p>
+-- @param Resource [ResourceARN] <p> An ARN of a CloudFront resource.</p>
+-- @param Tags [Tags] <p> A complex type that contains zero or more <code>Tag</code> elements.</p>
 -- Required parameter: Resource
 -- Required parameter: Tags
 function M.TagResourceRequest(Resource, Tags, ...)
@@ -2760,9 +2760,9 @@ function M.AssertGetDistributionConfigResult(struct)
 end
 
 --- Create a structure of type GetDistributionConfigResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the configuration. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
--- @param DistributionConfig [DistributionConfig] &lt;p&gt;The distribution's configuration information.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param ETag [string] <p>The current version of the configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
+-- @param DistributionConfig [DistributionConfig] <p>The distribution's configuration information.</p>
 function M.GetDistributionConfigResult(ETag, DistributionConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDistributionConfigResult")
 	local t = { 
@@ -2786,8 +2786,8 @@ function M.AssertCreateStreamingDistributionRequest(struct)
 end
 
 --- Create a structure of type CreateStreamingDistributionRequest
--- &lt;p&gt;The request to create a new streaming distribution.&lt;/p&gt;
--- @param StreamingDistributionConfig [StreamingDistributionConfig] &lt;p&gt;The streaming distribution's configuration information.&lt;/p&gt;
+-- <p>The request to create a new streaming distribution.</p>
+-- @param StreamingDistributionConfig [StreamingDistributionConfig] <p>The streaming distribution's configuration information.</p>
 -- Required parameter: StreamingDistributionConfig
 function M.CreateStreamingDistributionRequest(StreamingDistributionConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamingDistributionRequest")
@@ -2835,10 +2835,10 @@ function M.AssertCreateStreamingDistributionWithTagsResult(struct)
 end
 
 --- Create a structure of type CreateStreamingDistributionWithTagsResult
--- &lt;p&gt;The returned result of the corresponding request. &lt;/p&gt;
--- @param StreamingDistribution [StreamingDistribution] &lt;p&gt;The streaming distribution's information. &lt;/p&gt;
--- @param Location [string] &lt;p&gt;The fully qualified URI of the new streaming distribution resource just created. For example:&lt;code&gt; https://cloudfront.amazonaws.com/2010-11-01/streaming-distribution/EGTXBD79H29TRA8&lt;/code&gt;.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The returned result of the corresponding request. &lt;/p&gt;
+-- <p>The returned result of the corresponding request. </p>
+-- @param StreamingDistribution [StreamingDistribution] <p>The streaming distribution's information. </p>
+-- @param Location [string] <p>The fully qualified URI of the new streaming distribution resource just created. For example:<code> https://cloudfront.amazonaws.com/2010-11-01/streaming-distribution/EGTXBD79H29TRA8</code>.</p>
+-- @param ETag [string] <p>The returned result of the corresponding request. </p>
 function M.CreateStreamingDistributionWithTagsResult(StreamingDistribution, Location, ETag, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamingDistributionWithTagsResult")
 	local t = { 
@@ -2863,9 +2863,9 @@ function M.AssertListDistributionsRequest(struct)
 end
 
 --- Create a structure of type ListDistributionsRequest
--- &lt;p&gt;The request to list your distributions. &lt;/p&gt;
--- @param Marker [string] &lt;p&gt;Use this when paginating results to indicate where to begin in your list of distributions. The results include distributions in the list that occur after the marker. To get the next page of results, set the &lt;code&gt;Marker&lt;/code&gt; to the value of the &lt;code&gt;NextMarker&lt;/code&gt; from the current page's response (which is also the ID of the last distribution on that page).&lt;/p&gt;
--- @param MaxItems [string] &lt;p&gt;The maximum number of distributions you want in the response body.&lt;/p&gt;
+-- <p>The request to list your distributions. </p>
+-- @param Marker [string] <p>Use this when paginating results to indicate where to begin in your list of distributions. The results include distributions in the list that occur after the marker. To get the next page of results, set the <code>Marker</code> to the value of the <code>NextMarker</code> from the current page's response (which is also the ID of the last distribution on that page).</p>
+-- @param MaxItems [string] <p>The maximum number of distributions you want in the response body.</p>
 function M.ListDistributionsRequest(Marker, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDistributionsRequest")
 	local t = { 
@@ -2897,13 +2897,13 @@ function M.AssertStreamingDistributionList(struct)
 end
 
 --- Create a structure of type StreamingDistributionList
--- &lt;p&gt;A streaming distribution list. &lt;/p&gt;
--- @param Items [StreamingDistributionSummaryList] &lt;p&gt;A complex type that contains one &lt;code&gt;StreamingDistributionSummary&lt;/code&gt; element for each distribution that was created by the current AWS account.&lt;/p&gt;
--- @param NextMarker [string] &lt;p&gt;If &lt;code&gt;IsTruncated&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;, this element is present and contains the value you can use for the &lt;code&gt;Marker&lt;/code&gt; request parameter to continue listing your RTMP distributions where they left off. &lt;/p&gt;
--- @param MaxItems [integer] &lt;p&gt;The value you provided for the &lt;code&gt;MaxItems&lt;/code&gt; request parameter. &lt;/p&gt;
--- @param Marker [string] &lt;p&gt;The value you provided for the &lt;code&gt;Marker&lt;/code&gt; request parameter. &lt;/p&gt;
--- @param IsTruncated [boolean] &lt;p&gt;A flag that indicates whether more streaming distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the &lt;code&gt;Marker&lt;/code&gt; request parameter to retrieve more distributions in the list. &lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of streaming distributions that were created by the current AWS account. &lt;/p&gt;
+-- <p>A streaming distribution list. </p>
+-- @param Items [StreamingDistributionSummaryList] <p>A complex type that contains one <code>StreamingDistributionSummary</code> element for each distribution that was created by the current AWS account.</p>
+-- @param NextMarker [string] <p>If <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value you can use for the <code>Marker</code> request parameter to continue listing your RTMP distributions where they left off. </p>
+-- @param MaxItems [integer] <p>The value you provided for the <code>MaxItems</code> request parameter. </p>
+-- @param Marker [string] <p>The value you provided for the <code>Marker</code> request parameter. </p>
+-- @param IsTruncated [boolean] <p>A flag that indicates whether more streaming distributions remain to be listed. If your results were truncated, you can make a follow-up pagination request using the <code>Marker</code> request parameter to retrieve more distributions in the list. </p>
+-- @param Quantity [integer] <p>The number of streaming distributions that were created by the current AWS account. </p>
 -- Required parameter: Marker
 -- Required parameter: MaxItems
 -- Required parameter: IsTruncated
@@ -2935,8 +2935,8 @@ function M.AssertGetStreamingDistributionConfigRequest(struct)
 end
 
 --- Create a structure of type GetStreamingDistributionConfigRequest
--- &lt;p&gt;To request to get a streaming distribution configuration.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The streaming distribution's ID.&lt;/p&gt;
+-- <p>To request to get a streaming distribution configuration.</p>
+-- @param Id [string] <p>The streaming distribution's ID.</p>
 -- Required parameter: Id
 function M.GetStreamingDistributionConfigRequest(Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStreamingDistributionConfigRequest")
@@ -2960,8 +2960,8 @@ function M.AssertRestrictions(struct)
 end
 
 --- Create a structure of type Restrictions
--- &lt;p&gt;A complex type that identifies ways in which you want to restrict distribution of your content.&lt;/p&gt;
--- @param GeoRestriction [GeoRestriction] &lt;p&gt;A complex type that identifies ways in which you want to restrict distribution of your content.&lt;/p&gt;
+-- <p>A complex type that identifies ways in which you want to restrict distribution of your content.</p>
+-- @param GeoRestriction [GeoRestriction] <p>A complex type that identifies ways in which you want to restrict distribution of your content.</p>
 -- Required parameter: GeoRestriction
 function M.Restrictions(GeoRestriction, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Restrictions")
@@ -3030,8 +3030,8 @@ function M.AssertTrustedSignerDoesNotExist(struct)
 end
 
 --- Create a structure of type TrustedSignerDoesNotExist
--- &lt;p&gt;One or more of your trusted signers do not exist.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;One or more of your trusted signers do not exist.&lt;/p&gt;
+-- <p>One or more of your trusted signers do not exist.</p>
+-- @param Message [string] <p>One or more of your trusted signers do not exist.</p>
 function M.TrustedSignerDoesNotExist(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrustedSignerDoesNotExist")
 	local t = { 
@@ -3076,8 +3076,8 @@ function M.AssertListDistributionsResult(struct)
 end
 
 --- Create a structure of type ListDistributionsResult
--- &lt;p&gt;The returned result of the corresponding request. &lt;/p&gt;
--- @param DistributionList [DistributionList] &lt;p&gt;The &lt;code&gt;DistributionList&lt;/code&gt; type. &lt;/p&gt;
+-- <p>The returned result of the corresponding request. </p>
+-- @param DistributionList [DistributionList] <p>The <code>DistributionList</code> type. </p>
 function M.ListDistributionsResult(DistributionList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDistributionsResult")
 	local t = { 
@@ -3102,9 +3102,9 @@ function M.AssertInvalidationBatch(struct)
 end
 
 --- Create a structure of type InvalidationBatch
--- &lt;p&gt;An invalidation batch.&lt;/p&gt;
--- @param Paths [Paths] &lt;p&gt;A complex type that contains information about the objects that you want to invalidate. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#invalidation-specifying-objects&quot;&gt;Specifying the Objects to Invalidate&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;. &lt;/p&gt;
--- @param CallerReference [string] &lt;p&gt;A value that you specify to uniquely identify an invalidation request. CloudFront uses the value to prevent you from accidentally resubmitting an identical request. Whenever you create a new invalidation request, you must specify a new value for &lt;code&gt;CallerReference&lt;/code&gt; and change other values in the request as applicable. One way to ensure that the value of &lt;code&gt;CallerReference&lt;/code&gt; is unique is to use a &lt;code&gt;timestamp&lt;/code&gt;, for example, &lt;code&gt;20120301090000&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If you make a second invalidation request with the same value for &lt;code&gt;CallerReference&lt;/code&gt;, and if the rest of the request is the same, CloudFront doesn't create a new invalidation request. Instead, CloudFront returns information about the invalidation request that you previously created with the same &lt;code&gt;CallerReference&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If &lt;code&gt;CallerReference&lt;/code&gt; is a value you already sent in a previous invalidation batch request but the content of any &lt;code&gt;Path&lt;/code&gt; is different from the original request, CloudFront returns an &lt;code&gt;InvalidationBatchAlreadyExists&lt;/code&gt; error.&lt;/p&gt;
+-- <p>An invalidation batch.</p>
+-- @param Paths [Paths] <p>A complex type that contains information about the objects that you want to invalidate. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#invalidation-specifying-objects">Specifying the Objects to Invalidate</a> in the <i>Amazon CloudFront Developer Guide</i>. </p>
+-- @param CallerReference [string] <p>A value that you specify to uniquely identify an invalidation request. CloudFront uses the value to prevent you from accidentally resubmitting an identical request. Whenever you create a new invalidation request, you must specify a new value for <code>CallerReference</code> and change other values in the request as applicable. One way to ensure that the value of <code>CallerReference</code> is unique is to use a <code>timestamp</code>, for example, <code>20120301090000</code>.</p> <p>If you make a second invalidation request with the same value for <code>CallerReference</code>, and if the rest of the request is the same, CloudFront doesn't create a new invalidation request. Instead, CloudFront returns information about the invalidation request that you previously created with the same <code>CallerReference</code>.</p> <p>If <code>CallerReference</code> is a value you already sent in a previous invalidation batch request but the content of any <code>Path</code> is different from the original request, CloudFront returns an <code>InvalidationBatchAlreadyExists</code> error.</p>
 -- Required parameter: Paths
 -- Required parameter: CallerReference
 function M.InvalidationBatch(Paths, CallerReference, ...)
@@ -3130,9 +3130,9 @@ function M.AssertGetDistributionResult(struct)
 end
 
 --- Create a structure of type GetDistributionResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param Distribution [Distribution] &lt;p&gt;The distribution's information.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the distribution's information. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param Distribution [Distribution] <p>The distribution's information.</p>
+-- @param ETag [string] <p>The current version of the distribution's information. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 function M.GetDistributionResult(Distribution, ETag, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDistributionResult")
 	local t = { 
@@ -3159,10 +3159,10 @@ function M.AssertUpdateStreamingDistributionRequest(struct)
 end
 
 --- Create a structure of type UpdateStreamingDistributionRequest
--- &lt;p&gt;The request to update a streaming distribution.&lt;/p&gt;
--- @param IfMatch [string] &lt;p&gt;The value of the &lt;code&gt;ETag&lt;/code&gt; header that you received when retrieving the streaming distribution's configuration. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The streaming distribution's id.&lt;/p&gt;
--- @param StreamingDistributionConfig [StreamingDistributionConfig] &lt;p&gt;The streaming distribution's configuration information.&lt;/p&gt;
+-- <p>The request to update a streaming distribution.</p>
+-- @param IfMatch [string] <p>The value of the <code>ETag</code> header that you received when retrieving the streaming distribution's configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
+-- @param Id [string] <p>The streaming distribution's id.</p>
+-- @param StreamingDistributionConfig [StreamingDistributionConfig] <p>The streaming distribution's configuration information.</p>
 -- Required parameter: StreamingDistributionConfig
 -- Required parameter: Id
 function M.UpdateStreamingDistributionRequest(IfMatch, Id, StreamingDistributionConfig, ...)
@@ -3188,8 +3188,8 @@ function M.AssertListCloudFrontOriginAccessIdentitiesResult(struct)
 end
 
 --- Create a structure of type ListCloudFrontOriginAccessIdentitiesResult
--- &lt;p&gt;The returned result of the corresponding request. &lt;/p&gt;
--- @param CloudFrontOriginAccessIdentityList [CloudFrontOriginAccessIdentityList] &lt;p&gt;The &lt;code&gt;CloudFrontOriginAccessIdentityList&lt;/code&gt; type. &lt;/p&gt;
+-- <p>The returned result of the corresponding request. </p>
+-- @param CloudFrontOriginAccessIdentityList [CloudFrontOriginAccessIdentityList] <p>The <code>CloudFrontOriginAccessIdentityList</code> type. </p>
 function M.ListCloudFrontOriginAccessIdentitiesResult(CloudFrontOriginAccessIdentityList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCloudFrontOriginAccessIdentitiesResult")
 	local t = { 
@@ -3214,9 +3214,9 @@ function M.AssertCreateInvalidationRequest(struct)
 end
 
 --- Create a structure of type CreateInvalidationRequest
--- &lt;p&gt;The request to create an invalidation.&lt;/p&gt;
--- @param InvalidationBatch [InvalidationBatch] &lt;p&gt;The batch information for the invalidation.&lt;/p&gt;
--- @param DistributionId [string] &lt;p&gt;The distribution's id.&lt;/p&gt;
+-- <p>The request to create an invalidation.</p>
+-- @param InvalidationBatch [InvalidationBatch] <p>The batch information for the invalidation.</p>
+-- @param DistributionId [string] <p>The distribution's id.</p>
 -- Required parameter: DistributionId
 -- Required parameter: InvalidationBatch
 function M.CreateInvalidationRequest(InvalidationBatch, DistributionId, ...)
@@ -3241,8 +3241,8 @@ function M.AssertTooManyDistributionCNAMEs(struct)
 end
 
 --- Create a structure of type TooManyDistributionCNAMEs
--- &lt;p&gt;Your request contains more CNAMEs than are allowed per distribution.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;Your request contains more CNAMEs than are allowed per distribution.&lt;/p&gt;
+-- <p>Your request contains more CNAMEs than are allowed per distribution.</p>
+-- @param Message [string] <p>Your request contains more CNAMEs than are allowed per distribution.</p>
 function M.TooManyDistributionCNAMEs(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyDistributionCNAMEs")
 	local t = { 
@@ -3322,25 +3322,25 @@ function M.AssertDistributionSummary(struct)
 end
 
 --- Create a structure of type DistributionSummary
--- &lt;p&gt;A summary of the information about a CloudFront distribution.&lt;/p&gt;
--- @param Status [string] &lt;p&gt;The current status of the distribution. When the status is &lt;code&gt;Deployed&lt;/code&gt;, the distribution's information is propagated to all CloudFront edge locations.&lt;/p&gt;
--- @param CacheBehaviors [CacheBehaviors] &lt;p&gt;A complex type that contains zero or more &lt;code&gt;CacheBehavior&lt;/code&gt; elements.&lt;/p&gt;
--- @param Restrictions [Restrictions] &lt;p&gt;A summary of the information about a CloudFront distribution.&lt;/p&gt;
--- @param Origins [Origins] &lt;p&gt;A complex type that contains information about origins for this distribution.&lt;/p&gt;
--- @param DomainName [string] &lt;p&gt;The domain name that corresponds to the distribution. For example: &lt;code&gt;d604721fxaaqy9.cloudfront.net&lt;/code&gt;.&lt;/p&gt;
--- @param WebACLId [string] &lt;p&gt;The Web ACL Id (if any) associated with the distribution.&lt;/p&gt;
--- @param PriceClass [PriceClass] &lt;p&gt;A summary of the information about a CloudFront distribution.&lt;/p&gt;
--- @param Enabled [boolean] &lt;p&gt;Whether the distribution is enabled to accept user requests for content.&lt;/p&gt;
--- @param DefaultCacheBehavior [DefaultCacheBehavior] &lt;p&gt;A complex type that describes the default cache behavior if you do not specify a &lt;code&gt;CacheBehavior&lt;/code&gt; element or if files don't match any of the values of &lt;code&gt;PathPattern&lt;/code&gt; in &lt;code&gt;CacheBehavior&lt;/code&gt; elements. You must create exactly one default cache behavior.&lt;/p&gt;
--- @param IsIPV6Enabled [boolean] &lt;p&gt;Whether CloudFront responds to IPv6 DNS requests with an IPv6 address for your distribution.&lt;/p&gt;
--- @param Comment [string] &lt;p&gt;The comment originally specified when this distribution was created.&lt;/p&gt;
--- @param ViewerCertificate [ViewerCertificate] &lt;p&gt;A summary of the information about a CloudFront distribution.&lt;/p&gt;
--- @param CustomErrorResponses [CustomErrorResponses] &lt;p&gt;A complex type that contains zero or more &lt;code&gt;CustomErrorResponses&lt;/code&gt; elements.&lt;/p&gt;
--- @param LastModifiedTime [timestamp] &lt;p&gt;The date and time the distribution was last modified.&lt;/p&gt;
--- @param HttpVersion [HttpVersion] &lt;p&gt; Specify the maximum HTTP version that you want viewers to use to communicate with CloudFront. The default value for new web distributions is &lt;code&gt;http2&lt;/code&gt;. Viewers that don't support &lt;code&gt;HTTP/2&lt;/code&gt; will automatically use an earlier version.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The identifier for the distribution. For example: &lt;code&gt;EDFDVBD632BHDS5&lt;/code&gt;.&lt;/p&gt;
--- @param ARN [string] &lt;p&gt;The ARN (Amazon Resource Name) for the distribution. For example: &lt;code&gt;arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5&lt;/code&gt;, where &lt;code&gt;123456789012&lt;/code&gt; is your AWS account ID.&lt;/p&gt;
--- @param Aliases [Aliases] &lt;p&gt;A complex type that contains information about CNAMEs (alternate domain names), if any, for this distribution.&lt;/p&gt;
+-- <p>A summary of the information about a CloudFront distribution.</p>
+-- @param Status [string] <p>The current status of the distribution. When the status is <code>Deployed</code>, the distribution's information is propagated to all CloudFront edge locations.</p>
+-- @param CacheBehaviors [CacheBehaviors] <p>A complex type that contains zero or more <code>CacheBehavior</code> elements.</p>
+-- @param Restrictions [Restrictions] <p>A summary of the information about a CloudFront distribution.</p>
+-- @param Origins [Origins] <p>A complex type that contains information about origins for this distribution.</p>
+-- @param DomainName [string] <p>The domain name that corresponds to the distribution. For example: <code>d604721fxaaqy9.cloudfront.net</code>.</p>
+-- @param WebACLId [string] <p>The Web ACL Id (if any) associated with the distribution.</p>
+-- @param PriceClass [PriceClass] <p>A summary of the information about a CloudFront distribution.</p>
+-- @param Enabled [boolean] <p>Whether the distribution is enabled to accept user requests for content.</p>
+-- @param DefaultCacheBehavior [DefaultCacheBehavior] <p>A complex type that describes the default cache behavior if you do not specify a <code>CacheBehavior</code> element or if files don't match any of the values of <code>PathPattern</code> in <code>CacheBehavior</code> elements. You must create exactly one default cache behavior.</p>
+-- @param IsIPV6Enabled [boolean] <p>Whether CloudFront responds to IPv6 DNS requests with an IPv6 address for your distribution.</p>
+-- @param Comment [string] <p>The comment originally specified when this distribution was created.</p>
+-- @param ViewerCertificate [ViewerCertificate] <p>A summary of the information about a CloudFront distribution.</p>
+-- @param CustomErrorResponses [CustomErrorResponses] <p>A complex type that contains zero or more <code>CustomErrorResponses</code> elements.</p>
+-- @param LastModifiedTime [timestamp] <p>The date and time the distribution was last modified.</p>
+-- @param HttpVersion [HttpVersion] <p> Specify the maximum HTTP version that you want viewers to use to communicate with CloudFront. The default value for new web distributions is <code>http2</code>. Viewers that don't support <code>HTTP/2</code> will automatically use an earlier version.</p>
+-- @param Id [string] <p>The identifier for the distribution. For example: <code>EDFDVBD632BHDS5</code>.</p>
+-- @param ARN [string] <p>The ARN (Amazon Resource Name) for the distribution. For example: <code>arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5</code>, where <code>123456789012</code> is your AWS account ID.</p>
+-- @param Aliases [Aliases] <p>A complex type that contains information about CNAMEs (alternate domain names), if any, for this distribution.</p>
 -- Required parameter: Id
 -- Required parameter: ARN
 -- Required parameter: Status
@@ -3409,15 +3409,15 @@ function M.AssertStreamingDistributionConfig(struct)
 end
 
 --- Create a structure of type StreamingDistributionConfig
--- &lt;p&gt;The RTMP distribution's configuration information.&lt;/p&gt;
--- @param S3Origin [S3Origin] &lt;p&gt;A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution. &lt;/p&gt;
--- @param Comment [string] &lt;p&gt;Any comments you want to include about the streaming distribution. &lt;/p&gt;
--- @param Logging [StreamingLoggingConfig] &lt;p&gt;A complex type that controls whether access logs are written for the streaming distribution. &lt;/p&gt;
--- @param PriceClass [PriceClass] &lt;p&gt;A complex type that contains information about price class for this streaming distribution. &lt;/p&gt;
--- @param Enabled [boolean] &lt;p&gt;Whether the streaming distribution is enabled to accept user requests for content.&lt;/p&gt;
--- @param TrustedSigners [TrustedSigners] &lt;p&gt;A complex type that specifies any AWS accounts that you want to permit to create signed URLs for private content. If you want the distribution to use signed URLs, include this element; if you want the distribution to use public URLs, remove this element. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html&quot;&gt;Serving Private Content through CloudFront&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;. &lt;/p&gt;
--- @param CallerReference [string] &lt;p&gt;A unique number that ensures that the request can't be replayed. If the &lt;code&gt;CallerReference&lt;/code&gt; is new (no matter the content of the &lt;code&gt;StreamingDistributionConfig&lt;/code&gt; object), a new streaming distribution is created. If the &lt;code&gt;CallerReference&lt;/code&gt; is a value that you already sent in a previous request to create a streaming distribution, and the content of the &lt;code&gt;StreamingDistributionConfig&lt;/code&gt; is identical to the original request (ignoring white space), the response includes the same information returned to the original request. If the &lt;code&gt;CallerReference&lt;/code&gt; is a value that you already sent in a previous request to create a streaming distribution but the content of the &lt;code&gt;StreamingDistributionConfig&lt;/code&gt; is different from the original request, CloudFront returns a &lt;code&gt;DistributionAlreadyExists&lt;/code&gt; error. &lt;/p&gt;
--- @param Aliases [Aliases] &lt;p&gt;A complex type that contains information about CNAMEs (alternate domain names), if any, for this streaming distribution. &lt;/p&gt;
+-- <p>The RTMP distribution's configuration information.</p>
+-- @param S3Origin [S3Origin] <p>A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution. </p>
+-- @param Comment [string] <p>Any comments you want to include about the streaming distribution. </p>
+-- @param Logging [StreamingLoggingConfig] <p>A complex type that controls whether access logs are written for the streaming distribution. </p>
+-- @param PriceClass [PriceClass] <p>A complex type that contains information about price class for this streaming distribution. </p>
+-- @param Enabled [boolean] <p>Whether the streaming distribution is enabled to accept user requests for content.</p>
+-- @param TrustedSigners [TrustedSigners] <p>A complex type that specifies any AWS accounts that you want to permit to create signed URLs for private content. If you want the distribution to use signed URLs, include this element; if you want the distribution to use public URLs, remove this element. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">Serving Private Content through CloudFront</a> in the <i>Amazon CloudFront Developer Guide</i>. </p>
+-- @param CallerReference [string] <p>A unique number that ensures that the request can't be replayed. If the <code>CallerReference</code> is new (no matter the content of the <code>StreamingDistributionConfig</code> object), a new streaming distribution is created. If the <code>CallerReference</code> is a value that you already sent in a previous request to create a streaming distribution, and the content of the <code>StreamingDistributionConfig</code> is identical to the original request (ignoring white space), the response includes the same information returned to the original request. If the <code>CallerReference</code> is a value that you already sent in a previous request to create a streaming distribution but the content of the <code>StreamingDistributionConfig</code> is different from the original request, CloudFront returns a <code>DistributionAlreadyExists</code> error. </p>
+-- @param Aliases [Aliases] <p>A complex type that contains information about CNAMEs (alternate domain names), if any, for this streaming distribution. </p>
 -- Required parameter: CallerReference
 -- Required parameter: S3Origin
 -- Required parameter: Comment
@@ -3452,8 +3452,8 @@ function M.AssertCreateDistributionWithTagsRequest(struct)
 end
 
 --- Create a structure of type CreateDistributionWithTagsRequest
--- &lt;p&gt;The request to create a new distribution with tags. &lt;/p&gt;
--- @param DistributionConfigWithTags [DistributionConfigWithTags] &lt;p&gt;The distribution's configuration information. &lt;/p&gt;
+-- <p>The request to create a new distribution with tags. </p>
+-- @param DistributionConfigWithTags [DistributionConfigWithTags] <p>The distribution's configuration information. </p>
 -- Required parameter: DistributionConfigWithTags
 function M.CreateDistributionWithTagsRequest(DistributionConfigWithTags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDistributionWithTagsRequest")
@@ -3478,9 +3478,9 @@ function M.AssertDeleteStreamingDistributionRequest(struct)
 end
 
 --- Create a structure of type DeleteStreamingDistributionRequest
--- &lt;p&gt;The request to delete a streaming distribution.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The distribution ID. &lt;/p&gt;
--- @param IfMatch [string] &lt;p&gt;The value of the &lt;code&gt;ETag&lt;/code&gt; header that you received when you disabled the streaming distribution. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The request to delete a streaming distribution.</p>
+-- @param Id [string] <p>The distribution ID. </p>
+-- @param IfMatch [string] <p>The value of the <code>ETag</code> header that you received when you disabled the streaming distribution. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- Required parameter: Id
 function M.DeleteStreamingDistributionRequest(Id, IfMatch, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStreamingDistributionRequest")
@@ -3509,10 +3509,10 @@ function M.AssertStreamingLoggingConfig(struct)
 end
 
 --- Create a structure of type StreamingLoggingConfig
--- &lt;p&gt;A complex type that controls whether access logs are written for this streaming distribution.&lt;/p&gt;
--- @param Bucket [string] &lt;p&gt;The Amazon S3 bucket to store the access logs in, for example, &lt;code&gt;myawslogbucket.s3.amazonaws.com&lt;/code&gt;.&lt;/p&gt;
--- @param Prefix [string] &lt;p&gt;An optional string that you want CloudFront to prefix to the access log &lt;code&gt;filenames&lt;/code&gt; for this streaming distribution, for example, &lt;code&gt;myprefix/&lt;/code&gt;. If you want to enable logging, but you do not want to specify a prefix, you still must include an empty &lt;code&gt;Prefix&lt;/code&gt; element in the &lt;code&gt;Logging&lt;/code&gt; element.&lt;/p&gt;
--- @param Enabled [boolean] &lt;p&gt;Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket. If you do not want to enable logging when you create a streaming distribution or if you want to disable logging for an existing streaming distribution, specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt;, and specify &lt;code&gt;empty Bucket&lt;/code&gt; and &lt;code&gt;Prefix&lt;/code&gt; elements. If you specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt; but you specify values for &lt;code&gt;Bucket&lt;/code&gt; and &lt;code&gt;Prefix&lt;/code&gt;, the values are automatically deleted. &lt;/p&gt;
+-- <p>A complex type that controls whether access logs are written for this streaming distribution.</p>
+-- @param Bucket [string] <p>The Amazon S3 bucket to store the access logs in, for example, <code>myawslogbucket.s3.amazonaws.com</code>.</p>
+-- @param Prefix [string] <p>An optional string that you want CloudFront to prefix to the access log <code>filenames</code> for this streaming distribution, for example, <code>myprefix/</code>. If you want to enable logging, but you do not want to specify a prefix, you still must include an empty <code>Prefix</code> element in the <code>Logging</code> element.</p>
+-- @param Enabled [boolean] <p>Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket. If you do not want to enable logging when you create a streaming distribution or if you want to disable logging for an existing streaming distribution, specify <code>false</code> for <code>Enabled</code>, and specify <code>empty Bucket</code> and <code>Prefix</code> elements. If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code> and <code>Prefix</code>, the values are automatically deleted. </p>
 -- Required parameter: Enabled
 -- Required parameter: Bucket
 -- Required parameter: Prefix
@@ -3556,19 +3556,19 @@ function M.AssertCacheBehavior(struct)
 end
 
 --- Create a structure of type CacheBehavior
--- &lt;p&gt;A complex type that describes how CloudFront processes requests.&lt;/p&gt; &lt;p&gt;You must create at least as many cache behaviors (including the default cache behavior) as you have origins if you want CloudFront to distribute objects from all of the origins. Each cache behavior specifies the one origin from which you want CloudFront to get objects. If you have two origins and only the default cache behavior, the default cache behavior will cause CloudFront to get objects from one of the origins, but the other origin is never used.&lt;/p&gt; &lt;p&gt;For the current limit on the number of cache behaviors that you can add to a distribution, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront&quot;&gt;Amazon CloudFront Limits&lt;/a&gt; in the &lt;i&gt;AWS General Reference&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;If you don't want to specify any cache behaviors, include only an empty &lt;code&gt;CacheBehaviors&lt;/code&gt; element. Don't include an empty &lt;code&gt;CacheBehavior&lt;/code&gt; element, or CloudFront returns a &lt;code&gt;MalformedXML&lt;/code&gt; error.&lt;/p&gt; &lt;p&gt;To delete all cache behaviors in an existing distribution, update the distribution configuration and include only an empty &lt;code&gt;CacheBehaviors&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;To add, change, or remove one or more cache behaviors, update the distribution configuration and specify all of the cache behaviors that you want to include in the updated distribution.&lt;/p&gt; &lt;p&gt;For more information about cache behaviors, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior&quot;&gt;Cache Behaviors&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param TrustedSigners [TrustedSigners] &lt;p&gt;A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content.&lt;/p&gt; &lt;p&gt;If you want to require signed URLs in requests for objects in the target origin that match the &lt;code&gt;PathPattern&lt;/code&gt; for this cache behavior, specify &lt;code&gt;true&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt;, and specify the applicable values for &lt;code&gt;Quantity&lt;/code&gt; and &lt;code&gt;Items&lt;/code&gt;. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html&quot;&gt;Serving Private Content through CloudFront&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;If you don't want to require signed URLs in requests for objects that match &lt;code&gt;PathPattern&lt;/code&gt;, specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt; and &lt;code&gt;0&lt;/code&gt; for &lt;code&gt;Quantity&lt;/code&gt;. Omit &lt;code&gt;Items&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To add, change, or remove one or more trusted signers, change &lt;code&gt;Enabled&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; (if it's currently &lt;code&gt;false&lt;/code&gt;), change &lt;code&gt;Quantity&lt;/code&gt; as applicable, and specify all of the trusted signers that you want to include in the updated distribution.&lt;/p&gt;
--- @param LambdaFunctionAssociations [LambdaFunctionAssociations] &lt;p&gt;A complex type that contains zero or more Lambda function associations for a cache behavior.&lt;/p&gt;
--- @param TargetOriginId [string] &lt;p&gt;The value of &lt;code&gt;ID&lt;/code&gt; for the origin that you want CloudFront to route requests to when a request matches the path pattern either for a cache behavior or for the default cache behavior.&lt;/p&gt;
--- @param ViewerProtocolPolicy [ViewerProtocolPolicy] &lt;p&gt;The protocol that viewers can use to access the files in the origin specified by &lt;code&gt;TargetOriginId&lt;/code&gt; when a request matches the path pattern in &lt;code&gt;PathPattern&lt;/code&gt;. You can specify the following options:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;allow-all&lt;/code&gt;: Viewers can use HTTP or HTTPS.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;redirect-to-https&lt;/code&gt;: If a viewer submits an HTTP request, CloudFront returns an HTTP status code of 301 (Moved Permanently) to the viewer along with the HTTPS URL. The viewer then resubmits the request using the new URL. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;https-only&lt;/code&gt;: If a viewer sends an HTTP request, CloudFront returns an HTTP status code of 403 (Forbidden). &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about requiring the HTTPS protocol, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html&quot;&gt;Using an HTTPS Connection to Access Your Objects&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The only way to guarantee that viewers retrieve an object that was fetched from the origin using HTTPS is never to use any other protocol to fetch the object. If you have recently changed from HTTP to HTTPS, we recommend that you clear your objects' cache because cached objects are protocol agnostic. That means that an edge location will return an object from the cache regardless of whether the current request protocol matches the protocol used previously. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html&quot;&gt;Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param ForwardedValues [ForwardedValues] &lt;p&gt;A complex type that specifies how CloudFront handles query strings and cookies.&lt;/p&gt;
--- @param MaxTTL [long] &lt;p&gt;The maximum amount of time that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated. The value that you specify applies only when your origin adds HTTP headers such as &lt;code&gt;Cache-Control max-age&lt;/code&gt;, &lt;code&gt;Cache-Control s-maxage&lt;/code&gt;, and &lt;code&gt;Expires&lt;/code&gt; to objects. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html&quot;&gt;Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param PathPattern [string] &lt;p&gt;The pattern (for example, &lt;code&gt;images/*.jpg&lt;/code&gt;) that specifies which requests to apply the behavior to. When CloudFront receives a viewer request, the requested path is compared with path patterns in the order in which cache behaviors are listed in the distribution.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You can optionally include a slash (&lt;code&gt;/&lt;/code&gt;) at the beginning of the path pattern. For example, &lt;code&gt;/images/*.jpg&lt;/code&gt;. CloudFront behavior is the same with or without the leading &lt;code&gt;/&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;The path pattern for the default cache behavior is &lt;code&gt;*&lt;/code&gt; and cannot be changed. If the request for an object does not match the path pattern for any cache behaviors, CloudFront applies the behavior in the default cache behavior.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern&quot;&gt;Path Pattern&lt;/a&gt; in the &lt;i&gt; Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param SmoothStreaming [boolean] &lt;p&gt;Indicates whether you want to distribute media files in the Microsoft Smooth Streaming format using the origin that is associated with this cache behavior. If so, specify &lt;code&gt;true&lt;/code&gt;; if not, specify &lt;code&gt;false&lt;/code&gt;. If you specify &lt;code&gt;true&lt;/code&gt; for &lt;code&gt;SmoothStreaming&lt;/code&gt;, you can still distribute other content using this cache behavior if the content matches the value of &lt;code&gt;PathPattern&lt;/code&gt;. &lt;/p&gt;
--- @param DefaultTTL [long] &lt;p&gt;The default amount of time that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated. The value that you specify applies only when your origin does not add HTTP headers such as &lt;code&gt;Cache-Control max-age&lt;/code&gt;, &lt;code&gt;Cache-Control s-maxage&lt;/code&gt;, and &lt;code&gt;Expires&lt;/code&gt; to objects. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html&quot;&gt;Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param AllowedMethods [AllowedMethods] &lt;p&gt;A complex type that describes how CloudFront processes requests.&lt;/p&gt; &lt;p&gt;You must create at least as many cache behaviors (including the default cache behavior) as you have origins if you want CloudFront to distribute objects from all of the origins. Each cache behavior specifies the one origin from which you want CloudFront to get objects. If you have two origins and only the default cache behavior, the default cache behavior will cause CloudFront to get objects from one of the origins, but the other origin is never used.&lt;/p&gt; &lt;p&gt;For the current limit on the number of cache behaviors that you can add to a distribution, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront&quot;&gt;Amazon CloudFront Limits&lt;/a&gt; in the &lt;i&gt;AWS General Reference&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;If you don't want to specify any cache behaviors, include only an empty &lt;code&gt;CacheBehaviors&lt;/code&gt; element. Don't include an empty &lt;code&gt;CacheBehavior&lt;/code&gt; element, or CloudFront returns a &lt;code&gt;MalformedXML&lt;/code&gt; error.&lt;/p&gt; &lt;p&gt;To delete all cache behaviors in an existing distribution, update the distribution configuration and include only an empty &lt;code&gt;CacheBehaviors&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;To add, change, or remove one or more cache behaviors, update the distribution configuration and specify all of the cache behaviors that you want to include in the updated distribution.&lt;/p&gt; &lt;p&gt;For more information about cache behaviors, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior&quot;&gt;Cache Behaviors&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param MinTTL [long] &lt;p&gt;The minimum amount of time that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html&quot;&gt;Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;You must specify &lt;code&gt;0&lt;/code&gt; for &lt;code&gt;MinTTL&lt;/code&gt; if you configure CloudFront to forward all headers to your origin (under &lt;code&gt;Headers&lt;/code&gt;, if you specify &lt;code&gt;1&lt;/code&gt; for &lt;code&gt;Quantity&lt;/code&gt; and &lt;code&gt;*&lt;/code&gt; for &lt;code&gt;Name&lt;/code&gt;).&lt;/p&gt;
--- @param Compress [boolean] &lt;p&gt;Whether you want CloudFront to automatically compress certain files for this cache behavior. If so, specify true; if not, specify false. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html&quot;&gt;Serving Compressed Files&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>A complex type that describes how CloudFront processes requests.</p> <p>You must create at least as many cache behaviors (including the default cache behavior) as you have origins if you want CloudFront to distribute objects from all of the origins. Each cache behavior specifies the one origin from which you want CloudFront to get objects. If you have two origins and only the default cache behavior, the default cache behavior will cause CloudFront to get objects from one of the origins, but the other origin is never used.</p> <p>For the current limit on the number of cache behaviors that you can add to a distribution, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront">Amazon CloudFront Limits</a> in the <i>AWS General Reference</i>.</p> <p>If you don't want to specify any cache behaviors, include only an empty <code>CacheBehaviors</code> element. Don't include an empty <code>CacheBehavior</code> element, or CloudFront returns a <code>MalformedXML</code> error.</p> <p>To delete all cache behaviors in an existing distribution, update the distribution configuration and include only an empty <code>CacheBehaviors</code> element.</p> <p>To add, change, or remove one or more cache behaviors, update the distribution configuration and specify all of the cache behaviors that you want to include in the updated distribution.</p> <p>For more information about cache behaviors, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior">Cache Behaviors</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param TrustedSigners [TrustedSigners] <p>A complex type that specifies the AWS accounts, if any, that you want to allow to create signed URLs for private content.</p> <p>If you want to require signed URLs in requests for objects in the target origin that match the <code>PathPattern</code> for this cache behavior, specify <code>true</code> for <code>Enabled</code>, and specify the applicable values for <code>Quantity</code> and <code>Items</code>. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">Serving Private Content through CloudFront</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p> <p>If you don't want to require signed URLs in requests for objects that match <code>PathPattern</code>, specify <code>false</code> for <code>Enabled</code> and <code>0</code> for <code>Quantity</code>. Omit <code>Items</code>.</p> <p>To add, change, or remove one or more trusted signers, change <code>Enabled</code> to <code>true</code> (if it's currently <code>false</code>), change <code>Quantity</code> as applicable, and specify all of the trusted signers that you want to include in the updated distribution.</p>
+-- @param LambdaFunctionAssociations [LambdaFunctionAssociations] <p>A complex type that contains zero or more Lambda function associations for a cache behavior.</p>
+-- @param TargetOriginId [string] <p>The value of <code>ID</code> for the origin that you want CloudFront to route requests to when a request matches the path pattern either for a cache behavior or for the default cache behavior.</p>
+-- @param ViewerProtocolPolicy [ViewerProtocolPolicy] <p>The protocol that viewers can use to access the files in the origin specified by <code>TargetOriginId</code> when a request matches the path pattern in <code>PathPattern</code>. You can specify the following options:</p> <ul> <li> <p> <code>allow-all</code>: Viewers can use HTTP or HTTPS.</p> </li> <li> <p> <code>redirect-to-https</code>: If a viewer submits an HTTP request, CloudFront returns an HTTP status code of 301 (Moved Permanently) to the viewer along with the HTTPS URL. The viewer then resubmits the request using the new URL. </p> </li> <li> <p> <code>https-only</code>: If a viewer sends an HTTP request, CloudFront returns an HTTP status code of 403 (Forbidden). </p> </li> </ul> <p>For more information about requiring the HTTPS protocol, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/SecureConnections.html">Using an HTTPS Connection to Access Your Objects</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> <note> <p>The only way to guarantee that viewers retrieve an object that was fetched from the origin using HTTPS is never to use any other protocol to fetch the object. If you have recently changed from HTTP to HTTPS, we recommend that you clear your objects' cache because cached objects are protocol agnostic. That means that an edge location will return an object from the cache regardless of whether the current request protocol matches the protocol used previously. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html">Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> </note>
+-- @param ForwardedValues [ForwardedValues] <p>A complex type that specifies how CloudFront handles query strings and cookies.</p>
+-- @param MaxTTL [long] <p>The maximum amount of time that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated. The value that you specify applies only when your origin adds HTTP headers such as <code>Cache-Control max-age</code>, <code>Cache-Control s-maxage</code>, and <code>Expires</code> to objects. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html">Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param PathPattern [string] <p>The pattern (for example, <code>images/*.jpg</code>) that specifies which requests to apply the behavior to. When CloudFront receives a viewer request, the requested path is compared with path patterns in the order in which cache behaviors are listed in the distribution.</p> <note> <p>You can optionally include a slash (<code>/</code>) at the beginning of the path pattern. For example, <code>/images/*.jpg</code>. CloudFront behavior is the same with or without the leading <code>/</code>.</p> </note> <p>The path pattern for the default cache behavior is <code>*</code> and cannot be changed. If the request for an object does not match the path pattern for any cache behaviors, CloudFront applies the behavior in the default cache behavior.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesPathPattern">Path Pattern</a> in the <i> Amazon CloudFront Developer Guide</i>.</p>
+-- @param SmoothStreaming [boolean] <p>Indicates whether you want to distribute media files in the Microsoft Smooth Streaming format using the origin that is associated with this cache behavior. If so, specify <code>true</code>; if not, specify <code>false</code>. If you specify <code>true</code> for <code>SmoothStreaming</code>, you can still distribute other content using this cache behavior if the content matches the value of <code>PathPattern</code>. </p>
+-- @param DefaultTTL [long] <p>The default amount of time that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated. The value that you specify applies only when your origin does not add HTTP headers such as <code>Cache-Control max-age</code>, <code>Cache-Control s-maxage</code>, and <code>Expires</code> to objects. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html">Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param AllowedMethods [AllowedMethods] <p>A complex type that describes how CloudFront processes requests.</p> <p>You must create at least as many cache behaviors (including the default cache behavior) as you have origins if you want CloudFront to distribute objects from all of the origins. Each cache behavior specifies the one origin from which you want CloudFront to get objects. If you have two origins and only the default cache behavior, the default cache behavior will cause CloudFront to get objects from one of the origins, but the other origin is never used.</p> <p>For the current limit on the number of cache behaviors that you can add to a distribution, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront">Amazon CloudFront Limits</a> in the <i>AWS General Reference</i>.</p> <p>If you don't want to specify any cache behaviors, include only an empty <code>CacheBehaviors</code> element. Don't include an empty <code>CacheBehavior</code> element, or CloudFront returns a <code>MalformedXML</code> error.</p> <p>To delete all cache behaviors in an existing distribution, update the distribution configuration and include only an empty <code>CacheBehaviors</code> element.</p> <p>To add, change, or remove one or more cache behaviors, update the distribution configuration and specify all of the cache behaviors that you want to include in the updated distribution.</p> <p>For more information about cache behaviors, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior">Cache Behaviors</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param MinTTL [long] <p>The minimum amount of time that you want objects to stay in CloudFront caches before CloudFront forwards another request to your origin to determine whether the object has been updated. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html">Specifying How Long Objects and Errors Stay in a CloudFront Edge Cache (Expiration)</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p> <p>You must specify <code>0</code> for <code>MinTTL</code> if you configure CloudFront to forward all headers to your origin (under <code>Headers</code>, if you specify <code>1</code> for <code>Quantity</code> and <code>*</code> for <code>Name</code>).</p>
+-- @param Compress [boolean] <p>Whether you want CloudFront to automatically compress certain files for this cache behavior. If so, specify true; if not, specify false. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html">Serving Compressed Files</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
 -- Required parameter: PathPattern
 -- Required parameter: TargetOriginId
 -- Required parameter: ForwardedValues
@@ -3633,9 +3633,9 @@ function M.AssertS3Origin(struct)
 end
 
 --- Create a structure of type S3Origin
--- &lt;p&gt;A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution.&lt;/p&gt;
--- @param OriginAccessIdentity [string] &lt;p&gt;The CloudFront origin access identity to associate with the RTMP distribution. Use an origin access identity to configure the distribution so that end users can only access objects in an Amazon S3 bucket through CloudFront.&lt;/p&gt; &lt;p&gt;If you want end users to be able to access objects using either the CloudFront URL or the Amazon S3 URL, specify an empty &lt;code&gt;OriginAccessIdentity&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;To delete the origin access identity from an existing distribution, update the distribution configuration and include an empty &lt;code&gt;OriginAccessIdentity&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;To replace the origin access identity, update the distribution configuration and specify the new origin access identity.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html&quot;&gt;Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content&lt;/a&gt; in the &lt;i&gt;Amazon Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param DomainName [string] &lt;p&gt;The DNS name of the Amazon S3 origin. &lt;/p&gt;
+-- <p>A complex type that contains information about the Amazon S3 bucket from which you want CloudFront to get your media files for distribution.</p>
+-- @param OriginAccessIdentity [string] <p>The CloudFront origin access identity to associate with the RTMP distribution. Use an origin access identity to configure the distribution so that end users can only access objects in an Amazon S3 bucket through CloudFront.</p> <p>If you want end users to be able to access objects using either the CloudFront URL or the Amazon S3 URL, specify an empty <code>OriginAccessIdentity</code> element.</p> <p>To delete the origin access identity from an existing distribution, update the distribution configuration and include an empty <code>OriginAccessIdentity</code> element.</p> <p>To replace the origin access identity, update the distribution configuration and specify the new origin access identity.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html">Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content</a> in the <i>Amazon Amazon CloudFront Developer Guide</i>.</p>
+-- @param DomainName [string] <p>The DNS name of the Amazon S3 origin. </p>
 -- Required parameter: DomainName
 -- Required parameter: OriginAccessIdentity
 function M.S3Origin(OriginAccessIdentity, DomainName, ...)
@@ -3662,9 +3662,9 @@ function M.AssertPaths(struct)
 end
 
 --- Create a structure of type Paths
--- &lt;p&gt;A complex type that contains information about the objects that you want to invalidate. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#invalidation-specifying-objects&quot;&gt;Specifying the Objects to Invalidate&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;. &lt;/p&gt;
--- @param Items [PathList] &lt;p&gt;A complex type that contains a list of the paths that you want to invalidate.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of objects that you want to invalidate.&lt;/p&gt;
+-- <p>A complex type that contains information about the objects that you want to invalidate. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#invalidation-specifying-objects">Specifying the Objects to Invalidate</a> in the <i>Amazon CloudFront Developer Guide</i>. </p>
+-- @param Items [PathList] <p>A complex type that contains a list of the paths that you want to invalidate.</p>
+-- @param Quantity [integer] <p>The number of objects that you want to invalidate.</p>
 -- Required parameter: Quantity
 function M.Paths(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Paths")
@@ -3689,9 +3689,9 @@ function M.AssertUpdateDistributionResult(struct)
 end
 
 --- Create a structure of type UpdateDistributionResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param Distribution [Distribution] &lt;p&gt;The distribution's information.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the configuration. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param Distribution [Distribution] <p>The distribution's information.</p>
+-- @param ETag [string] <p>The current version of the configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 function M.UpdateDistributionResult(Distribution, ETag, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDistributionResult")
 	local t = { 
@@ -3716,9 +3716,9 @@ function M.AssertKeyPairIds(struct)
 end
 
 --- Create a structure of type KeyPairIds
--- &lt;p&gt;A complex type that lists the active CloudFront key pairs, if any, that are associated with &lt;code&gt;AwsAccountNumber&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;For more information, see &lt;a&gt;ActiveTrustedSigners&lt;/a&gt;.&lt;/p&gt;
--- @param Items [KeyPairIdList] &lt;p&gt;A complex type that lists the active CloudFront key pairs, if any, that are associated with &lt;code&gt;AwsAccountNumber&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a&gt;ActiveTrustedSigners&lt;/a&gt;.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of active CloudFront key pairs for &lt;code&gt;AwsAccountNumber&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a&gt;ActiveTrustedSigners&lt;/a&gt;.&lt;/p&gt;
+-- <p>A complex type that lists the active CloudFront key pairs, if any, that are associated with <code>AwsAccountNumber</code>. </p> <p>For more information, see <a>ActiveTrustedSigners</a>.</p>
+-- @param Items [KeyPairIdList] <p>A complex type that lists the active CloudFront key pairs, if any, that are associated with <code>AwsAccountNumber</code>.</p> <p>For more information, see <a>ActiveTrustedSigners</a>.</p>
+-- @param Quantity [integer] <p>The number of active CloudFront key pairs for <code>AwsAccountNumber</code>.</p> <p>For more information, see <a>ActiveTrustedSigners</a>.</p>
 -- Required parameter: Quantity
 function M.KeyPairIds(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KeyPairIds")
@@ -3742,8 +3742,8 @@ function M.AssertTooManyCookieNamesInWhiteList(struct)
 end
 
 --- Create a structure of type TooManyCookieNamesInWhiteList
--- &lt;p&gt;Your request contains more cookie names in the whitelist than are allowed per cache behavior.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;Your request contains more cookie names in the whitelist than are allowed per cache behavior.&lt;/p&gt;
+-- <p>Your request contains more cookie names in the whitelist than are allowed per cache behavior.</p>
+-- @param Message [string] <p>Your request contains more cookie names in the whitelist than are allowed per cache behavior.</p>
 function M.TooManyCookieNamesInWhiteList(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyCookieNamesInWhiteList")
 	local t = { 
@@ -3767,10 +3767,10 @@ function M.AssertCreateDistributionWithTagsResult(struct)
 end
 
 --- Create a structure of type CreateDistributionWithTagsResult
--- &lt;p&gt;The returned result of the corresponding request. &lt;/p&gt;
--- @param Distribution [Distribution] &lt;p&gt;The distribution's information. &lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the distribution created.&lt;/p&gt;
--- @param Location [string] &lt;p&gt;The fully qualified URI of the new distribution resource just created. For example: &lt;code&gt;https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5&lt;/code&gt;. &lt;/p&gt;
+-- <p>The returned result of the corresponding request. </p>
+-- @param Distribution [Distribution] <p>The distribution's information. </p>
+-- @param ETag [string] <p>The current version of the distribution created.</p>
+-- @param Location [string] <p>The fully qualified URI of the new distribution resource just created. For example: <code>https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5</code>. </p>
 function M.CreateDistributionWithTagsResult(Distribution, ETag, Location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDistributionWithTagsResult")
 	local t = { 
@@ -3796,10 +3796,10 @@ function M.AssertCreateCloudFrontOriginAccessIdentityResult(struct)
 end
 
 --- Create a structure of type CreateCloudFrontOriginAccessIdentityResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param CloudFrontOriginAccessIdentity [CloudFrontOriginAccessIdentity] &lt;p&gt;The origin access identity's information.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the origin access identity created.&lt;/p&gt;
--- @param Location [string] &lt;p&gt;The fully qualified URI of the new origin access identity just created. For example: &lt;code&gt;https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A&lt;/code&gt;.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param CloudFrontOriginAccessIdentity [CloudFrontOriginAccessIdentity] <p>The origin access identity's information.</p>
+-- @param ETag [string] <p>The current version of the origin access identity created.</p>
+-- @param Location [string] <p>The fully qualified URI of the new origin access identity just created. For example: <code>https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A</code>.</p>
 function M.CreateCloudFrontOriginAccessIdentityResult(CloudFrontOriginAccessIdentity, ETag, Location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCloudFrontOriginAccessIdentityResult")
 	local t = { 
@@ -3826,8 +3826,8 @@ end
 
 --- Create a structure of type QueryStringCacheKeys
 --  
--- @param Items [QueryStringCacheKeysList] &lt;p&gt;(Optional) A list that contains the query string parameters that you want CloudFront to use as a basis for caching for this cache behavior. If &lt;code&gt;Quantity&lt;/code&gt; is 0, you can omit &lt;code&gt;Items&lt;/code&gt;. &lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of &lt;code&gt;whitelisted&lt;/code&gt; query string parameters for this cache behavior.&lt;/p&gt;
+-- @param Items [QueryStringCacheKeysList] <p>(Optional) A list that contains the query string parameters that you want CloudFront to use as a basis for caching for this cache behavior. If <code>Quantity</code> is 0, you can omit <code>Items</code>. </p>
+-- @param Quantity [integer] <p>The number of <code>whitelisted</code> query string parameters for this cache behavior.</p>
 -- Required parameter: Quantity
 function M.QueryStringCacheKeys(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QueryStringCacheKeys")
@@ -3851,8 +3851,8 @@ function M.AssertIllegalUpdate(struct)
 end
 
 --- Create a structure of type IllegalUpdate
--- &lt;p&gt;Origin and &lt;code&gt;CallerReference&lt;/code&gt; cannot be updated. &lt;/p&gt;
--- @param Message [string] &lt;p&gt;Origin and &lt;code&gt;CallerReference&lt;/code&gt; cannot be updated. &lt;/p&gt;
+-- <p>Origin and <code>CallerReference</code> cannot be updated. </p>
+-- @param Message [string] <p>Origin and <code>CallerReference</code> cannot be updated. </p>
 function M.IllegalUpdate(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IllegalUpdate")
 	local t = { 
@@ -3876,9 +3876,9 @@ function M.AssertCustomHeaders(struct)
 end
 
 --- Create a structure of type CustomHeaders
--- &lt;p&gt;A complex type that contains the list of Custom Headers for each origin. &lt;/p&gt;
--- @param Items [OriginCustomHeadersList] &lt;p&gt; &lt;b&gt;Optional&lt;/b&gt;: A list that contains one &lt;code&gt;OriginCustomHeader&lt;/code&gt; element for each custom header that you want CloudFront to forward to the origin. If Quantity is &lt;code&gt;0&lt;/code&gt;, omit &lt;code&gt;Items&lt;/code&gt;.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;The number of custom headers, if any, for this distribution.&lt;/p&gt;
+-- <p>A complex type that contains the list of Custom Headers for each origin. </p>
+-- @param Items [OriginCustomHeadersList] <p> <b>Optional</b>: A list that contains one <code>OriginCustomHeader</code> element for each custom header that you want CloudFront to forward to the origin. If Quantity is <code>0</code>, omit <code>Items</code>.</p>
+-- @param Quantity [integer] <p>The number of custom headers, if any, for this distribution.</p>
 -- Required parameter: Quantity
 function M.CustomHeaders(Items, Quantity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CustomHeaders")
@@ -3903,8 +3903,8 @@ function M.AssertGetStreamingDistributionRequest(struct)
 end
 
 --- Create a structure of type GetStreamingDistributionRequest
--- &lt;p&gt;The request to get a streaming distribution's information.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The streaming distribution's ID.&lt;/p&gt;
+-- <p>The request to get a streaming distribution's information.</p>
+-- @param Id [string] <p>The streaming distribution's ID.</p>
 -- Required parameter: Id
 function M.GetStreamingDistributionRequest(Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStreamingDistributionRequest")
@@ -3931,10 +3931,10 @@ function M.AssertActiveTrustedSigners(struct)
 end
 
 --- Create a structure of type ActiveTrustedSigners
--- &lt;p&gt;A complex type that lists the AWS accounts, if any, that you included in the &lt;code&gt;TrustedSigners&lt;/code&gt; complex type for this distribution. These are the accounts that you want to allow to create signed URLs for private content.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;Signer&lt;/code&gt; complex type lists the AWS account number of the trusted signer or &lt;code&gt;self&lt;/code&gt; if the signer is the AWS account that created the distribution. The &lt;code&gt;Signer&lt;/code&gt; element also includes the IDs of any active CloudFront key pairs that are associated with the trusted signer's AWS account. If no &lt;code&gt;KeyPairId&lt;/code&gt; element appears for a &lt;code&gt;Signer&lt;/code&gt;, that signer can't create signed URLs. &lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html&quot;&gt;Serving Private Content through CloudFront&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Items [SignerList] &lt;p&gt;A complex type that contains one &lt;code&gt;Signer&lt;/code&gt; complex type for each trusted signer that is specified in the &lt;code&gt;TrustedSigners&lt;/code&gt; complex type.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a&gt;ActiveTrustedSigners&lt;/a&gt;. &lt;/p&gt;
--- @param Enabled [boolean] &lt;p&gt;Enabled is &lt;code&gt;true&lt;/code&gt; if any of the AWS accounts listed in the &lt;code&gt;TrustedSigners&lt;/code&gt; complex type for this RTMP distribution have active CloudFront key pairs. If not, &lt;code&gt;Enabled&lt;/code&gt; is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a&gt;ActiveTrustedSigners&lt;/a&gt;.&lt;/p&gt;
--- @param Quantity [integer] &lt;p&gt;A complex type that contains one &lt;code&gt;Signer&lt;/code&gt; complex type for each trusted signer specified in the &lt;code&gt;TrustedSigners&lt;/code&gt; complex type.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a&gt;ActiveTrustedSigners&lt;/a&gt;.&lt;/p&gt;
+-- <p>A complex type that lists the AWS accounts, if any, that you included in the <code>TrustedSigners</code> complex type for this distribution. These are the accounts that you want to allow to create signed URLs for private content.</p> <p>The <code>Signer</code> complex type lists the AWS account number of the trusted signer or <code>self</code> if the signer is the AWS account that created the distribution. The <code>Signer</code> element also includes the IDs of any active CloudFront key pairs that are associated with the trusted signer's AWS account. If no <code>KeyPairId</code> element appears for a <code>Signer</code>, that signer can't create signed URLs. </p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">Serving Private Content through CloudFront</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param Items [SignerList] <p>A complex type that contains one <code>Signer</code> complex type for each trusted signer that is specified in the <code>TrustedSigners</code> complex type.</p> <p>For more information, see <a>ActiveTrustedSigners</a>. </p>
+-- @param Enabled [boolean] <p>Enabled is <code>true</code> if any of the AWS accounts listed in the <code>TrustedSigners</code> complex type for this RTMP distribution have active CloudFront key pairs. If not, <code>Enabled</code> is <code>false</code>.</p> <p>For more information, see <a>ActiveTrustedSigners</a>.</p>
+-- @param Quantity [integer] <p>A complex type that contains one <code>Signer</code> complex type for each trusted signer specified in the <code>TrustedSigners</code> complex type.</p> <p>For more information, see <a>ActiveTrustedSigners</a>.</p>
 -- Required parameter: Enabled
 -- Required parameter: Quantity
 function M.ActiveTrustedSigners(Items, Enabled, Quantity, ...)
@@ -3960,8 +3960,8 @@ function M.AssertTooManyCloudFrontOriginAccessIdentities(struct)
 end
 
 --- Create a structure of type TooManyCloudFrontOriginAccessIdentities
--- &lt;p&gt;Processing your request would cause you to exceed the maximum number of origin access identities allowed.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;Processing your request would cause you to exceed the maximum number of origin access identities allowed.&lt;/p&gt;
+-- <p>Processing your request would cause you to exceed the maximum number of origin access identities allowed.</p>
+-- @param Message [string] <p>Processing your request would cause you to exceed the maximum number of origin access identities allowed.</p>
 function M.TooManyCloudFrontOriginAccessIdentities(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyCloudFrontOriginAccessIdentities")
 	local t = { 
@@ -3984,8 +3984,8 @@ function M.AssertCreateStreamingDistributionWithTagsRequest(struct)
 end
 
 --- Create a structure of type CreateStreamingDistributionWithTagsRequest
--- &lt;p&gt;The request to create a new streaming distribution with tags.&lt;/p&gt;
--- @param StreamingDistributionConfigWithTags [StreamingDistributionConfigWithTags] &lt;p&gt; The streaming distribution's configuration information. &lt;/p&gt;
+-- <p>The request to create a new streaming distribution with tags.</p>
+-- @param StreamingDistributionConfigWithTags [StreamingDistributionConfigWithTags] <p> The streaming distribution's configuration information. </p>
 -- Required parameter: StreamingDistributionConfigWithTags
 function M.CreateStreamingDistributionWithTagsRequest(StreamingDistributionConfigWithTags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamingDistributionWithTagsRequest")
@@ -4008,8 +4008,8 @@ function M.AssertAccessDenied(struct)
 end
 
 --- Create a structure of type AccessDenied
--- &lt;p&gt;Access denied.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;Access denied.&lt;/p&gt;
+-- <p>Access denied.</p>
+-- @param Message [string] <p>Access denied.</p>
 function M.AccessDenied(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessDenied")
 	local t = { 
@@ -4038,11 +4038,11 @@ function M.AssertLoggingConfig(struct)
 end
 
 --- Create a structure of type LoggingConfig
--- &lt;p&gt;A complex type that controls whether access logs are written for the distribution.&lt;/p&gt;
--- @param Bucket [string] &lt;p&gt;The Amazon S3 bucket to store the access logs in, for example, &lt;code&gt;myawslogbucket.s3.amazonaws.com&lt;/code&gt;.&lt;/p&gt;
--- @param Prefix [string] &lt;p&gt;An optional string that you want CloudFront to prefix to the access log &lt;code&gt;filenames&lt;/code&gt; for this distribution, for example, &lt;code&gt;myprefix/&lt;/code&gt;. If you want to enable logging, but you do not want to specify a prefix, you still must include an empty &lt;code&gt;Prefix&lt;/code&gt; element in the &lt;code&gt;Logging&lt;/code&gt; element.&lt;/p&gt;
--- @param Enabled [boolean] &lt;p&gt;Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket. If you do not want to enable logging when you create a distribution or if you want to disable logging for an existing distribution, specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt;, and specify empty &lt;code&gt;Bucket&lt;/code&gt; and &lt;code&gt;Prefix&lt;/code&gt; elements. If you specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;Enabled&lt;/code&gt; but you specify values for &lt;code&gt;Bucket&lt;/code&gt;, &lt;code&gt;prefix&lt;/code&gt;, and &lt;code&gt;IncludeCookies&lt;/code&gt;, the values are automatically deleted.&lt;/p&gt;
--- @param IncludeCookies [boolean] &lt;p&gt;Specifies whether you want CloudFront to include cookies in access logs, specify &lt;code&gt;true&lt;/code&gt; for &lt;code&gt;IncludeCookies&lt;/code&gt;. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you do not want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify &lt;code&gt;false&lt;/code&gt; for &lt;code&gt;IncludeCookies&lt;/code&gt;.&lt;/p&gt;
+-- <p>A complex type that controls whether access logs are written for the distribution.</p>
+-- @param Bucket [string] <p>The Amazon S3 bucket to store the access logs in, for example, <code>myawslogbucket.s3.amazonaws.com</code>.</p>
+-- @param Prefix [string] <p>An optional string that you want CloudFront to prefix to the access log <code>filenames</code> for this distribution, for example, <code>myprefix/</code>. If you want to enable logging, but you do not want to specify a prefix, you still must include an empty <code>Prefix</code> element in the <code>Logging</code> element.</p>
+-- @param Enabled [boolean] <p>Specifies whether you want CloudFront to save access logs to an Amazon S3 bucket. If you do not want to enable logging when you create a distribution or if you want to disable logging for an existing distribution, specify <code>false</code> for <code>Enabled</code>, and specify empty <code>Bucket</code> and <code>Prefix</code> elements. If you specify <code>false</code> for <code>Enabled</code> but you specify values for <code>Bucket</code>, <code>prefix</code>, and <code>IncludeCookies</code>, the values are automatically deleted.</p>
+-- @param IncludeCookies [boolean] <p>Specifies whether you want CloudFront to include cookies in access logs, specify <code>true</code> for <code>IncludeCookies</code>. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you do not want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify <code>false</code> for <code>IncludeCookies</code>.</p>
 -- Required parameter: Enabled
 -- Required parameter: IncludeCookies
 -- Required parameter: Bucket
@@ -4076,11 +4076,11 @@ function M.AssertForwardedValues(struct)
 end
 
 --- Create a structure of type ForwardedValues
--- &lt;p&gt;A complex type that specifies how CloudFront handles query strings and cookies.&lt;/p&gt;
--- @param Headers [Headers] &lt;p&gt;A complex type that specifies the &lt;code&gt;Headers&lt;/code&gt;, if any, that you want CloudFront to vary upon for this cache behavior. &lt;/p&gt;
--- @param Cookies [CookiePreference] &lt;p&gt;A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so, which ones. For more information about forwarding cookies to the origin, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html&quot;&gt;How CloudFront Forwards, Caches, and Logs Cookies&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param QueryStringCacheKeys [QueryStringCacheKeys] &lt;p&gt;A complex type that contains information about the query string parameters that you want CloudFront to use for caching for this cache behavior.&lt;/p&gt;
--- @param QueryString [boolean] &lt;p&gt;Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache behavior and cache based on the query string parameters. CloudFront behavior depends on the value of &lt;code&gt;QueryString&lt;/code&gt; and on the values that you specify for &lt;code&gt;QueryStringCacheKeys&lt;/code&gt;, if any:&lt;/p&gt; &lt;p&gt;If you specify true for &lt;code&gt;QueryString&lt;/code&gt; and you don't specify any values for &lt;code&gt;QueryStringCacheKeys&lt;/code&gt;, CloudFront forwards all query string parameters to the origin and caches based on all query string parameters. Depending on how many query string parameters and values you have, this can adversely affect performance because CloudFront must forward more requests to the origin.&lt;/p&gt; &lt;p&gt;If you specify true for &lt;code&gt;QueryString&lt;/code&gt; and you specify one or more values for &lt;code&gt;QueryStringCacheKeys&lt;/code&gt;, CloudFront forwards all query string parameters to the origin, but it only caches based on the query string parameters that you specify.&lt;/p&gt; &lt;p&gt;If you specify false for &lt;code&gt;QueryString&lt;/code&gt;, CloudFront doesn't forward any query string parameters to the origin, and doesn't cache based on query string parameters.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html&quot;&gt;Configuring CloudFront to Cache Based on Query String Parameters&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>A complex type that specifies how CloudFront handles query strings and cookies.</p>
+-- @param Headers [Headers] <p>A complex type that specifies the <code>Headers</code>, if any, that you want CloudFront to vary upon for this cache behavior. </p>
+-- @param Cookies [CookiePreference] <p>A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so, which ones. For more information about forwarding cookies to the origin, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">How CloudFront Forwards, Caches, and Logs Cookies</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param QueryStringCacheKeys [QueryStringCacheKeys] <p>A complex type that contains information about the query string parameters that you want CloudFront to use for caching for this cache behavior.</p>
+-- @param QueryString [boolean] <p>Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache behavior and cache based on the query string parameters. CloudFront behavior depends on the value of <code>QueryString</code> and on the values that you specify for <code>QueryStringCacheKeys</code>, if any:</p> <p>If you specify true for <code>QueryString</code> and you don't specify any values for <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin and caches based on all query string parameters. Depending on how many query string parameters and values you have, this can adversely affect performance because CloudFront must forward more requests to the origin.</p> <p>If you specify true for <code>QueryString</code> and you specify one or more values for <code>QueryStringCacheKeys</code>, CloudFront forwards all query string parameters to the origin, but it only caches based on the query string parameters that you specify.</p> <p>If you specify false for <code>QueryString</code>, CloudFront doesn't forward any query string parameters to the origin, and doesn't cache based on query string parameters.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html">Configuring CloudFront to Cache Based on Query String Parameters</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
 -- Required parameter: QueryString
 -- Required parameter: Cookies
 function M.ForwardedValues(Headers, Cookies, QueryStringCacheKeys, QueryString, ...)
@@ -4107,8 +4107,8 @@ function M.AssertTooManyTrustedSigners(struct)
 end
 
 --- Create a structure of type TooManyTrustedSigners
--- &lt;p&gt;Your request contains more trusted signers than are allowed per distribution.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;Your request contains more trusted signers than are allowed per distribution.&lt;/p&gt;
+-- <p>Your request contains more trusted signers than are allowed per distribution.</p>
+-- @param Message [string] <p>Your request contains more trusted signers than are allowed per distribution.</p>
 function M.TooManyTrustedSigners(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTrustedSigners")
 	local t = { 
@@ -4133,10 +4133,10 @@ function M.AssertListInvalidationsRequest(struct)
 end
 
 --- Create a structure of type ListInvalidationsRequest
--- &lt;p&gt;The request to list invalidations. &lt;/p&gt;
--- @param Marker [string] &lt;p&gt;Use this parameter when paginating results to indicate where to begin in your list of invalidation batches. Because the results are returned in decreasing order from most recent to oldest, the most recent results are on the first page, the second page will contain earlier results, and so on. To get the next page of results, set &lt;code&gt;Marker&lt;/code&gt; to the value of the &lt;code&gt;NextMarker&lt;/code&gt; from the current page's response. This value is the same as the ID of the last invalidation batch on that page. &lt;/p&gt;
--- @param DistributionId [string] &lt;p&gt;The distribution's ID.&lt;/p&gt;
--- @param MaxItems [string] &lt;p&gt;The maximum number of invalidation batches that you want in the response body.&lt;/p&gt;
+-- <p>The request to list invalidations. </p>
+-- @param Marker [string] <p>Use this parameter when paginating results to indicate where to begin in your list of invalidation batches. Because the results are returned in decreasing order from most recent to oldest, the most recent results are on the first page, the second page will contain earlier results, and so on. To get the next page of results, set <code>Marker</code> to the value of the <code>NextMarker</code> from the current page's response. This value is the same as the ID of the last invalidation batch on that page. </p>
+-- @param DistributionId [string] <p>The distribution's ID.</p>
+-- @param MaxItems [string] <p>The maximum number of invalidation batches that you want in the response body.</p>
 -- Required parameter: DistributionId
 function M.ListInvalidationsRequest(Marker, DistributionId, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListInvalidationsRequest")
@@ -4188,10 +4188,10 @@ function M.AssertUpdateCloudFrontOriginAccessIdentityRequest(struct)
 end
 
 --- Create a structure of type UpdateCloudFrontOriginAccessIdentityRequest
--- &lt;p&gt;The request to update an origin access identity.&lt;/p&gt;
--- @param CloudFrontOriginAccessIdentityConfig [CloudFrontOriginAccessIdentityConfig] &lt;p&gt;The identity's configuration information.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The identity's id.&lt;/p&gt;
--- @param IfMatch [string] &lt;p&gt;The value of the &lt;code&gt;ETag&lt;/code&gt; header that you received when retrieving the identity's configuration. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The request to update an origin access identity.</p>
+-- @param CloudFrontOriginAccessIdentityConfig [CloudFrontOriginAccessIdentityConfig] <p>The identity's configuration information.</p>
+-- @param Id [string] <p>The identity's id.</p>
+-- @param IfMatch [string] <p>The value of the <code>ETag</code> header that you received when retrieving the identity's configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- Required parameter: CloudFrontOriginAccessIdentityConfig
 -- Required parameter: Id
 function M.UpdateCloudFrontOriginAccessIdentityRequest(CloudFrontOriginAccessIdentityConfig, Id, IfMatch, ...)
@@ -4241,9 +4241,9 @@ function M.AssertLambdaFunctionAssociation(struct)
 end
 
 --- Create a structure of type LambdaFunctionAssociation
--- &lt;p&gt;A complex type that contains a Lambda function association.&lt;/p&gt;
--- @param EventType [EventType] &lt;p&gt;Specifies the event type that triggers a Lambda function invocation. Valid values are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;viewer-request&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;origin-request&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;viewer-response&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;origin-response&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param LambdaFunctionARN [string] &lt;p&gt;The ARN of the Lambda function.&lt;/p&gt;
+-- <p>A complex type that contains a Lambda function association.</p>
+-- @param EventType [EventType] <p>Specifies the event type that triggers a Lambda function invocation. Valid values are:</p> <ul> <li> <p> <code>viewer-request</code> </p> </li> <li> <p> <code>origin-request</code> </p> </li> <li> <p> <code>viewer-response</code> </p> </li> <li> <p> <code>origin-response</code> </p> </li> </ul>
+-- @param LambdaFunctionARN [string] <p>The ARN of the Lambda function.</p>
 function M.LambdaFunctionAssociation(EventType, LambdaFunctionARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionAssociation")
 	local t = { 
@@ -4269,9 +4269,9 @@ function M.AssertStreamingDistributionConfigWithTags(struct)
 end
 
 --- Create a structure of type StreamingDistributionConfigWithTags
--- &lt;p&gt;A streaming distribution Configuration and a list of tags to be associated with the streaming distribution.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;A complex type that contains zero or more &lt;code&gt;Tag&lt;/code&gt; elements.&lt;/p&gt;
--- @param StreamingDistributionConfig [StreamingDistributionConfig] &lt;p&gt;A streaming distribution Configuration.&lt;/p&gt;
+-- <p>A streaming distribution Configuration and a list of tags to be associated with the streaming distribution.</p>
+-- @param Tags [Tags] <p>A complex type that contains zero or more <code>Tag</code> elements.</p>
+-- @param StreamingDistributionConfig [StreamingDistributionConfig] <p>A streaming distribution Configuration.</p>
 -- Required parameter: StreamingDistributionConfig
 -- Required parameter: Tags
 function M.StreamingDistributionConfigWithTags(Tags, StreamingDistributionConfig, ...)
@@ -4297,9 +4297,9 @@ function M.AssertUpdateStreamingDistributionResult(struct)
 end
 
 --- Create a structure of type UpdateStreamingDistributionResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param StreamingDistribution [StreamingDistribution] &lt;p&gt;The streaming distribution's information.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the configuration. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param StreamingDistribution [StreamingDistribution] <p>The streaming distribution's information.</p>
+-- @param ETag [string] <p>The current version of the configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 function M.UpdateStreamingDistributionResult(StreamingDistribution, ETag, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStreamingDistributionResult")
 	local t = { 
@@ -4324,9 +4324,9 @@ function M.AssertDeleteDistributionRequest(struct)
 end
 
 --- Create a structure of type DeleteDistributionRequest
--- &lt;p&gt;This action deletes a web distribution. To delete a web distribution using the CloudFront API, perform the following steps.&lt;/p&gt; &lt;p&gt; &lt;b&gt;To delete a web distribution using the CloudFront API:&lt;/b&gt; &lt;/p&gt; &lt;ol&gt; &lt;li&gt; &lt;p&gt;Disable the web distribution &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Submit a &lt;code&gt;GET Distribution Config&lt;/code&gt; request to get the current configuration and the &lt;code&gt;Etag&lt;/code&gt; header for the distribution.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Update the XML document that was returned in the response to your &lt;code&gt;GET Distribution Config&lt;/code&gt; request to change the value of &lt;code&gt;Enabled&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Submit a &lt;code&gt;PUT Distribution Config&lt;/code&gt; request to update the configuration for your distribution. In the request body, include the XML document that you updated in Step 3. Set the value of the HTTP &lt;code&gt;If-Match&lt;/code&gt; header to the value of the &lt;code&gt;ETag&lt;/code&gt; header that CloudFront returned when you submitted the &lt;code&gt;GET Distribution Config&lt;/code&gt; request in Step 2.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Review the response to the &lt;code&gt;PUT Distribution Config&lt;/code&gt; request to confirm that the distribution was successfully disabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Submit a &lt;code&gt;GET Distribution&lt;/code&gt; request to confirm that your changes have propagated. When propagation is complete, the value of &lt;code&gt;Status&lt;/code&gt; is &lt;code&gt;Deployed&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Submit a &lt;code&gt;DELETE Distribution&lt;/code&gt; request. Set the value of the HTTP &lt;code&gt;If-Match&lt;/code&gt; header to the value of the &lt;code&gt;ETag&lt;/code&gt; header that CloudFront returned when you submitted the &lt;code&gt;GET Distribution Config&lt;/code&gt; request in Step 6.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Review the response to your &lt;code&gt;DELETE Distribution&lt;/code&gt; request to confirm that the distribution was successfully deleted.&lt;/p&gt; &lt;/li&gt; &lt;/ol&gt; &lt;p&gt;For information about deleting a distribution using the CloudFront console, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html&quot;&gt;Deleting a Distribution&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The distribution ID. &lt;/p&gt;
--- @param IfMatch [string] &lt;p&gt;The value of the &lt;code&gt;ETag&lt;/code&gt; header that you received when you disabled the distribution. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;. &lt;/p&gt;
+-- <p>This action deletes a web distribution. To delete a web distribution using the CloudFront API, perform the following steps.</p> <p> <b>To delete a web distribution using the CloudFront API:</b> </p> <ol> <li> <p>Disable the web distribution </p> </li> <li> <p>Submit a <code>GET Distribution Config</code> request to get the current configuration and the <code>Etag</code> header for the distribution.</p> </li> <li> <p>Update the XML document that was returned in the response to your <code>GET Distribution Config</code> request to change the value of <code>Enabled</code> to <code>false</code>.</p> </li> <li> <p>Submit a <code>PUT Distribution Config</code> request to update the configuration for your distribution. In the request body, include the XML document that you updated in Step 3. Set the value of the HTTP <code>If-Match</code> header to the value of the <code>ETag</code> header that CloudFront returned when you submitted the <code>GET Distribution Config</code> request in Step 2.</p> </li> <li> <p>Review the response to the <code>PUT Distribution Config</code> request to confirm that the distribution was successfully disabled.</p> </li> <li> <p>Submit a <code>GET Distribution</code> request to confirm that your changes have propagated. When propagation is complete, the value of <code>Status</code> is <code>Deployed</code>.</p> </li> <li> <p>Submit a <code>DELETE Distribution</code> request. Set the value of the HTTP <code>If-Match</code> header to the value of the <code>ETag</code> header that CloudFront returned when you submitted the <code>GET Distribution Config</code> request in Step 6.</p> </li> <li> <p>Review the response to your <code>DELETE Distribution</code> request to confirm that the distribution was successfully deleted.</p> </li> </ol> <p>For information about deleting a distribution using the CloudFront console, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html">Deleting a Distribution</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param Id [string] <p>The distribution ID. </p>
+-- @param IfMatch [string] <p>The value of the <code>ETag</code> header that you received when you disabled the distribution. For example: <code>E2QWRUHAPOMQZL</code>. </p>
 -- Required parameter: Id
 function M.DeleteDistributionRequest(Id, IfMatch, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDistributionRequest")
@@ -4352,10 +4352,10 @@ function M.AssertCreateStreamingDistributionResult(struct)
 end
 
 --- Create a structure of type CreateStreamingDistributionResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param StreamingDistribution [StreamingDistribution] &lt;p&gt;The streaming distribution's information.&lt;/p&gt;
--- @param Location [string] &lt;p&gt;The fully qualified URI of the new streaming distribution resource just created. For example: &lt;code&gt;https://cloudfront.amazonaws.com/2010-11-01/streaming-distribution/EGTXBD79H29TRA8&lt;/code&gt;.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the streaming distribution created.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param StreamingDistribution [StreamingDistribution] <p>The streaming distribution's information.</p>
+-- @param Location [string] <p>The fully qualified URI of the new streaming distribution resource just created. For example: <code>https://cloudfront.amazonaws.com/2010-11-01/streaming-distribution/EGTXBD79H29TRA8</code>.</p>
+-- @param ETag [string] <p>The current version of the streaming distribution created.</p>
 function M.CreateStreamingDistributionResult(StreamingDistribution, Location, ETag, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamingDistributionResult")
 	local t = { 
@@ -4379,8 +4379,8 @@ function M.AssertListStreamingDistributionsResult(struct)
 end
 
 --- Create a structure of type ListStreamingDistributionsResult
--- &lt;p&gt;The returned result of the corresponding request. &lt;/p&gt;
--- @param StreamingDistributionList [StreamingDistributionList] &lt;p&gt;The &lt;code&gt;StreamingDistributionList&lt;/code&gt; type. &lt;/p&gt;
+-- <p>The returned result of the corresponding request. </p>
+-- @param StreamingDistributionList [StreamingDistributionList] <p>The <code>StreamingDistributionList</code> type. </p>
 function M.ListStreamingDistributionsResult(StreamingDistributionList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListStreamingDistributionsResult")
 	local t = { 
@@ -4404,9 +4404,9 @@ function M.AssertDeleteCloudFrontOriginAccessIdentityRequest(struct)
 end
 
 --- Create a structure of type DeleteCloudFrontOriginAccessIdentityRequest
--- &lt;p&gt;Deletes a origin access identity.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The origin access identity's ID.&lt;/p&gt;
--- @param IfMatch [string] &lt;p&gt;The value of the &lt;code&gt;ETag&lt;/code&gt; header you received from a previous &lt;code&gt;GET&lt;/code&gt; or &lt;code&gt;PUT&lt;/code&gt; request. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>Deletes a origin access identity.</p>
+-- @param Id [string] <p>The origin access identity's ID.</p>
+-- @param IfMatch [string] <p>The value of the <code>ETag</code> header you received from a previous <code>GET</code> or <code>PUT</code> request. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- Required parameter: Id
 function M.DeleteCloudFrontOriginAccessIdentityRequest(Id, IfMatch, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCloudFrontOriginAccessIdentityRequest")
@@ -4433,10 +4433,10 @@ function M.AssertListDistributionsByWebACLIdRequest(struct)
 end
 
 --- Create a structure of type ListDistributionsByWebACLIdRequest
--- &lt;p&gt;The request to list distributions that are associated with a specified AWS WAF web ACL. &lt;/p&gt;
--- @param Marker [string] &lt;p&gt;Use &lt;code&gt;Marker&lt;/code&gt; and &lt;code&gt;MaxItems&lt;/code&gt; to control pagination of results. If you have more than &lt;code&gt;MaxItems&lt;/code&gt; distributions that satisfy the request, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; element. To get the next page of results, submit another request. For the value of &lt;code&gt;Marker&lt;/code&gt;, specify the value of &lt;code&gt;NextMarker&lt;/code&gt; from the last response. (For the first request, omit &lt;code&gt;Marker&lt;/code&gt;.) &lt;/p&gt;
--- @param WebACLId [string] &lt;p&gt;The ID of the AWS WAF web ACL that you want to list the associated distributions. If you specify &quot;null&quot; for the ID, the request returns a list of the distributions that aren't associated with a web ACL. &lt;/p&gt;
--- @param MaxItems [string] &lt;p&gt;The maximum number of distributions that you want CloudFront to return in the response body. The maximum and default values are both 100.&lt;/p&gt;
+-- <p>The request to list distributions that are associated with a specified AWS WAF web ACL. </p>
+-- @param Marker [string] <p>Use <code>Marker</code> and <code>MaxItems</code> to control pagination of results. If you have more than <code>MaxItems</code> distributions that satisfy the request, the response includes a <code>NextMarker</code> element. To get the next page of results, submit another request. For the value of <code>Marker</code>, specify the value of <code>NextMarker</code> from the last response. (For the first request, omit <code>Marker</code>.) </p>
+-- @param WebACLId [string] <p>The ID of the AWS WAF web ACL that you want to list the associated distributions. If you specify "null" for the ID, the request returns a list of the distributions that aren't associated with a web ACL. </p>
+-- @param MaxItems [string] <p>The maximum number of distributions that you want CloudFront to return in the response body. The maximum and default values are both 100.</p>
 -- Required parameter: WebACLId
 function M.ListDistributionsByWebACLIdRequest(Marker, WebACLId, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDistributionsByWebACLIdRequest")
@@ -4464,9 +4464,9 @@ function M.AssertGetInvalidationRequest(struct)
 end
 
 --- Create a structure of type GetInvalidationRequest
--- &lt;p&gt;The request to get an invalidation's information. &lt;/p&gt;
--- @param DistributionId [string] &lt;p&gt;The distribution's ID.&lt;/p&gt;
--- @param Id [string] &lt;p&gt;The identifier for the invalidation request, for example, &lt;code&gt;IDFDVBD632BHDS5&lt;/code&gt;.&lt;/p&gt;
+-- <p>The request to get an invalidation's information. </p>
+-- @param DistributionId [string] <p>The distribution's ID.</p>
+-- @param Id [string] <p>The identifier for the invalidation request, for example, <code>IDFDVBD632BHDS5</code>.</p>
 -- Required parameter: DistributionId
 -- Required parameter: Id
 function M.GetInvalidationRequest(DistributionId, Id, ...)
@@ -4492,8 +4492,8 @@ function M.AssertCreateCloudFrontOriginAccessIdentityRequest(struct)
 end
 
 --- Create a structure of type CreateCloudFrontOriginAccessIdentityRequest
--- &lt;p&gt;The request to create a new origin access identity.&lt;/p&gt;
--- @param CloudFrontOriginAccessIdentityConfig [CloudFrontOriginAccessIdentityConfig] &lt;p&gt;The current configuration information for the identity.&lt;/p&gt;
+-- <p>The request to create a new origin access identity.</p>
+-- @param CloudFrontOriginAccessIdentityConfig [CloudFrontOriginAccessIdentityConfig] <p>The current configuration information for the identity.</p>
 -- Required parameter: CloudFrontOriginAccessIdentityConfig
 function M.CreateCloudFrontOriginAccessIdentityRequest(CloudFrontOriginAccessIdentityConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCloudFrontOriginAccessIdentityRequest")
@@ -4517,9 +4517,9 @@ function M.AssertGetStreamingDistributionResult(struct)
 end
 
 --- Create a structure of type GetStreamingDistributionResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param StreamingDistribution [StreamingDistribution] &lt;p&gt;The streaming distribution's information.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the streaming distribution's information. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param StreamingDistribution [StreamingDistribution] <p>The streaming distribution's information.</p>
+-- @param ETag [string] <p>The current version of the streaming distribution's information. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 function M.GetStreamingDistributionResult(StreamingDistribution, ETag, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStreamingDistributionResult")
 	local t = { 
@@ -4550,13 +4550,13 @@ function M.AssertCustomOriginConfig(struct)
 end
 
 --- Create a structure of type CustomOriginConfig
--- &lt;p&gt;A customer origin.&lt;/p&gt;
--- @param OriginSslProtocols [OriginSslProtocols] &lt;p&gt;The SSL/TLS protocols that you want CloudFront to use when communicating with your origin over HTTPS.&lt;/p&gt;
--- @param OriginProtocolPolicy [OriginProtocolPolicy] &lt;p&gt;The origin protocol policy to apply to your origin.&lt;/p&gt;
--- @param OriginReadTimeout [integer] &lt;p&gt;You can create a custom origin read timeout. All timeout units are in seconds. The default origin read timeout is 30 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is 4 seconds; the maximum is 60 seconds.&lt;/p&gt; &lt;p&gt;If you need to increase the maximum time limit, contact the &lt;a href=&quot;https://console.aws.amazon.com/support/home#/&quot;&gt;AWS Support Center&lt;/a&gt;.&lt;/p&gt;
--- @param HTTPPort [integer] &lt;p&gt;The HTTP port the custom origin listens on.&lt;/p&gt;
--- @param HTTPSPort [integer] &lt;p&gt;The HTTPS port the custom origin listens on.&lt;/p&gt;
--- @param OriginKeepaliveTimeout [integer] &lt;p&gt;You can create a custom keep-alive timeout. All timeout units are in seconds. The default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60 seconds.&lt;/p&gt; &lt;p&gt;If you need to increase the maximum time limit, contact the &lt;a href=&quot;https://console.aws.amazon.com/support/home#/&quot;&gt;AWS Support Center&lt;/a&gt;.&lt;/p&gt;
+-- <p>A customer origin.</p>
+-- @param OriginSslProtocols [OriginSslProtocols] <p>The SSL/TLS protocols that you want CloudFront to use when communicating with your origin over HTTPS.</p>
+-- @param OriginProtocolPolicy [OriginProtocolPolicy] <p>The origin protocol policy to apply to your origin.</p>
+-- @param OriginReadTimeout [integer] <p>You can create a custom origin read timeout. All timeout units are in seconds. The default origin read timeout is 30 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is 4 seconds; the maximum is 60 seconds.</p> <p>If you need to increase the maximum time limit, contact the <a href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.</p>
+-- @param HTTPPort [integer] <p>The HTTP port the custom origin listens on.</p>
+-- @param HTTPSPort [integer] <p>The HTTPS port the custom origin listens on.</p>
+-- @param OriginKeepaliveTimeout [integer] <p>You can create a custom keep-alive timeout. All timeout units are in seconds. The default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60 seconds.</p> <p>If you need to increase the maximum time limit, contact the <a href="https://console.aws.amazon.com/support/home#/">AWS Support Center</a>.</p>
 -- Required parameter: HTTPPort
 -- Required parameter: HTTPSPort
 -- Required parameter: OriginProtocolPolicy
@@ -4587,9 +4587,9 @@ function M.AssertGetCloudFrontOriginAccessIdentityResult(struct)
 end
 
 --- Create a structure of type GetCloudFrontOriginAccessIdentityResult
--- &lt;p&gt;The returned result of the corresponding request.&lt;/p&gt;
--- @param CloudFrontOriginAccessIdentity [CloudFrontOriginAccessIdentity] &lt;p&gt;The origin access identity's information.&lt;/p&gt;
--- @param ETag [string] &lt;p&gt;The current version of the origin access identity's information. For example: &lt;code&gt;E2QWRUHAPOMQZL&lt;/code&gt;.&lt;/p&gt;
+-- <p>The returned result of the corresponding request.</p>
+-- @param CloudFrontOriginAccessIdentity [CloudFrontOriginAccessIdentity] <p>The origin access identity's information.</p>
+-- @param ETag [string] <p>The current version of the origin access identity's information. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 function M.GetCloudFrontOriginAccessIdentityResult(CloudFrontOriginAccessIdentity, ETag, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCloudFrontOriginAccessIdentityResult")
 	local t = { 
@@ -4639,10 +4639,10 @@ function M.AssertGeoRestriction(struct)
 end
 
 --- Create a structure of type GeoRestriction
--- &lt;p&gt;A complex type that controls the countries in which your content is distributed. CloudFront determines the location of your users using &lt;code&gt;MaxMind&lt;/code&gt; GeoIP databases. &lt;/p&gt;
--- @param Items [LocationList] &lt;p&gt; A complex type that contains a &lt;code&gt;Location&lt;/code&gt; element for each country in which you want CloudFront either to distribute your content (&lt;code&gt;whitelist&lt;/code&gt;) or not distribute your content (&lt;code&gt;blacklist&lt;/code&gt;).&lt;/p&gt; &lt;p&gt;The &lt;code&gt;Location&lt;/code&gt; element is a two-letter, uppercase country code for a country that you want to include in your &lt;code&gt;blacklist&lt;/code&gt; or &lt;code&gt;whitelist&lt;/code&gt;. Include one &lt;code&gt;Location&lt;/code&gt; element for each country.&lt;/p&gt; &lt;p&gt;CloudFront and &lt;code&gt;MaxMind&lt;/code&gt; both use &lt;code&gt;ISO 3166&lt;/code&gt; country codes. For the current list of countries and the corresponding codes, see &lt;code&gt;ISO 3166-1-alpha-2&lt;/code&gt; code on the &lt;i&gt;International Organization for Standardization&lt;/i&gt; website. You can also refer to the country list in the CloudFront console, which includes both country names and codes.&lt;/p&gt;
--- @param RestrictionType [GeoRestrictionType] &lt;p&gt;The method that you want to use to restrict distribution of your content by country:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;none&lt;/code&gt;: No geo restriction is enabled, meaning access to content is not restricted by client geo location.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;blacklist&lt;/code&gt;: The &lt;code&gt;Location&lt;/code&gt; elements specify the countries in which you do not want CloudFront to distribute your content.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;whitelist&lt;/code&gt;: The &lt;code&gt;Location&lt;/code&gt; elements specify the countries in which you want CloudFront to distribute your content.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Quantity [integer] &lt;p&gt;When geo restriction is &lt;code&gt;enabled&lt;/code&gt;, this is the number of countries in your &lt;code&gt;whitelist&lt;/code&gt; or &lt;code&gt;blacklist&lt;/code&gt;. Otherwise, when it is not enabled, &lt;code&gt;Quantity&lt;/code&gt; is &lt;code&gt;0&lt;/code&gt;, and you can omit &lt;code&gt;Items&lt;/code&gt;.&lt;/p&gt;
+-- <p>A complex type that controls the countries in which your content is distributed. CloudFront determines the location of your users using <code>MaxMind</code> GeoIP databases. </p>
+-- @param Items [LocationList] <p> A complex type that contains a <code>Location</code> element for each country in which you want CloudFront either to distribute your content (<code>whitelist</code>) or not distribute your content (<code>blacklist</code>).</p> <p>The <code>Location</code> element is a two-letter, uppercase country code for a country that you want to include in your <code>blacklist</code> or <code>whitelist</code>. Include one <code>Location</code> element for each country.</p> <p>CloudFront and <code>MaxMind</code> both use <code>ISO 3166</code> country codes. For the current list of countries and the corresponding codes, see <code>ISO 3166-1-alpha-2</code> code on the <i>International Organization for Standardization</i> website. You can also refer to the country list in the CloudFront console, which includes both country names and codes.</p>
+-- @param RestrictionType [GeoRestrictionType] <p>The method that you want to use to restrict distribution of your content by country:</p> <ul> <li> <p> <code>none</code>: No geo restriction is enabled, meaning access to content is not restricted by client geo location.</p> </li> <li> <p> <code>blacklist</code>: The <code>Location</code> elements specify the countries in which you do not want CloudFront to distribute your content.</p> </li> <li> <p> <code>whitelist</code>: The <code>Location</code> elements specify the countries in which you want CloudFront to distribute your content.</p> </li> </ul>
+-- @param Quantity [integer] <p>When geo restriction is <code>enabled</code>, this is the number of countries in your <code>whitelist</code> or <code>blacklist</code>. Otherwise, when it is not enabled, <code>Quantity</code> is <code>0</code>, and you can omit <code>Items</code>.</p>
 -- Required parameter: RestrictionType
 -- Required parameter: Quantity
 function M.GeoRestriction(Items, RestrictionType, Quantity, ...)
@@ -4670,9 +4670,9 @@ function M.AssertCookiePreference(struct)
 end
 
 --- Create a structure of type CookiePreference
--- &lt;p&gt;A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so, which ones. For more information about forwarding cookies to the origin, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html&quot;&gt;How CloudFront Forwards, Caches, and Logs Cookies&lt;/a&gt; in the &lt;i&gt;Amazon CloudFront Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Forward [ItemSelection] &lt;p&gt;Specifies which cookies to forward to the origin for this cache behavior: all, none, or the list of cookies specified in the &lt;code&gt;WhitelistedNames&lt;/code&gt; complex type.&lt;/p&gt; &lt;p&gt;Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an Amazon S3 origin, specify none for the &lt;code&gt;Forward&lt;/code&gt; element. &lt;/p&gt;
--- @param WhitelistedNames [CookieNames] &lt;p&gt;Required if you specify &lt;code&gt;whitelist&lt;/code&gt; for the value of &lt;code&gt;Forward:&lt;/code&gt;. A complex type that specifies how many different cookies you want CloudFront to forward to the origin for this cache behavior and, if you want to forward selected cookies, the names of those cookies.&lt;/p&gt; &lt;p&gt;If you specify &lt;code&gt;all&lt;/code&gt; or none for the value of &lt;code&gt;Forward&lt;/code&gt;, omit &lt;code&gt;WhitelistedNames&lt;/code&gt;. If you change the value of &lt;code&gt;Forward&lt;/code&gt; from &lt;code&gt;whitelist&lt;/code&gt; to all or none and you don't delete the &lt;code&gt;WhitelistedNames&lt;/code&gt; element and its child elements, CloudFront deletes them automatically.&lt;/p&gt; &lt;p&gt;For the current limit on the number of cookie names that you can whitelist for each cache behavior, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront&quot;&gt;Amazon CloudFront Limits&lt;/a&gt; in the &lt;i&gt;AWS General Reference&lt;/i&gt;.&lt;/p&gt;
+-- <p>A complex type that specifies whether you want CloudFront to forward cookies to the origin and, if so, which ones. For more information about forwarding cookies to the origin, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">How CloudFront Forwards, Caches, and Logs Cookies</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
+-- @param Forward [ItemSelection] <p>Specifies which cookies to forward to the origin for this cache behavior: all, none, or the list of cookies specified in the <code>WhitelistedNames</code> complex type.</p> <p>Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an Amazon S3 origin, specify none for the <code>Forward</code> element. </p>
+-- @param WhitelistedNames [CookieNames] <p>Required if you specify <code>whitelist</code> for the value of <code>Forward:</code>. A complex type that specifies how many different cookies you want CloudFront to forward to the origin for this cache behavior and, if you want to forward selected cookies, the names of those cookies.</p> <p>If you specify <code>all</code> or none for the value of <code>Forward</code>, omit <code>WhitelistedNames</code>. If you change the value of <code>Forward</code> from <code>whitelist</code> to all or none and you don't delete the <code>WhitelistedNames</code> element and its child elements, CloudFront deletes them automatically.</p> <p>For the current limit on the number of cookie names that you can whitelist for each cache behavior, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront">Amazon CloudFront Limits</a> in the <i>AWS General Reference</i>.</p>
 -- Required parameter: Forward
 function M.CookiePreference(Forward, WhitelistedNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CookiePreference")
@@ -4696,8 +4696,8 @@ function M.AssertInvalidLambdaFunctionAssociation(struct)
 end
 
 --- Create a structure of type InvalidLambdaFunctionAssociation
--- &lt;p&gt;The specified Lambda function association is invalid.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The specified Lambda function association is invalid.&lt;/p&gt;
+-- <p>The specified Lambda function association is invalid.</p>
+-- @param Message [string] <p>The specified Lambda function association is invalid.</p>
 function M.InvalidLambdaFunctionAssociation(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLambdaFunctionAssociation")
 	local t = { 
@@ -4719,8 +4719,8 @@ function M.AssertNoSuchDistribution(struct)
 end
 
 --- Create a structure of type NoSuchDistribution
--- &lt;p&gt;The specified distribution does not exist.&lt;/p&gt;
--- @param Message [string] &lt;p&gt;The specified distribution does not exist.&lt;/p&gt;
+-- <p>The specified distribution does not exist.</p>
+-- @param Message [string] <p>The specified distribution does not exist.</p>
 function M.NoSuchDistribution(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchDistribution")
 	local t = { 
@@ -4738,7 +4738,7 @@ function M.AssertTagKey(str)
 	assert(str:match("^([%p{L}%p{Z}%p{N}_.:/=+%-@]*)$"), "Expected string to match pattern '^([%p{L}%p{Z}%p{N}_.:/=+%-@]*)$'")
 end
 
--- &lt;p&gt; A string that contains &lt;code&gt;Tag&lt;/code&gt; key.&lt;/p&gt; &lt;p&gt;The string length should be between 1 and 128 characters. Valid characters include &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;, space, and the special characters &lt;code&gt;_ - . : / = + @&lt;/code&gt;.&lt;/p&gt;
+-- <p> A string that contains <code>Tag</code> key.</p> <p>The string length should be between 1 and 128 characters. Valid characters include <code>a-z</code>, <code>A-Z</code>, <code>0-9</code>, space, and the special characters <code>_ - . : / = + @</code>.</p>
 function M.TagKey(str)
 	M.AssertTagKey(str)
 	return str

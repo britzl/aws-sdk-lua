@@ -57,9 +57,9 @@ function M.AssertGetIdentityPoolConfigurationResponse(struct)
 end
 
 --- Create a structure of type GetIdentityPoolConfigurationResponse
--- &lt;p&gt;The output for the GetIdentityPoolConfiguration operation.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.&lt;/p&gt;
--- @param PushSync [PushSync] &lt;p&gt;Options to apply to this identity pool for push synchronization.&lt;/p&gt;
+-- <p>The output for the GetIdentityPoolConfiguration operation.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
+-- @param PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
 -- @param CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
 function M.GetIdentityPoolConfigurationResponse(IdentityPoolId, PushSync, CognitoStreams, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolConfigurationResponse")
@@ -85,8 +85,8 @@ function M.AssertConcurrentModificationException(struct)
 end
 
 --- Create a structure of type ConcurrentModificationException
--- &lt;p&gt;Thrown if there are parallel requests to modify a resource.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The message returned by a ConcurrentModicationException.&lt;/p&gt;
+-- <p>Thrown if there are parallel requests to modify a resource.</p>
+-- @param message [String] <p>The message returned by a ConcurrentModicationException.</p>
 -- Required parameter: message
 function M.ConcurrentModificationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
@@ -261,9 +261,9 @@ function M.AssertSetIdentityPoolConfigurationResponse(struct)
 end
 
 --- Create a structure of type SetIdentityPoolConfigurationResponse
--- &lt;p&gt;The output for the SetIdentityPoolConfiguration operation&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.&lt;/p&gt;
--- @param PushSync [PushSync] &lt;p&gt;Options to apply to this identity pool for push synchronization.&lt;/p&gt;
+-- <p>The output for the SetIdentityPoolConfiguration operation</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
+-- @param PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
 -- @param CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
 function M.SetIdentityPoolConfigurationResponse(IdentityPoolId, PushSync, CognitoStreams, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityPoolConfigurationResponse")
@@ -295,11 +295,11 @@ function M.AssertSubscribeToDatasetRequest(struct)
 end
 
 --- Create a structure of type SubscribeToDatasetRequest
--- &lt;p&gt;A request to SubscribeToDatasetRequest.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which the identity belongs.&lt;/p&gt;
--- @param DatasetName [DatasetName] &lt;p&gt;The name of the dataset to subcribe to.&lt;/p&gt;
--- @param DeviceId [DeviceId] &lt;p&gt;The unique ID generated for this device by Cognito.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;Unique ID for this identity.&lt;/p&gt;
+-- <p>A request to SubscribeToDatasetRequest.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which the identity belongs.</p>
+-- @param DatasetName [DatasetName] <p>The name of the dataset to subcribe to.</p>
+-- @param DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
+-- @param IdentityId [IdentityId] <p>Unique ID for this identity.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
 -- Required parameter: DatasetName
@@ -327,7 +327,7 @@ function M.AssertUnsubscribeFromDatasetResponse(struct)
 end
 
 --- Create a structure of type UnsubscribeFromDatasetResponse
--- &lt;p&gt;Response to an UnsubscribeFromDataset request.&lt;/p&gt;
+-- <p>Response to an UnsubscribeFromDataset request.</p>
 function M.UnsubscribeFromDatasetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsubscribeFromDatasetResponse")
 	local t = { 
@@ -351,9 +351,9 @@ function M.AssertSetIdentityPoolConfigurationRequest(struct)
 end
 
 --- Create a structure of type SetIdentityPoolConfigurationRequest
--- &lt;p&gt;The input for the SetIdentityPoolConfiguration operation.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool to modify.&lt;/p&gt;
--- @param PushSync [PushSync] &lt;p&gt;Options to apply to this identity pool for push synchronization.&lt;/p&gt;
+-- <p>The input for the SetIdentityPoolConfiguration operation.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool to modify.</p>
+-- @param PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
 -- @param CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
 -- Required parameter: IdentityPoolId
 function M.SetIdentityPoolConfigurationRequest(IdentityPoolId, PushSync, CognitoStreams, ...)
@@ -412,8 +412,8 @@ function M.AssertGetCognitoEventsRequest(struct)
 end
 
 --- Create a structure of type GetCognitoEventsRequest
--- &lt;p&gt;A request for a list of the configured Cognito Events&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;The Cognito Identity Pool ID for the request&lt;/p&gt;
+-- <p>A request for a list of the configured Cognito Events</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>The Cognito Identity Pool ID for the request</p>
 -- Required parameter: IdentityPoolId
 function M.GetCognitoEventsRequest(IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCognitoEventsRequest")
@@ -500,7 +500,7 @@ end
 -- The output for the GetBulkPublishDetails operation.
 -- @param BulkPublishStartTime [Date] The date/time at which the last bulk publish was initiated.
 -- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param BulkPublishStatus [BulkPublishStatus] Status of the last bulk publish operation, valid values are: &lt;p&gt;NOT_STARTED - No bulk publish has been requested for this identity pool&lt;/p&gt; &lt;p&gt;IN_PROGRESS - Data is being published to the configured stream&lt;/p&gt; &lt;p&gt;SUCCEEDED - All data for the identity pool has been published to the configured stream&lt;/p&gt; &lt;p&gt;FAILED - Some portion of the data has failed to publish, check FailureMessage for the cause.&lt;/p&gt;
+-- @param BulkPublishStatus [BulkPublishStatus] Status of the last bulk publish operation, valid values are: <p>NOT_STARTED - No bulk publish has been requested for this identity pool</p> <p>IN_PROGRESS - Data is being published to the configured stream</p> <p>SUCCEEDED - All data for the identity pool has been published to the configured stream</p> <p>FAILED - Some portion of the data has failed to publish, check FailureMessage for the cause.</p>
 -- @param BulkPublishCompleteTime [Date] If BulkPublishStatus is SUCCEEDED, the time the last bulk publish operation completed.
 -- @param FailureMessage [String] If BulkPublishStatus is FAILED this field will contain the error message that caused the bulk publish to fail.
 function M.GetBulkPublishDetailsResponse(BulkPublishStartTime, IdentityPoolId, BulkPublishStatus, BulkPublishCompleteTime, FailureMessage, ...)
@@ -560,11 +560,11 @@ function M.AssertUnsubscribeFromDatasetRequest(struct)
 end
 
 --- Create a structure of type UnsubscribeFromDatasetRequest
--- &lt;p&gt;A request to UnsubscribeFromDataset.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which this identity belongs.&lt;/p&gt;
--- @param DatasetName [DatasetName] &lt;p&gt;The name of the dataset from which to unsubcribe.&lt;/p&gt;
--- @param DeviceId [DeviceId] &lt;p&gt;The unique ID generated for this device by Cognito.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;Unique ID for this identity.&lt;/p&gt;
+-- <p>A request to UnsubscribeFromDataset.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which this identity belongs.</p>
+-- @param DatasetName [DatasetName] <p>The name of the dataset from which to unsubcribe.</p>
+-- @param DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
+-- @param IdentityId [IdentityId] <p>Unique ID for this identity.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
 -- Required parameter: DatasetName
@@ -596,7 +596,7 @@ end
 
 --- Create a structure of type CognitoStreams
 -- Configuration options for configure Cognito streams.
--- @param StreamingStatus [StreamingStatus] Status of the Cognito streams. Valid values are: &lt;p&gt;ENABLED - Streaming of updates to identity pool is enabled.&lt;/p&gt; &lt;p&gt;DISABLED - Streaming of updates to identity pool is disabled. Bulk publish will also fail if StreamingStatus is DISABLED.&lt;/p&gt;
+-- @param StreamingStatus [StreamingStatus] Status of the Cognito streams. Valid values are: <p>ENABLED - Streaming of updates to identity pool is enabled.</p> <p>DISABLED - Streaming of updates to identity pool is disabled. Bulk publish will also fail if StreamingStatus is DISABLED.</p>
 -- @param RoleArn [AssumeRoleArn] The ARN of the role Amazon Cognito can assume in order to publish to the stream. This role must grant access to Amazon Cognito (cognito-sync) to invoke PutRecord on your Cognito stream.
 -- @param StreamName [StreamName] The name of the Cognito stream to receive updates. This stream must be in the developers account and in the same region as the identity pool.
 function M.CognitoStreams(StreamingStatus, RoleArn, StreamName, ...)
@@ -871,7 +871,7 @@ function M.AssertSubscribeToDatasetResponse(struct)
 end
 
 --- Create a structure of type SubscribeToDatasetResponse
--- &lt;p&gt;Response to a SubscribeToDataset request.&lt;/p&gt;
+-- <p>Response to a SubscribeToDataset request.</p>
 function M.SubscribeToDatasetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscribeToDatasetResponse")
 	local t = { 
@@ -893,8 +893,8 @@ function M.AssertInvalidLambdaFunctionOutputException(struct)
 end
 
 --- Create a structure of type InvalidLambdaFunctionOutputException
--- &lt;p&gt;The AWS Lambda function returned invalid output or an exception.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;A message returned when an InvalidLambdaFunctionOutputException occurs&lt;/p&gt;
+-- <p>The AWS Lambda function returned invalid output or an exception.</p>
+-- @param message [ExceptionMessage] <p>A message returned when an InvalidLambdaFunctionOutputException occurs</p>
 -- Required parameter: message
 function M.InvalidLambdaFunctionOutputException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLambdaFunctionOutputException")
@@ -966,9 +966,9 @@ function M.AssertPushSync(struct)
 end
 
 --- Create a structure of type PushSync
--- &lt;p&gt;Configuration options to be applied to the identity pool.&lt;/p&gt;
--- @param RoleArn [AssumeRoleArn] &lt;p&gt;A role configured to allow Cognito to call SNS on behalf of the developer.&lt;/p&gt;
--- @param ApplicationArns [ApplicationArnList] &lt;p&gt;List of SNS platform application ARNs that could be used by clients.&lt;/p&gt;
+-- <p>Configuration options to be applied to the identity pool.</p>
+-- @param RoleArn [AssumeRoleArn] <p>A role configured to allow Cognito to call SNS on behalf of the developer.</p>
+-- @param ApplicationArns [ApplicationArnList] <p>List of SNS platform application ARNs that could be used by clients.</p>
 function M.PushSync(RoleArn, ApplicationArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PushSync")
 	local t = { 
@@ -1115,7 +1115,7 @@ end
 -- @param RecordPatches [RecordPatchList] A list of patch operations.
 -- @param IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 -- @param IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param DeviceId [DeviceId] &lt;p&gt;The unique ID generated for this device by Cognito.&lt;/p&gt;
+-- @param DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
 -- @param SyncSessionToken [SyncSessionToken] The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.
 -- @param ClientContext [ClientContext] Intended to supply a device ID that will populate the lastModifiedBy field referenced in other methods. The ClientContext field is not yet implemented.
 -- Required parameter: IdentityPoolId
@@ -1184,8 +1184,8 @@ function M.AssertGetCognitoEventsResponse(struct)
 end
 
 --- Create a structure of type GetCognitoEventsResponse
--- &lt;p&gt;The response from the GetCognitoEvents request&lt;/p&gt;
--- @param Events [Events] &lt;p&gt;The Cognito Events returned from the GetCognitoEvents request&lt;/p&gt;
+-- <p>The response from the GetCognitoEvents request</p>
+-- @param Events [Events] <p>The Cognito Events returned from the GetCognitoEvents request</p>
 function M.GetCognitoEventsResponse(Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCognitoEventsResponse")
 	local t = { 
@@ -1210,9 +1210,9 @@ function M.AssertSetCognitoEventsRequest(struct)
 end
 
 --- Create a structure of type SetCognitoEventsRequest
--- &lt;p&gt;A request to configure Cognito Events&quot;&lt;/p&gt;&quot;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;The Cognito Identity Pool to use when configuring Cognito Events&lt;/p&gt;
--- @param Events [Events] &lt;p&gt;The events to configure&lt;/p&gt;
+-- <p>A request to configure Cognito Events"</p>"
+-- @param IdentityPoolId [IdentityPoolId] <p>The Cognito Identity Pool to use when configuring Cognito Events</p>
+-- @param Events [Events] <p>The events to configure</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: Events
 function M.SetCognitoEventsRequest(IdentityPoolId, Events, ...)
@@ -1267,8 +1267,8 @@ function M.AssertLambdaThrottledException(struct)
 end
 
 --- Create a structure of type LambdaThrottledException
--- &lt;p&gt;AWS Lambda throttled your account, please contact AWS Support&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;A message returned when an LambdaThrottledException is thrown&lt;/p&gt;
+-- <p>AWS Lambda throttled your account, please contact AWS Support</p>
+-- @param message [ExceptionMessage] <p>A message returned when an LambdaThrottledException is thrown</p>
 -- Required parameter: message
 function M.LambdaThrottledException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaThrottledException")
@@ -1448,8 +1448,8 @@ function M.AssertRegisterDeviceResponse(struct)
 end
 
 --- Create a structure of type RegisterDeviceResponse
--- &lt;p&gt;Response to a RegisterDevice request.&lt;/p&gt;
--- @param DeviceId [DeviceId] &lt;p&gt;The unique ID generated for this device by Cognito.&lt;/p&gt;
+-- <p>Response to a RegisterDevice request.</p>
+-- @param DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
 function M.RegisterDeviceResponse(DeviceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDeviceResponse")
 	local t = { 
@@ -1478,11 +1478,11 @@ function M.AssertRegisterDeviceRequest(struct)
 end
 
 --- Create a structure of type RegisterDeviceRequest
--- &lt;p&gt;A request to RegisterDevice.&lt;/p&gt;
--- @param Platform [Platform] &lt;p&gt;The SNS platform type (e.g. GCM, SDM, APNS, APNS_SANDBOX).&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. Here, the ID of the pool that the identity belongs to.&lt;/p&gt;
--- @param Token [PushToken] &lt;p&gt;The push token.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;The unique ID for this identity.&lt;/p&gt;
+-- <p>A request to RegisterDevice.</p>
+-- @param Platform [Platform] <p>The SNS platform type (e.g. GCM, SDM, APNS, APNS_SANDBOX).</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. Here, the ID of the pool that the identity belongs to.</p>
+-- @param Token [PushToken] <p>The push token.</p>
+-- @param IdentityId [IdentityId] <p>The unique ID for this identity.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityId
 -- Required parameter: Platform
@@ -1537,8 +1537,8 @@ function M.AssertGetIdentityPoolConfigurationRequest(struct)
 end
 
 --- Create a structure of type GetIdentityPoolConfigurationRequest
--- &lt;p&gt;The input for the GetIdentityPoolConfiguration operation.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool for which to return a configuration.&lt;/p&gt;
+-- <p>The input for the GetIdentityPoolConfiguration operation.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool for which to return a configuration.</p>
 -- Required parameter: IdentityPoolId
 function M.GetIdentityPoolConfigurationRequest(IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolConfigurationRequest")

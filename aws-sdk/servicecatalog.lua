@@ -34,8 +34,8 @@ end
 
 --- Create a structure of type DisassociateTagOptionFromResourceInput
 --  
--- @param ResourceId [ResourceId] &lt;p&gt;Identifier of the resource from which to disassociate the TagOption.&lt;/p&gt;
--- @param TagOptionId [TagOptionId] &lt;p&gt;Identifier of the TagOption to disassociate from the resource.&lt;/p&gt;
+-- @param ResourceId [ResourceId] <p>Identifier of the resource from which to disassociate the TagOption.</p>
+-- @param TagOptionId [TagOptionId] <p>Identifier of the TagOption to disassociate from the resource.</p>
 -- Required parameter: ResourceId
 -- Required parameter: TagOptionId
 function M.DisassociateTagOptionFromResourceInput(ResourceId, TagOptionId, ...)
@@ -64,8 +64,8 @@ end
 
 --- Create a structure of type CreateTagOptionInput
 --  
--- @param Value [TagOptionValue] &lt;p&gt;The TagOption value.&lt;/p&gt;
--- @param Key [TagOptionKey] &lt;p&gt;The TagOption key.&lt;/p&gt;
+-- @param Value [TagOptionValue] <p>The TagOption value.</p>
+-- @param Key [TagOptionKey] <p>The TagOption key.</p>
 -- Required parameter: Key
 -- Required parameter: Value
 function M.CreateTagOptionInput(Value, Key, ...)
@@ -91,7 +91,7 @@ end
 
 --- Create a structure of type DescribeTagOptionOutput
 --  
--- @param TagOptionDetail [TagOptionDetail] &lt;p&gt;The resulting detailed TagOption information.&lt;/p&gt;
+-- @param TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
 function M.DescribeTagOptionOutput(TagOptionDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagOptionOutput")
 	local t = { 
@@ -116,9 +116,9 @@ end
 
 --- Create a structure of type DescribePortfolioOutput
 --  
--- @param TagOptions [TagOptionDetails] &lt;p&gt;TagOptions associated with the portfolio.&lt;/p&gt;
--- @param PortfolioDetail [PortfolioDetail] &lt;p&gt;Detailed portfolio information.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Tags associated with the portfolio.&lt;/p&gt;
+-- @param TagOptions [TagOptionDetails] <p>TagOptions associated with the portfolio.</p>
+-- @param PortfolioDetail [PortfolioDetail] <p>Detailed portfolio information.</p>
+-- @param Tags [Tags] <p>Tags associated with the portfolio.</p>
 function M.DescribePortfolioOutput(TagOptions, PortfolioDetail, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePortfolioOutput")
 	local t = { 
@@ -165,8 +165,8 @@ end
 
 --- Create a structure of type RejectPortfolioShareInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
 -- Required parameter: PortfolioId
 function M.RejectPortfolioShareInput(AcceptLanguage, PortfolioId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RejectPortfolioShareInput")
@@ -191,9 +191,9 @@ function M.AssertUsageInstruction(struct)
 end
 
 --- Create a structure of type UsageInstruction
--- &lt;p&gt;Additional information provided by the administrator.&lt;/p&gt;
--- @param Type [InstructionType] &lt;p&gt;The usage instruction type for the value.&lt;/p&gt;
--- @param Value [InstructionValue] &lt;p&gt;The usage instruction value for this type.&lt;/p&gt;
+-- <p>Additional information provided by the administrator.</p>
+-- @param Type [InstructionType] <p>The usage instruction type for the value.</p>
+-- @param Value [InstructionValue] <p>The usage instruction value for this type.</p>
 function M.UsageInstruction(Type, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsageInstruction")
 	local t = { 
@@ -225,14 +225,14 @@ end
 
 --- Create a structure of type UpdateProvisionedProductInput
 --  
--- @param ProvisioningArtifactId [Id] &lt;p&gt;The provisioning artifact identifier for this product. This is sometimes referred to as the product version.&lt;/p&gt;
--- @param ProvisionedProductId [Id] &lt;p&gt;The identifier of the ProvisionedProduct object to update. Specify either &lt;code&gt;ProvisionedProductName&lt;/code&gt; or &lt;code&gt;ProvisionedProductId&lt;/code&gt;, but not both.&lt;/p&gt;
--- @param ProvisioningParameters [UpdateProvisioningParameters] &lt;p&gt;A list of &lt;code&gt;ProvisioningParameter&lt;/code&gt; objects used to update the ProvisionedProduct object.&lt;/p&gt;
--- @param PathId [Id] &lt;p&gt;The identifier of the path to use in the updated ProvisionedProduct object. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.&lt;/p&gt;
--- @param UpdateToken [IdempotencyToken] &lt;p&gt;The idempotency token that uniquely identifies the provisioning update request.&lt;/p&gt;
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param ProvisionedProductName [ProvisionedProductNameOrArn] &lt;p&gt;The updated name of the ProvisionedProduct object. Specify either &lt;code&gt;ProvisionedProductName&lt;/code&gt; or &lt;code&gt;ProvisionedProductId&lt;/code&gt;, but not both.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The identifier of the ProvisionedProduct object.&lt;/p&gt;
+-- @param ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
+-- @param ProvisionedProductId [Id] <p>The identifier of the ProvisionedProduct object to update. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+-- @param ProvisioningParameters [UpdateProvisioningParameters] <p>A list of <code>ProvisioningParameter</code> objects used to update the ProvisionedProduct object.</p>
+-- @param PathId [Id] <p>The identifier of the path to use in the updated ProvisionedProduct object. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
+-- @param UpdateToken [IdempotencyToken] <p>The idempotency token that uniquely identifies the provisioning update request.</p>
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param ProvisionedProductName [ProvisionedProductNameOrArn] <p>The updated name of the ProvisionedProduct object. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+-- @param ProductId [Id] <p>The identifier of the ProvisionedProduct object.</p>
 -- Required parameter: UpdateToken
 function M.UpdateProvisionedProductInput(ProvisioningArtifactId, ProvisionedProductId, ProvisioningParameters, PathId, UpdateToken, AcceptLanguage, ProvisionedProductName, ProductId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProvisionedProductInput")
@@ -275,15 +275,15 @@ end
 
 --- Create a structure of type ProvisionProductInput
 --  
--- @param ProvisioningArtifactId [Id] &lt;p&gt;The provisioning artifact identifier for this product. This is sometimes referred to as the product version.&lt;/p&gt;
--- @param ProvisionedProductName [ProvisionedProductName] &lt;p&gt;A user-friendly name to identify the ProvisionedProduct object. This value must be unique for the AWS account and cannot be updated after the product is provisioned.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;A list of tags to use as provisioning options.&lt;/p&gt;
--- @param ProvisioningParameters [ProvisioningParameters] &lt;p&gt;Parameters specified by the administrator that are required for provisioning the product.&lt;/p&gt;
--- @param PathId [Id] &lt;p&gt;The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.&lt;/p&gt;
--- @param ProvisionToken [IdempotencyToken] &lt;p&gt;An idempotency token that uniquely identifies the provisioning request. &lt;/p&gt;
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param NotificationArns [NotificationArns] &lt;p&gt;Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
+-- @param ProvisionedProductName [ProvisionedProductName] <p>A user-friendly name to identify the ProvisionedProduct object. This value must be unique for the AWS account and cannot be updated after the product is provisioned.</p>
+-- @param Tags [Tags] <p>A list of tags to use as provisioning options.</p>
+-- @param ProvisioningParameters [ProvisioningParameters] <p>Parameters specified by the administrator that are required for provisioning the product.</p>
+-- @param PathId [Id] <p>The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
+-- @param ProvisionToken [IdempotencyToken] <p>An idempotency token that uniquely identifies the provisioning request. </p>
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param NotificationArns [NotificationArns] <p>Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: ProductId
 -- Required parameter: ProvisioningArtifactId
 -- Required parameter: ProvisionedProductName
@@ -323,12 +323,12 @@ end
 
 --- Create a structure of type SearchProductsInput
 --  
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param SortOrder [SortOrder] &lt;p&gt;The sort order specifier. If no value is specified, results are not sorted.&lt;/p&gt;
--- @param Filters [ProductViewFilters] &lt;p&gt;The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the calling user has access. &lt;/p&gt;
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param SortBy [ProductViewSortBy] &lt;p&gt;The sort field specifier. If no value is specified, results are not sorted.&lt;/p&gt;
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param SortOrder [SortOrder] <p>The sort order specifier. If no value is specified, results are not sorted.</p>
+-- @param Filters [ProductViewFilters] <p>The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the calling user has access. </p>
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param SortBy [ProductViewSortBy] <p>The sort field specifier. If no value is specified, results are not sorted.</p>
 function M.SearchProductsInput(PageSize, PageToken, SortOrder, Filters, AcceptLanguage, SortBy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SearchProductsInput")
 	local t = { 
@@ -358,9 +358,9 @@ end
 
 --- Create a structure of type CreateConstraintOutput
 --  
--- @param Status [Status] &lt;p&gt;The status of the current request.&lt;/p&gt;
--- @param ConstraintParameters [ConstraintParameters] &lt;p&gt;The resulting constraint parameters.&lt;/p&gt;
--- @param ConstraintDetail [ConstraintDetail] &lt;p&gt;The resulting detailed constraint information.&lt;/p&gt;
+-- @param Status [Status] <p>The status of the current request.</p>
+-- @param ConstraintParameters [ConstraintParameters] <p>The resulting constraint parameters.</p>
+-- @param ConstraintDetail [ConstraintDetail] <p>The resulting detailed constraint information.</p>
 function M.CreateConstraintOutput(Status, ConstraintParameters, ConstraintDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateConstraintOutput")
 	local t = { 
@@ -387,9 +387,9 @@ end
 
 --- Create a structure of type ListPortfoliosInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
 function M.ListPortfoliosInput(AcceptLanguage, PageToken, PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfoliosInput")
 	local t = { 
@@ -414,9 +414,9 @@ function M.AssertProductViewAggregationValue(struct)
 end
 
 --- Create a structure of type ProductViewAggregationValue
--- &lt;p&gt;A single product view aggregation value/count pair, containing metadata about each product to which the calling user has access.&lt;/p&gt;
--- @param ApproximateCount [ApproximateCount] &lt;p&gt;An approximate count of the products that match the value.&lt;/p&gt;
--- @param Value [AttributeValue] &lt;p&gt;The value of the product view aggregation.&lt;/p&gt;
+-- <p>A single product view aggregation value/count pair, containing metadata about each product to which the calling user has access.</p>
+-- @param ApproximateCount [ApproximateCount] <p>An approximate count of the products that match the value.</p>
+-- @param Value [AttributeValue] <p>The value of the product view aggregation.</p>
 function M.ProductViewAggregationValue(ApproximateCount, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProductViewAggregationValue")
 	local t = { 
@@ -442,8 +442,8 @@ end
 
 --- Create a structure of type DeletePortfolioInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the portfolio for the delete request.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The identifier of the portfolio for the delete request.</p>
 -- Required parameter: Id
 function M.DeletePortfolioInput(AcceptLanguage, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePortfolioInput")
@@ -468,9 +468,9 @@ function M.AssertConstraintSummary(struct)
 end
 
 --- Create a structure of type ConstraintSummary
--- &lt;p&gt;An administrator-specified constraint to apply when provisioning a product.&lt;/p&gt;
--- @param Type [ConstraintType] &lt;p&gt;The type of the constraint. &lt;/p&gt;
--- @param Description [ConstraintDescription] &lt;p&gt;The text description of the constraint.&lt;/p&gt;
+-- <p>An administrator-specified constraint to apply when provisioning a product.</p>
+-- @param Type [ConstraintType] <p>The type of the constraint. </p>
+-- @param Description [ConstraintDescription] <p>The text description of the constraint.</p>
 function M.ConstraintSummary(Type, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConstraintSummary")
 	local t = { 
@@ -498,9 +498,9 @@ end
 
 --- Create a structure of type CreatePortfolioShareInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
--- @param AccountId [AccountId] &lt;p&gt;The account ID with which to share the portfolio.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
+-- @param AccountId [AccountId] <p>The account ID with which to share the portfolio.</p>
 -- Required parameter: PortfolioId
 -- Required parameter: AccountId
 function M.CreatePortfolioShareInput(AcceptLanguage, PortfolioId, AccountId, ...)
@@ -527,9 +527,9 @@ function M.AssertAccessLevelFilter(struct)
 end
 
 --- Create a structure of type AccessLevelFilter
--- &lt;p&gt;The access level to limit results.&lt;/p&gt;
--- @param Value [AccessLevelFilterValue] &lt;p&gt;Specifies the user to which the access level applies. A value of &lt;code&gt;Self&lt;/code&gt; is currently supported.&lt;/p&gt;
--- @param Key [AccessLevelFilterKey] &lt;p&gt;Specifies the access level.&lt;/p&gt; &lt;p&gt; &lt;code&gt;Account&lt;/code&gt; allows results at the account level. &lt;/p&gt; &lt;p&gt; &lt;code&gt;Role&lt;/code&gt; allows results based on the federated role of the specified user.&lt;/p&gt; &lt;p&gt; &lt;code&gt;User&lt;/code&gt; allows results limited to the specified user. &lt;/p&gt;
+-- <p>The access level to limit results.</p>
+-- @param Value [AccessLevelFilterValue] <p>Specifies the user to which the access level applies. A value of <code>Self</code> is currently supported.</p>
+-- @param Key [AccessLevelFilterKey] <p>Specifies the access level.</p> <p> <code>Account</code> allows results at the account level. </p> <p> <code>Role</code> allows results based on the federated role of the specified user.</p> <p> <code>User</code> allows results limited to the specified user. </p>
 function M.AccessLevelFilter(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessLevelFilter")
 	local t = { 
@@ -556,10 +556,10 @@ end
 
 --- Create a structure of type DescribeProvisioningParametersOutput
 --  
--- @param TagOptions [TagOptionSummaries] &lt;p&gt;List of TagOptions associated with the provisioned provisioning parameters.&lt;/p&gt;
--- @param ProvisioningArtifactParameters [ProvisioningArtifactParameters] &lt;p&gt;The list of parameters used to successfully provision the product. Each parameter includes a list of allowable values and additional metadata about each parameter.&lt;/p&gt;
--- @param ConstraintSummaries [ConstraintSummaries] &lt;p&gt;The list of constraint summaries that apply to provisioning this product.&lt;/p&gt;
--- @param UsageInstructions [UsageInstructions] &lt;p&gt;Any additional metadata specifically related to the provisioning of the product. For example, see the &lt;code&gt;Version&lt;/code&gt; field of the CloudFormation template.&lt;/p&gt;
+-- @param TagOptions [TagOptionSummaries] <p>List of TagOptions associated with the provisioned provisioning parameters.</p>
+-- @param ProvisioningArtifactParameters [ProvisioningArtifactParameters] <p>The list of parameters used to successfully provision the product. Each parameter includes a list of allowable values and additional metadata about each parameter.</p>
+-- @param ConstraintSummaries [ConstraintSummaries] <p>The list of constraint summaries that apply to provisioning this product.</p>
+-- @param UsageInstructions [UsageInstructions] <p>Any additional metadata specifically related to the provisioning of the product. For example, see the <code>Version</code> field of the CloudFormation template.</p>
 function M.DescribeProvisioningParametersOutput(TagOptions, ProvisioningArtifactParameters, ConstraintSummaries, UsageInstructions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProvisioningParametersOutput")
 	local t = { 
@@ -585,7 +585,7 @@ end
 
 --- Create a structure of type UpdateTagOptionOutput
 --  
--- @param TagOptionDetail [TagOptionDetail] &lt;p&gt;The resulting detailed TagOption information.&lt;/p&gt;
+-- @param TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
 function M.UpdateTagOptionOutput(TagOptionDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTagOptionOutput")
 	local t = { 
@@ -613,11 +613,11 @@ end
 
 --- Create a structure of type TerminateProvisionedProductInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param ProvisionedProductId [Id] &lt;p&gt;The identifier of the ProvisionedProduct object to terminate. Specify either &lt;code&gt;ProvisionedProductName&lt;/code&gt; or &lt;code&gt;ProvisionedProductId&lt;/code&gt;, but not both.&lt;/p&gt;
--- @param TerminateToken [IdempotencyToken] &lt;p&gt;An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the ProvisionedProduct object is terminated, further requests to terminate the same ProvisionedProduct object always return &lt;b&gt;ResourceNotFound&lt;/b&gt; regardless of the value of &lt;code&gt;TerminateToken&lt;/code&gt;.&lt;/p&gt;
--- @param IgnoreErrors [IgnoreErrors] &lt;p&gt;If set to true, AWS Service Catalog stops managing the specified ProvisionedProduct object even if it cannot delete the underlying resources.&lt;/p&gt;
--- @param ProvisionedProductName [ProvisionedProductNameOrArn] &lt;p&gt;The name of the ProvisionedProduct object to terminate. Specify either &lt;code&gt;ProvisionedProductName&lt;/code&gt; or &lt;code&gt;ProvisionedProductId&lt;/code&gt;, but not both.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param ProvisionedProductId [Id] <p>The identifier of the ProvisionedProduct object to terminate. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+-- @param TerminateToken [IdempotencyToken] <p>An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the ProvisionedProduct object is terminated, further requests to terminate the same ProvisionedProduct object always return <b>ResourceNotFound</b> regardless of the value of <code>TerminateToken</code>.</p>
+-- @param IgnoreErrors [IgnoreErrors] <p>If set to true, AWS Service Catalog stops managing the specified ProvisionedProduct object even if it cannot delete the underlying resources.</p>
+-- @param ProvisionedProductName [ProvisionedProductNameOrArn] <p>The name of the ProvisionedProduct object to terminate. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
 -- Required parameter: TerminateToken
 function M.TerminateProvisionedProductInput(AcceptLanguage, ProvisionedProductId, TerminateToken, IgnoreErrors, ProvisionedProductName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateProvisionedProductInput")
@@ -649,10 +649,10 @@ end
 
 --- Create a structure of type DescribeRecordInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The record identifier of the ProvisionedProduct object for which to retrieve output information. This is the &lt;code&gt;RecordDetail.RecordId&lt;/code&gt; obtained from the request operation's response.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param Id [Id] <p>The record identifier of the ProvisionedProduct object for which to retrieve output information. This is the <code>RecordDetail.RecordId</code> obtained from the request operation's response.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
 -- Required parameter: Id
 function M.DescribeRecordInput(AcceptLanguage, PageToken, Id, PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRecordInput")
@@ -681,8 +681,8 @@ end
 
 --- Create a structure of type DescribeConstraintInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the constraint.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The identifier of the constraint.</p>
 -- Required parameter: Id
 function M.DescribeConstraintInput(AcceptLanguage, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConstraintInput")
@@ -705,7 +705,7 @@ function M.AssertInvalidStateException(struct)
 end
 
 --- Create a structure of type InvalidStateException
--- &lt;p&gt;An attempt was made to modify a resource that is in an invalid state. Inspect the resource you are using for this operation to ensure that all resource states are valid before retrying the operation.&lt;/p&gt;
+-- <p>An attempt was made to modify a resource that is in an invalid state. Inspect the resource you are using for this operation to ensure that all resource states are valid before retrying the operation.</p>
 function M.InvalidStateException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidStateException")
 	local t = { 
@@ -727,9 +727,9 @@ function M.AssertTagOptionSummary(struct)
 end
 
 --- Create a structure of type TagOptionSummary
--- &lt;p&gt;The TagOption summary key-value pair.&lt;/p&gt;
--- @param Values [TagOptionValues] &lt;p&gt;The TagOptionSummary value.&lt;/p&gt;
--- @param Key [TagOptionKey] &lt;p&gt;The TagOptionSummary key.&lt;/p&gt;
+-- <p>The TagOption summary key-value pair.</p>
+-- @param Values [TagOptionValues] <p>The TagOptionSummary value.</p>
+-- @param Key [TagOptionKey] <p>The TagOptionSummary key.</p>
 function M.TagOptionSummary(Values, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagOptionSummary")
 	local t = { 
@@ -754,8 +754,8 @@ end
 
 --- Create a structure of type UpdateProductOutput
 --  
--- @param ProductViewDetail [ProductViewDetail] &lt;p&gt;The resulting detailed product view information.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Tags associated with the product.&lt;/p&gt;
+-- @param ProductViewDetail [ProductViewDetail] <p>The resulting detailed product view information.</p>
+-- @param Tags [Tags] <p>Tags associated with the product.</p>
 function M.UpdateProductOutput(ProductViewDetail, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProductOutput")
 	local t = { 
@@ -804,10 +804,10 @@ end
 
 --- Create a structure of type DescribeProvisioningArtifactInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param ProvisioningArtifactId [Id] &lt;p&gt;The identifier of the provisioning artifact. This is sometimes referred to as the product version.&lt;/p&gt;
--- @param Verbose [Verbose] &lt;p&gt;Enable a verbose level of details for the provisioning artifact.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param ProvisioningArtifactId [Id] <p>The identifier of the provisioning artifact. This is sometimes referred to as the product version.</p>
+-- @param Verbose [Verbose] <p>Enable a verbose level of details for the provisioning artifact.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: ProvisioningArtifactId
 -- Required parameter: ProductId
 function M.DescribeProvisioningArtifactInput(AcceptLanguage, ProvisioningArtifactId, Verbose, ProductId, ...)
@@ -837,9 +837,9 @@ end
 
 --- Create a structure of type CreateProductOutput
 --  
--- @param ProductViewDetail [ProductViewDetail] &lt;p&gt;The resulting detailed product view information.&lt;/p&gt;
--- @param ProvisioningArtifactDetail [ProvisioningArtifactDetail] &lt;p&gt;The resulting detailed provisioning artifact information.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Tags successfully associated with the new product.&lt;/p&gt;
+-- @param ProductViewDetail [ProductViewDetail] <p>The resulting detailed product view information.</p>
+-- @param ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>The resulting detailed provisioning artifact information.</p>
+-- @param Tags [Tags] <p>Tags successfully associated with the new product.</p>
 function M.CreateProductOutput(ProductViewDetail, ProvisioningArtifactDetail, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateProductOutput")
 	local t = { 
@@ -864,9 +864,9 @@ function M.AssertProvisioningParameter(struct)
 end
 
 --- Create a structure of type ProvisioningParameter
--- &lt;p&gt;The parameter key-value pairs used to provision a product.&lt;/p&gt;
--- @param Value [ParameterValue] &lt;p&gt;The value to use for provisioning. Any constraints on this value can be found in &lt;code&gt;ProvisioningArtifactParameter&lt;/code&gt; for &lt;code&gt;Key&lt;/code&gt;.&lt;/p&gt;
--- @param Key [ParameterKey] &lt;p&gt;The &lt;code&gt;ProvisioningArtifactParameter.ParameterKey&lt;/code&gt; parameter from &lt;a&gt;DescribeProvisioningParameters&lt;/a&gt;.&lt;/p&gt;
+-- <p>The parameter key-value pairs used to provision a product.</p>
+-- @param Value [ParameterValue] <p>The value to use for provisioning. Any constraints on this value can be found in <code>ProvisioningArtifactParameter</code> for <code>Key</code>.</p>
+-- @param Key [ParameterKey] <p>The <code>ProvisioningArtifactParameter.ParameterKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
 function M.ProvisioningParameter(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningParameter")
 	local t = { 
@@ -891,8 +891,8 @@ end
 
 --- Create a structure of type ListPortfoliosForProductOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param PortfolioDetails [PortfolioDetails] &lt;p&gt;List of detailed portfolio information objects.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
 function M.ListPortfoliosForProductOutput(NextPageToken, PortfolioDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfoliosForProductOutput")
 	local t = { 
@@ -918,8 +918,8 @@ end
 
 --- Create a structure of type DeleteProductInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the product for the delete request.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The identifier of the product for the delete request.</p>
 -- Required parameter: Id
 function M.DeleteProductInput(AcceptLanguage, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProductInput")
@@ -971,13 +971,13 @@ end
 
 --- Create a structure of type UpdatePortfolioInput
 --  
--- @param RemoveTags [TagKeys] &lt;p&gt;Tags to remove from the existing list of tags associated with the portfolio.&lt;/p&gt;
--- @param DisplayName [PortfolioDisplayName] &lt;p&gt;The name to use for display purposes.&lt;/p&gt;
--- @param AddTags [AddTags] &lt;p&gt;Tags to add to the existing list of tags associated with the portfolio.&lt;/p&gt;
--- @param ProviderName [ProviderName] &lt;p&gt;The updated name of the portfolio provider.&lt;/p&gt;
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the portfolio for the update request.&lt;/p&gt;
--- @param Description [PortfolioDescription] &lt;p&gt;The updated text description of the portfolio.&lt;/p&gt;
+-- @param RemoveTags [TagKeys] <p>Tags to remove from the existing list of tags associated with the portfolio.</p>
+-- @param DisplayName [PortfolioDisplayName] <p>The name to use for display purposes.</p>
+-- @param AddTags [AddTags] <p>Tags to add to the existing list of tags associated with the portfolio.</p>
+-- @param ProviderName [ProviderName] <p>The updated name of the portfolio provider.</p>
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The identifier of the portfolio for the update request.</p>
+-- @param Description [PortfolioDescription] <p>The updated text description of the portfolio.</p>
 -- Required parameter: Id
 function M.UpdatePortfolioInput(RemoveTags, DisplayName, AddTags, ProviderName, AcceptLanguage, Id, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePortfolioInput")
@@ -1007,7 +1007,7 @@ end
 
 --- Create a structure of type ProvisionProductOutput
 --  
--- @param RecordDetail [RecordDetail] &lt;p&gt;The detailed result of the &lt;a&gt;ProvisionProduct&lt;/a&gt; request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors that the request encountered. &lt;/p&gt;
+-- @param RecordDetail [RecordDetail] <p>The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors that the request encountered. </p>
 function M.ProvisionProductOutput(RecordDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionProductOutput")
 	local t = { 
@@ -1028,7 +1028,7 @@ function M.AssertDuplicateResourceException(struct)
 end
 
 --- Create a structure of type DuplicateResourceException
--- &lt;p&gt;The specified resource is a duplicate.&lt;/p&gt;
+-- <p>The specified resource is a duplicate.</p>
 function M.DuplicateResourceException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateResourceException")
 	local t = { 
@@ -1048,7 +1048,7 @@ function M.AssertInvalidParametersException(struct)
 end
 
 --- Create a structure of type InvalidParametersException
--- &lt;p&gt;One or more parameters provided to the operation are invalid.&lt;/p&gt;
+-- <p>One or more parameters provided to the operation are invalid.</p>
 function M.InvalidParametersException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParametersException")
 	local t = { 
@@ -1071,8 +1071,8 @@ end
 
 --- Create a structure of type ListLaunchPathsOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param LaunchPathSummaries [LaunchPathSummaries] &lt;p&gt;List of launch path information summaries for the specified &lt;code&gt;PageToken&lt;/code&gt;.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param LaunchPathSummaries [LaunchPathSummaries] <p>List of launch path information summaries for the specified <code>PageToken</code>.</p>
 function M.ListLaunchPathsOutput(NextPageToken, LaunchPathSummaries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLaunchPathsOutput")
 	local t = { 
@@ -1105,18 +1105,18 @@ function M.AssertProductViewSummary(struct)
 end
 
 --- Create a structure of type ProductViewSummary
--- &lt;p&gt;The summary metadata about the specified product.&lt;/p&gt;
--- @param SupportDescription [SupportDescription] &lt;p&gt;The description of the support for this Product.&lt;/p&gt;
--- @param Name [ProductViewName] &lt;p&gt;The name of the product.&lt;/p&gt;
--- @param HasDefaultPath [HasDefaultPath] &lt;p&gt;A value of &lt;code&gt;false&lt;/code&gt; indicates that the product does not have a default path, while a value of &lt;code&gt;true&lt;/code&gt; indicates that it does. If it's false, call &lt;a&gt;ListLaunchPaths&lt;/a&gt; to disambiguate between paths. If true, &lt;a&gt;ListLaunchPaths&lt;/a&gt; is not required, and the output of the &lt;a&gt;ProductViewSummary&lt;/a&gt; operation can be used directly with &lt;a&gt;DescribeProvisioningParameters&lt;/a&gt;.&lt;/p&gt;
--- @param ShortDescription [ProductViewShortDescription] &lt;p&gt;Short description of the product.&lt;/p&gt;
--- @param SupportUrl [SupportUrl] &lt;p&gt;The URL information to obtain support for this Product.&lt;/p&gt;
--- @param Distributor [ProductViewDistributor] &lt;p&gt;The distributor of the product. Contact the product administrator for the significance of this value.&lt;/p&gt;
--- @param Owner [ProductViewOwner] &lt;p&gt;The owner of the product. Contact the product administrator for the significance of this value.&lt;/p&gt;
--- @param SupportEmail [SupportEmail] &lt;p&gt;The email contact information to obtain support for this Product.&lt;/p&gt;
--- @param Type [ProductType] &lt;p&gt;The product type. Contact the product administrator for the significance of this value. If this value is &lt;code&gt;MARKETPLACE&lt;/code&gt;, the product was created by AWS Marketplace.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The product view identifier.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- <p>The summary metadata about the specified product.</p>
+-- @param SupportDescription [SupportDescription] <p>The description of the support for this Product.</p>
+-- @param Name [ProductViewName] <p>The name of the product.</p>
+-- @param HasDefaultPath [HasDefaultPath] <p>A value of <code>false</code> indicates that the product does not have a default path, while a value of <code>true</code> indicates that it does. If it's false, call <a>ListLaunchPaths</a> to disambiguate between paths. If true, <a>ListLaunchPaths</a> is not required, and the output of the <a>ProductViewSummary</a> operation can be used directly with <a>DescribeProvisioningParameters</a>.</p>
+-- @param ShortDescription [ProductViewShortDescription] <p>Short description of the product.</p>
+-- @param SupportUrl [SupportUrl] <p>The URL information to obtain support for this Product.</p>
+-- @param Distributor [ProductViewDistributor] <p>The distributor of the product. Contact the product administrator for the significance of this value.</p>
+-- @param Owner [ProductViewOwner] <p>The owner of the product. Contact the product administrator for the significance of this value.</p>
+-- @param SupportEmail [SupportEmail] <p>The email contact information to obtain support for this Product.</p>
+-- @param Type [ProductType] <p>The product type. Contact the product administrator for the significance of this value. If this value is <code>MARKETPLACE</code>, the product was created by AWS Marketplace.</p>
+-- @param Id [Id] <p>The product view identifier.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 function M.ProductViewSummary(SupportDescription, Name, HasDefaultPath, ShortDescription, SupportUrl, Distributor, Owner, SupportEmail, Type, Id, ProductId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProductViewSummary")
 	local t = { 
@@ -1151,11 +1151,11 @@ function M.AssertConstraintDetail(struct)
 end
 
 --- Create a structure of type ConstraintDetail
--- &lt;p&gt;Detailed constraint information.&lt;/p&gt;
--- @param Owner [AccountId] &lt;p&gt;The owner of the constraint.&lt;/p&gt;
--- @param ConstraintId [Id] &lt;p&gt;The identifier of the constraint.&lt;/p&gt;
--- @param Type [ConstraintType] &lt;p&gt;The type of the constraint.&lt;/p&gt;
--- @param Description [ConstraintDescription] &lt;p&gt;The text description of the constraint.&lt;/p&gt;
+-- <p>Detailed constraint information.</p>
+-- @param Owner [AccountId] <p>The owner of the constraint.</p>
+-- @param ConstraintId [Id] <p>The identifier of the constraint.</p>
+-- @param Type [ConstraintType] <p>The type of the constraint.</p>
+-- @param Description [ConstraintDescription] <p>The text description of the constraint.</p>
 function M.ConstraintDetail(Owner, ConstraintId, Type, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConstraintDetail")
 	local t = { 
@@ -1183,9 +1183,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Key-value pairs to associate with this provisioning. These tags are entirely discretionary and are propagated to the resources created in the provisioning.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The desired value for this key.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The &lt;code&gt;ProvisioningArtifactParameter.TagKey&lt;/code&gt; parameter from &lt;a&gt;DescribeProvisioningParameters&lt;/a&gt;.&lt;/p&gt;
+-- <p>Key-value pairs to associate with this provisioning. These tags are entirely discretionary and are propagated to the resources created in the provisioning.</p>
+-- @param Value [TagValue] <p>The desired value for this key.</p>
+-- @param Key [TagKey] <p>The <code>ProvisioningArtifactParameter.TagKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
 -- Required parameter: Key
 -- Required parameter: Value
 function M.Tag(Value, Key, ...)
@@ -1213,8 +1213,8 @@ end
 
 --- Create a structure of type ListProvisioningArtifactsInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: ProductId
 function M.ListProvisioningArtifactsInput(AcceptLanguage, ProductId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListProvisioningArtifactsInput")
@@ -1243,9 +1243,9 @@ end
 
 --- Create a structure of type DisassociateProductFromPortfolioInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: ProductId
 -- Required parameter: PortfolioId
 function M.DisassociateProductFromPortfolioInput(AcceptLanguage, PortfolioId, ProductId, ...)
@@ -1274,9 +1274,9 @@ end
 
 --- Create a structure of type DescribeRecordOutput
 --  
--- @param RecordDetail [RecordDetail] &lt;p&gt;Detailed record information for the specified product. &lt;/p&gt;
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param RecordOutputs [RecordOutputs] &lt;p&gt;A list of outputs for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.&lt;/p&gt;
+-- @param RecordDetail [RecordDetail] <p>Detailed record information for the specified product. </p>
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param RecordOutputs [RecordOutputs] <p>A list of outputs for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.</p>
 function M.DescribeRecordOutput(RecordDetail, NextPageToken, RecordOutputs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRecordOutput")
 	local t = { 
@@ -1304,12 +1304,12 @@ function M.AssertProvisioningArtifactSummary(struct)
 end
 
 --- Create a structure of type ProvisioningArtifactSummary
--- &lt;p&gt;Stores summary information about a provisioning artifact.&lt;/p&gt;
--- @param CreatedTime [ProvisioningArtifactCreatedTime] &lt;p&gt;The UTC timestamp of the creation time.&lt;/p&gt;
--- @param Description [ProvisioningArtifactDescription] &lt;p&gt;The description of the provisioning artifact.&lt;/p&gt;
--- @param ProvisioningArtifactMetadata [ProvisioningArtifactInfo] &lt;p&gt;The provisioning artifact metadata. This data is used with products created by AWS Marketplace.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the provisioning artifact.&lt;/p&gt;
--- @param Name [ProvisioningArtifactName] &lt;p&gt;The name of the provisioning artifact.&lt;/p&gt;
+-- <p>Stores summary information about a provisioning artifact.</p>
+-- @param CreatedTime [ProvisioningArtifactCreatedTime] <p>The UTC timestamp of the creation time.</p>
+-- @param Description [ProvisioningArtifactDescription] <p>The description of the provisioning artifact.</p>
+-- @param ProvisioningArtifactMetadata [ProvisioningArtifactInfo] <p>The provisioning artifact metadata. This data is used with products created by AWS Marketplace.</p>
+-- @param Id [Id] <p>The identifier of the provisioning artifact.</p>
+-- @param Name [ProvisioningArtifactName] <p>The name of the provisioning artifact.</p>
 function M.ProvisioningArtifactSummary(CreatedTime, Description, ProvisioningArtifactMetadata, Id, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningArtifactSummary")
 	local t = { 
@@ -1343,14 +1343,14 @@ end
 
 --- Create a structure of type SearchProductsAsAdminInput
 --  
--- @param ProductSource [ProductSource] &lt;p&gt;Access level of the source of the product.&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param SortBy [ProductViewSortBy] &lt;p&gt;The sort field specifier. If no value is specified, results are not sorted.&lt;/p&gt;
--- @param Filters [ProductViewFilters] &lt;p&gt;The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the administrator has access.&lt;/p&gt;
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param SortOrder [SortOrder] &lt;p&gt;The sort order specifier. If no value is specified, results are not sorted.&lt;/p&gt;
+-- @param ProductSource [ProductSource] <p>Access level of the source of the product.</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param SortBy [ProductViewSortBy] <p>The sort field specifier. If no value is specified, results are not sorted.</p>
+-- @param Filters [ProductViewFilters] <p>The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the administrator has access.</p>
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param SortOrder [SortOrder] <p>The sort order specifier. If no value is specified, results are not sorted.</p>
 function M.SearchProductsAsAdminInput(ProductSource, PortfolioId, PageSize, PageToken, SortBy, Filters, AcceptLanguage, SortOrder, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SearchProductsAsAdminInput")
 	local t = { 
@@ -1382,9 +1382,9 @@ end
 
 --- Create a structure of type UpdateProvisioningArtifactOutput
 --  
--- @param ProvisioningArtifactDetail [ProvisioningArtifactDetail] &lt;p&gt;The resulting detailed provisioning artifact information.&lt;/p&gt;
--- @param Info [ProvisioningArtifactInfo] &lt;p&gt;Additional information about the provisioning artifact update request.&lt;/p&gt;
--- @param Status [Status] &lt;p&gt;The status of the current request.&lt;/p&gt;
+-- @param ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>The resulting detailed provisioning artifact information.</p>
+-- @param Info [ProvisioningArtifactInfo] <p>Additional information about the provisioning artifact update request.</p>
+-- @param Status [Status] <p>The status of the current request.</p>
 function M.UpdateProvisioningArtifactOutput(ProvisioningArtifactDetail, Info, Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProvisioningArtifactOutput")
 	local t = { 
@@ -1414,10 +1414,10 @@ end
 
 --- Create a structure of type AssociateProductWithPortfolioInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param SourcePortfolioId [Id] &lt;p&gt;The identifier of the source portfolio to use with this association.&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param SourcePortfolioId [Id] <p>The identifier of the source portfolio to use with this association.</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: ProductId
 -- Required parameter: PortfolioId
 function M.AssociateProductWithPortfolioInput(AcceptLanguage, SourcePortfolioId, PortfolioId, ProductId, ...)
@@ -1444,8 +1444,8 @@ function M.AssertParameterConstraints(struct)
 end
 
 --- Create a structure of type ParameterConstraints
--- &lt;p&gt;The constraints that the administrator has put on the parameter.&lt;/p&gt;
--- @param AllowedValues [AllowedValues] &lt;p&gt;The values that the administrator has allowed for the parameter.&lt;/p&gt;
+-- <p>The constraints that the administrator has put on the parameter.</p>
+-- @param AllowedValues [AllowedValues] <p>The values that the administrator has allowed for the parameter.</p>
 function M.ParameterConstraints(AllowedValues, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterConstraints")
 	local t = { 
@@ -1472,10 +1472,10 @@ end
 
 --- Create a structure of type ListResourcesForTagOptionInput
 --  
--- @param ResourceType [ResourceType] &lt;p&gt;Resource type.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
--- @param TagOptionId [TagOptionId] &lt;p&gt;Identifier of the TagOption.&lt;/p&gt;
+-- @param ResourceType [ResourceType] <p>Resource type.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @param TagOptionId [TagOptionId] <p>Identifier of the TagOption.</p>
 -- Required parameter: TagOptionId
 function M.ListResourcesForTagOptionInput(ResourceType, PageToken, PageSize, TagOptionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListResourcesForTagOptionInput")
@@ -1505,9 +1505,9 @@ end
 
 --- Create a structure of type UpdateTagOptionInput
 --  
--- @param Active [TagOptionActive] &lt;p&gt;The updated active state.&lt;/p&gt;
--- @param Id [TagOptionId] &lt;p&gt;The identifier of the constraint to update.&lt;/p&gt;
--- @param Value [TagOptionValue] &lt;p&gt;The updated value.&lt;/p&gt;
+-- @param Active [TagOptionActive] <p>The updated active state.</p>
+-- @param Id [TagOptionId] <p>The identifier of the constraint to update.</p>
+-- @param Value [TagOptionValue] <p>The updated value.</p>
 -- Required parameter: Id
 function M.UpdateTagOptionInput(Active, Id, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTagOptionInput")
@@ -1533,9 +1533,9 @@ function M.AssertRecordTag(struct)
 end
 
 --- Create a structure of type RecordTag
--- &lt;p&gt;A tag associated with the record, stored as a key-value pair.&lt;/p&gt;
--- @param Value [RecordTagValue] &lt;p&gt;The value for this tag.&lt;/p&gt;
--- @param Key [RecordTagKey] &lt;p&gt;The key for this tag.&lt;/p&gt;
+-- <p>A tag associated with the record, stored as a key-value pair.</p>
+-- @param Value [RecordTagValue] <p>The value for this tag.</p>
+-- @param Key [RecordTagKey] <p>The key for this tag.</p>
 function M.RecordTag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecordTag")
 	local t = { 
@@ -1557,7 +1557,7 @@ function M.AssertTagOptionNotMigratedException(struct)
 end
 
 --- Create a structure of type TagOptionNotMigratedException
--- &lt;p&gt;An operation requiring TagOptions failed because the TagOptions migration process has not been performed for this account. Please use the AWS console to perform the migration process before retrying the operation.&lt;/p&gt;
+-- <p>An operation requiring TagOptions failed because the TagOptions migration process has not been performed for this account. Please use the AWS console to perform the migration process before retrying the operation.</p>
 function M.TagOptionNotMigratedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagOptionNotMigratedException")
 	local t = { 
@@ -1583,10 +1583,10 @@ end
 
 --- Create a structure of type ListPortfoliosForProductInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: ProductId
 function M.ListPortfoliosForProductInput(AcceptLanguage, PageToken, PageSize, ProductId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfoliosForProductInput")
@@ -1614,8 +1614,8 @@ end
 
 --- Create a structure of type ScanProvisionedProductsOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param ProvisionedProducts [ProvisionedProductDetails] &lt;p&gt;A list of ProvisionedProduct detail objects.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param ProvisionedProducts [ProvisionedProductDetails] <p>A list of ProvisionedProduct detail objects.</p>
 function M.ScanProvisionedProductsOutput(NextPageToken, ProvisionedProducts, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScanProvisionedProductsOutput")
 	local t = { 
@@ -1675,18 +1675,18 @@ end
 
 --- Create a structure of type CreateProductInput
 --  
--- @param SupportEmail [SupportEmail] &lt;p&gt;Contact email for product support.&lt;/p&gt;
--- @param Name [ProductViewName] &lt;p&gt;The name of the product.&lt;/p&gt;
--- @param Tags [AddTags] &lt;p&gt;Tags to associate with the new product.&lt;/p&gt;
--- @param SupportUrl [SupportUrl] &lt;p&gt;Contact URL for product support.&lt;/p&gt;
--- @param Owner [ProductViewOwner] &lt;p&gt;The owner of the product.&lt;/p&gt;
--- @param IdempotencyToken [IdempotencyToken] &lt;p&gt;A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.&lt;/p&gt;
--- @param ProvisioningArtifactParameters [ProvisioningArtifactProperties] &lt;p&gt;Parameters for the provisioning artifact.&lt;/p&gt;
--- @param ProductType [ProductType] &lt;p&gt;The type of the product to create.&lt;/p&gt;
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Distributor [ProductViewOwner] &lt;p&gt;The distributor of the product.&lt;/p&gt;
--- @param SupportDescription [SupportDescription] &lt;p&gt;Support information about the product.&lt;/p&gt;
--- @param Description [ProductViewShortDescription] &lt;p&gt;The text description of the product.&lt;/p&gt;
+-- @param SupportEmail [SupportEmail] <p>Contact email for product support.</p>
+-- @param Name [ProductViewName] <p>The name of the product.</p>
+-- @param Tags [AddTags] <p>Tags to associate with the new product.</p>
+-- @param SupportUrl [SupportUrl] <p>Contact URL for product support.</p>
+-- @param Owner [ProductViewOwner] <p>The owner of the product.</p>
+-- @param IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
+-- @param ProvisioningArtifactParameters [ProvisioningArtifactProperties] <p>Parameters for the provisioning artifact.</p>
+-- @param ProductType [ProductType] <p>The type of the product to create.</p>
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Distributor [ProductViewOwner] <p>The distributor of the product.</p>
+-- @param SupportDescription [SupportDescription] <p>Support information about the product.</p>
+-- @param Description [ProductViewShortDescription] <p>The text description of the product.</p>
 -- Required parameter: Name
 -- Required parameter: Owner
 -- Required parameter: ProductType
@@ -1727,11 +1727,11 @@ function M.AssertProvisioningArtifact(struct)
 end
 
 --- Create a structure of type ProvisioningArtifact
--- &lt;p&gt;Contains information indicating the ways in which a product can be provisioned.&lt;/p&gt;
--- @param CreatedTime [ProvisioningArtifactCreatedTime] &lt;p&gt;The UTC timestamp of the creation time.&lt;/p&gt;
--- @param Description [ProvisioningArtifactDescription] &lt;p&gt;The text description of the artifact.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier for the artifact. This is sometimes referred to as the product version.&lt;/p&gt;
--- @param Name [ProvisioningArtifactName] &lt;p&gt;The name of the artifact.&lt;/p&gt;
+-- <p>Contains information indicating the ways in which a product can be provisioned.</p>
+-- @param CreatedTime [ProvisioningArtifactCreatedTime] <p>The UTC timestamp of the creation time.</p>
+-- @param Description [ProvisioningArtifactDescription] <p>The text description of the artifact.</p>
+-- @param Id [Id] <p>The identifier for the artifact. This is sometimes referred to as the product version.</p>
+-- @param Name [ProvisioningArtifactName] <p>The name of the artifact.</p>
 function M.ProvisioningArtifact(CreatedTime, Description, Id, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningArtifact")
 	local t = { 
@@ -1759,8 +1759,8 @@ end
 
 --- Create a structure of type DescribeProductAsAdminInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the product for which to retrieve information.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The identifier of the product for which to retrieve information.</p>
 -- Required parameter: Id
 function M.DescribeProductAsAdminInput(AcceptLanguage, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductAsAdminInput")
@@ -1788,12 +1788,12 @@ function M.AssertResourceDetail(struct)
 end
 
 --- Create a structure of type ResourceDetail
--- &lt;p&gt;Detailed resource information.&lt;/p&gt;
--- @param CreatedTime [ResourceDetailCreatedTime] &lt;p&gt;Creation time of the resource.&lt;/p&gt;
--- @param Description [ResourceDetailDescription] &lt;p&gt;Description of the resource.&lt;/p&gt;
--- @param Id [ResourceDetailId] &lt;p&gt;Identifier of the resource.&lt;/p&gt;
--- @param ARN [ResourceDetailARN] &lt;p&gt;ARN of the resource.&lt;/p&gt;
--- @param Name [ResourceDetailName] &lt;p&gt;Name of the resource.&lt;/p&gt;
+-- <p>Detailed resource information.</p>
+-- @param CreatedTime [ResourceDetailCreatedTime] <p>Creation time of the resource.</p>
+-- @param Description [ResourceDetailDescription] <p>Description of the resource.</p>
+-- @param Id [ResourceDetailId] <p>Identifier of the resource.</p>
+-- @param ARN [ResourceDetailARN] <p>ARN of the resource.</p>
+-- @param Name [ResourceDetailName] <p>Name of the resource.</p>
 function M.ResourceDetail(CreatedTime, Description, Id, ARN, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceDetail")
 	local t = { 
@@ -1821,8 +1821,8 @@ end
 
 --- Create a structure of type ListConstraintsForPortfolioOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param ConstraintDetails [ConstraintDetails] &lt;p&gt;List of detailed constraint information objects.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param ConstraintDetails [ConstraintDetails] <p>List of detailed constraint information objects.</p>
 function M.ListConstraintsForPortfolioOutput(NextPageToken, ConstraintDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListConstraintsForPortfolioOutput")
 	local t = { 
@@ -1848,8 +1848,8 @@ end
 
 --- Create a structure of type DescribeProductViewInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The &lt;code&gt;ProductViewId&lt;/code&gt; of the product to describe.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The <code>ProductViewId</code> of the product to describe.</p>
 -- Required parameter: Id
 function M.DescribeProductViewInput(AcceptLanguage, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductViewInput")
@@ -1874,9 +1874,9 @@ function M.AssertRecordError(struct)
 end
 
 --- Create a structure of type RecordError
--- &lt;p&gt;The error code and description resulting from an operation.&lt;/p&gt;
--- @param Code [ErrorCode] &lt;p&gt;The numeric value of the error.&lt;/p&gt;
--- @param Description [ErrorDescription] &lt;p&gt;The text description of the error.&lt;/p&gt;
+-- <p>The error code and description resulting from an operation.</p>
+-- @param Code [ErrorCode] <p>The numeric value of the error.</p>
+-- @param Description [ErrorDescription] <p>The text description of the error.</p>
 function M.RecordError(Code, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecordError")
 	local t = { 
@@ -1903,12 +1903,12 @@ function M.AssertProvisioningArtifactDetail(struct)
 end
 
 --- Create a structure of type ProvisioningArtifactDetail
--- &lt;p&gt;Detailed provisioning artifact information.&lt;/p&gt;
--- @param CreatedTime [CreationTime] &lt;p&gt;The UTC timestamp of the creation time.&lt;/p&gt;
--- @param Description [ProvisioningArtifactName] &lt;p&gt;The text description of the provisioning artifact.&lt;/p&gt;
--- @param Type [ProvisioningArtifactType] &lt;p&gt;The type of the provisioning artifact. The following provisioning artifact types are used by AWS Marketplace products:&lt;/p&gt; &lt;p&gt; &lt;code&gt;MARKETPLACE_AMI&lt;/code&gt; - AMI products.&lt;/p&gt; &lt;p&gt; &lt;code&gt;MARKETPLACE_CAR&lt;/code&gt; - CAR (Cluster and AWS Resources) products.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the provisioning artifact. This is sometimes referred to as the product version.&lt;/p&gt;
--- @param Name [ProvisioningArtifactName] &lt;p&gt;The name assigned to the provisioning artifact.&lt;/p&gt;
+-- <p>Detailed provisioning artifact information.</p>
+-- @param CreatedTime [CreationTime] <p>The UTC timestamp of the creation time.</p>
+-- @param Description [ProvisioningArtifactName] <p>The text description of the provisioning artifact.</p>
+-- @param Type [ProvisioningArtifactType] <p>The type of the provisioning artifact. The following provisioning artifact types are used by AWS Marketplace products:</p> <p> <code>MARKETPLACE_AMI</code> - AMI products.</p> <p> <code>MARKETPLACE_CAR</code> - CAR (Cluster and AWS Resources) products.</p>
+-- @param Id [Id] <p>The identifier of the provisioning artifact. This is sometimes referred to as the product version.</p>
+-- @param Name [ProvisioningArtifactName] <p>The name assigned to the provisioning artifact.</p>
 function M.ProvisioningArtifactDetail(CreatedTime, Description, Type, Id, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningArtifactDetail")
 	local t = { 
@@ -1961,10 +1961,10 @@ end
 
 --- Create a structure of type AssociatePrincipalWithPortfolioInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PrincipalType [PrincipalType] &lt;p&gt;The principal type. Must be &lt;code&gt;IAM&lt;/code&gt; &lt;/p&gt;
--- @param PrincipalARN [PrincipalARN] &lt;p&gt;The ARN representing the principal (IAM user, role, or group).&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PrincipalType [PrincipalType] <p>The principal type. Must be <code>IAM</code> </p>
+-- @param PrincipalARN [PrincipalARN] <p>The ARN representing the principal (IAM user, role, or group).</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
 -- Required parameter: PortfolioId
 -- Required parameter: PrincipalARN
 -- Required parameter: PrincipalType
@@ -1999,11 +1999,11 @@ end
 
 --- Create a structure of type UpdateProvisioningArtifactInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param ProvisioningArtifactId [Id] &lt;p&gt;The identifier of the provisioning artifact for the update request. This is sometimes referred to as the product version.&lt;/p&gt;
--- @param Description [ProvisioningArtifactDescription] &lt;p&gt;The updated text description of the provisioning artifact.&lt;/p&gt;
--- @param Name [ProvisioningArtifactName] &lt;p&gt;The updated name of the provisioning artifact.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param ProvisioningArtifactId [Id] <p>The identifier of the provisioning artifact for the update request. This is sometimes referred to as the product version.</p>
+-- @param Description [ProvisioningArtifactDescription] <p>The updated text description of the provisioning artifact.</p>
+-- @param Name [ProvisioningArtifactName] <p>The updated name of the provisioning artifact.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: ProductId
 -- Required parameter: ProvisioningArtifactId
 function M.UpdateProvisioningArtifactInput(AcceptLanguage, ProvisioningArtifactId, Description, Name, ProductId, ...)
@@ -2053,10 +2053,10 @@ function M.AssertRecordOutput(struct)
 end
 
 --- Create a structure of type RecordOutput
--- &lt;p&gt;An output for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The text description of the output.&lt;/p&gt;
--- @param OutputKey [OutputKey] &lt;p&gt;The output key.&lt;/p&gt;
--- @param OutputValue [OutputValue] &lt;p&gt;The output value.&lt;/p&gt;
+-- <p>An output for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.</p>
+-- @param Description [Description] <p>The text description of the output.</p>
+-- @param OutputKey [OutputKey] <p>The output key.</p>
+-- @param OutputValue [OutputValue] <p>The output value.</p>
 function M.RecordOutput(Description, OutputKey, OutputValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecordOutput")
 	local t = { 
@@ -2082,8 +2082,8 @@ end
 
 --- Create a structure of type DescribeProductOutput
 --  
--- @param ProductViewSummary [ProductViewSummary] &lt;p&gt;The summary metadata about the specified product.&lt;/p&gt;
--- @param ProvisioningArtifacts [ProvisioningArtifacts] &lt;p&gt;A list of provisioning artifact objects for the specified product. The &lt;code&gt;ProvisioningArtifacts&lt;/code&gt; parameter represent the ways the specified product can be provisioned.&lt;/p&gt;
+-- @param ProductViewSummary [ProductViewSummary] <p>The summary metadata about the specified product.</p>
+-- @param ProvisioningArtifacts [ProvisioningArtifacts] <p>A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code> parameter represent the ways the specified product can be provisioned.</p>
 function M.DescribeProductOutput(ProductViewSummary, ProvisioningArtifacts, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductOutput")
 	local t = { 
@@ -2105,7 +2105,7 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;The current limits of the service would have been exceeded by this operation. Reduce the resource use or increase the service limits and retry the operation.&lt;/p&gt;
+-- <p>The current limits of the service would have been exceeded by this operation. Reduce the resource use or increase the service limits and retry the operation.</p>
 function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -2131,13 +2131,13 @@ function M.AssertPortfolioDetail(struct)
 end
 
 --- Create a structure of type PortfolioDetail
--- &lt;p&gt;Detailed portfolio information.&lt;/p&gt;
--- @param DisplayName [PortfolioDisplayName] &lt;p&gt;The name to use for display purposes.&lt;/p&gt;
--- @param Description [PortfolioDescription] &lt;p&gt;The text description of the portfolio.&lt;/p&gt;
--- @param ProviderName [ProviderName] &lt;p&gt;The name of the portfolio provider.&lt;/p&gt;
--- @param CreatedTime [CreationTime] &lt;p&gt;The UTC timestamp of the creation time.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier for the portfolio.&lt;/p&gt;
--- @param ARN [ResourceARN] &lt;p&gt;The ARN assigned to the portfolio.&lt;/p&gt;
+-- <p>Detailed portfolio information.</p>
+-- @param DisplayName [PortfolioDisplayName] <p>The name to use for display purposes.</p>
+-- @param Description [PortfolioDescription] <p>The text description of the portfolio.</p>
+-- @param ProviderName [ProviderName] <p>The name of the portfolio provider.</p>
+-- @param CreatedTime [CreationTime] <p>The UTC timestamp of the creation time.</p>
+-- @param Id [Id] <p>The identifier for the portfolio.</p>
+-- @param ARN [ResourceARN] <p>The ARN assigned to the portfolio.</p>
 function M.PortfolioDetail(DisplayName, Description, ProviderName, CreatedTime, Id, ARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PortfolioDetail")
 	local t = { 
@@ -2176,17 +2176,17 @@ end
 
 --- Create a structure of type UpdateProductInput
 --  
--- @param RemoveTags [TagKeys] &lt;p&gt;Tags to remove from the existing list of tags associated with the product.&lt;/p&gt;
--- @param SupportEmail [SupportEmail] &lt;p&gt;The updated support email for the product.&lt;/p&gt;
--- @param Description [ProductViewShortDescription] &lt;p&gt;The updated text description of the product.&lt;/p&gt;
--- @param SupportUrl [SupportUrl] &lt;p&gt;The updated support URL for the product.&lt;/p&gt;
--- @param Owner [ProductViewOwner] &lt;p&gt;The updated owner of the product.&lt;/p&gt;
--- @param AddTags [AddTags] &lt;p&gt;Tags to add to the existing list of tags associated with the product.&lt;/p&gt;
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Distributor [ProductViewOwner] &lt;p&gt;The updated distributor of the product.&lt;/p&gt;
--- @param SupportDescription [SupportDescription] &lt;p&gt;The updated support description for the product.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the product for the update request.&lt;/p&gt;
--- @param Name [ProductViewName] &lt;p&gt;The updated product name.&lt;/p&gt;
+-- @param RemoveTags [TagKeys] <p>Tags to remove from the existing list of tags associated with the product.</p>
+-- @param SupportEmail [SupportEmail] <p>The updated support email for the product.</p>
+-- @param Description [ProductViewShortDescription] <p>The updated text description of the product.</p>
+-- @param SupportUrl [SupportUrl] <p>The updated support URL for the product.</p>
+-- @param Owner [ProductViewOwner] <p>The updated owner of the product.</p>
+-- @param AddTags [AddTags] <p>Tags to add to the existing list of tags associated with the product.</p>
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Distributor [ProductViewOwner] <p>The updated distributor of the product.</p>
+-- @param SupportDescription [SupportDescription] <p>The updated support description for the product.</p>
+-- @param Id [Id] <p>The identifier of the product for the update request.</p>
+-- @param Name [ProductViewName] <p>The updated product name.</p>
 -- Required parameter: Id
 function M.UpdateProductInput(RemoveTags, SupportEmail, Description, SupportUrl, Owner, AddTags, AcceptLanguage, Distributor, SupportDescription, Id, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProductInput")
@@ -2240,7 +2240,7 @@ end
 
 --- Create a structure of type TerminateProvisionedProductOutput
 --  
--- @param RecordDetail [RecordDetail] &lt;p&gt;The detailed result of the &lt;a&gt;TerminateProvisionedProduct&lt;/a&gt; request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.&lt;/p&gt;
+-- @param RecordDetail [RecordDetail] <p>The detailed result of the <a>TerminateProvisionedProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.</p>
 function M.TerminateProvisionedProductOutput(RecordDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateProvisionedProductOutput")
 	local t = { 
@@ -2264,8 +2264,8 @@ end
 
 --- Create a structure of type ListPortfoliosOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param PortfolioDetails [PortfolioDetails] &lt;p&gt;List of detailed portfolio information objects.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
 function M.ListPortfoliosOutput(NextPageToken, PortfolioDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfoliosOutput")
 	local t = { 
@@ -2294,10 +2294,10 @@ end
 
 --- Create a structure of type DescribeProvisioningParametersInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param ProvisioningArtifactId [Id] &lt;p&gt;The provisioning artifact identifier for this product. This is sometimes referred to as the product version.&lt;/p&gt;
--- @param PathId [Id] &lt;p&gt;The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
+-- @param PathId [Id] <p>The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: ProductId
 -- Required parameter: ProvisioningArtifactId
 function M.DescribeProvisioningParametersInput(AcceptLanguage, ProvisioningArtifactId, PathId, ProductId, ...)
@@ -2336,20 +2336,20 @@ function M.AssertRecordDetail(struct)
 end
 
 --- Create a structure of type RecordDetail
--- &lt;p&gt;The full details of a specific ProvisionedProduct object.&lt;/p&gt;
--- @param Status [RecordStatus] &lt;p&gt;The status of the ProvisionedProduct object.&lt;/p&gt; &lt;p&gt; &lt;code&gt;CREATED&lt;/code&gt; - Request created but the operation has not yet started.&lt;/p&gt; &lt;p&gt; &lt;code&gt;IN_PROGRESS&lt;/code&gt; - The requested operation is in-progress.&lt;/p&gt; &lt;p&gt; &lt;code&gt;IN_PROGRESS_IN_ERROR&lt;/code&gt; - The provisioned product is under change but the requested operation failed and some remediation is occurring. For example, a rollback.&lt;/p&gt; &lt;p&gt; &lt;code&gt;SUCCEEDED&lt;/code&gt; - The requested operation has successfully completed.&lt;/p&gt; &lt;p&gt; &lt;code&gt;FAILED&lt;/code&gt; - The requested operation has completed but has failed. Investigate using the error messages returned.&lt;/p&gt;
--- @param UpdatedTime [UpdatedTime] &lt;p&gt;The time when the record for the ProvisionedProduct object was last updated.&lt;/p&gt;
--- @param ProvisionedProductName [ProvisionedProductName] &lt;p&gt;The user-friendly name of the ProvisionedProduct object.&lt;/p&gt;
--- @param RecordType [RecordType] &lt;p&gt;The record type for this record.&lt;/p&gt;
--- @param ProvisioningArtifactId [Id] &lt;p&gt;The provisioning artifact identifier for this product. This is sometimes referred to as the product version.&lt;/p&gt;
--- @param RecordId [Id] &lt;p&gt;The identifier of the ProvisionedProduct object record.&lt;/p&gt;
--- @param ProvisionedProductType [ProvisionedProductType] &lt;p&gt;The type of the ProvisionedProduct object.&lt;/p&gt;
--- @param RecordTags [RecordTags] &lt;p&gt;List of tags associated with this record.&lt;/p&gt;
--- @param RecordErrors [RecordErrors] &lt;p&gt;A list of errors that occurred while processing the request.&lt;/p&gt;
--- @param PathId [Id] &lt;p&gt;The identifier of the path for this product's provisioning.&lt;/p&gt;
--- @param CreatedTime [CreatedTime] &lt;p&gt;The UTC timestamp of the creation time.&lt;/p&gt;
--- @param ProvisionedProductId [Id] &lt;p&gt;The identifier of the ProvisionedProduct object.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- <p>The full details of a specific ProvisionedProduct object.</p>
+-- @param Status [RecordStatus] <p>The status of the ProvisionedProduct object.</p> <p> <code>CREATED</code> - Request created but the operation has not yet started.</p> <p> <code>IN_PROGRESS</code> - The requested operation is in-progress.</p> <p> <code>IN_PROGRESS_IN_ERROR</code> - The provisioned product is under change but the requested operation failed and some remediation is occurring. For example, a rollback.</p> <p> <code>SUCCEEDED</code> - The requested operation has successfully completed.</p> <p> <code>FAILED</code> - The requested operation has completed but has failed. Investigate using the error messages returned.</p>
+-- @param UpdatedTime [UpdatedTime] <p>The time when the record for the ProvisionedProduct object was last updated.</p>
+-- @param ProvisionedProductName [ProvisionedProductName] <p>The user-friendly name of the ProvisionedProduct object.</p>
+-- @param RecordType [RecordType] <p>The record type for this record.</p>
+-- @param ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
+-- @param RecordId [Id] <p>The identifier of the ProvisionedProduct object record.</p>
+-- @param ProvisionedProductType [ProvisionedProductType] <p>The type of the ProvisionedProduct object.</p>
+-- @param RecordTags [RecordTags] <p>List of tags associated with this record.</p>
+-- @param RecordErrors [RecordErrors] <p>A list of errors that occurred while processing the request.</p>
+-- @param PathId [Id] <p>The identifier of the path for this product's provisioning.</p>
+-- @param CreatedTime [CreatedTime] <p>The UTC timestamp of the creation time.</p>
+-- @param ProvisionedProductId [Id] <p>The identifier of the ProvisionedProduct object.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 function M.RecordDetail(Status, UpdatedTime, ProvisionedProductName, RecordType, ProvisioningArtifactId, RecordId, ProvisionedProductType, RecordTags, RecordErrors, PathId, CreatedTime, ProvisionedProductId, ProductId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecordDetail")
 	local t = { 
@@ -2385,10 +2385,10 @@ function M.AssertListTagOptionsFilters(struct)
 end
 
 --- Create a structure of type ListTagOptionsFilters
--- &lt;p&gt;The ListTagOptions filters.&lt;/p&gt;
--- @param Active [TagOptionActive] &lt;p&gt;The ListTagOptionsFilters active state.&lt;/p&gt;
--- @param Value [TagOptionValue] &lt;p&gt;The ListTagOptionsFilters value.&lt;/p&gt;
--- @param Key [TagOptionKey] &lt;p&gt;The ListTagOptionsFilters key.&lt;/p&gt;
+-- <p>The ListTagOptions filters.</p>
+-- @param Active [TagOptionActive] <p>The ListTagOptionsFilters active state.</p>
+-- @param Value [TagOptionValue] <p>The ListTagOptionsFilters value.</p>
+-- @param Key [TagOptionKey] <p>The ListTagOptionsFilters key.</p>
 function M.ListTagOptionsFilters(Active, Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagOptionsFilters")
 	local t = { 
@@ -2411,7 +2411,7 @@ function M.AssertResourceInUseException(struct)
 end
 
 --- Create a structure of type ResourceInUseException
--- &lt;p&gt;The operation was requested against a resource that is currently in use. Free the resource from use and retry the operation.&lt;/p&gt;
+-- <p>The operation was requested against a resource that is currently in use. Free the resource from use and retry the operation.</p>
 function M.ResourceInUseException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
 	local t = { 
@@ -2456,10 +2456,10 @@ end
 
 --- Create a structure of type DescribeProductAsAdminOutput
 --  
--- @param ProductViewDetail [ProductViewDetail] &lt;p&gt;Detailed product view information.&lt;/p&gt;
--- @param TagOptions [TagOptionDetails] &lt;p&gt;List of TagOptions associated with the product.&lt;/p&gt;
--- @param ProvisioningArtifactSummaries [ProvisioningArtifactSummaries] &lt;p&gt;A list of provisioning artifact summaries for the product.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Tags associated with the product.&lt;/p&gt;
+-- @param ProductViewDetail [ProductViewDetail] <p>Detailed product view information.</p>
+-- @param TagOptions [TagOptionDetails] <p>List of TagOptions associated with the product.</p>
+-- @param ProvisioningArtifactSummaries [ProvisioningArtifactSummaries] <p>A list of provisioning artifact summaries for the product.</p>
+-- @param Tags [Tags] <p>Tags associated with the product.</p>
 function M.DescribeProductAsAdminOutput(ProductViewDetail, TagOptions, ProvisioningArtifactSummaries, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductAsAdminOutput")
 	local t = { 
@@ -2487,9 +2487,9 @@ end
 
 --- Create a structure of type ListTagOptionsInput
 --  
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
--- @param Filters [ListTagOptionsFilters] &lt;p&gt;The list of filters with which to limit search results. If no search filters are specified, the output is all TagOptions. &lt;/p&gt;
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @param Filters [ListTagOptionsFilters] <p>The list of filters with which to limit search results. If no search filters are specified, the output is all TagOptions. </p>
 function M.ListTagOptionsInput(PageToken, PageSize, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagOptionsInput")
 	local t = { 
@@ -2515,8 +2515,8 @@ end
 
 --- Create a structure of type ListTagOptionsOutput
 --  
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param TagOptionDetails [TagOptionDetails] &lt;p&gt;The resulting detailed TagOption information.&lt;/p&gt;
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param TagOptionDetails [TagOptionDetails] <p>The resulting detailed TagOption information.</p>
 function M.ListTagOptionsOutput(PageToken, TagOptionDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagOptionsOutput")
 	local t = { 
@@ -2542,8 +2542,8 @@ end
 
 --- Create a structure of type DescribeProvisionedProductInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The provisioned product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The provisioned product identifier.</p>
 -- Required parameter: Id
 function M.DescribeProvisionedProductInput(AcceptLanguage, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProvisionedProductInput")
@@ -2572,10 +2572,10 @@ end
 
 --- Create a structure of type ListPrincipalsForPortfolioInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
 -- Required parameter: PortfolioId
 function M.ListPrincipalsForPortfolioInput(AcceptLanguage, PageToken, PortfolioId, PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalsForPortfolioInput")
@@ -2603,8 +2603,8 @@ end
 
 --- Create a structure of type ListPortfolioAccessOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param AccountIds [AccountIds] &lt;p&gt;List of account IDs associated with access to the portfolio.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param AccountIds [AccountIds] <p>List of account IDs associated with access to the portfolio.</p>
 function M.ListPortfolioAccessOutput(NextPageToken, AccountIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfolioAccessOutput")
 	local t = { 
@@ -2630,11 +2630,11 @@ function M.AssertLaunchPathSummary(struct)
 end
 
 --- Create a structure of type LaunchPathSummary
--- &lt;p&gt;Summary information about a path for a user to have access to a specified product.&lt;/p&gt;
--- @param Name [PortfolioName] &lt;p&gt;Corresponds to the name of the portfolio to which the user was assigned.&lt;/p&gt;
--- @param ConstraintSummaries [ConstraintSummaries] &lt;p&gt;List of constraints on the portfolio-product relationship.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The unique identifier of the product path.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;List of tags used by this launch path.&lt;/p&gt;
+-- <p>Summary information about a path for a user to have access to a specified product.</p>
+-- @param Name [PortfolioName] <p>Corresponds to the name of the portfolio to which the user was assigned.</p>
+-- @param ConstraintSummaries [ConstraintSummaries] <p>List of constraints on the portfolio-product relationship.</p>
+-- @param Id [Id] <p>The unique identifier of the product path.</p>
+-- @param Tags [Tags] <p>List of tags used by this launch path.</p>
 function M.LaunchPathSummary(Name, ConstraintSummaries, Id, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LaunchPathSummary")
 	local t = { 
@@ -2702,9 +2702,9 @@ end
 
 --- Create a structure of type ListAcceptedPortfolioSharesInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
 function M.ListAcceptedPortfolioSharesInput(AcceptLanguage, PageToken, PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAcceptedPortfolioSharesInput")
 	local t = { 
@@ -2731,9 +2731,9 @@ end
 
 --- Create a structure of type DescribeProvisioningArtifactOutput
 --  
--- @param ProvisioningArtifactDetail [ProvisioningArtifactDetail] &lt;p&gt;Detailed provisioning artifact information.&lt;/p&gt;
--- @param Info [ProvisioningArtifactInfo] &lt;p&gt;Additional information about the provisioning artifact.&lt;/p&gt;
--- @param Status [Status] &lt;p&gt;The status of the current request.&lt;/p&gt;
+-- @param ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>Detailed provisioning artifact information.</p>
+-- @param Info [ProvisioningArtifactInfo] <p>Additional information about the provisioning artifact.</p>
+-- @param Status [Status] <p>The status of the current request.</p>
 function M.DescribeProvisioningArtifactOutput(ProvisioningArtifactDetail, Info, Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProvisioningArtifactOutput")
 	local t = { 
@@ -2779,8 +2779,8 @@ end
 
 --- Create a structure of type ListAcceptedPortfolioSharesOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param PortfolioDetails [PortfolioDetails] &lt;p&gt;List of detailed portfolio information objects.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
 function M.ListAcceptedPortfolioSharesOutput(NextPageToken, PortfolioDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAcceptedPortfolioSharesOutput")
 	local t = { 
@@ -2802,7 +2802,7 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The specified resource was not found.&lt;/p&gt;
+-- <p>The specified resource was not found.</p>
 function M.ResourceNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -2826,8 +2826,8 @@ end
 
 --- Create a structure of type AcceptPortfolioShareInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
 -- Required parameter: PortfolioId
 function M.AcceptPortfolioShareInput(AcceptLanguage, PortfolioId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AcceptPortfolioShareInput")
@@ -2852,7 +2852,7 @@ end
 
 --- Create a structure of type DescribeProvisionedProductOutput
 --  
--- @param ProvisionedProductDetail [ProvisionedProductDetail] &lt;p&gt;Detailed provisioned product information.&lt;/p&gt;
+-- @param ProvisionedProductDetail [ProvisionedProductDetail] <p>Detailed provisioned product information.</p>
 function M.DescribeProvisionedProductOutput(ProvisionedProductDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProvisionedProductOutput")
 	local t = { 
@@ -2877,11 +2877,11 @@ function M.AssertTagOptionDetail(struct)
 end
 
 --- Create a structure of type TagOptionDetail
--- &lt;p&gt;The TagOption details.&lt;/p&gt;
--- @param Active [TagOptionActive] &lt;p&gt;The TagOptionDetail active state.&lt;/p&gt;
--- @param Value [TagOptionValue] &lt;p&gt;The TagOptionDetail value.&lt;/p&gt;
--- @param Key [TagOptionKey] &lt;p&gt;The TagOptionDetail key.&lt;/p&gt;
--- @param Id [TagOptionId] &lt;p&gt;The TagOptionDetail identifier.&lt;/p&gt;
+-- <p>The TagOption details.</p>
+-- @param Active [TagOptionActive] <p>The TagOptionDetail active state.</p>
+-- @param Value [TagOptionValue] <p>The TagOptionDetail value.</p>
+-- @param Key [TagOptionKey] <p>The TagOptionDetail key.</p>
+-- @param Id [TagOptionId] <p>The TagOptionDetail identifier.</p>
 function M.TagOptionDetail(Active, Value, Key, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagOptionDetail")
 	local t = { 
@@ -2908,8 +2908,8 @@ end
 
 --- Create a structure of type ListRecordHistoryOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param RecordDetails [RecordDetails] &lt;p&gt;A list of record detail objects, listed in reverse chronological order.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param RecordDetails [RecordDetails] <p>A list of record detail objects, listed in reverse chronological order.</p>
 function M.ListRecordHistoryOutput(NextPageToken, RecordDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRecordHistoryOutput")
 	local t = { 
@@ -2935,9 +2935,9 @@ end
 
 --- Create a structure of type SearchProductsOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param ProductViewAggregations [ProductViewAggregations] &lt;p&gt;A list of the product view aggregation value objects.&lt;/p&gt;
--- @param ProductViewSummaries [ProductViewSummaries] &lt;p&gt;A list of the product view summary objects.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param ProductViewAggregations [ProductViewAggregations] <p>A list of the product view aggregation value objects.</p>
+-- @param ProductViewSummaries [ProductViewSummaries] <p>A list of the product view summary objects.</p>
 function M.SearchProductsOutput(NextPageToken, ProductViewAggregations, ProductViewSummaries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SearchProductsOutput")
 	local t = { 
@@ -2968,10 +2968,10 @@ end
 
 --- Create a structure of type CreateProvisioningArtifactInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param IdempotencyToken [IdempotencyToken] &lt;p&gt;A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.&lt;/p&gt;
--- @param Parameters [ProvisioningArtifactProperties] &lt;p&gt;The parameters to use when creating the new provisioning artifact.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
+-- @param Parameters [ProvisioningArtifactProperties] <p>The parameters to use when creating the new provisioning artifact.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: ProductId
 -- Required parameter: Parameters
 -- Required parameter: IdempotencyToken
@@ -3002,9 +3002,9 @@ end
 
 --- Create a structure of type DescribeConstraintOutput
 --  
--- @param Status [Status] &lt;p&gt;The status of the current request.&lt;/p&gt;
--- @param ConstraintParameters [ConstraintParameters] &lt;p&gt;The current parameters associated with the specified constraint.&lt;/p&gt;
--- @param ConstraintDetail [ConstraintDetail] &lt;p&gt;Detailed constraint information.&lt;/p&gt;
+-- @param Status [Status] <p>The status of the current request.</p>
+-- @param ConstraintParameters [ConstraintParameters] <p>The current parameters associated with the specified constraint.</p>
+-- @param ConstraintDetail [ConstraintDetail] <p>Detailed constraint information.</p>
 function M.DescribeConstraintOutput(Status, ConstraintParameters, ConstraintDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConstraintOutput")
 	local t = { 
@@ -3030,8 +3030,8 @@ end
 
 --- Create a structure of type CreatePortfolioOutput
 --  
--- @param PortfolioDetail [PortfolioDetail] &lt;p&gt;The resulting detailed portfolio information.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Tags successfully associated with the new portfolio.&lt;/p&gt;
+-- @param PortfolioDetail [PortfolioDetail] <p>The resulting detailed portfolio information.</p>
+-- @param Tags [Tags] <p>Tags successfully associated with the new portfolio.</p>
 function M.CreatePortfolioOutput(PortfolioDetail, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePortfolioOutput")
 	local t = { 
@@ -3078,9 +3078,9 @@ end
 
 --- Create a structure of type UpdateConstraintInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the constraint to update.&lt;/p&gt;
--- @param Description [ConstraintDescription] &lt;p&gt;The updated text description of the constraint.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The identifier of the constraint to update.</p>
+-- @param Description [ConstraintDescription] <p>The updated text description of the constraint.</p>
 -- Required parameter: Id
 function M.UpdateConstraintInput(AcceptLanguage, Id, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConstraintInput")
@@ -3106,9 +3106,9 @@ function M.AssertListRecordHistorySearchFilter(struct)
 end
 
 --- Create a structure of type ListRecordHistorySearchFilter
--- &lt;p&gt;The search filter to limit results when listing request history records.&lt;/p&gt;
--- @param Value [SearchFilterValue] &lt;p&gt;The filter value for &lt;code&gt;Key&lt;/code&gt;.&lt;/p&gt;
--- @param Key [SearchFilterKey] &lt;p&gt;The filter key.&lt;/p&gt;
+-- <p>The search filter to limit results when listing request history records.</p>
+-- @param Value [SearchFilterValue] <p>The filter value for <code>Key</code>.</p>
+-- @param Key [SearchFilterKey] <p>The filter key.</p>
 function M.ListRecordHistorySearchFilter(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRecordHistorySearchFilter")
 	local t = { 
@@ -3134,8 +3134,8 @@ end
 
 --- Create a structure of type DescribePortfolioInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the portfolio for which to retrieve information.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The identifier of the portfolio for which to retrieve information.</p>
 -- Required parameter: Id
 function M.DescribePortfolioInput(AcceptLanguage, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePortfolioInput")
@@ -3161,7 +3161,7 @@ end
 
 --- Create a structure of type DescribeTagOptionInput
 --  
--- @param Id [TagOptionId] &lt;p&gt;The identifier of the TagOption.&lt;/p&gt;
+-- @param Id [TagOptionId] <p>The identifier of the TagOption.</p>
 -- Required parameter: Id
 function M.DescribeTagOptionInput(Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagOptionInput")
@@ -3196,13 +3196,13 @@ end
 
 --- Create a structure of type CreateConstraintInput
 --  
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
--- @param Description [ConstraintDescription] &lt;p&gt;The text description of the constraint.&lt;/p&gt;
--- @param Parameters [ConstraintParameters] &lt;p&gt;The constraint parameters. Expected values vary depending on which &lt;b&gt;Type&lt;/b&gt; is specified. For examples, see the bottom of this topic.&lt;/p&gt; &lt;p&gt;For Type &lt;code&gt;LAUNCH&lt;/code&gt;, the &lt;code&gt;RoleArn&lt;/code&gt; property is required. &lt;/p&gt; &lt;p&gt;For Type &lt;code&gt;NOTIFICATION&lt;/code&gt;, the &lt;code&gt;NotificationArns&lt;/code&gt; property is required.&lt;/p&gt; &lt;p&gt;For Type &lt;code&gt;TEMPLATE&lt;/code&gt;, the &lt;code&gt;Rules&lt;/code&gt; property is required.&lt;/p&gt;
--- @param IdempotencyToken [IdempotencyToken] &lt;p&gt;A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.&lt;/p&gt;
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Type [ConstraintType] &lt;p&gt;The type of the constraint. Case-sensitive valid values are: &lt;code&gt;LAUNCH&lt;/code&gt;, &lt;code&gt;NOTIFICATION&lt;/code&gt;, or &lt;code&gt;TEMPLATE&lt;/code&gt;. &lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
+-- @param Description [ConstraintDescription] <p>The text description of the constraint.</p>
+-- @param Parameters [ConstraintParameters] <p>The constraint parameters. Expected values vary depending on which <b>Type</b> is specified. For examples, see the bottom of this topic.</p> <p>For Type <code>LAUNCH</code>, the <code>RoleArn</code> property is required. </p> <p>For Type <code>NOTIFICATION</code>, the <code>NotificationArns</code> property is required.</p> <p>For Type <code>TEMPLATE</code>, the <code>Rules</code> property is required.</p>
+-- @param IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Type [ConstraintType] <p>The type of the constraint. Case-sensitive valid values are: <code>LAUNCH</code>, <code>NOTIFICATION</code>, or <code>TEMPLATE</code>. </p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: PortfolioId
 -- Required parameter: ProductId
 -- Required parameter: Parameters
@@ -3239,8 +3239,8 @@ end
 
 --- Create a structure of type AssociateTagOptionWithResourceInput
 --  
--- @param ResourceId [ResourceId] &lt;p&gt;The resource identifier.&lt;/p&gt;
--- @param TagOptionId [TagOptionId] &lt;p&gt;The TagOption identifier.&lt;/p&gt;
+-- @param ResourceId [ResourceId] <p>The resource identifier.</p>
+-- @param TagOptionId [TagOptionId] <p>The TagOption identifier.</p>
 -- Required parameter: ResourceId
 -- Required parameter: TagOptionId
 function M.AssociateTagOptionWithResourceInput(ResourceId, TagOptionId, ...)
@@ -3270,9 +3270,9 @@ end
 
 --- Create a structure of type DeletePortfolioShareInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
--- @param AccountId [AccountId] &lt;p&gt;The account ID associated with the share to delete.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
+-- @param AccountId [AccountId] <p>The account ID associated with the share to delete.</p>
 -- Required parameter: PortfolioId
 -- Required parameter: AccountId
 function M.DeletePortfolioShareInput(AcceptLanguage, PortfolioId, AccountId, ...)
@@ -3301,9 +3301,9 @@ end
 
 --- Create a structure of type CreateProvisioningArtifactOutput
 --  
--- @param ProvisioningArtifactDetail [ProvisioningArtifactDetail] &lt;p&gt;The resulting detailed provisioning artifact information.&lt;/p&gt;
--- @param Info [ProvisioningArtifactInfo] &lt;p&gt;Additional information about the creation request for the provisioning artifact.&lt;/p&gt;
--- @param Status [Status] &lt;p&gt;The status of the current request.&lt;/p&gt;
+-- @param ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>The resulting detailed provisioning artifact information.</p>
+-- @param Info [ProvisioningArtifactInfo] <p>Additional information about the creation request for the provisioning artifact.</p>
+-- @param Status [Status] <p>The status of the current request.</p>
 function M.CreateProvisioningArtifactOutput(ProvisioningArtifactDetail, Info, Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateProvisioningArtifactOutput")
 	local t = { 
@@ -3328,7 +3328,7 @@ end
 
 --- Create a structure of type CreateTagOptionOutput
 --  
--- @param TagOptionDetail [TagOptionDetail] &lt;p&gt;The resulting detailed TagOption information.&lt;/p&gt;
+-- @param TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
 function M.CreateTagOptionOutput(TagOptionDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagOptionOutput")
 	local t = { 
@@ -3375,11 +3375,11 @@ end
 
 --- Create a structure of type ListRecordHistoryInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
--- @param SearchFilter [ListRecordHistorySearchFilter] &lt;p&gt;The filter to limit search results. &lt;/p&gt;
--- @param AccessLevelFilter [AccessLevelFilter] &lt;p&gt;The access level for obtaining results. If left unspecified, &lt;code&gt;User&lt;/code&gt; level access is used.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @param SearchFilter [ListRecordHistorySearchFilter] <p>The filter to limit search results. </p>
+-- @param AccessLevelFilter [AccessLevelFilter] <p>The access level for obtaining results. If left unspecified, <code>User</code> level access is used.</p>
 function M.ListRecordHistoryInput(AcceptLanguage, PageToken, PageSize, SearchFilter, AccessLevelFilter, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRecordHistoryInput")
 	local t = { 
@@ -3408,11 +3408,11 @@ function M.AssertProductViewDetail(struct)
 end
 
 --- Create a structure of type ProductViewDetail
--- &lt;p&gt;Detailed product view information.&lt;/p&gt;
--- @param ProductViewSummary [ProductViewSummary] &lt;p&gt;The summary metadata about the specified product view.&lt;/p&gt;
--- @param Status [Status] &lt;p&gt;Current status of the product.&lt;/p&gt; &lt;p&gt; &lt;code&gt;AVAILABLE&lt;/code&gt; - Product is available for use.&lt;/p&gt; &lt;p&gt; &lt;code&gt;CREATING&lt;/code&gt; - Creation of product started, not ready for use.&lt;/p&gt; &lt;p&gt; &lt;code&gt;FAILED&lt;/code&gt; - Action on product failed.&lt;/p&gt;
--- @param ProductARN [ResourceARN] &lt;p&gt;The ARN associated with the product.&lt;/p&gt;
--- @param CreatedTime [CreatedTime] &lt;p&gt;The UTC timestamp of the creation time.&lt;/p&gt;
+-- <p>Detailed product view information.</p>
+-- @param ProductViewSummary [ProductViewSummary] <p>The summary metadata about the specified product view.</p>
+-- @param Status [Status] <p>Current status of the product.</p> <p> <code>AVAILABLE</code> - Product is available for use.</p> <p> <code>CREATING</code> - Creation of product started, not ready for use.</p> <p> <code>FAILED</code> - Action on product failed.</p>
+-- @param ProductARN [ResourceARN] <p>The ARN associated with the product.</p>
+-- @param CreatedTime [CreatedTime] <p>The UTC timestamp of the creation time.</p>
 function M.ProductViewDetail(ProductViewSummary, Status, ProductARN, CreatedTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProductViewDetail")
 	local t = { 
@@ -3439,8 +3439,8 @@ end
 
 --- Create a structure of type DescribeProductViewOutput
 --  
--- @param ProductViewSummary [ProductViewSummary] &lt;p&gt;The summary metadata about the specified product.&lt;/p&gt;
--- @param ProvisioningArtifacts [ProvisioningArtifacts] &lt;p&gt;A list of provisioning artifact objects for the specified product. The &lt;code&gt;ProvisioningArtifacts&lt;/code&gt; represent the ways in which the specified product can be provisioned.&lt;/p&gt;
+-- @param ProductViewSummary [ProductViewSummary] <p>The summary metadata about the specified product.</p>
+-- @param ProvisioningArtifacts [ProvisioningArtifacts] <p>A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code> represent the ways in which the specified product can be provisioned.</p>
 function M.DescribeProductViewOutput(ProductViewSummary, ProvisioningArtifacts, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductViewOutput")
 	local t = { 
@@ -3465,8 +3465,8 @@ end
 
 --- Create a structure of type UpdatePortfolioOutput
 --  
--- @param PortfolioDetail [PortfolioDetail] &lt;p&gt;The resulting detailed portfolio information.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Tags associated with the portfolio.&lt;/p&gt;
+-- @param PortfolioDetail [PortfolioDetail] <p>The resulting detailed portfolio information.</p>
+-- @param Tags [Tags] <p>Tags associated with the portfolio.</p>
 function M.UpdatePortfolioOutput(PortfolioDetail, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePortfolioOutput")
 	local t = { 
@@ -3491,8 +3491,8 @@ end
 
 --- Create a structure of type ListPrincipalsForPortfolioOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param Principals [Principals] &lt;p&gt;The IAM principals (users or roles) associated with the portfolio.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param Principals [Principals] <p>The IAM principals (users or roles) associated with the portfolio.</p>
 function M.ListPrincipalsForPortfolioOutput(NextPageToken, Principals, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalsForPortfolioOutput")
 	local t = { 
@@ -3517,10 +3517,10 @@ function M.AssertUpdateProvisioningParameter(struct)
 end
 
 --- Create a structure of type UpdateProvisioningParameter
--- &lt;p&gt;The parameter key-value pair used to update a ProvisionedProduct object. If &lt;code&gt;UsePreviousValue&lt;/code&gt; is set to true, &lt;code&gt;Value&lt;/code&gt; is ignored and the value for &lt;code&gt;Key&lt;/code&gt; is kept as previously set (current value).&lt;/p&gt;
--- @param Value [ParameterValue] &lt;p&gt;The value to use for updating the product provisioning. Any constraints on this value can be found in the &lt;code&gt;ProvisioningArtifactParameter&lt;/code&gt; parameter for &lt;code&gt;Key&lt;/code&gt;.&lt;/p&gt;
--- @param Key [ParameterKey] &lt;p&gt;The &lt;code&gt;ProvisioningArtifactParameter.ParameterKey&lt;/code&gt; parameter from &lt;a&gt;DescribeProvisioningParameters&lt;/a&gt;.&lt;/p&gt;
--- @param UsePreviousValue [UsePreviousValue] &lt;p&gt;If true, uses the currently set value for &lt;code&gt;Key&lt;/code&gt;, ignoring &lt;code&gt;UpdateProvisioningParameter.Value&lt;/code&gt;.&lt;/p&gt;
+-- <p>The parameter key-value pair used to update a ProvisionedProduct object. If <code>UsePreviousValue</code> is set to true, <code>Value</code> is ignored and the value for <code>Key</code> is kept as previously set (current value).</p>
+-- @param Value [ParameterValue] <p>The value to use for updating the product provisioning. Any constraints on this value can be found in the <code>ProvisioningArtifactParameter</code> parameter for <code>Key</code>.</p>
+-- @param Key [ParameterKey] <p>The <code>ProvisioningArtifactParameter.ParameterKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
+-- @param UsePreviousValue [UsePreviousValue] <p>If true, uses the currently set value for <code>Key</code>, ignoring <code>UpdateProvisioningParameter.Value</code>.</p>
 function M.UpdateProvisioningParameter(Value, Key, UsePreviousValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProvisioningParameter")
 	local t = { 
@@ -3549,9 +3549,9 @@ end
 
 --- Create a structure of type DisassociatePrincipalFromPortfolioInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PrincipalARN [PrincipalARN] &lt;p&gt;The ARN representing the principal (IAM user, role, or group).&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PrincipalARN [PrincipalARN] <p>The ARN representing the principal (IAM user, role, or group).</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
 -- Required parameter: PortfolioId
 -- Required parameter: PrincipalARN
 function M.DisassociatePrincipalFromPortfolioInput(AcceptLanguage, PrincipalARN, PortfolioId, ...)
@@ -3579,8 +3579,8 @@ end
 
 --- Create a structure of type ListProvisioningArtifactsOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param ProvisioningArtifactDetails [ProvisioningArtifactDetails] &lt;p&gt;List of detailed provisioning artifact information objects.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param ProvisioningArtifactDetails [ProvisioningArtifactDetails] <p>List of detailed provisioning artifact information objects.</p>
 function M.ListProvisioningArtifactsOutput(NextPageToken, ProvisioningArtifactDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListProvisioningArtifactsOutput")
 	local t = { 
@@ -3607,10 +3607,10 @@ end
 
 --- Create a structure of type ScanProvisionedProductsInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
--- @param AccessLevelFilter [AccessLevelFilter] &lt;p&gt;The access level for obtaining results. If left unspecified, &lt;code&gt;User&lt;/code&gt; level access is used.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @param AccessLevelFilter [AccessLevelFilter] <p>The access level for obtaining results. If left unspecified, <code>User</code> level access is used.</p>
 function M.ScanProvisionedProductsInput(AcceptLanguage, PageToken, PageSize, AccessLevelFilter, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScanProvisionedProductsInput")
 	local t = { 
@@ -3637,8 +3637,8 @@ end
 
 --- Create a structure of type ListResourcesForTagOptionOutput
 --  
--- @param ResourceDetails [ResourceDetails] &lt;p&gt;The resulting detailed resource information.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
+-- @param ResourceDetails [ResourceDetails] <p>The resulting detailed resource information.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
 function M.ListResourcesForTagOptionOutput(ResourceDetails, PageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListResourcesForTagOptionOutput")
 	local t = { 
@@ -3669,16 +3669,16 @@ function M.AssertProvisionedProductDetail(struct)
 end
 
 --- Create a structure of type ProvisionedProductDetail
--- &lt;p&gt;Detailed information about a ProvisionedProduct object.&lt;/p&gt;
--- @param Status [ProvisionedProductStatus] &lt;p&gt;The current status of the ProvisionedProduct.&lt;/p&gt; &lt;p&gt; &lt;code&gt;AVAILABLE&lt;/code&gt; - Stable state, ready to perform any operation. The most recent action request succeeded and completed.&lt;/p&gt; &lt;p&gt; &lt;code&gt;UNDER_CHANGE&lt;/code&gt; - Transitive state, operations performed may or may not have valid results. Wait for an &lt;code&gt;AVAILABLE&lt;/code&gt; status before performing operations.&lt;/p&gt; &lt;p&gt; &lt;code&gt;TAINTED&lt;/code&gt; - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version. &lt;/p&gt; &lt;p&gt; &lt;code&gt;ERROR&lt;/code&gt; - Something unexpected happened such that the provisioned product exists but the stack is not running. For example, CloudFormation received an invalid parameter value and could not launch the stack.&lt;/p&gt;
--- @param Name [ProvisionedProductNameOrArn] &lt;p&gt;The user-friendly name of the ProvisionedProduct object.&lt;/p&gt;
--- @param LastRecordId [LastRequestId] &lt;p&gt;The record identifier of the last request performed on this ProvisionedProduct object.&lt;/p&gt;
--- @param IdempotencyToken [IdempotencyToken] &lt;p&gt;A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.&lt;/p&gt;
--- @param Arn [ProvisionedProductNameOrArn] &lt;p&gt;The ARN associated with the ProvisionedProduct object.&lt;/p&gt;
--- @param CreatedTime [CreatedTime] &lt;p&gt;The UTC timestamp of the creation time.&lt;/p&gt;
--- @param Type [ProvisionedProductType] &lt;p&gt;The type of the ProvisionedProduct object.&lt;/p&gt;
--- @param Id [ProvisionedProductId] &lt;p&gt;The identifier of the ProvisionedProduct object.&lt;/p&gt;
--- @param StatusMessage [ProvisionedProductStatusMessage] &lt;p&gt;The current status message of the ProvisionedProduct.&lt;/p&gt;
+-- <p>Detailed information about a ProvisionedProduct object.</p>
+-- @param Status [ProvisionedProductStatus] <p>The current status of the ProvisionedProduct.</p> <p> <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request succeeded and completed.</p> <p> <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait for an <code>AVAILABLE</code> status before performing operations.</p> <p> <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version. </p> <p> <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack is not running. For example, CloudFormation received an invalid parameter value and could not launch the stack.</p>
+-- @param Name [ProvisionedProductNameOrArn] <p>The user-friendly name of the ProvisionedProduct object.</p>
+-- @param LastRecordId [LastRequestId] <p>The record identifier of the last request performed on this ProvisionedProduct object.</p>
+-- @param IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
+-- @param Arn [ProvisionedProductNameOrArn] <p>The ARN associated with the ProvisionedProduct object.</p>
+-- @param CreatedTime [CreatedTime] <p>The UTC timestamp of the creation time.</p>
+-- @param Type [ProvisionedProductType] <p>The type of the ProvisionedProduct object.</p>
+-- @param Id [ProvisionedProductId] <p>The identifier of the ProvisionedProduct object.</p>
+-- @param StatusMessage [ProvisionedProductStatusMessage] <p>The current status message of the ProvisionedProduct.</p>
 function M.ProvisionedProductDetail(Status, Name, LastRecordId, IdempotencyToken, Arn, CreatedTime, Type, Id, StatusMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionedProductDetail")
 	local t = { 
@@ -3712,11 +3712,11 @@ function M.AssertProvisioningArtifactProperties(struct)
 end
 
 --- Create a structure of type ProvisioningArtifactProperties
--- &lt;p&gt;Provisioning artifact properties. For example request JSON, see &lt;a&gt;CreateProvisioningArtifact&lt;/a&gt;.&lt;/p&gt;
--- @param Info [ProvisioningArtifactInfo] &lt;p&gt;Additional information about the provisioning artifact properties. When using this element in a request, you must specify &lt;code&gt;LoadTemplateFromURL&lt;/code&gt;. For more information, see &lt;a&gt;CreateProvisioningArtifact&lt;/a&gt;.&lt;/p&gt;
--- @param Type [ProvisioningArtifactType] &lt;p&gt;The type of the provisioning artifact properties. The following provisioning artifact property types are used by AWS Marketplace products:&lt;/p&gt; &lt;p&gt; &lt;code&gt;MARKETPLACE_AMI&lt;/code&gt; - AMI products.&lt;/p&gt; &lt;p&gt; &lt;code&gt;MARKETPLACE_CAR&lt;/code&gt; - CAR (Cluster and AWS Resources) products.&lt;/p&gt;
--- @param Name [ProvisioningArtifactName] &lt;p&gt;The name assigned to the provisioning artifact properties.&lt;/p&gt;
--- @param Description [ProvisioningArtifactDescription] &lt;p&gt;The text description of the provisioning artifact properties.&lt;/p&gt;
+-- <p>Provisioning artifact properties. For example request JSON, see <a>CreateProvisioningArtifact</a>.</p>
+-- @param Info [ProvisioningArtifactInfo] <p>Additional information about the provisioning artifact properties. When using this element in a request, you must specify <code>LoadTemplateFromURL</code>. For more information, see <a>CreateProvisioningArtifact</a>.</p>
+-- @param Type [ProvisioningArtifactType] <p>The type of the provisioning artifact properties. The following provisioning artifact property types are used by AWS Marketplace products:</p> <p> <code>MARKETPLACE_AMI</code> - AMI products.</p> <p> <code>MARKETPLACE_CAR</code> - CAR (Cluster and AWS Resources) products.</p>
+-- @param Name [ProvisioningArtifactName] <p>The name assigned to the provisioning artifact properties.</p>
+-- @param Description [ProvisioningArtifactDescription] <p>The text description of the provisioning artifact properties.</p>
 -- Required parameter: Info
 function M.ProvisioningArtifactProperties(Info, Type, Name, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningArtifactProperties")
@@ -3743,7 +3743,7 @@ end
 
 --- Create a structure of type UpdateProvisionedProductOutput
 --  
--- @param RecordDetail [RecordDetail] &lt;p&gt;The detailed result of the &lt;a&gt;UpdateProvisionedProduct&lt;/a&gt; request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.&lt;/p&gt;
+-- @param RecordDetail [RecordDetail] <p>The detailed result of the <a>UpdateProvisionedProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.</p>
 function M.UpdateProvisionedProductOutput(RecordDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProvisionedProductOutput")
 	local t = { 
@@ -3768,9 +3768,9 @@ end
 
 --- Create a structure of type UpdateConstraintOutput
 --  
--- @param Status [Status] &lt;p&gt;The status of the current request.&lt;/p&gt;
--- @param ConstraintParameters [ConstraintParameters] &lt;p&gt;The resulting updated constraint parameters.&lt;/p&gt;
--- @param ConstraintDetail [ConstraintDetail] &lt;p&gt;The resulting detailed constraint information.&lt;/p&gt;
+-- @param Status [Status] <p>The status of the current request.</p>
+-- @param ConstraintParameters [ConstraintParameters] <p>The resulting updated constraint parameters.</p>
+-- @param ConstraintDetail [ConstraintDetail] <p>The resulting detailed constraint information.</p>
 function M.UpdateConstraintOutput(Status, ConstraintParameters, ConstraintDetail, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConstraintOutput")
 	local t = { 
@@ -3797,8 +3797,8 @@ end
 
 --- Create a structure of type DeleteConstraintInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The identifier of the constraint to delete.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The identifier of the constraint to delete.</p>
 -- Required parameter: Id
 function M.DeleteConstraintInput(AcceptLanguage, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConstraintInput")
@@ -3825,8 +3825,8 @@ end
 
 --- Create a structure of type ListPortfolioAccessInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
 -- Required parameter: PortfolioId
 function M.ListPortfolioAccessInput(AcceptLanguage, PortfolioId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfolioAccessInput")
@@ -3876,11 +3876,11 @@ end
 
 --- Create a structure of type ListConstraintsForPortfolioInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param PortfolioId [Id] &lt;p&gt;The portfolio identifier.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param PortfolioId [Id] <p>The portfolio identifier.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: PortfolioId
 function M.ListConstraintsForPortfolioInput(AcceptLanguage, PageToken, PortfolioId, PageSize, ProductId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListConstraintsForPortfolioInput")
@@ -3910,8 +3910,8 @@ end
 
 --- Create a structure of type DescribeProductInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param Id [Id] &lt;p&gt;The &lt;code&gt;ProductId&lt;/code&gt; of the product to describe.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param Id [Id] <p>The <code>ProductId</code> of the product to describe.</p>
 -- Required parameter: Id
 function M.DescribeProductInput(AcceptLanguage, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductInput")
@@ -3944,12 +3944,12 @@ end
 
 --- Create a structure of type CreatePortfolioInput
 --  
--- @param DisplayName [PortfolioDisplayName] &lt;p&gt;The name to use for display purposes.&lt;/p&gt;
--- @param Description [PortfolioDescription] &lt;p&gt;The text description of the portfolio.&lt;/p&gt;
--- @param ProviderName [ProviderName] &lt;p&gt;The name of the portfolio provider.&lt;/p&gt;
--- @param Tags [AddTags] &lt;p&gt;Tags to associate with the new portfolio.&lt;/p&gt;
--- @param IdempotencyToken [IdempotencyToken] &lt;p&gt;A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.&lt;/p&gt;
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
+-- @param DisplayName [PortfolioDisplayName] <p>The name to use for display purposes.</p>
+-- @param Description [PortfolioDescription] <p>The text description of the portfolio.</p>
+-- @param ProviderName [ProviderName] <p>The name of the portfolio provider.</p>
+-- @param Tags [AddTags] <p>Tags to associate with the new portfolio.</p>
+-- @param IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
 -- Required parameter: DisplayName
 -- Required parameter: ProviderName
 -- Required parameter: IdempotencyToken
@@ -3981,8 +3981,8 @@ end
 
 --- Create a structure of type SearchProductsAsAdminOutput
 --  
--- @param NextPageToken [PageToken] &lt;p&gt;The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.&lt;/p&gt;
--- @param ProductViewDetails [ProductViewDetails] &lt;p&gt;List of detailed product view information objects.&lt;/p&gt;
+-- @param NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @param ProductViewDetails [ProductViewDetails] <p>List of detailed product view information objects.</p>
 function M.SearchProductsAsAdminOutput(NextPageToken, ProductViewDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SearchProductsAsAdminOutput")
 	local t = { 
@@ -4010,13 +4010,13 @@ function M.AssertProvisioningArtifactParameter(struct)
 end
 
 --- Create a structure of type ProvisioningArtifactParameter
--- &lt;p&gt;A parameter used to successfully provision the product. This value includes a list of allowable values and additional metadata. &lt;/p&gt;
--- @param ParameterType [ParameterType] &lt;p&gt;The parameter type.&lt;/p&gt;
--- @param ParameterConstraints [ParameterConstraints] &lt;p&gt;The list of constraints that the administrator has put on the parameter.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The text description of the parameter.&lt;/p&gt;
--- @param DefaultValue [DefaultValue] &lt;p&gt;The default value for this parameter.&lt;/p&gt;
--- @param IsNoEcho [NoEcho] &lt;p&gt;If this value is true, the value for this parameter is obfuscated from view when the parameter is retrieved. This parameter is used to hide sensitive information.&lt;/p&gt;
--- @param ParameterKey [ParameterKey] &lt;p&gt;The parameter key. &lt;/p&gt;
+-- <p>A parameter used to successfully provision the product. This value includes a list of allowable values and additional metadata. </p>
+-- @param ParameterType [ParameterType] <p>The parameter type.</p>
+-- @param ParameterConstraints [ParameterConstraints] <p>The list of constraints that the administrator has put on the parameter.</p>
+-- @param Description [Description] <p>The text description of the parameter.</p>
+-- @param DefaultValue [DefaultValue] <p>The default value for this parameter.</p>
+-- @param IsNoEcho [NoEcho] <p>If this value is true, the value for this parameter is obfuscated from view when the parameter is retrieved. This parameter is used to hide sensitive information.</p>
+-- @param ParameterKey [ParameterKey] <p>The parameter key. </p>
 function M.ProvisioningArtifactParameter(ParameterType, ParameterConstraints, Description, DefaultValue, IsNoEcho, ParameterKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningArtifactParameter")
 	local t = { 
@@ -4048,9 +4048,9 @@ end
 
 --- Create a structure of type DeleteProvisioningArtifactInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param ProvisioningArtifactId [Id] &lt;p&gt;The identifier of the provisioning artifact for the delete request. This is sometimes referred to as the product version.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param ProvisioningArtifactId [Id] <p>The identifier of the provisioning artifact for the delete request. This is sometimes referred to as the product version.</p>
+-- @param ProductId [Id] <p>The product identifier.</p>
 -- Required parameter: ProductId
 -- Required parameter: ProvisioningArtifactId
 function M.DeleteProvisioningArtifactInput(AcceptLanguage, ProvisioningArtifactId, ProductId, ...)
@@ -4081,10 +4081,10 @@ end
 
 --- Create a structure of type ListLaunchPathsInput
 --  
--- @param AcceptLanguage [AcceptLanguage] &lt;p&gt;The language code to use for this operation. Supported language codes are as follows:&lt;/p&gt; &lt;p&gt;&quot;en&quot; (English)&lt;/p&gt; &lt;p&gt;&quot;jp&quot; (Japanese)&lt;/p&gt; &lt;p&gt;&quot;zh&quot; (Chinese)&lt;/p&gt; &lt;p&gt;If no code is specified, &quot;en&quot; is used as the default.&lt;/p&gt;
--- @param PageToken [PageToken] &lt;p&gt;The page token of the first page retrieved. If null, this retrieves the first page of size &lt;code&gt;PageSize&lt;/code&gt;.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of items to return in the results. If more results exist than fit in the specified &lt;code&gt;PageSize&lt;/code&gt;, the value of &lt;code&gt;NextPageToken&lt;/code&gt; in the response is non-null.&lt;/p&gt;
--- @param ProductId [Id] &lt;p&gt;The product identifier. Identifies the product for which to retrieve &lt;code&gt;LaunchPathSummaries&lt;/code&gt; information.&lt;/p&gt;
+-- @param AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- @param PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @param PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @param ProductId [Id] <p>The product identifier. Identifies the product for which to retrieve <code>LaunchPathSummaries</code> information.</p>
 -- Required parameter: ProductId
 function M.ListLaunchPathsInput(AcceptLanguage, PageToken, PageSize, ProductId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLaunchPathsInput")
@@ -4111,9 +4111,9 @@ function M.AssertPrincipal(struct)
 end
 
 --- Create a structure of type Principal
--- &lt;p&gt;A principal's ARN and type.&lt;/p&gt;
--- @param PrincipalType [PrincipalType] &lt;p&gt;The principal type. Must be &lt;code&gt;IAM&lt;/code&gt; &lt;/p&gt;
--- @param PrincipalARN [PrincipalARN] &lt;p&gt;The ARN representing the principal (IAM user, role, or group).&lt;/p&gt;
+-- <p>A principal's ARN and type.</p>
+-- @param PrincipalType [PrincipalType] <p>The principal type. Must be <code>IAM</code> </p>
+-- @param PrincipalARN [PrincipalARN] <p>The ARN representing the principal (IAM user, role, or group).</p>
 function M.Principal(PrincipalType, PrincipalARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Principal")
 	local t = { 

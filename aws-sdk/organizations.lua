@@ -30,8 +30,8 @@ function M.AssertDuplicateOrganizationalUnitException(struct)
 end
 
 --- Create a structure of type DuplicateOrganizationalUnitException
--- &lt;p&gt;An organizational unit (OU) with the same name already exists.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;An organizational unit (OU) with the same name already exists.&lt;/p&gt;
+-- <p>An organizational unit (OU) with the same name already exists.</p>
+-- @param Message [ExceptionMessage] <p>An organizational unit (OU) with the same name already exists.</p>
 function M.DuplicateOrganizationalUnitException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateOrganizationalUnitException")
 	local t = { 
@@ -55,7 +55,7 @@ end
 
 --- Create a structure of type DeleteOrganizationalUnitRequest
 --  
--- @param OrganizationalUnitId [OrganizationalUnitId] &lt;p&gt;The unique identifier (ID) of the organizational unit that you want to delete. You can get the ID from the &lt;a&gt;ListOrganizationalUnitsForParent&lt;/a&gt; operation.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an organizational unit ID string requires &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt;
+-- @param OrganizationalUnitId [OrganizationalUnitId] <p>The unique identifier (ID) of the organizational unit that you want to delete. You can get the ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p>
 -- Required parameter: OrganizationalUnitId
 function M.DeleteOrganizationalUnitRequest(OrganizationalUnitId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteOrganizationalUnitRequest")
@@ -80,8 +80,8 @@ end
 
 --- Create a structure of type ListCreateAccountStatusResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param CreateAccountStatuses [CreateAccountStatuses] &lt;p&gt;A list of objects with details about the requests. Certain elements, such as the accountId number, are present in the output only after the account has been successfully created.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @param CreateAccountStatuses [CreateAccountStatuses] <p>A list of objects with details about the requests. Certain elements, such as the accountId number, are present in the output only after the account has been successfully created.</p>
 function M.ListCreateAccountStatusResponse(NextToken, CreateAccountStatuses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCreateAccountStatusResponse")
 	local t = { 
@@ -111,15 +111,15 @@ function M.AssertHandshake(struct)
 end
 
 --- Create a structure of type Handshake
--- &lt;p&gt;Contains information that must be exchanged to securely establish a relationship between two accounts (an &lt;i&gt;originator&lt;/i&gt; and a &lt;i&gt;recipient&lt;/i&gt;). For example, when a master account (the originator) invites another account (the recipient) to join its organization, the two accounts exchange information as a series of handshake requests and responses.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Note:&lt;/b&gt; Handshakes that are CANCELED, ACCEPTED, or DECLINED show up in lists for only 30 days after entering that state After that they are deleted.&lt;/p&gt;
--- @param Id [HandshakeId] &lt;p&gt;The unique identifier (ID) of a handshake. The originating account creates the ID when it initiates the handshake.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for handshake ID string requires &quot;h-&quot; followed by from 8 to 32 lower-case letters or digits.&lt;/p&gt;
--- @param State [HandshakeState] &lt;p&gt;The current state of the handshake. Use the state to trace the flow of the handshake through the process from its creation to its acceptance. The meaning of each of the valid values is as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;REQUESTED&lt;/b&gt;: This handshake was sent to multiple recipients (applicable to only some handshake types) and not all recipients have responded yet. The request stays in this state until all recipients respond.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;OPEN&lt;/b&gt;: This handshake was sent to multiple recipients (applicable to only some policy types) and all recipients have responded, allowing the originator to complete the handshake action.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;CANCELED&lt;/b&gt;: This handshake is no longer active because it was canceled by the originating account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;ACCEPTED&lt;/b&gt;: This handshake is complete because it has been accepted by the recipient.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;DECLINED&lt;/b&gt;: This handshake is no longer active because it was declined by the recipient account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;EXPIRED&lt;/b&gt;: This handshake is no longer active because the originator did not receive a response of any kind from the recipient before the expiration time (15 days).&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Resources [HandshakeResources] &lt;p&gt;Additional information that is needed to process the handshake.&lt;/p&gt;
--- @param Parties [HandshakeParties] &lt;p&gt;Information about the two accounts that are participating in the handshake.&lt;/p&gt;
--- @param Action [ActionType] &lt;p&gt;The type of handshake, indicating what action occurs when the recipient accepts the handshake.&lt;/p&gt;
--- @param RequestedTimestamp [Timestamp] &lt;p&gt;The date and time that the handshake request was made.&lt;/p&gt;
--- @param ExpirationTimestamp [Timestamp] &lt;p&gt;The date and time that the handshake expires. If the recipient of the handshake request fails to respond before the specified date and time, the handshake becomes inactive and is no longer valid.&lt;/p&gt;
--- @param Arn [HandshakeArn] &lt;p&gt;The Amazon Resource Name (ARN) of a handshake.&lt;/p&gt; &lt;p&gt;For more information about ARNs in Organizations, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns&quot;&gt;ARN Formats Supported by Organizations&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>Contains information that must be exchanged to securely establish a relationship between two accounts (an <i>originator</i> and a <i>recipient</i>). For example, when a master account (the originator) invites another account (the recipient) to join its organization, the two accounts exchange information as a series of handshake requests and responses.</p> <p> <b>Note:</b> Handshakes that are CANCELED, ACCEPTED, or DECLINED show up in lists for only 30 days after entering that state After that they are deleted.</p>
+-- @param Id [HandshakeId] <p>The unique identifier (ID) of a handshake. The originating account creates the ID when it initiates the handshake.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
+-- @param State [HandshakeState] <p>The current state of the handshake. Use the state to trace the flow of the handshake through the process from its creation to its acceptance. The meaning of each of the valid values is as follows:</p> <ul> <li> <p> <b>REQUESTED</b>: This handshake was sent to multiple recipients (applicable to only some handshake types) and not all recipients have responded yet. The request stays in this state until all recipients respond.</p> </li> <li> <p> <b>OPEN</b>: This handshake was sent to multiple recipients (applicable to only some policy types) and all recipients have responded, allowing the originator to complete the handshake action.</p> </li> <li> <p> <b>CANCELED</b>: This handshake is no longer active because it was canceled by the originating account.</p> </li> <li> <p> <b>ACCEPTED</b>: This handshake is complete because it has been accepted by the recipient.</p> </li> <li> <p> <b>DECLINED</b>: This handshake is no longer active because it was declined by the recipient account.</p> </li> <li> <p> <b>EXPIRED</b>: This handshake is no longer active because the originator did not receive a response of any kind from the recipient before the expiration time (15 days).</p> </li> </ul>
+-- @param Resources [HandshakeResources] <p>Additional information that is needed to process the handshake.</p>
+-- @param Parties [HandshakeParties] <p>Information about the two accounts that are participating in the handshake.</p>
+-- @param Action [ActionType] <p>The type of handshake, indicating what action occurs when the recipient accepts the handshake.</p>
+-- @param RequestedTimestamp [Timestamp] <p>The date and time that the handshake request was made.</p>
+-- @param ExpirationTimestamp [Timestamp] <p>The date and time that the handshake expires. If the recipient of the handshake request fails to respond before the specified date and time, the handshake becomes inactive and is no longer valid.</p>
+-- @param Arn [HandshakeArn] <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
 function M.Handshake(Id, State, Resources, Parties, Action, RequestedTimestamp, ExpirationTimestamp, Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Handshake")
 	local t = { 
@@ -149,7 +149,7 @@ end
 
 --- Create a structure of type EnablePolicyTypeResponse
 --  
--- @param Root [Root] &lt;p&gt;A structure that shows the root with the updated list of enabled policy types.&lt;/p&gt;
+-- @param Root [Root] <p>A structure that shows the root with the updated list of enabled policy types.</p>
 function M.EnablePolicyTypeResponse(Root, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnablePolicyTypeResponse")
 	local t = { 
@@ -173,8 +173,8 @@ end
 
 --- Create a structure of type ListTargetsForPolicyResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param Targets [PolicyTargets] &lt;p&gt;A list of structures, each of which contains details about one of the entities to which the specified policy is attached.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @param Targets [PolicyTargets] <p>A list of structures, each of which contains details about one of the entities to which the specified policy is attached.</p>
 function M.ListTargetsForPolicyResponse(NextToken, Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTargetsForPolicyResponse")
 	local t = { 
@@ -198,9 +198,9 @@ function M.AssertPolicyTypeSummary(struct)
 end
 
 --- Create a structure of type PolicyTypeSummary
--- &lt;p&gt;Contains information about a policy type and its status in the associated root.&lt;/p&gt;
--- @param Status [PolicyTypeStatus] &lt;p&gt;The status of the policy type as it relates to the associated root. To attach a policy of the specified type to a root or to an OU or account in that root, it must be available in the organization and enabled for that root.&lt;/p&gt;
--- @param Type [PolicyType] &lt;p&gt;The name of the policy type.&lt;/p&gt;
+-- <p>Contains information about a policy type and its status in the associated root.</p>
+-- @param Status [PolicyTypeStatus] <p>The status of the policy type as it relates to the associated root. To attach a policy of the specified type to a root or to an OU or account in that root, it must be available in the organization and enabled for that root.</p>
+-- @param Type [PolicyType] <p>The name of the policy type.</p>
 function M.PolicyTypeSummary(Status, Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyTypeSummary")
 	local t = { 
@@ -223,8 +223,8 @@ function M.AssertParentNotFoundException(struct)
 end
 
 --- Create a structure of type ParentNotFoundException
--- &lt;p&gt;We can't find a root or organizational unit (OU) with the ParentId that you specified.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;We can't find a root or organizational unit (OU) with the ParentId that you specified.&lt;/p&gt;
+-- <p>We can't find a root or organizational unit (OU) with the ParentId that you specified.</p>
+-- @param Message [ExceptionMessage] <p>We can't find a root or organizational unit (OU) with the ParentId that you specified.</p>
 function M.ParentNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParentNotFoundException")
 	local t = { 
@@ -246,8 +246,8 @@ function M.AssertAccountNotFoundException(struct)
 end
 
 --- Create a structure of type AccountNotFoundException
--- &lt;p&gt; We can't find an AWS account with the AccountId that you specified, or the account whose credentials you used to make this request is not a member of an organization.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt; We can't find an AWS account with the AccountId that you specified, or the account whose credentials you used to make this request is not a member of an organization.&lt;/p&gt;
+-- <p> We can't find an AWS account with the AccountId that you specified, or the account whose credentials you used to make this request is not a member of an organization.</p>
+-- @param Message [ExceptionMessage] <p> We can't find an AWS account with the AccountId that you specified, or the account whose credentials you used to make this request is not a member of an organization.</p>
 function M.AccountNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountNotFoundException")
 	local t = { 
@@ -270,9 +270,9 @@ function M.AssertParent(struct)
 end
 
 --- Create a structure of type Parent
--- &lt;p&gt;Contains information about either a root or an organizational unit (OU) that can contain OUs or accounts in an organization.&lt;/p&gt;
--- @param Type [ParentType] &lt;p&gt;The type of the parent entity.&lt;/p&gt;
--- @param Id [ParentId] &lt;p&gt;The unique identifier (ID) of the parent entity.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a parent ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Root: a string that begins with &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Contains information about either a root or an organizational unit (OU) that can contain OUs or accounts in an organization.</p>
+-- @param Type [ParentType] <p>The type of the parent entity.</p>
+-- @param Id [ParentId] <p>The unique identifier (ID) of the parent entity.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
 function M.Parent(Type, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Parent")
 	local t = { 
@@ -295,8 +295,8 @@ function M.AssertPolicyNotFoundException(struct)
 end
 
 --- Create a structure of type PolicyNotFoundException
--- &lt;p&gt;We can't find a policy with the PolicyId that you specified.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;We can't find a policy with the PolicyId that you specified.&lt;/p&gt;
+-- <p>We can't find a policy with the PolicyId that you specified.</p>
+-- @param Message [ExceptionMessage] <p>We can't find a policy with the PolicyId that you specified.</p>
 function M.PolicyNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyNotFoundException")
 	local t = { 
@@ -319,7 +319,7 @@ end
 
 --- Create a structure of type CreateOrganizationResponse
 --  
--- @param Organization [Organization] &lt;p&gt;A structure that contains details about the newly created organization.&lt;/p&gt;
+-- @param Organization [Organization] <p>A structure that contains details about the newly created organization.</p>
 function M.CreateOrganizationResponse(Organization, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateOrganizationResponse")
 	local t = { 
@@ -341,8 +341,8 @@ function M.AssertDestinationParentNotFoundException(struct)
 end
 
 --- Create a structure of type DestinationParentNotFoundException
--- &lt;p&gt;We can't find the destination container (a root or OU) with the ParentId that you specified.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;We can't find the destination container (a root or OU) with the ParentId that you specified.&lt;/p&gt;
+-- <p>We can't find the destination container (a root or OU) with the ParentId that you specified.</p>
+-- @param Message [ExceptionMessage] <p>We can't find the destination container (a root or OU) with the ParentId that you specified.</p>
 function M.DestinationParentNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DestinationParentNotFoundException")
 	local t = { 
@@ -364,8 +364,8 @@ function M.AssertSourceParentNotFoundException(struct)
 end
 
 --- Create a structure of type SourceParentNotFoundException
--- &lt;p&gt;We can't find a source root or OU with the ParentId that you specified.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;We can't find a source root or OU with the ParentId that you specified.&lt;/p&gt;
+-- <p>We can't find a source root or OU with the ParentId that you specified.</p>
+-- @param Message [ExceptionMessage] <p>We can't find a source root or OU with the ParentId that you specified.</p>
 function M.SourceParentNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SourceParentNotFoundException")
 	local t = { 
@@ -391,8 +391,8 @@ end
 
 --- Create a structure of type AttachPolicyRequest
 --  
--- @param TargetId [PolicyTargetId] &lt;p&gt;The unique identifier (ID) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the &lt;a&gt;ListRoots&lt;/a&gt;, &lt;a&gt;ListOrganizationalUnitsForParent&lt;/a&gt;, or &lt;a&gt;ListAccounts&lt;/a&gt; operations.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a target ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Root: a string that begins with &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Account: a string that consists of exactly 12 digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PolicyId [PolicyId] &lt;p&gt;The unique identifier (ID) of the policy that you want to attach to the target. You can get the ID for the policy by calling the &lt;a&gt;ListPolicies&lt;/a&gt; operation.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a policy ID string requires &quot;p-&quot; followed by from 8 to 128 lower-case letters or digits.&lt;/p&gt;
+-- @param TargetId [PolicyTargetId] <p>The unique identifier (ID) of the root, OU, or account that you want to attach the policy to. You can get the ID by calling the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a> operations.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Account: a string that consists of exactly 12 digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+-- @param PolicyId [PolicyId] <p>The unique identifier (ID) of the policy that you want to attach to the target. You can get the ID for the policy by calling the <a>ListPolicies</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.</p>
 -- Required parameter: PolicyId
 -- Required parameter: TargetId
 function M.AttachPolicyRequest(TargetId, PolicyId, ...)
@@ -419,8 +419,8 @@ end
 
 --- Create a structure of type ListAccountsForParentResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param Accounts [Accounts] &lt;p&gt;A list of the accounts in the specified root or OU.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @param Accounts [Accounts] <p>A list of the accounts in the specified root or OU.</p>
 function M.ListAccountsForParentResponse(NextToken, Accounts, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAccountsForParentResponse")
 	local t = { 
@@ -445,8 +445,8 @@ end
 
 --- Create a structure of type ListChildrenResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param Children [Children] &lt;p&gt;The list of children of the specified parent container.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @param Children [Children] <p>The list of children of the specified parent container.</p>
 function M.ListChildrenResponse(NextToken, Children, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListChildrenResponse")
 	local t = { 
@@ -470,7 +470,7 @@ end
 
 --- Create a structure of type UpdateOrganizationalUnitResponse
 --  
--- @param OrganizationalUnit [OrganizationalUnit] &lt;p&gt;A structure that contains the details about the specified OU, including its new name.&lt;/p&gt;
+-- @param OrganizationalUnit [OrganizationalUnit] <p>A structure that contains the details about the specified OU, including its new name.</p>
 function M.UpdateOrganizationalUnitResponse(OrganizationalUnit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateOrganizationalUnitResponse")
 	local t = { 
@@ -493,7 +493,7 @@ end
 
 --- Create a structure of type CancelHandshakeResponse
 --  
--- @param Handshake [Handshake] &lt;p&gt;A structure that contains details about the handshake that you canceled.&lt;/p&gt;
+-- @param Handshake [Handshake] <p>A structure that contains details about the handshake that you canceled.</p>
 function M.CancelHandshakeResponse(Handshake, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelHandshakeResponse")
 	local t = { 
@@ -521,14 +521,14 @@ function M.AssertAccount(struct)
 end
 
 --- Create a structure of type Account
--- &lt;p&gt;Contains information about an AWS account that is a member of an organization.&lt;/p&gt;
--- @param Status [AccountStatus] &lt;p&gt;The status of the account in the organization.&lt;/p&gt;
--- @param Name [AccountName] &lt;p&gt;The friendly name of the account.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; that is used to validate this parameter is a string of any of the characters in the ASCII character range.&lt;/p&gt;
--- @param Email [Email] &lt;p&gt;The email address associated with the AWS account.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for this parameter is a string of characters that represents a standard Internet email address.&lt;/p&gt;
--- @param JoinedMethod [AccountJoinedMethod] &lt;p&gt;The method by which the account joined the organization.&lt;/p&gt;
--- @param JoinedTimestamp [Timestamp] &lt;p&gt;The date the account became a part of the organization.&lt;/p&gt;
--- @param Id [AccountId] &lt;p&gt;The unique identifier (ID) of the account.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an account ID string requires exactly 12 digits.&lt;/p&gt;
--- @param Arn [AccountArn] &lt;p&gt;The Amazon Resource Name (ARN) of the account.&lt;/p&gt; &lt;p&gt;For more information about ARNs in Organizations, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns&quot;&gt;ARN Formats Supported by Organizations&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>Contains information about an AWS account that is a member of an organization.</p>
+-- @param Status [AccountStatus] <p>The status of the account in the organization.</p>
+-- @param Name [AccountName] <p>The friendly name of the account.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
+-- @param Email [Email] <p>The email address associated with the AWS account.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for this parameter is a string of characters that represents a standard Internet email address.</p>
+-- @param JoinedMethod [AccountJoinedMethod] <p>The method by which the account joined the organization.</p>
+-- @param JoinedTimestamp [Timestamp] <p>The date the account became a part of the organization.</p>
+-- @param Id [AccountId] <p>The unique identifier (ID) of the account.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12 digits.</p>
+-- @param Arn [AccountArn] <p>The Amazon Resource Name (ARN) of the account.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
 function M.Account(Status, Name, Email, JoinedMethod, JoinedTimestamp, Id, Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Account")
 	local t = { 
@@ -557,7 +557,7 @@ end
 
 --- Create a structure of type DescribeOrganizationResponse
 --  
--- @param Organization [Organization] &lt;p&gt;A structure that contains information about the organization.&lt;/p&gt;
+-- @param Organization [Organization] <p>A structure that contains information about the organization.</p>
 function M.DescribeOrganizationResponse(Organization, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrganizationResponse")
 	local t = { 
@@ -585,10 +585,10 @@ end
 
 --- Create a structure of type CreateAccountRequest
 --  
--- @param RoleName [RoleName] &lt;p&gt;(Optional)&lt;/p&gt; &lt;p&gt;The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account.&lt;/p&gt; &lt;p&gt;If you do not specify this parameter, the role name defaults to &lt;code&gt;OrganizationAccountAccessRole&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information about how to use this role to access the member account, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role&quot;&gt;Accessing and Administering the Member Accounts in Your Organization&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;, and steps 2 and 3 in &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html&quot;&gt;Tutorial: Delegate Access Across AWS Accounts Using IAM Roles&lt;/a&gt; in the &lt;i&gt;IAM User Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; that is used to validate this parameter is a string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-&lt;/p&gt;
--- @param Email [Email] &lt;p&gt;The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.&lt;/p&gt;
--- @param IamUserAccessToBilling [IAMUserAccessToBilling] &lt;p&gt;If set to &lt;code&gt;ALLOW&lt;/code&gt;, the new account enables IAM users to access account billing information &lt;i&gt;if&lt;/i&gt; they have the required permissions. If set to &lt;code&gt;DENY&lt;/code&gt;, then only the root user of the new account can access account billing information. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate&quot;&gt;Activating Access to the Billing and Cost Management Console&lt;/a&gt; in the &lt;i&gt;AWS Billing and Cost Management User Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;If you do not specify this parameter, the value defaults to ALLOW, and IAM users and roles with the required permissions can access billing information for the new account.&lt;/p&gt;
--- @param AccountName [AccountName] &lt;p&gt;The friendly name of the member account.&lt;/p&gt;
+-- @param RoleName [RoleName] <p>(Optional)</p> <p>The name of an IAM role that Organizations automatically preconfigures in the new member account. This role trusts the master account, allowing users in the master account to assume the role, as permitted by the master account administrator. The role has administrator permissions in the new member account.</p> <p>If you do not specify this parameter, the role name defaults to <code>OrganizationAccountAccessRole</code>.</p> <p>For more information about how to use this role to access the member account, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role">Accessing and Administering the Member Accounts in Your Organization</a> in the <i>AWS Organizations User Guide</i>, and steps 2 and 3 in <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide</i>.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of the following characters: =,.@-</p>
+-- @param Email [Email] <p>The email address of the owner to assign to the new member account. This email address must not already be associated with another AWS account.</p>
+-- @param IamUserAccessToBilling [IAMUserAccessToBilling] <p>If set to <code>ALLOW</code>, the new account enables IAM users to access account billing information <i>if</i> they have the required permissions. If set to <code>DENY</code>, then only the root user of the new account can access account billing information. For more information, see <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate">Activating Access to the Billing and Cost Management Console</a> in the <i>AWS Billing and Cost Management User Guide</i>.</p> <p>If you do not specify this parameter, the value defaults to ALLOW, and IAM users and roles with the required permissions can access billing information for the new account.</p>
+-- @param AccountName [AccountName] <p>The friendly name of the member account.</p>
 -- Required parameter: Email
 -- Required parameter: AccountName
 function M.CreateAccountRequest(RoleName, Email, IamUserAccessToBilling, AccountName, ...)
@@ -616,7 +616,7 @@ end
 
 --- Create a structure of type DisablePolicyTypeResponse
 --  
--- @param Root [Root] &lt;p&gt;A structure that shows the root with the updated list of enabled policy types.&lt;/p&gt;
+-- @param Root [Root] <p>A structure that shows the root with the updated list of enabled policy types.</p>
 function M.DisablePolicyTypeResponse(Root, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisablePolicyTypeResponse")
 	local t = { 
@@ -638,8 +638,8 @@ function M.AssertPolicyTypeNotEnabledException(struct)
 end
 
 --- Create a structure of type PolicyTypeNotEnabledException
--- &lt;p&gt;The specified policy type is not currently enabled in this root. You cannot attach policies of the specified type to entities in a root until you enable that type in the root. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html&quot;&gt;Enabling All Features in Your Organization&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The specified policy type is not currently enabled in this root. You cannot attach policies of the specified type to entities in a root until you enable that type in the root. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html&quot;&gt;Enabling All Features in Your Organization&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>The specified policy type is not currently enabled in this root. You cannot attach policies of the specified type to entities in a root until you enable that type in the root. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">Enabling All Features in Your Organization</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @param Message [ExceptionMessage] <p>The specified policy type is not currently enabled in this root. You cannot attach policies of the specified type to entities in a root until you enable that type in the root. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">Enabling All Features in Your Organization</a> in the <i>AWS Organizations User Guide</i>.</p>
 function M.PolicyTypeNotEnabledException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyTypeNotEnabledException")
 	local t = { 
@@ -662,7 +662,7 @@ end
 
 --- Create a structure of type DescribeOrganizationalUnitResponse
 --  
--- @param OrganizationalUnit [OrganizationalUnit] &lt;p&gt;A structure that contains details about the specified OU.&lt;/p&gt;
+-- @param OrganizationalUnit [OrganizationalUnit] <p>A structure that contains details about the specified OU.</p>
 function M.DescribeOrganizationalUnitResponse(OrganizationalUnit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrganizationalUnitResponse")
 	local t = { 
@@ -690,14 +690,14 @@ function M.AssertOrganization(struct)
 end
 
 --- Create a structure of type Organization
--- &lt;p&gt;Contains details about an organization. An organization is a collection of accounts that are centrally managed together using consolidated billing, organized hierarchically with organizational units (OUs), and controlled with policies .&lt;/p&gt;
--- @param AvailablePolicyTypes [PolicyTypes] &lt;p&gt;A list of policy types that are enabled for this organization. For example, if your organization has all features enabled, then service control policies (SCPs) are included in the list.&lt;/p&gt;
--- @param MasterAccountId [AccountId] &lt;p&gt;The unique identifier (ID) of the master account of an organization.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an account ID string requires exactly 12 digits.&lt;/p&gt;
--- @param MasterAccountArn [AccountArn] &lt;p&gt;The Amazon Resource Name (ARN) of the account that is designated as the master account for the organization.&lt;/p&gt; &lt;p&gt;For more information about ARNs in Organizations, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns&quot;&gt;ARN Formats Supported by Organizations&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param FeatureSet [OrganizationFeatureSet] &lt;p&gt;Specifies the functionality that currently is available to the organization. If set to &quot;ALL&quot;, then all features are enabled and policies can be applied to accounts in the organization. If set to &quot;CONSOLIDATED_BILLING&quot;, then only consolidated billing functionality is available. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_manage_org_support-all-features.html&quot;&gt;Enabling All Features in Your Organization&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param MasterAccountEmail [Email] &lt;p&gt;The email address that is associated with the AWS account that is designated as the master account for the organization.&lt;/p&gt;
--- @param Id [OrganizationId] &lt;p&gt;The unique identifier (ID) of an organization.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an organization ID string requires &quot;o-&quot; followed by from 10 to 32 lower-case letters or digits.&lt;/p&gt;
--- @param Arn [OrganizationArn] &lt;p&gt;The Amazon Resource Name (ARN) of an organization.&lt;/p&gt; &lt;p&gt;For more information about ARNs in Organizations, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns&quot;&gt;ARN Formats Supported by Organizations&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>Contains details about an organization. An organization is a collection of accounts that are centrally managed together using consolidated billing, organized hierarchically with organizational units (OUs), and controlled with policies .</p>
+-- @param AvailablePolicyTypes [PolicyTypes] <p>A list of policy types that are enabled for this organization. For example, if your organization has all features enabled, then service control policies (SCPs) are included in the list.</p>
+-- @param MasterAccountId [AccountId] <p>The unique identifier (ID) of the master account of an organization.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12 digits.</p>
+-- @param MasterAccountArn [AccountArn] <p>The Amazon Resource Name (ARN) of the account that is designated as the master account for the organization.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @param FeatureSet [OrganizationFeatureSet] <p>Specifies the functionality that currently is available to the organization. If set to "ALL", then all features are enabled and policies can be applied to accounts in the organization. If set to "CONSOLIDATED_BILLING", then only consolidated billing functionality is available. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_manage_org_support-all-features.html">Enabling All Features in Your Organization</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @param MasterAccountEmail [Email] <p>The email address that is associated with the AWS account that is designated as the master account for the organization.</p>
+-- @param Id [OrganizationId] <p>The unique identifier (ID) of an organization.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID string requires "o-" followed by from 10 to 32 lower-case letters or digits.</p>
+-- @param Arn [OrganizationArn] <p>The Amazon Resource Name (ARN) of an organization.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
 function M.Organization(AvailablePolicyTypes, MasterAccountId, MasterAccountArn, FeatureSet, MasterAccountEmail, Id, Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Organization")
 	local t = { 
@@ -727,7 +727,7 @@ end
 
 --- Create a structure of type CancelHandshakeRequest
 --  
--- @param HandshakeId [HandshakeId] &lt;p&gt;The unique identifier (ID) of the handshake that you want to cancel. You can get the ID from the &lt;a&gt;ListHandshakesForOrganization&lt;/a&gt; operation.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for handshake ID string requires &quot;h-&quot; followed by from 8 to 32 lower-case letters or digits.&lt;/p&gt;
+-- @param HandshakeId [HandshakeId] <p>The unique identifier (ID) of the handshake that you want to cancel. You can get the ID from the <a>ListHandshakesForOrganization</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
 -- Required parameter: HandshakeId
 function M.CancelHandshakeRequest(HandshakeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelHandshakeRequest")
@@ -756,9 +756,9 @@ end
 
 --- Create a structure of type MoveAccountRequest
 --  
--- @param DestinationParentId [ParentId] &lt;p&gt;The unique identifier (ID) of the root or organizational unit that you want to move the account to.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a parent ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Root: a string that begins with &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SourceParentId [ParentId] &lt;p&gt;The unique identifier (ID) of the root or organizational unit that you want to move the account from.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a parent ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Root: a string that begins with &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param AccountId [AccountId] &lt;p&gt;The unique identifier (ID) of the account that you want to move.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an account ID string requires exactly 12 digits.&lt;/p&gt;
+-- @param DestinationParentId [ParentId] <p>The unique identifier (ID) of the root or organizational unit that you want to move the account to.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+-- @param SourceParentId [ParentId] <p>The unique identifier (ID) of the root or organizational unit that you want to move the account from.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+-- @param AccountId [AccountId] <p>The unique identifier (ID) of the account that you want to move.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12 digits.</p>
 -- Required parameter: AccountId
 -- Required parameter: SourceParentId
 -- Required parameter: DestinationParentId
@@ -789,9 +789,9 @@ end
 
 --- Create a structure of type ListPoliciesRequest
 --  
--- @param Filter [PolicyType] &lt;p&gt;Specifies the type of policy that you want to include in the response.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
+-- @param Filter [PolicyType] <p>Specifies the type of policy that you want to include in the response.</p>
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- Required parameter: Filter
 function M.ListPoliciesRequest(Filter, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPoliciesRequest")
@@ -818,10 +818,10 @@ function M.AssertHandshakeResource(struct)
 end
 
 --- Create a structure of type HandshakeResource
--- &lt;p&gt;Contains additional data that is needed to process a handshake.&lt;/p&gt;
--- @param Type [HandshakeResourceType] &lt;p&gt;The type of information being passed, specifying how the value is to be interpreted by the other party:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ACCOUNT&lt;/code&gt; - Specifies an AWS account ID number.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ORGANIZATION&lt;/code&gt; - Specifies an organization ID number.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EMAIL&lt;/code&gt; - Specifies the email address that is associated with the account that receives the handshake. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;OWNER_EMAIL&lt;/code&gt; - Specifies the email address associated with the master account. Included as information about an organization. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;OWNER_NAME&lt;/code&gt; - Specifies the name associated with the master account. Included as information about an organization. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NOTES&lt;/code&gt; - Additional text provided by the handshake initiator and intended for the recipient to read.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Resources [HandshakeResources] &lt;p&gt;When needed, contains an additional array of &lt;code&gt;HandshakeResource&lt;/code&gt; objects.&lt;/p&gt;
--- @param Value [HandshakeResourceValue] &lt;p&gt;The information that is passed to the other party in the handshake. The format of the value string must match the requirements of the specified type.&lt;/p&gt;
+-- <p>Contains additional data that is needed to process a handshake.</p>
+-- @param Type [HandshakeResourceType] <p>The type of information being passed, specifying how the value is to be interpreted by the other party:</p> <ul> <li> <p> <code>ACCOUNT</code> - Specifies an AWS account ID number.</p> </li> <li> <p> <code>ORGANIZATION</code> - Specifies an organization ID number.</p> </li> <li> <p> <code>EMAIL</code> - Specifies the email address that is associated with the account that receives the handshake. </p> </li> <li> <p> <code>OWNER_EMAIL</code> - Specifies the email address associated with the master account. Included as information about an organization. </p> </li> <li> <p> <code>OWNER_NAME</code> - Specifies the name associated with the master account. Included as information about an organization. </p> </li> <li> <p> <code>NOTES</code> - Additional text provided by the handshake initiator and intended for the recipient to read.</p> </li> </ul>
+-- @param Resources [HandshakeResources] <p>When needed, contains an additional array of <code>HandshakeResource</code> objects.</p>
+-- @param Value [HandshakeResourceValue] <p>The information that is passed to the other party in the handshake. The format of the value string must match the requirements of the specified type.</p>
 function M.HandshakeResource(Type, Resources, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HandshakeResource")
 	local t = { 
@@ -846,7 +846,7 @@ end
 
 --- Create a structure of type DescribeHandshakeResponse
 --  
--- @param Handshake [Handshake] &lt;p&gt;A structure that contains information about the specified handshake.&lt;/p&gt;
+-- @param Handshake [Handshake] <p>A structure that contains information about the specified handshake.</p>
 function M.DescribeHandshakeResponse(Handshake, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHandshakeResponse")
 	local t = { 
@@ -869,9 +869,9 @@ function M.AssertInvalidInputException(struct)
 end
 
 --- Create a structure of type InvalidInputException
--- &lt;p&gt;The requested operation failed because you provided invalid values for one or more of the request parameters. This exception includes a reason that contains additional information about the violated limit:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_ENUM: You specified a value that is not valid for that parameter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_PATTERN: You provided a value that doesn't match the required pattern.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INPUT_REQUIRED: You must include a value for all required parameters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call of the operation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The requested operation failed because you provided invalid values for one or more of the request parameters. This exception includes a reason that contains additional information about the violated limit:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_ENUM: You specified a value that is not valid for that parameter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_PATTERN: You provided a value that doesn't match the required pattern.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INPUT_REQUIRED: You must include a value for all required parameters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call of the operation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Reason [InvalidInputExceptionReason] &lt;p&gt;The requested operation failed because you provided invalid values for one or more of the request parameters. This exception includes a reason that contains additional information about the violated limit:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_ENUM: You specified a value that is not valid for that parameter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_PATTERN: You provided a value that doesn't match the required pattern.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INPUT_REQUIRED: You must include a value for all required parameters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call of the operation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The requested operation failed because you provided invalid values for one or more of the request parameters. This exception includes a reason that contains additional information about the violated limit:</p> <ul> <li> <p>INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.</p> </li> <li> <p>INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.</p> </li> <li> <p>INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID. </p> </li> <li> <p>INVALID_ENUM: You specified a value that is not valid for that parameter.</p> </li> <li> <p>INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.</p> </li> <li> <p>INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.</p> </li> <li> <p>MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.</p> </li> <li> <p>MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.</p> </li> <li> <p>MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.</p> </li> <li> <p>MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.</p> </li> <li> <p>IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.</p> </li> <li> <p>INVALID_PATTERN: You provided a value that doesn't match the required pattern.</p> </li> <li> <p>INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.</p> </li> <li> <p>INPUT_REQUIRED: You must include a value for all required parameters.</p> </li> <li> <p>INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call of the operation.</p> </li> <li> <p>MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.</p> </li> <li> <p>MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.</p> </li> </ul>
+-- @param Message [ExceptionMessage] <p>The requested operation failed because you provided invalid values for one or more of the request parameters. This exception includes a reason that contains additional information about the violated limit:</p> <ul> <li> <p>INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.</p> </li> <li> <p>INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.</p> </li> <li> <p>INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID. </p> </li> <li> <p>INVALID_ENUM: You specified a value that is not valid for that parameter.</p> </li> <li> <p>INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.</p> </li> <li> <p>INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.</p> </li> <li> <p>MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.</p> </li> <li> <p>MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.</p> </li> <li> <p>MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.</p> </li> <li> <p>MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.</p> </li> <li> <p>IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.</p> </li> <li> <p>INVALID_PATTERN: You provided a value that doesn't match the required pattern.</p> </li> <li> <p>INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.</p> </li> <li> <p>INPUT_REQUIRED: You must include a value for all required parameters.</p> </li> <li> <p>INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call of the operation.</p> </li> <li> <p>MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.</p> </li> <li> <p>MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.</p> </li> </ul>
+-- @param Reason [InvalidInputExceptionReason] <p>The requested operation failed because you provided invalid values for one or more of the request parameters. This exception includes a reason that contains additional information about the violated limit:</p> <ul> <li> <p>INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.</p> </li> <li> <p>INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.</p> </li> <li> <p>INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID. </p> </li> <li> <p>INVALID_ENUM: You specified a value that is not valid for that parameter.</p> </li> <li> <p>INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.</p> </li> <li> <p>INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.</p> </li> <li> <p>MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.</p> </li> <li> <p>MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.</p> </li> <li> <p>MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.</p> </li> <li> <p>MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.</p> </li> <li> <p>IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.</p> </li> <li> <p>INVALID_PATTERN: You provided a value that doesn't match the required pattern.</p> </li> <li> <p>INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.</p> </li> <li> <p>INPUT_REQUIRED: You must include a value for all required parameters.</p> </li> <li> <p>INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call of the operation.</p> </li> <li> <p>MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.</p> </li> <li> <p>MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.</p> </li> </ul>
 function M.InvalidInputException(Message, Reason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputException")
 	local t = { 
@@ -895,9 +895,9 @@ function M.AssertHandshakeParty(struct)
 end
 
 --- Create a structure of type HandshakeParty
--- &lt;p&gt;Identifies a participant in a handshake.&lt;/p&gt;
--- @param Type [HandshakePartyType] &lt;p&gt;The type of party.&lt;/p&gt;
--- @param Id [HandshakePartyId] &lt;p&gt;The unique identifier (ID) for the party.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for handshake ID string requires &quot;h-&quot; followed by from 8 to 32 lower-case letters or digits.&lt;/p&gt;
+-- <p>Identifies a participant in a handshake.</p>
+-- @param Type [HandshakePartyType] <p>The type of party.</p>
+-- @param Id [HandshakePartyId] <p>The unique identifier (ID) for the party.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
 function M.HandshakeParty(Type, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HandshakeParty")
 	local t = { 
@@ -922,8 +922,8 @@ end
 
 --- Create a structure of type ListPoliciesResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param Policies [Policies] &lt;p&gt;A list of policies that match the filter criteria in the request. The output list does not include the policy contents. To see the content for a policy, see &lt;a&gt;DescribePolicy&lt;/a&gt;.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @param Policies [Policies] <p>A list of policies that match the filter criteria in the request. The output list does not include the policy contents. To see the content for a policy, see <a>DescribePolicy</a>.</p>
 function M.ListPoliciesResponse(NextToken, Policies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPoliciesResponse")
 	local t = { 
@@ -948,8 +948,8 @@ end
 
 --- Create a structure of type ListRootsResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param Roots [Roots] &lt;p&gt;A list of roots that are defined in an organization.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @param Roots [Roots] <p>A list of roots that are defined in an organization.</p>
 function M.ListRootsResponse(NextToken, Roots, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRootsResponse")
 	local t = { 
@@ -972,8 +972,8 @@ function M.AssertConcurrentModificationException(struct)
 end
 
 --- Create a structure of type ConcurrentModificationException
--- &lt;p&gt;The target of the operation is currently being modified by a different request. Try again later.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The target of the operation is currently being modified by a different request. Try again later.&lt;/p&gt;
+-- <p>The target of the operation is currently being modified by a different request. Try again later.</p>
+-- @param Message [ExceptionMessage] <p>The target of the operation is currently being modified by a different request. Try again later.</p>
 function M.ConcurrentModificationException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
@@ -996,7 +996,7 @@ end
 
 --- Create a structure of type DescribePolicyResponse
 --  
--- @param Policy [Policy] &lt;p&gt;A structure that contains details about the specified policy.&lt;/p&gt;
+-- @param Policy [Policy] <p>A structure that contains details about the specified policy.</p>
 function M.DescribePolicyResponse(Policy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePolicyResponse")
 	local t = { 
@@ -1019,7 +1019,7 @@ end
 
 --- Create a structure of type DeclineHandshakeResponse
 --  
--- @param Handshake [Handshake] &lt;p&gt;A structure that contains details about the declined handshake. The state is updated to show the value &lt;code&gt;DECLINED&lt;/code&gt;.&lt;/p&gt;
+-- @param Handshake [Handshake] <p>A structure that contains details about the declined handshake. The state is updated to show the value <code>DECLINED</code>.</p>
 function M.DeclineHandshakeResponse(Handshake, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeclineHandshakeResponse")
 	local t = { 
@@ -1041,8 +1041,8 @@ function M.AssertMalformedPolicyDocumentException(struct)
 end
 
 --- Create a structure of type MalformedPolicyDocumentException
--- &lt;p&gt;The provided policy document does not meet the requirements of the specified policy type. For example, the syntax might be incorrect. For details about service control policy syntax, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html&quot;&gt;Service Control Policy Syntax&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The provided policy document does not meet the requirements of the specified policy type. For example, the syntax might be incorrect. For details about service control policy syntax, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html&quot;&gt;Service Control Policy Syntax&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>The provided policy document does not meet the requirements of the specified policy type. For example, the syntax might be incorrect. For details about service control policy syntax, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html">Service Control Policy Syntax</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @param Message [ExceptionMessage] <p>The provided policy document does not meet the requirements of the specified policy type. For example, the syntax might be incorrect. For details about service control policy syntax, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html">Service Control Policy Syntax</a> in the <i>AWS Organizations User Guide</i>.</p>
 function M.MalformedPolicyDocumentException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MalformedPolicyDocumentException")
 	local t = { 
@@ -1065,7 +1065,7 @@ end
 
 --- Create a structure of type EnableAllFeaturesResponse
 --  
--- @param Handshake [Handshake] &lt;p&gt;A structure that contains details about the handshake created to support this request to enable all features in the organization.&lt;/p&gt;
+-- @param Handshake [Handshake] <p>A structure that contains details about the handshake created to support this request to enable all features in the organization.</p>
 function M.EnableAllFeaturesResponse(Handshake, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableAllFeaturesResponse")
 	local t = { 
@@ -1091,8 +1091,8 @@ end
 
 --- Create a structure of type EnablePolicyTypeRequest
 --  
--- @param RootId [RootId] &lt;p&gt;The unique identifier (ID) of the root in which you want to enable a policy type. You can get the ID from the &lt;a&gt;ListRoots&lt;/a&gt; operation.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a root ID string requires &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt;
--- @param PolicyType [PolicyType] &lt;p&gt;The policy type that you want to enable.&lt;/p&gt;
+-- @param RootId [RootId] <p>The unique identifier (ID) of the root in which you want to enable a policy type. You can get the ID from the <a>ListRoots</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+-- @param PolicyType [PolicyType] <p>The policy type that you want to enable.</p>
 -- Required parameter: RootId
 -- Required parameter: PolicyType
 function M.EnablePolicyTypeRequest(RootId, PolicyType, ...)
@@ -1118,7 +1118,7 @@ end
 
 --- Create a structure of type CreatePolicyResponse
 --  
--- @param Policy [Policy] &lt;p&gt;A structure that contains details about the newly created policy.&lt;/p&gt;
+-- @param Policy [Policy] <p>A structure that contains details about the newly created policy.</p>
 function M.CreatePolicyResponse(Policy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyResponse")
 	local t = { 
@@ -1140,8 +1140,8 @@ function M.AssertTargetNotFoundException(struct)
 end
 
 --- Create a structure of type TargetNotFoundException
--- &lt;p&gt;We can't find a root, OU, or account with the TargetId that you specified.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;We can't find a root, OU, or account with the TargetId that you specified.&lt;/p&gt;
+-- <p>We can't find a root, OU, or account with the TargetId that you specified.</p>
+-- @param Message [ExceptionMessage] <p>We can't find a root, OU, or account with the TargetId that you specified.</p>
 function M.TargetNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetNotFoundException")
 	local t = { 
@@ -1164,9 +1164,9 @@ function M.AssertHandshakeConstraintViolationException(struct)
 end
 
 --- Create a structure of type HandshakeConstraintViolationException
--- &lt;p&gt;The requested operation would violate the constraint identified in the reason code.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. &lt;b&gt;Note&lt;/b&gt;: deleted and closed accounts still count toward your limit.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ALREADY_IN_AN_ORGANIZATION: The handshake request is invalid because the invited account is already a member of an organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ORGANIZATION_ALREADY_HAS_ALL_FEATURES: The handshake request is invalid because the organization has already enabled all features.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES: You cannot issue new invitations to join an organization while it is in the process of enabling all features. You can resume inviting accounts after you finalize the process when all accounts have agreed to the change.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;PAYMENT_INSTRUMENT_REQUIRED: You cannot complete the operation with an account that does not have a payment instrument, such as a credit card, associated with it.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD: The request failed because the account is from a different marketplace than the accounts in the organization. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be from the same marketplace.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED: You attempted to change the membership of an account too quickly after its previous change.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The requested operation would violate the constraint identified in the reason code.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. &lt;b&gt;Note&lt;/b&gt;: deleted and closed accounts still count toward your limit.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ALREADY_IN_AN_ORGANIZATION: The handshake request is invalid because the invited account is already a member of an organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ORGANIZATION_ALREADY_HAS_ALL_FEATURES: The handshake request is invalid because the organization has already enabled all features.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES: You cannot issue new invitations to join an organization while it is in the process of enabling all features. You can resume inviting accounts after you finalize the process when all accounts have agreed to the change.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;PAYMENT_INSTRUMENT_REQUIRED: You cannot complete the operation with an account that does not have a payment instrument, such as a credit card, associated with it.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD: The request failed because the account is from a different marketplace than the accounts in the organization. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be from the same marketplace.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED: You attempted to change the membership of an account too quickly after its previous change.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Reason [HandshakeConstraintViolationExceptionReason] &lt;p&gt;The requested operation would violate the constraint identified in the reason code.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. &lt;b&gt;Note&lt;/b&gt;: deleted and closed accounts still count toward your limit.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ALREADY_IN_AN_ORGANIZATION: The handshake request is invalid because the invited account is already a member of an organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ORGANIZATION_ALREADY_HAS_ALL_FEATURES: The handshake request is invalid because the organization has already enabled all features.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES: You cannot issue new invitations to join an organization while it is in the process of enabling all features. You can resume inviting accounts after you finalize the process when all accounts have agreed to the change.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;PAYMENT_INSTRUMENT_REQUIRED: You cannot complete the operation with an account that does not have a payment instrument, such as a credit card, associated with it.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD: The request failed because the account is from a different marketplace than the accounts in the organization. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be from the same marketplace.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED: You attempted to change the membership of an account too quickly after its previous change.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The requested operation would violate the constraint identified in the reason code.</p> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. <b>Note</b>: deleted and closed accounts still count toward your limit.</p> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>ALREADY_IN_AN_ORGANIZATION: The handshake request is invalid because the invited account is already a member of an organization.</p> </li> <li> <p>ORGANIZATION_ALREADY_HAS_ALL_FEATURES: The handshake request is invalid because the organization has already enabled all features.</p> </li> <li> <p>INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES: You cannot issue new invitations to join an organization while it is in the process of enabling all features. You can resume inviting accounts after you finalize the process when all accounts have agreed to the change.</p> </li> <li> <p>PAYMENT_INSTRUMENT_REQUIRED: You cannot complete the operation with an account that does not have a payment instrument, such as a credit card, associated with it.</p> </li> <li> <p>ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD: The request failed because the account is from a different marketplace than the accounts in the organization. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be from the same marketplace.</p> </li> <li> <p>ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED: You attempted to change the membership of an account too quickly after its previous change.</p> </li> </ul>
+-- @param Message [ExceptionMessage] <p>The requested operation would violate the constraint identified in the reason code.</p> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. <b>Note</b>: deleted and closed accounts still count toward your limit.</p> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>ALREADY_IN_AN_ORGANIZATION: The handshake request is invalid because the invited account is already a member of an organization.</p> </li> <li> <p>ORGANIZATION_ALREADY_HAS_ALL_FEATURES: The handshake request is invalid because the organization has already enabled all features.</p> </li> <li> <p>INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES: You cannot issue new invitations to join an organization while it is in the process of enabling all features. You can resume inviting accounts after you finalize the process when all accounts have agreed to the change.</p> </li> <li> <p>PAYMENT_INSTRUMENT_REQUIRED: You cannot complete the operation with an account that does not have a payment instrument, such as a credit card, associated with it.</p> </li> <li> <p>ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD: The request failed because the account is from a different marketplace than the accounts in the organization. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be from the same marketplace.</p> </li> <li> <p>ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED: You attempted to change the membership of an account too quickly after its previous change.</p> </li> </ul>
+-- @param Reason [HandshakeConstraintViolationExceptionReason] <p>The requested operation would violate the constraint identified in the reason code.</p> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. <b>Note</b>: deleted and closed accounts still count toward your limit.</p> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>ALREADY_IN_AN_ORGANIZATION: The handshake request is invalid because the invited account is already a member of an organization.</p> </li> <li> <p>ORGANIZATION_ALREADY_HAS_ALL_FEATURES: The handshake request is invalid because the organization has already enabled all features.</p> </li> <li> <p>INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES: You cannot issue new invitations to join an organization while it is in the process of enabling all features. You can resume inviting accounts after you finalize the process when all accounts have agreed to the change.</p> </li> <li> <p>PAYMENT_INSTRUMENT_REQUIRED: You cannot complete the operation with an account that does not have a payment instrument, such as a credit card, associated with it.</p> </li> <li> <p>ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD: The request failed because the account is from a different marketplace than the accounts in the organization. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be from the same marketplace.</p> </li> <li> <p>ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED: You attempted to change the membership of an account too quickly after its previous change.</p> </li> </ul>
 function M.HandshakeConstraintViolationException(Message, Reason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HandshakeConstraintViolationException")
 	local t = { 
@@ -1191,7 +1191,7 @@ end
 
 --- Create a structure of type DescribeCreateAccountStatusRequest
 --  
--- @param CreateAccountRequestId [CreateAccountRequestId] &lt;p&gt;Specifies the &lt;code&gt;operationId&lt;/code&gt; that uniquely identifies the request. You can get the ID from the response to an earlier &lt;a&gt;CreateAccount&lt;/a&gt; request, or from the &lt;a&gt;ListCreateAccountStatus&lt;/a&gt; operation.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an create account request ID string requires &quot;car-&quot; followed by from 8 to 32 lower-case letters or digits.&lt;/p&gt;
+-- @param CreateAccountRequestId [CreateAccountRequestId] <p>Specifies the <code>operationId</code> that uniquely identifies the request. You can get the ID from the response to an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.</p>
 -- Required parameter: CreateAccountRequestId
 function M.DescribeCreateAccountStatusRequest(CreateAccountRequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCreateAccountStatusRequest")
@@ -1216,7 +1216,7 @@ end
 
 --- Create a structure of type DeletePolicyRequest
 --  
--- @param PolicyId [PolicyId] &lt;p&gt;The unique identifier (ID) of the policy that you want to delete. You can get the ID from the &lt;a&gt;ListPolicies&lt;/a&gt; or &lt;a&gt;ListPoliciesForTarget&lt;/a&gt; operations.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a policy ID string requires &quot;p-&quot; followed by from 8 to 128 lower-case letters or digits.&lt;/p&gt;
+-- @param PolicyId [PolicyId] <p>The unique identifier (ID) of the policy that you want to delete. You can get the ID from the <a>ListPolicies</a> or <a>ListPoliciesForTarget</a> operations.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.</p>
 -- Required parameter: PolicyId
 function M.DeletePolicyRequest(PolicyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePolicyRequest")
@@ -1241,8 +1241,8 @@ end
 
 --- Create a structure of type ListHandshakesForAccountResponse
 --  
--- @param Handshakes [Handshakes] &lt;p&gt;A list of &lt;a&gt;Handshake&lt;/a&gt; objects with details about each of the handshakes that is associated with the specified account.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
+-- @param Handshakes [Handshakes] <p>A list of <a>Handshake</a> objects with details about each of the handshakes that is associated with the specified account.</p>
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
 function M.ListHandshakesForAccountResponse(Handshakes, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHandshakesForAccountResponse")
 	local t = { 
@@ -1266,9 +1266,9 @@ function M.AssertTooManyRequestsException(struct)
 end
 
 --- Create a structure of type TooManyRequestsException
--- &lt;p&gt;You've sent too many requests in too short a period of time. The limit helps protect against denial-of-service attacks. Try again later.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;You've sent too many requests in too short a period of time. The limit helps protect against denial-of-service attacks. Try again later.&lt;/p&gt;
--- @param Type [ExceptionType] &lt;p&gt;You've sent too many requests in too short a period of time. The limit helps protect against denial-of-service attacks. Try again later.&lt;/p&gt;
+-- <p>You've sent too many requests in too short a period of time. The limit helps protect against denial-of-service attacks. Try again later.</p>
+-- @param Message [ExceptionMessage] <p>You've sent too many requests in too short a period of time. The limit helps protect against denial-of-service attacks. Try again later.</p>
+-- @param Type [ExceptionType] <p>You've sent too many requests in too short a period of time. The limit helps protect against denial-of-service attacks. Try again later.</p>
 function M.TooManyRequestsException(Message, Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
 	local t = { 
@@ -1293,8 +1293,8 @@ end
 
 --- Create a structure of type ListAccountsResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param Accounts [Accounts] &lt;p&gt;A list of objects in the organization.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @param Accounts [Accounts] <p>A list of objects in the organization.</p>
 function M.ListAccountsResponse(NextToken, Accounts, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAccountsResponse")
 	local t = { 
@@ -1318,7 +1318,7 @@ end
 
 --- Create a structure of type InviteAccountToOrganizationResponse
 --  
--- @param Handshake [Handshake] &lt;p&gt;A structure that contains details about the handshake that is created to support this invitation request.&lt;/p&gt;
+-- @param Handshake [Handshake] <p>A structure that contains details about the handshake that is created to support this invitation request.</p>
 function M.InviteAccountToOrganizationResponse(Handshake, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InviteAccountToOrganizationResponse")
 	local t = { 
@@ -1340,8 +1340,8 @@ function M.AssertServiceException(struct)
 end
 
 --- Create a structure of type ServiceException
--- &lt;p&gt;AWS Organizations can't complete your request because of an internal service error. Try again later.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;AWS Organizations can't complete your request because of an internal service error. Try again later.&lt;/p&gt;
+-- <p>AWS Organizations can't complete your request because of an internal service error. Try again later.</p>
+-- @param Message [ExceptionMessage] <p>AWS Organizations can't complete your request because of an internal service error. Try again later.</p>
 function M.ServiceException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceException")
 	local t = { 
@@ -1368,13 +1368,13 @@ function M.AssertPolicySummary(struct)
 end
 
 --- Create a structure of type PolicySummary
--- &lt;p&gt;Contains information about a policy, but does not include the content. To see the content of a policy, see &lt;a&gt;DescribePolicy&lt;/a&gt;.&lt;/p&gt;
--- @param AwsManaged [AwsManagedPolicy] &lt;p&gt;A boolean value that indicates whether the specified policy is an AWS managed policy. If true, then you can attach the policy to roots, OUs, or accounts, but you cannot edit it.&lt;/p&gt;
--- @param Description [PolicyDescription] &lt;p&gt;The description of the policy.&lt;/p&gt;
--- @param Type [PolicyType] &lt;p&gt;The type of policy.&lt;/p&gt;
--- @param Id [PolicyId] &lt;p&gt;The unique identifier (ID) of the policy.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a policy ID string requires &quot;p-&quot; followed by from 8 to 128 lower-case letters or digits.&lt;/p&gt;
--- @param Arn [PolicyArn] &lt;p&gt;The Amazon Resource Name (ARN) of the policy.&lt;/p&gt; &lt;p&gt;For more information about ARNs in Organizations, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns&quot;&gt;ARN Formats Supported by Organizations&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Name [PolicyName] &lt;p&gt;The friendly name of the policy.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; that is used to validate this parameter is a string of any of the characters in the ASCII character range.&lt;/p&gt;
+-- <p>Contains information about a policy, but does not include the content. To see the content of a policy, see <a>DescribePolicy</a>.</p>
+-- @param AwsManaged [AwsManagedPolicy] <p>A boolean value that indicates whether the specified policy is an AWS managed policy. If true, then you can attach the policy to roots, OUs, or accounts, but you cannot edit it.</p>
+-- @param Description [PolicyDescription] <p>The description of the policy.</p>
+-- @param Type [PolicyType] <p>The type of policy.</p>
+-- @param Id [PolicyId] <p>The unique identifier (ID) of the policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.</p>
+-- @param Arn [PolicyArn] <p>The Amazon Resource Name (ARN) of the policy.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @param Name [PolicyName] <p>The friendly name of the policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
 function M.PolicySummary(AwsManaged, Description, Type, Id, Arn, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicySummary")
 	local t = { 
@@ -1403,7 +1403,7 @@ end
 
 --- Create a structure of type AcceptHandshakeRequest
 --  
--- @param HandshakeId [HandshakeId] &lt;p&gt;The unique identifier (ID) of the handshake that you want to accept.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for handshake ID string requires &quot;h-&quot; followed by from 8 to 32 lower-case letters or digits.&lt;/p&gt;
+-- @param HandshakeId [HandshakeId] <p>The unique identifier (ID) of the handshake that you want to accept.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
 -- Required parameter: HandshakeId
 function M.AcceptHandshakeRequest(HandshakeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AcceptHandshakeRequest")
@@ -1426,8 +1426,8 @@ function M.AssertRootNotFoundException(struct)
 end
 
 --- Create a structure of type RootNotFoundException
--- &lt;p&gt;We can't find a root with the RootId that you specified.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;We can't find a root with the RootId that you specified.&lt;/p&gt;
+-- <p>We can't find a root with the RootId that you specified.</p>
+-- @param Message [ExceptionMessage] <p>We can't find a root with the RootId that you specified.</p>
 function M.RootNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RootNotFoundException")
 	local t = { 
@@ -1449,8 +1449,8 @@ function M.AssertDuplicateAccountException(struct)
 end
 
 --- Create a structure of type DuplicateAccountException
--- &lt;p&gt;That account is already present in the specified destination.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;That account is already present in the specified destination.&lt;/p&gt;
+-- <p>That account is already present in the specified destination.</p>
+-- @param Message [ExceptionMessage] <p>That account is already present in the specified destination.</p>
 function M.DuplicateAccountException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateAccountException")
 	local t = { 
@@ -1478,10 +1478,10 @@ end
 
 --- Create a structure of type ListChildrenRequest
 --  
--- @param ChildType [ChildType] &lt;p&gt;Filters the output to include only the specified child type.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
--- @param ParentId [ParentId] &lt;p&gt;The unique identifier (ID) for the parent root or OU whose children you want to list.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a parent ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Root: a string that begins with &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param ChildType [ChildType] <p>Filters the output to include only the specified child type.</p>
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- @param ParentId [ParentId] <p>The unique identifier (ID) for the parent root or OU whose children you want to list.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
 -- Required parameter: ParentId
 -- Required parameter: ChildType
 function M.ListChildrenRequest(ChildType, NextToken, MaxResults, ParentId, ...)
@@ -1508,8 +1508,8 @@ function M.AssertPolicyTypeNotAvailableForOrganizationException(struct)
 end
 
 --- Create a structure of type PolicyTypeNotAvailableForOrganizationException
--- &lt;p&gt;You can't use the specified policy type with the feature set currently enabled for this organization. For example, you can enable service control policies (SCPs) only after you enable all features in the organization. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#enable_policies_on_root&quot;&gt;Enabling and Disabling a Policy Type on a Root&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;You can't use the specified policy type with the feature set currently enabled for this organization. For example, you can enable service control policies (SCPs) only after you enable all features in the organization. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#enable_policies_on_root&quot;&gt;Enabling and Disabling a Policy Type on a Root&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>You can't use the specified policy type with the feature set currently enabled for this organization. For example, you can enable service control policies (SCPs) only after you enable all features in the organization. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#enable_policies_on_root">Enabling and Disabling a Policy Type on a Root</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @param Message [ExceptionMessage] <p>You can't use the specified policy type with the feature set currently enabled for this organization. For example, you can enable service control policies (SCPs) only after you enable all features in the organization. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#enable_policies_on_root">Enabling and Disabling a Policy Type on a Root</a> in the <i>AWS Organizations User Guide</i>.</p>
 function M.PolicyTypeNotAvailableForOrganizationException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyTypeNotAvailableForOrganizationException")
 	local t = { 
@@ -1534,9 +1534,9 @@ end
 
 --- Create a structure of type ListHandshakesForAccountRequest
 --  
--- @param Filter [HandshakeFilter] &lt;p&gt;Filters the handshakes that you want included in the response. The default is all types. Use the &lt;code&gt;ActionType&lt;/code&gt; element to limit the output to only a specified type, such as &lt;code&gt;INVITE&lt;/code&gt;, &lt;code&gt;ENABLE-FULL-CONTROL&lt;/code&gt;, or &lt;code&gt;APPROVE-FULL-CONTROL&lt;/code&gt;. Alternatively, for the &lt;code&gt;ENABLE-FULL-CONTROL&lt;/code&gt; handshake that generates a separate child handshake for each member account, you can specify &lt;code&gt;ParentHandshakeId&lt;/code&gt; to see only the handshakes that were generated by that parent request.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
+-- @param Filter [HandshakeFilter] <p>Filters the handshakes that you want included in the response. The default is all types. Use the <code>ActionType</code> element to limit the output to only a specified type, such as <code>INVITE</code>, <code>ENABLE-FULL-CONTROL</code>, or <code>APPROVE-FULL-CONTROL</code>. Alternatively, for the <code>ENABLE-FULL-CONTROL</code> handshake that generates a separate child handshake for each member account, you can specify <code>ParentHandshakeId</code> to see only the handshakes that were generated by that parent request.</p>
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 function M.ListHandshakesForAccountRequest(Filter, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHandshakesForAccountRequest")
 	local t = { 
@@ -1566,10 +1566,10 @@ end
 
 --- Create a structure of type ListPoliciesForTargetRequest
 --  
--- @param Filter [PolicyType] &lt;p&gt;The type of policy that you want to include in the returned list.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param TargetId [PolicyTargetId] &lt;p&gt;The unique identifier (ID) of the root, organizational unit, or account whose policies you want to list.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a target ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Root: a string that begins with &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Account: a string that consists of exactly 12 digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
+-- @param Filter [PolicyType] <p>The type of policy that you want to include in the returned list.</p>
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param TargetId [PolicyTargetId] <p>The unique identifier (ID) of the root, organizational unit, or account whose policies you want to list.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Account: a string that consists of exactly 12 digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- Required parameter: TargetId
 -- Required parameter: Filter
 function M.ListPoliciesForTargetRequest(Filter, NextToken, TargetId, MaxResults, ...)
@@ -1596,8 +1596,8 @@ function M.AssertMasterCannotLeaveOrganizationException(struct)
 end
 
 --- Create a structure of type MasterCannotLeaveOrganizationException
--- &lt;p&gt;You can't remove a master account from an organization. If you want the master account to become a member account in another organization, you must first delete the current organization of the master account.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;You can't remove a master account from an organization. If you want the master account to become a member account in another organization, you must first delete the current organization of the master account.&lt;/p&gt;
+-- <p>You can't remove a master account from an organization. If you want the master account to become a member account in another organization, you must first delete the current organization of the master account.</p>
+-- @param Message [ExceptionMessage] <p>You can't remove a master account from an organization. If you want the master account to become a member account in another organization, you must first delete the current organization of the master account.</p>
 function M.MasterCannotLeaveOrganizationException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MasterCannotLeaveOrganizationException")
 	local t = { 
@@ -1621,8 +1621,8 @@ end
 
 --- Create a structure of type ListRootsRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 function M.ListRootsRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRootsRequest")
 	local t = { 
@@ -1645,8 +1645,8 @@ function M.AssertOrganizationalUnitNotEmptyException(struct)
 end
 
 --- Create a structure of type OrganizationalUnitNotEmptyException
--- &lt;p&gt;The specified organizational unit (OU) is not empty. Move all accounts to another root or to other OUs, remove all child OUs, and then try the operation again.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The specified organizational unit (OU) is not empty. Move all accounts to another root or to other OUs, remove all child OUs, and then try the operation again.&lt;/p&gt;
+-- <p>The specified organizational unit (OU) is not empty. Move all accounts to another root or to other OUs, remove all child OUs, and then try the operation again.</p>
+-- @param Message [ExceptionMessage] <p>The specified organizational unit (OU) is not empty. Move all accounts to another root or to other OUs, remove all child OUs, and then try the operation again.</p>
 function M.OrganizationalUnitNotEmptyException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrganizationalUnitNotEmptyException")
 	local t = { 
@@ -1668,8 +1668,8 @@ function M.AssertAWSOrganizationsNotInUseException(struct)
 end
 
 --- Create a structure of type AWSOrganizationsNotInUseException
--- &lt;p&gt;Your account is not a member of an organization. To make this request, you must use the credentials of an account that belongs to an organization.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;Your account is not a member of an organization. To make this request, you must use the credentials of an account that belongs to an organization.&lt;/p&gt;
+-- <p>Your account is not a member of an organization. To make this request, you must use the credentials of an account that belongs to an organization.</p>
+-- @param Message [ExceptionMessage] <p>Your account is not a member of an organization. To make this request, you must use the credentials of an account that belongs to an organization.</p>
 function M.AWSOrganizationsNotInUseException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AWSOrganizationsNotInUseException")
 	local t = { 
@@ -1695,8 +1695,8 @@ end
 
 --- Create a structure of type DetachPolicyRequest
 --  
--- @param TargetId [PolicyTargetId] &lt;p&gt;The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can get the ID from the &lt;a&gt;ListRoots&lt;/a&gt;, &lt;a&gt;ListOrganizationalUnitsForParent&lt;/a&gt;, or &lt;a&gt;ListAccounts&lt;/a&gt; operations.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a target ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Root: a string that begins with &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Account: a string that consists of exactly 12 digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PolicyId [PolicyId] &lt;p&gt;The unique identifier (ID) of the policy you want to detach. You can get the ID from the &lt;a&gt;ListPolicies&lt;/a&gt; or &lt;a&gt;ListPoliciesForTarget&lt;/a&gt; operations.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a policy ID string requires &quot;p-&quot; followed by from 8 to 128 lower-case letters or digits.&lt;/p&gt;
+-- @param TargetId [PolicyTargetId] <p>The unique identifier (ID) of the root, OU, or account from which you want to detach the policy. You can get the ID from the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a> operations.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Account: a string that consists of exactly 12 digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+-- @param PolicyId [PolicyId] <p>The unique identifier (ID) of the policy you want to detach. You can get the ID from the <a>ListPolicies</a> or <a>ListPoliciesForTarget</a> operations.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.</p>
 -- Required parameter: PolicyId
 -- Required parameter: TargetId
 function M.DetachPolicyRequest(TargetId, PolicyId, ...)
@@ -1724,8 +1724,8 @@ end
 
 --- Create a structure of type InviteAccountToOrganizationRequest
 --  
--- @param Notes [HandshakeNotes] &lt;p&gt;Additional information that you want to include in the generated email to the recipient account owner.&lt;/p&gt;
--- @param Target [HandshakeParty] &lt;p&gt;The identifier (ID) of the AWS account that you want to invite to join your organization. This is a JSON object that contains the following elements: &lt;/p&gt; &lt;p&gt; &lt;code&gt;{ &quot;Type&quot;: &quot;ACCOUNT&quot;, &quot;Id&quot;: &quot;&amp;lt;&lt;i&gt; &lt;b&gt;account id number&lt;/b&gt; &lt;/i&gt;&amp;gt;&quot; }&lt;/code&gt; &lt;/p&gt; &lt;p&gt;If you use the AWS CLI, you can submit this as a single string, similar to the following example:&lt;/p&gt; &lt;p&gt; &lt;code&gt;--target id=123456789012,type=ACCOUNT&lt;/code&gt; &lt;/p&gt; &lt;p&gt;If you specify &lt;code&gt;&quot;Type&quot;: &quot;ACCOUNT&quot;&lt;/code&gt;, then you must provide the AWS account ID number as the &lt;code&gt;Id&lt;/code&gt;. If you specify &lt;code&gt;&quot;Type&quot;: &quot;EMAIL&quot;&lt;/code&gt;, then you must specify the email address that is associated with the account.&lt;/p&gt; &lt;p&gt; &lt;code&gt;--target id=bill@example.com,type=EMAIL&lt;/code&gt; &lt;/p&gt;
+-- @param Notes [HandshakeNotes] <p>Additional information that you want to include in the generated email to the recipient account owner.</p>
+-- @param Target [HandshakeParty] <p>The identifier (ID) of the AWS account that you want to invite to join your organization. This is a JSON object that contains the following elements: </p> <p> <code>{ "Type": "ACCOUNT", "Id": "&lt;<i> <b>account id number</b> </i>&gt;" }</code> </p> <p>If you use the AWS CLI, you can submit this as a single string, similar to the following example:</p> <p> <code>--target id=123456789012,type=ACCOUNT</code> </p> <p>If you specify <code>"Type": "ACCOUNT"</code>, then you must provide the AWS account ID number as the <code>Id</code>. If you specify <code>"Type": "EMAIL"</code>, then you must specify the email address that is associated with the account.</p> <p> <code>--target id=bill@example.com,type=EMAIL</code> </p>
 -- Required parameter: Target
 function M.InviteAccountToOrganizationRequest(Notes, Target, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InviteAccountToOrganizationRequest")
@@ -1751,8 +1751,8 @@ end
 
 --- Create a structure of type ListParentsResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param Parents [Parents] &lt;p&gt;A list of parents for the specified child account or OU.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @param Parents [Parents] <p>A list of parents for the specified child account or OU.</p>
 function M.ListParentsResponse(NextToken, Parents, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListParentsResponse")
 	local t = { 
@@ -1779,8 +1779,8 @@ end
 
 --- Create a structure of type DisablePolicyTypeRequest
 --  
--- @param RootId [RootId] &lt;p&gt;The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the &lt;a&gt;ListPolicies&lt;/a&gt; operation.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a root ID string requires &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt;
--- @param PolicyType [PolicyType] &lt;p&gt;The policy type that you want to disable in this root.&lt;/p&gt;
+-- @param RootId [RootId] <p>The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the <a>ListPolicies</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+-- @param PolicyType [PolicyType] <p>The policy type that you want to disable in this root.</p>
 -- Required parameter: RootId
 -- Required parameter: PolicyType
 function M.DisablePolicyTypeRequest(RootId, PolicyType, ...)
@@ -1807,7 +1807,7 @@ end
 
 --- Create a structure of type DescribeAccountRequest
 --  
--- @param AccountId [AccountId] &lt;p&gt;The unique identifier (ID) of the AWS account that you want information about. You can get the ID from the &lt;a&gt;ListAccounts&lt;/a&gt; or &lt;a&gt;ListAccountsForParent&lt;/a&gt; operations.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an account ID string requires exactly 12 digits.&lt;/p&gt;
+-- @param AccountId [AccountId] <p>The unique identifier (ID) of the AWS account that you want information about. You can get the ID from the <a>ListAccounts</a> or <a>ListAccountsForParent</a> operations.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12 digits.</p>
 -- Required parameter: AccountId
 function M.DescribeAccountRequest(AccountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountRequest")
@@ -1831,7 +1831,7 @@ end
 
 --- Create a structure of type CreateOrganizationRequest
 --  
--- @param FeatureSet [OrganizationFeatureSet] &lt;p&gt;Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;CONSOLIDATED_BILLING&lt;/i&gt;: All member accounts have their bills consolidated to and paid by the master account. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only&quot;&gt;Consolidated Billing&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;ALL&lt;/i&gt;: In addition to all the features supported by the consolidated billing feature set, the master account can also apply any type of policy to any member account in the organization. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all&quot;&gt;All features&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param FeatureSet [OrganizationFeatureSet] <p>Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.</p> <ul> <li> <p> <i>CONSOLIDATED_BILLING</i>: All member accounts have their bills consolidated to and paid by the master account. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only">Consolidated Billing</a> in the <i>AWS Organizations User Guide</i>.</p> </li> <li> <p> <i>ALL</i>: In addition to all the features supported by the consolidated billing feature set, the master account can also apply any type of policy to any member account in the organization. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all">All features</a> in the <i>AWS Organizations User Guide</i>.</p> </li> </ul>
 function M.CreateOrganizationRequest(FeatureSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateOrganizationRequest")
 	local t = { 
@@ -1853,8 +1853,8 @@ function M.AssertPolicyTypeAlreadyEnabledException(struct)
 end
 
 --- Create a structure of type PolicyTypeAlreadyEnabledException
--- &lt;p&gt;The specified policy type is already enabled in the specified root.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The specified policy type is already enabled in the specified root.&lt;/p&gt;
+-- <p>The specified policy type is already enabled in the specified root.</p>
+-- @param Message [ExceptionMessage] <p>The specified policy type is already enabled in the specified root.</p>
 function M.PolicyTypeAlreadyEnabledException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyTypeAlreadyEnabledException")
 	local t = { 
@@ -1879,9 +1879,9 @@ end
 
 --- Create a structure of type ListCreateAccountStatusRequest
 --  
--- @param States [CreateAccountStates] &lt;p&gt;A list of one or more states that you want included in the response. If this parameter is not present, then all requests are included in the response.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
+-- @param States [CreateAccountStates] <p>A list of one or more states that you want included in the response. If this parameter is not present, then all requests are included in the response.</p>
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 function M.ListCreateAccountStatusRequest(States, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCreateAccountStatusRequest")
 	local t = { 
@@ -1906,9 +1906,9 @@ function M.AssertConstraintViolationException(struct)
 end
 
 --- Create a structure of type ConstraintViolationException
--- &lt;p&gt;Performing this operation violates a minimum or maximum value limit. For example, attempting to removing the last SCP from an OU or root, inviting or creating too many accounts to the organization, or attaching too many policies to an account, OU, or root. This exception includes a reason that contains additional information about the violated limit:&lt;/p&gt; &lt;p/&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. If you need more accounts, contact AWS Support to request an increase in your limit. &lt;/p&gt; &lt;p&gt;Or, The number of invitations that you tried to send would cause you to exceed the limit of accounts in your organization. Send fewer invitations, or contact AWS Support to request an increase in the number of accounts.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Note&lt;/b&gt;: deleted and closed accounts still count toward your limit.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of organizational units you can have in an organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels deep.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain type that can be attached to an entity at one time.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would cause the entity to have fewer than the minimum number of policies of a certain type required.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first agree to the End-User License Agreement (EULA).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first complete phone verification.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this account, you first must associate a payment instrument, such as a credit card, with the account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you first must associate a payment instrument, such as a credit card, with the account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create in one day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first must migrate the organization's master account to the marketplace that corresponds to the master account's address. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be associated with the same marketplace.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;Performing this operation violates a minimum or maximum value limit. For example, attempting to removing the last SCP from an OU or root, inviting or creating too many accounts to the organization, or attaching too many policies to an account, OU, or root. This exception includes a reason that contains additional information about the violated limit:&lt;/p&gt; &lt;p/&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. If you need more accounts, contact AWS Support to request an increase in your limit. &lt;/p&gt; &lt;p&gt;Or, The number of invitations that you tried to send would cause you to exceed the limit of accounts in your organization. Send fewer invitations, or contact AWS Support to request an increase in the number of accounts.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Note&lt;/b&gt;: deleted and closed accounts still count toward your limit.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of organizational units you can have in an organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels deep.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain type that can be attached to an entity at one time.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would cause the entity to have fewer than the minimum number of policies of a certain type required.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first agree to the End-User License Agreement (EULA).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first complete phone verification.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this account, you first must associate a payment instrument, such as a credit card, with the account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you first must associate a payment instrument, such as a credit card, with the account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create in one day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first must migrate the organization's master account to the marketplace that corresponds to the master account's address. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be associated with the same marketplace.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Reason [ConstraintViolationExceptionReason] &lt;p&gt;Performing this operation violates a minimum or maximum value limit. For example, attempting to removing the last SCP from an OU or root, inviting or creating too many accounts to the organization, or attaching too many policies to an account, OU, or root. This exception includes a reason that contains additional information about the violated limit:&lt;/p&gt; &lt;p/&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. If you need more accounts, contact AWS Support to request an increase in your limit. &lt;/p&gt; &lt;p&gt;Or, The number of invitations that you tried to send would cause you to exceed the limit of accounts in your organization. Send fewer invitations, or contact AWS Support to request an increase in the number of accounts.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Note&lt;/b&gt;: deleted and closed accounts still count toward your limit.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of organizational units you can have in an organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels deep.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain type that can be attached to an entity at one time.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would cause the entity to have fewer than the minimum number of policies of a certain type required.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first agree to the End-User License Agreement (EULA).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first complete phone verification.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this account, you first must associate a payment instrument, such as a credit card, with the account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you first must associate a payment instrument, such as a credit card, with the account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create in one day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first must migrate the organization's master account to the marketplace that corresponds to the master account's address. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be associated with the same marketplace.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Performing this operation violates a minimum or maximum value limit. For example, attempting to removing the last SCP from an OU or root, inviting or creating too many accounts to the organization, or attaching too many policies to an account, OU, or root. This exception includes a reason that contains additional information about the violated limit:</p> <p/> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. If you need more accounts, contact AWS Support to request an increase in your limit. </p> <p>Or, The number of invitations that you tried to send would cause you to exceed the limit of accounts in your organization. Send fewer invitations, or contact AWS Support to request an increase in the number of accounts.</p> <p> <b>Note</b>: deleted and closed accounts still count toward your limit.</p> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of organizational units you can have in an organization.</p> </li> <li> <p>OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels deep.</p> </li> <li> <p>POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an organization.</p> </li> <li> <p>MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain type that can be attached to an entity at one time.</p> </li> <li> <p>MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would cause the entity to have fewer than the minimum number of policies of a certain type required.</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first agree to the End-User License Agreement (EULA).</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first complete phone verification.</p> </li> <li> <p>MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this account, you first must associate a payment instrument, such as a credit card, with the account.</p> </li> <li> <p>MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you first must associate a payment instrument, such as a credit card, with the account.</p> </li> <li> <p>ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create in one day.</p> </li> <li> <p>MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first must migrate the organization's master account to the marketplace that corresponds to the master account's address. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be associated with the same marketplace.</p> </li> </ul>
+-- @param Message [ExceptionMessage] <p>Performing this operation violates a minimum or maximum value limit. For example, attempting to removing the last SCP from an OU or root, inviting or creating too many accounts to the organization, or attaching too many policies to an account, OU, or root. This exception includes a reason that contains additional information about the violated limit:</p> <p/> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. If you need more accounts, contact AWS Support to request an increase in your limit. </p> <p>Or, The number of invitations that you tried to send would cause you to exceed the limit of accounts in your organization. Send fewer invitations, or contact AWS Support to request an increase in the number of accounts.</p> <p> <b>Note</b>: deleted and closed accounts still count toward your limit.</p> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of organizational units you can have in an organization.</p> </li> <li> <p>OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels deep.</p> </li> <li> <p>POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an organization.</p> </li> <li> <p>MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain type that can be attached to an entity at one time.</p> </li> <li> <p>MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would cause the entity to have fewer than the minimum number of policies of a certain type required.</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first agree to the End-User License Agreement (EULA).</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first complete phone verification.</p> </li> <li> <p>MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this account, you first must associate a payment instrument, such as a credit card, with the account.</p> </li> <li> <p>MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you first must associate a payment instrument, such as a credit card, with the account.</p> </li> <li> <p>ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create in one day.</p> </li> <li> <p>MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first must migrate the organization's master account to the marketplace that corresponds to the master account's address. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be associated with the same marketplace.</p> </li> </ul>
+-- @param Reason [ConstraintViolationExceptionReason] <p>Performing this operation violates a minimum or maximum value limit. For example, attempting to removing the last SCP from an OU or root, inviting or creating too many accounts to the organization, or attaching too many policies to an account, OU, or root. This exception includes a reason that contains additional information about the violated limit:</p> <p/> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. If you need more accounts, contact AWS Support to request an increase in your limit. </p> <p>Or, The number of invitations that you tried to send would cause you to exceed the limit of accounts in your organization. Send fewer invitations, or contact AWS Support to request an increase in the number of accounts.</p> <p> <b>Note</b>: deleted and closed accounts still count toward your limit.</p> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of organizational units you can have in an organization.</p> </li> <li> <p>OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels deep.</p> </li> <li> <p>POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an organization.</p> </li> <li> <p>MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain type that can be attached to an entity at one time.</p> </li> <li> <p>MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would cause the entity to have fewer than the minimum number of policies of a certain type required.</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first agree to the End-User License Agreement (EULA).</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first complete phone verification.</p> </li> <li> <p>MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this account, you first must associate a payment instrument, such as a credit card, with the account.</p> </li> <li> <p>MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you first must associate a payment instrument, such as a credit card, with the account.</p> </li> <li> <p>ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create in one day.</p> </li> <li> <p>MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first must migrate the organization's master account to the marketplace that corresponds to the master account's address. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be associated with the same marketplace.</p> </li> </ul>
 function M.ConstraintViolationException(Message, Reason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConstraintViolationException")
 	local t = { 
@@ -1931,8 +1931,8 @@ function M.AssertPolicyInUseException(struct)
 end
 
 --- Create a structure of type PolicyInUseException
--- &lt;p&gt;The policy is attached to one or more entities. You must detach it from all roots, organizational units (OUs), and accounts before performing this operation.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The policy is attached to one or more entities. You must detach it from all roots, organizational units (OUs), and accounts before performing this operation.&lt;/p&gt;
+-- <p>The policy is attached to one or more entities. You must detach it from all roots, organizational units (OUs), and accounts before performing this operation.</p>
+-- @param Message [ExceptionMessage] <p>The policy is attached to one or more entities. You must detach it from all roots, organizational units (OUs), and accounts before performing this operation.</p>
 function M.PolicyInUseException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyInUseException")
 	local t = { 
@@ -1955,9 +1955,9 @@ function M.AssertChild(struct)
 end
 
 --- Create a structure of type Child
--- &lt;p&gt;Contains a list of child entities, either OUs or accounts.&lt;/p&gt;
--- @param Type [ChildType] &lt;p&gt;The type of this child entity.&lt;/p&gt;
--- @param Id [ChildId] &lt;p&gt;The unique identifier (ID) of this child entity.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a child ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Account: a string that consists of exactly 12 digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Contains a list of child entities, either OUs or accounts.</p>
+-- @param Type [ChildType] <p>The type of this child entity.</p>
+-- @param Id [ChildId] <p>The unique identifier (ID) of this child entity.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the following:</p> <ul> <li> <p>Account: a string that consists of exactly 12 digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
 function M.Child(Type, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Child")
 	local t = { 
@@ -1980,8 +1980,8 @@ function M.AssertInvalidHandshakeTransitionException(struct)
 end
 
 --- Create a structure of type InvalidHandshakeTransitionException
--- &lt;p&gt;You can't perform the operation on the handshake in its current state. For example, you can't cancel a handshake that was already accepted, or accept a handshake that was already declined.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;You can't perform the operation on the handshake in its current state. For example, you can't cancel a handshake that was already accepted, or accept a handshake that was already declined.&lt;/p&gt;
+-- <p>You can't perform the operation on the handshake in its current state. For example, you can't cancel a handshake that was already accepted, or accept a handshake that was already declined.</p>
+-- @param Message [ExceptionMessage] <p>You can't perform the operation on the handshake in its current state. For example, you can't cancel a handshake that was already accepted, or accept a handshake that was already declined.</p>
 function M.InvalidHandshakeTransitionException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidHandshakeTransitionException")
 	local t = { 
@@ -2006,11 +2006,11 @@ function M.AssertPolicyTargetSummary(struct)
 end
 
 --- Create a structure of type PolicyTargetSummary
--- &lt;p&gt;Contains information about a root, OU, or account that a policy is attached to.&lt;/p&gt;
--- @param Type [TargetType] &lt;p&gt;The type of the policy target.&lt;/p&gt;
--- @param TargetId [PolicyTargetId] &lt;p&gt;The unique identifier (ID) of the policy target.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a target ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Root: a string that begins with &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Account: a string that consists of exactly 12 digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Name [TargetName] &lt;p&gt;The friendly name of the policy target.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; that is used to validate this parameter is a string of any of the characters in the ASCII character range.&lt;/p&gt;
--- @param Arn [GenericArn] &lt;p&gt;The Amazon Resource Name (ARN) of the policy target.&lt;/p&gt; &lt;p&gt;For more information about ARNs in Organizations, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns&quot;&gt;ARN Formats Supported by Organizations&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>Contains information about a root, OU, or account that a policy is attached to.</p>
+-- @param Type [TargetType] <p>The type of the policy target.</p>
+-- @param TargetId [PolicyTargetId] <p>The unique identifier (ID) of the policy target.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Account: a string that consists of exactly 12 digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
+-- @param Name [TargetName] <p>The friendly name of the policy target.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
+-- @param Arn [GenericArn] <p>The Amazon Resource Name (ARN) of the policy target.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
 function M.PolicyTargetSummary(Type, TargetId, Name, Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyTargetSummary")
 	local t = { 
@@ -2035,8 +2035,8 @@ function M.AssertCreateAccountStatusNotFoundException(struct)
 end
 
 --- Create a structure of type CreateAccountStatusNotFoundException
--- &lt;p&gt;We can't find an create account request with the CreateAccountRequestId that you specified.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;We can't find an create account request with the CreateAccountRequestId that you specified.&lt;/p&gt;
+-- <p>We can't find an create account request with the CreateAccountRequestId that you specified.</p>
+-- @param Message [ExceptionMessage] <p>We can't find an create account request with the CreateAccountRequestId that you specified.</p>
 function M.CreateAccountStatusNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAccountStatusNotFoundException")
 	local t = { 
@@ -2058,8 +2058,8 @@ function M.AssertOrganizationNotEmptyException(struct)
 end
 
 --- Create a structure of type OrganizationNotEmptyException
--- &lt;p&gt;The organization isn't empty. To delete an organization, you must first remove all accounts except the master account, delete all organizational units (OUs), and delete all policies.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The organization isn't empty. To delete an organization, you must first remove all accounts except the master account, delete all organizational units (OUs), and delete all policies.&lt;/p&gt;
+-- <p>The organization isn't empty. To delete an organization, you must first remove all accounts except the master account, delete all organizational units (OUs), and delete all policies.</p>
+-- @param Message [ExceptionMessage] <p>The organization isn't empty. To delete an organization, you must first remove all accounts except the master account, delete all organizational units (OUs), and delete all policies.</p>
 function M.OrganizationNotEmptyException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrganizationNotEmptyException")
 	local t = { 
@@ -2083,8 +2083,8 @@ end
 
 --- Create a structure of type ListPoliciesForTargetResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param Policies [Policies] &lt;p&gt;The list of policies that match the criteria in the request.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @param Policies [Policies] <p>The list of policies that match the criteria in the request.</p>
 function M.ListPoliciesForTargetResponse(NextToken, Policies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPoliciesForTargetResponse")
 	local t = { 
@@ -2110,8 +2110,8 @@ end
 
 --- Create a structure of type UpdateOrganizationalUnitRequest
 --  
--- @param Name [OrganizationalUnitName] &lt;p&gt;The new name that you want to assign to the OU.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; that is used to validate this parameter is a string of any of the characters in the ASCII character range.&lt;/p&gt;
--- @param OrganizationalUnitId [OrganizationalUnitId] &lt;p&gt;The unique identifier (ID) of the OU that you want to rename. You can get the ID from the &lt;a&gt;ListOrganizationalUnitsForParent&lt;/a&gt; operation.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an organizational unit ID string requires &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt;
+-- @param Name [OrganizationalUnitName] <p>The new name that you want to assign to the OU.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
+-- @param OrganizationalUnitId [OrganizationalUnitId] <p>The unique identifier (ID) of the OU that you want to rename. You can get the ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p>
 -- Required parameter: OrganizationalUnitId
 function M.UpdateOrganizationalUnitRequest(Name, OrganizationalUnitId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateOrganizationalUnitRequest")
@@ -2135,8 +2135,8 @@ function M.AssertPolicyNotAttachedException(struct)
 end
 
 --- Create a structure of type PolicyNotAttachedException
--- &lt;p&gt;The policy isn't attached to the specified target in the specified root.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The policy isn't attached to the specified target in the specified root.&lt;/p&gt;
+-- <p>The policy isn't attached to the specified target in the specified root.</p>
+-- @param Message [ExceptionMessage] <p>The policy isn't attached to the specified target in the specified root.</p>
 function M.PolicyNotAttachedException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyNotAttachedException")
 	local t = { 
@@ -2158,8 +2158,8 @@ function M.AssertHandshakeAlreadyInStateException(struct)
 end
 
 --- Create a structure of type HandshakeAlreadyInStateException
--- &lt;p&gt;The specified handshake is already in the requested state. For example, you can't accept a handshake that was already accepted.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The specified handshake is already in the requested state. For example, you can't accept a handshake that was already accepted.&lt;/p&gt;
+-- <p>The specified handshake is already in the requested state. For example, you can't accept a handshake that was already accepted.</p>
+-- @param Message [ExceptionMessage] <p>The specified handshake is already in the requested state. For example, you can't accept a handshake that was already accepted.</p>
 function M.HandshakeAlreadyInStateException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HandshakeAlreadyInStateException")
 	local t = { 
@@ -2181,8 +2181,8 @@ function M.AssertDuplicatePolicyException(struct)
 end
 
 --- Create a structure of type DuplicatePolicyException
--- &lt;p&gt;A policy with the same name already exists.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;A policy with the same name already exists.&lt;/p&gt;
+-- <p>A policy with the same name already exists.</p>
+-- @param Message [ExceptionMessage] <p>A policy with the same name already exists.</p>
 function M.DuplicatePolicyException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicatePolicyException")
 	local t = { 
@@ -2206,8 +2206,8 @@ end
 
 --- Create a structure of type ListOrganizationalUnitsForParentResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param OrganizationalUnits [OrganizationalUnits] &lt;p&gt;A list of the OUs in the specified root or parent OU.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
+-- @param OrganizationalUnits [OrganizationalUnits] <p>A list of the OUs in the specified root or parent OU.</p>
 function M.ListOrganizationalUnitsForParentResponse(NextToken, OrganizationalUnits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListOrganizationalUnitsForParentResponse")
 	local t = { 
@@ -2231,7 +2231,7 @@ end
 
 --- Create a structure of type UpdatePolicyResponse
 --  
--- @param Policy [Policy] &lt;p&gt;A structure that contains details about the updated policy, showing the requested changes.&lt;/p&gt;
+-- @param Policy [Policy] <p>A structure that contains details about the updated policy, showing the requested changes.</p>
 function M.UpdatePolicyResponse(Policy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePolicyResponse")
 	local t = { 
@@ -2253,8 +2253,8 @@ function M.AssertDuplicateHandshakeException(struct)
 end
 
 --- Create a structure of type DuplicateHandshakeException
--- &lt;p&gt;A handshake with the same action and target already exists. For example, if you invited an account to join your organization, the invited account might already have a pending invitation from this organization. If you intend to resend an invitation to an account, ensure that existing handshakes that might be considered duplicates are canceled or declined.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;A handshake with the same action and target already exists. For example, if you invited an account to join your organization, the invited account might already have a pending invitation from this organization. If you intend to resend an invitation to an account, ensure that existing handshakes that might be considered duplicates are canceled or declined.&lt;/p&gt;
+-- <p>A handshake with the same action and target already exists. For example, if you invited an account to join your organization, the invited account might already have a pending invitation from this organization. If you intend to resend an invitation to an account, ensure that existing handshakes that might be considered duplicates are canceled or declined.</p>
+-- @param Message [ExceptionMessage] <p>A handshake with the same action and target already exists. For example, if you invited an account to join your organization, the invited account might already have a pending invitation from this organization. If you intend to resend an invitation to an account, ensure that existing handshakes that might be considered duplicates are canceled or declined.</p>
 function M.DuplicateHandshakeException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateHandshakeException")
 	local t = { 
@@ -2276,8 +2276,8 @@ function M.AssertFinalizingOrganizationException(struct)
 end
 
 --- Create a structure of type FinalizingOrganizationException
--- &lt;p&gt;AWS Organizations could not finalize the creation of your organization. Try again later. If this persists, contact AWS customer support.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;AWS Organizations could not finalize the creation of your organization. Try again later. If this persists, contact AWS customer support.&lt;/p&gt;
+-- <p>AWS Organizations could not finalize the creation of your organization. Try again later. If this persists, contact AWS customer support.</p>
+-- @param Message [ExceptionMessage] <p>AWS Organizations could not finalize the creation of your organization. Try again later. If this persists, contact AWS customer support.</p>
 function M.FinalizingOrganizationException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FinalizingOrganizationException")
 	local t = { 
@@ -2299,8 +2299,8 @@ function M.AssertAlreadyInOrganizationException(struct)
 end
 
 --- Create a structure of type AlreadyInOrganizationException
--- &lt;p&gt;This account is already a member of an organization. An account can belong to only one organization at a time.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;This account is already a member of an organization. An account can belong to only one organization at a time.&lt;/p&gt;
+-- <p>This account is already a member of an organization. An account can belong to only one organization at a time.</p>
+-- @param Message [ExceptionMessage] <p>This account is already a member of an organization. An account can belong to only one organization at a time.</p>
 function M.AlreadyInOrganizationException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyInOrganizationException")
 	local t = { 
@@ -2322,8 +2322,8 @@ function M.AssertOrganizationalUnitNotFoundException(struct)
 end
 
 --- Create a structure of type OrganizationalUnitNotFoundException
--- &lt;p&gt;We can't find an organizational unit (OU) with the OrganizationalUnitId that you specified.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;We can't find an organizational unit (OU) with the OrganizationalUnitId that you specified.&lt;/p&gt;
+-- <p>We can't find an organizational unit (OU) with the OrganizationalUnitId that you specified.</p>
+-- @param Message [ExceptionMessage] <p>We can't find an organizational unit (OU) with the OrganizationalUnitId that you specified.</p>
 function M.OrganizationalUnitNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrganizationalUnitNotFoundException")
 	local t = { 
@@ -2346,7 +2346,7 @@ end
 
 --- Create a structure of type DescribeCreateAccountStatusResponse
 --  
--- @param CreateAccountStatus [CreateAccountStatus] &lt;p&gt;A structure that contains the current status of an account creation request.&lt;/p&gt;
+-- @param CreateAccountStatus [CreateAccountStatus] <p>A structure that contains the current status of an account creation request.</p>
 function M.DescribeCreateAccountStatusResponse(CreateAccountStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCreateAccountStatusResponse")
 	local t = { 
@@ -2369,7 +2369,7 @@ end
 
 --- Create a structure of type CreateOrganizationalUnitResponse
 --  
--- @param OrganizationalUnit [OrganizationalUnit] &lt;p&gt;A structure that contains details about the newly created OU.&lt;/p&gt;
+-- @param OrganizationalUnit [OrganizationalUnit] <p>A structure that contains details about the newly created OU.</p>
 function M.CreateOrganizationalUnitResponse(OrganizationalUnit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateOrganizationalUnitResponse")
 	local t = { 
@@ -2399,10 +2399,10 @@ end
 
 --- Create a structure of type CreatePolicyRequest
 --  
--- @param Content [PolicyContent] &lt;p&gt;The policy content to add to the new policy. For example, if you create a &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html&quot;&gt;service control policy&lt;/a&gt; (SCP), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html&quot;&gt;Service Control Policy Syntax&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Type [PolicyType] &lt;p&gt;The type of policy to create.&lt;/p&gt; &lt;note&gt; &lt;p&gt;In the current release, the only type of policy that you can create is a service control policy (SCP).&lt;/p&gt; &lt;/note&gt;
--- @param Description [PolicyDescription] &lt;p&gt;An optional description to assign to the policy.&lt;/p&gt;
--- @param Name [PolicyName] &lt;p&gt;The friendly name to assign to the policy.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; that is used to validate this parameter is a string of any of the characters in the ASCII character range.&lt;/p&gt;
+-- @param Content [PolicyContent] <p>The policy content to add to the new policy. For example, if you create a <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html">service control policy</a> (SCP), this string must be JSON text that specifies the permissions that admins in attached accounts can delegate to their users, groups, and roles. For more information about the SCP syntax, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html">Service Control Policy Syntax</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @param Type [PolicyType] <p>The type of policy to create.</p> <note> <p>In the current release, the only type of policy that you can create is a service control policy (SCP).</p> </note>
+-- @param Description [PolicyDescription] <p>An optional description to assign to the policy.</p>
+-- @param Name [PolicyName] <p>The friendly name to assign to the policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
 -- Required parameter: Content
 -- Required parameter: Description
 -- Required parameter: Name
@@ -2431,8 +2431,8 @@ function M.AssertChildNotFoundException(struct)
 end
 
 --- Create a structure of type ChildNotFoundException
--- &lt;p&gt;We can't find an organizational unit (OU) or AWS account with the ChildId that you specified.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;We can't find an organizational unit (OU) or AWS account with the ChildId that you specified.&lt;/p&gt;
+-- <p>We can't find an organizational unit (OU) or AWS account with the ChildId that you specified.</p>
+-- @param Message [ExceptionMessage] <p>We can't find an organizational unit (OU) or AWS account with the ChildId that you specified.</p>
 function M.ChildNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ChildNotFoundException")
 	local t = { 
@@ -2454,8 +2454,8 @@ function M.AssertDuplicatePolicyAttachmentException(struct)
 end
 
 --- Create a structure of type DuplicatePolicyAttachmentException
--- &lt;p&gt;The selected policy is already attached to the specified target.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The selected policy is already attached to the specified target.&lt;/p&gt;
+-- <p>The selected policy is already attached to the specified target.</p>
+-- @param Message [ExceptionMessage] <p>The selected policy is already attached to the specified target.</p>
 function M.DuplicatePolicyAttachmentException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicatePolicyAttachmentException")
 	local t = { 
@@ -2479,7 +2479,7 @@ end
 
 --- Create a structure of type RemoveAccountFromOrganizationRequest
 --  
--- @param AccountId [AccountId] &lt;p&gt;The unique identifier (ID) of the member account that you want to remove from the organization.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an account ID string requires exactly 12 digits.&lt;/p&gt;
+-- @param AccountId [AccountId] <p>The unique identifier (ID) of the member account that you want to remove from the organization.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12 digits.</p>
 -- Required parameter: AccountId
 function M.RemoveAccountFromOrganizationRequest(AccountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAccountFromOrganizationRequest")
@@ -2506,8 +2506,8 @@ end
 
 --- Create a structure of type CreateOrganizationalUnitRequest
 --  
--- @param Name [OrganizationalUnitName] &lt;p&gt;The friendly name to assign to the new OU.&lt;/p&gt;
--- @param ParentId [ParentId] &lt;p&gt;The unique identifier (ID) of the parent root or OU in which you want to create the new OU.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a parent ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Root: a string that begins with &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param Name [OrganizationalUnitName] <p>The friendly name to assign to the new OU.</p>
+-- @param ParentId [ParentId] <p>The unique identifier (ID) of the parent root or OU in which you want to create the new OU.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
 -- Required parameter: ParentId
 -- Required parameter: Name
 function M.CreateOrganizationalUnitRequest(Name, ParentId, ...)
@@ -2553,9 +2553,9 @@ function M.AssertPolicy(struct)
 end
 
 --- Create a structure of type Policy
--- &lt;p&gt;Contains rules to be applied to the affected accounts. Policies can be attached directly to accounts, or to roots and OUs to affect all accounts in those hierarchies.&lt;/p&gt;
--- @param Content [PolicyContent] &lt;p&gt;The text content of the policy.&lt;/p&gt;
--- @param PolicySummary [PolicySummary] &lt;p&gt;A structure that contains additional details about the policy.&lt;/p&gt;
+-- <p>Contains rules to be applied to the affected accounts. Policies can be attached directly to accounts, or to roots and OUs to affect all accounts in those hierarchies.</p>
+-- @param Content [PolicyContent] <p>The text content of the policy.</p>
+-- @param PolicySummary [PolicySummary] <p>A structure that contains additional details about the policy.</p>
 function M.Policy(Content, PolicySummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Policy")
 	local t = { 
@@ -2580,8 +2580,8 @@ end
 
 --- Create a structure of type ListHandshakesForOrganizationResponse
 --  
--- @param Handshakes [Handshakes] &lt;p&gt;A list of &lt;a&gt;Handshake&lt;/a&gt; objects with details about each of the handshakes that are associated with an organization.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If present, this value indicates that there is more output available than is included in the current response. Use this value in the &lt;code&gt;NextToken&lt;/code&gt; request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the &lt;code&gt;NextToken&lt;/code&gt; response element comes back as &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
+-- @param Handshakes [Handshakes] <p>A list of <a>Handshake</a> objects with details about each of the handshakes that are associated with an organization.</p>
+-- @param NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
 function M.ListHandshakesForOrganizationResponse(Handshakes, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHandshakesForOrganizationResponse")
 	local t = { 
@@ -2605,7 +2605,7 @@ end
 
 --- Create a structure of type DescribeAccountResponse
 --  
--- @param Account [Account] &lt;p&gt;A structure that contains information about the requested account.&lt;/p&gt;
+-- @param Account [Account] <p>A structure that contains information about the requested account.</p>
 function M.DescribeAccountResponse(Account, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountResponse")
 	local t = { 
@@ -2628,9 +2628,9 @@ function M.AssertHandshakeFilter(struct)
 end
 
 --- Create a structure of type HandshakeFilter
--- &lt;p&gt;Specifies the criteria that are used to select the handshakes for the operation.&lt;/p&gt;
--- @param ActionType [ActionType] &lt;p&gt;Specifies the type of handshake action.&lt;/p&gt; &lt;p&gt;If you specify &lt;code&gt;ActionType&lt;/code&gt;, you cannot also specify &lt;code&gt;ParentHandshakeId&lt;/code&gt;.&lt;/p&gt;
--- @param ParentHandshakeId [HandshakeId] &lt;p&gt;Specifies the parent handshake. Only used for handshake types that are a child of another type.&lt;/p&gt; &lt;p&gt;If you specify &lt;code&gt;ParentHandshakeId&lt;/code&gt;, you cannot also specify &lt;code&gt;ActionType&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for handshake ID string requires &quot;h-&quot; followed by from 8 to 32 lower-case letters or digits.&lt;/p&gt;
+-- <p>Specifies the criteria that are used to select the handshakes for the operation.</p>
+-- @param ActionType [ActionType] <p>Specifies the type of handshake action.</p> <p>If you specify <code>ActionType</code>, you cannot also specify <code>ParentHandshakeId</code>.</p>
+-- @param ParentHandshakeId [HandshakeId] <p>Specifies the parent handshake. Only used for handshake types that are a child of another type.</p> <p>If you specify <code>ParentHandshakeId</code>, you cannot also specify <code>ActionType</code>.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
 function M.HandshakeFilter(ActionType, ParentHandshakeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HandshakeFilter")
 	local t = { 
@@ -2654,7 +2654,7 @@ end
 
 --- Create a structure of type CreateAccountResponse
 --  
--- @param CreateAccountStatus [CreateAccountStatus] &lt;p&gt;A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to &lt;code&gt; &lt;a&gt;DescribeCreateAccountStatus&lt;/a&gt; &lt;/code&gt; to get status about the progress of the request at later times. &lt;/p&gt;
+-- @param CreateAccountStatus [CreateAccountStatus] <p>A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to <code> <a>DescribeCreateAccountStatus</a> </code> to get status about the progress of the request at later times. </p>
 function M.CreateAccountResponse(CreateAccountStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAccountResponse")
 	local t = { 
@@ -2677,7 +2677,7 @@ end
 
 --- Create a structure of type AcceptHandshakeResponse
 --  
--- @param Handshake [Handshake] &lt;p&gt;A structure that contains details about the accepted handshake.&lt;/p&gt;
+-- @param Handshake [Handshake] <p>A structure that contains details about the accepted handshake.</p>
 function M.AcceptHandshakeResponse(Handshake, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AcceptHandshakeResponse")
 	local t = { 
@@ -2702,9 +2702,9 @@ end
 
 --- Create a structure of type ListHandshakesForOrganizationRequest
 --  
--- @param Filter [HandshakeFilter] &lt;p&gt;A filter of the handshakes that you want included in the response. The default is all types. Use the &lt;code&gt;ActionType&lt;/code&gt; element to limit the output to only a specified type, such as &lt;code&gt;INVITE&lt;/code&gt;, &lt;code&gt;ENABLE-ALL-FEATURES&lt;/code&gt;, or &lt;code&gt;APPROVE-ALL-FEATURES&lt;/code&gt;. Alternatively, for the &lt;code&gt;ENABLE-ALL-FEATURES&lt;/code&gt; handshake that generates a separate child handshake for each member account, you can specify the &lt;code&gt;ParentHandshakeId&lt;/code&gt; to see only the handshakes that were generated by that parent request.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
+-- @param Filter [HandshakeFilter] <p>A filter of the handshakes that you want included in the response. The default is all types. Use the <code>ActionType</code> element to limit the output to only a specified type, such as <code>INVITE</code>, <code>ENABLE-ALL-FEATURES</code>, or <code>APPROVE-ALL-FEATURES</code>. Alternatively, for the <code>ENABLE-ALL-FEATURES</code> handshake that generates a separate child handshake for each member account, you can specify the <code>ParentHandshakeId</code> to see only the handshakes that were generated by that parent request.</p>
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 function M.ListHandshakesForOrganizationRequest(Filter, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHandshakesForOrganizationRequest")
 	local t = { 
@@ -2730,7 +2730,7 @@ end
 
 --- Create a structure of type DescribeOrganizationalUnitRequest
 --  
--- @param OrganizationalUnitId [OrganizationalUnitId] &lt;p&gt;The unique identifier (ID) of the organizational unit that you want details about. You can get the ID from the &lt;a&gt;ListOrganizationalUnitsForParent&lt;/a&gt; operation.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an organizational unit ID string requires &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt;
+-- @param OrganizationalUnitId [OrganizationalUnitId] <p>The unique identifier (ID) of the organizational unit that you want details about. You can get the ID from the <a>ListOrganizationalUnitsForParent</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p>
 -- Required parameter: OrganizationalUnitId
 function M.DescribeOrganizationalUnitRequest(OrganizationalUnitId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrganizationalUnitRequest")
@@ -2755,7 +2755,7 @@ end
 
 --- Create a structure of type DescribePolicyRequest
 --  
--- @param PolicyId [PolicyId] &lt;p&gt;The unique identifier (ID) of the policy that you want details about. You can get the ID from the &lt;a&gt;ListPolicies&lt;/a&gt; or &lt;a&gt;ListPoliciesForTarget&lt;/a&gt; operations.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a policy ID string requires &quot;p-&quot; followed by from 8 to 128 lower-case letters or digits.&lt;/p&gt;
+-- @param PolicyId [PolicyId] <p>The unique identifier (ID) of the policy that you want details about. You can get the ID from the <a>ListPolicies</a> or <a>ListPoliciesForTarget</a> operations.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.</p>
 -- Required parameter: PolicyId
 function M.DescribePolicyRequest(PolicyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePolicyRequest")
@@ -2780,7 +2780,7 @@ end
 
 --- Create a structure of type DeclineHandshakeRequest
 --  
--- @param HandshakeId [HandshakeId] &lt;p&gt;The unique identifier (ID) of the handshake that you want to decline. You can get the ID from the &lt;a&gt;ListHandshakesForAccount&lt;/a&gt; operation.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for handshake ID string requires &quot;h-&quot; followed by from 8 to 32 lower-case letters or digits.&lt;/p&gt;
+-- @param HandshakeId [HandshakeId] <p>The unique identifier (ID) of the handshake that you want to decline. You can get the ID from the <a>ListHandshakesForAccount</a> operation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
 -- Required parameter: HandshakeId
 function M.DeclineHandshakeRequest(HandshakeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeclineHandshakeRequest")
@@ -2805,7 +2805,7 @@ end
 
 --- Create a structure of type DescribeHandshakeRequest
 --  
--- @param HandshakeId [HandshakeId] &lt;p&gt;The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to &lt;a&gt;InviteAccountToOrganization&lt;/a&gt;, or from a call to &lt;a&gt;ListHandshakesForAccount&lt;/a&gt; or &lt;a&gt;ListHandshakesForOrganization&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for handshake ID string requires &quot;h-&quot; followed by from 8 to 32 lower-case letters or digits.&lt;/p&gt;
+-- @param HandshakeId [HandshakeId] <p>The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to <a>InviteAccountToOrganization</a>, or from a call to <a>ListHandshakesForAccount</a> or <a>ListHandshakesForOrganization</a>.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
 -- Required parameter: HandshakeId
 function M.DescribeHandshakeRequest(HandshakeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHandshakeRequest")
@@ -2828,8 +2828,8 @@ function M.AssertAccessDeniedException(struct)
 end
 
 --- Create a structure of type AccessDeniedException
--- &lt;p&gt;You don't have permissions to perform the requested operation. The user or role that is making the request must have at least one IAM permissions policy attached that grants the required permissions. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html&quot;&gt;Access Management&lt;/a&gt; in the &lt;i&gt;IAM User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;You don't have permissions to perform the requested operation. The user or role that is making the request must have at least one IAM permissions policy attached that grants the required permissions. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html&quot;&gt;Access Management&lt;/a&gt; in the &lt;i&gt;IAM User Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>You don't have permissions to perform the requested operation. The user or role that is making the request must have at least one IAM permissions policy attached that grants the required permissions. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access Management</a> in the <i>IAM User Guide</i>.</p>
+-- @param Message [ExceptionMessage] <p>You don't have permissions to perform the requested operation. The user or role that is making the request must have at least one IAM permissions policy attached that grants the required permissions. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access Management</a> in the <i>IAM User Guide</i>.</p>
 function M.AccessDeniedException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
 	local t = { 
@@ -2857,14 +2857,14 @@ function M.AssertCreateAccountStatus(struct)
 end
 
 --- Create a structure of type CreateAccountStatus
--- &lt;p&gt;Contains the status about a &lt;a&gt;CreateAccount&lt;/a&gt; request to create an AWS account in an organization.&lt;/p&gt;
--- @param FailureReason [CreateAccountFailureReason] &lt;p&gt;If the request failed, a description of the reason for the failure.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;ACCOUNT_LIMIT_EXCEEDED: The account could not be created because you have reached the limit on the number of accounts in your organization.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address already exists.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_ADDRESS: The account could not be created because the address you provided is not valid.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INVALID_EMAIL: The account could not be created because the email address you provided is not valid.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the problem persists, contact Customer Support.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param AccountName [AccountName] &lt;p&gt;The account name given to the account when it was created.&lt;/p&gt;
--- @param State [CreateAccountState] &lt;p&gt;The status of the request.&lt;/p&gt;
--- @param RequestedTimestamp [Timestamp] &lt;p&gt;The date and time that the request was made for the account creation.&lt;/p&gt;
--- @param CompletedTimestamp [Timestamp] &lt;p&gt;The date and time that the account was created and the request completed.&lt;/p&gt;
--- @param Id [CreateAccountRequestId] &lt;p&gt;The unique identifier (ID) that references this request. You get this value from the response of the initial &lt;a&gt;CreateAccount&lt;/a&gt; request to create the account.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an create account request ID string requires &quot;car-&quot; followed by from 8 to 32 lower-case letters or digits.&lt;/p&gt;
--- @param AccountId [AccountId] &lt;p&gt;If the account was created successfully, the unique identifier (ID) of the new account.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an account ID string requires exactly 12 digits.&lt;/p&gt;
+-- <p>Contains the status about a <a>CreateAccount</a> request to create an AWS account in an organization.</p>
+-- @param FailureReason [CreateAccountFailureReason] <p>If the request failed, a description of the reason for the failure.</p> <ul> <li> <p>ACCOUNT_LIMIT_EXCEEDED: The account could not be created because you have reached the limit on the number of accounts in your organization.</p> </li> <li> <p>EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address already exists.</p> </li> <li> <p>INVALID_ADDRESS: The account could not be created because the address you provided is not valid.</p> </li> <li> <p>INVALID_EMAIL: The account could not be created because the email address you provided is not valid.</p> </li> <li> <p>INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the problem persists, contact Customer Support.</p> </li> </ul>
+-- @param AccountName [AccountName] <p>The account name given to the account when it was created.</p>
+-- @param State [CreateAccountState] <p>The status of the request.</p>
+-- @param RequestedTimestamp [Timestamp] <p>The date and time that the request was made for the account creation.</p>
+-- @param CompletedTimestamp [Timestamp] <p>The date and time that the account was created and the request completed.</p>
+-- @param Id [CreateAccountRequestId] <p>The unique identifier (ID) that references this request. You get this value from the response of the initial <a>CreateAccount</a> request to create the account.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.</p>
+-- @param AccountId [AccountId] <p>If the account was created successfully, the unique identifier (ID) of the new account.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12 digits.</p>
 function M.CreateAccountStatus(FailureReason, AccountName, State, RequestedTimestamp, CompletedTimestamp, Id, AccountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAccountStatus")
 	local t = { 
@@ -2896,9 +2896,9 @@ end
 
 --- Create a structure of type ListTargetsForPolicyRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param PolicyId [PolicyId] &lt;p&gt;The unique identifier (ID) of the policy for which you want to know its attachments.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a policy ID string requires &quot;p-&quot; followed by from 8 to 128 lower-case letters or digits.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param PolicyId [PolicyId] <p>The unique identifier (ID) of the policy for which you want to know its attachments.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- Required parameter: PolicyId
 function M.ListTargetsForPolicyRequest(NextToken, PolicyId, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTargetsForPolicyRequest")
@@ -2926,11 +2926,11 @@ function M.AssertRoot(struct)
 end
 
 --- Create a structure of type Root
--- &lt;p&gt;Contains details about a root. A root is a top-level parent node in the hierarchy of an organization that can contain organizational units (OUs) and accounts. Every root contains every AWS account in the organization. Each root enables the accounts to be organized in a different way and to have different policy types enabled for use in that root.&lt;/p&gt;
--- @param PolicyTypes [PolicyTypes] &lt;p&gt;The types of policies that are currently enabled for the root and therefore can be attached to the root or to its OUs or accounts.&lt;/p&gt;
--- @param Id [RootId] &lt;p&gt;The unique identifier (ID) for the root.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a root ID string requires &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt;
--- @param Arn [RootArn] &lt;p&gt;The Amazon Resource Name (ARN) of the root.&lt;/p&gt; &lt;p&gt;For more information about ARNs in Organizations, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns&quot;&gt;ARN Formats Supported by Organizations&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Name [RootName] &lt;p&gt;The friendly name of the root.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; that is used to validate this parameter is a string of any of the characters in the ASCII character range.&lt;/p&gt;
+-- <p>Contains details about a root. A root is a top-level parent node in the hierarchy of an organization that can contain organizational units (OUs) and accounts. Every root contains every AWS account in the organization. Each root enables the accounts to be organized in a different way and to have different policy types enabled for use in that root.</p>
+-- @param PolicyTypes [PolicyTypes] <p>The types of policies that are currently enabled for the root and therefore can be attached to the root or to its OUs or accounts.</p>
+-- @param Id [RootId] <p>The unique identifier (ID) for the root.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by from 4 to 32 lower-case letters or digits.</p>
+-- @param Arn [RootArn] <p>The Amazon Resource Name (ARN) of the root.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @param Name [RootName] <p>The friendly name of the root.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
 function M.Root(PolicyTypes, Id, Arn, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Root")
 	local t = { 
@@ -2959,9 +2959,9 @@ end
 
 --- Create a structure of type ListParentsRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
--- @param ChildId [ChildId] &lt;p&gt;The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a child ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Account: a string that consists of exactly 12 digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- @param ChildId [ChildId] <p>The unique identifier (ID) of the OU or account whose parent containers you want to list. Do not specify a root.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the following:</p> <ul> <li> <p>Account: a string that consists of exactly 12 digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
 -- Required parameter: ChildId
 function M.ListParentsRequest(NextToken, MaxResults, ChildId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListParentsRequest")
@@ -2990,9 +2990,9 @@ end
 
 --- Create a structure of type ListAccountsForParentRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
--- @param ParentId [ParentId] &lt;p&gt;The unique identifier (ID) for the parent root or organization unit (OU) whose accounts you want to list.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- @param ParentId [ParentId] <p>The unique identifier (ID) for the parent root or organization unit (OU) whose accounts you want to list.</p>
 -- Required parameter: ParentId
 function M.ListAccountsForParentRequest(NextToken, MaxResults, ParentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAccountsForParentRequest")
@@ -3017,8 +3017,8 @@ function M.AssertHandshakeNotFoundException(struct)
 end
 
 --- Create a structure of type HandshakeNotFoundException
--- &lt;p&gt;We can't find a handshake with the HandshakeId that you specified.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;We can't find a handshake with the HandshakeId that you specified.&lt;/p&gt;
+-- <p>We can't find a handshake with the HandshakeId that you specified.</p>
+-- @param Message [ExceptionMessage] <p>We can't find a handshake with the HandshakeId that you specified.</p>
 function M.HandshakeNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HandshakeNotFoundException")
 	local t = { 
@@ -3044,9 +3044,9 @@ end
 
 --- Create a structure of type ListOrganizationalUnitsForParentRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
--- @param ParentId [ParentId] &lt;p&gt;The unique identifier (ID) of the root or OU whose child OUs you want to list.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a parent ID string requires one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Root: a string that begins with &quot;r-&quot; followed by from 4 to 32 lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Organizational unit (OU): a string that begins with &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
+-- @param ParentId [ParentId] <p>The unique identifier (ID) of the root or OU whose child OUs you want to list.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
 -- Required parameter: ParentId
 function M.ListOrganizationalUnitsForParentRequest(NextToken, MaxResults, ParentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListOrganizationalUnitsForParentRequest")
@@ -3073,8 +3073,8 @@ end
 
 --- Create a structure of type ListAccountsRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter if you receive a &lt;code&gt;NextToken&lt;/code&gt; response in a previous request that indicates that there is more output available. Set it to the value of the previous call's &lt;code&gt;NextToken&lt;/code&gt; response to indicate where the output should continue from.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the &lt;code&gt;NextToken&lt;/code&gt; response element is present and has a value (is not null). Include that value as the &lt;code&gt;NextToken&lt;/code&gt; request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check &lt;code&gt;NextToken&lt;/code&gt; after every operation to ensure that you receive all of the results.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.</p>
+-- @param MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 function M.ListAccountsRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAccountsRequest")
 	local t = { 
@@ -3099,10 +3099,10 @@ function M.AssertOrganizationalUnit(struct)
 end
 
 --- Create a structure of type OrganizationalUnit
--- &lt;p&gt;Contains details about an organizational unit (OU). An OU is a container of AWS accounts within a root of an organization. Policies that are attached to an OU apply to all accounts contained in that OU and in any child OUs.&lt;/p&gt;
--- @param Id [OrganizationalUnitId] &lt;p&gt;The unique identifier (ID) associated with this OU.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for an organizational unit ID string requires &quot;ou-&quot; followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second &quot;-&quot; dash and from 8 to 32 additional lower-case letters or digits.&lt;/p&gt;
--- @param Arn [OrganizationalUnitArn] &lt;p&gt;The Amazon Resource Name (ARN) of this OU.&lt;/p&gt; &lt;p&gt;For more information about ARNs in Organizations, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns&quot;&gt;ARN Formats Supported by Organizations&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Name [OrganizationalUnitName] &lt;p&gt;The friendly name of this OU.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; that is used to validate this parameter is a string of any of the characters in the ASCII character range.&lt;/p&gt;
+-- <p>Contains details about an organizational unit (OU). An OU is a container of AWS accounts within a root of an organization. Policies that are attached to an OU apply to all accounts contained in that OU and in any child OUs.</p>
+-- @param Id [OrganizationalUnitId] <p>The unique identifier (ID) associated with this OU.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p>
+-- @param Arn [OrganizationalUnitArn] <p>The Amazon Resource Name (ARN) of this OU.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @param Name [OrganizationalUnitName] <p>The friendly name of this OU.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
 function M.OrganizationalUnit(Id, Arn, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrganizationalUnit")
 	local t = { 
@@ -3131,10 +3131,10 @@ end
 
 --- Create a structure of type UpdatePolicyRequest
 --  
--- @param Content [PolicyContent] &lt;p&gt;If provided, the new content for the policy. The text must be correctly formatted JSON that complies with the syntax for the policy's type. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html&quot;&gt;Service Control Policy Syntax&lt;/a&gt; in the &lt;i&gt;AWS Organizations User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Description [PolicyDescription] &lt;p&gt;If provided, the new description for the policy.&lt;/p&gt;
--- @param PolicyId [PolicyId] &lt;p&gt;The unique identifier (ID) of the policy that you want to update.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; for a policy ID string requires &quot;p-&quot; followed by from 8 to 128 lower-case letters or digits.&lt;/p&gt;
--- @param Name [PolicyName] &lt;p&gt;If provided, the new name for the policy.&lt;/p&gt; &lt;p&gt;The &lt;a href=&quot;http://wikipedia.org/wiki/regex&quot;&gt;regex pattern&lt;/a&gt; that is used to validate this parameter is a string of any of the characters in the ASCII character range.&lt;/p&gt;
+-- @param Content [PolicyContent] <p>If provided, the new content for the policy. The text must be correctly formatted JSON that complies with the syntax for the policy's type. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html">Service Control Policy Syntax</a> in the <i>AWS Organizations User Guide</i>.</p>
+-- @param Description [PolicyDescription] <p>If provided, the new description for the policy.</p>
+-- @param PolicyId [PolicyId] <p>The unique identifier (ID) of the policy that you want to update.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.</p>
+-- @param Name [PolicyName] <p>If provided, the new name for the policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
 -- Required parameter: PolicyId
 function M.UpdatePolicyRequest(Content, Description, PolicyId, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePolicyRequest")

@@ -2350,7 +2350,7 @@ end
 -- @param LastModifiedDate [__string] Last date this was updated
 -- @param Enabled [__boolean] If the channel is enabled for sending messages.
 -- @param LastModifiedBy [__string] Who last updated this entry
--- @param Platform [__string] Platform type. Will be &quot;SMS&quot;
+-- @param Platform [__string] Platform type. Will be "SMS"
 -- @param Version [__integer] Version of channel
 -- @param SenderId [__string] Sender identifier of your messages.
 -- @param IsArchived [__boolean] Is this channel archived
@@ -3337,7 +3337,7 @@ end
 -- @param ImageUrl [__string] The URL that points to an image used in the push notification.
 -- @param RawContent [__string] The Raw JSON formatted string to be used as the payload. This value overrides the message.
 -- @param Substitutions [MapOfListOf__string] Default message substitutions. Can be overridden by individual address substitutions.
--- @param CollapseKey [__string] This parameter identifies a group of messages (e.g., with collapse_key: &quot;Updates Available&quot;) that can be collapsed, so that only the last message gets sent when delivery can be resumed. This is intended to avoid sending too many of the same messages when the device comes back online or becomes active.
+-- @param CollapseKey [__string] This parameter identifies a group of messages (e.g., with collapse_key: "Updates Available") that can be collapsed, so that only the last message gets sent when delivery can be resumed. This is intended to avoid sending too many of the same messages when the device comes back online or becomes active.
 -- @param SmallImageIconUrl [__string] The URL that points to an image used as the small icon for the notification which will be used to represent the notification in the status bar and content view
 -- @param SilentPush [__boolean] Indicates if the message should display on the users device. Silent pushes can be used for Remote Configuration and Phone Home use cases.
 -- @param IconReference [__string] The icon image name of the asset saved in your application.
@@ -3686,7 +3686,7 @@ end
 -- @param RoleArn [__string] The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service
 -- @param Enabled [__boolean] If the channel is enabled for sending messages.
 -- @param LastModifiedBy [__string] Who last updated this entry
--- @param Platform [__string] Platform type. Will be &quot;EMAIL&quot;
+-- @param Platform [__string] Platform type. Will be "EMAIL"
 -- @param Version [__integer] Version of channel
 -- @param IsArchived [__boolean] Is this channel archived
 -- @param CreationDate [__string] The date that the settings were last updated in ISO 8601 format.

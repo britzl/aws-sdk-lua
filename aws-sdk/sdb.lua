@@ -30,8 +30,8 @@ function M.AssertNumberDomainAttributesExceeded(struct)
 end
 
 --- Create a structure of type NumberDomainAttributesExceeded
--- &lt;p&gt;Too many attributes in this domain.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;Too many attributes in this domain.&lt;/p&gt;
+-- <p>Too many attributes in this domain.</p>
+-- @param BoxUsage [Float] <p>Too many attributes in this domain.</p>
 function M.NumberDomainAttributesExceeded(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NumberDomainAttributesExceeded")
 	local t = { 
@@ -78,8 +78,8 @@ function M.AssertInvalidQueryExpression(struct)
 end
 
 --- Create a structure of type InvalidQueryExpression
--- &lt;p&gt;The specified query expression syntax is not valid.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;The specified query expression syntax is not valid.&lt;/p&gt;
+-- <p>The specified query expression syntax is not valid.</p>
+-- @param BoxUsage [Float] <p>The specified query expression syntax is not valid.</p>
 function M.InvalidQueryExpression(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidQueryExpression")
 	local t = { 
@@ -101,8 +101,8 @@ function M.AssertRequestTimeout(struct)
 end
 
 --- Create a structure of type RequestTimeout
--- &lt;p&gt;A timeout occurred when attempting to query the specified domain with specified query expression.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;A timeout occurred when attempting to query the specified domain with specified query expression.&lt;/p&gt;
+-- <p>A timeout occurred when attempting to query the specified domain with specified query expression.</p>
+-- @param BoxUsage [Float] <p>A timeout occurred when attempting to query the specified domain with specified query expression.</p>
 function M.RequestTimeout(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestTimeout")
 	local t = { 
@@ -126,7 +126,7 @@ function M.AssertDeletableAttribute(struct)
 end
 
 --- Create a structure of type DeletableAttribute
--- &lt;p&gt;&lt;/p&gt;
+-- <p></p>
 -- @param Name [String] The name of the attribute.
 -- @param Value [String] The value of the attribute.
 -- Required parameter: Name
@@ -152,8 +152,8 @@ function M.AssertInvalidNumberValueTests(struct)
 end
 
 --- Create a structure of type InvalidNumberValueTests
--- &lt;p&gt;Too many predicates exist in the query expression.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;Too many predicates exist in the query expression.&lt;/p&gt;
+-- <p>Too many predicates exist in the query expression.</p>
+-- @param BoxUsage [Float] <p>Too many predicates exist in the query expression.</p>
 function M.InvalidNumberValueTests(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNumberValueTests")
 	local t = { 
@@ -175,8 +175,8 @@ function M.AssertNumberDomainsExceeded(struct)
 end
 
 --- Create a structure of type NumberDomainsExceeded
--- &lt;p&gt;Too many domains exist per this account.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;Too many domains exist per this account.&lt;/p&gt;
+-- <p>Too many domains exist per this account.</p>
+-- @param BoxUsage [Float] <p>Too many domains exist per this account.</p>
 function M.NumberDomainsExceeded(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NumberDomainsExceeded")
 	local t = { 
@@ -198,8 +198,8 @@ function M.AssertNumberItemAttributesExceeded(struct)
 end
 
 --- Create a structure of type NumberItemAttributesExceeded
--- &lt;p&gt;Too many attributes in this item.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;Too many attributes in this item.&lt;/p&gt;
+-- <p>Too many attributes in this item.</p>
+-- @param BoxUsage [Float] <p>Too many attributes in this item.</p>
 function M.NumberItemAttributesExceeded(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NumberItemAttributesExceeded")
 	local t = { 
@@ -225,8 +225,8 @@ end
 
 --- Create a structure of type SelectRequest
 --  
--- @param ConsistentRead [Boolean] Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If &lt;code&gt;true&lt;/code&gt;, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.
--- @param NextToken [String] A string informing Amazon SimpleDB where to start the next list of &lt;code&gt;ItemNames&lt;/code&gt;.
+-- @param ConsistentRead [Boolean] Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.
+-- @param NextToken [String] A string informing Amazon SimpleDB where to start the next list of <code>ItemNames</code>.
 -- @param SelectExpression [String] The expression used to query the domain.
 -- Required parameter: SelectExpression
 function M.SelectRequest(ConsistentRead, NextToken, SelectExpression, ...)
@@ -252,8 +252,8 @@ function M.AssertAttributeDoesNotExist(struct)
 end
 
 --- Create a structure of type AttributeDoesNotExist
--- &lt;p&gt;The specified attribute does not exist.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;The specified attribute does not exist.&lt;/p&gt;
+-- <p>The specified attribute does not exist.</p>
+-- @param BoxUsage [Float] <p>The specified attribute does not exist.</p>
 function M.AttributeDoesNotExist(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttributeDoesNotExist")
 	local t = { 
@@ -330,10 +330,10 @@ function M.AssertUpdateCondition(struct)
 end
 
 --- Create a structure of type UpdateCondition
--- &lt;p&gt; Specifies the conditions under which data should be updated. If an update condition is specified for a request, the data will only be updated if the condition is satisfied. For example, if an attribute with a specific name and value exists, or if a specific attribute doesn't exist. &lt;/p&gt;
--- @param Exists [Boolean] &lt;p&gt;A value specifying whether or not the specified attribute must exist with the specified value in order for the update condition to be satisfied. Specify &lt;code&gt;true&lt;/code&gt; if the attribute must exist for the update condition to be satisfied. Specify &lt;code&gt;false&lt;/code&gt; if the attribute should not exist in order for the update condition to be satisfied.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the attribute involved in the condition.&lt;/p&gt;
--- @param Value [String] &lt;p&gt;The value of an attribute. This value can only be specified when the &lt;code&gt;Exists&lt;/code&gt; parameter is equal to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
+-- <p> Specifies the conditions under which data should be updated. If an update condition is specified for a request, the data will only be updated if the condition is satisfied. For example, if an attribute with a specific name and value exists, or if a specific attribute doesn't exist. </p>
+-- @param Exists [Boolean] <p>A value specifying whether or not the specified attribute must exist with the specified value in order for the update condition to be satisfied. Specify <code>true</code> if the attribute must exist for the update condition to be satisfied. Specify <code>false</code> if the attribute should not exist in order for the update condition to be satisfied.</p>
+-- @param Name [String] <p>The name of the attribute involved in the condition.</p>
+-- @param Value [String] <p>The value of an attribute. This value can only be specified when the <code>Exists</code> parameter is equal to <code>true</code>.</p>
 function M.UpdateCondition(Exists, Name, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateCondition")
 	local t = { 
@@ -357,8 +357,8 @@ function M.AssertNumberSubmittedAttributesExceeded(struct)
 end
 
 --- Create a structure of type NumberSubmittedAttributesExceeded
--- &lt;p&gt;Too many attributes exist in a single call.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;Too many attributes exist in a single call.&lt;/p&gt;
+-- <p>Too many attributes exist in a single call.</p>
+-- @param BoxUsage [Float] <p>Too many attributes exist in a single call.</p>
 function M.NumberSubmittedAttributesExceeded(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NumberSubmittedAttributesExceeded")
 	local t = { 
@@ -380,8 +380,8 @@ function M.AssertInvalidNextToken(struct)
 end
 
 --- Create a structure of type InvalidNextToken
--- &lt;p&gt;The specified NextToken is not valid. &lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;The specified NextToken is not valid. &lt;/p&gt;
+-- <p>The specified NextToken is not valid. </p>
+-- @param BoxUsage [Float] <p>The specified NextToken is not valid. </p>
 function M.InvalidNextToken(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextToken")
 	local t = { 
@@ -403,8 +403,8 @@ function M.AssertInvalidNumberPredicates(struct)
 end
 
 --- Create a structure of type InvalidNumberPredicates
--- &lt;p&gt;Too many predicates exist in the query expression.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;Too many predicates exist in the query expression.&lt;/p&gt;
+-- <p>Too many predicates exist in the query expression.</p>
+-- @param BoxUsage [Float] <p>Too many predicates exist in the query expression.</p>
 function M.InvalidNumberPredicates(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNumberPredicates")
 	local t = { 
@@ -455,7 +455,7 @@ end
 
 --- Create a structure of type GetAttributesRequest
 --  
--- @param ConsistentRead [Boolean] Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If &lt;code&gt;true&lt;/code&gt;, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.
+-- @param ConsistentRead [Boolean] Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.
 -- @param ItemName [String] The name of the item.
 -- @param AttributeNames [AttributeNameList] The names of the attributes.
 -- @param DomainName [String] The name of the domain in which to perform the operation.
@@ -487,7 +487,7 @@ end
 
 --- Create a structure of type ListDomainsResult
 --  
--- @param NextToken [String] An opaque token indicating that there are more domains than the specified &lt;code&gt;MaxNumberOfDomains&lt;/code&gt; still available.
+-- @param NextToken [String] An opaque token indicating that there are more domains than the specified <code>MaxNumberOfDomains</code> still available.
 -- @param DomainNames [DomainNameList] A list of domain names that match the expression.
 function M.ListDomainsResult(NextToken, DomainNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainsResult")
@@ -511,8 +511,8 @@ function M.AssertNoSuchDomain(struct)
 end
 
 --- Create a structure of type NoSuchDomain
--- &lt;p&gt;The specified domain does not exist.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;The specified domain does not exist.&lt;/p&gt;
+-- <p>The specified domain does not exist.</p>
+-- @param BoxUsage [Float] <p>The specified domain does not exist.</p>
 function M.NoSuchDomain(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchDomain")
 	local t = { 
@@ -647,10 +647,10 @@ function M.AssertItem(struct)
 end
 
 --- Create a structure of type Item
--- &lt;p&gt;&lt;/p&gt;
+-- <p></p>
 -- @param Attributes [AttributeList] A list of attributes.
 -- @param Name [String] The name of the item.
--- @param AlternateNameEncoding [String] &lt;p&gt;&lt;/p&gt;
+-- @param AlternateNameEncoding [String] <p></p>
 -- Required parameter: Name
 -- Required parameter: Attributes
 function M.Item(Attributes, Name, AlternateNameEncoding, ...)
@@ -680,10 +680,10 @@ function M.AssertReplaceableAttribute(struct)
 end
 
 --- Create a structure of type ReplaceableAttribute
--- &lt;p&gt;&lt;/p&gt;
+-- <p></p>
 -- @param Name [String] The name of the replaceable attribute.
 -- @param Value [String] The value of the replaceable attribute.
--- @param Replace [Boolean] A flag specifying whether or not to replace the attribute/value pair or to add a new attribute/value pair. The default setting is &lt;code&gt;false&lt;/code&gt;.
+-- @param Replace [Boolean] A flag specifying whether or not to replace the attribute/value pair or to add a new attribute/value pair. The default setting is <code>false</code>.
 -- Required parameter: Name
 -- Required parameter: Value
 function M.ReplaceableAttribute(Name, Value, Replace, ...)
@@ -712,7 +712,7 @@ end
 --- Create a structure of type SelectResult
 --  
 -- @param Items [ItemList] A list of items that match the select expression.
--- @param NextToken [String] An opaque token indicating that more items than &lt;code&gt;MaxNumberOfItems&lt;/code&gt; were matched, the response size exceeded 1 megabyte, or the execution time exceeded 5 seconds.
+-- @param NextToken [String] An opaque token indicating that more items than <code>MaxNumberOfItems</code> were matched, the response size exceeded 1 megabyte, or the execution time exceeded 5 seconds.
 function M.SelectResult(Items, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SelectResult")
 	local t = { 
@@ -735,8 +735,8 @@ function M.AssertDuplicateItemName(struct)
 end
 
 --- Create a structure of type DuplicateItemName
--- &lt;p&gt;The item name was specified more than once. &lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;The item name was specified more than once. &lt;/p&gt;
+-- <p>The item name was specified more than once. </p>
+-- @param BoxUsage [Float] <p>The item name was specified more than once. </p>
 function M.DuplicateItemName(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateItemName")
 	local t = { 
@@ -758,8 +758,8 @@ function M.AssertInvalidParameterValue(struct)
 end
 
 --- Create a structure of type InvalidParameterValue
--- &lt;p&gt;The value for a parameter is invalid.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;The value for a parameter is invalid.&lt;/p&gt;
+-- <p>The value for a parameter is invalid.</p>
+-- @param BoxUsage [Float] <p>The value for a parameter is invalid.</p>
 function M.InvalidParameterValue(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValue")
 	local t = { 
@@ -847,8 +847,8 @@ function M.AssertMissingParameter(struct)
 end
 
 --- Create a structure of type MissingParameter
--- &lt;p&gt;The request must contain the specified missing parameter.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;The request must contain the specified missing parameter.&lt;/p&gt;
+-- <p>The request must contain the specified missing parameter.</p>
+-- @param BoxUsage [Float] <p>The request must contain the specified missing parameter.</p>
 function M.MissingParameter(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MissingParameter")
 	local t = { 
@@ -870,8 +870,8 @@ function M.AssertTooManyRequestedAttributes(struct)
 end
 
 --- Create a structure of type TooManyRequestedAttributes
--- &lt;p&gt;Too many attributes requested.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;Too many attributes requested.&lt;/p&gt;
+-- <p>Too many attributes requested.</p>
+-- @param BoxUsage [Float] <p>Too many attributes requested.</p>
 function M.TooManyRequestedAttributes(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestedAttributes")
 	local t = { 
@@ -924,11 +924,11 @@ function M.AssertAttribute(struct)
 end
 
 --- Create a structure of type Attribute
--- &lt;p&gt;&lt;/p&gt;
--- @param AlternateValueEncoding [String] &lt;p&gt;&lt;/p&gt;
+-- <p></p>
+-- @param AlternateValueEncoding [String] <p></p>
 -- @param Name [String] The name of the attribute.
 -- @param Value [String] The value of the attribute.
--- @param AlternateNameEncoding [String] &lt;p&gt;&lt;/p&gt;
+-- @param AlternateNameEncoding [String] <p></p>
 -- Required parameter: Name
 -- Required parameter: Value
 function M.Attribute(AlternateValueEncoding, Name, Value, AlternateNameEncoding, ...)
@@ -955,8 +955,8 @@ function M.AssertNumberDomainBytesExceeded(struct)
 end
 
 --- Create a structure of type NumberDomainBytesExceeded
--- &lt;p&gt;Too many bytes in this domain.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;Too many bytes in this domain.&lt;/p&gt;
+-- <p>Too many bytes in this domain.</p>
+-- @param BoxUsage [Float] <p>Too many bytes in this domain.</p>
 function M.NumberDomainBytesExceeded(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NumberDomainBytesExceeded")
 	local t = { 
@@ -978,8 +978,8 @@ function M.AssertNumberSubmittedItemsExceeded(struct)
 end
 
 --- Create a structure of type NumberSubmittedItemsExceeded
--- &lt;p&gt;Too many items exist in a single call.&lt;/p&gt;
--- @param BoxUsage [Float] &lt;p&gt;Too many items exist in a single call.&lt;/p&gt;
+-- <p>Too many items exist in a single call.</p>
+-- @param BoxUsage [Float] <p>Too many items exist in a single call.</p>
 function M.NumberSubmittedItemsExceeded(BoxUsage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NumberSubmittedItemsExceeded")
 	local t = { 
@@ -1004,7 +1004,7 @@ function M.AssertReplaceableItem(struct)
 end
 
 --- Create a structure of type ReplaceableItem
--- &lt;p&gt;&lt;/p&gt;
+-- <p></p>
 -- @param Attributes [ReplaceableAttributeList] The list of attributes for a replaceable item.
 -- @param Name [String] The name of the replaceable item.
 -- Required parameter: Name

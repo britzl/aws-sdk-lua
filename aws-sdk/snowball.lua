@@ -32,7 +32,7 @@ end
 
 --- Create a structure of type CancelClusterRequest
 --  
--- @param ClusterId [ClusterId] &lt;p&gt;The 39-character ID for the cluster that you want to cancel, for example &lt;code&gt;CID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
+-- @param ClusterId [ClusterId] <p>The 39-character ID for the cluster that you want to cancel, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
 -- Required parameter: ClusterId
 function M.CancelClusterRequest(ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelClusterRequest")
@@ -85,15 +85,15 @@ end
 
 --- Create a structure of type UpdateJobRequest
 --  
--- @param Description [String] &lt;p&gt;The updated description of this job's &lt;a&gt;JobMetadata&lt;/a&gt; object.&lt;/p&gt;
--- @param AddressId [AddressId] &lt;p&gt;The ID of the updated &lt;a&gt;Address&lt;/a&gt; object.&lt;/p&gt;
--- @param Notification [Notification] &lt;p&gt;The new or updated &lt;a&gt;Notification&lt;/a&gt; object.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html&quot;&gt;CreateRole&lt;/a&gt;AWS Identity and Access Management (IAM) API action.&lt;/p&gt;
--- @param JobId [JobId] &lt;p&gt;The job ID of the job that you want to update, for example &lt;code&gt;JID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
--- @param ShippingOption [ShippingOption] &lt;p&gt;The updated shipping option value of this job's &lt;a&gt;ShippingDetails&lt;/a&gt; object.&lt;/p&gt;
--- @param ForwardingAddressId [AddressId] &lt;p&gt;The updated ID for the forwarding address for a job. This field is not supported in most regions.&lt;/p&gt;
--- @param SnowballCapacityPreference [SnowballCapacity] &lt;p&gt;The updated &lt;code&gt;SnowballCapacityPreference&lt;/code&gt; of this job's &lt;a&gt;JobMetadata&lt;/a&gt; object. The 50 TB Snowballs are only available in the US regions.&lt;/p&gt;
--- @param Resources [JobResource] &lt;p&gt;The updated &lt;a&gt;S3Resource&lt;/a&gt; object (for a single Amazon S3 bucket or key range), or the updated &lt;a&gt;JobResource&lt;/a&gt; object (for multiple buckets or key ranges). &lt;/p&gt;
+-- @param Description [String] <p>The updated description of this job's <a>JobMetadata</a> object.</p>
+-- @param AddressId [AddressId] <p>The ID of the updated <a>Address</a> object.</p>
+-- @param Notification [Notification] <p>The new or updated <a>Notification</a> object.</p>
+-- @param RoleARN [RoleARN] <p>The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and Access Management (IAM) API action.</p>
+-- @param JobId [JobId] <p>The job ID of the job that you want to update, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- @param ShippingOption [ShippingOption] <p>The updated shipping option value of this job's <a>ShippingDetails</a> object.</p>
+-- @param ForwardingAddressId [AddressId] <p>The updated ID for the forwarding address for a job. This field is not supported in most regions.</p>
+-- @param SnowballCapacityPreference [SnowballCapacity] <p>The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB Snowballs are only available in the US regions.</p>
+-- @param Resources [JobResource] <p>The updated <a>S3Resource</a> object (for a single Amazon S3 bucket or key range), or the updated <a>JobResource</a> object (for multiple buckets or key ranges). </p>
 -- Required parameter: JobId
 function M.UpdateJobRequest(Description, AddressId, Notification, RoleARN, JobId, ShippingOption, ForwardingAddressId, SnowballCapacityPreference, Resources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobRequest")
@@ -124,8 +124,8 @@ function M.AssertUnsupportedAddressException(struct)
 end
 
 --- Create a structure of type UnsupportedAddressException
--- &lt;p&gt;The address is either outside the serviceable area for your region, or an error occurred. Check the address with your region's carrier and try again. If the issue persists, contact AWS Support.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The address is either outside the serviceable area for your region, or an error occurred. Check the address with your region's carrier and try again. If the issue persists, contact AWS Support.&lt;/p&gt;
+-- <p>The address is either outside the serviceable area for your region, or an error occurred. Check the address with your region's carrier and try again. If the issue persists, contact AWS Support.</p>
+-- @param Message [String] <p>The address is either outside the serviceable area for your region, or an error occurred. Check the address with your region's carrier and try again. If the issue persists, contact AWS Support.</p>
 function M.UnsupportedAddressException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedAddressException")
 	local t = { 
@@ -159,18 +159,18 @@ end
 
 --- Create a structure of type CreateJobRequest
 --  
--- @param Description [String] &lt;p&gt;Defines an optional description of this specific job, for example &lt;code&gt;Important Photos 2016-08-11&lt;/code&gt;.&lt;/p&gt;
--- @param AddressId [AddressId] &lt;p&gt;The ID for the address that you want the Snowball shipped to.&lt;/p&gt;
--- @param KmsKeyARN [KmsKeyARN] &lt;p&gt;The &lt;code&gt;KmsKeyARN&lt;/code&gt; that you want to associate with this job. &lt;code&gt;KmsKeyARN&lt;/code&gt;s are created using the &lt;a href=&quot;http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html&quot;&gt;CreateKey&lt;/a&gt; AWS Key Management Service (KMS) API action.&lt;/p&gt;
--- @param Notification [Notification] &lt;p&gt;Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The &lt;code&gt;RoleARN&lt;/code&gt; that you want to associate with this job. &lt;code&gt;RoleArn&lt;/code&gt;s are created using the &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html&quot;&gt;CreateRole&lt;/a&gt; AWS Identity and Access Management (IAM) API action.&lt;/p&gt;
--- @param ClusterId [ClusterId] &lt;p&gt;The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this &lt;code&gt;clusterId&lt;/code&gt; value. The other job attributes are inherited from the cluster.&lt;/p&gt;
--- @param ForwardingAddressId [AddressId] &lt;p&gt;The forwarding address ID for a job. This field is not supported in most regions.&lt;/p&gt;
--- @param ShippingOption [ShippingOption] &lt;p&gt;The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In India, Snowballs are delivered in one to seven days.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In the US, you have access to one-day shipping and two-day shipping.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param JobType [JobType] &lt;p&gt;Defines the type of job that you're creating. &lt;/p&gt;
--- @param SnowballType [SnowballType] &lt;p&gt;The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster jobs is &lt;code&gt;EDGE&lt;/code&gt;.&lt;/p&gt;
--- @param SnowballCapacityPreference [SnowballCapacity] &lt;p&gt;If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.&lt;/p&gt;
--- @param Resources [JobResource] &lt;p&gt;Defines the Amazon S3 buckets associated with this job.&lt;/p&gt; &lt;p&gt;With &lt;code&gt;IMPORT&lt;/code&gt; jobs, you specify the bucket or buckets that your transferred data will be imported into.&lt;/p&gt; &lt;p&gt;With &lt;code&gt;EXPORT&lt;/code&gt; jobs, you specify the bucket or buckets that your transferred data will be exported from. Optionally, you can also specify a &lt;code&gt;KeyRange&lt;/code&gt; value. If you choose to export a range, you define the length of the range by providing either an inclusive &lt;code&gt;BeginMarker&lt;/code&gt; value, an inclusive &lt;code&gt;EndMarker&lt;/code&gt; value, or both. Ranges are UTF-8 binary sorted.&lt;/p&gt;
+-- @param Description [String] <p>Defines an optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.</p>
+-- @param AddressId [AddressId] <p>The ID for the address that you want the Snowball shipped to.</p>
+-- @param KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> that you want to associate with this job. <code>KmsKeyARN</code>s are created using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> AWS Key Management Service (KMS) API action.</p>
+-- @param Notification [Notification] <p>Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.</p>
+-- @param RoleARN [RoleARN] <p>The <code>RoleARN</code> that you want to associate with this job. <code>RoleArn</code>s are created using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> AWS Identity and Access Management (IAM) API action.</p>
+-- @param ClusterId [ClusterId] <p>The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this <code>clusterId</code> value. The other job attributes are inherited from the cluster.</p>
+-- @param ForwardingAddressId [AddressId] <p>The forwarding address ID for a job. This field is not supported in most regions.</p>
+-- @param ShippingOption [ShippingOption] <p>The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowballs are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
+-- @param JobType [JobType] <p>Defines the type of job that you're creating. </p>
+-- @param SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
+-- @param SnowballCapacityPreference [SnowballCapacity] <p>If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.</p>
+-- @param Resources [JobResource] <p>Defines the Amazon S3 buckets associated with this job.</p> <p>With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be imported into.</p> <p>With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be exported from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a range, you define the length of the range by providing either an inclusive <code>BeginMarker</code> value, an inclusive <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.</p>
 function M.CreateJobRequest(Description, AddressId, KmsKeyARN, Notification, RoleARN, ClusterId, ForwardingAddressId, ShippingOption, JobType, SnowballType, SnowballCapacityPreference, Resources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobRequest")
 	local t = { 
@@ -205,8 +205,8 @@ end
 
 --- Create a structure of type ListJobsRequest
 --  
--- @param NextToken [String] &lt;p&gt;HTTP requests are stateless. To identify what object comes &quot;next&quot; in the list of &lt;code&gt;JobListEntry&lt;/code&gt; objects, you have the option of specifying &lt;code&gt;NextToken&lt;/code&gt; as the starting point for your returned list.&lt;/p&gt;
--- @param MaxResults [ListLimit] &lt;p&gt;The number of &lt;code&gt;JobListEntry&lt;/code&gt; objects to return.&lt;/p&gt;
+-- @param NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>JobListEntry</code> objects, you have the option of specifying <code>NextToken</code> as the starting point for your returned list.</p>
+-- @param MaxResults [ListLimit] <p>The number of <code>JobListEntry</code> objects to return.</p>
 function M.ListJobsRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsRequest")
 	local t = { 
@@ -229,8 +229,8 @@ function M.AssertKMSRequestFailedException(struct)
 end
 
 --- Create a structure of type KMSRequestFailedException
--- &lt;p&gt;The provided AWS Key Management Service key lacks the permissions to perform the specified &lt;a&gt;CreateJob&lt;/a&gt; or &lt;a&gt;UpdateJob&lt;/a&gt; action.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The provided AWS Key Management Service key lacks the permissions to perform the specified &lt;a&gt;CreateJob&lt;/a&gt; or &lt;a&gt;UpdateJob&lt;/a&gt; action.&lt;/p&gt;
+-- <p>The provided AWS Key Management Service key lacks the permissions to perform the specified <a>CreateJob</a> or <a>UpdateJob</a> action.</p>
+-- @param Message [String] <p>The provided AWS Key Management Service key lacks the permissions to perform the specified <a>CreateJob</a> or <a>UpdateJob</a> action.</p>
 function M.KMSRequestFailedException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KMSRequestFailedException")
 	local t = { 
@@ -252,8 +252,8 @@ function M.AssertInvalidResourceException(struct)
 end
 
 --- Create a structure of type InvalidResourceException
--- &lt;p&gt;The specified resource can't be found. Check the information you provided in your last request, and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The specified resource can't be found. Check the information you provided in your last request, and try again.&lt;/p&gt;
+-- <p>The specified resource can't be found. Check the information you provided in your last request, and try again.</p>
+-- @param Message [String] <p>The specified resource can't be found. Check the information you provided in your last request, and try again.</p>
 function M.InvalidResourceException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceException")
 	local t = { 
@@ -287,20 +287,20 @@ function M.AssertClusterMetadata(struct)
 end
 
 --- Create a structure of type ClusterMetadata
--- &lt;p&gt;Contains metadata about a specific cluster.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The optional description of the cluster.&lt;/p&gt;
--- @param AddressId [AddressId] &lt;p&gt;The automatically generated ID for a specific address.&lt;/p&gt;
--- @param KmsKeyARN [KmsKeyARN] &lt;p&gt;The &lt;code&gt;KmsKeyARN&lt;/code&gt; Amazon Resource Name (ARN) associated with this cluster. This ARN was created using the &lt;a href=&quot;http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html&quot;&gt;CreateKey&lt;/a&gt; API action in AWS Key Management Service (AWS KMS).&lt;/p&gt;
--- @param Notification [Notification] &lt;p&gt;The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The role ARN associated with this cluster. This ARN was created using the &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html&quot;&gt;CreateRole&lt;/a&gt; API action in AWS Identity and Access Management (IAM).&lt;/p&gt;
--- @param ClusterId [String] &lt;p&gt;The automatically generated ID for a cluster.&lt;/p&gt;
--- @param ForwardingAddressId [AddressId] &lt;p&gt;The ID of the address that you want a cluster shipped to, after it will be shipped to its primary address. This field is not supported in most regions.&lt;/p&gt;
--- @param ClusterState [ClusterState] &lt;p&gt;The current status of the cluster.&lt;/p&gt;
--- @param ShippingOption [ShippingOption] &lt;p&gt;The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In India, Snowball Edges are delivered in one to seven days.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In the US, you have access to one-day shipping and two-day shipping.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Resources [JobResource] &lt;p&gt;The arrays of &lt;a&gt;JobResource&lt;/a&gt; objects that can include updated &lt;a&gt;S3Resource&lt;/a&gt; objects or &lt;a&gt;LambdaResource&lt;/a&gt; objects.&lt;/p&gt;
--- @param SnowballType [SnowballType] &lt;p&gt;The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is &lt;code&gt;EDGE&lt;/code&gt;.&lt;/p&gt;
--- @param CreationDate [Timestamp] &lt;p&gt;The creation date for this cluster.&lt;/p&gt;
--- @param JobType [JobType] &lt;p&gt;The type of job for this cluster. Currently, the only job type supported for clusters is &lt;code&gt;LOCAL_USE&lt;/code&gt;.&lt;/p&gt;
+-- <p>Contains metadata about a specific cluster.</p>
+-- @param Description [String] <p>The optional description of the cluster.</p>
+-- @param AddressId [AddressId] <p>The automatically generated ID for a specific address.</p>
+-- @param KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> Amazon Resource Name (ARN) associated with this cluster. This ARN was created using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS Key Management Service (AWS KMS).</p>
+-- @param Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.</p>
+-- @param RoleARN [RoleARN] <p>The role ARN associated with this cluster. This ARN was created using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
+-- @param ClusterId [String] <p>The automatically generated ID for a cluster.</p>
+-- @param ForwardingAddressId [AddressId] <p>The ID of the address that you want a cluster shipped to, after it will be shipped to its primary address. This field is not supported in most regions.</p>
+-- @param ClusterState [ClusterState] <p>The current status of the cluster.</p>
+-- @param ShippingOption [ShippingOption] <p>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowball Edges are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
+-- @param Resources [JobResource] <p>The arrays of <a>JobResource</a> objects that can include updated <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
+-- @param SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
+-- @param CreationDate [Timestamp] <p>The creation date for this cluster.</p>
+-- @param JobType [JobType] <p>The type of job for this cluster. Currently, the only job type supported for clusters is <code>LOCAL_USE</code>.</p>
 function M.ClusterMetadata(Description, AddressId, KmsKeyARN, Notification, RoleARN, ClusterId, ForwardingAddressId, ClusterState, ShippingOption, Resources, SnowballType, CreationDate, JobType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterMetadata")
 	local t = { 
@@ -335,7 +335,7 @@ end
 
 --- Create a structure of type GetJobUnlockCodeResult
 --  
--- @param UnlockCode [String] &lt;p&gt;The &lt;code&gt;UnlockCode&lt;/code&gt; value for the specified job. The &lt;code&gt;UnlockCode&lt;/code&gt; value can be accessed for up to 90 days after the job has been created.&lt;/p&gt;
+-- @param UnlockCode [String] <p>The <code>UnlockCode</code> value for the specified job. The <code>UnlockCode</code> value can be accessed for up to 90 days after the job has been created.</p>
 function M.GetJobUnlockCodeResult(UnlockCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetJobUnlockCodeResult")
 	local t = { 
@@ -358,9 +358,9 @@ function M.AssertKeyRange(struct)
 end
 
 --- Create a structure of type KeyRange
--- &lt;p&gt;Contains a key range. For export jobs, a &lt;code&gt;S3Resource&lt;/code&gt; object can have an optional &lt;code&gt;KeyRange&lt;/code&gt; value. The length of the range is defined at job creation, and has either an inclusive &lt;code&gt;BeginMarker&lt;/code&gt;, an inclusive &lt;code&gt;EndMarker&lt;/code&gt;, or both. Ranges are UTF-8 binary sorted.&lt;/p&gt;
--- @param EndMarker [String] &lt;p&gt;The key that ends an optional key range for an export job. Ranges are inclusive and UTF-8 binary sorted.&lt;/p&gt;
--- @param BeginMarker [String] &lt;p&gt;The key that starts an optional key range for an export job. Ranges are inclusive and UTF-8 binary sorted.&lt;/p&gt;
+-- <p>Contains a key range. For export jobs, a <code>S3Resource</code> object can have an optional <code>KeyRange</code> value. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
+-- @param EndMarker [String] <p>The key that ends an optional key range for an export job. Ranges are inclusive and UTF-8 binary sorted.</p>
+-- @param BeginMarker [String] <p>The key that starts an optional key range for an export job. Ranges are inclusive and UTF-8 binary sorted.</p>
 function M.KeyRange(EndMarker, BeginMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KeyRange")
 	local t = { 
@@ -384,9 +384,9 @@ function M.AssertShipment(struct)
 end
 
 --- Create a structure of type Shipment
--- &lt;p&gt;The &lt;code&gt;Status&lt;/code&gt; and &lt;code&gt;TrackingNumber&lt;/code&gt; information for an inbound or outbound shipment.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;Status information for a shipment.&lt;/p&gt;
--- @param TrackingNumber [String] &lt;p&gt;The tracking number for this job. Using this tracking number with your region's carrier's website, you can track a Snowball as the carrier transports it.&lt;/p&gt; &lt;p&gt;For India, the carrier is Amazon Logistics. For all other regions, UPS is the carrier.&lt;/p&gt;
+-- <p>The <code>Status</code> and <code>TrackingNumber</code> information for an inbound or outbound shipment.</p>
+-- @param Status [String] <p>Status information for a shipment.</p>
+-- @param TrackingNumber [String] <p>The tracking number for this job. Using this tracking number with your region's carrier's website, you can track a Snowball as the carrier transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other regions, UPS is the carrier.</p>
 function M.Shipment(Status, TrackingNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Shipment")
 	local t = { 
@@ -409,8 +409,8 @@ function M.AssertInvalidNextTokenException(struct)
 end
 
 --- Create a structure of type InvalidNextTokenException
--- &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; string was altered unexpectedly, and the operation has stopped. Run the operation without changing the &lt;code&gt;NextToken&lt;/code&gt; string, and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; string was altered unexpectedly, and the operation has stopped. Run the operation without changing the &lt;code&gt;NextToken&lt;/code&gt; string, and try again.&lt;/p&gt;
+-- <p>The <code>NextToken</code> string was altered unexpectedly, and the operation has stopped. Run the operation without changing the <code>NextToken</code> string, and try again.</p>
+-- @param Message [String] <p>The <code>NextToken</code> string was altered unexpectedly, and the operation has stopped. Run the operation without changing the <code>NextToken</code> string, and try again.</p>
 function M.InvalidNextTokenException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
 	local t = { 
@@ -432,8 +432,8 @@ function M.AssertEventTriggerDefinition(struct)
 end
 
 --- Create a structure of type EventTriggerDefinition
--- &lt;p&gt;The container for the &lt;a&gt;EventTriggerDefinition$EventResourceARN&lt;/a&gt;.&lt;/p&gt;
--- @param EventResourceARN [ResourceARN] &lt;p&gt;The Amazon Resource Name (ARN) for any local Amazon S3 resource that is an AWS Lambda function's event trigger associated with this job.&lt;/p&gt;
+-- <p>The container for the <a>EventTriggerDefinition$EventResourceARN</a>.</p>
+-- @param EventResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) for any local Amazon S3 resource that is an AWS Lambda function's event trigger associated with this job.</p>
 function M.EventTriggerDefinition(EventResourceARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventTriggerDefinition")
 	local t = { 
@@ -457,7 +457,7 @@ end
 
 --- Create a structure of type CreateAddressRequest
 --  
--- @param Address [Address] &lt;p&gt;The address that you want the Snowball shipped to.&lt;/p&gt;
+-- @param Address [Address] <p>The address that you want the Snowball shipped to.</p>
 -- Required parameter: Address
 function M.CreateAddressRequest(Address, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAddressRequest")
@@ -481,7 +481,7 @@ end
 
 --- Create a structure of type CreateAddressResult
 --  
--- @param AddressId [String] &lt;p&gt;The automatically generated ID for a specific address. You'll use this ID when you create a job to specify which address you want the Snowball for that job shipped to.&lt;/p&gt;
+-- @param AddressId [String] <p>The automatically generated ID for a specific address. You'll use this ID when you create a job to specify which address you want the Snowball for that job shipped to.</p>
 function M.CreateAddressResult(AddressId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAddressResult")
 	local t = { 
@@ -505,8 +505,8 @@ end
 
 --- Create a structure of type ListJobsResult
 --  
--- @param NextToken [String] &lt;p&gt;HTTP requests are stateless. If you use this automatically generated &lt;code&gt;NextToken&lt;/code&gt; value in your next &lt;code&gt;ListJobs&lt;/code&gt; call, your returned &lt;code&gt;JobListEntry&lt;/code&gt; objects will start from this point in the array.&lt;/p&gt;
--- @param JobListEntries [JobListEntryList] &lt;p&gt;Each &lt;code&gt;JobListEntry&lt;/code&gt; object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. &lt;/p&gt;
+-- @param NextToken [String] <p>HTTP requests are stateless. If you use this automatically generated <code>NextToken</code> value in your next <code>ListJobs</code> call, your returned <code>JobListEntry</code> objects will start from this point in the array.</p>
+-- @param JobListEntries [JobListEntryList] <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. </p>
 function M.ListJobsResult(NextToken, JobListEntries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsResult")
 	local t = { 
@@ -532,11 +532,11 @@ function M.AssertClusterListEntry(struct)
 end
 
 --- Create a structure of type ClusterListEntry
--- &lt;p&gt;Contains a cluster's state, a cluster's ID, and other important information.&lt;/p&gt;
--- @param ClusterState [ClusterState] &lt;p&gt;The current state of this cluster. For information about the state of a specific node, see &lt;a&gt;JobListEntry$JobState&lt;/a&gt;.&lt;/p&gt;
--- @param CreationDate [Timestamp] &lt;p&gt;The creation date for this cluster.&lt;/p&gt;
--- @param ClusterId [String] &lt;p&gt;The 39-character ID for the cluster that you want to list, for example &lt;code&gt;CID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;Defines an optional description of the cluster, for example &lt;code&gt;Environmental Data Cluster-01&lt;/code&gt;.&lt;/p&gt;
+-- <p>Contains a cluster's state, a cluster's ID, and other important information.</p>
+-- @param ClusterState [ClusterState] <p>The current state of this cluster. For information about the state of a specific node, see <a>JobListEntry$JobState</a>.</p>
+-- @param CreationDate [Timestamp] <p>The creation date for this cluster.</p>
+-- @param ClusterId [String] <p>The 39-character ID for the cluster that you want to list, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- @param Description [String] <p>Defines an optional description of the cluster, for example <code>Environmental Data Cluster-01</code>.</p>
 function M.ClusterListEntry(ClusterState, CreationDate, ClusterId, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterListEntry")
 	local t = { 
@@ -562,7 +562,7 @@ end
 
 --- Create a structure of type CreateJobResult
 --  
--- @param JobId [JobId] &lt;p&gt;The automatically generated ID for a job, for example &lt;code&gt;JID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
+-- @param JobId [JobId] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
 function M.CreateJobResult(JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobResult")
 	local t = { 
@@ -586,10 +586,10 @@ function M.AssertJobLogs(struct)
 end
 
 --- Create a structure of type JobLogs
--- &lt;p&gt;Contains job logs. Whenever Snowball is used to import data into or export data out of Amazon S3, you'll have the option of downloading a PDF job report. Job logs are returned as a part of the response syntax of the &lt;code&gt;DescribeJob&lt;/code&gt; action in the &lt;code&gt;JobMetadata&lt;/code&gt; data type. The job logs can be accessed for up to 60 minutes after this request has been made. To access any of the job logs after 60 minutes have passed, you'll have to make another call to the &lt;code&gt;DescribeJob&lt;/code&gt; action.&lt;/p&gt; &lt;p&gt;For import jobs, the PDF job report becomes available at the end of the import process. For export jobs, your job report typically becomes available while the Snowball for your job part is being delivered to you.&lt;/p&gt; &lt;p&gt;The job report provides you insight into the state of your Amazon S3 data transfer. The report includes details about your job or job part for your records.&lt;/p&gt; &lt;p&gt;For deeper visibility into the status of your transferred objects, you can look at the two associated logs: a success log and a failure log. The logs are saved in comma-separated value (CSV) format, and the name of each log includes the ID of the job or job part that the log describes.&lt;/p&gt;
--- @param JobFailureLogURI [String] &lt;p&gt;A link to an Amazon S3 presigned URL where the job failure log is located.&lt;/p&gt;
--- @param JobSuccessLogURI [String] &lt;p&gt;A link to an Amazon S3 presigned URL where the job success log is located.&lt;/p&gt;
--- @param JobCompletionReportURI [String] &lt;p&gt;A link to an Amazon S3 presigned URL where the job completion report is located.&lt;/p&gt;
+-- <p>Contains job logs. Whenever Snowball is used to import data into or export data out of Amazon S3, you'll have the option of downloading a PDF job report. Job logs are returned as a part of the response syntax of the <code>DescribeJob</code> action in the <code>JobMetadata</code> data type. The job logs can be accessed for up to 60 minutes after this request has been made. To access any of the job logs after 60 minutes have passed, you'll have to make another call to the <code>DescribeJob</code> action.</p> <p>For import jobs, the PDF job report becomes available at the end of the import process. For export jobs, your job report typically becomes available while the Snowball for your job part is being delivered to you.</p> <p>The job report provides you insight into the state of your Amazon S3 data transfer. The report includes details about your job or job part for your records.</p> <p>For deeper visibility into the status of your transferred objects, you can look at the two associated logs: a success log and a failure log. The logs are saved in comma-separated value (CSV) format, and the name of each log includes the ID of the job or job part that the log describes.</p>
+-- @param JobFailureLogURI [String] <p>A link to an Amazon S3 presigned URL where the job failure log is located.</p>
+-- @param JobSuccessLogURI [String] <p>A link to an Amazon S3 presigned URL where the job success log is located.</p>
+-- @param JobCompletionReportURI [String] <p>A link to an Amazon S3 presigned URL where the job completion report is located.</p>
 function M.JobLogs(JobFailureLogURI, JobSuccessLogURI, JobCompletionReportURI, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobLogs")
 	local t = { 
@@ -615,7 +615,7 @@ end
 
 --- Create a structure of type GetJobManifestRequest
 --  
--- @param JobId [JobId] &lt;p&gt;The ID for a job that you want to get the manifest file for, for example &lt;code&gt;JID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
+-- @param JobId [JobId] <p>The ID for a job that you want to get the manifest file for, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
 -- Required parameter: JobId
 function M.GetJobManifestRequest(JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetJobManifestRequest")
@@ -640,7 +640,7 @@ end
 
 --- Create a structure of type DescribeJobRequest
 --  
--- @param JobId [JobId] &lt;p&gt;The automatically generated ID for a job, for example &lt;code&gt;JID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
+-- @param JobId [JobId] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
 -- Required parameter: JobId
 function M.DescribeJobRequest(JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobRequest")
@@ -665,8 +665,8 @@ end
 
 --- Create a structure of type GetSnowballUsageResult
 --  
--- @param SnowballLimit [Integer] &lt;p&gt;The service limit for number of Snowballs this account can have at once. The default service limit is 1 (one).&lt;/p&gt;
--- @param SnowballsInUse [Integer] &lt;p&gt;The number of Snowballs that this account is currently using.&lt;/p&gt;
+-- @param SnowballLimit [Integer] <p>The service limit for number of Snowballs this account can have at once. The default service limit is 1 (one).</p>
+-- @param SnowballsInUse [Integer] <p>The number of Snowballs that this account is currently using.</p>
 function M.GetSnowballUsageResult(SnowballLimit, SnowballsInUse, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSnowballUsageResult")
 	local t = { 
@@ -690,7 +690,7 @@ end
 
 --- Create a structure of type CreateClusterResult
 --  
--- @param ClusterId [ClusterId] &lt;p&gt;The automatically generated ID for a cluster.&lt;/p&gt;
+-- @param ClusterId [ClusterId] <p>The automatically generated ID for a cluster.</p>
 function M.CreateClusterResult(ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateClusterResult")
 	local t = { 
@@ -713,7 +713,7 @@ end
 
 --- Create a structure of type DescribeAddressResult
 --  
--- @param Address [Address] &lt;p&gt;The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.&lt;/p&gt;
+-- @param Address [Address] <p>The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.</p>
 function M.DescribeAddressResult(Address, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAddressResult")
 	local t = { 
@@ -751,24 +751,24 @@ function M.AssertJobMetadata(struct)
 end
 
 --- Create a structure of type JobMetadata
--- &lt;p&gt;Contains information about a specific job including shipping information, job status, and other important metadata. This information is returned as a part of the response syntax of the &lt;code&gt;DescribeJob&lt;/code&gt; action.&lt;/p&gt;
--- @param SnowballCapacityPreference [SnowballCapacity] &lt;p&gt;The Snowball capacity preference for this job, specified at job creation. In US regions, you can choose between 50 TB and 80 TB Snowballs. All other regions use 80 TB capacity Snowballs.&lt;/p&gt;
--- @param JobState [JobState] &lt;p&gt;The current status of the jobs.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description of the job, provided at job creation.&lt;/p&gt;
--- @param AddressId [AddressId] &lt;p&gt;The ID for the address that you want the Snowball shipped to.&lt;/p&gt;
--- @param ForwardingAddressId [AddressId] &lt;p&gt;The ID of the address that you want a job shipped to, after it will be shipped to its primary address. This field is not supported in most regions.&lt;/p&gt;
--- @param KmsKeyARN [KmsKeyARN] &lt;p&gt;The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This ARN was created using the &lt;a href=&quot;http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html&quot;&gt;CreateKey&lt;/a&gt; API action in AWS KMS.&lt;/p&gt;
--- @param Notification [Notification] &lt;p&gt;The Amazon Simple Notification Service (Amazon SNS) notification settings associated with a specific job. The &lt;code&gt;Notification&lt;/code&gt; object is returned as a part of the response syntax of the &lt;code&gt;DescribeJob&lt;/code&gt; action in the &lt;code&gt;JobMetadata&lt;/code&gt; data type.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The role ARN associated with this job. This ARN was created using the &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html&quot;&gt;CreateRole&lt;/a&gt; API action in AWS Identity and Access Management (IAM).&lt;/p&gt;
--- @param ClusterId [String] &lt;p&gt;The 39-character ID for the cluster, for example &lt;code&gt;CID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
--- @param JobId [String] &lt;p&gt;The automatically generated ID for a job, for example &lt;code&gt;JID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
--- @param DataTransferProgress [DataTransfer] &lt;p&gt;A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a &lt;code&gt;JobState&lt;/code&gt; value of &lt;code&gt;InProgress&lt;/code&gt;, for both import and export jobs.&lt;/p&gt;
--- @param JobType [JobType] &lt;p&gt;The type of job.&lt;/p&gt;
--- @param SnowballType [SnowballType] &lt;p&gt;The type of appliance used with this job.&lt;/p&gt;
--- @param JobLogInfo [JobLogs] &lt;p&gt;Links to Amazon S3 presigned URLs for the job report and logs. For import jobs, the PDF job report becomes available at the end of the import process. For export jobs, your job report typically becomes available while the Snowball for your job part is being delivered to you.&lt;/p&gt;
--- @param CreationDate [Timestamp] &lt;p&gt;The creation date for this job.&lt;/p&gt;
--- @param Resources [JobResource] &lt;p&gt;An array of &lt;code&gt;S3Resource&lt;/code&gt; objects. Each &lt;code&gt;S3Resource&lt;/code&gt; object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.&lt;/p&gt;
--- @param ShippingDetails [ShippingDetails] &lt;p&gt;A job's shipping information, including inbound and outbound tracking numbers and shipping speed options.&lt;/p&gt;
+-- <p>Contains information about a specific job including shipping information, job status, and other important metadata. This information is returned as a part of the response syntax of the <code>DescribeJob</code> action.</p>
+-- @param SnowballCapacityPreference [SnowballCapacity] <p>The Snowball capacity preference for this job, specified at job creation. In US regions, you can choose between 50 TB and 80 TB Snowballs. All other regions use 80 TB capacity Snowballs.</p>
+-- @param JobState [JobState] <p>The current status of the jobs.</p>
+-- @param Description [String] <p>The description of the job, provided at job creation.</p>
+-- @param AddressId [AddressId] <p>The ID for the address that you want the Snowball shipped to.</p>
+-- @param ForwardingAddressId [AddressId] <p>The ID of the address that you want a job shipped to, after it will be shipped to its primary address. This field is not supported in most regions.</p>
+-- @param KmsKeyARN [KmsKeyARN] <p>The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This ARN was created using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS KMS.</p>
+-- @param Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings associated with a specific job. The <code>Notification</code> object is returned as a part of the response syntax of the <code>DescribeJob</code> action in the <code>JobMetadata</code> data type.</p>
+-- @param RoleARN [RoleARN] <p>The role ARN associated with this job. This ARN was created using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
+-- @param ClusterId [String] <p>The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- @param JobId [String] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- @param DataTransferProgress [DataTransfer] <p>A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.</p>
+-- @param JobType [JobType] <p>The type of job.</p>
+-- @param SnowballType [SnowballType] <p>The type of appliance used with this job.</p>
+-- @param JobLogInfo [JobLogs] <p>Links to Amazon S3 presigned URLs for the job report and logs. For import jobs, the PDF job report becomes available at the end of the import process. For export jobs, your job report typically becomes available while the Snowball for your job part is being delivered to you.</p>
+-- @param CreationDate [Timestamp] <p>The creation date for this job.</p>
+-- @param Resources [JobResource] <p>An array of <code>S3Resource</code> objects. Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.</p>
+-- @param ShippingDetails [ShippingDetails] <p>A job's shipping information, including inbound and outbound tracking numbers and shipping speed options.</p>
 function M.JobMetadata(SnowballCapacityPreference, JobState, Description, AddressId, ForwardingAddressId, KmsKeyARN, Notification, RoleARN, ClusterId, JobId, DataTransferProgress, JobType, SnowballType, JobLogInfo, CreationDate, Resources, ShippingDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobMetadata")
 	local t = { 
@@ -808,8 +808,8 @@ end
 
 --- Create a structure of type DescribeJobResult
 --  
--- @param JobMetadata [JobMetadata] &lt;p&gt;Information about a specific job, including shipping information, job status, and other important metadata.&lt;/p&gt;
--- @param SubJobMetadata [JobMetadataList] &lt;p&gt;Information about a specific job part (in the case of an export job), including shipping information, job status, and other important metadata.&lt;/p&gt;
+-- @param JobMetadata [JobMetadata] <p>Information about a specific job, including shipping information, job status, and other important metadata.</p>
+-- @param SubJobMetadata [JobMetadataList] <p>Information about a specific job part (in the case of an export job), including shipping information, job status, and other important metadata.</p>
 function M.DescribeJobResult(JobMetadata, SubJobMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobResult")
 	local t = { 
@@ -833,7 +833,7 @@ end
 
 --- Create a structure of type GetJobManifestResult
 --  
--- @param ManifestURI [String] &lt;p&gt;The Amazon S3 presigned URL for the manifest file associated with the specified &lt;code&gt;JobId&lt;/code&gt; value.&lt;/p&gt;
+-- @param ManifestURI [String] <p>The Amazon S3 presigned URL for the manifest file associated with the specified <code>JobId</code> value.</p>
 function M.GetJobManifestResult(ManifestURI, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetJobManifestResult")
 	local t = { 
@@ -868,21 +868,21 @@ function M.AssertAddress(struct)
 end
 
 --- Create a structure of type Address
--- &lt;p&gt;The address that you want the Snowball or Snowballs associated with a specific job to be shipped to. Addresses are validated at the time of creation. The address you provide must be located within the serviceable area of your region. Although no individual elements of the &lt;code&gt;Address&lt;/code&gt; are required, if the address is invalid or unsupported, then an exception is thrown.&lt;/p&gt;
--- @param City [String] &lt;p&gt;The city in an address that a Snowball is to be delivered to.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of a person to receive a Snowball at an address.&lt;/p&gt;
--- @param AddressId [AddressId] &lt;p&gt;The unique ID for an address.&lt;/p&gt;
--- @param Street1 [String] &lt;p&gt;The first line in a street address that a Snowball is to be delivered to.&lt;/p&gt;
--- @param Company [String] &lt;p&gt;The name of the company to receive a Snowball at an address.&lt;/p&gt;
--- @param Street3 [String] &lt;p&gt;The third line in a street address that a Snowball is to be delivered to.&lt;/p&gt;
--- @param PostalCode [String] &lt;p&gt;The postal code in an address that a Snowball is to be delivered to.&lt;/p&gt;
--- @param PrefectureOrDistrict [String] &lt;p&gt;This field is no longer used and the value is ignored.&lt;/p&gt;
--- @param Country [String] &lt;p&gt;The country in an address that a Snowball is to be delivered to.&lt;/p&gt;
--- @param Landmark [String] &lt;p&gt;This field is no longer used and the value is ignored.&lt;/p&gt;
--- @param PhoneNumber [String] &lt;p&gt;The phone number associated with an address that a Snowball is to be delivered to.&lt;/p&gt;
--- @param IsRestricted [Boolean] &lt;p&gt;If the address you are creating is a primary address, then set this option to true. This field is not supported in most regions.&lt;/p&gt;
--- @param StateOrProvince [String] &lt;p&gt;The state or province in an address that a Snowball is to be delivered to.&lt;/p&gt;
--- @param Street2 [String] &lt;p&gt;The second line in a street address that a Snowball is to be delivered to.&lt;/p&gt;
+-- <p>The address that you want the Snowball or Snowballs associated with a specific job to be shipped to. Addresses are validated at the time of creation. The address you provide must be located within the serviceable area of your region. Although no individual elements of the <code>Address</code> are required, if the address is invalid or unsupported, then an exception is thrown.</p>
+-- @param City [String] <p>The city in an address that a Snowball is to be delivered to.</p>
+-- @param Name [String] <p>The name of a person to receive a Snowball at an address.</p>
+-- @param AddressId [AddressId] <p>The unique ID for an address.</p>
+-- @param Street1 [String] <p>The first line in a street address that a Snowball is to be delivered to.</p>
+-- @param Company [String] <p>The name of the company to receive a Snowball at an address.</p>
+-- @param Street3 [String] <p>The third line in a street address that a Snowball is to be delivered to.</p>
+-- @param PostalCode [String] <p>The postal code in an address that a Snowball is to be delivered to.</p>
+-- @param PrefectureOrDistrict [String] <p>This field is no longer used and the value is ignored.</p>
+-- @param Country [String] <p>The country in an address that a Snowball is to be delivered to.</p>
+-- @param Landmark [String] <p>This field is no longer used and the value is ignored.</p>
+-- @param PhoneNumber [String] <p>The phone number associated with an address that a Snowball is to be delivered to.</p>
+-- @param IsRestricted [Boolean] <p>If the address you are creating is a primary address, then set this option to true. This field is not supported in most regions.</p>
+-- @param StateOrProvince [String] <p>The state or province in an address that a Snowball is to be delivered to.</p>
+-- @param Street2 [String] <p>The second line in a street address that a Snowball is to be delivered to.</p>
 function M.Address(City, Name, AddressId, Street1, Company, Street3, PostalCode, PrefectureOrDistrict, Country, Landmark, PhoneNumber, IsRestricted, StateOrProvince, Street2, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Address")
 	local t = { 
@@ -937,8 +937,8 @@ function M.AssertInvalidInputCombinationException(struct)
 end
 
 --- Create a structure of type InvalidInputCombinationException
--- &lt;p&gt;Job or cluster creation failed. One ore more inputs were invalid. Confirm that the &lt;a&gt;CreateClusterRequest$SnowballType&lt;/a&gt; value supports your &lt;a&gt;CreateJobRequest$JobType&lt;/a&gt;, and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;Job or cluster creation failed. One ore more inputs were invalid. Confirm that the &lt;a&gt;CreateClusterRequest$SnowballType&lt;/a&gt; value supports your &lt;a&gt;CreateJobRequest$JobType&lt;/a&gt;, and try again.&lt;/p&gt;
+-- <p>Job or cluster creation failed. One ore more inputs were invalid. Confirm that the <a>CreateClusterRequest$SnowballType</a> value supports your <a>CreateJobRequest$JobType</a>, and try again.</p>
+-- @param Message [String] <p>Job or cluster creation failed. One ore more inputs were invalid. Confirm that the <a>CreateClusterRequest$SnowballType</a> value supports your <a>CreateJobRequest$JobType</a>, and try again.</p>
 function M.InvalidInputCombinationException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputCombinationException")
 	local t = { 
@@ -962,7 +962,7 @@ end
 
 --- Create a structure of type DescribeAddressRequest
 --  
--- @param AddressId [AddressId] &lt;p&gt;The automatically generated ID for a specific address.&lt;/p&gt;
+-- @param AddressId [AddressId] <p>The automatically generated ID for a specific address.</p>
 -- Required parameter: AddressId
 function M.DescribeAddressRequest(AddressId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAddressRequest")
@@ -986,9 +986,9 @@ function M.AssertLambdaResource(struct)
 end
 
 --- Create a structure of type LambdaResource
--- &lt;p&gt;Identifies &lt;/p&gt;
--- @param EventTriggers [EventTriggerDefinitionList] &lt;p&gt;The array of ARNs for &lt;a&gt;S3Resource&lt;/a&gt; objects to trigger the &lt;a&gt;LambdaResource&lt;/a&gt; objects associated with this job.&lt;/p&gt;
--- @param LambdaArn [ResourceARN] &lt;p&gt;An Amazon Resource Name (ARN) that represents an AWS Lambda function to be triggered by PUT object actions on the associated local Amazon S3 resource.&lt;/p&gt;
+-- <p>Identifies </p>
+-- @param EventTriggers [EventTriggerDefinitionList] <p>The array of ARNs for <a>S3Resource</a> objects to trigger the <a>LambdaResource</a> objects associated with this job.</p>
+-- @param LambdaArn [ResourceARN] <p>An Amazon Resource Name (ARN) that represents an AWS Lambda function to be triggered by PUT object actions on the associated local Amazon S3 resource.</p>
 function M.LambdaResource(EventTriggers, LambdaArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaResource")
 	local t = { 
@@ -1013,8 +1013,8 @@ end
 
 --- Create a structure of type ListClusterJobsResult
 --  
--- @param NextToken [String] &lt;p&gt;HTTP requests are stateless. If you use the automatically generated &lt;code&gt;NextToken&lt;/code&gt; value in your next &lt;code&gt;ListClusterJobsResult&lt;/code&gt; call, your list of returned jobs will start from this point in the array.&lt;/p&gt;
--- @param JobListEntries [JobListEntryList] &lt;p&gt;Each &lt;code&gt;JobListEntry&lt;/code&gt; object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. &lt;/p&gt;
+-- @param NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>ListClusterJobsResult</code> call, your list of returned jobs will start from this point in the array.</p>
+-- @param JobListEntries [JobListEntryList] <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. </p>
 function M.ListClusterJobsResult(NextToken, JobListEntries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListClusterJobsResult")
 	local t = { 
@@ -1037,8 +1037,8 @@ function M.AssertClusterLimitExceededException(struct)
 end
 
 --- Create a structure of type ClusterLimitExceededException
--- &lt;p&gt;Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster has exactly five notes.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster has exactly five notes.&lt;/p&gt;
+-- <p>Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster has exactly five notes.</p>
+-- @param Message [String] <p>Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster has exactly five notes.</p>
 function M.ClusterLimitExceededException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterLimitExceededException")
 	local t = { 
@@ -1062,8 +1062,8 @@ end
 
 --- Create a structure of type DescribeAddressesResult
 --  
--- @param NextToken [String] &lt;p&gt;HTTP requests are stateless. If you use the automatically generated &lt;code&gt;NextToken&lt;/code&gt; value in your next &lt;code&gt;DescribeAddresses&lt;/code&gt; call, your list of returned addresses will start from this point in the array.&lt;/p&gt;
--- @param Addresses [AddressList] &lt;p&gt;The Snowball shipping addresses that were created for this account.&lt;/p&gt;
+-- @param NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>DescribeAddresses</code> call, your list of returned addresses will start from this point in the array.</p>
+-- @param Addresses [AddressList] <p>The Snowball shipping addresses that were created for this account.</p>
 function M.DescribeAddressesResult(NextToken, Addresses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAddressesResult")
 	local t = { 
@@ -1088,10 +1088,10 @@ function M.AssertNotification(struct)
 end
 
 --- Create a structure of type Notification
--- &lt;p&gt;The Amazon Simple Notification Service (Amazon SNS) notification settings associated with a specific job. The &lt;code&gt;Notification&lt;/code&gt; object is returned as a part of the response syntax of the &lt;code&gt;DescribeJob&lt;/code&gt; action in the &lt;code&gt;JobMetadata&lt;/code&gt; data type.&lt;/p&gt; &lt;p&gt;When the notification settings are defined during job creation, you can choose to notify based on a specific set of job states using the &lt;code&gt;JobStatesToNotify&lt;/code&gt; array of strings, or you can specify that you want to have Amazon SNS notifications sent out for all job states with &lt;code&gt;NotifyAll&lt;/code&gt; set to true.&lt;/p&gt;
--- @param NotifyAll [Boolean] &lt;p&gt;Any change in job state will trigger a notification for this job.&lt;/p&gt;
--- @param JobStatesToNotify [JobStateList] &lt;p&gt;The list of job states that will trigger a notification for this job.&lt;/p&gt;
--- @param SnsTopicARN [SnsTopicARN] &lt;p&gt;The new SNS &lt;code&gt;TopicArn&lt;/code&gt; that you want to associate with this job. You can create Amazon Resource Names (ARNs) for topics by using the &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html&quot;&gt;CreateTopic&lt;/a&gt; Amazon SNS API action.&lt;/p&gt; &lt;p&gt;You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using the &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html&quot;&gt;Subscribe&lt;/a&gt; AWS Simple Notification Service (SNS) API action.&lt;/p&gt;
+-- <p>The Amazon Simple Notification Service (Amazon SNS) notification settings associated with a specific job. The <code>Notification</code> object is returned as a part of the response syntax of the <code>DescribeJob</code> action in the <code>JobMetadata</code> data type.</p> <p>When the notification settings are defined during job creation, you can choose to notify based on a specific set of job states using the <code>JobStatesToNotify</code> array of strings, or you can specify that you want to have Amazon SNS notifications sent out for all job states with <code>NotifyAll</code> set to true.</p>
+-- @param NotifyAll [Boolean] <p>Any change in job state will trigger a notification for this job.</p>
+-- @param JobStatesToNotify [JobStateList] <p>The list of job states that will trigger a notification for this job.</p>
+-- @param SnsTopicARN [SnsTopicARN] <p>The new SNS <code>TopicArn</code> that you want to associate with this job. You can create Amazon Resource Names (ARNs) for topics by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API action.</p> <p>You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple Notification Service (SNS) API action.</p>
 function M.Notification(NotifyAll, JobStatesToNotify, SnsTopicARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Notification")
 	local t = { 
@@ -1117,8 +1117,8 @@ end
 
 --- Create a structure of type DescribeAddressesRequest
 --  
--- @param NextToken [String] &lt;p&gt;HTTP requests are stateless. To identify what object comes &quot;next&quot; in the list of &lt;code&gt;ADDRESS&lt;/code&gt; objects, you have the option of specifying a value for &lt;code&gt;NextToken&lt;/code&gt; as the starting point for your list of returned addresses.&lt;/p&gt;
--- @param MaxResults [ListLimit] &lt;p&gt;The number of &lt;code&gt;ADDRESS&lt;/code&gt; objects to return.&lt;/p&gt;
+-- @param NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>ADDRESS</code> objects, you have the option of specifying a value for <code>NextToken</code> as the starting point for your list of returned addresses.</p>
+-- @param MaxResults [ListLimit] <p>The number of <code>ADDRESS</code> objects to return.</p>
 function M.DescribeAddressesRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAddressesRequest")
 	local t = { 
@@ -1163,7 +1163,7 @@ end
 
 --- Create a structure of type GetJobUnlockCodeRequest
 --  
--- @param JobId [JobId] &lt;p&gt;The ID for the job that you want to get the &lt;code&gt;UnlockCode&lt;/code&gt; value for, for example &lt;code&gt;JID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
+-- @param JobId [JobId] <p>The ID for the job that you want to get the <code>UnlockCode</code> value for, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
 -- Required parameter: JobId
 function M.GetJobUnlockCodeRequest(JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetJobUnlockCodeRequest")
@@ -1201,16 +1201,16 @@ end
 
 --- Create a structure of type CreateClusterRequest
 --  
--- @param Description [String] &lt;p&gt;An optional description of this specific cluster, for example &lt;code&gt;Environmental Data Cluster-01&lt;/code&gt;.&lt;/p&gt;
--- @param AddressId [AddressId] &lt;p&gt;The ID for the address that you want the cluster shipped to.&amp;gt;&lt;/p&gt;
--- @param KmsKeyARN [KmsKeyARN] &lt;p&gt;The &lt;code&gt;KmsKeyARN&lt;/code&gt; value that you want to associate with this cluster. &lt;code&gt;KmsKeyARN&lt;/code&gt; values are created by using the &lt;a href=&quot;http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html&quot;&gt;CreateKey&lt;/a&gt; API action in AWS Key Management Service (AWS KMS). &lt;/p&gt;
--- @param Notification [Notification] &lt;p&gt;The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The &lt;code&gt;RoleARN&lt;/code&gt; that you want to associate with this cluster. &lt;code&gt;RoleArn&lt;/code&gt; values are created by using the &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html&quot;&gt;CreateRole&lt;/a&gt; API action in AWS Identity and Access Management (IAM).&lt;/p&gt;
--- @param ForwardingAddressId [AddressId] &lt;p&gt;The forwarding address ID for a cluster. This field is not supported in most regions.&lt;/p&gt;
--- @param ShippingOption [ShippingOption] &lt;p&gt;The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In India, Snowball Edges are delivered in one to seven days.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In the US, you have access to one-day shipping and two-day shipping.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param JobType [JobType] &lt;p&gt;The type of job for this cluster. Currently, the only job type supported for clusters is &lt;code&gt;LOCAL_USE&lt;/code&gt;.&lt;/p&gt;
--- @param SnowballType [SnowballType] &lt;p&gt;The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is &lt;code&gt;EDGE&lt;/code&gt;.&lt;/p&gt;
--- @param Resources [JobResource] &lt;p&gt;The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language. &lt;/p&gt;
+-- @param Description [String] <p>An optional description of this specific cluster, for example <code>Environmental Data Cluster-01</code>.</p>
+-- @param AddressId [AddressId] <p>The ID for the address that you want the cluster shipped to.&gt;</p>
+-- @param KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> value that you want to associate with this cluster. <code>KmsKeyARN</code> values are created by using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS Key Management Service (AWS KMS). </p>
+-- @param Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.</p>
+-- @param RoleARN [RoleARN] <p>The <code>RoleARN</code> that you want to associate with this cluster. <code>RoleArn</code> values are created by using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
+-- @param ForwardingAddressId [AddressId] <p>The forwarding address ID for a cluster. This field is not supported in most regions.</p>
+-- @param ShippingOption [ShippingOption] <p>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowball Edges are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
+-- @param JobType [JobType] <p>The type of job for this cluster. Currently, the only job type supported for clusters is <code>LOCAL_USE</code>.</p>
+-- @param SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
+-- @param Resources [JobResource] <p>The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language. </p>
 -- Required parameter: JobType
 -- Required parameter: Resources
 -- Required parameter: AddressId
@@ -1252,14 +1252,14 @@ function M.AssertJobListEntry(struct)
 end
 
 --- Create a structure of type JobListEntry
--- &lt;p&gt;Each &lt;code&gt;JobListEntry&lt;/code&gt; object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of an export job.&lt;/p&gt;
--- @param IsMaster [Boolean] &lt;p&gt;A value that indicates that this job is a master job. A master job represents a successful request to create an export job. Master jobs aren't associated with any Snowballs. Instead, each master job will have at least one job part, and each job part is associated with a Snowball. It might take some time before the job parts associated with a particular master job are listed, because they are created after the master job is created.&lt;/p&gt;
--- @param JobState [JobState] &lt;p&gt;The current state of this job.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The optional description of this specific job, for example &lt;code&gt;Important Photos 2016-08-11&lt;/code&gt;.&lt;/p&gt;
--- @param JobId [String] &lt;p&gt;The automatically generated ID for a job, for example &lt;code&gt;JID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
--- @param SnowballType [SnowballType] &lt;p&gt;The type of appliance used with this job.&lt;/p&gt;
--- @param CreationDate [Timestamp] &lt;p&gt;The creation date for this job.&lt;/p&gt;
--- @param JobType [JobType] &lt;p&gt;The type of job.&lt;/p&gt;
+-- <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of an export job.</p>
+-- @param IsMaster [Boolean] <p>A value that indicates that this job is a master job. A master job represents a successful request to create an export job. Master jobs aren't associated with any Snowballs. Instead, each master job will have at least one job part, and each job part is associated with a Snowball. It might take some time before the job parts associated with a particular master job are listed, because they are created after the master job is created.</p>
+-- @param JobState [JobState] <p>The current state of this job.</p>
+-- @param Description [String] <p>The optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.</p>
+-- @param JobId [String] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- @param SnowballType [SnowballType] <p>The type of appliance used with this job.</p>
+-- @param CreationDate [Timestamp] <p>The creation date for this job.</p>
+-- @param JobType [JobType] <p>The type of job.</p>
 function M.JobListEntry(IsMaster, JobState, Description, JobId, SnowballType, CreationDate, JobType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobListEntry")
 	local t = { 
@@ -1290,11 +1290,11 @@ function M.AssertDataTransfer(struct)
 end
 
 --- Create a structure of type DataTransfer
--- &lt;p&gt;Defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a &lt;code&gt;JobState&lt;/code&gt; value of &lt;code&gt;InProgress&lt;/code&gt;, for both import and export jobs.&lt;/p&gt;
--- @param ObjectsTransferred [Long] &lt;p&gt;The number of objects transferred between a Snowball and Amazon S3.&lt;/p&gt;
--- @param TotalBytes [Long] &lt;p&gt;The total bytes of data for a transfer between a Snowball and Amazon S3. This value is set to 0 (zero) until all the keys that will be transferred have been listed.&lt;/p&gt;
--- @param BytesTransferred [Long] &lt;p&gt;The number of bytes transferred between a Snowball and Amazon S3.&lt;/p&gt;
--- @param TotalObjects [Long] &lt;p&gt;The total number of objects for a transfer between a Snowball and Amazon S3. This value is set to 0 (zero) until all the keys that will be transferred have been listed.&lt;/p&gt;
+-- <p>Defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.</p>
+-- @param ObjectsTransferred [Long] <p>The number of objects transferred between a Snowball and Amazon S3.</p>
+-- @param TotalBytes [Long] <p>The total bytes of data for a transfer between a Snowball and Amazon S3. This value is set to 0 (zero) until all the keys that will be transferred have been listed.</p>
+-- @param BytesTransferred [Long] <p>The number of bytes transferred between a Snowball and Amazon S3.</p>
+-- @param TotalObjects [Long] <p>The total number of objects for a transfer between a Snowball and Amazon S3. This value is set to 0 (zero) until all the keys that will be transferred have been listed.</p>
 function M.DataTransfer(ObjectsTransferred, TotalBytes, BytesTransferred, TotalObjects, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DataTransfer")
 	local t = { 
@@ -1319,8 +1319,8 @@ function M.AssertInvalidAddressException(struct)
 end
 
 --- Create a structure of type InvalidAddressException
--- &lt;p&gt;The address provided was invalid. Check the address with your region's carrier, and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The address provided was invalid. Check the address with your region's carrier, and try again.&lt;/p&gt;
+-- <p>The address provided was invalid. Check the address with your region's carrier, and try again.</p>
+-- @param Message [String] <p>The address provided was invalid. Check the address with your region's carrier, and try again.</p>
 function M.InvalidAddressException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAddressException")
 	local t = { 
@@ -1362,8 +1362,8 @@ function M.AssertInvalidJobStateException(struct)
 end
 
 --- Create a structure of type InvalidJobStateException
--- &lt;p&gt;The action can't be performed because the job's current state doesn't allow that action to be performed.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The action can't be performed because the job's current state doesn't allow that action to be performed.&lt;/p&gt;
+-- <p>The action can't be performed because the job's current state doesn't allow that action to be performed.</p>
+-- @param Message [String] <p>The action can't be performed because the job's current state doesn't allow that action to be performed.</p>
 function M.InvalidJobStateException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidJobStateException")
 	local t = { 
@@ -1407,7 +1407,7 @@ end
 
 --- Create a structure of type DescribeClusterRequest
 --  
--- @param ClusterId [ClusterId] &lt;p&gt;The automatically generated ID for a cluster.&lt;/p&gt;
+-- @param ClusterId [ClusterId] <p>The automatically generated ID for a cluster.</p>
 -- Required parameter: ClusterId
 function M.DescribeClusterRequest(ClusterId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterRequest")
@@ -1431,9 +1431,9 @@ function M.AssertJobResource(struct)
 end
 
 --- Create a structure of type JobResource
--- &lt;p&gt;Contains an array of &lt;code&gt;S3Resource&lt;/code&gt; objects. Each &lt;code&gt;S3Resource&lt;/code&gt; object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.&lt;/p&gt;
--- @param LambdaResources [LambdaResourceList] &lt;p&gt;The Python-language Lambda functions for this job.&lt;/p&gt;
--- @param S3Resources [S3ResourceList] &lt;p&gt;An array of &lt;code&gt;S3Resource&lt;/code&gt; objects.&lt;/p&gt;
+-- <p>Contains an array of <code>S3Resource</code> objects. Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.</p>
+-- @param LambdaResources [LambdaResourceList] <p>The Python-language Lambda functions for this job.</p>
+-- @param S3Resources [S3ResourceList] <p>An array of <code>S3Resource</code> objects.</p>
 function M.JobResource(LambdaResources, S3Resources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobResource")
 	local t = { 
@@ -1458,8 +1458,8 @@ end
 
 --- Create a structure of type ListClustersRequest
 --  
--- @param NextToken [String] &lt;p&gt;HTTP requests are stateless. To identify what object comes &quot;next&quot; in the list of &lt;code&gt;ClusterListEntry&lt;/code&gt; objects, you have the option of specifying &lt;code&gt;NextToken&lt;/code&gt; as the starting point for your returned list.&lt;/p&gt;
--- @param MaxResults [ListLimit] &lt;p&gt;The number of &lt;code&gt;ClusterListEntry&lt;/code&gt; objects to return.&lt;/p&gt;
+-- @param NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>ClusterListEntry</code> objects, you have the option of specifying <code>NextToken</code> as the starting point for your returned list.</p>
+-- @param MaxResults [ListLimit] <p>The number of <code>ClusterListEntry</code> objects to return.</p>
 function M.ListClustersRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListClustersRequest")
 	local t = { 
@@ -1491,14 +1491,14 @@ end
 
 --- Create a structure of type UpdateClusterRequest
 --  
--- @param Description [String] &lt;p&gt;The updated description of this cluster.&lt;/p&gt;
--- @param AddressId [AddressId] &lt;p&gt;The ID of the updated &lt;a&gt;Address&lt;/a&gt; object.&lt;/p&gt;
--- @param Notification [Notification] &lt;p&gt;The new or updated &lt;a&gt;Notification&lt;/a&gt; object.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html&quot;&gt;CreateRole&lt;/a&gt; API action in AWS Identity and Access Management (IAM).&lt;/p&gt;
--- @param ClusterId [ClusterId] &lt;p&gt;The cluster ID of the cluster that you want to update, for example &lt;code&gt;CID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
--- @param ForwardingAddressId [AddressId] &lt;p&gt;The updated ID for the forwarding address for a cluster. This field is not supported in most regions.&lt;/p&gt;
--- @param ShippingOption [ShippingOption] &lt;p&gt;The updated shipping option value of this cluster's &lt;a&gt;ShippingDetails&lt;/a&gt; object.&lt;/p&gt;
--- @param Resources [JobResource] &lt;p&gt;The updated arrays of &lt;a&gt;JobResource&lt;/a&gt; objects that can include updated &lt;a&gt;S3Resource&lt;/a&gt; objects or &lt;a&gt;LambdaResource&lt;/a&gt; objects.&lt;/p&gt;
+-- @param Description [String] <p>The updated description of this cluster.</p>
+-- @param AddressId [AddressId] <p>The ID of the updated <a>Address</a> object.</p>
+-- @param Notification [Notification] <p>The new or updated <a>Notification</a> object.</p>
+-- @param RoleARN [RoleARN] <p>The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
+-- @param ClusterId [ClusterId] <p>The cluster ID of the cluster that you want to update, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- @param ForwardingAddressId [AddressId] <p>The updated ID for the forwarding address for a cluster. This field is not supported in most regions.</p>
+-- @param ShippingOption [ShippingOption] <p>The updated shipping option value of this cluster's <a>ShippingDetails</a> object.</p>
+-- @param Resources [JobResource] <p>The updated arrays of <a>JobResource</a> objects that can include updated <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
 -- Required parameter: ClusterId
 function M.UpdateClusterRequest(Description, AddressId, Notification, RoleARN, ClusterId, ForwardingAddressId, ShippingOption, Resources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateClusterRequest")
@@ -1530,8 +1530,8 @@ end
 
 --- Create a structure of type ListClustersResult
 --  
--- @param ClusterListEntries [ClusterListEntryList] &lt;p&gt;Each &lt;code&gt;ClusterListEntry&lt;/code&gt; object contains a cluster's state, a cluster's ID, and other important status information.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;HTTP requests are stateless. If you use the automatically generated &lt;code&gt;NextToken&lt;/code&gt; value in your next &lt;code&gt;ClusterListEntry&lt;/code&gt; call, your list of returned clusters will start from this point in the array.&lt;/p&gt;
+-- @param ClusterListEntries [ClusterListEntryList] <p>Each <code>ClusterListEntry</code> object contains a cluster's state, a cluster's ID, and other important status information.</p>
+-- @param NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>ClusterListEntry</code> call, your list of returned clusters will start from this point in the array.</p>
 function M.ListClustersResult(ClusterListEntries, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListClustersResult")
 	local t = { 
@@ -1555,9 +1555,9 @@ function M.AssertS3Resource(struct)
 end
 
 --- Create a structure of type S3Resource
--- &lt;p&gt;Each &lt;code&gt;S3Resource&lt;/code&gt; object represents an Amazon S3 bucket that your transferred data will be exported from or imported into. For export jobs, this object can have an optional &lt;code&gt;KeyRange&lt;/code&gt; value. The length of the range is defined at job creation, and has either an inclusive &lt;code&gt;BeginMarker&lt;/code&gt;, an inclusive &lt;code&gt;EndMarker&lt;/code&gt;, or both. Ranges are UTF-8 binary sorted.&lt;/p&gt;
--- @param BucketArn [ResourceARN] &lt;p&gt;The Amazon Resource Name (ARN) of an Amazon S3 bucket.&lt;/p&gt;
--- @param KeyRange [KeyRange] &lt;p&gt;For export jobs, you can provide an optional &lt;code&gt;KeyRange&lt;/code&gt; within a specific Amazon S3 bucket. The length of the range is defined at job creation, and has either an inclusive &lt;code&gt;BeginMarker&lt;/code&gt;, an inclusive &lt;code&gt;EndMarker&lt;/code&gt;, or both. Ranges are UTF-8 binary sorted.&lt;/p&gt;
+-- <p>Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into. For export jobs, this object can have an optional <code>KeyRange</code> value. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
+-- @param BucketArn [ResourceARN] <p>The Amazon Resource Name (ARN) of an Amazon S3 bucket.</p>
+-- @param KeyRange [KeyRange] <p>For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
 function M.S3Resource(BucketArn, KeyRange, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3Resource")
 	local t = { 
@@ -1584,9 +1584,9 @@ end
 
 --- Create a structure of type ListClusterJobsRequest
 --  
--- @param NextToken [String] &lt;p&gt;HTTP requests are stateless. To identify what object comes &quot;next&quot; in the list of &lt;code&gt;JobListEntry&lt;/code&gt; objects, you have the option of specifying &lt;code&gt;NextToken&lt;/code&gt; as the starting point for your returned list.&lt;/p&gt;
--- @param ClusterId [ClusterId] &lt;p&gt;The 39-character ID for the cluster that you want to list, for example &lt;code&gt;CID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
--- @param MaxResults [ListLimit] &lt;p&gt;The number of &lt;code&gt;JobListEntry&lt;/code&gt; objects to return.&lt;/p&gt;
+-- @param NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>JobListEntry</code> objects, you have the option of specifying <code>NextToken</code> as the starting point for your returned list.</p>
+-- @param ClusterId [ClusterId] <p>The 39-character ID for the cluster that you want to list, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- @param MaxResults [ListLimit] <p>The number of <code>JobListEntry</code> objects to return.</p>
 -- Required parameter: ClusterId
 function M.ListClusterJobsRequest(NextToken, ClusterId, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListClusterJobsRequest")
@@ -1612,7 +1612,7 @@ end
 
 --- Create a structure of type DescribeClusterResult
 --  
--- @param ClusterMetadata [ClusterMetadata] &lt;p&gt;Information about a specific cluster, including shipping information, cluster status, and other important metadata.&lt;/p&gt;
+-- @param ClusterMetadata [ClusterMetadata] <p>Information about a specific cluster, including shipping information, cluster status, and other important metadata.</p>
 function M.DescribeClusterResult(ClusterMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterResult")
 	local t = { 
@@ -1636,7 +1636,7 @@ end
 
 --- Create a structure of type CancelJobRequest
 --  
--- @param JobId [JobId] &lt;p&gt;The 39-character job ID for the job that you want to cancel, for example &lt;code&gt;JID123e4567-e89b-12d3-a456-426655440000&lt;/code&gt;.&lt;/p&gt;
+-- @param JobId [JobId] <p>The 39-character job ID for the job that you want to cancel, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
 -- Required parameter: JobId
 function M.CancelJobRequest(JobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelJobRequest")
@@ -1661,10 +1661,10 @@ function M.AssertShippingDetails(struct)
 end
 
 --- Create a structure of type ShippingDetails
--- &lt;p&gt;A job's shipping information, including inbound and outbound tracking numbers and shipping speed options.&lt;/p&gt;
--- @param OutboundShipment [Shipment] &lt;p&gt;The &lt;code&gt;Status&lt;/code&gt; and &lt;code&gt;TrackingNumber&lt;/code&gt; values for a Snowball being returned to AWS for a particular job.&lt;/p&gt;
--- @param ShippingOption [ShippingOption] &lt;p&gt;The shipping speed for a particular job. This speed doesn't dictate how soon you'll get the Snowball from the job's creation date. This speed represents how quickly it moves to its destination while in transit. Regional shipping speeds are as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In India, Snowballs are delivered in one to seven days.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In the United States of America (US), you have access to one-day shipping and two-day shipping.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param InboundShipment [Shipment] &lt;p&gt;The &lt;code&gt;Status&lt;/code&gt; and &lt;code&gt;TrackingNumber&lt;/code&gt; values for a Snowball being delivered to the address that you specified for a particular job.&lt;/p&gt;
+-- <p>A job's shipping information, including inbound and outbound tracking numbers and shipping speed options.</p>
+-- @param OutboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being returned to AWS for a particular job.</p>
+-- @param ShippingOption [ShippingOption] <p>The shipping speed for a particular job. This speed doesn't dictate how soon you'll get the Snowball from the job's creation date. This speed represents how quickly it moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowballs are delivered in one to seven days.</p> </li> <li> <p>In the United States of America (US), you have access to one-day shipping and two-day shipping.</p> </li> </ul>
+-- @param InboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being delivered to the address that you specified for a particular job.</p>
 function M.ShippingDetails(OutboundShipment, ShippingOption, InboundShipment, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ShippingDetails")
 	local t = { 

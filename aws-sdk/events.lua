@@ -29,7 +29,7 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;You tried to create more rules or add more targets to a rule than is allowed.&lt;/p&gt;
+-- <p>You tried to create more rules or add more targets to a rule than is allowed.</p>
 function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -52,8 +52,8 @@ end
 
 --- Create a structure of type ListTargetsByRuleResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;Indicates whether there are additional results to retrieve. If there are no more results, the value is null.&lt;/p&gt;
--- @param Targets [TargetList] &lt;p&gt;The targets assigned to the rule.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>Indicates whether there are additional results to retrieve. If there are no more results, the value is null.</p>
+-- @param Targets [TargetList] <p>The targets assigned to the rule.</p>
 function M.ListTargetsByRuleResponse(NextToken, Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTargetsByRuleResponse")
 	local t = { 
@@ -80,12 +80,12 @@ function M.AssertPutEventsRequestEntry(struct)
 end
 
 --- Create a structure of type PutEventsRequestEntry
--- &lt;p&gt;Represents an event to be submitted.&lt;/p&gt;
--- @param Source [String] &lt;p&gt;The source of the event.&lt;/p&gt;
--- @param DetailType [String] &lt;p&gt;Free-form string used to decide what fields to expect in the event detail.&lt;/p&gt;
--- @param Detail [String] &lt;p&gt;In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints are imposed on its contents.&lt;/p&gt;
--- @param Resources [EventResourceList] &lt;p&gt;AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number, including zero, may be present.&lt;/p&gt;
--- @param Time [EventTime] &lt;p&gt;The timestamp of the event, per &lt;a href=&quot;https://www.rfc-editor.org/rfc/rfc3339.txt&quot;&gt;RFC3339&lt;/a&gt;. If no timestamp is provided, the timestamp of the &lt;a&gt;PutEvents&lt;/a&gt; call is used.&lt;/p&gt;
+-- <p>Represents an event to be submitted.</p>
+-- @param Source [String] <p>The source of the event.</p>
+-- @param DetailType [String] <p>Free-form string used to decide what fields to expect in the event detail.</p>
+-- @param Detail [String] <p>In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints are imposed on its contents.</p>
+-- @param Resources [EventResourceList] <p>AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number, including zero, may be present.</p>
+-- @param Time [EventTime] <p>The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no timestamp is provided, the timestamp of the <a>PutEvents</a> call is used.</p>
 function M.PutEventsRequestEntry(Source, DetailType, Detail, Resources, Time, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutEventsRequestEntry")
 	local t = { 
@@ -110,7 +110,7 @@ function M.AssertConcurrentModificationException(struct)
 end
 
 --- Create a structure of type ConcurrentModificationException
--- &lt;p&gt;There is concurrent modification on a rule or target.&lt;/p&gt;
+-- <p>There is concurrent modification on a rule or target.</p>
 function M.ConcurrentModificationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
@@ -133,7 +133,7 @@ end
 
 --- Create a structure of type DeleteRuleRequest
 --  
--- @param Name [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- @param Name [RuleName] <p>The name of the rule.</p>
 -- Required parameter: Name
 function M.DeleteRuleRequest(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRuleRequest")
@@ -158,9 +158,9 @@ function M.AssertInputTransformer(struct)
 end
 
 --- Create a structure of type InputTransformer
--- &lt;p&gt;Contains the parameters needed for you to provide custom input to a target based on one or more pieces of data extracted from the event.&lt;/p&gt;
--- @param InputTemplate [TransformerInput] &lt;p&gt;Input template where you can use the values of the keys from &lt;code&gt;InputPathsMap&lt;/code&gt; to customize the data sent to the target.&lt;/p&gt;
--- @param InputPathsMap [TransformerPaths] &lt;p&gt;Map of JSON paths to be extracted from the event. These are key-value pairs, where each value is a JSON path. You must use JSON dot notation, not bracket notation.&lt;/p&gt;
+-- <p>Contains the parameters needed for you to provide custom input to a target based on one or more pieces of data extracted from the event.</p>
+-- @param InputTemplate [TransformerInput] <p>Input template where you can use the values of the keys from <code>InputPathsMap</code> to customize the data sent to the target.</p>
+-- @param InputPathsMap [TransformerPaths] <p>Map of JSON paths to be extracted from the event. These are key-value pairs, where each value is a JSON path. You must use JSON dot notation, not bracket notation.</p>
 -- Required parameter: InputTemplate
 function M.InputTransformer(InputTemplate, InputPathsMap, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InputTransformer")
@@ -187,9 +187,9 @@ function M.AssertRunCommandTarget(struct)
 end
 
 --- Create a structure of type RunCommandTarget
--- &lt;p&gt;Information about the EC2 instances that are to be sent the command, specified as key-value pairs. Each &lt;code&gt;RunCommandTarget&lt;/code&gt; block can include only one key, but this key may specify multiple values.&lt;/p&gt;
--- @param Values [RunCommandTargetValues] &lt;p&gt;If &lt;code&gt;Key&lt;/code&gt; is &lt;code&gt;tag:&lt;/code&gt; &lt;i&gt;tag-key&lt;/i&gt;, &lt;code&gt;Values&lt;/code&gt; is a list of tag values. If &lt;code&gt;Key&lt;/code&gt; is &lt;code&gt;InstanceIds&lt;/code&gt;, &lt;code&gt;Values&lt;/code&gt; is a list of Amazon EC2 instance IDs.&lt;/p&gt;
--- @param Key [RunCommandTargetKey] &lt;p&gt;Can be either &lt;code&gt;tag:&lt;/code&gt; &lt;i&gt;tag-key&lt;/i&gt; or &lt;code&gt;InstanceIds&lt;/code&gt;.&lt;/p&gt;
+-- <p>Information about the EC2 instances that are to be sent the command, specified as key-value pairs. Each <code>RunCommandTarget</code> block can include only one key, but this key may specify multiple values.</p>
+-- @param Values [RunCommandTargetValues] <p>If <code>Key</code> is <code>tag:</code> <i>tag-key</i>, <code>Values</code> is a list of tag values. If <code>Key</code> is <code>InstanceIds</code>, <code>Values</code> is a list of Amazon EC2 instance IDs.</p>
+-- @param Key [RunCommandTargetKey] <p>Can be either <code>tag:</code> <i>tag-key</i> or <code>InstanceIds</code>.</p>
 -- Required parameter: Key
 -- Required parameter: Values
 function M.RunCommandTarget(Values, Key, ...)
@@ -215,8 +215,8 @@ function M.AssertKinesisParameters(struct)
 end
 
 --- Create a structure of type KinesisParameters
--- &lt;p&gt;This object enables you to specify a JSON path to extract from the event and use as the partition key for the Amazon Kinesis stream, so that you can control the shard to which the event goes. If you do not include this parameter, the default is to use the &lt;code&gt;eventId&lt;/code&gt; as the partition key.&lt;/p&gt;
--- @param PartitionKeyPath [TargetPartitionKeyPath] &lt;p&gt;The JSON path to be extracted from the event and used as the partition key. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html#partition-key&quot;&gt;Amazon Kinesis Streams Key Concepts&lt;/a&gt; in the &lt;i&gt;Amazon Kinesis Streams Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>This object enables you to specify a JSON path to extract from the event and use as the partition key for the Amazon Kinesis stream, so that you can control the shard to which the event goes. If you do not include this parameter, the default is to use the <code>eventId</code> as the partition key.</p>
+-- @param PartitionKeyPath [TargetPartitionKeyPath] <p>The JSON path to be extracted from the event and used as the partition key. For more information, see <a href="http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html#partition-key">Amazon Kinesis Streams Key Concepts</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
 -- Required parameter: PartitionKeyPath
 function M.KinesisParameters(PartitionKeyPath, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KinesisParameters")
@@ -241,8 +241,8 @@ end
 
 --- Create a structure of type ListRulesResponse
 --  
--- @param Rules [RuleResponseList] &lt;p&gt;The rules that match the specified criteria.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Indicates whether there are additional results to retrieve. If there are no more results, the value is null.&lt;/p&gt;
+-- @param Rules [RuleResponseList] <p>The rules that match the specified criteria.</p>
+-- @param NextToken [NextToken] <p>Indicates whether there are additional results to retrieve. If there are no more results, the value is null.</p>
 function M.ListRulesResponse(Rules, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesResponse")
 	local t = { 
@@ -267,7 +267,7 @@ end
 
 --- Create a structure of type DisableRuleRequest
 --  
--- @param Name [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- @param Name [RuleName] <p>The name of the rule.</p>
 -- Required parameter: Name
 function M.DisableRuleRequest(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableRuleRequest")
@@ -292,8 +292,8 @@ end
 
 --- Create a structure of type PutTargetsResponse
 --  
--- @param FailedEntries [PutTargetsResultEntryList] &lt;p&gt;The failed target entries.&lt;/p&gt;
--- @param FailedEntryCount [Integer] &lt;p&gt;The number of failed entries.&lt;/p&gt;
+-- @param FailedEntries [PutTargetsResultEntryList] <p>The failed target entries.</p>
+-- @param FailedEntryCount [Integer] <p>The number of failed entries.</p>
 function M.PutTargetsResponse(FailedEntries, FailedEntryCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutTargetsResponse")
 	local t = { 
@@ -320,9 +320,9 @@ end
 
 --- Create a structure of type ListRuleNamesByTargetRequest
 --  
--- @param TargetArn [TargetArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target resource.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token returned by a previous call to retrieve the next set of results.&lt;/p&gt;
--- @param Limit [LimitMax100] &lt;p&gt;The maximum number of results to return.&lt;/p&gt;
+-- @param TargetArn [TargetArn] <p>The Amazon Resource Name (ARN) of the target resource.</p>
+-- @param NextToken [NextToken] <p>The token returned by a previous call to retrieve the next set of results.</p>
+-- @param Limit [LimitMax100] <p>The maximum number of results to return.</p>
 -- Required parameter: TargetArn
 function M.ListRuleNamesByTargetRequest(TargetArn, NextToken, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRuleNamesByTargetRequest")
@@ -357,16 +357,16 @@ function M.AssertTarget(struct)
 end
 
 --- Create a structure of type Target
--- &lt;p&gt;Targets are the resources to be invoked when a rule is triggered. Target types include EC2 instances, AWS Lambda functions, Amazon Kinesis streams, Amazon ECS tasks, AWS Step Functions state machines, Run Command, and built-in targets.&lt;/p&gt;
--- @param RunCommandParameters [RunCommandParameters] &lt;p&gt;Parameters used when you are using the rule to invoke Amazon EC2 Run Command.&lt;/p&gt;
--- @param RoleArn [RoleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. If one rule triggers multiple targets, you can use a different IAM role for each target.&lt;/p&gt;
--- @param InputTransformer [InputTransformer] &lt;p&gt;Settings to enable you to provide custom input to a target based on certain event data. You can extract one or more key-value pairs from the event and then use that data to send customized input to the target.&lt;/p&gt;
--- @param EcsParameters [EcsParameters] &lt;p&gt;Contains the Amazon ECS task definition and task count to be used, if the event target is an Amazon ECS task. For more information about Amazon ECS tasks, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html&quot;&gt;Task Definitions &lt;/a&gt; in the &lt;i&gt;Amazon EC2 Container Service Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param KinesisParameters [KinesisParameters] &lt;p&gt;The custom parameter you can use to control shard assignment, when the target is an Amazon Kinesis stream. If you do not include this parameter, the default is to use the &lt;code&gt;eventId&lt;/code&gt; as the partition key.&lt;/p&gt;
--- @param InputPath [TargetInputPath] &lt;p&gt;The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. You must use JSON dot notation, not bracket notation. For more information about JSON paths, see &lt;a href=&quot;http://goessner.net/articles/JsonPath/&quot;&gt;JSONPath&lt;/a&gt;.&lt;/p&gt;
--- @param Input [TargetInput] &lt;p&gt;Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the target. You must use JSON dot notation, not bracket notation. For more information, see &lt;a href=&quot;http://www.rfc-editor.org/rfc/rfc7159.txt&quot;&gt;The JavaScript Object Notation (JSON) Data Interchange Format&lt;/a&gt;.&lt;/p&gt;
--- @param Id [TargetId] &lt;p&gt;The ID of the target.&lt;/p&gt;
--- @param Arn [TargetArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target.&lt;/p&gt;
+-- <p>Targets are the resources to be invoked when a rule is triggered. Target types include EC2 instances, AWS Lambda functions, Amazon Kinesis streams, Amazon ECS tasks, AWS Step Functions state machines, Run Command, and built-in targets.</p>
+-- @param RunCommandParameters [RunCommandParameters] <p>Parameters used when you are using the rule to invoke Amazon EC2 Run Command.</p>
+-- @param RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. If one rule triggers multiple targets, you can use a different IAM role for each target.</p>
+-- @param InputTransformer [InputTransformer] <p>Settings to enable you to provide custom input to a target based on certain event data. You can extract one or more key-value pairs from the event and then use that data to send customized input to the target.</p>
+-- @param EcsParameters [EcsParameters] <p>Contains the Amazon ECS task definition and task count to be used, if the event target is an Amazon ECS task. For more information about Amazon ECS tasks, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Task Definitions </a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
+-- @param KinesisParameters [KinesisParameters] <p>The custom parameter you can use to control shard assignment, when the target is an Amazon Kinesis stream. If you do not include this parameter, the default is to use the <code>eventId</code> as the partition key.</p>
+-- @param InputPath [TargetInputPath] <p>The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. You must use JSON dot notation, not bracket notation. For more information about JSON paths, see <a href="http://goessner.net/articles/JsonPath/">JSONPath</a>.</p>
+-- @param Input [TargetInput] <p>Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the target. You must use JSON dot notation, not bracket notation. For more information, see <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">The JavaScript Object Notation (JSON) Data Interchange Format</a>.</p>
+-- @param Id [TargetId] <p>The ID of the target.</p>
+-- @param Arn [TargetArn] <p>The Amazon Resource Name (ARN) of the target.</p>
 -- Required parameter: Id
 -- Required parameter: Arn
 function M.Target(RunCommandParameters, RoleArn, InputTransformer, EcsParameters, KinesisParameters, InputPath, Input, Id, Arn, ...)
@@ -405,13 +405,13 @@ end
 
 --- Create a structure of type DescribeRuleResponse
 --  
--- @param ScheduleExpression [ScheduleExpression] &lt;p&gt;The scheduling expression. For example, &quot;cron(0 20 * * ? *)&quot;, &quot;rate(5 minutes)&quot;.&lt;/p&gt;
--- @param Name [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
--- @param EventPattern [EventPattern] &lt;p&gt;The event pattern. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html&quot;&gt;Events and Event Patterns&lt;/a&gt; in the &lt;i&gt;Amazon CloudWatch Events User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param State [RuleState] &lt;p&gt;Specifies whether the rule is enabled or disabled.&lt;/p&gt;
--- @param RoleArn [RoleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role associated with the rule.&lt;/p&gt;
--- @param Arn [RuleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the rule.&lt;/p&gt;
--- @param Description [RuleDescription] &lt;p&gt;The description of the rule.&lt;/p&gt;
+-- @param ScheduleExpression [ScheduleExpression] <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
+-- @param Name [RuleName] <p>The name of the rule.</p>
+-- @param EventPattern [EventPattern] <p>The event pattern. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
+-- @param State [RuleState] <p>Specifies whether the rule is enabled or disabled.</p>
+-- @param RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role associated with the rule.</p>
+-- @param Arn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- @param Description [RuleDescription] <p>The description of the rule.</p>
 function M.DescribeRuleResponse(ScheduleExpression, Name, EventPattern, State, RoleArn, Arn, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRuleResponse")
 	local t = { 
@@ -440,8 +440,8 @@ function M.AssertRunCommandParameters(struct)
 end
 
 --- Create a structure of type RunCommandParameters
--- &lt;p&gt;This parameter contains the criteria (either InstanceIds or a tag) used to specify which EC2 instances are to be sent the command. &lt;/p&gt;
--- @param RunCommandTargets [RunCommandTargets] &lt;p&gt;Currently, we support including only one RunCommandTarget block, which specifies either an array of InstanceIds or a tag.&lt;/p&gt;
+-- <p>This parameter contains the criteria (either InstanceIds or a tag) used to specify which EC2 instances are to be sent the command. </p>
+-- @param RunCommandTargets [RunCommandTargets] <p>Currently, we support including only one RunCommandTarget block, which specifies either an array of InstanceIds or a tag.</p>
 -- Required parameter: RunCommandTargets
 function M.RunCommandParameters(RunCommandTargets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RunCommandParameters")
@@ -466,10 +466,10 @@ function M.AssertPutEventsResultEntry(struct)
 end
 
 --- Create a structure of type PutEventsResultEntry
--- &lt;p&gt;Represents an event that failed to be submitted.&lt;/p&gt;
--- @param EventId [EventId] &lt;p&gt;The ID of the event.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;The error code that indicates why the event submission failed.&lt;/p&gt;
--- @param ErrorMessage [ErrorMessage] &lt;p&gt;The error message that explains why the event submission failed.&lt;/p&gt;
+-- <p>Represents an event that failed to be submitted.</p>
+-- @param EventId [EventId] <p>The ID of the event.</p>
+-- @param ErrorCode [ErrorCode] <p>The error code that indicates why the event submission failed.</p>
+-- @param ErrorMessage [ErrorMessage] <p>The error message that explains why the event submission failed.</p>
 function M.PutEventsResultEntry(EventId, ErrorCode, ErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutEventsResultEntry")
 	local t = { 
@@ -495,8 +495,8 @@ end
 
 --- Create a structure of type RemoveTargetsResponse
 --  
--- @param FailedEntries [RemoveTargetsResultEntryList] &lt;p&gt;The failed target entries.&lt;/p&gt;
--- @param FailedEntryCount [Integer] &lt;p&gt;The number of failed entries.&lt;/p&gt;
+-- @param FailedEntries [RemoveTargetsResultEntryList] <p>The failed target entries.</p>
+-- @param FailedEntryCount [Integer] <p>The number of failed entries.</p>
 function M.RemoveTargetsResponse(FailedEntries, FailedEntryCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTargetsResponse")
 	local t = { 
@@ -523,8 +523,8 @@ end
 
 --- Create a structure of type PutTargetsRequest
 --  
--- @param Targets [TargetList] &lt;p&gt;The targets to update or add to the rule.&lt;/p&gt;
--- @param Rule [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- @param Targets [TargetList] <p>The targets to update or add to the rule.</p>
+-- @param Rule [RuleName] <p>The name of the rule.</p>
 -- Required parameter: Rule
 -- Required parameter: Targets
 function M.PutTargetsRequest(Targets, Rule, ...)
@@ -551,10 +551,10 @@ function M.AssertRemoveTargetsResultEntry(struct)
 end
 
 --- Create a structure of type RemoveTargetsResultEntry
--- &lt;p&gt;Represents a target that failed to be removed from a rule.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;The error code that indicates why the target removal failed. If the value is &lt;code&gt;ConcurrentModificationException&lt;/code&gt;, too many requests were made at the same time.&lt;/p&gt;
--- @param ErrorMessage [ErrorMessage] &lt;p&gt;The error message that explains why the target removal failed.&lt;/p&gt;
--- @param TargetId [TargetId] &lt;p&gt;The ID of the target.&lt;/p&gt;
+-- <p>Represents a target that failed to be removed from a rule.</p>
+-- @param ErrorCode [ErrorCode] <p>The error code that indicates why the target removal failed. If the value is <code>ConcurrentModificationException</code>, too many requests were made at the same time.</p>
+-- @param ErrorMessage [ErrorMessage] <p>The error message that explains why the target removal failed.</p>
+-- @param TargetId [TargetId] <p>The ID of the target.</p>
 function M.RemoveTargetsResultEntry(ErrorCode, ErrorMessage, TargetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTargetsResultEntry")
 	local t = { 
@@ -580,10 +580,10 @@ function M.AssertPutTargetsResultEntry(struct)
 end
 
 --- Create a structure of type PutTargetsResultEntry
--- &lt;p&gt;Represents a target that failed to be added to a rule.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;The error code that indicates why the target addition failed. If the value is &lt;code&gt;ConcurrentModificationException&lt;/code&gt;, too many requests were made at the same time.&lt;/p&gt;
--- @param ErrorMessage [ErrorMessage] &lt;p&gt;The error message that explains why the target addition failed.&lt;/p&gt;
--- @param TargetId [TargetId] &lt;p&gt;The ID of the target.&lt;/p&gt;
+-- <p>Represents a target that failed to be added to a rule.</p>
+-- @param ErrorCode [ErrorCode] <p>The error code that indicates why the target addition failed. If the value is <code>ConcurrentModificationException</code>, too many requests were made at the same time.</p>
+-- @param ErrorMessage [ErrorMessage] <p>The error message that explains why the target addition failed.</p>
+-- @param TargetId [TargetId] <p>The ID of the target.</p>
 function M.PutTargetsResultEntry(ErrorCode, ErrorMessage, TargetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutTargetsResultEntry")
 	local t = { 
@@ -609,9 +609,9 @@ function M.AssertEcsParameters(struct)
 end
 
 --- Create a structure of type EcsParameters
--- &lt;p&gt;The custom parameters to be used when the target is an Amazon ECS cluster.&lt;/p&gt;
--- @param TaskDefinitionArn [Arn] &lt;p&gt;The ARN of the task definition to use if the event target is an Amazon ECS cluster. &lt;/p&gt;
--- @param TaskCount [LimitMin1] &lt;p&gt;The number of tasks to create based on the &lt;code&gt;TaskDefinition&lt;/code&gt;. The default is one.&lt;/p&gt;
+-- <p>The custom parameters to be used when the target is an Amazon ECS cluster.</p>
+-- @param TaskDefinitionArn [Arn] <p>The ARN of the task definition to use if the event target is an Amazon ECS cluster. </p>
+-- @param TaskCount [LimitMin1] <p>The number of tasks to create based on the <code>TaskDefinition</code>. The default is one.</p>
 -- Required parameter: TaskDefinitionArn
 function M.EcsParameters(TaskDefinitionArn, TaskCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EcsParameters")
@@ -639,8 +639,8 @@ end
 
 --- Create a structure of type RemoveTargetsRequest
 --  
--- @param Ids [TargetIdList] &lt;p&gt;The IDs of the targets to remove from the rule.&lt;/p&gt;
--- @param Rule [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- @param Ids [TargetIdList] <p>The IDs of the targets to remove from the rule.</p>
+-- @param Rule [RuleName] <p>The name of the rule.</p>
 -- Required parameter: Rule
 -- Required parameter: Ids
 function M.RemoveTargetsRequest(Ids, Rule, ...)
@@ -667,7 +667,7 @@ end
 
 --- Create a structure of type DescribeRuleRequest
 --  
--- @param Name [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- @param Name [RuleName] <p>The name of the rule.</p>
 -- Required parameter: Name
 function M.DescribeRuleRequest(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRuleRequest")
@@ -693,9 +693,9 @@ end
 
 --- Create a structure of type ListRulesRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token returned by a previous call to retrieve the next set of results.&lt;/p&gt;
--- @param Limit [LimitMax100] &lt;p&gt;The maximum number of results to return.&lt;/p&gt;
--- @param NamePrefix [RuleName] &lt;p&gt;The prefix matching the rule name.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token returned by a previous call to retrieve the next set of results.</p>
+-- @param Limit [LimitMax100] <p>The maximum number of results to return.</p>
+-- @param NamePrefix [RuleName] <p>The prefix matching the rule name.</p>
 function M.ListRulesRequest(NextToken, Limit, NamePrefix, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesRequest")
 	local t = { 
@@ -721,7 +721,7 @@ end
 
 --- Create a structure of type EnableRuleRequest
 --  
--- @param Name [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- @param Name [RuleName] <p>The name of the rule.</p>
 -- Required parameter: Name
 function M.EnableRuleRequest(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableRuleRequest")
@@ -746,8 +746,8 @@ end
 
 --- Create a structure of type ListRuleNamesByTargetResponse
 --  
--- @param NextToken [NextToken] &lt;p&gt;Indicates whether there are additional results to retrieve. If there are no more results, the value is null.&lt;/p&gt;
--- @param RuleNames [RuleNameList] &lt;p&gt;The names of the rules that can invoke the given target.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>Indicates whether there are additional results to retrieve. If there are no more results, the value is null.</p>
+-- @param RuleNames [RuleNameList] <p>The names of the rules that can invoke the given target.</p>
 function M.ListRuleNamesByTargetResponse(NextToken, RuleNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRuleNamesByTargetResponse")
 	local t = { 
@@ -769,7 +769,7 @@ function M.AssertInternalException(struct)
 end
 
 --- Create a structure of type InternalException
--- &lt;p&gt;This exception occurs due to unexpected causes.&lt;/p&gt;
+-- <p>This exception occurs due to unexpected causes.</p>
 function M.InternalException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalException")
 	local t = { 
@@ -794,9 +794,9 @@ end
 
 --- Create a structure of type ListTargetsByRuleRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token returned by a previous call to retrieve the next set of results.&lt;/p&gt;
--- @param Limit [LimitMax100] &lt;p&gt;The maximum number of results to return.&lt;/p&gt;
--- @param Rule [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token returned by a previous call to retrieve the next set of results.</p>
+-- @param Limit [LimitMax100] <p>The maximum number of results to return.</p>
+-- @param Rule [RuleName] <p>The name of the rule.</p>
 -- Required parameter: Rule
 function M.ListTargetsByRuleRequest(NextToken, Limit, Rule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTargetsByRuleRequest")
@@ -822,7 +822,7 @@ end
 
 --- Create a structure of type PutRuleResponse
 --  
--- @param RuleArn [RuleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the rule.&lt;/p&gt;
+-- @param RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
 function M.PutRuleResponse(RuleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutRuleResponse")
 	local t = { 
@@ -845,7 +845,7 @@ end
 
 --- Create a structure of type TestEventPatternResponse
 --  
--- @param Result [Boolean] &lt;p&gt;Indicates whether the event matches the event pattern.&lt;/p&gt;
+-- @param Result [Boolean] <p>Indicates whether the event matches the event pattern.</p>
 function M.TestEventPatternResponse(Result, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestEventPatternResponse")
 	local t = { 
@@ -873,14 +873,14 @@ function M.AssertRule(struct)
 end
 
 --- Create a structure of type Rule
--- &lt;p&gt;Contains information about a rule in Amazon CloudWatch Events.&lt;/p&gt;
--- @param ScheduleExpression [ScheduleExpression] &lt;p&gt;The scheduling expression. For example, &quot;cron(0 20 * * ? *)&quot;, &quot;rate(5 minutes)&quot;.&lt;/p&gt;
--- @param Name [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
--- @param EventPattern [EventPattern] &lt;p&gt;The event pattern of the rule. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html&quot;&gt;Events and Event Patterns&lt;/a&gt; in the &lt;i&gt;Amazon CloudWatch Events User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param State [RuleState] &lt;p&gt;The state of the rule.&lt;/p&gt;
--- @param RoleArn [RoleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the role that is used for target invocation.&lt;/p&gt;
--- @param Arn [RuleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the rule.&lt;/p&gt;
--- @param Description [RuleDescription] &lt;p&gt;The description of the rule.&lt;/p&gt;
+-- <p>Contains information about a rule in Amazon CloudWatch Events.</p>
+-- @param ScheduleExpression [ScheduleExpression] <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
+-- @param Name [RuleName] <p>The name of the rule.</p>
+-- @param EventPattern [EventPattern] <p>The event pattern of the rule. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
+-- @param State [RuleState] <p>The state of the rule.</p>
+-- @param RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the role that is used for target invocation.</p>
+-- @param Arn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- @param Description [RuleDescription] <p>The description of the rule.</p>
 function M.Rule(ScheduleExpression, Name, EventPattern, State, RoleArn, Arn, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Rule")
 	local t = { 
@@ -910,7 +910,7 @@ end
 
 --- Create a structure of type PutEventsRequest
 --  
--- @param Entries [PutEventsRequestEntryList] &lt;p&gt;The entry that defines an event in your system. You can specify several parameters for the entry such as the source and type of the event, resources associated with the event, and so on.&lt;/p&gt;
+-- @param Entries [PutEventsRequestEntryList] <p>The entry that defines an event in your system. You can specify several parameters for the entry such as the source and type of the event, resources associated with the event, and so on.</p>
 -- Required parameter: Entries
 function M.PutEventsRequest(Entries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutEventsRequest")
@@ -940,12 +940,12 @@ end
 
 --- Create a structure of type PutRuleRequest
 --  
--- @param ScheduleExpression [ScheduleExpression] &lt;p&gt;The scheduling expression. For example, &quot;cron(0 20 * * ? *)&quot;, &quot;rate(5 minutes)&quot;.&lt;/p&gt;
--- @param Name [RuleName] &lt;p&gt;The name of the rule that you are creating or updating.&lt;/p&gt;
--- @param RoleArn [RoleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role associated with the rule.&lt;/p&gt;
--- @param State [RuleState] &lt;p&gt;Indicates whether the rule is enabled or disabled.&lt;/p&gt;
--- @param EventPattern [EventPattern] &lt;p&gt;The event pattern. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html&quot;&gt;Events and Event Patterns&lt;/a&gt; in the &lt;i&gt;Amazon CloudWatch Events User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Description [RuleDescription] &lt;p&gt;A description of the rule.&lt;/p&gt;
+-- @param ScheduleExpression [ScheduleExpression] <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
+-- @param Name [RuleName] <p>The name of the rule that you are creating or updating.</p>
+-- @param RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role associated with the rule.</p>
+-- @param State [RuleState] <p>Indicates whether the rule is enabled or disabled.</p>
+-- @param EventPattern [EventPattern] <p>The event pattern. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
+-- @param Description [RuleDescription] <p>A description of the rule.</p>
 -- Required parameter: Name
 function M.PutRuleRequest(ScheduleExpression, Name, RoleArn, State, EventPattern, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutRuleRequest")
@@ -975,8 +975,8 @@ end
 
 --- Create a structure of type PutEventsResponse
 --  
--- @param FailedEntryCount [Integer] &lt;p&gt;The number of failed entries.&lt;/p&gt;
--- @param Entries [PutEventsResultEntryList] &lt;p&gt;The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.&lt;/p&gt;
+-- @param FailedEntryCount [Integer] <p>The number of failed entries.</p>
+-- @param Entries [PutEventsResultEntryList] <p>The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.</p>
 function M.PutEventsResponse(FailedEntryCount, Entries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutEventsResponse")
 	local t = { 
@@ -998,7 +998,7 @@ function M.AssertInvalidEventPatternException(struct)
 end
 
 --- Create a structure of type InvalidEventPatternException
--- &lt;p&gt;The event pattern is not valid.&lt;/p&gt;
+-- <p>The event pattern is not valid.</p>
 function M.InvalidEventPatternException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidEventPatternException")
 	local t = { 
@@ -1023,8 +1023,8 @@ end
 
 --- Create a structure of type TestEventPatternRequest
 --  
--- @param EventPattern [EventPattern] &lt;p&gt;The event pattern. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html&quot;&gt;Events and Event Patterns&lt;/a&gt; in the &lt;i&gt;Amazon CloudWatch Events User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Event [String] &lt;p&gt;The event, in JSON format, to test against the event pattern.&lt;/p&gt;
+-- @param EventPattern [EventPattern] <p>The event pattern. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
+-- @param Event [String] <p>The event, in JSON format, to test against the event pattern.</p>
 -- Required parameter: EventPattern
 -- Required parameter: Event
 function M.TestEventPatternRequest(EventPattern, Event, ...)
@@ -1048,7 +1048,7 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The rule does not exist.&lt;/p&gt;
+-- <p>The rule does not exist.</p>
 function M.ResourceNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 

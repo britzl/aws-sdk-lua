@@ -32,7 +32,7 @@ end
 
 --- Create a structure of type GetAssignmentRequest
 --  
--- @param AssignmentId [EntityId] &lt;p&gt;The ID of the Assignment to be retrieved.&lt;/p&gt;
+-- @param AssignmentId [EntityId] <p>The ID of the Assignment to be retrieved.</p>
 -- Required parameter: AssignmentId
 function M.GetAssignmentRequest(AssignmentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAssignmentRequest")
@@ -62,12 +62,12 @@ end
 
 --- Create a structure of type ListReviewPolicyResultsForHITRequest
 --  
--- @param RetrieveResults [Boolean] &lt;p&gt; Specify if the operation should retrieve a list of the results computed by the Review Policies. &lt;/p&gt;
--- @param PolicyLevels [ReviewPolicyLevelList] &lt;p&gt; The Policy Level(s) to retrieve review results for - HIT or Assignment. If omitted, the default behavior is to retrieve all data for both policy levels. For a list of all the described policies, see Review Policies. &lt;/p&gt;
--- @param MaxResults [ResultSize] &lt;p&gt;Limit the number of results returned.&lt;/p&gt;
--- @param HITId [EntityId] &lt;p&gt;The unique identifier of the HIT to retrieve review results for.&lt;/p&gt;
--- @param RetrieveActions [Boolean] &lt;p&gt; Specify if the operation should retrieve a list of the actions taken executing the Review Policies and their outcomes. &lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;Pagination token&lt;/p&gt;
+-- @param RetrieveResults [Boolean] <p> Specify if the operation should retrieve a list of the results computed by the Review Policies. </p>
+-- @param PolicyLevels [ReviewPolicyLevelList] <p> The Policy Level(s) to retrieve review results for - HIT or Assignment. If omitted, the default behavior is to retrieve all data for both policy levels. For a list of all the described policies, see Review Policies. </p>
+-- @param MaxResults [ResultSize] <p>Limit the number of results returned.</p>
+-- @param HITId [EntityId] <p>The unique identifier of the HIT to retrieve review results for.</p>
+-- @param RetrieveActions [Boolean] <p> Specify if the operation should retrieve a list of the actions taken executing the Review Policies and their outcomes. </p>
+-- @param NextToken [PaginationToken] <p>Pagination token</p>
 -- Required parameter: HITId
 function M.ListReviewPolicyResultsForHITRequest(RetrieveResults, PolicyLevels, MaxResults, HITId, RetrieveActions, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListReviewPolicyResultsForHITRequest")
@@ -96,7 +96,7 @@ end
 
 --- Create a structure of type GetFileUploadURLResponse
 --  
--- @param FileUploadURL [String] &lt;p&gt; A temporary URL for the file that the Worker uploaded for the answer. &lt;/p&gt;
+-- @param FileUploadURL [String] <p> A temporary URL for the file that the Worker uploaded for the answer. </p>
 function M.GetFileUploadURLResponse(FileUploadURL, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFileUploadURLResponse")
 	local t = { 
@@ -123,13 +123,13 @@ function M.AssertQualificationRequest(struct)
 end
 
 --- Create a structure of type QualificationRequest
--- &lt;p&gt; The QualificationRequest data structure represents a request a Worker has made for a Qualification. &lt;/p&gt;
--- @param QualificationTypeId [EntityId] &lt;p&gt; The ID of the Qualification type the Worker is requesting, as returned by the CreateQualificationType operation. &lt;/p&gt;
--- @param WorkerId [CustomerId] &lt;p&gt; The ID of the Worker requesting the Qualification.&lt;/p&gt;
--- @param QualificationRequestId [String] &lt;p&gt;The ID of the Qualification request, a unique identifier generated when the request was submitted. &lt;/p&gt;
--- @param SubmitTime [Timestamp] &lt;p&gt;The date and time the Qualification request had a status of Submitted. This is either the time the Worker submitted answers for a Qualification test, or the time the Worker requested the Qualification if the Qualification type does not have a test. &lt;/p&gt;
--- @param Test [String] &lt;p&gt; The contents of the Qualification test that was presented to the Worker, if the type has a test and the Worker has submitted answers. This value is identical to the QuestionForm associated with the Qualification type at the time the Worker requests the Qualification.&lt;/p&gt;
--- @param Answer [String] &lt;p&gt; The Worker's answers for the Qualification type's test contained in a QuestionFormAnswers document, if the type has a test and the Worker has submitted answers. If the Worker does not provide any answers, Answer may be empty. &lt;/p&gt;
+-- <p> The QualificationRequest data structure represents a request a Worker has made for a Qualification. </p>
+-- @param QualificationTypeId [EntityId] <p> The ID of the Qualification type the Worker is requesting, as returned by the CreateQualificationType operation. </p>
+-- @param WorkerId [CustomerId] <p> The ID of the Worker requesting the Qualification.</p>
+-- @param QualificationRequestId [String] <p>The ID of the Qualification request, a unique identifier generated when the request was submitted. </p>
+-- @param SubmitTime [Timestamp] <p>The date and time the Qualification request had a status of Submitted. This is either the time the Worker submitted answers for a Qualification test, or the time the Worker requested the Qualification if the Qualification type does not have a test. </p>
+-- @param Test [String] <p> The contents of the Qualification test that was presented to the Worker, if the type has a test and the Worker has submitted answers. This value is identical to the QuestionForm associated with the Qualification type at the time the Worker requests the Qualification.</p>
+-- @param Answer [String] <p> The Worker's answers for the Qualification type's test contained in a QuestionFormAnswers document, if the type has a test and the Worker has submitted answers. If the Worker does not provide any answers, Answer may be empty. </p>
 function M.QualificationRequest(QualificationTypeId, WorkerId, QualificationRequestId, SubmitTime, Test, Answer, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QualificationRequest")
 	local t = { 
@@ -168,16 +168,16 @@ end
 
 --- Create a structure of type CreateHITWithHITTypeRequest
 --  
--- @param RequesterAnnotation [String] &lt;p&gt; An arbitrary data field. The RequesterAnnotation parameter lets your application attach arbitrary data to the HIT for tracking purposes. For example, this parameter could be an identifier internal to the Requester's application that corresponds with the HIT. &lt;/p&gt; &lt;p&gt; The RequesterAnnotation parameter for a HIT is only visible to the Requester who created the HIT. It is not shown to the Worker, or any other Requester. &lt;/p&gt; &lt;p&gt; The RequesterAnnotation parameter may be different for each HIT you submit. It does not affect how your HITs are grouped. &lt;/p&gt;
--- @param MaxAssignments [Integer] &lt;p&gt; The number of times the HIT can be accepted and completed before the HIT becomes unavailable. &lt;/p&gt;
--- @param Question [String] &lt;p&gt; The data the person completing the HIT uses to produce the results. &lt;/p&gt; &lt;p&gt; Constraints: Must be a QuestionForm data structure, an ExternalQuestion data structure, or an HTMLQuestion data structure. The XML question data must not be larger than 64 kilobytes (65,535 bytes) in size, including whitespace. &lt;/p&gt; &lt;p&gt;Either a Question parameter or a HITLayoutId parameter must be provided.&lt;/p&gt;
--- @param UniqueRequestToken [IdempotencyToken] &lt;p&gt; A unique identifier for this request which allows you to retry the call on error without creating duplicate HITs. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the HIT already exists in the system from a previous call using the same UniqueRequestToken, subsequent calls will return a AWS.MechanicalTurk.HitAlreadyExists error with a message containing the HITId. &lt;/p&gt; &lt;note&gt; &lt;p&gt; Note: It is your responsibility to ensure uniqueness of the token. The unique token expires after 24 hours. Subsequent calls using the same UniqueRequestToken made after the 24 hour limit could create duplicate HITs. &lt;/p&gt; &lt;/note&gt;
--- @param HITLayoutParameters [HITLayoutParameterList] &lt;p&gt; If the HITLayoutId is provided, any placeholder values must be filled in with values using the HITLayoutParameter structure. For more information, see HITLayout. &lt;/p&gt;
--- @param HITTypeId [EntityId] &lt;p&gt;The HIT type ID you want to create this HIT with.&lt;/p&gt;
--- @param AssignmentReviewPolicy [ReviewPolicy] &lt;p&gt; The Assignment-level Review Policy applies to the assignments under the HIT. You can specify for Mechanical Turk to take various actions based on the policy. &lt;/p&gt;
--- @param HITReviewPolicy [ReviewPolicy] &lt;p&gt; The HIT-level Review Policy applies to the HIT. You can specify for Mechanical Turk to take various actions based on the policy. &lt;/p&gt;
--- @param HITLayoutId [EntityId] &lt;p&gt; The HITLayoutId allows you to use a pre-existing HIT design with placeholder values and create an additional HIT by providing those values as HITLayoutParameters. &lt;/p&gt; &lt;p&gt; Constraints: Either a Question parameter or a HITLayoutId parameter must be provided. &lt;/p&gt;
--- @param LifetimeInSeconds [Long] &lt;p&gt; An amount of time, in seconds, after which the HIT is no longer available for users to accept. After the lifetime of the HIT elapses, the HIT no longer appears in HIT searches, even if not all of the assignments for the HIT have been accepted. &lt;/p&gt;
+-- @param RequesterAnnotation [String] <p> An arbitrary data field. The RequesterAnnotation parameter lets your application attach arbitrary data to the HIT for tracking purposes. For example, this parameter could be an identifier internal to the Requester's application that corresponds with the HIT. </p> <p> The RequesterAnnotation parameter for a HIT is only visible to the Requester who created the HIT. It is not shown to the Worker, or any other Requester. </p> <p> The RequesterAnnotation parameter may be different for each HIT you submit. It does not affect how your HITs are grouped. </p>
+-- @param MaxAssignments [Integer] <p> The number of times the HIT can be accepted and completed before the HIT becomes unavailable. </p>
+-- @param Question [String] <p> The data the person completing the HIT uses to produce the results. </p> <p> Constraints: Must be a QuestionForm data structure, an ExternalQuestion data structure, or an HTMLQuestion data structure. The XML question data must not be larger than 64 kilobytes (65,535 bytes) in size, including whitespace. </p> <p>Either a Question parameter or a HITLayoutId parameter must be provided.</p>
+-- @param UniqueRequestToken [IdempotencyToken] <p> A unique identifier for this request which allows you to retry the call on error without creating duplicate HITs. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the HIT already exists in the system from a previous call using the same UniqueRequestToken, subsequent calls will return a AWS.MechanicalTurk.HitAlreadyExists error with a message containing the HITId. </p> <note> <p> Note: It is your responsibility to ensure uniqueness of the token. The unique token expires after 24 hours. Subsequent calls using the same UniqueRequestToken made after the 24 hour limit could create duplicate HITs. </p> </note>
+-- @param HITLayoutParameters [HITLayoutParameterList] <p> If the HITLayoutId is provided, any placeholder values must be filled in with values using the HITLayoutParameter structure. For more information, see HITLayout. </p>
+-- @param HITTypeId [EntityId] <p>The HIT type ID you want to create this HIT with.</p>
+-- @param AssignmentReviewPolicy [ReviewPolicy] <p> The Assignment-level Review Policy applies to the assignments under the HIT. You can specify for Mechanical Turk to take various actions based on the policy. </p>
+-- @param HITReviewPolicy [ReviewPolicy] <p> The HIT-level Review Policy applies to the HIT. You can specify for Mechanical Turk to take various actions based on the policy. </p>
+-- @param HITLayoutId [EntityId] <p> The HITLayoutId allows you to use a pre-existing HIT design with placeholder values and create an additional HIT by providing those values as HITLayoutParameters. </p> <p> Constraints: Either a Question parameter or a HITLayoutId parameter must be provided. </p>
+-- @param LifetimeInSeconds [Long] <p> An amount of time, in seconds, after which the HIT is no longer available for users to accept. After the lifetime of the HIT elapses, the HIT no longer appears in HIT searches, even if not all of the assignments for the HIT have been accepted. </p>
 -- Required parameter: HITTypeId
 -- Required parameter: LifetimeInSeconds
 function M.CreateHITWithHITTypeRequest(RequesterAnnotation, MaxAssignments, Question, UniqueRequestToken, HITLayoutParameters, HITTypeId, AssignmentReviewPolicy, HITReviewPolicy, HITLayoutId, LifetimeInSeconds, ...)
@@ -223,16 +223,16 @@ end
 
 --- Create a structure of type CreateQualificationTypeRequest
 --  
--- @param AutoGranted [Boolean] &lt;p&gt;Specifies whether requests for the Qualification type are granted immediately, without prompting the Worker with a Qualification test.&lt;/p&gt; &lt;p&gt;Constraints: If the Test parameter is specified, this parameter cannot be true.&lt;/p&gt;
--- @param Name [String] &lt;p&gt; The name you give to the Qualification type. The type name is used to represent the Qualification to Workers, and to find the type using a Qualification type search. It must be unique across all of your Qualification types.&lt;/p&gt;
--- @param TestDurationInSeconds [Long] &lt;p&gt;The number of seconds the Worker has to complete the Qualification test, starting from the time the Worker requests the Qualification.&lt;/p&gt;
--- @param QualificationTypeStatus [QualificationTypeStatus] &lt;p&gt;The initial status of the Qualification type.&lt;/p&gt; &lt;p&gt;Constraints: Valid values are: Active | Inactive&lt;/p&gt;
--- @param Test [String] &lt;p&gt; The questions for the Qualification test a Worker must answer correctly to obtain a Qualification of this type. If this parameter is specified, &lt;code&gt;TestDurationInSeconds&lt;/code&gt; must also be specified. &lt;/p&gt; &lt;p&gt;Constraints: Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This parameter cannot be specified if AutoGranted is true.&lt;/p&gt; &lt;p&gt;Constraints: None. If not specified, the Worker may request the Qualification without answering any questions.&lt;/p&gt;
--- @param AnswerKey [String] &lt;p&gt;The answers to the Qualification test specified in the Test parameter, in the form of an AnswerKey data structure.&lt;/p&gt; &lt;p&gt;Constraints: Must not be longer than 65535 bytes.&lt;/p&gt; &lt;p&gt;Constraints: None. If not specified, you must process Qualification requests manually.&lt;/p&gt;
--- @param AutoGrantedValue [Integer] &lt;p&gt;The Qualification value to use for automatically granted Qualifications. This parameter is used only if the AutoGranted parameter is true.&lt;/p&gt;
--- @param Keywords [String] &lt;p&gt;One or more words or phrases that describe the Qualification type, separated by commas. The keywords of a type make the type easier to find during a search.&lt;/p&gt;
--- @param RetryDelayInSeconds [Long] &lt;p&gt;The number of seconds that a Worker must wait after requesting a Qualification of the Qualification type before the worker can retry the Qualification request.&lt;/p&gt; &lt;p&gt;Constraints: None. If not specified, retries are disabled and Workers can request a Qualification of this type only once, even if the Worker has not been granted the Qualification. It is not possible to disable retries for a Qualification type after it has been created with retries enabled. If you want to disable retries, you must delete existing retry-enabled Qualification type and then create a new Qualification type with retries disabled.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A long description for the Qualification type. On the Amazon Mechanical Turk website, the long description is displayed when a Worker examines a Qualification type.&lt;/p&gt;
+-- @param AutoGranted [Boolean] <p>Specifies whether requests for the Qualification type are granted immediately, without prompting the Worker with a Qualification test.</p> <p>Constraints: If the Test parameter is specified, this parameter cannot be true.</p>
+-- @param Name [String] <p> The name you give to the Qualification type. The type name is used to represent the Qualification to Workers, and to find the type using a Qualification type search. It must be unique across all of your Qualification types.</p>
+-- @param TestDurationInSeconds [Long] <p>The number of seconds the Worker has to complete the Qualification test, starting from the time the Worker requests the Qualification.</p>
+-- @param QualificationTypeStatus [QualificationTypeStatus] <p>The initial status of the Qualification type.</p> <p>Constraints: Valid values are: Active | Inactive</p>
+-- @param Test [String] <p> The questions for the Qualification test a Worker must answer correctly to obtain a Qualification of this type. If this parameter is specified, <code>TestDurationInSeconds</code> must also be specified. </p> <p>Constraints: Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This parameter cannot be specified if AutoGranted is true.</p> <p>Constraints: None. If not specified, the Worker may request the Qualification without answering any questions.</p>
+-- @param AnswerKey [String] <p>The answers to the Qualification test specified in the Test parameter, in the form of an AnswerKey data structure.</p> <p>Constraints: Must not be longer than 65535 bytes.</p> <p>Constraints: None. If not specified, you must process Qualification requests manually.</p>
+-- @param AutoGrantedValue [Integer] <p>The Qualification value to use for automatically granted Qualifications. This parameter is used only if the AutoGranted parameter is true.</p>
+-- @param Keywords [String] <p>One or more words or phrases that describe the Qualification type, separated by commas. The keywords of a type make the type easier to find during a search.</p>
+-- @param RetryDelayInSeconds [Long] <p>The number of seconds that a Worker must wait after requesting a Qualification of the Qualification type before the worker can retry the Qualification request.</p> <p>Constraints: None. If not specified, retries are disabled and Workers can request a Qualification of this type only once, even if the Worker has not been granted the Qualification. It is not possible to disable retries for a Qualification type after it has been created with retries enabled. If you want to disable retries, you must delete existing retry-enabled Qualification type and then create a new Qualification type with retries disabled.</p>
+-- @param Description [String] <p>A long description for the Qualification type. On the Amazon Mechanical Turk website, the long description is displayed when a Worker examines a Qualification type.</p>
 -- Required parameter: Name
 -- Required parameter: Description
 -- Required parameter: QualificationTypeStatus
@@ -269,9 +269,9 @@ end
 
 --- Create a structure of type ListWorkersWithQualificationTypeResponse
 --  
--- @param NumResults [Integer] &lt;p&gt; The number of Qualifications on this page in the filtered results list, equivalent to the number of Qualifications being returned by this call.&lt;/p&gt;
+-- @param NumResults [Integer] <p> The number of Qualifications on this page in the filtered results list, equivalent to the number of Qualifications being returned by this call.</p>
 -- @param NextToken [PaginationToken]  
--- @param Qualifications [QualificationList] &lt;p&gt; The list of Qualification elements returned by this call. &lt;/p&gt;
+-- @param Qualifications [QualificationList] <p> The list of Qualification elements returned by this call. </p>
 function M.ListWorkersWithQualificationTypeResponse(NumResults, NextToken, Qualifications, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListWorkersWithQualificationTypeResponse")
 	local t = { 
@@ -297,10 +297,10 @@ function M.AssertNotifyWorkersFailureStatus(struct)
 end
 
 --- Create a structure of type NotifyWorkersFailureStatus
--- &lt;p&gt; When MTurk encounters an issue with notifying the Workers you specified, it returns back this object with failure details. &lt;/p&gt;
--- @param NotifyWorkersFailureMessage [String] &lt;p&gt; A message detailing the reason the Worker could not be notified. &lt;/p&gt;
--- @param WorkerId [CustomerId] &lt;p&gt; The ID of the Worker.&lt;/p&gt;
--- @param NotifyWorkersFailureCode [NotifyWorkersFailureCode] &lt;p&gt; Encoded value for the failure type. &lt;/p&gt;
+-- <p> When MTurk encounters an issue with notifying the Workers you specified, it returns back this object with failure details. </p>
+-- @param NotifyWorkersFailureMessage [String] <p> A message detailing the reason the Worker could not be notified. </p>
+-- @param WorkerId [CustomerId] <p> The ID of the Worker.</p>
+-- @param NotifyWorkersFailureCode [NotifyWorkersFailureCode] <p> Encoded value for the failure type. </p>
 function M.NotifyWorkersFailureStatus(NotifyWorkersFailureMessage, WorkerId, NotifyWorkersFailureCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotifyWorkersFailureStatus")
 	local t = { 
@@ -327,8 +327,8 @@ end
 
 --- Create a structure of type AcceptQualificationRequestRequest
 --  
--- @param IntegerValue [Integer] &lt;p&gt; The value of the Qualification. You can omit this value if you are using the presence or absence of the Qualification as the basis for a HIT requirement. &lt;/p&gt;
--- @param QualificationRequestId [String] &lt;p&gt;The ID of the Qualification request, as returned by the &lt;code&gt;GetQualificationRequests&lt;/code&gt; operation.&lt;/p&gt;
+-- @param IntegerValue [Integer] <p> The value of the Qualification. You can omit this value if you are using the presence or absence of the Qualification as the basis for a HIT requirement. </p>
+-- @param QualificationRequestId [String] <p>The ID of the Qualification request, as returned by the <code>GetQualificationRequests</code> operation.</p>
 -- Required parameter: QualificationRequestId
 function M.AcceptQualificationRequestRequest(IntegerValue, QualificationRequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AcceptQualificationRequestRequest")
@@ -354,7 +354,7 @@ end
 
 --- Create a structure of type ListHITsRequest
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;Pagination token&lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>Pagination token</p>
 -- @param MaxResults [ResultSize]  
 function M.ListHITsRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHITsRequest")
@@ -382,10 +382,10 @@ end
 
 --- Create a structure of type ListReviewableHITsRequest
 --  
--- @param Status [ReviewableHITStatus] &lt;p&gt; Can be either &lt;code&gt;Reviewable&lt;/code&gt; or &lt;code&gt;Reviewing&lt;/code&gt;. Reviewable is the default value. &lt;/p&gt;
--- @param HITTypeId [EntityId] &lt;p&gt; The ID of the HIT type of the HITs to consider for the query. If not specified, all HITs for the Reviewer are considered &lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;Pagination Token&lt;/p&gt;
--- @param MaxResults [ResultSize] &lt;p&gt; Limit the number of results returned. &lt;/p&gt;
+-- @param Status [ReviewableHITStatus] <p> Can be either <code>Reviewable</code> or <code>Reviewing</code>. Reviewable is the default value. </p>
+-- @param HITTypeId [EntityId] <p> The ID of the HIT type of the HITs to consider for the query. If not specified, all HITs for the Reviewer are considered </p>
+-- @param NextToken [PaginationToken] <p>Pagination Token</p>
+-- @param MaxResults [ResultSize] <p> Limit the number of results returned. </p>
 function M.ListReviewableHITsRequest(Status, HITTypeId, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListReviewableHITsRequest")
 	local t = { 
@@ -421,19 +421,19 @@ function M.AssertAssignment(struct)
 end
 
 --- Create a structure of type Assignment
--- &lt;p&gt; The Assignment data structure represents a single assignment of a HIT to a Worker. The assignment tracks the Worker's efforts to complete the HIT, and contains the results for later retrieval. &lt;/p&gt;
--- @param ApprovalTime [Timestamp] &lt;p&gt; If the Worker has submitted results and the Requester has approved the results, ApprovalTime is the date and time the Requester approved the results. This value is omitted from the assignment if the Requester has not yet approved the results.&lt;/p&gt;
--- @param AutoApprovalTime [Timestamp] &lt;p&gt; If results have been submitted, AutoApprovalTime is the date and time the results of the assignment results are considered Approved automatically if they have not already been explicitly approved or rejected by the Requester. This value is derived from the auto-approval delay specified by the Requester in the HIT. This value is omitted from the assignment if the Worker has not yet submitted results.&lt;/p&gt;
--- @param AssignmentId [EntityId] &lt;p&gt; A unique identifier for the assignment.&lt;/p&gt;
--- @param WorkerId [CustomerId] &lt;p&gt; The ID of the Worker who accepted the HIT.&lt;/p&gt;
--- @param RequesterFeedback [String] &lt;p&gt; The feedback string included with the call to the ApproveAssignment operation or the RejectAssignment operation, if the Requester approved or rejected the assignment and specified feedback.&lt;/p&gt;
--- @param AcceptTime [Timestamp] &lt;p&gt; The date and time the Worker accepted the assignment.&lt;/p&gt;
--- @param Deadline [Timestamp] &lt;p&gt; The date and time of the deadline for the assignment. This value is derived from the deadline specification for the HIT and the date and time the Worker accepted the HIT.&lt;/p&gt;
--- @param HITId [EntityId] &lt;p&gt; The ID of the HIT.&lt;/p&gt;
--- @param Answer [String] &lt;p&gt; The Worker's answers submitted for the HIT contained in a QuestionFormAnswers document, if the Worker provides an answer. If the Worker does not provide any answers, Answer may contain a QuestionFormAnswers document, or Answer may be empty.&lt;/p&gt;
--- @param AssignmentStatus [AssignmentStatus] &lt;p&gt; The status of the assignment.&lt;/p&gt;
--- @param SubmitTime [Timestamp] &lt;p&gt; If the Worker has submitted results, SubmitTime is the date and time the assignment was submitted. This value is omitted from the assignment if the Worker has not yet submitted results.&lt;/p&gt;
--- @param RejectionTime [Timestamp] &lt;p&gt; If the Worker has submitted results and the Requester has rejected the results, RejectionTime is the date and time the Requester rejected the results.&lt;/p&gt;
+-- <p> The Assignment data structure represents a single assignment of a HIT to a Worker. The assignment tracks the Worker's efforts to complete the HIT, and contains the results for later retrieval. </p>
+-- @param ApprovalTime [Timestamp] <p> If the Worker has submitted results and the Requester has approved the results, ApprovalTime is the date and time the Requester approved the results. This value is omitted from the assignment if the Requester has not yet approved the results.</p>
+-- @param AutoApprovalTime [Timestamp] <p> If results have been submitted, AutoApprovalTime is the date and time the results of the assignment results are considered Approved automatically if they have not already been explicitly approved or rejected by the Requester. This value is derived from the auto-approval delay specified by the Requester in the HIT. This value is omitted from the assignment if the Worker has not yet submitted results.</p>
+-- @param AssignmentId [EntityId] <p> A unique identifier for the assignment.</p>
+-- @param WorkerId [CustomerId] <p> The ID of the Worker who accepted the HIT.</p>
+-- @param RequesterFeedback [String] <p> The feedback string included with the call to the ApproveAssignment operation or the RejectAssignment operation, if the Requester approved or rejected the assignment and specified feedback.</p>
+-- @param AcceptTime [Timestamp] <p> The date and time the Worker accepted the assignment.</p>
+-- @param Deadline [Timestamp] <p> The date and time of the deadline for the assignment. This value is derived from the deadline specification for the HIT and the date and time the Worker accepted the HIT.</p>
+-- @param HITId [EntityId] <p> The ID of the HIT.</p>
+-- @param Answer [String] <p> The Worker's answers submitted for the HIT contained in a QuestionFormAnswers document, if the Worker provides an answer. If the Worker does not provide any answers, Answer may contain a QuestionFormAnswers document, or Answer may be empty.</p>
+-- @param AssignmentStatus [AssignmentStatus] <p> The status of the assignment.</p>
+-- @param SubmitTime [Timestamp] <p> If the Worker has submitted results, SubmitTime is the date and time the assignment was submitted. This value is omitted from the assignment if the Worker has not yet submitted results.</p>
+-- @param RejectionTime [Timestamp] <p> If the Worker has submitted results and the Requester has rejected the results, RejectionTime is the date and time the Requester rejected the results.</p>
 function M.Assignment(ApprovalTime, AutoApprovalTime, AssignmentId, WorkerId, RequesterFeedback, AcceptTime, Deadline, HITId, Answer, AssignmentStatus, SubmitTime, RejectionTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Assignment")
 	local t = { 
@@ -467,7 +467,7 @@ end
 
 --- Create a structure of type GetHITResponse
 --  
--- @param HIT [HIT] &lt;p&gt; Contains the requested HIT data.&lt;/p&gt;
+-- @param HIT [HIT] <p> Contains the requested HIT data.</p>
 function M.GetHITResponse(HIT, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetHITResponse")
 	local t = { 
@@ -515,12 +515,12 @@ function M.AssertQualificationRequirement(struct)
 end
 
 --- Create a structure of type QualificationRequirement
--- &lt;p&gt; The QualificationRequirement data structure describes a Qualification that a Worker must have before the Worker is allowed to accept a HIT. A requirement may optionally state that a Worker must have the Qualification in order to preview the HIT. &lt;/p&gt;
--- @param RequiredToPreview [Boolean] &lt;p&gt; If true, the question data for the HIT will not be shown when a Worker whose Qualifications do not meet this requirement tries to preview the HIT. That is, a Worker's Qualifications must meet all of the requirements for which RequiredToPreview is true in order to preview the HIT. If a Worker meets all of the requirements where RequiredToPreview is true (or if there are no such requirements), but does not meet all of the requirements for the HIT, the Worker will be allowed to preview the HIT's question data, but will not be allowed to accept and complete the HIT. The default is false. &lt;/p&gt;
--- @param LocaleValues [LocaleList] &lt;p&gt; The locale value to compare against the Qualification's value. The local value must be a valid ISO 3166 country code or supports ISO 3166-2 subdivisions. LocaleValue can only be used with a Worker_Locale QualificationType ID. LocaleValue can only be used with the EqualTo, NotEqualTo, In, and NotIn comparators. You must only use a single LocaleValue element when using the EqualTo or NotEqualTo comparators. When performing a set comparison by using the In or the NotIn comparator, you can use up to 30 LocaleValue elements in a QualificationRequirement data structure. &lt;/p&gt;
--- @param IntegerValues [IntegerList] &lt;p&gt; The integer value to compare against the Qualification's value. IntegerValue must not be present if Comparator is Exists or DoesNotExist. IntegerValue can only be used if the Qualification type has an integer value; it cannot be used with the Worker_Locale QualificationType ID. When performing a set comparison by using the In or the NotIn comparator, you can use up to 15 IntegerValue elements in a QualificationRequirement data structure. &lt;/p&gt;
--- @param Comparator [Comparator] &lt;p&gt;The kind of comparison to make against a Qualification's value. You can compare a Qualification's value to an IntegerValue to see if it is LessThan, LessThanOrEqualTo, GreaterThan, GreaterThanOrEqualTo, EqualTo, or NotEqualTo the IntegerValue. You can compare it to a LocaleValue to see if it is EqualTo, or NotEqualTo the LocaleValue. You can check to see if the value is In or NotIn a set of IntegerValue or LocaleValue values. Lastly, a Qualification requirement can also test if a Qualification Exists or DoesNotExist in the user's profile, regardless of its value. &lt;/p&gt;
--- @param QualificationTypeId [String] &lt;p&gt; The ID of the Qualification type for the requirement.&lt;/p&gt;
+-- <p> The QualificationRequirement data structure describes a Qualification that a Worker must have before the Worker is allowed to accept a HIT. A requirement may optionally state that a Worker must have the Qualification in order to preview the HIT. </p>
+-- @param RequiredToPreview [Boolean] <p> If true, the question data for the HIT will not be shown when a Worker whose Qualifications do not meet this requirement tries to preview the HIT. That is, a Worker's Qualifications must meet all of the requirements for which RequiredToPreview is true in order to preview the HIT. If a Worker meets all of the requirements where RequiredToPreview is true (or if there are no such requirements), but does not meet all of the requirements for the HIT, the Worker will be allowed to preview the HIT's question data, but will not be allowed to accept and complete the HIT. The default is false. </p>
+-- @param LocaleValues [LocaleList] <p> The locale value to compare against the Qualification's value. The local value must be a valid ISO 3166 country code or supports ISO 3166-2 subdivisions. LocaleValue can only be used with a Worker_Locale QualificationType ID. LocaleValue can only be used with the EqualTo, NotEqualTo, In, and NotIn comparators. You must only use a single LocaleValue element when using the EqualTo or NotEqualTo comparators. When performing a set comparison by using the In or the NotIn comparator, you can use up to 30 LocaleValue elements in a QualificationRequirement data structure. </p>
+-- @param IntegerValues [IntegerList] <p> The integer value to compare against the Qualification's value. IntegerValue must not be present if Comparator is Exists or DoesNotExist. IntegerValue can only be used if the Qualification type has an integer value; it cannot be used with the Worker_Locale QualificationType ID. When performing a set comparison by using the In or the NotIn comparator, you can use up to 15 IntegerValue elements in a QualificationRequirement data structure. </p>
+-- @param Comparator [Comparator] <p>The kind of comparison to make against a Qualification's value. You can compare a Qualification's value to an IntegerValue to see if it is LessThan, LessThanOrEqualTo, GreaterThan, GreaterThanOrEqualTo, EqualTo, or NotEqualTo the IntegerValue. You can compare it to a LocaleValue to see if it is EqualTo, or NotEqualTo the LocaleValue. You can check to see if the value is In or NotIn a set of IntegerValue or LocaleValue values. Lastly, a Qualification requirement can also test if a Qualification Exists or DoesNotExist in the user's profile, regardless of its value. </p>
+-- @param QualificationTypeId [String] <p> The ID of the Qualification type for the requirement.</p>
 -- Required parameter: QualificationTypeId
 -- Required parameter: Comparator
 function M.QualificationRequirement(RequiredToPreview, LocaleValues, IntegerValues, Comparator, QualificationTypeId, ...)
@@ -572,8 +572,8 @@ end
 
 --- Create a structure of type CreateWorkerBlockRequest
 --  
--- @param WorkerId [CustomerId] &lt;p&gt;The ID of the Worker to block.&lt;/p&gt;
--- @param Reason [String] &lt;p&gt;A message explaining the reason for blocking the Worker. This parameter enables you to keep track of your Workers. The Worker does not see this message.&lt;/p&gt;
+-- @param WorkerId [CustomerId] <p>The ID of the Worker to block.</p>
+-- @param Reason [String] <p>A message explaining the reason for blocking the Worker. This parameter enables you to keep track of your Workers. The Worker does not see this message.</p>
 -- Required parameter: WorkerId
 -- Required parameter: Reason
 function M.CreateWorkerBlockRequest(WorkerId, Reason, ...)
@@ -599,9 +599,9 @@ function M.AssertRequestError(struct)
 end
 
 --- Create a structure of type RequestError
--- &lt;p&gt;Your request is invalid.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;Your request is invalid.&lt;/p&gt;
--- @param TurkErrorCode [TurkErrorCode] &lt;p&gt;Your request is invalid.&lt;/p&gt;
+-- <p>Your request is invalid.</p>
+-- @param Message [ExceptionMessage] <p>Your request is invalid.</p>
+-- @param TurkErrorCode [TurkErrorCode] <p>Your request is invalid.</p>
 function M.RequestError(Message, TurkErrorCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestError")
 	local t = { 
@@ -646,7 +646,7 @@ end
 
 --- Create a structure of type GetQualificationTypeRequest
 --  
--- @param QualificationTypeId [EntityId] &lt;p&gt;The ID of the QualificationType.&lt;/p&gt;
+-- @param QualificationTypeId [EntityId] <p>The ID of the QualificationType.</p>
 -- Required parameter: QualificationTypeId
 function M.GetQualificationTypeRequest(QualificationTypeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetQualificationTypeRequest")
@@ -672,8 +672,8 @@ end
 
 --- Create a structure of type ListHITsForQualificationTypeResponse
 --  
--- @param NumResults [Integer] &lt;p&gt; The number of HITs on this page in the filtered results list, equivalent to the number of HITs being returned by this call. &lt;/p&gt;
--- @param HITs [HITList] &lt;p&gt; The list of HIT elements returned by the query.&lt;/p&gt;
+-- @param NumResults [Integer] <p> The number of HITs on this page in the filtered results list, equivalent to the number of HITs being returned by this call. </p>
+-- @param HITs [HITList] <p> The list of HIT elements returned by the query.</p>
 -- @param NextToken [PaginationToken]  
 function M.ListHITsForQualificationTypeResponse(NumResults, HITs, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHITsForQualificationTypeResponse")
@@ -702,8 +702,8 @@ end
 --- Create a structure of type ListQualificationRequestsRequest
 --  
 -- @param NextToken [PaginationToken]  
--- @param MaxResults [ResultSize] &lt;p&gt; The maximum number of results to return in a single call. &lt;/p&gt;
--- @param QualificationTypeId [EntityId] &lt;p&gt;The ID of the QualificationType.&lt;/p&gt;
+-- @param MaxResults [ResultSize] <p> The maximum number of results to return in a single call. </p>
+-- @param QualificationTypeId [EntityId] <p>The ID of the QualificationType.</p>
 function M.ListQualificationRequestsRequest(NextToken, MaxResults, QualificationTypeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListQualificationRequestsRequest")
 	local t = { 
@@ -732,9 +732,9 @@ end
 
 --- Create a structure of type ListAssignmentsForHITRequest
 --  
--- @param AssignmentStatuses [AssignmentStatusList] &lt;p&gt;The status of the assignments to return: Submitted | Approved | Rejected&lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;Pagination token&lt;/p&gt;
--- @param HITId [EntityId] &lt;p&gt;The ID of the HIT.&lt;/p&gt;
+-- @param AssignmentStatuses [AssignmentStatusList] <p>The status of the assignments to return: Submitted | Approved | Rejected</p>
+-- @param NextToken [PaginationToken] <p>Pagination token</p>
+-- @param HITId [EntityId] <p>The ID of the HIT.</p>
 -- @param MaxResults [ResultSize]  
 -- Required parameter: HITId
 function M.ListAssignmentsForHITRequest(AssignmentStatuses, NextToken, HITId, MaxResults, ...)
@@ -765,8 +765,8 @@ end
 
 --- Create a structure of type SendTestEventNotificationRequest
 --  
--- @param Notification [NotificationSpecification] &lt;p&gt; The notification specification to test. This value is identical to the value you would provide to the UpdateNotificationSettings operation when you establish the notification specification for a HIT type. &lt;/p&gt;
--- @param TestEventType [EventType] &lt;p&gt; The event to simulate to test the notification specification. This event is included in the test message even if the notification specification does not include the event type. The notification specification does not filter out the test event. &lt;/p&gt;
+-- @param Notification [NotificationSpecification] <p> The notification specification to test. This value is identical to the value you would provide to the UpdateNotificationSettings operation when you establish the notification specification for a HIT type. </p>
+-- @param TestEventType [EventType] <p> The event to simulate to test the notification specification. This event is included in the test message even if the notification specification does not include the event type. The notification specification does not filter out the test event. </p>
 -- Required parameter: Notification
 -- Required parameter: TestEventType
 function M.SendTestEventNotificationRequest(Notification, TestEventType, ...)
@@ -813,7 +813,7 @@ end
 
 --- Create a structure of type ListWorkerBlocksRequest
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;Pagination token&lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>Pagination token</p>
 -- @param MaxResults [ResultSize]  
 function M.ListWorkerBlocksRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListWorkerBlocksRequest")
@@ -838,9 +838,9 @@ function M.AssertParameterMapEntry(struct)
 end
 
 --- Create a structure of type ParameterMapEntry
--- &lt;p&gt; This data structure is the data type for the AnswerKey parameter of the ScoreMyKnownAnswers/2011-09-01 Review Policy. &lt;/p&gt;
--- @param Values [StringList] &lt;p&gt; The list of answers to the question specified in the MapEntry Key element. The Worker must match all values in order for the answer to be scored correctly. &lt;/p&gt;
--- @param Key [String] &lt;p&gt; The QuestionID from the HIT that is used to identify which question requires Mechanical Turk to score as part of the ScoreMyKnownAnswers/2011-09-01 Review Policy. &lt;/p&gt;
+-- <p> This data structure is the data type for the AnswerKey parameter of the ScoreMyKnownAnswers/2011-09-01 Review Policy. </p>
+-- @param Values [StringList] <p> The list of answers to the question specified in the MapEntry Key element. The Worker must match all values in order for the answer to be scored correctly. </p>
+-- @param Key [String] <p> The QuestionID from the HIT that is used to identify which question requires Mechanical Turk to score as part of the ScoreMyKnownAnswers/2011-09-01 Review Policy. </p>
 function M.ParameterMapEntry(Values, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterMapEntry")
 	local t = { 
@@ -866,8 +866,8 @@ end
 
 --- Create a structure of type ListReviewableHITsResponse
 --  
--- @param NumResults [Integer] &lt;p&gt; The number of HITs on this page in the filtered results list, equivalent to the number of HITs being returned by this call. &lt;/p&gt;
--- @param HITs [HITList] &lt;p&gt; The list of HIT elements returned by the query.&lt;/p&gt;
+-- @param NumResults [Integer] <p> The number of HITs on this page in the filtered results list, equivalent to the number of HITs being returned by this call. </p>
+-- @param HITs [HITList] <p> The list of HIT elements returned by the query.</p>
 -- @param NextToken [PaginationToken]  
 function M.ListReviewableHITsResponse(NumResults, HITs, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListReviewableHITsResponse")
@@ -895,8 +895,8 @@ end
 
 --- Create a structure of type ListQualificationTypesResponse
 --  
--- @param NumResults [Integer] &lt;p&gt; The number of Qualification types on this page in the filtered results list, equivalent to the number of types this operation returns. &lt;/p&gt;
--- @param QualificationTypes [QualificationTypeList] &lt;p&gt; The list of QualificationType elements returned by the query. &lt;/p&gt;
+-- @param NumResults [Integer] <p> The number of Qualification types on this page in the filtered results list, equivalent to the number of types this operation returns. </p>
+-- @param QualificationTypes [QualificationTypeList] <p> The list of QualificationType elements returned by the query. </p>
 -- @param NextToken [PaginationToken]  
 function M.ListQualificationTypesResponse(NumResults, QualificationTypes, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListQualificationTypesResponse")
@@ -925,9 +925,9 @@ end
 
 --- Create a structure of type ApproveAssignmentRequest
 --  
--- @param AssignmentId [EntityId] &lt;p&gt; The ID of the assignment. The assignment must correspond to a HIT created by the Requester. &lt;/p&gt;
--- @param RequesterFeedback [String] &lt;p&gt; A message for the Worker, which the Worker can see in the Status section of the web site. &lt;/p&gt;
--- @param OverrideRejection [Boolean] &lt;p&gt; A flag indicating that an assignment should be approved even if it was previously rejected. Defaults to &lt;code&gt;False&lt;/code&gt;. &lt;/p&gt;
+-- @param AssignmentId [EntityId] <p> The ID of the assignment. The assignment must correspond to a HIT created by the Requester. </p>
+-- @param RequesterFeedback [String] <p> A message for the Worker, which the Worker can see in the Status section of the web site. </p>
+-- @param OverrideRejection [Boolean] <p> A flag indicating that an assignment should be approved even if it was previously rejected. Defaults to <code>False</code>. </p>
 -- Required parameter: AssignmentId
 function M.ApproveAssignmentRequest(AssignmentId, RequesterFeedback, OverrideRejection, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApproveAssignmentRequest")
@@ -956,8 +956,8 @@ end
 
 --- Create a structure of type GetQualificationScoreRequest
 --  
--- @param WorkerId [CustomerId] &lt;p&gt;The ID of the Worker whose Qualification is being updated.&lt;/p&gt;
--- @param QualificationTypeId [EntityId] &lt;p&gt;The ID of the QualificationType.&lt;/p&gt;
+-- @param WorkerId [CustomerId] <p>The ID of the Worker whose Qualification is being updated.</p>
+-- @param QualificationTypeId [EntityId] <p>The ID of the QualificationType.</p>
 -- Required parameter: QualificationTypeId
 -- Required parameter: WorkerId
 function M.GetQualificationScoreRequest(WorkerId, QualificationTypeId, ...)
@@ -983,7 +983,7 @@ end
 
 --- Create a structure of type CreateHITTypeResponse
 --  
--- @param HITTypeId [EntityId] &lt;p&gt; The ID of the newly registered HIT type.&lt;/p&gt;
+-- @param HITTypeId [EntityId] <p> The ID of the newly registered HIT type.</p>
 function M.CreateHITTypeResponse(HITTypeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHITTypeResponse")
 	local t = { 
@@ -1026,22 +1026,22 @@ end
 
 --- Create a structure of type CreateHITRequest
 --  
--- @param HITLayoutParameters [HITLayoutParameterList] &lt;p&gt; If the HITLayoutId is provided, any placeholder values must be filled in with values using the HITLayoutParameter structure. For more information, see HITLayout. &lt;/p&gt;
--- @param RequesterAnnotation [String] &lt;p&gt; An arbitrary data field. The RequesterAnnotation parameter lets your application attach arbitrary data to the HIT for tracking purposes. For example, this parameter could be an identifier internal to the Requester's application that corresponds with the HIT. &lt;/p&gt; &lt;p&gt; The RequesterAnnotation parameter for a HIT is only visible to the Requester who created the HIT. It is not shown to the Worker, or any other Requester. &lt;/p&gt; &lt;p&gt; The RequesterAnnotation parameter may be different for each HIT you submit. It does not affect how your HITs are grouped. &lt;/p&gt;
--- @param AutoApprovalDelayInSeconds [Long] &lt;p&gt; The number of seconds after an assignment for the HIT has been submitted, after which the assignment is considered Approved automatically unless the Requester explicitly rejects it. &lt;/p&gt;
--- @param MaxAssignments [Integer] &lt;p&gt; The number of times the HIT can be accepted and completed before the HIT becomes unavailable. &lt;/p&gt;
--- @param Title [String] &lt;p&gt; The title of the HIT. A title should be short and descriptive about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT title appears in search results, and everywhere the HIT is mentioned. &lt;/p&gt;
--- @param Question [String] &lt;p&gt; The data the person completing the HIT uses to produce the results. &lt;/p&gt; &lt;p&gt; Constraints: Must be a QuestionForm data structure, an ExternalQuestion data structure, or an HTMLQuestion data structure. The XML question data must not be larger than 64 kilobytes (65,535 bytes) in size, including whitespace. &lt;/p&gt; &lt;p&gt;Either a Question parameter or a HITLayoutId parameter must be provided.&lt;/p&gt;
--- @param UniqueRequestToken [IdempotencyToken] &lt;p&gt; A unique identifier for this request which allows you to retry the call on error without creating duplicate HITs. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the HIT already exists in the system from a previous call using the same UniqueRequestToken, subsequent calls will return a AWS.MechanicalTurk.HitAlreadyExists error with a message containing the HITId. &lt;/p&gt; &lt;note&gt; &lt;p&gt; Note: It is your responsibility to ensure uniqueness of the token. The unique token expires after 24 hours. Subsequent calls using the same UniqueRequestToken made after the 24 hour limit could create duplicate HITs. &lt;/p&gt; &lt;/note&gt;
--- @param AssignmentDurationInSeconds [Long] &lt;p&gt; The amount of time, in seconds, that a Worker has to complete the HIT after accepting it. If a Worker does not complete the assignment within the specified duration, the assignment is considered abandoned. If the HIT is still active (that is, its lifetime has not elapsed), the assignment becomes available for other users to find and accept. &lt;/p&gt;
--- @param AssignmentReviewPolicy [ReviewPolicy] &lt;p&gt; The Assignment-level Review Policy applies to the assignments under the HIT. You can specify for Mechanical Turk to take various actions based on the policy. &lt;/p&gt;
--- @param QualificationRequirements [QualificationRequirementList] &lt;p&gt; A condition that a Worker's Qualifications must meet before the Worker is allowed to accept and complete the HIT. &lt;/p&gt;
--- @param HITReviewPolicy [ReviewPolicy] &lt;p&gt; The HIT-level Review Policy applies to the HIT. You can specify for Mechanical Turk to take various actions based on the policy. &lt;/p&gt;
--- @param Keywords [String] &lt;p&gt; One or more words or phrases that describe the HIT, separated by commas. These words are used in searches to find HITs. &lt;/p&gt;
--- @param Reward [NumericValue] &lt;p&gt; The amount of money the Requester will pay a Worker for successfully completing the HIT. &lt;/p&gt;
--- @param HITLayoutId [EntityId] &lt;p&gt; The HITLayoutId allows you to use a pre-existing HIT design with placeholder values and create an additional HIT by providing those values as HITLayoutParameters. &lt;/p&gt; &lt;p&gt; Constraints: Either a Question parameter or a HITLayoutId parameter must be provided. &lt;/p&gt;
--- @param LifetimeInSeconds [Long] &lt;p&gt; An amount of time, in seconds, after which the HIT is no longer available for users to accept. After the lifetime of the HIT elapses, the HIT no longer appears in HIT searches, even if not all of the assignments for the HIT have been accepted. &lt;/p&gt;
--- @param Description [String] &lt;p&gt; A general description of the HIT. A description includes detailed information about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT description appears in the expanded view of search results, and in the HIT and assignment screens. A good description gives the user enough information to evaluate the HIT before accepting it. &lt;/p&gt;
+-- @param HITLayoutParameters [HITLayoutParameterList] <p> If the HITLayoutId is provided, any placeholder values must be filled in with values using the HITLayoutParameter structure. For more information, see HITLayout. </p>
+-- @param RequesterAnnotation [String] <p> An arbitrary data field. The RequesterAnnotation parameter lets your application attach arbitrary data to the HIT for tracking purposes. For example, this parameter could be an identifier internal to the Requester's application that corresponds with the HIT. </p> <p> The RequesterAnnotation parameter for a HIT is only visible to the Requester who created the HIT. It is not shown to the Worker, or any other Requester. </p> <p> The RequesterAnnotation parameter may be different for each HIT you submit. It does not affect how your HITs are grouped. </p>
+-- @param AutoApprovalDelayInSeconds [Long] <p> The number of seconds after an assignment for the HIT has been submitted, after which the assignment is considered Approved automatically unless the Requester explicitly rejects it. </p>
+-- @param MaxAssignments [Integer] <p> The number of times the HIT can be accepted and completed before the HIT becomes unavailable. </p>
+-- @param Title [String] <p> The title of the HIT. A title should be short and descriptive about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT title appears in search results, and everywhere the HIT is mentioned. </p>
+-- @param Question [String] <p> The data the person completing the HIT uses to produce the results. </p> <p> Constraints: Must be a QuestionForm data structure, an ExternalQuestion data structure, or an HTMLQuestion data structure. The XML question data must not be larger than 64 kilobytes (65,535 bytes) in size, including whitespace. </p> <p>Either a Question parameter or a HITLayoutId parameter must be provided.</p>
+-- @param UniqueRequestToken [IdempotencyToken] <p> A unique identifier for this request which allows you to retry the call on error without creating duplicate HITs. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the HIT already exists in the system from a previous call using the same UniqueRequestToken, subsequent calls will return a AWS.MechanicalTurk.HitAlreadyExists error with a message containing the HITId. </p> <note> <p> Note: It is your responsibility to ensure uniqueness of the token. The unique token expires after 24 hours. Subsequent calls using the same UniqueRequestToken made after the 24 hour limit could create duplicate HITs. </p> </note>
+-- @param AssignmentDurationInSeconds [Long] <p> The amount of time, in seconds, that a Worker has to complete the HIT after accepting it. If a Worker does not complete the assignment within the specified duration, the assignment is considered abandoned. If the HIT is still active (that is, its lifetime has not elapsed), the assignment becomes available for other users to find and accept. </p>
+-- @param AssignmentReviewPolicy [ReviewPolicy] <p> The Assignment-level Review Policy applies to the assignments under the HIT. You can specify for Mechanical Turk to take various actions based on the policy. </p>
+-- @param QualificationRequirements [QualificationRequirementList] <p> A condition that a Worker's Qualifications must meet before the Worker is allowed to accept and complete the HIT. </p>
+-- @param HITReviewPolicy [ReviewPolicy] <p> The HIT-level Review Policy applies to the HIT. You can specify for Mechanical Turk to take various actions based on the policy. </p>
+-- @param Keywords [String] <p> One or more words or phrases that describe the HIT, separated by commas. These words are used in searches to find HITs. </p>
+-- @param Reward [NumericValue] <p> The amount of money the Requester will pay a Worker for successfully completing the HIT. </p>
+-- @param HITLayoutId [EntityId] <p> The HITLayoutId allows you to use a pre-existing HIT design with placeholder values and create an additional HIT by providing those values as HITLayoutParameters. </p> <p> Constraints: Either a Question parameter or a HITLayoutId parameter must be provided. </p>
+-- @param LifetimeInSeconds [Long] <p> An amount of time, in seconds, after which the HIT is no longer available for users to accept. After the lifetime of the HIT elapses, the HIT no longer appears in HIT searches, even if not all of the assignments for the HIT have been accepted. </p>
+-- @param Description [String] <p> A general description of the HIT. A description includes detailed information about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT description appears in the expanded view of search results, and in the HIT and assignment screens. A good description gives the user enough information to evaluate the HIT before accepting it. </p>
 -- Required parameter: LifetimeInSeconds
 -- Required parameter: AssignmentDurationInSeconds
 -- Required parameter: Reward
@@ -1084,9 +1084,9 @@ function M.AssertReviewReport(struct)
 end
 
 --- Create a structure of type ReviewReport
--- &lt;p&gt; Contains both ReviewResult and ReviewAction elements for a particular HIT. &lt;/p&gt;
--- @param ReviewActions [ReviewActionDetailList] &lt;p&gt; A list of ReviewAction objects for each action specified in the Review Policy. &lt;/p&gt;
--- @param ReviewResults [ReviewResultDetailList] &lt;p&gt; A list of ReviewResults objects for each action specified in the Review Policy. &lt;/p&gt;
+-- <p> Contains both ReviewResult and ReviewAction elements for a particular HIT. </p>
+-- @param ReviewActions [ReviewActionDetailList] <p> A list of ReviewAction objects for each action specified in the Review Policy. </p>
+-- @param ReviewResults [ReviewResultDetailList] <p> A list of ReviewResults objects for each action specified in the Review Policy. </p>
 function M.ReviewReport(ReviewActions, ReviewResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReviewReport")
 	local t = { 
@@ -1116,15 +1116,15 @@ function M.AssertReviewActionDetail(struct)
 end
 
 --- Create a structure of type ReviewActionDetail
--- &lt;p&gt; Both the AssignmentReviewReport and the HITReviewReport elements contains the ReviewActionDetail data structure. This structure is returned multiple times for each action specified in the Review Policy. &lt;/p&gt;
--- @param Status [ReviewActionStatus] &lt;p&gt; The current disposition of the action: INTENDED, SUCCEEDED, FAILED, or CANCELLED. &lt;/p&gt;
--- @param ActionName [String] &lt;p&gt; The nature of the action itself. The Review Policy is responsible for examining the HIT and Assignments, emitting results, and deciding which other actions will be necessary. &lt;/p&gt;
--- @param TargetType [String] &lt;p&gt; The type of object in TargetId.&lt;/p&gt;
--- @param TargetId [EntityId] &lt;p&gt; The specific HITId or AssignmentID targeted by the action.&lt;/p&gt;
--- @param ErrorCode [String] &lt;p&gt; Present only when the Results have a FAILED Status.&lt;/p&gt;
--- @param ActionId [EntityId] &lt;p&gt;The unique identifier for the action.&lt;/p&gt;
--- @param CompleteTime [Timestamp] &lt;p&gt; The date when the action was completed.&lt;/p&gt;
--- @param Result [String] &lt;p&gt; A description of the outcome of the review.&lt;/p&gt;
+-- <p> Both the AssignmentReviewReport and the HITReviewReport elements contains the ReviewActionDetail data structure. This structure is returned multiple times for each action specified in the Review Policy. </p>
+-- @param Status [ReviewActionStatus] <p> The current disposition of the action: INTENDED, SUCCEEDED, FAILED, or CANCELLED. </p>
+-- @param ActionName [String] <p> The nature of the action itself. The Review Policy is responsible for examining the HIT and Assignments, emitting results, and deciding which other actions will be necessary. </p>
+-- @param TargetType [String] <p> The type of object in TargetId.</p>
+-- @param TargetId [EntityId] <p> The specific HITId or AssignmentID targeted by the action.</p>
+-- @param ErrorCode [String] <p> Present only when the Results have a FAILED Status.</p>
+-- @param ActionId [EntityId] <p>The unique identifier for the action.</p>
+-- @param CompleteTime [Timestamp] <p> The date when the action was completed.</p>
+-- @param Result [String] <p> A description of the outcome of the review.</p>
 function M.ReviewActionDetail(Status, ActionName, TargetType, TargetId, ErrorCode, ActionId, CompleteTime, Result, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReviewActionDetail")
 	local t = { 
@@ -1154,9 +1154,9 @@ function M.AssertWorkerBlock(struct)
 end
 
 --- Create a structure of type WorkerBlock
--- &lt;p&gt; The WorkerBlock data structure represents a Worker who has been blocked. It has two elements: the WorkerId and the Reason for the block. &lt;/p&gt;
--- @param WorkerId [CustomerId] &lt;p&gt; The ID of the Worker who accepted the HIT.&lt;/p&gt;
--- @param Reason [String] &lt;p&gt; A message explaining the reason the Worker was blocked. &lt;/p&gt;
+-- <p> The WorkerBlock data structure represents a Worker who has been blocked. It has two elements: the WorkerId and the Reason for the block. </p>
+-- @param WorkerId [CustomerId] <p> The ID of the Worker who accepted the HIT.</p>
+-- @param Reason [String] <p> A message explaining the reason the Worker was blocked. </p>
 function M.WorkerBlock(WorkerId, Reason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkerBlock")
 	local t = { 
@@ -1184,10 +1184,10 @@ end
 
 --- Create a structure of type ListWorkersWithQualificationTypeRequest
 --  
--- @param Status [QualificationStatus] &lt;p&gt; The status of the Qualifications to return. Can be &lt;code&gt;Granted | Revoked&lt;/code&gt;. &lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;Pagination Token&lt;/p&gt;
--- @param MaxResults [ResultSize] &lt;p&gt; Limit the number of results returned. &lt;/p&gt;
--- @param QualificationTypeId [EntityId] &lt;p&gt;The ID of the Qualification type of the Qualifications to return.&lt;/p&gt;
+-- @param Status [QualificationStatus] <p> The status of the Qualifications to return. Can be <code>Granted | Revoked</code>. </p>
+-- @param NextToken [PaginationToken] <p>Pagination Token</p>
+-- @param MaxResults [ResultSize] <p> Limit the number of results returned. </p>
+-- @param QualificationTypeId [EntityId] <p>The ID of the Qualification type of the Qualifications to return.</p>
 -- Required parameter: QualificationTypeId
 function M.ListWorkersWithQualificationTypeRequest(Status, NextToken, MaxResults, QualificationTypeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListWorkersWithQualificationTypeRequest")
@@ -1216,9 +1216,9 @@ end
 
 --- Create a structure of type ListWorkerBlocksResponse
 --  
--- @param NumResults [Integer] &lt;p&gt; The number of assignments on the page in the filtered results list, equivalent to the number of assignments returned by this call.&lt;/p&gt;
+-- @param NumResults [Integer] <p> The number of assignments on the page in the filtered results list, equivalent to the number of assignments returned by this call.</p>
 -- @param NextToken [PaginationToken]  
--- @param WorkerBlocks [WorkerBlockList] &lt;p&gt; The list of WorkerBlocks, containing the collection of Worker IDs and reasons for blocking.&lt;/p&gt;
+-- @param WorkerBlocks [WorkerBlockList] <p> The list of WorkerBlocks, containing the collection of Worker IDs and reasons for blocking.</p>
 function M.ListWorkerBlocksResponse(NumResults, NextToken, WorkerBlocks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListWorkerBlocksResponse")
 	local t = { 
@@ -1245,8 +1245,8 @@ end
 
 --- Create a structure of type DeleteWorkerBlockRequest
 --  
--- @param WorkerId [CustomerId] &lt;p&gt;The ID of the Worker to unblock.&lt;/p&gt;
--- @param Reason [String] &lt;p&gt;A message that explains the reason for unblocking the Worker. The Worker does not see this message.&lt;/p&gt;
+-- @param WorkerId [CustomerId] <p>The ID of the Worker to unblock.</p>
+-- @param Reason [String] <p>A message that explains the reason for unblocking the Worker. The Worker does not see this message.</p>
 -- Required parameter: WorkerId
 function M.DeleteWorkerBlockRequest(WorkerId, Reason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteWorkerBlockRequest")
@@ -1274,9 +1274,9 @@ end
 
 --- Create a structure of type ListBonusPaymentsRequest
 --  
--- @param AssignmentId [EntityId] &lt;p&gt;The ID of the assignment associated with the bonus payments to retrieve. If specified, only bonus payments for the given assignment are returned. Either the HITId parameter or the AssignmentId parameter must be specified&lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;Pagination token&lt;/p&gt;
--- @param HITId [EntityId] &lt;p&gt;The ID of the HIT associated with the bonus payments to retrieve. If not specified, all bonus payments for all assignments for the given HIT are returned. Either the HITId parameter or the AssignmentId parameter must be specified&lt;/p&gt;
+-- @param AssignmentId [EntityId] <p>The ID of the assignment associated with the bonus payments to retrieve. If specified, only bonus payments for the given assignment are returned. Either the HITId parameter or the AssignmentId parameter must be specified</p>
+-- @param NextToken [PaginationToken] <p>Pagination token</p>
+-- @param HITId [EntityId] <p>The ID of the HIT associated with the bonus payments to retrieve. If not specified, all bonus payments for all assignments for the given HIT are returned. Either the HITId parameter or the AssignmentId parameter must be specified</p>
 -- @param MaxResults [ResultSize]  
 function M.ListBonusPaymentsRequest(AssignmentId, NextToken, HITId, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBonusPaymentsRequest")
@@ -1305,9 +1305,9 @@ end
 
 --- Create a structure of type ListBonusPaymentsResponse
 --  
--- @param NumResults [Integer] &lt;p&gt;The number of bonus payments on this page in the filtered results list, equivalent to the number of bonus payments being returned by this call. &lt;/p&gt;
+-- @param NumResults [Integer] <p>The number of bonus payments on this page in the filtered results list, equivalent to the number of bonus payments being returned by this call. </p>
 -- @param NextToken [PaginationToken]  
--- @param BonusPayments [BonusPaymentList] &lt;p&gt;A successful request to the ListBonusPayments operation returns a list of BonusPayment objects. &lt;/p&gt;
+-- @param BonusPayments [BonusPaymentList] <p>A successful request to the ListBonusPayments operation returns a list of BonusPayment objects. </p>
 function M.ListBonusPaymentsResponse(NumResults, NextToken, BonusPayments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBonusPaymentsResponse")
 	local t = { 
@@ -1332,7 +1332,7 @@ end
 
 --- Create a structure of type CreateQualificationTypeResponse
 --  
--- @param QualificationType [QualificationType] &lt;p&gt;The created Qualification type, returned as a QualificationType data structure.&lt;/p&gt;
+-- @param QualificationType [QualificationType] <p>The created Qualification type, returned as a QualificationType data structure.</p>
 function M.CreateQualificationTypeResponse(QualificationType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateQualificationTypeResponse")
 	local t = { 
@@ -1365,13 +1365,13 @@ end
 
 --- Create a structure of type CreateHITTypeRequest
 --  
--- @param Description [String] &lt;p&gt; A general description of the HIT. A description includes detailed information about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT description appears in the expanded view of search results, and in the HIT and assignment screens. A good description gives the user enough information to evaluate the HIT before accepting it. &lt;/p&gt;
--- @param Title [String] &lt;p&gt; The title of the HIT. A title should be short and descriptive about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT title appears in search results, and everywhere the HIT is mentioned. &lt;/p&gt;
--- @param AssignmentDurationInSeconds [Long] &lt;p&gt; The amount of time, in seconds, that a Worker has to complete the HIT after accepting it. If a Worker does not complete the assignment within the specified duration, the assignment is considered abandoned. If the HIT is still active (that is, its lifetime has not elapsed), the assignment becomes available for other users to find and accept. &lt;/p&gt;
--- @param QualificationRequirements [QualificationRequirementList] &lt;p&gt; A condition that a Worker's Qualifications must meet before the Worker is allowed to accept and complete the HIT. &lt;/p&gt;
--- @param Keywords [String] &lt;p&gt; One or more words or phrases that describe the HIT, separated by commas. These words are used in searches to find HITs. &lt;/p&gt;
--- @param Reward [NumericValue] &lt;p&gt; The amount of money the Requester will pay a Worker for successfully completing the HIT. &lt;/p&gt;
--- @param AutoApprovalDelayInSeconds [Long] &lt;p&gt; The number of seconds after an assignment for the HIT has been submitted, after which the assignment is considered Approved automatically unless the Requester explicitly rejects it. &lt;/p&gt;
+-- @param Description [String] <p> A general description of the HIT. A description includes detailed information about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT description appears in the expanded view of search results, and in the HIT and assignment screens. A good description gives the user enough information to evaluate the HIT before accepting it. </p>
+-- @param Title [String] <p> The title of the HIT. A title should be short and descriptive about the kind of task the HIT contains. On the Amazon Mechanical Turk web site, the HIT title appears in search results, and everywhere the HIT is mentioned. </p>
+-- @param AssignmentDurationInSeconds [Long] <p> The amount of time, in seconds, that a Worker has to complete the HIT after accepting it. If a Worker does not complete the assignment within the specified duration, the assignment is considered abandoned. If the HIT is still active (that is, its lifetime has not elapsed), the assignment becomes available for other users to find and accept. </p>
+-- @param QualificationRequirements [QualificationRequirementList] <p> A condition that a Worker's Qualifications must meet before the Worker is allowed to accept and complete the HIT. </p>
+-- @param Keywords [String] <p> One or more words or phrases that describe the HIT, separated by commas. These words are used in searches to find HITs. </p>
+-- @param Reward [NumericValue] <p> The amount of money the Requester will pay a Worker for successfully completing the HIT. </p>
+-- @param AutoApprovalDelayInSeconds [Long] <p> The number of seconds after an assignment for the HIT has been submitted, after which the assignment is considered Approved automatically unless the Requester explicitly rejects it. </p>
 -- Required parameter: AssignmentDurationInSeconds
 -- Required parameter: Reward
 -- Required parameter: Title
@@ -1404,7 +1404,7 @@ end
 
 --- Create a structure of type CreateHITResponse
 --  
--- @param HIT [HIT] &lt;p&gt; Contains the newly created HIT data. For a description of the HIT data structure as it appears in responses, see the HIT Data Structure documentation. &lt;/p&gt;
+-- @param HIT [HIT] <p> Contains the newly created HIT data. For a description of the HIT data structure as it appears in responses, see the HIT Data Structure documentation. </p>
 function M.CreateHITResponse(HIT, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHITResponse")
 	local t = { 
@@ -1429,8 +1429,8 @@ end
 
 --- Create a structure of type RejectAssignmentRequest
 --  
--- @param AssignmentId [EntityId] &lt;p&gt; The ID of the assignment. The assignment must correspond to a HIT created by the Requester. &lt;/p&gt;
--- @param RequesterFeedback [String] &lt;p&gt; A message for the Worker, which the Worker can see in the Status section of the web site. &lt;/p&gt;
+-- @param AssignmentId [EntityId] <p> The ID of the assignment. The assignment must correspond to a HIT created by the Requester. </p>
+-- @param RequesterFeedback [String] <p> A message for the Worker, which the Worker can see in the Status section of the web site. </p>
 -- Required parameter: AssignmentId
 function M.RejectAssignmentRequest(AssignmentId, RequesterFeedback, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RejectAssignmentRequest")
@@ -1458,9 +1458,9 @@ end
 
 --- Create a structure of type UpdateNotificationSettingsRequest
 --  
--- @param Active [Boolean] &lt;p&gt; Specifies whether notifications are sent for HITs of this HIT type, according to the notification specification. You must specify either the Notification parameter or the Active parameter for the call to UpdateNotificationSettings to succeed. &lt;/p&gt;
--- @param HITTypeId [EntityId] &lt;p&gt; The ID of the HIT type whose notification specification is being updated. &lt;/p&gt;
--- @param Notification [NotificationSpecification] &lt;p&gt; The notification specification for the HIT type. &lt;/p&gt;
+-- @param Active [Boolean] <p> Specifies whether notifications are sent for HITs of this HIT type, according to the notification specification. You must specify either the Notification parameter or the Active parameter for the call to UpdateNotificationSettings to succeed. </p>
+-- @param HITTypeId [EntityId] <p> The ID of the HIT type whose notification specification is being updated. </p>
+-- @param Notification [NotificationSpecification] <p> The notification specification for the HIT type. </p>
 -- Required parameter: HITTypeId
 function M.UpdateNotificationSettingsRequest(Active, HITTypeId, Notification, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateNotificationSettingsRequest")
@@ -1490,13 +1490,13 @@ function M.AssertQualification(struct)
 end
 
 --- Create a structure of type Qualification
--- &lt;p&gt;The Qualification data structure represents a Qualification assigned to a user, including the Qualification type and the value (score).&lt;/p&gt;
--- @param Status [QualificationStatus] &lt;p&gt; The status of the Qualification. Valid values are Granted | Revoked.&lt;/p&gt;
--- @param QualificationTypeId [EntityId] &lt;p&gt; The ID of the Qualification type for the Qualification.&lt;/p&gt;
--- @param WorkerId [CustomerId] &lt;p&gt; The ID of the Worker who possesses the Qualification. &lt;/p&gt;
--- @param LocaleValue [Locale] &lt;p&gt;The Qualification data structure represents a Qualification assigned to a user, including the Qualification type and the value (score).&lt;/p&gt;
--- @param GrantTime [Timestamp] &lt;p&gt; The date and time the Qualification was granted to the Worker. If the Worker's Qualification was revoked, and then re-granted based on a new Qualification request, GrantTime is the date and time of the last call to the AcceptQualificationRequest operation.&lt;/p&gt;
--- @param IntegerValue [Integer] &lt;p&gt; The value (score) of the Qualification, if the Qualification has an integer value.&lt;/p&gt;
+-- <p>The Qualification data structure represents a Qualification assigned to a user, including the Qualification type and the value (score).</p>
+-- @param Status [QualificationStatus] <p> The status of the Qualification. Valid values are Granted | Revoked.</p>
+-- @param QualificationTypeId [EntityId] <p> The ID of the Qualification type for the Qualification.</p>
+-- @param WorkerId [CustomerId] <p> The ID of the Worker who possesses the Qualification. </p>
+-- @param LocaleValue [Locale] <p>The Qualification data structure represents a Qualification assigned to a user, including the Qualification type and the value (score).</p>
+-- @param GrantTime [Timestamp] <p> The date and time the Qualification was granted to the Worker. If the Worker's Qualification was revoked, and then re-granted based on a new Qualification request, GrantTime is the date and time of the last call to the AcceptQualificationRequest operation.</p>
+-- @param IntegerValue [Integer] <p> The value (score) of the Qualification, if the Qualification has an integer value.</p>
 function M.Qualification(Status, QualificationTypeId, WorkerId, LocaleValue, GrantTime, IntegerValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Qualification")
 	local t = { 
@@ -1544,7 +1544,7 @@ end
 
 --- Create a structure of type GetQualificationScoreResponse
 --  
--- @param Qualification [Qualification] &lt;p&gt; The Qualification data structure of the Qualification assigned to a user, including the Qualification type and the value (score). &lt;/p&gt;
+-- @param Qualification [Qualification] <p> The Qualification data structure of the Qualification assigned to a user, including the Qualification type and the value (score). </p>
 function M.GetQualificationScoreResponse(Qualification, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetQualificationScoreResponse")
 	local t = { 
@@ -1590,12 +1590,12 @@ function M.AssertBonusPayment(struct)
 end
 
 --- Create a structure of type BonusPayment
--- &lt;p&gt;An object representing a Bonus payment paid to a Worker.&lt;/p&gt;
--- @param AssignmentId [EntityId] &lt;p&gt;The ID of the assignment associated with this bonus payment.&lt;/p&gt;
--- @param WorkerId [CustomerId] &lt;p&gt;The ID of the Worker to whom the bonus was paid.&lt;/p&gt;
--- @param BonusAmount [NumericValue] &lt;p&gt;An object representing a Bonus payment paid to a Worker.&lt;/p&gt;
--- @param GrantTime [Timestamp] &lt;p&gt;The date and time of when the bonus was granted.&lt;/p&gt;
--- @param Reason [String] &lt;p&gt;The Reason text given when the bonus was granted, if any.&lt;/p&gt;
+-- <p>An object representing a Bonus payment paid to a Worker.</p>
+-- @param AssignmentId [EntityId] <p>The ID of the assignment associated with this bonus payment.</p>
+-- @param WorkerId [CustomerId] <p>The ID of the Worker to whom the bonus was paid.</p>
+-- @param BonusAmount [NumericValue] <p>An object representing a Bonus payment paid to a Worker.</p>
+-- @param GrantTime [Timestamp] <p>The date and time of when the bonus was granted.</p>
+-- @param Reason [String] <p>The Reason text given when the bonus was granted, if any.</p>
 function M.BonusPayment(AssignmentId, WorkerId, BonusAmount, GrantTime, Reason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BonusPayment")
 	local t = { 
@@ -1624,8 +1624,8 @@ end
 
 --- Create a structure of type RejectQualificationRequestRequest
 --  
--- @param Reason [String] &lt;p&gt;A text message explaining why the request was rejected, to be shown to the Worker who made the request.&lt;/p&gt;
--- @param QualificationRequestId [String] &lt;p&gt; The ID of the Qualification request, as returned by the &lt;code&gt;ListQualificationRequests&lt;/code&gt; operation. &lt;/p&gt;
+-- @param Reason [String] <p>A text message explaining why the request was rejected, to be shown to the Worker who made the request.</p>
+-- @param QualificationRequestId [String] <p> The ID of the Qualification request, as returned by the <code>ListQualificationRequests</code> operation. </p>
 -- Required parameter: QualificationRequestId
 function M.RejectQualificationRequestRequest(Reason, QualificationRequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RejectQualificationRequestRequest")
@@ -1681,20 +1681,20 @@ function M.AssertQualificationType(struct)
 end
 
 --- Create a structure of type QualificationType
--- &lt;p&gt; The QualificationType data structure represents a Qualification type, a description of a property of a Worker that must match the requirements of a HIT for the Worker to be able to accept the HIT. The type also describes how a Worker can obtain a Qualification of that type, such as through a Qualification test. &lt;/p&gt;
--- @param AutoGranted [Boolean] &lt;p&gt;Specifies that requests for the Qualification type are granted immediately, without prompting the Worker with a Qualification test. Valid values are True | False.&lt;/p&gt;
--- @param Description [String] &lt;p&gt; A long description for the Qualification type. &lt;/p&gt;
--- @param QualificationTypeId [EntityId] &lt;p&gt; A unique identifier for the Qualification type. A Qualification type is given a Qualification type ID when you call the CreateQualificationType operation. &lt;/p&gt;
--- @param AutoGrantedValue [Integer] &lt;p&gt; The Qualification integer value to use for automatically granted Qualifications, if AutoGranted is true. This is 1 by default. &lt;/p&gt;
--- @param CreationTime [Timestamp] &lt;p&gt; The date and time the Qualification type was created. &lt;/p&gt;
--- @param TestDurationInSeconds [Long] &lt;p&gt; The amount of time, in seconds, given to a Worker to complete the Qualification test, beginning from the time the Worker requests the Qualification. &lt;/p&gt;
--- @param QualificationTypeStatus [QualificationTypeStatus] &lt;p&gt; The status of the Qualification type. A Qualification type's status determines if users can apply to receive a Qualification of this type, and if HITs can be created with requirements based on this type. Valid values are Active | Inactive. &lt;/p&gt;
--- @param Test [String] &lt;p&gt; The questions for a Qualification test associated with this Qualification type that a user can take to obtain a Qualification of this type. This parameter must be specified if AnswerKey is present. A Qualification type cannot have both a specified Test parameter and an AutoGranted value of true. &lt;/p&gt;
--- @param AnswerKey [String] &lt;p&gt;The answers to the Qualification test specified in the Test parameter.&lt;/p&gt;
--- @param IsRequestable [Boolean] &lt;p&gt; Specifies whether the Qualification type is one that a user can request through the Amazon Mechanical Turk web site, such as by taking a Qualification test. This value is False for Qualifications assigned automatically by the system. Valid values are True | False. &lt;/p&gt;
--- @param Keywords [String] &lt;p&gt; One or more words or phrases that describe theQualification type, separated by commas. The Keywords make the type easier to find using a search. &lt;/p&gt;
--- @param RetryDelayInSeconds [Long] &lt;p&gt; The amount of time, in seconds, Workers must wait after taking the Qualification test before they can take it again. Workers can take a Qualification test multiple times if they were not granted the Qualification from a previous attempt, or if the test offers a gradient score and they want a better score. If not specified, retries are disabled and Workers can request a Qualification only once. &lt;/p&gt;
--- @param Name [String] &lt;p&gt; The name of the Qualification type. The type name is used to identify the type, and to find the type using a Qualification type search. &lt;/p&gt;
+-- <p> The QualificationType data structure represents a Qualification type, a description of a property of a Worker that must match the requirements of a HIT for the Worker to be able to accept the HIT. The type also describes how a Worker can obtain a Qualification of that type, such as through a Qualification test. </p>
+-- @param AutoGranted [Boolean] <p>Specifies that requests for the Qualification type are granted immediately, without prompting the Worker with a Qualification test. Valid values are True | False.</p>
+-- @param Description [String] <p> A long description for the Qualification type. </p>
+-- @param QualificationTypeId [EntityId] <p> A unique identifier for the Qualification type. A Qualification type is given a Qualification type ID when you call the CreateQualificationType operation. </p>
+-- @param AutoGrantedValue [Integer] <p> The Qualification integer value to use for automatically granted Qualifications, if AutoGranted is true. This is 1 by default. </p>
+-- @param CreationTime [Timestamp] <p> The date and time the Qualification type was created. </p>
+-- @param TestDurationInSeconds [Long] <p> The amount of time, in seconds, given to a Worker to complete the Qualification test, beginning from the time the Worker requests the Qualification. </p>
+-- @param QualificationTypeStatus [QualificationTypeStatus] <p> The status of the Qualification type. A Qualification type's status determines if users can apply to receive a Qualification of this type, and if HITs can be created with requirements based on this type. Valid values are Active | Inactive. </p>
+-- @param Test [String] <p> The questions for a Qualification test associated with this Qualification type that a user can take to obtain a Qualification of this type. This parameter must be specified if AnswerKey is present. A Qualification type cannot have both a specified Test parameter and an AutoGranted value of true. </p>
+-- @param AnswerKey [String] <p>The answers to the Qualification test specified in the Test parameter.</p>
+-- @param IsRequestable [Boolean] <p> Specifies whether the Qualification type is one that a user can request through the Amazon Mechanical Turk web site, such as by taking a Qualification test. This value is False for Qualifications assigned automatically by the system. Valid values are True | False. </p>
+-- @param Keywords [String] <p> One or more words or phrases that describe theQualification type, separated by commas. The Keywords make the type easier to find using a search. </p>
+-- @param RetryDelayInSeconds [Long] <p> The amount of time, in seconds, Workers must wait after taking the Qualification test before they can take it again. Workers can take a Qualification test multiple times if they were not granted the Qualification from a previous attempt, or if the test offers a gradient score and they want a better score. If not specified, retries are disabled and Workers can request a Qualification only once. </p>
+-- @param Name [String] <p> The name of the Qualification type. The type name is used to identify the type, and to find the type using a Qualification type search. </p>
 function M.QualificationType(AutoGranted, Description, QualificationTypeId, AutoGrantedValue, CreationTime, TestDurationInSeconds, QualificationTypeStatus, Test, AnswerKey, IsRequestable, Keywords, RetryDelayInSeconds, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QualificationType")
 	local t = { 
@@ -1731,8 +1731,8 @@ end
 
 --- Create a structure of type UpdateHITReviewStatusRequest
 --  
--- @param Revert [Boolean] &lt;p&gt; Specifies how to update the HIT status. Default is &lt;code&gt;False&lt;/code&gt;. &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; Setting this to false will only transition a HIT from &lt;code&gt;Reviewable&lt;/code&gt; to &lt;code&gt;Reviewing&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; Setting this to true will only transition a HIT from &lt;code&gt;Reviewing&lt;/code&gt; to &lt;code&gt;Reviewable&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param HITId [EntityId] &lt;p&gt; The ID of the HIT to update. &lt;/p&gt;
+-- @param Revert [Boolean] <p> Specifies how to update the HIT status. Default is <code>False</code>. </p> <ul> <li> <p> Setting this to false will only transition a HIT from <code>Reviewable</code> to <code>Reviewing</code> </p> </li> <li> <p> Setting this to true will only transition a HIT from <code>Reviewing</code> to <code>Reviewable</code> </p> </li> </ul>
+-- @param HITId [EntityId] <p> The ID of the HIT to update. </p>
 -- Required parameter: HITId
 function M.UpdateHITReviewStatusRequest(Revert, HITId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateHITReviewStatusRequest")
@@ -1759,8 +1759,8 @@ end
 
 --- Create a structure of type ListQualificationRequestsResponse
 --  
--- @param NumResults [Integer] &lt;p&gt;The number of Qualification requests on this page in the filtered results list, equivalent to the number of Qualification requests being returned by this call.&lt;/p&gt;
--- @param QualificationRequests [QualificationRequestList] &lt;p&gt;The Qualification request. The response includes one QualificationRequest element for each Qualification request returned by the query.&lt;/p&gt;
+-- @param NumResults [Integer] <p>The number of Qualification requests on this page in the filtered results list, equivalent to the number of Qualification requests being returned by this call.</p>
+-- @param QualificationRequests [QualificationRequestList] <p>The Qualification request. The response includes one QualificationRequest element for each Qualification request returned by the query.</p>
 -- @param NextToken [PaginationToken]  
 function M.ListQualificationRequestsResponse(NumResults, QualificationRequests, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListQualificationRequestsResponse")
@@ -1787,10 +1787,10 @@ function M.AssertPolicyParameter(struct)
 end
 
 --- Create a structure of type PolicyParameter
--- &lt;p&gt; Name of the parameter from the Review policy. &lt;/p&gt;
--- @param MapEntries [ParameterMapEntryList] &lt;p&gt; List of ParameterMapEntry objects. &lt;/p&gt;
--- @param Values [StringList] &lt;p&gt; The list of values of the Parameter&lt;/p&gt;
--- @param Key [String] &lt;p&gt; Name of the parameter from the list of Review Polices. &lt;/p&gt;
+-- <p> Name of the parameter from the Review policy. </p>
+-- @param MapEntries [ParameterMapEntryList] <p> List of ParameterMapEntry objects. </p>
+-- @param Values [StringList] <p> The list of values of the Parameter</p>
+-- @param Key [String] <p> Name of the parameter from the list of Review Polices. </p>
 function M.PolicyParameter(MapEntries, Values, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyParameter")
 	local t = { 
@@ -1819,13 +1819,13 @@ function M.AssertReviewResultDetail(struct)
 end
 
 --- Create a structure of type ReviewResultDetail
--- &lt;p&gt; This data structure is returned multiple times for each result specified in the Review Policy. &lt;/p&gt;
--- @param QuestionId [EntityId] &lt;p&gt; Specifies the QuestionId the result is describing. Depending on whether the TargetType is a HIT or Assignment this results could specify multiple values. If TargetType is HIT and QuestionId is absent, then the result describes results of the HIT, including the HIT agreement score. If ObjectType is Assignment and QuestionId is absent, then the result describes the Worker's performance on the HIT. &lt;/p&gt;
--- @param SubjectType [String] &lt;p&gt; The type of the object from the SubjectId field.&lt;/p&gt;
--- @param Value [String] &lt;p&gt; The values of Key provided by the review policies you have selected. &lt;/p&gt;
--- @param ActionId [EntityId] &lt;p&gt; A unique identifier of the Review action result. &lt;/p&gt;
--- @param Key [String] &lt;p&gt; Key identifies the particular piece of reviewed information. &lt;/p&gt;
--- @param SubjectId [EntityId] &lt;p&gt;The HITID or AssignmentId about which this result was taken. Note that HIT-level Review Policies will often emit results about both the HIT itself and its Assignments, while Assignment-level review policies generally only emit results about the Assignment itself. &lt;/p&gt;
+-- <p> This data structure is returned multiple times for each result specified in the Review Policy. </p>
+-- @param QuestionId [EntityId] <p> Specifies the QuestionId the result is describing. Depending on whether the TargetType is a HIT or Assignment this results could specify multiple values. If TargetType is HIT and QuestionId is absent, then the result describes results of the HIT, including the HIT agreement score. If ObjectType is Assignment and QuestionId is absent, then the result describes the Worker's performance on the HIT. </p>
+-- @param SubjectType [String] <p> The type of the object from the SubjectId field.</p>
+-- @param Value [String] <p> The values of Key provided by the review policies you have selected. </p>
+-- @param ActionId [EntityId] <p> A unique identifier of the Review action result. </p>
+-- @param Key [String] <p> Key identifies the particular piece of reviewed information. </p>
+-- @param SubjectId [EntityId] <p>The HITID or AssignmentId about which this result was taken. Note that HIT-level Review Policies will often emit results about both the HIT itself and its Assignments, while Assignment-level review policies generally only emit results about the Assignment itself. </p>
 function M.ReviewResultDetail(QuestionId, SubjectType, Value, ActionId, Key, SubjectId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReviewResultDetail")
 	local t = { 
@@ -1874,7 +1874,7 @@ end
 
 --- Create a structure of type DeleteHITRequest
 --  
--- @param HITId [EntityId] &lt;p&gt;The ID of the HIT to be deleted.&lt;/p&gt;
+-- @param HITId [EntityId] <p>The ID of the HIT to be deleted.</p>
 -- Required parameter: HITId
 function M.DeleteHITRequest(HITId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHITRequest")
@@ -1919,7 +1919,7 @@ end
 
 --- Create a structure of type DeleteQualificationTypeRequest
 --  
--- @param QualificationTypeId [EntityId] &lt;p&gt;The ID of the QualificationType to dispose.&lt;/p&gt;
+-- @param QualificationTypeId [EntityId] <p>The ID of the QualificationType to dispose.</p>
 -- Required parameter: QualificationTypeId
 function M.DeleteQualificationTypeRequest(QualificationTypeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteQualificationTypeRequest")
@@ -1968,11 +1968,11 @@ end
 
 --- Create a structure of type ListReviewPolicyResultsForHITResponse
 --  
--- @param HITReviewReport [ReviewReport] &lt;p&gt;Contains both ReviewResult and ReviewAction elements for a particular HIT. &lt;/p&gt;
--- @param AssignmentReviewReport [ReviewReport] &lt;p&gt; Contains both ReviewResult and ReviewAction elements for an Assignment. &lt;/p&gt;
--- @param AssignmentReviewPolicy [ReviewPolicy] &lt;p&gt; The name of the Assignment-level Review Policy. This contains only the PolicyName element. &lt;/p&gt;
--- @param HITId [EntityId] &lt;p&gt;The HITId of the HIT for which results have been returned.&lt;/p&gt;
--- @param HITReviewPolicy [ReviewPolicy] &lt;p&gt;The name of the HIT-level Review Policy. This contains only the PolicyName element.&lt;/p&gt;
+-- @param HITReviewReport [ReviewReport] <p>Contains both ReviewResult and ReviewAction elements for a particular HIT. </p>
+-- @param AssignmentReviewReport [ReviewReport] <p> Contains both ReviewResult and ReviewAction elements for an Assignment. </p>
+-- @param AssignmentReviewPolicy [ReviewPolicy] <p> The name of the Assignment-level Review Policy. This contains only the PolicyName element. </p>
+-- @param HITId [EntityId] <p>The HITId of the HIT for which results have been returned.</p>
+-- @param HITReviewPolicy [ReviewPolicy] <p>The name of the HIT-level Review Policy. This contains only the PolicyName element.</p>
 -- @param NextToken [PaginationToken]  
 function M.ListReviewPolicyResultsForHITResponse(HITReviewReport, AssignmentReviewReport, AssignmentReviewPolicy, HITId, HITReviewPolicy, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListReviewPolicyResultsForHITResponse")
@@ -2010,15 +2010,15 @@ end
 
 --- Create a structure of type UpdateQualificationTypeRequest
 --  
--- @param AutoGranted [Boolean] &lt;p&gt;Specifies whether requests for the Qualification type are granted immediately, without prompting the Worker with a Qualification test.&lt;/p&gt; &lt;p&gt;Constraints: If the Test parameter is specified, this parameter cannot be true.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The new description of the Qualification type.&lt;/p&gt;
--- @param QualificationTypeId [EntityId] &lt;p&gt;The ID of the Qualification type to update.&lt;/p&gt;
--- @param TestDurationInSeconds [Long] &lt;p&gt;The number of seconds the Worker has to complete the Qualification test, starting from the time the Worker requests the Qualification.&lt;/p&gt;
--- @param QualificationTypeStatus [QualificationTypeStatus] &lt;p&gt;The new status of the Qualification type - Active | Inactive&lt;/p&gt;
--- @param AnswerKey [String] &lt;p&gt;The answers to the Qualification test specified in the Test parameter, in the form of an AnswerKey data structure.&lt;/p&gt;
--- @param AutoGrantedValue [Integer] &lt;p&gt;The Qualification value to use for automatically granted Qualifications. This parameter is used only if the AutoGranted parameter is true.&lt;/p&gt;
--- @param Test [String] &lt;p&gt;The questions for the Qualification test a Worker must answer correctly to obtain a Qualification of this type. If this parameter is specified, &lt;code&gt;TestDurationInSeconds&lt;/code&gt; must also be specified.&lt;/p&gt; &lt;p&gt;Constraints: Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This parameter cannot be specified if AutoGranted is true.&lt;/p&gt; &lt;p&gt;Constraints: None. If not specified, the Worker may request the Qualification without answering any questions.&lt;/p&gt;
--- @param RetryDelayInSeconds [Long] &lt;p&gt;The amount of time, in seconds, that Workers must wait after requesting a Qualification of the specified Qualification type before they can retry the Qualification request. It is not possible to disable retries for a Qualification type after it has been created with retries enabled. If you want to disable retries, you must dispose of the existing retry-enabled Qualification type using DisposeQualificationType and then create a new Qualification type with retries disabled using CreateQualificationType.&lt;/p&gt;
+-- @param AutoGranted [Boolean] <p>Specifies whether requests for the Qualification type are granted immediately, without prompting the Worker with a Qualification test.</p> <p>Constraints: If the Test parameter is specified, this parameter cannot be true.</p>
+-- @param Description [String] <p>The new description of the Qualification type.</p>
+-- @param QualificationTypeId [EntityId] <p>The ID of the Qualification type to update.</p>
+-- @param TestDurationInSeconds [Long] <p>The number of seconds the Worker has to complete the Qualification test, starting from the time the Worker requests the Qualification.</p>
+-- @param QualificationTypeStatus [QualificationTypeStatus] <p>The new status of the Qualification type - Active | Inactive</p>
+-- @param AnswerKey [String] <p>The answers to the Qualification test specified in the Test parameter, in the form of an AnswerKey data structure.</p>
+-- @param AutoGrantedValue [Integer] <p>The Qualification value to use for automatically granted Qualifications. This parameter is used only if the AutoGranted parameter is true.</p>
+-- @param Test [String] <p>The questions for the Qualification test a Worker must answer correctly to obtain a Qualification of this type. If this parameter is specified, <code>TestDurationInSeconds</code> must also be specified.</p> <p>Constraints: Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This parameter cannot be specified if AutoGranted is true.</p> <p>Constraints: None. If not specified, the Worker may request the Qualification without answering any questions.</p>
+-- @param RetryDelayInSeconds [Long] <p>The amount of time, in seconds, that Workers must wait after requesting a Qualification of the specified Qualification type before they can retry the Qualification request. It is not possible to disable retries for a Qualification type after it has been created with retries enabled. If you want to disable retries, you must dispose of the existing retry-enabled Qualification type using DisposeQualificationType and then create a new Qualification type with retries disabled using CreateQualificationType.</p>
 -- Required parameter: QualificationTypeId
 function M.UpdateQualificationTypeRequest(AutoGranted, Description, QualificationTypeId, TestDurationInSeconds, QualificationTypeStatus, AnswerKey, AutoGrantedValue, Test, RetryDelayInSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateQualificationTypeRequest")
@@ -2053,9 +2053,9 @@ end
 
 --- Create a structure of type CreateAdditionalAssignmentsForHITRequest
 --  
--- @param NumberOfAdditionalAssignments [Integer] &lt;p&gt;The number of additional assignments to request for this HIT.&lt;/p&gt;
--- @param HITId [EntityId] &lt;p&gt;The ID of the HIT to extend.&lt;/p&gt;
--- @param UniqueRequestToken [IdempotencyToken] &lt;p&gt; A unique identifier for this request, which allows you to retry the call on error without extending the HIT multiple times. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the extend HIT already exists in the system from a previous call using the same &lt;code&gt;UniqueRequestToken&lt;/code&gt;, subsequent calls will return an error with a message containing the request ID. &lt;/p&gt;
+-- @param NumberOfAdditionalAssignments [Integer] <p>The number of additional assignments to request for this HIT.</p>
+-- @param HITId [EntityId] <p>The ID of the HIT to extend.</p>
+-- @param UniqueRequestToken [IdempotencyToken] <p> A unique identifier for this request, which allows you to retry the call on error without extending the HIT multiple times. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the extend HIT already exists in the system from a previous call using the same <code>UniqueRequestToken</code>, subsequent calls will return an error with a message containing the request ID. </p>
 -- Required parameter: HITId
 function M.CreateAdditionalAssignmentsForHITRequest(NumberOfAdditionalAssignments, HITId, UniqueRequestToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAdditionalAssignmentsForHITRequest")
@@ -2109,8 +2109,8 @@ end
 
 --- Create a structure of type UpdateExpirationForHITRequest
 --  
--- @param HITId [EntityId] &lt;p&gt; The HIT to update. &lt;/p&gt;
--- @param ExpireAt [Timestamp] &lt;p&gt; The date and time at which you want the HIT to expire &lt;/p&gt;
+-- @param HITId [EntityId] <p> The HIT to update. </p>
+-- @param ExpireAt [Timestamp] <p> The date and time at which you want the HIT to expire </p>
 -- Required parameter: HITId
 function M.UpdateExpirationForHITRequest(HITId, ExpireAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateExpirationForHITRequest")
@@ -2135,9 +2135,9 @@ function M.AssertServiceFault(struct)
 end
 
 --- Create a structure of type ServiceFault
--- &lt;p&gt;Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.&lt;/p&gt;
--- @param TurkErrorCode [TurkErrorCode] &lt;p&gt;Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.&lt;/p&gt;
+-- <p>Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.</p>
+-- @param Message [ExceptionMessage] <p>Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.</p>
+-- @param TurkErrorCode [TurkErrorCode] <p>Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.</p>
 function M.ServiceFault(Message, TurkErrorCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceFault")
 	local t = { 
@@ -2221,7 +2221,7 @@ end
 
 --- Create a structure of type UpdateQualificationTypeResponse
 --  
--- @param QualificationType [QualificationType] &lt;p&gt; Contains a QualificationType data structure.&lt;/p&gt;
+-- @param QualificationType [QualificationType] <p> Contains a QualificationType data structure.</p>
 function M.UpdateQualificationTypeResponse(QualificationType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateQualificationTypeResponse")
 	local t = { 
@@ -2284,7 +2284,7 @@ end
 
 --- Create a structure of type GetQualificationTypeResponse
 --  
--- @param QualificationType [QualificationType] &lt;p&gt; The returned Qualification Type&lt;/p&gt;
+-- @param QualificationType [QualificationType] <p> The returned Qualification Type</p>
 function M.GetQualificationTypeResponse(QualificationType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetQualificationTypeResponse")
 	local t = { 
@@ -2309,8 +2309,8 @@ end
 
 --- Create a structure of type ListHITsResponse
 --  
--- @param NumResults [Integer] &lt;p&gt;The number of HITs on this page in the filtered results list, equivalent to the number of HITs being returned by this call.&lt;/p&gt;
--- @param HITs [HITList] &lt;p&gt; The list of HIT elements returned by the query.&lt;/p&gt;
+-- @param NumResults [Integer] <p>The number of HITs on this page in the filtered results list, equivalent to the number of HITs being returned by this call.</p>
+-- @param HITs [HITList] <p> The list of HIT elements returned by the query.</p>
 -- @param NextToken [PaginationToken]  
 function M.ListHITsResponse(NumResults, HITs, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHITsResponse")
@@ -2359,8 +2359,8 @@ end
 
 --- Create a structure of type UpdateHITTypeOfHITRequest
 --  
--- @param HITTypeId [EntityId] &lt;p&gt;The ID of the new HIT type.&lt;/p&gt;
--- @param HITId [EntityId] &lt;p&gt;The HIT to update.&lt;/p&gt;
+-- @param HITTypeId [EntityId] <p>The ID of the new HIT type.</p>
+-- @param HITId [EntityId] <p>The HIT to update.</p>
 -- Required parameter: HITId
 -- Required parameter: HITTypeId
 function M.UpdateHITTypeOfHITRequest(HITTypeId, HITId, ...)
@@ -2387,8 +2387,8 @@ end
 
 --- Create a structure of type GetAssignmentResponse
 --  
--- @param Assignment [Assignment] &lt;p&gt; The assignment. The response includes one Assignment element. &lt;/p&gt;
--- @param HIT [HIT] &lt;p&gt; The HIT associated with this assignment. The response includes one HIT element.&lt;/p&gt;
+-- @param Assignment [Assignment] <p> The assignment. The response includes one Assignment element. </p>
+-- @param HIT [HIT] <p> The HIT associated with this assignment. The response includes one HIT element.</p>
 function M.GetAssignmentResponse(Assignment, HIT, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAssignmentResponse")
 	local t = { 
@@ -2417,11 +2417,11 @@ end
 
 --- Create a structure of type ListQualificationTypesRequest
 --  
--- @param Query [String] &lt;p&gt; A text query against all of the searchable attributes of Qualification types. &lt;/p&gt;
--- @param MustBeOwnedByCaller [Boolean] &lt;p&gt; Specifies that only Qualification types that the Requester created are returned. If false, the operation returns all Qualification types. &lt;/p&gt;
+-- @param Query [String] <p> A text query against all of the searchable attributes of Qualification types. </p>
+-- @param MustBeOwnedByCaller [Boolean] <p> Specifies that only Qualification types that the Requester created are returned. If false, the operation returns all Qualification types. </p>
 -- @param NextToken [PaginationToken]  
--- @param MaxResults [ResultSize] &lt;p&gt; The maximum number of results to return in a single call. &lt;/p&gt;
--- @param MustBeRequestable [Boolean] &lt;p&gt;Specifies that only Qualification types that a user can request through the Amazon Mechanical Turk web site, such as by taking a Qualification test, are returned as results of the search. Some Qualification types, such as those assigned automatically by the system, cannot be requested directly by users. If false, all Qualification types, including those managed by the system, are considered. Valid values are True | False. &lt;/p&gt;
+-- @param MaxResults [ResultSize] <p> The maximum number of results to return in a single call. </p>
+-- @param MustBeRequestable [Boolean] <p>Specifies that only Qualification types that a user can request through the Amazon Mechanical Turk web site, such as by taking a Qualification test, are returned as results of the search. Some Qualification types, such as those assigned automatically by the system, cannot be requested directly by users. If false, all Qualification types, including those managed by the system, are considered. Valid values are True | False. </p>
 -- Required parameter: MustBeRequestable
 function M.ListQualificationTypesRequest(Query, MustBeOwnedByCaller, NextToken, MaxResults, MustBeRequestable, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListQualificationTypesRequest")
@@ -2474,9 +2474,9 @@ end
 
 --- Create a structure of type NotifyWorkersRequest
 --  
--- @param WorkerIds [CustomerIdList] &lt;p&gt;A list of Worker IDs you wish to notify. You can notify upto 100 Workers at a time.&lt;/p&gt;
--- @param MessageText [String] &lt;p&gt;The text of the email message to send. Can include up to 4,096 characters&lt;/p&gt;
--- @param Subject [String] &lt;p&gt;The subject line of the email message to send. Can include up to 200 characters.&lt;/p&gt;
+-- @param WorkerIds [CustomerIdList] <p>A list of Worker IDs you wish to notify. You can notify upto 100 Workers at a time.</p>
+-- @param MessageText [String] <p>The text of the email message to send. Can include up to 4,096 characters</p>
+-- @param Subject [String] <p>The subject line of the email message to send. Can include up to 200 characters.</p>
 -- Required parameter: Subject
 -- Required parameter: MessageText
 -- Required parameter: WorkerIds
@@ -2529,10 +2529,10 @@ end
 
 --- Create a structure of type AssociateQualificationWithWorkerRequest
 --  
--- @param WorkerId [CustomerId] &lt;p&gt; The ID of the Worker to whom the Qualification is being assigned. Worker IDs are included with submitted HIT assignments and Qualification requests. &lt;/p&gt;
--- @param SendNotification [Boolean] &lt;p&gt; Specifies whether to send a notification email message to the Worker saying that the qualification was assigned to the Worker. Note: this is true by default. &lt;/p&gt;
--- @param IntegerValue [Integer] &lt;p&gt;The value of the Qualification to assign.&lt;/p&gt;
--- @param QualificationTypeId [EntityId] &lt;p&gt;The ID of the Qualification type to use for the assigned Qualification.&lt;/p&gt;
+-- @param WorkerId [CustomerId] <p> The ID of the Worker to whom the Qualification is being assigned. Worker IDs are included with submitted HIT assignments and Qualification requests. </p>
+-- @param SendNotification [Boolean] <p> Specifies whether to send a notification email message to the Worker saying that the qualification was assigned to the Worker. Note: this is true by default. </p>
+-- @param IntegerValue [Integer] <p>The value of the Qualification to assign.</p>
+-- @param QualificationTypeId [EntityId] <p>The ID of the Qualification type to use for the assigned Qualification.</p>
 -- Required parameter: QualificationTypeId
 -- Required parameter: WorkerId
 function M.AssociateQualificationWithWorkerRequest(WorkerId, SendNotification, IntegerValue, QualificationTypeId, ...)
@@ -2579,28 +2579,28 @@ function M.AssertHIT(struct)
 end
 
 --- Create a structure of type HIT
--- &lt;p&gt; The HIT data structure represents a single HIT, including all the information necessary for a Worker to accept and complete the HIT.&lt;/p&gt;
--- @param HITGroupId [EntityId] &lt;p&gt; The ID of the HIT Group of this HIT.&lt;/p&gt;
--- @param RequesterAnnotation [String] &lt;p&gt; An arbitrary data field the Requester who created the HIT can use. This field is visible only to the creator of the HIT.&lt;/p&gt;
--- @param NumberOfAssignmentsCompleted [Integer] &lt;p&gt; The number of assignments for this HIT that have been approved or rejected.&lt;/p&gt;
--- @param Description [String] &lt;p&gt; A general description of the HIT.&lt;/p&gt;
--- @param MaxAssignments [Integer] &lt;p&gt;The number of times the HIT can be accepted and completed before the HIT becomes unavailable. &lt;/p&gt;
--- @param Title [String] &lt;p&gt; The title of the HIT.&lt;/p&gt;
--- @param NumberOfAssignmentsAvailable [Integer] &lt;p&gt; The number of assignments for this HIT that are available for Workers to accept.&lt;/p&gt;
--- @param Question [String] &lt;p&gt; The data the Worker completing the HIT uses produce the results. This is either either a QuestionForm, HTMLQuestion or an ExternalQuestion data structure.&lt;/p&gt;
--- @param CreationTime [Timestamp] &lt;p&gt; The date and time the HIT was created.&lt;/p&gt;
--- @param AssignmentDurationInSeconds [Long] &lt;p&gt; The length of time, in seconds, that a Worker has to complete the HIT after accepting it.&lt;/p&gt;
--- @param HITTypeId [EntityId] &lt;p&gt;The ID of the HIT type of this HIT&lt;/p&gt;
--- @param NumberOfAssignmentsPending [Integer] &lt;p&gt; The number of assignments for this HIT that are being previewed or have been accepted by Workers, but have not yet been submitted, returned, or abandoned.&lt;/p&gt;
--- @param HITStatus [HITStatus] &lt;p&gt;The status of the HIT and its assignments. Valid Values are Assignable | Unassignable | Reviewable | Reviewing | Disposed. &lt;/p&gt;
--- @param HITId [EntityId] &lt;p&gt; A unique identifier for the HIT.&lt;/p&gt;
--- @param QualificationRequirements [QualificationRequirementList] &lt;p&gt; A condition that a Worker's Qualifications must meet in order to accept the HIT. A HIT can have between zero and ten Qualification requirements. All requirements must be met by a Worker's Qualifications for the Worker to accept the HIT.&lt;/p&gt;
--- @param Keywords [String] &lt;p&gt; One or more words or phrases that describe the HIT, separated by commas. Search terms similar to the keywords of a HIT are more likely to have the HIT in the search results.&lt;/p&gt;
--- @param Expiration [Timestamp] &lt;p&gt;The date and time the HIT expires.&lt;/p&gt;
--- @param Reward [NumericValue] &lt;p&gt; The HIT data structure represents a single HIT, including all the information necessary for a Worker to accept and complete the HIT.&lt;/p&gt;
--- @param HITLayoutId [EntityId] &lt;p&gt; The ID of the HIT Layout of this HIT.&lt;/p&gt;
--- @param HITReviewStatus [HITReviewStatus] &lt;p&gt; Indicates the review status of the HIT. Valid Values are NotReviewed | MarkedForReview | ReviewedAppropriate | ReviewedInappropriate.&lt;/p&gt;
--- @param AutoApprovalDelayInSeconds [Long] &lt;p&gt;The amount of time, in seconds, after the Worker submits an assignment for the HIT that the results are automatically approved by Amazon Mechanical Turk. This is the amount of time the Requester has to reject an assignment submitted by a Worker before the assignment is auto-approved and the Worker is paid. &lt;/p&gt;
+-- <p> The HIT data structure represents a single HIT, including all the information necessary for a Worker to accept and complete the HIT.</p>
+-- @param HITGroupId [EntityId] <p> The ID of the HIT Group of this HIT.</p>
+-- @param RequesterAnnotation [String] <p> An arbitrary data field the Requester who created the HIT can use. This field is visible only to the creator of the HIT.</p>
+-- @param NumberOfAssignmentsCompleted [Integer] <p> The number of assignments for this HIT that have been approved or rejected.</p>
+-- @param Description [String] <p> A general description of the HIT.</p>
+-- @param MaxAssignments [Integer] <p>The number of times the HIT can be accepted and completed before the HIT becomes unavailable. </p>
+-- @param Title [String] <p> The title of the HIT.</p>
+-- @param NumberOfAssignmentsAvailable [Integer] <p> The number of assignments for this HIT that are available for Workers to accept.</p>
+-- @param Question [String] <p> The data the Worker completing the HIT uses produce the results. This is either either a QuestionForm, HTMLQuestion or an ExternalQuestion data structure.</p>
+-- @param CreationTime [Timestamp] <p> The date and time the HIT was created.</p>
+-- @param AssignmentDurationInSeconds [Long] <p> The length of time, in seconds, that a Worker has to complete the HIT after accepting it.</p>
+-- @param HITTypeId [EntityId] <p>The ID of the HIT type of this HIT</p>
+-- @param NumberOfAssignmentsPending [Integer] <p> The number of assignments for this HIT that are being previewed or have been accepted by Workers, but have not yet been submitted, returned, or abandoned.</p>
+-- @param HITStatus [HITStatus] <p>The status of the HIT and its assignments. Valid Values are Assignable | Unassignable | Reviewable | Reviewing | Disposed. </p>
+-- @param HITId [EntityId] <p> A unique identifier for the HIT.</p>
+-- @param QualificationRequirements [QualificationRequirementList] <p> A condition that a Worker's Qualifications must meet in order to accept the HIT. A HIT can have between zero and ten Qualification requirements. All requirements must be met by a Worker's Qualifications for the Worker to accept the HIT.</p>
+-- @param Keywords [String] <p> One or more words or phrases that describe the HIT, separated by commas. Search terms similar to the keywords of a HIT are more likely to have the HIT in the search results.</p>
+-- @param Expiration [Timestamp] <p>The date and time the HIT expires.</p>
+-- @param Reward [NumericValue] <p> The HIT data structure represents a single HIT, including all the information necessary for a Worker to accept and complete the HIT.</p>
+-- @param HITLayoutId [EntityId] <p> The ID of the HIT Layout of this HIT.</p>
+-- @param HITReviewStatus [HITReviewStatus] <p> Indicates the review status of the HIT. Valid Values are NotReviewed | MarkedForReview | ReviewedAppropriate | ReviewedInappropriate.</p>
+-- @param AutoApprovalDelayInSeconds [Long] <p>The amount of time, in seconds, after the Worker submits an assignment for the HIT that the results are automatically approved by Amazon Mechanical Turk. This is the amount of time the Requester has to reject an assignment submitted by a Worker before the assignment is auto-approved and the Worker is paid. </p>
 function M.HIT(HITGroupId, RequesterAnnotation, NumberOfAssignmentsCompleted, Description, MaxAssignments, Title, NumberOfAssignmentsAvailable, Question, CreationTime, AssignmentDurationInSeconds, HITTypeId, NumberOfAssignmentsPending, HITStatus, HITId, QualificationRequirements, Keywords, Expiration, Reward, HITLayoutId, HITReviewStatus, AutoApprovalDelayInSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HIT")
 	local t = { 
@@ -2643,7 +2643,7 @@ end
 
 --- Create a structure of type CreateHITWithHITTypeResponse
 --  
--- @param HIT [HIT] &lt;p&gt; Contains the newly created HIT data. For a description of the HIT data structure as it appears in responses, see the HIT Data Structure documentation. &lt;/p&gt;
+-- @param HIT [HIT] <p> Contains the newly created HIT data. For a description of the HIT data structure as it appears in responses, see the HIT Data Structure documentation. </p>
 function M.CreateHITWithHITTypeResponse(HIT, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHITWithHITTypeResponse")
 	local t = { 
@@ -2669,9 +2669,9 @@ end
 
 --- Create a structure of type ListHITsForQualificationTypeRequest
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;Pagination Token&lt;/p&gt;
--- @param MaxResults [ResultSize] &lt;p&gt; Limit the number of results returned. &lt;/p&gt;
--- @param QualificationTypeId [EntityId] &lt;p&gt; The ID of the Qualification type to use when querying HITs. &lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>Pagination Token</p>
+-- @param MaxResults [ResultSize] <p> Limit the number of results returned. </p>
+-- @param QualificationTypeId [EntityId] <p> The ID of the Qualification type to use when querying HITs. </p>
 -- Required parameter: QualificationTypeId
 function M.ListHITsForQualificationTypeRequest(NextToken, MaxResults, QualificationTypeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHITsForQualificationTypeRequest")
@@ -2697,9 +2697,9 @@ function M.AssertHITLayoutParameter(struct)
 end
 
 --- Create a structure of type HITLayoutParameter
--- &lt;p&gt; The HITLayoutParameter data structure defines parameter values used with a HITLayout. A HITLayout is a reusable Amazon Mechanical Turk project template used to provide Human Intelligence Task (HIT) question data for CreateHIT. &lt;/p&gt;
--- @param Name [String] &lt;p&gt; The name of the parameter in the HITLayout. &lt;/p&gt;
--- @param Value [String] &lt;p&gt;The value substituted for the parameter referenced in the HITLayout. &lt;/p&gt;
+-- <p> The HITLayoutParameter data structure defines parameter values used with a HITLayout. A HITLayout is a reusable Amazon Mechanical Turk project template used to provide Human Intelligence Task (HIT) question data for CreateHIT. </p>
+-- @param Name [String] <p> The name of the parameter in the HITLayout. </p>
+-- @param Value [String] <p>The value substituted for the parameter referenced in the HITLayout. </p>
 function M.HITLayoutParameter(Name, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HITLayoutParameter")
 	local t = { 
@@ -2723,7 +2723,7 @@ end
 
 --- Create a structure of type NotifyWorkersResponse
 --  
--- @param NotifyWorkersFailureStatuses [NotifyWorkersFailureStatusList] &lt;p&gt; When MTurk sends notifications to the list of Workers, it returns back any failures it encounters in this list of NotifyWorkersFailureStatus objects. &lt;/p&gt;
+-- @param NotifyWorkersFailureStatuses [NotifyWorkersFailureStatusList] <p> When MTurk sends notifications to the list of Workers, it returns back any failures it encounters in this list of NotifyWorkersFailureStatus objects. </p>
 function M.NotifyWorkersResponse(NotifyWorkersFailureStatuses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotifyWorkersResponse")
 	local t = { 
@@ -2747,9 +2747,9 @@ function M.AssertLocale(struct)
 end
 
 --- Create a structure of type Locale
--- &lt;p&gt;The Locale data structure represents a geographical region or location.&lt;/p&gt;
--- @param Country [CountryParameters] &lt;p&gt; The country of the locale. Must be a valid ISO 3166 country code. For example, the code US refers to the United States of America. &lt;/p&gt;
--- @param Subdivision [CountryParameters] &lt;p&gt;The state or subdivision of the locale. A valid ISO 3166-2 subdivision code. For example, the code WA refers to the state of Washington.&lt;/p&gt;
+-- <p>The Locale data structure represents a geographical region or location.</p>
+-- @param Country [CountryParameters] <p> The country of the locale. Must be a valid ISO 3166 country code. For example, the code US refers to the United States of America. </p>
+-- @param Subdivision [CountryParameters] <p>The state or subdivision of the locale. A valid ISO 3166-2 subdivision code. For example, the code WA refers to the state of Washington.</p>
 -- Required parameter: Country
 function M.Locale(Country, Subdivision, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Locale")
@@ -2776,8 +2776,8 @@ end
 
 --- Create a structure of type ListAssignmentsForHITResponse
 --  
--- @param NumResults [Integer] &lt;p&gt; The number of assignments on the page in the filtered results list, equivalent to the number of assignments returned by this call.&lt;/p&gt;
--- @param Assignments [AssignmentList] &lt;p&gt; The collection of Assignment data structures returned by this call.&lt;/p&gt;
+-- @param NumResults [Integer] <p> The number of assignments on the page in the filtered results list, equivalent to the number of assignments returned by this call.</p>
+-- @param Assignments [AssignmentList] <p> The collection of Assignment data structures returned by this call.</p>
 -- @param NextToken [PaginationToken]  
 function M.ListAssignmentsForHITResponse(NumResults, Assignments, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssignmentsForHITResponse")
@@ -2810,11 +2810,11 @@ end
 
 --- Create a structure of type SendBonusRequest
 --  
--- @param AssignmentId [EntityId] &lt;p&gt;The ID of the assignment for which this bonus is paid.&lt;/p&gt;
--- @param WorkerId [CustomerId] &lt;p&gt;The ID of the Worker being paid the bonus.&lt;/p&gt;
--- @param BonusAmount [NumericValue] &lt;p&gt; The Bonus amount is a US Dollar amount specified using a string (for example, &quot;5&quot; represents $5.00 USD and &quot;101.42&quot; represents $101.42 USD). Do not include currency symbols or currency codes. &lt;/p&gt;
--- @param Reason [String] &lt;p&gt;A message that explains the reason for the bonus payment. The Worker receiving the bonus can see this message.&lt;/p&gt;
--- @param UniqueRequestToken [IdempotencyToken] &lt;p&gt;A unique identifier for this request, which allows you to retry the call on error without granting multiple bonuses. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the bonus already exists in the system from a previous call using the same UniqueRequestToken, subsequent calls will return an error with a message containing the request ID.&lt;/p&gt;
+-- @param AssignmentId [EntityId] <p>The ID of the assignment for which this bonus is paid.</p>
+-- @param WorkerId [CustomerId] <p>The ID of the Worker being paid the bonus.</p>
+-- @param BonusAmount [NumericValue] <p> The Bonus amount is a US Dollar amount specified using a string (for example, "5" represents $5.00 USD and "101.42" represents $101.42 USD). Do not include currency symbols or currency codes. </p>
+-- @param Reason [String] <p>A message that explains the reason for the bonus payment. The Worker receiving the bonus can see this message.</p>
+-- @param UniqueRequestToken [IdempotencyToken] <p>A unique identifier for this request, which allows you to retry the call on error without granting multiple bonuses. This is useful in cases such as network timeouts where it is unclear whether or not the call succeeded on the server. If the bonus already exists in the system from a previous call using the same UniqueRequestToken, subsequent calls will return an error with a message containing the request ID.</p>
 -- Required parameter: WorkerId
 -- Required parameter: BonusAmount
 -- Required parameter: AssignmentId
@@ -2848,11 +2848,11 @@ function M.AssertNotificationSpecification(struct)
 end
 
 --- Create a structure of type NotificationSpecification
--- &lt;p&gt;The NotificationSpecification data structure describes a HIT event notification for a HIT type.&lt;/p&gt;
--- @param EventTypes [EventTypeList] &lt;p&gt; The list of events that should cause notifications to be sent. Valid Values: AssignmentAccepted | AssignmentAbandoned | AssignmentReturned | AssignmentSubmitted | AssignmentRejected | AssignmentApproved | HITCreated | HITExtended | HITDisposed | HITReviewable | HITExpired | Ping. The Ping event is only valid for the SendTestEventNotification operation. &lt;/p&gt;
--- @param Destination [String] &lt;p&gt; The destination for notification messages. or email notifications (if Transport is Email), this is an email address. For Amazon Simple Queue Service (Amazon SQS) notifications (if Transport is SQS), this is the URL for your Amazon SQS queue. &lt;/p&gt;
--- @param Version [String] &lt;p&gt;The version of the Notification API to use. Valid value is 2006-05-05.&lt;/p&gt;
--- @param Transport [NotificationTransport] &lt;p&gt; The method Amazon Mechanical Turk uses to send the notification. Valid Values: Email | SQS. &lt;/p&gt;
+-- <p>The NotificationSpecification data structure describes a HIT event notification for a HIT type.</p>
+-- @param EventTypes [EventTypeList] <p> The list of events that should cause notifications to be sent. Valid Values: AssignmentAccepted | AssignmentAbandoned | AssignmentReturned | AssignmentSubmitted | AssignmentRejected | AssignmentApproved | HITCreated | HITExtended | HITDisposed | HITReviewable | HITExpired | Ping. The Ping event is only valid for the SendTestEventNotification operation. </p>
+-- @param Destination [String] <p> The destination for notification messages. or email notifications (if Transport is Email), this is an email address. For Amazon Simple Queue Service (Amazon SQS) notifications (if Transport is SQS), this is the URL for your Amazon SQS queue. </p>
+-- @param Version [String] <p>The version of the Notification API to use. Valid value is 2006-05-05.</p>
+-- @param Transport [NotificationTransport] <p> The method Amazon Mechanical Turk uses to send the notification. Valid Values: Email | SQS. </p>
 -- Required parameter: Destination
 -- Required parameter: Transport
 function M.NotificationSpecification(EventTypes, Destination, Version, Transport, ...)
@@ -2883,8 +2883,8 @@ end
 
 --- Create a structure of type GetFileUploadURLRequest
 --  
--- @param AssignmentId [EntityId] &lt;p&gt;The ID of the assignment that contains the question with a FileUploadAnswer.&lt;/p&gt;
--- @param QuestionIdentifier [String] &lt;p&gt;The identifier of the question with a FileUploadAnswer, as specified in the QuestionForm of the HIT.&lt;/p&gt;
+-- @param AssignmentId [EntityId] <p>The ID of the assignment that contains the question with a FileUploadAnswer.</p>
+-- @param QuestionIdentifier [String] <p>The identifier of the question with a FileUploadAnswer, as specified in the QuestionForm of the HIT.</p>
 -- Required parameter: AssignmentId
 -- Required parameter: QuestionIdentifier
 function M.GetFileUploadURLRequest(AssignmentId, QuestionIdentifier, ...)
@@ -2910,9 +2910,9 @@ function M.AssertReviewPolicy(struct)
 end
 
 --- Create a structure of type ReviewPolicy
--- &lt;p&gt; HIT Review Policy data structures represent HIT review policies, which you specify when you create a HIT. &lt;/p&gt;
--- @param PolicyName [String] &lt;p&gt; Name of a Review Policy: SimplePlurality/2011-09-01 or ScoreMyKnownAnswers/2011-09-01 &lt;/p&gt;
--- @param Parameters [PolicyParameterList] &lt;p&gt;Name of the parameter from the Review policy.&lt;/p&gt;
+-- <p> HIT Review Policy data structures represent HIT review policies, which you specify when you create a HIT. </p>
+-- @param PolicyName [String] <p> Name of a Review Policy: SimplePlurality/2011-09-01 or ScoreMyKnownAnswers/2011-09-01 </p>
+-- @param Parameters [PolicyParameterList] <p>Name of the parameter from the Review policy.</p>
 function M.ReviewPolicy(PolicyName, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReviewPolicy")
 	local t = { 
@@ -2940,9 +2940,9 @@ end
 
 --- Create a structure of type DisassociateQualificationFromWorkerRequest
 --  
--- @param WorkerId [CustomerId] &lt;p&gt;The ID of the Worker who possesses the Qualification to be revoked.&lt;/p&gt;
--- @param Reason [String] &lt;p&gt;A text message that explains why the Qualification was revoked. The user who had the Qualification sees this message.&lt;/p&gt;
--- @param QualificationTypeId [EntityId] &lt;p&gt;The ID of the Qualification type of the Qualification to be revoked.&lt;/p&gt;
+-- @param WorkerId [CustomerId] <p>The ID of the Worker who possesses the Qualification to be revoked.</p>
+-- @param Reason [String] <p>A text message that explains why the Qualification was revoked. The user who had the Qualification sees this message.</p>
+-- @param QualificationTypeId [EntityId] <p>The ID of the Qualification type of the Qualification to be revoked.</p>
 -- Required parameter: WorkerId
 -- Required parameter: QualificationTypeId
 function M.DisassociateQualificationFromWorkerRequest(WorkerId, Reason, QualificationTypeId, ...)
@@ -2970,7 +2970,7 @@ end
 
 --- Create a structure of type GetHITRequest
 --  
--- @param HITId [EntityId] &lt;p&gt;The ID of the HIT to be retrieved.&lt;/p&gt;
+-- @param HITId [EntityId] <p>The ID of the HIT to be retrieved.</p>
 -- Required parameter: HITId
 function M.GetHITRequest(HITId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetHITRequest")
@@ -3046,7 +3046,7 @@ function M.AssertPaginationToken(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;If the previous response was incomplete (because there is more data to retrieve), Amazon Mechanical Turk returns a pagination token in the response. You can use this pagination token to retrieve the next set of results. &lt;/p&gt;
+-- <p>If the previous response was incomplete (because there is more data to retrieve), Amazon Mechanical Turk returns a pagination token in the response. You can use this pagination token to retrieve the next set of results. </p>
 function M.PaginationToken(str)
 	M.AssertPaginationToken(str)
 	return str
@@ -3195,7 +3195,7 @@ function M.AssertNumericValue(str)
 	assert(str:match("^[0-9]+(%.)?[0-9]*$"), "Expected string to match pattern '^[0-9]+(%.)?[0-9]*$'")
 end
 
--- &lt;p&gt;A string representing a numeric value.&lt;/p&gt;
+-- <p>A string representing a numeric value.</p>
 function M.NumericValue(str)
 	M.AssertNumericValue(str)
 	return str

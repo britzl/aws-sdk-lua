@@ -31,8 +31,8 @@ function M.AssertDescribeMountTargetSecurityGroupsRequest(struct)
 end
 
 --- Create a structure of type DescribeMountTargetSecurityGroupsRequest
--- &lt;p/&gt;
--- @param MountTargetId [MountTargetId] &lt;p&gt;ID of the mount target whose security groups you want to retrieve.&lt;/p&gt;
+-- <p/>
+-- @param MountTargetId [MountTargetId] <p>ID of the mount target whose security groups you want to retrieve.</p>
 -- Required parameter: MountTargetId
 function M.DescribeMountTargetSecurityGroupsRequest(MountTargetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMountTargetSecurityGroupsRequest")
@@ -57,9 +57,9 @@ function M.AssertSecurityGroupNotFound(struct)
 end
 
 --- Create a structure of type SecurityGroupNotFound
--- &lt;p&gt;Returned if one of the specified security groups does not exist in the subnet's VPC.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if one of the specified security groups does not exist in the subnet's VPC.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if one of the specified security groups does not exist in the subnet's VPC.&lt;/p&gt;
+-- <p>Returned if one of the specified security groups does not exist in the subnet's VPC.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if one of the specified security groups does not exist in the subnet's VPC.</p>
+-- @param Message [ErrorMessage] <p>Returned if one of the specified security groups does not exist in the subnet's VPC.</p>
 -- Required parameter: ErrorCode
 function M.SecurityGroupNotFound(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SecurityGroupNotFound")
@@ -85,9 +85,9 @@ function M.AssertDependencyTimeout(struct)
 end
 
 --- Create a structure of type DependencyTimeout
--- &lt;p&gt;The service timed out trying to fulfill the request, and the client should try the call again.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;The service timed out trying to fulfill the request, and the client should try the call again.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;The service timed out trying to fulfill the request, and the client should try the call again.&lt;/p&gt;
+-- <p>The service timed out trying to fulfill the request, and the client should try the call again.</p>
+-- @param ErrorCode [ErrorCode] <p>The service timed out trying to fulfill the request, and the client should try the call again.</p>
+-- @param Message [ErrorMessage] <p>The service timed out trying to fulfill the request, and the client should try the call again.</p>
 -- Required parameter: ErrorCode
 function M.DependencyTimeout(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DependencyTimeout")
@@ -112,8 +112,8 @@ function M.AssertDeleteMountTargetRequest(struct)
 end
 
 --- Create a structure of type DeleteMountTargetRequest
--- &lt;p/&gt;
--- @param MountTargetId [MountTargetId] &lt;p&gt;ID of the mount target to delete (String).&lt;/p&gt;
+-- <p/>
+-- @param MountTargetId [MountTargetId] <p>ID of the mount target to delete (String).</p>
 -- Required parameter: MountTargetId
 function M.DeleteMountTargetRequest(MountTargetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMountTargetRequest")
@@ -146,14 +146,14 @@ function M.AssertMountTargetDescription(struct)
 end
 
 --- Create a structure of type MountTargetDescription
--- &lt;p&gt;Provides a description of a mount target.&lt;/p&gt;
--- @param MountTargetId [MountTargetId] &lt;p&gt;System-assigned mount target ID.&lt;/p&gt;
--- @param NetworkInterfaceId [NetworkInterfaceId] &lt;p&gt;ID of the network interface that Amazon EFS created when it created the mount target.&lt;/p&gt;
--- @param FileSystemId [FileSystemId] &lt;p&gt;ID of the file system for which the mount target is intended.&lt;/p&gt;
--- @param LifeCycleState [LifeCycleState] &lt;p&gt;Lifecycle state of the mount target.&lt;/p&gt;
--- @param SubnetId [SubnetId] &lt;p&gt;ID of the mount target's subnet.&lt;/p&gt;
--- @param OwnerId [AwsAccountId] &lt;p&gt;AWS account ID that owns the resource.&lt;/p&gt;
--- @param IpAddress [IpAddress] &lt;p&gt;Address at which the file system may be mounted via the mount target.&lt;/p&gt;
+-- <p>Provides a description of a mount target.</p>
+-- @param MountTargetId [MountTargetId] <p>System-assigned mount target ID.</p>
+-- @param NetworkInterfaceId [NetworkInterfaceId] <p>ID of the network interface that Amazon EFS created when it created the mount target.</p>
+-- @param FileSystemId [FileSystemId] <p>ID of the file system for which the mount target is intended.</p>
+-- @param LifeCycleState [LifeCycleState] <p>Lifecycle state of the mount target.</p>
+-- @param SubnetId [SubnetId] <p>ID of the mount target's subnet.</p>
+-- @param OwnerId [AwsAccountId] <p>AWS account ID that owns the resource.</p>
+-- @param IpAddress [IpAddress] <p>Address at which the file system may be mounted via the mount target.</p>
 -- Required parameter: MountTargetId
 -- Required parameter: FileSystemId
 -- Required parameter: SubnetId
@@ -187,9 +187,9 @@ function M.AssertIpAddressInUse(struct)
 end
 
 --- Create a structure of type IpAddressInUse
--- &lt;p&gt;Returned if the request specified an &lt;code&gt;IpAddress&lt;/code&gt; that is already in use in the subnet.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if the request specified an &lt;code&gt;IpAddress&lt;/code&gt; that is already in use in the subnet.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if the request specified an &lt;code&gt;IpAddress&lt;/code&gt; that is already in use in the subnet.&lt;/p&gt;
+-- <p>Returned if the request specified an <code>IpAddress</code> that is already in use in the subnet.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if the request specified an <code>IpAddress</code> that is already in use in the subnet.</p>
+-- @param Message [ErrorMessage] <p>Returned if the request specified an <code>IpAddress</code> that is already in use in the subnet.</p>
 -- Required parameter: ErrorCode
 function M.IpAddressInUse(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IpAddressInUse")
@@ -215,9 +215,9 @@ function M.AssertIncorrectMountTargetState(struct)
 end
 
 --- Create a structure of type IncorrectMountTargetState
--- &lt;p&gt;Returned if the mount target is not in the correct state for the operation.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if the mount target is not in the correct state for the operation.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if the mount target is not in the correct state for the operation.&lt;/p&gt;
+-- <p>Returned if the mount target is not in the correct state for the operation.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if the mount target is not in the correct state for the operation.</p>
+-- @param Message [ErrorMessage] <p>Returned if the mount target is not in the correct state for the operation.</p>
 -- Required parameter: ErrorCode
 function M.IncorrectMountTargetState(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IncorrectMountTargetState")
@@ -243,9 +243,9 @@ function M.AssertMountTargetConflict(struct)
 end
 
 --- Create a structure of type MountTargetConflict
--- &lt;p&gt;Returned if the mount target would violate one of the specified restrictions based on the file system's existing mount targets.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if the mount target would violate one of the specified restrictions based on the file system's existing mount targets.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if the mount target would violate one of the specified restrictions based on the file system's existing mount targets.&lt;/p&gt;
+-- <p>Returned if the mount target would violate one of the specified restrictions based on the file system's existing mount targets.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if the mount target would violate one of the specified restrictions based on the file system's existing mount targets.</p>
+-- @param Message [ErrorMessage] <p>Returned if the mount target would violate one of the specified restrictions based on the file system's existing mount targets.</p>
 -- Required parameter: ErrorCode
 function M.MountTargetConflict(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MountTargetConflict")
@@ -271,9 +271,9 @@ function M.AssertFileSystemNotFound(struct)
 end
 
 --- Create a structure of type FileSystemNotFound
--- &lt;p&gt;Returned if the specified &lt;code&gt;FileSystemId&lt;/code&gt; does not exist in the requester's AWS account.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if the specified &lt;code&gt;FileSystemId&lt;/code&gt; does not exist in the requester's AWS account.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if the specified &lt;code&gt;FileSystemId&lt;/code&gt; does not exist in the requester's AWS account.&lt;/p&gt;
+-- <p>Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.</p>
+-- @param Message [ErrorMessage] <p>Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.</p>
 -- Required parameter: ErrorCode
 function M.FileSystemNotFound(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FileSystemNotFound")
@@ -300,9 +300,9 @@ end
 
 --- Create a structure of type DescribeFileSystemsResponse
 --  
--- @param Marker [Marker] &lt;p&gt;Present if provided by caller in the request (String).&lt;/p&gt;
--- @param NextMarker [Marker] &lt;p&gt;Present if there are more file systems than returned in the response (String). You can use the &lt;code&gt;NextMarker&lt;/code&gt; in the subsequent request to fetch the descriptions.&lt;/p&gt;
--- @param FileSystems [FileSystemDescriptions] &lt;p&gt;Array of file system descriptions.&lt;/p&gt;
+-- @param Marker [Marker] <p>Present if provided by caller in the request (String).</p>
+-- @param NextMarker [Marker] <p>Present if there are more file systems than returned in the response (String). You can use the <code>NextMarker</code> in the subsequent request to fetch the descriptions.</p>
+-- @param FileSystems [FileSystemDescriptions] <p>Array of file system descriptions.</p>
 function M.DescribeFileSystemsResponse(Marker, NextMarker, FileSystems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFileSystemsResponse")
 	local t = { 
@@ -328,10 +328,10 @@ function M.AssertDescribeMountTargetsResponse(struct)
 end
 
 --- Create a structure of type DescribeMountTargetsResponse
--- &lt;p/&gt;
--- @param Marker [Marker] &lt;p&gt;If the request included the &lt;code&gt;Marker&lt;/code&gt;, the response returns that value in this field.&lt;/p&gt;
--- @param NextMarker [Marker] &lt;p&gt;If a value is present, there are more mount targets to return. In a subsequent request, you can provide &lt;code&gt;Marker&lt;/code&gt; in your request with this value to retrieve the next set of mount targets.&lt;/p&gt;
--- @param MountTargets [MountTargetDescriptions] &lt;p&gt;Returns the file system's mount targets as an array of &lt;code&gt;MountTargetDescription&lt;/code&gt; objects.&lt;/p&gt;
+-- <p/>
+-- @param Marker [Marker] <p>If the request included the <code>Marker</code>, the response returns that value in this field.</p>
+-- @param NextMarker [Marker] <p>If a value is present, there are more mount targets to return. In a subsequent request, you can provide <code>Marker</code> in your request with this value to retrieve the next set of mount targets.</p>
+-- @param MountTargets [MountTargetDescriptions] <p>Returns the file system's mount targets as an array of <code>MountTargetDescription</code> objects.</p>
 function M.DescribeMountTargetsResponse(Marker, NextMarker, MountTargets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMountTargetsResponse")
 	local t = { 
@@ -357,9 +357,9 @@ function M.AssertBadRequest(struct)
 end
 
 --- Create a structure of type BadRequest
--- &lt;p&gt;Returned if the request is malformed or contains an error such as an invalid parameter value or a missing required parameter.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if the request is malformed or contains an error such as an invalid parameter value or a missing required parameter.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if the request is malformed or contains an error such as an invalid parameter value or a missing required parameter.&lt;/p&gt;
+-- <p>Returned if the request is malformed or contains an error such as an invalid parameter value or a missing required parameter.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if the request is malformed or contains an error such as an invalid parameter value or a missing required parameter.</p>
+-- @param Message [ErrorMessage] <p>Returned if the request is malformed or contains an error such as an invalid parameter value or a missing required parameter.</p>
 -- Required parameter: ErrorCode
 function M.BadRequest(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BadRequest")
@@ -386,10 +386,10 @@ function M.AssertDescribeTagsResponse(struct)
 end
 
 --- Create a structure of type DescribeTagsResponse
--- &lt;p/&gt;
--- @param Marker [Marker] &lt;p&gt;If the request included a &lt;code&gt;Marker&lt;/code&gt;, the response returns that value in this field.&lt;/p&gt;
--- @param NextMarker [Marker] &lt;p&gt;If a value is present, there are more tags to return. In a subsequent request, you can provide the value of &lt;code&gt;NextMarker&lt;/code&gt; as the value of the &lt;code&gt;Marker&lt;/code&gt; parameter in your next request to retrieve the next set of tags.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Returns tags associated with the file system as an array of &lt;code&gt;Tag&lt;/code&gt; objects. &lt;/p&gt;
+-- <p/>
+-- @param Marker [Marker] <p>If the request included a <code>Marker</code>, the response returns that value in this field.</p>
+-- @param NextMarker [Marker] <p>If a value is present, there are more tags to return. In a subsequent request, you can provide the value of <code>NextMarker</code> as the value of the <code>Marker</code> parameter in your next request to retrieve the next set of tags.</p>
+-- @param Tags [Tags] <p>Returns tags associated with the file system as an array of <code>Tag</code> objects. </p>
 -- Required parameter: Tags
 function M.DescribeTagsResponse(Marker, NextMarker, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsResponse")
@@ -415,8 +415,8 @@ function M.AssertDeleteFileSystemRequest(struct)
 end
 
 --- Create a structure of type DeleteFileSystemRequest
--- &lt;p/&gt;
--- @param FileSystemId [FileSystemId] &lt;p&gt;ID of the file system you want to delete.&lt;/p&gt;
+-- <p/>
+-- @param FileSystemId [FileSystemId] <p>ID of the file system you want to delete.</p>
 -- Required parameter: FileSystemId
 function M.DeleteFileSystemRequest(FileSystemId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFileSystemRequest")
@@ -442,8 +442,8 @@ end
 
 --- Create a structure of type CreateFileSystemRequest
 --  
--- @param PerformanceMode [PerformanceMode] &lt;p&gt;The &lt;code&gt;PerformanceMode&lt;/code&gt; of the file system. We recommend &lt;code&gt;generalPurpose&lt;/code&gt; performance mode for most file systems. File systems using the &lt;code&gt;maxIO&lt;/code&gt; performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. This can't be changed after the file system has been created.&lt;/p&gt;
--- @param CreationToken [CreationToken] &lt;p&gt;String of up to 64 ASCII characters. Amazon EFS uses this to ensure idempotent creation.&lt;/p&gt;
+-- @param PerformanceMode [PerformanceMode] <p>The <code>PerformanceMode</code> of the file system. We recommend <code>generalPurpose</code> performance mode for most file systems. File systems using the <code>maxIO</code> performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. This can't be changed after the file system has been created.</p>
+-- @param CreationToken [CreationToken] <p>String of up to 64 ASCII characters. Amazon EFS uses this to ensure idempotent creation.</p>
 -- Required parameter: CreationToken
 function M.CreateFileSystemRequest(PerformanceMode, CreationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFileSystemRequest")
@@ -469,7 +469,7 @@ end
 
 --- Create a structure of type DescribeMountTargetSecurityGroupsResponse
 --  
--- @param SecurityGroups [SecurityGroups] &lt;p&gt;Array of security groups.&lt;/p&gt;
+-- @param SecurityGroups [SecurityGroups] <p>Array of security groups.</p>
 -- Required parameter: SecurityGroups
 function M.DescribeMountTargetSecurityGroupsResponse(SecurityGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMountTargetSecurityGroupsResponse")
@@ -494,9 +494,9 @@ function M.AssertFileSystemInUse(struct)
 end
 
 --- Create a structure of type FileSystemInUse
--- &lt;p&gt;Returned if a file system has mount targets.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if a file system has mount targets.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if a file system has mount targets.&lt;/p&gt;
+-- <p>Returned if a file system has mount targets.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if a file system has mount targets.</p>
+-- @param Message [ErrorMessage] <p>Returned if a file system has mount targets.</p>
 -- Required parameter: ErrorCode
 function M.FileSystemInUse(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FileSystemInUse")
@@ -522,9 +522,9 @@ function M.AssertFileSystemSize(struct)
 end
 
 --- Create a structure of type FileSystemSize
--- &lt;p&gt;Latest known metered size (in bytes) of data stored in the file system, in its &lt;code&gt;Value&lt;/code&gt; field, and the time at which that size was determined in its &lt;code&gt;Timestamp&lt;/code&gt; field. Note that the value does not represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, the value will represent the actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not necessarily the exact size the file system was at any instant in time.&lt;/p&gt;
--- @param Timestamp [Timestamp] &lt;p&gt;Time at which the size of data, returned in the &lt;code&gt;Value&lt;/code&gt; field, was determined. The value is the integer number of seconds since 1970-01-01T00:00:00Z.&lt;/p&gt;
--- @param Value [FileSystemSizeValue] &lt;p&gt;Latest known metered size (in bytes) of data stored in the file system.&lt;/p&gt;
+-- <p>Latest known metered size (in bytes) of data stored in the file system, in its <code>Value</code> field, and the time at which that size was determined in its <code>Timestamp</code> field. Note that the value does not represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, the value will represent the actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not necessarily the exact size the file system was at any instant in time.</p>
+-- @param Timestamp [Timestamp] <p>Time at which the size of data, returned in the <code>Value</code> field, was determined. The value is the integer number of seconds since 1970-01-01T00:00:00Z.</p>
+-- @param Value [FileSystemSizeValue] <p>Latest known metered size (in bytes) of data stored in the file system.</p>
 -- Required parameter: Value
 function M.FileSystemSize(Timestamp, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FileSystemSize")
@@ -550,9 +550,9 @@ function M.AssertFileSystemLimitExceeded(struct)
 end
 
 --- Create a structure of type FileSystemLimitExceeded
--- &lt;p&gt;Returned if the AWS account has already created maximum number of file systems allowed per account.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if the AWS account has already created maximum number of file systems allowed per account.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if the AWS account has already created maximum number of file systems allowed per account.&lt;/p&gt;
+-- <p>Returned if the AWS account has already created maximum number of file systems allowed per account.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if the AWS account has already created maximum number of file systems allowed per account.</p>
+-- @param Message [ErrorMessage] <p>Returned if the AWS account has already created maximum number of file systems allowed per account.</p>
 -- Required parameter: ErrorCode
 function M.FileSystemLimitExceeded(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FileSystemLimitExceeded")
@@ -581,11 +581,11 @@ function M.AssertCreateMountTargetRequest(struct)
 end
 
 --- Create a structure of type CreateMountTargetRequest
--- &lt;p/&gt;
--- @param SubnetId [SubnetId] &lt;p&gt;ID of the subnet to add the mount target in.&lt;/p&gt;
--- @param SecurityGroups [SecurityGroups] &lt;p&gt;Up to five VPC security group IDs, of the form &lt;code&gt;sg-xxxxxxxx&lt;/code&gt;. These must be for the same VPC as subnet specified.&lt;/p&gt;
--- @param FileSystemId [FileSystemId] &lt;p&gt;ID of the file system for which to create the mount target.&lt;/p&gt;
--- @param IpAddress [IpAddress] &lt;p&gt;Valid IPv4 address within the address range of the specified subnet.&lt;/p&gt;
+-- <p/>
+-- @param SubnetId [SubnetId] <p>ID of the subnet to add the mount target in.</p>
+-- @param SecurityGroups [SecurityGroups] <p>Up to five VPC security group IDs, of the form <code>sg-xxxxxxxx</code>. These must be for the same VPC as subnet specified.</p>
+-- @param FileSystemId [FileSystemId] <p>ID of the file system for which to create the mount target.</p>
+-- @param IpAddress [IpAddress] <p>Valid IPv4 address within the address range of the specified subnet.</p>
 -- Required parameter: FileSystemId
 -- Required parameter: SubnetId
 function M.CreateMountTargetRequest(SubnetId, SecurityGroups, FileSystemId, IpAddress, ...)
@@ -615,10 +615,10 @@ function M.AssertDescribeTagsRequest(struct)
 end
 
 --- Create a structure of type DescribeTagsRequest
--- &lt;p/&gt;
--- @param Marker [Marker] &lt;p&gt;(Optional) Opaque pagination token returned from a previous &lt;code&gt;DescribeTags&lt;/code&gt; operation (String). If present, it specifies to continue the list from where the previous call left off.&lt;/p&gt;
--- @param FileSystemId [FileSystemId] &lt;p&gt;ID of the file system whose tag set you want to retrieve.&lt;/p&gt;
--- @param MaxItems [MaxItems] &lt;p&gt;(Optional) Maximum number of file system tags to return in the response. It must be an integer with a value greater than zero.&lt;/p&gt;
+-- <p/>
+-- @param Marker [Marker] <p>(Optional) Opaque pagination token returned from a previous <code>DescribeTags</code> operation (String). If present, it specifies to continue the list from where the previous call left off.</p>
+-- @param FileSystemId [FileSystemId] <p>ID of the file system whose tag set you want to retrieve.</p>
+-- @param MaxItems [MaxItems] <p>(Optional) Maximum number of file system tags to return in the response. It must be an integer with a value greater than zero.</p>
 -- Required parameter: FileSystemId
 function M.DescribeTagsRequest(Marker, FileSystemId, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsRequest")
@@ -646,9 +646,9 @@ function M.AssertDeleteTagsRequest(struct)
 end
 
 --- Create a structure of type DeleteTagsRequest
--- &lt;p/&gt;
--- @param FileSystemId [FileSystemId] &lt;p&gt;ID of the file system whose tags you want to delete (String).&lt;/p&gt;
--- @param TagKeys [TagKeys] &lt;p&gt;List of tag keys to delete.&lt;/p&gt;
+-- <p/>
+-- @param FileSystemId [FileSystemId] <p>ID of the file system whose tags you want to delete (String).</p>
+-- @param TagKeys [TagKeys] <p>List of tag keys to delete.</p>
 -- Required parameter: FileSystemId
 -- Required parameter: TagKeys
 function M.DeleteTagsRequest(FileSystemId, TagKeys, ...)
@@ -676,11 +676,11 @@ function M.AssertDescribeMountTargetsRequest(struct)
 end
 
 --- Create a structure of type DescribeMountTargetsRequest
--- &lt;p/&gt;
--- @param Marker [Marker] &lt;p&gt;(Optional) Opaque pagination token returned from a previous &lt;code&gt;DescribeMountTargets&lt;/code&gt; operation (String). If present, it specifies to continue the list from where the previous returning call left off.&lt;/p&gt;
--- @param FileSystemId [FileSystemId] &lt;p&gt;(Optional) ID of the file system whose mount targets you want to list (String). It must be included in your request if &lt;code&gt;MountTargetId&lt;/code&gt; is not included.&lt;/p&gt;
--- @param MountTargetId [MountTargetId] &lt;p&gt;(Optional) ID of the mount target that you want to have described (String). It must be included in your request if &lt;code&gt;FileSystemId&lt;/code&gt; is not included.&lt;/p&gt;
--- @param MaxItems [MaxItems] &lt;p&gt;(Optional) Maximum number of mount targets to return in the response. It must be an integer with a value greater than zero.&lt;/p&gt;
+-- <p/>
+-- @param Marker [Marker] <p>(Optional) Opaque pagination token returned from a previous <code>DescribeMountTargets</code> operation (String). If present, it specifies to continue the list from where the previous returning call left off.</p>
+-- @param FileSystemId [FileSystemId] <p>(Optional) ID of the file system whose mount targets you want to list (String). It must be included in your request if <code>MountTargetId</code> is not included.</p>
+-- @param MountTargetId [MountTargetId] <p>(Optional) ID of the mount target that you want to have described (String). It must be included in your request if <code>FileSystemId</code> is not included.</p>
+-- @param MaxItems [MaxItems] <p>(Optional) Maximum number of mount targets to return in the response. It must be an integer with a value greater than zero.</p>
 function M.DescribeMountTargetsRequest(Marker, FileSystemId, MountTargetId, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMountTargetsRequest")
 	local t = { 
@@ -707,9 +707,9 @@ function M.AssertSecurityGroupLimitExceeded(struct)
 end
 
 --- Create a structure of type SecurityGroupLimitExceeded
--- &lt;p&gt;Returned if the size of &lt;code&gt;SecurityGroups&lt;/code&gt; specified in the request is greater than five.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if the size of &lt;code&gt;SecurityGroups&lt;/code&gt; specified in the request is greater than five.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if the size of &lt;code&gt;SecurityGroups&lt;/code&gt; specified in the request is greater than five.&lt;/p&gt;
+-- <p>Returned if the size of <code>SecurityGroups</code> specified in the request is greater than five.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if the size of <code>SecurityGroups</code> specified in the request is greater than five.</p>
+-- @param Message [ErrorMessage] <p>Returned if the size of <code>SecurityGroups</code> specified in the request is greater than five.</p>
 -- Required parameter: ErrorCode
 function M.SecurityGroupLimitExceeded(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SecurityGroupLimitExceeded")
@@ -735,9 +735,9 @@ function M.AssertNoFreeAddressesInSubnet(struct)
 end
 
 --- Create a structure of type NoFreeAddressesInSubnet
--- &lt;p&gt;Returned if &lt;code&gt;IpAddress&lt;/code&gt; was not specified in the request and there are no free IP addresses in the subnet.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if &lt;code&gt;IpAddress&lt;/code&gt; was not specified in the request and there are no free IP addresses in the subnet.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if &lt;code&gt;IpAddress&lt;/code&gt; was not specified in the request and there are no free IP addresses in the subnet.&lt;/p&gt;
+-- <p>Returned if <code>IpAddress</code> was not specified in the request and there are no free IP addresses in the subnet.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if <code>IpAddress</code> was not specified in the request and there are no free IP addresses in the subnet.</p>
+-- @param Message [ErrorMessage] <p>Returned if <code>IpAddress</code> was not specified in the request and there are no free IP addresses in the subnet.</p>
 -- Required parameter: ErrorCode
 function M.NoFreeAddressesInSubnet(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoFreeAddressesInSubnet")
@@ -764,11 +764,11 @@ function M.AssertDescribeFileSystemsRequest(struct)
 end
 
 --- Create a structure of type DescribeFileSystemsRequest
--- &lt;p/&gt;
--- @param Marker [Marker] &lt;p&gt;(Optional) Opaque pagination token returned from a previous &lt;code&gt;DescribeFileSystems&lt;/code&gt; operation (String). If present, specifies to continue the list from where the returning call had left off. &lt;/p&gt;
--- @param FileSystemId [FileSystemId] &lt;p&gt;(Optional) ID of the file system whose description you want to retrieve (String).&lt;/p&gt;
--- @param MaxItems [MaxItems] &lt;p&gt;(Optional) Specifies the maximum number of file systems to return in the response (integer). This parameter value must be greater than 0. The number of items that Amazon EFS returns is the minimum of the &lt;code&gt;MaxItems&lt;/code&gt; parameter specified in the request and the service's internal maximum number of items per page. &lt;/p&gt;
--- @param CreationToken [CreationToken] &lt;p&gt;(Optional) Restricts the list to the file system with this creation token (String). You specify a creation token when you create an Amazon EFS file system.&lt;/p&gt;
+-- <p/>
+-- @param Marker [Marker] <p>(Optional) Opaque pagination token returned from a previous <code>DescribeFileSystems</code> operation (String). If present, specifies to continue the list from where the returning call had left off. </p>
+-- @param FileSystemId [FileSystemId] <p>(Optional) ID of the file system whose description you want to retrieve (String).</p>
+-- @param MaxItems [MaxItems] <p>(Optional) Specifies the maximum number of file systems to return in the response (integer). This parameter value must be greater than 0. The number of items that Amazon EFS returns is the minimum of the <code>MaxItems</code> parameter specified in the request and the service's internal maximum number of items per page. </p>
+-- @param CreationToken [CreationToken] <p>(Optional) Restricts the list to the file system with this creation token (String). You specify a creation token when you create an Amazon EFS file system.</p>
 function M.DescribeFileSystemsRequest(Marker, FileSystemId, MaxItems, CreationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFileSystemsRequest")
 	local t = { 
@@ -795,9 +795,9 @@ function M.AssertInternalServerError(struct)
 end
 
 --- Create a structure of type InternalServerError
--- &lt;p&gt;Returned if an error occurred on the server side.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if an error occurred on the server side.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if an error occurred on the server side.&lt;/p&gt;
+-- <p>Returned if an error occurred on the server side.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if an error occurred on the server side.</p>
+-- @param Message [ErrorMessage] <p>Returned if an error occurred on the server side.</p>
 -- Required parameter: ErrorCode
 function M.InternalServerError(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
@@ -823,9 +823,9 @@ function M.AssertModifyMountTargetSecurityGroupsRequest(struct)
 end
 
 --- Create a structure of type ModifyMountTargetSecurityGroupsRequest
--- &lt;p/&gt;
--- @param MountTargetId [MountTargetId] &lt;p&gt;ID of the mount target whose security groups you want to modify.&lt;/p&gt;
--- @param SecurityGroups [SecurityGroups] &lt;p&gt;Array of up to five VPC security group IDs.&lt;/p&gt;
+-- <p/>
+-- @param MountTargetId [MountTargetId] <p>ID of the mount target whose security groups you want to modify.</p>
+-- @param SecurityGroups [SecurityGroups] <p>Array of up to five VPC security group IDs.</p>
 -- Required parameter: MountTargetId
 function M.ModifyMountTargetSecurityGroupsRequest(MountTargetId, SecurityGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyMountTargetSecurityGroupsRequest")
@@ -851,9 +851,9 @@ function M.AssertIncorrectFileSystemLifeCycleState(struct)
 end
 
 --- Create a structure of type IncorrectFileSystemLifeCycleState
--- &lt;p&gt;Returned if the file system's life cycle state is not &quot;created&quot;.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if the file system's life cycle state is not &quot;created&quot;.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if the file system's life cycle state is not &quot;created&quot;.&lt;/p&gt;
+-- <p>Returned if the file system's life cycle state is not "created".</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if the file system's life cycle state is not "created".</p>
+-- @param Message [ErrorMessage] <p>Returned if the file system's life cycle state is not "created".</p>
 -- Required parameter: ErrorCode
 function M.IncorrectFileSystemLifeCycleState(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IncorrectFileSystemLifeCycleState")
@@ -881,10 +881,10 @@ function M.AssertFileSystemAlreadyExists(struct)
 end
 
 --- Create a structure of type FileSystemAlreadyExists
--- &lt;p&gt;Returned if the file system you are trying to create already exists, with the creation token you provided.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if the file system you are trying to create already exists, with the creation token you provided.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if the file system you are trying to create already exists, with the creation token you provided.&lt;/p&gt;
--- @param FileSystemId [FileSystemId] &lt;p&gt;Returned if the file system you are trying to create already exists, with the creation token you provided.&lt;/p&gt;
+-- <p>Returned if the file system you are trying to create already exists, with the creation token you provided.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if the file system you are trying to create already exists, with the creation token you provided.</p>
+-- @param Message [ErrorMessage] <p>Returned if the file system you are trying to create already exists, with the creation token you provided.</p>
+-- @param FileSystemId [FileSystemId] <p>Returned if the file system you are trying to create already exists, with the creation token you provided.</p>
 -- Required parameter: ErrorCode
 -- Required parameter: FileSystemId
 function M.FileSystemAlreadyExists(ErrorCode, Message, FileSystemId, ...)
@@ -912,9 +912,9 @@ function M.AssertSubnetNotFound(struct)
 end
 
 --- Create a structure of type SubnetNotFound
--- &lt;p&gt;Returned if there is no subnet with ID &lt;code&gt;SubnetId&lt;/code&gt; provided in the request.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if there is no subnet with ID &lt;code&gt;SubnetId&lt;/code&gt; provided in the request.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if there is no subnet with ID &lt;code&gt;SubnetId&lt;/code&gt; provided in the request.&lt;/p&gt;
+-- <p>Returned if there is no subnet with ID <code>SubnetId</code> provided in the request.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if there is no subnet with ID <code>SubnetId</code> provided in the request.</p>
+-- @param Message [ErrorMessage] <p>Returned if there is no subnet with ID <code>SubnetId</code> provided in the request.</p>
 -- Required parameter: ErrorCode
 function M.SubnetNotFound(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetNotFound")
@@ -940,9 +940,9 @@ function M.AssertMountTargetNotFound(struct)
 end
 
 --- Create a structure of type MountTargetNotFound
--- &lt;p&gt;Returned if there is no mount target with the specified ID found in the caller's account.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;Returned if there is no mount target with the specified ID found in the caller's account.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Returned if there is no mount target with the specified ID found in the caller's account.&lt;/p&gt;
+-- <p>Returned if there is no mount target with the specified ID found in the caller's account.</p>
+-- @param ErrorCode [ErrorCode] <p>Returned if there is no mount target with the specified ID found in the caller's account.</p>
+-- @param Message [ErrorMessage] <p>Returned if there is no mount target with the specified ID found in the caller's account.</p>
 -- Required parameter: ErrorCode
 function M.MountTargetNotFound(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MountTargetNotFound")
@@ -982,16 +982,16 @@ function M.AssertFileSystemDescription(struct)
 end
 
 --- Create a structure of type FileSystemDescription
--- &lt;p&gt;Description of the file system.&lt;/p&gt;
--- @param SizeInBytes [FileSystemSize] &lt;p&gt;Latest known metered size (in bytes) of data stored in the file system, in bytes, in its &lt;code&gt;Value&lt;/code&gt; field, and the time at which that size was determined in its &lt;code&gt;Timestamp&lt;/code&gt; field. The &lt;code&gt;Timestamp&lt;/code&gt; value is the integer number of seconds since 1970-01-01T00:00:00Z. Note that the value does not represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, the value will represent actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not the exact size the file system was at any instant in time. &lt;/p&gt;
--- @param Name [TagValue] &lt;p&gt;You can add tags to a file system, including a &lt;code&gt;Name&lt;/code&gt; tag. For more information, see &lt;a&gt;CreateTags&lt;/a&gt;. If the file system has a &lt;code&gt;Name&lt;/code&gt; tag, Amazon EFS returns the value in this field. &lt;/p&gt;
--- @param CreationToken [CreationToken] &lt;p&gt;Opaque string specified in the request.&lt;/p&gt;
--- @param CreationTime [Timestamp] &lt;p&gt;Time that the file system was created, in seconds (since 1970-01-01T00:00:00Z).&lt;/p&gt;
--- @param PerformanceMode [PerformanceMode] &lt;p&gt;The &lt;code&gt;PerformanceMode&lt;/code&gt; of the file system.&lt;/p&gt;
--- @param FileSystemId [FileSystemId] &lt;p&gt;ID of the file system, assigned by Amazon EFS.&lt;/p&gt;
--- @param NumberOfMountTargets [MountTargetCount] &lt;p&gt;Current number of mount targets that the file system has. For more information, see &lt;a&gt;CreateMountTarget&lt;/a&gt;.&lt;/p&gt;
--- @param LifeCycleState [LifeCycleState] &lt;p&gt;Lifecycle phase of the file system.&lt;/p&gt;
--- @param OwnerId [AwsAccountId] &lt;p&gt;AWS account that created the file system. If the file system was created by an IAM user, the parent account to which the user belongs is the owner.&lt;/p&gt;
+-- <p>Description of the file system.</p>
+-- @param SizeInBytes [FileSystemSize] <p>Latest known metered size (in bytes) of data stored in the file system, in bytes, in its <code>Value</code> field, and the time at which that size was determined in its <code>Timestamp</code> field. The <code>Timestamp</code> value is the integer number of seconds since 1970-01-01T00:00:00Z. Note that the value does not represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, the value will represent actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not the exact size the file system was at any instant in time. </p>
+-- @param Name [TagValue] <p>You can add tags to a file system, including a <code>Name</code> tag. For more information, see <a>CreateTags</a>. If the file system has a <code>Name</code> tag, Amazon EFS returns the value in this field. </p>
+-- @param CreationToken [CreationToken] <p>Opaque string specified in the request.</p>
+-- @param CreationTime [Timestamp] <p>Time that the file system was created, in seconds (since 1970-01-01T00:00:00Z).</p>
+-- @param PerformanceMode [PerformanceMode] <p>The <code>PerformanceMode</code> of the file system.</p>
+-- @param FileSystemId [FileSystemId] <p>ID of the file system, assigned by Amazon EFS.</p>
+-- @param NumberOfMountTargets [MountTargetCount] <p>Current number of mount targets that the file system has. For more information, see <a>CreateMountTarget</a>.</p>
+-- @param LifeCycleState [LifeCycleState] <p>Lifecycle phase of the file system.</p>
+-- @param OwnerId [AwsAccountId] <p>AWS account that created the file system. If the file system was created by an IAM user, the parent account to which the user belongs is the owner.</p>
 -- Required parameter: OwnerId
 -- Required parameter: CreationToken
 -- Required parameter: FileSystemId
@@ -1031,9 +1031,9 @@ function M.AssertNetworkInterfaceLimitExceeded(struct)
 end
 
 --- Create a structure of type NetworkInterfaceLimitExceeded
--- &lt;p&gt; The calling account has reached the ENI limit for the specific AWS region. Client should try to delete some ENIs or get its account limit raised. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html&quot;&gt;Amazon VPC Limits&lt;/a&gt; in the Amazon Virtual Private Cloud User Guide (see the Network interfaces per VPC entry in the table). &lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt; The calling account has reached the ENI limit for the specific AWS region. Client should try to delete some ENIs or get its account limit raised. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html&quot;&gt;Amazon VPC Limits&lt;/a&gt; in the Amazon Virtual Private Cloud User Guide (see the Network interfaces per VPC entry in the table). &lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt; The calling account has reached the ENI limit for the specific AWS region. Client should try to delete some ENIs or get its account limit raised. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html&quot;&gt;Amazon VPC Limits&lt;/a&gt; in the Amazon Virtual Private Cloud User Guide (see the Network interfaces per VPC entry in the table). &lt;/p&gt;
+-- <p> The calling account has reached the ENI limit for the specific AWS region. Client should try to delete some ENIs or get its account limit raised. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a> in the Amazon Virtual Private Cloud User Guide (see the Network interfaces per VPC entry in the table). </p>
+-- @param ErrorCode [ErrorCode] <p> The calling account has reached the ENI limit for the specific AWS region. Client should try to delete some ENIs or get its account limit raised. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a> in the Amazon Virtual Private Cloud User Guide (see the Network interfaces per VPC entry in the table). </p>
+-- @param Message [ErrorMessage] <p> The calling account has reached the ENI limit for the specific AWS region. Client should try to delete some ENIs or get its account limit raised. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a> in the Amazon Virtual Private Cloud User Guide (see the Network interfaces per VPC entry in the table). </p>
 -- Required parameter: ErrorCode
 function M.NetworkInterfaceLimitExceeded(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NetworkInterfaceLimitExceeded")
@@ -1060,9 +1060,9 @@ function M.AssertCreateTagsRequest(struct)
 end
 
 --- Create a structure of type CreateTagsRequest
--- &lt;p/&gt;
--- @param FileSystemId [FileSystemId] &lt;p&gt;ID of the file system whose tags you want to modify (String). This operation modifies the tags only, not the file system.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;Array of &lt;code&gt;Tag&lt;/code&gt; objects to add. Each &lt;code&gt;Tag&lt;/code&gt; object is a key-value pair. &lt;/p&gt;
+-- <p/>
+-- @param FileSystemId [FileSystemId] <p>ID of the file system whose tags you want to modify (String). This operation modifies the tags only, not the file system.</p>
+-- @param Tags [Tags] <p>Array of <code>Tag</code> objects to add. Each <code>Tag</code> object is a key-value pair. </p>
 -- Required parameter: FileSystemId
 -- Required parameter: Tags
 function M.CreateTagsRequest(FileSystemId, Tags, ...)
@@ -1090,9 +1090,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;A tag is a key-value pair. Allowed characters: letters, whitespace, and numbers, representable in UTF-8, and the following characters:&lt;code&gt; + - = . _ : /&lt;/code&gt; &lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;Value of the tag key.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;Tag key (String). The key can't start with &lt;code&gt;aws:&lt;/code&gt;.&lt;/p&gt;
+-- <p>A tag is a key-value pair. Allowed characters: letters, whitespace, and numbers, representable in UTF-8, and the following characters:<code> + - = . _ : /</code> </p>
+-- @param Value [TagValue] <p>Value of the tag key.</p>
+-- @param Key [TagKey] <p>Tag key (String). The key can't start with <code>aws:</code>.</p>
 -- Required parameter: Key
 -- Required parameter: Value
 function M.Tag(Value, Key, ...)
@@ -1119,9 +1119,9 @@ function M.AssertUnsupportedAvailabilityZone(struct)
 end
 
 --- Create a structure of type UnsupportedAvailabilityZone
--- &lt;p&gt;&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;&lt;/p&gt;
+-- <p></p>
+-- @param ErrorCode [ErrorCode] <p></p>
+-- @param Message [ErrorMessage] <p></p>
 -- Required parameter: ErrorCode
 function M.UnsupportedAvailabilityZone(ErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedAvailabilityZone")

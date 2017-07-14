@@ -30,8 +30,8 @@ function M.AssertUnsupportedLocale(struct)
 end
 
 --- Create a structure of type UnsupportedLocale
--- &lt;p&gt;The specified locale is not supported.&lt;/p&gt;
--- @param message [string] &lt;p&gt;The specified locale is not supported.&lt;/p&gt;
+-- <p>The specified locale is not supported.</p>
+-- @param message [string] <p>The specified locale is not supported.</p>
 function M.UnsupportedLocale(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedLocale")
 	local t = { 
@@ -55,8 +55,8 @@ end
 
 --- Create a structure of type DescribeEventAggregatesResponse
 --  
--- @param nextToken [nextToken] &lt;p&gt;If the results of a search are large, only a portion of the results are returned, and a &lt;code&gt;nextToken&lt;/code&gt; pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.&lt;/p&gt;
--- @param eventAggregates [EventAggregateList] &lt;p&gt;The number of events in each category that meet the optional filter criteria.&lt;/p&gt;
+-- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param eventAggregates [EventAggregateList] <p>The number of events in each category that meet the optional filter criteria.</p>
 function M.DescribeEventAggregatesResponse(nextToken, eventAggregates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventAggregatesResponse")
 	local t = { 
@@ -85,13 +85,13 @@ function M.AssertEntityFilter(struct)
 end
 
 --- Create a structure of type EntityFilter
--- &lt;p&gt;The values to use to filter results from the &lt;a&gt;DescribeAffectedEntities&lt;/a&gt; operation.&lt;/p&gt;
--- @param eventArns [eventArnList] &lt;p&gt;A list of event ARNs (unique identifiers). For example: &lt;code&gt;&quot;arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331&quot;, &quot;arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz&quot;&lt;/code&gt; &lt;/p&gt;
--- @param statusCodes [entityStatusCodeList] &lt;p&gt;A list of entity status codes (&lt;code&gt;IMPAIRED&lt;/code&gt;, &lt;code&gt;UNIMPAIRED&lt;/code&gt;, or &lt;code&gt;UNKNOWN&lt;/code&gt;).&lt;/p&gt;
--- @param entityValues [entityValueList] &lt;p&gt;A list of IDs for affected entities.&lt;/p&gt;
--- @param entityArns [entityArnList] &lt;p&gt;A list of entity ARNs (unique identifiers).&lt;/p&gt;
--- @param lastUpdatedTimes [dateTimeRangeList] &lt;p&gt;A list of the most recent dates and times that the entity was updated.&lt;/p&gt;
--- @param tags [tagFilter] &lt;p&gt;A map of entity tags attached to the affected entity.&lt;/p&gt;
+-- <p>The values to use to filter results from the <a>DescribeAffectedEntities</a> operation.</p>
+-- @param eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
+-- @param statusCodes [entityStatusCodeList] <p>A list of entity status codes (<code>IMPAIRED</code>, <code>UNIMPAIRED</code>, or <code>UNKNOWN</code>).</p>
+-- @param entityValues [entityValueList] <p>A list of IDs for affected entities.</p>
+-- @param entityArns [entityArnList] <p>A list of entity ARNs (unique identifiers).</p>
+-- @param lastUpdatedTimes [dateTimeRangeList] <p>A list of the most recent dates and times that the entity was updated.</p>
+-- @param tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
 -- Required parameter: eventArns
 function M.EntityFilter(eventArns, statusCodes, entityValues, entityArns, lastUpdatedTimes, tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntityFilter")
@@ -121,10 +121,10 @@ function M.AssertEventDetails(struct)
 end
 
 --- Create a structure of type EventDetails
--- &lt;p&gt;Detailed information about an event. A combination of an &lt;a&gt;Event&lt;/a&gt; object, an &lt;a&gt;EventDescription&lt;/a&gt; object, and additional metadata about the event. Returned by the &lt;a&gt;DescribeEventDetails&lt;/a&gt; operation.&lt;/p&gt;
--- @param eventMetadata [eventMetadata] &lt;p&gt;Additional metadata about the event.&lt;/p&gt;
--- @param event [Event] &lt;p&gt;Summary information about the event.&lt;/p&gt;
--- @param eventDescription [EventDescription] &lt;p&gt;The most recent description of the event.&lt;/p&gt;
+-- <p>Detailed information about an event. A combination of an <a>Event</a> object, an <a>EventDescription</a> object, and additional metadata about the event. Returned by the <a>DescribeEventDetails</a> operation.</p>
+-- @param eventMetadata [eventMetadata] <p>Additional metadata about the event.</p>
+-- @param event [Event] <p>Summary information about the event.</p>
+-- @param eventDescription [EventDescription] <p>The most recent description of the event.</p>
 function M.EventDetails(eventMetadata, event, eventDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventDetails")
 	local t = { 
@@ -150,8 +150,8 @@ end
 
 --- Create a structure of type DescribeEventTypesResponse
 --  
--- @param eventTypes [EventTypeList] &lt;p&gt;A list of event types that match the filter criteria. Event types have a category (&lt;code&gt;issue&lt;/code&gt;, &lt;code&gt;accountNotification&lt;/code&gt;, or &lt;code&gt;scheduledChange&lt;/code&gt;), a service (for example, &lt;code&gt;EC2&lt;/code&gt;, &lt;code&gt;RDS&lt;/code&gt;, &lt;code&gt;DATAPIPELINE&lt;/code&gt;, &lt;code&gt;BILLING&lt;/code&gt;), and a code (in the format &lt;code&gt;AWS_&lt;i&gt;SERVICE&lt;/i&gt;_&lt;i&gt;DESCRIPTION&lt;/i&gt; &lt;/code&gt;; for example, &lt;code&gt;AWS_EC2_SYSTEM_MAINTENANCE_EVENT&lt;/code&gt;).&lt;/p&gt;
--- @param nextToken [nextToken] &lt;p&gt;If the results of a search are large, only a portion of the results are returned, and a &lt;code&gt;nextToken&lt;/code&gt; pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.&lt;/p&gt;
+-- @param eventTypes [EventTypeList] <p>A list of event types that match the filter criteria. Event types have a category (<code>issue</code>, <code>accountNotification</code>, or <code>scheduledChange</code>), a service (for example, <code>EC2</code>, <code>RDS</code>, <code>DATAPIPELINE</code>, <code>BILLING</code>), and a code (in the format <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>
+-- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
 function M.DescribeEventTypesResponse(eventTypes, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventTypesResponse")
 	local t = { 
@@ -179,10 +179,10 @@ end
 
 --- Create a structure of type DescribeAffectedEntitiesRequest
 --  
--- @param filter [EntityFilter] &lt;p&gt;Values to narrow the results returned. At least one event ARN is required. &lt;/p&gt;
--- @param locale [locale] &lt;p&gt;The locale (language) to return information in. English (en) is the default and the only supported value at this time.&lt;/p&gt;
--- @param nextToken [nextToken] &lt;p&gt;If the results of a search are large, only a portion of the results are returned, and a &lt;code&gt;nextToken&lt;/code&gt; pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.&lt;/p&gt;
--- @param maxResults [maxResults] &lt;p&gt;The maximum number of items to return in one batch, between 10 and 100, inclusive.&lt;/p&gt;
+-- @param filter [EntityFilter] <p>Values to narrow the results returned. At least one event ARN is required. </p>
+-- @param locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
 -- Required parameter: filter
 function M.DescribeAffectedEntitiesRequest(filter, locale, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAffectedEntitiesRequest")
@@ -214,14 +214,14 @@ function M.AssertAffectedEntity(struct)
 end
 
 --- Create a structure of type AffectedEntity
--- &lt;p&gt;Information about an entity that is affected by a Health event.&lt;/p&gt;
--- @param entityValue [entityValue] &lt;p&gt;The ID of the affected entity.&lt;/p&gt;
--- @param lastUpdatedTime [timestamp] &lt;p&gt;The most recent time that the entity was updated.&lt;/p&gt;
--- @param tags [tagSet] &lt;p&gt;A map of entity tags attached to the affected entity.&lt;/p&gt;
--- @param entityArn [entityArn] &lt;p&gt;The unique identifier for the entity. Format: &lt;code&gt;arn:aws:health:&lt;i&gt;entity-region&lt;/i&gt;:&lt;i&gt;aws-account&lt;/i&gt;:entity/&lt;i&gt;entity-id&lt;/i&gt; &lt;/code&gt;. Example: &lt;code&gt;arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K&lt;/code&gt; &lt;/p&gt;
--- @param awsAccountId [accountId] &lt;p&gt;The 12-digit AWS account number that contains the affected entity.&lt;/p&gt;
--- @param eventArn [eventArn] &lt;p&gt;The unique identifier for the event. Format: &lt;code&gt;arn:aws:health:&lt;i&gt;event-region&lt;/i&gt;::event/&lt;i&gt;EVENT_TYPE_PLUS_ID&lt;/i&gt; &lt;/code&gt;. Example: &lt;code&gt;arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331&lt;/code&gt; &lt;/p&gt;
--- @param statusCode [entityStatusCode] &lt;p&gt;The most recent status of the entity affected by the event. The possible values are &lt;code&gt;IMPAIRED&lt;/code&gt;, &lt;code&gt;UNIMPAIRED&lt;/code&gt;, and &lt;code&gt;UNKNOWN&lt;/code&gt;.&lt;/p&gt;
+-- <p>Information about an entity that is affected by a Health event.</p>
+-- @param entityValue [entityValue] <p>The ID of the affected entity.</p>
+-- @param lastUpdatedTime [timestamp] <p>The most recent time that the entity was updated.</p>
+-- @param tags [tagSet] <p>A map of entity tags attached to the affected entity.</p>
+-- @param entityArn [entityArn] <p>The unique identifier for the entity. Format: <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i> </code>. Example: <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code> </p>
+-- @param awsAccountId [accountId] <p>The 12-digit AWS account number that contains the affected entity.</p>
+-- @param eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+-- @param statusCode [entityStatusCode] <p>The most recent status of the entity affected by the event. The possible values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and <code>UNKNOWN</code>.</p>
 function M.AffectedEntity(entityValue, lastUpdatedTime, tags, entityArn, awsAccountId, eventArn, statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AffectedEntity")
 	local t = { 
@@ -254,10 +254,10 @@ end
 
 --- Create a structure of type DescribeEventAggregatesRequest
 --  
--- @param filter [EventFilter] &lt;p&gt;Values to narrow the results returned.&lt;/p&gt;
--- @param aggregateField [eventAggregateField] &lt;p&gt;The only currently supported value is &lt;code&gt;eventTypeCategory&lt;/code&gt;.&lt;/p&gt;
--- @param nextToken [nextToken] &lt;p&gt;If the results of a search are large, only a portion of the results are returned, and a &lt;code&gt;nextToken&lt;/code&gt; pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.&lt;/p&gt;
--- @param maxResults [maxResults] &lt;p&gt;The maximum number of items to return in one batch, between 10 and 100, inclusive.&lt;/p&gt;
+-- @param filter [EventFilter] <p>Values to narrow the results returned.</p>
+-- @param aggregateField [eventAggregateField] <p>The only currently supported value is <code>eventTypeCategory</code>.</p>
+-- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
 -- Required parameter: aggregateField
 function M.DescribeEventAggregatesRequest(filter, aggregateField, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventAggregatesRequest")
@@ -285,8 +285,8 @@ end
 
 --- Create a structure of type DescribeEventsResponse
 --  
--- @param nextToken [nextToken] &lt;p&gt;If the results of a search are large, only a portion of the results are returned, and a &lt;code&gt;nextToken&lt;/code&gt; pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.&lt;/p&gt;
--- @param events [EventList] &lt;p&gt;The events that match the specified filter criteria.&lt;/p&gt;
+-- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param events [EventList] <p>The events that match the specified filter criteria.</p>
 function M.DescribeEventsResponse(nextToken, events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsResponse")
 	local t = { 
@@ -309,8 +309,8 @@ function M.AssertEventDescription(struct)
 end
 
 --- Create a structure of type EventDescription
--- &lt;p&gt;The detailed description of the event. Included in the information returned by the &lt;a&gt;DescribeEventDetails&lt;/a&gt; operation.&lt;/p&gt;
--- @param latestDescription [eventDescription] &lt;p&gt;The most recent description of the event.&lt;/p&gt;
+-- <p>The detailed description of the event. Included in the information returned by the <a>DescribeEventDetails</a> operation.</p>
+-- @param latestDescription [eventDescription] <p>The most recent description of the event.</p>
 function M.EventDescription(latestDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventDescription")
 	local t = { 
@@ -334,10 +334,10 @@ function M.AssertEventType(struct)
 end
 
 --- Create a structure of type EventType
--- &lt;p&gt;Metadata about a type of event that is reported by AWS Health. Data consists of the category (for example, &lt;code&gt;issue&lt;/code&gt;), the service (for example, &lt;code&gt;EC2&lt;/code&gt;), and the event type code (for example, &lt;code&gt;AWS_EC2_SYSTEM_MAINTENANCE_EVENT&lt;/code&gt;).&lt;/p&gt;
--- @param category [eventTypeCategory] &lt;p&gt;A list of event type category codes (&lt;code&gt;issue&lt;/code&gt;, &lt;code&gt;scheduledChange&lt;/code&gt;, or &lt;code&gt;accountNotification&lt;/code&gt;).&lt;/p&gt;
--- @param code [eventTypeCode] &lt;p&gt;The unique identifier for the event type. The format is &lt;code&gt;AWS_&lt;i&gt;SERVICE&lt;/i&gt;_&lt;i&gt;DESCRIPTION&lt;/i&gt; &lt;/code&gt;; for example, &lt;code&gt;AWS_EC2_SYSTEM_MAINTENANCE_EVENT&lt;/code&gt;.&lt;/p&gt;
--- @param service [service] &lt;p&gt;The AWS service that is affected by the event. For example, &lt;code&gt;EC2&lt;/code&gt;, &lt;code&gt;RDS&lt;/code&gt;.&lt;/p&gt;
+-- <p>Metadata about a type of event that is reported by AWS Health. Data consists of the category (for example, <code>issue</code>), the service (for example, <code>EC2</code>), and the event type code (for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>
+-- @param category [eventTypeCategory] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
+-- @param code [eventTypeCode] <p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>
+-- @param service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
 function M.EventType(category, code, service, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventType")
 	local t = { 
@@ -362,7 +362,7 @@ end
 
 --- Create a structure of type DescribeEntityAggregatesResponse
 --  
--- @param entityAggregates [EntityAggregateList] &lt;p&gt;The number of entities that are affected by each of the specified events.&lt;/p&gt;
+-- @param entityAggregates [EntityAggregateList] <p>The number of entities that are affected by each of the specified events.</p>
 function M.DescribeEntityAggregatesResponse(entityAggregates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEntityAggregatesResponse")
 	local t = { 
@@ -386,10 +386,10 @@ function M.AssertEventDetailsErrorItem(struct)
 end
 
 --- Create a structure of type EventDetailsErrorItem
--- &lt;p&gt;Error information returned when a &lt;a&gt;DescribeEventDetails&lt;/a&gt; operation cannot find a specified event.&lt;/p&gt;
--- @param errorMessage [string] &lt;p&gt;A message that describes the error.&lt;/p&gt;
--- @param eventArn [eventArn] &lt;p&gt;The unique identifier for the event. Format: &lt;code&gt;arn:aws:health:&lt;i&gt;event-region&lt;/i&gt;::event/&lt;i&gt;EVENT_TYPE_PLUS_ID&lt;/i&gt; &lt;/code&gt;. Example: &lt;code&gt;arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331&lt;/code&gt; &lt;/p&gt;
--- @param errorName [string] &lt;p&gt;The name of the error.&lt;/p&gt;
+-- <p>Error information returned when a <a>DescribeEventDetails</a> operation cannot find a specified event.</p>
+-- @param errorMessage [string] <p>A message that describes the error.</p>
+-- @param eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+-- @param errorName [string] <p>The name of the error.</p>
 function M.EventDetailsErrorItem(errorMessage, eventArn, errorName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventDetailsErrorItem")
 	local t = { 
@@ -415,10 +415,10 @@ function M.AssertEventTypeFilter(struct)
 end
 
 --- Create a structure of type EventTypeFilter
--- &lt;p&gt;The values to use to filter results from the &lt;a&gt;DescribeEventTypes&lt;/a&gt; operation.&lt;/p&gt;
--- @param eventTypeCodes [EventTypeCodeList] &lt;p&gt;A list of event type codes.&lt;/p&gt;
--- @param services [serviceList] &lt;p&gt;The AWS services associated with the event. For example, &lt;code&gt;EC2&lt;/code&gt;, &lt;code&gt;RDS&lt;/code&gt;.&lt;/p&gt;
--- @param eventTypeCategories [EventTypeCategoryList] &lt;p&gt;A list of event type category codes (&lt;code&gt;issue&lt;/code&gt;, &lt;code&gt;scheduledChange&lt;/code&gt;, or &lt;code&gt;accountNotification&lt;/code&gt;).&lt;/p&gt;
+-- <p>The values to use to filter results from the <a>DescribeEventTypes</a> operation.</p>
+-- @param eventTypeCodes [EventTypeCodeList] <p>A list of event type codes.</p>
+-- @param services [serviceList] <p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+-- @param eventTypeCategories [EventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
 function M.EventTypeFilter(eventTypeCodes, services, eventTypeCategories, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventTypeFilter")
 	local t = { 
@@ -443,9 +443,9 @@ function M.AssertDateTimeRange(struct)
 end
 
 --- Create a structure of type DateTimeRange
--- &lt;p&gt;A range of dates and times that is used by the &lt;a&gt;EventFilter&lt;/a&gt; and &lt;a&gt;EntityFilter&lt;/a&gt; objects. If &lt;code&gt;from&lt;/code&gt; is set and &lt;code&gt;to&lt;/code&gt; is set: match items where the timestamp (&lt;code&gt;startTime&lt;/code&gt;, &lt;code&gt;endTime&lt;/code&gt;, or &lt;code&gt;lastUpdatedTime&lt;/code&gt;) is between &lt;code&gt;from&lt;/code&gt; and &lt;code&gt;to&lt;/code&gt; inclusive. If &lt;code&gt;from&lt;/code&gt; is set and &lt;code&gt;to&lt;/code&gt; is not set: match items where the timestamp value is equal to or after &lt;code&gt;from&lt;/code&gt;. If &lt;code&gt;from&lt;/code&gt; is not set and &lt;code&gt;to&lt;/code&gt; is set: match items where the timestamp value is equal to or before &lt;code&gt;to&lt;/code&gt;.&lt;/p&gt;
--- @param to [timestamp] &lt;p&gt;The ending date and time of a time range.&lt;/p&gt;
--- @param from [timestamp] &lt;p&gt;The starting date and time of a time range.&lt;/p&gt;
+-- <p>A range of dates and times that is used by the <a>EventFilter</a> and <a>EntityFilter</a> objects. If <code>from</code> is set and <code>to</code> is set: match items where the timestamp (<code>startTime</code>, <code>endTime</code>, or <code>lastUpdatedTime</code>) is between <code>from</code> and <code>to</code> inclusive. If <code>from</code> is set and <code>to</code> is not set: match items where the timestamp value is equal to or after <code>from</code>. If <code>from</code> is not set and <code>to</code> is set: match items where the timestamp value is equal to or before <code>to</code>.</p>
+-- @param to [timestamp] <p>The ending date and time of a time range.</p>
+-- @param from [timestamp] <p>The starting date and time of a time range.</p>
 function M.DateTimeRange(to, from, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DateTimeRange")
 	local t = { 
@@ -468,8 +468,8 @@ function M.AssertInvalidPaginationToken(struct)
 end
 
 --- Create a structure of type InvalidPaginationToken
--- &lt;p&gt;The specified pagination token (&lt;code&gt;nextToken&lt;/code&gt;) is not valid.&lt;/p&gt;
--- @param message [string] &lt;p&gt;The specified pagination token (&lt;code&gt;nextToken&lt;/code&gt;) is not valid.&lt;/p&gt;
+-- <p>The specified pagination token (<code>nextToken</code>) is not valid.</p>
+-- @param message [string] <p>The specified pagination token (<code>nextToken</code>) is not valid.</p>
 function M.InvalidPaginationToken(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPaginationToken")
 	local t = { 
@@ -503,20 +503,20 @@ function M.AssertEventFilter(struct)
 end
 
 --- Create a structure of type EventFilter
--- &lt;p&gt;The values to use to filter results from the &lt;a&gt;DescribeEvents&lt;/a&gt; and &lt;a&gt;DescribeEventAggregates&lt;/a&gt; operations.&lt;/p&gt;
--- @param startTimes [dateTimeRangeList] &lt;p&gt;A list of dates and times that the event began.&lt;/p&gt;
--- @param eventArns [eventArnList] &lt;p&gt;A list of event ARNs (unique identifiers). For example: &lt;code&gt;&quot;arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331&quot;, &quot;arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz&quot;&lt;/code&gt; &lt;/p&gt;
--- @param entityValues [entityValueList] &lt;p&gt;A list of entity identifiers, such as EC2 instance IDs (&lt;code&gt;i-34ab692e&lt;/code&gt;) or EBS volumes (&lt;code&gt;vol-426ab23e&lt;/code&gt;).&lt;/p&gt;
--- @param eventTypeCodes [eventTypeList] &lt;p&gt;A list of unique identifiers for event types. For example, &lt;code&gt;&quot;AWS_EC2_SYSTEM_MAINTENANCE_EVENT&quot;,&quot;AWS_RDS_MAINTENANCE_SCHEDULED&quot;&lt;/code&gt; &lt;/p&gt;
--- @param eventTypeCategories [eventTypeCategoryList] &lt;p&gt;A list of event type category codes (&lt;code&gt;issue&lt;/code&gt;, &lt;code&gt;scheduledChange&lt;/code&gt;, or &lt;code&gt;accountNotification&lt;/code&gt;).&lt;/p&gt;
--- @param endTimes [dateTimeRangeList] &lt;p&gt;A list of dates and times that the event ended.&lt;/p&gt;
--- @param regions [regionList] &lt;p&gt;A list of AWS regions.&lt;/p&gt;
--- @param eventStatusCodes [eventStatusCodeList] &lt;p&gt;A list of event status codes.&lt;/p&gt;
--- @param entityArns [entityArnList] &lt;p&gt;A list of entity ARNs (unique identifiers).&lt;/p&gt;
--- @param services [serviceList] &lt;p&gt;The AWS services associated with the event. For example, &lt;code&gt;EC2&lt;/code&gt;, &lt;code&gt;RDS&lt;/code&gt;.&lt;/p&gt;
--- @param availabilityZones [availabilityZones] &lt;p&gt;A list of AWS availability zones.&lt;/p&gt;
--- @param lastUpdatedTimes [dateTimeRangeList] &lt;p&gt;A list of dates and times that the event was last updated.&lt;/p&gt;
--- @param tags [tagFilter] &lt;p&gt;A map of entity tags attached to the affected entity.&lt;/p&gt;
+-- <p>The values to use to filter results from the <a>DescribeEvents</a> and <a>DescribeEventAggregates</a> operations.</p>
+-- @param startTimes [dateTimeRangeList] <p>A list of dates and times that the event began.</p>
+-- @param eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
+-- @param entityValues [entityValueList] <p>A list of entity identifiers, such as EC2 instance IDs (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
+-- @param eventTypeCodes [eventTypeList] <p>A list of unique identifiers for event types. For example, <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED"</code> </p>
+-- @param eventTypeCategories [eventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
+-- @param endTimes [dateTimeRangeList] <p>A list of dates and times that the event ended.</p>
+-- @param regions [regionList] <p>A list of AWS regions.</p>
+-- @param eventStatusCodes [eventStatusCodeList] <p>A list of event status codes.</p>
+-- @param entityArns [entityArnList] <p>A list of entity ARNs (unique identifiers).</p>
+-- @param services [serviceList] <p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+-- @param availabilityZones [availabilityZones] <p>A list of AWS availability zones.</p>
+-- @param lastUpdatedTimes [dateTimeRangeList] <p>A list of dates and times that the event was last updated.</p>
+-- @param tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
 function M.EventFilter(startTimes, eventArns, entityValues, eventTypeCodes, eventTypeCategories, endTimes, regions, eventStatusCodes, entityArns, services, availabilityZones, lastUpdatedTimes, tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventFilter")
 	local t = { 
@@ -552,8 +552,8 @@ end
 
 --- Create a structure of type DescribeAffectedEntitiesResponse
 --  
--- @param entities [EntityList] &lt;p&gt;The entities that match the filter criteria.&lt;/p&gt;
--- @param nextToken [nextToken] &lt;p&gt;If the results of a search are large, only a portion of the results are returned, and a &lt;code&gt;nextToken&lt;/code&gt; pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.&lt;/p&gt;
+-- @param entities [EntityList] <p>The entities that match the filter criteria.</p>
+-- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
 function M.DescribeAffectedEntitiesResponse(entities, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAffectedEntitiesResponse")
 	local t = { 
@@ -580,10 +580,10 @@ end
 
 --- Create a structure of type DescribeEventTypesRequest
 --  
--- @param filter [EventTypeFilter] &lt;p&gt;Values to narrow the results returned.&lt;/p&gt;
--- @param locale [locale] &lt;p&gt;The locale (language) to return information in. English (en) is the default and the only supported value at this time.&lt;/p&gt;
--- @param nextToken [nextToken] &lt;p&gt;If the results of a search are large, only a portion of the results are returned, and a &lt;code&gt;nextToken&lt;/code&gt; pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.&lt;/p&gt;
--- @param maxResults [maxResults] &lt;p&gt;The maximum number of items to return in one batch, between 10 and 100, inclusive.&lt;/p&gt;
+-- @param filter [EventTypeFilter] <p>Values to narrow the results returned.</p>
+-- @param locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
 function M.DescribeEventTypesRequest(filter, locale, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventTypesRequest")
 	local t = { 
@@ -611,8 +611,8 @@ end
 
 --- Create a structure of type DescribeEventDetailsRequest
 --  
--- @param locale [locale] &lt;p&gt;The locale (language) to return information in. English (en) is the default and the only supported value at this time.&lt;/p&gt;
--- @param eventArns [eventArnList] &lt;p&gt;A list of event ARNs (unique identifiers). For example: &lt;code&gt;&quot;arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331&quot;, &quot;arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz&quot;&lt;/code&gt; &lt;/p&gt;
+-- @param locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- @param eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
 -- Required parameter: eventArns
 function M.DescribeEventDetailsRequest(locale, eventArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventDetailsRequest")
@@ -638,8 +638,8 @@ end
 
 --- Create a structure of type DescribeEventDetailsResponse
 --  
--- @param failedSet [DescribeEventDetailsFailedSet] &lt;p&gt;Error messages for any events that could not be retrieved.&lt;/p&gt;
--- @param successfulSet [DescribeEventDetailsSuccessfulSet] &lt;p&gt;Information about the events that could be retrieved.&lt;/p&gt;
+-- @param failedSet [DescribeEventDetailsFailedSet] <p>Error messages for any events that could not be retrieved.</p>
+-- @param successfulSet [DescribeEventDetailsSuccessfulSet] <p>Information about the events that could be retrieved.</p>
 function M.DescribeEventDetailsResponse(failedSet, successfulSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventDetailsResponse")
 	local t = { 
@@ -666,10 +666,10 @@ end
 
 --- Create a structure of type DescribeEventsRequest
 --  
--- @param filter [EventFilter] &lt;p&gt;Values to narrow the results returned.&lt;/p&gt;
--- @param locale [locale] &lt;p&gt;The locale (language) to return information in. English (en) is the default and the only supported value at this time.&lt;/p&gt;
--- @param nextToken [nextToken] &lt;p&gt;If the results of a search are large, only a portion of the results are returned, and a &lt;code&gt;nextToken&lt;/code&gt; pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.&lt;/p&gt;
--- @param maxResults [maxResults] &lt;p&gt;The maximum number of items to return in one batch, between 10 and 100, inclusive.&lt;/p&gt;
+-- @param filter [EventFilter] <p>Values to narrow the results returned.</p>
+-- @param locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- @param nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @param maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
 function M.DescribeEventsRequest(filter, locale, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsRequest")
 	local t = { 
@@ -695,9 +695,9 @@ function M.AssertEntityAggregate(struct)
 end
 
 --- Create a structure of type EntityAggregate
--- &lt;p&gt;The number of entities that are affected by one or more events. Returned by the &lt;a&gt;DescribeEntityAggregates&lt;/a&gt; operation.&lt;/p&gt;
--- @param count [count] &lt;p&gt;The number entities that match the criteria for the specified events.&lt;/p&gt;
--- @param eventArn [eventArn] &lt;p&gt;The unique identifier for the event. Format: &lt;code&gt;arn:aws:health:&lt;i&gt;event-region&lt;/i&gt;::event/&lt;i&gt;EVENT_TYPE_PLUS_ID&lt;/i&gt; &lt;/code&gt;. Example: &lt;code&gt;arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331&lt;/code&gt; &lt;/p&gt;
+-- <p>The number of entities that are affected by one or more events. Returned by the <a>DescribeEntityAggregates</a> operation.</p>
+-- @param count [count] <p>The number entities that match the criteria for the specified events.</p>
+-- @param eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
 function M.EntityAggregate(count, eventArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntityAggregate")
 	local t = { 
@@ -721,7 +721,7 @@ end
 
 --- Create a structure of type DescribeEntityAggregatesRequest
 --  
--- @param eventArns [EventArnsList] &lt;p&gt;A list of event ARNs (unique identifiers). For example: &lt;code&gt;&quot;arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331&quot;, &quot;arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz&quot;&lt;/code&gt; &lt;/p&gt;
+-- @param eventArns [EventArnsList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
 function M.DescribeEntityAggregatesRequest(eventArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEntityAggregatesRequest")
 	local t = { 
@@ -744,9 +744,9 @@ function M.AssertEventAggregate(struct)
 end
 
 --- Create a structure of type EventAggregate
--- &lt;p&gt;The number of events of each issue type. Returned by the &lt;a&gt;DescribeEventAggregates&lt;/a&gt; operation.&lt;/p&gt;
--- @param count [count] &lt;p&gt;The number of events of the associated issue type.&lt;/p&gt;
--- @param aggregateValue [aggregateValue] &lt;p&gt;The issue type for the associated count.&lt;/p&gt;
+-- <p>The number of events of each issue type. Returned by the <a>DescribeEventAggregates</a> operation.</p>
+-- @param count [count] <p>The number of events of the associated issue type.</p>
+-- @param aggregateValue [aggregateValue] <p>The issue type for the associated count.</p>
 function M.EventAggregate(count, aggregateValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventAggregate")
 	local t = { 
@@ -778,17 +778,17 @@ function M.AssertEvent(struct)
 end
 
 --- Create a structure of type Event
--- &lt;p&gt;Summary information about an event, returned by the &lt;a&gt;DescribeEvents&lt;/a&gt; operation. The &lt;a&gt;DescribeEventDetails&lt;/a&gt; operation also returns this information, as well as the &lt;a&gt;EventDescription&lt;/a&gt; and additional event metadata.&lt;/p&gt;
--- @param availabilityZone [availabilityZone] &lt;p&gt;The AWS Availability Zone of the event. For example, us-east-1a.&lt;/p&gt;
--- @param lastUpdatedTime [timestamp] &lt;p&gt;The most recent date and time that the event was updated.&lt;/p&gt;
--- @param service [service] &lt;p&gt;The AWS service that is affected by the event. For example, &lt;code&gt;EC2&lt;/code&gt;, &lt;code&gt;RDS&lt;/code&gt;.&lt;/p&gt;
--- @param eventTypeCode [eventTypeCode] &lt;p&gt;The unique identifier for the event type. The format is &lt;code&gt;AWS_&lt;i&gt;SERVICE&lt;/i&gt;_&lt;i&gt;DESCRIPTION&lt;/i&gt; &lt;/code&gt;; for example, &lt;code&gt;AWS_EC2_SYSTEM_MAINTENANCE_EVENT&lt;/code&gt;.&lt;/p&gt;
--- @param startTime [timestamp] &lt;p&gt;The date and time that the event began.&lt;/p&gt;
--- @param eventTypeCategory [eventTypeCategory] &lt;p&gt;The &lt;/p&gt;
--- @param endTime [timestamp] &lt;p&gt;The date and time that the event ended.&lt;/p&gt;
--- @param region [region] &lt;p&gt;The AWS region name of the event.&lt;/p&gt;
--- @param arn [eventArn] &lt;p&gt;The unique identifier for the event. Format: &lt;code&gt;arn:aws:health:&lt;i&gt;event-region&lt;/i&gt;::event/&lt;i&gt;EVENT_TYPE_PLUS_ID&lt;/i&gt; &lt;/code&gt;. Example: &lt;code&gt;arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331&lt;/code&gt; &lt;/p&gt;
--- @param statusCode [eventStatusCode] &lt;p&gt;The most recent status of the event. Possible values are &lt;code&gt;open&lt;/code&gt;, &lt;code&gt;closed&lt;/code&gt;, and &lt;code&gt;upcoming&lt;/code&gt;.&lt;/p&gt;
+-- <p>Summary information about an event, returned by the <a>DescribeEvents</a> operation. The <a>DescribeEventDetails</a> operation also returns this information, as well as the <a>EventDescription</a> and additional event metadata.</p>
+-- @param availabilityZone [availabilityZone] <p>The AWS Availability Zone of the event. For example, us-east-1a.</p>
+-- @param lastUpdatedTime [timestamp] <p>The most recent date and time that the event was updated.</p>
+-- @param service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+-- @param eventTypeCode [eventTypeCode] <p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>
+-- @param startTime [timestamp] <p>The date and time that the event began.</p>
+-- @param eventTypeCategory [eventTypeCategory] <p>The </p>
+-- @param endTime [timestamp] <p>The date and time that the event ended.</p>
+-- @param region [region] <p>The AWS region name of the event.</p>
+-- @param arn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+-- @param statusCode [eventStatusCode] <p>The most recent status of the event. Possible values are <code>open</code>, <code>closed</code>, and <code>upcoming</code>.</p>
 function M.Event(availabilityZone, lastUpdatedTime, service, eventTypeCode, startTime, eventTypeCategory, endTime, region, arn, statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Event")
 	local t = { 

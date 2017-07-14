@@ -32,7 +32,7 @@ end
 
 --- Create a structure of type DeregisterInstanceRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID.</p>
 -- Required parameter: InstanceId
 function M.DeregisterInstanceRequest(InstanceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterInstanceRequest")
@@ -57,7 +57,7 @@ end
 
 --- Create a structure of type StopInstanceRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID.</p>
 -- Required parameter: InstanceId
 function M.StopInstanceRequest(InstanceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopInstanceRequest")
@@ -85,13 +85,13 @@ function M.AssertStackSummary(struct)
 end
 
 --- Create a structure of type StackSummary
--- &lt;p&gt;Summarizes the number of layers, instances, and apps in a stack.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param InstancesCount [InstancesCount] &lt;p&gt;An &lt;code&gt;InstancesCount&lt;/code&gt; object with the number of instances in each status.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The stack name.&lt;/p&gt;
--- @param AppsCount [Integer] &lt;p&gt;The number of apps.&lt;/p&gt;
--- @param LayersCount [Integer] &lt;p&gt;The number of layers.&lt;/p&gt;
--- @param Arn [String] &lt;p&gt;The stack's ARN.&lt;/p&gt;
+-- <p>Summarizes the number of layers, instances, and apps in a stack.</p>
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param InstancesCount [InstancesCount] <p>An <code>InstancesCount</code> object with the number of instances in each status.</p>
+-- @param Name [String] <p>The stack name.</p>
+-- @param AppsCount [Integer] <p>The number of apps.</p>
+-- @param LayersCount [Integer] <p>The number of layers.</p>
+-- @param Arn [String] <p>The stack's ARN.</p>
 function M.StackSummary(StackId, InstancesCount, Name, AppsCount, LayersCount, Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StackSummary")
 	local t = { 
@@ -122,9 +122,9 @@ end
 
 --- Create a structure of type ListTagsRequest
 --  
--- @param ResourceArn [ResourceArn] &lt;p&gt;The stack or layer's Amazon Resource Number (ARN).&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Do not use. A validation exception occurs if you add a &lt;code&gt;NextToken&lt;/code&gt; parameter to a &lt;code&gt;ListTagsRequest&lt;/code&gt; call. &lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;Do not use. A validation exception occurs if you add a &lt;code&gt;MaxResults&lt;/code&gt; parameter to a &lt;code&gt;ListTagsRequest&lt;/code&gt; call. &lt;/p&gt;
+-- @param ResourceArn [ResourceArn] <p>The stack or layer's Amazon Resource Number (ARN).</p>
+-- @param NextToken [NextToken] <p>Do not use. A validation exception occurs if you add a <code>NextToken</code> parameter to a <code>ListTagsRequest</code> call. </p>
+-- @param MaxResults [MaxResults] <p>Do not use. A validation exception occurs if you add a <code>MaxResults</code> parameter to a <code>ListTagsRequest</code> call. </p>
 -- Required parameter: ResourceArn
 function M.ListTagsRequest(ResourceArn, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsRequest")
@@ -149,8 +149,8 @@ function M.AssertCreateDeploymentResult(struct)
 end
 
 --- Create a structure of type CreateDeploymentResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;CreateDeployment&lt;/code&gt; request.&lt;/p&gt;
--- @param DeploymentId [String] &lt;p&gt;The deployment ID, which can be used with other requests to identify the deployment.&lt;/p&gt;
+-- <p>Contains the response to a <code>CreateDeployment</code> request.</p>
+-- @param DeploymentId [String] <p>The deployment ID, which can be used with other requests to identify the deployment.</p>
 function M.CreateDeploymentResult(DeploymentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentResult")
 	local t = { 
@@ -174,8 +174,8 @@ end
 
 --- Create a structure of type DescribeAppsRequest
 --  
--- @param StackId [String] &lt;p&gt;The app stack ID. If you use this parameter, &lt;code&gt;DescribeApps&lt;/code&gt; returns a description of the apps in the specified stack.&lt;/p&gt;
--- @param AppIds [Strings] &lt;p&gt;An array of app IDs for the apps to be described. If you use this parameter, &lt;code&gt;DescribeApps&lt;/code&gt; returns a description of the specified apps. Otherwise, it returns a description of every app.&lt;/p&gt;
+-- @param StackId [String] <p>The app stack ID. If you use this parameter, <code>DescribeApps</code> returns a description of the apps in the specified stack.</p>
+-- @param AppIds [Strings] <p>An array of app IDs for the apps to be described. If you use this parameter, <code>DescribeApps</code> returns a description of the specified apps. Otherwise, it returns a description of every app.</p>
 function M.DescribeAppsRequest(StackId, AppIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAppsRequest")
 	local t = { 
@@ -199,7 +199,7 @@ end
 
 --- Create a structure of type DescribeUserProfilesRequest
 --  
--- @param IamUserArns [Strings] &lt;p&gt;An array of IAM or federated user ARNs that identify the users to be described.&lt;/p&gt;
+-- @param IamUserArns [Strings] <p>An array of IAM or federated user ARNs that identify the users to be described.</p>
 function M.DescribeUserProfilesRequest(IamUserArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserProfilesRequest")
 	local t = { 
@@ -223,7 +223,7 @@ end
 
 --- Create a structure of type DeregisterRdsDbInstanceRequest
 --  
--- @param RdsDbInstanceArn [String] &lt;p&gt;The Amazon RDS instance's ARN.&lt;/p&gt;
+-- @param RdsDbInstanceArn [String] <p>The Amazon RDS instance's ARN.</p>
 -- Required parameter: RdsDbInstanceArn
 function M.DeregisterRdsDbInstanceRequest(RdsDbInstanceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterRdsDbInstanceRequest")
@@ -248,7 +248,7 @@ end
 
 --- Create a structure of type StartInstanceRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID.</p>
 -- Required parameter: InstanceId
 function M.StartInstanceRequest(InstanceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartInstanceRequest")
@@ -273,7 +273,7 @@ end
 
 --- Create a structure of type DescribeStackSummaryRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
 -- Required parameter: StackId
 function M.DescribeStackSummaryRequest(StackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackSummaryRequest")
@@ -296,8 +296,8 @@ function M.AssertDescribeVolumesResult(struct)
 end
 
 --- Create a structure of type DescribeVolumesResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeVolumes&lt;/code&gt; request.&lt;/p&gt;
--- @param Volumes [Volumes] &lt;p&gt;An array of volume IDs.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeVolumes</code> request.</p>
+-- @param Volumes [Volumes] <p>An array of volume IDs.</p>
 function M.DescribeVolumesResult(Volumes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVolumesResult")
 	local t = { 
@@ -323,8 +323,8 @@ end
 
 --- Create a structure of type AttachElasticLoadBalancerRequest
 --  
--- @param ElasticLoadBalancerName [String] &lt;p&gt;The Elastic Load Balancing instance's name.&lt;/p&gt;
--- @param LayerId [String] &lt;p&gt;The ID of the layer that the Elastic Load Balancing instance is to be attached to.&lt;/p&gt;
+-- @param ElasticLoadBalancerName [String] <p>The Elastic Load Balancing instance's name.</p>
+-- @param LayerId [String] <p>The ID of the layer that the Elastic Load Balancing instance is to be attached to.</p>
 -- Required parameter: ElasticLoadBalancerName
 -- Required parameter: LayerId
 function M.AttachElasticLoadBalancerRequest(ElasticLoadBalancerName, LayerId, ...)
@@ -350,7 +350,7 @@ end
 
 --- Create a structure of type UpdateMyUserProfileRequest
 --  
--- @param SshPublicKey [String] &lt;p&gt;The user's SSH public key.&lt;/p&gt;
+-- @param SshPublicKey [String] <p>The user's SSH public key.</p>
 function M.UpdateMyUserProfileRequest(SshPublicKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMyUserProfileRequest")
 	local t = { 
@@ -374,7 +374,7 @@ end
 
 --- Create a structure of type DeleteLayerRequest
 --  
--- @param LayerId [String] &lt;p&gt;The layer ID.&lt;/p&gt;
+-- @param LayerId [String] <p>The layer ID.</p>
 -- Required parameter: LayerId
 function M.DeleteLayerRequest(LayerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLayerRequest")
@@ -398,9 +398,9 @@ function M.AssertShutdownEventConfiguration(struct)
 end
 
 --- Create a structure of type ShutdownEventConfiguration
--- &lt;p&gt;The Shutdown event configuration.&lt;/p&gt;
--- @param DelayUntilElbConnectionsDrained [Boolean] &lt;p&gt;Whether to enable Elastic Load Balancing connection draining. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain&quot;&gt;Connection Draining&lt;/a&gt; &lt;/p&gt;
--- @param ExecutionTimeout [Integer] &lt;p&gt;The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting down an instance.&lt;/p&gt;
+-- <p>The Shutdown event configuration.</p>
+-- @param DelayUntilElbConnectionsDrained [Boolean] <p>Whether to enable Elastic Load Balancing connection draining. For more information, see <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain">Connection Draining</a> </p>
+-- @param ExecutionTimeout [Integer] <p>The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting down an instance.</p>
 function M.ShutdownEventConfiguration(DelayUntilElbConnectionsDrained, ExecutionTimeout, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ShutdownEventConfiguration")
 	local t = { 
@@ -426,11 +426,11 @@ function M.AssertEcsCluster(struct)
 end
 
 --- Create a structure of type EcsCluster
--- &lt;p&gt;Describes a registered Amazon ECS cluster.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param EcsClusterArn [String] &lt;p&gt;The cluster's ARN.&lt;/p&gt;
--- @param RegisteredAt [DateTime] &lt;p&gt;The time and date that the cluster was registered with the stack.&lt;/p&gt;
--- @param EcsClusterName [String] &lt;p&gt;The cluster name.&lt;/p&gt;
+-- <p>Describes a registered Amazon ECS cluster.</p>
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param EcsClusterArn [String] <p>The cluster's ARN.</p>
+-- @param RegisteredAt [DateTime] <p>The time and date that the cluster was registered with the stack.</p>
+-- @param EcsClusterName [String] <p>The cluster name.</p>
 function M.EcsCluster(StackId, EcsClusterArn, RegisteredAt, EcsClusterName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EcsCluster")
 	local t = { 
@@ -455,8 +455,8 @@ function M.AssertDescribeAppsResult(struct)
 end
 
 --- Create a structure of type DescribeAppsResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeApps&lt;/code&gt; request.&lt;/p&gt;
--- @param Apps [Apps] &lt;p&gt;An array of &lt;code&gt;App&lt;/code&gt; objects that describe the specified apps. &lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeApps</code> request.</p>
+-- @param Apps [Apps] <p>An array of <code>App</code> objects that describe the specified apps. </p>
 function M.DescribeAppsResult(Apps, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAppsResult")
 	local t = { 
@@ -490,17 +490,17 @@ end
 
 --- Create a structure of type UpdateAppRequest
 --  
--- @param Environment [EnvironmentVariables] &lt;p&gt;An array of &lt;code&gt;EnvironmentVariable&lt;/code&gt; objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances.For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment&quot;&gt; Environment Variables&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, &quot;Environment: is too large (maximum is 10KB).&quot;&lt;/p&gt; &lt;note&gt; &lt;p&gt;This parameter is supported only by Chef 11.10 stacks. If you have specified one or more environment variables, you cannot modify the stack's Chef version.&lt;/p&gt; &lt;/note&gt;
--- @param AppSource [Source] &lt;p&gt;A &lt;code&gt;Source&lt;/code&gt; object that specifies the app repository.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description of the app.&lt;/p&gt;
--- @param EnableSsl [Boolean] &lt;p&gt;Whether SSL is enabled for the app.&lt;/p&gt;
--- @param SslConfiguration [SslConfiguration] &lt;p&gt;An &lt;code&gt;SslConfiguration&lt;/code&gt; object with the SSL configuration.&lt;/p&gt;
--- @param AppId [String] &lt;p&gt;The app ID.&lt;/p&gt;
--- @param Domains [Strings] &lt;p&gt;The app's virtual host settings, with multiple domains separated by commas. For example: &lt;code&gt;'www.example.com, example.com'&lt;/code&gt; &lt;/p&gt;
--- @param Attributes [AppAttributes] &lt;p&gt;One or more user-defined key/value pairs to be added to the stack attributes.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The app name.&lt;/p&gt;
--- @param Type [AppType] &lt;p&gt;The app type.&lt;/p&gt;
--- @param DataSources [DataSources] &lt;p&gt;The app's data sources.&lt;/p&gt;
+-- @param Environment [EnvironmentVariables] <p>An array of <code>EnvironmentVariable</code> objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances.For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment"> Environment Variables</a>.</p> <p>There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, "Environment: is too large (maximum is 10KB)."</p> <note> <p>This parameter is supported only by Chef 11.10 stacks. If you have specified one or more environment variables, you cannot modify the stack's Chef version.</p> </note>
+-- @param AppSource [Source] <p>A <code>Source</code> object that specifies the app repository.</p>
+-- @param Description [String] <p>A description of the app.</p>
+-- @param EnableSsl [Boolean] <p>Whether SSL is enabled for the app.</p>
+-- @param SslConfiguration [SslConfiguration] <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
+-- @param AppId [String] <p>The app ID.</p>
+-- @param Domains [Strings] <p>The app's virtual host settings, with multiple domains separated by commas. For example: <code>'www.example.com, example.com'</code> </p>
+-- @param Attributes [AppAttributes] <p>One or more user-defined key/value pairs to be added to the stack attributes.</p>
+-- @param Name [String] <p>The app name.</p>
+-- @param Type [AppType] <p>The app type.</p>
+-- @param DataSources [DataSources] <p>The app's data sources.</p>
 -- Required parameter: AppId
 function M.UpdateAppRequest(Environment, AppSource, Description, EnableSsl, SslConfiguration, AppId, Domains, Attributes, Name, Type, DataSources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAppRequest")
@@ -537,8 +537,8 @@ end
 
 --- Create a structure of type RegisterElasticIpRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param ElasticIp [String] &lt;p&gt;The Elastic IP address.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param ElasticIp [String] <p>The Elastic IP address.</p>
 -- Required parameter: ElasticIp
 -- Required parameter: StackId
 function M.RegisterElasticIpRequest(StackId, ElasticIp, ...)
@@ -566,9 +566,9 @@ end
 
 --- Create a structure of type DescribeCommandsRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID. If you include this parameter, &lt;code&gt;DescribeCommands&lt;/code&gt; returns a description of the commands associated with the specified instance.&lt;/p&gt;
--- @param DeploymentId [String] &lt;p&gt;The deployment ID. If you include this parameter, &lt;code&gt;DescribeCommands&lt;/code&gt; returns a description of the commands associated with the specified deployment.&lt;/p&gt;
--- @param CommandIds [Strings] &lt;p&gt;An array of command IDs. If you include this parameter, &lt;code&gt;DescribeCommands&lt;/code&gt; returns a description of the specified commands. Otherwise, it returns a description of every command.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID. If you include this parameter, <code>DescribeCommands</code> returns a description of the commands associated with the specified instance.</p>
+-- @param DeploymentId [String] <p>The deployment ID. If you include this parameter, <code>DescribeCommands</code> returns a description of the commands associated with the specified deployment.</p>
+-- @param CommandIds [Strings] <p>An array of command IDs. If you include this parameter, <code>DescribeCommands</code> returns a description of the specified commands. Otherwise, it returns a description of every command.</p>
 function M.DescribeCommandsRequest(InstanceId, DeploymentId, CommandIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommandsRequest")
 	local t = { 
@@ -594,8 +594,8 @@ end
 
 --- Create a structure of type DescribeElasticLoadBalancersRequest
 --  
--- @param StackId [String] &lt;p&gt;A stack ID. The action describes the stack's Elastic Load Balancing instances.&lt;/p&gt;
--- @param LayerIds [Strings] &lt;p&gt;A list of layer IDs. The action describes the Elastic Load Balancing instances for the specified layers.&lt;/p&gt;
+-- @param StackId [String] <p>A stack ID. The action describes the stack's Elastic Load Balancing instances.</p>
+-- @param LayerIds [Strings] <p>A list of layer IDs. The action describes the Elastic Load Balancing instances for the specified layers.</p>
 function M.DescribeElasticLoadBalancersRequest(StackId, LayerIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticLoadBalancersRequest")
 	local t = { 
@@ -620,7 +620,7 @@ end
 
 --- Create a structure of type UnassignVolumeRequest
 --  
--- @param VolumeId [String] &lt;p&gt;The volume ID.&lt;/p&gt;
+-- @param VolumeId [String] <p>The volume ID.</p>
 -- Required parameter: VolumeId
 function M.UnassignVolumeRequest(VolumeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnassignVolumeRequest")
@@ -643,8 +643,8 @@ function M.AssertDescribePermissionsResult(struct)
 end
 
 --- Create a structure of type DescribePermissionsResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribePermissions&lt;/code&gt; request.&lt;/p&gt;
--- @param Permissions [Permissions] &lt;p&gt;An array of &lt;code&gt;Permission&lt;/code&gt; objects that describe the stack permissions.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If the request object contains only a stack ID, the array contains a &lt;code&gt;Permission&lt;/code&gt; object with permissions for each of the stack IAM ARNs.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the request object contains only an IAM ARN, the array contains a &lt;code&gt;Permission&lt;/code&gt; object with permissions for each of the user's stack IDs.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the request contains a stack ID and an IAM ARN, the array contains a single &lt;code&gt;Permission&lt;/code&gt; object with permissions for the specified stack and IAM ARN.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Contains the response to a <code>DescribePermissions</code> request.</p>
+-- @param Permissions [Permissions] <p>An array of <code>Permission</code> objects that describe the stack permissions.</p> <ul> <li> <p>If the request object contains only a stack ID, the array contains a <code>Permission</code> object with permissions for each of the stack IAM ARNs.</p> </li> <li> <p>If the request object contains only an IAM ARN, the array contains a <code>Permission</code> object with permissions for each of the user's stack IDs.</p> </li> <li> <p>If the request contains a stack ID and an IAM ARN, the array contains a single <code>Permission</code> object with permissions for the specified stack and IAM ARN.</p> </li> </ul>
 function M.DescribePermissionsResult(Permissions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePermissionsResult")
 	local t = { 
@@ -667,9 +667,9 @@ function M.AssertListTagsResult(struct)
 end
 
 --- Create a structure of type ListTagsResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;ListTags&lt;/code&gt; request.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;If a paginated request does not return all of the remaining results, this parameter is set to a token that you can assign to the request object's &lt;code&gt;NextToken&lt;/code&gt; parameter to get the next set of results. If the previous paginated request returned all of the remaining results, this parameter is set to &lt;code&gt;null&lt;/code&gt;. &lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;A set of key-value pairs that contain tag keys and tag values that are attached to a stack or layer.&lt;/p&gt;
+-- <p>Contains the response to a <code>ListTags</code> request.</p>
+-- @param NextToken [NextToken] <p>If a paginated request does not return all of the remaining results, this parameter is set to a token that you can assign to the request object's <code>NextToken</code> parameter to get the next set of results. If the previous paginated request returned all of the remaining results, this parameter is set to <code>null</code>. </p>
+-- @param Tags [Tags] <p>A set of key-value pairs that contain tag keys and tag values that are attached to a stack or layer.</p>
 function M.ListTagsResult(NextToken, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsResult")
 	local t = { 
@@ -696,12 +696,12 @@ function M.AssertRecipes(struct)
 end
 
 --- Create a structure of type Recipes
--- &lt;p&gt;AWS OpsWorks Stacks supports five lifecycle events: &lt;b&gt;setup&lt;/b&gt;, &lt;b&gt;configuration&lt;/b&gt;, &lt;b&gt;deploy&lt;/b&gt;, &lt;b&gt;undeploy&lt;/b&gt;, and &lt;b&gt;shutdown&lt;/b&gt;. For each layer, AWS OpsWorks Stacks runs a set of standard recipes for each event. In addition, you can provide custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom event recipes after the standard recipes. &lt;code&gt;LayerCustomRecipes&lt;/code&gt; specifies the custom recipes for a particular layer to be run in response to each of the five events. &lt;/p&gt; &lt;p&gt;To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name, which is the recipe's file name without the .rb extension. For example: phpapp2::dbsetup specifies the dbsetup.rb recipe in the repository's phpapp2 folder.&lt;/p&gt;
--- @param Undeploy [Strings] &lt;p&gt;An array of custom recipe names to be run following a &lt;code&gt;undeploy&lt;/code&gt; event.&lt;/p&gt;
--- @param Setup [Strings] &lt;p&gt;An array of custom recipe names to be run following a &lt;code&gt;setup&lt;/code&gt; event.&lt;/p&gt;
--- @param Configure [Strings] &lt;p&gt;An array of custom recipe names to be run following a &lt;code&gt;configure&lt;/code&gt; event.&lt;/p&gt;
--- @param Shutdown [Strings] &lt;p&gt;An array of custom recipe names to be run following a &lt;code&gt;shutdown&lt;/code&gt; event.&lt;/p&gt;
--- @param Deploy [Strings] &lt;p&gt;An array of custom recipe names to be run following a &lt;code&gt;deploy&lt;/code&gt; event.&lt;/p&gt;
+-- <p>AWS OpsWorks Stacks supports five lifecycle events: <b>setup</b>, <b>configuration</b>, <b>deploy</b>, <b>undeploy</b>, and <b>shutdown</b>. For each layer, AWS OpsWorks Stacks runs a set of standard recipes for each event. In addition, you can provide custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom event recipes after the standard recipes. <code>LayerCustomRecipes</code> specifies the custom recipes for a particular layer to be run in response to each of the five events. </p> <p>To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name, which is the recipe's file name without the .rb extension. For example: phpapp2::dbsetup specifies the dbsetup.rb recipe in the repository's phpapp2 folder.</p>
+-- @param Undeploy [Strings] <p>An array of custom recipe names to be run following a <code>undeploy</code> event.</p>
+-- @param Setup [Strings] <p>An array of custom recipe names to be run following a <code>setup</code> event.</p>
+-- @param Configure [Strings] <p>An array of custom recipe names to be run following a <code>configure</code> event.</p>
+-- @param Shutdown [Strings] <p>An array of custom recipe names to be run following a <code>shutdown</code> event.</p>
+-- @param Deploy [Strings] <p>An array of custom recipe names to be run following a <code>deploy</code> event.</p>
 function M.Recipes(Undeploy, Setup, Configure, Shutdown, Deploy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Recipes")
 	local t = { 
@@ -749,30 +749,30 @@ function M.AssertLayer(struct)
 end
 
 --- Create a structure of type Layer
--- &lt;p&gt;Describes a layer.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The layer stack ID.&lt;/p&gt;
--- @param DefaultRecipes [Recipes] &lt;p&gt;Describes a layer.&lt;/p&gt;
--- @param LayerId [String] &lt;p&gt;The layer ID.&lt;/p&gt;
--- @param AutoAssignPublicIps [Boolean] &lt;p&gt;For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html&quot;&gt;How to Edit a Layer&lt;/a&gt;.&lt;/p&gt;
--- @param Shortname [String] &lt;p&gt;The layer short name.&lt;/p&gt;
--- @param CustomSecurityGroupIds [Strings] &lt;p&gt;An array containing the layer's custom security group IDs.&lt;/p&gt;
--- @param LifecycleEventConfiguration [LifecycleEventConfiguration] &lt;p&gt;A &lt;code&gt;LifeCycleEventConfiguration&lt;/code&gt; object that specifies the Shutdown event configuration.&lt;/p&gt;
--- @param Type [LayerType] &lt;p&gt;The layer type.&lt;/p&gt;
--- @param CustomInstanceProfileArn [String] &lt;p&gt;The ARN of the default IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
--- @param UseEbsOptimizedInstances [Boolean] &lt;p&gt;Whether the layer uses Amazon EBS-optimized instances.&lt;/p&gt;
--- @param Packages [Strings] &lt;p&gt;An array of &lt;code&gt;Package&lt;/code&gt; objects that describe the layer's packages.&lt;/p&gt;
--- @param CreatedAt [DateTime] &lt;p&gt;Date when the layer was created.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The layer name.&lt;/p&gt;
--- @param CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] &lt;p&gt;The Amazon CloudWatch Logs configuration settings for the layer.&lt;/p&gt;
--- @param CustomRecipes [Recipes] &lt;p&gt;A &lt;code&gt;LayerCustomRecipes&lt;/code&gt; object that specifies the layer's custom recipes.&lt;/p&gt;
--- @param VolumeConfigurations [VolumeConfigurations] &lt;p&gt;A &lt;code&gt;VolumeConfigurations&lt;/code&gt; object that describes the layer's Amazon EBS volumes.&lt;/p&gt;
--- @param Attributes [LayerAttributes] &lt;p&gt;The layer attributes.&lt;/p&gt; &lt;p&gt;For the &lt;code&gt;HaproxyStatsPassword&lt;/code&gt;, &lt;code&gt;MysqlRootPassword&lt;/code&gt;, and &lt;code&gt;GangliaPassword&lt;/code&gt; attributes, AWS OpsWorks Stacks returns &lt;code&gt;*****FILTERED*****&lt;/code&gt; instead of the actual value&lt;/p&gt; &lt;p&gt;For an ECS Cluster layer, AWS OpsWorks Stacks the &lt;code&gt;EcsClusterArn&lt;/code&gt; attribute is set to the cluster's ARN.&lt;/p&gt;
--- @param InstallUpdatesOnBoot [Boolean] &lt;p&gt;Whether to install operating system and package updates when the instance boots. The default value is &lt;code&gt;true&lt;/code&gt;. If this value is set to &lt;code&gt;false&lt;/code&gt;, you must then update your instances manually by using &lt;a&gt;CreateDeployment&lt;/a&gt; to run the &lt;code&gt;update_dependencies&lt;/code&gt; stack command or manually running &lt;code&gt;yum&lt;/code&gt; (Amazon Linux) or &lt;code&gt;apt-get&lt;/code&gt; (Ubuntu) on the instances. &lt;/p&gt; &lt;note&gt; &lt;p&gt;We strongly recommend using the default value of &lt;code&gt;true&lt;/code&gt;, to ensure that your instances have the latest security updates.&lt;/p&gt; &lt;/note&gt;
--- @param AutoAssignElasticIps [Boolean] &lt;p&gt;Whether to automatically assign an &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html&quot;&gt;Elastic IP address&lt;/a&gt; to the layer's instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html&quot;&gt;How to Edit a Layer&lt;/a&gt;.&lt;/p&gt;
--- @param DefaultSecurityGroupNames [Strings] &lt;p&gt;An array containing the layer's security group names.&lt;/p&gt;
--- @param CustomJson [String] &lt;p&gt;A JSON formatted string containing the layer's custom stack configuration and deployment attributes.&lt;/p&gt;
--- @param EnableAutoHealing [Boolean] &lt;p&gt;Whether auto healing is disabled for the layer.&lt;/p&gt;
--- @param Arn [String] &lt;p&gt;Describes a layer.&lt;/p&gt;
+-- <p>Describes a layer.</p>
+-- @param StackId [String] <p>The layer stack ID.</p>
+-- @param DefaultRecipes [Recipes] <p>Describes a layer.</p>
+-- @param LayerId [String] <p>The layer ID.</p>
+-- @param AutoAssignPublicIps [Boolean] <p>For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- @param Shortname [String] <p>The layer short name.</p>
+-- @param CustomSecurityGroupIds [Strings] <p>An array containing the layer's custom security group IDs.</p>
+-- @param LifecycleEventConfiguration [LifecycleEventConfiguration] <p>A <code>LifeCycleEventConfiguration</code> object that specifies the Shutdown event configuration.</p>
+-- @param Type [LayerType] <p>The layer type.</p>
+-- @param CustomInstanceProfileArn [String] <p>The ARN of the default IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @param UseEbsOptimizedInstances [Boolean] <p>Whether the layer uses Amazon EBS-optimized instances.</p>
+-- @param Packages [Strings] <p>An array of <code>Package</code> objects that describe the layer's packages.</p>
+-- @param CreatedAt [DateTime] <p>Date when the layer was created.</p>
+-- @param Name [String] <p>The layer name.</p>
+-- @param CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] <p>The Amazon CloudWatch Logs configuration settings for the layer.</p>
+-- @param CustomRecipes [Recipes] <p>A <code>LayerCustomRecipes</code> object that specifies the layer's custom recipes.</p>
+-- @param VolumeConfigurations [VolumeConfigurations] <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon EBS volumes.</p>
+-- @param Attributes [LayerAttributes] <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>, <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
+-- @param InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. If this value is set to <code>false</code>, you must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
+-- @param AutoAssignElasticIps [Boolean] <p>Whether to automatically assign an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address</a> to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- @param DefaultSecurityGroupNames [Strings] <p>An array containing the layer's security group names.</p>
+-- @param CustomJson [String] <p>A JSON formatted string containing the layer's custom stack configuration and deployment attributes.</p>
+-- @param EnableAutoHealing [Boolean] <p>Whether auto healing is disabled for the layer.</p>
+-- @param Arn [String] <p>Describes a layer.</p>
 function M.Layer(StackId, DefaultRecipes, LayerId, AutoAssignPublicIps, Shortname, CustomSecurityGroupIds, LifecycleEventConfiguration, Type, CustomInstanceProfileArn, UseEbsOptimizedInstances, Packages, CreatedAt, Name, CloudWatchLogsConfiguration, CustomRecipes, VolumeConfigurations, Attributes, InstallUpdatesOnBoot, AutoAssignElasticIps, DefaultSecurityGroupNames, CustomJson, EnableAutoHealing, Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Layer")
 	local t = { 
@@ -839,25 +839,25 @@ end
 
 --- Create a structure of type CreateStackRequest
 --  
--- @param ServiceRoleArn [String] &lt;p&gt;The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
--- @param DefaultSubnetId [String] &lt;p&gt;The stack's default VPC subnet ID. This parameter is required if you specify a value for the &lt;code&gt;VpcId&lt;/code&gt; parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for &lt;code&gt;DefaultAvailabilityZone&lt;/code&gt;, the subnet must be in that zone. For information on default values and when this parameter is required, see the &lt;code&gt;VpcId&lt;/code&gt; parameter description. &lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;The ID of the VPC that the stack is to be launched into. The VPC must be in the stack's region. All instances are launched into this VPC. You cannot change the ID later.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If your account supports EC2-Classic, the default value is &lt;code&gt;no VPC&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If your account does not support EC2-Classic, the default value is the default VPC for the specified region.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the VPC ID corresponds to a default VPC and you have specified either the &lt;code&gt;DefaultAvailabilityZone&lt;/code&gt; or the &lt;code&gt;DefaultSubnetId&lt;/code&gt; parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively.&lt;/p&gt; &lt;p&gt;If you specify a nondefault VPC ID, note the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;It must belong to a VPC in your account that is in the specified region.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You must specify a value for &lt;code&gt;DefaultSubnetId&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information on how to use AWS OpsWorks Stacks with a VPC, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html&quot;&gt;Running a Stack in a VPC&lt;/a&gt;. For more information on default VPC and EC2-Classic, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html&quot;&gt;Supported Platforms&lt;/a&gt;. &lt;/p&gt;
--- @param DefaultRootDeviceType [RootDeviceType] &lt;p&gt;The default root device type. This value is the default for all instances in the stack, but you can override it when you create an instance. The default option is &lt;code&gt;instance-store&lt;/code&gt;. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device&quot;&gt;Storage for the Root Device&lt;/a&gt;.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The stack name.&lt;/p&gt;
--- @param HostnameTheme [String] &lt;p&gt;The stack's host name theme, with spaces replaced by underscores. The theme is used to generate host names for the stack's instances. By default, &lt;code&gt;HostnameTheme&lt;/code&gt; is set to &lt;code&gt;Layer_Dependent&lt;/code&gt;, which creates host names by appending integers to the layer's short name. The other themes are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Baked_Goods&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Clouds&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Europe_Cities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Fruits&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Greek_Deities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Legendary_creatures_from_Japan&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Planets_and_Moons&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Roman_Deities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Scottish_Islands&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;US_Cities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Wild_Cats&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;To obtain a generated host name, call &lt;code&gt;GetHostNameSuggestion&lt;/code&gt;, which returns a host name based on the current theme.&lt;/p&gt;
--- @param UseCustomCookbooks [Boolean] &lt;p&gt;Whether the stack uses custom cookbooks.&lt;/p&gt;
--- @param CustomJson [String] &lt;p&gt;A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration attribute values or to pass data to recipes. The string should be in the following format:&lt;/p&gt; &lt;p&gt; &lt;code&gt;&quot;{\&quot;key1\&quot;: \&quot;value1\&quot;, \&quot;key2\&quot;: \&quot;value2\&quot;,...}&quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information on custom JSON, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html&quot;&gt;Use Custom JSON to Modify the Stack Configuration Attributes&lt;/a&gt;.&lt;/p&gt;
--- @param Region [String] &lt;p&gt;The stack's AWS region, such as &quot;ap-south-1&quot;. For more information about Amazon regions, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;.&lt;/p&gt;
--- @param DefaultAvailabilityZone [String] &lt;p&gt;The stack's default Availability Zone, which must be in the specified region. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;. If you also specify a value for &lt;code&gt;DefaultSubnetId&lt;/code&gt;, the subnet must be in the same zone. For more information, see the &lt;code&gt;VpcId&lt;/code&gt; parameter description. &lt;/p&gt;
--- @param UseOpsworksSecurityGroups [Boolean] &lt;p&gt;Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.&lt;/p&gt; &lt;p&gt;AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. With &lt;code&gt;UseOpsworksSecurityGroups&lt;/code&gt; you can instead provide your own custom security groups. &lt;code&gt;UseOpsworksSecurityGroups&lt;/code&gt; has the following settings: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot delete the built-in security group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on creation; custom security groups are required only for those layers that need custom settings.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html&quot;&gt;Create a New Stack&lt;/a&gt;.&lt;/p&gt;
+-- @param ServiceRoleArn [String] <p>The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @param DefaultSubnetId [String] <p>The stack's default VPC subnet ID. This parameter is required if you specify a value for the <code>VpcId</code> parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for <code>DefaultAvailabilityZone</code>, the subnet must be in that zone. For information on default values and when this parameter is required, see the <code>VpcId</code> parameter description. </p>
+-- @param VpcId [String] <p>The ID of the VPC that the stack is to be launched into. The VPC must be in the stack's region. All instances are launched into this VPC. You cannot change the ID later.</p> <ul> <li> <p>If your account supports EC2-Classic, the default value is <code>no VPC</code>.</p> </li> <li> <p>If your account does not support EC2-Classic, the default value is the default VPC for the specified region.</p> </li> </ul> <p>If the VPC ID corresponds to a default VPC and you have specified either the <code>DefaultAvailabilityZone</code> or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively.</p> <p>If you specify a nondefault VPC ID, note the following:</p> <ul> <li> <p>It must belong to a VPC in your account that is in the specified region.</p> </li> <li> <p>You must specify a value for <code>DefaultSubnetId</code>.</p> </li> </ul> <p>For more information on how to use AWS OpsWorks Stacks with a VPC, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>. For more information on default VPC and EC2-Classic, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>. </p>
+-- @param DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is the default for all instances in the stack, but you can override it when you create an instance. The default option is <code>instance-store</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- @param Name [String] <p>The stack name.</p>
+-- @param HostnameTheme [String] <p>The stack's host name theme, with spaces replaced by underscores. The theme is used to generate host names for the stack's instances. By default, <code>HostnameTheme</code> is set to <code>Layer_Dependent</code>, which creates host names by appending integers to the layer's short name. The other themes are:</p> <ul> <li> <p> <code>Baked_Goods</code> </p> </li> <li> <p> <code>Clouds</code> </p> </li> <li> <p> <code>Europe_Cities</code> </p> </li> <li> <p> <code>Fruits</code> </p> </li> <li> <p> <code>Greek_Deities</code> </p> </li> <li> <p> <code>Legendary_creatures_from_Japan</code> </p> </li> <li> <p> <code>Planets_and_Moons</code> </p> </li> <li> <p> <code>Roman_Deities</code> </p> </li> <li> <p> <code>Scottish_Islands</code> </p> </li> <li> <p> <code>US_Cities</code> </p> </li> <li> <p> <code>Wild_Cats</code> </p> </li> </ul> <p>To obtain a generated host name, call <code>GetHostNameSuggestion</code>, which returns a host name based on the current theme.</p>
+-- @param UseCustomCookbooks [Boolean] <p>Whether the stack uses custom cookbooks.</p>
+-- @param CustomJson [String] <p>A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration attribute values or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
+-- @param Region [String] <p>The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- @param DefaultAvailabilityZone [String] <p>The stack's default Availability Zone, which must be in the specified region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see the <code>VpcId</code> parameter description. </p>
+-- @param UseOpsworksSecurityGroups [Boolean] <p>Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p> <p>AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings: </p> <ul> <li> <p>True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot delete the built-in security group.</p> </li> <li> <p>False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on creation; custom security groups are required only for those layers that need custom settings.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
 -- @param CustomCookbooksSource [Source]  
--- @param ConfigurationManager [StackConfigurationManager] &lt;p&gt;The configuration manager. When you create a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.&lt;/p&gt;
--- @param ChefConfiguration [ChefConfiguration] &lt;p&gt;A &lt;code&gt;ChefConfiguration&lt;/code&gt; object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html&quot;&gt;Create a New Stack&lt;/a&gt;.&lt;/p&gt;
--- @param AgentVersion [String] &lt;p&gt;The default AWS OpsWorks Stacks agent version. You have the following options:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Auto-update - Set this parameter to &lt;code&gt;LATEST&lt;/code&gt;. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The default setting is the most recent release of the agent. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call &lt;a&gt;DescribeAgentVersions&lt;/a&gt;. AgentVersion cannot be set to Chef 12.2.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.&lt;/p&gt; &lt;/note&gt;
--- @param DefaultSshKeyName [String] &lt;p&gt;A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html&quot;&gt; Using SSH to Communicate with an Instance&lt;/a&gt; and &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html&quot;&gt; Managing SSH Access&lt;/a&gt;. You can override this setting by specifying a different key pair, or no key pair, when you &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html&quot;&gt; create an instance&lt;/a&gt;. &lt;/p&gt;
--- @param DefaultInstanceProfileArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
--- @param Attributes [StackAttributes] &lt;p&gt;One or more user-defined key-value pairs to be added to the stack attributes.&lt;/p&gt;
--- @param DefaultOs [String] &lt;p&gt;The stack's default operating system, which is installed on every instance unless you specify a different operating system when you create the instance. You can specify one of the following.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A supported Linux operating system: An Amazon Linux version, such as &lt;code&gt;Amazon Linux 2017.03&lt;/code&gt;, &lt;code&gt;Amazon Linux 2016.09&lt;/code&gt;, &lt;code&gt;Amazon Linux 2016.03&lt;/code&gt;, &lt;code&gt;Amazon Linux 2015.09&lt;/code&gt;, or &lt;code&gt;Amazon Linux 2015.03&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A supported Ubuntu operating system, such as &lt;code&gt;Ubuntu 16.04 LTS&lt;/code&gt;, &lt;code&gt;Ubuntu 14.04 LTS&lt;/code&gt;, or &lt;code&gt;Ubuntu 12.04 LTS&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CentOS Linux 7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Red Hat Enterprise Linux 7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A supported Windows operating system, such as &lt;code&gt;Microsoft Windows Server 2012 R2 Base&lt;/code&gt;, &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Express&lt;/code&gt;, &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Standard&lt;/code&gt;, or &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Web&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A custom AMI: &lt;code&gt;Custom&lt;/code&gt;. You specify the custom AMI you want to use when you create instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html&quot;&gt; Using Custom AMIs&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The default option is the current Amazon Linux version. For more information on the supported operating systems, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html&quot;&gt;AWS OpsWorks Stacks Operating Systems&lt;/a&gt;.&lt;/p&gt;
+-- @param ConfigurationManager [StackConfigurationManager] <p>The configuration manager. When you create a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.</p>
+-- @param ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- @param AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p>Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.</p> </li> <li> <p>Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.</p> </li> </ul> <p>The default setting is the most recent release of the agent. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p> <note> <p>You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.</p> </note>
+-- @param DefaultSshKeyName [String] <p>A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>. </p>
+-- @param DefaultInstanceProfileArn [String] <p>The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @param Attributes [StackAttributes] <p>One or more user-defined key-value pairs to be added to the stack attributes.</p>
+-- @param DefaultOs [String] <p>The stack's default operating system, which is installed on every instance unless you specify a different operating system when you create the instance. You can specify one of the following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using Custom AMIs</a>.</p> </li> </ul> <p>The default option is the current Amazon Linux version. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p>
 -- Required parameter: Name
 -- Required parameter: Region
 -- Required parameter: ServiceRoleArn
@@ -941,48 +941,48 @@ function M.AssertInstance(struct)
 end
 
 --- Create a structure of type Instance
--- &lt;p&gt;Describes an instance.&lt;/p&gt;
--- @param PrivateDns [String] &lt;p&gt;The instance's private DNS name.&lt;/p&gt;
--- @param SshHostRsaKeyFingerprint [String] &lt;p&gt;The SSH key's RSA fingerprint.&lt;/p&gt;
--- @param SubnetId [String] &lt;p&gt;The instance's subnet ID; applicable only if the stack is running in a VPC.&lt;/p&gt;
--- @param Hostname [String] &lt;p&gt;The instance host name.&lt;/p&gt;
--- @param LastServiceErrorId [String] &lt;p&gt;The ID of the last service error. For more information, call &lt;a&gt;DescribeServiceErrors&lt;/a&gt;.&lt;/p&gt;
--- @param Platform [String] &lt;p&gt;The instance's platform.&lt;/p&gt;
--- @param EbsOptimized [Boolean] &lt;p&gt;Whether this is an Amazon EBS-optimized instance.&lt;/p&gt;
--- @param ReportedOs [ReportedOs] &lt;p&gt;For registered instances, the reported operating system.&lt;/p&gt;
--- @param AutoScalingType [AutoScalingType] &lt;p&gt;For load-based or time-based instances, the type.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The instance status:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;booting&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;connection_lost&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;online&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;pending&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;rebooting&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;requested&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;running_setup&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;setup_failed&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;shutting_down&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;start_failed&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;stop_failed&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;stopped&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;stopping&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;terminated&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;terminating&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param SshKeyName [String] &lt;p&gt;The instance's Amazon EC2 key-pair name.&lt;/p&gt;
--- @param InfrastructureClass [String] &lt;p&gt;For registered instances, the infrastructure class: &lt;code&gt;ec2&lt;/code&gt; or &lt;code&gt;on-premises&lt;/code&gt;.&lt;/p&gt;
--- @param RootDeviceVolumeId [String] &lt;p&gt;The root device volume ID.&lt;/p&gt;
--- @param Tenancy [String] &lt;p&gt;The instance's tenancy option, such as &lt;code&gt;dedicated&lt;/code&gt; or &lt;code&gt;host&lt;/code&gt;.&lt;/p&gt;
--- @param AgentVersion [String] &lt;p&gt;The agent version. This parameter is set to &lt;code&gt;INHERIT&lt;/code&gt; if the instance inherits the default stack setting or to a a version number for a fixed agent version.&lt;/p&gt;
--- @param SshHostDsaKeyFingerprint [String] &lt;p&gt;The SSH key's Deep Security Agent (DSA) fingerprint.&lt;/p&gt;
--- @param InstanceProfileArn [String] &lt;p&gt;The ARN of the instance's IAM profile. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
--- @param InstanceType [String] &lt;p&gt;The instance type, such as &lt;code&gt;t2.micro&lt;/code&gt;.&lt;/p&gt;
--- @param CreatedAt [DateTime] &lt;p&gt;The time that the instance was created.&lt;/p&gt;
--- @param AmiId [String] &lt;p&gt;A custom AMI ID to be used to create the instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html&quot;&gt;Instances&lt;/a&gt; &lt;/p&gt;
--- @param LayerIds [Strings] &lt;p&gt;An array containing the instance layer IDs.&lt;/p&gt;
--- @param Ec2InstanceId [String] &lt;p&gt;The ID of the associated Amazon EC2 instance.&lt;/p&gt;
--- @param PublicDns [String] &lt;p&gt;The instance public DNS name.&lt;/p&gt;
--- @param SecurityGroupIds [Strings] &lt;p&gt;An array containing the instance security group IDs.&lt;/p&gt;
--- @param EcsClusterArn [String] &lt;p&gt;For container instances, the Amazon ECS cluster's ARN.&lt;/p&gt;
--- @param BlockDeviceMappings [BlockDeviceMappings] &lt;p&gt;An array of &lt;code&gt;BlockDeviceMapping&lt;/code&gt; objects that specify the instance's block device mappings.&lt;/p&gt;
--- @param Architecture [Architecture] &lt;p&gt;The instance architecture: &quot;i386&quot; or &quot;x86_64&quot;.&lt;/p&gt;
--- @param ReportedAgentVersion [String] &lt;p&gt;The instance's reported AWS OpsWorks Stacks agent version.&lt;/p&gt;
--- @param InstallUpdatesOnBoot [Boolean] &lt;p&gt;Whether to install operating system and package updates when the instance boots. The default value is &lt;code&gt;true&lt;/code&gt;. If this value is set to &lt;code&gt;false&lt;/code&gt;, you must then update your instances manually by using &lt;a&gt;CreateDeployment&lt;/a&gt; to run the &lt;code&gt;update_dependencies&lt;/code&gt; stack command or by manually running &lt;code&gt;yum&lt;/code&gt; (Amazon Linux) or &lt;code&gt;apt-get&lt;/code&gt; (Ubuntu) on the instances. &lt;/p&gt; &lt;note&gt; &lt;p&gt;We strongly recommend using the default value of &lt;code&gt;true&lt;/code&gt;, to ensure that your instances have the latest security updates.&lt;/p&gt; &lt;/note&gt;
--- @param Os [String] &lt;p&gt;The instance's operating system.&lt;/p&gt;
--- @param VirtualizationType [VirtualizationType] &lt;p&gt;The instance's virtualization type: &lt;code&gt;paravirtual&lt;/code&gt; or &lt;code&gt;hvm&lt;/code&gt;.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The instance Availability Zone. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;.&lt;/p&gt;
--- @param EcsContainerInstanceArn [String] &lt;p&gt;For container instances, the instance's ARN.&lt;/p&gt;
--- @param ElasticIp [String] &lt;p&gt;The instance &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html&quot;&gt;Elastic IP address &lt;/a&gt;.&lt;/p&gt;
--- @param RootDeviceType [RootDeviceType] &lt;p&gt;The instance's root device type. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device&quot;&gt;Storage for the Root Device&lt;/a&gt;.&lt;/p&gt;
--- @param PrivateIp [String] &lt;p&gt;The instance's private IP address.&lt;/p&gt;
--- @param PublicIp [String] &lt;p&gt;The instance public IP address.&lt;/p&gt;
--- @param RegisteredBy [String] &lt;p&gt;For registered instances, who performed the registration.&lt;/p&gt;
--- @param Arn [String] &lt;p&gt;Describes an instance.&lt;/p&gt;
+-- <p>Describes an instance.</p>
+-- @param PrivateDns [String] <p>The instance's private DNS name.</p>
+-- @param SshHostRsaKeyFingerprint [String] <p>The SSH key's RSA fingerprint.</p>
+-- @param SubnetId [String] <p>The instance's subnet ID; applicable only if the stack is running in a VPC.</p>
+-- @param Hostname [String] <p>The instance host name.</p>
+-- @param LastServiceErrorId [String] <p>The ID of the last service error. For more information, call <a>DescribeServiceErrors</a>.</p>
+-- @param Platform [String] <p>The instance's platform.</p>
+-- @param EbsOptimized [Boolean] <p>Whether this is an Amazon EBS-optimized instance.</p>
+-- @param ReportedOs [ReportedOs] <p>For registered instances, the reported operating system.</p>
+-- @param AutoScalingType [AutoScalingType] <p>For load-based or time-based instances, the type.</p>
+-- @param Status [String] <p>The instance status:</p> <ul> <li> <p> <code>booting</code> </p> </li> <li> <p> <code>connection_lost</code> </p> </li> <li> <p> <code>online</code> </p> </li> <li> <p> <code>pending</code> </p> </li> <li> <p> <code>rebooting</code> </p> </li> <li> <p> <code>requested</code> </p> </li> <li> <p> <code>running_setup</code> </p> </li> <li> <p> <code>setup_failed</code> </p> </li> <li> <p> <code>shutting_down</code> </p> </li> <li> <p> <code>start_failed</code> </p> </li> <li> <p> <code>stop_failed</code> </p> </li> <li> <p> <code>stopped</code> </p> </li> <li> <p> <code>stopping</code> </p> </li> <li> <p> <code>terminated</code> </p> </li> <li> <p> <code>terminating</code> </p> </li> </ul>
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param SshKeyName [String] <p>The instance's Amazon EC2 key-pair name.</p>
+-- @param InfrastructureClass [String] <p>For registered instances, the infrastructure class: <code>ec2</code> or <code>on-premises</code>.</p>
+-- @param RootDeviceVolumeId [String] <p>The root device volume ID.</p>
+-- @param Tenancy [String] <p>The instance's tenancy option, such as <code>dedicated</code> or <code>host</code>.</p>
+-- @param AgentVersion [String] <p>The agent version. This parameter is set to <code>INHERIT</code> if the instance inherits the default stack setting or to a a version number for a fixed agent version.</p>
+-- @param SshHostDsaKeyFingerprint [String] <p>The SSH key's Deep Security Agent (DSA) fingerprint.</p>
+-- @param InstanceProfileArn [String] <p>The ARN of the instance's IAM profile. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @param InstanceType [String] <p>The instance type, such as <code>t2.micro</code>.</p>
+-- @param CreatedAt [DateTime] <p>The time that the instance was created.</p>
+-- @param AmiId [String] <p>A custom AMI ID to be used to create the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Instances</a> </p>
+-- @param LayerIds [Strings] <p>An array containing the instance layer IDs.</p>
+-- @param Ec2InstanceId [String] <p>The ID of the associated Amazon EC2 instance.</p>
+-- @param PublicDns [String] <p>The instance public DNS name.</p>
+-- @param SecurityGroupIds [Strings] <p>An array containing the instance security group IDs.</p>
+-- @param EcsClusterArn [String] <p>For container instances, the Amazon ECS cluster's ARN.</p>
+-- @param BlockDeviceMappings [BlockDeviceMappings] <p>An array of <code>BlockDeviceMapping</code> objects that specify the instance's block device mappings.</p>
+-- @param Architecture [Architecture] <p>The instance architecture: "i386" or "x86_64".</p>
+-- @param ReportedAgentVersion [String] <p>The instance's reported AWS OpsWorks Stacks agent version.</p>
+-- @param InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. If this value is set to <code>false</code>, you must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
+-- @param Os [String] <p>The instance's operating system.</p>
+-- @param VirtualizationType [VirtualizationType] <p>The instance's virtualization type: <code>paravirtual</code> or <code>hvm</code>.</p>
+-- @param AvailabilityZone [String] <p>The instance Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- @param EcsContainerInstanceArn [String] <p>For container instances, the instance's ARN.</p>
+-- @param ElasticIp [String] <p>The instance <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address </a>.</p>
+-- @param RootDeviceType [RootDeviceType] <p>The instance's root device type. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- @param PrivateIp [String] <p>The instance's private IP address.</p>
+-- @param PublicIp [String] <p>The instance public IP address.</p>
+-- @param RegisteredBy [String] <p>For registered instances, who performed the registration.</p>
+-- @param Arn [String] <p>Describes an instance.</p>
 function M.Instance(PrivateDns, SshHostRsaKeyFingerprint, SubnetId, Hostname, LastServiceErrorId, Platform, EbsOptimized, ReportedOs, AutoScalingType, Status, StackId, InstanceId, SshKeyName, InfrastructureClass, RootDeviceVolumeId, Tenancy, AgentVersion, SshHostDsaKeyFingerprint, InstanceProfileArn, InstanceType, CreatedAt, AmiId, LayerIds, Ec2InstanceId, PublicDns, SecurityGroupIds, EcsClusterArn, BlockDeviceMappings, Architecture, ReportedAgentVersion, InstallUpdatesOnBoot, Os, VirtualizationType, AvailabilityZone, EcsContainerInstanceArn, ElasticIp, RootDeviceType, PrivateIp, PublicIp, RegisteredBy, Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
 	local t = { 
@@ -1050,14 +1050,14 @@ function M.AssertWeeklyAutoScalingSchedule(struct)
 end
 
 --- Create a structure of type WeeklyAutoScalingSchedule
--- &lt;p&gt;Describes a time-based instance's auto scaling schedule. The schedule consists of a set of key-value pairs.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The key is the time period (a UTC hour) and must be an integer from 0 - 23.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The value indicates whether the instance should be online or offline for the specified period, and must be set to &quot;on&quot; or &quot;off&quot;&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The default setting for all time periods is off, so you use the following parameters primarily to specify the online periods. You don't have to explicitly specify offline periods unless you want to change an online period to an offline period.&lt;/p&gt; &lt;p&gt;The following example specifies that the instance should be online for four hours, from UTC 1200 - 1600. It will be off for the remainder of the day.&lt;/p&gt; &lt;p&gt; &lt;code&gt; { &quot;12&quot;:&quot;on&quot;, &quot;13&quot;:&quot;on&quot;, &quot;14&quot;:&quot;on&quot;, &quot;15&quot;:&quot;on&quot; } &lt;/code&gt; &lt;/p&gt;
--- @param Monday [DailyAutoScalingSchedule] &lt;p&gt;The schedule for Monday.&lt;/p&gt;
--- @param Tuesday [DailyAutoScalingSchedule] &lt;p&gt;The schedule for Tuesday.&lt;/p&gt;
--- @param Friday [DailyAutoScalingSchedule] &lt;p&gt;The schedule for Friday.&lt;/p&gt;
--- @param Wednesday [DailyAutoScalingSchedule] &lt;p&gt;The schedule for Wednesday.&lt;/p&gt;
--- @param Thursday [DailyAutoScalingSchedule] &lt;p&gt;The schedule for Thursday.&lt;/p&gt;
--- @param Sunday [DailyAutoScalingSchedule] &lt;p&gt;The schedule for Sunday.&lt;/p&gt;
--- @param Saturday [DailyAutoScalingSchedule] &lt;p&gt;The schedule for Saturday.&lt;/p&gt;
+-- <p>Describes a time-based instance's auto scaling schedule. The schedule consists of a set of key-value pairs.</p> <ul> <li> <p>The key is the time period (a UTC hour) and must be an integer from 0 - 23.</p> </li> <li> <p>The value indicates whether the instance should be online or offline for the specified period, and must be set to "on" or "off"</p> </li> </ul> <p>The default setting for all time periods is off, so you use the following parameters primarily to specify the online periods. You don't have to explicitly specify offline periods unless you want to change an online period to an offline period.</p> <p>The following example specifies that the instance should be online for four hours, from UTC 1200 - 1600. It will be off for the remainder of the day.</p> <p> <code> { "12":"on", "13":"on", "14":"on", "15":"on" } </code> </p>
+-- @param Monday [DailyAutoScalingSchedule] <p>The schedule for Monday.</p>
+-- @param Tuesday [DailyAutoScalingSchedule] <p>The schedule for Tuesday.</p>
+-- @param Friday [DailyAutoScalingSchedule] <p>The schedule for Friday.</p>
+-- @param Wednesday [DailyAutoScalingSchedule] <p>The schedule for Wednesday.</p>
+-- @param Thursday [DailyAutoScalingSchedule] <p>The schedule for Thursday.</p>
+-- @param Sunday [DailyAutoScalingSchedule] <p>The schedule for Sunday.</p>
+-- @param Saturday [DailyAutoScalingSchedule] <p>The schedule for Saturday.</p>
 function M.WeeklyAutoScalingSchedule(Monday, Tuesday, Friday, Wednesday, Thursday, Sunday, Saturday, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WeeklyAutoScalingSchedule")
 	local t = { 
@@ -1089,10 +1089,10 @@ function M.AssertEnvironmentVariable(struct)
 end
 
 --- Create a structure of type EnvironmentVariable
--- &lt;p&gt;Represents an app's environment variable.&lt;/p&gt;
--- @param Value [String] &lt;p&gt;(Optional) The environment variable's value, which can be left empty. If you specify a value, it can contain up to 256 characters, which must all be printable.&lt;/p&gt;
--- @param Key [String] &lt;p&gt;(Required) The environment variable's name, which can consist of up to 64 characters and must be specified. The name can contain upper- and lowercase letters, numbers, and underscores (_), but it must start with a letter or underscore.&lt;/p&gt;
--- @param Secure [Boolean] &lt;p&gt;(Optional) Whether the variable's value will be returned by the &lt;a&gt;DescribeApps&lt;/a&gt; action. To conceal an environment variable's value, set &lt;code&gt;Secure&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt;. &lt;code&gt;DescribeApps&lt;/code&gt; then returns &lt;code&gt;*****FILTERED*****&lt;/code&gt; instead of the actual value. The default value for &lt;code&gt;Secure&lt;/code&gt; is &lt;code&gt;false&lt;/code&gt;. &lt;/p&gt;
+-- <p>Represents an app's environment variable.</p>
+-- @param Value [String] <p>(Optional) The environment variable's value, which can be left empty. If you specify a value, it can contain up to 256 characters, which must all be printable.</p>
+-- @param Key [String] <p>(Required) The environment variable's name, which can consist of up to 64 characters and must be specified. The name can contain upper- and lowercase letters, numbers, and underscores (_), but it must start with a letter or underscore.</p>
+-- @param Secure [Boolean] <p>(Optional) Whether the variable's value will be returned by the <a>DescribeApps</a> action. To conceal an environment variable's value, set <code>Secure</code> to <code>true</code>. <code>DescribeApps</code> then returns <code>*****FILTERED*****</code> instead of the actual value. The default value for <code>Secure</code> is <code>false</code>. </p>
 -- Required parameter: Key
 -- Required parameter: Value
 function M.EnvironmentVariable(Value, Key, Secure, ...)
@@ -1118,8 +1118,8 @@ function M.AssertRegisterInstanceResult(struct)
 end
 
 --- Create a structure of type RegisterInstanceResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;RegisterInstanceResult&lt;/code&gt; request.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The registered instance's AWS OpsWorks Stacks ID.&lt;/p&gt;
+-- <p>Contains the response to a <code>RegisterInstanceResult</code> request.</p>
+-- @param InstanceId [String] <p>The registered instance's AWS OpsWorks Stacks ID.</p>
 function M.RegisterInstanceResult(InstanceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterInstanceResult")
 	local t = { 
@@ -1147,14 +1147,14 @@ function M.AssertAutoScalingThresholds(struct)
 end
 
 --- Create a structure of type AutoScalingThresholds
--- &lt;p&gt;Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or stops load-based instances.&lt;/p&gt;
--- @param InstanceCount [Integer] &lt;p&gt;The number of instances to add or remove when the load exceeds a threshold.&lt;/p&gt;
--- @param LoadThreshold [Double] &lt;p&gt;The load threshold. A value of -1 disables the threshold. For more information about how load is computed, see &lt;a href=&quot;http://en.wikipedia.org/wiki/Load_%28computing%29&quot;&gt;Load (computing)&lt;/a&gt;.&lt;/p&gt;
--- @param ThresholdsWaitTime [Minute] &lt;p&gt;The amount of time, in minutes, that the load must exceed a threshold before more instances are added or removed.&lt;/p&gt;
--- @param IgnoreMetricsTime [Minute] &lt;p&gt;The amount of time (in minutes) after a scaling event occurs that AWS OpsWorks Stacks should ignore metrics and suppress additional scaling events. For example, AWS OpsWorks Stacks adds new instances following an upscaling event but the instances won't start reducing the load until they have been booted and configured. There is no point in raising additional scaling events during that operation, which typically takes several minutes. &lt;code&gt;IgnoreMetricsTime&lt;/code&gt; allows you to direct AWS OpsWorks Stacks to suppress scaling events long enough to get the new instances online.&lt;/p&gt;
--- @param MemoryThreshold [Double] &lt;p&gt;The memory utilization threshold, as a percent of the available memory. A value of -1 disables the threshold.&lt;/p&gt;
--- @param Alarms [Strings] &lt;p&gt;Custom Cloudwatch auto scaling alarms, to be used as thresholds. This parameter takes a list of up to five alarm names, which are case sensitive and must be in the same region as the stack.&lt;/p&gt; &lt;note&gt; &lt;p&gt;To use custom alarms, you must update your service role to allow &lt;code&gt;cloudwatch:DescribeAlarms&lt;/code&gt;. You can either have AWS OpsWorks Stacks update the role for you when you first use this feature or you can edit the role manually. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-servicerole.html&quot;&gt;Allowing AWS OpsWorks Stacks to Act on Your Behalf&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param CpuThreshold [Double] &lt;p&gt;The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the threshold.&lt;/p&gt;
+-- <p>Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or stops load-based instances.</p>
+-- @param InstanceCount [Integer] <p>The number of instances to add or remove when the load exceeds a threshold.</p>
+-- @param LoadThreshold [Double] <p>The load threshold. A value of -1 disables the threshold. For more information about how load is computed, see <a href="http://en.wikipedia.org/wiki/Load_%28computing%29">Load (computing)</a>.</p>
+-- @param ThresholdsWaitTime [Minute] <p>The amount of time, in minutes, that the load must exceed a threshold before more instances are added or removed.</p>
+-- @param IgnoreMetricsTime [Minute] <p>The amount of time (in minutes) after a scaling event occurs that AWS OpsWorks Stacks should ignore metrics and suppress additional scaling events. For example, AWS OpsWorks Stacks adds new instances following an upscaling event but the instances won't start reducing the load until they have been booted and configured. There is no point in raising additional scaling events during that operation, which typically takes several minutes. <code>IgnoreMetricsTime</code> allows you to direct AWS OpsWorks Stacks to suppress scaling events long enough to get the new instances online.</p>
+-- @param MemoryThreshold [Double] <p>The memory utilization threshold, as a percent of the available memory. A value of -1 disables the threshold.</p>
+-- @param Alarms [Strings] <p>Custom Cloudwatch auto scaling alarms, to be used as thresholds. This parameter takes a list of up to five alarm names, which are case sensitive and must be in the same region as the stack.</p> <note> <p>To use custom alarms, you must update your service role to allow <code>cloudwatch:DescribeAlarms</code>. You can either have AWS OpsWorks Stacks update the role for you when you first use this feature or you can edit the role manually. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-servicerole.html">Allowing AWS OpsWorks Stacks to Act on Your Behalf</a>.</p> </note>
+-- @param CpuThreshold [Double] <p>The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the threshold.</p>
 function M.AutoScalingThresholds(InstanceCount, LoadThreshold, ThresholdsWaitTime, IgnoreMetricsTime, MemoryThreshold, Alarms, CpuThreshold, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingThresholds")
 	local t = { 
@@ -1184,7 +1184,7 @@ end
 
 --- Create a structure of type RebootInstanceRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID.</p>
 -- Required parameter: InstanceId
 function M.RebootInstanceRequest(InstanceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootInstanceRequest")
@@ -1211,12 +1211,12 @@ function M.AssertEbsBlockDevice(struct)
 end
 
 --- Create a structure of type EbsBlockDevice
--- &lt;p&gt;Describes an Amazon EBS volume. This data type maps directly to the Amazon EC2 &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html&quot;&gt;EbsBlockDevice&lt;/a&gt; data type.&lt;/p&gt;
--- @param DeleteOnTermination [Boolean] &lt;p&gt;Whether the volume is deleted on instance termination.&lt;/p&gt;
--- @param SnapshotId [String] &lt;p&gt;The snapshot ID.&lt;/p&gt;
--- @param Iops [Integer] &lt;p&gt;The number of I/O operations per second (IOPS) that the volume supports. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html&quot;&gt;EbsBlockDevice&lt;/a&gt;.&lt;/p&gt;
--- @param VolumeType [VolumeType] &lt;p&gt;The volume type. &lt;code&gt;gp2&lt;/code&gt; for General Purpose (SSD) volumes, &lt;code&gt;io1&lt;/code&gt; for Provisioned IOPS (SSD) volumes, and &lt;code&gt;standard&lt;/code&gt; for Magnetic volumes.&lt;/p&gt;
--- @param VolumeSize [Integer] &lt;p&gt;The volume size, in GiB. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html&quot;&gt;EbsBlockDevice&lt;/a&gt;.&lt;/p&gt;
+-- <p>Describes an Amazon EBS volume. This data type maps directly to the Amazon EC2 <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a> data type.</p>
+-- @param DeleteOnTermination [Boolean] <p>Whether the volume is deleted on instance termination.</p>
+-- @param SnapshotId [String] <p>The snapshot ID.</p>
+-- @param Iops [Integer] <p>The number of I/O operations per second (IOPS) that the volume supports. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a>.</p>
+-- @param VolumeType [VolumeType] <p>The volume type. <code>gp2</code> for General Purpose (SSD) volumes, <code>io1</code> for Provisioned IOPS (SSD) volumes, and <code>standard</code> for Magnetic volumes.</p>
+-- @param VolumeSize [Integer] <p>The volume size, in GiB. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a>.</p>
 function M.EbsBlockDevice(DeleteOnTermination, SnapshotId, Iops, VolumeType, VolumeSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EbsBlockDevice")
 	local t = { 
@@ -1245,11 +1245,11 @@ function M.AssertLoadBasedAutoScalingConfiguration(struct)
 end
 
 --- Create a structure of type LoadBasedAutoScalingConfiguration
--- &lt;p&gt;Describes a layer's load-based auto scaling configuration.&lt;/p&gt;
--- @param DownScaling [AutoScalingThresholds] &lt;p&gt;An &lt;code&gt;AutoScalingThresholds&lt;/code&gt; object that describes the downscaling configuration, which defines how and when AWS OpsWorks Stacks reduces the number of instances.&lt;/p&gt;
--- @param Enable [Boolean] &lt;p&gt;Whether load-based auto scaling is enabled for the layer.&lt;/p&gt;
--- @param UpScaling [AutoScalingThresholds] &lt;p&gt;An &lt;code&gt;AutoScalingThresholds&lt;/code&gt; object that describes the upscaling configuration, which defines how and when AWS OpsWorks Stacks increases the number of instances.&lt;/p&gt;
--- @param LayerId [String] &lt;p&gt;The layer ID.&lt;/p&gt;
+-- <p>Describes a layer's load-based auto scaling configuration.</p>
+-- @param DownScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object that describes the downscaling configuration, which defines how and when AWS OpsWorks Stacks reduces the number of instances.</p>
+-- @param Enable [Boolean] <p>Whether load-based auto scaling is enabled for the layer.</p>
+-- @param UpScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object that describes the upscaling configuration, which defines how and when AWS OpsWorks Stacks increases the number of instances.</p>
+-- @param LayerId [String] <p>The layer ID.</p>
 function M.LoadBasedAutoScalingConfiguration(DownScaling, Enable, UpScaling, LayerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBasedAutoScalingConfiguration")
 	local t = { 
@@ -1274,8 +1274,8 @@ function M.AssertCreateAppResult(struct)
 end
 
 --- Create a structure of type CreateAppResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;CreateApp&lt;/code&gt; request.&lt;/p&gt;
--- @param AppId [String] &lt;p&gt;The app ID.&lt;/p&gt;
+-- <p>Contains the response to a <code>CreateApp</code> request.</p>
+-- @param AppId [String] <p>The app ID.</p>
 function M.CreateAppResult(AppId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAppResult")
 	local t = { 
@@ -1300,8 +1300,8 @@ end
 
 --- Create a structure of type SetTimeBasedAutoScalingRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param AutoScalingSchedule [WeeklyAutoScalingSchedule] &lt;p&gt;An &lt;code&gt;AutoScalingSchedule&lt;/code&gt; with the instance schedule.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param AutoScalingSchedule [WeeklyAutoScalingSchedule] <p>An <code>AutoScalingSchedule</code> with the instance schedule.</p>
 -- Required parameter: InstanceId
 function M.SetTimeBasedAutoScalingRequest(InstanceId, AutoScalingSchedule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetTimeBasedAutoScalingRequest")
@@ -1349,28 +1349,28 @@ end
 
 --- Create a structure of type CloneStackRequest
 --  
--- @param HostnameTheme [String] &lt;p&gt;The stack's host name theme, with spaces are replaced by underscores. The theme is used to generate host names for the stack's instances. By default, &lt;code&gt;HostnameTheme&lt;/code&gt; is set to &lt;code&gt;Layer_Dependent&lt;/code&gt;, which creates host names by appending integers to the layer's short name. The other themes are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Baked_Goods&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Clouds&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Europe_Cities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Fruits&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Greek_Deities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Legendary_creatures_from_Japan&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Planets_and_Moons&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Roman_Deities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Scottish_Islands&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;US_Cities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Wild_Cats&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;To obtain a generated host name, call &lt;code&gt;GetHostNameSuggestion&lt;/code&gt;, which returns a host name based on the current theme.&lt;/p&gt;
--- @param UseCustomCookbooks [Boolean] &lt;p&gt;Whether to use custom cookbooks.&lt;/p&gt;
--- @param DefaultSshKeyName [String] &lt;p&gt;A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html&quot;&gt; Using SSH to Communicate with an Instance&lt;/a&gt; and &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html&quot;&gt; Managing SSH Access&lt;/a&gt;. You can override this setting by specifying a different key pair, or no key pair, when you &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html&quot;&gt; create an instance&lt;/a&gt;. &lt;/p&gt;
--- @param CloneAppIds [Strings] &lt;p&gt;A list of source stack app IDs to be included in the cloned stack.&lt;/p&gt;
--- @param ChefConfiguration [ChefConfiguration] &lt;p&gt;A &lt;code&gt;ChefConfiguration&lt;/code&gt; object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html&quot;&gt;Create a New Stack&lt;/a&gt;.&lt;/p&gt;
--- @param UseOpsworksSecurityGroups [Boolean] &lt;p&gt;Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.&lt;/p&gt; &lt;p&gt;AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. With &lt;code&gt;UseOpsworksSecurityGroups&lt;/code&gt; you can instead provide your own custom security groups. &lt;code&gt;UseOpsworksSecurityGroups&lt;/code&gt; has the following settings: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it but you cannot delete the built-in security group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate Amazon Elastic Compute Cloud (Amazon EC2) security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on creation; custom security groups are required only for those layers that need custom settings.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html&quot;&gt;Create a New Stack&lt;/a&gt;.&lt;/p&gt;
--- @param ServiceRoleArn [String] &lt;p&gt;The stack AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. If you create a stack by using the AWS OpsWorks Stacks console, it creates the role for you. You can obtain an existing stack's IAM ARN programmatically by calling &lt;a&gt;DescribePermissions&lt;/a&gt;. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You must set this parameter to a valid service role ARN or the action will fail; there is no default value. You can specify the source stack's service role ARN, if you prefer, but you must do so explicitly.&lt;/p&gt; &lt;/note&gt;
--- @param VpcId [String] &lt;p&gt;The ID of the VPC that the cloned stack is to be launched into. It must be in the specified region. All instances are launched into this VPC, and you cannot change the ID later.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If your account supports EC2 Classic, the default value is no VPC.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If your account does not support EC2 Classic, the default value is the default VPC for the specified region.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the VPC ID corresponds to a default VPC and you have specified either the &lt;code&gt;DefaultAvailabilityZone&lt;/code&gt; or the &lt;code&gt;DefaultSubnetId&lt;/code&gt; parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively. &lt;/p&gt; &lt;p&gt;If you specify a nondefault VPC ID, note the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;It must belong to a VPC in your account that is in the specified region.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You must specify a value for &lt;code&gt;DefaultSubnetId&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information on how to use AWS OpsWorks Stacks with a VPC, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html&quot;&gt;Running a Stack in a VPC&lt;/a&gt;. For more information on default VPC and EC2 Classic, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html&quot;&gt;Supported Platforms&lt;/a&gt;. &lt;/p&gt;
--- @param ConfigurationManager [StackConfigurationManager] &lt;p&gt;The configuration manager. When you clone a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 12.&lt;/p&gt;
+-- @param HostnameTheme [String] <p>The stack's host name theme, with spaces are replaced by underscores. The theme is used to generate host names for the stack's instances. By default, <code>HostnameTheme</code> is set to <code>Layer_Dependent</code>, which creates host names by appending integers to the layer's short name. The other themes are:</p> <ul> <li> <p> <code>Baked_Goods</code> </p> </li> <li> <p> <code>Clouds</code> </p> </li> <li> <p> <code>Europe_Cities</code> </p> </li> <li> <p> <code>Fruits</code> </p> </li> <li> <p> <code>Greek_Deities</code> </p> </li> <li> <p> <code>Legendary_creatures_from_Japan</code> </p> </li> <li> <p> <code>Planets_and_Moons</code> </p> </li> <li> <p> <code>Roman_Deities</code> </p> </li> <li> <p> <code>Scottish_Islands</code> </p> </li> <li> <p> <code>US_Cities</code> </p> </li> <li> <p> <code>Wild_Cats</code> </p> </li> </ul> <p>To obtain a generated host name, call <code>GetHostNameSuggestion</code>, which returns a host name based on the current theme.</p>
+-- @param UseCustomCookbooks [Boolean] <p>Whether to use custom cookbooks.</p>
+-- @param DefaultSshKeyName [String] <p>A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>. </p>
+-- @param CloneAppIds [Strings] <p>A list of source stack app IDs to be included in the cloned stack.</p>
+-- @param ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- @param UseOpsworksSecurityGroups [Boolean] <p>Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p> <p>AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings: </p> <ul> <li> <p>True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it but you cannot delete the built-in security group.</p> </li> <li> <p>False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate Amazon Elastic Compute Cloud (Amazon EC2) security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on creation; custom security groups are required only for those layers that need custom settings.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- @param ServiceRoleArn [String] <p>The stack AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. If you create a stack by using the AWS OpsWorks Stacks console, it creates the role for you. You can obtain an existing stack's IAM ARN programmatically by calling <a>DescribePermissions</a>. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p> <note> <p>You must set this parameter to a valid service role ARN or the action will fail; there is no default value. You can specify the source stack's service role ARN, if you prefer, but you must do so explicitly.</p> </note>
+-- @param VpcId [String] <p>The ID of the VPC that the cloned stack is to be launched into. It must be in the specified region. All instances are launched into this VPC, and you cannot change the ID later.</p> <ul> <li> <p>If your account supports EC2 Classic, the default value is no VPC.</p> </li> <li> <p>If your account does not support EC2 Classic, the default value is the default VPC for the specified region.</p> </li> </ul> <p>If the VPC ID corresponds to a default VPC and you have specified either the <code>DefaultAvailabilityZone</code> or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively. </p> <p>If you specify a nondefault VPC ID, note the following:</p> <ul> <li> <p>It must belong to a VPC in your account that is in the specified region.</p> </li> <li> <p>You must specify a value for <code>DefaultSubnetId</code>.</p> </li> </ul> <p>For more information on how to use AWS OpsWorks Stacks with a VPC, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>. For more information on default VPC and EC2 Classic, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>. </p>
+-- @param ConfigurationManager [StackConfigurationManager] <p>The configuration manager. When you clone a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 12.</p>
 -- @param CustomCookbooksSource [Source]  
--- @param AgentVersion [String] &lt;p&gt;The default AWS OpsWorks Stacks agent version. You have the following options:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Auto-update - Set this parameter to &lt;code&gt;LATEST&lt;/code&gt;. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The default setting is &lt;code&gt;LATEST&lt;/code&gt;. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call &lt;a&gt;DescribeAgentVersions&lt;/a&gt;. AgentVersion cannot be set to Chef 12.2.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.&lt;/p&gt; &lt;/note&gt;
--- @param DefaultAvailabilityZone [String] &lt;p&gt;The cloned stack's default Availability Zone, which must be in the specified region. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;. If you also specify a value for &lt;code&gt;DefaultSubnetId&lt;/code&gt;, the subnet must be in the same zone. For more information, see the &lt;code&gt;VpcId&lt;/code&gt; parameter description. &lt;/p&gt;
--- @param ClonePermissions [Boolean] &lt;p&gt;Whether to clone the source stack's permissions.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The cloned stack name.&lt;/p&gt;
--- @param Region [String] &lt;p&gt;The cloned stack AWS region, such as &quot;ap-northeast-2&quot;. For more information about AWS regions, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;.&lt;/p&gt;
--- @param SourceStackId [String] &lt;p&gt;The source stack ID.&lt;/p&gt;
--- @param DefaultInstanceProfileArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
--- @param Attributes [StackAttributes] &lt;p&gt;A list of stack attributes and values as key/value pairs to be added to the cloned stack.&lt;/p&gt;
--- @param DefaultOs [String] &lt;p&gt;The stack's operating system, which must be set to one of the following.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A supported Linux operating system: An Amazon Linux version, such as &lt;code&gt;Amazon Linux 2017.03&lt;/code&gt;, &lt;code&gt;Amazon Linux 2016.09&lt;/code&gt;, &lt;code&gt;Amazon Linux 2016.03&lt;/code&gt;, &lt;code&gt;Amazon Linux 2015.09&lt;/code&gt;, or &lt;code&gt;Amazon Linux 2015.03&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A supported Ubuntu operating system, such as &lt;code&gt;Ubuntu 16.04 LTS&lt;/code&gt;, &lt;code&gt;Ubuntu 14.04 LTS&lt;/code&gt;, or &lt;code&gt;Ubuntu 12.04 LTS&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CentOS Linux 7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Red Hat Enterprise Linux 7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Microsoft Windows Server 2012 R2 Base&lt;/code&gt;, &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Express&lt;/code&gt;, &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Standard&lt;/code&gt;, or &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Web&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A custom AMI: &lt;code&gt;Custom&lt;/code&gt;. You specify the custom AMI you want to use when you create instances. For more information on how to use custom AMIs with OpsWorks, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html&quot;&gt;Using Custom AMIs&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The default option is the parent stack's operating system. For more information on the supported operating systems, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html&quot;&gt;AWS OpsWorks Stacks Operating Systems&lt;/a&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You can specify a different Linux operating system for the cloned stack, but you cannot change from Linux to Windows or Windows to Linux.&lt;/p&gt; &lt;/note&gt;
--- @param DefaultSubnetId [String] &lt;p&gt;The stack's default VPC subnet ID. This parameter is required if you specify a value for the &lt;code&gt;VpcId&lt;/code&gt; parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for &lt;code&gt;DefaultAvailabilityZone&lt;/code&gt;, the subnet must be in that zone. For information on default values and when this parameter is required, see the &lt;code&gt;VpcId&lt;/code&gt; parameter description. &lt;/p&gt;
--- @param DefaultRootDeviceType [RootDeviceType] &lt;p&gt;The default root device type. This value is used by default for all instances in the cloned stack, but you can override it when you create an instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device&quot;&gt;Storage for the Root Device&lt;/a&gt;.&lt;/p&gt;
--- @param CustomJson [String] &lt;p&gt;A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format:&lt;/p&gt; &lt;p&gt; &lt;code&gt;&quot;{\&quot;key1\&quot;: \&quot;value1\&quot;, \&quot;key2\&quot;: \&quot;value2\&quot;,...}&quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information on custom JSON, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html&quot;&gt;Use Custom JSON to Modify the Stack Configuration Attributes&lt;/a&gt; &lt;/p&gt;
+-- @param AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p>Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.</p> </li> <li> <p>Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.</p> </li> </ul> <p>The default setting is <code>LATEST</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p> <note> <p>You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.</p> </note>
+-- @param DefaultAvailabilityZone [String] <p>The cloned stack's default Availability Zone, which must be in the specified region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see the <code>VpcId</code> parameter description. </p>
+-- @param ClonePermissions [Boolean] <p>Whether to clone the source stack's permissions.</p>
+-- @param Name [String] <p>The cloned stack name.</p>
+-- @param Region [String] <p>The cloned stack AWS region, such as "ap-northeast-2". For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- @param SourceStackId [String] <p>The source stack ID.</p>
+-- @param DefaultInstanceProfileArn [String] <p>The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @param Attributes [StackAttributes] <p>A list of stack attributes and values as key/value pairs to be added to the cloned stack.</p>
+-- @param DefaultOs [String] <p>The stack's operating system, which must be set to one of the following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p> <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more information on how to use custom AMIs with OpsWorks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> </li> </ul> <p>The default option is the parent stack's operating system. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p> <note> <p>You can specify a different Linux operating system for the cloned stack, but you cannot change from Linux to Windows or Windows to Linux.</p> </note>
+-- @param DefaultSubnetId [String] <p>The stack's default VPC subnet ID. This parameter is required if you specify a value for the <code>VpcId</code> parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for <code>DefaultAvailabilityZone</code>, the subnet must be in that zone. For information on default values and when this parameter is required, see the <code>VpcId</code> parameter description. </p>
+-- @param DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is used by default for all instances in the cloned stack, but you can override it when you create an instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- @param CustomJson [String] <p>A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a> </p>
 -- Required parameter: SourceStackId
 -- Required parameter: ServiceRoleArn
 function M.CloneStackRequest(HostnameTheme, UseCustomCookbooks, DefaultSshKeyName, CloneAppIds, ChefConfiguration, UseOpsworksSecurityGroups, ServiceRoleArn, VpcId, ConfigurationManager, CustomCookbooksSource, AgentVersion, DefaultAvailabilityZone, ClonePermissions, Name, Region, SourceStackId, DefaultInstanceProfileArn, Attributes, DefaultOs, DefaultSubnetId, DefaultRootDeviceType, CustomJson, ...)
@@ -1424,13 +1424,13 @@ end
 
 --- Create a structure of type CreateDeploymentRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param Comment [String] &lt;p&gt;A user-defined comment.&lt;/p&gt;
--- @param CustomJson [String] &lt;p&gt;A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format:&lt;/p&gt; &lt;p&gt; &lt;code&gt;&quot;{\&quot;key1\&quot;: \&quot;value1\&quot;, \&quot;key2\&quot;: \&quot;value2\&quot;,...}&quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information on custom JSON, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html&quot;&gt;Use Custom JSON to Modify the Stack Configuration Attributes&lt;/a&gt;.&lt;/p&gt;
--- @param LayerIds [Strings] &lt;p&gt;The layer IDs for the deployment targets.&lt;/p&gt;
--- @param Command [DeploymentCommand] &lt;p&gt;A &lt;code&gt;DeploymentCommand&lt;/code&gt; object that specifies the deployment command and any associated arguments.&lt;/p&gt;
--- @param AppId [String] &lt;p&gt;The app ID. This parameter is required for app deployments, but not for other deployment commands.&lt;/p&gt;
--- @param InstanceIds [Strings] &lt;p&gt;The instance IDs for the deployment targets.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param Comment [String] <p>A user-defined comment.</p>
+-- @param CustomJson [String] <p>A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
+-- @param LayerIds [Strings] <p>The layer IDs for the deployment targets.</p>
+-- @param Command [DeploymentCommand] <p>A <code>DeploymentCommand</code> object that specifies the deployment command and any associated arguments.</p>
+-- @param AppId [String] <p>The app ID. This parameter is required for app deployments, but not for other deployment commands.</p>
+-- @param InstanceIds [Strings] <p>The instance IDs for the deployment targets.</p>
 -- Required parameter: StackId
 -- Required parameter: Command
 function M.CreateDeploymentRequest(StackId, Comment, CustomJson, LayerIds, Command, AppId, InstanceIds, ...)
@@ -1461,7 +1461,7 @@ end
 
 --- Create a structure of type DescribeStacksRequest
 --  
--- @param StackIds [Strings] &lt;p&gt;An array of stack IDs that specify the stacks to be described. If you omit this parameter, &lt;code&gt;DescribeStacks&lt;/code&gt; returns a description of every stack.&lt;/p&gt;
+-- @param StackIds [Strings] <p>An array of stack IDs that specify the stacks to be described. If you omit this parameter, <code>DescribeStacks</code> returns a description of every stack.</p>
 function M.DescribeStacksRequest(StackIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksRequest")
 	local t = { 
@@ -1488,13 +1488,13 @@ function M.AssertSource(struct)
 end
 
 --- Create a structure of type Source
--- &lt;p&gt;Contains the information required to retrieve an app or cookbook from a repository. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html&quot;&gt;Creating Apps&lt;/a&gt; or &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html&quot;&gt;Custom Recipes and Cookbooks&lt;/a&gt;.&lt;/p&gt;
--- @param Username [String] &lt;p&gt;This parameter depends on the repository type.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For Amazon S3 bundles, set &lt;code&gt;Username&lt;/code&gt; to the appropriate IAM access key ID.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For HTTP bundles, Git repositories, and Subversion repositories, set &lt;code&gt;Username&lt;/code&gt; to the user name.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SshKey [String] &lt;p&gt;In requests, the repository's SSH key.&lt;/p&gt; &lt;p&gt;In responses, AWS OpsWorks Stacks returns &lt;code&gt;*****FILTERED*****&lt;/code&gt; instead of the actual value.&lt;/p&gt;
--- @param Url [String] &lt;p&gt;The source URL. The following is an example of an Amazon S3 source URL: &lt;code&gt;https://s3.amazonaws.com/opsworks-demo-bucket/opsworks_cookbook_demo.tar.gz&lt;/code&gt;.&lt;/p&gt;
--- @param Password [String] &lt;p&gt;When included in a request, the parameter depends on the repository type.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For Amazon S3 bundles, set &lt;code&gt;Password&lt;/code&gt; to the appropriate IAM secret access key.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For HTTP bundles and Subversion repositories, set &lt;code&gt;Password&lt;/code&gt; to the password.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information on how to safely handle IAM credentials, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html&quot;&gt;http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;In responses, AWS OpsWorks Stacks returns &lt;code&gt;*****FILTERED*****&lt;/code&gt; instead of the actual value.&lt;/p&gt;
--- @param Type [SourceType] &lt;p&gt;The repository type.&lt;/p&gt;
--- @param Revision [String] &lt;p&gt;The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application. One of the simplest approaches is to have branches or revisions in your repository that represent different versions that can potentially be deployed.&lt;/p&gt;
+-- <p>Contains the information required to retrieve an app or cookbook from a repository. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Creating Apps</a> or <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Custom Recipes and Cookbooks</a>.</p>
+-- @param Username [String] <p>This parameter depends on the repository type.</p> <ul> <li> <p>For Amazon S3 bundles, set <code>Username</code> to the appropriate IAM access key ID.</p> </li> <li> <p>For HTTP bundles, Git repositories, and Subversion repositories, set <code>Username</code> to the user name.</p> </li> </ul>
+-- @param SshKey [String] <p>In requests, the repository's SSH key.</p> <p>In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.</p>
+-- @param Url [String] <p>The source URL. The following is an example of an Amazon S3 source URL: <code>https://s3.amazonaws.com/opsworks-demo-bucket/opsworks_cookbook_demo.tar.gz</code>.</p>
+-- @param Password [String] <p>When included in a request, the parameter depends on the repository type.</p> <ul> <li> <p>For Amazon S3 bundles, set <code>Password</code> to the appropriate IAM secret access key.</p> </li> <li> <p>For HTTP bundles and Subversion repositories, set <code>Password</code> to the password.</p> </li> </ul> <p>For more information on how to safely handle IAM credentials, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html">http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html</a>.</p> <p>In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.</p>
+-- @param Type [SourceType] <p>The repository type.</p>
+-- @param Revision [String] <p>The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application. One of the simplest approaches is to have branches or revisions in your repository that represent different versions that can potentially be deployed.</p>
 function M.Source(Username, SshKey, Url, Password, Type, Revision, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Source")
 	local t = { 
@@ -1521,8 +1521,8 @@ function M.AssertDescribeInstancesResult(struct)
 end
 
 --- Create a structure of type DescribeInstancesResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeInstances&lt;/code&gt; request.&lt;/p&gt;
--- @param Instances [Instances] &lt;p&gt;An array of &lt;code&gt;Instance&lt;/code&gt; objects that describe the instances.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeInstances</code> request.</p>
+-- @param Instances [Instances] <p>An array of <code>Instance</code> objects that describe the instances.</p>
 function M.DescribeInstancesResult(Instances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesResult")
 	local t = { 
@@ -1544,8 +1544,8 @@ function M.AssertDescribeElasticIpsResult(struct)
 end
 
 --- Create a structure of type DescribeElasticIpsResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeElasticIps&lt;/code&gt; request.&lt;/p&gt;
--- @param ElasticIps [ElasticIps] &lt;p&gt;An &lt;code&gt;ElasticIps&lt;/code&gt; object that describes the specified Elastic IP addresses.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeElasticIps</code> request.</p>
+-- @param ElasticIps [ElasticIps] <p>An <code>ElasticIps</code> object that describes the specified Elastic IP addresses.</p>
 function M.DescribeElasticIpsResult(ElasticIps, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticIpsResult")
 	local t = { 
@@ -1570,8 +1570,8 @@ end
 
 --- Create a structure of type UpdateElasticIpRequest
 --  
--- @param Name [String] &lt;p&gt;The new name.&lt;/p&gt;
--- @param ElasticIp [String] &lt;p&gt;The address.&lt;/p&gt;
+-- @param Name [String] <p>The new name.</p>
+-- @param ElasticIp [String] <p>The address.</p>
 -- Required parameter: ElasticIp
 function M.UpdateElasticIpRequest(Name, ElasticIp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateElasticIpRequest")
@@ -1599,12 +1599,12 @@ function M.AssertPermission(struct)
 end
 
 --- Create a structure of type Permission
--- &lt;p&gt;Describes stack or user permissions.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;A stack ID.&lt;/p&gt;
--- @param IamUserArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for an AWS Identity and Access Management (IAM) role. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
--- @param Level [String] &lt;p&gt;The user's permission level, which must be the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;deny&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;show&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;deploy&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;manage&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;iam_only&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information on the permissions associated with these levels, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html&quot;&gt;Managing User Permissions&lt;/a&gt; &lt;/p&gt;
--- @param AllowSudo [Boolean] &lt;p&gt;Whether the user can use &lt;b&gt;sudo&lt;/b&gt;.&lt;/p&gt;
--- @param AllowSsh [Boolean] &lt;p&gt;Whether the user can use SSH.&lt;/p&gt;
+-- <p>Describes stack or user permissions.</p>
+-- @param StackId [String] <p>A stack ID.</p>
+-- @param IamUserArn [String] <p>The Amazon Resource Name (ARN) for an AWS Identity and Access Management (IAM) role. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @param Level [String] <p>The user's permission level, which must be the following:</p> <ul> <li> <p> <code>deny</code> </p> </li> <li> <p> <code>show</code> </p> </li> <li> <p> <code>deploy</code> </p> </li> <li> <p> <code>manage</code> </p> </li> <li> <p> <code>iam_only</code> </p> </li> </ul> <p>For more information on the permissions associated with these levels, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User Permissions</a> </p>
+-- @param AllowSudo [Boolean] <p>Whether the user can use <b>sudo</b>.</p>
+-- @param AllowSsh [Boolean] <p>Whether the user can use SSH.</p>
 function M.Permission(StackId, IamUserArn, Level, AllowSudo, AllowSsh, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Permission")
 	local t = { 
@@ -1633,8 +1633,8 @@ end
 
 --- Create a structure of type AssociateElasticIpRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param ElasticIp [String] &lt;p&gt;The Elastic IP address.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param ElasticIp [String] <p>The Elastic IP address.</p>
 -- Required parameter: ElasticIp
 function M.AssociateElasticIpRequest(InstanceId, ElasticIp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateElasticIpRequest")
@@ -1662,8 +1662,8 @@ end
 
 --- Create a structure of type DetachElasticLoadBalancerRequest
 --  
--- @param ElasticLoadBalancerName [String] &lt;p&gt;The Elastic Load Balancing instance's name.&lt;/p&gt;
--- @param LayerId [String] &lt;p&gt;The ID of the layer that the Elastic Load Balancing instance is attached to.&lt;/p&gt;
+-- @param ElasticLoadBalancerName [String] <p>The Elastic Load Balancing instance's name.</p>
+-- @param LayerId [String] <p>The ID of the layer that the Elastic Load Balancing instance is attached to.</p>
 -- Required parameter: ElasticLoadBalancerName
 -- Required parameter: LayerId
 function M.DetachElasticLoadBalancerRequest(ElasticLoadBalancerName, LayerId, ...)
@@ -1688,8 +1688,8 @@ function M.AssertCreateUserProfileResult(struct)
 end
 
 --- Create a structure of type CreateUserProfileResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;CreateUserProfile&lt;/code&gt; request.&lt;/p&gt;
--- @param IamUserArn [String] &lt;p&gt;The user's IAM ARN.&lt;/p&gt;
+-- <p>Contains the response to a <code>CreateUserProfile</code> request.</p>
+-- @param IamUserArn [String] <p>The user's IAM ARN.</p>
 function M.CreateUserProfileResult(IamUserArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserProfileResult")
 	local t = { 
@@ -1714,11 +1714,11 @@ function M.AssertSelfUserProfile(struct)
 end
 
 --- Create a structure of type SelfUserProfile
--- &lt;p&gt;Describes a user's SSH information.&lt;/p&gt;
--- @param IamUserArn [String] &lt;p&gt;The user's IAM ARN.&lt;/p&gt;
--- @param SshPublicKey [String] &lt;p&gt;The user's SSH public key.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The user's name.&lt;/p&gt;
--- @param SshUsername [String] &lt;p&gt;The user's SSH user name.&lt;/p&gt;
+-- <p>Describes a user's SSH information.</p>
+-- @param IamUserArn [String] <p>The user's IAM ARN.</p>
+-- @param SshPublicKey [String] <p>The user's SSH public key.</p>
+-- @param Name [String] <p>The user's name.</p>
+-- @param SshUsername [String] <p>The user's SSH user name.</p>
 function M.SelfUserProfile(IamUserArn, SshPublicKey, Name, SshUsername, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SelfUserProfile")
 	local t = { 
@@ -1762,24 +1762,24 @@ end
 
 --- Create a structure of type UpdateStackRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param ServiceRoleArn [String] &lt;p&gt;Do not use this parameter. You cannot update a stack's service role.&lt;/p&gt;
--- @param DefaultRootDeviceType [RootDeviceType] &lt;p&gt;The default root device type. This value is used by default for all instances in the stack, but you can override it when you create an instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device&quot;&gt;Storage for the Root Device&lt;/a&gt;.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The stack's new name.&lt;/p&gt;
--- @param HostnameTheme [String] &lt;p&gt;The stack's new host name theme, with spaces replaced by underscores. The theme is used to generate host names for the stack's instances. By default, &lt;code&gt;HostnameTheme&lt;/code&gt; is set to &lt;code&gt;Layer_Dependent&lt;/code&gt;, which creates host names by appending integers to the layer's short name. The other themes are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Baked_Goods&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Clouds&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Europe_Cities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Fruits&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Greek_Deities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Legendary_creatures_from_Japan&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Planets_and_Moons&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Roman_Deities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Scottish_Islands&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;US_Cities&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Wild_Cats&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;To obtain a generated host name, call &lt;code&gt;GetHostNameSuggestion&lt;/code&gt;, which returns a host name based on the current theme.&lt;/p&gt;
--- @param UseCustomCookbooks [Boolean] &lt;p&gt;Whether the stack uses custom cookbooks.&lt;/p&gt;
--- @param CustomJson [String] &lt;p&gt;A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration JSON values or to pass data to recipes. The string should be in the following format:&lt;/p&gt; &lt;p&gt; &lt;code&gt;&quot;{\&quot;key1\&quot;: \&quot;value1\&quot;, \&quot;key2\&quot;: \&quot;value2\&quot;,...}&quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information on custom JSON, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html&quot;&gt;Use Custom JSON to Modify the Stack Configuration Attributes&lt;/a&gt;.&lt;/p&gt;
--- @param DefaultAvailabilityZone [String] &lt;p&gt;The stack's default Availability Zone, which must be in the stack's region. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;. If you also specify a value for &lt;code&gt;DefaultSubnetId&lt;/code&gt;, the subnet must be in the same zone. For more information, see &lt;a&gt;CreateStack&lt;/a&gt;. &lt;/p&gt;
--- @param UseOpsworksSecurityGroups [Boolean] &lt;p&gt;Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.&lt;/p&gt; &lt;p&gt;AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. &lt;code&gt;UseOpsworksSecurityGroups&lt;/code&gt; allows you to provide your own custom security groups instead of using the built-in groups. &lt;code&gt;UseOpsworksSecurityGroups&lt;/code&gt; has the following settings: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot delete the built-in security group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on. Custom security groups are required only for those layers that need custom settings.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html&quot;&gt;Create a New Stack&lt;/a&gt;.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param ServiceRoleArn [String] <p>Do not use this parameter. You cannot update a stack's service role.</p>
+-- @param DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is used by default for all instances in the stack, but you can override it when you create an instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- @param Name [String] <p>The stack's new name.</p>
+-- @param HostnameTheme [String] <p>The stack's new host name theme, with spaces replaced by underscores. The theme is used to generate host names for the stack's instances. By default, <code>HostnameTheme</code> is set to <code>Layer_Dependent</code>, which creates host names by appending integers to the layer's short name. The other themes are:</p> <ul> <li> <p> <code>Baked_Goods</code> </p> </li> <li> <p> <code>Clouds</code> </p> </li> <li> <p> <code>Europe_Cities</code> </p> </li> <li> <p> <code>Fruits</code> </p> </li> <li> <p> <code>Greek_Deities</code> </p> </li> <li> <p> <code>Legendary_creatures_from_Japan</code> </p> </li> <li> <p> <code>Planets_and_Moons</code> </p> </li> <li> <p> <code>Roman_Deities</code> </p> </li> <li> <p> <code>Scottish_Islands</code> </p> </li> <li> <p> <code>US_Cities</code> </p> </li> <li> <p> <code>Wild_Cats</code> </p> </li> </ul> <p>To obtain a generated host name, call <code>GetHostNameSuggestion</code>, which returns a host name based on the current theme.</p>
+-- @param UseCustomCookbooks [Boolean] <p>Whether the stack uses custom cookbooks.</p>
+-- @param CustomJson [String] <p>A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration JSON values or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
+-- @param DefaultAvailabilityZone [String] <p>The stack's default Availability Zone, which must be in the stack's region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see <a>CreateStack</a>. </p>
+-- @param UseOpsworksSecurityGroups [Boolean] <p>Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p> <p>AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. <code>UseOpsworksSecurityGroups</code> allows you to provide your own custom security groups instead of using the built-in groups. <code>UseOpsworksSecurityGroups</code> has the following settings: </p> <ul> <li> <p>True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot delete the built-in security group.</p> </li> <li> <p>False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on. Custom security groups are required only for those layers that need custom settings.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
 -- @param CustomCookbooksSource [Source]  
--- @param ConfigurationManager [StackConfigurationManager] &lt;p&gt;The configuration manager. When you update a stack, we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.&lt;/p&gt;
--- @param ChefConfiguration [ChefConfiguration] &lt;p&gt;A &lt;code&gt;ChefConfiguration&lt;/code&gt; object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html&quot;&gt;Create a New Stack&lt;/a&gt;.&lt;/p&gt;
--- @param DefaultSubnetId [String] &lt;p&gt;The stack's default VPC subnet ID. This parameter is required if you specify a value for the &lt;code&gt;VpcId&lt;/code&gt; parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for &lt;code&gt;DefaultAvailabilityZone&lt;/code&gt;, the subnet must be in that zone. For information on default values and when this parameter is required, see the &lt;code&gt;VpcId&lt;/code&gt; parameter description. &lt;/p&gt;
--- @param DefaultSshKeyName [String] &lt;p&gt;A default Amazon EC2 key-pair name. The default value is &lt;code&gt;none&lt;/code&gt;. If you specify a key-pair name, AWS OpsWorks Stacks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html&quot;&gt; Using SSH to Communicate with an Instance&lt;/a&gt; and &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html&quot;&gt; Managing SSH Access&lt;/a&gt;. You can override this setting by specifying a different key pair, or no key pair, when you &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html&quot;&gt; create an instance&lt;/a&gt;. &lt;/p&gt;
--- @param DefaultInstanceProfileArn [String] &lt;p&gt;The ARN of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
--- @param Attributes [StackAttributes] &lt;p&gt;One or more user-defined key-value pairs to be added to the stack attributes.&lt;/p&gt;
--- @param DefaultOs [String] &lt;p&gt;The stack's operating system, which must be set to one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A supported Linux operating system: An Amazon Linux version, such as &lt;code&gt;Amazon Linux 2017.03&lt;/code&gt;, &lt;code&gt;Amazon Linux 2016.09&lt;/code&gt;, &lt;code&gt;Amazon Linux 2016.03&lt;/code&gt;, &lt;code&gt;Amazon Linux 2015.09&lt;/code&gt;, or &lt;code&gt;Amazon Linux 2015.03&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A supported Ubuntu operating system, such as &lt;code&gt;Ubuntu 16.04 LTS&lt;/code&gt;, &lt;code&gt;Ubuntu 14.04 LTS&lt;/code&gt;, or &lt;code&gt;Ubuntu 12.04 LTS&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CentOS Linux 7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Red Hat Enterprise Linux 7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A supported Windows operating system, such as &lt;code&gt;Microsoft Windows Server 2012 R2 Base&lt;/code&gt;, &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Express&lt;/code&gt;, &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Standard&lt;/code&gt;, or &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Web&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A custom AMI: &lt;code&gt;Custom&lt;/code&gt;. You specify the custom AMI you want to use when you create instances. For more information on how to use custom AMIs with OpsWorks, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html&quot;&gt;Using Custom AMIs&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The default option is the stack's current operating system. For more information on the supported operating systems, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html&quot;&gt;AWS OpsWorks Stacks Operating Systems&lt;/a&gt;.&lt;/p&gt;
--- @param AgentVersion [String] &lt;p&gt;The default AWS OpsWorks Stacks agent version. You have the following options:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Auto-update - Set this parameter to &lt;code&gt;LATEST&lt;/code&gt;. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The default setting is &lt;code&gt;LATEST&lt;/code&gt;. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call &lt;a&gt;DescribeAgentVersions&lt;/a&gt;. AgentVersion cannot be set to Chef 12.2.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.&lt;/p&gt; &lt;/note&gt;
+-- @param ConfigurationManager [StackConfigurationManager] <p>The configuration manager. When you update a stack, we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.</p>
+-- @param ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- @param DefaultSubnetId [String] <p>The stack's default VPC subnet ID. This parameter is required if you specify a value for the <code>VpcId</code> parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for <code>DefaultAvailabilityZone</code>, the subnet must be in that zone. For information on default values and when this parameter is required, see the <code>VpcId</code> parameter description. </p>
+-- @param DefaultSshKeyName [String] <p>A default Amazon EC2 key-pair name. The default value is <code>none</code>. If you specify a key-pair name, AWS OpsWorks Stacks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>. </p>
+-- @param DefaultInstanceProfileArn [String] <p>The ARN of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @param Attributes [StackAttributes] <p>One or more user-defined key-value pairs to be added to the stack attributes.</p>
+-- @param DefaultOs [String] <p>The stack's operating system, which must be set to one of the following:</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more information on how to use custom AMIs with OpsWorks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> </li> </ul> <p>The default option is the stack's current operating system. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p>
+-- @param AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p>Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.</p> </li> <li> <p>Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.</p> </li> </ul> <p>The default setting is <code>LATEST</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p> <note> <p>You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.</p> </note>
 -- Required parameter: StackId
 function M.UpdateStackRequest(StackId, ServiceRoleArn, DefaultRootDeviceType, Name, HostnameTheme, UseCustomCookbooks, CustomJson, DefaultAvailabilityZone, UseOpsworksSecurityGroups, CustomCookbooksSource, ConfigurationManager, ChefConfiguration, DefaultSubnetId, DefaultSshKeyName, DefaultInstanceProfileArn, Attributes, DefaultOs, AgentVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStackRequest")
@@ -1820,9 +1820,9 @@ function M.AssertAgentVersion(struct)
 end
 
 --- Create a structure of type AgentVersion
--- &lt;p&gt;Describes an agent version.&lt;/p&gt;
--- @param Version [String] &lt;p&gt;The agent version.&lt;/p&gt;
--- @param ConfigurationManager [StackConfigurationManager] &lt;p&gt;The configuration manager.&lt;/p&gt;
+-- <p>Describes an agent version.</p>
+-- @param Version [String] <p>The agent version.</p>
+-- @param ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
 function M.AgentVersion(Version, ConfigurationManager, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentVersion")
 	local t = { 
@@ -1845,8 +1845,8 @@ function M.AssertCloneStackResult(struct)
 end
 
 --- Create a structure of type CloneStackResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;CloneStack&lt;/code&gt; request.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The cloned stack ID.&lt;/p&gt;
+-- <p>Contains the response to a <code>CloneStack</code> request.</p>
+-- @param StackId [String] <p>The cloned stack ID.</p>
 function M.CloneStackResult(StackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloneStackResult")
 	local t = { 
@@ -1870,7 +1870,7 @@ end
 
 --- Create a structure of type StopStackRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
 -- Required parameter: StackId
 function M.StopStackRequest(StackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopStackRequest")
@@ -1895,7 +1895,7 @@ end
 
 --- Create a structure of type GetHostnameSuggestionRequest
 --  
--- @param LayerId [String] &lt;p&gt;The layer ID.&lt;/p&gt;
+-- @param LayerId [String] <p>The layer ID.</p>
 -- Required parameter: LayerId
 function M.GetHostnameSuggestionRequest(LayerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetHostnameSuggestionRequest")
@@ -1920,7 +1920,7 @@ end
 
 --- Create a structure of type DescribeStackProvisioningParametersRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID</p>
 -- Required parameter: StackId
 function M.DescribeStackProvisioningParametersRequest(StackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackProvisioningParametersRequest")
@@ -1948,10 +1948,10 @@ end
 
 --- Create a structure of type UpdateUserProfileRequest
 --  
--- @param IamUserArn [String] &lt;p&gt;The user IAM ARN. This can also be a federated user's ARN.&lt;/p&gt;
--- @param SshPublicKey [String] &lt;p&gt;The user's new SSH public key.&lt;/p&gt;
--- @param AllowSelfManagement [Boolean] &lt;p&gt;Whether users can specify their own SSH public key through the My Settings page. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html&quot;&gt;Managing User Permissions&lt;/a&gt;.&lt;/p&gt;
--- @param SshUsername [String] &lt;p&gt;The user's SSH user name. The allowable characters are [a-z], [A-Z], [0-9], '-', and '_'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, &lt;code&gt;my.name&lt;/code&gt; will be changed to &lt;code&gt;myname&lt;/code&gt;. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name. &lt;/p&gt;
+-- @param IamUserArn [String] <p>The user IAM ARN. This can also be a federated user's ARN.</p>
+-- @param SshPublicKey [String] <p>The user's new SSH public key.</p>
+-- @param AllowSelfManagement [Boolean] <p>Whether users can specify their own SSH public key through the My Settings page. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Managing User Permissions</a>.</p>
+-- @param SshUsername [String] <p>The user's SSH user name. The allowable characters are [a-z], [A-Z], [0-9], '-', and '_'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, <code>my.name</code> will be changed to <code>myname</code>. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name. </p>
 -- Required parameter: IamUserArn
 function M.UpdateUserProfileRequest(IamUserArn, SshPublicKey, AllowSelfManagement, SshUsername, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserProfileRequest")
@@ -1985,10 +1985,10 @@ end
 
 --- Create a structure of type RegisterRdsDbInstanceRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param DbUser [String] &lt;p&gt;The database's master user name.&lt;/p&gt;
--- @param RdsDbInstanceArn [String] &lt;p&gt;The Amazon RDS instance's ARN.&lt;/p&gt;
--- @param DbPassword [String] &lt;p&gt;The database password.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param DbUser [String] <p>The database's master user name.</p>
+-- @param RdsDbInstanceArn [String] <p>The Amazon RDS instance's ARN.</p>
+-- @param DbPassword [String] <p>The database password.</p>
 -- Required parameter: StackId
 -- Required parameter: RdsDbInstanceArn
 -- Required parameter: DbUser
@@ -2019,8 +2019,8 @@ end
 
 --- Create a structure of type DescribeLayersRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param LayerIds [Strings] &lt;p&gt;An array of layer IDs that specify the layers to be described. If you omit this parameter, &lt;code&gt;DescribeLayers&lt;/code&gt; returns a description of every layer in the specified stack.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param LayerIds [Strings] <p>An array of layer IDs that specify the layers to be described. If you omit this parameter, <code>DescribeLayers</code> returns a description of every layer in the specified stack.</p>
 function M.DescribeLayersRequest(StackId, LayerIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLayersRequest")
 	local t = { 
@@ -2052,17 +2052,17 @@ function M.AssertCommand(struct)
 end
 
 --- Create a structure of type Command
--- &lt;p&gt;Describes a command.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The command status:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;failed&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;successful&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;skipped&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;pending&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param CompletedAt [DateTime] &lt;p&gt;Date when the command completed.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The ID of the instance where the command was executed.&lt;/p&gt;
--- @param DeploymentId [String] &lt;p&gt;The command deployment ID.&lt;/p&gt;
--- @param AcknowledgedAt [DateTime] &lt;p&gt;Date and time when the command was acknowledged.&lt;/p&gt;
--- @param LogUrl [String] &lt;p&gt;The URL of the command log.&lt;/p&gt;
--- @param Type [String] &lt;p&gt;The command type:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;configure&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;deploy&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;execute_recipes&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;install_dependencies&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;restart&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;rollback&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;setup&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;start&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;stop&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;undeploy&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;update_custom_cookbooks&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;update_dependencies&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param CommandId [String] &lt;p&gt;The command ID.&lt;/p&gt;
--- @param CreatedAt [DateTime] &lt;p&gt;Date and time when the command was run.&lt;/p&gt;
--- @param ExitCode [Integer] &lt;p&gt;The command exit code.&lt;/p&gt;
+-- <p>Describes a command.</p>
+-- @param Status [String] <p>The command status:</p> <ul> <li> <p>failed</p> </li> <li> <p>successful</p> </li> <li> <p>skipped</p> </li> <li> <p>pending</p> </li> </ul>
+-- @param CompletedAt [DateTime] <p>Date when the command completed.</p>
+-- @param InstanceId [String] <p>The ID of the instance where the command was executed.</p>
+-- @param DeploymentId [String] <p>The command deployment ID.</p>
+-- @param AcknowledgedAt [DateTime] <p>Date and time when the command was acknowledged.</p>
+-- @param LogUrl [String] <p>The URL of the command log.</p>
+-- @param Type [String] <p>The command type:</p> <ul> <li> <p> <code>configure</code> </p> </li> <li> <p> <code>deploy</code> </p> </li> <li> <p> <code>execute_recipes</code> </p> </li> <li> <p> <code>install_dependencies</code> </p> </li> <li> <p> <code>restart</code> </p> </li> <li> <p> <code>rollback</code> </p> </li> <li> <p> <code>setup</code> </p> </li> <li> <p> <code>start</code> </p> </li> <li> <p> <code>stop</code> </p> </li> <li> <p> <code>undeploy</code> </p> </li> <li> <p> <code>update_custom_cookbooks</code> </p> </li> <li> <p> <code>update_dependencies</code> </p> </li> </ul>
+-- @param CommandId [String] <p>The command ID.</p>
+-- @param CreatedAt [DateTime] <p>Date and time when the command was run.</p>
+-- @param ExitCode [Integer] <p>The command exit code.</p>
 function M.Command(Status, CompletedAt, InstanceId, DeploymentId, AcknowledgedAt, LogUrl, Type, CommandId, CreatedAt, ExitCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Command")
 	local t = { 
@@ -2095,7 +2095,7 @@ end
 
 --- Create a structure of type DeleteStackRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
 -- Required parameter: StackId
 function M.DeleteStackRequest(StackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStackRequest")
@@ -2121,8 +2121,8 @@ end
 
 --- Create a structure of type DescribeRdsDbInstancesRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID that the instances are registered with. The operation returns descriptions of all registered Amazon RDS instances.&lt;/p&gt;
--- @param RdsDbInstanceArns [Strings] &lt;p&gt;An array containing the ARNs of the instances to be described.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID that the instances are registered with. The operation returns descriptions of all registered Amazon RDS instances.</p>
+-- @param RdsDbInstanceArns [Strings] <p>An array containing the ARNs of the instances to be described.</p>
 -- Required parameter: StackId
 function M.DescribeRdsDbInstancesRequest(StackId, RdsDbInstanceArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRdsDbInstancesRequest")
@@ -2146,8 +2146,8 @@ function M.AssertCreateStackResult(struct)
 end
 
 --- Create a structure of type CreateStackResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;CreateStack&lt;/code&gt; request.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The stack ID, which is an opaque string that you use to identify the stack when performing actions such as &lt;code&gt;DescribeStacks&lt;/code&gt;.&lt;/p&gt;
+-- <p>Contains the response to a <code>CreateStack</code> request.</p>
+-- @param StackId [String] <p>The stack ID, which is an opaque string that you use to identify the stack when performing actions such as <code>DescribeStacks</code>.</p>
 function M.CreateStackResult(StackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackResult")
 	local t = { 
@@ -2184,18 +2184,18 @@ end
 
 --- Create a structure of type CreateAppRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param Environment [EnvironmentVariables] &lt;p&gt;An array of &lt;code&gt;EnvironmentVariable&lt;/code&gt; objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment&quot;&gt; Environment Variables&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, &quot;Environment: is too large (maximum is 10KB).&quot;&lt;/p&gt; &lt;note&gt; &lt;p&gt;This parameter is supported only by Chef 11.10 stacks. If you have specified one or more environment variables, you cannot modify the stack's Chef version.&lt;/p&gt; &lt;/note&gt;
--- @param AppSource [Source] &lt;p&gt;A &lt;code&gt;Source&lt;/code&gt; object that specifies the app repository.&lt;/p&gt;
--- @param DataSources [DataSources] &lt;p&gt;The app's data source.&lt;/p&gt;
--- @param EnableSsl [Boolean] &lt;p&gt;Whether to enable SSL for the app.&lt;/p&gt;
--- @param SslConfiguration [SslConfiguration] &lt;p&gt;An &lt;code&gt;SslConfiguration&lt;/code&gt; object with the SSL configuration.&lt;/p&gt;
--- @param Attributes [AppAttributes] &lt;p&gt;One or more user-defined key/value pairs to be added to the stack attributes.&lt;/p&gt;
--- @param Domains [Strings] &lt;p&gt;The app virtual host settings, with multiple domains separated by commas. For example: &lt;code&gt;'www.example.com, example.com'&lt;/code&gt; &lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description of the app.&lt;/p&gt;
--- @param Shortname [String] &lt;p&gt;The app's short name.&lt;/p&gt;
--- @param Type [AppType] &lt;p&gt;The app type. Each supported type is associated with a particular layer. For example, PHP applications are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy recipes, specify &lt;code&gt;other&lt;/code&gt;.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The app name.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param Environment [EnvironmentVariables] <p>An array of <code>EnvironmentVariable</code> objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment"> Environment Variables</a>.</p> <p>There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, "Environment: is too large (maximum is 10KB)."</p> <note> <p>This parameter is supported only by Chef 11.10 stacks. If you have specified one or more environment variables, you cannot modify the stack's Chef version.</p> </note>
+-- @param AppSource [Source] <p>A <code>Source</code> object that specifies the app repository.</p>
+-- @param DataSources [DataSources] <p>The app's data source.</p>
+-- @param EnableSsl [Boolean] <p>Whether to enable SSL for the app.</p>
+-- @param SslConfiguration [SslConfiguration] <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
+-- @param Attributes [AppAttributes] <p>One or more user-defined key/value pairs to be added to the stack attributes.</p>
+-- @param Domains [Strings] <p>The app virtual host settings, with multiple domains separated by commas. For example: <code>'www.example.com, example.com'</code> </p>
+-- @param Description [String] <p>A description of the app.</p>
+-- @param Shortname [String] <p>The app's short name.</p>
+-- @param Type [AppType] <p>The app type. Each supported type is associated with a particular layer. For example, PHP applications are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy recipes, specify <code>other</code>.</p>
+-- @param Name [String] <p>The app name.</p>
 -- Required parameter: StackId
 -- Required parameter: Name
 -- Required parameter: Type
@@ -2244,21 +2244,21 @@ function M.AssertApp(struct)
 end
 
 --- Create a structure of type App
--- &lt;p&gt;A description of the app.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The app stack ID.&lt;/p&gt;
--- @param Environment [EnvironmentVariables] &lt;p&gt;An array of &lt;code&gt;EnvironmentVariable&lt;/code&gt; objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment&quot;&gt; Environment Variables&lt;/a&gt;. &lt;/p&gt; &lt;note&gt; &lt;p&gt;There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variable names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases, but if you do exceed it, you will cause an exception (API) with an &quot;Environment: is too large (maximum is 10KB)&quot; message.&lt;/p&gt; &lt;/note&gt;
--- @param AppSource [Source] &lt;p&gt;A &lt;code&gt;Source&lt;/code&gt; object that describes the app repository.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description of the app.&lt;/p&gt;
--- @param EnableSsl [Boolean] &lt;p&gt;Whether to enable SSL for the app.&lt;/p&gt;
--- @param SslConfiguration [SslConfiguration] &lt;p&gt;An &lt;code&gt;SslConfiguration&lt;/code&gt; object with the SSL configuration.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The app name.&lt;/p&gt;
--- @param AppId [String] &lt;p&gt;The app ID.&lt;/p&gt;
--- @param Domains [Strings] &lt;p&gt;The app vhost settings with multiple domains separated by commas. For example: &lt;code&gt;'www.example.com, example.com'&lt;/code&gt; &lt;/p&gt;
--- @param Attributes [AppAttributes] &lt;p&gt;The stack attributes.&lt;/p&gt;
--- @param Shortname [String] &lt;p&gt;The app's short name.&lt;/p&gt;
--- @param Type [AppType] &lt;p&gt;The app type.&lt;/p&gt;
--- @param CreatedAt [String] &lt;p&gt;When the app was created.&lt;/p&gt;
--- @param DataSources [DataSources] &lt;p&gt;The app's data sources.&lt;/p&gt;
+-- <p>A description of the app.</p>
+-- @param StackId [String] <p>The app stack ID.</p>
+-- @param Environment [EnvironmentVariables] <p>An array of <code>EnvironmentVariable</code> objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment"> Environment Variables</a>. </p> <note> <p>There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variable names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases, but if you do exceed it, you will cause an exception (API) with an "Environment: is too large (maximum is 10KB)" message.</p> </note>
+-- @param AppSource [Source] <p>A <code>Source</code> object that describes the app repository.</p>
+-- @param Description [String] <p>A description of the app.</p>
+-- @param EnableSsl [Boolean] <p>Whether to enable SSL for the app.</p>
+-- @param SslConfiguration [SslConfiguration] <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
+-- @param Name [String] <p>The app name.</p>
+-- @param AppId [String] <p>The app ID.</p>
+-- @param Domains [Strings] <p>The app vhost settings with multiple domains separated by commas. For example: <code>'www.example.com, example.com'</code> </p>
+-- @param Attributes [AppAttributes] <p>The stack attributes.</p>
+-- @param Shortname [String] <p>The app's short name.</p>
+-- @param Type [AppType] <p>The app type.</p>
+-- @param CreatedAt [String] <p>When the app was created.</p>
+-- @param DataSources [DataSources] <p>The app's data sources.</p>
 function M.App(StackId, Environment, AppSource, Description, EnableSsl, SslConfiguration, Name, AppId, Domains, Attributes, Shortname, Type, CreatedAt, DataSources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating App")
 	local t = { 
@@ -2301,16 +2301,16 @@ function M.AssertRdsDbInstance(struct)
 end
 
 --- Create a structure of type RdsDbInstance
--- &lt;p&gt;Describes an Amazon RDS instance.&lt;/p&gt;
--- @param Engine [String] &lt;p&gt;The instance's database engine.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The ID of the stack with which the instance is registered.&lt;/p&gt;
--- @param MissingOnRds [Boolean] &lt;p&gt;Set to &lt;code&gt;true&lt;/code&gt; if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS OpsWorks Stacks attempts to discover the instance only once. If this value is set to &lt;code&gt;true&lt;/code&gt;, you must deregister the instance, and then register it again.&lt;/p&gt;
--- @param Region [String] &lt;p&gt;The instance's AWS region.&lt;/p&gt;
--- @param RdsDbInstanceArn [String] &lt;p&gt;The instance's ARN.&lt;/p&gt;
--- @param DbPassword [String] &lt;p&gt;AWS OpsWorks Stacks returns &lt;code&gt;*****FILTERED*****&lt;/code&gt; instead of the actual value.&lt;/p&gt;
--- @param Address [String] &lt;p&gt;The instance's address.&lt;/p&gt;
--- @param DbUser [String] &lt;p&gt;The master user name.&lt;/p&gt;
--- @param DbInstanceIdentifier [String] &lt;p&gt;The DB instance identifier.&lt;/p&gt;
+-- <p>Describes an Amazon RDS instance.</p>
+-- @param Engine [String] <p>The instance's database engine.</p>
+-- @param StackId [String] <p>The ID of the stack with which the instance is registered.</p>
+-- @param MissingOnRds [Boolean] <p>Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS OpsWorks Stacks attempts to discover the instance only once. If this value is set to <code>true</code>, you must deregister the instance, and then register it again.</p>
+-- @param Region [String] <p>The instance's AWS region.</p>
+-- @param RdsDbInstanceArn [String] <p>The instance's ARN.</p>
+-- @param DbPassword [String] <p>AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.</p>
+-- @param Address [String] <p>The instance's address.</p>
+-- @param DbUser [String] <p>The master user name.</p>
+-- @param DbInstanceIdentifier [String] <p>The DB instance identifier.</p>
 function M.RdsDbInstance(Engine, StackId, MissingOnRds, Region, RdsDbInstanceArn, DbPassword, Address, DbUser, DbInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RdsDbInstance")
 	local t = { 
@@ -2342,10 +2342,10 @@ function M.AssertDataSource(struct)
 end
 
 --- Create a structure of type DataSource
--- &lt;p&gt;Describes an app's data source.&lt;/p&gt;
--- @param Type [String] &lt;p&gt;The data source's type, &lt;code&gt;AutoSelectOpsworksMysqlInstance&lt;/code&gt;, &lt;code&gt;OpsworksMysqlInstance&lt;/code&gt;, or &lt;code&gt;RdsDbInstance&lt;/code&gt;.&lt;/p&gt;
--- @param DatabaseName [String] &lt;p&gt;The database name.&lt;/p&gt;
--- @param Arn [String] &lt;p&gt;The data source's ARN.&lt;/p&gt;
+-- <p>Describes an app's data source.</p>
+-- @param Type [String] <p>The data source's type, <code>AutoSelectOpsworksMysqlInstance</code>, <code>OpsworksMysqlInstance</code>, or <code>RdsDbInstance</code>.</p>
+-- @param DatabaseName [String] <p>The database name.</p>
+-- @param Arn [String] <p>The data source's ARN.</p>
 function M.DataSource(Type, DatabaseName, Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DataSource")
 	local t = { 
@@ -2373,8 +2373,8 @@ end
 
 --- Create a structure of type UntagResourceRequest
 --  
--- @param ResourceArn [ResourceArn] &lt;p&gt;The stack or layer's Amazon Resource Number (ARN).&lt;/p&gt;
--- @param TagKeys [TagKeys] &lt;p&gt;A list of the keys of tags to be removed from a stack or layer.&lt;/p&gt;
+-- @param ResourceArn [ResourceArn] <p>The stack or layer's Amazon Resource Number (ARN).</p>
+-- @param TagKeys [TagKeys] <p>A list of the keys of tags to be removed from a stack or layer.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: TagKeys
 function M.UntagResourceRequest(ResourceArn, TagKeys, ...)
@@ -2399,8 +2399,8 @@ function M.AssertRegisterEcsClusterResult(struct)
 end
 
 --- Create a structure of type RegisterEcsClusterResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;RegisterEcsCluster&lt;/code&gt; request.&lt;/p&gt;
--- @param EcsClusterArn [String] &lt;p&gt;The cluster's ARN.&lt;/p&gt;
+-- <p>Contains the response to a <code>RegisterEcsCluster</code> request.</p>
+-- @param EcsClusterArn [String] <p>The cluster's ARN.</p>
 function M.RegisterEcsClusterResult(EcsClusterArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterEcsClusterResult")
 	local t = { 
@@ -2426,10 +2426,10 @@ end
 
 --- Create a structure of type DescribeEcsClustersRequest
 --  
--- @param StackId [String] &lt;p&gt;A stack ID. &lt;code&gt;DescribeEcsClusters&lt;/code&gt; returns a description of the cluster that is registered with the stack.&lt;/p&gt;
--- @param EcsClusterArns [Strings] &lt;p&gt;A list of ARNs, one for each cluster to be described.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;If the previous paginated request did not return all of the remaining results, the response object's&lt;code&gt;NextToken&lt;/code&gt; parameter value is set to a token. To retrieve the next set of results, call &lt;code&gt;DescribeEcsClusters&lt;/code&gt; again and assign that token to the request object's &lt;code&gt;NextToken&lt;/code&gt; parameter. If there are no remaining results, the previous response object's &lt;code&gt;NextToken&lt;/code&gt; parameter is set to &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param MaxResults [Integer] &lt;p&gt;To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a &lt;code&gt;NextToken&lt;/code&gt; value that you can assign to the &lt;code&gt;NextToken&lt;/code&gt; request parameter to get the next set of results.&lt;/p&gt;
+-- @param StackId [String] <p>A stack ID. <code>DescribeEcsClusters</code> returns a description of the cluster that is registered with the stack.</p>
+-- @param EcsClusterArns [Strings] <p>A list of ARNs, one for each cluster to be described.</p>
+-- @param NextToken [String] <p>If the previous paginated request did not return all of the remaining results, the response object's<code>NextToken</code> parameter value is set to a token. To retrieve the next set of results, call <code>DescribeEcsClusters</code> again and assign that token to the request object's <code>NextToken</code> parameter. If there are no remaining results, the previous response object's <code>NextToken</code> parameter is set to <code>null</code>.</p>
+-- @param MaxResults [Integer] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results.</p>
 function M.DescribeEcsClustersRequest(StackId, EcsClusterArns, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEcsClustersRequest")
 	local t = { 
@@ -2454,8 +2454,8 @@ function M.AssertDescribeAgentVersionsResult(struct)
 end
 
 --- Create a structure of type DescribeAgentVersionsResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeAgentVersions&lt;/code&gt; request.&lt;/p&gt;
--- @param AgentVersions [AgentVersions] &lt;p&gt;The agent versions for the specified stack or configuration manager. Note that this value is the complete version number, not the abbreviated number used by the console.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeAgentVersions</code> request.</p>
+-- @param AgentVersions [AgentVersions] <p>The agent versions for the specified stack or configuration manager. Note that this value is the complete version number, not the abbreviated number used by the console.</p>
 function M.DescribeAgentVersionsResult(AgentVersions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAgentVersionsResult")
 	local t = { 
@@ -2482,10 +2482,10 @@ end
 
 --- Create a structure of type SetLoadBasedAutoScalingRequest
 --  
--- @param DownScaling [AutoScalingThresholds] &lt;p&gt;An &lt;code&gt;AutoScalingThresholds&lt;/code&gt; object with the downscaling threshold configuration. If the load falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.&lt;/p&gt;
--- @param Enable [Boolean] &lt;p&gt;Enables load-based auto scaling for the layer.&lt;/p&gt;
--- @param UpScaling [AutoScalingThresholds] &lt;p&gt;An &lt;code&gt;AutoScalingThresholds&lt;/code&gt; object with the upscaling threshold configuration. If the load exceeds these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.&lt;/p&gt;
--- @param LayerId [String] &lt;p&gt;The layer ID.&lt;/p&gt;
+-- @param DownScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object with the downscaling threshold configuration. If the load falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.</p>
+-- @param Enable [Boolean] <p>Enables load-based auto scaling for the layer.</p>
+-- @param UpScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object with the upscaling threshold configuration. If the load exceeds these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.</p>
+-- @param LayerId [String] <p>The layer ID.</p>
 -- Required parameter: LayerId
 function M.SetLoadBasedAutoScalingRequest(DownScaling, Enable, UpScaling, LayerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetLoadBasedAutoScalingRequest")
@@ -2511,8 +2511,8 @@ function M.AssertDescribeLoadBasedAutoScalingResult(struct)
 end
 
 --- Create a structure of type DescribeLoadBasedAutoScalingResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeLoadBasedAutoScaling&lt;/code&gt; request.&lt;/p&gt;
--- @param LoadBasedAutoScalingConfigurations [LoadBasedAutoScalingConfigurations] &lt;p&gt;An array of &lt;code&gt;LoadBasedAutoScalingConfiguration&lt;/code&gt; objects that describe each layer's configuration.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeLoadBasedAutoScaling</code> request.</p>
+-- @param LoadBasedAutoScalingConfigurations [LoadBasedAutoScalingConfigurations] <p>An array of <code>LoadBasedAutoScalingConfiguration</code> objects that describe each layer's configuration.</p>
 function M.DescribeLoadBasedAutoScalingResult(LoadBasedAutoScalingConfigurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBasedAutoScalingResult")
 	local t = { 
@@ -2534,8 +2534,8 @@ function M.AssertDescribeTimeBasedAutoScalingResult(struct)
 end
 
 --- Create a structure of type DescribeTimeBasedAutoScalingResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeTimeBasedAutoScaling&lt;/code&gt; request.&lt;/p&gt;
--- @param TimeBasedAutoScalingConfigurations [TimeBasedAutoScalingConfigurations] &lt;p&gt;An array of &lt;code&gt;TimeBasedAutoScalingConfiguration&lt;/code&gt; objects that describe the configuration for the specified instances.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeTimeBasedAutoScaling</code> request.</p>
+-- @param TimeBasedAutoScalingConfigurations [TimeBasedAutoScalingConfigurations] <p>An array of <code>TimeBasedAutoScalingConfiguration</code> objects that describe the configuration for the specified instances.</p>
 function M.DescribeTimeBasedAutoScalingResult(TimeBasedAutoScalingConfigurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTimeBasedAutoScalingResult")
 	local t = { 
@@ -2559,8 +2559,8 @@ end
 
 --- Create a structure of type DescribePermissionsRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param IamUserArn [String] &lt;p&gt;The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param IamUserArn [String] <p>The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
 function M.DescribePermissionsRequest(StackId, IamUserArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePermissionsRequest")
 	local t = { 
@@ -2590,11 +2590,11 @@ end
 
 --- Create a structure of type SetPermissionRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param IamUserArn [String] &lt;p&gt;The user's IAM ARN. This can also be a federated user's ARN.&lt;/p&gt;
--- @param Level [String] &lt;p&gt;The user's permission level, which must be set to one of the following strings. You cannot set your own permissions level.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;deny&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;show&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;deploy&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;manage&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;iam_only&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information on the permissions associated with these levels, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html&quot;&gt;Managing User Permissions&lt;/a&gt;.&lt;/p&gt;
--- @param AllowSudo [Boolean] &lt;p&gt;The user is allowed to use &lt;b&gt;sudo&lt;/b&gt; to elevate privileges.&lt;/p&gt;
--- @param AllowSsh [Boolean] &lt;p&gt;The user is allowed to use SSH to communicate with the instance.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param IamUserArn [String] <p>The user's IAM ARN. This can also be a federated user's ARN.</p>
+-- @param Level [String] <p>The user's permission level, which must be set to one of the following strings. You cannot set your own permissions level.</p> <ul> <li> <p> <code>deny</code> </p> </li> <li> <p> <code>show</code> </p> </li> <li> <p> <code>deploy</code> </p> </li> <li> <p> <code>manage</code> </p> </li> <li> <p> <code>iam_only</code> </p> </li> </ul> <p>For more information on the permissions associated with these levels, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User Permissions</a>.</p>
+-- @param AllowSudo [Boolean] <p>The user is allowed to use <b>sudo</b> to elevate privileges.</p>
+-- @param AllowSsh [Boolean] <p>The user is allowed to use SSH to communicate with the instance.</p>
 -- Required parameter: StackId
 -- Required parameter: IamUserArn
 function M.SetPermissionRequest(StackId, IamUserArn, Level, AllowSudo, AllowSsh, ...)
@@ -2624,7 +2624,7 @@ end
 
 --- Create a structure of type DescribeTimeBasedAutoScalingRequest
 --  
--- @param InstanceIds [Strings] &lt;p&gt;An array of instance IDs.&lt;/p&gt;
+-- @param InstanceIds [Strings] <p>An array of instance IDs.</p>
 -- Required parameter: InstanceIds
 function M.DescribeTimeBasedAutoScalingRequest(InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTimeBasedAutoScalingRequest")
@@ -2650,9 +2650,9 @@ end
 
 --- Create a structure of type DescribeDeploymentsRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID. If you include this parameter, &lt;code&gt;DescribeDeployments&lt;/code&gt; returns a description of the commands associated with the specified stack.&lt;/p&gt;
--- @param DeploymentIds [Strings] &lt;p&gt;An array of deployment IDs to be described. If you include this parameter, &lt;code&gt;DescribeDeployments&lt;/code&gt; returns a description of the specified deployments. Otherwise, it returns a description of every deployment.&lt;/p&gt;
--- @param AppId [String] &lt;p&gt;The app ID. If you include this parameter, &lt;code&gt;DescribeDeployments&lt;/code&gt; returns a description of the commands associated with the specified app.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID. If you include this parameter, <code>DescribeDeployments</code> returns a description of the commands associated with the specified stack.</p>
+-- @param DeploymentIds [Strings] <p>An array of deployment IDs to be described. If you include this parameter, <code>DescribeDeployments</code> returns a description of the specified deployments. Otherwise, it returns a description of every deployment.</p>
+-- @param AppId [String] <p>The app ID. If you include this parameter, <code>DescribeDeployments</code> returns a description of the commands associated with the specified app.</p>
 function M.DescribeDeploymentsRequest(StackId, DeploymentIds, AppId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeploymentsRequest")
 	local t = { 
@@ -2676,8 +2676,8 @@ function M.AssertDescribeUserProfilesResult(struct)
 end
 
 --- Create a structure of type DescribeUserProfilesResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeUserProfiles&lt;/code&gt; request.&lt;/p&gt;
--- @param UserProfiles [UserProfiles] &lt;p&gt;A &lt;code&gt;Users&lt;/code&gt; object that describes the specified users.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeUserProfiles</code> request.</p>
+-- @param UserProfiles [UserProfiles] <p>A <code>Users</code> object that describes the specified users.</p>
 function M.DescribeUserProfilesResult(UserProfiles, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserProfilesResult")
 	local t = { 
@@ -2700,9 +2700,9 @@ function M.AssertChefConfiguration(struct)
 end
 
 --- Create a structure of type ChefConfiguration
--- &lt;p&gt;Describes the Chef configuration.&lt;/p&gt;
--- @param BerkshelfVersion [String] &lt;p&gt;The Berkshelf version.&lt;/p&gt;
--- @param ManageBerkshelf [Boolean] &lt;p&gt;Whether to enable Berkshelf.&lt;/p&gt;
+-- <p>Describes the Chef configuration.</p>
+-- @param BerkshelfVersion [String] <p>The Berkshelf version.</p>
+-- @param ManageBerkshelf [Boolean] <p>Whether to enable Berkshelf.</p>
 function M.ChefConfiguration(BerkshelfVersion, ManageBerkshelf, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ChefConfiguration")
 	local t = { 
@@ -2727,8 +2727,8 @@ end
 
 --- Create a structure of type DescribeAgentVersionsRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param ConfigurationManager [StackConfigurationManager] &lt;p&gt;The configuration manager.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
 function M.DescribeAgentVersionsRequest(StackId, ConfigurationManager, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAgentVersionsRequest")
 	local t = { 
@@ -2751,8 +2751,8 @@ function M.AssertDescribeStacksResult(struct)
 end
 
 --- Create a structure of type DescribeStacksResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeStacks&lt;/code&gt; request.&lt;/p&gt;
--- @param Stacks [Stacks] &lt;p&gt;An array of &lt;code&gt;Stack&lt;/code&gt; objects that describe the stacks.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeStacks</code> request.</p>
+-- @param Stacks [Stacks] <p>An array of <code>Stack</code> objects that describe the stacks.</p>
 function M.DescribeStacksResult(Stacks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksResult")
 	local t = { 
@@ -2774,8 +2774,8 @@ function M.AssertDescribeRdsDbInstancesResult(struct)
 end
 
 --- Create a structure of type DescribeRdsDbInstancesResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeRdsDbInstances&lt;/code&gt; request.&lt;/p&gt;
--- @param RdsDbInstances [RdsDbInstances] &lt;p&gt;An a array of &lt;code&gt;RdsDbInstance&lt;/code&gt; objects that describe the instances.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeRdsDbInstances</code> request.</p>
+-- @param RdsDbInstances [RdsDbInstances] <p>An a array of <code>RdsDbInstance</code> objects that describe the instances.</p>
 function M.DescribeRdsDbInstancesResult(RdsDbInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRdsDbInstancesResult")
 	local t = { 
@@ -2799,9 +2799,9 @@ function M.AssertDeploymentCommand(struct)
 end
 
 --- Create a structure of type DeploymentCommand
--- &lt;p&gt;Used to specify a stack or deployment command.&lt;/p&gt;
--- @param Args [DeploymentCommandArgs] &lt;p&gt;The arguments of those commands that take arguments. It should be set to a JSON object with the following format:&lt;/p&gt; &lt;p&gt; &lt;code&gt;{&quot;arg_name1&quot; : [&quot;value1&quot;, &quot;value2&quot;, ...], &quot;arg_name2&quot; : [&quot;value1&quot;, &quot;value2&quot;, ...], ...}&lt;/code&gt; &lt;/p&gt; &lt;p&gt;The &lt;code&gt;update_dependencies&lt;/code&gt; command takes two arguments:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;upgrade_os_to&lt;/code&gt; - Specifies the desired Amazon Linux version for instances whose OS you want to upgrade, such as &lt;code&gt;Amazon Linux 2016.09&lt;/code&gt;. You must also set the &lt;code&gt;allow_reboot&lt;/code&gt; argument to true.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;allow_reboot&lt;/code&gt; - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if necessary, after installing the updates. This argument can be set to either &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt;. The default value is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For example, to upgrade an instance to Amazon Linux 2016.09, set &lt;code&gt;Args&lt;/code&gt; to the following.&lt;/p&gt; &lt;p&gt; &lt;code&gt; { &quot;upgrade_os_to&quot;:[&quot;Amazon Linux 2016.09&quot;], &quot;allow_reboot&quot;:[&quot;true&quot;] } &lt;/code&gt; &lt;/p&gt;
--- @param Name [DeploymentCommandName] &lt;p&gt;Specifies the operation. You can specify only one command.&lt;/p&gt; &lt;p&gt;For stacks, the following commands are available:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;execute_recipes&lt;/code&gt;: Execute one or more recipes. To specify the recipes, set an &lt;code&gt;Args&lt;/code&gt; parameter named &lt;code&gt;recipes&lt;/code&gt; to the list of recipes to be executed. For example, to execute &lt;code&gt;phpapp::appsetup&lt;/code&gt;, set &lt;code&gt;Args&lt;/code&gt; to &lt;code&gt;{&quot;recipes&quot;:[&quot;phpapp::appsetup&quot;]}&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;install_dependencies&lt;/code&gt;: Install the stack's dependencies.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;update_custom_cookbooks&lt;/code&gt;: Update the stack's custom cookbooks.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;update_dependencies&lt;/code&gt;: Update the stack's dependencies.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;note&gt; &lt;p&gt;The update_dependencies and install_dependencies commands are supported only for Linux instances. You can run the commands successfully on Windows instances, but they do nothing.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;For apps, the following commands are available:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;deploy&lt;/code&gt;: Deploy an app. Ruby on Rails apps have an optional &lt;code&gt;Args&lt;/code&gt; parameter named &lt;code&gt;migrate&lt;/code&gt;. Set &lt;code&gt;Args&lt;/code&gt; to {&quot;migrate&quot;:[&quot;true&quot;]} to migrate the database. The default setting is {&quot;migrate&quot;:[&quot;false&quot;]}.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;rollback&lt;/code&gt; Roll the app back to the previous version. When you update an app, AWS OpsWorks Stacks stores the previous version, up to a maximum of five versions. You can use this command to roll an app back as many as four versions.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;start&lt;/code&gt;: Start the app's web or application server.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;stop&lt;/code&gt;: Stop the app's web or application server.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;restart&lt;/code&gt;: Restart the app's web or application server.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;undeploy&lt;/code&gt;: Undeploy the app.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Used to specify a stack or deployment command.</p>
+-- @param Args [DeploymentCommandArgs] <p>The arguments of those commands that take arguments. It should be set to a JSON object with the following format:</p> <p> <code>{"arg_name1" : ["value1", "value2", ...], "arg_name2" : ["value1", "value2", ...], ...}</code> </p> <p>The <code>update_dependencies</code> command takes two arguments:</p> <ul> <li> <p> <code>upgrade_os_to</code> - Specifies the desired Amazon Linux version for instances whose OS you want to upgrade, such as <code>Amazon Linux 2016.09</code>. You must also set the <code>allow_reboot</code> argument to true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if necessary, after installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade an instance to Amazon Linux 2016.09, set <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon Linux 2016.09"], "allow_reboot":["true"] } </code> </p>
+-- @param Name [DeploymentCommandName] <p>Specifies the operation. You can specify only one command.</p> <p>For stacks, the following commands are available:</p> <ul> <li> <p> <code>execute_recipes</code>: Execute one or more recipes. To specify the recipes, set an <code>Args</code> parameter named <code>recipes</code> to the list of recipes to be executed. For example, to execute <code>phpapp::appsetup</code>, set <code>Args</code> to <code>{"recipes":["phpapp::appsetup"]}</code>.</p> </li> <li> <p> <code>install_dependencies</code>: Install the stack's dependencies.</p> </li> <li> <p> <code>update_custom_cookbooks</code>: Update the stack's custom cookbooks.</p> </li> <li> <p> <code>update_dependencies</code>: Update the stack's dependencies.</p> </li> </ul> <note> <p>The update_dependencies and install_dependencies commands are supported only for Linux instances. You can run the commands successfully on Windows instances, but they do nothing.</p> </note> <p>For apps, the following commands are available:</p> <ul> <li> <p> <code>deploy</code>: Deploy an app. Ruby on Rails apps have an optional <code>Args</code> parameter named <code>migrate</code>. Set <code>Args</code> to {"migrate":["true"]} to migrate the database. The default setting is {"migrate":["false"]}.</p> </li> <li> <p> <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks Stacks stores the previous version, up to a maximum of five versions. You can use this command to roll an app back as many as four versions.</p> </li> <li> <p> <code>start</code>: Start the app's web or application server.</p> </li> <li> <p> <code>stop</code>: Stop the app's web or application server.</p> </li> <li> <p> <code>restart</code>: Restart the app's web or application server.</p> </li> <li> <p> <code>undeploy</code>: Undeploy the app.</p> </li> </ul>
 -- Required parameter: Name
 function M.DeploymentCommand(Args, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentCommand")
@@ -2826,9 +2826,9 @@ function M.AssertDescribeEcsClustersResult(struct)
 end
 
 --- Create a structure of type DescribeEcsClustersResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeEcsClusters&lt;/code&gt; request.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;If a paginated request does not return all of the remaining results, this parameter is set to a token that you can assign to the request object's &lt;code&gt;NextToken&lt;/code&gt; parameter to retrieve the next set of results. If the previous paginated request returned all of the remaining results, this parameter is set to &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;
--- @param EcsClusters [EcsClusters] &lt;p&gt;A list of &lt;code&gt;EcsCluster&lt;/code&gt; objects containing the cluster descriptions.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeEcsClusters</code> request.</p>
+-- @param NextToken [String] <p>If a paginated request does not return all of the remaining results, this parameter is set to a token that you can assign to the request object's <code>NextToken</code> parameter to retrieve the next set of results. If the previous paginated request returned all of the remaining results, this parameter is set to <code>null</code>.</p>
+-- @param EcsClusters [EcsClusters] <p>A list of <code>EcsCluster</code> objects containing the cluster descriptions.</p>
 function M.DescribeEcsClustersResult(NextToken, EcsClusters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEcsClustersResult")
 	local t = { 
@@ -2851,8 +2851,8 @@ function M.AssertValidationException(struct)
 end
 
 --- Create a structure of type ValidationException
--- &lt;p&gt;Indicates that a request was not valid.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The exception message.&lt;/p&gt;
+-- <p>Indicates that a request was not valid.</p>
+-- @param message [String] <p>The exception message.</p>
 function M.ValidationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
 	local t = { 
@@ -2878,9 +2878,9 @@ end
 
 --- Create a structure of type UpdateRdsDbInstanceRequest
 --  
--- @param DbUser [String] &lt;p&gt;The master user name.&lt;/p&gt;
--- @param RdsDbInstanceArn [String] &lt;p&gt;The Amazon RDS instance's ARN.&lt;/p&gt;
--- @param DbPassword [String] &lt;p&gt;The database password.&lt;/p&gt;
+-- @param DbUser [String] <p>The master user name.</p>
+-- @param RdsDbInstanceArn [String] <p>The Amazon RDS instance's ARN.</p>
+-- @param DbPassword [String] <p>The database password.</p>
 -- Required parameter: RdsDbInstanceArn
 function M.UpdateRdsDbInstanceRequest(DbUser, RdsDbInstanceArn, DbPassword, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRdsDbInstanceRequest")
@@ -2909,12 +2909,12 @@ function M.AssertUserProfile(struct)
 end
 
 --- Create a structure of type UserProfile
--- &lt;p&gt;Describes a user's SSH information.&lt;/p&gt;
--- @param IamUserArn [String] &lt;p&gt;The user's IAM ARN.&lt;/p&gt;
--- @param SshPublicKey [String] &lt;p&gt;The user's SSH public key.&lt;/p&gt;
--- @param AllowSelfManagement [Boolean] &lt;p&gt;Whether users can specify their own SSH public key through the My Settings page. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html&quot;&gt;Managing User Permissions&lt;/a&gt;.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The user's name.&lt;/p&gt;
--- @param SshUsername [String] &lt;p&gt;The user's SSH user name.&lt;/p&gt;
+-- <p>Describes a user's SSH information.</p>
+-- @param IamUserArn [String] <p>The user's IAM ARN.</p>
+-- @param SshPublicKey [String] <p>The user's SSH public key.</p>
+-- @param AllowSelfManagement [Boolean] <p>Whether users can specify their own SSH public key through the My Settings page. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Managing User Permissions</a>.</p>
+-- @param Name [String] <p>The user's name.</p>
+-- @param SshUsername [String] <p>The user's SSH user name.</p>
 function M.UserProfile(IamUserArn, SshPublicKey, AllowSelfManagement, Name, SshUsername, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserProfile")
 	local t = { 
@@ -2961,24 +2961,24 @@ end
 
 --- Create a structure of type CreateInstanceRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param AmiId [String] &lt;p&gt;A custom AMI ID to be used to create the instance. The AMI should be based on one of the supported operating systems. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html&quot;&gt;Using Custom AMIs&lt;/a&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;If you specify a custom AMI, you must set &lt;code&gt;Os&lt;/code&gt; to &lt;code&gt;Custom&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param LayerIds [Strings] &lt;p&gt;An array that contains the instance's layer IDs.&lt;/p&gt;
--- @param VirtualizationType [String] &lt;p&gt;The instance's virtualization type, &lt;code&gt;paravirtual&lt;/code&gt; or &lt;code&gt;hvm&lt;/code&gt;.&lt;/p&gt;
--- @param EbsOptimized [Boolean] &lt;p&gt;Whether to create an Amazon EBS-optimized instance.&lt;/p&gt;
--- @param SshKeyName [String] &lt;p&gt;The instance's Amazon EC2 key-pair name.&lt;/p&gt;
--- @param Hostname [String] &lt;p&gt;The instance host name.&lt;/p&gt;
--- @param RootDeviceType [RootDeviceType] &lt;p&gt;The instance root device type. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device&quot;&gt;Storage for the Root Device&lt;/a&gt;.&lt;/p&gt;
--- @param BlockDeviceMappings [BlockDeviceMappings] &lt;p&gt;An array of &lt;code&gt;BlockDeviceMapping&lt;/code&gt; objects that specify the instance's block devices. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html&quot;&gt;Block Device Mapping&lt;/a&gt;. Note that block device mappings are not supported for custom AMIs.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The instance Availability Zone. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;.&lt;/p&gt;
--- @param Architecture [Architecture] &lt;p&gt;The instance architecture. The default option is &lt;code&gt;x86_64&lt;/code&gt;. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html&quot;&gt;Instance Families and Types&lt;/a&gt;.&lt;/p&gt;
--- @param AutoScalingType [AutoScalingType] &lt;p&gt;For load-based or time-based instances, the type. Windows stacks can use only time-based instances.&lt;/p&gt;
--- @param SubnetId [String] &lt;p&gt;The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.&lt;/p&gt;
--- @param Tenancy [String] &lt;p&gt;The instance's tenancy option. The default option is no tenancy, or if the instance is running in a VPC, inherit tenancy settings from the VPC. The following are valid values for this parameter: &lt;code&gt;dedicated&lt;/code&gt;, &lt;code&gt;default&lt;/code&gt;, or &lt;code&gt;host&lt;/code&gt;. Because there are costs associated with changes in tenancy options, we recommend that you research tenancy options before choosing them for your instances. For more information about dedicated hosts, see &lt;a href=&quot;http://aws.amazon.com/ec2/dedicated-hosts/&quot;&gt;Dedicated Hosts Overview&lt;/a&gt; and &lt;a href=&quot;http://aws.amazon.com/ec2/dedicated-hosts/&quot;&gt;Amazon EC2 Dedicated Hosts&lt;/a&gt;. For more information about dedicated instances, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html&quot;&gt;Dedicated Instances&lt;/a&gt; and &lt;a href=&quot;http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/&quot;&gt;Amazon EC2 Dedicated Instances&lt;/a&gt;.&lt;/p&gt;
--- @param InstallUpdatesOnBoot [Boolean] &lt;p&gt;Whether to install operating system and package updates when the instance boots. The default value is &lt;code&gt;true&lt;/code&gt;. To control when updates are installed, set this value to &lt;code&gt;false&lt;/code&gt;. You must then update your instances manually by using &lt;a&gt;CreateDeployment&lt;/a&gt; to run the &lt;code&gt;update_dependencies&lt;/code&gt; stack command or by manually running &lt;code&gt;yum&lt;/code&gt; (Amazon Linux) or &lt;code&gt;apt-get&lt;/code&gt; (Ubuntu) on the instances. &lt;/p&gt; &lt;note&gt; &lt;p&gt;We strongly recommend using the default value of &lt;code&gt;true&lt;/code&gt; to ensure that your instances have the latest security updates.&lt;/p&gt; &lt;/note&gt;
--- @param Os [String] &lt;p&gt;The instance's operating system, which must be set to one of the following.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A supported Linux operating system: An Amazon Linux version, such as &lt;code&gt;Amazon Linux 2017.03&lt;/code&gt;, &lt;code&gt;Amazon Linux 2016.09&lt;/code&gt;, &lt;code&gt;Amazon Linux 2016.03&lt;/code&gt;, &lt;code&gt;Amazon Linux 2015.09&lt;/code&gt;, or &lt;code&gt;Amazon Linux 2015.03&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A supported Ubuntu operating system, such as &lt;code&gt;Ubuntu 16.04 LTS&lt;/code&gt;, &lt;code&gt;Ubuntu 14.04 LTS&lt;/code&gt;, or &lt;code&gt;Ubuntu 12.04 LTS&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CentOS Linux 7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Red Hat Enterprise Linux 7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A supported Windows operating system, such as &lt;code&gt;Microsoft Windows Server 2012 R2 Base&lt;/code&gt;, &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Express&lt;/code&gt;, &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Standard&lt;/code&gt;, or &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Web&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A custom AMI: &lt;code&gt;Custom&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information on the supported operating systems, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html&quot;&gt;AWS OpsWorks Stacks Operating Systems&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The default option is the current Amazon Linux version. If you set this parameter to &lt;code&gt;Custom&lt;/code&gt;, you must use the &lt;a&gt;CreateInstance&lt;/a&gt; action's AmiId parameter to specify the custom AMI that you want to use. Block device mappings are not supported if the value is &lt;code&gt;Custom&lt;/code&gt;. For more information on the supported operating systems, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html&quot;&gt;Operating Systems&lt;/a&gt;For more information on how to use custom AMIs with AWS OpsWorks Stacks, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html&quot;&gt;Using Custom AMIs&lt;/a&gt;.&lt;/p&gt;
--- @param InstanceType [String] &lt;p&gt;The instance type, such as &lt;code&gt;t2.micro&lt;/code&gt;. For a list of supported instance types, open the stack in the console, choose &lt;b&gt;Instances&lt;/b&gt;, and choose &lt;b&gt;+ Instance&lt;/b&gt;. The &lt;b&gt;Size&lt;/b&gt; list contains the currently supported types. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html&quot;&gt;Instance Families and Types&lt;/a&gt;. The parameter values that you use to specify the various types are in the &lt;b&gt;API Name&lt;/b&gt; column of the &lt;b&gt;Available Instance Types&lt;/b&gt; table.&lt;/p&gt;
--- @param AgentVersion [String] &lt;p&gt;The default AWS OpsWorks Stacks agent version. You have the following options:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;INHERIT&lt;/code&gt; - Use the stack's default agent version setting.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;version_number&lt;/i&gt; - Use the specified agent version. This value overrides the stack's default setting. To update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the instance.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The default setting is &lt;code&gt;INHERIT&lt;/code&gt;. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call &lt;a&gt;DescribeAgentVersions&lt;/a&gt;. AgentVersion cannot be set to Chef 12.2.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param AmiId [String] <p>A custom AMI ID to be used to create the instance. The AMI should be based on one of the supported operating systems. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> <note> <p>If you specify a custom AMI, you must set <code>Os</code> to <code>Custom</code>.</p> </note>
+-- @param LayerIds [Strings] <p>An array that contains the instance's layer IDs.</p>
+-- @param VirtualizationType [String] <p>The instance's virtualization type, <code>paravirtual</code> or <code>hvm</code>.</p>
+-- @param EbsOptimized [Boolean] <p>Whether to create an Amazon EBS-optimized instance.</p>
+-- @param SshKeyName [String] <p>The instance's Amazon EC2 key-pair name.</p>
+-- @param Hostname [String] <p>The instance host name.</p>
+-- @param RootDeviceType [RootDeviceType] <p>The instance root device type. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- @param BlockDeviceMappings [BlockDeviceMappings] <p>An array of <code>BlockDeviceMapping</code> objects that specify the instance's block devices. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block Device Mapping</a>. Note that block device mappings are not supported for custom AMIs.</p>
+-- @param AvailabilityZone [String] <p>The instance Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- @param Architecture [Architecture] <p>The instance architecture. The default option is <code>x86_64</code>. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.</p>
+-- @param AutoScalingType [AutoScalingType] <p>For load-based or time-based instances, the type. Windows stacks can use only time-based instances.</p>
+-- @param SubnetId [String] <p>The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.</p>
+-- @param Tenancy [String] <p>The instance's tenancy option. The default option is no tenancy, or if the instance is running in a VPC, inherit tenancy settings from the VPC. The following are valid values for this parameter: <code>dedicated</code>, <code>default</code>, or <code>host</code>. Because there are costs associated with changes in tenancy options, we recommend that you research tenancy options before choosing them for your instances. For more information about dedicated hosts, see <a href="http://aws.amazon.com/ec2/dedicated-hosts/">Dedicated Hosts Overview</a> and <a href="http://aws.amazon.com/ec2/dedicated-hosts/">Amazon EC2 Dedicated Hosts</a>. For more information about dedicated instances, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html">Dedicated Instances</a> and <a href="http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/">Amazon EC2 Dedicated Instances</a>.</p>
+-- @param InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code> to ensure that your instances have the latest security updates.</p> </note>
+-- @param Os [String] <p>The instance's operating system, which must be set to one of the following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>.</p> </li> </ul> <p>For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you must use the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI that you want to use. Block device mappings are not supported if the value is <code>Custom</code>. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>For more information on how to use custom AMIs with AWS OpsWorks Stacks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p>
+-- @param InstanceType [String] <p>The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack in the console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the currently supported types. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>. The parameter values that you use to specify the various types are in the <b>API Name</b> column of the <b>Available Instance Types</b> table.</p>
+-- @param AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting. To update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the instance.</p> </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p>
 -- Required parameter: StackId
 -- Required parameter: LayerIds
 -- Required parameter: InstanceType
@@ -3023,9 +3023,9 @@ end
 
 --- Create a structure of type DescribeRaidArraysRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID. If you use this parameter, &lt;code&gt;DescribeRaidArrays&lt;/code&gt; returns descriptions of the RAID arrays associated with the specified instance. &lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param RaidArrayIds [Strings] &lt;p&gt;An array of RAID array IDs. If you use this parameter, &lt;code&gt;DescribeRaidArrays&lt;/code&gt; returns descriptions of the specified arrays. Otherwise, it returns a description of every array.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID. If you use this parameter, <code>DescribeRaidArrays</code> returns descriptions of the RAID arrays associated with the specified instance. </p>
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param RaidArrayIds [Strings] <p>An array of RAID array IDs. If you use this parameter, <code>DescribeRaidArrays</code> returns descriptions of the specified arrays. Otherwise, it returns a description of every array.</p>
 function M.DescribeRaidArraysRequest(InstanceId, StackId, RaidArrayIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRaidArraysRequest")
 	local t = { 
@@ -3052,11 +3052,11 @@ function M.AssertBlockDeviceMapping(struct)
 end
 
 --- Create a structure of type BlockDeviceMapping
--- &lt;p&gt;Describes a block device mapping. This data type maps directly to the Amazon EC2 &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html&quot;&gt;BlockDeviceMapping&lt;/a&gt; data type. &lt;/p&gt;
--- @param Ebs [EbsBlockDevice] &lt;p&gt;An &lt;code&gt;EBSBlockDevice&lt;/code&gt; that defines how to configure an Amazon EBS volume when the instance is launched.&lt;/p&gt;
--- @param DeviceName [String] &lt;p&gt;The device name that is exposed to the instance, such as &lt;code&gt;/dev/sdh&lt;/code&gt;. For the root device, you can use the explicit device name or you can set this parameter to &lt;code&gt;ROOT_DEVICE&lt;/code&gt; and AWS OpsWorks Stacks will provide the correct device name.&lt;/p&gt;
--- @param VirtualName [String] &lt;p&gt;The virtual device name. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html&quot;&gt;BlockDeviceMapping&lt;/a&gt;.&lt;/p&gt;
--- @param NoDevice [String] &lt;p&gt;Suppresses the specified device included in the AMI's block device mapping.&lt;/p&gt;
+-- <p>Describes a block device mapping. This data type maps directly to the Amazon EC2 <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html">BlockDeviceMapping</a> data type. </p>
+-- @param Ebs [EbsBlockDevice] <p>An <code>EBSBlockDevice</code> that defines how to configure an Amazon EBS volume when the instance is launched.</p>
+-- @param DeviceName [String] <p>The device name that is exposed to the instance, such as <code>/dev/sdh</code>. For the root device, you can use the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks Stacks will provide the correct device name.</p>
+-- @param VirtualName [String] <p>The virtual device name. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html">BlockDeviceMapping</a>.</p>
+-- @param NoDevice [String] <p>Suppresses the specified device included in the AMI's block device mapping.</p>
 function M.BlockDeviceMapping(Ebs, DeviceName, VirtualName, NoDevice, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BlockDeviceMapping")
 	local t = { 
@@ -3083,7 +3083,7 @@ end
 
 --- Create a structure of type DeleteUserProfileRequest
 --  
--- @param IamUserArn [String] &lt;p&gt;The user's IAM ARN. This can also be a federated user's ARN.&lt;/p&gt;
+-- @param IamUserArn [String] <p>The user's IAM ARN. This can also be a federated user's ARN.</p>
 -- Required parameter: IamUserArn
 function M.DeleteUserProfileRequest(IamUserArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserProfileRequest")
@@ -3109,9 +3109,9 @@ end
 
 --- Create a structure of type DescribeInstancesRequest
 --  
--- @param StackId [String] &lt;p&gt;A stack ID. If you use this parameter, &lt;code&gt;DescribeInstances&lt;/code&gt; returns descriptions of the instances associated with the specified stack.&lt;/p&gt;
--- @param InstanceIds [Strings] &lt;p&gt;An array of instance IDs to be described. If you use this parameter, &lt;code&gt;DescribeInstances&lt;/code&gt; returns a description of the specified instances. Otherwise, it returns a description of every instance.&lt;/p&gt;
--- @param LayerId [String] &lt;p&gt;A layer ID. If you use this parameter, &lt;code&gt;DescribeInstances&lt;/code&gt; returns descriptions of the instances associated with the specified layer.&lt;/p&gt;
+-- @param StackId [String] <p>A stack ID. If you use this parameter, <code>DescribeInstances</code> returns descriptions of the instances associated with the specified stack.</p>
+-- @param InstanceIds [Strings] <p>An array of instance IDs to be described. If you use this parameter, <code>DescribeInstances</code> returns a description of the specified instances. Otherwise, it returns a description of every instance.</p>
+-- @param LayerId [String] <p>A layer ID. If you use this parameter, <code>DescribeInstances</code> returns descriptions of the instances associated with the specified layer.</p>
 function M.DescribeInstancesRequest(StackId, InstanceIds, LayerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesRequest")
 	local t = { 
@@ -3136,9 +3136,9 @@ function M.AssertInstanceIdentity(struct)
 end
 
 --- Create a structure of type InstanceIdentity
--- &lt;p&gt;Contains a description of an Amazon EC2 instance from the Amazon EC2 metadata service. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/sdkfornet/latest/apidocs/Index.html&quot;&gt;Instance Metadata and User Data&lt;/a&gt;.&lt;/p&gt;
--- @param Document [String] &lt;p&gt;A JSON document that contains the metadata.&lt;/p&gt;
--- @param Signature [String] &lt;p&gt;A signature that can be used to verify the document's accuracy and authenticity.&lt;/p&gt;
+-- <p>Contains a description of an Amazon EC2 instance from the Amazon EC2 metadata service. For more information, see <a href="http://docs.aws.amazon.com/sdkfornet/latest/apidocs/Index.html">Instance Metadata and User Data</a>.</p>
+-- @param Document [String] <p>A JSON document that contains the metadata.</p>
+-- @param Signature [String] <p>A signature that can be used to verify the document's accuracy and authenticity.</p>
 function M.InstanceIdentity(Document, Signature, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceIdentity")
 	local t = { 
@@ -3163,7 +3163,7 @@ end
 
 --- Create a structure of type DeregisterElasticIpRequest
 --  
--- @param ElasticIp [String] &lt;p&gt;The Elastic IP address.&lt;/p&gt;
+-- @param ElasticIp [String] <p>The Elastic IP address.</p>
 -- Required parameter: ElasticIp
 function M.DeregisterElasticIpRequest(ElasticIp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterElasticIpRequest")
@@ -3198,20 +3198,20 @@ function M.AssertRaidArray(struct)
 end
 
 --- Create a structure of type RaidArray
--- &lt;p&gt;Describes an instance's RAID array.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The array's Availability Zone. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The array name.&lt;/p&gt;
--- @param NumberOfDisks [Integer] &lt;p&gt;The number of disks in the array.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param RaidLevel [Integer] &lt;p&gt;The &lt;a href=&quot;http://en.wikipedia.org/wiki/Standard_RAID_levels&quot;&gt;RAID level&lt;/a&gt;.&lt;/p&gt;
--- @param VolumeType [String] &lt;p&gt;The volume type, standard or PIOPS.&lt;/p&gt;
--- @param RaidArrayId [String] &lt;p&gt;The array ID.&lt;/p&gt;
--- @param Device [String] &lt;p&gt;The array's Linux device. For example /dev/mdadm0.&lt;/p&gt;
--- @param MountPoint [String] &lt;p&gt;The array's mount point.&lt;/p&gt;
--- @param Iops [Integer] &lt;p&gt;For PIOPS volumes, the IOPS per disk.&lt;/p&gt;
--- @param CreatedAt [DateTime] &lt;p&gt;When the RAID array was created.&lt;/p&gt;
--- @param Size [Integer] &lt;p&gt;The array's size.&lt;/p&gt;
+-- <p>Describes an instance's RAID array.</p>
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param AvailabilityZone [String] <p>The array's Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- @param Name [String] <p>The array name.</p>
+-- @param NumberOfDisks [Integer] <p>The number of disks in the array.</p>
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param RaidLevel [Integer] <p>The <a href="http://en.wikipedia.org/wiki/Standard_RAID_levels">RAID level</a>.</p>
+-- @param VolumeType [String] <p>The volume type, standard or PIOPS.</p>
+-- @param RaidArrayId [String] <p>The array ID.</p>
+-- @param Device [String] <p>The array's Linux device. For example /dev/mdadm0.</p>
+-- @param MountPoint [String] <p>The array's mount point.</p>
+-- @param Iops [Integer] <p>For PIOPS volumes, the IOPS per disk.</p>
+-- @param CreatedAt [DateTime] <p>When the RAID array was created.</p>
+-- @param Size [Integer] <p>The array's size.</p>
 function M.RaidArray(StackId, AvailabilityZone, Name, NumberOfDisks, InstanceId, RaidLevel, VolumeType, RaidArrayId, Device, MountPoint, Iops, CreatedAt, Size, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RaidArray")
 	local t = { 
@@ -3249,12 +3249,12 @@ function M.AssertElasticIp(struct)
 end
 
 --- Create a structure of type ElasticIp
--- &lt;p&gt;Describes an Elastic IP address.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The ID of the instance that the address is attached to.&lt;/p&gt;
--- @param Ip [String] &lt;p&gt;The IP address.&lt;/p&gt;
--- @param Domain [String] &lt;p&gt;The domain.&lt;/p&gt;
--- @param Region [String] &lt;p&gt;The AWS region. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name.&lt;/p&gt;
+-- <p>Describes an Elastic IP address.</p>
+-- @param InstanceId [String] <p>The ID of the instance that the address is attached to.</p>
+-- @param Ip [String] <p>The IP address.</p>
+-- @param Domain [String] <p>The domain.</p>
+-- @param Region [String] <p>The AWS region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- @param Name [String] <p>The name.</p>
 function M.ElasticIp(InstanceId, Ip, Domain, Region, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticIp")
 	local t = { 
@@ -3280,8 +3280,8 @@ function M.AssertDescribeElasticLoadBalancersResult(struct)
 end
 
 --- Create a structure of type DescribeElasticLoadBalancersResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeElasticLoadBalancers&lt;/code&gt; request.&lt;/p&gt;
--- @param ElasticLoadBalancers [ElasticLoadBalancers] &lt;p&gt;A list of &lt;code&gt;ElasticLoadBalancer&lt;/code&gt; objects that describe the specified Elastic Load Balancing instances.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeElasticLoadBalancers</code> request.</p>
+-- @param ElasticLoadBalancers [ElasticLoadBalancers] <p>A list of <code>ElasticLoadBalancer</code> objects that describe the specified Elastic Load Balancing instances.</p>
 function M.DescribeElasticLoadBalancersResult(ElasticLoadBalancers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticLoadBalancersResult")
 	local t = { 
@@ -3307,9 +3307,9 @@ end
 
 --- Create a structure of type DeleteInstanceRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param DeleteVolumes [Boolean] &lt;p&gt;Whether to delete the instance's Amazon EBS volumes.&lt;/p&gt;
--- @param DeleteElasticIp [Boolean] &lt;p&gt;Whether to delete the instance Elastic IP address.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param DeleteVolumes [Boolean] <p>Whether to delete the instance's Amazon EBS volumes.</p>
+-- @param DeleteElasticIp [Boolean] <p>Whether to delete the instance Elastic IP address.</p>
 -- Required parameter: InstanceId
 function M.DeleteInstanceRequest(InstanceId, DeleteVolumes, DeleteElasticIp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceRequest")
@@ -3336,7 +3336,7 @@ end
 
 --- Create a structure of type DisassociateElasticIpRequest
 --  
--- @param ElasticIp [String] &lt;p&gt;The Elastic IP address.&lt;/p&gt;
+-- @param ElasticIp [String] <p>The Elastic IP address.</p>
 -- Required parameter: ElasticIp
 function M.DisassociateElasticIpRequest(ElasticIp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateElasticIpRequest")
@@ -3367,16 +3367,16 @@ function M.AssertElasticLoadBalancer(struct)
 end
 
 --- Create a structure of type ElasticLoadBalancer
--- &lt;p&gt;Describes an Elastic Load Balancing instance.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The ID of the stack that the instance is associated with.&lt;/p&gt;
--- @param ElasticLoadBalancerName [String] &lt;p&gt;The Elastic Load Balancing instance's name.&lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;The VPC ID.&lt;/p&gt;
--- @param Ec2InstanceIds [Strings] &lt;p&gt;A list of the EC2 instances that the Elastic Load Balancing instance is managing traffic for.&lt;/p&gt;
--- @param Region [String] &lt;p&gt;The instance's AWS region.&lt;/p&gt;
--- @param DnsName [String] &lt;p&gt;The instance's public DNS name.&lt;/p&gt;
--- @param LayerId [String] &lt;p&gt;The ID of the layer that the instance is attached to.&lt;/p&gt;
--- @param AvailabilityZones [Strings] &lt;p&gt;A list of Availability Zones.&lt;/p&gt;
--- @param SubnetIds [Strings] &lt;p&gt;A list of subnet IDs, if the stack is running in a VPC.&lt;/p&gt;
+-- <p>Describes an Elastic Load Balancing instance.</p>
+-- @param StackId [String] <p>The ID of the stack that the instance is associated with.</p>
+-- @param ElasticLoadBalancerName [String] <p>The Elastic Load Balancing instance's name.</p>
+-- @param VpcId [String] <p>The VPC ID.</p>
+-- @param Ec2InstanceIds [Strings] <p>A list of the EC2 instances that the Elastic Load Balancing instance is managing traffic for.</p>
+-- @param Region [String] <p>The instance's AWS region.</p>
+-- @param DnsName [String] <p>The instance's public DNS name.</p>
+-- @param LayerId [String] <p>The ID of the layer that the instance is attached to.</p>
+-- @param AvailabilityZones [Strings] <p>A list of Availability Zones.</p>
+-- @param SubnetIds [Strings] <p>A list of subnet IDs, if the stack is running in a VPC.</p>
 function M.ElasticLoadBalancer(StackId, ElasticLoadBalancerName, VpcId, Ec2InstanceIds, Region, DnsName, LayerId, AvailabilityZones, SubnetIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticLoadBalancer")
 	local t = { 
@@ -3406,8 +3406,8 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;Indicates that a resource was not found.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The exception message.&lt;/p&gt;
+-- <p>Indicates that a resource was not found.</p>
+-- @param message [String] <p>The exception message.</p>
 function M.ResourceNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -3429,8 +3429,8 @@ function M.AssertDescribeRaidArraysResult(struct)
 end
 
 --- Create a structure of type DescribeRaidArraysResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeRaidArrays&lt;/code&gt; request.&lt;/p&gt;
--- @param RaidArrays [RaidArrays] &lt;p&gt;A &lt;code&gt;RaidArrays&lt;/code&gt; object that describes the specified RAID arrays.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeRaidArrays</code> request.</p>
+-- @param RaidArrays [RaidArrays] <p>A <code>RaidArrays</code> object that describes the specified RAID arrays.</p>
 function M.DescribeRaidArraysResult(RaidArrays, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRaidArraysResult")
 	local t = { 
@@ -3455,9 +3455,9 @@ end
 
 --- Create a structure of type DescribeServiceErrorsRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID. If you use this parameter, &lt;code&gt;DescribeServiceErrors&lt;/code&gt; returns descriptions of the errors associated with the specified stack.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The instance ID. If you use this parameter, &lt;code&gt;DescribeServiceErrors&lt;/code&gt; returns descriptions of the errors associated with the specified instance.&lt;/p&gt;
--- @param ServiceErrorIds [Strings] &lt;p&gt;An array of service error IDs. If you use this parameter, &lt;code&gt;DescribeServiceErrors&lt;/code&gt; returns descriptions of the specified errors. Otherwise, it returns a description of every error.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID. If you use this parameter, <code>DescribeServiceErrors</code> returns descriptions of the errors associated with the specified stack.</p>
+-- @param InstanceId [String] <p>The instance ID. If you use this parameter, <code>DescribeServiceErrors</code> returns descriptions of the errors associated with the specified instance.</p>
+-- @param ServiceErrorIds [Strings] <p>An array of service error IDs. If you use this parameter, <code>DescribeServiceErrors</code> returns descriptions of the specified errors. Otherwise, it returns a description of every error.</p>
 function M.DescribeServiceErrorsRequest(StackId, InstanceId, ServiceErrorIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServiceErrorsRequest")
 	local t = { 
@@ -3486,13 +3486,13 @@ function M.AssertServiceError(struct)
 end
 
 --- Create a structure of type ServiceError
--- &lt;p&gt;Describes an AWS OpsWorks Stacks service error.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param ServiceErrorId [String] &lt;p&gt;The error ID.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;A message that describes the error.&lt;/p&gt;
--- @param Type [String] &lt;p&gt;The error type.&lt;/p&gt;
--- @param CreatedAt [DateTime] &lt;p&gt;When the error occurred.&lt;/p&gt;
+-- <p>Describes an AWS OpsWorks Stacks service error.</p>
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param ServiceErrorId [String] <p>The error ID.</p>
+-- @param Message [String] <p>A message that describes the error.</p>
+-- @param Type [String] <p>The error type.</p>
+-- @param CreatedAt [DateTime] <p>When the error occurred.</p>
 function M.ServiceError(StackId, InstanceId, ServiceErrorId, Message, Type, CreatedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceError")
 	local t = { 
@@ -3523,10 +3523,10 @@ end
 
 --- Create a structure of type DescribeVolumesRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID. If you use this parameter, &lt;code&gt;DescribeVolumes&lt;/code&gt; returns descriptions of the volumes associated with the specified instance.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;A stack ID. The action describes the stack's registered Amazon EBS volumes.&lt;/p&gt;
--- @param RaidArrayId [String] &lt;p&gt;The RAID array ID. If you use this parameter, &lt;code&gt;DescribeVolumes&lt;/code&gt; returns descriptions of the volumes associated with the specified RAID array.&lt;/p&gt;
--- @param VolumeIds [Strings] &lt;p&gt;Am array of volume IDs. If you use this parameter, &lt;code&gt;DescribeVolumes&lt;/code&gt; returns descriptions of the specified volumes. Otherwise, it returns a description of every volume.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID. If you use this parameter, <code>DescribeVolumes</code> returns descriptions of the volumes associated with the specified instance.</p>
+-- @param StackId [String] <p>A stack ID. The action describes the stack's registered Amazon EBS volumes.</p>
+-- @param RaidArrayId [String] <p>The RAID array ID. If you use this parameter, <code>DescribeVolumes</code> returns descriptions of the volumes associated with the specified RAID array.</p>
+-- @param VolumeIds [Strings] <p>Am array of volume IDs. If you use this parameter, <code>DescribeVolumes</code> returns descriptions of the specified volumes. Otherwise, it returns a description of every volume.</p>
 function M.DescribeVolumesRequest(InstanceId, StackId, RaidArrayId, VolumeIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVolumesRequest")
 	local t = { 
@@ -3553,7 +3553,7 @@ end
 
 --- Create a structure of type StartStackRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
 -- Required parameter: StackId
 function M.StartStackRequest(StackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartStackRequest")
@@ -3584,13 +3584,13 @@ function M.AssertVolumeConfiguration(struct)
 end
 
 --- Create a structure of type VolumeConfiguration
--- &lt;p&gt;Describes an Amazon EBS volume configuration.&lt;/p&gt;
--- @param NumberOfDisks [Integer] &lt;p&gt;The number of disks in the volume.&lt;/p&gt;
--- @param RaidLevel [Integer] &lt;p&gt;The volume &lt;a href=&quot;http://en.wikipedia.org/wiki/Standard_RAID_levels&quot;&gt;RAID level&lt;/a&gt;.&lt;/p&gt;
--- @param VolumeType [String] &lt;p&gt;The volume type:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;standard&lt;/code&gt; - Magnetic&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;io1&lt;/code&gt; - Provisioned IOPS (SSD)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;gp2&lt;/code&gt; - General Purpose (SSD)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Iops [Integer] &lt;p&gt;For PIOPS volumes, the IOPS per disk.&lt;/p&gt;
--- @param MountPoint [String] &lt;p&gt;The volume mount point. For example &quot;/dev/sdh&quot;.&lt;/p&gt;
--- @param Size [Integer] &lt;p&gt;The volume size.&lt;/p&gt;
+-- <p>Describes an Amazon EBS volume configuration.</p>
+-- @param NumberOfDisks [Integer] <p>The number of disks in the volume.</p>
+-- @param RaidLevel [Integer] <p>The volume <a href="http://en.wikipedia.org/wiki/Standard_RAID_levels">RAID level</a>.</p>
+-- @param VolumeType [String] <p>The volume type:</p> <ul> <li> <p> <code>standard</code> - Magnetic</p> </li> <li> <p> <code>io1</code> - Provisioned IOPS (SSD)</p> </li> <li> <p> <code>gp2</code> - General Purpose (SSD)</p> </li> </ul>
+-- @param Iops [Integer] <p>For PIOPS volumes, the IOPS per disk.</p>
+-- @param MountPoint [String] <p>The volume mount point. For example "/dev/sdh".</p>
+-- @param Size [Integer] <p>The volume size.</p>
 -- Required parameter: MountPoint
 -- Required parameter: NumberOfDisks
 -- Required parameter: Size
@@ -3623,9 +3623,9 @@ end
 
 --- Create a structure of type DescribeElasticIpsRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID. If you include this parameter, &lt;code&gt;DescribeElasticIps&lt;/code&gt; returns a description of the Elastic IP addresses associated with the specified instance.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;A stack ID. If you include this parameter, &lt;code&gt;DescribeElasticIps&lt;/code&gt; returns a description of the Elastic IP addresses that are registered with the specified stack.&lt;/p&gt;
--- @param Ips [Strings] &lt;p&gt;An array of Elastic IP addresses to be described. If you include this parameter, &lt;code&gt;DescribeElasticIps&lt;/code&gt; returns a description of the specified Elastic IP addresses. Otherwise, it returns a description of every Elastic IP address.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID. If you include this parameter, <code>DescribeElasticIps</code> returns a description of the Elastic IP addresses associated with the specified instance.</p>
+-- @param StackId [String] <p>A stack ID. If you include this parameter, <code>DescribeElasticIps</code> returns a description of the Elastic IP addresses that are registered with the specified stack.</p>
+-- @param Ips [Strings] <p>An array of Elastic IP addresses to be described. If you include this parameter, <code>DescribeElasticIps</code> returns a description of the specified Elastic IP addresses. Otherwise, it returns a description of every Elastic IP address.</p>
 function M.DescribeElasticIpsRequest(InstanceId, StackId, Ips, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticIpsRequest")
 	local t = { 
@@ -3649,8 +3649,8 @@ function M.AssertCreateInstanceResult(struct)
 end
 
 --- Create a structure of type CreateInstanceResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;CreateInstance&lt;/code&gt; request.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
+-- <p>Contains the response to a <code>CreateInstance</code> request.</p>
+-- @param InstanceId [String] <p>The instance ID.</p>
 function M.CreateInstanceResult(InstanceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstanceResult")
 	local t = { 
@@ -3672,8 +3672,8 @@ function M.AssertDescribeStackSummaryResult(struct)
 end
 
 --- Create a structure of type DescribeStackSummaryResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeStackSummary&lt;/code&gt; request.&lt;/p&gt;
--- @param StackSummary [StackSummary] &lt;p&gt;A &lt;code&gt;StackSummary&lt;/code&gt; object that contains the results.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeStackSummary</code> request.</p>
+-- @param StackSummary [StackSummary] <p>A <code>StackSummary</code> object that contains the results.</p>
 function M.DescribeStackSummaryResult(StackSummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackSummaryResult")
 	local t = { 
@@ -3699,9 +3699,9 @@ end
 
 --- Create a structure of type UpdateVolumeRequest
 --  
--- @param MountPoint [String] &lt;p&gt;The new mount point.&lt;/p&gt;
--- @param VolumeId [String] &lt;p&gt;The volume ID.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The new name.&lt;/p&gt;
+-- @param MountPoint [String] <p>The new mount point.</p>
+-- @param VolumeId [String] <p>The volume ID.</p>
+-- @param Name [String] <p>The new name.</p>
 -- Required parameter: VolumeId
 function M.UpdateVolumeRequest(MountPoint, VolumeId, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateVolumeRequest")
@@ -3727,9 +3727,9 @@ function M.AssertStackConfigurationManager(struct)
 end
 
 --- Create a structure of type StackConfigurationManager
--- &lt;p&gt;Describes the configuration manager.&lt;/p&gt;
--- @param Version [String] &lt;p&gt;The Chef version. This parameter must be set to 12, 11.10, or 11.4 for Linux stacks, and to 12.2 for Windows stacks. The default value for Linux stacks is 11.4.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name. This parameter must be set to &quot;Chef&quot;.&lt;/p&gt;
+-- <p>Describes the configuration manager.</p>
+-- @param Version [String] <p>The Chef version. This parameter must be set to 12, 11.10, or 11.4 for Linux stacks, and to 12.2 for Windows stacks. The default value for Linux stacks is 11.4.</p>
+-- @param Name [String] <p>The name. This parameter must be set to "Chef".</p>
 function M.StackConfigurationManager(Version, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StackConfigurationManager")
 	local t = { 
@@ -3770,26 +3770,26 @@ function M.AssertInstancesCount(struct)
 end
 
 --- Create a structure of type InstancesCount
--- &lt;p&gt;Describes how many instances a stack has for each status.&lt;/p&gt;
--- @param StartFailed [Integer] &lt;p&gt;The number of instances with &lt;code&gt;start_failed&lt;/code&gt; status.&lt;/p&gt;
--- @param Requested [Integer] &lt;p&gt;The number of instances with &lt;code&gt;requested&lt;/code&gt; status.&lt;/p&gt;
--- @param Registering [Integer] &lt;p&gt;The number of instances in the Registering state.&lt;/p&gt;
--- @param Terminated [Integer] &lt;p&gt;The number of instances with &lt;code&gt;terminated&lt;/code&gt; status.&lt;/p&gt;
--- @param RunningSetup [Integer] &lt;p&gt;The number of instances with &lt;code&gt;running_setup&lt;/code&gt; status.&lt;/p&gt;
--- @param Booting [Integer] &lt;p&gt;The number of instances with &lt;code&gt;booting&lt;/code&gt; status.&lt;/p&gt;
--- @param Deregistering [Integer] &lt;p&gt;The number of instances in the Deregistering state.&lt;/p&gt;
--- @param Rebooting [Integer] &lt;p&gt;The number of instances with &lt;code&gt;rebooting&lt;/code&gt; status.&lt;/p&gt;
--- @param Unassigning [Integer] &lt;p&gt;The number of instances in the Unassigning state.&lt;/p&gt;
--- @param ShuttingDown [Integer] &lt;p&gt;The number of instances with &lt;code&gt;shutting_down&lt;/code&gt; status.&lt;/p&gt;
--- @param SetupFailed [Integer] &lt;p&gt;The number of instances with &lt;code&gt;setup_failed&lt;/code&gt; status.&lt;/p&gt;
--- @param Terminating [Integer] &lt;p&gt;The number of instances with &lt;code&gt;terminating&lt;/code&gt; status.&lt;/p&gt;
--- @param ConnectionLost [Integer] &lt;p&gt;The number of instances with &lt;code&gt;connection_lost&lt;/code&gt; status.&lt;/p&gt;
--- @param Online [Integer] &lt;p&gt;The number of instances with &lt;code&gt;online&lt;/code&gt; status.&lt;/p&gt;
--- @param Stopping [Integer] &lt;p&gt;The number of instances with &lt;code&gt;stopping&lt;/code&gt; status.&lt;/p&gt;
--- @param Stopped [Integer] &lt;p&gt;The number of instances with &lt;code&gt;stopped&lt;/code&gt; status.&lt;/p&gt;
--- @param Assigning [Integer] &lt;p&gt;The number of instances in the Assigning state.&lt;/p&gt;
--- @param Registered [Integer] &lt;p&gt;The number of instances in the Registered state.&lt;/p&gt;
--- @param Pending [Integer] &lt;p&gt;The number of instances with &lt;code&gt;pending&lt;/code&gt; status.&lt;/p&gt;
+-- <p>Describes how many instances a stack has for each status.</p>
+-- @param StartFailed [Integer] <p>The number of instances with <code>start_failed</code> status.</p>
+-- @param Requested [Integer] <p>The number of instances with <code>requested</code> status.</p>
+-- @param Registering [Integer] <p>The number of instances in the Registering state.</p>
+-- @param Terminated [Integer] <p>The number of instances with <code>terminated</code> status.</p>
+-- @param RunningSetup [Integer] <p>The number of instances with <code>running_setup</code> status.</p>
+-- @param Booting [Integer] <p>The number of instances with <code>booting</code> status.</p>
+-- @param Deregistering [Integer] <p>The number of instances in the Deregistering state.</p>
+-- @param Rebooting [Integer] <p>The number of instances with <code>rebooting</code> status.</p>
+-- @param Unassigning [Integer] <p>The number of instances in the Unassigning state.</p>
+-- @param ShuttingDown [Integer] <p>The number of instances with <code>shutting_down</code> status.</p>
+-- @param SetupFailed [Integer] <p>The number of instances with <code>setup_failed</code> status.</p>
+-- @param Terminating [Integer] <p>The number of instances with <code>terminating</code> status.</p>
+-- @param ConnectionLost [Integer] <p>The number of instances with <code>connection_lost</code> status.</p>
+-- @param Online [Integer] <p>The number of instances with <code>online</code> status.</p>
+-- @param Stopping [Integer] <p>The number of instances with <code>stopping</code> status.</p>
+-- @param Stopped [Integer] <p>The number of instances with <code>stopped</code> status.</p>
+-- @param Assigning [Integer] <p>The number of instances in the Assigning state.</p>
+-- @param Registered [Integer] <p>The number of instances in the Registered state.</p>
+-- @param Pending [Integer] <p>The number of instances with <code>pending</code> status.</p>
 function M.InstancesCount(StartFailed, Requested, Registering, Terminated, RunningSetup, Booting, Deregistering, Rebooting, Unassigning, ShuttingDown, SetupFailed, Terminating, ConnectionLost, Online, Stopping, Stopped, Assigning, Registered, Pending, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstancesCount")
 	local t = { 
@@ -3829,8 +3829,8 @@ function M.AssertDescribeCommandsResult(struct)
 end
 
 --- Create a structure of type DescribeCommandsResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeCommands&lt;/code&gt; request.&lt;/p&gt;
--- @param Commands [Commands] &lt;p&gt;An array of &lt;code&gt;Command&lt;/code&gt; objects that describe each of the specified commands.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeCommands</code> request.</p>
+-- @param Commands [Commands] <p>An array of <code>Command</code> objects that describe each of the specified commands.</p>
 function M.DescribeCommandsResult(Commands, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommandsResult")
 	local t = { 
@@ -3854,10 +3854,10 @@ function M.AssertReportedOs(struct)
 end
 
 --- Create a structure of type ReportedOs
--- &lt;p&gt;A registered instance's reported operating system.&lt;/p&gt;
--- @param Version [String] &lt;p&gt;The operating system version.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The operating system name.&lt;/p&gt;
--- @param Family [String] &lt;p&gt;The operating system family.&lt;/p&gt;
+-- <p>A registered instance's reported operating system.</p>
+-- @param Version [String] <p>The operating system version.</p>
+-- @param Name [String] <p>The operating system name.</p>
+-- @param Family [String] <p>The operating system family.</p>
 function M.ReportedOs(Version, Name, Family, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReportedOs")
 	local t = { 
@@ -3884,11 +3884,11 @@ function M.AssertTemporaryCredential(struct)
 end
 
 --- Create a structure of type TemporaryCredential
--- &lt;p&gt;Contains the data needed by RDP clients such as the Microsoft Remote Desktop Connection to log in to the instance.&lt;/p&gt;
--- @param Username [String] &lt;p&gt;The user name.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The instance's AWS OpsWorks Stacks ID.&lt;/p&gt;
--- @param Password [String] &lt;p&gt;The password.&lt;/p&gt;
--- @param ValidForInMinutes [Integer] &lt;p&gt;The length of time (in minutes) that the grant is valid. When the grant expires, at the end of this period, the user will no longer be able to use the credentials to log in. If they are logged in at the time, they will be automatically logged out.&lt;/p&gt;
+-- <p>Contains the data needed by RDP clients such as the Microsoft Remote Desktop Connection to log in to the instance.</p>
+-- @param Username [String] <p>The user name.</p>
+-- @param InstanceId [String] <p>The instance's AWS OpsWorks Stacks ID.</p>
+-- @param Password [String] <p>The password.</p>
+-- @param ValidForInMinutes [Integer] <p>The length of time (in minutes) that the grant is valid. When the grant expires, at the end of this period, the user will no longer be able to use the credentials to log in. If they are logged in at the time, they will be automatically logged out.</p>
 function M.TemporaryCredential(Username, InstanceId, Password, ValidForInMinutes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TemporaryCredential")
 	local t = { 
@@ -3931,23 +3931,23 @@ end
 
 --- Create a structure of type UpdateLayerRequest
 --  
--- @param LifecycleEventConfiguration [LifecycleEventConfiguration] &lt;p/&gt;
--- @param CustomRecipes [Recipes] &lt;p&gt;A &lt;code&gt;LayerCustomRecipes&lt;/code&gt; object that specifies the layer's custom recipes.&lt;/p&gt;
--- @param AutoAssignElasticIps [Boolean] &lt;p&gt;Whether to automatically assign an &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html&quot;&gt;Elastic IP address&lt;/a&gt; to the layer's instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html&quot;&gt;How to Edit a Layer&lt;/a&gt;.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The layer name, which is used by the console.&lt;/p&gt;
--- @param CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] &lt;p&gt;Specifies CloudWatch Logs configuration options for the layer. For more information, see &lt;a&gt;CloudWatchLogsLogStream&lt;/a&gt;.&lt;/p&gt;
--- @param CustomJson [String] &lt;p&gt;A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html&quot;&gt; Using Custom JSON&lt;/a&gt;. &lt;/p&gt;
--- @param VolumeConfigurations [VolumeConfigurations] &lt;p&gt;A &lt;code&gt;VolumeConfigurations&lt;/code&gt; object that describes the layer's Amazon EBS volumes.&lt;/p&gt;
--- @param AutoAssignPublicIps [Boolean] &lt;p&gt;For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html&quot;&gt;How to Edit a Layer&lt;/a&gt;.&lt;/p&gt;
--- @param EnableAutoHealing [Boolean] &lt;p&gt;Whether to disable auto healing for the layer.&lt;/p&gt;
--- @param CustomInstanceProfileArn [String] &lt;p&gt;The ARN of an IAM profile to be used for all of the layer's EC2 instances. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
--- @param UseEbsOptimizedInstances [Boolean] &lt;p&gt;Whether to use Amazon EBS-optimized instances.&lt;/p&gt;
--- @param LayerId [String] &lt;p&gt;The layer ID.&lt;/p&gt;
--- @param Attributes [LayerAttributes] &lt;p&gt;One or more user-defined key/value pairs to be added to the stack attributes.&lt;/p&gt;
--- @param Shortname [String] &lt;p&gt;For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\A[a-z0-9\-\_\.]+\Z/.&lt;/p&gt; &lt;p&gt;The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html&quot;&gt;Layer Reference&lt;/a&gt; &lt;/p&gt;
--- @param Packages [Strings] &lt;p&gt;An array of &lt;code&gt;Package&lt;/code&gt; objects that describe the layer's packages.&lt;/p&gt;
--- @param CustomSecurityGroupIds [Strings] &lt;p&gt;An array containing the layer's custom security group IDs.&lt;/p&gt;
--- @param InstallUpdatesOnBoot [Boolean] &lt;p&gt;Whether to install operating system and package updates when the instance boots. The default value is &lt;code&gt;true&lt;/code&gt;. To control when updates are installed, set this value to &lt;code&gt;false&lt;/code&gt;. You must then update your instances manually by using &lt;a&gt;CreateDeployment&lt;/a&gt; to run the &lt;code&gt;update_dependencies&lt;/code&gt; stack command or manually running &lt;code&gt;yum&lt;/code&gt; (Amazon Linux) or &lt;code&gt;apt-get&lt;/code&gt; (Ubuntu) on the instances. &lt;/p&gt; &lt;note&gt; &lt;p&gt;We strongly recommend using the default value of &lt;code&gt;true&lt;/code&gt;, to ensure that your instances have the latest security updates.&lt;/p&gt; &lt;/note&gt;
+-- @param LifecycleEventConfiguration [LifecycleEventConfiguration] <p/>
+-- @param CustomRecipes [Recipes] <p>A <code>LayerCustomRecipes</code> object that specifies the layer's custom recipes.</p>
+-- @param AutoAssignElasticIps [Boolean] <p>Whether to automatically assign an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address</a> to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- @param Name [String] <p>The layer name, which is used by the console.</p>
+-- @param CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] <p>Specifies CloudWatch Logs configuration options for the layer. For more information, see <a>CloudWatchLogsLogStream</a>.</p>
+-- @param CustomJson [String] <p>A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html"> Using Custom JSON</a>. </p>
+-- @param VolumeConfigurations [VolumeConfigurations] <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon EBS volumes.</p>
+-- @param AutoAssignPublicIps [Boolean] <p>For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- @param EnableAutoHealing [Boolean] <p>Whether to disable auto healing for the layer.</p>
+-- @param CustomInstanceProfileArn [String] <p>The ARN of an IAM profile to be used for all of the layer's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @param UseEbsOptimizedInstances [Boolean] <p>Whether to use Amazon EBS-optimized instances.</p>
+-- @param LayerId [String] <p>The layer ID.</p>
+-- @param Attributes [LayerAttributes] <p>One or more user-defined key/value pairs to be added to the stack attributes.</p>
+-- @param Shortname [String] <p>For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\A[a-z0-9\-\_\.]+\Z/.</p> <p>The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html">Layer Reference</a> </p>
+-- @param Packages [Strings] <p>An array of <code>Package</code> objects that describe the layer's packages.</p>
+-- @param CustomSecurityGroupIds [Strings] <p>An array containing the layer's custom security group IDs.</p>
+-- @param InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
 -- Required parameter: LayerId
 function M.UpdateLayerRequest(LifecycleEventConfiguration, CustomRecipes, AutoAssignElasticIps, Name, CloudWatchLogsConfiguration, CustomJson, VolumeConfigurations, AutoAssignPublicIps, EnableAutoHealing, CustomInstanceProfileArn, UseEbsOptimizedInstances, LayerId, Attributes, Shortname, Packages, CustomSecurityGroupIds, InstallUpdatesOnBoot, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateLayerRequest")
@@ -3988,7 +3988,7 @@ end
 
 --- Create a structure of type UnassignInstanceRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID.</p>
 -- Required parameter: InstanceId
 function M.UnassignInstanceRequest(InstanceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnassignInstanceRequest")
@@ -4011,8 +4011,8 @@ function M.AssertCreateLayerResult(struct)
 end
 
 --- Create a structure of type CreateLayerResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;CreateLayer&lt;/code&gt; request.&lt;/p&gt;
--- @param LayerId [String] &lt;p&gt;The layer ID.&lt;/p&gt;
+-- <p>Contains the response to a <code>CreateLayer</code> request.</p>
+-- @param LayerId [String] <p>The layer ID.</p>
 function M.CreateLayerResult(LayerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLayerResult")
 	local t = { 
@@ -4035,9 +4035,9 @@ function M.AssertCloudWatchLogsConfiguration(struct)
 end
 
 --- Create a structure of type CloudWatchLogsConfiguration
--- &lt;p&gt;Describes the Amazon CloudWatch logs configuration for a layer.&lt;/p&gt;
--- @param LogStreams [CloudWatchLogsLogStreams] &lt;p&gt;A list of configuration options for CloudWatch Logs.&lt;/p&gt;
--- @param Enabled [Boolean] &lt;p&gt;Whether CloudWatch Logs is enabled for a layer.&lt;/p&gt;
+-- <p>Describes the Amazon CloudWatch logs configuration for a layer.</p>
+-- @param LogStreams [CloudWatchLogsLogStreams] <p>A list of configuration options for CloudWatch Logs.</p>
+-- @param Enabled [Boolean] <p>Whether CloudWatch Logs is enabled for a layer.</p>
 function M.CloudWatchLogsConfiguration(LogStreams, Enabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchLogsConfiguration")
 	local t = { 
@@ -4063,8 +4063,8 @@ end
 
 --- Create a structure of type GrantAccessRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance's AWS OpsWorks Stacks ID.&lt;/p&gt;
--- @param ValidForInMinutes [ValidForInMinutes] &lt;p&gt;The length of time (in minutes) that the grant is valid. When the grant expires at the end of this period, the user will no longer be able to use the credentials to log in. If the user is logged in at the time, he or she automatically will be logged out.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance's AWS OpsWorks Stacks ID.</p>
+-- @param ValidForInMinutes [ValidForInMinutes] <p>The length of time (in minutes) that the grant is valid. When the grant expires at the end of this period, the user will no longer be able to use the credentials to log in. If the user is logged in at the time, he or she automatically will be logged out.</p>
 -- Required parameter: InstanceId
 function M.GrantAccessRequest(InstanceId, ValidForInMinutes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GrantAccessRequest")
@@ -4088,8 +4088,8 @@ function M.AssertRegisterVolumeResult(struct)
 end
 
 --- Create a structure of type RegisterVolumeResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;RegisterVolume&lt;/code&gt; request.&lt;/p&gt;
--- @param VolumeId [String] &lt;p&gt;The volume ID.&lt;/p&gt;
+-- <p>Contains the response to a <code>RegisterVolume</code> request.</p>
+-- @param VolumeId [String] <p>The volume ID.</p>
 function M.RegisterVolumeResult(VolumeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterVolumeResult")
 	local t = { 
@@ -4123,20 +4123,20 @@ function M.AssertVolume(struct)
 end
 
 --- Create a structure of type Volume
--- &lt;p&gt;Describes an instance's Amazon EBS volume.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The value returned by &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html&quot;&gt;DescribeVolumes&lt;/a&gt;.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The volume Availability Zone. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The volume name.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param Region [String] &lt;p&gt;The AWS region. For more information about AWS regions, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;.&lt;/p&gt;
--- @param VolumeType [String] &lt;p&gt;The volume type, standard or PIOPS.&lt;/p&gt;
--- @param VolumeId [String] &lt;p&gt;The volume ID.&lt;/p&gt;
--- @param Device [String] &lt;p&gt;The device name.&lt;/p&gt;
--- @param RaidArrayId [String] &lt;p&gt;The RAID array ID.&lt;/p&gt;
--- @param Ec2VolumeId [String] &lt;p&gt;The Amazon EC2 volume ID.&lt;/p&gt;
--- @param MountPoint [String] &lt;p&gt;The volume mount point. For example, &quot;/mnt/disk1&quot;.&lt;/p&gt;
--- @param Iops [Integer] &lt;p&gt;For PIOPS volumes, the IOPS per disk.&lt;/p&gt;
--- @param Size [Integer] &lt;p&gt;The volume size.&lt;/p&gt;
+-- <p>Describes an instance's Amazon EBS volume.</p>
+-- @param Status [String] <p>The value returned by <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html">DescribeVolumes</a>.</p>
+-- @param AvailabilityZone [String] <p>The volume Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- @param Name [String] <p>The volume name.</p>
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param Region [String] <p>The AWS region. For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- @param VolumeType [String] <p>The volume type, standard or PIOPS.</p>
+-- @param VolumeId [String] <p>The volume ID.</p>
+-- @param Device [String] <p>The device name.</p>
+-- @param RaidArrayId [String] <p>The RAID array ID.</p>
+-- @param Ec2VolumeId [String] <p>The Amazon EC2 volume ID.</p>
+-- @param MountPoint [String] <p>The volume mount point. For example, "/mnt/disk1".</p>
+-- @param Iops [Integer] <p>For PIOPS volumes, the IOPS per disk.</p>
+-- @param Size [Integer] <p>The volume size.</p>
 function M.Volume(Status, AvailabilityZone, Name, InstanceId, Region, VolumeType, VolumeId, Device, RaidArrayId, Ec2VolumeId, MountPoint, Iops, Size, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Volume")
 	local t = { 
@@ -4172,7 +4172,7 @@ end
 
 --- Create a structure of type DeleteAppRequest
 --  
--- @param AppId [String] &lt;p&gt;The app ID.&lt;/p&gt;
+-- @param AppId [String] <p>The app ID.</p>
 -- Required parameter: AppId
 function M.DeleteAppRequest(AppId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAppRequest")
@@ -4195,8 +4195,8 @@ function M.AssertGrantAccessResult(struct)
 end
 
 --- Create a structure of type GrantAccessResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;GrantAccess&lt;/code&gt; request.&lt;/p&gt;
--- @param TemporaryCredential [TemporaryCredential] &lt;p&gt;A &lt;code&gt;TemporaryCredential&lt;/code&gt; object that contains the data needed to log in to the instance by RDP clients, such as the Microsoft Remote Desktop Connection.&lt;/p&gt;
+-- <p>Contains the response to a <code>GrantAccess</code> request.</p>
+-- @param TemporaryCredential [TemporaryCredential] <p>A <code>TemporaryCredential</code> object that contains the data needed to log in to the instance by RDP clients, such as the Microsoft Remote Desktop Connection.</p>
 function M.GrantAccessResult(TemporaryCredential, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GrantAccessResult")
 	local t = { 
@@ -4231,18 +4231,18 @@ end
 
 --- Create a structure of type UpdateInstanceRequest
 --  
--- @param AmiId [String] &lt;p&gt;The ID of the AMI that was used to create the instance. The value of this parameter must be the same AMI ID that the instance is already using. You cannot apply a new AMI to an instance by running UpdateInstance. UpdateInstance does not work on instances that are using custom AMIs. &lt;/p&gt;
--- @param LayerIds [Strings] &lt;p&gt;The instance's layer IDs.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param SshKeyName [String] &lt;p&gt;The instance's Amazon EC2 key name.&lt;/p&gt;
--- @param Hostname [String] &lt;p&gt;The instance host name.&lt;/p&gt;
--- @param EbsOptimized [Boolean] &lt;p&gt;This property cannot be updated.&lt;/p&gt;
--- @param Architecture [Architecture] &lt;p&gt;The instance architecture. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html&quot;&gt;Instance Families and Types&lt;/a&gt;.&lt;/p&gt;
--- @param AutoScalingType [AutoScalingType] &lt;p&gt;For load-based or time-based instances, the type. Windows stacks can use only time-based instances.&lt;/p&gt;
--- @param InstallUpdatesOnBoot [Boolean] &lt;p&gt;Whether to install operating system and package updates when the instance boots. The default value is &lt;code&gt;true&lt;/code&gt;. To control when updates are installed, set this value to &lt;code&gt;false&lt;/code&gt;. You must then update your instances manually by using &lt;a&gt;CreateDeployment&lt;/a&gt; to run the &lt;code&gt;update_dependencies&lt;/code&gt; stack command or by manually running &lt;code&gt;yum&lt;/code&gt; (Amazon Linux) or &lt;code&gt;apt-get&lt;/code&gt; (Ubuntu) on the instances. &lt;/p&gt; &lt;note&gt; &lt;p&gt;We strongly recommend using the default value of &lt;code&gt;true&lt;/code&gt;, to ensure that your instances have the latest security updates.&lt;/p&gt; &lt;/note&gt;
--- @param Os [String] &lt;p&gt;The instance's operating system, which must be set to one of the following. You cannot update an instance that is using a custom AMI.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A supported Linux operating system: An Amazon Linux version, such as &lt;code&gt;Amazon Linux 2017.03&lt;/code&gt;, &lt;code&gt;Amazon Linux 2016.09&lt;/code&gt;, &lt;code&gt;Amazon Linux 2016.03&lt;/code&gt;, &lt;code&gt;Amazon Linux 2015.09&lt;/code&gt;, or &lt;code&gt;Amazon Linux 2015.03&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A supported Ubuntu operating system, such as &lt;code&gt;Ubuntu 16.04 LTS&lt;/code&gt;, &lt;code&gt;Ubuntu 14.04 LTS&lt;/code&gt;, or &lt;code&gt;Ubuntu 12.04 LTS&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CentOS Linux 7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Red Hat Enterprise Linux 7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A supported Windows operating system, such as &lt;code&gt;Microsoft Windows Server 2012 R2 Base&lt;/code&gt;, &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Express&lt;/code&gt;, &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Standard&lt;/code&gt;, or &lt;code&gt;Microsoft Windows Server 2012 R2 with SQL Server Web&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information on the supported operating systems, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html&quot;&gt;AWS OpsWorks Stacks Operating Systems&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The default option is the current Amazon Linux version. If you set this parameter to &lt;code&gt;Custom&lt;/code&gt;, you must use the AmiId parameter to specify the custom AMI that you want to use. For more information on the supported operating systems, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html&quot;&gt;Operating Systems&lt;/a&gt;. For more information on how to use custom AMIs with OpsWorks, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html&quot;&gt;Using Custom AMIs&lt;/a&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You can specify a different Linux operating system for the updated stack, but you cannot change from Linux to Windows or Windows to Linux.&lt;/p&gt; &lt;/note&gt;
--- @param InstanceType [String] &lt;p&gt;The instance type, such as &lt;code&gt;t2.micro&lt;/code&gt;. For a list of supported instance types, open the stack in the console, choose &lt;b&gt;Instances&lt;/b&gt;, and choose &lt;b&gt;+ Instance&lt;/b&gt;. The &lt;b&gt;Size&lt;/b&gt; list contains the currently supported types. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html&quot;&gt;Instance Families and Types&lt;/a&gt;. The parameter values that you use to specify the various types are in the &lt;b&gt;API Name&lt;/b&gt; column of the &lt;b&gt;Available Instance Types&lt;/b&gt; table.&lt;/p&gt;
--- @param AgentVersion [String] &lt;p&gt;The default AWS OpsWorks Stacks agent version. You have the following options:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;INHERIT&lt;/code&gt; - Use the stack's default agent version setting.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;version_number&lt;/i&gt; - Use the specified agent version. This value overrides the stack's default setting. To update the agent version, you must edit the instance configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the instance.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The default setting is &lt;code&gt;INHERIT&lt;/code&gt;. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call &lt;a&gt;DescribeAgentVersions&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;AgentVersion cannot be set to Chef 12.2.&lt;/p&gt;
+-- @param AmiId [String] <p>The ID of the AMI that was used to create the instance. The value of this parameter must be the same AMI ID that the instance is already using. You cannot apply a new AMI to an instance by running UpdateInstance. UpdateInstance does not work on instances that are using custom AMIs. </p>
+-- @param LayerIds [Strings] <p>The instance's layer IDs.</p>
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param SshKeyName [String] <p>The instance's Amazon EC2 key name.</p>
+-- @param Hostname [String] <p>The instance host name.</p>
+-- @param EbsOptimized [Boolean] <p>This property cannot be updated.</p>
+-- @param Architecture [Architecture] <p>The instance architecture. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.</p>
+-- @param AutoScalingType [AutoScalingType] <p>For load-based or time-based instances, the type. Windows stacks can use only time-based instances.</p>
+-- @param InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
+-- @param Os [String] <p>The instance's operating system, which must be set to one of the following. You cannot update an instance that is using a custom AMI.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> </ul> <p>For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you must use the AmiId parameter to specify the custom AMI that you want to use. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For more information on how to use custom AMIs with OpsWorks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> <note> <p>You can specify a different Linux operating system for the updated stack, but you cannot change from Linux to Windows or Windows to Linux.</p> </note>
+-- @param InstanceType [String] <p>The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack in the console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the currently supported types. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>. The parameter values that you use to specify the various types are in the <b>API Name</b> column of the <b>Available Instance Types</b> table.</p>
+-- @param AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting. To update the agent version, you must edit the instance configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the instance.</p> </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>.</p> <p>AgentVersion cannot be set to Chef 12.2.</p>
 -- Required parameter: InstanceId
 function M.UpdateInstanceRequest(AmiId, LayerIds, InstanceId, SshKeyName, Hostname, EbsOptimized, Architecture, AutoScalingType, InstallUpdatesOnBoot, Os, InstanceType, AgentVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateInstanceRequest")
@@ -4287,19 +4287,19 @@ function M.AssertDeployment(struct)
 end
 
 --- Create a structure of type Deployment
--- &lt;p&gt;Describes a deployment of a stack or app.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param Comment [String] &lt;p&gt;A user-defined comment.&lt;/p&gt;
--- @param CompletedAt [DateTime] &lt;p&gt;Date when the deployment completed.&lt;/p&gt;
--- @param CustomJson [String] &lt;p&gt;A string that contains user-defined custom JSON. It can be used to override the corresponding default stack configuration attribute values for stack or to pass data to recipes. The string should be in the following format:&lt;/p&gt; &lt;p&gt; &lt;code&gt;&quot;{\&quot;key1\&quot;: \&quot;value1\&quot;, \&quot;key2\&quot;: \&quot;value2\&quot;,...}&quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information on custom JSON, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html&quot;&gt;Use Custom JSON to Modify the Stack Configuration Attributes&lt;/a&gt;.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The deployment status:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;running&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;successful&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;failed&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param IamUserArn [String] &lt;p&gt;The user's IAM ARN.&lt;/p&gt;
--- @param DeploymentId [String] &lt;p&gt;The deployment ID.&lt;/p&gt;
--- @param Command [DeploymentCommand] &lt;p&gt;Describes a deployment of a stack or app.&lt;/p&gt;
--- @param InstanceIds [Strings] &lt;p&gt;The IDs of the target instances.&lt;/p&gt;
--- @param AppId [String] &lt;p&gt;The app ID.&lt;/p&gt;
--- @param Duration [Integer] &lt;p&gt;The deployment duration.&lt;/p&gt;
--- @param CreatedAt [DateTime] &lt;p&gt;Date when the deployment was created.&lt;/p&gt;
+-- <p>Describes a deployment of a stack or app.</p>
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param Comment [String] <p>A user-defined comment.</p>
+-- @param CompletedAt [DateTime] <p>Date when the deployment completed.</p>
+-- @param CustomJson [String] <p>A string that contains user-defined custom JSON. It can be used to override the corresponding default stack configuration attribute values for stack or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
+-- @param Status [String] <p>The deployment status:</p> <ul> <li> <p>running</p> </li> <li> <p>successful</p> </li> <li> <p>failed</p> </li> </ul>
+-- @param IamUserArn [String] <p>The user's IAM ARN.</p>
+-- @param DeploymentId [String] <p>The deployment ID.</p>
+-- @param Command [DeploymentCommand] <p>Describes a deployment of a stack or app.</p>
+-- @param InstanceIds [Strings] <p>The IDs of the target instances.</p>
+-- @param AppId [String] <p>The app ID.</p>
+-- @param Duration [Integer] <p>The deployment duration.</p>
+-- @param CreatedAt [DateTime] <p>Date when the deployment was created.</p>
 function M.Deployment(StackId, Comment, CompletedAt, CustomJson, Status, IamUserArn, DeploymentId, Command, InstanceIds, AppId, Duration, CreatedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Deployment")
 	local t = { 
@@ -4332,8 +4332,8 @@ function M.AssertDescribeLayersResult(struct)
 end
 
 --- Create a structure of type DescribeLayersResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeLayers&lt;/code&gt; request.&lt;/p&gt;
--- @param Layers [Layers] &lt;p&gt;An array of &lt;code&gt;Layer&lt;/code&gt; objects that describe the layers.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeLayers</code> request.</p>
+-- @param Layers [Layers] <p>An array of <code>Layer</code> objects that describe the layers.</p>
 function M.DescribeLayersResult(Layers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLayersResult")
 	local t = { 
@@ -4357,7 +4357,7 @@ end
 
 --- Create a structure of type DeregisterEcsClusterRequest
 --  
--- @param EcsClusterArn [String] &lt;p&gt;The cluster's ARN.&lt;/p&gt;
+-- @param EcsClusterArn [String] <p>The cluster's ARN.</p>
 -- Required parameter: EcsClusterArn
 function M.DeregisterEcsClusterRequest(EcsClusterArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterEcsClusterRequest")
@@ -4381,9 +4381,9 @@ function M.AssertDescribeStackProvisioningParametersResult(struct)
 end
 
 --- Create a structure of type DescribeStackProvisioningParametersResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeStackProvisioningParameters&lt;/code&gt; request.&lt;/p&gt;
--- @param AgentInstallerUrl [String] &lt;p&gt;The AWS OpsWorks Stacks agent installer's URL.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;An embedded object that contains the provisioning parameters.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeStackProvisioningParameters</code> request.</p>
+-- @param AgentInstallerUrl [String] <p>The AWS OpsWorks Stacks agent installer's URL.</p>
+-- @param Parameters [Parameters] <p>An embedded object that contains the provisioning parameters.</p>
 function M.DescribeStackProvisioningParametersResult(AgentInstallerUrl, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackProvisioningParametersResult")
 	local t = { 
@@ -4427,29 +4427,29 @@ function M.AssertStack(struct)
 end
 
 --- Create a structure of type Stack
--- &lt;p&gt;Describes a stack.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param HostnameTheme [String] &lt;p&gt;The stack host name theme, with spaces replaced by underscores.&lt;/p&gt;
--- @param UseCustomCookbooks [Boolean] &lt;p&gt;Whether the stack uses custom cookbooks.&lt;/p&gt;
--- @param DefaultSshKeyName [String] &lt;p&gt;A default Amazon EC2 key pair for the stack's instances. You can override this value when you create or update an instance.&lt;/p&gt;
--- @param ChefConfiguration [ChefConfiguration] &lt;p&gt;A &lt;code&gt;ChefConfiguration&lt;/code&gt; object that specifies whether to enable Berkshelf and the Berkshelf version. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html&quot;&gt;Create a New Stack&lt;/a&gt;.&lt;/p&gt;
--- @param UseOpsworksSecurityGroups [Boolean] &lt;p&gt;Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the stack's layers.&lt;/p&gt;
--- @param ServiceRoleArn [String] &lt;p&gt;The stack AWS Identity and Access Management (IAM) role.&lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;The VPC ID; applicable only if the stack is running in a VPC.&lt;/p&gt;
--- @param ConfigurationManager [StackConfigurationManager] &lt;p&gt;The configuration manager.&lt;/p&gt;
--- @param CustomCookbooksSource [Source] &lt;p&gt;Describes a stack.&lt;/p&gt;
--- @param AgentVersion [String] &lt;p&gt;The agent version. This parameter is set to &lt;code&gt;LATEST&lt;/code&gt; for auto-update. or a version number for a fixed agent version.&lt;/p&gt;
--- @param DefaultAvailabilityZone [String] &lt;p&gt;The stack's default Availability Zone. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;.&lt;/p&gt;
--- @param CreatedAt [DateTime] &lt;p&gt;The date when the stack was created.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The stack name.&lt;/p&gt;
--- @param Region [String] &lt;p&gt;The stack AWS region, such as &quot;ap-northeast-2&quot;. For more information about AWS regions, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html&quot;&gt;Regions and Endpoints&lt;/a&gt;.&lt;/p&gt;
--- @param DefaultInstanceProfileArn [String] &lt;p&gt;The ARN of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
--- @param Attributes [StackAttributes] &lt;p&gt;The stack's attributes.&lt;/p&gt;
--- @param DefaultOs [String] &lt;p&gt;The stack's default operating system.&lt;/p&gt;
--- @param DefaultSubnetId [String] &lt;p&gt;The default subnet ID; applicable only if the stack is running in a VPC.&lt;/p&gt;
--- @param DefaultRootDeviceType [RootDeviceType] &lt;p&gt;The default root device type. This value is used by default for all instances in the stack, but you can override it when you create an instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device&quot;&gt;Storage for the Root Device&lt;/a&gt;.&lt;/p&gt;
--- @param CustomJson [String] &lt;p&gt;A JSON object that contains user-defined attributes to be added to the stack configuration and deployment attributes. You can use custom JSON to override the corresponding default stack configuration attribute values or to pass data to recipes. The string should be in the following format:&lt;/p&gt; &lt;p&gt; &lt;code&gt;&quot;{\&quot;key1\&quot;: \&quot;value1\&quot;, \&quot;key2\&quot;: \&quot;value2\&quot;,...}&quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information on custom JSON, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html&quot;&gt;Use Custom JSON to Modify the Stack Configuration Attributes&lt;/a&gt;.&lt;/p&gt;
--- @param Arn [String] &lt;p&gt;The stack's ARN.&lt;/p&gt;
+-- <p>Describes a stack.</p>
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param HostnameTheme [String] <p>The stack host name theme, with spaces replaced by underscores.</p>
+-- @param UseCustomCookbooks [Boolean] <p>Whether the stack uses custom cookbooks.</p>
+-- @param DefaultSshKeyName [String] <p>A default Amazon EC2 key pair for the stack's instances. You can override this value when you create or update an instance.</p>
+-- @param ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- @param UseOpsworksSecurityGroups [Boolean] <p>Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p>
+-- @param ServiceRoleArn [String] <p>The stack AWS Identity and Access Management (IAM) role.</p>
+-- @param VpcId [String] <p>The VPC ID; applicable only if the stack is running in a VPC.</p>
+-- @param ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
+-- @param CustomCookbooksSource [Source] <p>Describes a stack.</p>
+-- @param AgentVersion [String] <p>The agent version. This parameter is set to <code>LATEST</code> for auto-update. or a version number for a fixed agent version.</p>
+-- @param DefaultAvailabilityZone [String] <p>The stack's default Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- @param CreatedAt [DateTime] <p>The date when the stack was created.</p>
+-- @param Name [String] <p>The stack name.</p>
+-- @param Region [String] <p>The stack AWS region, such as "ap-northeast-2". For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- @param DefaultInstanceProfileArn [String] <p>The ARN of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @param Attributes [StackAttributes] <p>The stack's attributes.</p>
+-- @param DefaultOs [String] <p>The stack's default operating system.</p>
+-- @param DefaultSubnetId [String] <p>The default subnet ID; applicable only if the stack is running in a VPC.</p>
+-- @param DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is used by default for all instances in the stack, but you can override it when you create an instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- @param CustomJson [String] <p>A JSON object that contains user-defined attributes to be added to the stack configuration and deployment attributes. You can use custom JSON to override the corresponding default stack configuration attribute values or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
+-- @param Arn [String] <p>The stack's ARN.</p>
 function M.Stack(StackId, HostnameTheme, UseCustomCookbooks, DefaultSshKeyName, ChefConfiguration, UseOpsworksSecurityGroups, ServiceRoleArn, VpcId, ConfigurationManager, CustomCookbooksSource, AgentVersion, DefaultAvailabilityZone, CreatedAt, Name, Region, DefaultInstanceProfileArn, Attributes, DefaultOs, DefaultSubnetId, DefaultRootDeviceType, CustomJson, Arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Stack")
 	local t = { 
@@ -4495,8 +4495,8 @@ end
 
 --- Create a structure of type RegisterVolumeRequest
 --  
--- @param Ec2VolumeId [String] &lt;p&gt;The Amazon EBS volume ID.&lt;/p&gt;
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
+-- @param Ec2VolumeId [String] <p>The Amazon EBS volume ID.</p>
+-- @param StackId [String] <p>The stack ID.</p>
 -- Required parameter: StackId
 function M.RegisterVolumeRequest(Ec2VolumeId, StackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterVolumeRequest")
@@ -4520,8 +4520,8 @@ function M.AssertRegisterElasticIpResult(struct)
 end
 
 --- Create a structure of type RegisterElasticIpResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;RegisterElasticIp&lt;/code&gt; request.&lt;/p&gt;
--- @param ElasticIp [String] &lt;p&gt;The Elastic IP address.&lt;/p&gt;
+-- <p>Contains the response to a <code>RegisterElasticIp</code> request.</p>
+-- @param ElasticIp [String] <p>The Elastic IP address.</p>
 function M.RegisterElasticIpResult(ElasticIp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterElasticIpResult")
 	local t = { 
@@ -4545,7 +4545,7 @@ end
 
 --- Create a structure of type DescribeLoadBasedAutoScalingRequest
 --  
--- @param LayerIds [Strings] &lt;p&gt;An array of layer IDs.&lt;/p&gt;
+-- @param LayerIds [Strings] <p>An array of layer IDs.</p>
 -- Required parameter: LayerIds
 function M.DescribeLoadBasedAutoScalingRequest(LayerIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBasedAutoScalingRequest")
@@ -4568,8 +4568,8 @@ function M.AssertLifecycleEventConfiguration(struct)
 end
 
 --- Create a structure of type LifecycleEventConfiguration
--- &lt;p&gt;Specifies the lifecycle event configuration&lt;/p&gt;
--- @param Shutdown [ShutdownEventConfiguration] &lt;p&gt;A &lt;code&gt;ShutdownEventConfiguration&lt;/code&gt; object that specifies the Shutdown event configuration.&lt;/p&gt;
+-- <p>Specifies the lifecycle event configuration</p>
+-- @param Shutdown [ShutdownEventConfiguration] <p>A <code>ShutdownEventConfiguration</code> object that specifies the Shutdown event configuration.</p>
 function M.LifecycleEventConfiguration(Shutdown, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleEventConfiguration")
 	local t = { 
@@ -4601,18 +4601,18 @@ function M.AssertCloudWatchLogsLogStream(struct)
 end
 
 --- Create a structure of type CloudWatchLogsLogStream
--- &lt;p&gt;Describes the Amazon CloudWatch logs configuration for a layer. For detailed information about members of this data type, see the &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html&quot;&gt;CloudWatch Logs Agent Reference&lt;/a&gt;.&lt;/p&gt;
--- @param InitialPosition [CloudWatchLogsInitialPosition] &lt;p&gt;Specifies where to start to read data (start_of_file or end_of_file). The default is start_of_file. This setting is only used if there is no state persisted for that log stream.&lt;/p&gt;
--- @param Encoding [CloudWatchLogsEncoding] &lt;p&gt;Specifies the encoding of the log file so that the file can be read correctly. The default is &lt;code&gt;utf_8&lt;/code&gt;. Encodings supported by Python &lt;code&gt;codecs.decode()&lt;/code&gt; can be used here.&lt;/p&gt;
--- @param BatchSize [Integer] &lt;p&gt;Specifies the maximum size of log events in a batch, in bytes, up to 1048576 bytes. The default value is 32768 bytes. This size is calculated as the sum of all event messages in UTF-8, plus 26 bytes for each log event.&lt;/p&gt;
--- @param BufferDuration [Integer] &lt;p&gt;Specifies the time duration for the batching of log events. The minimum value is 5000ms and default value is 5000ms.&lt;/p&gt;
--- @param MultiLineStartPattern [String] &lt;p&gt;Specifies the pattern for identifying the start of a log message.&lt;/p&gt;
--- @param LogGroupName [String] &lt;p&gt;Specifies the destination log group. A log group is created automatically if it doesn't already exist. Log group names can be between 1 and 512 characters long. Allowed characters include a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), and '.' (period).&lt;/p&gt;
--- @param File [String] &lt;p&gt;Specifies log files that you want to push to CloudWatch Logs.&lt;/p&gt; &lt;p&gt; &lt;code&gt;File&lt;/code&gt; can point to a specific file or multiple files (by using wild card characters such as &lt;code&gt;/var/log/system.log*&lt;/code&gt;). Only the latest file is pushed to CloudWatch Logs, based on file modification time. We recommend that you use wild card characters to specify a series of files of the same type, such as &lt;code&gt;access_log.2014-06-01-01&lt;/code&gt;, &lt;code&gt;access_log.2014-06-01-02&lt;/code&gt;, and so on by using a pattern like &lt;code&gt;access_log.*&lt;/code&gt;. Don't use a wildcard to match multiple file types, such as &lt;code&gt;access_log_80&lt;/code&gt; and &lt;code&gt;access_log_443&lt;/code&gt;. To specify multiple, different file types, add another log stream entry to the configuration file, so that each log file type is stored in a different log group.&lt;/p&gt; &lt;p&gt;Zipped files are not supported.&lt;/p&gt;
--- @param BatchCount [Integer] &lt;p&gt;Specifies the max number of log events in a batch, up to 10000. The default value is 1000.&lt;/p&gt;
--- @param DatetimeFormat [String] &lt;p&gt;Specifies how the time stamp is extracted from logs. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html&quot;&gt;CloudWatch Logs Agent Reference&lt;/a&gt;.&lt;/p&gt;
--- @param TimeZone [CloudWatchLogsTimeZone] &lt;p&gt;Specifies the time zone of log event time stamps.&lt;/p&gt;
--- @param FileFingerprintLines [String] &lt;p&gt;Specifies the range of lines for identifying a file. The valid values are one number, or two dash-delimited numbers, such as '1', '2-5'. The default value is '1', meaning the first line is used to calculate the fingerprint. Fingerprint lines are not sent to CloudWatch Logs unless all specified lines are available.&lt;/p&gt;
+-- <p>Describes the Amazon CloudWatch logs configuration for a layer. For detailed information about members of this data type, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html">CloudWatch Logs Agent Reference</a>.</p>
+-- @param InitialPosition [CloudWatchLogsInitialPosition] <p>Specifies where to start to read data (start_of_file or end_of_file). The default is start_of_file. This setting is only used if there is no state persisted for that log stream.</p>
+-- @param Encoding [CloudWatchLogsEncoding] <p>Specifies the encoding of the log file so that the file can be read correctly. The default is <code>utf_8</code>. Encodings supported by Python <code>codecs.decode()</code> can be used here.</p>
+-- @param BatchSize [Integer] <p>Specifies the maximum size of log events in a batch, in bytes, up to 1048576 bytes. The default value is 32768 bytes. This size is calculated as the sum of all event messages in UTF-8, plus 26 bytes for each log event.</p>
+-- @param BufferDuration [Integer] <p>Specifies the time duration for the batching of log events. The minimum value is 5000ms and default value is 5000ms.</p>
+-- @param MultiLineStartPattern [String] <p>Specifies the pattern for identifying the start of a log message.</p>
+-- @param LogGroupName [String] <p>Specifies the destination log group. A log group is created automatically if it doesn't already exist. Log group names can be between 1 and 512 characters long. Allowed characters include a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), and '.' (period).</p>
+-- @param File [String] <p>Specifies log files that you want to push to CloudWatch Logs.</p> <p> <code>File</code> can point to a specific file or multiple files (by using wild card characters such as <code>/var/log/system.log*</code>). Only the latest file is pushed to CloudWatch Logs, based on file modification time. We recommend that you use wild card characters to specify a series of files of the same type, such as <code>access_log.2014-06-01-01</code>, <code>access_log.2014-06-01-02</code>, and so on by using a pattern like <code>access_log.*</code>. Don't use a wildcard to match multiple file types, such as <code>access_log_80</code> and <code>access_log_443</code>. To specify multiple, different file types, add another log stream entry to the configuration file, so that each log file type is stored in a different log group.</p> <p>Zipped files are not supported.</p>
+-- @param BatchCount [Integer] <p>Specifies the max number of log events in a batch, up to 10000. The default value is 1000.</p>
+-- @param DatetimeFormat [String] <p>Specifies how the time stamp is extracted from logs. For more information, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html">CloudWatch Logs Agent Reference</a>.</p>
+-- @param TimeZone [CloudWatchLogsTimeZone] <p>Specifies the time zone of log event time stamps.</p>
+-- @param FileFingerprintLines [String] <p>Specifies the range of lines for identifying a file. The valid values are one number, or two dash-delimited numbers, such as '1', '2-5'. The default value is '1', meaning the first line is used to calculate the fingerprint. Fingerprint lines are not sent to CloudWatch Logs unless all specified lines are available.</p>
 function M.CloudWatchLogsLogStream(InitialPosition, Encoding, BatchSize, BufferDuration, MultiLineStartPattern, LogGroupName, File, BatchCount, DatetimeFormat, TimeZone, FileFingerprintLines, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchLogsLogStream")
 	local t = { 
@@ -4645,9 +4645,9 @@ function M.AssertTimeBasedAutoScalingConfiguration(struct)
 end
 
 --- Create a structure of type TimeBasedAutoScalingConfiguration
--- &lt;p&gt;Describes an instance's time-based auto scaling configuration.&lt;/p&gt;
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param AutoScalingSchedule [WeeklyAutoScalingSchedule] &lt;p&gt;A &lt;code&gt;WeeklyAutoScalingSchedule&lt;/code&gt; object with the instance schedule.&lt;/p&gt;
+-- <p>Describes an instance's time-based auto scaling configuration.</p>
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param AutoScalingSchedule [WeeklyAutoScalingSchedule] <p>A <code>WeeklyAutoScalingSchedule</code> object with the instance schedule.</p>
 function M.TimeBasedAutoScalingConfiguration(InstanceId, AutoScalingSchedule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TimeBasedAutoScalingConfiguration")
 	local t = { 
@@ -4672,7 +4672,7 @@ end
 
 --- Create a structure of type DeregisterVolumeRequest
 --  
--- @param VolumeId [String] &lt;p&gt;The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks Stacks assigned to the instance when you registered the volume with the stack, not the Amazon EC2 volume ID.&lt;/p&gt;
+-- @param VolumeId [String] <p>The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks Stacks assigned to the instance when you registered the volume with the stack, not the Amazon EC2 volume ID.</p>
 -- Required parameter: VolumeId
 function M.DeregisterVolumeRequest(VolumeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterVolumeRequest")
@@ -4703,13 +4703,13 @@ end
 
 --- Create a structure of type RegisterInstanceRequest
 --  
--- @param StackId [String] &lt;p&gt;The ID of the stack that the instance is to be registered with.&lt;/p&gt;
--- @param RsaPublicKeyFingerprint [String] &lt;p&gt;The instances public RSA key fingerprint.&lt;/p&gt;
--- @param RsaPublicKey [String] &lt;p&gt;The instances public RSA key. This key is used to encrypt communication between the instance and the service.&lt;/p&gt;
--- @param Hostname [String] &lt;p&gt;The instance's hostname.&lt;/p&gt;
--- @param PrivateIp [String] &lt;p&gt;The instance's private IP address.&lt;/p&gt;
--- @param PublicIp [String] &lt;p&gt;The instance's public IP address.&lt;/p&gt;
--- @param InstanceIdentity [InstanceIdentity] &lt;p&gt;An InstanceIdentity object that contains the instance's identity.&lt;/p&gt;
+-- @param StackId [String] <p>The ID of the stack that the instance is to be registered with.</p>
+-- @param RsaPublicKeyFingerprint [String] <p>The instances public RSA key fingerprint.</p>
+-- @param RsaPublicKey [String] <p>The instances public RSA key. This key is used to encrypt communication between the instance and the service.</p>
+-- @param Hostname [String] <p>The instance's hostname.</p>
+-- @param PrivateIp [String] <p>The instance's private IP address.</p>
+-- @param PublicIp [String] <p>The instance's public IP address.</p>
+-- @param InstanceIdentity [InstanceIdentity] <p>An InstanceIdentity object that contains the instance's identity.</p>
 -- Required parameter: StackId
 function M.RegisterInstanceRequest(StackId, RsaPublicKeyFingerprint, RsaPublicKey, Hostname, PrivateIp, PublicIp, InstanceIdentity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterInstanceRequest")
@@ -4739,9 +4739,9 @@ function M.AssertGetHostnameSuggestionResult(struct)
 end
 
 --- Create a structure of type GetHostnameSuggestionResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;GetHostnameSuggestion&lt;/code&gt; request.&lt;/p&gt;
--- @param Hostname [String] &lt;p&gt;The generated host name.&lt;/p&gt;
--- @param LayerId [String] &lt;p&gt;The layer ID.&lt;/p&gt;
+-- <p>Contains the response to a <code>GetHostnameSuggestion</code> request.</p>
+-- @param Hostname [String] <p>The generated host name.</p>
+-- @param LayerId [String] <p>The layer ID.</p>
 function M.GetHostnameSuggestionResult(Hostname, LayerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetHostnameSuggestionResult")
 	local t = { 
@@ -4768,8 +4768,8 @@ end
 
 --- Create a structure of type AssignInstanceRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param LayerIds [Strings] &lt;p&gt;The layer ID, which must correspond to a custom layer. You cannot assign a registered instance to a built-in layer.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param LayerIds [Strings] <p>The layer ID, which must correspond to a custom layer. You cannot assign a registered instance to a built-in layer.</p>
 -- Required parameter: InstanceId
 -- Required parameter: LayerIds
 function M.AssignInstanceRequest(InstanceId, LayerIds, ...)
@@ -4798,8 +4798,8 @@ end
 
 --- Create a structure of type TagResourceRequest
 --  
--- @param ResourceArn [ResourceArn] &lt;p&gt;The stack or layer's Amazon Resource Number (ARN).&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;A map that contains tag keys and tag values that are attached to a stack or layer.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The key cannot be empty.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: &lt;code&gt;+ - = . _ : /&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: &lt;code&gt;+ - = . _ : /&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Leading and trailing white spaces are trimmed from both the key and value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A maximum of 40 tags is allowed for any resource.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param ResourceArn [ResourceArn] <p>The stack or layer's Amazon Resource Number (ARN).</p>
+-- @param Tags [Tags] <p>A map that contains tag keys and tag values that are attached to a stack or layer.</p> <ul> <li> <p>The key cannot be empty.</p> </li> <li> <p>The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> </p> </li> <li> <p>The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> </p> </li> <li> <p>Leading and trailing white spaces are trimmed from both the key and value.</p> </li> <li> <p>A maximum of 40 tags is allowed for any resource.</p> </li> </ul>
 -- Required parameter: ResourceArn
 -- Required parameter: Tags
 function M.TagResourceRequest(ResourceArn, Tags, ...)
@@ -4827,8 +4827,8 @@ end
 
 --- Create a structure of type AssignVolumeRequest
 --  
--- @param InstanceId [String] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param VolumeId [String] &lt;p&gt;The volume ID.&lt;/p&gt;
+-- @param InstanceId [String] <p>The instance ID.</p>
+-- @param VolumeId [String] <p>The volume ID.</p>
 -- Required parameter: VolumeId
 function M.AssignVolumeRequest(InstanceId, VolumeId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssignVolumeRequest")
@@ -4852,8 +4852,8 @@ function M.AssertDescribeServiceErrorsResult(struct)
 end
 
 --- Create a structure of type DescribeServiceErrorsResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeServiceErrors&lt;/code&gt; request.&lt;/p&gt;
--- @param ServiceErrors [ServiceErrors] &lt;p&gt;An array of &lt;code&gt;ServiceError&lt;/code&gt; objects that describe the specified service errors.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeServiceErrors</code> request.</p>
+-- @param ServiceErrors [ServiceErrors] <p>An array of <code>ServiceError</code> objects that describe the specified service errors.</p>
 function M.DescribeServiceErrorsResult(ServiceErrors, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServiceErrorsResult")
 	local t = { 
@@ -4875,8 +4875,8 @@ function M.AssertDescribeDeploymentsResult(struct)
 end
 
 --- Create a structure of type DescribeDeploymentsResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeDeployments&lt;/code&gt; request.&lt;/p&gt;
--- @param Deployments [Deployments] &lt;p&gt;An array of &lt;code&gt;Deployment&lt;/code&gt; objects that describe the deployments.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeDeployments</code> request.</p>
+-- @param Deployments [Deployments] <p>An array of <code>Deployment</code> objects that describe the deployments.</p>
 function M.DescribeDeploymentsResult(Deployments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeploymentsResult")
 	local t = { 
@@ -4903,10 +4903,10 @@ end
 
 --- Create a structure of type CreateUserProfileRequest
 --  
--- @param IamUserArn [String] &lt;p&gt;The user's IAM ARN; this can also be a federated user's ARN.&lt;/p&gt;
--- @param SshPublicKey [String] &lt;p&gt;The user's public SSH key.&lt;/p&gt;
--- @param AllowSelfManagement [Boolean] &lt;p&gt;Whether users can specify their own SSH public key through the My Settings page. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html&quot;&gt;Setting an IAM User's Public SSH Key&lt;/a&gt;.&lt;/p&gt;
--- @param SshUsername [String] &lt;p&gt;The user's SSH user name. The allowable characters are [a-z], [A-Z], [0-9], '-', and '_'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, &lt;code&gt;my.name&lt;/code&gt; will be changed to &lt;code&gt;myname&lt;/code&gt;. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name. &lt;/p&gt;
+-- @param IamUserArn [String] <p>The user's IAM ARN; this can also be a federated user's ARN.</p>
+-- @param SshPublicKey [String] <p>The user's public SSH key.</p>
+-- @param AllowSelfManagement [Boolean] <p>Whether users can specify their own SSH public key through the My Settings page. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's Public SSH Key</a>.</p>
+-- @param SshUsername [String] <p>The user's SSH user name. The allowable characters are [a-z], [A-Z], [0-9], '-', and '_'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, <code>my.name</code> will be changed to <code>myname</code>. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name. </p>
 -- Required parameter: IamUserArn
 function M.CreateUserProfileRequest(IamUserArn, SshPublicKey, AllowSelfManagement, SshUsername, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserProfileRequest")
@@ -4954,24 +4954,24 @@ end
 
 --- Create a structure of type CreateLayerRequest
 --  
--- @param StackId [String] &lt;p&gt;The layer stack ID.&lt;/p&gt;
--- @param LifecycleEventConfiguration [LifecycleEventConfiguration] &lt;p&gt;A &lt;code&gt;LifeCycleEventConfiguration&lt;/code&gt; object that you can use to configure the Shutdown event to specify an execution timeout and enable or disable Elastic Load Balancer connection draining.&lt;/p&gt;
--- @param AutoAssignElasticIps [Boolean] &lt;p&gt;Whether to automatically assign an &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html&quot;&gt;Elastic IP address&lt;/a&gt; to the layer's instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html&quot;&gt;How to Edit a Layer&lt;/a&gt;.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The layer name, which is used by the console.&lt;/p&gt;
--- @param CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] &lt;p&gt;Specifies CloudWatch Logs configuration options for the layer. For more information, see &lt;a&gt;CloudWatchLogsLogStream&lt;/a&gt;.&lt;/p&gt;
--- @param CustomJson [String] &lt;p&gt;A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html&quot;&gt; Using Custom JSON&lt;/a&gt;. This feature is supported as of version 1.7.42 of the AWS CLI. &lt;/p&gt;
--- @param CustomRecipes [Recipes] &lt;p&gt;A &lt;code&gt;LayerCustomRecipes&lt;/code&gt; object that specifies the layer custom recipes.&lt;/p&gt;
--- @param CustomSecurityGroupIds [Strings] &lt;p&gt;An array containing the layer custom security group IDs.&lt;/p&gt;
--- @param AutoAssignPublicIps [Boolean] &lt;p&gt;For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html&quot;&gt;How to Edit a Layer&lt;/a&gt;.&lt;/p&gt;
--- @param EnableAutoHealing [Boolean] &lt;p&gt;Whether to disable auto healing for the layer.&lt;/p&gt;
--- @param CustomInstanceProfileArn [String] &lt;p&gt;The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html&quot;&gt;Using Identifiers&lt;/a&gt;.&lt;/p&gt;
--- @param UseEbsOptimizedInstances [Boolean] &lt;p&gt;Whether to use Amazon EBS-optimized instances.&lt;/p&gt;
--- @param VolumeConfigurations [VolumeConfigurations] &lt;p&gt;A &lt;code&gt;VolumeConfigurations&lt;/code&gt; object that describes the layer's Amazon EBS volumes.&lt;/p&gt;
--- @param Attributes [LayerAttributes] &lt;p&gt;One or more user-defined key-value pairs to be added to the stack attributes.&lt;/p&gt; &lt;p&gt;To create a cluster layer, set the &lt;code&gt;EcsClusterArn&lt;/code&gt; attribute to the cluster's ARN.&lt;/p&gt;
--- @param Shortname [String] &lt;p&gt;For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, '-', '_', and '.'.&lt;/p&gt; &lt;p&gt;The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html&quot;&gt;Layer Reference&lt;/a&gt;.&lt;/p&gt;
--- @param Packages [Strings] &lt;p&gt;An array of &lt;code&gt;Package&lt;/code&gt; objects that describes the layer packages.&lt;/p&gt;
--- @param Type [LayerType] &lt;p&gt;The layer type. A stack cannot have more than one built-in layer of the same type. It can have any number of custom layers. Built-in layers are not available in Chef 12 stacks.&lt;/p&gt;
--- @param InstallUpdatesOnBoot [Boolean] &lt;p&gt;Whether to install operating system and package updates when the instance boots. The default value is &lt;code&gt;true&lt;/code&gt;. To control when updates are installed, set this value to &lt;code&gt;false&lt;/code&gt;. You must then update your instances manually by using &lt;a&gt;CreateDeployment&lt;/a&gt; to run the &lt;code&gt;update_dependencies&lt;/code&gt; stack command or by manually running &lt;code&gt;yum&lt;/code&gt; (Amazon Linux) or &lt;code&gt;apt-get&lt;/code&gt; (Ubuntu) on the instances. &lt;/p&gt; &lt;note&gt; &lt;p&gt;To ensure that your instances have the latest security updates, we strongly recommend using the default value of &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt;
+-- @param StackId [String] <p>The layer stack ID.</p>
+-- @param LifecycleEventConfiguration [LifecycleEventConfiguration] <p>A <code>LifeCycleEventConfiguration</code> object that you can use to configure the Shutdown event to specify an execution timeout and enable or disable Elastic Load Balancer connection draining.</p>
+-- @param AutoAssignElasticIps [Boolean] <p>Whether to automatically assign an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address</a> to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- @param Name [String] <p>The layer name, which is used by the console.</p>
+-- @param CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] <p>Specifies CloudWatch Logs configuration options for the layer. For more information, see <a>CloudWatchLogsLogStream</a>.</p>
+-- @param CustomJson [String] <p>A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html"> Using Custom JSON</a>. This feature is supported as of version 1.7.42 of the AWS CLI. </p>
+-- @param CustomRecipes [Recipes] <p>A <code>LayerCustomRecipes</code> object that specifies the layer custom recipes.</p>
+-- @param CustomSecurityGroupIds [Strings] <p>An array containing the layer custom security group IDs.</p>
+-- @param AutoAssignPublicIps [Boolean] <p>For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- @param EnableAutoHealing [Boolean] <p>Whether to disable auto healing for the layer.</p>
+-- @param CustomInstanceProfileArn [String] <p>The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @param UseEbsOptimizedInstances [Boolean] <p>Whether to use Amazon EBS-optimized instances.</p>
+-- @param VolumeConfigurations [VolumeConfigurations] <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon EBS volumes.</p>
+-- @param Attributes [LayerAttributes] <p>One or more user-defined key-value pairs to be added to the stack attributes.</p> <p>To create a cluster layer, set the <code>EcsClusterArn</code> attribute to the cluster's ARN.</p>
+-- @param Shortname [String] <p>For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, '-', '_', and '.'.</p> <p>The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html">Layer Reference</a>.</p>
+-- @param Packages [Strings] <p>An array of <code>Package</code> objects that describes the layer packages.</p>
+-- @param Type [LayerType] <p>The layer type. A stack cannot have more than one built-in layer of the same type. It can have any number of custom layers. Built-in layers are not available in Chef 12 stacks.</p>
+-- @param InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>To ensure that your instances have the latest security updates, we strongly recommend using the default value of <code>true</code>.</p> </note>
 -- Required parameter: StackId
 -- Required parameter: Type
 -- Required parameter: Name
@@ -5014,8 +5014,8 @@ function M.AssertDescribeMyUserProfileResult(struct)
 end
 
 --- Create a structure of type DescribeMyUserProfileResult
--- &lt;p&gt;Contains the response to a &lt;code&gt;DescribeMyUserProfile&lt;/code&gt; request.&lt;/p&gt;
--- @param UserProfile [SelfUserProfile] &lt;p&gt;A &lt;code&gt;UserProfile&lt;/code&gt; object that describes the user's SSH information.&lt;/p&gt;
+-- <p>Contains the response to a <code>DescribeMyUserProfile</code> request.</p>
+-- @param UserProfile [SelfUserProfile] <p>A <code>UserProfile</code> object that describes the user's SSH information.</p>
 function M.DescribeMyUserProfileResult(UserProfile, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMyUserProfileResult")
 	local t = { 
@@ -5041,10 +5041,10 @@ function M.AssertSslConfiguration(struct)
 end
 
 --- Create a structure of type SslConfiguration
--- &lt;p&gt;Describes an app's SSL configuration.&lt;/p&gt;
--- @param PrivateKey [String] &lt;p&gt;The private key; the contents of the certificate's domain.kex file.&lt;/p&gt;
--- @param Chain [String] &lt;p&gt;Optional. Can be used to specify an intermediate certificate authority key or client authentication.&lt;/p&gt;
--- @param Certificate [String] &lt;p&gt;The contents of the certificate's domain.crt file.&lt;/p&gt;
+-- <p>Describes an app's SSL configuration.</p>
+-- @param PrivateKey [String] <p>The private key; the contents of the certificate's domain.kex file.</p>
+-- @param Chain [String] <p>Optional. Can be used to specify an intermediate certificate authority key or client authentication.</p>
+-- @param Certificate [String] <p>The contents of the certificate's domain.crt file.</p>
 -- Required parameter: Certificate
 -- Required parameter: PrivateKey
 function M.SslConfiguration(PrivateKey, Chain, Certificate, ...)
@@ -5074,8 +5074,8 @@ end
 
 --- Create a structure of type RegisterEcsClusterRequest
 --  
--- @param StackId [String] &lt;p&gt;The stack ID.&lt;/p&gt;
--- @param EcsClusterArn [String] &lt;p&gt;The cluster's ARN.&lt;/p&gt;
+-- @param StackId [String] <p>The stack ID.</p>
+-- @param EcsClusterArn [String] <p>The cluster's ARN.</p>
 -- Required parameter: EcsClusterArn
 -- Required parameter: StackId
 function M.RegisterEcsClusterRequest(StackId, EcsClusterArn, ...)
@@ -5148,7 +5148,7 @@ function M.AssertCloudWatchLogsInitialPosition(str)
 	assert(type(str) == "string", "Expected CloudWatchLogsInitialPosition to be of type 'string'")
 end
 
--- &lt;p&gt;Specifies where to start to read data (start_of_file or end_of_file). The default is start_of_file. It's only used if there is no state persisted for that log stream.&lt;/p&gt;
+-- <p>Specifies where to start to read data (start_of_file or end_of_file). The default is start_of_file. It's only used if there is no state persisted for that log stream.</p>
 function M.CloudWatchLogsInitialPosition(str)
 	M.AssertCloudWatchLogsInitialPosition(str)
 	return str
@@ -5159,7 +5159,7 @@ function M.AssertCloudWatchLogsEncoding(str)
 	assert(type(str) == "string", "Expected CloudWatchLogsEncoding to be of type 'string'")
 end
 
--- &lt;p&gt;Specifies the encoding of the log file so that the file can be read correctly. The default is &lt;code&gt;utf_8&lt;/code&gt;. Encodings supported by Python &lt;code&gt;codecs.decode()&lt;/code&gt; can be used here.&lt;/p&gt;
+-- <p>Specifies the encoding of the log file so that the file can be read correctly. The default is <code>utf_8</code>. Encodings supported by Python <code>codecs.decode()</code> can be used here.</p>
 function M.CloudWatchLogsEncoding(str)
 	M.AssertCloudWatchLogsEncoding(str)
 	return str
@@ -5324,7 +5324,7 @@ function M.AssertCloudWatchLogsTimeZone(str)
 	assert(type(str) == "string", "Expected CloudWatchLogsTimeZone to be of type 'string'")
 end
 
--- &lt;p&gt;The preferred time zone for logs streamed to CloudWatch Logs. Valid values are &lt;code&gt;LOCAL&lt;/code&gt; and &lt;code&gt;UTC&lt;/code&gt;, for Coordinated Universal Time.&lt;/p&gt;
+-- <p>The preferred time zone for logs streamed to CloudWatch Logs. Valid values are <code>LOCAL</code> and <code>UTC</code>, for Coordinated Universal Time.</p>
 function M.CloudWatchLogsTimeZone(str)
 	M.AssertCloudWatchLogsTimeZone(str)
 	return str
@@ -5635,7 +5635,7 @@ function M.AssertCloudWatchLogsLogStreams(list)
 	end
 end
 
--- &lt;p&gt;Describes the Amazon CloudWatch logs configuration for a layer.&lt;/p&gt;
+-- <p>Describes the Amazon CloudWatch logs configuration for a layer.</p>
 -- List of CloudWatchLogsLogStream objects
 function M.CloudWatchLogsLogStreams(list)
 	M.AssertCloudWatchLogsLogStreams(list)

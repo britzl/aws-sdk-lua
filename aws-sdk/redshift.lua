@@ -55,10 +55,10 @@ function M.AssertClusterNode(struct)
 end
 
 --- Create a structure of type ClusterNode
--- &lt;p&gt;The identifier of a node in a cluster.&lt;/p&gt;
--- @param NodeRole [String] &lt;p&gt;Whether the node is a leader node or a compute node.&lt;/p&gt;
--- @param PrivateIPAddress [String] &lt;p&gt;The private IP address of a node within a cluster.&lt;/p&gt;
--- @param PublicIPAddress [String] &lt;p&gt;The public IP address of a node within a cluster.&lt;/p&gt;
+-- <p>The identifier of a node in a cluster.</p>
+-- @param NodeRole [String] <p>Whether the node is a leader node or a compute node.</p>
+-- @param PrivateIPAddress [String] <p>The private IP address of a node within a cluster.</p>
+-- @param PublicIPAddress [String] <p>The public IP address of a node within a cluster.</p>
 function M.ClusterNode(NodeRole, PrivateIPAddress, PublicIPAddress, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterNode")
 	local t = { 
@@ -83,8 +83,8 @@ function M.AssertDeleteEventSubscriptionMessage(struct)
 end
 
 --- Create a structure of type DeleteEventSubscriptionMessage
--- &lt;p/&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the Amazon Redshift event notification subscription to be deleted.&lt;/p&gt;
+-- <p/>
+-- @param SubscriptionName [String] <p>The name of the Amazon Redshift event notification subscription to be deleted.</p>
 -- Required parameter: SubscriptionName
 function M.DeleteEventSubscriptionMessage(SubscriptionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEventSubscriptionMessage")
@@ -112,13 +112,13 @@ function M.AssertClusterSubnetGroup(struct)
 end
 
 --- Create a structure of type ClusterSubnetGroup
--- &lt;p&gt;Describes a subnet group.&lt;/p&gt;
--- @param Subnets [SubnetList] &lt;p&gt;A list of the VPC &lt;a&gt;Subnet&lt;/a&gt; elements. &lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;The VPC ID of the cluster subnet group.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description of the cluster subnet group.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The list of tags for the cluster subnet group.&lt;/p&gt;
--- @param SubnetGroupStatus [String] &lt;p&gt;The status of the cluster subnet group. Possible values are &lt;code&gt;Complete&lt;/code&gt;, &lt;code&gt;Incomplete&lt;/code&gt; and &lt;code&gt;Invalid&lt;/code&gt;. &lt;/p&gt;
--- @param ClusterSubnetGroupName [String] &lt;p&gt;The name of the cluster subnet group.&lt;/p&gt;
+-- <p>Describes a subnet group.</p>
+-- @param Subnets [SubnetList] <p>A list of the VPC <a>Subnet</a> elements. </p>
+-- @param VpcId [String] <p>The VPC ID of the cluster subnet group.</p>
+-- @param Description [String] <p>The description of the cluster subnet group.</p>
+-- @param Tags [TagList] <p>The list of tags for the cluster subnet group.</p>
+-- @param SubnetGroupStatus [String] <p>The status of the cluster subnet group. Possible values are <code>Complete</code>, <code>Incomplete</code> and <code>Invalid</code>. </p>
+-- @param ClusterSubnetGroupName [String] <p>The name of the cluster subnet group.</p>
 function M.ClusterSubnetGroup(Subnets, VpcId, Description, Tags, SubnetGroupStatus, ClusterSubnetGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSubnetGroup")
 	local t = { 
@@ -144,7 +144,7 @@ function M.AssertClusterNotFoundFault(struct)
 end
 
 --- Create a structure of type ClusterNotFoundFault
--- &lt;p&gt;The &lt;code&gt;ClusterIdentifier&lt;/code&gt; parameter does not refer to an existing cluster. &lt;/p&gt;
+-- <p>The <code>ClusterIdentifier</code> parameter does not refer to an existing cluster. </p>
 function M.ClusterNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterNotFoundFault")
 	local t = { 
@@ -164,7 +164,7 @@ function M.AssertInvalidClusterStateFault(struct)
 end
 
 --- Create a structure of type InvalidClusterStateFault
--- &lt;p&gt;The specified cluster is not in the &lt;code&gt;available&lt;/code&gt; state. &lt;/p&gt;
+-- <p>The specified cluster is not in the <code>available</code> state. </p>
 function M.InvalidClusterStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidClusterStateFault")
 	local t = { 
@@ -184,7 +184,7 @@ function M.AssertClusterSnapshotNotFoundFault(struct)
 end
 
 --- Create a structure of type ClusterSnapshotNotFoundFault
--- &lt;p&gt;The snapshot identifier does not refer to an existing cluster snapshot.&lt;/p&gt;
+-- <p>The snapshot identifier does not refer to an existing cluster snapshot.</p>
 function M.ClusterSnapshotNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSnapshotNotFoundFault")
 	local t = { 
@@ -204,7 +204,7 @@ function M.AssertSNSNoAuthorizationFault(struct)
 end
 
 --- Create a structure of type SNSNoAuthorizationFault
--- &lt;p&gt;You do not have permission to publish to the specified Amazon SNS topic.&lt;/p&gt;
+-- <p>You do not have permission to publish to the specified Amazon SNS topic.</p>
 function M.SNSNoAuthorizationFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSNoAuthorizationFault")
 	local t = { 
@@ -226,9 +226,9 @@ function M.AssertEventCategoriesMap(struct)
 end
 
 --- Create a structure of type EventCategoriesMap
--- &lt;p&gt;Describes event categories.&lt;/p&gt;
--- @param SourceType [String] &lt;p&gt;The source type, such as cluster or cluster-snapshot, that the returned categories belong to.&lt;/p&gt;
--- @param Events [EventInfoMapList] &lt;p&gt;The events in the event category.&lt;/p&gt;
+-- <p>Describes event categories.</p>
+-- @param SourceType [String] <p>The source type, such as cluster or cluster-snapshot, that the returned categories belong to.</p>
+-- @param Events [EventInfoMapList] <p>The events in the event category.</p>
 function M.EventCategoriesMap(SourceType, Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventCategoriesMap")
 	local t = { 
@@ -298,8 +298,8 @@ function M.AssertDeleteHsmConfigurationMessage(struct)
 end
 
 --- Create a structure of type DeleteHsmConfigurationMessage
--- &lt;p/&gt;
--- @param HsmConfigurationIdentifier [String] &lt;p&gt;The identifier of the Amazon Redshift HSM configuration to be deleted.&lt;/p&gt;
+-- <p/>
+-- @param HsmConfigurationIdentifier [String] <p>The identifier of the Amazon Redshift HSM configuration to be deleted.</p>
 -- Required parameter: HsmConfigurationIdentifier
 function M.DeleteHsmConfigurationMessage(HsmConfigurationIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHsmConfigurationMessage")
@@ -329,14 +329,14 @@ function M.AssertModifyEventSubscriptionMessage(struct)
 end
 
 --- Create a structure of type ModifyEventSubscriptionMessage
--- &lt;p/&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt;Specifies the Amazon Redshift event categories to be published by the event notification subscription.&lt;/p&gt; &lt;p&gt;Values: Configuration, Management, Monitoring, Security&lt;/p&gt;
--- @param Severity [String] &lt;p&gt;Specifies the Amazon Redshift event severity to be published by the event notification subscription.&lt;/p&gt; &lt;p&gt;Values: ERROR, INFO&lt;/p&gt;
--- @param Enabled [BooleanOptional] &lt;p&gt;A Boolean value indicating if the subscription is enabled. &lt;code&gt;true&lt;/code&gt; indicates the subscription is enabled &lt;/p&gt;
--- @param SnsTopicArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the SNS topic to be used by the event notification subscription.&lt;/p&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the modified Amazon Redshift event notification subscription.&lt;/p&gt;
--- @param SourceIds [SourceIdsList] &lt;p&gt;A list of one or more identifiers of Amazon Redshift source objects. All of the objects must be of the same type as was specified in the source type parameter. The event subscription will return only events generated by the specified objects. If not specified, then events are returned for all objects within the source type specified.&lt;/p&gt; &lt;p&gt;Example: my-cluster-1, my-cluster-2&lt;/p&gt; &lt;p&gt;Example: my-snapshot-20131010&lt;/p&gt;
--- @param SourceType [String] &lt;p&gt;The type of source that will be generating the events. For example, if you want to be notified of events generated by a cluster, you would set this parameter to cluster. If this value is not specified, events are returned for all Amazon Redshift objects in your AWS account. You must specify a source type in order to specify source IDs.&lt;/p&gt; &lt;p&gt;Valid values: cluster, cluster-parameter-group, cluster-security-group, and cluster-snapshot.&lt;/p&gt;
+-- <p/>
+-- @param EventCategories [EventCategoriesList] <p>Specifies the Amazon Redshift event categories to be published by the event notification subscription.</p> <p>Values: Configuration, Management, Monitoring, Security</p>
+-- @param Severity [String] <p>Specifies the Amazon Redshift event severity to be published by the event notification subscription.</p> <p>Values: ERROR, INFO</p>
+-- @param Enabled [BooleanOptional] <p>A Boolean value indicating if the subscription is enabled. <code>true</code> indicates the subscription is enabled </p>
+-- @param SnsTopicArn [String] <p>The Amazon Resource Name (ARN) of the SNS topic to be used by the event notification subscription.</p>
+-- @param SubscriptionName [String] <p>The name of the modified Amazon Redshift event notification subscription.</p>
+-- @param SourceIds [SourceIdsList] <p>A list of one or more identifiers of Amazon Redshift source objects. All of the objects must be of the same type as was specified in the source type parameter. The event subscription will return only events generated by the specified objects. If not specified, then events are returned for all objects within the source type specified.</p> <p>Example: my-cluster-1, my-cluster-2</p> <p>Example: my-snapshot-20131010</p>
+-- @param SourceType [String] <p>The type of source that will be generating the events. For example, if you want to be notified of events generated by a cluster, you would set this parameter to cluster. If this value is not specified, events are returned for all Amazon Redshift objects in your AWS account. You must specify a source type in order to specify source IDs.</p> <p>Valid values: cluster, cluster-parameter-group, cluster-security-group, and cluster-snapshot.</p>
 -- Required parameter: SubscriptionName
 function M.ModifyEventSubscriptionMessage(EventCategories, Severity, Enabled, SnsTopicArn, SubscriptionName, SourceIds, SourceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEventSubscriptionMessage")
@@ -366,8 +366,8 @@ function M.AssertDeleteClusterParameterGroupMessage(struct)
 end
 
 --- Create a structure of type DeleteClusterParameterGroupMessage
--- &lt;p/&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of the parameter group to be deleted.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the name of an existing cluster parameter group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot delete a default cluster parameter group.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param ParameterGroupName [String] <p>The name of the parameter group to be deleted.</p> <p>Constraints:</p> <ul> <li> <p>Must be the name of an existing cluster parameter group.</p> </li> <li> <p>Cannot delete a default cluster parameter group.</p> </li> </ul>
 -- Required parameter: ParameterGroupName
 function M.DeleteClusterParameterGroupMessage(ParameterGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterParameterGroupMessage")
@@ -391,9 +391,9 @@ function M.AssertHsmClientCertificateMessage(struct)
 end
 
 --- Create a structure of type HsmClientCertificateMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param HsmClientCertificates [HsmClientCertificateList] &lt;p&gt;A list of the identifiers for one or more HSM client certificates used by Amazon Redshift clusters to store and retrieve database encryption keys in an HSM.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param HsmClientCertificates [HsmClientCertificateList] <p>A list of the identifiers for one or more HSM client certificates used by Amazon Redshift clusters to store and retrieve database encryption keys in an HSM.</p>
 function M.HsmClientCertificateMessage(Marker, HsmClientCertificates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmClientCertificateMessage")
 	local t = { 
@@ -416,8 +416,8 @@ function M.AssertDescribeEventCategoriesMessage(struct)
 end
 
 --- Create a structure of type DescribeEventCategoriesMessage
--- &lt;p/&gt;
--- @param SourceType [String] &lt;p&gt;The source type, such as cluster or parameter group, to which the described event categories apply.&lt;/p&gt; &lt;p&gt;Valid values: cluster, cluster-snapshot, cluster-parameter-group, and cluster-security-group.&lt;/p&gt;
+-- <p/>
+-- @param SourceType [String] <p>The source type, such as cluster or parameter group, to which the described event categories apply.</p> <p>Valid values: cluster, cluster-snapshot, cluster-parameter-group, and cluster-security-group.</p>
 function M.DescribeEventCategoriesMessage(SourceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventCategoriesMessage")
 	local t = { 
@@ -438,7 +438,7 @@ function M.AssertSubscriptionEventIdNotFoundFault(struct)
 end
 
 --- Create a structure of type SubscriptionEventIdNotFoundFault
--- &lt;p&gt;An Amazon Redshift event with the specified event ID does not exist.&lt;/p&gt;
+-- <p>An Amazon Redshift event with the specified event ID does not exist.</p>
 function M.SubscriptionEventIdNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionEventIdNotFoundFault")
 	local t = { 
@@ -481,7 +481,7 @@ function M.AssertSnapshotCopyAlreadyDisabledFault(struct)
 end
 
 --- Create a structure of type SnapshotCopyAlreadyDisabledFault
--- &lt;p&gt;The cluster already has cross-region snapshot copy disabled.&lt;/p&gt;
+-- <p>The cluster already has cross-region snapshot copy disabled.</p>
 function M.SnapshotCopyAlreadyDisabledFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotCopyAlreadyDisabledFault")
 	local t = { 
@@ -501,7 +501,7 @@ function M.AssertInvalidElasticIpFault(struct)
 end
 
 --- Create a structure of type InvalidElasticIpFault
--- &lt;p&gt;The Elastic IP (EIP) is invalid or cannot be found.&lt;/p&gt;
+-- <p>The Elastic IP (EIP) is invalid or cannot be found.</p>
 function M.InvalidElasticIpFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidElasticIpFault")
 	local t = { 
@@ -524,10 +524,10 @@ function M.AssertClusterParameterStatus(struct)
 end
 
 --- Create a structure of type ClusterParameterStatus
--- &lt;p&gt;Describes the status of a parameter group.&lt;/p&gt;
--- @param ParameterName [String] &lt;p&gt;The name of the parameter.&lt;/p&gt;
--- @param ParameterApplyStatus [String] &lt;p&gt;The status of the parameter that indicates whether the parameter is in sync with the database, waiting for a cluster reboot, or encountered an error when being applied.&lt;/p&gt; &lt;p&gt;The following are possible statuses and descriptions.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;in-sync&lt;/code&gt;: The parameter value is in sync with the database.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;pending-reboot&lt;/code&gt;: The parameter value will be applied after the cluster reboots.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;applying&lt;/code&gt;: The parameter value is being applied to the database.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;invalid-parameter&lt;/code&gt;: Cannot apply the parameter value because it has an invalid value or syntax.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;apply-deferred&lt;/code&gt;: The parameter contains static property changes. The changes are deferred until the cluster reboots.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;apply-error&lt;/code&gt;: Cannot connect to the cluster. The parameter change will be applied after the cluster reboots.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;unknown-error&lt;/code&gt;: Cannot apply the parameter change right now. The change will be applied after the cluster reboots.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ParameterApplyErrorDescription [String] &lt;p&gt;The error that prevented the parameter from being applied to the database.&lt;/p&gt;
+-- <p>Describes the status of a parameter group.</p>
+-- @param ParameterName [String] <p>The name of the parameter.</p>
+-- @param ParameterApplyStatus [String] <p>The status of the parameter that indicates whether the parameter is in sync with the database, waiting for a cluster reboot, or encountered an error when being applied.</p> <p>The following are possible statuses and descriptions.</p> <ul> <li> <p> <code>in-sync</code>: The parameter value is in sync with the database.</p> </li> <li> <p> <code>pending-reboot</code>: The parameter value will be applied after the cluster reboots.</p> </li> <li> <p> <code>applying</code>: The parameter value is being applied to the database.</p> </li> <li> <p> <code>invalid-parameter</code>: Cannot apply the parameter value because it has an invalid value or syntax.</p> </li> <li> <p> <code>apply-deferred</code>: The parameter contains static property changes. The changes are deferred until the cluster reboots.</p> </li> <li> <p> <code>apply-error</code>: Cannot connect to the cluster. The parameter change will be applied after the cluster reboots.</p> </li> <li> <p> <code>unknown-error</code>: Cannot apply the parameter change right now. The change will be applied after the cluster reboots.</p> </li> </ul>
+-- @param ParameterApplyErrorDescription [String] <p>The error that prevented the parameter from being applied to the database.</p>
 function M.ClusterParameterStatus(ParameterName, ParameterApplyStatus, ParameterApplyErrorDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterParameterStatus")
 	local t = { 
@@ -553,10 +553,10 @@ function M.AssertClusterVersion(struct)
 end
 
 --- Create a structure of type ClusterVersion
--- &lt;p&gt;Describes a cluster version, including the parameter group family and description of the version.&lt;/p&gt;
--- @param ClusterVersion [String] &lt;p&gt;The version number used by the cluster.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description of the cluster version.&lt;/p&gt;
--- @param ClusterParameterGroupFamily [String] &lt;p&gt;The name of the cluster parameter group family for the cluster.&lt;/p&gt;
+-- <p>Describes a cluster version, including the parameter group family and description of the version.</p>
+-- @param ClusterVersion [String] <p>The version number used by the cluster.</p>
+-- @param Description [String] <p>The description of the cluster version.</p>
+-- @param ClusterParameterGroupFamily [String] <p>The name of the cluster parameter group family for the cluster.</p>
 function M.ClusterVersion(ClusterVersion, Description, ClusterParameterGroupFamily, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterVersion")
 	local t = { 
@@ -598,25 +598,25 @@ function M.AssertModifyClusterMessage(struct)
 end
 
 --- Create a structure of type ModifyClusterMessage
--- &lt;p/&gt;
--- @param HsmClientCertificateIdentifier [String] &lt;p&gt;Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.&lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter.&lt;/p&gt; &lt;p&gt;When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use &lt;a&gt;DescribeResize&lt;/a&gt; to track the progress of the resize request. &lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt; ds1.xlarge&lt;/code&gt; | &lt;code&gt;ds1.8xlarge&lt;/code&gt; | &lt;code&gt; ds2.xlarge&lt;/code&gt; | &lt;code&gt;ds2.8xlarge&lt;/code&gt; | &lt;code&gt;dc1.large&lt;/code&gt; | &lt;code&gt;dc1.8xlarge&lt;/code&gt;.&lt;/p&gt;
--- @param PubliclyAccessible [BooleanOptional] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the cluster can be accessed from a public network. Only clusters in VPCs can be set to be publicly available.&lt;/p&gt;
--- @param ClusterParameterGroupName [String] &lt;p&gt;The name of the cluster parameter group to apply to this cluster. This change is applied only after the cluster is rebooted. To reboot a cluster use &lt;a&gt;RebootCluster&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Default: Uses existing setting.&lt;/p&gt; &lt;p&gt;Constraints: The cluster parameter group must be in the same parameter group family that matches the cluster version.&lt;/p&gt;
--- @param EnhancedVpcRouting [BooleanOptional] &lt;p&gt;An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html&quot;&gt;Enhanced VPC Routing&lt;/a&gt; in the Amazon Redshift Cluster Management Guide.&lt;/p&gt; &lt;p&gt;If this option is &lt;code&gt;true&lt;/code&gt;, enhanced VPC routing is enabled. &lt;/p&gt; &lt;p&gt;Default: false&lt;/p&gt;
--- @param ElasticIp [String] &lt;p&gt;The Elastic IP (EIP) address for the cluster.&lt;/p&gt; &lt;p&gt;Constraints: The cluster must be provisioned in EC2-VPC and publicly-accessible through an Internet gateway. For more information about provisioning clusters in EC2-VPC, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms&quot;&gt;Supported Platforms to Launch Your Cluster&lt;/a&gt; in the Amazon Redshift Cluster Management Guide.&lt;/p&gt;
--- @param ClusterType [String] &lt;p&gt;The new cluster type.&lt;/p&gt; &lt;p&gt;When you submit your cluster resize request, your existing cluster goes into a read-only mode. After Amazon Redshift provisions a new cluster based on your resize requirements, there will be outage for a period while the old cluster is deleted and your connection is switched to the new cluster. You can use &lt;a&gt;DescribeResize&lt;/a&gt; to track the progress of the resize request. &lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt; multi-node | single-node &lt;/code&gt; &lt;/p&gt;
--- @param MasterUserPassword [String] &lt;p&gt;The new password for the cluster master user. This change is asynchronously applied as soon as possible. Between the time of the request and the completion of the request, the &lt;code&gt;MasterUserPassword&lt;/code&gt; element exists in the &lt;code&gt;PendingModifiedValues&lt;/code&gt; element of the operation response. &lt;/p&gt; &lt;note&gt; &lt;p&gt;Operations never return the password, so this operation provides a way to regain access to the master user account for a cluster if the password is lost.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Default: Uses existing setting.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be between 8 and 64 characters in length.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain at least one uppercase letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain at least one lowercase letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain one number.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), &quot; (double quote), \, /, @, or space.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt;A list of virtual private cloud (VPC) security groups to be associated with the cluster.&lt;/p&gt;
--- @param AllowVersionUpgrade [BooleanOptional] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, major version upgrades will be applied automatically to the cluster during the maintenance window. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The weekly time range (in UTC) during which system maintenance can occur, if necessary. If system maintenance is necessary during the window, it may result in an outage.&lt;/p&gt; &lt;p&gt;This maintenance window change is made immediately. If the new maintenance window indicates the current time, there must be at least 120 minutes between the current time and end of the window in order to ensure that pending changes are applied.&lt;/p&gt; &lt;p&gt;Default: Uses existing setting.&lt;/p&gt; &lt;p&gt;Format: ddd:hh24:mi-ddd:hh24:mi, for example &lt;code&gt;wed:07:30-wed:08:00&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun&lt;/p&gt; &lt;p&gt;Constraints: Must be at least 30 minutes.&lt;/p&gt;
--- @param AutomatedSnapshotRetentionPeriod [IntegerOptional] &lt;p&gt;The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with &lt;a&gt;CreateClusterSnapshot&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;If you decrease the automated snapshot retention period from its current value, existing automated snapshots that fall outside of the new retention period will be immediately deleted.&lt;/p&gt; &lt;p&gt;Default: Uses existing setting.&lt;/p&gt; &lt;p&gt;Constraints: Must be a value from 0 to 35.&lt;/p&gt;
--- @param ClusterSecurityGroups [ClusterSecurityGroupNameList] &lt;p&gt;A list of cluster security groups to be authorized on this cluster. This change is asynchronously applied as soon as possible.&lt;/p&gt; &lt;p&gt;Security groups currently associated with the cluster, and not in the list of groups to apply, will be revoked from the cluster.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The unique identifier of the cluster to be modified.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;examplecluster&lt;/code&gt; &lt;/p&gt;
--- @param HsmConfigurationIdentifier [String] &lt;p&gt;Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.&lt;/p&gt;
--- @param NewClusterIdentifier [String] &lt;p&gt;The new identifier for the cluster.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Alphabetic characters must be lowercase.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be unique for all clusters within an AWS account.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;examplecluster&lt;/code&gt; &lt;/p&gt;
--- @param NumberOfNodes [IntegerOptional] &lt;p&gt;The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify the node type parameter.&lt;/p&gt; &lt;p&gt;When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use &lt;a&gt;DescribeResize&lt;/a&gt; to track the progress of the resize request. &lt;/p&gt; &lt;p&gt;Valid Values: Integer greater than &lt;code&gt;0&lt;/code&gt;.&lt;/p&gt;
--- @param ClusterVersion [String] &lt;p&gt;The new version number of the Amazon Redshift engine to upgrade to.&lt;/p&gt; &lt;p&gt;For major version upgrades, if a non-default cluster parameter group is currently in use, a new cluster parameter group in the cluster parameter group family for the new version must be specified. The new cluster parameter group can be the default for that cluster parameter group family. For more information about parameters and parameter groups, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html&quot;&gt;Amazon Redshift Parameter Groups&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;1.0&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param HsmClientCertificateIdentifier [String] <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.</p>
+-- @param NodeType [String] <p>The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter.</p> <p>When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use <a>DescribeResize</a> to track the progress of the resize request. </p> <p>Valid Values: <code> ds1.xlarge</code> | <code>ds1.8xlarge</code> | <code> ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> | <code>dc1.8xlarge</code>.</p>
+-- @param PubliclyAccessible [BooleanOptional] <p>If <code>true</code>, the cluster can be accessed from a public network. Only clusters in VPCs can be set to be publicly available.</p>
+-- @param ClusterParameterGroupName [String] <p>The name of the cluster parameter group to apply to this cluster. This change is applied only after the cluster is rebooted. To reboot a cluster use <a>RebootCluster</a>. </p> <p>Default: Uses existing setting.</p> <p>Constraints: The cluster parameter group must be in the same parameter group family that matches the cluster version.</p>
+-- @param EnhancedVpcRouting [BooleanOptional] <p>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the Amazon Redshift Cluster Management Guide.</p> <p>If this option is <code>true</code>, enhanced VPC routing is enabled. </p> <p>Default: false</p>
+-- @param ElasticIp [String] <p>The Elastic IP (EIP) address for the cluster.</p> <p>Constraints: The cluster must be provisioned in EC2-VPC and publicly-accessible through an Internet gateway. For more information about provisioning clusters in EC2-VPC, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms">Supported Platforms to Launch Your Cluster</a> in the Amazon Redshift Cluster Management Guide.</p>
+-- @param ClusterType [String] <p>The new cluster type.</p> <p>When you submit your cluster resize request, your existing cluster goes into a read-only mode. After Amazon Redshift provisions a new cluster based on your resize requirements, there will be outage for a period while the old cluster is deleted and your connection is switched to the new cluster. You can use <a>DescribeResize</a> to track the progress of the resize request. </p> <p>Valid Values: <code> multi-node | single-node </code> </p>
+-- @param MasterUserPassword [String] <p>The new password for the cluster master user. This change is asynchronously applied as soon as possible. Between the time of the request and the completion of the request, the <code>MasterUserPassword</code> element exists in the <code>PendingModifiedValues</code> element of the operation response. </p> <note> <p>Operations never return the password, so this operation provides a way to regain access to the master user account for a cluster if the password is lost.</p> </note> <p>Default: Uses existing setting.</p> <p>Constraints:</p> <ul> <li> <p>Must be between 8 and 64 characters in length.</p> </li> <li> <p>Must contain at least one uppercase letter.</p> </li> <li> <p>Must contain at least one lowercase letter.</p> </li> <li> <p>Must contain one number.</p> </li> <li> <p>Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.</p> </li> </ul>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of virtual private cloud (VPC) security groups to be associated with the cluster.</p>
+-- @param AllowVersionUpgrade [BooleanOptional] <p>If <code>true</code>, major version upgrades will be applied automatically to the cluster during the maintenance window. </p> <p>Default: <code>false</code> </p>
+-- @param PreferredMaintenanceWindow [String] <p>The weekly time range (in UTC) during which system maintenance can occur, if necessary. If system maintenance is necessary during the window, it may result in an outage.</p> <p>This maintenance window change is made immediately. If the new maintenance window indicates the current time, there must be at least 120 minutes between the current time and end of the window in order to ensure that pending changes are applied.</p> <p>Default: Uses existing setting.</p> <p>Format: ddd:hh24:mi-ddd:hh24:mi, for example <code>wed:07:30-wed:08:00</code>.</p> <p>Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Must be at least 30 minutes.</p>
+-- @param AutomatedSnapshotRetentionPeriod [IntegerOptional] <p>The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with <a>CreateClusterSnapshot</a>. </p> <p>If you decrease the automated snapshot retention period from its current value, existing automated snapshots that fall outside of the new retention period will be immediately deleted.</p> <p>Default: Uses existing setting.</p> <p>Constraints: Must be a value from 0 to 35.</p>
+-- @param ClusterSecurityGroups [ClusterSecurityGroupNameList] <p>A list of cluster security groups to be authorized on this cluster. This change is asynchronously applied as soon as possible.</p> <p>Security groups currently associated with the cluster, and not in the list of groups to apply, will be revoked from the cluster.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param ClusterIdentifier [String] <p>The unique identifier of the cluster to be modified.</p> <p>Example: <code>examplecluster</code> </p>
+-- @param HsmConfigurationIdentifier [String] <p>Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.</p>
+-- @param NewClusterIdentifier [String] <p>The new identifier for the cluster.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul> <p>Example: <code>examplecluster</code> </p>
+-- @param NumberOfNodes [IntegerOptional] <p>The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify the node type parameter.</p> <p>When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use <a>DescribeResize</a> to track the progress of the resize request. </p> <p>Valid Values: Integer greater than <code>0</code>.</p>
+-- @param ClusterVersion [String] <p>The new version number of the Amazon Redshift engine to upgrade to.</p> <p>For major version upgrades, if a non-default cluster parameter group is currently in use, a new cluster parameter group in the cluster parameter group family for the new version must be specified. The new cluster parameter group can be the default for that cluster parameter group family. For more information about parameters and parameter groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.</p> <p>Example: <code>1.0</code> </p>
 -- Required parameter: ClusterIdentifier
 function M.ModifyClusterMessage(HsmClientCertificateIdentifier, NodeType, PubliclyAccessible, ClusterParameterGroupName, EnhancedVpcRouting, ElasticIp, ClusterType, MasterUserPassword, VpcSecurityGroupIds, AllowVersionUpgrade, PreferredMaintenanceWindow, AutomatedSnapshotRetentionPeriod, ClusterSecurityGroups, ClusterIdentifier, HsmConfigurationIdentifier, NewClusterIdentifier, NumberOfNodes, ClusterVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyClusterMessage")
@@ -658,10 +658,10 @@ function M.AssertClusterParameterGroupStatus(struct)
 end
 
 --- Create a structure of type ClusterParameterGroupStatus
--- &lt;p&gt;Describes the status of a parameter group.&lt;/p&gt;
--- @param ClusterParameterStatusList [ClusterParameterStatusList] &lt;p&gt;The list of parameter statuses.&lt;/p&gt; &lt;p&gt; For more information about parameters and parameter groups, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html&quot;&gt;Amazon Redshift Parameter Groups&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of the cluster parameter group.&lt;/p&gt;
--- @param ParameterApplyStatus [String] &lt;p&gt;The status of parameter updates.&lt;/p&gt;
+-- <p>Describes the status of a parameter group.</p>
+-- @param ClusterParameterStatusList [ClusterParameterStatusList] <p>The list of parameter statuses.</p> <p> For more information about parameters and parameter groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.</p>
+-- @param ParameterGroupName [String] <p>The name of the cluster parameter group.</p>
+-- @param ParameterApplyStatus [String] <p>The status of parameter updates.</p>
 function M.ClusterParameterGroupStatus(ClusterParameterStatusList, ParameterGroupName, ParameterApplyStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterParameterGroupStatus")
 	local t = { 
@@ -686,9 +686,9 @@ function M.AssertVpcSecurityGroupMembership(struct)
 end
 
 --- Create a structure of type VpcSecurityGroupMembership
--- &lt;p&gt;Describes the members of a VPC security group.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the VPC security group.&lt;/p&gt;
--- @param VpcSecurityGroupId [String] &lt;p&gt;The identifier of the VPC security group.&lt;/p&gt;
+-- <p>Describes the members of a VPC security group.</p>
+-- @param Status [String] <p>The status of the VPC security group.</p>
+-- @param VpcSecurityGroupId [String] <p>The identifier of the VPC security group.</p>
 function M.VpcSecurityGroupMembership(Status, VpcSecurityGroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VpcSecurityGroupMembership")
 	local t = { 
@@ -735,9 +735,9 @@ function M.AssertClusterSecurityGroupMembership(struct)
 end
 
 --- Create a structure of type ClusterSecurityGroupMembership
--- &lt;p&gt;Describes a cluster security group.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the cluster security group.&lt;/p&gt;
--- @param ClusterSecurityGroupName [String] &lt;p&gt;The name of the cluster security group.&lt;/p&gt;
+-- <p>Describes a cluster security group.</p>
+-- @param Status [String] <p>The status of the cluster security group.</p>
+-- @param ClusterSecurityGroupName [String] <p>The name of the cluster security group.</p>
 function M.ClusterSecurityGroupMembership(Status, ClusterSecurityGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSecurityGroupMembership")
 	local t = { 
@@ -759,7 +759,7 @@ function M.AssertResizeNotFoundFault(struct)
 end
 
 --- Create a structure of type ResizeNotFoundFault
--- &lt;p&gt;A resize operation for the specified cluster is not found.&lt;/p&gt;
+-- <p>A resize operation for the specified cluster is not found.</p>
 function M.ResizeNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResizeNotFoundFault")
 	local t = { 
@@ -779,7 +779,7 @@ function M.AssertDependentServiceRequestThrottlingFault(struct)
 end
 
 --- Create a structure of type DependentServiceRequestThrottlingFault
--- &lt;p&gt;The request cannot be completed because a dependent service is throttling requests made by Amazon Redshift on your behalf. Wait and retry the request.&lt;/p&gt;
+-- <p>The request cannot be completed because a dependent service is throttling requests made by Amazon Redshift on your behalf. Wait and retry the request.</p>
 function M.DependentServiceRequestThrottlingFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DependentServiceRequestThrottlingFault")
 	local t = { 
@@ -801,9 +801,9 @@ function M.AssertAccountWithRestoreAccess(struct)
 end
 
 --- Create a structure of type AccountWithRestoreAccess
--- &lt;p&gt;Describes an AWS customer account authorized to restore a snapshot.&lt;/p&gt;
--- @param AccountAlias [String] &lt;p&gt;The identifier of an AWS support account authorized to restore a snapshot. For AWS support, the identifier is &lt;code&gt;amazon-redshift-support&lt;/code&gt;. &lt;/p&gt;
--- @param AccountId [String] &lt;p&gt;The identifier of an AWS customer account authorized to restore a snapshot.&lt;/p&gt;
+-- <p>Describes an AWS customer account authorized to restore a snapshot.</p>
+-- @param AccountAlias [String] <p>The identifier of an AWS support account authorized to restore a snapshot. For AWS support, the identifier is <code>amazon-redshift-support</code>. </p>
+-- @param AccountId [String] <p>The identifier of an AWS customer account authorized to restore a snapshot.</p>
 function M.AccountWithRestoreAccess(AccountAlias, AccountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountWithRestoreAccess")
 	local t = { 
@@ -827,9 +827,9 @@ function M.AssertTaggedResourceListMessage(struct)
 end
 
 --- Create a structure of type TaggedResourceListMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param TaggedResources [TaggedResourceList] &lt;p&gt;A list of tags with their associated resources.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param TaggedResources [TaggedResourceList] <p>A list of tags with their associated resources.</p>
 function M.TaggedResourceListMessage(Marker, TaggedResources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TaggedResourceListMessage")
 	local t = { 
@@ -877,9 +877,9 @@ function M.AssertPurchaseReservedNodeOfferingMessage(struct)
 end
 
 --- Create a structure of type PurchaseReservedNodeOfferingMessage
--- &lt;p/&gt;
--- @param NodeCount [IntegerOptional] &lt;p&gt;The number of reserved nodes that you want to purchase.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;1&lt;/code&gt; &lt;/p&gt;
--- @param ReservedNodeOfferingId [String] &lt;p&gt;The unique identifier of the reserved node offering you want to purchase.&lt;/p&gt;
+-- <p/>
+-- @param NodeCount [IntegerOptional] <p>The number of reserved nodes that you want to purchase.</p> <p>Default: <code>1</code> </p>
+-- @param ReservedNodeOfferingId [String] <p>The unique identifier of the reserved node offering you want to purchase.</p>
 -- Required parameter: ReservedNodeOfferingId
 function M.PurchaseReservedNodeOfferingMessage(NodeCount, ReservedNodeOfferingId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PurchaseReservedNodeOfferingMessage")
@@ -902,7 +902,7 @@ function M.AssertInsufficientClusterCapacityFault(struct)
 end
 
 --- Create a structure of type InsufficientClusterCapacityFault
--- &lt;p&gt;The number of nodes specified exceeds the allotted capacity of the cluster.&lt;/p&gt;
+-- <p>The number of nodes specified exceeds the allotted capacity of the cluster.</p>
 function M.InsufficientClusterCapacityFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientClusterCapacityFault")
 	local t = { 
@@ -948,10 +948,10 @@ function M.AssertHsmStatus(struct)
 end
 
 --- Create a structure of type HsmStatus
--- &lt;p&gt;Describes the status of changes to HSM settings.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;Reports whether the Amazon Redshift cluster has finished applying any HSM settings changes specified in a modify cluster command.&lt;/p&gt; &lt;p&gt;Values: active, applying&lt;/p&gt;
--- @param HsmClientCertificateIdentifier [String] &lt;p&gt;Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.&lt;/p&gt;
--- @param HsmConfigurationIdentifier [String] &lt;p&gt;Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.&lt;/p&gt;
+-- <p>Describes the status of changes to HSM settings.</p>
+-- @param Status [String] <p>Reports whether the Amazon Redshift cluster has finished applying any HSM settings changes specified in a modify cluster command.</p> <p>Values: active, applying</p>
+-- @param HsmClientCertificateIdentifier [String] <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.</p>
+-- @param HsmConfigurationIdentifier [String] <p>Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.</p>
 function M.HsmStatus(Status, HsmClientCertificateIdentifier, HsmConfigurationIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmStatus")
 	local t = { 
@@ -974,7 +974,7 @@ function M.AssertSNSInvalidTopicFault(struct)
 end
 
 --- Create a structure of type SNSInvalidTopicFault
--- &lt;p&gt;Amazon SNS has responded that there is a problem with the specified Amazon SNS topic.&lt;/p&gt;
+-- <p>Amazon SNS has responded that there is a problem with the specified Amazon SNS topic.</p>
 function M.SNSInvalidTopicFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSInvalidTopicFault")
 	local t = { 
@@ -996,9 +996,9 @@ function M.AssertReservedNodeOfferingsMessage(struct)
 end
 
 --- Create a structure of type ReservedNodeOfferingsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param ReservedNodeOfferings [ReservedNodeOfferingList] &lt;p&gt;A list of &lt;code&gt;ReservedNodeOffering&lt;/code&gt; objects.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param ReservedNodeOfferings [ReservedNodeOfferingList] <p>A list of <code>ReservedNodeOffering</code> objects.</p>
 function M.ReservedNodeOfferingsMessage(Marker, ReservedNodeOfferings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedNodeOfferingsMessage")
 	local t = { 
@@ -1020,7 +1020,7 @@ function M.AssertHsmConfigurationNotFoundFault(struct)
 end
 
 --- Create a structure of type HsmConfigurationNotFoundFault
--- &lt;p&gt;There is no Amazon Redshift HSM configuration with the specified identifier.&lt;/p&gt;
+-- <p>There is no Amazon Redshift HSM configuration with the specified identifier.</p>
 function M.HsmConfigurationNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmConfigurationNotFoundFault")
 	local t = { 
@@ -1040,7 +1040,7 @@ function M.AssertNumberOfNodesQuotaExceededFault(struct)
 end
 
 --- Create a structure of type NumberOfNodesQuotaExceededFault
--- &lt;p&gt;The operation would exceed the number of nodes allotted to the account. For information about increasing your quota, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html&quot;&gt;Limits in Amazon Redshift&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
+-- <p>The operation would exceed the number of nodes allotted to the account. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 function M.NumberOfNodesQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NumberOfNodesQuotaExceededFault")
 	local t = { 
@@ -1070,15 +1070,15 @@ function M.AssertCreateEventSubscriptionMessage(struct)
 end
 
 --- Create a structure of type CreateEventSubscriptionMessage
--- &lt;p/&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt;Specifies the Amazon Redshift event categories to be published by the event notification subscription.&lt;/p&gt; &lt;p&gt;Values: Configuration, Management, Monitoring, Security&lt;/p&gt;
--- @param Severity [String] &lt;p&gt;Specifies the Amazon Redshift event severity to be published by the event notification subscription.&lt;/p&gt; &lt;p&gt;Values: ERROR, INFO&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tag instances.&lt;/p&gt;
--- @param Enabled [BooleanOptional] &lt;p&gt;A Boolean value; set to &lt;code&gt;true&lt;/code&gt; to activate the subscription, set to &lt;code&gt;false&lt;/code&gt; to create the subscription but not active it. &lt;/p&gt;
--- @param SnsTopicArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic used to transmit the event notifications. The ARN is created by Amazon SNS when you create a topic and subscribe to it.&lt;/p&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the event subscription to be created.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cannot be null, empty, or blank.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SourceIds [SourceIdsList] &lt;p&gt;A list of one or more identifiers of Amazon Redshift source objects. All of the objects must be of the same type as was specified in the source type parameter. The event subscription will return only events generated by the specified objects. If not specified, then events are returned for all objects within the source type specified.&lt;/p&gt; &lt;p&gt;Example: my-cluster-1, my-cluster-2&lt;/p&gt; &lt;p&gt;Example: my-snapshot-20131010&lt;/p&gt;
--- @param SourceType [String] &lt;p&gt;The type of source that will be generating the events. For example, if you want to be notified of events generated by a cluster, you would set this parameter to cluster. If this value is not specified, events are returned for all Amazon Redshift objects in your AWS account. You must specify a source type in order to specify source IDs.&lt;/p&gt; &lt;p&gt;Valid values: cluster, cluster-parameter-group, cluster-security-group, and cluster-snapshot.&lt;/p&gt;
+-- <p/>
+-- @param EventCategories [EventCategoriesList] <p>Specifies the Amazon Redshift event categories to be published by the event notification subscription.</p> <p>Values: Configuration, Management, Monitoring, Security</p>
+-- @param Severity [String] <p>Specifies the Amazon Redshift event severity to be published by the event notification subscription.</p> <p>Values: ERROR, INFO</p>
+-- @param Tags [TagList] <p>A list of tag instances.</p>
+-- @param Enabled [BooleanOptional] <p>A Boolean value; set to <code>true</code> to activate the subscription, set to <code>false</code> to create the subscription but not active it. </p>
+-- @param SnsTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic used to transmit the event notifications. The ARN is created by Amazon SNS when you create a topic and subscribe to it.</p>
+-- @param SubscriptionName [String] <p>The name of the event subscription to be created.</p> <p>Constraints:</p> <ul> <li> <p>Cannot be null, empty, or blank.</p> </li> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param SourceIds [SourceIdsList] <p>A list of one or more identifiers of Amazon Redshift source objects. All of the objects must be of the same type as was specified in the source type parameter. The event subscription will return only events generated by the specified objects. If not specified, then events are returned for all objects within the source type specified.</p> <p>Example: my-cluster-1, my-cluster-2</p> <p>Example: my-snapshot-20131010</p>
+-- @param SourceType [String] <p>The type of source that will be generating the events. For example, if you want to be notified of events generated by a cluster, you would set this parameter to cluster. If this value is not specified, events are returned for all Amazon Redshift objects in your AWS account. You must specify a source type in order to specify source IDs.</p> <p>Valid values: cluster, cluster-parameter-group, cluster-security-group, and cluster-snapshot.</p>
 -- Required parameter: SubscriptionName
 -- Required parameter: SnsTopicArn
 function M.CreateEventSubscriptionMessage(EventCategories, Severity, Tags, Enabled, SnsTopicArn, SubscriptionName, SourceIds, SourceType, ...)
@@ -1113,12 +1113,12 @@ function M.AssertDescribeClusterParameterGroupsMessage(struct)
 end
 
 --- Create a structure of type DescribeClusterParameterGroupsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeClusterParameterGroups&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param TagValues [TagValueList] &lt;p&gt;A tag value or values for which you want to return all matching cluster parameter groups that are associated with the specified tag value or values. For example, suppose that you have parameter groups that are tagged with values called &lt;code&gt;admin&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt;. If you specify both of these tag values in the request, Amazon Redshift returns a response with the parameter groups that have either or both of these tag values associated with them.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;A tag key or keys for which you want to return all matching cluster parameter groups that are associated with the specified key or keys. For example, suppose that you have parameter groups that are tagged with keys called &lt;code&gt;owner&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the parameter groups that have either or both of these tag keys associated with them.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of a specific parameter group for which to return details. By default, details about all parameter groups and the default parameter group are returned.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeClusterParameterGroups</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param TagValues [TagValueList] <p>A tag value or values for which you want to return all matching cluster parameter groups that are associated with the specified tag value or values. For example, suppose that you have parameter groups that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the parameter groups that have either or both of these tag values associated with them.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching cluster parameter groups that are associated with the specified key or keys. For example, suppose that you have parameter groups that are tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the parameter groups that have either or both of these tag keys associated with them.</p>
+-- @param ParameterGroupName [String] <p>The name of a specific parameter group for which to return details. By default, details about all parameter groups and the default parameter group are returned.</p>
 function M.DescribeClusterParameterGroupsMessage(Marker, TagValues, MaxRecords, TagKeys, ParameterGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterParameterGroupsMessage")
 	local t = { 
@@ -1143,7 +1143,7 @@ function M.AssertIncompatibleOrderableOptions(struct)
 end
 
 --- Create a structure of type IncompatibleOrderableOptions
--- &lt;p&gt;The specified options are incompatible.&lt;/p&gt;
+-- <p>The specified options are incompatible.</p>
 function M.IncompatibleOrderableOptions(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IncompatibleOrderableOptions")
 	local t = { 
@@ -1166,9 +1166,9 @@ function M.AssertCreateHsmClientCertificateMessage(struct)
 end
 
 --- Create a structure of type CreateHsmClientCertificateMessage
--- &lt;p/&gt;
--- @param HsmClientCertificateIdentifier [String] &lt;p&gt;The identifier to be assigned to the new HSM client certificate that the cluster will use to connect to the HSM to use the database encryption keys.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tag instances.&lt;/p&gt;
+-- <p/>
+-- @param HsmClientCertificateIdentifier [String] <p>The identifier to be assigned to the new HSM client certificate that the cluster will use to connect to the HSM to use the database encryption keys.</p>
+-- @param Tags [TagList] <p>A list of tag instances.</p>
 -- Required parameter: HsmClientCertificateIdentifier
 function M.CreateHsmClientCertificateMessage(HsmClientCertificateIdentifier, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHsmClientCertificateMessage")
@@ -1191,7 +1191,7 @@ function M.AssertInvalidS3KeyPrefixFault(struct)
 end
 
 --- Create a structure of type InvalidS3KeyPrefixFault
--- &lt;p&gt;The string specified for the logging S3 key prefix does not comply with the documented constraints.&lt;/p&gt;
+-- <p>The string specified for the logging S3 key prefix does not comply with the documented constraints.</p>
 function M.InvalidS3KeyPrefixFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3KeyPrefixFault")
 	local t = { 
@@ -1211,7 +1211,7 @@ function M.AssertSubscriptionAlreadyExistFault(struct)
 end
 
 --- Create a structure of type SubscriptionAlreadyExistFault
--- &lt;p&gt;There is already an existing event notification subscription with the specified name.&lt;/p&gt;
+-- <p>There is already an existing event notification subscription with the specified name.</p>
 function M.SubscriptionAlreadyExistFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionAlreadyExistFault")
 	local t = { 
@@ -1233,8 +1233,8 @@ function M.AssertRebootClusterMessage(struct)
 end
 
 --- Create a structure of type RebootClusterMessage
--- &lt;p/&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The cluster identifier.&lt;/p&gt;
+-- <p/>
+-- @param ClusterIdentifier [String] <p>The cluster identifier.</p>
 -- Required parameter: ClusterIdentifier
 function M.RebootClusterMessage(ClusterIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootClusterMessage")
@@ -1258,9 +1258,9 @@ function M.AssertClusterSecurityGroupMessage(struct)
 end
 
 --- Create a structure of type ClusterSecurityGroupMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param ClusterSecurityGroups [ClusterSecurityGroups] &lt;p&gt;A list of &lt;a&gt;ClusterSecurityGroup&lt;/a&gt; instances. &lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param ClusterSecurityGroups [ClusterSecurityGroups] <p>A list of <a>ClusterSecurityGroup</a> instances. </p>
 function M.ClusterSecurityGroupMessage(Marker, ClusterSecurityGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSecurityGroupMessage")
 	local t = { 
@@ -1284,9 +1284,9 @@ function M.AssertEventsMessage(struct)
 end
 
 --- Create a structure of type EventsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param Events [EventList] &lt;p&gt;A list of &lt;code&gt;Event&lt;/code&gt; instances. &lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param Events [EventList] <p>A list of <code>Event</code> instances. </p>
 function M.EventsMessage(Marker, Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventsMessage")
 	local t = { 
@@ -1315,14 +1315,14 @@ function M.AssertDescribeEventsMessage(struct)
 end
 
 --- Create a structure of type DescribeEventsMessage
--- &lt;p/&gt;
--- @param SourceType [SourceType] &lt;p&gt;The event source to retrieve events for. If no value is specified, all events are returned.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;p&gt;If &lt;i&gt;SourceType&lt;/i&gt; is supplied, &lt;i&gt;SourceIdentifier&lt;/i&gt; must also be provided.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Specify &lt;code&gt;cluster&lt;/code&gt; when &lt;i&gt;SourceIdentifier&lt;/i&gt; is a cluster identifier.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Specify &lt;code&gt;cluster-security-group&lt;/code&gt; when &lt;i&gt;SourceIdentifier&lt;/i&gt; is a cluster security group name.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Specify &lt;code&gt;cluster-parameter-group&lt;/code&gt; when &lt;i&gt;SourceIdentifier&lt;/i&gt; is a cluster parameter group name.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Specify &lt;code&gt;cluster-snapshot&lt;/code&gt; when &lt;i&gt;SourceIdentifier&lt;/i&gt; is a cluster snapshot identifier.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeEvents&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param StartTime [TStamp] &lt;p&gt;The beginning of the time interval to retrieve events for, specified in ISO 8601 format. For more information about ISO 8601, go to the &lt;a href=&quot;http://en.wikipedia.org/wiki/ISO_8601&quot;&gt;ISO8601 Wikipedia page.&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;2009-07-08T18:00Z&lt;/code&gt; &lt;/p&gt;
--- @param Duration [IntegerOptional] &lt;p&gt;The number of minutes prior to the time of the request for which to retrieve events. For example, if the request is sent at 18:00 and you specify a duration of 60, then only events which have occurred after 17:00 will be returned.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;60&lt;/code&gt; &lt;/p&gt;
--- @param SourceIdentifier [String] &lt;p&gt;The identifier of the event source for which events will be returned. If this parameter is not specified, then all sources are included in the response.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;p&gt;If &lt;i&gt;SourceIdentifier&lt;/i&gt; is supplied, &lt;i&gt;SourceType&lt;/i&gt; must also be provided.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Specify a cluster identifier when &lt;i&gt;SourceType&lt;/i&gt; is &lt;code&gt;cluster&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Specify a cluster security group name when &lt;i&gt;SourceType&lt;/i&gt; is &lt;code&gt;cluster-security-group&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Specify a cluster parameter group name when &lt;i&gt;SourceType&lt;/i&gt; is &lt;code&gt;cluster-parameter-group&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Specify a cluster snapshot identifier when &lt;i&gt;SourceType&lt;/i&gt; is &lt;code&gt;cluster-snapshot&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param EndTime [TStamp] &lt;p&gt;The end of the time interval for which to retrieve events, specified in ISO 8601 format. For more information about ISO 8601, go to the &lt;a href=&quot;http://en.wikipedia.org/wiki/ISO_8601&quot;&gt;ISO8601 Wikipedia page.&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;2009-07-08T18:00Z&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param SourceType [SourceType] <p>The event source to retrieve events for. If no value is specified, all events are returned.</p> <p>Constraints:</p> <p>If <i>SourceType</i> is supplied, <i>SourceIdentifier</i> must also be provided.</p> <ul> <li> <p>Specify <code>cluster</code> when <i>SourceIdentifier</i> is a cluster identifier.</p> </li> <li> <p>Specify <code>cluster-security-group</code> when <i>SourceIdentifier</i> is a cluster security group name.</p> </li> <li> <p>Specify <code>cluster-parameter-group</code> when <i>SourceIdentifier</i> is a cluster parameter group name.</p> </li> <li> <p>Specify <code>cluster-snapshot</code> when <i>SourceIdentifier</i> is a cluster snapshot identifier.</p> </li> </ul>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeEvents</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param StartTime [TStamp] <p>The beginning of the time interval to retrieve events for, specified in ISO 8601 format. For more information about ISO 8601, go to the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p> <p>Example: <code>2009-07-08T18:00Z</code> </p>
+-- @param Duration [IntegerOptional] <p>The number of minutes prior to the time of the request for which to retrieve events. For example, if the request is sent at 18:00 and you specify a duration of 60, then only events which have occurred after 17:00 will be returned.</p> <p>Default: <code>60</code> </p>
+-- @param SourceIdentifier [String] <p>The identifier of the event source for which events will be returned. If this parameter is not specified, then all sources are included in the response.</p> <p>Constraints:</p> <p>If <i>SourceIdentifier</i> is supplied, <i>SourceType</i> must also be provided.</p> <ul> <li> <p>Specify a cluster identifier when <i>SourceType</i> is <code>cluster</code>.</p> </li> <li> <p>Specify a cluster security group name when <i>SourceType</i> is <code>cluster-security-group</code>.</p> </li> <li> <p>Specify a cluster parameter group name when <i>SourceType</i> is <code>cluster-parameter-group</code>.</p> </li> <li> <p>Specify a cluster snapshot identifier when <i>SourceType</i> is <code>cluster-snapshot</code>.</p> </li> </ul>
+-- @param EndTime [TStamp] <p>The end of the time interval for which to retrieve events, specified in ISO 8601 format. For more information about ISO 8601, go to the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p> <p>Example: <code>2009-07-08T18:00Z</code> </p>
 function M.DescribeEventsMessage(SourceType, Marker, MaxRecords, StartTime, Duration, SourceIdentifier, EndTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsMessage")
 	local t = { 
@@ -1351,9 +1351,9 @@ function M.AssertClusterParameterGroupsMessage(struct)
 end
 
 --- Create a structure of type ClusterParameterGroupsMessage
--- &lt;p&gt;Contains the output from the &lt;a&gt;DescribeClusterParameterGroups&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param ParameterGroups [ParameterGroupList] &lt;p&gt;A list of &lt;a&gt;ClusterParameterGroup&lt;/a&gt; instances. Each instance describes one cluster parameter group. &lt;/p&gt;
+-- <p>Contains the output from the <a>DescribeClusterParameterGroups</a> action. </p>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param ParameterGroups [ParameterGroupList] <p>A list of <a>ClusterParameterGroup</a> instances. Each instance describes one cluster parameter group. </p>
 function M.ClusterParameterGroupsMessage(Marker, ParameterGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterParameterGroupsMessage")
 	local t = { 
@@ -1375,7 +1375,7 @@ function M.AssertClusterSubnetGroupAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type ClusterSubnetGroupAlreadyExistsFault
--- &lt;p&gt;A &lt;i&gt;ClusterSubnetGroupName&lt;/i&gt; is already used by an existing cluster subnet group. &lt;/p&gt;
+-- <p>A <i>ClusterSubnetGroupName</i> is already used by an existing cluster subnet group. </p>
 function M.ClusterSubnetGroupAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSubnetGroupAlreadyExistsFault")
 	local t = { 
@@ -1395,7 +1395,7 @@ function M.AssertAccessToSnapshotDeniedFault(struct)
 end
 
 --- Create a structure of type AccessToSnapshotDeniedFault
--- &lt;p&gt;The owner of the specified snapshot has not authorized your account to access the snapshot.&lt;/p&gt;
+-- <p>The owner of the specified snapshot has not authorized your account to access the snapshot.</p>
 function M.AccessToSnapshotDeniedFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessToSnapshotDeniedFault")
 	local t = { 
@@ -1418,10 +1418,10 @@ function M.AssertClusterSnapshotCopyStatus(struct)
 end
 
 --- Create a structure of type ClusterSnapshotCopyStatus
--- &lt;p&gt;Returns the destination region and retention period that are configured for cross-region snapshot copy.&lt;/p&gt;
--- @param SnapshotCopyGrantName [String] &lt;p&gt;The name of the snapshot copy grant.&lt;/p&gt;
--- @param DestinationRegion [String] &lt;p&gt;The destination region that snapshots are automatically copied to when cross-region snapshot copy is enabled.&lt;/p&gt;
--- @param RetentionPeriod [Long] &lt;p&gt;The number of days that automated snapshots are retained in the destination region after they are copied from a source region.&lt;/p&gt;
+-- <p>Returns the destination region and retention period that are configured for cross-region snapshot copy.</p>
+-- @param SnapshotCopyGrantName [String] <p>The name of the snapshot copy grant.</p>
+-- @param DestinationRegion [String] <p>The destination region that snapshots are automatically copied to when cross-region snapshot copy is enabled.</p>
+-- @param RetentionPeriod [Long] <p>The number of days that automated snapshots are retained in the destination region after they are copied from a source region.</p>
 function M.ClusterSnapshotCopyStatus(SnapshotCopyGrantName, DestinationRegion, RetentionPeriod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSnapshotCopyStatus")
 	local t = { 
@@ -1446,9 +1446,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;A tag consisting of a name/value pair for a resource.&lt;/p&gt;
--- @param Value [String] &lt;p&gt;The value for the resource tag.&lt;/p&gt;
--- @param Key [String] &lt;p&gt;The key, or name, for the resource tag.&lt;/p&gt;
+-- <p>A tag consisting of a name/value pair for a resource.</p>
+-- @param Value [String] <p>The value for the resource tag.</p>
+-- @param Key [String] <p>The key, or name, for the resource tag.</p>
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
@@ -1472,9 +1472,9 @@ function M.AssertClusterSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type ClusterSubnetGroupMessage
--- &lt;p&gt;Contains the output from the &lt;a&gt;DescribeClusterSubnetGroups&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param ClusterSubnetGroups [ClusterSubnetGroups] &lt;p&gt;A list of &lt;a&gt;ClusterSubnetGroup&lt;/a&gt; instances. &lt;/p&gt;
+-- <p>Contains the output from the <a>DescribeClusterSubnetGroups</a> action. </p>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param ClusterSubnetGroups [ClusterSubnetGroups] <p>A list of <a>ClusterSubnetGroup</a> instances. </p>
 function M.ClusterSubnetGroupMessage(Marker, ClusterSubnetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSubnetGroupMessage")
 	local t = { 
@@ -1503,14 +1503,14 @@ function M.AssertEvent(struct)
 end
 
 --- Create a structure of type Event
--- &lt;p&gt;Describes an event.&lt;/p&gt;
--- @param EventId [String] &lt;p&gt;The identifier of the event.&lt;/p&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt;A list of the event categories.&lt;/p&gt; &lt;p&gt;Values: Configuration, Management, Monitoring, Security&lt;/p&gt;
--- @param SourceType [SourceType] &lt;p&gt;The source type for this event.&lt;/p&gt;
--- @param Date [TStamp] &lt;p&gt;The date and time of the event.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The text of this event.&lt;/p&gt;
--- @param SourceIdentifier [String] &lt;p&gt;The identifier for the source of the event.&lt;/p&gt;
--- @param Severity [String] &lt;p&gt;The severity of the event.&lt;/p&gt; &lt;p&gt;Values: ERROR, INFO&lt;/p&gt;
+-- <p>Describes an event.</p>
+-- @param EventId [String] <p>The identifier of the event.</p>
+-- @param EventCategories [EventCategoriesList] <p>A list of the event categories.</p> <p>Values: Configuration, Management, Monitoring, Security</p>
+-- @param SourceType [SourceType] <p>The source type for this event.</p>
+-- @param Date [TStamp] <p>The date and time of the event.</p>
+-- @param Message [String] <p>The text of this event.</p>
+-- @param SourceIdentifier [String] <p>The identifier for the source of the event.</p>
+-- @param Severity [String] <p>The severity of the event.</p> <p>Values: ERROR, INFO</p>
 function M.Event(EventId, EventCategories, SourceType, Date, Message, SourceIdentifier, Severity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Event")
 	local t = { 
@@ -1539,8 +1539,8 @@ function M.AssertDisableLoggingMessage(struct)
 end
 
 --- Create a structure of type DisableLoggingMessage
--- &lt;p/&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The identifier of the cluster on which logging is to be stopped.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;examplecluster&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param ClusterIdentifier [String] <p>The identifier of the cluster on which logging is to be stopped.</p> <p>Example: <code>examplecluster</code> </p>
 -- Required parameter: ClusterIdentifier
 function M.DisableLoggingMessage(ClusterIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableLoggingMessage")
@@ -1562,7 +1562,7 @@ function M.AssertSubscriptionNotFoundFault(struct)
 end
 
 --- Create a structure of type SubscriptionNotFoundFault
--- &lt;p&gt;An Amazon Redshift event notification subscription with the specified name does not exist.&lt;/p&gt;
+-- <p>An Amazon Redshift event notification subscription with the specified name does not exist.</p>
 function M.SubscriptionNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionNotFoundFault")
 	local t = { 
@@ -1582,7 +1582,7 @@ function M.AssertInvalidSubnet(struct)
 end
 
 --- Create a structure of type InvalidSubnet
--- &lt;p&gt;The requested subnet is not valid, or not all of the subnets are in the same VPC.&lt;/p&gt;
+-- <p>The requested subnet is not valid, or not all of the subnets are in the same VPC.</p>
 function M.InvalidSubnet(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnet")
 	local t = { 
@@ -1602,7 +1602,7 @@ function M.AssertClusterSecurityGroupQuotaExceededFault(struct)
 end
 
 --- Create a structure of type ClusterSecurityGroupQuotaExceededFault
--- &lt;p&gt;The request would result in the user exceeding the allowed number of cluster security groups. For information about increasing your quota, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html&quot;&gt;Limits in Amazon Redshift&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
+-- <p>The request would result in the user exceeding the allowed number of cluster security groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 function M.ClusterSecurityGroupQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSecurityGroupQuotaExceededFault")
 	local t = { 
@@ -1622,7 +1622,7 @@ function M.AssertReservedNodeOfferingNotFoundFault(struct)
 end
 
 --- Create a structure of type ReservedNodeOfferingNotFoundFault
--- &lt;p&gt;Specified offering does not exist.&lt;/p&gt;
+-- <p>Specified offering does not exist.</p>
 function M.ReservedNodeOfferingNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedNodeOfferingNotFoundFault")
 	local t = { 
@@ -1673,34 +1673,34 @@ function M.AssertCreateClusterMessage(struct)
 end
 
 --- Create a structure of type CreateClusterMessage
--- &lt;p/&gt;
--- @param ClusterParameterGroupName [String] &lt;p&gt;The name of the parameter group to be associated with this cluster.&lt;/p&gt; &lt;p&gt;Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html&quot;&gt;Working with Amazon Redshift Parameter Groups&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PubliclyAccessible [BooleanOptional] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the cluster can be accessed from a public network. &lt;/p&gt;
--- @param MasterUsername [String] &lt;p&gt;The user name associated with the master user account for the cluster that is being created.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 - 128 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a reserved word. A list of reserved words can be found in &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html&quot;&gt;Reserved Words&lt;/a&gt; in the Amazon Redshift Database Developer Guide. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt;A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.&lt;/p&gt; &lt;p&gt;Default: The default VPC security group is associated with the cluster.&lt;/p&gt;
--- @param NumberOfNodes [IntegerOptional] &lt;p&gt;The number of compute nodes in the cluster. This parameter is required when the &lt;b&gt;ClusterType&lt;/b&gt; parameter is specified as &lt;code&gt;multi-node&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;For information about determining how many nodes you need, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes&quot;&gt; Working with Clusters&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt; &lt;p&gt;If you don't specify this parameter, you get a single-node cluster. When requesting a multi-node cluster, you must specify the number of nodes that you want in the cluster.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;1&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: Value must be at least 1 and no more than 100.&lt;/p&gt;
--- @param ClusterVersion [String] &lt;p&gt;The version of the Amazon Redshift engine software that you want to deploy on the cluster.&lt;/p&gt; &lt;p&gt;The version selected runs on all the nodes in the cluster.&lt;/p&gt; &lt;p&gt;Constraints: Only version 1.0 is currently available.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;1.0&lt;/code&gt; &lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tag instances.&lt;/p&gt;
--- @param AutomatedSnapshotRetentionPeriod [IntegerOptional] &lt;p&gt;The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with &lt;a&gt;CreateClusterSnapshot&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;1&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must be a value from 0 to 35.&lt;/p&gt;
--- @param EnhancedVpcRouting [BooleanOptional] &lt;p&gt;An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html&quot;&gt;Enhanced VPC Routing&lt;/a&gt; in the Amazon Redshift Cluster Management Guide.&lt;/p&gt; &lt;p&gt;If this option is &lt;code&gt;true&lt;/code&gt;, enhanced VPC routing is enabled. &lt;/p&gt; &lt;p&gt;Default: false&lt;/p&gt;
--- @param DBName [String] &lt;p&gt;The name of the first database to be created when the cluster is created.&lt;/p&gt; &lt;p&gt;To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html&quot;&gt;Create a Database&lt;/a&gt; in the Amazon Redshift Database Developer Guide. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;dev&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain 1 to 64 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain only lowercase letters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a word that is reserved by the service. A list of reserved words can be found in &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html&quot;&gt;Reserved Words&lt;/a&gt; in the Amazon Redshift Database Developer Guide. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The weekly time range (in UTC) during which automated cluster maintenance can occur.&lt;/p&gt; &lt;p&gt; Format: &lt;code&gt;ddd:hh24:mi-ddd:hh24:mi&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. For more information about the time blocks for each region, see &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows&quot;&gt;Maintenance Windows&lt;/a&gt; in Amazon Redshift Cluster Management Guide.&lt;/p&gt; &lt;p&gt;Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun&lt;/p&gt; &lt;p&gt;Constraints: Minimum 30-minute window.&lt;/p&gt;
--- @param AdditionalInfo [String] &lt;p&gt;Reserved.&lt;/p&gt;
--- @param ClusterType [String] &lt;p&gt;The type of the cluster. When cluster type is specified as&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;single-node&lt;/code&gt;, the &lt;b&gt;NumberOfNodes&lt;/b&gt; parameter is not required.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;multi-node&lt;/code&gt;, the &lt;b&gt;NumberOfNodes&lt;/b&gt; parameter is required.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Valid Values: &lt;code&gt;multi-node&lt;/code&gt; | &lt;code&gt;single-node&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;multi-node&lt;/code&gt; &lt;/p&gt;
--- @param IamRoles [IamRoleArnList] &lt;p&gt;A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles in a single request.&lt;/p&gt; &lt;p&gt;A cluster can have up to 10 IAM roles associated with it at any time.&lt;/p&gt;
--- @param AllowVersionUpgrade [BooleanOptional] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster.&lt;/p&gt; &lt;p&gt;When a new major version of the Amazon Redshift engine is released, you can request that the service automatically apply upgrades during the maintenance window to the Amazon Redshift engine that is running on your cluster.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param HsmConfigurationIdentifier [String] &lt;p&gt;Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.&lt;/p&gt;
--- @param ClusterSecurityGroups [ClusterSecurityGroupNameList] &lt;p&gt;A list of security groups to be associated with this cluster.&lt;/p&gt; &lt;p&gt;Default: The default cluster security group for Amazon Redshift.&lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Alphabetic characters must be lowercase.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be unique for all clusters within an AWS account.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;myexamplecluster&lt;/code&gt; &lt;/p&gt;
--- @param HsmClientCertificateIdentifier [String] &lt;p&gt;Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency.&lt;/p&gt; &lt;p&gt;Default: A random, system-chosen Availability Zone in the region that is specified by the endpoint.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;us-east-1d&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraint: The specified Availability Zone must be in the same region as the current endpoint.&lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The node type to be provisioned for the cluster. For information about node types, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes&quot;&gt; Working with Clusters&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;ds1.xlarge&lt;/code&gt; | &lt;code&gt;ds1.8xlarge&lt;/code&gt; | &lt;code&gt;ds2.xlarge&lt;/code&gt; | &lt;code&gt;ds2.8xlarge&lt;/code&gt; | &lt;code&gt;dc1.large&lt;/code&gt; | &lt;code&gt;dc1.8xlarge&lt;/code&gt;. &lt;/p&gt;
--- @param ElasticIp [String] &lt;p&gt;The Elastic IP (EIP) address for the cluster.&lt;/p&gt; &lt;p&gt;Constraints: The cluster must be provisioned in EC2-VPC and publicly-accessible through an Internet gateway. For more information about provisioning clusters in EC2-VPC, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms&quot;&gt;Supported Platforms to Launch Your Cluster&lt;/a&gt; in the Amazon Redshift Cluster Management Guide.&lt;/p&gt;
--- @param Encrypted [BooleanOptional] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the data in the cluster is encrypted at rest. &lt;/p&gt; &lt;p&gt;Default: false&lt;/p&gt;
--- @param MasterUserPassword [String] &lt;p&gt;The password associated with the master user account for the cluster that is being created.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be between 8 and 64 characters in length.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain at least one uppercase letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain at least one lowercase letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain one number.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), &quot; (double quote), \, /, @, or space.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param KmsKeyId [String] &lt;p&gt;The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number on which the cluster accepts incoming connections.&lt;/p&gt; &lt;p&gt;The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;5439&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt;
--- @param ClusterSubnetGroupName [String] &lt;p&gt;The name of a cluster subnet group to be associated with this cluster.&lt;/p&gt; &lt;p&gt;If this parameter is not provided the resulting cluster will be deployed outside virtual private cloud (VPC).&lt;/p&gt;
+-- <p/>
+-- @param ClusterParameterGroupName [String] <p>The name of the parameter group to be associated with this cluster.</p> <p>Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with Amazon Redshift Parameter Groups</a> </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param PubliclyAccessible [BooleanOptional] <p>If <code>true</code>, the cluster can be accessed from a public network. </p>
+-- @param MasterUsername [String] <p>The user name associated with the master user account for the cluster that is being created.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 - 128 alphanumeric characters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot be a reserved word. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide. </p> </li> </ul>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.</p> <p>Default: The default VPC security group is associated with the cluster.</p>
+-- @param NumberOfNodes [IntegerOptional] <p>The number of compute nodes in the cluster. This parameter is required when the <b>ClusterType</b> parameter is specified as <code>multi-node</code>. </p> <p>For information about determining how many nodes you need, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes"> Working with Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p> <p>If you don't specify this parameter, you get a single-node cluster. When requesting a multi-node cluster, you must specify the number of nodes that you want in the cluster.</p> <p>Default: <code>1</code> </p> <p>Constraints: Value must be at least 1 and no more than 100.</p>
+-- @param ClusterVersion [String] <p>The version of the Amazon Redshift engine software that you want to deploy on the cluster.</p> <p>The version selected runs on all the nodes in the cluster.</p> <p>Constraints: Only version 1.0 is currently available.</p> <p>Example: <code>1.0</code> </p>
+-- @param Tags [TagList] <p>A list of tag instances.</p>
+-- @param AutomatedSnapshotRetentionPeriod [IntegerOptional] <p>The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with <a>CreateClusterSnapshot</a>. </p> <p>Default: <code>1</code> </p> <p>Constraints: Must be a value from 0 to 35.</p>
+-- @param EnhancedVpcRouting [BooleanOptional] <p>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the Amazon Redshift Cluster Management Guide.</p> <p>If this option is <code>true</code>, enhanced VPC routing is enabled. </p> <p>Default: false</p>
+-- @param DBName [String] <p>The name of the first database to be created when the cluster is created.</p> <p>To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database. For more information, go to <a href="http://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html">Create a Database</a> in the Amazon Redshift Database Developer Guide. </p> <p>Default: <code>dev</code> </p> <p>Constraints:</p> <ul> <li> <p>Must contain 1 to 64 alphanumeric characters.</p> </li> <li> <p>Must contain only lowercase letters.</p> </li> <li> <p>Cannot be a word that is reserved by the service. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide. </p> </li> </ul>
+-- @param PreferredMaintenanceWindow [String] <p>The weekly time range (in UTC) during which automated cluster maintenance can occur.</p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p> Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. For more information about the time blocks for each region, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows">Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.</p> <p>Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Minimum 30-minute window.</p>
+-- @param AdditionalInfo [String] <p>Reserved.</p>
+-- @param ClusterType [String] <p>The type of the cluster. When cluster type is specified as</p> <ul> <li> <p> <code>single-node</code>, the <b>NumberOfNodes</b> parameter is not required.</p> </li> <li> <p> <code>multi-node</code>, the <b>NumberOfNodes</b> parameter is required.</p> </li> </ul> <p>Valid Values: <code>multi-node</code> | <code>single-node</code> </p> <p>Default: <code>multi-node</code> </p>
+-- @param IamRoles [IamRoleArnList] <p>A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles in a single request.</p> <p>A cluster can have up to 10 IAM roles associated with it at any time.</p>
+-- @param AllowVersionUpgrade [BooleanOptional] <p>If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster.</p> <p>When a new major version of the Amazon Redshift engine is released, you can request that the service automatically apply upgrades during the maintenance window to the Amazon Redshift engine that is running on your cluster.</p> <p>Default: <code>true</code> </p>
+-- @param HsmConfigurationIdentifier [String] <p>Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.</p>
+-- @param ClusterSecurityGroups [ClusterSecurityGroupNameList] <p>A list of security groups to be associated with this cluster.</p> <p>Default: The default cluster security group for Amazon Redshift.</p>
+-- @param ClusterIdentifier [String] <p>A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul> <p>Example: <code>myexamplecluster</code> </p>
+-- @param HsmClientCertificateIdentifier [String] <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.</p>
+-- @param AvailabilityZone [String] <p>The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. For example, if you have several EC2 instances running in a specific Availability Zone, then you might want the cluster to be provisioned in the same zone in order to decrease network latency.</p> <p>Default: A random, system-chosen Availability Zone in the region that is specified by the endpoint.</p> <p>Example: <code>us-east-1d</code> </p> <p>Constraint: The specified Availability Zone must be in the same region as the current endpoint.</p>
+-- @param NodeType [String] <p>The node type to be provisioned for the cluster. For information about node types, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes"> Working with Clusters</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p> <p>Valid Values: <code>ds1.xlarge</code> | <code>ds1.8xlarge</code> | <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> | <code>dc1.8xlarge</code>. </p>
+-- @param ElasticIp [String] <p>The Elastic IP (EIP) address for the cluster.</p> <p>Constraints: The cluster must be provisioned in EC2-VPC and publicly-accessible through an Internet gateway. For more information about provisioning clusters in EC2-VPC, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms">Supported Platforms to Launch Your Cluster</a> in the Amazon Redshift Cluster Management Guide.</p>
+-- @param Encrypted [BooleanOptional] <p>If <code>true</code>, the data in the cluster is encrypted at rest. </p> <p>Default: false</p>
+-- @param MasterUserPassword [String] <p>The password associated with the master user account for the cluster that is being created.</p> <p>Constraints:</p> <ul> <li> <p>Must be between 8 and 64 characters in length.</p> </li> <li> <p>Must contain at least one uppercase letter.</p> </li> <li> <p>Must contain at least one lowercase letter.</p> </li> <li> <p>Must contain one number.</p> </li> <li> <p>Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.</p> </li> </ul>
+-- @param KmsKeyId [String] <p>The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster.</p>
+-- @param Port [IntegerOptional] <p>The port number on which the cluster accepts incoming connections.</p> <p>The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections.</p> <p>Default: <code>5439</code> </p> <p>Valid Values: <code>1150-65535</code> </p>
+-- @param ClusterSubnetGroupName [String] <p>The name of a cluster subnet group to be associated with this cluster.</p> <p>If this parameter is not provided the resulting cluster will be deployed outside virtual private cloud (VPC).</p>
 -- Required parameter: ClusterIdentifier
 -- Required parameter: NodeType
 -- Required parameter: MasterUsername
@@ -1751,7 +1751,7 @@ function M.AssertClusterSnapshotQuotaExceededFault(struct)
 end
 
 --- Create a structure of type ClusterSnapshotQuotaExceededFault
--- &lt;p&gt;The request would result in the user exceeding the allowed number of cluster snapshots.&lt;/p&gt;
+-- <p>The request would result in the user exceeding the allowed number of cluster snapshots.</p>
 function M.ClusterSnapshotQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSnapshotQuotaExceededFault")
 	local t = { 
@@ -1775,9 +1775,9 @@ function M.AssertDeleteTagsMessage(struct)
 end
 
 --- Create a structure of type DeleteTagsMessage
--- &lt;p&gt;Contains the output from the &lt;code&gt;DeleteTags&lt;/code&gt; action. &lt;/p&gt;
--- @param ResourceName [String] &lt;p&gt;The Amazon Resource Name (ARN) from which you want to remove the tag or tags. For example, &lt;code&gt;arn:aws:redshift:us-east-1:123456789:cluster:t1&lt;/code&gt;. &lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;The tag key that you want to delete.&lt;/p&gt;
+-- <p>Contains the output from the <code>DeleteTags</code> action. </p>
+-- @param ResourceName [String] <p>The Amazon Resource Name (ARN) from which you want to remove the tag or tags. For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+-- @param TagKeys [TagKeyList] <p>The tag key that you want to delete.</p>
 -- Required parameter: ResourceName
 -- Required parameter: TagKeys
 function M.DeleteTagsMessage(ResourceName, TagKeys, ...)
@@ -1826,9 +1826,9 @@ function M.AssertEndpoint(struct)
 end
 
 --- Create a structure of type Endpoint
--- &lt;p&gt;Describes a connection endpoint.&lt;/p&gt;
--- @param Port [Integer] &lt;p&gt;The port that the database engine is listening on.&lt;/p&gt;
--- @param Address [String] &lt;p&gt;The DNS address of the Cluster.&lt;/p&gt;
+-- <p>Describes a connection endpoint.</p>
+-- @param Port [Integer] <p>The port that the database engine is listening on.</p>
+-- @param Address [String] <p>The DNS address of the Cluster.</p>
 function M.Endpoint(Port, Address, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Endpoint")
 	local t = { 
@@ -1855,12 +1855,12 @@ function M.AssertHsmConfiguration(struct)
 end
 
 --- Create a structure of type HsmConfiguration
--- &lt;p&gt;Returns information about an HSM configuration, which is an object that describes to Amazon Redshift clusters the information they require to connect to an HSM where they can store database encryption keys.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The list of tags for the HSM configuration.&lt;/p&gt;
--- @param HsmIpAddress [String] &lt;p&gt;The IP address that the Amazon Redshift cluster must use to access the HSM.&lt;/p&gt;
--- @param HsmPartitionName [String] &lt;p&gt;The name of the partition in the HSM where the Amazon Redshift clusters will store their database encryption keys.&lt;/p&gt;
--- @param HsmConfigurationIdentifier [String] &lt;p&gt;The name of the Amazon Redshift HSM configuration.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A text description of the HSM configuration.&lt;/p&gt;
+-- <p>Returns information about an HSM configuration, which is an object that describes to Amazon Redshift clusters the information they require to connect to an HSM where they can store database encryption keys.</p>
+-- @param Tags [TagList] <p>The list of tags for the HSM configuration.</p>
+-- @param HsmIpAddress [String] <p>The IP address that the Amazon Redshift cluster must use to access the HSM.</p>
+-- @param HsmPartitionName [String] <p>The name of the partition in the HSM where the Amazon Redshift clusters will store their database encryption keys.</p>
+-- @param HsmConfigurationIdentifier [String] <p>The name of the Amazon Redshift HSM configuration.</p>
+-- @param Description [String] <p>A text description of the HSM configuration.</p>
 function M.HsmConfiguration(Tags, HsmIpAddress, HsmPartitionName, HsmConfigurationIdentifier, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmConfiguration")
 	local t = { 
@@ -1897,19 +1897,19 @@ function M.AssertReservedNode(struct)
 end
 
 --- Create a structure of type ReservedNode
--- &lt;p&gt;Describes a reserved node. You can call the &lt;a&gt;DescribeReservedNodeOfferings&lt;/a&gt; API to obtain the available reserved node offerings. &lt;/p&gt;
--- @param OfferingType [String] &lt;p&gt;The anticipated utilization of the reserved node, as defined in the reserved node offering.&lt;/p&gt;
--- @param FixedPrice [Double] &lt;p&gt;The fixed cost Amazon Redshift charges you for this reserved node.&lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The node type of the reserved node.&lt;/p&gt;
--- @param NodeCount [Integer] &lt;p&gt;The number of reserved compute nodes.&lt;/p&gt;
--- @param UsagePrice [Double] &lt;p&gt;The hourly rate Amazon Redshift charges you for this reserved node.&lt;/p&gt;
--- @param RecurringCharges [RecurringChargeList] &lt;p&gt;The recurring charges for the reserved node.&lt;/p&gt;
--- @param ReservedNodeId [String] &lt;p&gt;The unique identifier for the reservation.&lt;/p&gt;
--- @param State [String] &lt;p&gt;The state of the reserved compute node.&lt;/p&gt; &lt;p&gt;Possible Values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;active-This reserved node is owned by the caller and is available for use.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;payment-failed-Payment failed for the purchase attempt.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param StartTime [TStamp] &lt;p&gt;The time the reservation started. You purchase a reserved node offering for a duration. This is the start time of that duration.&lt;/p&gt;
--- @param Duration [Integer] &lt;p&gt;The duration of the node reservation in seconds.&lt;/p&gt;
--- @param ReservedNodeOfferingId [String] &lt;p&gt;The identifier for the reserved node offering.&lt;/p&gt;
--- @param CurrencyCode [String] &lt;p&gt;The currency code for the reserved cluster.&lt;/p&gt;
+-- <p>Describes a reserved node. You can call the <a>DescribeReservedNodeOfferings</a> API to obtain the available reserved node offerings. </p>
+-- @param OfferingType [String] <p>The anticipated utilization of the reserved node, as defined in the reserved node offering.</p>
+-- @param FixedPrice [Double] <p>The fixed cost Amazon Redshift charges you for this reserved node.</p>
+-- @param NodeType [String] <p>The node type of the reserved node.</p>
+-- @param NodeCount [Integer] <p>The number of reserved compute nodes.</p>
+-- @param UsagePrice [Double] <p>The hourly rate Amazon Redshift charges you for this reserved node.</p>
+-- @param RecurringCharges [RecurringChargeList] <p>The recurring charges for the reserved node.</p>
+-- @param ReservedNodeId [String] <p>The unique identifier for the reservation.</p>
+-- @param State [String] <p>The state of the reserved compute node.</p> <p>Possible Values:</p> <ul> <li> <p>pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed.</p> </li> <li> <p>active-This reserved node is owned by the caller and is available for use.</p> </li> <li> <p>payment-failed-Payment failed for the purchase attempt.</p> </li> </ul>
+-- @param StartTime [TStamp] <p>The time the reservation started. You purchase a reserved node offering for a duration. This is the start time of that duration.</p>
+-- @param Duration [Integer] <p>The duration of the node reservation in seconds.</p>
+-- @param ReservedNodeOfferingId [String] <p>The identifier for the reserved node offering.</p>
+-- @param CurrencyCode [String] <p>The currency code for the reserved cluster.</p>
 function M.ReservedNode(OfferingType, FixedPrice, NodeType, NodeCount, UsagePrice, RecurringCharges, ReservedNodeId, State, StartTime, Duration, ReservedNodeOfferingId, CurrencyCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedNode")
 	local t = { 
@@ -1945,10 +1945,10 @@ function M.AssertResetClusterParameterGroupMessage(struct)
 end
 
 --- Create a structure of type ResetClusterParameterGroupMessage
--- &lt;p/&gt;
--- @param ResetAllParameters [Boolean] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, all parameters in the specified parameter group will be reset to their default values. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of the cluster parameter group to be reset.&lt;/p&gt;
--- @param Parameters [ParametersList] &lt;p&gt;An array of names of parameters to be reset. If &lt;i&gt;ResetAllParameters&lt;/i&gt; option is not used, then at least one parameter name must be supplied. &lt;/p&gt; &lt;p&gt;Constraints: A maximum of 20 parameters can be reset in a single request.&lt;/p&gt;
+-- <p/>
+-- @param ResetAllParameters [Boolean] <p>If <code>true</code>, all parameters in the specified parameter group will be reset to their default values. </p> <p>Default: <code>true</code> </p>
+-- @param ParameterGroupName [String] <p>The name of the cluster parameter group to be reset.</p>
+-- @param Parameters [ParametersList] <p>An array of names of parameters to be reset. If <i>ResetAllParameters</i> option is not used, then at least one parameter name must be supplied. </p> <p>Constraints: A maximum of 20 parameters can be reset in a single request.</p>
 -- Required parameter: ParameterGroupName
 function M.ResetClusterParameterGroupMessage(ResetAllParameters, ParameterGroupName, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResetClusterParameterGroupMessage")
@@ -1995,7 +1995,7 @@ function M.AssertInvalidSubscriptionStateFault(struct)
 end
 
 --- Create a structure of type InvalidSubscriptionStateFault
--- &lt;p&gt;The subscription request is invalid because it is a duplicate request. This subscription request is already in progress.&lt;/p&gt;
+-- <p>The subscription request is invalid because it is a duplicate request. This subscription request is already in progress.</p>
 function M.InvalidSubscriptionStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubscriptionStateFault")
 	local t = { 
@@ -2015,7 +2015,7 @@ function M.AssertInProgressTableRestoreQuotaExceededFault(struct)
 end
 
 --- Create a structure of type InProgressTableRestoreQuotaExceededFault
--- &lt;p&gt;You have exceeded the allowed number of table restore requests. Wait for your current table restore requests to complete before making a new request.&lt;/p&gt;
+-- <p>You have exceeded the allowed number of table restore requests. Wait for your current table restore requests to complete before making a new request.</p>
 function M.InProgressTableRestoreQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InProgressTableRestoreQuotaExceededFault")
 	local t = { 
@@ -2044,16 +2044,16 @@ function M.AssertParameter(struct)
 end
 
 --- Create a structure of type Parameter
--- &lt;p&gt;Describes a parameter in a cluster parameter group.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description of the parameter.&lt;/p&gt;
--- @param DataType [String] &lt;p&gt;The data type of the parameter.&lt;/p&gt;
--- @param IsModifiable [Boolean] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed. &lt;/p&gt;
--- @param AllowedValues [String] &lt;p&gt;The valid range of values for the parameter.&lt;/p&gt;
--- @param Source [String] &lt;p&gt;The source of the parameter value, such as &quot;engine-default&quot; or &quot;user&quot;.&lt;/p&gt;
--- @param ParameterValue [String] &lt;p&gt;The value of the parameter.&lt;/p&gt;
--- @param ParameterName [String] &lt;p&gt;The name of the parameter.&lt;/p&gt;
--- @param MinimumEngineVersion [String] &lt;p&gt;The earliest engine version to which the parameter can apply.&lt;/p&gt;
--- @param ApplyType [ParameterApplyType] &lt;p&gt;Specifies how to apply the WLM configuration parameter. Some properties can be applied dynamically, while other properties require that any associated clusters be rebooted for the configuration changes to be applied. For more information about parameters and parameter groups, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html&quot;&gt;Amazon Redshift Parameter Groups&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>Describes a parameter in a cluster parameter group.</p>
+-- @param Description [String] <p>A description of the parameter.</p>
+-- @param DataType [String] <p>The data type of the parameter.</p>
+-- @param IsModifiable [Boolean] <p>If <code>true</code>, the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed. </p>
+-- @param AllowedValues [String] <p>The valid range of values for the parameter.</p>
+-- @param Source [String] <p>The source of the parameter value, such as "engine-default" or "user".</p>
+-- @param ParameterValue [String] <p>The value of the parameter.</p>
+-- @param ParameterName [String] <p>The name of the parameter.</p>
+-- @param MinimumEngineVersion [String] <p>The earliest engine version to which the parameter can apply.</p>
+-- @param ApplyType [ParameterApplyType] <p>Specifies how to apply the WLM configuration parameter. Some properties can be applied dynamically, while other properties require that any associated clusters be rebooted for the configuration changes to be applied. For more information about parameters and parameter groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.</p>
 function M.Parameter(Description, DataType, IsModifiable, AllowedValues, Source, ParameterValue, ParameterName, MinimumEngineVersion, ApplyType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Parameter")
 	local t = { 
@@ -2107,9 +2107,9 @@ function M.AssertClusterIamRole(struct)
 end
 
 --- Create a structure of type ClusterIamRole
--- &lt;p&gt;An AWS Identity and Access Management (IAM) role that can be used by the associated Amazon Redshift cluster to access other AWS services.&lt;/p&gt;
--- @param ApplyStatus [String] &lt;p&gt;A value that describes the status of the IAM role's association with an Amazon Redshift cluster.&lt;/p&gt; &lt;p&gt;The following are possible statuses and descriptions.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;in-sync&lt;/code&gt;: The role is available for use by the cluster.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;adding&lt;/code&gt;: The role is in the process of being associated with the cluster.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;removing&lt;/code&gt;: The role is in the process of being disassociated with the cluster.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param IamRoleArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role, for example, &lt;code&gt;arn:aws:iam::123456789012:role/RedshiftCopyUnload&lt;/code&gt;. &lt;/p&gt;
+-- <p>An AWS Identity and Access Management (IAM) role that can be used by the associated Amazon Redshift cluster to access other AWS services.</p>
+-- @param ApplyStatus [String] <p>A value that describes the status of the IAM role's association with an Amazon Redshift cluster.</p> <p>The following are possible statuses and descriptions.</p> <ul> <li> <p> <code>in-sync</code>: The role is available for use by the cluster.</p> </li> <li> <p> <code>adding</code>: The role is in the process of being associated with the cluster.</p> </li> <li> <p> <code>removing</code>: The role is in the process of being disassociated with the cluster.</p> </li> </ul>
+-- @param IamRoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role, for example, <code>arn:aws:iam::123456789012:role/RedshiftCopyUnload</code>. </p>
 function M.ClusterIamRole(ApplyStatus, IamRoleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterIamRole")
 	local t = { 
@@ -2131,7 +2131,7 @@ function M.AssertInvalidTableRestoreArgumentFault(struct)
 end
 
 --- Create a structure of type InvalidTableRestoreArgumentFault
--- &lt;p&gt;The value specified for the &lt;code&gt;sourceDatabaseName&lt;/code&gt;, &lt;code&gt;sourceSchemaName&lt;/code&gt;, or &lt;code&gt;sourceTableName&lt;/code&gt; parameter, or a combination of these, doesn't exist in the snapshot.&lt;/p&gt;
+-- <p>The value specified for the <code>sourceDatabaseName</code>, <code>sourceSchemaName</code>, or <code>sourceTableName</code> parameter, or a combination of these, doesn't exist in the snapshot.</p>
 function M.InvalidTableRestoreArgumentFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTableRestoreArgumentFault")
 	local t = { 
@@ -2151,7 +2151,7 @@ function M.AssertClusterSubnetQuotaExceededFault(struct)
 end
 
 --- Create a structure of type ClusterSubnetQuotaExceededFault
--- &lt;p&gt;The request would result in user exceeding the allowed number of subnets in a cluster subnet groups. For information about increasing your quota, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html&quot;&gt;Limits in Amazon Redshift&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
+-- <p>The request would result in user exceeding the allowed number of subnets in a cluster subnet groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 function M.ClusterSubnetQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSubnetQuotaExceededFault")
 	local t = { 
@@ -2171,7 +2171,7 @@ function M.AssertUnsupportedOptionFault(struct)
 end
 
 --- Create a structure of type UnsupportedOptionFault
--- &lt;p&gt;A request option was specified that is not supported.&lt;/p&gt;
+-- <p>A request option was specified that is not supported.</p>
 function M.UnsupportedOptionFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedOptionFault")
 	local t = { 
@@ -2219,10 +2219,10 @@ function M.AssertModifyClusterSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type ModifyClusterSubnetGroupMessage
--- &lt;p/&gt;
--- @param SubnetIds [SubnetIdentifierList] &lt;p&gt;An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single request.&lt;/p&gt;
--- @param ClusterSubnetGroupName [String] &lt;p&gt;The name of the subnet group to be modified.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A text description of the subnet group to be modified.&lt;/p&gt;
+-- <p/>
+-- @param SubnetIds [SubnetIdentifierList] <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single request.</p>
+-- @param ClusterSubnetGroupName [String] <p>The name of the subnet group to be modified.</p>
+-- @param Description [String] <p>A text description of the subnet group to be modified.</p>
 -- Required parameter: ClusterSubnetGroupName
 -- Required parameter: SubnetIds
 function M.ModifyClusterSubnetGroupMessage(SubnetIds, ClusterSubnetGroupName, Description, ...)
@@ -2247,7 +2247,7 @@ function M.AssertHsmClientCertificateQuotaExceededFault(struct)
 end
 
 --- Create a structure of type HsmClientCertificateQuotaExceededFault
--- &lt;p&gt;The quota for HSM client certificates has been reached. For information about increasing your quota, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html&quot;&gt;Limits in Amazon Redshift&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
+-- <p>The quota for HSM client certificates has been reached. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 function M.HsmClientCertificateQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmClientCertificateQuotaExceededFault")
 	local t = { 
@@ -2294,10 +2294,10 @@ function M.AssertModifyClusterIamRolesMessage(struct)
 end
 
 --- Create a structure of type ModifyClusterIamRolesMessage
--- &lt;p/&gt;
--- @param AddIamRoles [IamRoleArnList] &lt;p&gt;Zero or more IAM roles to associate with the cluster. The roles must be in their Amazon Resource Name (ARN) format. You can associate up to 10 IAM roles with a single cluster in a single request.&lt;/p&gt;
--- @param RemoveIamRoles [IamRoleArnList] &lt;p&gt;Zero or more IAM roles in ARN format to disassociate from the cluster. You can disassociate up to 10 IAM roles from a single cluster in a single request.&lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The unique identifier of the cluster for which you want to associate or disassociate IAM roles.&lt;/p&gt;
+-- <p/>
+-- @param AddIamRoles [IamRoleArnList] <p>Zero or more IAM roles to associate with the cluster. The roles must be in their Amazon Resource Name (ARN) format. You can associate up to 10 IAM roles with a single cluster in a single request.</p>
+-- @param RemoveIamRoles [IamRoleArnList] <p>Zero or more IAM roles in ARN format to disassociate from the cluster. You can disassociate up to 10 IAM roles from a single cluster in a single request.</p>
+-- @param ClusterIdentifier [String] <p>The unique identifier of the cluster for which you want to associate or disassociate IAM roles.</p>
 -- Required parameter: ClusterIdentifier
 function M.ModifyClusterIamRolesMessage(AddIamRoles, RemoveIamRoles, ClusterIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyClusterIamRolesMessage")
@@ -2326,10 +2326,10 @@ function M.AssertCreateClusterSecurityGroupMessage(struct)
 end
 
 --- Create a structure of type CreateClusterSecurityGroupMessage
--- &lt;p/&gt;
--- @param ClusterSecurityGroupName [String] &lt;p&gt;The name for the security group. Amazon Redshift stores the value as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain no more than 255 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not be &quot;Default&quot;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be unique for all security groups that are created by your AWS account.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;examplesecuritygroup&lt;/code&gt; &lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description for the security group.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tag instances.&lt;/p&gt;
+-- <p/>
+-- @param ClusterSecurityGroupName [String] <p>The name for the security group. Amazon Redshift stores the value as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain no more than 255 alphanumeric characters or hyphens.</p> </li> <li> <p>Must not be "Default".</p> </li> <li> <p>Must be unique for all security groups that are created by your AWS account.</p> </li> </ul> <p>Example: <code>examplesecuritygroup</code> </p>
+-- @param Description [String] <p>A description for the security group.</p>
+-- @param Tags [TagList] <p>A list of tag instances.</p>
 -- Required parameter: ClusterSecurityGroupName
 -- Required parameter: Description
 function M.CreateClusterSecurityGroupMessage(ClusterSecurityGroupName, Description, Tags, ...)
@@ -2354,7 +2354,7 @@ function M.AssertHsmClientCertificateNotFoundFault(struct)
 end
 
 --- Create a structure of type HsmClientCertificateNotFoundFault
--- &lt;p&gt;There is no Amazon Redshift HSM client certificate with the specified identifier.&lt;/p&gt;
+-- <p>There is no Amazon Redshift HSM client certificate with the specified identifier.</p>
 function M.HsmClientCertificateNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmClientCertificateNotFoundFault")
 	local t = { 
@@ -2374,7 +2374,7 @@ function M.AssertEventSubscriptionQuotaExceededFault(struct)
 end
 
 --- Create a structure of type EventSubscriptionQuotaExceededFault
--- &lt;p&gt;The request would exceed the allowed number of event subscriptions for this account. For information about increasing your quota, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html&quot;&gt;Limits in Amazon Redshift&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
+-- <p>The request would exceed the allowed number of event subscriptions for this account. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 function M.EventSubscriptionQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscriptionQuotaExceededFault")
 	local t = { 
@@ -2397,9 +2397,9 @@ function M.AssertDeleteClusterSnapshotMessage(struct)
 end
 
 --- Create a structure of type DeleteClusterSnapshotMessage
--- &lt;p/&gt;
--- @param SnapshotClusterIdentifier [String] &lt;p&gt;The unique identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.&lt;/p&gt; &lt;p&gt;Constraints: Must be the name of valid cluster.&lt;/p&gt;
--- @param SnapshotIdentifier [String] &lt;p&gt;The unique identifier of the manual snapshot to be deleted.&lt;/p&gt; &lt;p&gt;Constraints: Must be the name of an existing snapshot that is in the &lt;code&gt;available&lt;/code&gt; state.&lt;/p&gt;
+-- <p/>
+-- @param SnapshotClusterIdentifier [String] <p>The unique identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.</p> <p>Constraints: Must be the name of valid cluster.</p>
+-- @param SnapshotIdentifier [String] <p>The unique identifier of the manual snapshot to be deleted.</p> <p>Constraints: Must be the name of an existing snapshot that is in the <code>available</code> state.</p>
 -- Required parameter: SnapshotIdentifier
 function M.DeleteClusterSnapshotMessage(SnapshotClusterIdentifier, SnapshotIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterSnapshotMessage")
@@ -2426,11 +2426,11 @@ function M.AssertDescribeClusterVersionsMessage(struct)
 end
 
 --- Create a structure of type DescribeClusterVersionsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeClusterVersions&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param ClusterVersion [String] &lt;p&gt;The specific cluster version to return.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;1.0&lt;/code&gt; &lt;/p&gt;
--- @param ClusterParameterGroupFamily [String] &lt;p&gt;The name of a specific cluster parameter group family to return details for.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeClusterVersions</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param ClusterVersion [String] <p>The specific cluster version to return.</p> <p>Example: <code>1.0</code> </p>
+-- @param ClusterParameterGroupFamily [String] <p>The name of a specific cluster parameter group family to return details for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 function M.DescribeClusterVersionsMessage(Marker, MaxRecords, ClusterVersion, ClusterParameterGroupFamily, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterVersionsMessage")
 	local t = { 
@@ -2456,9 +2456,9 @@ function M.AssertClustersMessage(struct)
 end
 
 --- Create a structure of type ClustersMessage
--- &lt;p&gt;Contains the output from the &lt;a&gt;DescribeClusters&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param Clusters [ClusterList] &lt;p&gt;A list of &lt;code&gt;Cluster&lt;/code&gt; objects, where each object describes one cluster. &lt;/p&gt;
+-- <p>Contains the output from the <a>DescribeClusters</a> action. </p>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param Clusters [ClusterList] <p>A list of <code>Cluster</code> objects, where each object describes one cluster. </p>
 function M.ClustersMessage(Marker, Clusters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClustersMessage")
 	local t = { 
@@ -2480,7 +2480,7 @@ function M.AssertAuthorizationQuotaExceededFault(struct)
 end
 
 --- Create a structure of type AuthorizationQuotaExceededFault
--- &lt;p&gt;The authorization quota for the cluster security group has been reached.&lt;/p&gt;
+-- <p>The authorization quota for the cluster security group has been reached.</p>
 function M.AuthorizationQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationQuotaExceededFault")
 	local t = { 
@@ -2502,8 +2502,8 @@ function M.AssertDisableSnapshotCopyMessage(struct)
 end
 
 --- Create a structure of type DisableSnapshotCopyMessage
--- &lt;p/&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The unique identifier of the source cluster that you want to disable copying of snapshots to a destination region.&lt;/p&gt; &lt;p&gt;Constraints: Must be the valid name of an existing cluster that has cross-region snapshot copy enabled.&lt;/p&gt;
+-- <p/>
+-- @param ClusterIdentifier [String] <p>The unique identifier of the source cluster that you want to disable copying of snapshots to a destination region.</p> <p>Constraints: Must be the valid name of an existing cluster that has cross-region snapshot copy enabled.</p>
 -- Required parameter: ClusterIdentifier
 function M.DisableSnapshotCopyMessage(ClusterIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableSnapshotCopyMessage")
@@ -2525,7 +2525,7 @@ function M.AssertSourceNotFoundFault(struct)
 end
 
 --- Create a structure of type SourceNotFoundFault
--- &lt;p&gt;The specified Amazon Redshift event source could not be found.&lt;/p&gt;
+-- <p>The specified Amazon Redshift event source could not be found.</p>
 function M.SourceNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SourceNotFoundFault")
 	local t = { 
@@ -2549,9 +2549,9 @@ function M.AssertModifySnapshotCopyRetentionPeriodMessage(struct)
 end
 
 --- Create a structure of type ModifySnapshotCopyRetentionPeriodMessage
--- &lt;p/&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The unique identifier of the cluster for which you want to change the retention period for automated snapshots that are copied to a destination region.&lt;/p&gt; &lt;p&gt;Constraints: Must be the valid name of an existing cluster that has cross-region snapshot copy enabled.&lt;/p&gt;
--- @param RetentionPeriod [Integer] &lt;p&gt;The number of days to retain automated snapshots in the destination region after they are copied from the source region.&lt;/p&gt; &lt;p&gt;If you decrease the retention period for automated snapshots that are copied to a destination region, Amazon Redshift will delete any existing automated snapshots that were copied to the destination region and that fall outside of the new retention period.&lt;/p&gt; &lt;p&gt;Constraints: Must be at least 1 and no more than 35.&lt;/p&gt;
+-- <p/>
+-- @param ClusterIdentifier [String] <p>The unique identifier of the cluster for which you want to change the retention period for automated snapshots that are copied to a destination region.</p> <p>Constraints: Must be the valid name of an existing cluster that has cross-region snapshot copy enabled.</p>
+-- @param RetentionPeriod [Integer] <p>The number of days to retain automated snapshots in the destination region after they are copied from the source region.</p> <p>If you decrease the retention period for automated snapshots that are copied to a destination region, Amazon Redshift will delete any existing automated snapshots that were copied to the destination region and that fall outside of the new retention period.</p> <p>Constraints: Must be at least 1 and no more than 35.</p>
 -- Required parameter: ClusterIdentifier
 -- Required parameter: RetentionPeriod
 function M.ModifySnapshotCopyRetentionPeriodMessage(ClusterIdentifier, RetentionPeriod, ...)
@@ -2634,14 +2634,14 @@ function M.AssertCreateHsmConfigurationMessage(struct)
 end
 
 --- Create a structure of type CreateHsmConfigurationMessage
--- &lt;p/&gt;
--- @param HsmPartitionName [String] &lt;p&gt;The name of the partition in the HSM where the Amazon Redshift clusters will store their database encryption keys.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A text description of the HSM configuration to be created.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tag instances.&lt;/p&gt;
--- @param HsmPartitionPassword [String] &lt;p&gt;The password required to access the HSM partition.&lt;/p&gt;
--- @param HsmConfigurationIdentifier [String] &lt;p&gt;The identifier to be assigned to the new Amazon Redshift HSM configuration.&lt;/p&gt;
--- @param HsmIpAddress [String] &lt;p&gt;The IP address that the Amazon Redshift cluster must use to access the HSM.&lt;/p&gt;
--- @param HsmServerPublicCertificate [String] &lt;p&gt;The HSMs public certificate file. When using Cloud HSM, the file name is server.pem.&lt;/p&gt;
+-- <p/>
+-- @param HsmPartitionName [String] <p>The name of the partition in the HSM where the Amazon Redshift clusters will store their database encryption keys.</p>
+-- @param Description [String] <p>A text description of the HSM configuration to be created.</p>
+-- @param Tags [TagList] <p>A list of tag instances.</p>
+-- @param HsmPartitionPassword [String] <p>The password required to access the HSM partition.</p>
+-- @param HsmConfigurationIdentifier [String] <p>The identifier to be assigned to the new Amazon Redshift HSM configuration.</p>
+-- @param HsmIpAddress [String] <p>The IP address that the Amazon Redshift cluster must use to access the HSM.</p>
+-- @param HsmServerPublicCertificate [String] <p>The HSMs public certificate file. When using Cloud HSM, the file name is server.pem.</p>
 -- Required parameter: HsmConfigurationIdentifier
 -- Required parameter: Description
 -- Required parameter: HsmIpAddress
@@ -2678,11 +2678,11 @@ function M.AssertEC2SecurityGroup(struct)
 end
 
 --- Create a structure of type EC2SecurityGroup
--- &lt;p&gt;Describes an Amazon EC2 security group.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the EC2 security group.&lt;/p&gt;
--- @param EC2SecurityGroupName [String] &lt;p&gt;The name of the EC2 Security Group.&lt;/p&gt;
--- @param EC2SecurityGroupOwnerId [String] &lt;p&gt;The AWS ID of the owner of the EC2 security group specified in the &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; field. &lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The list of tags for the EC2 security group.&lt;/p&gt;
+-- <p>Describes an Amazon EC2 security group.</p>
+-- @param Status [String] <p>The status of the EC2 security group.</p>
+-- @param EC2SecurityGroupName [String] <p>The name of the EC2 Security Group.</p>
+-- @param EC2SecurityGroupOwnerId [String] <p>The AWS ID of the owner of the EC2 security group specified in the <code>EC2SecurityGroupName</code> field. </p>
+-- @param Tags [TagList] <p>The list of tags for the EC2 security group.</p>
 function M.EC2SecurityGroup(Status, EC2SecurityGroupName, EC2SecurityGroupOwnerId, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EC2SecurityGroup")
 	local t = { 
@@ -2708,9 +2708,9 @@ function M.AssertRecurringCharge(struct)
 end
 
 --- Create a structure of type RecurringCharge
--- &lt;p&gt;Describes a recurring charge.&lt;/p&gt;
--- @param RecurringChargeAmount [Double] &lt;p&gt;The amount charged per the period of time specified by the recurring charge frequency.&lt;/p&gt;
--- @param RecurringChargeFrequency [String] &lt;p&gt;The frequency at which the recurring charge amount is applied.&lt;/p&gt;
+-- <p>Describes a recurring charge.</p>
+-- @param RecurringChargeAmount [Double] <p>The amount charged per the period of time specified by the recurring charge frequency.</p>
+-- @param RecurringChargeFrequency [String] <p>The frequency at which the recurring charge amount is applied.</p>
 function M.RecurringCharge(RecurringChargeAmount, RecurringChargeFrequency, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecurringCharge")
 	local t = { 
@@ -2733,8 +2733,8 @@ function M.AssertEventCategoriesMessage(struct)
 end
 
 --- Create a structure of type EventCategoriesMessage
--- &lt;p/&gt;
--- @param EventCategoriesMapList [EventCategoriesMapList] &lt;p&gt;A list of event categories descriptions.&lt;/p&gt;
+-- <p/>
+-- @param EventCategoriesMapList [EventCategoriesMapList] <p>A list of event categories descriptions.</p>
 function M.EventCategoriesMessage(EventCategoriesMapList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventCategoriesMessage")
 	local t = { 
@@ -2764,16 +2764,16 @@ function M.AssertPendingModifiedValues(struct)
 end
 
 --- Create a structure of type PendingModifiedValues
--- &lt;p&gt;Describes cluster attributes that are in a pending state. A change to one or more the attributes was requested and is in progress or will be applied.&lt;/p&gt;
--- @param ClusterVersion [String] &lt;p&gt;The pending or in-progress change of the service version.&lt;/p&gt;
--- @param PubliclyAccessible [BooleanOptional] &lt;p&gt;The pending or in-progress change of the ability to connect to the cluster from the public network.&lt;/p&gt;
--- @param EnhancedVpcRouting [BooleanOptional] &lt;p&gt;An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html&quot;&gt;Enhanced VPC Routing&lt;/a&gt; in the Amazon Redshift Cluster Management Guide.&lt;/p&gt; &lt;p&gt;If this option is &lt;code&gt;true&lt;/code&gt;, enhanced VPC routing is enabled. &lt;/p&gt; &lt;p&gt;Default: false&lt;/p&gt;
--- @param ClusterType [String] &lt;p&gt;The pending or in-progress change of the cluster type.&lt;/p&gt;
--- @param MasterUserPassword [String] &lt;p&gt;The pending or in-progress change of the master user password for the cluster.&lt;/p&gt;
--- @param AutomatedSnapshotRetentionPeriod [IntegerOptional] &lt;p&gt;The pending or in-progress change of the automated snapshot retention period.&lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The pending or in-progress change of the cluster's node type.&lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The pending or in-progress change of the new identifier for the cluster.&lt;/p&gt;
--- @param NumberOfNodes [IntegerOptional] &lt;p&gt;The pending or in-progress change of the number of nodes in the cluster.&lt;/p&gt;
+-- <p>Describes cluster attributes that are in a pending state. A change to one or more the attributes was requested and is in progress or will be applied.</p>
+-- @param ClusterVersion [String] <p>The pending or in-progress change of the service version.</p>
+-- @param PubliclyAccessible [BooleanOptional] <p>The pending or in-progress change of the ability to connect to the cluster from the public network.</p>
+-- @param EnhancedVpcRouting [BooleanOptional] <p>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the Amazon Redshift Cluster Management Guide.</p> <p>If this option is <code>true</code>, enhanced VPC routing is enabled. </p> <p>Default: false</p>
+-- @param ClusterType [String] <p>The pending or in-progress change of the cluster type.</p>
+-- @param MasterUserPassword [String] <p>The pending or in-progress change of the master user password for the cluster.</p>
+-- @param AutomatedSnapshotRetentionPeriod [IntegerOptional] <p>The pending or in-progress change of the automated snapshot retention period.</p>
+-- @param NodeType [String] <p>The pending or in-progress change of the cluster's node type.</p>
+-- @param ClusterIdentifier [String] <p>The pending or in-progress change of the new identifier for the cluster.</p>
+-- @param NumberOfNodes [IntegerOptional] <p>The pending or in-progress change of the number of nodes in the cluster.</p>
 function M.PendingModifiedValues(ClusterVersion, PubliclyAccessible, EnhancedVpcRouting, ClusterType, MasterUserPassword, AutomatedSnapshotRetentionPeriod, NodeType, ClusterIdentifier, NumberOfNodes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PendingModifiedValues")
 	local t = { 
@@ -2810,13 +2810,13 @@ function M.AssertGetClusterCredentialsMessage(struct)
 end
 
 --- Create a structure of type GetClusterCredentialsMessage
--- &lt;p&gt;The request parameters to get cluster credentials.&lt;/p&gt;
--- @param DbGroups [DbGroupList] &lt;p&gt;A list of the names of existing database groups that &lt;code&gt;DbUser&lt;/code&gt; will join for the current session. If not specified, the new user is added only to PUBLIC.&lt;/p&gt;
--- @param AutoCreate [BooleanOptional] &lt;p&gt;Create a database user with the name specified for &lt;code&gt;DbUser&lt;/code&gt; if one does not exist.&lt;/p&gt;
--- @param DurationSeconds [IntegerOptional] &lt;p&gt;The number of seconds until the returned temporary password expires.&lt;/p&gt; &lt;p&gt;Constraint: minimum 900, maximum 3600.&lt;/p&gt; &lt;p&gt;Default: 900&lt;/p&gt;
--- @param DbUser [String] &lt;p&gt;The name of a database user. If a user name matching &lt;code&gt;DbUser&lt;/code&gt; exists in the database, the temporary user credentials have the same permissions as the existing user. If &lt;code&gt;DbUser&lt;/code&gt; doesn't exist in the database and &lt;code&gt;Autocreate&lt;/code&gt; is &lt;code&gt;True&lt;/code&gt;, a new user is created using the value for &lt;code&gt;DbUser&lt;/code&gt; with PUBLIC permissions. If a database user matching the value for &lt;code&gt;DbUser&lt;/code&gt; doesn't exist and &lt;code&gt;Autocreate&lt;/code&gt; is &lt;code&gt;False&lt;/code&gt;, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/http:/docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html&quot;&gt;CREATE USER&lt;/a&gt; in the Amazon Redshift Database Developer Guide. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 128 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain only lowercase letters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not contain a colon ( : ) or slash ( / ). &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a reserved word. A list of reserved words can be found in &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html&quot;&gt;Reserved Words&lt;/a&gt; in the Amazon Redshift Database Developer Guide.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The unique identifier of the cluster that contains the database for which your are requesting credentials. This parameter is case sensitive.&lt;/p&gt;
--- @param DbName [String] &lt;p&gt;The name of a database that &lt;code&gt;DbUser&lt;/code&gt; is authorized to log on to. If &lt;code&gt;DbName&lt;/code&gt; is not specified, &lt;code&gt;DbUser&lt;/code&gt; can log in to any existing database.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 64 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain only lowercase letters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a reserved word. A list of reserved words can be found in &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html&quot;&gt;Reserved Words&lt;/a&gt; in the Amazon Redshift Database Developer Guide.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The request parameters to get cluster credentials.</p>
+-- @param DbGroups [DbGroupList] <p>A list of the names of existing database groups that <code>DbUser</code> will join for the current session. If not specified, the new user is added only to PUBLIC.</p>
+-- @param AutoCreate [BooleanOptional] <p>Create a database user with the name specified for <code>DbUser</code> if one does not exist.</p>
+-- @param DurationSeconds [IntegerOptional] <p>The number of seconds until the returned temporary password expires.</p> <p>Constraint: minimum 900, maximum 3600.</p> <p>Default: 900</p>
+-- @param DbUser [String] <p>The name of a database user. If a user name matching <code>DbUser</code> exists in the database, the temporary user credentials have the same permissions as the existing user. If <code>DbUser</code> doesn't exist in the database and <code>Autocreate</code> is <code>True</code>, a new user is created using the value for <code>DbUser</code> with PUBLIC permissions. If a database user matching the value for <code>DbUser</code> doesn't exist and <code>Autocreate</code> is <code>False</code>, then the command succeeds but the connection attempt will fail because the user doesn't exist in the database.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html">CREATE USER</a> in the Amazon Redshift Database Developer Guide. </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 128 alphanumeric characters or hyphens</p> </li> <li> <p>Must contain only lowercase letters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Must not contain a colon ( : ) or slash ( / ). </p> </li> <li> <p>Cannot be a reserved word. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide.</p> </li> </ul>
+-- @param ClusterIdentifier [String] <p>The unique identifier of the cluster that contains the database for which your are requesting credentials. This parameter is case sensitive.</p>
+-- @param DbName [String] <p>The name of a database that <code>DbUser</code> is authorized to log on to. If <code>DbName</code> is not specified, <code>DbUser</code> can log in to any existing database.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 64 alphanumeric characters or hyphens</p> </li> <li> <p>Must contain only lowercase letters.</p> </li> <li> <p>Cannot be a reserved word. A list of reserved words can be found in <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html">Reserved Words</a> in the Amazon Redshift Database Developer Guide.</p> </li> </ul>
 -- Required parameter: DbUser
 -- Required parameter: ClusterIdentifier
 function M.GetClusterCredentialsMessage(DbGroups, AutoCreate, DurationSeconds, DbUser, ClusterIdentifier, DbName, ...)
@@ -2848,11 +2848,11 @@ function M.AssertEventInfoMap(struct)
 end
 
 --- Create a structure of type EventInfoMap
--- &lt;p&gt;Describes event information.&lt;/p&gt;
--- @param EventId [String] &lt;p&gt;The identifier of an Amazon Redshift event.&lt;/p&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt;The category of an Amazon Redshift event.&lt;/p&gt;
--- @param Severity [String] &lt;p&gt;The severity of the event.&lt;/p&gt; &lt;p&gt;Values: ERROR, INFO&lt;/p&gt;
--- @param EventDescription [String] &lt;p&gt;The description of an Amazon Redshift event.&lt;/p&gt;
+-- <p>Describes event information.</p>
+-- @param EventId [String] <p>The identifier of an Amazon Redshift event.</p>
+-- @param EventCategories [EventCategoriesList] <p>The category of an Amazon Redshift event.</p>
+-- @param Severity [String] <p>The severity of the event.</p> <p>Values: ERROR, INFO</p>
+-- @param EventDescription [String] <p>The description of an Amazon Redshift event.</p>
 function M.EventInfoMap(EventId, EventCategories, Severity, EventDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventInfoMap")
 	local t = { 
@@ -2878,8 +2878,8 @@ function M.AssertDeleteSnapshotCopyGrantMessage(struct)
 end
 
 --- Create a structure of type DeleteSnapshotCopyGrantMessage
--- &lt;p&gt;The result of the &lt;code&gt;DeleteSnapshotCopyGrant&lt;/code&gt; action.&lt;/p&gt;
--- @param SnapshotCopyGrantName [String] &lt;p&gt;The name of the snapshot copy grant to delete.&lt;/p&gt;
+-- <p>The result of the <code>DeleteSnapshotCopyGrant</code> action.</p>
+-- @param SnapshotCopyGrantName [String] <p>The name of the snapshot copy grant to delete.</p>
 -- Required parameter: SnapshotCopyGrantName
 function M.DeleteSnapshotCopyGrantMessage(SnapshotCopyGrantName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSnapshotCopyGrantMessage")
@@ -2901,7 +2901,7 @@ function M.AssertInvalidClusterSubnetStateFault(struct)
 end
 
 --- Create a structure of type InvalidClusterSubnetStateFault
--- &lt;p&gt;The state of the subnet is invalid.&lt;/p&gt;
+-- <p>The state of the subnet is invalid.</p>
 function M.InvalidClusterSubnetStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidClusterSubnetStateFault")
 	local t = { 
@@ -2921,7 +2921,7 @@ function M.AssertUnauthorizedOperation(struct)
 end
 
 --- Create a structure of type UnauthorizedOperation
--- &lt;p&gt;Your account is not authorized to perform the requested operation.&lt;/p&gt;
+-- <p>Your account is not authorized to perform the requested operation.</p>
 function M.UnauthorizedOperation(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedOperation")
 	local t = { 
@@ -2968,10 +2968,10 @@ function M.AssertDescribeDefaultClusterParametersMessage(struct)
 end
 
 --- Create a structure of type DescribeDefaultClusterParametersMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeDefaultClusterParameters&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param ParameterGroupFamily [String] &lt;p&gt;The name of the cluster parameter group family.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeDefaultClusterParameters</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param ParameterGroupFamily [String] <p>The name of the cluster parameter group family.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
 -- Required parameter: ParameterGroupFamily
 function M.DescribeDefaultClusterParametersMessage(Marker, ParameterGroupFamily, MaxRecords, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDefaultClusterParametersMessage")
@@ -2997,9 +2997,9 @@ function M.AssertEventSubscriptionsMessage(struct)
 end
 
 --- Create a structure of type EventSubscriptionsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param EventSubscriptionsList [EventSubscriptionsList] &lt;p&gt;A list of event subscriptions.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param EventSubscriptionsList [EventSubscriptionsList] <p>A list of event subscriptions.</p>
 function M.EventSubscriptionsMessage(Marker, EventSubscriptionsList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscriptionsMessage")
 	local t = { 
@@ -3068,29 +3068,29 @@ function M.AssertRestoreFromClusterSnapshotMessage(struct)
 end
 
 --- Create a structure of type RestoreFromClusterSnapshotMessage
--- &lt;p/&gt;
--- @param ClusterParameterGroupName [String] &lt;p&gt;The name of the parameter group to be associated with this cluster.&lt;/p&gt; &lt;p&gt;Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html&quot;&gt;Working with Amazon Redshift Parameter Groups&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PubliclyAccessible [BooleanOptional] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the cluster can be accessed from a public network. &lt;/p&gt;
--- @param OwnerAccount [String] &lt;p&gt;The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not own, optional if you own the snapshot.&lt;/p&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt;A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.&lt;/p&gt; &lt;p&gt;Default: The default VPC security group is associated with the cluster.&lt;/p&gt; &lt;p&gt;VPC security groups only apply to clusters in VPCs.&lt;/p&gt;
--- @param SnapshotClusterIdentifier [String] &lt;p&gt;The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.&lt;/p&gt;
--- @param AutomatedSnapshotRetentionPeriod [IntegerOptional] &lt;p&gt;The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with &lt;a&gt;CreateClusterSnapshot&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Default: The value selected for the cluster from which the snapshot was taken.&lt;/p&gt; &lt;p&gt;Constraints: Must be a value from 0 to 35.&lt;/p&gt;
--- @param EnhancedVpcRouting [BooleanOptional] &lt;p&gt;An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html&quot;&gt;Enhanced VPC Routing&lt;/a&gt; in the Amazon Redshift Cluster Management Guide.&lt;/p&gt; &lt;p&gt;If this option is &lt;code&gt;true&lt;/code&gt;, enhanced VPC routing is enabled. &lt;/p&gt; &lt;p&gt;Default: false&lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The weekly time range (in UTC) during which automated cluster maintenance can occur.&lt;/p&gt; &lt;p&gt; Format: &lt;code&gt;ddd:hh24:mi-ddd:hh24:mi&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Default: The value selected for the cluster from which the snapshot was taken. For more information about the time blocks for each region, see &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows&quot;&gt;Maintenance Windows&lt;/a&gt; in Amazon Redshift Cluster Management Guide. &lt;/p&gt; &lt;p&gt;Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun&lt;/p&gt; &lt;p&gt;Constraints: Minimum 30-minute window.&lt;/p&gt;
--- @param AdditionalInfo [String] &lt;p&gt;Reserved.&lt;/p&gt;
--- @param IamRoles [IamRoleArnList] &lt;p&gt;A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles in a single request.&lt;/p&gt; &lt;p&gt;A cluster can have up to 10 IAM roles associated at any time.&lt;/p&gt;
--- @param AllowVersionUpgrade [BooleanOptional] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param HsmConfigurationIdentifier [String] &lt;p&gt;Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.&lt;/p&gt;
--- @param ClusterSecurityGroups [ClusterSecurityGroupNameList] &lt;p&gt;A list of security groups to be associated with this cluster.&lt;/p&gt; &lt;p&gt;Default: The default cluster security group for Amazon Redshift.&lt;/p&gt; &lt;p&gt;Cluster security groups only apply to clusters outside of VPCs.&lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The identifier of the cluster that will be created from restoring the snapshot.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Alphabetic characters must be lowercase.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be unique for all clusters within an AWS account.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param HsmClientCertificateIdentifier [String] &lt;p&gt;Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The Amazon EC2 Availability Zone in which to restore the cluster.&lt;/p&gt; &lt;p&gt;Default: A random, system-chosen Availability Zone.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;us-east-1a&lt;/code&gt; &lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The node type that the restored cluster will be provisioned with.&lt;/p&gt; &lt;p&gt;Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type. For more information about node types, see &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes&quot;&gt; About Clusters and Nodes&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt; &lt;/p&gt;
--- @param ElasticIp [String] &lt;p&gt;The elastic IP (EIP) address for the cluster.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster that you restore from a shared snapshot.&lt;/p&gt;
--- @param SnapshotIdentifier [String] &lt;p&gt;The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;my-snapshot-id&lt;/code&gt; &lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number on which the cluster accepts connections.&lt;/p&gt; &lt;p&gt;Default: The same port as the original cluster.&lt;/p&gt; &lt;p&gt;Constraints: Must be between &lt;code&gt;1115&lt;/code&gt; and &lt;code&gt;65535&lt;/code&gt;.&lt;/p&gt;
--- @param ClusterSubnetGroupName [String] &lt;p&gt;The name of the subnet group where you want to cluster restored.&lt;/p&gt; &lt;p&gt;A snapshot of cluster in VPC can be restored only in VPC. Therefore, you must provide subnet group name where you want the cluster restored.&lt;/p&gt;
+-- <p/>
+-- @param ClusterParameterGroupName [String] <p>The name of the parameter group to be associated with this cluster.</p> <p>Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with Amazon Redshift Parameter Groups</a>.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param PubliclyAccessible [BooleanOptional] <p>If <code>true</code>, the cluster can be accessed from a public network. </p>
+-- @param OwnerAccount [String] <p>The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not own, optional if you own the snapshot.</p>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.</p> <p>Default: The default VPC security group is associated with the cluster.</p> <p>VPC security groups only apply to clusters in VPCs.</p>
+-- @param SnapshotClusterIdentifier [String] <p>The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.</p>
+-- @param AutomatedSnapshotRetentionPeriod [IntegerOptional] <p>The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with <a>CreateClusterSnapshot</a>. </p> <p>Default: The value selected for the cluster from which the snapshot was taken.</p> <p>Constraints: Must be a value from 0 to 35.</p>
+-- @param EnhancedVpcRouting [BooleanOptional] <p>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the Amazon Redshift Cluster Management Guide.</p> <p>If this option is <code>true</code>, enhanced VPC routing is enabled. </p> <p>Default: false</p>
+-- @param PreferredMaintenanceWindow [String] <p>The weekly time range (in UTC) during which automated cluster maintenance can occur.</p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p> Default: The value selected for the cluster from which the snapshot was taken. For more information about the time blocks for each region, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows">Maintenance Windows</a> in Amazon Redshift Cluster Management Guide. </p> <p>Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Minimum 30-minute window.</p>
+-- @param AdditionalInfo [String] <p>Reserved.</p>
+-- @param IamRoles [IamRoleArnList] <p>A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles in a single request.</p> <p>A cluster can have up to 10 IAM roles associated at any time.</p>
+-- @param AllowVersionUpgrade [BooleanOptional] <p>If <code>true</code>, major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. </p> <p>Default: <code>true</code> </p>
+-- @param HsmConfigurationIdentifier [String] <p>Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.</p>
+-- @param ClusterSecurityGroups [ClusterSecurityGroupNameList] <p>A list of security groups to be associated with this cluster.</p> <p>Default: The default cluster security group for Amazon Redshift.</p> <p>Cluster security groups only apply to clusters outside of VPCs.</p>
+-- @param ClusterIdentifier [String] <p>The identifier of the cluster that will be created from restoring the snapshot.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul>
+-- @param HsmClientCertificateIdentifier [String] <p>Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.</p>
+-- @param AvailabilityZone [String] <p>The Amazon EC2 Availability Zone in which to restore the cluster.</p> <p>Default: A random, system-chosen Availability Zone.</p> <p>Example: <code>us-east-1a</code> </p>
+-- @param NodeType [String] <p>The node type that the restored cluster will be provisioned with.</p> <p>Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds2.xlarge into ds1.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type. For more information about node types, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"> About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i> </p>
+-- @param ElasticIp [String] <p>The elastic IP (EIP) address for the cluster.</p>
+-- @param KmsKeyId [String] <p>The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster that you restore from a shared snapshot.</p>
+-- @param SnapshotIdentifier [String] <p>The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.</p> <p>Example: <code>my-snapshot-id</code> </p>
+-- @param Port [IntegerOptional] <p>The port number on which the cluster accepts connections.</p> <p>Default: The same port as the original cluster.</p> <p>Constraints: Must be between <code>1115</code> and <code>65535</code>.</p>
+-- @param ClusterSubnetGroupName [String] <p>The name of the subnet group where you want to cluster restored.</p> <p>A snapshot of cluster in VPC can be restored only in VPC. Therefore, you must provide subnet group name where you want the cluster restored.</p>
 -- Required parameter: ClusterIdentifier
 -- Required parameter: SnapshotIdentifier
 function M.RestoreFromClusterSnapshotMessage(ClusterParameterGroupName, PubliclyAccessible, OwnerAccount, VpcSecurityGroupIds, SnapshotClusterIdentifier, AutomatedSnapshotRetentionPeriod, EnhancedVpcRouting, PreferredMaintenanceWindow, AdditionalInfo, IamRoles, AllowVersionUpgrade, HsmConfigurationIdentifier, ClusterSecurityGroups, ClusterIdentifier, HsmClientCertificateIdentifier, AvailabilityZone, NodeType, ElasticIp, KmsKeyId, SnapshotIdentifier, Port, ClusterSubnetGroupName, ...)
@@ -3137,10 +3137,10 @@ function M.AssertHsmClientCertificate(struct)
 end
 
 --- Create a structure of type HsmClientCertificate
--- &lt;p&gt;Returns information about an HSM client certificate. The certificate is stored in a secure Hardware Storage Module (HSM), and used by the Amazon Redshift cluster to encrypt data files.&lt;/p&gt;
--- @param HsmClientCertificatePublicKey [String] &lt;p&gt;The public key that the Amazon Redshift cluster will use to connect to the HSM. You must register the public key in the HSM.&lt;/p&gt;
--- @param HsmClientCertificateIdentifier [String] &lt;p&gt;The identifier of the HSM client certificate.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The list of tags for the HSM client certificate.&lt;/p&gt;
+-- <p>Returns information about an HSM client certificate. The certificate is stored in a secure Hardware Storage Module (HSM), and used by the Amazon Redshift cluster to encrypt data files.</p>
+-- @param HsmClientCertificatePublicKey [String] <p>The public key that the Amazon Redshift cluster will use to connect to the HSM. You must register the public key in the HSM.</p>
+-- @param HsmClientCertificateIdentifier [String] <p>The identifier of the HSM client certificate.</p>
+-- @param Tags [TagList] <p>The list of tags for the HSM client certificate.</p>
 function M.HsmClientCertificate(HsmClientCertificatePublicKey, HsmClientCertificateIdentifier, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmClientCertificate")
 	local t = { 
@@ -3164,8 +3164,8 @@ function M.AssertAvailabilityZone(struct)
 end
 
 --- Create a structure of type AvailabilityZone
--- &lt;p&gt;Describes an availability zone.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the availability zone.&lt;/p&gt;
+-- <p>Describes an availability zone.</p>
+-- @param Name [String] <p>The name of the availability zone.</p>
 function M.AvailabilityZone(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityZone")
 	local t = { 
@@ -3191,12 +3191,12 @@ function M.AssertDescribeHsmClientCertificatesMessage(struct)
 end
 
 --- Create a structure of type DescribeHsmClientCertificatesMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeHsmClientCertificates&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param TagValues [TagValueList] &lt;p&gt;A tag value or values for which you want to return all matching HSM client certificates that are associated with the specified tag value or values. For example, suppose that you have HSM client certificates that are tagged with values called &lt;code&gt;admin&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt;. If you specify both of these tag values in the request, Amazon Redshift returns a response with the HSM client certificates that have either or both of these tag values associated with them.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;A tag key or keys for which you want to return all matching HSM client certificates that are associated with the specified key or keys. For example, suppose that you have HSM client certificates that are tagged with keys called &lt;code&gt;owner&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the HSM client certificates that have either or both of these tag keys associated with them.&lt;/p&gt;
--- @param HsmClientCertificateIdentifier [String] &lt;p&gt;The identifier of a specific HSM client certificate for which you want information. If no identifier is specified, information is returned for all HSM client certificates owned by your AWS customer account.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeHsmClientCertificates</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param TagValues [TagValueList] <p>A tag value or values for which you want to return all matching HSM client certificates that are associated with the specified tag value or values. For example, suppose that you have HSM client certificates that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the HSM client certificates that have either or both of these tag values associated with them.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching HSM client certificates that are associated with the specified key or keys. For example, suppose that you have HSM client certificates that are tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the HSM client certificates that have either or both of these tag keys associated with them.</p>
+-- @param HsmClientCertificateIdentifier [String] <p>The identifier of a specific HSM client certificate for which you want information. If no identifier is specified, information is returned for all HSM client certificates owned by your AWS customer account.</p>
 function M.DescribeHsmClientCertificatesMessage(Marker, TagValues, MaxRecords, TagKeys, HsmClientCertificateIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHsmClientCertificatesMessage")
 	local t = { 
@@ -3221,7 +3221,7 @@ function M.AssertInvalidTagFault(struct)
 end
 
 --- Create a structure of type InvalidTagFault
--- &lt;p&gt;The tag is invalid.&lt;/p&gt;
+-- <p>The tag is invalid.</p>
 function M.InvalidTagFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTagFault")
 	local t = { 
@@ -3244,10 +3244,10 @@ function M.AssertIPRange(struct)
 end
 
 --- Create a structure of type IPRange
--- &lt;p&gt;Describes an IP range used in a security group.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the IP range, for example, &quot;authorized&quot;.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The list of tags for the IP range.&lt;/p&gt;
--- @param CIDRIP [String] &lt;p&gt;The IP range in Classless Inter-Domain Routing (CIDR) notation.&lt;/p&gt;
+-- <p>Describes an IP range used in a security group.</p>
+-- @param Status [String] <p>The status of the IP range, for example, "authorized".</p>
+-- @param Tags [TagList] <p>The list of tags for the IP range.</p>
+-- @param CIDRIP [String] <p>The IP range in Classless Inter-Domain Routing (CIDR) notation.</p>
 function M.IPRange(Status, Tags, CIDRIP, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IPRange")
 	local t = { 
@@ -3293,7 +3293,7 @@ function M.AssertSnapshotCopyGrantAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type SnapshotCopyGrantAlreadyExistsFault
--- &lt;p&gt;The snapshot copy grant can't be created because a grant with the same name already exists.&lt;/p&gt;
+-- <p>The snapshot copy grant can't be created because a grant with the same name already exists.</p>
 function M.SnapshotCopyGrantAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotCopyGrantAlreadyExistsFault")
 	local t = { 
@@ -3315,8 +3315,8 @@ function M.AssertDeleteClusterSecurityGroupMessage(struct)
 end
 
 --- Create a structure of type DeleteClusterSecurityGroupMessage
--- &lt;p/&gt;
--- @param ClusterSecurityGroupName [String] &lt;p&gt;The name of the cluster security group to be deleted.&lt;/p&gt;
+-- <p/>
+-- @param ClusterSecurityGroupName [String] <p>The name of the cluster security group to be deleted.</p>
 -- Required parameter: ClusterSecurityGroupName
 function M.DeleteClusterSecurityGroupMessage(ClusterSecurityGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterSecurityGroupMessage")
@@ -3341,10 +3341,10 @@ function M.AssertDescribeReservedNodesMessage(struct)
 end
 
 --- Create a structure of type DescribeReservedNodesMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeReservedNodes&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param ReservedNodeId [String] &lt;p&gt;Identifier for the node reservation.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeReservedNodes</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param ReservedNodeId [String] <p>Identifier for the node reservation.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
 function M.DescribeReservedNodesMessage(Marker, ReservedNodeId, MaxRecords, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReservedNodesMessage")
 	local t = { 
@@ -3370,10 +3370,10 @@ function M.AssertDescribeReservedNodeOfferingsMessage(struct)
 end
 
 --- Create a structure of type DescribeReservedNodeOfferingsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeReservedNodeOfferings&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param ReservedNodeOfferingId [String] &lt;p&gt;The unique identifier for the offering.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeReservedNodeOfferings</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param ReservedNodeOfferingId [String] <p>The unique identifier for the offering.</p>
 function M.DescribeReservedNodeOfferingsMessage(Marker, MaxRecords, ReservedNodeOfferingId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReservedNodeOfferingsMessage")
 	local t = { 
@@ -3401,10 +3401,10 @@ function M.AssertCopyClusterSnapshotMessage(struct)
 end
 
 --- Create a structure of type CopyClusterSnapshotMessage
--- &lt;p/&gt;
--- @param SourceSnapshotIdentifier [String] &lt;p&gt;The identifier for the source snapshot.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the identifier for a valid automated snapshot whose state is &lt;code&gt;available&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SourceSnapshotClusterIdentifier [String] &lt;p&gt;The identifier of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the identifier for a valid cluster.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param TargetSnapshotIdentifier [String] &lt;p&gt;The identifier given to the new manual snapshot.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cannot be null, empty, or blank.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be unique for the AWS account that is making the request.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param SourceSnapshotIdentifier [String] <p>The identifier for the source snapshot.</p> <p>Constraints:</p> <ul> <li> <p>Must be the identifier for a valid automated snapshot whose state is <code>available</code>.</p> </li> </ul>
+-- @param SourceSnapshotClusterIdentifier [String] <p>The identifier of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.</p> <p>Constraints:</p> <ul> <li> <p>Must be the identifier for a valid cluster.</p> </li> </ul>
+-- @param TargetSnapshotIdentifier [String] <p>The identifier given to the new manual snapshot.</p> <p>Constraints:</p> <ul> <li> <p>Cannot be null, empty, or blank.</p> </li> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> <li> <p>Must be unique for the AWS account that is making the request.</p> </li> </ul>
 -- Required parameter: SourceSnapshotIdentifier
 -- Required parameter: TargetSnapshotIdentifier
 function M.CopyClusterSnapshotMessage(SourceSnapshotIdentifier, SourceSnapshotClusterIdentifier, TargetSnapshotIdentifier, ...)
@@ -3434,10 +3434,10 @@ function M.AssertRevokeSnapshotAccessMessage(struct)
 end
 
 --- Create a structure of type RevokeSnapshotAccessMessage
--- &lt;p/&gt;
--- @param AccountWithRestoreAccess [String] &lt;p&gt;The identifier of the AWS customer account that can no longer restore the specified snapshot.&lt;/p&gt;
--- @param SnapshotClusterIdentifier [String] &lt;p&gt;The identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.&lt;/p&gt;
--- @param SnapshotIdentifier [String] &lt;p&gt;The identifier of the snapshot that the account can no longer access.&lt;/p&gt;
+-- <p/>
+-- @param AccountWithRestoreAccess [String] <p>The identifier of the AWS customer account that can no longer restore the specified snapshot.</p>
+-- @param SnapshotClusterIdentifier [String] <p>The identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.</p>
+-- @param SnapshotIdentifier [String] <p>The identifier of the snapshot that the account can no longer access.</p>
 -- Required parameter: SnapshotIdentifier
 -- Required parameter: AccountWithRestoreAccess
 function M.RevokeSnapshotAccessMessage(AccountWithRestoreAccess, SnapshotClusterIdentifier, SnapshotIdentifier, ...)
@@ -3462,7 +3462,7 @@ function M.AssertInvalidClusterSnapshotStateFault(struct)
 end
 
 --- Create a structure of type InvalidClusterSnapshotStateFault
--- &lt;p&gt;The specified cluster snapshot is not in the &lt;code&gt;available&lt;/code&gt; state, or other accounts are authorized to access the snapshot. &lt;/p&gt;
+-- <p>The specified cluster snapshot is not in the <code>available</code> state, or other accounts are authorized to access the snapshot. </p>
 function M.InvalidClusterSnapshotStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidClusterSnapshotStateFault")
 	local t = { 
@@ -3485,10 +3485,10 @@ function M.AssertSubnet(struct)
 end
 
 --- Create a structure of type Subnet
--- &lt;p&gt;Describes a subnet.&lt;/p&gt;
--- @param SubnetStatus [String] &lt;p&gt;The status of the subnet.&lt;/p&gt;
--- @param SubnetIdentifier [String] &lt;p&gt;The identifier of the subnet.&lt;/p&gt;
--- @param SubnetAvailabilityZone [AvailabilityZone] &lt;p&gt;Describes a subnet.&lt;/p&gt;
+-- <p>Describes a subnet.</p>
+-- @param SubnetStatus [String] <p>The status of the subnet.</p>
+-- @param SubnetIdentifier [String] <p>The identifier of the subnet.</p>
+-- @param SubnetAvailabilityZone [AvailabilityZone] <p>Describes a subnet.</p>
 function M.Subnet(SubnetStatus, SubnetIdentifier, SubnetAvailabilityZone, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subnet")
 	local t = { 
@@ -3511,7 +3511,7 @@ function M.AssertInvalidHsmClientCertificateStateFault(struct)
 end
 
 --- Create a structure of type InvalidHsmClientCertificateStateFault
--- &lt;p&gt;The specified HSM client certificate is not in the &lt;code&gt;available&lt;/code&gt; state, or it is still in use by one or more Amazon Redshift clusters.&lt;/p&gt;
+-- <p>The specified HSM client certificate is not in the <code>available</code> state, or it is still in use by one or more Amazon Redshift clusters.</p>
 function M.InvalidHsmClientCertificateStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidHsmClientCertificateStateFault")
 	local t = { 
@@ -3531,7 +3531,7 @@ function M.AssertInvalidS3BucketNameFault(struct)
 end
 
 --- Create a structure of type InvalidS3BucketNameFault
--- &lt;p&gt;The S3 bucket name is invalid. For more information about naming rules, go to &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html&quot;&gt;Bucket Restrictions and Limitations&lt;/a&gt; in the Amazon Simple Storage Service (S3) Developer Guide.&lt;/p&gt;
+-- <p>The S3 bucket name is invalid. For more information about naming rules, go to <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html">Bucket Restrictions and Limitations</a> in the Amazon Simple Storage Service (S3) Developer Guide.</p>
 function M.InvalidS3BucketNameFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3BucketNameFault")
 	local t = { 
@@ -3551,7 +3551,7 @@ function M.AssertSnapshotCopyGrantQuotaExceededFault(struct)
 end
 
 --- Create a structure of type SnapshotCopyGrantQuotaExceededFault
--- &lt;p&gt;The AWS account has exceeded the maximum number of snapshot copy grants in this region.&lt;/p&gt;
+-- <p>The AWS account has exceeded the maximum number of snapshot copy grants in this region.</p>
 function M.SnapshotCopyGrantQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotCopyGrantQuotaExceededFault")
 	local t = { 
@@ -3571,7 +3571,7 @@ function M.AssertAuthorizationNotFoundFault(struct)
 end
 
 --- Create a structure of type AuthorizationNotFoundFault
--- &lt;p&gt;The specified CIDR IP range or EC2 security group is not authorized for the specified cluster security group.&lt;/p&gt;
+-- <p>The specified CIDR IP range or EC2 security group is not authorized for the specified cluster security group.</p>
 function M.AuthorizationNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationNotFoundFault")
 	local t = { 
@@ -3591,7 +3591,7 @@ function M.AssertLimitExceededFault(struct)
 end
 
 --- Create a structure of type LimitExceededFault
--- &lt;p&gt;The encryption key has exceeded its grant limit in AWS KMS.&lt;/p&gt;
+-- <p>The encryption key has exceeded its grant limit in AWS KMS.</p>
 function M.LimitExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededFault")
 	local t = { 
@@ -3638,9 +3638,9 @@ function M.AssertModifyClusterParameterGroupMessage(struct)
 end
 
 --- Create a structure of type ModifyClusterParameterGroupMessage
--- &lt;p/&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of the parameter group to be modified.&lt;/p&gt;
--- @param Parameters [ParametersList] &lt;p&gt;An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.&lt;/p&gt; &lt;p&gt;For each parameter to be modified, you must supply at least the parameter name and parameter value; other name-value pairs of the parameter are optional.&lt;/p&gt; &lt;p&gt;For the workload management (WLM) configuration, you must supply all the name-value pairs in the wlm_json_configuration parameter.&lt;/p&gt;
+-- <p/>
+-- @param ParameterGroupName [String] <p>The name of the parameter group to be modified.</p>
+-- @param Parameters [ParametersList] <p>An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.</p> <p>For each parameter to be modified, you must supply at least the parameter name and parameter value; other name-value pairs of the parameter are optional.</p> <p>For the workload management (WLM) configuration, you must supply all the name-value pairs in the wlm_json_configuration parameter.</p>
 -- Required parameter: ParameterGroupName
 -- Required parameter: Parameters
 function M.ModifyClusterParameterGroupMessage(ParameterGroupName, Parameters, ...)
@@ -3674,17 +3674,17 @@ function M.AssertDescribeClusterSnapshotsMessage(struct)
 end
 
 --- Create a structure of type DescribeClusterSnapshotsMessage
--- &lt;p/&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;A tag key or keys for which you want to return all matching cluster snapshots that are associated with the specified key or keys. For example, suppose that you have snapshots that are tagged with keys called &lt;code&gt;owner&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag keys associated with them.&lt;/p&gt;
--- @param OwnerAccount [String] &lt;p&gt;The AWS customer account used to create or copy the snapshot. Use this field to filter the results to snapshots owned by a particular account. To describe snapshots you own, either specify your AWS customer account, or do not specify the parameter.&lt;/p&gt;
--- @param TagValues [TagValueList] &lt;p&gt;A tag value or values for which you want to return all matching cluster snapshots that are associated with the specified tag value or values. For example, suppose that you have snapshots that are tagged with values called &lt;code&gt;admin&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt;. If you specify both of these tag values in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag values associated with them.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeClusterSnapshots&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param StartTime [TStamp] &lt;p&gt;A value that requests only snapshots created at or after the specified time. The time value is specified in ISO 8601 format. For more information about ISO 8601, go to the &lt;a href=&quot;http://en.wikipedia.org/wiki/ISO_8601&quot;&gt;ISO8601 Wikipedia page.&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;2012-07-16T18:00:00Z&lt;/code&gt; &lt;/p&gt;
--- @param SnapshotType [String] &lt;p&gt;The type of snapshots for which you are requesting information. By default, snapshots of all types are returned.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;automated&lt;/code&gt; | &lt;code&gt;manual&lt;/code&gt; &lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The identifier of the cluster for which information about snapshots is requested.&lt;/p&gt;
--- @param EndTime [TStamp] &lt;p&gt;A time value that requests only snapshots created at or before the specified time. The time value is specified in ISO 8601 format. For more information about ISO 8601, go to the &lt;a href=&quot;http://en.wikipedia.org/wiki/ISO_8601&quot;&gt;ISO8601 Wikipedia page.&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;2012-07-16T18:00:00Z&lt;/code&gt; &lt;/p&gt;
--- @param SnapshotIdentifier [String] &lt;p&gt;The snapshot identifier of the snapshot about which to return information.&lt;/p&gt;
+-- <p/>
+-- @param TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching cluster snapshots that are associated with the specified key or keys. For example, suppose that you have snapshots that are tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag keys associated with them.</p>
+-- @param OwnerAccount [String] <p>The AWS customer account used to create or copy the snapshot. Use this field to filter the results to snapshots owned by a particular account. To describe snapshots you own, either specify your AWS customer account, or do not specify the parameter.</p>
+-- @param TagValues [TagValueList] <p>A tag value or values for which you want to return all matching cluster snapshots that are associated with the specified tag value or values. For example, suppose that you have snapshots that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag values associated with them.</p>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeClusterSnapshots</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param StartTime [TStamp] <p>A value that requests only snapshots created at or after the specified time. The time value is specified in ISO 8601 format. For more information about ISO 8601, go to the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p> <p>Example: <code>2012-07-16T18:00:00Z</code> </p>
+-- @param SnapshotType [String] <p>The type of snapshots for which you are requesting information. By default, snapshots of all types are returned.</p> <p>Valid Values: <code>automated</code> | <code>manual</code> </p>
+-- @param ClusterIdentifier [String] <p>The identifier of the cluster for which information about snapshots is requested.</p>
+-- @param EndTime [TStamp] <p>A time value that requests only snapshots created at or before the specified time. The time value is specified in ISO 8601 format. For more information about ISO 8601, go to the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p> <p>Example: <code>2012-07-16T18:00:00Z</code> </p>
+-- @param SnapshotIdentifier [String] <p>The snapshot identifier of the snapshot about which to return information.</p>
 function M.DescribeClusterSnapshotsMessage(TagKeys, OwnerAccount, TagValues, Marker, MaxRecords, StartTime, SnapshotType, ClusterIdentifier, EndTime, SnapshotIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterSnapshotsMessage")
 	local t = { 
@@ -3760,7 +3760,7 @@ function M.AssertClusterSubnetGroupQuotaExceededFault(struct)
 end
 
 --- Create a structure of type ClusterSubnetGroupQuotaExceededFault
--- &lt;p&gt;The request would result in user exceeding the allowed number of cluster subnet groups. For information about increasing your quota, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html&quot;&gt;Limits in Amazon Redshift&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
+-- <p>The request would result in user exceeding the allowed number of cluster subnet groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 function M.ClusterSubnetGroupQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSubnetGroupQuotaExceededFault")
 	local t = { 
@@ -3780,7 +3780,7 @@ function M.AssertDependentServiceUnavailableFault(struct)
 end
 
 --- Create a structure of type DependentServiceUnavailableFault
--- &lt;p&gt;Your request cannot be completed because a dependent internal service is temporarily unavailable. Wait 30 to 60 seconds and try again.&lt;/p&gt;
+-- <p>Your request cannot be completed because a dependent internal service is temporarily unavailable. Wait 30 to 60 seconds and try again.</p>
 function M.DependentServiceUnavailableFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DependentServiceUnavailableFault")
 	local t = { 
@@ -3813,15 +3813,15 @@ function M.AssertRestoreTableFromClusterSnapshotMessage(struct)
 end
 
 --- Create a structure of type RestoreTableFromClusterSnapshotMessage
--- &lt;p/&gt;
--- @param SourceTableName [String] &lt;p&gt;The name of the source table to restore from.&lt;/p&gt;
--- @param TargetDatabaseName [String] &lt;p&gt;The name of the database to restore the table to.&lt;/p&gt;
--- @param SourceSchemaName [String] &lt;p&gt;The name of the source schema that contains the table to restore from. If you do not specify a &lt;code&gt;SourceSchemaName&lt;/code&gt; value, the default is &lt;code&gt;public&lt;/code&gt;.&lt;/p&gt;
--- @param NewTableName [String] &lt;p&gt;The name of the table to create as a result of the current request.&lt;/p&gt;
--- @param TargetSchemaName [String] &lt;p&gt;The name of the schema to restore the table to.&lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The identifier of the Amazon Redshift cluster to restore the table to.&lt;/p&gt;
--- @param SourceDatabaseName [String] &lt;p&gt;The name of the source database that contains the table to restore from.&lt;/p&gt;
--- @param SnapshotIdentifier [String] &lt;p&gt;The identifier of the snapshot to restore the table from. This snapshot must have been created from the Amazon Redshift cluster specified by the &lt;code&gt;ClusterIdentifier&lt;/code&gt; parameter.&lt;/p&gt;
+-- <p/>
+-- @param SourceTableName [String] <p>The name of the source table to restore from.</p>
+-- @param TargetDatabaseName [String] <p>The name of the database to restore the table to.</p>
+-- @param SourceSchemaName [String] <p>The name of the source schema that contains the table to restore from. If you do not specify a <code>SourceSchemaName</code> value, the default is <code>public</code>.</p>
+-- @param NewTableName [String] <p>The name of the table to create as a result of the current request.</p>
+-- @param TargetSchemaName [String] <p>The name of the schema to restore the table to.</p>
+-- @param ClusterIdentifier [String] <p>The identifier of the Amazon Redshift cluster to restore the table to.</p>
+-- @param SourceDatabaseName [String] <p>The name of the source database that contains the table to restore from.</p>
+-- @param SnapshotIdentifier [String] <p>The identifier of the snapshot to restore the table from. This snapshot must have been created from the Amazon Redshift cluster specified by the <code>ClusterIdentifier</code> parameter.</p>
 -- Required parameter: ClusterIdentifier
 -- Required parameter: SnapshotIdentifier
 -- Required parameter: SourceDatabaseName
@@ -3856,8 +3856,8 @@ function M.AssertDescribeResizeMessage(struct)
 end
 
 --- Create a structure of type DescribeResizeMessage
--- &lt;p/&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The unique identifier of a cluster whose resize progress you are requesting. This parameter is case-sensitive.&lt;/p&gt; &lt;p&gt;By default, resize operations for all clusters defined for an AWS account are returned.&lt;/p&gt;
+-- <p/>
+-- @param ClusterIdentifier [String] <p>The unique identifier of a cluster whose resize progress you are requesting. This parameter is case-sensitive.</p> <p>By default, resize operations for all clusters defined for an AWS account are returned.</p>
 -- Required parameter: ClusterIdentifier
 function M.DescribeResizeMessage(ClusterIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResizeMessage")
@@ -3882,10 +3882,10 @@ function M.AssertDescribeEventSubscriptionsMessage(struct)
 end
 
 --- Create a structure of type DescribeEventSubscriptionsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeEventSubscriptions&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the Amazon Redshift event notification subscription to be described.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeEventSubscriptions</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param SubscriptionName [String] <p>The name of the Amazon Redshift event notification subscription to be described.</p>
 function M.DescribeEventSubscriptionsMessage(Marker, MaxRecords, SubscriptionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventSubscriptionsMessage")
 	local t = { 
@@ -3931,7 +3931,7 @@ function M.AssertSnapshotCopyDisabledFault(struct)
 end
 
 --- Create a structure of type SnapshotCopyDisabledFault
--- &lt;p&gt;Cross-region snapshot copy was temporarily disabled. Try your request again.&lt;/p&gt;
+-- <p>Cross-region snapshot copy was temporarily disabled. Try your request again.</p>
 function M.SnapshotCopyDisabledFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotCopyDisabledFault")
 	local t = { 
@@ -3957,13 +3957,13 @@ function M.AssertDescribeTagsMessage(struct)
 end
 
 --- Create a structure of type DescribeTagsMessage
--- &lt;p/&gt;
--- @param ResourceType [String] &lt;p&gt;The type of resource with which you want to view tags. Valid resource types are: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cluster&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;CIDR/IP&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;EC2 security group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Snapshot&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cluster security group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Subnet group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;HSM connection&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;HSM certificate&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Parameter group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Snapshot copy grant&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about Amazon Redshift resource types and constructing ARNs, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/constructing-redshift-arn.html&quot;&gt;Constructing an Amazon Redshift Amazon Resource Name (ARN)&lt;/a&gt; in the Amazon Redshift Cluster Management Guide. &lt;/p&gt;
--- @param TagValues [TagValueList] &lt;p&gt;A tag value or values for which you want to return all matching resources that are associated with the specified value or values. For example, suppose that you have resources tagged with values called &lt;code&gt;admin&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt;. If you specify both of these tag values in the request, Amazon Redshift returns a response with all resources that have either or both of these tag values associated with them.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number or response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned &lt;code&gt;marker&lt;/code&gt; value. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param ResourceName [String] &lt;p&gt;The Amazon Resource Name (ARN) for which you want to describe the tag or tags. For example, &lt;code&gt;arn:aws:redshift:us-east-1:123456789:cluster:t1&lt;/code&gt;. &lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;A tag key or keys for which you want to return all matching resources that are associated with the specified key or keys. For example, suppose that you have resources tagged with keys called &lt;code&gt;owner&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. If you specify both of these tag keys in the request, Amazon Redshift returns a response with all resources that have either or both of these tag keys associated with them.&lt;/p&gt;
+-- <p/>
+-- @param ResourceType [String] <p>The type of resource with which you want to view tags. Valid resource types are: </p> <ul> <li> <p>Cluster</p> </li> <li> <p>CIDR/IP</p> </li> <li> <p>EC2 security group</p> </li> <li> <p>Snapshot</p> </li> <li> <p>Cluster security group</p> </li> <li> <p>Subnet group</p> </li> <li> <p>HSM connection</p> </li> <li> <p>HSM certificate</p> </li> <li> <p>Parameter group</p> </li> <li> <p>Snapshot copy grant</p> </li> </ul> <p>For more information about Amazon Redshift resource types and constructing ARNs, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/constructing-redshift-arn.html">Constructing an Amazon Redshift Amazon Resource Name (ARN)</a> in the Amazon Redshift Cluster Management Guide. </p>
+-- @param TagValues [TagValueList] <p>A tag value or values for which you want to return all matching resources that are associated with the specified value or values. For example, suppose that you have resources tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with all resources that have either or both of these tag values associated with them.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number or response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned <code>marker</code> value. </p>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>marker</code> parameter and retrying the command. If the <code>marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param ResourceName [String] <p>The Amazon Resource Name (ARN) for which you want to describe the tag or tags. For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+-- @param TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching resources that are associated with the specified key or keys. For example, suppose that you have resources tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with all resources that have either or both of these tag keys associated with them.</p>
 function M.DescribeTagsMessage(ResourceType, TagValues, MaxRecords, Marker, ResourceName, TagKeys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsMessage")
 	local t = { 
@@ -3989,7 +3989,7 @@ function M.AssertClusterParameterGroupAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type ClusterParameterGroupAlreadyExistsFault
--- &lt;p&gt;A cluster parameter group with the same name already exists.&lt;/p&gt;
+-- <p>A cluster parameter group with the same name already exists.</p>
 function M.ClusterParameterGroupAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterParameterGroupAlreadyExistsFault")
 	local t = { 
@@ -4009,7 +4009,7 @@ function M.AssertSnapshotCopyGrantNotFoundFault(struct)
 end
 
 --- Create a structure of type SnapshotCopyGrantNotFoundFault
--- &lt;p&gt;The specified snapshot copy grant can't be found. Make sure that the name is typed correctly and that the grant exists in the destination region.&lt;/p&gt;
+-- <p>The specified snapshot copy grant can't be found. Make sure that the name is typed correctly and that the grant exists in the destination region.</p>
 function M.SnapshotCopyGrantNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotCopyGrantNotFoundFault")
 	local t = { 
@@ -4031,9 +4031,9 @@ function M.AssertOrderableClusterOptionsMessage(struct)
 end
 
 --- Create a structure of type OrderableClusterOptionsMessage
--- &lt;p&gt;Contains the output from the &lt;a&gt;DescribeOrderableClusterOptions&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param OrderableClusterOptions [OrderableClusterOptionsList] &lt;p&gt;An &lt;code&gt;OrderableClusterOption&lt;/code&gt; structure containing information about orderable options for the cluster.&lt;/p&gt;
+-- <p>Contains the output from the <a>DescribeOrderableClusterOptions</a> action. </p>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param OrderableClusterOptions [OrderableClusterOptionsList] <p>An <code>OrderableClusterOption</code> structure containing information about orderable options for the cluster.</p>
 function M.OrderableClusterOptionsMessage(Marker, OrderableClusterOptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrderableClusterOptionsMessage")
 	local t = { 
@@ -4055,7 +4055,7 @@ function M.AssertInvalidRestoreFault(struct)
 end
 
 --- Create a structure of type InvalidRestoreFault
--- &lt;p&gt;The restore is invalid.&lt;/p&gt;
+-- <p>The restore is invalid.</p>
 function M.InvalidRestoreFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRestoreFault")
 	local t = { 
@@ -4098,7 +4098,7 @@ function M.AssertSubscriptionCategoryNotFoundFault(struct)
 end
 
 --- Create a structure of type SubscriptionCategoryNotFoundFault
--- &lt;p&gt;The value specified for the event category was not one of the allowed values, or it specified a category that does not apply to the specified source type. The allowed values are Configuration, Management, Monitoring, and Security.&lt;/p&gt;
+-- <p>The value specified for the event category was not one of the allowed values, or it specified a category that does not apply to the specified source type. The allowed values are Configuration, Management, Monitoring, and Security.</p>
 function M.SubscriptionCategoryNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionCategoryNotFoundFault")
 	local t = { 
@@ -4118,7 +4118,7 @@ function M.AssertSubscriptionSeverityNotFoundFault(struct)
 end
 
 --- Create a structure of type SubscriptionSeverityNotFoundFault
--- &lt;p&gt;The value specified for the event severity was not one of the allowed values, or it specified a severity that does not apply to the specified source type. The allowed values are ERROR and INFO.&lt;/p&gt;
+-- <p>The value specified for the event severity was not one of the allowed values, or it specified a severity that does not apply to the specified source type. The allowed values are ERROR and INFO.</p>
 function M.SubscriptionSeverityNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionSeverityNotFoundFault")
 	local t = { 
@@ -4138,7 +4138,7 @@ function M.AssertInvalidSnapshotCopyGrantStateFault(struct)
 end
 
 --- Create a structure of type InvalidSnapshotCopyGrantStateFault
--- &lt;p&gt;The snapshot copy grant can't be deleted because it is used by one or more clusters.&lt;/p&gt;
+-- <p>The snapshot copy grant can't be deleted because it is used by one or more clusters.</p>
 function M.InvalidSnapshotCopyGrantStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSnapshotCopyGrantStateFault")
 	local t = { 
@@ -4162,11 +4162,11 @@ function M.AssertDescribeOrderableClusterOptionsMessage(struct)
 end
 
 --- Create a structure of type DescribeOrderableClusterOptionsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeOrderableClusterOptions&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The node type filter value. Specify this parameter to show only the available offerings matching the specified node type.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param ClusterVersion [String] &lt;p&gt;The version filter value. Specify this parameter to show only the available offerings matching the specified version.&lt;/p&gt; &lt;p&gt;Default: All versions.&lt;/p&gt; &lt;p&gt;Constraints: Must be one of the version returned from &lt;a&gt;DescribeClusterVersions&lt;/a&gt;.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeOrderableClusterOptions</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param NodeType [String] <p>The node type filter value. Specify this parameter to show only the available offerings matching the specified node type.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param ClusterVersion [String] <p>The version filter value. Specify this parameter to show only the available offerings matching the specified version.</p> <p>Default: All versions.</p> <p>Constraints: Must be one of the version returned from <a>DescribeClusterVersions</a>.</p>
 function M.DescribeOrderableClusterOptionsMessage(Marker, NodeType, MaxRecords, ClusterVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrderableClusterOptionsMessage")
 	local t = { 
@@ -4190,7 +4190,7 @@ function M.AssertClusterSnapshotAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type ClusterSnapshotAlreadyExistsFault
--- &lt;p&gt;The value specified as a snapshot identifier is already used by an existing snapshot.&lt;/p&gt;
+-- <p>The value specified as a snapshot identifier is already used by an existing snapshot.</p>
 function M.ClusterSnapshotAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSnapshotAlreadyExistsFault")
 	local t = { 
@@ -4210,7 +4210,7 @@ function M.AssertTagLimitExceededFault(struct)
 end
 
 --- Create a structure of type TagLimitExceededFault
--- &lt;p&gt;The request exceeds the limit of 10 tags for the resource.&lt;/p&gt;
+-- <p>The request exceeds the limit of 10 tags for the resource.</p>
 function M.TagLimitExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagLimitExceededFault")
 	local t = { 
@@ -4230,7 +4230,7 @@ function M.AssertReservedNodeQuotaExceededFault(struct)
 end
 
 --- Create a structure of type ReservedNodeQuotaExceededFault
--- &lt;p&gt;Request would exceed the user's compute node quota. For information about increasing your quota, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html&quot;&gt;Limits in Amazon Redshift&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
+-- <p>Request would exceed the user's compute node quota. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 function M.ReservedNodeQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedNodeQuotaExceededFault")
 	local t = { 
@@ -4257,11 +4257,11 @@ function M.AssertCreateClusterSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type CreateClusterSubnetGroupMessage
--- &lt;p/&gt;
--- @param SubnetIds [SubnetIdentifierList] &lt;p&gt;An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single request.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tag instances.&lt;/p&gt;
--- @param ClusterSubnetGroupName [String] &lt;p&gt;The name for the subnet group. Amazon Redshift stores the value as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain no more than 255 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not be &quot;Default&quot;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be unique for all subnet groups that are created by your AWS account.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;examplesubnetgroup&lt;/code&gt; &lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description for the subnet group.&lt;/p&gt;
+-- <p/>
+-- @param SubnetIds [SubnetIdentifierList] <p>An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a single request.</p>
+-- @param Tags [TagList] <p>A list of tag instances.</p>
+-- @param ClusterSubnetGroupName [String] <p>The name for the subnet group. Amazon Redshift stores the value as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain no more than 255 alphanumeric characters or hyphens.</p> </li> <li> <p>Must not be "Default".</p> </li> <li> <p>Must be unique for all subnet groups that are created by your AWS account.</p> </li> </ul> <p>Example: <code>examplesubnetgroup</code> </p>
+-- @param Description [String] <p>A description for the subnet group.</p>
 -- Required parameter: ClusterSubnetGroupName
 -- Required parameter: Description
 -- Required parameter: SubnetIds
@@ -4293,12 +4293,12 @@ function M.AssertClusterSecurityGroup(struct)
 end
 
 --- Create a structure of type ClusterSecurityGroup
--- &lt;p&gt;Describes a security group.&lt;/p&gt;
--- @param IPRanges [IPRangeList] &lt;p&gt;A list of IP ranges (CIDR blocks) that are permitted to access clusters associated with this cluster security group.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The list of tags for the cluster security group.&lt;/p&gt;
--- @param ClusterSecurityGroupName [String] &lt;p&gt;The name of the cluster security group to which the operation was applied.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description of the security group.&lt;/p&gt;
--- @param EC2SecurityGroups [EC2SecurityGroupList] &lt;p&gt;A list of EC2 security groups that are permitted to access clusters associated with this cluster security group.&lt;/p&gt;
+-- <p>Describes a security group.</p>
+-- @param IPRanges [IPRangeList] <p>A list of IP ranges (CIDR blocks) that are permitted to access clusters associated with this cluster security group.</p>
+-- @param Tags [TagList] <p>The list of tags for the cluster security group.</p>
+-- @param ClusterSecurityGroupName [String] <p>The name of the cluster security group to which the operation was applied.</p>
+-- @param Description [String] <p>A description of the security group.</p>
+-- @param EC2SecurityGroups [EC2SecurityGroupList] <p>A list of EC2 security groups that are permitted to access clusters associated with this cluster security group.</p>
 function M.ClusterSecurityGroup(IPRanges, Tags, ClusterSecurityGroupName, Description, EC2SecurityGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSecurityGroup")
 	local t = { 
@@ -4328,12 +4328,12 @@ function M.AssertDescribeClusterSubnetGroupsMessage(struct)
 end
 
 --- Create a structure of type DescribeClusterSubnetGroupsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeClusterSubnetGroups&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param TagValues [TagValueList] &lt;p&gt;A tag value or values for which you want to return all matching cluster subnet groups that are associated with the specified tag value or values. For example, suppose that you have subnet groups that are tagged with values called &lt;code&gt;admin&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt;. If you specify both of these tag values in the request, Amazon Redshift returns a response with the subnet groups that have either or both of these tag values associated with them.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;A tag key or keys for which you want to return all matching cluster subnet groups that are associated with the specified key or keys. For example, suppose that you have subnet groups that are tagged with keys called &lt;code&gt;owner&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the subnet groups that have either or both of these tag keys associated with them.&lt;/p&gt;
--- @param ClusterSubnetGroupName [String] &lt;p&gt;The name of the cluster subnet group for which information is requested.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeClusterSubnetGroups</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param TagValues [TagValueList] <p>A tag value or values for which you want to return all matching cluster subnet groups that are associated with the specified tag value or values. For example, suppose that you have subnet groups that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the subnet groups that have either or both of these tag values associated with them.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching cluster subnet groups that are associated with the specified key or keys. For example, suppose that you have subnet groups that are tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the subnet groups that have either or both of these tag keys associated with them.</p>
+-- @param ClusterSubnetGroupName [String] <p>The name of the cluster subnet group for which information is requested.</p>
 function M.DescribeClusterSubnetGroupsMessage(Marker, TagValues, MaxRecords, TagKeys, ClusterSubnetGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterSubnetGroupsMessage")
 	local t = { 
@@ -4358,7 +4358,7 @@ function M.AssertHsmClientCertificateAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type HsmClientCertificateAlreadyExistsFault
--- &lt;p&gt;There is already an existing Amazon Redshift HSM client certificate with the specified identifier.&lt;/p&gt;
+-- <p>There is already an existing Amazon Redshift HSM client certificate with the specified identifier.</p>
 function M.HsmClientCertificateAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmClientCertificateAlreadyExistsFault")
 	local t = { 
@@ -4383,10 +4383,10 @@ function M.AssertEnableLoggingMessage(struct)
 end
 
 --- Create a structure of type EnableLoggingMessage
--- &lt;p/&gt;
--- @param S3KeyPrefix [String] &lt;p&gt;The prefix applied to the log file names.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cannot exceed 512 characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot contain spaces( ), double quotes (&quot;), single quotes ('), a backslash (\), or control characters. The hexadecimal codes for invalid characters are: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;x00 to x20&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;x22&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;x27&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;x5c&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;x7f or larger&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The identifier of the cluster on which logging is to be started.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;examplecluster&lt;/code&gt; &lt;/p&gt;
--- @param BucketName [String] &lt;p&gt;The name of an existing S3 bucket where the log files are to be stored.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be in the same region as the cluster&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The cluster must have read bucket and put object permissions&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param S3KeyPrefix [String] <p>The prefix applied to the log file names.</p> <p>Constraints:</p> <ul> <li> <p>Cannot exceed 512 characters</p> </li> <li> <p>Cannot contain spaces( ), double quotes ("), single quotes ('), a backslash (\), or control characters. The hexadecimal codes for invalid characters are: </p> <ul> <li> <p>x00 to x20</p> </li> <li> <p>x22</p> </li> <li> <p>x27</p> </li> <li> <p>x5c</p> </li> <li> <p>x7f or larger</p> </li> </ul> </li> </ul>
+-- @param ClusterIdentifier [String] <p>The identifier of the cluster on which logging is to be started.</p> <p>Example: <code>examplecluster</code> </p>
+-- @param BucketName [String] <p>The name of an existing S3 bucket where the log files are to be stored.</p> <p>Constraints:</p> <ul> <li> <p>Must be in the same region as the cluster</p> </li> <li> <p>The cluster must have read bucket and put object permissions</p> </li> </ul>
 -- Required parameter: ClusterIdentifier
 -- Required parameter: BucketName
 function M.EnableLoggingMessage(S3KeyPrefix, ClusterIdentifier, BucketName, ...)
@@ -4416,11 +4416,11 @@ function M.AssertAuthorizeClusterSecurityGroupIngressMessage(struct)
 end
 
 --- Create a structure of type AuthorizeClusterSecurityGroupIngressMessage
--- &lt;p/&gt;
--- @param EC2SecurityGroupName [String] &lt;p&gt;The EC2 security group to be added the Amazon Redshift security group.&lt;/p&gt;
--- @param EC2SecurityGroupOwnerId [String] &lt;p&gt;The AWS account number of the owner of the security group specified by the &lt;i&gt;EC2SecurityGroupName&lt;/i&gt; parameter. The AWS Access Key ID is not an acceptable value. &lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;111122223333&lt;/code&gt; &lt;/p&gt;
--- @param ClusterSecurityGroupName [String] &lt;p&gt;The name of the security group to which the ingress rule is added.&lt;/p&gt;
--- @param CIDRIP [String] &lt;p&gt;The IP range to be added the Amazon Redshift security group.&lt;/p&gt;
+-- <p/>
+-- @param EC2SecurityGroupName [String] <p>The EC2 security group to be added the Amazon Redshift security group.</p>
+-- @param EC2SecurityGroupOwnerId [String] <p>The AWS account number of the owner of the security group specified by the <i>EC2SecurityGroupName</i> parameter. The AWS Access Key ID is not an acceptable value. </p> <p>Example: <code>111122223333</code> </p>
+-- @param ClusterSecurityGroupName [String] <p>The name of the security group to which the ingress rule is added.</p>
+-- @param CIDRIP [String] <p>The IP range to be added the Amazon Redshift security group.</p>
 -- Required parameter: ClusterSecurityGroupName
 function M.AuthorizeClusterSecurityGroupIngressMessage(EC2SecurityGroupName, EC2SecurityGroupOwnerId, ClusterSecurityGroupName, CIDRIP, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizeClusterSecurityGroupIngressMessage")
@@ -4447,8 +4447,8 @@ function M.AssertDescribeLoggingStatusMessage(struct)
 end
 
 --- Create a structure of type DescribeLoggingStatusMessage
--- &lt;p/&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The identifier of the cluster from which to get the logging status.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;examplecluster&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param ClusterIdentifier [String] <p>The identifier of the cluster from which to get the logging status.</p> <p>Example: <code>examplecluster</code> </p>
 -- Required parameter: ClusterIdentifier
 function M.DescribeLoggingStatusMessage(ClusterIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoggingStatusMessage")
@@ -4472,9 +4472,9 @@ function M.AssertClusterParameterGroupDetails(struct)
 end
 
 --- Create a structure of type ClusterParameterGroupDetails
--- &lt;p&gt;Contains the output from the &lt;a&gt;DescribeClusterParameters&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param Parameters [ParametersList] &lt;p&gt;A list of &lt;a&gt;Parameter&lt;/a&gt; instances. Each instance lists the parameters of one cluster parameter group. &lt;/p&gt;
+-- <p>Contains the output from the <a>DescribeClusterParameters</a> action. </p>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param Parameters [ParametersList] <p>A list of <a>Parameter</a> instances. Each instance lists the parameters of one cluster parameter group. </p>
 function M.ClusterParameterGroupDetails(Marker, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterParameterGroupDetails")
 	local t = { 
@@ -4525,36 +4525,36 @@ function M.AssertSnapshot(struct)
 end
 
 --- Create a structure of type Snapshot
--- &lt;p&gt;Describes a snapshot.&lt;/p&gt;
--- @param MasterUsername [String] &lt;p&gt;The master user name for the cluster.&lt;/p&gt;
--- @param OwnerAccount [String] &lt;p&gt;For manual snapshots, the AWS customer account used to create or copy the snapshot. For automatic snapshots, the owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual snapshot.&lt;/p&gt;
--- @param CurrentBackupRateInMegaBytesPerSecond [Double] &lt;p&gt;The number of megabytes per second being transferred to the snapshot backup. Returns &lt;code&gt;0&lt;/code&gt; for a completed backup. &lt;/p&gt;
--- @param ActualIncrementalBackupSizeInMegaBytes [Double] &lt;p&gt;The size of the incremental backup.&lt;/p&gt;
--- @param NumberOfNodes [Integer] &lt;p&gt;The number of nodes in the cluster.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The snapshot status. The value of the status depends on the API operation used. &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateClusterSnapshot&lt;/a&gt; and &lt;a&gt;CopyClusterSnapshot&lt;/a&gt; returns status as &quot;creating&quot;. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeClusterSnapshots&lt;/a&gt; returns status as &quot;creating&quot;, &quot;available&quot;, &quot;final snapshot&quot;, or &quot;failed&quot;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteClusterSnapshot&lt;/a&gt; returns status as &quot;deleted&quot;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param VpcId [String] &lt;p&gt;The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not in the output.&lt;/p&gt;
--- @param ClusterVersion [String] &lt;p&gt;The version ID of the Amazon Redshift engine that is running on the cluster.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The list of tags for the cluster snapshot.&lt;/p&gt;
--- @param EnhancedVpcRouting [Boolean] &lt;p&gt;An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html&quot;&gt;Enhanced VPC Routing&lt;/a&gt; in the Amazon Redshift Cluster Management Guide.&lt;/p&gt; &lt;p&gt;If this option is &lt;code&gt;true&lt;/code&gt;, enhanced VPC routing is enabled. &lt;/p&gt; &lt;p&gt;Default: false&lt;/p&gt;
--- @param EstimatedSecondsToCompletion [Long] &lt;p&gt;The estimate of the time remaining before the snapshot backup will complete. Returns &lt;code&gt;0&lt;/code&gt; for a completed backup. &lt;/p&gt;
--- @param SourceRegion [String] &lt;p&gt;The source region from which the snapshot was copied.&lt;/p&gt;
--- @param AccountsWithRestoreAccess [AccountsWithRestoreAccessList] &lt;p&gt;A list of the AWS customer accounts authorized to restore the snapshot. Returns &lt;code&gt;null&lt;/code&gt; if no accounts are authorized. Visible only to the snapshot owner. &lt;/p&gt;
--- @param TotalBackupSizeInMegaBytes [Double] &lt;p&gt;The size of the complete set of backup data that would be used to restore the cluster.&lt;/p&gt;
--- @param DBName [String] &lt;p&gt;The name of the database that was created when the cluster was created.&lt;/p&gt;
--- @param BackupProgressInMegaBytes [Double] &lt;p&gt;The number of megabytes that have been transferred to the snapshot backup.&lt;/p&gt;
--- @param ClusterCreateTime [TStamp] &lt;p&gt;The time (UTC) when the cluster was originally created.&lt;/p&gt;
--- @param RestorableNodeTypes [RestorableNodeTypeList] &lt;p&gt;The list of node types that this cluster snapshot is able to restore into.&lt;/p&gt;
--- @param EncryptedWithHSM [Boolean] &lt;p&gt;A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster. &lt;code&gt;true&lt;/code&gt; indicates that the data is encrypted using HSM keys.&lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The identifier of the cluster for which the snapshot was taken.&lt;/p&gt;
--- @param SnapshotCreateTime [TStamp] &lt;p&gt;The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this exact time.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The Availability Zone in which the cluster was created.&lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The node type of the nodes in the cluster.&lt;/p&gt;
--- @param Encrypted [Boolean] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the data in the snapshot is encrypted at rest.&lt;/p&gt;
--- @param ElapsedTimeInSeconds [Long] &lt;p&gt;The amount of time an in-progress snapshot backup has been running, or the amount of time it took a completed backup to finish.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The AWS Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the cluster from which the snapshot was taken.&lt;/p&gt;
--- @param SnapshotType [String] &lt;p&gt;The snapshot type. Snapshots created using &lt;a&gt;CreateClusterSnapshot&lt;/a&gt; and &lt;a&gt;CopyClusterSnapshot&lt;/a&gt; will be of type &quot;manual&quot;. &lt;/p&gt;
--- @param Port [Integer] &lt;p&gt;The port that the cluster is listening on.&lt;/p&gt;
--- @param SnapshotIdentifier [String] &lt;p&gt;The snapshot identifier that is provided in the request.&lt;/p&gt;
+-- <p>Describes a snapshot.</p>
+-- @param MasterUsername [String] <p>The master user name for the cluster.</p>
+-- @param OwnerAccount [String] <p>For manual snapshots, the AWS customer account used to create or copy the snapshot. For automatic snapshots, the owner of the cluster. The owner can perform all snapshot actions, such as sharing a manual snapshot.</p>
+-- @param CurrentBackupRateInMegaBytesPerSecond [Double] <p>The number of megabytes per second being transferred to the snapshot backup. Returns <code>0</code> for a completed backup. </p>
+-- @param ActualIncrementalBackupSizeInMegaBytes [Double] <p>The size of the incremental backup.</p>
+-- @param NumberOfNodes [Integer] <p>The number of nodes in the cluster.</p>
+-- @param Status [String] <p>The snapshot status. The value of the status depends on the API operation used. </p> <ul> <li> <p> <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> returns status as "creating". </p> </li> <li> <p> <a>DescribeClusterSnapshots</a> returns status as "creating", "available", "final snapshot", or "failed".</p> </li> <li> <p> <a>DeleteClusterSnapshot</a> returns status as "deleted".</p> </li> </ul>
+-- @param VpcId [String] <p>The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not in the output.</p>
+-- @param ClusterVersion [String] <p>The version ID of the Amazon Redshift engine that is running on the cluster.</p>
+-- @param Tags [TagList] <p>The list of tags for the cluster snapshot.</p>
+-- @param EnhancedVpcRouting [Boolean] <p>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the Amazon Redshift Cluster Management Guide.</p> <p>If this option is <code>true</code>, enhanced VPC routing is enabled. </p> <p>Default: false</p>
+-- @param EstimatedSecondsToCompletion [Long] <p>The estimate of the time remaining before the snapshot backup will complete. Returns <code>0</code> for a completed backup. </p>
+-- @param SourceRegion [String] <p>The source region from which the snapshot was copied.</p>
+-- @param AccountsWithRestoreAccess [AccountsWithRestoreAccessList] <p>A list of the AWS customer accounts authorized to restore the snapshot. Returns <code>null</code> if no accounts are authorized. Visible only to the snapshot owner. </p>
+-- @param TotalBackupSizeInMegaBytes [Double] <p>The size of the complete set of backup data that would be used to restore the cluster.</p>
+-- @param DBName [String] <p>The name of the database that was created when the cluster was created.</p>
+-- @param BackupProgressInMegaBytes [Double] <p>The number of megabytes that have been transferred to the snapshot backup.</p>
+-- @param ClusterCreateTime [TStamp] <p>The time (UTC) when the cluster was originally created.</p>
+-- @param RestorableNodeTypes [RestorableNodeTypeList] <p>The list of node types that this cluster snapshot is able to restore into.</p>
+-- @param EncryptedWithHSM [Boolean] <p>A boolean that indicates whether the snapshot data is encrypted using the HSM keys of the source cluster. <code>true</code> indicates that the data is encrypted using HSM keys.</p>
+-- @param ClusterIdentifier [String] <p>The identifier of the cluster for which the snapshot was taken.</p>
+-- @param SnapshotCreateTime [TStamp] <p>The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this exact time.</p>
+-- @param AvailabilityZone [String] <p>The Availability Zone in which the cluster was created.</p>
+-- @param NodeType [String] <p>The node type of the nodes in the cluster.</p>
+-- @param Encrypted [Boolean] <p>If <code>true</code>, the data in the snapshot is encrypted at rest.</p>
+-- @param ElapsedTimeInSeconds [Long] <p>The amount of time an in-progress snapshot backup has been running, or the amount of time it took a completed backup to finish.</p>
+-- @param KmsKeyId [String] <p>The AWS Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the cluster from which the snapshot was taken.</p>
+-- @param SnapshotType [String] <p>The snapshot type. Snapshots created using <a>CreateClusterSnapshot</a> and <a>CopyClusterSnapshot</a> will be of type "manual". </p>
+-- @param Port [Integer] <p>The port that the cluster is listening on.</p>
+-- @param SnapshotIdentifier [String] <p>The snapshot identifier that is provided in the request.</p>
 function M.Snapshot(MasterUsername, OwnerAccount, CurrentBackupRateInMegaBytesPerSecond, ActualIncrementalBackupSizeInMegaBytes, NumberOfNodes, Status, VpcId, ClusterVersion, Tags, EnhancedVpcRouting, EstimatedSecondsToCompletion, SourceRegion, AccountsWithRestoreAccess, TotalBackupSizeInMegaBytes, DBName, BackupProgressInMegaBytes, ClusterCreateTime, RestorableNodeTypes, EncryptedWithHSM, ClusterIdentifier, SnapshotCreateTime, AvailabilityZone, NodeType, Encrypted, ElapsedTimeInSeconds, KmsKeyId, SnapshotType, Port, SnapshotIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Snapshot")
 	local t = { 
@@ -4605,8 +4605,8 @@ function M.AssertDeleteHsmClientCertificateMessage(struct)
 end
 
 --- Create a structure of type DeleteHsmClientCertificateMessage
--- &lt;p/&gt;
--- @param HsmClientCertificateIdentifier [String] &lt;p&gt;The identifier of the HSM client certificate to be deleted.&lt;/p&gt;
+-- <p/>
+-- @param HsmClientCertificateIdentifier [String] <p>The identifier of the HSM client certificate to be deleted.</p>
 -- Required parameter: HsmClientCertificateIdentifier
 function M.DeleteHsmClientCertificateMessage(HsmClientCertificateIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHsmClientCertificateMessage")
@@ -4633,10 +4633,10 @@ function M.AssertAuthorizeSnapshotAccessMessage(struct)
 end
 
 --- Create a structure of type AuthorizeSnapshotAccessMessage
--- &lt;p/&gt;
--- @param AccountWithRestoreAccess [String] &lt;p&gt;The identifier of the AWS customer account authorized to restore the specified snapshot.&lt;/p&gt; &lt;p&gt;To share a snapshot with AWS support, specify amazon-redshift-support.&lt;/p&gt;
--- @param SnapshotClusterIdentifier [String] &lt;p&gt;The identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.&lt;/p&gt;
--- @param SnapshotIdentifier [String] &lt;p&gt;The identifier of the snapshot the account is authorized to restore.&lt;/p&gt;
+-- <p/>
+-- @param AccountWithRestoreAccess [String] <p>The identifier of the AWS customer account authorized to restore the specified snapshot.</p> <p>To share a snapshot with AWS support, specify amazon-redshift-support.</p>
+-- @param SnapshotClusterIdentifier [String] <p>The identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.</p>
+-- @param SnapshotIdentifier [String] <p>The identifier of the snapshot the account is authorized to restore.</p>
 -- Required parameter: SnapshotIdentifier
 -- Required parameter: AccountWithRestoreAccess
 function M.AuthorizeSnapshotAccessMessage(AccountWithRestoreAccess, SnapshotClusterIdentifier, SnapshotIdentifier, ...)
@@ -4684,7 +4684,7 @@ function M.AssertInvalidVPCNetworkStateFault(struct)
 end
 
 --- Create a structure of type InvalidVPCNetworkStateFault
--- &lt;p&gt;The cluster subnet group does not cover all Availability Zones.&lt;/p&gt;
+-- <p>The cluster subnet group does not cover all Availability Zones.</p>
 function M.InvalidVPCNetworkStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidVPCNetworkStateFault")
 	local t = { 
@@ -4704,7 +4704,7 @@ function M.AssertClusterSecurityGroupNotFoundFault(struct)
 end
 
 --- Create a structure of type ClusterSecurityGroupNotFoundFault
--- &lt;p&gt;The cluster security group name does not refer to an existing cluster security group.&lt;/p&gt;
+-- <p>The cluster security group name does not refer to an existing cluster security group.</p>
 function M.ClusterSecurityGroupNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSecurityGroupNotFoundFault")
 	local t = { 
@@ -4729,11 +4729,11 @@ function M.AssertRevokeClusterSecurityGroupIngressMessage(struct)
 end
 
 --- Create a structure of type RevokeClusterSecurityGroupIngressMessage
--- &lt;p/&gt;
--- @param EC2SecurityGroupName [String] &lt;p&gt;The name of the EC2 Security Group whose access is to be revoked. If &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; is specified, &lt;code&gt;EC2SecurityGroupOwnerId&lt;/code&gt; must also be provided and &lt;code&gt;CIDRIP&lt;/code&gt; cannot be provided. &lt;/p&gt;
--- @param EC2SecurityGroupOwnerId [String] &lt;p&gt;The AWS account number of the owner of the security group specified in the &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; parameter. The AWS access key ID is not an acceptable value. If &lt;code&gt;EC2SecurityGroupOwnerId&lt;/code&gt; is specified, &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; must also be provided. and &lt;code&gt;CIDRIP&lt;/code&gt; cannot be provided. &lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;111122223333&lt;/code&gt; &lt;/p&gt;
--- @param ClusterSecurityGroupName [String] &lt;p&gt;The name of the security Group from which to revoke the ingress rule.&lt;/p&gt;
--- @param CIDRIP [String] &lt;p&gt;The IP range for which to revoke access. This range must be a valid Classless Inter-Domain Routing (CIDR) block of IP addresses. If &lt;code&gt;CIDRIP&lt;/code&gt; is specified, &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; and &lt;code&gt;EC2SecurityGroupOwnerId&lt;/code&gt; cannot be provided. &lt;/p&gt;
+-- <p/>
+-- @param EC2SecurityGroupName [String] <p>The name of the EC2 Security Group whose access is to be revoked. If <code>EC2SecurityGroupName</code> is specified, <code>EC2SecurityGroupOwnerId</code> must also be provided and <code>CIDRIP</code> cannot be provided. </p>
+-- @param EC2SecurityGroupOwnerId [String] <p>The AWS account number of the owner of the security group specified in the <code>EC2SecurityGroupName</code> parameter. The AWS access key ID is not an acceptable value. If <code>EC2SecurityGroupOwnerId</code> is specified, <code>EC2SecurityGroupName</code> must also be provided. and <code>CIDRIP</code> cannot be provided. </p> <p>Example: <code>111122223333</code> </p>
+-- @param ClusterSecurityGroupName [String] <p>The name of the security Group from which to revoke the ingress rule.</p>
+-- @param CIDRIP [String] <p>The IP range for which to revoke access. This range must be a valid Classless Inter-Domain Routing (CIDR) block of IP addresses. If <code>CIDRIP</code> is specified, <code>EC2SecurityGroupName</code> and <code>EC2SecurityGroupOwnerId</code> cannot be provided. </p>
 -- Required parameter: ClusterSecurityGroupName
 function M.RevokeClusterSecurityGroupIngressMessage(EC2SecurityGroupName, EC2SecurityGroupOwnerId, ClusterSecurityGroupName, CIDRIP, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RevokeClusterSecurityGroupIngressMessage")
@@ -4761,10 +4761,10 @@ function M.AssertSnapshotCopyGrant(struct)
 end
 
 --- Create a structure of type SnapshotCopyGrant
--- &lt;p&gt;The snapshot copy grant that grants Amazon Redshift permission to encrypt copied snapshots with the specified customer master key (CMK) from AWS KMS in the destination region.&lt;/p&gt; &lt;p&gt; For more information about managing snapshot copy grants, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html&quot;&gt;Amazon Redshift Database Encryption&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tag instances.&lt;/p&gt;
--- @param SnapshotCopyGrantName [String] &lt;p&gt;The name of the snapshot copy grant.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The unique identifier of the customer master key (CMK) in AWS KMS to which Amazon Redshift is granted permission.&lt;/p&gt;
+-- <p>The snapshot copy grant that grants Amazon Redshift permission to encrypt copied snapshots with the specified customer master key (CMK) from AWS KMS in the destination region.</p> <p> For more information about managing snapshot copy grants, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html">Amazon Redshift Database Encryption</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
+-- @param Tags [TagList] <p>A list of tag instances.</p>
+-- @param SnapshotCopyGrantName [String] <p>The name of the snapshot copy grant.</p>
+-- @param KmsKeyId [String] <p>The unique identifier of the customer master key (CMK) in AWS KMS to which Amazon Redshift is granted permission.</p>
 function M.SnapshotCopyGrant(Tags, SnapshotCopyGrantName, KmsKeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotCopyGrant")
 	local t = { 
@@ -4787,7 +4787,7 @@ function M.AssertNumberOfNodesPerClusterLimitExceededFault(struct)
 end
 
 --- Create a structure of type NumberOfNodesPerClusterLimitExceededFault
--- &lt;p&gt;The operation would exceed the number of nodes allowed for a cluster.&lt;/p&gt;
+-- <p>The operation would exceed the number of nodes allowed for a cluster.</p>
 function M.NumberOfNodesPerClusterLimitExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NumberOfNodesPerClusterLimitExceededFault")
 	local t = { 
@@ -4813,11 +4813,11 @@ function M.AssertEnableSnapshotCopyMessage(struct)
 end
 
 --- Create a structure of type EnableSnapshotCopyMessage
--- &lt;p/&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The unique identifier of the source cluster to copy snapshots from.&lt;/p&gt; &lt;p&gt;Constraints: Must be the valid name of an existing cluster that does not already have cross-region snapshot copy enabled.&lt;/p&gt;
--- @param SnapshotCopyGrantName [String] &lt;p&gt;The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.&lt;/p&gt;
--- @param DestinationRegion [String] &lt;p&gt;The destination region that you want to copy snapshots to.&lt;/p&gt; &lt;p&gt;Constraints: Must be the name of a valid region. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region&quot;&gt;Regions and Endpoints&lt;/a&gt; in the Amazon Web Services General Reference. &lt;/p&gt;
--- @param RetentionPeriod [IntegerOptional] &lt;p&gt;The number of days to retain automated snapshots in the destination region after they are copied from the source region.&lt;/p&gt; &lt;p&gt;Default: 7.&lt;/p&gt; &lt;p&gt;Constraints: Must be at least 1 and no more than 35.&lt;/p&gt;
+-- <p/>
+-- @param ClusterIdentifier [String] <p>The unique identifier of the source cluster to copy snapshots from.</p> <p>Constraints: Must be the valid name of an existing cluster that does not already have cross-region snapshot copy enabled.</p>
+-- @param SnapshotCopyGrantName [String] <p>The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.</p>
+-- @param DestinationRegion [String] <p>The destination region that you want to copy snapshots to.</p> <p>Constraints: Must be the name of a valid region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region">Regions and Endpoints</a> in the Amazon Web Services General Reference. </p>
+-- @param RetentionPeriod [IntegerOptional] <p>The number of days to retain automated snapshots in the destination region after they are copied from the source region.</p> <p>Default: 7.</p> <p>Constraints: Must be at least 1 and no more than 35.</p>
 -- Required parameter: ClusterIdentifier
 -- Required parameter: DestinationRegion
 function M.EnableSnapshotCopyMessage(ClusterIdentifier, SnapshotCopyGrantName, DestinationRegion, RetentionPeriod, ...)
@@ -4876,40 +4876,40 @@ function M.AssertCluster(struct)
 end
 
 --- Create a structure of type Cluster
--- &lt;p&gt;Describes a cluster.&lt;/p&gt;
--- @param PubliclyAccessible [Boolean] &lt;p&gt;A Boolean value that, if &lt;code&gt;true&lt;/code&gt;, indicates that the cluster can be accessed from a public network.&lt;/p&gt;
--- @param MasterUsername [String] &lt;p&gt;The master user name for the cluster. This name is used to connect to the database that is specified in the &lt;b&gt;DBName&lt;/b&gt; parameter. &lt;/p&gt;
--- @param VpcSecurityGroups [VpcSecurityGroupMembershipList] &lt;p&gt;A list of Amazon Virtual Private Cloud (Amazon VPC) security groups that are associated with the cluster. This parameter is returned only if the cluster is in a VPC.&lt;/p&gt;
--- @param HsmStatus [HsmStatus] &lt;p&gt;A value that reports whether the Amazon Redshift cluster has finished applying any hardware security module (HSM) settings changes specified in a modify cluster command.&lt;/p&gt; &lt;p&gt;Values: active, applying&lt;/p&gt;
--- @param ClusterPublicKey [String] &lt;p&gt;The public key for the cluster.&lt;/p&gt;
--- @param ModifyStatus [String] &lt;p&gt;The status of a modify operation, if any, initiated for the cluster.&lt;/p&gt;
--- @param NumberOfNodes [Integer] &lt;p&gt;The number of compute nodes in the cluster.&lt;/p&gt;
--- @param PendingModifiedValues [PendingModifiedValues] &lt;p&gt;A value that, if present, indicates that changes to the cluster are pending. Specific pending changes are identified by subelements.&lt;/p&gt;
--- @param IamRoles [ClusterIamRoleList] &lt;p&gt;A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services.&lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;The identifier of the VPC the cluster is in, if the cluster is in a VPC.&lt;/p&gt;
--- @param ClusterVersion [String] &lt;p&gt;The version ID of the Amazon Redshift engine that is running on the cluster.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The list of tags for the cluster.&lt;/p&gt;
--- @param AutomatedSnapshotRetentionPeriod [Integer] &lt;p&gt;The number of days that automatic cluster snapshots are retained.&lt;/p&gt;
--- @param ClusterParameterGroups [ClusterParameterGroupStatusList] &lt;p&gt;The list of cluster parameter groups that are associated with this cluster. Each parameter group in the list is returned with its status.&lt;/p&gt;
--- @param DBName [String] &lt;p&gt;The name of the initial database that was created when the cluster was created. This same name is returned for the life of the cluster. If an initial database was not specified, a database named &lt;code&gt;dev&lt;/code&gt;dev was created by default. &lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The weekly time range, in Universal Coordinated Time (UTC), during which system maintenance can occur.&lt;/p&gt;
--- @param Endpoint [Endpoint] &lt;p&gt;The connection endpoint.&lt;/p&gt;
--- @param RestoreStatus [RestoreStatus] &lt;p&gt;A value that describes the status of a cluster restore action. This parameter returns null if the cluster was not created by restoring a snapshot.&lt;/p&gt;
--- @param ElasticIpStatus [ElasticIpStatus] &lt;p&gt;The status of the elastic IP (EIP) address.&lt;/p&gt;
--- @param AllowVersionUpgrade [Boolean] &lt;p&gt;A Boolean value that, if &lt;code&gt;true&lt;/code&gt;, indicates that major version upgrades will be applied automatically to the cluster during the maintenance window. &lt;/p&gt;
--- @param ClusterCreateTime [TStamp] &lt;p&gt;The date and time that the cluster was created.&lt;/p&gt;
--- @param ClusterSubnetGroupName [String] &lt;p&gt;The name of the subnet group that is associated with the cluster. This parameter is valid only when the cluster is in a VPC.&lt;/p&gt;
--- @param EnhancedVpcRouting [Boolean] &lt;p&gt;An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html&quot;&gt;Enhanced VPC Routing&lt;/a&gt; in the Amazon Redshift Cluster Management Guide.&lt;/p&gt; &lt;p&gt;If this option is &lt;code&gt;true&lt;/code&gt;, enhanced VPC routing is enabled. &lt;/p&gt; &lt;p&gt;Default: false&lt;/p&gt;
--- @param ClusterSecurityGroups [ClusterSecurityGroupMembershipList] &lt;p&gt;A list of cluster security group that are associated with the cluster. Each security group is represented by an element that contains &lt;code&gt;ClusterSecurityGroup.Name&lt;/code&gt; and &lt;code&gt;ClusterSecurityGroup.Status&lt;/code&gt; subelements. &lt;/p&gt; &lt;p&gt;Cluster security groups are used when the cluster is not created in an Amazon Virtual Private Cloud (VPC). Clusters that are created in a VPC use VPC security groups, which are listed by the &lt;b&gt;VpcSecurityGroups&lt;/b&gt; parameter. &lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The unique identifier of the cluster.&lt;/p&gt;
--- @param ClusterNodes [ClusterNodesList] &lt;p&gt;The nodes in the cluster.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The name of the Availability Zone in which the cluster is located.&lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The node type for the nodes in the cluster.&lt;/p&gt;
--- @param Encrypted [Boolean] &lt;p&gt;A Boolean value that, if &lt;code&gt;true&lt;/code&gt;, indicates that data in the cluster is encrypted at rest.&lt;/p&gt;
--- @param ClusterRevisionNumber [String] &lt;p&gt;The specific revision number of the database in the cluster.&lt;/p&gt;
--- @param ClusterSnapshotCopyStatus [ClusterSnapshotCopyStatus] &lt;p&gt;A value that returns the destination region and retention period that are configured for cross-region snapshot copy.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The AWS Key Management Service (AWS KMS) key ID of the encryption key used to encrypt data in the cluster.&lt;/p&gt;
--- @param ClusterStatus [String] &lt;p&gt; The current state of the cluster. Possible values are the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;available&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;creating&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;deleting&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;final-snapshot&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;hardware-failure&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;incompatible-hsm&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;incompatible-network&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;incompatible-parameters&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;incompatible-restore&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;modifying&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;rebooting&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;renaming&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;resizing&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;rotating-keys&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;storage-full&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;updating-hsm&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Describes a cluster.</p>
+-- @param PubliclyAccessible [Boolean] <p>A Boolean value that, if <code>true</code>, indicates that the cluster can be accessed from a public network.</p>
+-- @param MasterUsername [String] <p>The master user name for the cluster. This name is used to connect to the database that is specified in the <b>DBName</b> parameter. </p>
+-- @param VpcSecurityGroups [VpcSecurityGroupMembershipList] <p>A list of Amazon Virtual Private Cloud (Amazon VPC) security groups that are associated with the cluster. This parameter is returned only if the cluster is in a VPC.</p>
+-- @param HsmStatus [HsmStatus] <p>A value that reports whether the Amazon Redshift cluster has finished applying any hardware security module (HSM) settings changes specified in a modify cluster command.</p> <p>Values: active, applying</p>
+-- @param ClusterPublicKey [String] <p>The public key for the cluster.</p>
+-- @param ModifyStatus [String] <p>The status of a modify operation, if any, initiated for the cluster.</p>
+-- @param NumberOfNodes [Integer] <p>The number of compute nodes in the cluster.</p>
+-- @param PendingModifiedValues [PendingModifiedValues] <p>A value that, if present, indicates that changes to the cluster are pending. Specific pending changes are identified by subelements.</p>
+-- @param IamRoles [ClusterIamRoleList] <p>A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services.</p>
+-- @param VpcId [String] <p>The identifier of the VPC the cluster is in, if the cluster is in a VPC.</p>
+-- @param ClusterVersion [String] <p>The version ID of the Amazon Redshift engine that is running on the cluster.</p>
+-- @param Tags [TagList] <p>The list of tags for the cluster.</p>
+-- @param AutomatedSnapshotRetentionPeriod [Integer] <p>The number of days that automatic cluster snapshots are retained.</p>
+-- @param ClusterParameterGroups [ClusterParameterGroupStatusList] <p>The list of cluster parameter groups that are associated with this cluster. Each parameter group in the list is returned with its status.</p>
+-- @param DBName [String] <p>The name of the initial database that was created when the cluster was created. This same name is returned for the life of the cluster. If an initial database was not specified, a database named <code>dev</code>dev was created by default. </p>
+-- @param PreferredMaintenanceWindow [String] <p>The weekly time range, in Universal Coordinated Time (UTC), during which system maintenance can occur.</p>
+-- @param Endpoint [Endpoint] <p>The connection endpoint.</p>
+-- @param RestoreStatus [RestoreStatus] <p>A value that describes the status of a cluster restore action. This parameter returns null if the cluster was not created by restoring a snapshot.</p>
+-- @param ElasticIpStatus [ElasticIpStatus] <p>The status of the elastic IP (EIP) address.</p>
+-- @param AllowVersionUpgrade [Boolean] <p>A Boolean value that, if <code>true</code>, indicates that major version upgrades will be applied automatically to the cluster during the maintenance window. </p>
+-- @param ClusterCreateTime [TStamp] <p>The date and time that the cluster was created.</p>
+-- @param ClusterSubnetGroupName [String] <p>The name of the subnet group that is associated with the cluster. This parameter is valid only when the cluster is in a VPC.</p>
+-- @param EnhancedVpcRouting [Boolean] <p>An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the Amazon Redshift Cluster Management Guide.</p> <p>If this option is <code>true</code>, enhanced VPC routing is enabled. </p> <p>Default: false</p>
+-- @param ClusterSecurityGroups [ClusterSecurityGroupMembershipList] <p>A list of cluster security group that are associated with the cluster. Each security group is represented by an element that contains <code>ClusterSecurityGroup.Name</code> and <code>ClusterSecurityGroup.Status</code> subelements. </p> <p>Cluster security groups are used when the cluster is not created in an Amazon Virtual Private Cloud (VPC). Clusters that are created in a VPC use VPC security groups, which are listed by the <b>VpcSecurityGroups</b> parameter. </p>
+-- @param ClusterIdentifier [String] <p>The unique identifier of the cluster.</p>
+-- @param ClusterNodes [ClusterNodesList] <p>The nodes in the cluster.</p>
+-- @param AvailabilityZone [String] <p>The name of the Availability Zone in which the cluster is located.</p>
+-- @param NodeType [String] <p>The node type for the nodes in the cluster.</p>
+-- @param Encrypted [Boolean] <p>A Boolean value that, if <code>true</code>, indicates that data in the cluster is encrypted at rest.</p>
+-- @param ClusterRevisionNumber [String] <p>The specific revision number of the database in the cluster.</p>
+-- @param ClusterSnapshotCopyStatus [ClusterSnapshotCopyStatus] <p>A value that returns the destination region and retention period that are configured for cross-region snapshot copy.</p>
+-- @param KmsKeyId [String] <p>The AWS Key Management Service (AWS KMS) key ID of the encryption key used to encrypt data in the cluster.</p>
+-- @param ClusterStatus [String] <p> The current state of the cluster. Possible values are the following:</p> <ul> <li> <p> <code>available</code> </p> </li> <li> <p> <code>creating</code> </p> </li> <li> <p> <code>deleting</code> </p> </li> <li> <p> <code>final-snapshot</code> </p> </li> <li> <p> <code>hardware-failure</code> </p> </li> <li> <p> <code>incompatible-hsm</code> </p> </li> <li> <p> <code>incompatible-network</code> </p> </li> <li> <p> <code>incompatible-parameters</code> </p> </li> <li> <p> <code>incompatible-restore</code> </p> </li> <li> <p> <code>modifying</code> </p> </li> <li> <p> <code>rebooting</code> </p> </li> <li> <p> <code>renaming</code> </p> </li> <li> <p> <code>resizing</code> </p> </li> <li> <p> <code>rotating-keys</code> </p> </li> <li> <p> <code>storage-full</code> </p> </li> <li> <p> <code>updating-hsm</code> </p> </li> </ul>
 function M.Cluster(PubliclyAccessible, MasterUsername, VpcSecurityGroups, HsmStatus, ClusterPublicKey, ModifyStatus, NumberOfNodes, PendingModifiedValues, IamRoles, VpcId, ClusterVersion, Tags, AutomatedSnapshotRetentionPeriod, ClusterParameterGroups, DBName, PreferredMaintenanceWindow, Endpoint, RestoreStatus, ElasticIpStatus, AllowVersionUpgrade, ClusterCreateTime, ClusterSubnetGroupName, EnhancedVpcRouting, ClusterSecurityGroups, ClusterIdentifier, ClusterNodes, AvailabilityZone, NodeType, Encrypted, ClusterRevisionNumber, ClusterSnapshotCopyStatus, KmsKeyId, ClusterStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Cluster")
 	local t = { 
@@ -4968,13 +4968,13 @@ function M.AssertRestoreStatus(struct)
 end
 
 --- Create a structure of type RestoreStatus
--- &lt;p&gt;Describes the status of a cluster restore action. Returns null if the cluster was not created by restoring a snapshot.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the restore action. Returns starting, restoring, completed, or failed.&lt;/p&gt;
--- @param ProgressInMegaBytes [Long] &lt;p&gt;The number of megabytes that have been transferred from snapshot storage.&lt;/p&gt;
--- @param CurrentRestoreRateInMegaBytesPerSecond [Double] &lt;p&gt;The number of megabytes per second being transferred from the backup storage. Returns the average rate for a completed backup.&lt;/p&gt;
--- @param EstimatedTimeToCompletionInSeconds [Long] &lt;p&gt;The estimate of the time remaining before the restore will complete. Returns 0 for a completed restore.&lt;/p&gt;
--- @param ElapsedTimeInSeconds [Long] &lt;p&gt;The amount of time an in-progress restore has been running, or the amount of time it took a completed restore to finish.&lt;/p&gt;
--- @param SnapshotSizeInMegaBytes [Long] &lt;p&gt;The size of the set of snapshot data used to restore the cluster.&lt;/p&gt;
+-- <p>Describes the status of a cluster restore action. Returns null if the cluster was not created by restoring a snapshot.</p>
+-- @param Status [String] <p>The status of the restore action. Returns starting, restoring, completed, or failed.</p>
+-- @param ProgressInMegaBytes [Long] <p>The number of megabytes that have been transferred from snapshot storage.</p>
+-- @param CurrentRestoreRateInMegaBytesPerSecond [Double] <p>The number of megabytes per second being transferred from the backup storage. Returns the average rate for a completed backup.</p>
+-- @param EstimatedTimeToCompletionInSeconds [Long] <p>The estimate of the time remaining before the restore will complete. Returns 0 for a completed restore.</p>
+-- @param ElapsedTimeInSeconds [Long] <p>The amount of time an in-progress restore has been running, or the amount of time it took a completed restore to finish.</p>
+-- @param SnapshotSizeInMegaBytes [Long] <p>The size of the set of snapshot data used to restore the cluster.</p>
 function M.RestoreStatus(Status, ProgressInMegaBytes, CurrentRestoreRateInMegaBytesPerSecond, EstimatedTimeToCompletionInSeconds, ElapsedTimeInSeconds, SnapshotSizeInMegaBytes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RestoreStatus")
 	local t = { 
@@ -5005,11 +5005,11 @@ function M.AssertDescribeClusterParametersMessage(struct)
 end
 
 --- Create a structure of type DescribeClusterParametersMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeClusterParameters&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param Source [String] &lt;p&gt;The parameter types to return. Specify &lt;code&gt;user&lt;/code&gt; to show parameters that are different form the default. Similarly, specify &lt;code&gt;engine-default&lt;/code&gt; to show parameters that are the same as the default parameter group. &lt;/p&gt; &lt;p&gt;Default: All parameter types returned.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;user&lt;/code&gt; | &lt;code&gt;engine-default&lt;/code&gt; &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of a cluster parameter group for which to return details.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeClusterParameters</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param Source [String] <p>The parameter types to return. Specify <code>user</code> to show parameters that are different form the default. Similarly, specify <code>engine-default</code> to show parameters that are the same as the default parameter group. </p> <p>Default: All parameter types returned.</p> <p>Valid Values: <code>user</code> | <code>engine-default</code> </p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param ParameterGroupName [String] <p>The name of a cluster parameter group for which to return details.</p>
 -- Required parameter: ParameterGroupName
 function M.DescribeClusterParametersMessage(Marker, Source, MaxRecords, ParameterGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterParametersMessage")
@@ -5057,7 +5057,7 @@ function M.AssertReservedNodeNotFoundFault(struct)
 end
 
 --- Create a structure of type ReservedNodeNotFoundFault
--- &lt;p&gt;The specified reserved compute node not found.&lt;/p&gt;
+-- <p>The specified reserved compute node not found.</p>
 function M.ReservedNodeNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedNodeNotFoundFault")
 	local t = { 
@@ -5077,7 +5077,7 @@ function M.AssertUnsupportedOperationFault(struct)
 end
 
 --- Create a structure of type UnsupportedOperationFault
--- &lt;p&gt;The requested operation isn't supported.&lt;/p&gt;
+-- <p>The requested operation isn't supported.</p>
 function M.UnsupportedOperationFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedOperationFault")
 	local t = { 
@@ -5103,13 +5103,13 @@ function M.AssertLoggingStatus(struct)
 end
 
 --- Create a structure of type LoggingStatus
--- &lt;p&gt;Describes the status of logging for a cluster.&lt;/p&gt;
--- @param LastFailureMessage [String] &lt;p&gt;The message indicating that logs failed to be delivered.&lt;/p&gt;
--- @param LoggingEnabled [Boolean] &lt;p&gt; &lt;code&gt;true&lt;/code&gt; if logging is on, &lt;code&gt;false&lt;/code&gt; if logging is off.&lt;/p&gt;
--- @param LastFailureTime [TStamp] &lt;p&gt;The last time when logs failed to be delivered.&lt;/p&gt;
--- @param LastSuccessfulDeliveryTime [TStamp] &lt;p&gt;The last time that logs were delivered.&lt;/p&gt;
--- @param S3KeyPrefix [String] &lt;p&gt;The prefix applied to the log file names.&lt;/p&gt;
--- @param BucketName [String] &lt;p&gt;The name of the S3 bucket where the log files are stored.&lt;/p&gt;
+-- <p>Describes the status of logging for a cluster.</p>
+-- @param LastFailureMessage [String] <p>The message indicating that logs failed to be delivered.</p>
+-- @param LoggingEnabled [Boolean] <p> <code>true</code> if logging is on, <code>false</code> if logging is off.</p>
+-- @param LastFailureTime [TStamp] <p>The last time when logs failed to be delivered.</p>
+-- @param LastSuccessfulDeliveryTime [TStamp] <p>The last time that logs were delivered.</p>
+-- @param S3KeyPrefix [String] <p>The prefix applied to the log file names.</p>
+-- @param BucketName [String] <p>The name of the S3 bucket where the log files are stored.</p>
 function M.LoggingStatus(LastFailureMessage, LoggingEnabled, LastFailureTime, LastSuccessfulDeliveryTime, S3KeyPrefix, BucketName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoggingStatus")
 	local t = { 
@@ -5147,19 +5147,19 @@ function M.AssertResizeProgressMessage(struct)
 end
 
 --- Create a structure of type ResizeProgressMessage
--- &lt;p&gt;Describes the result of a cluster resize operation.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the resize operation.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;NONE&lt;/code&gt; | &lt;code&gt;IN_PROGRESS&lt;/code&gt; | &lt;code&gt;FAILED&lt;/code&gt; | &lt;code&gt;SUCCEEDED&lt;/code&gt; &lt;/p&gt;
--- @param ImportTablesCompleted [ImportTablesCompleted] &lt;p&gt;The names of tables that have been completely imported .&lt;/p&gt; &lt;p&gt;Valid Values: List of table names.&lt;/p&gt;
--- @param EstimatedTimeToCompletionInSeconds [LongOptional] &lt;p&gt;The estimated time remaining, in seconds, until the resize operation is complete. This value is calculated based on the average resize rate and the estimated amount of data remaining to be processed. Once the resize operation is complete, this value will be 0.&lt;/p&gt;
--- @param ProgressInMegaBytes [LongOptional] &lt;p&gt;While the resize operation is in progress, this value shows the current amount of data, in megabytes, that has been processed so far. When the resize operation is complete, this value shows the total amount of data, in megabytes, on the cluster, which may be more or less than TotalResizeDataInMegaBytes (the estimated total amount of data before resize).&lt;/p&gt;
--- @param TargetClusterType [String] &lt;p&gt;The cluster type after the resize operation is complete.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;multi-node&lt;/code&gt; | &lt;code&gt;single-node&lt;/code&gt; &lt;/p&gt;
--- @param TotalResizeDataInMegaBytes [LongOptional] &lt;p&gt;The estimated total amount of data, in megabytes, on the cluster before the resize operation began.&lt;/p&gt;
--- @param TargetNumberOfNodes [IntegerOptional] &lt;p&gt;The number of nodes that the cluster will have after the resize operation is complete.&lt;/p&gt;
--- @param ImportTablesInProgress [ImportTablesInProgress] &lt;p&gt;The names of tables that are being currently imported.&lt;/p&gt; &lt;p&gt;Valid Values: List of table names.&lt;/p&gt;
--- @param ImportTablesNotStarted [ImportTablesNotStarted] &lt;p&gt;The names of tables that have not been yet imported.&lt;/p&gt; &lt;p&gt;Valid Values: List of table names&lt;/p&gt;
--- @param AvgResizeRateInMegaBytesPerSecond [DoubleOptional] &lt;p&gt;The average rate of the resize operation over the last few minutes, measured in megabytes per second. After the resize operation completes, this value shows the average rate of the entire resize operation.&lt;/p&gt;
--- @param ElapsedTimeInSeconds [LongOptional] &lt;p&gt;The amount of seconds that have elapsed since the resize operation began. After the resize operation completes, this value shows the total actual time, in seconds, for the resize operation.&lt;/p&gt;
--- @param TargetNodeType [String] &lt;p&gt;The node type that the cluster will have after the resize operation is complete.&lt;/p&gt;
+-- <p>Describes the result of a cluster resize operation.</p>
+-- @param Status [String] <p>The status of the resize operation.</p> <p>Valid Values: <code>NONE</code> | <code>IN_PROGRESS</code> | <code>FAILED</code> | <code>SUCCEEDED</code> </p>
+-- @param ImportTablesCompleted [ImportTablesCompleted] <p>The names of tables that have been completely imported .</p> <p>Valid Values: List of table names.</p>
+-- @param EstimatedTimeToCompletionInSeconds [LongOptional] <p>The estimated time remaining, in seconds, until the resize operation is complete. This value is calculated based on the average resize rate and the estimated amount of data remaining to be processed. Once the resize operation is complete, this value will be 0.</p>
+-- @param ProgressInMegaBytes [LongOptional] <p>While the resize operation is in progress, this value shows the current amount of data, in megabytes, that has been processed so far. When the resize operation is complete, this value shows the total amount of data, in megabytes, on the cluster, which may be more or less than TotalResizeDataInMegaBytes (the estimated total amount of data before resize).</p>
+-- @param TargetClusterType [String] <p>The cluster type after the resize operation is complete.</p> <p>Valid Values: <code>multi-node</code> | <code>single-node</code> </p>
+-- @param TotalResizeDataInMegaBytes [LongOptional] <p>The estimated total amount of data, in megabytes, on the cluster before the resize operation began.</p>
+-- @param TargetNumberOfNodes [IntegerOptional] <p>The number of nodes that the cluster will have after the resize operation is complete.</p>
+-- @param ImportTablesInProgress [ImportTablesInProgress] <p>The names of tables that are being currently imported.</p> <p>Valid Values: List of table names.</p>
+-- @param ImportTablesNotStarted [ImportTablesNotStarted] <p>The names of tables that have not been yet imported.</p> <p>Valid Values: List of table names</p>
+-- @param AvgResizeRateInMegaBytesPerSecond [DoubleOptional] <p>The average rate of the resize operation over the last few minutes, measured in megabytes per second. After the resize operation completes, this value shows the average rate of the entire resize operation.</p>
+-- @param ElapsedTimeInSeconds [LongOptional] <p>The amount of seconds that have elapsed since the resize operation began. After the resize operation completes, this value shows the total actual time, in seconds, for the resize operation.</p>
+-- @param TargetNodeType [String] <p>The node type that the cluster will have after the resize operation is complete.</p>
 function M.ResizeProgressMessage(Status, ImportTablesCompleted, EstimatedTimeToCompletionInSeconds, ProgressInMegaBytes, TargetClusterType, TotalResizeDataInMegaBytes, TargetNumberOfNodes, ImportTablesInProgress, ImportTablesNotStarted, AvgResizeRateInMegaBytesPerSecond, ElapsedTimeInSeconds, TargetNodeType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResizeProgressMessage")
 	local t = { 
@@ -5191,7 +5191,7 @@ function M.AssertResourceNotFoundFault(struct)
 end
 
 --- Create a structure of type ResourceNotFoundFault
--- &lt;p&gt;The resource could not be found.&lt;/p&gt;
+-- <p>The resource could not be found.</p>
 function M.ResourceNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundFault")
 	local t = { 
@@ -5211,7 +5211,7 @@ function M.AssertHsmConfigurationAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type HsmConfigurationAlreadyExistsFault
--- &lt;p&gt;There is already an existing Amazon Redshift HSM configuration with the specified identifier.&lt;/p&gt;
+-- <p>There is already an existing Amazon Redshift HSM configuration with the specified identifier.</p>
 function M.HsmConfigurationAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmConfigurationAlreadyExistsFault")
 	local t = { 
@@ -5236,12 +5236,12 @@ function M.AssertDescribeHsmConfigurationsMessage(struct)
 end
 
 --- Create a structure of type DescribeHsmConfigurationsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeHsmConfigurations&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt;
--- @param TagValues [TagValueList] &lt;p&gt;A tag value or values for which you want to return all matching HSM configurations that are associated with the specified tag value or values. For example, suppose that you have HSM configurations that are tagged with values called &lt;code&gt;admin&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt;. If you specify both of these tag values in the request, Amazon Redshift returns a response with the HSM configurations that have either or both of these tag values associated with them.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;A tag key or keys for which you want to return all matching HSM configurations that are associated with the specified key or keys. For example, suppose that you have HSM configurations that are tagged with keys called &lt;code&gt;owner&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the HSM configurations that have either or both of these tag keys associated with them.&lt;/p&gt;
--- @param HsmConfigurationIdentifier [String] &lt;p&gt;The identifier of a specific Amazon Redshift HSM configuration to be described. If no identifier is specified, information is returned for all HSM configurations owned by your AWS customer account.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeHsmConfigurations</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p>
+-- @param TagValues [TagValueList] <p>A tag value or values for which you want to return all matching HSM configurations that are associated with the specified tag value or values. For example, suppose that you have HSM configurations that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the HSM configurations that have either or both of these tag values associated with them.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching HSM configurations that are associated with the specified key or keys. For example, suppose that you have HSM configurations that are tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the HSM configurations that have either or both of these tag keys associated with them.</p>
+-- @param HsmConfigurationIdentifier [String] <p>The identifier of a specific Amazon Redshift HSM configuration to be described. If no identifier is specified, information is returned for all HSM configurations owned by your AWS customer account.</p>
 function M.DescribeHsmConfigurationsMessage(Marker, TagValues, MaxRecords, TagKeys, HsmConfigurationIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHsmConfigurationsMessage")
 	local t = { 
@@ -5270,11 +5270,11 @@ function M.AssertDescribeTableRestoreStatusMessage(struct)
 end
 
 --- Create a structure of type DescribeTableRestoreStatusMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional pagination token provided by a previous &lt;code&gt;DescribeTableRestoreStatus&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by the &lt;code&gt;MaxRecords&lt;/code&gt; parameter.&lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The Amazon Redshift cluster that the table is being restored to.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.&lt;/p&gt;
--- @param TableRestoreRequestId [String] &lt;p&gt;The identifier of the table restore request to return status for. If you don't specify a &lt;code&gt;TableRestoreRequestId&lt;/code&gt; value, then &lt;code&gt;DescribeTableRestoreStatus&lt;/code&gt; returns the status of all in-progress table restore requests.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional pagination token provided by a previous <code>DescribeTableRestoreStatus</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by the <code>MaxRecords</code> parameter.</p>
+-- @param ClusterIdentifier [String] <p>The Amazon Redshift cluster that the table is being restored to.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.</p>
+-- @param TableRestoreRequestId [String] <p>The identifier of the table restore request to return status for. If you don't specify a <code>TableRestoreRequestId</code> value, then <code>DescribeTableRestoreStatus</code> returns the status of all in-progress table restore requests.</p>
 function M.DescribeTableRestoreStatusMessage(Marker, ClusterIdentifier, MaxRecords, TableRestoreRequestId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTableRestoreStatusMessage")
 	local t = { 
@@ -5301,10 +5301,10 @@ function M.AssertClusterCredentials(struct)
 end
 
 --- Create a structure of type ClusterCredentials
--- &lt;p&gt;Temporary credentials with authorization to log in to an Amazon Redshift database. &lt;/p&gt;
--- @param DbUser [String] &lt;p&gt;A database user name that is authorized to log on to the database &lt;code&gt;DbName&lt;/code&gt; using the password &lt;code&gt;DbPassword&lt;/code&gt;. If the &lt;code&gt;DbGroups&lt;/code&gt; parameter is specifed, &lt;code&gt;DbUser&lt;/code&gt; is added to the listed groups for the current session. The user name is prefixed with &lt;code&gt;IAM:&lt;/code&gt; for an existing user name or &lt;code&gt;IAMA:&lt;/code&gt; if the user was auto-created. &lt;/p&gt;
--- @param Expiration [TStamp] &lt;p&gt;The date and time &lt;code&gt;DbPassword&lt;/code&gt; expires.&lt;/p&gt;
--- @param DbPassword [SensitiveString] &lt;p&gt;A temporary password that authorizes the user name returned by &lt;code&gt;DbUser&lt;/code&gt; to log on to the database &lt;code&gt;DbName&lt;/code&gt;. &lt;/p&gt;
+-- <p>Temporary credentials with authorization to log in to an Amazon Redshift database. </p>
+-- @param DbUser [String] <p>A database user name that is authorized to log on to the database <code>DbName</code> using the password <code>DbPassword</code>. If the <code>DbGroups</code> parameter is specifed, <code>DbUser</code> is added to the listed groups for the current session. The user name is prefixed with <code>IAM:</code> for an existing user name or <code>IAMA:</code> if the user was auto-created. </p>
+-- @param Expiration [TStamp] <p>The date and time <code>DbPassword</code> expires.</p>
+-- @param DbPassword [SensitiveString] <p>A temporary password that authorizes the user name returned by <code>DbUser</code> to log on to the database <code>DbName</code>. </p>
 function M.ClusterCredentials(DbUser, Expiration, DbPassword, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterCredentials")
 	local t = { 
@@ -5352,9 +5352,9 @@ function M.AssertSnapshotCopyGrantMessage(struct)
 end
 
 --- Create a structure of type SnapshotCopyGrantMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;code&gt;DescribeSnapshotCopyGrant&lt;/code&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt; &lt;p&gt;Constraints: You can specify either the &lt;b&gt;SnapshotCopyGrantName&lt;/b&gt; parameter or the &lt;b&gt;Marker&lt;/b&gt; parameter, but not both. &lt;/p&gt;
--- @param SnapshotCopyGrants [SnapshotCopyGrantList] &lt;p&gt;The list of &lt;code&gt;SnapshotCopyGrant&lt;/code&gt; objects.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <code>DescribeSnapshotCopyGrant</code> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p> <p>Constraints: You can specify either the <b>SnapshotCopyGrantName</b> parameter or the <b>Marker</b> parameter, but not both. </p>
+-- @param SnapshotCopyGrants [SnapshotCopyGrantList] <p>The list of <code>SnapshotCopyGrant</code> objects.</p>
 function M.SnapshotCopyGrantMessage(Marker, SnapshotCopyGrants, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotCopyGrantMessage")
 	local t = { 
@@ -5376,7 +5376,7 @@ function M.AssertHsmConfigurationQuotaExceededFault(struct)
 end
 
 --- Create a structure of type HsmConfigurationQuotaExceededFault
--- &lt;p&gt;The quota for HSM configurations has been reached. For information about increasing your quota, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html&quot;&gt;Limits in Amazon Redshift&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
+-- <p>The quota for HSM configurations has been reached. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 function M.HsmConfigurationQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmConfigurationQuotaExceededFault")
 	local t = { 
@@ -5410,21 +5410,21 @@ function M.AssertTableRestoreStatus(struct)
 end
 
 --- Create a structure of type TableRestoreStatus
--- &lt;p&gt;Describes the status of a &lt;a&gt;RestoreTableFromClusterSnapshot&lt;/a&gt; operation.&lt;/p&gt;
--- @param Status [TableRestoreStatusType] &lt;p&gt;A value that describes the current state of the table restore request.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;SUCCEEDED&lt;/code&gt;, &lt;code&gt;FAILED&lt;/code&gt;, &lt;code&gt;CANCELED&lt;/code&gt;, &lt;code&gt;PENDING&lt;/code&gt;, &lt;code&gt;IN_PROGRESS&lt;/code&gt; &lt;/p&gt;
--- @param RequestTime [TStamp] &lt;p&gt;The time that the table restore request was made, in Universal Coordinated Time (UTC).&lt;/p&gt;
--- @param TotalDataInMegaBytes [LongOptional] &lt;p&gt;The total amount of data to restore to the new table, in megabytes (MB).&lt;/p&gt;
--- @param SourceSchemaName [String] &lt;p&gt;The name of the source schema that contains the table being restored.&lt;/p&gt;
--- @param TargetDatabaseName [String] &lt;p&gt;The name of the database to restore the table to.&lt;/p&gt;
--- @param ProgressInMegaBytes [LongOptional] &lt;p&gt;The amount of data restored to the new table so far, in megabytes (MB).&lt;/p&gt;
--- @param SourceTableName [String] &lt;p&gt;The name of the source table being restored.&lt;/p&gt;
--- @param TableRestoreRequestId [String] &lt;p&gt;The unique identifier for the table restore request.&lt;/p&gt;
--- @param NewTableName [String] &lt;p&gt;The name of the table to create as a result of the table restore request.&lt;/p&gt;
--- @param TargetSchemaName [String] &lt;p&gt;The name of the schema to restore the table to.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;A description of the status of the table restore request. Status values include &lt;code&gt;SUCCEEDED&lt;/code&gt;, &lt;code&gt;FAILED&lt;/code&gt;, &lt;code&gt;CANCELED&lt;/code&gt;, &lt;code&gt;PENDING&lt;/code&gt;, &lt;code&gt;IN_PROGRESS&lt;/code&gt;.&lt;/p&gt;
--- @param SourceDatabaseName [String] &lt;p&gt;The name of the source database that contains the table being restored.&lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The identifier of the Amazon Redshift cluster that the table is being restored to.&lt;/p&gt;
--- @param SnapshotIdentifier [String] &lt;p&gt;The identifier of the snapshot that the table is being restored from.&lt;/p&gt;
+-- <p>Describes the status of a <a>RestoreTableFromClusterSnapshot</a> operation.</p>
+-- @param Status [TableRestoreStatusType] <p>A value that describes the current state of the table restore request.</p> <p>Valid Values: <code>SUCCEEDED</code>, <code>FAILED</code>, <code>CANCELED</code>, <code>PENDING</code>, <code>IN_PROGRESS</code> </p>
+-- @param RequestTime [TStamp] <p>The time that the table restore request was made, in Universal Coordinated Time (UTC).</p>
+-- @param TotalDataInMegaBytes [LongOptional] <p>The total amount of data to restore to the new table, in megabytes (MB).</p>
+-- @param SourceSchemaName [String] <p>The name of the source schema that contains the table being restored.</p>
+-- @param TargetDatabaseName [String] <p>The name of the database to restore the table to.</p>
+-- @param ProgressInMegaBytes [LongOptional] <p>The amount of data restored to the new table so far, in megabytes (MB).</p>
+-- @param SourceTableName [String] <p>The name of the source table being restored.</p>
+-- @param TableRestoreRequestId [String] <p>The unique identifier for the table restore request.</p>
+-- @param NewTableName [String] <p>The name of the table to create as a result of the table restore request.</p>
+-- @param TargetSchemaName [String] <p>The name of the schema to restore the table to.</p>
+-- @param Message [String] <p>A description of the status of the table restore request. Status values include <code>SUCCEEDED</code>, <code>FAILED</code>, <code>CANCELED</code>, <code>PENDING</code>, <code>IN_PROGRESS</code>.</p>
+-- @param SourceDatabaseName [String] <p>The name of the source database that contains the table being restored.</p>
+-- @param ClusterIdentifier [String] <p>The identifier of the Amazon Redshift cluster that the table is being restored to.</p>
+-- @param SnapshotIdentifier [String] <p>The identifier of the snapshot that the table is being restored from.</p>
 function M.TableRestoreStatus(Status, RequestTime, TotalDataInMegaBytes, SourceSchemaName, TargetDatabaseName, ProgressInMegaBytes, SourceTableName, TableRestoreRequestId, NewTableName, TargetSchemaName, Message, SourceDatabaseName, ClusterIdentifier, SnapshotIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TableRestoreStatus")
 	local t = { 
@@ -5458,7 +5458,7 @@ function M.AssertSnapshotCopyAlreadyEnabledFault(struct)
 end
 
 --- Create a structure of type SnapshotCopyAlreadyEnabledFault
--- &lt;p&gt;The cluster already has cross-region snapshot copy enabled.&lt;/p&gt;
+-- <p>The cluster already has cross-region snapshot copy enabled.</p>
 function M.SnapshotCopyAlreadyEnabledFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotCopyAlreadyEnabledFault")
 	local t = { 
@@ -5482,10 +5482,10 @@ function M.AssertDeleteClusterMessage(struct)
 end
 
 --- Create a structure of type DeleteClusterMessage
--- &lt;p/&gt;
--- @param FinalClusterSnapshotIdentifier [String] &lt;p&gt;The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, &lt;i&gt;SkipFinalClusterSnapshot&lt;/i&gt; must be &lt;code&gt;false&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The identifier of the cluster to be deleted.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain lowercase characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SkipFinalClusterSnapshot [Boolean] &lt;p&gt;Determines whether a final snapshot of the cluster is created before Amazon Redshift deletes the cluster. If &lt;code&gt;true&lt;/code&gt;, a final cluster snapshot is not created. If &lt;code&gt;false&lt;/code&gt;, a final cluster snapshot is created before the cluster is deleted. &lt;/p&gt; &lt;note&gt; &lt;p&gt;The &lt;i&gt;FinalClusterSnapshotIdentifier&lt;/i&gt; parameter must be specified if &lt;i&gt;SkipFinalClusterSnapshot&lt;/i&gt; is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param FinalClusterSnapshotIdentifier [String] <p>The identifier of the final snapshot that is to be created immediately before deleting the cluster. If this parameter is provided, <i>SkipFinalClusterSnapshot</i> must be <code>false</code>. </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param ClusterIdentifier [String] <p>The identifier of the cluster to be deleted.</p> <p>Constraints:</p> <ul> <li> <p>Must contain lowercase characters.</p> </li> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param SkipFinalClusterSnapshot [Boolean] <p>Determines whether a final snapshot of the cluster is created before Amazon Redshift deletes the cluster. If <code>true</code>, a final cluster snapshot is not created. If <code>false</code>, a final cluster snapshot is created before the cluster is deleted. </p> <note> <p>The <i>FinalClusterSnapshotIdentifier</i> parameter must be specified if <i>SkipFinalClusterSnapshot</i> is <code>false</code>.</p> </note> <p>Default: <code>false</code> </p>
 -- Required parameter: ClusterIdentifier
 function M.DeleteClusterMessage(FinalClusterSnapshotIdentifier, ClusterIdentifier, SkipFinalClusterSnapshot, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterMessage")
@@ -5512,10 +5512,10 @@ function M.AssertDefaultClusterParameters(struct)
 end
 
 --- Create a structure of type DefaultClusterParameters
--- &lt;p&gt;Describes the default cluster parameters for a parameter group family.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param ParameterGroupFamily [String] &lt;p&gt;The name of the cluster parameter group family to which the engine default parameters apply.&lt;/p&gt;
--- @param Parameters [ParametersList] &lt;p&gt;The list of cluster default parameters.&lt;/p&gt;
+-- <p>Describes the default cluster parameters for a parameter group family.</p>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param ParameterGroupFamily [String] <p>The name of the cluster parameter group family to which the engine default parameters apply.</p>
+-- @param Parameters [ParametersList] <p>The list of cluster default parameters.</p>
 function M.DefaultClusterParameters(Marker, ParameterGroupFamily, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DefaultClusterParameters")
 	local t = { 
@@ -5540,9 +5540,9 @@ function M.AssertClusterParameterGroupNameMessage(struct)
 end
 
 --- Create a structure of type ClusterParameterGroupNameMessage
--- &lt;p/&gt;
--- @param ParameterGroupStatus [String] &lt;p&gt;The status of the parameter group. For example, if you made a change to a parameter group name-value pair, then the change could be pending a reboot of an associated cluster.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of the cluster parameter group.&lt;/p&gt;
+-- <p/>
+-- @param ParameterGroupStatus [String] <p>The status of the parameter group. For example, if you made a change to a parameter group name-value pair, then the change could be pending a reboot of an associated cluster.</p>
+-- @param ParameterGroupName [String] <p>The name of the cluster parameter group.</p>
 function M.ClusterParameterGroupNameMessage(ParameterGroupStatus, ParameterGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterParameterGroupNameMessage")
 	local t = { 
@@ -5564,7 +5564,7 @@ function M.AssertInvalidClusterSecurityGroupStateFault(struct)
 end
 
 --- Create a structure of type InvalidClusterSecurityGroupStateFault
--- &lt;p&gt;The state of the cluster security group is not &lt;code&gt;available&lt;/code&gt;. &lt;/p&gt;
+-- <p>The state of the cluster security group is not <code>available</code>. </p>
 function M.InvalidClusterSecurityGroupStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidClusterSecurityGroupStateFault")
 	local t = { 
@@ -5588,9 +5588,9 @@ function M.AssertCreateTagsMessage(struct)
 end
 
 --- Create a structure of type CreateTagsMessage
--- &lt;p&gt;Contains the output from the &lt;code&gt;CreateTags&lt;/code&gt; action. &lt;/p&gt;
--- @param ResourceName [String] &lt;p&gt;The Amazon Resource Name (ARN) to which you want to add the tag or tags. For example, &lt;code&gt;arn:aws:redshift:us-east-1:123456789:cluster:t1&lt;/code&gt;. &lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;One or more name/value pairs to add as tags to the specified resource. Each tag name is passed in with the parameter &lt;code&gt;Key&lt;/code&gt; and the corresponding value is passed in with the parameter &lt;code&gt;Value&lt;/code&gt;. The &lt;code&gt;Key&lt;/code&gt; and &lt;code&gt;Value&lt;/code&gt; parameters are separated by a comma (,). Separate multiple tags with a space. For example, &lt;code&gt;--tags &quot;Key&quot;=&quot;owner&quot;,&quot;Value&quot;=&quot;admin&quot; &quot;Key&quot;=&quot;environment&quot;,&quot;Value&quot;=&quot;test&quot; &quot;Key&quot;=&quot;version&quot;,&quot;Value&quot;=&quot;1.0&quot;&lt;/code&gt;. &lt;/p&gt;
+-- <p>Contains the output from the <code>CreateTags</code> action. </p>
+-- @param ResourceName [String] <p>The Amazon Resource Name (ARN) to which you want to add the tag or tags. For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>. </p>
+-- @param Tags [TagList] <p>One or more name/value pairs to add as tags to the specified resource. Each tag name is passed in with the parameter <code>Key</code> and the corresponding value is passed in with the parameter <code>Value</code>. The <code>Key</code> and <code>Value</code> parameters are separated by a comma (,). Separate multiple tags with a space. For example, <code>--tags "Key"="owner","Value"="admin" "Key"="environment","Value"="test" "Key"="version","Value"="1.0"</code>. </p>
 -- Required parameter: ResourceName
 -- Required parameter: Tags
 function M.CreateTagsMessage(ResourceName, Tags, ...)
@@ -5614,7 +5614,7 @@ function M.AssertInsufficientS3BucketPolicyFault(struct)
 end
 
 --- Create a structure of type InsufficientS3BucketPolicyFault
--- &lt;p&gt;The cluster does not have read bucket or put object permissions on the S3 bucket specified when enabling logging.&lt;/p&gt;
+-- <p>The cluster does not have read bucket or put object permissions on the S3 bucket specified when enabling logging.</p>
 function M.InsufficientS3BucketPolicyFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientS3BucketPolicyFault")
 	local t = { 
@@ -5659,8 +5659,8 @@ function M.AssertDeleteClusterSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type DeleteClusterSubnetGroupMessage
--- &lt;p/&gt;
--- @param ClusterSubnetGroupName [String] &lt;p&gt;The name of the cluster subnet group name to be deleted.&lt;/p&gt;
+-- <p/>
+-- @param ClusterSubnetGroupName [String] <p>The name of the cluster subnet group name to be deleted.</p>
 -- Required parameter: ClusterSubnetGroupName
 function M.DeleteClusterSubnetGroupMessage(ClusterSubnetGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterSubnetGroupMessage")
@@ -5687,12 +5687,12 @@ function M.AssertDescribeClusterSecurityGroupsMessage(struct)
 end
 
 --- Create a structure of type DescribeClusterSecurityGroupsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeClusterSecurityGroups&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt; &lt;p&gt;Constraints: You can specify either the &lt;b&gt;ClusterSecurityGroupName&lt;/b&gt; parameter or the &lt;b&gt;Marker&lt;/b&gt; parameter, but not both. &lt;/p&gt;
--- @param TagValues [TagValueList] &lt;p&gt;A tag value or values for which you want to return all matching cluster security groups that are associated with the specified tag value or values. For example, suppose that you have security groups that are tagged with values called &lt;code&gt;admin&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt;. If you specify both of these tag values in the request, Amazon Redshift returns a response with the security groups that have either or both of these tag values associated with them.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;A tag key or keys for which you want to return all matching cluster security groups that are associated with the specified key or keys. For example, suppose that you have security groups that are tagged with keys called &lt;code&gt;owner&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the security groups that have either or both of these tag keys associated with them.&lt;/p&gt;
--- @param ClusterSecurityGroupName [String] &lt;p&gt;The name of a cluster security group for which you are requesting details. You can specify either the &lt;b&gt;Marker&lt;/b&gt; parameter or a &lt;b&gt;ClusterSecurityGroupName&lt;/b&gt; parameter, but not both. &lt;/p&gt; &lt;p&gt; Example: &lt;code&gt;securitygroup1&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeClusterSecurityGroups</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p> <p>Constraints: You can specify either the <b>ClusterSecurityGroupName</b> parameter or the <b>Marker</b> parameter, but not both. </p>
+-- @param TagValues [TagValueList] <p>A tag value or values for which you want to return all matching cluster security groups that are associated with the specified tag value or values. For example, suppose that you have security groups that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the security groups that have either or both of these tag values associated with them.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching cluster security groups that are associated with the specified key or keys. For example, suppose that you have security groups that are tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the security groups that have either or both of these tag keys associated with them.</p>
+-- @param ClusterSecurityGroupName [String] <p>The name of a cluster security group for which you are requesting details. You can specify either the <b>Marker</b> parameter or a <b>ClusterSecurityGroupName</b> parameter, but not both. </p> <p> Example: <code>securitygroup1</code> </p>
 function M.DescribeClusterSecurityGroupsMessage(Marker, TagValues, MaxRecords, TagKeys, ClusterSecurityGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterSecurityGroupsMessage")
 	local t = { 
@@ -5717,7 +5717,7 @@ function M.AssertCopyToRegionDisabledFault(struct)
 end
 
 --- Create a structure of type CopyToRegionDisabledFault
--- &lt;p&gt;Cross-region snapshot copy was temporarily disabled. Try your request again.&lt;/p&gt;
+-- <p>Cross-region snapshot copy was temporarily disabled. Try your request again.</p>
 function M.CopyToRegionDisabledFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CopyToRegionDisabledFault")
 	local t = { 
@@ -5737,7 +5737,7 @@ function M.AssertInvalidHsmConfigurationStateFault(struct)
 end
 
 --- Create a structure of type InvalidHsmConfigurationStateFault
--- &lt;p&gt;The specified HSM configuration is not in the &lt;code&gt;available&lt;/code&gt; state, or it is still in use by one or more Amazon Redshift clusters.&lt;/p&gt;
+-- <p>The specified HSM configuration is not in the <code>available</code> state, or it is still in use by one or more Amazon Redshift clusters.</p>
 function M.InvalidHsmConfigurationStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidHsmConfigurationStateFault")
 	local t = { 
@@ -5762,10 +5762,10 @@ function M.AssertCreateClusterSnapshotMessage(struct)
 end
 
 --- Create a structure of type CreateClusterSnapshotMessage
--- &lt;p/&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The cluster identifier for which you want a snapshot.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tag instances.&lt;/p&gt;
--- @param SnapshotIdentifier [String] &lt;p&gt;A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the AWS account.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cannot be null, empty, or blank&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-snapshot-id&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param ClusterIdentifier [String] <p>The cluster identifier for which you want a snapshot.</p>
+-- @param Tags [TagList] <p>A list of tag instances.</p>
+-- @param SnapshotIdentifier [String] <p>A unique identifier for the snapshot that you are requesting. This identifier must be unique for all snapshots within the AWS account.</p> <p>Constraints:</p> <ul> <li> <p>Cannot be null, empty, or blank</p> </li> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-snapshot-id</code> </p>
 -- Required parameter: SnapshotIdentifier
 -- Required parameter: ClusterIdentifier
 function M.CreateClusterSnapshotMessage(ClusterIdentifier, Tags, SnapshotIdentifier, ...)
@@ -5792,9 +5792,9 @@ function M.AssertSnapshotMessage(struct)
 end
 
 --- Create a structure of type SnapshotMessage
--- &lt;p&gt;Contains the output from the &lt;a&gt;DescribeClusterSnapshots&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param Snapshots [SnapshotList] &lt;p&gt;A list of &lt;a&gt;Snapshot&lt;/a&gt; instances. &lt;/p&gt;
+-- <p>Contains the output from the <a>DescribeClusterSnapshots</a> action. </p>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param Snapshots [SnapshotList] <p>A list of <a>Snapshot</a> instances. </p>
 function M.SnapshotMessage(Marker, Snapshots, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotMessage")
 	local t = { 
@@ -5816,7 +5816,7 @@ function M.AssertAuthorizationAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type AuthorizationAlreadyExistsFault
--- &lt;p&gt;The specified CIDR block or EC2 security group is already authorized for the specified cluster security group.&lt;/p&gt;
+-- <p>The specified CIDR block or EC2 security group is already authorized for the specified cluster security group.</p>
 function M.AuthorizationAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationAlreadyExistsFault")
 	local t = { 
@@ -5836,7 +5836,7 @@ function M.AssertInvalidClusterParameterGroupStateFault(struct)
 end
 
 --- Create a structure of type InvalidClusterParameterGroupStateFault
--- &lt;p&gt;The cluster parameter group action can not be completed because another task is in progress that involves the parameter group. Wait a few moments and try the operation again.&lt;/p&gt;
+-- <p>The cluster parameter group action can not be completed because another task is in progress that involves the parameter group. Wait a few moments and try the operation again.</p>
 function M.InvalidClusterParameterGroupStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidClusterParameterGroupStateFault")
 	local t = { 
@@ -5860,10 +5860,10 @@ function M.AssertCreateSnapshotCopyGrantMessage(struct)
 end
 
 --- Create a structure of type CreateSnapshotCopyGrantMessage
--- &lt;p&gt;The result of the &lt;code&gt;CreateSnapshotCopyGrant&lt;/code&gt; action.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tag instances.&lt;/p&gt;
--- @param SnapshotCopyGrantName [String] &lt;p&gt;The name of the snapshot copy grant. This name must be unique in the region for the AWS account.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Alphabetic characters must be lowercase.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be unique for all clusters within an AWS account.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param KmsKeyId [String] &lt;p&gt;The unique identifier of the customer master key (CMK) to which to grant Amazon Redshift permission. If no key is specified, the default key is used.&lt;/p&gt;
+-- <p>The result of the <code>CreateSnapshotCopyGrant</code> action.</p>
+-- @param Tags [TagList] <p>A list of tag instances.</p>
+-- @param SnapshotCopyGrantName [String] <p>The name of the snapshot copy grant. This name must be unique in the region for the AWS account.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>Alphabetic characters must be lowercase.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> <li> <p>Must be unique for all clusters within an AWS account.</p> </li> </ul>
+-- @param KmsKeyId [String] <p>The unique identifier of the customer master key (CMK) to which to grant Amazon Redshift permission. If no key is specified, the default key is used.</p>
 -- Required parameter: SnapshotCopyGrantName
 function M.CreateSnapshotCopyGrantMessage(Tags, SnapshotCopyGrantName, KmsKeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSnapshotCopyGrantMessage")
@@ -5889,9 +5889,9 @@ function M.AssertElasticIpStatus(struct)
 end
 
 --- Create a structure of type ElasticIpStatus
--- &lt;p&gt;Describes the status of the elastic IP (EIP) address.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the elastic IP (EIP) address.&lt;/p&gt;
--- @param ElasticIp [String] &lt;p&gt;The elastic IP (EIP) address for the cluster.&lt;/p&gt;
+-- <p>Describes the status of the elastic IP (EIP) address.</p>
+-- @param Status [String] <p>The status of the elastic IP (EIP) address.</p>
+-- @param ElasticIp [String] <p>The elastic IP (EIP) address for the cluster.</p>
 function M.ElasticIpStatus(Status, ElasticIp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticIpStatus")
 	local t = { 
@@ -5915,9 +5915,9 @@ function M.AssertClusterVersionsMessage(struct)
 end
 
 --- Create a structure of type ClusterVersionsMessage
--- &lt;p&gt;Contains the output from the &lt;a&gt;DescribeClusterVersions&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param ClusterVersions [ClusterVersionList] &lt;p&gt;A list of &lt;code&gt;Version&lt;/code&gt; elements. &lt;/p&gt;
+-- <p>Contains the output from the <a>DescribeClusterVersions</a> action. </p>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param ClusterVersions [ClusterVersionList] <p>A list of <code>Version</code> elements. </p>
 function M.ClusterVersionsMessage(Marker, ClusterVersions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterVersionsMessage")
 	local t = { 
@@ -5939,7 +5939,7 @@ function M.AssertReservedNodeAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type ReservedNodeAlreadyExistsFault
--- &lt;p&gt;User already has a reservation with the given identifier.&lt;/p&gt;
+-- <p>User already has a reservation with the given identifier.</p>
 function M.ReservedNodeAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedNodeAlreadyExistsFault")
 	local t = { 
@@ -5959,7 +5959,7 @@ function M.AssertClusterSecurityGroupAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type ClusterSecurityGroupAlreadyExistsFault
--- &lt;p&gt;A cluster security group with the same name already exists.&lt;/p&gt;
+-- <p>A cluster security group with the same name already exists.</p>
 function M.ClusterSecurityGroupAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSecurityGroupAlreadyExistsFault")
 	local t = { 
@@ -5979,7 +5979,7 @@ function M.AssertClusterParameterGroupNotFoundFault(struct)
 end
 
 --- Create a structure of type ClusterParameterGroupNotFoundFault
--- &lt;p&gt;The parameter group name does not refer to an existing parameter group.&lt;/p&gt;
+-- <p>The parameter group name does not refer to an existing parameter group.</p>
 function M.ClusterParameterGroupNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterParameterGroupNotFoundFault")
 	local t = { 
@@ -6022,7 +6022,7 @@ function M.AssertClusterQuotaExceededFault(struct)
 end
 
 --- Create a structure of type ClusterQuotaExceededFault
--- &lt;p&gt;The request would exceed the allowed number of cluster instances for this account. For information about increasing your quota, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html&quot;&gt;Limits in Amazon Redshift&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
+-- <p>The request would exceed the allowed number of cluster instances for this account. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 function M.ClusterQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterQuotaExceededFault")
 	local t = { 
@@ -6049,11 +6049,11 @@ function M.AssertCreateClusterParameterGroupMessage(struct)
 end
 
 --- Create a structure of type CreateClusterParameterGroupMessage
--- &lt;p/&gt;
--- @param ParameterGroupFamily [String] &lt;p&gt;The Amazon Redshift engine version to which the cluster parameter group applies. The cluster engine version determines the set of parameters.&lt;/p&gt; &lt;p&gt;To get a list of valid parameter group family names, you can call &lt;a&gt;DescribeClusterParameterGroups&lt;/a&gt;. By default, Amazon Redshift returns a list of all the parameter groups that are owned by your AWS account, including the default parameter groups for each Amazon Redshift engine version. The parameter group family names associated with the default parameter groups provide you the valid values. For example, a valid family name is &quot;redshift-1.0&quot;. &lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tag instances.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of the cluster parameter group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be unique withing your AWS account.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;note&gt; &lt;p&gt;This value is stored as a lower-case string.&lt;/p&gt; &lt;/note&gt;
--- @param Description [String] &lt;p&gt;A description of the parameter group.&lt;/p&gt;
+-- <p/>
+-- @param ParameterGroupFamily [String] <p>The Amazon Redshift engine version to which the cluster parameter group applies. The cluster engine version determines the set of parameters.</p> <p>To get a list of valid parameter group family names, you can call <a>DescribeClusterParameterGroups</a>. By default, Amazon Redshift returns a list of all the parameter groups that are owned by your AWS account, including the default parameter groups for each Amazon Redshift engine version. The parameter group family names associated with the default parameter groups provide you the valid values. For example, a valid family name is "redshift-1.0". </p>
+-- @param Tags [TagList] <p>A list of tag instances.</p>
+-- @param ParameterGroupName [String] <p>The name of the cluster parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> <li> <p>Must be unique withing your AWS account.</p> </li> </ul> <note> <p>This value is stored as a lower-case string.</p> </note>
+-- @param Description [String] <p>A description of the parameter group.</p>
 -- Required parameter: ParameterGroupName
 -- Required parameter: ParameterGroupFamily
 -- Required parameter: Description
@@ -6080,7 +6080,7 @@ function M.AssertSNSTopicArnNotFoundFault(struct)
 end
 
 --- Create a structure of type SNSTopicArnNotFoundFault
--- &lt;p&gt;An Amazon SNS topic with the specified Amazon Resource Name (ARN) does not exist.&lt;/p&gt;
+-- <p>An Amazon SNS topic with the specified Amazon Resource Name (ARN) does not exist.</p>
 function M.SNSTopicArnNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSTopicArnNotFoundFault")
 	local t = { 
@@ -6102,9 +6102,9 @@ function M.AssertReservedNodesMessage(struct)
 end
 
 --- Create a structure of type ReservedNodesMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param ReservedNodes [ReservedNodeList] &lt;p&gt;The list of &lt;code&gt;ReservedNode&lt;/code&gt; objects.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param ReservedNodes [ReservedNodeList] <p>The list of <code>ReservedNode</code> objects.</p>
 function M.ReservedNodesMessage(Marker, ReservedNodes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedNodesMessage")
 	local t = { 
@@ -6126,7 +6126,7 @@ function M.AssertTableRestoreNotFoundFault(struct)
 end
 
 --- Create a structure of type TableRestoreNotFoundFault
--- &lt;p&gt;The specified &lt;code&gt;TableRestoreRequestId&lt;/code&gt; value was not found.&lt;/p&gt;
+-- <p>The specified <code>TableRestoreRequestId</code> value was not found.</p>
 function M.TableRestoreNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TableRestoreNotFoundFault")
 	local t = { 
@@ -6148,8 +6148,8 @@ function M.AssertRotateEncryptionKeyMessage(struct)
 end
 
 --- Create a structure of type RotateEncryptionKeyMessage
--- &lt;p/&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The unique identifier of the cluster that you want to rotate the encryption keys for.&lt;/p&gt; &lt;p&gt;Constraints: Must be the name of valid cluster that has encryption enabled.&lt;/p&gt;
+-- <p/>
+-- @param ClusterIdentifier [String] <p>The unique identifier of the cluster that you want to rotate the encryption keys for.</p> <p>Constraints: Must be the name of valid cluster that has encryption enabled.</p>
 -- Required parameter: ClusterIdentifier
 function M.RotateEncryptionKeyMessage(ClusterIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RotateEncryptionKeyMessage")
@@ -6176,12 +6176,12 @@ function M.AssertDescribeSnapshotCopyGrantsMessage(struct)
 end
 
 --- Create a structure of type DescribeSnapshotCopyGrantsMessage
--- &lt;p&gt;The result of the &lt;code&gt;DescribeSnapshotCopyGrants&lt;/code&gt; action.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;code&gt;DescribeSnapshotCopyGrant&lt;/code&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt; &lt;p&gt;Constraints: You can specify either the &lt;b&gt;SnapshotCopyGrantName&lt;/b&gt; parameter or the &lt;b&gt;Marker&lt;/b&gt; parameter, but not both. &lt;/p&gt;
--- @param TagValues [TagValueList] &lt;p&gt;A tag value or values for which you want to return all matching resources that are associated with the specified value or values. For example, suppose that you have resources tagged with values called &lt;code&gt;admin&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt;. If you specify both of these tag values in the request, Amazon Redshift returns a response with all resources that have either or both of these tag values associated with them.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
--- @param SnapshotCopyGrantName [String] &lt;p&gt;The name of the snapshot copy grant.&lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;A tag key or keys for which you want to return all matching resources that are associated with the specified key or keys. For example, suppose that you have resources tagged with keys called &lt;code&gt;owner&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. If you specify both of these tag keys in the request, Amazon Redshift returns a response with all resources that have either or both of these tag keys associated with them.&lt;/p&gt;
+-- <p>The result of the <code>DescribeSnapshotCopyGrants</code> action.</p>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <code>DescribeSnapshotCopyGrant</code> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p> <p>Constraints: You can specify either the <b>SnapshotCopyGrantName</b> parameter or the <b>Marker</b> parameter, but not both. </p>
+-- @param TagValues [TagValueList] <p>A tag value or values for which you want to return all matching resources that are associated with the specified value or values. For example, suppose that you have resources tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with all resources that have either or both of these tag values associated with them.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
+-- @param SnapshotCopyGrantName [String] <p>The name of the snapshot copy grant.</p>
+-- @param TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching resources that are associated with the specified key or keys. For example, suppose that you have resources tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with all resources that have either or both of these tag keys associated with them.</p>
 function M.DescribeSnapshotCopyGrantsMessage(Marker, TagValues, MaxRecords, SnapshotCopyGrantName, TagKeys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSnapshotCopyGrantsMessage")
 	local t = { 
@@ -6214,15 +6214,15 @@ function M.AssertReservedNodeOffering(struct)
 end
 
 --- Create a structure of type ReservedNodeOffering
--- &lt;p&gt;Describes a reserved node offering.&lt;/p&gt;
--- @param OfferingType [String] &lt;p&gt;The anticipated utilization of the reserved node, as defined in the reserved node offering.&lt;/p&gt;
--- @param FixedPrice [Double] &lt;p&gt;The upfront fixed charge you will pay to purchase the specific reserved node offering.&lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The node type offered by the reserved node offering.&lt;/p&gt;
--- @param UsagePrice [Double] &lt;p&gt;The rate you are charged for each hour the cluster that is using the offering is running.&lt;/p&gt;
--- @param RecurringCharges [RecurringChargeList] &lt;p&gt;The charge to your account regardless of whether you are creating any clusters using the node offering. Recurring charges are only in effect for heavy-utilization reserved nodes.&lt;/p&gt;
--- @param Duration [Integer] &lt;p&gt;The duration, in seconds, for which the offering will reserve the node.&lt;/p&gt;
--- @param ReservedNodeOfferingId [String] &lt;p&gt;The offering identifier.&lt;/p&gt;
--- @param CurrencyCode [String] &lt;p&gt;The currency code for the compute nodes offering.&lt;/p&gt;
+-- <p>Describes a reserved node offering.</p>
+-- @param OfferingType [String] <p>The anticipated utilization of the reserved node, as defined in the reserved node offering.</p>
+-- @param FixedPrice [Double] <p>The upfront fixed charge you will pay to purchase the specific reserved node offering.</p>
+-- @param NodeType [String] <p>The node type offered by the reserved node offering.</p>
+-- @param UsagePrice [Double] <p>The rate you are charged for each hour the cluster that is using the offering is running.</p>
+-- @param RecurringCharges [RecurringChargeList] <p>The charge to your account regardless of whether you are creating any clusters using the node offering. Recurring charges are only in effect for heavy-utilization reserved nodes.</p>
+-- @param Duration [Integer] <p>The duration, in seconds, for which the offering will reserve the node.</p>
+-- @param ReservedNodeOfferingId [String] <p>The offering identifier.</p>
+-- @param CurrencyCode [String] <p>The currency code for the compute nodes offering.</p>
 function M.ReservedNodeOffering(OfferingType, FixedPrice, NodeType, UsagePrice, RecurringCharges, Duration, ReservedNodeOfferingId, CurrencyCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedNodeOffering")
 	local t = { 
@@ -6254,11 +6254,11 @@ function M.AssertClusterParameterGroup(struct)
 end
 
 --- Create a structure of type ClusterParameterGroup
--- &lt;p&gt;Describes a parameter group.&lt;/p&gt;
--- @param ParameterGroupFamily [String] &lt;p&gt;The name of the cluster parameter group family that this cluster parameter group is compatible with.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The list of tags for the cluster parameter group.&lt;/p&gt;
--- @param ParameterGroupName [String] &lt;p&gt;The name of the cluster parameter group.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description of the parameter group.&lt;/p&gt;
+-- <p>Describes a parameter group.</p>
+-- @param ParameterGroupFamily [String] <p>The name of the cluster parameter group family that this cluster parameter group is compatible with.</p>
+-- @param Tags [TagList] <p>The list of tags for the cluster parameter group.</p>
+-- @param ParameterGroupName [String] <p>The name of the cluster parameter group.</p>
+-- @param Description [String] <p>The description of the parameter group.</p>
 function M.ClusterParameterGroup(ParameterGroupFamily, Tags, ParameterGroupName, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterParameterGroup")
 	local t = { 
@@ -6330,9 +6330,9 @@ function M.AssertTableRestoreStatusMessage(struct)
 end
 
 --- Create a structure of type TableRestoreStatusMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;A pagination token that can be used in a subsequent &lt;a&gt;DescribeTableRestoreStatus&lt;/a&gt; request.&lt;/p&gt;
--- @param TableRestoreStatusDetails [TableRestoreStatusList] &lt;p&gt;A list of status details for one or more table restore requests.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>A pagination token that can be used in a subsequent <a>DescribeTableRestoreStatus</a> request.</p>
+-- @param TableRestoreStatusDetails [TableRestoreStatusList] <p>A list of status details for one or more table restore requests.</p>
 function M.TableRestoreStatusMessage(Marker, TableRestoreStatusDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TableRestoreStatusMessage")
 	local t = { 
@@ -6354,7 +6354,7 @@ function M.AssertInvalidClusterSubnetGroupStateFault(struct)
 end
 
 --- Create a structure of type InvalidClusterSubnetGroupStateFault
--- &lt;p&gt;The cluster subnet group cannot be deleted because it is in use.&lt;/p&gt;
+-- <p>The cluster subnet group cannot be deleted because it is in use.</p>
 function M.InvalidClusterSubnetGroupStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidClusterSubnetGroupStateFault")
 	local t = { 
@@ -6379,12 +6379,12 @@ function M.AssertDescribeClustersMessage(struct)
 end
 
 --- Create a structure of type DescribeClustersMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional parameter that specifies the starting point to return a set of response records. When the results of a &lt;a&gt;DescribeClusters&lt;/a&gt; request exceed the value specified in &lt;code&gt;MaxRecords&lt;/code&gt;, AWS returns a value in the &lt;code&gt;Marker&lt;/code&gt; field of the response. You can retrieve the next set of response records by providing the returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the request. &lt;/p&gt; &lt;p&gt;Constraints: You can specify either the &lt;b&gt;ClusterIdentifier&lt;/b&gt; parameter or the &lt;b&gt;Marker&lt;/b&gt; parameter, but not both. &lt;/p&gt;
--- @param TagValues [TagValueList] &lt;p&gt;A tag value or values for which you want to return all matching clusters that are associated with the specified tag value or values. For example, suppose that you have clusters that are tagged with values called &lt;code&gt;admin&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt;. If you specify both of these tag values in the request, Amazon Redshift returns a response with the clusters that have either or both of these tag values associated with them.&lt;/p&gt;
--- @param ClusterIdentifier [String] &lt;p&gt;The unique identifier of a cluster whose properties you are requesting. This parameter is case sensitive.&lt;/p&gt; &lt;p&gt;The default is that all clusters defined for an account are returned.&lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;A tag key or keys for which you want to return all matching clusters that are associated with the specified key or keys. For example, suppose that you have clusters that are tagged with keys called &lt;code&gt;owner&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the clusters that have either or both of these tag keys associated with them.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a value is returned in a &lt;code&gt;marker&lt;/code&gt; field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;100&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: minimum 20, maximum 100.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional parameter that specifies the starting point to return a set of response records. When the results of a <a>DescribeClusters</a> request exceed the value specified in <code>MaxRecords</code>, AWS returns a value in the <code>Marker</code> field of the response. You can retrieve the next set of response records by providing the returned marker value in the <code>Marker</code> parameter and retrying the request. </p> <p>Constraints: You can specify either the <b>ClusterIdentifier</b> parameter or the <b>Marker</b> parameter, but not both. </p>
+-- @param TagValues [TagValueList] <p>A tag value or values for which you want to return all matching clusters that are associated with the specified tag value or values. For example, suppose that you have clusters that are tagged with values called <code>admin</code> and <code>test</code>. If you specify both of these tag values in the request, Amazon Redshift returns a response with the clusters that have either or both of these tag values associated with them.</p>
+-- @param ClusterIdentifier [String] <p>The unique identifier of a cluster whose properties you are requesting. This parameter is case sensitive.</p> <p>The default is that all clusters defined for an account are returned.</p>
+-- @param TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching clusters that are associated with the specified key or keys. For example, suppose that you have clusters that are tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with the clusters that have either or both of these tag keys associated with them.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
 function M.DescribeClustersMessage(Marker, TagValues, ClusterIdentifier, TagKeys, MaxRecords, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClustersMessage")
 	local t = { 
@@ -6409,7 +6409,7 @@ function M.AssertUnknownSnapshotCopyRegionFault(struct)
 end
 
 --- Create a structure of type UnknownSnapshotCopyRegionFault
--- &lt;p&gt;The specified region is incorrect or does not exist.&lt;/p&gt;
+-- <p>The specified region is incorrect or does not exist.</p>
 function M.UnknownSnapshotCopyRegionFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnknownSnapshotCopyRegionFault")
 	local t = { 
@@ -6433,11 +6433,11 @@ function M.AssertOrderableClusterOption(struct)
 end
 
 --- Create a structure of type OrderableClusterOption
--- &lt;p&gt;Describes an orderable cluster option.&lt;/p&gt;
--- @param NodeType [String] &lt;p&gt;The node type for the orderable cluster.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZoneList] &lt;p&gt;A list of availability zones for the orderable cluster.&lt;/p&gt;
--- @param ClusterVersion [String] &lt;p&gt;The version of the orderable cluster.&lt;/p&gt;
--- @param ClusterType [String] &lt;p&gt;The cluster type, for example &lt;code&gt;multi-node&lt;/code&gt;. &lt;/p&gt;
+-- <p>Describes an orderable cluster option.</p>
+-- @param NodeType [String] <p>The node type for the orderable cluster.</p>
+-- @param AvailabilityZones [AvailabilityZoneList] <p>A list of availability zones for the orderable cluster.</p>
+-- @param ClusterVersion [String] <p>The version of the orderable cluster.</p>
+-- @param ClusterType [String] <p>The cluster type, for example <code>multi-node</code>. </p>
 function M.OrderableClusterOption(NodeType, AvailabilityZones, ClusterVersion, ClusterType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrderableClusterOption")
 	local t = { 
@@ -6461,7 +6461,7 @@ function M.AssertClusterSubnetGroupNotFoundFault(struct)
 end
 
 --- Create a structure of type ClusterSubnetGroupNotFoundFault
--- &lt;p&gt;The cluster subnet group name does not refer to an existing cluster subnet group.&lt;/p&gt;
+-- <p>The cluster subnet group name does not refer to an existing cluster subnet group.</p>
 function M.ClusterSubnetGroupNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSubnetGroupNotFoundFault")
 	local t = { 
@@ -6483,9 +6483,9 @@ function M.AssertHsmConfigurationMessage(struct)
 end
 
 --- Create a structure of type HsmConfigurationMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the &lt;code&gt;Marker&lt;/code&gt; parameter and retrying the command. If the &lt;code&gt;Marker&lt;/code&gt; field is empty, all response records have been retrieved for the request. &lt;/p&gt;
--- @param HsmConfigurations [HsmConfigurationList] &lt;p&gt;A list of &lt;code&gt;HsmConfiguration&lt;/code&gt; objects.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned marker value in the <code>Marker</code> parameter and retrying the command. If the <code>Marker</code> field is empty, all response records have been retrieved for the request. </p>
+-- @param HsmConfigurations [HsmConfigurationList] <p>A list of <code>HsmConfiguration</code> objects.</p>
 function M.HsmConfigurationMessage(Marker, HsmConfigurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HsmConfigurationMessage")
 	local t = { 
@@ -6507,7 +6507,7 @@ function M.AssertClusterParameterGroupQuotaExceededFault(struct)
 end
 
 --- Create a structure of type ClusterParameterGroupQuotaExceededFault
--- &lt;p&gt;The request would result in the user exceeding the allowed number of cluster parameter groups. For information about increasing your quota, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html&quot;&gt;Limits in Amazon Redshift&lt;/a&gt; in the &lt;i&gt;Amazon Redshift Cluster Management Guide&lt;/i&gt;. &lt;/p&gt;
+-- <p>The request would result in the user exceeding the allowed number of cluster parameter groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 function M.ClusterParameterGroupQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterParameterGroupQuotaExceededFault")
 	local t = { 
@@ -6527,7 +6527,7 @@ function M.AssertClusterAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type ClusterAlreadyExistsFault
--- &lt;p&gt;The account already has a cluster with the given identifier.&lt;/p&gt;
+-- <p>The account already has a cluster with the given identifier.</p>
 function M.ClusterAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClusterAlreadyExistsFault")
 	local t = { 
@@ -6558,18 +6558,18 @@ function M.AssertEventSubscription(struct)
 end
 
 --- Create a structure of type EventSubscription
--- &lt;p&gt;Describes event subscriptions.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the Amazon Redshift event notification subscription.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Can be one of the following: active | no-permission | topic-not-exist&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The status &quot;no-permission&quot; indicates that Amazon Redshift no longer has permission to post to the Amazon SNS topic. The status &quot;topic-not-exist&quot; indicates that the topic was deleted after the subscription was created.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Tags [TagList] &lt;p&gt;The list of tags for the event subscription.&lt;/p&gt;
--- @param SubscriptionCreationTime [TStamp] &lt;p&gt;The date and time the Amazon Redshift event notification subscription was created.&lt;/p&gt;
--- @param SourceType [String] &lt;p&gt;The source type of the events returned the Amazon Redshift event notification, such as cluster, or cluster-snapshot.&lt;/p&gt;
--- @param EventCategoriesList [EventCategoriesList] &lt;p&gt;The list of Amazon Redshift event categories specified in the event notification subscription.&lt;/p&gt; &lt;p&gt;Values: Configuration, Management, Monitoring, Security&lt;/p&gt;
--- @param SourceIdsList [SourceIdsList] &lt;p&gt;A list of the sources that publish events to the Amazon Redshift event notification subscription.&lt;/p&gt;
--- @param CustSubscriptionId [String] &lt;p&gt;The name of the Amazon Redshift event notification subscription.&lt;/p&gt;
--- @param Enabled [Boolean] &lt;p&gt;A Boolean value indicating whether the subscription is enabled. &lt;code&gt;true&lt;/code&gt; indicates the subscription is enabled.&lt;/p&gt;
--- @param SnsTopicArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic used by the event notification subscription.&lt;/p&gt;
--- @param CustomerAwsId [String] &lt;p&gt;The AWS customer account associated with the Amazon Redshift event notification subscription.&lt;/p&gt;
--- @param Severity [String] &lt;p&gt;The event severity specified in the Amazon Redshift event notification subscription.&lt;/p&gt; &lt;p&gt;Values: ERROR, INFO&lt;/p&gt;
+-- <p>Describes event subscriptions.</p>
+-- @param Status [String] <p>The status of the Amazon Redshift event notification subscription.</p> <p>Constraints:</p> <ul> <li> <p>Can be one of the following: active | no-permission | topic-not-exist</p> </li> <li> <p>The status "no-permission" indicates that Amazon Redshift no longer has permission to post to the Amazon SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.</p> </li> </ul>
+-- @param Tags [TagList] <p>The list of tags for the event subscription.</p>
+-- @param SubscriptionCreationTime [TStamp] <p>The date and time the Amazon Redshift event notification subscription was created.</p>
+-- @param SourceType [String] <p>The source type of the events returned the Amazon Redshift event notification, such as cluster, or cluster-snapshot.</p>
+-- @param EventCategoriesList [EventCategoriesList] <p>The list of Amazon Redshift event categories specified in the event notification subscription.</p> <p>Values: Configuration, Management, Monitoring, Security</p>
+-- @param SourceIdsList [SourceIdsList] <p>A list of the sources that publish events to the Amazon Redshift event notification subscription.</p>
+-- @param CustSubscriptionId [String] <p>The name of the Amazon Redshift event notification subscription.</p>
+-- @param Enabled [Boolean] <p>A Boolean value indicating whether the subscription is enabled. <code>true</code> indicates the subscription is enabled.</p>
+-- @param SnsTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic used by the event notification subscription.</p>
+-- @param CustomerAwsId [String] <p>The AWS customer account associated with the Amazon Redshift event notification subscription.</p>
+-- @param Severity [String] <p>The event severity specified in the Amazon Redshift event notification subscription.</p> <p>Values: ERROR, INFO</p>
 function M.EventSubscription(Status, Tags, SubscriptionCreationTime, SourceType, EventCategoriesList, SourceIdsList, CustSubscriptionId, Enabled, SnsTopicArn, CustomerAwsId, Severity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscription")
 	local t = { 
@@ -6603,10 +6603,10 @@ function M.AssertTaggedResource(struct)
 end
 
 --- Create a structure of type TaggedResource
--- &lt;p&gt;A tag and its associated resource.&lt;/p&gt;
--- @param ResourceType [String] &lt;p&gt;The type of resource with which the tag is associated. Valid resource types are: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cluster&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;CIDR/IP&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;EC2 security group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Snapshot&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cluster security group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Subnet group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;HSM connection&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;HSM certificate&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Parameter group&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about Amazon Redshift resource types and constructing ARNs, go to &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/mgmt/constructing-redshift-arn.html&quot;&gt;Constructing an Amazon Redshift Amazon Resource Name (ARN)&lt;/a&gt; in the Amazon Redshift Cluster Management Guide. &lt;/p&gt;
--- @param ResourceName [String] &lt;p&gt;The Amazon Resource Name (ARN) with which the tag is associated. For example, &lt;code&gt;arn:aws:redshift:us-east-1:123456789:cluster:t1&lt;/code&gt;.&lt;/p&gt;
--- @param Tag [Tag] &lt;p&gt;The tag for the resource.&lt;/p&gt;
+-- <p>A tag and its associated resource.</p>
+-- @param ResourceType [String] <p>The type of resource with which the tag is associated. Valid resource types are: </p> <ul> <li> <p>Cluster</p> </li> <li> <p>CIDR/IP</p> </li> <li> <p>EC2 security group</p> </li> <li> <p>Snapshot</p> </li> <li> <p>Cluster security group</p> </li> <li> <p>Subnet group</p> </li> <li> <p>HSM connection</p> </li> <li> <p>HSM certificate</p> </li> <li> <p>Parameter group</p> </li> </ul> <p>For more information about Amazon Redshift resource types and constructing ARNs, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/constructing-redshift-arn.html">Constructing an Amazon Redshift Amazon Resource Name (ARN)</a> in the Amazon Redshift Cluster Management Guide. </p>
+-- @param ResourceName [String] <p>The Amazon Resource Name (ARN) with which the tag is associated. For example, <code>arn:aws:redshift:us-east-1:123456789:cluster:t1</code>.</p>
+-- @param Tag [Tag] <p>The tag for the resource.</p>
 function M.TaggedResource(ResourceType, ResourceName, Tag, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TaggedResource")
 	local t = { 
@@ -6629,7 +6629,7 @@ function M.AssertBucketNotFoundFault(struct)
 end
 
 --- Create a structure of type BucketNotFoundFault
--- &lt;p&gt;Could not find the specified S3 bucket.&lt;/p&gt;
+-- <p>Could not find the specified S3 bucket.</p>
 function M.BucketNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BucketNotFoundFault")
 	local t = { 
@@ -6649,7 +6649,7 @@ function M.AssertSubnetAlreadyInUse(struct)
 end
 
 --- Create a structure of type SubnetAlreadyInUse
--- &lt;p&gt;A specified subnet is already in use by another cluster.&lt;/p&gt;
+-- <p>A specified subnet is already in use by another cluster.</p>
 function M.SubnetAlreadyInUse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetAlreadyInUse")
 	local t = { 

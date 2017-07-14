@@ -34,10 +34,10 @@ function M.AssertSetIdentityNotificationTopicRequest(struct)
 end
 
 --- Create a structure of type SetIdentityNotificationTopicRequest
--- &lt;p&gt;Represents a request to specify the Amazon SNS topic to which Amazon SES will publish bounce, complaint, or delivery notifications for emails sent with that identity as the Source. For information about Amazon SES notifications, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-sns.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param NotificationType [NotificationType] &lt;p&gt;The type of notifications that will be published to the specified Amazon SNS topic.&lt;/p&gt;
--- @param Identity [Identity] &lt;p&gt;The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: &lt;code&gt;user@example.com&lt;/code&gt;, &lt;code&gt;example.com&lt;/code&gt;, &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;.&lt;/p&gt;
--- @param SnsTopic [NotificationTopic] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is omitted from the request or a null value is passed, &lt;code&gt;SnsTopic&lt;/code&gt; is cleared and publishing is disabled.&lt;/p&gt;
+-- <p>Represents a request to specify the Amazon SNS topic to which Amazon SES will publish bounce, complaint, or delivery notifications for emails sent with that identity as the Source. For information about Amazon SES notifications, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-sns.html">Amazon SES Developer Guide</a>.</p>
+-- @param NotificationType [NotificationType] <p>The type of notifications that will be published to the specified Amazon SNS topic.</p>
+-- @param Identity [Identity] <p>The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
+-- @param SnsTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is omitted from the request or a null value is passed, <code>SnsTopic</code> is cleared and publishing is disabled.</p>
 -- Required parameter: Identity
 -- Required parameter: NotificationType
 function M.SetIdentityNotificationTopicRequest(NotificationType, Identity, SnsTopic, ...)
@@ -66,9 +66,9 @@ function M.AssertReorderReceiptRuleSetRequest(struct)
 end
 
 --- Create a structure of type ReorderReceiptRuleSetRequest
--- &lt;p&gt;Represents a request to reorder the receipt rules within a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the receipt rule set to reorder.&lt;/p&gt;
--- @param RuleNames [ReceiptRuleNamesList] &lt;p&gt;A list of the specified receipt rule set's receipt rules in the order that you want to put them.&lt;/p&gt;
+-- <p>Represents a request to reorder the receipt rules within a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to reorder.</p>
+-- @param RuleNames [ReceiptRuleNamesList] <p>A list of the specified receipt rule set's receipt rules in the order that you want to put them.</p>
 -- Required parameter: RuleSetName
 -- Required parameter: RuleNames
 function M.ReorderReceiptRuleSetRequest(RuleSetName, RuleNames, ...)
@@ -92,7 +92,7 @@ function M.AssertDescribeActiveReceiptRuleSetRequest(struct)
 end
 
 --- Create a structure of type DescribeActiveReceiptRuleSetRequest
--- &lt;p&gt;Represents a request to return the metadata and receipt rules for the receipt rule set that is currently active. You use receipt rule sets to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>Represents a request to return the metadata and receipt rules for the receipt rule set that is currently active. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
 function M.DescribeActiveReceiptRuleSetRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActiveReceiptRuleSetRequest")
 	local t = { 
@@ -114,9 +114,9 @@ function M.AssertInvalidFirehoseDestinationException(struct)
 end
 
 --- Create a structure of type InvalidFirehoseDestinationException
--- &lt;p&gt;Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.&lt;/p&gt;
--- @param EventDestinationName [EventDestinationName] &lt;p&gt;Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.&lt;/p&gt;
+-- <p>Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.</p>
+-- @param EventDestinationName [EventDestinationName] <p>Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.</p>
 function M.InvalidFirehoseDestinationException(EventDestinationName, ConfigurationSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFirehoseDestinationException")
 	local t = { 
@@ -141,10 +141,10 @@ function M.AssertDestination(struct)
 end
 
 --- Create a structure of type Destination
--- &lt;p&gt;Represents the destination of the message, consisting of To:, CC:, and BCC: fields.&lt;/p&gt; &lt;p&gt; By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: &lt;code&gt;=?charset?encoding?encoded-text?=&lt;/code&gt;. For more information, see &lt;a href=&quot;http://tools.ietf.org/html/rfc2047&quot;&gt;RFC 2047&lt;/a&gt;. &lt;/p&gt;
--- @param CcAddresses [AddressList] &lt;p&gt;The CC: field(s) of the message.&lt;/p&gt;
--- @param BccAddresses [AddressList] &lt;p&gt;The BCC: field(s) of the message.&lt;/p&gt;
--- @param ToAddresses [AddressList] &lt;p&gt;The To: field(s) of the message.&lt;/p&gt;
+-- <p>Represents the destination of the message, consisting of To:, CC:, and BCC: fields.</p> <p> By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p>
+-- @param CcAddresses [AddressList] <p>The CC: field(s) of the message.</p>
+-- @param BccAddresses [AddressList] <p>The BCC: field(s) of the message.</p>
+-- @param ToAddresses [AddressList] <p>The To: field(s) of the message.</p>
 function M.Destination(CcAddresses, BccAddresses, ToAddresses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Destination")
 	local t = { 
@@ -169,8 +169,8 @@ function M.AssertVerifyDomainDkimRequest(struct)
 end
 
 --- Create a structure of type VerifyDomainDkimRequest
--- &lt;p&gt;Represents a request to generate the CNAME records needed to set up Easy DKIM with Amazon SES. For more information about setting up Easy DKIM, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Domain [Domain] &lt;p&gt;The name of the domain to be verified for Easy DKIM signing.&lt;/p&gt;
+-- <p>Represents a request to generate the CNAME records needed to set up Easy DKIM with Amazon SES. For more information about setting up Easy DKIM, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon SES Developer Guide</a>.</p>
+-- @param Domain [Domain] <p>The name of the domain to be verified for Easy DKIM signing.</p>
 -- Required parameter: Domain
 function M.VerifyDomainDkimRequest(Domain, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyDomainDkimRequest")
@@ -197,11 +197,11 @@ function M.AssertS3Action(struct)
 end
 
 --- Create a structure of type S3Action
--- &lt;p&gt;When included in a receipt rule, this action saves the received message to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).&lt;/p&gt; &lt;p&gt;To enable Amazon SES to write emails to your Amazon S3 bucket, use an AWS KMS key to encrypt your emails, or publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;When you save your emails to an Amazon S3 bucket, the maximum email size (including headers) is 30 MB. Emails larger than that will bounce.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;For information about specifying Amazon S3 actions in receipt rules, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param KmsKeyArn [AmazonResourceName] &lt;p&gt;The customer master key that Amazon SES should use to encrypt your emails before saving them to the Amazon S3 bucket. You can use the default master key or a custom master key you created in AWS KMS as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;To use the default master key, provide an ARN in the form of &lt;code&gt;arn:aws:kms:REGION:ACCOUNT-ID-WITHOUT-HYPHENS:alias/aws/ses&lt;/code&gt;. For example, if your AWS account ID is 123456789012 and you want to use the default master key in the US West (Oregon) region, the ARN of the default master key would be &lt;code&gt;arn:aws:kms:us-west-2:123456789012:alias/aws/ses&lt;/code&gt;. If you use the default master key, you don't need to perform any extra steps to give Amazon SES permission to use the key.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;To use a custom master key you created in AWS KMS, provide the ARN of the master key and ensure that you add a statement to your key's policy to give Amazon SES permission to use it. For more information about giving permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about key policies, see the &lt;a href=&quot;http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html&quot;&gt;AWS KMS Developer Guide&lt;/a&gt;. If you do not specify a master key, Amazon SES will not encrypt your emails.&lt;/p&gt; &lt;important&gt; &lt;p&gt;Your mail is encrypted by Amazon SES using the Amazon S3 encryption client before the mail is submitted to Amazon S3 for storage. It is not encrypted using Amazon S3 server-side encryption. This means that you must use the Amazon S3 encryption client to decrypt the email after retrieving it from Amazon S3, as the service has no access to use your AWS KMS keys for decryption. This encryption client is currently available with the &lt;a href=&quot;http://aws.amazon.com/sdk-for-java/&quot;&gt;AWS Java SDK&lt;/a&gt; and &lt;a href=&quot;http://aws.amazon.com/sdk-for-ruby/&quot;&gt;AWS Ruby SDK&lt;/a&gt; only. For more information about client-side encryption using AWS KMS master keys, see the &lt;a href=&quot;http://alpha-docs-aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html&quot;&gt;Amazon S3 Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;/important&gt;
--- @param ObjectKeyPrefix [S3KeyPrefix] &lt;p&gt;The key prefix of the Amazon S3 bucket. The key prefix is similar to a directory name that enables you to store similar data under the same directory in a bucket.&lt;/p&gt;
--- @param BucketName [S3BucketName] &lt;p&gt;The name of the Amazon S3 bucket to which to save the received email.&lt;/p&gt;
--- @param TopicArn [AmazonResourceName] &lt;p&gt;The ARN of the Amazon SNS topic to notify when the message is saved to the Amazon S3 bucket. An example of an Amazon SNS topic ARN is &lt;code&gt;arn:aws:sns:us-west-2:123456789012:MyTopic&lt;/code&gt;. For more information about Amazon SNS topics, see the &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html&quot;&gt;Amazon SNS Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>When included in a receipt rule, this action saves the received message to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>To enable Amazon SES to write emails to your Amazon S3 bucket, use an AWS KMS key to encrypt your emails, or publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <note> <p>When you save your emails to an Amazon S3 bucket, the maximum email size (including headers) is 30 MB. Emails larger than that will bounce.</p> </note> <p>For information about specifying Amazon S3 actions in receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html">Amazon SES Developer Guide</a>.</p>
+-- @param KmsKeyArn [AmazonResourceName] <p>The customer master key that Amazon SES should use to encrypt your emails before saving them to the Amazon S3 bucket. You can use the default master key or a custom master key you created in AWS KMS as follows:</p> <ul> <li> <p>To use the default master key, provide an ARN in the form of <code>arn:aws:kms:REGION:ACCOUNT-ID-WITHOUT-HYPHENS:alias/aws/ses</code>. For example, if your AWS account ID is 123456789012 and you want to use the default master key in the US West (Oregon) region, the ARN of the default master key would be <code>arn:aws:kms:us-west-2:123456789012:alias/aws/ses</code>. If you use the default master key, you don't need to perform any extra steps to give Amazon SES permission to use the key.</p> </li> <li> <p>To use a custom master key you created in AWS KMS, provide the ARN of the master key and ensure that you add a statement to your key's policy to give Amazon SES permission to use it. For more information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> </li> </ul> <p>For more information about key policies, see the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS KMS Developer Guide</a>. If you do not specify a master key, Amazon SES will not encrypt your emails.</p> <important> <p>Your mail is encrypted by Amazon SES using the Amazon S3 encryption client before the mail is submitted to Amazon S3 for storage. It is not encrypted using Amazon S3 server-side encryption. This means that you must use the Amazon S3 encryption client to decrypt the email after retrieving it from Amazon S3, as the service has no access to use your AWS KMS keys for decryption. This encryption client is currently available with the <a href="http://aws.amazon.com/sdk-for-java/">AWS Java SDK</a> and <a href="http://aws.amazon.com/sdk-for-ruby/">AWS Ruby SDK</a> only. For more information about client-side encryption using AWS KMS master keys, see the <a href="http://alpha-docs-aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html">Amazon S3 Developer Guide</a>.</p> </important>
+-- @param ObjectKeyPrefix [S3KeyPrefix] <p>The key prefix of the Amazon S3 bucket. The key prefix is similar to a directory name that enables you to store similar data under the same directory in a bucket.</p>
+-- @param BucketName [S3BucketName] <p>The name of the Amazon S3 bucket to which to save the received email.</p>
+-- @param TopicArn [AmazonResourceName] <p>The ARN of the Amazon SNS topic to notify when the message is saved to the Amazon S3 bucket. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
 -- Required parameter: BucketName
 function M.S3Action(KmsKeyArn, ObjectKeyPrefix, BucketName, TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3Action")
@@ -226,7 +226,7 @@ function M.AssertSetIdentityNotificationTopicResponse(struct)
 end
 
 --- Create a structure of type SetIdentityNotificationTopicResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.SetIdentityNotificationTopicResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityNotificationTopicResponse")
 	local t = { 
@@ -250,9 +250,9 @@ function M.AssertExtensionField(struct)
 end
 
 --- Create a structure of type ExtensionField
--- &lt;p&gt;Additional X-headers to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.&lt;/p&gt; &lt;p&gt;For information about receiving email through Amazon SES, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ExtensionFieldName] &lt;p&gt;The name of the header to add. Must be between 1 and 50 characters, inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes only.&lt;/p&gt;
--- @param Value [ExtensionFieldValue] &lt;p&gt;The value of the header to add. Must be less than 2048 characters, and must not contain newline characters (&quot;\r&quot; or &quot;\n&quot;).&lt;/p&gt;
+-- <p>Additional X-headers to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
+-- @param Name [ExtensionFieldName] <p>The name of the header to add. Must be between 1 and 50 characters, inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes only.</p>
+-- @param Value [ExtensionFieldValue] <p>The value of the header to add. Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").</p>
 -- Required parameter: Name
 -- Required parameter: Value
 function M.ExtensionField(Name, Value, ...)
@@ -280,9 +280,9 @@ function M.AssertUpdateConfigurationSetEventDestinationRequest(struct)
 end
 
 --- Create a structure of type UpdateConfigurationSetEventDestinationRequest
--- &lt;p&gt;Represents a request to update the event destination of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param EventDestination [EventDestination] &lt;p&gt;The event destination object that you want to apply to the specified configuration set.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;The name of the configuration set that you want to update.&lt;/p&gt;
+-- <p>Represents a request to update the event destination of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param EventDestination [EventDestination] <p>The event destination object that you want to apply to the specified configuration set.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set that you want to update.</p>
 -- Required parameter: ConfigurationSetName
 -- Required parameter: EventDestination
 function M.UpdateConfigurationSetEventDestinationRequest(EventDestination, ConfigurationSetName, ...)
@@ -308,9 +308,9 @@ function M.AssertBody(struct)
 end
 
 --- Create a structure of type Body
--- &lt;p&gt;Represents the body of the message. You can specify text, HTML, or both. If you use both, then the message should display correctly in the widest variety of email clients.&lt;/p&gt;
--- @param Text [Content] &lt;p&gt;The content of the message, in text format. Use this for text-based email clients, or clients on high-latency networks (such as mobile devices).&lt;/p&gt;
--- @param Html [Content] &lt;p&gt;The content of the message, in HTML format. Use this for email clients that can process HTML. You can include clickable links, formatted text, and much more in an HTML message.&lt;/p&gt;
+-- <p>Represents the body of the message. You can specify text, HTML, or both. If you use both, then the message should display correctly in the widest variety of email clients.</p>
+-- @param Text [Content] <p>The content of the message, in text format. Use this for text-based email clients, or clients on high-latency networks (such as mobile devices).</p>
+-- @param Html [Content] <p>The content of the message, in HTML format. Use this for email clients that can process HTML. You can include clickable links, formatted text, and much more in an HTML message.</p>
 function M.Body(Text, Html, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Body")
 	local t = { 
@@ -332,7 +332,7 @@ function M.AssertInvalidConfigurationSetException(struct)
 end
 
 --- Create a structure of type InvalidConfigurationSetException
--- &lt;p&gt;Indicates that the configuration set is invalid. See the error message for details.&lt;/p&gt;
+-- <p>Indicates that the configuration set is invalid. See the error message for details.</p>
 function M.InvalidConfigurationSetException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidConfigurationSetException")
 	local t = { 
@@ -354,8 +354,8 @@ function M.AssertDeleteConfigurationSetRequest(struct)
 end
 
 --- Create a structure of type DeleteConfigurationSetRequest
--- &lt;p&gt;Represents a request to delete a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;The name of the configuration set to delete.&lt;/p&gt;
+-- <p>Represents a request to delete a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to delete.</p>
 -- Required parameter: ConfigurationSetName
 function M.DeleteConfigurationSetRequest(ConfigurationSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigurationSetRequest")
@@ -382,11 +382,11 @@ function M.AssertBouncedRecipientInfo(struct)
 end
 
 --- Create a structure of type BouncedRecipientInfo
--- &lt;p&gt;Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.&lt;/p&gt; &lt;p&gt;For information about receiving email through Amazon SES, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param RecipientArn [AmazonResourceName] &lt;p&gt;This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to receive email for the recipient of the bounced email. For more information about sending authorization, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Recipient [Address] &lt;p&gt;The email address of the recipient of the bounced email.&lt;/p&gt;
--- @param BounceType [BounceType] &lt;p&gt;The reason for the bounce. You must provide either this parameter or &lt;code&gt;RecipientDsnFields&lt;/code&gt;.&lt;/p&gt;
--- @param RecipientDsnFields [RecipientDsnFields] &lt;p&gt;Recipient-related DSN fields, most of which would normally be filled in automatically when provided with a &lt;code&gt;BounceType&lt;/code&gt;. You must provide either this parameter or &lt;code&gt;BounceType&lt;/code&gt;.&lt;/p&gt;
+-- <p>Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
+-- @param RecipientArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to receive email for the recipient of the bounced email. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- @param Recipient [Address] <p>The email address of the recipient of the bounced email.</p>
+-- @param BounceType [BounceType] <p>The reason for the bounce. You must provide either this parameter or <code>RecipientDsnFields</code>.</p>
+-- @param RecipientDsnFields [RecipientDsnFields] <p>Recipient-related DSN fields, most of which would normally be filled in automatically when provided with a <code>BounceType</code>. You must provide either this parameter or <code>BounceType</code>.</p>
 -- Required parameter: Recipient
 function M.BouncedRecipientInfo(RecipientArn, Recipient, BounceType, RecipientDsnFields, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BouncedRecipientInfo")
@@ -413,8 +413,8 @@ function M.AssertCloudWatchDestination(struct)
 end
 
 --- Create a structure of type CloudWatchDestination
--- &lt;p&gt;Contains information associated with an Amazon CloudWatch event destination to which email sending events are published.&lt;/p&gt; &lt;p&gt;Event destinations, such as Amazon CloudWatch, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param DimensionConfigurations [CloudWatchDimensionConfigurations] &lt;p&gt;A list of dimensions upon which to categorize your emails when you publish email sending events to Amazon CloudWatch.&lt;/p&gt;
+-- <p>Contains information associated with an Amazon CloudWatch event destination to which email sending events are published.</p> <p>Event destinations, such as Amazon CloudWatch, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param DimensionConfigurations [CloudWatchDimensionConfigurations] <p>A list of dimensions upon which to categorize your emails when you publish email sending events to Amazon CloudWatch.</p>
 -- Required parameter: DimensionConfigurations
 function M.CloudWatchDestination(DimensionConfigurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchDestination")
@@ -439,9 +439,9 @@ function M.AssertIdentityVerificationAttributes(struct)
 end
 
 --- Create a structure of type IdentityVerificationAttributes
--- &lt;p&gt;Represents the verification attributes of a single identity.&lt;/p&gt;
--- @param VerificationToken [VerificationToken] &lt;p&gt;The verification token for a domain identity. Null for email address identities.&lt;/p&gt;
--- @param VerificationStatus [VerificationStatus] &lt;p&gt;The verification status of the identity: &quot;Pending&quot;, &quot;Success&quot;, &quot;Failed&quot;, or &quot;TemporaryFailure&quot;.&lt;/p&gt;
+-- <p>Represents the verification attributes of a single identity.</p>
+-- @param VerificationToken [VerificationToken] <p>The verification token for a domain identity. Null for email address identities.</p>
+-- @param VerificationStatus [VerificationStatus] <p>The verification status of the identity: "Pending", "Success", "Failed", or "TemporaryFailure".</p>
 -- Required parameter: VerificationStatus
 function M.IdentityVerificationAttributes(VerificationToken, VerificationStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdentityVerificationAttributes")
@@ -465,8 +465,8 @@ function M.AssertListVerifiedEmailAddressesResponse(struct)
 end
 
 --- Create a structure of type ListVerifiedEmailAddressesResponse
--- &lt;p&gt;A list of email addresses that you have verified with Amazon SES under your AWS account.&lt;/p&gt;
--- @param VerifiedEmailAddresses [AddressList] &lt;p&gt;A list of email addresses that have been verified.&lt;/p&gt;
+-- <p>A list of email addresses that you have verified with Amazon SES under your AWS account.</p>
+-- @param VerifiedEmailAddresses [AddressList] <p>A list of email addresses that have been verified.</p>
 function M.ListVerifiedEmailAddressesResponse(VerifiedEmailAddresses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListVerifiedEmailAddressesResponse")
 	local t = { 
@@ -487,7 +487,7 @@ function M.AssertDeleteIdentityResponse(struct)
 end
 
 --- Create a structure of type DeleteIdentityResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.DeleteIdentityResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityResponse")
 	local t = { 
@@ -509,9 +509,9 @@ function M.AssertEventDestinationAlreadyExistsException(struct)
 end
 
 --- Create a structure of type EventDestinationAlreadyExistsException
--- &lt;p&gt;Indicates that the event destination could not be created because of a naming conflict.&lt;/p&gt;
--- @param EventDestinationName [EventDestinationName] &lt;p&gt;Indicates that the event destination could not be created because of a naming conflict.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;Indicates that the event destination could not be created because of a naming conflict.&lt;/p&gt;
+-- <p>Indicates that the event destination could not be created because of a naming conflict.</p>
+-- @param EventDestinationName [EventDestinationName] <p>Indicates that the event destination could not be created because of a naming conflict.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>Indicates that the event destination could not be created because of a naming conflict.</p>
 function M.EventDestinationAlreadyExistsException(EventDestinationName, ConfigurationSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventDestinationAlreadyExistsException")
 	local t = { 
@@ -535,8 +535,8 @@ function M.AssertVerifyDomainIdentityResponse(struct)
 end
 
 --- Create a structure of type VerifyDomainIdentityResponse
--- &lt;p&gt;Returns a TXT record that you must publish to the DNS server of your domain to complete domain verification with Amazon SES.&lt;/p&gt;
--- @param VerificationToken [VerificationToken] &lt;p&gt;A TXT record that must be placed in the DNS settings for the domain, in order to complete domain verification.&lt;/p&gt;
+-- <p>Returns a TXT record that you must publish to the DNS server of your domain to complete domain verification with Amazon SES.</p>
+-- @param VerificationToken [VerificationToken] <p>A TXT record that must be placed in the DNS settings for the domain, in order to complete domain verification.</p>
 -- Required parameter: VerificationToken
 function M.VerifyDomainIdentityResponse(VerificationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyDomainIdentityResponse")
@@ -558,7 +558,7 @@ function M.AssertDeleteConfigurationSetResponse(struct)
 end
 
 --- Create a structure of type DeleteConfigurationSetResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.DeleteConfigurationSetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigurationSetResponse")
 	local t = { 
@@ -578,7 +578,7 @@ function M.AssertCreateReceiptFilterResponse(struct)
 end
 
 --- Create a structure of type CreateReceiptFilterResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.CreateReceiptFilterResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptFilterResponse")
 	local t = { 
@@ -598,7 +598,7 @@ function M.AssertVerifyEmailIdentityResponse(struct)
 end
 
 --- Create a structure of type VerifyEmailIdentityResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.VerifyEmailIdentityResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyEmailIdentityResponse")
 	local t = { 
@@ -627,15 +627,15 @@ function M.AssertSendRawEmailRequest(struct)
 end
 
 --- Create a structure of type SendRawEmailRequest
--- &lt;p&gt;Represents a request to send a single raw email using Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param ReturnPathArn [AmazonResourceName] &lt;p&gt;This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the &lt;code&gt;ReturnPath&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;For example, if the owner of &lt;code&gt;example.com&lt;/code&gt; (which has ARN &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;) attaches a policy to it that authorizes you to use &lt;code&gt;feedback@example.com&lt;/code&gt;, then you would specify the &lt;code&gt;ReturnPathArn&lt;/code&gt; to be &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;, and the &lt;code&gt;ReturnPath&lt;/code&gt; to be &lt;code&gt;feedback@example.com&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Instead of using this parameter, you can use the X-header &lt;code&gt;X-SES-RETURN-PATH-ARN&lt;/code&gt; in the raw message of the email. If you use both the &lt;code&gt;ReturnPathArn&lt;/code&gt; parameter and the corresponding X-header, Amazon SES uses the value of the &lt;code&gt;ReturnPathArn&lt;/code&gt; parameter.&lt;/p&gt; &lt;note&gt; &lt;p&gt;For information about when to use this parameter, see the description of &lt;code&gt;SendRawEmail&lt;/code&gt; in this guide, or see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param Tags [MessageTagList] &lt;p&gt;A list of tags, in the form of name/value pairs, to apply to an email that you send using &lt;code&gt;SendRawEmail&lt;/code&gt;. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.&lt;/p&gt;
--- @param RawMessage [RawMessage] &lt;p&gt;The raw text of the message. The client is responsible for ensuring the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Message must contain a header and a body, separated by a blank line.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;All required header fields must be present.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Each part of a multipart MIME message must be formatted properly.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MIME content types must be among those supported by Amazon SES. For more information, go to the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be base64-encoded.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Source [Address] &lt;p&gt;The identity's email address. If you do not provide a value for this parameter, you must specify a &quot;From&quot; address in the raw text of the message. (You can also specify both.)&lt;/p&gt; &lt;p&gt; By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: &lt;code&gt;=?charset?encoding?encoded-text?=&lt;/code&gt;. For more information, see &lt;a href=&quot;http://tools.ietf.org/html/rfc2047&quot;&gt;RFC 2047&lt;/a&gt;. &lt;/p&gt; &lt;note&gt; &lt;p&gt;If you specify the &lt;code&gt;Source&lt;/code&gt; parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any &lt;i&gt;Return-Path&lt;/i&gt; header that you might include in the raw text of the message.&lt;/p&gt; &lt;/note&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;The name of the configuration set to use when you send an email using &lt;code&gt;SendRawEmail&lt;/code&gt;.&lt;/p&gt;
--- @param FromArn [AmazonResourceName] &lt;p&gt;This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to specify a particular &quot;From&quot; address in the header of the raw email.&lt;/p&gt; &lt;p&gt;Instead of using this parameter, you can use the X-header &lt;code&gt;X-SES-FROM-ARN&lt;/code&gt; in the raw message of the email. If you use both the &lt;code&gt;FromArn&lt;/code&gt; parameter and the corresponding X-header, Amazon SES uses the value of the &lt;code&gt;FromArn&lt;/code&gt; parameter.&lt;/p&gt; &lt;note&gt; &lt;p&gt;For information about when to use this parameter, see the description of &lt;code&gt;SendRawEmail&lt;/code&gt; in this guide, or see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param SourceArn [AmazonResourceName] &lt;p&gt;This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the &lt;code&gt;Source&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;For example, if the owner of &lt;code&gt;example.com&lt;/code&gt; (which has ARN &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;) attaches a policy to it that authorizes you to send from &lt;code&gt;user@example.com&lt;/code&gt;, then you would specify the &lt;code&gt;SourceArn&lt;/code&gt; to be &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;, and the &lt;code&gt;Source&lt;/code&gt; to be &lt;code&gt;user@example.com&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Instead of using this parameter, you can use the X-header &lt;code&gt;X-SES-SOURCE-ARN&lt;/code&gt; in the raw message of the email. If you use both the &lt;code&gt;SourceArn&lt;/code&gt; parameter and the corresponding X-header, Amazon SES uses the value of the &lt;code&gt;SourceArn&lt;/code&gt; parameter.&lt;/p&gt; &lt;note&gt; &lt;p&gt;For information about when to use this parameter, see the description of &lt;code&gt;SendRawEmail&lt;/code&gt; in this guide, or see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param Destinations [AddressList] &lt;p&gt;A list of destinations for the message, consisting of To:, CC:, and BCC: addresses.&lt;/p&gt;
+-- <p>Represents a request to send a single raw email using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.</p>
+-- @param ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-RETURN-PATH-ARN</code> in the raw message of the email. If you use both the <code>ReturnPathArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>ReturnPathArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
+-- @param Tags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send using <code>SendRawEmail</code>. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.</p>
+-- @param RawMessage [RawMessage] <p>The raw text of the message. The client is responsible for ensuring the following:</p> <ul> <li> <p>Message must contain a header and a body, separated by a blank line.</p> </li> <li> <p>All required header fields must be present.</p> </li> <li> <p>Each part of a multipart MIME message must be formatted properly.</p> </li> <li> <p>MIME content types must be among those supported by Amazon SES. For more information, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon SES Developer Guide</a>.</p> </li> <li> <p>Must be base64-encoded.</p> </li> </ul>
+-- @param Source [Address] <p>The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)</p> <p> By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p> <note> <p>If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header that you might include in the raw text of the message.</p> </note>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to use when you send an email using <code>SendRawEmail</code>.</p>
+-- @param FromArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to specify a particular "From" address in the header of the raw email.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-FROM-ARN</code> in the raw message of the email. If you use both the <code>FromArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>FromArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
+-- @param SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-SOURCE-ARN</code> in the raw message of the email. If you use both the <code>SourceArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>SourceArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
+-- @param Destinations [AddressList] <p>A list of destinations for the message, consisting of To:, CC:, and BCC: addresses.</p>
 -- Required parameter: RawMessage
 function M.SendRawEmailRequest(ReturnPathArn, Tags, RawMessage, Source, ConfigurationSetName, FromArn, SourceArn, Destinations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SendRawEmailRequest")
@@ -666,8 +666,8 @@ function M.AssertGetIdentityVerificationAttributesResponse(struct)
 end
 
 --- Create a structure of type GetIdentityVerificationAttributesResponse
--- &lt;p&gt;The Amazon SES verification status of a list of identities. For domain identities, this response also contains the verification token.&lt;/p&gt;
--- @param VerificationAttributes [VerificationAttributes] &lt;p&gt;A map of Identities to IdentityVerificationAttributes objects.&lt;/p&gt;
+-- <p>The Amazon SES verification status of a list of identities. For domain identities, this response also contains the verification token.</p>
+-- @param VerificationAttributes [VerificationAttributes] <p>A map of Identities to IdentityVerificationAttributes objects.</p>
 -- Required parameter: VerificationAttributes
 function M.GetIdentityVerificationAttributesResponse(VerificationAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityVerificationAttributesResponse")
@@ -689,7 +689,7 @@ function M.AssertDeleteReceiptFilterResponse(struct)
 end
 
 --- Create a structure of type DeleteReceiptFilterResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.DeleteReceiptFilterResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptFilterResponse")
 	local t = { 
@@ -713,9 +713,9 @@ function M.AssertSetIdentityFeedbackForwardingEnabledRequest(struct)
 end
 
 --- Create a structure of type SetIdentityFeedbackForwardingEnabledRequest
--- &lt;p&gt;Represents a request to enable or disable whether Amazon SES forwards you bounce and complaint notifications through email. For information about email feedback forwarding, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-email.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param ForwardingEnabled [Enabled] &lt;p&gt;Sets whether Amazon SES will forward bounce and complaint notifications as email. &lt;code&gt;true&lt;/code&gt; specifies that Amazon SES will forward bounce and complaint notifications as email, in addition to any Amazon SNS topic publishing otherwise specified. &lt;code&gt;false&lt;/code&gt; specifies that Amazon SES will publish bounce and complaint notifications only through Amazon SNS. This value can only be set to &lt;code&gt;false&lt;/code&gt; when Amazon SNS topics are set for both &lt;code&gt;Bounce&lt;/code&gt; and &lt;code&gt;Complaint&lt;/code&gt; notification types.&lt;/p&gt;
--- @param Identity [Identity] &lt;p&gt;The identity for which to set bounce and complaint notification forwarding. Examples: &lt;code&gt;user@example.com&lt;/code&gt;, &lt;code&gt;example.com&lt;/code&gt;.&lt;/p&gt;
+-- <p>Represents a request to enable or disable whether Amazon SES forwards you bounce and complaint notifications through email. For information about email feedback forwarding, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-email.html">Amazon SES Developer Guide</a>.</p>
+-- @param ForwardingEnabled [Enabled] <p>Sets whether Amazon SES will forward bounce and complaint notifications as email. <code>true</code> specifies that Amazon SES will forward bounce and complaint notifications as email, in addition to any Amazon SNS topic publishing otherwise specified. <code>false</code> specifies that Amazon SES will publish bounce and complaint notifications only through Amazon SNS. This value can only be set to <code>false</code> when Amazon SNS topics are set for both <code>Bounce</code> and <code>Complaint</code> notification types.</p>
+-- @param Identity [Identity] <p>The identity for which to set bounce and complaint notification forwarding. Examples: <code>user@example.com</code>, <code>example.com</code>.</p>
 -- Required parameter: Identity
 -- Required parameter: ForwardingEnabled
 function M.SetIdentityFeedbackForwardingEnabledRequest(ForwardingEnabled, Identity, ...)
@@ -740,8 +740,8 @@ function M.AssertSendBounceResponse(struct)
 end
 
 --- Create a structure of type SendBounceResponse
--- &lt;p&gt;Represents a unique message ID.&lt;/p&gt;
--- @param MessageId [MessageId] &lt;p&gt;The message ID of the bounce message.&lt;/p&gt;
+-- <p>Represents a unique message ID.</p>
+-- @param MessageId [MessageId] <p>The message ID of the bounce message.</p>
 function M.SendBounceResponse(MessageId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SendBounceResponse")
 	local t = { 
@@ -764,8 +764,8 @@ function M.AssertVerifyEmailAddressRequest(struct)
 end
 
 --- Create a structure of type VerifyEmailAddressRequest
--- &lt;p&gt;Represents a request to begin email address verification with Amazon SES. For information about email address verification, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param EmailAddress [Address] &lt;p&gt;The email address to be verified.&lt;/p&gt;
+-- <p>Represents a request to begin email address verification with Amazon SES. For information about email address verification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html">Amazon SES Developer Guide</a>.</p>
+-- @param EmailAddress [Address] <p>The email address to be verified.</p>
 -- Required parameter: EmailAddress
 function M.VerifyEmailAddressRequest(EmailAddress, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyEmailAddressRequest")
@@ -793,10 +793,10 @@ function M.AssertSetIdentityHeadersInNotificationsEnabledRequest(struct)
 end
 
 --- Create a structure of type SetIdentityHeadersInNotificationsEnabledRequest
--- &lt;p&gt;Represents a request to set whether Amazon SES includes the original email headers in the Amazon SNS notifications of a specified type. For information about notifications, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-sns.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Enabled [Enabled] &lt;p&gt;Sets whether Amazon SES includes the original email headers in Amazon SNS notifications of the specified notification type. A value of &lt;code&gt;true&lt;/code&gt; specifies that Amazon SES will include headers in notifications, and a value of &lt;code&gt;false&lt;/code&gt; specifies that Amazon SES will not include headers in notifications.&lt;/p&gt; &lt;p&gt;This value can only be set when &lt;code&gt;NotificationType&lt;/code&gt; is already set to use a particular Amazon SNS topic.&lt;/p&gt;
--- @param NotificationType [NotificationType] &lt;p&gt;The notification type for which to enable or disable headers in notifications. &lt;/p&gt;
--- @param Identity [Identity] &lt;p&gt;The identity for which to enable or disable headers in notifications. Examples: &lt;code&gt;user@example.com&lt;/code&gt;, &lt;code&gt;example.com&lt;/code&gt;.&lt;/p&gt;
+-- <p>Represents a request to set whether Amazon SES includes the original email headers in the Amazon SNS notifications of a specified type. For information about notifications, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-sns.html">Amazon SES Developer Guide</a>.</p>
+-- @param Enabled [Enabled] <p>Sets whether Amazon SES includes the original email headers in Amazon SNS notifications of the specified notification type. A value of <code>true</code> specifies that Amazon SES will include headers in notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in notifications.</p> <p>This value can only be set when <code>NotificationType</code> is already set to use a particular Amazon SNS topic.</p>
+-- @param NotificationType [NotificationType] <p>The notification type for which to enable or disable headers in notifications. </p>
+-- @param Identity [Identity] <p>The identity for which to enable or disable headers in notifications. Examples: <code>user@example.com</code>, <code>example.com</code>.</p>
 -- Required parameter: Identity
 -- Required parameter: NotificationType
 -- Required parameter: Enabled
@@ -822,7 +822,7 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;Indicates that a resource could not be created because of service limits. For a list of Amazon SES limits, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/limits.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>Indicates that a resource could not be created because of service limits. For a list of Amazon SES limits, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/limits.html">Amazon SES Developer Guide</a>.</p>
 function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -844,8 +844,8 @@ function M.AssertConfigurationSet(struct)
 end
 
 --- Create a structure of type ConfigurationSet
--- &lt;p&gt;The name of the configuration set.&lt;/p&gt; &lt;p&gt;Configuration sets enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ConfigurationSetName] &lt;p&gt;The name of the configuration set. The name must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 64 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The name of the configuration set.</p> <p>Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param Name [ConfigurationSetName] <p>The name of the configuration set. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
 -- Required parameter: Name
 function M.ConfigurationSet(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSet")
@@ -869,8 +869,8 @@ function M.AssertGetIdentityMailFromDomainAttributesRequest(struct)
 end
 
 --- Create a structure of type GetIdentityMailFromDomainAttributesRequest
--- &lt;p&gt;Represents a request to return the Amazon SES custom MAIL FROM attributes for a list of identities. For information about using a custom MAIL FROM domain, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Identities [IdentityList] &lt;p&gt;A list of one or more identities.&lt;/p&gt;
+-- <p>Represents a request to return the Amazon SES custom MAIL FROM attributes for a list of identities. For information about using a custom MAIL FROM domain, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>.</p>
+-- @param Identities [IdentityList] <p>A list of one or more identities.</p>
 -- Required parameter: Identities
 function M.GetIdentityMailFromDomainAttributesRequest(Identities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityMailFromDomainAttributesRequest")
@@ -896,9 +896,9 @@ function M.AssertGetIdentityPoliciesRequest(struct)
 end
 
 --- Create a structure of type GetIdentityPoliciesRequest
--- &lt;p&gt;Represents a request to return the requested sending authorization policies for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param PolicyNames [PolicyNameList] &lt;p&gt;A list of the names of policies to be retrieved. You can retrieve a maximum of 20 policies at a time. If you do not know the names of the policies that are attached to the identity, you can use &lt;code&gt;ListIdentityPolicies&lt;/code&gt;.&lt;/p&gt;
--- @param Identity [Identity] &lt;p&gt;The identity for which the policies will be retrieved. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: &lt;code&gt;user@example.com&lt;/code&gt;, &lt;code&gt;example.com&lt;/code&gt;, &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To successfully call this API, you must own the identity.&lt;/p&gt;
+-- <p>Represents a request to return the requested sending authorization policies for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- @param PolicyNames [PolicyNameList] <p>A list of the names of policies to be retrieved. You can retrieve a maximum of 20 policies at a time. If you do not know the names of the policies that are attached to the identity, you can use <code>ListIdentityPolicies</code>.</p>
+-- @param Identity [Identity] <p>The identity for which the policies will be retrieved. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
 -- Required parameter: Identity
 -- Required parameter: PolicyNames
 function M.GetIdentityPoliciesRequest(PolicyNames, Identity, ...)
@@ -922,7 +922,7 @@ function M.AssertSetIdentityDkimEnabledResponse(struct)
 end
 
 --- Create a structure of type SetIdentityDkimEnabledResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.SetIdentityDkimEnabledResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityDkimEnabledResponse")
 	local t = { 
@@ -946,9 +946,9 @@ function M.AssertCreateConfigurationSetEventDestinationRequest(struct)
 end
 
 --- Create a structure of type CreateConfigurationSetEventDestinationRequest
--- &lt;p&gt;Represents a request to create a configuration set event destination. A configuration set event destination, which can be either Amazon CloudWatch or Amazon Kinesis Firehose, describes an AWS service in which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param EventDestination [EventDestination] &lt;p&gt;An object that describes the AWS service to which Amazon SES will publish the email sending events associated with the specified configuration set.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;The name of the configuration set to which to apply the event destination.&lt;/p&gt;
+-- <p>Represents a request to create a configuration set event destination. A configuration set event destination, which can be either Amazon CloudWatch or Amazon Kinesis Firehose, describes an AWS service in which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param EventDestination [EventDestination] <p>An object that describes the AWS service to which Amazon SES will publish the email sending events associated with the specified configuration set.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to which to apply the event destination.</p>
 -- Required parameter: ConfigurationSetName
 -- Required parameter: EventDestination
 function M.CreateConfigurationSetEventDestinationRequest(EventDestination, ConfigurationSetName, ...)
@@ -974,8 +974,8 @@ function M.AssertGetIdentityDkimAttributesRequest(struct)
 end
 
 --- Create a structure of type GetIdentityDkimAttributesRequest
--- &lt;p&gt;Represents a request for the status of Amazon SES Easy DKIM signing for an identity. For domain identities, this request also returns the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES successfully verified that these tokens were published. For more information about Easy DKIM, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Identities [IdentityList] &lt;p&gt;A list of one or more verified identities - email addresses, domains, or both.&lt;/p&gt;
+-- <p>Represents a request for the status of Amazon SES Easy DKIM signing for an identity. For domain identities, this request also returns the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES successfully verified that these tokens were published. For more information about Easy DKIM, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon SES Developer Guide</a>.</p>
+-- @param Identities [IdentityList] <p>A list of one or more verified identities - email addresses, domains, or both.</p>
 -- Required parameter: Identities
 function M.GetIdentityDkimAttributesRequest(Identities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityDkimAttributesRequest")
@@ -1000,9 +1000,9 @@ function M.AssertStopAction(struct)
 end
 
 --- Create a structure of type StopAction
--- &lt;p&gt;When included in a receipt rule, this action terminates the evaluation of the receipt rule set and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).&lt;/p&gt; &lt;p&gt;For information about setting a stop action in a receipt rule, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Scope [StopScope] &lt;p&gt;The scope to which the Stop action applies. That is, what is being stopped.&lt;/p&gt;
--- @param TopicArn [AmazonResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the stop action is taken. An example of an Amazon SNS topic ARN is &lt;code&gt;arn:aws:sns:us-west-2:123456789012:MyTopic&lt;/code&gt;. For more information about Amazon SNS topics, see the &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html&quot;&gt;Amazon SNS Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>When included in a receipt rule, this action terminates the evaluation of the receipt rule set and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>For information about setting a stop action in a receipt rule, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html">Amazon SES Developer Guide</a>.</p>
+-- @param Scope [StopScope] <p>The scope to which the Stop action applies. That is, what is being stopped.</p>
+-- @param TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the stop action is taken. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
 -- Required parameter: Scope
 function M.StopAction(Scope, TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopAction")
@@ -1037,16 +1037,16 @@ function M.AssertSendEmailRequest(struct)
 end
 
 --- Create a structure of type SendEmailRequest
--- &lt;p&gt;Represents a request to send a single formatted email using Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-formatted.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Tags [MessageTagList] &lt;p&gt;A list of tags, in the form of name/value pairs, to apply to an email that you send using &lt;code&gt;SendEmail&lt;/code&gt;. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.&lt;/p&gt;
--- @param ReturnPathArn [AmazonResourceName] &lt;p&gt;This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the &lt;code&gt;ReturnPath&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;For example, if the owner of &lt;code&gt;example.com&lt;/code&gt; (which has ARN &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;) attaches a policy to it that authorizes you to use &lt;code&gt;feedback@example.com&lt;/code&gt;, then you would specify the &lt;code&gt;ReturnPathArn&lt;/code&gt; to be &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;, and the &lt;code&gt;ReturnPath&lt;/code&gt; to be &lt;code&gt;feedback@example.com&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information about sending authorization, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;. &lt;/p&gt;
--- @param ReplyToAddresses [AddressList] &lt;p&gt;The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address will receive the reply.&lt;/p&gt;
--- @param Destination [Destination] &lt;p&gt;The destination for this email, composed of To:, CC:, and BCC: fields.&lt;/p&gt;
--- @param Source [Address] &lt;p&gt;The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the &lt;code&gt;SourceArn&lt;/code&gt; parameter. For more information about sending authorization, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;p&gt; In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: &lt;code&gt;=?charset?encoding?encoded-text?=&lt;/code&gt;. For more information, see &lt;a href=&quot;http://tools.ietf.org/html/rfc2047&quot;&gt;RFC 2047&lt;/a&gt;. &lt;/p&gt;
--- @param ReturnPath [Address] &lt;p&gt;The email address to which bounces and complaints are to be forwarded when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the &lt;code&gt;ReturnPath&lt;/code&gt; parameter. The &lt;code&gt;ReturnPath&lt;/code&gt; parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. &lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;The name of the configuration set to use when you send an email using &lt;code&gt;SendEmail&lt;/code&gt;.&lt;/p&gt;
--- @param Message [Message] &lt;p&gt;The message to be sent.&lt;/p&gt;
--- @param SourceArn [AmazonResourceName] &lt;p&gt;This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the &lt;code&gt;Source&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;For example, if the owner of &lt;code&gt;example.com&lt;/code&gt; (which has ARN &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;) attaches a policy to it that authorizes you to send from &lt;code&gt;user@example.com&lt;/code&gt;, then you would specify the &lt;code&gt;SourceArn&lt;/code&gt; to be &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;, and the &lt;code&gt;Source&lt;/code&gt; to be &lt;code&gt;user@example.com&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information about sending authorization, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;. &lt;/p&gt;
+-- <p>Represents a request to send a single formatted email using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-formatted.html">Amazon SES Developer Guide</a>.</p>
+-- @param Tags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send using <code>SendEmail</code>. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.</p>
+-- @param ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. </p>
+-- @param ReplyToAddresses [AddressList] <p>The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address will receive the reply.</p>
+-- @param Destination [Destination] <p>The destination for this email, composed of To:, CC:, and BCC: fields.</p>
+-- @param Source [Address] <p>The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html">Amazon SES Developer Guide</a>.</p> <p>If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the <code>SourceArn</code> parameter. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p> <p> In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p>
+-- @param ReturnPath [Address] <p>The email address to which bounces and complaints are to be forwarded when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the <code>ReturnPath</code> parameter. The <code>ReturnPath</code> parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. </p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to use when you send an email using <code>SendEmail</code>.</p>
+-- @param Message [Message] <p>The message to be sent.</p>
+-- @param SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. </p>
 -- Required parameter: Source
 -- Required parameter: Destination
 -- Required parameter: Message
@@ -1079,8 +1079,8 @@ function M.AssertInvalidSnsTopicException(struct)
 end
 
 --- Create a structure of type InvalidSnsTopicException
--- &lt;p&gt;Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Topic [AmazonResourceName] &lt;p&gt;Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
+-- @param Topic [AmazonResourceName] <p>Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
 function M.InvalidSnsTopicException(Topic, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSnsTopicException")
 	local t = { 
@@ -1103,8 +1103,8 @@ function M.AssertDeleteVerifiedEmailAddressRequest(struct)
 end
 
 --- Create a structure of type DeleteVerifiedEmailAddressRequest
--- &lt;p&gt;Represents a request to delete an email address from the list of email addresses you have attempted to verify under your AWS account.&lt;/p&gt;
--- @param EmailAddress [Address] &lt;p&gt;An email address to be removed from the list of verified addresses.&lt;/p&gt;
+-- <p>Represents a request to delete an email address from the list of email addresses you have attempted to verify under your AWS account.</p>
+-- @param EmailAddress [Address] <p>An email address to be removed from the list of verified addresses.</p>
 -- Required parameter: EmailAddress
 function M.DeleteVerifiedEmailAddressRequest(EmailAddress, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVerifiedEmailAddressRequest")
@@ -1133,12 +1133,12 @@ function M.AssertEventDestination(struct)
 end
 
 --- Create a structure of type EventDestination
--- &lt;p&gt;Contains information about the event destination to which the specified email sending events are published.&lt;/p&gt; &lt;note&gt; &lt;p&gt;When you create or update an event destination, you must provide one, and only one, destination. The destination can be either Amazon CloudWatch or Amazon Kinesis Firehose.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch or Amazon Kinesis Firehose. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param MatchingEventTypes [EventTypes] &lt;p&gt;The type of email sending events to publish to the event destination.&lt;/p&gt;
--- @param Enabled [Enabled] &lt;p&gt;Sets whether Amazon SES publishes events to this destination when you send an email with the associated configuration set. Set to &lt;code&gt;true&lt;/code&gt; to enable publishing to this destination; set to &lt;code&gt;false&lt;/code&gt; to prevent publishing to this destination. The default value is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param Name [EventDestinationName] &lt;p&gt;The name of the event destination. The name must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 64 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param CloudWatchDestination [CloudWatchDestination] &lt;p&gt;An object that contains the names, default values, and sources of the dimensions associated with an Amazon CloudWatch event destination.&lt;/p&gt;
--- @param KinesisFirehoseDestination [KinesisFirehoseDestination] &lt;p&gt;An object that contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event destination.&lt;/p&gt;
+-- <p>Contains information about the event destination to which the specified email sending events are published.</p> <note> <p>When you create or update an event destination, you must provide one, and only one, destination. The destination can be either Amazon CloudWatch or Amazon Kinesis Firehose.</p> </note> <p>Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch or Amazon Kinesis Firehose. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param MatchingEventTypes [EventTypes] <p>The type of email sending events to publish to the event destination.</p>
+-- @param Enabled [Enabled] <p>Sets whether Amazon SES publishes events to this destination when you send an email with the associated configuration set. Set to <code>true</code> to enable publishing to this destination; set to <code>false</code> to prevent publishing to this destination. The default value is <code>false</code>.</p>
+-- @param Name [EventDestinationName] <p>The name of the event destination. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- @param CloudWatchDestination [CloudWatchDestination] <p>An object that contains the names, default values, and sources of the dimensions associated with an Amazon CloudWatch event destination.</p>
+-- @param KinesisFirehoseDestination [KinesisFirehoseDestination] <p>An object that contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event destination.</p>
 -- Required parameter: Name
 -- Required parameter: MatchingEventTypes
 function M.EventDestination(MatchingEventTypes, Enabled, Name, CloudWatchDestination, KinesisFirehoseDestination, ...)
@@ -1165,7 +1165,7 @@ function M.AssertDeleteReceiptRuleSetResponse(struct)
 end
 
 --- Create a structure of type DeleteReceiptRuleSetResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.DeleteReceiptRuleSetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptRuleSetResponse")
 	local t = { 
@@ -1191,10 +1191,10 @@ function M.AssertIdentityMailFromDomainAttributes(struct)
 end
 
 --- Create a structure of type IdentityMailFromDomainAttributes
--- &lt;p&gt;Represents the custom MAIL FROM domain attributes of a verified identity (email address or domain).&lt;/p&gt;
--- @param MailFromDomain [MailFromDomainName] &lt;p&gt;The custom MAIL FROM domain that the identity is configured to use.&lt;/p&gt;
--- @param BehaviorOnMXFailure [BehaviorOnMXFailure] &lt;p&gt;The action that Amazon SES takes if it cannot successfully read the required MX record when you send an email. A value of &lt;code&gt;UseDefaultValue&lt;/code&gt; indicates that if Amazon SES cannot read the required MX record, it uses amazonses.com (or a subdomain of that) as the MAIL FROM domain. A value of &lt;code&gt;RejectMessage&lt;/code&gt; indicates that if Amazon SES cannot read the required MX record, Amazon SES returns a &lt;code&gt;MailFromDomainNotVerified&lt;/code&gt; error and does not send the email.&lt;/p&gt; &lt;p&gt;The custom MAIL FROM setup states that result in this behavior are &lt;code&gt;Pending&lt;/code&gt;, &lt;code&gt;Failed&lt;/code&gt;, and &lt;code&gt;TemporaryFailure&lt;/code&gt;.&lt;/p&gt;
--- @param MailFromDomainStatus [CustomMailFromStatus] &lt;p&gt;The state that indicates whether Amazon SES has successfully read the MX record required for custom MAIL FROM domain setup. If the state is &lt;code&gt;Success&lt;/code&gt;, Amazon SES uses the specified custom MAIL FROM domain when the verified identity sends an email. All other states indicate that Amazon SES takes the action described by &lt;code&gt;BehaviorOnMXFailure&lt;/code&gt;.&lt;/p&gt;
+-- <p>Represents the custom MAIL FROM domain attributes of a verified identity (email address or domain).</p>
+-- @param MailFromDomain [MailFromDomainName] <p>The custom MAIL FROM domain that the identity is configured to use.</p>
+-- @param BehaviorOnMXFailure [BehaviorOnMXFailure] <p>The action that Amazon SES takes if it cannot successfully read the required MX record when you send an email. A value of <code>UseDefaultValue</code> indicates that if Amazon SES cannot read the required MX record, it uses amazonses.com (or a subdomain of that) as the MAIL FROM domain. A value of <code>RejectMessage</code> indicates that if Amazon SES cannot read the required MX record, Amazon SES returns a <code>MailFromDomainNotVerified</code> error and does not send the email.</p> <p>The custom MAIL FROM setup states that result in this behavior are <code>Pending</code>, <code>Failed</code>, and <code>TemporaryFailure</code>.</p>
+-- @param MailFromDomainStatus [CustomMailFromStatus] <p>The state that indicates whether Amazon SES has successfully read the MX record required for custom MAIL FROM domain setup. If the state is <code>Success</code>, Amazon SES uses the specified custom MAIL FROM domain when the verified identity sends an email. All other states indicate that Amazon SES takes the action described by <code>BehaviorOnMXFailure</code>.</p>
 -- Required parameter: MailFromDomain
 -- Required parameter: MailFromDomainStatus
 -- Required parameter: BehaviorOnMXFailure
@@ -1221,8 +1221,8 @@ function M.AssertGetSendStatisticsResponse(struct)
 end
 
 --- Create a structure of type GetSendStatisticsResponse
--- &lt;p&gt;Represents a list of data points. This list contains aggregated data from the previous two weeks of your sending activity with Amazon SES.&lt;/p&gt;
--- @param SendDataPoints [SendDataPointList] &lt;p&gt;A list of data points, each of which represents 15 minutes of activity.&lt;/p&gt;
+-- <p>Represents a list of data points. This list contains aggregated data from the previous two weeks of your sending activity with Amazon SES.</p>
+-- @param SendDataPoints [SendDataPointList] <p>A list of data points, each of which represents 15 minutes of activity.</p>
 function M.GetSendStatisticsResponse(SendDataPoints, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSendStatisticsResponse")
 	local t = { 
@@ -1247,9 +1247,9 @@ function M.AssertSetIdentityDkimEnabledRequest(struct)
 end
 
 --- Create a structure of type SetIdentityDkimEnabledRequest
--- &lt;p&gt;Represents a request to enable or disable Amazon SES Easy DKIM signing for an identity. For more information about setting up Easy DKIM, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param DkimEnabled [Enabled] &lt;p&gt;Sets whether DKIM signing is enabled for an identity. Set to &lt;code&gt;true&lt;/code&gt; to enable DKIM signing for this identity; &lt;code&gt;false&lt;/code&gt; to disable it. &lt;/p&gt;
--- @param Identity [Identity] &lt;p&gt;The identity for which DKIM signing should be enabled or disabled.&lt;/p&gt;
+-- <p>Represents a request to enable or disable Amazon SES Easy DKIM signing for an identity. For more information about setting up Easy DKIM, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon SES Developer Guide</a>.</p>
+-- @param DkimEnabled [Enabled] <p>Sets whether DKIM signing is enabled for an identity. Set to <code>true</code> to enable DKIM signing for this identity; <code>false</code> to disable it. </p>
+-- @param Identity [Identity] <p>The identity for which DKIM signing should be enabled or disabled.</p>
 -- Required parameter: Identity
 -- Required parameter: DkimEnabled
 function M.SetIdentityDkimEnabledRequest(DkimEnabled, Identity, ...)
@@ -1280,13 +1280,13 @@ function M.AssertReceiptRule(struct)
 end
 
 --- Create a structure of type ReceiptRule
--- &lt;p&gt;Receipt rules enable you to specify which actions Amazon SES should take when it receives mail on behalf of one or more email addresses or domains that you own.&lt;/p&gt; &lt;p&gt;Each receipt rule defines a set of email addresses or domains to which it applies. If the email addresses or domains match at least one recipient address of the message, Amazon SES executes all of the receipt rule's actions on the message.&lt;/p&gt; &lt;p&gt;For information about setting up receipt rules, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ReceiptRuleName] &lt;p&gt;The name of the receipt rule. The name must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Start and end with a letter or number.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 64 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Recipients [RecipientsList] &lt;p&gt;The recipient domains and email addresses to which the receipt rule applies. If this field is not specified, this rule will match all recipients under all verified domains.&lt;/p&gt;
--- @param Enabled [Enabled] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the receipt rule is active. The default value is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param ScanEnabled [Enabled] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, then messages to which this receipt rule applies are scanned for spam and viruses. The default value is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param Actions [ReceiptActionsList] &lt;p&gt;An ordered list of actions to perform on messages that match at least one of the recipient email addresses or domains specified in the receipt rule.&lt;/p&gt;
--- @param TlsPolicy [TlsPolicy] &lt;p&gt;Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with Transport Layer Security (TLS). If this parameter is set to &lt;code&gt;Require&lt;/code&gt;, Amazon SES will bounce emails that are not received over TLS. The default is &lt;code&gt;Optional&lt;/code&gt;.&lt;/p&gt;
+-- <p>Receipt rules enable you to specify which actions Amazon SES should take when it receives mail on behalf of one or more email addresses or domains that you own.</p> <p>Each receipt rule defines a set of email addresses or domains to which it applies. If the email addresses or domains match at least one recipient address of the message, Amazon SES executes all of the receipt rule's actions on the message.</p> <p>For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>.</p>
+-- @param Name [ReceiptRuleName] <p>The name of the receipt rule. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- @param Recipients [RecipientsList] <p>The recipient domains and email addresses to which the receipt rule applies. If this field is not specified, this rule will match all recipients under all verified domains.</p>
+-- @param Enabled [Enabled] <p>If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.</p>
+-- @param ScanEnabled [Enabled] <p>If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses. The default value is <code>false</code>.</p>
+-- @param Actions [ReceiptActionsList] <p>An ordered list of actions to perform on messages that match at least one of the recipient email addresses or domains specified in the receipt rule.</p>
+-- @param TlsPolicy [TlsPolicy] <p>Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails that are not received over TLS. The default is <code>Optional</code>.</p>
 -- Required parameter: Name
 function M.ReceiptRule(Name, Recipients, Enabled, ScanEnabled, Actions, TlsPolicy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReceiptRule")
@@ -1313,7 +1313,7 @@ function M.AssertCreateReceiptRuleSetResponse(struct)
 end
 
 --- Create a structure of type CreateReceiptRuleSetResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.CreateReceiptRuleSetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptRuleSetResponse")
 	local t = { 
@@ -1340,14 +1340,14 @@ function M.AssertReceiptAction(struct)
 end
 
 --- Create a structure of type ReceiptAction
--- &lt;p&gt;An action that Amazon SES can take when it receives an email on behalf of one or more email addresses or domains that you own. An instance of this data type can represent only one action.&lt;/p&gt; &lt;p&gt;For information about setting up receipt rules, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param AddHeaderAction [AddHeaderAction] &lt;p&gt;Adds a header to the received email.&lt;/p&gt;
--- @param S3Action [S3Action] &lt;p&gt;Saves the received message to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes a notification to Amazon SNS.&lt;/p&gt;
--- @param SNSAction [SNSAction] &lt;p&gt;Publishes the email content within a notification to Amazon SNS.&lt;/p&gt;
--- @param BounceAction [BounceAction] &lt;p&gt;Rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).&lt;/p&gt;
--- @param LambdaAction [LambdaAction] &lt;p&gt;Calls an AWS Lambda function, and optionally, publishes a notification to Amazon SNS.&lt;/p&gt;
--- @param StopAction [StopAction] &lt;p&gt;Terminates the evaluation of the receipt rule set and optionally publishes a notification to Amazon SNS.&lt;/p&gt;
--- @param WorkmailAction [WorkmailAction] &lt;p&gt;Calls Amazon WorkMail and, optionally, publishes a notification to Amazon SNS.&lt;/p&gt;
+-- <p>An action that Amazon SES can take when it receives an email on behalf of one or more email addresses or domains that you own. An instance of this data type can represent only one action.</p> <p>For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>.</p>
+-- @param AddHeaderAction [AddHeaderAction] <p>Adds a header to the received email.</p>
+-- @param S3Action [S3Action] <p>Saves the received message to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes a notification to Amazon SNS.</p>
+-- @param SNSAction [SNSAction] <p>Publishes the email content within a notification to Amazon SNS.</p>
+-- @param BounceAction [BounceAction] <p>Rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p>
+-- @param LambdaAction [LambdaAction] <p>Calls an AWS Lambda function, and optionally, publishes a notification to Amazon SNS.</p>
+-- @param StopAction [StopAction] <p>Terminates the evaluation of the receipt rule set and optionally publishes a notification to Amazon SNS.</p>
+-- @param WorkmailAction [WorkmailAction] <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon SNS.</p>
 function M.ReceiptAction(AddHeaderAction, S3Action, SNSAction, BounceAction, LambdaAction, StopAction, WorkmailAction, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReceiptAction")
 	local t = { 
@@ -1376,8 +1376,8 @@ function M.AssertDeleteReceiptRuleSetRequest(struct)
 end
 
 --- Create a structure of type DeleteReceiptRuleSetRequest
--- &lt;p&gt;Represents a request to delete a receipt rule set and all of the receipt rules it contains. You use receipt rule sets to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the receipt rule set to delete.&lt;/p&gt;
+-- <p>Represents a request to delete a receipt rule set and all of the receipt rules it contains. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to delete.</p>
 -- Required parameter: RuleSetName
 function M.DeleteReceiptRuleSetRequest(RuleSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptRuleSetRequest")
@@ -1399,7 +1399,7 @@ function M.AssertSetReceiptRulePositionResponse(struct)
 end
 
 --- Create a structure of type SetReceiptRulePositionResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.SetReceiptRulePositionResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetReceiptRulePositionResponse")
 	local t = { 
@@ -1421,8 +1421,8 @@ function M.AssertGetIdentityNotificationAttributesRequest(struct)
 end
 
 --- Create a structure of type GetIdentityNotificationAttributesRequest
--- &lt;p&gt;Represents a request to return the notification attributes for a list of identities you verified with Amazon SES. For information about Amazon SES notifications, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Identities [IdentityList] &lt;p&gt;A list of one or more identities. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: &lt;code&gt;user@example.com&lt;/code&gt;, &lt;code&gt;example.com&lt;/code&gt;, &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;.&lt;/p&gt;
+-- <p>Represents a request to return the notification attributes for a list of identities you verified with Amazon SES. For information about Amazon SES notifications, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html">Amazon SES Developer Guide</a>.</p>
+-- @param Identities [IdentityList] <p>A list of one or more identities. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
 -- Required parameter: Identities
 function M.GetIdentityNotificationAttributesRequest(Identities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityNotificationAttributesRequest")
@@ -1445,8 +1445,8 @@ function M.AssertInvalidS3ConfigurationException(struct)
 end
 
 --- Create a structure of type InvalidS3ConfigurationException
--- &lt;p&gt;Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Bucket [S3BucketName] &lt;p&gt;Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
+-- @param Bucket [S3BucketName] <p>Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
 function M.InvalidS3ConfigurationException(Bucket, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3ConfigurationException")
 	local t = { 
@@ -1471,10 +1471,10 @@ function M.AssertSetIdentityMailFromDomainRequest(struct)
 end
 
 --- Create a structure of type SetIdentityMailFromDomainRequest
--- &lt;p&gt;Represents a request to enable or disable the Amazon SES custom MAIL FROM domain setup for a verified identity. For information about using a custom MAIL FROM domain, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param MailFromDomain [MailFromDomainName] &lt;p&gt;The custom MAIL FROM domain that you want the verified identity to use. The MAIL FROM domain must 1) be a subdomain of the verified identity, 2) not be used in a &quot;From&quot; address if the MAIL FROM domain is the destination of email feedback forwarding (for more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;), and 3) not be used to receive emails. A value of &lt;code&gt;null&lt;/code&gt; disables the custom MAIL FROM setting for the identity.&lt;/p&gt;
--- @param Identity [Identity] &lt;p&gt;The verified identity for which you want to enable or disable the specified custom MAIL FROM domain.&lt;/p&gt;
--- @param BehaviorOnMXFailure [BehaviorOnMXFailure] &lt;p&gt;The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. If you choose &lt;code&gt;UseDefaultValue&lt;/code&gt;, Amazon SES will use amazonses.com (or a subdomain of that) as the MAIL FROM domain. If you choose &lt;code&gt;RejectMessage&lt;/code&gt;, Amazon SES will return a &lt;code&gt;MailFromDomainNotVerified&lt;/code&gt; error and not send the email.&lt;/p&gt; &lt;p&gt;The action specified in &lt;code&gt;BehaviorOnMXFailure&lt;/code&gt; is taken when the custom MAIL FROM domain setup is in the &lt;code&gt;Pending&lt;/code&gt;, &lt;code&gt;Failed&lt;/code&gt;, and &lt;code&gt;TemporaryFailure&lt;/code&gt; states.&lt;/p&gt;
+-- <p>Represents a request to enable or disable the Amazon SES custom MAIL FROM domain setup for a verified identity. For information about using a custom MAIL FROM domain, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>.</p>
+-- @param MailFromDomain [MailFromDomainName] <p>The custom MAIL FROM domain that you want the verified identity to use. The MAIL FROM domain must 1) be a subdomain of the verified identity, 2) not be used in a "From" address if the MAIL FROM domain is the destination of email feedback forwarding (for more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>), and 3) not be used to receive emails. A value of <code>null</code> disables the custom MAIL FROM setting for the identity.</p>
+-- @param Identity [Identity] <p>The verified identity for which you want to enable or disable the specified custom MAIL FROM domain.</p>
+-- @param BehaviorOnMXFailure [BehaviorOnMXFailure] <p>The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. If you choose <code>UseDefaultValue</code>, Amazon SES will use amazonses.com (or a subdomain of that) as the MAIL FROM domain. If you choose <code>RejectMessage</code>, Amazon SES will return a <code>MailFromDomainNotVerified</code> error and not send the email.</p> <p>The action specified in <code>BehaviorOnMXFailure</code> is taken when the custom MAIL FROM domain setup is in the <code>Pending</code>, <code>Failed</code>, and <code>TemporaryFailure</code> states.</p>
 -- Required parameter: Identity
 function M.SetIdentityMailFromDomainRequest(MailFromDomain, Identity, BehaviorOnMXFailure, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityMailFromDomainRequest")
@@ -1498,7 +1498,7 @@ function M.AssertDeleteConfigurationSetEventDestinationResponse(struct)
 end
 
 --- Create a structure of type DeleteConfigurationSetEventDestinationResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.DeleteConfigurationSetEventDestinationResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigurationSetEventDestinationResponse")
 	local t = { 
@@ -1522,9 +1522,9 @@ function M.AssertUpdateReceiptRuleRequest(struct)
 end
 
 --- Create a structure of type UpdateReceiptRuleRequest
--- &lt;p&gt;Represents a request to update a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the receipt rule set to which the receipt rule belongs.&lt;/p&gt;
--- @param Rule [ReceiptRule] &lt;p&gt;A data structure that contains the updated receipt rule information.&lt;/p&gt;
+-- <p>Represents a request to update a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to which the receipt rule belongs.</p>
+-- @param Rule [ReceiptRule] <p>A data structure that contains the updated receipt rule information.</p>
 -- Required parameter: RuleSetName
 -- Required parameter: Rule
 function M.UpdateReceiptRuleRequest(RuleSetName, Rule, ...)
@@ -1548,7 +1548,7 @@ function M.AssertSetIdentityHeadersInNotificationsEnabledResponse(struct)
 end
 
 --- Create a structure of type SetIdentityHeadersInNotificationsEnabledResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.SetIdentityHeadersInNotificationsEnabledResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityHeadersInNotificationsEnabledResponse")
 	local t = { 
@@ -1571,9 +1571,9 @@ function M.AssertWorkmailAction(struct)
 end
 
 --- Create a structure of type WorkmailAction
--- &lt;p&gt;When included in a receipt rule, this action calls Amazon WorkMail and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS). You will typically not use this action directly because Amazon WorkMail adds the rule automatically during its setup procedure.&lt;/p&gt; &lt;p&gt;For information using a receipt rule to call Amazon WorkMail, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-workmail.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param OrganizationArn [AmazonResourceName] &lt;p&gt;The ARN of the Amazon WorkMail organization. An example of an Amazon WorkMail organization ARN is &lt;code&gt;arn:aws:workmail:us-west-2:123456789012:organization/m-68755160c4cb4e29a2b2f8fb58f359d7&lt;/code&gt;. For information about Amazon WorkMail organizations, see the &lt;a href=&quot;http://docs.aws.amazon.com/workmail/latest/adminguide/organizations_overview.html&quot;&gt;Amazon WorkMail Administrator Guide&lt;/a&gt;.&lt;/p&gt;
--- @param TopicArn [AmazonResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the WorkMail action is called. An example of an Amazon SNS topic ARN is &lt;code&gt;arn:aws:sns:us-west-2:123456789012:MyTopic&lt;/code&gt;. For more information about Amazon SNS topics, see the &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html&quot;&gt;Amazon SNS Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>When included in a receipt rule, this action calls Amazon WorkMail and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS). You will typically not use this action directly because Amazon WorkMail adds the rule automatically during its setup procedure.</p> <p>For information using a receipt rule to call Amazon WorkMail, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-workmail.html">Amazon SES Developer Guide</a>.</p>
+-- @param OrganizationArn [AmazonResourceName] <p>The ARN of the Amazon WorkMail organization. An example of an Amazon WorkMail organization ARN is <code>arn:aws:workmail:us-west-2:123456789012:organization/m-68755160c4cb4e29a2b2f8fb58f359d7</code>. For information about Amazon WorkMail organizations, see the <a href="http://docs.aws.amazon.com/workmail/latest/adminguide/organizations_overview.html">Amazon WorkMail Administrator Guide</a>.</p>
+-- @param TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the WorkMail action is called. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
 -- Required parameter: OrganizationArn
 function M.WorkmailAction(OrganizationArn, TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkmailAction")
@@ -1600,9 +1600,9 @@ function M.AssertReceiptFilter(struct)
 end
 
 --- Create a structure of type ReceiptFilter
--- &lt;p&gt;A receipt IP address filter enables you to specify whether to accept or reject mail originating from an IP address or range of IP addresses.&lt;/p&gt; &lt;p&gt;For information about setting up IP address filters, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param IpFilter [ReceiptIpFilter] &lt;p&gt;A structure that provides the IP addresses to block or allow, and whether to block or allow incoming mail from them.&lt;/p&gt;
--- @param Name [ReceiptFilterName] &lt;p&gt;The name of the IP address filter. The name must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Start and end with a letter or number.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 64 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>A receipt IP address filter enables you to specify whether to accept or reject mail originating from an IP address or range of IP addresses.</p> <p>For information about setting up IP address filters, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html">Amazon SES Developer Guide</a>.</p>
+-- @param IpFilter [ReceiptIpFilter] <p>A structure that provides the IP addresses to block or allow, and whether to block or allow incoming mail from them.</p>
+-- @param Name [ReceiptFilterName] <p>The name of the IP address filter. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
 -- Required parameter: Name
 -- Required parameter: IpFilter
 function M.ReceiptFilter(IpFilter, Name, ...)
@@ -1626,7 +1626,7 @@ function M.AssertSetIdentityFeedbackForwardingEnabledResponse(struct)
 end
 
 --- Create a structure of type SetIdentityFeedbackForwardingEnabledResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.SetIdentityFeedbackForwardingEnabledResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityFeedbackForwardingEnabledResponse")
 	local t = { 
@@ -1647,8 +1647,8 @@ function M.AssertConfigurationSetAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ConfigurationSetAlreadyExistsException
--- &lt;p&gt;Indicates that the configuration set could not be created because of a naming conflict.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;Indicates that the configuration set could not be created because of a naming conflict.&lt;/p&gt;
+-- <p>Indicates that the configuration set could not be created because of a naming conflict.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>Indicates that the configuration set could not be created because of a naming conflict.</p>
 function M.ConfigurationSetAlreadyExistsException(ConfigurationSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSetAlreadyExistsException")
 	local t = { 
@@ -1671,9 +1671,9 @@ function M.AssertDescribeReceiptRuleSetResponse(struct)
 end
 
 --- Create a structure of type DescribeReceiptRuleSetResponse
--- &lt;p&gt;Represents the details of the specified receipt rule set.&lt;/p&gt;
--- @param Rules [ReceiptRulesList] &lt;p&gt;A list of the receipt rules that belong to the specified receipt rule set.&lt;/p&gt;
--- @param Metadata [ReceiptRuleSetMetadata] &lt;p&gt;The metadata for the receipt rule set, which consists of the rule set name and the timestamp of when the rule set was created.&lt;/p&gt;
+-- <p>Represents the details of the specified receipt rule set.</p>
+-- @param Rules [ReceiptRulesList] <p>A list of the receipt rules that belong to the specified receipt rule set.</p>
+-- @param Metadata [ReceiptRuleSetMetadata] <p>The metadata for the receipt rule set, which consists of the rule set name and the timestamp of when the rule set was created.</p>
 function M.DescribeReceiptRuleSetResponse(Rules, Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReceiptRuleSetResponse")
 	local t = { 
@@ -1696,8 +1696,8 @@ function M.AssertListReceiptRuleSetsRequest(struct)
 end
 
 --- Create a structure of type ListReceiptRuleSetsRequest
--- &lt;p&gt;Represents a request to list the receipt rule sets that exist under your AWS account. You use receipt rule sets to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A token returned from a previous call to &lt;code&gt;ListReceiptRuleSets&lt;/code&gt; to indicate the position in the receipt rule set list.&lt;/p&gt;
+-- <p>Represents a request to list the receipt rule sets that exist under your AWS account. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param NextToken [NextToken] <p>A token returned from a previous call to <code>ListReceiptRuleSets</code> to indicate the position in the receipt rule set list.</p>
 function M.ListReceiptRuleSetsRequest(NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListReceiptRuleSetsRequest")
 	local t = { 
@@ -1720,8 +1720,8 @@ function M.AssertVerifyEmailIdentityRequest(struct)
 end
 
 --- Create a structure of type VerifyEmailIdentityRequest
--- &lt;p&gt;Represents a request to begin email address verification with Amazon SES. For information about email address verification, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param EmailAddress [Address] &lt;p&gt;The email address to be verified.&lt;/p&gt;
+-- <p>Represents a request to begin email address verification with Amazon SES. For information about email address verification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html">Amazon SES Developer Guide</a>.</p>
+-- @param EmailAddress [Address] <p>The email address to be verified.</p>
 -- Required parameter: EmailAddress
 function M.VerifyEmailIdentityRequest(EmailAddress, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyEmailIdentityRequest")
@@ -1747,9 +1747,9 @@ function M.AssertMessageTag(struct)
 end
 
 --- Create a structure of type MessageTag
--- &lt;p&gt;Contains the name and value of a tag that you can provide to &lt;code&gt;SendEmail&lt;/code&gt; or &lt;code&gt;SendRawEmail&lt;/code&gt; to apply to an email.&lt;/p&gt; &lt;p&gt;Message tags, which you use with configuration sets, enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Name [MessageTagName] &lt;p&gt;The name of the tag. The name must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 256 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Value [MessageTagValue] &lt;p&gt;The value of the tag. The value must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 256 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Contains the name and value of a tag that you can provide to <code>SendEmail</code> or <code>SendRawEmail</code> to apply to an email.</p> <p>Message tags, which you use with configuration sets, enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param Name [MessageTagName] <p>The name of the tag. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
+-- @param Value [MessageTagValue] <p>The value of the tag. The value must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
 -- Required parameter: Name
 -- Required parameter: Value
 function M.MessageTag(Name, Value, ...)
@@ -1775,8 +1775,8 @@ function M.AssertGetIdentityMailFromDomainAttributesResponse(struct)
 end
 
 --- Create a structure of type GetIdentityMailFromDomainAttributesResponse
--- &lt;p&gt;Represents the custom MAIL FROM attributes for a list of identities.&lt;/p&gt;
--- @param MailFromDomainAttributes [MailFromDomainAttributes] &lt;p&gt;A map of identities to custom MAIL FROM attributes.&lt;/p&gt;
+-- <p>Represents the custom MAIL FROM attributes for a list of identities.</p>
+-- @param MailFromDomainAttributes [MailFromDomainAttributes] <p>A map of identities to custom MAIL FROM attributes.</p>
 -- Required parameter: MailFromDomainAttributes
 function M.GetIdentityMailFromDomainAttributesResponse(MailFromDomainAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityMailFromDomainAttributesResponse")
@@ -1801,9 +1801,9 @@ function M.AssertListIdentitiesResponse(struct)
 end
 
 --- Create a structure of type ListIdentitiesResponse
--- &lt;p&gt;A list of all identities that you have attempted to verify under your AWS account, regardless of verification status.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token used for pagination.&lt;/p&gt;
--- @param Identities [IdentityList] &lt;p&gt;A list of identities.&lt;/p&gt;
+-- <p>A list of all identities that you have attempted to verify under your AWS account, regardless of verification status.</p>
+-- @param NextToken [NextToken] <p>The token used for pagination.</p>
+-- @param Identities [IdentityList] <p>A list of identities.</p>
 -- Required parameter: Identities
 function M.ListIdentitiesResponse(NextToken, Identities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentitiesResponse")
@@ -1830,9 +1830,9 @@ function M.AssertMessage(struct)
 end
 
 --- Create a structure of type Message
--- &lt;p&gt;Represents the message to be sent, composed of a subject and a body.&lt;/p&gt;
--- @param Body [Body] &lt;p&gt;The message body.&lt;/p&gt;
--- @param Subject [Content] &lt;p&gt;The subject of the message: A short summary of the content, which will appear in the recipient's inbox.&lt;/p&gt;
+-- <p>Represents the message to be sent, composed of a subject and a body.</p>
+-- @param Body [Body] <p>The message body.</p>
+-- @param Subject [Content] <p>The subject of the message: A short summary of the content, which will appear in the recipient's inbox.</p>
 -- Required parameter: Subject
 -- Required parameter: Body
 function M.Message(Body, Subject, ...)
@@ -1858,8 +1858,8 @@ function M.AssertDescribeReceiptRuleSetRequest(struct)
 end
 
 --- Create a structure of type DescribeReceiptRuleSetRequest
--- &lt;p&gt;Represents a request to return the details of a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the receipt rule set to describe.&lt;/p&gt;
+-- <p>Represents a request to return the details of a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to describe.</p>
 -- Required parameter: RuleSetName
 function M.DescribeReceiptRuleSetRequest(RuleSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReceiptRuleSetRequest")
@@ -1890,13 +1890,13 @@ function M.AssertSendBounceRequest(struct)
 end
 
 --- Create a structure of type SendBounceRequest
--- &lt;p&gt;Represents a request to send a bounce message to the sender of an email you received through Amazon SES.&lt;/p&gt;
--- @param OriginalMessageId [MessageId] &lt;p&gt;The message ID of the message to be bounced.&lt;/p&gt;
--- @param BounceSenderArn [AmazonResourceName] &lt;p&gt;This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the address in the &quot;From&quot; header of the bounce. For more information about sending authorization, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Explanation [Explanation] &lt;p&gt;Human-readable text for the bounce message to explain the failure. If not specified, the text will be auto-generated based on the bounced recipient information.&lt;/p&gt;
--- @param BouncedRecipientInfoList [BouncedRecipientInfoList] &lt;p&gt;A list of recipients of the bounced message, including the information required to create the Delivery Status Notifications (DSNs) for the recipients. You must specify at least one &lt;code&gt;BouncedRecipientInfo&lt;/code&gt; in the list.&lt;/p&gt;
--- @param BounceSender [Address] &lt;p&gt;The address to use in the &quot;From&quot; header of the bounce message. This must be an identity that you have verified with Amazon SES.&lt;/p&gt;
--- @param MessageDsn [MessageDsn] &lt;p&gt;Message-related DSN fields. If not specified, Amazon SES will choose the values.&lt;/p&gt;
+-- <p>Represents a request to send a bounce message to the sender of an email you received through Amazon SES.</p>
+-- @param OriginalMessageId [MessageId] <p>The message ID of the message to be bounced.</p>
+-- @param BounceSenderArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the address in the "From" header of the bounce. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- @param Explanation [Explanation] <p>Human-readable text for the bounce message to explain the failure. If not specified, the text will be auto-generated based on the bounced recipient information.</p>
+-- @param BouncedRecipientInfoList [BouncedRecipientInfoList] <p>A list of recipients of the bounced message, including the information required to create the Delivery Status Notifications (DSNs) for the recipients. You must specify at least one <code>BouncedRecipientInfo</code> in the list.</p>
+-- @param BounceSender [Address] <p>The address to use in the "From" header of the bounce message. This must be an identity that you have verified with Amazon SES.</p>
+-- @param MessageDsn [MessageDsn] <p>Message-related DSN fields. If not specified, Amazon SES will choose the values.</p>
 -- Required parameter: OriginalMessageId
 -- Required parameter: BounceSender
 -- Required parameter: BouncedRecipientInfoList
@@ -1931,10 +1931,10 @@ function M.AssertCloudWatchDimensionConfiguration(struct)
 end
 
 --- Create a structure of type CloudWatchDimensionConfiguration
--- &lt;p&gt;Contains the dimension configuration to use when you publish email sending events to Amazon CloudWatch.&lt;/p&gt; &lt;p&gt;For information about publishing email sending events to Amazon CloudWatch, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param DimensionName [DimensionName] &lt;p&gt;The name of an Amazon CloudWatch dimension associated with an email sending metric. The name must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 256 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DimensionValueSource [DimensionValueSource] &lt;p&gt;The place where Amazon SES finds the value of a dimension to publish to Amazon CloudWatch. If you want Amazon SES to use the message tags that you specify using an &lt;code&gt;X-SES-MESSAGE-TAGS&lt;/code&gt; header or a parameter to the &lt;code&gt;SendEmail&lt;/code&gt;/&lt;code&gt;SendRawEmail&lt;/code&gt; API, choose &lt;code&gt;messageTag&lt;/code&gt;. If you want Amazon SES to use your own email headers, choose &lt;code&gt;emailHeader&lt;/code&gt;.&lt;/p&gt;
--- @param DefaultDimensionValue [DefaultDimensionValue] &lt;p&gt;The default value of the dimension that is published to Amazon CloudWatch if you do not provide the value of the dimension when you send an email. The default value must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 256 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Contains the dimension configuration to use when you publish email sending events to Amazon CloudWatch.</p> <p>For information about publishing email sending events to Amazon CloudWatch, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param DimensionName [DimensionName] <p>The name of an Amazon CloudWatch dimension associated with an email sending metric. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
+-- @param DimensionValueSource [DimensionValueSource] <p>The place where Amazon SES finds the value of a dimension to publish to Amazon CloudWatch. If you want Amazon SES to use the message tags that you specify using an <code>X-SES-MESSAGE-TAGS</code> header or a parameter to the <code>SendEmail</code>/<code>SendRawEmail</code> API, choose <code>messageTag</code>. If you want Amazon SES to use your own email headers, choose <code>emailHeader</code>.</p>
+-- @param DefaultDimensionValue [DefaultDimensionValue] <p>The default value of the dimension that is published to Amazon CloudWatch if you do not provide the value of the dimension when you send an email. The default value must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
 -- Required parameter: DimensionName
 -- Required parameter: DimensionValueSource
 -- Required parameter: DefaultDimensionValue
@@ -1962,8 +1962,8 @@ function M.AssertListIdentityPoliciesRequest(struct)
 end
 
 --- Create a structure of type ListIdentityPoliciesRequest
--- &lt;p&gt;Represents a request to return a list of sending authorization policies that are attached to an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Identity [Identity] &lt;p&gt;The identity that is associated with the policy for which the policies will be listed. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: &lt;code&gt;user@example.com&lt;/code&gt;, &lt;code&gt;example.com&lt;/code&gt;, &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To successfully call this API, you must own the identity.&lt;/p&gt;
+-- <p>Represents a request to return a list of sending authorization policies that are attached to an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- @param Identity [Identity] <p>The identity that is associated with the policy for which the policies will be listed. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
 -- Required parameter: Identity
 function M.ListIdentityPoliciesRequest(Identity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoliciesRequest")
@@ -1986,8 +1986,8 @@ function M.AssertAlreadyExistsException(struct)
 end
 
 --- Create a structure of type AlreadyExistsException
--- &lt;p&gt;Indicates that a resource could not be created because of a naming conflict.&lt;/p&gt;
--- @param Name [RuleOrRuleSetName] &lt;p&gt;Indicates that a resource could not be created because of a naming conflict.&lt;/p&gt;
+-- <p>Indicates that a resource could not be created because of a naming conflict.</p>
+-- @param Name [RuleOrRuleSetName] <p>Indicates that a resource could not be created because of a naming conflict.</p>
 function M.AlreadyExistsException(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyExistsException")
 	local t = { 
@@ -2009,8 +2009,8 @@ function M.AssertDescribeReceiptRuleResponse(struct)
 end
 
 --- Create a structure of type DescribeReceiptRuleResponse
--- &lt;p&gt;Represents the details of a receipt rule.&lt;/p&gt;
--- @param Rule [ReceiptRule] &lt;p&gt;A data structure that contains the specified receipt rule's name, actions, recipients, domains, enabled status, scan status, and Transport Layer Security (TLS) policy.&lt;/p&gt;
+-- <p>Represents the details of a receipt rule.</p>
+-- @param Rule [ReceiptRule] <p>A data structure that contains the specified receipt rule's name, actions, recipients, domains, enabled status, scan status, and Transport Layer Security (TLS) policy.</p>
 function M.DescribeReceiptRuleResponse(Rule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReceiptRuleResponse")
 	local t = { 
@@ -2033,8 +2033,8 @@ function M.AssertGetIdentityDkimAttributesResponse(struct)
 end
 
 --- Create a structure of type GetIdentityDkimAttributesResponse
--- &lt;p&gt;Represents the status of Amazon SES Easy DKIM signing for an identity. For domain identities, this response also contains the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES successfully verified that these tokens were published.&lt;/p&gt;
--- @param DkimAttributes [DkimAttributes] &lt;p&gt;The DKIM attributes for an email address or a domain.&lt;/p&gt;
+-- <p>Represents the status of Amazon SES Easy DKIM signing for an identity. For domain identities, this response also contains the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES successfully verified that these tokens were published.</p>
+-- @param DkimAttributes [DkimAttributes] <p>The DKIM attributes for an email address or a domain.</p>
 -- Required parameter: DkimAttributes
 function M.GetIdentityDkimAttributesResponse(DkimAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityDkimAttributesResponse")
@@ -2061,10 +2061,10 @@ function M.AssertCreateReceiptRuleRequest(struct)
 end
 
 --- Create a structure of type CreateReceiptRuleRequest
--- &lt;p&gt;Represents a request to create a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param After [ReceiptRuleName] &lt;p&gt;The name of an existing rule after which the new rule will be placed. If this parameter is null, the new rule will be inserted at the beginning of the rule list.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the rule set to which to add the rule.&lt;/p&gt;
--- @param Rule [ReceiptRule] &lt;p&gt;A data structure that contains the specified rule's name, actions, recipients, domains, enabled status, scan status, and TLS policy.&lt;/p&gt;
+-- <p>Represents a request to create a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param After [ReceiptRuleName] <p>The name of an existing rule after which the new rule will be placed. If this parameter is null, the new rule will be inserted at the beginning of the rule list.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to which to add the rule.</p>
+-- @param Rule [ReceiptRule] <p>A data structure that contains the specified rule's name, actions, recipients, domains, enabled status, scan status, and TLS policy.</p>
 -- Required parameter: RuleSetName
 -- Required parameter: Rule
 function M.CreateReceiptRuleRequest(After, RuleSetName, Rule, ...)
@@ -2093,9 +2093,9 @@ function M.AssertDeleteReceiptRuleRequest(struct)
 end
 
 --- Create a structure of type DeleteReceiptRuleRequest
--- &lt;p&gt;Represents a request to delete a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the receipt rule set that contains the receipt rule to delete.&lt;/p&gt;
--- @param RuleName [ReceiptRuleName] &lt;p&gt;The name of the receipt rule to delete.&lt;/p&gt;
+-- <p>Represents a request to delete a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set that contains the receipt rule to delete.</p>
+-- @param RuleName [ReceiptRuleName] <p>The name of the receipt rule to delete.</p>
 -- Required parameter: RuleSetName
 -- Required parameter: RuleName
 function M.DeleteReceiptRuleRequest(RuleSetName, RuleName, ...)
@@ -2122,9 +2122,9 @@ function M.AssertSNSAction(struct)
 end
 
 --- Create a structure of type SNSAction
--- &lt;p&gt;When included in a receipt rule, this action publishes a notification to Amazon Simple Notification Service (Amazon SNS). This action includes a complete copy of the email content in the Amazon SNS notifications. Amazon SNS notifications for all other actions simply provide information about the email. They do not include the email content itself.&lt;/p&gt; &lt;p&gt;If you own the Amazon SNS topic, you don't need to do anything to give Amazon SES permission to publish emails to it. However, if you don't own the Amazon SNS topic, you need to attach a policy to the topic to give Amazon SES permissions to access it. For information about giving permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;important&gt; &lt;p&gt;You can only publish emails that are 150 KB or less (including the header) to Amazon SNS. Larger emails will bounce. If you anticipate emails larger than 150 KB, use the S3 action instead.&lt;/p&gt; &lt;/important&gt; &lt;p&gt;For information about using a receipt rule to publish an Amazon SNS notification, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-sns.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param TopicArn [AmazonResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An example of an Amazon SNS topic ARN is &lt;code&gt;arn:aws:sns:us-west-2:123456789012:MyTopic&lt;/code&gt;. For more information about Amazon SNS topics, see the &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html&quot;&gt;Amazon SNS Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Encoding [SNSActionEncoding] &lt;p&gt;The encoding to use for the email within the Amazon SNS notification. UTF-8 is easier to use, but may not preserve all special characters when a message was encoded with a different encoding format. Base64 preserves all special characters. The default value is UTF-8.&lt;/p&gt;
+-- <p>When included in a receipt rule, this action publishes a notification to Amazon Simple Notification Service (Amazon SNS). This action includes a complete copy of the email content in the Amazon SNS notifications. Amazon SNS notifications for all other actions simply provide information about the email. They do not include the email content itself.</p> <p>If you own the Amazon SNS topic, you don't need to do anything to give Amazon SES permission to publish emails to it. However, if you don't own the Amazon SNS topic, you need to attach a policy to the topic to give Amazon SES permissions to access it. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <important> <p>You can only publish emails that are 150 KB or less (including the header) to Amazon SNS. Larger emails will bounce. If you anticipate emails larger than 150 KB, use the S3 action instead.</p> </important> <p>For information about using a receipt rule to publish an Amazon SNS notification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-sns.html">Amazon SES Developer Guide</a>.</p>
+-- @param TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
+-- @param Encoding [SNSActionEncoding] <p>The encoding to use for the email within the Amazon SNS notification. UTF-8 is easier to use, but may not preserve all special characters when a message was encoded with a different encoding format. Base64 preserves all special characters. The default value is UTF-8.</p>
 -- Required parameter: TopicArn
 function M.SNSAction(TopicArn, Encoding, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSAction")
@@ -2147,7 +2147,7 @@ function M.AssertDeleteIdentityPolicyResponse(struct)
 end
 
 --- Create a structure of type DeleteIdentityPolicyResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.DeleteIdentityPolicyResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityPolicyResponse")
 	local t = { 
@@ -2171,10 +2171,10 @@ function M.AssertMessageDsn(struct)
 end
 
 --- Create a structure of type MessageDsn
--- &lt;p&gt;Message-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.&lt;/p&gt; &lt;p&gt;For information about receiving email through Amazon SES, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param ArrivalDate [ArrivalDate] &lt;p&gt;When the message was received by the reporting mail transfer agent (MTA), in &lt;a href=&quot;https://www.ietf.org/rfc/rfc0822.txt&quot;&gt;RFC 822&lt;/a&gt; date-time format.&lt;/p&gt;
--- @param ReportingMta [ReportingMta] &lt;p&gt;The reporting MTA that attempted to deliver the message, formatted as specified in &lt;a href=&quot;https://tools.ietf.org/html/rfc3464&quot;&gt;RFC 3464&lt;/a&gt; (&lt;code&gt;mta-name-type; mta-name&lt;/code&gt;). The default value is &lt;code&gt;dns; inbound-smtp.[region].amazonaws.com&lt;/code&gt;.&lt;/p&gt;
--- @param ExtensionFields [ExtensionFieldList] &lt;p&gt;Additional X-headers to include in the DSN.&lt;/p&gt;
+-- <p>Message-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
+-- @param ArrivalDate [ArrivalDate] <p>When the message was received by the reporting mail transfer agent (MTA), in <a href="https://www.ietf.org/rfc/rfc0822.txt">RFC 822</a> date-time format.</p>
+-- @param ReportingMta [ReportingMta] <p>The reporting MTA that attempted to deliver the message, formatted as specified in <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a> (<code>mta-name-type; mta-name</code>). The default value is <code>dns; inbound-smtp.[region].amazonaws.com</code>.</p>
+-- @param ExtensionFields [ExtensionFieldList] <p>Additional X-headers to include in the DSN.</p>
 -- Required parameter: ReportingMta
 function M.MessageDsn(ArrivalDate, ReportingMta, ExtensionFields, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MessageDsn")
@@ -2200,8 +2200,8 @@ function M.AssertVerifyDomainDkimResponse(struct)
 end
 
 --- Create a structure of type VerifyDomainDkimResponse
--- &lt;p&gt;Returns CNAME records that you must publish to the DNS server of your domain to set up Easy DKIM with Amazon SES.&lt;/p&gt;
--- @param DkimTokens [VerificationTokenList] &lt;p&gt;A set of character strings that represent the domain's identity. If the identity is an email address, the tokens represent the domain of that address.&lt;/p&gt; &lt;p&gt;Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign emails originating from that domain.&lt;/p&gt; &lt;p&gt;For more information about creating DNS records using DKIM tokens, go to the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>Returns CNAME records that you must publish to the DNS server of your domain to set up Easy DKIM with Amazon SES.</p>
+-- @param DkimTokens [VerificationTokenList] <p>A set of character strings that represent the domain's identity. If the identity is an email address, the tokens represent the domain of that address.</p> <p>Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign emails originating from that domain.</p> <p>For more information about creating DNS records using DKIM tokens, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html">Amazon SES Developer Guide</a>.</p>
 -- Required parameter: DkimTokens
 function M.VerifyDomainDkimResponse(DkimTokens, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyDomainDkimResponse")
@@ -2223,7 +2223,7 @@ function M.AssertListReceiptFiltersRequest(struct)
 end
 
 --- Create a structure of type ListReceiptFiltersRequest
--- &lt;p&gt;Represents a request to list the IP address filters that exist under your AWS account. You use IP address filters when you receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>Represents a request to list the IP address filters that exist under your AWS account. You use IP address filters when you receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
 function M.ListReceiptFiltersRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListReceiptFiltersRequest")
 	local t = { 
@@ -2246,9 +2246,9 @@ function M.AssertDescribeConfigurationSetRequest(struct)
 end
 
 --- Create a structure of type DescribeConfigurationSetRequest
--- &lt;p&gt;Represents a request to return the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param ConfigurationSetAttributeNames [ConfigurationSetAttributeList] &lt;p&gt;A list of configuration set attributes to return.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;The name of the configuration set to describe.&lt;/p&gt;
+-- <p>Represents a request to return the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param ConfigurationSetAttributeNames [ConfigurationSetAttributeList] <p>A list of configuration set attributes to return.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to describe.</p>
 -- Required parameter: ConfigurationSetName
 function M.DescribeConfigurationSetRequest(ConfigurationSetAttributeNames, ConfigurationSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationSetRequest")
@@ -2271,7 +2271,7 @@ function M.AssertCreateConfigurationSetEventDestinationResponse(struct)
 end
 
 --- Create a structure of type CreateConfigurationSetEventDestinationResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.CreateConfigurationSetEventDestinationResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateConfigurationSetEventDestinationResponse")
 	local t = { 
@@ -2293,8 +2293,8 @@ function M.AssertSendRawEmailResponse(struct)
 end
 
 --- Create a structure of type SendRawEmailResponse
--- &lt;p&gt;Represents a unique message ID.&lt;/p&gt;
--- @param MessageId [MessageId] &lt;p&gt;The unique message identifier returned from the &lt;code&gt;SendRawEmail&lt;/code&gt; action. &lt;/p&gt;
+-- <p>Represents a unique message ID.</p>
+-- @param MessageId [MessageId] <p>The unique message identifier returned from the <code>SendRawEmail</code> action. </p>
 -- Required parameter: MessageId
 function M.SendRawEmailResponse(MessageId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SendRawEmailResponse")
@@ -2318,8 +2318,8 @@ function M.AssertGetIdentityVerificationAttributesRequest(struct)
 end
 
 --- Create a structure of type GetIdentityVerificationAttributesRequest
--- &lt;p&gt;Represents a request to return the Amazon SES verification status of a list of identities. For domain identities, this request also returns the verification token. For information about verifying identities with Amazon SES, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Identities [IdentityList] &lt;p&gt;A list of identities.&lt;/p&gt;
+-- <p>Represents a request to return the Amazon SES verification status of a list of identities. For domain identities, this request also returns the verification token. For information about verifying identities with Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html">Amazon SES Developer Guide</a>.</p>
+-- @param Identities [IdentityList] <p>A list of identities.</p>
 -- Required parameter: Identities
 function M.GetIdentityVerificationAttributesRequest(Identities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityVerificationAttributesRequest")
@@ -2343,8 +2343,8 @@ function M.AssertCreateReceiptFilterRequest(struct)
 end
 
 --- Create a structure of type CreateReceiptFilterRequest
--- &lt;p&gt;Represents a request to create a new IP address filter. You use IP address filters when you receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Filter [ReceiptFilter] &lt;p&gt;A data structure that describes the IP address filter to create, which consists of a name, an IP address range, and whether to allow or block mail from it.&lt;/p&gt;
+-- <p>Represents a request to create a new IP address filter. You use IP address filters when you receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param Filter [ReceiptFilter] <p>A data structure that describes the IP address filter to create, which consists of a name, an IP address range, and whether to allow or block mail from it.</p>
 -- Required parameter: Filter
 function M.CreateReceiptFilterRequest(Filter, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptFilterRequest")
@@ -2367,8 +2367,8 @@ function M.AssertCannotDeleteException(struct)
 end
 
 --- Create a structure of type CannotDeleteException
--- &lt;p&gt;Indicates that the delete operation could not be completed.&lt;/p&gt;
--- @param Name [RuleOrRuleSetName] &lt;p&gt;Indicates that the delete operation could not be completed.&lt;/p&gt;
+-- <p>Indicates that the delete operation could not be completed.</p>
+-- @param Name [RuleOrRuleSetName] <p>Indicates that the delete operation could not be completed.</p>
 function M.CannotDeleteException(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CannotDeleteException")
 	local t = { 
@@ -2391,9 +2391,9 @@ function M.AssertListReceiptRuleSetsResponse(struct)
 end
 
 --- Create a structure of type ListReceiptRuleSetsResponse
--- &lt;p&gt;A list of receipt rule sets that exist under your AWS account.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A token indicating that there are additional receipt rule sets available to be listed. Pass this token to successive calls of &lt;code&gt;ListReceiptRuleSets&lt;/code&gt; to retrieve up to 100 receipt rule sets at a time.&lt;/p&gt;
--- @param RuleSets [ReceiptRuleSetsLists] &lt;p&gt;The metadata for the currently active receipt rule set. The metadata consists of the rule set name and the timestamp of when the rule set was created.&lt;/p&gt;
+-- <p>A list of receipt rule sets that exist under your AWS account.</p>
+-- @param NextToken [NextToken] <p>A token indicating that there are additional receipt rule sets available to be listed. Pass this token to successive calls of <code>ListReceiptRuleSets</code> to retrieve up to 100 receipt rule sets at a time.</p>
+-- @param RuleSets [ReceiptRuleSetsLists] <p>The metadata for the currently active receipt rule set. The metadata consists of the rule set name and the timestamp of when the rule set was created.</p>
 function M.ListReceiptRuleSetsResponse(NextToken, RuleSets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListReceiptRuleSetsResponse")
 	local t = { 
@@ -2419,9 +2419,9 @@ function M.AssertCloneReceiptRuleSetRequest(struct)
 end
 
 --- Create a structure of type CloneReceiptRuleSetRequest
--- &lt;p&gt;Represents a request to create a receipt rule set by cloning an existing one. You use receipt rule sets to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the rule set to create. The name must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Start and end with a letter or number.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 64 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param OriginalRuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the rule set to clone.&lt;/p&gt;
+-- <p>Represents a request to create a receipt rule set by cloning an existing one. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- @param OriginalRuleSetName [ReceiptRuleSetName] <p>The name of the rule set to clone.</p>
 -- Required parameter: RuleSetName
 -- Required parameter: OriginalRuleSetName
 function M.CloneReceiptRuleSetRequest(RuleSetName, OriginalRuleSetName, ...)
@@ -2447,9 +2447,9 @@ function M.AssertDescribeConfigurationSetResponse(struct)
 end
 
 --- Create a structure of type DescribeConfigurationSetResponse
--- &lt;p&gt;Represents the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param EventDestinations [EventDestinations] &lt;p&gt;A list of event destinations associated with the configuration set. &lt;/p&gt;
--- @param ConfigurationSet [ConfigurationSet] &lt;p&gt;The configuration set object associated with the specified configuration set.&lt;/p&gt;
+-- <p>Represents the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param EventDestinations [EventDestinations] <p>A list of event destinations associated with the configuration set. </p>
+-- @param ConfigurationSet [ConfigurationSet] <p>The configuration set object associated with the specified configuration set.</p>
 function M.DescribeConfigurationSetResponse(EventDestinations, ConfigurationSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationSetResponse")
 	local t = { 
@@ -2471,7 +2471,7 @@ function M.AssertSetActiveReceiptRuleSetResponse(struct)
 end
 
 --- Create a structure of type SetActiveReceiptRuleSetResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.SetActiveReceiptRuleSetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetActiveReceiptRuleSetResponse")
 	local t = { 
@@ -2493,8 +2493,8 @@ function M.AssertCreateReceiptRuleSetRequest(struct)
 end
 
 --- Create a structure of type CreateReceiptRuleSetRequest
--- &lt;p&gt;Represents a request to create an empty receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the rule set to create. The name must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Start and end with a letter or number.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 64 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Represents a request to create an empty receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
 -- Required parameter: RuleSetName
 function M.CreateReceiptRuleSetRequest(RuleSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptRuleSetRequest")
@@ -2516,7 +2516,7 @@ function M.AssertPutIdentityPolicyResponse(struct)
 end
 
 --- Create a structure of type PutIdentityPolicyResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.PutIdentityPolicyResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutIdentityPolicyResponse")
 	local t = { 
@@ -2538,8 +2538,8 @@ function M.AssertRawMessage(struct)
 end
 
 --- Create a structure of type RawMessage
--- &lt;p&gt;Represents the raw data of the message.&lt;/p&gt;
--- @param Data [RawMessageData] &lt;p&gt;The raw data of the message. The client must ensure that the message format complies with Internet email standards regarding email header fields, MIME types, MIME encoding, and base64 encoding.&lt;/p&gt; &lt;p&gt;The To:, CC:, and BCC: headers in the raw message can contain a group list.&lt;/p&gt; &lt;p&gt;If you are using &lt;code&gt;SendRawEmail&lt;/code&gt; with sending authorization, you can include X-headers in the raw message to specify the &quot;Source,&quot; &quot;From,&quot; and &quot;Return-Path&quot; addresses. For more information, see the documentation for &lt;code&gt;SendRawEmail&lt;/code&gt;. &lt;/p&gt; &lt;important&gt; &lt;p&gt;Do not include these X-headers in the DKIM signature, because they are removed by Amazon SES before sending the email.&lt;/p&gt; &lt;/important&gt; &lt;p&gt;For more information, go to the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;. &lt;/p&gt;
+-- <p>Represents the raw data of the message.</p>
+-- @param Data [RawMessageData] <p>The raw data of the message. The client must ensure that the message format complies with Internet email standards regarding email header fields, MIME types, MIME encoding, and base64 encoding.</p> <p>The To:, CC:, and BCC: headers in the raw message can contain a group list.</p> <p>If you are using <code>SendRawEmail</code> with sending authorization, you can include X-headers in the raw message to specify the "Source," "From," and "Return-Path" addresses. For more information, see the documentation for <code>SendRawEmail</code>. </p> <important> <p>Do not include these X-headers in the DKIM signature, because they are removed by Amazon SES before sending the email.</p> </important> <p>For more information, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>. </p>
 -- Required parameter: Data
 function M.RawMessage(Data, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RawMessage")
@@ -2563,8 +2563,8 @@ function M.AssertSendEmailResponse(struct)
 end
 
 --- Create a structure of type SendEmailResponse
--- &lt;p&gt;Represents a unique message ID.&lt;/p&gt;
--- @param MessageId [MessageId] &lt;p&gt;The unique message identifier returned from the &lt;code&gt;SendEmail&lt;/code&gt; action. &lt;/p&gt;
+-- <p>Represents a unique message ID.</p>
+-- @param MessageId [MessageId] <p>The unique message identifier returned from the <code>SendEmail</code> action. </p>
 -- Required parameter: MessageId
 function M.SendEmailResponse(MessageId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SendEmailResponse")
@@ -2590,10 +2590,10 @@ function M.AssertLambdaAction(struct)
 end
 
 --- Create a structure of type LambdaAction
--- &lt;p&gt;When included in a receipt rule, this action calls an AWS Lambda function and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).&lt;/p&gt; &lt;p&gt;To enable Amazon SES to call your AWS Lambda function or to publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;For information about using AWS Lambda actions in receipt rules, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param InvocationType [InvocationType] &lt;p&gt;The invocation type of the AWS Lambda function. An invocation type of &lt;code&gt;RequestResponse&lt;/code&gt; means that the execution of the function will immediately result in a response, and a value of &lt;code&gt;Event&lt;/code&gt; means that the function will be invoked asynchronously. The default value is &lt;code&gt;Event&lt;/code&gt;. For information about AWS Lambda invocation types, see the &lt;a href=&quot;http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html&quot;&gt;AWS Lambda Developer Guide&lt;/a&gt;.&lt;/p&gt; &lt;important&gt; &lt;p&gt;There is a 30-second timeout on &lt;code&gt;RequestResponse&lt;/code&gt; invocations. You should use &lt;code&gt;Event&lt;/code&gt; invocation in most cases. Use &lt;code&gt;RequestResponse&lt;/code&gt; only when you want to make a mail flow decision, such as whether to stop the receipt rule or the receipt rule set.&lt;/p&gt; &lt;/important&gt;
--- @param FunctionArn [AmazonResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the AWS Lambda function. An example of an AWS Lambda function ARN is &lt;code&gt;arn:aws:lambda:us-west-2:account-id:function:MyFunction&lt;/code&gt;. For more information about AWS Lambda, see the &lt;a href=&quot;http://docs.aws.amazon.com/lambda/latest/dg/welcome.html&quot;&gt;AWS Lambda Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param TopicArn [AmazonResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the Lambda action is taken. An example of an Amazon SNS topic ARN is &lt;code&gt;arn:aws:sns:us-west-2:123456789012:MyTopic&lt;/code&gt;. For more information about Amazon SNS topics, see the &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html&quot;&gt;Amazon SNS Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>When included in a receipt rule, this action calls an AWS Lambda function and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>To enable Amazon SES to call your AWS Lambda function or to publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <p>For information about using AWS Lambda actions in receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html">Amazon SES Developer Guide</a>.</p>
+-- @param InvocationType [InvocationType] <p>The invocation type of the AWS Lambda function. An invocation type of <code>RequestResponse</code> means that the execution of the function will immediately result in a response, and a value of <code>Event</code> means that the function will be invoked asynchronously. The default value is <code>Event</code>. For information about AWS Lambda invocation types, see the <a href="http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html">AWS Lambda Developer Guide</a>.</p> <important> <p>There is a 30-second timeout on <code>RequestResponse</code> invocations. You should use <code>Event</code> invocation in most cases. Use <code>RequestResponse</code> only when you want to make a mail flow decision, such as whether to stop the receipt rule or the receipt rule set.</p> </important>
+-- @param FunctionArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the AWS Lambda function. An example of an AWS Lambda function ARN is <code>arn:aws:lambda:us-west-2:account-id:function:MyFunction</code>. For more information about AWS Lambda, see the <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">AWS Lambda Developer Guide</a>.</p>
+-- @param TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the Lambda action is taken. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
 -- Required parameter: FunctionArn
 function M.LambdaAction(InvocationType, FunctionArn, TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaAction")
@@ -2618,8 +2618,8 @@ function M.AssertRuleDoesNotExistException(struct)
 end
 
 --- Create a structure of type RuleDoesNotExistException
--- &lt;p&gt;Indicates that the provided receipt rule does not exist.&lt;/p&gt;
--- @param Name [RuleOrRuleSetName] &lt;p&gt;Indicates that the provided receipt rule does not exist.&lt;/p&gt;
+-- <p>Indicates that the provided receipt rule does not exist.</p>
+-- @param Name [RuleOrRuleSetName] <p>Indicates that the provided receipt rule does not exist.</p>
 function M.RuleDoesNotExistException(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RuleDoesNotExistException")
 	local t = { 
@@ -2642,9 +2642,9 @@ function M.AssertReceiptRuleSetMetadata(struct)
 end
 
 --- Create a structure of type ReceiptRuleSetMetadata
--- &lt;p&gt;Information about a receipt rule set.&lt;/p&gt; &lt;p&gt;A receipt rule set is a collection of rules that specify what Amazon SES should do with mail it receives on behalf of your account's verified domains.&lt;/p&gt; &lt;p&gt;For information about setting up receipt rule sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param CreatedTimestamp [Timestamp] &lt;p&gt;The date and time the receipt rule set was created.&lt;/p&gt;
--- @param Name [ReceiptRuleSetName] &lt;p&gt;The name of the receipt rule set. The name must:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Start and end with a letter or number.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Contain less than 64 characters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Information about a receipt rule set.</p> <p>A receipt rule set is a collection of rules that specify what Amazon SES should do with mail it receives on behalf of your account's verified domains.</p> <p>For information about setting up receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html">Amazon SES Developer Guide</a>.</p>
+-- @param CreatedTimestamp [Timestamp] <p>The date and time the receipt rule set was created.</p>
+-- @param Name [ReceiptRuleSetName] <p>The name of the receipt rule set. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
 function M.ReceiptRuleSetMetadata(CreatedTimestamp, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReceiptRuleSetMetadata")
 	local t = { 
@@ -2666,7 +2666,7 @@ function M.AssertMailFromDomainNotVerifiedException(struct)
 end
 
 --- Create a structure of type MailFromDomainNotVerifiedException
--- &lt;p&gt; Indicates that the message could not be sent because Amazon SES could not read the MX record required to use the specified MAIL FROM domain. For information about editing the custom MAIL FROM domain settings for an identity, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-edit.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p> Indicates that the message could not be sent because Amazon SES could not read the MX record required to use the specified MAIL FROM domain. For information about editing the custom MAIL FROM domain settings for an identity, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-edit.html">Amazon SES Developer Guide</a>.</p>
 function M.MailFromDomainNotVerifiedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MailFromDomainNotVerifiedException")
 	local t = { 
@@ -2691,10 +2691,10 @@ function M.AssertSetReceiptRulePositionRequest(struct)
 end
 
 --- Create a structure of type SetReceiptRulePositionRequest
--- &lt;p&gt;Represents a request to set the position of a receipt rule in a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param After [ReceiptRuleName] &lt;p&gt;The name of the receipt rule after which to place the specified receipt rule.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the receipt rule set that contains the receipt rule to reposition.&lt;/p&gt;
--- @param RuleName [ReceiptRuleName] &lt;p&gt;The name of the receipt rule to reposition.&lt;/p&gt;
+-- <p>Represents a request to set the position of a receipt rule in a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param After [ReceiptRuleName] <p>The name of the receipt rule after which to place the specified receipt rule.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set that contains the receipt rule to reposition.</p>
+-- @param RuleName [ReceiptRuleName] <p>The name of the receipt rule to reposition.</p>
 -- Required parameter: RuleSetName
 -- Required parameter: RuleName
 function M.SetReceiptRulePositionRequest(After, RuleSetName, RuleName, ...)
@@ -2719,7 +2719,7 @@ function M.AssertSetIdentityMailFromDomainResponse(struct)
 end
 
 --- Create a structure of type SetIdentityMailFromDomainResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.SetIdentityMailFromDomainResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityMailFromDomainResponse")
 	local t = { 
@@ -2740,8 +2740,8 @@ function M.AssertConfigurationSetDoesNotExistException(struct)
 end
 
 --- Create a structure of type ConfigurationSetDoesNotExistException
--- &lt;p&gt;Indicates that the configuration set does not exist.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;Indicates that the configuration set does not exist.&lt;/p&gt;
+-- <p>Indicates that the configuration set does not exist.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>Indicates that the configuration set does not exist.</p>
 function M.ConfigurationSetDoesNotExistException(ConfigurationSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSetDoesNotExistException")
 	local t = { 
@@ -2764,8 +2764,8 @@ function M.AssertGetIdentityPoliciesResponse(struct)
 end
 
 --- Create a structure of type GetIdentityPoliciesResponse
--- &lt;p&gt;Represents the requested sending authorization policies.&lt;/p&gt;
--- @param Policies [PolicyMap] &lt;p&gt;A map of policy names to policies.&lt;/p&gt;
+-- <p>Represents the requested sending authorization policies.</p>
+-- @param Policies [PolicyMap] <p>A map of policy names to policies.</p>
 -- Required parameter: Policies
 function M.GetIdentityPoliciesResponse(Policies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoliciesResponse")
@@ -2788,8 +2788,8 @@ function M.AssertRuleSetDoesNotExistException(struct)
 end
 
 --- Create a structure of type RuleSetDoesNotExistException
--- &lt;p&gt;Indicates that the provided receipt rule set does not exist.&lt;/p&gt;
--- @param Name [RuleOrRuleSetName] &lt;p&gt;Indicates that the provided receipt rule set does not exist.&lt;/p&gt;
+-- <p>Indicates that the provided receipt rule set does not exist.</p>
+-- @param Name [RuleOrRuleSetName] <p>Indicates that the provided receipt rule set does not exist.</p>
 function M.RuleSetDoesNotExistException(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RuleSetDoesNotExistException")
 	local t = { 
@@ -2812,8 +2812,8 @@ function M.AssertDeleteReceiptFilterRequest(struct)
 end
 
 --- Create a structure of type DeleteReceiptFilterRequest
--- &lt;p&gt;Represents a request to delete an IP address filter. You use IP address filters when you receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param FilterName [ReceiptFilterName] &lt;p&gt;The name of the IP address filter to delete.&lt;/p&gt;
+-- <p>Represents a request to delete an IP address filter. You use IP address filters when you receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param FilterName [ReceiptFilterName] <p>The name of the IP address filter to delete.</p>
 -- Required parameter: FilterName
 function M.DeleteReceiptFilterRequest(FilterName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptFilterRequest")
@@ -2837,9 +2837,9 @@ function M.AssertListConfigurationSetsRequest(struct)
 end
 
 --- Create a structure of type ListConfigurationSetsRequest
--- &lt;p&gt;Represents a request to list the configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A token returned from a previous call to &lt;code&gt;ListConfigurationSets&lt;/code&gt; to indicate the position of the configuration set in the configuration set list.&lt;/p&gt;
--- @param MaxItems [MaxItems] &lt;p&gt;The number of configuration sets to return.&lt;/p&gt;
+-- <p>Represents a request to list the configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param NextToken [NextToken] <p>A token returned from a previous call to <code>ListConfigurationSets</code> to indicate the position of the configuration set in the configuration set list.</p>
+-- @param MaxItems [MaxItems] <p>The number of configuration sets to return.</p>
 function M.ListConfigurationSetsRequest(NextToken, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListConfigurationSetsRequest")
 	local t = { 
@@ -2862,8 +2862,8 @@ function M.AssertInvalidLambdaFunctionException(struct)
 end
 
 --- Create a structure of type InvalidLambdaFunctionException
--- &lt;p&gt;Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param FunctionArn [AmazonResourceName] &lt;p&gt;Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
+-- @param FunctionArn [AmazonResourceName] <p>Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
 function M.InvalidLambdaFunctionException(FunctionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLambdaFunctionException")
 	local t = { 
@@ -2888,9 +2888,9 @@ function M.AssertReceiptIpFilter(struct)
 end
 
 --- Create a structure of type ReceiptIpFilter
--- &lt;p&gt;A receipt IP address filter enables you to specify whether to accept or reject mail originating from an IP address or range of IP addresses.&lt;/p&gt; &lt;p&gt;For information about setting up IP address filters, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Policy [ReceiptFilterPolicy] &lt;p&gt;Indicates whether to block or allow incoming mail from the specified IP addresses.&lt;/p&gt;
--- @param Cidr [Cidr] &lt;p&gt;A single IP address or a range of IP addresses that you want to block or allow, specified in Classless Inter-Domain Routing (CIDR) notation. An example of a single email address is 10.0.0.1. An example of a range of IP addresses is 10.0.0.1/24. For more information about CIDR notation, see &lt;a href=&quot;https://tools.ietf.org/html/rfc2317&quot;&gt;RFC 2317&lt;/a&gt;.&lt;/p&gt;
+-- <p>A receipt IP address filter enables you to specify whether to accept or reject mail originating from an IP address or range of IP addresses.</p> <p>For information about setting up IP address filters, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html">Amazon SES Developer Guide</a>.</p>
+-- @param Policy [ReceiptFilterPolicy] <p>Indicates whether to block or allow incoming mail from the specified IP addresses.</p>
+-- @param Cidr [Cidr] <p>A single IP address or a range of IP addresses that you want to block or allow, specified in Classless Inter-Domain Routing (CIDR) notation. An example of a single email address is 10.0.0.1. An example of a range of IP addresses is 10.0.0.1/24. For more information about CIDR notation, see <a href="https://tools.ietf.org/html/rfc2317">RFC 2317</a>.</p>
 -- Required parameter: Policy
 -- Required parameter: Cidr
 function M.ReceiptIpFilter(Policy, Cidr, ...)
@@ -2919,10 +2919,10 @@ function M.AssertIdentityDkimAttributes(struct)
 end
 
 --- Create a structure of type IdentityDkimAttributes
--- &lt;p&gt;Represents the DKIM attributes of a verified email address or a domain.&lt;/p&gt;
--- @param DkimTokens [VerificationTokenList] &lt;p&gt;A set of character strings that represent the domain's identity. Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign email originating from that domain. (This only applies to domain identities, not email address identities.)&lt;/p&gt; &lt;p&gt;For more information about creating DNS records using DKIM tokens, go to the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param DkimEnabled [Enabled] &lt;p&gt;True if DKIM signing is enabled for email sent from the identity; false otherwise. The default value is true.&lt;/p&gt;
--- @param DkimVerificationStatus [VerificationStatus] &lt;p&gt;Describes whether Amazon SES has successfully verified the DKIM DNS records (tokens) published in the domain name's DNS. (This only applies to domain identities, not email address identities.)&lt;/p&gt;
+-- <p>Represents the DKIM attributes of a verified email address or a domain.</p>
+-- @param DkimTokens [VerificationTokenList] <p>A set of character strings that represent the domain's identity. Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign email originating from that domain. (This only applies to domain identities, not email address identities.)</p> <p>For more information about creating DNS records using DKIM tokens, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html">Amazon SES Developer Guide</a>.</p>
+-- @param DkimEnabled [Enabled] <p>True if DKIM signing is enabled for email sent from the identity; false otherwise. The default value is true.</p>
+-- @param DkimVerificationStatus [VerificationStatus] <p>Describes whether Amazon SES has successfully verified the DKIM DNS records (tokens) published in the domain name's DNS. (This only applies to domain identities, not email address identities.)</p>
 -- Required parameter: DkimEnabled
 -- Required parameter: DkimVerificationStatus
 function M.IdentityDkimAttributes(DkimTokens, DkimEnabled, DkimVerificationStatus, ...)
@@ -2951,9 +2951,9 @@ function M.AssertAddHeaderAction(struct)
 end
 
 --- Create a structure of type AddHeaderAction
--- &lt;p&gt;When included in a receipt rule, this action adds a header to the received email.&lt;/p&gt; &lt;p&gt;For information about adding a header using a receipt rule, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-add-header.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param HeaderName [HeaderName] &lt;p&gt;The name of the header to add. Must be between 1 and 50 characters, inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes only.&lt;/p&gt;
--- @param HeaderValue [HeaderValue] &lt;p&gt;Must be less than 2048 characters, and must not contain newline characters (&quot;\r&quot; or &quot;\n&quot;).&lt;/p&gt;
+-- <p>When included in a receipt rule, this action adds a header to the received email.</p> <p>For information about adding a header using a receipt rule, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-add-header.html">Amazon SES Developer Guide</a>.</p>
+-- @param HeaderName [HeaderName] <p>The name of the header to add. Must be between 1 and 50 characters, inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes only.</p>
+-- @param HeaderValue [HeaderValue] <p>Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").</p>
 -- Required parameter: HeaderName
 -- Required parameter: HeaderValue
 function M.AddHeaderAction(HeaderName, HeaderValue, ...)
@@ -2980,9 +2980,9 @@ function M.AssertContent(struct)
 end
 
 --- Create a structure of type Content
--- &lt;p&gt;Represents textual data, plus an optional character set specification.&lt;/p&gt; &lt;p&gt;By default, the text must be 7-bit ASCII, due to the constraints of the SMTP protocol. If the text must contain any other characters, then you must also specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.&lt;/p&gt;
--- @param Charset [Charset] &lt;p&gt;The character set of the content.&lt;/p&gt;
--- @param Data [MessageData] &lt;p&gt;The textual data of the content.&lt;/p&gt;
+-- <p>Represents textual data, plus an optional character set specification.</p> <p>By default, the text must be 7-bit ASCII, due to the constraints of the SMTP protocol. If the text must contain any other characters, then you must also specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.</p>
+-- @param Charset [Charset] <p>The character set of the content.</p>
+-- @param Data [MessageData] <p>The textual data of the content.</p>
 -- Required parameter: Data
 function M.Content(Charset, Data, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Content")
@@ -3009,9 +3009,9 @@ function M.AssertKinesisFirehoseDestination(struct)
 end
 
 --- Create a structure of type KinesisFirehoseDestination
--- &lt;p&gt;Contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event destination.&lt;/p&gt; &lt;p&gt;Event destinations, such as Amazon Kinesis Firehose, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param DeliveryStreamARN [AmazonResourceName] &lt;p&gt;The ARN of the Amazon Kinesis Firehose stream to which to publish email sending events.&lt;/p&gt;
--- @param IAMRoleARN [AmazonResourceName] &lt;p&gt;The ARN of the IAM role under which Amazon SES publishes email sending events to the Amazon Kinesis Firehose stream.&lt;/p&gt;
+-- <p>Contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event destination.</p> <p>Event destinations, such as Amazon Kinesis Firehose, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param DeliveryStreamARN [AmazonResourceName] <p>The ARN of the Amazon Kinesis Firehose stream to which to publish email sending events.</p>
+-- @param IAMRoleARN [AmazonResourceName] <p>The ARN of the IAM role under which Amazon SES publishes email sending events to the Amazon Kinesis Firehose stream.</p>
 -- Required parameter: IAMRoleARN
 -- Required parameter: DeliveryStreamARN
 function M.KinesisFirehoseDestination(DeliveryStreamARN, IAMRoleARN, ...)
@@ -3035,7 +3035,7 @@ function M.AssertUpdateReceiptRuleResponse(struct)
 end
 
 --- Create a structure of type UpdateReceiptRuleResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.UpdateReceiptRuleResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateReceiptRuleResponse")
 	local t = { 
@@ -3059,9 +3059,9 @@ function M.AssertDescribeReceiptRuleRequest(struct)
 end
 
 --- Create a structure of type DescribeReceiptRuleRequest
--- &lt;p&gt;Represents a request to return the details of a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the receipt rule set to which the receipt rule belongs.&lt;/p&gt;
--- @param RuleName [ReceiptRuleName] &lt;p&gt;The name of the receipt rule.&lt;/p&gt;
+-- <p>Represents a request to return the details of a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to which the receipt rule belongs.</p>
+-- @param RuleName [ReceiptRuleName] <p>The name of the receipt rule.</p>
 -- Required parameter: RuleSetName
 -- Required parameter: RuleName
 function M.DescribeReceiptRuleRequest(RuleSetName, RuleName, ...)
@@ -3087,9 +3087,9 @@ function M.AssertDescribeActiveReceiptRuleSetResponse(struct)
 end
 
 --- Create a structure of type DescribeActiveReceiptRuleSetResponse
--- &lt;p&gt;Represents the metadata and receipt rules for the receipt rule set that is currently active.&lt;/p&gt;
--- @param Rules [ReceiptRulesList] &lt;p&gt;The receipt rules that belong to the active rule set.&lt;/p&gt;
--- @param Metadata [ReceiptRuleSetMetadata] &lt;p&gt;The metadata for the currently active receipt rule set. The metadata consists of the rule set name and a timestamp of when the rule set was created.&lt;/p&gt;
+-- <p>Represents the metadata and receipt rules for the receipt rule set that is currently active.</p>
+-- @param Rules [ReceiptRulesList] <p>The receipt rules that belong to the active rule set.</p>
+-- @param Metadata [ReceiptRuleSetMetadata] <p>The metadata for the currently active receipt rule set. The metadata consists of the rule set name and a timestamp of when the rule set was created.</p>
 function M.DescribeActiveReceiptRuleSetResponse(Rules, Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActiveReceiptRuleSetResponse")
 	local t = { 
@@ -3114,10 +3114,10 @@ function M.AssertGetSendQuotaResponse(struct)
 end
 
 --- Create a structure of type GetSendQuotaResponse
--- &lt;p&gt;Represents your Amazon SES daily sending quota, maximum send rate, and the number of emails you have sent in the last 24 hours.&lt;/p&gt;
--- @param Max24HourSend [Max24HourSend] &lt;p&gt;The maximum number of emails the user is allowed to send in a 24-hour interval. A value of -1 signifies an unlimited quota.&lt;/p&gt;
--- @param SentLast24Hours [SentLast24Hours] &lt;p&gt;The number of emails sent during the previous 24 hours.&lt;/p&gt;
--- @param MaxSendRate [MaxSendRate] &lt;p&gt;The maximum number of emails that Amazon SES can accept from the user's account per second.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The rate at which Amazon SES accepts the user's messages might be less than the maximum send rate.&lt;/p&gt; &lt;/note&gt;
+-- <p>Represents your Amazon SES daily sending quota, maximum send rate, and the number of emails you have sent in the last 24 hours.</p>
+-- @param Max24HourSend [Max24HourSend] <p>The maximum number of emails the user is allowed to send in a 24-hour interval. A value of -1 signifies an unlimited quota.</p>
+-- @param SentLast24Hours [SentLast24Hours] <p>The number of emails sent during the previous 24 hours.</p>
+-- @param MaxSendRate [MaxSendRate] <p>The maximum number of emails that Amazon SES can accept from the user's account per second.</p> <note> <p>The rate at which Amazon SES accepts the user's messages might be less than the maximum send rate.</p> </note>
 function M.GetSendQuotaResponse(Max24HourSend, SentLast24Hours, MaxSendRate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSendQuotaResponse")
 	local t = { 
@@ -3149,14 +3149,14 @@ function M.AssertRecipientDsnFields(struct)
 end
 
 --- Create a structure of type RecipientDsnFields
--- &lt;p&gt;Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.&lt;/p&gt; &lt;p&gt;For information about receiving email through Amazon SES, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Status [DsnStatus] &lt;p&gt;The status code that indicates what went wrong. This is required by &lt;a href=&quot;https://tools.ietf.org/html/rfc3464&quot;&gt;RFC 3464&lt;/a&gt;.&lt;/p&gt;
--- @param FinalRecipient [Address] &lt;p&gt;The email address to which the message was ultimately delivered. This corresponds to the &lt;code&gt;Final-Recipient&lt;/code&gt; in the DSN. If not specified, &lt;code&gt;FinalRecipient&lt;/code&gt; will be set to the &lt;code&gt;Recipient&lt;/code&gt; specified in the &lt;code&gt;BouncedRecipientInfo&lt;/code&gt; structure. Either &lt;code&gt;FinalRecipient&lt;/code&gt; or the recipient in &lt;code&gt;BouncedRecipientInfo&lt;/code&gt; must be a recipient of the original bounced message.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Do not prepend the &lt;code&gt;FinalRecipient&lt;/code&gt; email address with &lt;code&gt;rfc 822;&lt;/code&gt;, as described in &lt;a href=&quot;https://tools.ietf.org/html/rfc3798&quot;&gt;RFC 3798&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param DiagnosticCode [DiagnosticCode] &lt;p&gt;An extended explanation of what went wrong; this is usually an SMTP response. See &lt;a href=&quot;https://tools.ietf.org/html/rfc3463&quot;&gt;RFC 3463&lt;/a&gt; for the correct formatting of this parameter.&lt;/p&gt;
--- @param LastAttemptDate [LastAttemptDate] &lt;p&gt;The time the final delivery attempt was made, in &lt;a href=&quot;https://www.ietf.org/rfc/rfc0822.txt&quot;&gt;RFC 822&lt;/a&gt; date-time format.&lt;/p&gt;
--- @param ExtensionFields [ExtensionFieldList] &lt;p&gt;Additional X-headers to include in the DSN.&lt;/p&gt;
--- @param RemoteMta [RemoteMta] &lt;p&gt;The MTA to which the remote MTA attempted to deliver the message, formatted as specified in &lt;a href=&quot;https://tools.ietf.org/html/rfc3464&quot;&gt;RFC 3464&lt;/a&gt; (&lt;code&gt;mta-name-type; mta-name&lt;/code&gt;). This parameter typically applies only to propagating synchronous bounces.&lt;/p&gt;
--- @param Action [DsnAction] &lt;p&gt;The action performed by the reporting mail transfer agent (MTA) as a result of its attempt to deliver the message to the recipient address. This is required by &lt;a href=&quot;https://tools.ietf.org/html/rfc3464&quot;&gt;RFC 3464&lt;/a&gt;.&lt;/p&gt;
+-- <p>Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
+-- @param Status [DsnStatus] <p>The status code that indicates what went wrong. This is required by <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a>.</p>
+-- @param FinalRecipient [Address] <p>The email address to which the message was ultimately delivered. This corresponds to the <code>Final-Recipient</code> in the DSN. If not specified, <code>FinalRecipient</code> will be set to the <code>Recipient</code> specified in the <code>BouncedRecipientInfo</code> structure. Either <code>FinalRecipient</code> or the recipient in <code>BouncedRecipientInfo</code> must be a recipient of the original bounced message.</p> <note> <p>Do not prepend the <code>FinalRecipient</code> email address with <code>rfc 822;</code>, as described in <a href="https://tools.ietf.org/html/rfc3798">RFC 3798</a>.</p> </note>
+-- @param DiagnosticCode [DiagnosticCode] <p>An extended explanation of what went wrong; this is usually an SMTP response. See <a href="https://tools.ietf.org/html/rfc3463">RFC 3463</a> for the correct formatting of this parameter.</p>
+-- @param LastAttemptDate [LastAttemptDate] <p>The time the final delivery attempt was made, in <a href="https://www.ietf.org/rfc/rfc0822.txt">RFC 822</a> date-time format.</p>
+-- @param ExtensionFields [ExtensionFieldList] <p>Additional X-headers to include in the DSN.</p>
+-- @param RemoteMta [RemoteMta] <p>The MTA to which the remote MTA attempted to deliver the message, formatted as specified in <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a> (<code>mta-name-type; mta-name</code>). This parameter typically applies only to propagating synchronous bounces.</p>
+-- @param Action [DsnAction] <p>The action performed by the reporting mail transfer agent (MTA) as a result of its attempt to deliver the message to the recipient address. This is required by <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a>.</p>
 -- Required parameter: Action
 -- Required parameter: Status
 function M.RecipientDsnFields(Status, FinalRecipient, DiagnosticCode, LastAttemptDate, ExtensionFields, RemoteMta, Action, ...)
@@ -3186,8 +3186,8 @@ function M.AssertSetActiveReceiptRuleSetRequest(struct)
 end
 
 --- Create a structure of type SetActiveReceiptRuleSetRequest
--- &lt;p&gt;Represents a request to set a receipt rule set as the active receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param RuleSetName [ReceiptRuleSetName] &lt;p&gt;The name of the receipt rule set to make active. Setting this value to null disables all email receiving.&lt;/p&gt;
+-- <p>Represents a request to set a receipt rule set as the active receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
+-- @param RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to make active. Setting this value to null disables all email receiving.</p>
 function M.SetActiveReceiptRuleSetRequest(RuleSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetActiveReceiptRuleSetRequest")
 	local t = { 
@@ -3212,9 +3212,9 @@ function M.AssertDeleteIdentityPolicyRequest(struct)
 end
 
 --- Create a structure of type DeleteIdentityPolicyRequest
--- &lt;p&gt;Represents a request to delete a sending authorization policy for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param PolicyName [PolicyName] &lt;p&gt;The name of the policy to be deleted.&lt;/p&gt;
--- @param Identity [Identity] &lt;p&gt;The identity that is associated with the policy that you want to delete. You can specify the identity by using its name or by using its Amazon Resource Name (ARN). Examples: &lt;code&gt;user@example.com&lt;/code&gt;, &lt;code&gt;example.com&lt;/code&gt;, &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To successfully call this API, you must own the identity.&lt;/p&gt;
+-- <p>Represents a request to delete a sending authorization policy for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- @param PolicyName [PolicyName] <p>The name of the policy to be deleted.</p>
+-- @param Identity [Identity] <p>The identity that is associated with the policy that you want to delete. You can specify the identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
 -- Required parameter: Identity
 -- Required parameter: PolicyName
 function M.DeleteIdentityPolicyRequest(PolicyName, Identity, ...)
@@ -3238,7 +3238,7 @@ function M.AssertCreateConfigurationSetResponse(struct)
 end
 
 --- Create a structure of type CreateConfigurationSetResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.CreateConfigurationSetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateConfigurationSetResponse")
 	local t = { 
@@ -3262,9 +3262,9 @@ function M.AssertDeleteConfigurationSetEventDestinationRequest(struct)
 end
 
 --- Create a structure of type DeleteConfigurationSetEventDestinationRequest
--- &lt;p&gt;Represents a request to delete a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param EventDestinationName [EventDestinationName] &lt;p&gt;The name of the event destination to delete.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;The name of the configuration set from which to delete the event destination.&lt;/p&gt;
+-- <p>Represents a request to delete a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param EventDestinationName [EventDestinationName] <p>The name of the event destination to delete.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set from which to delete the event destination.</p>
 -- Required parameter: ConfigurationSetName
 -- Required parameter: EventDestinationName
 function M.DeleteConfigurationSetEventDestinationRequest(EventDestinationName, ConfigurationSetName, ...)
@@ -3291,10 +3291,10 @@ function M.AssertListIdentitiesRequest(struct)
 end
 
 --- Create a structure of type ListIdentitiesRequest
--- &lt;p&gt;Represents a request to return a list of all identities (email addresses and domains) that you have attempted to verify under your AWS account, regardless of verification status.&lt;/p&gt;
--- @param IdentityType [IdentityType] &lt;p&gt;The type of the identities to list. Possible values are &quot;EmailAddress&quot; and &quot;Domain&quot;. If this parameter is omitted, then all identities will be listed.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use for pagination.&lt;/p&gt;
--- @param MaxItems [MaxItems] &lt;p&gt;The maximum number of identities per page. Possible values are 1-1000 inclusive.&lt;/p&gt;
+-- <p>Represents a request to return a list of all identities (email addresses and domains) that you have attempted to verify under your AWS account, regardless of verification status.</p>
+-- @param IdentityType [IdentityType] <p>The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is omitted, then all identities will be listed.</p>
+-- @param NextToken [NextToken] <p>The token to use for pagination.</p>
+-- @param MaxItems [MaxItems] <p>The maximum number of identities per page. Possible values are 1-1000 inclusive.</p>
 function M.ListIdentitiesRequest(IdentityType, NextToken, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentitiesRequest")
 	local t = { 
@@ -3328,14 +3328,14 @@ function M.AssertIdentityNotificationAttributes(struct)
 end
 
 --- Create a structure of type IdentityNotificationAttributes
--- &lt;p&gt;Represents the notification attributes of an identity, including whether an identity has Amazon Simple Notification Service (Amazon SNS) topics set for bounce, complaint, and/or delivery notifications, and whether feedback forwarding is enabled for bounce and complaint notifications.&lt;/p&gt;
--- @param BounceTopic [NotificationTopic] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish bounce notifications.&lt;/p&gt;
--- @param HeadersInBounceNotificationsEnabled [Enabled] &lt;p&gt;Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type &lt;code&gt;Bounce&lt;/code&gt;. A value of &lt;code&gt;true&lt;/code&gt; specifies that Amazon SES will include headers in bounce notifications, and a value of &lt;code&gt;false&lt;/code&gt; specifies that Amazon SES will not include headers in bounce notifications.&lt;/p&gt;
--- @param DeliveryTopic [NotificationTopic] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish delivery notifications.&lt;/p&gt;
--- @param HeadersInDeliveryNotificationsEnabled [Enabled] &lt;p&gt;Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type &lt;code&gt;Delivery&lt;/code&gt;. A value of &lt;code&gt;true&lt;/code&gt; specifies that Amazon SES will include headers in delivery notifications, and a value of &lt;code&gt;false&lt;/code&gt; specifies that Amazon SES will not include headers in delivery notifications.&lt;/p&gt;
--- @param ComplaintTopic [NotificationTopic] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish complaint notifications.&lt;/p&gt;
--- @param HeadersInComplaintNotificationsEnabled [Enabled] &lt;p&gt;Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type &lt;code&gt;Complaint&lt;/code&gt;. A value of &lt;code&gt;true&lt;/code&gt; specifies that Amazon SES will include headers in complaint notifications, and a value of &lt;code&gt;false&lt;/code&gt; specifies that Amazon SES will not include headers in complaint notifications.&lt;/p&gt;
--- @param ForwardingEnabled [Enabled] &lt;p&gt;Describes whether Amazon SES will forward bounce and complaint notifications as email. &lt;code&gt;true&lt;/code&gt; indicates that Amazon SES will forward bounce and complaint notifications as email, while &lt;code&gt;false&lt;/code&gt; indicates that bounce and complaint notifications will be published only to the specified bounce and complaint Amazon SNS topics.&lt;/p&gt;
+-- <p>Represents the notification attributes of an identity, including whether an identity has Amazon Simple Notification Service (Amazon SNS) topics set for bounce, complaint, and/or delivery notifications, and whether feedback forwarding is enabled for bounce and complaint notifications.</p>
+-- @param BounceTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish bounce notifications.</p>
+-- @param HeadersInBounceNotificationsEnabled [Enabled] <p>Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type <code>Bounce</code>. A value of <code>true</code> specifies that Amazon SES will include headers in bounce notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in bounce notifications.</p>
+-- @param DeliveryTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish delivery notifications.</p>
+-- @param HeadersInDeliveryNotificationsEnabled [Enabled] <p>Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type <code>Delivery</code>. A value of <code>true</code> specifies that Amazon SES will include headers in delivery notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in delivery notifications.</p>
+-- @param ComplaintTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish complaint notifications.</p>
+-- @param HeadersInComplaintNotificationsEnabled [Enabled] <p>Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type <code>Complaint</code>. A value of <code>true</code> specifies that Amazon SES will include headers in complaint notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in complaint notifications.</p>
+-- @param ForwardingEnabled [Enabled] <p>Describes whether Amazon SES will forward bounce and complaint notifications as email. <code>true</code> indicates that Amazon SES will forward bounce and complaint notifications as email, while <code>false</code> indicates that bounce and complaint notifications will be published only to the specified bounce and complaint Amazon SNS topics.</p>
 -- Required parameter: BounceTopic
 -- Required parameter: ComplaintTopic
 -- Required parameter: DeliveryTopic
@@ -3366,7 +3366,7 @@ function M.AssertCreateReceiptRuleResponse(struct)
 end
 
 --- Create a structure of type CreateReceiptRuleResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.CreateReceiptRuleResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptRuleResponse")
 	local t = { 
@@ -3386,7 +3386,7 @@ function M.AssertMessageRejected(struct)
 end
 
 --- Create a structure of type MessageRejected
--- &lt;p&gt;Indicates that the action failed, and the message could not be sent. Check the error stack for more information about what caused the error.&lt;/p&gt;
+-- <p>Indicates that the action failed, and the message could not be sent. Check the error stack for more information about what caused the error.</p>
 function M.MessageRejected(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MessageRejected")
 	local t = { 
@@ -3406,7 +3406,7 @@ function M.AssertInvalidPolicyException(struct)
 end
 
 --- Create a structure of type InvalidPolicyException
--- &lt;p&gt;Indicates that the provided policy is invalid. Check the error stack for more information about what caused the error.&lt;/p&gt;
+-- <p>Indicates that the provided policy is invalid. Check the error stack for more information about what caused the error.</p>
 function M.InvalidPolicyException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPolicyException")
 	local t = { 
@@ -3426,7 +3426,7 @@ function M.AssertCloneReceiptRuleSetResponse(struct)
 end
 
 --- Create a structure of type CloneReceiptRuleSetResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.CloneReceiptRuleSetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloneReceiptRuleSetResponse")
 	local t = { 
@@ -3448,8 +3448,8 @@ function M.AssertListIdentityPoliciesResponse(struct)
 end
 
 --- Create a structure of type ListIdentityPoliciesResponse
--- &lt;p&gt;A list of names of sending authorization policies that apply to an identity.&lt;/p&gt;
--- @param PolicyNames [PolicyNameList] &lt;p&gt;A list of names of policies that apply to the specified identity.&lt;/p&gt;
+-- <p>A list of names of sending authorization policies that apply to an identity.</p>
+-- @param PolicyNames [PolicyNameList] <p>A list of names of policies that apply to the specified identity.</p>
 -- Required parameter: PolicyNames
 function M.ListIdentityPoliciesResponse(PolicyNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoliciesResponse")
@@ -3473,8 +3473,8 @@ function M.AssertDeleteIdentityRequest(struct)
 end
 
 --- Create a structure of type DeleteIdentityRequest
--- &lt;p&gt;Represents a request to delete one of your Amazon SES identities (an email address or domain).&lt;/p&gt;
--- @param Identity [Identity] &lt;p&gt;The identity to be removed from the list of identities for the AWS Account.&lt;/p&gt;
+-- <p>Represents a request to delete one of your Amazon SES identities (an email address or domain).</p>
+-- @param Identity [Identity] <p>The identity to be removed from the list of identities for the AWS Account.</p>
 -- Required parameter: Identity
 function M.DeleteIdentityRequest(Identity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityRequest")
@@ -3496,7 +3496,7 @@ function M.AssertUpdateConfigurationSetEventDestinationResponse(struct)
 end
 
 --- Create a structure of type UpdateConfigurationSetEventDestinationResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.UpdateConfigurationSetEventDestinationResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConfigurationSetEventDestinationResponse")
 	local t = { 
@@ -3524,12 +3524,12 @@ function M.AssertBounceAction(struct)
 end
 
 --- Create a structure of type BounceAction
--- &lt;p&gt;When included in a receipt rule, this action rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).&lt;/p&gt; &lt;p&gt;For information about sending a bounce message in response to a received email, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-bounce.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Message [BounceMessage] &lt;p&gt;Human-readable text to include in the bounce message.&lt;/p&gt;
--- @param Sender [Address] &lt;p&gt;The email address of the sender of the bounced email. This is the address from which the bounce message will be sent.&lt;/p&gt;
--- @param SmtpReplyCode [BounceSmtpReplyCode] &lt;p&gt;The SMTP reply code, as defined by &lt;a href=&quot;https://tools.ietf.org/html/rfc5321&quot;&gt;RFC 5321&lt;/a&gt;.&lt;/p&gt;
--- @param TopicArn [AmazonResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the bounce action is taken. An example of an Amazon SNS topic ARN is &lt;code&gt;arn:aws:sns:us-west-2:123456789012:MyTopic&lt;/code&gt;. For more information about Amazon SNS topics, see the &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html&quot;&gt;Amazon SNS Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param StatusCode [BounceStatusCode] &lt;p&gt;The SMTP enhanced status code, as defined by &lt;a href=&quot;https://tools.ietf.org/html/rfc3463&quot;&gt;RFC 3463&lt;/a&gt;.&lt;/p&gt;
+-- <p>When included in a receipt rule, this action rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>For information about sending a bounce message in response to a received email, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-bounce.html">Amazon SES Developer Guide</a>.</p>
+-- @param Message [BounceMessage] <p>Human-readable text to include in the bounce message.</p>
+-- @param Sender [Address] <p>The email address of the sender of the bounced email. This is the address from which the bounce message will be sent.</p>
+-- @param SmtpReplyCode [BounceSmtpReplyCode] <p>The SMTP reply code, as defined by <a href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>.</p>
+-- @param TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the bounce action is taken. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
+-- @param StatusCode [BounceStatusCode] <p>The SMTP enhanced status code, as defined by <a href="https://tools.ietf.org/html/rfc3463">RFC 3463</a>.</p>
 -- Required parameter: SmtpReplyCode
 -- Required parameter: Message
 -- Required parameter: Sender
@@ -3559,9 +3559,9 @@ function M.AssertListConfigurationSetsResponse(struct)
 end
 
 --- Create a structure of type ListConfigurationSetsResponse
--- &lt;p&gt;A list of configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param ConfigurationSets [ConfigurationSets] &lt;p&gt;A list of configuration sets.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A token indicating that there are additional configuration sets available to be listed. Pass this token to successive calls of &lt;code&gt;ListConfigurationSets&lt;/code&gt;. &lt;/p&gt;
+-- <p>A list of configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param ConfigurationSets [ConfigurationSets] <p>A list of configuration sets.</p>
+-- @param NextToken [NextToken] <p>A token indicating that there are additional configuration sets available to be listed. Pass this token to successive calls of <code>ListConfigurationSets</code>. </p>
 function M.ListConfigurationSetsResponse(ConfigurationSets, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListConfigurationSetsResponse")
 	local t = { 
@@ -3588,12 +3588,12 @@ function M.AssertSendDataPoint(struct)
 end
 
 --- Create a structure of type SendDataPoint
--- &lt;p&gt;Represents sending statistics data. Each &lt;code&gt;SendDataPoint&lt;/code&gt; contains statistics for a 15-minute period of sending activity. &lt;/p&gt;
--- @param Complaints [Counter] &lt;p&gt;Number of unwanted emails that were rejected by recipients.&lt;/p&gt;
--- @param Timestamp [Timestamp] &lt;p&gt;Time of the data point.&lt;/p&gt;
--- @param DeliveryAttempts [Counter] &lt;p&gt;Number of emails that have been sent.&lt;/p&gt;
--- @param Bounces [Counter] &lt;p&gt;Number of emails that have bounced.&lt;/p&gt;
--- @param Rejects [Counter] &lt;p&gt;Number of emails rejected by Amazon SES.&lt;/p&gt;
+-- <p>Represents sending statistics data. Each <code>SendDataPoint</code> contains statistics for a 15-minute period of sending activity. </p>
+-- @param Complaints [Counter] <p>Number of unwanted emails that were rejected by recipients.</p>
+-- @param Timestamp [Timestamp] <p>Time of the data point.</p>
+-- @param DeliveryAttempts [Counter] <p>Number of emails that have been sent.</p>
+-- @param Bounces [Counter] <p>Number of emails that have bounced.</p>
+-- @param Rejects [Counter] <p>Number of emails rejected by Amazon SES.</p>
 function M.SendDataPoint(Complaints, Timestamp, DeliveryAttempts, Bounces, Rejects, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SendDataPoint")
 	local t = { 
@@ -3618,7 +3618,7 @@ function M.AssertReorderReceiptRuleSetResponse(struct)
 end
 
 --- Create a structure of type ReorderReceiptRuleSetResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.ReorderReceiptRuleSetResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReorderReceiptRuleSetResponse")
 	local t = { 
@@ -3640,8 +3640,8 @@ function M.AssertVerifyDomainIdentityRequest(struct)
 end
 
 --- Create a structure of type VerifyDomainIdentityRequest
--- &lt;p&gt;Represents a request to begin Amazon SES domain verification and to generate the TXT records that you must publish to the DNS server of your domain to complete the verification. For information about domain verification, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Domain [Domain] &lt;p&gt;The domain to be verified.&lt;/p&gt;
+-- <p>Represents a request to begin Amazon SES domain verification and to generate the TXT records that you must publish to the DNS server of your domain to complete the verification. For information about domain verification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html">Amazon SES Developer Guide</a>.</p>
+-- @param Domain [Domain] <p>The domain to be verified.</p>
 -- Required parameter: Domain
 function M.VerifyDomainIdentityRequest(Domain, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyDomainIdentityRequest")
@@ -3665,9 +3665,9 @@ function M.AssertEventDestinationDoesNotExistException(struct)
 end
 
 --- Create a structure of type EventDestinationDoesNotExistException
--- &lt;p&gt;Indicates that the event destination does not exist.&lt;/p&gt;
--- @param EventDestinationName [EventDestinationName] &lt;p&gt;Indicates that the event destination does not exist.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;Indicates that the event destination does not exist.&lt;/p&gt;
+-- <p>Indicates that the event destination does not exist.</p>
+-- @param EventDestinationName [EventDestinationName] <p>Indicates that the event destination does not exist.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>Indicates that the event destination does not exist.</p>
 function M.EventDestinationDoesNotExistException(EventDestinationName, ConfigurationSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventDestinationDoesNotExistException")
 	local t = { 
@@ -3691,8 +3691,8 @@ function M.AssertGetIdentityNotificationAttributesResponse(struct)
 end
 
 --- Create a structure of type GetIdentityNotificationAttributesResponse
--- &lt;p&gt;Represents the notification attributes for a list of identities.&lt;/p&gt;
--- @param NotificationAttributes [NotificationAttributes] &lt;p&gt;A map of Identity to IdentityNotificationAttributes.&lt;/p&gt;
+-- <p>Represents the notification attributes for a list of identities.</p>
+-- @param NotificationAttributes [NotificationAttributes] <p>A map of Identity to IdentityNotificationAttributes.</p>
 -- Required parameter: NotificationAttributes
 function M.GetIdentityNotificationAttributesResponse(NotificationAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityNotificationAttributesResponse")
@@ -3714,7 +3714,7 @@ function M.AssertDeleteReceiptRuleResponse(struct)
 end
 
 --- Create a structure of type DeleteReceiptRuleResponse
--- &lt;p&gt;An empty element returned on a successful request.&lt;/p&gt;
+-- <p>An empty element returned on a successful request.</p>
 function M.DeleteReceiptRuleResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptRuleResponse")
 	local t = { 
@@ -3736,9 +3736,9 @@ function M.AssertInvalidCloudWatchDestinationException(struct)
 end
 
 --- Create a structure of type InvalidCloudWatchDestinationException
--- &lt;p&gt;Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.&lt;/p&gt;
--- @param EventDestinationName [EventDestinationName] &lt;p&gt;Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.&lt;/p&gt;
--- @param ConfigurationSetName [ConfigurationSetName] &lt;p&gt;Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.&lt;/p&gt;
+-- <p>Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.</p>
+-- @param EventDestinationName [EventDestinationName] <p>Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.</p>
+-- @param ConfigurationSetName [ConfigurationSetName] <p>Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.</p>
 function M.InvalidCloudWatchDestinationException(EventDestinationName, ConfigurationSetName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCloudWatchDestinationException")
 	local t = { 
@@ -3762,8 +3762,8 @@ function M.AssertCreateConfigurationSetRequest(struct)
 end
 
 --- Create a structure of type CreateConfigurationSetRequest
--- &lt;p&gt;Represents a request to create a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param ConfigurationSet [ConfigurationSet] &lt;p&gt;A data structure that contains the name of the configuration set.&lt;/p&gt;
+-- <p>Represents a request to create a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
+-- @param ConfigurationSet [ConfigurationSet] <p>A data structure that contains the name of the configuration set.</p>
 -- Required parameter: ConfigurationSet
 function M.CreateConfigurationSetRequest(ConfigurationSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateConfigurationSetRequest")
@@ -3786,8 +3786,8 @@ function M.AssertListReceiptFiltersResponse(struct)
 end
 
 --- Create a structure of type ListReceiptFiltersResponse
--- &lt;p&gt;A list of IP address filters that exist under your AWS account.&lt;/p&gt;
--- @param Filters [ReceiptFilterList] &lt;p&gt;A list of IP address filter data structures, which each consist of a name, an IP address range, and whether to allow or block mail from it.&lt;/p&gt;
+-- <p>A list of IP address filters that exist under your AWS account.</p>
+-- @param Filters [ReceiptFilterList] <p>A list of IP address filter data structures, which each consist of a name, an IP address range, and whether to allow or block mail from it.</p>
 function M.ListReceiptFiltersResponse(Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListReceiptFiltersResponse")
 	local t = { 
@@ -3814,10 +3814,10 @@ function M.AssertPutIdentityPolicyRequest(struct)
 end
 
 --- Create a structure of type PutIdentityPolicyRequest
--- &lt;p&gt;Represents a request to add or update a sending authorization policy for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Policy [Policy] &lt;p&gt;The text of the policy in JSON format. The policy cannot exceed 4 KB.&lt;/p&gt; &lt;p&gt;For information about the syntax of sending authorization policies, see the &lt;a href=&quot;http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html&quot;&gt;Amazon SES Developer Guide&lt;/a&gt;. &lt;/p&gt;
--- @param PolicyName [PolicyName] &lt;p&gt;The name of the policy.&lt;/p&gt; &lt;p&gt;The policy name cannot exceed 64 characters and can only include alphanumeric characters, dashes, and underscores.&lt;/p&gt;
--- @param Identity [Identity] &lt;p&gt;The identity to which the policy will apply. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: &lt;code&gt;user@example.com&lt;/code&gt;, &lt;code&gt;example.com&lt;/code&gt;, &lt;code&gt;arn:aws:ses:us-east-1:123456789012:identity/example.com&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To successfully call this API, you must own the identity.&lt;/p&gt;
+-- <p>Represents a request to add or update a sending authorization policy for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- @param Policy [Policy] <p>The text of the policy in JSON format. The policy cannot exceed 4 KB.</p> <p>For information about the syntax of sending authorization policies, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html">Amazon SES Developer Guide</a>. </p>
+-- @param PolicyName [PolicyName] <p>The name of the policy.</p> <p>The policy name cannot exceed 64 characters and can only include alphanumeric characters, dashes, and underscores.</p>
+-- @param Identity [Identity] <p>The identity to which the policy will apply. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
 -- Required parameter: Identity
 -- Required parameter: PolicyName
 -- Required parameter: Policy

@@ -31,9 +31,9 @@ function M.AssertEnvironmentPlatform(struct)
 end
 
 --- Create a structure of type EnvironmentPlatform
--- &lt;p&gt;A set of Docker images that are related by platform and are managed by AWS CodeBuild.&lt;/p&gt;
--- @param languages [EnvironmentLanguages] &lt;p&gt;The list of programming languages that are available for the specified platform.&lt;/p&gt;
--- @param platform [PlatformType] &lt;p&gt;The platform's name.&lt;/p&gt;
+-- <p>A set of Docker images that are related by platform and are managed by AWS CodeBuild.</p>
+-- @param languages [EnvironmentLanguages] <p>The list of programming languages that are available for the specified platform.</p>
+-- @param platform [PlatformType] <p>The platform's name.</p>
 function M.EnvironmentPlatform(languages, platform, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentPlatform")
 	local t = { 
@@ -57,7 +57,7 @@ end
 
 --- Create a structure of type CreateProjectOutput
 --  
--- @param project [Project] &lt;p&gt;Information about the build project that was created.&lt;/p&gt;
+-- @param project [Project] <p>Information about the build project that was created.</p>
 function M.CreateProjectOutput(project, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateProjectOutput")
 	local t = { 
@@ -80,7 +80,7 @@ end
 
 --- Create a structure of type StartBuildOutput
 --  
--- @param build [Build] &lt;p&gt;Information about the build to be run.&lt;/p&gt;
+-- @param build [Build] <p>Information about the build to be run.</p>
 function M.StartBuildOutput(build, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartBuildOutput")
 	local t = { 
@@ -103,7 +103,7 @@ end
 
 --- Create a structure of type ListCuratedEnvironmentImagesOutput
 --  
--- @param platforms [EnvironmentPlatforms] &lt;p&gt;Information about supported platforms for Docker images that are managed by AWS CodeBuild.&lt;/p&gt;
+-- @param platforms [EnvironmentPlatforms] <p>Information about supported platforms for Docker images that are managed by AWS CodeBuild.</p>
 function M.ListCuratedEnvironmentImagesOutput(platforms, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCuratedEnvironmentImagesOutput")
 	local t = { 
@@ -140,23 +140,23 @@ function M.AssertBuild(struct)
 end
 
 --- Create a structure of type Build
--- &lt;p&gt;Information about a build.&lt;/p&gt;
--- @param environment [ProjectEnvironment] &lt;p&gt;Information about the build environment for this build.&lt;/p&gt;
--- @param phases [BuildPhases] &lt;p&gt;Information about all previous build phases that are completed and information about any current build phase that is not yet complete.&lt;/p&gt;
--- @param buildComplete [Boolean] &lt;p&gt;Whether the build has finished. True if completed; otherwise, false.&lt;/p&gt;
--- @param logs [LogsLocation] &lt;p&gt;Information about the build's logs in Amazon CloudWatch Logs.&lt;/p&gt;
--- @param artifacts [BuildArtifacts] &lt;p&gt;Information about the output artifacts for the build.&lt;/p&gt;
--- @param projectName [NonEmptyString] &lt;p&gt;The name of the build project.&lt;/p&gt;
--- @param timeoutInMinutes [WrapperInt] &lt;p&gt;How long, in minutes, for AWS CodeBuild to wait before timing out this build if it does not get marked as completed.&lt;/p&gt;
--- @param initiator [String] &lt;p&gt;The entity that started the build. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If AWS CodePipeline started the build, the pipeline's name (for example, &lt;code&gt;codepipeline/my-demo-pipeline&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If an AWS Identity and Access Management (IAM) user started the build, the user's name (for example &lt;code&gt;MyUserName&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the Jenkins plugin for AWS CodeBuild started the build, the string &lt;code&gt;CodeBuild-Jenkins-Plugin&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param buildStatus [StatusType] &lt;p&gt;The current status of the build. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FAILED&lt;/code&gt;: The build failed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FAULT&lt;/code&gt;: The build faulted.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;IN_PROGRESS&lt;/code&gt;: The build is still in progress.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;STOPPED&lt;/code&gt;: The build stopped.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SUCCEEDED&lt;/code&gt;: The build succeeded.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;TIMED_OUT&lt;/code&gt;: The build timed out.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param sourceVersion [NonEmptyString] &lt;p&gt;Any version identifier for the version of the source code to be built.&lt;/p&gt;
--- @param source [ProjectSource] &lt;p&gt;Information about the source code to be built.&lt;/p&gt;
--- @param currentPhase [String] &lt;p&gt;The current build phase.&lt;/p&gt;
--- @param startTime [Timestamp] &lt;p&gt;When the build process started, expressed in Unix time format.&lt;/p&gt;
--- @param endTime [Timestamp] &lt;p&gt;When the build process ended, expressed in Unix time format.&lt;/p&gt;
--- @param id [NonEmptyString] &lt;p&gt;The unique ID for the build.&lt;/p&gt;
--- @param arn [NonEmptyString] &lt;p&gt;The Amazon Resource Name (ARN) of the build.&lt;/p&gt;
+-- <p>Information about a build.</p>
+-- @param environment [ProjectEnvironment] <p>Information about the build environment for this build.</p>
+-- @param phases [BuildPhases] <p>Information about all previous build phases that are completed and information about any current build phase that is not yet complete.</p>
+-- @param buildComplete [Boolean] <p>Whether the build has finished. True if completed; otherwise, false.</p>
+-- @param logs [LogsLocation] <p>Information about the build's logs in Amazon CloudWatch Logs.</p>
+-- @param artifacts [BuildArtifacts] <p>Information about the output artifacts for the build.</p>
+-- @param projectName [NonEmptyString] <p>The name of the build project.</p>
+-- @param timeoutInMinutes [WrapperInt] <p>How long, in minutes, for AWS CodeBuild to wait before timing out this build if it does not get marked as completed.</p>
+-- @param initiator [String] <p>The entity that started the build. Valid values include:</p> <ul> <li> <p>If AWS CodePipeline started the build, the pipeline's name (for example, <code>codepipeline/my-demo-pipeline</code>).</p> </li> <li> <p>If an AWS Identity and Access Management (IAM) user started the build, the user's name (for example <code>MyUserName</code>).</p> </li> <li> <p>If the Jenkins plugin for AWS CodeBuild started the build, the string <code>CodeBuild-Jenkins-Plugin</code>.</p> </li> </ul>
+-- @param buildStatus [StatusType] <p>The current status of the build. Valid values include:</p> <ul> <li> <p> <code>FAILED</code>: The build failed.</p> </li> <li> <p> <code>FAULT</code>: The build faulted.</p> </li> <li> <p> <code>IN_PROGRESS</code>: The build is still in progress.</p> </li> <li> <p> <code>STOPPED</code>: The build stopped.</p> </li> <li> <p> <code>SUCCEEDED</code>: The build succeeded.</p> </li> <li> <p> <code>TIMED_OUT</code>: The build timed out.</p> </li> </ul>
+-- @param sourceVersion [NonEmptyString] <p>Any version identifier for the version of the source code to be built.</p>
+-- @param source [ProjectSource] <p>Information about the source code to be built.</p>
+-- @param currentPhase [String] <p>The current build phase.</p>
+-- @param startTime [Timestamp] <p>When the build process started, expressed in Unix time format.</p>
+-- @param endTime [Timestamp] <p>When the build process ended, expressed in Unix time format.</p>
+-- @param id [NonEmptyString] <p>The unique ID for the build.</p>
+-- @param arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the build.</p>
 function M.Build(environment, phases, buildComplete, logs, artifacts, projectName, timeoutInMinutes, initiator, buildStatus, sourceVersion, source, currentPhase, startTime, endTime, id, arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Build")
 	local t = { 
@@ -194,9 +194,9 @@ function M.AssertPhaseContext(struct)
 end
 
 --- Create a structure of type PhaseContext
--- &lt;p&gt;Additional information about a build phase that has an error. You can use this information to help troubleshoot a failed build.&lt;/p&gt;
--- @param message [String] &lt;p&gt;An explanation of the build phase's context. This explanation might include a command ID and an exit code.&lt;/p&gt;
--- @param statusCode [String] &lt;p&gt;The status code for the context of the build phase.&lt;/p&gt;
+-- <p>Additional information about a build phase that has an error. You can use this information to help troubleshoot a failed build.</p>
+-- @param message [String] <p>An explanation of the build phase's context. This explanation might include a command ID and an exit code.</p>
+-- @param statusCode [String] <p>The status code for the context of the build phase.</p>
 function M.PhaseContext(message, statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PhaseContext")
 	local t = { 
@@ -221,7 +221,7 @@ end
 
 --- Create a structure of type StopBuildInput
 --  
--- @param id [NonEmptyString] &lt;p&gt;The ID of the build.&lt;/p&gt;
+-- @param id [NonEmptyString] <p>The ID of the build.</p>
 -- Required parameter: id
 function M.StopBuildInput(id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopBuildInput")
@@ -245,7 +245,7 @@ end
 
 --- Create a structure of type UpdateProjectOutput
 --  
--- @param project [Project] &lt;p&gt;Information about the build project that was changed.&lt;/p&gt;
+-- @param project [Project] <p>Information about the build project that was changed.</p>
 function M.UpdateProjectOutput(project, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProjectOutput")
 	local t = { 
@@ -271,11 +271,11 @@ function M.AssertProjectSource(struct)
 end
 
 --- Create a structure of type ProjectSource
--- &lt;p&gt;Information about the build input source code for the build project.&lt;/p&gt;
--- @param buildspec [String] &lt;p&gt;The build spec declaration to use for the builds in this build project.&lt;/p&gt; &lt;p&gt;If this value is not specified, a build spec must be included along with the source code to be built.&lt;/p&gt;
--- @param type [SourceType] &lt;p&gt;The type of repository that contains the source code to be built. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CODECOMMIT&lt;/code&gt;: The source code is in an AWS CodeCommit repository.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CODEPIPELINE&lt;/code&gt;: The source code settings are specified in the source action of a pipeline in AWS CodePipeline.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GITHUB&lt;/code&gt;: The source code is in a GitHub repository.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;S3&lt;/code&gt;: The source code is in an Amazon Simple Storage Service (Amazon S3) input bucket.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param location [String] &lt;p&gt;Information about the location of the source code to be built. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For source code settings that are specified in the source action of a pipeline in AWS CodePipeline, &lt;code&gt;location&lt;/code&gt; should not be specified. If it is specified, AWS CodePipeline will ignore it. This is because AWS CodePipeline uses the settings in a pipeline's source action instead of this value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For source code in an AWS CodeCommit repository, the HTTPS clone URL to the repository that contains the source code and the build spec (for example, &lt;code&gt;https://git-codecommit.&lt;i&gt;region-ID&lt;/i&gt;.amazonaws.com/v1/repos/&lt;i&gt;repo-name&lt;/i&gt; &lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For source code in an Amazon Simple Storage Service (Amazon S3) input bucket, the path to the ZIP file that contains the source code (for example, &lt;code&gt; &lt;i&gt;bucket-name&lt;/i&gt;/&lt;i&gt;path&lt;/i&gt;/&lt;i&gt;to&lt;/i&gt;/&lt;i&gt;object-name&lt;/i&gt;.zip&lt;/code&gt;)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For source code in a GitHub repository, the HTTPS clone URL to the repository that contains the source and the build spec. Also, you must connect your AWS account to your GitHub account. To do this, use the AWS CodeBuild console to begin creating a build project. When you use the console to connect (or reconnect) with GitHub, on the GitHub &lt;b&gt;Authorize application&lt;/b&gt; page that displays, for &lt;b&gt;Organization access&lt;/b&gt;, choose &lt;b&gt;Request access&lt;/b&gt; next to each repository you want to allow AWS CodeBuild to have access to. Then choose &lt;b&gt;Authorize application&lt;/b&gt;. (After you have connected to your GitHub account, you do not need to finish creating the build project, and you may then leave the AWS CodeBuild console.) To instruct AWS CodeBuild to then use this connection, in the &lt;code&gt;source&lt;/code&gt; object, set the &lt;code&gt;auth&lt;/code&gt; object's &lt;code&gt;type&lt;/code&gt; value to &lt;code&gt;OAUTH&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param auth [SourceAuth] &lt;p&gt;Information about the authorization settings for AWS CodeBuild to access the source code to be built.&lt;/p&gt; &lt;p&gt;This information is for the AWS CodeBuild console's use only. Your code should not get or set this information directly (unless the build project's source &lt;code&gt;type&lt;/code&gt; value is &lt;code&gt;GITHUB&lt;/code&gt;).&lt;/p&gt;
+-- <p>Information about the build input source code for the build project.</p>
+-- @param buildspec [String] <p>The build spec declaration to use for the builds in this build project.</p> <p>If this value is not specified, a build spec must be included along with the source code to be built.</p>
+-- @param type [SourceType] <p>The type of repository that contains the source code to be built. Valid values include:</p> <ul> <li> <p> <code>CODECOMMIT</code>: The source code is in an AWS CodeCommit repository.</p> </li> <li> <p> <code>CODEPIPELINE</code>: The source code settings are specified in the source action of a pipeline in AWS CodePipeline.</p> </li> <li> <p> <code>GITHUB</code>: The source code is in a GitHub repository.</p> </li> <li> <p> <code>S3</code>: The source code is in an Amazon Simple Storage Service (Amazon S3) input bucket.</p> </li> </ul>
+-- @param location [String] <p>Information about the location of the source code to be built. Valid values include:</p> <ul> <li> <p>For source code settings that are specified in the source action of a pipeline in AWS CodePipeline, <code>location</code> should not be specified. If it is specified, AWS CodePipeline will ignore it. This is because AWS CodePipeline uses the settings in a pipeline's source action instead of this value.</p> </li> <li> <p>For source code in an AWS CodeCommit repository, the HTTPS clone URL to the repository that contains the source code and the build spec (for example, <code>https://git-codecommit.<i>region-ID</i>.amazonaws.com/v1/repos/<i>repo-name</i> </code>).</p> </li> <li> <p>For source code in an Amazon Simple Storage Service (Amazon S3) input bucket, the path to the ZIP file that contains the source code (for example, <code> <i>bucket-name</i>/<i>path</i>/<i>to</i>/<i>object-name</i>.zip</code>)</p> </li> <li> <p>For source code in a GitHub repository, the HTTPS clone URL to the repository that contains the source and the build spec. Also, you must connect your AWS account to your GitHub account. To do this, use the AWS CodeBuild console to begin creating a build project. When you use the console to connect (or reconnect) with GitHub, on the GitHub <b>Authorize application</b> page that displays, for <b>Organization access</b>, choose <b>Request access</b> next to each repository you want to allow AWS CodeBuild to have access to. Then choose <b>Authorize application</b>. (After you have connected to your GitHub account, you do not need to finish creating the build project, and you may then leave the AWS CodeBuild console.) To instruct AWS CodeBuild to then use this connection, in the <code>source</code> object, set the <code>auth</code> object's <code>type</code> value to <code>OAUTH</code>.</p> </li> </ul>
+-- @param auth [SourceAuth] <p>Information about the authorization settings for AWS CodeBuild to access the source code to be built.</p> <p>This information is for the AWS CodeBuild console's use only. Your code should not get or set this information directly (unless the build project's source <code>type</code> value is <code>GITHUB</code>).</p>
 -- Required parameter: type
 function M.ProjectSource(buildspec, type, location, auth, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectSource")
@@ -303,10 +303,10 @@ function M.AssertLogsLocation(struct)
 end
 
 --- Create a structure of type LogsLocation
--- &lt;p&gt;Information about build logs in Amazon CloudWatch Logs.&lt;/p&gt;
--- @param groupName [String] &lt;p&gt;The name of the Amazon CloudWatch Logs group for the build logs.&lt;/p&gt;
--- @param deepLink [String] &lt;p&gt;The URL to an individual build log in Amazon CloudWatch Logs.&lt;/p&gt;
--- @param streamName [String] &lt;p&gt;The name of the Amazon CloudWatch Logs stream for the build logs.&lt;/p&gt;
+-- <p>Information about build logs in Amazon CloudWatch Logs.</p>
+-- @param groupName [String] <p>The name of the Amazon CloudWatch Logs group for the build logs.</p>
+-- @param deepLink [String] <p>The URL to an individual build log in Amazon CloudWatch Logs.</p>
+-- @param streamName [String] <p>The name of the Amazon CloudWatch Logs stream for the build logs.</p>
 function M.LogsLocation(groupName, deepLink, streamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LogsLocation")
 	local t = { 
@@ -333,9 +333,9 @@ end
 
 --- Create a structure of type ListProjectsInput
 --  
--- @param nextToken [NonEmptyString] &lt;p&gt;During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a &lt;i&gt;next token&lt;/i&gt;. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.&lt;/p&gt;
--- @param sortBy [ProjectSortByType] &lt;p&gt;The criterion to be used to list build project names. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CREATED_TIME&lt;/code&gt;: List the build project names based on when each build project was created.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;LAST_MODIFIED_TIME&lt;/code&gt;: List the build project names based on when information about each build project was last changed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NAME&lt;/code&gt;: List the build project names based on each build project's name.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Use &lt;code&gt;sortOrder&lt;/code&gt; to specify in what order to list the build project names based on the preceding criteria.&lt;/p&gt;
--- @param sortOrder [SortOrderType] &lt;p&gt;The order in which to list build projects. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ASCENDING&lt;/code&gt;: List the build project names in ascending order.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DESCENDING&lt;/code&gt;: List the build project names in descending order.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Use &lt;code&gt;sortBy&lt;/code&gt; to specify the criterion to be used to list build project names.&lt;/p&gt;
+-- @param nextToken [NonEmptyString] <p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
+-- @param sortBy [ProjectSortByType] <p>The criterion to be used to list build project names. Valid values include:</p> <ul> <li> <p> <code>CREATED_TIME</code>: List the build project names based on when each build project was created.</p> </li> <li> <p> <code>LAST_MODIFIED_TIME</code>: List the build project names based on when information about each build project was last changed.</p> </li> <li> <p> <code>NAME</code>: List the build project names based on each build project's name.</p> </li> </ul> <p>Use <code>sortOrder</code> to specify in what order to list the build project names based on the preceding criteria.</p>
+-- @param sortOrder [SortOrderType] <p>The order in which to list build projects. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build project names in ascending order.</p> </li> <li> <p> <code>DESCENDING</code>: List the build project names in descending order.</p> </li> </ul> <p>Use <code>sortBy</code> to specify the criterion to be used to list build project names.</p>
 function M.ListProjectsInput(nextToken, sortBy, sortOrder, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListProjectsInput")
 	local t = { 
@@ -364,13 +364,13 @@ function M.AssertBuildPhase(struct)
 end
 
 --- Create a structure of type BuildPhase
--- &lt;p&gt;Information about a stage for a build.&lt;/p&gt;
--- @param contexts [PhaseContexts] &lt;p&gt;Additional information about a build phase, especially to help troubleshoot a failed build.&lt;/p&gt;
--- @param phaseType [BuildPhaseType] &lt;p&gt;The name of the build phase. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BUILD&lt;/code&gt;: Core build activities typically occur in this build phase.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;COMPLETED&lt;/code&gt;: The build has been completed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DOWNLOAD_SOURCE&lt;/code&gt;: Source code is being downloaded in this build phase.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FINALIZING&lt;/code&gt;: The build process is completing in this build phase.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;INSTALL&lt;/code&gt;: Installation activities typically occur in this build phase.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;POST_BUILD&lt;/code&gt;: Post-build activities typically occur in this build phase.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PRE_BUILD&lt;/code&gt;: Pre-build activities typically occur in this build phase.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PROVISIONING&lt;/code&gt;: The build environment is being set up.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SUBMITTED&lt;/code&gt;: The build has been submitted.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;UPLOAD_ARTIFACTS&lt;/code&gt;: Build output artifacts are being uploaded to the output location.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param phaseStatus [StatusType] &lt;p&gt;The current status of the build phase. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FAILED&lt;/code&gt;: The build phase failed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FAULT&lt;/code&gt;: The build phase faulted.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;IN_PROGRESS&lt;/code&gt;: The build phase is still in progress.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;STOPPED&lt;/code&gt;: The build phase stopped.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SUCCEEDED&lt;/code&gt;: The build phase succeeded.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;TIMED_OUT&lt;/code&gt;: The build phase timed out.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param durationInSeconds [WrapperLong] &lt;p&gt;How long, in seconds, between the starting and ending times of the build's phase.&lt;/p&gt;
--- @param startTime [Timestamp] &lt;p&gt;When the build phase started, expressed in Unix time format.&lt;/p&gt;
--- @param endTime [Timestamp] &lt;p&gt;When the build phase ended, expressed in Unix time format.&lt;/p&gt;
+-- <p>Information about a stage for a build.</p>
+-- @param contexts [PhaseContexts] <p>Additional information about a build phase, especially to help troubleshoot a failed build.</p>
+-- @param phaseType [BuildPhaseType] <p>The name of the build phase. Valid values include:</p> <ul> <li> <p> <code>BUILD</code>: Core build activities typically occur in this build phase.</p> </li> <li> <p> <code>COMPLETED</code>: The build has been completed.</p> </li> <li> <p> <code>DOWNLOAD_SOURCE</code>: Source code is being downloaded in this build phase.</p> </li> <li> <p> <code>FINALIZING</code>: The build process is completing in this build phase.</p> </li> <li> <p> <code>INSTALL</code>: Installation activities typically occur in this build phase.</p> </li> <li> <p> <code>POST_BUILD</code>: Post-build activities typically occur in this build phase.</p> </li> <li> <p> <code>PRE_BUILD</code>: Pre-build activities typically occur in this build phase.</p> </li> <li> <p> <code>PROVISIONING</code>: The build environment is being set up.</p> </li> <li> <p> <code>SUBMITTED</code>: The build has been submitted.</p> </li> <li> <p> <code>UPLOAD_ARTIFACTS</code>: Build output artifacts are being uploaded to the output location.</p> </li> </ul>
+-- @param phaseStatus [StatusType] <p>The current status of the build phase. Valid values include:</p> <ul> <li> <p> <code>FAILED</code>: The build phase failed.</p> </li> <li> <p> <code>FAULT</code>: The build phase faulted.</p> </li> <li> <p> <code>IN_PROGRESS</code>: The build phase is still in progress.</p> </li> <li> <p> <code>STOPPED</code>: The build phase stopped.</p> </li> <li> <p> <code>SUCCEEDED</code>: The build phase succeeded.</p> </li> <li> <p> <code>TIMED_OUT</code>: The build phase timed out.</p> </li> </ul>
+-- @param durationInSeconds [WrapperLong] <p>How long, in seconds, between the starting and ending times of the build's phase.</p>
+-- @param startTime [Timestamp] <p>When the build phase started, expressed in Unix time format.</p>
+-- @param endTime [Timestamp] <p>When the build phase ended, expressed in Unix time format.</p>
 function M.BuildPhase(contexts, phaseType, phaseStatus, durationInSeconds, startTime, endTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BuildPhase")
 	local t = { 
@@ -399,7 +399,7 @@ end
 
 --- Create a structure of type BatchGetBuildsInput
 --  
--- @param ids [BuildIds] &lt;p&gt;The IDs of the builds.&lt;/p&gt;
+-- @param ids [BuildIds] <p>The IDs of the builds.</p>
 -- Required parameter: ids
 function M.BatchGetBuildsInput(ids, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetBuildsInput")
@@ -424,8 +424,8 @@ end
 
 --- Create a structure of type ListBuildsInput
 --  
--- @param nextToken [String] &lt;p&gt;During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a &lt;i&gt;next token&lt;/i&gt;. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.&lt;/p&gt;
--- @param sortOrder [SortOrderType] &lt;p&gt;The order to list build IDs. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ASCENDING&lt;/code&gt;: List the build IDs in ascending order by build ID.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DESCENDING&lt;/code&gt;: List the build IDs in descending order by build ID.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param nextToken [String] <p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
+-- @param sortOrder [SortOrderType] <p>The order to list build IDs. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build IDs in ascending order by build ID.</p> </li> <li> <p> <code>DESCENDING</code>: List the build IDs in descending order by build ID.</p> </li> </ul>
 function M.ListBuildsInput(nextToken, sortOrder, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsInput")
 	local t = { 
@@ -478,15 +478,15 @@ end
 
 --- Create a structure of type UpdateProjectInput
 --  
--- @param name [NonEmptyString] &lt;p&gt;The name of the build project.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You cannot change a build project's name.&lt;/p&gt; &lt;/note&gt;
--- @param serviceRole [NonEmptyString] &lt;p&gt;The replacement ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.&lt;/p&gt;
--- @param tags [TagList] &lt;p&gt;The replacement set of tags for this build project.&lt;/p&gt; &lt;p&gt;These tags are available for use by AWS services that support AWS CodeBuild build project tags.&lt;/p&gt;
--- @param artifacts [ProjectArtifacts] &lt;p&gt;Information to be changed about the build output artifacts for the build project.&lt;/p&gt;
--- @param timeoutInMinutes [TimeOut] &lt;p&gt;The replacement value in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed.&lt;/p&gt;
--- @param environment [ProjectEnvironment] &lt;p&gt;Information to be changed about the build environment for the build project.&lt;/p&gt;
--- @param source [ProjectSource] &lt;p&gt;Information to be changed about the build input source code for the build project.&lt;/p&gt;
--- @param encryptionKey [NonEmptyString] &lt;p&gt;The replacement AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.&lt;/p&gt; &lt;p&gt;You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format &lt;code&gt;alias/&lt;i&gt;alias-name&lt;/i&gt; &lt;/code&gt;).&lt;/p&gt;
--- @param description [ProjectDescription] &lt;p&gt;A new or replacement description of the build project.&lt;/p&gt;
+-- @param name [NonEmptyString] <p>The name of the build project.</p> <note> <p>You cannot change a build project's name.</p> </note>
+-- @param serviceRole [NonEmptyString] <p>The replacement ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
+-- @param tags [TagList] <p>The replacement set of tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
+-- @param artifacts [ProjectArtifacts] <p>Information to be changed about the build output artifacts for the build project.</p>
+-- @param timeoutInMinutes [TimeOut] <p>The replacement value in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed.</p>
+-- @param environment [ProjectEnvironment] <p>Information to be changed about the build environment for the build project.</p>
+-- @param source [ProjectSource] <p>Information to be changed about the build input source code for the build project.</p>
+-- @param encryptionKey [NonEmptyString] <p>The replacement AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
+-- @param description [ProjectDescription] <p>A new or replacement description of the build project.</p>
 -- Required parameter: name
 function M.UpdateProjectInput(name, serviceRole, tags, artifacts, timeoutInMinutes, environment, source, encryptionKey, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProjectInput")
@@ -519,8 +519,8 @@ end
 
 --- Create a structure of type BatchGetBuildsOutput
 --  
--- @param buildsNotFound [BuildIds] &lt;p&gt;The IDs of builds for which information could not be found.&lt;/p&gt;
--- @param builds [Builds] &lt;p&gt;Information about the requested builds.&lt;/p&gt;
+-- @param buildsNotFound [BuildIds] <p>The IDs of builds for which information could not be found.</p>
+-- @param builds [Builds] <p>Information about the requested builds.</p>
 function M.BatchGetBuildsOutput(buildsNotFound, builds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetBuildsOutput")
 	local t = { 
@@ -549,13 +549,13 @@ function M.AssertProjectArtifacts(struct)
 end
 
 --- Create a structure of type ProjectArtifacts
--- &lt;p&gt;Information about the build output artifacts for the build project.&lt;/p&gt;
--- @param packaging [ArtifactPackaging] &lt;p&gt;The type of build output artifact to create, as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;CODEPIPELINE&lt;/code&gt;, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output artifacts instead of AWS CodeBuild.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;, then this value will be ignored if specified, because no build output will be produced.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;S3&lt;/code&gt;, valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NONE&lt;/code&gt;: AWS CodeBuild will create in the output bucket a folder containing the build output. This is the default if &lt;code&gt;packaging&lt;/code&gt; is not specified.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ZIP&lt;/code&gt;: AWS CodeBuild will create in the output bucket a ZIP file containing the build output.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param name [String] &lt;p&gt;Along with &lt;code&gt;path&lt;/code&gt; and &lt;code&gt;namespaceType&lt;/code&gt;, the pattern that AWS CodeBuild will use to name and store the output artifact, as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;CODEPIPELINE&lt;/code&gt;, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;, then this value will be ignored if specified, because no build output will be produced.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;S3&lt;/code&gt;, this is the name of the output artifact object.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For example, if &lt;code&gt;path&lt;/code&gt; is set to &lt;code&gt;MyArtifacts&lt;/code&gt;, &lt;code&gt;namespaceType&lt;/code&gt; is set to &lt;code&gt;BUILD_ID&lt;/code&gt;, and &lt;code&gt;name&lt;/code&gt; is set to &lt;code&gt;MyArtifact.zip&lt;/code&gt;, then the output artifact would be stored in &lt;code&gt;MyArtifacts/&lt;i&gt;build-ID&lt;/i&gt;/MyArtifact.zip&lt;/code&gt;.&lt;/p&gt;
--- @param namespaceType [ArtifactNamespace] &lt;p&gt;Along with &lt;code&gt;path&lt;/code&gt; and &lt;code&gt;name&lt;/code&gt;, the pattern that AWS CodeBuild will use to determine the name and location to store the output artifact, as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;CODEPIPELINE&lt;/code&gt;, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;, then this value will be ignored if specified, because no build output will be produced.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;S3&lt;/code&gt;, then valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BUILD_ID&lt;/code&gt;: Include the build ID in the location of the build output artifact.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NONE&lt;/code&gt;: Do not include the build ID. This is the default if &lt;code&gt;namespaceType&lt;/code&gt; is not specified.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For example, if &lt;code&gt;path&lt;/code&gt; is set to &lt;code&gt;MyArtifacts&lt;/code&gt;, &lt;code&gt;namespaceType&lt;/code&gt; is set to &lt;code&gt;BUILD_ID&lt;/code&gt;, and &lt;code&gt;name&lt;/code&gt; is set to &lt;code&gt;MyArtifact.zip&lt;/code&gt;, then the output artifact would be stored in &lt;code&gt;MyArtifacts/&lt;i&gt;build-ID&lt;/i&gt;/MyArtifact.zip&lt;/code&gt;.&lt;/p&gt;
--- @param location [String] &lt;p&gt;Information about the build output artifact location, as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;CODEPIPELINE&lt;/code&gt;, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output locations instead of AWS CodeBuild.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;, then this value will be ignored if specified, because no build output will be produced.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;S3&lt;/code&gt;, this is the name of the output bucket.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param path [String] &lt;p&gt;Along with &lt;code&gt;namespaceType&lt;/code&gt; and &lt;code&gt;name&lt;/code&gt;, the pattern that AWS CodeBuild will use to name and store the output artifact, as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;CODEPIPELINE&lt;/code&gt;, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;, then this value will be ignored if specified, because no build output will be produced.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If &lt;code&gt;type&lt;/code&gt; is set to &lt;code&gt;S3&lt;/code&gt;, this is the path to the output artifact. If &lt;code&gt;path&lt;/code&gt; is not specified, then &lt;code&gt;path&lt;/code&gt; will not be used.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For example, if &lt;code&gt;path&lt;/code&gt; is set to &lt;code&gt;MyArtifacts&lt;/code&gt;, &lt;code&gt;namespaceType&lt;/code&gt; is set to &lt;code&gt;NONE&lt;/code&gt;, and &lt;code&gt;name&lt;/code&gt; is set to &lt;code&gt;MyArtifact.zip&lt;/code&gt;, then the output artifact would be stored in the output bucket at &lt;code&gt;MyArtifacts/MyArtifact.zip&lt;/code&gt;.&lt;/p&gt;
--- @param type [ArtifactsType] &lt;p&gt;The type of build output artifact. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CODEPIPELINE&lt;/code&gt;: The build project will have build output generated through AWS CodePipeline.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NO_ARTIFACTS&lt;/code&gt;: The build project will not produce any build output.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;S3&lt;/code&gt;: The build project will store build output in Amazon Simple Storage Service (Amazon S3).&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Information about the build output artifacts for the build project.</p>
+-- @param packaging [ArtifactPackaging] <p>The type of build output artifact to create, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output artifacts instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, valid values include:</p> <ul> <li> <p> <code>NONE</code>: AWS CodeBuild will create in the output bucket a folder containing the build output. This is the default if <code>packaging</code> is not specified.</p> </li> <li> <p> <code>ZIP</code>: AWS CodeBuild will create in the output bucket a ZIP file containing the build output.</p> </li> </ul> </li> </ul>
+-- @param name [String] <p>Along with <code>path</code> and <code>namespaceType</code>, the pattern that AWS CodeBuild will use to name and store the output artifact, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, this is the name of the output artifact object.</p> </li> </ul> <p>For example, if <code>path</code> is set to <code>MyArtifacts</code>, <code>namespaceType</code> is set to <code>BUILD_ID</code>, and <code>name</code> is set to <code>MyArtifact.zip</code>, then the output artifact would be stored in <code>MyArtifacts/<i>build-ID</i>/MyArtifact.zip</code>.</p>
+-- @param namespaceType [ArtifactNamespace] <p>Along with <code>path</code> and <code>name</code>, the pattern that AWS CodeBuild will use to determine the name and location to store the output artifact, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, then valid values include:</p> <ul> <li> <p> <code>BUILD_ID</code>: Include the build ID in the location of the build output artifact.</p> </li> <li> <p> <code>NONE</code>: Do not include the build ID. This is the default if <code>namespaceType</code> is not specified.</p> </li> </ul> </li> </ul> <p>For example, if <code>path</code> is set to <code>MyArtifacts</code>, <code>namespaceType</code> is set to <code>BUILD_ID</code>, and <code>name</code> is set to <code>MyArtifact.zip</code>, then the output artifact would be stored in <code>MyArtifacts/<i>build-ID</i>/MyArtifact.zip</code>.</p>
+-- @param location [String] <p>Information about the build output artifact location, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output locations instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, this is the name of the output bucket.</p> </li> </ul>
+-- @param path [String] <p>Along with <code>namespaceType</code> and <code>name</code>, the pattern that AWS CodeBuild will use to name and store the output artifact, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, this is the path to the output artifact. If <code>path</code> is not specified, then <code>path</code> will not be used.</p> </li> </ul> <p>For example, if <code>path</code> is set to <code>MyArtifacts</code>, <code>namespaceType</code> is set to <code>NONE</code>, and <code>name</code> is set to <code>MyArtifact.zip</code>, then the output artifact would be stored in the output bucket at <code>MyArtifacts/MyArtifact.zip</code>.</p>
+-- @param type [ArtifactsType] <p>The type of build output artifact. Valid values include:</p> <ul> <li> <p> <code>CODEPIPELINE</code>: The build project will have build output generated through AWS CodePipeline.</p> </li> <li> <p> <code>NO_ARTIFACTS</code>: The build project will not produce any build output.</p> </li> <li> <p> <code>S3</code>: The build project will store build output in Amazon Simple Storage Service (Amazon S3).</p> </li> </ul>
 -- Required parameter: type
 function M.ProjectArtifacts(packaging, name, namespaceType, location, path, type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectArtifacts")
@@ -584,9 +584,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;A tag, consisting of a key and a value.&lt;/p&gt; &lt;p&gt;This tag is available for use by AWS services that support tags in AWS CodeBuild.&lt;/p&gt;
--- @param value [ValueInput] &lt;p&gt;The tag's value.&lt;/p&gt;
--- @param key [KeyInput] &lt;p&gt;The tag's key.&lt;/p&gt;
+-- <p>A tag, consisting of a key and a value.</p> <p>This tag is available for use by AWS services that support tags in AWS CodeBuild.</p>
+-- @param value [ValueInput] <p>The tag's value.</p>
+-- @param key [KeyInput] <p>The tag's key.</p>
 function M.Tag(value, key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
@@ -613,9 +613,9 @@ end
 
 --- Create a structure of type ListBuildsForProjectInput
 --  
--- @param projectName [NonEmptyString] &lt;p&gt;The name of the build project.&lt;/p&gt;
--- @param nextToken [String] &lt;p&gt;During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a &lt;i&gt;next token&lt;/i&gt;. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.&lt;/p&gt;
--- @param sortOrder [SortOrderType] &lt;p&gt;The order to list build IDs. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ASCENDING&lt;/code&gt;: List the build IDs in ascending order by build ID.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DESCENDING&lt;/code&gt;: List the build IDs in descending order by build ID.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param projectName [NonEmptyString] <p>The name of the build project.</p>
+-- @param nextToken [String] <p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
+-- @param sortOrder [SortOrderType] <p>The order to list build IDs. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build IDs in ascending order by build ID.</p> </li> <li> <p> <code>DESCENDING</code>: List the build IDs in descending order by build ID.</p> </li> </ul>
 -- Required parameter: projectName
 function M.ListBuildsForProjectInput(projectName, nextToken, sortOrder, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsForProjectInput")
@@ -651,19 +651,19 @@ function M.AssertProject(struct)
 end
 
 --- Create a structure of type Project
--- &lt;p&gt;Information about a build project.&lt;/p&gt;
--- @param name [ProjectName] &lt;p&gt;The name of the build project.&lt;/p&gt;
--- @param serviceRole [NonEmptyString] &lt;p&gt;The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.&lt;/p&gt;
--- @param tags [TagList] &lt;p&gt;The tags for this build project.&lt;/p&gt; &lt;p&gt;These tags are available for use by AWS services that support AWS CodeBuild build project tags.&lt;/p&gt;
--- @param artifacts [ProjectArtifacts] &lt;p&gt;Information about the build output artifacts for the build project.&lt;/p&gt;
--- @param lastModified [Timestamp] &lt;p&gt;When the build project's settings were last modified, expressed in Unix time format.&lt;/p&gt;
--- @param timeoutInMinutes [TimeOut] &lt;p&gt;How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed. The default is 60 minutes.&lt;/p&gt;
--- @param created [Timestamp] &lt;p&gt;When the build project was created, expressed in Unix time format.&lt;/p&gt;
--- @param environment [ProjectEnvironment] &lt;p&gt;Information about the build environment for this build project.&lt;/p&gt;
--- @param source [ProjectSource] &lt;p&gt;Information about the build input source code for this build project.&lt;/p&gt;
--- @param encryptionKey [NonEmptyString] &lt;p&gt;The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.&lt;/p&gt; &lt;p&gt;This is expressed either as the CMK's Amazon Resource Name (ARN) or, if specified, the CMK's alias (using the format &lt;code&gt;alias/&lt;i&gt;alias-name&lt;/i&gt; &lt;/code&gt;).&lt;/p&gt;
--- @param arn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the build project.&lt;/p&gt;
--- @param description [ProjectDescription] &lt;p&gt;A description that makes the build project easy to identify.&lt;/p&gt;
+-- <p>Information about a build project.</p>
+-- @param name [ProjectName] <p>The name of the build project.</p>
+-- @param serviceRole [NonEmptyString] <p>The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
+-- @param tags [TagList] <p>The tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
+-- @param artifacts [ProjectArtifacts] <p>Information about the build output artifacts for the build project.</p>
+-- @param lastModified [Timestamp] <p>When the build project's settings were last modified, expressed in Unix time format.</p>
+-- @param timeoutInMinutes [TimeOut] <p>How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed. The default is 60 minutes.</p>
+-- @param created [Timestamp] <p>When the build project was created, expressed in Unix time format.</p>
+-- @param environment [ProjectEnvironment] <p>Information about the build environment for this build project.</p>
+-- @param source [ProjectSource] <p>Information about the build input source code for this build project.</p>
+-- @param encryptionKey [NonEmptyString] <p>The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>This is expressed either as the CMK's Amazon Resource Name (ARN) or, if specified, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
+-- @param arn [String] <p>The Amazon Resource Name (ARN) of the build project.</p>
+-- @param description [ProjectDescription] <p>A description that makes the build project easy to identify.</p>
 function M.Project(name, serviceRole, tags, artifacts, lastModified, timeoutInMinutes, created, environment, source, encryptionKey, arn, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Project")
 	local t = { 
@@ -697,9 +697,9 @@ function M.AssertEnvironmentImage(struct)
 end
 
 --- Create a structure of type EnvironmentImage
--- &lt;p&gt;Information about a Docker image that is managed by AWS CodeBuild.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the Docker image.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of the Docker image.&lt;/p&gt;
+-- <p>Information about a Docker image that is managed by AWS CodeBuild.</p>
+-- @param name [String] <p>The name of the Docker image.</p>
+-- @param description [String] <p>The description of the Docker image.</p>
 function M.EnvironmentImage(name, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentImage")
 	local t = { 
@@ -741,7 +741,7 @@ function M.AssertResourceAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ResourceAlreadyExistsException
--- &lt;p&gt;The specified AWS resource cannot be created, because an AWS resource with the same settings already exists.&lt;/p&gt;
+-- <p>The specified AWS resource cannot be created, because an AWS resource with the same settings already exists.</p>
 function M.ResourceAlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
 	local t = { 
@@ -775,15 +775,15 @@ end
 
 --- Create a structure of type CreateProjectInput
 --  
--- @param name [ProjectName] &lt;p&gt;The name of the build project.&lt;/p&gt;
--- @param serviceRole [NonEmptyString] &lt;p&gt;The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.&lt;/p&gt;
--- @param tags [TagList] &lt;p&gt;A set of tags for this build project.&lt;/p&gt; &lt;p&gt;These tags are available for use by AWS services that support AWS CodeBuild build project tags.&lt;/p&gt;
--- @param artifacts [ProjectArtifacts] &lt;p&gt;Information about the build output artifacts for the build project.&lt;/p&gt;
--- @param timeoutInMinutes [TimeOut] &lt;p&gt;How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any build that has not been marked as completed. The default is 60 minutes.&lt;/p&gt;
--- @param environment [ProjectEnvironment] &lt;p&gt;Information about the build environment for the build project.&lt;/p&gt;
--- @param source [ProjectSource] &lt;p&gt;Information about the build input source code for the build project.&lt;/p&gt;
--- @param encryptionKey [NonEmptyString] &lt;p&gt;The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.&lt;/p&gt; &lt;p&gt;You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format &lt;code&gt;alias/&lt;i&gt;alias-name&lt;/i&gt; &lt;/code&gt;).&lt;/p&gt;
--- @param description [ProjectDescription] &lt;p&gt;A description that makes the build project easy to identify.&lt;/p&gt;
+-- @param name [ProjectName] <p>The name of the build project.</p>
+-- @param serviceRole [NonEmptyString] <p>The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
+-- @param tags [TagList] <p>A set of tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
+-- @param artifacts [ProjectArtifacts] <p>Information about the build output artifacts for the build project.</p>
+-- @param timeoutInMinutes [TimeOut] <p>How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any build that has not been marked as completed. The default is 60 minutes.</p>
+-- @param environment [ProjectEnvironment] <p>Information about the build environment for the build project.</p>
+-- @param source [ProjectSource] <p>Information about the build input source code for the build project.</p>
+-- @param encryptionKey [NonEmptyString] <p>The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
+-- @param description [ProjectDescription] <p>A description that makes the build project easy to identify.</p>
 -- Required parameter: name
 -- Required parameter: source
 -- Required parameter: artifacts
@@ -819,8 +819,8 @@ end
 
 --- Create a structure of type ListBuildsOutput
 --  
--- @param nextToken [String] &lt;p&gt;If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a &lt;i&gt;next token&lt;/i&gt;. To get the next batch of items in the list, call this operation again, adding the next token to the call.&lt;/p&gt;
--- @param ids [BuildIds] &lt;p&gt;A list of build IDs, with each build ID representing a single build.&lt;/p&gt;
+-- @param nextToken [String] <p>If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call.</p>
+-- @param ids [BuildIds] <p>A list of build IDs, with each build ID representing a single build.</p>
 function M.ListBuildsOutput(nextToken, ids, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsOutput")
 	local t = { 
@@ -842,7 +842,7 @@ function M.AssertAccountLimitExceededException(struct)
 end
 
 --- Create a structure of type AccountLimitExceededException
--- &lt;p&gt;An AWS service limit was exceeded for the calling AWS account.&lt;/p&gt;
+-- <p>An AWS service limit was exceeded for the calling AWS account.</p>
 function M.AccountLimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountLimitExceededException")
 	local t = { 
@@ -865,8 +865,8 @@ end
 
 --- Create a structure of type ListBuildsForProjectOutput
 --  
--- @param nextToken [String] &lt;p&gt;If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a &lt;i&gt;next token&lt;/i&gt;. To get the next batch of items in the list, call this operation again, adding the next token to the call.&lt;/p&gt;
--- @param ids [BuildIds] &lt;p&gt;A list of build IDs for the specified build project, with each build ID representing a single build.&lt;/p&gt;
+-- @param nextToken [String] <p>If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call.</p>
+-- @param ids [BuildIds] <p>A list of build IDs for the specified build project, with each build ID representing a single build.</p>
 function M.ListBuildsForProjectOutput(nextToken, ids, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsForProjectOutput")
 	local t = { 
@@ -891,8 +891,8 @@ end
 
 --- Create a structure of type BatchGetProjectsOutput
 --  
--- @param projectsNotFound [ProjectNames] &lt;p&gt;The names of build projects for which information could not be found.&lt;/p&gt;
--- @param projects [Projects] &lt;p&gt;Information about the requested build projects.&lt;/p&gt;
+-- @param projectsNotFound [ProjectNames] <p>The names of build projects for which information could not be found.</p>
+-- @param projects [Projects] <p>Information about the requested build projects.</p>
 function M.BatchGetProjectsOutput(projectsNotFound, projects, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetProjectsOutput")
 	local t = { 
@@ -917,8 +917,8 @@ end
 
 --- Create a structure of type ListProjectsOutput
 --  
--- @param nextToken [String] &lt;p&gt;If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a &lt;i&gt;next token&lt;/i&gt;. To get the next batch of items in the list, call this operation again, adding the next token to the call.&lt;/p&gt;
--- @param projects [ProjectNames] &lt;p&gt;The list of build project names, with each build project name representing a single build project.&lt;/p&gt;
+-- @param nextToken [String] <p>If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call.</p>
+-- @param projects [ProjectNames] <p>The list of build project names, with each build project name representing a single build project.</p>
 function M.ListProjectsOutput(nextToken, projects, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListProjectsOutput")
 	local t = { 
@@ -943,9 +943,9 @@ function M.AssertSourceAuth(struct)
 end
 
 --- Create a structure of type SourceAuth
--- &lt;p&gt;Information about the authorization settings for AWS CodeBuild to access the source code to be built.&lt;/p&gt; &lt;p&gt;This information is for the AWS CodeBuild console's use only. Your code should not get or set this information directly (unless the build project's source &lt;code&gt;type&lt;/code&gt; value is &lt;code&gt;GITHUB&lt;/code&gt;).&lt;/p&gt;
--- @param resource [String] &lt;p&gt;The resource value that applies to the specified authorization type.&lt;/p&gt;
--- @param type [SourceAuthType] &lt;p&gt;The authorization type to use. The only valid value is &lt;code&gt;OAUTH&lt;/code&gt;, which represents the OAuth authorization type.&lt;/p&gt;
+-- <p>Information about the authorization settings for AWS CodeBuild to access the source code to be built.</p> <p>This information is for the AWS CodeBuild console's use only. Your code should not get or set this information directly (unless the build project's source <code>type</code> value is <code>GITHUB</code>).</p>
+-- @param resource [String] <p>The resource value that applies to the specified authorization type.</p>
+-- @param type [SourceAuthType] <p>The authorization type to use. The only valid value is <code>OAUTH</code>, which represents the OAuth authorization type.</p>
 -- Required parameter: type
 function M.SourceAuth(resource, type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SourceAuth")
@@ -972,9 +972,9 @@ function M.AssertEnvironmentVariable(struct)
 end
 
 --- Create a structure of type EnvironmentVariable
--- &lt;p&gt;Information about an environment variable for a build project or a build.&lt;/p&gt;
--- @param name [NonEmptyString] &lt;p&gt;The name or key of the environment variable.&lt;/p&gt;
--- @param value [String] &lt;p&gt;The value of the environment variable.&lt;/p&gt; &lt;important&gt; &lt;p&gt;We strongly discourage using environment variables to store sensitive values, especially AWS secret key IDs and secret access keys. Environment variables can be displayed in plain text using tools such as the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI).&lt;/p&gt; &lt;/important&gt;
+-- <p>Information about an environment variable for a build project or a build.</p>
+-- @param name [NonEmptyString] <p>The name or key of the environment variable.</p>
+-- @param value [String] <p>The value of the environment variable.</p> <important> <p>We strongly discourage using environment variables to store sensitive values, especially AWS secret key IDs and secret access keys. Environment variables can be displayed in plain text using tools such as the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI).</p> </important>
 -- Required parameter: name
 -- Required parameter: value
 function M.EnvironmentVariable(name, value, ...)
@@ -998,7 +998,7 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The specified AWS resource cannot be found.&lt;/p&gt;
+-- <p>The specified AWS resource cannot be found.</p>
 function M.ResourceNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -1021,7 +1021,7 @@ end
 
 --- Create a structure of type BatchGetProjectsInput
 --  
--- @param names [ProjectNames] &lt;p&gt;The names of the build projects.&lt;/p&gt;
+-- @param names [ProjectNames] <p>The names of the build projects.</p>
 -- Required parameter: names
 function M.BatchGetProjectsInput(names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetProjectsInput")
@@ -1045,7 +1045,7 @@ end
 
 --- Create a structure of type StopBuildOutput
 --  
--- @param build [Build] &lt;p&gt;Information about the build.&lt;/p&gt;
+-- @param build [Build] <p>Information about the build.</p>
 function M.StopBuildOutput(build, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopBuildOutput")
 	local t = { 
@@ -1069,7 +1069,7 @@ end
 
 --- Create a structure of type DeleteProjectInput
 --  
--- @param name [NonEmptyString] &lt;p&gt;The name of the build project.&lt;/p&gt;
+-- @param name [NonEmptyString] <p>The name of the build project.</p>
 -- Required parameter: name
 function M.DeleteProjectInput(name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProjectInput")
@@ -1099,12 +1099,12 @@ end
 
 --- Create a structure of type StartBuildInput
 --  
--- @param buildspecOverride [String] &lt;p&gt;A build spec declaration that overrides, for this build only, the latest one already defined in the build project.&lt;/p&gt;
--- @param environmentVariablesOverride [EnvironmentVariables] &lt;p&gt;A set of environment variables that overrides, for this build only, the latest ones already defined in the build project.&lt;/p&gt;
--- @param artifactsOverride [ProjectArtifacts] &lt;p&gt;Build output artifact settings that override, for this build only, the latest ones already defined in the build project.&lt;/p&gt;
--- @param projectName [NonEmptyString] &lt;p&gt;The name of the build project to start running a build.&lt;/p&gt;
--- @param sourceVersion [String] &lt;p&gt;A version of the build input to be built, for this build only. If not specified, the latest version will be used. If specified, must be one of:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For AWS CodeCommit or GitHub: the commit ID to use.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For Amazon Simple Storage Service (Amazon S3): the version ID of the object representing the build input ZIP file to use.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param timeoutInMinutesOverride [TimeOut] &lt;p&gt;The number of build timeout minutes, from 5 to 480 (8 hours), that overrides, for this build only, the latest setting already defined in the build project.&lt;/p&gt;
+-- @param buildspecOverride [String] <p>A build spec declaration that overrides, for this build only, the latest one already defined in the build project.</p>
+-- @param environmentVariablesOverride [EnvironmentVariables] <p>A set of environment variables that overrides, for this build only, the latest ones already defined in the build project.</p>
+-- @param artifactsOverride [ProjectArtifacts] <p>Build output artifact settings that override, for this build only, the latest ones already defined in the build project.</p>
+-- @param projectName [NonEmptyString] <p>The name of the build project to start running a build.</p>
+-- @param sourceVersion [String] <p>A version of the build input to be built, for this build only. If not specified, the latest version will be used. If specified, must be one of:</p> <ul> <li> <p>For AWS CodeCommit or GitHub: the commit ID to use.</p> </li> <li> <p>For Amazon Simple Storage Service (Amazon S3): the version ID of the object representing the build input ZIP file to use.</p> </li> </ul>
+-- @param timeoutInMinutesOverride [TimeOut] <p>The number of build timeout minutes, from 5 to 480 (8 hours), that overrides, for this build only, the latest setting already defined in the build project.</p>
 -- Required parameter: projectName
 function M.StartBuildInput(buildspecOverride, environmentVariablesOverride, artifactsOverride, projectName, sourceVersion, timeoutInMinutesOverride, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartBuildInput")
@@ -1131,7 +1131,7 @@ function M.AssertInvalidInputException(struct)
 end
 
 --- Create a structure of type InvalidInputException
--- &lt;p&gt;The input value that was provided is not valid.&lt;/p&gt;
+-- <p>The input value that was provided is not valid.</p>
 function M.InvalidInputException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputException")
 	local t = { 
@@ -1159,12 +1159,12 @@ function M.AssertProjectEnvironment(struct)
 end
 
 --- Create a structure of type ProjectEnvironment
--- &lt;p&gt;Information about the build environment of the build project.&lt;/p&gt;
--- @param computeType [ComputeType] &lt;p&gt;Information about the compute resources the build project will use. Available values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BUILD_GENERAL1_SMALL&lt;/code&gt;: Use up to 3 GB memory and 2 vCPUs for builds.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BUILD_GENERAL1_MEDIUM&lt;/code&gt;: Use up to 7 GB memory and 4 vCPUs for builds.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BUILD_GENERAL1_LARGE&lt;/code&gt;: Use up to 15 GB memory and 8 vCPUs for builds.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param privilegedMode [WrapperBoolean] &lt;p&gt;If set to true, enables running the Docker daemon inside a Docker container; otherwise, false or not specified (the default). This value must be set to true only if this build project will be used to build Docker images, and the specified build environment image is not one provided by AWS CodeBuild with Docker support. Otherwise, all associated builds that attempt to interact with the Docker daemon will fail. Note that you must also start the Docker daemon so that your builds can interact with it as needed. One way to do this is to initialize the Docker daemon in the install phase of your build spec by running the following build commands. (Do not run the following build commands if the specified build environment image is provided by AWS CodeBuild with Docker support.)&lt;/p&gt; &lt;p&gt; &lt;code&gt;- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=vfs&amp;amp; - timeout -t 15 sh -c &quot;until docker info; do echo .; sleep 1; done&quot;&lt;/code&gt; &lt;/p&gt;
--- @param image [NonEmptyString] &lt;p&gt;The ID of the Docker image to use for this build project.&lt;/p&gt;
--- @param type [EnvironmentType] &lt;p&gt;The type of build environment to use for related builds.&lt;/p&gt;
--- @param environmentVariables [EnvironmentVariables] &lt;p&gt;A set of environment variables to make available to builds for this build project.&lt;/p&gt;
+-- <p>Information about the build environment of the build project.</p>
+-- @param computeType [ComputeType] <p>Information about the compute resources the build project will use. Available values include:</p> <ul> <li> <p> <code>BUILD_GENERAL1_SMALL</code>: Use up to 3 GB memory and 2 vCPUs for builds.</p> </li> <li> <p> <code>BUILD_GENERAL1_MEDIUM</code>: Use up to 7 GB memory and 4 vCPUs for builds.</p> </li> <li> <p> <code>BUILD_GENERAL1_LARGE</code>: Use up to 15 GB memory and 8 vCPUs for builds.</p> </li> </ul>
+-- @param privilegedMode [WrapperBoolean] <p>If set to true, enables running the Docker daemon inside a Docker container; otherwise, false or not specified (the default). This value must be set to true only if this build project will be used to build Docker images, and the specified build environment image is not one provided by AWS CodeBuild with Docker support. Otherwise, all associated builds that attempt to interact with the Docker daemon will fail. Note that you must also start the Docker daemon so that your builds can interact with it as needed. One way to do this is to initialize the Docker daemon in the install phase of your build spec by running the following build commands. (Do not run the following build commands if the specified build environment image is provided by AWS CodeBuild with Docker support.)</p> <p> <code>- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=vfs&amp; - timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done"</code> </p>
+-- @param image [NonEmptyString] <p>The ID of the Docker image to use for this build project.</p>
+-- @param type [EnvironmentType] <p>The type of build environment to use for related builds.</p>
+-- @param environmentVariables [EnvironmentVariables] <p>A set of environment variables to make available to builds for this build project.</p>
 -- Required parameter: type
 -- Required parameter: image
 -- Required parameter: computeType
@@ -1194,9 +1194,9 @@ function M.AssertEnvironmentLanguage(struct)
 end
 
 --- Create a structure of type EnvironmentLanguage
--- &lt;p&gt;A set of Docker images that are related by programming language and are managed by AWS CodeBuild.&lt;/p&gt;
--- @param images [EnvironmentImages] &lt;p&gt;The list of Docker images that are related by the specified programming language.&lt;/p&gt;
--- @param language [LanguageType] &lt;p&gt;The programming language for the Docker images.&lt;/p&gt;
+-- <p>A set of Docker images that are related by programming language and are managed by AWS CodeBuild.</p>
+-- @param images [EnvironmentImages] <p>The list of Docker images that are related by the specified programming language.</p>
+-- @param language [LanguageType] <p>The programming language for the Docker images.</p>
 function M.EnvironmentLanguage(images, language, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentLanguage")
 	local t = { 
@@ -1221,10 +1221,10 @@ function M.AssertBuildArtifacts(struct)
 end
 
 --- Create a structure of type BuildArtifacts
--- &lt;p&gt;Information about build output artifacts.&lt;/p&gt;
--- @param md5sum [String] &lt;p&gt;The MD5 hash of the build artifact.&lt;/p&gt; &lt;p&gt;You can use this hash along with a checksum tool to confirm both file integrity and authenticity.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This value is available only if the build project's &lt;code&gt;packaging&lt;/code&gt; value is set to &lt;code&gt;ZIP&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param location [String] &lt;p&gt;Information about the location of the build artifacts.&lt;/p&gt;
--- @param sha256sum [String] &lt;p&gt;The SHA-256 hash of the build artifact.&lt;/p&gt; &lt;p&gt;You can use this hash along with a checksum tool to confirm both file integrity and authenticity.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This value is available only if the build project's &lt;code&gt;packaging&lt;/code&gt; value is set to &lt;code&gt;ZIP&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt;
+-- <p>Information about build output artifacts.</p>
+-- @param md5sum [String] <p>The MD5 hash of the build artifact.</p> <p>You can use this hash along with a checksum tool to confirm both file integrity and authenticity.</p> <note> <p>This value is available only if the build project's <code>packaging</code> value is set to <code>ZIP</code>.</p> </note>
+-- @param location [String] <p>Information about the location of the build artifacts.</p>
+-- @param sha256sum [String] <p>The SHA-256 hash of the build artifact.</p> <p>You can use this hash along with a checksum tool to confirm both file integrity and authenticity.</p> <note> <p>This value is available only if the build project's <code>packaging</code> value is set to <code>ZIP</code>.</p> </note>
 function M.BuildArtifacts(md5sum, location, sha256sum, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BuildArtifacts")
 	local t = { 

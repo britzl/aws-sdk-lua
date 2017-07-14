@@ -32,7 +32,7 @@ end
 
 --- Create a structure of type DisableAlarmActionsInput
 --  
--- @param AlarmNames [AlarmNames] &lt;p&gt;The names of the alarms.&lt;/p&gt;
+-- @param AlarmNames [AlarmNames] <p>The names of the alarms.</p>
 -- Required parameter: AlarmNames
 function M.DisableAlarmActionsInput(AlarmNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableAlarmActionsInput")
@@ -57,8 +57,8 @@ end
 
 --- Create a structure of type DescribeAlarmsOutput
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token that marks the start of the next batch of returned results.&lt;/p&gt;
--- @param MetricAlarms [MetricAlarms] &lt;p&gt;The information for the specified alarms.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
+-- @param MetricAlarms [MetricAlarms] <p>The information for the specified alarms.</p>
 function M.DescribeAlarmsOutput(NextToken, MetricAlarms, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmsOutput")
 	local t = { 
@@ -81,8 +81,8 @@ function M.AssertInternalServiceFault(struct)
 end
 
 --- Create a structure of type InternalServiceFault
--- &lt;p&gt;Request processing has failed due to some unknown error, exception, or failure.&lt;/p&gt;
--- @param Message [FaultDescription] &lt;p/&gt;
+-- <p>Request processing has failed due to some unknown error, exception, or failure.</p>
+-- @param Message [FaultDescription] <p/>
 function M.InternalServiceFault(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceFault")
 	local t = { 
@@ -127,31 +127,31 @@ function M.AssertMetricAlarm(struct)
 end
 
 --- Create a structure of type MetricAlarm
--- &lt;p&gt;Represents an alarm.&lt;/p&gt;
--- @param ExtendedStatistic [ExtendedStatistic] &lt;p&gt;The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.&lt;/p&gt;
--- @param Dimensions [Dimensions] &lt;p&gt;The dimensions for the metric associated with the alarm.&lt;/p&gt;
--- @param Namespace [Namespace] &lt;p&gt;The namespace of the metric associated with the alarm.&lt;/p&gt;
--- @param ActionsEnabled [ActionsEnabled] &lt;p&gt;Indicates whether actions should be executed during any changes to the alarm state.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;The name of the metric associated with the alarm.&lt;/p&gt;
--- @param EvaluationPeriods [EvaluationPeriods] &lt;p&gt;The number of periods over which data is compared to the specified threshold.&lt;/p&gt;
--- @param StateValue [StateValue] &lt;p&gt;The state value for the alarm.&lt;/p&gt;
--- @param StateUpdatedTimestamp [Timestamp] &lt;p&gt;The time stamp of the last update to the alarm state.&lt;/p&gt;
--- @param AlarmConfigurationUpdatedTimestamp [Timestamp] &lt;p&gt;The time stamp of the last update to the alarm configuration.&lt;/p&gt;
--- @param AlarmActions [ResourceList] &lt;p&gt;The actions to execute when this alarm transitions to the &lt;code&gt;ALARM&lt;/code&gt; state from any other state. Each action is specified as an Amazon Resource Name (ARN).&lt;/p&gt;
--- @param InsufficientDataActions [ResourceList] &lt;p&gt;The actions to execute when this alarm transitions to the &lt;code&gt;INSUFFICIENT_DATA&lt;/code&gt; state from any other state. Each action is specified as an Amazon Resource Name (ARN).&lt;/p&gt;
--- @param AlarmArn [AlarmArn] &lt;p&gt;The Amazon Resource Name (ARN) of the alarm.&lt;/p&gt;
--- @param StateReasonData [StateReasonData] &lt;p&gt;An explanation for the alarm state, in JSON format.&lt;/p&gt;
--- @param TreatMissingData [TreatMissingData] &lt;p&gt;Represents an alarm.&lt;/p&gt;
--- @param StateReason [StateReason] &lt;p&gt;An explanation for the alarm state, in text format.&lt;/p&gt;
--- @param EvaluateLowSampleCountPercentile [EvaluateLowSampleCountPercentile] &lt;p&gt;Represents an alarm.&lt;/p&gt;
--- @param OKActions [ResourceList] &lt;p&gt;The actions to execute when this alarm transitions to the &lt;code&gt;OK&lt;/code&gt; state from any other state. Each action is specified as an Amazon Resource Name (ARN).&lt;/p&gt;
--- @param AlarmDescription [AlarmDescription] &lt;p&gt;The description of the alarm.&lt;/p&gt;
--- @param Period [Period] &lt;p&gt;The period, in seconds, over which the statistic is applied.&lt;/p&gt;
--- @param ComparisonOperator [ComparisonOperator] &lt;p&gt;The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.&lt;/p&gt;
--- @param AlarmName [AlarmName] &lt;p&gt;The name of the alarm.&lt;/p&gt;
--- @param Statistic [Statistic] &lt;p&gt;The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use &lt;code&gt;ExtendedStatistic&lt;/code&gt;.&lt;/p&gt;
--- @param Threshold [Threshold] &lt;p&gt;The value to compare with the specified statistic.&lt;/p&gt;
--- @param Unit [StandardUnit] &lt;p&gt;The unit of the metric associated with the alarm.&lt;/p&gt;
+-- <p>Represents an alarm.</p>
+-- @param ExtendedStatistic [ExtendedStatistic] <p>The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.</p>
+-- @param Dimensions [Dimensions] <p>The dimensions for the metric associated with the alarm.</p>
+-- @param Namespace [Namespace] <p>The namespace of the metric associated with the alarm.</p>
+-- @param ActionsEnabled [ActionsEnabled] <p>Indicates whether actions should be executed during any changes to the alarm state.</p>
+-- @param MetricName [MetricName] <p>The name of the metric associated with the alarm.</p>
+-- @param EvaluationPeriods [EvaluationPeriods] <p>The number of periods over which data is compared to the specified threshold.</p>
+-- @param StateValue [StateValue] <p>The state value for the alarm.</p>
+-- @param StateUpdatedTimestamp [Timestamp] <p>The time stamp of the last update to the alarm state.</p>
+-- @param AlarmConfigurationUpdatedTimestamp [Timestamp] <p>The time stamp of the last update to the alarm configuration.</p>
+-- @param AlarmActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
+-- @param InsufficientDataActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
+-- @param AlarmArn [AlarmArn] <p>The Amazon Resource Name (ARN) of the alarm.</p>
+-- @param StateReasonData [StateReasonData] <p>An explanation for the alarm state, in JSON format.</p>
+-- @param TreatMissingData [TreatMissingData] <p>Represents an alarm.</p>
+-- @param StateReason [StateReason] <p>An explanation for the alarm state, in text format.</p>
+-- @param EvaluateLowSampleCountPercentile [EvaluateLowSampleCountPercentile] <p>Represents an alarm.</p>
+-- @param OKActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
+-- @param AlarmDescription [AlarmDescription] <p>The description of the alarm.</p>
+-- @param Period [Period] <p>The period, in seconds, over which the statistic is applied.</p>
+-- @param ComparisonOperator [ComparisonOperator] <p>The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.</p>
+-- @param AlarmName [AlarmName] <p>The name of the alarm.</p>
+-- @param Statistic [Statistic] <p>The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
+-- @param Threshold [Threshold] <p>The value to compare with the specified statistic.</p>
+-- @param Unit [StandardUnit] <p>The unit of the metric associated with the alarm.</p>
 function M.MetricAlarm(ExtendedStatistic, Dimensions, Namespace, ActionsEnabled, MetricName, EvaluationPeriods, StateValue, StateUpdatedTimestamp, AlarmConfigurationUpdatedTimestamp, AlarmActions, InsufficientDataActions, AlarmArn, StateReasonData, TreatMissingData, StateReason, EvaluateLowSampleCountPercentile, OKActions, AlarmDescription, Period, ComparisonOperator, AlarmName, Statistic, Threshold, Unit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MetricAlarm")
 	local t = { 
@@ -196,8 +196,8 @@ function M.AssertLimitExceededFault(struct)
 end
 
 --- Create a structure of type LimitExceededFault
--- &lt;p&gt;The quota for alarms for this customer has already been reached.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p/&gt;
+-- <p>The quota for alarms for this customer has already been reached.</p>
+-- @param message [ErrorMessage] <p/>
 function M.LimitExceededFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededFault")
 	local t = { 
@@ -219,8 +219,8 @@ function M.AssertInvalidNextToken(struct)
 end
 
 --- Create a structure of type InvalidNextToken
--- &lt;p&gt;The next token specified is invalid.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p/&gt;
+-- <p>The next token specified is invalid.</p>
+-- @param message [ErrorMessage] <p/>
 function M.InvalidNextToken(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextToken")
 	local t = { 
@@ -246,12 +246,12 @@ function M.AssertAlarmHistoryItem(struct)
 end
 
 --- Create a structure of type AlarmHistoryItem
--- &lt;p&gt;Represents the history of a specific alarm.&lt;/p&gt;
--- @param Timestamp [Timestamp] &lt;p&gt;The time stamp for the alarm history item.&lt;/p&gt;
--- @param HistoryItemType [HistoryItemType] &lt;p&gt;The type of alarm history item.&lt;/p&gt;
--- @param AlarmName [AlarmName] &lt;p&gt;The descriptive name for the alarm.&lt;/p&gt;
--- @param HistoryData [HistoryData] &lt;p&gt;Data about the alarm, in JSON format.&lt;/p&gt;
--- @param HistorySummary [HistorySummary] &lt;p&gt;A summary of the alarm history, in text format.&lt;/p&gt;
+-- <p>Represents the history of a specific alarm.</p>
+-- @param Timestamp [Timestamp] <p>The time stamp for the alarm history item.</p>
+-- @param HistoryItemType [HistoryItemType] <p>The type of alarm history item.</p>
+-- @param AlarmName [AlarmName] <p>The descriptive name for the alarm.</p>
+-- @param HistoryData [HistoryData] <p>Data about the alarm, in JSON format.</p>
+-- @param HistorySummary [HistorySummary] <p>A summary of the alarm history, in text format.</p>
 function M.AlarmHistoryItem(Timestamp, HistoryItemType, AlarmName, HistoryData, HistorySummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AlarmHistoryItem")
 	local t = { 
@@ -291,15 +291,15 @@ end
 
 --- Create a structure of type GetMetricStatisticsInput
 --  
--- @param Statistics [Statistics] &lt;p&gt;The metric statistics, other than percentile. For percentile statistics, use &lt;code&gt;ExtendedStatistic&lt;/code&gt;.&lt;/p&gt;
--- @param Dimensions [Dimensions] &lt;p&gt;The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension. CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve statistics using combinations of dimensions that were not specially published. You must specify the same dimensions that were used when the metrics were created. For an example, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations&quot;&gt;Dimension Combinations&lt;/a&gt; in the &lt;i&gt;Amazon CloudWatch User Guide&lt;/i&gt;. For more information on specifying dimensions, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html&quot;&gt;Publishing Metrics&lt;/a&gt; in the &lt;i&gt;Amazon CloudWatch User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Namespace [Namespace] &lt;p&gt;The namespace of the metric, with or without spaces.&lt;/p&gt;
--- @param Period [Period] &lt;p&gt;The granularity, in seconds, of the returned data points. A period can be as short as one minute (60 seconds) and must be a multiple of 60. The default value is 60.&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;StartTime&lt;/code&gt; parameter specifies a time stamp that is greater than 15 days ago, you must specify the period as follows or no data points in that time range is returned:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param StartTime [Timestamp] &lt;p&gt;The time stamp that determines the first data point to return. Note that start times are evaluated relative to the time that CloudWatch receives the request.&lt;/p&gt; &lt;p&gt;The value specified is inclusive; results include data points with the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).&lt;/p&gt; &lt;p&gt;CloudWatch rounds the specified time stamp as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ExtendedStatistics [ExtendedStatistics] &lt;p&gt;The percentile statistics. Specify values between p0.0 and p100.&lt;/p&gt;
--- @param EndTime [Timestamp] &lt;p&gt;The time stamp that determines the last data point to return.&lt;/p&gt; &lt;p&gt;The value specified is exclusive; results will include data points up to the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).&lt;/p&gt;
--- @param Unit [StandardUnit] &lt;p&gt;The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;The name of the metric, with or without spaces.&lt;/p&gt;
+-- @param Statistics [Statistics] <p>The metric statistics, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
+-- @param Dimensions [Dimensions] <p>The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension. CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve statistics using combinations of dimensions that were not specially published. You must specify the same dimensions that were used when the metrics were created. For an example, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations">Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying dimensions, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.</p>
+-- @param Namespace [Namespace] <p>The namespace of the metric, with or without spaces.</p>
+-- @param Period [Period] <p>The granularity, in seconds, of the returned data points. A period can be as short as one minute (60 seconds) and must be a multiple of 60. The default value is 60.</p> <p>If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must specify the period as follows or no data points in that time range is returned:</p> <ul> <li> <p>Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).</p> </li> <li> <p>Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).</p> </li> </ul>
+-- @param StartTime [Timestamp] <p>The time stamp that determines the first data point to return. Note that start times are evaluated relative to the time that CloudWatch receives the request.</p> <p>The value specified is inclusive; results include data points with the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00.</p> </li> </ul>
+-- @param ExtendedStatistics [ExtendedStatistics] <p>The percentile statistics. Specify values between p0.0 and p100.</p>
+-- @param EndTime [Timestamp] <p>The time stamp that determines the last data point to return.</p> <p>The value specified is exclusive; results will include data points up to the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).</p>
+-- @param Unit [StandardUnit] <p>The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.</p>
+-- @param MetricName [MetricName] <p>The name of the metric, with or without spaces.</p>
 -- Required parameter: Namespace
 -- Required parameter: MetricName
 -- Required parameter: StartTime
@@ -336,8 +336,8 @@ end
 
 --- Create a structure of type ListMetricsOutput
 --  
--- @param Metrics [Metrics] &lt;p&gt;The metrics.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token that marks the start of the next batch of returned results.&lt;/p&gt;
+-- @param Metrics [Metrics] <p>The metrics.</p>
+-- @param NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
 function M.ListMetricsOutput(Metrics, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListMetricsOutput")
 	local t = { 
@@ -360,8 +360,8 @@ function M.AssertInvalidParameterCombinationException(struct)
 end
 
 --- Create a structure of type InvalidParameterCombinationException
--- &lt;p&gt;Parameters that cannot be used together were used together.&lt;/p&gt;
--- @param message [AwsQueryErrorMessage] &lt;p/&gt;
+-- <p>Parameters that cannot be used together were used together.</p>
+-- @param message [AwsQueryErrorMessage] <p/>
 function M.InvalidParameterCombinationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterCombinationException")
 	local t = { 
@@ -385,8 +385,8 @@ end
 
 --- Create a structure of type DescribeAlarmHistoryOutput
 --  
--- @param AlarmHistoryItems [AlarmHistoryItems] &lt;p&gt;The alarm histories, in JSON format.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token that marks the start of the next batch of returned results.&lt;/p&gt;
+-- @param AlarmHistoryItems [AlarmHistoryItems] <p>The alarm histories, in JSON format.</p>
+-- @param NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
 function M.DescribeAlarmHistoryOutput(AlarmHistoryItems, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmHistoryOutput")
 	local t = { 
@@ -411,8 +411,8 @@ end
 
 --- Create a structure of type GetMetricStatisticsOutput
 --  
--- @param Datapoints [Datapoints] &lt;p&gt;The data points for the specified metric.&lt;/p&gt;
--- @param Label [MetricLabel] &lt;p&gt;A label for the specified metric.&lt;/p&gt;
+-- @param Datapoints [Datapoints] <p>The data points for the specified metric.</p>
+-- @param Label [MetricLabel] <p>A label for the specified metric.</p>
 function M.GetMetricStatisticsOutput(Datapoints, Label, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetMetricStatisticsOutput")
 	local t = { 
@@ -441,13 +441,13 @@ function M.AssertMetricDatum(struct)
 end
 
 --- Create a structure of type MetricDatum
--- &lt;p&gt;Encapsulates the information sent to either create a metric or add new values to be aggregated into an existing metric.&lt;/p&gt;
--- @param Dimensions [Dimensions] &lt;p&gt;The dimensions associated with the metric.&lt;/p&gt;
--- @param Timestamp [Timestamp] &lt;p&gt;The time the metric data was received, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param Value [DatapointValue] &lt;p&gt;The value for the metric.&lt;/p&gt; &lt;p&gt;Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.&lt;/p&gt;
--- @param StatisticValues [StatisticSet] &lt;p&gt;The statistical values for the metric.&lt;/p&gt;
--- @param Unit [StandardUnit] &lt;p&gt;The unit of the metric.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;The name of the metric.&lt;/p&gt;
+-- <p>Encapsulates the information sent to either create a metric or add new values to be aggregated into an existing metric.</p>
+-- @param Dimensions [Dimensions] <p>The dimensions associated with the metric.</p>
+-- @param Timestamp [Timestamp] <p>The time the metric data was received, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param Value [DatapointValue] <p>The value for the metric.</p> <p>Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.</p>
+-- @param StatisticValues [StatisticSet] <p>The statistical values for the metric.</p>
+-- @param Unit [StandardUnit] <p>The unit of the metric.</p>
+-- @param MetricName [MetricName] <p>The name of the metric.</p>
 -- Required parameter: MetricName
 function M.MetricDatum(Dimensions, Timestamp, Value, StatisticValues, Unit, MetricName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MetricDatum")
@@ -500,24 +500,24 @@ end
 
 --- Create a structure of type PutMetricAlarmInput
 --  
--- @param EvaluationPeriods [EvaluationPeriods] &lt;p&gt;The number of periods over which data is compared to the specified threshold.&lt;/p&gt;
--- @param ExtendedStatistic [ExtendedStatistic] &lt;p&gt;The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.&lt;/p&gt;
--- @param TreatMissingData [TreatMissingData] &lt;p&gt; Sets how this alarm is to handle missing data points. If &lt;code&gt;TreatMissingData&lt;/code&gt; is omitted, the default behavior of &lt;code&gt;missing&lt;/code&gt; is used. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data&quot;&gt;Configuring How CloudWatch Alarms Treats Missing Data&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;breaching | notBreaching | ignore | missing&lt;/code&gt; &lt;/p&gt;
--- @param Dimensions [Dimensions] &lt;p&gt;The dimensions for the metric associated with the alarm.&lt;/p&gt;
--- @param AlarmActions [ResourceList] &lt;p&gt;The actions to execute when this alarm transitions to the &lt;code&gt;ALARM&lt;/code&gt; state from any other state. Each action is specified as an Amazon Resource Name (ARN).&lt;/p&gt; &lt;p&gt;Valid Values: arn:aws:automate:&lt;i&gt;region&lt;/i&gt;:ec2:stop | arn:aws:automate:&lt;i&gt;region&lt;/i&gt;:ec2:terminate | arn:aws:automate:&lt;i&gt;region&lt;/i&gt;:ec2:recover&lt;/p&gt; &lt;p&gt;Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{&lt;i&gt;customer-account&lt;/i&gt;}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{&lt;i&gt;customer-account&lt;/i&gt;}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{&lt;i&gt;customer-account&lt;/i&gt;}:action/actions/AWS_EC2.InstanceId.Reboot/1.0&lt;/p&gt;
--- @param AlarmDescription [AlarmDescription] &lt;p&gt;The description for the alarm.&lt;/p&gt;
--- @param Namespace [Namespace] &lt;p&gt;The namespace for the metric associated with the alarm.&lt;/p&gt;
--- @param Period [Period] &lt;p&gt;The period, in seconds, over which the specified statistic is applied.&lt;/p&gt;
--- @param EvaluateLowSampleCountPercentile [EvaluateLowSampleCountPercentile] &lt;p&gt; Used only for alarms based on percentiles. If you specify &lt;code&gt;ignore&lt;/code&gt;, the alarm state will not change during periods with too few data points to be statistically significant. If you specify &lt;code&gt;evaluate&lt;/code&gt; or omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points are available. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples&quot;&gt;Percentile-Based CloudWatch Alarms and Low Data Samples&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;evaluate | ignore&lt;/code&gt; &lt;/p&gt;
--- @param ComparisonOperator [ComparisonOperator] &lt;p&gt; The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.&lt;/p&gt;
--- @param AlarmName [AlarmName] &lt;p&gt;The name for the alarm. This name must be unique within the AWS account.&lt;/p&gt;
--- @param Unit [StandardUnit] &lt;p&gt;The unit of measure for the statistic. For example, the units for the Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of bytes that an instance receives on all network interfaces. You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.&lt;/p&gt; &lt;p&gt;If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch alarm can get stuck in the &lt;code&gt;INSUFFICIENT DATA&lt;/code&gt; state. &lt;/p&gt;
--- @param Statistic [Statistic] &lt;p&gt;The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use &lt;code&gt;ExtendedStatistic&lt;/code&gt;.&lt;/p&gt;
--- @param Threshold [Threshold] &lt;p&gt;The value against which the specified statistic is compared.&lt;/p&gt;
--- @param InsufficientDataActions [ResourceList] &lt;p&gt;The actions to execute when this alarm transitions to the &lt;code&gt;INSUFFICIENT_DATA&lt;/code&gt; state from any other state. Each action is specified as an Amazon Resource Name (ARN).&lt;/p&gt; &lt;p&gt;Valid Values: arn:aws:automate:&lt;i&gt;region&lt;/i&gt;:ec2:stop | arn:aws:automate:&lt;i&gt;region&lt;/i&gt;:ec2:terminate | arn:aws:automate:&lt;i&gt;region&lt;/i&gt;:ec2:recover&lt;/p&gt; &lt;p&gt;Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{&lt;i&gt;customer-account&lt;/i&gt;}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{&lt;i&gt;customer-account&lt;/i&gt;}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{&lt;i&gt;customer-account&lt;/i&gt;}:action/actions/AWS_EC2.InstanceId.Reboot/1.0&lt;/p&gt;
--- @param OKActions [ResourceList] &lt;p&gt;The actions to execute when this alarm transitions to an &lt;code&gt;OK&lt;/code&gt; state from any other state. Each action is specified as an Amazon Resource Name (ARN).&lt;/p&gt; &lt;p&gt;Valid Values: arn:aws:automate:&lt;i&gt;region&lt;/i&gt;:ec2:stop | arn:aws:automate:&lt;i&gt;region&lt;/i&gt;:ec2:terminate | arn:aws:automate:&lt;i&gt;region&lt;/i&gt;:ec2:recover&lt;/p&gt; &lt;p&gt;Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{&lt;i&gt;customer-account&lt;/i&gt;}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{&lt;i&gt;customer-account&lt;/i&gt;}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{&lt;i&gt;customer-account&lt;/i&gt;}:action/actions/AWS_EC2.InstanceId.Reboot/1.0&lt;/p&gt;
--- @param ActionsEnabled [ActionsEnabled] &lt;p&gt;Indicates whether actions should be executed during any changes to the alarm state.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;The name for the metric associated with the alarm.&lt;/p&gt;
+-- @param EvaluationPeriods [EvaluationPeriods] <p>The number of periods over which data is compared to the specified threshold.</p>
+-- @param ExtendedStatistic [ExtendedStatistic] <p>The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.</p>
+-- @param TreatMissingData [TreatMissingData] <p> Sets how this alarm is to handle missing data points. If <code>TreatMissingData</code> is omitted, the default behavior of <code>missing</code> is used. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data">Configuring How CloudWatch Alarms Treats Missing Data</a>.</p> <p>Valid Values: <code>breaching | notBreaching | ignore | missing</code> </p>
+-- @param Dimensions [Dimensions] <p>The dimensions for the metric associated with the alarm.</p>
+-- @param AlarmActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
+-- @param AlarmDescription [AlarmDescription] <p>The description for the alarm.</p>
+-- @param Namespace [Namespace] <p>The namespace for the metric associated with the alarm.</p>
+-- @param Period [Period] <p>The period, in seconds, over which the specified statistic is applied.</p>
+-- @param EvaluateLowSampleCountPercentile [EvaluateLowSampleCountPercentile] <p> Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state will not change during periods with too few data points to be statistically significant. If you specify <code>evaluate</code> or omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points are available. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples">Percentile-Based CloudWatch Alarms and Low Data Samples</a>.</p> <p>Valid Values: <code>evaluate | ignore</code> </p>
+-- @param ComparisonOperator [ComparisonOperator] <p> The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.</p>
+-- @param AlarmName [AlarmName] <p>The name for the alarm. This name must be unique within the AWS account.</p>
+-- @param Unit [StandardUnit] <p>The unit of measure for the statistic. For example, the units for the Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of bytes that an instance receives on all network interfaces. You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.</p> <p>If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch alarm can get stuck in the <code>INSUFFICIENT DATA</code> state. </p>
+-- @param Statistic [Statistic] <p>The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
+-- @param Threshold [Threshold] <p>The value against which the specified statistic is compared.</p>
+-- @param InsufficientDataActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
+-- @param OKActions [ResourceList] <p>The actions to execute when this alarm transitions to an <code>OK</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
+-- @param ActionsEnabled [ActionsEnabled] <p>Indicates whether actions should be executed during any changes to the alarm state.</p>
+-- @param MetricName [MetricName] <p>The name for the metric associated with the alarm.</p>
 -- Required parameter: AlarmName
 -- Required parameter: MetricName
 -- Required parameter: Namespace
@@ -565,7 +565,7 @@ end
 
 --- Create a structure of type DeleteAlarmsInput
 --  
--- @param AlarmNames [AlarmNames] &lt;p&gt;The alarms to be deleted.&lt;/p&gt;
+-- @param AlarmNames [AlarmNames] <p>The alarms to be deleted.</p>
 -- Required parameter: AlarmNames
 function M.DeleteAlarmsInput(AlarmNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAlarmsInput")
@@ -595,11 +595,11 @@ function M.AssertStatisticSet(struct)
 end
 
 --- Create a structure of type StatisticSet
--- &lt;p&gt;Represents a set of statistics that describes a specific metric. &lt;/p&gt;
--- @param SampleCount [DatapointValue] &lt;p&gt;The number of samples used for the statistic set.&lt;/p&gt;
--- @param Sum [DatapointValue] &lt;p&gt;The sum of values for the sample set.&lt;/p&gt;
--- @param Minimum [DatapointValue] &lt;p&gt;The minimum value of the sample set.&lt;/p&gt;
--- @param Maximum [DatapointValue] &lt;p&gt;The maximum value of the sample set.&lt;/p&gt;
+-- <p>Represents a set of statistics that describes a specific metric. </p>
+-- @param SampleCount [DatapointValue] <p>The number of samples used for the statistic set.</p>
+-- @param Sum [DatapointValue] <p>The sum of values for the sample set.</p>
+-- @param Minimum [DatapointValue] <p>The minimum value of the sample set.</p>
+-- @param Maximum [DatapointValue] <p>The maximum value of the sample set.</p>
 -- Required parameter: SampleCount
 -- Required parameter: Sum
 -- Required parameter: Minimum
@@ -629,7 +629,7 @@ end
 
 --- Create a structure of type DescribeAlarmsForMetricOutput
 --  
--- @param MetricAlarms [MetricAlarms] &lt;p&gt;The information for each alarm with the specified metric.&lt;/p&gt;
+-- @param MetricAlarms [MetricAlarms] <p>The information for each alarm with the specified metric.</p>
 function M.DescribeAlarmsForMetricOutput(MetricAlarms, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmsForMetricOutput")
 	local t = { 
@@ -651,8 +651,8 @@ function M.AssertInvalidParameterValueException(struct)
 end
 
 --- Create a structure of type InvalidParameterValueException
--- &lt;p&gt;The value of an input parameter is bad or out-of-range.&lt;/p&gt;
--- @param message [AwsQueryErrorMessage] &lt;p/&gt;
+-- <p>The value of an input parameter is bad or out-of-range.</p>
+-- @param message [AwsQueryErrorMessage] <p/>
 function M.InvalidParameterValueException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
 	local t = { 
@@ -681,15 +681,15 @@ function M.AssertDatapoint(struct)
 end
 
 --- Create a structure of type Datapoint
--- &lt;p&gt;Encapsulates the statistical data that Amazon CloudWatch computes from metric data.&lt;/p&gt;
--- @param SampleCount [DatapointValue] &lt;p&gt;The number of metric values that contributed to the aggregate value of this data point.&lt;/p&gt;
--- @param Timestamp [Timestamp] &lt;p&gt;The time stamp used for the data point.&lt;/p&gt;
--- @param Average [DatapointValue] &lt;p&gt;The average of the metric values that correspond to the data point.&lt;/p&gt;
--- @param Maximum [DatapointValue] &lt;p&gt;The maximum metric value for the data point.&lt;/p&gt;
--- @param Minimum [DatapointValue] &lt;p&gt;The minimum metric value for the data point.&lt;/p&gt;
--- @param ExtendedStatistics [DatapointValueMap] &lt;p&gt;The percentile statistic for the data point.&lt;/p&gt;
--- @param Sum [DatapointValue] &lt;p&gt;The sum of the metric values for the data point.&lt;/p&gt;
--- @param Unit [StandardUnit] &lt;p&gt;The standard unit for the data point.&lt;/p&gt;
+-- <p>Encapsulates the statistical data that Amazon CloudWatch computes from metric data.</p>
+-- @param SampleCount [DatapointValue] <p>The number of metric values that contributed to the aggregate value of this data point.</p>
+-- @param Timestamp [Timestamp] <p>The time stamp used for the data point.</p>
+-- @param Average [DatapointValue] <p>The average of the metric values that correspond to the data point.</p>
+-- @param Maximum [DatapointValue] <p>The maximum metric value for the data point.</p>
+-- @param Minimum [DatapointValue] <p>The minimum metric value for the data point.</p>
+-- @param ExtendedStatistics [DatapointValueMap] <p>The percentile statistic for the data point.</p>
+-- @param Sum [DatapointValue] <p>The sum of the metric values for the data point.</p>
+-- @param Unit [StandardUnit] <p>The standard unit for the data point.</p>
 function M.Datapoint(SampleCount, Timestamp, Average, Maximum, Minimum, ExtendedStatistics, Sum, Unit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Datapoint")
 	local t = { 
@@ -718,8 +718,8 @@ function M.AssertMissingRequiredParameterException(struct)
 end
 
 --- Create a structure of type MissingRequiredParameterException
--- &lt;p&gt;An input parameter that is required is missing.&lt;/p&gt;
--- @param message [AwsQueryErrorMessage] &lt;p/&gt;
+-- <p>An input parameter that is required is missing.</p>
+-- @param message [AwsQueryErrorMessage] <p/>
 function M.MissingRequiredParameterException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MissingRequiredParameterException")
 	local t = { 
@@ -743,9 +743,9 @@ function M.AssertDimensionFilter(struct)
 end
 
 --- Create a structure of type DimensionFilter
--- &lt;p&gt;Represents filters for a dimension.&lt;/p&gt;
--- @param Name [DimensionName] &lt;p&gt;The dimension name to be matched.&lt;/p&gt;
--- @param Value [DimensionValue] &lt;p&gt;The value of the dimension to be matched.&lt;/p&gt;
+-- <p>Represents filters for a dimension.</p>
+-- @param Name [DimensionName] <p>The dimension name to be matched.</p>
+-- @param Value [DimensionValue] <p>The value of the dimension to be matched.</p>
 -- Required parameter: Name
 function M.DimensionFilter(Name, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DimensionFilter")
@@ -771,7 +771,7 @@ end
 
 --- Create a structure of type EnableAlarmActionsInput
 --  
--- @param AlarmNames [AlarmNames] &lt;p&gt;The names of the alarms.&lt;/p&gt;
+-- @param AlarmNames [AlarmNames] <p>The names of the alarms.</p>
 -- Required parameter: AlarmNames
 function M.EnableAlarmActionsInput(AlarmNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableAlarmActionsInput")
@@ -800,12 +800,12 @@ end
 
 --- Create a structure of type DescribeAlarmsInput
 --  
--- @param StateValue [StateValue] &lt;p&gt;The state value to be used in matching alarms.&lt;/p&gt;
--- @param ActionPrefix [ActionPrefix] &lt;p&gt;The action name prefix.&lt;/p&gt;
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of alarm descriptions to retrieve.&lt;/p&gt;
--- @param AlarmNames [AlarmNames] &lt;p&gt;The names of the alarms.&lt;/p&gt;
--- @param AlarmNamePrefix [AlarmNamePrefix] &lt;p&gt;The alarm name prefix. You cannot specify &lt;code&gt;AlarmNames&lt;/code&gt; if this parameter is specified.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token returned by a previous call to indicate that there is more data available.&lt;/p&gt;
+-- @param StateValue [StateValue] <p>The state value to be used in matching alarms.</p>
+-- @param ActionPrefix [ActionPrefix] <p>The action name prefix.</p>
+-- @param MaxRecords [MaxRecords] <p>The maximum number of alarm descriptions to retrieve.</p>
+-- @param AlarmNames [AlarmNames] <p>The names of the alarms.</p>
+-- @param AlarmNamePrefix [AlarmNamePrefix] <p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.</p>
+-- @param NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
 function M.DescribeAlarmsInput(StateValue, ActionPrefix, MaxRecords, AlarmNames, AlarmNamePrefix, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmsInput")
 	local t = { 
@@ -835,9 +835,9 @@ function M.AssertDimension(struct)
 end
 
 --- Create a structure of type Dimension
--- &lt;p&gt;Expands the identity of a metric.&lt;/p&gt;
--- @param Name [DimensionName] &lt;p&gt;The name of the dimension.&lt;/p&gt;
--- @param Value [DimensionValue] &lt;p&gt;The value representing the dimension measurement.&lt;/p&gt;
+-- <p>Expands the identity of a metric.</p>
+-- @param Name [DimensionName] <p>The name of the dimension.</p>
+-- @param Value [DimensionValue] <p>The value representing the dimension measurement.</p>
 -- Required parameter: Name
 -- Required parameter: Value
 function M.Dimension(Name, Value, ...)
@@ -868,12 +868,12 @@ end
 
 --- Create a structure of type DescribeAlarmHistoryInput
 --  
--- @param StartDate [Timestamp] &lt;p&gt;The starting date to retrieve alarm history.&lt;/p&gt;
--- @param EndDate [Timestamp] &lt;p&gt;The ending date to retrieve alarm history.&lt;/p&gt;
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of alarm history records to retrieve.&lt;/p&gt;
--- @param AlarmName [AlarmName] &lt;p&gt;The name of the alarm.&lt;/p&gt;
--- @param HistoryItemType [HistoryItemType] &lt;p&gt;The type of alarm histories to retrieve.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token returned by a previous call to indicate that there is more data available.&lt;/p&gt;
+-- @param StartDate [Timestamp] <p>The starting date to retrieve alarm history.</p>
+-- @param EndDate [Timestamp] <p>The ending date to retrieve alarm history.</p>
+-- @param MaxRecords [MaxRecords] <p>The maximum number of alarm history records to retrieve.</p>
+-- @param AlarmName [AlarmName] <p>The name of the alarm.</p>
+-- @param HistoryItemType [HistoryItemType] <p>The type of alarm histories to retrieve.</p>
+-- @param NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
 function M.DescribeAlarmHistoryInput(StartDate, EndDate, MaxRecords, AlarmName, HistoryItemType, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmHistoryInput")
 	local t = { 
@@ -904,10 +904,10 @@ end
 
 --- Create a structure of type ListMetricsInput
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token returned by a previous call to indicate that there is more data available.&lt;/p&gt;
--- @param Namespace [Namespace] &lt;p&gt;The namespace to filter against.&lt;/p&gt;
--- @param Dimensions [DimensionFilters] &lt;p&gt;The dimensions to filter against.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;The name of the metric to filter against.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
+-- @param Namespace [Namespace] <p>The namespace to filter against.</p>
+-- @param Dimensions [DimensionFilters] <p>The dimensions to filter against.</p>
+-- @param MetricName [MetricName] <p>The name of the metric to filter against.</p>
 function M.ListMetricsInput(NextToken, Namespace, Dimensions, MetricName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListMetricsInput")
 	local t = { 
@@ -932,8 +932,8 @@ function M.AssertInvalidFormatFault(struct)
 end
 
 --- Create a structure of type InvalidFormatFault
--- &lt;p&gt;Data was not syntactically valid JSON.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p/&gt;
+-- <p>Data was not syntactically valid JSON.</p>
+-- @param message [ErrorMessage] <p/>
 function M.InvalidFormatFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFormatFault")
 	local t = { 
@@ -959,8 +959,8 @@ end
 
 --- Create a structure of type PutMetricDataInput
 --  
--- @param Namespace [Namespace] &lt;p&gt;The namespace for the metric data.&lt;/p&gt; &lt;p&gt;You cannot specify a namespace that begins with &quot;AWS/&quot;. Namespaces that begin with &quot;AWS/&quot; are reserved for use by Amazon Web Services products.&lt;/p&gt;
--- @param MetricData [MetricData] &lt;p&gt;The data for the metric.&lt;/p&gt;
+-- @param Namespace [Namespace] <p>The namespace for the metric data.</p> <p>You cannot specify a namespace that begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by Amazon Web Services products.</p>
+-- @param MetricData [MetricData] <p>The data for the metric.</p>
 -- Required parameter: Namespace
 -- Required parameter: MetricData
 function M.PutMetricDataInput(Namespace, MetricData, ...)
@@ -987,10 +987,10 @@ function M.AssertMetric(struct)
 end
 
 --- Create a structure of type Metric
--- &lt;p&gt;Represents a specific metric.&lt;/p&gt;
--- @param Namespace [Namespace] &lt;p&gt;The namespace of the metric.&lt;/p&gt;
--- @param Dimensions [Dimensions] &lt;p&gt;The dimensions for the metric.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;The name of the metric.&lt;/p&gt;
+-- <p>Represents a specific metric.</p>
+-- @param Namespace [Namespace] <p>The namespace of the metric.</p>
+-- @param Dimensions [Dimensions] <p>The dimensions for the metric.</p>
+-- @param MetricName [MetricName] <p>The name of the metric.</p>
 function M.Metric(Namespace, Dimensions, MetricName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Metric")
 	local t = { 
@@ -1021,10 +1021,10 @@ end
 
 --- Create a structure of type SetAlarmStateInput
 --  
--- @param StateReason [StateReason] &lt;p&gt;The reason that this alarm is set to this specific state, in text format.&lt;/p&gt;
--- @param StateReasonData [StateReasonData] &lt;p&gt;The reason that this alarm is set to this specific state, in JSON format.&lt;/p&gt;
--- @param AlarmName [AlarmName] &lt;p&gt;The name for the alarm. This name must be unique within the AWS account. The maximum length is 255 characters.&lt;/p&gt;
--- @param StateValue [StateValue] &lt;p&gt;The value of the state.&lt;/p&gt;
+-- @param StateReason [StateReason] <p>The reason that this alarm is set to this specific state, in text format.</p>
+-- @param StateReasonData [StateReasonData] <p>The reason that this alarm is set to this specific state, in JSON format.</p>
+-- @param AlarmName [AlarmName] <p>The name for the alarm. This name must be unique within the AWS account. The maximum length is 255 characters.</p>
+-- @param StateValue [StateValue] <p>The value of the state.</p>
 -- Required parameter: AlarmName
 -- Required parameter: StateValue
 -- Required parameter: StateReason
@@ -1061,13 +1061,13 @@ end
 
 --- Create a structure of type DescribeAlarmsForMetricInput
 --  
--- @param ExtendedStatistic [ExtendedStatistic] &lt;p&gt;The percentile statistic for the metric. Specify a value between p0.0 and p100.&lt;/p&gt;
--- @param Dimensions [Dimensions] &lt;p&gt;The dimensions associated with the metric. If the metric has any associated dimensions, you must specify them in order for the call to succeed.&lt;/p&gt;
--- @param Namespace [Namespace] &lt;p&gt;The namespace of the metric.&lt;/p&gt;
--- @param Period [Period] &lt;p&gt;The period, in seconds, over which the statistic is applied.&lt;/p&gt;
--- @param Statistic [Statistic] &lt;p&gt;The statistic for the metric, other than percentiles. For percentile statistics, use &lt;code&gt;ExtendedStatistics&lt;/code&gt;.&lt;/p&gt;
--- @param Unit [StandardUnit] &lt;p&gt;The unit for the metric.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;The name of the metric.&lt;/p&gt;
+-- @param ExtendedStatistic [ExtendedStatistic] <p>The percentile statistic for the metric. Specify a value between p0.0 and p100.</p>
+-- @param Dimensions [Dimensions] <p>The dimensions associated with the metric. If the metric has any associated dimensions, you must specify them in order for the call to succeed.</p>
+-- @param Namespace [Namespace] <p>The namespace of the metric.</p>
+-- @param Period [Period] <p>The period, in seconds, over which the statistic is applied.</p>
+-- @param Statistic [Statistic] <p>The statistic for the metric, other than percentiles. For percentile statistics, use <code>ExtendedStatistics</code>.</p>
+-- @param Unit [StandardUnit] <p>The unit for the metric.</p>
+-- @param MetricName [MetricName] <p>The name of the metric.</p>
 -- Required parameter: MetricName
 -- Required parameter: Namespace
 function M.DescribeAlarmsForMetricInput(ExtendedStatistic, Dimensions, Namespace, Period, Statistic, Unit, MetricName, ...)
@@ -1097,8 +1097,8 @@ function M.AssertResourceNotFound(struct)
 end
 
 --- Create a structure of type ResourceNotFound
--- &lt;p&gt;The named resource does not exist.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p/&gt;
+-- <p>The named resource does not exist.</p>
+-- @param message [ErrorMessage] <p/>
 function M.ResourceNotFound(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFound")
 	local t = { 

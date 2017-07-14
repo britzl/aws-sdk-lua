@@ -38,16 +38,16 @@ function M.AssertInterconnect(struct)
 end
 
 --- Create a structure of type Interconnect
--- &lt;p&gt;An interconnect is a connection that can host other connections.&lt;/p&gt; &lt;p&gt;Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.&lt;/p&gt; &lt;p&gt;The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.&lt;/p&gt;
--- @param awsDevice [AwsDevice] &lt;p&gt;The Direct Connection endpoint which the physical connection terminates on.&lt;/p&gt;
--- @param region [Region] &lt;p&gt;An interconnect is a connection that can host other connections.&lt;/p&gt; &lt;p&gt;Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.&lt;/p&gt; &lt;p&gt;The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.&lt;/p&gt;
--- @param lagId [LagId] &lt;p&gt;An interconnect is a connection that can host other connections.&lt;/p&gt; &lt;p&gt;Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.&lt;/p&gt; &lt;p&gt;The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.&lt;/p&gt;
--- @param bandwidth [Bandwidth] &lt;p&gt;An interconnect is a connection that can host other connections.&lt;/p&gt; &lt;p&gt;Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.&lt;/p&gt; &lt;p&gt;The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.&lt;/p&gt;
--- @param location [LocationCode] &lt;p&gt;An interconnect is a connection that can host other connections.&lt;/p&gt; &lt;p&gt;Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.&lt;/p&gt; &lt;p&gt;The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.&lt;/p&gt;
--- @param interconnectName [InterconnectName] &lt;p&gt;An interconnect is a connection that can host other connections.&lt;/p&gt; &lt;p&gt;Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.&lt;/p&gt; &lt;p&gt;The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.&lt;/p&gt;
--- @param interconnectId [InterconnectId] &lt;p&gt;An interconnect is a connection that can host other connections.&lt;/p&gt; &lt;p&gt;Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.&lt;/p&gt; &lt;p&gt;The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.&lt;/p&gt;
--- @param loaIssueTime [LoaIssueTime] &lt;p&gt;The time of the most recent call to DescribeInterconnectLoa for this Interconnect.&lt;/p&gt;
--- @param interconnectState [InterconnectState] &lt;p&gt;An interconnect is a connection that can host other connections.&lt;/p&gt; &lt;p&gt;Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.&lt;/p&gt; &lt;p&gt;The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.&lt;/p&gt;
+-- <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
+-- @param awsDevice [AwsDevice] <p>The Direct Connection endpoint which the physical connection terminates on.</p>
+-- @param region [Region] <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
+-- @param lagId [LagId] <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
+-- @param bandwidth [Bandwidth] <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
+-- @param location [LocationCode] <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
+-- @param interconnectName [InterconnectName] <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
+-- @param interconnectId [InterconnectId] <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
+-- @param loaIssueTime [LoaIssueTime] <p>The time of the most recent call to DescribeInterconnectLoa for this Interconnect.</p>
+-- @param interconnectState [InterconnectState] <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
 function M.Interconnect(awsDevice, region, lagId, bandwidth, location, interconnectName, interconnectId, loaIssueTime, interconnectState, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Interconnect")
 	local t = { 
@@ -76,7 +76,7 @@ function M.AssertDuplicateTagKeysException(struct)
 end
 
 --- Create a structure of type DuplicateTagKeysException
--- &lt;p&gt;A tag key was specified more than once.&lt;/p&gt;
+-- <p>A tag key was specified more than once.</p>
 function M.DuplicateTagKeysException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateTagKeysException")
 	local t = { 
@@ -98,8 +98,8 @@ function M.AssertDeleteInterconnectRequest(struct)
 end
 
 --- Create a structure of type DeleteInterconnectRequest
--- &lt;p&gt;Container for the parameters to the DeleteInterconnect operation.&lt;/p&gt;
--- @param interconnectId [InterconnectId] &lt;p&gt;Container for the parameters to the DeleteInterconnect operation.&lt;/p&gt;
+-- <p>Container for the parameters to the DeleteInterconnect operation.</p>
+-- @param interconnectId [InterconnectId] <p>Container for the parameters to the DeleteInterconnect operation.</p>
 -- Required parameter: interconnectId
 function M.DeleteInterconnectRequest(interconnectId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInterconnectRequest")
@@ -123,8 +123,8 @@ function M.AssertConfirmPublicVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type ConfirmPublicVirtualInterfaceRequest
--- &lt;p&gt;Container for the parameters to the ConfirmPublicVirtualInterface operation.&lt;/p&gt;
--- @param virtualInterfaceId [VirtualInterfaceId] &lt;p&gt;Container for the parameters to the ConfirmPublicVirtualInterface operation.&lt;/p&gt;
+-- <p>Container for the parameters to the ConfirmPublicVirtualInterface operation.</p>
+-- @param virtualInterfaceId [VirtualInterfaceId] <p>Container for the parameters to the ConfirmPublicVirtualInterface operation.</p>
 -- Required parameter: virtualInterfaceId
 function M.ConfirmPublicVirtualInterfaceRequest(virtualInterfaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmPublicVirtualInterfaceRequest")
@@ -150,10 +150,10 @@ function M.AssertDescribeConnectionLoaRequest(struct)
 end
 
 --- Create a structure of type DescribeConnectionLoaRequest
--- &lt;p&gt;Container for the parameters to the DescribeConnectionLoa operation.&lt;/p&gt;
--- @param loaContentType [LoaContentType] &lt;p&gt;Container for the parameters to the DescribeConnectionLoa operation.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;Container for the parameters to the DescribeConnectionLoa operation.&lt;/p&gt;
--- @param providerName [ProviderName] &lt;p&gt;The name of the APN partner or service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the DescribeConnectionLoa operation.</p>
+-- @param loaContentType [LoaContentType] <p>Container for the parameters to the DescribeConnectionLoa operation.</p>
+-- @param connectionId [ConnectionId] <p>Container for the parameters to the DescribeConnectionLoa operation.</p>
+-- @param providerName [ProviderName] <p>The name of the APN partner or service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
 -- Required parameter: connectionId
 function M.DescribeConnectionLoaRequest(loaContentType, connectionId, providerName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionLoaRequest")
@@ -181,9 +181,9 @@ function M.AssertAssociateConnectionWithLagRequest(struct)
 end
 
 --- Create a structure of type AssociateConnectionWithLagRequest
--- &lt;p&gt;Container for the parameters to the AssociateConnectionWithLag operation.&lt;/p&gt;
--- @param lagId [LagId] &lt;p&gt;The ID of the LAG with which to associate the connection.&lt;/p&gt; &lt;p&gt;Example: dxlag-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;The ID of the connection.&lt;/p&gt; &lt;p&gt;Example: dxcon-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the AssociateConnectionWithLag operation.</p>
+-- @param lagId [LagId] <p>The ID of the LAG with which to associate the connection.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
+-- @param connectionId [ConnectionId] <p>The ID of the connection.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
 -- Required parameter: connectionId
 -- Required parameter: lagId
 function M.AssociateConnectionWithLagRequest(lagId, connectionId, ...)
@@ -208,8 +208,8 @@ function M.AssertDeleteInterconnectResponse(struct)
 end
 
 --- Create a structure of type DeleteInterconnectResponse
--- &lt;p&gt;The response received when DeleteInterconnect is called.&lt;/p&gt;
--- @param interconnectState [InterconnectState] &lt;p&gt;The response received when DeleteInterconnect is called.&lt;/p&gt;
+-- <p>The response received when DeleteInterconnect is called.</p>
+-- @param interconnectState [InterconnectState] <p>The response received when DeleteInterconnect is called.</p>
 function M.DeleteInterconnectResponse(interconnectState, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInterconnectResponse")
 	local t = { 
@@ -232,9 +232,9 @@ function M.AssertDescribeVirtualInterfacesRequest(struct)
 end
 
 --- Create a structure of type DescribeVirtualInterfacesRequest
--- &lt;p&gt;Container for the parameters to the DescribeVirtualInterfaces operation.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;Container for the parameters to the DescribeVirtualInterfaces operation.&lt;/p&gt;
--- @param virtualInterfaceId [VirtualInterfaceId] &lt;p&gt;Container for the parameters to the DescribeVirtualInterfaces operation.&lt;/p&gt;
+-- <p>Container for the parameters to the DescribeVirtualInterfaces operation.</p>
+-- @param connectionId [ConnectionId] <p>Container for the parameters to the DescribeVirtualInterfaces operation.</p>
+-- @param virtualInterfaceId [VirtualInterfaceId] <p>Container for the parameters to the DescribeVirtualInterfaces operation.</p>
 function M.DescribeVirtualInterfacesRequest(connectionId, virtualInterfaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVirtualInterfacesRequest")
 	local t = { 
@@ -257,8 +257,8 @@ function M.AssertDescribeLagsRequest(struct)
 end
 
 --- Create a structure of type DescribeLagsRequest
--- &lt;p&gt;Container for the parameters to the DescribeLags operation.&lt;/p&gt;
--- @param lagId [LagId] &lt;p&gt;The ID of the LAG.&lt;/p&gt; &lt;p&gt;Example: dxlag-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the DescribeLags operation.</p>
+-- @param lagId [LagId] <p>The ID of the LAG.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
 function M.DescribeLagsRequest(lagId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLagsRequest")
 	local t = { 
@@ -280,8 +280,8 @@ function M.AssertInterconnects(struct)
 end
 
 --- Create a structure of type Interconnects
--- &lt;p&gt;A structure containing a list of interconnects.&lt;/p&gt;
--- @param interconnects [InterconnectList] &lt;p&gt;A list of interconnects.&lt;/p&gt;
+-- <p>A structure containing a list of interconnects.</p>
+-- @param interconnects [InterconnectList] <p>A list of interconnects.</p>
 function M.Interconnects(interconnects, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Interconnects")
 	local t = { 
@@ -303,8 +303,8 @@ function M.AssertDescribeInterconnectLoaResponse(struct)
 end
 
 --- Create a structure of type DescribeInterconnectLoaResponse
--- &lt;p&gt;The response received when DescribeInterconnectLoa is called.&lt;/p&gt;
--- @param loa [Loa] &lt;p&gt;The response received when DescribeInterconnectLoa is called.&lt;/p&gt;
+-- <p>The response received when DescribeInterconnectLoa is called.</p>
+-- @param loa [Loa] <p>The response received when DescribeInterconnectLoa is called.</p>
 function M.DescribeInterconnectLoaResponse(loa, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInterconnectLoaResponse")
 	local t = { 
@@ -329,9 +329,9 @@ function M.AssertDisassociateConnectionFromLagRequest(struct)
 end
 
 --- Create a structure of type DisassociateConnectionFromLagRequest
--- &lt;p&gt;Container for the parameters to the DisassociateConnectionFromLag operation.&lt;/p&gt;
--- @param lagId [LagId] &lt;p&gt;The ID of the LAG.&lt;/p&gt; &lt;p&gt;Example: dxlag-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;The ID of the connection to disassociate from the LAG.&lt;/p&gt; &lt;p&gt;Example: dxcon-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the DisassociateConnectionFromLag operation.</p>
+-- @param lagId [LagId] <p>The ID of the LAG.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
+-- @param connectionId [ConnectionId] <p>The ID of the connection to disassociate from the LAG.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
 -- Required parameter: connectionId
 -- Required parameter: lagId
 function M.DisassociateConnectionFromLagRequest(lagId, connectionId, ...)
@@ -364,12 +364,12 @@ function M.AssertCreateLagRequest(struct)
 end
 
 --- Create a structure of type CreateLagRequest
--- &lt;p&gt;Container for the parameters to the CreateLag operation.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;The ID of an existing connection to migrate to the LAG.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param lagName [LagName] &lt;p&gt;The name of the LAG.&lt;/p&gt; &lt;p&gt;Example: &quot;&lt;code&gt;3x10G LAG to AWS&lt;/code&gt;&quot;&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param numberOfConnections [Count] &lt;p&gt;The number of physical connections initially provisioned and bundled by the LAG.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param location [LocationCode] &lt;p&gt;The AWS Direct Connect location in which the LAG should be allocated.&lt;/p&gt; &lt;p&gt;Example: EqSV5&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param connectionsBandwidth [Bandwidth] &lt;p&gt;The bandwidth of the individual physical connections bundled by the LAG.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt; &lt;p&gt;Available values: 1Gbps, 10Gbps&lt;/p&gt;
+-- <p>Container for the parameters to the CreateLag operation.</p>
+-- @param connectionId [ConnectionId] <p>The ID of an existing connection to migrate to the LAG.</p> <p>Default: None</p>
+-- @param lagName [LagName] <p>The name of the LAG.</p> <p>Example: "<code>3x10G LAG to AWS</code>"</p> <p>Default: None</p>
+-- @param numberOfConnections [Count] <p>The number of physical connections initially provisioned and bundled by the LAG.</p> <p>Default: None</p>
+-- @param location [LocationCode] <p>The AWS Direct Connect location in which the LAG should be allocated.</p> <p>Example: EqSV5</p> <p>Default: None</p>
+-- @param connectionsBandwidth [Bandwidth] <p>The bandwidth of the individual physical connections bundled by the LAG.</p> <p>Default: None</p> <p>Available values: 1Gbps, 10Gbps</p>
 -- Required parameter: numberOfConnections
 -- Required parameter: location
 -- Required parameter: connectionsBandwidth
@@ -399,8 +399,8 @@ function M.AssertConnections(struct)
 end
 
 --- Create a structure of type Connections
--- &lt;p&gt;A structure containing a list of connections.&lt;/p&gt;
--- @param connections [ConnectionList] &lt;p&gt;A list of connections.&lt;/p&gt;
+-- <p>A structure containing a list of connections.</p>
+-- @param connections [ConnectionList] <p>A list of connections.</p>
 function M.Connections(connections, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Connections")
 	local t = { 
@@ -424,9 +424,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Information about a tag.&lt;/p&gt;
--- @param value [TagValue] &lt;p&gt;The value of the tag.&lt;/p&gt;
--- @param key [TagKey] &lt;p&gt;The key of the tag.&lt;/p&gt;
+-- <p>Information about a tag.</p>
+-- @param value [TagValue] <p>The value of the tag.</p>
+-- @param key [TagKey] <p>The key of the tag.</p>
 -- Required parameter: key
 function M.Tag(value, key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
@@ -451,8 +451,8 @@ function M.AssertDescribeConnectionsOnInterconnectRequest(struct)
 end
 
 --- Create a structure of type DescribeConnectionsOnInterconnectRequest
--- &lt;p&gt;Container for the parameters to the DescribeConnectionsOnInterconnect operation.&lt;/p&gt;
--- @param interconnectId [InterconnectId] &lt;p&gt;ID of the interconnect on which a list of connection is provisioned.&lt;/p&gt; &lt;p&gt;Example: dxcon-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the DescribeConnectionsOnInterconnect operation.</p>
+-- @param interconnectId [InterconnectId] <p>ID of the interconnect on which a list of connection is provisioned.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
 -- Required parameter: interconnectId
 function M.DescribeConnectionsOnInterconnectRequest(interconnectId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionsOnInterconnectRequest")
@@ -475,8 +475,8 @@ function M.AssertLags(struct)
 end
 
 --- Create a structure of type Lags
--- &lt;p&gt;A structure containing a list of LAGs.&lt;/p&gt;
--- @param lags [LagList] &lt;p&gt;A list of LAGs.&lt;/p&gt;
+-- <p>A structure containing a list of LAGs.</p>
+-- @param lags [LagList] <p>A list of LAGs.</p>
 function M.Lags(lags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Lags")
 	local t = { 
@@ -498,8 +498,8 @@ function M.AssertDeleteBGPPeerResponse(struct)
 end
 
 --- Create a structure of type DeleteBGPPeerResponse
--- &lt;p&gt;The response received when DeleteBGPPeer is called.&lt;/p&gt;
--- @param virtualInterface [VirtualInterface] &lt;p&gt;The response received when DeleteBGPPeer is called.&lt;/p&gt;
+-- <p>The response received when DeleteBGPPeer is called.</p>
+-- @param virtualInterface [VirtualInterface] <p>The response received when DeleteBGPPeer is called.</p>
 function M.DeleteBGPPeerResponse(virtualInterface, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBGPPeerResponse")
 	local t = { 
@@ -524,9 +524,9 @@ function M.AssertConfirmPrivateVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type ConfirmPrivateVirtualInterfaceRequest
--- &lt;p&gt;Container for the parameters to the ConfirmPrivateVirtualInterface operation.&lt;/p&gt;
--- @param virtualGatewayId [VirtualGatewayId] &lt;p&gt;ID of the virtual private gateway that will be attached to the virtual interface.&lt;/p&gt; &lt;p&gt; A virtual private gateway can be managed via the Amazon Virtual Private Cloud (VPC) console or the &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html&quot;&gt;EC2 CreateVpnGateway&lt;/a&gt; action.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param virtualInterfaceId [VirtualInterfaceId] &lt;p&gt;Container for the parameters to the ConfirmPrivateVirtualInterface operation.&lt;/p&gt;
+-- <p>Container for the parameters to the ConfirmPrivateVirtualInterface operation.</p>
+-- @param virtualGatewayId [VirtualGatewayId] <p>ID of the virtual private gateway that will be attached to the virtual interface.</p> <p> A virtual private gateway can be managed via the Amazon Virtual Private Cloud (VPC) console or the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">EC2 CreateVpnGateway</a> action.</p> <p>Default: None</p>
+-- @param virtualInterfaceId [VirtualInterfaceId] <p>Container for the parameters to the ConfirmPrivateVirtualInterface operation.</p>
 -- Required parameter: virtualInterfaceId
 -- Required parameter: virtualGatewayId
 function M.ConfirmPrivateVirtualInterfaceRequest(virtualGatewayId, virtualInterfaceId, ...)
@@ -552,9 +552,9 @@ function M.AssertLocation(struct)
 end
 
 --- Create a structure of type Location
--- &lt;p&gt;An AWS Direct Connect location where connections and interconnects can be requested.&lt;/p&gt;
--- @param locationName [LocationName] &lt;p&gt;The name of the AWS Direct Connect location. The name includes the colocation partner name and the physical site of the lit building.&lt;/p&gt;
--- @param locationCode [LocationCode] &lt;p&gt;The code used to indicate the AWS Direct Connect location.&lt;/p&gt;
+-- <p>An AWS Direct Connect location where connections and interconnects can be requested.</p>
+-- @param locationName [LocationName] <p>The name of the AWS Direct Connect location. The name includes the colocation partner name and the physical site of the lit building.</p>
+-- @param locationCode [LocationCode] <p>The code used to indicate the AWS Direct Connect location.</p>
 function M.Location(locationName, locationCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Location")
 	local t = { 
@@ -577,8 +577,8 @@ function M.AssertDescribeConnectionLoaResponse(struct)
 end
 
 --- Create a structure of type DescribeConnectionLoaResponse
--- &lt;p&gt;The response received when DescribeConnectionLoa is called.&lt;/p&gt;
--- @param loa [Loa] &lt;p&gt;The response received when DescribeConnectionLoa is called.&lt;/p&gt;
+-- <p>The response received when DescribeConnectionLoa is called.</p>
+-- @param loa [Loa] <p>The response received when DescribeConnectionLoa is called.</p>
 function M.DescribeConnectionLoaResponse(loa, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionLoaResponse")
 	local t = { 
@@ -601,8 +601,8 @@ function M.AssertConfirmConnectionRequest(struct)
 end
 
 --- Create a structure of type ConfirmConnectionRequest
--- &lt;p&gt;Container for the parameters to the ConfirmConnection operation.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;Container for the parameters to the ConfirmConnection operation.&lt;/p&gt;
+-- <p>Container for the parameters to the ConfirmConnection operation.</p>
+-- @param connectionId [ConnectionId] <p>Container for the parameters to the ConfirmConnection operation.</p>
 -- Required parameter: connectionId
 function M.ConfirmConnectionRequest(connectionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmConnectionRequest")
@@ -641,24 +641,24 @@ function M.AssertVirtualInterface(struct)
 end
 
 --- Create a structure of type VirtualInterface
--- &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param virtualInterfaceState [VirtualInterfaceState] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param asn [ASN] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param vlan [VLAN] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param customerAddress [CustomerAddress] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param ownerAccount [OwnerAccount] &lt;p&gt;The AWS account that will own the new virtual interface.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param addressFamily [AddressFamily] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param virtualGatewayId [VirtualGatewayId] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param virtualInterfaceId [VirtualInterfaceId] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param authKey [BGPAuthKey] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param routeFilterPrefixes [RouteFilterPrefixList] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param location [LocationCode] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param bgpPeers [BGPPeerList] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param customerRouterConfig [RouterConfig] &lt;p&gt;Information for generating the customer router configuration.&lt;/p&gt;
--- @param amazonAddress [AmazonAddress] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param virtualInterfaceType [VirtualInterfaceType] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param virtualInterfaceName [VirtualInterfaceName] &lt;p&gt;A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.&lt;/p&gt;
+-- <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param virtualInterfaceState [VirtualInterfaceState] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param asn [ASN] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param vlan [VLAN] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param customerAddress [CustomerAddress] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param ownerAccount [OwnerAccount] <p>The AWS account that will own the new virtual interface.</p>
+-- @param connectionId [ConnectionId] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param addressFamily [AddressFamily] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param virtualGatewayId [VirtualGatewayId] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param virtualInterfaceId [VirtualInterfaceId] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param authKey [BGPAuthKey] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param routeFilterPrefixes [RouteFilterPrefixList] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param location [LocationCode] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param bgpPeers [BGPPeerList] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param customerRouterConfig [RouterConfig] <p>Information for generating the customer router configuration.</p>
+-- @param amazonAddress [AmazonAddress] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param virtualInterfaceType [VirtualInterfaceType] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
+-- @param virtualInterfaceName [VirtualInterfaceName] <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
 function M.VirtualInterface(virtualInterfaceState, asn, vlan, customerAddress, ownerAccount, connectionId, addressFamily, virtualGatewayId, virtualInterfaceId, authKey, routeFilterPrefixes, location, bgpPeers, customerRouterConfig, amazonAddress, virtualInterfaceType, virtualInterfaceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VirtualInterface")
 	local t = { 
@@ -697,8 +697,8 @@ function M.AssertDeleteVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type DeleteVirtualInterfaceRequest
--- &lt;p&gt;Container for the parameters to the DeleteVirtualInterface operation.&lt;/p&gt;
--- @param virtualInterfaceId [VirtualInterfaceId] &lt;p&gt;Container for the parameters to the DeleteVirtualInterface operation.&lt;/p&gt;
+-- <p>Container for the parameters to the DeleteVirtualInterface operation.</p>
+-- @param virtualInterfaceId [VirtualInterfaceId] <p>Container for the parameters to the DeleteVirtualInterface operation.</p>
 -- Required parameter: virtualInterfaceId
 function M.DeleteVirtualInterfaceRequest(virtualInterfaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVirtualInterfaceRequest")
@@ -730,12 +730,12 @@ function M.AssertAllocateHostedConnectionRequest(struct)
 end
 
 --- Create a structure of type AllocateHostedConnectionRequest
--- &lt;p&gt;Container for the parameters to theHostedConnection operation.&lt;/p&gt;
--- @param ownerAccount [OwnerAccount] &lt;p&gt;The numeric account ID of the customer for whom the connection will be provisioned.&lt;/p&gt; &lt;p&gt;Example: 123443215678&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;The ID of the interconnect or LAG on which the connection will be provisioned.&lt;/p&gt; &lt;p&gt;Example: dxcon-456abc78 or dxlag-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param bandwidth [Bandwidth] &lt;p&gt;The bandwidth of the connection.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;500Mbps&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt; &lt;p&gt;Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps&lt;/p&gt;
--- @param vlan [VLAN] &lt;p&gt;The dedicated VLAN provisioned to the hosted connection.&lt;/p&gt; &lt;p&gt;Example: 101&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param connectionName [ConnectionName] &lt;p&gt;The name of the provisioned connection.&lt;/p&gt; &lt;p&gt;Example: &quot;&lt;code&gt;500M Connection to AWS&lt;/code&gt;&quot;&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to theHostedConnection operation.</p>
+-- @param ownerAccount [OwnerAccount] <p>The numeric account ID of the customer for whom the connection will be provisioned.</p> <p>Example: 123443215678</p> <p>Default: None</p>
+-- @param connectionId [ConnectionId] <p>The ID of the interconnect or LAG on which the connection will be provisioned.</p> <p>Example: dxcon-456abc78 or dxlag-abc123</p> <p>Default: None</p>
+-- @param bandwidth [Bandwidth] <p>The bandwidth of the connection.</p> <p>Example: <code>500Mbps</code> </p> <p>Default: None</p> <p>Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps</p>
+-- @param vlan [VLAN] <p>The dedicated VLAN provisioned to the hosted connection.</p> <p>Example: 101</p> <p>Default: None</p>
+-- @param connectionName [ConnectionName] <p>The name of the provisioned connection.</p> <p>Example: "<code>500M Connection to AWS</code>"</p> <p>Default: None</p>
 -- Required parameter: connectionId
 -- Required parameter: ownerAccount
 -- Required parameter: bandwidth
@@ -772,14 +772,14 @@ function M.AssertBGPPeer(struct)
 end
 
 --- Create a structure of type BGPPeer
--- &lt;p&gt;A structure containing information about a BGP peer.&lt;/p&gt;
--- @param bgpStatus [BGPStatus] &lt;p&gt;A structure containing information about a BGP peer.&lt;/p&gt;
--- @param customerAddress [CustomerAddress] &lt;p&gt;A structure containing information about a BGP peer.&lt;/p&gt;
--- @param addressFamily [AddressFamily] &lt;p&gt;A structure containing information about a BGP peer.&lt;/p&gt;
--- @param authKey [BGPAuthKey] &lt;p&gt;A structure containing information about a BGP peer.&lt;/p&gt;
--- @param bgpPeerState [BGPPeerState] &lt;p&gt;A structure containing information about a BGP peer.&lt;/p&gt;
--- @param amazonAddress [AmazonAddress] &lt;p&gt;A structure containing information about a BGP peer.&lt;/p&gt;
--- @param asn [ASN] &lt;p&gt;A structure containing information about a BGP peer.&lt;/p&gt;
+-- <p>A structure containing information about a BGP peer.</p>
+-- @param bgpStatus [BGPStatus] <p>A structure containing information about a BGP peer.</p>
+-- @param customerAddress [CustomerAddress] <p>A structure containing information about a BGP peer.</p>
+-- @param addressFamily [AddressFamily] <p>A structure containing information about a BGP peer.</p>
+-- @param authKey [BGPAuthKey] <p>A structure containing information about a BGP peer.</p>
+-- @param bgpPeerState [BGPPeerState] <p>A structure containing information about a BGP peer.</p>
+-- @param amazonAddress [AmazonAddress] <p>A structure containing information about a BGP peer.</p>
+-- @param asn [ASN] <p>A structure containing information about a BGP peer.</p>
 function M.BGPPeer(bgpStatus, customerAddress, addressFamily, authKey, bgpPeerState, amazonAddress, asn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BGPPeer")
 	local t = { 
@@ -808,9 +808,9 @@ function M.AssertCreateBGPPeerRequest(struct)
 end
 
 --- Create a structure of type CreateBGPPeerRequest
--- &lt;p&gt;Container for the parameters to the CreateBGPPeer operation.&lt;/p&gt;
--- @param newBGPPeer [NewBGPPeer] &lt;p&gt;Detailed information for the BGP peer to be created.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param virtualInterfaceId [VirtualInterfaceId] &lt;p&gt;The ID of the virtual interface on which the BGP peer will be provisioned.&lt;/p&gt; &lt;p&gt;Example: dxvif-456abc78&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the CreateBGPPeer operation.</p>
+-- @param newBGPPeer [NewBGPPeer] <p>Detailed information for the BGP peer to be created.</p> <p>Default: None</p>
+-- @param virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface on which the BGP peer will be provisioned.</p> <p>Example: dxvif-456abc78</p> <p>Default: None</p>
 function M.CreateBGPPeerRequest(newBGPPeer, virtualInterfaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateBGPPeerRequest")
 	local t = { 
@@ -838,10 +838,10 @@ function M.AssertAllocatePrivateVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type AllocatePrivateVirtualInterfaceRequest
--- &lt;p&gt;Container for the parameters to the AllocatePrivateVirtualInterface operation.&lt;/p&gt;
--- @param ownerAccount [OwnerAccount] &lt;p&gt;The AWS account that will own the new private virtual interface.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;The connection ID on which the private virtual interface is provisioned.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param newPrivateVirtualInterfaceAllocation [NewPrivateVirtualInterfaceAllocation] &lt;p&gt;Detailed information for the private virtual interface to be provisioned.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the AllocatePrivateVirtualInterface operation.</p>
+-- @param ownerAccount [OwnerAccount] <p>The AWS account that will own the new private virtual interface.</p> <p>Default: None</p>
+-- @param connectionId [ConnectionId] <p>The connection ID on which the private virtual interface is provisioned.</p> <p>Default: None</p>
+-- @param newPrivateVirtualInterfaceAllocation [NewPrivateVirtualInterfaceAllocation] <p>Detailed information for the private virtual interface to be provisioned.</p> <p>Default: None</p>
 -- Required parameter: connectionId
 -- Required parameter: ownerAccount
 -- Required parameter: newPrivateVirtualInterfaceAllocation
@@ -871,9 +871,9 @@ function M.AssertUntagResourceRequest(struct)
 end
 
 --- Create a structure of type UntagResourceRequest
--- &lt;p&gt;Container for the parameters to the UntagResource operation.&lt;/p&gt;
--- @param resourceArn [ResourceArn] &lt;p&gt;The Amazon Resource Name (ARN) of the Direct Connect resource.&lt;/p&gt;
--- @param tagKeys [TagKeyList] &lt;p&gt;The list of tag keys to remove.&lt;/p&gt;
+-- <p>Container for the parameters to the UntagResource operation.</p>
+-- @param resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p>
+-- @param tagKeys [TagKeyList] <p>The list of tag keys to remove.</p>
 -- Required parameter: resourceArn
 -- Required parameter: tagKeys
 function M.UntagResourceRequest(resourceArn, tagKeys, ...)
@@ -901,10 +901,10 @@ function M.AssertDescribeInterconnectLoaRequest(struct)
 end
 
 --- Create a structure of type DescribeInterconnectLoaRequest
--- &lt;p&gt;Container for the parameters to the DescribeInterconnectLoa operation.&lt;/p&gt;
--- @param interconnectId [InterconnectId] &lt;p&gt;Container for the parameters to the DescribeInterconnectLoa operation.&lt;/p&gt;
--- @param providerName [ProviderName] &lt;p&gt;The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param loaContentType [LoaContentType] &lt;p&gt;Container for the parameters to the DescribeInterconnectLoa operation.&lt;/p&gt;
+-- <p>Container for the parameters to the DescribeInterconnectLoa operation.</p>
+-- @param interconnectId [InterconnectId] <p>Container for the parameters to the DescribeInterconnectLoa operation.</p>
+-- @param providerName [ProviderName] <p>The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
+-- @param loaContentType [LoaContentType] <p>Container for the parameters to the DescribeInterconnectLoa operation.</p>
 -- Required parameter: interconnectId
 function M.DescribeInterconnectLoaRequest(interconnectId, providerName, loaContentType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInterconnectLoaRequest")
@@ -930,9 +930,9 @@ function M.AssertLoa(struct)
 end
 
 --- Create a structure of type Loa
--- &lt;p&gt;A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.&lt;/p&gt;
--- @param loaContentType [LoaContentType] &lt;p&gt;A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.&lt;/p&gt;
--- @param loaContent [LoaContent] &lt;p&gt;A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.&lt;/p&gt;
+-- <p>A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.</p>
+-- @param loaContentType [LoaContentType] <p>A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.</p>
+-- @param loaContent [LoaContent] <p>A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.</p>
 function M.Loa(loaContentType, loaContent, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Loa")
 	local t = { 
@@ -955,8 +955,8 @@ function M.AssertDescribeInterconnectsRequest(struct)
 end
 
 --- Create a structure of type DescribeInterconnectsRequest
--- &lt;p&gt;Container for the parameters to the DescribeInterconnects operation.&lt;/p&gt;
--- @param interconnectId [InterconnectId] &lt;p&gt;Container for the parameters to the DescribeInterconnects operation.&lt;/p&gt;
+-- <p>Container for the parameters to the DescribeInterconnects operation.</p>
+-- @param interconnectId [InterconnectId] <p>Container for the parameters to the DescribeInterconnects operation.</p>
 function M.DescribeInterconnectsRequest(interconnectId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInterconnectsRequest")
 	local t = { 
@@ -981,9 +981,9 @@ function M.AssertAssociateVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type AssociateVirtualInterfaceRequest
--- &lt;p&gt;Container for the parameters to the AssociateVirtualInterface operation.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;The ID of the LAG or connection with which to associate the virtual interface.&lt;/p&gt; &lt;p&gt;Example: dxlag-abc123 or dxcon-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param virtualInterfaceId [VirtualInterfaceId] &lt;p&gt;The ID of the virtual interface.&lt;/p&gt; &lt;p&gt;Example: dxvif-123dfg56&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the AssociateVirtualInterface operation.</p>
+-- @param connectionId [ConnectionId] <p>The ID of the LAG or connection with which to associate the virtual interface.</p> <p>Example: dxlag-abc123 or dxcon-abc123</p> <p>Default: None</p>
+-- @param virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p> <p>Example: dxvif-123dfg56</p> <p>Default: None</p>
 -- Required parameter: virtualInterfaceId
 -- Required parameter: connectionId
 function M.AssociateVirtualInterfaceRequest(connectionId, virtualInterfaceId, ...)
@@ -1013,10 +1013,10 @@ function M.AssertAllocatePublicVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type AllocatePublicVirtualInterfaceRequest
--- &lt;p&gt;Container for the parameters to the AllocatePublicVirtualInterface operation.&lt;/p&gt;
--- @param ownerAccount [OwnerAccount] &lt;p&gt;The AWS account that will own the new public virtual interface.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;The connection ID on which the public virtual interface is provisioned.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param newPublicVirtualInterfaceAllocation [NewPublicVirtualInterfaceAllocation] &lt;p&gt;Detailed information for the public virtual interface to be provisioned.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the AllocatePublicVirtualInterface operation.</p>
+-- @param ownerAccount [OwnerAccount] <p>The AWS account that will own the new public virtual interface.</p> <p>Default: None</p>
+-- @param connectionId [ConnectionId] <p>The connection ID on which the public virtual interface is provisioned.</p> <p>Default: None</p>
+-- @param newPublicVirtualInterfaceAllocation [NewPublicVirtualInterfaceAllocation] <p>Detailed information for the public virtual interface to be provisioned.</p> <p>Default: None</p>
 -- Required parameter: connectionId
 -- Required parameter: ownerAccount
 -- Required parameter: newPublicVirtualInterfaceAllocation
@@ -1043,8 +1043,8 @@ function M.AssertDescribeConnectionsRequest(struct)
 end
 
 --- Create a structure of type DescribeConnectionsRequest
--- &lt;p&gt;Container for the parameters to the DescribeConnections operation.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;Container for the parameters to the DescribeConnections operation.&lt;/p&gt;
+-- <p>Container for the parameters to the DescribeConnections operation.</p>
+-- @param connectionId [ConnectionId] <p>Container for the parameters to the DescribeConnections operation.</p>
 function M.DescribeConnectionsRequest(connectionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionsRequest")
 	local t = { 
@@ -1066,8 +1066,8 @@ function M.AssertConfirmPublicVirtualInterfaceResponse(struct)
 end
 
 --- Create a structure of type ConfirmPublicVirtualInterfaceResponse
--- &lt;p&gt;The response received when ConfirmPublicVirtualInterface is called.&lt;/p&gt;
--- @param virtualInterfaceState [VirtualInterfaceState] &lt;p&gt;The response received when ConfirmPublicVirtualInterface is called.&lt;/p&gt;
+-- <p>The response received when ConfirmPublicVirtualInterface is called.</p>
+-- @param virtualInterfaceState [VirtualInterfaceState] <p>The response received when ConfirmPublicVirtualInterface is called.</p>
 function M.ConfirmPublicVirtualInterfaceResponse(virtualInterfaceState, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmPublicVirtualInterfaceResponse")
 	local t = { 
@@ -1089,8 +1089,8 @@ function M.AssertRouteFilterPrefix(struct)
 end
 
 --- Create a structure of type RouteFilterPrefix
--- &lt;p&gt;A route filter prefix that the customer can advertise through Border Gateway Protocol (BGP) over a public virtual interface.&lt;/p&gt;
--- @param cidr [CIDR] &lt;p&gt;CIDR notation for the advertised route. Multiple routes are separated by commas.&lt;/p&gt; &lt;p&gt;IPv6 CIDRs must be at least a /64 or shorter&lt;/p&gt; &lt;p&gt;Example: 10.10.10.0/24,10.10.11.0/24,2001:db8::/64&lt;/p&gt;
+-- <p>A route filter prefix that the customer can advertise through Border Gateway Protocol (BGP) over a public virtual interface.</p>
+-- @param cidr [CIDR] <p>CIDR notation for the advertised route. Multiple routes are separated by commas.</p> <p>IPv6 CIDRs must be at least a /64 or shorter</p> <p>Example: 10.10.10.0/24,10.10.11.0/24,2001:db8::/64</p>
 function M.RouteFilterPrefix(cidr, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RouteFilterPrefix")
 	local t = { 
@@ -1113,9 +1113,9 @@ function M.AssertVirtualGateway(struct)
 end
 
 --- Create a structure of type VirtualGateway
--- &lt;p&gt;You can create one or more AWS Direct Connect private virtual interfaces linking to your virtual private gateway.&lt;/p&gt; &lt;p&gt;Virtual private gateways can be managed using the Amazon Virtual Private Cloud (Amazon VPC) console or the &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html&quot;&gt;Amazon EC2 CreateVpnGateway action&lt;/a&gt;.&lt;/p&gt;
--- @param virtualGatewayId [VirtualGatewayId] &lt;p&gt;You can create one or more AWS Direct Connect private virtual interfaces linking to your virtual private gateway.&lt;/p&gt; &lt;p&gt;Virtual private gateways can be managed using the Amazon Virtual Private Cloud (Amazon VPC) console or the &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html&quot;&gt;Amazon EC2 CreateVpnGateway action&lt;/a&gt;.&lt;/p&gt;
--- @param virtualGatewayState [VirtualGatewayState] &lt;p&gt;You can create one or more AWS Direct Connect private virtual interfaces linking to your virtual private gateway.&lt;/p&gt; &lt;p&gt;Virtual private gateways can be managed using the Amazon Virtual Private Cloud (Amazon VPC) console or the &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html&quot;&gt;Amazon EC2 CreateVpnGateway action&lt;/a&gt;.&lt;/p&gt;
+-- <p>You can create one or more AWS Direct Connect private virtual interfaces linking to your virtual private gateway.</p> <p>Virtual private gateways can be managed using the Amazon Virtual Private Cloud (Amazon VPC) console or the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">Amazon EC2 CreateVpnGateway action</a>.</p>
+-- @param virtualGatewayId [VirtualGatewayId] <p>You can create one or more AWS Direct Connect private virtual interfaces linking to your virtual private gateway.</p> <p>Virtual private gateways can be managed using the Amazon Virtual Private Cloud (Amazon VPC) console or the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">Amazon EC2 CreateVpnGateway action</a>.</p>
+-- @param virtualGatewayState [VirtualGatewayState] <p>You can create one or more AWS Direct Connect private virtual interfaces linking to your virtual private gateway.</p> <p>Virtual private gateways can be managed using the Amazon Virtual Private Cloud (Amazon VPC) console or the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">Amazon EC2 CreateVpnGateway action</a>.</p>
 function M.VirtualGateway(virtualGatewayId, virtualGatewayState, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VirtualGateway")
 	local t = { 
@@ -1142,12 +1142,12 @@ function M.AssertNewBGPPeer(struct)
 end
 
 --- Create a structure of type NewBGPPeer
--- &lt;p&gt;A structure containing information about a new BGP peer.&lt;/p&gt;
--- @param authKey [BGPAuthKey] &lt;p&gt;A structure containing information about a new BGP peer.&lt;/p&gt;
--- @param amazonAddress [AmazonAddress] &lt;p&gt;A structure containing information about a new BGP peer.&lt;/p&gt;
--- @param customerAddress [CustomerAddress] &lt;p&gt;A structure containing information about a new BGP peer.&lt;/p&gt;
--- @param asn [ASN] &lt;p&gt;A structure containing information about a new BGP peer.&lt;/p&gt;
--- @param addressFamily [AddressFamily] &lt;p&gt;A structure containing information about a new BGP peer.&lt;/p&gt;
+-- <p>A structure containing information about a new BGP peer.</p>
+-- @param authKey [BGPAuthKey] <p>A structure containing information about a new BGP peer.</p>
+-- @param amazonAddress [AmazonAddress] <p>A structure containing information about a new BGP peer.</p>
+-- @param customerAddress [CustomerAddress] <p>A structure containing information about a new BGP peer.</p>
+-- @param asn [ASN] <p>A structure containing information about a new BGP peer.</p>
+-- @param addressFamily [AddressFamily] <p>A structure containing information about a new BGP peer.</p>
 function M.NewBGPPeer(authKey, amazonAddress, customerAddress, asn, addressFamily, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NewBGPPeer")
 	local t = { 
@@ -1176,10 +1176,10 @@ function M.AssertDescribeLoaRequest(struct)
 end
 
 --- Create a structure of type DescribeLoaRequest
--- &lt;p&gt;Container for the parameters to the DescribeLoa operation.&lt;/p&gt;
--- @param loaContentType [LoaContentType] &lt;p&gt;A standard media type indicating the content type of the LOA-CFA document. Currently, the only supported value is &quot;application/pdf&quot;.&lt;/p&gt; &lt;p&gt;Default: application/pdf&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;The ID of a connection, LAG, or interconnect for which to get the LOA-CFA information.&lt;/p&gt; &lt;p&gt;Example: dxcon-abc123 or dxlag-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param providerName [ProviderName] &lt;p&gt;The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the DescribeLoa operation.</p>
+-- @param loaContentType [LoaContentType] <p>A standard media type indicating the content type of the LOA-CFA document. Currently, the only supported value is "application/pdf".</p> <p>Default: application/pdf</p>
+-- @param connectionId [ConnectionId] <p>The ID of a connection, LAG, or interconnect for which to get the LOA-CFA information.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
+-- @param providerName [ProviderName] <p>The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
 -- Required parameter: connectionId
 function M.DescribeLoaRequest(loaContentType, connectionId, providerName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoaRequest")
@@ -1203,7 +1203,7 @@ function M.AssertUntagResourceResponse(struct)
 end
 
 --- Create a structure of type UntagResourceResponse
--- &lt;p&gt;The response received when UntagResource is called.&lt;/p&gt;
+-- <p>The response received when UntagResource is called.</p>
 function M.UntagResourceResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceResponse")
 	local t = { 
@@ -1226,10 +1226,10 @@ function M.AssertDeleteBGPPeerRequest(struct)
 end
 
 --- Create a structure of type DeleteBGPPeerRequest
--- &lt;p&gt;Container for the parameters to the DeleteBGPPeer operation.&lt;/p&gt;
--- @param customerAddress [CustomerAddress] &lt;p&gt;Container for the parameters to the DeleteBGPPeer operation.&lt;/p&gt;
--- @param asn [ASN] &lt;p&gt;Container for the parameters to the DeleteBGPPeer operation.&lt;/p&gt;
--- @param virtualInterfaceId [VirtualInterfaceId] &lt;p&gt;The ID of the virtual interface from which the BGP peer will be deleted.&lt;/p&gt; &lt;p&gt;Example: dxvif-456abc78&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the DeleteBGPPeer operation.</p>
+-- @param customerAddress [CustomerAddress] <p>Container for the parameters to the DeleteBGPPeer operation.</p>
+-- @param asn [ASN] <p>Container for the parameters to the DeleteBGPPeer operation.</p>
+-- @param virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface from which the BGP peer will be deleted.</p> <p>Example: dxvif-456abc78</p> <p>Default: None</p>
 function M.DeleteBGPPeerRequest(customerAddress, asn, virtualInterfaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBGPPeerRequest")
 	local t = { 
@@ -1264,19 +1264,19 @@ function M.AssertConnection(struct)
 end
 
 --- Create a structure of type Connection
--- &lt;p&gt;A connection represents the physical network connection between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param partnerName [PartnerName] &lt;p&gt;The name of the AWS Direct Connect service provider associated with the connection.&lt;/p&gt;
--- @param awsDevice [AwsDevice] &lt;p&gt;The Direct Connection endpoint which the physical connection terminates on.&lt;/p&gt;
--- @param vlan [VLAN] &lt;p&gt;A connection represents the physical network connection between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param ownerAccount [OwnerAccount] &lt;p&gt;The AWS account that will own the new connection.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;A connection represents the physical network connection between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param lagId [LagId] &lt;p&gt;A connection represents the physical network connection between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param connectionState [ConnectionState] &lt;p&gt;A connection represents the physical network connection between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param bandwidth [Bandwidth] &lt;p&gt;Bandwidth of the connection.&lt;/p&gt; &lt;p&gt;Example: 1Gbps (for regular connections), or 500Mbps (for hosted connections)&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param location [LocationCode] &lt;p&gt;A connection represents the physical network connection between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param connectionName [ConnectionName] &lt;p&gt;A connection represents the physical network connection between the AWS Direct Connect location and the customer.&lt;/p&gt;
--- @param loaIssueTime [LoaIssueTime] &lt;p&gt;The time of the most recent call to &lt;a&gt;DescribeLoa&lt;/a&gt; for this connection.&lt;/p&gt;
--- @param region [Region] &lt;p&gt;A connection represents the physical network connection between the AWS Direct Connect location and the customer.&lt;/p&gt;
+-- <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
+-- @param partnerName [PartnerName] <p>The name of the AWS Direct Connect service provider associated with the connection.</p>
+-- @param awsDevice [AwsDevice] <p>The Direct Connection endpoint which the physical connection terminates on.</p>
+-- @param vlan [VLAN] <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
+-- @param ownerAccount [OwnerAccount] <p>The AWS account that will own the new connection.</p>
+-- @param connectionId [ConnectionId] <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
+-- @param lagId [LagId] <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
+-- @param connectionState [ConnectionState] <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
+-- @param bandwidth [Bandwidth] <p>Bandwidth of the connection.</p> <p>Example: 1Gbps (for regular connections), or 500Mbps (for hosted connections)</p> <p>Default: None</p>
+-- @param location [LocationCode] <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
+-- @param connectionName [ConnectionName] <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
+-- @param loaIssueTime [LoaIssueTime] <p>The time of the most recent call to <a>DescribeLoa</a> for this connection.</p>
+-- @param region [Region] <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
 function M.Connection(partnerName, awsDevice, vlan, ownerAccount, connectionId, lagId, connectionState, bandwidth, location, connectionName, loaIssueTime, region, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Connection")
 	local t = { 
@@ -1318,14 +1318,14 @@ function M.AssertNewPrivateVirtualInterfaceAllocation(struct)
 end
 
 --- Create a structure of type NewPrivateVirtualInterfaceAllocation
--- &lt;p&gt;A structure containing information about a private virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param customerAddress [CustomerAddress] &lt;p&gt;A structure containing information about a private virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param vlan [VLAN] &lt;p&gt;A structure containing information about a private virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param asn [ASN] &lt;p&gt;A structure containing information about a private virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param authKey [BGPAuthKey] &lt;p&gt;A structure containing information about a private virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param amazonAddress [AmazonAddress] &lt;p&gt;A structure containing information about a private virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param addressFamily [AddressFamily] &lt;p&gt;A structure containing information about a private virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param virtualInterfaceName [VirtualInterfaceName] &lt;p&gt;A structure containing information about a private virtual interface that will be provisioned on a connection.&lt;/p&gt;
+-- <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
+-- @param customerAddress [CustomerAddress] <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
+-- @param vlan [VLAN] <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
+-- @param asn [ASN] <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
+-- @param authKey [BGPAuthKey] <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
+-- @param amazonAddress [AmazonAddress] <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
+-- @param addressFamily [AddressFamily] <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
+-- @param virtualInterfaceName [VirtualInterfaceName] <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
 -- Required parameter: virtualInterfaceName
 -- Required parameter: vlan
 -- Required parameter: asn
@@ -1357,8 +1357,8 @@ function M.AssertDeleteConnectionRequest(struct)
 end
 
 --- Create a structure of type DeleteConnectionRequest
--- &lt;p&gt;Container for the parameters to the DeleteConnection operation.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;Container for the parameters to the DeleteConnection operation.&lt;/p&gt;
+-- <p>Container for the parameters to the DeleteConnection operation.</p>
+-- @param connectionId [ConnectionId] <p>Container for the parameters to the DeleteConnection operation.</p>
 -- Required parameter: connectionId
 function M.DeleteConnectionRequest(connectionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConnectionRequest")
@@ -1382,8 +1382,8 @@ function M.AssertDescribeTagsRequest(struct)
 end
 
 --- Create a structure of type DescribeTagsRequest
--- &lt;p&gt;Container for the parameters to the DescribeTags operation.&lt;/p&gt;
--- @param resourceArns [ResourceArnList] &lt;p&gt;The Amazon Resource Names (ARNs) of the Direct Connect resources.&lt;/p&gt;
+-- <p>Container for the parameters to the DescribeTags operation.</p>
+-- @param resourceArns [ResourceArnList] <p>The Amazon Resource Names (ARNs) of the Direct Connect resources.</p>
 -- Required parameter: resourceArns
 function M.DescribeTagsRequest(resourceArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsRequest")
@@ -1416,15 +1416,15 @@ function M.AssertNewPublicVirtualInterface(struct)
 end
 
 --- Create a structure of type NewPublicVirtualInterface
--- &lt;p&gt;A structure containing information about a new public virtual interface.&lt;/p&gt;
--- @param customerAddress [CustomerAddress] &lt;p&gt;A structure containing information about a new public virtual interface.&lt;/p&gt;
--- @param vlan [VLAN] &lt;p&gt;A structure containing information about a new public virtual interface.&lt;/p&gt;
--- @param addressFamily [AddressFamily] &lt;p&gt;A structure containing information about a new public virtual interface.&lt;/p&gt;
--- @param authKey [BGPAuthKey] &lt;p&gt;A structure containing information about a new public virtual interface.&lt;/p&gt;
--- @param routeFilterPrefixes [RouteFilterPrefixList] &lt;p&gt;A structure containing information about a new public virtual interface.&lt;/p&gt;
--- @param amazonAddress [AmazonAddress] &lt;p&gt;A structure containing information about a new public virtual interface.&lt;/p&gt;
--- @param asn [ASN] &lt;p&gt;A structure containing information about a new public virtual interface.&lt;/p&gt;
--- @param virtualInterfaceName [VirtualInterfaceName] &lt;p&gt;A structure containing information about a new public virtual interface.&lt;/p&gt;
+-- <p>A structure containing information about a new public virtual interface.</p>
+-- @param customerAddress [CustomerAddress] <p>A structure containing information about a new public virtual interface.</p>
+-- @param vlan [VLAN] <p>A structure containing information about a new public virtual interface.</p>
+-- @param addressFamily [AddressFamily] <p>A structure containing information about a new public virtual interface.</p>
+-- @param authKey [BGPAuthKey] <p>A structure containing information about a new public virtual interface.</p>
+-- @param routeFilterPrefixes [RouteFilterPrefixList] <p>A structure containing information about a new public virtual interface.</p>
+-- @param amazonAddress [AmazonAddress] <p>A structure containing information about a new public virtual interface.</p>
+-- @param asn [ASN] <p>A structure containing information about a new public virtual interface.</p>
+-- @param virtualInterfaceName [VirtualInterfaceName] <p>A structure containing information about a new public virtual interface.</p>
 -- Required parameter: virtualInterfaceName
 -- Required parameter: vlan
 -- Required parameter: asn
@@ -1456,8 +1456,8 @@ function M.AssertLocations(struct)
 end
 
 --- Create a structure of type Locations
--- &lt;p&gt;A location is a network facility where AWS Direct Connect routers are available to be connected. Generally, these are colocation hubs where many network providers have equipment, and where cross connects can be delivered. Locations include a name and facility code, and must be provided when creating a connection.&lt;/p&gt;
--- @param locations [LocationList] &lt;p&gt;A list of colocation hubs where network providers have equipment. Most regions have multiple locations available.&lt;/p&gt;
+-- <p>A location is a network facility where AWS Direct Connect routers are available to be connected. Generally, these are colocation hubs where many network providers have equipment, and where cross connects can be delivered. Locations include a name and facility code, and must be provided when creating a connection.</p>
+-- @param locations [LocationList] <p>A list of colocation hubs where network providers have equipment. Most regions have multiple locations available.</p>
 function M.Locations(locations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Locations")
 	local t = { 
@@ -1488,12 +1488,12 @@ function M.AssertAllocateConnectionOnInterconnectRequest(struct)
 end
 
 --- Create a structure of type AllocateConnectionOnInterconnectRequest
--- &lt;p&gt;Container for the parameters to the AllocateConnectionOnInterconnect operation.&lt;/p&gt;
--- @param interconnectId [InterconnectId] &lt;p&gt;ID of the interconnect on which the connection will be provisioned.&lt;/p&gt; &lt;p&gt;Example: dxcon-456abc78&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param bandwidth [Bandwidth] &lt;p&gt;Bandwidth of the connection.&lt;/p&gt; &lt;p&gt;Example: &quot;&lt;i&gt;500Mbps&lt;/i&gt;&quot;&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt; &lt;p&gt;Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps&lt;/p&gt;
--- @param vlan [VLAN] &lt;p&gt;The dedicated VLAN provisioned to the connection.&lt;/p&gt; &lt;p&gt;Example: 101&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param ownerAccount [OwnerAccount] &lt;p&gt;Numeric account Id of the customer for whom the connection will be provisioned.&lt;/p&gt; &lt;p&gt;Example: 123443215678&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param connectionName [ConnectionName] &lt;p&gt;Name of the provisioned connection.&lt;/p&gt; &lt;p&gt;Example: &quot;&lt;i&gt;500M Connection to AWS&lt;/i&gt;&quot;&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the AllocateConnectionOnInterconnect operation.</p>
+-- @param interconnectId [InterconnectId] <p>ID of the interconnect on which the connection will be provisioned.</p> <p>Example: dxcon-456abc78</p> <p>Default: None</p>
+-- @param bandwidth [Bandwidth] <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default: None</p> <p>Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps</p>
+-- @param vlan [VLAN] <p>The dedicated VLAN provisioned to the connection.</p> <p>Example: 101</p> <p>Default: None</p>
+-- @param ownerAccount [OwnerAccount] <p>Numeric account Id of the customer for whom the connection will be provisioned.</p> <p>Example: 123443215678</p> <p>Default: None</p>
+-- @param connectionName [ConnectionName] <p>Name of the provisioned connection.</p> <p>Example: "<i>500M Connection to AWS</i>"</p> <p>Default: None</p>
 -- Required parameter: bandwidth
 -- Required parameter: connectionName
 -- Required parameter: ownerAccount
@@ -1525,9 +1525,9 @@ function M.AssertResourceTag(struct)
 end
 
 --- Create a structure of type ResourceTag
--- &lt;p&gt;The tags associated with a Direct Connect resource.&lt;/p&gt;
--- @param resourceArn [ResourceArn] &lt;p&gt;The Amazon Resource Name (ARN) of the Direct Connect resource.&lt;/p&gt;
--- @param tags [TagList] &lt;p&gt;The tags.&lt;/p&gt;
+-- <p>The tags associated with a Direct Connect resource.</p>
+-- @param resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p>
+-- @param tags [TagList] <p>The tags.</p>
 function M.ResourceTag(resourceArn, tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceTag")
 	local t = { 
@@ -1553,10 +1553,10 @@ function M.AssertUpdateLagRequest(struct)
 end
 
 --- Create a structure of type UpdateLagRequest
--- &lt;p&gt;Container for the parameters to the UpdateLag operation.&lt;/p&gt;
--- @param lagId [LagId] &lt;p&gt;The ID of the LAG to update.&lt;/p&gt; &lt;p&gt;Example: dxlag-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param minimumLinks [Count] &lt;p&gt;The minimum number of physical connections that must be operational for the LAG itself to be operational.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param lagName [LagName] &lt;p&gt;The name for the LAG.&lt;/p&gt; &lt;p&gt;Example: &quot;&lt;code&gt;3x10G LAG to AWS&lt;/code&gt;&quot;&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the UpdateLag operation.</p>
+-- @param lagId [LagId] <p>The ID of the LAG to update.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
+-- @param minimumLinks [Count] <p>The minimum number of physical connections that must be operational for the LAG itself to be operational.</p> <p>Default: None</p>
+-- @param lagName [LagName] <p>The name for the LAG.</p> <p>Example: "<code>3x10G LAG to AWS</code>"</p> <p>Default: None</p>
 -- Required parameter: lagId
 function M.UpdateLagRequest(lagId, minimumLinks, lagName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateLagRequest")
@@ -1584,9 +1584,9 @@ function M.AssertCreatePublicVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type CreatePublicVirtualInterfaceRequest
--- &lt;p&gt;Container for the parameters to the CreatePublicVirtualInterface operation.&lt;/p&gt;
--- @param newPublicVirtualInterface [NewPublicVirtualInterface] &lt;p&gt;Detailed information for the public virtual interface to be created.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;Container for the parameters to the CreatePublicVirtualInterface operation.&lt;/p&gt;
+-- <p>Container for the parameters to the CreatePublicVirtualInterface operation.</p>
+-- @param newPublicVirtualInterface [NewPublicVirtualInterface] <p>Detailed information for the public virtual interface to be created.</p> <p>Default: None</p>
+-- @param connectionId [ConnectionId] <p>Container for the parameters to the CreatePublicVirtualInterface operation.</p>
 -- Required parameter: connectionId
 -- Required parameter: newPublicVirtualInterface
 function M.CreatePublicVirtualInterfaceRequest(newPublicVirtualInterface, connectionId, ...)
@@ -1611,8 +1611,8 @@ function M.AssertDescribeTagsResponse(struct)
 end
 
 --- Create a structure of type DescribeTagsResponse
--- &lt;p&gt;The response received when DescribeTags is called.&lt;/p&gt;
--- @param resourceTags [ResourceTagList] &lt;p&gt;Information about the tags.&lt;/p&gt;
+-- <p>The response received when DescribeTags is called.</p>
+-- @param resourceTags [ResourceTagList] <p>Information about the tags.</p>
 function M.DescribeTagsResponse(resourceTags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsResponse")
 	local t = { 
@@ -1633,7 +1633,7 @@ function M.AssertTooManyTagsException(struct)
 end
 
 --- Create a structure of type TooManyTagsException
--- &lt;p&gt;You have reached the limit on the number of tags that can be assigned to a Direct Connect resource.&lt;/p&gt;
+-- <p>You have reached the limit on the number of tags that can be assigned to a Direct Connect resource.</p>
 function M.TooManyTagsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTagsException")
 	local t = { 
@@ -1654,8 +1654,8 @@ function M.AssertCreateBGPPeerResponse(struct)
 end
 
 --- Create a structure of type CreateBGPPeerResponse
--- &lt;p&gt;The response received when CreateBGPPeer is called.&lt;/p&gt;
--- @param virtualInterface [VirtualInterface] &lt;p&gt;The response received when CreateBGPPeer is called.&lt;/p&gt;
+-- <p>The response received when CreateBGPPeer is called.</p>
+-- @param virtualInterface [VirtualInterface] <p>The response received when CreateBGPPeer is called.</p>
 function M.CreateBGPPeerResponse(virtualInterface, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateBGPPeerResponse")
 	local t = { 
@@ -1676,7 +1676,7 @@ function M.AssertTagResourceResponse(struct)
 end
 
 --- Create a structure of type TagResourceResponse
--- &lt;p&gt;The response received when TagResource is called.&lt;/p&gt;
+-- <p>The response received when TagResource is called.</p>
 function M.TagResourceResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceResponse")
 	local t = { 
@@ -1697,8 +1697,8 @@ function M.AssertDeleteVirtualInterfaceResponse(struct)
 end
 
 --- Create a structure of type DeleteVirtualInterfaceResponse
--- &lt;p&gt;The response received when DeleteVirtualInterface is called.&lt;/p&gt;
--- @param virtualInterfaceState [VirtualInterfaceState] &lt;p&gt;The response received when DeleteVirtualInterface is called.&lt;/p&gt;
+-- <p>The response received when DeleteVirtualInterface is called.</p>
+-- @param virtualInterfaceState [VirtualInterfaceState] <p>The response received when DeleteVirtualInterface is called.</p>
 function M.DeleteVirtualInterfaceResponse(virtualInterfaceState, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVirtualInterfaceResponse")
 	local t = { 
@@ -1730,15 +1730,15 @@ function M.AssertNewPublicVirtualInterfaceAllocation(struct)
 end
 
 --- Create a structure of type NewPublicVirtualInterfaceAllocation
--- &lt;p&gt;A structure containing information about a public virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param customerAddress [CustomerAddress] &lt;p&gt;A structure containing information about a public virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param vlan [VLAN] &lt;p&gt;A structure containing information about a public virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param addressFamily [AddressFamily] &lt;p&gt;A structure containing information about a public virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param authKey [BGPAuthKey] &lt;p&gt;A structure containing information about a public virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param routeFilterPrefixes [RouteFilterPrefixList] &lt;p&gt;A structure containing information about a public virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param amazonAddress [AmazonAddress] &lt;p&gt;A structure containing information about a public virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param asn [ASN] &lt;p&gt;A structure containing information about a public virtual interface that will be provisioned on a connection.&lt;/p&gt;
--- @param virtualInterfaceName [VirtualInterfaceName] &lt;p&gt;A structure containing information about a public virtual interface that will be provisioned on a connection.&lt;/p&gt;
+-- <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
+-- @param customerAddress [CustomerAddress] <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
+-- @param vlan [VLAN] <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
+-- @param addressFamily [AddressFamily] <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
+-- @param authKey [BGPAuthKey] <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
+-- @param routeFilterPrefixes [RouteFilterPrefixList] <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
+-- @param amazonAddress [AmazonAddress] <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
+-- @param asn [ASN] <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
+-- @param virtualInterfaceName [VirtualInterfaceName] <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
 -- Required parameter: virtualInterfaceName
 -- Required parameter: vlan
 -- Required parameter: asn
@@ -1781,19 +1781,19 @@ function M.AssertLag(struct)
 end
 
 --- Create a structure of type Lag
--- &lt;p&gt;Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.&lt;/p&gt;
--- @param awsDevice [AwsDevice] &lt;p&gt;The AWS Direct Connection endpoint that hosts the LAG.&lt;/p&gt;
--- @param allowsHostedConnections [BooleanFlag] &lt;p&gt;Indicates whether the LAG can host other connections.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This is intended for use by AWS Direct Connect partners only.&lt;/p&gt; &lt;/note&gt;
--- @param numberOfConnections [Count] &lt;p&gt;The number of physical connections bundled by the LAG, up to a maximum of 10.&lt;/p&gt;
--- @param lagState [LagState] &lt;p&gt;Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.&lt;/p&gt;
--- @param ownerAccount [OwnerAccount] &lt;p&gt;The owner of the LAG.&lt;/p&gt;
--- @param lagName [LagName] &lt;p&gt;The name of the LAG.&lt;/p&gt;
--- @param connections [ConnectionList] &lt;p&gt;A list of connections bundled by this LAG.&lt;/p&gt;
--- @param lagId [LagId] &lt;p&gt;Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.&lt;/p&gt;
--- @param minimumLinks [Count] &lt;p&gt;The minimum number of physical connections that must be operational for the LAG itself to be operational. If the number of operational connections drops below this setting, the LAG state changes to &lt;code&gt;down&lt;/code&gt;. This value can help to ensure that a LAG is not overutilized if a significant number of its bundled connections go down.&lt;/p&gt;
--- @param connectionsBandwidth [Bandwidth] &lt;p&gt;The individual bandwidth of the physical connections bundled by the LAG.&lt;/p&gt; &lt;p&gt;Available values: 1Gbps, 10Gbps&lt;/p&gt;
--- @param region [Region] &lt;p&gt;Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.&lt;/p&gt;
--- @param location [LocationCode] &lt;p&gt;Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.&lt;/p&gt;
+-- <p>Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.</p>
+-- @param awsDevice [AwsDevice] <p>The AWS Direct Connection endpoint that hosts the LAG.</p>
+-- @param allowsHostedConnections [BooleanFlag] <p>Indicates whether the LAG can host other connections.</p> <note> <p>This is intended for use by AWS Direct Connect partners only.</p> </note>
+-- @param numberOfConnections [Count] <p>The number of physical connections bundled by the LAG, up to a maximum of 10.</p>
+-- @param lagState [LagState] <p>Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.</p>
+-- @param ownerAccount [OwnerAccount] <p>The owner of the LAG.</p>
+-- @param lagName [LagName] <p>The name of the LAG.</p>
+-- @param connections [ConnectionList] <p>A list of connections bundled by this LAG.</p>
+-- @param lagId [LagId] <p>Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.</p>
+-- @param minimumLinks [Count] <p>The minimum number of physical connections that must be operational for the LAG itself to be operational. If the number of operational connections drops below this setting, the LAG state changes to <code>down</code>. This value can help to ensure that a LAG is not overutilized if a significant number of its bundled connections go down.</p>
+-- @param connectionsBandwidth [Bandwidth] <p>The individual bandwidth of the physical connections bundled by the LAG.</p> <p>Available values: 1Gbps, 10Gbps</p>
+-- @param region [Region] <p>Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.</p>
+-- @param location [LocationCode] <p>Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.</p>
 function M.Lag(awsDevice, allowsHostedConnections, numberOfConnections, lagState, ownerAccount, lagName, connections, lagId, minimumLinks, connectionsBandwidth, region, location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Lag")
 	local t = { 
@@ -1826,8 +1826,8 @@ function M.AssertConfirmPrivateVirtualInterfaceResponse(struct)
 end
 
 --- Create a structure of type ConfirmPrivateVirtualInterfaceResponse
--- &lt;p&gt;The response received when ConfirmPrivateVirtualInterface is called.&lt;/p&gt;
--- @param virtualInterfaceState [VirtualInterfaceState] &lt;p&gt;The response received when ConfirmPrivateVirtualInterface is called.&lt;/p&gt;
+-- <p>The response received when ConfirmPrivateVirtualInterface is called.</p>
+-- @param virtualInterfaceState [VirtualInterfaceState] <p>The response received when ConfirmPrivateVirtualInterface is called.</p>
 function M.ConfirmPrivateVirtualInterfaceResponse(virtualInterfaceState, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmPrivateVirtualInterfaceResponse")
 	local t = { 
@@ -1852,9 +1852,9 @@ function M.AssertAssociateHostedConnectionRequest(struct)
 end
 
 --- Create a structure of type AssociateHostedConnectionRequest
--- &lt;p&gt;Container for the parameters to the AssociateHostedConnection operation.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;The ID of the hosted connection.&lt;/p&gt; &lt;p&gt;Example: dxcon-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param parentConnectionId [ConnectionId] &lt;p&gt;The ID of the interconnect or the LAG.&lt;/p&gt; &lt;p&gt;Example: dxcon-abc123 or dxlag-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the AssociateHostedConnection operation.</p>
+-- @param connectionId [ConnectionId] <p>The ID of the hosted connection.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
+-- @param parentConnectionId [ConnectionId] <p>The ID of the interconnect or the LAG.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
 -- Required parameter: connectionId
 -- Required parameter: parentConnectionId
 function M.AssociateHostedConnectionRequest(connectionId, parentConnectionId, ...)
@@ -1885,11 +1885,11 @@ function M.AssertCreateInterconnectRequest(struct)
 end
 
 --- Create a structure of type CreateInterconnectRequest
--- &lt;p&gt;Container for the parameters to the CreateInterconnect operation.&lt;/p&gt;
--- @param interconnectName [InterconnectName] &lt;p&gt;The name of the interconnect.&lt;/p&gt; &lt;p&gt;Example: &quot;&lt;i&gt;1G Interconnect to AWS&lt;/i&gt;&quot;&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
--- @param bandwidth [Bandwidth] &lt;p&gt;The port bandwidth&lt;/p&gt; &lt;p&gt;Example: 1Gbps&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt; &lt;p&gt;Available values: 1Gbps,10Gbps&lt;/p&gt;
--- @param lagId [LagId] &lt;p&gt;Container for the parameters to the CreateInterconnect operation.&lt;/p&gt;
--- @param location [LocationCode] &lt;p&gt;Where the interconnect is located&lt;/p&gt; &lt;p&gt;Example: EqSV5&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the CreateInterconnect operation.</p>
+-- @param interconnectName [InterconnectName] <p>The name of the interconnect.</p> <p>Example: "<i>1G Interconnect to AWS</i>"</p> <p>Default: None</p>
+-- @param bandwidth [Bandwidth] <p>The port bandwidth</p> <p>Example: 1Gbps</p> <p>Default: None</p> <p>Available values: 1Gbps,10Gbps</p>
+-- @param lagId [LagId] <p>Container for the parameters to the CreateInterconnect operation.</p>
+-- @param location [LocationCode] <p>Where the interconnect is located</p> <p>Example: EqSV5</p> <p>Default: None</p>
 -- Required parameter: interconnectName
 -- Required parameter: bandwidth
 -- Required parameter: location
@@ -1917,8 +1917,8 @@ function M.AssertDirectConnectClientException(struct)
 end
 
 --- Create a structure of type DirectConnectClientException
--- &lt;p&gt;The API was called with invalid parameters. The error message will contain additional details about the cause.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;This is an exception thrown when there is an issue with the input provided by the API call. For example, the name provided for a connection contains a pound sign (#). This can also occur when a valid value is provided, but is otherwise constrained. For example, the valid VLAN tag range is 1-4096 but each can only be used once per connection.&lt;/p&gt;
+-- <p>The API was called with invalid parameters. The error message will contain additional details about the cause.</p>
+-- @param message [ErrorMessage] <p>This is an exception thrown when there is an issue with the input provided by the API call. For example, the name provided for a connection contains a pound sign (#). This can also occur when a valid value is provided, but is otherwise constrained. For example, the valid VLAN tag range is 1-4096 but each can only be used once per connection.</p>
 function M.DirectConnectClientException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectConnectClientException")
 	local t = { 
@@ -1940,8 +1940,8 @@ function M.AssertVirtualGateways(struct)
 end
 
 --- Create a structure of type VirtualGateways
--- &lt;p&gt;A structure containing a list of virtual private gateways.&lt;/p&gt;
--- @param virtualGateways [VirtualGatewayList] &lt;p&gt;A list of virtual private gateways.&lt;/p&gt;
+-- <p>A structure containing a list of virtual private gateways.</p>
+-- @param virtualGateways [VirtualGatewayList] <p>A list of virtual private gateways.</p>
 function M.VirtualGateways(virtualGateways, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VirtualGateways")
 	local t = { 
@@ -1969,11 +1969,11 @@ function M.AssertCreateConnectionRequest(struct)
 end
 
 --- Create a structure of type CreateConnectionRequest
--- &lt;p&gt;Container for the parameters to the CreateConnection operation.&lt;/p&gt;
--- @param lagId [LagId] &lt;p&gt;Container for the parameters to the CreateConnection operation.&lt;/p&gt;
--- @param bandwidth [Bandwidth] &lt;p&gt;Container for the parameters to the CreateConnection operation.&lt;/p&gt;
--- @param location [LocationCode] &lt;p&gt;Container for the parameters to the CreateConnection operation.&lt;/p&gt;
--- @param connectionName [ConnectionName] &lt;p&gt;Container for the parameters to the CreateConnection operation.&lt;/p&gt;
+-- <p>Container for the parameters to the CreateConnection operation.</p>
+-- @param lagId [LagId] <p>Container for the parameters to the CreateConnection operation.</p>
+-- @param bandwidth [Bandwidth] <p>Container for the parameters to the CreateConnection operation.</p>
+-- @param location [LocationCode] <p>Container for the parameters to the CreateConnection operation.</p>
+-- @param connectionName [ConnectionName] <p>Container for the parameters to the CreateConnection operation.</p>
 -- Required parameter: location
 -- Required parameter: bandwidth
 -- Required parameter: connectionName
@@ -2012,15 +2012,15 @@ function M.AssertNewPrivateVirtualInterface(struct)
 end
 
 --- Create a structure of type NewPrivateVirtualInterface
--- &lt;p&gt;A structure containing information about a new private virtual interface.&lt;/p&gt;
--- @param virtualGatewayId [VirtualGatewayId] &lt;p&gt;A structure containing information about a new private virtual interface.&lt;/p&gt;
--- @param customerAddress [CustomerAddress] &lt;p&gt;A structure containing information about a new private virtual interface.&lt;/p&gt;
--- @param vlan [VLAN] &lt;p&gt;A structure containing information about a new private virtual interface.&lt;/p&gt;
--- @param addressFamily [AddressFamily] &lt;p&gt;A structure containing information about a new private virtual interface.&lt;/p&gt;
--- @param authKey [BGPAuthKey] &lt;p&gt;A structure containing information about a new private virtual interface.&lt;/p&gt;
--- @param amazonAddress [AmazonAddress] &lt;p&gt;A structure containing information about a new private virtual interface.&lt;/p&gt;
--- @param asn [ASN] &lt;p&gt;A structure containing information about a new private virtual interface.&lt;/p&gt;
--- @param virtualInterfaceName [VirtualInterfaceName] &lt;p&gt;A structure containing information about a new private virtual interface.&lt;/p&gt;
+-- <p>A structure containing information about a new private virtual interface.</p>
+-- @param virtualGatewayId [VirtualGatewayId] <p>A structure containing information about a new private virtual interface.</p>
+-- @param customerAddress [CustomerAddress] <p>A structure containing information about a new private virtual interface.</p>
+-- @param vlan [VLAN] <p>A structure containing information about a new private virtual interface.</p>
+-- @param addressFamily [AddressFamily] <p>A structure containing information about a new private virtual interface.</p>
+-- @param authKey [BGPAuthKey] <p>A structure containing information about a new private virtual interface.</p>
+-- @param amazonAddress [AmazonAddress] <p>A structure containing information about a new private virtual interface.</p>
+-- @param asn [ASN] <p>A structure containing information about a new private virtual interface.</p>
+-- @param virtualInterfaceName [VirtualInterfaceName] <p>A structure containing information about a new private virtual interface.</p>
 -- Required parameter: virtualInterfaceName
 -- Required parameter: vlan
 -- Required parameter: asn
@@ -2053,8 +2053,8 @@ function M.AssertDirectConnectServerException(struct)
 end
 
 --- Create a structure of type DirectConnectServerException
--- &lt;p&gt;A server-side error occurred during the API call. The error message will contain additional details about the cause.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;This is an exception thrown when there is a backend issue on the server side.&lt;/p&gt;
+-- <p>A server-side error occurred during the API call. The error message will contain additional details about the cause.</p>
+-- @param message [ErrorMessage] <p>This is an exception thrown when there is a backend issue on the server side.</p>
 function M.DirectConnectServerException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DirectConnectServerException")
 	local t = { 
@@ -2076,8 +2076,8 @@ function M.AssertVirtualInterfaces(struct)
 end
 
 --- Create a structure of type VirtualInterfaces
--- &lt;p&gt;A structure containing a list of virtual interfaces.&lt;/p&gt;
--- @param virtualInterfaces [VirtualInterfaceList] &lt;p&gt;A list of virtual interfaces.&lt;/p&gt;
+-- <p>A structure containing a list of virtual interfaces.</p>
+-- @param virtualInterfaces [VirtualInterfaceList] <p>A list of virtual interfaces.</p>
 function M.VirtualInterfaces(virtualInterfaces, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VirtualInterfaces")
 	local t = { 
@@ -2102,9 +2102,9 @@ function M.AssertTagResourceRequest(struct)
 end
 
 --- Create a structure of type TagResourceRequest
--- &lt;p&gt;Container for the parameters to the TagResource operation.&lt;/p&gt;
--- @param resourceArn [ResourceArn] &lt;p&gt;The Amazon Resource Name (ARN) of the Direct Connect resource.&lt;/p&gt; &lt;p&gt;Example: arn:aws:directconnect:us-east-1:123456789012:dxcon/dxcon-fg5678gh&lt;/p&gt;
--- @param tags [TagList] &lt;p&gt;The list of tags to add.&lt;/p&gt;
+-- <p>Container for the parameters to the TagResource operation.</p>
+-- @param resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p> <p>Example: arn:aws:directconnect:us-east-1:123456789012:dxcon/dxcon-fg5678gh</p>
+-- @param tags [TagList] <p>The list of tags to add.</p>
 -- Required parameter: resourceArn
 -- Required parameter: tags
 function M.TagResourceRequest(resourceArn, tags, ...)
@@ -2130,8 +2130,8 @@ function M.AssertDeleteLagRequest(struct)
 end
 
 --- Create a structure of type DeleteLagRequest
--- &lt;p&gt;Container for the parameters to the DeleteLag operation.&lt;/p&gt;
--- @param lagId [LagId] &lt;p&gt;The ID of the LAG to delete.&lt;/p&gt; &lt;p&gt;Example: dxlag-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the DeleteLag operation.</p>
+-- @param lagId [LagId] <p>The ID of the LAG to delete.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
 -- Required parameter: lagId
 function M.DeleteLagRequest(lagId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLagRequest")
@@ -2155,8 +2155,8 @@ function M.AssertDescribeHostedConnectionsRequest(struct)
 end
 
 --- Create a structure of type DescribeHostedConnectionsRequest
--- &lt;p&gt;Container for the parameters to the DescribeHostedConnections operation.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;The ID of the interconnect or LAG on which the hosted connections are provisioned.&lt;/p&gt; &lt;p&gt;Example: dxcon-abc123 or dxlag-abc123&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the DescribeHostedConnections operation.</p>
+-- @param connectionId [ConnectionId] <p>The ID of the interconnect or LAG on which the hosted connections are provisioned.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
 -- Required parameter: connectionId
 function M.DescribeHostedConnectionsRequest(connectionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHostedConnectionsRequest")
@@ -2179,8 +2179,8 @@ function M.AssertConfirmConnectionResponse(struct)
 end
 
 --- Create a structure of type ConfirmConnectionResponse
--- &lt;p&gt;The response received when ConfirmConnection is called.&lt;/p&gt;
--- @param connectionState [ConnectionState] &lt;p&gt;The response received when ConfirmConnection is called.&lt;/p&gt;
+-- <p>The response received when ConfirmConnection is called.</p>
+-- @param connectionState [ConnectionState] <p>The response received when ConfirmConnection is called.</p>
 function M.ConfirmConnectionResponse(connectionState, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmConnectionResponse")
 	local t = { 
@@ -2205,9 +2205,9 @@ function M.AssertCreatePrivateVirtualInterfaceRequest(struct)
 end
 
 --- Create a structure of type CreatePrivateVirtualInterfaceRequest
--- &lt;p&gt;Container for the parameters to the CreatePrivateVirtualInterface operation.&lt;/p&gt;
--- @param connectionId [ConnectionId] &lt;p&gt;Container for the parameters to the CreatePrivateVirtualInterface operation.&lt;/p&gt;
--- @param newPrivateVirtualInterface [NewPrivateVirtualInterface] &lt;p&gt;Detailed information for the private virtual interface to be created.&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Container for the parameters to the CreatePrivateVirtualInterface operation.</p>
+-- @param connectionId [ConnectionId] <p>Container for the parameters to the CreatePrivateVirtualInterface operation.</p>
+-- @param newPrivateVirtualInterface [NewPrivateVirtualInterface] <p>Detailed information for the private virtual interface to be created.</p> <p>Default: None</p>
 -- Required parameter: connectionId
 -- Required parameter: newPrivateVirtualInterface
 function M.CreatePrivateVirtualInterfaceRequest(connectionId, newPrivateVirtualInterface, ...)
@@ -2225,7 +2225,7 @@ function M.AssertVirtualGatewayState(str)
 	assert(type(str) == "string", "Expected VirtualGatewayState to be of type 'string'")
 end
 
--- &lt;p&gt;State of the virtual private gateway.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Pending&lt;/b&gt;: This is the initial state after calling &lt;i&gt;CreateVpnGateway&lt;/i&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Available&lt;/b&gt;: Ready for use by a private virtual interface.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleting&lt;/b&gt;: This is the initial state after calling &lt;i&gt;DeleteVpnGateway&lt;/i&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleted&lt;/b&gt;: In this state, a private virtual interface is unable to send traffic over this gateway.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>State of the virtual private gateway.</p> <ul> <li> <p> <b>Pending</b>: This is the initial state after calling <i>CreateVpnGateway</i>.</p> </li> <li> <p> <b>Available</b>: Ready for use by a private virtual interface.</p> </li> <li> <p> <b>Deleting</b>: This is the initial state after calling <i>DeleteVpnGateway</i>.</p> </li> <li> <p> <b>Deleted</b>: In this state, a private virtual interface is unable to send traffic over this gateway.</p> </li> </ul>
 function M.VirtualGatewayState(str)
 	M.AssertVirtualGatewayState(str)
 	return str
@@ -2247,7 +2247,7 @@ function M.AssertAmazonAddress(str)
 	assert(type(str) == "string", "Expected AmazonAddress to be of type 'string'")
 end
 
--- &lt;p&gt;IP address assigned to the Amazon interface.&lt;/p&gt; &lt;p&gt;Example: 192.168.1.1/30 or 2001:db8::1/125&lt;/p&gt;
+-- <p>IP address assigned to the Amazon interface.</p> <p>Example: 192.168.1.1/30 or 2001:db8::1/125</p>
 function M.AmazonAddress(str)
 	M.AssertAmazonAddress(str)
 	return str
@@ -2258,7 +2258,7 @@ function M.AssertVirtualGatewayId(str)
 	assert(type(str) == "string", "Expected VirtualGatewayId to be of type 'string'")
 end
 
--- &lt;p&gt;The ID of the virtual private gateway to a VPC. This only applies to private virtual interfaces.&lt;/p&gt; &lt;p&gt;Example: vgw-123er56&lt;/p&gt;
+-- <p>The ID of the virtual private gateway to a VPC. This only applies to private virtual interfaces.</p> <p>Example: vgw-123er56</p>
 function M.VirtualGatewayId(str)
 	M.AssertVirtualGatewayId(str)
 	return str
@@ -2283,7 +2283,7 @@ function M.AssertLagState(str)
 	assert(type(str) == "string", "Expected LagState to be of type 'string'")
 end
 
--- &lt;p&gt;The state of the LAG.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Requested&lt;/b&gt;: The initial state of a LAG. The LAG stays in the requested state until the Letter of Authorization (LOA) is available.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Pending&lt;/b&gt;: The LAG has been approved, and is being initialized.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Available&lt;/b&gt;: The network link is established, and the LAG is ready for use.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Down&lt;/b&gt;: The network link is down.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleting&lt;/b&gt;: The LAG is in the process of being deleted.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleted&lt;/b&gt;: The LAG has been deleted.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The state of the LAG.</p> <ul> <li> <p> <b>Requested</b>: The initial state of a LAG. The LAG stays in the requested state until the Letter of Authorization (LOA) is available.</p> </li> <li> <p> <b>Pending</b>: The LAG has been approved, and is being initialized.</p> </li> <li> <p> <b>Available</b>: The network link is established, and the LAG is ready for use.</p> </li> <li> <p> <b>Down</b>: The network link is down.</p> </li> <li> <p> <b>Deleting</b>: The LAG is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The LAG has been deleted.</p> </li> </ul>
 function M.LagState(str)
 	M.AssertLagState(str)
 	return str
@@ -2294,7 +2294,7 @@ function M.AssertBGPStatus(str)
 	assert(type(str) == "string", "Expected BGPStatus to be of type 'string'")
 end
 
--- &lt;p&gt;The Up/Down state of the BGP peer.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Up&lt;/b&gt;: The BGP peer is established.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Down&lt;/b&gt;: The BGP peer is down.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The Up/Down state of the BGP peer.</p> <ul> <li> <p> <b>Up</b>: The BGP peer is established.</p> </li> <li> <p> <b>Down</b>: The BGP peer is down.</p> </li> </ul>
 function M.BGPStatus(str)
 	M.AssertBGPStatus(str)
 	return str
@@ -2305,7 +2305,7 @@ function M.AssertLagId(str)
 	assert(type(str) == "string", "Expected LagId to be of type 'string'")
 end
 
--- &lt;p&gt;The ID of the LAG.&lt;/p&gt; &lt;p&gt;Example: dxlag-fg5678gh&lt;/p&gt;
+-- <p>The ID of the LAG.</p> <p>Example: dxlag-fg5678gh</p>
 function M.LagId(str)
 	M.AssertLagId(str)
 	return str
@@ -2327,7 +2327,7 @@ function M.AssertRegion(str)
 	assert(type(str) == "string", "Expected Region to be of type 'string'")
 end
 
--- &lt;p&gt;The AWS region where the connection is located.&lt;/p&gt; &lt;p&gt;Example: us-east-1&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>The AWS region where the connection is located.</p> <p>Example: us-east-1</p> <p>Default: None</p>
 function M.Region(str)
 	M.AssertRegion(str)
 	return str
@@ -2349,7 +2349,7 @@ function M.AssertAwsDevice(str)
 	assert(type(str) == "string", "Expected AwsDevice to be of type 'string'")
 end
 
--- &lt;p&gt;An abstract ID for the physical Direct Connect endpoint.&lt;/p&gt; &lt;p&gt;Example: EQC50-abcdef123456&lt;/p&gt;
+-- <p>An abstract ID for the physical Direct Connect endpoint.</p> <p>Example: EQC50-abcdef123456</p>
 function M.AwsDevice(str)
 	M.AssertAwsDevice(str)
 	return str
@@ -2360,7 +2360,7 @@ function M.AssertLoaContentType(str)
 	assert(type(str) == "string", "Expected LoaContentType to be of type 'string'")
 end
 
--- &lt;p&gt;A standard media type indicating the content type of the LOA-CFA document. Currently, the only supported value is &quot;application/pdf&quot;.&lt;/p&gt; &lt;p&gt;Default: application/pdf&lt;/p&gt;
+-- <p>A standard media type indicating the content type of the LOA-CFA document. Currently, the only supported value is "application/pdf".</p> <p>Default: application/pdf</p>
 function M.LoaContentType(str)
 	M.AssertLoaContentType(str)
 	return str
@@ -2371,7 +2371,7 @@ function M.AssertInterconnectName(str)
 	assert(type(str) == "string", "Expected InterconnectName to be of type 'string'")
 end
 
--- &lt;p&gt;The name of the interconnect.&lt;/p&gt; &lt;p&gt;Example: &quot;&lt;i&gt;1G Interconnect to AWS&lt;/i&gt;&quot;&lt;/p&gt;
+-- <p>The name of the interconnect.</p> <p>Example: "<i>1G Interconnect to AWS</i>"</p>
 function M.InterconnectName(str)
 	M.AssertInterconnectName(str)
 	return str
@@ -2404,7 +2404,7 @@ function M.AssertInterconnectState(str)
 	assert(type(str) == "string", "Expected InterconnectState to be of type 'string'")
 end
 
--- &lt;p&gt;State of the interconnect.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Requested&lt;/b&gt;: The initial state of an interconnect. The interconnect stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Pending&lt;/b&gt;: The interconnect has been approved, and is being initialized.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Available&lt;/b&gt;: The network link is up, and the interconnect is ready for use.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Down&lt;/b&gt;: The network link is down.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleting&lt;/b&gt;: The interconnect is in the process of being deleted.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleted&lt;/b&gt;: The interconnect has been deleted.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>State of the interconnect.</p> <ul> <li> <p> <b>Requested</b>: The initial state of an interconnect. The interconnect stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.</p> </li> <li> <p> <b>Pending</b>: The interconnect has been approved, and is being initialized.</p> </li> <li> <p> <b>Available</b>: The network link is up, and the interconnect is ready for use.</p> </li> <li> <p> <b>Down</b>: The network link is down.</p> </li> <li> <p> <b>Deleting</b>: The interconnect is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The interconnect has been deleted.</p> </li> </ul>
 function M.InterconnectState(str)
 	M.AssertInterconnectState(str)
 	return str
@@ -2415,7 +2415,7 @@ function M.AssertVirtualInterfaceType(str)
 	assert(type(str) == "string", "Expected VirtualInterfaceType to be of type 'string'")
 end
 
--- &lt;p&gt;The type of virtual interface.&lt;/p&gt; &lt;p&gt;Example: private (Amazon VPC) or public (Amazon S3, Amazon DynamoDB, and so on.)&lt;/p&gt;
+-- <p>The type of virtual interface.</p> <p>Example: private (Amazon VPC) or public (Amazon S3, Amazon DynamoDB, and so on.)</p>
 function M.VirtualInterfaceType(str)
 	M.AssertVirtualInterfaceType(str)
 	return str
@@ -2437,7 +2437,7 @@ function M.AssertVirtualInterfaceId(str)
 	assert(type(str) == "string", "Expected VirtualInterfaceId to be of type 'string'")
 end
 
--- &lt;p&gt;The ID of the virtual interface.&lt;/p&gt; &lt;p&gt;Example: dxvif-123dfg56&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>The ID of the virtual interface.</p> <p>Example: dxvif-123dfg56</p> <p>Default: None</p>
 function M.VirtualInterfaceId(str)
 	M.AssertVirtualInterfaceId(str)
 	return str
@@ -2461,7 +2461,7 @@ function M.AssertConnectionName(str)
 	assert(type(str) == "string", "Expected ConnectionName to be of type 'string'")
 end
 
--- &lt;p&gt;The name of the connection.&lt;/p&gt; &lt;p&gt;Example: &quot;&lt;i&gt;My Connection to AWS&lt;/i&gt;&quot;&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>The name of the connection.</p> <p>Example: "<i>My Connection to AWS</i>"</p> <p>Default: None</p>
 function M.ConnectionName(str)
 	M.AssertConnectionName(str)
 	return str
@@ -2472,7 +2472,7 @@ function M.AssertVirtualInterfaceState(str)
 	assert(type(str) == "string", "Expected VirtualInterfaceState to be of type 'string'")
 end
 
--- &lt;p&gt;State of the virtual interface.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Confirming&lt;/b&gt;: The creation of the virtual interface is pending confirmation from the virtual interface owner. If the owner of the virtual interface is different from the owner of the connection on which it is provisioned, then the virtual interface will remain in this state until it is confirmed by the virtual interface owner.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Verifying&lt;/b&gt;: This state only applies to public virtual interfaces. Each public virtual interface needs validation before the virtual interface can be created.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Pending&lt;/b&gt;: A virtual interface is in this state from the time that it is created until the virtual interface is ready to forward traffic.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Available&lt;/b&gt;: A virtual interface that is able to forward traffic.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Down&lt;/b&gt;: A virtual interface that is BGP down.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleting&lt;/b&gt;: A virtual interface is in this state immediately after calling &lt;a&gt;DeleteVirtualInterface&lt;/a&gt; until it can no longer forward traffic.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleted&lt;/b&gt;: A virtual interface that cannot forward traffic.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Rejected&lt;/b&gt;: The virtual interface owner has declined creation of the virtual interface. If a virtual interface in the 'Confirming' state is deleted by the virtual interface owner, the virtual interface will enter the 'Rejected' state.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>State of the virtual interface.</p> <ul> <li> <p> <b>Confirming</b>: The creation of the virtual interface is pending confirmation from the virtual interface owner. If the owner of the virtual interface is different from the owner of the connection on which it is provisioned, then the virtual interface will remain in this state until it is confirmed by the virtual interface owner.</p> </li> <li> <p> <b>Verifying</b>: This state only applies to public virtual interfaces. Each public virtual interface needs validation before the virtual interface can be created.</p> </li> <li> <p> <b>Pending</b>: A virtual interface is in this state from the time that it is created until the virtual interface is ready to forward traffic.</p> </li> <li> <p> <b>Available</b>: A virtual interface that is able to forward traffic.</p> </li> <li> <p> <b>Down</b>: A virtual interface that is BGP down.</p> </li> <li> <p> <b>Deleting</b>: A virtual interface is in this state immediately after calling <a>DeleteVirtualInterface</a> until it can no longer forward traffic.</p> </li> <li> <p> <b>Deleted</b>: A virtual interface that cannot forward traffic.</p> </li> <li> <p> <b>Rejected</b>: The virtual interface owner has declined creation of the virtual interface. If a virtual interface in the 'Confirming' state is deleted by the virtual interface owner, the virtual interface will enter the 'Rejected' state.</p> </li> </ul>
 function M.VirtualInterfaceState(str)
 	M.AssertVirtualInterfaceState(str)
 	return str
@@ -2483,7 +2483,7 @@ function M.AssertBGPAuthKey(str)
 	assert(type(str) == "string", "Expected BGPAuthKey to be of type 'string'")
 end
 
--- &lt;p&gt;The authentication key for BGP configuration.&lt;/p&gt; &lt;p&gt;Example: asdf34example&lt;/p&gt;
+-- <p>The authentication key for BGP configuration.</p> <p>Example: asdf34example</p>
 function M.BGPAuthKey(str)
 	M.AssertBGPAuthKey(str)
 	return str
@@ -2494,7 +2494,7 @@ function M.AssertInterconnectId(str)
 	assert(type(str) == "string", "Expected InterconnectId to be of type 'string'")
 end
 
--- &lt;p&gt;The ID of the interconnect.&lt;/p&gt; &lt;p&gt;Example: dxcon-abc123&lt;/p&gt;
+-- <p>The ID of the interconnect.</p> <p>Example: dxcon-abc123</p>
 function M.InterconnectId(str)
 	M.AssertInterconnectId(str)
 	return str
@@ -2505,7 +2505,7 @@ function M.AssertConnectionId(str)
 	assert(type(str) == "string", "Expected ConnectionId to be of type 'string'")
 end
 
--- &lt;p&gt;The ID of the connection. This field is also used as the ID type for operations that use multiple connection types (LAG, interconnect, and/or connection).&lt;/p&gt; &lt;p&gt;Example: dxcon-fg5678gh&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>The ID of the connection. This field is also used as the ID type for operations that use multiple connection types (LAG, interconnect, and/or connection).</p> <p>Example: dxcon-fg5678gh</p> <p>Default: None</p>
 function M.ConnectionId(str)
 	M.AssertConnectionId(str)
 	return str
@@ -2527,7 +2527,7 @@ function M.AssertConnectionState(str)
 	assert(type(str) == "string", "Expected ConnectionState to be of type 'string'")
 end
 
--- &lt;p&gt;State of the connection.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Ordering&lt;/b&gt;: The initial state of a hosted connection provisioned on an interconnect. The connection stays in the ordering state until the owner of the hosted connection confirms or declines the connection order.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Requested&lt;/b&gt;: The initial state of a standard connection. The connection stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Pending&lt;/b&gt;: The connection has been approved, and is being initialized.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Available&lt;/b&gt;: The network link is up, and the connection is ready for use.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Down&lt;/b&gt;: The network link is down.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleting&lt;/b&gt;: The connection is in the process of being deleted.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleted&lt;/b&gt;: The connection has been deleted.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Rejected&lt;/b&gt;: A hosted connection in the 'Ordering' state will enter the 'Rejected' state if it is deleted by the end customer.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>State of the connection.</p> <ul> <li> <p> <b>Ordering</b>: The initial state of a hosted connection provisioned on an interconnect. The connection stays in the ordering state until the owner of the hosted connection confirms or declines the connection order.</p> </li> <li> <p> <b>Requested</b>: The initial state of a standard connection. The connection stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.</p> </li> <li> <p> <b>Pending</b>: The connection has been approved, and is being initialized.</p> </li> <li> <p> <b>Available</b>: The network link is up, and the connection is ready for use.</p> </li> <li> <p> <b>Down</b>: The network link is down.</p> </li> <li> <p> <b>Deleting</b>: The connection is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The connection has been deleted.</p> </li> <li> <p> <b>Rejected</b>: A hosted connection in the 'Ordering' state will enter the 'Rejected' state if it is deleted by the end customer.</p> </li> </ul>
 function M.ConnectionState(str)
 	M.AssertConnectionState(str)
 	return str
@@ -2538,7 +2538,7 @@ function M.AssertAddressFamily(str)
 	assert(type(str) == "string", "Expected AddressFamily to be of type 'string'")
 end
 
--- &lt;p&gt;Indicates the address family for the BGP peer.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;ipv4&lt;/b&gt;: IPv4 address family&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;ipv6&lt;/b&gt;: IPv6 address family&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Indicates the address family for the BGP peer.</p> <ul> <li> <p> <b>ipv4</b>: IPv4 address family</p> </li> <li> <p> <b>ipv6</b>: IPv6 address family</p> </li> </ul>
 function M.AddressFamily(str)
 	M.AssertAddressFamily(str)
 	return str
@@ -2549,7 +2549,7 @@ function M.AssertVirtualInterfaceName(str)
 	assert(type(str) == "string", "Expected VirtualInterfaceName to be of type 'string'")
 end
 
--- &lt;p&gt;The name of the virtual interface assigned by the customer.&lt;/p&gt; &lt;p&gt;Example: &quot;My VPC&quot;&lt;/p&gt;
+-- <p>The name of the virtual interface assigned by the customer.</p> <p>Example: "My VPC"</p>
 function M.VirtualInterfaceName(str)
 	M.AssertVirtualInterfaceName(str)
 	return str
@@ -2571,7 +2571,7 @@ function M.AssertBGPPeerState(str)
 	assert(type(str) == "string", "Expected BGPPeerState to be of type 'string'")
 end
 
--- &lt;p&gt;The state of the BGP peer.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Verifying&lt;/b&gt;: The BGP peering addresses or ASN require validation before the BGP peer can be created. This state only applies to BGP peers on a public virtual interface. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Pending&lt;/b&gt;: The BGP peer has been created, and is in this state until it is ready to be established.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Available&lt;/b&gt;: The BGP peer can be established.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleting&lt;/b&gt;: The BGP peer is in the process of being deleted.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Deleted&lt;/b&gt;: The BGP peer has been deleted and cannot be established.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The state of the BGP peer.</p> <ul> <li> <p> <b>Verifying</b>: The BGP peering addresses or ASN require validation before the BGP peer can be created. This state only applies to BGP peers on a public virtual interface. </p> </li> <li> <p> <b>Pending</b>: The BGP peer has been created, and is in this state until it is ready to be established.</p> </li> <li> <p> <b>Available</b>: The BGP peer can be established.</p> </li> <li> <p> <b>Deleting</b>: The BGP peer is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The BGP peer has been deleted and cannot be established.</p> </li> </ul>
 function M.BGPPeerState(str)
 	M.AssertBGPPeerState(str)
 	return str
@@ -2593,7 +2593,7 @@ function M.AssertCustomerAddress(str)
 	assert(type(str) == "string", "Expected CustomerAddress to be of type 'string'")
 end
 
--- &lt;p&gt;IP address assigned to the customer interface.&lt;/p&gt; &lt;p&gt;Example: 192.168.1.2/30 or 2001:db8::2/125&lt;/p&gt;
+-- <p>IP address assigned to the customer interface.</p> <p>Example: 192.168.1.2/30 or 2001:db8::2/125</p>
 function M.CustomerAddress(str)
 	M.AssertCustomerAddress(str)
 	return str
@@ -2604,7 +2604,7 @@ function M.AssertBandwidth(str)
 	assert(type(str) == "string", "Expected Bandwidth to be of type 'string'")
 end
 
--- &lt;p&gt;Bandwidth of the connection.&lt;/p&gt; &lt;p&gt;Example: 1Gbps&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Bandwidth of the connection.</p> <p>Example: 1Gbps</p> <p>Default: None</p>
 function M.Bandwidth(str)
 	M.AssertBandwidth(str)
 	return str
@@ -2615,7 +2615,7 @@ function M.AssertLocationCode(str)
 	assert(type(str) == "string", "Expected LocationCode to be of type 'string'")
 end
 
--- &lt;p&gt;Where the connection is located.&lt;/p&gt; &lt;p&gt;Example: EqSV5&lt;/p&gt; &lt;p&gt;Default: None&lt;/p&gt;
+-- <p>Where the connection is located.</p> <p>Example: EqSV5</p> <p>Default: None</p>
 function M.LocationCode(str)
 	M.AssertLocationCode(str)
 	return str
@@ -2692,7 +2692,7 @@ function M.AssertVirtualGatewayList(list)
 	end
 end
 
--- &lt;p&gt;A list of virtual private gateways.&lt;/p&gt;
+-- <p>A list of virtual private gateways.</p>
 -- List of VirtualGateway objects
 function M.VirtualGatewayList(list)
 	M.AssertVirtualGatewayList(list)
@@ -2722,7 +2722,7 @@ function M.AssertConnectionList(list)
 	end
 end
 
--- &lt;p&gt;A list of connections.&lt;/p&gt;
+-- <p>A list of connections.</p>
 -- List of Connection objects
 function M.ConnectionList(list)
 	M.AssertConnectionList(list)
@@ -2752,7 +2752,7 @@ function M.AssertLagList(list)
 	end
 end
 
--- &lt;p&gt;A list of LAGs.&lt;/p&gt;
+-- <p>A list of LAGs.</p>
 -- List of Lag objects
 function M.LagList(list)
 	M.AssertLagList(list)
@@ -2782,7 +2782,7 @@ function M.AssertRouteFilterPrefixList(list)
 	end
 end
 
--- &lt;p&gt;A list of routes to be advertised to the AWS network in this region (public virtual interface).&lt;/p&gt;
+-- <p>A list of routes to be advertised to the AWS network in this region (public virtual interface).</p>
 -- List of RouteFilterPrefix objects
 function M.RouteFilterPrefixList(list)
 	M.AssertRouteFilterPrefixList(list)
@@ -2797,7 +2797,7 @@ function M.AssertVirtualInterfaceList(list)
 	end
 end
 
--- &lt;p&gt;A list of virtual interfaces.&lt;/p&gt;
+-- <p>A list of virtual interfaces.</p>
 -- List of VirtualInterface objects
 function M.VirtualInterfaceList(list)
 	M.AssertVirtualInterfaceList(list)
@@ -2812,7 +2812,7 @@ function M.AssertBGPPeerList(list)
 	end
 end
 
--- &lt;p&gt;A list of the BGP peers configured on this virtual interface.&lt;/p&gt;
+-- <p>A list of the BGP peers configured on this virtual interface.</p>
 -- List of BGPPeer objects
 function M.BGPPeerList(list)
 	M.AssertBGPPeerList(list)
@@ -2842,7 +2842,7 @@ function M.AssertInterconnectList(list)
 	end
 end
 
--- &lt;p&gt;A list of interconnects.&lt;/p&gt;
+-- <p>A list of interconnects.</p>
 -- List of Interconnect objects
 function M.InterconnectList(list)
 	M.AssertInterconnectList(list)

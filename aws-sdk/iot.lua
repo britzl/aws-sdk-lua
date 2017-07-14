@@ -33,9 +33,9 @@ function M.AssertSalesforceAction(struct)
 end
 
 --- Create a structure of type SalesforceAction
--- &lt;p&gt;Describes an action to write a message to a Salesforce IoT Cloud Input Stream.&lt;/p&gt;
--- @param url [SalesforceEndpoint] &lt;p&gt;The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is available from the Salesforce IoT Cloud platform after creation of the Input Stream.&lt;/p&gt;
--- @param token [SalesforceToken] &lt;p&gt;The token used to authenticate access to the Salesforce IoT Cloud Input Stream. The token is available from the Salesforce IoT Cloud platform after creation of the Input Stream.&lt;/p&gt;
+-- <p>Describes an action to write a message to a Salesforce IoT Cloud Input Stream.</p>
+-- @param url [SalesforceEndpoint] <p>The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is available from the Salesforce IoT Cloud platform after creation of the Input Stream.</p>
+-- @param token [SalesforceToken] <p>The token used to authenticate access to the Salesforce IoT Cloud Input Stream. The token is available from the Salesforce IoT Cloud platform after creation of the Input Stream.</p>
 -- Required parameter: token
 -- Required parameter: url
 function M.SalesforceAction(url, token, ...)
@@ -60,8 +60,8 @@ function M.AssertVersionsLimitExceededException(struct)
 end
 
 --- Create a structure of type VersionsLimitExceededException
--- &lt;p&gt;The number of policy versions exceeds the limit.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The number of policy versions exceeds the limit.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.VersionsLimitExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VersionsLimitExceededException")
 	local t = { 
@@ -82,7 +82,7 @@ function M.AssertDetachThingPrincipalResponse(struct)
 end
 
 --- Create a structure of type DetachThingPrincipalResponse
--- &lt;p&gt;The output from the DetachThingPrincipal operation.&lt;/p&gt;
+-- <p>The output from the DetachThingPrincipal operation.</p>
 function M.DetachThingPrincipalResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachThingPrincipalResponse")
 	local t = { 
@@ -103,8 +103,8 @@ function M.AssertServiceUnavailableException(struct)
 end
 
 --- Create a structure of type ServiceUnavailableException
--- &lt;p&gt;The service is temporarily unavailable.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The service is temporarily unavailable.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.ServiceUnavailableException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
 	local t = { 
@@ -126,8 +126,8 @@ function M.AssertUnauthorizedException(struct)
 end
 
 --- Create a structure of type UnauthorizedException
--- &lt;p&gt;You are not authorized to perform this operation.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>You are not authorized to perform this operation.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.UnauthorizedException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedException")
 	local t = { 
@@ -150,9 +150,9 @@ function M.AssertListThingTypesResponse(struct)
 end
 
 --- Create a structure of type ListThingTypesResponse
--- &lt;p&gt;The output for the ListThingTypes operation.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of results, or &lt;b&gt;null&lt;/b&gt; if there are no additional results.&lt;/p&gt;
--- @param thingTypes [ThingTypeList] &lt;p&gt;The thing types.&lt;/p&gt;
+-- <p>The output for the ListThingTypes operation.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+-- @param thingTypes [ThingTypeList] <p>The thing types.</p>
 function M.ListThingTypesResponse(nextToken, thingTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListThingTypesResponse")
 	local t = { 
@@ -179,10 +179,10 @@ function M.AssertSnsAction(struct)
 end
 
 --- Create a structure of type SnsAction
--- &lt;p&gt;Describes an action to publish to an Amazon SNS topic.&lt;/p&gt;
--- @param targetArn [AwsArn] &lt;p&gt;The ARN of the SNS topic.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The ARN of the IAM role that grants access.&lt;/p&gt;
--- @param messageFormat [MessageFormat] &lt;p&gt;The message format of the message to publish. Optional. Accepted values are &quot;JSON&quot; and &quot;RAW&quot;. The default value of the attribute is &quot;RAW&quot;. SNS uses this setting to determine if the payload should be parsed and relevant platform-specific bits of the payload should be extracted. To read more about SNS message formats, see &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/dg/json-formats.html&quot;&gt;http://docs.aws.amazon.com/sns/latest/dg/json-formats.html&lt;/a&gt; refer to their official documentation.&lt;/p&gt;
+-- <p>Describes an action to publish to an Amazon SNS topic.</p>
+-- @param targetArn [AwsArn] <p>The ARN of the SNS topic.</p>
+-- @param roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
+-- @param messageFormat [MessageFormat] <p>The message format of the message to publish. Optional. Accepted values are "JSON" and "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if the payload should be parsed and relevant platform-specific bits of the payload should be extracted. To read more about SNS message formats, see <a href="http://docs.aws.amazon.com/sns/latest/dg/json-formats.html">http://docs.aws.amazon.com/sns/latest/dg/json-formats.html</a> refer to their official documentation.</p>
 -- Required parameter: targetArn
 -- Required parameter: roleArn
 function M.SnsAction(targetArn, roleArn, messageFormat, ...)
@@ -210,10 +210,10 @@ function M.AssertThingTypeMetadata(struct)
 end
 
 --- Create a structure of type ThingTypeMetadata
--- &lt;p&gt;The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when time was deprecated.&lt;/p&gt;
--- @param deprecated [Boolean] &lt;p&gt;Whether the thing type is deprecated. If &lt;b&gt;true&lt;/b&gt;, no new things could be associated with this type.&lt;/p&gt;
--- @param creationDate [CreationDate] &lt;p&gt;The date and time when the thing type was created.&lt;/p&gt;
--- @param deprecationDate [DeprecationDate] &lt;p&gt;The date and time when the thing type was deprecated.&lt;/p&gt;
+-- <p>The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when time was deprecated.</p>
+-- @param deprecated [Boolean] <p>Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.</p>
+-- @param creationDate [CreationDate] <p>The date and time when the thing type was created.</p>
+-- @param deprecationDate [DeprecationDate] <p>The date and time when the thing type was deprecated.</p>
 function M.ThingTypeMetadata(deprecated, creationDate, deprecationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThingTypeMetadata")
 	local t = { 
@@ -237,8 +237,8 @@ function M.AssertTransferCertificateResponse(struct)
 end
 
 --- Create a structure of type TransferCertificateResponse
--- &lt;p&gt;The output from the TransferCertificate operation.&lt;/p&gt;
--- @param transferredCertificateArn [CertificateArn] &lt;p&gt;The ARN of the certificate.&lt;/p&gt;
+-- <p>The output from the TransferCertificate operation.</p>
+-- @param transferredCertificateArn [CertificateArn] <p>The ARN of the certificate.</p>
 function M.TransferCertificateResponse(transferredCertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TransferCertificateResponse")
 	local t = { 
@@ -261,9 +261,9 @@ function M.AssertListPrincipalThingsResponse(struct)
 end
 
 --- Create a structure of type ListPrincipalThingsResponse
--- &lt;p&gt;The output from the ListPrincipalThings operation.&lt;/p&gt;
--- @param things [ThingNameList] &lt;p&gt;The things.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of results, or &lt;b&gt;null&lt;/b&gt; if there are no additional results.&lt;/p&gt;
+-- <p>The output from the ListPrincipalThings operation.</p>
+-- @param things [ThingNameList] <p>The things.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
 function M.ListPrincipalThingsResponse(things, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalThingsResponse")
 	local t = { 
@@ -287,9 +287,9 @@ function M.AssertListPolicyPrincipalsResponse(struct)
 end
 
 --- Create a structure of type ListPolicyPrincipalsResponse
--- &lt;p&gt;The output from the ListPolicyPrincipals operation.&lt;/p&gt;
--- @param nextMarker [Marker] &lt;p&gt;The marker for the next set of results, or null if there are no additional results.&lt;/p&gt;
--- @param principals [Principals] &lt;p&gt;The descriptions of the principals.&lt;/p&gt;
+-- <p>The output from the ListPolicyPrincipals operation.</p>
+-- @param nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
+-- @param principals [Principals] <p>The descriptions of the principals.</p>
 function M.ListPolicyPrincipalsResponse(nextMarker, principals, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyPrincipalsResponse")
 	local t = { 
@@ -325,17 +325,17 @@ function M.AssertDynamoDBAction(struct)
 end
 
 --- Create a structure of type DynamoDBAction
--- &lt;p&gt;Describes an action to write to a DynamoDB table.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;tableName&lt;/code&gt;, &lt;code&gt;hashKeyField&lt;/code&gt;, and &lt;code&gt;rangeKeyField&lt;/code&gt; values must match the values used when you created the table.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;hashKeyValue&lt;/code&gt; and &lt;code&gt;rangeKeyvalue&lt;/code&gt; fields use a substitution template syntax. These templates provide data at runtime. The syntax is as follows: ${&lt;i&gt;sql-expression&lt;/i&gt;}.&lt;/p&gt; &lt;p&gt;You can specify any valid expression in a WHERE or SELECT clause, including JSON properties, comparisons, calculations, and functions. For example, the following field uses the third level of the topic:&lt;/p&gt; &lt;p&gt; &lt;code&gt;&quot;hashKeyValue&quot;: &quot;${topic(3)}&quot;&lt;/code&gt; &lt;/p&gt; &lt;p&gt;The following field uses the timestamp:&lt;/p&gt; &lt;p&gt; &lt;code&gt;&quot;rangeKeyValue&quot;: &quot;${timestamp()}&quot;&lt;/code&gt; &lt;/p&gt;
--- @param rangeKeyType [DynamoKeyType] &lt;p&gt;The range key type. Valid values are &quot;STRING&quot; or &quot;NUMBER&quot;&lt;/p&gt;
--- @param payloadField [PayloadField] &lt;p&gt;The action payload. This name can be customized.&lt;/p&gt;
--- @param hashKeyType [DynamoKeyType] &lt;p&gt;The hash key type. Valid values are &quot;STRING&quot; or &quot;NUMBER&quot;&lt;/p&gt;
--- @param hashKeyField [HashKeyField] &lt;p&gt;The hash key name.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The ARN of the IAM role that grants access to the DynamoDB table.&lt;/p&gt;
--- @param tableName [TableName] &lt;p&gt;The name of the DynamoDB table.&lt;/p&gt;
--- @param hashKeyValue [HashKeyValue] &lt;p&gt;The hash key value.&lt;/p&gt;
--- @param rangeKeyValue [RangeKeyValue] &lt;p&gt;The range key value.&lt;/p&gt;
--- @param operation [DynamoOperation] &lt;p&gt;The type of operation to be performed. This follows the substitution template, so it can be &lt;code&gt;${operation}&lt;/code&gt;, but the substitution must result in one of the following: &lt;code&gt;INSERT&lt;/code&gt;, &lt;code&gt;UPDATE&lt;/code&gt;, or &lt;code&gt;DELETE&lt;/code&gt;.&lt;/p&gt;
--- @param rangeKeyField [RangeKeyField] &lt;p&gt;The range key name.&lt;/p&gt;
+-- <p>Describes an action to write to a DynamoDB table.</p> <p>The <code>tableName</code>, <code>hashKeyField</code>, and <code>rangeKeyField</code> values must match the values used when you created the table.</p> <p>The <code>hashKeyValue</code> and <code>rangeKeyvalue</code> fields use a substitution template syntax. These templates provide data at runtime. The syntax is as follows: ${<i>sql-expression</i>}.</p> <p>You can specify any valid expression in a WHERE or SELECT clause, including JSON properties, comparisons, calculations, and functions. For example, the following field uses the third level of the topic:</p> <p> <code>"hashKeyValue": "${topic(3)}"</code> </p> <p>The following field uses the timestamp:</p> <p> <code>"rangeKeyValue": "${timestamp()}"</code> </p>
+-- @param rangeKeyType [DynamoKeyType] <p>The range key type. Valid values are "STRING" or "NUMBER"</p>
+-- @param payloadField [PayloadField] <p>The action payload. This name can be customized.</p>
+-- @param hashKeyType [DynamoKeyType] <p>The hash key type. Valid values are "STRING" or "NUMBER"</p>
+-- @param hashKeyField [HashKeyField] <p>The hash key name.</p>
+-- @param roleArn [AwsArn] <p>The ARN of the IAM role that grants access to the DynamoDB table.</p>
+-- @param tableName [TableName] <p>The name of the DynamoDB table.</p>
+-- @param hashKeyValue [HashKeyValue] <p>The hash key value.</p>
+-- @param rangeKeyValue [RangeKeyValue] <p>The range key value.</p>
+-- @param operation [DynamoOperation] <p>The type of operation to be performed. This follows the substitution template, so it can be <code>${operation}</code>, but the substitution must result in one of the following: <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code>.</p>
+-- @param rangeKeyField [RangeKeyField] <p>The range key name.</p>
 -- Required parameter: tableName
 -- Required parameter: roleArn
 -- Required parameter: hashKeyField
@@ -369,7 +369,7 @@ function M.AssertDeleteCACertificateResponse(struct)
 end
 
 --- Create a structure of type DeleteCACertificateResponse
--- &lt;p&gt;The output for the DeleteCACertificate operation.&lt;/p&gt;
+-- <p>The output for the DeleteCACertificate operation.</p>
 function M.DeleteCACertificateResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCACertificateResponse")
 	local t = { 
@@ -390,8 +390,8 @@ function M.AssertDescribeEndpointResponse(struct)
 end
 
 --- Create a structure of type DescribeEndpointResponse
--- &lt;p&gt;The output from the DescribeEndpoint operation.&lt;/p&gt;
--- @param endpointAddress [EndpointAddress] &lt;p&gt;The endpoint. The format of the endpoint is as follows: &lt;i&gt;identifier&lt;/i&gt;.iot.&lt;i&gt;region&lt;/i&gt;.amazonaws.com.&lt;/p&gt;
+-- <p>The output from the DescribeEndpoint operation.</p>
+-- @param endpointAddress [EndpointAddress] <p>The endpoint. The format of the endpoint is as follows: <i>identifier</i>.iot.<i>region</i>.amazonaws.com.</p>
 function M.DescribeEndpointResponse(endpointAddress, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointResponse")
 	local t = { 
@@ -418,11 +418,11 @@ function M.AssertRegisterCACertificateRequest(struct)
 end
 
 --- Create a structure of type RegisterCACertificateRequest
--- &lt;p&gt;The input to the RegisterCACertificate operation.&lt;/p&gt;
--- @param caCertificate [CertificatePem] &lt;p&gt;The CA certificate.&lt;/p&gt;
--- @param verificationCertificate [CertificatePem] &lt;p&gt;The private key verification certificate.&lt;/p&gt;
--- @param allowAutoRegistration [AllowAutoRegistration] &lt;p&gt;Allows this CA certificate to be used for auto registration of device certificates.&lt;/p&gt;
--- @param setAsActive [SetAsActive] &lt;p&gt;A boolean value that specifies if the CA certificate is set to active.&lt;/p&gt;
+-- <p>The input to the RegisterCACertificate operation.</p>
+-- @param caCertificate [CertificatePem] <p>The CA certificate.</p>
+-- @param verificationCertificate [CertificatePem] <p>The private key verification certificate.</p>
+-- @param allowAutoRegistration [AllowAutoRegistration] <p>Allows this CA certificate to be used for auto registration of device certificates.</p>
+-- @param setAsActive [SetAsActive] <p>A boolean value that specifies if the CA certificate is set to active.</p>
 -- Required parameter: caCertificate
 -- Required parameter: verificationCertificate
 function M.RegisterCACertificateRequest(caCertificate, verificationCertificate, allowAutoRegistration, setAsActive, ...)
@@ -448,7 +448,7 @@ function M.AssertDeleteRegistrationCodeRequest(struct)
 end
 
 --- Create a structure of type DeleteRegistrationCodeRequest
--- &lt;p&gt;The input for the DeleteRegistrationCode operation.&lt;/p&gt;
+-- <p>The input for the DeleteRegistrationCode operation.</p>
 function M.DeleteRegistrationCodeRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRegistrationCodeRequest")
 	local t = { 
@@ -469,8 +469,8 @@ function M.AssertGetRegistrationCodeResponse(struct)
 end
 
 --- Create a structure of type GetRegistrationCodeResponse
--- &lt;p&gt;The output from the GetRegistrationCode operation.&lt;/p&gt;
--- @param registrationCode [RegistrationCode] &lt;p&gt;The CA certificate registration code.&lt;/p&gt;
+-- <p>The output from the GetRegistrationCode operation.</p>
+-- @param registrationCode [RegistrationCode] <p>The CA certificate registration code.</p>
 function M.GetRegistrationCodeResponse(registrationCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRegistrationCodeResponse")
 	local t = { 
@@ -493,8 +493,8 @@ function M.AssertListPolicyVersionsRequest(struct)
 end
 
 --- Create a structure of type ListPolicyVersionsRequest
--- &lt;p&gt;The input for the ListPolicyVersions operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The policy name.&lt;/p&gt;
+-- <p>The input for the ListPolicyVersions operation.</p>
+-- @param policyName [PolicyName] <p>The policy name.</p>
 -- Required parameter: policyName
 function M.ListPolicyVersionsRequest(policyName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyVersionsRequest")
@@ -519,10 +519,10 @@ function M.AssertListCertificatesRequest(struct)
 end
 
 --- Create a structure of type ListCertificatesRequest
--- &lt;p&gt;The input for the ListCertificates operation.&lt;/p&gt;
--- @param marker [Marker] &lt;p&gt;The marker for the next set of results.&lt;/p&gt;
--- @param ascendingOrder [AscendingOrder] &lt;p&gt;Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.&lt;/p&gt;
--- @param pageSize [PageSize] &lt;p&gt;The result page size.&lt;/p&gt;
+-- <p>The input for the ListCertificates operation.</p>
+-- @param marker [Marker] <p>The marker for the next set of results.</p>
+-- @param ascendingOrder [AscendingOrder] <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
+-- @param pageSize [PageSize] <p>The result page size.</p>
 function M.ListCertificatesRequest(marker, ascendingOrder, pageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCertificatesRequest")
 	local t = { 
@@ -549,11 +549,11 @@ function M.AssertThingAttribute(struct)
 end
 
 --- Create a structure of type ThingAttribute
--- &lt;p&gt;The properties of the thing, including thing name, thing type name, and a list of thing attributes.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type, if the thing has been associated with a type.&lt;/p&gt;
--- @param attributes [Attributes] &lt;p&gt;A list of thing attributes which are name-value pairs.&lt;/p&gt;
--- @param version [Version] &lt;p&gt;The version of the thing record in the registry.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing.&lt;/p&gt;
+-- <p>The properties of the thing, including thing name, thing type name, and a list of thing attributes.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type, if the thing has been associated with a type.</p>
+-- @param attributes [Attributes] <p>A list of thing attributes which are name-value pairs.</p>
+-- @param version [Version] <p>The version of the thing record in the registry.</p>
+-- @param thingName [ThingName] <p>The name of the thing.</p>
 function M.ThingAttribute(thingTypeName, attributes, version, thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThingAttribute")
 	local t = { 
@@ -579,8 +579,8 @@ function M.AssertDescribeThingRequest(struct)
 end
 
 --- Create a structure of type DescribeThingRequest
--- &lt;p&gt;The input for the DescribeThing operation.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing.&lt;/p&gt;
+-- <p>The input for the DescribeThing operation.</p>
+-- @param thingName [ThingName] <p>The name of the thing.</p>
 -- Required parameter: thingName
 function M.DescribeThingRequest(thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeThingRequest")
@@ -603,8 +603,8 @@ function M.AssertListThingPrincipalsResponse(struct)
 end
 
 --- Create a structure of type ListThingPrincipalsResponse
--- &lt;p&gt;The output from the ListThingPrincipals operation.&lt;/p&gt;
--- @param principals [Principals] &lt;p&gt;The principals associated with the thing.&lt;/p&gt;
+-- <p>The output from the ListThingPrincipals operation.</p>
+-- @param principals [Principals] <p>The principals associated with the thing.</p>
 function M.ListThingPrincipalsResponse(principals, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListThingPrincipalsResponse")
 	local t = { 
@@ -626,8 +626,8 @@ function M.AssertCertificateValidationException(struct)
 end
 
 --- Create a structure of type CertificateValidationException
--- &lt;p&gt;The certificate is invalid.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Additional information about the exception.&lt;/p&gt;
+-- <p>The certificate is invalid.</p>
+-- @param message [errorMessage] <p>Additional information about the exception.</p>
 function M.CertificateValidationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CertificateValidationException")
 	local t = { 
@@ -648,7 +648,7 @@ function M.AssertDeleteThingResponse(struct)
 end
 
 --- Create a structure of type DeleteThingResponse
--- &lt;p&gt;The output of the DeleteThing operation.&lt;/p&gt;
+-- <p>The output of the DeleteThing operation.</p>
 function M.DeleteThingResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingResponse")
 	local t = { 
@@ -672,10 +672,10 @@ function M.AssertCreateThingRequest(struct)
 end
 
 --- Create a structure of type CreateThingRequest
--- &lt;p&gt;The input for the CreateThing operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type associated with the new thing.&lt;/p&gt;
--- @param attributePayload [AttributePayload] &lt;p&gt;The attribute payload, which consists of up to three name/value pairs in a JSON document. For example:&lt;/p&gt; &lt;p&gt; &lt;code&gt;{\&quot;attributes\&quot;:{\&quot;string1\&quot;:\&quot;string2\&quot;}}&lt;/code&gt; &lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing to create.&lt;/p&gt;
+-- <p>The input for the CreateThing operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type associated with the new thing.</p>
+-- @param attributePayload [AttributePayload] <p>The attribute payload, which consists of up to three name/value pairs in a JSON document. For example:</p> <p> <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
+-- @param thingName [ThingName] <p>The name of the thing to create.</p>
 -- Required parameter: thingName
 function M.CreateThingRequest(thingTypeName, attributePayload, thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateThingRequest")
@@ -701,9 +701,9 @@ function M.AssertRegisterCertificateResponse(struct)
 end
 
 --- Create a structure of type RegisterCertificateResponse
--- &lt;p&gt;The output from the RegisterCertificate operation.&lt;/p&gt;
--- @param certificateArn [CertificateArn] &lt;p&gt;The certificate ARN.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The certificate identifier.&lt;/p&gt;
+-- <p>The output from the RegisterCertificate operation.</p>
+-- @param certificateArn [CertificateArn] <p>The certificate ARN.</p>
+-- @param certificateId [CertificateId] <p>The certificate identifier.</p>
 function M.RegisterCertificateResponse(certificateArn, certificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterCertificateResponse")
 	local t = { 
@@ -728,10 +728,10 @@ function M.AssertPolicyVersion(struct)
 end
 
 --- Create a structure of type PolicyVersion
--- &lt;p&gt;Describes a policy version.&lt;/p&gt;
--- @param versionId [PolicyVersionId] &lt;p&gt;The policy version ID.&lt;/p&gt;
--- @param createDate [DateType] &lt;p&gt;The date and time the policy was created.&lt;/p&gt;
--- @param isDefaultVersion [IsDefaultVersion] &lt;p&gt;Specifies whether the policy version is the default.&lt;/p&gt;
+-- <p>Describes a policy version.</p>
+-- @param versionId [PolicyVersionId] <p>The policy version ID.</p>
+-- @param createDate [DateType] <p>The date and time the policy was created.</p>
+-- @param isDefaultVersion [IsDefaultVersion] <p>Specifies whether the policy version is the default.</p>
 function M.PolicyVersion(versionId, createDate, isDefaultVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyVersion")
 	local t = { 
@@ -758,11 +758,11 @@ function M.AssertCreatePolicyVersionResponse(struct)
 end
 
 --- Create a structure of type CreatePolicyVersionResponse
--- &lt;p&gt;The output of the CreatePolicyVersion operation.&lt;/p&gt;
--- @param policyDocument [PolicyDocument] &lt;p&gt;The JSON document that describes the policy.&lt;/p&gt;
--- @param policyVersionId [PolicyVersionId] &lt;p&gt;The policy version ID.&lt;/p&gt;
--- @param policyArn [PolicyArn] &lt;p&gt;The policy ARN.&lt;/p&gt;
--- @param isDefaultVersion [IsDefaultVersion] &lt;p&gt;Specifies whether the policy version is the default.&lt;/p&gt;
+-- <p>The output of the CreatePolicyVersion operation.</p>
+-- @param policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
+-- @param policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
+-- @param policyArn [PolicyArn] <p>The policy ARN.</p>
+-- @param isDefaultVersion [IsDefaultVersion] <p>Specifies whether the policy version is the default.</p>
 function M.CreatePolicyVersionResponse(policyDocument, policyVersionId, policyArn, isDefaultVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyVersionResponse")
 	local t = { 
@@ -786,7 +786,7 @@ function M.AssertGetRegistrationCodeRequest(struct)
 end
 
 --- Create a structure of type GetRegistrationCodeRequest
--- &lt;p&gt;The input to the GetRegistrationCode operation.&lt;/p&gt;
+-- <p>The input to the GetRegistrationCode operation.</p>
 function M.GetRegistrationCodeRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRegistrationCodeRequest")
 	local t = { 
@@ -810,9 +810,9 @@ function M.AssertUpdateCertificateRequest(struct)
 end
 
 --- Create a structure of type UpdateCertificateRequest
--- &lt;p&gt;The input for the UpdateCertificate operation.&lt;/p&gt;
--- @param newStatus [CertificateStatus] &lt;p&gt;The new status.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Note:&lt;/b&gt; Setting the status to PENDING_TRANSFER will result in an exception being thrown. PENDING_TRANSFER is a status used internally by AWS IoT. It is not intended for developer use.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Note:&lt;/b&gt; The status value REGISTER_INACTIVE is deprecated and should not be used.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate.&lt;/p&gt;
+-- <p>The input for the UpdateCertificate operation.</p>
+-- @param newStatus [CertificateStatus] <p>The new status.</p> <p> <b>Note:</b> Setting the status to PENDING_TRANSFER will result in an exception being thrown. PENDING_TRANSFER is a status used internally by AWS IoT. It is not intended for developer use.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate.</p>
 -- Required parameter: certificateId
 -- Required parameter: newStatus
 function M.UpdateCertificateRequest(newStatus, certificateId, ...)
@@ -838,9 +838,9 @@ function M.AssertListPrincipalPoliciesResponse(struct)
 end
 
 --- Create a structure of type ListPrincipalPoliciesResponse
--- &lt;p&gt;The output from the ListPrincipalPolicies operation.&lt;/p&gt;
--- @param nextMarker [Marker] &lt;p&gt;The marker for the next set of results, or null if there are no additional results.&lt;/p&gt;
--- @param policies [Policies] &lt;p&gt;The policies.&lt;/p&gt;
+-- <p>The output from the ListPrincipalPolicies operation.</p>
+-- @param nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
+-- @param policies [Policies] <p>The policies.</p>
 function M.ListPrincipalPoliciesResponse(nextMarker, policies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalPoliciesResponse")
 	local t = { 
@@ -863,8 +863,8 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;The number of attached entities exceeds the limit.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The number of attached entities exceeds the limit.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.LimitExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -888,10 +888,10 @@ function M.AssertListOutgoingCertificatesRequest(struct)
 end
 
 --- Create a structure of type ListOutgoingCertificatesRequest
--- &lt;p&gt;The input to the ListOutgoingCertificates operation.&lt;/p&gt;
--- @param marker [Marker] &lt;p&gt;The marker for the next set of results.&lt;/p&gt;
--- @param ascendingOrder [AscendingOrder] &lt;p&gt;Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.&lt;/p&gt;
--- @param pageSize [PageSize] &lt;p&gt;The result page size.&lt;/p&gt;
+-- <p>The input to the ListOutgoingCertificates operation.</p>
+-- @param marker [Marker] <p>The marker for the next set of results.</p>
+-- @param ascendingOrder [AscendingOrder] <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
+-- @param pageSize [PageSize] <p>The result page size.</p>
 function M.ListOutgoingCertificatesRequest(marker, ascendingOrder, pageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListOutgoingCertificatesRequest")
 	local t = { 
@@ -916,8 +916,8 @@ function M.AssertDeleteCACertificateRequest(struct)
 end
 
 --- Create a structure of type DeleteCACertificateRequest
--- &lt;p&gt;Input for the DeleteCACertificate operation.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate to delete.&lt;/p&gt;
+-- <p>Input for the DeleteCACertificate operation.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate to delete.</p>
 -- Required parameter: certificateId
 function M.DeleteCACertificateRequest(certificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCACertificateRequest")
@@ -940,8 +940,8 @@ function M.AssertCertificateStateException(struct)
 end
 
 --- Create a structure of type CertificateStateException
--- &lt;p&gt;The certificate operation is not allowed.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The certificate operation is not allowed.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.CertificateStateException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CertificateStateException")
 	local t = { 
@@ -964,8 +964,8 @@ function M.AssertGetTopicRuleRequest(struct)
 end
 
 --- Create a structure of type GetTopicRuleRequest
--- &lt;p&gt;The input for the GetTopicRule operation.&lt;/p&gt;
--- @param ruleName [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- <p>The input for the GetTopicRule operation.</p>
+-- @param ruleName [RuleName] <p>The name of the rule.</p>
 -- Required parameter: ruleName
 function M.GetTopicRuleRequest(ruleName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTopicRuleRequest")
@@ -988,8 +988,8 @@ function M.AssertCertificateConflictException(struct)
 end
 
 --- Create a structure of type CertificateConflictException
--- &lt;p&gt;Unable to verify the CA certificate used to sign the device certificate you are attempting to register. This is happens when you have registered more than one CA certificate that has the same subject field and public key.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>Unable to verify the CA certificate used to sign the device certificate you are attempting to register. This is happens when you have registered more than one CA certificate that has the same subject field and public key.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.CertificateConflictException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CertificateConflictException")
 	local t = { 
@@ -1015,12 +1015,12 @@ function M.AssertTransferData(struct)
 end
 
 --- Create a structure of type TransferData
--- &lt;p&gt;Data used to transfer a certificate to an AWS account.&lt;/p&gt;
--- @param transferMessage [Message] &lt;p&gt;The transfer message.&lt;/p&gt;
--- @param rejectDate [DateType] &lt;p&gt;The date the transfer was rejected.&lt;/p&gt;
--- @param acceptDate [DateType] &lt;p&gt;The date the transfer was accepted.&lt;/p&gt;
--- @param transferDate [DateType] &lt;p&gt;The date the transfer took place.&lt;/p&gt;
--- @param rejectReason [Message] &lt;p&gt;The reason why the transfer was rejected.&lt;/p&gt;
+-- <p>Data used to transfer a certificate to an AWS account.</p>
+-- @param transferMessage [Message] <p>The transfer message.</p>
+-- @param rejectDate [DateType] <p>The date the transfer was rejected.</p>
+-- @param acceptDate [DateType] <p>The date the transfer was accepted.</p>
+-- @param transferDate [DateType] <p>The date the transfer took place.</p>
+-- @param rejectReason [Message] <p>The reason why the transfer was rejected.</p>
 function M.TransferData(transferMessage, rejectDate, acceptDate, transferDate, rejectReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TransferData")
 	local t = { 
@@ -1048,9 +1048,9 @@ function M.AssertDeleteThingRequest(struct)
 end
 
 --- Create a structure of type DeleteThingRequest
--- &lt;p&gt;The input for the DeleteThing operation.&lt;/p&gt;
--- @param expectedVersion [OptionalVersion] &lt;p&gt;The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the &lt;code&gt;DeleteThing&lt;/code&gt; request is rejected with a &lt;code&gt;VersionConflictException&lt;/code&gt;.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing to delete.&lt;/p&gt;
+-- <p>The input for the DeleteThing operation.</p>
+-- @param expectedVersion [OptionalVersion] <p>The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the <code>DeleteThing</code> request is rejected with a <code>VersionConflictException</code>.</p>
+-- @param thingName [ThingName] <p>The name of the thing to delete.</p>
 -- Required parameter: thingName
 function M.DeleteThingRequest(expectedVersion, thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingRequest")
@@ -1077,11 +1077,11 @@ function M.AssertListTopicRulesRequest(struct)
 end
 
 --- Create a structure of type ListTopicRulesRequest
--- &lt;p&gt;The input for the ListTopicRules operation.&lt;/p&gt;
--- @param topic [Topic] &lt;p&gt;The topic.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;A token used to retrieve the next value.&lt;/p&gt;
--- @param ruleDisabled [IsDisabled] &lt;p&gt;Specifies whether the rule is disabled.&lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;The maximum number of results to return.&lt;/p&gt;
+-- <p>The input for the ListTopicRules operation.</p>
+-- @param topic [Topic] <p>The topic.</p>
+-- @param nextToken [NextToken] <p>A token used to retrieve the next value.</p>
+-- @param ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
+-- @param maxResults [MaxResults] <p>The maximum number of results to return.</p>
 function M.ListTopicRulesRequest(topic, nextToken, ruleDisabled, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTopicRulesRequest")
 	local t = { 
@@ -1107,9 +1107,9 @@ function M.AssertCreateThingTypeResponse(struct)
 end
 
 --- Create a structure of type CreateThingTypeResponse
--- &lt;p&gt;The output of the CreateThingType operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type.&lt;/p&gt;
--- @param thingTypeArn [ThingTypeArn] &lt;p&gt;The Amazon Resource Name (ARN) of the thing type.&lt;/p&gt;
+-- <p>The output of the CreateThingType operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- @param thingTypeArn [ThingTypeArn] <p>The Amazon Resource Name (ARN) of the thing type.</p>
 function M.CreateThingTypeResponse(thingTypeName, thingTypeArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateThingTypeResponse")
 	local t = { 
@@ -1136,11 +1136,11 @@ function M.AssertListPolicyPrincipalsRequest(struct)
 end
 
 --- Create a structure of type ListPolicyPrincipalsRequest
--- &lt;p&gt;The input for the ListPolicyPrincipals operation.&lt;/p&gt;
--- @param marker [Marker] &lt;p&gt;The marker for the next set of results.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The policy name.&lt;/p&gt;
--- @param ascendingOrder [AscendingOrder] &lt;p&gt;Specifies the order for results. If true, the results are returned in ascending creation order.&lt;/p&gt;
--- @param pageSize [PageSize] &lt;p&gt;The result page size.&lt;/p&gt;
+-- <p>The input for the ListPolicyPrincipals operation.</p>
+-- @param marker [Marker] <p>The marker for the next set of results.</p>
+-- @param policyName [PolicyName] <p>The policy name.</p>
+-- @param ascendingOrder [AscendingOrder] <p>Specifies the order for results. If true, the results are returned in ascending creation order.</p>
+-- @param pageSize [PageSize] <p>The result page size.</p>
 -- Required parameter: policyName
 function M.ListPolicyPrincipalsRequest(marker, policyName, ascendingOrder, pageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyPrincipalsRequest")
@@ -1170,10 +1170,10 @@ function M.AssertCreatePolicyVersionRequest(struct)
 end
 
 --- Create a structure of type CreatePolicyVersionRequest
--- &lt;p&gt;The input for the CreatePolicyVersion operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The policy name.&lt;/p&gt;
--- @param policyDocument [PolicyDocument] &lt;p&gt;The JSON document that describes the policy. Minimum length of 1. Maximum length of 2048, excluding whitespaces&lt;/p&gt;
--- @param setAsDefault [SetAsDefault] &lt;p&gt;Specifies whether the policy version is set as the default. When this parameter is true, the new policy version becomes the operative version (that is, the version that is in effect for the certificates to which the policy is attached).&lt;/p&gt;
+-- <p>The input for the CreatePolicyVersion operation.</p>
+-- @param policyName [PolicyName] <p>The policy name.</p>
+-- @param policyDocument [PolicyDocument] <p>The JSON document that describes the policy. Minimum length of 1. Maximum length of 2048, excluding whitespaces</p>
+-- @param setAsDefault [SetAsDefault] <p>Specifies whether the policy version is set as the default. When this parameter is true, the new policy version becomes the operative version (that is, the version that is in effect for the certificates to which the policy is attached).</p>
 -- Required parameter: policyName
 -- Required parameter: policyDocument
 function M.CreatePolicyVersionRequest(policyName, policyDocument, setAsDefault, ...)
@@ -1202,9 +1202,9 @@ function M.AssertDetachThingPrincipalRequest(struct)
 end
 
 --- Create a structure of type DetachThingPrincipalRequest
--- &lt;p&gt;The input for the DetachThingPrincipal operation.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing.&lt;/p&gt;
--- @param principal [Principal] &lt;p&gt;If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.&lt;/p&gt;
+-- <p>The input for the DetachThingPrincipal operation.</p>
+-- @param thingName [ThingName] <p>The name of the thing.</p>
+-- @param principal [Principal] <p>If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.</p>
 -- Required parameter: thingName
 -- Required parameter: principal
 function M.DetachThingPrincipalRequest(thingName, principal, ...)
@@ -1229,8 +1229,8 @@ function M.AssertVersionConflictException(struct)
 end
 
 --- Create a structure of type VersionConflictException
--- &lt;p&gt;An exception thrown when the version of a thing passed to a command is different than the version specified with the --version parameter.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>An exception thrown when the version of a thing passed to a command is different than the version specified with the --version parameter.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.VersionConflictException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VersionConflictException")
 	local t = { 
@@ -1255,11 +1255,11 @@ function M.AssertCreatePolicyResponse(struct)
 end
 
 --- Create a structure of type CreatePolicyResponse
--- &lt;p&gt;The output from the CreatePolicy operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The policy name.&lt;/p&gt;
--- @param policyDocument [PolicyDocument] &lt;p&gt;The JSON document that describes the policy.&lt;/p&gt;
--- @param policyVersionId [PolicyVersionId] &lt;p&gt;The policy version ID.&lt;/p&gt;
--- @param policyArn [PolicyArn] &lt;p&gt;The policy ARN.&lt;/p&gt;
+-- <p>The output from the CreatePolicy operation.</p>
+-- @param policyName [PolicyName] <p>The policy name.</p>
+-- @param policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
+-- @param policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
+-- @param policyArn [PolicyArn] <p>The policy ARN.</p>
 function M.CreatePolicyResponse(policyName, policyDocument, policyVersionId, policyArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyResponse")
 	local t = { 
@@ -1284,8 +1284,8 @@ function M.AssertCreateKeysAndCertificateRequest(struct)
 end
 
 --- Create a structure of type CreateKeysAndCertificateRequest
--- &lt;p&gt;The input for the CreateKeysAndCertificate operation.&lt;/p&gt;
--- @param setAsActive [SetAsActive] &lt;p&gt;Specifies whether the certificate is active.&lt;/p&gt;
+-- <p>The input for the CreateKeysAndCertificate operation.</p>
+-- @param setAsActive [SetAsActive] <p>Specifies whether the certificate is active.</p>
 function M.CreateKeysAndCertificateRequest(setAsActive, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateKeysAndCertificateRequest")
 	local t = { 
@@ -1310,9 +1310,9 @@ function M.AssertAttachPrincipalPolicyRequest(struct)
 end
 
 --- Create a structure of type AttachPrincipalPolicyRequest
--- &lt;p&gt;The input for the AttachPrincipalPolicy operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The policy name.&lt;/p&gt;
--- @param principal [Principal] &lt;p&gt;The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.&lt;/p&gt;
+-- <p>The input for the AttachPrincipalPolicy operation.</p>
+-- @param policyName [PolicyName] <p>The policy name.</p>
+-- @param principal [Principal] <p>The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.</p>
 -- Required parameter: policyName
 -- Required parameter: principal
 function M.AttachPrincipalPolicyRequest(policyName, principal, ...)
@@ -1338,8 +1338,8 @@ function M.AssertDeletePolicyRequest(struct)
 end
 
 --- Create a structure of type DeletePolicyRequest
--- &lt;p&gt;The input for the DeletePolicy operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The name of the policy to delete.&lt;/p&gt;
+-- <p>The input for the DeletePolicy operation.</p>
+-- @param policyName [PolicyName] <p>The name of the policy to delete.</p>
 -- Required parameter: policyName
 function M.DeletePolicyRequest(policyName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePolicyRequest")
@@ -1367,12 +1367,12 @@ function M.AssertUpdateThingRequest(struct)
 end
 
 --- Create a structure of type UpdateThingRequest
--- &lt;p&gt;The input for the UpdateThing operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type.&lt;/p&gt;
--- @param removeThingType [RemoveThingType] &lt;p&gt;Remove a thing type association. If &lt;b&gt;true&lt;/b&gt;, the assocation is removed.&lt;/p&gt;
--- @param attributePayload [AttributePayload] &lt;p&gt;A list of thing attributes, a JSON string containing name-value pairs. For example:&lt;/p&gt; &lt;p&gt; &lt;code&gt;{\&quot;attributes\&quot;:{\&quot;name1\&quot;:\&quot;value2\&quot;}}&lt;/code&gt; &lt;/p&gt; &lt;p&gt;This data is used to add new attributes or update existing attributes.&lt;/p&gt;
--- @param expectedVersion [OptionalVersion] &lt;p&gt;The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the &lt;code&gt;UpdateThing&lt;/code&gt; request is rejected with a &lt;code&gt;VersionConflictException&lt;/code&gt;.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing to update.&lt;/p&gt;
+-- <p>The input for the UpdateThing operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- @param removeThingType [RemoveThingType] <p>Remove a thing type association. If <b>true</b>, the assocation is removed.</p>
+-- @param attributePayload [AttributePayload] <p>A list of thing attributes, a JSON string containing name-value pairs. For example:</p> <p> <code>{\"attributes\":{\"name1\":\"value2\"}}</code> </p> <p>This data is used to add new attributes or update existing attributes.</p>
+-- @param expectedVersion [OptionalVersion] <p>The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the <code>UpdateThing</code> request is rejected with a <code>VersionConflictException</code>.</p>
+-- @param thingName [ThingName] <p>The name of the thing to update.</p>
 -- Required parameter: thingName
 function M.UpdateThingRequest(thingTypeName, removeThingType, attributePayload, expectedVersion, thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateThingRequest")
@@ -1399,8 +1399,8 @@ function M.AssertTransferAlreadyCompletedException(struct)
 end
 
 --- Create a structure of type TransferAlreadyCompletedException
--- &lt;p&gt;You can't revert the certificate transfer because the transfer is already complete.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>You can't revert the certificate transfer because the transfer is already complete.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.TransferAlreadyCompletedException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TransferAlreadyCompletedException")
 	local t = { 
@@ -1421,7 +1421,7 @@ function M.AssertAttachThingPrincipalResponse(struct)
 end
 
 --- Create a structure of type AttachThingPrincipalResponse
--- &lt;p&gt;The output from the AttachThingPrincipal operation.&lt;/p&gt;
+-- <p>The output from the AttachThingPrincipal operation.</p>
 function M.AttachThingPrincipalResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachThingPrincipalResponse")
 	local t = { 
@@ -1444,9 +1444,9 @@ function M.AssertCreateThingTypeRequest(struct)
 end
 
 --- Create a structure of type CreateThingTypeRequest
--- &lt;p&gt;The input for the CreateThingType operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type.&lt;/p&gt;
--- @param thingTypeProperties [ThingTypeProperties] &lt;p&gt;The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.&lt;/p&gt;
+-- <p>The input for the CreateThingType operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- @param thingTypeProperties [ThingTypeProperties] <p>The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.</p>
 -- Required parameter: thingTypeName
 function M.CreateThingTypeRequest(thingTypeName, thingTypeProperties, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateThingTypeRequest")
@@ -1469,7 +1469,7 @@ function M.AssertGetLoggingOptionsRequest(struct)
 end
 
 --- Create a structure of type GetLoggingOptionsRequest
--- &lt;p&gt;The input for the GetLoggingOptions operation.&lt;/p&gt;
+-- <p>The input for the GetLoggingOptions operation.</p>
 function M.GetLoggingOptionsRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggingOptionsRequest")
 	local t = { 
@@ -1490,8 +1490,8 @@ function M.AssertTransferConflictException(struct)
 end
 
 --- Create a structure of type TransferConflictException
--- &lt;p&gt;You can't transfer the certificate because authorization policies are still attached.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>You can't transfer the certificate because authorization policies are still attached.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.TransferConflictException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TransferConflictException")
 	local t = { 
@@ -1519,14 +1519,14 @@ function M.AssertTopicRule(struct)
 end
 
 --- Create a structure of type TopicRule
--- &lt;p&gt;Describes a rule.&lt;/p&gt;
--- @param description [Description] &lt;p&gt;The description of the rule.&lt;/p&gt;
--- @param ruleName [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
--- @param actions [ActionList] &lt;p&gt;The actions associated with the rule.&lt;/p&gt;
--- @param createdAt [CreatedAtDate] &lt;p&gt;The date and time the rule was created.&lt;/p&gt;
--- @param sql [SQL] &lt;p&gt;The SQL statement used to query the topic. When using a SQL query with multiple lines, be sure to escape the newline characters.&lt;/p&gt;
--- @param awsIotSqlVersion [AwsIotSqlVersion] &lt;p&gt;The version of the SQL rules engine to use when evaluating the rule.&lt;/p&gt;
--- @param ruleDisabled [IsDisabled] &lt;p&gt;Specifies whether the rule is disabled.&lt;/p&gt;
+-- <p>Describes a rule.</p>
+-- @param description [Description] <p>The description of the rule.</p>
+-- @param ruleName [RuleName] <p>The name of the rule.</p>
+-- @param actions [ActionList] <p>The actions associated with the rule.</p>
+-- @param createdAt [CreatedAtDate] <p>The date and time the rule was created.</p>
+-- @param sql [SQL] <p>The SQL statement used to query the topic. When using a SQL query with multiple lines, be sure to escape the newline characters.</p>
+-- @param awsIotSqlVersion [AwsIotSqlVersion] <p>The version of the SQL rules engine to use when evaluating the rule.</p>
+-- @param ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
 function M.TopicRule(description, ruleName, actions, createdAt, sql, awsIotSqlVersion, ruleDisabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TopicRule")
 	local t = { 
@@ -1556,9 +1556,9 @@ function M.AssertLoggingOptionsPayload(struct)
 end
 
 --- Create a structure of type LoggingOptionsPayload
--- &lt;p&gt;Describes the logging options payload.&lt;/p&gt;
--- @param logLevel [LogLevel] &lt;p&gt;The logging level.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The ARN of the IAM role that grants access.&lt;/p&gt;
+-- <p>Describes the logging options payload.</p>
+-- @param logLevel [LogLevel] <p>The logging level.</p>
+-- @param roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
 -- Required parameter: roleArn
 function M.LoggingOptionsPayload(logLevel, roleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoggingOptionsPayload")
@@ -1584,10 +1584,10 @@ function M.AssertCreateCertificateFromCsrResponse(struct)
 end
 
 --- Create a structure of type CreateCertificateFromCsrResponse
--- &lt;p&gt;The output from the CreateCertificateFromCsr operation.&lt;/p&gt;
--- @param certificateArn [CertificateArn] &lt;p&gt;The Amazon Resource Name (ARN) of the certificate. You can use the ARN as a principal for policy operations.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate. Certificate management operations only take a certificateId.&lt;/p&gt;
--- @param certificatePem [CertificatePem] &lt;p&gt;The certificate data, in PEM format.&lt;/p&gt;
+-- <p>The output from the CreateCertificateFromCsr operation.</p>
+-- @param certificateArn [CertificateArn] <p>The Amazon Resource Name (ARN) of the certificate. You can use the ARN as a principal for policy operations.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate. Certificate management operations only take a certificateId.</p>
+-- @param certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
 function M.CreateCertificateFromCsrResponse(certificateArn, certificateId, certificatePem, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCertificateFromCsrResponse")
 	local t = { 
@@ -1613,10 +1613,10 @@ function M.AssertResourceAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ResourceAlreadyExistsException
--- &lt;p&gt;The resource already exists.&lt;/p&gt;
--- @param resourceId [resourceId] &lt;p&gt;The ID of the resource that caused the exception.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
--- @param resourceArn [resourceArn] &lt;p&gt;The ARN of the resource that caused the exception.&lt;/p&gt;
+-- <p>The resource already exists.</p>
+-- @param resourceId [resourceId] <p>The ID of the resource that caused the exception.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
+-- @param resourceArn [resourceArn] <p>The ARN of the resource that caused the exception.</p>
 function M.ResourceAlreadyExistsException(resourceId, message, resourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
 	local t = { 
@@ -1643,9 +1643,9 @@ function M.AssertGetPolicyVersionRequest(struct)
 end
 
 --- Create a structure of type GetPolicyVersionRequest
--- &lt;p&gt;The input for the GetPolicyVersion operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The name of the policy.&lt;/p&gt;
--- @param policyVersionId [PolicyVersionId] &lt;p&gt;The policy version ID.&lt;/p&gt;
+-- <p>The input for the GetPolicyVersion operation.</p>
+-- @param policyName [PolicyName] <p>The name of the policy.</p>
+-- @param policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
 -- Required parameter: policyName
 -- Required parameter: policyVersionId
 function M.GetPolicyVersionRequest(policyName, policyVersionId, ...)
@@ -1676,12 +1676,12 @@ function M.AssertTopicRulePayload(struct)
 end
 
 --- Create a structure of type TopicRulePayload
--- &lt;p&gt;Describes a rule.&lt;/p&gt;
--- @param awsIotSqlVersion [AwsIotSqlVersion] &lt;p&gt;The version of the SQL rules engine to use when evaluating the rule.&lt;/p&gt;
--- @param ruleDisabled [IsDisabled] &lt;p&gt;Specifies whether the rule is disabled.&lt;/p&gt;
--- @param description [Description] &lt;p&gt;The description of the rule.&lt;/p&gt;
--- @param actions [ActionList] &lt;p&gt;The actions associated with the rule.&lt;/p&gt;
--- @param sql [SQL] &lt;p&gt;The SQL statement used to query the topic. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference&quot;&gt;AWS IoT SQL Reference&lt;/a&gt; in the &lt;i&gt;AWS IoT Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>Describes a rule.</p>
+-- @param awsIotSqlVersion [AwsIotSqlVersion] <p>The version of the SQL rules engine to use when evaluating the rule.</p>
+-- @param ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
+-- @param description [Description] <p>The description of the rule.</p>
+-- @param actions [ActionList] <p>The actions associated with the rule.</p>
+-- @param sql [SQL] <p>The SQL statement used to query the topic. For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference">AWS IoT SQL Reference</a> in the <i>AWS IoT Developer Guide</i>.</p>
 -- Required parameter: sql
 -- Required parameter: actions
 function M.TopicRulePayload(awsIotSqlVersion, ruleDisabled, description, actions, sql, ...)
@@ -1713,11 +1713,11 @@ function M.AssertRegisterCertificateRequest(struct)
 end
 
 --- Create a structure of type RegisterCertificateRequest
--- &lt;p&gt;The input to the RegisterCertificate operation.&lt;/p&gt;
--- @param status [CertificateStatus] &lt;p&gt;The status of the register certificate request.&lt;/p&gt;
--- @param certificatePem [CertificatePem] &lt;p&gt;The certificate data, in PEM format.&lt;/p&gt;
--- @param caCertificatePem [CertificatePem] &lt;p&gt;The CA certificate used to sign the device certificate being registered.&lt;/p&gt;
--- @param setAsActive [SetAsActiveFlag] &lt;p&gt;A boolean value that specifies if the CA certificate is set to active.&lt;/p&gt;
+-- <p>The input to the RegisterCertificate operation.</p>
+-- @param status [CertificateStatus] <p>The status of the register certificate request.</p>
+-- @param certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
+-- @param caCertificatePem [CertificatePem] <p>The CA certificate used to sign the device certificate being registered.</p>
+-- @param setAsActive [SetAsActiveFlag] <p>A boolean value that specifies if the CA certificate is set to active.</p>
 -- Required parameter: certificatePem
 function M.RegisterCertificateRequest(status, certificatePem, caCertificatePem, setAsActive, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterCertificateRequest")
@@ -1752,12 +1752,12 @@ function M.AssertElasticsearchAction(struct)
 end
 
 --- Create a structure of type ElasticsearchAction
--- &lt;p&gt;Describes an action that writes data to an Amazon Elasticsearch Service domain.&lt;/p&gt;
--- @param index [ElasticsearchIndex] &lt;p&gt;The Elasticsearch index where you want to store your data.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The IAM role ARN that has access to Elasticsearch.&lt;/p&gt;
--- @param endpoint [ElasticsearchEndpoint] &lt;p&gt;The endpoint of your Elasticsearch domain.&lt;/p&gt;
--- @param type [ElasticsearchType] &lt;p&gt;The type of document you are storing.&lt;/p&gt;
--- @param id [ElasticsearchId] &lt;p&gt;The unique identifier for the document you are storing.&lt;/p&gt;
+-- <p>Describes an action that writes data to an Amazon Elasticsearch Service domain.</p>
+-- @param index [ElasticsearchIndex] <p>The Elasticsearch index where you want to store your data.</p>
+-- @param roleArn [AwsArn] <p>The IAM role ARN that has access to Elasticsearch.</p>
+-- @param endpoint [ElasticsearchEndpoint] <p>The endpoint of your Elasticsearch domain.</p>
+-- @param type [ElasticsearchType] <p>The type of document you are storing.</p>
+-- @param id [ElasticsearchId] <p>The unique identifier for the document you are storing.</p>
 -- Required parameter: roleArn
 -- Required parameter: endpoint
 -- Required parameter: index
@@ -1789,8 +1789,8 @@ function M.AssertListThingPrincipalsRequest(struct)
 end
 
 --- Create a structure of type ListThingPrincipalsRequest
--- &lt;p&gt;The input for the ListThingPrincipal operation.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing.&lt;/p&gt;
+-- <p>The input for the ListThingPrincipal operation.</p>
+-- @param thingName [ThingName] <p>The name of the thing.</p>
 -- Required parameter: thingName
 function M.ListThingPrincipalsRequest(thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListThingPrincipalsRequest")
@@ -1814,9 +1814,9 @@ function M.AssertDynamoDBv2Action(struct)
 end
 
 --- Create a structure of type DynamoDBv2Action
--- &lt;p&gt;Describes an action to write to a DynamoDB table.&lt;/p&gt; &lt;p&gt;This DynamoDB action writes each attribute in the message payload into it's own column in the DynamoDB table.&lt;/p&gt;
--- @param putItem [PutItemInput] &lt;p&gt;Specifies the DynamoDB table to which the message data will be written. For example:&lt;/p&gt; &lt;p&gt; &lt;code&gt;{ &quot;dynamoDBv2&quot;: { &quot;roleArn&quot;: &quot;aws:iam:12341251:my-role&quot; &quot;putItem&quot;: { &quot;tableName&quot;: &quot;my-table&quot; } } }&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Each attribute in the message payload will be written to a separate column in the DynamoDB database.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The ARN of the IAM role that grants access to the DynamoDB table.&lt;/p&gt;
+-- <p>Describes an action to write to a DynamoDB table.</p> <p>This DynamoDB action writes each attribute in the message payload into it's own column in the DynamoDB table.</p>
+-- @param putItem [PutItemInput] <p>Specifies the DynamoDB table to which the message data will be written. For example:</p> <p> <code>{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName": "my-table" } } }</code> </p> <p>Each attribute in the message payload will be written to a separate column in the DynamoDB database.</p>
+-- @param roleArn [AwsArn] <p>The ARN of the IAM role that grants access to the DynamoDB table.</p>
 function M.DynamoDBv2Action(putItem, roleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DynamoDBv2Action")
 	local t = { 
@@ -1842,9 +1842,9 @@ function M.AssertAttachThingPrincipalRequest(struct)
 end
 
 --- Create a structure of type AttachThingPrincipalRequest
--- &lt;p&gt;The input for the AttachThingPrincipal operation.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing.&lt;/p&gt;
--- @param principal [Principal] &lt;p&gt;The principal, such as a certificate or other credential.&lt;/p&gt;
+-- <p>The input for the AttachThingPrincipal operation.</p>
+-- @param thingName [ThingName] <p>The name of the thing.</p>
+-- @param principal [Principal] <p>The principal, such as a certificate or other credential.</p>
 -- Required parameter: thingName
 -- Required parameter: principal
 function M.AttachThingPrincipalRequest(thingName, principal, ...)
@@ -1875,14 +1875,14 @@ function M.AssertCACertificateDescription(struct)
 end
 
 --- Create a structure of type CACertificateDescription
--- &lt;p&gt;Describes a CA certificate.&lt;/p&gt;
--- @param certificateArn [CertificateArn] &lt;p&gt;The CA certificate ARN.&lt;/p&gt;
--- @param status [CACertificateStatus] &lt;p&gt;The status of a CA certificate.&lt;/p&gt;
--- @param autoRegistrationStatus [AutoRegistrationStatus] &lt;p&gt;Whether the CA certificate configured for auto registration of device certificates. Valid values are &quot;ENABLE&quot; and &quot;DISABLE&quot;&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The CA certificate ID.&lt;/p&gt;
--- @param certificatePem [CertificatePem] &lt;p&gt;The CA certificate data, in PEM format.&lt;/p&gt;
--- @param ownedBy [AwsAccountId] &lt;p&gt;The owner of the CA certificate.&lt;/p&gt;
--- @param creationDate [DateType] &lt;p&gt;The date the CA certificate was created.&lt;/p&gt;
+-- <p>Describes a CA certificate.</p>
+-- @param certificateArn [CertificateArn] <p>The CA certificate ARN.</p>
+-- @param status [CACertificateStatus] <p>The status of a CA certificate.</p>
+-- @param autoRegistrationStatus [AutoRegistrationStatus] <p>Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and "DISABLE"</p>
+-- @param certificateId [CertificateId] <p>The CA certificate ID.</p>
+-- @param certificatePem [CertificatePem] <p>The CA certificate data, in PEM format.</p>
+-- @param ownedBy [AwsAccountId] <p>The owner of the CA certificate.</p>
+-- @param creationDate [DateType] <p>The date the CA certificate was created.</p>
 function M.CACertificateDescription(certificateArn, status, autoRegistrationStatus, certificateId, certificatePem, ownedBy, creationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CACertificateDescription")
 	local t = { 
@@ -1913,9 +1913,9 @@ function M.AssertReplaceTopicRuleRequest(struct)
 end
 
 --- Create a structure of type ReplaceTopicRuleRequest
--- &lt;p&gt;The input for the ReplaceTopicRule operation.&lt;/p&gt;
--- @param topicRulePayload [TopicRulePayload] &lt;p&gt;The rule payload.&lt;/p&gt;
--- @param ruleName [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- <p>The input for the ReplaceTopicRule operation.</p>
+-- @param topicRulePayload [TopicRulePayload] <p>The rule payload.</p>
+-- @param ruleName [RuleName] <p>The name of the rule.</p>
 -- Required parameter: ruleName
 -- Required parameter: topicRulePayload
 function M.ReplaceTopicRuleRequest(topicRulePayload, ruleName, ...)
@@ -1940,8 +1940,8 @@ function M.AssertInvalidRequestException(struct)
 end
 
 --- Create a structure of type InvalidRequestException
--- &lt;p&gt;The request is not valid.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The request is not valid.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.InvalidRequestException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
@@ -1963,8 +1963,8 @@ function M.AssertDeleteConflictException(struct)
 end
 
 --- Create a structure of type DeleteConflictException
--- &lt;p&gt;You can't delete the resource because it is attached to one or more resources.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>You can't delete the resource because it is attached to one or more resources.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.DeleteConflictException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConflictException")
 	local t = { 
@@ -1989,11 +1989,11 @@ function M.AssertCertificate(struct)
 end
 
 --- Create a structure of type Certificate
--- &lt;p&gt;Information about a certificate.&lt;/p&gt;
--- @param certificateArn [CertificateArn] &lt;p&gt;The ARN of the certificate.&lt;/p&gt;
--- @param status [CertificateStatus] &lt;p&gt;The status of the certificate.&lt;/p&gt; &lt;p&gt;The status value REGISTER_INACTIVE is deprecated and should not be used.&lt;/p&gt;
--- @param creationDate [DateType] &lt;p&gt;The date and time the certificate was created.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate.&lt;/p&gt;
+-- <p>Information about a certificate.</p>
+-- @param certificateArn [CertificateArn] <p>The ARN of the certificate.</p>
+-- @param status [CertificateStatus] <p>The status of the certificate.</p> <p>The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+-- @param creationDate [DateType] <p>The date and time the certificate was created.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate.</p>
 function M.Certificate(certificateArn, status, creationDate, certificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Certificate")
 	local t = { 
@@ -2022,10 +2022,10 @@ function M.AssertFirehoseAction(struct)
 end
 
 --- Create a structure of type FirehoseAction
--- &lt;p&gt;Describes an action that writes data to an Amazon Kinesis Firehose stream.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The IAM role that grants access to the Amazon Kinesis Firehost stream.&lt;/p&gt;
--- @param deliveryStreamName [DeliveryStreamName] &lt;p&gt;The delivery stream name.&lt;/p&gt;
--- @param separator [FirehoseSeparator] &lt;p&gt;A character separator that will be used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).&lt;/p&gt;
+-- <p>Describes an action that writes data to an Amazon Kinesis Firehose stream.</p>
+-- @param roleArn [AwsArn] <p>The IAM role that grants access to the Amazon Kinesis Firehost stream.</p>
+-- @param deliveryStreamName [DeliveryStreamName] <p>The delivery stream name.</p>
+-- @param separator [FirehoseSeparator] <p>A character separator that will be used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).</p>
 -- Required parameter: roleArn
 -- Required parameter: deliveryStreamName
 function M.FirehoseAction(roleArn, deliveryStreamName, separator, ...)
@@ -2050,7 +2050,7 @@ function M.AssertUpdateThingResponse(struct)
 end
 
 --- Create a structure of type UpdateThingResponse
--- &lt;p&gt;The output from the UpdateThing operation.&lt;/p&gt;
+-- <p>The output from the UpdateThing operation.</p>
 function M.UpdateThingResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateThingResponse")
 	local t = { 
@@ -2072,9 +2072,9 @@ function M.AssertAttributePayload(struct)
 end
 
 --- Create a structure of type AttributePayload
--- &lt;p&gt;The attribute payload.&lt;/p&gt;
--- @param attributes [Attributes] &lt;p&gt;A JSON string containing up to three key-value pair in JSON format. For example:&lt;/p&gt; &lt;p&gt; &lt;code&gt;{\&quot;attributes\&quot;:{\&quot;string1\&quot;:\&quot;string2\&quot;}}&lt;/code&gt; &lt;/p&gt;
--- @param merge [Flag] &lt;p&gt;Specifies whether the list of attributes provided in the &lt;code&gt;AttributePayload&lt;/code&gt; is merged with the attributes stored in the registry, instead of overwriting them.&lt;/p&gt; &lt;p&gt;To remove an attribute, call &lt;code&gt;UpdateThing&lt;/code&gt; with an empty attribute value.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The &lt;code&gt;merge&lt;/code&gt; attribute is only valid when calling &lt;code&gt;UpdateThing&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt;
+-- <p>The attribute payload.</p>
+-- @param attributes [Attributes] <p>A JSON string containing up to three key-value pair in JSON format. For example:</p> <p> <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
+-- @param merge [Flag] <p>Specifies whether the list of attributes provided in the <code>AttributePayload</code> is merged with the attributes stored in the registry, instead of overwriting them.</p> <p>To remove an attribute, call <code>UpdateThing</code> with an empty attribute value.</p> <note> <p>The <code>merge</code> attribute is only valid when calling <code>UpdateThing</code>.</p> </note>
 function M.AttributePayload(attributes, merge, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttributePayload")
 	local t = { 
@@ -2099,9 +2099,9 @@ function M.AssertAcceptCertificateTransferRequest(struct)
 end
 
 --- Create a structure of type AcceptCertificateTransferRequest
--- &lt;p&gt;The input for the AcceptCertificateTransfer operation.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate.&lt;/p&gt;
--- @param setAsActive [SetAsActive] &lt;p&gt;Specifies whether the certificate is active.&lt;/p&gt;
+-- <p>The input for the AcceptCertificateTransfer operation.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- @param setAsActive [SetAsActive] <p>Specifies whether the certificate is active.</p>
 -- Required parameter: certificateId
 function M.AcceptCertificateTransferRequest(certificateId, setAsActive, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AcceptCertificateTransferRequest")
@@ -2126,9 +2126,9 @@ function M.AssertListPoliciesResponse(struct)
 end
 
 --- Create a structure of type ListPoliciesResponse
--- &lt;p&gt;The output from the ListPolicies operation.&lt;/p&gt;
--- @param nextMarker [Marker] &lt;p&gt;The marker for the next set of results, or null if there are no additional results.&lt;/p&gt;
--- @param policies [Policies] &lt;p&gt;The descriptions of the policies.&lt;/p&gt;
+-- <p>The output from the ListPolicies operation.</p>
+-- @param nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
+-- @param policies [Policies] <p>The descriptions of the policies.</p>
 function M.ListPoliciesResponse(nextMarker, policies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPoliciesResponse")
 	local t = { 
@@ -2152,9 +2152,9 @@ function M.AssertGetTopicRuleResponse(struct)
 end
 
 --- Create a structure of type GetTopicRuleResponse
--- &lt;p&gt;The output from the GetTopicRule operation.&lt;/p&gt;
--- @param ruleArn [RuleArn] &lt;p&gt;The rule ARN.&lt;/p&gt;
--- @param rule [TopicRule] &lt;p&gt;The rule.&lt;/p&gt;
+-- <p>The output from the GetTopicRule operation.</p>
+-- @param ruleArn [RuleArn] <p>The rule ARN.</p>
+-- @param rule [TopicRule] <p>The rule.</p>
 function M.GetTopicRuleResponse(ruleArn, rule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTopicRuleResponse")
 	local t = { 
@@ -2178,8 +2178,8 @@ function M.AssertDisableTopicRuleRequest(struct)
 end
 
 --- Create a structure of type DisableTopicRuleRequest
--- &lt;p&gt;The input for the DisableTopicRuleRequest operation.&lt;/p&gt;
--- @param ruleName [RuleName] &lt;p&gt;The name of the rule to disable.&lt;/p&gt;
+-- <p>The input for the DisableTopicRuleRequest operation.</p>
+-- @param ruleName [RuleName] <p>The name of the rule to disable.</p>
 -- Required parameter: ruleName
 function M.DisableTopicRuleRequest(ruleName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableTopicRuleRequest")
@@ -2206,10 +2206,10 @@ function M.AssertSqsAction(struct)
 end
 
 --- Create a structure of type SqsAction
--- &lt;p&gt;Describes an action to publish data to an Amazon SQS queue.&lt;/p&gt;
--- @param queueUrl [QueueUrl] &lt;p&gt;The URL of the Amazon SQS queue.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The ARN of the IAM role that grants access.&lt;/p&gt;
--- @param useBase64 [UseBase64] &lt;p&gt;Specifies whether to use Base64 encoding.&lt;/p&gt;
+-- <p>Describes an action to publish data to an Amazon SQS queue.</p>
+-- @param queueUrl [QueueUrl] <p>The URL of the Amazon SQS queue.</p>
+-- @param roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
+-- @param useBase64 [UseBase64] <p>Specifies whether to use Base64 encoding.</p>
 -- Required parameter: roleArn
 -- Required parameter: queueUrl
 function M.SqsAction(queueUrl, roleArn, useBase64, ...)
@@ -2234,7 +2234,7 @@ function M.AssertDeleteThingTypeResponse(struct)
 end
 
 --- Create a structure of type DeleteThingTypeResponse
--- &lt;p&gt;The output for the DeleteThingType operation.&lt;/p&gt;
+-- <p>The output for the DeleteThingType operation.</p>
 function M.DeleteThingTypeResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingTypeResponse")
 	local t = { 
@@ -2255,8 +2255,8 @@ function M.AssertDescribeCertificateResponse(struct)
 end
 
 --- Create a structure of type DescribeCertificateResponse
--- &lt;p&gt;The output of the DescribeCertificate operation.&lt;/p&gt;
--- @param certificateDescription [CertificateDescription] &lt;p&gt;The description of the certificate.&lt;/p&gt;
+-- <p>The output of the DescribeCertificate operation.</p>
+-- @param certificateDescription [CertificateDescription] <p>The description of the certificate.</p>
 function M.DescribeCertificateResponse(certificateDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificateResponse")
 	local t = { 
@@ -2280,9 +2280,9 @@ function M.AssertRejectCertificateTransferRequest(struct)
 end
 
 --- Create a structure of type RejectCertificateTransferRequest
--- &lt;p&gt;The input for the RejectCertificateTransfer operation.&lt;/p&gt;
--- @param rejectReason [Message] &lt;p&gt;The reason the certificate transfer was rejected.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate.&lt;/p&gt;
+-- <p>The input for the RejectCertificateTransfer operation.</p>
+-- @param rejectReason [Message] <p>The reason the certificate transfer was rejected.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate.</p>
 -- Required parameter: certificateId
 function M.RejectCertificateTransferRequest(rejectReason, certificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RejectCertificateTransferRequest")
@@ -2308,10 +2308,10 @@ function M.AssertListCACertificatesRequest(struct)
 end
 
 --- Create a structure of type ListCACertificatesRequest
--- &lt;p&gt;Input for the ListCACertificates operation.&lt;/p&gt;
--- @param marker [Marker] &lt;p&gt;The marker for the next set of results.&lt;/p&gt;
--- @param ascendingOrder [AscendingOrder] &lt;p&gt;Determines the order of the results.&lt;/p&gt;
--- @param pageSize [PageSize] &lt;p&gt;The result page size.&lt;/p&gt;
+-- <p>Input for the ListCACertificates operation.</p>
+-- @param marker [Marker] <p>The marker for the next set of results.</p>
+-- @param ascendingOrder [AscendingOrder] <p>Determines the order of the results.</p>
+-- @param pageSize [PageSize] <p>The result page size.</p>
 function M.ListCACertificatesRequest(marker, ascendingOrder, pageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCACertificatesRequest")
 	local t = { 
@@ -2336,8 +2336,8 @@ function M.AssertSetLoggingOptionsRequest(struct)
 end
 
 --- Create a structure of type SetLoggingOptionsRequest
--- &lt;p&gt;The input for the SetLoggingOptions operation.&lt;/p&gt;
--- @param loggingOptionsPayload [LoggingOptionsPayload] &lt;p&gt;The logging options payload.&lt;/p&gt;
+-- <p>The input for the SetLoggingOptions operation.</p>
+-- @param loggingOptionsPayload [LoggingOptionsPayload] <p>The logging options payload.</p>
 -- Required parameter: loggingOptionsPayload
 function M.SetLoggingOptionsRequest(loggingOptionsPayload, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetLoggingOptionsRequest")
@@ -2363,11 +2363,11 @@ function M.AssertCreateKeysAndCertificateResponse(struct)
 end
 
 --- Create a structure of type CreateKeysAndCertificateResponse
--- &lt;p&gt;The output of the CreateKeysAndCertificate operation.&lt;/p&gt;
--- @param certificateArn [CertificateArn] &lt;p&gt;The ARN of the certificate.&lt;/p&gt;
--- @param keyPair [KeyPair] &lt;p&gt;The generated key pair.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate. AWS IoT issues a default subject name for the certificate (for example, AWS IoT Certificate).&lt;/p&gt;
--- @param certificatePem [CertificatePem] &lt;p&gt;The certificate data, in PEM format.&lt;/p&gt;
+-- <p>The output of the CreateKeysAndCertificate operation.</p>
+-- @param certificateArn [CertificateArn] <p>The ARN of the certificate.</p>
+-- @param keyPair [KeyPair] <p>The generated key pair.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate. AWS IoT issues a default subject name for the certificate (for example, AWS IoT Certificate).</p>
+-- @param certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
 function M.CreateKeysAndCertificateResponse(certificateArn, keyPair, certificateId, certificatePem, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateKeysAndCertificateResponse")
 	local t = { 
@@ -2393,9 +2393,9 @@ function M.AssertListCertificatesResponse(struct)
 end
 
 --- Create a structure of type ListCertificatesResponse
--- &lt;p&gt;The output of the ListCertificates operation.&lt;/p&gt;
--- @param certificates [Certificates] &lt;p&gt;The descriptions of the certificates.&lt;/p&gt;
--- @param nextMarker [Marker] &lt;p&gt;The marker for the next set of results, or null if there are no additional results.&lt;/p&gt;
+-- <p>The output of the ListCertificates operation.</p>
+-- @param certificates [Certificates] <p>The descriptions of the certificates.</p>
+-- @param nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
 function M.ListCertificatesResponse(certificates, nextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCertificatesResponse")
 	local t = { 
@@ -2422,12 +2422,12 @@ function M.AssertTopicRuleListItem(struct)
 end
 
 --- Create a structure of type TopicRuleListItem
--- &lt;p&gt;Describes a rule.&lt;/p&gt;
--- @param topicPattern [TopicPattern] &lt;p&gt;The pattern for the topic names that apply.&lt;/p&gt;
--- @param ruleArn [RuleArn] &lt;p&gt;The rule ARN.&lt;/p&gt;
--- @param ruleDisabled [IsDisabled] &lt;p&gt;Specifies whether the rule is disabled.&lt;/p&gt;
--- @param createdAt [CreatedAtDate] &lt;p&gt;The date and time the rule was created.&lt;/p&gt;
--- @param ruleName [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- <p>Describes a rule.</p>
+-- @param topicPattern [TopicPattern] <p>The pattern for the topic names that apply.</p>
+-- @param ruleArn [RuleArn] <p>The rule ARN.</p>
+-- @param ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
+-- @param createdAt [CreatedAtDate] <p>The date and time the rule was created.</p>
+-- @param ruleName [RuleName] <p>The name of the rule.</p>
 function M.TopicRuleListItem(topicPattern, ruleArn, ruleDisabled, createdAt, ruleName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TopicRuleListItem")
 	local t = { 
@@ -2455,10 +2455,10 @@ function M.AssertDescribeThingTypeResponse(struct)
 end
 
 --- Create a structure of type DescribeThingTypeResponse
--- &lt;p&gt;The output for the DescribeThingType operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type.&lt;/p&gt;
--- @param thingTypeProperties [ThingTypeProperties] &lt;p&gt;The ThingTypeProperties contains information about the thing type including description, and a list of searchable thing attribute names.&lt;/p&gt;
--- @param thingTypeMetadata [ThingTypeMetadata] &lt;p&gt;The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.&lt;/p&gt;
+-- <p>The output for the DescribeThingType operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- @param thingTypeProperties [ThingTypeProperties] <p>The ThingTypeProperties contains information about the thing type including description, and a list of searchable thing attribute names.</p>
+-- @param thingTypeMetadata [ThingTypeMetadata] <p>The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.</p>
 function M.DescribeThingTypeResponse(thingTypeName, thingTypeProperties, thingTypeMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeThingTypeResponse")
 	local t = { 
@@ -2483,8 +2483,8 @@ function M.AssertEnableTopicRuleRequest(struct)
 end
 
 --- Create a structure of type EnableTopicRuleRequest
--- &lt;p&gt;The input for the EnableTopicRuleRequest operation.&lt;/p&gt;
--- @param ruleName [RuleName] &lt;p&gt;The name of the topic rule to enable.&lt;/p&gt;
+-- <p>The input for the EnableTopicRuleRequest operation.</p>
+-- @param ruleName [RuleName] <p>The name of the topic rule to enable.</p>
 -- Required parameter: ruleName
 function M.EnableTopicRuleRequest(ruleName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableTopicRuleRequest")
@@ -2508,9 +2508,9 @@ function M.AssertListCertificatesByCAResponse(struct)
 end
 
 --- Create a structure of type ListCertificatesByCAResponse
--- &lt;p&gt;The output of the ListCertificatesByCA operation.&lt;/p&gt;
--- @param certificates [Certificates] &lt;p&gt;The device certificates signed by the specified CA certificate.&lt;/p&gt;
--- @param nextMarker [Marker] &lt;p&gt;The marker for the next set of results, or null if there are no additional results.&lt;/p&gt;
+-- <p>The output of the ListCertificatesByCA operation.</p>
+-- @param certificates [Certificates] <p>The device certificates signed by the specified CA certificate.</p>
+-- @param nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
 function M.ListCertificatesByCAResponse(certificates, nextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCertificatesByCAResponse")
 	local t = { 
@@ -2534,9 +2534,9 @@ function M.AssertListTopicRulesResponse(struct)
 end
 
 --- Create a structure of type ListTopicRulesResponse
--- &lt;p&gt;The output from the ListTopicRules operation.&lt;/p&gt;
--- @param rules [TopicRuleList] &lt;p&gt;The rules.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;A token used to retrieve the next value.&lt;/p&gt;
+-- <p>The output from the ListTopicRules operation.</p>
+-- @param rules [TopicRuleList] <p>The rules.</p>
+-- @param nextToken [NextToken] <p>A token used to retrieve the next value.</p>
 function M.ListTopicRulesResponse(rules, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTopicRulesResponse")
 	local t = { 
@@ -2560,9 +2560,9 @@ function M.AssertRegisterCACertificateResponse(struct)
 end
 
 --- Create a structure of type RegisterCACertificateResponse
--- &lt;p&gt;The output from the RegisterCACertificateResponse operation.&lt;/p&gt;
--- @param certificateArn [CertificateArn] &lt;p&gt;The CA certificate ARN.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The CA certificate identifier.&lt;/p&gt;
+-- <p>The output from the RegisterCACertificateResponse operation.</p>
+-- @param certificateArn [CertificateArn] <p>The CA certificate ARN.</p>
+-- @param certificateId [CertificateId] <p>The CA certificate identifier.</p>
 function M.RegisterCACertificateResponse(certificateArn, certificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterCACertificateResponse")
 	local t = { 
@@ -2586,9 +2586,9 @@ function M.AssertListOutgoingCertificatesResponse(struct)
 end
 
 --- Create a structure of type ListOutgoingCertificatesResponse
--- &lt;p&gt;The output from the ListOutgoingCertificates operation.&lt;/p&gt;
--- @param nextMarker [Marker] &lt;p&gt;The marker for the next set of results.&lt;/p&gt;
--- @param outgoingCertificates [OutgoingCertificates] &lt;p&gt;The certificates that are being transfered but not yet accepted.&lt;/p&gt;
+-- <p>The output from the ListOutgoingCertificates operation.</p>
+-- @param nextMarker [Marker] <p>The marker for the next set of results.</p>
+-- @param outgoingCertificates [OutgoingCertificates] <p>The certificates that are being transfered but not yet accepted.</p>
 function M.ListOutgoingCertificatesResponse(nextMarker, outgoingCertificates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListOutgoingCertificatesResponse")
 	local t = { 
@@ -2612,8 +2612,8 @@ function M.AssertDescribeCertificateRequest(struct)
 end
 
 --- Create a structure of type DescribeCertificateRequest
--- &lt;p&gt;The input for the DescribeCertificate operation.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate.&lt;/p&gt;
+-- <p>The input for the DescribeCertificate operation.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate.</p>
 -- Required parameter: certificateId
 function M.DescribeCertificateRequest(certificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificateRequest")
@@ -2637,9 +2637,9 @@ function M.AssertCreateThingResponse(struct)
 end
 
 --- Create a structure of type CreateThingResponse
--- &lt;p&gt;The output of the CreateThing operation.&lt;/p&gt;
--- @param thingArn [ThingArn] &lt;p&gt;The ARN of the new thing.&lt;/p&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the new thing.&lt;/p&gt;
+-- <p>The output of the CreateThing operation.</p>
+-- @param thingArn [ThingArn] <p>The ARN of the new thing.</p>
+-- @param thingName [ThingName] <p>The name of the new thing.</p>
 function M.CreateThingResponse(thingArn, thingName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateThingResponse")
 	local t = { 
@@ -2662,8 +2662,8 @@ function M.AssertInternalException(struct)
 end
 
 --- Create a structure of type InternalException
--- &lt;p&gt;An unexpected error has occurred.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>An unexpected error has occurred.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.InternalException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalException")
 	local t = { 
@@ -2684,7 +2684,7 @@ function M.AssertDeprecateThingTypeResponse(struct)
 end
 
 --- Create a structure of type DeprecateThingTypeResponse
--- &lt;p&gt;The output for the DeprecateThingType operation.&lt;/p&gt;
+-- <p>The output for the DeprecateThingType operation.</p>
 function M.DeprecateThingTypeResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeprecateThingTypeResponse")
 	local t = { 
@@ -2705,8 +2705,8 @@ function M.AssertInternalFailureException(struct)
 end
 
 --- Create a structure of type InternalFailureException
--- &lt;p&gt;An unexpected error has occurred.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>An unexpected error has occurred.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.InternalFailureException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalFailureException")
 	local t = { 
@@ -2738,13 +2738,13 @@ function M.AssertCloudwatchMetricAction(struct)
 end
 
 --- Create a structure of type CloudwatchMetricAction
--- &lt;p&gt;Describes an action that captures a CloudWatch metric.&lt;/p&gt;
--- @param metricUnit [MetricUnit] &lt;p&gt;The &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit&quot;&gt;metric unit&lt;/a&gt; supported by CloudWatch.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The IAM role that allows access to the CloudWatch metric.&lt;/p&gt;
--- @param metricTimestamp [MetricTimestamp] &lt;p&gt;An optional &lt;a href=&quot;http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp&quot;&gt;Unix timestamp&lt;/a&gt;.&lt;/p&gt;
--- @param metricNamespace [MetricNamespace] &lt;p&gt;The CloudWatch metric namespace name.&lt;/p&gt;
--- @param metricValue [MetricValue] &lt;p&gt;The CloudWatch metric value.&lt;/p&gt;
--- @param metricName [MetricName] &lt;p&gt;The CloudWatch metric name.&lt;/p&gt;
+-- <p>Describes an action that captures a CloudWatch metric.</p>
+-- @param metricUnit [MetricUnit] <p>The <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit">metric unit</a> supported by CloudWatch.</p>
+-- @param roleArn [AwsArn] <p>The IAM role that allows access to the CloudWatch metric.</p>
+-- @param metricTimestamp [MetricTimestamp] <p>An optional <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp">Unix timestamp</a>.</p>
+-- @param metricNamespace [MetricNamespace] <p>The CloudWatch metric namespace name.</p>
+-- @param metricValue [MetricValue] <p>The CloudWatch metric value.</p>
+-- @param metricName [MetricName] <p>The CloudWatch metric name.</p>
 -- Required parameter: roleArn
 -- Required parameter: metricNamespace
 -- Required parameter: metricName
@@ -2776,8 +2776,8 @@ function M.AssertMalformedPolicyException(struct)
 end
 
 --- Create a structure of type MalformedPolicyException
--- &lt;p&gt;The policy documentation is not valid.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The policy documentation is not valid.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.MalformedPolicyException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MalformedPolicyException")
 	local t = { 
@@ -2800,8 +2800,8 @@ function M.AssertDescribeThingTypeRequest(struct)
 end
 
 --- Create a structure of type DescribeThingTypeRequest
--- &lt;p&gt;The input for the DescribeThingType operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type.&lt;/p&gt;
+-- <p>The input for the DescribeThingType operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
 -- Required parameter: thingTypeName
 function M.DescribeThingTypeRequest(thingTypeName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeThingTypeRequest")
@@ -2836,20 +2836,20 @@ function M.AssertAction(struct)
 end
 
 --- Create a structure of type Action
--- &lt;p&gt;Describes the actions associated with a rule.&lt;/p&gt;
--- @param dynamoDBv2 [DynamoDBv2Action] &lt;p&gt;Write to a DynamoDB table. This is a new version of the DynamoDB action. It allows you to write each attribute in an MQTT message payload into a separate DynamoDB column.&lt;/p&gt;
--- @param salesforce [SalesforceAction] &lt;p&gt;Send a message to a Salesforce IoT Cloud Input Stream.&lt;/p&gt;
--- @param kinesis [KinesisAction] &lt;p&gt;Write data to an Amazon Kinesis stream.&lt;/p&gt;
--- @param sqs [SqsAction] &lt;p&gt;Publish to an Amazon SQS queue.&lt;/p&gt;
--- @param republish [RepublishAction] &lt;p&gt;Publish to another MQTT topic.&lt;/p&gt;
--- @param dynamoDB [DynamoDBAction] &lt;p&gt;Write to a DynamoDB table.&lt;/p&gt;
--- @param s3 [S3Action] &lt;p&gt;Write to an Amazon S3 bucket.&lt;/p&gt;
--- @param cloudwatchAlarm [CloudwatchAlarmAction] &lt;p&gt;Change the state of a CloudWatch alarm.&lt;/p&gt;
--- @param sns [SnsAction] &lt;p&gt;Publish to an Amazon SNS topic.&lt;/p&gt;
--- @param elasticsearch [ElasticsearchAction] &lt;p&gt;Write data to an Amazon Elasticsearch Service domain.&lt;/p&gt;
--- @param cloudwatchMetric [CloudwatchMetricAction] &lt;p&gt;Capture a CloudWatch metric.&lt;/p&gt;
--- @param firehose [FirehoseAction] &lt;p&gt;Write to an Amazon Kinesis Firehose stream.&lt;/p&gt;
--- @param lambda [LambdaAction] &lt;p&gt;Invoke a Lambda function.&lt;/p&gt;
+-- <p>Describes the actions associated with a rule.</p>
+-- @param dynamoDBv2 [DynamoDBv2Action] <p>Write to a DynamoDB table. This is a new version of the DynamoDB action. It allows you to write each attribute in an MQTT message payload into a separate DynamoDB column.</p>
+-- @param salesforce [SalesforceAction] <p>Send a message to a Salesforce IoT Cloud Input Stream.</p>
+-- @param kinesis [KinesisAction] <p>Write data to an Amazon Kinesis stream.</p>
+-- @param sqs [SqsAction] <p>Publish to an Amazon SQS queue.</p>
+-- @param republish [RepublishAction] <p>Publish to another MQTT topic.</p>
+-- @param dynamoDB [DynamoDBAction] <p>Write to a DynamoDB table.</p>
+-- @param s3 [S3Action] <p>Write to an Amazon S3 bucket.</p>
+-- @param cloudwatchAlarm [CloudwatchAlarmAction] <p>Change the state of a CloudWatch alarm.</p>
+-- @param sns [SnsAction] <p>Publish to an Amazon SNS topic.</p>
+-- @param elasticsearch [ElasticsearchAction] <p>Write data to an Amazon Elasticsearch Service domain.</p>
+-- @param cloudwatchMetric [CloudwatchMetricAction] <p>Capture a CloudWatch metric.</p>
+-- @param firehose [FirehoseAction] <p>Write to an Amazon Kinesis Firehose stream.</p>
+-- @param lambda [LambdaAction] <p>Invoke a Lambda function.</p>
 function M.Action(dynamoDBv2, salesforce, kinesis, sqs, republish, dynamoDB, s3, cloudwatchAlarm, sns, elasticsearch, cloudwatchMetric, firehose, lambda, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Action")
 	local t = { 
@@ -2884,9 +2884,9 @@ function M.AssertGetLoggingOptionsResponse(struct)
 end
 
 --- Create a structure of type GetLoggingOptionsResponse
--- &lt;p&gt;The output from the GetLoggingOptions operation.&lt;/p&gt;
--- @param logLevel [LogLevel] &lt;p&gt;The logging level.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The ARN of the IAM role that grants access.&lt;/p&gt;
+-- <p>The output from the GetLoggingOptions operation.</p>
+-- @param logLevel [LogLevel] <p>The logging level.</p>
+-- @param roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
 function M.GetLoggingOptionsResponse(logLevel, roleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggingOptionsResponse")
 	local t = { 
@@ -2915,11 +2915,11 @@ function M.AssertS3Action(struct)
 end
 
 --- Create a structure of type S3Action
--- &lt;p&gt;Describes an action to write data to an Amazon S3 bucket.&lt;/p&gt;
--- @param cannedAcl [CannedAccessControlList] &lt;p&gt;The Amazon S3 canned ACL that controls access to the object identified by the object key. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl&quot;&gt;S3 canned ACLs&lt;/a&gt;.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The ARN of the IAM role that grants access.&lt;/p&gt;
--- @param bucketName [BucketName] &lt;p&gt;The Amazon S3 bucket.&lt;/p&gt;
--- @param key [Key] &lt;p&gt;The object key.&lt;/p&gt;
+-- <p>Describes an action to write data to an Amazon S3 bucket.</p>
+-- @param cannedAcl [CannedAccessControlList] <p>The Amazon S3 canned ACL that controls access to the object identified by the object key. For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl">S3 canned ACLs</a>.</p>
+-- @param roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
+-- @param bucketName [BucketName] <p>The Amazon S3 bucket.</p>
+-- @param key [Key] <p>The object key.</p>
 -- Required parameter: roleArn
 -- Required parameter: bucketName
 -- Required parameter: key
@@ -2947,8 +2947,8 @@ function M.AssertDescribeCACertificateResponse(struct)
 end
 
 --- Create a structure of type DescribeCACertificateResponse
--- &lt;p&gt;The output from the DescribeCACertificate operation.&lt;/p&gt;
--- @param certificateDescription [CACertificateDescription] &lt;p&gt;The CA certificate description.&lt;/p&gt;
+-- <p>The output from the DescribeCACertificate operation.</p>
+-- @param certificateDescription [CACertificateDescription] <p>The CA certificate description.</p>
 function M.DescribeCACertificateResponse(certificateDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCACertificateResponse")
 	local t = { 
@@ -2971,9 +2971,9 @@ function M.AssertListCACertificatesResponse(struct)
 end
 
 --- Create a structure of type ListCACertificatesResponse
--- &lt;p&gt;The output from the ListCACertificates operation.&lt;/p&gt;
--- @param certificates [CACertificates] &lt;p&gt;The CA certificates registered in your AWS account.&lt;/p&gt;
--- @param nextMarker [Marker] &lt;p&gt;The current position within the list of CA certificates.&lt;/p&gt;
+-- <p>The output from the ListCACertificates operation.</p>
+-- @param certificates [CACertificates] <p>The CA certificates registered in your AWS account.</p>
+-- @param nextMarker [Marker] <p>The current position within the list of CA certificates.</p>
 function M.ListCACertificatesResponse(certificates, nextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCACertificatesResponse")
 	local t = { 
@@ -2998,10 +2998,10 @@ function M.AssertListPoliciesRequest(struct)
 end
 
 --- Create a structure of type ListPoliciesRequest
--- &lt;p&gt;The input for the ListPolicies operation.&lt;/p&gt;
--- @param marker [Marker] &lt;p&gt;The marker for the next set of results.&lt;/p&gt;
--- @param ascendingOrder [AscendingOrder] &lt;p&gt;Specifies the order for results. If true, the results are returned in ascending creation order.&lt;/p&gt;
--- @param pageSize [PageSize] &lt;p&gt;The result page size.&lt;/p&gt;
+-- <p>The input for the ListPolicies operation.</p>
+-- @param marker [Marker] <p>The marker for the next set of results.</p>
+-- @param ascendingOrder [AscendingOrder] <p>Specifies the order for results. If true, the results are returned in ascending creation order.</p>
+-- @param pageSize [PageSize] <p>The result page size.</p>
 function M.ListPoliciesRequest(marker, ascendingOrder, pageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPoliciesRequest")
 	local t = { 
@@ -3028,10 +3028,10 @@ function M.AssertUpdateCACertificateRequest(struct)
 end
 
 --- Create a structure of type UpdateCACertificateRequest
--- &lt;p&gt;The input to the UpdateCACertificate operation.&lt;/p&gt;
--- @param newStatus [CACertificateStatus] &lt;p&gt;The updated status of the CA certificate.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Note:&lt;/b&gt; The status value REGISTER_INACTIVE is deprecated and should not be used.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The CA certificate identifier.&lt;/p&gt;
--- @param newAutoRegistrationStatus [AutoRegistrationStatus] &lt;p&gt;The new value for the auto registration status. Valid values are: &quot;ENABLE&quot; or &quot;DISABLE&quot;.&lt;/p&gt;
+-- <p>The input to the UpdateCACertificate operation.</p>
+-- @param newStatus [CACertificateStatus] <p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+-- @param certificateId [CertificateId] <p>The CA certificate identifier.</p>
+-- @param newAutoRegistrationStatus [AutoRegistrationStatus] <p>The new value for the auto registration status. Valid values are: "ENABLE" or "DISABLE".</p>
 -- Required parameter: certificateId
 function M.UpdateCACertificateRequest(newStatus, certificateId, newAutoRegistrationStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateCACertificateRequest")
@@ -3057,9 +3057,9 @@ function M.AssertListThingsResponse(struct)
 end
 
 --- Create a structure of type ListThingsResponse
--- &lt;p&gt;The output from the ListThings operation.&lt;/p&gt;
--- @param things [ThingAttributeList] &lt;p&gt;The things.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of results, or &lt;b&gt;null&lt;/b&gt; if there are no additional results.&lt;/p&gt;
+-- <p>The output from the ListThings operation.</p>
+-- @param things [ThingAttributeList] <p>The things.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
 function M.ListThingsResponse(things, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListThingsResponse")
 	local t = { 
@@ -3081,7 +3081,7 @@ function M.AssertDescribeEndpointRequest(struct)
 end
 
 --- Create a structure of type DescribeEndpointRequest
--- &lt;p&gt;The input for the DescribeEndpoint operation.&lt;/p&gt;
+-- <p>The input for the DescribeEndpoint operation.</p>
 function M.DescribeEndpointRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointRequest")
 	local t = { 
@@ -3103,8 +3103,8 @@ function M.AssertDeleteTopicRuleRequest(struct)
 end
 
 --- Create a structure of type DeleteTopicRuleRequest
--- &lt;p&gt;The input for the DeleteTopicRule operation.&lt;/p&gt;
--- @param ruleName [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- <p>The input for the DeleteTopicRule operation.</p>
+-- @param ruleName [RuleName] <p>The name of the rule.</p>
 -- Required parameter: ruleName
 function M.DeleteTopicRuleRequest(ruleName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTopicRuleRequest")
@@ -3127,8 +3127,8 @@ function M.AssertSqlParseException(struct)
 end
 
 --- Create a structure of type SqlParseException
--- &lt;p&gt;The Rule-SQL expression can't be parsed correctly.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The Rule-SQL expression can't be parsed correctly.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.SqlParseException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SqlParseException")
 	local t = { 
@@ -3150,8 +3150,8 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The specified resource does not exist.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The specified resource does not exist.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.ResourceNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -3176,9 +3176,9 @@ function M.AssertCreatePolicyRequest(struct)
 end
 
 --- Create a structure of type CreatePolicyRequest
--- &lt;p&gt;The input for the CreatePolicy operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The policy name.&lt;/p&gt;
--- @param policyDocument [PolicyDocument] &lt;p&gt;The JSON document that describes the policy. &lt;b&gt;policyDocument&lt;/b&gt; must have a minimum length of 1, with a maximum length of 2048, excluding whitespace.&lt;/p&gt;
+-- <p>The input for the CreatePolicy operation.</p>
+-- @param policyName [PolicyName] <p>The policy name.</p>
+-- @param policyDocument [PolicyDocument] <p>The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a maximum length of 2048, excluding whitespace.</p>
 -- Required parameter: policyName
 -- Required parameter: policyDocument
 function M.CreatePolicyRequest(policyName, policyDocument, ...)
@@ -3207,12 +3207,12 @@ function M.AssertListThingsRequest(struct)
 end
 
 --- Create a structure of type ListThingsRequest
--- &lt;p&gt;The input for the ListThings operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type used to search for things.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of results, or &lt;b&gt;null&lt;/b&gt; if there are no additional results.&lt;/p&gt;
--- @param attributeName [AttributeName] &lt;p&gt;The attribute name used to search for things.&lt;/p&gt;
--- @param attributeValue [AttributeValue] &lt;p&gt;The attribute value used to search for things.&lt;/p&gt;
--- @param maxResults [RegistryMaxResults] &lt;p&gt;The maximum number of results to return in this operation.&lt;/p&gt;
+-- <p>The input for the ListThings operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type used to search for things.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+-- @param attributeName [AttributeName] <p>The attribute name used to search for things.</p>
+-- @param attributeValue [AttributeValue] <p>The attribute value used to search for things.</p>
+-- @param maxResults [RegistryMaxResults] <p>The maximum number of results to return in this operation.</p>
 function M.ListThingsRequest(thingTypeName, nextToken, attributeName, attributeValue, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListThingsRequest")
 	local t = { 
@@ -3241,9 +3241,9 @@ function M.AssertDeletePolicyVersionRequest(struct)
 end
 
 --- Create a structure of type DeletePolicyVersionRequest
--- &lt;p&gt;The input for the DeletePolicyVersion operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The name of the policy.&lt;/p&gt;
--- @param policyVersionId [PolicyVersionId] &lt;p&gt;The policy version ID.&lt;/p&gt;
+-- <p>The input for the DeletePolicyVersion operation.</p>
+-- @param policyName [PolicyName] <p>The name of the policy.</p>
+-- @param policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
 -- Required parameter: policyName
 -- Required parameter: policyVersionId
 function M.DeletePolicyVersionRequest(policyName, policyVersionId, ...)
@@ -3268,8 +3268,8 @@ function M.AssertThrottlingException(struct)
 end
 
 --- Create a structure of type ThrottlingException
--- &lt;p&gt;The rate exceeds the limit.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The message for the exception.&lt;/p&gt;
+-- <p>The rate exceeds the limit.</p>
+-- @param message [errorMessage] <p>The message for the exception.</p>
 function M.ThrottlingException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
 	local t = { 
@@ -3295,11 +3295,11 @@ function M.AssertListPrincipalPoliciesRequest(struct)
 end
 
 --- Create a structure of type ListPrincipalPoliciesRequest
--- &lt;p&gt;The input for the ListPrincipalPolicies operation.&lt;/p&gt;
--- @param marker [Marker] &lt;p&gt;The marker for the next set of results.&lt;/p&gt;
--- @param ascendingOrder [AscendingOrder] &lt;p&gt;Specifies the order for results. If true, results are returned in ascending creation order.&lt;/p&gt;
--- @param pageSize [PageSize] &lt;p&gt;The result page size.&lt;/p&gt;
--- @param principal [Principal] &lt;p&gt;The principal.&lt;/p&gt;
+-- <p>The input for the ListPrincipalPolicies operation.</p>
+-- @param marker [Marker] <p>The marker for the next set of results.</p>
+-- @param ascendingOrder [AscendingOrder] <p>Specifies the order for results. If true, results are returned in ascending creation order.</p>
+-- @param pageSize [PageSize] <p>The result page size.</p>
+-- @param principal [Principal] <p>The principal.</p>
 -- Required parameter: principal
 function M.ListPrincipalPoliciesRequest(marker, ascendingOrder, pageSize, principal, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalPoliciesRequest")
@@ -3326,9 +3326,9 @@ function M.AssertThingTypeProperties(struct)
 end
 
 --- Create a structure of type ThingTypeProperties
--- &lt;p&gt;The ThingTypeProperties contains information about the thing type including: a thing type description, and a list of searchable thing attribute names.&lt;/p&gt;
--- @param searchableAttributes [SearchableAttributes] &lt;p&gt;A list of searchable thing attribute names.&lt;/p&gt;
--- @param thingTypeDescription [ThingTypeDescription] &lt;p&gt;The description of the thing type.&lt;/p&gt;
+-- <p>The ThingTypeProperties contains information about the thing type including: a thing type description, and a list of searchable thing attribute names.</p>
+-- @param searchableAttributes [SearchableAttributes] <p>A list of searchable thing attribute names.</p>
+-- @param thingTypeDescription [ThingTypeDescription] <p>The description of the thing type.</p>
 function M.ThingTypeProperties(searchableAttributes, thingTypeDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThingTypeProperties")
 	local t = { 
@@ -3352,8 +3352,8 @@ function M.AssertDeleteCertificateRequest(struct)
 end
 
 --- Create a structure of type DeleteCertificateRequest
--- &lt;p&gt;The input for the DeleteCertificate operation.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate.&lt;/p&gt;
+-- <p>The input for the DeleteCertificate operation.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate.</p>
 -- Required parameter: certificateId
 function M.DeleteCertificateRequest(certificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCertificateRequest")
@@ -3380,12 +3380,12 @@ function M.AssertGetPolicyVersionResponse(struct)
 end
 
 --- Create a structure of type GetPolicyVersionResponse
--- &lt;p&gt;The output from the GetPolicyVersion operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The policy name.&lt;/p&gt;
--- @param policyDocument [PolicyDocument] &lt;p&gt;The JSON document that describes the policy.&lt;/p&gt;
--- @param policyVersionId [PolicyVersionId] &lt;p&gt;The policy version ID.&lt;/p&gt;
--- @param policyArn [PolicyArn] &lt;p&gt;The policy ARN.&lt;/p&gt;
--- @param isDefaultVersion [IsDefaultVersion] &lt;p&gt;Specifies whether the policy version is the default.&lt;/p&gt;
+-- <p>The output from the GetPolicyVersion operation.</p>
+-- @param policyName [PolicyName] <p>The policy name.</p>
+-- @param policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
+-- @param policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
+-- @param policyArn [PolicyArn] <p>The policy ARN.</p>
+-- @param isDefaultVersion [IsDefaultVersion] <p>Specifies whether the policy version is the default.</p>
 function M.GetPolicyVersionResponse(policyName, policyDocument, policyVersionId, policyArn, isDefaultVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyVersionResponse")
 	local t = { 
@@ -3414,11 +3414,11 @@ function M.AssertCACertificate(struct)
 end
 
 --- Create a structure of type CACertificate
--- &lt;p&gt;A CA certificate.&lt;/p&gt;
--- @param certificateArn [CertificateArn] &lt;p&gt;The ARN of the CA certificate.&lt;/p&gt;
--- @param status [CACertificateStatus] &lt;p&gt;The status of the CA certificate.&lt;/p&gt; &lt;p&gt;The status value REGISTER_INACTIVE is deprecated and should not be used.&lt;/p&gt;
--- @param creationDate [DateType] &lt;p&gt;The date the CA certificate was created.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the CA certificate.&lt;/p&gt;
+-- <p>A CA certificate.</p>
+-- @param certificateArn [CertificateArn] <p>The ARN of the CA certificate.</p>
+-- @param status [CACertificateStatus] <p>The status of the CA certificate.</p> <p>The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+-- @param creationDate [DateType] <p>The date the CA certificate was created.</p>
+-- @param certificateId [CertificateId] <p>The ID of the CA certificate.</p>
 function M.CACertificate(certificateArn, status, creationDate, certificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CACertificate")
 	local t = { 
@@ -3445,10 +3445,10 @@ function M.AssertThingTypeDefinition(struct)
 end
 
 --- Create a structure of type ThingTypeDefinition
--- &lt;p&gt;The definition of the thing type, including thing type name and description.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type.&lt;/p&gt;
--- @param thingTypeProperties [ThingTypeProperties] &lt;p&gt;The ThingTypeProperties for the thing type.&lt;/p&gt;
--- @param thingTypeMetadata [ThingTypeMetadata] &lt;p&gt;The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.&lt;/p&gt;
+-- <p>The definition of the thing type, including thing type name and description.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- @param thingTypeProperties [ThingTypeProperties] <p>The ThingTypeProperties for the thing type.</p>
+-- @param thingTypeMetadata [ThingTypeMetadata] <p>The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.</p>
 function M.ThingTypeDefinition(thingTypeName, thingTypeProperties, thingTypeMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThingTypeDefinition")
 	local t = { 
@@ -3474,10 +3474,10 @@ function M.AssertListThingTypesRequest(struct)
 end
 
 --- Create a structure of type ListThingTypesRequest
--- &lt;p&gt;The input for the ListThingTypes operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of results, or &lt;b&gt;null&lt;/b&gt; if there are no additional results.&lt;/p&gt;
--- @param maxResults [RegistryMaxResults] &lt;p&gt;The maximum number of results to return in this operation.&lt;/p&gt;
+-- <p>The input for the ListThingTypes operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+-- @param maxResults [RegistryMaxResults] <p>The maximum number of results to return in this operation.</p>
 function M.ListThingTypesRequest(thingTypeName, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListThingTypesRequest")
 	local t = { 
@@ -3504,9 +3504,9 @@ function M.AssertRepublishAction(struct)
 end
 
 --- Create a structure of type RepublishAction
--- &lt;p&gt;Describes an action to republish to another topic.&lt;/p&gt;
--- @param topic [TopicPattern] &lt;p&gt;The name of the MQTT topic.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The ARN of the IAM role that grants access.&lt;/p&gt;
+-- <p>Describes an action to republish to another topic.</p>
+-- @param topic [TopicPattern] <p>The name of the MQTT topic.</p>
+-- @param roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
 -- Required parameter: roleArn
 -- Required parameter: topic
 function M.RepublishAction(topic, roleArn, ...)
@@ -3536,13 +3536,13 @@ function M.AssertOutgoingCertificate(struct)
 end
 
 --- Create a structure of type OutgoingCertificate
--- &lt;p&gt;A certificate that has been transfered but not yet accepted.&lt;/p&gt;
--- @param certificateArn [CertificateArn] &lt;p&gt;The certificate ARN.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The certificate ID.&lt;/p&gt;
--- @param transferDate [DateType] &lt;p&gt;The date the transfer was initiated.&lt;/p&gt;
--- @param transferredTo [AwsAccountId] &lt;p&gt;The AWS account to which the transfer was made.&lt;/p&gt;
--- @param transferMessage [Message] &lt;p&gt;The transfer message.&lt;/p&gt;
--- @param creationDate [DateType] &lt;p&gt;The certificate creation date.&lt;/p&gt;
+-- <p>A certificate that has been transfered but not yet accepted.</p>
+-- @param certificateArn [CertificateArn] <p>The certificate ARN.</p>
+-- @param certificateId [CertificateId] <p>The certificate ID.</p>
+-- @param transferDate [DateType] <p>The date the transfer was initiated.</p>
+-- @param transferredTo [AwsAccountId] <p>The AWS account to which the transfer was made.</p>
+-- @param transferMessage [Message] <p>The transfer message.</p>
+-- @param creationDate [DateType] <p>The certificate creation date.</p>
 function M.OutgoingCertificate(certificateArn, certificateId, transferDate, transferredTo, transferMessage, creationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OutgoingCertificate")
 	local t = { 
@@ -3576,11 +3576,11 @@ function M.AssertCloudwatchAlarmAction(struct)
 end
 
 --- Create a structure of type CloudwatchAlarmAction
--- &lt;p&gt;Describes an action that updates a CloudWatch alarm.&lt;/p&gt;
--- @param stateReason [StateReason] &lt;p&gt;The reason for the alarm change.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The IAM role that allows access to the CloudWatch alarm.&lt;/p&gt;
--- @param alarmName [AlarmName] &lt;p&gt;The CloudWatch alarm name.&lt;/p&gt;
--- @param stateValue [StateValue] &lt;p&gt;The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.&lt;/p&gt;
+-- <p>Describes an action that updates a CloudWatch alarm.</p>
+-- @param stateReason [StateReason] <p>The reason for the alarm change.</p>
+-- @param roleArn [AwsArn] <p>The IAM role that allows access to the CloudWatch alarm.</p>
+-- @param alarmName [AlarmName] <p>The CloudWatch alarm name.</p>
+-- @param stateValue [StateValue] <p>The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.</p>
 -- Required parameter: roleArn
 -- Required parameter: alarmName
 -- Required parameter: stateReason
@@ -3609,8 +3609,8 @@ function M.AssertListPolicyVersionsResponse(struct)
 end
 
 --- Create a structure of type ListPolicyVersionsResponse
--- &lt;p&gt;The output from the ListPolicyVersions operation.&lt;/p&gt;
--- @param policyVersions [PolicyVersions] &lt;p&gt;The policy versions.&lt;/p&gt;
+-- <p>The output from the ListPolicyVersions operation.</p>
+-- @param policyVersions [PolicyVersions] <p>The policy versions.</p>
 function M.ListPolicyVersionsResponse(policyVersions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyVersionsResponse")
 	local t = { 
@@ -3633,9 +3633,9 @@ function M.AssertPolicy(struct)
 end
 
 --- Create a structure of type Policy
--- &lt;p&gt;Describes an AWS IoT policy.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The policy name.&lt;/p&gt;
--- @param policyArn [PolicyArn] &lt;p&gt;The policy ARN.&lt;/p&gt;
+-- <p>Describes an AWS IoT policy.</p>
+-- @param policyName [PolicyName] <p>The policy name.</p>
+-- @param policyArn [PolicyArn] <p>The policy ARN.</p>
 function M.Policy(policyName, policyArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Policy")
 	local t = { 
@@ -3659,8 +3659,8 @@ function M.AssertGetPolicyRequest(struct)
 end
 
 --- Create a structure of type GetPolicyRequest
--- &lt;p&gt;The input for the GetPolicy operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The name of the policy.&lt;/p&gt;
+-- <p>The input for the GetPolicy operation.</p>
+-- @param policyName [PolicyName] <p>The name of the policy.</p>
 -- Required parameter: policyName
 function M.GetPolicyRequest(policyName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyRequest")
@@ -3682,7 +3682,7 @@ function M.AssertDeleteRegistrationCodeResponse(struct)
 end
 
 --- Create a structure of type DeleteRegistrationCodeResponse
--- &lt;p&gt;The output for the DeleteRegistrationCode operation.&lt;/p&gt;
+-- <p>The output for the DeleteRegistrationCode operation.</p>
 function M.DeleteRegistrationCodeResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRegistrationCodeResponse")
 	local t = { 
@@ -3707,12 +3707,12 @@ function M.AssertDescribeThingResponse(struct)
 end
 
 --- Create a structure of type DescribeThingResponse
--- &lt;p&gt;The output from the DescribeThing operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The thing type name.&lt;/p&gt;
--- @param attributes [Attributes] &lt;p&gt;The thing attributes.&lt;/p&gt;
--- @param version [Version] &lt;p&gt;The current version of the thing record in the registry.&lt;/p&gt; &lt;note&gt; &lt;p&gt;To avoid unintentional changes to the information in the registry, you can pass the version information in the &lt;code&gt;expectedVersion&lt;/code&gt; parameter of the &lt;code&gt;UpdateThing&lt;/code&gt; and &lt;code&gt;DeleteThing&lt;/code&gt; calls.&lt;/p&gt; &lt;/note&gt;
--- @param thingName [ThingName] &lt;p&gt;The name of the thing.&lt;/p&gt;
--- @param defaultClientId [ClientId] &lt;p&gt;The default client ID.&lt;/p&gt;
+-- <p>The output from the DescribeThing operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The thing type name.</p>
+-- @param attributes [Attributes] <p>The thing attributes.</p>
+-- @param version [Version] <p>The current version of the thing record in the registry.</p> <note> <p>To avoid unintentional changes to the information in the registry, you can pass the version information in the <code>expectedVersion</code> parameter of the <code>UpdateThing</code> and <code>DeleteThing</code> calls.</p> </note>
+-- @param thingName [ThingName] <p>The name of the thing.</p>
+-- @param defaultClientId [ClientId] <p>The default client ID.</p>
 function M.DescribeThingResponse(thingTypeName, attributes, version, thingName, defaultClientId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeThingResponse")
 	local t = { 
@@ -3740,9 +3740,9 @@ function M.AssertDeprecateThingTypeRequest(struct)
 end
 
 --- Create a structure of type DeprecateThingTypeRequest
--- &lt;p&gt;The input for the DeprecateThingType operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type to deprecate.&lt;/p&gt;
--- @param undoDeprecate [UndoDeprecate] &lt;p&gt;Whether to undeprecate a deprecated thing type. If &lt;b&gt;true&lt;/b&gt;, the thing type will not be deprecated anymore and you can associate it with things.&lt;/p&gt;
+-- <p>The input for the DeprecateThingType operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type to deprecate.</p>
+-- @param undoDeprecate [UndoDeprecate] <p>Whether to undeprecate a deprecated thing type. If <b>true</b>, the thing type will not be deprecated anymore and you can associate it with things.</p>
 -- Required parameter: thingTypeName
 function M.DeprecateThingTypeRequest(thingTypeName, undoDeprecate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeprecateThingTypeRequest")
@@ -3769,11 +3769,11 @@ function M.AssertGetPolicyResponse(struct)
 end
 
 --- Create a structure of type GetPolicyResponse
--- &lt;p&gt;The output from the GetPolicy operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The policy name.&lt;/p&gt;
--- @param policyDocument [PolicyDocument] &lt;p&gt;The JSON document that describes the policy.&lt;/p&gt;
--- @param defaultVersionId [PolicyVersionId] &lt;p&gt;The default policy version ID.&lt;/p&gt;
--- @param policyArn [PolicyArn] &lt;p&gt;The policy ARN.&lt;/p&gt;
+-- <p>The output from the GetPolicy operation.</p>
+-- @param policyName [PolicyName] <p>The policy name.</p>
+-- @param policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
+-- @param defaultVersionId [PolicyVersionId] <p>The default policy version ID.</p>
+-- @param policyArn [PolicyArn] <p>The policy ARN.</p>
 function M.GetPolicyResponse(policyName, policyDocument, defaultVersionId, policyArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyResponse")
 	local t = { 
@@ -3801,9 +3801,9 @@ function M.AssertSetDefaultPolicyVersionRequest(struct)
 end
 
 --- Create a structure of type SetDefaultPolicyVersionRequest
--- &lt;p&gt;The input for the SetDefaultPolicyVersion operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The policy name.&lt;/p&gt;
--- @param policyVersionId [PolicyVersionId] &lt;p&gt;The policy version ID.&lt;/p&gt;
+-- <p>The input for the SetDefaultPolicyVersion operation.</p>
+-- @param policyName [PolicyName] <p>The policy name.</p>
+-- @param policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
 -- Required parameter: policyName
 -- Required parameter: policyVersionId
 function M.SetDefaultPolicyVersionRequest(policyName, policyVersionId, ...)
@@ -3831,10 +3831,10 @@ function M.AssertListPrincipalThingsRequest(struct)
 end
 
 --- Create a structure of type ListPrincipalThingsRequest
--- &lt;p&gt;The input for the ListPrincipalThings operation.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of results, or &lt;b&gt;null&lt;/b&gt; if there are no additional results.&lt;/p&gt;
--- @param maxResults [RegistryMaxResults] &lt;p&gt;The maximum number of results to return in this operation.&lt;/p&gt;
--- @param principal [Principal] &lt;p&gt;The principal.&lt;/p&gt;
+-- <p>The input for the ListPrincipalThings operation.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+-- @param maxResults [RegistryMaxResults] <p>The maximum number of results to return in this operation.</p>
+-- @param principal [Principal] <p>The principal.</p>
 -- Required parameter: principal
 function M.ListPrincipalThingsRequest(nextToken, maxResults, principal, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalThingsRequest")
@@ -3863,10 +3863,10 @@ function M.AssertKinesisAction(struct)
 end
 
 --- Create a structure of type KinesisAction
--- &lt;p&gt;Describes an action to write data to an Amazon Kinesis stream.&lt;/p&gt;
--- @param roleArn [AwsArn] &lt;p&gt;The ARN of the IAM role that grants access to the Amazon Kinesis stream.&lt;/p&gt;
--- @param streamName [StreamName] &lt;p&gt;The name of the Amazon Kinesis stream.&lt;/p&gt;
--- @param partitionKey [PartitionKey] &lt;p&gt;The partition key.&lt;/p&gt;
+-- <p>Describes an action to write data to an Amazon Kinesis stream.</p>
+-- @param roleArn [AwsArn] <p>The ARN of the IAM role that grants access to the Amazon Kinesis stream.</p>
+-- @param streamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
+-- @param partitionKey [PartitionKey] <p>The partition key.</p>
 -- Required parameter: roleArn
 -- Required parameter: streamName
 function M.KinesisAction(roleArn, streamName, partitionKey, ...)
@@ -3896,11 +3896,11 @@ function M.AssertListCertificatesByCARequest(struct)
 end
 
 --- Create a structure of type ListCertificatesByCARequest
--- &lt;p&gt;The input to the ListCertificatesByCA operation.&lt;/p&gt;
--- @param marker [Marker] &lt;p&gt;The marker for the next set of results.&lt;/p&gt;
--- @param caCertificateId [CertificateId] &lt;p&gt;The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate.&lt;/p&gt;
--- @param ascendingOrder [AscendingOrder] &lt;p&gt;Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.&lt;/p&gt;
--- @param pageSize [PageSize] &lt;p&gt;The result page size.&lt;/p&gt;
+-- <p>The input to the ListCertificatesByCA operation.</p>
+-- @param marker [Marker] <p>The marker for the next set of results.</p>
+-- @param caCertificateId [CertificateId] <p>The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate.</p>
+-- @param ascendingOrder [AscendingOrder] <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
+-- @param pageSize [PageSize] <p>The result page size.</p>
 -- Required parameter: caCertificateId
 function M.ListCertificatesByCARequest(marker, caCertificateId, ascendingOrder, pageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCertificatesByCARequest")
@@ -3926,8 +3926,8 @@ function M.AssertRegistrationCodeValidationException(struct)
 end
 
 --- Create a structure of type RegistrationCodeValidationException
--- &lt;p&gt;The registration code is invalid.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Additional information about the exception.&lt;/p&gt;
+-- <p>The registration code is invalid.</p>
+-- @param message [errorMessage] <p>Additional information about the exception.</p>
 function M.RegistrationCodeValidationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegistrationCodeValidationException")
 	local t = { 
@@ -3951,9 +3951,9 @@ function M.AssertCreateCertificateFromCsrRequest(struct)
 end
 
 --- Create a structure of type CreateCertificateFromCsrRequest
--- &lt;p&gt;The input for the CreateCertificateFromCsr operation.&lt;/p&gt;
--- @param certificateSigningRequest [CertificateSigningRequest] &lt;p&gt;The certificate signing request (CSR).&lt;/p&gt;
--- @param setAsActive [SetAsActive] &lt;p&gt;Specifies whether the certificate is active.&lt;/p&gt;
+-- <p>The input for the CreateCertificateFromCsr operation.</p>
+-- @param certificateSigningRequest [CertificateSigningRequest] <p>The certificate signing request (CSR).</p>
+-- @param setAsActive [SetAsActive] <p>Specifies whether the certificate is active.</p>
 -- Required parameter: certificateSigningRequest
 function M.CreateCertificateFromCsrRequest(certificateSigningRequest, setAsActive, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCertificateFromCsrRequest")
@@ -3978,9 +3978,9 @@ function M.AssertKeyPair(struct)
 end
 
 --- Create a structure of type KeyPair
--- &lt;p&gt;Describes a key pair.&lt;/p&gt;
--- @param PublicKey [PublicKey] &lt;p&gt;The public key.&lt;/p&gt;
--- @param PrivateKey [PrivateKey] &lt;p&gt;The private key.&lt;/p&gt;
+-- <p>Describes a key pair.</p>
+-- @param PublicKey [PublicKey] <p>The public key.</p>
+-- @param PrivateKey [PrivateKey] <p>The private key.</p>
 function M.KeyPair(PublicKey, PrivateKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KeyPair")
 	local t = { 
@@ -4004,8 +4004,8 @@ function M.AssertCancelCertificateTransferRequest(struct)
 end
 
 --- Create a structure of type CancelCertificateTransferRequest
--- &lt;p&gt;The input for the CancelCertificateTransfer operation.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate.&lt;/p&gt;
+-- <p>The input for the CancelCertificateTransfer operation.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate.</p>
 -- Required parameter: certificateId
 function M.CancelCertificateTransferRequest(certificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelCertificateTransferRequest")
@@ -4031,9 +4031,9 @@ function M.AssertDetachPrincipalPolicyRequest(struct)
 end
 
 --- Create a structure of type DetachPrincipalPolicyRequest
--- &lt;p&gt;The input for the DetachPrincipalPolicy operation.&lt;/p&gt;
--- @param policyName [PolicyName] &lt;p&gt;The name of the policy to detach.&lt;/p&gt;
--- @param principal [Principal] &lt;p&gt;The principal.&lt;/p&gt; &lt;p&gt;If the principal is a certificate, specify the certificate ARN. If the principal is an Amazon Cognito identity, specify the identity ID.&lt;/p&gt;
+-- <p>The input for the DetachPrincipalPolicy operation.</p>
+-- @param policyName [PolicyName] <p>The name of the policy to detach.</p>
+-- @param principal [Principal] <p>The principal.</p> <p>If the principal is a certificate, specify the certificate ARN. If the principal is an Amazon Cognito identity, specify the identity ID.</p>
 -- Required parameter: policyName
 -- Required parameter: principal
 function M.DetachPrincipalPolicyRequest(policyName, principal, ...)
@@ -4059,8 +4059,8 @@ function M.AssertLambdaAction(struct)
 end
 
 --- Create a structure of type LambdaAction
--- &lt;p&gt;Describes an action to invoke a Lambda function.&lt;/p&gt;
--- @param functionArn [FunctionArn] &lt;p&gt;The ARN of the Lambda function.&lt;/p&gt;
+-- <p>Describes an action to invoke a Lambda function.</p>
+-- @param functionArn [FunctionArn] <p>The ARN of the Lambda function.</p>
 -- Required parameter: functionArn
 function M.LambdaAction(functionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaAction")
@@ -4084,8 +4084,8 @@ function M.AssertDescribeCACertificateRequest(struct)
 end
 
 --- Create a structure of type DescribeCACertificateRequest
--- &lt;p&gt;The input for the DescribeCACertificate operation.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The CA certificate identifier.&lt;/p&gt;
+-- <p>The input for the DescribeCACertificate operation.</p>
+-- @param certificateId [CertificateId] <p>The CA certificate identifier.</p>
 -- Required parameter: certificateId
 function M.DescribeCACertificateRequest(certificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCACertificateRequest")
@@ -4111,9 +4111,9 @@ function M.AssertCreateTopicRuleRequest(struct)
 end
 
 --- Create a structure of type CreateTopicRuleRequest
--- &lt;p&gt;The input for the CreateTopicRule operation.&lt;/p&gt;
--- @param topicRulePayload [TopicRulePayload] &lt;p&gt;The rule payload.&lt;/p&gt;
--- @param ruleName [RuleName] &lt;p&gt;The name of the rule.&lt;/p&gt;
+-- <p>The input for the CreateTopicRule operation.</p>
+-- @param topicRulePayload [TopicRulePayload] <p>The rule payload.</p>
+-- @param ruleName [RuleName] <p>The name of the rule.</p>
 -- Required parameter: ruleName
 -- Required parameter: topicRulePayload
 function M.CreateTopicRuleRequest(topicRulePayload, ruleName, ...)
@@ -4139,8 +4139,8 @@ function M.AssertPutItemInput(struct)
 end
 
 --- Create a structure of type PutItemInput
--- &lt;p&gt;The input for the DynamoActionVS action that specifies the DynamoDB table to which the message data will be written.&lt;/p&gt;
--- @param tableName [TableName] &lt;p&gt;The table where the message data will be written&lt;/p&gt;
+-- <p>The input for the DynamoActionVS action that specifies the DynamoDB table to which the message data will be written.</p>
+-- @param tableName [TableName] <p>The table where the message data will be written</p>
 -- Required parameter: tableName
 function M.PutItemInput(tableName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutItemInput")
@@ -4167,10 +4167,10 @@ function M.AssertTransferCertificateRequest(struct)
 end
 
 --- Create a structure of type TransferCertificateRequest
--- &lt;p&gt;The input for the TransferCertificate operation.&lt;/p&gt;
--- @param transferMessage [Message] &lt;p&gt;The transfer message.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate.&lt;/p&gt;
--- @param targetAwsAccount [AwsAccountId] &lt;p&gt;The AWS account.&lt;/p&gt;
+-- <p>The input for the TransferCertificate operation.</p>
+-- @param transferMessage [Message] <p>The transfer message.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- @param targetAwsAccount [AwsAccountId] <p>The AWS account.</p>
 -- Required parameter: certificateId
 -- Required parameter: targetAwsAccount
 function M.TransferCertificateRequest(transferMessage, certificateId, targetAwsAccount, ...)
@@ -4197,8 +4197,8 @@ function M.AssertDeleteThingTypeRequest(struct)
 end
 
 --- Create a structure of type DeleteThingTypeRequest
--- &lt;p&gt;The input for the DeleteThingType operation.&lt;/p&gt;
--- @param thingTypeName [ThingTypeName] &lt;p&gt;The name of the thing type.&lt;/p&gt;
+-- <p>The input for the DeleteThingType operation.</p>
+-- @param thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
 -- Required parameter: thingTypeName
 function M.DeleteThingTypeRequest(thingTypeName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingTypeRequest")
@@ -4230,17 +4230,17 @@ function M.AssertCertificateDescription(struct)
 end
 
 --- Create a structure of type CertificateDescription
--- &lt;p&gt;Describes a certificate.&lt;/p&gt;
--- @param certificateArn [CertificateArn] &lt;p&gt;The ARN of the certificate.&lt;/p&gt;
--- @param status [CertificateStatus] &lt;p&gt;The status of the certificate.&lt;/p&gt;
--- @param previousOwnedBy [AwsAccountId] &lt;p&gt;The ID of the AWS account of the previous owner of the certificate.&lt;/p&gt;
--- @param certificateId [CertificateId] &lt;p&gt;The ID of the certificate.&lt;/p&gt;
--- @param lastModifiedDate [DateType] &lt;p&gt;The date and time the certificate was last modified.&lt;/p&gt;
--- @param certificatePem [CertificatePem] &lt;p&gt;The certificate data, in PEM format.&lt;/p&gt;
--- @param transferData [TransferData] &lt;p&gt;The transfer data.&lt;/p&gt;
--- @param ownedBy [AwsAccountId] &lt;p&gt;The ID of the AWS account that owns the certificate.&lt;/p&gt;
--- @param caCertificateId [CertificateId] &lt;p&gt;The certificate ID of the CA certificate used to sign this certificate.&lt;/p&gt;
--- @param creationDate [DateType] &lt;p&gt;The date and time the certificate was created.&lt;/p&gt;
+-- <p>Describes a certificate.</p>
+-- @param certificateArn [CertificateArn] <p>The ARN of the certificate.</p>
+-- @param status [CertificateStatus] <p>The status of the certificate.</p>
+-- @param previousOwnedBy [AwsAccountId] <p>The ID of the AWS account of the previous owner of the certificate.</p>
+-- @param certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- @param lastModifiedDate [DateType] <p>The date and time the certificate was last modified.</p>
+-- @param certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
+-- @param transferData [TransferData] <p>The transfer data.</p>
+-- @param ownedBy [AwsAccountId] <p>The ID of the AWS account that owns the certificate.</p>
+-- @param caCertificateId [CertificateId] <p>The certificate ID of the CA certificate used to sign this certificate.</p>
+-- @param creationDate [DateType] <p>The date and time the certificate was created.</p>
 function M.CertificateDescription(certificateArn, status, previousOwnedBy, certificateId, lastModifiedDate, certificatePem, transferData, ownedBy, caCertificateId, creationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CertificateDescription")
 	local t = { 

@@ -30,8 +30,8 @@ function M.AssertCaseCreationLimitExceeded(struct)
 end
 
 --- Create a structure of type CaseCreationLimitExceeded
--- &lt;p&gt;The case creation limit for the account has been exceeded.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;An error message that indicates that you have exceeded the number of cases you can have open.&lt;/p&gt;
+-- <p>The case creation limit for the account has been exceeded.</p>
+-- @param message [ErrorMessage] <p>An error message that indicates that you have exceeded the number of cases you can have open.</p>
 function M.CaseCreationLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CaseCreationLimitExceeded")
 	local t = { 
@@ -55,10 +55,10 @@ function M.AssertService(struct)
 end
 
 --- Create a structure of type Service
--- &lt;p&gt;Information about an AWS service returned by the &lt;a&gt;DescribeServices&lt;/a&gt; operation. &lt;/p&gt;
--- @param code [ServiceCode] &lt;p&gt;The code for an AWS service returned by the &lt;a&gt;DescribeServices&lt;/a&gt; response. The &lt;code&gt;name&lt;/code&gt; element contains the corresponding friendly name.&lt;/p&gt;
--- @param name [ServiceName] &lt;p&gt;The friendly name for an AWS service. The &lt;code&gt;code&lt;/code&gt; element contains the corresponding code.&lt;/p&gt;
--- @param categories [CategoryList] &lt;p&gt;A list of categories that describe the type of support issue a case describes. Categories consist of a category name and a category code. Category names and codes are passed to AWS Support when you call &lt;a&gt;CreateCase&lt;/a&gt;.&lt;/p&gt;
+-- <p>Information about an AWS service returned by the <a>DescribeServices</a> operation. </p>
+-- @param code [ServiceCode] <p>The code for an AWS service returned by the <a>DescribeServices</a> response. The <code>name</code> element contains the corresponding friendly name.</p>
+-- @param name [ServiceName] <p>The friendly name for an AWS service. The <code>code</code> element contains the corresponding code.</p>
+-- @param categories [CategoryList] <p>A list of categories that describe the type of support issue a case describes. Categories consist of a category name and a category code. Category names and codes are passed to AWS Support when you call <a>CreateCase</a>.</p>
 function M.Service(code, name, categories, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Service")
 	local t = { 
@@ -83,9 +83,9 @@ function M.AssertRecentCaseCommunications(struct)
 end
 
 --- Create a structure of type RecentCaseCommunications
--- &lt;p&gt;The five most recent communications associated with the case.&lt;/p&gt;
--- @param communications [CommunicationList] &lt;p&gt;The five most recent communications associated with the case.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;A resumption point for pagination.&lt;/p&gt;
+-- <p>The five most recent communications associated with the case.</p>
+-- @param communications [CommunicationList] <p>The five most recent communications associated with the case.</p>
+-- @param nextToken [NextToken] <p>A resumption point for pagination.</p>
 function M.RecentCaseCommunications(communications, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecentCaseCommunications")
 	local t = { 
@@ -110,7 +110,7 @@ end
 
 --- Create a structure of type DescribeAttachmentRequest
 --  
--- @param attachmentId [AttachmentId] &lt;p&gt;The ID of the attachment to return. Attachment IDs are returned by the &lt;a&gt;DescribeCommunications&lt;/a&gt; operation.&lt;/p&gt;
+-- @param attachmentId [AttachmentId] <p>The ID of the attachment to return. Attachment IDs are returned by the <a>DescribeCommunications</a> operation.</p>
 -- Required parameter: attachmentId
 function M.DescribeAttachmentRequest(attachmentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttachmentRequest")
@@ -142,12 +142,12 @@ function M.AssertTrustedAdvisorCheckDescription(struct)
 end
 
 --- Create a structure of type TrustedAdvisorCheckDescription
--- &lt;p&gt;The description and metadata for a Trusted Advisor check.&lt;/p&gt;
--- @param category [String] &lt;p&gt;The category of the Trusted Advisor check.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of the Trusted Advisor check, which includes the alert criteria and recommended actions (contains HTML markup).&lt;/p&gt;
--- @param metadata [StringList] &lt;p&gt;The column headings for the data returned by the Trusted Advisor check. The order of the headings corresponds to the order of the data in the &lt;b&gt;Metadata&lt;/b&gt; element of the &lt;a&gt;TrustedAdvisorResourceDetail&lt;/a&gt; for the check. &lt;b&gt;Metadata&lt;/b&gt; contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. &lt;/p&gt;
--- @param id [String] &lt;p&gt;The unique identifier for the Trusted Advisor check.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The display name for the Trusted Advisor check.&lt;/p&gt;
+-- <p>The description and metadata for a Trusted Advisor check.</p>
+-- @param category [String] <p>The category of the Trusted Advisor check.</p>
+-- @param description [String] <p>The description of the Trusted Advisor check, which includes the alert criteria and recommended actions (contains HTML markup).</p>
+-- @param metadata [StringList] <p>The column headings for the data returned by the Trusted Advisor check. The order of the headings corresponds to the order of the data in the <b>Metadata</b> element of the <a>TrustedAdvisorResourceDetail</a> for the check. <b>Metadata</b> contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. </p>
+-- @param id [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- @param name [String] <p>The display name for the Trusted Advisor check.</p>
 -- Required parameter: id
 -- Required parameter: name
 -- Required parameter: description
@@ -178,8 +178,8 @@ function M.AssertAttachmentSetIdNotFound(struct)
 end
 
 --- Create a structure of type AttachmentSetIdNotFound
--- &lt;p&gt;An attachment set with the specified ID could not be found.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;An attachment set with the specified ID could not be found.&lt;/p&gt;
+-- <p>An attachment set with the specified ID could not be found.</p>
+-- @param message [ErrorMessage] <p>An attachment set with the specified ID could not be found.</p>
 function M.AttachmentSetIdNotFound(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentSetIdNotFound")
 	local t = { 
@@ -201,8 +201,8 @@ function M.AssertInternalServerError(struct)
 end
 
 --- Create a structure of type InternalServerError
--- &lt;p&gt;An internal server error occurred.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;An internal server error occurred.&lt;/p&gt;
+-- <p>An internal server error occurred.</p>
+-- @param message [ErrorMessage] <p>An internal server error occurred.</p>
 function M.InternalServerError(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
 	local t = { 
@@ -224,8 +224,8 @@ function M.AssertDescribeAttachmentResponse(struct)
 end
 
 --- Create a structure of type DescribeAttachmentResponse
--- &lt;p&gt;The content and file name of the attachment returned by the &lt;a&gt;DescribeAttachment&lt;/a&gt; operation.&lt;/p&gt;
--- @param attachment [Attachment] &lt;p&gt;The attachment content and file name.&lt;/p&gt;
+-- <p>The content and file name of the attachment returned by the <a>DescribeAttachment</a> operation.</p>
+-- @param attachment [Attachment] <p>The attachment content and file name.</p>
 function M.DescribeAttachmentResponse(attachment, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttachmentResponse")
 	local t = { 
@@ -252,10 +252,10 @@ function M.AssertTrustedAdvisorCheckRefreshStatus(struct)
 end
 
 --- Create a structure of type TrustedAdvisorCheckRefreshStatus
--- &lt;p&gt;The refresh status of a Trusted Advisor check.&lt;/p&gt;
--- @param checkId [String] &lt;p&gt;The unique identifier for the Trusted Advisor check.&lt;/p&gt;
--- @param status [String] &lt;p&gt;The status of the Trusted Advisor check for which a refresh has been requested: &quot;none&quot;, &quot;enqueued&quot;, &quot;processing&quot;, &quot;success&quot;, or &quot;abandoned&quot;.&lt;/p&gt;
--- @param millisUntilNextRefreshable [Long] &lt;p&gt;The amount of time, in milliseconds, until the Trusted Advisor check is eligible for refresh.&lt;/p&gt;
+-- <p>The refresh status of a Trusted Advisor check.</p>
+-- @param checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- @param status [String] <p>The status of the Trusted Advisor check for which a refresh has been requested: "none", "enqueued", "processing", "success", or "abandoned".</p>
+-- @param millisUntilNextRefreshable [Long] <p>The amount of time, in milliseconds, until the Trusted Advisor check is eligible for refresh.</p>
 -- Required parameter: checkId
 -- Required parameter: status
 -- Required parameter: millisUntilNextRefreshable
@@ -283,8 +283,8 @@ function M.AssertRefreshTrustedAdvisorCheckRequest(struct)
 end
 
 --- Create a structure of type RefreshTrustedAdvisorCheckRequest
--- &lt;p/&gt;
--- @param checkId [String] &lt;p&gt;The unique identifier for the Trusted Advisor check to refresh. &lt;b&gt;Note:&lt;/b&gt; Specifying the check ID of a check that is automatically refreshed causes an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error.&lt;/p&gt;
+-- <p/>
+-- @param checkId [String] <p>The unique identifier for the Trusted Advisor check to refresh. <b>Note:</b> Specifying the check ID of a check that is automatically refreshed causes an <code>InvalidParameterValue</code> error.</p>
 -- Required parameter: checkId
 function M.RefreshTrustedAdvisorCheckRequest(checkId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RefreshTrustedAdvisorCheckRequest")
@@ -307,8 +307,8 @@ function M.AssertAttachmentIdNotFound(struct)
 end
 
 --- Create a structure of type AttachmentIdNotFound
--- &lt;p&gt;An attachment with the specified ID could not be found.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;An attachment with the specified ID could not be found.&lt;/p&gt;
+-- <p>An attachment with the specified ID could not be found.</p>
+-- @param message [ErrorMessage] <p>An attachment with the specified ID could not be found.</p>
 function M.AttachmentIdNotFound(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentIdNotFound")
 	local t = { 
@@ -330,8 +330,8 @@ function M.AssertCaseIdNotFound(struct)
 end
 
 --- Create a structure of type CaseIdNotFound
--- &lt;p&gt;The requested &lt;code&gt;caseId&lt;/code&gt; could not be located.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The requested &lt;code&gt;CaseId&lt;/code&gt; could not be located.&lt;/p&gt;
+-- <p>The requested <code>caseId</code> could not be located.</p>
+-- @param message [ErrorMessage] <p>The requested <code>CaseId</code> could not be located.</p>
 function M.CaseIdNotFound(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CaseIdNotFound")
 	local t = { 
@@ -363,16 +363,16 @@ function M.AssertCreateCaseRequest(struct)
 end
 
 --- Create a structure of type CreateCaseRequest
--- &lt;p/&gt;
--- @param language [Language] &lt;p&gt;The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English (&quot;en&quot;) and Japanese (&quot;ja&quot;). Language parameters must be passed explicitly for operations that take them.&lt;/p&gt;
--- @param ccEmailAddresses [CcEmailAddressList] &lt;p&gt;A list of email addresses that AWS Support copies on case correspondence.&lt;/p&gt;
--- @param communicationBody [CommunicationBody] &lt;p&gt;The communication body text when you create an AWS Support case by calling &lt;a&gt;CreateCase&lt;/a&gt;.&lt;/p&gt;
--- @param attachmentSetId [AttachmentSetId] &lt;p&gt;The ID of a set of one or more attachments for the case. Create the set by using &lt;a&gt;AddAttachmentsToSet&lt;/a&gt;.&lt;/p&gt;
--- @param severityCode [SeverityCode] &lt;p&gt;The code for the severity level returned by the call to &lt;a&gt;DescribeSeverityLevels&lt;/a&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The availability of severity levels depends on each customer's support subscription. In other words, your subscription may not necessarily require the urgent level of response time.&lt;/p&gt; &lt;/note&gt;
--- @param categoryCode [CategoryCode] &lt;p&gt;The category of problem for the AWS Support case.&lt;/p&gt;
--- @param serviceCode [ServiceCode] &lt;p&gt;The code for the AWS service returned by the call to &lt;a&gt;DescribeServices&lt;/a&gt;.&lt;/p&gt;
--- @param issueType [IssueType] &lt;p&gt;The type of issue for the case. You can specify either &quot;customer-service&quot; or &quot;technical.&quot; If you do not indicate a value, the default is &quot;technical.&quot;&lt;/p&gt;
--- @param subject [Subject] &lt;p&gt;The title of the AWS Support case.&lt;/p&gt;
+-- <p/>
+-- @param language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- @param ccEmailAddresses [CcEmailAddressList] <p>A list of email addresses that AWS Support copies on case correspondence.</p>
+-- @param communicationBody [CommunicationBody] <p>The communication body text when you create an AWS Support case by calling <a>CreateCase</a>.</p>
+-- @param attachmentSetId [AttachmentSetId] <p>The ID of a set of one or more attachments for the case. Create the set by using <a>AddAttachmentsToSet</a>.</p>
+-- @param severityCode [SeverityCode] <p>The code for the severity level returned by the call to <a>DescribeSeverityLevels</a>.</p> <note> <p>The availability of severity levels depends on each customer's support subscription. In other words, your subscription may not necessarily require the urgent level of response time.</p> </note>
+-- @param categoryCode [CategoryCode] <p>The category of problem for the AWS Support case.</p>
+-- @param serviceCode [ServiceCode] <p>The code for the AWS service returned by the call to <a>DescribeServices</a>.</p>
+-- @param issueType [IssueType] <p>The type of issue for the case. You can specify either "customer-service" or "technical." If you do not indicate a value, the default is "technical."</p>
+-- @param subject [Subject] <p>The title of the AWS Support case.</p>
 -- Required parameter: subject
 -- Required parameter: communicationBody
 function M.CreateCaseRequest(language, ccEmailAddresses, communicationBody, attachmentSetId, severityCode, categoryCode, serviceCode, issueType, subject, ...)
@@ -405,8 +405,8 @@ function M.AssertDescribeTrustedAdvisorCheckRefreshStatusesResponse(struct)
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckRefreshStatusesResponse
--- &lt;p&gt;The statuses of the Trusted Advisor checks returned by the &lt;a&gt;DescribeTrustedAdvisorCheckRefreshStatuses&lt;/a&gt; operation.&lt;/p&gt;
--- @param statuses [TrustedAdvisorCheckRefreshStatusList] &lt;p&gt;The refresh status of the specified Trusted Advisor checks.&lt;/p&gt;
+-- <p>The statuses of the Trusted Advisor checks returned by the <a>DescribeTrustedAdvisorCheckRefreshStatuses</a> operation.</p>
+-- @param statuses [TrustedAdvisorCheckRefreshStatusList] <p>The refresh status of the specified Trusted Advisor checks.</p>
 -- Required parameter: statuses
 function M.DescribeTrustedAdvisorCheckRefreshStatusesResponse(statuses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckRefreshStatusesResponse")
@@ -436,12 +436,12 @@ function M.AssertTrustedAdvisorResourceDetail(struct)
 end
 
 --- Create a structure of type TrustedAdvisorResourceDetail
--- &lt;p&gt;Contains information about a resource identified by a Trusted Advisor check.&lt;/p&gt;
--- @param status [String] &lt;p&gt;The status code for the resource identified in the Trusted Advisor check.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The unique identifier for the identified resource.&lt;/p&gt;
--- @param region [String] &lt;p&gt;The AWS region in which the identified resource is located.&lt;/p&gt;
--- @param isSuppressed [Boolean] &lt;p&gt;Specifies whether the AWS resource was ignored by Trusted Advisor because it was marked as suppressed by the user.&lt;/p&gt;
--- @param metadata [StringList] &lt;p&gt;Additional information about the identified resource. The exact metadata and its order can be obtained by inspecting the &lt;a&gt;TrustedAdvisorCheckDescription&lt;/a&gt; object returned by the call to &lt;a&gt;DescribeTrustedAdvisorChecks&lt;/a&gt;. &lt;b&gt;Metadata&lt;/b&gt; contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. &lt;/p&gt;
+-- <p>Contains information about a resource identified by a Trusted Advisor check.</p>
+-- @param status [String] <p>The status code for the resource identified in the Trusted Advisor check.</p>
+-- @param resourceId [String] <p>The unique identifier for the identified resource.</p>
+-- @param region [String] <p>The AWS region in which the identified resource is located.</p>
+-- @param isSuppressed [Boolean] <p>Specifies whether the AWS resource was ignored by Trusted Advisor because it was marked as suppressed by the user.</p>
+-- @param metadata [StringList] <p>Additional information about the identified resource. The exact metadata and its order can be obtained by inspecting the <a>TrustedAdvisorCheckDescription</a> object returned by the call to <a>DescribeTrustedAdvisorChecks</a>. <b>Metadata</b> contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. </p>
 -- Required parameter: status
 -- Required parameter: resourceId
 -- Required parameter: metadata
@@ -481,13 +481,13 @@ function M.AssertTrustedAdvisorCheckResult(struct)
 end
 
 --- Create a structure of type TrustedAdvisorCheckResult
--- &lt;p&gt;The results of a Trusted Advisor check returned by &lt;a&gt;DescribeTrustedAdvisorCheckResult&lt;/a&gt;.&lt;/p&gt;
--- @param checkId [String] &lt;p&gt;The unique identifier for the Trusted Advisor check.&lt;/p&gt;
--- @param status [String] &lt;p&gt;The alert status of the check: &quot;ok&quot; (green), &quot;warning&quot; (yellow), &quot;error&quot; (red), or &quot;not_available&quot;.&lt;/p&gt;
--- @param flaggedResources [TrustedAdvisorResourceDetailList] &lt;p&gt;The details about each resource listed in the check result.&lt;/p&gt;
--- @param timestamp [String] &lt;p&gt;The time of the last refresh of the check.&lt;/p&gt;
--- @param resourcesSummary [TrustedAdvisorResourcesSummary] &lt;p&gt;The results of a Trusted Advisor check returned by &lt;a&gt;DescribeTrustedAdvisorCheckResult&lt;/a&gt;.&lt;/p&gt;
--- @param categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] &lt;p&gt;Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.&lt;/p&gt;
+-- <p>The results of a Trusted Advisor check returned by <a>DescribeTrustedAdvisorCheckResult</a>.</p>
+-- @param checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- @param status [String] <p>The alert status of the check: "ok" (green), "warning" (yellow), "error" (red), or "not_available".</p>
+-- @param flaggedResources [TrustedAdvisorResourceDetailList] <p>The details about each resource listed in the check result.</p>
+-- @param timestamp [String] <p>The time of the last refresh of the check.</p>
+-- @param resourcesSummary [TrustedAdvisorResourcesSummary] <p>The results of a Trusted Advisor check returned by <a>DescribeTrustedAdvisorCheckResult</a>.</p>
+-- @param categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] <p>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</p>
 -- Required parameter: checkId
 -- Required parameter: timestamp
 -- Required parameter: status
@@ -521,8 +521,8 @@ function M.AssertDescribeTrustedAdvisorChecksRequest(struct)
 end
 
 --- Create a structure of type DescribeTrustedAdvisorChecksRequest
--- &lt;p/&gt;
--- @param language [String] &lt;p&gt;The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English (&quot;en&quot;) and Japanese (&quot;ja&quot;). Language parameters must be passed explicitly for operations that take them.&lt;/p&gt;
+-- <p/>
+-- @param language [String] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
 -- Required parameter: language
 function M.DescribeTrustedAdvisorChecksRequest(language, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorChecksRequest")
@@ -547,9 +547,9 @@ function M.AssertDescribeTrustedAdvisorCheckResultRequest(struct)
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckResultRequest
--- &lt;p/&gt;
--- @param checkId [String] &lt;p&gt;The unique identifier for the Trusted Advisor check.&lt;/p&gt;
--- @param language [String] &lt;p&gt;The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English (&quot;en&quot;) and Japanese (&quot;ja&quot;). Language parameters must be passed explicitly for operations that take them.&lt;/p&gt;
+-- <p/>
+-- @param checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- @param language [String] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
 -- Required parameter: checkId
 function M.DescribeTrustedAdvisorCheckResultRequest(checkId, language, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckResultRequest")
@@ -573,8 +573,8 @@ function M.AssertCreateCaseResponse(struct)
 end
 
 --- Create a structure of type CreateCaseResponse
--- &lt;p&gt;The AWS Support case ID returned by a successful completion of the &lt;a&gt;CreateCase&lt;/a&gt; operation. &lt;/p&gt;
--- @param caseId [CaseId] &lt;p&gt;The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-&lt;i&gt;12345678910-2013-c4c1d2bf33c5cf47&lt;/i&gt; &lt;/p&gt;
+-- <p>The AWS Support case ID returned by a successful completion of the <a>CreateCase</a> operation. </p>
+-- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
 function M.CreateCaseResponse(caseId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCaseResponse")
 	local t = { 
@@ -597,9 +597,9 @@ function M.AssertDescribeServicesRequest(struct)
 end
 
 --- Create a structure of type DescribeServicesRequest
--- &lt;p/&gt;
--- @param serviceCodeList [ServiceCodeList] &lt;p&gt;A JSON-formatted list of service codes available for AWS services.&lt;/p&gt;
--- @param language [Language] &lt;p&gt;The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English (&quot;en&quot;) and Japanese (&quot;ja&quot;). Language parameters must be passed explicitly for operations that take them.&lt;/p&gt;
+-- <p/>
+-- @param serviceCodeList [ServiceCodeList] <p>A JSON-formatted list of service codes available for AWS services.</p>
+-- @param language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
 function M.DescribeServicesRequest(serviceCodeList, language, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServicesRequest")
 	local t = { 
@@ -623,8 +623,8 @@ function M.AssertRefreshTrustedAdvisorCheckResponse(struct)
 end
 
 --- Create a structure of type RefreshTrustedAdvisorCheckResponse
--- &lt;p&gt;The current refresh status of a Trusted Advisor check.&lt;/p&gt;
--- @param status [TrustedAdvisorCheckRefreshStatus] &lt;p&gt;The current refresh status for a check, including the amount of time until the check is eligible for refresh.&lt;/p&gt;
+-- <p>The current refresh status of a Trusted Advisor check.</p>
+-- @param status [TrustedAdvisorCheckRefreshStatus] <p>The current refresh status for a check, including the amount of time until the check is eligible for refresh.</p>
 -- Required parameter: status
 function M.RefreshTrustedAdvisorCheckResponse(status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RefreshTrustedAdvisorCheckResponse")
@@ -648,9 +648,9 @@ function M.AssertDescribeCommunicationsResponse(struct)
 end
 
 --- Create a structure of type DescribeCommunicationsResponse
--- &lt;p&gt;The communications returned by the &lt;a&gt;DescribeCommunications&lt;/a&gt; operation.&lt;/p&gt;
--- @param communications [CommunicationList] &lt;p&gt;The communications for the case.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;A resumption point for pagination.&lt;/p&gt;
+-- <p>The communications returned by the <a>DescribeCommunications</a> operation.</p>
+-- @param communications [CommunicationList] <p>The communications for the case.</p>
+-- @param nextToken [NextToken] <p>A resumption point for pagination.</p>
 function M.DescribeCommunicationsResponse(communications, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommunicationsResponse")
 	local t = { 
@@ -677,12 +677,12 @@ function M.AssertCommunication(struct)
 end
 
 --- Create a structure of type Communication
--- &lt;p&gt;A communication associated with an AWS Support case. The communication consists of the case ID, the message body, attachment information, the account email address, and the date and time of the communication.&lt;/p&gt;
--- @param body [CommunicationBody] &lt;p&gt;The text of the communication between the customer and AWS Support.&lt;/p&gt;
--- @param attachmentSet [AttachmentSet] &lt;p&gt;Information about the attachments to the case communication.&lt;/p&gt;
--- @param caseId [CaseId] &lt;p&gt;The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-&lt;i&gt;12345678910-2013-c4c1d2bf33c5cf47&lt;/i&gt; &lt;/p&gt;
--- @param timeCreated [TimeCreated] &lt;p&gt;The time the communication was created.&lt;/p&gt;
--- @param submittedBy [SubmittedBy] &lt;p&gt;The email address of the account that submitted the AWS Support case.&lt;/p&gt;
+-- <p>A communication associated with an AWS Support case. The communication consists of the case ID, the message body, attachment information, the account email address, and the date and time of the communication.</p>
+-- @param body [CommunicationBody] <p>The text of the communication between the customer and AWS Support.</p>
+-- @param attachmentSet [AttachmentSet] <p>Information about the attachments to the case communication.</p>
+-- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- @param timeCreated [TimeCreated] <p>The time the communication was created.</p>
+-- @param submittedBy [SubmittedBy] <p>The email address of the account that submitted the AWS Support case.</p>
 function M.Communication(body, attachmentSet, caseId, timeCreated, submittedBy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Communication")
 	local t = { 
@@ -708,8 +708,8 @@ function M.AssertAttachmentSetExpired(struct)
 end
 
 --- Create a structure of type AttachmentSetExpired
--- &lt;p&gt;The expiration time of the attachment set has passed. The set expires 1 hour after it is created.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The expiration time of the attachment set has passed. The set expires 1 hour after it is created.&lt;/p&gt;
+-- <p>The expiration time of the attachment set has passed. The set expires 1 hour after it is created.</p>
+-- @param message [ErrorMessage] <p>The expiration time of the attachment set has passed. The set expires 1 hour after it is created.</p>
 function M.AttachmentSetExpired(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentSetExpired")
 	local t = { 
@@ -731,8 +731,8 @@ function M.AssertAttachmentSetSizeLimitExceeded(struct)
 end
 
 --- Create a structure of type AttachmentSetSizeLimitExceeded
--- &lt;p&gt;A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.&lt;/p&gt;
+-- <p>A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.</p>
+-- @param message [ErrorMessage] <p>A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.</p>
 function M.AttachmentSetSizeLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentSetSizeLimitExceeded")
 	local t = { 
@@ -764,13 +764,13 @@ function M.AssertTrustedAdvisorCheckSummary(struct)
 end
 
 --- Create a structure of type TrustedAdvisorCheckSummary
--- &lt;p&gt;A summary of a Trusted Advisor check result, including the alert status, last refresh, and number of resources examined.&lt;/p&gt;
--- @param checkId [String] &lt;p&gt;The unique identifier for the Trusted Advisor check.&lt;/p&gt;
--- @param status [String] &lt;p&gt;The alert status of the check: &quot;ok&quot; (green), &quot;warning&quot; (yellow), &quot;error&quot; (red), or &quot;not_available&quot;.&lt;/p&gt;
--- @param timestamp [String] &lt;p&gt;The time of the last refresh of the check.&lt;/p&gt;
--- @param resourcesSummary [TrustedAdvisorResourcesSummary] &lt;p&gt;A summary of a Trusted Advisor check result, including the alert status, last refresh, and number of resources examined.&lt;/p&gt;
--- @param hasFlaggedResources [Boolean] &lt;p&gt;Specifies whether the Trusted Advisor check has flagged resources.&lt;/p&gt;
--- @param categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] &lt;p&gt;Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.&lt;/p&gt;
+-- <p>A summary of a Trusted Advisor check result, including the alert status, last refresh, and number of resources examined.</p>
+-- @param checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- @param status [String] <p>The alert status of the check: "ok" (green), "warning" (yellow), "error" (red), or "not_available".</p>
+-- @param timestamp [String] <p>The time of the last refresh of the check.</p>
+-- @param resourcesSummary [TrustedAdvisorResourcesSummary] <p>A summary of a Trusted Advisor check result, including the alert status, last refresh, and number of resources examined.</p>
+-- @param hasFlaggedResources [Boolean] <p>Specifies whether the Trusted Advisor check has flagged resources.</p>
+-- @param categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] <p>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</p>
 -- Required parameter: checkId
 -- Required parameter: timestamp
 -- Required parameter: status
@@ -802,8 +802,8 @@ function M.AssertAddCommunicationToCaseResponse(struct)
 end
 
 --- Create a structure of type AddCommunicationToCaseResponse
--- &lt;p&gt;The result of the &lt;a&gt;AddCommunicationToCase&lt;/a&gt; operation.&lt;/p&gt;
--- @param result [Result] &lt;p&gt;True if &lt;a&gt;AddCommunicationToCase&lt;/a&gt; succeeds. Otherwise, returns an error.&lt;/p&gt;
+-- <p>The result of the <a>AddCommunicationToCase</a> operation.</p>
+-- @param result [Result] <p>True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an error.</p>
 function M.AddCommunicationToCaseResponse(result, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddCommunicationToCaseResponse")
 	local t = { 
@@ -826,9 +826,9 @@ function M.AssertCategory(struct)
 end
 
 --- Create a structure of type Category
--- &lt;p&gt;A JSON-formatted name/value pair that represents the category name and category code of the problem, selected from the &lt;a&gt;DescribeServices&lt;/a&gt; response for each AWS service.&lt;/p&gt;
--- @param code [CategoryCode] &lt;p&gt;The category code for the support case.&lt;/p&gt;
--- @param name [CategoryName] &lt;p&gt;The category name for the support case.&lt;/p&gt;
+-- <p>A JSON-formatted name/value pair that represents the category name and category code of the problem, selected from the <a>DescribeServices</a> response for each AWS service.</p>
+-- @param code [CategoryCode] <p>The category code for the support case.</p>
+-- @param name [CategoryName] <p>The category name for the support case.</p>
 function M.Category(code, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Category")
 	local t = { 
@@ -852,9 +852,9 @@ function M.AssertResolveCaseResponse(struct)
 end
 
 --- Create a structure of type ResolveCaseResponse
--- &lt;p&gt;The status of the case returned by the &lt;a&gt;ResolveCase&lt;/a&gt; operation.&lt;/p&gt;
--- @param finalCaseStatus [CaseStatus] &lt;p&gt;The status of the case after the &lt;a&gt;ResolveCase&lt;/a&gt; request was processed.&lt;/p&gt;
--- @param initialCaseStatus [CaseStatus] &lt;p&gt;The status of the case when the &lt;a&gt;ResolveCase&lt;/a&gt; request was sent.&lt;/p&gt;
+-- <p>The status of the case returned by the <a>ResolveCase</a> operation.</p>
+-- @param finalCaseStatus [CaseStatus] <p>The status of the case after the <a>ResolveCase</a> request was processed.</p>
+-- @param initialCaseStatus [CaseStatus] <p>The status of the case when the <a>ResolveCase</a> request was sent.</p>
 function M.ResolveCaseResponse(finalCaseStatus, initialCaseStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCaseResponse")
 	local t = { 
@@ -877,8 +877,8 @@ function M.AssertDescribeTrustedAdvisorCheckResultResponse(struct)
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckResultResponse
--- &lt;p&gt;The result of the Trusted Advisor check returned by the &lt;a&gt;DescribeTrustedAdvisorCheckResult&lt;/a&gt; operation.&lt;/p&gt;
--- @param result [TrustedAdvisorCheckResult] &lt;p&gt;The detailed results of the Trusted Advisor check.&lt;/p&gt;
+-- <p>The result of the Trusted Advisor check returned by the <a>DescribeTrustedAdvisorCheckResult</a> operation.</p>
+-- @param result [TrustedAdvisorCheckResult] <p>The detailed results of the Trusted Advisor check.</p>
 function M.DescribeTrustedAdvisorCheckResultResponse(result, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckResultResponse")
 	local t = { 
@@ -908,16 +908,16 @@ function M.AssertDescribeCasesRequest(struct)
 end
 
 --- Create a structure of type DescribeCasesRequest
--- &lt;p/&gt;
--- @param includeCommunications [IncludeCommunications] &lt;p&gt;Specifies whether communications should be included in the &lt;a&gt;DescribeCases&lt;/a&gt; results. The default is &lt;i&gt;true&lt;/i&gt;.&lt;/p&gt;
--- @param language [Language] &lt;p&gt;The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English (&quot;en&quot;) and Japanese (&quot;ja&quot;). Language parameters must be passed explicitly for operations that take them.&lt;/p&gt;
--- @param includeResolvedCases [IncludeResolvedCases] &lt;p&gt;Specifies whether resolved support cases should be included in the &lt;a&gt;DescribeCases&lt;/a&gt; results. The default is &lt;i&gt;false&lt;/i&gt;.&lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;The maximum number of results to return before paginating.&lt;/p&gt;
--- @param afterTime [AfterTime] &lt;p&gt;The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.&lt;/p&gt;
--- @param caseIdList [CaseIdList] &lt;p&gt;A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.&lt;/p&gt;
--- @param displayId [DisplayId] &lt;p&gt;The ID displayed for a case in the AWS Support Center user interface.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;A resumption point for pagination.&lt;/p&gt;
--- @param beforeTime [BeforeTime] &lt;p&gt;The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.&lt;/p&gt;
+-- <p/>
+-- @param includeCommunications [IncludeCommunications] <p>Specifies whether communications should be included in the <a>DescribeCases</a> results. The default is <i>true</i>.</p>
+-- @param language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- @param includeResolvedCases [IncludeResolvedCases] <p>Specifies whether resolved support cases should be included in the <a>DescribeCases</a> results. The default is <i>false</i>.</p>
+-- @param maxResults [MaxResults] <p>The maximum number of results to return before paginating.</p>
+-- @param afterTime [AfterTime] <p>The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+-- @param caseIdList [CaseIdList] <p>A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.</p>
+-- @param displayId [DisplayId] <p>The ID displayed for a case in the AWS Support Center user interface.</p>
+-- @param nextToken [NextToken] <p>A resumption point for pagination.</p>
+-- @param beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
 function M.DescribeCasesRequest(includeCommunications, language, includeResolvedCases, maxResults, afterTime, caseIdList, displayId, nextToken, beforeTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCasesRequest")
 	local t = { 
@@ -948,8 +948,8 @@ function M.AssertDescribeTrustedAdvisorChecksResponse(struct)
 end
 
 --- Create a structure of type DescribeTrustedAdvisorChecksResponse
--- &lt;p&gt;Information about the Trusted Advisor checks returned by the &lt;a&gt;DescribeTrustedAdvisorChecks&lt;/a&gt; operation.&lt;/p&gt;
--- @param checks [TrustedAdvisorCheckList] &lt;p&gt;Information about all available Trusted Advisor checks.&lt;/p&gt;
+-- <p>Information about the Trusted Advisor checks returned by the <a>DescribeTrustedAdvisorChecks</a> operation.</p>
+-- @param checks [TrustedAdvisorCheckList] <p>Information about all available Trusted Advisor checks.</p>
 -- Required parameter: checks
 function M.DescribeTrustedAdvisorChecksResponse(checks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorChecksResponse")
@@ -973,9 +973,9 @@ function M.AssertAttachment(struct)
 end
 
 --- Create a structure of type Attachment
--- &lt;p&gt;An attachment to a case communication. The attachment consists of the file name and the content of the file.&lt;/p&gt;
--- @param data [Data] &lt;p&gt;The content of the attachment file.&lt;/p&gt;
--- @param fileName [FileName] &lt;p&gt;The name of the attachment file.&lt;/p&gt;
+-- <p>An attachment to a case communication. The attachment consists of the file name and the content of the file.</p>
+-- @param data [Data] <p>The content of the attachment file.</p>
+-- @param fileName [FileName] <p>The name of the attachment file.</p>
 function M.Attachment(data, fileName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Attachment")
 	local t = { 
@@ -999,8 +999,8 @@ function M.AssertDescribeTrustedAdvisorCheckRefreshStatusesRequest(struct)
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckRefreshStatusesRequest
--- &lt;p/&gt;
--- @param checkIds [StringList] &lt;p&gt;The IDs of the Trusted Advisor checks to get the status of. &lt;b&gt;Note:&lt;/b&gt; Specifying the check ID of a check that is automatically refreshed causes an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error.&lt;/p&gt;
+-- <p/>
+-- @param checkIds [StringList] <p>The IDs of the Trusted Advisor checks to get the status of. <b>Note:</b> Specifying the check ID of a check that is automatically refreshed causes an <code>InvalidParameterValue</code> error.</p>
 -- Required parameter: checkIds
 function M.DescribeTrustedAdvisorCheckRefreshStatusesRequest(checkIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckRefreshStatusesRequest")
@@ -1028,12 +1028,12 @@ function M.AssertDescribeCommunicationsRequest(struct)
 end
 
 --- Create a structure of type DescribeCommunicationsRequest
--- &lt;p/&gt;
--- @param afterTime [AfterTime] &lt;p&gt;The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;A resumption point for pagination.&lt;/p&gt;
--- @param beforeTime [BeforeTime] &lt;p&gt;The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.&lt;/p&gt;
--- @param caseId [CaseId] &lt;p&gt;The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-&lt;i&gt;12345678910-2013-c4c1d2bf33c5cf47&lt;/i&gt; &lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;The maximum number of results to return before paginating.&lt;/p&gt;
+-- <p/>
+-- @param afterTime [AfterTime] <p>The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+-- @param nextToken [NextToken] <p>A resumption point for pagination.</p>
+-- @param beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+-- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- @param maxResults [MaxResults] <p>The maximum number of results to return before paginating.</p>
 -- Required parameter: caseId
 function M.DescribeCommunicationsRequest(afterTime, nextToken, beforeTime, caseId, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommunicationsRequest")
@@ -1064,11 +1064,11 @@ function M.AssertAddCommunicationToCaseRequest(struct)
 end
 
 --- Create a structure of type AddCommunicationToCaseRequest
--- &lt;p&gt;To be written.&lt;/p&gt;
--- @param communicationBody [CommunicationBody] &lt;p&gt;The body of an email communication to add to the support case.&lt;/p&gt;
--- @param caseId [CaseId] &lt;p&gt;The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-&lt;i&gt;12345678910-2013-c4c1d2bf33c5cf47&lt;/i&gt; &lt;/p&gt;
--- @param ccEmailAddresses [CcEmailAddressList] &lt;p&gt;The email addresses in the CC line of an email to be added to the support case.&lt;/p&gt;
--- @param attachmentSetId [AttachmentSetId] &lt;p&gt;The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling &lt;a&gt;AddAttachmentsToSet&lt;/a&gt; &lt;/p&gt;
+-- <p>To be written.</p>
+-- @param communicationBody [CommunicationBody] <p>The body of an email communication to add to the support case.</p>
+-- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- @param ccEmailAddresses [CcEmailAddressList] <p>The email addresses in the CC line of an email to be added to the support case.</p>
+-- @param attachmentSetId [AttachmentSetId] <p>The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling <a>AddAttachmentsToSet</a> </p>
 -- Required parameter: communicationBody
 function M.AddCommunicationToCaseRequest(communicationBody, caseId, ccEmailAddresses, attachmentSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddCommunicationToCaseRequest")
@@ -1095,9 +1095,9 @@ function M.AssertAddAttachmentsToSetResponse(struct)
 end
 
 --- Create a structure of type AddAttachmentsToSetResponse
--- &lt;p&gt;The ID and expiry time of the attachment set returned by the &lt;a&gt;AddAttachmentsToSet&lt;/a&gt; operation.&lt;/p&gt;
--- @param expiryTime [ExpiryTime] &lt;p&gt;The time and date when the attachment set expires.&lt;/p&gt;
--- @param attachmentSetId [AttachmentSetId] &lt;p&gt;The ID of the attachment set. If an &lt;code&gt;attachmentSetId&lt;/code&gt; was not specified, a new attachment set is created, and the ID of the set is returned in the response. If an &lt;code&gt;attachmentSetId&lt;/code&gt; was specified, the attachments are added to the specified set, if it exists.&lt;/p&gt;
+-- <p>The ID and expiry time of the attachment set returned by the <a>AddAttachmentsToSet</a> operation.</p>
+-- @param expiryTime [ExpiryTime] <p>The time and date when the attachment set expires.</p>
+-- @param attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> was not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> was specified, the attachments are added to the specified set, if it exists.</p>
 function M.AddAttachmentsToSetResponse(expiryTime, attachmentSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddAttachmentsToSetResponse")
 	local t = { 
@@ -1127,11 +1127,11 @@ function M.AssertTrustedAdvisorResourcesSummary(struct)
 end
 
 --- Create a structure of type TrustedAdvisorResourcesSummary
--- &lt;p&gt;Details about AWS resources that were analyzed in a call to Trusted Advisor &lt;a&gt;DescribeTrustedAdvisorCheckSummaries&lt;/a&gt;. &lt;/p&gt;
--- @param resourcesFlagged [Long] &lt;p&gt;The number of AWS resources that were flagged (listed) by the Trusted Advisor check.&lt;/p&gt;
--- @param resourcesProcessed [Long] &lt;p&gt;The number of AWS resources that were analyzed by the Trusted Advisor check.&lt;/p&gt;
--- @param resourcesSuppressed [Long] &lt;p&gt;The number of AWS resources ignored by Trusted Advisor because they were marked as suppressed by the user.&lt;/p&gt;
--- @param resourcesIgnored [Long] &lt;p&gt;The number of AWS resources ignored by Trusted Advisor because information was unavailable.&lt;/p&gt;
+-- <p>Details about AWS resources that were analyzed in a call to Trusted Advisor <a>DescribeTrustedAdvisorCheckSummaries</a>. </p>
+-- @param resourcesFlagged [Long] <p>The number of AWS resources that were flagged (listed) by the Trusted Advisor check.</p>
+-- @param resourcesProcessed [Long] <p>The number of AWS resources that were analyzed by the Trusted Advisor check.</p>
+-- @param resourcesSuppressed [Long] <p>The number of AWS resources ignored by Trusted Advisor because they were marked as suppressed by the user.</p>
+-- @param resourcesIgnored [Long] <p>The number of AWS resources ignored by Trusted Advisor because information was unavailable.</p>
 -- Required parameter: resourcesProcessed
 -- Required parameter: resourcesFlagged
 -- Required parameter: resourcesIgnored
@@ -1160,8 +1160,8 @@ function M.AssertResolveCaseRequest(struct)
 end
 
 --- Create a structure of type ResolveCaseRequest
--- &lt;p/&gt;
--- @param caseId [CaseId] &lt;p&gt;The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-&lt;i&gt;12345678910-2013-c4c1d2bf33c5cf47&lt;/i&gt; &lt;/p&gt;
+-- <p/>
+-- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
 function M.ResolveCaseRequest(caseId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCaseRequest")
 	local t = { 
@@ -1186,9 +1186,9 @@ function M.AssertTrustedAdvisorCostOptimizingSummary(struct)
 end
 
 --- Create a structure of type TrustedAdvisorCostOptimizingSummary
--- &lt;p&gt;The estimated cost savings that might be realized if the recommended actions are taken.&lt;/p&gt;
--- @param estimatedMonthlySavings [Double] &lt;p&gt;The estimated monthly savings that might be realized if the recommended actions are taken.&lt;/p&gt;
--- @param estimatedPercentMonthlySavings [Double] &lt;p&gt;The estimated percentage of savings that might be realized if the recommended actions are taken.&lt;/p&gt;
+-- <p>The estimated cost savings that might be realized if the recommended actions are taken.</p>
+-- @param estimatedMonthlySavings [Double] <p>The estimated monthly savings that might be realized if the recommended actions are taken.</p>
+-- @param estimatedPercentMonthlySavings [Double] <p>The estimated percentage of savings that might be realized if the recommended actions are taken.</p>
 -- Required parameter: estimatedMonthlySavings
 -- Required parameter: estimatedPercentMonthlySavings
 function M.TrustedAdvisorCostOptimizingSummary(estimatedMonthlySavings, estimatedPercentMonthlySavings, ...)
@@ -1213,8 +1213,8 @@ function M.AssertDescribeSeverityLevelsResponse(struct)
 end
 
 --- Create a structure of type DescribeSeverityLevelsResponse
--- &lt;p&gt;The list of severity levels returned by the &lt;a&gt;DescribeSeverityLevels&lt;/a&gt; operation.&lt;/p&gt;
--- @param severityLevels [SeverityLevelsList] &lt;p&gt;The available severity levels for the support case. Available severity levels are defined by your service level agreement with AWS.&lt;/p&gt;
+-- <p>The list of severity levels returned by the <a>DescribeSeverityLevels</a> operation.</p>
+-- @param severityLevels [SeverityLevelsList] <p>The available severity levels for the support case. Available severity levels are defined by your service level agreement with AWS.</p>
 function M.DescribeSeverityLevelsResponse(severityLevels, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSeverityLevelsResponse")
 	local t = { 
@@ -1236,8 +1236,8 @@ function M.AssertDescribeSeverityLevelsRequest(struct)
 end
 
 --- Create a structure of type DescribeSeverityLevelsRequest
--- &lt;p/&gt;
--- @param language [Language] &lt;p&gt;The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English (&quot;en&quot;) and Japanese (&quot;ja&quot;). Language parameters must be passed explicitly for operations that take them.&lt;/p&gt;
+-- <p/>
+-- @param language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
 function M.DescribeSeverityLevelsRequest(language, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSeverityLevelsRequest")
 	local t = { 
@@ -1259,8 +1259,8 @@ function M.AssertTrustedAdvisorCategorySpecificSummary(struct)
 end
 
 --- Create a structure of type TrustedAdvisorCategorySpecificSummary
--- &lt;p&gt;The container for summary information that relates to the category of the Trusted Advisor check.&lt;/p&gt;
--- @param costOptimizing [TrustedAdvisorCostOptimizingSummary] &lt;p&gt;The summary information about cost savings for a Trusted Advisor check that is in the Cost Optimizing category.&lt;/p&gt;
+-- <p>The container for summary information that relates to the category of the Trusted Advisor check.</p>
+-- @param costOptimizing [TrustedAdvisorCostOptimizingSummary] <p>The summary information about cost savings for a Trusted Advisor check that is in the Cost Optimizing category.</p>
 function M.TrustedAdvisorCategorySpecificSummary(costOptimizing, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCategorySpecificSummary")
 	local t = { 
@@ -1284,9 +1284,9 @@ function M.AssertAddAttachmentsToSetRequest(struct)
 end
 
 --- Create a structure of type AddAttachmentsToSetRequest
--- &lt;p/&gt;
--- @param attachmentSetId [AttachmentSetId] &lt;p&gt;The ID of the attachment set. If an &lt;code&gt;attachmentSetId&lt;/code&gt; is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an &lt;code&gt;attachmentSetId&lt;/code&gt; is specified, the attachments are added to the specified set, if it exists.&lt;/p&gt;
--- @param attachments [Attachments] &lt;p&gt;One or more attachments to add to the set. The limit is 3 attachments per set, and the size limit is 5 MB per attachment.&lt;/p&gt;
+-- <p/>
+-- @param attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> is specified, the attachments are added to the specified set, if it exists.</p>
+-- @param attachments [Attachments] <p>One or more attachments to add to the set. The limit is 3 attachments per set, and the size limit is 5 MB per attachment.</p>
 -- Required parameter: attachments
 function M.AddAttachmentsToSetRequest(attachmentSetId, attachments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddAttachmentsToSetRequest")
@@ -1310,8 +1310,8 @@ function M.AssertDescribeAttachmentLimitExceeded(struct)
 end
 
 --- Create a structure of type DescribeAttachmentLimitExceeded
--- &lt;p&gt;The limit for the number of &lt;a&gt;DescribeAttachment&lt;/a&gt; requests in a short period of time has been exceeded.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The limit for the number of &lt;a&gt;DescribeAttachment&lt;/a&gt; requests in a short period of time has been exceeded.&lt;/p&gt;
+-- <p>The limit for the number of <a>DescribeAttachment</a> requests in a short period of time has been exceeded.</p>
+-- @param message [ErrorMessage] <p>The limit for the number of <a>DescribeAttachment</a> requests in a short period of time has been exceeded.</p>
 function M.DescribeAttachmentLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttachmentLimitExceeded")
 	local t = { 
@@ -1334,9 +1334,9 @@ function M.AssertAttachmentDetails(struct)
 end
 
 --- Create a structure of type AttachmentDetails
--- &lt;p&gt;The file name and ID of an attachment to a case communication. You can use the ID to retrieve the attachment with the &lt;a&gt;DescribeAttachment&lt;/a&gt; operation.&lt;/p&gt;
--- @param attachmentId [AttachmentId] &lt;p&gt;The ID of the attachment.&lt;/p&gt;
--- @param fileName [FileName] &lt;p&gt;The file name of the attachment.&lt;/p&gt;
+-- <p>The file name and ID of an attachment to a case communication. You can use the ID to retrieve the attachment with the <a>DescribeAttachment</a> operation.</p>
+-- @param attachmentId [AttachmentId] <p>The ID of the attachment.</p>
+-- @param fileName [FileName] <p>The file name of the attachment.</p>
 function M.AttachmentDetails(attachmentId, fileName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentDetails")
 	local t = { 
@@ -1359,8 +1359,8 @@ function M.AssertDescribeServicesResponse(struct)
 end
 
 --- Create a structure of type DescribeServicesResponse
--- &lt;p&gt;The list of AWS services returned by the &lt;a&gt;DescribeServices&lt;/a&gt; operation.&lt;/p&gt;
--- @param services [ServiceList] &lt;p&gt;A JSON-formatted list of AWS services.&lt;/p&gt;
+-- <p>The list of AWS services returned by the <a>DescribeServices</a> operation.</p>
+-- @param services [ServiceList] <p>A JSON-formatted list of AWS services.</p>
 function M.DescribeServicesResponse(services, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServicesResponse")
 	local t = { 
@@ -1383,8 +1383,8 @@ function M.AssertDescribeTrustedAdvisorCheckSummariesResponse(struct)
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckSummariesResponse
--- &lt;p&gt;The summaries of the Trusted Advisor checks returned by the &lt;a&gt;DescribeTrustedAdvisorCheckSummaries&lt;/a&gt; operation.&lt;/p&gt;
--- @param summaries [TrustedAdvisorCheckSummaryList] &lt;p&gt;The summary information for the requested Trusted Advisor checks.&lt;/p&gt;
+-- <p>The summaries of the Trusted Advisor checks returned by the <a>DescribeTrustedAdvisorCheckSummaries</a> operation.</p>
+-- @param summaries [TrustedAdvisorCheckSummaryList] <p>The summary information for the requested Trusted Advisor checks.</p>
 -- Required parameter: summaries
 function M.DescribeTrustedAdvisorCheckSummariesResponse(summaries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckSummariesResponse")
@@ -1408,9 +1408,9 @@ function M.AssertSeverityLevel(struct)
 end
 
 --- Create a structure of type SeverityLevel
--- &lt;p&gt;A code and name pair that represent a severity level that can be applied to a support case.&lt;/p&gt;
--- @param code [SeverityLevelCode] &lt;p&gt;One of four values: &quot;low,&quot; &quot;medium,&quot; &quot;high,&quot; and &quot;urgent&quot;. These values correspond to response times returned to the caller in &lt;code&gt;severityLevel.name&lt;/code&gt;. &lt;/p&gt;
--- @param name [SeverityLevelName] &lt;p&gt;The name of the severity level that corresponds to the severity level code.&lt;/p&gt;
+-- <p>A code and name pair that represent a severity level that can be applied to a support case.</p>
+-- @param code [SeverityLevelCode] <p>One of four values: "low," "medium," "high," and "urgent". These values correspond to response times returned to the caller in <code>severityLevel.name</code>. </p>
+-- @param name [SeverityLevelName] <p>The name of the severity level that corresponds to the severity level code.</p>
 function M.SeverityLevel(code, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SeverityLevel")
 	local t = { 
@@ -1433,8 +1433,8 @@ function M.AssertAttachmentLimitExceeded(struct)
 end
 
 --- Create a structure of type AttachmentLimitExceeded
--- &lt;p&gt;The limit for the number of attachment sets created in a short period of time has been exceeded.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The limit for the number of attachment sets created in a short period of time has been exceeded.&lt;/p&gt;
+-- <p>The limit for the number of attachment sets created in a short period of time has been exceeded.</p>
+-- @param message [ErrorMessage] <p>The limit for the number of attachment sets created in a short period of time has been exceeded.</p>
 function M.AttachmentLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentLimitExceeded")
 	local t = { 
@@ -1467,19 +1467,19 @@ function M.AssertCaseDetails(struct)
 end
 
 --- Create a structure of type CaseDetails
--- &lt;p&gt;A JSON-formatted object that contains the metadata for a support case. It is contained the response from a &lt;a&gt;DescribeCases&lt;/a&gt; request. &lt;b&gt;CaseDetails&lt;/b&gt; contains the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;caseId.&lt;/b&gt; The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-&lt;i&gt;12345678910-2013-c4c1d2bf33c5cf47&lt;/i&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;categoryCode.&lt;/b&gt; The category of problem for the AWS Support case. Corresponds to the CategoryCode values returned by a call to &lt;a&gt;DescribeServices&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;displayId.&lt;/b&gt; The identifier for the case on pages in the AWS Support Center.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;language.&lt;/b&gt; The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English (&quot;en&quot;) and Japanese (&quot;ja&quot;). Language parameters must be passed explicitly for operations that take them.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;recentCommunications.&lt;/b&gt; One or more &lt;a&gt;Communication&lt;/a&gt; objects. Fields of these objects are &lt;code&gt;attachments&lt;/code&gt;, &lt;code&gt;body&lt;/code&gt;, &lt;code&gt;caseId&lt;/code&gt;, &lt;code&gt;submittedBy&lt;/code&gt;, and &lt;code&gt;timeCreated&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;nextToken.&lt;/b&gt; A resumption point for pagination.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;serviceCode.&lt;/b&gt; The identifier for the AWS service that corresponds to the service code defined in the call to &lt;a&gt;DescribeServices&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;severityCode. &lt;/b&gt;The severity code assigned to the case. Contains one of the values returned by the call to &lt;a&gt;DescribeSeverityLevels&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;status.&lt;/b&gt; The status of the case in the AWS Support Center.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;subject.&lt;/b&gt; The subject line of the case.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;submittedBy.&lt;/b&gt; The email address of the account that submitted the case.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;timeCreated.&lt;/b&gt; The time the case was created, in ISO-8601 format.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param status [Status] &lt;p&gt;The status of the case.&lt;/p&gt;
--- @param recentCommunications [RecentCaseCommunications] &lt;p&gt;The five most recent communications between you and AWS Support Center, including the IDs of any attachments to the communications. Also includes a &lt;code&gt;nextToken&lt;/code&gt; that you can use to retrieve earlier communications.&lt;/p&gt;
--- @param ccEmailAddresses [CcEmailAddressList] &lt;p&gt;The email addresses that receive copies of communication about the case.&lt;/p&gt;
--- @param timeCreated [TimeCreated] &lt;p&gt;The time that the case was case created in the AWS Support Center.&lt;/p&gt;
--- @param caseId [CaseId] &lt;p&gt;The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-&lt;i&gt;12345678910-2013-c4c1d2bf33c5cf47&lt;/i&gt; &lt;/p&gt;
--- @param severityCode [SeverityCode] &lt;p&gt;The code for the severity level returned by the call to &lt;a&gt;DescribeSeverityLevels&lt;/a&gt;.&lt;/p&gt;
--- @param language [Language] &lt;p&gt;The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English (&quot;en&quot;) and Japanese (&quot;ja&quot;). Language parameters must be passed explicitly for operations that take them.&lt;/p&gt;
--- @param categoryCode [CategoryCode] &lt;p&gt;The category of problem for the AWS Support case.&lt;/p&gt;
--- @param serviceCode [ServiceCode] &lt;p&gt;The code for the AWS service returned by the call to &lt;a&gt;DescribeServices&lt;/a&gt;.&lt;/p&gt;
--- @param submittedBy [SubmittedBy] &lt;p&gt;The email address of the account that submitted the case.&lt;/p&gt;
--- @param displayId [DisplayId] &lt;p&gt;The ID displayed for the case in the AWS Support Center. This is a numeric string.&lt;/p&gt;
--- @param subject [Subject] &lt;p&gt;The subject line for the case in the AWS Support Center.&lt;/p&gt;
+-- <p>A JSON-formatted object that contains the metadata for a support case. It is contained the response from a <a>DescribeCases</a> request. <b>CaseDetails</b> contains the following fields:</p> <ul> <li> <p> <b>caseId.</b> The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i>.</p> </li> <li> <p> <b>categoryCode.</b> The category of problem for the AWS Support case. Corresponds to the CategoryCode values returned by a call to <a>DescribeServices</a>.</p> </li> <li> <p> <b>displayId.</b> The identifier for the case on pages in the AWS Support Center.</p> </li> <li> <p> <b>language.</b> The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p> </li> <li> <p> <b>recentCommunications.</b> One or more <a>Communication</a> objects. Fields of these objects are <code>attachments</code>, <code>body</code>, <code>caseId</code>, <code>submittedBy</code>, and <code>timeCreated</code>.</p> </li> <li> <p> <b>nextToken.</b> A resumption point for pagination.</p> </li> <li> <p> <b>serviceCode.</b> The identifier for the AWS service that corresponds to the service code defined in the call to <a>DescribeServices</a>.</p> </li> <li> <p> <b>severityCode. </b>The severity code assigned to the case. Contains one of the values returned by the call to <a>DescribeSeverityLevels</a>.</p> </li> <li> <p> <b>status.</b> The status of the case in the AWS Support Center.</p> </li> <li> <p> <b>subject.</b> The subject line of the case.</p> </li> <li> <p> <b>submittedBy.</b> The email address of the account that submitted the case.</p> </li> <li> <p> <b>timeCreated.</b> The time the case was created, in ISO-8601 format.</p> </li> </ul>
+-- @param status [Status] <p>The status of the case.</p>
+-- @param recentCommunications [RecentCaseCommunications] <p>The five most recent communications between you and AWS Support Center, including the IDs of any attachments to the communications. Also includes a <code>nextToken</code> that you can use to retrieve earlier communications.</p>
+-- @param ccEmailAddresses [CcEmailAddressList] <p>The email addresses that receive copies of communication about the case.</p>
+-- @param timeCreated [TimeCreated] <p>The time that the case was case created in the AWS Support Center.</p>
+-- @param caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- @param severityCode [SeverityCode] <p>The code for the severity level returned by the call to <a>DescribeSeverityLevels</a>.</p>
+-- @param language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- @param categoryCode [CategoryCode] <p>The category of problem for the AWS Support case.</p>
+-- @param serviceCode [ServiceCode] <p>The code for the AWS service returned by the call to <a>DescribeServices</a>.</p>
+-- @param submittedBy [SubmittedBy] <p>The email address of the account that submitted the case.</p>
+-- @param displayId [DisplayId] <p>The ID displayed for the case in the AWS Support Center. This is a numeric string.</p>
+-- @param subject [Subject] <p>The subject line for the case in the AWS Support Center.</p>
 function M.CaseDetails(status, recentCommunications, ccEmailAddresses, timeCreated, caseId, severityCode, language, categoryCode, serviceCode, submittedBy, displayId, subject, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CaseDetails")
 	local t = { 
@@ -1513,9 +1513,9 @@ function M.AssertDescribeCasesResponse(struct)
 end
 
 --- Create a structure of type DescribeCasesResponse
--- &lt;p&gt;Returns an array of &lt;a&gt;CaseDetails&lt;/a&gt; objects and a &lt;code&gt;nextToken&lt;/code&gt; that defines a point for pagination in the result set.&lt;/p&gt;
--- @param cases [CaseList] &lt;p&gt;The details for the cases that match the request.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;A resumption point for pagination.&lt;/p&gt;
+-- <p>Returns an array of <a>CaseDetails</a> objects and a <code>nextToken</code> that defines a point for pagination in the result set.</p>
+-- @param cases [CaseList] <p>The details for the cases that match the request.</p>
+-- @param nextToken [NextToken] <p>A resumption point for pagination.</p>
 function M.DescribeCasesResponse(cases, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCasesResponse")
 	local t = { 
@@ -1539,8 +1539,8 @@ function M.AssertDescribeTrustedAdvisorCheckSummariesRequest(struct)
 end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckSummariesRequest
--- &lt;p/&gt;
--- @param checkIds [StringList] &lt;p&gt;The IDs of the Trusted Advisor checks.&lt;/p&gt;
+-- <p/>
+-- @param checkIds [StringList] <p>The IDs of the Trusted Advisor checks.</p>
 -- Required parameter: checkIds
 function M.DescribeTrustedAdvisorCheckSummariesRequest(checkIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckSummariesRequest")

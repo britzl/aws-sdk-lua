@@ -30,8 +30,8 @@ function M.AssertExpiredTokenException(struct)
 end
 
 --- Create a structure of type ExpiredTokenException
--- &lt;p&gt;The submitted registration token has expired. This can happen if the buyer's browser takes too long to redirect to your page, the buyer has resubmitted the registration token, or your application has held on to the registration token for too long. Your SaaS registration website should redeem this token as soon as it is submitted by the buyer's browser.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The submitted registration token has expired. This can happen if the buyer's browser takes too long to redirect to your page, the buyer has resubmitted the registration token, or your application has held on to the registration token for too long. Your SaaS registration website should redeem this token as soon as it is submitted by the buyer's browser.&lt;/p&gt;
+-- <p>The submitted registration token has expired. This can happen if the buyer's browser takes too long to redirect to your page, the buyer has resubmitted the registration token, or your application has held on to the registration token for too long. Your SaaS registration website should redeem this token as soon as it is submitted by the buyer's browser.</p>
+-- @param message [errorMessage] <p>The submitted registration token has expired. This can happen if the buyer's browser takes too long to redirect to your page, the buyer has resubmitted the registration token, or your application has held on to the registration token for too long. Your SaaS registration website should redeem this token as soon as it is submitted by the buyer's browser.</p>
 function M.ExpiredTokenException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredTokenException")
 	local t = { 
@@ -54,8 +54,8 @@ function M.AssertResolveCustomerRequest(struct)
 end
 
 --- Create a structure of type ResolveCustomerRequest
--- &lt;p&gt;Contains input to the ResolveCustomer operation.&lt;/p&gt;
--- @param RegistrationToken [NonEmptyString] &lt;p&gt;When a buyer visits your website during the registration process, the buyer submits a registration token through the browser. The registration token is resolved to obtain a CustomerIdentifier and product code.&lt;/p&gt;
+-- <p>Contains input to the ResolveCustomer operation.</p>
+-- @param RegistrationToken [NonEmptyString] <p>When a buyer visits your website during the registration process, the buyer submits a registration token through the browser. The registration token is resolved to obtain a CustomerIdentifier and product code.</p>
 -- Required parameter: RegistrationToken
 function M.ResolveCustomerRequest(RegistrationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCustomerRequest")
@@ -79,9 +79,9 @@ function M.AssertResolveCustomerResult(struct)
 end
 
 --- Create a structure of type ResolveCustomerResult
--- &lt;p&gt;The result of the ResolveCustomer operation. Contains the CustomerIdentifier and product code.&lt;/p&gt;
--- @param ProductCode [ProductCode] &lt;p&gt;The product code is returned to confirm that the buyer is registering for your product. Subsequent BatchMeterUsage calls should be made using this product code.&lt;/p&gt;
--- @param CustomerIdentifier [CustomerIdentifier] &lt;p&gt;The CustomerIdentifier is used to identify an individual customer in your application. Calls to BatchMeterUsage require CustomerIdentifiers for each UsageRecord.&lt;/p&gt;
+-- <p>The result of the ResolveCustomer operation. Contains the CustomerIdentifier and product code.</p>
+-- @param ProductCode [ProductCode] <p>The product code is returned to confirm that the buyer is registering for your product. Subsequent BatchMeterUsage calls should be made using this product code.</p>
+-- @param CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is used to identify an individual customer in your application. Calls to BatchMeterUsage require CustomerIdentifiers for each UsageRecord.</p>
 function M.ResolveCustomerResult(ProductCode, CustomerIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCustomerResult")
 	local t = { 
@@ -104,8 +104,8 @@ function M.AssertTimestampOutOfBoundsException(struct)
 end
 
 --- Create a structure of type TimestampOutOfBoundsException
--- &lt;p&gt;The timestamp value passed in the meterUsage() is out of allowed range.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The timestamp value passed in the meterUsage() is out of allowed range.&lt;/p&gt;
+-- <p>The timestamp value passed in the meterUsage() is out of allowed range.</p>
+-- @param message [errorMessage] <p>The timestamp value passed in the meterUsage() is out of allowed range.</p>
 function M.TimestampOutOfBoundsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TimestampOutOfBoundsException")
 	local t = { 
@@ -128,9 +128,9 @@ function M.AssertBatchMeterUsageResult(struct)
 end
 
 --- Create a structure of type BatchMeterUsageResult
--- &lt;p&gt;Contains the UsageRecords processed by BatchMeterUsage and any records that have failed due to transient error.&lt;/p&gt;
--- @param UnprocessedRecords [UsageRecordList] &lt;p&gt;Contains all UsageRecords that were not processed by BatchMeterUsage. This is a list of UsageRecords. You can retry the failed request by making another BatchMeterUsage call with this list as input in the BatchMeterUsageRequest.&lt;/p&gt;
--- @param Results [UsageRecordResultList] &lt;p&gt;Contains all UsageRecords processed by BatchMeterUsage. These records were either honored by AWS Marketplace Metering Service or were invalid.&lt;/p&gt;
+-- <p>Contains the UsageRecords processed by BatchMeterUsage and any records that have failed due to transient error.</p>
+-- @param UnprocessedRecords [UsageRecordList] <p>Contains all UsageRecords that were not processed by BatchMeterUsage. This is a list of UsageRecords. You can retry the failed request by making another BatchMeterUsage call with this list as input in the BatchMeterUsageRequest.</p>
+-- @param Results [UsageRecordResultList] <p>Contains all UsageRecords processed by BatchMeterUsage. These records were either honored by AWS Marketplace Metering Service or were invalid.</p>
 function M.BatchMeterUsageResult(UnprocessedRecords, Results, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchMeterUsageResult")
 	local t = { 
@@ -176,8 +176,8 @@ function M.AssertInvalidCustomerIdentifierException(struct)
 end
 
 --- Create a structure of type InvalidCustomerIdentifierException
--- &lt;p&gt;You have metered usage for a CustomerIdentifier that does not exist.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;You have metered usage for a CustomerIdentifier that does not exist.&lt;/p&gt;
+-- <p>You have metered usage for a CustomerIdentifier that does not exist.</p>
+-- @param message [errorMessage] <p>You have metered usage for a CustomerIdentifier that does not exist.</p>
 function M.InvalidCustomerIdentifierException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCustomerIdentifierException")
 	local t = { 
@@ -209,11 +209,11 @@ end
 
 --- Create a structure of type MeterUsageRequest
 --  
--- @param ProductCode [ProductCode] &lt;p&gt;Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.&lt;/p&gt;
--- @param UsageQuantity [UsageQuantity] &lt;p&gt;Consumption value for the hour.&lt;/p&gt;
--- @param DryRun [Boolean] &lt;p&gt;Checks whether you have the permissions required for the action, but does not make the request. If you have the permissions, the request returns DryRunOperation; otherwise, it returns UnauthorizedException.&lt;/p&gt;
--- @param UsageDimension [UsageDimension] &lt;p&gt;It will be one of the fcp dimension name provided during the publishing of the product.&lt;/p&gt;
--- @param Timestamp [Timestamp] &lt;p&gt;Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.&lt;/p&gt;
+-- @param ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
+-- @param UsageQuantity [UsageQuantity] <p>Consumption value for the hour.</p>
+-- @param DryRun [Boolean] <p>Checks whether you have the permissions required for the action, but does not make the request. If you have the permissions, the request returns DryRunOperation; otherwise, it returns UnauthorizedException.</p>
+-- @param UsageDimension [UsageDimension] <p>It will be one of the fcp dimension name provided during the publishing of the product.</p>
+-- @param Timestamp [Timestamp] <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.</p>
 -- Required parameter: ProductCode
 -- Required parameter: Timestamp
 -- Required parameter: UsageDimension
@@ -267,8 +267,8 @@ function M.AssertInvalidProductCodeException(struct)
 end
 
 --- Create a structure of type InvalidProductCodeException
--- &lt;p&gt;The product code passed does not match the product code used for publishing the product.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The product code passed does not match the product code used for publishing the product.&lt;/p&gt;
+-- <p>The product code passed does not match the product code used for publishing the product.</p>
+-- @param message [errorMessage] <p>The product code passed does not match the product code used for publishing the product.</p>
 function M.InvalidProductCodeException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidProductCodeException")
 	local t = { 
@@ -290,8 +290,8 @@ function M.AssertInternalServiceErrorException(struct)
 end
 
 --- Create a structure of type InternalServiceErrorException
--- &lt;p&gt;An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.&lt;/p&gt;
+-- <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
+-- @param message [errorMessage] <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
 function M.InternalServiceErrorException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceErrorException")
 	local t = { 
@@ -313,8 +313,8 @@ function M.AssertInvalidEndpointRegionException(struct)
 end
 
 --- Create a structure of type InvalidEndpointRegionException
--- &lt;p&gt;The endpoint being called is in a region different from your EC2 instance. The region of the Metering service endpoint and the region of the EC2 instance must match.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The endpoint being called is in a region different from your EC2 instance. The region of the Metering service endpoint and the region of the EC2 instance must match.&lt;/p&gt;
+-- <p>The endpoint being called is in a region different from your EC2 instance. The region of the Metering service endpoint and the region of the EC2 instance must match.</p>
+-- @param message [errorMessage] <p>The endpoint being called is in a region different from your EC2 instance. The region of the Metering service endpoint and the region of the EC2 instance must match.</p>
 function M.InvalidEndpointRegionException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidEndpointRegionException")
 	local t = { 
@@ -338,10 +338,10 @@ function M.AssertUsageRecordResult(struct)
 end
 
 --- Create a structure of type UsageRecordResult
--- &lt;p&gt;A UsageRecordResult indicates the status of a given UsageRecord processed by BatchMeterUsage.&lt;/p&gt;
--- @param Status [UsageRecordResultStatus] &lt;p&gt;The UsageRecordResult Status indicates the status of an individual UsageRecord processed by BatchMeterUsage.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;Success&lt;/i&gt;- The UsageRecord was accepted and honored by BatchMeterUsage.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;CustomerNotSubscribed&lt;/i&gt;- The CustomerIdentifier specified is not subscribed to your product. The UsageRecord was not honored. Future UsageRecords for this customer will fail until the customer subscribes to your product.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;DuplicateRecord&lt;/i&gt;- Indicates that the UsageRecord was invalid and not honored. A previously metered UsageRecord had the same customer, dimension, and time, but a different quantity.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param UsageRecord [UsageRecord] &lt;p&gt;The UsageRecord that was part of the BatchMeterUsage request.&lt;/p&gt;
--- @param MeteringRecordId [String] &lt;p&gt;The MeteringRecordId is a unique identifier for this metering event.&lt;/p&gt;
+-- <p>A UsageRecordResult indicates the status of a given UsageRecord processed by BatchMeterUsage.</p>
+-- @param Status [UsageRecordResultStatus] <p>The UsageRecordResult Status indicates the status of an individual UsageRecord processed by BatchMeterUsage.</p> <ul> <li> <p> <i>Success</i>- The UsageRecord was accepted and honored by BatchMeterUsage.</p> </li> <li> <p> <i>CustomerNotSubscribed</i>- The CustomerIdentifier specified is not subscribed to your product. The UsageRecord was not honored. Future UsageRecords for this customer will fail until the customer subscribes to your product.</p> </li> <li> <p> <i>DuplicateRecord</i>- Indicates that the UsageRecord was invalid and not honored. A previously metered UsageRecord had the same customer, dimension, and time, but a different quantity.</p> </li> </ul>
+-- @param UsageRecord [UsageRecord] <p>The UsageRecord that was part of the BatchMeterUsage request.</p>
+-- @param MeteringRecordId [String] <p>The MeteringRecordId is a unique identifier for this metering event.</p>
 function M.UsageRecordResult(Status, UsageRecord, MeteringRecordId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsageRecordResult")
 	local t = { 
@@ -368,9 +368,9 @@ function M.AssertBatchMeterUsageRequest(struct)
 end
 
 --- Create a structure of type BatchMeterUsageRequest
--- &lt;p&gt;A BatchMeterUsageRequest contains UsageRecords, which indicate quantities of usage within your application.&lt;/p&gt;
--- @param UsageRecords [UsageRecordList] &lt;p&gt;The set of UsageRecords to submit. BatchMeterUsage accepts up to 25 UsageRecords at a time.&lt;/p&gt;
--- @param ProductCode [ProductCode] &lt;p&gt;Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.&lt;/p&gt;
+-- <p>A BatchMeterUsageRequest contains UsageRecords, which indicate quantities of usage within your application.</p>
+-- @param UsageRecords [UsageRecordList] <p>The set of UsageRecords to submit. BatchMeterUsage accepts up to 25 UsageRecords at a time.</p>
+-- @param ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
 -- Required parameter: UsageRecords
 -- Required parameter: ProductCode
 function M.BatchMeterUsageRequest(UsageRecords, ProductCode, ...)
@@ -395,8 +395,8 @@ function M.AssertInvalidUsageDimensionException(struct)
 end
 
 --- Create a structure of type InvalidUsageDimensionException
--- &lt;p&gt;The usage dimension does not match one of the UsageDimensions associated with products.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The usage dimension does not match one of the UsageDimensions associated with products.&lt;/p&gt;
+-- <p>The usage dimension does not match one of the UsageDimensions associated with products.</p>
+-- @param message [errorMessage] <p>The usage dimension does not match one of the UsageDimensions associated with products.</p>
 function M.InvalidUsageDimensionException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidUsageDimensionException")
 	local t = { 
@@ -425,11 +425,11 @@ function M.AssertUsageRecord(struct)
 end
 
 --- Create a structure of type UsageRecord
--- &lt;p&gt;A UsageRecord indicates a quantity of usage for a given product, customer, dimension and time.&lt;/p&gt; &lt;p&gt;Multiple requests with the same UsageRecords as input will be deduplicated to prevent double charges.&lt;/p&gt;
--- @param Timestamp [Timestamp] &lt;p&gt;Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.&lt;/p&gt; &lt;p&gt;Your application can meter usage for up to one hour in the past.&lt;/p&gt;
--- @param CustomerIdentifier [CustomerIdentifier] &lt;p&gt;The CustomerIdentifier is obtained through the ResolveCustomer operation and represents an individual buyer in your application.&lt;/p&gt;
--- @param Dimension [UsageDimension] &lt;p&gt;During the process of registering a product on AWS Marketplace, up to eight dimensions are specified. These represent different units of value in your application.&lt;/p&gt;
--- @param Quantity [UsageQuantity] &lt;p&gt;The quantity of usage consumed by the customer for the given dimension and time.&lt;/p&gt;
+-- <p>A UsageRecord indicates a quantity of usage for a given product, customer, dimension and time.</p> <p>Multiple requests with the same UsageRecords as input will be deduplicated to prevent double charges.</p>
+-- @param Timestamp [Timestamp] <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.</p> <p>Your application can meter usage for up to one hour in the past.</p>
+-- @param CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is obtained through the ResolveCustomer operation and represents an individual buyer in your application.</p>
+-- @param Dimension [UsageDimension] <p>During the process of registering a product on AWS Marketplace, up to eight dimensions are specified. These represent different units of value in your application.</p>
+-- @param Quantity [UsageQuantity] <p>The quantity of usage consumed by the customer for the given dimension and time.</p>
 -- Required parameter: Timestamp
 -- Required parameter: CustomerIdentifier
 -- Required parameter: Dimension
@@ -458,8 +458,8 @@ function M.AssertThrottlingException(struct)
 end
 
 --- Create a structure of type ThrottlingException
--- &lt;p&gt;The calls to the MeterUsage API are throttled.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The calls to the MeterUsage API are throttled.&lt;/p&gt;
+-- <p>The calls to the MeterUsage API are throttled.</p>
+-- @param message [errorMessage] <p>The calls to the MeterUsage API are throttled.</p>
 function M.ThrottlingException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
 	local t = { 
@@ -481,8 +481,8 @@ function M.AssertDuplicateRequestException(struct)
 end
 
 --- Create a structure of type DuplicateRequestException
--- &lt;p&gt;A metering record has already been emitted by the same EC2 instance for the given {usageDimension, timestamp} with a different usageQuantity.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;A metering record has already been emitted by the same EC2 instance for the given {usageDimension, timestamp} with a different usageQuantity.&lt;/p&gt;
+-- <p>A metering record has already been emitted by the same EC2 instance for the given {usageDimension, timestamp} with a different usageQuantity.</p>
+-- @param message [errorMessage] <p>A metering record has already been emitted by the same EC2 instance for the given {usageDimension, timestamp} with a different usageQuantity.</p>
 function M.DuplicateRequestException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateRequestException")
 	local t = { 

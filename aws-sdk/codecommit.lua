@@ -30,8 +30,8 @@ function M.AssertPutRepositoryTriggersOutput(struct)
 end
 
 --- Create a structure of type PutRepositoryTriggersOutput
--- &lt;p&gt;Represents the output of a put repository triggers operation.&lt;/p&gt;
--- @param configurationId [RepositoryTriggersConfigurationId] &lt;p&gt;The system-generated unique ID for the create or update operation.&lt;/p&gt;
+-- <p>Represents the output of a put repository triggers operation.</p>
+-- @param configurationId [RepositoryTriggersConfigurationId] <p>The system-generated unique ID for the create or update operation.</p>
 function M.PutRepositoryTriggersOutput(configurationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutRepositoryTriggersOutput")
 	local t = { 
@@ -52,7 +52,7 @@ function M.AssertInvalidRepositoryDescriptionException(struct)
 end
 
 --- Create a structure of type InvalidRepositoryDescriptionException
--- &lt;p&gt;The specified repository description is not valid.&lt;/p&gt;
+-- <p>The specified repository description is not valid.</p>
 function M.InvalidRepositoryDescriptionException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryDescriptionException")
 	local t = { 
@@ -72,7 +72,7 @@ function M.AssertEncryptionKeyAccessDeniedException(struct)
 end
 
 --- Create a structure of type EncryptionKeyAccessDeniedException
--- &lt;p&gt;An encryption key could not be accessed.&lt;/p&gt;
+-- <p>An encryption key could not be accessed.</p>
 function M.EncryptionKeyAccessDeniedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionKeyAccessDeniedException")
 	local t = { 
@@ -95,9 +95,9 @@ function M.AssertListBranchesInput(struct)
 end
 
 --- Create a structure of type ListBranchesInput
--- &lt;p&gt;Represents the input of a list branches operation.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;An enumeration token that allows the operation to batch the results.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository that contains the branches.&lt;/p&gt;
+-- <p>Represents the input of a list branches operation.</p>
+-- @param nextToken [NextToken] <p>An enumeration token that allows the operation to batch the results.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository that contains the branches.</p>
 -- Required parameter: repositoryName
 function M.ListBranchesInput(nextToken, repositoryName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBranchesInput")
@@ -124,9 +124,9 @@ function M.AssertTestRepositoryTriggersInput(struct)
 end
 
 --- Create a structure of type TestRepositoryTriggersInput
--- &lt;p&gt;Represents the input of a test repository triggers operation.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository in which to test the triggers.&lt;/p&gt;
--- @param triggers [RepositoryTriggersList] &lt;p&gt;The list of triggers to test.&lt;/p&gt;
+-- <p>Represents the input of a test repository triggers operation.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository in which to test the triggers.</p>
+-- @param triggers [RepositoryTriggersList] <p>The list of triggers to test.</p>
 -- Required parameter: repositoryName
 -- Required parameter: triggers
 function M.TestRepositoryTriggersInput(repositoryName, triggers, ...)
@@ -150,7 +150,7 @@ function M.AssertCommitDoesNotExistException(struct)
 end
 
 --- Create a structure of type CommitDoesNotExistException
--- &lt;p&gt;The specified commit does not exist or no commit was specified, and the specified repository has no default branch.&lt;/p&gt;
+-- <p>The specified commit does not exist or no commit was specified, and the specified repository has no default branch.</p>
 function M.CommitDoesNotExistException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CommitDoesNotExistException")
 	local t = { 
@@ -170,7 +170,7 @@ function M.AssertInvalidBranchNameException(struct)
 end
 
 --- Create a structure of type InvalidBranchNameException
--- &lt;p&gt;The specified branch name is not valid.&lt;/p&gt;
+-- <p>The specified branch name is not valid.</p>
 function M.InvalidBranchNameException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidBranchNameException")
 	local t = { 
@@ -190,7 +190,7 @@ function M.AssertInvalidSortByException(struct)
 end
 
 --- Create a structure of type InvalidSortByException
--- &lt;p&gt;The specified sort by value is not valid.&lt;/p&gt;
+-- <p>The specified sort by value is not valid.</p>
 function M.InvalidSortByException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSortByException")
 	local t = { 
@@ -210,7 +210,7 @@ function M.AssertPathDoesNotExistException(struct)
 end
 
 --- Create a structure of type PathDoesNotExistException
--- &lt;p&gt;The specified path does not exist.&lt;/p&gt;
+-- <p>The specified path does not exist.</p>
 function M.PathDoesNotExistException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PathDoesNotExistException")
 	local t = { 
@@ -230,7 +230,7 @@ function M.AssertBlobIdRequiredException(struct)
 end
 
 --- Create a structure of type BlobIdRequiredException
--- &lt;p&gt;A blob ID is required but was not specified.&lt;/p&gt;
+-- <p>A blob ID is required but was not specified.</p>
 function M.BlobIdRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BlobIdRequiredException")
 	local t = { 
@@ -253,9 +253,9 @@ function M.AssertUpdateRepositoryDescriptionInput(struct)
 end
 
 --- Create a structure of type UpdateRepositoryDescriptionInput
--- &lt;p&gt;Represents the input of an update repository description operation.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository to set or change the comment or description for.&lt;/p&gt;
--- @param repositoryDescription [RepositoryDescription] &lt;p&gt;The new comment or description for the specified repository. Repository descriptions are limited to 1,000 characters.&lt;/p&gt;
+-- <p>Represents the input of an update repository description operation.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository to set or change the comment or description for.</p>
+-- @param repositoryDescription [RepositoryDescription] <p>The new comment or description for the specified repository. Repository descriptions are limited to 1,000 characters.</p>
 -- Required parameter: repositoryName
 function M.UpdateRepositoryDescriptionInput(repositoryName, repositoryDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRepositoryDescriptionInput")
@@ -279,8 +279,8 @@ function M.AssertGetRepositoryOutput(struct)
 end
 
 --- Create a structure of type GetRepositoryOutput
--- &lt;p&gt;Represents the output of a get repository operation.&lt;/p&gt;
--- @param repositoryMetadata [RepositoryMetadata] &lt;p&gt;Information about the repository.&lt;/p&gt;
+-- <p>Represents the output of a get repository operation.</p>
+-- @param repositoryMetadata [RepositoryMetadata] <p>Information about the repository.</p>
 function M.GetRepositoryOutput(repositoryMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryOutput")
 	local t = { 
@@ -301,7 +301,7 @@ function M.AssertEncryptionKeyUnavailableException(struct)
 end
 
 --- Create a structure of type EncryptionKeyUnavailableException
--- &lt;p&gt;The encryption key is not available.&lt;/p&gt;
+-- <p>The encryption key is not available.</p>
 function M.EncryptionKeyUnavailableException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionKeyUnavailableException")
 	local t = { 
@@ -323,9 +323,9 @@ function M.AssertBatchGetRepositoriesOutput(struct)
 end
 
 --- Create a structure of type BatchGetRepositoriesOutput
--- &lt;p&gt;Represents the output of a batch get repositories operation.&lt;/p&gt;
--- @param repositories [RepositoryMetadataList] &lt;p&gt;A list of repositories returned by the batch get repositories operation.&lt;/p&gt;
--- @param repositoriesNotFound [RepositoryNotFoundList] &lt;p&gt;Returns a list of repository names for which information could not be found.&lt;/p&gt;
+-- <p>Represents the output of a batch get repositories operation.</p>
+-- @param repositories [RepositoryMetadataList] <p>A list of repositories returned by the batch get repositories operation.</p>
+-- @param repositoriesNotFound [RepositoryNotFoundList] <p>Returns a list of repository names for which information could not be found.</p>
 function M.BatchGetRepositoriesOutput(repositories, repositoriesNotFound, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetRepositoriesOutput")
 	local t = { 
@@ -347,7 +347,7 @@ function M.AssertInvalidRepositoryTriggerDestinationArnException(struct)
 end
 
 --- Create a structure of type InvalidRepositoryTriggerDestinationArnException
--- &lt;p&gt;The Amazon Resource Name (ARN) for the trigger is not valid for the specified destination. The most common reason for this error is that the ARN does not meet the requirements for the service type.&lt;/p&gt;
+-- <p>The Amazon Resource Name (ARN) for the trigger is not valid for the specified destination. The most common reason for this error is that the ARN does not meet the requirements for the service type.</p>
 function M.InvalidRepositoryTriggerDestinationArnException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerDestinationArnException")
 	local t = { 
@@ -367,7 +367,7 @@ function M.AssertRepositoryDoesNotExistException(struct)
 end
 
 --- Create a structure of type RepositoryDoesNotExistException
--- &lt;p&gt;The specified repository does not exist.&lt;/p&gt;
+-- <p>The specified repository does not exist.</p>
 function M.RepositoryDoesNotExistException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryDoesNotExistException")
 	local t = { 
@@ -387,7 +387,7 @@ function M.AssertRepositoryLimitExceededException(struct)
 end
 
 --- Create a structure of type RepositoryLimitExceededException
--- &lt;p&gt;A repository resource limit was exceeded.&lt;/p&gt;
+-- <p>A repository resource limit was exceeded.</p>
 function M.RepositoryLimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryLimitExceededException")
 	local t = { 
@@ -413,13 +413,13 @@ function M.AssertCommit(struct)
 end
 
 --- Create a structure of type Commit
--- &lt;p&gt;Returns information about a specific commit.&lt;/p&gt;
--- @param additionalData [AdditionalData] &lt;p&gt;Any additional data associated with the specified commit.&lt;/p&gt;
--- @param committer [UserInfo] &lt;p&gt;Information about the person who committed the specified commit, also known as the committer. Information includes the date in timestamp format with GMT offset, the name of the committer, and the email address for the committer, as configured in Git.&lt;/p&gt; &lt;p&gt;For more information about the difference between an author and a committer in Git, see &lt;a href=&quot;http://git-scm.com/book/ch2-3.html&quot;&gt;Viewing the Commit History&lt;/a&gt; in Pro Git by Scott Chacon and Ben Straub.&lt;/p&gt;
--- @param author [UserInfo] &lt;p&gt;Information about the author of the specified commit. Information includes the date in timestamp format with GMT offset, the name of the author, and the email address for the author, as configured in Git.&lt;/p&gt;
--- @param treeId [ObjectId] &lt;p&gt;Tree information for the specified commit.&lt;/p&gt;
--- @param parents [ParentList] &lt;p&gt;The parent list for the specified commit.&lt;/p&gt;
--- @param message [Message] &lt;p&gt;The commit message associated with the specified commit.&lt;/p&gt;
+-- <p>Returns information about a specific commit.</p>
+-- @param additionalData [AdditionalData] <p>Any additional data associated with the specified commit.</p>
+-- @param committer [UserInfo] <p>Information about the person who committed the specified commit, also known as the committer. Information includes the date in timestamp format with GMT offset, the name of the committer, and the email address for the committer, as configured in Git.</p> <p>For more information about the difference between an author and a committer in Git, see <a href="http://git-scm.com/book/ch2-3.html">Viewing the Commit History</a> in Pro Git by Scott Chacon and Ben Straub.</p>
+-- @param author [UserInfo] <p>Information about the author of the specified commit. Information includes the date in timestamp format with GMT offset, the name of the author, and the email address for the author, as configured in Git.</p>
+-- @param treeId [ObjectId] <p>Tree information for the specified commit.</p>
+-- @param parents [ParentList] <p>The parent list for the specified commit.</p>
+-- @param message [Message] <p>The commit message associated with the specified commit.</p>
 function M.Commit(additionalData, committer, author, treeId, parents, message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Commit")
 	local t = { 
@@ -449,9 +449,9 @@ function M.AssertGetCommitInput(struct)
 end
 
 --- Create a structure of type GetCommitInput
--- &lt;p&gt;Represents the input of a get commit operation.&lt;/p&gt;
--- @param commitId [ObjectId] &lt;p&gt;The commit ID.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository to which the commit was made.&lt;/p&gt;
+-- <p>Represents the input of a get commit operation.</p>
+-- @param commitId [ObjectId] <p>The commit ID.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository to which the commit was made.</p>
 -- Required parameter: repositoryName
 -- Required parameter: commitId
 function M.GetCommitInput(commitId, repositoryName, ...)
@@ -475,7 +475,7 @@ function M.AssertInvalidRepositoryTriggerNameException(struct)
 end
 
 --- Create a structure of type InvalidRepositoryTriggerNameException
--- &lt;p&gt;The name of the trigger is not valid.&lt;/p&gt;
+-- <p>The name of the trigger is not valid.</p>
 function M.InvalidRepositoryTriggerNameException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerNameException")
 	local t = { 
@@ -495,7 +495,7 @@ function M.AssertRepositoryNameExistsException(struct)
 end
 
 --- Create a structure of type RepositoryNameExistsException
--- &lt;p&gt;The specified repository name already exists.&lt;/p&gt;
+-- <p>The specified repository name already exists.</p>
 function M.RepositoryNameExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNameExistsException")
 	local t = { 
@@ -523,12 +523,12 @@ function M.AssertRepositoryTrigger(struct)
 end
 
 --- Create a structure of type RepositoryTrigger
--- &lt;p&gt;Information about a trigger for a repository.&lt;/p&gt;
--- @param destinationArn [Arn] &lt;p&gt;The ARN of the resource that is the target for a trigger. For example, the ARN of a topic in Amazon Simple Notification Service (SNS).&lt;/p&gt;
--- @param branches [BranchNameList] &lt;p&gt;The branches that will be included in the trigger configuration. If no branches are specified, the trigger will apply to all branches.&lt;/p&gt;
--- @param name [RepositoryTriggerName] &lt;p&gt;The name of the trigger.&lt;/p&gt;
--- @param customData [RepositoryTriggerCustomData] &lt;p&gt;Any custom data associated with the trigger that will be included in the information sent to the target of the trigger.&lt;/p&gt;
--- @param events [RepositoryTriggerEventList] &lt;p&gt;The repository events that will cause the trigger to run actions in another service, such as sending a notification through Amazon Simple Notification Service (SNS). &lt;/p&gt; &lt;note&gt; &lt;p&gt;The valid value &quot;all&quot; cannot be used with any other values.&lt;/p&gt; &lt;/note&gt;
+-- <p>Information about a trigger for a repository.</p>
+-- @param destinationArn [Arn] <p>The ARN of the resource that is the target for a trigger. For example, the ARN of a topic in Amazon Simple Notification Service (SNS).</p>
+-- @param branches [BranchNameList] <p>The branches that will be included in the trigger configuration. If no branches are specified, the trigger will apply to all branches.</p>
+-- @param name [RepositoryTriggerName] <p>The name of the trigger.</p>
+-- @param customData [RepositoryTriggerCustomData] <p>Any custom data associated with the trigger that will be included in the information sent to the target of the trigger.</p>
+-- @param events [RepositoryTriggerEventList] <p>The repository events that will cause the trigger to run actions in another service, such as sending a notification through Amazon Simple Notification Service (SNS). </p> <note> <p>The valid value "all" cannot be used with any other values.</p> </note>
 -- Required parameter: name
 -- Required parameter: destinationArn
 -- Required parameter: events
@@ -556,7 +556,7 @@ function M.AssertInvalidOrderException(struct)
 end
 
 --- Create a structure of type InvalidOrderException
--- &lt;p&gt;The specified sort order is not valid.&lt;/p&gt;
+-- <p>The specified sort order is not valid.</p>
 function M.InvalidOrderException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOrderException")
 	local t = { 
@@ -576,7 +576,7 @@ function M.AssertBranchNameRequiredException(struct)
 end
 
 --- Create a structure of type BranchNameRequiredException
--- &lt;p&gt;A branch name is required but was not specified.&lt;/p&gt;
+-- <p>A branch name is required but was not specified.</p>
 function M.BranchNameRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BranchNameRequiredException")
 	local t = { 
@@ -600,9 +600,9 @@ function M.AssertPutRepositoryTriggersInput(struct)
 end
 
 --- Create a structure of type PutRepositoryTriggersInput
--- &lt;p&gt;Represents the input ofa put repository triggers operation.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository where you want to create or update the trigger.&lt;/p&gt;
--- @param triggers [RepositoryTriggersList] &lt;p&gt;The JSON block of configuration information for each trigger.&lt;/p&gt;
+-- <p>Represents the input ofa put repository triggers operation.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository where you want to create or update the trigger.</p>
+-- @param triggers [RepositoryTriggersList] <p>The JSON block of configuration information for each trigger.</p>
 -- Required parameter: repositoryName
 -- Required parameter: triggers
 function M.PutRepositoryTriggersInput(repositoryName, triggers, ...)
@@ -628,9 +628,9 @@ function M.AssertBranchInfo(struct)
 end
 
 --- Create a structure of type BranchInfo
--- &lt;p&gt;Returns information about a branch.&lt;/p&gt;
--- @param commitId [CommitId] &lt;p&gt;The ID of the last commit made to the branch.&lt;/p&gt;
--- @param branchName [BranchName] &lt;p&gt;The name of the branch.&lt;/p&gt;
+-- <p>Returns information about a branch.</p>
+-- @param commitId [CommitId] <p>The ID of the last commit made to the branch.</p>
+-- @param branchName [BranchName] <p>The name of the branch.</p>
 function M.BranchInfo(commitId, branchName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BranchInfo")
 	local t = { 
@@ -654,9 +654,9 @@ function M.AssertGetRepositoryTriggersOutput(struct)
 end
 
 --- Create a structure of type GetRepositoryTriggersOutput
--- &lt;p&gt;Represents the output of a get repository triggers operation.&lt;/p&gt;
--- @param configurationId [RepositoryTriggersConfigurationId] &lt;p&gt;The system-generated unique ID for the trigger.&lt;/p&gt;
--- @param triggers [RepositoryTriggersList] &lt;p&gt;The JSON block of configuration information for each trigger.&lt;/p&gt;
+-- <p>Represents the output of a get repository triggers operation.</p>
+-- @param configurationId [RepositoryTriggersConfigurationId] <p>The system-generated unique ID for the trigger.</p>
+-- @param triggers [RepositoryTriggersList] <p>The JSON block of configuration information for each trigger.</p>
 function M.GetRepositoryTriggersOutput(configurationId, triggers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryTriggersOutput")
 	local t = { 
@@ -679,8 +679,8 @@ function M.AssertDeleteRepositoryOutput(struct)
 end
 
 --- Create a structure of type DeleteRepositoryOutput
--- &lt;p&gt;Represents the output of a delete repository operation.&lt;/p&gt;
--- @param repositoryId [RepositoryId] &lt;p&gt;The ID of the repository that was deleted.&lt;/p&gt;
+-- <p>Represents the output of a delete repository operation.</p>
+-- @param repositoryId [RepositoryId] <p>The ID of the repository that was deleted.</p>
 function M.DeleteRepositoryOutput(repositoryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryOutput")
 	local t = { 
@@ -703,9 +703,9 @@ function M.AssertListRepositoriesOutput(struct)
 end
 
 --- Create a structure of type ListRepositoriesOutput
--- &lt;p&gt;Represents the output of a list repositories operation.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.&lt;/p&gt;
--- @param repositories [RepositoryNameIdPairList] &lt;p&gt;Lists the repositories called by the list repositories operation.&lt;/p&gt;
+-- <p>Represents the output of a list repositories operation.</p>
+-- @param nextToken [NextToken] <p>An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.</p>
+-- @param repositories [RepositoryNameIdPairList] <p>Lists the repositories called by the list repositories operation.</p>
 function M.ListRepositoriesOutput(nextToken, repositories, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRepositoriesOutput")
 	local t = { 
@@ -727,7 +727,7 @@ function M.AssertRepositoryTriggerNameRequiredException(struct)
 end
 
 --- Create a structure of type RepositoryTriggerNameRequiredException
--- &lt;p&gt;A name for the trigger is required but was not specified.&lt;/p&gt;
+-- <p>A name for the trigger is required but was not specified.</p>
 function M.RepositoryTriggerNameRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggerNameRequiredException")
 	local t = { 
@@ -747,7 +747,7 @@ function M.AssertRepositoryTriggerBranchNameListRequiredException(struct)
 end
 
 --- Create a structure of type RepositoryTriggerBranchNameListRequiredException
--- &lt;p&gt;At least one branch name is required but was not specified in the trigger configuration.&lt;/p&gt;
+-- <p>At least one branch name is required but was not specified in the trigger configuration.</p>
 function M.RepositoryTriggerBranchNameListRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggerBranchNameListRequiredException")
 	local t = { 
@@ -767,7 +767,7 @@ function M.AssertEncryptionIntegrityChecksFailedException(struct)
 end
 
 --- Create a structure of type EncryptionIntegrityChecksFailedException
--- &lt;p&gt;An encryption integrity check failed.&lt;/p&gt;
+-- <p>An encryption integrity check failed.</p>
 function M.EncryptionIntegrityChecksFailedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionIntegrityChecksFailedException")
 	local t = { 
@@ -797,17 +797,17 @@ function M.AssertRepositoryMetadata(struct)
 end
 
 --- Create a structure of type RepositoryMetadata
--- &lt;p&gt;Information about a repository.&lt;/p&gt;
--- @param creationDate [CreationDate] &lt;p&gt;The date and time the repository was created, in timestamp format.&lt;/p&gt;
--- @param defaultBranch [BranchName] &lt;p&gt;The repository's default branch name.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The repository's name.&lt;/p&gt;
--- @param cloneUrlSsh [CloneUrlSsh] &lt;p&gt;The URL to use for cloning the repository over SSH.&lt;/p&gt;
--- @param lastModifiedDate [LastModifiedDate] &lt;p&gt;The date and time the repository was last modified, in timestamp format.&lt;/p&gt;
--- @param repositoryDescription [RepositoryDescription] &lt;p&gt;A comment or description about the repository.&lt;/p&gt;
--- @param cloneUrlHttp [CloneUrlHttp] &lt;p&gt;The URL to use for cloning the repository over HTTPS.&lt;/p&gt;
--- @param repositoryId [RepositoryId] &lt;p&gt;The ID of the repository.&lt;/p&gt;
--- @param Arn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the repository.&lt;/p&gt;
--- @param accountId [AccountId] &lt;p&gt;The ID of the AWS account associated with the repository.&lt;/p&gt;
+-- <p>Information about a repository.</p>
+-- @param creationDate [CreationDate] <p>The date and time the repository was created, in timestamp format.</p>
+-- @param defaultBranch [BranchName] <p>The repository's default branch name.</p>
+-- @param repositoryName [RepositoryName] <p>The repository's name.</p>
+-- @param cloneUrlSsh [CloneUrlSsh] <p>The URL to use for cloning the repository over SSH.</p>
+-- @param lastModifiedDate [LastModifiedDate] <p>The date and time the repository was last modified, in timestamp format.</p>
+-- @param repositoryDescription [RepositoryDescription] <p>A comment or description about the repository.</p>
+-- @param cloneUrlHttp [CloneUrlHttp] <p>The URL to use for cloning the repository over HTTPS.</p>
+-- @param repositoryId [RepositoryId] <p>The ID of the repository.</p>
+-- @param Arn [Arn] <p>The Amazon Resource Name (ARN) of the repository.</p>
+-- @param accountId [AccountId] <p>The ID of the AWS account associated with the repository.</p>
 function M.RepositoryMetadata(creationDate, defaultBranch, repositoryName, cloneUrlSsh, lastModifiedDate, repositoryDescription, cloneUrlHttp, repositoryId, Arn, accountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryMetadata")
 	local t = { 
@@ -839,9 +839,9 @@ function M.AssertListBranchesOutput(struct)
 end
 
 --- Create a structure of type ListBranchesOutput
--- &lt;p&gt;Represents the output of a list branches operation.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;An enumeration token that returns the batch of the results.&lt;/p&gt;
--- @param branches [BranchNameList] &lt;p&gt;The list of branch names.&lt;/p&gt;
+-- <p>Represents the output of a list branches operation.</p>
+-- @param nextToken [NextToken] <p>An enumeration token that returns the batch of the results.</p>
+-- @param branches [BranchNameList] <p>The list of branch names.</p>
 function M.ListBranchesOutput(nextToken, branches, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListBranchesOutput")
 	local t = { 
@@ -865,9 +865,9 @@ function M.AssertTestRepositoryTriggersOutput(struct)
 end
 
 --- Create a structure of type TestRepositoryTriggersOutput
--- &lt;p&gt;Represents the output of a test repository triggers operation.&lt;/p&gt;
--- @param successfulExecutions [RepositoryTriggerNameList] &lt;p&gt;The list of triggers that were successfully tested. This list provides the names of the triggers that were successfully tested, separated by commas.&lt;/p&gt;
--- @param failedExecutions [RepositoryTriggerExecutionFailureList] &lt;p&gt;The list of triggers that were not able to be tested. This list provides the names of the triggers that could not be tested, separated by commas.&lt;/p&gt;
+-- <p>Represents the output of a test repository triggers operation.</p>
+-- @param successfulExecutions [RepositoryTriggerNameList] <p>The list of triggers that were successfully tested. This list provides the names of the triggers that were successfully tested, separated by commas.</p>
+-- @param failedExecutions [RepositoryTriggerExecutionFailureList] <p>The list of triggers that were not able to be tested. This list provides the names of the triggers that could not be tested, separated by commas.</p>
 function M.TestRepositoryTriggersOutput(successfulExecutions, failedExecutions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestRepositoryTriggersOutput")
 	local t = { 
@@ -892,10 +892,10 @@ function M.AssertListRepositoriesInput(struct)
 end
 
 --- Create a structure of type ListRepositoriesInput
--- &lt;p&gt;Represents the input of a list repositories operation.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.&lt;/p&gt;
--- @param sortBy [SortByEnum] &lt;p&gt;The criteria used to sort the results of a list repositories operation.&lt;/p&gt;
--- @param order [OrderEnum] &lt;p&gt;The order in which to sort the results of a list repositories operation.&lt;/p&gt;
+-- <p>Represents the input of a list repositories operation.</p>
+-- @param nextToken [NextToken] <p>An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.</p>
+-- @param sortBy [SortByEnum] <p>The criteria used to sort the results of a list repositories operation.</p>
+-- @param order [OrderEnum] <p>The order in which to sort the results of a list repositories operation.</p>
 function M.ListRepositoriesInput(nextToken, sortBy, order, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRepositoriesInput")
 	local t = { 
@@ -922,9 +922,9 @@ function M.AssertGetBlobInput(struct)
 end
 
 --- Create a structure of type GetBlobInput
--- &lt;p&gt;Represents the input of a get blob operation.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository that contains the blob.&lt;/p&gt;
--- @param blobId [ObjectId] &lt;p&gt;The ID of the blob, which is its SHA-1 pointer.&lt;/p&gt;
+-- <p>Represents the input of a get blob operation.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository that contains the blob.</p>
+-- @param blobId [ObjectId] <p>The ID of the blob, which is its SHA-1 pointer.</p>
 -- Required parameter: repositoryName
 -- Required parameter: blobId
 function M.GetBlobInput(repositoryName, blobId, ...)
@@ -948,7 +948,7 @@ function M.AssertRepositoryNameRequiredException(struct)
 end
 
 --- Create a structure of type RepositoryNameRequiredException
--- &lt;p&gt;A repository name is required but was not specified.&lt;/p&gt;
+-- <p>A repository name is required but was not specified.</p>
 function M.RepositoryNameRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNameRequiredException")
 	local t = { 
@@ -970,9 +970,9 @@ function M.AssertGetBranchInput(struct)
 end
 
 --- Create a structure of type GetBranchInput
--- &lt;p&gt;Represents the input of a get branch operation.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository that contains the branch for which you want to retrieve information.&lt;/p&gt;
--- @param branchName [BranchName] &lt;p&gt;The name of the branch for which you want to retrieve information.&lt;/p&gt;
+-- <p>Represents the input of a get branch operation.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository that contains the branch for which you want to retrieve information.</p>
+-- @param branchName [BranchName] <p>The name of the branch for which you want to retrieve information.</p>
 function M.GetBranchInput(repositoryName, branchName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBranchInput")
 	local t = { 
@@ -994,7 +994,7 @@ function M.AssertBranchDoesNotExistException(struct)
 end
 
 --- Create a structure of type BranchDoesNotExistException
--- &lt;p&gt;The specified branch does not exist.&lt;/p&gt;
+-- <p>The specified branch does not exist.</p>
 function M.BranchDoesNotExistException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BranchDoesNotExistException")
 	local t = { 
@@ -1016,8 +1016,8 @@ function M.AssertDeleteRepositoryInput(struct)
 end
 
 --- Create a structure of type DeleteRepositoryInput
--- &lt;p&gt;Represents the input of a delete repository operation.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository to delete.&lt;/p&gt;
+-- <p>Represents the input of a delete repository operation.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository to delete.</p>
 -- Required parameter: repositoryName
 function M.DeleteRepositoryInput(repositoryName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryInput")
@@ -1039,7 +1039,7 @@ function M.AssertInvalidCommitIdException(struct)
 end
 
 --- Create a structure of type InvalidCommitIdException
--- &lt;p&gt;The specified commit ID is not valid.&lt;/p&gt;
+-- <p>The specified commit ID is not valid.</p>
 function M.InvalidCommitIdException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCommitIdException")
 	local t = { 
@@ -1059,7 +1059,7 @@ function M.AssertInvalidRepositoryTriggerBranchNameException(struct)
 end
 
 --- Create a structure of type InvalidRepositoryTriggerBranchNameException
--- &lt;p&gt;One or more branch names specified for the trigger is not valid.&lt;/p&gt;
+-- <p>One or more branch names specified for the trigger is not valid.</p>
 function M.InvalidRepositoryTriggerBranchNameException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerBranchNameException")
 	local t = { 
@@ -1079,7 +1079,7 @@ function M.AssertMaximumBranchesExceededException(struct)
 end
 
 --- Create a structure of type MaximumBranchesExceededException
--- &lt;p&gt;The number of branches for the trigger was exceeded.&lt;/p&gt;
+-- <p>The number of branches for the trigger was exceeded.</p>
 function M.MaximumBranchesExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaximumBranchesExceededException")
 	local t = { 
@@ -1099,7 +1099,7 @@ function M.AssertInvalidPathException(struct)
 end
 
 --- Create a structure of type InvalidPathException
--- &lt;p&gt;The specified path is not valid.&lt;/p&gt;
+-- <p>The specified path is not valid.</p>
 function M.InvalidPathException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPathException")
 	local t = { 
@@ -1119,7 +1119,7 @@ function M.AssertBranchNameExistsException(struct)
 end
 
 --- Create a structure of type BranchNameExistsException
--- &lt;p&gt;The specified branch name already exists.&lt;/p&gt;
+-- <p>The specified branch name already exists.</p>
 function M.BranchNameExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BranchNameExistsException")
 	local t = { 
@@ -1141,8 +1141,8 @@ function M.AssertGetRepositoryInput(struct)
 end
 
 --- Create a structure of type GetRepositoryInput
--- &lt;p&gt;Represents the input of a get repository operation.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository to get information about.&lt;/p&gt;
+-- <p>Represents the input of a get repository operation.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository to get information about.</p>
 -- Required parameter: repositoryName
 function M.GetRepositoryInput(repositoryName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryInput")
@@ -1166,9 +1166,9 @@ function M.AssertRepositoryNameIdPair(struct)
 end
 
 --- Create a structure of type RepositoryNameIdPair
--- &lt;p&gt;Information about a repository name and ID.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name associated with the repository.&lt;/p&gt;
--- @param repositoryId [RepositoryId] &lt;p&gt;The ID associated with the repository.&lt;/p&gt;
+-- <p>Information about a repository name and ID.</p>
+-- @param repositoryName [RepositoryName] <p>The name associated with the repository.</p>
+-- @param repositoryId [RepositoryId] <p>The ID associated with the repository.</p>
 function M.RepositoryNameIdPair(repositoryName, repositoryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNameIdPair")
 	local t = { 
@@ -1193,10 +1193,10 @@ function M.AssertUserInfo(struct)
 end
 
 --- Create a structure of type UserInfo
--- &lt;p&gt;Information about the user who made a specified commit.&lt;/p&gt;
--- @param date [Date] &lt;p&gt;The date when the specified commit was pushed to the repository.&lt;/p&gt;
--- @param name [Name] &lt;p&gt;The name of the user who made the specified commit.&lt;/p&gt;
--- @param email [Email] &lt;p&gt;The email address associated with the user who made the commit, if any.&lt;/p&gt;
+-- <p>Information about the user who made a specified commit.</p>
+-- @param date [Date] <p>The date when the specified commit was pushed to the repository.</p>
+-- @param name [Name] <p>The name of the user who made the specified commit.</p>
+-- @param email [Email] <p>The email address associated with the user who made the commit, if any.</p>
 function M.UserInfo(date, name, email, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserInfo")
 	local t = { 
@@ -1219,7 +1219,7 @@ function M.AssertFileTooLargeException(struct)
 end
 
 --- Create a structure of type FileTooLargeException
--- &lt;p&gt;The specified file exceeds the file size limit for AWS CodeCommit. For more information about limits in AWS CodeCommit, see &lt;a href=&quot;http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html&quot;&gt;AWS CodeCommit User Guide&lt;/a&gt;.&lt;/p&gt;
+-- <p>The specified file exceeds the file size limit for AWS CodeCommit. For more information about limits in AWS CodeCommit, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">AWS CodeCommit User Guide</a>.</p>
 function M.FileTooLargeException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FileTooLargeException")
 	local t = { 
@@ -1239,7 +1239,7 @@ function M.AssertCommitIdRequiredException(struct)
 end
 
 --- Create a structure of type CommitIdRequiredException
--- &lt;p&gt;A commit ID was not specified.&lt;/p&gt;
+-- <p>A commit ID was not specified.</p>
 function M.CommitIdRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CommitIdRequiredException")
 	local t = { 
@@ -1259,7 +1259,7 @@ function M.AssertMaximumRepositoryTriggersExceededException(struct)
 end
 
 --- Create a structure of type MaximumRepositoryTriggersExceededException
--- &lt;p&gt;The number of triggers allowed for the repository was exceeded.&lt;/p&gt;
+-- <p>The number of triggers allowed for the repository was exceeded.</p>
 function M.MaximumRepositoryTriggersExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaximumRepositoryTriggersExceededException")
 	local t = { 
@@ -1279,7 +1279,7 @@ function M.AssertRepositoryTriggersListRequiredException(struct)
 end
 
 --- Create a structure of type RepositoryTriggersListRequiredException
--- &lt;p&gt;The list of triggers for the repository is required but was not specified.&lt;/p&gt;
+-- <p>The list of triggers for the repository is required but was not specified.</p>
 function M.RepositoryTriggersListRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggersListRequiredException")
 	local t = { 
@@ -1299,7 +1299,7 @@ function M.AssertRepositoryTriggerDestinationArnRequiredException(struct)
 end
 
 --- Create a structure of type RepositoryTriggerDestinationArnRequiredException
--- &lt;p&gt;A destination ARN for the target service for the trigger is required but was not specified.&lt;/p&gt;
+-- <p>A destination ARN for the target service for the trigger is required but was not specified.</p>
 function M.RepositoryTriggerDestinationArnRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggerDestinationArnRequiredException")
 	local t = { 
@@ -1319,7 +1319,7 @@ function M.AssertInvalidCommitException(struct)
 end
 
 --- Create a structure of type InvalidCommitException
--- &lt;p&gt;The specified commit is not valid.&lt;/p&gt;
+-- <p>The specified commit is not valid.</p>
 function M.InvalidCommitException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCommitException")
 	local t = { 
@@ -1343,9 +1343,9 @@ function M.AssertUpdateDefaultBranchInput(struct)
 end
 
 --- Create a structure of type UpdateDefaultBranchInput
--- &lt;p&gt;Represents the input of an update default branch operation.&lt;/p&gt;
--- @param defaultBranchName [BranchName] &lt;p&gt;The name of the branch to set as the default.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository to set or change the default branch for.&lt;/p&gt;
+-- <p>Represents the input of an update default branch operation.</p>
+-- @param defaultBranchName [BranchName] <p>The name of the branch to set as the default.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository to set or change the default branch for.</p>
 -- Required parameter: repositoryName
 -- Required parameter: defaultBranchName
 function M.UpdateDefaultBranchInput(defaultBranchName, repositoryName, ...)
@@ -1375,10 +1375,10 @@ function M.AssertCreateBranchInput(struct)
 end
 
 --- Create a structure of type CreateBranchInput
--- &lt;p&gt;Represents the input of a create branch operation.&lt;/p&gt;
--- @param commitId [CommitId] &lt;p&gt;The ID of the commit to point the new branch to.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository in which you want to create the new branch.&lt;/p&gt;
--- @param branchName [BranchName] &lt;p&gt;The name of the new branch to create.&lt;/p&gt;
+-- <p>Represents the input of a create branch operation.</p>
+-- @param commitId [CommitId] <p>The ID of the commit to point the new branch to.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository in which you want to create the new branch.</p>
+-- @param branchName [BranchName] <p>The name of the new branch to create.</p>
 -- Required parameter: repositoryName
 -- Required parameter: branchName
 -- Required parameter: commitId
@@ -1405,8 +1405,8 @@ function M.AssertGetBranchOutput(struct)
 end
 
 --- Create a structure of type GetBranchOutput
--- &lt;p&gt;Represents the output of a get branch operation.&lt;/p&gt;
--- @param branch [BranchInfo] &lt;p&gt;The name of the branch.&lt;/p&gt;
+-- <p>Represents the output of a get branch operation.</p>
+-- @param branch [BranchInfo] <p>The name of the branch.</p>
 function M.GetBranchOutput(branch, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBranchOutput")
 	local t = { 
@@ -1429,8 +1429,8 @@ function M.AssertGetCommitOutput(struct)
 end
 
 --- Create a structure of type GetCommitOutput
--- &lt;p&gt;Represents the output of a get commit operation.&lt;/p&gt;
--- @param commit [Commit] &lt;p&gt;A commit data type object that contains information about the specified commit.&lt;/p&gt;
+-- <p>Represents the output of a get commit operation.</p>
+-- @param commit [Commit] <p>A commit data type object that contains information about the specified commit.</p>
 -- Required parameter: commit
 function M.GetCommitOutput(commit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCommitOutput")
@@ -1462,13 +1462,13 @@ end
 
 --- Create a structure of type GetDifferencesInput
 --  
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository where you want to get differences.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;An enumeration token that when provided in a request, returns the next batch of the results.&lt;/p&gt;
--- @param afterPath [Path] &lt;p&gt;The file path in which to check differences. Limits the results to this path. Can also be used to specify the changed name of a directory or folder, if it has changed. If not specified, differences will be shown for all paths.&lt;/p&gt;
--- @param MaxResults [Limit] &lt;p&gt;A non-negative integer used to limit the number of returned results.&lt;/p&gt;
--- @param beforeCommitSpecifier [CommitName] &lt;p&gt;The branch, tag, HEAD, or other fully qualified reference used to identify a commit. For example, the full commit ID. Optional. If not specified, all changes prior to the &lt;code&gt;afterCommitSpecifier&lt;/code&gt; value will be shown. If you do not use &lt;code&gt;beforeCommitSpecifier&lt;/code&gt; in your request, consider limiting the results with &lt;code&gt;maxResults&lt;/code&gt;.&lt;/p&gt;
--- @param beforePath [Path] &lt;p&gt;The file path in which to check for differences. Limits the results to this path. Can also be used to specify the previous name of a directory or folder. If &lt;code&gt;beforePath&lt;/code&gt; and &lt;code&gt;afterPath&lt;/code&gt; are not specified, differences will be shown for all paths.&lt;/p&gt;
--- @param afterCommitSpecifier [CommitName] &lt;p&gt;The branch, tag, HEAD, or other fully qualified reference used to identify a commit.&lt;/p&gt;
+-- @param repositoryName [RepositoryName] <p>The name of the repository where you want to get differences.</p>
+-- @param NextToken [NextToken] <p>An enumeration token that when provided in a request, returns the next batch of the results.</p>
+-- @param afterPath [Path] <p>The file path in which to check differences. Limits the results to this path. Can also be used to specify the changed name of a directory or folder, if it has changed. If not specified, differences will be shown for all paths.</p>
+-- @param MaxResults [Limit] <p>A non-negative integer used to limit the number of returned results.</p>
+-- @param beforeCommitSpecifier [CommitName] <p>The branch, tag, HEAD, or other fully qualified reference used to identify a commit. For example, the full commit ID. Optional. If not specified, all changes prior to the <code>afterCommitSpecifier</code> value will be shown. If you do not use <code>beforeCommitSpecifier</code> in your request, consider limiting the results with <code>maxResults</code>.</p>
+-- @param beforePath [Path] <p>The file path in which to check for differences. Limits the results to this path. Can also be used to specify the previous name of a directory or folder. If <code>beforePath</code> and <code>afterPath</code> are not specified, differences will be shown for all paths.</p>
+-- @param afterCommitSpecifier [CommitName] <p>The branch, tag, HEAD, or other fully qualified reference used to identify a commit.</p>
 -- Required parameter: repositoryName
 -- Required parameter: afterCommitSpecifier
 function M.GetDifferencesInput(repositoryName, NextToken, afterPath, MaxResults, beforeCommitSpecifier, beforePath, afterCommitSpecifier, ...)
@@ -1499,8 +1499,8 @@ function M.AssertGetRepositoryTriggersInput(struct)
 end
 
 --- Create a structure of type GetRepositoryTriggersInput
--- &lt;p&gt;Represents the input of a get repository triggers operation.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository for which the trigger is configured.&lt;/p&gt;
+-- <p>Represents the input of a get repository triggers operation.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository for which the trigger is configured.</p>
 -- Required parameter: repositoryName
 function M.GetRepositoryTriggersInput(repositoryName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryTriggersInput")
@@ -1526,9 +1526,9 @@ function M.AssertUpdateRepositoryNameInput(struct)
 end
 
 --- Create a structure of type UpdateRepositoryNameInput
--- &lt;p&gt;Represents the input of an update repository description operation.&lt;/p&gt;
--- @param newName [RepositoryName] &lt;p&gt;The new name for the repository.&lt;/p&gt;
--- @param oldName [RepositoryName] &lt;p&gt;The existing name of the repository.&lt;/p&gt;
+-- <p>Represents the input of an update repository description operation.</p>
+-- @param newName [RepositoryName] <p>The new name for the repository.</p>
+-- @param oldName [RepositoryName] <p>The existing name of the repository.</p>
 -- Required parameter: oldName
 -- Required parameter: newName
 function M.UpdateRepositoryNameInput(newName, oldName, ...)
@@ -1552,7 +1552,7 @@ function M.AssertMaximumRepositoryNamesExceededException(struct)
 end
 
 --- Create a structure of type MaximumRepositoryNamesExceededException
--- &lt;p&gt;The maximum number of allowed repository names was exceeded. Currently, this number is 25.&lt;/p&gt;
+-- <p>The maximum number of allowed repository names was exceeded. Currently, this number is 25.</p>
 function M.MaximumRepositoryNamesExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaximumRepositoryNamesExceededException")
 	local t = { 
@@ -1572,7 +1572,7 @@ function M.AssertRepositoryNamesRequiredException(struct)
 end
 
 --- Create a structure of type RepositoryNamesRequiredException
--- &lt;p&gt;A repository names object is required but was not specified.&lt;/p&gt;
+-- <p>A repository names object is required but was not specified.</p>
 function M.RepositoryNamesRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNamesRequiredException")
 	local t = { 
@@ -1595,8 +1595,8 @@ end
 
 --- Create a structure of type GetDifferencesOutput
 --  
--- @param differences [DifferenceList] &lt;p&gt;A differences data type object that contains information about the differences, including whether the difference is added, modified, or deleted (A, D, M).&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;An enumeration token that can be used in a request to return the next batch of the results.&lt;/p&gt;
+-- @param differences [DifferenceList] <p>A differences data type object that contains information about the differences, including whether the difference is added, modified, or deleted (A, D, M).</p>
+-- @param NextToken [NextToken] <p>An enumeration token that can be used in a request to return the next batch of the results.</p>
 function M.GetDifferencesOutput(differences, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDifferencesOutput")
 	local t = { 
@@ -1621,9 +1621,9 @@ function M.AssertCreateRepositoryInput(struct)
 end
 
 --- Create a structure of type CreateRepositoryInput
--- &lt;p&gt;Represents the input of a create repository operation.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the new repository to be created.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. For a full description of the limits on repository names, see &lt;a href=&quot;http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html&quot;&gt;Limits&lt;/a&gt; in the AWS CodeCommit User Guide. The suffix &quot;.git&quot; is prohibited.&lt;/p&gt; &lt;/note&gt;
--- @param repositoryDescription [RepositoryDescription] &lt;p&gt;A comment or description about the new repository.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.&lt;/p&gt; &lt;/note&gt;
+-- <p>Represents the input of a create repository operation.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the new repository to be created.</p> <note> <p>The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. For a full description of the limits on repository names, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User Guide. The suffix ".git" is prohibited.</p> </note>
+-- @param repositoryDescription [RepositoryDescription] <p>A comment or description about the new repository.</p> <note> <p>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</p> </note>
 -- Required parameter: repositoryName
 function M.CreateRepositoryInput(repositoryName, repositoryDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRepositoryInput")
@@ -1646,7 +1646,7 @@ function M.AssertInvalidRepositoryTriggerCustomDataException(struct)
 end
 
 --- Create a structure of type InvalidRepositoryTriggerCustomDataException
--- &lt;p&gt;The custom data provided for the trigger is not valid.&lt;/p&gt;
+-- <p>The custom data provided for the trigger is not valid.</p>
 function M.InvalidRepositoryTriggerCustomDataException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerCustomDataException")
 	local t = { 
@@ -1666,7 +1666,7 @@ function M.AssertEncryptionKeyDisabledException(struct)
 end
 
 --- Create a structure of type EncryptionKeyDisabledException
--- &lt;p&gt;The encryption key is disabled.&lt;/p&gt;
+-- <p>The encryption key is disabled.</p>
 function M.EncryptionKeyDisabledException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionKeyDisabledException")
 	local t = { 
@@ -1686,7 +1686,7 @@ function M.AssertCommitRequiredException(struct)
 end
 
 --- Create a structure of type CommitRequiredException
--- &lt;p&gt;A commit was not specified.&lt;/p&gt;
+-- <p>A commit was not specified.</p>
 function M.CommitRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CommitRequiredException")
 	local t = { 
@@ -1706,7 +1706,7 @@ function M.AssertInvalidMaxResultsException(struct)
 end
 
 --- Create a structure of type InvalidMaxResultsException
--- &lt;p&gt;The specified number of maximum results is not valid.&lt;/p&gt;
+-- <p>The specified number of maximum results is not valid.</p>
 function M.InvalidMaxResultsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidMaxResultsException")
 	local t = { 
@@ -1726,7 +1726,7 @@ function M.AssertInvalidBlobIdException(struct)
 end
 
 --- Create a structure of type InvalidBlobIdException
--- &lt;p&gt;The specified blob is not valid.&lt;/p&gt;
+-- <p>The specified blob is not valid.</p>
 function M.InvalidBlobIdException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidBlobIdException")
 	local t = { 
@@ -1746,7 +1746,7 @@ function M.AssertInvalidContinuationTokenException(struct)
 end
 
 --- Create a structure of type InvalidContinuationTokenException
--- &lt;p&gt;The specified continuation token is not valid.&lt;/p&gt;
+-- <p>The specified continuation token is not valid.</p>
 function M.InvalidContinuationTokenException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidContinuationTokenException")
 	local t = { 
@@ -1766,7 +1766,7 @@ function M.AssertEncryptionKeyNotFoundException(struct)
 end
 
 --- Create a structure of type EncryptionKeyNotFoundException
--- &lt;p&gt;No encryption key was found.&lt;/p&gt;
+-- <p>No encryption key was found.</p>
 function M.EncryptionKeyNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionKeyNotFoundException")
 	local t = { 
@@ -1788,8 +1788,8 @@ function M.AssertGetBlobOutput(struct)
 end
 
 --- Create a structure of type GetBlobOutput
--- &lt;p&gt;Represents the output of a get blob operation.&lt;/p&gt;
--- @param content [blob] &lt;p&gt;The content of the blob, usually a file.&lt;/p&gt;
+-- <p>Represents the output of a get blob operation.</p>
+-- @param content [blob] <p>The content of the blob, usually a file.</p>
 -- Required parameter: content
 function M.GetBlobOutput(content, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBlobOutput")
@@ -1811,7 +1811,7 @@ function M.AssertRepositoryTriggerEventsListRequiredException(struct)
 end
 
 --- Create a structure of type RepositoryTriggerEventsListRequiredException
--- &lt;p&gt;At least one event for the trigger is required but was not specified.&lt;/p&gt;
+-- <p>At least one event for the trigger is required but was not specified.</p>
 function M.RepositoryTriggerEventsListRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggerEventsListRequiredException")
 	local t = { 
@@ -1833,9 +1833,9 @@ function M.AssertRepositoryTriggerExecutionFailure(struct)
 end
 
 --- Create a structure of type RepositoryTriggerExecutionFailure
--- &lt;p&gt;A trigger failed to run.&lt;/p&gt;
--- @param trigger [RepositoryTriggerName] &lt;p&gt;The name of the trigger that did not run.&lt;/p&gt;
--- @param failureMessage [RepositoryTriggerExecutionFailureMessage] &lt;p&gt;Additional message information about the trigger that did not run.&lt;/p&gt;
+-- <p>A trigger failed to run.</p>
+-- @param trigger [RepositoryTriggerName] <p>The name of the trigger that did not run.</p>
+-- @param failureMessage [RepositoryTriggerExecutionFailureMessage] <p>Additional message information about the trigger that did not run.</p>
 function M.RepositoryTriggerExecutionFailure(trigger, failureMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggerExecutionFailure")
 	local t = { 
@@ -1857,7 +1857,7 @@ function M.AssertInvalidRepositoryTriggerEventsException(struct)
 end
 
 --- Create a structure of type InvalidRepositoryTriggerEventsException
--- &lt;p&gt;One or more events specified for the trigger is not valid. Check to make sure that all events specified match the requirements for allowed events.&lt;/p&gt;
+-- <p>One or more events specified for the trigger is not valid. Check to make sure that all events specified match the requirements for allowed events.</p>
 function M.InvalidRepositoryTriggerEventsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerEventsException")
 	local t = { 
@@ -1880,10 +1880,10 @@ function M.AssertDifference(struct)
 end
 
 --- Create a structure of type Difference
--- &lt;p&gt;Returns information about a set of differences for a commit specifier.&lt;/p&gt;
--- @param afterBlob [BlobMetadata] &lt;p&gt;Information about an &lt;code&gt;afterBlob&lt;/code&gt; data type object, including the ID, the file mode permission code, and the path.&lt;/p&gt;
--- @param changeType [ChangeTypeEnum] &lt;p&gt;Whether the change type of the difference is an addition (A), deletion (D), or modification (M).&lt;/p&gt;
--- @param beforeBlob [BlobMetadata] &lt;p&gt;Information about a &lt;code&gt;beforeBlob&lt;/code&gt; data type object, including the ID, the file mode permission code, and the path.&lt;/p&gt;
+-- <p>Returns information about a set of differences for a commit specifier.</p>
+-- @param afterBlob [BlobMetadata] <p>Information about an <code>afterBlob</code> data type object, including the ID, the file mode permission code, and the path.</p>
+-- @param changeType [ChangeTypeEnum] <p>Whether the change type of the difference is an addition (A), deletion (D), or modification (M).</p>
+-- @param beforeBlob [BlobMetadata] <p>Information about a <code>beforeBlob</code> data type object, including the ID, the file mode permission code, and the path.</p>
 function M.Difference(afterBlob, changeType, beforeBlob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Difference")
 	local t = { 
@@ -1907,8 +1907,8 @@ function M.AssertCreateRepositoryOutput(struct)
 end
 
 --- Create a structure of type CreateRepositoryOutput
--- &lt;p&gt;Represents the output of a create repository operation.&lt;/p&gt;
--- @param repositoryMetadata [RepositoryMetadata] &lt;p&gt;Information about the newly created repository.&lt;/p&gt;
+-- <p>Represents the output of a create repository operation.</p>
+-- @param repositoryMetadata [RepositoryMetadata] <p>Information about the newly created repository.</p>
 function M.CreateRepositoryOutput(repositoryMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRepositoryOutput")
 	local t = { 
@@ -1931,8 +1931,8 @@ function M.AssertBatchGetRepositoriesInput(struct)
 end
 
 --- Create a structure of type BatchGetRepositoriesInput
--- &lt;p&gt;Represents the input of a batch get repositories operation.&lt;/p&gt;
--- @param repositoryNames [RepositoryNameList] &lt;p&gt;The names of the repositories to get information about.&lt;/p&gt;
+-- <p>Represents the input of a batch get repositories operation.</p>
+-- @param repositoryNames [RepositoryNameList] <p>The names of the repositories to get information about.</p>
 -- Required parameter: repositoryNames
 function M.BatchGetRepositoriesInput(repositoryNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetRepositoriesInput")
@@ -1954,7 +1954,7 @@ function M.AssertInvalidRepositoryNameException(struct)
 end
 
 --- Create a structure of type InvalidRepositoryNameException
--- &lt;p&gt;At least one specified repository name is not valid.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This exception only occurs when a specified repository name is not valid. Other exceptions occur when a required repository parameter is missing, or when a specified repository does not exist.&lt;/p&gt; &lt;/note&gt;
+-- <p>At least one specified repository name is not valid.</p> <note> <p>This exception only occurs when a specified repository name is not valid. Other exceptions occur when a required repository parameter is missing, or when a specified repository does not exist.</p> </note>
 function M.InvalidRepositoryNameException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryNameException")
 	local t = { 
@@ -1974,7 +1974,7 @@ function M.AssertBlobIdDoesNotExistException(struct)
 end
 
 --- Create a structure of type BlobIdDoesNotExistException
--- &lt;p&gt;The specified blob does not exist.&lt;/p&gt;
+-- <p>The specified blob does not exist.</p>
 function M.BlobIdDoesNotExistException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BlobIdDoesNotExistException")
 	local t = { 
@@ -1997,10 +1997,10 @@ function M.AssertBlobMetadata(struct)
 end
 
 --- Create a structure of type BlobMetadata
--- &lt;p&gt;Returns information about a specific Git blob object.&lt;/p&gt;
--- @param path [Path] &lt;p&gt;The path to the blob and any associated file name, if any.&lt;/p&gt;
--- @param blobId [ObjectId] &lt;p&gt;The full ID of the blob.&lt;/p&gt;
--- @param mode [Mode] &lt;p&gt;The file mode permissions of the blob. File mode permission codes include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;100644&lt;/code&gt; indicates read/write&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;100755&lt;/code&gt; indicates read/write/execute&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;160000&lt;/code&gt; indicates a submodule&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;120000&lt;/code&gt; indicates a symlink&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Returns information about a specific Git blob object.</p>
+-- @param path [Path] <p>The path to the blob and any associated file name, if any.</p>
+-- @param blobId [ObjectId] <p>The full ID of the blob.</p>
+-- @param mode [Mode] <p>The file mode permissions of the blob. File mode permission codes include:</p> <ul> <li> <p> <code>100644</code> indicates read/write</p> </li> <li> <p> <code>100755</code> indicates read/write/execute</p> </li> <li> <p> <code>160000</code> indicates a submodule</p> </li> <li> <p> <code>120000</code> indicates a symlink</p> </li> </ul>
 function M.BlobMetadata(path, blobId, mode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BlobMetadata")
 	local t = { 
@@ -2023,7 +2023,7 @@ function M.AssertInvalidRepositoryTriggerRegionException(struct)
 end
 
 --- Create a structure of type InvalidRepositoryTriggerRegionException
--- &lt;p&gt;The region for the trigger target does not match the region for the repository. Triggers must be created in the same region as the target for the trigger.&lt;/p&gt;
+-- <p>The region for the trigger target does not match the region for the repository. Triggers must be created in the same region as the target for the trigger.</p>
 function M.InvalidRepositoryTriggerRegionException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerRegionException")
 	local t = { 
@@ -2043,7 +2043,7 @@ function M.AssertCommitIdDoesNotExistException(struct)
 end
 
 --- Create a structure of type CommitIdDoesNotExistException
--- &lt;p&gt;The specified commit ID does not exist.&lt;/p&gt;
+-- <p>The specified commit ID does not exist.</p>
 function M.CommitIdDoesNotExistException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CommitIdDoesNotExistException")
 	local t = { 

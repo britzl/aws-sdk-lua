@@ -31,9 +31,9 @@ function M.AssertInvalidRequestException(struct)
 end
 
 --- Create a structure of type InvalidRequestException
--- &lt;p&gt;Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.&lt;/p&gt;
--- @param AthenaErrorCode [ErrorCode] &lt;p&gt;Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.&lt;/p&gt;
+-- <p>Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.</p>
+-- @param AthenaErrorCode [ErrorCode] <p>Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.</p>
+-- @param Message [ErrorMessage] <p>Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.</p>
 function M.InvalidRequestException(AthenaErrorCode, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
@@ -64,11 +64,11 @@ end
 
 --- Create a structure of type CreateNamedQueryInput
 --  
--- @param ClientRequestToken [IdempotencyToken] &lt;p&gt;A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another &lt;code&gt;CreateNamedQuery&lt;/code&gt; request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the &lt;code&gt;QueryString&lt;/code&gt;, an error is returned.&lt;/p&gt; &lt;important&gt; &lt;p&gt;This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.&lt;/p&gt; &lt;/important&gt;
--- @param Database [DatabaseString] &lt;p&gt;The database to which the query belongs.&lt;/p&gt;
--- @param QueryString [QueryString] &lt;p&gt;The text of the query itself. In other words, all query statements.&lt;/p&gt;
--- @param Name [NameString] &lt;p&gt;The plain language name for the query.&lt;/p&gt;
--- @param Description [DescriptionString] &lt;p&gt;A brief explanation of the query.&lt;/p&gt;
+-- @param ClientRequestToken [IdempotencyToken] <p>A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another <code>CreateNamedQuery</code> request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the <code>QueryString</code>, an error is returned.</p> <important> <p>This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.</p> </important>
+-- @param Database [DatabaseString] <p>The database to which the query belongs.</p>
+-- @param QueryString [QueryString] <p>The text of the query itself. In other words, all query statements.</p>
+-- @param Name [NameString] <p>The plain language name for the query.</p>
+-- @param Description [DescriptionString] <p>A brief explanation of the query.</p>
 -- Required parameter: Name
 -- Required parameter: Database
 -- Required parameter: QueryString
@@ -99,8 +99,8 @@ end
 
 --- Create a structure of type ListQueryExecutionsOutput
 --  
--- @param NextToken [Token] &lt;p&gt;A token to be used by the next request if this request is truncated.&lt;/p&gt;
--- @param QueryExecutionIds [QueryExecutionIdList] &lt;p&gt;The unique IDs of each query execution as an array of strings.&lt;/p&gt;
+-- @param NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
+-- @param QueryExecutionIds [QueryExecutionIdList] <p>The unique IDs of each query execution as an array of strings.</p>
 function M.ListQueryExecutionsOutput(NextToken, QueryExecutionIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListQueryExecutionsOutput")
 	local t = { 
@@ -124,9 +124,9 @@ function M.AssertResultSet(struct)
 end
 
 --- Create a structure of type ResultSet
--- &lt;p&gt;The metadata and rows that comprise a query result set. The metadata describes the column structure and data types.&lt;/p&gt;
--- @param Rows [RowList] &lt;p&gt;The rows in the table.&lt;/p&gt;
--- @param ResultSetMetadata [ResultSetMetadata] &lt;p&gt;The metadata that describes the column structure and data types of a table of query results.&lt;/p&gt;
+-- <p>The metadata and rows that comprise a query result set. The metadata describes the column structure and data types.</p>
+-- @param Rows [RowList] <p>The rows in the table.</p>
+-- @param ResultSetMetadata [ResultSetMetadata] <p>The metadata that describes the column structure and data types of a table of query results.</p>
 function M.ResultSet(Rows, ResultSetMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResultSet")
 	local t = { 
@@ -149,8 +149,8 @@ function M.AssertInternalServerException(struct)
 end
 
 --- Create a structure of type InternalServerException
--- &lt;p&gt;Indicates a platform issue, which may be due to a transient condition or outage.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Indicates a platform issue, which may be due to a transient condition or outage.&lt;/p&gt;
+-- <p>Indicates a platform issue, which may be due to a transient condition or outage.</p>
+-- @param Message [ErrorMessage] <p>Indicates a platform issue, which may be due to a transient condition or outage.</p>
 function M.InternalServerException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerException")
 	local t = { 
@@ -174,9 +174,9 @@ function M.AssertEncryptionConfiguration(struct)
 end
 
 --- Create a structure of type EncryptionConfiguration
--- &lt;p&gt;If query results are encrypted in Amazon S3, indicates the Amazon S3 encryption option used.&lt;/p&gt;
--- @param EncryptionOption [EncryptionOption] &lt;p&gt;Indicates whether Amazon S3 server-side encryption with Amazon S3-managed keys (&lt;code&gt;SSE-S3&lt;/code&gt;), server-side encryption with KMS-managed keys (&lt;code&gt;SSE-KMS&lt;/code&gt;), or client-side encryption with KMS-managed keys (CSE-KMS) is used.&lt;/p&gt;
--- @param KmsKey [String] &lt;p&gt;For &lt;code&gt;SSE-KMS&lt;/code&gt; and &lt;code&gt;CSE-KMS&lt;/code&gt;, this is the KMS key ARN or ID.&lt;/p&gt;
+-- <p>If query results are encrypted in Amazon S3, indicates the Amazon S3 encryption option used.</p>
+-- @param EncryptionOption [EncryptionOption] <p>Indicates whether Amazon S3 server-side encryption with Amazon S3-managed keys (<code>SSE-S3</code>), server-side encryption with KMS-managed keys (<code>SSE-KMS</code>), or client-side encryption with KMS-managed keys (CSE-KMS) is used.</p>
+-- @param KmsKey [String] <p>For <code>SSE-KMS</code> and <code>CSE-KMS</code>, this is the KMS key ARN or ID.</p>
 -- Required parameter: EncryptionOption
 function M.EncryptionConfiguration(EncryptionOption, KmsKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionConfiguration")
@@ -206,10 +206,10 @@ end
 
 --- Create a structure of type StartQueryExecutionInput
 --  
--- @param ResultConfiguration [ResultConfiguration] &lt;p&gt;Specifies information about where and how to save the results of the query execution.&lt;/p&gt;
--- @param QueryExecutionContext [QueryExecutionContext] &lt;p&gt;The database within which the query executes.&lt;/p&gt;
--- @param QueryString [QueryString] &lt;p&gt;The SQL query statements to be executed.&lt;/p&gt;
--- @param ClientRequestToken [IdempotencyToken] &lt;p&gt;A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another &lt;code&gt;StartQueryExecution&lt;/code&gt; request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the &lt;code&gt;QueryString&lt;/code&gt;, an error is returned.&lt;/p&gt; &lt;important&gt; &lt;p&gt;This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.&lt;/p&gt; &lt;/important&gt;
+-- @param ResultConfiguration [ResultConfiguration] <p>Specifies information about where and how to save the results of the query execution.</p>
+-- @param QueryExecutionContext [QueryExecutionContext] <p>The database within which the query executes.</p>
+-- @param QueryString [QueryString] <p>The SQL query statements to be executed.</p>
+-- @param ClientRequestToken [IdempotencyToken] <p>A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another <code>StartQueryExecution</code> request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the <code>QueryString</code>, an error is returned.</p> <important> <p>This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.</p> </important>
 -- Required parameter: QueryString
 -- Required parameter: ResultConfiguration
 function M.StartQueryExecutionInput(ResultConfiguration, QueryExecutionContext, QueryString, ClientRequestToken, ...)
@@ -237,7 +237,7 @@ end
 
 --- Create a structure of type GetQueryExecutionOutput
 --  
--- @param QueryExecution [QueryExecution] &lt;p&gt;Information about the query execution.&lt;/p&gt;
+-- @param QueryExecution [QueryExecution] <p>Information about the query execution.</p>
 function M.GetQueryExecutionOutput(QueryExecution, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetQueryExecutionOutput")
 	local t = { 
@@ -261,7 +261,7 @@ end
 
 --- Create a structure of type GetNamedQueryInput
 --  
--- @param NamedQueryId [NamedQueryId] &lt;p&gt;The unique ID of the query. Use &lt;a&gt;ListNamedQueries&lt;/a&gt; to get query IDs.&lt;/p&gt;
+-- @param NamedQueryId [NamedQueryId] <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
 -- Required parameter: NamedQueryId
 function M.GetNamedQueryInput(NamedQueryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetNamedQueryInput")
@@ -285,7 +285,7 @@ end
 
 --- Create a structure of type GetNamedQueryOutput
 --  
--- @param NamedQuery [NamedQuery] &lt;p&gt;Information about the query.&lt;/p&gt;
+-- @param NamedQuery [NamedQuery] <p>Information about the query.</p>
 function M.GetNamedQueryOutput(NamedQuery, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetNamedQueryOutput")
 	local t = { 
@@ -309,7 +309,7 @@ end
 
 --- Create a structure of type GetQueryExecutionInput
 --  
--- @param QueryExecutionId [QueryExecutionId] &lt;p&gt;The unique ID of the query execution.&lt;/p&gt;
+-- @param QueryExecutionId [QueryExecutionId] <p>The unique ID of the query execution.</p>
 -- Required parameter: QueryExecutionId
 function M.GetQueryExecutionInput(QueryExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetQueryExecutionInput")
@@ -339,12 +339,12 @@ function M.AssertNamedQuery(struct)
 end
 
 --- Create a structure of type NamedQuery
--- &lt;p&gt;A query, where &lt;code&gt;QueryString&lt;/code&gt; is the SQL query statements that comprise the query.&lt;/p&gt;
--- @param Database [DatabaseString] &lt;p&gt;The database to which the query belongs.&lt;/p&gt;
--- @param QueryString [QueryString] &lt;p&gt;The SQL query statements that comprise the query.&lt;/p&gt;
--- @param Name [NameString] &lt;p&gt;The plain-language name of the query.&lt;/p&gt;
--- @param NamedQueryId [NamedQueryId] &lt;p&gt;The unique identifier of the query.&lt;/p&gt;
--- @param Description [DescriptionString] &lt;p&gt;A brief description of the query.&lt;/p&gt;
+-- <p>A query, where <code>QueryString</code> is the SQL query statements that comprise the query.</p>
+-- @param Database [DatabaseString] <p>The database to which the query belongs.</p>
+-- @param QueryString [QueryString] <p>The SQL query statements that comprise the query.</p>
+-- @param Name [NameString] <p>The plain-language name of the query.</p>
+-- @param NamedQueryId [NamedQueryId] <p>The unique identifier of the query.</p>
+-- @param Description [DescriptionString] <p>A brief description of the query.</p>
 -- Required parameter: Name
 -- Required parameter: Database
 -- Required parameter: QueryString
@@ -374,7 +374,7 @@ end
 
 --- Create a structure of type StartQueryExecutionOutput
 --  
--- @param QueryExecutionId [QueryExecutionId] &lt;p&gt;The unique ID of the query that ran as a result of this request.&lt;/p&gt;
+-- @param QueryExecutionId [QueryExecutionId] <p>The unique ID of the query that ran as a result of this request.</p>
 function M.StartQueryExecutionOutput(QueryExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartQueryExecutionOutput")
 	local t = { 
@@ -398,8 +398,8 @@ end
 
 --- Create a structure of type ListNamedQueriesInput
 --  
--- @param NextToken [Token] &lt;p&gt;The token that specifies where to start pagination if a previous request was truncated.&lt;/p&gt;
--- @param MaxResults [MaxNamedQueriesCount] &lt;p&gt;The maximum number of queries to return in this request.&lt;/p&gt;
+-- @param NextToken [Token] <p>The token that specifies where to start pagination if a previous request was truncated.</p>
+-- @param MaxResults [MaxNamedQueriesCount] <p>The maximum number of queries to return in this request.</p>
 function M.ListNamedQueriesInput(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListNamedQueriesInput")
 	local t = { 
@@ -426,9 +426,9 @@ end
 
 --- Create a structure of type GetQueryResultsInput
 --  
--- @param NextToken [Token] &lt;p&gt;The token that specifies where to start pagination if a previous request was truncated.&lt;/p&gt;
--- @param QueryExecutionId [QueryExecutionId] &lt;p&gt;The unique ID of the query execution.&lt;/p&gt;
--- @param MaxResults [MaxQueryResults] &lt;p&gt;The maximum number of results (rows) to return in this request.&lt;/p&gt;
+-- @param NextToken [Token] <p>The token that specifies where to start pagination if a previous request was truncated.</p>
+-- @param QueryExecutionId [QueryExecutionId] <p>The unique ID of the query execution.</p>
+-- @param MaxResults [MaxQueryResults] <p>The maximum number of results (rows) to return in this request.</p>
 -- Required parameter: QueryExecutionId
 function M.GetQueryResultsInput(NextToken, QueryExecutionId, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetQueryResultsInput")
@@ -454,9 +454,9 @@ function M.AssertQueryExecutionStatistics(struct)
 end
 
 --- Create a structure of type QueryExecutionStatistics
--- &lt;p&gt;The amount of data scanned during the query execution and the amount of time that it took to execute.&lt;/p&gt;
--- @param DataScannedInBytes [Long] &lt;p&gt;The number of bytes in the data that was queried.&lt;/p&gt;
--- @param EngineExecutionTimeInMillis [Long] &lt;p&gt;The number of milliseconds that the query took to execute.&lt;/p&gt;
+-- <p>The amount of data scanned during the query execution and the amount of time that it took to execute.</p>
+-- @param DataScannedInBytes [Long] <p>The number of bytes in the data that was queried.</p>
+-- @param EngineExecutionTimeInMillis [Long] <p>The number of milliseconds that the query took to execute.</p>
 function M.QueryExecutionStatistics(DataScannedInBytes, EngineExecutionTimeInMillis, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QueryExecutionStatistics")
 	local t = { 
@@ -501,10 +501,10 @@ function M.AssertUnprocessedQueryExecutionId(struct)
 end
 
 --- Create a structure of type UnprocessedQueryExecutionId
--- &lt;p&gt;Describes a query execution that failed to process.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;The error code returned when the query execution failed to process, if applicable.&lt;/p&gt;
--- @param ErrorMessage [ErrorMessage] &lt;p&gt;The error message returned when the query execution failed to process, if applicable.&lt;/p&gt;
--- @param QueryExecutionId [QueryExecutionId] &lt;p&gt;The unique identifier of the query execution.&lt;/p&gt;
+-- <p>Describes a query execution that failed to process.</p>
+-- @param ErrorCode [ErrorCode] <p>The error code returned when the query execution failed to process, if applicable.</p>
+-- @param ErrorMessage [ErrorMessage] <p>The error message returned when the query execution failed to process, if applicable.</p>
+-- @param QueryExecutionId [QueryExecutionId] <p>The unique identifier of the query execution.</p>
 function M.UnprocessedQueryExecutionId(ErrorCode, ErrorMessage, QueryExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnprocessedQueryExecutionId")
 	local t = { 
@@ -530,7 +530,7 @@ end
 
 --- Create a structure of type BatchGetQueryExecutionInput
 --  
--- @param QueryExecutionIds [QueryExecutionIdList] &lt;p&gt;An array of query execution IDs.&lt;/p&gt;
+-- @param QueryExecutionIds [QueryExecutionIdList] <p>An array of query execution IDs.</p>
 -- Required parameter: QueryExecutionIds
 function M.BatchGetQueryExecutionInput(QueryExecutionIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetQueryExecutionInput")
@@ -558,13 +558,13 @@ function M.AssertQueryExecution(struct)
 end
 
 --- Create a structure of type QueryExecution
--- &lt;p&gt;Information about a single instance of a query execution.&lt;/p&gt;
--- @param Status [QueryExecutionStatus] &lt;p&gt;The completion date, current state, submission time, and state change reason (if applicable) for the query execution.&lt;/p&gt;
--- @param Statistics [QueryExecutionStatistics] &lt;p&gt;The amount of data scanned during the query execution and the amount of time that it took to execute.&lt;/p&gt;
--- @param ResultConfiguration [ResultConfiguration] &lt;p&gt;The location in Amazon S3 where query results were stored and the encryption option, if any, used for query results.&lt;/p&gt;
--- @param QueryExecutionId [QueryExecutionId] &lt;p&gt;The unique identifier for each query execution.&lt;/p&gt;
--- @param QueryExecutionContext [QueryExecutionContext] &lt;p&gt;The database in which the query execution occurred.&lt;/p&gt;
--- @param Query [QueryString] &lt;p&gt;The SQL query statements which the query execution ran.&lt;/p&gt;
+-- <p>Information about a single instance of a query execution.</p>
+-- @param Status [QueryExecutionStatus] <p>The completion date, current state, submission time, and state change reason (if applicable) for the query execution.</p>
+-- @param Statistics [QueryExecutionStatistics] <p>The amount of data scanned during the query execution and the amount of time that it took to execute.</p>
+-- @param ResultConfiguration [ResultConfiguration] <p>The location in Amazon S3 where query results were stored and the encryption option, if any, used for query results.</p>
+-- @param QueryExecutionId [QueryExecutionId] <p>The unique identifier for each query execution.</p>
+-- @param QueryExecutionContext [QueryExecutionContext] <p>The database in which the query execution occurred.</p>
+-- @param Query [QueryString] <p>The SQL query statements which the query execution ran.</p>
 function M.QueryExecution(Status, Statistics, ResultConfiguration, QueryExecutionId, QueryExecutionContext, Query, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QueryExecution")
 	local t = { 
@@ -591,8 +591,8 @@ function M.AssertQueryExecutionContext(struct)
 end
 
 --- Create a structure of type QueryExecutionContext
--- &lt;p&gt;The database in which the query execution occurs.&lt;/p&gt;
--- @param Database [DatabaseString] &lt;p&gt;The name of the database.&lt;/p&gt;
+-- <p>The database in which the query execution occurs.</p>
+-- @param Database [DatabaseString] <p>The name of the database.</p>
 function M.QueryExecutionContext(Database, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QueryExecutionContext")
 	local t = { 
@@ -615,9 +615,9 @@ function M.AssertTooManyRequestsException(struct)
 end
 
 --- Create a structure of type TooManyRequestsException
--- &lt;p&gt;Indicates that the request was throttled.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Indicates that the request was throttled.&lt;/p&gt;
--- @param Reason [ThrottleReason] &lt;p&gt;Indicates that the request was throttled.&lt;/p&gt;
+-- <p>Indicates that the request was throttled.</p>
+-- @param Message [ErrorMessage] <p>Indicates that the request was throttled.</p>
+-- @param Reason [ThrottleReason] <p>Indicates that the request was throttled.</p>
 function M.TooManyRequestsException(Message, Reason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
 	local t = { 
@@ -642,8 +642,8 @@ end
 
 --- Create a structure of type GetQueryResultsOutput
 --  
--- @param NextToken [Token] &lt;p&gt;A token to be used by the next request if this request is truncated.&lt;/p&gt;
--- @param ResultSet [ResultSet] &lt;p&gt;The results of the query execution.&lt;/p&gt;
+-- @param NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
+-- @param ResultSet [ResultSet] <p>The results of the query execution.</p>
 function M.GetQueryResultsOutput(NextToken, ResultSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetQueryResultsOutput")
 	local t = { 
@@ -668,8 +668,8 @@ end
 
 --- Create a structure of type BatchGetQueryExecutionOutput
 --  
--- @param UnprocessedQueryExecutionIds [UnprocessedQueryExecutionIdList] &lt;p&gt;Information about the query executions that failed to run.&lt;/p&gt;
--- @param QueryExecutions [QueryExecutionList] &lt;p&gt;Information about a query execution.&lt;/p&gt;
+-- @param UnprocessedQueryExecutionIds [UnprocessedQueryExecutionIdList] <p>Information about the query executions that failed to run.</p>
+-- @param QueryExecutions [QueryExecutionList] <p>Information about a query execution.</p>
 function M.BatchGetQueryExecutionOutput(UnprocessedQueryExecutionIds, QueryExecutions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetQueryExecutionOutput")
 	local t = { 
@@ -694,8 +694,8 @@ end
 
 --- Create a structure of type ListQueryExecutionsInput
 --  
--- @param NextToken [Token] &lt;p&gt;The token that specifies where to start pagination if a previous request was truncated.&lt;/p&gt;
--- @param MaxResults [MaxQueryExecutionsCount] &lt;p&gt;The maximum number of query executions to return in this request.&lt;/p&gt;
+-- @param NextToken [Token] <p>The token that specifies where to start pagination if a previous request was truncated.</p>
+-- @param MaxResults [MaxQueryExecutionsCount] <p>The maximum number of query executions to return in this request.</p>
 function M.ListQueryExecutionsInput(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListQueryExecutionsInput")
 	local t = { 
@@ -720,10 +720,10 @@ function M.AssertUnprocessedNamedQueryId(struct)
 end
 
 --- Create a structure of type UnprocessedNamedQueryId
--- &lt;p&gt;Information about a named query ID that could not be processed.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;The error code returned when the processing request for the named query failed, if applicable.&lt;/p&gt;
--- @param ErrorMessage [ErrorMessage] &lt;p&gt;The error message returned when the processing request for the named query failed, if applicable.&lt;/p&gt;
--- @param NamedQueryId [NamedQueryId] &lt;p&gt;The unique identifier of the named query.&lt;/p&gt;
+-- <p>Information about a named query ID that could not be processed.</p>
+-- @param ErrorCode [ErrorCode] <p>The error code returned when the processing request for the named query failed, if applicable.</p>
+-- @param ErrorMessage [ErrorMessage] <p>The error message returned when the processing request for the named query failed, if applicable.</p>
+-- @param NamedQueryId [NamedQueryId] <p>The unique identifier of the named query.</p>
 function M.UnprocessedNamedQueryId(ErrorCode, ErrorMessage, NamedQueryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnprocessedNamedQueryId")
 	local t = { 
@@ -750,11 +750,11 @@ function M.AssertQueryExecutionStatus(struct)
 end
 
 --- Create a structure of type QueryExecutionStatus
--- &lt;p&gt;The completion date, current state, submission time, and state change reason (if applicable) for the query execution.&lt;/p&gt;
--- @param SubmissionDateTime [Date] &lt;p&gt;The date and time that the query was submitted.&lt;/p&gt;
--- @param State [QueryExecutionState] &lt;p&gt;The state of query execution. &lt;code&gt;SUBMITTED&lt;/code&gt; indicates that the query is queued for execution. &lt;code&gt;RUNNING&lt;/code&gt; indicates that the query is scanning data and returning results. &lt;code&gt;SUCCEEDED&lt;/code&gt; indicates that the query completed without error. &lt;code&gt;FAILED&lt;/code&gt; indicates that the query experienced an error and did not complete processing. &lt;code&gt;CANCELLED&lt;/code&gt; indicates that user input interrupted query execution.&lt;/p&gt;
--- @param CompletionDateTime [Date] &lt;p&gt;The date and time that the query completed.&lt;/p&gt;
--- @param StateChangeReason [String] &lt;p&gt;Further detail about the status of the query.&lt;/p&gt;
+-- <p>The completion date, current state, submission time, and state change reason (if applicable) for the query execution.</p>
+-- @param SubmissionDateTime [Date] <p>The date and time that the query was submitted.</p>
+-- @param State [QueryExecutionState] <p>The state of query execution. <code>SUBMITTED</code> indicates that the query is queued for execution. <code>RUNNING</code> indicates that the query is scanning data and returning results. <code>SUCCEEDED</code> indicates that the query completed without error. <code>FAILED</code> indicates that the query experienced an error and did not complete processing. <code>CANCELLED</code> indicates that user input interrupted query execution.</p>
+-- @param CompletionDateTime [Date] <p>The date and time that the query completed.</p>
+-- @param StateChangeReason [String] <p>Further detail about the status of the query.</p>
 function M.QueryExecutionStatus(SubmissionDateTime, State, CompletionDateTime, StateChangeReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QueryExecutionStatus")
 	local t = { 
@@ -781,9 +781,9 @@ function M.AssertResultConfiguration(struct)
 end
 
 --- Create a structure of type ResultConfiguration
--- &lt;p&gt;The location in Amazon S3 where query results are stored and the encryption option, if any, used for query results.&lt;/p&gt;
--- @param EncryptionConfiguration [EncryptionConfiguration] &lt;p&gt;If query results are encrypted in S3, indicates the S3 encryption option used (for example, &lt;code&gt;SSE-KMS&lt;/code&gt; or &lt;code&gt;CSE-KMS&lt;/code&gt; and key information.&lt;/p&gt;
--- @param OutputLocation [String] &lt;p&gt;The location in S3 where query results are stored.&lt;/p&gt;
+-- <p>The location in Amazon S3 where query results are stored and the encryption option, if any, used for query results.</p>
+-- @param EncryptionConfiguration [EncryptionConfiguration] <p>If query results are encrypted in S3, indicates the S3 encryption option used (for example, <code>SSE-KMS</code> or <code>CSE-KMS</code> and key information.</p>
+-- @param OutputLocation [String] <p>The location in S3 where query results are stored.</p>
 -- Required parameter: OutputLocation
 function M.ResultConfiguration(EncryptionConfiguration, OutputLocation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResultConfiguration")
@@ -828,7 +828,7 @@ end
 
 --- Create a structure of type CreateNamedQueryOutput
 --  
--- @param NamedQueryId [NamedQueryId] &lt;p&gt;The unique ID of the query.&lt;/p&gt;
+-- @param NamedQueryId [NamedQueryId] <p>The unique ID of the query.</p>
 function M.CreateNamedQueryOutput(NamedQueryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateNamedQueryOutput")
 	local t = { 
@@ -850,8 +850,8 @@ function M.AssertDatum(struct)
 end
 
 --- Create a structure of type Datum
--- &lt;p&gt;A piece of data (a field in the table).&lt;/p&gt;
--- @param VarCharValue [datumString] &lt;p&gt;The value of the datum.&lt;/p&gt;
+-- <p>A piece of data (a field in the table).</p>
+-- @param VarCharValue [datumString] <p>The value of the datum.</p>
 function M.Datum(VarCharValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Datum")
 	local t = { 
@@ -875,7 +875,7 @@ end
 
 --- Create a structure of type BatchGetNamedQueryInput
 --  
--- @param NamedQueryIds [NamedQueryIdList] &lt;p&gt;An array of query IDs.&lt;/p&gt;
+-- @param NamedQueryIds [NamedQueryIdList] <p>An array of query IDs.</p>
 -- Required parameter: NamedQueryIds
 function M.BatchGetNamedQueryInput(NamedQueryIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetNamedQueryInput")
@@ -900,7 +900,7 @@ end
 
 --- Create a structure of type DeleteNamedQueryInput
 --  
--- @param NamedQueryId [NamedQueryId] &lt;p&gt;The unique ID of the query to delete.&lt;/p&gt;
+-- @param NamedQueryId [NamedQueryId] <p>The unique ID of the query to delete.</p>
 -- Required parameter: NamedQueryId
 function M.DeleteNamedQueryInput(NamedQueryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteNamedQueryInput")
@@ -925,8 +925,8 @@ end
 
 --- Create a structure of type ListNamedQueriesOutput
 --  
--- @param NamedQueryIds [NamedQueryIdList] &lt;p&gt;The list of unique query IDs.&lt;/p&gt;
--- @param NextToken [Token] &lt;p&gt;A token to be used by the next request if this request is truncated.&lt;/p&gt;
+-- @param NamedQueryIds [NamedQueryIdList] <p>The list of unique query IDs.</p>
+-- @param NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
 function M.ListNamedQueriesOutput(NamedQueryIds, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListNamedQueriesOutput")
 	local t = { 
@@ -951,8 +951,8 @@ end
 
 --- Create a structure of type BatchGetNamedQueryOutput
 --  
--- @param UnprocessedNamedQueryIds [UnprocessedNamedQueryIdList] &lt;p&gt;Information about provided query IDs.&lt;/p&gt;
--- @param NamedQueries [NamedQueryList] &lt;p&gt;Information about the named query IDs submitted.&lt;/p&gt;
+-- @param UnprocessedNamedQueryIds [UnprocessedNamedQueryIdList] <p>Information about provided query IDs.</p>
+-- @param NamedQueries [NamedQueryList] <p>Information about the named query IDs submitted.</p>
 function M.BatchGetNamedQueryOutput(UnprocessedNamedQueryIds, NamedQueries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetNamedQueryOutput")
 	local t = { 
@@ -975,8 +975,8 @@ function M.AssertResultSetMetadata(struct)
 end
 
 --- Create a structure of type ResultSetMetadata
--- &lt;p&gt;The metadata that describes the column structure and data types of a table of query results.&lt;/p&gt;
--- @param ColumnInfo [ColumnInfoList] &lt;p&gt;Information about the columns in a query execution result.&lt;/p&gt;
+-- <p>The metadata that describes the column structure and data types of a table of query results.</p>
+-- @param ColumnInfo [ColumnInfoList] <p>Information about the columns in a query execution result.</p>
 function M.ResultSetMetadata(ColumnInfo, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResultSetMetadata")
 	local t = { 
@@ -1009,17 +1009,17 @@ function M.AssertColumnInfo(struct)
 end
 
 --- Create a structure of type ColumnInfo
--- &lt;p&gt;Information about the columns in a query execution result.&lt;/p&gt;
--- @param Scale [Integer] &lt;p&gt;For &lt;code&gt;DECIMAL&lt;/code&gt; data types, specifies the total number of digits in the fractional part of the value. Defaults to 0.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the column.&lt;/p&gt;
--- @param Nullable [ColumnNullable] &lt;p&gt;Indicates the column's nullable status.&lt;/p&gt;
--- @param TableName [String] &lt;p&gt;The table name for the query results.&lt;/p&gt;
--- @param Precision [Integer] &lt;p&gt;For &lt;code&gt;DECIMAL&lt;/code&gt; data types, specifies the total number of digits, up to 38. For performance reasons, we recommend up to 18 digits.&lt;/p&gt;
--- @param Label [String] &lt;p&gt;A column label.&lt;/p&gt;
--- @param CaseSensitive [Boolean] &lt;p&gt;Indicates whether values in the column are case-sensitive.&lt;/p&gt;
--- @param SchemaName [String] &lt;p&gt;The schema name (database name) to which the query results belong.&lt;/p&gt;
--- @param Type [String] &lt;p&gt;The data type of the column.&lt;/p&gt;
--- @param CatalogName [String] &lt;p&gt;The catalog to which the query results belong.&lt;/p&gt;
+-- <p>Information about the columns in a query execution result.</p>
+-- @param Scale [Integer] <p>For <code>DECIMAL</code> data types, specifies the total number of digits in the fractional part of the value. Defaults to 0.</p>
+-- @param Name [String] <p>The name of the column.</p>
+-- @param Nullable [ColumnNullable] <p>Indicates the column's nullable status.</p>
+-- @param TableName [String] <p>The table name for the query results.</p>
+-- @param Precision [Integer] <p>For <code>DECIMAL</code> data types, specifies the total number of digits, up to 38. For performance reasons, we recommend up to 18 digits.</p>
+-- @param Label [String] <p>A column label.</p>
+-- @param CaseSensitive [Boolean] <p>Indicates whether values in the column are case-sensitive.</p>
+-- @param SchemaName [String] <p>The schema name (database name) to which the query results belong.</p>
+-- @param Type [String] <p>The data type of the column.</p>
+-- @param CatalogName [String] <p>The catalog to which the query results belong.</p>
 -- Required parameter: Name
 -- Required parameter: Type
 function M.ColumnInfo(Scale, Name, Nullable, TableName, Precision, Label, CaseSensitive, SchemaName, Type, CatalogName, ...)
@@ -1054,7 +1054,7 @@ end
 
 --- Create a structure of type StopQueryExecutionInput
 --  
--- @param QueryExecutionId [QueryExecutionId] &lt;p&gt;The unique ID of the query execution to stop.&lt;/p&gt;
+-- @param QueryExecutionId [QueryExecutionId] <p>The unique ID of the query execution to stop.</p>
 -- Required parameter: QueryExecutionId
 function M.StopQueryExecutionInput(QueryExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopQueryExecutionInput")
@@ -1077,8 +1077,8 @@ function M.AssertRow(struct)
 end
 
 --- Create a structure of type Row
--- &lt;p&gt;The rows that comprise a query result table.&lt;/p&gt;
--- @param Data [datumList] &lt;p&gt;The data that populates a row in a query result table.&lt;/p&gt;
+-- <p>The rows that comprise a query result table.</p>
+-- @param Data [datumList] <p>The data that populates a row in a query result table.</p>
 function M.Row(Data, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Row")
 	local t = { 

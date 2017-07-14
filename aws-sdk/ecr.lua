@@ -34,10 +34,10 @@ function M.AssertBatchDeleteImageRequest(struct)
 end
 
 --- Create a structure of type BatchDeleteImageRequest
--- &lt;p&gt;Deletes specified images within a specified repository. Images are specified with either the &lt;code&gt;imageTag&lt;/code&gt; or &lt;code&gt;imageDigest&lt;/code&gt;.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The repository that contains the image to delete.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the image to delete. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
--- @param imageIds [ImageIdentifierList] &lt;p&gt;A list of image ID references that correspond to images to delete. The format of the &lt;code&gt;imageIds&lt;/code&gt; reference is &lt;code&gt;imageTag=tag&lt;/code&gt; or &lt;code&gt;imageDigest=digest&lt;/code&gt;.&lt;/p&gt;
+-- <p>Deletes specified images within a specified repository. Images are specified with either the <code>imageTag</code> or <code>imageDigest</code>.</p>
+-- @param repositoryName [RepositoryName] <p>The repository that contains the image to delete.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the image to delete. If you do not specify a registry, the default registry is assumed.</p>
+-- @param imageIds [ImageIdentifierList] <p>A list of image ID references that correspond to images to delete. The format of the <code>imageIds</code> reference is <code>imageTag=tag</code> or <code>imageDigest=digest</code>.</p>
 -- Required parameter: repositoryName
 -- Required parameter: imageIds
 function M.BatchDeleteImageRequest(repositoryName, registryId, imageIds, ...)
@@ -63,8 +63,8 @@ function M.AssertRepositoryNotEmptyException(struct)
 end
 
 --- Create a structure of type RepositoryNotEmptyException
--- &lt;p&gt;The specified repository contains images. To delete a repository that contains images, you must force the deletion with the &lt;code&gt;force&lt;/code&gt; parameter.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The specified repository contains images. To delete a repository that contains images, you must force the deletion with the <code>force</code> parameter.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.RepositoryNotEmptyException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNotEmptyException")
 	local t = { 
@@ -92,10 +92,10 @@ end
 
 --- Create a structure of type PutImageRequest
 --  
--- @param imageManifest [ImageManifest] &lt;p&gt;The image manifest corresponding to the image to be uploaded.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository in which to put the image.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the repository in which to put the image. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
--- @param imageTag [ImageTag] &lt;p&gt;The tag to associate with the image. This parameter is required for images that use the Docker Image Manifest V2 Schema 2 or OCI formats.&lt;/p&gt;
+-- @param imageManifest [ImageManifest] <p>The image manifest corresponding to the image to be uploaded.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository in which to put the image.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository in which to put the image. If you do not specify a registry, the default registry is assumed.</p>
+-- @param imageTag [ImageTag] <p>The tag to associate with the image. This parameter is required for images that use the Docker Image Manifest V2 Schema 2 or OCI formats.</p>
 -- Required parameter: repositoryName
 -- Required parameter: imageManifest
 function M.PutImageRequest(imageManifest, repositoryName, registryId, imageTag, ...)
@@ -128,11 +128,11 @@ end
 
 --- Create a structure of type ListImagesRequest
 --  
--- @param nextToken [NextToken] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value returned from a previous paginated &lt;code&gt;ListImages&lt;/code&gt; request where &lt;code&gt;maxResults&lt;/code&gt; was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the &lt;code&gt;nextToken&lt;/code&gt; value. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.&lt;/p&gt; &lt;/note&gt;
--- @param filter [ListImagesFilter] &lt;p&gt;The filter key and value with which to filter your &lt;code&gt;ListImages&lt;/code&gt; results.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The repository whose image IDs are to be listed.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the repository to list images in. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;The maximum number of image results returned by &lt;code&gt;ListImages&lt;/code&gt; in paginated output. When this parameter is used, &lt;code&gt;ListImages&lt;/code&gt; only returns &lt;code&gt;maxResults&lt;/code&gt; results in a single page along with a &lt;code&gt;nextToken&lt;/code&gt; response element. The remaining results of the initial request can be seen by sending another &lt;code&gt;ListImages&lt;/code&gt; request with the returned &lt;code&gt;nextToken&lt;/code&gt; value. This value can be between 1 and 100. If this parameter is not used, then &lt;code&gt;ListImages&lt;/code&gt; returns up to 100 results and a &lt;code&gt;nextToken&lt;/code&gt; value, if applicable.&lt;/p&gt;
+-- @param nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListImages</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- @param filter [ListImagesFilter] <p>The filter key and value with which to filter your <code>ListImages</code> results.</p>
+-- @param repositoryName [RepositoryName] <p>The repository whose image IDs are to be listed.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository to list images in. If you do not specify a registry, the default registry is assumed.</p>
+-- @param maxResults [MaxResults] <p>The maximum number of image results returned by <code>ListImages</code> in paginated output. When this parameter is used, <code>ListImages</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListImages</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListImages</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
 -- Required parameter: repositoryName
 function M.ListImagesRequest(nextToken, filter, repositoryName, registryId, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListImagesRequest")
@@ -159,8 +159,8 @@ function M.AssertLayerAlreadyExistsException(struct)
 end
 
 --- Create a structure of type LayerAlreadyExistsException
--- &lt;p&gt;The image layer already exists in the associated repository.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The image layer already exists in the associated repository.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.LayerAlreadyExistsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LayerAlreadyExistsException")
 	local t = { 
@@ -186,12 +186,12 @@ function M.AssertInvalidLayerPartException(struct)
 end
 
 --- Create a structure of type InvalidLayerPartException
--- &lt;p&gt;The layer part size is not valid, or the first byte specified is not consecutive to the last byte of a previous layer part upload.&lt;/p&gt;
--- @param lastValidByteReceived [PartSize] &lt;p&gt;The last valid byte received from the layer part upload that is associated with the exception.&lt;/p&gt;
--- @param uploadId [UploadId] &lt;p&gt;The upload ID associated with the exception.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The repository name associated with the exception.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The registry ID associated with the exception.&lt;/p&gt;
+-- <p>The layer part size is not valid, or the first byte specified is not consecutive to the last byte of a previous layer part upload.</p>
+-- @param lastValidByteReceived [PartSize] <p>The last valid byte received from the layer part upload that is associated with the exception.</p>
+-- @param uploadId [UploadId] <p>The upload ID associated with the exception.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @param repositoryName [RepositoryName] <p>The repository name associated with the exception.</p>
+-- @param registryId [RegistryId] <p>The registry ID associated with the exception.</p>
 function M.InvalidLayerPartException(lastValidByteReceived, uploadId, message, repositoryName, registryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLayerPartException")
 	local t = { 
@@ -219,8 +219,8 @@ end
 
 --- Create a structure of type BatchGetImageResponse
 --  
--- @param images [ImageList] &lt;p&gt;A list of image objects corresponding to the image references in the request.&lt;/p&gt;
--- @param failures [ImageFailureList] &lt;p&gt;Any failures associated with the call.&lt;/p&gt;
+-- @param images [ImageList] <p>A list of image objects corresponding to the image references in the request.</p>
+-- @param failures [ImageFailureList] <p>Any failures associated with the call.</p>
 function M.BatchGetImageResponse(images, failures, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetImageResponse")
 	local t = { 
@@ -245,8 +245,8 @@ end
 
 --- Create a structure of type DescribeRepositoriesResponse
 --  
--- @param nextToken [NextToken] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value to include in a future &lt;code&gt;DescribeRepositories&lt;/code&gt; request. When the results of a &lt;code&gt;DescribeRepositories&lt;/code&gt; request exceed &lt;code&gt;maxResults&lt;/code&gt;, this value can be used to retrieve the next page of results. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt;
--- @param repositories [RepositoryList] &lt;p&gt;A list of repository objects corresponding to valid repositories.&lt;/p&gt;
+-- @param nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeRepositories</code> request. When the results of a <code>DescribeRepositories</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- @param repositories [RepositoryList] <p>A list of repository objects corresponding to valid repositories.</p>
 function M.DescribeRepositoriesResponse(nextToken, repositories, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRepositoriesResponse")
 	local t = { 
@@ -269,8 +269,8 @@ function M.AssertLayerInaccessibleException(struct)
 end
 
 --- Create a structure of type LayerInaccessibleException
--- &lt;p&gt;The specified layer is not available because it is not associated with an image. Unassociated image layers may be cleaned up at any time.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The specified layer is not available because it is not associated with an image. Unassociated image layers may be cleaned up at any time.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.LayerInaccessibleException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LayerInaccessibleException")
 	local t = { 
@@ -295,11 +295,11 @@ function M.AssertLayer(struct)
 end
 
 --- Create a structure of type Layer
--- &lt;p&gt;An object representing an Amazon ECR image layer.&lt;/p&gt;
--- @param layerAvailability [LayerAvailability] &lt;p&gt;The availability status of the image layer.&lt;/p&gt;
--- @param layerDigest [LayerDigest] &lt;p&gt;The &lt;code&gt;sha256&lt;/code&gt; digest of the image layer.&lt;/p&gt;
--- @param layerSize [LayerSizeInBytes] &lt;p&gt;The size, in bytes, of the image layer.&lt;/p&gt;
--- @param mediaType [MediaType] &lt;p&gt;The media type of the layer, such as &lt;code&gt;application/vnd.docker.image.rootfs.diff.tar.gzip&lt;/code&gt; or &lt;code&gt;application/vnd.oci.image.layer.v1.tar+gzip&lt;/code&gt;.&lt;/p&gt;
+-- <p>An object representing an Amazon ECR image layer.</p>
+-- @param layerAvailability [LayerAvailability] <p>The availability status of the image layer.</p>
+-- @param layerDigest [LayerDigest] <p>The <code>sha256</code> digest of the image layer.</p>
+-- @param layerSize [LayerSizeInBytes] <p>The size, in bytes, of the image layer.</p>
+-- @param mediaType [MediaType] <p>The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.</p>
 function M.Layer(layerAvailability, layerDigest, layerSize, mediaType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Layer")
 	local t = { 
@@ -329,9 +329,9 @@ end
 
 --- Create a structure of type GetDownloadUrlForLayerRequest
 --  
--- @param layerDigest [LayerDigest] &lt;p&gt;The digest of the image layer to download.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository that is associated with the image layer to download.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the image layer to download. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
+-- @param layerDigest [LayerDigest] <p>The digest of the image layer to download.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository that is associated with the image layer to download.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the image layer to download. If you do not specify a registry, the default registry is assumed.</p>
 -- Required parameter: repositoryName
 -- Required parameter: layerDigest
 function M.GetDownloadUrlForLayerRequest(layerDigest, repositoryName, registryId, ...)
@@ -358,7 +358,7 @@ end
 
 --- Create a structure of type DeleteRepositoryResponse
 --  
--- @param repository [Repository] &lt;p&gt;The repository that was deleted.&lt;/p&gt;
+-- @param repository [Repository] <p>The repository that was deleted.</p>
 function M.DeleteRepositoryResponse(repository, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryResponse")
 	local t = { 
@@ -382,8 +382,8 @@ end
 
 --- Create a structure of type BatchCheckLayerAvailabilityResponse
 --  
--- @param layers [LayerList] &lt;p&gt;A list of image layer objects corresponding to the image layer references in the request.&lt;/p&gt;
--- @param failures [LayerFailureList] &lt;p&gt;Any failures associated with the call.&lt;/p&gt;
+-- @param layers [LayerList] <p>A list of image layer objects corresponding to the image layer references in the request.</p>
+-- @param failures [LayerFailureList] <p>Any failures associated with the call.</p>
 function M.BatchCheckLayerAvailabilityResponse(layers, failures, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchCheckLayerAvailabilityResponse")
 	local t = { 
@@ -408,8 +408,8 @@ end
 
 --- Create a structure of type GetDownloadUrlForLayerResponse
 --  
--- @param downloadUrl [Url] &lt;p&gt;The pre-signed Amazon S3 download URL for the requested layer.&lt;/p&gt;
--- @param layerDigest [LayerDigest] &lt;p&gt;The digest of the image layer to download.&lt;/p&gt;
+-- @param downloadUrl [Url] <p>The pre-signed Amazon S3 download URL for the requested layer.</p>
+-- @param layerDigest [LayerDigest] <p>The digest of the image layer to download.</p>
 function M.GetDownloadUrlForLayerResponse(downloadUrl, layerDigest, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDownloadUrlForLayerResponse")
 	local t = { 
@@ -434,8 +434,8 @@ end
 
 --- Create a structure of type DescribeImagesResponse
 --  
--- @param nextToken [NextToken] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value to include in a future &lt;code&gt;DescribeImages&lt;/code&gt; request. When the results of a &lt;code&gt;DescribeImages&lt;/code&gt; request exceed &lt;code&gt;maxResults&lt;/code&gt;, this value can be used to retrieve the next page of results. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt;
--- @param imageDetails [ImageDetailList] &lt;p&gt;A list of &lt;a&gt;ImageDetail&lt;/a&gt; objects that contain data about the image.&lt;/p&gt;
+-- @param nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeImages</code> request. When the results of a <code>DescribeImages</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- @param imageDetails [ImageDetailList] <p>A list of <a>ImageDetail</a> objects that contain data about the image.</p>
 function M.DescribeImagesResponse(nextToken, imageDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesResponse")
 	local t = { 
@@ -458,8 +458,8 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;The operation did not succeed because it would have exceeded a service limit for your account. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html&quot;&gt;Amazon ECR Default Service Limits&lt;/a&gt; in the Amazon EC2 Container Registry User Guide.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The operation did not succeed because it would have exceeded a service limit for your account. For more information, see <a href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default Service Limits</a> in the Amazon EC2 Container Registry User Guide.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.LimitExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -488,10 +488,10 @@ end
 
 --- Create a structure of type CompleteLayerUploadRequest
 --  
--- @param uploadId [UploadId] &lt;p&gt;The upload ID from a previous &lt;a&gt;InitiateLayerUpload&lt;/a&gt; operation to associate with the image layer.&lt;/p&gt;
--- @param layerDigests [LayerDigestList] &lt;p&gt;The &lt;code&gt;sha256&lt;/code&gt; digest of the image layer.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository to associate with the image layer.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry to which to upload layers. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
+-- @param uploadId [UploadId] <p>The upload ID from a previous <a>InitiateLayerUpload</a> operation to associate with the image layer.</p>
+-- @param layerDigests [LayerDigestList] <p>The <code>sha256</code> digest of the image layer.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository to associate with the image layer.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry to which to upload layers. If you do not specify a registry, the default registry is assumed.</p>
 -- Required parameter: repositoryName
 -- Required parameter: uploadId
 -- Required parameter: layerDigests
@@ -519,8 +519,8 @@ function M.AssertRepositoryNotFoundException(struct)
 end
 
 --- Create a structure of type RepositoryNotFoundException
--- &lt;p&gt;The specified repository could not be found. Check the spelling of the specified repository and ensure that you are performing operations on the correct registry.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The specified repository could not be found. Check the spelling of the specified repository and ensure that you are performing operations on the correct registry.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.RepositoryNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNotFoundException")
 	local t = { 
@@ -543,7 +543,7 @@ end
 
 --- Create a structure of type GetAuthorizationTokenResponse
 --  
--- @param authorizationData [AuthorizationDataList] &lt;p&gt;A list of authorization token data objects that correspond to the &lt;code&gt;registryIds&lt;/code&gt; values in the request.&lt;/p&gt;
+-- @param authorizationData [AuthorizationDataList] <p>A list of authorization token data objects that correspond to the <code>registryIds</code> values in the request.</p>
 function M.GetAuthorizationTokenResponse(authorizationData, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAuthorizationTokenResponse")
 	local t = { 
@@ -565,8 +565,8 @@ function M.AssertDescribeImagesFilter(struct)
 end
 
 --- Create a structure of type DescribeImagesFilter
--- &lt;p&gt;An object representing a filter on a &lt;a&gt;DescribeImages&lt;/a&gt; operation.&lt;/p&gt;
--- @param tagStatus [TagStatus] &lt;p&gt;The tag status with which to filter your &lt;a&gt;DescribeImages&lt;/a&gt; results. You can filter results based on whether they are &lt;code&gt;TAGGED&lt;/code&gt; or &lt;code&gt;UNTAGGED&lt;/code&gt;.&lt;/p&gt;
+-- <p>An object representing a filter on a <a>DescribeImages</a> operation.</p>
+-- @param tagStatus [TagStatus] <p>The tag status with which to filter your <a>DescribeImages</a> results. You can filter results based on whether they are <code>TAGGED</code> or <code>UNTAGGED</code>.</p>
 function M.DescribeImagesFilter(tagStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesFilter")
 	local t = { 
@@ -589,7 +589,7 @@ end
 
 --- Create a structure of type GetAuthorizationTokenRequest
 --  
--- @param registryIds [GetAuthorizationTokenRegistryIdList] &lt;p&gt;A list of AWS account IDs that are associated with the registries for which to get authorization tokens. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
+-- @param registryIds [GetAuthorizationTokenRegistryIdList] <p>A list of AWS account IDs that are associated with the registries for which to get authorization tokens. If you do not specify a registry, the default registry is assumed.</p>
 function M.GetAuthorizationTokenRequest(registryIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAuthorizationTokenRequest")
 	local t = { 
@@ -611,8 +611,8 @@ function M.AssertListImagesFilter(struct)
 end
 
 --- Create a structure of type ListImagesFilter
--- &lt;p&gt;An object representing a filter on a &lt;a&gt;ListImages&lt;/a&gt; operation.&lt;/p&gt;
--- @param tagStatus [TagStatus] &lt;p&gt;The tag status with which to filter your &lt;a&gt;ListImages&lt;/a&gt; results. You can filter results based on whether they are &lt;code&gt;TAGGED&lt;/code&gt; or &lt;code&gt;UNTAGGED&lt;/code&gt;.&lt;/p&gt;
+-- <p>An object representing a filter on a <a>ListImages</a> operation.</p>
+-- @param tagStatus [TagStatus] <p>The tag status with which to filter your <a>ListImages</a> results. You can filter results based on whether they are <code>TAGGED</code> or <code>UNTAGGED</code>.</p>
 function M.ListImagesFilter(tagStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListImagesFilter")
 	local t = { 
@@ -640,10 +640,10 @@ end
 
 --- Create a structure of type SetRepositoryPolicyRequest
 --  
--- @param policyText [RepositoryPolicyText] &lt;p&gt;The JSON repository policy text to apply to the repository.&lt;/p&gt;
--- @param force [ForceFlag] &lt;p&gt;If the policy you are attempting to set on a repository policy would prevent you from setting another policy in the future, you must force the &lt;a&gt;SetRepositoryPolicy&lt;/a&gt; operation. This is intended to prevent accidental repository lock outs.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository to receive the policy.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
+-- @param policyText [RepositoryPolicyText] <p>The JSON repository policy text to apply to the repository.</p>
+-- @param force [ForceFlag] <p>If the policy you are attempting to set on a repository policy would prevent you from setting another policy in the future, you must force the <a>SetRepositoryPolicy</a> operation. This is intended to prevent accidental repository lock outs.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository to receive the policy.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
 -- Required parameter: repositoryName
 -- Required parameter: policyText
 function M.SetRepositoryPolicyRequest(policyText, force, repositoryName, registryId, ...)
@@ -675,13 +675,13 @@ function M.AssertImageDetail(struct)
 end
 
 --- Create a structure of type ImageDetail
--- &lt;p&gt;An object that describes an image returned by a &lt;a&gt;DescribeImages&lt;/a&gt; operation.&lt;/p&gt;
--- @param imageSizeInBytes [ImageSizeInBytes] &lt;p&gt;The size, in bytes, of the image in the repository.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the &lt;code&gt;docker images&lt;/code&gt; command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by &lt;a&gt;DescribeImages&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param imageDigest [ImageDigest] &lt;p&gt;The &lt;code&gt;sha256&lt;/code&gt; digest of the image manifest.&lt;/p&gt;
--- @param imageTags [ImageTagList] &lt;p&gt;The list of tags associated with this image.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry to which this image belongs.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository to which this image belongs.&lt;/p&gt;
--- @param imagePushedAt [PushTimestamp] &lt;p&gt;The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository. &lt;/p&gt;
+-- <p>An object that describes an image returned by a <a>DescribeImages</a> operation.</p>
+-- @param imageSizeInBytes [ImageSizeInBytes] <p>The size, in bytes, of the image in the repository.</p> <note> <p>Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the <code>docker images</code> command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by <a>DescribeImages</a>.</p> </note>
+-- @param imageDigest [ImageDigest] <p>The <code>sha256</code> digest of the image manifest.</p>
+-- @param imageTags [ImageTagList] <p>The list of tags associated with this image.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry to which this image belongs.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository to which this image belongs.</p>
+-- @param imagePushedAt [PushTimestamp] <p>The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository. </p>
 function M.ImageDetail(imageSizeInBytes, imageDigest, imageTags, registryId, repositoryName, imagePushedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImageDetail")
 	local t = { 
@@ -708,8 +708,8 @@ function M.AssertEmptyUploadException(struct)
 end
 
 --- Create a structure of type EmptyUploadException
--- &lt;p&gt;The specified layer upload does not contain any layer parts.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The specified layer upload does not contain any layer parts.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.EmptyUploadException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EmptyUploadException")
 	local t = { 
@@ -731,8 +731,8 @@ function M.AssertRepositoryAlreadyExistsException(struct)
 end
 
 --- Create a structure of type RepositoryAlreadyExistsException
--- &lt;p&gt;The specified repository already exists in the specified registry.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The specified repository already exists in the specified registry.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.RepositoryAlreadyExistsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryAlreadyExistsException")
 	local t = { 
@@ -758,10 +758,10 @@ end
 
 --- Create a structure of type DescribeRepositoriesRequest
 --  
--- @param nextToken [NextToken] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value returned from a previous paginated &lt;code&gt;DescribeRepositories&lt;/code&gt; request where &lt;code&gt;maxResults&lt;/code&gt; was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the &lt;code&gt;nextToken&lt;/code&gt; value. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.&lt;/p&gt; &lt;/note&gt;
--- @param repositoryNames [RepositoryNameList] &lt;p&gt;A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;The maximum number of repository results returned by &lt;code&gt;DescribeRepositories&lt;/code&gt; in paginated output. When this parameter is used, &lt;code&gt;DescribeRepositories&lt;/code&gt; only returns &lt;code&gt;maxResults&lt;/code&gt; results in a single page along with a &lt;code&gt;nextToken&lt;/code&gt; response element. The remaining results of the initial request can be seen by sending another &lt;code&gt;DescribeRepositories&lt;/code&gt; request with the returned &lt;code&gt;nextToken&lt;/code&gt; value. This value can be between 1 and 100. If this parameter is not used, then &lt;code&gt;DescribeRepositories&lt;/code&gt; returns up to 100 results and a &lt;code&gt;nextToken&lt;/code&gt; value, if applicable.&lt;/p&gt;
+-- @param nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeRepositories</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- @param repositoryNames [RepositoryNameList] <p>A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default registry is assumed.</p>
+-- @param maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeRepositories</code> in paginated output. When this parameter is used, <code>DescribeRepositories</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeRepositories</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeRepositories</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
 function M.DescribeRepositoriesRequest(nextToken, repositoryNames, registryId, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRepositoriesRequest")
 	local t = { 
@@ -788,10 +788,10 @@ function M.AssertImageFailure(struct)
 end
 
 --- Create a structure of type ImageFailure
--- &lt;p&gt;An object representing an Amazon ECR image failure.&lt;/p&gt;
--- @param failureReason [ImageFailureReason] &lt;p&gt;The reason for the failure.&lt;/p&gt;
--- @param failureCode [ImageFailureCode] &lt;p&gt;The code associated with the failure.&lt;/p&gt;
--- @param imageId [ImageIdentifier] &lt;p&gt;The image ID associated with the failure.&lt;/p&gt;
+-- <p>An object representing an Amazon ECR image failure.</p>
+-- @param failureReason [ImageFailureReason] <p>The reason for the failure.</p>
+-- @param failureCode [ImageFailureCode] <p>The code associated with the failure.</p>
+-- @param imageId [ImageIdentifier] <p>The image ID associated with the failure.</p>
 function M.ImageFailure(failureReason, failureCode, imageId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImageFailure")
 	local t = { 
@@ -817,10 +817,10 @@ function M.AssertAuthorizationData(struct)
 end
 
 --- Create a structure of type AuthorizationData
--- &lt;p&gt;An object representing authorization data for an Amazon ECR registry.&lt;/p&gt;
--- @param authorizationToken [Base64] &lt;p&gt;A base64-encoded string that contains authorization data for the specified Amazon ECR registry. When the string is decoded, it is presented in the format &lt;code&gt;user:password&lt;/code&gt; for private registry authentication using &lt;code&gt;docker login&lt;/code&gt;.&lt;/p&gt;
--- @param expiresAt [ExpirationTimestamp] &lt;p&gt;The Unix time in seconds and milliseconds when the authorization token expires. Authorization tokens are valid for 12 hours.&lt;/p&gt;
--- @param proxyEndpoint [ProxyEndpoint] &lt;p&gt;The registry URL to use for this authorization token in a &lt;code&gt;docker login&lt;/code&gt; command. The Amazon ECR registry URL format is &lt;code&gt;https://aws_account_id.dkr.ecr.region.amazonaws.com&lt;/code&gt;. For example, &lt;code&gt;https://012345678910.dkr.ecr.us-east-1.amazonaws.com&lt;/code&gt;.. &lt;/p&gt;
+-- <p>An object representing authorization data for an Amazon ECR registry.</p>
+-- @param authorizationToken [Base64] <p>A base64-encoded string that contains authorization data for the specified Amazon ECR registry. When the string is decoded, it is presented in the format <code>user:password</code> for private registry authentication using <code>docker login</code>.</p>
+-- @param expiresAt [ExpirationTimestamp] <p>The Unix time in seconds and milliseconds when the authorization token expires. Authorization tokens are valid for 12 hours.</p>
+-- @param proxyEndpoint [ProxyEndpoint] <p>The registry URL to use for this authorization token in a <code>docker login</code> command. The Amazon ECR registry URL format is <code>https://aws_account_id.dkr.ecr.region.amazonaws.com</code>. For example, <code>https://012345678910.dkr.ecr.us-east-1.amazonaws.com</code>.. </p>
 function M.AuthorizationData(authorizationToken, expiresAt, proxyEndpoint, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationData")
 	local t = { 
@@ -846,8 +846,8 @@ end
 
 --- Create a structure of type BatchDeleteImageResponse
 --  
--- @param failures [ImageFailureList] &lt;p&gt;Any failures associated with the call.&lt;/p&gt;
--- @param imageIds [ImageIdentifierList] &lt;p&gt;The image IDs of the deleted images.&lt;/p&gt;
+-- @param failures [ImageFailureList] <p>Any failures associated with the call.</p>
+-- @param imageIds [ImageIdentifierList] <p>The image IDs of the deleted images.</p>
 function M.BatchDeleteImageResponse(failures, imageIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchDeleteImageResponse")
 	local t = { 
@@ -875,9 +875,9 @@ end
 
 --- Create a structure of type BatchCheckLayerAvailabilityRequest
 --  
--- @param layerDigests [BatchedOperationLayerDigestList] &lt;p&gt;The digests of the image layers to check.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository that is associated with the image layers to check.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the image layers to check. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
+-- @param layerDigests [BatchedOperationLayerDigestList] <p>The digests of the image layers to check.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository that is associated with the image layers to check.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the image layers to check. If you do not specify a registry, the default registry is assumed.</p>
 -- Required parameter: repositoryName
 -- Required parameter: layerDigests
 function M.BatchCheckLayerAvailabilityRequest(layerDigests, repositoryName, registryId, ...)
@@ -905,8 +905,8 @@ end
 
 --- Create a structure of type InitiateLayerUploadResponse
 --  
--- @param partSize [PartSize] &lt;p&gt;The size, in bytes, that Amazon ECR expects future layer part uploads to be.&lt;/p&gt;
--- @param uploadId [UploadId] &lt;p&gt;The upload ID for the layer upload. This parameter is passed to further &lt;a&gt;UploadLayerPart&lt;/a&gt; and &lt;a&gt;CompleteLayerUpload&lt;/a&gt; operations.&lt;/p&gt;
+-- @param partSize [PartSize] <p>The size, in bytes, that Amazon ECR expects future layer part uploads to be.</p>
+-- @param uploadId [UploadId] <p>The upload ID for the layer upload. This parameter is passed to further <a>UploadLayerPart</a> and <a>CompleteLayerUpload</a> operations.</p>
 function M.InitiateLayerUploadResponse(partSize, uploadId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InitiateLayerUploadResponse")
 	local t = { 
@@ -932,11 +932,11 @@ function M.AssertImage(struct)
 end
 
 --- Create a structure of type Image
--- &lt;p&gt;An object representing an Amazon ECR image.&lt;/p&gt;
--- @param imageManifest [ImageManifest] &lt;p&gt;The image manifest associated with the image.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository associated with the image.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry containing the image.&lt;/p&gt;
--- @param imageId [ImageIdentifier] &lt;p&gt;An object containing the image tag and image digest associated with an image.&lt;/p&gt;
+-- <p>An object representing an Amazon ECR image.</p>
+-- @param imageManifest [ImageManifest] <p>The image manifest associated with the image.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository associated with the image.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry containing the image.</p>
+-- @param imageId [ImageIdentifier] <p>An object containing the image tag and image digest associated with an image.</p>
 function M.Image(imageManifest, repositoryName, registryId, imageId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Image")
 	local t = { 
@@ -962,9 +962,9 @@ function M.AssertImageIdentifier(struct)
 end
 
 --- Create a structure of type ImageIdentifier
--- &lt;p&gt;An object with identifying information for an Amazon ECR image.&lt;/p&gt;
--- @param imageTag [ImageTag] &lt;p&gt;The tag used for the image.&lt;/p&gt;
--- @param imageDigest [ImageDigest] &lt;p&gt;The &lt;code&gt;sha256&lt;/code&gt; digest of the image manifest.&lt;/p&gt;
+-- <p>An object with identifying information for an Amazon ECR image.</p>
+-- @param imageTag [ImageTag] <p>The tag used for the image.</p>
+-- @param imageDigest [ImageDigest] <p>The <code>sha256</code> digest of the image manifest.</p>
 function M.ImageIdentifier(imageTag, imageDigest, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImageIdentifier")
 	local t = { 
@@ -991,10 +991,10 @@ end
 
 --- Create a structure of type CompleteLayerUploadResponse
 --  
--- @param uploadId [UploadId] &lt;p&gt;The upload ID associated with the layer.&lt;/p&gt;
--- @param layerDigest [LayerDigest] &lt;p&gt;The &lt;code&gt;sha256&lt;/code&gt; digest of the image layer.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The repository name associated with the request.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The registry ID associated with the request.&lt;/p&gt;
+-- @param uploadId [UploadId] <p>The upload ID associated with the layer.</p>
+-- @param layerDigest [LayerDigest] <p>The <code>sha256</code> digest of the image layer.</p>
+-- @param repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- @param registryId [RegistryId] <p>The registry ID associated with the request.</p>
 function M.CompleteLayerUploadResponse(uploadId, layerDigest, repositoryName, registryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CompleteLayerUploadResponse")
 	local t = { 
@@ -1022,9 +1022,9 @@ end
 
 --- Create a structure of type GetRepositoryPolicyResponse
 --  
--- @param policyText [RepositoryPolicyText] &lt;p&gt;The JSON repository policy text associated with the repository.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The repository name associated with the request.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The registry ID associated with the request.&lt;/p&gt;
+-- @param policyText [RepositoryPolicyText] <p>The JSON repository policy text associated with the repository.</p>
+-- @param repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- @param registryId [RegistryId] <p>The registry ID associated with the request.</p>
 function M.GetRepositoryPolicyResponse(policyText, repositoryName, registryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryPolicyResponse")
 	local t = { 
@@ -1048,8 +1048,8 @@ function M.AssertLayersNotFoundException(struct)
 end
 
 --- Create a structure of type LayersNotFoundException
--- &lt;p&gt;The specified layers could not be found, or the specified layer is not valid for this repository.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The specified layers could not be found, or the specified layer is not valid for this repository.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.LayersNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LayersNotFoundException")
 	local t = { 
@@ -1082,12 +1082,12 @@ end
 
 --- Create a structure of type UploadLayerPartRequest
 --  
--- @param layerPartBlob [LayerPartBlob] &lt;p&gt;The base64-encoded layer part payload.&lt;/p&gt;
--- @param partFirstByte [PartSize] &lt;p&gt;The integer value of the first byte of the layer part.&lt;/p&gt;
--- @param uploadId [UploadId] &lt;p&gt;The upload ID from a previous &lt;a&gt;InitiateLayerUpload&lt;/a&gt; operation to associate with the layer part upload.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that you are uploading layer parts to. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository that you are uploading layer parts to.&lt;/p&gt;
--- @param partLastByte [PartSize] &lt;p&gt;The integer value of the last byte of the layer part.&lt;/p&gt;
+-- @param layerPartBlob [LayerPartBlob] <p>The base64-encoded layer part payload.</p>
+-- @param partFirstByte [PartSize] <p>The integer value of the first byte of the layer part.</p>
+-- @param uploadId [UploadId] <p>The upload ID from a previous <a>InitiateLayerUpload</a> operation to associate with the layer part upload.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that you are uploading layer parts to. If you do not specify a registry, the default registry is assumed.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository that you are uploading layer parts to.</p>
+-- @param partLastByte [PartSize] <p>The integer value of the last byte of the layer part.</p>
 -- Required parameter: repositoryName
 -- Required parameter: uploadId
 -- Required parameter: partFirstByte
@@ -1119,8 +1119,8 @@ function M.AssertInvalidLayerException(struct)
 end
 
 --- Create a structure of type InvalidLayerException
--- &lt;p&gt;The layer digest calculation performed by Amazon ECR upon receipt of the image layer does not match the digest specified.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The layer digest calculation performed by Amazon ECR upon receipt of the image layer does not match the digest specified.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.InvalidLayerException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLayerException")
 	local t = { 
@@ -1146,12 +1146,12 @@ function M.AssertRepository(struct)
 end
 
 --- Create a structure of type Repository
--- &lt;p&gt;An object representing a repository.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the repository.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository.&lt;/p&gt;
--- @param repositoryArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the repository. The ARN contains the &lt;code&gt;arn:aws:ecr&lt;/code&gt; namespace, followed by the region of the repository, the AWS account ID of the repository owner, the repository namespace, and then the repository name. For example, &lt;code&gt;arn:aws:ecr:region:012345678910:repository/test&lt;/code&gt;.&lt;/p&gt;
--- @param createdAt [CreationTimestamp] &lt;p&gt;The date and time, in JavaScript date/time format, when the repository was created.&lt;/p&gt;
--- @param repositoryUri [Url] &lt;p&gt;The URI for the repository. You can use this URI for Docker &lt;code&gt;push&lt;/code&gt; and &lt;code&gt;pull&lt;/code&gt; operations.&lt;/p&gt;
+-- <p>An object representing a repository.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository.</p>
+-- @param repositoryArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the repository. The ARN contains the <code>arn:aws:ecr</code> namespace, followed by the region of the repository, the AWS account ID of the repository owner, the repository namespace, and then the repository name. For example, <code>arn:aws:ecr:region:012345678910:repository/test</code>.</p>
+-- @param createdAt [CreationTimestamp] <p>The date and time, in JavaScript date/time format, when the repository was created.</p>
+-- @param repositoryUri [Url] <p>The URI for the repository. You can use this URI for Docker <code>push</code> and <code>pull</code> operations.</p>
 function M.Repository(registryId, repositoryName, repositoryArn, createdAt, repositoryUri, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Repository")
 	local t = { 
@@ -1177,8 +1177,8 @@ function M.AssertRepositoryPolicyNotFoundException(struct)
 end
 
 --- Create a structure of type RepositoryPolicyNotFoundException
--- &lt;p&gt;The specified repository and registry combination does not have an associated repository policy.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The specified repository and registry combination does not have an associated repository policy.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.RepositoryPolicyNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryPolicyNotFoundException")
 	local t = { 
@@ -1203,8 +1203,8 @@ end
 
 --- Create a structure of type GetRepositoryPolicyRequest
 --  
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository whose policy you want to retrieve.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
+-- @param repositoryName [RepositoryName] <p>The name of the repository whose policy you want to retrieve.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
 -- Required parameter: repositoryName
 function M.GetRepositoryPolicyRequest(repositoryName, registryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryPolicyRequest")
@@ -1228,8 +1228,8 @@ function M.AssertImageAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ImageAlreadyExistsException
--- &lt;p&gt;The specified image has already been pushed, and there are no changes to the manifest or image tag since the last push.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The specified image has already been pushed, and there are no changes to the manifest or image tag since the last push.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.ImageAlreadyExistsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImageAlreadyExistsException")
 	local t = { 
@@ -1251,8 +1251,8 @@ function M.AssertImageNotFoundException(struct)
 end
 
 --- Create a structure of type ImageNotFoundException
--- &lt;p&gt;The image requested does not exist in the specified repository.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The image requested does not exist in the specified repository.&lt;/p&gt;
+-- <p>The image requested does not exist in the specified repository.</p>
+-- @param message [ExceptionMessage] <p>The image requested does not exist in the specified repository.</p>
 function M.ImageNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImageNotFoundException")
 	local t = { 
@@ -1276,8 +1276,8 @@ end
 
 --- Create a structure of type ListImagesResponse
 --  
--- @param nextToken [NextToken] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value to include in a future &lt;code&gt;ListImages&lt;/code&gt; request. When the results of a &lt;code&gt;ListImages&lt;/code&gt; request exceed &lt;code&gt;maxResults&lt;/code&gt;, this value can be used to retrieve the next page of results. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt;
--- @param imageIds [ImageIdentifierList] &lt;p&gt;The list of image IDs for the requested repository.&lt;/p&gt;
+-- @param nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>ListImages</code> request. When the results of a <code>ListImages</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- @param imageIds [ImageIdentifierList] <p>The list of image IDs for the requested repository.</p>
 function M.ListImagesResponse(nextToken, imageIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListImagesResponse")
 	local t = { 
@@ -1302,10 +1302,10 @@ function M.AssertLayerFailure(struct)
 end
 
 --- Create a structure of type LayerFailure
--- &lt;p&gt;An object representing an Amazon ECR image layer failure.&lt;/p&gt;
--- @param layerDigest [BatchedOperationLayerDigest] &lt;p&gt;The layer digest associated with the failure.&lt;/p&gt;
--- @param failureCode [LayerFailureCode] &lt;p&gt;The failure code associated with the failure.&lt;/p&gt;
--- @param failureReason [LayerFailureReason] &lt;p&gt;The reason for the failure.&lt;/p&gt;
+-- <p>An object representing an Amazon ECR image layer failure.</p>
+-- @param layerDigest [BatchedOperationLayerDigest] <p>The layer digest associated with the failure.</p>
+-- @param failureCode [LayerFailureCode] <p>The failure code associated with the failure.</p>
+-- @param failureReason [LayerFailureReason] <p>The reason for the failure.</p>
 function M.LayerFailure(layerDigest, failureCode, failureReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LayerFailure")
 	local t = { 
@@ -1329,8 +1329,8 @@ function M.AssertUploadNotFoundException(struct)
 end
 
 --- Create a structure of type UploadNotFoundException
--- &lt;p&gt;The upload could not be found, or the specified upload id is not valid for this repository.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The upload could not be found, or the specified upload id is not valid for this repository.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.UploadNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UploadNotFoundException")
 	local t = { 
@@ -1352,8 +1352,8 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;The specified parameter is invalid. Review the available parameters for the API request.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>The specified parameter is invalid. Review the available parameters for the API request.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.InvalidParameterException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -1377,7 +1377,7 @@ end
 
 --- Create a structure of type CreateRepositoryRequest
 --  
--- @param repositoryName [RepositoryName] &lt;p&gt;The name to use for the repository. The repository name may be specified on its own (such as &lt;code&gt;nginx-web-app&lt;/code&gt;) or it can be prepended with a namespace to group the repository into a category (such as &lt;code&gt;project-a/nginx-web-app&lt;/code&gt;).&lt;/p&gt;
+-- @param repositoryName [RepositoryName] <p>The name to use for the repository. The repository name may be specified on its own (such as <code>nginx-web-app</code>) or it can be prepended with a namespace to group the repository into a category (such as <code>project-a/nginx-web-app</code>).</p>
 -- Required parameter: repositoryName
 function M.CreateRepositoryRequest(repositoryName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRepositoryRequest")
@@ -1407,12 +1407,12 @@ end
 
 --- Create a structure of type DescribeImagesRequest
 --  
--- @param repositoryName [RepositoryName] &lt;p&gt;A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.&lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;The maximum number of repository results returned by &lt;code&gt;DescribeImages&lt;/code&gt; in paginated output. When this parameter is used, &lt;code&gt;DescribeImages&lt;/code&gt; only returns &lt;code&gt;maxResults&lt;/code&gt; results in a single page along with a &lt;code&gt;nextToken&lt;/code&gt; response element. The remaining results of the initial request can be seen by sending another &lt;code&gt;DescribeImages&lt;/code&gt; request with the returned &lt;code&gt;nextToken&lt;/code&gt; value. This value can be between 1 and 100. If this parameter is not used, then &lt;code&gt;DescribeImages&lt;/code&gt; returns up to 100 results and a &lt;code&gt;nextToken&lt;/code&gt; value, if applicable.&lt;/p&gt;
--- @param filter [DescribeImagesFilter] &lt;p&gt;The filter key and value with which to filter your &lt;code&gt;DescribeImages&lt;/code&gt; results.&lt;/p&gt;
--- @param imageIds [ImageIdentifierList] &lt;p&gt;The list of image IDs for the requested repository.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the repository in which to describe images. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value returned from a previous paginated &lt;code&gt;DescribeImages&lt;/code&gt; request where &lt;code&gt;maxResults&lt;/code&gt; was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the &lt;code&gt;nextToken&lt;/code&gt; value. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt;
+-- @param repositoryName [RepositoryName] <p>A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.</p>
+-- @param maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeImages</code> in paginated output. When this parameter is used, <code>DescribeImages</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeImages</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeImages</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
+-- @param filter [DescribeImagesFilter] <p>The filter key and value with which to filter your <code>DescribeImages</code> results.</p>
+-- @param imageIds [ImageIdentifierList] <p>The list of image IDs for the requested repository.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository in which to describe images. If you do not specify a registry, the default registry is assumed.</p>
+-- @param nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeImages</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p>
 -- Required parameter: repositoryName
 function M.DescribeImagesRequest(repositoryName, maxResults, filter, imageIds, registryId, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesRequest")
@@ -1443,8 +1443,8 @@ end
 
 --- Create a structure of type DeleteRepositoryPolicyRequest
 --  
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository that is associated with the repository policy to delete.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the repository policy to delete. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
+-- @param repositoryName [RepositoryName] <p>The name of the repository that is associated with the repository policy to delete.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository policy to delete. If you do not specify a registry, the default registry is assumed.</p>
 -- Required parameter: repositoryName
 function M.DeleteRepositoryPolicyRequest(repositoryName, registryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryPolicyRequest")
@@ -1468,8 +1468,8 @@ function M.AssertServerException(struct)
 end
 
 --- Create a structure of type ServerException
--- &lt;p&gt;These errors are usually caused by a server-side issue.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>These errors are usually caused by a server-side issue.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.ServerException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServerException")
 	local t = { 
@@ -1492,7 +1492,7 @@ end
 
 --- Create a structure of type CreateRepositoryResponse
 --  
--- @param repository [Repository] &lt;p&gt;The repository that was created.&lt;/p&gt;
+-- @param repository [Repository] <p>The repository that was created.</p>
 function M.CreateRepositoryResponse(repository, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRepositoryResponse")
 	local t = { 
@@ -1514,8 +1514,8 @@ function M.AssertLayerPartTooSmallException(struct)
 end
 
 --- Create a structure of type LayerPartTooSmallException
--- &lt;p&gt;Layer parts must be at least 5 MiB in size.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The error message associated with the exception.&lt;/p&gt;
+-- <p>Layer parts must be at least 5 MiB in size.</p>
+-- @param message [ExceptionMessage] <p>The error message associated with the exception.</p>
 function M.LayerPartTooSmallException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LayerPartTooSmallException")
 	local t = { 
@@ -1540,9 +1540,9 @@ end
 
 --- Create a structure of type SetRepositoryPolicyResponse
 --  
--- @param policyText [RepositoryPolicyText] &lt;p&gt;The JSON repository policy text applied to the repository.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The repository name associated with the request.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The registry ID associated with the request.&lt;/p&gt;
+-- @param policyText [RepositoryPolicyText] <p>The JSON repository policy text applied to the repository.</p>
+-- @param repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- @param registryId [RegistryId] <p>The registry ID associated with the request.</p>
 function M.SetRepositoryPolicyResponse(policyText, repositoryName, registryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetRepositoryPolicyResponse")
 	local t = { 
@@ -1572,10 +1572,10 @@ end
 
 --- Create a structure of type BatchGetImageRequest
 --  
--- @param repositoryName [RepositoryName] &lt;p&gt;The repository that contains the images to describe.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the images to describe. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
--- @param acceptedMediaTypes [MediaTypeList] &lt;p&gt;The accepted media types for the request.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;application/vnd.docker.distribution.manifest.v1+json&lt;/code&gt; | &lt;code&gt;application/vnd.docker.distribution.manifest.v2+json&lt;/code&gt; | &lt;code&gt;application/vnd.oci.image.manifest.v1+json&lt;/code&gt; &lt;/p&gt;
--- @param imageIds [ImageIdentifierList] &lt;p&gt;A list of image ID references that correspond to images to describe. The format of the &lt;code&gt;imageIds&lt;/code&gt; reference is &lt;code&gt;imageTag=tag&lt;/code&gt; or &lt;code&gt;imageDigest=digest&lt;/code&gt;.&lt;/p&gt;
+-- @param repositoryName [RepositoryName] <p>The repository that contains the images to describe.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the images to describe. If you do not specify a registry, the default registry is assumed.</p>
+-- @param acceptedMediaTypes [MediaTypeList] <p>The accepted media types for the request.</p> <p>Valid values: <code>application/vnd.docker.distribution.manifest.v1+json</code> | <code>application/vnd.docker.distribution.manifest.v2+json</code> | <code>application/vnd.oci.image.manifest.v1+json</code> </p>
+-- @param imageIds [ImageIdentifierList] <p>A list of image ID references that correspond to images to describe. The format of the <code>imageIds</code> reference is <code>imageTag=tag</code> or <code>imageDigest=digest</code>.</p>
 -- Required parameter: repositoryName
 -- Required parameter: imageIds
 function M.BatchGetImageRequest(repositoryName, registryId, acceptedMediaTypes, imageIds, ...)
@@ -1606,9 +1606,9 @@ end
 
 --- Create a structure of type DeleteRepositoryRequest
 --  
--- @param force [ForceFlag] &lt;p&gt;Force the deletion of the repository if it contains images.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository to delete.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that contains the repository to delete. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
+-- @param force [ForceFlag] <p>Force the deletion of the repository if it contains images.</p>
+-- @param repositoryName [RepositoryName] <p>The name of the repository to delete.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository to delete. If you do not specify a registry, the default registry is assumed.</p>
 -- Required parameter: repositoryName
 function M.DeleteRepositoryRequest(force, repositoryName, registryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryRequest")
@@ -1636,9 +1636,9 @@ end
 
 --- Create a structure of type DeleteRepositoryPolicyResponse
 --  
--- @param policyText [RepositoryPolicyText] &lt;p&gt;The JSON repository policy that was deleted from the repository.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The repository name associated with the request.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The registry ID associated with the request.&lt;/p&gt;
+-- @param policyText [RepositoryPolicyText] <p>The JSON repository policy that was deleted from the repository.</p>
+-- @param repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- @param registryId [RegistryId] <p>The registry ID associated with the request.</p>
 function M.DeleteRepositoryPolicyResponse(policyText, repositoryName, registryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryPolicyResponse")
 	local t = { 
@@ -1663,7 +1663,7 @@ end
 
 --- Create a structure of type PutImageResponse
 --  
--- @param image [Image] &lt;p&gt;Details of the image uploaded.&lt;/p&gt;
+-- @param image [Image] <p>Details of the image uploaded.</p>
 function M.PutImageResponse(image, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutImageResponse")
 	local t = { 
@@ -1688,8 +1688,8 @@ end
 
 --- Create a structure of type InitiateLayerUploadRequest
 --  
--- @param repositoryName [RepositoryName] &lt;p&gt;The name of the repository that you intend to upload layers to.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The AWS account ID associated with the registry that you intend to upload layers to. If you do not specify a registry, the default registry is assumed.&lt;/p&gt;
+-- @param repositoryName [RepositoryName] <p>The name of the repository that you intend to upload layers to.</p>
+-- @param registryId [RegistryId] <p>The AWS account ID associated with the registry that you intend to upload layers to. If you do not specify a registry, the default registry is assumed.</p>
 -- Required parameter: repositoryName
 function M.InitiateLayerUploadRequest(repositoryName, registryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InitiateLayerUploadRequest")
@@ -1717,10 +1717,10 @@ end
 
 --- Create a structure of type UploadLayerPartResponse
 --  
--- @param uploadId [UploadId] &lt;p&gt;The upload ID associated with the request.&lt;/p&gt;
--- @param lastByteReceived [PartSize] &lt;p&gt;The integer value of the last byte received in the request.&lt;/p&gt;
--- @param repositoryName [RepositoryName] &lt;p&gt;The repository name associated with the request.&lt;/p&gt;
--- @param registryId [RegistryId] &lt;p&gt;The registry ID associated with the request.&lt;/p&gt;
+-- @param uploadId [UploadId] <p>The upload ID associated with the request.</p>
+-- @param lastByteReceived [PartSize] <p>The integer value of the last byte received in the request.</p>
+-- @param repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- @param registryId [RegistryId] <p>The registry ID associated with the request.</p>
 function M.UploadLayerPartResponse(uploadId, lastByteReceived, repositoryName, registryId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UploadLayerPartResponse")
 	local t = { 

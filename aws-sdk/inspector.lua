@@ -36,14 +36,14 @@ function M.AssertAssessmentRunFilter(struct)
 end
 
 --- Create a structure of type AssessmentRunFilter
--- &lt;p&gt;Used as the request parameter in the &lt;a&gt;ListAssessmentRuns&lt;/a&gt; action.&lt;/p&gt;
--- @param startTimeRange [TimestampRange] &lt;p&gt;For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the &lt;b&gt;startTime&lt;/b&gt; property of the &lt;a&gt;AssessmentRun&lt;/a&gt; data type.&lt;/p&gt;
--- @param durationRange [DurationRange] &lt;p&gt;For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the &lt;b&gt;durationInSeconds&lt;/b&gt; property of the &lt;a&gt;AssessmentRun&lt;/a&gt; data type.&lt;/p&gt;
--- @param rulesPackageArns [FilterRulesPackageArnList] &lt;p&gt;For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the &lt;b&gt;rulesPackages&lt;/b&gt; property of the &lt;a&gt;AssessmentRun&lt;/a&gt; data type.&lt;/p&gt;
--- @param states [AssessmentRunStateList] &lt;p&gt;For a record to match a filter, one of the values specified for this data type property must be the exact match of the value of the &lt;b&gt;assessmentRunState&lt;/b&gt; property of the &lt;a&gt;AssessmentRun&lt;/a&gt; data type.&lt;/p&gt;
--- @param namePattern [NamePattern] &lt;p&gt;For a record to match a filter, an explicit value or a string containing a wildcard that is specified for this data type property must match the value of the &lt;b&gt;assessmentRunName&lt;/b&gt; property of the &lt;a&gt;AssessmentRun&lt;/a&gt; data type.&lt;/p&gt;
--- @param completionTimeRange [TimestampRange] &lt;p&gt;For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the &lt;b&gt;completedAt&lt;/b&gt; property of the &lt;a&gt;AssessmentRun&lt;/a&gt; data type.&lt;/p&gt;
--- @param stateChangeTimeRange [TimestampRange] &lt;p&gt;For a record to match a filter, the value that is specified for this data type property must match the &lt;b&gt;stateChangedAt&lt;/b&gt; property of the &lt;a&gt;AssessmentRun&lt;/a&gt; data type.&lt;/p&gt;
+-- <p>Used as the request parameter in the <a>ListAssessmentRuns</a> action.</p>
+-- @param startTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>startTime</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param durationRange [DurationRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>rulesPackages</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param states [AssessmentRunStateList] <p>For a record to match a filter, one of the values specified for this data type property must be the exact match of the value of the <b>assessmentRunState</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param namePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string containing a wildcard that is specified for this data type property must match the value of the <b>assessmentRunName</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param completionTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>completedAt</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @param stateChangeTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must match the <b>stateChangedAt</b> property of the <a>AssessmentRun</a> data type.</p>
 function M.AssessmentRunFilter(startTimeRange, durationRange, rulesPackageArns, states, namePattern, completionTimeRange, stateChangeTimeRange, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunFilter")
 	local t = { 
@@ -75,10 +75,10 @@ function M.AssertTelemetryMetadata(struct)
 end
 
 --- Create a structure of type TelemetryMetadata
--- &lt;p&gt;The metadata about the Amazon Inspector application data metrics collected by the agent. This data type is used as the response element in the &lt;a&gt;GetTelemetryMetadata&lt;/a&gt; action.&lt;/p&gt;
--- @param count [Long] &lt;p&gt;The count of messages that the agent sends to the Amazon Inspector service.&lt;/p&gt;
--- @param dataSize [Long] &lt;p&gt;The data size of messages that the agent sends to the Amazon Inspector service.&lt;/p&gt;
--- @param messageType [MessageType] &lt;p&gt;A specific type of behavioral data that is collected by the agent.&lt;/p&gt;
+-- <p>The metadata about the Amazon Inspector application data metrics collected by the agent. This data type is used as the response element in the <a>GetTelemetryMetadata</a> action.</p>
+-- @param count [Long] <p>The count of messages that the agent sends to the Amazon Inspector service.</p>
+-- @param dataSize [Long] <p>The data size of messages that the agent sends to the Amazon Inspector service.</p>
+-- @param messageType [MessageType] <p>A specific type of behavioral data that is collected by the agent.</p>
 -- Required parameter: messageType
 -- Required parameter: count
 function M.TelemetryMetadata(count, dataSize, messageType, ...)
@@ -111,11 +111,11 @@ function M.AssertAgentsAlreadyRunningAssessmentException(struct)
 end
 
 --- Create a structure of type AgentsAlreadyRunningAssessmentException
--- &lt;p&gt;You started an assessment run, but one of the instances is already participating in another assessment run.&lt;/p&gt;
--- @param canRetry [Bool] &lt;p&gt;You can immediately retry your request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Details of the exception error.&lt;/p&gt;
--- @param agents [AgentAlreadyRunningAssessmentList] &lt;p/&gt;
--- @param agentsTruncated [Bool] &lt;p/&gt;
+-- <p>You started an assessment run, but one of the instances is already participating in another assessment run.</p>
+-- @param canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param message [ErrorMessage] <p>Details of the exception error.</p>
+-- @param agents [AgentAlreadyRunningAssessmentList] <p/>
+-- @param agentsTruncated [Bool] <p/>
 -- Required parameter: message
 -- Required parameter: agents
 -- Required parameter: agentsTruncated
@@ -147,9 +147,9 @@ function M.AssertFailedItemDetails(struct)
 end
 
 --- Create a structure of type FailedItemDetails
--- &lt;p&gt;Includes details about the failed items.&lt;/p&gt;
--- @param retryable [Bool] &lt;p&gt;Indicates whether you can immediately retry a request for this item for a specified resource.&lt;/p&gt;
--- @param failureCode [FailedItemErrorCode] &lt;p&gt;The status code of a failed item.&lt;/p&gt;
+-- <p>Includes details about the failed items.</p>
+-- @param retryable [Bool] <p>Indicates whether you can immediately retry a request for this item for a specified resource.</p>
+-- @param failureCode [FailedItemErrorCode] <p>The status code of a failed item.</p>
 -- Required parameter: failureCode
 -- Required parameter: retryable
 function M.FailedItemDetails(retryable, failureCode, ...)
@@ -177,8 +177,8 @@ end
 
 --- Create a structure of type PreviewAgentsResponse
 --  
--- @param nextToken [PaginationToken] &lt;p&gt; When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the &lt;b&gt;nextToken&lt;/b&gt; parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.&lt;/p&gt;
--- @param agentPreviews [AgentPreviewList] &lt;p&gt;The resulting list of agents.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param agentPreviews [AgentPreviewList] <p>The resulting list of agents.</p>
 -- Required parameter: agentPreviews
 function M.PreviewAgentsResponse(nextToken, agentPreviews, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PreviewAgentsResponse")
@@ -208,9 +208,9 @@ end
 
 --- Create a structure of type GetAssessmentReportRequest
 --  
--- @param assessmentRunArn [Arn] &lt;p&gt;The ARN that specifies the assessment run for which you want to generate a report.&lt;/p&gt;
--- @param reportType [ReportType] &lt;p&gt;Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html&quot;&gt;Assessment Reports&lt;/a&gt;. &lt;/p&gt;
--- @param reportFileFormat [ReportFileFormat] &lt;p&gt;Specifies the file format (html or pdf) of the assessment report that you want to generate.&lt;/p&gt;
+-- @param assessmentRunArn [Arn] <p>The ARN that specifies the assessment run for which you want to generate a report.</p>
+-- @param reportType [ReportType] <p>Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see <a href="http://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html">Assessment Reports</a>. </p>
+-- @param reportFileFormat [ReportFileFormat] <p>Specifies the file format (html or pdf) of the assessment report that you want to generate.</p>
 -- Required parameter: assessmentRunArn
 -- Required parameter: reportFileFormat
 -- Required parameter: reportType
@@ -243,9 +243,9 @@ end
 
 --- Create a structure of type SubscribeToEventRequest
 --  
--- @param resourceArn [Arn] &lt;p&gt;The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.&lt;/p&gt;
--- @param event [InspectorEvent] &lt;p&gt;The event for which you want to receive SNS notifications.&lt;/p&gt;
--- @param topicArn [Arn] &lt;p&gt;The ARN of the SNS topic to which the SNS notifications are sent.&lt;/p&gt;
+-- @param resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.</p>
+-- @param event [InspectorEvent] <p>The event for which you want to receive SNS notifications.</p>
+-- @param topicArn [Arn] <p>The ARN of the SNS topic to which the SNS notifications are sent.</p>
 -- Required parameter: resourceArn
 -- Required parameter: event
 -- Required parameter: topicArn
@@ -274,7 +274,7 @@ end
 
 --- Create a structure of type RemoveAttributesFromFindingsResponse
 --  
--- @param failedItems [FailedItems] &lt;p&gt;Attributes details that cannot be described. An error code is provided for each failed item.&lt;/p&gt;
+-- @param failedItems [FailedItems] <p>Attributes details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: failedItems
 function M.RemoveAttributesFromFindingsResponse(failedItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAttributesFromFindingsResponse")
@@ -308,14 +308,14 @@ function M.AssertAssessmentRunAgent(struct)
 end
 
 --- Create a structure of type AssessmentRunAgent
--- &lt;p&gt;Contains information about an Amazon Inspector agent. This data type is used as a response element in the &lt;a&gt;ListAssessmentRunAgents&lt;/a&gt; action.&lt;/p&gt;
--- @param assessmentRunArn [Arn] &lt;p&gt;The ARN of the assessment run that is associated with the agent.&lt;/p&gt;
--- @param agentHealthCode [AgentHealthCode] &lt;p&gt;The detailed health state of the agent.&lt;/p&gt;
--- @param agentHealth [AgentHealth] &lt;p&gt;The current health state of the agent.&lt;/p&gt;
--- @param autoScalingGroup [AutoScalingGroup] &lt;p&gt;The Auto Scaling group of the EC2 instance that is specified by the agent ID.&lt;/p&gt;
--- @param agentHealthDetails [Message] &lt;p&gt;The description for the agent health code.&lt;/p&gt;
--- @param telemetryMetadata [TelemetryMetadataList] &lt;p&gt;The Amazon Inspector application data metrics that are collected by the agent.&lt;/p&gt;
--- @param agentId [AgentId] &lt;p&gt;The AWS account of the EC2 instance where the agent is installed.&lt;/p&gt;
+-- <p>Contains information about an Amazon Inspector agent. This data type is used as a response element in the <a>ListAssessmentRunAgents</a> action.</p>
+-- @param assessmentRunArn [Arn] <p>The ARN of the assessment run that is associated with the agent.</p>
+-- @param agentHealthCode [AgentHealthCode] <p>The detailed health state of the agent.</p>
+-- @param agentHealth [AgentHealth] <p>The current health state of the agent.</p>
+-- @param autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group of the EC2 instance that is specified by the agent ID.</p>
+-- @param agentHealthDetails [Message] <p>The description for the agent health code.</p>
+-- @param telemetryMetadata [TelemetryMetadataList] <p>The Amazon Inspector application data metrics that are collected by the agent.</p>
+-- @param agentId [AgentId] <p>The AWS account of the EC2 instance where the agent is installed.</p>
 -- Required parameter: agentId
 -- Required parameter: assessmentRunArn
 -- Required parameter: agentHealth
@@ -350,7 +350,7 @@ end
 
 --- Create a structure of type DescribeResourceGroupsRequest
 --  
--- @param resourceGroupArns [BatchDescribeArnList] &lt;p&gt;The ARN that specifies the resource group that you want to describe.&lt;/p&gt;
+-- @param resourceGroupArns [BatchDescribeArnList] <p>The ARN that specifies the resource group that you want to describe.</p>
 -- Required parameter: resourceGroupArns
 function M.DescribeResourceGroupsRequest(resourceGroupArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourceGroupsRequest")
@@ -376,9 +376,9 @@ end
 
 --- Create a structure of type ListAssessmentTargetsRequest
 --  
--- @param filter [AssessmentTargetFilter] &lt;p&gt;You can use this parameter to specify a subset of data to be included in the action's response.&lt;/p&gt; &lt;p&gt;For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.&lt;/p&gt;
--- @param nextToken [PaginationToken] &lt;p&gt;You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the &lt;b&gt;ListAssessmentTargets&lt;/b&gt; action. Subsequent calls to the action fill &lt;b&gt;nextToken&lt;/b&gt; in the request with the value of &lt;b&gt;NextToken&lt;/b&gt; from the previous response to continue listing data.&lt;/p&gt;
--- @param maxResults [ListMaxResults] &lt;p&gt;You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.&lt;/p&gt;
+-- @param filter [AssessmentTargetFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTargets</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
 function M.ListAssessmentTargetsRequest(filter, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTargetsRequest")
 	local t = { 
@@ -410,13 +410,13 @@ function M.AssertAssessmentRunNotification(struct)
 end
 
 --- Create a structure of type AssessmentRunNotification
--- &lt;p&gt;Used as one of the elements of the &lt;a&gt;AssessmentRun&lt;/a&gt; data type.&lt;/p&gt;
--- @param snsPublishStatusCode [AssessmentRunNotificationSnsStatusCode] &lt;p&gt;The status code of the SNS notification.&lt;/p&gt;
--- @param snsTopicArn [Arn] &lt;p&gt;The SNS topic to which the SNS notification is sent.&lt;/p&gt;
--- @param error [Bool] &lt;p&gt;The Boolean value that specifies whether the notification represents an error.&lt;/p&gt;
--- @param date [Timestamp] &lt;p&gt;The date of the notification.&lt;/p&gt;
--- @param message [Message] &lt;p&gt;The message included in the notification.&lt;/p&gt;
--- @param event [InspectorEvent] &lt;p&gt;The event for which a notification is sent.&lt;/p&gt;
+-- <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
+-- @param snsPublishStatusCode [AssessmentRunNotificationSnsStatusCode] <p>The status code of the SNS notification.</p>
+-- @param snsTopicArn [Arn] <p>The SNS topic to which the SNS notification is sent.</p>
+-- @param error [Bool] <p>The Boolean value that specifies whether the notification represents an error.</p>
+-- @param date [Timestamp] <p>The date of the notification.</p>
+-- @param message [Message] <p>The message included in the notification.</p>
+-- @param event [InspectorEvent] <p>The event for which a notification is sent.</p>
 -- Required parameter: date
 -- Required parameter: event
 -- Required parameter: error
@@ -449,9 +449,9 @@ end
 
 --- Create a structure of type ListEventSubscriptionsRequest
 --  
--- @param resourceArn [Arn] &lt;p&gt;The ARN of the assessment template for which you want to list the existing event subscriptions.&lt;/p&gt;
--- @param nextToken [PaginationToken] &lt;p&gt;You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the &lt;b&gt;ListEventSubscriptions&lt;/b&gt; action. Subsequent calls to the action fill &lt;b&gt;nextToken&lt;/b&gt; in the request with the value of &lt;b&gt;NextToken&lt;/b&gt; from the previous response to continue listing data.&lt;/p&gt;
--- @param maxResults [ListEventSubscriptionsMaxResults] &lt;p&gt;You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.&lt;/p&gt;
+-- @param resourceArn [Arn] <p>The ARN of the assessment template for which you want to list the existing event subscriptions.</p>
+-- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListEventSubscriptions</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param maxResults [ListEventSubscriptionsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
 function M.ListEventSubscriptionsRequest(resourceArn, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListEventSubscriptionsRequest")
 	local t = { 
@@ -478,9 +478,9 @@ function M.AssertAgentFilter(struct)
 end
 
 --- Create a structure of type AgentFilter
--- &lt;p&gt;Contains information about an Amazon Inspector agent. This data type is used as a request parameter in the &lt;a&gt;ListAssessmentRunAgents&lt;/a&gt; action.&lt;/p&gt;
--- @param agentHealthCodes [AgentHealthCodeList] &lt;p&gt;The detailed health state of the agent. Values can be set to &lt;b&gt;IDLE&lt;/b&gt;, &lt;b&gt;RUNNING&lt;/b&gt;, &lt;b&gt;SHUTDOWN&lt;/b&gt;, &lt;b&gt;UNHEALTHY&lt;/b&gt;, &lt;b&gt;THROTTLED&lt;/b&gt;, and &lt;b&gt;UNKNOWN&lt;/b&gt;. &lt;/p&gt;
--- @param agentHealths [AgentHealthList] &lt;p&gt;The current health state of the agent. Values can be set to &lt;b&gt;HEALTHY&lt;/b&gt; or &lt;b&gt;UNHEALTHY&lt;/b&gt;.&lt;/p&gt;
+-- <p>Contains information about an Amazon Inspector agent. This data type is used as a request parameter in the <a>ListAssessmentRunAgents</a> action.</p>
+-- @param agentHealthCodes [AgentHealthCodeList] <p>The detailed health state of the agent. Values can be set to <b>IDLE</b>, <b>RUNNING</b>, <b>SHUTDOWN</b>, <b>UNHEALTHY</b>, <b>THROTTLED</b>, and <b>UNKNOWN</b>. </p>
+-- @param agentHealths [AgentHealthList] <p>The current health state of the agent. Values can be set to <b>HEALTHY</b> or <b>UNHEALTHY</b>.</p>
 -- Required parameter: agentHealths
 -- Required parameter: agentHealthCodes
 function M.AgentFilter(agentHealthCodes, agentHealths, ...)
@@ -509,8 +509,8 @@ end
 
 --- Create a structure of type DescribeAssessmentRunsResponse
 --  
--- @param failedItems [FailedItems] &lt;p&gt;Assessment run details that cannot be described. An error code is provided for each failed item.&lt;/p&gt;
--- @param assessmentRuns [AssessmentRunList] &lt;p&gt;Information about the assessment run.&lt;/p&gt;
+-- @param failedItems [FailedItems] <p>Assessment run details that cannot be described. An error code is provided for each failed item.</p>
+-- @param assessmentRuns [AssessmentRunList] <p>Information about the assessment run.</p>
 -- Required parameter: assessmentRuns
 -- Required parameter: failedItems
 function M.DescribeAssessmentRunsResponse(failedItems, assessmentRuns, ...)
@@ -540,10 +540,10 @@ function M.AssertSubscription(struct)
 end
 
 --- Create a structure of type Subscription
--- &lt;p&gt;This data type is used as a response element in the &lt;a&gt;ListEventSubscriptions&lt;/a&gt; action.&lt;/p&gt;
--- @param eventSubscriptions [EventSubscriptionList] &lt;p&gt;The list of existing event subscriptions.&lt;/p&gt;
--- @param resourceArn [Arn] &lt;p&gt;The ARN of the assessment template that is used during the event for which the SNS notification is sent.&lt;/p&gt;
--- @param topicArn [Arn] &lt;p&gt;The ARN of the Amazon Simple Notification Service (SNS) topic to which the SNS notifications are sent.&lt;/p&gt;
+-- <p>This data type is used as a response element in the <a>ListEventSubscriptions</a> action.</p>
+-- @param eventSubscriptions [EventSubscriptionList] <p>The list of existing event subscriptions.</p>
+-- @param resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which the SNS notification is sent.</p>
+-- @param topicArn [Arn] <p>The ARN of the Amazon Simple Notification Service (SNS) topic to which the SNS notifications are sent.</p>
 -- Required parameter: resourceArn
 -- Required parameter: topicArn
 -- Required parameter: eventSubscriptions
@@ -572,7 +572,7 @@ end
 
 --- Create a structure of type GetTelemetryMetadataResponse
 --  
--- @param telemetryMetadata [TelemetryMetadataList] &lt;p&gt;Telemetry details.&lt;/p&gt;
+-- @param telemetryMetadata [TelemetryMetadataList] <p>Telemetry details.</p>
 -- Required parameter: telemetryMetadata
 function M.GetTelemetryMetadataResponse(telemetryMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTelemetryMetadataResponse")
@@ -603,12 +603,12 @@ function M.AssertRulesPackage(struct)
 end
 
 --- Create a structure of type RulesPackage
--- &lt;p&gt;Contains information about an Amazon Inspector rules package. This data type is used as the response element in the &lt;a&gt;DescribeRulesPackages&lt;/a&gt; action.&lt;/p&gt;
--- @param description [Text] &lt;p&gt;The description of the rules package.&lt;/p&gt;
--- @param version [Version] &lt;p&gt;The version ID of the rules package.&lt;/p&gt;
--- @param name [RulesPackageName] &lt;p&gt;The name of the rules package.&lt;/p&gt;
--- @param arn [Arn] &lt;p&gt;The ARN of the rules package.&lt;/p&gt;
--- @param provider [ProviderName] &lt;p&gt;The provider of the rules package.&lt;/p&gt;
+-- <p>Contains information about an Amazon Inspector rules package. This data type is used as the response element in the <a>DescribeRulesPackages</a> action.</p>
+-- @param description [Text] <p>The description of the rules package.</p>
+-- @param version [Version] <p>The version ID of the rules package.</p>
+-- @param name [RulesPackageName] <p>The name of the rules package.</p>
+-- @param arn [Arn] <p>The ARN of the rules package.</p>
+-- @param provider [ProviderName] <p>The provider of the rules package.</p>
 -- Required parameter: arn
 -- Required parameter: name
 -- Required parameter: version
@@ -645,11 +645,11 @@ function M.AssertAssessmentRunInProgressException(struct)
 end
 
 --- Create a structure of type AssessmentRunInProgressException
--- &lt;p&gt;You cannot perform a specified action if an assessment run is currently in progress.&lt;/p&gt;
--- @param canRetry [Bool] &lt;p&gt;You can immediately retry your request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Details of the exception error.&lt;/p&gt;
--- @param assessmentRunArnsTruncated [Bool] &lt;p&gt;Boolean value that indicates whether the ARN list of the assessment runs is truncated.&lt;/p&gt;
--- @param assessmentRunArns [AssessmentRunInProgressArnList] &lt;p&gt;The ARNs of the assessment runs that are currently in progress.&lt;/p&gt;
+-- <p>You cannot perform a specified action if an assessment run is currently in progress.</p>
+-- @param canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param message [ErrorMessage] <p>Details of the exception error.</p>
+-- @param assessmentRunArnsTruncated [Bool] <p>Boolean value that indicates whether the ARN list of the assessment runs is truncated.</p>
+-- @param assessmentRunArns [AssessmentRunInProgressArnList] <p>The ARNs of the assessment runs that are currently in progress.</p>
 -- Required parameter: message
 -- Required parameter: assessmentRunArns
 -- Required parameter: assessmentRunArnsTruncated
@@ -680,7 +680,7 @@ end
 
 --- Create a structure of type CreateResourceGroupResponse
 --  
--- @param resourceGroupArn [Arn] &lt;p&gt;The ARN that specifies the resource group that is created.&lt;/p&gt;
+-- @param resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is created.</p>
 -- Required parameter: resourceGroupArn
 function M.CreateResourceGroupResponse(resourceGroupArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateResourceGroupResponse")
@@ -707,10 +707,10 @@ end
 
 --- Create a structure of type ListFindingsRequest
 --  
--- @param filter [FindingFilter] &lt;p&gt;You can use this parameter to specify a subset of data to be included in the action's response.&lt;/p&gt; &lt;p&gt;For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.&lt;/p&gt;
--- @param nextToken [PaginationToken] &lt;p&gt;You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the &lt;b&gt;ListFindings&lt;/b&gt; action. Subsequent calls to the action fill &lt;b&gt;nextToken&lt;/b&gt; in the request with the value of &lt;b&gt;NextToken&lt;/b&gt; from the previous response to continue listing data.&lt;/p&gt;
--- @param assessmentRunArns [ListParentArnList] &lt;p&gt;The ARNs of the assessment runs that generate the findings that you want to list.&lt;/p&gt;
--- @param maxResults [ListMaxResults] &lt;p&gt;You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.&lt;/p&gt;
+-- @param filter [FindingFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListFindings</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param assessmentRunArns [ListParentArnList] <p>The ARNs of the assessment runs that generate the findings that you want to list.</p>
+-- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
 function M.ListFindingsRequest(filter, nextToken, assessmentRunArns, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFindingsRequest")
 	local t = { 
@@ -762,22 +762,22 @@ function M.AssertAssessmentRun(struct)
 end
 
 --- Create a structure of type AssessmentRun
--- &lt;p&gt;A snapshot of an Amazon Inspector assessment run that contains the findings of the assessment run .&lt;/p&gt; &lt;p&gt;Used as the response element in the &lt;a&gt;DescribeAssessmentRuns&lt;/a&gt; action.&lt;/p&gt;
--- @param dataCollected [Bool] &lt;p&gt;A Boolean value (true or false) that specifies whether the process of collecting data from the agents is completed.&lt;/p&gt;
--- @param name [AssessmentRunName] &lt;p&gt;The auto-generated name for the assessment run.&lt;/p&gt;
--- @param completedAt [Timestamp] &lt;p&gt;The assessment run completion time that corresponds to the rules packages evaluation completion time or failure.&lt;/p&gt;
--- @param userAttributesForFindings [UserAttributeList] &lt;p&gt;The user-defined attributes that are assigned to every generated finding.&lt;/p&gt;
--- @param stateChanges [AssessmentRunStateChangeList] &lt;p&gt;A list of the assessment run state changes.&lt;/p&gt;
--- @param createdAt [Timestamp] &lt;p&gt;The time when &lt;a&gt;StartAssessmentRun&lt;/a&gt; was called.&lt;/p&gt;
--- @param findingCounts [AssessmentRunFindingCounts] &lt;p&gt;Provides a total count of generated findings per severity.&lt;/p&gt;
--- @param notifications [AssessmentRunNotificationList] &lt;p&gt;A list of notifications for the event subscriptions. A notification about a particular generated finding is added to this list only once.&lt;/p&gt;
--- @param state [AssessmentRunState] &lt;p&gt;The state of the assessment run.&lt;/p&gt;
--- @param stateChangedAt [Timestamp] &lt;p&gt;The last time when the assessment run's state changed.&lt;/p&gt;
--- @param durationInSeconds [AssessmentRunDuration] &lt;p&gt;The duration of the assessment run.&lt;/p&gt;
--- @param rulesPackageArns [AssessmentRulesPackageArnList] &lt;p&gt;The rules packages selected for the assessment run.&lt;/p&gt;
--- @param startedAt [Timestamp] &lt;p&gt;The time when &lt;a&gt;StartAssessmentRun&lt;/a&gt; was called.&lt;/p&gt;
--- @param assessmentTemplateArn [Arn] &lt;p&gt;The ARN of the assessment template that is associated with the assessment run.&lt;/p&gt;
--- @param arn [Arn] &lt;p&gt;The ARN of the assessment run.&lt;/p&gt;
+-- <p>A snapshot of an Amazon Inspector assessment run that contains the findings of the assessment run .</p> <p>Used as the response element in the <a>DescribeAssessmentRuns</a> action.</p>
+-- @param dataCollected [Bool] <p>A Boolean value (true or false) that specifies whether the process of collecting data from the agents is completed.</p>
+-- @param name [AssessmentRunName] <p>The auto-generated name for the assessment run.</p>
+-- @param completedAt [Timestamp] <p>The assessment run completion time that corresponds to the rules packages evaluation completion time or failure.</p>
+-- @param userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every generated finding.</p>
+-- @param stateChanges [AssessmentRunStateChangeList] <p>A list of the assessment run state changes.</p>
+-- @param createdAt [Timestamp] <p>The time when <a>StartAssessmentRun</a> was called.</p>
+-- @param findingCounts [AssessmentRunFindingCounts] <p>Provides a total count of generated findings per severity.</p>
+-- @param notifications [AssessmentRunNotificationList] <p>A list of notifications for the event subscriptions. A notification about a particular generated finding is added to this list only once.</p>
+-- @param state [AssessmentRunState] <p>The state of the assessment run.</p>
+-- @param stateChangedAt [Timestamp] <p>The last time when the assessment run's state changed.</p>
+-- @param durationInSeconds [AssessmentRunDuration] <p>The duration of the assessment run.</p>
+-- @param rulesPackageArns [AssessmentRulesPackageArnList] <p>The rules packages selected for the assessment run.</p>
+-- @param startedAt [Timestamp] <p>The time when <a>StartAssessmentRun</a> was called.</p>
+-- @param assessmentTemplateArn [Arn] <p>The ARN of the assessment template that is associated with the assessment run.</p>
+-- @param arn [Arn] <p>The ARN of the assessment run.</p>
 -- Required parameter: arn
 -- Required parameter: name
 -- Required parameter: assessmentTemplateArn
@@ -839,14 +839,14 @@ function M.AssertAssessmentTemplate(struct)
 end
 
 --- Create a structure of type AssessmentTemplate
--- &lt;p&gt;Contains information about an Amazon Inspector assessment template. This data type is used as the response element in the &lt;a&gt;DescribeAssessmentTemplates&lt;/a&gt; action.&lt;/p&gt;
--- @param assessmentTargetArn [Arn] &lt;p&gt;The ARN of the assessment target that corresponds to this assessment template.&lt;/p&gt;
--- @param name [AssessmentTemplateName] &lt;p&gt;The name of the assessment template.&lt;/p&gt;
--- @param createdAt [Timestamp] &lt;p&gt;The time at which the assessment template is created.&lt;/p&gt;
--- @param durationInSeconds [AssessmentRunDuration] &lt;p&gt;The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).&lt;/p&gt;
--- @param rulesPackageArns [AssessmentTemplateRulesPackageArnList] &lt;p&gt;The rules packages that are specified for this assessment template.&lt;/p&gt;
--- @param userAttributesForFindings [UserAttributeList] &lt;p&gt;The user-defined attributes that are assigned to every generated finding from the assessment run that uses this assessment template.&lt;/p&gt;
--- @param arn [Arn] &lt;p&gt;The ARN of the assessment template.&lt;/p&gt;
+-- <p>Contains information about an Amazon Inspector assessment template. This data type is used as the response element in the <a>DescribeAssessmentTemplates</a> action.</p>
+-- @param assessmentTargetArn [Arn] <p>The ARN of the assessment target that corresponds to this assessment template.</p>
+-- @param name [AssessmentTemplateName] <p>The name of the assessment template.</p>
+-- @param createdAt [Timestamp] <p>The time at which the assessment template is created.</p>
+-- @param durationInSeconds [AssessmentRunDuration] <p>The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).</p>
+-- @param rulesPackageArns [AssessmentTemplateRulesPackageArnList] <p>The rules packages that are specified for this assessment template.</p>
+-- @param userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every generated finding from the assessment run that uses this assessment template.</p>
+-- @param arn [Arn] <p>The ARN of the assessment template.</p>
 -- Required parameter: arn
 -- Required parameter: name
 -- Required parameter: assessmentTargetArn
@@ -883,9 +883,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;A key and value pair. This data type is used as a request parameter in the &lt;a&gt;SetTagsForResource&lt;/a&gt; action and a response element in the &lt;a&gt;ListTagsForResource&lt;/a&gt; action.&lt;/p&gt;
--- @param value [TagValue] &lt;p&gt;A value assigned to a tag key.&lt;/p&gt;
--- @param key [TagKey] &lt;p&gt;A tag key.&lt;/p&gt;
+-- <p>A key and value pair. This data type is used as a request parameter in the <a>SetTagsForResource</a> action and a response element in the <a>ListTagsForResource</a> action.</p>
+-- @param value [TagValue] <p>A value assigned to a tag key.</p>
+-- @param key [TagKey] <p>A tag key.</p>
 -- Required parameter: key
 function M.Tag(value, key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
@@ -911,9 +911,9 @@ function M.AssertAttribute(struct)
 end
 
 --- Create a structure of type Attribute
--- &lt;p&gt;This data type is used as a request parameter in the &lt;a&gt;AddAttributesToFindings&lt;/a&gt; and &lt;a&gt;CreateAssessmentTemplate&lt;/a&gt; actions.&lt;/p&gt;
--- @param value [AttributeValue] &lt;p&gt;The value assigned to the attribute key.&lt;/p&gt;
--- @param key [AttributeKey] &lt;p&gt;The attribute key.&lt;/p&gt;
+-- <p>This data type is used as a request parameter in the <a>AddAttributesToFindings</a> and <a>CreateAssessmentTemplate</a> actions.</p>
+-- @param value [AttributeValue] <p>The value assigned to the attribute key.</p>
+-- @param key [AttributeKey] <p>The attribute key.</p>
 -- Required parameter: key
 function M.Attribute(value, key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Attribute")
@@ -943,9 +943,9 @@ end
 
 --- Create a structure of type UpdateAssessmentTargetRequest
 --  
--- @param assessmentTargetArn [Arn] &lt;p&gt;The ARN of the assessment target that you want to update.&lt;/p&gt;
--- @param assessmentTargetName [AssessmentTargetName] &lt;p&gt;The name of the assessment target that you want to update.&lt;/p&gt;
--- @param resourceGroupArn [Arn] &lt;p&gt;The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.&lt;/p&gt;
+-- @param assessmentTargetArn [Arn] <p>The ARN of the assessment target that you want to update.</p>
+-- @param assessmentTargetName [AssessmentTargetName] <p>The name of the assessment target that you want to update.</p>
+-- @param resourceGroupArn [Arn] <p>The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.</p>
 -- Required parameter: assessmentTargetArn
 -- Required parameter: assessmentTargetName
 -- Required parameter: resourceGroupArn
@@ -975,8 +975,8 @@ end
 
 --- Create a structure of type GetAssessmentReportResponse
 --  
--- @param status [ReportStatus] &lt;p&gt;Specifies the status of the request to generate an assessment report. &lt;/p&gt;
--- @param url [Url] &lt;p&gt;Specifies the URL where you can find the generated assessment report. This parameter is only returned if the report is successfully generated.&lt;/p&gt;
+-- @param status [ReportStatus] <p>Specifies the status of the request to generate an assessment report. </p>
+-- @param url [Url] <p>Specifies the URL where you can find the generated assessment report. This parameter is only returned if the report is successfully generated.</p>
 -- Required parameter: status
 function M.GetAssessmentReportResponse(status, url, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAssessmentReportResponse")
@@ -1005,10 +1005,10 @@ function M.AssertInvalidInputException(struct)
 end
 
 --- Create a structure of type InvalidInputException
--- &lt;p&gt;The request was rejected because an invalid or out-of-range value was supplied for an input parameter.&lt;/p&gt;
--- @param errorCode [InvalidInputErrorCode] &lt;p&gt;Code that indicates the type of error that is generated.&lt;/p&gt;
--- @param canRetry [Bool] &lt;p&gt;You can immediately retry your request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Details of the exception error.&lt;/p&gt;
+-- <p>The request was rejected because an invalid or out-of-range value was supplied for an input parameter.</p>
+-- @param errorCode [InvalidInputErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- @param canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: errorCode
 -- Required parameter: canRetry
@@ -1039,8 +1039,8 @@ end
 
 --- Create a structure of type DescribeRulesPackagesResponse
 --  
--- @param rulesPackages [RulesPackageList] &lt;p&gt;Information about the rules package.&lt;/p&gt;
--- @param failedItems [FailedItems] &lt;p&gt;Rules package details that cannot be described. An error code is provided for each failed item.&lt;/p&gt;
+-- @param rulesPackages [RulesPackageList] <p>Information about the rules package.</p>
+-- @param failedItems [FailedItems] <p>Rules package details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: rulesPackages
 -- Required parameter: failedItems
 function M.DescribeRulesPackagesResponse(rulesPackages, failedItems, ...)
@@ -1070,10 +1070,10 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;The request was rejected because it attempted to create resources beyond the current AWS account limits. The error code describes the limit exceeded.&lt;/p&gt;
--- @param errorCode [LimitExceededErrorCode] &lt;p&gt;Code that indicates the type of error that is generated.&lt;/p&gt;
--- @param canRetry [Bool] &lt;p&gt;You can immediately retry your request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Details of the exception error.&lt;/p&gt;
+-- <p>The request was rejected because it attempted to create resources beyond the current AWS account limits. The error code describes the limit exceeded.</p>
+-- @param errorCode [LimitExceededErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- @param canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: errorCode
 -- Required parameter: canRetry
@@ -1105,10 +1105,10 @@ function M.AssertNoSuchEntityException(struct)
 end
 
 --- Create a structure of type NoSuchEntityException
--- &lt;p&gt;The request was rejected because it referenced an entity that does not exist. The error code describes the entity.&lt;/p&gt;
--- @param errorCode [NoSuchEntityErrorCode] &lt;p&gt;Code that indicates the type of error that is generated.&lt;/p&gt;
--- @param canRetry [Bool] &lt;p&gt;You can immediately retry your request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Details of the exception error.&lt;/p&gt;
+-- <p>The request was rejected because it referenced an entity that does not exist. The error code describes the entity.</p>
+-- @param errorCode [NoSuchEntityErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- @param canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: errorCode
 -- Required parameter: canRetry
@@ -1135,8 +1135,8 @@ function M.AssertAssessmentTargetFilter(struct)
 end
 
 --- Create a structure of type AssessmentTargetFilter
--- &lt;p&gt;Used as the request parameter in the &lt;a&gt;ListAssessmentTargets&lt;/a&gt; action.&lt;/p&gt;
--- @param assessmentTargetNamePattern [NamePattern] &lt;p&gt;For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the &lt;b&gt;assessmentTargetName&lt;/b&gt; property of the &lt;a&gt;AssessmentTarget&lt;/a&gt; data type.&lt;/p&gt;
+-- <p>Used as the request parameter in the <a>ListAssessmentTargets</a> action.</p>
+-- @param assessmentTargetNamePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTargetName</b> property of the <a>AssessmentTarget</a> data type.</p>
 function M.AssessmentTargetFilter(assessmentTargetNamePattern, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentTargetFilter")
 	local t = { 
@@ -1161,8 +1161,8 @@ end
 
 --- Create a structure of type ListRulesPackagesResponse
 --  
--- @param nextToken [PaginationToken] &lt;p&gt; When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the &lt;b&gt;nextToken&lt;/b&gt; parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.&lt;/p&gt;
--- @param rulesPackageArns [ListReturnedArnList] &lt;p&gt;The list of ARNs that specifies the rules packages returned by the action.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param rulesPackageArns [ListReturnedArnList] <p>The list of ARNs that specifies the rules packages returned by the action.</p>
 -- Required parameter: rulesPackageArns
 function M.ListRulesPackagesResponse(nextToken, rulesPackageArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesPackagesResponse")
@@ -1208,25 +1208,25 @@ function M.AssertFinding(struct)
 end
 
 --- Create a structure of type Finding
--- &lt;p&gt;Contains information about an Amazon Inspector finding. This data type is used as the response element in the &lt;a&gt;DescribeFindings&lt;/a&gt; action.&lt;/p&gt;
--- @param assetType [AssetType] &lt;p&gt;The type of the host from which the finding is generated.&lt;/p&gt;
--- @param confidence [IocConfidence] &lt;p&gt;This data element is currently not used.&lt;/p&gt;
--- @param numericSeverity [NumericSeverity] &lt;p&gt;The numeric value of the finding severity.&lt;/p&gt;
--- @param description [Text] &lt;p&gt;The description of the finding.&lt;/p&gt;
--- @param service [ServiceName] &lt;p&gt;The data element is set to &quot;Inspector&quot;.&lt;/p&gt;
--- @param title [Text] &lt;p&gt;The name of the finding.&lt;/p&gt;
--- @param indicatorOfCompromise [Bool] &lt;p&gt;This data element is currently not used.&lt;/p&gt;
--- @param assetAttributes [AssetAttributes] &lt;p&gt;A collection of attributes of the host from which the finding is generated.&lt;/p&gt;
--- @param userAttributes [UserAttributeList] &lt;p&gt;The user-defined attributes that are assigned to the finding.&lt;/p&gt;
--- @param createdAt [Timestamp] &lt;p&gt;The time when the finding was generated.&lt;/p&gt;
--- @param recommendation [Text] &lt;p&gt;The recommendation for the finding.&lt;/p&gt;
--- @param updatedAt [Timestamp] &lt;p&gt;The time when &lt;a&gt;AddAttributesToFindings&lt;/a&gt; is called.&lt;/p&gt;
--- @param attributes [AttributeList] &lt;p&gt;The system-defined attributes for the finding.&lt;/p&gt;
--- @param schemaVersion [NumericVersion] &lt;p&gt;The schema version of this data type.&lt;/p&gt;
--- @param serviceAttributes [InspectorServiceAttributes] &lt;p&gt;This data type is used in the &lt;a&gt;Finding&lt;/a&gt; data type.&lt;/p&gt;
--- @param id [FindingId] &lt;p&gt;The ID of the finding.&lt;/p&gt;
--- @param arn [Arn] &lt;p&gt;The ARN that specifies the finding.&lt;/p&gt;
--- @param severity [Severity] &lt;p&gt;The finding severity. Values can be set to High, Medium, Low, and Informational.&lt;/p&gt;
+-- <p>Contains information about an Amazon Inspector finding. This data type is used as the response element in the <a>DescribeFindings</a> action.</p>
+-- @param assetType [AssetType] <p>The type of the host from which the finding is generated.</p>
+-- @param confidence [IocConfidence] <p>This data element is currently not used.</p>
+-- @param numericSeverity [NumericSeverity] <p>The numeric value of the finding severity.</p>
+-- @param description [Text] <p>The description of the finding.</p>
+-- @param service [ServiceName] <p>The data element is set to "Inspector".</p>
+-- @param title [Text] <p>The name of the finding.</p>
+-- @param indicatorOfCompromise [Bool] <p>This data element is currently not used.</p>
+-- @param assetAttributes [AssetAttributes] <p>A collection of attributes of the host from which the finding is generated.</p>
+-- @param userAttributes [UserAttributeList] <p>The user-defined attributes that are assigned to the finding.</p>
+-- @param createdAt [Timestamp] <p>The time when the finding was generated.</p>
+-- @param recommendation [Text] <p>The recommendation for the finding.</p>
+-- @param updatedAt [Timestamp] <p>The time when <a>AddAttributesToFindings</a> is called.</p>
+-- @param attributes [AttributeList] <p>The system-defined attributes for the finding.</p>
+-- @param schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
+-- @param serviceAttributes [InspectorServiceAttributes] <p>This data type is used in the <a>Finding</a> data type.</p>
+-- @param id [FindingId] <p>The ID of the finding.</p>
+-- @param arn [Arn] <p>The ARN that specifies the finding.</p>
+-- @param severity [Severity] <p>The finding severity. Values can be set to High, Medium, Low, and Informational.</p>
 -- Required parameter: arn
 -- Required parameter: attributes
 -- Required parameter: userAttributes
@@ -1273,8 +1273,8 @@ end
 
 --- Create a structure of type ListFindingsResponse
 --  
--- @param nextToken [PaginationToken] &lt;p&gt; When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the &lt;b&gt;nextToken&lt;/b&gt; parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.&lt;/p&gt;
--- @param findingArns [ListReturnedArnList] &lt;p&gt;A list of ARNs that specifies the findings returned by the action.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param findingArns [ListReturnedArnList] <p>A list of ARNs that specifies the findings returned by the action.</p>
 -- Required parameter: findingArns
 function M.ListFindingsResponse(nextToken, findingArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFindingsResponse")
@@ -1300,9 +1300,9 @@ function M.AssertAgentPreview(struct)
 end
 
 --- Create a structure of type AgentPreview
--- &lt;p&gt;Used as a response element in the &lt;a&gt;PreviewAgents&lt;/a&gt; action.&lt;/p&gt;
--- @param autoScalingGroup [AutoScalingGroup] &lt;p&gt;The Auto Scaling group for the EC2 instance where the agent is installed.&lt;/p&gt;
--- @param agentId [AgentId] &lt;p&gt;The ID of the EC2 instance where the agent is installed.&lt;/p&gt;
+-- <p>Used as a response element in the <a>PreviewAgents</a> action.</p>
+-- @param autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group for the EC2 instance where the agent is installed.</p>
+-- @param agentId [AgentId] <p>The ID of the EC2 instance where the agent is installed.</p>
 -- Required parameter: agentId
 function M.AgentPreview(autoScalingGroup, agentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgentPreview")
@@ -1328,7 +1328,7 @@ end
 
 --- Create a structure of type CreateAssessmentTargetResponse
 --  
--- @param assessmentTargetArn [Arn] &lt;p&gt;The ARN that specifies the assessment target that is created.&lt;/p&gt;
+-- @param assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target that is created.</p>
 -- Required parameter: assessmentTargetArn
 function M.CreateAssessmentTargetResponse(assessmentTargetArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssessmentTargetResponse")
@@ -1354,8 +1354,8 @@ end
 
 --- Create a structure of type ListAssessmentTemplatesResponse
 --  
--- @param nextToken [PaginationToken] &lt;p&gt; When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the &lt;b&gt;nextToken&lt;/b&gt; parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.&lt;/p&gt;
--- @param assessmentTemplateArns [ListReturnedArnList] &lt;p&gt;A list of ARNs that specifies the assessment templates returned by the action.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param assessmentTemplateArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment templates returned by the action.</p>
 -- Required parameter: assessmentTemplateArns
 function M.ListAssessmentTemplatesResponse(nextToken, assessmentTemplateArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTemplatesResponse")
@@ -1381,7 +1381,7 @@ end
 
 --- Create a structure of type AddAttributesToFindingsResponse
 --  
--- @param failedItems [FailedItems] &lt;p&gt;Attribute details that cannot be described. An error code is provided for each failed item.&lt;/p&gt;
+-- @param failedItems [FailedItems] <p>Attribute details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: failedItems
 function M.AddAttributesToFindingsResponse(failedItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddAttributesToFindingsResponse")
@@ -1406,7 +1406,7 @@ end
 
 --- Create a structure of type DescribeAssessmentRunsRequest
 --  
--- @param assessmentRunArns [BatchDescribeArnList] &lt;p&gt;The ARN that specifies the assessment run that you want to describe.&lt;/p&gt;
+-- @param assessmentRunArns [BatchDescribeArnList] <p>The ARN that specifies the assessment run that you want to describe.</p>
 -- Required parameter: assessmentRunArns
 function M.DescribeAssessmentRunsRequest(assessmentRunArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentRunsRequest")
@@ -1433,8 +1433,8 @@ end
 
 --- Create a structure of type CreateAssessmentTargetRequest
 --  
--- @param assessmentTargetName [AssessmentTargetName] &lt;p&gt;The user-defined name that identifies the assessment target that you want to create. The name must be unique within the AWS account.&lt;/p&gt;
--- @param resourceGroupArn [Arn] &lt;p&gt;The ARN that specifies the resource group that is used to create the assessment target.&lt;/p&gt;
+-- @param assessmentTargetName [AssessmentTargetName] <p>The user-defined name that identifies the assessment target that you want to create. The name must be unique within the AWS account.</p>
+-- @param resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is used to create the assessment target.</p>
 -- Required parameter: assessmentTargetName
 -- Required parameter: resourceGroupArn
 function M.CreateAssessmentTargetRequest(assessmentTargetName, resourceGroupArn, ...)
@@ -1464,10 +1464,10 @@ function M.AssertAccessDeniedException(struct)
 end
 
 --- Create a structure of type AccessDeniedException
--- &lt;p&gt;You do not have required permissions to access the requested resource.&lt;/p&gt;
--- @param errorCode [AccessDeniedErrorCode] &lt;p&gt;Code that indicates the type of error that is generated.&lt;/p&gt;
--- @param canRetry [Bool] &lt;p&gt;You can immediately retry your request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Details of the exception error.&lt;/p&gt;
+-- <p>You do not have required permissions to access the requested resource.</p>
+-- @param errorCode [AccessDeniedErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- @param canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: errorCode
 -- Required parameter: canRetry
@@ -1496,7 +1496,7 @@ end
 
 --- Create a structure of type DeleteAssessmentTemplateRequest
 --  
--- @param assessmentTemplateArn [Arn] &lt;p&gt;The ARN that specifies the assessment template that you want to delete.&lt;/p&gt;
+-- @param assessmentTemplateArn [Arn] <p>The ARN that specifies the assessment template that you want to delete.</p>
 -- Required parameter: assessmentTemplateArn
 function M.DeleteAssessmentTemplateRequest(assessmentTemplateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssessmentTemplateRequest")
@@ -1526,15 +1526,15 @@ function M.AssertFindingFilter(struct)
 end
 
 --- Create a structure of type FindingFilter
--- &lt;p&gt;This data type is used as a request parameter in the &lt;a&gt;ListFindings&lt;/a&gt; action.&lt;/p&gt;
--- @param autoScalingGroups [AutoScalingGroupList] &lt;p&gt;For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the &lt;b&gt;autoScalingGroup&lt;/b&gt; property of the &lt;a&gt;Finding&lt;/a&gt; data type.&lt;/p&gt;
--- @param creationTimeRange [TimestampRange] &lt;p&gt;The time range during which the finding is generated.&lt;/p&gt;
--- @param ruleNames [RuleNameList] &lt;p&gt;For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the &lt;b&gt;ruleName&lt;/b&gt; property of the &lt;a&gt;Finding&lt;/a&gt; data type.&lt;/p&gt;
--- @param severities [SeverityList] &lt;p&gt;For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the &lt;b&gt;severity&lt;/b&gt; property of the &lt;a&gt;Finding&lt;/a&gt; data type.&lt;/p&gt;
--- @param userAttributes [AttributeList] &lt;p&gt;For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the &lt;b&gt;userAttributes&lt;/b&gt; property of the &lt;a&gt;Finding&lt;/a&gt; data type.&lt;/p&gt;
--- @param rulesPackageArns [FilterRulesPackageArnList] &lt;p&gt;For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the &lt;b&gt;rulesPackageArn&lt;/b&gt; property of the &lt;a&gt;Finding&lt;/a&gt; data type.&lt;/p&gt;
--- @param attributes [AttributeList] &lt;p&gt;For a record to match a filter, the list of values that are specified for this data type property must be contained in the list of values of the &lt;b&gt;attributes&lt;/b&gt; property of the &lt;a&gt;Finding&lt;/a&gt; data type.&lt;/p&gt;
--- @param agentIds [AgentIdList] &lt;p&gt;For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the &lt;b&gt;agentId&lt;/b&gt; property of the &lt;a&gt;Finding&lt;/a&gt; data type.&lt;/p&gt;
+-- <p>This data type is used as a request parameter in the <a>ListFindings</a> action.</p>
+-- @param autoScalingGroups [AutoScalingGroupList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>autoScalingGroup</b> property of the <a>Finding</a> data type.</p>
+-- @param creationTimeRange [TimestampRange] <p>The time range during which the finding is generated.</p>
+-- @param ruleNames [RuleNameList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>ruleName</b> property of the <a>Finding</a> data type.</p>
+-- @param severities [SeverityList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>severity</b> property of the <a>Finding</a> data type.</p>
+-- @param userAttributes [AttributeList] <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>userAttributes</b> property of the <a>Finding</a> data type.</p>
+-- @param rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>rulesPackageArn</b> property of the <a>Finding</a> data type.</p>
+-- @param attributes [AttributeList] <p>For a record to match a filter, the list of values that are specified for this data type property must be contained in the list of values of the <b>attributes</b> property of the <a>Finding</a> data type.</p>
+-- @param agentIds [AgentIdList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>agentId</b> property of the <a>Finding</a> data type.</p>
 function M.FindingFilter(autoScalingGroups, creationTimeRange, ruleNames, severities, userAttributes, rulesPackageArns, attributes, agentIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FindingFilter")
 	local t = { 
@@ -1566,8 +1566,8 @@ end
 
 --- Create a structure of type ListAssessmentTargetsResponse
 --  
--- @param assessmentTargetArns [ListReturnedArnList] &lt;p&gt;A list of ARNs that specifies the assessment targets that are returned by the action.&lt;/p&gt;
--- @param nextToken [PaginationToken] &lt;p&gt; When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the &lt;b&gt;nextToken&lt;/b&gt; parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.&lt;/p&gt;
+-- @param assessmentTargetArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment targets that are returned by the action.</p>
+-- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
 -- Required parameter: assessmentTargetArns
 function M.ListAssessmentTargetsResponse(assessmentTargetArns, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTargetsResponse")
@@ -1594,8 +1594,8 @@ end
 
 --- Create a structure of type SetTagsForResourceRequest
 --  
--- @param resourceArn [Arn] &lt;p&gt;The ARN of the assessment template that you want to set tags to.&lt;/p&gt;
--- @param tags [TagList] &lt;p&gt;A collection of key and value pairs that you want to set to the assessment template.&lt;/p&gt;
+-- @param resourceArn [Arn] <p>The ARN of the assessment template that you want to set tags to.</p>
+-- @param tags [TagList] <p>A collection of key and value pairs that you want to set to the assessment template.</p>
 -- Required parameter: resourceArn
 function M.SetTagsForResourceRequest(resourceArn, tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetTagsForResourceRequest")
@@ -1621,7 +1621,7 @@ end
 
 --- Create a structure of type DeleteAssessmentTargetRequest
 --  
--- @param assessmentTargetArn [Arn] &lt;p&gt;The ARN that specifies the assessment target that you want to delete.&lt;/p&gt;
+-- @param assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target that you want to delete.</p>
 -- Required parameter: assessmentTargetArn
 function M.DeleteAssessmentTargetRequest(assessmentTargetArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssessmentTargetRequest")
@@ -1646,7 +1646,7 @@ end
 
 --- Create a structure of type StartAssessmentRunResponse
 --  
--- @param assessmentRunArn [Arn] &lt;p&gt;The ARN of the assessment run that has been started.&lt;/p&gt;
+-- @param assessmentRunArn [Arn] <p>The ARN of the assessment run that has been started.</p>
 -- Required parameter: assessmentRunArn
 function M.StartAssessmentRunResponse(assessmentRunArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartAssessmentRunResponse")
@@ -1678,12 +1678,12 @@ function M.AssertAssessmentTarget(struct)
 end
 
 --- Create a structure of type AssessmentTarget
--- &lt;p&gt;Contains information about an Amazon Inspector application. This data type is used as the response element in the &lt;a&gt;DescribeAssessmentTargets&lt;/a&gt; action.&lt;/p&gt;
--- @param resourceGroupArn [Arn] &lt;p&gt;The ARN that specifies the resource group that is associated with the assessment target.&lt;/p&gt;
--- @param createdAt [Timestamp] &lt;p&gt;The time at which the assessment target is created.&lt;/p&gt;
--- @param name [AssessmentTargetName] &lt;p&gt;The name of the Amazon Inspector assessment target.&lt;/p&gt;
--- @param arn [Arn] &lt;p&gt;The ARN that specifies the Amazon Inspector assessment target.&lt;/p&gt;
--- @param updatedAt [Timestamp] &lt;p&gt;The time at which &lt;a&gt;UpdateAssessmentTarget&lt;/a&gt; is called.&lt;/p&gt;
+-- <p>Contains information about an Amazon Inspector application. This data type is used as the response element in the <a>DescribeAssessmentTargets</a> action.</p>
+-- @param resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is associated with the assessment target.</p>
+-- @param createdAt [Timestamp] <p>The time at which the assessment target is created.</p>
+-- @param name [AssessmentTargetName] <p>The name of the Amazon Inspector assessment target.</p>
+-- @param arn [Arn] <p>The ARN that specifies the Amazon Inspector assessment target.</p>
+-- @param updatedAt [Timestamp] <p>The time at which <a>UpdateAssessmentTarget</a> is called.</p>
 -- Required parameter: arn
 -- Required parameter: name
 -- Required parameter: resourceGroupArn
@@ -1742,8 +1742,8 @@ end
 
 --- Create a structure of type StartAssessmentRunRequest
 --  
--- @param assessmentRunName [AssessmentRunName] &lt;p&gt;You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.&lt;/p&gt;
--- @param assessmentTemplateArn [Arn] &lt;p&gt;The ARN of the assessment template of the assessment run that you want to start.&lt;/p&gt;
+-- @param assessmentRunName [AssessmentRunName] <p>You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.</p>
+-- @param assessmentTemplateArn [Arn] <p>The ARN of the assessment template of the assessment run that you want to start.</p>
 -- Required parameter: assessmentTemplateArn
 function M.StartAssessmentRunRequest(assessmentRunName, assessmentTemplateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartAssessmentRunRequest")
@@ -1771,8 +1771,8 @@ end
 
 --- Create a structure of type DescribeAssessmentTargetsResponse
 --  
--- @param assessmentTargets [AssessmentTargetList] &lt;p&gt;Information about the assessment targets.&lt;/p&gt;
--- @param failedItems [FailedItems] &lt;p&gt;Assessment target details that cannot be described. An error code is provided for each failed item.&lt;/p&gt;
+-- @param assessmentTargets [AssessmentTargetList] <p>Information about the assessment targets.</p>
+-- @param failedItems [FailedItems] <p>Assessment target details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: assessmentTargets
 -- Required parameter: failedItems
 function M.DescribeAssessmentTargetsResponse(assessmentTargets, failedItems, ...)
@@ -1800,8 +1800,8 @@ end
 
 --- Create a structure of type ListEventSubscriptionsResponse
 --  
--- @param nextToken [PaginationToken] &lt;p&gt; When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the &lt;b&gt;nextToken&lt;/b&gt; parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.&lt;/p&gt;
--- @param subscriptions [SubscriptionList] &lt;p&gt;Details of the returned event subscriptions.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param subscriptions [SubscriptionList] <p>Details of the returned event subscriptions.</p>
 -- Required parameter: subscriptions
 function M.ListEventSubscriptionsResponse(nextToken, subscriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListEventSubscriptionsResponse")
@@ -1829,8 +1829,8 @@ end
 
 --- Create a structure of type DescribeAssessmentTemplatesResponse
 --  
--- @param assessmentTemplates [AssessmentTemplateList] &lt;p&gt;Information about the assessment templates.&lt;/p&gt;
--- @param failedItems [FailedItems] &lt;p&gt;Assessment template details that cannot be described. An error code is provided for each failed item.&lt;/p&gt;
+-- @param assessmentTemplates [AssessmentTemplateList] <p>Information about the assessment templates.</p>
+-- @param failedItems [FailedItems] <p>Assessment template details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: assessmentTemplates
 -- Required parameter: failedItems
 function M.DescribeAssessmentTemplatesResponse(assessmentTemplates, failedItems, ...)
@@ -1856,9 +1856,9 @@ function M.AssertDurationRange(struct)
 end
 
 --- Create a structure of type DurationRange
--- &lt;p&gt;This data type is used in the &lt;a&gt;AssessmentTemplateFilter&lt;/a&gt; data type.&lt;/p&gt;
--- @param minSeconds [AssessmentRunDuration] &lt;p&gt;The minimum value of the duration range. Must be greater than zero.&lt;/p&gt;
--- @param maxSeconds [AssessmentRunDuration] &lt;p&gt;The maximum value of the duration range. Must be less than or equal to 604800 seconds (1 week).&lt;/p&gt;
+-- <p>This data type is used in the <a>AssessmentTemplateFilter</a> data type.</p>
+-- @param minSeconds [AssessmentRunDuration] <p>The minimum value of the duration range. Must be greater than zero.</p>
+-- @param maxSeconds [AssessmentRunDuration] <p>The maximum value of the duration range. Must be less than or equal to 604800 seconds (1 week).</p>
 function M.DurationRange(minSeconds, maxSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DurationRange")
 	local t = { 
@@ -1883,7 +1883,7 @@ end
 
 --- Create a structure of type GetTelemetryMetadataRequest
 --  
--- @param assessmentRunArn [Arn] &lt;p&gt;The ARN that specifies the assessment run that has the telemetry data that you want to obtain.&lt;/p&gt;
+-- @param assessmentRunArn [Arn] <p>The ARN that specifies the assessment run that has the telemetry data that you want to obtain.</p>
 -- Required parameter: assessmentRunArn
 function M.GetTelemetryMetadataRequest(assessmentRunArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTelemetryMetadataRequest")
@@ -1908,7 +1908,7 @@ end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param resourceArn [Arn] &lt;p&gt;The ARN that specifies the assessment template whose tags you want to list.&lt;/p&gt;
+-- @param resourceArn [Arn] <p>The ARN that specifies the assessment template whose tags you want to list.</p>
 -- Required parameter: resourceArn
 function M.ListTagsForResourceRequest(resourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
@@ -1934,8 +1934,8 @@ end
 
 --- Create a structure of type ListAssessmentRunAgentsResponse
 --  
--- @param assessmentRunAgents [AssessmentRunAgentList] &lt;p&gt;A list of ARNs that specifies the agents returned by the action.&lt;/p&gt;
--- @param nextToken [PaginationToken] &lt;p&gt; When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the &lt;b&gt;nextToken&lt;/b&gt; parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.&lt;/p&gt;
+-- @param assessmentRunAgents [AssessmentRunAgentList] <p>A list of ARNs that specifies the agents returned by the action.</p>
+-- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
 -- Required parameter: assessmentRunAgents
 function M.ListAssessmentRunAgentsResponse(assessmentRunAgents, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunAgentsResponse")
@@ -1962,9 +1962,9 @@ function M.AssertUnsupportedFeatureException(struct)
 end
 
 --- Create a structure of type UnsupportedFeatureException
--- &lt;p&gt;Used by the &lt;a&gt;GetAssessmentReport&lt;/a&gt; API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.&lt;/p&gt;
--- @param canRetry [Bool] &lt;p&gt;Used by the &lt;a&gt;GetAssessmentReport&lt;/a&gt; API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Used by the &lt;a&gt;GetAssessmentReport&lt;/a&gt; API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.&lt;/p&gt;
+-- <p>Used by the <a>GetAssessmentReport</a> API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.</p>
+-- @param canRetry [Bool] <p>Used by the <a>GetAssessmentReport</a> API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.</p>
+-- @param message [ErrorMessage] <p>Used by the <a>GetAssessmentReport</a> API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.</p>
 -- Required parameter: message
 -- Required parameter: canRetry
 function M.UnsupportedFeatureException(canRetry, message, ...)
@@ -1992,10 +1992,10 @@ function M.AssertInspectorServiceAttributes(struct)
 end
 
 --- Create a structure of type InspectorServiceAttributes
--- &lt;p&gt;This data type is used in the &lt;a&gt;Finding&lt;/a&gt; data type.&lt;/p&gt;
--- @param schemaVersion [NumericVersion] &lt;p&gt;The schema version of this data type.&lt;/p&gt;
--- @param rulesPackageArn [Arn] &lt;p&gt;The ARN of the rules package that is used to generate the finding.&lt;/p&gt;
--- @param assessmentRunArn [Arn] &lt;p&gt;The ARN of the assessment run during which the finding is generated.&lt;/p&gt;
+-- <p>This data type is used in the <a>Finding</a> data type.</p>
+-- @param schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
+-- @param rulesPackageArn [Arn] <p>The ARN of the rules package that is used to generate the finding.</p>
+-- @param assessmentRunArn [Arn] <p>The ARN of the assessment run during which the finding is generated.</p>
 -- Required parameter: schemaVersion
 function M.InspectorServiceAttributes(schemaVersion, rulesPackageArn, assessmentRunArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InspectorServiceAttributes")
@@ -2025,10 +2025,10 @@ function M.AssertResourceGroup(struct)
 end
 
 --- Create a structure of type ResourceGroup
--- &lt;p&gt;Contains information about a resource group. The resource group defines a set of tags that, when queried, identify the AWS resources that make up the assessment target. This data type is used as the response element in the &lt;a&gt;DescribeResourceGroups&lt;/a&gt; action.&lt;/p&gt;
--- @param createdAt [Timestamp] &lt;p&gt;The time at which resource group is created.&lt;/p&gt;
--- @param arn [Arn] &lt;p&gt;The ARN of the resource group.&lt;/p&gt;
--- @param tags [ResourceGroupTags] &lt;p&gt;The tags (key and value pairs) of the resource group. This data type property is used in the &lt;a&gt;CreateResourceGroup&lt;/a&gt; action.&lt;/p&gt;
+-- <p>Contains information about a resource group. The resource group defines a set of tags that, when queried, identify the AWS resources that make up the assessment target. This data type is used as the response element in the <a>DescribeResourceGroups</a> action.</p>
+-- @param createdAt [Timestamp] <p>The time at which resource group is created.</p>
+-- @param arn [Arn] <p>The ARN of the resource group.</p>
+-- @param tags [ResourceGroupTags] <p>The tags (key and value pairs) of the resource group. This data type property is used in the <a>CreateResourceGroup</a> action.</p>
 -- Required parameter: arn
 -- Required parameter: tags
 -- Required parameter: createdAt
@@ -2061,9 +2061,9 @@ end
 
 --- Create a structure of type UnsubscribeFromEventRequest
 --  
--- @param resourceArn [Arn] &lt;p&gt;The ARN of the assessment template that is used during the event for which you want to stop receiving SNS notifications.&lt;/p&gt;
--- @param event [InspectorEvent] &lt;p&gt;The event for which you want to stop receiving SNS notifications.&lt;/p&gt;
--- @param topicArn [Arn] &lt;p&gt;The ARN of the SNS topic to which SNS notifications are sent.&lt;/p&gt;
+-- @param resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which you want to stop receiving SNS notifications.</p>
+-- @param event [InspectorEvent] <p>The event for which you want to stop receiving SNS notifications.</p>
+-- @param topicArn [Arn] <p>The ARN of the SNS topic to which SNS notifications are sent.</p>
 -- Required parameter: resourceArn
 -- Required parameter: event
 -- Required parameter: topicArn
@@ -2092,9 +2092,9 @@ function M.AssertResourceGroupTag(struct)
 end
 
 --- Create a structure of type ResourceGroupTag
--- &lt;p&gt;This data type is used as one of the elements of the &lt;a&gt;ResourceGroup&lt;/a&gt; data type.&lt;/p&gt;
--- @param value [TagValue] &lt;p&gt;The value assigned to a tag key.&lt;/p&gt;
--- @param key [TagKey] &lt;p&gt;A tag key.&lt;/p&gt;
+-- <p>This data type is used as one of the elements of the <a>ResourceGroup</a> data type.</p>
+-- @param value [TagValue] <p>The value assigned to a tag key.</p>
+-- @param key [TagKey] <p>A tag key.</p>
 -- Required parameter: key
 function M.ResourceGroupTag(value, key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceGroupTag")
@@ -2121,8 +2121,8 @@ end
 
 --- Create a structure of type DescribeRulesPackagesRequest
 --  
--- @param locale [Locale] &lt;p&gt;The locale that you want to translate a rules package description into.&lt;/p&gt;
--- @param rulesPackageArns [BatchDescribeArnList] &lt;p&gt;The ARN that specifies the rules package that you want to describe.&lt;/p&gt;
+-- @param locale [Locale] <p>The locale that you want to translate a rules package description into.</p>
+-- @param rulesPackageArns [BatchDescribeArnList] <p>The ARN that specifies the rules package that you want to describe.</p>
 -- Required parameter: rulesPackageArns
 function M.DescribeRulesPackagesRequest(locale, rulesPackageArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesPackagesRequest")
@@ -2152,13 +2152,13 @@ function M.AssertAssetAttributes(struct)
 end
 
 --- Create a structure of type AssetAttributes
--- &lt;p&gt;A collection of attributes of the host from which the finding is generated.&lt;/p&gt;
--- @param amiId [AmiId] &lt;p&gt;The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.&lt;/p&gt;
--- @param hostname [Hostname] &lt;p&gt;The hostname of the EC2 instance where the finding is generated.&lt;/p&gt;
--- @param autoScalingGroup [AutoScalingGroup] &lt;p&gt;The Auto Scaling group of the EC2 instance where the finding is generated.&lt;/p&gt;
--- @param ipv4Addresses [Ipv4AddressList] &lt;p&gt;The list of IP v4 addresses of the EC2 instance where the finding is generated.&lt;/p&gt;
--- @param schemaVersion [NumericVersion] &lt;p&gt;The schema version of this data type.&lt;/p&gt;
--- @param agentId [AgentId] &lt;p&gt;The ID of the agent that is installed on the EC2 instance where the finding is generated.&lt;/p&gt;
+-- <p>A collection of attributes of the host from which the finding is generated.</p>
+-- @param amiId [AmiId] <p>The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.</p>
+-- @param hostname [Hostname] <p>The hostname of the EC2 instance where the finding is generated.</p>
+-- @param autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group of the EC2 instance where the finding is generated.</p>
+-- @param ipv4Addresses [Ipv4AddressList] <p>The list of IP v4 addresses of the EC2 instance where the finding is generated.</p>
+-- @param schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
+-- @param agentId [AgentId] <p>The ID of the agent that is installed on the EC2 instance where the finding is generated.</p>
 -- Required parameter: schemaVersion
 function M.AssetAttributes(amiId, hostname, autoScalingGroup, ipv4Addresses, schemaVersion, agentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssetAttributes")
@@ -2190,8 +2190,8 @@ end
 
 --- Create a structure of type DescribeFindingsResponse
 --  
--- @param failedItems [FailedItems] &lt;p&gt;Finding details that cannot be described. An error code is provided for each failed item.&lt;/p&gt;
--- @param findings [FindingList] &lt;p&gt;Information about the finding.&lt;/p&gt;
+-- @param failedItems [FailedItems] <p>Finding details that cannot be described. An error code is provided for each failed item.</p>
+-- @param findings [FindingList] <p>Information about the finding.</p>
 -- Required parameter: findings
 -- Required parameter: failedItems
 function M.DescribeFindingsResponse(failedItems, findings, ...)
@@ -2219,9 +2219,9 @@ function M.AssertAgentAlreadyRunningAssessment(struct)
 end
 
 --- Create a structure of type AgentAlreadyRunningAssessment
--- &lt;p&gt;Used in the exception error that is thrown if you start an assessment run for an assessment target that includes an EC2 instance that is already participating in another started assessment run.&lt;/p&gt;
--- @param assessmentRunArn [Arn] &lt;p&gt;The ARN of the assessment run that has already been started.&lt;/p&gt;
--- @param agentId [AgentId] &lt;p&gt;ID of the agent that is running on an EC2 instance that is already participating in another started assessment run.&lt;/p&gt;
+-- <p>Used in the exception error that is thrown if you start an assessment run for an assessment target that includes an EC2 instance that is already participating in another started assessment run.</p>
+-- @param assessmentRunArn [Arn] <p>The ARN of the assessment run that has already been started.</p>
+-- @param agentId [AgentId] <p>ID of the agent that is running on an EC2 instance that is already participating in another started assessment run.</p>
 -- Required parameter: agentId
 -- Required parameter: assessmentRunArn
 function M.AgentAlreadyRunningAssessment(assessmentRunArn, agentId, ...)
@@ -2250,8 +2250,8 @@ end
 
 --- Create a structure of type AddAttributesToFindingsRequest
 --  
--- @param attributes [UserAttributeList] &lt;p&gt;The array of attributes that you want to assign to specified findings.&lt;/p&gt;
--- @param findingArns [AddRemoveAttributesFindingArnList] &lt;p&gt;The ARNs that specify the findings that you want to assign attributes to.&lt;/p&gt;
+-- @param attributes [UserAttributeList] <p>The array of attributes that you want to assign to specified findings.</p>
+-- @param findingArns [AddRemoveAttributesFindingArnList] <p>The ARNs that specify the findings that you want to assign attributes to.</p>
 -- Required parameter: findingArns
 -- Required parameter: attributes
 function M.AddAttributesToFindingsRequest(attributes, findingArns, ...)
@@ -2278,7 +2278,7 @@ end
 
 --- Create a structure of type StopAssessmentRunRequest
 --  
--- @param assessmentRunArn [Arn] &lt;p&gt;The ARN of the assessment run that you want to stop.&lt;/p&gt;
+-- @param assessmentRunArn [Arn] <p>The ARN of the assessment run that you want to stop.</p>
 -- Required parameter: assessmentRunArn
 function M.StopAssessmentRunRequest(assessmentRunArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopAssessmentRunRequest")
@@ -2305,8 +2305,8 @@ end
 
 --- Create a structure of type RemoveAttributesFromFindingsRequest
 --  
--- @param attributeKeys [UserAttributeKeyList] &lt;p&gt;The array of attribute keys that you want to remove from specified findings.&lt;/p&gt;
--- @param findingArns [AddRemoveAttributesFindingArnList] &lt;p&gt;The ARNs that specify the findings that you want to remove attributes from.&lt;/p&gt;
+-- @param attributeKeys [UserAttributeKeyList] <p>The array of attribute keys that you want to remove from specified findings.</p>
+-- @param findingArns [AddRemoveAttributesFindingArnList] <p>The ARNs that specify the findings that you want to remove attributes from.</p>
 -- Required parameter: findingArns
 -- Required parameter: attributeKeys
 function M.RemoveAttributesFromFindingsRequest(attributeKeys, findingArns, ...)
@@ -2335,10 +2335,10 @@ end
 
 --- Create a structure of type ListAssessmentTemplatesRequest
 --  
--- @param filter [AssessmentTemplateFilter] &lt;p&gt;You can use this parameter to specify a subset of data to be included in the action's response.&lt;/p&gt; &lt;p&gt;For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.&lt;/p&gt;
--- @param assessmentTargetArns [ListParentArnList] &lt;p&gt;A list of ARNs that specifies the assessment targets whose assessment templates you want to list.&lt;/p&gt;
--- @param nextToken [PaginationToken] &lt;p&gt;You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the &lt;b&gt;ListAssessmentTemplates&lt;/b&gt; action. Subsequent calls to the action fill &lt;b&gt;nextToken&lt;/b&gt; in the request with the value of &lt;b&gt;NextToken&lt;/b&gt; from the previous response to continue listing data.&lt;/p&gt;
--- @param maxResults [ListMaxResults] &lt;p&gt;You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.&lt;/p&gt;
+-- @param filter [AssessmentTemplateFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- @param assessmentTargetArns [ListParentArnList] <p>A list of ARNs that specifies the assessment targets whose assessment templates you want to list.</p>
+-- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTemplates</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
 function M.ListAssessmentTemplatesRequest(filter, assessmentTargetArns, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTemplatesRequest")
 	local t = { 
@@ -2368,10 +2368,10 @@ function M.AssertInvalidCrossAccountRoleException(struct)
 end
 
 --- Create a structure of type InvalidCrossAccountRoleException
--- &lt;p&gt;Amazon Inspector cannot assume the cross-account role that it needs to list your EC2 instances during the assessment run.&lt;/p&gt;
--- @param errorCode [InvalidCrossAccountRoleErrorCode] &lt;p&gt;Code that indicates the type of error that is generated.&lt;/p&gt;
--- @param canRetry [Bool] &lt;p&gt;You can immediately retry your request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Details of the exception error.&lt;/p&gt;
+-- <p>Amazon Inspector cannot assume the cross-account role that it needs to list your EC2 instances during the assessment run.</p>
+-- @param errorCode [InvalidCrossAccountRoleErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- @param canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: errorCode
 -- Required parameter: canRetry
@@ -2402,8 +2402,8 @@ end
 
 --- Create a structure of type DescribeResourceGroupsResponse
 --  
--- @param resourceGroups [ResourceGroupList] &lt;p&gt;Information about a resource group.&lt;/p&gt;
--- @param failedItems [FailedItems] &lt;p&gt;Resource group details that cannot be described. An error code is provided for each failed item.&lt;/p&gt;
+-- @param resourceGroups [ResourceGroupList] <p>Information about a resource group.</p>
+-- @param failedItems [FailedItems] <p>Resource group details that cannot be described. An error code is provided for each failed item.</p>
 -- Required parameter: resourceGroups
 -- Required parameter: failedItems
 function M.DescribeResourceGroupsResponse(resourceGroups, failedItems, ...)
@@ -2431,8 +2431,8 @@ end
 
 --- Create a structure of type DescribeFindingsRequest
 --  
--- @param locale [Locale] &lt;p&gt;The locale into which you want to translate a finding description, recommendation, and the short description that identifies the finding.&lt;/p&gt;
--- @param findingArns [BatchDescribeArnList] &lt;p&gt;The ARN that specifies the finding that you want to describe.&lt;/p&gt;
+-- @param locale [Locale] <p>The locale into which you want to translate a finding description, recommendation, and the short description that identifies the finding.</p>
+-- @param findingArns [BatchDescribeArnList] <p>The ARN that specifies the finding that you want to describe.</p>
 -- Required parameter: findingArns
 function M.DescribeFindingsRequest(locale, findingArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFindingsRequest")
@@ -2458,7 +2458,7 @@ end
 
 --- Create a structure of type ListTagsForResourceResponse
 --  
--- @param tags [TagList] &lt;p&gt;A collection of key and value pairs.&lt;/p&gt;
+-- @param tags [TagList] <p>A collection of key and value pairs.</p>
 -- Required parameter: tags
 function M.ListTagsForResourceResponse(tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
@@ -2483,7 +2483,7 @@ end
 
 --- Create a structure of type RegisterCrossAccountAccessRoleRequest
 --  
--- @param roleArn [Arn] &lt;p&gt;The ARN of the IAM role that Amazon Inspector uses to list your EC2 instances during the assessment run or when you call the &lt;a&gt;PreviewAgents&lt;/a&gt; action. &lt;/p&gt;
+-- @param roleArn [Arn] <p>The ARN of the IAM role that Amazon Inspector uses to list your EC2 instances during the assessment run or when you call the <a>PreviewAgents</a> action. </p>
 -- Required parameter: roleArn
 function M.RegisterCrossAccountAccessRoleRequest(roleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterCrossAccountAccessRoleRequest")
@@ -2509,9 +2509,9 @@ function M.AssertInternalException(struct)
 end
 
 --- Create a structure of type InternalException
--- &lt;p&gt;Internal server error.&lt;/p&gt;
--- @param canRetry [Bool] &lt;p&gt;You can immediately retry your request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Details of the exception error.&lt;/p&gt;
+-- <p>Internal server error.</p>
+-- @param canRetry [Bool] <p>You can immediately retry your request.</p>
+-- @param message [ErrorMessage] <p>Details of the exception error.</p>
 -- Required parameter: message
 -- Required parameter: canRetry
 function M.InternalException(canRetry, message, ...)
@@ -2537,9 +2537,9 @@ function M.AssertTimestampRange(struct)
 end
 
 --- Create a structure of type TimestampRange
--- &lt;p&gt;This data type is used in the &lt;a&gt;AssessmentRunFilter&lt;/a&gt; data type.&lt;/p&gt;
--- @param beginDate [Timestamp] &lt;p&gt;The minimum value of the timestamp range.&lt;/p&gt;
--- @param endDate [Timestamp] &lt;p&gt;The maximum value of the timestamp range.&lt;/p&gt;
+-- <p>This data type is used in the <a>AssessmentRunFilter</a> data type.</p>
+-- @param beginDate [Timestamp] <p>The minimum value of the timestamp range.</p>
+-- @param endDate [Timestamp] <p>The maximum value of the timestamp range.</p>
 function M.TimestampRange(beginDate, endDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TimestampRange")
 	local t = { 
@@ -2564,10 +2564,10 @@ function M.AssertAssessmentTemplateFilter(struct)
 end
 
 --- Create a structure of type AssessmentTemplateFilter
--- &lt;p&gt;Used as the request parameter in the &lt;a&gt;ListAssessmentTemplates&lt;/a&gt; action.&lt;/p&gt;
--- @param namePattern [NamePattern] &lt;p&gt;For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the &lt;b&gt;assessmentTemplateName&lt;/b&gt; property of the &lt;a&gt;AssessmentTemplate&lt;/a&gt; data type.&lt;/p&gt;
--- @param durationRange [DurationRange] &lt;p&gt;For a record to match a filter, the value specified for this data type property must inclusively match any value between the specified minimum and maximum values of the &lt;b&gt;durationInSeconds&lt;/b&gt; property of the &lt;a&gt;AssessmentTemplate&lt;/a&gt; data type.&lt;/p&gt;
--- @param rulesPackageArns [FilterRulesPackageArnList] &lt;p&gt;For a record to match a filter, the values that are specified for this data type property must be contained in the list of values of the &lt;b&gt;rulesPackageArns&lt;/b&gt; property of the &lt;a&gt;AssessmentTemplate&lt;/a&gt; data type.&lt;/p&gt;
+-- <p>Used as the request parameter in the <a>ListAssessmentTemplates</a> action.</p>
+-- @param namePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data type.</p>
+-- @param durationRange [DurationRange] <p>For a record to match a filter, the value specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentTemplate</a> data type.</p>
+-- @param rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the values that are specified for this data type property must be contained in the list of values of the <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
 function M.AssessmentTemplateFilter(namePattern, durationRange, rulesPackageArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentTemplateFilter")
 	local t = { 
@@ -2594,8 +2594,8 @@ end
 
 --- Create a structure of type ListAssessmentRunsResponse
 --  
--- @param nextToken [PaginationToken] &lt;p&gt; When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the &lt;b&gt;nextToken&lt;/b&gt; parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.&lt;/p&gt;
--- @param assessmentRunArns [ListReturnedArnList] &lt;p&gt;A list of ARNs that specifies the assessment runs that are returned by the action.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- @param assessmentRunArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment runs that are returned by the action.</p>
 -- Required parameter: assessmentRunArns
 function M.ListAssessmentRunsResponse(nextToken, assessmentRunArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunsResponse")
@@ -2625,9 +2625,9 @@ end
 
 --- Create a structure of type DescribeCrossAccountAccessRoleResponse
 --  
--- @param roleArn [Arn] &lt;p&gt;The ARN that specifies the IAM role that Amazon Inspector uses to access your AWS account.&lt;/p&gt;
--- @param valid [Bool] &lt;p&gt;A Boolean value that specifies whether the IAM role has the necessary policies attached to enable Amazon Inspector to access your AWS account.&lt;/p&gt;
--- @param registeredAt [Timestamp] &lt;p&gt;The date when the cross-account access role was registered.&lt;/p&gt;
+-- @param roleArn [Arn] <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your AWS account.</p>
+-- @param valid [Bool] <p>A Boolean value that specifies whether the IAM role has the necessary policies attached to enable Amazon Inspector to access your AWS account.</p>
+-- @param registeredAt [Timestamp] <p>The date when the cross-account access role was registered.</p>
 -- Required parameter: roleArn
 -- Required parameter: valid
 -- Required parameter: registeredAt
@@ -2656,8 +2656,8 @@ end
 
 --- Create a structure of type ListRulesPackagesRequest
 --  
--- @param nextToken [PaginationToken] &lt;p&gt;You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the &lt;b&gt;ListRulesPackages&lt;/b&gt; action. Subsequent calls to the action fill &lt;b&gt;nextToken&lt;/b&gt; in the request with the value of &lt;b&gt;NextToken&lt;/b&gt; from the previous response to continue listing data.&lt;/p&gt;
--- @param maxResults [ListMaxResults] &lt;p&gt;You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListRulesPackages</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
 function M.ListRulesPackagesRequest(nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesPackagesRequest")
 	local t = { 
@@ -2682,7 +2682,7 @@ end
 
 --- Create a structure of type CreateResourceGroupRequest
 --  
--- @param resourceGroupTags [ResourceGroupTags] &lt;p&gt;A collection of keys and an array of possible values, '[{&quot;key&quot;:&quot;key1&quot;,&quot;values&quot;:[&quot;Value1&quot;,&quot;Value2&quot;]},{&quot;key&quot;:&quot;Key2&quot;,&quot;values&quot;:[&quot;Value3&quot;]}]'.&lt;/p&gt; &lt;p&gt;For example,'[{&quot;key&quot;:&quot;Name&quot;,&quot;values&quot;:[&quot;TestEC2Instance&quot;]}]'.&lt;/p&gt;
+-- @param resourceGroupTags [ResourceGroupTags] <p>A collection of keys and an array of possible values, '[{"key":"key1","values":["Value1","Value2"]},{"key":"Key2","values":["Value3"]}]'.</p> <p>For example,'[{"key":"Name","values":["TestEC2Instance"]}]'.</p>
 -- Required parameter: resourceGroupTags
 function M.CreateResourceGroupRequest(resourceGroupTags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateResourceGroupRequest")
@@ -2708,9 +2708,9 @@ function M.AssertAssessmentRunStateChange(struct)
 end
 
 --- Create a structure of type AssessmentRunStateChange
--- &lt;p&gt;Used as one of the elements of the &lt;a&gt;AssessmentRun&lt;/a&gt; data type.&lt;/p&gt;
--- @param state [AssessmentRunState] &lt;p&gt;The assessment run state.&lt;/p&gt;
--- @param stateChangedAt [Timestamp] &lt;p&gt;The last time the assessment run state changed.&lt;/p&gt;
+-- <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
+-- @param state [AssessmentRunState] <p>The assessment run state.</p>
+-- @param stateChangedAt [Timestamp] <p>The last time the assessment run state changed.</p>
 -- Required parameter: stateChangedAt
 -- Required parameter: state
 function M.AssessmentRunStateChange(state, stateChangedAt, ...)
@@ -2737,7 +2737,7 @@ end
 
 --- Create a structure of type DeleteAssessmentRunRequest
 --  
--- @param assessmentRunArn [Arn] &lt;p&gt;The ARN that specifies the assessment run that you want to delete.&lt;/p&gt;
+-- @param assessmentRunArn [Arn] <p>The ARN that specifies the assessment run that you want to delete.</p>
 -- Required parameter: assessmentRunArn
 function M.DeleteAssessmentRunRequest(assessmentRunArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssessmentRunRequest")
@@ -2764,9 +2764,9 @@ end
 
 --- Create a structure of type PreviewAgentsRequest
 --  
--- @param nextToken [PaginationToken] &lt;p&gt;You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the &lt;b&gt;PreviewAgents&lt;/b&gt; action. Subsequent calls to the action fill &lt;b&gt;nextToken&lt;/b&gt; in the request with the value of &lt;b&gt;NextToken&lt;/b&gt; from the previous response to continue listing data.&lt;/p&gt;
--- @param maxResults [PreviewAgentsMaxResults] &lt;p&gt;You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.&lt;/p&gt;
--- @param previewAgentsArn [Arn] &lt;p&gt;The ARN of the assessment target whose agents you want to preview.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>PreviewAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param maxResults [PreviewAgentsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+-- @param previewAgentsArn [Arn] <p>The ARN of the assessment target whose agents you want to preview.</p>
 -- Required parameter: previewAgentsArn
 function M.PreviewAgentsRequest(nextToken, maxResults, previewAgentsArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PreviewAgentsRequest")
@@ -2800,11 +2800,11 @@ end
 
 --- Create a structure of type CreateAssessmentTemplateRequest
 --  
--- @param assessmentTargetArn [Arn] &lt;p&gt;The ARN that specifies the assessment target for which you want to create the assessment template.&lt;/p&gt;
--- @param assessmentTemplateName [AssessmentTemplateName] &lt;p&gt;The user-defined name that identifies the assessment template that you want to create. You can create several assessment templates for an assessment target. The names of the assessment templates that correspond to a particular assessment target must be unique.&lt;/p&gt;
--- @param userAttributesForFindings [UserAttributeList] &lt;p&gt;The user-defined attributes that are assigned to every finding that is generated by the assessment run that uses this assessment template.&lt;/p&gt;
--- @param durationInSeconds [AssessmentRunDuration] &lt;p&gt;The duration of the assessment run in seconds. The default value is 3600 seconds (one hour).&lt;/p&gt;
--- @param rulesPackageArns [AssessmentTemplateRulesPackageArnList] &lt;p&gt;The ARNs that specify the rules packages that you want to attach to the assessment template.&lt;/p&gt;
+-- @param assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target for which you want to create the assessment template.</p>
+-- @param assessmentTemplateName [AssessmentTemplateName] <p>The user-defined name that identifies the assessment template that you want to create. You can create several assessment templates for an assessment target. The names of the assessment templates that correspond to a particular assessment target must be unique.</p>
+-- @param userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every finding that is generated by the assessment run that uses this assessment template.</p>
+-- @param durationInSeconds [AssessmentRunDuration] <p>The duration of the assessment run in seconds. The default value is 3600 seconds (one hour).</p>
+-- @param rulesPackageArns [AssessmentTemplateRulesPackageArnList] <p>The ARNs that specify the rules packages that you want to attach to the assessment template.</p>
 -- Required parameter: assessmentTargetArn
 -- Required parameter: assessmentTemplateName
 -- Required parameter: durationInSeconds
@@ -2836,7 +2836,7 @@ end
 
 --- Create a structure of type CreateAssessmentTemplateResponse
 --  
--- @param assessmentTemplateArn [Arn] &lt;p&gt;The ARN that specifies the assessment template that is created.&lt;/p&gt;
+-- @param assessmentTemplateArn [Arn] <p>The ARN that specifies the assessment template that is created.</p>
 -- Required parameter: assessmentTemplateArn
 function M.CreateAssessmentTemplateResponse(assessmentTemplateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssessmentTemplateResponse")
@@ -2861,7 +2861,7 @@ end
 
 --- Create a structure of type DescribeAssessmentTargetsRequest
 --  
--- @param assessmentTargetArns [BatchDescribeArnList] &lt;p&gt;The ARNs that specifies the assessment targets that you want to describe.&lt;/p&gt;
+-- @param assessmentTargetArns [BatchDescribeArnList] <p>The ARNs that specifies the assessment targets that you want to describe.</p>
 -- Required parameter: assessmentTargetArns
 function M.DescribeAssessmentTargetsRequest(assessmentTargetArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentTargetsRequest")
@@ -2887,9 +2887,9 @@ function M.AssertEventSubscription(struct)
 end
 
 --- Create a structure of type EventSubscription
--- &lt;p&gt;This data type is used in the &lt;a&gt;Subscription&lt;/a&gt; data type.&lt;/p&gt;
--- @param event [InspectorEvent] &lt;p&gt;The event for which Amazon Simple Notification Service (SNS) notifications are sent.&lt;/p&gt;
--- @param subscribedAt [Timestamp] &lt;p&gt;The time at which &lt;a&gt;SubscribeToEvent&lt;/a&gt; is called.&lt;/p&gt;
+-- <p>This data type is used in the <a>Subscription</a> data type.</p>
+-- @param event [InspectorEvent] <p>The event for which Amazon Simple Notification Service (SNS) notifications are sent.</p>
+-- @param subscribedAt [Timestamp] <p>The time at which <a>SubscribeToEvent</a> is called.</p>
 -- Required parameter: event
 -- Required parameter: subscribedAt
 function M.EventSubscription(event, subscribedAt, ...)
@@ -2919,10 +2919,10 @@ end
 
 --- Create a structure of type ListAssessmentRunAgentsRequest
 --  
--- @param filter [AgentFilter] &lt;p&gt;You can use this parameter to specify a subset of data to be included in the action's response.&lt;/p&gt; &lt;p&gt;For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.&lt;/p&gt;
--- @param assessmentRunArn [Arn] &lt;p&gt;The ARN that specifies the assessment run whose agents you want to list.&lt;/p&gt;
--- @param nextToken [PaginationToken] &lt;p&gt;You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the &lt;b&gt;ListAssessmentRunAgents&lt;/b&gt; action. Subsequent calls to the action fill &lt;b&gt;nextToken&lt;/b&gt; in the request with the value of &lt;b&gt;NextToken&lt;/b&gt; from the previous response to continue listing data.&lt;/p&gt;
--- @param maxResults [ListMaxResults] &lt;p&gt;You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.&lt;/p&gt;
+-- @param filter [AgentFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- @param assessmentRunArn [Arn] <p>The ARN that specifies the assessment run whose agents you want to list.</p>
+-- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRunAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
 -- Required parameter: assessmentRunArn
 function M.ListAssessmentRunAgentsRequest(filter, assessmentRunArn, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunAgentsRequest")
@@ -2952,10 +2952,10 @@ end
 
 --- Create a structure of type ListAssessmentRunsRequest
 --  
--- @param filter [AssessmentRunFilter] &lt;p&gt;You can use this parameter to specify a subset of data to be included in the action's response.&lt;/p&gt; &lt;p&gt;For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.&lt;/p&gt;
--- @param nextToken [PaginationToken] &lt;p&gt;You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the &lt;b&gt;ListAssessmentRuns&lt;/b&gt; action. Subsequent calls to the action fill &lt;b&gt;nextToken&lt;/b&gt; in the request with the value of &lt;b&gt;NextToken&lt;/b&gt; from the previous response to continue listing data.&lt;/p&gt;
--- @param maxResults [ListMaxResults] &lt;p&gt;You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.&lt;/p&gt;
--- @param assessmentTemplateArns [ListParentArnList] &lt;p&gt;The ARNs that specify the assessment templates whose assessment runs you want to list.&lt;/p&gt;
+-- @param filter [AssessmentRunFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- @param nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRuns</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- @param maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
+-- @param assessmentTemplateArns [ListParentArnList] <p>The ARNs that specify the assessment templates whose assessment runs you want to list.</p>
 function M.ListAssessmentRunsRequest(filter, nextToken, maxResults, assessmentTemplateArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunsRequest")
 	local t = { 

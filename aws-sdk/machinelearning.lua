@@ -30,8 +30,8 @@ function M.AssertCreateDataSourceFromRedshiftOutput(struct)
 end
 
 --- Create a structure of type CreateDataSourceFromRedshiftOutput
--- &lt;p&gt; Represents the output of a &lt;code&gt;CreateDataSourceFromRedshift&lt;/code&gt; operation, and is an acknowledgement that Amazon ML received the request.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;CreateDataSourceFromRedshift&lt;/code&gt; operation is asynchronous. You can poll for updates by using the &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation and checking the &lt;code&gt;Status&lt;/code&gt; parameter. &lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the datasource. This value should be identical to the value of the &lt;code&gt;DataSourceID&lt;/code&gt; in the request. &lt;/p&gt;
+-- <p> Represents the output of a <code>CreateDataSourceFromRedshift</code> operation, and is an acknowledgement that Amazon ML received the request.</p> <p>The <code>CreateDataSourceFromRedshift</code> operation is asynchronous. You can poll for updates by using the <code>GetBatchPrediction</code> operation and checking the <code>Status</code> parameter. </p>
+-- @param DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the datasource. This value should be identical to the value of the <code>DataSourceID</code> in the request. </p>
 function M.CreateDataSourceFromRedshiftOutput(DataSourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDataSourceFromRedshiftOutput")
 	local t = { 
@@ -54,9 +54,9 @@ function M.AssertInternalServerException(struct)
 end
 
 --- Create a structure of type InternalServerException
--- &lt;p&gt;An error on the server occurred when trying to process a request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;An error on the server occurred when trying to process a request.&lt;/p&gt;
--- @param code [ErrorCode] &lt;p&gt;An error on the server occurred when trying to process a request.&lt;/p&gt;
+-- <p>An error on the server occurred when trying to process a request.</p>
+-- @param message [ErrorMessage] <p>An error on the server occurred when trying to process a request.</p>
+-- @param code [ErrorCode] <p>An error on the server occurred when trying to process a request.</p>
 function M.InternalServerException(message, code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerException")
 	local t = { 
@@ -85,9 +85,9 @@ end
 
 --- Create a structure of type DeleteTagsInput
 --  
--- @param ResourceType [TaggableResourceType] &lt;p&gt;The type of the tagged ML object.&lt;/p&gt;
--- @param ResourceId [EntityId] &lt;p&gt;The ID of the tagged ML object. For example, &lt;code&gt;exampleModelId&lt;/code&gt;.&lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;One or more tags to delete.&lt;/p&gt;
+-- @param ResourceType [TaggableResourceType] <p>The type of the tagged ML object.</p>
+-- @param ResourceId [EntityId] <p>The ID of the tagged ML object. For example, <code>exampleModelId</code>.</p>
+-- @param TagKeys [TagKeyList] <p>One or more tags to delete.</p>
 -- Required parameter: TagKeys
 -- Required parameter: ResourceId
 -- Required parameter: ResourceType
@@ -125,17 +125,17 @@ end
 
 --- Create a structure of type DescribeBatchPredictionsInput
 --  
--- @param GT [ComparatorValue] &lt;p&gt;The greater than operator. The &lt;code&gt;BatchPrediction&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are greater than the value specified with &lt;code&gt;GT&lt;/code&gt;.&lt;/p&gt;
--- @param FilterVariable [BatchPredictionFilterVariable] &lt;p&gt;Use one of the following variables to filter a list of &lt;code&gt;BatchPrediction&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;CreatedAt&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;BatchPrediction&lt;/code&gt; creation date.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Status&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;BatchPrediction&lt;/code&gt; status.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Name&lt;/code&gt; - Sets the search criteria to the contents of the &lt;code&gt;BatchPrediction&lt;/code&gt;&lt;b&gt; &lt;/b&gt; &lt;code&gt;Name&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;IAMUser&lt;/code&gt; - Sets the search criteria to the user account that invoked the &lt;code&gt;BatchPrediction&lt;/code&gt; creation.&lt;/li&gt; &lt;li&gt; &lt;code&gt;MLModelId&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;MLModel&lt;/code&gt; used in the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DataSourceId&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;DataSource&lt;/code&gt; used in the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DataURI&lt;/code&gt; - Sets the search criteria to the data file(s) used in the &lt;code&gt;BatchPrediction&lt;/code&gt;. The URL can identify either a file or an Amazon Simple Storage Solution (Amazon S3) bucket or directory.&lt;/li&gt; &lt;/ul&gt;
--- @param GE [ComparatorValue] &lt;p&gt;The greater than or equal to operator. The &lt;code&gt;BatchPrediction&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are greater than or equal to the value specified with &lt;code&gt;GE&lt;/code&gt;. &lt;/p&gt;
--- @param NE [ComparatorValue] &lt;p&gt;The not equal to operator. The &lt;code&gt;BatchPrediction&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values not equal to the value specified with &lt;code&gt;NE&lt;/code&gt;.&lt;/p&gt;
--- @param LT [ComparatorValue] &lt;p&gt;The less than operator. The &lt;code&gt;BatchPrediction&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are less than the value specified with &lt;code&gt;LT&lt;/code&gt;.&lt;/p&gt;
--- @param LE [ComparatorValue] &lt;p&gt;The less than or equal to operator. The &lt;code&gt;BatchPrediction&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are less than or equal to the value specified with &lt;code&gt;LE&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PageLimit] &lt;p&gt;The number of pages of information to include in the result. The range of acceptable values is &lt;code&gt;1&lt;/code&gt; through &lt;code&gt;100&lt;/code&gt;. The default value is &lt;code&gt;100&lt;/code&gt;.&lt;/p&gt;
--- @param SortOrder [SortOrder] &lt;p&gt;A two-value parameter that determines the sequence of the resulting list of &lt;code&gt;MLModel&lt;/code&gt;s.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;asc&lt;/code&gt; - Arranges the list in ascending order (A-Z, 0-9).&lt;/li&gt; &lt;li&gt; &lt;code&gt;dsc&lt;/code&gt; - Arranges the list in descending order (Z-A, 9-0).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Results are sorted by &lt;code&gt;FilterVariable&lt;/code&gt;.&lt;/p&gt;
--- @param NextToken [StringType] &lt;p&gt;An ID of the page in the paginated results.&lt;/p&gt;
--- @param EQ [ComparatorValue] &lt;p&gt;The equal to operator. The &lt;code&gt;BatchPrediction&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that exactly match the value specified with &lt;code&gt;EQ&lt;/code&gt;.&lt;/p&gt;
--- @param Prefix [ComparatorValue] &lt;p&gt;A string that is found at the beginning of a variable, such as &lt;code&gt;Name&lt;/code&gt; or &lt;code&gt;Id&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For example, a &lt;code&gt;Batch Prediction&lt;/code&gt; operation could have the &lt;code&gt;Name&lt;/code&gt; &lt;code&gt;2014-09-09-HolidayGiftMailer&lt;/code&gt;. To search for this &lt;code&gt;BatchPrediction&lt;/code&gt;, select &lt;code&gt;Name&lt;/code&gt; for the &lt;code&gt;FilterVariable&lt;/code&gt; and any of the following strings for the &lt;code&gt;Prefix&lt;/code&gt;: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;2014-09&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;2014-09-09&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;2014-09-09-Holiday&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt;
+-- @param GT [ComparatorValue] <p>The greater than operator. The <code>BatchPrediction</code> results will have <code>FilterVariable</code> values that are greater than the value specified with <code>GT</code>.</p>
+-- @param FilterVariable [BatchPredictionFilterVariable] <p>Use one of the following variables to filter a list of <code>BatchPrediction</code>:</p> <ul> <li> <code>CreatedAt</code> - Sets the search criteria to the <code>BatchPrediction</code> creation date.</li> <li> <code>Status</code> - Sets the search criteria to the <code>BatchPrediction</code> status.</li> <li> <code>Name</code> - Sets the search criteria to the contents of the <code>BatchPrediction</code><b> </b> <code>Name</code>.</li> <li> <code>IAMUser</code> - Sets the search criteria to the user account that invoked the <code>BatchPrediction</code> creation.</li> <li> <code>MLModelId</code> - Sets the search criteria to the <code>MLModel</code> used in the <code>BatchPrediction</code>.</li> <li> <code>DataSourceId</code> - Sets the search criteria to the <code>DataSource</code> used in the <code>BatchPrediction</code>.</li> <li> <code>DataURI</code> - Sets the search criteria to the data file(s) used in the <code>BatchPrediction</code>. The URL can identify either a file or an Amazon Simple Storage Solution (Amazon S3) bucket or directory.</li> </ul>
+-- @param GE [ComparatorValue] <p>The greater than or equal to operator. The <code>BatchPrediction</code> results will have <code>FilterVariable</code> values that are greater than or equal to the value specified with <code>GE</code>. </p>
+-- @param NE [ComparatorValue] <p>The not equal to operator. The <code>BatchPrediction</code> results will have <code>FilterVariable</code> values not equal to the value specified with <code>NE</code>.</p>
+-- @param LT [ComparatorValue] <p>The less than operator. The <code>BatchPrediction</code> results will have <code>FilterVariable</code> values that are less than the value specified with <code>LT</code>.</p>
+-- @param LE [ComparatorValue] <p>The less than or equal to operator. The <code>BatchPrediction</code> results will have <code>FilterVariable</code> values that are less than or equal to the value specified with <code>LE</code>.</p>
+-- @param Limit [PageLimit] <p>The number of pages of information to include in the result. The range of acceptable values is <code>1</code> through <code>100</code>. The default value is <code>100</code>.</p>
+-- @param SortOrder [SortOrder] <p>A two-value parameter that determines the sequence of the resulting list of <code>MLModel</code>s.</p> <ul> <li> <code>asc</code> - Arranges the list in ascending order (A-Z, 0-9).</li> <li> <code>dsc</code> - Arranges the list in descending order (Z-A, 9-0).</li> </ul> <p>Results are sorted by <code>FilterVariable</code>.</p>
+-- @param NextToken [StringType] <p>An ID of the page in the paginated results.</p>
+-- @param EQ [ComparatorValue] <p>The equal to operator. The <code>BatchPrediction</code> results will have <code>FilterVariable</code> values that exactly match the value specified with <code>EQ</code>.</p>
+-- @param Prefix [ComparatorValue] <p>A string that is found at the beginning of a variable, such as <code>Name</code> or <code>Id</code>.</p> <p>For example, a <code>Batch Prediction</code> operation could have the <code>Name</code> <code>2014-09-09-HolidayGiftMailer</code>. To search for this <code>BatchPrediction</code>, select <code>Name</code> for the <code>FilterVariable</code> and any of the following strings for the <code>Prefix</code>: </p> <ul> <li><p>2014-09</p></li> <li><p>2014-09-09</p></li> <li><p>2014-09-09-Holiday</p></li> </ul>
 function M.DescribeBatchPredictionsInput(GT, FilterVariable, GE, NE, LT, LE, Limit, SortOrder, NextToken, EQ, Prefix, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBatchPredictionsInput")
 	local t = { 
@@ -167,8 +167,8 @@ function M.AssertCreateBatchPredictionOutput(struct)
 end
 
 --- Create a structure of type CreateBatchPredictionOutput
--- &lt;p&gt; Represents the output of a &lt;code&gt;CreateBatchPrediction&lt;/code&gt; operation, and is an acknowledgement that Amazon ML received the request.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;CreateBatchPrediction&lt;/code&gt; operation is asynchronous. You can poll for status updates by using the &lt;code&gt;&amp;gt;GetBatchPrediction&lt;/code&gt; operation and checking the &lt;code&gt;Status&lt;/code&gt; parameter of the result. &lt;/p&gt;
--- @param BatchPredictionId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;BatchPrediction&lt;/code&gt;. This value is identical to the value of the &lt;code&gt;BatchPredictionId&lt;/code&gt; in the request.&lt;/p&gt;
+-- <p> Represents the output of a <code>CreateBatchPrediction</code> operation, and is an acknowledgement that Amazon ML received the request.</p> <p>The <code>CreateBatchPrediction</code> operation is asynchronous. You can poll for status updates by using the <code>&gt;GetBatchPrediction</code> operation and checking the <code>Status</code> parameter of the result. </p>
+-- @param BatchPredictionId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>BatchPrediction</code>. This value is identical to the value of the <code>BatchPredictionId</code> in the request.</p>
 function M.CreateBatchPredictionOutput(BatchPredictionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateBatchPredictionOutput")
 	local t = { 
@@ -191,9 +191,9 @@ function M.AssertAddTagsOutput(struct)
 end
 
 --- Create a structure of type AddTagsOutput
--- &lt;p&gt;Amazon ML returns the following elements. &lt;/p&gt;
--- @param ResourceType [TaggableResourceType] &lt;p&gt;The type of the ML object that was tagged.&lt;/p&gt;
--- @param ResourceId [EntityId] &lt;p&gt;The ID of the ML object that was tagged.&lt;/p&gt;
+-- <p>Amazon ML returns the following elements. </p>
+-- @param ResourceType [TaggableResourceType] <p>The type of the ML object that was tagged.</p>
+-- @param ResourceId [EntityId] <p>The ID of the ML object that was tagged.</p>
 function M.AddTagsOutput(ResourceType, ResourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsOutput")
 	local t = { 
@@ -234,26 +234,26 @@ function M.AssertMLModel(struct)
 end
 
 --- Create a structure of type MLModel
--- &lt;p&gt; Represents the output of a &lt;code&gt;GetMLModel&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt;The content consists of the detailed metadata and the current status of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param Status [EntityStatus] &lt;p&gt;The current status of an &lt;code&gt;MLModel&lt;/code&gt;. This element can have one of the following values: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;PENDING&lt;/code&gt; - Amazon Machine Learning (Amazon ML) submitted a request to create an &lt;code&gt;MLModel&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;INPROGRESS&lt;/code&gt; - The creation process is underway.&lt;/li&gt; &lt;li&gt; &lt;code&gt;FAILED&lt;/code&gt; - The request to create an &lt;code&gt;MLModel&lt;/code&gt; didn't run to completion. The model isn't usable.&lt;/li&gt; &lt;li&gt; &lt;code&gt;COMPLETED&lt;/code&gt; - The creation process completed successfully.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DELETED&lt;/code&gt; - The &lt;code&gt;MLModel&lt;/code&gt; is marked as deleted. It isn't usable.&lt;/li&gt; &lt;/ul&gt;
--- @param SizeInBytes [LongType] &lt;p&gt; Represents the output of a &lt;code&gt;GetMLModel&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt;The content consists of the detailed metadata and the current status of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param ComputeTime [LongType] &lt;p&gt; Represents the output of a &lt;code&gt;GetMLModel&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt;The content consists of the detailed metadata and the current status of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param Name [MLModelName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param Algorithm [Algorithm] &lt;p&gt;The algorithm used to train the &lt;code&gt;MLModel&lt;/code&gt;. The following algorithm is supported:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;SGD&lt;/code&gt; -- Stochastic gradient descent. The goal of &lt;code&gt;SGD&lt;/code&gt; is to minimize the gradient of the loss function. &lt;/li&gt; &lt;/ul&gt;
--- @param ScoreThreshold [ScoreThreshold] &lt;p&gt; Represents the output of a &lt;code&gt;GetMLModel&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt;The content consists of the detailed metadata and the current status of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param TrainingParameters [TrainingParameters] &lt;p&gt;A list of the training parameters in the &lt;code&gt;MLModel&lt;/code&gt;. The list is implemented as a map of key-value pairs.&lt;/p&gt; &lt;p&gt;The following is the current set of training parameters: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;sgd.maxMLModelSizeInBytes&lt;/code&gt; - The maximum allowed size of the model. Depending on the input data, the size of the model might affect its performance.&lt;/p&gt; &lt;p&gt; The value is an integer that ranges from &lt;code&gt;100000&lt;/code&gt; to &lt;code&gt;2147483648&lt;/code&gt;. The default value is &lt;code&gt;33554432&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;sgd.maxPasses&lt;/code&gt; - The number of times that the training process traverses the observations to build the &lt;code&gt;MLModel&lt;/code&gt;. The value is an integer that ranges from &lt;code&gt;1&lt;/code&gt; to &lt;code&gt;10000&lt;/code&gt;. The default value is &lt;code&gt;10&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;sgd.shuffleType&lt;/code&gt; - Whether Amazon ML shuffles the training data. Shuffling the data improves a model's ability to find the optimal solution for a variety of data types. The valid values are &lt;code&gt;auto&lt;/code&gt; and &lt;code&gt;none&lt;/code&gt;. The default value is &lt;code&gt;none&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;sgd.l1RegularizationAmount&lt;/code&gt; - The coefficient regularization L1 norm, which controls overfitting the data by penalizing large coefficients. This parameter tends to drive coefficients to zero, resulting in sparse feature set. If you use this parameter, start by specifying a small value, such as &lt;code&gt;1.0E-08&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The value is a double that ranges from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;MAX_DOUBLE&lt;/code&gt;. The default is to not use L1 normalization. This parameter can't be used when &lt;code&gt;L2&lt;/code&gt; is specified. Use this parameter sparingly.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;sgd.l2RegularizationAmount&lt;/code&gt; - The coefficient regularization L2 norm, which controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to small, nonzero values. If you use this parameter, start by specifying a small value, such as &lt;code&gt;1.0E-08&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The value is a double that ranges from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;MAX_DOUBLE&lt;/code&gt;. The default is to not use L2 normalization. This parameter can't be used when &lt;code&gt;L1&lt;/code&gt; is specified. Use this parameter sparingly.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MLModelType [MLModelType] &lt;p&gt;Identifies the &lt;code&gt;MLModel&lt;/code&gt; category. The following are the available types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;REGRESSION&lt;/code&gt; - Produces a numeric result. For example, &quot;What price should a house be listed at?&quot;&lt;/li&gt; &lt;li&gt; &lt;code&gt;BINARY&lt;/code&gt; - Produces one of two possible results. For example, &quot;Is this a child-friendly web site?&quot;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;MULTICLASS&lt;/code&gt; - Produces one of several possible results. For example, &quot;Is this a HIGH-, LOW-, or MEDIUM&lt;?oxy_delete author=&quot;annbech&quot; timestamp=&quot;20160328T175050-0700&quot; content=&quot; &quot;&gt;&lt;?oxy_insert_start author=&quot;annbech&quot; timestamp=&quot;20160328T175050-0700&quot;&gt;-&lt;?oxy_insert_end&gt;risk trade?&quot;.&lt;/li&gt; &lt;/ul&gt;
--- @param CreatedByIamUser [AwsUserArn] &lt;p&gt;The AWS user account from which the &lt;code&gt;MLModel&lt;/code&gt; was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.&lt;/p&gt;
--- @param ScoreThresholdLastUpdatedAt [EpochTime] &lt;p&gt;The time of the most recent edit to the &lt;code&gt;ScoreThreshold&lt;/code&gt;. The time is expressed in epoch time.&lt;/p&gt;
--- @param EndpointInfo [RealtimeEndpointInfo] &lt;p&gt;The current endpoint of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;MLModel&lt;/code&gt; at creation.&lt;/p&gt;
--- @param InputDataLocationS3 [S3Url] &lt;p&gt;The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).&lt;/p&gt;
--- @param LastUpdatedAt [EpochTime] &lt;p&gt;The time of the most recent edit to the &lt;code&gt;MLModel&lt;/code&gt;. The time is expressed in epoch time.&lt;/p&gt;
--- @param TrainingDataSourceId [EntityId] &lt;p&gt;The ID of the training &lt;code&gt;DataSource&lt;/code&gt;. The &lt;code&gt;CreateMLModel&lt;/code&gt; operation uses the &lt;code&gt;TrainingDataSourceId&lt;/code&gt;.&lt;/p&gt;
--- @param StartedAt [EpochTime] &lt;p&gt; Represents the output of a &lt;code&gt;GetMLModel&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt;The content consists of the detailed metadata and the current status of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param Message [Message] &lt;p&gt;A description of the most recent details about accessing the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param CreatedAt [EpochTime] &lt;p&gt;The time that the &lt;code&gt;MLModel&lt;/code&gt; was created. The time is expressed in epoch time.&lt;/p&gt;
--- @param FinishedAt [EpochTime] &lt;p&gt; Represents the output of a &lt;code&gt;GetMLModel&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt;The content consists of the detailed metadata and the current status of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
+-- <p> Represents the output of a <code>GetMLModel</code> operation. </p> <p>The content consists of the detailed metadata and the current status of the <code>MLModel</code>.</p>
+-- @param Status [EntityStatus] <p>The current status of an <code>MLModel</code>. This element can have one of the following values: </p> <ul> <li> <code>PENDING</code> - Amazon Machine Learning (Amazon ML) submitted a request to create an <code>MLModel</code>.</li> <li> <code>INPROGRESS</code> - The creation process is underway.</li> <li> <code>FAILED</code> - The request to create an <code>MLModel</code> didn't run to completion. The model isn't usable.</li> <li> <code>COMPLETED</code> - The creation process completed successfully.</li> <li> <code>DELETED</code> - The <code>MLModel</code> is marked as deleted. It isn't usable.</li> </ul>
+-- @param SizeInBytes [LongType] <p> Represents the output of a <code>GetMLModel</code> operation. </p> <p>The content consists of the detailed metadata and the current status of the <code>MLModel</code>.</p>
+-- @param ComputeTime [LongType] <p> Represents the output of a <code>GetMLModel</code> operation. </p> <p>The content consists of the detailed metadata and the current status of the <code>MLModel</code>.</p>
+-- @param Name [MLModelName] <p>A user-supplied name or description of the <code>MLModel</code>.</p>
+-- @param Algorithm [Algorithm] <p>The algorithm used to train the <code>MLModel</code>. The following algorithm is supported:</p> <ul> <li> <code>SGD</code> -- Stochastic gradient descent. The goal of <code>SGD</code> is to minimize the gradient of the loss function. </li> </ul>
+-- @param ScoreThreshold [ScoreThreshold] <p> Represents the output of a <code>GetMLModel</code> operation. </p> <p>The content consists of the detailed metadata and the current status of the <code>MLModel</code>.</p>
+-- @param TrainingParameters [TrainingParameters] <p>A list of the training parameters in the <code>MLModel</code>. The list is implemented as a map of key-value pairs.</p> <p>The following is the current set of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code> - The maximum allowed size of the model. Depending on the input data, the size of the model might affect its performance.</p> <p> The value is an integer that ranges from <code>100000</code> to <code>2147483648</code>. The default value is <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times that the training process traverses the observations to build the <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to <code>10000</code>. The default value is <code>10</code>.</p></li> <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training data. Shuffling the data improves a model's ability to find the optimal solution for a variety of data types. The valid values are <code>auto</code> and <code>none</code>. The default value is <code>none</code>.</p></li> <li> <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1 norm, which controls overfitting the data by penalizing large coefficients. This parameter tends to drive coefficients to zero, resulting in sparse feature set. If you use this parameter, start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1 normalization. This parameter can't be used when <code>L2</code> is specified. Use this parameter sparingly.</p> </li> <li> <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2 norm, which controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to small, nonzero values. If you use this parameter, start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L2 normalization. This parameter can't be used when <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
+-- @param MLModelType [MLModelType] <p>Identifies the <code>MLModel</code> category. The following are the available types:</p> <ul> <li> <code>REGRESSION</code> - Produces a numeric result. For example, "What price should a house be listed at?"</li> <li> <code>BINARY</code> - Produces one of two possible results. For example, "Is this a child-friendly web site?".</li> <li> <code>MULTICLASS</code> - Produces one of several possible results. For example, "Is this a HIGH-, LOW-, or MEDIUM<?oxy_delete author="annbech" timestamp="20160328T175050-0700" content=" "><?oxy_insert_start author="annbech" timestamp="20160328T175050-0700">-<?oxy_insert_end>risk trade?".</li> </ul>
+-- @param CreatedByIamUser [AwsUserArn] <p>The AWS user account from which the <code>MLModel</code> was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.</p>
+-- @param ScoreThresholdLastUpdatedAt [EpochTime] <p>The time of the most recent edit to the <code>ScoreThreshold</code>. The time is expressed in epoch time.</p>
+-- @param EndpointInfo [RealtimeEndpointInfo] <p>The current endpoint of the <code>MLModel</code>.</p>
+-- @param MLModelId [EntityId] <p>The ID assigned to the <code>MLModel</code> at creation.</p>
+-- @param InputDataLocationS3 [S3Url] <p>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).</p>
+-- @param LastUpdatedAt [EpochTime] <p>The time of the most recent edit to the <code>MLModel</code>. The time is expressed in epoch time.</p>
+-- @param TrainingDataSourceId [EntityId] <p>The ID of the training <code>DataSource</code>. The <code>CreateMLModel</code> operation uses the <code>TrainingDataSourceId</code>.</p>
+-- @param StartedAt [EpochTime] <p> Represents the output of a <code>GetMLModel</code> operation. </p> <p>The content consists of the detailed metadata and the current status of the <code>MLModel</code>.</p>
+-- @param Message [Message] <p>A description of the most recent details about accessing the <code>MLModel</code>.</p>
+-- @param CreatedAt [EpochTime] <p>The time that the <code>MLModel</code> was created. The time is expressed in epoch time.</p>
+-- @param FinishedAt [EpochTime] <p> Represents the output of a <code>GetMLModel</code> operation. </p> <p>The content consists of the detailed metadata and the current status of the <code>MLModel</code>.</p>
 function M.MLModel(Status, SizeInBytes, ComputeTime, Name, Algorithm, ScoreThreshold, TrainingParameters, MLModelType, CreatedByIamUser, ScoreThresholdLastUpdatedAt, EndpointInfo, MLModelId, InputDataLocationS3, LastUpdatedAt, TrainingDataSourceId, StartedAt, Message, CreatedAt, FinishedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MLModel")
 	local t = { 
@@ -320,8 +320,8 @@ end
 
 --- Create a structure of type UpdateBatchPredictionInput
 --  
--- @param BatchPredictionId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;BatchPrediction&lt;/code&gt; during creation.&lt;/p&gt;
--- @param BatchPredictionName [EntityName] &lt;p&gt;A new user-supplied name or description of the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/p&gt;
+-- @param BatchPredictionId [EntityId] <p>The ID assigned to the <code>BatchPrediction</code> during creation.</p>
+-- @param BatchPredictionName [EntityName] <p>A new user-supplied name or description of the <code>BatchPrediction</code>.</p>
 -- Required parameter: BatchPredictionId
 -- Required parameter: BatchPredictionName
 function M.UpdateBatchPredictionInput(BatchPredictionId, BatchPredictionName, ...)
@@ -348,10 +348,10 @@ function M.AssertRedshiftMetadata(struct)
 end
 
 --- Create a structure of type RedshiftMetadata
--- &lt;p&gt;Describes the &lt;code&gt;DataSource&lt;/code&gt; details specific to Amazon Redshift.&lt;/p&gt;
--- @param RedshiftDatabase [RedshiftDatabase] &lt;p&gt;Describes the &lt;code&gt;DataSource&lt;/code&gt; details specific to Amazon Redshift.&lt;/p&gt;
--- @param DatabaseUserName [RedshiftDatabaseUsername] &lt;p&gt;Describes the &lt;code&gt;DataSource&lt;/code&gt; details specific to Amazon Redshift.&lt;/p&gt;
--- @param SelectSqlQuery [RedshiftSelectSqlQuery] &lt;p&gt; The SQL query that is specified during &lt;a&gt;CreateDataSourceFromRedshift&lt;/a&gt;. Returns only if &lt;code&gt;Verbose&lt;/code&gt; is true in GetDataSourceInput. &lt;/p&gt;
+-- <p>Describes the <code>DataSource</code> details specific to Amazon Redshift.</p>
+-- @param RedshiftDatabase [RedshiftDatabase] <p>Describes the <code>DataSource</code> details specific to Amazon Redshift.</p>
+-- @param DatabaseUserName [RedshiftDatabaseUsername] <p>Describes the <code>DataSource</code> details specific to Amazon Redshift.</p>
+-- @param SelectSqlQuery [RedshiftSelectSqlQuery] <p> The SQL query that is specified during <a>CreateDataSourceFromRedshift</a>. Returns only if <code>Verbose</code> is true in GetDataSourceInput. </p>
 function M.RedshiftMetadata(RedshiftDatabase, DatabaseUserName, SelectSqlQuery, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RedshiftMetadata")
 	local t = { 
@@ -375,8 +375,8 @@ function M.AssertUpdateBatchPredictionOutput(struct)
 end
 
 --- Create a structure of type UpdateBatchPredictionOutput
--- &lt;p&gt;Represents the output of an &lt;code&gt;UpdateBatchPrediction&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt;You can see the updated content by using the &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation.&lt;/p&gt;
--- @param BatchPredictionId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;BatchPrediction&lt;/code&gt; during creation. This value should be identical to the value of the &lt;code&gt;BatchPredictionId&lt;/code&gt; in the request.&lt;/p&gt;
+-- <p>Represents the output of an <code>UpdateBatchPrediction</code> operation.</p> <p>You can see the updated content by using the <code>GetBatchPrediction</code> operation.</p>
+-- @param BatchPredictionId [EntityId] <p>The ID assigned to the <code>BatchPrediction</code> during creation. This value should be identical to the value of the <code>BatchPredictionId</code> in the request.</p>
 function M.UpdateBatchPredictionOutput(BatchPredictionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBatchPredictionOutput")
 	local t = { 
@@ -398,8 +398,8 @@ function M.AssertUpdateMLModelOutput(struct)
 end
 
 --- Create a structure of type UpdateMLModelOutput
--- &lt;p&gt;Represents the output of an &lt;code&gt;UpdateMLModel&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt;You can see the updated content by using the &lt;code&gt;GetMLModel&lt;/code&gt; operation.&lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;MLModel&lt;/code&gt; during creation. This value should be identical to the value of the &lt;code&gt;MLModelID&lt;/code&gt; in the request.&lt;/p&gt;
+-- <p>Represents the output of an <code>UpdateMLModel</code> operation.</p> <p>You can see the updated content by using the <code>GetMLModel</code> operation.</p>
+-- @param MLModelId [EntityId] <p>The ID assigned to the <code>MLModel</code> during creation. This value should be identical to the value of the <code>MLModelID</code> in the request.</p>
 function M.UpdateMLModelOutput(MLModelId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMLModelOutput")
 	local t = { 
@@ -441,28 +441,28 @@ function M.AssertGetMLModelOutput(struct)
 end
 
 --- Create a structure of type GetMLModelOutput
--- &lt;p&gt;Represents the output of a &lt;code&gt;GetMLModel&lt;/code&gt; operation, and provides detailed information about a &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param Status [EntityStatus] &lt;p&gt;The current status of the &lt;code&gt;MLModel&lt;/code&gt;. This element can have one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;PENDING&lt;/code&gt; - Amazon Machine Learning (Amazon ML) submitted a request to describe a &lt;code&gt;MLModel&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;INPROGRESS&lt;/code&gt; - The request is processing.&lt;/li&gt; &lt;li&gt; &lt;code&gt;FAILED&lt;/code&gt; - The request did not run to completion. The ML model isn't usable.&lt;/li&gt; &lt;li&gt; &lt;code&gt;COMPLETED&lt;/code&gt; - The request completed successfully.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DELETED&lt;/code&gt; - The &lt;code&gt;MLModel&lt;/code&gt; is marked as deleted. It isn't usable.&lt;/li&gt; &lt;/ul&gt;
--- @param SizeInBytes [LongType] &lt;p&gt;Represents the output of a &lt;code&gt;GetMLModel&lt;/code&gt; operation, and provides detailed information about a &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param ComputeTime [LongType] &lt;p&gt;The approximate CPU time in milliseconds that Amazon Machine Learning spent processing the &lt;code&gt;MLModel&lt;/code&gt;, normalized and scaled on computation resources. &lt;code&gt;ComputeTime&lt;/code&gt; is only available if the &lt;code&gt;MLModel&lt;/code&gt; is in the &lt;code&gt;COMPLETED&lt;/code&gt; state.&lt;/p&gt;
--- @param Name [MLModelName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param ScoreThreshold [ScoreThreshold] &lt;p&gt;The scoring threshold is used in binary classification &lt;code&gt;MLModel&lt;/code&gt;&lt;?oxy_insert_start author=&quot;laurama&quot; timestamp=&quot;20160329T114851-0700&quot;&gt; &lt;?oxy_insert_end&gt;models. It marks the boundary between a positive prediction and a negative prediction.&lt;/p&gt; &lt;p&gt;Output values greater than or equal to the threshold receive a positive result from the MLModel, such as &lt;code&gt;true&lt;/code&gt;. Output values less than the threshold receive a negative response from the MLModel, such as &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param TrainingParameters [TrainingParameters] &lt;p&gt;A list of the training parameters in the &lt;code&gt;MLModel&lt;/code&gt;. The list is implemented as a map of key-value pairs.&lt;/p&gt; &lt;p&gt;The following is the current set of training parameters: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;sgd.maxMLModelSizeInBytes&lt;/code&gt; - The maximum allowed size of the model. Depending on the input data, the size of the model might affect its performance.&lt;/p&gt; &lt;p&gt; The value is an integer that ranges from &lt;code&gt;100000&lt;/code&gt; to &lt;code&gt;2147483648&lt;/code&gt;. The default value is &lt;code&gt;33554432&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;sgd.maxPasses&lt;/code&gt; - The number of times that the training process traverses the observations to build the &lt;code&gt;MLModel&lt;/code&gt;. The value is an integer that ranges from &lt;code&gt;1&lt;/code&gt; to &lt;code&gt;10000&lt;/code&gt;. The default value is &lt;code&gt;10&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;sgd.shuffleType&lt;/code&gt; - Whether Amazon ML shuffles the training data. Shuffling data improves a model's ability to find the optimal solution for a variety of data types. The valid values are &lt;code&gt;auto&lt;/code&gt; and &lt;code&gt;none&lt;/code&gt;. The default value is &lt;code&gt;none&lt;/code&gt;. We strongly recommend that you shuffle your data.&lt;/p&gt;&lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;sgd.l1RegularizationAmount&lt;/code&gt; - The coefficient regularization L1 norm. It controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to zero, resulting in a sparse feature set. If you use this parameter, start by specifying a small value, such as &lt;code&gt;1.0E-08&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The value is a double that ranges from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;MAX_DOUBLE&lt;/code&gt;. The default is to not use L1 normalization. This parameter can't be used when &lt;code&gt;L2&lt;/code&gt; is specified. Use this parameter sparingly.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;sgd.l2RegularizationAmount&lt;/code&gt; - The coefficient regularization L2 norm. It controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to small, nonzero values. If you use this parameter, start by specifying a small value, such as &lt;code&gt;1.0E-08&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The value is a double that ranges from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;MAX_DOUBLE&lt;/code&gt;. The default is to not use L2 normalization. This parameter can't be used when &lt;code&gt;L1&lt;/code&gt; is specified. Use this parameter sparingly.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MLModelType [MLModelType] &lt;p&gt;Identifies the &lt;code&gt;MLModel&lt;/code&gt; category. The following are the available types: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;REGRESSION -- Produces a numeric result. For example, &quot;What price should a house be listed at?&quot;&lt;/li&gt; &lt;li&gt;BINARY -- Produces one of two possible results. For example, &quot;Is this an e-commerce website?&quot;&lt;/li&gt; &lt;li&gt;MULTICLASS -- Produces one of several possible results. For example, &quot;Is this a HIGH, LOW or MEDIUM risk trade?&quot;&lt;/li&gt; &lt;/ul&gt;
--- @param CreatedByIamUser [AwsUserArn] &lt;p&gt;The AWS user account from which the &lt;code&gt;MLModel&lt;/code&gt; was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.&lt;/p&gt;
--- @param Recipe [Recipe] &lt;p&gt;The recipe to use when training the &lt;code&gt;MLModel&lt;/code&gt;. The &lt;code&gt;Recipe&lt;/code&gt; provides detailed information about the observation data to use during training, and manipulations to perform on the observation data during training.&lt;/p&gt; &lt;note&gt;&lt;title&gt;Note&lt;/title&gt; &lt;p&gt;This parameter is provided as part of the verbose format.&lt;/p&gt;&lt;/note&gt;
--- @param ScoreThresholdLastUpdatedAt [EpochTime] &lt;p&gt;The time of the most recent edit to the &lt;code&gt;ScoreThreshold&lt;/code&gt;. The time is expressed in epoch time.&lt;/p&gt;
--- @param EndpointInfo [RealtimeEndpointInfo] &lt;p&gt;The current endpoint of the &lt;code&gt;MLModel&lt;/code&gt;&lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;The MLModel ID&lt;?oxy_insert_start author=&quot;annbech&quot; timestamp=&quot;20160328T151251-0700&quot;&gt;,&lt;?oxy_insert_end&gt; which is same as the &lt;code&gt;MLModelId&lt;/code&gt; in the request.&lt;/p&gt;
--- @param InputDataLocationS3 [S3Url] &lt;p&gt;The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).&lt;/p&gt;
--- @param LastUpdatedAt [EpochTime] &lt;p&gt;The time of the most recent edit to the &lt;code&gt;MLModel&lt;/code&gt;. The time is expressed in epoch time.&lt;/p&gt;
--- @param TrainingDataSourceId [EntityId] &lt;p&gt;The ID of the training &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param StartedAt [EpochTime] &lt;p&gt;The epoch time when Amazon Machine Learning marked the &lt;code&gt;MLModel&lt;/code&gt; as &lt;code&gt;INPROGRESS&lt;/code&gt;. &lt;code&gt;StartedAt&lt;/code&gt; isn't available if the &lt;code&gt;MLModel&lt;/code&gt; is in the &lt;code&gt;PENDING&lt;/code&gt; state.&lt;/p&gt;
--- @param LogUri [PresignedS3Url] &lt;p&gt;A link to the file that contains logs of the &lt;code&gt;CreateMLModel&lt;/code&gt; operation.&lt;/p&gt;
--- @param Schema [DataSchema] &lt;p&gt;The schema used by all of the data files referenced by the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt; &lt;note&gt;&lt;title&gt;Note&lt;/title&gt; &lt;p&gt;This parameter is provided as part of the verbose format.&lt;/p&gt;&lt;/note&gt;
--- @param Message [Message] &lt;p&gt;A description of the most recent details about accessing the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param CreatedAt [EpochTime] &lt;p&gt;The time that the &lt;code&gt;MLModel&lt;/code&gt; was created. The time is expressed in epoch time.&lt;/p&gt;
--- @param FinishedAt [EpochTime] &lt;p&gt;The epoch time when Amazon Machine Learning marked the &lt;code&gt;MLModel&lt;/code&gt; as &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;FAILED&lt;/code&gt;. &lt;code&gt;FinishedAt&lt;/code&gt; is only available when the &lt;code&gt;MLModel&lt;/code&gt; is in the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;FAILED&lt;/code&gt; state.&lt;/p&gt;
+-- <p>Represents the output of a <code>GetMLModel</code> operation, and provides detailed information about a <code>MLModel</code>.</p>
+-- @param Status [EntityStatus] <p>The current status of the <code>MLModel</code>. This element can have one of the following values:</p> <ul> <li> <code>PENDING</code> - Amazon Machine Learning (Amazon ML) submitted a request to describe a <code>MLModel</code>.</li> <li> <code>INPROGRESS</code> - The request is processing.</li> <li> <code>FAILED</code> - The request did not run to completion. The ML model isn't usable.</li> <li> <code>COMPLETED</code> - The request completed successfully.</li> <li> <code>DELETED</code> - The <code>MLModel</code> is marked as deleted. It isn't usable.</li> </ul>
+-- @param SizeInBytes [LongType] <p>Represents the output of a <code>GetMLModel</code> operation, and provides detailed information about a <code>MLModel</code>.</p>
+-- @param ComputeTime [LongType] <p>The approximate CPU time in milliseconds that Amazon Machine Learning spent processing the <code>MLModel</code>, normalized and scaled on computation resources. <code>ComputeTime</code> is only available if the <code>MLModel</code> is in the <code>COMPLETED</code> state.</p>
+-- @param Name [MLModelName] <p>A user-supplied name or description of the <code>MLModel</code>.</p>
+-- @param ScoreThreshold [ScoreThreshold] <p>The scoring threshold is used in binary classification <code>MLModel</code><?oxy_insert_start author="laurama" timestamp="20160329T114851-0700"> <?oxy_insert_end>models. It marks the boundary between a positive prediction and a negative prediction.</p> <p>Output values greater than or equal to the threshold receive a positive result from the MLModel, such as <code>true</code>. Output values less than the threshold receive a negative response from the MLModel, such as <code>false</code>.</p>
+-- @param TrainingParameters [TrainingParameters] <p>A list of the training parameters in the <code>MLModel</code>. The list is implemented as a map of key-value pairs.</p> <p>The following is the current set of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code> - The maximum allowed size of the model. Depending on the input data, the size of the model might affect its performance.</p> <p> The value is an integer that ranges from <code>100000</code> to <code>2147483648</code>. The default value is <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times that the training process traverses the observations to build the <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to <code>10000</code>. The default value is <code>10</code>.</p></li> <li><p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training data. Shuffling data improves a model's ability to find the optimal solution for a variety of data types. The valid values are <code>auto</code> and <code>none</code>. The default value is <code>none</code>. We strongly recommend that you shuffle your data.</p></li> <li> <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1 norm. It controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to zero, resulting in a sparse feature set. If you use this parameter, start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1 normalization. This parameter can't be used when <code>L2</code> is specified. Use this parameter sparingly.</p> </li> <li> <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2 norm. It controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to small, nonzero values. If you use this parameter, start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L2 normalization. This parameter can't be used when <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
+-- @param MLModelType [MLModelType] <p>Identifies the <code>MLModel</code> category. The following are the available types: </p> <ul> <li>REGRESSION -- Produces a numeric result. For example, "What price should a house be listed at?"</li> <li>BINARY -- Produces one of two possible results. For example, "Is this an e-commerce website?"</li> <li>MULTICLASS -- Produces one of several possible results. For example, "Is this a HIGH, LOW or MEDIUM risk trade?"</li> </ul>
+-- @param CreatedByIamUser [AwsUserArn] <p>The AWS user account from which the <code>MLModel</code> was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.</p>
+-- @param Recipe [Recipe] <p>The recipe to use when training the <code>MLModel</code>. The <code>Recipe</code> provides detailed information about the observation data to use during training, and manipulations to perform on the observation data during training.</p> <note><title>Note</title> <p>This parameter is provided as part of the verbose format.</p></note>
+-- @param ScoreThresholdLastUpdatedAt [EpochTime] <p>The time of the most recent edit to the <code>ScoreThreshold</code>. The time is expressed in epoch time.</p>
+-- @param EndpointInfo [RealtimeEndpointInfo] <p>The current endpoint of the <code>MLModel</code></p>
+-- @param MLModelId [EntityId] <p>The MLModel ID<?oxy_insert_start author="annbech" timestamp="20160328T151251-0700">,<?oxy_insert_end> which is same as the <code>MLModelId</code> in the request.</p>
+-- @param InputDataLocationS3 [S3Url] <p>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).</p>
+-- @param LastUpdatedAt [EpochTime] <p>The time of the most recent edit to the <code>MLModel</code>. The time is expressed in epoch time.</p>
+-- @param TrainingDataSourceId [EntityId] <p>The ID of the training <code>DataSource</code>.</p>
+-- @param StartedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code> as <code>INPROGRESS</code>. <code>StartedAt</code> isn't available if the <code>MLModel</code> is in the <code>PENDING</code> state.</p>
+-- @param LogUri [PresignedS3Url] <p>A link to the file that contains logs of the <code>CreateMLModel</code> operation.</p>
+-- @param Schema [DataSchema] <p>The schema used by all of the data files referenced by the <code>DataSource</code>.</p> <note><title>Note</title> <p>This parameter is provided as part of the verbose format.</p></note>
+-- @param Message [Message] <p>A description of the most recent details about accessing the <code>MLModel</code>.</p>
+-- @param CreatedAt [EpochTime] <p>The time that the <code>MLModel</code> was created. The time is expressed in epoch time.</p>
+-- @param FinishedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code> as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is only available when the <code>MLModel</code> is in the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
 function M.GetMLModelOutput(Status, SizeInBytes, ComputeTime, Name, ScoreThreshold, TrainingParameters, MLModelType, CreatedByIamUser, Recipe, ScoreThresholdLastUpdatedAt, EndpointInfo, MLModelId, InputDataLocationS3, LastUpdatedAt, TrainingDataSourceId, StartedAt, LogUri, Schema, Message, CreatedAt, FinishedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetMLModelOutput")
 	local t = { 
@@ -508,8 +508,8 @@ end
 
 --- Create a structure of type DescribeTagsInput
 --  
--- @param ResourceType [TaggableResourceType] &lt;p&gt;The type of the ML object.&lt;/p&gt;
--- @param ResourceId [EntityId] &lt;p&gt;The ID of the ML object. For example, &lt;code&gt;exampleModelId&lt;/code&gt;. &lt;/p&gt;
+-- @param ResourceType [TaggableResourceType] <p>The type of the ML object.</p>
+-- @param ResourceId [EntityId] <p>The ID of the ML object. For example, <code>exampleModelId</code>. </p>
 -- Required parameter: ResourceId
 -- Required parameter: ResourceType
 function M.DescribeTagsInput(ResourceType, ResourceId, ...)
@@ -544,14 +544,14 @@ function M.AssertRedshiftDataSpec(struct)
 end
 
 --- Create a structure of type RedshiftDataSpec
--- &lt;p&gt;Describes the data specification of an Amazon Redshift &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param DatabaseCredentials [RedshiftDatabaseCredentials] &lt;p&gt;Describes AWS Identity and Access Management (IAM) credentials that are used connect to the Amazon Redshift database.&lt;/p&gt;
--- @param DataSchemaUri [S3Url] &lt;p&gt;Describes the schema location for an Amazon Redshift &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param DatabaseInformation [RedshiftDatabase] &lt;p&gt;Describes the &lt;code&gt;DatabaseName&lt;/code&gt; and &lt;code&gt;ClusterIdentifier&lt;/code&gt; for an Amazon Redshift &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param DataSchema [DataSchema] &lt;p&gt;A JSON string that represents the schema for an Amazon Redshift &lt;code&gt;DataSource&lt;/code&gt;. The &lt;code&gt;DataSchema&lt;/code&gt; defines the structure of the observation data in the data file(s) referenced in the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;A &lt;code&gt;DataSchema&lt;/code&gt; is not required if you specify a &lt;code&gt;DataSchemaUri&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Define your &lt;code&gt;DataSchema&lt;/code&gt; as a series of key-value pairs. &lt;code&gt;attributes&lt;/code&gt; and &lt;code&gt;excludedVariableNames&lt;/code&gt; have an array of key-value pairs for their value. Use the following format to define your &lt;code&gt;DataSchema&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;{ &quot;version&quot;: &quot;1.0&quot;,&lt;/p&gt; &lt;p&gt; &quot;recordAnnotationFieldName&quot;: &quot;F1&quot;,&lt;/p&gt; &lt;p&gt; &quot;recordWeightFieldName&quot;: &quot;F2&quot;,&lt;/p&gt; &lt;p&gt; &quot;targetFieldName&quot;: &quot;F3&quot;,&lt;/p&gt; &lt;p&gt; &quot;dataFormat&quot;: &quot;CSV&quot;,&lt;/p&gt; &lt;p&gt; &quot;dataFileContainsHeader&quot;: true,&lt;/p&gt; &lt;p&gt; &quot;attributes&quot;: [&lt;/p&gt; &lt;p&gt; { &quot;fieldName&quot;: &quot;F1&quot;, &quot;fieldType&quot;: &quot;TEXT&quot; }, { &quot;fieldName&quot;: &quot;F2&quot;, &quot;fieldType&quot;: &quot;NUMERIC&quot; }, { &quot;fieldName&quot;: &quot;F3&quot;, &quot;fieldType&quot;: &quot;CATEGORICAL&quot; }, { &quot;fieldName&quot;: &quot;F4&quot;, &quot;fieldType&quot;: &quot;NUMERIC&quot; }, { &quot;fieldName&quot;: &quot;F5&quot;, &quot;fieldType&quot;: &quot;CATEGORICAL&quot; }, { &quot;fieldName&quot;: &quot;F6&quot;, &quot;fieldType&quot;: &quot;TEXT&quot; }, { &quot;fieldName&quot;: &quot;F7&quot;, &quot;fieldType&quot;: &quot;WEIGHTED_INT_SEQUENCE&quot; }, { &quot;fieldName&quot;: &quot;F8&quot;, &quot;fieldType&quot;: &quot;WEIGHTED_STRING_SEQUENCE&quot; } ],&lt;/p&gt; &lt;p&gt; &quot;excludedVariableNames&quot;: [ &quot;F6&quot; ] } &lt;/p&gt;
--- @param DataRearrangement [DataRearrangement] &lt;p&gt;A JSON string that represents the splitting and rearrangement processing to be applied to a &lt;code&gt;DataSource&lt;/code&gt;. If the &lt;code&gt;DataRearrangement&lt;/code&gt; parameter is not provided, all of the input data is used to create the &lt;code&gt;Datasource&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;There are multiple parameters that control what data is used to create a datasource:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;percentBegin&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;Use &lt;code&gt;percentBegin&lt;/code&gt; to indicate the beginning of the range of the data used to create the Datasource. If you do not include &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;, Amazon ML includes all of the data when creating the datasource.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;percentEnd&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;Use &lt;code&gt;percentEnd&lt;/code&gt; to indicate the end of the range of the data used to create the Datasource. If you do not include &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;, Amazon ML includes all of the data when creating the datasource.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;complement&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;The &lt;code&gt;complement&lt;/code&gt; parameter instructs Amazon ML to use the data that is not included in the range of &lt;code&gt;percentBegin&lt;/code&gt; to &lt;code&gt;percentEnd&lt;/code&gt; to create a datasource. The &lt;code&gt;complement&lt;/code&gt; parameter is useful if you need to create complementary datasources for training and evaluation. To create a complementary datasource, use the same values for &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;, along with the &lt;code&gt;complement&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;For example, the following two datasources do not share any data, and can be used to train and evaluate a model. The first datasource has 25 percent of the data, and the second one has 75 percent of the data.&lt;/p&gt; &lt;p&gt;Datasource for evaluation: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:0, &quot;percentEnd&quot;:25}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Datasource for training: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:0, &quot;percentEnd&quot;:25, &quot;complement&quot;:&quot;true&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;strategy&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;To change how Amazon ML splits the data for a datasource, use the &lt;code&gt;strategy&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;The default value for the &lt;code&gt;strategy&lt;/code&gt; parameter is &lt;code&gt;sequential&lt;/code&gt;, meaning that Amazon ML takes all of the data records between the &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt; parameters for the datasource, in the order that the records appear in the input data.&lt;/p&gt; &lt;p&gt;The following two &lt;code&gt;DataRearrangement&lt;/code&gt; lines are examples of sequentially ordered training and evaluation datasources:&lt;/p&gt; &lt;p&gt;Datasource for evaluation: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;sequential&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Datasource for training: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;sequential&quot;, &quot;complement&quot;:&quot;true&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;To randomly split the input data into the proportions indicated by the percentBegin and percentEnd parameters, set the &lt;code&gt;strategy&lt;/code&gt; parameter to &lt;code&gt;random&lt;/code&gt; and provide a string that is used as the seed value for the random data splitting (for example, you can use the S3 path to your data as the random seed string). If you choose the random split strategy, Amazon ML assigns each row of data a pseudo-random number between 0 and 100, and then selects the rows that have an assigned number between &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;. Pseudo-random numbers are assigned using both the input seed string value and the byte offset as a seed, so changing the data results in a different split. Any existing ordering is preserved. The random splitting strategy ensures that variables in the training and evaluation data are distributed similarly. It is useful in the cases where the input data may have an implicit sort order, which would otherwise result in training and evaluation datasources containing non-similar data records.&lt;/p&gt; &lt;p&gt;The following two &lt;code&gt;DataRearrangement&lt;/code&gt; lines are examples of non-sequentially ordered training and evaluation datasources:&lt;/p&gt; &lt;p&gt;Datasource for evaluation: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;random&quot;, &quot;randomSeed&quot;=&quot;s3://my_s3_path/bucket/file.csv&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Datasource for training: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;random&quot;, &quot;randomSeed&quot;=&quot;s3://my_s3_path/bucket/file.csv&quot;, &quot;complement&quot;:&quot;true&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param S3StagingLocation [S3Url] &lt;p&gt;Describes an Amazon S3 location to store the result set of the &lt;code&gt;SelectSqlQuery&lt;/code&gt; query.&lt;/p&gt;
--- @param SelectSqlQuery [RedshiftSelectSqlQuery] &lt;p&gt;Describes the SQL Query to execute on an Amazon Redshift database for an Amazon Redshift &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
+-- <p>Describes the data specification of an Amazon Redshift <code>DataSource</code>.</p>
+-- @param DatabaseCredentials [RedshiftDatabaseCredentials] <p>Describes AWS Identity and Access Management (IAM) credentials that are used connect to the Amazon Redshift database.</p>
+-- @param DataSchemaUri [S3Url] <p>Describes the schema location for an Amazon Redshift <code>DataSource</code>.</p>
+-- @param DatabaseInformation [RedshiftDatabase] <p>Describes the <code>DatabaseName</code> and <code>ClusterIdentifier</code> for an Amazon Redshift <code>DataSource</code>.</p>
+-- @param DataSchema [DataSchema] <p>A JSON string that represents the schema for an Amazon Redshift <code>DataSource</code>. The <code>DataSchema</code> defines the structure of the observation data in the data file(s) referenced in the <code>DataSource</code>.</p> <p>A <code>DataSchema</code> is not required if you specify a <code>DataSchemaUri</code>.</p> <p>Define your <code>DataSchema</code> as a series of key-value pairs. <code>attributes</code> and <code>excludedVariableNames</code> have an array of key-value pairs for their value. Use the following format to define your <code>DataSchema</code>.</p> <p>{ "version": "1.0",</p> <p> "recordAnnotationFieldName": "F1",</p> <p> "recordWeightFieldName": "F2",</p> <p> "targetFieldName": "F3",</p> <p> "dataFormat": "CSV",</p> <p> "dataFileContainsHeader": true,</p> <p> "attributes": [</p> <p> { "fieldName": "F1", "fieldType": "TEXT" }, { "fieldName": "F2", "fieldType": "NUMERIC" }, { "fieldName": "F3", "fieldType": "CATEGORICAL" }, { "fieldName": "F4", "fieldType": "NUMERIC" }, { "fieldName": "F5", "fieldType": "CATEGORICAL" }, { "fieldName": "F6", "fieldType": "TEXT" }, { "fieldName": "F7", "fieldType": "WEIGHTED_INT_SEQUENCE" }, { "fieldName": "F8", "fieldType": "WEIGHTED_STRING_SEQUENCE" } ],</p> <p> "excludedVariableNames": [ "F6" ] } </p>
+-- @param DataRearrangement [DataRearrangement] <p>A JSON string that represents the splitting and rearrangement processing to be applied to a <code>DataSource</code>. If the <code>DataRearrangement</code> parameter is not provided, all of the input data is used to create the <code>Datasource</code>.</p> <p>There are multiple parameters that control what data is used to create a datasource:</p> <ul> <li><p><b><code>percentBegin</code></b></p> <p>Use <code>percentBegin</code> to indicate the beginning of the range of the data used to create the Datasource. If you do not include <code>percentBegin</code> and <code>percentEnd</code>, Amazon ML includes all of the data when creating the datasource.</p></li> <li><p><b><code>percentEnd</code></b></p> <p>Use <code>percentEnd</code> to indicate the end of the range of the data used to create the Datasource. If you do not include <code>percentBegin</code> and <code>percentEnd</code>, Amazon ML includes all of the data when creating the datasource.</p></li> <li><p><b><code>complement</code></b></p> <p>The <code>complement</code> parameter instructs Amazon ML to use the data that is not included in the range of <code>percentBegin</code> to <code>percentEnd</code> to create a datasource. The <code>complement</code> parameter is useful if you need to create complementary datasources for training and evaluation. To create a complementary datasource, use the same values for <code>percentBegin</code> and <code>percentEnd</code>, along with the <code>complement</code> parameter.</p> <p>For example, the following two datasources do not share any data, and can be used to train and evaluate a model. The first datasource has 25 percent of the data, and the second one has 75 percent of the data.</p> <p>Datasource for evaluation: <code>{"splitting":{"percentBegin":0, "percentEnd":25}}</code></p> <p>Datasource for training: <code>{"splitting":{"percentBegin":0, "percentEnd":25, "complement":"true"}}</code></p> </li> <li><p><b><code>strategy</code></b></p> <p>To change how Amazon ML splits the data for a datasource, use the <code>strategy</code> parameter.</p> <p>The default value for the <code>strategy</code> parameter is <code>sequential</code>, meaning that Amazon ML takes all of the data records between the <code>percentBegin</code> and <code>percentEnd</code> parameters for the datasource, in the order that the records appear in the input data.</p> <p>The following two <code>DataRearrangement</code> lines are examples of sequentially ordered training and evaluation datasources:</p> <p>Datasource for evaluation: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"sequential"}}</code></p> <p>Datasource for training: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"sequential", "complement":"true"}}</code></p> <p>To randomly split the input data into the proportions indicated by the percentBegin and percentEnd parameters, set the <code>strategy</code> parameter to <code>random</code> and provide a string that is used as the seed value for the random data splitting (for example, you can use the S3 path to your data as the random seed string). If you choose the random split strategy, Amazon ML assigns each row of data a pseudo-random number between 0 and 100, and then selects the rows that have an assigned number between <code>percentBegin</code> and <code>percentEnd</code>. Pseudo-random numbers are assigned using both the input seed string value and the byte offset as a seed, so changing the data results in a different split. Any existing ordering is preserved. The random splitting strategy ensures that variables in the training and evaluation data are distributed similarly. It is useful in the cases where the input data may have an implicit sort order, which would otherwise result in training and evaluation datasources containing non-similar data records.</p> <p>The following two <code>DataRearrangement</code> lines are examples of non-sequentially ordered training and evaluation datasources:</p> <p>Datasource for evaluation: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"random", "randomSeed"="s3://my_s3_path/bucket/file.csv"}}</code></p> <p>Datasource for training: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"random", "randomSeed"="s3://my_s3_path/bucket/file.csv", "complement":"true"}}</code></p> </li> </ul>
+-- @param S3StagingLocation [S3Url] <p>Describes an Amazon S3 location to store the result set of the <code>SelectSqlQuery</code> query.</p>
+-- @param SelectSqlQuery [RedshiftSelectSqlQuery] <p>Describes the SQL Query to execute on an Amazon Redshift database for an Amazon Redshift <code>DataSource</code>.</p>
 -- Required parameter: DatabaseInformation
 -- Required parameter: SelectSqlQuery
 -- Required parameter: DatabaseCredentials
@@ -584,9 +584,9 @@ function M.AssertIdempotentParameterMismatchException(struct)
 end
 
 --- Create a structure of type IdempotentParameterMismatchException
--- &lt;p&gt;A second request to use or change an object was not allowed. This can result from retrying a request using a parameter that was not present in the original request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;A second request to use or change an object was not allowed. This can result from retrying a request using a parameter that was not present in the original request.&lt;/p&gt;
--- @param code [ErrorCode] &lt;p&gt;A second request to use or change an object was not allowed. This can result from retrying a request using a parameter that was not present in the original request.&lt;/p&gt;
+-- <p>A second request to use or change an object was not allowed. This can result from retrying a request using a parameter that was not present in the original request.</p>
+-- @param message [ErrorMessage] <p>A second request to use or change an object was not allowed. This can result from retrying a request using a parameter that was not present in the original request.</p>
+-- @param code [ErrorCode] <p>A second request to use or change an object was not allowed. This can result from retrying a request using a parameter that was not present in the original request.</p>
 function M.IdempotentParameterMismatchException(message, code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdempotentParameterMismatchException")
 	local t = { 
@@ -611,7 +611,7 @@ end
 
 --- Create a structure of type GetBatchPredictionInput
 --  
--- @param BatchPredictionId [EntityId] &lt;p&gt;An ID assigned to the &lt;code&gt;BatchPrediction&lt;/code&gt; at creation.&lt;/p&gt;
+-- @param BatchPredictionId [EntityId] <p>An ID assigned to the <code>BatchPrediction</code> at creation.</p>
 -- Required parameter: BatchPredictionId
 function M.GetBatchPredictionInput(BatchPredictionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBatchPredictionInput")
@@ -637,9 +637,9 @@ function M.AssertRedshiftDatabaseCredentials(struct)
 end
 
 --- Create a structure of type RedshiftDatabaseCredentials
--- &lt;p&gt; Describes the database credentials for connecting to a database on an Amazon Redshift cluster.&lt;/p&gt;
--- @param Username [RedshiftDatabaseUsername] &lt;p&gt; Describes the database credentials for connecting to a database on an Amazon Redshift cluster.&lt;/p&gt;
--- @param Password [RedshiftDatabasePassword] &lt;p&gt; Describes the database credentials for connecting to a database on an Amazon Redshift cluster.&lt;/p&gt;
+-- <p> Describes the database credentials for connecting to a database on an Amazon Redshift cluster.</p>
+-- @param Username [RedshiftDatabaseUsername] <p> Describes the database credentials for connecting to a database on an Amazon Redshift cluster.</p>
+-- @param Password [RedshiftDatabasePassword] <p> Describes the database credentials for connecting to a database on an Amazon Redshift cluster.</p>
 -- Required parameter: Username
 -- Required parameter: Password
 function M.RedshiftDatabaseCredentials(Username, Password, ...)
@@ -666,7 +666,7 @@ end
 
 --- Create a structure of type DeleteBatchPredictionInput
 --  
--- @param BatchPredictionId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/p&gt;
+-- @param BatchPredictionId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>BatchPrediction</code>.</p>
 -- Required parameter: BatchPredictionId
 function M.DeleteBatchPredictionInput(BatchPredictionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBatchPredictionInput")
@@ -690,9 +690,9 @@ function M.AssertDescribeEvaluationsOutput(struct)
 end
 
 --- Create a structure of type DescribeEvaluationsOutput
--- &lt;p&gt;Represents the query results from a &lt;code&gt;DescribeEvaluations&lt;/code&gt; operation. The content is essentially a list of &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt;
--- @param NextToken [StringType] &lt;p&gt;The ID of the next page in the paginated results that indicates at least one more page follows.&lt;/p&gt;
--- @param Results [Evaluations] &lt;p&gt;A list of &lt;code&gt;Evaluation&lt;/code&gt; that meet the search criteria. &lt;/p&gt;
+-- <p>Represents the query results from a <code>DescribeEvaluations</code> operation. The content is essentially a list of <code>Evaluation</code>.</p>
+-- @param NextToken [StringType] <p>The ID of the next page in the paginated results that indicates at least one more page follows.</p>
+-- @param Results [Evaluations] <p>A list of <code>Evaluation</code> that meet the search criteria. </p>
 function M.DescribeEvaluationsOutput(NextToken, Results, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEvaluationsOutput")
 	local t = { 
@@ -719,8 +719,8 @@ end
 
 --- Create a structure of type UpdateEvaluationInput
 --  
--- @param EvaluationId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;Evaluation&lt;/code&gt; during creation.&lt;/p&gt;
--- @param EvaluationName [EntityName] &lt;p&gt;A new user-supplied name or description of the &lt;code&gt;Evaluation&lt;/code&gt; that will replace the current content. &lt;/p&gt;
+-- @param EvaluationId [EntityId] <p>The ID assigned to the <code>Evaluation</code> during creation.</p>
+-- @param EvaluationName [EntityName] <p>A new user-supplied name or description of the <code>Evaluation</code> that will replace the current content. </p>
 -- Required parameter: EvaluationId
 -- Required parameter: EvaluationName
 function M.UpdateEvaluationInput(EvaluationId, EvaluationName, ...)
@@ -745,8 +745,8 @@ function M.AssertPerformanceMetrics(struct)
 end
 
 --- Create a structure of type PerformanceMetrics
--- &lt;p&gt;Measurements of how well the &lt;code&gt;MLModel&lt;/code&gt; performed on known observations. One of the following metrics is returned, based on the type of the &lt;code&gt;MLModel&lt;/code&gt;: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;BinaryAUC: The binary &lt;code&gt;MLModel&lt;/code&gt; uses the Area Under the Curve (AUC) technique to measure performance. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;RegressionRMSE: The regression &lt;code&gt;MLModel&lt;/code&gt; uses the Root Mean Square Error (RMSE) technique to measure performance. RMSE measures the difference between predicted and actual values for a single variable.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MulticlassAvgFScore: The multiclass &lt;code&gt;MLModel&lt;/code&gt; uses the F1 score technique to measure performance. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; For more information about performance metrics, please see the &lt;a href=&quot;http://docs.aws.amazon.com/machine-learning/latest/dg&quot;&gt;Amazon Machine Learning Developer Guide&lt;/a&gt;. &lt;/p&gt;
--- @param Properties [PerformanceMetricsProperties] &lt;p&gt;Measurements of how well the &lt;code&gt;MLModel&lt;/code&gt; performed on known observations. One of the following metrics is returned, based on the type of the &lt;code&gt;MLModel&lt;/code&gt;: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;BinaryAUC: The binary &lt;code&gt;MLModel&lt;/code&gt; uses the Area Under the Curve (AUC) technique to measure performance. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;RegressionRMSE: The regression &lt;code&gt;MLModel&lt;/code&gt; uses the Root Mean Square Error (RMSE) technique to measure performance. RMSE measures the difference between predicted and actual values for a single variable.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MulticlassAvgFScore: The multiclass &lt;code&gt;MLModel&lt;/code&gt; uses the F1 score technique to measure performance. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; For more information about performance metrics, please see the &lt;a href=&quot;http://docs.aws.amazon.com/machine-learning/latest/dg&quot;&gt;Amazon Machine Learning Developer Guide&lt;/a&gt;. &lt;/p&gt;
+-- <p>Measurements of how well the <code>MLModel</code> performed on known observations. One of the following metrics is returned, based on the type of the <code>MLModel</code>: </p> <ul> <li> <p>BinaryAUC: The binary <code>MLModel</code> uses the Area Under the Curve (AUC) technique to measure performance. </p> </li> <li> <p>RegressionRMSE: The regression <code>MLModel</code> uses the Root Mean Square Error (RMSE) technique to measure performance. RMSE measures the difference between predicted and actual values for a single variable.</p> </li> <li> <p>MulticlassAvgFScore: The multiclass <code>MLModel</code> uses the F1 score technique to measure performance. </p> </li> </ul> <p> For more information about performance metrics, please see the <a href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon Machine Learning Developer Guide</a>. </p>
+-- @param Properties [PerformanceMetricsProperties] <p>Measurements of how well the <code>MLModel</code> performed on known observations. One of the following metrics is returned, based on the type of the <code>MLModel</code>: </p> <ul> <li> <p>BinaryAUC: The binary <code>MLModel</code> uses the Area Under the Curve (AUC) technique to measure performance. </p> </li> <li> <p>RegressionRMSE: The regression <code>MLModel</code> uses the Root Mean Square Error (RMSE) technique to measure performance. RMSE measures the difference between predicted and actual values for a single variable.</p> </li> <li> <p>MulticlassAvgFScore: The multiclass <code>MLModel</code> uses the F1 score technique to measure performance. </p> </li> </ul> <p> For more information about performance metrics, please see the <a href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon Machine Learning Developer Guide</a>. </p>
 function M.PerformanceMetrics(Properties, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PerformanceMetrics")
 	local t = { 
@@ -769,9 +769,9 @@ function M.AssertInvalidInputException(struct)
 end
 
 --- Create a structure of type InvalidInputException
--- &lt;p&gt;An error on the client occurred. Typically, the cause is an invalid input value.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;An error on the client occurred. Typically, the cause is an invalid input value.&lt;/p&gt;
--- @param code [ErrorCode] &lt;p&gt;An error on the client occurred. Typically, the cause is an invalid input value.&lt;/p&gt;
+-- <p>An error on the client occurred. Typically, the cause is an invalid input value.</p>
+-- @param message [ErrorMessage] <p>An error on the client occurred. Typically, the cause is an invalid input value.</p>
+-- @param code [ErrorCode] <p>An error on the client occurred. Typically, the cause is an invalid input value.</p>
 function M.InvalidInputException(message, code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputException")
 	local t = { 
@@ -795,9 +795,9 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;The subscriber exceeded the maximum number of operations. This exception can occur when listing objects such as &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The subscriber exceeded the maximum number of operations. This exception can occur when listing objects such as &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param code [ErrorCode] &lt;p&gt;The subscriber exceeded the maximum number of operations. This exception can occur when listing objects such as &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
+-- <p>The subscriber exceeded the maximum number of operations. This exception can occur when listing objects such as <code>DataSource</code>.</p>
+-- @param message [ErrorMessage] <p>The subscriber exceeded the maximum number of operations. This exception can occur when listing objects such as <code>DataSource</code>.</p>
+-- @param code [ErrorCode] <p>The subscriber exceeded the maximum number of operations. This exception can occur when listing objects such as <code>DataSource</code>.</p>
 function M.LimitExceededException(message, code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -821,9 +821,9 @@ function M.AssertDescribeDataSourcesOutput(struct)
 end
 
 --- Create a structure of type DescribeDataSourcesOutput
--- &lt;p&gt;Represents the query results from a &lt;a&gt;DescribeDataSources&lt;/a&gt; operation. The content is essentially a list of &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param NextToken [StringType] &lt;p&gt;An ID of the next page in the paginated results that indicates at least one more page follows.&lt;/p&gt;
--- @param Results [DataSources] &lt;p&gt;A list of &lt;code&gt;DataSource&lt;/code&gt; that meet the search criteria. &lt;/p&gt;
+-- <p>Represents the query results from a <a>DescribeDataSources</a> operation. The content is essentially a list of <code>DataSource</code>.</p>
+-- @param NextToken [StringType] <p>An ID of the next page in the paginated results that indicates at least one more page follows.</p>
+-- @param Results [DataSources] <p>A list of <code>DataSource</code> that meet the search criteria. </p>
 function M.DescribeDataSourcesOutput(NextToken, Results, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDataSourcesOutput")
 	local t = { 
@@ -857,17 +857,17 @@ end
 
 --- Create a structure of type DescribeEvaluationsInput
 --  
--- @param GT [ComparatorValue] &lt;p&gt;The greater than operator. The &lt;code&gt;Evaluation&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are greater than the value specified with &lt;code&gt;GT&lt;/code&gt;.&lt;/p&gt;
--- @param FilterVariable [EvaluationFilterVariable] &lt;p&gt;Use one of the following variable to filter a list of &lt;code&gt;Evaluation&lt;/code&gt; objects:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;CreatedAt&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;Evaluation&lt;/code&gt; creation date.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Status&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;Evaluation&lt;/code&gt; status.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Name&lt;/code&gt; - Sets the search criteria to the contents of &lt;code&gt;Evaluation&lt;/code&gt; &lt;b&gt; &lt;/b&gt; &lt;code&gt;Name&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;IAMUser&lt;/code&gt; - Sets the search criteria to the user account that invoked an &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;MLModelId&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;MLModel&lt;/code&gt; that was evaluated.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DataSourceId&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;DataSource&lt;/code&gt; used in &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DataUri&lt;/code&gt; - Sets the search criteria to the data file(s) used in &lt;code&gt;Evaluation&lt;/code&gt;. The URL can identify either a file or an Amazon Simple Storage Solution (Amazon S3) bucket or directory.&lt;/li&gt; &lt;/ul&gt;
--- @param GE [ComparatorValue] &lt;p&gt;The greater than or equal to operator. The &lt;code&gt;Evaluation&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are greater than or equal to the value specified with &lt;code&gt;GE&lt;/code&gt;. &lt;/p&gt;
--- @param NE [ComparatorValue] &lt;p&gt;The not equal to operator. The &lt;code&gt;Evaluation&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values not equal to the value specified with &lt;code&gt;NE&lt;/code&gt;.&lt;/p&gt;
--- @param LT [ComparatorValue] &lt;p&gt;The less than operator. The &lt;code&gt;Evaluation&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are less than the value specified with &lt;code&gt;LT&lt;/code&gt;.&lt;/p&gt;
--- @param LE [ComparatorValue] &lt;p&gt;The less than or equal to operator. The &lt;code&gt;Evaluation&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are less than or equal to the value specified with &lt;code&gt;LE&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PageLimit] &lt;p&gt; The maximum number of &lt;code&gt;Evaluation&lt;/code&gt; to include in the result.&lt;/p&gt;
--- @param SortOrder [SortOrder] &lt;p&gt;A two-value parameter that determines the sequence of the resulting list of &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;asc&lt;/code&gt; - Arranges the list in ascending order (A-Z, 0-9).&lt;/li&gt; &lt;li&gt; &lt;code&gt;dsc&lt;/code&gt; - Arranges the list in descending order (Z-A, 9-0).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Results are sorted by &lt;code&gt;FilterVariable&lt;/code&gt;.&lt;/p&gt;
--- @param NextToken [StringType] &lt;p&gt;The ID of the page in the paginated results.&lt;/p&gt;
--- @param EQ [ComparatorValue] &lt;p&gt;The equal to operator. The &lt;code&gt;Evaluation&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that exactly match the value specified with &lt;code&gt;EQ&lt;/code&gt;.&lt;/p&gt;
--- @param Prefix [ComparatorValue] &lt;p&gt;A string that is found at the beginning of a variable, such as &lt;code&gt;Name&lt;/code&gt; or &lt;code&gt;Id&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For example, an &lt;code&gt;Evaluation&lt;/code&gt; could have the &lt;code&gt;Name&lt;/code&gt; &lt;code&gt;2014-09-09-HolidayGiftMailer&lt;/code&gt;. To search for this &lt;code&gt;Evaluation&lt;/code&gt;, select &lt;code&gt;Name&lt;/code&gt; for the &lt;code&gt;FilterVariable&lt;/code&gt; and any of the following strings for the &lt;code&gt;Prefix&lt;/code&gt;: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;2014-09&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;2014-09-09&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;2014-09-09-Holiday&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt;
+-- @param GT [ComparatorValue] <p>The greater than operator. The <code>Evaluation</code> results will have <code>FilterVariable</code> values that are greater than the value specified with <code>GT</code>.</p>
+-- @param FilterVariable [EvaluationFilterVariable] <p>Use one of the following variable to filter a list of <code>Evaluation</code> objects:</p> <ul> <li> <code>CreatedAt</code> - Sets the search criteria to the <code>Evaluation</code> creation date.</li> <li> <code>Status</code> - Sets the search criteria to the <code>Evaluation</code> status.</li> <li> <code>Name</code> - Sets the search criteria to the contents of <code>Evaluation</code> <b> </b> <code>Name</code>.</li> <li> <code>IAMUser</code> - Sets the search criteria to the user account that invoked an <code>Evaluation</code>.</li> <li> <code>MLModelId</code> - Sets the search criteria to the <code>MLModel</code> that was evaluated.</li> <li> <code>DataSourceId</code> - Sets the search criteria to the <code>DataSource</code> used in <code>Evaluation</code>.</li> <li> <code>DataUri</code> - Sets the search criteria to the data file(s) used in <code>Evaluation</code>. The URL can identify either a file or an Amazon Simple Storage Solution (Amazon S3) bucket or directory.</li> </ul>
+-- @param GE [ComparatorValue] <p>The greater than or equal to operator. The <code>Evaluation</code> results will have <code>FilterVariable</code> values that are greater than or equal to the value specified with <code>GE</code>. </p>
+-- @param NE [ComparatorValue] <p>The not equal to operator. The <code>Evaluation</code> results will have <code>FilterVariable</code> values not equal to the value specified with <code>NE</code>.</p>
+-- @param LT [ComparatorValue] <p>The less than operator. The <code>Evaluation</code> results will have <code>FilterVariable</code> values that are less than the value specified with <code>LT</code>.</p>
+-- @param LE [ComparatorValue] <p>The less than or equal to operator. The <code>Evaluation</code> results will have <code>FilterVariable</code> values that are less than or equal to the value specified with <code>LE</code>.</p>
+-- @param Limit [PageLimit] <p> The maximum number of <code>Evaluation</code> to include in the result.</p>
+-- @param SortOrder [SortOrder] <p>A two-value parameter that determines the sequence of the resulting list of <code>Evaluation</code>.</p> <ul> <li> <code>asc</code> - Arranges the list in ascending order (A-Z, 0-9).</li> <li> <code>dsc</code> - Arranges the list in descending order (Z-A, 9-0).</li> </ul> <p>Results are sorted by <code>FilterVariable</code>.</p>
+-- @param NextToken [StringType] <p>The ID of the page in the paginated results.</p>
+-- @param EQ [ComparatorValue] <p>The equal to operator. The <code>Evaluation</code> results will have <code>FilterVariable</code> values that exactly match the value specified with <code>EQ</code>.</p>
+-- @param Prefix [ComparatorValue] <p>A string that is found at the beginning of a variable, such as <code>Name</code> or <code>Id</code>.</p> <p>For example, an <code>Evaluation</code> could have the <code>Name</code> <code>2014-09-09-HolidayGiftMailer</code>. To search for this <code>Evaluation</code>, select <code>Name</code> for the <code>FilterVariable</code> and any of the following strings for the <code>Prefix</code>: </p> <ul> <li><p>2014-09</p></li> <li><p>2014-09-09</p></li> <li><p>2014-09-09-Holiday</p></li> </ul>
 function M.DescribeEvaluationsInput(GT, FilterVariable, GE, NE, LT, LE, Limit, SortOrder, NextToken, EQ, Prefix, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEvaluationsInput")
 	local t = { 
@@ -906,10 +906,10 @@ end
 
 --- Create a structure of type CreateEvaluationInput
 --  
--- @param MLModelId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;MLModel&lt;/code&gt; to evaluate.&lt;/p&gt; &lt;p&gt;The schema used in creating the &lt;code&gt;MLModel&lt;/code&gt; must match the schema of the &lt;code&gt;DataSource&lt;/code&gt; used in the &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt;
--- @param EvaluationId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt;
--- @param EvaluationName [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt;
--- @param EvaluationDataSourceId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;DataSource&lt;/code&gt; for the evaluation. The schema of the &lt;code&gt;DataSource&lt;/code&gt; must match the schema used to create the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
+-- @param MLModelId [EntityId] <p>The ID of the <code>MLModel</code> to evaluate.</p> <p>The schema used in creating the <code>MLModel</code> must match the schema of the <code>DataSource</code> used in the <code>Evaluation</code>.</p>
+-- @param EvaluationId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code>.</p>
+-- @param EvaluationName [EntityName] <p>A user-supplied name or description of the <code>Evaluation</code>.</p>
+-- @param EvaluationDataSourceId [EntityId] <p>The ID of the <code>DataSource</code> for the evaluation. The schema of the <code>DataSource</code> must match the schema used to create the <code>MLModel</code>.</p>
 -- Required parameter: EvaluationId
 -- Required parameter: MLModelId
 -- Required parameter: EvaluationDataSourceId
@@ -937,8 +937,8 @@ function M.AssertCreateMLModelOutput(struct)
 end
 
 --- Create a structure of type CreateMLModelOutput
--- &lt;p&gt; Represents the output of a &lt;code&gt;CreateMLModel&lt;/code&gt; operation, and is an acknowledgement that Amazon ML received the request.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;CreateMLModel&lt;/code&gt; operation is asynchronous. You can poll for status updates by using the &lt;code&gt;GetMLModel&lt;/code&gt; operation and checking the &lt;code&gt;Status&lt;/code&gt; parameter. &lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;MLModel&lt;/code&gt;. This value should be identical to the value of the &lt;code&gt;MLModelId&lt;/code&gt; in the request. &lt;/p&gt;
+-- <p> Represents the output of a <code>CreateMLModel</code> operation, and is an acknowledgement that Amazon ML received the request.</p> <p>The <code>CreateMLModel</code> operation is asynchronous. You can poll for status updates by using the <code>GetMLModel</code> operation and checking the <code>Status</code> parameter. </p>
+-- @param MLModelId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to the value of the <code>MLModelId</code> in the request. </p>
 function M.CreateMLModelOutput(MLModelId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateMLModelOutput")
 	local t = { 
@@ -966,10 +966,10 @@ end
 
 --- Create a structure of type CreateDataSourceFromS3Input
 --  
--- @param DataSourceName [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;DataSource&lt;/code&gt;. &lt;/p&gt;
--- @param ComputeStatistics [ComputeStatistics] &lt;p&gt;The compute statistics for a &lt;code&gt;DataSource&lt;/code&gt;. The statistics are generated from the observation data referenced by a &lt;code&gt;DataSource&lt;/code&gt;. Amazon ML uses the statistics internally during &lt;code&gt;MLModel&lt;/code&gt; training. This parameter must be set to &lt;code&gt;true&lt;/code&gt; if the &lt;code&gt;&lt;/code&gt;DataSource&lt;code&gt;&lt;/code&gt; needs to be used for &lt;code&gt;MLModel&lt;/code&gt; training.&lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;A user-supplied identifier that uniquely identifies the &lt;code&gt;DataSource&lt;/code&gt;. &lt;/p&gt;
--- @param DataSpec [S3DataSpec] &lt;p&gt;The data specification of a &lt;code&gt;DataSource&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;DataLocationS3 - The Amazon S3 location of the observation data.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;DataSchemaLocationS3 - The Amazon S3 location of the &lt;code&gt;DataSchema&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;DataSchema - A JSON string representing the schema. This is not required if &lt;code&gt;DataSchemaUri&lt;/code&gt; is specified. &lt;/p&gt;&lt;/li&gt; &lt;li&gt; &lt;p&gt;DataRearrangement - A JSON string that represents the splitting and rearrangement requirements for the &lt;code&gt;Datasource&lt;/code&gt;. &lt;/p&gt; &lt;p&gt; Sample - &lt;code&gt; &quot;{\&quot;splitting\&quot;:{\&quot;percentBegin\&quot;:10,\&quot;percentEnd\&quot;:60}}&quot;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param DataSourceName [EntityName] <p>A user-supplied name or description of the <code>DataSource</code>. </p>
+-- @param ComputeStatistics [ComputeStatistics] <p>The compute statistics for a <code>DataSource</code>. The statistics are generated from the observation data referenced by a <code>DataSource</code>. Amazon ML uses the statistics internally during <code>MLModel</code> training. This parameter must be set to <code>true</code> if the <code></code>DataSource<code></code> needs to be used for <code>MLModel</code> training.</p>
+-- @param DataSourceId [EntityId] <p>A user-supplied identifier that uniquely identifies the <code>DataSource</code>. </p>
+-- @param DataSpec [S3DataSpec] <p>The data specification of a <code>DataSource</code>:</p> <ul> <li><p>DataLocationS3 - The Amazon S3 location of the observation data.</p></li> <li><p>DataSchemaLocationS3 - The Amazon S3 location of the <code>DataSchema</code>.</p></li> <li><p>DataSchema - A JSON string representing the schema. This is not required if <code>DataSchemaUri</code> is specified. </p></li> <li> <p>DataRearrangement - A JSON string that represents the splitting and rearrangement requirements for the <code>Datasource</code>. </p> <p> Sample - <code> "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"</code> </p> </li> </ul>
 -- Required parameter: DataSourceId
 -- Required parameter: DataSpec
 function M.CreateDataSourceFromS3Input(DataSourceName, ComputeStatistics, DataSourceId, DataSpec, ...)
@@ -998,7 +998,7 @@ end
 
 --- Create a structure of type DeleteRealtimeEndpointInput
 --  
--- @param MLModelId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;MLModel&lt;/code&gt; during creation.&lt;/p&gt;
+-- @param MLModelId [EntityId] <p>The ID assigned to the <code>MLModel</code> during creation.</p>
 -- Required parameter: MLModelId
 function M.DeleteRealtimeEndpointInput(MLModelId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRealtimeEndpointInput")
@@ -1040,27 +1040,27 @@ function M.AssertGetDataSourceOutput(struct)
 end
 
 --- Create a structure of type GetDataSourceOutput
--- &lt;p&gt;Represents the output of a &lt;code&gt;GetDataSource&lt;/code&gt; operation and describes a &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param Status [EntityStatus] &lt;p&gt;The current status of the &lt;code&gt;DataSource&lt;/code&gt;. This element can have one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;PENDING&lt;/code&gt; - Amazon ML submitted a request to create a &lt;code&gt;DataSource&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;INPROGRESS&lt;/code&gt; - The creation process is underway.&lt;/li&gt; &lt;li&gt; &lt;code&gt;FAILED&lt;/code&gt; - The request to create a &lt;code&gt;DataSource&lt;/code&gt; did not run to completion. It is not usable.&lt;/li&gt; &lt;li&gt; &lt;code&gt;COMPLETED&lt;/code&gt; - The creation process completed successfully.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DELETED&lt;/code&gt; - The &lt;code&gt;DataSource&lt;/code&gt; is marked as deleted. It is not usable.&lt;/li&gt; &lt;/ul&gt;
--- @param ComputeTime [LongType] &lt;p&gt;The approximate CPU time in milliseconds that Amazon Machine Learning spent processing the &lt;code&gt;DataSource&lt;/code&gt;, normalized and scaled on computation resources. &lt;code&gt;ComputeTime&lt;/code&gt; is only available if the &lt;code&gt;DataSource&lt;/code&gt; is in the &lt;code&gt;COMPLETED&lt;/code&gt; state and the &lt;code&gt;ComputeStatistics&lt;/code&gt; is set to true.&lt;/p&gt;
--- @param NumberOfFiles [LongType] &lt;p&gt;The number of data files referenced by the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param Name [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param DataSourceSchema [DataSchema] &lt;p&gt;The schema used by all of the data files of this &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt; &lt;note&gt;&lt;title&gt;Note&lt;/title&gt; &lt;p&gt;This parameter is provided as part of the verbose format.&lt;/p&gt;&lt;/note&gt;
--- @param DataLocationS3 [S3Url] &lt;p&gt;The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;Represents the output of a &lt;code&gt;GetDataSource&lt;/code&gt; operation and describes a &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param CreatedByIamUser [AwsUserArn] &lt;p&gt;The AWS user account from which the &lt;code&gt;DataSource&lt;/code&gt; was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.&lt;/p&gt;
--- @param DataSizeInBytes [LongType] &lt;p&gt;The total size of observations in the data files.&lt;/p&gt;
--- @param RDSMetadata [RDSMetadata] &lt;p&gt;Represents the output of a &lt;code&gt;GetDataSource&lt;/code&gt; operation and describes a &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param ComputeStatistics [ComputeStatistics] &lt;p&gt; The parameter is &lt;code&gt;true&lt;/code&gt; if statistics need to be generated from the observation data. &lt;/p&gt;
--- @param LastUpdatedAt [EpochTime] &lt;p&gt;The time of the most recent edit to the &lt;code&gt;DataSource&lt;/code&gt;. The time is expressed in epoch time.&lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;DataSource&lt;/code&gt; at creation. This value should be identical to the value of the &lt;code&gt;DataSourceId&lt;/code&gt; in the request.&lt;/p&gt;
--- @param RedshiftMetadata [RedshiftMetadata] &lt;p&gt;Represents the output of a &lt;code&gt;GetDataSource&lt;/code&gt; operation and describes a &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param StartedAt [EpochTime] &lt;p&gt;The epoch time when Amazon Machine Learning marked the &lt;code&gt;DataSource&lt;/code&gt; as &lt;code&gt;INPROGRESS&lt;/code&gt;. &lt;code&gt;StartedAt&lt;/code&gt; isn't available if the &lt;code&gt;DataSource&lt;/code&gt; is in the &lt;code&gt;PENDING&lt;/code&gt; state.&lt;/p&gt;
--- @param LogUri [PresignedS3Url] &lt;p&gt;A link to the file containing logs of &lt;code&gt;CreateDataSourceFrom*&lt;/code&gt; operations.&lt;/p&gt;
--- @param DataRearrangement [DataRearrangement] &lt;p&gt;A JSON string that represents the splitting and rearrangement requirement used when this &lt;code&gt;DataSource&lt;/code&gt; was created.&lt;/p&gt;
--- @param Message [Message] &lt;p&gt;The user-supplied description of the most recent details about creating the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param CreatedAt [EpochTime] &lt;p&gt;The time that the &lt;code&gt;DataSource&lt;/code&gt; was created. The time is expressed in epoch time.&lt;/p&gt;
--- @param FinishedAt [EpochTime] &lt;p&gt;The epoch time when Amazon Machine Learning marked the &lt;code&gt;DataSource&lt;/code&gt; as &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;FAILED&lt;/code&gt;. &lt;code&gt;FinishedAt&lt;/code&gt; is only available when the &lt;code&gt;DataSource&lt;/code&gt; is in the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;FAILED&lt;/code&gt; state.&lt;/p&gt;
+-- <p>Represents the output of a <code>GetDataSource</code> operation and describes a <code>DataSource</code>.</p>
+-- @param Status [EntityStatus] <p>The current status of the <code>DataSource</code>. This element can have one of the following values:</p> <ul> <li> <code>PENDING</code> - Amazon ML submitted a request to create a <code>DataSource</code>.</li> <li> <code>INPROGRESS</code> - The creation process is underway.</li> <li> <code>FAILED</code> - The request to create a <code>DataSource</code> did not run to completion. It is not usable.</li> <li> <code>COMPLETED</code> - The creation process completed successfully.</li> <li> <code>DELETED</code> - The <code>DataSource</code> is marked as deleted. It is not usable.</li> </ul>
+-- @param ComputeTime [LongType] <p>The approximate CPU time in milliseconds that Amazon Machine Learning spent processing the <code>DataSource</code>, normalized and scaled on computation resources. <code>ComputeTime</code> is only available if the <code>DataSource</code> is in the <code>COMPLETED</code> state and the <code>ComputeStatistics</code> is set to true.</p>
+-- @param NumberOfFiles [LongType] <p>The number of data files referenced by the <code>DataSource</code>.</p>
+-- @param Name [EntityName] <p>A user-supplied name or description of the <code>DataSource</code>.</p>
+-- @param DataSourceSchema [DataSchema] <p>The schema used by all of the data files of this <code>DataSource</code>.</p> <note><title>Note</title> <p>This parameter is provided as part of the verbose format.</p></note>
+-- @param DataLocationS3 [S3Url] <p>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).</p>
+-- @param RoleARN [RoleARN] <p>Represents the output of a <code>GetDataSource</code> operation and describes a <code>DataSource</code>.</p>
+-- @param CreatedByIamUser [AwsUserArn] <p>The AWS user account from which the <code>DataSource</code> was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.</p>
+-- @param DataSizeInBytes [LongType] <p>The total size of observations in the data files.</p>
+-- @param RDSMetadata [RDSMetadata] <p>Represents the output of a <code>GetDataSource</code> operation and describes a <code>DataSource</code>.</p>
+-- @param ComputeStatistics [ComputeStatistics] <p> The parameter is <code>true</code> if statistics need to be generated from the observation data. </p>
+-- @param LastUpdatedAt [EpochTime] <p>The time of the most recent edit to the <code>DataSource</code>. The time is expressed in epoch time.</p>
+-- @param DataSourceId [EntityId] <p>The ID assigned to the <code>DataSource</code> at creation. This value should be identical to the value of the <code>DataSourceId</code> in the request.</p>
+-- @param RedshiftMetadata [RedshiftMetadata] <p>Represents the output of a <code>GetDataSource</code> operation and describes a <code>DataSource</code>.</p>
+-- @param StartedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>DataSource</code> as <code>INPROGRESS</code>. <code>StartedAt</code> isn't available if the <code>DataSource</code> is in the <code>PENDING</code> state.</p>
+-- @param LogUri [PresignedS3Url] <p>A link to the file containing logs of <code>CreateDataSourceFrom*</code> operations.</p>
+-- @param DataRearrangement [DataRearrangement] <p>A JSON string that represents the splitting and rearrangement requirement used when this <code>DataSource</code> was created.</p>
+-- @param Message [Message] <p>The user-supplied description of the most recent details about creating the <code>DataSource</code>.</p>
+-- @param CreatedAt [EpochTime] <p>The time that the <code>DataSource</code> was created. The time is expressed in epoch time.</p>
+-- @param FinishedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>DataSource</code> as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is only available when the <code>DataSource</code> is in the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
 function M.GetDataSourceOutput(Status, ComputeTime, NumberOfFiles, Name, DataSourceSchema, DataLocationS3, RoleARN, CreatedByIamUser, DataSizeInBytes, RDSMetadata, ComputeStatistics, LastUpdatedAt, DataSourceId, RedshiftMetadata, StartedAt, LogUri, DataRearrangement, Message, CreatedAt, FinishedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDataSourceOutput")
 	local t = { 
@@ -1101,8 +1101,8 @@ function M.AssertUpdateDataSourceOutput(struct)
 end
 
 --- Create a structure of type UpdateDataSourceOutput
--- &lt;p&gt;Represents the output of an &lt;code&gt;UpdateDataSource&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt;You can see the updated content by using the &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation.&lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;DataSource&lt;/code&gt; during creation. This value should be identical to the value of the &lt;code&gt;DataSourceID&lt;/code&gt; in the request.&lt;/p&gt;
+-- <p>Represents the output of an <code>UpdateDataSource</code> operation.</p> <p>You can see the updated content by using the <code>GetBatchPrediction</code> operation.</p>
+-- @param DataSourceId [EntityId] <p>The ID assigned to the <code>DataSource</code> during creation. This value should be identical to the value of the <code>DataSourceID</code> in the request.</p>
 function M.UpdateDataSourceOutput(DataSourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDataSourceOutput")
 	local t = { 
@@ -1124,8 +1124,8 @@ function M.AssertDeleteEvaluationOutput(struct)
 end
 
 --- Create a structure of type DeleteEvaluationOutput
--- &lt;p&gt; Represents the output of a &lt;code&gt;DeleteEvaluation&lt;/code&gt; operation. The output indicates that Amazon Machine Learning (Amazon ML) received the request.&lt;/p&gt; &lt;p&gt;You can use the &lt;code&gt;GetEvaluation&lt;/code&gt; operation and check the value of the &lt;code&gt;Status&lt;/code&gt; parameter to see whether an &lt;code&gt;Evaluation&lt;/code&gt; is marked as &lt;code&gt;DELETED&lt;/code&gt;.&lt;/p&gt;
--- @param EvaluationId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;Evaluation&lt;/code&gt;. This value should be identical to the value of the &lt;code&gt;EvaluationId&lt;/code&gt; in the request.&lt;/p&gt;
+-- <p> Represents the output of a <code>DeleteEvaluation</code> operation. The output indicates that Amazon Machine Learning (Amazon ML) received the request.</p> <p>You can use the <code>GetEvaluation</code> operation and check the value of the <code>Status</code> parameter to see whether an <code>Evaluation</code> is marked as <code>DELETED</code>.</p>
+-- @param EvaluationId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code>. This value should be identical to the value of the <code>EvaluationId</code> in the request.</p>
 function M.DeleteEvaluationOutput(EvaluationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEvaluationOutput")
 	local t = { 
@@ -1151,11 +1151,11 @@ function M.AssertS3DataSpec(struct)
 end
 
 --- Create a structure of type S3DataSpec
--- &lt;p&gt; Describes the data specification of a &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param DataLocationS3 [S3Url] &lt;p&gt;The location of the data file(s) used by a &lt;code&gt;DataSource&lt;/code&gt;. The URI specifies a data file or an Amazon Simple Storage Service (Amazon S3) directory or bucket containing data files.&lt;/p&gt;
--- @param DataSchemaLocationS3 [S3Url] &lt;p&gt;Describes the schema location in Amazon S3. You must provide either the &lt;code&gt;DataSchema&lt;/code&gt; or the &lt;code&gt;DataSchemaLocationS3&lt;/code&gt;.&lt;/p&gt;
--- @param DataSchema [DataSchema] &lt;p&gt; A JSON string that represents the schema for an Amazon S3 &lt;code&gt;DataSource&lt;/code&gt;. The &lt;code&gt;DataSchema&lt;/code&gt; defines the structure of the observation data in the data file(s) referenced in the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;You must provide either the &lt;code&gt;DataSchema&lt;/code&gt; or the &lt;code&gt;DataSchemaLocationS3&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Define your &lt;code&gt;DataSchema&lt;/code&gt; as a series of key-value pairs. &lt;code&gt;attributes&lt;/code&gt; and &lt;code&gt;excludedVariableNames&lt;/code&gt; have an array of key-value pairs for their value. Use the following format to define your &lt;code&gt;DataSchema&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;{ &quot;version&quot;: &quot;1.0&quot;,&lt;/p&gt; &lt;p&gt; &quot;recordAnnotationFieldName&quot;: &quot;F1&quot;,&lt;/p&gt; &lt;p&gt; &quot;recordWeightFieldName&quot;: &quot;F2&quot;,&lt;/p&gt; &lt;p&gt; &quot;targetFieldName&quot;: &quot;F3&quot;,&lt;/p&gt; &lt;p&gt; &quot;dataFormat&quot;: &quot;CSV&quot;,&lt;/p&gt; &lt;p&gt; &quot;dataFileContainsHeader&quot;: true,&lt;/p&gt; &lt;p&gt; &quot;attributes&quot;: [&lt;/p&gt; &lt;p&gt; { &quot;fieldName&quot;: &quot;F1&quot;, &quot;fieldType&quot;: &quot;TEXT&quot; }, { &quot;fieldName&quot;: &quot;F2&quot;, &quot;fieldType&quot;: &quot;NUMERIC&quot; }, { &quot;fieldName&quot;: &quot;F3&quot;, &quot;fieldType&quot;: &quot;CATEGORICAL&quot; }, { &quot;fieldName&quot;: &quot;F4&quot;, &quot;fieldType&quot;: &quot;NUMERIC&quot; }, { &quot;fieldName&quot;: &quot;F5&quot;, &quot;fieldType&quot;: &quot;CATEGORICAL&quot; }, { &quot;fieldName&quot;: &quot;F6&quot;, &quot;fieldType&quot;: &quot;TEXT&quot; }, { &quot;fieldName&quot;: &quot;F7&quot;, &quot;fieldType&quot;: &quot;WEIGHTED_INT_SEQUENCE&quot; }, { &quot;fieldName&quot;: &quot;F8&quot;, &quot;fieldType&quot;: &quot;WEIGHTED_STRING_SEQUENCE&quot; } ],&lt;/p&gt; &lt;p&gt; &quot;excludedVariableNames&quot;: [ &quot;F6&quot; ] } &lt;/p&gt; &lt;?oxy_insert_end&gt;
--- @param DataRearrangement [DataRearrangement] &lt;p&gt;A JSON string that represents the splitting and rearrangement processing to be applied to a &lt;code&gt;DataSource&lt;/code&gt;. If the &lt;code&gt;DataRearrangement&lt;/code&gt; parameter is not provided, all of the input data is used to create the &lt;code&gt;Datasource&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;There are multiple parameters that control what data is used to create a datasource:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;percentBegin&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;Use &lt;code&gt;percentBegin&lt;/code&gt; to indicate the beginning of the range of the data used to create the Datasource. If you do not include &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;, Amazon ML includes all of the data when creating the datasource.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;percentEnd&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;Use &lt;code&gt;percentEnd&lt;/code&gt; to indicate the end of the range of the data used to create the Datasource. If you do not include &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;, Amazon ML includes all of the data when creating the datasource.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;complement&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;The &lt;code&gt;complement&lt;/code&gt; parameter instructs Amazon ML to use the data that is not included in the range of &lt;code&gt;percentBegin&lt;/code&gt; to &lt;code&gt;percentEnd&lt;/code&gt; to create a datasource. The &lt;code&gt;complement&lt;/code&gt; parameter is useful if you need to create complementary datasources for training and evaluation. To create a complementary datasource, use the same values for &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;, along with the &lt;code&gt;complement&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;For example, the following two datasources do not share any data, and can be used to train and evaluate a model. The first datasource has 25 percent of the data, and the second one has 75 percent of the data.&lt;/p&gt; &lt;p&gt;Datasource for evaluation: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:0, &quot;percentEnd&quot;:25}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Datasource for training: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:0, &quot;percentEnd&quot;:25, &quot;complement&quot;:&quot;true&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;strategy&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;To change how Amazon ML splits the data for a datasource, use the &lt;code&gt;strategy&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;The default value for the &lt;code&gt;strategy&lt;/code&gt; parameter is &lt;code&gt;sequential&lt;/code&gt;, meaning that Amazon ML takes all of the data records between the &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt; parameters for the datasource, in the order that the records appear in the input data.&lt;/p&gt; &lt;p&gt;The following two &lt;code&gt;DataRearrangement&lt;/code&gt; lines are examples of sequentially ordered training and evaluation datasources:&lt;/p&gt; &lt;p&gt;Datasource for evaluation: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;sequential&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Datasource for training: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;sequential&quot;, &quot;complement&quot;:&quot;true&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;To randomly split the input data into the proportions indicated by the percentBegin and percentEnd parameters, set the &lt;code&gt;strategy&lt;/code&gt; parameter to &lt;code&gt;random&lt;/code&gt; and provide a string that is used as the seed value for the random data splitting (for example, you can use the S3 path to your data as the random seed string). If you choose the random split strategy, Amazon ML assigns each row of data a pseudo-random number between 0 and 100, and then selects the rows that have an assigned number between &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;. Pseudo-random numbers are assigned using both the input seed string value and the byte offset as a seed, so changing the data results in a different split. Any existing ordering is preserved. The random splitting strategy ensures that variables in the training and evaluation data are distributed similarly. It is useful in the cases where the input data may have an implicit sort order, which would otherwise result in training and evaluation datasources containing non-similar data records.&lt;/p&gt; &lt;p&gt;The following two &lt;code&gt;DataRearrangement&lt;/code&gt; lines are examples of non-sequentially ordered training and evaluation datasources:&lt;/p&gt; &lt;p&gt;Datasource for evaluation: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;random&quot;, &quot;randomSeed&quot;=&quot;s3://my_s3_path/bucket/file.csv&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Datasource for training: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;random&quot;, &quot;randomSeed&quot;=&quot;s3://my_s3_path/bucket/file.csv&quot;, &quot;complement&quot;:&quot;true&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p> Describes the data specification of a <code>DataSource</code>.</p>
+-- @param DataLocationS3 [S3Url] <p>The location of the data file(s) used by a <code>DataSource</code>. The URI specifies a data file or an Amazon Simple Storage Service (Amazon S3) directory or bucket containing data files.</p>
+-- @param DataSchemaLocationS3 [S3Url] <p>Describes the schema location in Amazon S3. You must provide either the <code>DataSchema</code> or the <code>DataSchemaLocationS3</code>.</p>
+-- @param DataSchema [DataSchema] <p> A JSON string that represents the schema for an Amazon S3 <code>DataSource</code>. The <code>DataSchema</code> defines the structure of the observation data in the data file(s) referenced in the <code>DataSource</code>.</p> <p>You must provide either the <code>DataSchema</code> or the <code>DataSchemaLocationS3</code>.</p> <p>Define your <code>DataSchema</code> as a series of key-value pairs. <code>attributes</code> and <code>excludedVariableNames</code> have an array of key-value pairs for their value. Use the following format to define your <code>DataSchema</code>.</p> <p>{ "version": "1.0",</p> <p> "recordAnnotationFieldName": "F1",</p> <p> "recordWeightFieldName": "F2",</p> <p> "targetFieldName": "F3",</p> <p> "dataFormat": "CSV",</p> <p> "dataFileContainsHeader": true,</p> <p> "attributes": [</p> <p> { "fieldName": "F1", "fieldType": "TEXT" }, { "fieldName": "F2", "fieldType": "NUMERIC" }, { "fieldName": "F3", "fieldType": "CATEGORICAL" }, { "fieldName": "F4", "fieldType": "NUMERIC" }, { "fieldName": "F5", "fieldType": "CATEGORICAL" }, { "fieldName": "F6", "fieldType": "TEXT" }, { "fieldName": "F7", "fieldType": "WEIGHTED_INT_SEQUENCE" }, { "fieldName": "F8", "fieldType": "WEIGHTED_STRING_SEQUENCE" } ],</p> <p> "excludedVariableNames": [ "F6" ] } </p> <?oxy_insert_end>
+-- @param DataRearrangement [DataRearrangement] <p>A JSON string that represents the splitting and rearrangement processing to be applied to a <code>DataSource</code>. If the <code>DataRearrangement</code> parameter is not provided, all of the input data is used to create the <code>Datasource</code>.</p> <p>There are multiple parameters that control what data is used to create a datasource:</p> <ul> <li><p><b><code>percentBegin</code></b></p> <p>Use <code>percentBegin</code> to indicate the beginning of the range of the data used to create the Datasource. If you do not include <code>percentBegin</code> and <code>percentEnd</code>, Amazon ML includes all of the data when creating the datasource.</p></li> <li><p><b><code>percentEnd</code></b></p> <p>Use <code>percentEnd</code> to indicate the end of the range of the data used to create the Datasource. If you do not include <code>percentBegin</code> and <code>percentEnd</code>, Amazon ML includes all of the data when creating the datasource.</p></li> <li><p><b><code>complement</code></b></p> <p>The <code>complement</code> parameter instructs Amazon ML to use the data that is not included in the range of <code>percentBegin</code> to <code>percentEnd</code> to create a datasource. The <code>complement</code> parameter is useful if you need to create complementary datasources for training and evaluation. To create a complementary datasource, use the same values for <code>percentBegin</code> and <code>percentEnd</code>, along with the <code>complement</code> parameter.</p> <p>For example, the following two datasources do not share any data, and can be used to train and evaluate a model. The first datasource has 25 percent of the data, and the second one has 75 percent of the data.</p> <p>Datasource for evaluation: <code>{"splitting":{"percentBegin":0, "percentEnd":25}}</code></p> <p>Datasource for training: <code>{"splitting":{"percentBegin":0, "percentEnd":25, "complement":"true"}}</code></p> </li> <li><p><b><code>strategy</code></b></p> <p>To change how Amazon ML splits the data for a datasource, use the <code>strategy</code> parameter.</p> <p>The default value for the <code>strategy</code> parameter is <code>sequential</code>, meaning that Amazon ML takes all of the data records between the <code>percentBegin</code> and <code>percentEnd</code> parameters for the datasource, in the order that the records appear in the input data.</p> <p>The following two <code>DataRearrangement</code> lines are examples of sequentially ordered training and evaluation datasources:</p> <p>Datasource for evaluation: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"sequential"}}</code></p> <p>Datasource for training: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"sequential", "complement":"true"}}</code></p> <p>To randomly split the input data into the proportions indicated by the percentBegin and percentEnd parameters, set the <code>strategy</code> parameter to <code>random</code> and provide a string that is used as the seed value for the random data splitting (for example, you can use the S3 path to your data as the random seed string). If you choose the random split strategy, Amazon ML assigns each row of data a pseudo-random number between 0 and 100, and then selects the rows that have an assigned number between <code>percentBegin</code> and <code>percentEnd</code>. Pseudo-random numbers are assigned using both the input seed string value and the byte offset as a seed, so changing the data results in a different split. Any existing ordering is preserved. The random splitting strategy ensures that variables in the training and evaluation data are distributed similarly. It is useful in the cases where the input data may have an implicit sort order, which would otherwise result in training and evaluation datasources containing non-similar data records.</p> <p>The following two <code>DataRearrangement</code> lines are examples of non-sequentially ordered training and evaluation datasources:</p> <p>Datasource for evaluation: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"random", "randomSeed"="s3://my_s3_path/bucket/file.csv"}}</code></p> <p>Datasource for training: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"random", "randomSeed"="s3://my_s3_path/bucket/file.csv", "complement":"true"}}</code></p> </li> </ul>
 -- Required parameter: DataLocationS3
 function M.S3DataSpec(DataLocationS3, DataSchemaLocationS3, DataSchema, DataRearrangement, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3DataSpec")
@@ -1181,8 +1181,8 @@ function M.AssertDeleteMLModelOutput(struct)
 end
 
 --- Create a structure of type DeleteMLModelOutput
--- &lt;p&gt;Represents the output of a &lt;code&gt;DeleteMLModel&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt;You can use the &lt;code&gt;GetMLModel&lt;/code&gt; operation and check the value of the &lt;code&gt;Status&lt;/code&gt; parameter to see whether an &lt;code&gt;MLModel&lt;/code&gt; is marked as &lt;code&gt;DELETED&lt;/code&gt;.&lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;MLModel&lt;/code&gt;. This value should be identical to the value of the &lt;code&gt;MLModelID&lt;/code&gt; in the request.&lt;/p&gt;
+-- <p>Represents the output of a <code>DeleteMLModel</code> operation.</p> <p>You can use the <code>GetMLModel</code> operation and check the value of the <code>Status</code> parameter to see whether an <code>MLModel</code> is marked as <code>DELETED</code>.</p>
+-- @param MLModelId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to the value of the <code>MLModelID</code> in the request.</p>
 function M.DeleteMLModelOutput(MLModelId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMLModelOutput")
 	local t = { 
@@ -1207,9 +1207,9 @@ function M.AssertRedshiftDatabase(struct)
 end
 
 --- Create a structure of type RedshiftDatabase
--- &lt;p&gt;Describes the database details required to connect to an Amazon Redshift database.&lt;/p&gt;
--- @param ClusterIdentifier [RedshiftClusterIdentifier] &lt;p&gt;Describes the database details required to connect to an Amazon Redshift database.&lt;/p&gt;
--- @param DatabaseName [RedshiftDatabaseName] &lt;p&gt;Describes the database details required to connect to an Amazon Redshift database.&lt;/p&gt;
+-- <p>Describes the database details required to connect to an Amazon Redshift database.</p>
+-- @param ClusterIdentifier [RedshiftClusterIdentifier] <p>Describes the database details required to connect to an Amazon Redshift database.</p>
+-- @param DatabaseName [RedshiftDatabaseName] <p>Describes the database details required to connect to an Amazon Redshift database.</p>
 -- Required parameter: DatabaseName
 -- Required parameter: ClusterIdentifier
 function M.RedshiftDatabase(ClusterIdentifier, DatabaseName, ...)
@@ -1243,11 +1243,11 @@ end
 
 --- Create a structure of type CreateBatchPredictionInput
 --  
--- @param MLModelId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;MLModel&lt;/code&gt; that will generate predictions for the group of observations. &lt;/p&gt;
--- @param BatchPredictionId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/p&gt;
--- @param BatchPredictionDataSourceId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;DataSource&lt;/code&gt; that points to the group of observations to predict.&lt;/p&gt;
--- @param OutputUri [S3Url] &lt;p&gt;The location of an Amazon Simple Storage Service (Amazon S3) bucket or directory to store the batch prediction results. The following substrings are not allowed in the &lt;code&gt;s3 key&lt;/code&gt; portion of the &lt;code&gt;outputURI&lt;/code&gt; field: ':', '//', '/./', '/../'.&lt;/p&gt; &lt;p&gt;Amazon ML needs permissions to store and retrieve the logs on your behalf. For information about how to set permissions, see the &lt;a href=&quot;http://docs.aws.amazon.com/machine-learning/latest/dg&quot;&gt;Amazon Machine Learning Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param BatchPredictionName [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;BatchPrediction&lt;/code&gt;. &lt;code&gt;BatchPredictionName&lt;/code&gt; can only use the UTF-8 character set.&lt;/p&gt;
+-- @param MLModelId [EntityId] <p>The ID of the <code>MLModel</code> that will generate predictions for the group of observations. </p>
+-- @param BatchPredictionId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>BatchPrediction</code>.</p>
+-- @param BatchPredictionDataSourceId [EntityId] <p>The ID of the <code>DataSource</code> that points to the group of observations to predict.</p>
+-- @param OutputUri [S3Url] <p>The location of an Amazon Simple Storage Service (Amazon S3) bucket or directory to store the batch prediction results. The following substrings are not allowed in the <code>s3 key</code> portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p> <p>Amazon ML needs permissions to store and retrieve the logs on your behalf. For information about how to set permissions, see the <a href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon Machine Learning Developer Guide</a>.</p>
+-- @param BatchPredictionName [EntityName] <p>A user-supplied name or description of the <code>BatchPrediction</code>. <code>BatchPredictionName</code> can only use the UTF-8 character set.</p>
 -- Required parameter: BatchPredictionId
 -- Required parameter: MLModelId
 -- Required parameter: BatchPredictionDataSourceId
@@ -1278,9 +1278,9 @@ function M.AssertDescribeBatchPredictionsOutput(struct)
 end
 
 --- Create a structure of type DescribeBatchPredictionsOutput
--- &lt;p&gt;Represents the output of a &lt;code&gt;DescribeBatchPredictions&lt;/code&gt; operation. The content is essentially a list of &lt;code&gt;BatchPrediction&lt;/code&gt;s.&lt;/p&gt;
--- @param NextToken [StringType] &lt;p&gt;The ID of the next page in the paginated results that indicates at least one more page follows.&lt;/p&gt;
--- @param Results [BatchPredictions] &lt;p&gt;A list of &lt;code&gt;BatchPrediction&lt;/code&gt; objects that meet the search criteria. &lt;/p&gt;
+-- <p>Represents the output of a <code>DescribeBatchPredictions</code> operation. The content is essentially a list of <code>BatchPrediction</code>s.</p>
+-- @param NextToken [StringType] <p>The ID of the next page in the paginated results that indicates at least one more page follows.</p>
+-- @param Results [BatchPredictions] <p>A list of <code>BatchPrediction</code> objects that meet the search criteria. </p>
 function M.DescribeBatchPredictionsOutput(NextToken, Results, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBatchPredictionsOutput")
 	local t = { 
@@ -1306,11 +1306,11 @@ function M.AssertRealtimeEndpointInfo(struct)
 end
 
 --- Create a structure of type RealtimeEndpointInfo
--- &lt;p&gt; Describes the real-time endpoint information for an &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param EndpointStatus [RealtimeEndpointStatus] &lt;p&gt; The current status of the real-time endpoint for the &lt;code&gt;MLModel&lt;/code&gt;. This element can have one of the following values: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;NONE&lt;/code&gt; - Endpoint does not exist or was previously deleted.&lt;/li&gt; &lt;li&gt; &lt;code&gt;READY&lt;/code&gt; - Endpoint is ready to be used for real-time predictions.&lt;/li&gt; &lt;li&gt; &lt;code&gt;UPDATING&lt;/code&gt; - Updating/creating the endpoint. &lt;/li&gt; &lt;/ul&gt;
--- @param PeakRequestsPerSecond [IntegerType] &lt;p&gt; The maximum processing rate for the real-time endpoint for &lt;code&gt;MLModel&lt;/code&gt;, measured in incoming requests per second.&lt;/p&gt;
--- @param CreatedAt [EpochTime] &lt;p&gt;The time that the request to create the real-time endpoint for the &lt;code&gt;MLModel&lt;/code&gt; was received. The time is expressed in epoch time.&lt;/p&gt;
--- @param EndpointUrl [VipURL] &lt;p&gt;The URI that specifies where to send real-time prediction requests for the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt; &lt;note&gt;&lt;title&gt;Note&lt;/title&gt; &lt;p&gt;The application must wait until the real-time endpoint is ready before using this URI.&lt;/p&gt; &lt;/note&gt;
+-- <p> Describes the real-time endpoint information for an <code>MLModel</code>.</p>
+-- @param EndpointStatus [RealtimeEndpointStatus] <p> The current status of the real-time endpoint for the <code>MLModel</code>. This element can have one of the following values: </p> <ul> <li> <code>NONE</code> - Endpoint does not exist or was previously deleted.</li> <li> <code>READY</code> - Endpoint is ready to be used for real-time predictions.</li> <li> <code>UPDATING</code> - Updating/creating the endpoint. </li> </ul>
+-- @param PeakRequestsPerSecond [IntegerType] <p> The maximum processing rate for the real-time endpoint for <code>MLModel</code>, measured in incoming requests per second.</p>
+-- @param CreatedAt [EpochTime] <p>The time that the request to create the real-time endpoint for the <code>MLModel</code> was received. The time is expressed in epoch time.</p>
+-- @param EndpointUrl [VipURL] <p>The URI that specifies where to send real-time prediction requests for the <code>MLModel</code>.</p> <note><title>Note</title> <p>The application must wait until the real-time endpoint is ready before using this URI.</p> </note>
 function M.RealtimeEndpointInfo(EndpointStatus, PeakRequestsPerSecond, CreatedAt, EndpointUrl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RealtimeEndpointInfo")
 	local t = { 
@@ -1336,9 +1336,9 @@ function M.AssertDescribeMLModelsOutput(struct)
 end
 
 --- Create a structure of type DescribeMLModelsOutput
--- &lt;p&gt;Represents the output of a &lt;code&gt;DescribeMLModels&lt;/code&gt; operation. The content is essentially a list of &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param NextToken [StringType] &lt;p&gt;The ID of the next page in the paginated results that indicates at least one more page follows.&lt;/p&gt;
--- @param Results [MLModels] &lt;p&gt;A list of &lt;code&gt;MLModel&lt;/code&gt; that meet the search criteria.&lt;/p&gt;
+-- <p>Represents the output of a <code>DescribeMLModels</code> operation. The content is essentially a list of <code>MLModel</code>.</p>
+-- @param NextToken [StringType] <p>The ID of the next page in the paginated results that indicates at least one more page follows.</p>
+-- @param Results [MLModels] <p>A list of <code>MLModel</code> that meet the search criteria.</p>
 function M.DescribeMLModelsOutput(NextToken, Results, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMLModelsOutput")
 	local t = { 
@@ -1378,25 +1378,25 @@ function M.AssertDataSource(struct)
 end
 
 --- Create a structure of type DataSource
--- &lt;p&gt; Represents the output of the &lt;code&gt;GetDataSource&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;DataSource&lt;/code&gt;. &lt;/p&gt;
--- @param Status [EntityStatus] &lt;p&gt;The current status of the &lt;code&gt;DataSource&lt;/code&gt;. This element can have one of the following values: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;PENDING - Amazon Machine Learning (Amazon ML) submitted a request to create a &lt;code&gt;DataSource&lt;/code&gt;.&lt;/li&gt; &lt;li&gt;INPROGRESS - The creation process is underway.&lt;/li&gt; &lt;li&gt;FAILED - The request to create a &lt;code&gt;DataSource&lt;/code&gt; did not run to completion. It is not usable.&lt;/li&gt; &lt;li&gt;COMPLETED - The creation process completed successfully.&lt;/li&gt; &lt;li&gt;DELETED - The &lt;code&gt;DataSource&lt;/code&gt; is marked as deleted. It is not usable.&lt;/li&gt; &lt;/ul&gt;
--- @param ComputeTime [LongType] &lt;p&gt; Represents the output of the &lt;code&gt;GetDataSource&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;DataSource&lt;/code&gt;. &lt;/p&gt;
--- @param NumberOfFiles [LongType] &lt;p&gt;The number of data files referenced by the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param Name [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param DataLocationS3 [S3Url] &lt;p&gt;The location and name of the data in Amazon Simple Storage Service (Amazon S3) that is used by a &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt; Represents the output of the &lt;code&gt;GetDataSource&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;DataSource&lt;/code&gt;. &lt;/p&gt;
--- @param CreatedByIamUser [AwsUserArn] &lt;p&gt;The AWS user account from which the &lt;code&gt;DataSource&lt;/code&gt; was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.&lt;/p&gt;
--- @param DataSizeInBytes [LongType] &lt;p&gt;The total number of observations contained in the data files that the &lt;code&gt;DataSource&lt;/code&gt; references.&lt;/p&gt;
--- @param RDSMetadata [RDSMetadata] &lt;p&gt; Represents the output of the &lt;code&gt;GetDataSource&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;DataSource&lt;/code&gt;. &lt;/p&gt;
--- @param ComputeStatistics [ComputeStatistics] &lt;p&gt; The parameter is &lt;code&gt;true&lt;/code&gt; if statistics need to be generated from the observation data. &lt;/p&gt;
--- @param LastUpdatedAt [EpochTime] &lt;p&gt;The time of the most recent edit to the &lt;code&gt;BatchPrediction&lt;/code&gt;. The time is expressed in epoch time.&lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;The ID that is assigned to the &lt;code&gt;DataSource&lt;/code&gt; during creation.&lt;/p&gt;
--- @param RedshiftMetadata [RedshiftMetadata] &lt;p&gt; Represents the output of the &lt;code&gt;GetDataSource&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;DataSource&lt;/code&gt;. &lt;/p&gt;
--- @param StartedAt [EpochTime] &lt;p&gt; Represents the output of the &lt;code&gt;GetDataSource&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;DataSource&lt;/code&gt;. &lt;/p&gt;
--- @param Message [Message] &lt;p&gt;A description of the most recent details about creating the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param DataRearrangement [DataRearrangement] &lt;p&gt;A JSON string that represents the splitting and rearrangement requirement used when this &lt;code&gt;DataSource&lt;/code&gt; was created.&lt;/p&gt;
--- @param CreatedAt [EpochTime] &lt;p&gt;The time that the &lt;code&gt;DataSource&lt;/code&gt; was created. The time is expressed in epoch time.&lt;/p&gt;
--- @param FinishedAt [EpochTime] &lt;p&gt; Represents the output of the &lt;code&gt;GetDataSource&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;DataSource&lt;/code&gt;. &lt;/p&gt;
+-- <p> Represents the output of the <code>GetDataSource</code> operation. </p> <p> The content consists of the detailed metadata and data file information and the current status of the <code>DataSource</code>. </p>
+-- @param Status [EntityStatus] <p>The current status of the <code>DataSource</code>. This element can have one of the following values: </p> <ul> <li>PENDING - Amazon Machine Learning (Amazon ML) submitted a request to create a <code>DataSource</code>.</li> <li>INPROGRESS - The creation process is underway.</li> <li>FAILED - The request to create a <code>DataSource</code> did not run to completion. It is not usable.</li> <li>COMPLETED - The creation process completed successfully.</li> <li>DELETED - The <code>DataSource</code> is marked as deleted. It is not usable.</li> </ul>
+-- @param ComputeTime [LongType] <p> Represents the output of the <code>GetDataSource</code> operation. </p> <p> The content consists of the detailed metadata and data file information and the current status of the <code>DataSource</code>. </p>
+-- @param NumberOfFiles [LongType] <p>The number of data files referenced by the <code>DataSource</code>.</p>
+-- @param Name [EntityName] <p>A user-supplied name or description of the <code>DataSource</code>.</p>
+-- @param DataLocationS3 [S3Url] <p>The location and name of the data in Amazon Simple Storage Service (Amazon S3) that is used by a <code>DataSource</code>.</p>
+-- @param RoleARN [RoleARN] <p> Represents the output of the <code>GetDataSource</code> operation. </p> <p> The content consists of the detailed metadata and data file information and the current status of the <code>DataSource</code>. </p>
+-- @param CreatedByIamUser [AwsUserArn] <p>The AWS user account from which the <code>DataSource</code> was created. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.</p>
+-- @param DataSizeInBytes [LongType] <p>The total number of observations contained in the data files that the <code>DataSource</code> references.</p>
+-- @param RDSMetadata [RDSMetadata] <p> Represents the output of the <code>GetDataSource</code> operation. </p> <p> The content consists of the detailed metadata and data file information and the current status of the <code>DataSource</code>. </p>
+-- @param ComputeStatistics [ComputeStatistics] <p> The parameter is <code>true</code> if statistics need to be generated from the observation data. </p>
+-- @param LastUpdatedAt [EpochTime] <p>The time of the most recent edit to the <code>BatchPrediction</code>. The time is expressed in epoch time.</p>
+-- @param DataSourceId [EntityId] <p>The ID that is assigned to the <code>DataSource</code> during creation.</p>
+-- @param RedshiftMetadata [RedshiftMetadata] <p> Represents the output of the <code>GetDataSource</code> operation. </p> <p> The content consists of the detailed metadata and data file information and the current status of the <code>DataSource</code>. </p>
+-- @param StartedAt [EpochTime] <p> Represents the output of the <code>GetDataSource</code> operation. </p> <p> The content consists of the detailed metadata and data file information and the current status of the <code>DataSource</code>. </p>
+-- @param Message [Message] <p>A description of the most recent details about creating the <code>DataSource</code>.</p>
+-- @param DataRearrangement [DataRearrangement] <p>A JSON string that represents the splitting and rearrangement requirement used when this <code>DataSource</code> was created.</p>
+-- @param CreatedAt [EpochTime] <p>The time that the <code>DataSource</code> was created. The time is expressed in epoch time.</p>
+-- @param FinishedAt [EpochTime] <p> Represents the output of the <code>GetDataSource</code> operation. </p> <p> The content consists of the detailed metadata and data file information and the current status of the <code>DataSource</code>. </p>
 function M.DataSource(Status, ComputeTime, NumberOfFiles, Name, DataLocationS3, RoleARN, CreatedByIamUser, DataSizeInBytes, RDSMetadata, ComputeStatistics, LastUpdatedAt, DataSourceId, RedshiftMetadata, StartedAt, Message, DataRearrangement, CreatedAt, FinishedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DataSource")
 	local t = { 
@@ -1437,7 +1437,7 @@ end
 
 --- Create a structure of type CreateRealtimeEndpointInput
 --  
--- @param MLModelId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;MLModel&lt;/code&gt; during creation.&lt;/p&gt;
+-- @param MLModelId [EntityId] <p>The ID assigned to the <code>MLModel</code> during creation.</p>
 -- Required parameter: MLModelId
 function M.CreateRealtimeEndpointInput(MLModelId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRealtimeEndpointInput")
@@ -1478,18 +1478,18 @@ function M.AssertRDSDataSpec(struct)
 end
 
 --- Create a structure of type RDSDataSpec
--- &lt;p&gt;The data specification of an Amazon Relational Database Service (Amazon RDS) &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param DatabaseCredentials [RDSDatabaseCredentials] &lt;p&gt;The AWS Identity and Access Management (IAM) credentials that are used connect to the Amazon RDS database.&lt;/p&gt;
--- @param DataSchemaUri [S3Url] &lt;p&gt;The Amazon S3 location of the &lt;code&gt;DataSchema&lt;/code&gt;. &lt;/p&gt;
--- @param ServiceRole [EDPServiceRole] &lt;p&gt;The role (DataPipelineDefaultRole) assumed by AWS Data Pipeline service to monitor the progress of the copy task from Amazon RDS to Amazon S3. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html&quot;&gt;Role templates&lt;/a&gt; for data pipelines.&lt;/p&gt;
--- @param ResourceRole [EDPResourceRole] &lt;p&gt;The role (DataPipelineDefaultResourceRole) assumed by an Amazon Elastic Compute Cloud (Amazon EC2) instance to carry out the copy operation from Amazon RDS to an Amazon S3 task. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html&quot;&gt;Role templates&lt;/a&gt; for data pipelines.&lt;/p&gt;
--- @param DatabaseInformation [RDSDatabase] &lt;p&gt;Describes the &lt;code&gt;DatabaseName&lt;/code&gt; and &lt;code&gt;InstanceIdentifier&lt;/code&gt; of an Amazon RDS database.&lt;/p&gt;
--- @param SecurityGroupIds [EDPSecurityGroupIds] &lt;p&gt;The security group IDs to be used to access a VPC-based RDS DB instance. Ensure that there are appropriate ingress rules set up to allow access to the RDS DB instance. This attribute is used by Data Pipeline to carry out the copy operation from Amazon RDS to an Amazon S3 task.&lt;/p&gt;
--- @param SubnetId [EDPSubnetId] &lt;p&gt;The subnet ID to be used to access a VPC-based RDS DB instance. This attribute is used by Data Pipeline to carry out the copy task from Amazon RDS to Amazon S3.&lt;/p&gt;
--- @param DataSchema [DataSchema] &lt;p&gt;A JSON string that represents the schema for an Amazon RDS &lt;code&gt;DataSource&lt;/code&gt;. The &lt;code&gt;DataSchema&lt;/code&gt; defines the structure of the observation data in the data file(s) referenced in the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;A &lt;code&gt;DataSchema&lt;/code&gt; is not required if you specify a &lt;code&gt;DataSchemaUri&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Define your &lt;code&gt;DataSchema&lt;/code&gt; as a series of key-value pairs. &lt;code&gt;attributes&lt;/code&gt; and &lt;code&gt;excludedVariableNames&lt;/code&gt; have an array of key-value pairs for their value. Use the following format to define your &lt;code&gt;DataSchema&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;{ &quot;version&quot;: &quot;1.0&quot;,&lt;/p&gt; &lt;p&gt; &quot;recordAnnotationFieldName&quot;: &quot;F1&quot;,&lt;/p&gt; &lt;p&gt; &quot;recordWeightFieldName&quot;: &quot;F2&quot;,&lt;/p&gt; &lt;p&gt; &quot;targetFieldName&quot;: &quot;F3&quot;,&lt;/p&gt; &lt;p&gt; &quot;dataFormat&quot;: &quot;CSV&quot;,&lt;/p&gt; &lt;p&gt; &quot;dataFileContainsHeader&quot;: true,&lt;/p&gt; &lt;p&gt; &quot;attributes&quot;: [&lt;/p&gt; &lt;p&gt; { &quot;fieldName&quot;: &quot;F1&quot;, &quot;fieldType&quot;: &quot;TEXT&quot; }, { &quot;fieldName&quot;: &quot;F2&quot;, &quot;fieldType&quot;: &quot;NUMERIC&quot; }, { &quot;fieldName&quot;: &quot;F3&quot;, &quot;fieldType&quot;: &quot;CATEGORICAL&quot; }, { &quot;fieldName&quot;: &quot;F4&quot;, &quot;fieldType&quot;: &quot;NUMERIC&quot; }, { &quot;fieldName&quot;: &quot;F5&quot;, &quot;fieldType&quot;: &quot;CATEGORICAL&quot; }, { &quot;fieldName&quot;: &quot;F6&quot;, &quot;fieldType&quot;: &quot;TEXT&quot; }, { &quot;fieldName&quot;: &quot;F7&quot;, &quot;fieldType&quot;: &quot;WEIGHTED_INT_SEQUENCE&quot; }, { &quot;fieldName&quot;: &quot;F8&quot;, &quot;fieldType&quot;: &quot;WEIGHTED_STRING_SEQUENCE&quot; } ],&lt;/p&gt; &lt;p&gt; &quot;excludedVariableNames&quot;: [ &quot;F6&quot; ] } &lt;/p&gt; &lt;?oxy_insert_end&gt;
--- @param DataRearrangement [DataRearrangement] &lt;p&gt;A JSON string that represents the splitting and rearrangement processing to be applied to a &lt;code&gt;DataSource&lt;/code&gt;. If the &lt;code&gt;DataRearrangement&lt;/code&gt; parameter is not provided, all of the input data is used to create the &lt;code&gt;Datasource&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;There are multiple parameters that control what data is used to create a datasource:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;percentBegin&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;Use &lt;code&gt;percentBegin&lt;/code&gt; to indicate the beginning of the range of the data used to create the Datasource. If you do not include &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;, Amazon ML includes all of the data when creating the datasource.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;percentEnd&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;Use &lt;code&gt;percentEnd&lt;/code&gt; to indicate the end of the range of the data used to create the Datasource. If you do not include &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;, Amazon ML includes all of the data when creating the datasource.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;complement&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;The &lt;code&gt;complement&lt;/code&gt; parameter instructs Amazon ML to use the data that is not included in the range of &lt;code&gt;percentBegin&lt;/code&gt; to &lt;code&gt;percentEnd&lt;/code&gt; to create a datasource. The &lt;code&gt;complement&lt;/code&gt; parameter is useful if you need to create complementary datasources for training and evaluation. To create a complementary datasource, use the same values for &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;, along with the &lt;code&gt;complement&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;For example, the following two datasources do not share any data, and can be used to train and evaluate a model. The first datasource has 25 percent of the data, and the second one has 75 percent of the data.&lt;/p&gt; &lt;p&gt;Datasource for evaluation: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:0, &quot;percentEnd&quot;:25}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Datasource for training: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:0, &quot;percentEnd&quot;:25, &quot;complement&quot;:&quot;true&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;b&gt;&lt;code&gt;strategy&lt;/code&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;To change how Amazon ML splits the data for a datasource, use the &lt;code&gt;strategy&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;The default value for the &lt;code&gt;strategy&lt;/code&gt; parameter is &lt;code&gt;sequential&lt;/code&gt;, meaning that Amazon ML takes all of the data records between the &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt; parameters for the datasource, in the order that the records appear in the input data.&lt;/p&gt; &lt;p&gt;The following two &lt;code&gt;DataRearrangement&lt;/code&gt; lines are examples of sequentially ordered training and evaluation datasources:&lt;/p&gt; &lt;p&gt;Datasource for evaluation: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;sequential&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Datasource for training: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;sequential&quot;, &quot;complement&quot;:&quot;true&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;To randomly split the input data into the proportions indicated by the percentBegin and percentEnd parameters, set the &lt;code&gt;strategy&lt;/code&gt; parameter to &lt;code&gt;random&lt;/code&gt; and provide a string that is used as the seed value for the random data splitting (for example, you can use the S3 path to your data as the random seed string). If you choose the random split strategy, Amazon ML assigns each row of data a pseudo-random number between 0 and 100, and then selects the rows that have an assigned number between &lt;code&gt;percentBegin&lt;/code&gt; and &lt;code&gt;percentEnd&lt;/code&gt;. Pseudo-random numbers are assigned using both the input seed string value and the byte offset as a seed, so changing the data results in a different split. Any existing ordering is preserved. The random splitting strategy ensures that variables in the training and evaluation data are distributed similarly. It is useful in the cases where the input data may have an implicit sort order, which would otherwise result in training and evaluation datasources containing non-similar data records.&lt;/p&gt; &lt;p&gt;The following two &lt;code&gt;DataRearrangement&lt;/code&gt; lines are examples of non-sequentially ordered training and evaluation datasources:&lt;/p&gt; &lt;p&gt;Datasource for evaluation: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;random&quot;, &quot;randomSeed&quot;=&quot;s3://my_s3_path/bucket/file.csv&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;p&gt;Datasource for training: &lt;code&gt;{&quot;splitting&quot;:{&quot;percentBegin&quot;:70, &quot;percentEnd&quot;:100, &quot;strategy&quot;:&quot;random&quot;, &quot;randomSeed&quot;=&quot;s3://my_s3_path/bucket/file.csv&quot;, &quot;complement&quot;:&quot;true&quot;}}&lt;/code&gt;&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param S3StagingLocation [S3Url] &lt;p&gt;The Amazon S3 location for staging Amazon RDS data. The data retrieved from Amazon RDS using &lt;code&gt;SelectSqlQuery&lt;/code&gt; is stored in this location.&lt;/p&gt;
--- @param SelectSqlQuery [RDSSelectSqlQuery] &lt;p&gt;The query that is used to retrieve the observation data for the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
+-- <p>The data specification of an Amazon Relational Database Service (Amazon RDS) <code>DataSource</code>.</p>
+-- @param DatabaseCredentials [RDSDatabaseCredentials] <p>The AWS Identity and Access Management (IAM) credentials that are used connect to the Amazon RDS database.</p>
+-- @param DataSchemaUri [S3Url] <p>The Amazon S3 location of the <code>DataSchema</code>. </p>
+-- @param ServiceRole [EDPServiceRole] <p>The role (DataPipelineDefaultRole) assumed by AWS Data Pipeline service to monitor the progress of the copy task from Amazon RDS to Amazon S3. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">Role templates</a> for data pipelines.</p>
+-- @param ResourceRole [EDPResourceRole] <p>The role (DataPipelineDefaultResourceRole) assumed by an Amazon Elastic Compute Cloud (Amazon EC2) instance to carry out the copy operation from Amazon RDS to an Amazon S3 task. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">Role templates</a> for data pipelines.</p>
+-- @param DatabaseInformation [RDSDatabase] <p>Describes the <code>DatabaseName</code> and <code>InstanceIdentifier</code> of an Amazon RDS database.</p>
+-- @param SecurityGroupIds [EDPSecurityGroupIds] <p>The security group IDs to be used to access a VPC-based RDS DB instance. Ensure that there are appropriate ingress rules set up to allow access to the RDS DB instance. This attribute is used by Data Pipeline to carry out the copy operation from Amazon RDS to an Amazon S3 task.</p>
+-- @param SubnetId [EDPSubnetId] <p>The subnet ID to be used to access a VPC-based RDS DB instance. This attribute is used by Data Pipeline to carry out the copy task from Amazon RDS to Amazon S3.</p>
+-- @param DataSchema [DataSchema] <p>A JSON string that represents the schema for an Amazon RDS <code>DataSource</code>. The <code>DataSchema</code> defines the structure of the observation data in the data file(s) referenced in the <code>DataSource</code>.</p> <p>A <code>DataSchema</code> is not required if you specify a <code>DataSchemaUri</code></p> <p>Define your <code>DataSchema</code> as a series of key-value pairs. <code>attributes</code> and <code>excludedVariableNames</code> have an array of key-value pairs for their value. Use the following format to define your <code>DataSchema</code>.</p> <p>{ "version": "1.0",</p> <p> "recordAnnotationFieldName": "F1",</p> <p> "recordWeightFieldName": "F2",</p> <p> "targetFieldName": "F3",</p> <p> "dataFormat": "CSV",</p> <p> "dataFileContainsHeader": true,</p> <p> "attributes": [</p> <p> { "fieldName": "F1", "fieldType": "TEXT" }, { "fieldName": "F2", "fieldType": "NUMERIC" }, { "fieldName": "F3", "fieldType": "CATEGORICAL" }, { "fieldName": "F4", "fieldType": "NUMERIC" }, { "fieldName": "F5", "fieldType": "CATEGORICAL" }, { "fieldName": "F6", "fieldType": "TEXT" }, { "fieldName": "F7", "fieldType": "WEIGHTED_INT_SEQUENCE" }, { "fieldName": "F8", "fieldType": "WEIGHTED_STRING_SEQUENCE" } ],</p> <p> "excludedVariableNames": [ "F6" ] } </p> <?oxy_insert_end>
+-- @param DataRearrangement [DataRearrangement] <p>A JSON string that represents the splitting and rearrangement processing to be applied to a <code>DataSource</code>. If the <code>DataRearrangement</code> parameter is not provided, all of the input data is used to create the <code>Datasource</code>.</p> <p>There are multiple parameters that control what data is used to create a datasource:</p> <ul> <li><p><b><code>percentBegin</code></b></p> <p>Use <code>percentBegin</code> to indicate the beginning of the range of the data used to create the Datasource. If you do not include <code>percentBegin</code> and <code>percentEnd</code>, Amazon ML includes all of the data when creating the datasource.</p></li> <li><p><b><code>percentEnd</code></b></p> <p>Use <code>percentEnd</code> to indicate the end of the range of the data used to create the Datasource. If you do not include <code>percentBegin</code> and <code>percentEnd</code>, Amazon ML includes all of the data when creating the datasource.</p></li> <li><p><b><code>complement</code></b></p> <p>The <code>complement</code> parameter instructs Amazon ML to use the data that is not included in the range of <code>percentBegin</code> to <code>percentEnd</code> to create a datasource. The <code>complement</code> parameter is useful if you need to create complementary datasources for training and evaluation. To create a complementary datasource, use the same values for <code>percentBegin</code> and <code>percentEnd</code>, along with the <code>complement</code> parameter.</p> <p>For example, the following two datasources do not share any data, and can be used to train and evaluate a model. The first datasource has 25 percent of the data, and the second one has 75 percent of the data.</p> <p>Datasource for evaluation: <code>{"splitting":{"percentBegin":0, "percentEnd":25}}</code></p> <p>Datasource for training: <code>{"splitting":{"percentBegin":0, "percentEnd":25, "complement":"true"}}</code></p> </li> <li><p><b><code>strategy</code></b></p> <p>To change how Amazon ML splits the data for a datasource, use the <code>strategy</code> parameter.</p> <p>The default value for the <code>strategy</code> parameter is <code>sequential</code>, meaning that Amazon ML takes all of the data records between the <code>percentBegin</code> and <code>percentEnd</code> parameters for the datasource, in the order that the records appear in the input data.</p> <p>The following two <code>DataRearrangement</code> lines are examples of sequentially ordered training and evaluation datasources:</p> <p>Datasource for evaluation: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"sequential"}}</code></p> <p>Datasource for training: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"sequential", "complement":"true"}}</code></p> <p>To randomly split the input data into the proportions indicated by the percentBegin and percentEnd parameters, set the <code>strategy</code> parameter to <code>random</code> and provide a string that is used as the seed value for the random data splitting (for example, you can use the S3 path to your data as the random seed string). If you choose the random split strategy, Amazon ML assigns each row of data a pseudo-random number between 0 and 100, and then selects the rows that have an assigned number between <code>percentBegin</code> and <code>percentEnd</code>. Pseudo-random numbers are assigned using both the input seed string value and the byte offset as a seed, so changing the data results in a different split. Any existing ordering is preserved. The random splitting strategy ensures that variables in the training and evaluation data are distributed similarly. It is useful in the cases where the input data may have an implicit sort order, which would otherwise result in training and evaluation datasources containing non-similar data records.</p> <p>The following two <code>DataRearrangement</code> lines are examples of non-sequentially ordered training and evaluation datasources:</p> <p>Datasource for evaluation: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"random", "randomSeed"="s3://my_s3_path/bucket/file.csv"}}</code></p> <p>Datasource for training: <code>{"splitting":{"percentBegin":70, "percentEnd":100, "strategy":"random", "randomSeed"="s3://my_s3_path/bucket/file.csv", "complement":"true"}}</code></p> </li> </ul>
+-- @param S3StagingLocation [S3Url] <p>The Amazon S3 location for staging Amazon RDS data. The data retrieved from Amazon RDS using <code>SelectSqlQuery</code> is stored in this location.</p>
+-- @param SelectSqlQuery [RDSSelectSqlQuery] <p>The query that is used to retrieve the observation data for the <code>DataSource</code>.</p>
 -- Required parameter: DatabaseInformation
 -- Required parameter: SelectSqlQuery
 -- Required parameter: DatabaseCredentials
@@ -1532,8 +1532,8 @@ end
 
 --- Create a structure of type GetMLModelInput
 --  
--- @param MLModelId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;MLModel&lt;/code&gt; at creation.&lt;/p&gt;
--- @param Verbose [Verbose] &lt;p&gt;Specifies whether the &lt;code&gt;GetMLModel&lt;/code&gt; operation should return &lt;code&gt;Recipe&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If true, &lt;code&gt;Recipe&lt;/code&gt; is returned.&lt;/p&gt; &lt;p&gt;If false, &lt;code&gt;Recipe&lt;/code&gt; is not returned.&lt;/p&gt;
+-- @param MLModelId [EntityId] <p>The ID assigned to the <code>MLModel</code> at creation.</p>
+-- @param Verbose [Verbose] <p>Specifies whether the <code>GetMLModel</code> operation should return <code>Recipe</code>.</p> <p>If true, <code>Recipe</code> is returned.</p> <p>If false, <code>Recipe</code> is not returned.</p>
 -- Required parameter: MLModelId
 function M.GetMLModelInput(MLModelId, Verbose, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetMLModelInput")
@@ -1558,9 +1558,9 @@ function M.AssertDeleteRealtimeEndpointOutput(struct)
 end
 
 --- Create a structure of type DeleteRealtimeEndpointOutput
--- &lt;p&gt;Represents the output of an &lt;code&gt;DeleteRealtimeEndpoint&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt;The result contains the &lt;code&gt;MLModelId&lt;/code&gt; and the endpoint information for the &lt;code&gt;MLModel&lt;/code&gt;. &lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;MLModel&lt;/code&gt;. This value should be identical to the value of the &lt;code&gt;MLModelId&lt;/code&gt; in the request.&lt;/p&gt;
--- @param RealtimeEndpointInfo [RealtimeEndpointInfo] &lt;p&gt;The endpoint information of the &lt;code&gt;MLModel&lt;/code&gt; &lt;/p&gt;
+-- <p>Represents the output of an <code>DeleteRealtimeEndpoint</code> operation.</p> <p>The result contains the <code>MLModelId</code> and the endpoint information for the <code>MLModel</code>. </p>
+-- @param MLModelId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to the value of the <code>MLModelId</code> in the request.</p>
+-- @param RealtimeEndpointInfo [RealtimeEndpointInfo] <p>The endpoint information of the <code>MLModel</code> </p>
 function M.DeleteRealtimeEndpointOutput(MLModelId, RealtimeEndpointInfo, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRealtimeEndpointOutput")
 	local t = { 
@@ -1598,23 +1598,23 @@ function M.AssertBatchPrediction(struct)
 end
 
 --- Create a structure of type BatchPrediction
--- &lt;p&gt; Represents the output of a &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata, the status, and the data file information of a &lt;code&gt;Batch Prediction&lt;/code&gt;.&lt;/p&gt;
--- @param Status [EntityStatus] &lt;p&gt;The status of the &lt;code&gt;BatchPrediction&lt;/code&gt;. This element can have one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;PENDING&lt;/code&gt; - Amazon Machine Learning (Amazon ML) submitted a request to generate predictions for a batch of observations.&lt;/li&gt; &lt;li&gt; &lt;code&gt;INPROGRESS&lt;/code&gt; - The process is underway.&lt;/li&gt; &lt;li&gt; &lt;code&gt;FAILED&lt;/code&gt; - The request to perform a batch prediction did not run to completion. It is not usable.&lt;/li&gt; &lt;li&gt; &lt;code&gt;COMPLETED&lt;/code&gt; - The batch prediction process completed successfully.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DELETED&lt;/code&gt; - The &lt;code&gt;BatchPrediction&lt;/code&gt; is marked as deleted. It is not usable.&lt;/li&gt; &lt;/ul&gt;
--- @param ComputeTime [LongType] &lt;p&gt; Represents the output of a &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata, the status, and the data file information of a &lt;code&gt;Batch Prediction&lt;/code&gt;.&lt;/p&gt;
--- @param Name [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/p&gt;
--- @param InputDataLocationS3 [S3Url] &lt;p&gt;The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).&lt;/p&gt;
--- @param InvalidRecordCount [LongType] &lt;p&gt; Represents the output of a &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata, the status, and the data file information of a &lt;code&gt;Batch Prediction&lt;/code&gt;.&lt;/p&gt;
--- @param CreatedByIamUser [AwsUserArn] &lt;p&gt;The AWS user account that invoked the &lt;code&gt;BatchPrediction&lt;/code&gt;. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.&lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;MLModel&lt;/code&gt; that generated predictions for the &lt;code&gt;BatchPrediction&lt;/code&gt; request.&lt;/p&gt;
--- @param TotalRecordCount [LongType] &lt;p&gt; Represents the output of a &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata, the status, and the data file information of a &lt;code&gt;Batch Prediction&lt;/code&gt;.&lt;/p&gt;
--- @param LastUpdatedAt [EpochTime] &lt;p&gt;The time of the most recent edit to the &lt;code&gt;BatchPrediction&lt;/code&gt;. The time is expressed in epoch time.&lt;/p&gt;
--- @param BatchPredictionDataSourceId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;DataSource&lt;/code&gt; that points to the group of observations to predict.&lt;/p&gt;
--- @param OutputUri [S3Url] &lt;p&gt;The location of an Amazon S3 bucket or directory to receive the operation results. The following substrings are not allowed in the &lt;code&gt;s3 key&lt;/code&gt; portion of the &lt;code&gt;outputURI&lt;/code&gt; field: ':', '//', '/./', '/../'.&lt;/p&gt;
--- @param StartedAt [EpochTime] &lt;p&gt; Represents the output of a &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata, the status, and the data file information of a &lt;code&gt;Batch Prediction&lt;/code&gt;.&lt;/p&gt;
--- @param BatchPredictionId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;BatchPrediction&lt;/code&gt; at creation. This value should be identical to the value of the &lt;code&gt;BatchPredictionID&lt;/code&gt; in the request. &lt;/p&gt;
--- @param Message [Message] &lt;p&gt;A description of the most recent details about processing the batch prediction request.&lt;/p&gt;
--- @param CreatedAt [EpochTime] &lt;p&gt;The time that the &lt;code&gt;BatchPrediction&lt;/code&gt; was created. The time is expressed in epoch time.&lt;/p&gt;
--- @param FinishedAt [EpochTime] &lt;p&gt; Represents the output of a &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt; The content consists of the detailed metadata, the status, and the data file information of a &lt;code&gt;Batch Prediction&lt;/code&gt;.&lt;/p&gt;
+-- <p> Represents the output of a <code>GetBatchPrediction</code> operation.</p> <p> The content consists of the detailed metadata, the status, and the data file information of a <code>Batch Prediction</code>.</p>
+-- @param Status [EntityStatus] <p>The status of the <code>BatchPrediction</code>. This element can have one of the following values:</p> <ul> <li> <code>PENDING</code> - Amazon Machine Learning (Amazon ML) submitted a request to generate predictions for a batch of observations.</li> <li> <code>INPROGRESS</code> - The process is underway.</li> <li> <code>FAILED</code> - The request to perform a batch prediction did not run to completion. It is not usable.</li> <li> <code>COMPLETED</code> - The batch prediction process completed successfully.</li> <li> <code>DELETED</code> - The <code>BatchPrediction</code> is marked as deleted. It is not usable.</li> </ul>
+-- @param ComputeTime [LongType] <p> Represents the output of a <code>GetBatchPrediction</code> operation.</p> <p> The content consists of the detailed metadata, the status, and the data file information of a <code>Batch Prediction</code>.</p>
+-- @param Name [EntityName] <p>A user-supplied name or description of the <code>BatchPrediction</code>.</p>
+-- @param InputDataLocationS3 [S3Url] <p>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).</p>
+-- @param InvalidRecordCount [LongType] <p> Represents the output of a <code>GetBatchPrediction</code> operation.</p> <p> The content consists of the detailed metadata, the status, and the data file information of a <code>Batch Prediction</code>.</p>
+-- @param CreatedByIamUser [AwsUserArn] <p>The AWS user account that invoked the <code>BatchPrediction</code>. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.</p>
+-- @param MLModelId [EntityId] <p>The ID of the <code>MLModel</code> that generated predictions for the <code>BatchPrediction</code> request.</p>
+-- @param TotalRecordCount [LongType] <p> Represents the output of a <code>GetBatchPrediction</code> operation.</p> <p> The content consists of the detailed metadata, the status, and the data file information of a <code>Batch Prediction</code>.</p>
+-- @param LastUpdatedAt [EpochTime] <p>The time of the most recent edit to the <code>BatchPrediction</code>. The time is expressed in epoch time.</p>
+-- @param BatchPredictionDataSourceId [EntityId] <p>The ID of the <code>DataSource</code> that points to the group of observations to predict.</p>
+-- @param OutputUri [S3Url] <p>The location of an Amazon S3 bucket or directory to receive the operation results. The following substrings are not allowed in the <code>s3 key</code> portion of the <code>outputURI</code> field: ':', '//', '/./', '/../'.</p>
+-- @param StartedAt [EpochTime] <p> Represents the output of a <code>GetBatchPrediction</code> operation.</p> <p> The content consists of the detailed metadata, the status, and the data file information of a <code>Batch Prediction</code>.</p>
+-- @param BatchPredictionId [EntityId] <p>The ID assigned to the <code>BatchPrediction</code> at creation. This value should be identical to the value of the <code>BatchPredictionID</code> in the request. </p>
+-- @param Message [Message] <p>A description of the most recent details about processing the batch prediction request.</p>
+-- @param CreatedAt [EpochTime] <p>The time that the <code>BatchPrediction</code> was created. The time is expressed in epoch time.</p>
+-- @param FinishedAt [EpochTime] <p> Represents the output of a <code>GetBatchPrediction</code> operation.</p> <p> The content consists of the detailed metadata, the status, and the data file information of a <code>Batch Prediction</code>.</p>
 function M.BatchPrediction(Status, ComputeTime, Name, InputDataLocationS3, InvalidRecordCount, CreatedByIamUser, MLModelId, TotalRecordCount, LastUpdatedAt, BatchPredictionDataSourceId, OutputUri, StartedAt, BatchPredictionId, Message, CreatedAt, FinishedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchPrediction")
 	local t = { 
@@ -1659,11 +1659,11 @@ end
 
 --- Create a structure of type CreateDataSourceFromRDSInput
 --  
--- @param DataSourceName [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param RDSData [RDSDataSpec] &lt;p&gt;The data specification of an Amazon RDS &lt;code&gt;DataSource&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;DatabaseInformation - &lt;ul&gt; &lt;li&gt; &lt;code&gt;DatabaseName&lt;/code&gt; - The name of the Amazon RDS database.&lt;/li&gt; &lt;li&gt; &lt;code&gt;InstanceIdentifier &lt;/code&gt; - A unique identifier for the Amazon RDS database instance.&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;DatabaseCredentials - AWS Identity and Access Management (IAM) credentials that are used to connect to the Amazon RDS database.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;ResourceRole - A role (DataPipelineDefaultResourceRole) assumed by an EC2 instance to carry out the copy task from Amazon RDS to Amazon Simple Storage Service (Amazon S3). For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html&quot;&gt;Role templates&lt;/a&gt; for data pipelines.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;ServiceRole - A role (DataPipelineDefaultRole) assumed by the AWS Data Pipeline service to monitor the progress of the copy task from Amazon RDS to Amazon S3. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html&quot;&gt;Role templates&lt;/a&gt; for data pipelines.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;SecurityInfo - The security information to use to access an RDS DB instance. You need to set up appropriate ingress rules for the security entity IDs provided to allow access to the Amazon RDS instance. Specify a [&lt;code&gt;SubnetId&lt;/code&gt;, &lt;code&gt;SecurityGroupIds&lt;/code&gt;] pair for a VPC-based RDS DB instance.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;SelectSqlQuery - A query that is used to retrieve the observation data for the &lt;code&gt;Datasource&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;S3StagingLocation - The Amazon S3 location for staging Amazon RDS data. The data retrieved from Amazon RDS using &lt;code&gt;SelectSqlQuery&lt;/code&gt; is stored in this location.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;DataSchemaUri - The Amazon S3 location of the &lt;code&gt;DataSchema&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;DataSchema - A JSON string representing the schema. This is not required if &lt;code&gt;DataSchemaUri&lt;/code&gt; is specified. &lt;/p&gt;&lt;/li&gt; &lt;li&gt; &lt;p&gt;DataRearrangement - A JSON string that represents the splitting and rearrangement requirements for the &lt;code&gt;Datasource&lt;/code&gt;. &lt;/p&gt; &lt;br&gt; &lt;p&gt; Sample - &lt;code&gt; &quot;{\&quot;splitting\&quot;:{\&quot;percentBegin\&quot;:10,\&quot;percentEnd\&quot;:60}}&quot;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ComputeStatistics [ComputeStatistics] &lt;p&gt;The compute statistics for a &lt;code&gt;DataSource&lt;/code&gt;. The statistics are generated from the observation data referenced by a &lt;code&gt;DataSource&lt;/code&gt;. Amazon ML uses the statistics internally during &lt;code&gt;MLModel&lt;/code&gt; training. This parameter must be set to &lt;code&gt;true&lt;/code&gt; if the &lt;code&gt;&lt;/code&gt;DataSource&lt;code&gt;&lt;/code&gt; needs to be used for &lt;code&gt;MLModel&lt;/code&gt; training. &lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;DataSource&lt;/code&gt;. Typically, an Amazon Resource Number (ARN) becomes the ID for a &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;The role that Amazon ML assumes on behalf of the user to create and activate a data pipeline in the user's account and copy data using the &lt;code&gt;SelectSqlQuery&lt;/code&gt; query from Amazon RDS to Amazon S3.&lt;/p&gt; &lt;p&gt; &lt;/p&gt;
+-- @param DataSourceName [EntityName] <p>A user-supplied name or description of the <code>DataSource</code>.</p>
+-- @param RDSData [RDSDataSpec] <p>The data specification of an Amazon RDS <code>DataSource</code>:</p> <ul> <li><p>DatabaseInformation - <ul> <li> <code>DatabaseName</code> - The name of the Amazon RDS database.</li> <li> <code>InstanceIdentifier </code> - A unique identifier for the Amazon RDS database instance.</li> </ul> </p></li> <li><p>DatabaseCredentials - AWS Identity and Access Management (IAM) credentials that are used to connect to the Amazon RDS database.</p></li> <li><p>ResourceRole - A role (DataPipelineDefaultResourceRole) assumed by an EC2 instance to carry out the copy task from Amazon RDS to Amazon Simple Storage Service (Amazon S3). For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">Role templates</a> for data pipelines.</p></li> <li><p>ServiceRole - A role (DataPipelineDefaultRole) assumed by the AWS Data Pipeline service to monitor the progress of the copy task from Amazon RDS to Amazon S3. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">Role templates</a> for data pipelines.</p></li> <li><p>SecurityInfo - The security information to use to access an RDS DB instance. You need to set up appropriate ingress rules for the security entity IDs provided to allow access to the Amazon RDS instance. Specify a [<code>SubnetId</code>, <code>SecurityGroupIds</code>] pair for a VPC-based RDS DB instance.</p></li> <li><p>SelectSqlQuery - A query that is used to retrieve the observation data for the <code>Datasource</code>.</p></li> <li><p>S3StagingLocation - The Amazon S3 location for staging Amazon RDS data. The data retrieved from Amazon RDS using <code>SelectSqlQuery</code> is stored in this location.</p></li> <li><p>DataSchemaUri - The Amazon S3 location of the <code>DataSchema</code>.</p></li> <li><p>DataSchema - A JSON string representing the schema. This is not required if <code>DataSchemaUri</code> is specified. </p></li> <li> <p>DataRearrangement - A JSON string that represents the splitting and rearrangement requirements for the <code>Datasource</code>. </p> <br> <p> Sample - <code> "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"</code> </p> </li> </ul>
+-- @param ComputeStatistics [ComputeStatistics] <p>The compute statistics for a <code>DataSource</code>. The statistics are generated from the observation data referenced by a <code>DataSource</code>. Amazon ML uses the statistics internally during <code>MLModel</code> training. This parameter must be set to <code>true</code> if the <code></code>DataSource<code></code> needs to be used for <code>MLModel</code> training. </p>
+-- @param DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>. Typically, an Amazon Resource Number (ARN) becomes the ID for a <code>DataSource</code>.</p>
+-- @param RoleARN [RoleARN] <p>The role that Amazon ML assumes on behalf of the user to create and activate a data pipeline in the user's account and copy data using the <code>SelectSqlQuery</code> query from Amazon RDS to Amazon S3.</p> <p> </p>
 -- Required parameter: DataSourceId
 -- Required parameter: RDSData
 -- Required parameter: RoleARN
@@ -1705,21 +1705,21 @@ function M.AssertEvaluation(struct)
 end
 
 --- Create a structure of type Evaluation
--- &lt;p&gt; Represents the output of &lt;code&gt;GetEvaluation&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt;The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt;
--- @param EvaluationDataSourceId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;DataSource&lt;/code&gt; that is used to evaluate the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param Status [EntityStatus] &lt;p&gt;The status of the evaluation. This element can have one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;PENDING&lt;/code&gt; - Amazon Machine Learning (Amazon ML) submitted a request to evaluate an &lt;code&gt;MLModel&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;INPROGRESS&lt;/code&gt; - The evaluation is underway.&lt;/li&gt; &lt;li&gt; &lt;code&gt;FAILED&lt;/code&gt; - The request to evaluate an &lt;code&gt;MLModel&lt;/code&gt; did not run to completion. It is not usable.&lt;/li&gt; &lt;li&gt; &lt;code&gt;COMPLETED&lt;/code&gt; - The evaluation process completed successfully.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DELETED&lt;/code&gt; - The &lt;code&gt;Evaluation&lt;/code&gt; is marked as deleted. It is not usable.&lt;/li&gt; &lt;/ul&gt;
--- @param ComputeTime [LongType] &lt;p&gt; Represents the output of &lt;code&gt;GetEvaluation&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt;The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt;
--- @param Name [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;Evaluation&lt;/code&gt;. &lt;/p&gt;
--- @param InputDataLocationS3 [S3Url] &lt;p&gt;The location and name of the data in Amazon Simple Storage Server (Amazon S3) that is used in the evaluation.&lt;/p&gt;
--- @param EvaluationId [EntityId] &lt;p&gt;The ID that is assigned to the &lt;code&gt;Evaluation&lt;/code&gt; at creation.&lt;/p&gt;
--- @param CreatedByIamUser [AwsUserArn] &lt;p&gt;The AWS user account that invoked the evaluation. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.&lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;MLModel&lt;/code&gt; that is the focus of the evaluation.&lt;/p&gt;
--- @param LastUpdatedAt [EpochTime] &lt;p&gt;The time of the most recent edit to the &lt;code&gt;Evaluation&lt;/code&gt;. The time is expressed in epoch time.&lt;/p&gt;
--- @param StartedAt [EpochTime] &lt;p&gt; Represents the output of &lt;code&gt;GetEvaluation&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt;The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt;
--- @param Message [Message] &lt;p&gt;A description of the most recent details about evaluating the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param PerformanceMetrics [PerformanceMetrics] &lt;p&gt;Measurements of how well the &lt;code&gt;MLModel&lt;/code&gt; performed, using observations referenced by the &lt;code&gt;DataSource&lt;/code&gt;. One of the following metrics is returned, based on the type of the &lt;code&gt;MLModel&lt;/code&gt;: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;BinaryAUC: A binary &lt;code&gt;MLModel&lt;/code&gt; uses the Area Under the Curve (AUC) technique to measure performance. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;RegressionRMSE: A regression &lt;code&gt;MLModel&lt;/code&gt; uses the Root Mean Square Error (RMSE) technique to measure performance. RMSE measures the difference between predicted and actual values for a single variable.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MulticlassAvgFScore: A multiclass &lt;code&gt;MLModel&lt;/code&gt; uses the F1 score technique to measure performance. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; For more information about performance metrics, please see the &lt;a href=&quot;http://docs.aws.amazon.com/machine-learning/latest/dg&quot;&gt;Amazon Machine Learning Developer Guide&lt;/a&gt;. &lt;/p&gt;
--- @param CreatedAt [EpochTime] &lt;p&gt;The time that the &lt;code&gt;Evaluation&lt;/code&gt; was created. The time is expressed in epoch time.&lt;/p&gt;
--- @param FinishedAt [EpochTime] &lt;p&gt; Represents the output of &lt;code&gt;GetEvaluation&lt;/code&gt; operation. &lt;/p&gt; &lt;p&gt;The content consists of the detailed metadata and data file information and the current status of the &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt;
+-- <p> Represents the output of <code>GetEvaluation</code> operation. </p> <p>The content consists of the detailed metadata and data file information and the current status of the <code>Evaluation</code>.</p>
+-- @param EvaluationDataSourceId [EntityId] <p>The ID of the <code>DataSource</code> that is used to evaluate the <code>MLModel</code>.</p>
+-- @param Status [EntityStatus] <p>The status of the evaluation. This element can have one of the following values:</p> <ul> <li> <code>PENDING</code> - Amazon Machine Learning (Amazon ML) submitted a request to evaluate an <code>MLModel</code>.</li> <li> <code>INPROGRESS</code> - The evaluation is underway.</li> <li> <code>FAILED</code> - The request to evaluate an <code>MLModel</code> did not run to completion. It is not usable.</li> <li> <code>COMPLETED</code> - The evaluation process completed successfully.</li> <li> <code>DELETED</code> - The <code>Evaluation</code> is marked as deleted. It is not usable.</li> </ul>
+-- @param ComputeTime [LongType] <p> Represents the output of <code>GetEvaluation</code> operation. </p> <p>The content consists of the detailed metadata and data file information and the current status of the <code>Evaluation</code>.</p>
+-- @param Name [EntityName] <p>A user-supplied name or description of the <code>Evaluation</code>. </p>
+-- @param InputDataLocationS3 [S3Url] <p>The location and name of the data in Amazon Simple Storage Server (Amazon S3) that is used in the evaluation.</p>
+-- @param EvaluationId [EntityId] <p>The ID that is assigned to the <code>Evaluation</code> at creation.</p>
+-- @param CreatedByIamUser [AwsUserArn] <p>The AWS user account that invoked the evaluation. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.</p>
+-- @param MLModelId [EntityId] <p>The ID of the <code>MLModel</code> that is the focus of the evaluation.</p>
+-- @param LastUpdatedAt [EpochTime] <p>The time of the most recent edit to the <code>Evaluation</code>. The time is expressed in epoch time.</p>
+-- @param StartedAt [EpochTime] <p> Represents the output of <code>GetEvaluation</code> operation. </p> <p>The content consists of the detailed metadata and data file information and the current status of the <code>Evaluation</code>.</p>
+-- @param Message [Message] <p>A description of the most recent details about evaluating the <code>MLModel</code>.</p>
+-- @param PerformanceMetrics [PerformanceMetrics] <p>Measurements of how well the <code>MLModel</code> performed, using observations referenced by the <code>DataSource</code>. One of the following metrics is returned, based on the type of the <code>MLModel</code>: </p> <ul> <li> <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve (AUC) technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A regression <code>MLModel</code> uses the Root Mean Square Error (RMSE) technique to measure performance. RMSE measures the difference between predicted and actual values for a single variable.</p> </li> <li> <p>MulticlassAvgFScore: A multiclass <code>MLModel</code> uses the F1 score technique to measure performance. </p> </li> </ul> <p> For more information about performance metrics, please see the <a href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon Machine Learning Developer Guide</a>. </p>
+-- @param CreatedAt [EpochTime] <p>The time that the <code>Evaluation</code> was created. The time is expressed in epoch time.</p>
+-- @param FinishedAt [EpochTime] <p> Represents the output of <code>GetEvaluation</code> operation. </p> <p>The content consists of the detailed metadata and data file information and the current status of the <code>Evaluation</code>.</p>
 function M.Evaluation(EvaluationDataSourceId, Status, ComputeTime, Name, InputDataLocationS3, EvaluationId, CreatedByIamUser, MLModelId, LastUpdatedAt, StartedAt, Message, PerformanceMetrics, CreatedAt, FinishedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Evaluation")
 	local t = { 
@@ -1754,8 +1754,8 @@ function M.AssertUpdateEvaluationOutput(struct)
 end
 
 --- Create a structure of type UpdateEvaluationOutput
--- &lt;p&gt;Represents the output of an &lt;code&gt;UpdateEvaluation&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt;You can see the updated content by using the &lt;code&gt;GetEvaluation&lt;/code&gt; operation.&lt;/p&gt;
--- @param EvaluationId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;Evaluation&lt;/code&gt; during creation. This value should be identical to the value of the &lt;code&gt;Evaluation&lt;/code&gt; in the request.&lt;/p&gt;
+-- <p>Represents the output of an <code>UpdateEvaluation</code> operation.</p> <p>You can see the updated content by using the <code>GetEvaluation</code> operation.</p>
+-- @param EvaluationId [EntityId] <p>The ID assigned to the <code>Evaluation</code> during creation. This value should be identical to the value of the <code>Evaluation</code> in the request.</p>
 function M.UpdateEvaluationOutput(EvaluationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateEvaluationOutput")
 	local t = { 
@@ -1781,9 +1781,9 @@ end
 
 --- Create a structure of type UpdateMLModelInput
 --  
--- @param MLModelId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;MLModel&lt;/code&gt; during creation.&lt;/p&gt;
--- @param ScoreThreshold [ScoreThreshold] &lt;p&gt;The &lt;code&gt;ScoreThreshold&lt;/code&gt; used in binary classification &lt;code&gt;MLModel&lt;/code&gt; that marks the boundary between a positive prediction and a negative prediction.&lt;/p&gt; &lt;p&gt;Output values greater than or equal to the &lt;code&gt;ScoreThreshold&lt;/code&gt; receive a positive result from the &lt;code&gt;MLModel&lt;/code&gt;, such as &lt;code&gt;true&lt;/code&gt;. Output values less than the &lt;code&gt;ScoreThreshold&lt;/code&gt; receive a negative response from the &lt;code&gt;MLModel&lt;/code&gt;, such as &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param MLModelName [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
+-- @param MLModelId [EntityId] <p>The ID assigned to the <code>MLModel</code> during creation.</p>
+-- @param ScoreThreshold [ScoreThreshold] <p>The <code>ScoreThreshold</code> used in binary classification <code>MLModel</code> that marks the boundary between a positive prediction and a negative prediction.</p> <p>Output values greater than or equal to the <code>ScoreThreshold</code> receive a positive result from the <code>MLModel</code>, such as <code>true</code>. Output values less than the <code>ScoreThreshold</code> receive a negative response from the <code>MLModel</code>, such as <code>false</code>.</p>
+-- @param MLModelName [EntityName] <p>A user-supplied name or description of the <code>MLModel</code>.</p>
 -- Required parameter: MLModelId
 function M.UpdateMLModelInput(MLModelId, ScoreThreshold, MLModelName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMLModelInput")
@@ -1810,7 +1810,7 @@ end
 
 --- Create a structure of type DeleteDataSourceInput
 --  
--- @param DataSourceId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
+-- @param DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.</p>
 -- Required parameter: DataSourceId
 function M.DeleteDataSourceInput(DataSourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDataSourceInput")
@@ -1835,7 +1835,7 @@ end
 
 --- Create a structure of type DeleteEvaluationInput
 --  
--- @param EvaluationId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;Evaluation&lt;/code&gt; to delete.&lt;/p&gt;
+-- @param EvaluationId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code> to delete.</p>
 -- Required parameter: EvaluationId
 function M.DeleteEvaluationInput(EvaluationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEvaluationInput")
@@ -1861,8 +1861,8 @@ end
 
 --- Create a structure of type GetDataSourceInput
 --  
--- @param DataSourceId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;DataSource&lt;/code&gt; at creation.&lt;/p&gt;
--- @param Verbose [Verbose] &lt;p&gt;Specifies whether the &lt;code&gt;GetDataSource&lt;/code&gt; operation should return &lt;code&gt;DataSourceSchema&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If true, &lt;code&gt;DataSourceSchema&lt;/code&gt; is returned.&lt;/p&gt; &lt;p&gt;If false, &lt;code&gt;DataSourceSchema&lt;/code&gt; is not returned.&lt;/p&gt;
+-- @param DataSourceId [EntityId] <p>The ID assigned to the <code>DataSource</code> at creation.</p>
+-- @param Verbose [Verbose] <p>Specifies whether the <code>GetDataSource</code> operation should return <code>DataSourceSchema</code>.</p> <p>If true, <code>DataSourceSchema</code> is returned.</p> <p>If false, <code>DataSourceSchema</code> is not returned.</p>
 -- Required parameter: DataSourceId
 function M.GetDataSourceInput(DataSourceId, Verbose, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDataSourceInput")
@@ -1886,8 +1886,8 @@ function M.AssertDeleteBatchPredictionOutput(struct)
 end
 
 --- Create a structure of type DeleteBatchPredictionOutput
--- &lt;p&gt; Represents the output of a &lt;code&gt;DeleteBatchPrediction&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt;You can use the &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation and check the value of the &lt;code&gt;Status&lt;/code&gt; parameter to see whether a &lt;code&gt;BatchPrediction&lt;/code&gt; is marked as &lt;code&gt;DELETED&lt;/code&gt;.&lt;/p&gt;
--- @param BatchPredictionId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;BatchPrediction&lt;/code&gt;. This value should be identical to the value of the &lt;code&gt;BatchPredictionID&lt;/code&gt; in the request.&lt;/p&gt;
+-- <p> Represents the output of a <code>DeleteBatchPrediction</code> operation.</p> <p>You can use the <code>GetBatchPrediction</code> operation and check the value of the <code>Status</code> parameter to see whether a <code>BatchPrediction</code> is marked as <code>DELETED</code>.</p>
+-- @param BatchPredictionId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>BatchPrediction</code>. This value should be identical to the value of the <code>BatchPredictionID</code> in the request.</p>
 function M.DeleteBatchPredictionOutput(BatchPredictionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBatchPredictionOutput")
 	local t = { 
@@ -1909,8 +1909,8 @@ function M.AssertDeleteDataSourceOutput(struct)
 end
 
 --- Create a structure of type DeleteDataSourceOutput
--- &lt;p&gt; Represents the output of a &lt;code&gt;DeleteDataSource&lt;/code&gt; operation.&lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;DataSource&lt;/code&gt;. This value should be identical to the value of the &lt;code&gt;DataSourceID&lt;/code&gt; in the request.&lt;/p&gt;
+-- <p> Represents the output of a <code>DeleteDataSource</code> operation.</p>
+-- @param DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>. This value should be identical to the value of the <code>DataSourceID</code> in the request.</p>
 function M.DeleteDataSourceOutput(DataSourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDataSourceOutput")
 	local t = { 
@@ -1934,7 +1934,7 @@ end
 
 --- Create a structure of type DeleteMLModelInput
 --  
--- @param MLModelId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
+-- @param MLModelId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>.</p>
 -- Required parameter: MLModelId
 function M.DeleteMLModelInput(MLModelId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMLModelInput")
@@ -1958,9 +1958,9 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;A specified resource cannot be located.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;A specified resource cannot be located.&lt;/p&gt;
--- @param code [ErrorCode] &lt;p&gt;A specified resource cannot be located.&lt;/p&gt;
+-- <p>A specified resource cannot be located.</p>
+-- @param message [ErrorMessage] <p>A specified resource cannot be located.</p>
+-- @param code [ErrorCode] <p>A specified resource cannot be located.</p>
 function M.ResourceNotFoundException(message, code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -1993,13 +1993,13 @@ end
 
 --- Create a structure of type CreateMLModelInput
 --  
--- @param Parameters [TrainingParameters] &lt;p&gt;A list of the training parameters in the &lt;code&gt;MLModel&lt;/code&gt;. The list is implemented as a map of key-value pairs.&lt;/p&gt; &lt;p&gt;The following is the current set of training parameters: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;sgd.maxMLModelSizeInBytes&lt;/code&gt; - The maximum allowed size of the model. Depending on the input data, the size of the model might affect its performance.&lt;/p&gt; &lt;p&gt; The value is an integer that ranges from &lt;code&gt;100000&lt;/code&gt; to &lt;code&gt;2147483648&lt;/code&gt;. The default value is &lt;code&gt;33554432&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;sgd.maxPasses&lt;/code&gt; - The number of times that the training process traverses the observations to build the &lt;code&gt;MLModel&lt;/code&gt;. The value is an integer that ranges from &lt;code&gt;1&lt;/code&gt; to &lt;code&gt;10000&lt;/code&gt;. The default value is &lt;code&gt;10&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;sgd.shuffleType&lt;/code&gt; - Whether Amazon ML shuffles the training data. Shuffling the data improves a model's ability to find the optimal solution for a variety of data types. The valid values are &lt;code&gt;auto&lt;/code&gt; and &lt;code&gt;none&lt;/code&gt;. The default value is &lt;code&gt;none&lt;/code&gt;. We &lt;?oxy_insert_start author=&quot;laurama&quot; timestamp=&quot;20160329T131121-0700&quot;&gt;strongly recommend that you shuffle your data.&lt;?oxy_insert_end&gt;&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;sgd.l1RegularizationAmount&lt;/code&gt; - The coefficient regularization L1 norm. It controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to zero, resulting in a sparse feature set. If you use this parameter, start by specifying a small value, such as &lt;code&gt;1.0E-08&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The value is a double that ranges from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;MAX_DOUBLE&lt;/code&gt;. The default is to not use L1 normalization. This parameter can't be used when &lt;code&gt;L2&lt;/code&gt; is specified. Use this parameter sparingly.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;code&gt;sgd.l2RegularizationAmount&lt;/code&gt; - The coefficient regularization L2 norm. It controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to small, nonzero values. If you use this parameter, start by specifying a small value, such as &lt;code&gt;1.0E-08&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The value is a double that ranges from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;MAX_DOUBLE&lt;/code&gt;. The default is to not use L2 normalization. This parameter can't be used when &lt;code&gt;L1&lt;/code&gt; is specified. Use this parameter sparingly.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MLModelType [MLModelType] &lt;p&gt;The category of supervised learning that this &lt;code&gt;MLModel&lt;/code&gt; will address. Choose from the following types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Choose &lt;code&gt;REGRESSION&lt;/code&gt; if the &lt;code&gt;MLModel&lt;/code&gt; will be used to predict a numeric value.&lt;/li&gt; &lt;li&gt;Choose &lt;code&gt;BINARY&lt;/code&gt; if the &lt;code&gt;MLModel&lt;/code&gt; result has two possible values.&lt;/li&gt; &lt;li&gt;Choose &lt;code&gt;MULTICLASS&lt;/code&gt; if the &lt;code&gt;MLModel&lt;/code&gt; result has a limited number of values. &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/machine-learning/latest/dg&quot;&gt;Amazon Machine Learning Developer Guide&lt;/a&gt;.&lt;/p&gt;
--- @param Recipe [Recipe] &lt;p&gt;The data recipe for creating the &lt;code&gt;MLModel&lt;/code&gt;. You must specify either the recipe or its URI. If you don't specify a recipe or its URI, Amazon ML creates a default.&lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param MLModelName [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param RecipeUri [S3Url] &lt;p&gt;The Amazon Simple Storage Service (Amazon S3) location and file name that contains the &lt;code&gt;MLModel&lt;/code&gt; recipe. You must specify either the recipe or its URI. If you don't specify a recipe or its URI, Amazon ML creates a default.&lt;/p&gt;
--- @param TrainingDataSourceId [EntityId] &lt;p&gt;The &lt;code&gt;DataSource&lt;/code&gt; that points to the training data.&lt;/p&gt;
+-- @param Parameters [TrainingParameters] <p>A list of the training parameters in the <code>MLModel</code>. The list is implemented as a map of key-value pairs.</p> <p>The following is the current set of training parameters: </p> <ul> <li> <p><code>sgd.maxMLModelSizeInBytes</code> - The maximum allowed size of the model. Depending on the input data, the size of the model might affect its performance.</p> <p> The value is an integer that ranges from <code>100000</code> to <code>2147483648</code>. The default value is <code>33554432</code>.</p> </li> <li><p><code>sgd.maxPasses</code> - The number of times that the training process traverses the observations to build the <code>MLModel</code>. The value is an integer that ranges from <code>1</code> to <code>10000</code>. The default value is <code>10</code>.</p></li> <li> <p><code>sgd.shuffleType</code> - Whether Amazon ML shuffles the training data. Shuffling the data improves a model's ability to find the optimal solution for a variety of data types. The valid values are <code>auto</code> and <code>none</code>. The default value is <code>none</code>. We <?oxy_insert_start author="laurama" timestamp="20160329T131121-0700">strongly recommend that you shuffle your data.<?oxy_insert_end></p> </li> <li> <p><code>sgd.l1RegularizationAmount</code> - The coefficient regularization L1 norm. It controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to zero, resulting in a sparse feature set. If you use this parameter, start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L1 normalization. This parameter can't be used when <code>L2</code> is specified. Use this parameter sparingly.</p> </li> <li> <p><code>sgd.l2RegularizationAmount</code> - The coefficient regularization L2 norm. It controls overfitting the data by penalizing large coefficients. This tends to drive coefficients to small, nonzero values. If you use this parameter, start by specifying a small value, such as <code>1.0E-08</code>.</p> <p>The value is a double that ranges from <code>0</code> to <code>MAX_DOUBLE</code>. The default is to not use L2 normalization. This parameter can't be used when <code>L1</code> is specified. Use this parameter sparingly.</p> </li> </ul>
+-- @param MLModelType [MLModelType] <p>The category of supervised learning that this <code>MLModel</code> will address. Choose from the following types:</p> <ul> <li>Choose <code>REGRESSION</code> if the <code>MLModel</code> will be used to predict a numeric value.</li> <li>Choose <code>BINARY</code> if the <code>MLModel</code> result has two possible values.</li> <li>Choose <code>MULTICLASS</code> if the <code>MLModel</code> result has a limited number of values. </li> </ul> <p> For more information, see the <a href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon Machine Learning Developer Guide</a>.</p>
+-- @param Recipe [Recipe] <p>The data recipe for creating the <code>MLModel</code>. You must specify either the recipe or its URI. If you don't specify a recipe or its URI, Amazon ML creates a default.</p>
+-- @param MLModelId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>.</p>
+-- @param MLModelName [EntityName] <p>A user-supplied name or description of the <code>MLModel</code>.</p>
+-- @param RecipeUri [S3Url] <p>The Amazon Simple Storage Service (Amazon S3) location and file name that contains the <code>MLModel</code> recipe. You must specify either the recipe or its URI. If you don't specify a recipe or its URI, Amazon ML creates a default.</p>
+-- @param TrainingDataSourceId [EntityId] <p>The <code>DataSource</code> that points to the training data.</p>
 -- Required parameter: MLModelId
 -- Required parameter: MLModelType
 -- Required parameter: TrainingDataSourceId
@@ -2030,8 +2030,8 @@ function M.AssertCreateEvaluationOutput(struct)
 end
 
 --- Create a structure of type CreateEvaluationOutput
--- &lt;p&gt; Represents the output of a &lt;code&gt;CreateEvaluation&lt;/code&gt; operation, and is an acknowledgement that Amazon ML received the request.&lt;/p&gt; &lt;p&gt;&lt;code&gt;CreateEvaluation&lt;/code&gt; operation is asynchronous. You can poll for status updates by using the &lt;code&gt;GetEvcaluation&lt;/code&gt; operation and checking the &lt;code&gt;Status&lt;/code&gt; parameter. &lt;/p&gt;
--- @param EvaluationId [EntityId] &lt;p&gt;The user-supplied ID that uniquely identifies the &lt;code&gt;Evaluation&lt;/code&gt;. This value should be identical to the value of the &lt;code&gt;EvaluationId&lt;/code&gt; in the request.&lt;/p&gt;
+-- <p> Represents the output of a <code>CreateEvaluation</code> operation, and is an acknowledgement that Amazon ML received the request.</p> <p><code>CreateEvaluation</code> operation is asynchronous. You can poll for status updates by using the <code>GetEvcaluation</code> operation and checking the <code>Status</code> parameter. </p>
+-- @param EvaluationId [EntityId] <p>The user-supplied ID that uniquely identifies the <code>Evaluation</code>. This value should be identical to the value of the <code>EvaluationId</code> in the request.</p>
 function M.CreateEvaluationOutput(EvaluationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEvaluationOutput")
 	local t = { 
@@ -2055,7 +2055,7 @@ end
 
 --- Create a structure of type GetEvaluationInput
 --  
--- @param EvaluationId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;Evaluation&lt;/code&gt; to retrieve. The evaluation of each &lt;code&gt;MLModel&lt;/code&gt; is recorded and cataloged. The ID provides the means to access the information. &lt;/p&gt;
+-- @param EvaluationId [EntityId] <p>The ID of the <code>Evaluation</code> to retrieve. The evaluation of each <code>MLModel</code> is recorded and cataloged. The ID provides the means to access the information. </p>
 -- Required parameter: EvaluationId
 function M.GetEvaluationInput(EvaluationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEvaluationInput")
@@ -2084,9 +2084,9 @@ end
 
 --- Create a structure of type AddTagsInput
 --  
--- @param ResourceType [TaggableResourceType] &lt;p&gt;The type of the ML object to tag. &lt;/p&gt;
--- @param ResourceId [EntityId] &lt;p&gt;The ID of the ML object to tag. For example, &lt;code&gt;exampleModelId&lt;/code&gt;.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The key-value pairs to use to create tags. If you specify a key without specifying a value, Amazon ML creates a tag with the specified key and a value of null.&lt;/p&gt;
+-- @param ResourceType [TaggableResourceType] <p>The type of the ML object to tag. </p>
+-- @param ResourceId [EntityId] <p>The ID of the ML object to tag. For example, <code>exampleModelId</code>.</p>
+-- @param Tags [TagList] <p>The key-value pairs to use to create tags. If you specify a key without specifying a value, Amazon ML creates a tag with the specified key and a value of null.</p>
 -- Required parameter: Tags
 -- Required parameter: ResourceId
 -- Required parameter: ResourceType
@@ -2113,8 +2113,8 @@ function M.AssertCreateDataSourceFromRDSOutput(struct)
 end
 
 --- Create a structure of type CreateDataSourceFromRDSOutput
--- &lt;p&gt; Represents the output of a &lt;code&gt;CreateDataSourceFromRDS&lt;/code&gt; operation, and is an acknowledgement that Amazon ML received the request.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;CreateDataSourceFromRDS&lt;/code&gt;&amp;gt; operation is asynchronous. You can poll for updates by using the &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation and checking the &lt;code&gt;Status&lt;/code&gt; parameter. You can inspect the &lt;code&gt;Message&lt;/code&gt; when &lt;code&gt;Status&lt;/code&gt; shows up as &lt;code&gt;FAILED&lt;/code&gt;. You can also check the progress of the copy operation by going to the &lt;code&gt;DataPipeline&lt;/code&gt; console and looking up the pipeline using the &lt;code&gt;pipelineId &lt;/code&gt; from the describe call.&lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the datasource. This value should be identical to the value of the &lt;code&gt;DataSourceID&lt;/code&gt; in the request. &lt;/p&gt;
+-- <p> Represents the output of a <code>CreateDataSourceFromRDS</code> operation, and is an acknowledgement that Amazon ML received the request.</p> <p>The <code>CreateDataSourceFromRDS</code>&gt; operation is asynchronous. You can poll for updates by using the <code>GetBatchPrediction</code> operation and checking the <code>Status</code> parameter. You can inspect the <code>Message</code> when <code>Status</code> shows up as <code>FAILED</code>. You can also check the progress of the copy operation by going to the <code>DataPipeline</code> console and looking up the pipeline using the <code>pipelineId </code> from the describe call.</p>
+-- @param DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the datasource. This value should be identical to the value of the <code>DataSourceID</code> in the request. </p>
 function M.CreateDataSourceFromRDSOutput(DataSourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDataSourceFromRDSOutput")
 	local t = { 
@@ -2137,9 +2137,9 @@ function M.AssertCreateRealtimeEndpointOutput(struct)
 end
 
 --- Create a structure of type CreateRealtimeEndpointOutput
--- &lt;p&gt;Represents the output of an &lt;code&gt;CreateRealtimeEndpoint&lt;/code&gt; operation.&lt;/p&gt; &lt;p&gt;The result contains the &lt;code&gt;MLModelId&lt;/code&gt; and the endpoint information for the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The endpoint information includes the URI of the &lt;code&gt;MLModel&lt;/code&gt;; that is, the location to send online prediction requests for the specified &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param MLModelId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;MLModel&lt;/code&gt;. This value should be identical to the value of the &lt;code&gt;MLModelId&lt;/code&gt; in the request.&lt;/p&gt;
--- @param RealtimeEndpointInfo [RealtimeEndpointInfo] &lt;p&gt;The endpoint information of the &lt;code&gt;MLModel&lt;/code&gt; &lt;/p&gt;
+-- <p>Represents the output of an <code>CreateRealtimeEndpoint</code> operation.</p> <p>The result contains the <code>MLModelId</code> and the endpoint information for the <code>MLModel</code>.</p> <note> <p>The endpoint information includes the URI of the <code>MLModel</code>; that is, the location to send online prediction requests for the specified <code>MLModel</code>.</p> </note>
+-- @param MLModelId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to the value of the <code>MLModelId</code> in the request.</p>
+-- @param RealtimeEndpointInfo [RealtimeEndpointInfo] <p>The endpoint information of the <code>MLModel</code> </p>
 function M.CreateRealtimeEndpointOutput(MLModelId, RealtimeEndpointInfo, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRealtimeEndpointOutput")
 	local t = { 
@@ -2165,9 +2165,9 @@ function M.AssertRDSDatabase(struct)
 end
 
 --- Create a structure of type RDSDatabase
--- &lt;p&gt;The database details of an Amazon RDS database.&lt;/p&gt;
--- @param InstanceIdentifier [RDSInstanceIdentifier] &lt;p&gt;The ID of an RDS DB instance.&lt;/p&gt;
--- @param DatabaseName [RDSDatabaseName] &lt;p&gt;The database details of an Amazon RDS database.&lt;/p&gt;
+-- <p>The database details of an Amazon RDS database.</p>
+-- @param InstanceIdentifier [RDSInstanceIdentifier] <p>The ID of an RDS DB instance.</p>
+-- @param DatabaseName [RDSDatabaseName] <p>The database details of an Amazon RDS database.</p>
 -- Required parameter: InstanceIdentifier
 -- Required parameter: DatabaseName
 function M.RDSDatabase(InstanceIdentifier, DatabaseName, ...)
@@ -2203,17 +2203,17 @@ end
 
 --- Create a structure of type DescribeMLModelsInput
 --  
--- @param GT [ComparatorValue] &lt;p&gt;The greater than operator. The &lt;code&gt;MLModel&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are greater than the value specified with &lt;code&gt;GT&lt;/code&gt;.&lt;/p&gt;
--- @param FilterVariable [MLModelFilterVariable] &lt;p&gt;Use one of the following variables to filter a list of &lt;code&gt;MLModel&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;CreatedAt&lt;/code&gt; - Sets the search criteria to &lt;code&gt;MLModel&lt;/code&gt; creation date.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Status&lt;/code&gt; - Sets the search criteria to &lt;code&gt;MLModel&lt;/code&gt; status.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Name&lt;/code&gt; - Sets the search criteria to the contents of &lt;code&gt;MLModel&lt;/code&gt;&lt;b&gt; &lt;/b&gt; &lt;code&gt;Name&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;IAMUser&lt;/code&gt; - Sets the search criteria to the user account that invoked the &lt;code&gt;MLModel&lt;/code&gt; creation.&lt;/li&gt; &lt;li&gt; &lt;code&gt;TrainingDataSourceId&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;DataSource&lt;/code&gt; used to train one or more &lt;code&gt;MLModel&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;RealtimeEndpointStatus&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;MLModel&lt;/code&gt; real-time endpoint status.&lt;/li&gt; &lt;li&gt; &lt;code&gt;MLModelType&lt;/code&gt; - Sets the search criteria to &lt;code&gt;MLModel&lt;/code&gt; type: binary, regression, or multi-class.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Algorithm&lt;/code&gt; - Sets the search criteria to the algorithm that the &lt;code&gt;MLModel&lt;/code&gt; uses.&lt;/li&gt; &lt;li&gt; &lt;code&gt;TrainingDataURI&lt;/code&gt; - Sets the search criteria to the data file(s) used in training a &lt;code&gt;MLModel&lt;/code&gt;. The URL can identify either a file or an Amazon Simple Storage Service (Amazon S3) bucket or directory.&lt;/li&gt; &lt;/ul&gt;
--- @param GE [ComparatorValue] &lt;p&gt;The greater than or equal to operator. The &lt;code&gt;MLModel&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are greater than or equal to the value specified with &lt;code&gt;GE&lt;/code&gt;. &lt;/p&gt;
--- @param NE [ComparatorValue] &lt;p&gt;The not equal to operator. The &lt;code&gt;MLModel&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values not equal to the value specified with &lt;code&gt;NE&lt;/code&gt;.&lt;/p&gt;
--- @param LT [ComparatorValue] &lt;p&gt;The less than operator. The &lt;code&gt;MLModel&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are less than the value specified with &lt;code&gt;LT&lt;/code&gt;.&lt;/p&gt;
--- @param LE [ComparatorValue] &lt;p&gt;The less than or equal to operator. The &lt;code&gt;MLModel&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are less than or equal to the value specified with &lt;code&gt;LE&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PageLimit] &lt;p&gt;The number of pages of information to include in the result. The range of acceptable values is &lt;code&gt;1&lt;/code&gt; through &lt;code&gt;100&lt;/code&gt;. The default value is &lt;code&gt;100&lt;/code&gt;.&lt;/p&gt;
--- @param SortOrder [SortOrder] &lt;p&gt;A two-value parameter that determines the sequence of the resulting list of &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;asc&lt;/code&gt; - Arranges the list in ascending order (A-Z, 0-9).&lt;/li&gt; &lt;li&gt; &lt;code&gt;dsc&lt;/code&gt; - Arranges the list in descending order (Z-A, 9-0).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Results are sorted by &lt;code&gt;FilterVariable&lt;/code&gt;.&lt;/p&gt;
--- @param NextToken [StringType] &lt;p&gt;The ID of the page in the paginated results.&lt;/p&gt;
--- @param EQ [ComparatorValue] &lt;p&gt;The equal to operator. The &lt;code&gt;MLModel&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that exactly match the value specified with &lt;code&gt;EQ&lt;/code&gt;.&lt;/p&gt;
--- @param Prefix [ComparatorValue] &lt;p&gt;A string that is found at the beginning of a variable, such as &lt;code&gt;Name&lt;/code&gt; or &lt;code&gt;Id&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For example, an &lt;code&gt;MLModel&lt;/code&gt; could have the &lt;code&gt;Name&lt;/code&gt; &lt;code&gt;2014-09-09-HolidayGiftMailer&lt;/code&gt;. To search for this &lt;code&gt;MLModel&lt;/code&gt;, select &lt;code&gt;Name&lt;/code&gt; for the &lt;code&gt;FilterVariable&lt;/code&gt; and any of the following strings for the &lt;code&gt;Prefix&lt;/code&gt;: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;2014-09&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;2014-09-09&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;2014-09-09-Holiday&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt;
+-- @param GT [ComparatorValue] <p>The greater than operator. The <code>MLModel</code> results will have <code>FilterVariable</code> values that are greater than the value specified with <code>GT</code>.</p>
+-- @param FilterVariable [MLModelFilterVariable] <p>Use one of the following variables to filter a list of <code>MLModel</code>:</p> <ul> <li> <code>CreatedAt</code> - Sets the search criteria to <code>MLModel</code> creation date.</li> <li> <code>Status</code> - Sets the search criteria to <code>MLModel</code> status.</li> <li> <code>Name</code> - Sets the search criteria to the contents of <code>MLModel</code><b> </b> <code>Name</code>.</li> <li> <code>IAMUser</code> - Sets the search criteria to the user account that invoked the <code>MLModel</code> creation.</li> <li> <code>TrainingDataSourceId</code> - Sets the search criteria to the <code>DataSource</code> used to train one or more <code>MLModel</code>.</li> <li> <code>RealtimeEndpointStatus</code> - Sets the search criteria to the <code>MLModel</code> real-time endpoint status.</li> <li> <code>MLModelType</code> - Sets the search criteria to <code>MLModel</code> type: binary, regression, or multi-class.</li> <li> <code>Algorithm</code> - Sets the search criteria to the algorithm that the <code>MLModel</code> uses.</li> <li> <code>TrainingDataURI</code> - Sets the search criteria to the data file(s) used in training a <code>MLModel</code>. The URL can identify either a file or an Amazon Simple Storage Service (Amazon S3) bucket or directory.</li> </ul>
+-- @param GE [ComparatorValue] <p>The greater than or equal to operator. The <code>MLModel</code> results will have <code>FilterVariable</code> values that are greater than or equal to the value specified with <code>GE</code>. </p>
+-- @param NE [ComparatorValue] <p>The not equal to operator. The <code>MLModel</code> results will have <code>FilterVariable</code> values not equal to the value specified with <code>NE</code>.</p>
+-- @param LT [ComparatorValue] <p>The less than operator. The <code>MLModel</code> results will have <code>FilterVariable</code> values that are less than the value specified with <code>LT</code>.</p>
+-- @param LE [ComparatorValue] <p>The less than or equal to operator. The <code>MLModel</code> results will have <code>FilterVariable</code> values that are less than or equal to the value specified with <code>LE</code>.</p>
+-- @param Limit [PageLimit] <p>The number of pages of information to include in the result. The range of acceptable values is <code>1</code> through <code>100</code>. The default value is <code>100</code>.</p>
+-- @param SortOrder [SortOrder] <p>A two-value parameter that determines the sequence of the resulting list of <code>MLModel</code>.</p> <ul> <li> <code>asc</code> - Arranges the list in ascending order (A-Z, 0-9).</li> <li> <code>dsc</code> - Arranges the list in descending order (Z-A, 9-0).</li> </ul> <p>Results are sorted by <code>FilterVariable</code>.</p>
+-- @param NextToken [StringType] <p>The ID of the page in the paginated results.</p>
+-- @param EQ [ComparatorValue] <p>The equal to operator. The <code>MLModel</code> results will have <code>FilterVariable</code> values that exactly match the value specified with <code>EQ</code>.</p>
+-- @param Prefix [ComparatorValue] <p>A string that is found at the beginning of a variable, such as <code>Name</code> or <code>Id</code>.</p> <p>For example, an <code>MLModel</code> could have the <code>Name</code> <code>2014-09-09-HolidayGiftMailer</code>. To search for this <code>MLModel</code>, select <code>Name</code> for the <code>FilterVariable</code> and any of the following strings for the <code>Prefix</code>: </p> <ul> <li><p>2014-09</p></li> <li><p>2014-09-09</p></li> <li><p>2014-09-09-Holiday</p></li> </ul>
 function M.DescribeMLModelsInput(GT, FilterVariable, GE, NE, LT, LE, Limit, SortOrder, NextToken, EQ, Prefix, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMLModelsInput")
 	local t = { 
@@ -2251,7 +2251,7 @@ end
 
 --- Create a structure of type PredictInput
 --  
--- @param MLModelId [EntityId] &lt;p&gt;A unique identifier of the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
+-- @param MLModelId [EntityId] <p>A unique identifier of the <code>MLModel</code>.</p>
 -- @param Record [Record]  
 -- @param PredictEndpoint [VipURL]  
 -- Required parameter: MLModelId
@@ -2284,8 +2284,8 @@ end
 
 --- Create a structure of type UpdateDataSourceInput
 --  
--- @param DataSourceName [EntityName] &lt;p&gt;A new user-supplied name or description of the &lt;code&gt;DataSource&lt;/code&gt; that will replace the current description. &lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;The ID assigned to the &lt;code&gt;DataSource&lt;/code&gt; during creation.&lt;/p&gt;
+-- @param DataSourceName [EntityName] <p>A new user-supplied name or description of the <code>DataSource</code> that will replace the current description. </p>
+-- @param DataSourceId [EntityId] <p>The ID assigned to the <code>DataSource</code> during creation.</p>
 -- Required parameter: DataSourceId
 -- Required parameter: DataSourceName
 function M.UpdateDataSourceInput(DataSourceName, DataSourceId, ...)
@@ -2324,22 +2324,22 @@ function M.AssertGetEvaluationOutput(struct)
 end
 
 --- Create a structure of type GetEvaluationOutput
--- &lt;p&gt;Represents the output of a &lt;code&gt;GetEvaluation&lt;/code&gt; operation and describes an &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt;
--- @param EvaluationDataSourceId [EntityId] &lt;p&gt;The &lt;code&gt;DataSource&lt;/code&gt; used for this evaluation.&lt;/p&gt;
--- @param Status [EntityStatus] &lt;p&gt;The status of the evaluation. This element can have one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;PENDING&lt;/code&gt; - Amazon Machine Language (Amazon ML) submitted a request to evaluate an &lt;code&gt;MLModel&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;INPROGRESS&lt;/code&gt; - The evaluation is underway.&lt;/li&gt; &lt;li&gt; &lt;code&gt;FAILED&lt;/code&gt; - The request to evaluate an &lt;code&gt;MLModel&lt;/code&gt; did not run to completion. It is not usable.&lt;/li&gt; &lt;li&gt; &lt;code&gt;COMPLETED&lt;/code&gt; - The evaluation process completed successfully.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DELETED&lt;/code&gt; - The &lt;code&gt;Evaluation&lt;/code&gt; is marked as deleted. It is not usable.&lt;/li&gt; &lt;/ul&gt;
--- @param ComputeTime [LongType] &lt;p&gt;The approximate CPU time in milliseconds that Amazon Machine Learning spent processing the &lt;code&gt;Evaluation&lt;/code&gt;, normalized and scaled on computation resources. &lt;code&gt;ComputeTime&lt;/code&gt; is only available if the &lt;code&gt;Evaluation&lt;/code&gt; is in the &lt;code&gt;COMPLETED&lt;/code&gt; state.&lt;/p&gt;
--- @param Name [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;Evaluation&lt;/code&gt;. &lt;/p&gt;
--- @param InputDataLocationS3 [S3Url] &lt;p&gt;The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).&lt;/p&gt;
--- @param EvaluationId [EntityId] &lt;p&gt;The evaluation ID which is same as the &lt;code&gt;EvaluationId&lt;/code&gt; in the request.&lt;/p&gt;
--- @param CreatedByIamUser [AwsUserArn] &lt;p&gt;The AWS user account that invoked the evaluation. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.&lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;MLModel&lt;/code&gt; that was the focus of the evaluation.&lt;/p&gt;
--- @param Message [Message] &lt;p&gt;A description of the most recent details about evaluating the &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param LastUpdatedAt [EpochTime] &lt;p&gt;The time of the most recent edit to the &lt;code&gt;Evaluation&lt;/code&gt;. The time is expressed in epoch time.&lt;/p&gt;
--- @param StartedAt [EpochTime] &lt;p&gt;The epoch time when Amazon Machine Learning marked the &lt;code&gt;Evaluation&lt;/code&gt; as &lt;code&gt;INPROGRESS&lt;/code&gt;. &lt;code&gt;StartedAt&lt;/code&gt; isn't available if the &lt;code&gt;Evaluation&lt;/code&gt; is in the &lt;code&gt;PENDING&lt;/code&gt; state.&lt;/p&gt;
--- @param LogUri [PresignedS3Url] &lt;p&gt;A link to the file that contains logs of the &lt;code&gt;CreateEvaluation&lt;/code&gt; operation.&lt;/p&gt;
--- @param PerformanceMetrics [PerformanceMetrics] &lt;p&gt;Measurements of how well the &lt;code&gt;MLModel&lt;/code&gt; performed using observations referenced by the &lt;code&gt;DataSource&lt;/code&gt;. One of the following metric is returned based on the type of the &lt;code&gt;MLModel&lt;/code&gt;: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;BinaryAUC: A binary &lt;code&gt;MLModel&lt;/code&gt; uses the Area Under the Curve (AUC) technique to measure performance. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;RegressionRMSE: A regression &lt;code&gt;MLModel&lt;/code&gt; uses the Root Mean Square Error (RMSE) technique to measure performance. RMSE measures the difference between predicted and actual values for a single variable.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;MulticlassAvgFScore: A multiclass &lt;code&gt;MLModel&lt;/code&gt; uses the F1 score technique to measure performance. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; For more information about performance metrics, please see the &lt;a href=&quot;http://docs.aws.amazon.com/machine-learning/latest/dg&quot;&gt;Amazon Machine Learning Developer Guide&lt;/a&gt;. &lt;/p&gt;
--- @param CreatedAt [EpochTime] &lt;p&gt;The time that the &lt;code&gt;Evaluation&lt;/code&gt; was created. The time is expressed in epoch time.&lt;/p&gt;
--- @param FinishedAt [EpochTime] &lt;p&gt;The epoch time when Amazon Machine Learning marked the &lt;code&gt;Evaluation&lt;/code&gt; as &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;FAILED&lt;/code&gt;. &lt;code&gt;FinishedAt&lt;/code&gt; is only available when the &lt;code&gt;Evaluation&lt;/code&gt; is in the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;FAILED&lt;/code&gt; state.&lt;/p&gt;
+-- <p>Represents the output of a <code>GetEvaluation</code> operation and describes an <code>Evaluation</code>.</p>
+-- @param EvaluationDataSourceId [EntityId] <p>The <code>DataSource</code> used for this evaluation.</p>
+-- @param Status [EntityStatus] <p>The status of the evaluation. This element can have one of the following values:</p> <ul> <li> <code>PENDING</code> - Amazon Machine Language (Amazon ML) submitted a request to evaluate an <code>MLModel</code>.</li> <li> <code>INPROGRESS</code> - The evaluation is underway.</li> <li> <code>FAILED</code> - The request to evaluate an <code>MLModel</code> did not run to completion. It is not usable.</li> <li> <code>COMPLETED</code> - The evaluation process completed successfully.</li> <li> <code>DELETED</code> - The <code>Evaluation</code> is marked as deleted. It is not usable.</li> </ul>
+-- @param ComputeTime [LongType] <p>The approximate CPU time in milliseconds that Amazon Machine Learning spent processing the <code>Evaluation</code>, normalized and scaled on computation resources. <code>ComputeTime</code> is only available if the <code>Evaluation</code> is in the <code>COMPLETED</code> state.</p>
+-- @param Name [EntityName] <p>A user-supplied name or description of the <code>Evaluation</code>. </p>
+-- @param InputDataLocationS3 [S3Url] <p>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).</p>
+-- @param EvaluationId [EntityId] <p>The evaluation ID which is same as the <code>EvaluationId</code> in the request.</p>
+-- @param CreatedByIamUser [AwsUserArn] <p>The AWS user account that invoked the evaluation. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.</p>
+-- @param MLModelId [EntityId] <p>The ID of the <code>MLModel</code> that was the focus of the evaluation.</p>
+-- @param Message [Message] <p>A description of the most recent details about evaluating the <code>MLModel</code>.</p>
+-- @param LastUpdatedAt [EpochTime] <p>The time of the most recent edit to the <code>Evaluation</code>. The time is expressed in epoch time.</p>
+-- @param StartedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>Evaluation</code> as <code>INPROGRESS</code>. <code>StartedAt</code> isn't available if the <code>Evaluation</code> is in the <code>PENDING</code> state.</p>
+-- @param LogUri [PresignedS3Url] <p>A link to the file that contains logs of the <code>CreateEvaluation</code> operation.</p>
+-- @param PerformanceMetrics [PerformanceMetrics] <p>Measurements of how well the <code>MLModel</code> performed using observations referenced by the <code>DataSource</code>. One of the following metric is returned based on the type of the <code>MLModel</code>: </p> <ul> <li> <p>BinaryAUC: A binary <code>MLModel</code> uses the Area Under the Curve (AUC) technique to measure performance. </p> </li> <li> <p>RegressionRMSE: A regression <code>MLModel</code> uses the Root Mean Square Error (RMSE) technique to measure performance. RMSE measures the difference between predicted and actual values for a single variable.</p> </li> <li> <p>MulticlassAvgFScore: A multiclass <code>MLModel</code> uses the F1 score technique to measure performance. </p> </li> </ul> <p> For more information about performance metrics, please see the <a href="http://docs.aws.amazon.com/machine-learning/latest/dg">Amazon Machine Learning Developer Guide</a>. </p>
+-- @param CreatedAt [EpochTime] <p>The time that the <code>Evaluation</code> was created. The time is expressed in epoch time.</p>
+-- @param FinishedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>Evaluation</code> as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is only available when the <code>Evaluation</code> is in the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
 function M.GetEvaluationOutput(EvaluationDataSourceId, Status, ComputeTime, Name, InputDataLocationS3, EvaluationId, CreatedByIamUser, MLModelId, Message, LastUpdatedAt, StartedAt, LogUri, PerformanceMetrics, CreatedAt, FinishedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEvaluationOutput")
 	local t = { 
@@ -2380,13 +2380,13 @@ function M.AssertRDSMetadata(struct)
 end
 
 --- Create a structure of type RDSMetadata
--- &lt;p&gt;The datasource details that are specific to Amazon RDS.&lt;/p&gt;
--- @param ServiceRole [EDPServiceRole] &lt;p&gt;The role (DataPipelineDefaultRole) assumed by the Data Pipeline service to monitor the progress of the copy task from Amazon RDS to Amazon S3. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html&quot;&gt;Role templates&lt;/a&gt; for data pipelines.&lt;/p&gt;
--- @param DataPipelineId [EDPPipelineId] &lt;p&gt;The ID of the Data Pipeline instance that is used to carry to copy data from Amazon RDS to Amazon S3. You can use the ID to find details about the instance in the Data Pipeline console.&lt;/p&gt;
--- @param ResourceRole [EDPResourceRole] &lt;p&gt;The role (DataPipelineDefaultResourceRole) assumed by an Amazon EC2 instance to carry out the copy task from Amazon RDS to Amazon S3. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html&quot;&gt;Role templates&lt;/a&gt; for data pipelines.&lt;/p&gt;
--- @param DatabaseUserName [RDSDatabaseUsername] &lt;p&gt;The datasource details that are specific to Amazon RDS.&lt;/p&gt;
--- @param Database [RDSDatabase] &lt;p&gt;The database details required to connect to an Amazon RDS.&lt;/p&gt;
--- @param SelectSqlQuery [RDSSelectSqlQuery] &lt;p&gt;The SQL query that is supplied during &lt;a&gt;CreateDataSourceFromRDS&lt;/a&gt;. Returns only if &lt;code&gt;Verbose&lt;/code&gt; is true in &lt;code&gt;GetDataSourceInput&lt;/code&gt;. &lt;/p&gt;
+-- <p>The datasource details that are specific to Amazon RDS.</p>
+-- @param ServiceRole [EDPServiceRole] <p>The role (DataPipelineDefaultRole) assumed by the Data Pipeline service to monitor the progress of the copy task from Amazon RDS to Amazon S3. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">Role templates</a> for data pipelines.</p>
+-- @param DataPipelineId [EDPPipelineId] <p>The ID of the Data Pipeline instance that is used to carry to copy data from Amazon RDS to Amazon S3. You can use the ID to find details about the instance in the Data Pipeline console.</p>
+-- @param ResourceRole [EDPResourceRole] <p>The role (DataPipelineDefaultResourceRole) assumed by an Amazon EC2 instance to carry out the copy task from Amazon RDS to Amazon S3. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">Role templates</a> for data pipelines.</p>
+-- @param DatabaseUserName [RDSDatabaseUsername] <p>The datasource details that are specific to Amazon RDS.</p>
+-- @param Database [RDSDatabase] <p>The database details required to connect to an Amazon RDS.</p>
+-- @param SelectSqlQuery [RDSSelectSqlQuery] <p>The SQL query that is supplied during <a>CreateDataSourceFromRDS</a>. Returns only if <code>Verbose</code> is true in <code>GetDataSourceInput</code>. </p>
 function M.RDSMetadata(ServiceRole, DataPipelineId, ResourceRole, DatabaseUserName, Database, SelectSqlQuery, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RDSMetadata")
 	local t = { 
@@ -2415,10 +2415,10 @@ function M.AssertDescribeTagsOutput(struct)
 end
 
 --- Create a structure of type DescribeTagsOutput
--- &lt;p&gt;Amazon ML returns the following elements. &lt;/p&gt;
--- @param ResourceType [TaggableResourceType] &lt;p&gt;The type of the tagged ML object.&lt;/p&gt;
--- @param ResourceId [EntityId] &lt;p&gt;The ID of the tagged ML object.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;A list of tags associated with the ML object.&lt;/p&gt;
+-- <p>Amazon ML returns the following elements. </p>
+-- @param ResourceType [TaggableResourceType] <p>The type of the tagged ML object.</p>
+-- @param ResourceId [EntityId] <p>The ID of the tagged ML object.</p>
+-- @param Tags [TagList] <p>A list of tags associated with the ML object.</p>
 function M.DescribeTagsOutput(ResourceType, ResourceId, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsOutput")
 	local t = { 
@@ -2445,9 +2445,9 @@ function M.AssertRDSDatabaseCredentials(struct)
 end
 
 --- Create a structure of type RDSDatabaseCredentials
--- &lt;p&gt;The database credentials to connect to a database on an RDS DB instance.&lt;/p&gt;
--- @param Username [RDSDatabaseUsername] &lt;p&gt;The database credentials to connect to a database on an RDS DB instance.&lt;/p&gt;
--- @param Password [RDSDatabasePassword] &lt;p&gt;The database credentials to connect to a database on an RDS DB instance.&lt;/p&gt;
+-- <p>The database credentials to connect to a database on an RDS DB instance.</p>
+-- @param Username [RDSDatabaseUsername] <p>The database credentials to connect to a database on an RDS DB instance.</p>
+-- @param Password [RDSDatabasePassword] <p>The database credentials to connect to a database on an RDS DB instance.</p>
 -- Required parameter: Username
 -- Required parameter: Password
 function M.RDSDatabaseCredentials(Username, Password, ...)
@@ -2472,8 +2472,8 @@ function M.AssertCreateDataSourceFromS3Output(struct)
 end
 
 --- Create a structure of type CreateDataSourceFromS3Output
--- &lt;p&gt; Represents the output of a &lt;code&gt;CreateDataSourceFromS3&lt;/code&gt; operation, and is an acknowledgement that Amazon ML received the request.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;CreateDataSourceFromS3&lt;/code&gt; operation is asynchronous. You can poll for updates by using the &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation and checking the &lt;code&gt;Status&lt;/code&gt; parameter. &lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;DataSource&lt;/code&gt;. This value should be identical to the value of the &lt;code&gt;DataSourceID&lt;/code&gt; in the request. &lt;/p&gt;
+-- <p> Represents the output of a <code>CreateDataSourceFromS3</code> operation, and is an acknowledgement that Amazon ML received the request.</p> <p>The <code>CreateDataSourceFromS3</code> operation is asynchronous. You can poll for updates by using the <code>GetBatchPrediction</code> operation and checking the <code>Status</code> parameter. </p>
+-- @param DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>. This value should be identical to the value of the <code>DataSourceID</code> in the request. </p>
 function M.CreateDataSourceFromS3Output(DataSourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDataSourceFromS3Output")
 	local t = { 
@@ -2511,24 +2511,24 @@ function M.AssertGetBatchPredictionOutput(struct)
 end
 
 --- Create a structure of type GetBatchPredictionOutput
--- &lt;p&gt;Represents the output of a &lt;code&gt;GetBatchPrediction&lt;/code&gt; operation and describes a &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/p&gt;
--- @param Status [EntityStatus] &lt;p&gt;The status of the &lt;code&gt;BatchPrediction&lt;/code&gt;, which can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;PENDING&lt;/code&gt; - Amazon Machine Learning (Amazon ML) submitted a request to generate batch predictions.&lt;/li&gt; &lt;li&gt; &lt;code&gt;INPROGRESS&lt;/code&gt; - The batch predictions are in progress.&lt;/li&gt; &lt;li&gt; &lt;code&gt;FAILED&lt;/code&gt; - The request to perform a batch prediction did not run to completion. It is not usable.&lt;/li&gt; &lt;li&gt; &lt;code&gt;COMPLETED&lt;/code&gt; - The batch prediction process completed successfully.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DELETED&lt;/code&gt; - The &lt;code&gt;BatchPrediction&lt;/code&gt; is marked as deleted. It is not usable.&lt;/li&gt; &lt;/ul&gt;
--- @param ComputeTime [LongType] &lt;p&gt;The approximate CPU time in milliseconds that Amazon Machine Learning spent processing the &lt;code&gt;BatchPrediction&lt;/code&gt;, normalized and scaled on computation resources. &lt;code&gt;ComputeTime&lt;/code&gt; is only available if the &lt;code&gt;BatchPrediction&lt;/code&gt; is in the &lt;code&gt;COMPLETED&lt;/code&gt; state.&lt;/p&gt;
--- @param Name [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/p&gt;
--- @param InputDataLocationS3 [S3Url] &lt;p&gt;The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).&lt;/p&gt;
--- @param InvalidRecordCount [LongType] &lt;p&gt;The number of invalid records that Amazon Machine Learning saw while processing the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/p&gt;
--- @param CreatedByIamUser [AwsUserArn] &lt;p&gt;The AWS user account that invoked the &lt;code&gt;BatchPrediction&lt;/code&gt;. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.&lt;/p&gt;
--- @param MLModelId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;MLModel&lt;/code&gt; that generated predictions for the &lt;code&gt;BatchPrediction&lt;/code&gt; request.&lt;/p&gt;
--- @param TotalRecordCount [LongType] &lt;p&gt;The number of total records that Amazon Machine Learning saw while processing the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/p&gt;
--- @param LastUpdatedAt [EpochTime] &lt;p&gt;The time of the most recent edit to &lt;code&gt;BatchPrediction&lt;/code&gt;. The time is expressed in epoch time.&lt;/p&gt;
--- @param BatchPredictionDataSourceId [EntityId] &lt;p&gt;The ID of the &lt;code&gt;DataSource&lt;/code&gt; that was used to create the &lt;code&gt;BatchPrediction&lt;/code&gt;. &lt;/p&gt;
--- @param OutputUri [S3Url] &lt;p&gt;The location of an Amazon S3 bucket or directory to receive the operation results.&lt;/p&gt;
--- @param StartedAt [EpochTime] &lt;p&gt;The epoch time when Amazon Machine Learning marked the &lt;code&gt;BatchPrediction&lt;/code&gt; as &lt;code&gt;INPROGRESS&lt;/code&gt;. &lt;code&gt;StartedAt&lt;/code&gt; isn't available if the &lt;code&gt;BatchPrediction&lt;/code&gt; is in the &lt;code&gt;PENDING&lt;/code&gt; state.&lt;/p&gt;
--- @param BatchPredictionId [EntityId] &lt;p&gt;An ID assigned to the &lt;code&gt;BatchPrediction&lt;/code&gt; at creation. This value should be identical to the value of the &lt;code&gt;BatchPredictionID&lt;/code&gt; in the request.&lt;/p&gt;
--- @param LogUri [PresignedS3Url] &lt;p&gt;A link to the file that contains logs of the &lt;code&gt;CreateBatchPrediction&lt;/code&gt; operation.&lt;/p&gt;
--- @param Message [Message] &lt;p&gt;A description of the most recent details about processing the batch prediction request.&lt;/p&gt;
--- @param CreatedAt [EpochTime] &lt;p&gt;The time when the &lt;code&gt;BatchPrediction&lt;/code&gt; was created. The time is expressed in epoch time.&lt;/p&gt;
--- @param FinishedAt [EpochTime] &lt;p&gt;The epoch time when Amazon Machine Learning marked the &lt;code&gt;BatchPrediction&lt;/code&gt; as &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;FAILED&lt;/code&gt;. &lt;code&gt;FinishedAt&lt;/code&gt; is only available when the &lt;code&gt;BatchPrediction&lt;/code&gt; is in the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;FAILED&lt;/code&gt; state.&lt;/p&gt;
+-- <p>Represents the output of a <code>GetBatchPrediction</code> operation and describes a <code>BatchPrediction</code>.</p>
+-- @param Status [EntityStatus] <p>The status of the <code>BatchPrediction</code>, which can be one of the following values:</p> <ul> <li> <code>PENDING</code> - Amazon Machine Learning (Amazon ML) submitted a request to generate batch predictions.</li> <li> <code>INPROGRESS</code> - The batch predictions are in progress.</li> <li> <code>FAILED</code> - The request to perform a batch prediction did not run to completion. It is not usable.</li> <li> <code>COMPLETED</code> - The batch prediction process completed successfully.</li> <li> <code>DELETED</code> - The <code>BatchPrediction</code> is marked as deleted. It is not usable.</li> </ul>
+-- @param ComputeTime [LongType] <p>The approximate CPU time in milliseconds that Amazon Machine Learning spent processing the <code>BatchPrediction</code>, normalized and scaled on computation resources. <code>ComputeTime</code> is only available if the <code>BatchPrediction</code> is in the <code>COMPLETED</code> state.</p>
+-- @param Name [EntityName] <p>A user-supplied name or description of the <code>BatchPrediction</code>.</p>
+-- @param InputDataLocationS3 [S3Url] <p>The location of the data file or directory in Amazon Simple Storage Service (Amazon S3).</p>
+-- @param InvalidRecordCount [LongType] <p>The number of invalid records that Amazon Machine Learning saw while processing the <code>BatchPrediction</code>.</p>
+-- @param CreatedByIamUser [AwsUserArn] <p>The AWS user account that invoked the <code>BatchPrediction</code>. The account type can be either an AWS root account or an AWS Identity and Access Management (IAM) user account.</p>
+-- @param MLModelId [EntityId] <p>The ID of the <code>MLModel</code> that generated predictions for the <code>BatchPrediction</code> request.</p>
+-- @param TotalRecordCount [LongType] <p>The number of total records that Amazon Machine Learning saw while processing the <code>BatchPrediction</code>.</p>
+-- @param LastUpdatedAt [EpochTime] <p>The time of the most recent edit to <code>BatchPrediction</code>. The time is expressed in epoch time.</p>
+-- @param BatchPredictionDataSourceId [EntityId] <p>The ID of the <code>DataSource</code> that was used to create the <code>BatchPrediction</code>. </p>
+-- @param OutputUri [S3Url] <p>The location of an Amazon S3 bucket or directory to receive the operation results.</p>
+-- @param StartedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>BatchPrediction</code> as <code>INPROGRESS</code>. <code>StartedAt</code> isn't available if the <code>BatchPrediction</code> is in the <code>PENDING</code> state.</p>
+-- @param BatchPredictionId [EntityId] <p>An ID assigned to the <code>BatchPrediction</code> at creation. This value should be identical to the value of the <code>BatchPredictionID</code> in the request.</p>
+-- @param LogUri [PresignedS3Url] <p>A link to the file that contains logs of the <code>CreateBatchPrediction</code> operation.</p>
+-- @param Message [Message] <p>A description of the most recent details about processing the batch prediction request.</p>
+-- @param CreatedAt [EpochTime] <p>The time when the <code>BatchPrediction</code> was created. The time is expressed in epoch time.</p>
+-- @param FinishedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>BatchPrediction</code> as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is only available when the <code>BatchPrediction</code> is in the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
 function M.GetBatchPredictionOutput(Status, ComputeTime, Name, InputDataLocationS3, InvalidRecordCount, CreatedByIamUser, MLModelId, TotalRecordCount, LastUpdatedAt, BatchPredictionDataSourceId, OutputUri, StartedAt, BatchPredictionId, LogUri, Message, CreatedAt, FinishedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBatchPredictionOutput")
 	local t = { 
@@ -2567,9 +2567,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;A custom key-value pair associated with an ML object, such as an ML model.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;An optional string, typically used to describe or define the tag. Valid characters include Unicode letters, digits, white space, _, ., /, =, +, -, %, and @.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;A unique identifier for the tag. Valid characters include Unicode letters, digits, white space, _, ., /, =, +, -, %, and @.&lt;/p&gt;
+-- <p>A custom key-value pair associated with an ML object, such as an ML model.</p>
+-- @param Value [TagValue] <p>An optional string, typically used to describe or define the tag. Valid characters include Unicode letters, digits, white space, _, ., /, =, +, -, %, and @.</p>
+-- @param Key [TagKey] <p>A unique identifier for the tag. Valid characters include Unicode letters, digits, white space, _, ., /, =, +, -, %, and @.</p>
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
@@ -2626,17 +2626,17 @@ end
 
 --- Create a structure of type DescribeDataSourcesInput
 --  
--- @param GT [ComparatorValue] &lt;p&gt;The greater than operator. The &lt;code&gt;DataSource&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are greater than the value specified with &lt;code&gt;GT&lt;/code&gt;.&lt;/p&gt;
--- @param FilterVariable [DataSourceFilterVariable] &lt;p&gt;Use one of the following variables to filter a list of &lt;code&gt;DataSource&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;CreatedAt&lt;/code&gt; - Sets the search criteria to &lt;code&gt;DataSource&lt;/code&gt; creation dates.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Status&lt;/code&gt; - Sets the search criteria to &lt;code&gt;DataSource&lt;/code&gt; statuses.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Name&lt;/code&gt; - Sets the search criteria to the contents of &lt;code&gt;DataSource&lt;/code&gt; &lt;b&gt; &lt;/b&gt; &lt;code&gt;Name&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DataUri&lt;/code&gt; - Sets the search criteria to the URI of data files used to create the &lt;code&gt;DataSource&lt;/code&gt;. The URI can identify either a file or an Amazon Simple Storage Service (Amazon S3) bucket or directory.&lt;/li&gt; &lt;li&gt; &lt;code&gt;IAMUser&lt;/code&gt; - Sets the search criteria to the user account that invoked the &lt;code&gt;DataSource&lt;/code&gt; creation.&lt;/li&gt; &lt;/ul&gt;
--- @param GE [ComparatorValue] &lt;p&gt;The greater than or equal to operator. The &lt;code&gt;DataSource&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are greater than or equal to the value specified with &lt;code&gt;GE&lt;/code&gt;. &lt;/p&gt;
--- @param NE [ComparatorValue] &lt;p&gt;The not equal to operator. The &lt;code&gt;DataSource&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values not equal to the value specified with &lt;code&gt;NE&lt;/code&gt;.&lt;/p&gt;
--- @param LT [ComparatorValue] &lt;p&gt;The less than operator. The &lt;code&gt;DataSource&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are less than the value specified with &lt;code&gt;LT&lt;/code&gt;.&lt;/p&gt;
--- @param LE [ComparatorValue] &lt;p&gt;The less than or equal to operator. The &lt;code&gt;DataSource&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that are less than or equal to the value specified with &lt;code&gt;LE&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PageLimit] &lt;p&gt; The maximum number of &lt;code&gt;DataSource&lt;/code&gt; to include in the result.&lt;/p&gt;
--- @param SortOrder [SortOrder] &lt;p&gt;A two-value parameter that determines the sequence of the resulting list of &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;asc&lt;/code&gt; - Arranges the list in ascending order (A-Z, 0-9).&lt;/li&gt; &lt;li&gt; &lt;code&gt;dsc&lt;/code&gt; - Arranges the list in descending order (Z-A, 9-0).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Results are sorted by &lt;code&gt;FilterVariable&lt;/code&gt;.&lt;/p&gt;
--- @param NextToken [StringType] &lt;p&gt;The ID of the page in the paginated results.&lt;/p&gt;
--- @param EQ [ComparatorValue] &lt;p&gt;The equal to operator. The &lt;code&gt;DataSource&lt;/code&gt; results will have &lt;code&gt;FilterVariable&lt;/code&gt; values that exactly match the value specified with &lt;code&gt;EQ&lt;/code&gt;.&lt;/p&gt;
--- @param Prefix [ComparatorValue] &lt;p&gt;A string that is found at the beginning of a variable, such as &lt;code&gt;Name&lt;/code&gt; or &lt;code&gt;Id&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For example, a &lt;code&gt;DataSource&lt;/code&gt; could have the &lt;code&gt;Name&lt;/code&gt; &lt;code&gt;2014-09-09-HolidayGiftMailer&lt;/code&gt;. To search for this &lt;code&gt;DataSource&lt;/code&gt;, select &lt;code&gt;Name&lt;/code&gt; for the &lt;code&gt;FilterVariable&lt;/code&gt; and any of the following strings for the &lt;code&gt;Prefix&lt;/code&gt;: &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;2014-09&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;2014-09-09&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;2014-09-09-Holiday&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt;
+-- @param GT [ComparatorValue] <p>The greater than operator. The <code>DataSource</code> results will have <code>FilterVariable</code> values that are greater than the value specified with <code>GT</code>.</p>
+-- @param FilterVariable [DataSourceFilterVariable] <p>Use one of the following variables to filter a list of <code>DataSource</code>:</p> <ul> <li> <code>CreatedAt</code> - Sets the search criteria to <code>DataSource</code> creation dates.</li> <li> <code>Status</code> - Sets the search criteria to <code>DataSource</code> statuses.</li> <li> <code>Name</code> - Sets the search criteria to the contents of <code>DataSource</code> <b> </b> <code>Name</code>.</li> <li> <code>DataUri</code> - Sets the search criteria to the URI of data files used to create the <code>DataSource</code>. The URI can identify either a file or an Amazon Simple Storage Service (Amazon S3) bucket or directory.</li> <li> <code>IAMUser</code> - Sets the search criteria to the user account that invoked the <code>DataSource</code> creation.</li> </ul>
+-- @param GE [ComparatorValue] <p>The greater than or equal to operator. The <code>DataSource</code> results will have <code>FilterVariable</code> values that are greater than or equal to the value specified with <code>GE</code>. </p>
+-- @param NE [ComparatorValue] <p>The not equal to operator. The <code>DataSource</code> results will have <code>FilterVariable</code> values not equal to the value specified with <code>NE</code>.</p>
+-- @param LT [ComparatorValue] <p>The less than operator. The <code>DataSource</code> results will have <code>FilterVariable</code> values that are less than the value specified with <code>LT</code>.</p>
+-- @param LE [ComparatorValue] <p>The less than or equal to operator. The <code>DataSource</code> results will have <code>FilterVariable</code> values that are less than or equal to the value specified with <code>LE</code>.</p>
+-- @param Limit [PageLimit] <p> The maximum number of <code>DataSource</code> to include in the result.</p>
+-- @param SortOrder [SortOrder] <p>A two-value parameter that determines the sequence of the resulting list of <code>DataSource</code>.</p> <ul> <li> <code>asc</code> - Arranges the list in ascending order (A-Z, 0-9).</li> <li> <code>dsc</code> - Arranges the list in descending order (Z-A, 9-0).</li> </ul> <p>Results are sorted by <code>FilterVariable</code>.</p>
+-- @param NextToken [StringType] <p>The ID of the page in the paginated results.</p>
+-- @param EQ [ComparatorValue] <p>The equal to operator. The <code>DataSource</code> results will have <code>FilterVariable</code> values that exactly match the value specified with <code>EQ</code>.</p>
+-- @param Prefix [ComparatorValue] <p>A string that is found at the beginning of a variable, such as <code>Name</code> or <code>Id</code>.</p> <p>For example, a <code>DataSource</code> could have the <code>Name</code> <code>2014-09-09-HolidayGiftMailer</code>. To search for this <code>DataSource</code>, select <code>Name</code> for the <code>FilterVariable</code> and any of the following strings for the <code>Prefix</code>: </p> <ul> <li><p>2014-09</p></li> <li><p>2014-09-09</p></li> <li><p>2014-09-09-Holiday</p></li> </ul>
 function M.DescribeDataSourcesInput(GT, FilterVariable, GE, NE, LT, LE, Limit, SortOrder, NextToken, EQ, Prefix, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDataSourcesInput")
 	local t = { 
@@ -2671,11 +2671,11 @@ function M.AssertPrediction(struct)
 end
 
 --- Create a structure of type Prediction
--- &lt;p&gt;The output from a &lt;code&gt;Predict&lt;/code&gt; operation: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Details&lt;/code&gt; - Contains the following attributes: &lt;code&gt;DetailsAttributes.PREDICTIVE_MODEL_TYPE - REGRESSION | BINARY | MULTICLASS&lt;/code&gt; &lt;code&gt;DetailsAttributes.ALGORITHM - SGD&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PredictedLabel&lt;/code&gt; - Present for either a &lt;code&gt;BINARY&lt;/code&gt; or &lt;code&gt;MULTICLASS&lt;/code&gt; &lt;code&gt;MLModel&lt;/code&gt; request. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PredictedScores&lt;/code&gt; - Contains the raw classification score corresponding to each label. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PredictedValue&lt;/code&gt; - Present for a &lt;code&gt;REGRESSION&lt;/code&gt; &lt;code&gt;MLModel&lt;/code&gt; request. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param predictedLabel [Label] &lt;p&gt;The prediction label for either a &lt;code&gt;BINARY&lt;/code&gt; or &lt;code&gt;MULTICLASS&lt;/code&gt; &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param predictedValue [floatLabel] The prediction value for &lt;code&gt;REGRESSION&lt;/code&gt; &lt;code&gt;MLModel&lt;/code&gt;.
--- @param predictedScores [ScoreValuePerLabelMap] &lt;p&gt;The output from a &lt;code&gt;Predict&lt;/code&gt; operation: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Details&lt;/code&gt; - Contains the following attributes: &lt;code&gt;DetailsAttributes.PREDICTIVE_MODEL_TYPE - REGRESSION | BINARY | MULTICLASS&lt;/code&gt; &lt;code&gt;DetailsAttributes.ALGORITHM - SGD&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PredictedLabel&lt;/code&gt; - Present for either a &lt;code&gt;BINARY&lt;/code&gt; or &lt;code&gt;MULTICLASS&lt;/code&gt; &lt;code&gt;MLModel&lt;/code&gt; request. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PredictedScores&lt;/code&gt; - Contains the raw classification score corresponding to each label. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PredictedValue&lt;/code&gt; - Present for a &lt;code&gt;REGRESSION&lt;/code&gt; &lt;code&gt;MLModel&lt;/code&gt; request. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param details [DetailsMap] &lt;p&gt;The output from a &lt;code&gt;Predict&lt;/code&gt; operation: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Details&lt;/code&gt; - Contains the following attributes: &lt;code&gt;DetailsAttributes.PREDICTIVE_MODEL_TYPE - REGRESSION | BINARY | MULTICLASS&lt;/code&gt; &lt;code&gt;DetailsAttributes.ALGORITHM - SGD&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PredictedLabel&lt;/code&gt; - Present for either a &lt;code&gt;BINARY&lt;/code&gt; or &lt;code&gt;MULTICLASS&lt;/code&gt; &lt;code&gt;MLModel&lt;/code&gt; request. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PredictedScores&lt;/code&gt; - Contains the raw classification score corresponding to each label. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PredictedValue&lt;/code&gt; - Present for a &lt;code&gt;REGRESSION&lt;/code&gt; &lt;code&gt;MLModel&lt;/code&gt; request. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The output from a <code>Predict</code> operation: </p> <ul> <li> <p> <code>Details</code> - Contains the following attributes: <code>DetailsAttributes.PREDICTIVE_MODEL_TYPE - REGRESSION | BINARY | MULTICLASS</code> <code>DetailsAttributes.ALGORITHM - SGD</code> </p> </li> <li> <p> <code>PredictedLabel</code> - Present for either a <code>BINARY</code> or <code>MULTICLASS</code> <code>MLModel</code> request. </p> </li> <li> <p> <code>PredictedScores</code> - Contains the raw classification score corresponding to each label. </p> </li> <li> <p> <code>PredictedValue</code> - Present for a <code>REGRESSION</code> <code>MLModel</code> request. </p> </li> </ul>
+-- @param predictedLabel [Label] <p>The prediction label for either a <code>BINARY</code> or <code>MULTICLASS</code> <code>MLModel</code>.</p>
+-- @param predictedValue [floatLabel] The prediction value for <code>REGRESSION</code> <code>MLModel</code>.
+-- @param predictedScores [ScoreValuePerLabelMap] <p>The output from a <code>Predict</code> operation: </p> <ul> <li> <p> <code>Details</code> - Contains the following attributes: <code>DetailsAttributes.PREDICTIVE_MODEL_TYPE - REGRESSION | BINARY | MULTICLASS</code> <code>DetailsAttributes.ALGORITHM - SGD</code> </p> </li> <li> <p> <code>PredictedLabel</code> - Present for either a <code>BINARY</code> or <code>MULTICLASS</code> <code>MLModel</code> request. </p> </li> <li> <p> <code>PredictedScores</code> - Contains the raw classification score corresponding to each label. </p> </li> <li> <p> <code>PredictedValue</code> - Present for a <code>REGRESSION</code> <code>MLModel</code> request. </p> </li> </ul>
+-- @param details [DetailsMap] <p>The output from a <code>Predict</code> operation: </p> <ul> <li> <p> <code>Details</code> - Contains the following attributes: <code>DetailsAttributes.PREDICTIVE_MODEL_TYPE - REGRESSION | BINARY | MULTICLASS</code> <code>DetailsAttributes.ALGORITHM - SGD</code> </p> </li> <li> <p> <code>PredictedLabel</code> - Present for either a <code>BINARY</code> or <code>MULTICLASS</code> <code>MLModel</code> request. </p> </li> <li> <p> <code>PredictedScores</code> - Contains the raw classification score corresponding to each label. </p> </li> <li> <p> <code>PredictedValue</code> - Present for a <code>REGRESSION</code> <code>MLModel</code> request. </p> </li> </ul>
 function M.Prediction(predictedLabel, predictedValue, predictedScores, details, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Prediction")
 	local t = { 
@@ -2700,8 +2700,8 @@ function M.AssertPredictorNotMountedException(struct)
 end
 
 --- Create a structure of type PredictorNotMountedException
--- &lt;p&gt;The exception is thrown when a predict request is made to an unmounted &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The exception is thrown when a predict request is made to an unmounted &lt;code&gt;MLModel&lt;/code&gt;.&lt;/p&gt;
+-- <p>The exception is thrown when a predict request is made to an unmounted <code>MLModel</code>.</p>
+-- @param message [ErrorMessage] <p>The exception is thrown when a predict request is made to an unmounted <code>MLModel</code>.</p>
 function M.PredictorNotMountedException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PredictorNotMountedException")
 	local t = { 
@@ -2731,11 +2731,11 @@ end
 
 --- Create a structure of type CreateDataSourceFromRedshiftInput
 --  
--- @param DataSourceName [EntityName] &lt;p&gt;A user-supplied name or description of the &lt;code&gt;DataSource&lt;/code&gt;. &lt;/p&gt;
--- @param RoleARN [RoleARN] &lt;p&gt;A fully specified role Amazon Resource Name (ARN). Amazon ML assumes the role on behalf of the user to create the following: &lt;/p&gt; &lt;p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;A security group to allow Amazon ML to execute the &lt;code&gt;SelectSqlQuery&lt;/code&gt; query on an Amazon Redshift cluster&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;An Amazon S3 bucket policy to grant Amazon ML read/write permissions on the &lt;code&gt;S3StagingLocation&lt;/code&gt;&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt;
--- @param ComputeStatistics [ComputeStatistics] &lt;p&gt;The compute statistics for a &lt;code&gt;DataSource&lt;/code&gt;. The statistics are generated from the observation data referenced by a &lt;code&gt;DataSource&lt;/code&gt;. Amazon ML uses the statistics internally during &lt;code&gt;MLModel&lt;/code&gt; training. This parameter must be set to &lt;code&gt;true&lt;/code&gt; if the &lt;code&gt;DataSource&lt;/code&gt; needs to be used for &lt;code&gt;MLModel&lt;/code&gt; training.&lt;/p&gt;
--- @param DataSourceId [EntityId] &lt;p&gt;A user-supplied ID that uniquely identifies the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt;
--- @param DataSpec [RedshiftDataSpec] &lt;p&gt;The data specification of an Amazon Redshift &lt;code&gt;DataSource&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;DatabaseInformation - &lt;ul&gt; &lt;li&gt; &lt;code&gt;DatabaseName&lt;/code&gt; - The name of the Amazon Redshift database. &lt;/li&gt; &lt;li&gt; &lt;code&gt; ClusterIdentifier&lt;/code&gt; - The unique ID for the Amazon Redshift cluster.&lt;/li&gt; &lt;/ul&gt;&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;DatabaseCredentials - The AWS Identity and Access Management (IAM) credentials that are used to connect to the Amazon Redshift database.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;SelectSqlQuery - The query that is used to retrieve the observation data for the &lt;code&gt;Datasource&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;S3StagingLocation - The Amazon Simple Storage Service (Amazon S3) location for staging Amazon Redshift data. The data retrieved from Amazon Redshift using the &lt;code&gt;SelectSqlQuery&lt;/code&gt; query is stored in this location.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;DataSchemaUri - The Amazon S3 location of the &lt;code&gt;DataSchema&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;DataSchema - A JSON string representing the schema. This is not required if &lt;code&gt;DataSchemaUri&lt;/code&gt; is specified. &lt;/p&gt;&lt;/li&gt; &lt;li&gt; &lt;p&gt;DataRearrangement - A JSON string that represents the splitting and rearrangement requirements for the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt; &lt;p&gt; Sample - &lt;code&gt; &quot;{\&quot;splitting\&quot;:{\&quot;percentBegin\&quot;:10,\&quot;percentEnd\&quot;:60}}&quot;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param DataSourceName [EntityName] <p>A user-supplied name or description of the <code>DataSource</code>. </p>
+-- @param RoleARN [RoleARN] <p>A fully specified role Amazon Resource Name (ARN). Amazon ML assumes the role on behalf of the user to create the following: </p> <p> <ul> <li><p>A security group to allow Amazon ML to execute the <code>SelectSqlQuery</code> query on an Amazon Redshift cluster</p></li> <li><p>An Amazon S3 bucket policy to grant Amazon ML read/write permissions on the <code>S3StagingLocation</code></p></li> </ul> </p>
+-- @param ComputeStatistics [ComputeStatistics] <p>The compute statistics for a <code>DataSource</code>. The statistics are generated from the observation data referenced by a <code>DataSource</code>. Amazon ML uses the statistics internally during <code>MLModel</code> training. This parameter must be set to <code>true</code> if the <code>DataSource</code> needs to be used for <code>MLModel</code> training.</p>
+-- @param DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>.</p>
+-- @param DataSpec [RedshiftDataSpec] <p>The data specification of an Amazon Redshift <code>DataSource</code>:</p> <ul> <li><p>DatabaseInformation - <ul> <li> <code>DatabaseName</code> - The name of the Amazon Redshift database. </li> <li> <code> ClusterIdentifier</code> - The unique ID for the Amazon Redshift cluster.</li> </ul></p></li> <li><p>DatabaseCredentials - The AWS Identity and Access Management (IAM) credentials that are used to connect to the Amazon Redshift database.</p></li> <li><p>SelectSqlQuery - The query that is used to retrieve the observation data for the <code>Datasource</code>.</p></li> <li><p>S3StagingLocation - The Amazon Simple Storage Service (Amazon S3) location for staging Amazon Redshift data. The data retrieved from Amazon Redshift using the <code>SelectSqlQuery</code> query is stored in this location.</p></li> <li><p>DataSchemaUri - The Amazon S3 location of the <code>DataSchema</code>.</p></li> <li><p>DataSchema - A JSON string representing the schema. This is not required if <code>DataSchemaUri</code> is specified. </p></li> <li> <p>DataRearrangement - A JSON string that represents the splitting and rearrangement requirements for the <code>DataSource</code>.</p> <p> Sample - <code> "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"</code> </p> </li> </ul>
 -- Required parameter: DataSourceId
 -- Required parameter: DataSpec
 -- Required parameter: RoleARN
@@ -2788,9 +2788,9 @@ function M.AssertDeleteTagsOutput(struct)
 end
 
 --- Create a structure of type DeleteTagsOutput
--- &lt;p&gt;Amazon ML returns the following elements. &lt;/p&gt;
--- @param ResourceType [TaggableResourceType] &lt;p&gt;The type of the ML object from which tags were deleted.&lt;/p&gt;
--- @param ResourceId [EntityId] &lt;p&gt;The ID of the ML object from which tags were deleted.&lt;/p&gt;
+-- <p>Amazon ML returns the following elements. </p>
+-- @param ResourceType [TaggableResourceType] <p>The type of the ML object from which tags were deleted.</p>
+-- @param ResourceId [EntityId] <p>The ID of the ML object from which tags were deleted.</p>
 function M.DeleteTagsOutput(ResourceType, ResourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsOutput")
 	local t = { 
@@ -2833,7 +2833,7 @@ function M.AssertRDSDatabaseUsername(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;The username to be used by Amazon ML to connect to database on an Amazon RDS instance. The username should have sufficient permissions to execute an &lt;code&gt;RDSSelectSqlQuery&lt;/code&gt; query.&lt;/p&gt;
+-- <p>The username to be used by Amazon ML to connect to database on an Amazon RDS instance. The username should have sufficient permissions to execute an <code>RDSSelectSqlQuery</code> query.</p>
 function M.RDSDatabaseUsername(str)
 	M.AssertRDSDatabaseUsername(str)
 	return str
@@ -2844,7 +2844,7 @@ function M.AssertDetailsAttributes(str)
 	assert(type(str) == "string", "Expected DetailsAttributes to be of type 'string'")
 end
 
--- Contains the key values of &lt;code&gt;DetailsMap&lt;/code&gt;: &lt;code&gt;PredictiveModelType&lt;/code&gt; - Indicates the type of the &lt;code&gt;MLModel&lt;/code&gt;. &lt;code&gt;Algorithm&lt;/code&gt; - Indicates the algorithm that was used for the &lt;code&gt;MLModel&lt;/code&gt;.
+-- Contains the key values of <code>DetailsMap</code>: <code>PredictiveModelType</code> - Indicates the type of the <code>MLModel</code>. <code>Algorithm</code> - Indicates the algorithm that was used for the <code>MLModel</code>.
 function M.DetailsAttributes(str)
 	M.AssertDetailsAttributes(str)
 	return str
@@ -2857,7 +2857,7 @@ function M.AssertRDSDatabaseName(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;The name of a database hosted on an RDS DB instance.&lt;/p&gt;
+-- <p>The name of a database hosted on an RDS DB instance.</p>
 function M.RDSDatabaseName(str)
 	M.AssertRDSDatabaseName(str)
 	return str
@@ -2870,7 +2870,7 @@ function M.AssertRedshiftDatabasePassword(str)
 	assert(#str >= 8, "Expected string to be min 8 characters")
 end
 
--- &lt;p&gt;A password to be used by Amazon ML to connect to a database on an Amazon Redshift cluster. The password should have sufficient permissions to execute a &lt;code&gt;RedshiftSelectSqlQuery&lt;/code&gt; query. The password should be valid for an Amazon Redshift &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html&quot;&gt;USER&lt;/a&gt;.&lt;/p&gt;
+-- <p>A password to be used by Amazon ML to connect to a database on an Amazon Redshift cluster. The password should have sufficient permissions to execute a <code>RedshiftSelectSqlQuery</code> query. The password should be valid for an Amazon Redshift <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html">USER</a>.</p>
 function M.RedshiftDatabasePassword(str)
 	M.AssertRedshiftDatabasePassword(str)
 	return str
@@ -2947,7 +2947,7 @@ function M.AssertRedshiftSelectSqlQuery(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt; Describes the SQL query to execute on the Amazon Redshift database. The SQL query should be valid for an Amazon Redshift &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/dg/r_SELECT_synopsis.html&quot;&gt;SELECT&lt;/a&gt;. &lt;/p&gt;
+-- <p> Describes the SQL query to execute on the Amazon Redshift database. The SQL query should be valid for an Amazon Redshift <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_SELECT_synopsis.html">SELECT</a>. </p>
 function M.RedshiftSelectSqlQuery(str)
 	M.AssertRedshiftSelectSqlQuery(str)
 	return str
@@ -2972,7 +2972,7 @@ function M.AssertRedshiftClusterIdentifier(str)
 	assert(str:match("[a-z0-9-]+"), "Expected string to match pattern '[a-z0-9-]+'")
 end
 
--- &lt;p&gt;The ID of an Amazon Redshift cluster.&lt;/p&gt;
+-- <p>The ID of an Amazon Redshift cluster.</p>
 function M.RedshiftClusterIdentifier(str)
 	M.AssertRedshiftClusterIdentifier(str)
 	return str
@@ -2985,7 +2985,7 @@ function M.AssertRDSSelectSqlQuery(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;The SQL query to be executed against the Amazon RDS database. The SQL query should be valid for the Amazon RDS type being used. &lt;/p&gt;
+-- <p>The SQL query to be executed against the Amazon RDS database. The SQL query should be valid for the Amazon RDS type being used. </p>
 function M.RDSSelectSqlQuery(str)
 	M.AssertRDSSelectSqlQuery(str)
 	return str
@@ -3007,7 +3007,7 @@ function M.AssertAlgorithm(str)
 	assert(type(str) == "string", "Expected Algorithm to be of type 'string'")
 end
 
--- &lt;p&gt;The function used to train an &lt;code&gt;MLModel&lt;/code&gt;. Training choices supported by Amazon ML include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;SGD&lt;/code&gt; - Stochastic Gradient Descent.&lt;/li&gt; &lt;li&gt; &lt;code&gt;RandomForest&lt;/code&gt; - Random forest of decision trees.&lt;/li&gt; &lt;/ul&gt;
+-- <p>The function used to train an <code>MLModel</code>. Training choices supported by Amazon ML include the following:</p> <ul> <li> <code>SGD</code> - Stochastic Gradient Descent.</li> <li> <code>RandomForest</code> - Random forest of decision trees.</li> </ul>
 function M.Algorithm(str)
 	M.AssertAlgorithm(str)
 	return str
@@ -3057,7 +3057,7 @@ function M.AssertRedshiftDatabaseUsername(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;A username to be used by Amazon Machine Learning (Amazon ML)to connect to a database on an Amazon Redshift cluster. The username should have sufficient permissions to execute the &lt;code&gt;RedshiftSelectSqlQuery&lt;/code&gt; query. The username should be valid for an Amazon Redshift &lt;a href=&quot;http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html&quot;&gt;USER&lt;/a&gt;.&lt;/p&gt;
+-- <p>A username to be used by Amazon Machine Learning (Amazon ML)to connect to a database on an Amazon Redshift cluster. The username should have sufficient permissions to execute the <code>RedshiftSelectSqlQuery</code> query. The username should be valid for an Amazon Redshift <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html">USER</a>.</p>
 function M.RedshiftDatabaseUsername(str)
 	M.AssertRedshiftDatabaseUsername(str)
 	return str
@@ -3069,7 +3069,7 @@ function M.AssertMessage(str)
 	assert(#str <= 10240, "Expected string to be max 10240 characters")
 end
 
--- &lt;p&gt; Description of the most recent details about an object.&lt;/p&gt;
+-- <p> Description of the most recent details about an object.</p>
 function M.Message(str)
 	M.AssertMessage(str)
 	return str
@@ -3105,7 +3105,7 @@ function M.AssertEntityName(str)
 	assert(str:match(".*%S.*|^$"), "Expected string to match pattern '.*%S.*|^$'")
 end
 
--- &lt;p&gt;A user-supplied name or description of the Amazon ML resource.&lt;/p&gt;
+-- <p>A user-supplied name or description of the Amazon ML resource.</p>
 function M.EntityName(str)
 	M.AssertEntityName(str)
 	return str
@@ -3129,7 +3129,7 @@ function M.AssertBatchPredictionFilterVariable(str)
 	assert(type(str) == "string", "Expected BatchPredictionFilterVariable to be of type 'string'")
 end
 
--- &lt;p&gt;A list of the variables to use in searching or filtering &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;CreatedAt&lt;/code&gt; - Sets the search criteria to &lt;code&gt;BatchPrediction&lt;/code&gt; creation date.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Status&lt;/code&gt; - Sets the search criteria to &lt;code&gt;BatchPrediction&lt;/code&gt; status.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Name&lt;/code&gt; - Sets the search criteria to the contents of &lt;code&gt;BatchPrediction&lt;/code&gt;&lt;b&gt; &lt;/b&gt; &lt;code&gt;Name&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;IAMUser&lt;/code&gt; - Sets the search criteria to the user account that invoked the &lt;code&gt;BatchPrediction&lt;/code&gt; creation.&lt;/li&gt; &lt;li&gt; &lt;code&gt;MLModelId&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;MLModel&lt;/code&gt; used in the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DataSourceId&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;DataSource&lt;/code&gt; used in the &lt;code&gt;BatchPrediction&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DataURI&lt;/code&gt; - Sets the search criteria to the data file(s) used in the &lt;code&gt;BatchPrediction&lt;/code&gt;. The URL can identify either a file or an Amazon Simple Storage Service (Amazon S3) bucket or directory.&lt;/li&gt; &lt;/ul&gt;
+-- <p>A list of the variables to use in searching or filtering <code>BatchPrediction</code>.</p> <ul> <li> <code>CreatedAt</code> - Sets the search criteria to <code>BatchPrediction</code> creation date.</li> <li> <code>Status</code> - Sets the search criteria to <code>BatchPrediction</code> status.</li> <li> <code>Name</code> - Sets the search criteria to the contents of <code>BatchPrediction</code><b> </b> <code>Name</code>.</li> <li> <code>IAMUser</code> - Sets the search criteria to the user account that invoked the <code>BatchPrediction</code> creation.</li> <li> <code>MLModelId</code> - Sets the search criteria to the <code>MLModel</code> used in the <code>BatchPrediction</code>.</li> <li> <code>DataSourceId</code> - Sets the search criteria to the <code>DataSource</code> used in the <code>BatchPrediction</code>.</li> <li> <code>DataURI</code> - Sets the search criteria to the data file(s) used in the <code>BatchPrediction</code>. The URL can identify either a file or an Amazon Simple Storage Service (Amazon S3) bucket or directory.</li> </ul>
 function M.BatchPredictionFilterVariable(str)
 	M.AssertBatchPredictionFilterVariable(str)
 	return str
@@ -3154,7 +3154,7 @@ function M.AssertDataSourceFilterVariable(str)
 	assert(type(str) == "string", "Expected DataSourceFilterVariable to be of type 'string'")
 end
 
--- &lt;p&gt;A list of the variables to use in searching or filtering &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;CreatedAt&lt;/code&gt; - Sets the search criteria to &lt;code&gt;DataSource&lt;/code&gt; creation date.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Status&lt;/code&gt; - Sets the search criteria to &lt;code&gt;DataSource&lt;/code&gt; status.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Name&lt;/code&gt; - Sets the search criteria to the contents of &lt;code&gt;DataSource&lt;/code&gt; &lt;b&gt; &lt;/b&gt; &lt;code&gt;Name&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DataUri&lt;/code&gt; - Sets the search criteria to the URI of data files used to create the &lt;code&gt;DataSource&lt;/code&gt;. The URI can identify either a file or an Amazon Simple Storage Service (Amazon S3) bucket or directory.&lt;/li&gt; &lt;li&gt; &lt;code&gt;IAMUser&lt;/code&gt; - Sets the search criteria to the user account that invoked the &lt;code&gt;DataSource&lt;/code&gt; creation.&lt;/li&gt; &lt;/ul&gt; &lt;note&gt;&lt;title&gt;Note&lt;/title&gt; &lt;p&gt;The variable names should match the variable names in the &lt;code&gt;DataSource&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt;
+-- <p>A list of the variables to use in searching or filtering <code>DataSource</code>.</p> <ul> <li> <code>CreatedAt</code> - Sets the search criteria to <code>DataSource</code> creation date.</li> <li> <code>Status</code> - Sets the search criteria to <code>DataSource</code> status.</li> <li> <code>Name</code> - Sets the search criteria to the contents of <code>DataSource</code> <b> </b> <code>Name</code>.</li> <li> <code>DataUri</code> - Sets the search criteria to the URI of data files used to create the <code>DataSource</code>. The URI can identify either a file or an Amazon Simple Storage Service (Amazon S3) bucket or directory.</li> <li> <code>IAMUser</code> - Sets the search criteria to the user account that invoked the <code>DataSource</code> creation.</li> </ul> <note><title>Note</title> <p>The variable names should match the variable names in the <code>DataSource</code>.</p> </note>
 function M.DataSourceFilterVariable(str)
 	M.AssertDataSourceFilterVariable(str)
 	return str
@@ -3166,7 +3166,7 @@ function M.AssertDataSchema(str)
 	assert(#str <= 131071, "Expected string to be max 131071 characters")
 end
 
--- &lt;p&gt;The schema of a &lt;code&gt;DataSource&lt;/code&gt;. The &lt;code&gt;DataSchema&lt;/code&gt; defines the structure of the observation data in the data file(s) referenced in the &lt;code&gt;DataSource&lt;/code&gt;. The DataSource schema is expressed in JSON format.&lt;/p&gt; &lt;p&gt;&lt;code&gt;DataSchema&lt;/code&gt; is not required if you specify a &lt;code&gt;DataSchemaUri&lt;/code&gt;&lt;/p&gt; &lt;p&gt;{ &quot;version&quot;: &quot;1.0&quot;, &quot;recordAnnotationFieldName&quot;: &quot;F1&quot;, &quot;recordWeightFieldName&quot;: &quot;F2&quot;, &quot;targetFieldName&quot;: &quot;F3&quot;, &quot;dataFormat&quot;: &quot;CSV&quot;, &quot;dataFileContainsHeader&quot;: true, &quot;variables&quot;: [ { &quot;fieldName&quot;: &quot;F1&quot;, &quot;fieldType&quot;: &quot;TEXT&quot; }, { &quot;fieldName&quot;: &quot;F2&quot;, &quot;fieldType&quot;: &quot;NUMERIC&quot; }, { &quot;fieldName&quot;: &quot;F3&quot;, &quot;fieldType&quot;: &quot;CATEGORICAL&quot; }, { &quot;fieldName&quot;: &quot;F4&quot;, &quot;fieldType&quot;: &quot;NUMERIC&quot; }, { &quot;fieldName&quot;: &quot;F5&quot;, &quot;fieldType&quot;: &quot;CATEGORICAL&quot; }, { &quot;fieldName&quot;: &quot;F6&quot;, &quot;fieldType&quot;: &quot;TEXT&quot; }, { &quot;fieldName&quot;: &quot;F7&quot;, &quot;fieldType&quot;: &quot;WEIGHTED_INT_SEQUENCE&quot; }, { &quot;fieldName&quot;: &quot;F8&quot;, &quot;fieldType&quot;: &quot;WEIGHTED_STRING_SEQUENCE&quot; } ], &quot;excludedVariableNames&quot;: [ &quot;F6&quot; ] } &lt;/p&gt;
+-- <p>The schema of a <code>DataSource</code>. The <code>DataSchema</code> defines the structure of the observation data in the data file(s) referenced in the <code>DataSource</code>. The DataSource schema is expressed in JSON format.</p> <p><code>DataSchema</code> is not required if you specify a <code>DataSchemaUri</code></p> <p>{ "version": "1.0", "recordAnnotationFieldName": "F1", "recordWeightFieldName": "F2", "targetFieldName": "F3", "dataFormat": "CSV", "dataFileContainsHeader": true, "variables": [ { "fieldName": "F1", "fieldType": "TEXT" }, { "fieldName": "F2", "fieldType": "NUMERIC" }, { "fieldName": "F3", "fieldType": "CATEGORICAL" }, { "fieldName": "F4", "fieldType": "NUMERIC" }, { "fieldName": "F5", "fieldType": "CATEGORICAL" }, { "fieldName": "F6", "fieldType": "TEXT" }, { "fieldName": "F7", "fieldType": "WEIGHTED_INT_SEQUENCE" }, { "fieldName": "F8", "fieldType": "WEIGHTED_STRING_SEQUENCE" } ], "excludedVariableNames": [ "F6" ] } </p>
 function M.DataSchema(str)
 	M.AssertDataSchema(str)
 	return str
@@ -3190,7 +3190,7 @@ function M.AssertVariableName(str)
 	assert(type(str) == "string", "Expected VariableName to be of type 'string'")
 end
 
--- &lt;p&gt;The name of a variable. Currently it's used to specify the name of the target value, label, weight, and tags.&lt;/p&gt;
+-- <p>The name of a variable. Currently it's used to specify the name of the target value, label, weight, and tags.</p>
 function M.VariableName(str)
 	M.AssertVariableName(str)
 	return str
@@ -3204,7 +3204,7 @@ function M.AssertRedshiftDatabaseName(str)
 	assert(str:match("[a-z0-9]+"), "Expected string to match pattern '[a-z0-9]+'")
 end
 
--- &lt;p&gt;The name of a database hosted on an Amazon Redshift cluster.&lt;/p&gt;
+-- <p>The name of a database hosted on an Amazon Redshift cluster.</p>
 function M.RedshiftDatabaseName(str)
 	M.AssertRedshiftDatabaseName(str)
 	return str
@@ -3215,7 +3215,7 @@ function M.AssertVariableValue(str)
 	assert(type(str) == "string", "Expected VariableValue to be of type 'string'")
 end
 
--- &lt;p&gt;The value of a variable. Currently it's used to specify values of the target value, weights, and tag variables and for filtering variable values.&lt;/p&gt;
+-- <p>The value of a variable. Currently it's used to specify values of the target value, weights, and tag variables and for filtering variable values.</p>
 function M.VariableValue(str)
 	M.AssertVariableValue(str)
 	return str
@@ -3228,7 +3228,7 @@ function M.AssertRDSDatabasePassword(str)
 	assert(#str >= 8, "Expected string to be min 8 characters")
 end
 
--- &lt;p&gt;The password to be used by Amazon ML to connect to a database on an RDS DB instance. The password should have sufficient permissions to execute the &lt;code&gt;RDSSelectQuery&lt;/code&gt; query.&lt;/p&gt;
+-- <p>The password to be used by Amazon ML to connect to a database on an RDS DB instance. The password should have sufficient permissions to execute the <code>RDSSelectQuery</code> query.</p>
 function M.RDSDatabasePassword(str)
 	M.AssertRDSDatabasePassword(str)
 	return str
@@ -3241,7 +3241,7 @@ function M.AssertComparatorValue(str)
 	assert(str:match(".*%S.*|^$"), "Expected string to match pattern '.*%S.*|^$'")
 end
 
--- &lt;p&gt;The value specified in a filtering condition. The &lt;code&gt;ComparatorValue&lt;/code&gt; becomes the reference value when matching or evaluating data values in filtering and searching functions.&lt;/p&gt;
+-- <p>The value specified in a filtering condition. The <code>ComparatorValue</code> becomes the reference value when matching or evaluating data values in filtering and searching functions.</p>
 function M.ComparatorValue(str)
 	M.AssertComparatorValue(str)
 	return str
@@ -3252,7 +3252,7 @@ function M.AssertEvaluationFilterVariable(str)
 	assert(type(str) == "string", "Expected EvaluationFilterVariable to be of type 'string'")
 end
 
--- &lt;p&gt;A list of the variables to use in searching or filtering &lt;code&gt;Evaluation&lt;/code&gt;.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;CreatedAt&lt;/code&gt; - Sets the search criteria to &lt;code&gt;Evaluation&lt;/code&gt; creation date.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Status&lt;/code&gt; - Sets the search criteria to &lt;code&gt;Evaluation&lt;/code&gt; status.&lt;/li&gt; &lt;li&gt; &lt;code&gt;Name&lt;/code&gt; - Sets the search criteria to the contents of &lt;code&gt;Evaluation&lt;/code&gt; &lt;b&gt; &lt;/b&gt; &lt;code&gt;Name&lt;/code&gt;.&lt;/li&gt; &lt;li&gt; &lt;code&gt;IAMUser&lt;/code&gt; - Sets the search criteria to the user account that invoked an evaluation.&lt;/li&gt; &lt;li&gt; &lt;code&gt;MLModelId&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;Predictor&lt;/code&gt; that was evaluated.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DataSourceId&lt;/code&gt; - Sets the search criteria to the &lt;code&gt;DataSource&lt;/code&gt; used in evaluation.&lt;/li&gt; &lt;li&gt; &lt;code&gt;DataUri&lt;/code&gt; - Sets the search criteria to the data file(s) used in evaluation. The URL can identify either a file or an Amazon Simple Storage Service (Amazon S3) bucket or directory.&lt;/li&gt; &lt;/ul&gt;
+-- <p>A list of the variables to use in searching or filtering <code>Evaluation</code>.</p> <ul> <li> <code>CreatedAt</code> - Sets the search criteria to <code>Evaluation</code> creation date.</li> <li> <code>Status</code> - Sets the search criteria to <code>Evaluation</code> status.</li> <li> <code>Name</code> - Sets the search criteria to the contents of <code>Evaluation</code> <b> </b> <code>Name</code>.</li> <li> <code>IAMUser</code> - Sets the search criteria to the user account that invoked an evaluation.</li> <li> <code>MLModelId</code> - Sets the search criteria to the <code>Predictor</code> that was evaluated.</li> <li> <code>DataSourceId</code> - Sets the search criteria to the <code>DataSource</code> used in evaluation.</li> <li> <code>DataUri</code> - Sets the search criteria to the data file(s) used in evaluation. The URL can identify either a file or an Amazon Simple Storage Service (Amazon S3) bucket or directory.</li> </ul>
 function M.EvaluationFilterVariable(str)
 	M.AssertEvaluationFilterVariable(str)
 	return str
@@ -3274,7 +3274,7 @@ function M.AssertEntityStatus(str)
 	assert(type(str) == "string", "Expected EntityStatus to be of type 'string'")
 end
 
--- &lt;p&gt;Object status with the following possible values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code&gt;PENDING&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;INPROGRESS&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;FAILED&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;COMPLETED&lt;/code&gt;&lt;/li&gt; &lt;li&gt;&lt;code&gt;DELETED&lt;/code&gt;&lt;/li&gt; &lt;/ul&gt;
+-- <p>Object status with the following possible values:</p> <ul> <li><code>PENDING</code></li> <li><code>INPROGRESS</code></li> <li><code>FAILED</code></li> <li><code>COMPLETED</code></li> <li><code>DELETED</code></li> </ul>
 function M.EntityStatus(str)
 	M.AssertEntityStatus(str)
 	return str
@@ -3299,7 +3299,7 @@ function M.AssertAwsUserArn(str)
 	assert(str:match("arn:aws:iam::[0-9]+:((user/.+)|(root))"), "Expected string to match pattern 'arn:aws:iam::[0-9]+:((user/.+)|(root))'")
 end
 
--- &lt;p&gt;An Amazon Web Service (AWS) user account identifier. The account identifier can be an AWS root account or an AWS Identity and Access Management (IAM) user.&lt;/p&gt;
+-- <p>An Amazon Web Service (AWS) user account identifier. The account identifier can be an AWS root account or an AWS Identity and Access Management (IAM) user.</p>
 function M.AwsUserArn(str)
 	M.AssertAwsUserArn(str)
 	return str
@@ -3334,7 +3334,7 @@ function M.AssertStringType(str)
 	assert(type(str) == "string", "Expected StringType to be of type 'string'")
 end
 
--- &lt;p&gt;String type.&lt;/p&gt;
+-- <p>String type.</p>
 function M.StringType(str)
 	M.AssertStringType(str)
 	return str
@@ -3347,7 +3347,7 @@ function M.AssertRoleARN(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;The Amazon Resource Name (ARN) of an &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html#roles-about-termsandconcepts&quot;&gt;AWS IAM Role&lt;/a&gt;, such as the following: arn:aws:iam::account:role/rolename. &lt;/p&gt;
+-- <p>The Amazon Resource Name (ARN) of an <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html#roles-about-termsandconcepts">AWS IAM Role</a>, such as the following: arn:aws:iam::account:role/rolename. </p>
 function M.RoleARN(str)
 	M.AssertRoleARN(str)
 	return str
@@ -3371,7 +3371,7 @@ function M.AssertS3Url(str)
 	assert(str:match("s3://([^/]+)(/.*)?"), "Expected string to match pattern 's3://([^/]+)(/.*)?'")
 end
 
--- &lt;p&gt;A reference to a file or bucket on Amazon Simple Storage Service (Amazon S3).&lt;/p&gt;
+-- <p>A reference to a file or bucket on Amazon Simple Storage Service (Amazon S3).</p>
 function M.S3Url(str)
 	M.AssertS3Url(str)
 	return str
@@ -3382,7 +3382,7 @@ function M.AssertSortOrder(str)
 	assert(type(str) == "string", "Expected SortOrder to be of type 'string'")
 end
 
--- &lt;p&gt;The sort order specified in a listing condition. Possible values include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;asc&lt;/code&gt; - Present the information in ascending order (from A-Z).&lt;/li&gt; &lt;li&gt; &lt;code&gt;dsc&lt;/code&gt; - Present the information in descending order (from Z-A).&lt;/li&gt; &lt;/ul&gt;
+-- <p>The sort order specified in a listing condition. Possible values include the following:</p> <ul> <li> <code>asc</code> - Present the information in ascending order (from A-Z).</li> <li> <code>dsc</code> - Present the information in descending order (from Z-A).</li> </ul>
 function M.SortOrder(str)
 	M.AssertSortOrder(str)
 	return str

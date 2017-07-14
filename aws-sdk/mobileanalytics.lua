@@ -30,8 +30,8 @@ function M.AssertBadRequestException(struct)
 end
 
 --- Create a structure of type BadRequestException
--- &lt;p&gt;An exception object returned when a request fails.&lt;/p&gt;
--- @param message [String] &lt;p&gt;A text description associated with the BadRequestException object.&lt;/p&gt;
+-- <p>An exception object returned when a request fails.</p>
+-- @param message [String] <p>A text description associated with the BadRequestException object.</p>
 function M.BadRequestException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BadRequestException")
 	local t = { 
@@ -56,11 +56,11 @@ function M.AssertSession(struct)
 end
 
 --- Create a structure of type Session
--- &lt;p&gt;Describes the session. Session information is required on ALL events.&lt;/p&gt;
--- @param duration [Long] &lt;p&gt;The duration of the session.&lt;/p&gt;
--- @param startTimestamp [ISO8601Timestamp] &lt;p&gt;The time the event started in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z&lt;/p&gt;
--- @param id [String50Chars] &lt;p&gt;A unique identifier for the session&lt;/p&gt;
--- @param stopTimestamp [ISO8601Timestamp] &lt;p&gt;The time the event terminated in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z&lt;/p&gt;
+-- <p>Describes the session. Session information is required on ALL events.</p>
+-- @param duration [Long] <p>The duration of the session.</p>
+-- @param startTimestamp [ISO8601Timestamp] <p>The time the event started in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
+-- @param id [String50Chars] <p>A unique identifier for the session</p>
+-- @param stopTimestamp [ISO8601Timestamp] <p>The time the event terminated in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
 function M.Session(duration, startTimestamp, id, stopTimestamp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Session")
 	local t = { 
@@ -89,10 +89,10 @@ function M.AssertPutEventsInput(struct)
 end
 
 --- Create a structure of type PutEventsInput
--- &lt;p&gt;A container for the data needed for a PutEvent operation&lt;/p&gt;
--- @param clientContextEncoding [String] &lt;p&gt;The encoding used for the client context.&lt;/p&gt;
--- @param events [EventListDefinition] &lt;p&gt;An array of Event JSON objects&lt;/p&gt;
--- @param clientContext [String] &lt;p&gt;The client context including the client ID, app title, app version and package name.&lt;/p&gt;
+-- <p>A container for the data needed for a PutEvent operation</p>
+-- @param clientContextEncoding [String] <p>The encoding used for the client context.</p>
+-- @param events [EventListDefinition] <p>An array of Event JSON objects</p>
+-- @param clientContext [String] <p>The client context including the client ID, app title, app version and package name.</p>
 -- Required parameter: events
 -- Required parameter: clientContext
 function M.PutEventsInput(clientContextEncoding, events, clientContext, ...)
@@ -125,13 +125,13 @@ function M.AssertEvent(struct)
 end
 
 --- Create a structure of type Event
--- &lt;p&gt;A JSON object representing a batch of unique event occurrences in your app.&lt;/p&gt;
--- @param version [String10Chars] &lt;p&gt;The version of the event.&lt;/p&gt;
--- @param eventType [String50Chars] &lt;p&gt;A name signifying an event that occurred in your app. This is used for grouping and aggregating like events together for reporting purposes.&lt;/p&gt;
--- @param metrics [MapOfStringToNumber] &lt;p&gt;A collection of key-value pairs that gives additional, measurable context to the event. The key-value pairs are specified by the developer.&lt;/p&gt; &lt;p&gt;This collection can be empty or the attribute object can be omitted.&lt;/p&gt;
--- @param session [Session] &lt;p&gt;The session the event occured within. &lt;/p&gt;
--- @param timestamp [ISO8601Timestamp] &lt;p&gt;The time the event occurred in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z&lt;/p&gt;
--- @param attributes [MapOfStringToString] &lt;p&gt;A collection of key-value pairs that give additional context to the event. The key-value pairs are specified by the developer.&lt;/p&gt; &lt;p&gt;This collection can be empty or the attribute object can be omitted.&lt;/p&gt;
+-- <p>A JSON object representing a batch of unique event occurrences in your app.</p>
+-- @param version [String10Chars] <p>The version of the event.</p>
+-- @param eventType [String50Chars] <p>A name signifying an event that occurred in your app. This is used for grouping and aggregating like events together for reporting purposes.</p>
+-- @param metrics [MapOfStringToNumber] <p>A collection of key-value pairs that gives additional, measurable context to the event. The key-value pairs are specified by the developer.</p> <p>This collection can be empty or the attribute object can be omitted.</p>
+-- @param session [Session] <p>The session the event occured within. </p>
+-- @param timestamp [ISO8601Timestamp] <p>The time the event occurred in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
+-- @param attributes [MapOfStringToString] <p>A collection of key-value pairs that give additional context to the event. The key-value pairs are specified by the developer.</p> <p>This collection can be empty or the attribute object can be omitted.</p>
 -- Required parameter: eventType
 -- Required parameter: timestamp
 function M.Event(version, eventType, metrics, session, timestamp, attributes, ...)

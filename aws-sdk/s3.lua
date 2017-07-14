@@ -2691,8 +2691,8 @@ function M.AssertNotificationConfigurationFilter(struct)
 end
 
 --- Create a structure of type NotificationConfigurationFilter
--- Container for object key name filtering rules. For information about key name filtering, go to &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html&quot;&gt;Configuring Event Notifications&lt;/a&gt; in the Amazon Simple Storage Service Developer Guide.
--- @param Key [S3KeyFilter] Container for object key name filtering rules. For information about key name filtering, go to &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html&quot;&gt;Configuring Event Notifications&lt;/a&gt; in the Amazon Simple Storage Service Developer Guide.
+-- Container for object key name filtering rules. For information about key name filtering, go to <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring Event Notifications</a> in the Amazon Simple Storage Service Developer Guide.
+-- @param Key [S3KeyFilter] Container for object key name filtering rules. For information about key name filtering, go to <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring Event Notifications</a> in the Amazon Simple Storage Service Developer Guide.
 function M.NotificationConfigurationFilter(Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotificationConfigurationFilter")
 	local t = { 
@@ -2957,7 +2957,7 @@ end
 
 --- Create a structure of type NoncurrentVersionExpiration
 -- Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently deletes the noncurrent object versions. You set this lifecycle configuration action on a bucket that has versioning enabled (or suspended) to request that Amazon S3 delete noncurrent object versions at a specific period in the object's lifetime.
--- @param NoncurrentDays [Days] Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html&quot;&gt;How Amazon S3 Calculates When an Object Became Noncurrent&lt;/a&gt; in the Amazon Simple Storage Service Developer Guide.
+-- @param NoncurrentDays [Days] Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">How Amazon S3 Calculates When an Object Became Noncurrent</a> in the Amazon Simple Storage Service Developer Guide.
 function M.NoncurrentVersionExpiration(NoncurrentDays, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoncurrentVersionExpiration")
 	local t = { 
@@ -2981,7 +2981,7 @@ end
 
 --- Create a structure of type FilterRule
 -- Container for key value pair that defines the criteria for the filter rule.
--- @param Name [FilterRuleName] Object key name prefix or suffix identifying one or more objects to which the filtering rule applies. Maximum prefix length can be up to 1,024 characters. Overlapping prefixes and suffixes are not supported. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html&quot;&gt;Configuring Event Notifications&lt;/a&gt; in the Amazon Simple Storage Service Developer Guide.
+-- @param Name [FilterRuleName] Object key name prefix or suffix identifying one or more objects to which the filtering rule applies. Maximum prefix length can be up to 1,024 characters. Overlapping prefixes and suffixes are not supported. For more information, go to <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring Event Notifications</a> in the Amazon Simple Storage Service Developer Guide.
 -- @param Value [FilterRuleValue] Container for key value pair that defines the criteria for the filter rule.
 function M.FilterRule(Name, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FilterRule")
@@ -3125,7 +3125,7 @@ end
 
 --- Create a structure of type NoncurrentVersionTransition
 -- Container for the transition rule that describes when noncurrent objects transition to the STANDARD_IA or GLACIER storage class. If your bucket is versioning-enabled (or versioning is suspended), you can set this action to request that Amazon S3 transition noncurrent object versions to the STANDARD_IA or GLACIER storage class at a specific period in the object's lifetime.
--- @param NoncurrentDays [Days] Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html&quot;&gt;How Amazon S3 Calculates When an Object Became Noncurrent&lt;/a&gt; in the Amazon Simple Storage Service Developer Guide.
+-- @param NoncurrentDays [Days] Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">How Amazon S3 Calculates When an Object Became Noncurrent</a> in the Amazon Simple Storage Service Developer Guide.
 -- @param StorageClass [TransitionStorageClass] The class of storage used to store the object.
 function M.NoncurrentVersionTransition(NoncurrentDays, StorageClass, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoncurrentVersionTransition")

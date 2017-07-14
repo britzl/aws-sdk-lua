@@ -32,9 +32,9 @@ function M.AssertGetOpenIdTokenInput(struct)
 end
 
 --- Create a structure of type GetOpenIdTokenInput
--- &lt;p&gt;Input to the GetOpenIdToken action.&lt;/p&gt;
--- @param Logins [LoginsMap] &lt;p&gt;A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito Identity Provider, or any other OpenId Connect provider, always include the &lt;code&gt;id_token&lt;/code&gt;.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Input to the GetOpenIdToken action.</p>
+-- @param Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito Identity Provider, or any other OpenId Connect provider, always include the <code>id_token</code>.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityId
 function M.GetOpenIdTokenInput(Logins, IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenInput")
@@ -59,8 +59,8 @@ function M.AssertRulesConfigurationType(struct)
 end
 
 --- Create a structure of type RulesConfigurationType
--- &lt;p&gt;A container for rules.&lt;/p&gt;
--- @param Rules [MappingRulesList] &lt;p&gt;An array of rules. You can specify up to 25 rules per identity provider.&lt;/p&gt; &lt;p&gt;Rules are evaluated in order. The first one to match specifies the role.&lt;/p&gt;
+-- <p>A container for rules.</p>
+-- @param Rules [MappingRulesList] <p>An array of rules. You can specify up to 25 rules per identity provider.</p> <p>Rules are evaluated in order. The first one to match specifies the role.</p>
 -- Required parameter: Rules
 function M.RulesConfigurationType(Rules, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RulesConfigurationType")
@@ -85,10 +85,10 @@ function M.AssertGetIdentityPoolRolesResponse(struct)
 end
 
 --- Create a structure of type GetIdentityPoolRolesResponse
--- &lt;p&gt;Returned in response to a successful &lt;code&gt;GetIdentityPoolRoles&lt;/code&gt; operation.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param Roles [RolesMap] &lt;p&gt;The map of roles associated with this pool. Currently only authenticated and unauthenticated roles are supported.&lt;/p&gt;
--- @param RoleMappings [RoleMappingMap] &lt;p&gt;How users for a specific identity provider are to mapped to roles. This is a String-to-&lt;a&gt;RoleMapping&lt;/a&gt; object map. The string identifies the identity provider, for example, &quot;graph.facebook.com&quot; or &quot;cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id&quot;.&lt;/p&gt;
+-- <p>Returned in response to a successful <code>GetIdentityPoolRoles</code> operation.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param Roles [RolesMap] <p>The map of roles associated with this pool. Currently only authenticated and unauthenticated roles are supported.</p>
+-- @param RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a String-to-<a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p>
 function M.GetIdentityPoolRolesResponse(IdentityPoolId, Roles, RoleMappings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolRolesResponse")
 	local t = { 
@@ -114,9 +114,9 @@ function M.AssertListIdentityPoolsInput(struct)
 end
 
 --- Create a structure of type ListIdentityPoolsInput
--- &lt;p&gt;Input to the ListIdentityPools action.&lt;/p&gt;
--- @param NextToken [PaginationKey] &lt;p&gt;A pagination token.&lt;/p&gt;
--- @param MaxResults [QueryLimit] &lt;p&gt;The maximum number of identities to return.&lt;/p&gt;
+-- <p>Input to the ListIdentityPools action.</p>
+-- @param NextToken [PaginationKey] <p>A pagination token.</p>
+-- @param MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
 -- Required parameter: MaxResults
 function M.ListIdentityPoolsInput(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoolsInput")
@@ -140,8 +140,8 @@ function M.AssertNotAuthorizedException(struct)
 end
 
 --- Create a structure of type NotAuthorizedException
--- &lt;p&gt;Thrown when a user is not authorized to access the requested resource.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The message returned by a NotAuthorizedException&lt;/p&gt;
+-- <p>Thrown when a user is not authorized to access the requested resource.</p>
+-- @param message [String] <p>The message returned by a NotAuthorizedException</p>
 function M.NotAuthorizedException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotAuthorizedException")
 	local t = { 
@@ -171,14 +171,14 @@ function M.AssertCreateIdentityPoolInput(struct)
 end
 
 --- Create a structure of type CreateIdentityPoolInput
--- &lt;p&gt;Input to the CreateIdentityPool action.&lt;/p&gt;
--- @param DeveloperProviderName [DeveloperProviderName] &lt;p&gt;The &quot;domain&quot; by which Cognito will refer to your users. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the &lt;code&gt;DeveloperProviderName&lt;/code&gt;, you can use letters as well as period (&lt;code&gt;.&lt;/code&gt;), underscore (&lt;code&gt;_&lt;/code&gt;), and dash (&lt;code&gt;-&lt;/code&gt;).&lt;/p&gt; &lt;p&gt;Once you have set a developer provider name, you cannot change it. Please take care in setting this parameter.&lt;/p&gt;
--- @param SamlProviderARNs [SAMLProviderList] &lt;p&gt;An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.&lt;/p&gt;
--- @param SupportedLoginProviders [IdentityProviders] &lt;p&gt;Optional key:value pairs mapping provider names to provider app IDs.&lt;/p&gt;
--- @param AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] &lt;p&gt;TRUE if the identity pool supports unauthenticated logins.&lt;/p&gt;
--- @param CognitoIdentityProviders [CognitoIdentityProviderList] &lt;p&gt;An array of Amazon Cognito Identity user pools and their client IDs.&lt;/p&gt;
--- @param IdentityPoolName [IdentityPoolName] &lt;p&gt;A string that you provide.&lt;/p&gt;
--- @param OpenIdConnectProviderARNs [OIDCProviderList] &lt;p&gt;A list of OpendID Connect provider ARNs.&lt;/p&gt;
+-- <p>Input to the CreateIdentityPool action.</p>
+-- @param DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (<code>.</code>), underscore (<code>_</code>), and dash (<code>-</code>).</p> <p>Once you have set a developer provider name, you cannot change it. Please take care in setting this parameter.</p>
+-- @param SamlProviderARNs [SAMLProviderList] <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
+-- @param SupportedLoginProviders [IdentityProviders] <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
+-- @param AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] <p>TRUE if the identity pool supports unauthenticated logins.</p>
+-- @param CognitoIdentityProviders [CognitoIdentityProviderList] <p>An array of Amazon Cognito Identity user pools and their client IDs.</p>
+-- @param IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
+-- @param OpenIdConnectProviderARNs [OIDCProviderList] <p>A list of OpendID Connect provider ARNs.</p>
 -- Required parameter: IdentityPoolName
 -- Required parameter: AllowUnauthenticatedIdentities
 function M.CreateIdentityPoolInput(DeveloperProviderName, SamlProviderARNs, SupportedLoginProviders, AllowUnauthenticatedIdentities, CognitoIdentityProviders, IdentityPoolName, OpenIdConnectProviderARNs, ...)
@@ -209,9 +209,9 @@ function M.AssertGetOpenIdTokenForDeveloperIdentityResponse(struct)
 end
 
 --- Create a structure of type GetOpenIdTokenForDeveloperIdentityResponse
--- &lt;p&gt;Returned in response to a successful &lt;code&gt;GetOpenIdTokenForDeveloperIdentity&lt;/code&gt; request.&lt;/p&gt;
--- @param Token [OIDCToken] &lt;p&gt;An OpenID token.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Returned in response to a successful <code>GetOpenIdTokenForDeveloperIdentity</code> request.</p>
+-- @param Token [OIDCToken] <p>An OpenID token.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 function M.GetOpenIdTokenForDeveloperIdentityResponse(Token, IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenForDeveloperIdentityResponse")
 	local t = { 
@@ -234,8 +234,8 @@ function M.AssertGetIdResponse(struct)
 end
 
 --- Create a structure of type GetIdResponse
--- &lt;p&gt;Returned in response to a GetId request.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Returned in response to a GetId request.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 function M.GetIdResponse(IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdResponse")
 	local t = { 
@@ -258,9 +258,9 @@ function M.AssertGetOpenIdTokenResponse(struct)
 end
 
 --- Create a structure of type GetOpenIdTokenResponse
--- &lt;p&gt;Returned in response to a successful GetOpenIdToken request.&lt;/p&gt;
--- @param Token [OIDCToken] &lt;p&gt;An OpenID token, valid for 15 minutes.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on input.&lt;/p&gt;
+-- <p>Returned in response to a successful GetOpenIdToken request.</p>
+-- @param Token [OIDCToken] <p>An OpenID token, valid for 15 minutes.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on input.</p>
 function M.GetOpenIdTokenResponse(Token, IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenResponse")
 	local t = { 
@@ -286,10 +286,10 @@ function M.AssertRoleMapping(struct)
 end
 
 --- Create a structure of type RoleMapping
--- &lt;p&gt;A role mapping.&lt;/p&gt;
--- @param AmbiguousRoleResolution [AmbiguousRoleResolutionType] &lt;p&gt;If you specify Token or Rules as the &lt;code&gt;Type&lt;/code&gt;, &lt;code&gt;AmbiguousRoleResolution&lt;/code&gt; is required.&lt;/p&gt; &lt;p&gt;Specifies the action to be taken if either no rules match the claim value for the &lt;code&gt;Rules&lt;/code&gt; type, or there is no &lt;code&gt;cognito:preferred_role&lt;/code&gt; claim and there are multiple &lt;code&gt;cognito:roles&lt;/code&gt; matches for the &lt;code&gt;Token&lt;/code&gt; type.&lt;/p&gt;
--- @param Type [RoleMappingType] &lt;p&gt;The role mapping type. Token will use &lt;code&gt;cognito:roles&lt;/code&gt; and &lt;code&gt;cognito:preferred_role&lt;/code&gt; claims from the Cognito identity provider token to map groups to roles. Rules will attempt to match claims from the token to map to a role.&lt;/p&gt;
--- @param RulesConfiguration [RulesConfigurationType] &lt;p&gt;The rules to be used for mapping users to roles.&lt;/p&gt; &lt;p&gt;If you specify Rules as the role mapping type, &lt;code&gt;RulesConfiguration&lt;/code&gt; is required.&lt;/p&gt;
+-- <p>A role mapping.</p>
+-- @param AmbiguousRoleResolution [AmbiguousRoleResolutionType] <p>If you specify Token or Rules as the <code>Type</code>, <code>AmbiguousRoleResolution</code> is required.</p> <p>Specifies the action to be taken if either no rules match the claim value for the <code>Rules</code> type, or there is no <code>cognito:preferred_role</code> claim and there are multiple <code>cognito:roles</code> matches for the <code>Token</code> type.</p>
+-- @param Type [RoleMappingType] <p>The role mapping type. Token will use <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims from the Cognito identity provider token to map groups to roles. Rules will attempt to match claims from the token to map to a role.</p>
+-- @param RulesConfiguration [RulesConfigurationType] <p>The rules to be used for mapping users to roles.</p> <p>If you specify Rules as the role mapping type, <code>RulesConfiguration</code> is required.</p>
 -- Required parameter: Type
 function M.RoleMapping(AmbiguousRoleResolution, Type, RulesConfiguration, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RoleMapping")
@@ -321,11 +321,11 @@ function M.AssertMappingRule(struct)
 end
 
 --- Create a structure of type MappingRule
--- &lt;p&gt;A rule that maps a claim name, a claim value, and a match type to a role ARN.&lt;/p&gt;
--- @param Claim [ClaimName] &lt;p&gt;The claim name that must be present in the token, for example, &quot;isAdmin&quot; or &quot;paid&quot;.&lt;/p&gt;
--- @param MatchType [MappingRuleMatchType] &lt;p&gt;The match condition that specifies how closely the claim value in the IdP token must match &lt;code&gt;Value&lt;/code&gt;.&lt;/p&gt;
--- @param RoleARN [ARNString] &lt;p&gt;The role ARN.&lt;/p&gt;
--- @param Value [ClaimValue] &lt;p&gt;A brief string that the claim must match, for example, &quot;paid&quot; or &quot;yes&quot;.&lt;/p&gt;
+-- <p>A rule that maps a claim name, a claim value, and a match type to a role ARN.</p>
+-- @param Claim [ClaimName] <p>The claim name that must be present in the token, for example, "isAdmin" or "paid".</p>
+-- @param MatchType [MappingRuleMatchType] <p>The match condition that specifies how closely the claim value in the IdP token must match <code>Value</code>.</p>
+-- @param RoleARN [ARNString] <p>The role ARN.</p>
+-- @param Value [ClaimValue] <p>A brief string that the claim must match, for example, "paid" or "yes".</p>
 -- Required parameter: Claim
 -- Required parameter: MatchType
 -- Required parameter: Value
@@ -354,8 +354,8 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;Thrown for missing or bad input parameter(s).&lt;/p&gt;
--- @param message [String] &lt;p&gt;The message returned by an InvalidParameterException.&lt;/p&gt;
+-- <p>Thrown for missing or bad input parameter(s).</p>
+-- @param message [String] <p>The message returned by an InvalidParameterException.</p>
 function M.InvalidParameterException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -378,9 +378,9 @@ function M.AssertUnprocessedIdentityId(struct)
 end
 
 --- Create a structure of type UnprocessedIdentityId
--- &lt;p&gt;An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;The error code indicating the type of error that occurred.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
+-- @param ErrorCode [ErrorCode] <p>The error code indicating the type of error that occurred.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 function M.UnprocessedIdentityId(ErrorCode, IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnprocessedIdentityId")
 	local t = { 
@@ -404,8 +404,8 @@ function M.AssertGetIdentityPoolRolesInput(struct)
 end
 
 --- Create a structure of type GetIdentityPoolRolesInput
--- &lt;p&gt;Input to the &lt;code&gt;GetIdentityPoolRoles&lt;/code&gt; action.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
+-- <p>Input to the <code>GetIdentityPoolRoles</code> action.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
 -- Required parameter: IdentityPoolId
 function M.GetIdentityPoolRolesInput(IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolRolesInput")
@@ -433,11 +433,11 @@ function M.AssertListIdentitiesInput(struct)
 end
 
 --- Create a structure of type ListIdentitiesInput
--- &lt;p&gt;Input to the ListIdentities action.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param NextToken [PaginationKey] &lt;p&gt;A pagination token.&lt;/p&gt;
--- @param HideDisabled [HideDisabled] &lt;p&gt;An optional boolean parameter that allows you to hide disabled identities. If omitted, the ListIdentities API will include disabled identities in the response.&lt;/p&gt;
--- @param MaxResults [QueryLimit] &lt;p&gt;The maximum number of identities to return.&lt;/p&gt;
+-- <p>Input to the ListIdentities action.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param NextToken [PaginationKey] <p>A pagination token.</p>
+-- @param HideDisabled [HideDisabled] <p>An optional boolean parameter that allows you to hide disabled identities. If omitted, the ListIdentities API will include disabled identities in the response.</p>
+-- @param MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: MaxResults
 function M.ListIdentitiesInput(IdentityPoolId, NextToken, HideDisabled, MaxResults, ...)
@@ -465,8 +465,8 @@ function M.AssertDeleteIdentityPoolInput(struct)
 end
 
 --- Create a structure of type DeleteIdentityPoolInput
--- &lt;p&gt;Input to the DeleteIdentityPool action.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
+-- <p>Input to the DeleteIdentityPool action.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
 -- Required parameter: IdentityPoolId
 function M.DeleteIdentityPoolInput(IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityPoolInput")
@@ -490,8 +490,8 @@ function M.AssertDeleteIdentitiesInput(struct)
 end
 
 --- Create a structure of type DeleteIdentitiesInput
--- &lt;p&gt;Input to the &lt;code&gt;DeleteIdentities&lt;/code&gt; action.&lt;/p&gt;
--- @param IdentityIdsToDelete [IdentityIdList] &lt;p&gt;A list of 1-60 identities that you want to delete.&lt;/p&gt;
+-- <p>Input to the <code>DeleteIdentities</code> action.</p>
+-- @param IdentityIdsToDelete [IdentityIdList] <p>A list of 1-60 identities that you want to delete.</p>
 -- Required parameter: IdentityIdsToDelete
 function M.DeleteIdentitiesInput(IdentityIdsToDelete, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentitiesInput")
@@ -514,8 +514,8 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;Thrown when the total number of user pools has exceeded a preset limit.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The message returned by a LimitExceededException.&lt;/p&gt;
+-- <p>Thrown when the total number of user pools has exceeded a preset limit.</p>
+-- @param message [String] <p>The message returned by a LimitExceededException.</p>
 function M.LimitExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -538,9 +538,9 @@ function M.AssertListIdentityPoolsResponse(struct)
 end
 
 --- Create a structure of type ListIdentityPoolsResponse
--- &lt;p&gt;The result of a successful ListIdentityPools action.&lt;/p&gt;
--- @param NextToken [PaginationKey] &lt;p&gt;A pagination token.&lt;/p&gt;
--- @param IdentityPools [IdentityPoolsList] &lt;p&gt;The identity pools returned by the ListIdentityPools action.&lt;/p&gt;
+-- <p>The result of a successful ListIdentityPools action.</p>
+-- @param NextToken [PaginationKey] <p>A pagination token.</p>
+-- @param IdentityPools [IdentityPoolsList] <p>The identity pools returned by the ListIdentityPools action.</p>
 function M.ListIdentityPoolsResponse(NextToken, IdentityPools, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoolsResponse")
 	local t = { 
@@ -563,8 +563,8 @@ function M.AssertConcurrentModificationException(struct)
 end
 
 --- Create a structure of type ConcurrentModificationException
--- &lt;p&gt;Thrown if there are parallel requests to modify a resource.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The message returned by a ConcurrentModificationException.&lt;/p&gt;
+-- <p>Thrown if there are parallel requests to modify a resource.</p>
+-- @param message [String] <p>The message returned by a ConcurrentModificationException.</p>
 function M.ConcurrentModificationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
@@ -591,11 +591,11 @@ function M.AssertGetOpenIdTokenForDeveloperIdentityInput(struct)
 end
 
 --- Create a structure of type GetOpenIdTokenForDeveloperIdentityInput
--- &lt;p&gt;Input to the &lt;code&gt;GetOpenIdTokenForDeveloperIdentity&lt;/code&gt; action.&lt;/p&gt;
--- @param Logins [LoginsMap] &lt;p&gt;A set of optional name-value pairs that map provider names to provider tokens. Each name-value pair represents a user from a public provider or developer provider. If the user is from a developer provider, the name-value pair will follow the syntax &lt;code&gt;&quot;developer_provider_name&quot;: &quot;developer_user_identifier&quot;&lt;/code&gt;. The developer provider is the &quot;domain&quot; by which Cognito will refer to your users; you provided this domain while creating/updating the identity pool. The developer user identifier is an identifier from your backend that uniquely identifies a user. When you create an identity pool, you can specify the supported logins.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param TokenDuration [TokenDuration] &lt;p&gt;The expiration time of the token, in seconds. You can specify a custom expiration time for the token so that you can cache it. If you don't provide an expiration time, the token is valid for 15 minutes. You can exchange the token with Amazon STS for temporary AWS credentials, which are valid for a maximum of one hour. The maximum token duration you can set is 24 hours. You should take care in setting the expiration time for a token, as there are significant security implications: an attacker could use a leaked token to access your AWS resources for the token's duration.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Input to the <code>GetOpenIdTokenForDeveloperIdentity</code> action.</p>
+-- @param Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. Each name-value pair represents a user from a public provider or developer provider. If the user is from a developer provider, the name-value pair will follow the syntax <code>"developer_provider_name": "developer_user_identifier"</code>. The developer provider is the "domain" by which Cognito will refer to your users; you provided this domain while creating/updating the identity pool. The developer user identifier is an identifier from your backend that uniquely identifies a user. When you create an identity pool, you can specify the supported logins.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param TokenDuration [TokenDuration] <p>The expiration time of the token, in seconds. You can specify a custom expiration time for the token so that you can cache it. If you don't provide an expiration time, the token is valid for 15 minutes. You can exchange the token with Amazon STS for temporary AWS credentials, which are valid for a maximum of one hour. The maximum token duration you can set is 24 hours. You should take care in setting the expiration time for a token, as there are significant security implications: an attacker could use a leaked token to access your AWS resources for the token's duration.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: Logins
 function M.GetOpenIdTokenForDeveloperIdentityInput(Logins, IdentityPoolId, TokenDuration, IdentityId, ...)
@@ -624,10 +624,10 @@ function M.AssertCognitoIdentityProvider(struct)
 end
 
 --- Create a structure of type CognitoIdentityProvider
--- &lt;p&gt;A provider representing an Amazon Cognito Identity User Pool and its client ID.&lt;/p&gt;
--- @param ServerSideTokenCheck [CognitoIdentityProviderTokenCheck] &lt;p&gt;TRUE if server-side token validation is enabled for the identity provider’s token.&lt;/p&gt;
--- @param ClientId [CognitoIdentityProviderClientId] &lt;p&gt;The client ID for the Amazon Cognito Identity User Pool.&lt;/p&gt;
--- @param ProviderName [CognitoIdentityProviderName] &lt;p&gt;The provider name for an Amazon Cognito Identity User Pool. For example, &lt;code&gt;cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789&lt;/code&gt;.&lt;/p&gt;
+-- <p>A provider representing an Amazon Cognito Identity User Pool and its client ID.</p>
+-- @param ServerSideTokenCheck [CognitoIdentityProviderTokenCheck] <p>TRUE if server-side token validation is enabled for the identity provider’s token.</p>
+-- @param ClientId [CognitoIdentityProviderClientId] <p>The client ID for the Amazon Cognito Identity User Pool.</p>
+-- @param ProviderName [CognitoIdentityProviderName] <p>The provider name for an Amazon Cognito Identity User Pool. For example, <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code>.</p>
 function M.CognitoIdentityProvider(ServerSideTokenCheck, ClientId, ProviderName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CognitoIdentityProvider")
 	local t = { 
@@ -651,8 +651,8 @@ function M.AssertTooManyRequestsException(struct)
 end
 
 --- Create a structure of type TooManyRequestsException
--- &lt;p&gt;Thrown when a request is throttled.&lt;/p&gt;
--- @param message [String] &lt;p&gt;Message returned by a TooManyRequestsException&lt;/p&gt;
+-- <p>Thrown when a request is throttled.</p>
+-- @param message [String] <p>Message returned by a TooManyRequestsException</p>
 function M.TooManyRequestsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
 	local t = { 
@@ -677,11 +677,11 @@ function M.AssertIdentityDescription(struct)
 end
 
 --- Create a structure of type IdentityDescription
--- &lt;p&gt;A description of the identity.&lt;/p&gt;
--- @param Logins [LoginsList] &lt;p&gt;A set of optional name-value pairs that map provider names to provider tokens.&lt;/p&gt;
--- @param LastModifiedDate [DateType] &lt;p&gt;Date on which the identity was last modified.&lt;/p&gt;
--- @param CreationDate [DateType] &lt;p&gt;Date on which the identity was created.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>A description of the identity.</p>
+-- @param Logins [LoginsList] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
+-- @param LastModifiedDate [DateType] <p>Date on which the identity was last modified.</p>
+-- @param CreationDate [DateType] <p>Date on which the identity was created.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 function M.IdentityDescription(Logins, LastModifiedDate, CreationDate, IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdentityDescription")
 	local t = { 
@@ -708,10 +708,10 @@ function M.AssertListIdentitiesResponse(struct)
 end
 
 --- Create a structure of type ListIdentitiesResponse
--- &lt;p&gt;The response to a ListIdentities request.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param NextToken [PaginationKey] &lt;p&gt;A pagination token.&lt;/p&gt;
--- @param Identities [IdentitiesList] &lt;p&gt;An object containing a set of identities and associated mappings.&lt;/p&gt;
+-- <p>The response to a ListIdentities request.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param NextToken [PaginationKey] <p>A pagination token.</p>
+-- @param Identities [IdentitiesList] <p>An object containing a set of identities and associated mappings.</p>
 function M.ListIdentitiesResponse(IdentityPoolId, NextToken, Identities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentitiesResponse")
 	local t = { 
@@ -736,9 +736,9 @@ function M.AssertIdentityPoolShortDescription(struct)
 end
 
 --- Create a structure of type IdentityPoolShortDescription
--- &lt;p&gt;A description of the identity pool.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param IdentityPoolName [IdentityPoolName] &lt;p&gt;A string that you provide.&lt;/p&gt;
+-- <p>A description of the identity pool.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
 function M.IdentityPoolShortDescription(IdentityPoolId, IdentityPoolName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdentityPoolShortDescription")
 	local t = { 
@@ -761,8 +761,8 @@ function M.AssertInternalErrorException(struct)
 end
 
 --- Create a structure of type InternalErrorException
--- &lt;p&gt;Thrown when the service encounters an error during processing the request.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The message returned by an InternalErrorException.&lt;/p&gt;
+-- <p>Thrown when the service encounters an error during processing the request.</p>
+-- @param message [String] <p>The message returned by an InternalErrorException.</p>
 function M.InternalErrorException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
 	local t = { 
@@ -784,8 +784,8 @@ function M.AssertInvalidIdentityPoolConfigurationException(struct)
 end
 
 --- Create a structure of type InvalidIdentityPoolConfigurationException
--- &lt;p&gt;Thrown if the identity pool has no role associated for the given auth type (auth/unauth) or if the AssumeRole fails.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The message returned for an &lt;code&gt;InvalidIdentityPoolConfigurationException&lt;/code&gt; &lt;/p&gt;
+-- <p>Thrown if the identity pool has no role associated for the given auth type (auth/unauth) or if the AssumeRole fails.</p>
+-- @param message [String] <p>The message returned for an <code>InvalidIdentityPoolConfigurationException</code> </p>
 function M.InvalidIdentityPoolConfigurationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidIdentityPoolConfigurationException")
 	local t = { 
@@ -810,11 +810,11 @@ function M.AssertCredentials(struct)
 end
 
 --- Create a structure of type Credentials
--- &lt;p&gt;Credentials for the provided identity ID.&lt;/p&gt;
--- @param SecretKey [SecretKeyString] &lt;p&gt;The Secret Access Key portion of the credentials&lt;/p&gt;
--- @param SessionToken [SessionTokenString] &lt;p&gt;The Session Token portion of the credentials&lt;/p&gt;
--- @param Expiration [DateType] &lt;p&gt;The date at which these credentials will expire.&lt;/p&gt;
--- @param AccessKeyId [AccessKeyString] &lt;p&gt;The Access Key portion of the credentials.&lt;/p&gt;
+-- <p>Credentials for the provided identity ID.</p>
+-- @param SecretKey [SecretKeyString] <p>The Secret Access Key portion of the credentials</p>
+-- @param SessionToken [SessionTokenString] <p>The Session Token portion of the credentials</p>
+-- @param Expiration [DateType] <p>The date at which these credentials will expire.</p>
+-- @param AccessKeyId [AccessKeyString] <p>The Access Key portion of the credentials.</p>
 function M.Credentials(SecretKey, SessionToken, Expiration, AccessKeyId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Credentials")
 	local t = { 
@@ -843,10 +843,10 @@ function M.AssertSetIdentityPoolRolesInput(struct)
 end
 
 --- Create a structure of type SetIdentityPoolRolesInput
--- &lt;p&gt;Input to the &lt;code&gt;SetIdentityPoolRoles&lt;/code&gt; action.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param Roles [RolesMap] &lt;p&gt;The map of roles associated with this pool. For a given role, the key will be either &quot;authenticated&quot; or &quot;unauthenticated&quot; and the value will be the Role ARN.&lt;/p&gt;
--- @param RoleMappings [RoleMappingMap] &lt;p&gt;How users for a specific identity provider are to mapped to roles. This is a string to &lt;a&gt;RoleMapping&lt;/a&gt; object map. The string identifies the identity provider, for example, &quot;graph.facebook.com&quot; or &quot;cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id&quot;.&lt;/p&gt; &lt;p&gt;Up to 25 rules can be specified per identity provider.&lt;/p&gt;
+-- <p>Input to the <code>SetIdentityPoolRoles</code> action.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param Roles [RolesMap] <p>The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.</p>
+-- @param RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a string to <a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p> <p>Up to 25 rules can be specified per identity provider.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: Roles
 function M.SetIdentityPoolRolesInput(IdentityPoolId, Roles, RoleMappings, ...)
@@ -875,10 +875,10 @@ function M.AssertGetIdInput(struct)
 end
 
 --- Create a structure of type GetIdInput
--- &lt;p&gt;Input to the GetId action.&lt;/p&gt;
--- @param Logins [LoginsMap] &lt;p&gt;A set of optional name-value pairs that map provider names to provider tokens. The available provider names for &lt;code&gt;Logins&lt;/code&gt; are as follows:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Facebook: &lt;code&gt;graph.facebook.com&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Amazon Cognito Identity Provider: &lt;code&gt;cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Google: &lt;code&gt;accounts.google.com&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Amazon: &lt;code&gt;www.amazon.com&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Twitter: &lt;code&gt;api.twitter.com&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Digits: &lt;code&gt;www.digits.com&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param AccountId [AccountId] &lt;p&gt;A standard AWS account ID (9+ digits).&lt;/p&gt;
+-- <p>Input to the GetId action.</p>
+-- @param Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. The available provider names for <code>Logins</code> are as follows:</p> <ul> <li> <p>Facebook: <code>graph.facebook.com</code> </p> </li> <li> <p>Amazon Cognito Identity Provider: <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code> </p> </li> <li> <p>Google: <code>accounts.google.com</code> </p> </li> <li> <p>Amazon: <code>www.amazon.com</code> </p> </li> <li> <p>Twitter: <code>api.twitter.com</code> </p> </li> <li> <p>Digits: <code>www.digits.com</code> </p> </li> </ul>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param AccountId [AccountId] <p>A standard AWS account ID (9+ digits).</p>
 -- Required parameter: IdentityPoolId
 function M.GetIdInput(Logins, IdentityPoolId, AccountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdInput")
@@ -904,8 +904,8 @@ function M.AssertDescribeIdentityPoolInput(struct)
 end
 
 --- Create a structure of type DescribeIdentityPoolInput
--- &lt;p&gt;Input to the DescribeIdentityPool action.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
+-- <p>Input to the DescribeIdentityPool action.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
 -- Required parameter: IdentityPoolId
 function M.DescribeIdentityPoolInput(IdentityPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityPoolInput")
@@ -935,11 +935,11 @@ function M.AssertUnlinkDeveloperIdentityInput(struct)
 end
 
 --- Create a structure of type UnlinkDeveloperIdentityInput
--- &lt;p&gt;Input to the &lt;code&gt;UnlinkDeveloperIdentity&lt;/code&gt; action.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param DeveloperUserIdentifier [DeveloperUserIdentifier] &lt;p&gt;A unique ID used by your backend authentication process to identify a user.&lt;/p&gt;
--- @param DeveloperProviderName [DeveloperProviderName] &lt;p&gt;The &quot;domain&quot; by which Cognito will refer to your users.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Input to the <code>UnlinkDeveloperIdentity</code> action.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param DeveloperUserIdentifier [DeveloperUserIdentifier] <p>A unique ID used by your backend authentication process to identify a user.</p>
+-- @param DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityId
 -- Required parameter: IdentityPoolId
 -- Required parameter: DeveloperProviderName
@@ -978,15 +978,15 @@ function M.AssertIdentityPool(struct)
 end
 
 --- Create a structure of type IdentityPool
--- &lt;p&gt;An object representing an Amazon Cognito identity pool.&lt;/p&gt;
--- @param DeveloperProviderName [DeveloperProviderName] &lt;p&gt;The &quot;domain&quot; by which Cognito will refer to your users.&lt;/p&gt;
--- @param SamlProviderARNs [SAMLProviderList] &lt;p&gt;An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.&lt;/p&gt;
--- @param SupportedLoginProviders [IdentityProviders] &lt;p&gt;Optional key:value pairs mapping provider names to provider app IDs.&lt;/p&gt;
--- @param AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] &lt;p&gt;TRUE if the identity pool supports unauthenticated logins.&lt;/p&gt;
--- @param IdentityPoolName [IdentityPoolName] &lt;p&gt;A string that you provide.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param CognitoIdentityProviders [CognitoIdentityProviderList] &lt;p&gt;A list representing an Amazon Cognito Identity User Pool and its client ID.&lt;/p&gt;
--- @param OpenIdConnectProviderARNs [OIDCProviderList] &lt;p&gt;A list of OpendID Connect provider ARNs.&lt;/p&gt;
+-- <p>An object representing an Amazon Cognito identity pool.</p>
+-- @param DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users.</p>
+-- @param SamlProviderARNs [SAMLProviderList] <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
+-- @param SupportedLoginProviders [IdentityProviders] <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
+-- @param AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] <p>TRUE if the identity pool supports unauthenticated logins.</p>
+-- @param IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param CognitoIdentityProviders [CognitoIdentityProviderList] <p>A list representing an Amazon Cognito Identity User Pool and its client ID.</p>
+-- @param OpenIdConnectProviderARNs [OIDCProviderList] <p>A list of OpendID Connect provider ARNs.</p>
 -- Required parameter: IdentityPoolId
 -- Required parameter: IdentityPoolName
 -- Required parameter: AllowUnauthenticatedIdentities
@@ -1018,8 +1018,8 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;Thrown when the requested resource (for example, a dataset or record) does not exist.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The message returned by a ResourceNotFoundException.&lt;/p&gt;
+-- <p>Thrown when the requested resource (for example, a dataset or record) does not exist.</p>
+-- @param message [String] <p>The message returned by a ResourceNotFoundException.</p>
 function M.ResourceNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -1046,12 +1046,12 @@ function M.AssertLookupDeveloperIdentityInput(struct)
 end
 
 --- Create a structure of type LookupDeveloperIdentityInput
--- &lt;p&gt;Input to the &lt;code&gt;LookupDeveloperIdentityInput&lt;/code&gt; action.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param NextToken [PaginationKey] &lt;p&gt;A pagination token. The first call you make will have &lt;code&gt;NextToken&lt;/code&gt; set to null. After that the service will return &lt;code&gt;NextToken&lt;/code&gt; values as needed. For example, let's say you make a request with &lt;code&gt;MaxResults&lt;/code&gt; set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.&lt;/p&gt;
--- @param DeveloperUserIdentifier [DeveloperUserIdentifier] &lt;p&gt;A unique ID used by your backend authentication process to identify a user. Typically, a developer identity provider would issue many developer user identifiers, in keeping with the number of users.&lt;/p&gt;
--- @param MaxResults [QueryLimit] &lt;p&gt;The maximum number of identities to return.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Input to the <code>LookupDeveloperIdentityInput</code> action.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param NextToken [PaginationKey] <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
+-- @param DeveloperUserIdentifier [DeveloperUserIdentifier] <p>A unique ID used by your backend authentication process to identify a user. Typically, a developer identity provider would issue many developer user identifiers, in keeping with the number of users.</p>
+-- @param MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityPoolId
 function M.LookupDeveloperIdentityInput(IdentityPoolId, NextToken, DeveloperUserIdentifier, MaxResults, IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LookupDeveloperIdentityInput")
@@ -1085,11 +1085,11 @@ function M.AssertMergeDeveloperIdentitiesInput(struct)
 end
 
 --- Create a structure of type MergeDeveloperIdentitiesInput
--- &lt;p&gt;Input to the &lt;code&gt;MergeDeveloperIdentities&lt;/code&gt; action.&lt;/p&gt;
--- @param DestinationUserIdentifier [DeveloperUserIdentifier] &lt;p&gt;User identifier for the destination user. The value should be a &lt;code&gt;DeveloperUserIdentifier&lt;/code&gt;.&lt;/p&gt;
--- @param IdentityPoolId [IdentityPoolId] &lt;p&gt;An identity pool ID in the format REGION:GUID.&lt;/p&gt;
--- @param DeveloperProviderName [DeveloperProviderName] &lt;p&gt;The &quot;domain&quot; by which Cognito will refer to your users. This is a (pseudo) domain name that you provide while creating an identity pool. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the &lt;code&gt;DeveloperProviderName&lt;/code&gt;, you can use letters as well as period (.), underscore (_), and dash (-).&lt;/p&gt;
--- @param SourceUserIdentifier [DeveloperUserIdentifier] &lt;p&gt;User identifier for the source user. The value should be a &lt;code&gt;DeveloperUserIdentifier&lt;/code&gt;.&lt;/p&gt;
+-- <p>Input to the <code>MergeDeveloperIdentities</code> action.</p>
+-- @param DestinationUserIdentifier [DeveloperUserIdentifier] <p>User identifier for the destination user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
+-- @param IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- @param DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users. This is a (pseudo) domain name that you provide while creating an identity pool. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (.), underscore (_), and dash (-).</p>
+-- @param SourceUserIdentifier [DeveloperUserIdentifier] <p>User identifier for the source user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
 -- Required parameter: SourceUserIdentifier
 -- Required parameter: DestinationUserIdentifier
 -- Required parameter: DeveloperProviderName
@@ -1118,8 +1118,8 @@ function M.AssertDeveloperUserAlreadyRegisteredException(struct)
 end
 
 --- Create a structure of type DeveloperUserAlreadyRegisteredException
--- &lt;p&gt;The provided developer user identifier is already registered with Cognito under a different identity ID.&lt;/p&gt;
--- @param message [String] &lt;p&gt;This developer user identifier is already registered with Cognito.&lt;/p&gt;
+-- <p>The provided developer user identifier is already registered with Cognito under a different identity ID.</p>
+-- @param message [String] <p>This developer user identifier is already registered with Cognito.</p>
 function M.DeveloperUserAlreadyRegisteredException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeveloperUserAlreadyRegisteredException")
 	local t = { 
@@ -1146,10 +1146,10 @@ function M.AssertUnlinkIdentityInput(struct)
 end
 
 --- Create a structure of type UnlinkIdentityInput
--- &lt;p&gt;Input to the UnlinkIdentity action.&lt;/p&gt;
--- @param Logins [LoginsMap] &lt;p&gt;A set of optional name-value pairs that map provider names to provider tokens.&lt;/p&gt;
--- @param LoginsToRemove [LoginsList] &lt;p&gt;Provider names to unlink from this identity.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Input to the UnlinkIdentity action.</p>
+-- @param Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
+-- @param LoginsToRemove [LoginsList] <p>Provider names to unlink from this identity.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityId
 -- Required parameter: Logins
 -- Required parameter: LoginsToRemove
@@ -1176,8 +1176,8 @@ function M.AssertExternalServiceException(struct)
 end
 
 --- Create a structure of type ExternalServiceException
--- &lt;p&gt;An exception thrown when a dependent service such as Facebook or Twitter is not responding&lt;/p&gt;
--- @param message [String] &lt;p&gt;The message returned by an ExternalServiceException&lt;/p&gt;
+-- <p>An exception thrown when a dependent service such as Facebook or Twitter is not responding</p>
+-- @param message [String] <p>The message returned by an ExternalServiceException</p>
 function M.ExternalServiceException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExternalServiceException")
 	local t = { 
@@ -1200,9 +1200,9 @@ function M.AssertGetCredentialsForIdentityResponse(struct)
 end
 
 --- Create a structure of type GetCredentialsForIdentityResponse
--- &lt;p&gt;Returned in response to a successful &lt;code&gt;GetCredentialsForIdentity&lt;/code&gt; operation.&lt;/p&gt;
--- @param Credentials [Credentials] &lt;p&gt;Credentials for the provided identity ID.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Returned in response to a successful <code>GetCredentialsForIdentity</code> operation.</p>
+-- @param Credentials [Credentials] <p>Credentials for the provided identity ID.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 function M.GetCredentialsForIdentityResponse(Credentials, IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCredentialsForIdentityResponse")
 	local t = { 
@@ -1228,10 +1228,10 @@ function M.AssertGetCredentialsForIdentityInput(struct)
 end
 
 --- Create a structure of type GetCredentialsForIdentityInput
--- &lt;p&gt;Input to the &lt;code&gt;GetCredentialsForIdentity&lt;/code&gt; action.&lt;/p&gt;
--- @param Logins [LoginsMap] &lt;p&gt;A set of optional name-value pairs that map provider names to provider tokens.&lt;/p&gt;
--- @param CustomRoleArn [ARNString] &lt;p&gt;The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers that do not support role customization.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Input to the <code>GetCredentialsForIdentity</code> action.</p>
+-- @param Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
+-- @param CustomRoleArn [ARNString] <p>The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers that do not support role customization.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityId
 function M.GetCredentialsForIdentityInput(Logins, CustomRoleArn, IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCredentialsForIdentityInput")
@@ -1257,8 +1257,8 @@ function M.AssertDescribeIdentityInput(struct)
 end
 
 --- Create a structure of type DescribeIdentityInput
--- &lt;p&gt;Input to the &lt;code&gt;DescribeIdentity&lt;/code&gt; action.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Input to the <code>DescribeIdentity</code> action.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- Required parameter: IdentityId
 function M.DescribeIdentityInput(IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityInput")
@@ -1281,8 +1281,8 @@ function M.AssertDeleteIdentitiesResponse(struct)
 end
 
 --- Create a structure of type DeleteIdentitiesResponse
--- &lt;p&gt;Returned in response to a successful &lt;code&gt;DeleteIdentities&lt;/code&gt; operation.&lt;/p&gt;
--- @param UnprocessedIdentityIds [UnprocessedIdentityIdList] &lt;p&gt;An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.&lt;/p&gt;
+-- <p>Returned in response to a successful <code>DeleteIdentities</code> operation.</p>
+-- @param UnprocessedIdentityIds [UnprocessedIdentityIdList] <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
 function M.DeleteIdentitiesResponse(UnprocessedIdentityIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentitiesResponse")
 	local t = { 
@@ -1304,8 +1304,8 @@ function M.AssertResourceConflictException(struct)
 end
 
 --- Create a structure of type ResourceConflictException
--- &lt;p&gt;Thrown when a user tries to use a login which is already linked to another account.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The message returned by a ResourceConflictException.&lt;/p&gt;
+-- <p>Thrown when a user tries to use a login which is already linked to another account.</p>
+-- @param message [String] <p>The message returned by a ResourceConflictException.</p>
 function M.ResourceConflictException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceConflictException")
 	local t = { 
@@ -1327,8 +1327,8 @@ function M.AssertMergeDeveloperIdentitiesResponse(struct)
 end
 
 --- Create a structure of type MergeDeveloperIdentitiesResponse
--- &lt;p&gt;Returned in response to a successful &lt;code&gt;MergeDeveloperIdentities&lt;/code&gt; action.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Returned in response to a successful <code>MergeDeveloperIdentities</code> action.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 function M.MergeDeveloperIdentitiesResponse(IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MergeDeveloperIdentitiesResponse")
 	local t = { 
@@ -1352,10 +1352,10 @@ function M.AssertLookupDeveloperIdentityResponse(struct)
 end
 
 --- Create a structure of type LookupDeveloperIdentityResponse
--- &lt;p&gt;Returned in response to a successful &lt;code&gt;LookupDeveloperIdentity&lt;/code&gt; action.&lt;/p&gt;
--- @param NextToken [PaginationKey] &lt;p&gt;A pagination token. The first call you make will have &lt;code&gt;NextToken&lt;/code&gt; set to null. After that the service will return &lt;code&gt;NextToken&lt;/code&gt; values as needed. For example, let's say you make a request with &lt;code&gt;MaxResults&lt;/code&gt; set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.&lt;/p&gt;
--- @param DeveloperUserIdentifierList [DeveloperUserIdentifierList] &lt;p&gt;This is the list of developer user identifiers associated with an identity ID. Cognito supports the association of multiple developer user identifiers with an identity ID.&lt;/p&gt;
--- @param IdentityId [IdentityId] &lt;p&gt;A unique identifier in the format REGION:GUID.&lt;/p&gt;
+-- <p>Returned in response to a successful <code>LookupDeveloperIdentity</code> action.</p>
+-- @param NextToken [PaginationKey] <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
+-- @param DeveloperUserIdentifierList [DeveloperUserIdentifierList] <p>This is the list of developer user identifiers associated with an identity ID. Cognito supports the association of multiple developer user identifiers with an identity ID.</p>
+-- @param IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 function M.LookupDeveloperIdentityResponse(NextToken, DeveloperUserIdentifierList, IdentityId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LookupDeveloperIdentityResponse")
 	local t = { 

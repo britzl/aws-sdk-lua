@@ -55,11 +55,11 @@ end
 
 --- Create a structure of type DescribeJobDefinitionsRequest
 --  
--- @param status [String] &lt;p&gt;The status with which to filter job definitions.&lt;/p&gt;
--- @param nextToken [String] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value returned from a previous paginated &lt;code&gt;DescribeJobDefinitions&lt;/code&gt; request where &lt;code&gt;maxResults&lt;/code&gt; was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the &lt;code&gt;nextToken&lt;/code&gt; value. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.&lt;/p&gt; &lt;/note&gt;
--- @param jobDefinitions [StringList] &lt;p&gt;A space-separated list of up to 100 job definition names or full Amazon Resource Name (ARN) entries.&lt;/p&gt;
--- @param jobDefinitionName [String] &lt;p&gt;The name of the job definition to describe.&lt;/p&gt;
--- @param maxResults [Integer] &lt;p&gt;The maximum number of results returned by &lt;code&gt;DescribeJobDefinitions&lt;/code&gt; in paginated output. When this parameter is used, &lt;code&gt;DescribeJobDefinitions&lt;/code&gt; only returns &lt;code&gt;maxResults&lt;/code&gt; results in a single page along with a &lt;code&gt;nextToken&lt;/code&gt; response element. The remaining results of the initial request can be seen by sending another &lt;code&gt;DescribeJobDefinitions&lt;/code&gt; request with the returned &lt;code&gt;nextToken&lt;/code&gt; value. This value can be between 1 and 100. If this parameter is not used, then &lt;code&gt;DescribeJobDefinitions&lt;/code&gt; returns up to 100 results and a &lt;code&gt;nextToken&lt;/code&gt; value if applicable.&lt;/p&gt;
+-- @param status [String] <p>The status with which to filter job definitions.</p>
+-- @param nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeJobDefinitions</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- @param jobDefinitions [StringList] <p>A space-separated list of up to 100 job definition names or full Amazon Resource Name (ARN) entries.</p>
+-- @param jobDefinitionName [String] <p>The name of the job definition to describe.</p>
+-- @param maxResults [Integer] <p>The maximum number of results returned by <code>DescribeJobDefinitions</code> in paginated output. When this parameter is used, <code>DescribeJobDefinitions</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeJobDefinitions</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeJobDefinitions</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
 function M.DescribeJobDefinitionsRequest(status, nextToken, jobDefinitions, jobDefinitionName, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobDefinitionsRequest")
 	local t = { 
@@ -88,11 +88,11 @@ function M.AssertAttemptDetail(struct)
 end
 
 --- Create a structure of type AttemptDetail
--- &lt;p&gt;An object representing a job attempt.&lt;/p&gt;
--- @param startedAt [Long] &lt;p&gt;The Unix timestamp for when the attempt was started (when the task transitioned from the &lt;code&gt;PENDING&lt;/code&gt; state to the &lt;code&gt;RUNNING&lt;/code&gt; state).&lt;/p&gt;
--- @param container [AttemptContainerDetail] &lt;p&gt;Details about the container in this job attempt.&lt;/p&gt;
--- @param stoppedAt [Long] &lt;p&gt;The Unix timestamp for when the attempt was stopped (when the task transitioned from the &lt;code&gt;RUNNING&lt;/code&gt; state to the &lt;code&gt;STOPPED&lt;/code&gt; state).&lt;/p&gt;
--- @param statusReason [String] &lt;p&gt;A short, human-readable string to provide additional details about the current status of the job attempt.&lt;/p&gt;
+-- <p>An object representing a job attempt.</p>
+-- @param startedAt [Long] <p>The Unix timestamp for when the attempt was started (when the task transitioned from the <code>PENDING</code> state to the <code>RUNNING</code> state).</p>
+-- @param container [AttemptContainerDetail] <p>Details about the container in this job attempt.</p>
+-- @param stoppedAt [Long] <p>The Unix timestamp for when the attempt was stopped (when the task transitioned from the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
+-- @param statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the job attempt.</p>
 function M.AttemptDetail(startedAt, container, stoppedAt, statusReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttemptDetail")
 	local t = { 
@@ -122,10 +122,10 @@ function M.AssertUlimit(struct)
 end
 
 --- Create a structure of type Ulimit
--- &lt;p&gt;The &lt;code&gt;ulimit&lt;/code&gt; settings to pass to the container.&lt;/p&gt;
--- @param softLimit [Integer] &lt;p&gt;The soft limit for the &lt;code&gt;ulimit&lt;/code&gt; type.&lt;/p&gt;
--- @param hardLimit [Integer] &lt;p&gt;The hard limit for the &lt;code&gt;ulimit&lt;/code&gt; type.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The &lt;code&gt;type&lt;/code&gt; of the &lt;code&gt;ulimit&lt;/code&gt;.&lt;/p&gt;
+-- <p>The <code>ulimit</code> settings to pass to the container.</p>
+-- @param softLimit [Integer] <p>The soft limit for the <code>ulimit</code> type.</p>
+-- @param hardLimit [Integer] <p>The hard limit for the <code>ulimit</code> type.</p>
+-- @param name [String] <p>The <code>type</code> of the <code>ulimit</code>.</p>
 -- Required parameter: hardLimit
 -- Required parameter: name
 -- Required parameter: softLimit
@@ -157,10 +157,10 @@ end
 
 --- Create a structure of type ListJobsRequest
 --  
--- @param nextToken [String] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value returned from a previous paginated &lt;code&gt;ListJobs&lt;/code&gt; request where &lt;code&gt;maxResults&lt;/code&gt; was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the &lt;code&gt;nextToken&lt;/code&gt; value. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.&lt;/p&gt; &lt;/note&gt;
--- @param maxResults [Integer] &lt;p&gt;The maximum number of results returned by &lt;code&gt;ListJobs&lt;/code&gt; in paginated output. When this parameter is used, &lt;code&gt;ListJobs&lt;/code&gt; only returns &lt;code&gt;maxResults&lt;/code&gt; results in a single page along with a &lt;code&gt;nextToken&lt;/code&gt; response element. The remaining results of the initial request can be seen by sending another &lt;code&gt;ListJobs&lt;/code&gt; request with the returned &lt;code&gt;nextToken&lt;/code&gt; value. This value can be between 1 and 100. If this parameter is not used, then &lt;code&gt;ListJobs&lt;/code&gt; returns up to 100 results and a &lt;code&gt;nextToken&lt;/code&gt; value if applicable.&lt;/p&gt;
--- @param jobStatus [JobStatus] &lt;p&gt;The job status with which to filter jobs in the specified queue.&lt;/p&gt;
--- @param jobQueue [String] &lt;p&gt;The name or full Amazon Resource Name (ARN) of the job queue with which to list jobs.&lt;/p&gt;
+-- @param nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListJobs</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- @param maxResults [Integer] <p>The maximum number of results returned by <code>ListJobs</code> in paginated output. When this parameter is used, <code>ListJobs</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListJobs</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListJobs</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- @param jobStatus [JobStatus] <p>The job status with which to filter jobs in the specified queue.</p>
+-- @param jobQueue [String] <p>The name or full Amazon Resource Name (ARN) of the job queue with which to list jobs.</p>
 -- Required parameter: jobQueue
 function M.ListJobsRequest(nextToken, maxResults, jobStatus, jobQueue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsRequest")
@@ -190,8 +190,8 @@ end
 
 --- Create a structure of type TerminateJobRequest
 --  
--- @param reason [String] &lt;p&gt;A message to attach to the job that explains the reason for cancelling it. This message is returned by future &lt;a&gt;DescribeJobs&lt;/a&gt; operations on the job. This message is also recorded in the AWS Batch activity logs. &lt;/p&gt;
--- @param jobId [String] &lt;p&gt;Job IDs to be terminated. Up to 100 jobs can be specified.&lt;/p&gt;
+-- @param reason [String] <p>A message to attach to the job that explains the reason for cancelling it. This message is returned by future <a>DescribeJobs</a> operations on the job. This message is also recorded in the AWS Batch activity logs. </p>
+-- @param jobId [String] <p>Job IDs to be terminated. Up to 100 jobs can be specified.</p>
 -- Required parameter: jobId
 -- Required parameter: reason
 function M.TerminateJobRequest(reason, jobId, ...)
@@ -221,10 +221,10 @@ end
 
 --- Create a structure of type UpdateComputeEnvironmentRequest
 --  
--- @param computeEnvironment [String] &lt;p&gt;The name or full Amazon Resource Name (ARN) of the compute environment to update.&lt;/p&gt;
--- @param state [CEState] &lt;p&gt;The state of the compute environment. Compute environments in the &lt;code&gt;ENABLED&lt;/code&gt; state can accept jobs from a queue and scale in or out automatically based on the workload demand of its associated queues.&lt;/p&gt;
--- @param computeResources [ComputeResourceUpdate] &lt;p&gt;Details of the compute resources managed by the compute environment. Required for a managed compute environment.&lt;/p&gt;
--- @param serviceRole [String] &lt;p&gt;The name or full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to ECS, Auto Scaling, and EC2 on your behalf.&lt;/p&gt;
+-- @param computeEnvironment [String] <p>The name or full Amazon Resource Name (ARN) of the compute environment to update.</p>
+-- @param state [CEState] <p>The state of the compute environment. Compute environments in the <code>ENABLED</code> state can accept jobs from a queue and scale in or out automatically based on the workload demand of its associated queues.</p>
+-- @param computeResources [ComputeResourceUpdate] <p>Details of the compute resources managed by the compute environment. Required for a managed compute environment.</p>
+-- @param serviceRole [String] <p>The name or full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to ECS, Auto Scaling, and EC2 on your behalf.</p>
 -- Required parameter: computeEnvironment
 function M.UpdateComputeEnvironmentRequest(computeEnvironment, state, computeResources, serviceRole, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateComputeEnvironmentRequest")
@@ -252,10 +252,10 @@ function M.AssertComputeResourceUpdate(struct)
 end
 
 --- Create a structure of type ComputeResourceUpdate
--- &lt;p&gt;An object representing the attributes of a compute environment that can be updated.&lt;/p&gt;
--- @param maxvCpus [Integer] &lt;p&gt;The maximum number of EC2 vCPUs that an environment can reach.&lt;/p&gt;
--- @param minvCpus [Integer] &lt;p&gt;The minimum number of EC2 vCPUs that an environment should maintain.&lt;/p&gt;
--- @param desiredvCpus [Integer] &lt;p&gt;The desired number of EC2 vCPUS in the compute environment.&lt;/p&gt;
+-- <p>An object representing the attributes of a compute environment that can be updated.</p>
+-- @param maxvCpus [Integer] <p>The maximum number of EC2 vCPUs that an environment can reach.</p>
+-- @param minvCpus [Integer] <p>The minimum number of EC2 vCPUs that an environment should maintain.</p>
+-- @param desiredvCpus [Integer] <p>The desired number of EC2 vCPUS in the compute environment.</p>
 function M.ComputeResourceUpdate(maxvCpus, minvCpus, desiredvCpus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComputeResourceUpdate")
 	local t = { 
@@ -280,9 +280,9 @@ function M.AssertKeyValuePair(struct)
 end
 
 --- Create a structure of type KeyValuePair
--- &lt;p&gt;A key-value pair object.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the key value pair. For environment variables, this is the name of the environment variable.&lt;/p&gt;
--- @param value [String] &lt;p&gt;The value of the key value pair. For environment variables, this is the value of the environment variable.&lt;/p&gt;
+-- <p>A key-value pair object.</p>
+-- @param name [String] <p>The name of the key value pair. For environment variables, this is the name of the environment variable.</p>
+-- @param value [String] <p>The value of the key value pair. For environment variables, this is the value of the environment variable.</p>
 function M.KeyValuePair(name, value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KeyValuePair")
 	local t = { 
@@ -312,10 +312,10 @@ end
 
 --- Create a structure of type CreateJobQueueRequest
 --  
--- @param priority [Integer] &lt;p&gt;The priority of the job queue. Job queues with a higher priority (or a lower integer value for the &lt;code&gt;priority&lt;/code&gt; parameter) are evaluated first when associated with same compute environment. Priority is determined in ascending order, for example, a job queue with a priority value of &lt;code&gt;1&lt;/code&gt; is given scheduling preference over a job queue with a priority value of &lt;code&gt;10&lt;/code&gt;.&lt;/p&gt;
--- @param state [JQState] &lt;p&gt;The state of the job queue. If the job queue state is &lt;code&gt;ENABLED&lt;/code&gt;, it is able to accept jobs.&lt;/p&gt;
--- @param computeEnvironmentOrder [ComputeEnvironmentOrders] &lt;p&gt;The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should execute a given job. Compute environments must be in the &lt;code&gt;VALID&lt;/code&gt; state before you can associate them with a job queue. You can associate up to 3 compute environments with a job queue.&lt;/p&gt;
--- @param jobQueueName [String] &lt;p&gt;The name of the job queue.&lt;/p&gt;
+-- @param priority [Integer] <p>The priority of the job queue. Job queues with a higher priority (or a lower integer value for the <code>priority</code> parameter) are evaluated first when associated with same compute environment. Priority is determined in ascending order, for example, a job queue with a priority value of <code>1</code> is given scheduling preference over a job queue with a priority value of <code>10</code>.</p>
+-- @param state [JQState] <p>The state of the job queue. If the job queue state is <code>ENABLED</code>, it is able to accept jobs.</p>
+-- @param computeEnvironmentOrder [ComputeEnvironmentOrders] <p>The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should execute a given job. Compute environments must be in the <code>VALID</code> state before you can associate them with a job queue. You can associate up to 3 compute environments with a job queue.</p>
+-- @param jobQueueName [String] <p>The name of the job queue.</p>
 -- Required parameter: jobQueueName
 -- Required parameter: priority
 -- Required parameter: computeEnvironmentOrder
@@ -343,8 +343,8 @@ function M.AssertRetryStrategy(struct)
 end
 
 --- Create a structure of type RetryStrategy
--- &lt;p&gt;The retry strategy associated with a job.&lt;/p&gt;
--- @param attempts [Integer] &lt;p&gt;The number of times to move a job to the &lt;code&gt;RUNNABLE&lt;/code&gt; status. You may specify between 1 and 10 attempts. If &lt;code&gt;attempts&lt;/code&gt; is greater than one, the job is retried if it fails until it has moved to &lt;code&gt;RUNNABLE&lt;/code&gt; that many times.&lt;/p&gt;
+-- <p>The retry strategy associated with a job.</p>
+-- @param attempts [Integer] <p>The number of times to move a job to the <code>RUNNABLE</code> status. You may specify between 1 and 10 attempts. If <code>attempts</code> is greater than one, the job is retried if it fails until it has moved to <code>RUNNABLE</code> that many times.</p>
 function M.RetryStrategy(attempts, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RetryStrategy")
 	local t = { 
@@ -368,10 +368,10 @@ function M.AssertMountPoint(struct)
 end
 
 --- Create a structure of type MountPoint
--- &lt;p&gt;Details on a Docker volume mount point that is used in a job's container properties.&lt;/p&gt;
--- @param sourceVolume [String] &lt;p&gt;The name of the volume to mount.&lt;/p&gt;
--- @param readOnly [Boolean] &lt;p&gt;If this value is &lt;code&gt;true&lt;/code&gt;, the container has read-only access to the volume; otherwise, the container can write to the volume. The default value is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param containerPath [String] &lt;p&gt;The path on the container at which to mount the host volume.&lt;/p&gt;
+-- <p>Details on a Docker volume mount point that is used in a job's container properties.</p>
+-- @param sourceVolume [String] <p>The name of the volume to mount.</p>
+-- @param readOnly [Boolean] <p>If this value is <code>true</code>, the container has read-only access to the volume; otherwise, the container can write to the volume. The default value is <code>false</code>.</p>
+-- @param containerPath [String] <p>The path on the container at which to mount the host volume.</p>
 function M.MountPoint(sourceVolume, readOnly, containerPath, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MountPoint")
 	local t = { 
@@ -403,11 +403,11 @@ end
 
 --- Create a structure of type CreateComputeEnvironmentRequest
 --  
--- @param computeEnvironmentName [String] &lt;p&gt;The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed.&lt;/p&gt;
--- @param state [CEState] &lt;p&gt;The state of the compute environment. If the state is &lt;code&gt;ENABLED&lt;/code&gt;, then the compute environment accepts jobs from a queue and can scale out automatically based on queues.&lt;/p&gt;
--- @param type [CEType] &lt;p&gt;The type of the compute environment. &lt;/p&gt;
--- @param computeResources [ComputeResource] &lt;p&gt;Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments.&lt;/p&gt;
--- @param serviceRole [String] &lt;p&gt;The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf. &lt;/p&gt;
+-- @param computeEnvironmentName [String] <p>The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed.</p>
+-- @param state [CEState] <p>The state of the compute environment. If the state is <code>ENABLED</code>, then the compute environment accepts jobs from a queue and can scale out automatically based on queues.</p>
+-- @param type [CEType] <p>The type of the compute environment. </p>
+-- @param computeResources [ComputeResource] <p>Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments.</p>
+-- @param serviceRole [String] <p>The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf. </p>
 -- Required parameter: computeEnvironmentName
 -- Required parameter: type
 -- Required parameter: serviceRole
@@ -436,8 +436,8 @@ function M.AssertJobDependency(struct)
 end
 
 --- Create a structure of type JobDependency
--- &lt;p&gt;An object representing an AWS Batch job dependency.&lt;/p&gt;
--- @param jobId [String] &lt;p&gt;The job ID of the AWS Batch job associated with this dependency.&lt;/p&gt;
+-- <p>An object representing an AWS Batch job dependency.</p>
+-- @param jobId [String] <p>The job ID of the AWS Batch job associated with this dependency.</p>
 function M.JobDependency(jobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobDependency")
 	local t = { 
@@ -470,16 +470,16 @@ function M.AssertComputeEnvironmentDetail(struct)
 end
 
 --- Create a structure of type ComputeEnvironmentDetail
--- &lt;p&gt;An object representing an AWS Batch compute environment.&lt;/p&gt;
--- @param status [CEStatus] &lt;p&gt;The current status of the compute environment (for example, &lt;code&gt;CREATING&lt;/code&gt; or &lt;code&gt;VALID&lt;/code&gt;).&lt;/p&gt;
--- @param serviceRole [String] &lt;p&gt;The service role associated with the compute environment that allows AWS Batch to make calls to AWS API operations on your behalf.&lt;/p&gt;
--- @param computeEnvironmentArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the compute environment. &lt;/p&gt;
--- @param computeResources [ComputeResource] &lt;p&gt;The compute resources defined for the compute environment. &lt;/p&gt;
--- @param statusReason [String] &lt;p&gt;A short, human-readable string to provide additional details about the current status of the compute environment.&lt;/p&gt;
--- @param ecsClusterArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster used by the compute environment. &lt;/p&gt;
--- @param state [CEState] &lt;p&gt;The state of the compute environment. The valid values are &lt;code&gt;ENABLED&lt;/code&gt; or &lt;code&gt;DISABLED&lt;/code&gt;. An &lt;code&gt;ENABLED&lt;/code&gt; state indicates that you can register instances with the compute environment and that the associated instances can accept jobs. &lt;/p&gt;
--- @param computeEnvironmentName [String] &lt;p&gt;The name of the compute environment. &lt;/p&gt;
--- @param type [CEType] &lt;p&gt;The type of the compute environment.&lt;/p&gt;
+-- <p>An object representing an AWS Batch compute environment.</p>
+-- @param status [CEStatus] <p>The current status of the compute environment (for example, <code>CREATING</code> or <code>VALID</code>).</p>
+-- @param serviceRole [String] <p>The service role associated with the compute environment that allows AWS Batch to make calls to AWS API operations on your behalf.</p>
+-- @param computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
+-- @param computeResources [ComputeResource] <p>The compute resources defined for the compute environment. </p>
+-- @param statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the compute environment.</p>
+-- @param ecsClusterArn [String] <p>The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster used by the compute environment. </p>
+-- @param state [CEState] <p>The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>. An <code>ENABLED</code> state indicates that you can register instances with the compute environment and that the associated instances can accept jobs. </p>
+-- @param computeEnvironmentName [String] <p>The name of the compute environment. </p>
+-- @param type [CEType] <p>The type of the compute environment.</p>
 -- Required parameter: computeEnvironmentName
 -- Required parameter: computeEnvironmentArn
 -- Required parameter: ecsClusterArn
@@ -531,21 +531,21 @@ function M.AssertJobDetail(struct)
 end
 
 --- Create a structure of type JobDetail
--- &lt;p&gt;An object representing an AWS Batch job.&lt;/p&gt;
--- @param status [JobStatus] &lt;p&gt;The current status for the job.&lt;/p&gt;
--- @param container [ContainerDetail] &lt;p&gt;An object representing the details of the container that is associated with the job.&lt;/p&gt;
--- @param parameters [ParametersMap] &lt;p&gt;Additional parameters passed to the job that replace parameter substitution placeholders or override any corresponding parameter defaults from the job definition. &lt;/p&gt;
--- @param jobDefinition [String] &lt;p&gt;The job definition that is used by this job.&lt;/p&gt;
--- @param statusReason [String] &lt;p&gt;A short, human-readable string to provide additional details about the current status of the job. &lt;/p&gt;
--- @param jobId [String] &lt;p&gt;The ID for the job.&lt;/p&gt;
--- @param attempts [AttemptDetails] &lt;p&gt;A list of job attempts associated with this job.&lt;/p&gt;
--- @param retryStrategy [RetryStrategy] &lt;p&gt;The retry strategy to use for this job if an attempt fails.&lt;/p&gt;
--- @param jobQueue [String] &lt;p&gt;The Amazon Resource Name (ARN) of the job queue with which the job is associated.&lt;/p&gt;
--- @param dependsOn [JobDependencyList] &lt;p&gt;A list of job names or IDs on which this job depends.&lt;/p&gt;
--- @param startedAt [Long] &lt;p&gt;The Unix timestamp for when the job was started (when the task transitioned from the &lt;code&gt;PENDING&lt;/code&gt; state to the &lt;code&gt;RUNNING&lt;/code&gt; state). &lt;/p&gt;
--- @param jobName [String] &lt;p&gt;The name of the job.&lt;/p&gt;
--- @param createdAt [Long] &lt;p&gt;The Unix timestamp for when the job was created (when the task entered the &lt;code&gt;PENDING&lt;/code&gt; state). &lt;/p&gt;
--- @param stoppedAt [Long] &lt;p&gt;The Unix timestamp for when the job was stopped (when the task transitioned from the &lt;code&gt;RUNNING&lt;/code&gt; state to the &lt;code&gt;STOPPED&lt;/code&gt; state).&lt;/p&gt;
+-- <p>An object representing an AWS Batch job.</p>
+-- @param status [JobStatus] <p>The current status for the job.</p>
+-- @param container [ContainerDetail] <p>An object representing the details of the container that is associated with the job.</p>
+-- @param parameters [ParametersMap] <p>Additional parameters passed to the job that replace parameter substitution placeholders or override any corresponding parameter defaults from the job definition. </p>
+-- @param jobDefinition [String] <p>The job definition that is used by this job.</p>
+-- @param statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the job. </p>
+-- @param jobId [String] <p>The ID for the job.</p>
+-- @param attempts [AttemptDetails] <p>A list of job attempts associated with this job.</p>
+-- @param retryStrategy [RetryStrategy] <p>The retry strategy to use for this job if an attempt fails.</p>
+-- @param jobQueue [String] <p>The Amazon Resource Name (ARN) of the job queue with which the job is associated.</p>
+-- @param dependsOn [JobDependencyList] <p>A list of job names or IDs on which this job depends.</p>
+-- @param startedAt [Long] <p>The Unix timestamp for when the job was started (when the task transitioned from the <code>PENDING</code> state to the <code>RUNNING</code> state). </p>
+-- @param jobName [String] <p>The name of the job.</p>
+-- @param createdAt [Long] <p>The Unix timestamp for when the job was created (when the task entered the <code>PENDING</code> state). </p>
+-- @param stoppedAt [Long] <p>The Unix timestamp for when the job was stopped (when the task transitioned from the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
 -- Required parameter: jobName
 -- Required parameter: jobId
 -- Required parameter: jobQueue
@@ -590,8 +590,8 @@ end
 
 --- Create a structure of type SubmitJobResponse
 --  
--- @param jobId [String] &lt;p&gt;The unique identifier for the job.&lt;/p&gt;
--- @param jobName [String] &lt;p&gt;The name of the job. &lt;/p&gt;
+-- @param jobId [String] <p>The unique identifier for the job.</p>
+-- @param jobName [String] <p>The name of the job. </p>
 -- Required parameter: jobName
 -- Required parameter: jobId
 function M.SubmitJobResponse(jobId, jobName, ...)
@@ -619,9 +619,9 @@ function M.AssertComputeEnvironmentOrder(struct)
 end
 
 --- Create a structure of type ComputeEnvironmentOrder
--- &lt;p&gt;The order in which compute environments are tried for job placement within a queue. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.&lt;/p&gt;
--- @param computeEnvironment [String] &lt;p&gt;The Amazon Resource Name (ARN) of the compute environment.&lt;/p&gt;
--- @param order [Integer] &lt;p&gt;The order of the compute environment.&lt;/p&gt;
+-- <p>The order in which compute environments are tried for job placement within a queue. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.</p>
+-- @param computeEnvironment [String] <p>The Amazon Resource Name (ARN) of the compute environment.</p>
+-- @param order [Integer] <p>The order of the compute environment.</p>
 -- Required parameter: order
 -- Required parameter: computeEnvironment
 function M.ComputeEnvironmentOrder(computeEnvironment, order, ...)
@@ -648,8 +648,8 @@ end
 
 --- Create a structure of type DescribeJobQueuesResponse
 --  
--- @param jobQueues [JobQueueDetailList] &lt;p&gt;The list of job queues. &lt;/p&gt;
--- @param nextToken [String] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value to include in a future &lt;code&gt;DescribeJobQueues&lt;/code&gt; request. When the results of a &lt;code&gt;DescribeJobQueues&lt;/code&gt; request exceed &lt;code&gt;maxResults&lt;/code&gt;, this value can be used to retrieve the next page of results. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt;
+-- @param jobQueues [JobQueueDetailList] <p>The list of job queues. </p>
+-- @param nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>DescribeJobQueues</code> request. When the results of a <code>DescribeJobQueues</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
 function M.DescribeJobQueuesResponse(jobQueues, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobQueuesResponse")
 	local t = { 
@@ -674,7 +674,7 @@ end
 
 --- Create a structure of type DeleteComputeEnvironmentRequest
 --  
--- @param computeEnvironment [String] &lt;p&gt;The name or Amazon Resource Name (ARN) of the compute environment to delete. &lt;/p&gt;
+-- @param computeEnvironment [String] <p>The name or Amazon Resource Name (ARN) of the compute environment to delete. </p>
 -- Required parameter: computeEnvironment
 function M.DeleteComputeEnvironmentRequest(computeEnvironment, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteComputeEnvironmentRequest")
@@ -736,20 +736,20 @@ function M.AssertComputeResource(struct)
 end
 
 --- Create a structure of type ComputeResource
--- &lt;p&gt;An object representing an AWS Batch compute resource.&lt;/p&gt;
--- @param subnets [StringList] &lt;p&gt;The VPC subnets into which the compute resources are launched. &lt;/p&gt;
--- @param spotIamFleetRole [String] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a &lt;code&gt;SPOT&lt;/code&gt; compute environment.&lt;/p&gt;
--- @param tags [TagsMap] &lt;p&gt;Key-value pair tags to be applied to resources that are launched in the compute environment. &lt;/p&gt;
--- @param desiredvCpus [Integer] &lt;p&gt;The desired number of EC2 vCPUS in the compute environment. &lt;/p&gt;
--- @param minvCpus [Integer] &lt;p&gt;The minimum number of EC2 vCPUs that an environment should maintain. &lt;/p&gt;
--- @param instanceTypes [StringList] &lt;p&gt;The instances types that may launched.&lt;/p&gt;
--- @param imageId [String] &lt;p&gt;The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.&lt;/p&gt;
--- @param bidPercentage [Integer] &lt;p&gt;The minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20%, then the Spot price must be below 20% of the current On-Demand price for that EC2 instance.&lt;/p&gt;
--- @param instanceRole [String] &lt;p&gt;The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.&lt;/p&gt;
--- @param maxvCpus [Integer] &lt;p&gt;The maximum number of EC2 vCPUs that an environment can reach. &lt;/p&gt;
--- @param securityGroupIds [StringList] &lt;p&gt;The EC2 security group that is associated with instances launched in the compute environment. &lt;/p&gt;
--- @param type [CRType] &lt;p&gt;The type of compute environment.&lt;/p&gt;
--- @param ec2KeyPair [String] &lt;p&gt;The EC2 key pair that is used for instances launched in the compute environment.&lt;/p&gt;
+-- <p>An object representing an AWS Batch compute resource.</p>
+-- @param subnets [StringList] <p>The VPC subnets into which the compute resources are launched. </p>
+-- @param spotIamFleetRole [String] <p>The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a <code>SPOT</code> compute environment.</p>
+-- @param tags [TagsMap] <p>Key-value pair tags to be applied to resources that are launched in the compute environment. </p>
+-- @param desiredvCpus [Integer] <p>The desired number of EC2 vCPUS in the compute environment. </p>
+-- @param minvCpus [Integer] <p>The minimum number of EC2 vCPUs that an environment should maintain. </p>
+-- @param instanceTypes [StringList] <p>The instances types that may launched.</p>
+-- @param imageId [String] <p>The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.</p>
+-- @param bidPercentage [Integer] <p>The minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20%, then the Spot price must be below 20% of the current On-Demand price for that EC2 instance.</p>
+-- @param instanceRole [String] <p>The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.</p>
+-- @param maxvCpus [Integer] <p>The maximum number of EC2 vCPUs that an environment can reach. </p>
+-- @param securityGroupIds [StringList] <p>The EC2 security group that is associated with instances launched in the compute environment. </p>
+-- @param type [CRType] <p>The type of compute environment.</p>
+-- @param ec2KeyPair [String] <p>The EC2 key pair that is used for instances launched in the compute environment.</p>
 -- Required parameter: type
 -- Required parameter: minvCpus
 -- Required parameter: maxvCpus
@@ -797,11 +797,11 @@ end
 
 --- Create a structure of type RegisterJobDefinitionRequest
 --  
--- @param retryStrategy [RetryStrategy] &lt;p&gt;The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that is specified during a &lt;a&gt;SubmitJob&lt;/a&gt; operation overrides the retry strategy defined here.&lt;/p&gt;
--- @param containerProperties [ContainerProperties] &lt;p&gt;An object with various properties specific for container-based jobs. This parameter is required if the &lt;code&gt;type&lt;/code&gt; parameter is &lt;code&gt;container&lt;/code&gt;.&lt;/p&gt;
--- @param type [JobDefinitionType] &lt;p&gt;The type of job definition.&lt;/p&gt;
--- @param parameters [ParametersMap] &lt;p&gt;Default parameter substitution placeholders to set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a &lt;code&gt;SubmitJob&lt;/code&gt; request override any corresponding parameter defaults from the job definition.&lt;/p&gt;
--- @param jobDefinitionName [String] &lt;p&gt;The name of the job definition to register. &lt;/p&gt;
+-- @param retryStrategy [RetryStrategy] <p>The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that is specified during a <a>SubmitJob</a> operation overrides the retry strategy defined here.</p>
+-- @param containerProperties [ContainerProperties] <p>An object with various properties specific for container-based jobs. This parameter is required if the <code>type</code> parameter is <code>container</code>.</p>
+-- @param type [JobDefinitionType] <p>The type of job definition.</p>
+-- @param parameters [ParametersMap] <p>Default parameter substitution placeholders to set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a <code>SubmitJob</code> request override any corresponding parameter defaults from the job definition.</p>
+-- @param jobDefinitionName [String] <p>The name of the job definition to register. </p>
 -- Required parameter: jobDefinitionName
 -- Required parameter: type
 function M.RegisterJobDefinitionRequest(retryStrategy, containerProperties, type, parameters, jobDefinitionName, ...)
@@ -830,9 +830,9 @@ function M.AssertVolume(struct)
 end
 
 --- Create a structure of type Volume
--- &lt;p&gt;A data volume used in a job's container properties.&lt;/p&gt;
--- @param host [Host] &lt;p&gt;The contents of the &lt;code&gt;host&lt;/code&gt; parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This name is referenced in the &lt;code&gt;sourceVolume&lt;/code&gt; parameter of container definition &lt;code&gt;mountPoints&lt;/code&gt;.&lt;/p&gt;
+-- <p>A data volume used in a job's container properties.</p>
+-- @param host [Host] <p>The contents of the <code>host</code> parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.</p>
+-- @param name [String] <p>The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition <code>mountPoints</code>.</p>
 function M.Volume(host, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Volume")
 	local t = { 
@@ -855,8 +855,8 @@ function M.AssertHost(struct)
 end
 
 --- Create a structure of type Host
--- &lt;p&gt;The contents of the &lt;code&gt;host&lt;/code&gt; parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.&lt;/p&gt;
--- @param sourcePath [String] &lt;p&gt;The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the &lt;code&gt;host&lt;/code&gt; parameter contains a &lt;code&gt;sourcePath&lt;/code&gt; file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the &lt;code&gt;sourcePath&lt;/code&gt; value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.&lt;/p&gt;
+-- <p>The contents of the <code>host</code> parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.</p>
+-- @param sourcePath [String] <p>The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the <code>host</code> parameter contains a <code>sourcePath</code> file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the <code>sourcePath</code> value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.</p>
 function M.Host(sourcePath, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Host")
 	local t = { 
@@ -889,14 +889,14 @@ function M.AssertJobQueueDetail(struct)
 end
 
 --- Create a structure of type JobQueueDetail
--- &lt;p&gt;An object representing the details of an AWS Batch job queue.&lt;/p&gt;
--- @param status [JQStatus] &lt;p&gt;The status of the job queue (for example, &lt;code&gt;CREATING&lt;/code&gt; or &lt;code&gt;VALID&lt;/code&gt;).&lt;/p&gt;
--- @param jobQueueArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the job queue.&lt;/p&gt;
--- @param computeEnvironmentOrder [ComputeEnvironmentOrders] &lt;p&gt;The compute environments that are attached to the job queue and the order in which job placement is preferred. Compute environments are selected for job placement in ascending order.&lt;/p&gt;
--- @param statusReason [String] &lt;p&gt;A short, human-readable string to provide additional details about the current status of the job queue.&lt;/p&gt;
--- @param priority [Integer] &lt;p&gt;The priority of the job queue. &lt;/p&gt;
--- @param state [JQState] &lt;p&gt;Describes the ability of the queue to accept new jobs.&lt;/p&gt;
--- @param jobQueueName [String] &lt;p&gt;The name of the job queue.&lt;/p&gt;
+-- <p>An object representing the details of an AWS Batch job queue.</p>
+-- @param status [JQStatus] <p>The status of the job queue (for example, <code>CREATING</code> or <code>VALID</code>).</p>
+-- @param jobQueueArn [String] <p>The Amazon Resource Name (ARN) of the job queue.</p>
+-- @param computeEnvironmentOrder [ComputeEnvironmentOrders] <p>The compute environments that are attached to the job queue and the order in which job placement is preferred. Compute environments are selected for job placement in ascending order.</p>
+-- @param statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the job queue.</p>
+-- @param priority [Integer] <p>The priority of the job queue. </p>
+-- @param state [JQState] <p>Describes the ability of the queue to accept new jobs.</p>
+-- @param jobQueueName [String] <p>The name of the job queue.</p>
 -- Required parameter: jobQueueName
 -- Required parameter: jobQueueArn
 -- Required parameter: state
@@ -932,9 +932,9 @@ function M.AssertJobSummary(struct)
 end
 
 --- Create a structure of type JobSummary
--- &lt;p&gt;An object representing summary details of a job.&lt;/p&gt;
--- @param jobName [String] &lt;p&gt;The name of the job.&lt;/p&gt;
--- @param jobId [String] &lt;p&gt;The ID of the job.&lt;/p&gt;
+-- <p>An object representing summary details of a job.</p>
+-- @param jobName [String] <p>The name of the job.</p>
+-- @param jobId [String] <p>The ID of the job.</p>
 -- Required parameter: jobId
 -- Required parameter: jobName
 function M.JobSummary(jobName, jobId, ...)
@@ -970,15 +970,15 @@ function M.AssertJobDefinition(struct)
 end
 
 --- Create a structure of type JobDefinition
--- &lt;p&gt;An object representing an AWS Batch job definition.&lt;/p&gt;
--- @param status [String] &lt;p&gt;The status of the job definition.&lt;/p&gt;
--- @param jobDefinitionArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the job definition. &lt;/p&gt;
--- @param parameters [ParametersMap] &lt;p&gt;Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a &lt;code&gt;SubmitJob&lt;/code&gt; request override any corresponding parameter defaults from the job definition.&lt;/p&gt;
--- @param retryStrategy [RetryStrategy] &lt;p&gt;The retry strategy to use for failed jobs that are submitted with this job definition.&lt;/p&gt;
--- @param containerProperties [ContainerProperties] &lt;p&gt;An object with various properties specific to container-based jobs. &lt;/p&gt;
--- @param type [String] &lt;p&gt;The type of job definition.&lt;/p&gt;
--- @param jobDefinitionName [String] &lt;p&gt;The name of the job definition. &lt;/p&gt;
--- @param revision [Integer] &lt;p&gt;The revision of the job definition.&lt;/p&gt;
+-- <p>An object representing an AWS Batch job definition.</p>
+-- @param status [String] <p>The status of the job definition.</p>
+-- @param jobDefinitionArn [String] <p>The Amazon Resource Name (ARN) for the job definition. </p>
+-- @param parameters [ParametersMap] <p>Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a <code>SubmitJob</code> request override any corresponding parameter defaults from the job definition.</p>
+-- @param retryStrategy [RetryStrategy] <p>The retry strategy to use for failed jobs that are submitted with this job definition.</p>
+-- @param containerProperties [ContainerProperties] <p>An object with various properties specific to container-based jobs. </p>
+-- @param type [String] <p>The type of job definition.</p>
+-- @param jobDefinitionName [String] <p>The name of the job definition. </p>
+-- @param revision [Integer] <p>The revision of the job definition.</p>
 -- Required parameter: jobDefinitionName
 -- Required parameter: jobDefinitionArn
 -- Required parameter: revision
@@ -1013,8 +1013,8 @@ end
 
 --- Create a structure of type UpdateJobQueueResponse
 --  
--- @param jobQueueArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the job queue.&lt;/p&gt;
--- @param jobQueueName [String] &lt;p&gt;The name of the job queue.&lt;/p&gt;
+-- @param jobQueueArn [String] <p>The Amazon Resource Name (ARN) of the job queue.</p>
+-- @param jobQueueName [String] <p>The name of the job queue.</p>
 function M.UpdateJobQueueResponse(jobQueueArn, jobQueueName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobQueueResponse")
 	local t = { 
@@ -1039,8 +1039,8 @@ end
 
 --- Create a structure of type DescribeComputeEnvironmentsResponse
 --  
--- @param nextToken [String] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value to include in a future &lt;code&gt;DescribeComputeEnvironments&lt;/code&gt; request. When the results of a &lt;code&gt;DescribeJobDefinitions&lt;/code&gt; request exceed &lt;code&gt;maxResults&lt;/code&gt;, this value can be used to retrieve the next page of results. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt;
--- @param computeEnvironments [ComputeEnvironmentDetailList] &lt;p&gt;The list of compute environments.&lt;/p&gt;
+-- @param nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>DescribeComputeEnvironments</code> request. When the results of a <code>DescribeJobDefinitions</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- @param computeEnvironments [ComputeEnvironmentDetailList] <p>The list of compute environments.</p>
 function M.DescribeComputeEnvironmentsResponse(nextToken, computeEnvironments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComputeEnvironmentsResponse")
 	local t = { 
@@ -1066,9 +1066,9 @@ end
 
 --- Create a structure of type DescribeComputeEnvironmentsRequest
 --  
--- @param nextToken [String] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value returned from a previous paginated &lt;code&gt;DescribeComputeEnvironments&lt;/code&gt; request where &lt;code&gt;maxResults&lt;/code&gt; was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the &lt;code&gt;nextToken&lt;/code&gt; value. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.&lt;/p&gt; &lt;/note&gt;
--- @param maxResults [Integer] &lt;p&gt;The maximum number of cluster results returned by &lt;code&gt;DescribeComputeEnvironments&lt;/code&gt; in paginated output. When this parameter is used, &lt;code&gt;DescribeComputeEnvironments&lt;/code&gt; only returns &lt;code&gt;maxResults&lt;/code&gt; results in a single page along with a &lt;code&gt;nextToken&lt;/code&gt; response element. The remaining results of the initial request can be seen by sending another &lt;code&gt;DescribeComputeEnvironments&lt;/code&gt; request with the returned &lt;code&gt;nextToken&lt;/code&gt; value. This value can be between 1 and 100. If this parameter is not used, then &lt;code&gt;DescribeComputeEnvironments&lt;/code&gt; returns up to 100 results and a &lt;code&gt;nextToken&lt;/code&gt; value if applicable.&lt;/p&gt;
--- @param computeEnvironments [StringList] &lt;p&gt;A list of up to 100 compute environment names or full Amazon Resource Name (ARN) entries. &lt;/p&gt;
+-- @param nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeComputeEnvironments</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- @param maxResults [Integer] <p>The maximum number of cluster results returned by <code>DescribeComputeEnvironments</code> in paginated output. When this parameter is used, <code>DescribeComputeEnvironments</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeComputeEnvironments</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeComputeEnvironments</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- @param computeEnvironments [StringList] <p>A list of up to 100 compute environment names or full Amazon Resource Name (ARN) entries. </p>
 function M.DescribeComputeEnvironmentsRequest(nextToken, maxResults, computeEnvironments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComputeEnvironmentsRequest")
 	local t = { 
@@ -1092,8 +1092,8 @@ function M.AssertServerException(struct)
 end
 
 --- Create a structure of type ServerException
--- &lt;p&gt;These errors are usually caused by a server issue.&lt;/p&gt;
--- @param message [String] &lt;p&gt;These errors are usually caused by a server issue.&lt;/p&gt;
+-- <p>These errors are usually caused by a server issue.</p>
+-- @param message [String] <p>These errors are usually caused by a server issue.</p>
 function M.ServerException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServerException")
 	local t = { 
@@ -1117,8 +1117,8 @@ end
 
 --- Create a structure of type CreateComputeEnvironmentResponse
 --  
--- @param computeEnvironmentName [String] &lt;p&gt;The name of the compute environment.&lt;/p&gt;
--- @param computeEnvironmentArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the compute environment. &lt;/p&gt;
+-- @param computeEnvironmentName [String] <p>The name of the compute environment.</p>
+-- @param computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
 function M.CreateComputeEnvironmentResponse(computeEnvironmentName, computeEnvironmentArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateComputeEnvironmentResponse")
 	local t = { 
@@ -1146,10 +1146,10 @@ end
 
 --- Create a structure of type UpdateJobQueueRequest
 --  
--- @param priority [Integer] &lt;p&gt;The priority of the job queue. Job queues with a higher priority (or a lower integer value for the &lt;code&gt;priority&lt;/code&gt; parameter) are evaluated first when associated with same compute environment. Priority is determined in ascending order, for example, a job queue with a priority value of &lt;code&gt;1&lt;/code&gt; is given scheduling preference over a job queue with a priority value of &lt;code&gt;10&lt;/code&gt;.&lt;/p&gt;
--- @param state [JQState] &lt;p&gt;Describes the queue's ability to accept new jobs.&lt;/p&gt;
--- @param computeEnvironmentOrder [ComputeEnvironmentOrders] &lt;p&gt;Details the set of compute environments mapped to a job queue and their order relative to each other. This is one of the parameters used by the job scheduler to determine which compute environment should execute a given job. &lt;/p&gt;
--- @param jobQueue [String] &lt;p&gt;The name or the Amazon Resource Name (ARN) of the job queue.&lt;/p&gt;
+-- @param priority [Integer] <p>The priority of the job queue. Job queues with a higher priority (or a lower integer value for the <code>priority</code> parameter) are evaluated first when associated with same compute environment. Priority is determined in ascending order, for example, a job queue with a priority value of <code>1</code> is given scheduling preference over a job queue with a priority value of <code>10</code>.</p>
+-- @param state [JQState] <p>Describes the queue's ability to accept new jobs.</p>
+-- @param computeEnvironmentOrder [ComputeEnvironmentOrders] <p>Details the set of compute environments mapped to a job queue and their order relative to each other. This is one of the parameters used by the job scheduler to determine which compute environment should execute a given job. </p>
+-- @param jobQueue [String] <p>The name or the Amazon Resource Name (ARN) of the job queue.</p>
 -- Required parameter: jobQueue
 function M.UpdateJobQueueRequest(priority, state, computeEnvironmentOrder, jobQueue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobQueueRequest")
@@ -1199,8 +1199,8 @@ end
 
 --- Create a structure of type CreateJobQueueResponse
 --  
--- @param jobQueueArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the job queue.&lt;/p&gt;
--- @param jobQueueName [String] &lt;p&gt;The name of the job queue.&lt;/p&gt;
+-- @param jobQueueArn [String] <p>The Amazon Resource Name (ARN) of the job queue.</p>
+-- @param jobQueueName [String] <p>The name of the job queue.</p>
 -- Required parameter: jobQueueName
 -- Required parameter: jobQueueArn
 function M.CreateJobQueueResponse(jobQueueArn, jobQueueName, ...)
@@ -1248,8 +1248,8 @@ end
 
 --- Create a structure of type ListJobsResponse
 --  
--- @param nextToken [String] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value to include in a future &lt;code&gt;ListJobs&lt;/code&gt; request. When the results of a &lt;code&gt;ListJobs&lt;/code&gt; request exceed &lt;code&gt;maxResults&lt;/code&gt;, this value can be used to retrieve the next page of results. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt;
--- @param jobSummaryList [JobSummaryList] &lt;p&gt;A list of job summaries that match the request.&lt;/p&gt;
+-- @param nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListJobs</code> request. When the results of a <code>ListJobs</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- @param jobSummaryList [JobSummaryList] <p>A list of job summaries that match the request.</p>
 -- Required parameter: jobSummaryList
 function M.ListJobsResponse(nextToken, jobSummaryList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsResponse")
@@ -1274,7 +1274,7 @@ end
 
 --- Create a structure of type DescribeJobsResponse
 --  
--- @param jobs [JobDetailList] &lt;p&gt;The list of jobs. &lt;/p&gt;
+-- @param jobs [JobDetailList] <p>The list of jobs. </p>
 function M.DescribeJobsResponse(jobs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobsResponse")
 	local t = { 
@@ -1302,9 +1302,9 @@ end
 
 --- Create a structure of type RegisterJobDefinitionResponse
 --  
--- @param jobDefinitionArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the job definition. &lt;/p&gt;
--- @param jobDefinitionName [String] &lt;p&gt;The name of the job definition. &lt;/p&gt;
--- @param revision [Integer] &lt;p&gt;The revision of the job definition.&lt;/p&gt;
+-- @param jobDefinitionArn [String] <p>The Amazon Resource Name (ARN) of the job definition. </p>
+-- @param jobDefinitionName [String] <p>The name of the job definition. </p>
+-- @param revision [Integer] <p>The revision of the job definition.</p>
 -- Required parameter: jobDefinitionName
 -- Required parameter: jobDefinitionArn
 -- Required parameter: revision
@@ -1334,11 +1334,11 @@ function M.AssertContainerOverrides(struct)
 end
 
 --- Create a structure of type ContainerOverrides
--- &lt;p&gt;The overrides that should be sent to a container.&lt;/p&gt;
--- @param environment [EnvironmentVariables] &lt;p&gt;The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the job definition.&lt;/p&gt;
--- @param vcpus [Integer] &lt;p&gt;The number of vCPUs to reserve for the container. This value overrides the value set in the job definition.&lt;/p&gt;
--- @param command [StringList] &lt;p&gt;The command to send to the container that overrides the default command from the Docker image or the job definition.&lt;/p&gt;
--- @param memory [Integer] &lt;p&gt;The number of MiB of memory reserved for the job. This value overrides the value set in the job definition.&lt;/p&gt;
+-- <p>The overrides that should be sent to a container.</p>
+-- @param environment [EnvironmentVariables] <p>The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the job definition.</p>
+-- @param vcpus [Integer] <p>The number of vCPUs to reserve for the container. This value overrides the value set in the job definition.</p>
+-- @param command [StringList] <p>The command to send to the container that overrides the default command from the Docker image or the job definition.</p>
+-- @param memory [Integer] <p>The number of MiB of memory reserved for the job. This value overrides the value set in the job definition.</p>
 function M.ContainerOverrides(environment, vcpus, command, memory, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ContainerOverrides")
 	local t = { 
@@ -1366,9 +1366,9 @@ end
 
 --- Create a structure of type DescribeJobQueuesRequest
 --  
--- @param jobQueues [StringList] &lt;p&gt;A list of up to 100 queue names or full queue Amazon Resource Name (ARN) entries.&lt;/p&gt;
--- @param nextToken [String] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value returned from a previous paginated &lt;code&gt;DescribeJobQueues&lt;/code&gt; request where &lt;code&gt;maxResults&lt;/code&gt; was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the &lt;code&gt;nextToken&lt;/code&gt; value. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.&lt;/p&gt; &lt;/note&gt;
--- @param maxResults [Integer] &lt;p&gt;The maximum number of results returned by &lt;code&gt;DescribeJobQueues&lt;/code&gt; in paginated output. When this parameter is used, &lt;code&gt;DescribeJobQueues&lt;/code&gt; only returns &lt;code&gt;maxResults&lt;/code&gt; results in a single page along with a &lt;code&gt;nextToken&lt;/code&gt; response element. The remaining results of the initial request can be seen by sending another &lt;code&gt;DescribeJobQueues&lt;/code&gt; request with the returned &lt;code&gt;nextToken&lt;/code&gt; value. This value can be between 1 and 100. If this parameter is not used, then &lt;code&gt;DescribeJobQueues&lt;/code&gt; returns up to 100 results and a &lt;code&gt;nextToken&lt;/code&gt; value if applicable.&lt;/p&gt;
+-- @param jobQueues [StringList] <p>A list of up to 100 queue names or full queue Amazon Resource Name (ARN) entries.</p>
+-- @param nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeJobQueues</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- @param maxResults [Integer] <p>The maximum number of results returned by <code>DescribeJobQueues</code> in paginated output. When this parameter is used, <code>DescribeJobQueues</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeJobQueues</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeJobQueues</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
 function M.DescribeJobQueuesRequest(jobQueues, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobQueuesRequest")
 	local t = { 
@@ -1406,19 +1406,19 @@ function M.AssertContainerProperties(struct)
 end
 
 --- Create a structure of type ContainerProperties
--- &lt;p&gt;Container properties are used in job definitions to describe the container that is launched as part of a job.&lt;/p&gt;
--- @param mountPoints [MountPoints] &lt;p&gt;The mount points for data volumes in your container. This parameter maps to &lt;code&gt;Volumes&lt;/code&gt; in the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container&quot;&gt;Create a container&lt;/a&gt; section of the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/&quot;&gt;Docker Remote API&lt;/a&gt; and the &lt;code&gt;--volume&lt;/code&gt; option to &lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot;&gt;docker run&lt;/a&gt;.&lt;/p&gt;
--- @param readonlyRootFilesystem [Boolean] &lt;p&gt;When this parameter is true, the container is given read-only access to its root file system. This parameter maps to &lt;code&gt;ReadonlyRootfs&lt;/code&gt; in the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container&quot;&gt;Create a container&lt;/a&gt; section of the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/&quot;&gt;Docker Remote API&lt;/a&gt; and the &lt;code&gt;--read-only&lt;/code&gt; option to &lt;code&gt;docker run&lt;/code&gt;.&lt;/p&gt;
--- @param image [String] &lt;p&gt;The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with &lt;code&gt; &lt;i&gt;repository-url&lt;/i&gt;/&lt;i&gt;image&lt;/i&gt;:&lt;i&gt;tag&lt;/i&gt; &lt;/code&gt;. Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to &lt;code&gt;Image&lt;/code&gt; in the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container&quot;&gt;Create a container&lt;/a&gt; section of the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/&quot;&gt;Docker Remote API&lt;/a&gt; and the &lt;code&gt;IMAGE&lt;/code&gt; parameter of &lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot;&gt;docker run&lt;/a&gt;.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Images in Amazon ECR repositories use the full registry and repository URI (for example, &lt;code&gt;012345678910.dkr.ecr.&amp;lt;region-name&amp;gt;.amazonaws.com/&amp;lt;repository-name&amp;gt;&lt;/code&gt;). &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Images in official repositories on Docker Hub use a single name (for example, &lt;code&gt;ubuntu&lt;/code&gt; or &lt;code&gt;mongo&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Images in other repositories on Docker Hub are qualified with an organization name (for example, &lt;code&gt;amazon/amazon-ecs-agent&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Images in other online repositories are qualified further by a domain name (for example, &lt;code&gt;quay.io/assemblyline/ubuntu&lt;/code&gt;).&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param environment [EnvironmentVariables] &lt;p&gt;The environment variables to pass to a container. This parameter maps to &lt;code&gt;Env&lt;/code&gt; in the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container&quot;&gt;Create a container&lt;/a&gt; section of the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/&quot;&gt;Docker Remote API&lt;/a&gt; and the &lt;code&gt;--env&lt;/code&gt; option to &lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot;&gt;docker run&lt;/a&gt;.&lt;/p&gt; &lt;important&gt; &lt;p&gt;We do not recommend using plain text environment variables for sensitive information, such as credential data.&lt;/p&gt; &lt;/important&gt;
--- @param vcpus [Integer] &lt;p&gt;The number of vCPUs reserved for the container. This parameter maps to &lt;code&gt;CpuShares&lt;/code&gt; in the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container&quot;&gt;Create a container&lt;/a&gt; section of the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/&quot;&gt;Docker Remote API&lt;/a&gt; and the &lt;code&gt;--cpu-shares&lt;/code&gt; option to &lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot;&gt;docker run&lt;/a&gt;. Each vCPU is equivalent to 1,024 CPU shares.&lt;/p&gt;
--- @param jobRoleArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role that the container can assume for AWS permissions.&lt;/p&gt;
--- @param user [String] &lt;p&gt;The user name to use inside the container. This parameter maps to &lt;code&gt;User&lt;/code&gt; in the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container&quot;&gt;Create a container&lt;/a&gt; section of the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/&quot;&gt;Docker Remote API&lt;/a&gt; and the &lt;code&gt;--user&lt;/code&gt; option to &lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot;&gt;docker run&lt;/a&gt;.&lt;/p&gt;
--- @param volumes [Volumes] &lt;p&gt;A list of data volumes used in a job.&lt;/p&gt;
--- @param memory [Integer] &lt;p&gt;The hard limit (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. This parameter maps to &lt;code&gt;Memory&lt;/code&gt; in the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container&quot;&gt;Create a container&lt;/a&gt; section of the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/&quot;&gt;Docker Remote API&lt;/a&gt; and the &lt;code&gt;--memory&lt;/code&gt; option to &lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot;&gt;docker run&lt;/a&gt;.&lt;/p&gt;
--- @param command [StringList] &lt;p&gt;The command that is passed to the container. This parameter maps to &lt;code&gt;Cmd&lt;/code&gt; in the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container&quot;&gt;Create a container&lt;/a&gt; section of the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/&quot;&gt;Docker Remote API&lt;/a&gt; and the &lt;code&gt;COMMAND&lt;/code&gt; parameter to &lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot;&gt;docker run&lt;/a&gt;. For more information, see &lt;a href=&quot;https://docs.docker.com/engine/reference/builder/#cmd&quot;&gt;https://docs.docker.com/engine/reference/builder/#cmd&lt;/a&gt;.&lt;/p&gt;
--- @param privileged [Boolean] &lt;p&gt;When this parameter is true, the container is given elevated privileges on the host container instance (similar to the &lt;code&gt;root&lt;/code&gt; user). This parameter maps to &lt;code&gt;Privileged&lt;/code&gt; in the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container&quot;&gt;Create a container&lt;/a&gt; section of the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/&quot;&gt;Docker Remote API&lt;/a&gt; and the &lt;code&gt;--privileged&lt;/code&gt; option to &lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot;&gt;docker run&lt;/a&gt;.&lt;/p&gt;
--- @param ulimits [Ulimits] &lt;p&gt;A list of &lt;code&gt;ulimits&lt;/code&gt; to set in the container. This parameter maps to &lt;code&gt;Ulimits&lt;/code&gt; in the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container&quot;&gt;Create a container&lt;/a&gt; section of the &lt;a href=&quot;https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/&quot;&gt;Docker Remote API&lt;/a&gt; and the &lt;code&gt;--ulimit&lt;/code&gt; option to &lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot;&gt;docker run&lt;/a&gt;.&lt;/p&gt;
+-- <p>Container properties are used in job definitions to describe the container that is launched as part of a job.</p>
+-- @param mountPoints [MountPoints] <p>The mount points for data volumes in your container. This parameter maps to <code>Volumes</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--volume</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- @param readonlyRootFilesystem [Boolean] <p>When this parameter is true, the container is given read-only access to its root file system. This parameter maps to <code>ReadonlyRootfs</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--read-only</code> option to <code>docker run</code>.</p>
+-- @param image [String] <p>The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with <code> <i>repository-url</i>/<i>image</i>:<i>tag</i> </code>. Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to <code>Image</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <ul> <li> <p>Images in Amazon ECR repositories use the full registry and repository URI (for example, <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>). </p> </li> <li> <p>Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or <code>mongo</code>).</p> </li> <li> <p>Images in other repositories on Docker Hub are qualified with an organization name (for example, <code>amazon/amazon-ecs-agent</code>).</p> </li> <li> <p>Images in other online repositories are qualified further by a domain name (for example, <code>quay.io/assemblyline/ubuntu</code>).</p> </li> </ul>
+-- @param environment [EnvironmentVariables] <p>The environment variables to pass to a container. This parameter maps to <code>Env</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--env</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <important> <p>We do not recommend using plain text environment variables for sensitive information, such as credential data.</p> </important>
+-- @param vcpus [Integer] <p>The number of vCPUs reserved for the container. This parameter maps to <code>CpuShares</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--cpu-shares</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. Each vCPU is equivalent to 1,024 CPU shares.</p>
+-- @param jobRoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role that the container can assume for AWS permissions.</p>
+-- @param user [String] <p>The user name to use inside the container. This parameter maps to <code>User</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--user</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- @param volumes [Volumes] <p>A list of data volumes used in a job.</p>
+-- @param memory [Integer] <p>The hard limit (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. This parameter maps to <code>Memory</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- @param command [StringList] <p>The command that is passed to the container. This parameter maps to <code>Cmd</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>COMMAND</code> parameter to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a href="https://docs.docker.com/engine/reference/builder/#cmd">https://docs.docker.com/engine/reference/builder/#cmd</a>.</p>
+-- @param privileged [Boolean] <p>When this parameter is true, the container is given elevated privileges on the host container instance (similar to the <code>root</code> user). This parameter maps to <code>Privileged</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--privileged</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- @param ulimits [Ulimits] <p>A list of <code>ulimits</code> to set in the container. This parameter maps to <code>Ulimits</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--ulimit</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
 -- Required parameter: image
 -- Required parameter: vcpus
 -- Required parameter: memory
@@ -1476,8 +1476,8 @@ end
 
 --- Create a structure of type UpdateComputeEnvironmentResponse
 --  
--- @param computeEnvironmentName [String] &lt;p&gt;The name of compute environment.&lt;/p&gt;
--- @param computeEnvironmentArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the compute environment. &lt;/p&gt;
+-- @param computeEnvironmentName [String] <p>The name of compute environment.</p>
+-- @param computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
 function M.UpdateComputeEnvironmentResponse(computeEnvironmentName, computeEnvironmentArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateComputeEnvironmentResponse")
 	local t = { 
@@ -1502,7 +1502,7 @@ end
 
 --- Create a structure of type DeleteJobQueueRequest
 --  
--- @param jobQueue [String] &lt;p&gt;The short name or full Amazon Resource Name (ARN) of the queue to delete. &lt;/p&gt;
+-- @param jobQueue [String] <p>The short name or full Amazon Resource Name (ARN) of the queue to delete. </p>
 -- Required parameter: jobQueue
 function M.DeleteJobQueueRequest(jobQueue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteJobQueueRequest")
@@ -1528,11 +1528,11 @@ function M.AssertAttemptContainerDetail(struct)
 end
 
 --- Create a structure of type AttemptContainerDetail
--- &lt;p&gt;An object representing the details of a container that is part of a job attempt.&lt;/p&gt;
--- @param reason [String] &lt;p&gt;A short (255 max characters) human-readable string to provide additional details about a running or stopped container.&lt;/p&gt;
--- @param taskArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.&lt;/p&gt;
--- @param containerInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon ECS container instance that hosts the job attempt.&lt;/p&gt;
--- @param exitCode [Integer] &lt;p&gt;The exit code for the job attempt. A non-zero exit code is considered a failure.&lt;/p&gt;
+-- <p>An object representing the details of a container that is part of a job attempt.</p>
+-- @param reason [String] <p>A short (255 max characters) human-readable string to provide additional details about a running or stopped container.</p>
+-- @param taskArn [String] <p>The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.</p>
+-- @param containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that hosts the job attempt.</p>
+-- @param exitCode [Integer] <p>The exit code for the job attempt. A non-zero exit code is considered a failure.</p>
 function M.AttemptContainerDetail(reason, taskArn, containerInstanceArn, exitCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttemptContainerDetail")
 	local t = { 
@@ -1567,13 +1567,13 @@ end
 
 --- Create a structure of type SubmitJobRequest
 --  
--- @param parameters [ParametersMap] &lt;p&gt;Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and value pair mapping. Parameters in a &lt;code&gt;SubmitJob&lt;/code&gt; request override any corresponding parameter defaults from the job definition.&lt;/p&gt;
--- @param jobDefinition [String] &lt;p&gt;The job definition used by this job. This value can be either a &lt;code&gt;name:revision&lt;/code&gt; or the Amazon Resource Name (ARN) for the job definition.&lt;/p&gt;
--- @param jobQueue [String] &lt;p&gt;The job queue into which the job will be submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue. &lt;/p&gt;
--- @param jobName [String] &lt;p&gt;The name of the job. A name must be 1 to 128 characters in length.&lt;/p&gt; &lt;p&gt;Pattern: ^[a-zA-Z0-9_]+$&lt;/p&gt;
--- @param retryStrategy [RetryStrategy] &lt;p&gt;The retry strategy to use for failed jobs from this &lt;a&gt;SubmitJob&lt;/a&gt; operation. When a retry strategy is specified here, it overrides the retry strategy defined in the job definition.&lt;/p&gt;
--- @param containerOverrides [ContainerOverrides] &lt;p&gt;A list of container overrides in JSON format that specify the name of a container in the specified job definition and the overrides it should receive. You can override the default command for a container (that is specified in the job definition or the Docker image) with a &lt;code&gt;command&lt;/code&gt; override. You can also override existing environment variables (that are specified in the job definition or Docker image) on a container or add new environment variables to it with an &lt;code&gt;environment&lt;/code&gt; override.&lt;/p&gt;
--- @param dependsOn [JobDependencyList] &lt;p&gt;A list of job IDs on which this job depends. A job can depend upon a maximum of 100 jobs. &lt;/p&gt;
+-- @param parameters [ParametersMap] <p>Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and value pair mapping. Parameters in a <code>SubmitJob</code> request override any corresponding parameter defaults from the job definition.</p>
+-- @param jobDefinition [String] <p>The job definition used by this job. This value can be either a <code>name:revision</code> or the Amazon Resource Name (ARN) for the job definition.</p>
+-- @param jobQueue [String] <p>The job queue into which the job will be submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue. </p>
+-- @param jobName [String] <p>The name of the job. A name must be 1 to 128 characters in length.</p> <p>Pattern: ^[a-zA-Z0-9_]+$</p>
+-- @param retryStrategy [RetryStrategy] <p>The retry strategy to use for failed jobs from this <a>SubmitJob</a> operation. When a retry strategy is specified here, it overrides the retry strategy defined in the job definition.</p>
+-- @param containerOverrides [ContainerOverrides] <p>A list of container overrides in JSON format that specify the name of a container in the specified job definition and the overrides it should receive. You can override the default command for a container (that is specified in the job definition or the Docker image) with a <code>command</code> override. You can also override existing environment variables (that are specified in the job definition or Docker image) on a container or add new environment variables to it with an <code>environment</code> override.</p>
+-- @param dependsOn [JobDependencyList] <p>A list of job IDs on which this job depends. A job can depend upon a maximum of 100 jobs. </p>
 -- Required parameter: jobName
 -- Required parameter: jobQueue
 -- Required parameter: jobDefinition
@@ -1619,23 +1619,23 @@ function M.AssertContainerDetail(struct)
 end
 
 --- Create a structure of type ContainerDetail
--- &lt;p&gt;An object representing the details of a container that is part of a job.&lt;/p&gt;
--- @param mountPoints [MountPoints] &lt;p&gt;The mount points for data volumes in your container.&lt;/p&gt;
--- @param taskArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the container job.&lt;/p&gt;
--- @param readonlyRootFilesystem [Boolean] &lt;p&gt;When this parameter is true, the container is given read-only access to its root file system.&lt;/p&gt;
--- @param image [String] &lt;p&gt;The image used to start the container.&lt;/p&gt;
--- @param reason [String] &lt;p&gt;A short (255 max characters) human-readable string to provide additional details about a running or stopped container.&lt;/p&gt;
--- @param containerInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the container instance on which the container is running.&lt;/p&gt;
--- @param environment [EnvironmentVariables] &lt;p&gt;The environment variables to pass to a container.&lt;/p&gt;
--- @param vcpus [Integer] &lt;p&gt;The number of VCPUs allocated for the job. &lt;/p&gt;
--- @param jobRoleArn [String] &lt;p&gt;The Amazon Resource Name (ARN) associated with the job upon execution. &lt;/p&gt;
--- @param user [String] &lt;p&gt;The user name to use inside the container.&lt;/p&gt;
--- @param volumes [Volumes] &lt;p&gt;A list of volumes associated with the job.&lt;/p&gt;
--- @param memory [Integer] &lt;p&gt;The number of MiB of memory reserved for the job.&lt;/p&gt;
--- @param command [StringList] &lt;p&gt;The command that is passed to the container. &lt;/p&gt;
--- @param privileged [Boolean] &lt;p&gt;When this parameter is true, the container is given elevated privileges on the host container instance (similar to the &lt;code&gt;root&lt;/code&gt; user).&lt;/p&gt;
--- @param ulimits [Ulimits] &lt;p&gt;A list of &lt;code&gt;ulimit&lt;/code&gt; values to set in the container.&lt;/p&gt;
--- @param exitCode [Integer] &lt;p&gt;The exit code to return upon completion.&lt;/p&gt;
+-- <p>An object representing the details of a container that is part of a job.</p>
+-- @param mountPoints [MountPoints] <p>The mount points for data volumes in your container.</p>
+-- @param taskArn [String] <p>The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the container job.</p>
+-- @param readonlyRootFilesystem [Boolean] <p>When this parameter is true, the container is given read-only access to its root file system.</p>
+-- @param image [String] <p>The image used to start the container.</p>
+-- @param reason [String] <p>A short (255 max characters) human-readable string to provide additional details about a running or stopped container.</p>
+-- @param containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the container instance on which the container is running.</p>
+-- @param environment [EnvironmentVariables] <p>The environment variables to pass to a container.</p>
+-- @param vcpus [Integer] <p>The number of VCPUs allocated for the job. </p>
+-- @param jobRoleArn [String] <p>The Amazon Resource Name (ARN) associated with the job upon execution. </p>
+-- @param user [String] <p>The user name to use inside the container.</p>
+-- @param volumes [Volumes] <p>A list of volumes associated with the job.</p>
+-- @param memory [Integer] <p>The number of MiB of memory reserved for the job.</p>
+-- @param command [StringList] <p>The command that is passed to the container. </p>
+-- @param privileged [Boolean] <p>When this parameter is true, the container is given elevated privileges on the host container instance (similar to the <code>root</code> user).</p>
+-- @param ulimits [Ulimits] <p>A list of <code>ulimit</code> values to set in the container.</p>
+-- @param exitCode [Integer] <p>The exit code to return upon completion.</p>
 function M.ContainerDetail(mountPoints, taskArn, readonlyRootFilesystem, image, reason, containerInstanceArn, environment, vcpus, jobRoleArn, user, volumes, memory, command, privileged, ulimits, exitCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ContainerDetail")
 	local t = { 
@@ -1674,8 +1674,8 @@ end
 
 --- Create a structure of type DescribeJobDefinitionsResponse
 --  
--- @param nextToken [String] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; value to include in a future &lt;code&gt;DescribeJobDefinitions&lt;/code&gt; request. When the results of a &lt;code&gt;DescribeJobDefinitions&lt;/code&gt; request exceed &lt;code&gt;maxResults&lt;/code&gt;, this value can be used to retrieve the next page of results. This value is &lt;code&gt;null&lt;/code&gt; when there are no more results to return.&lt;/p&gt;
--- @param jobDefinitions [JobDefinitionList] &lt;p&gt;The list of job definitions. &lt;/p&gt;
+-- @param nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>DescribeJobDefinitions</code> request. When the results of a <code>DescribeJobDefinitions</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- @param jobDefinitions [JobDefinitionList] <p>The list of job definitions. </p>
 function M.DescribeJobDefinitionsResponse(nextToken, jobDefinitions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobDefinitionsResponse")
 	local t = { 
@@ -1700,7 +1700,7 @@ end
 
 --- Create a structure of type DeregisterJobDefinitionRequest
 --  
--- @param jobDefinition [String] &lt;p&gt;The name and revision (&lt;code&gt;name:revision&lt;/code&gt;) or full Amazon Resource Name (ARN) of the job definition to deregister. &lt;/p&gt;
+-- @param jobDefinition [String] <p>The name and revision (<code>name:revision</code>) or full Amazon Resource Name (ARN) of the job definition to deregister. </p>
 -- Required parameter: jobDefinition
 function M.DeregisterJobDefinitionRequest(jobDefinition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterJobDefinitionRequest")
@@ -1723,8 +1723,8 @@ function M.AssertClientException(struct)
 end
 
 --- Create a structure of type ClientException
--- &lt;p&gt;These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permission to use the action or resource, or specifying an identifier that is not valid. &lt;/p&gt;
--- @param message [String] &lt;p&gt;These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permission to use the action or resource, or specifying an identifier that is not valid. &lt;/p&gt;
+-- <p>These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permission to use the action or resource, or specifying an identifier that is not valid. </p>
+-- @param message [String] <p>These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permission to use the action or resource, or specifying an identifier that is not valid. </p>
 function M.ClientException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClientException")
 	local t = { 
@@ -1748,7 +1748,7 @@ end
 
 --- Create a structure of type DescribeJobsRequest
 --  
--- @param jobs [StringList] &lt;p&gt;A space-separated list of up to 100 job IDs.&lt;/p&gt;
+-- @param jobs [StringList] <p>A space-separated list of up to 100 job IDs.</p>
 -- Required parameter: jobs
 function M.DescribeJobsRequest(jobs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobsRequest")
@@ -1775,8 +1775,8 @@ end
 
 --- Create a structure of type CancelJobRequest
 --  
--- @param reason [String] &lt;p&gt;A message to attach to the job that explains the reason for cancelling it. This message is returned by future &lt;a&gt;DescribeJobs&lt;/a&gt; operations on the job. This message is also recorded in the AWS Batch activity logs. &lt;/p&gt;
--- @param jobId [String] &lt;p&gt;A list of up to 100 job IDs to cancel.&lt;/p&gt;
+-- @param reason [String] <p>A message to attach to the job that explains the reason for cancelling it. This message is returned by future <a>DescribeJobs</a> operations on the job. This message is also recorded in the AWS Batch activity logs. </p>
+-- @param jobId [String] <p>A list of up to 100 job IDs to cancel.</p>
 -- Required parameter: jobId
 -- Required parameter: reason
 function M.CancelJobRequest(reason, jobId, ...)

@@ -30,8 +30,8 @@ function M.AssertSubscriptionLimitExceededException(struct)
 end
 
 --- Create a structure of type SubscriptionLimitExceededException
--- &lt;p&gt;Indicates that the customer already owns the maximum allowed number of subscriptions.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Indicates that the customer already owns the maximum allowed number of subscriptions.&lt;/p&gt;
+-- <p>Indicates that the customer already owns the maximum allowed number of subscriptions.</p>
+-- @param message [string] <p>Indicates that the customer already owns the maximum allowed number of subscriptions.</p>
 function M.SubscriptionLimitExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionLimitExceededException")
 	local t = { 
@@ -54,8 +54,8 @@ function M.AssertCheckIfPhoneNumberIsOptedOutInput(struct)
 end
 
 --- Create a structure of type CheckIfPhoneNumberIsOptedOutInput
--- &lt;p&gt;The input for the &lt;code&gt;CheckIfPhoneNumberIsOptedOut&lt;/code&gt; action.&lt;/p&gt;
--- @param phoneNumber [PhoneNumber] &lt;p&gt;The phone number for which you want to check the opt out status.&lt;/p&gt;
+-- <p>The input for the <code>CheckIfPhoneNumberIsOptedOut</code> action.</p>
+-- @param phoneNumber [PhoneNumber] <p>The phone number for which you want to check the opt out status.</p>
 -- Required parameter: phoneNumber
 function M.CheckIfPhoneNumberIsOptedOutInput(phoneNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CheckIfPhoneNumberIsOptedOutInput")
@@ -78,8 +78,8 @@ function M.AssertGetEndpointAttributesResponse(struct)
 end
 
 --- Create a structure of type GetEndpointAttributesResponse
--- &lt;p&gt;Response from GetEndpointAttributes of the EndpointArn.&lt;/p&gt;
--- @param Attributes [MapStringToString] &lt;p&gt;Attributes include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CustomUserData&lt;/code&gt; -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Enabled&lt;/code&gt; -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Token&lt;/code&gt; -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Response from GetEndpointAttributes of the EndpointArn.</p>
+-- @param Attributes [MapStringToString] <p>Attributes include the following:</p> <ul> <li> <p> <code>CustomUserData</code> -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.</p> </li> <li> <p> <code>Enabled</code> -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.</p> </li> <li> <p> <code>Token</code> -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.</p> </li> </ul>
 function M.GetEndpointAttributesResponse(Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEndpointAttributesResponse")
 	local t = { 
@@ -102,8 +102,8 @@ function M.AssertGetEndpointAttributesInput(struct)
 end
 
 --- Create a structure of type GetEndpointAttributesInput
--- &lt;p&gt;Input for GetEndpointAttributes action.&lt;/p&gt;
--- @param EndpointArn [String] &lt;p&gt;EndpointArn for GetEndpointAttributes input.&lt;/p&gt;
+-- <p>Input for GetEndpointAttributes action.</p>
+-- @param EndpointArn [String] <p>EndpointArn for GetEndpointAttributes input.</p>
 -- Required parameter: EndpointArn
 function M.GetEndpointAttributesInput(EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetEndpointAttributesInput")
@@ -130,10 +130,10 @@ function M.AssertSetTopicAttributesInput(struct)
 end
 
 --- Create a structure of type SetTopicAttributesInput
--- &lt;p&gt;Input for SetTopicAttributes action.&lt;/p&gt;
--- @param AttributeName [attributeName] &lt;p&gt;The name of the attribute you want to set. Only a subset of the topic's attributes are mutable.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;Policy&lt;/code&gt; | &lt;code&gt;DisplayName&lt;/code&gt; | &lt;code&gt;DeliveryPolicy&lt;/code&gt; &lt;/p&gt;
--- @param AttributeValue [attributeValue] &lt;p&gt;The new value for the attribute.&lt;/p&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The ARN of the topic to modify.&lt;/p&gt;
+-- <p>Input for SetTopicAttributes action.</p>
+-- @param AttributeName [attributeName] <p>The name of the attribute you want to set. Only a subset of the topic's attributes are mutable.</p> <p>Valid values: <code>Policy</code> | <code>DisplayName</code> | <code>DeliveryPolicy</code> </p>
+-- @param AttributeValue [attributeValue] <p>The new value for the attribute.</p>
+-- @param TopicArn [topicARN] <p>The ARN of the topic to modify.</p>
 -- Required parameter: TopicArn
 -- Required parameter: AttributeName
 function M.SetTopicAttributesInput(AttributeName, AttributeValue, TopicArn, ...)
@@ -164,10 +164,10 @@ function M.AssertCreatePlatformApplicationInput(struct)
 end
 
 --- Create a structure of type CreatePlatformApplicationInput
--- &lt;p&gt;Input for CreatePlatformApplication action.&lt;/p&gt;
--- @param Platform [String] &lt;p&gt;The following platforms are supported: ADM (Amazon Device Messaging), APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Google Cloud Messaging).&lt;/p&gt;
--- @param Name [String] &lt;p&gt;Application names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, hyphens, and periods, and must be between 1 and 256 characters long.&lt;/p&gt;
--- @param Attributes [MapStringToString] &lt;p&gt;For a list of attributes, see &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html&quot;&gt;SetPlatformApplicationAttributes&lt;/a&gt; &lt;/p&gt;
+-- <p>Input for CreatePlatformApplication action.</p>
+-- @param Platform [String] <p>The following platforms are supported: ADM (Amazon Device Messaging), APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Google Cloud Messaging).</p>
+-- @param Name [String] <p>Application names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, hyphens, and periods, and must be between 1 and 256 characters long.</p>
+-- @param Attributes [MapStringToString] <p>For a list of attributes, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html">SetPlatformApplicationAttributes</a> </p>
 -- Required parameter: Name
 -- Required parameter: Platform
 -- Required parameter: Attributes
@@ -199,11 +199,11 @@ function M.AssertCreatePlatformEndpointInput(struct)
 end
 
 --- Create a structure of type CreatePlatformEndpointInput
--- &lt;p&gt;Input for CreatePlatformEndpoint action.&lt;/p&gt;
--- @param Attributes [MapStringToString] &lt;p&gt;For a list of attributes, see &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html&quot;&gt;SetEndpointAttributes&lt;/a&gt;.&lt;/p&gt;
--- @param Token [String] &lt;p&gt;Unique identifier created by the notification service for an app on a device. The specific name for Token will vary, depending on which notification service is being used. For example, when using APNS as the notification service, you need the device token. Alternatively, when using GCM or ADM, the device token equivalent is called the registration ID.&lt;/p&gt;
--- @param PlatformApplicationArn [String] &lt;p&gt;PlatformApplicationArn returned from CreatePlatformApplication is used to create a an endpoint.&lt;/p&gt;
--- @param CustomUserData [String] &lt;p&gt;Arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.&lt;/p&gt;
+-- <p>Input for CreatePlatformEndpoint action.</p>
+-- @param Attributes [MapStringToString] <p>For a list of attributes, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html">SetEndpointAttributes</a>.</p>
+-- @param Token [String] <p>Unique identifier created by the notification service for an app on a device. The specific name for Token will vary, depending on which notification service is being used. For example, when using APNS as the notification service, you need the device token. Alternatively, when using GCM or ADM, the device token equivalent is called the registration ID.</p>
+-- @param PlatformApplicationArn [String] <p>PlatformApplicationArn returned from CreatePlatformApplication is used to create a an endpoint.</p>
+-- @param CustomUserData [String] <p>Arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.</p>
 -- Required parameter: PlatformApplicationArn
 -- Required parameter: Token
 function M.CreatePlatformEndpointInput(Attributes, Token, PlatformApplicationArn, CustomUserData, ...)
@@ -234,10 +234,10 @@ function M.AssertConfirmSubscriptionInput(struct)
 end
 
 --- Create a structure of type ConfirmSubscriptionInput
--- &lt;p&gt;Input for ConfirmSubscription action.&lt;/p&gt;
--- @param Token [token] &lt;p&gt;Short-lived token sent to an endpoint during the &lt;code&gt;Subscribe&lt;/code&gt; action.&lt;/p&gt;
--- @param AuthenticateOnUnsubscribe [authenticateOnUnsubscribe] &lt;p&gt;Disallows unauthenticated unsubscribes of the subscription. If the value of this parameter is &lt;code&gt;true&lt;/code&gt; and the request has an AWS signature, then only the topic owner and the subscription owner can unsubscribe the endpoint. The unsubscribe action requires AWS authentication. &lt;/p&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The ARN of the topic for which you wish to confirm a subscription.&lt;/p&gt;
+-- <p>Input for ConfirmSubscription action.</p>
+-- @param Token [token] <p>Short-lived token sent to an endpoint during the <code>Subscribe</code> action.</p>
+-- @param AuthenticateOnUnsubscribe [authenticateOnUnsubscribe] <p>Disallows unauthenticated unsubscribes of the subscription. If the value of this parameter is <code>true</code> and the request has an AWS signature, then only the topic owner and the subscription owner can unsubscribe the endpoint. The unsubscribe action requires AWS authentication. </p>
+-- @param TopicArn [topicARN] <p>The ARN of the topic for which you wish to confirm a subscription.</p>
 -- Required parameter: TopicArn
 -- Required parameter: Token
 function M.ConfirmSubscriptionInput(Token, AuthenticateOnUnsubscribe, TopicArn, ...)
@@ -265,9 +265,9 @@ function M.AssertListSubscriptionsByTopicInput(struct)
 end
 
 --- Create a structure of type ListSubscriptionsByTopicInput
--- &lt;p&gt;Input for ListSubscriptionsByTopic action.&lt;/p&gt;
--- @param NextToken [nextToken] &lt;p&gt;Token returned by the previous &lt;code&gt;ListSubscriptionsByTopic&lt;/code&gt; request.&lt;/p&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The ARN of the topic for which you wish to find subscriptions.&lt;/p&gt;
+-- <p>Input for ListSubscriptionsByTopic action.</p>
+-- @param NextToken [nextToken] <p>Token returned by the previous <code>ListSubscriptionsByTopic</code> request.</p>
+-- @param TopicArn [topicARN] <p>The ARN of the topic for which you wish to find subscriptions.</p>
 -- Required parameter: TopicArn
 function M.ListSubscriptionsByTopicInput(NextToken, TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionsByTopicInput")
@@ -292,9 +292,9 @@ function M.AssertPlatformApplication(struct)
 end
 
 --- Create a structure of type PlatformApplication
--- &lt;p&gt;Platform application object.&lt;/p&gt;
--- @param Attributes [MapStringToString] &lt;p&gt;Attributes for platform application object.&lt;/p&gt;
--- @param PlatformApplicationArn [String] &lt;p&gt;PlatformApplicationArn for platform application object.&lt;/p&gt;
+-- <p>Platform application object.</p>
+-- @param Attributes [MapStringToString] <p>Attributes for platform application object.</p>
+-- @param PlatformApplicationArn [String] <p>PlatformApplicationArn for platform application object.</p>
 function M.PlatformApplication(Attributes, PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlatformApplication")
 	local t = { 
@@ -317,8 +317,8 @@ function M.AssertEndpointDisabledException(struct)
 end
 
 --- Create a structure of type EndpointDisabledException
--- &lt;p&gt;Exception error indicating endpoint disabled.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Message for endpoint disabled.&lt;/p&gt;
+-- <p>Exception error indicating endpoint disabled.</p>
+-- @param message [string] <p>Message for endpoint disabled.</p>
 function M.EndpointDisabledException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EndpointDisabledException")
 	local t = { 
@@ -340,8 +340,8 @@ function M.AssertGetSMSAttributesResponse(struct)
 end
 
 --- Create a structure of type GetSMSAttributesResponse
--- &lt;p&gt;The response from the &lt;code&gt;GetSMSAttributes&lt;/code&gt; request.&lt;/p&gt;
--- @param attributes [MapStringToString] &lt;p&gt;The SMS attribute names and their values.&lt;/p&gt;
+-- <p>The response from the <code>GetSMSAttributes</code> request.</p>
+-- @param attributes [MapStringToString] <p>The SMS attribute names and their values.</p>
 function M.GetSMSAttributesResponse(attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSMSAttributesResponse")
 	local t = { 
@@ -363,8 +363,8 @@ function M.AssertTopic(struct)
 end
 
 --- Create a structure of type Topic
--- &lt;p&gt;A wrapper type for the topic's Amazon Resource Name (ARN). To retrieve a topic's attributes, use &lt;code&gt;GetTopicAttributes&lt;/code&gt;.&lt;/p&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The topic's ARN.&lt;/p&gt;
+-- <p>A wrapper type for the topic's Amazon Resource Name (ARN). To retrieve a topic's attributes, use <code>GetTopicAttributes</code>.</p>
+-- @param TopicArn [topicARN] <p>The topic's ARN.</p>
 function M.Topic(TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Topic")
 	local t = { 
@@ -386,8 +386,8 @@ function M.AssertListPhoneNumbersOptedOutInput(struct)
 end
 
 --- Create a structure of type ListPhoneNumbersOptedOutInput
--- &lt;p&gt;The input for the &lt;code&gt;ListPhoneNumbersOptedOut&lt;/code&gt; action.&lt;/p&gt;
--- @param nextToken [string] &lt;p&gt;A &lt;code&gt;NextToken&lt;/code&gt; string is used when you call the &lt;code&gt;ListPhoneNumbersOptedOut&lt;/code&gt; action to retrieve additional records that are available after the first page of results.&lt;/p&gt;
+-- <p>The input for the <code>ListPhoneNumbersOptedOut</code> action.</p>
+-- @param nextToken [string] <p>A <code>NextToken</code> string is used when you call the <code>ListPhoneNumbersOptedOut</code> action to retrieve additional records that are available after the first page of results.</p>
 function M.ListPhoneNumbersOptedOutInput(nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPhoneNumbersOptedOutInput")
 	local t = { 
@@ -413,12 +413,12 @@ function M.AssertSubscription(struct)
 end
 
 --- Create a structure of type Subscription
--- &lt;p&gt;A wrapper type for the attributes of an Amazon SNS subscription.&lt;/p&gt;
--- @param Owner [account] &lt;p&gt;The subscription's owner.&lt;/p&gt;
--- @param Endpoint [endpoint] &lt;p&gt;The subscription's endpoint (format depends on the protocol).&lt;/p&gt;
--- @param Protocol [protocol] &lt;p&gt;The subscription's protocol.&lt;/p&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The ARN of the subscription's topic.&lt;/p&gt;
--- @param SubscriptionArn [subscriptionARN] &lt;p&gt;The subscription's ARN.&lt;/p&gt;
+-- <p>A wrapper type for the attributes of an Amazon SNS subscription.</p>
+-- @param Owner [account] <p>The subscription's owner.</p>
+-- @param Endpoint [endpoint] <p>The subscription's endpoint (format depends on the protocol).</p>
+-- @param Protocol [protocol] <p>The subscription's protocol.</p>
+-- @param TopicArn [topicARN] <p>The ARN of the subscription's topic.</p>
+-- @param SubscriptionArn [subscriptionARN] <p>The subscription's ARN.</p>
 function M.Subscription(Owner, Endpoint, Protocol, TopicArn, SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
 	local t = { 
@@ -445,9 +445,9 @@ function M.AssertListSubscriptionsResponse(struct)
 end
 
 --- Create a structure of type ListSubscriptionsResponse
--- &lt;p&gt;Response for ListSubscriptions action&lt;/p&gt;
--- @param NextToken [nextToken] &lt;p&gt;Token to pass along to the next &lt;code&gt;ListSubscriptions&lt;/code&gt; request. This element is returned if there are more subscriptions to retrieve.&lt;/p&gt;
--- @param Subscriptions [SubscriptionsList] &lt;p&gt;A list of subscriptions.&lt;/p&gt;
+-- <p>Response for ListSubscriptions action</p>
+-- @param NextToken [nextToken] <p>Token to pass along to the next <code>ListSubscriptions</code> request. This element is returned if there are more subscriptions to retrieve.</p>
+-- @param Subscriptions [SubscriptionsList] <p>A list of subscriptions.</p>
 function M.ListSubscriptionsResponse(NextToken, Subscriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionsResponse")
 	local t = { 
@@ -471,9 +471,9 @@ function M.AssertListTopicsResponse(struct)
 end
 
 --- Create a structure of type ListTopicsResponse
--- &lt;p&gt;Response for ListTopics action.&lt;/p&gt;
--- @param Topics [TopicsList] &lt;p&gt;A list of topic ARNs.&lt;/p&gt;
--- @param NextToken [nextToken] &lt;p&gt;Token to pass along to the next &lt;code&gt;ListTopics&lt;/code&gt; request. This element is returned if there are additional topics to retrieve.&lt;/p&gt;
+-- <p>Response for ListTopics action.</p>
+-- @param Topics [TopicsList] <p>A list of topic ARNs.</p>
+-- @param NextToken [nextToken] <p>Token to pass along to the next <code>ListTopics</code> request. This element is returned if there are additional topics to retrieve.</p>
 function M.ListTopicsResponse(Topics, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTopicsResponse")
 	local t = { 
@@ -497,8 +497,8 @@ function M.AssertOptInPhoneNumberInput(struct)
 end
 
 --- Create a structure of type OptInPhoneNumberInput
--- &lt;p&gt;Input for the OptInPhoneNumber action.&lt;/p&gt;
--- @param phoneNumber [PhoneNumber] &lt;p&gt;The phone number to opt in.&lt;/p&gt;
+-- <p>Input for the OptInPhoneNumber action.</p>
+-- @param phoneNumber [PhoneNumber] <p>The phone number to opt in.</p>
 -- Required parameter: phoneNumber
 function M.OptInPhoneNumberInput(phoneNumber, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptInPhoneNumberInput")
@@ -521,8 +521,8 @@ function M.AssertListPlatformApplicationsInput(struct)
 end
 
 --- Create a structure of type ListPlatformApplicationsInput
--- &lt;p&gt;Input for ListPlatformApplications action.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;NextToken string is used when calling ListPlatformApplications action to retrieve additional records that are available after the first page results.&lt;/p&gt;
+-- <p>Input for ListPlatformApplications action.</p>
+-- @param NextToken [String] <p>NextToken string is used when calling ListPlatformApplications action to retrieve additional records that are available after the first page results.</p>
 function M.ListPlatformApplicationsInput(NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPlatformApplicationsInput")
 	local t = { 
@@ -545,8 +545,8 @@ function M.AssertGetSubscriptionAttributesInput(struct)
 end
 
 --- Create a structure of type GetSubscriptionAttributesInput
--- &lt;p&gt;Input for GetSubscriptionAttributes.&lt;/p&gt;
--- @param SubscriptionArn [subscriptionARN] &lt;p&gt;The ARN of the subscription whose properties you want to get.&lt;/p&gt;
+-- <p>Input for GetSubscriptionAttributes.</p>
+-- @param SubscriptionArn [subscriptionARN] <p>The ARN of the subscription whose properties you want to get.</p>
 -- Required parameter: SubscriptionArn
 function M.GetSubscriptionAttributesInput(SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionAttributesInput")
@@ -569,8 +569,8 @@ function M.AssertCreateEndpointResponse(struct)
 end
 
 --- Create a structure of type CreateEndpointResponse
--- &lt;p&gt;Response from CreateEndpoint action.&lt;/p&gt;
--- @param EndpointArn [String] &lt;p&gt;EndpointArn returned from CreateEndpoint action.&lt;/p&gt;
+-- <p>Response from CreateEndpoint action.</p>
+-- @param EndpointArn [String] <p>EndpointArn returned from CreateEndpoint action.</p>
 function M.CreateEndpointResponse(EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEndpointResponse")
 	local t = { 
@@ -592,8 +592,8 @@ function M.AssertNotFoundException(struct)
 end
 
 --- Create a structure of type NotFoundException
--- &lt;p&gt;Indicates that the requested resource does not exist.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Indicates that the requested resource does not exist.&lt;/p&gt;
+-- <p>Indicates that the requested resource does not exist.</p>
+-- @param message [string] <p>Indicates that the requested resource does not exist.</p>
 function M.NotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotFoundException")
 	local t = { 
@@ -616,8 +616,8 @@ function M.AssertGetPlatformApplicationAttributesInput(struct)
 end
 
 --- Create a structure of type GetPlatformApplicationAttributesInput
--- &lt;p&gt;Input for GetPlatformApplicationAttributes action.&lt;/p&gt;
--- @param PlatformApplicationArn [String] &lt;p&gt;PlatformApplicationArn for GetPlatformApplicationAttributesInput.&lt;/p&gt;
+-- <p>Input for GetPlatformApplicationAttributes action.</p>
+-- @param PlatformApplicationArn [String] <p>PlatformApplicationArn for GetPlatformApplicationAttributesInput.</p>
 -- Required parameter: PlatformApplicationArn
 function M.GetPlatformApplicationAttributesInput(PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPlatformApplicationAttributesInput")
@@ -640,8 +640,8 @@ function M.AssertGetSMSAttributesInput(struct)
 end
 
 --- Create a structure of type GetSMSAttributesInput
--- &lt;p&gt;The input for the &lt;code&gt;GetSMSAttributes&lt;/code&gt; request.&lt;/p&gt;
--- @param attributes [ListString] &lt;p&gt;A list of the individual attribute names, such as &lt;code&gt;MonthlySpendLimit&lt;/code&gt;, for which you want values.&lt;/p&gt; &lt;p&gt;For all attribute names, see &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html&quot;&gt;SetSMSAttributes&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;If you don't use this parameter, Amazon SNS returns all SMS attributes.&lt;/p&gt;
+-- <p>The input for the <code>GetSMSAttributes</code> request.</p>
+-- @param attributes [ListString] <p>A list of the individual attribute names, such as <code>MonthlySpendLimit</code>, for which you want values.</p> <p>For all attribute names, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html">SetSMSAttributes</a>.</p> <p>If you don't use this parameter, Amazon SNS returns all SMS attributes.</p>
 function M.GetSMSAttributesInput(attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSMSAttributesInput")
 	local t = { 
@@ -663,8 +663,8 @@ function M.AssertConfirmSubscriptionResponse(struct)
 end
 
 --- Create a structure of type ConfirmSubscriptionResponse
--- &lt;p&gt;Response for ConfirmSubscriptions action.&lt;/p&gt;
--- @param SubscriptionArn [subscriptionARN] &lt;p&gt;The ARN of the created subscription.&lt;/p&gt;
+-- <p>Response for ConfirmSubscriptions action.</p>
+-- @param SubscriptionArn [subscriptionARN] <p>The ARN of the created subscription.</p>
 function M.ConfirmSubscriptionResponse(SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmSubscriptionResponse")
 	local t = { 
@@ -688,7 +688,7 @@ end
 
 --- Create a structure of type DeleteTopicInput
 --  
--- @param TopicArn [topicARN] &lt;p&gt;The ARN of the topic you want to delete.&lt;/p&gt;
+-- @param TopicArn [topicARN] <p>The ARN of the topic you want to delete.</p>
 -- Required parameter: TopicArn
 function M.DeleteTopicInput(TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTopicInput")
@@ -711,8 +711,8 @@ function M.AssertTopicLimitExceededException(struct)
 end
 
 --- Create a structure of type TopicLimitExceededException
--- &lt;p&gt;Indicates that the customer already owns the maximum allowed number of topics.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Indicates that the customer already owns the maximum allowed number of topics.&lt;/p&gt;
+-- <p>Indicates that the customer already owns the maximum allowed number of topics.</p>
+-- @param message [string] <p>Indicates that the customer already owns the maximum allowed number of topics.</p>
 function M.TopicLimitExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TopicLimitExceededException")
 	local t = { 
@@ -735,8 +735,8 @@ function M.AssertSetSMSAttributesInput(struct)
 end
 
 --- Create a structure of type SetSMSAttributesInput
--- &lt;p&gt;The input for the SetSMSAttributes action.&lt;/p&gt;
--- @param attributes [MapStringToString] &lt;p&gt;The default settings for sending SMS messages from your account. You can set values for the following attribute names:&lt;/p&gt; &lt;p&gt; &lt;code&gt;MonthlySpendLimit&lt;/code&gt; – The maximum amount in USD that you are willing to spend each month to send SMS messages. When Amazon SNS determines that sending an SMS message would incur a cost that exceeds this limit, it stops sending SMS messages within minutes.&lt;/p&gt; &lt;important&gt; &lt;p&gt;Amazon SNS stops sending SMS messages within minutes of the limit being crossed. During that interval, if you continue to send SMS messages, you will incur costs that exceed your limit.&lt;/p&gt; &lt;/important&gt; &lt;p&gt;By default, the spend limit is set to the maximum allowed by Amazon SNS. If you want to exceed the maximum, contact &lt;a href=&quot;https://aws.amazon.com/premiumsupport/&quot;&gt;AWS Support&lt;/a&gt; or your AWS sales representative for a service limit increase.&lt;/p&gt; &lt;p&gt; &lt;code&gt;DeliveryStatusIAMRole&lt;/code&gt; – The ARN of the IAM role that allows Amazon SNS to write logs about SMS deliveries in CloudWatch Logs. For each SMS message that you send, Amazon SNS writes a log that includes the message price, the success or failure status, the reason for failure (if the message failed), the message dwell time, and other information.&lt;/p&gt; &lt;p&gt; &lt;code&gt;DeliveryStatusSuccessSamplingRate&lt;/code&gt; – The percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs. The value can be an integer from 0 - 100. For example, to write logs only for failed deliveries, set this value to &lt;code&gt;0&lt;/code&gt;. To write logs for 10% of your successful deliveries, set it to &lt;code&gt;10&lt;/code&gt;.&lt;/p&gt; &lt;p&gt; &lt;code&gt;DefaultSenderID&lt;/code&gt; – A string, such as your business brand, that is displayed as the sender on the receiving device. Support for sender IDs varies by country. The sender ID can be 1 - 11 alphanumeric characters, and it must contain at least one letter.&lt;/p&gt; &lt;p&gt; &lt;code&gt;DefaultSMSType&lt;/code&gt; – The type of SMS message that you will send by default. You can assign the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Promotional&lt;/code&gt; – (Default) Noncritical messages, such as marketing messages. Amazon SNS optimizes the message delivery to incur the lowest cost.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Transactional&lt;/code&gt; – Critical messages that support customer transactions, such as one-time passcodes for multi-factor authentication. Amazon SNS optimizes the message delivery to achieve the highest reliability.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;code&gt;UsageReportS3Bucket&lt;/code&gt; – The name of the Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS. Each day, Amazon SNS will deliver a usage report as a CSV file to the bucket. The report includes the following information for each SMS message that was successfully delivered by your account:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Time that the message was published (in UTC)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Message ID&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Destination phone number&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Message type&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Delivery status&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Message price (in USD)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Part number (a message is split into multiple parts if it is too long for a single message)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Total number of parts&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;To receive the report, the bucket must have a policy that allows the Amazon SNS service principle to perform the &lt;code&gt;s3:PutObject&lt;/code&gt; and &lt;code&gt;s3:GetBucketLocation&lt;/code&gt; actions.&lt;/p&gt; &lt;p&gt;For an example bucket policy and usage report, see &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html&quot;&gt;Monitoring SMS Activity&lt;/a&gt; in the &lt;i&gt;Amazon SNS Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>The input for the SetSMSAttributes action.</p>
+-- @param attributes [MapStringToString] <p>The default settings for sending SMS messages from your account. You can set values for the following attribute names:</p> <p> <code>MonthlySpendLimit</code> – The maximum amount in USD that you are willing to spend each month to send SMS messages. When Amazon SNS determines that sending an SMS message would incur a cost that exceeds this limit, it stops sending SMS messages within minutes.</p> <important> <p>Amazon SNS stops sending SMS messages within minutes of the limit being crossed. During that interval, if you continue to send SMS messages, you will incur costs that exceed your limit.</p> </important> <p>By default, the spend limit is set to the maximum allowed by Amazon SNS. If you want to exceed the maximum, contact <a href="https://aws.amazon.com/premiumsupport/">AWS Support</a> or your AWS sales representative for a service limit increase.</p> <p> <code>DeliveryStatusIAMRole</code> – The ARN of the IAM role that allows Amazon SNS to write logs about SMS deliveries in CloudWatch Logs. For each SMS message that you send, Amazon SNS writes a log that includes the message price, the success or failure status, the reason for failure (if the message failed), the message dwell time, and other information.</p> <p> <code>DeliveryStatusSuccessSamplingRate</code> – The percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs. The value can be an integer from 0 - 100. For example, to write logs only for failed deliveries, set this value to <code>0</code>. To write logs for 10% of your successful deliveries, set it to <code>10</code>.</p> <p> <code>DefaultSenderID</code> – A string, such as your business brand, that is displayed as the sender on the receiving device. Support for sender IDs varies by country. The sender ID can be 1 - 11 alphanumeric characters, and it must contain at least one letter.</p> <p> <code>DefaultSMSType</code> – The type of SMS message that you will send by default. You can assign the following values:</p> <ul> <li> <p> <code>Promotional</code> – (Default) Noncritical messages, such as marketing messages. Amazon SNS optimizes the message delivery to incur the lowest cost.</p> </li> <li> <p> <code>Transactional</code> – Critical messages that support customer transactions, such as one-time passcodes for multi-factor authentication. Amazon SNS optimizes the message delivery to achieve the highest reliability.</p> </li> </ul> <p> <code>UsageReportS3Bucket</code> – The name of the Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS. Each day, Amazon SNS will deliver a usage report as a CSV file to the bucket. The report includes the following information for each SMS message that was successfully delivered by your account:</p> <ul> <li> <p>Time that the message was published (in UTC)</p> </li> <li> <p>Message ID</p> </li> <li> <p>Destination phone number</p> </li> <li> <p>Message type</p> </li> <li> <p>Delivery status</p> </li> <li> <p>Message price (in USD)</p> </li> <li> <p>Part number (a message is split into multiple parts if it is too long for a single message)</p> </li> <li> <p>Total number of parts</p> </li> </ul> <p>To receive the report, the bucket must have a policy that allows the Amazon SNS service principle to perform the <code>s3:PutObject</code> and <code>s3:GetBucketLocation</code> actions.</p> <p>For an example bucket policy and usage report, see <a href="http://docs.aws.amazon.com/sns/latest/dg/sms_stats.html">Monitoring SMS Activity</a> in the <i>Amazon SNS Developer Guide</i>.</p>
 -- Required parameter: attributes
 function M.SetSMSAttributesInput(attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSMSAttributesInput")
@@ -759,8 +759,8 @@ function M.AssertThrottledException(struct)
 end
 
 --- Create a structure of type ThrottledException
--- &lt;p&gt;Indicates that the rate at which requests have been submitted for this action exceeds the limit for your account.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Throttled request.&lt;/p&gt;
+-- <p>Indicates that the rate at which requests have been submitted for this action exceeds the limit for your account.</p>
+-- @param message [string] <p>Throttled request.</p>
 function M.ThrottledException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottledException")
 	local t = { 
@@ -781,7 +781,7 @@ function M.AssertOptInPhoneNumberResponse(struct)
 end
 
 --- Create a structure of type OptInPhoneNumberResponse
--- &lt;p&gt;The response for the OptInPhoneNumber action.&lt;/p&gt;
+-- <p>The response for the OptInPhoneNumber action.</p>
 function M.OptInPhoneNumberResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptInPhoneNumberResponse")
 	local t = { 
@@ -803,9 +803,9 @@ function M.AssertListSubscriptionsByTopicResponse(struct)
 end
 
 --- Create a structure of type ListSubscriptionsByTopicResponse
--- &lt;p&gt;Response for ListSubscriptionsByTopic action.&lt;/p&gt;
--- @param NextToken [nextToken] &lt;p&gt;Token to pass along to the next &lt;code&gt;ListSubscriptionsByTopic&lt;/code&gt; request. This element is returned if there are more subscriptions to retrieve.&lt;/p&gt;
--- @param Subscriptions [SubscriptionsList] &lt;p&gt;A list of subscriptions.&lt;/p&gt;
+-- <p>Response for ListSubscriptionsByTopic action.</p>
+-- @param NextToken [nextToken] <p>Token to pass along to the next <code>ListSubscriptionsByTopic</code> request. This element is returned if there are more subscriptions to retrieve.</p>
+-- @param Subscriptions [SubscriptionsList] <p>A list of subscriptions.</p>
 function M.ListSubscriptionsByTopicResponse(NextToken, Subscriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionsByTopicResponse")
 	local t = { 
@@ -835,14 +835,14 @@ function M.AssertPublishInput(struct)
 end
 
 --- Create a structure of type PublishInput
--- &lt;p&gt;Input for Publish action.&lt;/p&gt;
--- @param MessageStructure [messageStructure] &lt;p&gt;Set &lt;code&gt;MessageStructure&lt;/code&gt; to &lt;code&gt;json&lt;/code&gt; if you want to send a different message for each protocol. For example, using one publish action, you can send a short message to your SMS subscribers and a longer message to your email subscribers. If you set &lt;code&gt;MessageStructure&lt;/code&gt; to &lt;code&gt;json&lt;/code&gt;, the value of the &lt;code&gt;Message&lt;/code&gt; parameter must: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;be a syntactically valid JSON object; and&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;contain at least a top-level JSON key of &quot;default&quot; with a value that is a string.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;You can define other top-level keys that define the message you want to send to a specific transport protocol (e.g., &quot;http&quot;).&lt;/p&gt; &lt;p&gt;For information about sending different messages for each protocol using the AWS Management Console, go to &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol&quot;&gt;Create Different Messages for Each Protocol&lt;/a&gt; in the &lt;i&gt;Amazon Simple Notification Service Getting Started Guide&lt;/i&gt;. &lt;/p&gt; &lt;p&gt;Valid value: &lt;code&gt;json&lt;/code&gt; &lt;/p&gt;
--- @param PhoneNumber [String] &lt;p&gt;The phone number to which you want to deliver an SMS message. Use E.164 format.&lt;/p&gt; &lt;p&gt;If you don't specify a value for the &lt;code&gt;PhoneNumber&lt;/code&gt; parameter, you must specify a value for the &lt;code&gt;TargetArn&lt;/code&gt; or &lt;code&gt;TopicArn&lt;/code&gt; parameters.&lt;/p&gt;
--- @param TargetArn [String] &lt;p&gt;Either TopicArn or EndpointArn, but not both.&lt;/p&gt; &lt;p&gt;If you don't specify a value for the &lt;code&gt;TargetArn&lt;/code&gt; parameter, you must specify a value for the &lt;code&gt;PhoneNumber&lt;/code&gt; or &lt;code&gt;TopicArn&lt;/code&gt; parameters.&lt;/p&gt;
--- @param Message [message] &lt;p&gt;The message you want to send to the topic.&lt;/p&gt; &lt;p&gt;If you want to send the same message to all transport protocols, include the text of the message as a String value.&lt;/p&gt; &lt;p&gt;If you want to send different messages for each transport protocol, set the value of the &lt;code&gt;MessageStructure&lt;/code&gt; parameter to &lt;code&gt;json&lt;/code&gt; and use a JSON object for the &lt;code&gt;Message&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt;Constraints: Messages must be UTF-8 encoded strings at most 256 KB in size (262144 bytes, not 262144 characters).&lt;/p&gt; &lt;p&gt;JSON-specific constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The values will be parsed (unescaped) before they are used in outgoing messages.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Values have a minimum length of 0 (the empty string, &quot;&quot;, is allowed).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Non-string values will cause the key to be ignored.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Keys that do not correspond to supported transport protocols are ignored.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Duplicate keys are not allowed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Failure to parse or validate any key or value in the message will cause the &lt;code&gt;Publish&lt;/code&gt; call to return an error (no partial delivery).&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MessageAttributes [MessageAttributeMap] &lt;p&gt;Message attributes for Publish action.&lt;/p&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The topic you want to publish to.&lt;/p&gt; &lt;p&gt;If you don't specify a value for the &lt;code&gt;TopicArn&lt;/code&gt; parameter, you must specify a value for the &lt;code&gt;PhoneNumber&lt;/code&gt; or &lt;code&gt;TargetArn&lt;/code&gt; parameters.&lt;/p&gt;
--- @param Subject [subject] &lt;p&gt;Optional parameter to be used as the &quot;Subject&quot; line when the message is delivered to email endpoints. This field will also be included, if present, in the standard JSON messages delivered to other endpoints.&lt;/p&gt; &lt;p&gt;Constraints: Subjects must be ASCII text that begins with a letter, number, or punctuation mark; must not include line breaks or control characters; and must be less than 100 characters long.&lt;/p&gt;
+-- <p>Input for Publish action.</p>
+-- @param MessageStructure [messageStructure] <p>Set <code>MessageStructure</code> to <code>json</code> if you want to send a different message for each protocol. For example, using one publish action, you can send a short message to your SMS subscribers and a longer message to your email subscribers. If you set <code>MessageStructure</code> to <code>json</code>, the value of the <code>Message</code> parameter must: </p> <ul> <li> <p>be a syntactically valid JSON object; and</p> </li> <li> <p>contain at least a top-level JSON key of "default" with a value that is a string.</p> </li> </ul> <p>You can define other top-level keys that define the message you want to send to a specific transport protocol (e.g., "http").</p> <p>For information about sending different messages for each protocol using the AWS Management Console, go to <a href="http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol">Create Different Messages for Each Protocol</a> in the <i>Amazon Simple Notification Service Getting Started Guide</i>. </p> <p>Valid value: <code>json</code> </p>
+-- @param PhoneNumber [String] <p>The phone number to which you want to deliver an SMS message. Use E.164 format.</p> <p>If you don't specify a value for the <code>PhoneNumber</code> parameter, you must specify a value for the <code>TargetArn</code> or <code>TopicArn</code> parameters.</p>
+-- @param TargetArn [String] <p>Either TopicArn or EndpointArn, but not both.</p> <p>If you don't specify a value for the <code>TargetArn</code> parameter, you must specify a value for the <code>PhoneNumber</code> or <code>TopicArn</code> parameters.</p>
+-- @param Message [message] <p>The message you want to send to the topic.</p> <p>If you want to send the same message to all transport protocols, include the text of the message as a String value.</p> <p>If you want to send different messages for each transport protocol, set the value of the <code>MessageStructure</code> parameter to <code>json</code> and use a JSON object for the <code>Message</code> parameter. </p> <p>Constraints: Messages must be UTF-8 encoded strings at most 256 KB in size (262144 bytes, not 262144 characters).</p> <p>JSON-specific constraints:</p> <ul> <li> <p>Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values.</p> </li> <li> <p>The values will be parsed (unescaped) before they are used in outgoing messages.</p> </li> <li> <p>Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending).</p> </li> <li> <p>Values have a minimum length of 0 (the empty string, "", is allowed).</p> </li> <li> <p>Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes).</p> </li> <li> <p>Non-string values will cause the key to be ignored.</p> </li> <li> <p>Keys that do not correspond to supported transport protocols are ignored.</p> </li> <li> <p>Duplicate keys are not allowed.</p> </li> <li> <p>Failure to parse or validate any key or value in the message will cause the <code>Publish</code> call to return an error (no partial delivery).</p> </li> </ul>
+-- @param MessageAttributes [MessageAttributeMap] <p>Message attributes for Publish action.</p>
+-- @param TopicArn [topicARN] <p>The topic you want to publish to.</p> <p>If you don't specify a value for the <code>TopicArn</code> parameter, you must specify a value for the <code>PhoneNumber</code> or <code>TargetArn</code> parameters.</p>
+-- @param Subject [subject] <p>Optional parameter to be used as the "Subject" line when the message is delivered to email endpoints. This field will also be included, if present, in the standard JSON messages delivered to other endpoints.</p> <p>Constraints: Subjects must be ASCII text that begins with a letter, number, or punctuation mark; must not include line breaks or control characters; and must be less than 100 characters long.</p>
 -- Required parameter: Message
 function M.PublishInput(MessageStructure, PhoneNumber, TargetArn, Message, MessageAttributes, TopicArn, Subject, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PublishInput")
@@ -875,10 +875,10 @@ function M.AssertSetSubscriptionAttributesInput(struct)
 end
 
 --- Create a structure of type SetSubscriptionAttributesInput
--- &lt;p&gt;Input for SetSubscriptionAttributes action.&lt;/p&gt;
--- @param AttributeName [attributeName] &lt;p&gt;The name of the attribute you want to set. Only a subset of the subscriptions attributes are mutable.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;DeliveryPolicy&lt;/code&gt; | &lt;code&gt;RawMessageDelivery&lt;/code&gt; &lt;/p&gt;
--- @param AttributeValue [attributeValue] &lt;p&gt;The new value for the attribute in JSON format.&lt;/p&gt;
--- @param SubscriptionArn [subscriptionARN] &lt;p&gt;The ARN of the subscription to modify.&lt;/p&gt;
+-- <p>Input for SetSubscriptionAttributes action.</p>
+-- @param AttributeName [attributeName] <p>The name of the attribute you want to set. Only a subset of the subscriptions attributes are mutable.</p> <p>Valid values: <code>DeliveryPolicy</code> | <code>RawMessageDelivery</code> </p>
+-- @param AttributeValue [attributeValue] <p>The new value for the attribute in JSON format.</p>
+-- @param SubscriptionArn [subscriptionARN] <p>The ARN of the subscription to modify.</p>
 -- Required parameter: SubscriptionArn
 -- Required parameter: AttributeName
 function M.SetSubscriptionAttributesInput(AttributeName, AttributeValue, SubscriptionArn, ...)
@@ -904,8 +904,8 @@ function M.AssertGetSubscriptionAttributesResponse(struct)
 end
 
 --- Create a structure of type GetSubscriptionAttributesResponse
--- &lt;p&gt;Response for GetSubscriptionAttributes action.&lt;/p&gt;
--- @param Attributes [SubscriptionAttributesMap] &lt;p&gt;A map of the subscription's attributes. Attributes in this map include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SubscriptionArn&lt;/code&gt; -- the subscription's ARN&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;TopicArn&lt;/code&gt; -- the topic ARN that the subscription is associated with&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Owner&lt;/code&gt; -- the AWS account ID of the subscription's owner&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ConfirmationWasAuthenticated&lt;/code&gt; -- true if the subscription confirmation request was authenticated&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DeliveryPolicy&lt;/code&gt; -- the JSON serialization of the subscription's delivery policy&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EffectiveDeliveryPolicy&lt;/code&gt; -- the JSON serialization of the effective delivery policy that takes into account the topic delivery policy and account system defaults&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Response for GetSubscriptionAttributes action.</p>
+-- @param Attributes [SubscriptionAttributesMap] <p>A map of the subscription's attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>SubscriptionArn</code> -- the subscription's ARN</p> </li> <li> <p> <code>TopicArn</code> -- the topic ARN that the subscription is associated with</p> </li> <li> <p> <code>Owner</code> -- the AWS account ID of the subscription's owner</p> </li> <li> <p> <code>ConfirmationWasAuthenticated</code> -- true if the subscription confirmation request was authenticated</p> </li> <li> <p> <code>DeliveryPolicy</code> -- the JSON serialization of the subscription's delivery policy</p> </li> <li> <p> <code>EffectiveDeliveryPolicy</code> -- the JSON serialization of the effective delivery policy that takes into account the topic delivery policy and account system defaults</p> </li> </ul>
 function M.GetSubscriptionAttributesResponse(Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionAttributesResponse")
 	local t = { 
@@ -927,8 +927,8 @@ function M.AssertCreateTopicResponse(struct)
 end
 
 --- Create a structure of type CreateTopicResponse
--- &lt;p&gt;Response from CreateTopic action.&lt;/p&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The Amazon Resource Name (ARN) assigned to the created topic.&lt;/p&gt;
+-- <p>Response from CreateTopic action.</p>
+-- @param TopicArn [topicARN] <p>The Amazon Resource Name (ARN) assigned to the created topic.</p>
 function M.CreateTopicResponse(TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTopicResponse")
 	local t = { 
@@ -950,8 +950,8 @@ function M.AssertInternalErrorException(struct)
 end
 
 --- Create a structure of type InternalErrorException
--- &lt;p&gt;Indicates an internal service error.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Indicates an internal service error.&lt;/p&gt;
+-- <p>Indicates an internal service error.</p>
+-- @param message [string] <p>Indicates an internal service error.</p>
 function M.InternalErrorException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
 	local t = { 
@@ -973,8 +973,8 @@ function M.AssertGetTopicAttributesResponse(struct)
 end
 
 --- Create a structure of type GetTopicAttributesResponse
--- &lt;p&gt;Response for GetTopicAttributes action.&lt;/p&gt;
--- @param Attributes [TopicAttributesMap] &lt;p&gt;A map of the topic's attributes. Attributes in this map include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;TopicArn&lt;/code&gt; -- the topic's ARN&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Owner&lt;/code&gt; -- the AWS account ID of the topic's owner&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Policy&lt;/code&gt; -- the JSON serialization of the topic's access control policy&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DisplayName&lt;/code&gt; -- the human-readable name used in the &quot;From&quot; field for notifications to email and email-json endpoints&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SubscriptionsPending&lt;/code&gt; -- the number of subscriptions pending confirmation on this topic&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SubscriptionsConfirmed&lt;/code&gt; -- the number of confirmed subscriptions on this topic&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SubscriptionsDeleted&lt;/code&gt; -- the number of deleted subscriptions on this topic&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DeliveryPolicy&lt;/code&gt; -- the JSON serialization of the topic's delivery policy&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EffectiveDeliveryPolicy&lt;/code&gt; -- the JSON serialization of the effective delivery policy that takes into account system defaults&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Response for GetTopicAttributes action.</p>
+-- @param Attributes [TopicAttributesMap] <p>A map of the topic's attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>TopicArn</code> -- the topic's ARN</p> </li> <li> <p> <code>Owner</code> -- the AWS account ID of the topic's owner</p> </li> <li> <p> <code>Policy</code> -- the JSON serialization of the topic's access control policy</p> </li> <li> <p> <code>DisplayName</code> -- the human-readable name used in the "From" field for notifications to email and email-json endpoints</p> </li> <li> <p> <code>SubscriptionsPending</code> -- the number of subscriptions pending confirmation on this topic</p> </li> <li> <p> <code>SubscriptionsConfirmed</code> -- the number of confirmed subscriptions on this topic</p> </li> <li> <p> <code>SubscriptionsDeleted</code> -- the number of deleted subscriptions on this topic</p> </li> <li> <p> <code>DeliveryPolicy</code> -- the JSON serialization of the topic's delivery policy</p> </li> <li> <p> <code>EffectiveDeliveryPolicy</code> -- the JSON serialization of the effective delivery policy that takes into account system defaults</p> </li> </ul>
 function M.GetTopicAttributesResponse(Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTopicAttributesResponse")
 	local t = { 
@@ -997,9 +997,9 @@ function M.AssertListPhoneNumbersOptedOutResponse(struct)
 end
 
 --- Create a structure of type ListPhoneNumbersOptedOutResponse
--- &lt;p&gt;The response from the &lt;code&gt;ListPhoneNumbersOptedOut&lt;/code&gt; action.&lt;/p&gt;
--- @param phoneNumbers [PhoneNumberList] &lt;p&gt;A list of phone numbers that are opted out of receiving SMS messages. The list is paginated, and each page can contain up to 100 phone numbers.&lt;/p&gt;
--- @param nextToken [string] &lt;p&gt;A &lt;code&gt;NextToken&lt;/code&gt; string is returned when you call the &lt;code&gt;ListPhoneNumbersOptedOut&lt;/code&gt; action if additional records are available after the first page of results.&lt;/p&gt;
+-- <p>The response from the <code>ListPhoneNumbersOptedOut</code> action.</p>
+-- @param phoneNumbers [PhoneNumberList] <p>A list of phone numbers that are opted out of receiving SMS messages. The list is paginated, and each page can contain up to 100 phone numbers.</p>
+-- @param nextToken [string] <p>A <code>NextToken</code> string is returned when you call the <code>ListPhoneNumbersOptedOut</code> action if additional records are available after the first page of results.</p>
 function M.ListPhoneNumbersOptedOutResponse(phoneNumbers, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPhoneNumbersOptedOutResponse")
 	local t = { 
@@ -1022,8 +1022,8 @@ function M.AssertCreatePlatformApplicationResponse(struct)
 end
 
 --- Create a structure of type CreatePlatformApplicationResponse
--- &lt;p&gt;Response from CreatePlatformApplication action.&lt;/p&gt;
--- @param PlatformApplicationArn [String] &lt;p&gt;PlatformApplicationArn is returned.&lt;/p&gt;
+-- <p>Response from CreatePlatformApplication action.</p>
+-- @param PlatformApplicationArn [String] <p>PlatformApplicationArn is returned.</p>
 function M.CreatePlatformApplicationResponse(PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlatformApplicationResponse")
 	local t = { 
@@ -1045,8 +1045,8 @@ function M.AssertAuthorizationErrorException(struct)
 end
 
 --- Create a structure of type AuthorizationErrorException
--- &lt;p&gt;Indicates that the user has been denied access to the requested resource.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Indicates that the user has been denied access to the requested resource.&lt;/p&gt;
+-- <p>Indicates that the user has been denied access to the requested resource.</p>
+-- @param message [string] <p>Indicates that the user has been denied access to the requested resource.</p>
 function M.AuthorizationErrorException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationErrorException")
 	local t = { 
@@ -1071,9 +1071,9 @@ function M.AssertSetPlatformApplicationAttributesInput(struct)
 end
 
 --- Create a structure of type SetPlatformApplicationAttributesInput
--- &lt;p&gt;Input for SetPlatformApplicationAttributes action.&lt;/p&gt;
--- @param Attributes [MapStringToString] &lt;p&gt;A map of the platform application attributes. Attributes in this map include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PlatformCredential&lt;/code&gt; -- The credential received from the notification service. For APNS/APNS_SANDBOX, PlatformCredential is private key. For GCM, PlatformCredential is &quot;API key&quot;. For ADM, PlatformCredential is &quot;client secret&quot;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PlatformPrincipal&lt;/code&gt; -- The principal received from the notification service. For APNS/APNS_SANDBOX, PlatformPrincipal is SSL certificate. For GCM, PlatformPrincipal is not applicable. For ADM, PlatformPrincipal is &quot;client id&quot;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EventEndpointCreated&lt;/code&gt; -- Topic ARN to which EndpointCreated event notifications should be sent.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EventEndpointDeleted&lt;/code&gt; -- Topic ARN to which EndpointDeleted event notifications should be sent.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EventEndpointUpdated&lt;/code&gt; -- Topic ARN to which EndpointUpdate event notifications should be sent.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EventDeliveryFailure&lt;/code&gt; -- Topic ARN to which DeliveryFailure event notifications should be sent upon Direct Publish delivery failure (permanent) to one of the application's endpoints.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SuccessFeedbackRoleArn&lt;/code&gt; -- IAM role ARN used to give Amazon SNS write access to use CloudWatch Logs on your behalf.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;FailureFeedbackRoleArn&lt;/code&gt; -- IAM role ARN used to give Amazon SNS write access to use CloudWatch Logs on your behalf.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SuccessFeedbackSampleRate&lt;/code&gt; -- Sample rate percentage (0-100) of successfully delivered messages.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PlatformApplicationArn [String] &lt;p&gt;PlatformApplicationArn for SetPlatformApplicationAttributes action.&lt;/p&gt;
+-- <p>Input for SetPlatformApplicationAttributes action.</p>
+-- @param Attributes [MapStringToString] <p>A map of the platform application attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>PlatformCredential</code> -- The credential received from the notification service. For APNS/APNS_SANDBOX, PlatformCredential is private key. For GCM, PlatformCredential is "API key". For ADM, PlatformCredential is "client secret".</p> </li> <li> <p> <code>PlatformPrincipal</code> -- The principal received from the notification service. For APNS/APNS_SANDBOX, PlatformPrincipal is SSL certificate. For GCM, PlatformPrincipal is not applicable. For ADM, PlatformPrincipal is "client id".</p> </li> <li> <p> <code>EventEndpointCreated</code> -- Topic ARN to which EndpointCreated event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointDeleted</code> -- Topic ARN to which EndpointDeleted event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointUpdated</code> -- Topic ARN to which EndpointUpdate event notifications should be sent.</p> </li> <li> <p> <code>EventDeliveryFailure</code> -- Topic ARN to which DeliveryFailure event notifications should be sent upon Direct Publish delivery failure (permanent) to one of the application's endpoints.</p> </li> <li> <p> <code>SuccessFeedbackRoleArn</code> -- IAM role ARN used to give Amazon SNS write access to use CloudWatch Logs on your behalf.</p> </li> <li> <p> <code>FailureFeedbackRoleArn</code> -- IAM role ARN used to give Amazon SNS write access to use CloudWatch Logs on your behalf.</p> </li> <li> <p> <code>SuccessFeedbackSampleRate</code> -- Sample rate percentage (0-100) of successfully delivered messages.</p> </li> </ul>
+-- @param PlatformApplicationArn [String] <p>PlatformApplicationArn for SetPlatformApplicationAttributes action.</p>
 -- Required parameter: PlatformApplicationArn
 -- Required parameter: Attributes
 function M.SetPlatformApplicationAttributesInput(Attributes, PlatformApplicationArn, ...)
@@ -1099,8 +1099,8 @@ function M.AssertUnsubscribeInput(struct)
 end
 
 --- Create a structure of type UnsubscribeInput
--- &lt;p&gt;Input for Unsubscribe action.&lt;/p&gt;
--- @param SubscriptionArn [subscriptionARN] &lt;p&gt;The ARN of the subscription to be deleted.&lt;/p&gt;
+-- <p>Input for Unsubscribe action.</p>
+-- @param SubscriptionArn [subscriptionARN] <p>The ARN of the subscription to be deleted.</p>
 -- Required parameter: SubscriptionArn
 function M.UnsubscribeInput(SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsubscribeInput")
@@ -1123,8 +1123,8 @@ function M.AssertInvalidParameterValueException(struct)
 end
 
 --- Create a structure of type InvalidParameterValueException
--- &lt;p&gt;Indicates that a request parameter does not comply with the associated constraints.&lt;/p&gt;
--- @param message [string] &lt;p&gt;The parameter value is invalid.&lt;/p&gt;
+-- <p>Indicates that a request parameter does not comply with the associated constraints.</p>
+-- @param message [string] <p>The parameter value is invalid.</p>
 function M.InvalidParameterValueException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
 	local t = { 
@@ -1147,9 +1147,9 @@ function M.AssertListEndpointsByPlatformApplicationResponse(struct)
 end
 
 --- Create a structure of type ListEndpointsByPlatformApplicationResponse
--- &lt;p&gt;Response for ListEndpointsByPlatformApplication action.&lt;/p&gt;
--- @param Endpoints [ListOfEndpoints] &lt;p&gt;Endpoints returned for ListEndpointsByPlatformApplication action.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;NextToken string is returned when calling ListEndpointsByPlatformApplication action if additional records are available after the first page results.&lt;/p&gt;
+-- <p>Response for ListEndpointsByPlatformApplication action.</p>
+-- @param Endpoints [ListOfEndpoints] <p>Endpoints returned for ListEndpointsByPlatformApplication action.</p>
+-- @param NextToken [String] <p>NextToken string is returned when calling ListEndpointsByPlatformApplication action if additional records are available after the first page results.</p>
 function M.ListEndpointsByPlatformApplicationResponse(Endpoints, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListEndpointsByPlatformApplicationResponse")
 	local t = { 
@@ -1176,10 +1176,10 @@ function M.AssertSubscribeInput(struct)
 end
 
 --- Create a structure of type SubscribeInput
--- &lt;p&gt;Input for Subscribe action.&lt;/p&gt;
--- @param Endpoint [endpoint] &lt;p&gt;The endpoint that you want to receive notifications. Endpoints vary by protocol:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For the &lt;code&gt;http&lt;/code&gt; protocol, the endpoint is an URL beginning with &quot;http://&quot;&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For the &lt;code&gt;https&lt;/code&gt; protocol, the endpoint is a URL beginning with &quot;https://&quot;&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For the &lt;code&gt;email&lt;/code&gt; protocol, the endpoint is an email address&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For the &lt;code&gt;email-json&lt;/code&gt; protocol, the endpoint is an email address&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For the &lt;code&gt;sms&lt;/code&gt; protocol, the endpoint is a phone number of an SMS-enabled device&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For the &lt;code&gt;sqs&lt;/code&gt; protocol, the endpoint is the ARN of an Amazon SQS queue&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For the &lt;code&gt;application&lt;/code&gt; protocol, the endpoint is the EndpointArn of a mobile app and device.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For the &lt;code&gt;lambda&lt;/code&gt; protocol, the endpoint is the ARN of an AWS Lambda function.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Protocol [protocol] &lt;p&gt;The protocol you want to use. Supported protocols include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;http&lt;/code&gt; -- delivery of JSON-encoded message via HTTP POST&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;https&lt;/code&gt; -- delivery of JSON-encoded message via HTTPS POST&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;email&lt;/code&gt; -- delivery of message via SMTP&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;email-json&lt;/code&gt; -- delivery of JSON-encoded message via SMTP&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;sms&lt;/code&gt; -- delivery of message via SMS&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;sqs&lt;/code&gt; -- delivery of JSON-encoded message to an Amazon SQS queue&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application&lt;/code&gt; -- delivery of JSON-encoded message to an EndpointArn for a mobile app and device.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;lambda&lt;/code&gt; -- delivery of JSON-encoded message to an AWS Lambda function.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The ARN of the topic you want to subscribe to.&lt;/p&gt;
+-- <p>Input for Subscribe action.</p>
+-- @param Endpoint [endpoint] <p>The endpoint that you want to receive notifications. Endpoints vary by protocol:</p> <ul> <li> <p>For the <code>http</code> protocol, the endpoint is an URL beginning with "http://"</p> </li> <li> <p>For the <code>https</code> protocol, the endpoint is a URL beginning with "https://"</p> </li> <li> <p>For the <code>email</code> protocol, the endpoint is an email address</p> </li> <li> <p>For the <code>email-json</code> protocol, the endpoint is an email address</p> </li> <li> <p>For the <code>sms</code> protocol, the endpoint is a phone number of an SMS-enabled device</p> </li> <li> <p>For the <code>sqs</code> protocol, the endpoint is the ARN of an Amazon SQS queue</p> </li> <li> <p>For the <code>application</code> protocol, the endpoint is the EndpointArn of a mobile app and device.</p> </li> <li> <p>For the <code>lambda</code> protocol, the endpoint is the ARN of an AWS Lambda function.</p> </li> </ul>
+-- @param Protocol [protocol] <p>The protocol you want to use. Supported protocols include:</p> <ul> <li> <p> <code>http</code> -- delivery of JSON-encoded message via HTTP POST</p> </li> <li> <p> <code>https</code> -- delivery of JSON-encoded message via HTTPS POST</p> </li> <li> <p> <code>email</code> -- delivery of message via SMTP</p> </li> <li> <p> <code>email-json</code> -- delivery of JSON-encoded message via SMTP</p> </li> <li> <p> <code>sms</code> -- delivery of message via SMS</p> </li> <li> <p> <code>sqs</code> -- delivery of JSON-encoded message to an Amazon SQS queue</p> </li> <li> <p> <code>application</code> -- delivery of JSON-encoded message to an EndpointArn for a mobile app and device.</p> </li> <li> <p> <code>lambda</code> -- delivery of JSON-encoded message to an AWS Lambda function.</p> </li> </ul>
+-- @param TopicArn [topicARN] <p>The ARN of the topic you want to subscribe to.</p>
 -- Required parameter: TopicArn
 -- Required parameter: Protocol
 function M.SubscribeInput(Endpoint, Protocol, TopicArn, ...)
@@ -1206,8 +1206,8 @@ function M.AssertDeletePlatformApplicationInput(struct)
 end
 
 --- Create a structure of type DeletePlatformApplicationInput
--- &lt;p&gt;Input for DeletePlatformApplication action.&lt;/p&gt;
--- @param PlatformApplicationArn [String] &lt;p&gt;PlatformApplicationArn of platform application object to delete.&lt;/p&gt;
+-- <p>Input for DeletePlatformApplication action.</p>
+-- @param PlatformApplicationArn [String] <p>PlatformApplicationArn of platform application object to delete.</p>
 -- Required parameter: PlatformApplicationArn
 function M.DeletePlatformApplicationInput(PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePlatformApplicationInput")
@@ -1230,8 +1230,8 @@ function M.AssertPublishResponse(struct)
 end
 
 --- Create a structure of type PublishResponse
--- &lt;p&gt;Response for Publish action.&lt;/p&gt;
--- @param MessageId [messageId] &lt;p&gt;Unique identifier assigned to the published message.&lt;/p&gt; &lt;p&gt;Length Constraint: Maximum 100 characters&lt;/p&gt;
+-- <p>Response for Publish action.</p>
+-- @param MessageId [messageId] <p>Unique identifier assigned to the published message.</p> <p>Length Constraint: Maximum 100 characters</p>
 function M.PublishResponse(MessageId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PublishResponse")
 	local t = { 
@@ -1256,10 +1256,10 @@ function M.AssertMessageAttributeValue(struct)
 end
 
 --- Create a structure of type MessageAttributeValue
--- &lt;p&gt;The user-specified message attribute value. For string data types, the value attribute has the same restrictions on the content as the message body. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/api/API_Publish.html&quot;&gt;Publish&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Name, type, and value must not be empty or null. In addition, the message body should not be empty or null. All parts of the message attribute, including name, type, and value, are included in the message size restriction, which is currently 256 KB (262,144 bytes). For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html&quot;&gt;Using Amazon SNS Message Attributes&lt;/a&gt;.&lt;/p&gt;
--- @param DataType [String] &lt;p&gt;Amazon SNS supports the following logical data types: String, Number, and Binary. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html#SNSMessageAttributes.DataTypes&quot;&gt;Message Attribute Data Types&lt;/a&gt;.&lt;/p&gt;
--- @param StringValue [String] &lt;p&gt;Strings are Unicode with UTF8 binary encoding. For a list of code values, see &lt;a href=&quot;http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters&quot;&gt;http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters&lt;/a&gt;.&lt;/p&gt;
--- @param BinaryValue [Binary] &lt;p&gt;Binary type attributes can store any binary data, for example, compressed data, encrypted data, or images.&lt;/p&gt;
+-- <p>The user-specified message attribute value. For string data types, the value attribute has the same restrictions on the content as the message body. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_Publish.html">Publish</a>.</p> <p>Name, type, and value must not be empty or null. In addition, the message body should not be empty or null. All parts of the message attribute, including name, type, and value, are included in the message size restriction, which is currently 256 KB (262,144 bytes). For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html">Using Amazon SNS Message Attributes</a>.</p>
+-- @param DataType [String] <p>Amazon SNS supports the following logical data types: String, Number, and Binary. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html#SNSMessageAttributes.DataTypes">Message Attribute Data Types</a>.</p>
+-- @param StringValue [String] <p>Strings are Unicode with UTF8 binary encoding. For a list of code values, see <a href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.</p>
+-- @param BinaryValue [Binary] <p>Binary type attributes can store any binary data, for example, compressed data, encrypted data, or images.</p>
 -- Required parameter: DataType
 function M.MessageAttributeValue(DataType, StringValue, BinaryValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MessageAttributeValue")
@@ -1284,8 +1284,8 @@ function M.AssertCheckIfPhoneNumberIsOptedOutResponse(struct)
 end
 
 --- Create a structure of type CheckIfPhoneNumberIsOptedOutResponse
--- &lt;p&gt;The response from the &lt;code&gt;CheckIfPhoneNumberIsOptedOut&lt;/code&gt; action.&lt;/p&gt;
--- @param isOptedOut [boolean] &lt;p&gt;Indicates whether the phone number is opted out:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;true&lt;/code&gt; – The phone number is opted out, meaning you cannot publish SMS messages to it.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;false&lt;/code&gt; – The phone number is opted in, meaning you can publish SMS messages to it.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The response from the <code>CheckIfPhoneNumberIsOptedOut</code> action.</p>
+-- @param isOptedOut [boolean] <p>Indicates whether the phone number is opted out:</p> <ul> <li> <p> <code>true</code> – The phone number is opted out, meaning you cannot publish SMS messages to it.</p> </li> <li> <p> <code>false</code> – The phone number is opted in, meaning you can publish SMS messages to it.</p> </li> </ul>
 function M.CheckIfPhoneNumberIsOptedOutResponse(isOptedOut, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CheckIfPhoneNumberIsOptedOutResponse")
 	local t = { 
@@ -1309,9 +1309,9 @@ function M.AssertListEndpointsByPlatformApplicationInput(struct)
 end
 
 --- Create a structure of type ListEndpointsByPlatformApplicationInput
--- &lt;p&gt;Input for ListEndpointsByPlatformApplication action.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;NextToken string is used when calling ListEndpointsByPlatformApplication action to retrieve additional records that are available after the first page results.&lt;/p&gt;
--- @param PlatformApplicationArn [String] &lt;p&gt;PlatformApplicationArn for ListEndpointsByPlatformApplicationInput action.&lt;/p&gt;
+-- <p>Input for ListEndpointsByPlatformApplication action.</p>
+-- @param NextToken [String] <p>NextToken string is used when calling ListEndpointsByPlatformApplication action to retrieve additional records that are available after the first page results.</p>
+-- @param PlatformApplicationArn [String] <p>PlatformApplicationArn for ListEndpointsByPlatformApplicationInput action.</p>
 -- Required parameter: PlatformApplicationArn
 function M.ListEndpointsByPlatformApplicationInput(NextToken, PlatformApplicationArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListEndpointsByPlatformApplicationInput")
@@ -1334,7 +1334,7 @@ function M.AssertSetSMSAttributesResponse(struct)
 end
 
 --- Create a structure of type SetSMSAttributesResponse
--- &lt;p&gt;The response for the SetSMSAttributes action.&lt;/p&gt;
+-- <p>The response for the SetSMSAttributes action.</p>
 function M.SetSMSAttributesResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSMSAttributesResponse")
 	local t = { 
@@ -1358,9 +1358,9 @@ function M.AssertRemovePermissionInput(struct)
 end
 
 --- Create a structure of type RemovePermissionInput
--- &lt;p&gt;Input for RemovePermission action.&lt;/p&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The ARN of the topic whose access control policy you wish to modify.&lt;/p&gt;
--- @param Label [label] &lt;p&gt;The unique label of the statement you want to remove.&lt;/p&gt;
+-- <p>Input for RemovePermission action.</p>
+-- @param TopicArn [topicARN] <p>The ARN of the topic whose access control policy you wish to modify.</p>
+-- @param Label [label] <p>The unique label of the statement you want to remove.</p>
 -- Required parameter: TopicArn
 -- Required parameter: Label
 function M.RemovePermissionInput(TopicArn, Label, ...)
@@ -1385,8 +1385,8 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;Indicates that a request parameter does not comply with the associated constraints.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Indicates that a request parameter does not comply with the associated constraints.&lt;/p&gt;
+-- <p>Indicates that a request parameter does not comply with the associated constraints.</p>
+-- @param message [string] <p>Indicates that a request parameter does not comply with the associated constraints.</p>
 function M.InvalidParameterException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -1409,8 +1409,8 @@ function M.AssertCreateTopicInput(struct)
 end
 
 --- Create a structure of type CreateTopicInput
--- &lt;p&gt;Input for CreateTopic action.&lt;/p&gt;
--- @param Name [topicName] &lt;p&gt;The name of the topic you want to create.&lt;/p&gt; &lt;p&gt;Constraints: Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long.&lt;/p&gt;
+-- <p>Input for CreateTopic action.</p>
+-- @param Name [topicName] <p>The name of the topic you want to create.</p> <p>Constraints: Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long.</p>
 -- Required parameter: Name
 function M.CreateTopicInput(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTopicInput")
@@ -1434,8 +1434,8 @@ function M.AssertDeleteEndpointInput(struct)
 end
 
 --- Create a structure of type DeleteEndpointInput
--- &lt;p&gt;Input for DeleteEndpoint action.&lt;/p&gt;
--- @param EndpointArn [String] &lt;p&gt;EndpointArn of endpoint to delete.&lt;/p&gt;
+-- <p>Input for DeleteEndpoint action.</p>
+-- @param EndpointArn [String] <p>EndpointArn of endpoint to delete.</p>
 -- Required parameter: EndpointArn
 function M.DeleteEndpointInput(EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEndpointInput")
@@ -1461,9 +1461,9 @@ function M.AssertSetEndpointAttributesInput(struct)
 end
 
 --- Create a structure of type SetEndpointAttributesInput
--- &lt;p&gt;Input for SetEndpointAttributes action.&lt;/p&gt;
--- @param Attributes [MapStringToString] &lt;p&gt;A map of the endpoint attributes. Attributes in this map include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CustomUserData&lt;/code&gt; -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Enabled&lt;/code&gt; -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Token&lt;/code&gt; -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param EndpointArn [String] &lt;p&gt;EndpointArn used for SetEndpointAttributes action.&lt;/p&gt;
+-- <p>Input for SetEndpointAttributes action.</p>
+-- @param Attributes [MapStringToString] <p>A map of the endpoint attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>CustomUserData</code> -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.</p> </li> <li> <p> <code>Enabled</code> -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.</p> </li> <li> <p> <code>Token</code> -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.</p> </li> </ul>
+-- @param EndpointArn [String] <p>EndpointArn used for SetEndpointAttributes action.</p>
 -- Required parameter: EndpointArn
 -- Required parameter: Attributes
 function M.SetEndpointAttributesInput(Attributes, EndpointArn, ...)
@@ -1489,9 +1489,9 @@ function M.AssertEndpoint(struct)
 end
 
 --- Create a structure of type Endpoint
--- &lt;p&gt;Endpoint for mobile app and device.&lt;/p&gt;
--- @param Attributes [MapStringToString] &lt;p&gt;Attributes for endpoint.&lt;/p&gt;
--- @param EndpointArn [String] &lt;p&gt;EndpointArn for mobile app and device.&lt;/p&gt;
+-- <p>Endpoint for mobile app and device.</p>
+-- @param Attributes [MapStringToString] <p>Attributes for endpoint.</p>
+-- @param EndpointArn [String] <p>EndpointArn for mobile app and device.</p>
 function M.Endpoint(Attributes, EndpointArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Endpoint")
 	local t = { 
@@ -1515,7 +1515,7 @@ end
 
 --- Create a structure of type ListTopicsInput
 --  
--- @param NextToken [nextToken] &lt;p&gt;Token returned by the previous &lt;code&gt;ListTopics&lt;/code&gt; request.&lt;/p&gt;
+-- @param NextToken [nextToken] <p>Token returned by the previous <code>ListTopics</code> request.</p>
 function M.ListTopicsInput(NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTopicsInput")
 	local t = { 
@@ -1537,8 +1537,8 @@ function M.AssertListSubscriptionsInput(struct)
 end
 
 --- Create a structure of type ListSubscriptionsInput
--- &lt;p&gt;Input for ListSubscriptions action.&lt;/p&gt;
--- @param NextToken [nextToken] &lt;p&gt;Token returned by the previous &lt;code&gt;ListSubscriptions&lt;/code&gt; request.&lt;/p&gt;
+-- <p>Input for ListSubscriptions action.</p>
+-- @param NextToken [nextToken] <p>Token returned by the previous <code>ListSubscriptions</code> request.</p>
 function M.ListSubscriptionsInput(NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionsInput")
 	local t = { 
@@ -1560,8 +1560,8 @@ function M.AssertSubscribeResponse(struct)
 end
 
 --- Create a structure of type SubscribeResponse
--- &lt;p&gt;Response for Subscribe action.&lt;/p&gt;
--- @param SubscriptionArn [subscriptionARN] &lt;p&gt;The ARN of the subscription, if the service was able to create a subscription immediately (without requiring endpoint owner confirmation).&lt;/p&gt;
+-- <p>Response for Subscribe action.</p>
+-- @param SubscriptionArn [subscriptionARN] <p>The ARN of the subscription, if the service was able to create a subscription immediately (without requiring endpoint owner confirmation).</p>
 function M.SubscribeResponse(SubscriptionArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscribeResponse")
 	local t = { 
@@ -1584,9 +1584,9 @@ function M.AssertListPlatformApplicationsResponse(struct)
 end
 
 --- Create a structure of type ListPlatformApplicationsResponse
--- &lt;p&gt;Response for ListPlatformApplications action.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;NextToken string is returned when calling ListPlatformApplications action if additional records are available after the first page results.&lt;/p&gt;
--- @param PlatformApplications [ListOfPlatformApplications] &lt;p&gt;Platform applications returned when calling ListPlatformApplications action.&lt;/p&gt;
+-- <p>Response for ListPlatformApplications action.</p>
+-- @param NextToken [String] <p>NextToken string is returned when calling ListPlatformApplications action if additional records are available after the first page results.</p>
+-- @param PlatformApplications [ListOfPlatformApplications] <p>Platform applications returned when calling ListPlatformApplications action.</p>
 function M.ListPlatformApplicationsResponse(NextToken, PlatformApplications, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPlatformApplicationsResponse")
 	local t = { 
@@ -1610,8 +1610,8 @@ function M.AssertGetTopicAttributesInput(struct)
 end
 
 --- Create a structure of type GetTopicAttributesInput
--- &lt;p&gt;Input for GetTopicAttributes action.&lt;/p&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The ARN of the topic whose properties you want to get.&lt;/p&gt;
+-- <p>Input for GetTopicAttributes action.</p>
+-- @param TopicArn [topicARN] <p>The ARN of the topic whose properties you want to get.</p>
 -- Required parameter: TopicArn
 function M.GetTopicAttributesInput(TopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTopicAttributesInput")
@@ -1642,10 +1642,10 @@ end
 
 --- Create a structure of type AddPermissionInput
 --  
--- @param ActionName [ActionsList] &lt;p&gt;The action you want to allow for the specified principal(s).&lt;/p&gt; &lt;p&gt;Valid values: any Amazon SNS action name.&lt;/p&gt;
--- @param AWSAccountId [DelegatesList] &lt;p&gt;The AWS account IDs of the users (principals) who will be given access to the specified actions. The users must have AWS accounts, but do not need to be signed up for this service.&lt;/p&gt;
--- @param TopicArn [topicARN] &lt;p&gt;The ARN of the topic whose access control policy you wish to modify.&lt;/p&gt;
--- @param Label [label] &lt;p&gt;A unique identifier for the new policy statement.&lt;/p&gt;
+-- @param ActionName [ActionsList] <p>The action you want to allow for the specified principal(s).</p> <p>Valid values: any Amazon SNS action name.</p>
+-- @param AWSAccountId [DelegatesList] <p>The AWS account IDs of the users (principals) who will be given access to the specified actions. The users must have AWS accounts, but do not need to be signed up for this service.</p>
+-- @param TopicArn [topicARN] <p>The ARN of the topic whose access control policy you wish to modify.</p>
+-- @param Label [label] <p>A unique identifier for the new policy statement.</p>
 -- Required parameter: TopicArn
 -- Required parameter: Label
 -- Required parameter: AWSAccountId
@@ -1674,8 +1674,8 @@ function M.AssertGetPlatformApplicationAttributesResponse(struct)
 end
 
 --- Create a structure of type GetPlatformApplicationAttributesResponse
--- &lt;p&gt;Response for GetPlatformApplicationAttributes action.&lt;/p&gt;
--- @param Attributes [MapStringToString] &lt;p&gt;Attributes include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EventEndpointCreated&lt;/code&gt; -- Topic ARN to which EndpointCreated event notifications should be sent.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EventEndpointDeleted&lt;/code&gt; -- Topic ARN to which EndpointDeleted event notifications should be sent.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EventEndpointUpdated&lt;/code&gt; -- Topic ARN to which EndpointUpdate event notifications should be sent.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;EventDeliveryFailure&lt;/code&gt; -- Topic ARN to which DeliveryFailure event notifications should be sent upon Direct Publish delivery failure (permanent) to one of the application's endpoints.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Response for GetPlatformApplicationAttributes action.</p>
+-- @param Attributes [MapStringToString] <p>Attributes include the following:</p> <ul> <li> <p> <code>EventEndpointCreated</code> -- Topic ARN to which EndpointCreated event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointDeleted</code> -- Topic ARN to which EndpointDeleted event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointUpdated</code> -- Topic ARN to which EndpointUpdate event notifications should be sent.</p> </li> <li> <p> <code>EventDeliveryFailure</code> -- Topic ARN to which DeliveryFailure event notifications should be sent upon Direct Publish delivery failure (permanent) to one of the application's endpoints.</p> </li> </ul>
 function M.GetPlatformApplicationAttributesResponse(Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPlatformApplicationAttributesResponse")
 	local t = { 
@@ -1697,8 +1697,8 @@ function M.AssertPlatformApplicationDisabledException(struct)
 end
 
 --- Create a structure of type PlatformApplicationDisabledException
--- &lt;p&gt;Exception error indicating platform application disabled.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Message for platform application disabled.&lt;/p&gt;
+-- <p>Exception error indicating platform application disabled.</p>
+-- @param message [string] <p>Message for platform application disabled.</p>
 function M.PlatformApplicationDisabledException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlatformApplicationDisabledException")
 	local t = { 

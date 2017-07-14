@@ -40,14 +40,14 @@ function M.AssertActionConfigurationProperty(struct)
 end
 
 --- Create a structure of type ActionConfigurationProperty
--- &lt;p&gt;Represents information about an action configuration property.&lt;/p&gt;
--- @param description [Description] &lt;p&gt;The description of the action configuration property that will be displayed to users.&lt;/p&gt;
--- @param required [Boolean] &lt;p&gt;Whether the configuration property is a required value.&lt;/p&gt;
--- @param secret [Boolean] &lt;p&gt;Whether the configuration property is secret. Secrets are hidden from all calls except for GetJobDetails, GetThirdPartyJobDetails, PollForJobs, and PollForThirdPartyJobs.&lt;/p&gt; &lt;p&gt;When updating a pipeline, passing * * * * * without changing any other values of the action will preserve the prior value of the secret.&lt;/p&gt;
--- @param key [Boolean] &lt;p&gt;Whether the configuration property is a key.&lt;/p&gt;
--- @param type [ActionConfigurationPropertyType] &lt;p&gt;The type of the configuration property.&lt;/p&gt;
--- @param queryable [Boolean] &lt;p&gt;Indicates that the proprety will be used in conjunction with PollForJobs. When creating a custom action, an action can have up to one queryable property. If it has one, that property must be both required and not secret.&lt;/p&gt; &lt;p&gt;If you create a pipeline with a custom action type, and that custom action contains a queryable property, the value for that configuration property is subject to additional restrictions. The value must be less than or equal to twenty (20) characters. The value can contain only alphanumeric characters, underscores, and hyphens.&lt;/p&gt;
--- @param name [ActionConfigurationKey] &lt;p&gt;The name of the action configuration property.&lt;/p&gt;
+-- <p>Represents information about an action configuration property.</p>
+-- @param description [Description] <p>The description of the action configuration property that will be displayed to users.</p>
+-- @param required [Boolean] <p>Whether the configuration property is a required value.</p>
+-- @param secret [Boolean] <p>Whether the configuration property is secret. Secrets are hidden from all calls except for GetJobDetails, GetThirdPartyJobDetails, PollForJobs, and PollForThirdPartyJobs.</p> <p>When updating a pipeline, passing * * * * * without changing any other values of the action will preserve the prior value of the secret.</p>
+-- @param key [Boolean] <p>Whether the configuration property is a key.</p>
+-- @param type [ActionConfigurationPropertyType] <p>The type of the configuration property.</p>
+-- @param queryable [Boolean] <p>Indicates that the proprety will be used in conjunction with PollForJobs. When creating a custom action, an action can have up to one queryable property. If it has one, that property must be both required and not secret.</p> <p>If you create a pipeline with a custom action type, and that custom action contains a queryable property, the value for that configuration property is subject to additional restrictions. The value must be less than or equal to twenty (20) characters. The value can contain only alphanumeric characters, underscores, and hyphens.</p>
+-- @param name [ActionConfigurationKey] <p>The name of the action configuration property.</p>
 -- Required parameter: name
 -- Required parameter: required
 -- Required parameter: key
@@ -82,10 +82,10 @@ function M.AssertPollForJobsInput(struct)
 end
 
 --- Create a structure of type PollForJobsInput
--- &lt;p&gt;Represents the input of a poll for jobs action.&lt;/p&gt;
--- @param actionTypeId [ActionTypeId] &lt;p&gt;Represents information about an action type.&lt;/p&gt;
--- @param maxBatchSize [MaxBatchSize] &lt;p&gt;The maximum number of jobs to return in a poll for jobs call.&lt;/p&gt;
--- @param queryParam [QueryParamMap] &lt;p&gt;A map of property names and values. For an action type with no queryable properties, this value must be null or an empty map. For an action type with a queryable property, you must supply that property as a key in the map. Only jobs whose action configuration matches the mapped value will be returned.&lt;/p&gt;
+-- <p>Represents the input of a poll for jobs action.</p>
+-- @param actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
+-- @param maxBatchSize [MaxBatchSize] <p>The maximum number of jobs to return in a poll for jobs call.</p>
+-- @param queryParam [QueryParamMap] <p>A map of property names and values. For an action type with no queryable properties, this value must be null or an empty map. For an action type with a queryable property, you must supply that property as a key in the map. Only jobs whose action configuration matches the mapped value will be returned.</p>
 -- Required parameter: actionTypeId
 function M.PollForJobsInput(actionTypeId, maxBatchSize, queryParam, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PollForJobsInput")
@@ -121,14 +121,14 @@ function M.AssertCreateCustomActionTypeInput(struct)
 end
 
 --- Create a structure of type CreateCustomActionTypeInput
--- &lt;p&gt;Represents the input of a create custom action operation.&lt;/p&gt;
--- @param category [ActionCategory] &lt;p&gt;The category of the custom action, such as a build action or a test action.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Although Source and Approval are listed as valid values, they are not currently functional. These values are reserved for future use.&lt;/p&gt; &lt;/note&gt;
--- @param settings [ActionTypeSettings] &lt;p&gt;Returns information about the settings for an action type.&lt;/p&gt;
--- @param configurationProperties [ActionConfigurationPropertyList] &lt;p&gt;The configuration properties for the custom action.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You can refer to a name in the configuration properties of the custom action within the URL templates by following the format of {Config:name}, as long as the configuration property is both required and not secret. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html&quot;&gt;Create a Custom Action for a Pipeline&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param version [Version] &lt;p&gt;The version identifier of the custom action.&lt;/p&gt;
--- @param provider [ActionProvider] &lt;p&gt;The provider of the service used in the custom action, such as AWS CodeDeploy.&lt;/p&gt;
--- @param inputArtifactDetails [ArtifactDetails] &lt;p&gt;The details of the input artifact for the action, such as its commit ID.&lt;/p&gt;
--- @param outputArtifactDetails [ArtifactDetails] &lt;p&gt;The details of the output artifact of the action, such as its commit ID.&lt;/p&gt;
+-- <p>Represents the input of a create custom action operation.</p>
+-- @param category [ActionCategory] <p>The category of the custom action, such as a build action or a test action.</p> <note> <p>Although Source and Approval are listed as valid values, they are not currently functional. These values are reserved for future use.</p> </note>
+-- @param settings [ActionTypeSettings] <p>Returns information about the settings for an action type.</p>
+-- @param configurationProperties [ActionConfigurationPropertyList] <p>The configuration properties for the custom action.</p> <note> <p>You can refer to a name in the configuration properties of the custom action within the URL templates by following the format of {Config:name}, as long as the configuration property is both required and not secret. For more information, see <a href="http://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html">Create a Custom Action for a Pipeline</a>.</p> </note>
+-- @param version [Version] <p>The version identifier of the custom action.</p>
+-- @param provider [ActionProvider] <p>The provider of the service used in the custom action, such as AWS CodeDeploy.</p>
+-- @param inputArtifactDetails [ArtifactDetails] <p>The details of the input artifact for the action, such as its commit ID.</p>
+-- @param outputArtifactDetails [ArtifactDetails] <p>The details of the output artifact of the action, such as its commit ID.</p>
 -- Required parameter: category
 -- Required parameter: provider
 -- Required parameter: version
@@ -164,11 +164,11 @@ function M.AssertStageState(struct)
 end
 
 --- Create a structure of type StageState
--- &lt;p&gt;Represents information about the state of the stage.&lt;/p&gt;
--- @param actionStates [ActionStateList] &lt;p&gt;The state of the stage.&lt;/p&gt;
--- @param inboundTransitionState [TransitionState] &lt;p&gt;The state of the inbound transition, which is either enabled or disabled.&lt;/p&gt;
--- @param latestExecution [StageExecution] &lt;p&gt;Information about the latest execution in the stage, including its ID and status.&lt;/p&gt;
--- @param stageName [StageName] &lt;p&gt;The name of the stage.&lt;/p&gt;
+-- <p>Represents information about the state of the stage.</p>
+-- @param actionStates [ActionStateList] <p>The state of the stage.</p>
+-- @param inboundTransitionState [TransitionState] <p>The state of the inbound transition, which is either enabled or disabled.</p>
+-- @param latestExecution [StageExecution] <p>Information about the latest execution in the stage, including its ID and status.</p>
+-- @param stageName [StageName] <p>The name of the stage.</p>
 function M.StageState(actionStates, inboundTransitionState, latestExecution, stageName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StageState")
 	local t = { 
@@ -197,12 +197,12 @@ function M.AssertGetPipelineStateOutput(struct)
 end
 
 --- Create a structure of type GetPipelineStateOutput
--- &lt;p&gt;Represents the output of a get pipeline state action.&lt;/p&gt;
--- @param stageStates [StageStateList] &lt;p&gt;A list of the pipeline stage output information, including stage name, state, most recent run details, whether the stage is disabled, and other data.&lt;/p&gt;
--- @param pipelineVersion [PipelineVersion] &lt;p&gt;The version number of the pipeline.&lt;/p&gt; &lt;note&gt; &lt;p&gt;A newly-created pipeline is always assigned a version number of &lt;code&gt;1&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param updated [Timestamp] &lt;p&gt;The date and time the pipeline was last updated, in timestamp format.&lt;/p&gt;
--- @param pipelineName [PipelineName] &lt;p&gt;The name of the pipeline for which you want to get the state.&lt;/p&gt;
--- @param created [Timestamp] &lt;p&gt;The date and time the pipeline was created, in timestamp format.&lt;/p&gt;
+-- <p>Represents the output of a get pipeline state action.</p>
+-- @param stageStates [StageStateList] <p>A list of the pipeline stage output information, including stage name, state, most recent run details, whether the stage is disabled, and other data.</p>
+-- @param pipelineVersion [PipelineVersion] <p>The version number of the pipeline.</p> <note> <p>A newly-created pipeline is always assigned a version number of <code>1</code>.</p> </note>
+-- @param updated [Timestamp] <p>The date and time the pipeline was last updated, in timestamp format.</p>
+-- @param pipelineName [PipelineName] <p>The name of the pipeline for which you want to get the state.</p>
+-- @param created [Timestamp] <p>The date and time the pipeline was created, in timestamp format.</p>
 function M.GetPipelineStateOutput(stageStates, pipelineVersion, updated, pipelineName, created, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineStateOutput")
 	local t = { 
@@ -229,9 +229,9 @@ function M.AssertListPipelinesOutput(struct)
 end
 
 --- Create a structure of type ListPipelinesOutput
--- &lt;p&gt;Represents the output of a list pipelines action.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list pipelines call to return the next set of pipelines in the list.&lt;/p&gt;
--- @param pipelines [PipelineList] &lt;p&gt;The list of pipelines.&lt;/p&gt;
+-- <p>Represents the output of a list pipelines action.</p>
+-- @param nextToken [NextToken] <p>If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list pipelines call to return the next set of pipelines in the list.</p>
+-- @param pipelines [PipelineList] <p>The list of pipelines.</p>
 function M.ListPipelinesOutput(nextToken, pipelines, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelinesOutput")
 	local t = { 
@@ -259,13 +259,13 @@ function M.AssertArtifactRevision(struct)
 end
 
 --- Create a structure of type ArtifactRevision
--- &lt;p&gt;Represents revision details of an artifact. &lt;/p&gt;
--- @param revisionUrl [Url] &lt;p&gt;The commit ID for the artifact revision. For artifacts stored in GitHub or AWS CodeCommit repositories, the commit ID is linked to a commit details page.&lt;/p&gt;
--- @param name [ArtifactName] &lt;p&gt;The name of an artifact. This name might be system-generated, such as &quot;MyApp&quot;, or might be defined by the user when an action is created.&lt;/p&gt;
--- @param created [Timestamp] &lt;p&gt;The date and time when the most recent revision of the artifact was created, in timestamp format.&lt;/p&gt;
--- @param revisionId [Revision] &lt;p&gt;The revision ID of the artifact.&lt;/p&gt;
--- @param revisionSummary [RevisionSummary] &lt;p&gt;Summary information about the most recent revision of the artifact. For GitHub and AWS CodeCommit repositories, the commit message. For Amazon S3 buckets or actions, the user-provided content of a &lt;code&gt;codepipeline-artifact-revision-summary&lt;/code&gt; key specified in the object metadata.&lt;/p&gt;
--- @param revisionChangeIdentifier [RevisionChangeIdentifier] &lt;p&gt;An additional identifier for a revision, such as a commit date or, for artifacts stored in Amazon S3 buckets, the ETag value.&lt;/p&gt;
+-- <p>Represents revision details of an artifact. </p>
+-- @param revisionUrl [Url] <p>The commit ID for the artifact revision. For artifacts stored in GitHub or AWS CodeCommit repositories, the commit ID is linked to a commit details page.</p>
+-- @param name [ArtifactName] <p>The name of an artifact. This name might be system-generated, such as "MyApp", or might be defined by the user when an action is created.</p>
+-- @param created [Timestamp] <p>The date and time when the most recent revision of the artifact was created, in timestamp format.</p>
+-- @param revisionId [Revision] <p>The revision ID of the artifact.</p>
+-- @param revisionSummary [RevisionSummary] <p>Summary information about the most recent revision of the artifact. For GitHub and AWS CodeCommit repositories, the commit message. For Amazon S3 buckets or actions, the user-provided content of a <code>codepipeline-artifact-revision-summary</code> key specified in the object metadata.</p>
+-- @param revisionChangeIdentifier [RevisionChangeIdentifier] <p>An additional identifier for a revision, such as a commit date or, for artifacts stored in Amazon S3 buckets, the ETag value.</p>
 function M.ArtifactRevision(revisionUrl, name, created, revisionId, revisionSummary, revisionChangeIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ArtifactRevision")
 	local t = { 
@@ -295,9 +295,9 @@ function M.AssertArtifactDetails(struct)
 end
 
 --- Create a structure of type ArtifactDetails
--- &lt;p&gt;Returns information about the details of an artifact.&lt;/p&gt;
--- @param maximumCount [MaximumArtifactCount] &lt;p&gt;The maximum number of artifacts allowed for the action type.&lt;/p&gt;
--- @param minimumCount [MinimumArtifactCount] &lt;p&gt;The minimum number of artifacts allowed for the action type.&lt;/p&gt;
+-- <p>Returns information about the details of an artifact.</p>
+-- @param maximumCount [MaximumArtifactCount] <p>The maximum number of artifacts allowed for the action type.</p>
+-- @param minimumCount [MinimumArtifactCount] <p>The minimum number of artifacts allowed for the action type.</p>
 -- Required parameter: minimumCount
 -- Required parameter: maximumCount
 function M.ArtifactDetails(maximumCount, minimumCount, ...)
@@ -328,12 +328,12 @@ function M.AssertPutThirdPartyJobSuccessResultInput(struct)
 end
 
 --- Create a structure of type PutThirdPartyJobSuccessResultInput
--- &lt;p&gt;Represents the input of a put third party job success result action.&lt;/p&gt;
--- @param currentRevision [CurrentRevision] &lt;p&gt;Represents information about a current revision.&lt;/p&gt;
--- @param clientToken [ClientToken] &lt;p&gt;The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.&lt;/p&gt;
--- @param executionDetails [ExecutionDetails] &lt;p&gt;The details of the actions taken and results produced on an artifact as it passes through stages in the pipeline. &lt;/p&gt;
--- @param continuationToken [ContinuationToken] &lt;p&gt;A token generated by a job worker, such as an AWS CodeDeploy deployment ID, that a successful job provides to identify a partner action in progress. Future jobs will use this token in order to identify the running instance of the action. It can be reused to return additional information about the progress of the partner action. When the action is complete, no continuation token should be supplied.&lt;/p&gt;
--- @param jobId [ThirdPartyJobId] &lt;p&gt;The ID of the job that successfully completed. This is the same ID returned from PollForThirdPartyJobs.&lt;/p&gt;
+-- <p>Represents the input of a put third party job success result action.</p>
+-- @param currentRevision [CurrentRevision] <p>Represents information about a current revision.</p>
+-- @param clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
+-- @param executionDetails [ExecutionDetails] <p>The details of the actions taken and results produced on an artifact as it passes through stages in the pipeline. </p>
+-- @param continuationToken [ContinuationToken] <p>A token generated by a job worker, such as an AWS CodeDeploy deployment ID, that a successful job provides to identify a partner action in progress. Future jobs will use this token in order to identify the running instance of the action. It can be reused to return additional information about the progress of the partner action. When the action is complete, no continuation token should be supplied.</p>
+-- @param jobId [ThirdPartyJobId] <p>The ID of the job that successfully completed. This is the same ID returned from PollForThirdPartyJobs.</p>
 -- Required parameter: jobId
 -- Required parameter: clientToken
 function M.PutThirdPartyJobSuccessResultInput(currentRevision, clientToken, executionDetails, continuationToken, jobId, ...)
@@ -361,8 +361,8 @@ function M.AssertAcknowledgeJobOutput(struct)
 end
 
 --- Create a structure of type AcknowledgeJobOutput
--- &lt;p&gt;Represents the output of an acknowledge job action.&lt;/p&gt;
--- @param status [JobStatus] &lt;p&gt;Whether the job worker has received the specified job.&lt;/p&gt;
+-- <p>Represents the output of an acknowledge job action.</p>
+-- @param status [JobStatus] <p>Whether the job worker has received the specified job.</p>
 function M.AcknowledgeJobOutput(status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AcknowledgeJobOutput")
 	local t = { 
@@ -385,8 +385,8 @@ function M.AssertUpdatePipelineInput(struct)
 end
 
 --- Create a structure of type UpdatePipelineInput
--- &lt;p&gt;Represents the input of an update pipeline action.&lt;/p&gt;
--- @param pipeline [PipelineDeclaration] &lt;p&gt;The name of the pipeline to be updated.&lt;/p&gt;
+-- <p>Represents the input of an update pipeline action.</p>
+-- @param pipeline [PipelineDeclaration] <p>The name of the pipeline to be updated.</p>
 -- Required parameter: pipeline
 function M.UpdatePipelineInput(pipeline, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePipelineInput")
@@ -412,11 +412,11 @@ function M.AssertJob(struct)
 end
 
 --- Create a structure of type Job
--- &lt;p&gt;Represents information about a job.&lt;/p&gt;
--- @param nonce [Nonce] &lt;p&gt;A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Use this number in an &lt;a&gt;AcknowledgeJob&lt;/a&gt; request.&lt;/p&gt;
--- @param data [JobData] &lt;p&gt;Additional data about a job.&lt;/p&gt;
--- @param id [JobId] &lt;p&gt;The unique system-generated ID of the job.&lt;/p&gt;
--- @param accountId [AccountId] &lt;p&gt;The ID of the AWS account to use when performing the job.&lt;/p&gt;
+-- <p>Represents information about a job.</p>
+-- @param nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Use this number in an <a>AcknowledgeJob</a> request.</p>
+-- @param data [JobData] <p>Additional data about a job.</p>
+-- @param id [JobId] <p>The unique system-generated ID of the job.</p>
+-- @param accountId [AccountId] <p>The ID of the AWS account to use when performing the job.</p>
 function M.Job(nonce, data, id, accountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Job")
 	local t = { 
@@ -442,9 +442,9 @@ function M.AssertErrorDetails(struct)
 end
 
 --- Create a structure of type ErrorDetails
--- &lt;p&gt;Represents information about an error in AWS CodePipeline.&lt;/p&gt;
--- @param message [Message] &lt;p&gt;The text of the error message.&lt;/p&gt;
--- @param code [Code] &lt;p&gt;The system ID or error number code of the error.&lt;/p&gt;
+-- <p>Represents information about an error in AWS CodePipeline.</p>
+-- @param message [Message] <p>The text of the error message.</p>
+-- @param code [Code] <p>The system ID or error number code of the error.</p>
 function M.ErrorDetails(message, code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ErrorDetails")
 	local t = { 
@@ -467,8 +467,8 @@ function M.AssertUpdatePipelineOutput(struct)
 end
 
 --- Create a structure of type UpdatePipelineOutput
--- &lt;p&gt;Represents the output of an update pipeline action.&lt;/p&gt;
--- @param pipeline [PipelineDeclaration] &lt;p&gt;The structure of the updated pipeline.&lt;/p&gt;
+-- <p>Represents the output of an update pipeline action.</p>
+-- @param pipeline [PipelineDeclaration] <p>The structure of the updated pipeline.</p>
 function M.UpdatePipelineOutput(pipeline, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePipelineOutput")
 	local t = { 
@@ -497,12 +497,12 @@ function M.AssertActionType(struct)
 end
 
 --- Create a structure of type ActionType
--- &lt;p&gt;Returns information about the details of an action type.&lt;/p&gt;
--- @param inputArtifactDetails [ArtifactDetails] &lt;p&gt;The details of the input artifact for the action, such as its commit ID.&lt;/p&gt;
--- @param actionConfigurationProperties [ActionConfigurationPropertyList] &lt;p&gt;The configuration properties for the action type.&lt;/p&gt;
--- @param outputArtifactDetails [ArtifactDetails] &lt;p&gt;The details of the output artifact of the action, such as its commit ID.&lt;/p&gt;
--- @param id [ActionTypeId] &lt;p&gt;Represents information about an action type.&lt;/p&gt;
--- @param settings [ActionTypeSettings] &lt;p&gt;The settings for the action type.&lt;/p&gt;
+-- <p>Returns information about the details of an action type.</p>
+-- @param inputArtifactDetails [ArtifactDetails] <p>The details of the input artifact for the action, such as its commit ID.</p>
+-- @param actionConfigurationProperties [ActionConfigurationPropertyList] <p>The configuration properties for the action type.</p>
+-- @param outputArtifactDetails [ArtifactDetails] <p>The details of the output artifact of the action, such as its commit ID.</p>
+-- @param id [ActionTypeId] <p>Represents information about an action type.</p>
+-- @param settings [ActionTypeSettings] <p>The settings for the action type.</p>
 -- Required parameter: id
 -- Required parameter: inputArtifactDetails
 -- Required parameter: outputArtifactDetails
@@ -530,7 +530,7 @@ function M.AssertInvalidActionDeclarationException(struct)
 end
 
 --- Create a structure of type InvalidActionDeclarationException
--- &lt;p&gt;The specified action declaration was specified in an invalid format.&lt;/p&gt;
+-- <p>The specified action declaration was specified in an invalid format.</p>
 function M.InvalidActionDeclarationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidActionDeclarationException")
 	local t = { 
@@ -553,10 +553,10 @@ function M.AssertJobDetails(struct)
 end
 
 --- Create a structure of type JobDetails
--- &lt;p&gt;Represents information about the details of a job.&lt;/p&gt;
--- @param data [JobData] &lt;p&gt;Represents additional information about a job required for a job worker to complete the job. &lt;/p&gt;
--- @param id [JobId] &lt;p&gt;The unique system-generated ID of the job.&lt;/p&gt;
--- @param accountId [AccountId] &lt;p&gt;The AWS account ID associated with the job.&lt;/p&gt;
+-- <p>Represents information about the details of a job.</p>
+-- @param data [JobData] <p>Represents additional information about a job required for a job worker to complete the job. </p>
+-- @param id [JobId] <p>The unique system-generated ID of the job.</p>
+-- @param accountId [AccountId] <p>The AWS account ID associated with the job.</p>
 function M.JobDetails(data, id, accountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobDetails")
 	local t = { 
@@ -579,7 +579,7 @@ function M.AssertStageNotFoundException(struct)
 end
 
 --- Create a structure of type StageNotFoundException
--- &lt;p&gt;The specified stage was specified in an invalid format or cannot be found.&lt;/p&gt;
+-- <p>The specified stage was specified in an invalid format or cannot be found.</p>
 function M.StageNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StageNotFoundException")
 	local t = { 
@@ -607,11 +607,11 @@ function M.AssertDisableStageTransitionInput(struct)
 end
 
 --- Create a structure of type DisableStageTransitionInput
--- &lt;p&gt;Represents the input of a disable stage transition input action.&lt;/p&gt;
--- @param reason [DisabledReason] &lt;p&gt;The reason given to the user why a stage is disabled, such as waiting for manual approval or manual tests. This message is displayed in the pipeline console UI.&lt;/p&gt;
--- @param pipelineName [PipelineName] &lt;p&gt;The name of the pipeline in which you want to disable the flow of artifacts from one stage to another.&lt;/p&gt;
--- @param stageName [StageName] &lt;p&gt;The name of the stage where you want to disable the inbound or outbound transition of artifacts.&lt;/p&gt;
--- @param transitionType [StageTransitionType] &lt;p&gt;Specifies whether artifacts will be prevented from transitioning into the stage and being processed by the actions in that stage (inbound), or prevented from transitioning from the stage after they have been processed by the actions in that stage (outbound).&lt;/p&gt;
+-- <p>Represents the input of a disable stage transition input action.</p>
+-- @param reason [DisabledReason] <p>The reason given to the user why a stage is disabled, such as waiting for manual approval or manual tests. This message is displayed in the pipeline console UI.</p>
+-- @param pipelineName [PipelineName] <p>The name of the pipeline in which you want to disable the flow of artifacts from one stage to another.</p>
+-- @param stageName [StageName] <p>The name of the stage where you want to disable the inbound or outbound transition of artifacts.</p>
+-- @param transitionType [StageTransitionType] <p>Specifies whether artifacts will be prevented from transitioning into the stage and being processed by the actions in that stage (inbound), or prevented from transitioning from the stage after they have been processed by the actions in that stage (outbound).</p>
 -- Required parameter: pipelineName
 -- Required parameter: stageName
 -- Required parameter: transitionType
@@ -643,9 +643,9 @@ function M.AssertAcknowledgeJobInput(struct)
 end
 
 --- Create a structure of type AcknowledgeJobInput
--- &lt;p&gt;Represents the input of an acknowledge job action.&lt;/p&gt;
--- @param nonce [Nonce] &lt;p&gt;A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response of the &lt;a&gt;PollForJobs&lt;/a&gt; request that returned this job.&lt;/p&gt;
--- @param jobId [JobId] &lt;p&gt;The unique system-generated ID of the job for which you want to confirm receipt.&lt;/p&gt;
+-- <p>Represents the input of an acknowledge job action.</p>
+-- @param nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response of the <a>PollForJobs</a> request that returned this job.</p>
+-- @param jobId [JobId] <p>The unique system-generated ID of the job for which you want to confirm receipt.</p>
 -- Required parameter: jobId
 -- Required parameter: nonce
 function M.AcknowledgeJobInput(nonce, jobId, ...)
@@ -670,8 +670,8 @@ function M.AssertAcknowledgeThirdPartyJobOutput(struct)
 end
 
 --- Create a structure of type AcknowledgeThirdPartyJobOutput
--- &lt;p&gt;Represents the output of an acknowledge third party job action.&lt;/p&gt;
--- @param status [JobStatus] &lt;p&gt;The status information for the third party job, if any.&lt;/p&gt;
+-- <p>Represents the output of an acknowledge third party job action.</p>
+-- @param status [JobStatus] <p>The status information for the third party job, if any.</p>
 function M.AcknowledgeThirdPartyJobOutput(status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AcknowledgeThirdPartyJobOutput")
 	local t = { 
@@ -694,8 +694,8 @@ function M.AssertCreatePipelineInput(struct)
 end
 
 --- Create a structure of type CreatePipelineInput
--- &lt;p&gt;Represents the input of a create pipeline action.&lt;/p&gt;
--- @param pipeline [PipelineDeclaration] &lt;p&gt;Represents the structure of actions and stages to be performed in the pipeline. &lt;/p&gt;
+-- <p>Represents the input of a create pipeline action.</p>
+-- @param pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
 -- Required parameter: pipeline
 function M.CreatePipelineInput(pipeline, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePipelineInput")
@@ -719,9 +719,9 @@ function M.AssertListPipelineExecutionsOutput(struct)
 end
 
 --- Create a structure of type ListPipelineExecutionsOutput
--- &lt;p&gt;Represents the output of a list pipeline executions action. &lt;/p&gt;
--- @param pipelineExecutionSummaries [PipelineExecutionSummaryList] &lt;p&gt;A list of executions in the history of a pipeline.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;A token that can be used in the next list pipeline executions call to return the next set of pipeline executions. To view all items in the list, continue to call this operation with each subsequent token until no more nextToken values are returned.&lt;/p&gt;
+-- <p>Represents the output of a list pipeline executions action. </p>
+-- @param pipelineExecutionSummaries [PipelineExecutionSummaryList] <p>A list of executions in the history of a pipeline.</p>
+-- @param nextToken [NextToken] <p>A token that can be used in the next list pipeline executions call to return the next set of pipeline executions. To view all items in the list, continue to call this operation with each subsequent token until no more nextToken values are returned.</p>
 function M.ListPipelineExecutionsOutput(pipelineExecutionSummaries, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelineExecutionsOutput")
 	local t = { 
@@ -744,8 +744,8 @@ function M.AssertActionContext(struct)
 end
 
 --- Create a structure of type ActionContext
--- &lt;p&gt;Represents the context of an action within the stage of a pipeline to a job worker.&lt;/p&gt;
--- @param name [ActionName] &lt;p&gt;The name of the action within the context of a job.&lt;/p&gt;
+-- <p>Represents the context of an action within the stage of a pipeline to a job worker.</p>
+-- @param name [ActionName] <p>The name of the action within the context of a job.</p>
 function M.ActionContext(name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActionContext")
 	local t = { 
@@ -776,12 +776,12 @@ function M.AssertPutApprovalResultInput(struct)
 end
 
 --- Create a structure of type PutApprovalResultInput
--- &lt;p&gt;Represents the input of a put approval result action.&lt;/p&gt;
--- @param actionName [ActionName] &lt;p&gt;The name of the action for which approval is requested.&lt;/p&gt;
--- @param token [ApprovalToken] &lt;p&gt;The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the &lt;a&gt;GetPipelineState&lt;/a&gt; action and is used to validate that the approval request corresponding to this token is still valid.&lt;/p&gt;
--- @param pipelineName [PipelineName] &lt;p&gt;The name of the pipeline that contains the action. &lt;/p&gt;
--- @param result [ApprovalResult] &lt;p&gt;Represents information about the result of the approval request.&lt;/p&gt;
--- @param stageName [StageName] &lt;p&gt;The name of the stage that contains the action.&lt;/p&gt;
+-- <p>Represents the input of a put approval result action.</p>
+-- @param actionName [ActionName] <p>The name of the action for which approval is requested.</p>
+-- @param token [ApprovalToken] <p>The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the <a>GetPipelineState</a> action and is used to validate that the approval request corresponding to this token is still valid.</p>
+-- @param pipelineName [PipelineName] <p>The name of the pipeline that contains the action. </p>
+-- @param result [ApprovalResult] <p>Represents information about the result of the approval request.</p>
+-- @param stageName [StageName] <p>The name of the stage that contains the action.</p>
 -- Required parameter: pipelineName
 -- Required parameter: stageName
 -- Required parameter: actionName
@@ -811,7 +811,7 @@ function M.AssertInvalidStructureException(struct)
 end
 
 --- Create a structure of type InvalidStructureException
--- &lt;p&gt;The specified structure was specified in an invalid format.&lt;/p&gt;
+-- <p>The specified structure was specified in an invalid format.</p>
 function M.InvalidStructureException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidStructureException")
 	local t = { 
@@ -833,9 +833,9 @@ function M.AssertPutActionRevisionOutput(struct)
 end
 
 --- Create a structure of type PutActionRevisionOutput
--- &lt;p&gt;Represents the output of a put action revision action.&lt;/p&gt;
--- @param pipelineExecutionId [PipelineExecutionId] &lt;p&gt;The ID of the current workflow state of the pipeline.&lt;/p&gt;
--- @param newRevision [Boolean] &lt;p&gt;Indicates whether the artifact revision was previously used in an execution of the specified pipeline.&lt;/p&gt;
+-- <p>Represents the output of a put action revision action.</p>
+-- @param pipelineExecutionId [PipelineExecutionId] <p>The ID of the current workflow state of the pipeline.</p>
+-- @param newRevision [Boolean] <p>Indicates whether the artifact revision was previously used in an execution of the specified pipeline.</p>
 function M.PutActionRevisionOutput(pipelineExecutionId, newRevision, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutActionRevisionOutput")
 	local t = { 
@@ -859,8 +859,8 @@ function M.AssertInputArtifact(struct)
 end
 
 --- Create a structure of type InputArtifact
--- &lt;p&gt;Represents information about an artifact to be worked on, such as a test or build artifact.&lt;/p&gt;
--- @param name [ArtifactName] &lt;p&gt;The name of the artifact to be worked on, for example, &quot;My App&quot;.&lt;/p&gt; &lt;p&gt;The input artifact of an action must exactly match the output artifact declared in a preceding action, but the input artifact does not have to be the next action in strict sequence from the action that provided the output artifact. Actions in parallel can declare different output artifacts, which are in turn consumed by different following actions.&lt;/p&gt;
+-- <p>Represents information about an artifact to be worked on, such as a test or build artifact.</p>
+-- @param name [ArtifactName] <p>The name of the artifact to be worked on, for example, "My App".</p> <p>The input artifact of an action must exactly match the output artifact declared in a preceding action, but the input artifact does not have to be the next action in strict sequence from the action that provided the output artifact. Actions in parallel can declare different output artifacts, which are in turn consumed by different following actions.</p>
 -- Required parameter: name
 function M.InputArtifact(name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InputArtifact")
@@ -883,8 +883,8 @@ function M.AssertGetPipelineExecutionOutput(struct)
 end
 
 --- Create a structure of type GetPipelineExecutionOutput
--- &lt;p&gt;Represents the output of a get pipeline execution action.&lt;/p&gt;
--- @param pipelineExecution [PipelineExecution] &lt;p&gt;Represents information about the execution of a pipeline.&lt;/p&gt;
+-- <p>Represents the output of a get pipeline execution action.</p>
+-- @param pipelineExecution [PipelineExecution] <p>Represents information about the execution of a pipeline.</p>
 function M.GetPipelineExecutionOutput(pipelineExecution, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineExecutionOutput")
 	local t = { 
@@ -905,7 +905,7 @@ function M.AssertApprovalAlreadyCompletedException(struct)
 end
 
 --- Create a structure of type ApprovalAlreadyCompletedException
--- &lt;p&gt;The approval action has already been approved or rejected.&lt;/p&gt;
+-- <p>The approval action has already been approved or rejected.</p>
 function M.ApprovalAlreadyCompletedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApprovalAlreadyCompletedException")
 	local t = { 
@@ -933,11 +933,11 @@ function M.AssertActionTypeId(struct)
 end
 
 --- Create a structure of type ActionTypeId
--- &lt;p&gt;Represents information about an action type.&lt;/p&gt;
--- @param category [ActionCategory] &lt;p&gt;A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Valid categories are limited to one of the values below.&lt;/p&gt;
--- @param owner [ActionOwner] &lt;p&gt;The creator of the action being called.&lt;/p&gt;
--- @param version [Version] &lt;p&gt;A string that identifies the action type.&lt;/p&gt;
--- @param provider [ActionProvider] &lt;p&gt;The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.&lt;/p&gt;
+-- <p>Represents information about an action type.</p>
+-- @param category [ActionCategory] <p>A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Valid categories are limited to one of the values below.</p>
+-- @param owner [ActionOwner] <p>The creator of the action being called.</p>
+-- @param version [Version] <p>A string that identifies the action type.</p>
+-- @param provider [ActionProvider] <p>The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.</p>
 -- Required parameter: category
 -- Required parameter: owner
 -- Required parameter: provider
@@ -969,11 +969,11 @@ function M.AssertTransitionState(struct)
 end
 
 --- Create a structure of type TransitionState
--- &lt;p&gt;Represents information about the state of transitions between one stage and another stage.&lt;/p&gt;
--- @param disabledReason [DisabledReason] &lt;p&gt;The user-specified reason why the transition between two stages of a pipeline was disabled.&lt;/p&gt;
--- @param enabled [Enabled] &lt;p&gt;Whether the transition between stages is enabled (true) or disabled (false).&lt;/p&gt;
--- @param lastChangedAt [LastChangedAt] &lt;p&gt;The timestamp when the transition state was last changed.&lt;/p&gt;
--- @param lastChangedBy [LastChangedBy] &lt;p&gt;The ID of the user who last changed the transition state.&lt;/p&gt;
+-- <p>Represents information about the state of transitions between one stage and another stage.</p>
+-- @param disabledReason [DisabledReason] <p>The user-specified reason why the transition between two stages of a pipeline was disabled.</p>
+-- @param enabled [Enabled] <p>Whether the transition between stages is enabled (true) or disabled (false).</p>
+-- @param lastChangedAt [LastChangedAt] <p>The timestamp when the transition state was last changed.</p>
+-- @param lastChangedBy [LastChangedBy] <p>The ID of the user who last changed the transition state.</p>
 function M.TransitionState(disabledReason, enabled, lastChangedAt, lastChangedBy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TransitionState")
 	local t = { 
@@ -1002,12 +1002,12 @@ function M.AssertActionState(struct)
 end
 
 --- Create a structure of type ActionState
--- &lt;p&gt;Represents information about the state of an action.&lt;/p&gt;
--- @param actionName [ActionName] &lt;p&gt;The name of the action.&lt;/p&gt;
--- @param revisionUrl [Url] &lt;p&gt;A URL link for more information about the revision, such as a commit details page.&lt;/p&gt;
--- @param entityUrl [Url] &lt;p&gt;A URL link for more information about the state of the action, such as a deployment group details page.&lt;/p&gt;
--- @param latestExecution [ActionExecution] &lt;p&gt;Represents information about the run of an action.&lt;/p&gt;
--- @param currentRevision [ActionRevision] &lt;p&gt;Represents information about the version (or revision) of an action.&lt;/p&gt;
+-- <p>Represents information about the state of an action.</p>
+-- @param actionName [ActionName] <p>The name of the action.</p>
+-- @param revisionUrl [Url] <p>A URL link for more information about the revision, such as a commit details page.</p>
+-- @param entityUrl [Url] <p>A URL link for more information about the state of the action, such as a deployment group details page.</p>
+-- @param latestExecution [ActionExecution] <p>Represents information about the run of an action.</p>
+-- @param currentRevision [ActionRevision] <p>Represents information about the version (or revision) of an action.</p>
 function M.ActionState(actionName, revisionUrl, entityUrl, latestExecution, currentRevision, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActionState")
 	local t = { 
@@ -1032,7 +1032,7 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;The number of pipelines associated with the AWS account has exceeded the limit allowed for the account.&lt;/p&gt;
+-- <p>The number of pipelines associated with the AWS account has exceeded the limit allowed for the account.</p>
 function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -1060,11 +1060,11 @@ function M.AssertPutActionRevisionInput(struct)
 end
 
 --- Create a structure of type PutActionRevisionInput
--- &lt;p&gt;Represents the input of a put action revision action.&lt;/p&gt;
--- @param actionName [ActionName] &lt;p&gt;The name of the action that will process the revision.&lt;/p&gt;
--- @param pipelineName [PipelineName] &lt;p&gt;The name of the pipeline that will start processing the revision to the source.&lt;/p&gt;
--- @param stageName [StageName] &lt;p&gt;The name of the stage that contains the action that will act upon the revision.&lt;/p&gt;
--- @param actionRevision [ActionRevision] &lt;p&gt;Represents information about the version (or revision) of an action.&lt;/p&gt;
+-- <p>Represents the input of a put action revision action.</p>
+-- @param actionName [ActionName] <p>The name of the action that will process the revision.</p>
+-- @param pipelineName [PipelineName] <p>The name of the pipeline that will start processing the revision to the source.</p>
+-- @param stageName [StageName] <p>The name of the stage that contains the action that will act upon the revision.</p>
+-- @param actionRevision [ActionRevision] <p>Represents information about the version (or revision) of an action.</p>
 -- Required parameter: pipelineName
 -- Required parameter: stageName
 -- Required parameter: actionName
@@ -1095,9 +1095,9 @@ function M.AssertGetPipelineInput(struct)
 end
 
 --- Create a structure of type GetPipelineInput
--- &lt;p&gt;Represents the input of a get pipeline action.&lt;/p&gt;
--- @param version [PipelineVersion] &lt;p&gt;The version number of the pipeline. If you do not specify a version, defaults to the most current version.&lt;/p&gt;
--- @param name [PipelineName] &lt;p&gt;The name of the pipeline for which you want to get information. Pipeline names must be unique under an Amazon Web Services (AWS) user account.&lt;/p&gt;
+-- <p>Represents the input of a get pipeline action.</p>
+-- @param version [PipelineVersion] <p>The version number of the pipeline. If you do not specify a version, defaults to the most current version.</p>
+-- @param name [PipelineName] <p>The name of the pipeline for which you want to get information. Pipeline names must be unique under an Amazon Web Services (AWS) user account.</p>
 -- Required parameter: name
 function M.GetPipelineInput(version, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineInput")
@@ -1129,12 +1129,12 @@ function M.AssertPipelineDeclaration(struct)
 end
 
 --- Create a structure of type PipelineDeclaration
--- &lt;p&gt;Represents the structure of actions and stages to be performed in the pipeline.&lt;/p&gt;
--- @param roleArn [RoleArn] &lt;p&gt;The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no actionRoleArn, or to use to assume roles for actions with an actionRoleArn.&lt;/p&gt;
--- @param stages [PipelineStageDeclarationList] &lt;p&gt;The stage in which to perform the action.&lt;/p&gt;
--- @param artifactStore [ArtifactStore] &lt;p&gt;Represents the context of an action within the stage of a pipeline to a job worker. &lt;/p&gt;
--- @param name [PipelineName] &lt;p&gt;The name of the action to be performed.&lt;/p&gt;
--- @param version [PipelineVersion] &lt;p&gt;The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically incremented when a pipeline is updated.&lt;/p&gt;
+-- <p>Represents the structure of actions and stages to be performed in the pipeline.</p>
+-- @param roleArn [RoleArn] <p>The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no actionRoleArn, or to use to assume roles for actions with an actionRoleArn.</p>
+-- @param stages [PipelineStageDeclarationList] <p>The stage in which to perform the action.</p>
+-- @param artifactStore [ArtifactStore] <p>Represents the context of an action within the stage of a pipeline to a job worker. </p>
+-- @param name [PipelineName] <p>The name of the action to be performed.</p>
+-- @param version [PipelineVersion] <p>The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically incremented when a pipeline is updated.</p>
 -- Required parameter: name
 -- Required parameter: roleArn
 -- Required parameter: artifactStore
@@ -1163,7 +1163,7 @@ function M.AssertInvalidNextTokenException(struct)
 end
 
 --- Create a structure of type InvalidNextTokenException
--- &lt;p&gt;The next token was specified in an invalid format. Make sure that the next token you provided is the token returned by a previous call.&lt;/p&gt;
+-- <p>The next token was specified in an invalid format. Make sure that the next token you provided is the token returned by a previous call.</p>
 function M.InvalidNextTokenException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
 	local t = { 
@@ -1183,7 +1183,7 @@ function M.AssertPipelineNameInUseException(struct)
 end
 
 --- Create a structure of type PipelineNameInUseException
--- &lt;p&gt;The specified pipeline name is already in use.&lt;/p&gt;
+-- <p>The specified pipeline name is already in use.</p>
 function M.PipelineNameInUseException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineNameInUseException")
 	local t = { 
@@ -1205,8 +1205,8 @@ function M.AssertStartPipelineExecutionInput(struct)
 end
 
 --- Create a structure of type StartPipelineExecutionInput
--- &lt;p&gt;Represents the input of a start pipeline execution action.&lt;/p&gt;
--- @param name [PipelineName] &lt;p&gt;The name of the pipeline to start.&lt;/p&gt;
+-- <p>Represents the input of a start pipeline execution action.</p>
+-- @param name [PipelineName] <p>The name of the pipeline to start.</p>
 -- Required parameter: name
 function M.StartPipelineExecutionInput(name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartPipelineExecutionInput")
@@ -1229,8 +1229,8 @@ function M.AssertActionConfiguration(struct)
 end
 
 --- Create a structure of type ActionConfiguration
--- &lt;p&gt;Represents information about an action configuration.&lt;/p&gt;
--- @param configuration [ActionConfigurationMap] &lt;p&gt;The configuration data for the action.&lt;/p&gt;
+-- <p>Represents information about an action configuration.</p>
+-- @param configuration [ActionConfigurationMap] <p>The configuration data for the action.</p>
 function M.ActionConfiguration(configuration, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActionConfiguration")
 	local t = { 
@@ -1256,10 +1256,10 @@ function M.AssertArtifactStore(struct)
 end
 
 --- Create a structure of type ArtifactStore
--- &lt;p&gt;The Amazon S3 bucket where artifacts are stored for the pipeline.&lt;/p&gt;
--- @param type [ArtifactStoreType] &lt;p&gt;The type of the artifact store, such as S3.&lt;/p&gt;
--- @param location [ArtifactStoreLocation] &lt;p&gt;The Amazon S3 bucket used for storing the artifacts for a pipeline. You can specify the name of an S3 bucket but not a folder within the bucket. A folder to contain the pipeline artifacts is created for you based on the name of the pipeline. You can use any Amazon S3 bucket in the same AWS Region as the pipeline to store your pipeline artifacts.&lt;/p&gt;
--- @param encryptionKey [EncryptionKey] &lt;p&gt;The encryption key used to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If this is undefined, the default key for Amazon S3 is used.&lt;/p&gt;
+-- <p>The Amazon S3 bucket where artifacts are stored for the pipeline.</p>
+-- @param type [ArtifactStoreType] <p>The type of the artifact store, such as S3.</p>
+-- @param location [ArtifactStoreLocation] <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can specify the name of an S3 bucket but not a folder within the bucket. A folder to contain the pipeline artifacts is created for you based on the name of the pipeline. You can use any Amazon S3 bucket in the same AWS Region as the pipeline to store your pipeline artifacts.</p>
+-- @param encryptionKey [EncryptionKey] <p>The encryption key used to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If this is undefined, the default key for Amazon S3 is used.</p>
 -- Required parameter: type
 -- Required parameter: location
 function M.ArtifactStore(type, location, encryptionKey, ...)
@@ -1286,8 +1286,8 @@ function M.AssertDeletePipelineInput(struct)
 end
 
 --- Create a structure of type DeletePipelineInput
--- &lt;p&gt;Represents the input of a delete pipeline action.&lt;/p&gt;
--- @param name [PipelineName] &lt;p&gt;The name of the pipeline to be deleted.&lt;/p&gt;
+-- <p>Represents the input of a delete pipeline action.</p>
+-- @param name [PipelineName] <p>The name of the pipeline to be deleted.</p>
 -- Required parameter: name
 function M.DeletePipelineInput(name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePipelineInput")
@@ -1312,10 +1312,10 @@ function M.AssertThirdPartyJobDetails(struct)
 end
 
 --- Create a structure of type ThirdPartyJobDetails
--- &lt;p&gt;The details of a job sent in response to a GetThirdPartyJobDetails request.&lt;/p&gt;
--- @param nonce [Nonce] &lt;p&gt;A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Use this number in an &lt;a&gt;AcknowledgeThirdPartyJob&lt;/a&gt; request.&lt;/p&gt;
--- @param data [ThirdPartyJobData] &lt;p&gt;The data to be returned by the third party job worker.&lt;/p&gt;
--- @param id [ThirdPartyJobId] &lt;p&gt;The identifier used to identify the job details in AWS CodePipeline.&lt;/p&gt;
+-- <p>The details of a job sent in response to a GetThirdPartyJobDetails request.</p>
+-- @param nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Use this number in an <a>AcknowledgeThirdPartyJob</a> request.</p>
+-- @param data [ThirdPartyJobData] <p>The data to be returned by the third party job worker.</p>
+-- @param id [ThirdPartyJobId] <p>The identifier used to identify the job details in AWS CodePipeline.</p>
 function M.ThirdPartyJobDetails(nonce, data, id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThirdPartyJobDetails")
 	local t = { 
@@ -1343,10 +1343,10 @@ function M.AssertFailureDetails(struct)
 end
 
 --- Create a structure of type FailureDetails
--- &lt;p&gt;Represents information about failure details.&lt;/p&gt;
--- @param message [Message] &lt;p&gt;The message about the failure.&lt;/p&gt;
--- @param type [FailureType] &lt;p&gt;The type of the failure.&lt;/p&gt;
--- @param externalExecutionId [ExecutionId] &lt;p&gt;The external ID of the run of the action that failed.&lt;/p&gt;
+-- <p>Represents information about failure details.</p>
+-- @param message [Message] <p>The message about the failure.</p>
+-- @param type [FailureType] <p>The type of the failure.</p>
+-- @param externalExecutionId [ExecutionId] <p>The external ID of the run of the action that failed.</p>
 -- Required parameter: type
 -- Required parameter: message
 function M.FailureDetails(message, type, externalExecutionId, ...)
@@ -1380,16 +1380,16 @@ function M.AssertActionExecution(struct)
 end
 
 --- Create a structure of type ActionExecution
--- &lt;p&gt;Represents information about the run of an action.&lt;/p&gt;
--- @param status [ActionExecutionStatus] &lt;p&gt;The status of the action, or for a completed action, the last status of the action.&lt;/p&gt;
--- @param lastStatusChange [Timestamp] &lt;p&gt;The last status change of the action.&lt;/p&gt;
--- @param externalExecutionId [ExecutionId] &lt;p&gt;The external ID of the run of the action.&lt;/p&gt;
--- @param errorDetails [ErrorDetails] &lt;p&gt;The details of an error returned by a URL external to AWS.&lt;/p&gt;
--- @param externalExecutionUrl [Url] &lt;p&gt;The URL of a resource external to AWS that will be used when running the action, for example an external repository URL.&lt;/p&gt;
--- @param summary [ExecutionSummary] &lt;p&gt;A summary of the run of the action.&lt;/p&gt;
--- @param token [ActionExecutionToken] &lt;p&gt;The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the GetPipelineState command and is used to validate that the approval request corresponding to this token is still valid.&lt;/p&gt;
--- @param lastUpdatedBy [LastUpdatedBy] &lt;p&gt;The ARN of the user who last changed the pipeline.&lt;/p&gt;
--- @param percentComplete [Percentage] &lt;p&gt;A percentage of completeness of the action as it runs.&lt;/p&gt;
+-- <p>Represents information about the run of an action.</p>
+-- @param status [ActionExecutionStatus] <p>The status of the action, or for a completed action, the last status of the action.</p>
+-- @param lastStatusChange [Timestamp] <p>The last status change of the action.</p>
+-- @param externalExecutionId [ExecutionId] <p>The external ID of the run of the action.</p>
+-- @param errorDetails [ErrorDetails] <p>The details of an error returned by a URL external to AWS.</p>
+-- @param externalExecutionUrl [Url] <p>The URL of a resource external to AWS that will be used when running the action, for example an external repository URL.</p>
+-- @param summary [ExecutionSummary] <p>A summary of the run of the action.</p>
+-- @param token [ActionExecutionToken] <p>The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the GetPipelineState command and is used to validate that the approval request corresponding to this token is still valid.</p>
+-- @param lastUpdatedBy [LastUpdatedBy] <p>The ARN of the user who last changed the pipeline.</p>
+-- @param percentComplete [Percentage] <p>A percentage of completeness of the action as it runs.</p>
 function M.ActionExecution(status, lastStatusChange, externalExecutionId, errorDetails, externalExecutionUrl, summary, token, lastUpdatedBy, percentComplete, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActionExecution")
 	local t = { 
@@ -1419,8 +1419,8 @@ function M.AssertStartPipelineExecutionOutput(struct)
 end
 
 --- Create a structure of type StartPipelineExecutionOutput
--- &lt;p&gt;Represents the output of a start pipeline execution action.&lt;/p&gt;
--- @param pipelineExecutionId [PipelineExecutionId] &lt;p&gt;The unique system-generated ID of the pipeline execution that was started.&lt;/p&gt;
+-- <p>Represents the output of a start pipeline execution action.</p>
+-- @param pipelineExecutionId [PipelineExecutionId] <p>The unique system-generated ID of the pipeline execution that was started.</p>
 function M.StartPipelineExecutionOutput(pipelineExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartPipelineExecutionOutput")
 	local t = { 
@@ -1442,8 +1442,8 @@ function M.AssertCreatePipelineOutput(struct)
 end
 
 --- Create a structure of type CreatePipelineOutput
--- &lt;p&gt;Represents the output of a create pipeline action.&lt;/p&gt;
--- @param pipeline [PipelineDeclaration] &lt;p&gt;Represents the structure of actions and stages to be performed in the pipeline. &lt;/p&gt;
+-- <p>Represents the output of a create pipeline action.</p>
+-- @param pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
 function M.CreatePipelineOutput(pipeline, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePipelineOutput")
 	local t = { 
@@ -1464,7 +1464,7 @@ function M.AssertInvalidStageDeclarationException(struct)
 end
 
 --- Create a structure of type InvalidStageDeclarationException
--- &lt;p&gt;The specified stage declaration was specified in an invalid format.&lt;/p&gt;
+-- <p>The specified stage declaration was specified in an invalid format.</p>
 function M.InvalidStageDeclarationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidStageDeclarationException")
 	local t = { 
@@ -1484,7 +1484,7 @@ function M.AssertActionNotFoundException(struct)
 end
 
 --- Create a structure of type ActionNotFoundException
--- &lt;p&gt;The specified action cannot be found.&lt;/p&gt;
+-- <p>The specified action cannot be found.</p>
 function M.ActionNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActionNotFoundException")
 	local t = { 
@@ -1510,10 +1510,10 @@ function M.AssertActionRevision(struct)
 end
 
 --- Create a structure of type ActionRevision
--- &lt;p&gt;Represents information about the version (or revision) of an action.&lt;/p&gt;
--- @param revisionChangeId [RevisionChangeIdentifier] &lt;p&gt;The unique identifier of the change that set the state to this revision, for example a deployment ID or timestamp.&lt;/p&gt;
--- @param revisionId [Revision] &lt;p&gt;The system-generated unique ID that identifies the revision number of the action.&lt;/p&gt;
--- @param created [Timestamp] &lt;p&gt;The date and time when the most recent version of the action was created, in timestamp format.&lt;/p&gt;
+-- <p>Represents information about the version (or revision) of an action.</p>
+-- @param revisionChangeId [RevisionChangeIdentifier] <p>The unique identifier of the change that set the state to this revision, for example a deployment ID or timestamp.</p>
+-- @param revisionId [Revision] <p>The system-generated unique ID that identifies the revision number of the action.</p>
+-- @param created [Timestamp] <p>The date and time when the most recent version of the action was created, in timestamp format.</p>
 -- Required parameter: revisionId
 -- Required parameter: revisionChangeId
 -- Required parameter: created
@@ -1543,9 +1543,9 @@ function M.AssertPutJobFailureResultInput(struct)
 end
 
 --- Create a structure of type PutJobFailureResultInput
--- &lt;p&gt;Represents the input of a put job failure result action.&lt;/p&gt;
--- @param failureDetails [FailureDetails] &lt;p&gt;The details about the failure of a job.&lt;/p&gt;
--- @param jobId [JobId] &lt;p&gt;The unique system-generated ID of the job that failed. This is the same ID returned from PollForJobs.&lt;/p&gt;
+-- <p>Represents the input of a put job failure result action.</p>
+-- @param failureDetails [FailureDetails] <p>The details about the failure of a job.</p>
+-- @param jobId [JobId] <p>The unique system-generated ID of the job that failed. This is the same ID returned from PollForJobs.</p>
 -- Required parameter: jobId
 -- Required parameter: failureDetails
 function M.PutJobFailureResultInput(failureDetails, jobId, ...)
@@ -1570,8 +1570,8 @@ function M.AssertListPipelinesInput(struct)
 end
 
 --- Create a structure of type ListPipelinesInput
--- &lt;p&gt;Represents the input of a list pipelines action.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;An identifier that was returned from the previous list pipelines call, which can be used to return the next set of pipelines in the list.&lt;/p&gt;
+-- <p>Represents the input of a list pipelines action.</p>
+-- @param nextToken [NextToken] <p>An identifier that was returned from the previous list pipelines call, which can be used to return the next set of pipelines in the list.</p>
 function M.ListPipelinesInput(nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelinesInput")
 	local t = { 
@@ -1598,10 +1598,10 @@ function M.AssertDeleteCustomActionTypeInput(struct)
 end
 
 --- Create a structure of type DeleteCustomActionTypeInput
--- &lt;p&gt;Represents the input of a delete custom action operation. The custom action will be marked as deleted.&lt;/p&gt;
--- @param category [ActionCategory] &lt;p&gt;The category of the custom action that you want to delete, such as source or deploy.&lt;/p&gt;
--- @param version [Version] &lt;p&gt;The version of the custom action to delete.&lt;/p&gt;
--- @param provider [ActionProvider] &lt;p&gt;The provider of the service used in the custom action, such as AWS CodeDeploy.&lt;/p&gt;
+-- <p>Represents the input of a delete custom action operation. The custom action will be marked as deleted.</p>
+-- @param category [ActionCategory] <p>The category of the custom action that you want to delete, such as source or deploy.</p>
+-- @param version [Version] <p>The version of the custom action to delete.</p>
+-- @param provider [ActionProvider] <p>The provider of the service used in the custom action, such as AWS CodeDeploy.</p>
 -- Required parameter: category
 -- Required parameter: provider
 -- Required parameter: version
@@ -1633,10 +1633,10 @@ function M.AssertAcknowledgeThirdPartyJobInput(struct)
 end
 
 --- Create a structure of type AcknowledgeThirdPartyJobInput
--- &lt;p&gt;Represents the input of an acknowledge third party job action.&lt;/p&gt;
--- @param nonce [Nonce] &lt;p&gt;A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response to a &lt;a&gt;GetThirdPartyJobDetails&lt;/a&gt; request.&lt;/p&gt;
--- @param clientToken [ClientToken] &lt;p&gt;The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.&lt;/p&gt;
--- @param jobId [ThirdPartyJobId] &lt;p&gt;The unique system-generated ID of the job.&lt;/p&gt;
+-- <p>Represents the input of an acknowledge third party job action.</p>
+-- @param nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.</p>
+-- @param clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
+-- @param jobId [ThirdPartyJobId] <p>The unique system-generated ID of the job.</p>
 -- Required parameter: jobId
 -- Required parameter: nonce
 -- Required parameter: clientToken
@@ -1668,10 +1668,10 @@ function M.AssertPutThirdPartyJobFailureResultInput(struct)
 end
 
 --- Create a structure of type PutThirdPartyJobFailureResultInput
--- &lt;p&gt;Represents the input of a third party job failure result action.&lt;/p&gt;
--- @param clientToken [ClientToken] &lt;p&gt;The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.&lt;/p&gt;
--- @param failureDetails [FailureDetails] &lt;p&gt;Represents information about failure details.&lt;/p&gt;
--- @param jobId [ThirdPartyJobId] &lt;p&gt;The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.&lt;/p&gt;
+-- <p>Represents the input of a third party job failure result action.</p>
+-- @param clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
+-- @param failureDetails [FailureDetails] <p>Represents information about failure details.</p>
+-- @param jobId [ThirdPartyJobId] <p>The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.</p>
 -- Required parameter: jobId
 -- Required parameter: clientToken
 -- Required parameter: failureDetails
@@ -1703,10 +1703,10 @@ function M.AssertAWSSessionCredentials(struct)
 end
 
 --- Create a structure of type AWSSessionCredentials
--- &lt;p&gt;Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.&lt;/p&gt;
--- @param secretAccessKey [SecretAccessKey] &lt;p&gt;The secret access key for the session.&lt;/p&gt;
--- @param sessionToken [SessionToken] &lt;p&gt;The token for the session.&lt;/p&gt;
--- @param accessKeyId [AccessKeyId] &lt;p&gt;The access key for the session.&lt;/p&gt;
+-- <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.</p>
+-- @param secretAccessKey [SecretAccessKey] <p>The secret access key for the session.</p>
+-- @param sessionToken [SessionToken] <p>The token for the session.</p>
+-- @param accessKeyId [AccessKeyId] <p>The access key for the session.</p>
 -- Required parameter: accessKeyId
 -- Required parameter: secretAccessKey
 -- Required parameter: sessionToken
@@ -1736,9 +1736,9 @@ function M.AssertS3ArtifactLocation(struct)
 end
 
 --- Create a structure of type S3ArtifactLocation
--- &lt;p&gt;The location of the Amazon S3 bucket that contains a revision.&lt;/p&gt;
--- @param objectKey [S3ObjectKey] &lt;p&gt;The key of the object in the Amazon S3 bucket, which uniquely identifies the object in the bucket.&lt;/p&gt;
--- @param bucketName [S3BucketName] &lt;p&gt;The name of the Amazon S3 bucket.&lt;/p&gt;
+-- <p>The location of the Amazon S3 bucket that contains a revision.</p>
+-- @param objectKey [S3ObjectKey] <p>The key of the object in the Amazon S3 bucket, which uniquely identifies the object in the bucket.</p>
+-- @param bucketName [S3BucketName] <p>The name of the Amazon S3 bucket.</p>
 -- Required parameter: bucketName
 -- Required parameter: objectKey
 function M.S3ArtifactLocation(objectKey, bucketName, ...)
@@ -1762,7 +1762,7 @@ function M.AssertInvalidJobStateException(struct)
 end
 
 --- Create a structure of type InvalidJobStateException
--- &lt;p&gt;The specified job state was specified in an invalid format.&lt;/p&gt;
+-- <p>The specified job state was specified in an invalid format.</p>
 function M.InvalidJobStateException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidJobStateException")
 	local t = { 
@@ -1783,8 +1783,8 @@ function M.AssertGetPipelineOutput(struct)
 end
 
 --- Create a structure of type GetPipelineOutput
--- &lt;p&gt;Represents the output of a get pipeline action.&lt;/p&gt;
--- @param pipeline [PipelineDeclaration] &lt;p&gt;Represents the structure of actions and stages to be performed in the pipeline. &lt;/p&gt;
+-- <p>Represents the output of a get pipeline action.</p>
+-- @param pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
 function M.GetPipelineOutput(pipeline, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineOutput")
 	local t = { 
@@ -1809,10 +1809,10 @@ function M.AssertListPipelineExecutionsInput(struct)
 end
 
 --- Create a structure of type ListPipelineExecutionsInput
--- &lt;p&gt;Represents the input of a list pipeline executions action.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token that was returned from the previous list pipeline executions call, which can be used to return the next set of pipeline executions in the list.&lt;/p&gt;
--- @param pipelineName [PipelineName] &lt;p&gt;The name of the pipeline for which you want to get execution summary information.&lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value. The available pipeline execution history is limited to the most recent 12 months, based on pipeline execution start times. Default value is 100.&lt;/p&gt;
+-- <p>Represents the input of a list pipeline executions action.</p>
+-- @param nextToken [NextToken] <p>The token that was returned from the previous list pipeline executions call, which can be used to return the next set of pipeline executions in the list.</p>
+-- @param pipelineName [PipelineName] <p>The name of the pipeline for which you want to get execution summary information.</p>
+-- @param maxResults [MaxResults] <p>The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value. The available pipeline execution history is limited to the most recent 12 months, based on pipeline execution start times. Default value is 100.</p>
 -- Required parameter: pipelineName
 function M.ListPipelineExecutionsInput(nextToken, pipelineName, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelineExecutionsInput")
@@ -1839,9 +1839,9 @@ function M.AssertListActionTypesOutput(struct)
 end
 
 --- Create a structure of type ListActionTypesOutput
--- &lt;p&gt;Represents the output of a list action types action.&lt;/p&gt;
--- @param actionTypes [ActionTypeList] &lt;p&gt;Provides details of the action types.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list action types call to return the next set of action types in the list.&lt;/p&gt;
+-- <p>Represents the output of a list action types action.</p>
+-- @param actionTypes [ActionTypeList] <p>Provides details of the action types.</p>
+-- @param nextToken [NextToken] <p>If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list action types call to return the next set of action types in the list.</p>
 -- Required parameter: actionTypes
 function M.ListActionTypesOutput(actionTypes, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListActionTypesOutput")
@@ -1868,9 +1868,9 @@ function M.AssertApprovalResult(struct)
 end
 
 --- Create a structure of type ApprovalResult
--- &lt;p&gt;Represents information about the result of an approval request.&lt;/p&gt;
--- @param status [ApprovalStatus] &lt;p&gt;The response submitted by a reviewer assigned to an approval action request.&lt;/p&gt;
--- @param summary [ApprovalSummary] &lt;p&gt;The summary of the current status of the approval request.&lt;/p&gt;
+-- <p>Represents information about the result of an approval request.</p>
+-- @param status [ApprovalStatus] <p>The response submitted by a reviewer assigned to an approval action request.</p>
+-- @param summary [ApprovalSummary] <p>The summary of the current status of the approval request.</p>
 -- Required parameter: summary
 -- Required parameter: status
 function M.ApprovalResult(status, summary, ...)
@@ -1896,8 +1896,8 @@ function M.AssertOutputArtifact(struct)
 end
 
 --- Create a structure of type OutputArtifact
--- &lt;p&gt;Represents information about the output of an action.&lt;/p&gt;
--- @param name [ArtifactName] &lt;p&gt;The name of the output of an artifact, such as &quot;My App&quot;.&lt;/p&gt; &lt;p&gt;The input artifact of an action must exactly match the output artifact declared in a preceding action, but the input artifact does not have to be the next action in strict sequence from the action that provided the output artifact. Actions in parallel can declare different output artifacts, which are in turn consumed by different following actions.&lt;/p&gt; &lt;p&gt;Output artifact names must be unique within a pipeline.&lt;/p&gt;
+-- <p>Represents information about the output of an action.</p>
+-- @param name [ArtifactName] <p>The name of the output of an artifact, such as "My App".</p> <p>The input artifact of an action must exactly match the output artifact declared in a preceding action, but the input artifact does not have to be the next action in strict sequence from the action that provided the output artifact. Actions in parallel can declare different output artifacts, which are in turn consumed by different following actions.</p> <p>Output artifact names must be unique within a pipeline.</p>
 -- Required parameter: name
 function M.OutputArtifact(name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OutputArtifact")
@@ -1923,9 +1923,9 @@ function M.AssertEncryptionKey(struct)
 end
 
 --- Create a structure of type EncryptionKey
--- &lt;p&gt;Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key.&lt;/p&gt;
--- @param type [EncryptionKeyType] &lt;p&gt;The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating a pipeline, the value must be set to 'KMS'.&lt;/p&gt;
--- @param id [EncryptionKeyId] &lt;p&gt;The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.&lt;/p&gt;
+-- <p>Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key.</p>
+-- @param type [EncryptionKeyType] <p>The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating a pipeline, the value must be set to 'KMS'.</p>
+-- @param id [EncryptionKeyId] <p>The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.</p>
 -- Required parameter: id
 -- Required parameter: type
 function M.EncryptionKey(type, id, ...)
@@ -1949,7 +1949,7 @@ function M.AssertInvalidClientTokenException(struct)
 end
 
 --- Create a structure of type InvalidClientTokenException
--- &lt;p&gt;The client token was specified in an invalid format&lt;/p&gt;
+-- <p>The client token was specified in an invalid format</p>
 function M.InvalidClientTokenException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidClientTokenException")
 	local t = { 
@@ -1969,7 +1969,7 @@ function M.AssertValidationException(struct)
 end
 
 --- Create a structure of type ValidationException
--- &lt;p&gt;The validation was specified in an invalid format.&lt;/p&gt;
+-- <p>The validation was specified in an invalid format.</p>
 function M.ValidationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
 	local t = { 
@@ -1991,8 +1991,8 @@ function M.AssertGetJobDetailsInput(struct)
 end
 
 --- Create a structure of type GetJobDetailsInput
--- &lt;p&gt;Represents the input of a get job details action.&lt;/p&gt;
--- @param jobId [JobId] &lt;p&gt;The unique system-generated ID for the job.&lt;/p&gt;
+-- <p>Represents the input of a get job details action.</p>
+-- @param jobId [JobId] <p>The unique system-generated ID for the job.</p>
 -- Required parameter: jobId
 function M.GetJobDetailsInput(jobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetJobDetailsInput")
@@ -2015,8 +2015,8 @@ function M.AssertPollForThirdPartyJobsOutput(struct)
 end
 
 --- Create a structure of type PollForThirdPartyJobsOutput
--- &lt;p&gt;Represents the output of a poll for third party jobs action.&lt;/p&gt;
--- @param jobs [ThirdPartyJobList] &lt;p&gt;Information about the jobs to take action on.&lt;/p&gt;
+-- <p>Represents the output of a poll for third party jobs action.</p>
+-- @param jobs [ThirdPartyJobList] <p>Information about the jobs to take action on.</p>
 function M.PollForThirdPartyJobsOutput(jobs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PollForThirdPartyJobsOutput")
 	local t = { 
@@ -2045,11 +2045,11 @@ function M.AssertRetryStageExecutionInput(struct)
 end
 
 --- Create a structure of type RetryStageExecutionInput
--- &lt;p&gt;Represents the input of a retry stage execution action.&lt;/p&gt;
--- @param pipelineExecutionId [PipelineExecutionId] &lt;p&gt;The ID of the pipeline execution in the failed stage to be retried. Use the &lt;a&gt;GetPipelineState&lt;/a&gt; action to retrieve the current pipelineExecutionId of the failed stage&lt;/p&gt;
--- @param retryMode [StageRetryMode] &lt;p&gt;The scope of the retry attempt. Currently, the only supported value is FAILED_ACTIONS.&lt;/p&gt;
--- @param pipelineName [PipelineName] &lt;p&gt;The name of the pipeline that contains the failed stage.&lt;/p&gt;
--- @param stageName [StageName] &lt;p&gt;The name of the failed stage to be retried.&lt;/p&gt;
+-- <p>Represents the input of a retry stage execution action.</p>
+-- @param pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution in the failed stage to be retried. Use the <a>GetPipelineState</a> action to retrieve the current pipelineExecutionId of the failed stage</p>
+-- @param retryMode [StageRetryMode] <p>The scope of the retry attempt. Currently, the only supported value is FAILED_ACTIONS.</p>
+-- @param pipelineName [PipelineName] <p>The name of the pipeline that contains the failed stage.</p>
+-- @param stageName [StageName] <p>The name of the failed stage to be retried.</p>
 -- Required parameter: pipelineName
 -- Required parameter: stageName
 -- Required parameter: pipelineExecutionId
@@ -2078,8 +2078,8 @@ function M.AssertGetThirdPartyJobDetailsOutput(struct)
 end
 
 --- Create a structure of type GetThirdPartyJobDetailsOutput
--- &lt;p&gt;Represents the output of a get third party job details action.&lt;/p&gt;
--- @param jobDetails [ThirdPartyJobDetails] &lt;p&gt;The details of the job, including any protected values defined for the job.&lt;/p&gt;
+-- <p>Represents the output of a get third party job details action.</p>
+-- @param jobDetails [ThirdPartyJobDetails] <p>The details of the job, including any protected values defined for the job.</p>
 function M.GetThirdPartyJobDetailsOutput(jobDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetThirdPartyJobDetailsOutput")
 	local t = { 
@@ -2103,10 +2103,10 @@ function M.AssertExecutionDetails(struct)
 end
 
 --- Create a structure of type ExecutionDetails
--- &lt;p&gt;The details of the actions taken and results produced on an artifact as it passes through stages in the pipeline.&lt;/p&gt;
--- @param percentComplete [Percentage] &lt;p&gt;The percentage of work completed on the action, represented on a scale of zero to one hundred percent.&lt;/p&gt;
--- @param externalExecutionId [ExecutionId] &lt;p&gt;The system-generated unique ID of this action used to identify this job worker in any external systems, such as AWS CodeDeploy.&lt;/p&gt;
--- @param summary [ExecutionSummary] &lt;p&gt;The summary of the current status of the actions.&lt;/p&gt;
+-- <p>The details of the actions taken and results produced on an artifact as it passes through stages in the pipeline.</p>
+-- @param percentComplete [Percentage] <p>The percentage of work completed on the action, represented on a scale of zero to one hundred percent.</p>
+-- @param externalExecutionId [ExecutionId] <p>The system-generated unique ID of this action used to identify this job worker in any external systems, such as AWS CodeDeploy.</p>
+-- @param summary [ExecutionSummary] <p>The summary of the current status of the actions.</p>
 function M.ExecutionDetails(percentComplete, externalExecutionId, summary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionDetails")
 	local t = { 
@@ -2131,9 +2131,9 @@ function M.AssertArtifactLocation(struct)
 end
 
 --- Create a structure of type ArtifactLocation
--- &lt;p&gt;Represents information about the location of an artifact.&lt;/p&gt;
--- @param type [ArtifactLocationType] &lt;p&gt;The type of artifact in the location.&lt;/p&gt;
--- @param s3Location [S3ArtifactLocation] &lt;p&gt;The Amazon S3 bucket that contains the artifact.&lt;/p&gt;
+-- <p>Represents information about the location of an artifact.</p>
+-- @param type [ArtifactLocationType] <p>The type of artifact in the location.</p>
+-- @param s3Location [S3ArtifactLocation] <p>The Amazon S3 bucket that contains the artifact.</p>
 function M.ArtifactLocation(type, s3Location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ArtifactLocation")
 	local t = { 
@@ -2164,14 +2164,14 @@ function M.AssertActionDeclaration(struct)
 end
 
 --- Create a structure of type ActionDeclaration
--- &lt;p&gt;Represents information about an action declaration.&lt;/p&gt;
--- @param inputArtifacts [InputArtifactList] &lt;p&gt;The name or ID of the artifact consumed by the action, such as a test or build artifact.&lt;/p&gt;
--- @param name [ActionName] &lt;p&gt;The action declaration's name.&lt;/p&gt;
--- @param roleArn [RoleArn] &lt;p&gt;The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.&lt;/p&gt;
--- @param actionTypeId [ActionTypeId] &lt;p&gt;The configuration information for the action type.&lt;/p&gt;
--- @param outputArtifacts [OutputArtifactList] &lt;p&gt;The name or ID of the result of the action declaration, such as a test or build artifact.&lt;/p&gt;
--- @param configuration [ActionConfigurationMap] &lt;p&gt;The action declaration's configuration.&lt;/p&gt;
--- @param runOrder [ActionRunOrder] &lt;p&gt;The order in which actions are run.&lt;/p&gt;
+-- <p>Represents information about an action declaration.</p>
+-- @param inputArtifacts [InputArtifactList] <p>The name or ID of the artifact consumed by the action, such as a test or build artifact.</p>
+-- @param name [ActionName] <p>The action declaration's name.</p>
+-- @param roleArn [RoleArn] <p>The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.</p>
+-- @param actionTypeId [ActionTypeId] <p>The configuration information for the action type.</p>
+-- @param outputArtifacts [OutputArtifactList] <p>The name or ID of the result of the action declaration, such as a test or build artifact.</p>
+-- @param configuration [ActionConfigurationMap] <p>The action declaration's configuration.</p>
+-- @param runOrder [ActionRunOrder] <p>The order in which actions are run.</p>
 -- Required parameter: name
 -- Required parameter: actionTypeId
 function M.ActionDeclaration(inputArtifacts, name, roleArn, actionTypeId, outputArtifacts, configuration, runOrder, ...)
@@ -2200,7 +2200,7 @@ function M.AssertInvalidBlockerDeclarationException(struct)
 end
 
 --- Create a structure of type InvalidBlockerDeclarationException
--- &lt;p&gt;Reserved for future use.&lt;/p&gt;
+-- <p>Reserved for future use.</p>
 function M.InvalidBlockerDeclarationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidBlockerDeclarationException")
 	local t = { 
@@ -2221,8 +2221,8 @@ function M.AssertStageContext(struct)
 end
 
 --- Create a structure of type StageContext
--- &lt;p&gt;Represents information about a stage to a job worker.&lt;/p&gt;
--- @param name [StageName] &lt;p&gt;The name of the stage.&lt;/p&gt;
+-- <p>Represents information about a stage to a job worker.</p>
+-- @param name [StageName] <p>The name of the stage.</p>
 function M.StageContext(name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StageContext")
 	local t = { 
@@ -2247,11 +2247,11 @@ function M.AssertActionTypeSettings(struct)
 end
 
 --- Create a structure of type ActionTypeSettings
--- &lt;p&gt;Returns information about the settings for an action type.&lt;/p&gt;
--- @param entityUrlTemplate [UrlTemplate] &lt;p&gt;The URL returned to the AWS CodePipeline console that provides a deep link to the resources of the external system, such as the configuration page for an AWS CodeDeploy deployment group. This link is provided as part of the action display within the pipeline.&lt;/p&gt;
--- @param revisionUrlTemplate [UrlTemplate] &lt;p&gt;The URL returned to the AWS CodePipeline console that contains a link to the page where customers can update or change the configuration of the external action.&lt;/p&gt;
--- @param thirdPartyConfigurationUrl [Url] &lt;p&gt;The URL of a sign-up page where users can sign up for an external service and perform initial configuration of the action provided by that service.&lt;/p&gt;
--- @param executionUrlTemplate [UrlTemplate] &lt;p&gt;The URL returned to the AWS CodePipeline console that contains a link to the top-level landing page for the external system, such as console page for AWS CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline console and provides a link to the execution entity of the external action.&lt;/p&gt;
+-- <p>Returns information about the settings for an action type.</p>
+-- @param entityUrlTemplate [UrlTemplate] <p>The URL returned to the AWS CodePipeline console that provides a deep link to the resources of the external system, such as the configuration page for an AWS CodeDeploy deployment group. This link is provided as part of the action display within the pipeline.</p>
+-- @param revisionUrlTemplate [UrlTemplate] <p>The URL returned to the AWS CodePipeline console that contains a link to the page where customers can update or change the configuration of the external action.</p>
+-- @param thirdPartyConfigurationUrl [Url] <p>The URL of a sign-up page where users can sign up for an external service and perform initial configuration of the action provided by that service.</p>
+-- @param executionUrlTemplate [UrlTemplate] <p>The URL returned to the AWS CodePipeline console that contains a link to the top-level landing page for the external system, such as console page for AWS CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline console and provides a link to the execution entity of the external action.</p>
 function M.ActionTypeSettings(entityUrlTemplate, revisionUrlTemplate, thirdPartyConfigurationUrl, executionUrlTemplate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActionTypeSettings")
 	local t = { 
@@ -2279,9 +2279,9 @@ function M.AssertGetPipelineExecutionInput(struct)
 end
 
 --- Create a structure of type GetPipelineExecutionInput
--- &lt;p&gt;Represents the input of a get pipeline execution action.&lt;/p&gt;
--- @param pipelineExecutionId [PipelineExecutionId] &lt;p&gt;The ID of the pipeline execution about which you want to get execution details.&lt;/p&gt;
--- @param pipelineName [PipelineName] &lt;p&gt;The name of the pipeline about which you want to get execution details.&lt;/p&gt;
+-- <p>Represents the input of a get pipeline execution action.</p>
+-- @param pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution about which you want to get execution details.</p>
+-- @param pipelineName [PipelineName] <p>The name of the pipeline about which you want to get execution details.</p>
 -- Required parameter: pipelineName
 -- Required parameter: pipelineExecutionId
 function M.GetPipelineExecutionInput(pipelineExecutionId, pipelineName, ...)
@@ -2305,7 +2305,7 @@ function M.AssertNotLatestPipelineExecutionException(struct)
 end
 
 --- Create a structure of type NotLatestPipelineExecutionException
--- &lt;p&gt;The stage has failed in a later run of the pipeline and the pipelineExecutionId associated with the request is out of date.&lt;/p&gt;
+-- <p>The stage has failed in a later run of the pipeline and the pipelineExecutionId associated with the request is out of date.</p>
 function M.NotLatestPipelineExecutionException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotLatestPipelineExecutionException")
 	local t = { 
@@ -2327,8 +2327,8 @@ function M.AssertCreateCustomActionTypeOutput(struct)
 end
 
 --- Create a structure of type CreateCustomActionTypeOutput
--- &lt;p&gt;Represents the output of a create custom action operation.&lt;/p&gt;
--- @param actionType [ActionType] &lt;p&gt;Returns information about the details of an action type.&lt;/p&gt;
+-- <p>Represents the output of a create custom action operation.</p>
+-- @param actionType [ActionType] <p>Returns information about the details of an action type.</p>
 -- Required parameter: actionType
 function M.CreateCustomActionTypeOutput(actionType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCustomActionTypeOutput")
@@ -2355,11 +2355,11 @@ function M.AssertPutJobSuccessResultInput(struct)
 end
 
 --- Create a structure of type PutJobSuccessResultInput
--- &lt;p&gt;Represents the input of a put job success result action.&lt;/p&gt;
--- @param currentRevision [CurrentRevision] &lt;p&gt;The ID of the current revision of the artifact successfully worked upon by the job.&lt;/p&gt;
--- @param executionDetails [ExecutionDetails] &lt;p&gt;The execution details of the successful job, such as the actions taken by the job worker.&lt;/p&gt;
--- @param continuationToken [ContinuationToken] &lt;p&gt;A token generated by a job worker, such as an AWS CodeDeploy deployment ID, that a successful job provides to identify a custom action in progress. Future jobs will use this token in order to identify the running instance of the action. It can be reused to return additional information about the progress of the custom action. When the action is complete, no continuation token should be supplied.&lt;/p&gt;
--- @param jobId [JobId] &lt;p&gt;The unique system-generated ID of the job that succeeded. This is the same ID returned from PollForJobs.&lt;/p&gt;
+-- <p>Represents the input of a put job success result action.</p>
+-- @param currentRevision [CurrentRevision] <p>The ID of the current revision of the artifact successfully worked upon by the job.</p>
+-- @param executionDetails [ExecutionDetails] <p>The execution details of the successful job, such as the actions taken by the job worker.</p>
+-- @param continuationToken [ContinuationToken] <p>A token generated by a job worker, such as an AWS CodeDeploy deployment ID, that a successful job provides to identify a custom action in progress. Future jobs will use this token in order to identify the running instance of the action. It can be reused to return additional information about the progress of the custom action. When the action is complete, no continuation token should be supplied.</p>
+-- @param jobId [JobId] <p>The unique system-generated ID of the job that succeeded. This is the same ID returned from PollForJobs.</p>
 -- Required parameter: jobId
 function M.PutJobSuccessResultInput(currentRevision, executionDetails, continuationToken, jobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutJobSuccessResultInput")
@@ -2385,8 +2385,8 @@ function M.AssertPollForJobsOutput(struct)
 end
 
 --- Create a structure of type PollForJobsOutput
--- &lt;p&gt;Represents the output of a poll for jobs action.&lt;/p&gt;
--- @param jobs [JobList] &lt;p&gt;Information about the jobs to take action on.&lt;/p&gt;
+-- <p>Represents the output of a poll for jobs action.</p>
+-- @param jobs [JobList] <p>Information about the jobs to take action on.</p>
 function M.PollForJobsOutput(jobs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PollForJobsOutput")
 	local t = { 
@@ -2411,11 +2411,11 @@ function M.AssertPipelineExecutionSummary(struct)
 end
 
 --- Create a structure of type PipelineExecutionSummary
--- &lt;p&gt;Summary information about a pipeline execution.&lt;/p&gt;
--- @param pipelineExecutionId [PipelineExecutionId] &lt;p&gt;The ID of the pipeline execution.&lt;/p&gt;
--- @param status [PipelineExecutionStatus] &lt;p&gt;The status of the pipeline execution.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;InProgress: The pipeline execution is currently running.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Succeeded: The pipeline execution completed successfully. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution caught up and continued through the pipeline instead. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Failed: The pipeline execution did not complete successfully.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param lastUpdateTime [Timestamp] &lt;p&gt;The date and time of the last change to the pipeline execution, in timestamp format.&lt;/p&gt;
--- @param startTime [Timestamp] &lt;p&gt;The date and time when the pipeline execution began, in timestamp format.&lt;/p&gt;
+-- <p>Summary information about a pipeline execution.</p>
+-- @param pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution.</p>
+-- @param status [PipelineExecutionStatus] <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The pipeline execution is currently running.</p> </li> <li> <p>Succeeded: The pipeline execution completed successfully. </p> </li> <li> <p>Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution caught up and continued through the pipeline instead. </p> </li> <li> <p>Failed: The pipeline execution did not complete successfully.</p> </li> </ul>
+-- @param lastUpdateTime [Timestamp] <p>The date and time of the last change to the pipeline execution, in timestamp format.</p>
+-- @param startTime [Timestamp] <p>The date and time when the pipeline execution began, in timestamp format.</p>
 function M.PipelineExecutionSummary(pipelineExecutionId, status, lastUpdateTime, startTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineExecutionSummary")
 	local t = { 
@@ -2447,15 +2447,15 @@ function M.AssertJobData(struct)
 end
 
 --- Create a structure of type JobData
--- &lt;p&gt;Represents additional information about a job required for a job worker to complete the job.&lt;/p&gt;
--- @param inputArtifacts [ArtifactList] &lt;p&gt;The artifact supplied to the job.&lt;/p&gt;
--- @param pipelineContext [PipelineContext] &lt;p&gt;Represents information about a pipeline to a job worker.&lt;/p&gt;
--- @param encryptionKey [EncryptionKey] &lt;p&gt;Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. &lt;/p&gt;
--- @param actionTypeId [ActionTypeId] &lt;p&gt;Represents information about an action type.&lt;/p&gt;
--- @param outputArtifacts [ArtifactList] &lt;p&gt;The output of the job.&lt;/p&gt;
--- @param actionConfiguration [ActionConfiguration] &lt;p&gt;Represents information about an action configuration.&lt;/p&gt;
--- @param continuationToken [ContinuationToken] &lt;p&gt;A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the job asynchronously.&lt;/p&gt;
--- @param artifactCredentials [AWSSessionCredentials] &lt;p&gt;Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.&lt;/p&gt;
+-- <p>Represents additional information about a job required for a job worker to complete the job.</p>
+-- @param inputArtifacts [ArtifactList] <p>The artifact supplied to the job.</p>
+-- @param pipelineContext [PipelineContext] <p>Represents information about a pipeline to a job worker.</p>
+-- @param encryptionKey [EncryptionKey] <p>Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. </p>
+-- @param actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
+-- @param outputArtifacts [ArtifactList] <p>The output of the job.</p>
+-- @param actionConfiguration [ActionConfiguration] <p>Represents information about an action configuration.</p>
+-- @param continuationToken [ContinuationToken] <p>A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the job asynchronously.</p>
+-- @param artifactCredentials [AWSSessionCredentials] <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.</p>
 function M.JobData(inputArtifacts, pipelineContext, encryptionKey, actionTypeId, outputArtifacts, actionConfiguration, continuationToken, artifactCredentials, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobData")
 	local t = { 
@@ -2489,10 +2489,10 @@ function M.AssertEnableStageTransitionInput(struct)
 end
 
 --- Create a structure of type EnableStageTransitionInput
--- &lt;p&gt;Represents the input of an enable stage transition action.&lt;/p&gt;
--- @param pipelineName [PipelineName] &lt;p&gt;The name of the pipeline in which you want to enable the flow of artifacts from one stage to another.&lt;/p&gt;
--- @param stageName [StageName] &lt;p&gt;The name of the stage where you want to enable the transition of artifacts, either into the stage (inbound) or from that stage to the next stage (outbound).&lt;/p&gt;
--- @param transitionType [StageTransitionType] &lt;p&gt;Specifies whether artifacts will be allowed to enter the stage and be processed by the actions in that stage (inbound) or whether already-processed artifacts will be allowed to transition to the next stage (outbound).&lt;/p&gt;
+-- <p>Represents the input of an enable stage transition action.</p>
+-- @param pipelineName [PipelineName] <p>The name of the pipeline in which you want to enable the flow of artifacts from one stage to another.</p>
+-- @param stageName [StageName] <p>The name of the stage where you want to enable the transition of artifacts, either into the stage (inbound) or from that stage to the next stage (outbound).</p>
+-- @param transitionType [StageTransitionType] <p>Specifies whether artifacts will be allowed to enter the stage and be processed by the actions in that stage (inbound) or whether already-processed artifacts will be allowed to transition to the next stage (outbound).</p>
 -- Required parameter: pipelineName
 -- Required parameter: stageName
 -- Required parameter: transitionType
@@ -2518,7 +2518,7 @@ function M.AssertActionTypeNotFoundException(struct)
 end
 
 --- Create a structure of type ActionTypeNotFoundException
--- &lt;p&gt;The specified action type cannot be found.&lt;/p&gt;
+-- <p>The specified action type cannot be found.</p>
 function M.ActionTypeNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActionTypeNotFoundException")
 	local t = { 
@@ -2538,7 +2538,7 @@ function M.AssertJobNotFoundException(struct)
 end
 
 --- Create a structure of type JobNotFoundException
--- &lt;p&gt;The specified job was specified in an invalid format or cannot be found.&lt;/p&gt;
+-- <p>The specified job was specified in an invalid format or cannot be found.</p>
 function M.JobNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating JobNotFoundException")
 	local t = { 
@@ -2560,8 +2560,8 @@ function M.AssertGetPipelineStateInput(struct)
 end
 
 --- Create a structure of type GetPipelineStateInput
--- &lt;p&gt;Represents the input of a get pipeline state action.&lt;/p&gt;
--- @param name [PipelineName] &lt;p&gt;The name of the pipeline about which you want to get information.&lt;/p&gt;
+-- <p>Represents the input of a get pipeline state action.</p>
+-- @param name [PipelineName] <p>The name of the pipeline about which you want to get information.</p>
 -- Required parameter: name
 function M.GetPipelineStateInput(name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineStateInput")
@@ -2586,10 +2586,10 @@ function M.AssertPipelineContext(struct)
 end
 
 --- Create a structure of type PipelineContext
--- &lt;p&gt;Represents information about a pipeline to a job worker.&lt;/p&gt;
--- @param action [ActionContext] &lt;p/&gt;
--- @param pipelineName [PipelineName] &lt;p&gt;The name of the pipeline. This is a user-specified value. Pipeline names must be unique across all pipeline names under an Amazon Web Services account.&lt;/p&gt;
--- @param stage [StageContext] &lt;p&gt;The stage of the pipeline.&lt;/p&gt;
+-- <p>Represents information about a pipeline to a job worker.</p>
+-- @param action [ActionContext] <p/>
+-- @param pipelineName [PipelineName] <p>The name of the pipeline. This is a user-specified value. Pipeline names must be unique across all pipeline names under an Amazon Web Services account.</p>
+-- @param stage [StageContext] <p>The stage of the pipeline.</p>
 function M.PipelineContext(action, pipelineName, stage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineContext")
 	local t = { 
@@ -2613,8 +2613,8 @@ function M.AssertGetJobDetailsOutput(struct)
 end
 
 --- Create a structure of type GetJobDetailsOutput
--- &lt;p&gt;Represents the output of a get job details action.&lt;/p&gt;
--- @param jobDetails [JobDetails] &lt;p&gt;The details of the job.&lt;/p&gt; &lt;note&gt; &lt;p&gt;If AWSSessionCredentials is used, a long-running job can call GetJobDetails again to obtain new credentials.&lt;/p&gt; &lt;/note&gt;
+-- <p>Represents the output of a get job details action.</p>
+-- @param jobDetails [JobDetails] <p>The details of the job.</p> <note> <p>If AWSSessionCredentials is used, a long-running job can call GetJobDetails again to obtain new credentials.</p> </note>
 function M.GetJobDetailsOutput(jobDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetJobDetailsOutput")
 	local t = { 
@@ -2636,8 +2636,8 @@ function M.AssertPutApprovalResultOutput(struct)
 end
 
 --- Create a structure of type PutApprovalResultOutput
--- &lt;p&gt;Represents the output of a put approval result action.&lt;/p&gt;
--- @param approvedAt [Timestamp] &lt;p&gt;The timestamp showing when the approval or rejection was submitted.&lt;/p&gt;
+-- <p>Represents the output of a put approval result action.</p>
+-- @param approvedAt [Timestamp] <p>The timestamp showing when the approval or rejection was submitted.</p>
 function M.PutApprovalResultOutput(approvedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutApprovalResultOutput")
 	local t = { 
@@ -2658,7 +2658,7 @@ function M.AssertStageNotRetryableException(struct)
 end
 
 --- Create a structure of type StageNotRetryableException
--- &lt;p&gt;The specified stage can't be retried because the pipeline structure or stage state changed after the stage was not completed; the stage contains no failed actions; one or more actions are still in progress; or another retry attempt is already in progress. &lt;/p&gt;
+-- <p>The specified stage can't be retried because the pipeline structure or stage state changed after the stage was not completed; the stage contains no failed actions; one or more actions are still in progress; or another retry attempt is already in progress. </p>
 function M.StageNotRetryableException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StageNotRetryableException")
 	local t = { 
@@ -2684,11 +2684,11 @@ function M.AssertCurrentRevision(struct)
 end
 
 --- Create a structure of type CurrentRevision
--- &lt;p&gt;Represents information about a current revision.&lt;/p&gt;
--- @param changeIdentifier [RevisionChangeIdentifier] &lt;p&gt;The change identifier for the current revision.&lt;/p&gt;
--- @param created [Time] &lt;p&gt;The date and time when the most recent revision of the artifact was created, in timestamp format.&lt;/p&gt;
--- @param revisionSummary [RevisionSummary] &lt;p&gt;The summary of the most recent revision of the artifact.&lt;/p&gt;
--- @param revision [Revision] &lt;p&gt;The revision ID of the current version of an artifact.&lt;/p&gt;
+-- <p>Represents information about a current revision.</p>
+-- @param changeIdentifier [RevisionChangeIdentifier] <p>The change identifier for the current revision.</p>
+-- @param created [Time] <p>The date and time when the most recent revision of the artifact was created, in timestamp format.</p>
+-- @param revisionSummary [RevisionSummary] <p>The summary of the most recent revision of the artifact.</p>
+-- @param revision [Revision] <p>The revision ID of the current version of an artifact.</p>
 -- Required parameter: revision
 -- Required parameter: changeIdentifier
 function M.CurrentRevision(changeIdentifier, created, revisionSummary, revision, ...)
@@ -2714,7 +2714,7 @@ function M.AssertInvalidApprovalTokenException(struct)
 end
 
 --- Create a structure of type InvalidApprovalTokenException
--- &lt;p&gt;The approval request already received a response or has expired.&lt;/p&gt;
+-- <p>The approval request already received a response or has expired.</p>
 function M.InvalidApprovalTokenException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidApprovalTokenException")
 	local t = { 
@@ -2738,9 +2738,9 @@ function M.AssertGetThirdPartyJobDetailsInput(struct)
 end
 
 --- Create a structure of type GetThirdPartyJobDetailsInput
--- &lt;p&gt;Represents the input of a get third party job details action.&lt;/p&gt;
--- @param clientToken [ClientToken] &lt;p&gt;The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.&lt;/p&gt;
--- @param jobId [ThirdPartyJobId] &lt;p&gt;The unique system-generated ID used for identifying the job.&lt;/p&gt;
+-- <p>Represents the input of a get third party job details action.</p>
+-- @param clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
+-- @param jobId [ThirdPartyJobId] <p>The unique system-generated ID used for identifying the job.</p>
 -- Required parameter: jobId
 -- Required parameter: clientToken
 function M.GetThirdPartyJobDetailsInput(clientToken, jobId, ...)
@@ -2768,9 +2768,9 @@ function M.AssertStageExecution(struct)
 end
 
 --- Create a structure of type StageExecution
--- &lt;p&gt;Represents information about the run of a stage.&lt;/p&gt;
--- @param pipelineExecutionId [PipelineExecutionId] &lt;p&gt;The ID of the pipeline execution associated with the stage.&lt;/p&gt;
--- @param status [StageExecutionStatus] &lt;p&gt;The status of the stage, or for a completed stage, the last status of the stage.&lt;/p&gt;
+-- <p>Represents information about the run of a stage.</p>
+-- @param pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution associated with the stage.</p>
+-- @param status [StageExecutionStatus] <p>The status of the stage, or for a completed stage, the last status of the stage.</p>
 -- Required parameter: pipelineExecutionId
 -- Required parameter: status
 function M.StageExecution(pipelineExecutionId, status, ...)
@@ -2797,10 +2797,10 @@ function M.AssertArtifact(struct)
 end
 
 --- Create a structure of type Artifact
--- &lt;p&gt;Represents information about an artifact that will be worked upon by actions in the pipeline.&lt;/p&gt;
--- @param location [ArtifactLocation] &lt;p&gt;The location of an artifact.&lt;/p&gt;
--- @param name [ArtifactName] &lt;p&gt;The artifact's name.&lt;/p&gt;
--- @param revision [Revision] &lt;p&gt;The artifact's revision ID. Depending on the type of object, this could be a commit ID (GitHub) or a revision ID (Amazon S3).&lt;/p&gt;
+-- <p>Represents information about an artifact that will be worked upon by actions in the pipeline.</p>
+-- @param location [ArtifactLocation] <p>The location of an artifact.</p>
+-- @param name [ArtifactName] <p>The artifact's name.</p>
+-- @param revision [Revision] <p>The artifact's revision ID. Depending on the type of object, this could be a commit ID (GitHub) or a revision ID (Amazon S3).</p>
 function M.Artifact(location, name, revision, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Artifact")
 	local t = { 
@@ -2823,7 +2823,7 @@ function M.AssertPipelineVersionNotFoundException(struct)
 end
 
 --- Create a structure of type PipelineVersionNotFoundException
--- &lt;p&gt;The specified pipeline version was specified in an invalid format or cannot be found.&lt;/p&gt;
+-- <p>The specified pipeline version was specified in an invalid format or cannot be found.</p>
 function M.PipelineVersionNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineVersionNotFoundException")
 	local t = { 
@@ -2843,7 +2843,7 @@ function M.AssertInvalidJobException(struct)
 end
 
 --- Create a structure of type InvalidJobException
--- &lt;p&gt;The specified job was specified in an invalid format or cannot be found.&lt;/p&gt;
+-- <p>The specified job was specified in an invalid format or cannot be found.</p>
 function M.InvalidJobException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidJobException")
 	local t = { 
@@ -2865,9 +2865,9 @@ function M.AssertThirdPartyJob(struct)
 end
 
 --- Create a structure of type ThirdPartyJob
--- &lt;p&gt;A response to a PollForThirdPartyJobs request returned by AWS CodePipeline when there is a job to be worked upon by a partner action.&lt;/p&gt;
--- @param clientId [ClientId] &lt;p&gt;The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.&lt;/p&gt;
--- @param jobId [JobId] &lt;p&gt;The identifier used to identify the job in AWS CodePipeline.&lt;/p&gt;
+-- <p>A response to a PollForThirdPartyJobs request returned by AWS CodePipeline when there is a job to be worked upon by a partner action.</p>
+-- @param clientId [ClientId] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
+-- @param jobId [JobId] <p>The identifier used to identify the job in AWS CodePipeline.</p>
 function M.ThirdPartyJob(clientId, jobId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThirdPartyJob")
 	local t = { 
@@ -2894,10 +2894,10 @@ function M.AssertStageDeclaration(struct)
 end
 
 --- Create a structure of type StageDeclaration
--- &lt;p&gt;Represents information about a stage and its definition.&lt;/p&gt;
--- @param blockers [StageBlockerDeclarationList] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param name [StageName] &lt;p&gt;The name of the stage.&lt;/p&gt;
--- @param actions [StageActionDeclarationList] &lt;p&gt;The actions included in a stage.&lt;/p&gt;
+-- <p>Represents information about a stage and its definition.</p>
+-- @param blockers [StageBlockerDeclarationList] <p>Reserved for future use.</p>
+-- @param name [StageName] <p>The name of the stage.</p>
+-- @param actions [StageActionDeclarationList] <p>The actions included in a stage.</p>
 -- Required parameter: name
 -- Required parameter: actions
 function M.StageDeclaration(blockers, name, actions, ...)
@@ -2926,9 +2926,9 @@ function M.AssertBlockerDeclaration(struct)
 end
 
 --- Create a structure of type BlockerDeclaration
--- &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param type [BlockerType] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param name [BlockerName] &lt;p&gt;Reserved for future use.&lt;/p&gt;
+-- <p>Reserved for future use.</p>
+-- @param type [BlockerType] <p>Reserved for future use.</p>
+-- @param name [BlockerName] <p>Reserved for future use.</p>
 -- Required parameter: name
 -- Required parameter: type
 function M.BlockerDeclaration(type, name, ...)
@@ -2956,11 +2956,11 @@ function M.AssertPipelineSummary(struct)
 end
 
 --- Create a structure of type PipelineSummary
--- &lt;p&gt;Returns a summary of a pipeline.&lt;/p&gt;
--- @param updated [Timestamp] &lt;p&gt;The date and time of the last update to the pipeline, in timestamp format.&lt;/p&gt;
--- @param version [PipelineVersion] &lt;p&gt;The version number of the pipeline.&lt;/p&gt;
--- @param name [PipelineName] &lt;p&gt;The name of the pipeline.&lt;/p&gt;
--- @param created [Timestamp] &lt;p&gt;The date and time the pipeline was created, in timestamp format.&lt;/p&gt;
+-- <p>Returns a summary of a pipeline.</p>
+-- @param updated [Timestamp] <p>The date and time of the last update to the pipeline, in timestamp format.</p>
+-- @param version [PipelineVersion] <p>The version number of the pipeline.</p>
+-- @param name [PipelineName] <p>The name of the pipeline.</p>
+-- @param created [Timestamp] <p>The date and time the pipeline was created, in timestamp format.</p>
 function M.PipelineSummary(updated, version, name, created, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineSummary")
 	local t = { 
@@ -2985,8 +2985,8 @@ function M.AssertRetryStageExecutionOutput(struct)
 end
 
 --- Create a structure of type RetryStageExecutionOutput
--- &lt;p&gt;Represents the output of a retry stage execution action.&lt;/p&gt;
--- @param pipelineExecutionId [PipelineExecutionId] &lt;p&gt;The ID of the current workflow execution in the failed stage.&lt;/p&gt;
+-- <p>Represents the output of a retry stage execution action.</p>
+-- @param pipelineExecutionId [PipelineExecutionId] <p>The ID of the current workflow execution in the failed stage.</p>
 function M.RetryStageExecutionOutput(pipelineExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RetryStageExecutionOutput")
 	local t = { 
@@ -3007,7 +3007,7 @@ function M.AssertInvalidNonceException(struct)
 end
 
 --- Create a structure of type InvalidNonceException
--- &lt;p&gt;The specified nonce was specified in an invalid format.&lt;/p&gt;
+-- <p>The specified nonce was specified in an invalid format.</p>
 function M.InvalidNonceException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNonceException")
 	local t = { 
@@ -3027,7 +3027,7 @@ function M.AssertPipelineNotFoundException(struct)
 end
 
 --- Create a structure of type PipelineNotFoundException
--- &lt;p&gt;The specified pipeline was specified in an invalid format or cannot be found.&lt;/p&gt;
+-- <p>The specified pipeline was specified in an invalid format or cannot be found.</p>
 function M.PipelineNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineNotFoundException")
 	local t = { 
@@ -3052,12 +3052,12 @@ function M.AssertPipelineExecution(struct)
 end
 
 --- Create a structure of type PipelineExecution
--- &lt;p&gt;Represents information about an execution of a pipeline.&lt;/p&gt;
--- @param pipelineExecutionId [PipelineExecutionId] &lt;p&gt;The ID of the pipeline execution.&lt;/p&gt;
--- @param pipelineVersion [PipelineVersion] &lt;p&gt;The version number of the pipeline that was executed.&lt;/p&gt;
--- @param pipelineName [PipelineName] &lt;p&gt;The name of the pipeline that was executed.&lt;/p&gt;
--- @param status [PipelineExecutionStatus] &lt;p&gt;The status of the pipeline execution.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;InProgress: The pipeline execution is currently running.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Succeeded: The pipeline execution completed successfully. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution caught up and continued through the pipeline instead. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Failed: The pipeline execution did not complete successfully.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param artifactRevisions [ArtifactRevisionList] &lt;p&gt;A list of ArtifactRevision objects included in a pipeline execution.&lt;/p&gt;
+-- <p>Represents information about an execution of a pipeline.</p>
+-- @param pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution.</p>
+-- @param pipelineVersion [PipelineVersion] <p>The version number of the pipeline that was executed.</p>
+-- @param pipelineName [PipelineName] <p>The name of the pipeline that was executed.</p>
+-- @param status [PipelineExecutionStatus] <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The pipeline execution is currently running.</p> </li> <li> <p>Succeeded: The pipeline execution completed successfully. </p> </li> <li> <p>Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution caught up and continued through the pipeline instead. </p> </li> <li> <p>Failed: The pipeline execution did not complete successfully.</p> </li> </ul>
+-- @param artifactRevisions [ArtifactRevisionList] <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
 function M.PipelineExecution(pipelineExecutionId, pipelineVersion, pipelineName, status, artifactRevisions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineExecution")
 	local t = { 
@@ -3090,15 +3090,15 @@ function M.AssertThirdPartyJobData(struct)
 end
 
 --- Create a structure of type ThirdPartyJobData
--- &lt;p&gt;Represents information about the job data for a partner action.&lt;/p&gt;
--- @param inputArtifacts [ArtifactList] &lt;p&gt;The name of the artifact that will be worked upon by the action, if any. This name might be system-generated, such as &quot;MyApp&quot;, or might be defined by the user when the action is created. The input artifact name must match the name of an output artifact generated by an action in an earlier action or stage of the pipeline.&lt;/p&gt;
--- @param pipelineContext [PipelineContext] &lt;p&gt;Represents information about a pipeline to a job worker.&lt;/p&gt;
--- @param encryptionKey [EncryptionKey] &lt;p&gt;The encryption key used to encrypt and decrypt data in the artifact store for the pipeline, such as an AWS Key Management Service (AWS KMS) key. This is optional and might not be present.&lt;/p&gt;
--- @param actionTypeId [ActionTypeId] &lt;p&gt;Represents information about an action type.&lt;/p&gt;
--- @param outputArtifacts [ArtifactList] &lt;p&gt;The name of the artifact that will be the result of the action, if any. This name might be system-generated, such as &quot;MyBuiltApp&quot;, or might be defined by the user when the action is created.&lt;/p&gt;
--- @param actionConfiguration [ActionConfiguration] &lt;p&gt;Represents information about an action configuration.&lt;/p&gt;
--- @param continuationToken [ContinuationToken] &lt;p&gt;A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the job asynchronously.&lt;/p&gt;
--- @param artifactCredentials [AWSSessionCredentials] &lt;p&gt;Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline. &lt;/p&gt;
+-- <p>Represents information about the job data for a partner action.</p>
+-- @param inputArtifacts [ArtifactList] <p>The name of the artifact that will be worked upon by the action, if any. This name might be system-generated, such as "MyApp", or might be defined by the user when the action is created. The input artifact name must match the name of an output artifact generated by an action in an earlier action or stage of the pipeline.</p>
+-- @param pipelineContext [PipelineContext] <p>Represents information about a pipeline to a job worker.</p>
+-- @param encryptionKey [EncryptionKey] <p>The encryption key used to encrypt and decrypt data in the artifact store for the pipeline, such as an AWS Key Management Service (AWS KMS) key. This is optional and might not be present.</p>
+-- @param actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
+-- @param outputArtifacts [ArtifactList] <p>The name of the artifact that will be the result of the action, if any. This name might be system-generated, such as "MyBuiltApp", or might be defined by the user when the action is created.</p>
+-- @param actionConfiguration [ActionConfiguration] <p>Represents information about an action configuration.</p>
+-- @param continuationToken [ContinuationToken] <p>A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the job asynchronously.</p>
+-- @param artifactCredentials [AWSSessionCredentials] <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline. </p>
 function M.ThirdPartyJobData(inputArtifacts, pipelineContext, encryptionKey, actionTypeId, outputArtifacts, actionConfiguration, continuationToken, artifactCredentials, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThirdPartyJobData")
 	local t = { 
@@ -3129,9 +3129,9 @@ function M.AssertPollForThirdPartyJobsInput(struct)
 end
 
 --- Create a structure of type PollForThirdPartyJobsInput
--- &lt;p&gt;Represents the input of a poll for third party jobs action.&lt;/p&gt;
--- @param actionTypeId [ActionTypeId] &lt;p&gt;Represents information about an action type.&lt;/p&gt;
--- @param maxBatchSize [MaxBatchSize] &lt;p&gt;The maximum number of jobs to return in a poll for jobs call.&lt;/p&gt;
+-- <p>Represents the input of a poll for third party jobs action.</p>
+-- @param actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
+-- @param maxBatchSize [MaxBatchSize] <p>The maximum number of jobs to return in a poll for jobs call.</p>
 -- Required parameter: actionTypeId
 function M.PollForThirdPartyJobsInput(actionTypeId, maxBatchSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PollForThirdPartyJobsInput")
@@ -3154,7 +3154,7 @@ function M.AssertPipelineExecutionNotFoundException(struct)
 end
 
 --- Create a structure of type PipelineExecutionNotFoundException
--- &lt;p&gt;The pipeline execution was specified in an invalid format or cannot be found, or an execution ID does not belong to the specified pipeline. &lt;/p&gt;
+-- <p>The pipeline execution was specified in an invalid format or cannot be found, or an execution ID does not belong to the specified pipeline. </p>
 function M.PipelineExecutionNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PipelineExecutionNotFoundException")
 	local t = { 
@@ -3176,9 +3176,9 @@ function M.AssertListActionTypesInput(struct)
 end
 
 --- Create a structure of type ListActionTypesInput
--- &lt;p&gt;Represents the input of a list action types action.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;An identifier that was returned from the previous list action types call, which can be used to return the next set of action types in the list.&lt;/p&gt;
--- @param actionOwnerFilter [ActionOwner] &lt;p&gt;Filters the list of action types to those created by a specified entity.&lt;/p&gt;
+-- <p>Represents the input of a list action types action.</p>
+-- @param nextToken [NextToken] <p>An identifier that was returned from the previous list action types call, which can be used to return the next set of action types in the list.</p>
+-- @param actionOwnerFilter [ActionOwner] <p>Filters the list of action types to those created by a specified entity.</p>
 function M.ListActionTypesInput(nextToken, actionOwnerFilter, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListActionTypesInput")
 	local t = { 

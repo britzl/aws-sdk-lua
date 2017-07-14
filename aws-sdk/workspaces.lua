@@ -34,12 +34,12 @@ function M.AssertDefaultWorkspaceCreationProperties(struct)
 end
 
 --- Create a structure of type DefaultWorkspaceCreationProperties
--- &lt;p&gt;Contains default WorkSpace creation information.&lt;/p&gt;
--- @param EnableInternetAccess [BooleanObject] &lt;p&gt;A public IP address will be attached to all WorkSpaces that are created or rebuilt.&lt;/p&gt;
--- @param EnableWorkDocs [BooleanObject] &lt;p&gt;Specifies if the directory is enabled for Amazon WorkDocs.&lt;/p&gt;
--- @param DefaultOu [DefaultOu] &lt;p&gt;The organizational unit (OU) in the directory that the WorkSpace machine accounts are placed in.&lt;/p&gt;
--- @param CustomSecurityGroupId [SecurityGroupId] &lt;p&gt;The identifier of any custom security groups that are applied to the WorkSpaces when they are created.&lt;/p&gt;
--- @param UserEnabledAsLocalAdministrator [BooleanObject] &lt;p&gt;The WorkSpace user is an administrator on the WorkSpace.&lt;/p&gt;
+-- <p>Contains default WorkSpace creation information.</p>
+-- @param EnableInternetAccess [BooleanObject] <p>A public IP address will be attached to all WorkSpaces that are created or rebuilt.</p>
+-- @param EnableWorkDocs [BooleanObject] <p>Specifies if the directory is enabled for Amazon WorkDocs.</p>
+-- @param DefaultOu [DefaultOu] <p>The organizational unit (OU) in the directory that the WorkSpace machine accounts are placed in.</p>
+-- @param CustomSecurityGroupId [SecurityGroupId] <p>The identifier of any custom security groups that are applied to the WorkSpaces when they are created.</p>
+-- @param UserEnabledAsLocalAdministrator [BooleanObject] <p>The WorkSpace user is an administrator on the WorkSpace.</p>
 function M.DefaultWorkspaceCreationProperties(EnableInternetAccess, EnableWorkDocs, DefaultOu, CustomSecurityGroupId, UserEnabledAsLocalAdministrator, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DefaultWorkspaceCreationProperties")
 	local t = { 
@@ -64,7 +64,7 @@ function M.AssertDeleteTagsResult(struct)
 end
 
 --- Create a structure of type DeleteTagsResult
--- &lt;p&gt;The result of the &lt;a&gt;DeleteTags&lt;/a&gt; operation.&lt;/p&gt;
+-- <p>The result of the <a>DeleteTags</a> operation.</p>
 function M.DeleteTagsResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsResult")
 	local t = { 
@@ -85,8 +85,8 @@ function M.AssertTerminateWorkspacesResult(struct)
 end
 
 --- Create a structure of type TerminateWorkspacesResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;TerminateWorkspaces&lt;/a&gt; operation.&lt;/p&gt;
--- @param FailedRequests [FailedTerminateWorkspaceRequests] &lt;p&gt;An array of structures representing any WorkSpaces that could not be terminated.&lt;/p&gt;
+-- <p>Contains the results of the <a>TerminateWorkspaces</a> operation.</p>
+-- @param FailedRequests [FailedTerminateWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be terminated.</p>
 function M.TerminateWorkspacesResult(FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateWorkspacesResult")
 	local t = { 
@@ -108,8 +108,8 @@ function M.AssertRebootWorkspacesResult(struct)
 end
 
 --- Create a structure of type RebootWorkspacesResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;RebootWorkspaces&lt;/a&gt; operation.&lt;/p&gt;
--- @param FailedRequests [FailedRebootWorkspaceRequests] &lt;p&gt;An array of structures representing any WorkSpaces that could not be rebooted.&lt;/p&gt;
+-- <p>Contains the results of the <a>RebootWorkspaces</a> operation.</p>
+-- @param FailedRequests [FailedRebootWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebooted.</p>
 function M.RebootWorkspacesResult(FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootWorkspacesResult")
 	local t = { 
@@ -132,8 +132,8 @@ function M.AssertDescribeTagsRequest(struct)
 end
 
 --- Create a structure of type DescribeTagsRequest
--- &lt;p&gt;The request of the &lt;a&gt;DescribeTags&lt;/a&gt; operation.&lt;/p&gt;
--- @param ResourceId [NonEmptyString] &lt;p&gt;The resource ID of the request.&lt;/p&gt;
+-- <p>The request of the <a>DescribeTags</a> operation.</p>
+-- @param ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
 -- Required parameter: ResourceId
 function M.DescribeTagsRequest(ResourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsRequest")
@@ -158,7 +158,7 @@ end
 
 --- Create a structure of type StopWorkspacesRequest
 --  
--- @param StopWorkspaceRequests [StopWorkspaceRequests] &lt;p&gt;The requests.&lt;/p&gt;
+-- @param StopWorkspaceRequests [StopWorkspaceRequests] <p>The requests.</p>
 -- Required parameter: StopWorkspaceRequests
 function M.StopWorkspacesRequest(StopWorkspaceRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopWorkspacesRequest")
@@ -182,8 +182,8 @@ function M.AssertRebootWorkspacesRequest(struct)
 end
 
 --- Create a structure of type RebootWorkspacesRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;RebootWorkspaces&lt;/a&gt; operation.&lt;/p&gt;
--- @param RebootWorkspaceRequests [RebootWorkspaceRequests] &lt;p&gt;An array of structures that specify the WorkSpaces to reboot.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>RebootWorkspaces</a> operation.</p>
+-- @param RebootWorkspaceRequests [RebootWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to reboot.</p>
 -- Required parameter: RebootWorkspaceRequests
 function M.RebootWorkspacesRequest(RebootWorkspaceRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootWorkspacesRequest")
@@ -207,9 +207,9 @@ function M.AssertResourceUnavailableException(struct)
 end
 
 --- Create a structure of type ResourceUnavailableException
--- &lt;p&gt;The specified resource is not available.&lt;/p&gt;
--- @param ResourceId [NonEmptyString] &lt;p&gt;The identifier of the resource that is not available.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The exception error message.&lt;/p&gt;
+-- <p>The specified resource is not available.</p>
+-- @param ResourceId [NonEmptyString] <p>The identifier of the resource that is not available.</p>
+-- @param message [ExceptionMessage] <p>The exception error message.</p>
 function M.ResourceUnavailableException(ResourceId, message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceUnavailableException")
 	local t = { 
@@ -235,9 +235,9 @@ function M.AssertCreateTagsRequest(struct)
 end
 
 --- Create a structure of type CreateTagsRequest
--- &lt;p&gt;The request of the &lt;a&gt;CreateTags&lt;/a&gt; operation.&lt;/p&gt;
--- @param ResourceId [NonEmptyString] &lt;p&gt;The resource ID of the request.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tags of the request.&lt;/p&gt;
+-- <p>The request of the <a>CreateTags</a> operation.</p>
+-- @param ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
+-- @param Tags [TagList] <p>The tags of the request.</p>
 -- Required parameter: ResourceId
 -- Required parameter: Tags
 function M.CreateTagsRequest(ResourceId, Tags, ...)
@@ -264,9 +264,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Describes the tag of the WorkSpace.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The value of the tag.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The key of the tag.&lt;/p&gt;
+-- <p>Describes the tag of the WorkSpace.</p>
+-- @param Value [TagValue] <p>The value of the tag.</p>
+-- @param Key [TagKey] <p>The key of the tag.</p>
 -- Required parameter: Key
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
@@ -290,8 +290,8 @@ function M.AssertOperationInProgressException(struct)
 end
 
 --- Create a structure of type OperationInProgressException
--- &lt;p&gt;The properties of this WorkSpace are currently being modified. Try again in a moment.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The properties of this WorkSpace are currently being modified. Try again in a moment.&lt;/p&gt;
+-- <p>The properties of this WorkSpace are currently being modified. Try again in a moment.</p>
+-- @param message [ExceptionMessage] <p>The properties of this WorkSpace are currently being modified. Try again in a moment.</p>
 function M.OperationInProgressException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationInProgressException")
 	local t = { 
@@ -313,8 +313,8 @@ function M.AssertResourceLimitExceededException(struct)
 end
 
 --- Create a structure of type ResourceLimitExceededException
--- &lt;p&gt;Your resource limits have been exceeded.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The exception error message.&lt;/p&gt;
+-- <p>Your resource limits have been exceeded.</p>
+-- @param message [ExceptionMessage] <p>The exception error message.</p>
 function M.ResourceLimitExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceLimitExceededException")
 	local t = { 
@@ -336,8 +336,8 @@ function M.AssertInvalidResourceStateException(struct)
 end
 
 --- Create a structure of type InvalidResourceStateException
--- &lt;p&gt;The state of the WorkSpace is not valid for this operation.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The state of the WorkSpace is not valid for this operation.&lt;/p&gt;
+-- <p>The state of the WorkSpace is not valid for this operation.</p>
+-- @param message [ExceptionMessage] <p>The state of the WorkSpace is not valid for this operation.</p>
 function M.InvalidResourceStateException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceStateException")
 	local t = { 
@@ -370,19 +370,19 @@ function M.AssertWorkspaceDirectory(struct)
 end
 
 --- Create a structure of type WorkspaceDirectory
--- &lt;p&gt;Contains information about an AWS Directory Service directory for use with Amazon WorkSpaces.&lt;/p&gt;
--- @param CustomerUserName [UserName] &lt;p&gt;The user name for the service account.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The directory identifier.&lt;/p&gt;
--- @param DirectoryName [DirectoryName] &lt;p&gt;The name of the directory.&lt;/p&gt;
--- @param SubnetIds [SubnetIds] &lt;p&gt;An array of strings that contains the identifiers of the subnets used with the directory.&lt;/p&gt;
--- @param WorkspaceCreationProperties [DefaultWorkspaceCreationProperties] &lt;p&gt;A structure that specifies the default creation properties for all WorkSpaces in the directory.&lt;/p&gt;
--- @param Alias [Alias] &lt;p&gt;The directory alias.&lt;/p&gt;
--- @param State [WorkspaceDirectoryState] &lt;p&gt;The state of the directory's registration with Amazon WorkSpaces&lt;/p&gt;
--- @param DirectoryType [WorkspaceDirectoryType] &lt;p&gt;The directory type.&lt;/p&gt;
--- @param RegistrationCode [RegistrationCode] &lt;p&gt;The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.&lt;/p&gt;
--- @param IamRoleId [ARN] &lt;p&gt;The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.&lt;/p&gt;
--- @param DnsIpAddresses [DnsIpAddresses] &lt;p&gt;An array of strings that contains the IP addresses of the DNS servers for the directory.&lt;/p&gt;
--- @param WorkspaceSecurityGroupId [SecurityGroupId] &lt;p&gt;The identifier of the security group that is assigned to new WorkSpaces.&lt;/p&gt;
+-- <p>Contains information about an AWS Directory Service directory for use with Amazon WorkSpaces.</p>
+-- @param CustomerUserName [UserName] <p>The user name for the service account.</p>
+-- @param DirectoryId [DirectoryId] <p>The directory identifier.</p>
+-- @param DirectoryName [DirectoryName] <p>The name of the directory.</p>
+-- @param SubnetIds [SubnetIds] <p>An array of strings that contains the identifiers of the subnets used with the directory.</p>
+-- @param WorkspaceCreationProperties [DefaultWorkspaceCreationProperties] <p>A structure that specifies the default creation properties for all WorkSpaces in the directory.</p>
+-- @param Alias [Alias] <p>The directory alias.</p>
+-- @param State [WorkspaceDirectoryState] <p>The state of the directory's registration with Amazon WorkSpaces</p>
+-- @param DirectoryType [WorkspaceDirectoryType] <p>The directory type.</p>
+-- @param RegistrationCode [RegistrationCode] <p>The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.</p>
+-- @param IamRoleId [ARN] <p>The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.</p>
+-- @param DnsIpAddresses [DnsIpAddresses] <p>An array of strings that contains the IP addresses of the DNS servers for the directory.</p>
+-- @param WorkspaceSecurityGroupId [SecurityGroupId] <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
 function M.WorkspaceDirectory(CustomerUserName, DirectoryId, DirectoryName, SubnetIds, WorkspaceCreationProperties, Alias, State, DirectoryType, RegistrationCode, IamRoleId, DnsIpAddresses, WorkspaceSecurityGroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceDirectory")
 	local t = { 
@@ -420,13 +420,13 @@ function M.AssertDescribeWorkspacesRequest(struct)
 end
 
 --- Create a structure of type DescribeWorkspacesRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DescribeWorkspaces&lt;/a&gt; operation.&lt;/p&gt;
--- @param UserName [UserName] &lt;p&gt;Used with the &lt;code&gt;DirectoryId&lt;/code&gt; parameter to specify the directory user for whom to obtain the WorkSpace.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;Specifies the directory identifier to which to limit the WorkSpaces. Optionally, you can specify a specific directory user with the &lt;code&gt;UserName&lt;/code&gt; parameter. This parameter cannot be combined with any other filter parameter.&lt;/p&gt;
--- @param Limit [Limit] &lt;p&gt;The maximum number of items to return.&lt;/p&gt;
--- @param WorkspaceIds [WorkspaceIdList] &lt;p&gt;An array of strings that contain the identifiers of the WorkSpaces for which to retrieve information. This parameter cannot be combined with any other filter parameter.&lt;/p&gt; &lt;p&gt;Because the &lt;a&gt;CreateWorkspaces&lt;/a&gt; operation is asynchronous, the identifier it returns is not immediately available. If you immediately call &lt;a&gt;DescribeWorkspaces&lt;/a&gt; with this identifier, no information is returned.&lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; value from a previous call to this operation. Pass null if this is the first call.&lt;/p&gt;
--- @param BundleId [BundleId] &lt;p&gt;The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces that are created from this bundle will be retrieved. This parameter cannot be combined with any other filter parameter.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DescribeWorkspaces</a> operation.</p>
+-- @param UserName [UserName] <p>Used with the <code>DirectoryId</code> parameter to specify the directory user for whom to obtain the WorkSpace.</p>
+-- @param DirectoryId [DirectoryId] <p>Specifies the directory identifier to which to limit the WorkSpaces. Optionally, you can specify a specific directory user with the <code>UserName</code> parameter. This parameter cannot be combined with any other filter parameter.</p>
+-- @param Limit [Limit] <p>The maximum number of items to return.</p>
+-- @param WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces for which to retrieve information. This parameter cannot be combined with any other filter parameter.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, the identifier it returns is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information is returned.</p>
+-- @param NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+-- @param BundleId [BundleId] <p>The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces that are created from this bundle will be retrieved. This parameter cannot be combined with any other filter parameter.</p>
 function M.DescribeWorkspacesRequest(UserName, DirectoryId, Limit, WorkspaceIds, NextToken, BundleId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesRequest")
 	local t = { 
@@ -457,8 +457,8 @@ end
 
 --- Create a structure of type ModifyWorkspacePropertiesRequest
 --  
--- @param WorkspaceId [WorkspaceId] &lt;p&gt;The ID of the WorkSpace.&lt;/p&gt;
--- @param WorkspaceProperties [WorkspaceProperties] &lt;p&gt;The WorkSpace properties of the request.&lt;/p&gt;
+-- @param WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
+-- @param WorkspaceProperties [WorkspaceProperties] <p>The WorkSpace properties of the request.</p>
 -- Required parameter: WorkspaceId
 -- Required parameter: WorkspaceProperties
 function M.ModifyWorkspacePropertiesRequest(WorkspaceId, WorkspaceProperties, ...)
@@ -486,11 +486,11 @@ function M.AssertWorkspaceConnectionStatus(struct)
 end
 
 --- Create a structure of type WorkspaceConnectionStatus
--- &lt;p&gt;Describes the connection status of a WorkSpace.&lt;/p&gt;
--- @param ConnectionState [ConnectionState] &lt;p&gt;The connection state of the WorkSpace. Returns UNKOWN if the WorkSpace is in a Stopped state.&lt;/p&gt;
--- @param ConnectionStateCheckTimestamp [Timestamp] &lt;p&gt;The timestamp of the connection state check.&lt;/p&gt;
--- @param WorkspaceId [WorkspaceId] &lt;p&gt;The ID of the WorkSpace.&lt;/p&gt;
--- @param LastKnownUserConnectionTimestamp [Timestamp] &lt;p&gt;The timestamp of the last known user connection.&lt;/p&gt;
+-- <p>Describes the connection status of a WorkSpace.</p>
+-- @param ConnectionState [ConnectionState] <p>The connection state of the WorkSpace. Returns UNKOWN if the WorkSpace is in a Stopped state.</p>
+-- @param ConnectionStateCheckTimestamp [Timestamp] <p>The timestamp of the connection state check.</p>
+-- @param WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
+-- @param LastKnownUserConnectionTimestamp [Timestamp] <p>The timestamp of the last known user connection.</p>
 function M.WorkspaceConnectionStatus(ConnectionState, ConnectionStateCheckTimestamp, WorkspaceId, LastKnownUserConnectionTimestamp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceConnectionStatus")
 	local t = { 
@@ -516,9 +516,9 @@ function M.AssertDescribeWorkspaceBundlesResult(struct)
 end
 
 --- Create a structure of type DescribeWorkspaceBundlesResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;DescribeWorkspaceBundles&lt;/a&gt; operation.&lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;If not null, more results are available. Pass this value for the &lt;code&gt;NextToken&lt;/code&gt; parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.&lt;/p&gt;
--- @param Bundles [BundleList] &lt;p&gt;An array of structures that contain information about the bundles.&lt;/p&gt;
+-- <p>Contains the results of the <a>DescribeWorkspaceBundles</a> operation.</p>
+-- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+-- @param Bundles [BundleList] <p>An array of structures that contain information about the bundles.</p>
 function M.DescribeWorkspaceBundlesResult(NextToken, Bundles, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceBundlesResult")
 	local t = { 
@@ -554,21 +554,21 @@ function M.AssertWorkspace(struct)
 end
 
 --- Create a structure of type Workspace
--- &lt;p&gt;Contains information about a WorkSpace.&lt;/p&gt;
--- @param UserName [UserName] &lt;p&gt;The user that the WorkSpace is assigned to.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the AWS Directory Service directory that the WorkSpace belongs to.&lt;/p&gt;
--- @param ComputerName [ComputerName] &lt;p&gt;The name of the WorkSpace as seen by the operating system.&lt;/p&gt;
--- @param VolumeEncryptionKey [VolumeEncryptionKey] &lt;p&gt;The KMS key used to encrypt data stored on your WorkSpace.&lt;/p&gt;
--- @param UserVolumeEncryptionEnabled [BooleanObject] &lt;p&gt;Specifies whether the data stored on the user volume, or D: drive, is encrypted.&lt;/p&gt;
--- @param ErrorMessage [Description] &lt;p&gt;If the WorkSpace could not be created, this contains a textual error message that describes the failure.&lt;/p&gt;
--- @param WorkspaceProperties [WorkspaceProperties] &lt;p&gt;Contains information about a WorkSpace.&lt;/p&gt;
--- @param ErrorCode [WorkspaceErrorCode] &lt;p&gt;If the WorkSpace could not be created, this contains the error code.&lt;/p&gt;
--- @param State [WorkspaceState] &lt;p&gt;The operational state of the WorkSpace.&lt;/p&gt;
--- @param WorkspaceId [WorkspaceId] &lt;p&gt;The identifier of the WorkSpace.&lt;/p&gt;
--- @param SubnetId [SubnetId] &lt;p&gt;The identifier of the subnet that the WorkSpace is in.&lt;/p&gt;
--- @param RootVolumeEncryptionEnabled [BooleanObject] &lt;p&gt;Specifies whether the data stored on the root volume, or C: drive, is encrypted.&lt;/p&gt;
--- @param IpAddress [IpAddress] &lt;p&gt;The IP address of the WorkSpace.&lt;/p&gt;
--- @param BundleId [BundleId] &lt;p&gt;The identifier of the bundle that the WorkSpace was created from.&lt;/p&gt;
+-- <p>Contains information about a WorkSpace.</p>
+-- @param UserName [UserName] <p>The user that the WorkSpace is assigned to.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the AWS Directory Service directory that the WorkSpace belongs to.</p>
+-- @param ComputerName [ComputerName] <p>The name of the WorkSpace as seen by the operating system.</p>
+-- @param VolumeEncryptionKey [VolumeEncryptionKey] <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
+-- @param UserVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the user volume, or D: drive, is encrypted.</p>
+-- @param ErrorMessage [Description] <p>If the WorkSpace could not be created, this contains a textual error message that describes the failure.</p>
+-- @param WorkspaceProperties [WorkspaceProperties] <p>Contains information about a WorkSpace.</p>
+-- @param ErrorCode [WorkspaceErrorCode] <p>If the WorkSpace could not be created, this contains the error code.</p>
+-- @param State [WorkspaceState] <p>The operational state of the WorkSpace.</p>
+-- @param WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace.</p>
+-- @param SubnetId [SubnetId] <p>The identifier of the subnet that the WorkSpace is in.</p>
+-- @param RootVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the root volume, or C: drive, is encrypted.</p>
+-- @param IpAddress [IpAddress] <p>The IP address of the WorkSpace.</p>
+-- @param BundleId [BundleId] <p>The identifier of the bundle that the WorkSpace was created from.</p>
 function M.Workspace(UserName, DirectoryId, ComputerName, VolumeEncryptionKey, UserVolumeEncryptionEnabled, ErrorMessage, WorkspaceProperties, ErrorCode, State, WorkspaceId, SubnetId, RootVolumeEncryptionEnabled, IpAddress, BundleId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Workspace")
 	local t = { 
@@ -605,10 +605,10 @@ function M.AssertFailedWorkspaceChangeRequest(struct)
 end
 
 --- Create a structure of type FailedWorkspaceChangeRequest
--- &lt;p&gt;Contains information about a WorkSpace that could not be rebooted (&lt;a&gt;RebootWorkspaces&lt;/a&gt;), rebuilt (&lt;a&gt;RebuildWorkspaces&lt;/a&gt;), terminated (&lt;a&gt;TerminateWorkspaces&lt;/a&gt;), started (&lt;a&gt;StartWorkspaces&lt;/a&gt;), or stopped (&lt;a&gt;StopWorkspaces&lt;/a&gt;).&lt;/p&gt;
--- @param ErrorCode [ErrorType] &lt;p&gt;The error code.&lt;/p&gt;
--- @param WorkspaceId [WorkspaceId] &lt;p&gt;The identifier of the WorkSpace.&lt;/p&gt;
--- @param ErrorMessage [Description] &lt;p&gt;The textual error message.&lt;/p&gt;
+-- <p>Contains information about a WorkSpace that could not be rebooted (<a>RebootWorkspaces</a>), rebuilt (<a>RebuildWorkspaces</a>), terminated (<a>TerminateWorkspaces</a>), started (<a>StartWorkspaces</a>), or stopped (<a>StopWorkspaces</a>).</p>
+-- @param ErrorCode [ErrorType] <p>The error code.</p>
+-- @param WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace.</p>
+-- @param ErrorMessage [Description] <p>The textual error message.</p>
 function M.FailedWorkspaceChangeRequest(ErrorCode, WorkspaceId, ErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailedWorkspaceChangeRequest")
 	local t = { 
@@ -654,7 +654,7 @@ end
 
 --- Create a structure of type StartWorkspacesRequest
 --  
--- @param StartWorkspaceRequests [StartWorkspaceRequests] &lt;p&gt;The requests.&lt;/p&gt;
+-- @param StartWorkspaceRequests [StartWorkspaceRequests] <p>The requests.</p>
 -- Required parameter: StartWorkspaceRequests
 function M.StartWorkspacesRequest(StartWorkspaceRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartWorkspacesRequest")
@@ -678,7 +678,7 @@ end
 
 --- Create a structure of type StartWorkspacesResult
 --  
--- @param FailedRequests [FailedStartWorkspaceRequests] &lt;p&gt;The failed requests.&lt;/p&gt;
+-- @param FailedRequests [FailedStartWorkspaceRequests] <p>The failed requests.</p>
 function M.StartWorkspacesResult(FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartWorkspacesResult")
 	local t = { 
@@ -701,9 +701,9 @@ function M.AssertDescribeWorkspacesResult(struct)
 end
 
 --- Create a structure of type DescribeWorkspacesResult
--- &lt;p&gt;Contains the results for the &lt;a&gt;DescribeWorkspaces&lt;/a&gt; operation.&lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;If not null, more results are available. Pass this value for the &lt;code&gt;NextToken&lt;/code&gt; parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.&lt;/p&gt;
--- @param Workspaces [WorkspaceList] &lt;p&gt;An array of structures that contain the information about the WorkSpaces.&lt;/p&gt; &lt;p&gt;Because the &lt;a&gt;CreateWorkspaces&lt;/a&gt; operation is asynchronous, some of this information may be incomplete for a newly-created WorkSpace.&lt;/p&gt;
+-- <p>Contains the results for the <a>DescribeWorkspaces</a> operation.</p>
+-- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+-- @param Workspaces [WorkspaceList] <p>An array of structures that contain the information about the WorkSpaces.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, some of this information may be incomplete for a newly-created WorkSpace.</p>
 function M.DescribeWorkspacesResult(NextToken, Workspaces, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesResult")
 	local t = { 
@@ -736,15 +736,15 @@ function M.AssertWorkspaceRequest(struct)
 end
 
 --- Create a structure of type WorkspaceRequest
--- &lt;p&gt;Contains information about a WorkSpace creation request.&lt;/p&gt;
--- @param UserName [UserName] &lt;p&gt;The username that the WorkSpace is assigned to. This username must exist in the AWS Directory Service directory specified by the &lt;code&gt;DirectoryId&lt;/code&gt; member.&lt;/p&gt;
--- @param DirectoryId [DirectoryId] &lt;p&gt;The identifier of the AWS Directory Service directory to create the WorkSpace in. You can use the &lt;a&gt;DescribeWorkspaceDirectories&lt;/a&gt; operation to obtain a list of the directories that are available.&lt;/p&gt;
--- @param VolumeEncryptionKey [VolumeEncryptionKey] &lt;p&gt;The KMS key used to encrypt data stored on your WorkSpace.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tags of the WorkSpace request.&lt;/p&gt;
--- @param WorkspaceProperties [WorkspaceProperties] &lt;p&gt;Contains information about a WorkSpace creation request.&lt;/p&gt;
--- @param BundleId [BundleId] &lt;p&gt;The identifier of the bundle to create the WorkSpace from. You can use the &lt;a&gt;DescribeWorkspaceBundles&lt;/a&gt; operation to obtain a list of the bundles that are available.&lt;/p&gt;
--- @param UserVolumeEncryptionEnabled [BooleanObject] &lt;p&gt;Specifies whether the data stored on the user volume, or D: drive, is encrypted.&lt;/p&gt;
--- @param RootVolumeEncryptionEnabled [BooleanObject] &lt;p&gt;Specifies whether the data stored on the root volume, or C: drive, is encrypted.&lt;/p&gt;
+-- <p>Contains information about a WorkSpace creation request.</p>
+-- @param UserName [UserName] <p>The username that the WorkSpace is assigned to. This username must exist in the AWS Directory Service directory specified by the <code>DirectoryId</code> member.</p>
+-- @param DirectoryId [DirectoryId] <p>The identifier of the AWS Directory Service directory to create the WorkSpace in. You can use the <a>DescribeWorkspaceDirectories</a> operation to obtain a list of the directories that are available.</p>
+-- @param VolumeEncryptionKey [VolumeEncryptionKey] <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
+-- @param Tags [TagList] <p>The tags of the WorkSpace request.</p>
+-- @param WorkspaceProperties [WorkspaceProperties] <p>Contains information about a WorkSpace creation request.</p>
+-- @param BundleId [BundleId] <p>The identifier of the bundle to create the WorkSpace from. You can use the <a>DescribeWorkspaceBundles</a> operation to obtain a list of the bundles that are available.</p>
+-- @param UserVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the user volume, or D: drive, is encrypted.</p>
+-- @param RootVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the root volume, or C: drive, is encrypted.</p>
 -- Required parameter: DirectoryId
 -- Required parameter: UserName
 -- Required parameter: BundleId
@@ -776,8 +776,8 @@ function M.AssertComputeType(struct)
 end
 
 --- Create a structure of type ComputeType
--- &lt;p&gt;Contains information about the compute type of a WorkSpace bundle.&lt;/p&gt;
--- @param Name [Compute] &lt;p&gt;The name of the compute type for the bundle.&lt;/p&gt;
+-- <p>Contains information about the compute type of a WorkSpace bundle.</p>
+-- @param Name [Compute] <p>The name of the compute type for the bundle.</p>
 function M.ComputeType(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComputeType")
 	local t = { 
@@ -800,8 +800,8 @@ function M.AssertTerminateRequest(struct)
 end
 
 --- Create a structure of type TerminateRequest
--- &lt;p&gt;Contains information used with the &lt;a&gt;TerminateWorkspaces&lt;/a&gt; operation to terminate a WorkSpace.&lt;/p&gt;
--- @param WorkspaceId [WorkspaceId] &lt;p&gt;The identifier of the WorkSpace to terminate.&lt;/p&gt;
+-- <p>Contains information used with the <a>TerminateWorkspaces</a> operation to terminate a WorkSpace.</p>
+-- @param WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to terminate.</p>
 -- Required parameter: WorkspaceId
 function M.TerminateRequest(WorkspaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateRequest")
@@ -827,9 +827,9 @@ function M.AssertDeleteTagsRequest(struct)
 end
 
 --- Create a structure of type DeleteTagsRequest
--- &lt;p&gt;The request of the &lt;a&gt;DeleteTags&lt;/a&gt; operation.&lt;/p&gt;
--- @param ResourceId [NonEmptyString] &lt;p&gt;The resource ID of the request.&lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;The tag keys of the request.&lt;/p&gt;
+-- <p>The request of the <a>DeleteTags</a> operation.</p>
+-- @param ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
+-- @param TagKeys [TagKeyList] <p>The tag keys of the request.</p>
 -- Required parameter: ResourceId
 -- Required parameter: TagKeys
 function M.DeleteTagsRequest(ResourceId, TagKeys, ...)
@@ -855,9 +855,9 @@ function M.AssertDescribeWorkspaceDirectoriesRequest(struct)
 end
 
 --- Create a structure of type DescribeWorkspaceDirectoriesRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DescribeWorkspaceDirectories&lt;/a&gt; operation.&lt;/p&gt;
--- @param DirectoryIds [DirectoryIdList] &lt;p&gt;An array of strings that contains the directory identifiers to retrieve information for. If this member is null, all directories are retrieved.&lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; value from a previous call to this operation. Pass null if this is the first call.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DescribeWorkspaceDirectories</a> operation.</p>
+-- @param DirectoryIds [DirectoryIdList] <p>An array of strings that contains the directory identifiers to retrieve information for. If this member is null, all directories are retrieved.</p>
+-- @param NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
 function M.DescribeWorkspaceDirectoriesRequest(DirectoryIds, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceDirectoriesRequest")
 	local t = { 
@@ -882,8 +882,8 @@ end
 
 --- Create a structure of type DescribeWorkspacesConnectionStatusRequest
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;The next token of the request.&lt;/p&gt;
--- @param WorkspaceIds [WorkspaceIdList] &lt;p&gt;An array of strings that contain the identifiers of the WorkSpaces.&lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>The next token of the request.</p>
+-- @param WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces.</p>
 function M.DescribeWorkspacesConnectionStatusRequest(NextToken, WorkspaceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesConnectionStatusRequest")
 	local t = { 
@@ -906,8 +906,8 @@ function M.AssertUserStorage(struct)
 end
 
 --- Create a structure of type UserStorage
--- &lt;p&gt;Contains information about the user storage for a WorkSpace bundle.&lt;/p&gt;
--- @param Capacity [NonEmptyString] &lt;p&gt;The amount of user storage for the bundle.&lt;/p&gt;
+-- <p>Contains information about the user storage for a WorkSpace bundle.</p>
+-- @param Capacity [NonEmptyString] <p>The amount of user storage for the bundle.</p>
 function M.UserStorage(Capacity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserStorage")
 	local t = { 
@@ -929,8 +929,8 @@ function M.AssertDescribeTagsResult(struct)
 end
 
 --- Create a structure of type DescribeTagsResult
--- &lt;p&gt;The result of the &lt;a&gt;DescribeTags&lt;/a&gt; operation.&lt;/p&gt;
--- @param TagList [TagList] &lt;p&gt;The list of tags.&lt;/p&gt;
+-- <p>The result of the <a>DescribeTags</a> operation.</p>
+-- @param TagList [TagList] <p>The list of tags.</p>
 function M.DescribeTagsResult(TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsResult")
 	local t = { 
@@ -952,8 +952,8 @@ function M.AssertStopRequest(struct)
 end
 
 --- Create a structure of type StopRequest
--- &lt;p&gt;Describes the stop request.&lt;/p&gt;
--- @param WorkspaceId [WorkspaceId] &lt;p&gt;The ID of the WorkSpace.&lt;/p&gt;
+-- <p>Describes the stop request.</p>
+-- @param WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
 function M.StopRequest(WorkspaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopRequest")
 	local t = { 
@@ -977,10 +977,10 @@ function M.AssertDescribeWorkspaceBundlesRequest(struct)
 end
 
 --- Create a structure of type DescribeWorkspaceBundlesRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DescribeWorkspaceBundles&lt;/a&gt; operation.&lt;/p&gt;
--- @param Owner [BundleOwner] &lt;p&gt;The owner of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.&lt;/p&gt; &lt;p&gt;This contains one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;null- Retrieves the bundles that belong to the account making the call.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;AMAZON&lt;/code&gt;- Retrieves the bundles that are provided by AWS.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; value from a previous call to this operation. Pass null if this is the first call.&lt;/p&gt;
--- @param BundleIds [BundleIdList] &lt;p&gt;An array of strings that contains the identifiers of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DescribeWorkspaceBundles</a> operation.</p>
+-- @param Owner [BundleOwner] <p>The owner of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p> <p>This contains one of the following values:</p> <ul> <li> <p>null- Retrieves the bundles that belong to the account making the call.</p> </li> <li> <p> <code>AMAZON</code>- Retrieves the bundles that are provided by AWS.</p> </li> </ul>
+-- @param NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+-- @param BundleIds [BundleIdList] <p>An array of strings that contains the identifiers of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p>
 function M.DescribeWorkspaceBundlesRequest(Owner, NextToken, BundleIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceBundlesRequest")
 	local t = { 
@@ -1005,9 +1005,9 @@ function M.AssertWorkspaceProperties(struct)
 end
 
 --- Create a structure of type WorkspaceProperties
--- &lt;p&gt;Describes the properties of a WorkSpace.&lt;/p&gt;
--- @param RunningModeAutoStopTimeoutInMinutes [RunningModeAutoStopTimeoutInMinutes] &lt;p&gt;The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60 minute intervals.&lt;/p&gt;
--- @param RunningMode [RunningMode] &lt;p&gt;The running mode of the WorkSpace. AlwaysOn WorkSpaces are billed monthly. AutoStop WorkSpaces are billed by the hour and stopped when no longer being used in order to save on costs.&lt;/p&gt;
+-- <p>Describes the properties of a WorkSpace.</p>
+-- @param RunningModeAutoStopTimeoutInMinutes [RunningModeAutoStopTimeoutInMinutes] <p>The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60 minute intervals.</p>
+-- @param RunningMode [RunningMode] <p>The running mode of the WorkSpace. AlwaysOn WorkSpaces are billed monthly. AutoStop WorkSpaces are billed by the hour and stopped when no longer being used in order to save on costs.</p>
 function M.WorkspaceProperties(RunningModeAutoStopTimeoutInMinutes, RunningMode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceProperties")
 	local t = { 
@@ -1031,7 +1031,7 @@ end
 
 --- Create a structure of type StopWorkspacesResult
 --  
--- @param FailedRequests [FailedStopWorkspaceRequests] &lt;p&gt;The failed requests.&lt;/p&gt;
+-- @param FailedRequests [FailedStopWorkspaceRequests] <p>The failed requests.</p>
 function M.StopWorkspacesResult(FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopWorkspacesResult")
 	local t = { 
@@ -1052,7 +1052,7 @@ function M.AssertCreateTagsResult(struct)
 end
 
 --- Create a structure of type CreateTagsResult
--- &lt;p&gt;The result of the &lt;a&gt;CreateTags&lt;/a&gt; operation.&lt;/p&gt;
+-- <p>The result of the <a>CreateTags</a> operation.</p>
 function M.CreateTagsResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagsResult")
 	local t = { 
@@ -1073,8 +1073,8 @@ function M.AssertUnsupportedWorkspaceConfigurationException(struct)
 end
 
 --- Create a structure of type UnsupportedWorkspaceConfigurationException
--- &lt;p&gt;The configuration of this WorkSpace is not supported for this operation. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/workspaces/latest/adminguide/&quot;&gt;Amazon WorkSpaces Administration Guide&lt;/a&gt;. &lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The configuration of this WorkSpace is not supported for this operation. For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/workspaces/latest/adminguide/&quot;&gt;Amazon WorkSpaces Administration Guide&lt;/a&gt;. &lt;/p&gt;
+-- <p>The configuration of this WorkSpace is not supported for this operation. For more information, see the <a href="http://docs.aws.amazon.com/workspaces/latest/adminguide/">Amazon WorkSpaces Administration Guide</a>. </p>
+-- @param message [ExceptionMessage] <p>The configuration of this WorkSpace is not supported for this operation. For more information, see the <a href="http://docs.aws.amazon.com/workspaces/latest/adminguide/">Amazon WorkSpaces Administration Guide</a>. </p>
 function M.UnsupportedWorkspaceConfigurationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedWorkspaceConfigurationException")
 	local t = { 
@@ -1097,8 +1097,8 @@ function M.AssertTerminateWorkspacesRequest(struct)
 end
 
 --- Create a structure of type TerminateWorkspacesRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;TerminateWorkspaces&lt;/a&gt; operation.&lt;/p&gt;
--- @param TerminateWorkspaceRequests [TerminateWorkspaceRequests] &lt;p&gt;An array of structures that specify the WorkSpaces to terminate.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>TerminateWorkspaces</a> operation.</p>
+-- @param TerminateWorkspaceRequests [TerminateWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to terminate.</p>
 -- Required parameter: TerminateWorkspaceRequests
 function M.TerminateWorkspacesRequest(TerminateWorkspaceRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateWorkspacesRequest")
@@ -1122,9 +1122,9 @@ function M.AssertDescribeWorkspaceDirectoriesResult(struct)
 end
 
 --- Create a structure of type DescribeWorkspaceDirectoriesResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;DescribeWorkspaceDirectories&lt;/a&gt; operation.&lt;/p&gt;
--- @param Directories [DirectoryList] &lt;p&gt;An array of structures that contain information about the directories.&lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;If not null, more results are available. Pass this value for the &lt;code&gt;NextToken&lt;/code&gt; parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.&lt;/p&gt;
+-- <p>Contains the results of the <a>DescribeWorkspaceDirectories</a> operation.</p>
+-- @param Directories [DirectoryList] <p>An array of structures that contain information about the directories.</p>
+-- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
 function M.DescribeWorkspaceDirectoriesResult(Directories, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceDirectoriesResult")
 	local t = { 
@@ -1148,9 +1148,9 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The resource could not be found.&lt;/p&gt;
--- @param ResourceId [NonEmptyString] &lt;p&gt;The resource could not be found.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The resource could not be found.&lt;/p&gt;
+-- <p>The resource could not be found.</p>
+-- @param ResourceId [NonEmptyString] <p>The resource could not be found.</p>
+-- @param message [ExceptionMessage] <p>The resource could not be found.</p>
 function M.ResourceNotFoundException(ResourceId, message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -1174,8 +1174,8 @@ function M.AssertCreateWorkspacesRequest(struct)
 end
 
 --- Create a structure of type CreateWorkspacesRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;CreateWorkspaces&lt;/a&gt; operation.&lt;/p&gt;
--- @param Workspaces [WorkspaceRequestList] &lt;p&gt;An array of structures that specify the WorkSpaces to create.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>CreateWorkspaces</a> operation.</p>
+-- @param Workspaces [WorkspaceRequestList] <p>An array of structures that specify the WorkSpaces to create.</p>
 -- Required parameter: Workspaces
 function M.CreateWorkspacesRequest(Workspaces, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateWorkspacesRequest")
@@ -1200,8 +1200,8 @@ end
 
 --- Create a structure of type DescribeWorkspacesConnectionStatusResult
 --  
--- @param WorkspacesConnectionStatus [WorkspaceConnectionStatusList] &lt;p&gt;The connection status of the WorkSpace.&lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;The next token of the result.&lt;/p&gt;
+-- @param WorkspacesConnectionStatus [WorkspaceConnectionStatusList] <p>The connection status of the WorkSpace.</p>
+-- @param NextToken [PaginationToken] <p>The next token of the result.</p>
 function M.DescribeWorkspacesConnectionStatusResult(WorkspacesConnectionStatus, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesConnectionStatusResult")
 	local t = { 
@@ -1224,8 +1224,8 @@ function M.AssertAccessDeniedException(struct)
 end
 
 --- Create a structure of type AccessDeniedException
--- &lt;p&gt;The user is not authorized to access a resource.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The user is not authorized to access a resource.&lt;/p&gt;
+-- <p>The user is not authorized to access a resource.</p>
+-- @param message [ExceptionMessage] <p>The user is not authorized to access a resource.</p>
 function M.AccessDeniedException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
 	local t = { 
@@ -1248,8 +1248,8 @@ function M.AssertRebootRequest(struct)
 end
 
 --- Create a structure of type RebootRequest
--- &lt;p&gt;Contains information used with the &lt;a&gt;RebootWorkspaces&lt;/a&gt; operation to reboot a WorkSpace.&lt;/p&gt;
--- @param WorkspaceId [WorkspaceId] &lt;p&gt;The identifier of the WorkSpace to reboot.&lt;/p&gt;
+-- <p>Contains information used with the <a>RebootWorkspaces</a> operation to reboot a WorkSpace.</p>
+-- @param WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to reboot.</p>
 -- Required parameter: WorkspaceId
 function M.RebootRequest(WorkspaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootRequest")
@@ -1273,9 +1273,9 @@ function M.AssertCreateWorkspacesResult(struct)
 end
 
 --- Create a structure of type CreateWorkspacesResult
--- &lt;p&gt;Contains the result of the &lt;a&gt;CreateWorkspaces&lt;/a&gt; operation.&lt;/p&gt;
--- @param PendingRequests [WorkspaceList] &lt;p&gt;An array of structures that represent the WorkSpaces that were created.&lt;/p&gt; &lt;p&gt;Because this operation is asynchronous, the identifier in &lt;code&gt;WorkspaceId&lt;/code&gt; is not immediately available. If you immediately call &lt;a&gt;DescribeWorkspaces&lt;/a&gt; with this identifier, no information will be returned.&lt;/p&gt;
--- @param FailedRequests [FailedCreateWorkspaceRequests] &lt;p&gt;An array of structures that represent the WorkSpaces that could not be created.&lt;/p&gt;
+-- <p>Contains the result of the <a>CreateWorkspaces</a> operation.</p>
+-- @param PendingRequests [WorkspaceList] <p>An array of structures that represent the WorkSpaces that were created.</p> <p>Because this operation is asynchronous, the identifier in <code>WorkspaceId</code> is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information will be returned.</p>
+-- @param FailedRequests [FailedCreateWorkspaceRequests] <p>An array of structures that represent the WorkSpaces that could not be created.</p>
 function M.CreateWorkspacesResult(PendingRequests, FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateWorkspacesResult")
 	local t = { 
@@ -1299,8 +1299,8 @@ function M.AssertRebuildRequest(struct)
 end
 
 --- Create a structure of type RebuildRequest
--- &lt;p&gt;Contains information used with the &lt;a&gt;RebuildWorkspaces&lt;/a&gt; operation to rebuild a WorkSpace.&lt;/p&gt;
--- @param WorkspaceId [WorkspaceId] &lt;p&gt;The identifier of the WorkSpace to rebuild.&lt;/p&gt;
+-- <p>Contains information used with the <a>RebuildWorkspaces</a> operation to rebuild a WorkSpace.</p>
+-- @param WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to rebuild.</p>
 -- Required parameter: WorkspaceId
 function M.RebuildRequest(WorkspaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebuildRequest")
@@ -1328,13 +1328,13 @@ function M.AssertWorkspaceBundle(struct)
 end
 
 --- Create a structure of type WorkspaceBundle
--- &lt;p&gt;Contains information about a WorkSpace bundle.&lt;/p&gt;
--- @param ComputeType [ComputeType] &lt;p&gt;A &lt;a&gt;ComputeType&lt;/a&gt; object that specifies the compute type for the bundle.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The bundle description.&lt;/p&gt;
--- @param BundleId [BundleId] &lt;p&gt;The bundle identifier.&lt;/p&gt;
--- @param Owner [BundleOwner] &lt;p&gt;The owner of the bundle. This contains the owner's account identifier, or &lt;code&gt;AMAZON&lt;/code&gt; if the bundle is provided by AWS.&lt;/p&gt;
--- @param UserStorage [UserStorage] &lt;p&gt;A &lt;a&gt;UserStorage&lt;/a&gt; object that specifies the amount of user storage that the bundle contains.&lt;/p&gt;
--- @param Name [NonEmptyString] &lt;p&gt;The name of the bundle.&lt;/p&gt;
+-- <p>Contains information about a WorkSpace bundle.</p>
+-- @param ComputeType [ComputeType] <p>A <a>ComputeType</a> object that specifies the compute type for the bundle.</p>
+-- @param Description [Description] <p>The bundle description.</p>
+-- @param BundleId [BundleId] <p>The bundle identifier.</p>
+-- @param Owner [BundleOwner] <p>The owner of the bundle. This contains the owner's account identifier, or <code>AMAZON</code> if the bundle is provided by AWS.</p>
+-- @param UserStorage [UserStorage] <p>A <a>UserStorage</a> object that specifies the amount of user storage that the bundle contains.</p>
+-- @param Name [NonEmptyString] <p>The name of the bundle.</p>
 function M.WorkspaceBundle(ComputeType, Description, BundleId, Owner, UserStorage, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceBundle")
 	local t = { 
@@ -1361,8 +1361,8 @@ function M.AssertRebuildWorkspacesResult(struct)
 end
 
 --- Create a structure of type RebuildWorkspacesResult
--- &lt;p&gt;Contains the results of the &lt;a&gt;RebuildWorkspaces&lt;/a&gt; operation.&lt;/p&gt;
--- @param FailedRequests [FailedRebuildWorkspaceRequests] &lt;p&gt;An array of structures representing any WorkSpaces that could not be rebuilt.&lt;/p&gt;
+-- <p>Contains the results of the <a>RebuildWorkspaces</a> operation.</p>
+-- @param FailedRequests [FailedRebuildWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebuilt.</p>
 function M.RebuildWorkspacesResult(FailedRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebuildWorkspacesResult")
 	local t = { 
@@ -1385,8 +1385,8 @@ function M.AssertRebuildWorkspacesRequest(struct)
 end
 
 --- Create a structure of type RebuildWorkspacesRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;RebuildWorkspaces&lt;/a&gt; operation.&lt;/p&gt;
--- @param RebuildWorkspaceRequests [RebuildWorkspaceRequests] &lt;p&gt;An array of structures that specify the WorkSpaces to rebuild.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>RebuildWorkspaces</a> operation.</p>
+-- @param RebuildWorkspaceRequests [RebuildWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to rebuild.</p>
 -- Required parameter: RebuildWorkspaceRequests
 function M.RebuildWorkspacesRequest(RebuildWorkspaceRequests, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebuildWorkspacesRequest")
@@ -1409,8 +1409,8 @@ function M.AssertStartRequest(struct)
 end
 
 --- Create a structure of type StartRequest
--- &lt;p&gt;Describes the start request.&lt;/p&gt;
--- @param WorkspaceId [WorkspaceId] &lt;p&gt;The ID of the WorkSpace.&lt;/p&gt;
+-- <p>Describes the start request.</p>
+-- @param WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
 function M.StartRequest(WorkspaceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartRequest")
 	local t = { 
@@ -1432,8 +1432,8 @@ function M.AssertInvalidParameterValuesException(struct)
 end
 
 --- Create a structure of type InvalidParameterValuesException
--- &lt;p&gt;One or more parameter values are not valid.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The exception error message.&lt;/p&gt;
+-- <p>One or more parameter values are not valid.</p>
+-- @param message [ExceptionMessage] <p>The exception error message.</p>
 function M.InvalidParameterValuesException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValuesException")
 	local t = { 
@@ -1457,10 +1457,10 @@ function M.AssertFailedCreateWorkspaceRequest(struct)
 end
 
 --- Create a structure of type FailedCreateWorkspaceRequest
--- &lt;p&gt;Contains information about a WorkSpace that could not be created.&lt;/p&gt;
--- @param ErrorCode [ErrorType] &lt;p&gt;The error code.&lt;/p&gt;
--- @param ErrorMessage [Description] &lt;p&gt;The textual error message.&lt;/p&gt;
--- @param WorkspaceRequest [WorkspaceRequest] &lt;p&gt;A &lt;a&gt;FailedCreateWorkspaceRequest$WorkspaceRequest&lt;/a&gt; object that contains the information about the WorkSpace that could not be created.&lt;/p&gt;
+-- <p>Contains information about a WorkSpace that could not be created.</p>
+-- @param ErrorCode [ErrorType] <p>The error code.</p>
+-- @param ErrorMessage [Description] <p>The textual error message.</p>
+-- @param WorkspaceRequest [WorkspaceRequest] <p>A <a>FailedCreateWorkspaceRequest$WorkspaceRequest</a> object that contains the information about the WorkSpace that could not be created.</p>
 function M.FailedCreateWorkspaceRequest(ErrorCode, ErrorMessage, WorkspaceRequest, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailedCreateWorkspaceRequest")
 	local t = { 

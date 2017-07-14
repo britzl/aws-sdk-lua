@@ -31,7 +31,7 @@ end
 
 --- Create a structure of type GetInstanceAccessDetailsResult
 --  
--- @param accessDetails [InstanceAccessDetails] &lt;p&gt;An array of key-value pairs containing information about a get instance access request.&lt;/p&gt;
+-- @param accessDetails [InstanceAccessDetails] <p>An array of key-value pairs containing information about a get instance access request.</p>
 function M.GetInstanceAccessDetailsResult(accessDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceAccessDetailsResult")
 	local t = { 
@@ -53,8 +53,8 @@ function M.AssertMonthlyTransfer(struct)
 end
 
 --- Create a structure of type MonthlyTransfer
--- &lt;p&gt;Describes the monthly data transfer in and out of your virtual private server (or &lt;i&gt;instance&lt;/i&gt;).&lt;/p&gt;
--- @param gbPerMonthAllocated [integer] &lt;p&gt;The amount allocated per month (in GB).&lt;/p&gt;
+-- <p>Describes the monthly data transfer in and out of your virtual private server (or <i>instance</i>).</p>
+-- @param gbPerMonthAllocated [integer] <p>The amount allocated per month (in GB).</p>
 function M.MonthlyTransfer(gbPerMonthAllocated, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MonthlyTransfer")
 	local t = { 
@@ -78,7 +78,7 @@ end
 
 --- Create a structure of type StopInstanceRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance (a virtual private server) to stop.&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The name of the instance (a virtual private server) to stop.</p>
 -- Required parameter: instanceName
 function M.StopInstanceRequest(instanceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopInstanceRequest")
@@ -102,9 +102,9 @@ function M.AssertInstanceState(struct)
 end
 
 --- Create a structure of type InstanceState
--- &lt;p&gt;Describes the virtual private server (or &lt;i&gt;instance&lt;/i&gt;) status.&lt;/p&gt;
--- @param code [integer] &lt;p&gt;The status code for the instance.&lt;/p&gt;
--- @param name [string] &lt;p&gt;The state of the instance (e.g., &lt;code&gt;running&lt;/code&gt; or &lt;code&gt;pending&lt;/code&gt;).&lt;/p&gt;
+-- <p>Describes the virtual private server (or <i>instance</i>) status.</p>
+-- @param code [integer] <p>The status code for the instance.</p>
+-- @param name [string] <p>The state of the instance (e.g., <code>running</code> or <code>pending</code>).</p>
 function M.InstanceState(code, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceState")
 	local t = { 
@@ -128,7 +128,7 @@ end
 
 --- Create a structure of type PeerVpcResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the request operation.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
 function M.PeerVpcResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PeerVpcResult")
 	local t = { 
@@ -153,11 +153,11 @@ function M.AssertUnauthenticatedException(struct)
 end
 
 --- Create a structure of type UnauthenticatedException
--- &lt;p&gt;Lightsail throws this exception when the user has not been authenticated.&lt;/p&gt;
--- @param docs [string] &lt;p&gt;Lightsail throws this exception when the user has not been authenticated.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Lightsail throws this exception when the user has not been authenticated.&lt;/p&gt;
--- @param code [string] &lt;p&gt;Lightsail throws this exception when the user has not been authenticated.&lt;/p&gt;
--- @param tip [string] &lt;p&gt;Lightsail throws this exception when the user has not been authenticated.&lt;/p&gt;
+-- <p>Lightsail throws this exception when the user has not been authenticated.</p>
+-- @param docs [string] <p>Lightsail throws this exception when the user has not been authenticated.</p>
+-- @param message [string] <p>Lightsail throws this exception when the user has not been authenticated.</p>
+-- @param code [string] <p>Lightsail throws this exception when the user has not been authenticated.</p>
+-- @param tip [string] <p>Lightsail throws this exception when the user has not been authenticated.</p>
 function M.UnauthenticatedException(docs, message, code, tip, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthenticatedException")
 	local t = { 
@@ -183,7 +183,7 @@ end
 
 --- Create a structure of type GetKeyPairResult
 --  
--- @param keyPair [KeyPair] &lt;p&gt;An array of key-value pairs containing information about the key pair.&lt;/p&gt;
+-- @param keyPair [KeyPair] <p>An array of key-value pairs containing information about the key pair.</p>
 function M.GetKeyPairResult(keyPair, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyPairResult")
 	local t = { 
@@ -216,13 +216,13 @@ end
 
 --- Create a structure of type CreateInstancesRequest
 --  
--- @param userData [string] &lt;p&gt;A launch script you can create that configures a server with additional user data. For example, you might want to run &lt;code&gt;apt-get –y update&lt;/code&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use &lt;code&gt;yum&lt;/code&gt;, Debian and Ubuntu use &lt;code&gt;apt-get&lt;/code&gt;, and FreeBSD uses &lt;code&gt;pkg&lt;/code&gt;. For a complete list, see the &lt;a href=&quot;http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps&quot;&gt;Dev Guide&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param availabilityZone [string] &lt;p&gt;The Availability Zone in which to create your instance. Use the following format: &lt;code&gt;us-east-1a&lt;/code&gt; (case sensitive). You can get a list of availability zones by using the &lt;a href=&quot;http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html&quot;&gt;get regions&lt;/a&gt; operation. Be sure to add the &lt;code&gt;include availability zones&lt;/code&gt; parameter to your request.&lt;/p&gt;
--- @param customImageName [ResourceName] &lt;p&gt;(Deprecated) The name for your custom image.&lt;/p&gt; &lt;note&gt; &lt;p&gt;In releases prior to June 12, 2017, this parameter was ignored by the API. It is now deprecated.&lt;/p&gt; &lt;/note&gt;
--- @param instanceNames [StringList] &lt;p&gt;The names to use for your new Lightsail instances. Separate multiple values using quotation marks and commas, for example: &lt;code&gt;[&quot;MyFirstInstance&quot;,&quot;MySecondInstance&quot;]&lt;/code&gt; &lt;/p&gt;
--- @param blueprintId [NonEmptyString] &lt;p&gt;The ID for a virtual private server image (e.g., &lt;code&gt;app_wordpress_4_4&lt;/code&gt; or &lt;code&gt;app_lamp_7_0&lt;/code&gt;). Use the get blueprints operation to return a list of available images (or &lt;i&gt;blueprints&lt;/i&gt;).&lt;/p&gt;
--- @param keyPairName [ResourceName] &lt;p&gt;The name of your key pair.&lt;/p&gt;
--- @param bundleId [NonEmptyString] &lt;p&gt;The bundle of specification information for your virtual private server (or &lt;i&gt;instance&lt;/i&gt;), including the pricing plan (e.g., &lt;code&gt;micro_1_0&lt;/code&gt;).&lt;/p&gt;
+-- @param userData [string] <p>A launch script you can create that configures a server with additional user data. For example, you might want to run <code>apt-get –y update</code>.</p> <note> <p>Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses <code>pkg</code>. For a complete list, see the <a href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.</p> </note>
+-- @param availabilityZone [string] <p>The Availability Zone in which to create your instance. Use the following format: <code>us-east-1a</code> (case sensitive). You can get a list of availability zones by using the <a href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a> operation. Be sure to add the <code>include availability zones</code> parameter to your request.</p>
+-- @param customImageName [ResourceName] <p>(Deprecated) The name for your custom image.</p> <note> <p>In releases prior to June 12, 2017, this parameter was ignored by the API. It is now deprecated.</p> </note>
+-- @param instanceNames [StringList] <p>The names to use for your new Lightsail instances. Separate multiple values using quotation marks and commas, for example: <code>["MyFirstInstance","MySecondInstance"]</code> </p>
+-- @param blueprintId [NonEmptyString] <p>The ID for a virtual private server image (e.g., <code>app_wordpress_4_4</code> or <code>app_lamp_7_0</code>). Use the get blueprints operation to return a list of available images (or <i>blueprints</i>).</p>
+-- @param keyPairName [ResourceName] <p>The name of your key pair.</p>
+-- @param bundleId [NonEmptyString] <p>The bundle of specification information for your virtual private server (or <i>instance</i>), including the pricing plan (e.g., <code>micro_1_0</code>).</p>
 -- Required parameter: instanceNames
 -- Required parameter: availabilityZone
 -- Required parameter: blueprintId
@@ -256,7 +256,7 @@ end
 
 --- Create a structure of type DetachStaticIpRequest
 --  
--- @param staticIpName [ResourceName] &lt;p&gt;The name of the static IP to detach from the instance.&lt;/p&gt;
+-- @param staticIpName [ResourceName] <p>The name of the static IP to detach from the instance.</p>
 -- Required parameter: staticIpName
 function M.DetachStaticIpRequest(staticIpName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachStaticIpRequest")
@@ -281,7 +281,7 @@ end
 
 --- Create a structure of type StartInstanceRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance (a virtual private server) to start.&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The name of the instance (a virtual private server) to start.</p>
 -- Required parameter: instanceName
 function M.StartInstanceRequest(instanceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartInstanceRequest")
@@ -305,7 +305,7 @@ end
 
 --- Create a structure of type GetInstancePortStatesResult
 --  
--- @param portStates [InstancePortStateList] &lt;p&gt;Information about the port states resulting from your request.&lt;/p&gt;
+-- @param portStates [InstancePortStateList] <p>Information about the port states resulting from your request.</p>
 function M.GetInstancePortStatesResult(portStates, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstancePortStatesResult")
 	local t = { 
@@ -329,7 +329,7 @@ end
 
 --- Create a structure of type GetInstanceStateRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance to get state information about.&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The name of the instance to get state information about.</p>
 -- Required parameter: instanceName
 function M.GetInstanceStateRequest(instanceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceStateRequest")
@@ -356,10 +356,10 @@ end
 
 --- Create a structure of type CreateKeyPairResult
 --  
--- @param keyPair [KeyPair] &lt;p&gt;An array of key-value pairs containing information about the new key pair you just created.&lt;/p&gt;
--- @param publicKeyBase64 [Base64] &lt;p&gt;A base64-encoded public key of the &lt;code&gt;ssh-rsa&lt;/code&gt; type.&lt;/p&gt;
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the results of your create key pair request.&lt;/p&gt;
--- @param privateKeyBase64 [Base64] &lt;p&gt;A base64-encoded RSA private key.&lt;/p&gt;
+-- @param keyPair [KeyPair] <p>An array of key-value pairs containing information about the new key pair you just created.</p>
+-- @param publicKeyBase64 [Base64] <p>A base64-encoded public key of the <code>ssh-rsa</code> type.</p>
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the results of your create key pair request.</p>
+-- @param privateKeyBase64 [Base64] <p>A base64-encoded RSA private key.</p>
 function M.CreateKeyPairResult(keyPair, publicKeyBase64, operation, privateKeyBase64, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateKeyPairResult")
 	local t = { 
@@ -385,7 +385,7 @@ end
 
 --- Create a structure of type GetStaticIpResult
 --  
--- @param staticIp [StaticIp] &lt;p&gt;An array of key-value pairs containing information about the requested static IP.&lt;/p&gt;
+-- @param staticIp [StaticIp] <p>An array of key-value pairs containing information about the requested static IP.</p>
 function M.GetStaticIpResult(staticIp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStaticIpResult")
 	local t = { 
@@ -408,7 +408,7 @@ end
 
 --- Create a structure of type CreateDomainResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the domain resource you created.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the domain resource you created.</p>
 function M.CreateDomainResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainResult")
 	local t = { 
@@ -431,7 +431,7 @@ end
 
 --- Create a structure of type ReleaseStaticIpResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the request operation.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
 function M.ReleaseStaticIpResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReleaseStaticIpResult")
 	local t = { 
@@ -454,7 +454,7 @@ end
 
 --- Create a structure of type StartInstanceResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the request operation.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
 function M.StartInstanceResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartInstanceResult")
 	local t = { 
@@ -477,7 +477,7 @@ end
 
 --- Create a structure of type GetInstanceResult
 --  
--- @param instance [Instance] &lt;p&gt;An array of key-value pairs containing information about the specified instance.&lt;/p&gt;
+-- @param instance [Instance] <p>An array of key-value pairs containing information about the specified instance.</p>
 function M.GetInstanceResult(instance, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceResult")
 	local t = { 
@@ -505,14 +505,14 @@ function M.AssertMetricDatapoint(struct)
 end
 
 --- Create a structure of type MetricDatapoint
--- &lt;p&gt;Describes the metric data point.&lt;/p&gt;
--- @param sampleCount [double] &lt;p&gt;The sample count.&lt;/p&gt;
--- @param timestamp [timestamp] &lt;p&gt;The timestamp (e.g., &lt;code&gt;1479816991.349&lt;/code&gt;).&lt;/p&gt;
--- @param average [double] &lt;p&gt;The average.&lt;/p&gt;
--- @param maximum [double] &lt;p&gt;The maximum.&lt;/p&gt;
--- @param minimum [double] &lt;p&gt;The minimum.&lt;/p&gt;
--- @param sum [double] &lt;p&gt;The sum.&lt;/p&gt;
--- @param unit [MetricUnit] &lt;p&gt;The unit. &lt;/p&gt;
+-- <p>Describes the metric data point.</p>
+-- @param sampleCount [double] <p>The sample count.</p>
+-- @param timestamp [timestamp] <p>The timestamp (e.g., <code>1479816991.349</code>).</p>
+-- @param average [double] <p>The average.</p>
+-- @param maximum [double] <p>The maximum.</p>
+-- @param minimum [double] <p>The minimum.</p>
+-- @param sum [double] <p>The sum.</p>
+-- @param unit [MetricUnit] <p>The unit. </p>
 function M.MetricDatapoint(sampleCount, timestamp, average, maximum, minimum, sum, unit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MetricDatapoint")
 	local t = { 
@@ -544,12 +544,12 @@ function M.AssertRegion(struct)
 end
 
 --- Create a structure of type Region
--- &lt;p&gt;Describes the AWS Region.&lt;/p&gt;
--- @param availabilityZones [AvailabilityZoneList] &lt;p&gt;The Availability Zones. Follows the format &lt;code&gt;us-east-1a&lt;/code&gt; (case-sensitive).&lt;/p&gt;
--- @param displayName [string] &lt;p&gt;The display name (e.g., &lt;code&gt;Virginia&lt;/code&gt;).&lt;/p&gt;
--- @param description [string] &lt;p&gt;The description of the AWS Region (e.g., &lt;code&gt;This region is recommended to serve users in the eastern United States and eastern Canada&lt;/code&gt;).&lt;/p&gt;
--- @param continentCode [string] &lt;p&gt;The continent code (e.g., &lt;code&gt;NA&lt;/code&gt;, meaning North America).&lt;/p&gt;
--- @param name [RegionName] &lt;p&gt;The region name (e.g., &lt;code&gt;us-east-1&lt;/code&gt;).&lt;/p&gt;
+-- <p>Describes the AWS Region.</p>
+-- @param availabilityZones [AvailabilityZoneList] <p>The Availability Zones. Follows the format <code>us-east-1a</code> (case-sensitive).</p>
+-- @param displayName [string] <p>The display name (e.g., <code>Virginia</code>).</p>
+-- @param description [string] <p>The description of the AWS Region (e.g., <code>This region is recommended to serve users in the eastern United States and eastern Canada</code>).</p>
+-- @param continentCode [string] <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
+-- @param name [RegionName] <p>The region name (e.g., <code>us-east-1</code>).</p>
 function M.Region(availabilityZones, displayName, description, continentCode, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Region")
 	local t = { 
@@ -579,8 +579,8 @@ end
 
 --- Create a structure of type PutInstancePublicPortsRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The Lightsail instance name of the public port(s) you are setting.&lt;/p&gt;
--- @param portInfos [PortInfoList] &lt;p&gt;Specifies information about the public port(s).&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The Lightsail instance name of the public port(s) you are setting.</p>
+-- @param portInfos [PortInfoList] <p>Specifies information about the public port(s).</p>
 -- Required parameter: portInfos
 -- Required parameter: instanceName
 function M.PutInstancePublicPortsRequest(instanceName, portInfos, ...)
@@ -606,7 +606,7 @@ end
 
 --- Create a structure of type RebootInstanceResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the request operation.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
 function M.RebootInstanceResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootInstanceResult")
 	local t = { 
@@ -629,7 +629,7 @@ end
 
 --- Create a structure of type CreateInstanceSnapshotResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the results of your create instances snapshot request.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances snapshot request.</p>
 function M.CreateInstanceSnapshotResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstanceSnapshotResult")
 	local t = { 
@@ -668,25 +668,25 @@ function M.AssertInstance(struct)
 end
 
 --- Create a structure of type Instance
--- &lt;p&gt;Describes an instance (a virtual private server).&lt;/p&gt;
--- @param username [NonEmptyString] &lt;p&gt;The user name for connecting to the instance (e.g., &lt;code&gt;ec2-user&lt;/code&gt;).&lt;/p&gt;
--- @param isStaticIp [boolean] &lt;p&gt;A Boolean value indicating whether this instance has a static IP assigned to it.&lt;/p&gt;
--- @param networking [InstanceNetworking] &lt;p&gt;Information about the public ports and monthly data transfer rates for the instance.&lt;/p&gt;
--- @param name [ResourceName] &lt;p&gt;The name the user gave the instance (e.g., &lt;code&gt;Amazon_Linux-1GB-Virginia-1&lt;/code&gt;).&lt;/p&gt;
--- @param ipv6Address [IpV6Address] &lt;p&gt;The IPv6 address of the instance.&lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The type of resource (usually &lt;code&gt;Instance&lt;/code&gt;).&lt;/p&gt;
--- @param supportCode [string] &lt;p&gt;The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.&lt;/p&gt;
--- @param blueprintName [NonEmptyString] &lt;p&gt;The friendly name of the blueprint (e.g., &lt;code&gt;Amazon Linux&lt;/code&gt;).&lt;/p&gt;
--- @param hardware [InstanceHardware] &lt;p&gt;The size of the vCPU and the amount of RAM for the instance.&lt;/p&gt;
--- @param privateIpAddress [IpAddress] &lt;p&gt;The private IP address of the instance.&lt;/p&gt;
--- @param state [InstanceState] &lt;p&gt;The status code and the state (e.g., &lt;code&gt;running&lt;/code&gt;) for the instance.&lt;/p&gt;
--- @param arn [NonEmptyString] &lt;p&gt;The Amazon Resource Name (ARN) of the instance (e.g., &lt;code&gt;arn:aws:lightsail:us-east-1:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE&lt;/code&gt;).&lt;/p&gt;
--- @param publicIpAddress [IpAddress] &lt;p&gt;The public IP address of the instance.&lt;/p&gt;
--- @param blueprintId [NonEmptyString] &lt;p&gt;The blueprint ID (e.g., &lt;code&gt;os_amlinux_2016_03&lt;/code&gt;).&lt;/p&gt;
--- @param bundleId [NonEmptyString] &lt;p&gt;The bundle for the instance (e.g., &lt;code&gt;micro_1_0&lt;/code&gt;).&lt;/p&gt;
--- @param sshKeyName [ResourceName] &lt;p&gt;The name of the SSH key being used to connect to the instance (e.g., &lt;code&gt;LightsailDefaultKeyPair&lt;/code&gt;).&lt;/p&gt;
--- @param createdAt [IsoDate] &lt;p&gt;The timestamp when the instance was created (e.g., &lt;code&gt;1479734909.17&lt;/code&gt;).&lt;/p&gt;
--- @param location [ResourceLocation] &lt;p&gt;The region name and availability zone where the instance is located.&lt;/p&gt;
+-- <p>Describes an instance (a virtual private server).</p>
+-- @param username [NonEmptyString] <p>The user name for connecting to the instance (e.g., <code>ec2-user</code>).</p>
+-- @param isStaticIp [boolean] <p>A Boolean value indicating whether this instance has a static IP assigned to it.</p>
+-- @param networking [InstanceNetworking] <p>Information about the public ports and monthly data transfer rates for the instance.</p>
+-- @param name [ResourceName] <p>The name the user gave the instance (e.g., <code>Amazon_Linux-1GB-Virginia-1</code>).</p>
+-- @param ipv6Address [IpV6Address] <p>The IPv6 address of the instance.</p>
+-- @param resourceType [ResourceType] <p>The type of resource (usually <code>Instance</code>).</p>
+-- @param supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- @param blueprintName [NonEmptyString] <p>The friendly name of the blueprint (e.g., <code>Amazon Linux</code>).</p>
+-- @param hardware [InstanceHardware] <p>The size of the vCPU and the amount of RAM for the instance.</p>
+-- @param privateIpAddress [IpAddress] <p>The private IP address of the instance.</p>
+-- @param state [InstanceState] <p>The status code and the state (e.g., <code>running</code>) for the instance.</p>
+-- @param arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the instance (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE</code>).</p>
+-- @param publicIpAddress [IpAddress] <p>The public IP address of the instance.</p>
+-- @param blueprintId [NonEmptyString] <p>The blueprint ID (e.g., <code>os_amlinux_2016_03</code>).</p>
+-- @param bundleId [NonEmptyString] <p>The bundle for the instance (e.g., <code>micro_1_0</code>).</p>
+-- @param sshKeyName [ResourceName] <p>The name of the SSH key being used to connect to the instance (e.g., <code>LightsailDefaultKeyPair</code>).</p>
+-- @param createdAt [IsoDate] <p>The timestamp when the instance was created (e.g., <code>1479734909.17</code>).</p>
+-- @param location [ResourceLocation] <p>The region name and availability zone where the instance is located.</p>
 function M.Instance(username, isStaticIp, networking, name, ipv6Address, resourceType, supportCode, blueprintName, hardware, privateIpAddress, state, arn, publicIpAddress, blueprintId, bundleId, sshKeyName, createdAt, location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
 	local t = { 
@@ -727,7 +727,7 @@ end
 
 --- Create a structure of type GetDomainRequest
 --  
--- @param domainName [DomainName] &lt;p&gt;The domain name for which your want to return information about.&lt;/p&gt;
+-- @param domainName [DomainName] <p>The domain name for which your want to return information about.</p>
 -- Required parameter: domainName
 function M.GetDomainRequest(domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainRequest")
@@ -754,8 +754,8 @@ end
 
 --- Create a structure of type UpdateDomainEntryRequest
 --  
--- @param domainEntry [DomainEntry] &lt;p&gt;An array of key-value pairs containing information about the domain entry.&lt;/p&gt;
--- @param domainName [DomainName] &lt;p&gt;The name of the domain recordset to update.&lt;/p&gt;
+-- @param domainEntry [DomainEntry] <p>An array of key-value pairs containing information about the domain entry.</p>
+-- @param domainName [DomainName] <p>The name of the domain recordset to update.</p>
 -- Required parameter: domainName
 -- Required parameter: domainEntry
 function M.UpdateDomainEntryRequest(domainEntry, domainName, ...)
@@ -792,20 +792,20 @@ function M.AssertInstanceSnapshot(struct)
 end
 
 --- Create a structure of type InstanceSnapshot
--- &lt;p&gt;Describes the snapshot of the virtual private server, or &lt;i&gt;instance&lt;/i&gt;.&lt;/p&gt;
--- @param fromInstanceName [ResourceName] &lt;p&gt;The instance from which the snapshot was created.&lt;/p&gt;
--- @param name [ResourceName] &lt;p&gt;The name of the snapshot.&lt;/p&gt;
--- @param sizeInGb [integer] &lt;p&gt;The size in GB of the SSD.&lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The type of resource (usually &lt;code&gt;InstanceSnapshot&lt;/code&gt;).&lt;/p&gt;
--- @param supportCode [string] &lt;p&gt;The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.&lt;/p&gt;
--- @param fromInstanceArn [NonEmptyString] &lt;p&gt;The Amazon Resource Name (ARN) of the instance from which the snapshot was created (e.g., &lt;code&gt;arn:aws:lightsail:us-east-1:123456789101:Instance/64b8404c-ccb1-430b-8daf-12345EXAMPLE&lt;/code&gt;).&lt;/p&gt;
--- @param state [InstanceSnapshotState] &lt;p&gt;The state the snapshot is in.&lt;/p&gt;
--- @param arn [NonEmptyString] &lt;p&gt;The Amazon Resource Name (ARN) of the snapshot (e.g., &lt;code&gt;arn:aws:lightsail:us-east-1:123456789101:InstanceSnapshot/d23b5706-3322-4d83-81e5-12345EXAMPLE&lt;/code&gt;).&lt;/p&gt;
--- @param progress [string] &lt;p&gt;The progress of the snapshot.&lt;/p&gt;
--- @param fromBundleId [string] &lt;p&gt;The bundle ID from which you created the snapshot (e.g., &lt;code&gt;micro_1_0&lt;/code&gt;).&lt;/p&gt;
--- @param fromBlueprintId [string] &lt;p&gt;The blueprint ID from which you created the snapshot (e.g., &lt;code&gt;os_debian_8_3&lt;/code&gt;). A blueprint is a virtual private server (or &lt;i&gt;instance&lt;/i&gt;) image used to create instances quickly.&lt;/p&gt;
--- @param createdAt [IsoDate] &lt;p&gt;The timestamp when the snapshot was created (e.g., &lt;code&gt;1479907467.024&lt;/code&gt;).&lt;/p&gt;
--- @param location [ResourceLocation] &lt;p&gt;The region name and availability zone where you created the snapshot.&lt;/p&gt;
+-- <p>Describes the snapshot of the virtual private server, or <i>instance</i>.</p>
+-- @param fromInstanceName [ResourceName] <p>The instance from which the snapshot was created.</p>
+-- @param name [ResourceName] <p>The name of the snapshot.</p>
+-- @param sizeInGb [integer] <p>The size in GB of the SSD.</p>
+-- @param resourceType [ResourceType] <p>The type of resource (usually <code>InstanceSnapshot</code>).</p>
+-- @param supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- @param fromInstanceArn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the instance from which the snapshot was created (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:Instance/64b8404c-ccb1-430b-8daf-12345EXAMPLE</code>).</p>
+-- @param state [InstanceSnapshotState] <p>The state the snapshot is in.</p>
+-- @param arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the snapshot (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:InstanceSnapshot/d23b5706-3322-4d83-81e5-12345EXAMPLE</code>).</p>
+-- @param progress [string] <p>The progress of the snapshot.</p>
+-- @param fromBundleId [string] <p>The bundle ID from which you created the snapshot (e.g., <code>micro_1_0</code>).</p>
+-- @param fromBlueprintId [string] <p>The blueprint ID from which you created the snapshot (e.g., <code>os_debian_8_3</code>). A blueprint is a virtual private server (or <i>instance</i>) image used to create instances quickly.</p>
+-- @param createdAt [IsoDate] <p>The timestamp when the snapshot was created (e.g., <code>1479907467.024</code>).</p>
+-- @param location [ResourceLocation] <p>The region name and availability zone where you created the snapshot.</p>
 function M.InstanceSnapshot(fromInstanceName, name, sizeInGb, resourceType, supportCode, fromInstanceArn, state, arn, progress, fromBundleId, fromBlueprintId, createdAt, location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceSnapshot")
 	local t = { 
@@ -850,19 +850,19 @@ function M.AssertOperation(struct)
 end
 
 --- Create a structure of type Operation
--- &lt;p&gt;Describes the API operation.&lt;/p&gt;
--- @param status [OperationStatus] &lt;p&gt;The status of the operation. &lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The resource type. &lt;/p&gt;
--- @param isTerminal [boolean] &lt;p&gt;A Boolean value indicating whether the operation is terminal.&lt;/p&gt;
--- @param operationDetails [string] &lt;p&gt;Details about the operation (e.g., &lt;code&gt;Debian-1GB-Virginia-1&lt;/code&gt;).&lt;/p&gt;
--- @param statusChangedAt [IsoDate] &lt;p&gt;The timestamp when the status was changed (e.g., &lt;code&gt;1479816991.349&lt;/code&gt;).&lt;/p&gt;
--- @param errorCode [string] &lt;p&gt;The error code.&lt;/p&gt;
--- @param errorDetails [string] &lt;p&gt;The error details.&lt;/p&gt;
--- @param location [ResourceLocation] &lt;p&gt;The region and Availability Zone.&lt;/p&gt;
--- @param operationType [OperationType] &lt;p&gt;The type of operation. &lt;/p&gt;
--- @param resourceName [ResourceName] &lt;p&gt;The resource name.&lt;/p&gt;
--- @param id [NonEmptyString] &lt;p&gt;The ID of the operation.&lt;/p&gt;
--- @param createdAt [IsoDate] &lt;p&gt;The timestamp when the operation was initialized (e.g., &lt;code&gt;1479816991.349&lt;/code&gt;).&lt;/p&gt;
+-- <p>Describes the API operation.</p>
+-- @param status [OperationStatus] <p>The status of the operation. </p>
+-- @param resourceType [ResourceType] <p>The resource type. </p>
+-- @param isTerminal [boolean] <p>A Boolean value indicating whether the operation is terminal.</p>
+-- @param operationDetails [string] <p>Details about the operation (e.g., <code>Debian-1GB-Virginia-1</code>).</p>
+-- @param statusChangedAt [IsoDate] <p>The timestamp when the status was changed (e.g., <code>1479816991.349</code>).</p>
+-- @param errorCode [string] <p>The error code.</p>
+-- @param errorDetails [string] <p>The error details.</p>
+-- @param location [ResourceLocation] <p>The region and Availability Zone.</p>
+-- @param operationType [OperationType] <p>The type of operation. </p>
+-- @param resourceName [ResourceName] <p>The resource name.</p>
+-- @param id [NonEmptyString] <p>The ID of the operation.</p>
+-- @param createdAt [IsoDate] <p>The timestamp when the operation was initialized (e.g., <code>1479816991.349</code>).</p>
 function M.Operation(status, resourceType, isTerminal, operationDetails, statusChangedAt, errorCode, errorDetails, location, operationType, resourceName, id, createdAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Operation")
 	local t = { 
@@ -908,21 +908,21 @@ function M.AssertDisk(struct)
 end
 
 --- Create a structure of type Disk
--- &lt;p&gt;Describes the hard disk (an SSD).&lt;/p&gt;
--- @param name [ResourceName] &lt;p&gt;The name of the disk.&lt;/p&gt;
--- @param sizeInGb [integer] &lt;p&gt;The size of the disk in GB.&lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The resource type of the disk. &lt;/p&gt;
--- @param supportCode [string] &lt;p&gt;The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.&lt;/p&gt;
--- @param attachmentState [string] &lt;p&gt;The attachment state of the disk.&lt;/p&gt;
--- @param attachedTo [string] &lt;p&gt;The resources to which the disk is attached.&lt;/p&gt;
--- @param iops [integer] &lt;p&gt;The input/output operations per second (IOPS) of the disk.&lt;/p&gt;
--- @param gbInUse [integer] &lt;p&gt;The number of GB in use by the disk.&lt;/p&gt;
--- @param arn [NonEmptyString] &lt;p&gt;The Amazon Resource Name (ARN) of the disk.&lt;/p&gt;
--- @param isAttached [boolean] &lt;p&gt;A Boolean value indicating whether the disk is attached.&lt;/p&gt;
--- @param path [string] &lt;p&gt;The disk path.&lt;/p&gt;
--- @param isSystemDisk [boolean] &lt;p&gt;A Boolean value indicating whether this disk is a system disk (has an operating system loaded on it).&lt;/p&gt;
--- @param createdAt [IsoDate] &lt;p&gt;The date when the disk was created.&lt;/p&gt;
--- @param location [ResourceLocation] &lt;p&gt;The region and Availability Zone where the disk is located.&lt;/p&gt;
+-- <p>Describes the hard disk (an SSD).</p>
+-- @param name [ResourceName] <p>The name of the disk.</p>
+-- @param sizeInGb [integer] <p>The size of the disk in GB.</p>
+-- @param resourceType [ResourceType] <p>The resource type of the disk. </p>
+-- @param supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- @param attachmentState [string] <p>The attachment state of the disk.</p>
+-- @param attachedTo [string] <p>The resources to which the disk is attached.</p>
+-- @param iops [integer] <p>The input/output operations per second (IOPS) of the disk.</p>
+-- @param gbInUse [integer] <p>The number of GB in use by the disk.</p>
+-- @param arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the disk.</p>
+-- @param isAttached [boolean] <p>A Boolean value indicating whether the disk is attached.</p>
+-- @param path [string] <p>The disk path.</p>
+-- @param isSystemDisk [boolean] <p>A Boolean value indicating whether this disk is a system disk (has an operating system loaded on it).</p>
+-- @param createdAt [IsoDate] <p>The date when the disk was created.</p>
+-- @param location [ResourceLocation] <p>The region and Availability Zone where the disk is located.</p>
 function M.Disk(name, sizeInGb, resourceType, supportCode, attachmentState, attachedTo, iops, gbInUse, arn, isAttached, path, isSystemDisk, createdAt, location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Disk")
 	local t = { 
@@ -958,7 +958,7 @@ end
 
 --- Create a structure of type AttachStaticIpResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about your API operations.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about your API operations.</p>
 function M.AttachStaticIpResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachStaticIpResult")
 	local t = { 
@@ -982,7 +982,7 @@ end
 
 --- Create a structure of type DeleteDomainRequest
 --  
--- @param domainName [DomainName] &lt;p&gt;The specific domain name to delete.&lt;/p&gt;
+-- @param domainName [DomainName] <p>The specific domain name to delete.</p>
 -- Required parameter: domainName
 function M.DeleteDomainRequest(domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainRequest")
@@ -1012,15 +1012,15 @@ function M.AssertInstanceAccessDetails(struct)
 end
 
 --- Create a structure of type InstanceAccessDetails
--- &lt;p&gt;The parameters for gaining temporary access to one of your Amazon Lightsail instances.&lt;/p&gt;
--- @param username [string] &lt;p&gt;The user name to use when logging in to the Amazon Lightsail instance.&lt;/p&gt;
--- @param certKey [string] &lt;p&gt;For SSH access, the public key to use when accessing your instance For OpenSSH clients (e.g., command line SSH), you should save this value to &lt;code&gt;tempkey-cert.pub&lt;/code&gt;.&lt;/p&gt;
--- @param instanceName [ResourceName] &lt;p&gt;The name of this Amazon Lightsail instance.&lt;/p&gt;
--- @param privateKey [string] &lt;p&gt;For SSH access, the temporary private key. For OpenSSH clients (e.g., command line SSH), you should save this value to &lt;code&gt;tempkey&lt;/code&gt;).&lt;/p&gt;
--- @param expiresAt [IsoDate] &lt;p&gt;For SSH access, the date on which the temporary keys expire.&lt;/p&gt;
--- @param protocol [InstanceAccessProtocol] &lt;p&gt;The protocol for these Amazon Lightsail instance access details.&lt;/p&gt;
--- @param password [string] &lt;p&gt;For RDP access, the temporary password of the Amazon EC2 instance.&lt;/p&gt;
--- @param ipAddress [IpAddress] &lt;p&gt;The public IP address of the Amazon Lightsail instance.&lt;/p&gt;
+-- <p>The parameters for gaining temporary access to one of your Amazon Lightsail instances.</p>
+-- @param username [string] <p>The user name to use when logging in to the Amazon Lightsail instance.</p>
+-- @param certKey [string] <p>For SSH access, the public key to use when accessing your instance For OpenSSH clients (e.g., command line SSH), you should save this value to <code>tempkey-cert.pub</code>.</p>
+-- @param instanceName [ResourceName] <p>The name of this Amazon Lightsail instance.</p>
+-- @param privateKey [string] <p>For SSH access, the temporary private key. For OpenSSH clients (e.g., command line SSH), you should save this value to <code>tempkey</code>).</p>
+-- @param expiresAt [IsoDate] <p>For SSH access, the date on which the temporary keys expire.</p>
+-- @param protocol [InstanceAccessProtocol] <p>The protocol for these Amazon Lightsail instance access details.</p>
+-- @param password [string] <p>For RDP access, the temporary password of the Amazon EC2 instance.</p>
+-- @param ipAddress [IpAddress] <p>The public IP address of the Amazon Lightsail instance.</p>
 function M.InstanceAccessDetails(username, certKey, instanceName, privateKey, expiresAt, protocol, password, ipAddress, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAccessDetails")
 	local t = { 
@@ -1051,7 +1051,7 @@ end
 
 --- Create a structure of type GetKeyPairRequest
 --  
--- @param keyPairName [ResourceName] &lt;p&gt;The name of the key pair for which you are requesting information.&lt;/p&gt;
+-- @param keyPairName [ResourceName] <p>The name of the key pair for which you are requesting information.</p>
 -- Required parameter: keyPairName
 function M.GetKeyPairRequest(keyPairName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyPairRequest")
@@ -1076,7 +1076,7 @@ end
 
 --- Create a structure of type DeleteKeyPairRequest
 --  
--- @param keyPairName [ResourceName] &lt;p&gt;The name of the key pair to delete.&lt;/p&gt;
+-- @param keyPairName [ResourceName] <p>The name of the key pair to delete.</p>
 -- Required parameter: keyPairName
 function M.DeleteKeyPairRequest(keyPairName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteKeyPairRequest")
@@ -1101,7 +1101,7 @@ end
 
 --- Create a structure of type GetOperationRequest
 --  
--- @param operationId [NonEmptyString] &lt;p&gt;A GUID used to identify the operation.&lt;/p&gt;
+-- @param operationId [NonEmptyString] <p>A GUID used to identify the operation.</p>
 -- Required parameter: operationId
 function M.GetOperationRequest(operationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationRequest")
@@ -1126,8 +1126,8 @@ end
 
 --- Create a structure of type GetBlueprintsResult
 --  
--- @param nextPageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get blueprints request.&lt;/p&gt;
--- @param blueprints [BlueprintList] &lt;p&gt;An array of key-value pairs that contains information about the available blueprints.&lt;/p&gt;
+-- @param nextPageToken [string] <p>A token used for advancing to the next page of results from your get blueprints request.</p>
+-- @param blueprints [BlueprintList] <p>An array of key-value pairs that contains information about the available blueprints.</p>
 function M.GetBlueprintsResult(nextPageToken, blueprints, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBlueprintsResult")
 	local t = { 
@@ -1151,7 +1151,7 @@ end
 
 --- Create a structure of type CreateInstancesResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the results of your create instances request.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances request.</p>
 function M.CreateInstancesResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstancesResult")
 	local t = { 
@@ -1174,7 +1174,7 @@ end
 
 --- Create a structure of type DetachStaticIpResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the results of your detach static IP request.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the results of your detach static IP request.</p>
 function M.DetachStaticIpResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachStaticIpResult")
 	local t = { 
@@ -1202,14 +1202,14 @@ function M.AssertInstancePortInfo(struct)
 end
 
 --- Create a structure of type InstancePortInfo
--- &lt;p&gt;Describes information about the instance ports.&lt;/p&gt;
--- @param protocol [NetworkProtocol] &lt;p&gt;The protocol being used. Can be one of the following.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;tcp&lt;/code&gt; - Transmission Control Protocol (TCP) provides reliable, ordered, and error-checked delivery of streamed data between applications running on hosts communicating by an IP network. If you have an application that doesn't require reliable data stream service, use UDP instead.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;all&lt;/code&gt; - All transport layer protocol types. For more general information, see &lt;a href=&quot;https://en.wikipedia.org/wiki/Transport_layer&quot;&gt;Transport layer&lt;/a&gt; on Wikipedia.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;udp&lt;/code&gt; - With User Datagram Protocol (UDP), computer applications can send messages (or datagrams) to other hosts on an Internet Protocol (IP) network. Prior communications are not required to set up transmission channels or data paths. Applications that don't require reliable data stream service can use UDP, which provides a connectionless datagram service that emphasizes reduced latency over reliability. If you do require reliable data stream service, use TCP instead.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param accessType [PortAccessType] &lt;p&gt;The type of access (&lt;code&gt;Public&lt;/code&gt; or &lt;code&gt;Private&lt;/code&gt;).&lt;/p&gt;
--- @param commonName [string] &lt;p&gt;The common name.&lt;/p&gt;
--- @param accessFrom [string] &lt;p&gt;The location from which access is allowed (e.g., &lt;code&gt;Anywhere (0.0.0.0/0)&lt;/code&gt;).&lt;/p&gt;
--- @param fromPort [Port] &lt;p&gt;The first port in the range.&lt;/p&gt;
--- @param accessDirection [AccessDirection] &lt;p&gt;The access direction (&lt;code&gt;inbound&lt;/code&gt; or &lt;code&gt;outbound&lt;/code&gt;).&lt;/p&gt;
--- @param toPort [Port] &lt;p&gt;The last port in the range.&lt;/p&gt;
+-- <p>Describes information about the instance ports.</p>
+-- @param protocol [NetworkProtocol] <p>The protocol being used. Can be one of the following.</p> <ul> <li> <p> <code>tcp</code> - Transmission Control Protocol (TCP) provides reliable, ordered, and error-checked delivery of streamed data between applications running on hosts communicating by an IP network. If you have an application that doesn't require reliable data stream service, use UDP instead.</p> </li> <li> <p> <code>all</code> - All transport layer protocol types. For more general information, see <a href="https://en.wikipedia.org/wiki/Transport_layer">Transport layer</a> on Wikipedia.</p> </li> <li> <p> <code>udp</code> - With User Datagram Protocol (UDP), computer applications can send messages (or datagrams) to other hosts on an Internet Protocol (IP) network. Prior communications are not required to set up transmission channels or data paths. Applications that don't require reliable data stream service can use UDP, which provides a connectionless datagram service that emphasizes reduced latency over reliability. If you do require reliable data stream service, use TCP instead.</p> </li> </ul>
+-- @param accessType [PortAccessType] <p>The type of access (<code>Public</code> or <code>Private</code>).</p>
+-- @param commonName [string] <p>The common name.</p>
+-- @param accessFrom [string] <p>The location from which access is allowed (e.g., <code>Anywhere (0.0.0.0/0)</code>).</p>
+-- @param fromPort [Port] <p>The first port in the range.</p>
+-- @param accessDirection [AccessDirection] <p>The access direction (<code>inbound</code> or <code>outbound</code>).</p>
+-- @param toPort [Port] <p>The last port in the range.</p>
 function M.InstancePortInfo(protocol, accessType, commonName, accessFrom, fromPort, accessDirection, toPort, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstancePortInfo")
 	local t = { 
@@ -1239,8 +1239,8 @@ end
 
 --- Create a structure of type GetInstancesResult
 --  
--- @param nextPageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get instances request.&lt;/p&gt;
--- @param instances [InstanceList] &lt;p&gt;An array of key-value pairs containing information about your instances.&lt;/p&gt;
+-- @param nextPageToken [string] <p>A token used for advancing to the next page of results from your get instances request.</p>
+-- @param instances [InstanceList] <p>An array of key-value pairs containing information about your instances.</p>
 function M.GetInstancesResult(nextPageToken, instances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstancesResult")
 	local t = { 
@@ -1265,7 +1265,7 @@ end
 
 --- Create a structure of type GetInstanceSnapshotRequest
 --  
--- @param instanceSnapshotName [ResourceName] &lt;p&gt;The name of the snapshot for which you are requesting information.&lt;/p&gt;
+-- @param instanceSnapshotName [ResourceName] <p>The name of the snapshot for which you are requesting information.</p>
 -- Required parameter: instanceSnapshotName
 function M.GetInstanceSnapshotRequest(instanceSnapshotName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceSnapshotRequest")
@@ -1290,7 +1290,7 @@ end
 
 --- Create a structure of type ReleaseStaticIpRequest
 --  
--- @param staticIpName [ResourceName] &lt;p&gt;The name of the static IP to delete.&lt;/p&gt;
+-- @param staticIpName [ResourceName] <p>The name of the static IP to delete.</p>
 -- Required parameter: staticIpName
 function M.ReleaseStaticIpRequest(staticIpName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReleaseStaticIpRequest")
@@ -1316,8 +1316,8 @@ end
 
 --- Create a structure of type GetOperationsForResourceRequest
 --  
--- @param resourceName [ResourceName] &lt;p&gt;The name of the resource for which you are requesting information.&lt;/p&gt;
--- @param pageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get operations for resource request.&lt;/p&gt;
+-- @param resourceName [ResourceName] <p>The name of the resource for which you are requesting information.</p>
+-- @param pageToken [string] <p>A token used for advancing to the next page of results from your get operations for resource request.</p>
 -- Required parameter: resourceName
 function M.GetOperationsForResourceRequest(resourceName, pageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationsForResourceRequest")
@@ -1342,7 +1342,7 @@ end
 
 --- Create a structure of type GetOperationResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the results of your get operation request.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the results of your get operation request.</p>
 function M.GetOperationResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationResult")
 	local t = { 
@@ -1378,13 +1378,13 @@ end
 
 --- Create a structure of type GetInstanceMetricDataRequest
 --  
--- @param statistics [MetricStatisticList] &lt;p&gt;The instance statistics. &lt;/p&gt;
--- @param period [MetricPeriod] &lt;p&gt;The time period for which you are requesting data.&lt;/p&gt;
--- @param startTime [timestamp] &lt;p&gt;The start time of the time period.&lt;/p&gt;
--- @param endTime [timestamp] &lt;p&gt;The end time of the time period.&lt;/p&gt;
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance for which you want to get metrics data.&lt;/p&gt;
--- @param unit [MetricUnit] &lt;p&gt;The unit. The list of valid values is below.&lt;/p&gt;
--- @param metricName [InstanceMetricName] &lt;p&gt;The metric name to get data about. &lt;/p&gt;
+-- @param statistics [MetricStatisticList] <p>The instance statistics. </p>
+-- @param period [MetricPeriod] <p>The time period for which you are requesting data.</p>
+-- @param startTime [timestamp] <p>The start time of the time period.</p>
+-- @param endTime [timestamp] <p>The end time of the time period.</p>
+-- @param instanceName [ResourceName] <p>The name of the instance for which you want to get metrics data.</p>
+-- @param unit [MetricUnit] <p>The unit. The list of valid values is below.</p>
+-- @param metricName [InstanceMetricName] <p>The metric name to get data about. </p>
 -- Required parameter: instanceName
 -- Required parameter: metricName
 -- Required parameter: period
@@ -1420,7 +1420,7 @@ end
 
 --- Create a structure of type GetRegionsResult
 --  
--- @param regions [RegionList] &lt;p&gt;An array of key-value pairs containing information about your get regions request.&lt;/p&gt;
+-- @param regions [RegionList] <p>An array of key-value pairs containing information about your get regions request.</p>
 function M.GetRegionsResult(regions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRegionsResult")
 	local t = { 
@@ -1465,11 +1465,11 @@ function M.AssertNotFoundException(struct)
 end
 
 --- Create a structure of type NotFoundException
--- &lt;p&gt;Lightsail throws this exception when it cannot find a resource.&lt;/p&gt;
--- @param docs [string] &lt;p&gt;Lightsail throws this exception when it cannot find a resource.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Lightsail throws this exception when it cannot find a resource.&lt;/p&gt;
--- @param code [string] &lt;p&gt;Lightsail throws this exception when it cannot find a resource.&lt;/p&gt;
--- @param tip [string] &lt;p&gt;Lightsail throws this exception when it cannot find a resource.&lt;/p&gt;
+-- <p>Lightsail throws this exception when it cannot find a resource.</p>
+-- @param docs [string] <p>Lightsail throws this exception when it cannot find a resource.</p>
+-- @param message [string] <p>Lightsail throws this exception when it cannot find a resource.</p>
+-- @param code [string] <p>Lightsail throws this exception when it cannot find a resource.</p>
+-- @param tip [string] <p>Lightsail throws this exception when it cannot find a resource.</p>
 function M.NotFoundException(docs, message, code, tip, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotFoundException")
 	local t = { 
@@ -1495,7 +1495,7 @@ end
 
 --- Create a structure of type OpenInstancePublicPortsResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the request operation.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
 function M.OpenInstancePublicPortsResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OpenInstancePublicPortsResult")
 	local t = { 
@@ -1518,7 +1518,7 @@ end
 
 --- Create a structure of type GetInstanceSnapshotsRequest
 --  
--- @param pageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get instance snapshots request.&lt;/p&gt;
+-- @param pageToken [string] <p>A token used for advancing to the next page of results from your get instance snapshots request.</p>
 function M.GetInstanceSnapshotsRequest(pageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceSnapshotsRequest")
 	local t = { 
@@ -1542,8 +1542,8 @@ end
 
 --- Create a structure of type GetOperationsResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the results of your get operations request.&lt;/p&gt;
--- @param nextPageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get operations request.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the results of your get operations request.</p>
+-- @param nextPageToken [string] <p>A token used for advancing to the next page of results from your get operations request.</p>
 function M.GetOperationsResult(operations, nextPageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationsResult")
 	local t = { 
@@ -1587,7 +1587,7 @@ end
 
 --- Create a structure of type UnpeerVpcResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the request operation.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
 function M.UnpeerVpcResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnpeerVpcResult")
 	local t = { 
@@ -1610,7 +1610,7 @@ end
 
 --- Create a structure of type DeleteDomainResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the results of your delete domain request.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the results of your delete domain request.</p>
 function M.DeleteDomainResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainResult")
 	local t = { 
@@ -1633,7 +1633,7 @@ end
 
 --- Create a structure of type GetKeyPairsRequest
 --  
--- @param pageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get key pairs request.&lt;/p&gt;
+-- @param pageToken [string] <p>A token used for advancing to the next page of results from your get key pairs request.</p>
 function M.GetKeyPairsRequest(pageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyPairsRequest")
 	local t = { 
@@ -1659,8 +1659,8 @@ end
 
 --- Create a structure of type ImportKeyPairRequest
 --  
--- @param publicKeyBase64 [Base64] &lt;p&gt;A base64-encoded public key of the &lt;code&gt;ssh-rsa&lt;/code&gt; type.&lt;/p&gt;
--- @param keyPairName [ResourceName] &lt;p&gt;The name of the key pair for which you want to import the public key.&lt;/p&gt;
+-- @param publicKeyBase64 [Base64] <p>A base64-encoded public key of the <code>ssh-rsa</code> type.</p>
+-- @param keyPairName [ResourceName] <p>The name of the key pair for which you want to import the public key.</p>
 -- Required parameter: keyPairName
 -- Required parameter: publicKeyBase64
 function M.ImportKeyPairRequest(publicKeyBase64, keyPairName, ...)
@@ -1686,7 +1686,7 @@ end
 
 --- Create a structure of type PutInstancePublicPortsResult
 --  
--- @param operation [Operation] &lt;p&gt;Describes metadata about the operation you just executed.&lt;/p&gt;
+-- @param operation [Operation] <p>Describes metadata about the operation you just executed.</p>
 function M.PutInstancePublicPortsResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutInstancePublicPortsResult")
 	local t = { 
@@ -1710,7 +1710,7 @@ end
 
 --- Create a structure of type DeleteInstanceSnapshotRequest
 --  
--- @param instanceSnapshotName [ResourceName] &lt;p&gt;The name of the snapshot to delete.&lt;/p&gt;
+-- @param instanceSnapshotName [ResourceName] <p>The name of the snapshot to delete.</p>
 -- Required parameter: instanceSnapshotName
 function M.DeleteInstanceSnapshotRequest(instanceSnapshotName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceSnapshotRequest")
@@ -1736,9 +1736,9 @@ end
 
 --- Create a structure of type GetOperationsForResourceResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the results of your get operations for resource request.&lt;/p&gt;
--- @param nextPageToken [string] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param nextPageCount [string] &lt;p&gt;(Deprecated) Returns the number of pages of results that remain.&lt;/p&gt; &lt;note&gt; &lt;p&gt;In releases prior to June 12, 2017, this parameter returned &lt;code&gt;null&lt;/code&gt; by the API. It is now deprecated, and the API returns the &lt;code&gt;nextPageToken&lt;/code&gt; parameter instead.&lt;/p&gt; &lt;/note&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the results of your get operations for resource request.</p>
+-- @param nextPageToken [string] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param nextPageCount [string] <p>(Deprecated) Returns the number of pages of results that remain.</p> <note> <p>In releases prior to June 12, 2017, this parameter returned <code>null</code> by the API. It is now deprecated, and the API returns the <code>nextPageToken</code> parameter instead.</p> </note>
 function M.GetOperationsForResourceResult(operations, nextPageToken, nextPageCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationsForResourceResult")
 	local t = { 
@@ -1764,8 +1764,8 @@ end
 
 --- Create a structure of type GetStaticIpsResult
 --  
--- @param nextPageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get static IPs request.&lt;/p&gt;
--- @param staticIps [StaticIpList] &lt;p&gt;An array of key-value pairs containing information about your get static IPs request.&lt;/p&gt;
+-- @param nextPageToken [string] <p>A token used for advancing to the next page of results from your get static IPs request.</p>
+-- @param staticIps [StaticIpList] <p>An array of key-value pairs containing information about your get static IPs request.</p>
 function M.GetStaticIpsResult(nextPageToken, staticIps, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStaticIpsResult")
 	local t = { 
@@ -1794,14 +1794,14 @@ function M.AssertDomain(struct)
 end
 
 --- Create a structure of type Domain
--- &lt;p&gt;Describes a domain where you are storing recordsets in Lightsail.&lt;/p&gt;
--- @param domainEntries [DomainEntryList] &lt;p&gt;An array of key-value pairs containing information about the domain entries.&lt;/p&gt;
--- @param name [ResourceName] &lt;p&gt;The name of the domain.&lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The resource type. &lt;/p&gt;
--- @param supportCode [string] &lt;p&gt;The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.&lt;/p&gt;
--- @param arn [NonEmptyString] &lt;p&gt;The Amazon Resource Name (ARN) of the domain recordset (e.g., &lt;code&gt;arn:aws:lightsail:global:123456789101:Domain/824cede0-abc7-4f84-8dbc-12345EXAMPLE&lt;/code&gt;).&lt;/p&gt;
--- @param createdAt [IsoDate] &lt;p&gt;The date when the domain recordset was created.&lt;/p&gt;
--- @param location [ResourceLocation] &lt;p&gt;The AWS Region and Availability Zones where the domain recordset was created.&lt;/p&gt;
+-- <p>Describes a domain where you are storing recordsets in Lightsail.</p>
+-- @param domainEntries [DomainEntryList] <p>An array of key-value pairs containing information about the domain entries.</p>
+-- @param name [ResourceName] <p>The name of the domain.</p>
+-- @param resourceType [ResourceType] <p>The resource type. </p>
+-- @param supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- @param arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the domain recordset (e.g., <code>arn:aws:lightsail:global:123456789101:Domain/824cede0-abc7-4f84-8dbc-12345EXAMPLE</code>).</p>
+-- @param createdAt [IsoDate] <p>The date when the domain recordset was created.</p>
+-- @param location [ResourceLocation] <p>The AWS Region and Availability Zones where the domain recordset was created.</p>
 function M.Domain(domainEntries, name, resourceType, supportCode, arn, createdAt, location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Domain")
 	local t = { 
@@ -1830,9 +1830,9 @@ function M.AssertAvailabilityZone(struct)
 end
 
 --- Create a structure of type AvailabilityZone
--- &lt;p&gt;Describes an Availability Zone.&lt;/p&gt;
--- @param state [NonEmptyString] &lt;p&gt;The state of the Availability Zone.&lt;/p&gt;
--- @param zoneName [NonEmptyString] &lt;p&gt;The name of the Availability Zone. The format is &lt;code&gt;us-east-1a&lt;/code&gt; (case-sensitive).&lt;/p&gt;
+-- <p>Describes an Availability Zone.</p>
+-- @param state [NonEmptyString] <p>The state of the Availability Zone.</p>
+-- @param zoneName [NonEmptyString] <p>The name of the Availability Zone. The format is <code>us-east-1a</code> (case-sensitive).</p>
 function M.AvailabilityZone(state, zoneName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityZone")
 	local t = { 
@@ -1857,10 +1857,10 @@ function M.AssertInstanceHardware(struct)
 end
 
 --- Create a structure of type InstanceHardware
--- &lt;p&gt;Describes the hardware for the instance.&lt;/p&gt;
--- @param cpuCount [integer] &lt;p&gt;The number of vCPUs the instance has.&lt;/p&gt;
--- @param disks [DiskList] &lt;p&gt;The disks attached to the instance.&lt;/p&gt;
--- @param ramSizeInGb [float] &lt;p&gt;The amount of RAM in GB on the instance (e.g., &lt;code&gt;1.0&lt;/code&gt;).&lt;/p&gt;
+-- <p>Describes the hardware for the instance.</p>
+-- @param cpuCount [integer] <p>The number of vCPUs the instance has.</p>
+-- @param disks [DiskList] <p>The disks attached to the instance.</p>
+-- @param ramSizeInGb [float] <p>The amount of RAM in GB on the instance (e.g., <code>1.0</code>).</p>
 function M.InstanceHardware(cpuCount, disks, ramSizeInGb, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceHardware")
 	local t = { 
@@ -1905,7 +1905,7 @@ end
 
 --- Create a structure of type StopInstanceResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the request operation.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
 function M.StopInstanceResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopInstanceResult")
 	local t = { 
@@ -1933,14 +1933,14 @@ function M.AssertKeyPair(struct)
 end
 
 --- Create a structure of type KeyPair
--- &lt;p&gt;Describes the SSH key pair.&lt;/p&gt;
--- @param name [ResourceName] &lt;p&gt;The friendly name of the SSH key pair.&lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The resource type (usually &lt;code&gt;KeyPair&lt;/code&gt;).&lt;/p&gt;
--- @param supportCode [string] &lt;p&gt;The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.&lt;/p&gt;
--- @param arn [NonEmptyString] &lt;p&gt;The Amazon Resource Name (ARN) of the key pair (e.g., &lt;code&gt;arn:aws:lightsail:us-east-1:123456789101:KeyPair/05859e3d-331d-48ba-9034-12345EXAMPLE&lt;/code&gt;).&lt;/p&gt;
--- @param fingerprint [Base64] &lt;p&gt;The RSA fingerprint of the key pair.&lt;/p&gt;
--- @param createdAt [IsoDate] &lt;p&gt;The timestamp when the key pair was created (e.g., &lt;code&gt;1479816991.349&lt;/code&gt;).&lt;/p&gt;
--- @param location [ResourceLocation] &lt;p&gt;The region name and Availability Zone where the key pair was created.&lt;/p&gt;
+-- <p>Describes the SSH key pair.</p>
+-- @param name [ResourceName] <p>The friendly name of the SSH key pair.</p>
+-- @param resourceType [ResourceType] <p>The resource type (usually <code>KeyPair</code>).</p>
+-- @param supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- @param arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the key pair (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:KeyPair/05859e3d-331d-48ba-9034-12345EXAMPLE</code>).</p>
+-- @param fingerprint [Base64] <p>The RSA fingerprint of the key pair.</p>
+-- @param createdAt [IsoDate] <p>The timestamp when the key pair was created (e.g., <code>1479816991.349</code>).</p>
+-- @param location [ResourceLocation] <p>The region name and Availability Zone where the key pair was created.</p>
 function M.KeyPair(name, resourceType, supportCode, arn, fingerprint, createdAt, location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KeyPair")
 	local t = { 
@@ -1969,7 +1969,7 @@ end
 
 --- Create a structure of type GetActiveNamesRequest
 --  
--- @param pageToken [string] &lt;p&gt;A token used for paginating results from your get active names request.&lt;/p&gt;
+-- @param pageToken [string] <p>A token used for paginating results from your get active names request.</p>
 function M.GetActiveNamesRequest(pageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetActiveNamesRequest")
 	local t = { 
@@ -1995,8 +1995,8 @@ end
 
 --- Create a structure of type CloseInstancePublicPortsRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance on which you're attempting to close the public ports.&lt;/p&gt;
--- @param portInfo [PortInfo] &lt;p&gt;Information about the public port you are trying to close.&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The name of the instance on which you're attempting to close the public ports.</p>
+-- @param portInfo [PortInfo] <p>Information about the public port you are trying to close.</p>
 -- Required parameter: portInfo
 -- Required parameter: instanceName
 function M.CloseInstancePublicPortsRequest(instanceName, portInfo, ...)
@@ -2023,10 +2023,10 @@ function M.AssertPortInfo(struct)
 end
 
 --- Create a structure of type PortInfo
--- &lt;p&gt;Describes information about the ports on your virtual private server (or &lt;i&gt;instance&lt;/i&gt;).&lt;/p&gt;
--- @param toPort [Port] &lt;p&gt;The last port in the range.&lt;/p&gt;
--- @param fromPort [Port] &lt;p&gt;The first port in the range.&lt;/p&gt;
--- @param protocol [NetworkProtocol] &lt;p&gt;The protocol. &lt;/p&gt;
+-- <p>Describes information about the ports on your virtual private server (or <i>instance</i>).</p>
+-- @param toPort [Port] <p>The last port in the range.</p>
+-- @param fromPort [Port] <p>The first port in the range.</p>
+-- @param protocol [NetworkProtocol] <p>The protocol. </p>
 function M.PortInfo(toPort, fromPort, protocol, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PortInfo")
 	local t = { 
@@ -2054,8 +2054,8 @@ end
 
 --- Create a structure of type CreateDomainEntryRequest
 --  
--- @param domainEntry [DomainEntry] &lt;p&gt;An array of key-value pairs containing information about the domain entry request.&lt;/p&gt;
--- @param domainName [DomainName] &lt;p&gt;The domain name (e.g., &lt;code&gt;example.com&lt;/code&gt;) for which you want to create the domain entry.&lt;/p&gt;
+-- @param domainEntry [DomainEntry] <p>An array of key-value pairs containing information about the domain entry request.</p>
+-- @param domainName [DomainName] <p>The domain name (e.g., <code>example.com</code>) for which you want to create the domain entry.</p>
 -- Required parameter: domainName
 -- Required parameter: domainEntry
 function M.CreateDomainEntryRequest(domainEntry, domainName, ...)
@@ -2081,7 +2081,7 @@ end
 
 --- Create a structure of type CreateDomainEntryResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the operation.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the operation.</p>
 function M.CreateDomainEntryResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainEntryResult")
 	local t = { 
@@ -2105,7 +2105,7 @@ end
 
 --- Create a structure of type GetInstanceRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance.&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The name of the instance.</p>
 -- Required parameter: instanceName
 function M.GetInstanceRequest(instanceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceRequest")
@@ -2130,8 +2130,8 @@ end
 
 --- Create a structure of type GetBundlesRequest
 --  
--- @param includeInactive [boolean] &lt;p&gt;A Boolean value that indicates whether to include inactive bundle results in your request.&lt;/p&gt;
--- @param pageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get bundles request.&lt;/p&gt;
+-- @param includeInactive [boolean] <p>A Boolean value that indicates whether to include inactive bundle results in your request.</p>
+-- @param pageToken [string] <p>A token used for advancing to the next page of results from your get bundles request.</p>
 function M.GetBundlesRequest(includeInactive, pageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBundlesRequest")
 	local t = { 
@@ -2155,7 +2155,7 @@ end
 
 --- Create a structure of type ImportKeyPairResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the request operation.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
 function M.ImportKeyPairResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportKeyPairResult")
 	local t = { 
@@ -2179,7 +2179,7 @@ end
 
 --- Create a structure of type RebootInstanceRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance to reboot.&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The name of the instance to reboot.</p>
 -- Required parameter: instanceName
 function M.RebootInstanceRequest(instanceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootInstanceRequest")
@@ -2206,8 +2206,8 @@ end
 
 --- Create a structure of type OpenInstancePublicPortsRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance for which you want to open the public ports.&lt;/p&gt;
--- @param portInfo [PortInfo] &lt;p&gt;An array of key-value pairs containing information about the port mappings.&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The name of the instance for which you want to open the public ports.</p>
+-- @param portInfo [PortInfo] <p>An array of key-value pairs containing information about the port mappings.</p>
 -- Required parameter: portInfo
 -- Required parameter: instanceName
 function M.OpenInstancePublicPortsRequest(instanceName, portInfo, ...)
@@ -2242,18 +2242,18 @@ function M.AssertBlueprint(struct)
 end
 
 --- Create a structure of type Blueprint
--- &lt;p&gt;Describes a blueprint (a virtual private server image).&lt;/p&gt;
--- @param group [NonEmptyString] &lt;p&gt;The group name of the blueprint (e.g., &lt;code&gt;amazon-linux&lt;/code&gt;).&lt;/p&gt;
--- @param description [string] &lt;p&gt;The description of the blueprint.&lt;/p&gt;
--- @param productUrl [string] &lt;p&gt;The product URL to learn more about the image or blueprint.&lt;/p&gt;
--- @param version [string] &lt;p&gt;The version number of the operating system, application, or stack (e.g., &lt;code&gt;2016.03.0&lt;/code&gt;).&lt;/p&gt;
--- @param licenseUrl [string] &lt;p&gt;The end-user license agreement URL for the image or blueprint.&lt;/p&gt;
--- @param versionCode [string] &lt;p&gt;The version code.&lt;/p&gt;
--- @param blueprintId [NonEmptyString] &lt;p&gt;The ID for the virtual private server image (e.g., &lt;code&gt;app_wordpress_4_4&lt;/code&gt; or &lt;code&gt;app_lamp_7_0&lt;/code&gt;).&lt;/p&gt;
--- @param minPower [integer] &lt;p&gt;The minimum machine size required to run this blueprint. &lt;code&gt;0&lt;/code&gt; indicates that the blueprint runs on all instances.&lt;/p&gt;
--- @param type [BlueprintType] &lt;p&gt;The type of the blueprint (e.g., &lt;code&gt;os&lt;/code&gt; or &lt;code&gt;app&lt;/code&gt;).&lt;/p&gt;
--- @param isActive [boolean] &lt;p&gt;A Boolean value indicating whether the blueprint is active. When you update your blueprints, you will inactivate old blueprints and keep the most recent versions active.&lt;/p&gt;
--- @param name [ResourceName] &lt;p&gt;The friendly name of the blueprint (e.g., &lt;code&gt;Amazon Linux&lt;/code&gt;).&lt;/p&gt;
+-- <p>Describes a blueprint (a virtual private server image).</p>
+-- @param group [NonEmptyString] <p>The group name of the blueprint (e.g., <code>amazon-linux</code>).</p>
+-- @param description [string] <p>The description of the blueprint.</p>
+-- @param productUrl [string] <p>The product URL to learn more about the image or blueprint.</p>
+-- @param version [string] <p>The version number of the operating system, application, or stack (e.g., <code>2016.03.0</code>).</p>
+-- @param licenseUrl [string] <p>The end-user license agreement URL for the image or blueprint.</p>
+-- @param versionCode [string] <p>The version code.</p>
+-- @param blueprintId [NonEmptyString] <p>The ID for the virtual private server image (e.g., <code>app_wordpress_4_4</code> or <code>app_lamp_7_0</code>).</p>
+-- @param minPower [integer] <p>The minimum machine size required to run this blueprint. <code>0</code> indicates that the blueprint runs on all instances.</p>
+-- @param type [BlueprintType] <p>The type of the blueprint (e.g., <code>os</code> or <code>app</code>).</p>
+-- @param isActive [boolean] <p>A Boolean value indicating whether the blueprint is active. When you update your blueprints, you will inactivate old blueprints and keep the most recent versions active.</p>
+-- @param name [ResourceName] <p>The friendly name of the blueprint (e.g., <code>Amazon Linux</code>).</p>
 function M.Blueprint(group, description, productUrl, version, licenseUrl, versionCode, blueprintId, minPower, type, isActive, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Blueprint")
 	local t = { 
@@ -2286,7 +2286,7 @@ end
 
 --- Create a structure of type GetInstancesRequest
 --  
--- @param pageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get instances request.&lt;/p&gt;
+-- @param pageToken [string] <p>A token used for advancing to the next page of results from your get instances request.</p>
 function M.GetInstancesRequest(pageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstancesRequest")
 	local t = { 
@@ -2309,9 +2309,9 @@ function M.AssertResourceLocation(struct)
 end
 
 --- Create a structure of type ResourceLocation
--- &lt;p&gt;Describes the resource location.&lt;/p&gt;
--- @param availabilityZone [string] &lt;p&gt;The Availability Zone. Follows the format &lt;code&gt;us-east-1a&lt;/code&gt; (case-sensitive).&lt;/p&gt;
--- @param regionName [RegionName] &lt;p&gt;The AWS Region name.&lt;/p&gt;
+-- <p>Describes the resource location.</p>
+-- @param availabilityZone [string] <p>The Availability Zone. Follows the format <code>us-east-1a</code> (case-sensitive).</p>
+-- @param regionName [RegionName] <p>The AWS Region name.</p>
 function M.ResourceLocation(availabilityZone, regionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceLocation")
 	local t = { 
@@ -2336,7 +2336,7 @@ end
 
 --- Create a structure of type CreateDomainRequest
 --  
--- @param domainName [DomainName] &lt;p&gt;The domain name to manage (e.g., &lt;code&gt;example.com&lt;/code&gt;).&lt;/p&gt; &lt;note&gt; &lt;p&gt;You cannot register a new domain name using Lightsail. You must register a domain name using Amazon Route 53 or another domain name registrar. If you have already registered your domain, you can enter its name in this parameter to manage the DNS records for that domain.&lt;/p&gt; &lt;/note&gt;
+-- @param domainName [DomainName] <p>The domain name to manage (e.g., <code>example.com</code>).</p> <note> <p>You cannot register a new domain name using Lightsail. You must register a domain name using Amazon Route 53 or another domain name registrar. If you have already registered your domain, you can enter its name in this parameter to manage the DNS records for that domain.</p> </note>
 -- Required parameter: domainName
 function M.CreateDomainRequest(domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainRequest")
@@ -2368,17 +2368,17 @@ function M.AssertBundle(struct)
 end
 
 --- Create a structure of type Bundle
--- &lt;p&gt;Describes a bundle, which is a set of specs describing your virtual private server (or &lt;i&gt;instance&lt;/i&gt;).&lt;/p&gt;
--- @param name [string] &lt;p&gt;A friendly name for the bundle (e.g., &lt;code&gt;Micro&lt;/code&gt;).&lt;/p&gt;
--- @param power [integer] &lt;p&gt;The power of the bundle (e.g., &lt;code&gt;500&lt;/code&gt;).&lt;/p&gt;
--- @param price [float] &lt;p&gt;The price in US dollars (e.g., &lt;code&gt;5.0&lt;/code&gt;).&lt;/p&gt;
--- @param ramSizeInGb [float] &lt;p&gt;The amount of RAM in GB (e.g., &lt;code&gt;2.0&lt;/code&gt;).&lt;/p&gt;
--- @param diskSizeInGb [integer] &lt;p&gt;The size of the SSD (e.g., &lt;code&gt;30&lt;/code&gt;).&lt;/p&gt;
--- @param transferPerMonthInGb [integer] &lt;p&gt;The data transfer rate per month in GB (e.g., &lt;code&gt;2000&lt;/code&gt;).&lt;/p&gt;
--- @param cpuCount [integer] &lt;p&gt;The number of vCPUs included in the bundle (e.g., &lt;code&gt;2&lt;/code&gt;).&lt;/p&gt;
--- @param instanceType [string] &lt;p&gt;The Amazon EC2 instance type (e.g., &lt;code&gt;t2.micro&lt;/code&gt;).&lt;/p&gt;
--- @param isActive [boolean] &lt;p&gt;A Boolean value indicating whether the bundle is active.&lt;/p&gt;
--- @param bundleId [NonEmptyString] &lt;p&gt;The bundle ID (e.g., &lt;code&gt;micro_1_0&lt;/code&gt;).&lt;/p&gt;
+-- <p>Describes a bundle, which is a set of specs describing your virtual private server (or <i>instance</i>).</p>
+-- @param name [string] <p>A friendly name for the bundle (e.g., <code>Micro</code>).</p>
+-- @param power [integer] <p>The power of the bundle (e.g., <code>500</code>).</p>
+-- @param price [float] <p>The price in US dollars (e.g., <code>5.0</code>).</p>
+-- @param ramSizeInGb [float] <p>The amount of RAM in GB (e.g., <code>2.0</code>).</p>
+-- @param diskSizeInGb [integer] <p>The size of the SSD (e.g., <code>30</code>).</p>
+-- @param transferPerMonthInGb [integer] <p>The data transfer rate per month in GB (e.g., <code>2000</code>).</p>
+-- @param cpuCount [integer] <p>The number of vCPUs included in the bundle (e.g., <code>2</code>).</p>
+-- @param instanceType [string] <p>The Amazon EC2 instance type (e.g., <code>t2.micro</code>).</p>
+-- @param isActive [boolean] <p>A Boolean value indicating whether the bundle is active.</p>
+-- @param bundleId [NonEmptyString] <p>The bundle ID (e.g., <code>micro_1_0</code>).</p>
 function M.Bundle(name, power, price, ramSizeInGb, diskSizeInGb, transferPerMonthInGb, cpuCount, instanceType, isActive, bundleId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Bundle")
 	local t = { 
@@ -2410,7 +2410,7 @@ end
 
 --- Create a structure of type DeleteInstanceResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the results of your delete instance request.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the results of your delete instance request.</p>
 function M.DeleteInstanceResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceResult")
 	local t = { 
@@ -2435,11 +2435,11 @@ function M.AssertInvalidInputException(struct)
 end
 
 --- Create a structure of type InvalidInputException
--- &lt;p&gt;Lightsail throws this exception when user input does not conform to the validation rules of an input field.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.&lt;/p&gt; &lt;/note&gt;
--- @param docs [string] &lt;p&gt;Lightsail throws this exception when user input does not conform to the validation rules of an input field.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.&lt;/p&gt; &lt;/note&gt;
--- @param message [string] &lt;p&gt;Lightsail throws this exception when user input does not conform to the validation rules of an input field.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.&lt;/p&gt; &lt;/note&gt;
--- @param code [string] &lt;p&gt;Lightsail throws this exception when user input does not conform to the validation rules of an input field.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.&lt;/p&gt; &lt;/note&gt;
--- @param tip [string] &lt;p&gt;Lightsail throws this exception when user input does not conform to the validation rules of an input field.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.&lt;/p&gt; &lt;/note&gt;
+-- <p>Lightsail throws this exception when user input does not conform to the validation rules of an input field.</p> <note> <p>Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.</p> </note>
+-- @param docs [string] <p>Lightsail throws this exception when user input does not conform to the validation rules of an input field.</p> <note> <p>Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.</p> </note>
+-- @param message [string] <p>Lightsail throws this exception when user input does not conform to the validation rules of an input field.</p> <note> <p>Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.</p> </note>
+-- @param code [string] <p>Lightsail throws this exception when user input does not conform to the validation rules of an input field.</p> <note> <p>Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.</p> </note>
+-- @param tip [string] <p>Lightsail throws this exception when user input does not conform to the validation rules of an input field.</p> <note> <p>Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.</p> </note>
 function M.InvalidInputException(docs, message, code, tip, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputException")
 	local t = { 
@@ -2467,11 +2467,11 @@ function M.AssertAccountSetupInProgressException(struct)
 end
 
 --- Create a structure of type AccountSetupInProgressException
--- &lt;p&gt;Lightsail throws this exception when an account is still in the setup in progress state.&lt;/p&gt;
--- @param docs [string] &lt;p&gt;Lightsail throws this exception when an account is still in the setup in progress state.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Lightsail throws this exception when an account is still in the setup in progress state.&lt;/p&gt;
--- @param code [string] &lt;p&gt;Lightsail throws this exception when an account is still in the setup in progress state.&lt;/p&gt;
--- @param tip [string] &lt;p&gt;Lightsail throws this exception when an account is still in the setup in progress state.&lt;/p&gt;
+-- <p>Lightsail throws this exception when an account is still in the setup in progress state.</p>
+-- @param docs [string] <p>Lightsail throws this exception when an account is still in the setup in progress state.</p>
+-- @param message [string] <p>Lightsail throws this exception when an account is still in the setup in progress state.</p>
+-- @param code [string] <p>Lightsail throws this exception when an account is still in the setup in progress state.</p>
+-- @param tip [string] <p>Lightsail throws this exception when an account is still in the setup in progress state.</p>
 function M.AccountSetupInProgressException(docs, message, code, tip, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountSetupInProgressException")
 	local t = { 
@@ -2497,7 +2497,7 @@ end
 
 --- Create a structure of type DeleteDomainEntryResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the results of your delete domain entry request.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the results of your delete domain entry request.</p>
 function M.DeleteDomainEntryResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainEntryResult")
 	local t = { 
@@ -2521,7 +2521,7 @@ end
 
 --- Create a structure of type CreateKeyPairRequest
 --  
--- @param keyPairName [ResourceName] &lt;p&gt;The name for your new key pair.&lt;/p&gt;
+-- @param keyPairName [ResourceName] <p>The name for your new key pair.</p>
 -- Required parameter: keyPairName
 function M.CreateKeyPairRequest(keyPairName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateKeyPairRequest")
@@ -2548,8 +2548,8 @@ end
 
 --- Create a structure of type DeleteDomainEntryRequest
 --  
--- @param domainEntry [DomainEntry] &lt;p&gt;An array of key-value pairs containing information about your domain entries.&lt;/p&gt;
--- @param domainName [DomainName] &lt;p&gt;The name of the domain entry to delete.&lt;/p&gt;
+-- @param domainEntry [DomainEntry] <p>An array of key-value pairs containing information about your domain entries.</p>
+-- @param domainName [DomainName] <p>The name of the domain entry to delete.</p>
 -- Required parameter: domainName
 -- Required parameter: domainEntry
 function M.DeleteDomainEntryRequest(domainEntry, domainName, ...)
@@ -2578,12 +2578,12 @@ function M.AssertDomainEntry(struct)
 end
 
 --- Create a structure of type DomainEntry
--- &lt;p&gt;Describes a domain recordset entry.&lt;/p&gt;
--- @param type [DomainEntryType] &lt;p&gt;The type of domain entry (e.g., &lt;code&gt;SOA&lt;/code&gt; or &lt;code&gt;NS&lt;/code&gt;).&lt;/p&gt;
--- @param options [DomainEntryOptions] &lt;p&gt;The options for the domain entry.&lt;/p&gt;
--- @param target [string] &lt;p&gt;The target AWS name server (e.g., &lt;code&gt;ns-111.awsdns-22.com.&lt;/code&gt;).&lt;/p&gt;
--- @param id [NonEmptyString] &lt;p&gt;The ID of the domain recordset entry.&lt;/p&gt;
--- @param name [DomainName] &lt;p&gt;The name of the domain.&lt;/p&gt;
+-- <p>Describes a domain recordset entry.</p>
+-- @param type [DomainEntryType] <p>The type of domain entry (e.g., <code>SOA</code> or <code>NS</code>).</p>
+-- @param options [DomainEntryOptions] <p>The options for the domain entry.</p>
+-- @param target [string] <p>The target AWS name server (e.g., <code>ns-111.awsdns-22.com.</code>).</p>
+-- @param id [NonEmptyString] <p>The ID of the domain recordset entry.</p>
+-- @param name [DomainName] <p>The name of the domain.</p>
 function M.DomainEntry(type, options, target, id, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainEntry")
 	local t = { 
@@ -2611,7 +2611,7 @@ end
 
 --- Create a structure of type GetStaticIpRequest
 --  
--- @param staticIpName [ResourceName] &lt;p&gt;The name of the static IP in Lightsail.&lt;/p&gt;
+-- @param staticIpName [ResourceName] <p>The name of the static IP in Lightsail.</p>
 -- Required parameter: staticIpName
 function M.GetStaticIpRequest(staticIpName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStaticIpRequest")
@@ -2636,8 +2636,8 @@ end
 
 --- Create a structure of type DownloadDefaultKeyPairResult
 --  
--- @param publicKeyBase64 [Base64] &lt;p&gt;A base64-encoded public key of the &lt;code&gt;ssh-rsa&lt;/code&gt; type.&lt;/p&gt;
--- @param privateKeyBase64 [Base64] &lt;p&gt;A base64-encoded RSA private key.&lt;/p&gt;
+-- @param publicKeyBase64 [Base64] <p>A base64-encoded public key of the <code>ssh-rsa</code> type.</p>
+-- @param privateKeyBase64 [Base64] <p>A base64-encoded RSA private key.</p>
 function M.DownloadDefaultKeyPairResult(publicKeyBase64, privateKeyBase64, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DownloadDefaultKeyPairResult")
 	local t = { 
@@ -2661,7 +2661,7 @@ end
 
 --- Create a structure of type CreateInstancesFromSnapshotResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the results of your create instances from snapshot request.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances from snapshot request.</p>
 function M.CreateInstancesFromSnapshotResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstancesFromSnapshotResult")
 	local t = { 
@@ -2704,7 +2704,7 @@ end
 
 --- Create a structure of type IsVpcPeeredResult
 --  
--- @param isPeered [boolean] &lt;p&gt;Returns &lt;code&gt;true&lt;/code&gt; if the Lightsail VPC is peered; otherwise, &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
+-- @param isPeered [boolean] <p>Returns <code>true</code> if the Lightsail VPC is peered; otherwise, <code>false</code>.</p>
 function M.IsVpcPeeredResult(isPeered, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IsVpcPeeredResult")
 	local t = { 
@@ -2734,16 +2734,16 @@ function M.AssertStaticIp(struct)
 end
 
 --- Create a structure of type StaticIp
--- &lt;p&gt;Describes the static IP.&lt;/p&gt;
--- @param name [ResourceName] &lt;p&gt;The name of the static IP (e.g., &lt;code&gt;StaticIP-Virginia-EXAMPLE&lt;/code&gt;).&lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The resource type (usually &lt;code&gt;StaticIp&lt;/code&gt;).&lt;/p&gt;
--- @param supportCode [string] &lt;p&gt;The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.&lt;/p&gt;
--- @param attachedTo [ResourceName] &lt;p&gt;The instance where the static IP is attached (e.g., &lt;code&gt;Amazon_Linux-1GB-Virginia-1&lt;/code&gt;).&lt;/p&gt;
--- @param arn [NonEmptyString] &lt;p&gt;The Amazon Resource Name (ARN) of the static IP (e.g., &lt;code&gt;arn:aws:lightsail:us-east-1:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE&lt;/code&gt;).&lt;/p&gt;
--- @param isAttached [boolean] &lt;p&gt;A Boolean value indicating whether the static IP is attached.&lt;/p&gt;
--- @param ipAddress [IpAddress] &lt;p&gt;The static IP address.&lt;/p&gt;
--- @param createdAt [IsoDate] &lt;p&gt;The timestamp when the static IP was created (e.g., &lt;code&gt;1479735304.222&lt;/code&gt;).&lt;/p&gt;
--- @param location [ResourceLocation] &lt;p&gt;The region and Availability Zone where the static IP was created.&lt;/p&gt;
+-- <p>Describes the static IP.</p>
+-- @param name [ResourceName] <p>The name of the static IP (e.g., <code>StaticIP-Virginia-EXAMPLE</code>).</p>
+-- @param resourceType [ResourceType] <p>The resource type (usually <code>StaticIp</code>).</p>
+-- @param supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- @param attachedTo [ResourceName] <p>The instance where the static IP is attached (e.g., <code>Amazon_Linux-1GB-Virginia-1</code>).</p>
+-- @param arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the static IP (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
+-- @param isAttached [boolean] <p>A Boolean value indicating whether the static IP is attached.</p>
+-- @param ipAddress [IpAddress] <p>The static IP address.</p>
+-- @param createdAt [IsoDate] <p>The timestamp when the static IP was created (e.g., <code>1479735304.222</code>).</p>
+-- @param location [ResourceLocation] <p>The region and Availability Zone where the static IP was created.</p>
 function M.StaticIp(name, resourceType, supportCode, attachedTo, arn, isAttached, ipAddress, createdAt, location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StaticIp")
 	local t = { 
@@ -2775,7 +2775,7 @@ end
 
 --- Create a structure of type DeleteInstanceRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance to delete.&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The name of the instance to delete.</p>
 -- Required parameter: instanceName
 function M.DeleteInstanceRequest(instanceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceRequest")
@@ -2800,7 +2800,7 @@ end
 
 --- Create a structure of type GetInstancePortStatesRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance.&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The name of the instance.</p>
 -- Required parameter: instanceName
 function M.GetInstancePortStatesRequest(instanceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstancePortStatesRequest")
@@ -2824,7 +2824,7 @@ end
 
 --- Create a structure of type CloseInstancePublicPortsResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs that contains information about the operation.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs that contains information about the operation.</p>
 function M.CloseInstancePublicPortsResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloseInstancePublicPortsResult")
 	local t = { 
@@ -2849,8 +2849,8 @@ end
 
 --- Create a structure of type GetInstanceAccessDetailsRequest
 --  
--- @param protocol [InstanceAccessProtocol] &lt;p&gt;The protocol to use to connect to your instance. Defaults to &lt;code&gt;ssh&lt;/code&gt;.&lt;/p&gt;
--- @param instanceName [ResourceName] &lt;p&gt;The name of the instance to access.&lt;/p&gt;
+-- @param protocol [InstanceAccessProtocol] <p>The protocol to use to connect to your instance. Defaults to <code>ssh</code>.</p>
+-- @param instanceName [ResourceName] <p>The name of the instance to access.</p>
 -- Required parameter: instanceName
 function M.GetInstanceAccessDetailsRequest(protocol, instanceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceAccessDetailsRequest")
@@ -2875,7 +2875,7 @@ end
 
 --- Create a structure of type GetInstanceSnapshotResult
 --  
--- @param instanceSnapshot [InstanceSnapshot] &lt;p&gt;An array of key-value pairs containing information about the results of your get instance snapshot request.&lt;/p&gt;
+-- @param instanceSnapshot [InstanceSnapshot] <p>An array of key-value pairs containing information about the results of your get instance snapshot request.</p>
 function M.GetInstanceSnapshotResult(instanceSnapshot, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceSnapshotResult")
 	local t = { 
@@ -2898,7 +2898,7 @@ end
 
 --- Create a structure of type GetOperationsRequest
 --  
--- @param pageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get operations request.&lt;/p&gt;
+-- @param pageToken [string] <p>A token used for advancing to the next page of results from your get operations request.</p>
 function M.GetOperationsRequest(pageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationsRequest")
 	local t = { 
@@ -2922,8 +2922,8 @@ end
 
 --- Create a structure of type GetBundlesResult
 --  
--- @param nextPageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get active names request.&lt;/p&gt;
--- @param bundles [BundleList] &lt;p&gt;An array of key-value pairs that contains information about the available bundles.&lt;/p&gt;
+-- @param nextPageToken [string] <p>A token used for advancing to the next page of results from your get active names request.</p>
+-- @param bundles [BundleList] <p>An array of key-value pairs that contains information about the available bundles.</p>
 function M.GetBundlesResult(nextPageToken, bundles, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBundlesResult")
 	local t = { 
@@ -2947,9 +2947,9 @@ function M.AssertInstanceNetworking(struct)
 end
 
 --- Create a structure of type InstanceNetworking
--- &lt;p&gt;Describes monthly data transfer rates and port information for an instance.&lt;/p&gt;
--- @param monthlyTransfer [MonthlyTransfer] &lt;p&gt;The amount of data in GB allocated for monthly data transfers.&lt;/p&gt;
--- @param ports [InstancePortInfoList] &lt;p&gt;An array of key-value pairs containing information about the ports on the instance.&lt;/p&gt;
+-- <p>Describes monthly data transfer rates and port information for an instance.</p>
+-- @param monthlyTransfer [MonthlyTransfer] <p>The amount of data in GB allocated for monthly data transfers.</p>
+-- @param ports [InstancePortInfoList] <p>An array of key-value pairs containing information about the ports on the instance.</p>
 function M.InstanceNetworking(monthlyTransfer, ports, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceNetworking")
 	local t = { 
@@ -2973,7 +2973,7 @@ end
 
 --- Create a structure of type UpdateDomainEntryResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the request operation.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
 function M.UpdateDomainEntryResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainEntryResult")
 	local t = { 
@@ -2998,11 +2998,11 @@ function M.AssertServiceException(struct)
 end
 
 --- Create a structure of type ServiceException
--- &lt;p&gt;A general service exception.&lt;/p&gt;
--- @param docs [string] &lt;p&gt;A general service exception.&lt;/p&gt;
--- @param message [string] &lt;p&gt;A general service exception.&lt;/p&gt;
--- @param code [string] &lt;p&gt;A general service exception.&lt;/p&gt;
--- @param tip [string] &lt;p&gt;A general service exception.&lt;/p&gt;
+-- <p>A general service exception.</p>
+-- @param docs [string] <p>A general service exception.</p>
+-- @param message [string] <p>A general service exception.</p>
+-- @param code [string] <p>A general service exception.</p>
+-- @param tip [string] <p>A general service exception.</p>
 function M.ServiceException(docs, message, code, tip, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceException")
 	local t = { 
@@ -3028,7 +3028,7 @@ end
 
 --- Create a structure of type DeleteKeyPairResult
 --  
--- @param operation [Operation] &lt;p&gt;An array of key-value pairs containing information about the results of your delete key pair request.&lt;/p&gt;
+-- @param operation [Operation] <p>An array of key-value pairs containing information about the results of your delete key pair request.</p>
 function M.DeleteKeyPairResult(operation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteKeyPairResult")
 	local t = { 
@@ -3051,7 +3051,7 @@ end
 
 --- Create a structure of type DeleteInstanceSnapshotResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the results of your delete instance snapshot request.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the results of your delete instance snapshot request.</p>
 function M.DeleteInstanceSnapshotResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceSnapshotResult")
 	local t = { 
@@ -3075,8 +3075,8 @@ end
 
 --- Create a structure of type GetDomainsResult
 --  
--- @param domains [DomainList] &lt;p&gt;An array of key-value pairs containing information about each of the domain entries in the user's account.&lt;/p&gt;
--- @param nextPageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get active names request.&lt;/p&gt;
+-- @param domains [DomainList] <p>An array of key-value pairs containing information about each of the domain entries in the user's account.</p>
+-- @param nextPageToken [string] <p>A token used for advancing to the next page of results from your get active names request.</p>
 function M.GetDomainsResult(domains, nextPageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainsResult")
 	local t = { 
@@ -3100,7 +3100,7 @@ end
 
 --- Create a structure of type GetRegionsRequest
 --  
--- @param includeAvailabilityZones [boolean] &lt;p&gt;A Boolean value indicating whether to also include Availability Zones in your get regions request. Availability Zones are indicated with a letter: e.g., &lt;code&gt;us-east-1a&lt;/code&gt;.&lt;/p&gt;
+-- @param includeAvailabilityZones [boolean] <p>A Boolean value indicating whether to also include Availability Zones in your get regions request. Availability Zones are indicated with a letter: e.g., <code>us-east-1a</code>.</p>
 function M.GetRegionsRequest(includeAvailabilityZones, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRegionsRequest")
 	local t = { 
@@ -3124,8 +3124,8 @@ end
 
 --- Create a structure of type GetActiveNamesResult
 --  
--- @param nextPageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get active names request.&lt;/p&gt;
--- @param activeNames [StringList] &lt;p&gt;The list of active names returned by the get active names request.&lt;/p&gt;
+-- @param nextPageToken [string] <p>A token used for advancing to the next page of results from your get active names request.</p>
+-- @param activeNames [StringList] <p>The list of active names returned by the get active names request.</p>
 function M.GetActiveNamesResult(nextPageToken, activeNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetActiveNamesResult")
 	local t = { 
@@ -3150,7 +3150,7 @@ end
 
 --- Create a structure of type AllocateStaticIpRequest
 --  
--- @param staticIpName [ResourceName] &lt;p&gt;The name of the static IP address.&lt;/p&gt;
+-- @param staticIpName [ResourceName] <p>The name of the static IP address.</p>
 -- Required parameter: staticIpName
 function M.AllocateStaticIpRequest(staticIpName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AllocateStaticIpRequest")
@@ -3174,7 +3174,7 @@ end
 
 --- Create a structure of type AllocateStaticIpResult
 --  
--- @param operations [OperationList] &lt;p&gt;An array of key-value pairs containing information about the static IP address you allocated.&lt;/p&gt;
+-- @param operations [OperationList] <p>An array of key-value pairs containing information about the static IP address you allocated.</p>
 function M.AllocateStaticIpResult(operations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AllocateStaticIpResult")
 	local t = { 
@@ -3198,8 +3198,8 @@ end
 
 --- Create a structure of type GetBlueprintsRequest
 --  
--- @param includeInactive [boolean] &lt;p&gt;A Boolean value indicating whether to include inactive results in your request.&lt;/p&gt;
--- @param pageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get blueprints request.&lt;/p&gt;
+-- @param includeInactive [boolean] <p>A Boolean value indicating whether to include inactive results in your request.</p>
+-- @param pageToken [string] <p>A token used for advancing to the next page of results from your get blueprints request.</p>
 function M.GetBlueprintsRequest(includeInactive, pageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBlueprintsRequest")
 	local t = { 
@@ -3224,8 +3224,8 @@ end
 
 --- Create a structure of type GetInstanceSnapshotsResult
 --  
--- @param nextPageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get instance snapshots request.&lt;/p&gt;
--- @param instanceSnapshots [InstanceSnapshotList] &lt;p&gt;An array of key-value pairs containing information about the results of your get instance snapshots request.&lt;/p&gt;
+-- @param nextPageToken [string] <p>A token used for advancing to the next page of results from your get instance snapshots request.</p>
+-- @param instanceSnapshots [InstanceSnapshotList] <p>An array of key-value pairs containing information about the results of your get instance snapshots request.</p>
 function M.GetInstanceSnapshotsResult(nextPageToken, instanceSnapshots, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceSnapshotsResult")
 	local t = { 
@@ -3251,11 +3251,11 @@ function M.AssertAccessDeniedException(struct)
 end
 
 --- Create a structure of type AccessDeniedException
--- &lt;p&gt;Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.&lt;/p&gt;
--- @param docs [string] &lt;p&gt;Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.&lt;/p&gt;
--- @param code [string] &lt;p&gt;Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.&lt;/p&gt;
--- @param tip [string] &lt;p&gt;Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.&lt;/p&gt;
+-- <p>Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.</p>
+-- @param docs [string] <p>Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.</p>
+-- @param message [string] <p>Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.</p>
+-- @param code [string] <p>Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.</p>
+-- @param tip [string] <p>Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.</p>
 function M.AccessDeniedException(docs, message, code, tip, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
 	local t = { 
@@ -3283,11 +3283,11 @@ function M.AssertInstancePortState(struct)
 end
 
 --- Create a structure of type InstancePortState
--- &lt;p&gt;Describes the port state.&lt;/p&gt;
--- @param toPort [Port] &lt;p&gt;The last port in the range.&lt;/p&gt;
--- @param fromPort [Port] &lt;p&gt;The first port in the range.&lt;/p&gt;
--- @param state [PortState] &lt;p&gt;Specifies whether the instance port is &lt;code&gt;open&lt;/code&gt; or &lt;code&gt;closed&lt;/code&gt;.&lt;/p&gt;
--- @param protocol [NetworkProtocol] &lt;p&gt;The protocol being used. Can be one of the following.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;tcp&lt;/code&gt; - Transmission Control Protocol (TCP) provides reliable, ordered, and error-checked delivery of streamed data between applications running on hosts communicating by an IP network. If you have an application that doesn't require reliable data stream service, use UDP instead.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;all&lt;/code&gt; - All transport layer protocol types. For more general information, see &lt;a href=&quot;https://en.wikipedia.org/wiki/Transport_layer&quot;&gt;Transport layer&lt;/a&gt; on Wikipedia.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;udp&lt;/code&gt; - With User Datagram Protocol (UDP), computer applications can send messages (or datagrams) to other hosts on an Internet Protocol (IP) network. Prior communications are not required to set up transmission channels or data paths. Applications that don't require reliable data stream service can use UDP, which provides a connectionless datagram service that emphasizes reduced latency over reliability. If you do require reliable data stream service, use TCP instead.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Describes the port state.</p>
+-- @param toPort [Port] <p>The last port in the range.</p>
+-- @param fromPort [Port] <p>The first port in the range.</p>
+-- @param state [PortState] <p>Specifies whether the instance port is <code>open</code> or <code>closed</code>.</p>
+-- @param protocol [NetworkProtocol] <p>The protocol being used. Can be one of the following.</p> <ul> <li> <p> <code>tcp</code> - Transmission Control Protocol (TCP) provides reliable, ordered, and error-checked delivery of streamed data between applications running on hosts communicating by an IP network. If you have an application that doesn't require reliable data stream service, use UDP instead.</p> </li> <li> <p> <code>all</code> - All transport layer protocol types. For more general information, see <a href="https://en.wikipedia.org/wiki/Transport_layer">Transport layer</a> on Wikipedia.</p> </li> <li> <p> <code>udp</code> - With User Datagram Protocol (UDP), computer applications can send messages (or datagrams) to other hosts on an Internet Protocol (IP) network. Prior communications are not required to set up transmission channels or data paths. Applications that don't require reliable data stream service can use UDP, which provides a connectionless datagram service that emphasizes reduced latency over reliability. If you do require reliable data stream service, use TCP instead.</p> </li> </ul>
 function M.InstancePortState(toPort, fromPort, state, protocol, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstancePortState")
 	local t = { 
@@ -3313,7 +3313,7 @@ end
 
 --- Create a structure of type GetStaticIpsRequest
 --  
--- @param pageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get static IPs request.&lt;/p&gt;
+-- @param pageToken [string] <p>A token used for advancing to the next page of results from your get static IPs request.</p>
 function M.GetStaticIpsRequest(pageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStaticIpsRequest")
 	local t = { 
@@ -3338,11 +3338,11 @@ function M.AssertOperationFailureException(struct)
 end
 
 --- Create a structure of type OperationFailureException
--- &lt;p&gt;Lightsail throws this exception when an operation fails to execute.&lt;/p&gt;
--- @param docs [string] &lt;p&gt;Lightsail throws this exception when an operation fails to execute.&lt;/p&gt;
--- @param message [string] &lt;p&gt;Lightsail throws this exception when an operation fails to execute.&lt;/p&gt;
--- @param code [string] &lt;p&gt;Lightsail throws this exception when an operation fails to execute.&lt;/p&gt;
--- @param tip [string] &lt;p&gt;Lightsail throws this exception when an operation fails to execute.&lt;/p&gt;
+-- <p>Lightsail throws this exception when an operation fails to execute.</p>
+-- @param docs [string] <p>Lightsail throws this exception when an operation fails to execute.</p>
+-- @param message [string] <p>Lightsail throws this exception when an operation fails to execute.</p>
+-- @param code [string] <p>Lightsail throws this exception when an operation fails to execute.</p>
+-- @param tip [string] <p>Lightsail throws this exception when an operation fails to execute.</p>
 function M.OperationFailureException(docs, message, code, tip, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationFailureException")
 	local t = { 
@@ -3369,8 +3369,8 @@ end
 
 --- Create a structure of type GetKeyPairsResult
 --  
--- @param nextPageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get key pairs request.&lt;/p&gt;
--- @param keyPairs [KeyPairList] &lt;p&gt;An array of key-value pairs containing information about the key pairs.&lt;/p&gt;
+-- @param nextPageToken [string] <p>A token used for advancing to the next page of results from your get key pairs request.</p>
+-- @param keyPairs [KeyPairList] <p>An array of key-value pairs containing information about the key pairs.</p>
 function M.GetKeyPairsResult(nextPageToken, keyPairs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyPairsResult")
 	local t = { 
@@ -3395,8 +3395,8 @@ end
 
 --- Create a structure of type GetInstanceMetricDataResult
 --  
--- @param metricData [MetricDatapointList] &lt;p&gt;An array of key-value pairs containing information about the results of your get instance metric data request.&lt;/p&gt;
--- @param metricName [InstanceMetricName] &lt;p&gt;The metric name to return data for. &lt;/p&gt;
+-- @param metricData [MetricDatapointList] <p>An array of key-value pairs containing information about the results of your get instance metric data request.</p>
+-- @param metricName [InstanceMetricName] <p>The metric name to return data for. </p>
 function M.GetInstanceMetricDataResult(metricData, metricName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceMetricDataResult")
 	local t = { 
@@ -3420,7 +3420,7 @@ end
 
 --- Create a structure of type GetDomainResult
 --  
--- @param domain [Domain] &lt;p&gt;An array of key-value pairs containing information about your get domain request.&lt;/p&gt;
+-- @param domain [Domain] <p>An array of key-value pairs containing information about your get domain request.</p>
 function M.GetDomainResult(domain, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainResult")
 	local t = { 
@@ -3443,7 +3443,7 @@ end
 
 --- Create a structure of type GetInstanceStateResult
 --  
--- @param state [InstanceState] &lt;p&gt;The state of the instance.&lt;/p&gt;
+-- @param state [InstanceState] <p>The state of the instance.</p>
 function M.GetInstanceStateResult(state, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceStateResult")
 	local t = { 
@@ -3469,8 +3469,8 @@ end
 
 --- Create a structure of type AttachStaticIpRequest
 --  
--- @param staticIpName [ResourceName] &lt;p&gt;The name of the static IP.&lt;/p&gt;
--- @param instanceName [ResourceName] &lt;p&gt;The instance name to which you want to attach the static IP address.&lt;/p&gt;
+-- @param staticIpName [ResourceName] <p>The name of the static IP.</p>
+-- @param instanceName [ResourceName] <p>The instance name to which you want to attach the static IP address.</p>
 -- Required parameter: staticIpName
 -- Required parameter: instanceName
 function M.AttachStaticIpRequest(staticIpName, instanceName, ...)
@@ -3505,12 +3505,12 @@ end
 
 --- Create a structure of type CreateInstancesFromSnapshotRequest
 --  
--- @param userData [string] &lt;p&gt;You can create a launch script that configures a server with additional user data. For example, &lt;code&gt;apt-get –y update&lt;/code&gt;.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use &lt;code&gt;yum&lt;/code&gt;, Debian and Ubuntu use &lt;code&gt;apt-get&lt;/code&gt;, and FreeBSD uses &lt;code&gt;pkg&lt;/code&gt;. For a complete list, see the &lt;a href=&quot;http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps&quot;&gt;Dev Guide&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt;
--- @param availabilityZone [string] &lt;p&gt;The Availability Zone where you want to create your instances. Use the following formatting: &lt;code&gt;us-east-1a&lt;/code&gt; (case sensitive). You can get a list of availability zones by using the &lt;a href=&quot;http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html&quot;&gt;get regions&lt;/a&gt; operation. Be sure to add the &lt;code&gt;include availability zones&lt;/code&gt; parameter to your request.&lt;/p&gt;
--- @param instanceNames [StringList] &lt;p&gt;The names for your new instances.&lt;/p&gt;
--- @param instanceSnapshotName [ResourceName] &lt;p&gt;The name of the instance snapshot on which you are basing your new instances. Use the get instance snapshots operation to return information about your existing snapshots.&lt;/p&gt;
--- @param bundleId [NonEmptyString] &lt;p&gt;The bundle of specification information for your virtual private server (or &lt;i&gt;instance&lt;/i&gt;), including the pricing plan (e.g., &lt;code&gt;micro_1_0&lt;/code&gt;).&lt;/p&gt;
--- @param keyPairName [ResourceName] &lt;p&gt;The name for your key pair.&lt;/p&gt;
+-- @param userData [string] <p>You can create a launch script that configures a server with additional user data. For example, <code>apt-get –y update</code>.</p> <note> <p>Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses <code>pkg</code>. For a complete list, see the <a href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.</p> </note>
+-- @param availabilityZone [string] <p>The Availability Zone where you want to create your instances. Use the following formatting: <code>us-east-1a</code> (case sensitive). You can get a list of availability zones by using the <a href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a> operation. Be sure to add the <code>include availability zones</code> parameter to your request.</p>
+-- @param instanceNames [StringList] <p>The names for your new instances.</p>
+-- @param instanceSnapshotName [ResourceName] <p>The name of the instance snapshot on which you are basing your new instances. Use the get instance snapshots operation to return information about your existing snapshots.</p>
+-- @param bundleId [NonEmptyString] <p>The bundle of specification information for your virtual private server (or <i>instance</i>), including the pricing plan (e.g., <code>micro_1_0</code>).</p>
+-- @param keyPairName [ResourceName] <p>The name for your key pair.</p>
 -- Required parameter: instanceNames
 -- Required parameter: availabilityZone
 -- Required parameter: instanceSnapshotName
@@ -3542,7 +3542,7 @@ end
 
 --- Create a structure of type GetDomainsRequest
 --  
--- @param pageToken [string] &lt;p&gt;A token used for advancing to the next page of results from your get domains request.&lt;/p&gt;
+-- @param pageToken [string] <p>A token used for advancing to the next page of results from your get domains request.</p>
 function M.GetDomainsRequest(pageToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainsRequest")
 	local t = { 
@@ -3568,8 +3568,8 @@ end
 
 --- Create a structure of type CreateInstanceSnapshotRequest
 --  
--- @param instanceName [ResourceName] &lt;p&gt;The Lightsail instance on which to base your snapshot.&lt;/p&gt;
--- @param instanceSnapshotName [ResourceName] &lt;p&gt;The name for your new snapshot.&lt;/p&gt;
+-- @param instanceName [ResourceName] <p>The Lightsail instance on which to base your snapshot.</p>
+-- @param instanceSnapshotName [ResourceName] <p>The name for your new snapshot.</p>
 -- Required parameter: instanceSnapshotName
 -- Required parameter: instanceName
 function M.CreateInstanceSnapshotRequest(instanceName, instanceSnapshotName, ...)

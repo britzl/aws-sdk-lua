@@ -32,7 +32,7 @@ end
 
 --- Create a structure of type GetIPSetRequest
 --  
--- @param IPSetId [ResourceId] &lt;p&gt;The &lt;code&gt;IPSetId&lt;/code&gt; of the &lt;a&gt;IPSet&lt;/a&gt; that you want to get. &lt;code&gt;IPSetId&lt;/code&gt; is returned by &lt;a&gt;CreateIPSet&lt;/a&gt; and by &lt;a&gt;ListIPSets&lt;/a&gt;.&lt;/p&gt;
+-- @param IPSetId [ResourceId] <p>The <code>IPSetId</code> of the <a>IPSet</a> that you want to get. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
 -- Required parameter: IPSetId
 function M.GetIPSetRequest(IPSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIPSetRequest")
@@ -57,8 +57,8 @@ end
 
 --- Create a structure of type ListRateBasedRulesRequest
 --  
--- @param NextMarker [NextMarker] &lt;p&gt;If you specify a value for &lt;code&gt;Limit&lt;/code&gt; and you have more &lt;code&gt;Rules&lt;/code&gt; than the value of &lt;code&gt;Limit&lt;/code&gt;, AWS WAF returns a &lt;code&gt;NextMarker&lt;/code&gt; value in the response that allows you to list another group of &lt;code&gt;Rules&lt;/code&gt;. For the second and subsequent &lt;code&gt;ListRateBasedRules&lt;/code&gt; requests, specify the value of &lt;code&gt;NextMarker&lt;/code&gt; from the previous response to get information about another batch of &lt;code&gt;Rules&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PaginationLimit] &lt;p&gt;Specifies the number of &lt;code&gt;Rules&lt;/code&gt; that you want AWS WAF to return for this request. If you have more &lt;code&gt;Rules&lt;/code&gt; than the number that you specify for &lt;code&gt;Limit&lt;/code&gt;, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value that you can use to get another batch of &lt;code&gt;Rules&lt;/code&gt;.&lt;/p&gt;
+-- @param NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>Rules</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>Rules</code>. For the second and subsequent <code>ListRateBasedRules</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>Rules</code>.</p>
+-- @param Limit [PaginationLimit] <p>Specifies the number of <code>Rules</code> that you want AWS WAF to return for this request. If you have more <code>Rules</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
 function M.ListRateBasedRulesRequest(NextMarker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRateBasedRulesRequest")
 	local t = { 
@@ -84,9 +84,9 @@ function M.AssertTimeWindow(struct)
 end
 
 --- Create a structure of type TimeWindow
--- &lt;p&gt;In a &lt;a&gt;GetSampledRequests&lt;/a&gt; request, the &lt;code&gt;StartTime&lt;/code&gt; and &lt;code&gt;EndTime&lt;/code&gt; objects specify the time range for which you want AWS WAF to return a sample of web requests.&lt;/p&gt; &lt;p&gt;In a &lt;a&gt;GetSampledRequests&lt;/a&gt; response, the &lt;code&gt;StartTime&lt;/code&gt; and &lt;code&gt;EndTime&lt;/code&gt; objects specify the time range for which AWS WAF actually returned a sample of web requests. AWS WAF gets the specified number of requests from among the first 5,000 requests that your AWS resource receives during the specified time period. If your resource receives more than 5,000 requests during that period, AWS WAF stops sampling after the 5,000th request. In that case, &lt;code&gt;EndTime&lt;/code&gt; is the time that AWS WAF received the 5,000th request. &lt;/p&gt;
--- @param EndTime [Timestamp] &lt;p&gt;The end of the time range from which you want &lt;code&gt;GetSampledRequests&lt;/code&gt; to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: &lt;code&gt;&quot;2016-09-27T14:50Z&quot;&lt;/code&gt;. You can specify any time range in the previous three hours.&lt;/p&gt;
--- @param StartTime [Timestamp] &lt;p&gt;The beginning of the time range from which you want &lt;code&gt;GetSampledRequests&lt;/code&gt; to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: &lt;code&gt;&quot;2016-09-27T14:50Z&quot;&lt;/code&gt;. You can specify any time range in the previous three hours.&lt;/p&gt;
+-- <p>In a <a>GetSampledRequests</a> request, the <code>StartTime</code> and <code>EndTime</code> objects specify the time range for which you want AWS WAF to return a sample of web requests.</p> <p>In a <a>GetSampledRequests</a> response, the <code>StartTime</code> and <code>EndTime</code> objects specify the time range for which AWS WAF actually returned a sample of web requests. AWS WAF gets the specified number of requests from among the first 5,000 requests that your AWS resource receives during the specified time period. If your resource receives more than 5,000 requests during that period, AWS WAF stops sampling after the 5,000th request. In that case, <code>EndTime</code> is the time that AWS WAF received the 5,000th request. </p>
+-- @param EndTime [Timestamp] <p>The end of the time range from which you want <code>GetSampledRequests</code> to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.</p>
+-- @param StartTime [Timestamp] <p>The beginning of the time range from which you want <code>GetSampledRequests</code> to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.</p>
 -- Required parameter: StartTime
 -- Required parameter: EndTime
 function M.TimeWindow(EndTime, StartTime, ...)
@@ -114,9 +114,9 @@ function M.AssertXssMatchTuple(struct)
 end
 
 --- Create a structure of type XssMatchTuple
--- &lt;p&gt;Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.&lt;/p&gt;
--- @param TextTransformation [TextTransformation] &lt;p&gt;Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on &lt;code&gt;FieldToMatch&lt;/code&gt; before inspecting a request for a match.&lt;/p&gt; &lt;p&gt; &lt;b&gt;CMD_LINE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Delete the following characters: \ &quot; ' ^&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Delete spaces before the following characters: / (&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replace the following characters with a space: , ;&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replace multiple spaces with one space&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Convert uppercase letters (A-Z) to lowercase (a-z)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;COMPRESS_WHITE_SPACE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to replace the following characters with a space character (decimal 32):&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;\f, formfeed, decimal 12&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\t, tab, decimal 9&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\n, newline, decimal 10&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\r, carriage return, decimal 13&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\v, vertical tab, decimal 11&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;non-breaking space, decimal 160&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;code&gt;COMPRESS_WHITE_SPACE&lt;/code&gt; also replaces multiple spaces with one space.&lt;/p&gt; &lt;p&gt; &lt;b&gt;HTML_ENTITY_DECODE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to replace HTML-encoded characters with unencoded characters. &lt;code&gt;HTML_ENTITY_DECODE&lt;/code&gt; performs the following operations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)quot;&lt;/code&gt; with &lt;code&gt;&quot;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)nbsp;&lt;/code&gt; with a non-breaking space, decimal 160&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)lt;&lt;/code&gt; with a &quot;less than&quot; symbol&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)gt;&lt;/code&gt; with &lt;code&gt;&amp;gt;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces characters that are represented in hexadecimal format, &lt;code&gt;(ampersand)#xhhhh;&lt;/code&gt;, with the corresponding characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces characters that are represented in decimal format, &lt;code&gt;(ampersand)#nnnn;&lt;/code&gt;, with the corresponding characters&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;LOWERCASE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to convert uppercase letters (A-Z) to lowercase (a-z).&lt;/p&gt; &lt;p&gt; &lt;b&gt;URL_DECODE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to decode a URL-encoded value.&lt;/p&gt; &lt;p&gt; &lt;b&gt;NONE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Specify &lt;code&gt;NONE&lt;/code&gt; if you don't want to perform any text transformations.&lt;/p&gt;
--- @param FieldToMatch [FieldToMatch] &lt;p&gt;Specifies where in a web request to look for cross-site scripting attacks.&lt;/p&gt;
+-- <p>Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.</p>
+-- @param TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
+-- @param FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for cross-site scripting attacks.</p>
 -- Required parameter: FieldToMatch
 -- Required parameter: TextTransformation
 function M.XssMatchTuple(TextTransformation, FieldToMatch, ...)
@@ -142,7 +142,7 @@ end
 
 --- Create a structure of type GetChangeTokenStatusResponse
 --  
--- @param ChangeTokenStatus [ChangeTokenStatus] &lt;p&gt;The status of the change token.&lt;/p&gt;
+-- @param ChangeTokenStatus [ChangeTokenStatus] <p>The status of the change token.</p>
 function M.GetChangeTokenStatusResponse(ChangeTokenStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetChangeTokenStatusResponse")
 	local t = { 
@@ -165,8 +165,8 @@ function M.AssertWafAction(struct)
 end
 
 --- Create a structure of type WafAction
--- &lt;p&gt;For the action that is associated with a rule in a &lt;code&gt;WebACL&lt;/code&gt;, specifies the action that you want AWS WAF to perform when a web request matches all of the conditions in a rule. For the default action in a &lt;code&gt;WebACL&lt;/code&gt;, specifies the action that you want AWS WAF to take when a web request doesn't match all of the conditions in any of the rules in a &lt;code&gt;WebACL&lt;/code&gt;. &lt;/p&gt;
--- @param Type [WafActionType] &lt;p&gt;Specifies how you want AWS WAF to respond to requests that match the settings in a &lt;code&gt;Rule&lt;/code&gt;. Valid settings include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ALLOW&lt;/code&gt;: AWS WAF allows requests&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BLOCK&lt;/code&gt;: AWS WAF blocks requests&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;COUNT&lt;/code&gt;: AWS WAF increments a counter of the requests that match all of the conditions in the rule. AWS WAF then continues to inspect the web request based on the remaining rules in the web ACL. You can't specify &lt;code&gt;COUNT&lt;/code&gt; for the default action for a &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>For the action that is associated with a rule in a <code>WebACL</code>, specifies the action that you want AWS WAF to perform when a web request matches all of the conditions in a rule. For the default action in a <code>WebACL</code>, specifies the action that you want AWS WAF to take when a web request doesn't match all of the conditions in any of the rules in a <code>WebACL</code>. </p>
+-- @param Type [WafActionType] <p>Specifies how you want AWS WAF to respond to requests that match the settings in a <code>Rule</code>. Valid settings include the following:</p> <ul> <li> <p> <code>ALLOW</code>: AWS WAF allows requests</p> </li> <li> <p> <code>BLOCK</code>: AWS WAF blocks requests</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of the requests that match all of the conditions in the rule. AWS WAF then continues to inspect the web request based on the remaining rules in the web ACL. You can't specify <code>COUNT</code> for the default action for a <code>WebACL</code>.</p> </li> </ul>
 -- Required parameter: Type
 function M.WafAction(Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WafAction")
@@ -193,8 +193,8 @@ end
 
 --- Create a structure of type DeleteRuleRequest
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param RuleId [ResourceId] &lt;p&gt;The &lt;code&gt;RuleId&lt;/code&gt; of the &lt;a&gt;Rule&lt;/a&gt; that you want to delete. &lt;code&gt;RuleId&lt;/code&gt; is returned by &lt;a&gt;CreateRule&lt;/a&gt; and by &lt;a&gt;ListRules&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>Rule</a> that you want to delete. <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
 -- Required parameter: RuleId
 -- Required parameter: ChangeToken
 function M.DeleteRuleRequest(ChangeToken, RuleId, ...)
@@ -225,9 +225,9 @@ end
 
 --- Create a structure of type UpdateRuleRequest
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Updates [RuleUpdates] &lt;p&gt;An array of &lt;code&gt;RuleUpdate&lt;/code&gt; objects that you want to insert into or delete from a &lt;a&gt;Rule&lt;/a&gt;. For more information, see the applicable data types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;RuleUpdate&lt;/a&gt;: Contains &lt;code&gt;Action&lt;/code&gt; and &lt;code&gt;Predicate&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;Predicate&lt;/a&gt;: Contains &lt;code&gt;DataId&lt;/code&gt;, &lt;code&gt;Negated&lt;/code&gt;, and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;FieldToMatch&lt;/a&gt;: Contains &lt;code&gt;Data&lt;/code&gt; and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param RuleId [ResourceId] &lt;p&gt;The &lt;code&gt;RuleId&lt;/code&gt; of the &lt;code&gt;Rule&lt;/code&gt; that you want to update. &lt;code&gt;RuleId&lt;/code&gt; is returned by &lt;code&gt;CreateRule&lt;/code&gt; and by &lt;a&gt;ListRules&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Updates [RuleUpdates] <p>An array of <code>RuleUpdate</code> objects that you want to insert into or delete from a <a>Rule</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>RuleUpdate</a>: Contains <code>Action</code> and <code>Predicate</code> </p> </li> <li> <p> <a>Predicate</a>: Contains <code>DataId</code>, <code>Negated</code>, and <code>Type</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- @param RuleId [ResourceId] <p>The <code>RuleId</code> of the <code>Rule</code> that you want to update. <code>RuleId</code> is returned by <code>CreateRule</code> and by <a>ListRules</a>.</p>
 -- Required parameter: RuleId
 -- Required parameter: ChangeToken
 -- Required parameter: Updates
@@ -256,8 +256,8 @@ end
 
 --- Create a structure of type ListByteMatchSetsResponse
 --  
--- @param NextMarker [NextMarker] &lt;p&gt;If you have more &lt;code&gt;ByteMatchSet&lt;/code&gt; objects than the number that you specified for &lt;code&gt;Limit&lt;/code&gt; in the request, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value. To list more &lt;code&gt;ByteMatchSet&lt;/code&gt; objects, submit another &lt;code&gt;ListByteMatchSets&lt;/code&gt; request, and specify the &lt;code&gt;NextMarker&lt;/code&gt; value from the response in the &lt;code&gt;NextMarker&lt;/code&gt; value in the next request.&lt;/p&gt;
--- @param ByteMatchSets [ByteMatchSetSummaries] &lt;p&gt;An array of &lt;a&gt;ByteMatchSetSummary&lt;/a&gt; objects.&lt;/p&gt;
+-- @param NextMarker [NextMarker] <p>If you have more <code>ByteMatchSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>ByteMatchSet</code> objects, submit another <code>ListByteMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @param ByteMatchSets [ByteMatchSetSummaries] <p>An array of <a>ByteMatchSetSummary</a> objects.</p>
 function M.ListByteMatchSetsResponse(NextMarker, ByteMatchSets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListByteMatchSetsResponse")
 	local t = { 
@@ -285,10 +285,10 @@ function M.AssertPredicate(struct)
 end
 
 --- Create a structure of type Predicate
--- &lt;p&gt;Specifies the &lt;a&gt;ByteMatchSet&lt;/a&gt;, &lt;a&gt;IPSet&lt;/a&gt;, &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt;, &lt;a&gt;XssMatchSet&lt;/a&gt;, and &lt;a&gt;SizeConstraintSet&lt;/a&gt; objects that you want to add to a &lt;code&gt;Rule&lt;/code&gt; and, for each object, indicates whether you want to negate the settings, for example, requests that do NOT originate from the IP address 192.0.2.44. &lt;/p&gt;
--- @param Negated [Negated] &lt;p&gt;Set &lt;code&gt;Negated&lt;/code&gt; to &lt;code&gt;False&lt;/code&gt; if you want AWS WAF to allow, block, or count requests based on the settings in the specified &lt;a&gt;ByteMatchSet&lt;/a&gt;, &lt;a&gt;IPSet&lt;/a&gt;, &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt;, &lt;a&gt;XssMatchSet&lt;/a&gt;, or &lt;a&gt;SizeConstraintSet&lt;/a&gt;. For example, if an &lt;code&gt;IPSet&lt;/code&gt; includes the IP address &lt;code&gt;192.0.2.44&lt;/code&gt;, AWS WAF will allow or block requests based on that IP address.&lt;/p&gt; &lt;p&gt;Set &lt;code&gt;Negated&lt;/code&gt; to &lt;code&gt;True&lt;/code&gt; if you want AWS WAF to allow or block a request based on the negation of the settings in the &lt;a&gt;ByteMatchSet&lt;/a&gt;, &lt;a&gt;IPSet&lt;/a&gt;, &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt;, &lt;a&gt;XssMatchSet&lt;/a&gt;, or &lt;a&gt;SizeConstraintSet&lt;/a&gt;. For example, if an &lt;code&gt;IPSet&lt;/code&gt; includes the IP address &lt;code&gt;192.0.2.44&lt;/code&gt;, AWS WAF will allow, block, or count requests based on all IP addresses &lt;i&gt;except&lt;/i&gt; &lt;code&gt;192.0.2.44&lt;/code&gt;.&lt;/p&gt;
--- @param Type [PredicateType] &lt;p&gt;The type of predicate in a &lt;code&gt;Rule&lt;/code&gt;, such as &lt;code&gt;ByteMatchSet&lt;/code&gt; or &lt;code&gt;IPSet&lt;/code&gt;.&lt;/p&gt;
--- @param DataId [ResourceId] &lt;p&gt;A unique identifier for a predicate in a &lt;code&gt;Rule&lt;/code&gt;, such as &lt;code&gt;ByteMatchSetId&lt;/code&gt; or &lt;code&gt;IPSetId&lt;/code&gt;. The ID is returned by the corresponding &lt;code&gt;Create&lt;/code&gt; or &lt;code&gt;List&lt;/code&gt; command.&lt;/p&gt;
+-- <p>Specifies the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, and <a>SizeConstraintSet</a> objects that you want to add to a <code>Rule</code> and, for each object, indicates whether you want to negate the settings, for example, requests that do NOT originate from the IP address 192.0.2.44. </p>
+-- @param Negated [Negated] <p>Set <code>Negated</code> to <code>False</code> if you want AWS WAF to allow, block, or count requests based on the settings in the specified <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow or block requests based on that IP address.</p> <p>Set <code>Negated</code> to <code>True</code> if you want AWS WAF to allow or block a request based on the negation of the settings in the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow, block, or count requests based on all IP addresses <i>except</i> <code>192.0.2.44</code>.</p>
+-- @param Type [PredicateType] <p>The type of predicate in a <code>Rule</code>, such as <code>ByteMatchSet</code> or <code>IPSet</code>.</p>
+-- @param DataId [ResourceId] <p>A unique identifier for a predicate in a <code>Rule</code>, such as <code>ByteMatchSetId</code> or <code>IPSetId</code>. The ID is returned by the corresponding <code>Create</code> or <code>List</code> command.</p>
 -- Required parameter: Negated
 -- Required parameter: Type
 -- Required parameter: DataId
@@ -321,9 +321,9 @@ end
 
 --- Create a structure of type UpdateIPSetRequest
 --  
--- @param IPSetId [ResourceId] &lt;p&gt;The &lt;code&gt;IPSetId&lt;/code&gt; of the &lt;a&gt;IPSet&lt;/a&gt; that you want to update. &lt;code&gt;IPSetId&lt;/code&gt; is returned by &lt;a&gt;CreateIPSet&lt;/a&gt; and by &lt;a&gt;ListIPSets&lt;/a&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Updates [IPSetUpdates] &lt;p&gt;An array of &lt;code&gt;IPSetUpdate&lt;/code&gt; objects that you want to insert into or delete from an &lt;a&gt;IPSet&lt;/a&gt;. For more information, see the applicable data types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;IPSetUpdate&lt;/a&gt;: Contains &lt;code&gt;Action&lt;/code&gt; and &lt;code&gt;IPSetDescriptor&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;IPSetDescriptor&lt;/a&gt;: Contains &lt;code&gt;Type&lt;/code&gt; and &lt;code&gt;Value&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param IPSetId [ResourceId] <p>The <code>IPSetId</code> of the <a>IPSet</a> that you want to update. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Updates [IPSetUpdates] <p>An array of <code>IPSetUpdate</code> objects that you want to insert into or delete from an <a>IPSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>IPSetUpdate</a>: Contains <code>Action</code> and <code>IPSetDescriptor</code> </p> </li> <li> <p> <a>IPSetDescriptor</a>: Contains <code>Type</code> and <code>Value</code> </p> </li> </ul>
 -- Required parameter: IPSetId
 -- Required parameter: ChangeToken
 -- Required parameter: Updates
@@ -354,8 +354,8 @@ end
 
 --- Create a structure of type DeleteByteMatchSetRequest
 --  
--- @param ByteMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;ByteMatchSetId&lt;/code&gt; of the &lt;a&gt;ByteMatchSet&lt;/a&gt; that you want to delete. &lt;code&gt;ByteMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateByteMatchSet&lt;/a&gt; and by &lt;a&gt;ListByteMatchSets&lt;/a&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
+-- @param ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
 -- Required parameter: ByteMatchSetId
 -- Required parameter: ChangeToken
 function M.DeleteByteMatchSetRequest(ByteMatchSetId, ChangeToken, ...)
@@ -380,8 +380,8 @@ function M.AssertDeleteSqlInjectionMatchSetResponse(struct)
 end
 
 --- Create a structure of type DeleteSqlInjectionMatchSetResponse
--- &lt;p&gt;The response to a request to delete a &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; from AWS WAF.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;DeleteSqlInjectionMatchSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- <p>The response to a request to delete a <a>SqlInjectionMatchSet</a> from AWS WAF.</p>
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.DeleteSqlInjectionMatchSetResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSqlInjectionMatchSetResponse")
 	local t = { 
@@ -404,7 +404,7 @@ end
 
 --- Create a structure of type UpdateIPSetResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;UpdateIPSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.UpdateIPSetResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateIPSetResponse")
 	local t = { 
@@ -426,8 +426,8 @@ function M.AssertWAFNonexistentContainerException(struct)
 end
 
 --- Create a structure of type WAFNonexistentContainerException
--- &lt;p&gt;The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You tried to add a &lt;code&gt;Rule&lt;/code&gt; to or delete a &lt;code&gt;Rule&lt;/code&gt; from a &lt;code&gt;WebACL&lt;/code&gt; that doesn't exist.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add a &lt;code&gt;ByteMatchSet&lt;/code&gt; to or delete a &lt;code&gt;ByteMatchSet&lt;/code&gt; from a &lt;code&gt;Rule&lt;/code&gt; that doesn't exist.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add an IP address to or delete an IP address from an &lt;code&gt;IPSet&lt;/code&gt; that doesn't exist.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add a &lt;code&gt;ByteMatchTuple&lt;/code&gt; to or delete a &lt;code&gt;ByteMatchTuple&lt;/code&gt; from a &lt;code&gt;ByteMatchSet&lt;/code&gt; that doesn't exist.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param message [errorMessage] &lt;p&gt;The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You tried to add a &lt;code&gt;Rule&lt;/code&gt; to or delete a &lt;code&gt;Rule&lt;/code&gt; from a &lt;code&gt;WebACL&lt;/code&gt; that doesn't exist.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add a &lt;code&gt;ByteMatchSet&lt;/code&gt; to or delete a &lt;code&gt;ByteMatchSet&lt;/code&gt; from a &lt;code&gt;Rule&lt;/code&gt; that doesn't exist.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add an IP address to or delete an IP address from an &lt;code&gt;IPSet&lt;/code&gt; that doesn't exist.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add a &lt;code&gt;ByteMatchTuple&lt;/code&gt; to or delete a &lt;code&gt;ByteMatchTuple&lt;/code&gt; from a &lt;code&gt;ByteMatchSet&lt;/code&gt; that doesn't exist.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:</p> <ul> <li> <p>You tried to add a <code>Rule</code> to or delete a <code>Rule</code> from a <code>WebACL</code> that doesn't exist.</p> </li> <li> <p>You tried to add a <code>ByteMatchSet</code> to or delete a <code>ByteMatchSet</code> from a <code>Rule</code> that doesn't exist.</p> </li> <li> <p>You tried to add an IP address to or delete an IP address from an <code>IPSet</code> that doesn't exist.</p> </li> <li> <p>You tried to add a <code>ByteMatchTuple</code> to or delete a <code>ByteMatchTuple</code> from a <code>ByteMatchSet</code> that doesn't exist.</p> </li> </ul>
+-- @param message [errorMessage] <p>The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:</p> <ul> <li> <p>You tried to add a <code>Rule</code> to or delete a <code>Rule</code> from a <code>WebACL</code> that doesn't exist.</p> </li> <li> <p>You tried to add a <code>ByteMatchSet</code> to or delete a <code>ByteMatchSet</code> from a <code>Rule</code> that doesn't exist.</p> </li> <li> <p>You tried to add an IP address to or delete an IP address from an <code>IPSet</code> that doesn't exist.</p> </li> <li> <p>You tried to add a <code>ByteMatchTuple</code> to or delete a <code>ByteMatchTuple</code> from a <code>ByteMatchSet</code> that doesn't exist.</p> </li> </ul>
 function M.WAFNonexistentContainerException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFNonexistentContainerException")
 	local t = { 
@@ -448,7 +448,7 @@ function M.AssertWAFInvalidAccountException(struct)
 end
 
 --- Create a structure of type WAFInvalidAccountException
--- &lt;p&gt;The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.&lt;/p&gt;
+-- <p>The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.</p>
 function M.WAFInvalidAccountException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFInvalidAccountException")
 	local t = { 
@@ -472,9 +472,9 @@ function M.AssertWebACLSummary(struct)
 end
 
 --- Create a structure of type WebACLSummary
--- &lt;p&gt;Contains the identifier and the name or description of the &lt;a&gt;WebACL&lt;/a&gt;.&lt;/p&gt;
--- @param WebACLId [ResourceId] &lt;p&gt;A unique identifier for a &lt;code&gt;WebACL&lt;/code&gt;. You use &lt;code&gt;WebACLId&lt;/code&gt; to get information about a &lt;code&gt;WebACL&lt;/code&gt; (see &lt;a&gt;GetWebACL&lt;/a&gt;), update a &lt;code&gt;WebACL&lt;/code&gt; (see &lt;a&gt;UpdateWebACL&lt;/a&gt;), and delete a &lt;code&gt;WebACL&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteWebACL&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;WebACLId&lt;/code&gt; is returned by &lt;a&gt;CreateWebACL&lt;/a&gt; and by &lt;a&gt;ListWebACLs&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;WebACL&lt;/a&gt;. You can't change the name of a &lt;code&gt;WebACL&lt;/code&gt; after you create it.&lt;/p&gt;
+-- <p>Contains the identifier and the name or description of the <a>WebACL</a>.</p>
+-- @param WebACLId [ResourceId] <p>A unique identifier for a <code>WebACL</code>. You use <code>WebACLId</code> to get information about a <code>WebACL</code> (see <a>GetWebACL</a>), update a <code>WebACL</code> (see <a>UpdateWebACL</a>), and delete a <code>WebACL</code> from AWS WAF (see <a>DeleteWebACL</a>).</p> <p> <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>WebACL</a>. You can't change the name of a <code>WebACL</code> after you create it.</p>
 -- Required parameter: WebACLId
 -- Required parameter: Name
 function M.WebACLSummary(WebACLId, Name, ...)
@@ -501,7 +501,7 @@ end
 
 --- Create a structure of type GetByteMatchSetRequest
 --  
--- @param ByteMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;ByteMatchSetId&lt;/code&gt; of the &lt;a&gt;ByteMatchSet&lt;/a&gt; that you want to get. &lt;code&gt;ByteMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateByteMatchSet&lt;/a&gt; and by &lt;a&gt;ListByteMatchSets&lt;/a&gt;.&lt;/p&gt;
+-- @param ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to get. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
 -- Required parameter: ByteMatchSetId
 function M.GetByteMatchSetRequest(ByteMatchSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetByteMatchSetRequest")
@@ -534,11 +534,11 @@ end
 
 --- Create a structure of type CreateRateBasedRuleRequest
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;CreateRateBasedRule&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
--- @param RateLimit [RateLimit] &lt;p&gt;The maximum number of requests, which have an identical value in the field that is specified by &lt;code&gt;RateKey&lt;/code&gt;, allowed in a five-minute period. If the number of requests exceeds the &lt;code&gt;RateLimit&lt;/code&gt; and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.&lt;/p&gt;
--- @param RateKey [RateKey] &lt;p&gt;The field that AWS WAF uses to determine if requests are likely arriving from a single source and thus subject to rate monitoring. The only valid value for &lt;code&gt;RateKey&lt;/code&gt; is &lt;code&gt;IP&lt;/code&gt;. &lt;code&gt;IP&lt;/code&gt; indicates that requests that arrive from the same IP address are subject to the &lt;code&gt;RateLimit&lt;/code&gt; that is specified in the &lt;code&gt;RateBasedRule&lt;/code&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;RateBasedRule&lt;/a&gt;. You can't change the name of a &lt;code&gt;RateBasedRule&lt;/code&gt; after you create it.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;A friendly name or description for the metrics for this &lt;code&gt;RateBasedRule&lt;/code&gt;. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the &lt;code&gt;RateBasedRule&lt;/code&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @param RateLimit [RateLimit] <p>The maximum number of requests, which have an identical value in the field that is specified by <code>RateKey</code>, allowed in a five-minute period. If the number of requests exceeds the <code>RateLimit</code> and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.</p>
+-- @param RateKey [RateKey] <p>The field that AWS WAF uses to determine if requests are likely arriving from a single source and thus subject to rate monitoring. The only valid value for <code>RateKey</code> is <code>IP</code>. <code>IP</code> indicates that requests that arrive from the same IP address are subject to the <code>RateLimit</code> that is specified in the <code>RateBasedRule</code>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>RateBasedRule</a>. You can't change the name of a <code>RateBasedRule</code> after you create it.</p>
+-- @param MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>RateBasedRule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>RateBasedRule</code>.</p>
 -- Required parameter: Name
 -- Required parameter: MetricName
 -- Required parameter: RateKey
@@ -570,7 +570,7 @@ end
 
 --- Create a structure of type DeleteRateBasedRuleResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;DeleteRateBasedRule&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.DeleteRateBasedRuleResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRateBasedRuleResponse")
 	local t = { 
@@ -596,8 +596,8 @@ end
 
 --- Create a structure of type DeleteWebACLRequest
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param WebACLId [ResourceId] &lt;p&gt;The &lt;code&gt;WebACLId&lt;/code&gt; of the &lt;a&gt;WebACL&lt;/a&gt; that you want to delete. &lt;code&gt;WebACLId&lt;/code&gt; is returned by &lt;a&gt;CreateWebACL&lt;/a&gt; and by &lt;a&gt;ListWebACLs&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param WebACLId [ResourceId] <p>The <code>WebACLId</code> of the <a>WebACL</a> that you want to delete. <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
 -- Required parameter: WebACLId
 -- Required parameter: ChangeToken
 function M.DeleteWebACLRequest(ChangeToken, WebACLId, ...)
@@ -624,8 +624,8 @@ end
 
 --- Create a structure of type ListIPSetsResponse
 --  
--- @param IPSets [IPSetSummaries] &lt;p&gt;An array of &lt;a&gt;IPSetSummary&lt;/a&gt; objects.&lt;/p&gt;
--- @param NextMarker [NextMarker] &lt;p&gt;If you have more &lt;code&gt;IPSet&lt;/code&gt; objects than the number that you specified for &lt;code&gt;Limit&lt;/code&gt; in the request, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value. To list more &lt;code&gt;IPSet&lt;/code&gt; objects, submit another &lt;code&gt;ListIPSets&lt;/code&gt; request, and specify the &lt;code&gt;NextMarker&lt;/code&gt; value from the response in the &lt;code&gt;NextMarker&lt;/code&gt; value in the next request.&lt;/p&gt;
+-- @param IPSets [IPSetSummaries] <p>An array of <a>IPSetSummary</a> objects.</p>
+-- @param NextMarker [NextMarker] <p>If you have more <code>IPSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>IPSet</code> objects, submit another <code>ListIPSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
 function M.ListIPSetsResponse(IPSets, NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIPSetsResponse")
 	local t = { 
@@ -655,11 +655,11 @@ function M.AssertSizeConstraint(struct)
 end
 
 --- Create a structure of type SizeConstraint
--- &lt;p&gt;Specifies a constraint on the size of a part of the web request. AWS WAF uses the &lt;code&gt;Size&lt;/code&gt;, &lt;code&gt;ComparisonOperator&lt;/code&gt;, and &lt;code&gt;FieldToMatch&lt;/code&gt; to build an expression in the form of &quot;&lt;code&gt;Size&lt;/code&gt; &lt;code&gt;ComparisonOperator&lt;/code&gt; size in bytes of &lt;code&gt;FieldToMatch&lt;/code&gt;&quot;. If that expression is true, the &lt;code&gt;SizeConstraint&lt;/code&gt; is considered to match.&lt;/p&gt;
--- @param ComparisonOperator [ComparisonOperator] &lt;p&gt;The type of comparison you want AWS WAF to perform. AWS WAF uses this in combination with the provided &lt;code&gt;Size&lt;/code&gt; and &lt;code&gt;FieldToMatch&lt;/code&gt; to build an expression in the form of &quot;&lt;code&gt;Size&lt;/code&gt; &lt;code&gt;ComparisonOperator&lt;/code&gt; size in bytes of &lt;code&gt;FieldToMatch&lt;/code&gt;&quot;. If that expression is true, the &lt;code&gt;SizeConstraint&lt;/code&gt; is considered to match.&lt;/p&gt; &lt;p&gt; &lt;b&gt;EQ&lt;/b&gt;: Used to test if the &lt;code&gt;Size&lt;/code&gt; is equal to the size of the &lt;code&gt;FieldToMatch&lt;/code&gt; &lt;/p&gt; &lt;p&gt; &lt;b&gt;NE&lt;/b&gt;: Used to test if the &lt;code&gt;Size&lt;/code&gt; is not equal to the size of the &lt;code&gt;FieldToMatch&lt;/code&gt; &lt;/p&gt; &lt;p&gt; &lt;b&gt;LE&lt;/b&gt;: Used to test if the &lt;code&gt;Size&lt;/code&gt; is less than or equal to the size of the &lt;code&gt;FieldToMatch&lt;/code&gt; &lt;/p&gt; &lt;p&gt; &lt;b&gt;LT&lt;/b&gt;: Used to test if the &lt;code&gt;Size&lt;/code&gt; is strictly less than the size of the &lt;code&gt;FieldToMatch&lt;/code&gt; &lt;/p&gt; &lt;p&gt; &lt;b&gt;GE&lt;/b&gt;: Used to test if the &lt;code&gt;Size&lt;/code&gt; is greater than or equal to the size of the &lt;code&gt;FieldToMatch&lt;/code&gt; &lt;/p&gt; &lt;p&gt; &lt;b&gt;GT&lt;/b&gt;: Used to test if the &lt;code&gt;Size&lt;/code&gt; is strictly greater than the size of the &lt;code&gt;FieldToMatch&lt;/code&gt; &lt;/p&gt;
--- @param TextTransformation [TextTransformation] &lt;p&gt;Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on &lt;code&gt;FieldToMatch&lt;/code&gt; before inspecting a request for a match.&lt;/p&gt; &lt;p&gt;Note that if you choose &lt;code&gt;BODY&lt;/code&gt; for the value of &lt;code&gt;Type&lt;/code&gt;, you must choose &lt;code&gt;NONE&lt;/code&gt; for &lt;code&gt;TextTransformation&lt;/code&gt; because CloudFront forwards only the first 8192 bytes for inspection. &lt;/p&gt; &lt;p&gt; &lt;b&gt;NONE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Specify &lt;code&gt;NONE&lt;/code&gt; if you don't want to perform any text transformations.&lt;/p&gt; &lt;p&gt; &lt;b&gt;CMD_LINE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;When you're concerned that attackers are injecting an operating system command line command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Delete the following characters: \ &quot; ' ^&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Delete spaces before the following characters: / (&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replace the following characters with a space: , ;&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replace multiple spaces with one space&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Convert uppercase letters (A-Z) to lowercase (a-z)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;COMPRESS_WHITE_SPACE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to replace the following characters with a space character (decimal 32):&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;\f, formfeed, decimal 12&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\t, tab, decimal 9&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\n, newline, decimal 10&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\r, carriage return, decimal 13&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\v, vertical tab, decimal 11&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;non-breaking space, decimal 160&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;code&gt;COMPRESS_WHITE_SPACE&lt;/code&gt; also replaces multiple spaces with one space.&lt;/p&gt; &lt;p&gt; &lt;b&gt;HTML_ENTITY_DECODE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to replace HTML-encoded characters with unencoded characters. &lt;code&gt;HTML_ENTITY_DECODE&lt;/code&gt; performs the following operations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)quot;&lt;/code&gt; with &lt;code&gt;&quot;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)nbsp;&lt;/code&gt; with a non-breaking space, decimal 160&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)lt;&lt;/code&gt; with a &quot;less than&quot; symbol&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)gt;&lt;/code&gt; with &lt;code&gt;&amp;gt;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces characters that are represented in hexadecimal format, &lt;code&gt;(ampersand)#xhhhh;&lt;/code&gt;, with the corresponding characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces characters that are represented in decimal format, &lt;code&gt;(ampersand)#nnnn;&lt;/code&gt;, with the corresponding characters&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;LOWERCASE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to convert uppercase letters (A-Z) to lowercase (a-z).&lt;/p&gt; &lt;p&gt; &lt;b&gt;URL_DECODE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to decode a URL-encoded value.&lt;/p&gt;
--- @param FieldToMatch [FieldToMatch] &lt;p&gt;Specifies where in a web request to look for the size constraint.&lt;/p&gt;
--- @param Size [Size] &lt;p&gt;The size in bytes that you want AWS WAF to compare against the size of the specified &lt;code&gt;FieldToMatch&lt;/code&gt;. AWS WAF uses this in combination with &lt;code&gt;ComparisonOperator&lt;/code&gt; and &lt;code&gt;FieldToMatch&lt;/code&gt; to build an expression in the form of &quot;&lt;code&gt;Size&lt;/code&gt; &lt;code&gt;ComparisonOperator&lt;/code&gt; size in bytes of &lt;code&gt;FieldToMatch&lt;/code&gt;&quot;. If that expression is true, the &lt;code&gt;SizeConstraint&lt;/code&gt; is considered to match.&lt;/p&gt; &lt;p&gt;Valid values for size are 0 - 21474836480 bytes (0 - 20 GB).&lt;/p&gt; &lt;p&gt;If you specify &lt;code&gt;URI&lt;/code&gt; for the value of &lt;code&gt;Type&lt;/code&gt;, the / in the URI counts as one character. For example, the URI &lt;code&gt;/logo.jpg&lt;/code&gt; is nine characters long.&lt;/p&gt;
+-- <p>Specifies a constraint on the size of a part of the web request. AWS WAF uses the <code>Size</code>, <code>ComparisonOperator</code>, and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p>
+-- @param ComparisonOperator [ComparisonOperator] <p>The type of comparison you want AWS WAF to perform. AWS WAF uses this in combination with the provided <code>Size</code> and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p> <p> <b>EQ</b>: Used to test if the <code>Size</code> is equal to the size of the <code>FieldToMatch</code> </p> <p> <b>NE</b>: Used to test if the <code>Size</code> is not equal to the size of the <code>FieldToMatch</code> </p> <p> <b>LE</b>: Used to test if the <code>Size</code> is less than or equal to the size of the <code>FieldToMatch</code> </p> <p> <b>LT</b>: Used to test if the <code>Size</code> is strictly less than the size of the <code>FieldToMatch</code> </p> <p> <b>GE</b>: Used to test if the <code>Size</code> is greater than or equal to the size of the <code>FieldToMatch</code> </p> <p> <b>GT</b>: Used to test if the <code>Size</code> is strictly greater than the size of the <code>FieldToMatch</code> </p>
+-- @param TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p>Note that if you choose <code>BODY</code> for the value of <code>Type</code>, you must choose <code>NONE</code> for <code>TextTransformation</code> because CloudFront forwards only the first 8192 bytes for inspection. </p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system command line command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p>
+-- @param FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for the size constraint.</p>
+-- @param Size [Size] <p>The size in bytes that you want AWS WAF to compare against the size of the specified <code>FieldToMatch</code>. AWS WAF uses this in combination with <code>ComparisonOperator</code> and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p> <p>Valid values for size are 0 - 21474836480 bytes (0 - 20 GB).</p> <p>If you specify <code>URI</code> for the value of <code>Type</code>, the / in the URI counts as one character. For example, the URI <code>/logo.jpg</code> is nine characters long.</p>
 -- Required parameter: FieldToMatch
 -- Required parameter: TextTransformation
 -- Required parameter: ComparisonOperator
@@ -690,8 +690,8 @@ end
 
 --- Create a structure of type CreateRuleResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;CreateRule&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
--- @param Rule [Rule] &lt;p&gt;The &lt;a&gt;Rule&lt;/a&gt; returned in the &lt;code&gt;CreateRule&lt;/code&gt; response.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @param Rule [Rule] <p>The <a>Rule</a> returned in the <code>CreateRule</code> response.</p>
 function M.CreateRuleResponse(ChangeToken, Rule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRuleResponse")
 	local t = { 
@@ -716,9 +716,9 @@ function M.AssertFieldToMatch(struct)
 end
 
 --- Create a structure of type FieldToMatch
--- &lt;p&gt;Specifies where in a web request to look for &lt;code&gt;TargetString&lt;/code&gt;.&lt;/p&gt;
--- @param Data [MatchFieldData] &lt;p&gt;When the value of &lt;code&gt;Type&lt;/code&gt; is &lt;code&gt;HEADER&lt;/code&gt;, enter the name of the header that you want AWS WAF to search, for example, &lt;code&gt;User-Agent&lt;/code&gt; or &lt;code&gt;Referer&lt;/code&gt;. If the value of &lt;code&gt;Type&lt;/code&gt; is any other value, omit &lt;code&gt;Data&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The name of the header is not case sensitive.&lt;/p&gt;
--- @param Type [MatchFieldType] &lt;p&gt;The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;HEADER&lt;/code&gt;: A specified request header, for example, the value of the &lt;code&gt;User-Agent&lt;/code&gt; or &lt;code&gt;Referer&lt;/code&gt; header. If you choose &lt;code&gt;HEADER&lt;/code&gt; for the type, specify the name of the header in &lt;code&gt;Data&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;METHOD&lt;/code&gt;: The HTTP method, which indicated the type of operation that the request is asking the origin to perform. Amazon CloudFront supports the following methods: &lt;code&gt;DELETE&lt;/code&gt;, &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;HEAD&lt;/code&gt;, &lt;code&gt;OPTIONS&lt;/code&gt;, &lt;code&gt;PATCH&lt;/code&gt;, &lt;code&gt;POST&lt;/code&gt;, and &lt;code&gt;PUT&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;QUERY_STRING&lt;/code&gt;: A query string, which is the part of a URL that appears after a &lt;code&gt;?&lt;/code&gt; character, if any.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;URI&lt;/code&gt;: The part of a web request that identifies a resource, for example, &lt;code&gt;/images/daily-ad.jpg&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BODY&lt;/code&gt;: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first &lt;code&gt;8192&lt;/code&gt; bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see &lt;a&gt;CreateSizeConstraintSet&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Specifies where in a web request to look for <code>TargetString</code>.</p>
+-- @param Data [MatchFieldData] <p>When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS WAF to search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of <code>Type</code> is any other value, omit <code>Data</code>.</p> <p>The name of the header is not case sensitive.</p>
+-- @param Type [MatchFieldType] <p>The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:</p> <ul> <li> <p> <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in <code>Data</code>.</p> </li> <li> <p> <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</p> </li> <li> <p> <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code> character, if any.</p> </li> <li> <p> <code>URI</code>: The part of a web request that identifies a resource, for example, <code>/images/daily-ad.jpg</code>.</p> </li> <li> <p> <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see <a>CreateSizeConstraintSet</a>. </p> </li> </ul>
 -- Required parameter: Type
 function M.FieldToMatch(Data, Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FieldToMatch")
@@ -745,9 +745,9 @@ function M.AssertDeleteSqlInjectionMatchSetRequest(struct)
 end
 
 --- Create a structure of type DeleteSqlInjectionMatchSetRequest
--- &lt;p&gt;A request to delete a &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; from AWS WAF.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param SqlInjectionMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt; of the &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; that you want to delete. &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateSqlInjectionMatchSet&lt;/a&gt; and by &lt;a&gt;ListSqlInjectionMatchSets&lt;/a&gt;.&lt;/p&gt;
+-- <p>A request to delete a <a>SqlInjectionMatchSet</a> from AWS WAF.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param SqlInjectionMatchSetId [ResourceId] <p>The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to delete. <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
 -- Required parameter: SqlInjectionMatchSetId
 -- Required parameter: ChangeToken
 function M.DeleteSqlInjectionMatchSetRequest(ChangeToken, SqlInjectionMatchSetId, ...)
@@ -774,7 +774,7 @@ end
 
 --- Create a structure of type GetSizeConstraintSetRequest
 --  
--- @param SizeConstraintSetId [ResourceId] &lt;p&gt;The &lt;code&gt;SizeConstraintSetId&lt;/code&gt; of the &lt;a&gt;SizeConstraintSet&lt;/a&gt; that you want to get. &lt;code&gt;SizeConstraintSetId&lt;/code&gt; is returned by &lt;a&gt;CreateSizeConstraintSet&lt;/a&gt; and by &lt;a&gt;ListSizeConstraintSets&lt;/a&gt;.&lt;/p&gt;
+-- @param SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to get. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
 -- Required parameter: SizeConstraintSetId
 function M.GetSizeConstraintSetRequest(SizeConstraintSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSizeConstraintSetRequest")
@@ -804,11 +804,11 @@ function M.AssertByteMatchTuple(struct)
 end
 
 --- Create a structure of type ByteMatchTuple
--- &lt;p&gt;The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.&lt;/p&gt;
--- @param TargetString [ByteMatchTargetString] &lt;p&gt;The value that you want AWS WAF to search for. AWS WAF searches for the specified string in the part of web requests that you specified in &lt;code&gt;FieldToMatch&lt;/code&gt;. The maximum length of the value is 50 bytes.&lt;/p&gt; &lt;p&gt;Valid values depend on the values that you specified for &lt;code&gt;FieldToMatch&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;HEADER&lt;/code&gt;: The value that you want AWS WAF to search for in the request header that you specified in &lt;a&gt;FieldToMatch&lt;/a&gt;, for example, the value of the &lt;code&gt;User-Agent&lt;/code&gt; or &lt;code&gt;Referer&lt;/code&gt; header.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;METHOD&lt;/code&gt;: The HTTP method, which indicates the type of operation specified in the request. CloudFront supports the following methods: &lt;code&gt;DELETE&lt;/code&gt;, &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;HEAD&lt;/code&gt;, &lt;code&gt;OPTIONS&lt;/code&gt;, &lt;code&gt;PATCH&lt;/code&gt;, &lt;code&gt;POST&lt;/code&gt;, and &lt;code&gt;PUT&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;QUERY_STRING&lt;/code&gt;: The value that you want AWS WAF to search for in the query string, which is the part of a URL that appears after a &lt;code&gt;?&lt;/code&gt; character.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;URI&lt;/code&gt;: The value that you want AWS WAF to search for in the part of a URL that identifies a resource, for example, &lt;code&gt;/images/daily-ad.jpg&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BODY&lt;/code&gt;: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first &lt;code&gt;8192&lt;/code&gt; bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see &lt;a&gt;CreateSizeConstraintSet&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If &lt;code&gt;TargetString&lt;/code&gt; includes alphabetic characters A-Z and a-z, note that the value is case sensitive.&lt;/p&gt; &lt;p&gt; &lt;b&gt;If you're using the AWS WAF API&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Specify a base64-encoded version of the value. The maximum length of the value before you base64-encode it is 50 bytes.&lt;/p&gt; &lt;p&gt;For example, suppose the value of &lt;code&gt;Type&lt;/code&gt; is &lt;code&gt;HEADER&lt;/code&gt; and the value of &lt;code&gt;Data&lt;/code&gt; is &lt;code&gt;User-Agent&lt;/code&gt;. If you want to search the &lt;code&gt;User-Agent&lt;/code&gt; header for the value &lt;code&gt;BadBot&lt;/code&gt;, you base64-encode &lt;code&gt;BadBot&lt;/code&gt; using MIME base64 encoding and include the resulting value, &lt;code&gt;QmFkQm90&lt;/code&gt;, in the value of &lt;code&gt;TargetString&lt;/code&gt;.&lt;/p&gt; &lt;p&gt; &lt;b&gt;If you're using the AWS CLI or one of the AWS SDKs&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The value that you want AWS WAF to search for. The SDK automatically base64 encodes the value.&lt;/p&gt;
--- @param PositionalConstraint [PositionalConstraint] &lt;p&gt;Within the portion of a web request that you want to search (for example, in the query string, if any), specify where you want AWS WAF to search. Valid values include the following:&lt;/p&gt; &lt;p&gt; &lt;b&gt;CONTAINS&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The specified part of the web request must include the value of &lt;code&gt;TargetString&lt;/code&gt;, but the location doesn't matter.&lt;/p&gt; &lt;p&gt; &lt;b&gt;CONTAINS_WORD&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The specified part of the web request must include the value of &lt;code&gt;TargetString&lt;/code&gt;, and &lt;code&gt;TargetString&lt;/code&gt; must contain only alphanumeric characters or underscore (A-Z, a-z, 0-9, or _). In addition, &lt;code&gt;TargetString&lt;/code&gt; must be a word, which means one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;TargetString&lt;/code&gt; exactly matches the value of the specified part of the web request, such as the value of a header.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;TargetString&lt;/code&gt; is at the beginning of the specified part of the web request and is followed by a character other than an alphanumeric character or underscore (_), for example, &lt;code&gt;BadBot;&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;TargetString&lt;/code&gt; is at the end of the specified part of the web request and is preceded by a character other than an alphanumeric character or underscore (_), for example, &lt;code&gt;;BadBot&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;TargetString&lt;/code&gt; is in the middle of the specified part of the web request and is preceded and followed by characters other than alphanumeric characters or underscore (_), for example, &lt;code&gt;-BadBot;&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;EXACTLY&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The value of the specified part of the web request must exactly match the value of &lt;code&gt;TargetString&lt;/code&gt;.&lt;/p&gt; &lt;p&gt; &lt;b&gt;STARTS_WITH&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The value of &lt;code&gt;TargetString&lt;/code&gt; must appear at the beginning of the specified part of the web request.&lt;/p&gt; &lt;p&gt; &lt;b&gt;ENDS_WITH&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The value of &lt;code&gt;TargetString&lt;/code&gt; must appear at the end of the specified part of the web request.&lt;/p&gt;
--- @param TextTransformation [TextTransformation] &lt;p&gt;Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on &lt;code&gt;TargetString&lt;/code&gt; before inspecting a request for a match.&lt;/p&gt; &lt;p&gt; &lt;b&gt;CMD_LINE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Delete the following characters: \ &quot; ' ^&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Delete spaces before the following characters: / (&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replace the following characters with a space: , ;&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replace multiple spaces with one space&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Convert uppercase letters (A-Z) to lowercase (a-z)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;COMPRESS_WHITE_SPACE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to replace the following characters with a space character (decimal 32):&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;\f, formfeed, decimal 12&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\t, tab, decimal 9&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\n, newline, decimal 10&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\r, carriage return, decimal 13&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\v, vertical tab, decimal 11&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;non-breaking space, decimal 160&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;code&gt;COMPRESS_WHITE_SPACE&lt;/code&gt; also replaces multiple spaces with one space.&lt;/p&gt; &lt;p&gt; &lt;b&gt;HTML_ENTITY_DECODE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to replace HTML-encoded characters with unencoded characters. &lt;code&gt;HTML_ENTITY_DECODE&lt;/code&gt; performs the following operations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)quot;&lt;/code&gt; with &lt;code&gt;&quot;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)nbsp;&lt;/code&gt; with a non-breaking space, decimal 160&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)lt;&lt;/code&gt; with a &quot;less than&quot; symbol&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)gt;&lt;/code&gt; with &lt;code&gt;&amp;gt;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces characters that are represented in hexadecimal format, &lt;code&gt;(ampersand)#xhhhh;&lt;/code&gt;, with the corresponding characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces characters that are represented in decimal format, &lt;code&gt;(ampersand)#nnnn;&lt;/code&gt;, with the corresponding characters&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;LOWERCASE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to convert uppercase letters (A-Z) to lowercase (a-z).&lt;/p&gt; &lt;p&gt; &lt;b&gt;URL_DECODE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to decode a URL-encoded value.&lt;/p&gt; &lt;p&gt; &lt;b&gt;NONE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Specify &lt;code&gt;NONE&lt;/code&gt; if you don't want to perform any text transformations.&lt;/p&gt;
--- @param FieldToMatch [FieldToMatch] &lt;p&gt;The part of a web request that you want AWS WAF to search, such as a specified header or a query string. For more information, see &lt;a&gt;FieldToMatch&lt;/a&gt;.&lt;/p&gt;
+-- <p>The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.</p>
+-- @param TargetString [ByteMatchTargetString] <p>The value that you want AWS WAF to search for. AWS WAF searches for the specified string in the part of web requests that you specified in <code>FieldToMatch</code>. The maximum length of the value is 50 bytes.</p> <p>Valid values depend on the values that you specified for <code>FieldToMatch</code>:</p> <ul> <li> <p> <code>HEADER</code>: The value that you want AWS WAF to search for in the request header that you specified in <a>FieldToMatch</a>, for example, the value of the <code>User-Agent</code> or <code>Referer</code> header.</p> </li> <li> <p> <code>METHOD</code>: The HTTP method, which indicates the type of operation specified in the request. CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</p> </li> <li> <p> <code>QUERY_STRING</code>: The value that you want AWS WAF to search for in the query string, which is the part of a URL that appears after a <code>?</code> character.</p> </li> <li> <p> <code>URI</code>: The value that you want AWS WAF to search for in the part of a URL that identifies a resource, for example, <code>/images/daily-ad.jpg</code>.</p> </li> <li> <p> <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see <a>CreateSizeConstraintSet</a>. </p> </li> </ul> <p>If <code>TargetString</code> includes alphabetic characters A-Z and a-z, note that the value is case sensitive.</p> <p> <b>If you're using the AWS WAF API</b> </p> <p>Specify a base64-encoded version of the value. The maximum length of the value before you base64-encode it is 50 bytes.</p> <p>For example, suppose the value of <code>Type</code> is <code>HEADER</code> and the value of <code>Data</code> is <code>User-Agent</code>. If you want to search the <code>User-Agent</code> header for the value <code>BadBot</code>, you base64-encode <code>BadBot</code> using MIME base64 encoding and include the resulting value, <code>QmFkQm90</code>, in the value of <code>TargetString</code>.</p> <p> <b>If you're using the AWS CLI or one of the AWS SDKs</b> </p> <p>The value that you want AWS WAF to search for. The SDK automatically base64 encodes the value.</p>
+-- @param PositionalConstraint [PositionalConstraint] <p>Within the portion of a web request that you want to search (for example, in the query string, if any), specify where you want AWS WAF to search. Valid values include the following:</p> <p> <b>CONTAINS</b> </p> <p>The specified part of the web request must include the value of <code>TargetString</code>, but the location doesn't matter.</p> <p> <b>CONTAINS_WORD</b> </p> <p>The specified part of the web request must include the value of <code>TargetString</code>, and <code>TargetString</code> must contain only alphanumeric characters or underscore (A-Z, a-z, 0-9, or _). In addition, <code>TargetString</code> must be a word, which means one of the following:</p> <ul> <li> <p> <code>TargetString</code> exactly matches the value of the specified part of the web request, such as the value of a header.</p> </li> <li> <p> <code>TargetString</code> is at the beginning of the specified part of the web request and is followed by a character other than an alphanumeric character or underscore (_), for example, <code>BadBot;</code>.</p> </li> <li> <p> <code>TargetString</code> is at the end of the specified part of the web request and is preceded by a character other than an alphanumeric character or underscore (_), for example, <code>;BadBot</code>.</p> </li> <li> <p> <code>TargetString</code> is in the middle of the specified part of the web request and is preceded and followed by characters other than alphanumeric characters or underscore (_), for example, <code>-BadBot;</code>.</p> </li> </ul> <p> <b>EXACTLY</b> </p> <p>The value of the specified part of the web request must exactly match the value of <code>TargetString</code>.</p> <p> <b>STARTS_WITH</b> </p> <p>The value of <code>TargetString</code> must appear at the beginning of the specified part of the web request.</p> <p> <b>ENDS_WITH</b> </p> <p>The value of <code>TargetString</code> must appear at the end of the specified part of the web request.</p>
+-- @param TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>TargetString</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
+-- @param FieldToMatch [FieldToMatch] <p>The part of a web request that you want AWS WAF to search, such as a specified header or a query string. For more information, see <a>FieldToMatch</a>.</p>
 -- Required parameter: FieldToMatch
 -- Required parameter: TargetString
 -- Required parameter: TextTransformation
@@ -839,7 +839,7 @@ end
 
 --- Create a structure of type ListResourcesForWebACLRequest
 --  
--- @param WebACLId [ResourceId] &lt;p&gt;The unique identifier (ID) of the web ACL for which to list the associated resources.&lt;/p&gt;
+-- @param WebACLId [ResourceId] <p>The unique identifier (ID) of the web ACL for which to list the associated resources.</p>
 -- Required parameter: WebACLId
 function M.ListResourcesForWebACLRequest(WebACLId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListResourcesForWebACLRequest")
@@ -865,9 +865,9 @@ end
 
 --- Create a structure of type GetSampledRequestsResponse
 --  
--- @param TimeWindow [TimeWindow] &lt;p&gt;Usually, &lt;code&gt;TimeWindow&lt;/code&gt; is the time range that you specified in the &lt;code&gt;GetSampledRequests&lt;/code&gt; request. However, if your AWS resource received more than 5,000 requests during the time range that you specified in the request, &lt;code&gt;GetSampledRequests&lt;/code&gt; returns the time range for the first 5,000 requests.&lt;/p&gt;
--- @param SampledRequests [SampledHTTPRequests] &lt;p&gt;A complex type that contains detailed information about each of the requests in the sample.&lt;/p&gt;
--- @param PopulationSize [PopulationSize] &lt;p&gt;The total number of requests from which &lt;code&gt;GetSampledRequests&lt;/code&gt; got a sample of &lt;code&gt;MaxItems&lt;/code&gt; requests. If &lt;code&gt;PopulationSize&lt;/code&gt; is less than &lt;code&gt;MaxItems&lt;/code&gt;, the sample includes every request that your AWS resource received during the specified time range.&lt;/p&gt;
+-- @param TimeWindow [TimeWindow] <p>Usually, <code>TimeWindow</code> is the time range that you specified in the <code>GetSampledRequests</code> request. However, if your AWS resource received more than 5,000 requests during the time range that you specified in the request, <code>GetSampledRequests</code> returns the time range for the first 5,000 requests.</p>
+-- @param SampledRequests [SampledHTTPRequests] <p>A complex type that contains detailed information about each of the requests in the sample.</p>
+-- @param PopulationSize [PopulationSize] <p>The total number of requests from which <code>GetSampledRequests</code> got a sample of <code>MaxItems</code> requests. If <code>PopulationSize</code> is less than <code>MaxItems</code>, the sample includes every request that your AWS resource received during the specified time range.</p>
 function M.GetSampledRequestsResponse(TimeWindow, SampledRequests, PopulationSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSampledRequestsResponse")
 	local t = { 
@@ -894,9 +894,9 @@ function M.AssertIPSetDescriptor(struct)
 end
 
 --- Create a structure of type IPSetDescriptor
--- &lt;p&gt;Specifies the IP address type (&lt;code&gt;IPV4&lt;/code&gt; or &lt;code&gt;IPV6&lt;/code&gt;) and the IP address range (in CIDR format) that web requests originate from.&lt;/p&gt;
--- @param Type [IPSetDescriptorType] &lt;p&gt;Specify &lt;code&gt;IPV4&lt;/code&gt; or &lt;code&gt;IPV6&lt;/code&gt;.&lt;/p&gt;
--- @param Value [IPSetDescriptorValue] &lt;p&gt;Specify an IPv4 address by using CIDR notation. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;To configure AWS WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify &lt;code&gt;192.0.2.44/32&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;To configure AWS WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify &lt;code&gt;192.0.2.0/24&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information about CIDR notation, see the Wikipedia entry &lt;a href=&quot;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&quot;&gt;Classless Inter-Domain Routing&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Specify an IPv6 address by using CIDR notation. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;To configure AWS WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify &lt;code&gt;1111:0000:0000:0000:0000:0000:0000:0111/128&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;To configure AWS WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify &lt;code&gt;1111:0000:0000:0000:0000:0000:0000:0000/64&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Specifies the IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR format) that web requests originate from.</p>
+-- @param Type [IPSetDescriptorType] <p>Specify <code>IPV4</code> or <code>IPV6</code>.</p>
+-- @param Value [IPSetDescriptorValue] <p>Specify an IPv4 address by using CIDR notation. For example:</p> <ul> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> </ul> <p>For more information about CIDR notation, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-Domain Routing</a>.</p> <p>Specify an IPv6 address by using CIDR notation. For example:</p> <ul> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul>
 -- Required parameter: Type
 -- Required parameter: Value
 function M.IPSetDescriptor(Type, Value, ...)
@@ -921,8 +921,8 @@ function M.AssertWAFDisallowedNameException(struct)
 end
 
 --- Create a structure of type WAFDisallowedNameException
--- &lt;p&gt;The name specified is invalid.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The name specified is invalid.&lt;/p&gt;
+-- <p>The name specified is invalid.</p>
+-- @param message [errorMessage] <p>The name specified is invalid.</p>
 function M.WAFDisallowedNameException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFDisallowedNameException")
 	local t = { 
@@ -965,8 +965,8 @@ function M.AssertGetSqlInjectionMatchSetRequest(struct)
 end
 
 --- Create a structure of type GetSqlInjectionMatchSetRequest
--- &lt;p&gt;A request to get a &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt;.&lt;/p&gt;
--- @param SqlInjectionMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt; of the &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; that you want to get. &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateSqlInjectionMatchSet&lt;/a&gt; and by &lt;a&gt;ListSqlInjectionMatchSets&lt;/a&gt;.&lt;/p&gt;
+-- <p>A request to get a <a>SqlInjectionMatchSet</a>.</p>
+-- @param SqlInjectionMatchSetId [ResourceId] <p>The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to get. <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
 -- Required parameter: SqlInjectionMatchSetId
 function M.GetSqlInjectionMatchSetRequest(SqlInjectionMatchSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSqlInjectionMatchSetRequest")
@@ -990,9 +990,9 @@ function M.AssertCreateXssMatchSetResponse(struct)
 end
 
 --- Create a structure of type CreateXssMatchSetResponse
--- &lt;p&gt;The response to a &lt;code&gt;CreateXssMatchSet&lt;/code&gt; request.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;CreateXssMatchSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
--- @param XssMatchSet [XssMatchSet] &lt;p&gt;An &lt;a&gt;XssMatchSet&lt;/a&gt;.&lt;/p&gt;
+-- <p>The response to a <code>CreateXssMatchSet</code> request.</p>
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @param XssMatchSet [XssMatchSet] <p>An <a>XssMatchSet</a>.</p>
 function M.CreateXssMatchSetResponse(ChangeToken, XssMatchSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateXssMatchSetResponse")
 	local t = { 
@@ -1017,7 +1017,7 @@ end
 
 --- Create a structure of type GetRuleRequest
 --  
--- @param RuleId [ResourceId] &lt;p&gt;The &lt;code&gt;RuleId&lt;/code&gt; of the &lt;a&gt;Rule&lt;/a&gt; that you want to get. &lt;code&gt;RuleId&lt;/code&gt; is returned by &lt;a&gt;CreateRule&lt;/a&gt; and by &lt;a&gt;ListRules&lt;/a&gt;.&lt;/p&gt;
+-- @param RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>Rule</a> that you want to get. <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
 -- Required parameter: RuleId
 function M.GetRuleRequest(RuleId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRuleRequest")
@@ -1040,8 +1040,8 @@ function M.AssertGetSqlInjectionMatchSetResponse(struct)
 end
 
 --- Create a structure of type GetSqlInjectionMatchSetResponse
--- &lt;p&gt;The response to a &lt;a&gt;GetSqlInjectionMatchSet&lt;/a&gt; request.&lt;/p&gt;
--- @param SqlInjectionMatchSet [SqlInjectionMatchSet] &lt;p&gt;Information about the &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; that you specified in the &lt;code&gt;GetSqlInjectionMatchSet&lt;/code&gt; request. For more information, see the following topics:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt;: Contains &lt;code&gt;Name&lt;/code&gt;, &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt;, and an array of &lt;code&gt;SqlInjectionMatchTuple&lt;/code&gt; objects&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;SqlInjectionMatchTuple&lt;/a&gt;: Each &lt;code&gt;SqlInjectionMatchTuple&lt;/code&gt; object contains &lt;code&gt;FieldToMatch&lt;/code&gt; and &lt;code&gt;TextTransformation&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;FieldToMatch&lt;/a&gt;: Contains &lt;code&gt;Data&lt;/code&gt; and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The response to a <a>GetSqlInjectionMatchSet</a> request.</p>
+-- @param SqlInjectionMatchSet [SqlInjectionMatchSet] <p>Information about the <a>SqlInjectionMatchSet</a> that you specified in the <code>GetSqlInjectionMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>SqlInjectionMatchSet</a>: Contains <code>Name</code>, <code>SqlInjectionMatchSetId</code>, and an array of <code>SqlInjectionMatchTuple</code> objects</p> </li> <li> <p> <a>SqlInjectionMatchTuple</a>: Each <code>SqlInjectionMatchTuple</code> object contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 function M.GetSqlInjectionMatchSetResponse(SqlInjectionMatchSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSqlInjectionMatchSetResponse")
 	local t = { 
@@ -1063,8 +1063,8 @@ function M.AssertUpdateXssMatchSetResponse(struct)
 end
 
 --- Create a structure of type UpdateXssMatchSetResponse
--- &lt;p&gt;The response to an &lt;a&gt;UpdateXssMatchSets&lt;/a&gt; request.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;UpdateXssMatchSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- <p>The response to an <a>UpdateXssMatchSets</a> request.</p>
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.UpdateXssMatchSetResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateXssMatchSetResponse")
 	local t = { 
@@ -1089,9 +1089,9 @@ function M.AssertXssMatchSetSummary(struct)
 end
 
 --- Create a structure of type XssMatchSetSummary
--- &lt;p&gt;The &lt;code&gt;Id&lt;/code&gt; and &lt;code&gt;Name&lt;/code&gt; of an &lt;code&gt;XssMatchSet&lt;/code&gt;.&lt;/p&gt;
--- @param XssMatchSetId [ResourceId] &lt;p&gt;A unique identifier for an &lt;code&gt;XssMatchSet&lt;/code&gt;. You use &lt;code&gt;XssMatchSetId&lt;/code&gt; to get information about a &lt;code&gt;XssMatchSet&lt;/code&gt; (see &lt;a&gt;GetXssMatchSet&lt;/a&gt;), update an &lt;code&gt;XssMatchSet&lt;/code&gt; (see &lt;a&gt;UpdateXssMatchSet&lt;/a&gt;), insert an &lt;code&gt;XssMatchSet&lt;/code&gt; into a &lt;code&gt;Rule&lt;/code&gt; or delete one from a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), and delete an &lt;code&gt;XssMatchSet&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteXssMatchSet&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;XssMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateXssMatchSet&lt;/a&gt; and by &lt;a&gt;ListXssMatchSets&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;The name of the &lt;code&gt;XssMatchSet&lt;/code&gt;, if any, specified by &lt;code&gt;Id&lt;/code&gt;.&lt;/p&gt;
+-- <p>The <code>Id</code> and <code>Name</code> of an <code>XssMatchSet</code>.</p>
+-- @param XssMatchSetId [ResourceId] <p>A unique identifier for an <code>XssMatchSet</code>. You use <code>XssMatchSetId</code> to get information about a <code>XssMatchSet</code> (see <a>GetXssMatchSet</a>), update an <code>XssMatchSet</code> (see <a>UpdateXssMatchSet</a>), insert an <code>XssMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>XssMatchSet</code> from AWS WAF (see <a>DeleteXssMatchSet</a>).</p> <p> <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
+-- @param Name [ResourceName] <p>The name of the <code>XssMatchSet</code>, if any, specified by <code>Id</code>.</p>
 -- Required parameter: XssMatchSetId
 -- Required parameter: Name
 function M.XssMatchSetSummary(XssMatchSetId, Name, ...)
@@ -1117,9 +1117,9 @@ function M.AssertListXssMatchSetsResponse(struct)
 end
 
 --- Create a structure of type ListXssMatchSetsResponse
--- &lt;p&gt;The response to a &lt;a&gt;ListXssMatchSets&lt;/a&gt; request.&lt;/p&gt;
--- @param XssMatchSets [XssMatchSetSummaries] &lt;p&gt;An array of &lt;a&gt;XssMatchSetSummary&lt;/a&gt; objects.&lt;/p&gt;
--- @param NextMarker [NextMarker] &lt;p&gt;If you have more &lt;a&gt;XssMatchSet&lt;/a&gt; objects than the number that you specified for &lt;code&gt;Limit&lt;/code&gt; in the request, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value. To list more &lt;code&gt;XssMatchSet&lt;/code&gt; objects, submit another &lt;code&gt;ListXssMatchSets&lt;/code&gt; request, and specify the &lt;code&gt;NextMarker&lt;/code&gt; value from the response in the &lt;code&gt;NextMarker&lt;/code&gt; value in the next request.&lt;/p&gt;
+-- <p>The response to a <a>ListXssMatchSets</a> request.</p>
+-- @param XssMatchSets [XssMatchSetSummaries] <p>An array of <a>XssMatchSetSummary</a> objects.</p>
+-- @param NextMarker [NextMarker] <p>If you have more <a>XssMatchSet</a> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>XssMatchSet</code> objects, submit another <code>ListXssMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
 function M.ListXssMatchSetsResponse(XssMatchSets, NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListXssMatchSetsResponse")
 	local t = { 
@@ -1146,10 +1146,10 @@ function M.AssertByteMatchSet(struct)
 end
 
 --- Create a structure of type ByteMatchSet
--- &lt;p&gt;In a &lt;a&gt;GetByteMatchSet&lt;/a&gt; request, &lt;code&gt;ByteMatchSet&lt;/code&gt; is a complex type that contains the &lt;code&gt;ByteMatchSetId&lt;/code&gt; and &lt;code&gt;Name&lt;/code&gt; of a &lt;code&gt;ByteMatchSet&lt;/code&gt;, and the values that you specified when you updated the &lt;code&gt;ByteMatchSet&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;A complex type that contains &lt;code&gt;ByteMatchTuple&lt;/code&gt; objects, which specify the parts of web requests that you want AWS WAF to inspect and the values that you want AWS WAF to search for. If a &lt;code&gt;ByteMatchSet&lt;/code&gt; contains more than one &lt;code&gt;ByteMatchTuple&lt;/code&gt; object, a request needs to match the settings in only one &lt;code&gt;ByteMatchTuple&lt;/code&gt; to be considered a match.&lt;/p&gt;
--- @param ByteMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;ByteMatchSetId&lt;/code&gt; for a &lt;code&gt;ByteMatchSet&lt;/code&gt;. You use &lt;code&gt;ByteMatchSetId&lt;/code&gt; to get information about a &lt;code&gt;ByteMatchSet&lt;/code&gt; (see &lt;a&gt;GetByteMatchSet&lt;/a&gt;), update a &lt;code&gt;ByteMatchSet&lt;/code&gt; (see &lt;a&gt;UpdateByteMatchSet&lt;/a&gt;), insert a &lt;code&gt;ByteMatchSet&lt;/code&gt; into a &lt;code&gt;Rule&lt;/code&gt; or delete one from a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), and delete a &lt;code&gt;ByteMatchSet&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteByteMatchSet&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;ByteMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateByteMatchSet&lt;/a&gt; and by &lt;a&gt;ListByteMatchSets&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;ByteMatchSet&lt;/a&gt;. You can't change &lt;code&gt;Name&lt;/code&gt; after you create a &lt;code&gt;ByteMatchSet&lt;/code&gt;.&lt;/p&gt;
--- @param ByteMatchTuples [ByteMatchTuples] &lt;p&gt;Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.&lt;/p&gt;
+-- <p>In a <a>GetByteMatchSet</a> request, <code>ByteMatchSet</code> is a complex type that contains the <code>ByteMatchSetId</code> and <code>Name</code> of a <code>ByteMatchSet</code>, and the values that you specified when you updated the <code>ByteMatchSet</code>. </p> <p>A complex type that contains <code>ByteMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect and the values that you want AWS WAF to search for. If a <code>ByteMatchSet</code> contains more than one <code>ByteMatchTuple</code> object, a request needs to match the settings in only one <code>ByteMatchTuple</code> to be considered a match.</p>
+-- @param ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> for a <code>ByteMatchSet</code>. You use <code>ByteMatchSetId</code> to get information about a <code>ByteMatchSet</code> (see <a>GetByteMatchSet</a>), update a <code>ByteMatchSet</code> (see <a>UpdateByteMatchSet</a>), insert a <code>ByteMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>ByteMatchSet</code> from AWS WAF (see <a>DeleteByteMatchSet</a>).</p> <p> <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a <code>ByteMatchSet</code>.</p>
+-- @param ByteMatchTuples [ByteMatchTuples] <p>Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.</p>
 -- Required parameter: ByteMatchSetId
 -- Required parameter: ByteMatchTuples
 function M.ByteMatchSet(ByteMatchSetId, Name, ByteMatchTuples, ...)
@@ -1177,7 +1177,7 @@ end
 
 --- Create a structure of type GetRateBasedRuleRequest
 --  
--- @param RuleId [ResourceId] &lt;p&gt;The &lt;code&gt;RuleId&lt;/code&gt; of the &lt;a&gt;RateBasedRule&lt;/a&gt; that you want to get. &lt;code&gt;RuleId&lt;/code&gt; is returned by &lt;a&gt;CreateRateBasedRule&lt;/a&gt; and by &lt;a&gt;ListRateBasedRules&lt;/a&gt;.&lt;/p&gt;
+-- @param RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>RateBasedRule</a> that you want to get. <code>RuleId</code> is returned by <a>CreateRateBasedRule</a> and by <a>ListRateBasedRules</a>.</p>
 -- Required parameter: RuleId
 function M.GetRateBasedRuleRequest(RuleId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRateBasedRuleRequest")
@@ -1205,11 +1205,11 @@ function M.AssertSampledHTTPRequest(struct)
 end
 
 --- Create a structure of type SampledHTTPRequest
--- &lt;p&gt;The response from a &lt;a&gt;GetSampledRequests&lt;/a&gt; request includes a &lt;code&gt;SampledHTTPRequests&lt;/code&gt; complex type that appears as &lt;code&gt;SampledRequests&lt;/code&gt; in the response syntax. &lt;code&gt;SampledHTTPRequests&lt;/code&gt; contains one &lt;code&gt;SampledHTTPRequest&lt;/code&gt; object for each web request that is returned by &lt;code&gt;GetSampledRequests&lt;/code&gt;.&lt;/p&gt;
--- @param Action [Action] &lt;p&gt;The action for the &lt;code&gt;Rule&lt;/code&gt; that the request matched: &lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;.&lt;/p&gt;
--- @param Timestamp [Timestamp] &lt;p&gt;The time at which AWS WAF received the request from your AWS resource, in Unix time format (in seconds).&lt;/p&gt;
--- @param Request [HTTPRequest] &lt;p&gt;A complex type that contains detailed information about the request.&lt;/p&gt;
--- @param Weight [SampleWeight] &lt;p&gt;A value that indicates how one result in the response relates proportionally to other results in the response. A result that has a weight of &lt;code&gt;2&lt;/code&gt; represents roughly twice as many CloudFront web requests as a result that has a weight of &lt;code&gt;1&lt;/code&gt;.&lt;/p&gt;
+-- <p>The response from a <a>GetSampledRequests</a> request includes a <code>SampledHTTPRequests</code> complex type that appears as <code>SampledRequests</code> in the response syntax. <code>SampledHTTPRequests</code> contains one <code>SampledHTTPRequest</code> object for each web request that is returned by <code>GetSampledRequests</code>.</p>
+-- @param Action [Action] <p>The action for the <code>Rule</code> that the request matched: <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p>
+-- @param Timestamp [Timestamp] <p>The time at which AWS WAF received the request from your AWS resource, in Unix time format (in seconds).</p>
+-- @param Request [HTTPRequest] <p>A complex type that contains detailed information about the request.</p>
+-- @param Weight [SampleWeight] <p>A value that indicates how one result in the response relates proportionally to other results in the response. A result that has a weight of <code>2</code> represents roughly twice as many CloudFront web requests as a result that has a weight of <code>1</code>.</p>
 -- Required parameter: Request
 -- Required parameter: Weight
 function M.SampledHTTPRequest(Action, Timestamp, Request, Weight, ...)
@@ -1256,8 +1256,8 @@ function M.AssertWAFInternalErrorException(struct)
 end
 
 --- Create a structure of type WAFInternalErrorException
--- &lt;p&gt;The operation failed because of a system problem, even though the request was valid. Retry your request.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The operation failed because of a system problem, even though the request was valid. Retry your request.&lt;/p&gt;
+-- <p>The operation failed because of a system problem, even though the request was valid. Retry your request.</p>
+-- @param message [errorMessage] <p>The operation failed because of a system problem, even though the request was valid. Retry your request.</p>
 function M.WAFInternalErrorException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFInternalErrorException")
 	local t = { 
@@ -1282,9 +1282,9 @@ function M.AssertSqlInjectionMatchTuple(struct)
 end
 
 --- Create a structure of type SqlInjectionMatchTuple
--- &lt;p&gt;Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.&lt;/p&gt;
--- @param TextTransformation [TextTransformation] &lt;p&gt;Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on &lt;code&gt;FieldToMatch&lt;/code&gt; before inspecting a request for a match.&lt;/p&gt; &lt;p&gt; &lt;b&gt;CMD_LINE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Delete the following characters: \ &quot; ' ^&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Delete spaces before the following characters: / (&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replace the following characters with a space: , ;&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replace multiple spaces with one space&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Convert uppercase letters (A-Z) to lowercase (a-z)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;COMPRESS_WHITE_SPACE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to replace the following characters with a space character (decimal 32):&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;\f, formfeed, decimal 12&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\t, tab, decimal 9&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\n, newline, decimal 10&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\r, carriage return, decimal 13&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;\v, vertical tab, decimal 11&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;non-breaking space, decimal 160&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;code&gt;COMPRESS_WHITE_SPACE&lt;/code&gt; also replaces multiple spaces with one space.&lt;/p&gt; &lt;p&gt; &lt;b&gt;HTML_ENTITY_DECODE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to replace HTML-encoded characters with unencoded characters. &lt;code&gt;HTML_ENTITY_DECODE&lt;/code&gt; performs the following operations:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)quot;&lt;/code&gt; with &lt;code&gt;&quot;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)nbsp;&lt;/code&gt; with a non-breaking space, decimal 160&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)lt;&lt;/code&gt; with a &quot;less than&quot; symbol&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces &lt;code&gt;(ampersand)gt;&lt;/code&gt; with &lt;code&gt;&amp;gt;&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces characters that are represented in hexadecimal format, &lt;code&gt;(ampersand)#xhhhh;&lt;/code&gt;, with the corresponding characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Replaces characters that are represented in decimal format, &lt;code&gt;(ampersand)#nnnn;&lt;/code&gt;, with the corresponding characters&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;LOWERCASE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to convert uppercase letters (A-Z) to lowercase (a-z).&lt;/p&gt; &lt;p&gt; &lt;b&gt;URL_DECODE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Use this option to decode a URL-encoded value.&lt;/p&gt; &lt;p&gt; &lt;b&gt;NONE&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Specify &lt;code&gt;NONE&lt;/code&gt; if you don't want to perform any text transformations.&lt;/p&gt;
--- @param FieldToMatch [FieldToMatch] &lt;p&gt;Specifies where in a web request to look for snippets of malicious SQL code.&lt;/p&gt;
+-- <p>Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.</p>
+-- @param TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
+-- @param FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for snippets of malicious SQL code.</p>
 -- Required parameter: FieldToMatch
 -- Required parameter: TextTransformation
 function M.SqlInjectionMatchTuple(TextTransformation, FieldToMatch, ...)
@@ -1310,7 +1310,7 @@ end
 
 --- Create a structure of type GetRateBasedRuleResponse
 --  
--- @param Rule [RateBasedRule] &lt;p&gt;Information about the &lt;a&gt;RateBasedRule&lt;/a&gt; that you specified in the &lt;code&gt;GetRateBasedRule&lt;/code&gt; request.&lt;/p&gt;
+-- @param Rule [RateBasedRule] <p>Information about the <a>RateBasedRule</a> that you specified in the <code>GetRateBasedRule</code> request.</p>
 function M.GetRateBasedRuleResponse(Rule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRateBasedRuleResponse")
 	local t = { 
@@ -1337,10 +1337,10 @@ function M.AssertUpdateSqlInjectionMatchSetRequest(struct)
 end
 
 --- Create a structure of type UpdateSqlInjectionMatchSetRequest
--- &lt;p&gt;A request to update a &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Updates [SqlInjectionMatchSetUpdates] &lt;p&gt;An array of &lt;code&gt;SqlInjectionMatchSetUpdate&lt;/code&gt; objects that you want to insert into or delete from a &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt;. For more information, see the applicable data types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;SqlInjectionMatchSetUpdate&lt;/a&gt;: Contains &lt;code&gt;Action&lt;/code&gt; and &lt;code&gt;SqlInjectionMatchTuple&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;SqlInjectionMatchTuple&lt;/a&gt;: Contains &lt;code&gt;FieldToMatch&lt;/code&gt; and &lt;code&gt;TextTransformation&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;FieldToMatch&lt;/a&gt;: Contains &lt;code&gt;Data&lt;/code&gt; and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SqlInjectionMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt; of the &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; that you want to update. &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateSqlInjectionMatchSet&lt;/a&gt; and by &lt;a&gt;ListSqlInjectionMatchSets&lt;/a&gt;.&lt;/p&gt;
+-- <p>A request to update a <a>SqlInjectionMatchSet</a>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Updates [SqlInjectionMatchSetUpdates] <p>An array of <code>SqlInjectionMatchSetUpdate</code> objects that you want to insert into or delete from a <a>SqlInjectionMatchSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>SqlInjectionMatchSetUpdate</a>: Contains <code>Action</code> and <code>SqlInjectionMatchTuple</code> </p> </li> <li> <p> <a>SqlInjectionMatchTuple</a>: Contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- @param SqlInjectionMatchSetId [ResourceId] <p>The <code>SqlInjectionMatchSetId</code> of the <code>SqlInjectionMatchSet</code> that you want to update. <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
 -- Required parameter: SqlInjectionMatchSetId
 -- Required parameter: ChangeToken
 -- Required parameter: Updates
@@ -1367,8 +1367,8 @@ function M.AssertWAFInvalidOperationException(struct)
 end
 
 --- Create a structure of type WAFInvalidOperationException
--- &lt;p&gt;The operation failed because there was nothing to do. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You tried to remove a &lt;code&gt;Rule&lt;/code&gt; from a &lt;code&gt;WebACL&lt;/code&gt;, but the &lt;code&gt;Rule&lt;/code&gt; isn't in the specified &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to remove an IP address from an &lt;code&gt;IPSet&lt;/code&gt;, but the IP address isn't in the specified &lt;code&gt;IPSet&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to remove a &lt;code&gt;ByteMatchTuple&lt;/code&gt; from a &lt;code&gt;ByteMatchSet&lt;/code&gt;, but the &lt;code&gt;ByteMatchTuple&lt;/code&gt; isn't in the specified &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add a &lt;code&gt;Rule&lt;/code&gt; to a &lt;code&gt;WebACL&lt;/code&gt;, but the &lt;code&gt;Rule&lt;/code&gt; already exists in the specified &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add an IP address to an &lt;code&gt;IPSet&lt;/code&gt;, but the IP address already exists in the specified &lt;code&gt;IPSet&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add a &lt;code&gt;ByteMatchTuple&lt;/code&gt; to a &lt;code&gt;ByteMatchSet&lt;/code&gt;, but the &lt;code&gt;ByteMatchTuple&lt;/code&gt; already exists in the specified &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param message [errorMessage] &lt;p&gt;The operation failed because there was nothing to do. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You tried to remove a &lt;code&gt;Rule&lt;/code&gt; from a &lt;code&gt;WebACL&lt;/code&gt;, but the &lt;code&gt;Rule&lt;/code&gt; isn't in the specified &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to remove an IP address from an &lt;code&gt;IPSet&lt;/code&gt;, but the IP address isn't in the specified &lt;code&gt;IPSet&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to remove a &lt;code&gt;ByteMatchTuple&lt;/code&gt; from a &lt;code&gt;ByteMatchSet&lt;/code&gt;, but the &lt;code&gt;ByteMatchTuple&lt;/code&gt; isn't in the specified &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add a &lt;code&gt;Rule&lt;/code&gt; to a &lt;code&gt;WebACL&lt;/code&gt;, but the &lt;code&gt;Rule&lt;/code&gt; already exists in the specified &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add an IP address to an &lt;code&gt;IPSet&lt;/code&gt;, but the IP address already exists in the specified &lt;code&gt;IPSet&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to add a &lt;code&gt;ByteMatchTuple&lt;/code&gt; to a &lt;code&gt;ByteMatchSet&lt;/code&gt;, but the &lt;code&gt;ByteMatchTuple&lt;/code&gt; already exists in the specified &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The operation failed because there was nothing to do. For example:</p> <ul> <li> <p>You tried to remove a <code>Rule</code> from a <code>WebACL</code>, but the <code>Rule</code> isn't in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to remove an IP address from an <code>IPSet</code>, but the IP address isn't in the specified <code>IPSet</code>.</p> </li> <li> <p>You tried to remove a <code>ByteMatchTuple</code> from a <code>ByteMatchSet</code>, but the <code>ByteMatchTuple</code> isn't in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to add a <code>Rule</code> to a <code>WebACL</code>, but the <code>Rule</code> already exists in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to add an IP address to an <code>IPSet</code>, but the IP address already exists in the specified <code>IPSet</code>.</p> </li> <li> <p>You tried to add a <code>ByteMatchTuple</code> to a <code>ByteMatchSet</code>, but the <code>ByteMatchTuple</code> already exists in the specified <code>WebACL</code>.</p> </li> </ul>
+-- @param message [errorMessage] <p>The operation failed because there was nothing to do. For example:</p> <ul> <li> <p>You tried to remove a <code>Rule</code> from a <code>WebACL</code>, but the <code>Rule</code> isn't in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to remove an IP address from an <code>IPSet</code>, but the IP address isn't in the specified <code>IPSet</code>.</p> </li> <li> <p>You tried to remove a <code>ByteMatchTuple</code> from a <code>ByteMatchSet</code>, but the <code>ByteMatchTuple</code> isn't in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to add a <code>Rule</code> to a <code>WebACL</code>, but the <code>Rule</code> already exists in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to add an IP address to an <code>IPSet</code>, but the IP address already exists in the specified <code>IPSet</code>.</p> </li> <li> <p>You tried to add a <code>ByteMatchTuple</code> to a <code>ByteMatchSet</code>, but the <code>ByteMatchTuple</code> already exists in the specified <code>WebACL</code>.</p> </li> </ul>
 function M.WAFInvalidOperationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFInvalidOperationException")
 	local t = { 
@@ -1392,8 +1392,8 @@ end
 
 --- Create a structure of type CreateByteMatchSetResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;CreateByteMatchSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
--- @param ByteMatchSet [ByteMatchSet] &lt;p&gt;A &lt;a&gt;ByteMatchSet&lt;/a&gt; that contains no &lt;code&gt;ByteMatchTuple&lt;/code&gt; objects.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @param ByteMatchSet [ByteMatchSet] <p>A <a>ByteMatchSet</a> that contains no <code>ByteMatchTuple</code> objects.</p>
 function M.CreateByteMatchSetResponse(ChangeToken, ByteMatchSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateByteMatchSetResponse")
 	local t = { 
@@ -1417,7 +1417,7 @@ end
 
 --- Create a structure of type GetByteMatchSetResponse
 --  
--- @param ByteMatchSet [ByteMatchSet] &lt;p&gt;Information about the &lt;a&gt;ByteMatchSet&lt;/a&gt; that you specified in the &lt;code&gt;GetByteMatchSet&lt;/code&gt; request. For more information, see the following topics:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ByteMatchSet&lt;/a&gt;: Contains &lt;code&gt;ByteMatchSetId&lt;/code&gt;, &lt;code&gt;ByteMatchTuples&lt;/code&gt;, and &lt;code&gt;Name&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ByteMatchTuples&lt;/code&gt;: Contains an array of &lt;a&gt;ByteMatchTuple&lt;/a&gt; objects. Each &lt;code&gt;ByteMatchTuple&lt;/code&gt; object contains &lt;a&gt;FieldToMatch&lt;/a&gt;, &lt;code&gt;PositionalConstraint&lt;/code&gt;, &lt;code&gt;TargetString&lt;/code&gt;, and &lt;code&gt;TextTransformation&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;FieldToMatch&lt;/a&gt;: Contains &lt;code&gt;Data&lt;/code&gt; and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param ByteMatchSet [ByteMatchSet] <p>Information about the <a>ByteMatchSet</a> that you specified in the <code>GetByteMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>ByteMatchSet</a>: Contains <code>ByteMatchSetId</code>, <code>ByteMatchTuples</code>, and <code>Name</code> </p> </li> <li> <p> <code>ByteMatchTuples</code>: Contains an array of <a>ByteMatchTuple</a> objects. Each <code>ByteMatchTuple</code> object contains <a>FieldToMatch</a>, <code>PositionalConstraint</code>, <code>TargetString</code>, and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 function M.GetByteMatchSetResponse(ByteMatchSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetByteMatchSetResponse")
 	local t = { 
@@ -1440,7 +1440,7 @@ end
 
 --- Create a structure of type GetChangeTokenResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used in the request. Use this value in a &lt;code&gt;GetChangeTokenStatus&lt;/code&gt; request to get the current status of the request. &lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used in the request. Use this value in a <code>GetChangeTokenStatus</code> request to get the current status of the request. </p>
 function M.GetChangeTokenResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetChangeTokenResponse")
 	local t = { 
@@ -1462,8 +1462,8 @@ function M.AssertWAFReferencedItemException(struct)
 end
 
 --- Create a structure of type WAFReferencedItemException
--- &lt;p&gt;The operation failed because you tried to delete an object that is still in use. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You tried to delete a &lt;code&gt;ByteMatchSet&lt;/code&gt; that is still referenced by a &lt;code&gt;Rule&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to delete a &lt;code&gt;Rule&lt;/code&gt; that is still referenced by a &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param message [errorMessage] &lt;p&gt;The operation failed because you tried to delete an object that is still in use. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You tried to delete a &lt;code&gt;ByteMatchSet&lt;/code&gt; that is still referenced by a &lt;code&gt;Rule&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to delete a &lt;code&gt;Rule&lt;/code&gt; that is still referenced by a &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The operation failed because you tried to delete an object that is still in use. For example:</p> <ul> <li> <p>You tried to delete a <code>ByteMatchSet</code> that is still referenced by a <code>Rule</code>.</p> </li> <li> <p>You tried to delete a <code>Rule</code> that is still referenced by a <code>WebACL</code>.</p> </li> </ul>
+-- @param message [errorMessage] <p>The operation failed because you tried to delete an object that is still in use. For example:</p> <ul> <li> <p>You tried to delete a <code>ByteMatchSet</code> that is still referenced by a <code>Rule</code>.</p> </li> <li> <p>You tried to delete a <code>Rule</code> that is still referenced by a <code>WebACL</code>.</p> </li> </ul>
 function M.WAFReferencedItemException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFReferencedItemException")
 	local t = { 
@@ -1492,12 +1492,12 @@ function M.AssertWebACL(struct)
 end
 
 --- Create a structure of type WebACL
--- &lt;p&gt;Contains the &lt;code&gt;Rules&lt;/code&gt; that identify the requests that you want to allow, block, or count. In a &lt;code&gt;WebACL&lt;/code&gt;, you also specify a default action (&lt;code&gt;ALLOW&lt;/code&gt; or &lt;code&gt;BLOCK&lt;/code&gt;), and the action for each &lt;code&gt;Rule&lt;/code&gt; that you add to a &lt;code&gt;WebACL&lt;/code&gt;, for example, block requests from specified IP addresses or block requests from specified referrers. You also associate the &lt;code&gt;WebACL&lt;/code&gt; with a CloudFront distribution to identify the requests that you want AWS WAF to filter. If you add more than one &lt;code&gt;Rule&lt;/code&gt; to a &lt;code&gt;WebACL&lt;/code&gt;, a request needs to match only one of the specifications to be allowed, blocked, or counted. For more information, see &lt;a&gt;UpdateWebACL&lt;/a&gt;.&lt;/p&gt;
--- @param DefaultAction [WafAction] &lt;p&gt;The action to perform if none of the &lt;code&gt;Rules&lt;/code&gt; contained in the &lt;code&gt;WebACL&lt;/code&gt; match. The action is specified by the &lt;a&gt;WafAction&lt;/a&gt; object.&lt;/p&gt;
--- @param Rules [ActivatedRules] &lt;p&gt;An array that contains the action for each &lt;code&gt;Rule&lt;/code&gt; in a &lt;code&gt;WebACL&lt;/code&gt;, the priority of the &lt;code&gt;Rule&lt;/code&gt;, and the ID of the &lt;code&gt;Rule&lt;/code&gt;.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;A friendly name or description for the metrics for this &lt;code&gt;WebACL&lt;/code&gt;. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change &lt;code&gt;MetricName&lt;/code&gt; after you create the &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt;
--- @param WebACLId [ResourceId] &lt;p&gt;A unique identifier for a &lt;code&gt;WebACL&lt;/code&gt;. You use &lt;code&gt;WebACLId&lt;/code&gt; to get information about a &lt;code&gt;WebACL&lt;/code&gt; (see &lt;a&gt;GetWebACL&lt;/a&gt;), update a &lt;code&gt;WebACL&lt;/code&gt; (see &lt;a&gt;UpdateWebACL&lt;/a&gt;), and delete a &lt;code&gt;WebACL&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteWebACL&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;WebACLId&lt;/code&gt; is returned by &lt;a&gt;CreateWebACL&lt;/a&gt; and by &lt;a&gt;ListWebACLs&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;code&gt;WebACL&lt;/code&gt;. You can't change the name of a &lt;code&gt;WebACL&lt;/code&gt; after you create it.&lt;/p&gt;
+-- <p>Contains the <code>Rules</code> that identify the requests that you want to allow, block, or count. In a <code>WebACL</code>, you also specify a default action (<code>ALLOW</code> or <code>BLOCK</code>), and the action for each <code>Rule</code> that you add to a <code>WebACL</code>, for example, block requests from specified IP addresses or block requests from specified referrers. You also associate the <code>WebACL</code> with a CloudFront distribution to identify the requests that you want AWS WAF to filter. If you add more than one <code>Rule</code> to a <code>WebACL</code>, a request needs to match only one of the specifications to be allowed, blocked, or counted. For more information, see <a>UpdateWebACL</a>.</p>
+-- @param DefaultAction [WafAction] <p>The action to perform if none of the <code>Rules</code> contained in the <code>WebACL</code> match. The action is specified by the <a>WafAction</a> object.</p>
+-- @param Rules [ActivatedRules] <p>An array that contains the action for each <code>Rule</code> in a <code>WebACL</code>, the priority of the <code>Rule</code>, and the ID of the <code>Rule</code>.</p>
+-- @param MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you create the <code>WebACL</code>.</p>
+-- @param WebACLId [ResourceId] <p>A unique identifier for a <code>WebACL</code>. You use <code>WebACLId</code> to get information about a <code>WebACL</code> (see <a>GetWebACL</a>), update a <code>WebACL</code> (see <a>UpdateWebACL</a>), and delete a <code>WebACL</code> from AWS WAF (see <a>DeleteWebACL</a>).</p> <p> <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <code>WebACL</code>. You can't change the name of a <code>WebACL</code> after you create it.</p>
 -- Required parameter: WebACLId
 -- Required parameter: DefaultAction
 -- Required parameter: Rules
@@ -1528,8 +1528,8 @@ end
 
 --- Create a structure of type ListWebACLsResponse
 --  
--- @param NextMarker [NextMarker] &lt;p&gt;If you have more &lt;code&gt;WebACL&lt;/code&gt; objects than the number that you specified for &lt;code&gt;Limit&lt;/code&gt; in the request, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value. To list more &lt;code&gt;WebACL&lt;/code&gt; objects, submit another &lt;code&gt;ListWebACLs&lt;/code&gt; request, and specify the &lt;code&gt;NextMarker&lt;/code&gt; value from the response in the &lt;code&gt;NextMarker&lt;/code&gt; value in the next request.&lt;/p&gt;
--- @param WebACLs [WebACLSummaries] &lt;p&gt;An array of &lt;a&gt;WebACLSummary&lt;/a&gt; objects.&lt;/p&gt;
+-- @param NextMarker [NextMarker] <p>If you have more <code>WebACL</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>WebACL</code> objects, submit another <code>ListWebACLs</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @param WebACLs [WebACLSummaries] <p>An array of <a>WebACLSummary</a> objects.</p>
 function M.ListWebACLsResponse(NextMarker, WebACLs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListWebACLsResponse")
 	local t = { 
@@ -1553,9 +1553,9 @@ function M.AssertCreateSqlInjectionMatchSetResponse(struct)
 end
 
 --- Create a structure of type CreateSqlInjectionMatchSetResponse
--- &lt;p&gt;The response to a &lt;code&gt;CreateSqlInjectionMatchSet&lt;/code&gt; request.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;CreateSqlInjectionMatchSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
--- @param SqlInjectionMatchSet [SqlInjectionMatchSet] &lt;p&gt;A &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt;.&lt;/p&gt;
+-- <p>The response to a <code>CreateSqlInjectionMatchSet</code> request.</p>
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @param SqlInjectionMatchSet [SqlInjectionMatchSet] <p>A <a>SqlInjectionMatchSet</a>.</p>
 function M.CreateSqlInjectionMatchSetResponse(ChangeToken, SqlInjectionMatchSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSqlInjectionMatchSetResponse")
 	local t = { 
@@ -1580,8 +1580,8 @@ end
 
 --- Create a structure of type CreateSizeConstraintSetResponse
 --  
--- @param SizeConstraintSet [SizeConstraintSet] &lt;p&gt;A &lt;a&gt;SizeConstraintSet&lt;/a&gt; that contains no &lt;code&gt;SizeConstraint&lt;/code&gt; objects.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;CreateSizeConstraintSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param SizeConstraintSet [SizeConstraintSet] <p>A <a>SizeConstraintSet</a> that contains no <code>SizeConstraint</code> objects.</p>
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.CreateSizeConstraintSetResponse(SizeConstraintSet, ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSizeConstraintSetResponse")
 	local t = { 
@@ -1612,10 +1612,10 @@ end
 
 --- Create a structure of type GetSampledRequestsRequest
 --  
--- @param TimeWindow [TimeWindow] &lt;p&gt;The start date and time and the end date and time of the range for which you want &lt;code&gt;GetSampledRequests&lt;/code&gt; to return a sample of requests. Specify the date and time in the following format: &lt;code&gt;&quot;2016-09-27T14:50Z&quot;&lt;/code&gt;. You can specify any time range in the previous three hours.&lt;/p&gt;
--- @param WebAclId [ResourceId] &lt;p&gt;The &lt;code&gt;WebACLId&lt;/code&gt; of the &lt;code&gt;WebACL&lt;/code&gt; for which you want &lt;code&gt;GetSampledRequests&lt;/code&gt; to return a sample of requests.&lt;/p&gt;
--- @param MaxItems [GetSampledRequestsMaxItems] &lt;p&gt;The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of &lt;code&gt;MaxItems&lt;/code&gt;, &lt;code&gt;GetSampledRequests&lt;/code&gt; returns information about all of them. &lt;/p&gt;
--- @param RuleId [ResourceId] &lt;p&gt; &lt;code&gt;RuleId&lt;/code&gt; is one of two values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The &lt;code&gt;RuleId&lt;/code&gt; of the &lt;code&gt;Rule&lt;/code&gt; for which you want &lt;code&gt;GetSampledRequests&lt;/code&gt; to return a sample of requests.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Default_Action&lt;/code&gt;, which causes &lt;code&gt;GetSampledRequests&lt;/code&gt; to return a sample of the requests that didn't match any of the rules in the specified &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param TimeWindow [TimeWindow] <p>The start date and time and the end date and time of the range for which you want <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.</p>
+-- @param WebAclId [ResourceId] <p>The <code>WebACLId</code> of the <code>WebACL</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.</p>
+-- @param MaxItems [GetSampledRequestsMaxItems] <p>The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of <code>MaxItems</code>, <code>GetSampledRequests</code> returns information about all of them. </p>
+-- @param RuleId [ResourceId] <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The <code>RuleId</code> of the <code>Rule</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li> <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to return a sample of the requests that didn't match any of the rules in the specified <code>WebACL</code>.</p> </li> </ul>
 -- Required parameter: WebAclId
 -- Required parameter: RuleId
 -- Required parameter: TimeWindow
@@ -1646,8 +1646,8 @@ end
 
 --- Create a structure of type GetRateBasedRuleManagedKeysResponse
 --  
--- @param ManagedKeys [ManagedKeys] &lt;p&gt;An array of IP addresses that currently are blocked by the specified &lt;a&gt;RateBasedRule&lt;/a&gt;. &lt;/p&gt;
--- @param NextMarker [NextMarker] &lt;p&gt;A null value and not currently used.&lt;/p&gt;
+-- @param ManagedKeys [ManagedKeys] <p>An array of IP addresses that currently are blocked by the specified <a>RateBasedRule</a>. </p>
+-- @param NextMarker [NextMarker] <p>A null value and not currently used.</p>
 function M.GetRateBasedRuleManagedKeysResponse(ManagedKeys, NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRateBasedRuleManagedKeysResponse")
 	local t = { 
@@ -1671,7 +1671,7 @@ end
 
 --- Create a structure of type DeleteSizeConstraintSetResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;DeleteSizeConstraintSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.DeleteSizeConstraintSetResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSizeConstraintSetResponse")
 	local t = { 
@@ -1698,10 +1698,10 @@ function M.AssertUpdateXssMatchSetRequest(struct)
 end
 
 --- Create a structure of type UpdateXssMatchSetRequest
--- &lt;p&gt;A request to update an &lt;a&gt;XssMatchSet&lt;/a&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param XssMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;XssMatchSetId&lt;/code&gt; of the &lt;code&gt;XssMatchSet&lt;/code&gt; that you want to update. &lt;code&gt;XssMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateXssMatchSet&lt;/a&gt; and by &lt;a&gt;ListXssMatchSets&lt;/a&gt;.&lt;/p&gt;
--- @param Updates [XssMatchSetUpdates] &lt;p&gt;An array of &lt;code&gt;XssMatchSetUpdate&lt;/code&gt; objects that you want to insert into or delete from a &lt;a&gt;XssMatchSet&lt;/a&gt;. For more information, see the applicable data types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;XssMatchSetUpdate&lt;/a&gt;: Contains &lt;code&gt;Action&lt;/code&gt; and &lt;code&gt;XssMatchTuple&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;XssMatchTuple&lt;/a&gt;: Contains &lt;code&gt;FieldToMatch&lt;/code&gt; and &lt;code&gt;TextTransformation&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;FieldToMatch&lt;/a&gt;: Contains &lt;code&gt;Data&lt;/code&gt; and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>A request to update an <a>XssMatchSet</a>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param XssMatchSetId [ResourceId] <p>The <code>XssMatchSetId</code> of the <code>XssMatchSet</code> that you want to update. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
+-- @param Updates [XssMatchSetUpdates] <p>An array of <code>XssMatchSetUpdate</code> objects that you want to insert into or delete from a <a>XssMatchSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>XssMatchSetUpdate</a>: Contains <code>Action</code> and <code>XssMatchTuple</code> </p> </li> <li> <p> <a>XssMatchTuple</a>: Contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 -- Required parameter: XssMatchSetId
 -- Required parameter: ChangeToken
 -- Required parameter: Updates
@@ -1734,9 +1734,9 @@ end
 
 --- Create a structure of type UpdateByteMatchSetRequest
 --  
--- @param ByteMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;ByteMatchSetId&lt;/code&gt; of the &lt;a&gt;ByteMatchSet&lt;/a&gt; that you want to update. &lt;code&gt;ByteMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateByteMatchSet&lt;/a&gt; and by &lt;a&gt;ListByteMatchSets&lt;/a&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Updates [ByteMatchSetUpdates] &lt;p&gt;An array of &lt;code&gt;ByteMatchSetUpdate&lt;/code&gt; objects that you want to insert into or delete from a &lt;a&gt;ByteMatchSet&lt;/a&gt;. For more information, see the applicable data types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ByteMatchSetUpdate&lt;/a&gt;: Contains &lt;code&gt;Action&lt;/code&gt; and &lt;code&gt;ByteMatchTuple&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ByteMatchTuple&lt;/a&gt;: Contains &lt;code&gt;FieldToMatch&lt;/code&gt;, &lt;code&gt;PositionalConstraint&lt;/code&gt;, &lt;code&gt;TargetString&lt;/code&gt;, and &lt;code&gt;TextTransformation&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;FieldToMatch&lt;/a&gt;: Contains &lt;code&gt;Data&lt;/code&gt; and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to update. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Updates [ByteMatchSetUpdates] <p>An array of <code>ByteMatchSetUpdate</code> objects that you want to insert into or delete from a <a>ByteMatchSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>ByteMatchSetUpdate</a>: Contains <code>Action</code> and <code>ByteMatchTuple</code> </p> </li> <li> <p> <a>ByteMatchTuple</a>: Contains <code>FieldToMatch</code>, <code>PositionalConstraint</code>, <code>TargetString</code>, and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 -- Required parameter: ByteMatchSetId
 -- Required parameter: ChangeToken
 -- Required parameter: Updates
@@ -1765,7 +1765,7 @@ end
 
 --- Create a structure of type GetWebACLRequest
 --  
--- @param WebACLId [ResourceId] &lt;p&gt;The &lt;code&gt;WebACLId&lt;/code&gt; of the &lt;a&gt;WebACL&lt;/a&gt; that you want to get. &lt;code&gt;WebACLId&lt;/code&gt; is returned by &lt;a&gt;CreateWebACL&lt;/a&gt; and by &lt;a&gt;ListWebACLs&lt;/a&gt;.&lt;/p&gt;
+-- @param WebACLId [ResourceId] <p>The <code>WebACLId</code> of the <a>WebACL</a> that you want to get. <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
 -- Required parameter: WebACLId
 function M.GetWebACLRequest(WebACLId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetWebACLRequest")
@@ -1791,9 +1791,9 @@ function M.AssertIPSetSummary(struct)
 end
 
 --- Create a structure of type IPSetSummary
--- &lt;p&gt;Contains the identifier and the name of the &lt;code&gt;IPSet&lt;/code&gt;.&lt;/p&gt;
--- @param IPSetId [ResourceId] &lt;p&gt;The &lt;code&gt;IPSetId&lt;/code&gt; for an &lt;a&gt;IPSet&lt;/a&gt;. You can use &lt;code&gt;IPSetId&lt;/code&gt; in a &lt;a&gt;GetIPSet&lt;/a&gt; request to get detailed information about an &lt;a&gt;IPSet&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;IPSet&lt;/a&gt;. You can't change the name of an &lt;code&gt;IPSet&lt;/code&gt; after you create it.&lt;/p&gt;
+-- <p>Contains the identifier and the name of the <code>IPSet</code>.</p>
+-- @param IPSetId [ResourceId] <p>The <code>IPSetId</code> for an <a>IPSet</a>. You can use <code>IPSetId</code> in a <a>GetIPSet</a> request to get detailed information about an <a>IPSet</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>IPSet</a>. You can't change the name of an <code>IPSet</code> after you create it.</p>
 -- Required parameter: IPSetId
 -- Required parameter: Name
 function M.IPSetSummary(IPSetId, Name, ...)
@@ -1819,7 +1819,7 @@ end
 
 --- Create a structure of type GetIPSetResponse
 --  
--- @param IPSet [IPSet] &lt;p&gt;Information about the &lt;a&gt;IPSet&lt;/a&gt; that you specified in the &lt;code&gt;GetIPSet&lt;/code&gt; request. For more information, see the following topics:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;IPSet&lt;/a&gt;: Contains &lt;code&gt;IPSetDescriptors&lt;/code&gt;, &lt;code&gt;IPSetId&lt;/code&gt;, and &lt;code&gt;Name&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;IPSetDescriptors&lt;/code&gt;: Contains an array of &lt;a&gt;IPSetDescriptor&lt;/a&gt; objects. Each &lt;code&gt;IPSetDescriptor&lt;/code&gt; object contains &lt;code&gt;Type&lt;/code&gt; and &lt;code&gt;Value&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param IPSet [IPSet] <p>Information about the <a>IPSet</a> that you specified in the <code>GetIPSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>IPSet</a>: Contains <code>IPSetDescriptors</code>, <code>IPSetId</code>, and <code>Name</code> </p> </li> <li> <p> <code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a> objects. Each <code>IPSetDescriptor</code> object contains <code>Type</code> and <code>Value</code> </p> </li> </ul>
 function M.GetIPSetResponse(IPSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIPSetResponse")
 	local t = { 
@@ -1842,7 +1842,7 @@ end
 
 --- Create a structure of type GetWebACLResponse
 --  
--- @param WebACL [WebACL] &lt;p&gt;Information about the &lt;a&gt;WebACL&lt;/a&gt; that you specified in the &lt;code&gt;GetWebACL&lt;/code&gt; request. For more information, see the following topics:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;WebACL&lt;/a&gt;: Contains &lt;code&gt;DefaultAction&lt;/code&gt;, &lt;code&gt;MetricName&lt;/code&gt;, &lt;code&gt;Name&lt;/code&gt;, an array of &lt;code&gt;Rule&lt;/code&gt; objects, and &lt;code&gt;WebACLId&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DefaultAction&lt;/code&gt; (Data type is &lt;a&gt;WafAction&lt;/a&gt;): Contains &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Rules&lt;/code&gt;: Contains an array of &lt;code&gt;ActivatedRule&lt;/code&gt; objects, which contain &lt;code&gt;Action&lt;/code&gt;, &lt;code&gt;Priority&lt;/code&gt;, and &lt;code&gt;RuleId&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Action&lt;/code&gt;: Contains &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param WebACL [WebACL] <p>Information about the <a>WebACL</a> that you specified in the <code>GetWebACL</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>WebACL</a>: Contains <code>DefaultAction</code>, <code>MetricName</code>, <code>Name</code>, an array of <code>Rule</code> objects, and <code>WebACLId</code> </p> </li> <li> <p> <code>DefaultAction</code> (Data type is <a>WafAction</a>): Contains <code>Type</code> </p> </li> <li> <p> <code>Rules</code>: Contains an array of <code>ActivatedRule</code> objects, which contain <code>Action</code>, <code>Priority</code>, and <code>RuleId</code> </p> </li> <li> <p> <code>Action</code>: Contains <code>Type</code> </p> </li> </ul>
 function M.GetWebACLResponse(WebACL, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetWebACLResponse")
 	local t = { 
@@ -1870,9 +1870,9 @@ end
 
 --- Create a structure of type UpdateSizeConstraintSetRequest
 --  
--- @param SizeConstraintSetId [ResourceId] &lt;p&gt;The &lt;code&gt;SizeConstraintSetId&lt;/code&gt; of the &lt;a&gt;SizeConstraintSet&lt;/a&gt; that you want to update. &lt;code&gt;SizeConstraintSetId&lt;/code&gt; is returned by &lt;a&gt;CreateSizeConstraintSet&lt;/a&gt; and by &lt;a&gt;ListSizeConstraintSets&lt;/a&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Updates [SizeConstraintSetUpdates] &lt;p&gt;An array of &lt;code&gt;SizeConstraintSetUpdate&lt;/code&gt; objects that you want to insert into or delete from a &lt;a&gt;SizeConstraintSet&lt;/a&gt;. For more information, see the applicable data types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;SizeConstraintSetUpdate&lt;/a&gt;: Contains &lt;code&gt;Action&lt;/code&gt; and &lt;code&gt;SizeConstraint&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;SizeConstraint&lt;/a&gt;: Contains &lt;code&gt;FieldToMatch&lt;/code&gt;, &lt;code&gt;TextTransformation&lt;/code&gt;, &lt;code&gt;ComparisonOperator&lt;/code&gt;, and &lt;code&gt;Size&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;FieldToMatch&lt;/a&gt;: Contains &lt;code&gt;Data&lt;/code&gt; and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to update. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Updates [SizeConstraintSetUpdates] <p>An array of <code>SizeConstraintSetUpdate</code> objects that you want to insert into or delete from a <a>SizeConstraintSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>SizeConstraintSetUpdate</a>: Contains <code>Action</code> and <code>SizeConstraint</code> </p> </li> <li> <p> <a>SizeConstraint</a>: Contains <code>FieldToMatch</code>, <code>TextTransformation</code>, <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 -- Required parameter: SizeConstraintSetId
 -- Required parameter: ChangeToken
 -- Required parameter: Updates
@@ -1899,8 +1899,8 @@ function M.AssertDeleteXssMatchSetResponse(struct)
 end
 
 --- Create a structure of type DeleteXssMatchSetResponse
--- &lt;p&gt;The response to a request to delete an &lt;a&gt;XssMatchSet&lt;/a&gt; from AWS WAF.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;DeleteXssMatchSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- <p>The response to a request to delete an <a>XssMatchSet</a> from AWS WAF.</p>
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.DeleteXssMatchSetResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteXssMatchSetResponse")
 	local t = { 
@@ -1926,8 +1926,8 @@ end
 
 --- Create a structure of type DeleteRateBasedRuleRequest
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param RuleId [ResourceId] &lt;p&gt;The &lt;code&gt;RuleId&lt;/code&gt; of the &lt;a&gt;RateBasedRule&lt;/a&gt; that you want to delete. &lt;code&gt;RuleId&lt;/code&gt; is returned by &lt;a&gt;CreateRateBasedRule&lt;/a&gt; and by &lt;a&gt;ListRateBasedRules&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>RateBasedRule</a> that you want to delete. <code>RuleId</code> is returned by <a>CreateRateBasedRule</a> and by <a>ListRateBasedRules</a>.</p>
 -- Required parameter: RuleId
 -- Required parameter: ChangeToken
 function M.DeleteRateBasedRuleRequest(ChangeToken, RuleId, ...)
@@ -1956,8 +1956,8 @@ end
 
 --- Create a structure of type DeleteIPSetRequest
 --  
--- @param IPSetId [ResourceId] &lt;p&gt;The &lt;code&gt;IPSetId&lt;/code&gt; of the &lt;a&gt;IPSet&lt;/a&gt; that you want to delete. &lt;code&gt;IPSetId&lt;/code&gt; is returned by &lt;a&gt;CreateIPSet&lt;/a&gt; and by &lt;a&gt;ListIPSets&lt;/a&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
+-- @param IPSetId [ResourceId] <p>The <code>IPSetId</code> of the <a>IPSet</a> that you want to delete. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
 -- Required parameter: IPSetId
 -- Required parameter: ChangeToken
 function M.DeleteIPSetRequest(IPSetId, ChangeToken, ...)
@@ -1983,7 +1983,7 @@ end
 
 --- Create a structure of type UpdateWebACLResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;UpdateWebACL&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.UpdateWebACLResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateWebACLResponse")
 	local t = { 
@@ -2009,10 +2009,10 @@ function M.AssertXssMatchSet(struct)
 end
 
 --- Create a structure of type XssMatchSet
--- &lt;p&gt;A complex type that contains &lt;code&gt;XssMatchTuple&lt;/code&gt; objects, which specify the parts of web requests that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header. If a &lt;code&gt;XssMatchSet&lt;/code&gt; contains more than one &lt;code&gt;XssMatchTuple&lt;/code&gt; object, a request needs to include cross-site scripting attacks in only one of the specified parts of the request to be considered a match.&lt;/p&gt;
--- @param XssMatchTuples [XssMatchTuples] &lt;p&gt;Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.&lt;/p&gt;
--- @param XssMatchSetId [ResourceId] &lt;p&gt;A unique identifier for an &lt;code&gt;XssMatchSet&lt;/code&gt;. You use &lt;code&gt;XssMatchSetId&lt;/code&gt; to get information about an &lt;code&gt;XssMatchSet&lt;/code&gt; (see &lt;a&gt;GetXssMatchSet&lt;/a&gt;), update an &lt;code&gt;XssMatchSet&lt;/code&gt; (see &lt;a&gt;UpdateXssMatchSet&lt;/a&gt;), insert an &lt;code&gt;XssMatchSet&lt;/code&gt; into a &lt;code&gt;Rule&lt;/code&gt; or delete one from a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), and delete an &lt;code&gt;XssMatchSet&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteXssMatchSet&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;XssMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateXssMatchSet&lt;/a&gt; and by &lt;a&gt;ListXssMatchSets&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;The name, if any, of the &lt;code&gt;XssMatchSet&lt;/code&gt;.&lt;/p&gt;
+-- <p>A complex type that contains <code>XssMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header. If a <code>XssMatchSet</code> contains more than one <code>XssMatchTuple</code> object, a request needs to include cross-site scripting attacks in only one of the specified parts of the request to be considered a match.</p>
+-- @param XssMatchTuples [XssMatchTuples] <p>Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.</p>
+-- @param XssMatchSetId [ResourceId] <p>A unique identifier for an <code>XssMatchSet</code>. You use <code>XssMatchSetId</code> to get information about an <code>XssMatchSet</code> (see <a>GetXssMatchSet</a>), update an <code>XssMatchSet</code> (see <a>UpdateXssMatchSet</a>), insert an <code>XssMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>XssMatchSet</code> from AWS WAF (see <a>DeleteXssMatchSet</a>).</p> <p> <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
+-- @param Name [ResourceName] <p>The name, if any, of the <code>XssMatchSet</code>.</p>
 -- Required parameter: XssMatchSetId
 -- Required parameter: XssMatchTuples
 function M.XssMatchSet(XssMatchTuples, XssMatchSetId, Name, ...)
@@ -2039,7 +2039,7 @@ end
 
 --- Create a structure of type UpdateSizeConstraintSetResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;UpdateSizeConstraintSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.UpdateSizeConstraintSetResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSizeConstraintSetResponse")
 	local t = { 
@@ -2064,9 +2064,9 @@ function M.AssertSizeConstraintSetUpdate(struct)
 end
 
 --- Create a structure of type SizeConstraintSetUpdate
--- &lt;p&gt;Specifies the part of a web request that you want to inspect the size of and indicates whether you want to add the specification to a &lt;a&gt;SizeConstraintSet&lt;/a&gt; or delete it from a &lt;code&gt;SizeConstraintSet&lt;/code&gt;.&lt;/p&gt;
--- @param Action [ChangeAction] &lt;p&gt;Specify &lt;code&gt;INSERT&lt;/code&gt; to add a &lt;a&gt;SizeConstraintSetUpdate&lt;/a&gt; to a &lt;a&gt;SizeConstraintSet&lt;/a&gt;. Use &lt;code&gt;DELETE&lt;/code&gt; to remove a &lt;code&gt;SizeConstraintSetUpdate&lt;/code&gt; from a &lt;code&gt;SizeConstraintSet&lt;/code&gt;.&lt;/p&gt;
--- @param SizeConstraint [SizeConstraint] &lt;p&gt;Specifies a constraint on the size of a part of the web request. AWS WAF uses the &lt;code&gt;Size&lt;/code&gt;, &lt;code&gt;ComparisonOperator&lt;/code&gt;, and &lt;code&gt;FieldToMatch&lt;/code&gt; to build an expression in the form of &quot;&lt;code&gt;Size&lt;/code&gt; &lt;code&gt;ComparisonOperator&lt;/code&gt; size in bytes of &lt;code&gt;FieldToMatch&lt;/code&gt;&quot;. If that expression is true, the &lt;code&gt;SizeConstraint&lt;/code&gt; is considered to match.&lt;/p&gt;
+-- <p>Specifies the part of a web request that you want to inspect the size of and indicates whether you want to add the specification to a <a>SizeConstraintSet</a> or delete it from a <code>SizeConstraintSet</code>.</p>
+-- @param Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>SizeConstraintSetUpdate</a> to a <a>SizeConstraintSet</a>. Use <code>DELETE</code> to remove a <code>SizeConstraintSetUpdate</code> from a <code>SizeConstraintSet</code>.</p>
+-- @param SizeConstraint [SizeConstraint] <p>Specifies a constraint on the size of a part of the web request. AWS WAF uses the <code>Size</code>, <code>ComparisonOperator</code>, and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p>
 -- Required parameter: Action
 -- Required parameter: SizeConstraint
 function M.SizeConstraintSetUpdate(Action, SizeConstraint, ...)
@@ -2092,8 +2092,8 @@ function M.AssertGetXssMatchSetRequest(struct)
 end
 
 --- Create a structure of type GetXssMatchSetRequest
--- &lt;p&gt;A request to get an &lt;a&gt;XssMatchSet&lt;/a&gt;.&lt;/p&gt;
--- @param XssMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;XssMatchSetId&lt;/code&gt; of the &lt;a&gt;XssMatchSet&lt;/a&gt; that you want to get. &lt;code&gt;XssMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateXssMatchSet&lt;/a&gt; and by &lt;a&gt;ListXssMatchSets&lt;/a&gt;.&lt;/p&gt;
+-- <p>A request to get an <a>XssMatchSet</a>.</p>
+-- @param XssMatchSetId [ResourceId] <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
 -- Required parameter: XssMatchSetId
 function M.GetXssMatchSetRequest(XssMatchSetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetXssMatchSetRequest")
@@ -2118,8 +2118,8 @@ end
 
 --- Create a structure of type ListRulesRequest
 --  
--- @param NextMarker [NextMarker] &lt;p&gt;If you specify a value for &lt;code&gt;Limit&lt;/code&gt; and you have more &lt;code&gt;Rules&lt;/code&gt; than the value of &lt;code&gt;Limit&lt;/code&gt;, AWS WAF returns a &lt;code&gt;NextMarker&lt;/code&gt; value in the response that allows you to list another group of &lt;code&gt;Rules&lt;/code&gt;. For the second and subsequent &lt;code&gt;ListRules&lt;/code&gt; requests, specify the value of &lt;code&gt;NextMarker&lt;/code&gt; from the previous response to get information about another batch of &lt;code&gt;Rules&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PaginationLimit] &lt;p&gt;Specifies the number of &lt;code&gt;Rules&lt;/code&gt; that you want AWS WAF to return for this request. If you have more &lt;code&gt;Rules&lt;/code&gt; than the number that you specify for &lt;code&gt;Limit&lt;/code&gt;, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value that you can use to get another batch of &lt;code&gt;Rules&lt;/code&gt;.&lt;/p&gt;
+-- @param NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>Rules</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>Rules</code>. For the second and subsequent <code>ListRules</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>Rules</code>.</p>
+-- @param Limit [PaginationLimit] <p>Specifies the number of <code>Rules</code> that you want AWS WAF to return for this request. If you have more <code>Rules</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
 function M.ListRulesRequest(NextMarker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesRequest")
 	local t = { 
@@ -2143,7 +2143,7 @@ end
 
 --- Create a structure of type DeleteWebACLResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;DeleteWebACL&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.DeleteWebACLResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteWebACLResponse")
 	local t = { 
@@ -2168,9 +2168,9 @@ function M.AssertByteMatchSetUpdate(struct)
 end
 
 --- Create a structure of type ByteMatchSetUpdate
--- &lt;p&gt;In an &lt;a&gt;UpdateByteMatchSet&lt;/a&gt; request, &lt;code&gt;ByteMatchSetUpdate&lt;/code&gt; specifies whether to insert or delete a &lt;a&gt;ByteMatchTuple&lt;/a&gt; and includes the settings for the &lt;code&gt;ByteMatchTuple&lt;/code&gt;.&lt;/p&gt;
--- @param Action [ChangeAction] &lt;p&gt;Specifies whether to insert or delete a &lt;a&gt;ByteMatchTuple&lt;/a&gt;.&lt;/p&gt;
--- @param ByteMatchTuple [ByteMatchTuple] &lt;p&gt;Information about the part of a web request that you want AWS WAF to inspect and the value that you want AWS WAF to search for. If you specify &lt;code&gt;DELETE&lt;/code&gt; for the value of &lt;code&gt;Action&lt;/code&gt;, the &lt;code&gt;ByteMatchTuple&lt;/code&gt; values must exactly match the values in the &lt;code&gt;ByteMatchTuple&lt;/code&gt; that you want to delete from the &lt;code&gt;ByteMatchSet&lt;/code&gt;.&lt;/p&gt;
+-- <p>In an <a>UpdateByteMatchSet</a> request, <code>ByteMatchSetUpdate</code> specifies whether to insert or delete a <a>ByteMatchTuple</a> and includes the settings for the <code>ByteMatchTuple</code>.</p>
+-- @param Action [ChangeAction] <p>Specifies whether to insert or delete a <a>ByteMatchTuple</a>.</p>
+-- @param ByteMatchTuple [ByteMatchTuple] <p>Information about the part of a web request that you want AWS WAF to inspect and the value that you want AWS WAF to search for. If you specify <code>DELETE</code> for the value of <code>Action</code>, the <code>ByteMatchTuple</code> values must exactly match the values in the <code>ByteMatchTuple</code> that you want to delete from the <code>ByteMatchSet</code>.</p>
 -- Required parameter: Action
 -- Required parameter: ByteMatchTuple
 function M.ByteMatchSetUpdate(Action, ByteMatchTuple, ...)
@@ -2201,9 +2201,9 @@ end
 
 --- Create a structure of type CreateRuleRequest
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;Rule&lt;/a&gt;. You can't change the name of a &lt;code&gt;Rule&lt;/code&gt; after you create it.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;A friendly name or description for the metrics for this &lt;code&gt;Rule&lt;/code&gt;. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the &lt;code&gt;Rule&lt;/code&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>Rule</a>. You can't change the name of a <code>Rule</code> after you create it.</p>
+-- @param MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>Rule</code>.</p>
 -- Required parameter: Name
 -- Required parameter: MetricName
 -- Required parameter: ChangeToken
@@ -2233,9 +2233,9 @@ function M.AssertDeleteXssMatchSetRequest(struct)
 end
 
 --- Create a structure of type DeleteXssMatchSetRequest
--- &lt;p&gt;A request to delete an &lt;a&gt;XssMatchSet&lt;/a&gt; from AWS WAF.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param XssMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;XssMatchSetId&lt;/code&gt; of the &lt;a&gt;XssMatchSet&lt;/a&gt; that you want to delete. &lt;code&gt;XssMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateXssMatchSet&lt;/a&gt; and by &lt;a&gt;ListXssMatchSets&lt;/a&gt;.&lt;/p&gt;
+-- <p>A request to delete an <a>XssMatchSet</a> from AWS WAF.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param XssMatchSetId [ResourceId] <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to delete. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
 -- Required parameter: XssMatchSetId
 -- Required parameter: ChangeToken
 function M.DeleteXssMatchSetRequest(ChangeToken, XssMatchSetId, ...)
@@ -2261,7 +2261,7 @@ end
 
 --- Create a structure of type ListResourcesForWebACLResponse
 --  
--- @param ResourceArns [ResourceArns] &lt;p&gt;An array of ARNs (Amazon Resource Names) of the resources associated with the specified web ACL. An array with zero elements is returned if there are no resources associated with the web ACL.&lt;/p&gt;
+-- @param ResourceArns [ResourceArns] <p>An array of ARNs (Amazon Resource Names) of the resources associated with the specified web ACL. An array with zero elements is returned if there are no resources associated with the web ACL.</p>
 function M.ListResourcesForWebACLResponse(ResourceArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListResourcesForWebACLResponse")
 	local t = { 
@@ -2283,8 +2283,8 @@ function M.AssertWAFLimitsExceededException(struct)
 end
 
 --- Create a structure of type WAFLimitsExceededException
--- &lt;p&gt;The operation exceeds a resource limit, for example, the maximum number of &lt;code&gt;WebACL&lt;/code&gt; objects that you can create for an AWS account. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/waf/latest/developerguide/limits.html&quot;&gt;Limits&lt;/a&gt; in the &lt;i&gt;AWS WAF Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The operation exceeds a resource limit, for example, the maximum number of &lt;code&gt;WebACL&lt;/code&gt; objects that you can create for an AWS account. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/waf/latest/developerguide/limits.html&quot;&gt;Limits&lt;/a&gt; in the &lt;i&gt;AWS WAF Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>The operation exceeds a resource limit, for example, the maximum number of <code>WebACL</code> objects that you can create for an AWS account. For more information, see <a href="http://docs.aws.amazon.com/waf/latest/developerguide/limits.html">Limits</a> in the <i>AWS WAF Developer Guide</i>.</p>
+-- @param message [errorMessage] <p>The operation exceeds a resource limit, for example, the maximum number of <code>WebACL</code> objects that you can create for an AWS account. For more information, see <a href="http://docs.aws.amazon.com/waf/latest/developerguide/limits.html">Limits</a> in the <i>AWS WAF Developer Guide</i>.</p>
 function M.WAFLimitsExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFLimitsExceededException")
 	local t = { 
@@ -2309,9 +2309,9 @@ function M.AssertCreateXssMatchSetRequest(struct)
 end
 
 --- Create a structure of type CreateXssMatchSetRequest
--- &lt;p&gt;A request to create an &lt;a&gt;XssMatchSet&lt;/a&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description for the &lt;a&gt;XssMatchSet&lt;/a&gt; that you're creating. You can't change &lt;code&gt;Name&lt;/code&gt; after you create the &lt;code&gt;XssMatchSet&lt;/code&gt;.&lt;/p&gt;
+-- <p>A request to create an <a>XssMatchSet</a>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description for the <a>XssMatchSet</a> that you're creating. You can't change <code>Name</code> after you create the <code>XssMatchSet</code>.</p>
 -- Required parameter: Name
 -- Required parameter: ChangeToken
 function M.CreateXssMatchSetRequest(ChangeToken, Name, ...)
@@ -2337,7 +2337,7 @@ end
 
 --- Create a structure of type UpdateByteMatchSetResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;UpdateByteMatchSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.UpdateByteMatchSetResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateByteMatchSetResponse")
 	local t = { 
@@ -2360,7 +2360,7 @@ end
 
 --- Create a structure of type DeleteByteMatchSetResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;DeleteByteMatchSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.DeleteByteMatchSetResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteByteMatchSetResponse")
 	local t = { 
@@ -2385,8 +2385,8 @@ end
 
 --- Create a structure of type GetRateBasedRuleManagedKeysRequest
 --  
--- @param NextMarker [NextMarker] &lt;p&gt;A null value and not currently used. Do not include this in your request.&lt;/p&gt;
--- @param RuleId [ResourceId] &lt;p&gt;The &lt;code&gt;RuleId&lt;/code&gt; of the &lt;a&gt;RateBasedRule&lt;/a&gt; for which you want to get a list of &lt;code&gt;ManagedKeys&lt;/code&gt;. &lt;code&gt;RuleId&lt;/code&gt; is returned by &lt;a&gt;CreateRateBasedRule&lt;/a&gt; and by &lt;a&gt;ListRateBasedRules&lt;/a&gt;.&lt;/p&gt;
+-- @param NextMarker [NextMarker] <p>A null value and not currently used. Do not include this in your request.</p>
+-- @param RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>RateBasedRule</a> for which you want to get a list of <code>ManagedKeys</code>. <code>RuleId</code> is returned by <a>CreateRateBasedRule</a> and by <a>ListRateBasedRules</a>.</p>
 -- Required parameter: RuleId
 function M.GetRateBasedRuleManagedKeysRequest(NextMarker, RuleId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRateBasedRuleManagedKeysRequest")
@@ -2418,10 +2418,10 @@ end
 
 --- Create a structure of type UpdateRateBasedRuleRequest
 --  
--- @param RateLimit [RateLimit] &lt;p&gt;The maximum number of requests, which have an identical value in the field specified by the &lt;code&gt;RateKey&lt;/code&gt;, allowed in a five-minute period. If the number of requests exceeds the &lt;code&gt;RateLimit&lt;/code&gt; and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Updates [RuleUpdates] &lt;p&gt;An array of &lt;code&gt;RuleUpdate&lt;/code&gt; objects that you want to insert into or delete from a &lt;a&gt;RateBasedRule&lt;/a&gt;. &lt;/p&gt;
--- @param RuleId [ResourceId] &lt;p&gt;The &lt;code&gt;RuleId&lt;/code&gt; of the &lt;code&gt;RateBasedRule&lt;/code&gt; that you want to update. &lt;code&gt;RuleId&lt;/code&gt; is returned by &lt;code&gt;CreateRateBasedRule&lt;/code&gt; and by &lt;a&gt;ListRateBasedRules&lt;/a&gt;.&lt;/p&gt;
+-- @param RateLimit [RateLimit] <p>The maximum number of requests, which have an identical value in the field specified by the <code>RateKey</code>, allowed in a five-minute period. If the number of requests exceeds the <code>RateLimit</code> and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Updates [RuleUpdates] <p>An array of <code>RuleUpdate</code> objects that you want to insert into or delete from a <a>RateBasedRule</a>. </p>
+-- @param RuleId [ResourceId] <p>The <code>RuleId</code> of the <code>RateBasedRule</code> that you want to update. <code>RuleId</code> is returned by <code>CreateRateBasedRule</code> and by <a>ListRateBasedRules</a>.</p>
 -- Required parameter: RuleId
 -- Required parameter: ChangeToken
 -- Required parameter: Updates
@@ -2453,9 +2453,9 @@ function M.AssertWebACLUpdate(struct)
 end
 
 --- Create a structure of type WebACLUpdate
--- &lt;p&gt;Specifies whether to insert a &lt;code&gt;Rule&lt;/code&gt; into or delete a &lt;code&gt;Rule&lt;/code&gt; from a &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt;
--- @param Action [ChangeAction] &lt;p&gt;Specifies whether to insert a &lt;code&gt;Rule&lt;/code&gt; into or delete a &lt;code&gt;Rule&lt;/code&gt; from a &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt;
--- @param ActivatedRule [ActivatedRule] &lt;p&gt;The &lt;code&gt;ActivatedRule&lt;/code&gt; object in an &lt;a&gt;UpdateWebACL&lt;/a&gt; request specifies a &lt;code&gt;Rule&lt;/code&gt; that you want to insert or delete, the priority of the &lt;code&gt;Rule&lt;/code&gt; in the &lt;code&gt;WebACL&lt;/code&gt;, and the action that you want AWS WAF to take when a web request matches the &lt;code&gt;Rule&lt;/code&gt; (&lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;).&lt;/p&gt;
+-- <p>Specifies whether to insert a <code>Rule</code> into or delete a <code>Rule</code> from a <code>WebACL</code>.</p>
+-- @param Action [ChangeAction] <p>Specifies whether to insert a <code>Rule</code> into or delete a <code>Rule</code> from a <code>WebACL</code>.</p>
+-- @param ActivatedRule [ActivatedRule] <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request specifies a <code>Rule</code> that you want to insert or delete, the priority of the <code>Rule</code> in the <code>WebACL</code>, and the action that you want AWS WAF to take when a web request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p>
 -- Required parameter: Action
 -- Required parameter: ActivatedRule
 function M.WebACLUpdate(Action, ActivatedRule, ...)
@@ -2485,11 +2485,11 @@ function M.AssertRule(struct)
 end
 
 --- Create a structure of type Rule
--- &lt;p&gt;A combination of &lt;a&gt;ByteMatchSet&lt;/a&gt;, &lt;a&gt;IPSet&lt;/a&gt;, and/or &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; objects that identify the web requests that you want to allow, block, or count. For example, you might create a &lt;code&gt;Rule&lt;/code&gt; that includes the following predicates:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;An &lt;code&gt;IPSet&lt;/code&gt; that causes AWS WAF to search for web requests that originate from the IP address &lt;code&gt;192.0.2.44&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A &lt;code&gt;ByteMatchSet&lt;/code&gt; that causes AWS WAF to search for web requests for which the value of the &lt;code&gt;User-Agent&lt;/code&gt; header is &lt;code&gt;BadBot&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;To match the settings in this &lt;code&gt;Rule&lt;/code&gt;, a request must originate from &lt;code&gt;192.0.2.44&lt;/code&gt; AND include a &lt;code&gt;User-Agent&lt;/code&gt; header for which the value is &lt;code&gt;BadBot&lt;/code&gt;.&lt;/p&gt;
--- @param Predicates [Predicates] &lt;p&gt;The &lt;code&gt;Predicates&lt;/code&gt; object contains one &lt;code&gt;Predicate&lt;/code&gt; element for each &lt;a&gt;ByteMatchSet&lt;/a&gt;, &lt;a&gt;IPSet&lt;/a&gt;, or &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; object that you want to include in a &lt;code&gt;Rule&lt;/code&gt;.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;A friendly name or description for the metrics for this &lt;code&gt;Rule&lt;/code&gt;. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change &lt;code&gt;MetricName&lt;/code&gt; after you create the &lt;code&gt;Rule&lt;/code&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;The friendly name or description for the &lt;code&gt;Rule&lt;/code&gt;. You can't change the name of a &lt;code&gt;Rule&lt;/code&gt; after you create it.&lt;/p&gt;
--- @param RuleId [ResourceId] &lt;p&gt;A unique identifier for a &lt;code&gt;Rule&lt;/code&gt;. You use &lt;code&gt;RuleId&lt;/code&gt; to get more information about a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;GetRule&lt;/a&gt;), update a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), insert a &lt;code&gt;Rule&lt;/code&gt; into a &lt;code&gt;WebACL&lt;/code&gt; or delete a one from a &lt;code&gt;WebACL&lt;/code&gt; (see &lt;a&gt;UpdateWebACL&lt;/a&gt;), or delete a &lt;code&gt;Rule&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteRule&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;RuleId&lt;/code&gt; is returned by &lt;a&gt;CreateRule&lt;/a&gt; and by &lt;a&gt;ListRules&lt;/a&gt;.&lt;/p&gt;
+-- <p>A combination of <a>ByteMatchSet</a>, <a>IPSet</a>, and/or <a>SqlInjectionMatchSet</a> objects that identify the web requests that you want to allow, block, or count. For example, you might create a <code>Rule</code> that includes the following predicates:</p> <ul> <li> <p>An <code>IPSet</code> that causes AWS WAF to search for web requests that originate from the IP address <code>192.0.2.44</code> </p> </li> <li> <p>A <code>ByteMatchSet</code> that causes AWS WAF to search for web requests for which the value of the <code>User-Agent</code> header is <code>BadBot</code>.</p> </li> </ul> <p>To match the settings in this <code>Rule</code>, a request must originate from <code>192.0.2.44</code> AND include a <code>User-Agent</code> header for which the value is <code>BadBot</code>.</p>
+-- @param Predicates [Predicates] <p>The <code>Predicates</code> object contains one <code>Predicate</code> element for each <a>ByteMatchSet</a>, <a>IPSet</a>, or <a>SqlInjectionMatchSet</a> object that you want to include in a <code>Rule</code>.</p>
+-- @param MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you create the <code>Rule</code>.</p>
+-- @param Name [ResourceName] <p>The friendly name or description for the <code>Rule</code>. You can't change the name of a <code>Rule</code> after you create it.</p>
+-- @param RuleId [ResourceId] <p>A unique identifier for a <code>Rule</code>. You use <code>RuleId</code> to get more information about a <code>Rule</code> (see <a>GetRule</a>), update a <code>Rule</code> (see <a>UpdateRule</a>), insert a <code>Rule</code> into a <code>WebACL</code> or delete a one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>Rule</code> from AWS WAF (see <a>DeleteRule</a>).</p> <p> <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
 -- Required parameter: RuleId
 -- Required parameter: Predicates
 function M.Rule(Predicates, MetricName, Name, RuleId, ...)
@@ -2518,8 +2518,8 @@ end
 
 --- Create a structure of type ListIPSetsRequest
 --  
--- @param NextMarker [NextMarker] &lt;p&gt;If you specify a value for &lt;code&gt;Limit&lt;/code&gt; and you have more &lt;code&gt;IPSets&lt;/code&gt; than the value of &lt;code&gt;Limit&lt;/code&gt;, AWS WAF returns a &lt;code&gt;NextMarker&lt;/code&gt; value in the response that allows you to list another group of &lt;code&gt;IPSets&lt;/code&gt;. For the second and subsequent &lt;code&gt;ListIPSets&lt;/code&gt; requests, specify the value of &lt;code&gt;NextMarker&lt;/code&gt; from the previous response to get information about another batch of &lt;code&gt;ByteMatchSets&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PaginationLimit] &lt;p&gt;Specifies the number of &lt;code&gt;IPSet&lt;/code&gt; objects that you want AWS WAF to return for this request. If you have more &lt;code&gt;IPSet&lt;/code&gt; objects than the number you specify for &lt;code&gt;Limit&lt;/code&gt;, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value that you can use to get another batch of &lt;code&gt;IPSet&lt;/code&gt; objects.&lt;/p&gt;
+-- @param NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>ByteMatchSets</code>.</p>
+-- @param Limit [PaginationLimit] <p>Specifies the number of <code>IPSet</code> objects that you want AWS WAF to return for this request. If you have more <code>IPSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>IPSet</code> objects.</p>
 function M.ListIPSetsRequest(NextMarker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIPSetsRequest")
 	local t = { 
@@ -2548,11 +2548,11 @@ function M.AssertActivatedRule(struct)
 end
 
 --- Create a structure of type ActivatedRule
--- &lt;p&gt;The &lt;code&gt;ActivatedRule&lt;/code&gt; object in an &lt;a&gt;UpdateWebACL&lt;/a&gt; request specifies a &lt;code&gt;Rule&lt;/code&gt; that you want to insert or delete, the priority of the &lt;code&gt;Rule&lt;/code&gt; in the &lt;code&gt;WebACL&lt;/code&gt;, and the action that you want AWS WAF to take when a web request matches the &lt;code&gt;Rule&lt;/code&gt; (&lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;).&lt;/p&gt; &lt;p&gt;To specify whether to insert or delete a &lt;code&gt;Rule&lt;/code&gt;, use the &lt;code&gt;Action&lt;/code&gt; parameter in the &lt;a&gt;WebACLUpdate&lt;/a&gt; data type.&lt;/p&gt;
--- @param Priority [RulePriority] &lt;p&gt;Specifies the order in which the &lt;code&gt;Rules&lt;/code&gt; in a &lt;code&gt;WebACL&lt;/code&gt; are evaluated. Rules with a lower value for &lt;code&gt;Priority&lt;/code&gt; are evaluated before &lt;code&gt;Rules&lt;/code&gt; with a higher value. The value must be a unique integer. If you add multiple &lt;code&gt;Rules&lt;/code&gt; to a &lt;code&gt;WebACL&lt;/code&gt;, the values don't need to be consecutive.&lt;/p&gt;
--- @param Action [WafAction] &lt;p&gt;Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the &lt;code&gt;Rule&lt;/code&gt;. Valid values for &lt;code&gt;Action&lt;/code&gt; include the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ALLOW&lt;/code&gt;: CloudFront responds with the requested object.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BLOCK&lt;/code&gt;: CloudFront responds with an HTTP 403 (Forbidden) status code.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;COUNT&lt;/code&gt;: AWS WAF increments a counter of requests that match the conditions in the rule and then continues to inspect the web request based on the remaining rules in the web ACL. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Type [WafRuleType] &lt;p&gt;The rule type, either &lt;code&gt;REGULAR&lt;/code&gt;, as defined by &lt;a&gt;Rule&lt;/a&gt;, or &lt;code&gt;RATE_BASED&lt;/code&gt;, as defined by &lt;a&gt;RateBasedRule&lt;/a&gt;. The default is REGULAR. Although this field is optional, be aware that if you try to add a RATE_BASED rule to a web ACL without setting the type, the &lt;a&gt;UpdateWebACL&lt;/a&gt; request will fail because the request tries to add a REGULAR rule with the specified ID, which does not exist. &lt;/p&gt;
--- @param RuleId [ResourceId] &lt;p&gt;The &lt;code&gt;RuleId&lt;/code&gt; for a &lt;code&gt;Rule&lt;/code&gt;. You use &lt;code&gt;RuleId&lt;/code&gt; to get more information about a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;GetRule&lt;/a&gt;), update a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), insert a &lt;code&gt;Rule&lt;/code&gt; into a &lt;code&gt;WebACL&lt;/code&gt; or delete a one from a &lt;code&gt;WebACL&lt;/code&gt; (see &lt;a&gt;UpdateWebACL&lt;/a&gt;), or delete a &lt;code&gt;Rule&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteRule&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;RuleId&lt;/code&gt; is returned by &lt;a&gt;CreateRule&lt;/a&gt; and by &lt;a&gt;ListRules&lt;/a&gt;.&lt;/p&gt;
+-- <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request specifies a <code>Rule</code> that you want to insert or delete, the priority of the <code>Rule</code> in the <code>WebACL</code>, and the action that you want AWS WAF to take when a web request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p> <p>To specify whether to insert or delete a <code>Rule</code>, use the <code>Action</code> parameter in the <a>WebACLUpdate</a> data type.</p>
+-- @param Priority [RulePriority] <p>Specifies the order in which the <code>Rules</code> in a <code>WebACL</code> are evaluated. Rules with a lower value for <code>Priority</code> are evaluated before <code>Rules</code> with a higher value. The value must be a unique integer. If you add multiple <code>Rules</code> to a <code>WebACL</code>, the values don't need to be consecutive.</p>
+-- @param Action [WafAction] <p>Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the <code>Rule</code>. Valid values for <code>Action</code> include the following:</p> <ul> <li> <p> <code>ALLOW</code>: CloudFront responds with the requested object.</p> </li> <li> <p> <code>BLOCK</code>: CloudFront responds with an HTTP 403 (Forbidden) status code.</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of requests that match the conditions in the rule and then continues to inspect the web request based on the remaining rules in the web ACL. </p> </li> </ul>
+-- @param Type [WafRuleType] <p>The rule type, either <code>REGULAR</code>, as defined by <a>Rule</a>, or <code>RATE_BASED</code>, as defined by <a>RateBasedRule</a>. The default is REGULAR. Although this field is optional, be aware that if you try to add a RATE_BASED rule to a web ACL without setting the type, the <a>UpdateWebACL</a> request will fail because the request tries to add a REGULAR rule with the specified ID, which does not exist. </p>
+-- @param RuleId [ResourceId] <p>The <code>RuleId</code> for a <code>Rule</code>. You use <code>RuleId</code> to get more information about a <code>Rule</code> (see <a>GetRule</a>), update a <code>Rule</code> (see <a>UpdateRule</a>), insert a <code>Rule</code> into a <code>WebACL</code> or delete a one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>Rule</code> from AWS WAF (see <a>DeleteRule</a>).</p> <p> <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
 -- Required parameter: Priority
 -- Required parameter: RuleId
 -- Required parameter: Action
@@ -2588,10 +2588,10 @@ end
 
 --- Create a structure of type CreateWebACLRequest
 --  
--- @param DefaultAction [WafAction] &lt;p&gt;The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the &lt;code&gt;Rule&lt;/code&gt; objects that are associated with the &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;WebACL&lt;/a&gt;. You can't change &lt;code&gt;Name&lt;/code&gt; after you create the &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;A friendly name or description for the metrics for this &lt;code&gt;WebACL&lt;/code&gt;. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change &lt;code&gt;MetricName&lt;/code&gt; after you create the &lt;code&gt;WebACL&lt;/code&gt;.&lt;/p&gt;
+-- @param DefaultAction [WafAction] <p>The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the <code>Rule</code> objects that are associated with the <code>WebACL</code>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>WebACL</a>. You can't change <code>Name</code> after you create the <code>WebACL</code>.</p>
+-- @param MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you create the <code>WebACL</code>.</p>
 -- Required parameter: Name
 -- Required parameter: MetricName
 -- Required parameter: DefaultAction
@@ -2621,7 +2621,7 @@ end
 
 --- Create a structure of type UpdateRuleResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;UpdateRule&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.UpdateRuleResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRuleResponse")
 	local t = { 
@@ -2645,7 +2645,7 @@ end
 
 --- Create a structure of type DisassociateWebACLRequest
 --  
--- @param ResourceArn [ResourceArn] &lt;p&gt;The ARN (Amazon Resource Name) of the resource from which the web ACL is being removed.&lt;/p&gt;
+-- @param ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource from which the web ACL is being removed.</p>
 -- Required parameter: ResourceArn
 function M.DisassociateWebACLRequest(ResourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateWebACLRequest")
@@ -2670,8 +2670,8 @@ end
 
 --- Create a structure of type ListSizeConstraintSetsRequest
 --  
--- @param NextMarker [NextMarker] &lt;p&gt;If you specify a value for &lt;code&gt;Limit&lt;/code&gt; and you have more &lt;code&gt;SizeConstraintSets&lt;/code&gt; than the value of &lt;code&gt;Limit&lt;/code&gt;, AWS WAF returns a &lt;code&gt;NextMarker&lt;/code&gt; value in the response that allows you to list another group of &lt;code&gt;SizeConstraintSets&lt;/code&gt;. For the second and subsequent &lt;code&gt;ListSizeConstraintSets&lt;/code&gt; requests, specify the value of &lt;code&gt;NextMarker&lt;/code&gt; from the previous response to get information about another batch of &lt;code&gt;SizeConstraintSets&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PaginationLimit] &lt;p&gt;Specifies the number of &lt;code&gt;SizeConstraintSet&lt;/code&gt; objects that you want AWS WAF to return for this request. If you have more &lt;code&gt;SizeConstraintSets&lt;/code&gt; objects than the number you specify for &lt;code&gt;Limit&lt;/code&gt;, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value that you can use to get another batch of &lt;code&gt;SizeConstraintSet&lt;/code&gt; objects.&lt;/p&gt;
+-- @param NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>SizeConstraintSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>SizeConstraintSets</code>. For the second and subsequent <code>ListSizeConstraintSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>SizeConstraintSets</code>.</p>
+-- @param Limit [PaginationLimit] <p>Specifies the number of <code>SizeConstraintSet</code> objects that you want AWS WAF to return for this request. If you have more <code>SizeConstraintSets</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>SizeConstraintSet</code> objects.</p>
 function M.ListSizeConstraintSetsRequest(NextMarker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSizeConstraintSetsRequest")
 	local t = { 
@@ -2697,9 +2697,9 @@ function M.AssertSqlInjectionMatchSetUpdate(struct)
 end
 
 --- Create a structure of type SqlInjectionMatchSetUpdate
--- &lt;p&gt;Specifies the part of a web request that you want to inspect for snippets of malicious SQL code and indicates whether you want to add the specification to a &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; or delete it from a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt;.&lt;/p&gt;
--- @param Action [ChangeAction] &lt;p&gt;Specify &lt;code&gt;INSERT&lt;/code&gt; to add a &lt;a&gt;SqlInjectionMatchSetUpdate&lt;/a&gt; to a &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt;. Use &lt;code&gt;DELETE&lt;/code&gt; to remove a &lt;code&gt;SqlInjectionMatchSetUpdate&lt;/code&gt; from a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt;.&lt;/p&gt;
--- @param SqlInjectionMatchTuple [SqlInjectionMatchTuple] &lt;p&gt;Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.&lt;/p&gt;
+-- <p>Specifies the part of a web request that you want to inspect for snippets of malicious SQL code and indicates whether you want to add the specification to a <a>SqlInjectionMatchSet</a> or delete it from a <code>SqlInjectionMatchSet</code>.</p>
+-- @param Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>SqlInjectionMatchSetUpdate</a> to a <a>SqlInjectionMatchSet</a>. Use <code>DELETE</code> to remove a <code>SqlInjectionMatchSetUpdate</code> from a <code>SqlInjectionMatchSet</code>.</p>
+-- @param SqlInjectionMatchTuple [SqlInjectionMatchTuple] <p>Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.</p>
 -- Required parameter: Action
 -- Required parameter: SqlInjectionMatchTuple
 function M.SqlInjectionMatchSetUpdate(Action, SqlInjectionMatchTuple, ...)
@@ -2724,8 +2724,8 @@ function M.AssertWAFUnavailableEntityException(struct)
 end
 
 --- Create a structure of type WAFUnavailableEntityException
--- &lt;p&gt;The operation failed because the entity referenced is temporarily unavailable. Retry your request.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The operation failed because the entity referenced is temporarily unavailable. Retry your request.&lt;/p&gt;
+-- <p>The operation failed because the entity referenced is temporarily unavailable. Retry your request.</p>
+-- @param message [errorMessage] <p>The operation failed because the entity referenced is temporarily unavailable. Retry your request.</p>
 function M.WAFUnavailableEntityException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFUnavailableEntityException")
 	local t = { 
@@ -2770,9 +2770,9 @@ function M.AssertCreateSqlInjectionMatchSetRequest(struct)
 end
 
 --- Create a structure of type CreateSqlInjectionMatchSetRequest
--- &lt;p&gt;A request to create a &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description for the &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; that you're creating. You can't change &lt;code&gt;Name&lt;/code&gt; after you create the &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt;.&lt;/p&gt;
+-- <p>A request to create a <a>SqlInjectionMatchSet</a>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description for the <a>SqlInjectionMatchSet</a> that you're creating. You can't change <code>Name</code> after you create the <code>SqlInjectionMatchSet</code>.</p>
 -- Required parameter: Name
 -- Required parameter: ChangeToken
 function M.CreateSqlInjectionMatchSetRequest(ChangeToken, Name, ...)
@@ -2801,8 +2801,8 @@ end
 
 --- Create a structure of type CreateSizeConstraintSetRequest
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;SizeConstraintSet&lt;/a&gt;. You can't change &lt;code&gt;Name&lt;/code&gt; after you create a &lt;code&gt;SizeConstraintSet&lt;/code&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>SizeConstraintSet</a>. You can't change <code>Name</code> after you create a <code>SizeConstraintSet</code>.</p>
 -- Required parameter: Name
 -- Required parameter: ChangeToken
 function M.CreateSizeConstraintSetRequest(ChangeToken, Name, ...)
@@ -2830,9 +2830,9 @@ function M.AssertSizeConstraintSetSummary(struct)
 end
 
 --- Create a structure of type SizeConstraintSetSummary
--- &lt;p&gt;The &lt;code&gt;Id&lt;/code&gt; and &lt;code&gt;Name&lt;/code&gt; of a &lt;code&gt;SizeConstraintSet&lt;/code&gt;.&lt;/p&gt;
--- @param SizeConstraintSetId [ResourceId] &lt;p&gt;A unique identifier for a &lt;code&gt;SizeConstraintSet&lt;/code&gt;. You use &lt;code&gt;SizeConstraintSetId&lt;/code&gt; to get information about a &lt;code&gt;SizeConstraintSet&lt;/code&gt; (see &lt;a&gt;GetSizeConstraintSet&lt;/a&gt;), update a &lt;code&gt;SizeConstraintSet&lt;/code&gt; (see &lt;a&gt;UpdateSizeConstraintSet&lt;/a&gt;), insert a &lt;code&gt;SizeConstraintSet&lt;/code&gt; into a &lt;code&gt;Rule&lt;/code&gt; or delete one from a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), and delete a &lt;code&gt;SizeConstraintSet&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteSizeConstraintSet&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;SizeConstraintSetId&lt;/code&gt; is returned by &lt;a&gt;CreateSizeConstraintSet&lt;/a&gt; and by &lt;a&gt;ListSizeConstraintSets&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;The name of the &lt;code&gt;SizeConstraintSet&lt;/code&gt;, if any.&lt;/p&gt;
+-- <p>The <code>Id</code> and <code>Name</code> of a <code>SizeConstraintSet</code>.</p>
+-- @param SizeConstraintSetId [ResourceId] <p>A unique identifier for a <code>SizeConstraintSet</code>. You use <code>SizeConstraintSetId</code> to get information about a <code>SizeConstraintSet</code> (see <a>GetSizeConstraintSet</a>), update a <code>SizeConstraintSet</code> (see <a>UpdateSizeConstraintSet</a>), insert a <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SizeConstraintSet</code> from AWS WAF (see <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- @param Name [ResourceName] <p>The name of the <code>SizeConstraintSet</code>, if any.</p>
 -- Required parameter: SizeConstraintSetId
 -- Required parameter: Name
 function M.SizeConstraintSetSummary(SizeConstraintSetId, Name, ...)
@@ -2858,9 +2858,9 @@ function M.AssertListSqlInjectionMatchSetsResponse(struct)
 end
 
 --- Create a structure of type ListSqlInjectionMatchSetsResponse
--- &lt;p&gt;The response to a &lt;a&gt;ListSqlInjectionMatchSets&lt;/a&gt; request.&lt;/p&gt;
--- @param SqlInjectionMatchSets [SqlInjectionMatchSetSummaries] &lt;p&gt;An array of &lt;a&gt;SqlInjectionMatchSetSummary&lt;/a&gt; objects.&lt;/p&gt;
--- @param NextMarker [NextMarker] &lt;p&gt;If you have more &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; objects than the number that you specified for &lt;code&gt;Limit&lt;/code&gt; in the request, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value. To list more &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; objects, submit another &lt;code&gt;ListSqlInjectionMatchSets&lt;/code&gt; request, and specify the &lt;code&gt;NextMarker&lt;/code&gt; value from the response in the &lt;code&gt;NextMarker&lt;/code&gt; value in the next request.&lt;/p&gt;
+-- <p>The response to a <a>ListSqlInjectionMatchSets</a> request.</p>
+-- @param SqlInjectionMatchSets [SqlInjectionMatchSetSummaries] <p>An array of <a>SqlInjectionMatchSetSummary</a> objects.</p>
+-- @param NextMarker [NextMarker] <p>If you have more <a>SqlInjectionMatchSet</a> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>SqlInjectionMatchSet</code> objects, submit another <code>ListSqlInjectionMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
 function M.ListSqlInjectionMatchSetsResponse(SqlInjectionMatchSets, NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSqlInjectionMatchSetsResponse")
 	local t = { 
@@ -2884,9 +2884,9 @@ function M.AssertListSqlInjectionMatchSetsRequest(struct)
 end
 
 --- Create a structure of type ListSqlInjectionMatchSetsRequest
--- &lt;p&gt;A request to list the &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; objects created by the current AWS account.&lt;/p&gt;
--- @param NextMarker [NextMarker] &lt;p&gt;If you specify a value for &lt;code&gt;Limit&lt;/code&gt; and you have more &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; objects than the value of &lt;code&gt;Limit&lt;/code&gt;, AWS WAF returns a &lt;code&gt;NextMarker&lt;/code&gt; value in the response that allows you to list another group of &lt;code&gt;SqlInjectionMatchSets&lt;/code&gt;. For the second and subsequent &lt;code&gt;ListSqlInjectionMatchSets&lt;/code&gt; requests, specify the value of &lt;code&gt;NextMarker&lt;/code&gt; from the previous response to get information about another batch of &lt;code&gt;SqlInjectionMatchSets&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PaginationLimit] &lt;p&gt;Specifies the number of &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; objects that you want AWS WAF to return for this request. If you have more &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; objects than the number you specify for &lt;code&gt;Limit&lt;/code&gt;, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value that you can use to get another batch of &lt;code&gt;Rules&lt;/code&gt;.&lt;/p&gt;
+-- <p>A request to list the <a>SqlInjectionMatchSet</a> objects created by the current AWS account.</p>
+-- @param NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>SqlInjectionMatchSets</code>. For the second and subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>SqlInjectionMatchSets</code>.</p>
+-- @param Limit [PaginationLimit] <p>Specifies the number of <a>SqlInjectionMatchSet</a> objects that you want AWS WAF to return for this request. If you have more <code>SqlInjectionMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
 function M.ListSqlInjectionMatchSetsRequest(NextMarker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSqlInjectionMatchSetsRequest")
 	local t = { 
@@ -2914,13 +2914,13 @@ function M.AssertHTTPRequest(struct)
 end
 
 --- Create a structure of type HTTPRequest
--- &lt;p&gt;The response from a &lt;a&gt;GetSampledRequests&lt;/a&gt; request includes an &lt;code&gt;HTTPRequest&lt;/code&gt; complex type that appears as &lt;code&gt;Request&lt;/code&gt; in the response syntax. &lt;code&gt;HTTPRequest&lt;/code&gt; contains information about one of the web requests that were returned by &lt;code&gt;GetSampledRequests&lt;/code&gt;. &lt;/p&gt;
--- @param Country [Country] &lt;p&gt;The two-letter country code for the country that the request originated from. For a current list of country codes, see the Wikipedia entry &lt;a href=&quot;https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2&quot;&gt;ISO 3166-1 alpha-2&lt;/a&gt;.&lt;/p&gt;
--- @param URI [URIString] &lt;p&gt;The part of a web request that identifies the resource, for example, &lt;code&gt;/images/daily-ad.jpg&lt;/code&gt;.&lt;/p&gt;
--- @param Headers [HTTPHeaders] &lt;p&gt;A complex type that contains two values for each header in the sampled web request: the name of the header and the value of the header.&lt;/p&gt;
--- @param ClientIP [IPString] &lt;p&gt;The IP address that the request originated from. If the &lt;code&gt;WebACL&lt;/code&gt; is associated with a CloudFront distribution, this is the value of one of the following fields in CloudFront access logs:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;c-ip&lt;/code&gt;, if the viewer did not use an HTTP proxy or a load balancer to send the request&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;x-forwarded-for&lt;/code&gt;, if the viewer did use an HTTP proxy or a load balancer to send the request&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Method [HTTPMethod] &lt;p&gt;The HTTP method specified in the sampled web request. CloudFront supports the following methods: &lt;code&gt;DELETE&lt;/code&gt;, &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;HEAD&lt;/code&gt;, &lt;code&gt;OPTIONS&lt;/code&gt;, &lt;code&gt;PATCH&lt;/code&gt;, &lt;code&gt;POST&lt;/code&gt;, and &lt;code&gt;PUT&lt;/code&gt;. &lt;/p&gt;
--- @param HTTPVersion [HTTPVersion] &lt;p&gt;The HTTP version specified in the sampled web request, for example, &lt;code&gt;HTTP/1.1&lt;/code&gt;.&lt;/p&gt;
+-- <p>The response from a <a>GetSampledRequests</a> request includes an <code>HTTPRequest</code> complex type that appears as <code>Request</code> in the response syntax. <code>HTTPRequest</code> contains information about one of the web requests that were returned by <code>GetSampledRequests</code>. </p>
+-- @param Country [Country] <p>The two-letter country code for the country that the request originated from. For a current list of country codes, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.</p>
+-- @param URI [URIString] <p>The part of a web request that identifies the resource, for example, <code>/images/daily-ad.jpg</code>.</p>
+-- @param Headers [HTTPHeaders] <p>A complex type that contains two values for each header in the sampled web request: the name of the header and the value of the header.</p>
+-- @param ClientIP [IPString] <p>The IP address that the request originated from. If the <code>WebACL</code> is associated with a CloudFront distribution, this is the value of one of the following fields in CloudFront access logs:</p> <ul> <li> <p> <code>c-ip</code>, if the viewer did not use an HTTP proxy or a load balancer to send the request</p> </li> <li> <p> <code>x-forwarded-for</code>, if the viewer did use an HTTP proxy or a load balancer to send the request</p> </li> </ul>
+-- @param Method [HTTPMethod] <p>The HTTP method specified in the sampled web request. CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>. </p>
+-- @param HTTPVersion [HTTPVersion] <p>The HTTP version specified in the sampled web request, for example, <code>HTTP/1.1</code>.</p>
 function M.HTTPRequest(Country, URI, Headers, ClientIP, Method, HTTPVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HTTPRequest")
 	local t = { 
@@ -2949,8 +2949,8 @@ end
 
 --- Create a structure of type ListWebACLsRequest
 --  
--- @param NextMarker [NextMarker] &lt;p&gt;If you specify a value for &lt;code&gt;Limit&lt;/code&gt; and you have more &lt;code&gt;WebACL&lt;/code&gt; objects than the number that you specify for &lt;code&gt;Limit&lt;/code&gt;, AWS WAF returns a &lt;code&gt;NextMarker&lt;/code&gt; value in the response that allows you to list another group of &lt;code&gt;WebACL&lt;/code&gt; objects. For the second and subsequent &lt;code&gt;ListWebACLs&lt;/code&gt; requests, specify the value of &lt;code&gt;NextMarker&lt;/code&gt; from the previous response to get information about another batch of &lt;code&gt;WebACL&lt;/code&gt; objects.&lt;/p&gt;
--- @param Limit [PaginationLimit] &lt;p&gt;Specifies the number of &lt;code&gt;WebACL&lt;/code&gt; objects that you want AWS WAF to return for this request. If you have more &lt;code&gt;WebACL&lt;/code&gt; objects than the number that you specify for &lt;code&gt;Limit&lt;/code&gt;, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value that you can use to get another batch of &lt;code&gt;WebACL&lt;/code&gt; objects.&lt;/p&gt;
+-- @param NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>WebACL</code> objects than the number that you specify for <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>WebACL</code> objects. For the second and subsequent <code>ListWebACLs</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>WebACL</code> objects.</p>
+-- @param Limit [PaginationLimit] <p>Specifies the number of <code>WebACL</code> objects that you want AWS WAF to return for this request. If you have more <code>WebACL</code> objects than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>WebACL</code> objects.</p>
 function M.ListWebACLsRequest(NextMarker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListWebACLsRequest")
 	local t = { 
@@ -2975,8 +2975,8 @@ end
 
 --- Create a structure of type CreateWebACLResponse
 --  
--- @param WebACL [WebACL] &lt;p&gt;The &lt;a&gt;WebACL&lt;/a&gt; returned in the &lt;code&gt;CreateWebACL&lt;/code&gt; response.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;CreateWebACL&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param WebACL [WebACL] <p>The <a>WebACL</a> returned in the <code>CreateWebACL</code> response.</p>
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.CreateWebACLResponse(WebACL, ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateWebACLResponse")
 	local t = { 
@@ -3000,7 +3000,7 @@ end
 
 --- Create a structure of type DeleteRuleResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;DeleteRule&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.DeleteRuleResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRuleResponse")
 	local t = { 
@@ -3024,7 +3024,7 @@ end
 
 --- Create a structure of type GetWebACLForResourceRequest
 --  
--- @param ResourceArn [ResourceArn] &lt;p&gt;The ARN (Amazon Resource Name) of the resource for which to get the web ACL.&lt;/p&gt;
+-- @param ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource for which to get the web ACL.</p>
 -- Required parameter: ResourceArn
 function M.GetWebACLForResourceRequest(ResourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetWebACLForResourceRequest")
@@ -3051,8 +3051,8 @@ end
 
 --- Create a structure of type DeleteSizeConstraintSetRequest
 --  
--- @param SizeConstraintSetId [ResourceId] &lt;p&gt;The &lt;code&gt;SizeConstraintSetId&lt;/code&gt; of the &lt;a&gt;SizeConstraintSet&lt;/a&gt; that you want to delete. &lt;code&gt;SizeConstraintSetId&lt;/code&gt; is returned by &lt;a&gt;CreateSizeConstraintSet&lt;/a&gt; and by &lt;a&gt;ListSizeConstraintSets&lt;/a&gt;.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
+-- @param SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to delete. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
 -- Required parameter: SizeConstraintSetId
 -- Required parameter: ChangeToken
 function M.DeleteSizeConstraintSetRequest(SizeConstraintSetId, ChangeToken, ...)
@@ -3078,7 +3078,7 @@ end
 
 --- Create a structure of type UpdateRateBasedRuleResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;UpdateRateBasedRule&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.UpdateRateBasedRuleResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRateBasedRuleResponse")
 	local t = { 
@@ -3101,7 +3101,7 @@ end
 
 --- Create a structure of type GetSizeConstraintSetResponse
 --  
--- @param SizeConstraintSet [SizeConstraintSet] &lt;p&gt;Information about the &lt;a&gt;SizeConstraintSet&lt;/a&gt; that you specified in the &lt;code&gt;GetSizeConstraintSet&lt;/code&gt; request. For more information, see the following topics:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;SizeConstraintSet&lt;/a&gt;: Contains &lt;code&gt;SizeConstraintSetId&lt;/code&gt;, &lt;code&gt;SizeConstraints&lt;/code&gt;, and &lt;code&gt;Name&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SizeConstraints&lt;/code&gt;: Contains an array of &lt;a&gt;SizeConstraint&lt;/a&gt; objects. Each &lt;code&gt;SizeConstraint&lt;/code&gt; object contains &lt;a&gt;FieldToMatch&lt;/a&gt;, &lt;code&gt;TextTransformation&lt;/code&gt;, &lt;code&gt;ComparisonOperator&lt;/code&gt;, and &lt;code&gt;Size&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;FieldToMatch&lt;/a&gt;: Contains &lt;code&gt;Data&lt;/code&gt; and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param SizeConstraintSet [SizeConstraintSet] <p>Information about the <a>SizeConstraintSet</a> that you specified in the <code>GetSizeConstraintSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>SizeConstraintSet</a>: Contains <code>SizeConstraintSetId</code>, <code>SizeConstraints</code>, and <code>Name</code> </p> </li> <li> <p> <code>SizeConstraints</code>: Contains an array of <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object contains <a>FieldToMatch</a>, <code>TextTransformation</code>, <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 function M.GetSizeConstraintSetResponse(SizeConstraintSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSizeConstraintSetResponse")
 	local t = { 
@@ -3125,8 +3125,8 @@ end
 
 --- Create a structure of type ListRulesResponse
 --  
--- @param Rules [RuleSummaries] &lt;p&gt;An array of &lt;a&gt;RuleSummary&lt;/a&gt; objects.&lt;/p&gt;
--- @param NextMarker [NextMarker] &lt;p&gt;If you have more &lt;code&gt;Rules&lt;/code&gt; than the number that you specified for &lt;code&gt;Limit&lt;/code&gt; in the request, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value. To list more &lt;code&gt;Rules&lt;/code&gt;, submit another &lt;code&gt;ListRules&lt;/code&gt; request, and specify the &lt;code&gt;NextMarker&lt;/code&gt; value from the response in the &lt;code&gt;NextMarker&lt;/code&gt; value in the next request.&lt;/p&gt;
+-- @param Rules [RuleSummaries] <p>An array of <a>RuleSummary</a> objects.</p>
+-- @param NextMarker [NextMarker] <p>If you have more <code>Rules</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>Rules</code>, submit another <code>ListRules</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
 function M.ListRulesResponse(Rules, NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesResponse")
 	local t = { 
@@ -3153,8 +3153,8 @@ end
 
 --- Create a structure of type CreateIPSetRequest
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;IPSet&lt;/a&gt;. You can't change &lt;code&gt;Name&lt;/code&gt; after you create the &lt;code&gt;IPSet&lt;/code&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>IPSet</a>. You can't change <code>Name</code> after you create the <code>IPSet</code>.</p>
 -- Required parameter: Name
 -- Required parameter: ChangeToken
 function M.CreateIPSetRequest(ChangeToken, Name, ...)
@@ -3180,7 +3180,7 @@ end
 
 --- Create a structure of type GetRuleResponse
 --  
--- @param Rule [Rule] &lt;p&gt;Information about the &lt;a&gt;Rule&lt;/a&gt; that you specified in the &lt;code&gt;GetRule&lt;/code&gt; request. For more information, see the following topics:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;Rule&lt;/a&gt;: Contains &lt;code&gt;MetricName&lt;/code&gt;, &lt;code&gt;Name&lt;/code&gt;, an array of &lt;code&gt;Predicate&lt;/code&gt; objects, and &lt;code&gt;RuleId&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;Predicate&lt;/a&gt;: Each &lt;code&gt;Predicate&lt;/code&gt; object contains &lt;code&gt;DataId&lt;/code&gt;, &lt;code&gt;Negated&lt;/code&gt;, and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param Rule [Rule] <p>Information about the <a>Rule</a> that you specified in the <code>GetRule</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>Rule</a>: Contains <code>MetricName</code>, <code>Name</code>, an array of <code>Predicate</code> objects, and <code>RuleId</code> </p> </li> <li> <p> <a>Predicate</a>: Each <code>Predicate</code> object contains <code>DataId</code>, <code>Negated</code>, and <code>Type</code> </p> </li> </ul>
 function M.GetRuleResponse(Rule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRuleResponse")
 	local t = { 
@@ -3204,8 +3204,8 @@ end
 
 --- Create a structure of type ListByteMatchSetsRequest
 --  
--- @param NextMarker [NextMarker] &lt;p&gt;If you specify a value for &lt;code&gt;Limit&lt;/code&gt; and you have more &lt;code&gt;ByteMatchSets&lt;/code&gt; than the value of &lt;code&gt;Limit&lt;/code&gt;, AWS WAF returns a &lt;code&gt;NextMarker&lt;/code&gt; value in the response that allows you to list another group of &lt;code&gt;ByteMatchSets&lt;/code&gt;. For the second and subsequent &lt;code&gt;ListByteMatchSets&lt;/code&gt; requests, specify the value of &lt;code&gt;NextMarker&lt;/code&gt; from the previous response to get information about another batch of &lt;code&gt;ByteMatchSets&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PaginationLimit] &lt;p&gt;Specifies the number of &lt;code&gt;ByteMatchSet&lt;/code&gt; objects that you want AWS WAF to return for this request. If you have more &lt;code&gt;ByteMatchSets&lt;/code&gt; objects than the number you specify for &lt;code&gt;Limit&lt;/code&gt;, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value that you can use to get another batch of &lt;code&gt;ByteMatchSet&lt;/code&gt; objects.&lt;/p&gt;
+-- @param NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>ByteMatchSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>ByteMatchSets</code>. For the second and subsequent <code>ListByteMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>ByteMatchSets</code>.</p>
+-- @param Limit [PaginationLimit] <p>Specifies the number of <code>ByteMatchSet</code> objects that you want AWS WAF to return for this request. If you have more <code>ByteMatchSets</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>ByteMatchSet</code> objects.</p>
 function M.ListByteMatchSetsRequest(NextMarker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListByteMatchSetsRequest")
 	local t = { 
@@ -3230,8 +3230,8 @@ end
 
 --- Create a structure of type CreateIPSetResponse
 --  
--- @param IPSet [IPSet] &lt;p&gt;The &lt;a&gt;IPSet&lt;/a&gt; returned in the &lt;code&gt;CreateIPSet&lt;/code&gt; response.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;CreateIPSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param IPSet [IPSet] <p>The <a>IPSet</a> returned in the <code>CreateIPSet</code> response.</p>
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.CreateIPSetResponse(IPSet, ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateIPSetResponse")
 	local t = { 
@@ -3258,8 +3258,8 @@ end
 
 --- Create a structure of type CreateByteMatchSetRequest
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;ByteMatchSet&lt;/a&gt;. You can't change &lt;code&gt;Name&lt;/code&gt; after you create a &lt;code&gt;ByteMatchSet&lt;/code&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a <code>ByteMatchSet</code>.</p>
 -- Required parameter: Name
 -- Required parameter: ChangeToken
 function M.CreateByteMatchSetRequest(ChangeToken, Name, ...)
@@ -3288,10 +3288,10 @@ function M.AssertIPSet(struct)
 end
 
 --- Create a structure of type IPSet
--- &lt;p&gt;Contains one or more IP addresses or blocks of IP addresses specified in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and /24, /32, /48, /56, /64 and /128 for IPv6.&lt;/p&gt; &lt;p&gt;To specify an individual IP address, you specify the four-part IP address followed by a &lt;code&gt;/32&lt;/code&gt;, for example, 192.0.2.0/31. To block a range of IP addresses, you can specify a &lt;code&gt;/128&lt;/code&gt;, &lt;code&gt;/64&lt;/code&gt;, &lt;code&gt;/56&lt;/code&gt;, &lt;code&gt;/48&lt;/code&gt;, &lt;code&gt;/32&lt;/code&gt;, &lt;code&gt;/24&lt;/code&gt;, &lt;code&gt;/16&lt;/code&gt;, or &lt;code&gt;/8&lt;/code&gt; CIDR. For more information about CIDR notation, see the Wikipedia entry &lt;a href=&quot;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&quot;&gt;Classless Inter-Domain Routing&lt;/a&gt;. &lt;/p&gt;
--- @param IPSetId [ResourceId] &lt;p&gt;The &lt;code&gt;IPSetId&lt;/code&gt; for an &lt;code&gt;IPSet&lt;/code&gt;. You use &lt;code&gt;IPSetId&lt;/code&gt; to get information about an &lt;code&gt;IPSet&lt;/code&gt; (see &lt;a&gt;GetIPSet&lt;/a&gt;), update an &lt;code&gt;IPSet&lt;/code&gt; (see &lt;a&gt;UpdateIPSet&lt;/a&gt;), insert an &lt;code&gt;IPSet&lt;/code&gt; into a &lt;code&gt;Rule&lt;/code&gt; or delete one from a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), and delete an &lt;code&gt;IPSet&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteIPSet&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;IPSetId&lt;/code&gt; is returned by &lt;a&gt;CreateIPSet&lt;/a&gt; and by &lt;a&gt;ListIPSets&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;IPSet&lt;/a&gt;. You can't change the name of an &lt;code&gt;IPSet&lt;/code&gt; after you create it.&lt;/p&gt;
--- @param IPSetDescriptors [IPSetDescriptors] &lt;p&gt;The IP address type (&lt;code&gt;IPV4&lt;/code&gt; or &lt;code&gt;IPV6&lt;/code&gt;) and the IP address range (in CIDR notation) that web requests originate from. If the &lt;code&gt;WebACL&lt;/code&gt; is associated with a CloudFront distribution and the viewer did not use an HTTP proxy or a load balancer to send the request, this is the value of the c-ip field in the CloudFront access logs.&lt;/p&gt;
+-- <p>Contains one or more IP addresses or blocks of IP addresses specified in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and /24, /32, /48, /56, /64 and /128 for IPv6.</p> <p>To specify an individual IP address, you specify the four-part IP address followed by a <code>/32</code>, for example, 192.0.2.0/31. To block a range of IP addresses, you can specify a <code>/128</code>, <code>/64</code>, <code>/56</code>, <code>/48</code>, <code>/32</code>, <code>/24</code>, <code>/16</code>, or <code>/8</code> CIDR. For more information about CIDR notation, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-Domain Routing</a>. </p>
+-- @param IPSetId [ResourceId] <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use <code>IPSetId</code> to get information about an <code>IPSet</code> (see <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert an <code>IPSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>IPSet</a>. You can't change the name of an <code>IPSet</code> after you create it.</p>
+-- @param IPSetDescriptors [IPSetDescriptors] <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web requests originate from. If the <code>WebACL</code> is associated with a CloudFront distribution and the viewer did not use an HTTP proxy or a load balancer to send the request, this is the value of the c-ip field in the CloudFront access logs.</p>
 -- Required parameter: IPSetId
 -- Required parameter: IPSetDescriptors
 function M.IPSet(IPSetId, Name, IPSetDescriptors, ...)
@@ -3321,8 +3321,8 @@ end
 
 --- Create a structure of type AssociateWebACLRequest
 --  
--- @param ResourceArn [ResourceArn] &lt;p&gt;The ARN (Amazon Resource Name) of the resource to be protected.&lt;/p&gt;
--- @param WebACLId [ResourceId] &lt;p&gt;A unique identifier (ID) for the web ACL.&lt;/p&gt;
+-- @param ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource to be protected.</p>
+-- @param WebACLId [ResourceId] <p>A unique identifier (ID) for the web ACL.</p>
 -- Required parameter: WebACLId
 -- Required parameter: ResourceArn
 function M.AssociateWebACLRequest(ResourceArn, WebACLId, ...)
@@ -3350,9 +3350,9 @@ function M.AssertByteMatchSetSummary(struct)
 end
 
 --- Create a structure of type ByteMatchSetSummary
--- &lt;p&gt;Returned by &lt;a&gt;ListByteMatchSets&lt;/a&gt;. Each &lt;code&gt;ByteMatchSetSummary&lt;/code&gt; object includes the &lt;code&gt;Name&lt;/code&gt; and &lt;code&gt;ByteMatchSetId&lt;/code&gt; for one &lt;a&gt;ByteMatchSet&lt;/a&gt;.&lt;/p&gt;
--- @param ByteMatchSetId [ResourceId] &lt;p&gt;The &lt;code&gt;ByteMatchSetId&lt;/code&gt; for a &lt;code&gt;ByteMatchSet&lt;/code&gt;. You use &lt;code&gt;ByteMatchSetId&lt;/code&gt; to get information about a &lt;code&gt;ByteMatchSet&lt;/code&gt;, update a &lt;code&gt;ByteMatchSet&lt;/code&gt;, remove a &lt;code&gt;ByteMatchSet&lt;/code&gt; from a &lt;code&gt;Rule&lt;/code&gt;, and delete a &lt;code&gt;ByteMatchSet&lt;/code&gt; from AWS WAF.&lt;/p&gt; &lt;p&gt; &lt;code&gt;ByteMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateByteMatchSet&lt;/a&gt; and by &lt;a&gt;ListByteMatchSets&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;ByteMatchSet&lt;/a&gt;. You can't change &lt;code&gt;Name&lt;/code&gt; after you create a &lt;code&gt;ByteMatchSet&lt;/code&gt;.&lt;/p&gt;
+-- <p>Returned by <a>ListByteMatchSets</a>. Each <code>ByteMatchSetSummary</code> object includes the <code>Name</code> and <code>ByteMatchSetId</code> for one <a>ByteMatchSet</a>.</p>
+-- @param ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> for a <code>ByteMatchSet</code>. You use <code>ByteMatchSetId</code> to get information about a <code>ByteMatchSet</code>, update a <code>ByteMatchSet</code>, remove a <code>ByteMatchSet</code> from a <code>Rule</code>, and delete a <code>ByteMatchSet</code> from AWS WAF.</p> <p> <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a <code>ByteMatchSet</code>.</p>
 -- Required parameter: ByteMatchSetId
 -- Required parameter: Name
 function M.ByteMatchSetSummary(ByteMatchSetId, Name, ...)
@@ -3379,10 +3379,10 @@ function M.AssertWAFInvalidParameterException(struct)
 end
 
 --- Create a structure of type WAFInvalidParameterException
--- &lt;p&gt;The operation failed because AWS WAF didn't recognize a parameter in the request. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You specified an invalid parameter name.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You specified an invalid value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update an object (&lt;code&gt;ByteMatchSet&lt;/code&gt;, &lt;code&gt;IPSet&lt;/code&gt;, &lt;code&gt;Rule&lt;/code&gt;, or &lt;code&gt;WebACL&lt;/code&gt;) using an action other than &lt;code&gt;INSERT&lt;/code&gt; or &lt;code&gt;DELETE&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to create a &lt;code&gt;WebACL&lt;/code&gt; with a &lt;code&gt;DefaultAction&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than &lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to create a &lt;code&gt;RateBasedRule&lt;/code&gt; with a &lt;code&gt;RateKey&lt;/code&gt; value other than &lt;code&gt;IP&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;WebACL&lt;/code&gt; with a &lt;code&gt;WafAction&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than &lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;ByteMatchSet&lt;/code&gt; with a &lt;code&gt;FieldToMatch&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than HEADER, QUERY_STRING, or URI.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;ByteMatchSet&lt;/code&gt; with a &lt;code&gt;Field&lt;/code&gt; of &lt;code&gt;HEADER&lt;/code&gt; but no value for &lt;code&gt;Data&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param field [ParameterExceptionField] &lt;p&gt;The operation failed because AWS WAF didn't recognize a parameter in the request. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You specified an invalid parameter name.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You specified an invalid value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update an object (&lt;code&gt;ByteMatchSet&lt;/code&gt;, &lt;code&gt;IPSet&lt;/code&gt;, &lt;code&gt;Rule&lt;/code&gt;, or &lt;code&gt;WebACL&lt;/code&gt;) using an action other than &lt;code&gt;INSERT&lt;/code&gt; or &lt;code&gt;DELETE&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to create a &lt;code&gt;WebACL&lt;/code&gt; with a &lt;code&gt;DefaultAction&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than &lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to create a &lt;code&gt;RateBasedRule&lt;/code&gt; with a &lt;code&gt;RateKey&lt;/code&gt; value other than &lt;code&gt;IP&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;WebACL&lt;/code&gt; with a &lt;code&gt;WafAction&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than &lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;ByteMatchSet&lt;/code&gt; with a &lt;code&gt;FieldToMatch&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than HEADER, QUERY_STRING, or URI.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;ByteMatchSet&lt;/code&gt; with a &lt;code&gt;Field&lt;/code&gt; of &lt;code&gt;HEADER&lt;/code&gt; but no value for &lt;code&gt;Data&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param reason [ParameterExceptionReason] &lt;p&gt;The operation failed because AWS WAF didn't recognize a parameter in the request. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You specified an invalid parameter name.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You specified an invalid value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update an object (&lt;code&gt;ByteMatchSet&lt;/code&gt;, &lt;code&gt;IPSet&lt;/code&gt;, &lt;code&gt;Rule&lt;/code&gt;, or &lt;code&gt;WebACL&lt;/code&gt;) using an action other than &lt;code&gt;INSERT&lt;/code&gt; or &lt;code&gt;DELETE&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to create a &lt;code&gt;WebACL&lt;/code&gt; with a &lt;code&gt;DefaultAction&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than &lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to create a &lt;code&gt;RateBasedRule&lt;/code&gt; with a &lt;code&gt;RateKey&lt;/code&gt; value other than &lt;code&gt;IP&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;WebACL&lt;/code&gt; with a &lt;code&gt;WafAction&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than &lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;ByteMatchSet&lt;/code&gt; with a &lt;code&gt;FieldToMatch&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than HEADER, QUERY_STRING, or URI.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;ByteMatchSet&lt;/code&gt; with a &lt;code&gt;Field&lt;/code&gt; of &lt;code&gt;HEADER&lt;/code&gt; but no value for &lt;code&gt;Data&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param parameter [ParameterExceptionParameter] &lt;p&gt;The operation failed because AWS WAF didn't recognize a parameter in the request. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You specified an invalid parameter name.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You specified an invalid value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update an object (&lt;code&gt;ByteMatchSet&lt;/code&gt;, &lt;code&gt;IPSet&lt;/code&gt;, &lt;code&gt;Rule&lt;/code&gt;, or &lt;code&gt;WebACL&lt;/code&gt;) using an action other than &lt;code&gt;INSERT&lt;/code&gt; or &lt;code&gt;DELETE&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to create a &lt;code&gt;WebACL&lt;/code&gt; with a &lt;code&gt;DefaultAction&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than &lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to create a &lt;code&gt;RateBasedRule&lt;/code&gt; with a &lt;code&gt;RateKey&lt;/code&gt; value other than &lt;code&gt;IP&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;WebACL&lt;/code&gt; with a &lt;code&gt;WafAction&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than &lt;code&gt;ALLOW&lt;/code&gt;, &lt;code&gt;BLOCK&lt;/code&gt;, or &lt;code&gt;COUNT&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;ByteMatchSet&lt;/code&gt; with a &lt;code&gt;FieldToMatch&lt;/code&gt; &lt;code&gt;Type&lt;/code&gt; other than HEADER, QUERY_STRING, or URI.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to update a &lt;code&gt;ByteMatchSet&lt;/code&gt; with a &lt;code&gt;Field&lt;/code&gt; of &lt;code&gt;HEADER&lt;/code&gt; but no value for &lt;code&gt;Data&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The operation failed because AWS WAF didn't recognize a parameter in the request. For example:</p> <ul> <li> <p>You specified an invalid parameter name.</p> </li> <li> <p>You specified an invalid value.</p> </li> <li> <p>You tried to update an object (<code>ByteMatchSet</code>, <code>IPSet</code>, <code>Rule</code>, or <code>WebACL</code>) using an action other than <code>INSERT</code> or <code>DELETE</code>.</p> </li> <li> <p>You tried to create a <code>WebACL</code> with a <code>DefaultAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to create a <code>RateBasedRule</code> with a <code>RateKey</code> value other than <code>IP</code>.</p> </li> <li> <p>You tried to update a <code>WebACL</code> with a <code>WafAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other than HEADER, QUERY_STRING, or URI.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>Field</code> of <code>HEADER</code> but no value for <code>Data</code>.</p> </li> <li> <p>Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.</p> </li> </ul>
+-- @param field [ParameterExceptionField] <p>The operation failed because AWS WAF didn't recognize a parameter in the request. For example:</p> <ul> <li> <p>You specified an invalid parameter name.</p> </li> <li> <p>You specified an invalid value.</p> </li> <li> <p>You tried to update an object (<code>ByteMatchSet</code>, <code>IPSet</code>, <code>Rule</code>, or <code>WebACL</code>) using an action other than <code>INSERT</code> or <code>DELETE</code>.</p> </li> <li> <p>You tried to create a <code>WebACL</code> with a <code>DefaultAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to create a <code>RateBasedRule</code> with a <code>RateKey</code> value other than <code>IP</code>.</p> </li> <li> <p>You tried to update a <code>WebACL</code> with a <code>WafAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other than HEADER, QUERY_STRING, or URI.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>Field</code> of <code>HEADER</code> but no value for <code>Data</code>.</p> </li> <li> <p>Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.</p> </li> </ul>
+-- @param reason [ParameterExceptionReason] <p>The operation failed because AWS WAF didn't recognize a parameter in the request. For example:</p> <ul> <li> <p>You specified an invalid parameter name.</p> </li> <li> <p>You specified an invalid value.</p> </li> <li> <p>You tried to update an object (<code>ByteMatchSet</code>, <code>IPSet</code>, <code>Rule</code>, or <code>WebACL</code>) using an action other than <code>INSERT</code> or <code>DELETE</code>.</p> </li> <li> <p>You tried to create a <code>WebACL</code> with a <code>DefaultAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to create a <code>RateBasedRule</code> with a <code>RateKey</code> value other than <code>IP</code>.</p> </li> <li> <p>You tried to update a <code>WebACL</code> with a <code>WafAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other than HEADER, QUERY_STRING, or URI.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>Field</code> of <code>HEADER</code> but no value for <code>Data</code>.</p> </li> <li> <p>Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.</p> </li> </ul>
+-- @param parameter [ParameterExceptionParameter] <p>The operation failed because AWS WAF didn't recognize a parameter in the request. For example:</p> <ul> <li> <p>You specified an invalid parameter name.</p> </li> <li> <p>You specified an invalid value.</p> </li> <li> <p>You tried to update an object (<code>ByteMatchSet</code>, <code>IPSet</code>, <code>Rule</code>, or <code>WebACL</code>) using an action other than <code>INSERT</code> or <code>DELETE</code>.</p> </li> <li> <p>You tried to create a <code>WebACL</code> with a <code>DefaultAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to create a <code>RateBasedRule</code> with a <code>RateKey</code> value other than <code>IP</code>.</p> </li> <li> <p>You tried to update a <code>WebACL</code> with a <code>WafAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other than HEADER, QUERY_STRING, or URI.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>Field</code> of <code>HEADER</code> but no value for <code>Data</code>.</p> </li> <li> <p>Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.</p> </li> </ul>
 function M.WAFInvalidParameterException(field, reason, parameter, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFInvalidParameterException")
 	local t = { 
@@ -3409,9 +3409,9 @@ function M.AssertSqlInjectionMatchSetSummary(struct)
 end
 
 --- Create a structure of type SqlInjectionMatchSetSummary
--- &lt;p&gt;The &lt;code&gt;Id&lt;/code&gt; and &lt;code&gt;Name&lt;/code&gt; of a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;The name of the &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt;, if any, specified by &lt;code&gt;Id&lt;/code&gt;.&lt;/p&gt;
--- @param SqlInjectionMatchSetId [ResourceId] &lt;p&gt;A unique identifier for a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt;. You use &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt; to get information about a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; (see &lt;a&gt;GetSqlInjectionMatchSet&lt;/a&gt;), update a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; (see &lt;a&gt;UpdateSqlInjectionMatchSet&lt;/a&gt;), insert a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; into a &lt;code&gt;Rule&lt;/code&gt; or delete one from a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), and delete a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteSqlInjectionMatchSet&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateSqlInjectionMatchSet&lt;/a&gt; and by &lt;a&gt;ListSqlInjectionMatchSets&lt;/a&gt;.&lt;/p&gt;
+-- <p>The <code>Id</code> and <code>Name</code> of a <code>SqlInjectionMatchSet</code>.</p>
+-- @param Name [ResourceName] <p>The name of the <code>SqlInjectionMatchSet</code>, if any, specified by <code>Id</code>.</p>
+-- @param SqlInjectionMatchSetId [ResourceId] <p>A unique identifier for a <code>SqlInjectionMatchSet</code>. You use <code>SqlInjectionMatchSetId</code> to get information about a <code>SqlInjectionMatchSet</code> (see <a>GetSqlInjectionMatchSet</a>), update a <code>SqlInjectionMatchSet</code> (see <a>UpdateSqlInjectionMatchSet</a>), insert a <code>SqlInjectionMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SqlInjectionMatchSet</code> from AWS WAF (see <a>DeleteSqlInjectionMatchSet</a>).</p> <p> <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
 -- Required parameter: SqlInjectionMatchSetId
 -- Required parameter: Name
 function M.SqlInjectionMatchSetSummary(Name, SqlInjectionMatchSetId, ...)
@@ -3438,7 +3438,7 @@ end
 
 --- Create a structure of type GetChangeTokenStatusRequest
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The change token for which you want to get the status. This change token was previously returned in the &lt;code&gt;GetChangeToken&lt;/code&gt; response.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The change token for which you want to get the status. This change token was previously returned in the <code>GetChangeToken</code> response.</p>
 -- Required parameter: ChangeToken
 function M.GetChangeTokenStatusRequest(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetChangeTokenStatusRequest")
@@ -3461,8 +3461,8 @@ function M.AssertUpdateSqlInjectionMatchSetResponse(struct)
 end
 
 --- Create a structure of type UpdateSqlInjectionMatchSetResponse
--- &lt;p&gt;The response to an &lt;a&gt;UpdateSqlInjectionMatchSets&lt;/a&gt; request.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;UpdateSqlInjectionMatchSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- <p>The response to an <a>UpdateSqlInjectionMatchSets</a> request.</p>
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.UpdateSqlInjectionMatchSetResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSqlInjectionMatchSetResponse")
 	local t = { 
@@ -3484,8 +3484,8 @@ function M.AssertWAFNonEmptyEntityException(struct)
 end
 
 --- Create a structure of type WAFNonEmptyEntityException
--- &lt;p&gt;The operation failed because you tried to delete an object that isn't empty. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You tried to delete a &lt;code&gt;WebACL&lt;/code&gt; that still contains one or more &lt;code&gt;Rule&lt;/code&gt; objects.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to delete a &lt;code&gt;Rule&lt;/code&gt; that still contains one or more &lt;code&gt;ByteMatchSet&lt;/code&gt; objects or other predicates.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to delete a &lt;code&gt;ByteMatchSet&lt;/code&gt; that contains one or more &lt;code&gt;ByteMatchTuple&lt;/code&gt; objects.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to delete an &lt;code&gt;IPSet&lt;/code&gt; that references one or more IP addresses.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param message [errorMessage] &lt;p&gt;The operation failed because you tried to delete an object that isn't empty. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You tried to delete a &lt;code&gt;WebACL&lt;/code&gt; that still contains one or more &lt;code&gt;Rule&lt;/code&gt; objects.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to delete a &lt;code&gt;Rule&lt;/code&gt; that still contains one or more &lt;code&gt;ByteMatchSet&lt;/code&gt; objects or other predicates.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to delete a &lt;code&gt;ByteMatchSet&lt;/code&gt; that contains one or more &lt;code&gt;ByteMatchTuple&lt;/code&gt; objects.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You tried to delete an &lt;code&gt;IPSet&lt;/code&gt; that references one or more IP addresses.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The operation failed because you tried to delete an object that isn't empty. For example:</p> <ul> <li> <p>You tried to delete a <code>WebACL</code> that still contains one or more <code>Rule</code> objects.</p> </li> <li> <p>You tried to delete a <code>Rule</code> that still contains one or more <code>ByteMatchSet</code> objects or other predicates.</p> </li> <li> <p>You tried to delete a <code>ByteMatchSet</code> that contains one or more <code>ByteMatchTuple</code> objects.</p> </li> <li> <p>You tried to delete an <code>IPSet</code> that references one or more IP addresses.</p> </li> </ul>
+-- @param message [errorMessage] <p>The operation failed because you tried to delete an object that isn't empty. For example:</p> <ul> <li> <p>You tried to delete a <code>WebACL</code> that still contains one or more <code>Rule</code> objects.</p> </li> <li> <p>You tried to delete a <code>Rule</code> that still contains one or more <code>ByteMatchSet</code> objects or other predicates.</p> </li> <li> <p>You tried to delete a <code>ByteMatchSet</code> that contains one or more <code>ByteMatchTuple</code> objects.</p> </li> <li> <p>You tried to delete an <code>IPSet</code> that references one or more IP addresses.</p> </li> </ul>
 function M.WAFNonEmptyEntityException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFNonEmptyEntityException")
 	local t = { 
@@ -3507,8 +3507,8 @@ function M.AssertWAFStaleDataException(struct)
 end
 
 --- Create a structure of type WAFStaleDataException
--- &lt;p&gt;The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.&lt;/p&gt;
+-- <p>The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.</p>
+-- @param message [errorMessage] <p>The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.</p>
 function M.WAFStaleDataException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFStaleDataException")
 	local t = { 
@@ -3534,10 +3534,10 @@ function M.AssertSizeConstraintSet(struct)
 end
 
 --- Create a structure of type SizeConstraintSet
--- &lt;p&gt;A complex type that contains &lt;code&gt;SizeConstraint&lt;/code&gt; objects, which specify the parts of web requests that you want AWS WAF to inspect the size of. If a &lt;code&gt;SizeConstraintSet&lt;/code&gt; contains more than one &lt;code&gt;SizeConstraint&lt;/code&gt; object, a request only needs to match one constraint to be considered a match.&lt;/p&gt;
--- @param SizeConstraints [SizeConstraints] &lt;p&gt;Specifies the parts of web requests that you want to inspect the size of.&lt;/p&gt;
--- @param SizeConstraintSetId [ResourceId] &lt;p&gt;A unique identifier for a &lt;code&gt;SizeConstraintSet&lt;/code&gt;. You use &lt;code&gt;SizeConstraintSetId&lt;/code&gt; to get information about a &lt;code&gt;SizeConstraintSet&lt;/code&gt; (see &lt;a&gt;GetSizeConstraintSet&lt;/a&gt;), update a &lt;code&gt;SizeConstraintSet&lt;/code&gt; (see &lt;a&gt;UpdateSizeConstraintSet&lt;/a&gt;), insert a &lt;code&gt;SizeConstraintSet&lt;/code&gt; into a &lt;code&gt;Rule&lt;/code&gt; or delete one from a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), and delete a &lt;code&gt;SizeConstraintSet&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteSizeConstraintSet&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;SizeConstraintSetId&lt;/code&gt; is returned by &lt;a&gt;CreateSizeConstraintSet&lt;/a&gt; and by &lt;a&gt;ListSizeConstraintSets&lt;/a&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;The name, if any, of the &lt;code&gt;SizeConstraintSet&lt;/code&gt;.&lt;/p&gt;
+-- <p>A complex type that contains <code>SizeConstraint</code> objects, which specify the parts of web requests that you want AWS WAF to inspect the size of. If a <code>SizeConstraintSet</code> contains more than one <code>SizeConstraint</code> object, a request only needs to match one constraint to be considered a match.</p>
+-- @param SizeConstraints [SizeConstraints] <p>Specifies the parts of web requests that you want to inspect the size of.</p>
+-- @param SizeConstraintSetId [ResourceId] <p>A unique identifier for a <code>SizeConstraintSet</code>. You use <code>SizeConstraintSetId</code> to get information about a <code>SizeConstraintSet</code> (see <a>GetSizeConstraintSet</a>), update a <code>SizeConstraintSet</code> (see <a>UpdateSizeConstraintSet</a>), insert a <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SizeConstraintSet</code> from AWS WAF (see <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- @param Name [ResourceName] <p>The name, if any, of the <code>SizeConstraintSet</code>.</p>
 -- Required parameter: SizeConstraintSetId
 -- Required parameter: SizeConstraints
 function M.SizeConstraintSet(SizeConstraints, SizeConstraintSetId, Name, ...)
@@ -3569,10 +3569,10 @@ end
 
 --- Create a structure of type UpdateWebACLRequest
 --  
--- @param DefaultAction [WafAction] &lt;p&gt;A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn't match the criteria in any of the rules in a web ACL.&lt;/p&gt;
--- @param ChangeToken [ChangeToken] &lt;p&gt;The value returned by the most recent call to &lt;a&gt;GetChangeToken&lt;/a&gt;.&lt;/p&gt;
--- @param WebACLId [ResourceId] &lt;p&gt;The &lt;code&gt;WebACLId&lt;/code&gt; of the &lt;a&gt;WebACL&lt;/a&gt; that you want to update. &lt;code&gt;WebACLId&lt;/code&gt; is returned by &lt;a&gt;CreateWebACL&lt;/a&gt; and by &lt;a&gt;ListWebACLs&lt;/a&gt;.&lt;/p&gt;
--- @param Updates [WebACLUpdates] &lt;p&gt;An array of updates to make to the &lt;a&gt;WebACL&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;An array of &lt;code&gt;WebACLUpdate&lt;/code&gt; objects that you want to insert into or delete from a &lt;a&gt;WebACL&lt;/a&gt;. For more information, see the applicable data types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;WebACLUpdate&lt;/a&gt;: Contains &lt;code&gt;Action&lt;/code&gt; and &lt;code&gt;ActivatedRule&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ActivatedRule&lt;/a&gt;: Contains &lt;code&gt;Action&lt;/code&gt;, &lt;code&gt;Priority&lt;/code&gt;, &lt;code&gt;RuleId&lt;/code&gt;, and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;WafAction&lt;/a&gt;: Contains &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param DefaultAction [WafAction] <p>A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn't match the criteria in any of the rules in a web ACL.</p>
+-- @param ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- @param WebACLId [ResourceId] <p>The <code>WebACLId</code> of the <a>WebACL</a> that you want to update. <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
+-- @param Updates [WebACLUpdates] <p>An array of updates to make to the <a>WebACL</a>.</p> <p>An array of <code>WebACLUpdate</code> objects that you want to insert into or delete from a <a>WebACL</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>WebACLUpdate</a>: Contains <code>Action</code> and <code>ActivatedRule</code> </p> </li> <li> <p> <a>ActivatedRule</a>: Contains <code>Action</code>, <code>Priority</code>, <code>RuleId</code>, and <code>Type</code> </p> </li> <li> <p> <a>WafAction</a>: Contains <code>Type</code> </p> </li> </ul>
 -- Required parameter: WebACLId
 -- Required parameter: ChangeToken
 function M.UpdateWebACLRequest(DefaultAction, ChangeToken, WebACLId, Updates, ...)
@@ -3602,9 +3602,9 @@ function M.AssertXssMatchSetUpdate(struct)
 end
 
 --- Create a structure of type XssMatchSetUpdate
--- &lt;p&gt;Specifies the part of a web request that you want to inspect for cross-site scripting attacks and indicates whether you want to add the specification to an &lt;a&gt;XssMatchSet&lt;/a&gt; or delete it from an &lt;code&gt;XssMatchSet&lt;/code&gt;.&lt;/p&gt;
--- @param Action [ChangeAction] &lt;p&gt;Specify &lt;code&gt;INSERT&lt;/code&gt; to add a &lt;a&gt;XssMatchSetUpdate&lt;/a&gt; to an &lt;a&gt;XssMatchSet&lt;/a&gt;. Use &lt;code&gt;DELETE&lt;/code&gt; to remove a &lt;code&gt;XssMatchSetUpdate&lt;/code&gt; from an &lt;code&gt;XssMatchSet&lt;/code&gt;.&lt;/p&gt;
--- @param XssMatchTuple [XssMatchTuple] &lt;p&gt;Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.&lt;/p&gt;
+-- <p>Specifies the part of a web request that you want to inspect for cross-site scripting attacks and indicates whether you want to add the specification to an <a>XssMatchSet</a> or delete it from an <code>XssMatchSet</code>.</p>
+-- @param Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>XssMatchSetUpdate</a> to an <a>XssMatchSet</a>. Use <code>DELETE</code> to remove a <code>XssMatchSetUpdate</code> from an <code>XssMatchSet</code>.</p>
+-- @param XssMatchTuple [XssMatchTuple] <p>Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.</p>
 -- Required parameter: Action
 -- Required parameter: XssMatchTuple
 function M.XssMatchSetUpdate(Action, XssMatchTuple, ...)
@@ -3631,8 +3631,8 @@ end
 
 --- Create a structure of type CreateRateBasedRuleResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;CreateRateBasedRule&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
--- @param Rule [RateBasedRule] &lt;p&gt;The &lt;a&gt;RateBasedRule&lt;/a&gt; that is returned in the &lt;code&gt;CreateRateBasedRule&lt;/code&gt; response.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @param Rule [RateBasedRule] <p>The <a>RateBasedRule</a> that is returned in the <code>CreateRateBasedRule</code> response.</p>
 function M.CreateRateBasedRuleResponse(ChangeToken, Rule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRateBasedRuleResponse")
 	local t = { 
@@ -3658,9 +3658,9 @@ function M.AssertRuleSummary(struct)
 end
 
 --- Create a structure of type RuleSummary
--- &lt;p&gt;Contains the identifier and the friendly name or description of the &lt;code&gt;Rule&lt;/code&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description of the &lt;a&gt;Rule&lt;/a&gt;. You can't change the name of a &lt;code&gt;Rule&lt;/code&gt; after you create it.&lt;/p&gt;
--- @param RuleId [ResourceId] &lt;p&gt;A unique identifier for a &lt;code&gt;Rule&lt;/code&gt;. You use &lt;code&gt;RuleId&lt;/code&gt; to get more information about a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;GetRule&lt;/a&gt;), update a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), insert a &lt;code&gt;Rule&lt;/code&gt; into a &lt;code&gt;WebACL&lt;/code&gt; or delete one from a &lt;code&gt;WebACL&lt;/code&gt; (see &lt;a&gt;UpdateWebACL&lt;/a&gt;), or delete a &lt;code&gt;Rule&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteRule&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;RuleId&lt;/code&gt; is returned by &lt;a&gt;CreateRule&lt;/a&gt; and by &lt;a&gt;ListRules&lt;/a&gt;.&lt;/p&gt;
+-- <p>Contains the identifier and the friendly name or description of the <code>Rule</code>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description of the <a>Rule</a>. You can't change the name of a <code>Rule</code> after you create it.</p>
+-- @param RuleId [ResourceId] <p>A unique identifier for a <code>Rule</code>. You use <code>RuleId</code> to get more information about a <code>Rule</code> (see <a>GetRule</a>), update a <code>Rule</code> (see <a>UpdateRule</a>), insert a <code>Rule</code> into a <code>WebACL</code> or delete one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>Rule</code> from AWS WAF (see <a>DeleteRule</a>).</p> <p> <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
 -- Required parameter: RuleId
 -- Required parameter: Name
 function M.RuleSummary(Name, RuleId, ...)
@@ -3688,9 +3688,9 @@ function M.AssertIPSetUpdate(struct)
 end
 
 --- Create a structure of type IPSetUpdate
--- &lt;p&gt;Specifies the type of update to perform to an &lt;a&gt;IPSet&lt;/a&gt; with &lt;a&gt;UpdateIPSet&lt;/a&gt;.&lt;/p&gt;
--- @param Action [ChangeAction] &lt;p&gt;Specifies whether to insert or delete an IP address with &lt;a&gt;UpdateIPSet&lt;/a&gt;.&lt;/p&gt;
--- @param IPSetDescriptor [IPSetDescriptor] &lt;p&gt;The IP address type (&lt;code&gt;IPV4&lt;/code&gt; or &lt;code&gt;IPV6&lt;/code&gt;) and the IP address range (in CIDR notation) that web requests originate from.&lt;/p&gt;
+-- <p>Specifies the type of update to perform to an <a>IPSet</a> with <a>UpdateIPSet</a>.</p>
+-- @param Action [ChangeAction] <p>Specifies whether to insert or delete an IP address with <a>UpdateIPSet</a>.</p>
+-- @param IPSetDescriptor [IPSetDescriptor] <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web requests originate from.</p>
 -- Required parameter: Action
 -- Required parameter: IPSetDescriptor
 function M.IPSetUpdate(Action, IPSetDescriptor, ...)
@@ -3716,9 +3716,9 @@ function M.AssertListXssMatchSetsRequest(struct)
 end
 
 --- Create a structure of type ListXssMatchSetsRequest
--- &lt;p&gt;A request to list the &lt;a&gt;XssMatchSet&lt;/a&gt; objects created by the current AWS account.&lt;/p&gt;
--- @param NextMarker [NextMarker] &lt;p&gt;If you specify a value for &lt;code&gt;Limit&lt;/code&gt; and you have more &lt;a&gt;XssMatchSet&lt;/a&gt; objects than the value of &lt;code&gt;Limit&lt;/code&gt;, AWS WAF returns a &lt;code&gt;NextMarker&lt;/code&gt; value in the response that allows you to list another group of &lt;code&gt;XssMatchSets&lt;/code&gt;. For the second and subsequent &lt;code&gt;ListXssMatchSets&lt;/code&gt; requests, specify the value of &lt;code&gt;NextMarker&lt;/code&gt; from the previous response to get information about another batch of &lt;code&gt;XssMatchSets&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [PaginationLimit] &lt;p&gt;Specifies the number of &lt;a&gt;XssMatchSet&lt;/a&gt; objects that you want AWS WAF to return for this request. If you have more &lt;code&gt;XssMatchSet&lt;/code&gt; objects than the number you specify for &lt;code&gt;Limit&lt;/code&gt;, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value that you can use to get another batch of &lt;code&gt;Rules&lt;/code&gt;.&lt;/p&gt;
+-- <p>A request to list the <a>XssMatchSet</a> objects created by the current AWS account.</p>
+-- @param NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <a>XssMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>XssMatchSets</code>. For the second and subsequent <code>ListXssMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>XssMatchSets</code>.</p>
+-- @param Limit [PaginationLimit] <p>Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If you have more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
 function M.ListXssMatchSetsRequest(NextMarker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListXssMatchSetsRequest")
 	local t = { 
@@ -3743,8 +3743,8 @@ end
 
 --- Create a structure of type ListRateBasedRulesResponse
 --  
--- @param Rules [RuleSummaries] &lt;p&gt;An array of &lt;a&gt;RuleSummary&lt;/a&gt; objects.&lt;/p&gt;
--- @param NextMarker [NextMarker] &lt;p&gt;If you have more &lt;code&gt;Rules&lt;/code&gt; than the number that you specified for &lt;code&gt;Limit&lt;/code&gt; in the request, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value. To list more &lt;code&gt;Rules&lt;/code&gt;, submit another &lt;code&gt;ListRateBasedRules&lt;/code&gt; request, and specify the &lt;code&gt;NextMarker&lt;/code&gt; value from the response in the &lt;code&gt;NextMarker&lt;/code&gt; value in the next request.&lt;/p&gt;
+-- @param Rules [RuleSummaries] <p>An array of <a>RuleSummary</a> objects.</p>
+-- @param NextMarker [NextMarker] <p>If you have more <code>Rules</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>Rules</code>, submit another <code>ListRateBasedRules</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
 function M.ListRateBasedRulesResponse(Rules, NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListRateBasedRulesResponse")
 	local t = { 
@@ -3769,8 +3769,8 @@ end
 
 --- Create a structure of type ListSizeConstraintSetsResponse
 --  
--- @param NextMarker [NextMarker] &lt;p&gt;If you have more &lt;code&gt;SizeConstraintSet&lt;/code&gt; objects than the number that you specified for &lt;code&gt;Limit&lt;/code&gt; in the request, the response includes a &lt;code&gt;NextMarker&lt;/code&gt; value. To list more &lt;code&gt;SizeConstraintSet&lt;/code&gt; objects, submit another &lt;code&gt;ListSizeConstraintSets&lt;/code&gt; request, and specify the &lt;code&gt;NextMarker&lt;/code&gt; value from the response in the &lt;code&gt;NextMarker&lt;/code&gt; value in the next request.&lt;/p&gt;
--- @param SizeConstraintSets [SizeConstraintSetSummaries] &lt;p&gt;An array of &lt;a&gt;SizeConstraintSetSummary&lt;/a&gt; objects.&lt;/p&gt;
+-- @param NextMarker [NextMarker] <p>If you have more <code>SizeConstraintSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>SizeConstraintSet</code> objects, submit another <code>ListSizeConstraintSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @param SizeConstraintSets [SizeConstraintSetSummaries] <p>An array of <a>SizeConstraintSetSummary</a> objects.</p>
 function M.ListSizeConstraintSetsResponse(NextMarker, SizeConstraintSets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListSizeConstraintSetsResponse")
 	local t = { 
@@ -3793,8 +3793,8 @@ function M.AssertWAFNonexistentItemException(struct)
 end
 
 --- Create a structure of type WAFNonexistentItemException
--- &lt;p&gt;The operation failed because the referenced object doesn't exist.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;The operation failed because the referenced object doesn't exist.&lt;/p&gt;
+-- <p>The operation failed because the referenced object doesn't exist.</p>
+-- @param message [errorMessage] <p>The operation failed because the referenced object doesn't exist.</p>
 function M.WAFNonexistentItemException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating WAFNonexistentItemException")
 	local t = { 
@@ -3819,9 +3819,9 @@ function M.AssertRuleUpdate(struct)
 end
 
 --- Create a structure of type RuleUpdate
--- &lt;p&gt;Specifies a &lt;code&gt;Predicate&lt;/code&gt; (such as an &lt;code&gt;IPSet&lt;/code&gt;) and indicates whether you want to add it to a &lt;code&gt;Rule&lt;/code&gt; or delete it from a &lt;code&gt;Rule&lt;/code&gt;.&lt;/p&gt;
--- @param Action [ChangeAction] &lt;p&gt;Specify &lt;code&gt;INSERT&lt;/code&gt; to add a &lt;code&gt;Predicate&lt;/code&gt; to a &lt;code&gt;Rule&lt;/code&gt;. Use &lt;code&gt;DELETE&lt;/code&gt; to remove a &lt;code&gt;Predicate&lt;/code&gt; from a &lt;code&gt;Rule&lt;/code&gt;.&lt;/p&gt;
--- @param Predicate [Predicate] &lt;p&gt;The ID of the &lt;code&gt;Predicate&lt;/code&gt; (such as an &lt;code&gt;IPSet&lt;/code&gt;) that you want to add to a &lt;code&gt;Rule&lt;/code&gt;.&lt;/p&gt;
+-- <p>Specifies a <code>Predicate</code> (such as an <code>IPSet</code>) and indicates whether you want to add it to a <code>Rule</code> or delete it from a <code>Rule</code>.</p>
+-- @param Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code> from a <code>Rule</code>.</p>
+-- @param Predicate [Predicate] <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you want to add to a <code>Rule</code>.</p>
 -- Required parameter: Action
 -- Required parameter: Predicate
 function M.RuleUpdate(Action, Predicate, ...)
@@ -3855,13 +3855,13 @@ function M.AssertRateBasedRule(struct)
 end
 
 --- Create a structure of type RateBasedRule
--- &lt;p&gt;A &lt;code&gt;RateBasedRule&lt;/code&gt; is identical to a regular &lt;a&gt;Rule&lt;/a&gt;, with one addition: a &lt;code&gt;RateBasedRule&lt;/code&gt; counts the number of requests that arrive from a specified IP address every five minutes. For example, based on recent requests that you've seen from an attacker, you might create a &lt;code&gt;RateBasedRule&lt;/code&gt; that includes the following conditions: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The requests come from 192.0.2.44.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;They contain the value &lt;code&gt;BadBot&lt;/code&gt; in the &lt;code&gt;User-Agent&lt;/code&gt; header.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;In the rule, you also define the rate limit as 15,000.&lt;/p&gt; &lt;p&gt;Requests that meet both of these conditions and exceed 15,000 requests every five minutes trigger the rule's action (block or count), which is defined in the web ACL.&lt;/p&gt;
--- @param RateKey [RateKey] &lt;p&gt;The field that AWS WAF uses to determine if requests are likely arriving from single source and thus subject to rate monitoring. The only valid value for &lt;code&gt;RateKey&lt;/code&gt; is &lt;code&gt;IP&lt;/code&gt;. &lt;code&gt;IP&lt;/code&gt; indicates that requests arriving from the same IP address are subject to the &lt;code&gt;RateLimit&lt;/code&gt; that is specified in the &lt;code&gt;RateBasedRule&lt;/code&gt;.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;A friendly name or description for a &lt;code&gt;RateBasedRule&lt;/code&gt;. You can't change the name of a &lt;code&gt;RateBasedRule&lt;/code&gt; after you create it.&lt;/p&gt;
--- @param RuleId [ResourceId] &lt;p&gt;A unique identifier for a &lt;code&gt;RateBasedRule&lt;/code&gt;. You use &lt;code&gt;RuleId&lt;/code&gt; to get more information about a &lt;code&gt;RateBasedRule&lt;/code&gt; (see &lt;a&gt;GetRateBasedRule&lt;/a&gt;), update a &lt;code&gt;RateBasedRule&lt;/code&gt; (see &lt;a&gt;UpdateRateBasedRule&lt;/a&gt;), insert a &lt;code&gt;RateBasedRule&lt;/code&gt; into a &lt;code&gt;WebACL&lt;/code&gt; or delete one from a &lt;code&gt;WebACL&lt;/code&gt; (see &lt;a&gt;UpdateWebACL&lt;/a&gt;), or delete a &lt;code&gt;RateBasedRule&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteRateBasedRule&lt;/a&gt;).&lt;/p&gt;
--- @param RateLimit [RateLimit] &lt;p&gt;The maximum number of requests, which have an identical value in the field specified by the &lt;code&gt;RateKey&lt;/code&gt;, allowed in a five-minute period. If the number of requests exceeds the &lt;code&gt;RateLimit&lt;/code&gt; and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.&lt;/p&gt;
--- @param MatchPredicates [Predicates] &lt;p&gt;The &lt;code&gt;Predicates&lt;/code&gt; object contains one &lt;code&gt;Predicate&lt;/code&gt; element for each &lt;a&gt;ByteMatchSet&lt;/a&gt;, &lt;a&gt;IPSet&lt;/a&gt;, or &lt;a&gt;SqlInjectionMatchSet&lt;/a&gt; object that you want to include in a &lt;code&gt;RateBasedRule&lt;/code&gt;.&lt;/p&gt;
--- @param MetricName [MetricName] &lt;p&gt;A friendly name or description for the metrics for a &lt;code&gt;RateBasedRule&lt;/code&gt;. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the &lt;code&gt;RateBasedRule&lt;/code&gt;.&lt;/p&gt;
+-- <p>A <code>RateBasedRule</code> is identical to a regular <a>Rule</a>, with one addition: a <code>RateBasedRule</code> counts the number of requests that arrive from a specified IP address every five minutes. For example, based on recent requests that you've seen from an attacker, you might create a <code>RateBasedRule</code> that includes the following conditions: </p> <ul> <li> <p>The requests come from 192.0.2.44.</p> </li> <li> <p>They contain the value <code>BadBot</code> in the <code>User-Agent</code> header.</p> </li> </ul> <p>In the rule, you also define the rate limit as 15,000.</p> <p>Requests that meet both of these conditions and exceed 15,000 requests every five minutes trigger the rule's action (block or count), which is defined in the web ACL.</p>
+-- @param RateKey [RateKey] <p>The field that AWS WAF uses to determine if requests are likely arriving from single source and thus subject to rate monitoring. The only valid value for <code>RateKey</code> is <code>IP</code>. <code>IP</code> indicates that requests arriving from the same IP address are subject to the <code>RateLimit</code> that is specified in the <code>RateBasedRule</code>.</p>
+-- @param Name [ResourceName] <p>A friendly name or description for a <code>RateBasedRule</code>. You can't change the name of a <code>RateBasedRule</code> after you create it.</p>
+-- @param RuleId [ResourceId] <p>A unique identifier for a <code>RateBasedRule</code>. You use <code>RuleId</code> to get more information about a <code>RateBasedRule</code> (see <a>GetRateBasedRule</a>), update a <code>RateBasedRule</code> (see <a>UpdateRateBasedRule</a>), insert a <code>RateBasedRule</code> into a <code>WebACL</code> or delete one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>RateBasedRule</code> from AWS WAF (see <a>DeleteRateBasedRule</a>).</p>
+-- @param RateLimit [RateLimit] <p>The maximum number of requests, which have an identical value in the field specified by the <code>RateKey</code>, allowed in a five-minute period. If the number of requests exceeds the <code>RateLimit</code> and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.</p>
+-- @param MatchPredicates [Predicates] <p>The <code>Predicates</code> object contains one <code>Predicate</code> element for each <a>ByteMatchSet</a>, <a>IPSet</a>, or <a>SqlInjectionMatchSet</a> object that you want to include in a <code>RateBasedRule</code>.</p>
+-- @param MetricName [MetricName] <p>A friendly name or description for the metrics for a <code>RateBasedRule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>RateBasedRule</code>.</p>
 -- Required parameter: RuleId
 -- Required parameter: MatchPredicates
 -- Required parameter: RateKey
@@ -3896,10 +3896,10 @@ function M.AssertSqlInjectionMatchSet(struct)
 end
 
 --- Create a structure of type SqlInjectionMatchSet
--- &lt;p&gt;A complex type that contains &lt;code&gt;SqlInjectionMatchTuple&lt;/code&gt; objects, which specify the parts of web requests that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header. If a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; contains more than one &lt;code&gt;SqlInjectionMatchTuple&lt;/code&gt; object, a request needs to include snippets of SQL code in only one of the specified parts of the request to be considered a match.&lt;/p&gt;
--- @param SqlInjectionMatchTuples [SqlInjectionMatchTuples] &lt;p&gt;Specifies the parts of web requests that you want to inspect for snippets of malicious SQL code.&lt;/p&gt;
--- @param Name [ResourceName] &lt;p&gt;The name, if any, of the &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt;.&lt;/p&gt;
--- @param SqlInjectionMatchSetId [ResourceId] &lt;p&gt;A unique identifier for a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt;. You use &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt; to get information about a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; (see &lt;a&gt;GetSqlInjectionMatchSet&lt;/a&gt;), update a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; (see &lt;a&gt;UpdateSqlInjectionMatchSet&lt;/a&gt;), insert a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; into a &lt;code&gt;Rule&lt;/code&gt; or delete one from a &lt;code&gt;Rule&lt;/code&gt; (see &lt;a&gt;UpdateRule&lt;/a&gt;), and delete a &lt;code&gt;SqlInjectionMatchSet&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteSqlInjectionMatchSet&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;SqlInjectionMatchSetId&lt;/code&gt; is returned by &lt;a&gt;CreateSqlInjectionMatchSet&lt;/a&gt; and by &lt;a&gt;ListSqlInjectionMatchSets&lt;/a&gt;.&lt;/p&gt;
+-- <p>A complex type that contains <code>SqlInjectionMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header. If a <code>SqlInjectionMatchSet</code> contains more than one <code>SqlInjectionMatchTuple</code> object, a request needs to include snippets of SQL code in only one of the specified parts of the request to be considered a match.</p>
+-- @param SqlInjectionMatchTuples [SqlInjectionMatchTuples] <p>Specifies the parts of web requests that you want to inspect for snippets of malicious SQL code.</p>
+-- @param Name [ResourceName] <p>The name, if any, of the <code>SqlInjectionMatchSet</code>.</p>
+-- @param SqlInjectionMatchSetId [ResourceId] <p>A unique identifier for a <code>SqlInjectionMatchSet</code>. You use <code>SqlInjectionMatchSetId</code> to get information about a <code>SqlInjectionMatchSet</code> (see <a>GetSqlInjectionMatchSet</a>), update a <code>SqlInjectionMatchSet</code> (see <a>UpdateSqlInjectionMatchSet</a>), insert a <code>SqlInjectionMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SqlInjectionMatchSet</code> from AWS WAF (see <a>DeleteSqlInjectionMatchSet</a>).</p> <p> <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
 -- Required parameter: SqlInjectionMatchSetId
 -- Required parameter: SqlInjectionMatchTuples
 function M.SqlInjectionMatchSet(SqlInjectionMatchTuples, Name, SqlInjectionMatchSetId, ...)
@@ -3925,8 +3925,8 @@ function M.AssertGetXssMatchSetResponse(struct)
 end
 
 --- Create a structure of type GetXssMatchSetResponse
--- &lt;p&gt;The response to a &lt;a&gt;GetXssMatchSet&lt;/a&gt; request.&lt;/p&gt;
--- @param XssMatchSet [XssMatchSet] &lt;p&gt;Information about the &lt;a&gt;XssMatchSet&lt;/a&gt; that you specified in the &lt;code&gt;GetXssMatchSet&lt;/code&gt; request. For more information, see the following topics:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;XssMatchSet&lt;/a&gt;: Contains &lt;code&gt;Name&lt;/code&gt;, &lt;code&gt;XssMatchSetId&lt;/code&gt;, and an array of &lt;code&gt;XssMatchTuple&lt;/code&gt; objects&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;XssMatchTuple&lt;/a&gt;: Each &lt;code&gt;XssMatchTuple&lt;/code&gt; object contains &lt;code&gt;FieldToMatch&lt;/code&gt; and &lt;code&gt;TextTransformation&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;FieldToMatch&lt;/a&gt;: Contains &lt;code&gt;Data&lt;/code&gt; and &lt;code&gt;Type&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The response to a <a>GetXssMatchSet</a> request.</p>
+-- @param XssMatchSet [XssMatchSet] <p>Information about the <a>XssMatchSet</a> that you specified in the <code>GetXssMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>XssMatchSet</a>: Contains <code>Name</code>, <code>XssMatchSetId</code>, and an array of <code>XssMatchTuple</code> objects</p> </li> <li> <p> <a>XssMatchTuple</a>: Each <code>XssMatchTuple</code> object contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 function M.GetXssMatchSetResponse(XssMatchSet, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetXssMatchSetResponse")
 	local t = { 
@@ -3949,7 +3949,7 @@ end
 
 --- Create a structure of type DeleteIPSetResponse
 --  
--- @param ChangeToken [ChangeToken] &lt;p&gt;The &lt;code&gt;ChangeToken&lt;/code&gt; that you used to submit the &lt;code&gt;DeleteIPSet&lt;/code&gt; request. You can also use this value to query the status of the request. For more information, see &lt;a&gt;GetChangeTokenStatus&lt;/a&gt;.&lt;/p&gt;
+-- @param ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 function M.DeleteIPSetResponse(ChangeToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIPSetResponse")
 	local t = { 
@@ -3972,7 +3972,7 @@ end
 
 --- Create a structure of type GetWebACLForResourceResponse
 --  
--- @param WebACLSummary [WebACLSummary] &lt;p&gt;Information about the web ACL that you specified in the &lt;code&gt;GetWebACLForResource&lt;/code&gt; request. If there is no associated resource, a null WebACLSummary is returned.&lt;/p&gt;
+-- @param WebACLSummary [WebACLSummary] <p>Information about the web ACL that you specified in the <code>GetWebACLForResource</code> request. If there is no associated resource, a null WebACLSummary is returned.</p>
 function M.GetWebACLForResourceResponse(WebACLSummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetWebACLForResourceResponse")
 	local t = { 
@@ -3995,9 +3995,9 @@ function M.AssertHTTPHeader(struct)
 end
 
 --- Create a structure of type HTTPHeader
--- &lt;p&gt;The response from a &lt;a&gt;GetSampledRequests&lt;/a&gt; request includes an &lt;code&gt;HTTPHeader&lt;/code&gt; complex type that appears as &lt;code&gt;Headers&lt;/code&gt; in the response syntax. &lt;code&gt;HTTPHeader&lt;/code&gt; contains the names and values of all of the headers that appear in one of the web requests that were returned by &lt;code&gt;GetSampledRequests&lt;/code&gt;. &lt;/p&gt;
--- @param Name [HeaderName] &lt;p&gt;The name of one of the headers in the sampled web request.&lt;/p&gt;
--- @param Value [HeaderValue] &lt;p&gt;The value of one of the headers in the sampled web request.&lt;/p&gt;
+-- <p>The response from a <a>GetSampledRequests</a> request includes an <code>HTTPHeader</code> complex type that appears as <code>Headers</code> in the response syntax. <code>HTTPHeader</code> contains the names and values of all of the headers that appear in one of the web requests that were returned by <code>GetSampledRequests</code>. </p>
+-- @param Name [HeaderName] <p>The name of one of the headers in the sampled web request.</p>
+-- @param Value [HeaderValue] <p>The value of one of the headers in the sampled web request.</p>
 function M.HTTPHeader(Name, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HTTPHeader")
 	local t = { 

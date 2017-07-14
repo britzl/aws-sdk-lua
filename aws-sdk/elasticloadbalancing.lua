@@ -32,7 +32,7 @@ end
 
 --- Create a structure of type DescribeTargetGroupAttributesInput
 --  
--- @param TargetGroupArn [TargetGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target group.&lt;/p&gt;
+-- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
 -- Required parameter: TargetGroupArn
 function M.DescribeTargetGroupAttributesInput(TargetGroupArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupAttributesInput")
@@ -54,7 +54,7 @@ function M.AssertTooManyCertificatesException(struct)
 end
 
 --- Create a structure of type TooManyCertificatesException
--- &lt;p&gt;You've reached the limit on the number of certificates per listener.&lt;/p&gt;
+-- <p>You've reached the limit on the number of certificates per listener.</p>
 function M.TooManyCertificatesException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyCertificatesException")
 	local t = { 
@@ -77,7 +77,7 @@ end
 
 --- Create a structure of type DeleteRuleInput
 --  
--- @param RuleArn [RuleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the rule.&lt;/p&gt;
+-- @param RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
 -- Required parameter: RuleArn
 function M.DeleteRuleInput(RuleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRuleInput")
@@ -102,10 +102,10 @@ function M.AssertSslPolicy(struct)
 end
 
 --- Create a structure of type SslPolicy
--- &lt;p&gt;Information about a policy used for SSL negotiation.&lt;/p&gt;
--- @param SslProtocols [SslProtocols] &lt;p&gt;The protocols.&lt;/p&gt;
--- @param Ciphers [Ciphers] &lt;p&gt;The ciphers.&lt;/p&gt;
--- @param Name [SslPolicyName] &lt;p&gt;The name of the policy.&lt;/p&gt;
+-- <p>Information about a policy used for SSL negotiation.</p>
+-- @param SslProtocols [SslProtocols] <p>The protocols.</p>
+-- @param Ciphers [Ciphers] <p>The ciphers.</p>
+-- @param Name [SslPolicyName] <p>The name of the policy.</p>
 function M.SslPolicy(SslProtocols, Ciphers, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SslPolicy")
 	local t = { 
@@ -128,7 +128,7 @@ function M.AssertDuplicateTagKeysException(struct)
 end
 
 --- Create a structure of type DuplicateTagKeysException
--- &lt;p&gt;A tag key was specified more than once.&lt;/p&gt;
+-- <p>A tag key was specified more than once.</p>
 function M.DuplicateTagKeysException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateTagKeysException")
 	local t = { 
@@ -148,7 +148,7 @@ function M.AssertListenerNotFoundException(struct)
 end
 
 --- Create a structure of type ListenerNotFoundException
--- &lt;p&gt;The specified listener does not exist.&lt;/p&gt;
+-- <p>The specified listener does not exist.</p>
 function M.ListenerNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListenerNotFoundException")
 	local t = { 
@@ -173,10 +173,10 @@ end
 
 --- Create a structure of type DescribeLoadBalancersInput
 --  
--- @param Marker [Marker] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param LoadBalancerArns [LoadBalancerArns] &lt;p&gt;The Amazon Resource Names (ARN) of the load balancers. You can specify up to 20 load balancers in a single call.&lt;/p&gt;
--- @param Names [LoadBalancerNames] &lt;p&gt;The names of the load balancers.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of results to return with this call.&lt;/p&gt;
+-- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to 20 load balancers in a single call.</p>
+-- @param Names [LoadBalancerNames] <p>The names of the load balancers.</p>
+-- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
 function M.DescribeLoadBalancersInput(Marker, LoadBalancerArns, Names, PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancersInput")
 	local t = { 
@@ -220,7 +220,7 @@ function M.AssertSubnetNotFoundException(struct)
 end
 
 --- Create a structure of type SubnetNotFoundException
--- &lt;p&gt;The specified subnet does not exist.&lt;/p&gt;
+-- <p>The specified subnet does not exist.</p>
 function M.SubnetNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetNotFoundException")
 	local t = { 
@@ -242,9 +242,9 @@ function M.AssertRulePriorityPair(struct)
 end
 
 --- Create a structure of type RulePriorityPair
--- &lt;p&gt;Information about the priorities for the rules for a listener.&lt;/p&gt;
--- @param Priority [RulePriority] &lt;p&gt;The rule priority.&lt;/p&gt;
--- @param RuleArn [RuleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the rule.&lt;/p&gt;
+-- <p>Information about the priorities for the rules for a listener.</p>
+-- @param Priority [RulePriority] <p>The rule priority.</p>
+-- @param RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
 function M.RulePriorityPair(Priority, RuleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RulePriorityPair")
 	local t = { 
@@ -286,7 +286,7 @@ function M.AssertDuplicateLoadBalancerNameException(struct)
 end
 
 --- Create a structure of type DuplicateLoadBalancerNameException
--- &lt;p&gt;A load balancer with the specified name already exists.&lt;/p&gt;
+-- <p>A load balancer with the specified name already exists.</p>
 function M.DuplicateLoadBalancerNameException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateLoadBalancerNameException")
 	local t = { 
@@ -306,7 +306,7 @@ function M.AssertInvalidConfigurationRequestException(struct)
 end
 
 --- Create a structure of type InvalidConfigurationRequestException
--- &lt;p&gt;The requested configuration is not valid.&lt;/p&gt;
+-- <p>The requested configuration is not valid.</p>
 function M.InvalidConfigurationRequestException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidConfigurationRequestException")
 	local t = { 
@@ -331,8 +331,8 @@ end
 
 --- Create a structure of type ModifyTargetGroupAttributesInput
 --  
--- @param Attributes [TargetGroupAttributes] &lt;p&gt;The attributes.&lt;/p&gt;
--- @param TargetGroupArn [TargetGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target group.&lt;/p&gt;
+-- @param Attributes [TargetGroupAttributes] <p>The attributes.</p>
+-- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
 -- Required parameter: TargetGroupArn
 -- Required parameter: Attributes
 function M.ModifyTargetGroupAttributesInput(Attributes, TargetGroupArn, ...)
@@ -358,9 +358,9 @@ function M.AssertCipher(struct)
 end
 
 --- Create a structure of type Cipher
--- &lt;p&gt;Information about a cipher used in a policy.&lt;/p&gt;
--- @param Priority [CipherPriority] &lt;p&gt;The priority of the cipher.&lt;/p&gt;
--- @param Name [CipherName] &lt;p&gt;The name of the cipher.&lt;/p&gt;
+-- <p>Information about a cipher used in a policy.</p>
+-- @param Priority [CipherPriority] <p>The priority of the cipher.</p>
+-- @param Name [CipherName] <p>The name of the cipher.</p>
 function M.Cipher(Priority, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Cipher")
 	local t = { 
@@ -385,8 +385,8 @@ end
 
 --- Create a structure of type DescribeSSLPoliciesOutput
 --  
--- @param NextMarker [Marker] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
--- @param SslPolicies [SslPolicies] &lt;p&gt;Information about the policies.&lt;/p&gt;
+-- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param SslPolicies [SslPolicies] <p>Information about the policies.</p>
 function M.DescribeSSLPoliciesOutput(NextMarker, SslPolicies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSSLPoliciesOutput")
 	local t = { 
@@ -408,7 +408,7 @@ function M.AssertOperationNotPermittedException(struct)
 end
 
 --- Create a structure of type OperationNotPermittedException
--- &lt;p&gt;This operation is not allowed.&lt;/p&gt;
+-- <p>This operation is not allowed.</p>
 function M.OperationNotPermittedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
 	local t = { 
@@ -431,7 +431,7 @@ end
 
 --- Create a structure of type DescribeTagsInput
 --  
--- @param ResourceArns [ResourceArns] &lt;p&gt;The Amazon Resource Names (ARN) of the resources.&lt;/p&gt;
+-- @param ResourceArns [ResourceArns] <p>The Amazon Resource Names (ARN) of the resources.</p>
 -- Required parameter: ResourceArns
 function M.DescribeTagsInput(ResourceArns, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsInput")
@@ -455,7 +455,7 @@ end
 
 --- Create a structure of type SetSecurityGroupsOutput
 --  
--- @param SecurityGroupIds [SecurityGroups] &lt;p&gt;The IDs of the security groups associated with the load balancer.&lt;/p&gt;
+-- @param SecurityGroupIds [SecurityGroups] <p>The IDs of the security groups associated with the load balancer.</p>
 function M.SetSecurityGroupsOutput(SecurityGroupIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSecurityGroupsOutput")
 	local t = { 
@@ -479,8 +479,8 @@ end
 
 --- Create a structure of type DescribeAccountLimitsInput
 --  
--- @param Marker [Marker] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of results to return with this call.&lt;/p&gt;
+-- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
 function M.DescribeAccountLimitsInput(Marker, PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountLimitsInput")
 	local t = { 
@@ -507,8 +507,8 @@ end
 
 --- Create a structure of type SetSubnetsInput
 --  
--- @param Subnets [Subnets] &lt;p&gt;The IDs of the subnets. You must specify at least two subnets. You can add only one subnet per Availability Zone.&lt;/p&gt;
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
+-- @param Subnets [Subnets] <p>The IDs of the subnets. You must specify at least two subnets. You can add only one subnet per Availability Zone.</p>
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
 -- Required parameter: Subnets
 function M.SetSubnetsInput(Subnets, LoadBalancerArn, ...)
@@ -534,9 +534,9 @@ function M.AssertLimit(struct)
 end
 
 --- Create a structure of type Limit
--- &lt;p&gt;Information about an Elastic Load Balancing resource limit for your AWS account.&lt;/p&gt;
--- @param Max [Max] &lt;p&gt;The maximum value of the limit.&lt;/p&gt;
--- @param Name [Name] &lt;p&gt;The name of the limit. The possible values are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;application-load-balancers&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;listeners-per-application-load-balancer&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;rules-per-application-load-balancer&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;target-groups&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;targets-per-application-load-balancer&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Information about an Elastic Load Balancing resource limit for your AWS account.</p>
+-- @param Max [Max] <p>The maximum value of the limit.</p>
+-- @param Name [Name] <p>The name of the limit. The possible values are:</p> <ul> <li> <p>application-load-balancers</p> </li> <li> <p>listeners-per-application-load-balancer</p> </li> <li> <p>rules-per-application-load-balancer</p> </li> <li> <p>target-groups</p> </li> <li> <p>targets-per-application-load-balancer</p> </li> </ul>
 function M.Limit(Max, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Limit")
 	local t = { 
@@ -558,7 +558,7 @@ function M.AssertDuplicateTargetGroupNameException(struct)
 end
 
 --- Create a structure of type DuplicateTargetGroupNameException
--- &lt;p&gt;A target group with the specified name already exists.&lt;/p&gt;
+-- <p>A target group with the specified name already exists.</p>
 function M.DuplicateTargetGroupNameException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateTargetGroupNameException")
 	local t = { 
@@ -592,21 +592,21 @@ function M.AssertTargetGroup(struct)
 end
 
 --- Create a structure of type TargetGroup
--- &lt;p&gt;Information about a target group.&lt;/p&gt;
--- @param HealthCheckPath [Path] &lt;p&gt;The destination for the health check request.&lt;/p&gt;
--- @param HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] &lt;p&gt;The approximate amount of time, in seconds, between health checks of an individual target.&lt;/p&gt;
--- @param VpcId [VpcId] &lt;p&gt;The ID of the VPC for the targets.&lt;/p&gt;
--- @param Protocol [ProtocolEnum] &lt;p&gt;The protocol to use for routing traffic to the targets.&lt;/p&gt;
--- @param HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] &lt;p&gt;The amount of time, in seconds, during which no response means a failed health check.&lt;/p&gt;
--- @param HealthCheckProtocol [ProtocolEnum] &lt;p&gt;The protocol to use to connect with the target.&lt;/p&gt;
--- @param LoadBalancerArns [LoadBalancerArns] &lt;p&gt;The Amazon Resource Names (ARN) of the load balancers that route traffic to this target group.&lt;/p&gt;
--- @param UnhealthyThresholdCount [HealthCheckThresholdCount] &lt;p&gt;The number of consecutive health check failures required before considering the target unhealthy.&lt;/p&gt;
--- @param HealthyThresholdCount [HealthCheckThresholdCount] &lt;p&gt;The number of consecutive health checks successes required before considering an unhealthy target healthy.&lt;/p&gt;
--- @param TargetGroupArn [TargetGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target group.&lt;/p&gt;
--- @param Matcher [Matcher] &lt;p&gt;The HTTP codes to use when checking for a successful response from a target.&lt;/p&gt;
--- @param HealthCheckPort [HealthCheckPort] &lt;p&gt;The port to use to connect with the target.&lt;/p&gt;
--- @param Port [Port] &lt;p&gt;The port on which the targets are listening.&lt;/p&gt;
--- @param TargetGroupName [TargetGroupName] &lt;p&gt;The name of the target group.&lt;/p&gt;
+-- <p>Information about a target group.</p>
+-- @param HealthCheckPath [Path] <p>The destination for the health check request.</p>
+-- @param HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
+-- @param VpcId [VpcId] <p>The ID of the VPC for the targets.</p>
+-- @param Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
+-- @param HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
+-- @param HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
+-- @param LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers that route traffic to this target group.</p>
+-- @param UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
+-- @param HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
+-- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
+-- @param HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
+-- @param Port [Port] <p>The port on which the targets are listening.</p>
+-- @param TargetGroupName [TargetGroupName] <p>The name of the target group.</p>
 function M.TargetGroup(HealthCheckPath, HealthCheckIntervalSeconds, VpcId, Protocol, HealthCheckTimeoutSeconds, HealthCheckProtocol, LoadBalancerArns, UnhealthyThresholdCount, HealthyThresholdCount, TargetGroupArn, Matcher, HealthCheckPort, Port, TargetGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroup")
 	local t = { 
@@ -642,7 +642,7 @@ end
 
 --- Create a structure of type DescribeLoadBalancerAttributesOutput
 --  
--- @param Attributes [LoadBalancerAttributes] &lt;p&gt;Information about the load balancer attributes.&lt;/p&gt;
+-- @param Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
 function M.DescribeLoadBalancerAttributesOutput(Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancerAttributesOutput")
 	local t = { 
@@ -663,7 +663,7 @@ function M.AssertInvalidSubnetException(struct)
 end
 
 --- Create a structure of type InvalidSubnetException
--- &lt;p&gt;The specified subnet is out of available addresses.&lt;/p&gt;
+-- <p>The specified subnet is out of available addresses.</p>
 function M.InvalidSubnetException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnetException")
 	local t = { 
@@ -685,9 +685,9 @@ function M.AssertTagDescription(struct)
 end
 
 --- Create a structure of type TagDescription
--- &lt;p&gt;The tags associated with a resource.&lt;/p&gt;
--- @param ResourceArn [ResourceArn] &lt;p&gt;The Amazon Resource Name (ARN) of the resource.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;Information about the tags.&lt;/p&gt;
+-- <p>The tags associated with a resource.</p>
+-- @param ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- @param Tags [TagList] <p>Information about the tags.</p>
 function M.TagDescription(ResourceArn, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagDescription")
 	local t = { 
@@ -712,9 +712,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Information about a tag.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The value of the tag.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The key of the tag.&lt;/p&gt;
+-- <p>Information about a tag.</p>
+-- @param Value [TagValue] <p>The value of the tag.</p>
+-- @param Key [TagKey] <p>The key of the tag.</p>
 -- Required parameter: Key
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
@@ -739,7 +739,7 @@ end
 
 --- Create a structure of type DescribeTargetGroupAttributesOutput
 --  
--- @param Attributes [TargetGroupAttributes] &lt;p&gt;Information about the target group attributes&lt;/p&gt;
+-- @param Attributes [TargetGroupAttributes] <p>Information about the target group attributes</p>
 function M.DescribeTargetGroupAttributesOutput(Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupAttributesOutput")
 	local t = { 
@@ -760,7 +760,7 @@ function M.AssertCertificateNotFoundException(struct)
 end
 
 --- Create a structure of type CertificateNotFoundException
--- &lt;p&gt;The specified certificate does not exist.&lt;/p&gt;
+-- <p>The specified certificate does not exist.</p>
 function M.CertificateNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CertificateNotFoundException")
 	local t = { 
@@ -789,12 +789,12 @@ end
 
 --- Create a structure of type CreateLoadBalancerInput
 --  
--- @param IpAddressType [IpAddressType] &lt;p&gt;The type of IP addresses used by the subnets for your load balancer. The possible values are &lt;code&gt;ipv4&lt;/code&gt; (for IPv4 addresses) and &lt;code&gt;dualstack&lt;/code&gt; (for IPv4 and IPv6 addresses). Internal load balancers must use &lt;code&gt;ipv4&lt;/code&gt;.&lt;/p&gt;
--- @param Subnets [Subnets] &lt;p&gt;The IDs of the subnets to attach to the load balancer. You can specify only one subnet per Availability Zone. You must specify subnets from at least two Availability Zones.&lt;/p&gt;
--- @param Name [LoadBalancerName] &lt;p&gt;The name of the load balancer.&lt;/p&gt; &lt;p&gt;This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;One or more tags to assign to the load balancer.&lt;/p&gt;
--- @param SecurityGroups [SecurityGroups] &lt;p&gt;The IDs of the security groups to assign to the load balancer.&lt;/p&gt;
--- @param Scheme [LoadBalancerSchemeEnum] &lt;p&gt;The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.&lt;/p&gt; &lt;p&gt;The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.&lt;/p&gt; &lt;p&gt;The default is an Internet-facing load balancer.&lt;/p&gt;
+-- @param IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
+-- @param Subnets [Subnets] <p>The IDs of the subnets to attach to the load balancer. You can specify only one subnet per Availability Zone. You must specify subnets from at least two Availability Zones.</p>
+-- @param Name [LoadBalancerName] <p>The name of the load balancer.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
+-- @param Tags [TagList] <p>One or more tags to assign to the load balancer.</p>
+-- @param SecurityGroups [SecurityGroups] <p>The IDs of the security groups to assign to the load balancer.</p>
+-- @param Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p> <p>The default is an Internet-facing load balancer.</p>
 -- Required parameter: Name
 -- Required parameter: Subnets
 function M.CreateLoadBalancerInput(IpAddressType, Subnets, Name, Tags, SecurityGroups, Scheme, ...)
@@ -842,7 +842,7 @@ function M.AssertTargetGroupAssociationLimitException(struct)
 end
 
 --- Create a structure of type TargetGroupAssociationLimitException
--- &lt;p&gt;You've reached the limit on the number of load balancers per target group.&lt;/p&gt;
+-- <p>You've reached the limit on the number of load balancers per target group.</p>
 function M.TargetGroupAssociationLimitException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroupAssociationLimitException")
 	local t = { 
@@ -867,8 +867,8 @@ end
 
 --- Create a structure of type DeregisterTargetsInput
 --  
--- @param TargetGroupArn [TargetGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target group.&lt;/p&gt;
--- @param Targets [TargetDescriptions] &lt;p&gt;The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.&lt;/p&gt;
+-- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param Targets [TargetDescriptions] <p>The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.</p>
 -- Required parameter: TargetGroupArn
 -- Required parameter: Targets
 function M.DeregisterTargetsInput(TargetGroupArn, Targets, ...)
@@ -899,14 +899,14 @@ function M.AssertListener(struct)
 end
 
 --- Create a structure of type Listener
--- &lt;p&gt;Information about a listener.&lt;/p&gt;
--- @param Protocol [ProtocolEnum] &lt;p&gt;The protocol for connections from clients to the load balancer.&lt;/p&gt;
--- @param DefaultActions [Actions] &lt;p&gt;The default actions for the listener.&lt;/p&gt;
--- @param SslPolicy [SslPolicyName] &lt;p&gt;The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.&lt;/p&gt;
--- @param Certificates [CertificateList] &lt;p&gt;The SSL server certificate. You must provide a certificate if the protocol is HTTPS.&lt;/p&gt;
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
--- @param Port [Port] &lt;p&gt;The port on which the load balancer is listening.&lt;/p&gt;
--- @param ListenerArn [ListenerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the listener.&lt;/p&gt;
+-- <p>Information about a listener.</p>
+-- @param Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
+-- @param DefaultActions [Actions] <p>The default actions for the listener.</p>
+-- @param SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
+-- @param Certificates [CertificateList] <p>The SSL server certificate. You must provide a certificate if the protocol is HTTPS.</p>
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param Port [Port] <p>The port on which the load balancer is listening.</p>
+-- @param ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
 function M.Listener(Protocol, DefaultActions, SslPolicy, Certificates, LoadBalancerArn, Port, ListenerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Listener")
 	local t = { 
@@ -936,10 +936,10 @@ function M.AssertTargetHealth(struct)
 end
 
 --- Create a structure of type TargetHealth
--- &lt;p&gt;Information about the current health of a target.&lt;/p&gt;
--- @param State [TargetHealthStateEnum] &lt;p&gt;The state of the target.&lt;/p&gt;
--- @param Reason [TargetHealthReasonEnum] &lt;p&gt;The reason code. If the target state is &lt;code&gt;healthy&lt;/code&gt;, a reason code is not provided.&lt;/p&gt; &lt;p&gt;If the target state is &lt;code&gt;initial&lt;/code&gt;, the reason code can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.RegistrationInProgress&lt;/code&gt; - The target is in the process of being registered with the load balancer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.InitialHealthChecking&lt;/code&gt; - The load balancer is still sending the target the minimum number of health checks required to determine its health status.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;unhealthy&lt;/code&gt;, the reason code can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.ResponseCodeMismatch&lt;/code&gt; - The health checks did not return an expected HTTP code.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.Timeout&lt;/code&gt; - The health check requests timed out.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.FailedHealthChecks&lt;/code&gt; - The health checks failed because the connection to the target timed out, the target response was malformed, or the target failed the health check for an unknown reason.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.InternalError&lt;/code&gt; - The health checks failed due to an internal error.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;unused&lt;/code&gt;, the reason code can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.NotRegistered&lt;/code&gt; - The target is not registered with the target group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.NotInUse&lt;/code&gt; - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.InvalidState&lt;/code&gt; - The target is in the stopped or terminated state.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;draining&lt;/code&gt;, the reason code can be the following value:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.DeregistrationInProgress&lt;/code&gt; - The target is in the process of being deregistered and the deregistration delay period has not expired.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Description [Description] &lt;p&gt;A description of the target health that provides additional details. If the state is &lt;code&gt;healthy&lt;/code&gt;, a description is not provided.&lt;/p&gt;
+-- <p>Information about the current health of a target.</p>
+-- @param State [TargetHealthStateEnum] <p>The state of the target.</p>
+-- @param Reason [TargetHealthReasonEnum] <p>The reason code. If the target state is <code>healthy</code>, a reason code is not provided.</p> <p>If the target state is <code>initial</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Elb.RegistrationInProgress</code> - The target is in the process of being registered with the load balancer.</p> </li> <li> <p> <code>Elb.InitialHealthChecking</code> - The load balancer is still sending the target the minimum number of health checks required to determine its health status.</p> </li> </ul> <p>If the target state is <code>unhealthy</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.</p> </li> <li> <p> <code>Target.Timeout</code> - The health check requests timed out.</p> </li> <li> <p> <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out, the target response was malformed, or the target failed the health check for an unknown reason.</p> </li> <li> <p> <code>Elb.InternalError</code> - The health checks failed due to an internal error.</p> </li> </ul> <p>If the target state is <code>unused</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.NotRegistered</code> - The target is not registered with the target group.</p> </li> <li> <p> <code>Target.NotInUse</code> - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.</p> </li> <li> <p> <code>Target.InvalidState</code> - The target is in the stopped or terminated state.</p> </li> </ul> <p>If the target state is <code>draining</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.DeregistrationInProgress</code> - The target is in the process of being deregistered and the deregistration delay period has not expired.</p> </li> </ul>
+-- @param Description [Description] <p>A description of the target health that provides additional details. If the state is <code>healthy</code>, a description is not provided.</p>
 function M.TargetHealth(State, Reason, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetHealth")
 	local t = { 
@@ -965,7 +965,7 @@ end
 
 --- Create a structure of type DescribeLoadBalancerAttributesInput
 --  
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
 function M.DescribeLoadBalancerAttributesInput(LoadBalancerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancerAttributesInput")
@@ -987,7 +987,7 @@ function M.AssertUnsupportedProtocolException(struct)
 end
 
 --- Create a structure of type UnsupportedProtocolException
--- &lt;p&gt;The specified protocol is not supported.&lt;/p&gt;
+-- <p>The specified protocol is not supported.</p>
 function M.UnsupportedProtocolException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedProtocolException")
 	local t = { 
@@ -1009,7 +1009,7 @@ end
 
 --- Create a structure of type ModifyRuleOutput
 --  
--- @param Rules [Rules] &lt;p&gt;Information about the rule.&lt;/p&gt;
+-- @param Rules [Rules] <p>Information about the rule.</p>
 function M.ModifyRuleOutput(Rules, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyRuleOutput")
 	local t = { 
@@ -1032,9 +1032,9 @@ function M.AssertRuleCondition(struct)
 end
 
 --- Create a structure of type RuleCondition
--- &lt;p&gt;Information about a condition for a rule.&lt;/p&gt;
--- @param Field [ConditionFieldName] &lt;p&gt;The name of the field. The possible values are &lt;code&gt;host-header&lt;/code&gt; and &lt;code&gt;path-pattern&lt;/code&gt;.&lt;/p&gt;
--- @param Values [ListOfString] &lt;p&gt;The condition value.&lt;/p&gt; &lt;p&gt;If the field name is &lt;code&gt;host-header&lt;/code&gt;, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A-Z, a-z, 0-9&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;- .&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;* (matches 0 or more characters)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;? (matches exactly 1 character)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the field name is &lt;code&gt;path-pattern&lt;/code&gt;, you can specify a single path pattern (for example, /img/*). A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A-Z, a-z, 0-9&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;_ - . $ / ~ &quot; ' @ : +&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&amp;amp; (using &amp;amp;amp;)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;* (matches 0 or more characters)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;? (matches exactly 1 character)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Information about a condition for a rule.</p>
+-- @param Field [ConditionFieldName] <p>The name of the field. The possible values are <code>host-header</code> and <code>path-pattern</code>.</p>
+-- @param Values [ListOfString] <p>The condition value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern (for example, /img/*). A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
 function M.RuleCondition(Field, Values, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RuleCondition")
 	local t = { 
@@ -1098,9 +1098,9 @@ function M.AssertAvailabilityZone(struct)
 end
 
 --- Create a structure of type AvailabilityZone
--- &lt;p&gt;Information about an Availability Zone.&lt;/p&gt;
--- @param SubnetId [SubnetId] &lt;p&gt;The ID of the subnet.&lt;/p&gt;
--- @param ZoneName [ZoneName] &lt;p&gt;The name of the Availability Zone.&lt;/p&gt;
+-- <p>Information about an Availability Zone.</p>
+-- @param SubnetId [SubnetId] <p>The ID of the subnet.</p>
+-- @param ZoneName [ZoneName] <p>The name of the Availability Zone.</p>
 function M.AvailabilityZone(SubnetId, ZoneName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityZone")
 	local t = { 
@@ -1122,7 +1122,7 @@ function M.AssertTooManyRegistrationsForTargetIdException(struct)
 end
 
 --- Create a structure of type TooManyRegistrationsForTargetIdException
--- &lt;p&gt;You've reached the limit on the number of times a target can be registered with a load balancer.&lt;/p&gt;
+-- <p>You've reached the limit on the number of times a target can be registered with a load balancer.</p>
 function M.TooManyRegistrationsForTargetIdException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRegistrationsForTargetIdException")
 	local t = { 
@@ -1142,7 +1142,7 @@ function M.AssertResourceInUseException(struct)
 end
 
 --- Create a structure of type ResourceInUseException
--- &lt;p&gt;A specified resource is in use.&lt;/p&gt;
+-- <p>A specified resource is in use.</p>
 function M.ResourceInUseException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
 	local t = { 
@@ -1165,8 +1165,8 @@ end
 
 --- Create a structure of type DescribeLoadBalancersOutput
 --  
--- @param LoadBalancers [LoadBalancers] &lt;p&gt;Information about the load balancers.&lt;/p&gt;
--- @param NextMarker [Marker] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
+-- @param LoadBalancers [LoadBalancers] <p>Information about the load balancers.</p>
+-- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
 function M.DescribeLoadBalancersOutput(LoadBalancers, NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancersOutput")
 	local t = { 
@@ -1188,7 +1188,7 @@ function M.AssertIncompatibleProtocolsException(struct)
 end
 
 --- Create a structure of type IncompatibleProtocolsException
--- &lt;p&gt;The specified configuration is not valid with this protocol.&lt;/p&gt;
+-- <p>The specified configuration is not valid with this protocol.</p>
 function M.IncompatibleProtocolsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IncompatibleProtocolsException")
 	local t = { 
@@ -1228,7 +1228,7 @@ function M.AssertTooManyTargetGroupsException(struct)
 end
 
 --- Create a structure of type TooManyTargetGroupsException
--- &lt;p&gt;You've reached the limit on the number of target groups for your AWS account.&lt;/p&gt;
+-- <p>You've reached the limit on the number of target groups for your AWS account.</p>
 function M.TooManyTargetGroupsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTargetGroupsException")
 	local t = { 
@@ -1248,7 +1248,7 @@ function M.AssertTargetGroupNotFoundException(struct)
 end
 
 --- Create a structure of type TargetGroupNotFoundException
--- &lt;p&gt;The specified target group does not exist.&lt;/p&gt;
+-- <p>The specified target group does not exist.</p>
 function M.TargetGroupNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroupNotFoundException")
 	local t = { 
@@ -1270,7 +1270,7 @@ end
 
 --- Create a structure of type CreateLoadBalancerOutput
 --  
--- @param LoadBalancers [LoadBalancers] &lt;p&gt;Information about the load balancer.&lt;/p&gt;
+-- @param LoadBalancers [LoadBalancers] <p>Information about the load balancer.</p>
 function M.CreateLoadBalancerOutput(LoadBalancers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoadBalancerOutput")
 	local t = { 
@@ -1296,8 +1296,8 @@ end
 
 --- Create a structure of type SetIpAddressTypeInput
 --  
--- @param IpAddressType [IpAddressType] &lt;p&gt;The IP address type. The possible values are &lt;code&gt;ipv4&lt;/code&gt; (for IPv4 addresses) and &lt;code&gt;dualstack&lt;/code&gt; (for IPv4 and IPv6 addresses). Internal load balancers must use &lt;code&gt;ipv4&lt;/code&gt;.&lt;/p&gt;
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
+-- @param IpAddressType [IpAddressType] <p>The IP address type. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
 -- Required parameter: IpAddressType
 function M.SetIpAddressTypeInput(IpAddressType, LoadBalancerArn, ...)
@@ -1325,8 +1325,8 @@ end
 
 --- Create a structure of type DescribeTargetHealthInput
 --  
--- @param TargetGroupArn [TargetGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target group.&lt;/p&gt;
--- @param Targets [TargetDescriptions] &lt;p&gt;The targets.&lt;/p&gt;
+-- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param Targets [TargetDescriptions] <p>The targets.</p>
 -- Required parameter: TargetGroupArn
 function M.DescribeTargetHealthInput(TargetGroupArn, Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetHealthInput")
@@ -1350,8 +1350,8 @@ function M.AssertCertificate(struct)
 end
 
 --- Create a structure of type Certificate
--- &lt;p&gt;Information about an SSL server certificate deployed on a load balancer.&lt;/p&gt;
--- @param CertificateArn [CertificateArn] &lt;p&gt;The Amazon Resource Name (ARN) of the certificate.&lt;/p&gt;
+-- <p>Information about an SSL server certificate deployed on a load balancer.</p>
+-- @param CertificateArn [CertificateArn] <p>The Amazon Resource Name (ARN) of the certificate.</p>
 function M.Certificate(CertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Certificate")
 	local t = { 
@@ -1372,7 +1372,7 @@ function M.AssertTooManyListenersException(struct)
 end
 
 --- Create a structure of type TooManyListenersException
--- &lt;p&gt;You've reached the limit on the number of listeners per load balancer.&lt;/p&gt;
+-- <p>You've reached the limit on the number of listeners per load balancer.</p>
 function M.TooManyListenersException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyListenersException")
 	local t = { 
@@ -1392,7 +1392,7 @@ function M.AssertInvalidSchemeException(struct)
 end
 
 --- Create a structure of type InvalidSchemeException
--- &lt;p&gt;The requested scheme is not valid.&lt;/p&gt;
+-- <p>The requested scheme is not valid.</p>
 function M.InvalidSchemeException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSchemeException")
 	local t = { 
@@ -1414,7 +1414,7 @@ end
 
 --- Create a structure of type SetSubnetsOutput
 --  
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;Information about the subnet and Availability Zone.&lt;/p&gt;
+-- @param AvailabilityZones [AvailabilityZones] <p>Information about the subnet and Availability Zone.</p>
 function M.SetSubnetsOutput(AvailabilityZones, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetSubnetsOutput")
 	local t = { 
@@ -1438,10 +1438,10 @@ function M.AssertTargetHealthDescription(struct)
 end
 
 --- Create a structure of type TargetHealthDescription
--- &lt;p&gt;Information about the health of a target.&lt;/p&gt;
--- @param HealthCheckPort [HealthCheckPort] &lt;p&gt;The port to use to connect with the target.&lt;/p&gt;
--- @param Target [TargetDescription] &lt;p&gt;The description of the target.&lt;/p&gt;
--- @param TargetHealth [TargetHealth] &lt;p&gt;The health information for the target.&lt;/p&gt;
+-- <p>Information about the health of a target.</p>
+-- @param HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
+-- @param Target [TargetDescription] <p>The description of the target.</p>
+-- @param TargetHealth [TargetHealth] <p>The health information for the target.</p>
 function M.TargetHealthDescription(HealthCheckPort, Target, TargetHealth, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetHealthDescription")
 	local t = { 
@@ -1466,7 +1466,7 @@ end
 
 --- Create a structure of type DescribeTargetHealthOutput
 --  
--- @param TargetHealthDescriptions [TargetHealthDescriptions] &lt;p&gt;Information about the health of the targets.&lt;/p&gt;
+-- @param TargetHealthDescriptions [TargetHealthDescriptions] <p>Information about the health of the targets.</p>
 function M.DescribeTargetHealthOutput(TargetHealthDescriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetHealthOutput")
 	local t = { 
@@ -1490,7 +1490,7 @@ end
 
 --- Create a structure of type DeleteListenerInput
 --  
--- @param ListenerArn [ListenerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the listener.&lt;/p&gt;
+-- @param ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
 -- Required parameter: ListenerArn
 function M.DeleteListenerInput(ListenerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteListenerInput")
@@ -1523,12 +1523,12 @@ end
 
 --- Create a structure of type CreateListenerInput
 --  
--- @param Protocol [ProtocolEnum] &lt;p&gt;The protocol for connections from clients to the load balancer.&lt;/p&gt;
--- @param DefaultActions [Actions] &lt;p&gt;The default action for the listener.&lt;/p&gt;
--- @param SslPolicy [SslPolicyName] &lt;p&gt;The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.&lt;/p&gt;
--- @param Certificates [CertificateList] &lt;p&gt;The SSL server certificate. You must provide exactly one certificate if the protocol is HTTPS.&lt;/p&gt;
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
--- @param Port [Port] &lt;p&gt;The port on which the load balancer is listening.&lt;/p&gt;
+-- @param Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
+-- @param DefaultActions [Actions] <p>The default action for the listener.</p>
+-- @param SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
+-- @param Certificates [CertificateList] <p>The SSL server certificate. You must provide exactly one certificate if the protocol is HTTPS.</p>
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param Port [Port] <p>The port on which the load balancer is listening.</p>
 -- Required parameter: LoadBalancerArn
 -- Required parameter: Protocol
 -- Required parameter: Port
@@ -1575,18 +1575,18 @@ end
 
 --- Create a structure of type CreateTargetGroupInput
 --  
--- @param HealthyThresholdCount [HealthCheckThresholdCount] &lt;p&gt;The number of consecutive health checks successes required before considering an unhealthy target healthy. The default is 5.&lt;/p&gt;
--- @param HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] &lt;p&gt;The approximate amount of time, in seconds, between health checks of an individual target. The default is 30 seconds.&lt;/p&gt;
--- @param VpcId [VpcId] &lt;p&gt;The identifier of the virtual private cloud (VPC).&lt;/p&gt;
--- @param Protocol [ProtocolEnum] &lt;p&gt;The protocol to use for routing traffic to the targets.&lt;/p&gt;
--- @param Name [TargetGroupName] &lt;p&gt;The name of the target group.&lt;/p&gt; &lt;p&gt;This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.&lt;/p&gt;
--- @param HealthCheckProtocol [ProtocolEnum] &lt;p&gt;The protocol the load balancer uses when performing health checks on targets. The default is the HTTP protocol.&lt;/p&gt;
--- @param UnhealthyThresholdCount [HealthCheckThresholdCount] &lt;p&gt;The number of consecutive health check failures required before considering a target unhealthy. The default is 2.&lt;/p&gt;
--- @param HealthCheckPath [Path] &lt;p&gt;The ping path that is the destination on the targets for health checks. The default is /.&lt;/p&gt;
--- @param HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] &lt;p&gt;The amount of time, in seconds, during which no response from a target means a failed health check. The default is 5 seconds.&lt;/p&gt;
--- @param Matcher [Matcher] &lt;p&gt;The HTTP codes to use when checking for a successful response from a target. The default is 200.&lt;/p&gt;
--- @param HealthCheckPort [HealthCheckPort] &lt;p&gt;The port the load balancer uses when performing health checks on targets. The default is &lt;code&gt;traffic-port&lt;/code&gt;, which indicates the port on which each target receives traffic from the load balancer.&lt;/p&gt;
--- @param Port [Port] &lt;p&gt;The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.&lt;/p&gt;
+-- @param HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy. The default is 5.</p>
+-- @param HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target. The default is 30 seconds.</p>
+-- @param VpcId [VpcId] <p>The identifier of the virtual private cloud (VPC).</p>
+-- @param Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
+-- @param Name [TargetGroupName] <p>The name of the target group.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
+-- @param HealthCheckProtocol [ProtocolEnum] <p>The protocol the load balancer uses when performing health checks on targets. The default is the HTTP protocol.</p>
+-- @param UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering a target unhealthy. The default is 2.</p>
+-- @param HealthCheckPath [Path] <p>The ping path that is the destination on the targets for health checks. The default is /.</p>
+-- @param HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response from a target means a failed health check. The default is 5 seconds.</p>
+-- @param Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target. The default is 200.</p>
+-- @param HealthCheckPort [HealthCheckPort] <p>The port the load balancer uses when performing health checks on targets. The default is <code>traffic-port</code>, which indicates the port on which each target receives traffic from the load balancer.</p>
+-- @param Port [Port] <p>The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.</p>
 -- Required parameter: Name
 -- Required parameter: Protocol
 -- Required parameter: Port
@@ -1624,7 +1624,7 @@ end
 
 --- Create a structure of type ModifyLoadBalancerAttributesOutput
 --  
--- @param Attributes [LoadBalancerAttributes] &lt;p&gt;Information about the load balancer attributes.&lt;/p&gt;
+-- @param Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
 function M.ModifyLoadBalancerAttributesOutput(Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyLoadBalancerAttributesOutput")
 	local t = { 
@@ -1667,8 +1667,8 @@ function M.AssertMatcher(struct)
 end
 
 --- Create a structure of type Matcher
--- &lt;p&gt;Information to use when checking for a successful response from a target.&lt;/p&gt;
--- @param HttpCode [HttpCode] &lt;p&gt;The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify multiple values (for example, &quot;200,202&quot;) or a range of values (for example, &quot;200-299&quot;).&lt;/p&gt;
+-- <p>Information to use when checking for a successful response from a target.</p>
+-- @param HttpCode [HttpCode] <p>The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").</p>
 -- Required parameter: HttpCode
 function M.Matcher(HttpCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Matcher")
@@ -1690,7 +1690,7 @@ function M.AssertInvalidSecurityGroupException(struct)
 end
 
 --- Create a structure of type InvalidSecurityGroupException
--- &lt;p&gt;The specified security group does not exist.&lt;/p&gt;
+-- <p>The specified security group does not exist.</p>
 function M.InvalidSecurityGroupException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSecurityGroupException")
 	local t = { 
@@ -1713,8 +1713,8 @@ end
 
 --- Create a structure of type DescribeAccountLimitsOutput
 --  
--- @param NextMarker [Marker] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
--- @param Limits [Limits] &lt;p&gt;Information about the limits.&lt;/p&gt;
+-- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param Limits [Limits] <p>Information about the limits.</p>
 function M.DescribeAccountLimitsOutput(NextMarker, Limits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountLimitsOutput")
 	local t = { 
@@ -1744,12 +1744,12 @@ end
 
 --- Create a structure of type ModifyListenerInput
 --  
--- @param Protocol [ProtocolEnum] &lt;p&gt;The protocol for connections from clients to the load balancer.&lt;/p&gt;
--- @param DefaultActions [Actions] &lt;p&gt;The default actions.&lt;/p&gt;
--- @param SslPolicy [SslPolicyName] &lt;p&gt;The security policy that defines which protocols and ciphers are supported. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies&quot;&gt;Security Policies&lt;/a&gt; in the &lt;i&gt;Application Load Balancers Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Certificates [CertificateList] &lt;p&gt;The SSL server certificate.&lt;/p&gt;
--- @param Port [Port] &lt;p&gt;The port for connections from clients to the load balancer.&lt;/p&gt;
--- @param ListenerArn [ListenerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the listener.&lt;/p&gt;
+-- @param Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
+-- @param DefaultActions [Actions] <p>The default actions.</p>
+-- @param SslPolicy [SslPolicyName] <p>The security policy that defines which protocols and ciphers are supported. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security Policies</a> in the <i>Application Load Balancers Guide</i>.</p>
+-- @param Certificates [CertificateList] <p>The SSL server certificate.</p>
+-- @param Port [Port] <p>The port for connections from clients to the load balancer.</p>
+-- @param ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
 -- Required parameter: ListenerArn
 function M.ModifyListenerInput(Protocol, DefaultActions, SslPolicy, Certificates, Port, ListenerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyListenerInput")
@@ -1781,8 +1781,8 @@ end
 
 --- Create a structure of type ModifyLoadBalancerAttributesInput
 --  
--- @param Attributes [LoadBalancerAttributes] &lt;p&gt;The load balancer attributes.&lt;/p&gt;
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
+-- @param Attributes [LoadBalancerAttributes] <p>The load balancer attributes.</p>
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
 -- Required parameter: Attributes
 function M.ModifyLoadBalancerAttributesInput(Attributes, LoadBalancerArn, ...)
@@ -1817,15 +1817,15 @@ end
 
 --- Create a structure of type ModifyTargetGroupInput
 --  
--- @param HealthyThresholdCount [HealthCheckThresholdCount] &lt;p&gt;The number of consecutive health checks successes required before considering an unhealthy target healthy.&lt;/p&gt;
--- @param HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] &lt;p&gt;The approximate amount of time, in seconds, between health checks of an individual target.&lt;/p&gt;
--- @param TargetGroupArn [TargetGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target group.&lt;/p&gt;
--- @param HealthCheckPort [HealthCheckPort] &lt;p&gt;The port to use to connect with the target.&lt;/p&gt;
--- @param HealthCheckProtocol [ProtocolEnum] &lt;p&gt;The protocol to use to connect with the target.&lt;/p&gt;
--- @param HealthCheckPath [Path] &lt;p&gt;The ping path that is the destination for the health check request.&lt;/p&gt;
--- @param HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] &lt;p&gt;The amount of time, in seconds, during which no response means a failed health check.&lt;/p&gt;
--- @param Matcher [Matcher] &lt;p&gt;The HTTP codes to use when checking for a successful response from a target.&lt;/p&gt;
--- @param UnhealthyThresholdCount [HealthCheckThresholdCount] &lt;p&gt;The number of consecutive health check failures required before considering the target unhealthy.&lt;/p&gt;
+-- @param HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
+-- @param HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
+-- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
+-- @param HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
+-- @param HealthCheckPath [Path] <p>The ping path that is the destination for the health check request.</p>
+-- @param HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
+-- @param Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
+-- @param UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
 -- Required parameter: TargetGroupArn
 function M.ModifyTargetGroupInput(HealthyThresholdCount, HealthCheckIntervalSeconds, TargetGroupArn, HealthCheckPort, HealthCheckProtocol, HealthCheckPath, HealthCheckTimeoutSeconds, Matcher, UnhealthyThresholdCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupInput")
@@ -1864,10 +1864,10 @@ end
 
 --- Create a structure of type CreateRuleInput
 --  
--- @param Priority [RulePriority] &lt;p&gt;The priority for the rule. A listener can't have multiple rules with the same priority.&lt;/p&gt;
--- @param Conditions [RuleConditionList] &lt;p&gt;A condition. Each condition specifies a field name and a single value.&lt;/p&gt; &lt;p&gt;If the field name is &lt;code&gt;host-header&lt;/code&gt;, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A-Z, a-z, 0-9&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;- .&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;* (matches 0 or more characters)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;? (matches exactly 1 character)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the field name is &lt;code&gt;path-pattern&lt;/code&gt;, you can specify a single path pattern. A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;A-Z, a-z, 0-9&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;_ - . $ / ~ &quot; ' @ : +&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&amp;amp; (using &amp;amp;amp;)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;* (matches 0 or more characters)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;? (matches exactly 1 character)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Actions [Actions] &lt;p&gt;An action. Each action has the type &lt;code&gt;forward&lt;/code&gt; and specifies a target group.&lt;/p&gt;
--- @param ListenerArn [ListenerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the listener.&lt;/p&gt;
+-- @param Priority [RulePriority] <p>The priority for the rule. A listener can't have multiple rules with the same priority.</p>
+-- @param Conditions [RuleConditionList] <p>A condition. Each condition specifies a field name and a single value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
+-- @param Actions [Actions] <p>An action. Each action has the type <code>forward</code> and specifies a target group.</p>
+-- @param ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
 -- Required parameter: ListenerArn
 -- Required parameter: Conditions
 -- Required parameter: Priority
@@ -1900,10 +1900,10 @@ end
 
 --- Create a structure of type DescribeListenersInput
 --  
--- @param ListenerArns [ListenerArns] &lt;p&gt;The Amazon Resource Names (ARN) of the listeners.&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of results to return with this call.&lt;/p&gt;
+-- @param ListenerArns [ListenerArns] <p>The Amazon Resource Names (ARN) of the listeners.</p>
+-- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
 function M.DescribeListenersInput(ListenerArns, Marker, LoadBalancerArn, PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeListenersInput")
 	local t = { 
@@ -1932,12 +1932,12 @@ function M.AssertRule(struct)
 end
 
 --- Create a structure of type Rule
--- &lt;p&gt;Information about a rule.&lt;/p&gt;
--- @param Priority [String] &lt;p&gt;The priority.&lt;/p&gt;
--- @param Conditions [RuleConditionList] &lt;p&gt;The conditions.&lt;/p&gt;
--- @param RuleArn [RuleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the rule.&lt;/p&gt;
--- @param IsDefault [IsDefault] &lt;p&gt;Indicates whether this is the default rule.&lt;/p&gt;
--- @param Actions [Actions] &lt;p&gt;The actions.&lt;/p&gt;
+-- <p>Information about a rule.</p>
+-- @param Priority [String] <p>The priority.</p>
+-- @param Conditions [RuleConditionList] <p>The conditions.</p>
+-- @param RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- @param IsDefault [IsDefault] <p>Indicates whether this is the default rule.</p>
+-- @param Actions [Actions] <p>The actions.</p>
 function M.Rule(Priority, Conditions, RuleArn, IsDefault, Actions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Rule")
 	local t = { 
@@ -1965,7 +1965,7 @@ end
 
 --- Create a structure of type SetRulePrioritiesInput
 --  
--- @param RulePriorities [RulePriorityList] &lt;p&gt;The rule priorities.&lt;/p&gt;
+-- @param RulePriorities [RulePriorityList] <p>The rule priorities.</p>
 -- Required parameter: RulePriorities
 function M.SetRulePrioritiesInput(RulePriorities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetRulePrioritiesInput")
@@ -1989,7 +1989,7 @@ end
 
 --- Create a structure of type SetRulePrioritiesOutput
 --  
--- @param Rules [Rules] &lt;p&gt;Information about the rules.&lt;/p&gt;
+-- @param Rules [Rules] <p>Information about the rules.</p>
 function M.SetRulePrioritiesOutput(Rules, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetRulePrioritiesOutput")
 	local t = { 
@@ -2014,9 +2014,9 @@ function M.AssertAction(struct)
 end
 
 --- Create a structure of type Action
--- &lt;p&gt;Information about an action.&lt;/p&gt;
--- @param TargetGroupArn [TargetGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target group.&lt;/p&gt;
--- @param Type [ActionTypeEnum] &lt;p&gt;The type of action.&lt;/p&gt;
+-- <p>Information about an action.</p>
+-- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param Type [ActionTypeEnum] <p>The type of action.</p>
 -- Required parameter: Type
 -- Required parameter: TargetGroupArn
 function M.Action(TargetGroupArn, Type, ...)
@@ -2040,7 +2040,7 @@ function M.AssertPriorityInUseException(struct)
 end
 
 --- Create a structure of type PriorityInUseException
--- &lt;p&gt;The specified priority is in use.&lt;/p&gt;
+-- <p>The specified priority is in use.</p>
 function M.PriorityInUseException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PriorityInUseException")
 	local t = { 
@@ -2065,8 +2065,8 @@ end
 
 --- Create a structure of type RegisterTargetsInput
 --  
--- @param TargetGroupArn [TargetGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target group.&lt;/p&gt;
--- @param Targets [TargetDescriptions] &lt;p&gt;The targets. The default port for a target is the port for the target group. You can specify a port override. If a target is already registered, you can register it again using a different port.&lt;/p&gt;
+-- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param Targets [TargetDescriptions] <p>The targets. The default port for a target is the port for the target group. You can specify a port override. If a target is already registered, you can register it again using a different port.</p>
 -- Required parameter: TargetGroupArn
 -- Required parameter: Targets
 function M.RegisterTargetsInput(TargetGroupArn, Targets, ...)
@@ -2093,7 +2093,7 @@ end
 
 --- Create a structure of type DeleteTargetGroupInput
 --  
--- @param TargetGroupArn [TargetGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the target group.&lt;/p&gt;
+-- @param TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
 -- Required parameter: TargetGroupArn
 function M.DeleteTargetGroupInput(TargetGroupArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTargetGroupInput")
@@ -2115,7 +2115,7 @@ function M.AssertRuleNotFoundException(struct)
 end
 
 --- Create a structure of type RuleNotFoundException
--- &lt;p&gt;The specified rule does not exist.&lt;/p&gt;
+-- <p>The specified rule does not exist.</p>
 function M.RuleNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RuleNotFoundException")
 	local t = { 
@@ -2135,7 +2135,7 @@ function M.AssertTooManyTargetsException(struct)
 end
 
 --- Create a structure of type TooManyTargetsException
--- &lt;p&gt;You've reached the limit on the number of targets.&lt;/p&gt;
+-- <p>You've reached the limit on the number of targets.</p>
 function M.TooManyTargetsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTargetsException")
 	local t = { 
@@ -2155,7 +2155,7 @@ function M.AssertTooManyLoadBalancersException(struct)
 end
 
 --- Create a structure of type TooManyLoadBalancersException
--- &lt;p&gt;You've reached the limit on the number of load balancers for your AWS account.&lt;/p&gt;
+-- <p>You've reached the limit on the number of load balancers for your AWS account.</p>
 function M.TooManyLoadBalancersException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyLoadBalancersException")
 	local t = { 
@@ -2180,8 +2180,8 @@ end
 
 --- Create a structure of type AddTagsInput
 --  
--- @param ResourceArns [ResourceArns] &lt;p&gt;The Amazon Resource Name (ARN) of the resource.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tags. Each resource can have a maximum of 10 tags.&lt;/p&gt;
+-- @param ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- @param Tags [TagList] <p>The tags. Each resource can have a maximum of 10 tags.</p>
 -- Required parameter: ResourceArns
 -- Required parameter: Tags
 function M.AddTagsInput(ResourceArns, Tags, ...)
@@ -2207,9 +2207,9 @@ function M.AssertTargetGroupAttribute(struct)
 end
 
 --- Create a structure of type TargetGroupAttribute
--- &lt;p&gt;Information about a target group attribute.&lt;/p&gt;
--- @param Value [TargetGroupAttributeValue] &lt;p&gt;The value of the attribute.&lt;/p&gt;
--- @param Key [TargetGroupAttributeKey] &lt;p&gt;The name of the attribute.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;deregistration_delay.timeout_seconds&lt;/code&gt; - The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from &lt;code&gt;draining&lt;/code&gt; to &lt;code&gt;unused&lt;/code&gt;. The range is 0-3600 seconds. The default value is 300 seconds.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;stickiness.enabled&lt;/code&gt; - Indicates whether sticky sessions are enabled. The value is &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;stickiness.type&lt;/code&gt; - The type of sticky sessions. The possible value is &lt;code&gt;lb_cookie&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;stickiness.lb_cookie.duration_seconds&lt;/code&gt; - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Information about a target group attribute.</p>
+-- @param Value [TargetGroupAttributeValue] <p>The value of the attribute.</p>
+-- @param Key [TargetGroupAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>deregistration_delay.timeout_seconds</code> - The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from <code>draining</code> to <code>unused</code>. The range is 0-3600 seconds. The default value is 300 seconds.</p> </li> <li> <p> <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.</p> </li> <li> <p> <code>stickiness.lb_cookie.duration_seconds</code> - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).</p> </li> </ul>
 function M.TargetGroupAttribute(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroupAttribute")
 	local t = { 
@@ -2231,7 +2231,7 @@ function M.AssertHealthUnavailableException(struct)
 end
 
 --- Create a structure of type HealthUnavailableException
--- &lt;p&gt;The health of the specified targets could not be retrieved due to an internal error.&lt;/p&gt;
+-- <p>The health of the specified targets could not be retrieved due to an internal error.</p>
 function M.HealthUnavailableException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HealthUnavailableException")
 	local t = { 
@@ -2256,9 +2256,9 @@ end
 
 --- Create a structure of type ModifyRuleInput
 --  
--- @param Conditions [RuleConditionList] &lt;p&gt;The conditions.&lt;/p&gt;
--- @param RuleArn [RuleArn] &lt;p&gt;The Amazon Resource Name (ARN) of the rule.&lt;/p&gt;
--- @param Actions [Actions] &lt;p&gt;The actions.&lt;/p&gt;
+-- @param Conditions [RuleConditionList] <p>The conditions.</p>
+-- @param RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- @param Actions [Actions] <p>The actions.</p>
 -- Required parameter: RuleArn
 function M.ModifyRuleInput(Conditions, RuleArn, Actions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyRuleInput")
@@ -2282,7 +2282,7 @@ function M.AssertTooManyTagsException(struct)
 end
 
 --- Create a structure of type TooManyTagsException
--- &lt;p&gt;You've reached the limit on the number of tags per load balancer.&lt;/p&gt;
+-- <p>You've reached the limit on the number of tags per load balancer.</p>
 function M.TooManyTagsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTagsException")
 	local t = { 
@@ -2305,8 +2305,8 @@ end
 
 --- Create a structure of type DescribeRulesOutput
 --  
--- @param Rules [Rules] &lt;p&gt;Information about the rules.&lt;/p&gt;
--- @param NextMarker [Marker] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
+-- @param Rules [Rules] <p>Information about the rules.</p>
+-- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
 function M.DescribeRulesOutput(Rules, NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesOutput")
 	local t = { 
@@ -2328,7 +2328,7 @@ function M.AssertSSLPolicyNotFoundException(struct)
 end
 
 --- Create a structure of type SSLPolicyNotFoundException
--- &lt;p&gt;The specified SSL policy does not exist.&lt;/p&gt;
+-- <p>The specified SSL policy does not exist.</p>
 function M.SSLPolicyNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SSLPolicyNotFoundException")
 	local t = { 
@@ -2348,7 +2348,7 @@ function M.AssertDuplicateListenerException(struct)
 end
 
 --- Create a structure of type DuplicateListenerException
--- &lt;p&gt;A listener with the specified port already exists.&lt;/p&gt;
+-- <p>A listener with the specified port already exists.</p>
 function M.DuplicateListenerException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateListenerException")
 	local t = { 
@@ -2371,8 +2371,8 @@ end
 
 --- Create a structure of type DescribeTargetGroupsOutput
 --  
--- @param NextMarker [Marker] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
--- @param TargetGroups [TargetGroups] &lt;p&gt;Information about the target groups.&lt;/p&gt;
+-- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param TargetGroups [TargetGroups] <p>Information about the target groups.</p>
 function M.DescribeTargetGroupsOutput(NextMarker, TargetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupsOutput")
 	local t = { 
@@ -2397,7 +2397,7 @@ end
 
 --- Create a structure of type DeleteLoadBalancerInput
 --  
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
 function M.DeleteLoadBalancerInput(LoadBalancerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLoadBalancerInput")
@@ -2425,11 +2425,11 @@ end
 
 --- Create a structure of type DescribeTargetGroupsInput
 --  
--- @param Marker [Marker] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param TargetGroupArns [TargetGroupArns] &lt;p&gt;The Amazon Resource Names (ARN) of the target groups.&lt;/p&gt;
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
--- @param Names [TargetGroupNames] &lt;p&gt;The names of the target groups.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of results to return with this call.&lt;/p&gt;
+-- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param TargetGroupArns [TargetGroupArns] <p>The Amazon Resource Names (ARN) of the target groups.</p>
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param Names [TargetGroupNames] <p>The names of the target groups.</p>
+-- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
 function M.DescribeTargetGroupsInput(Marker, TargetGroupArns, LoadBalancerArn, Names, PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupsInput")
 	local t = { 
@@ -2456,7 +2456,7 @@ end
 
 --- Create a structure of type ModifyTargetGroupOutput
 --  
--- @param TargetGroups [TargetGroups] &lt;p&gt;Information about the target group.&lt;/p&gt;
+-- @param TargetGroups [TargetGroups] <p>Information about the target group.</p>
 function M.ModifyTargetGroupOutput(TargetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupOutput")
 	local t = { 
@@ -2479,7 +2479,7 @@ end
 
 --- Create a structure of type ModifyTargetGroupAttributesOutput
 --  
--- @param Attributes [TargetGroupAttributes] &lt;p&gt;Information about the attributes.&lt;/p&gt;
+-- @param Attributes [TargetGroupAttributes] <p>Information about the attributes.</p>
 function M.ModifyTargetGroupAttributesOutput(Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupAttributesOutput")
 	local t = { 
@@ -2502,7 +2502,7 @@ end
 
 --- Create a structure of type CreateTargetGroupOutput
 --  
--- @param TargetGroups [TargetGroups] &lt;p&gt;Information about the target group.&lt;/p&gt;
+-- @param TargetGroups [TargetGroups] <p>Information about the target group.</p>
 function M.CreateTargetGroupOutput(TargetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTargetGroupOutput")
 	local t = { 
@@ -2525,7 +2525,7 @@ end
 
 --- Create a structure of type CreateListenerOutput
 --  
--- @param Listeners [Listeners] &lt;p&gt;Information about the listener.&lt;/p&gt;
+-- @param Listeners [Listeners] <p>Information about the listener.</p>
 function M.CreateListenerOutput(Listeners, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateListenerOutput")
 	local t = { 
@@ -2551,10 +2551,10 @@ end
 
 --- Create a structure of type DescribeRulesInput
 --  
--- @param Marker [Marker] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param RuleArns [RuleArns] &lt;p&gt;The Amazon Resource Names (ARN) of the rules.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of results to return with this call.&lt;/p&gt;
--- @param ListenerArn [ListenerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the listener.&lt;/p&gt;
+-- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param RuleArns [RuleArns] <p>The Amazon Resource Names (ARN) of the rules.</p>
+-- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+-- @param ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
 function M.DescribeRulesInput(Marker, RuleArns, PageSize, ListenerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesInput")
 	local t = { 
@@ -2600,7 +2600,7 @@ end
 
 --- Create a structure of type DescribeTagsOutput
 --  
--- @param TagDescriptions [TagDescriptions] &lt;p&gt;Information about the tags.&lt;/p&gt;
+-- @param TagDescriptions [TagDescriptions] <p>Information about the tags.</p>
 function M.DescribeTagsOutput(TagDescriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsOutput")
 	local t = { 
@@ -2623,7 +2623,7 @@ end
 
 --- Create a structure of type ModifyListenerOutput
 --  
--- @param Listeners [Listeners] &lt;p&gt;Information about the modified listeners.&lt;/p&gt;
+-- @param Listeners [Listeners] <p>Information about the modified listeners.</p>
 function M.ModifyListenerOutput(Listeners, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyListenerOutput")
 	local t = { 
@@ -2646,9 +2646,9 @@ function M.AssertLoadBalancerState(struct)
 end
 
 --- Create a structure of type LoadBalancerState
--- &lt;p&gt;Information about the state of the load balancer.&lt;/p&gt;
--- @param Reason [StateReason] &lt;p&gt;A description of the state.&lt;/p&gt;
--- @param Code [LoadBalancerStateEnum] &lt;p&gt;The state code. The initial state of the load balancer is &lt;code&gt;provisioning&lt;/code&gt;. After the load balancer is fully set up and ready to route traffic, its state is &lt;code&gt;active&lt;/code&gt;. If the load balancer could not be set up, its state is &lt;code&gt;failed&lt;/code&gt;.&lt;/p&gt;
+-- <p>Information about the state of the load balancer.</p>
+-- @param Reason [StateReason] <p>A description of the state.</p>
+-- @param Code [LoadBalancerStateEnum] <p>The state code. The initial state of the load balancer is <code>provisioning</code>. After the load balancer is fully set up and ready to route traffic, its state is <code>active</code>. If the load balancer could not be set up, its state is <code>failed</code>.</p>
 function M.LoadBalancerState(Reason, Code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerState")
 	local t = { 
@@ -2670,7 +2670,7 @@ function M.AssertInvalidTargetException(struct)
 end
 
 --- Create a structure of type InvalidTargetException
--- &lt;p&gt;The specified target does not exist or is not in the same VPC as the target group.&lt;/p&gt;
+-- <p>The specified target does not exist or is not in the same VPC as the target group.</p>
 function M.InvalidTargetException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTargetException")
 	local t = { 
@@ -2695,8 +2695,8 @@ end
 
 --- Create a structure of type SetSecurityGroupsInput
 --  
--- @param SecurityGroups [SecurityGroups] &lt;p&gt;The IDs of the security groups.&lt;/p&gt;
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
+-- @param SecurityGroups [SecurityGroups] <p>The IDs of the security groups.</p>
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
 -- Required parameter: LoadBalancerArn
 -- Required parameter: SecurityGroups
 function M.SetSecurityGroupsInput(SecurityGroups, LoadBalancerArn, ...)
@@ -2722,9 +2722,9 @@ function M.AssertLoadBalancerAttribute(struct)
 end
 
 --- Create a structure of type LoadBalancerAttribute
--- &lt;p&gt;Information about a load balancer attribute.&lt;/p&gt;
--- @param Value [LoadBalancerAttributeValue] &lt;p&gt;The value of the attribute.&lt;/p&gt;
--- @param Key [LoadBalancerAttributeKey] &lt;p&gt;The name of the attribute.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;access_logs.s3.enabled&lt;/code&gt; - Indicates whether access logs stored in Amazon S3 are enabled. The value is &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;access_logs.s3.bucket&lt;/code&gt; - The name of the S3 bucket for the access logs. This attribute is required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;access_logs.s3.prefix&lt;/code&gt; - The prefix for the location in the S3 bucket. If you don't specify a prefix, the access logs are stored in the root of the bucket.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;deletion_protection.enabled&lt;/code&gt; - Indicates whether deletion protection is enabled. The value is &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;idle_timeout.timeout_seconds&lt;/code&gt; - The idle timeout value, in seconds. The valid range is 1-3600. The default is 60 seconds.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Information about a load balancer attribute.</p>
+-- @param Value [LoadBalancerAttributeValue] <p>The value of the attribute.</p>
+-- @param Key [LoadBalancerAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.</p> </li> <li> <p> <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix, the access logs are stored in the root of the bucket.</p> </li> <li> <p> <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The default is 60 seconds.</p> </li> </ul>
 function M.LoadBalancerAttribute(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerAttribute")
 	local t = { 
@@ -2749,8 +2749,8 @@ end
 
 --- Create a structure of type DescribeListenersOutput
 --  
--- @param Listeners [Listeners] &lt;p&gt;Information about the listeners.&lt;/p&gt;
--- @param NextMarker [Marker] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
+-- @param Listeners [Listeners] <p>Information about the listeners.</p>
+-- @param NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
 function M.DescribeListenersOutput(Listeners, NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeListenersOutput")
 	local t = { 
@@ -2777,8 +2777,8 @@ end
 
 --- Create a structure of type RemoveTagsInput
 --  
--- @param TagKeys [TagKeys] &lt;p&gt;The tag keys for the tags to remove.&lt;/p&gt;
--- @param ResourceArns [ResourceArns] &lt;p&gt;The Amazon Resource Name (ARN) of the resource.&lt;/p&gt;
+-- @param TagKeys [TagKeys] <p>The tag keys for the tags to remove.</p>
+-- @param ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
 -- Required parameter: ResourceArns
 -- Required parameter: TagKeys
 function M.RemoveTagsInput(TagKeys, ResourceArns, ...)
@@ -2802,7 +2802,7 @@ function M.AssertTooManyRulesException(struct)
 end
 
 --- Create a structure of type TooManyRulesException
--- &lt;p&gt;You've reached the limit on the number of rules per load balancer.&lt;/p&gt;
+-- <p>You've reached the limit on the number of rules per load balancer.</p>
 function M.TooManyRulesException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRulesException")
 	local t = { 
@@ -2822,7 +2822,7 @@ function M.AssertLoadBalancerNotFoundException(struct)
 end
 
 --- Create a structure of type LoadBalancerNotFoundException
--- &lt;p&gt;The specified load balancer does not exist.&lt;/p&gt;
+-- <p>The specified load balancer does not exist.</p>
 function M.LoadBalancerNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerNotFoundException")
 	local t = { 
@@ -2845,9 +2845,9 @@ function M.AssertTargetDescription(struct)
 end
 
 --- Create a structure of type TargetDescription
--- &lt;p&gt;Information about a target.&lt;/p&gt;
--- @param Id [TargetId] &lt;p&gt;The ID of the target.&lt;/p&gt;
--- @param Port [Port] &lt;p&gt;The port on which the target is listening.&lt;/p&gt;
+-- <p>Information about a target.</p>
+-- @param Id [TargetId] <p>The ID of the target.</p>
+-- @param Port [Port] <p>The port on which the target is listening.</p>
 -- Required parameter: Id
 function M.TargetDescription(Id, Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TargetDescription")
@@ -2872,7 +2872,7 @@ end
 
 --- Create a structure of type SetIpAddressTypeOutput
 --  
--- @param IpAddressType [IpAddressType] &lt;p&gt;The IP address type.&lt;/p&gt;
+-- @param IpAddressType [IpAddressType] <p>The IP address type.</p>
 function M.SetIpAddressTypeOutput(IpAddressType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetIpAddressTypeOutput")
 	local t = { 
@@ -2897,9 +2897,9 @@ end
 
 --- Create a structure of type DescribeSSLPoliciesInput
 --  
--- @param Marker [Marker] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param Names [SslPolicyNames] &lt;p&gt;The names of the policies.&lt;/p&gt;
--- @param PageSize [PageSize] &lt;p&gt;The maximum number of results to return with this call.&lt;/p&gt;
+-- @param Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param Names [SslPolicyNames] <p>The names of the policies.</p>
+-- @param PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
 function M.DescribeSSLPoliciesInput(Marker, Names, PageSize, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSSLPoliciesInput")
 	local t = { 
@@ -2924,7 +2924,7 @@ end
 
 --- Create a structure of type CreateRuleOutput
 --  
--- @param Rules [Rules] &lt;p&gt;Information about the rule.&lt;/p&gt;
+-- @param Rules [Rules] <p>Information about the rule.</p>
 function M.CreateRuleOutput(Rules, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRuleOutput")
 	local t = { 
@@ -2957,19 +2957,19 @@ function M.AssertLoadBalancer(struct)
 end
 
 --- Create a structure of type LoadBalancer
--- &lt;p&gt;Information about a load balancer.&lt;/p&gt;
--- @param IpAddressType [IpAddressType] &lt;p&gt;The type of IP addresses used by the subnets for your load balancer. The possible values are &lt;code&gt;ipv4&lt;/code&gt; (for IPv4 addresses) and &lt;code&gt;dualstack&lt;/code&gt; (for IPv4 and IPv6 addresses).&lt;/p&gt;
--- @param VpcId [VpcId] &lt;p&gt;The ID of the VPC for the load balancer.&lt;/p&gt;
--- @param LoadBalancerArn [LoadBalancerArn] &lt;p&gt;The Amazon Resource Name (ARN) of the load balancer.&lt;/p&gt;
--- @param State [LoadBalancerState] &lt;p&gt;The state of the load balancer.&lt;/p&gt;
--- @param DNSName [DNSName] &lt;p&gt;The public DNS name of the load balancer.&lt;/p&gt;
--- @param SecurityGroups [SecurityGroups] &lt;p&gt;The IDs of the security groups for the load balancer.&lt;/p&gt;
--- @param LoadBalancerName [LoadBalancerName] &lt;p&gt;The name of the load balancer.&lt;/p&gt;
--- @param CreatedTime [CreatedTime] &lt;p&gt;The date and time the load balancer was created.&lt;/p&gt;
--- @param Scheme [LoadBalancerSchemeEnum] &lt;p&gt;The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.&lt;/p&gt; &lt;p&gt;The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.&lt;/p&gt;
--- @param Type [LoadBalancerTypeEnum] &lt;p&gt;The type of load balancer.&lt;/p&gt;
--- @param CanonicalHostedZoneId [CanonicalHostedZoneId] &lt;p&gt;The ID of the Amazon Route 53 hosted zone associated with the load balancer.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;The Availability Zones for the load balancer.&lt;/p&gt;
+-- <p>Information about a load balancer.</p>
+-- @param IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses).</p>
+-- @param VpcId [VpcId] <p>The ID of the VPC for the load balancer.</p>
+-- @param LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- @param State [LoadBalancerState] <p>The state of the load balancer.</p>
+-- @param DNSName [DNSName] <p>The public DNS name of the load balancer.</p>
+-- @param SecurityGroups [SecurityGroups] <p>The IDs of the security groups for the load balancer.</p>
+-- @param LoadBalancerName [LoadBalancerName] <p>The name of the load balancer.</p>
+-- @param CreatedTime [CreatedTime] <p>The date and time the load balancer was created.</p>
+-- @param Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p>
+-- @param Type [LoadBalancerTypeEnum] <p>The type of load balancer.</p>
+-- @param CanonicalHostedZoneId [CanonicalHostedZoneId] <p>The ID of the Amazon Route 53 hosted zone associated with the load balancer.</p>
+-- @param AvailabilityZones [AvailabilityZones] <p>The Availability Zones for the load balancer.</p>
 function M.LoadBalancer(IpAddressType, VpcId, LoadBalancerArn, State, DNSName, SecurityGroups, LoadBalancerName, CreatedTime, Scheme, Type, CanonicalHostedZoneId, AvailabilityZones, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancer")
 	local t = { 

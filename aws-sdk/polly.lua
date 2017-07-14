@@ -30,8 +30,8 @@ function M.AssertLexiconSizeExceededException(struct)
 end
 
 --- Create a structure of type LexiconSizeExceededException
--- &lt;p&gt;The maximum size of the specified lexicon would be exceeded by this operation.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The maximum size of the specified lexicon would be exceeded by this operation.&lt;/p&gt;
+-- <p>The maximum size of the specified lexicon would be exceeded by this operation.</p>
+-- @param message [ErrorMessage] <p>The maximum size of the specified lexicon would be exceeded by this operation.</p>
 function M.LexiconSizeExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LexiconSizeExceededException")
 	local t = { 
@@ -55,7 +55,7 @@ end
 
 --- Create a structure of type DeleteLexiconInput
 --  
--- @param Name [LexiconName] &lt;p&gt;The name of the lexicon to delete. Must be an existing lexicon in the region.&lt;/p&gt;
+-- @param Name [LexiconName] <p>The name of the lexicon to delete. Must be an existing lexicon in the region.</p>
 -- Required parameter: Name
 function M.DeleteLexiconInput(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLexiconInput")
@@ -81,9 +81,9 @@ end
 
 --- Create a structure of type SynthesizeSpeechOutput
 --  
--- @param ContentType [ContentType] &lt;p&gt; Specifies the type audio stream. This should reflect the &lt;code&gt;OutputFormat&lt;/code&gt; parameter in your request. &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; If you request &lt;code&gt;mp3&lt;/code&gt; as the &lt;code&gt;OutputFormat&lt;/code&gt;, the &lt;code&gt;ContentType&lt;/code&gt; returned is audio/mpeg. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; If you request &lt;code&gt;ogg_vorbis&lt;/code&gt; as the &lt;code&gt;OutputFormat&lt;/code&gt;, the &lt;code&gt;ContentType&lt;/code&gt; returned is audio/ogg. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; If you request &lt;code&gt;pcm&lt;/code&gt; as the &lt;code&gt;OutputFormat&lt;/code&gt;, the &lt;code&gt;ContentType&lt;/code&gt; returned is audio/pcm in a signed 16-bit, 1 channel (mono), little-endian format. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If you request &lt;code&gt;json&lt;/code&gt; as the &lt;code&gt;OutputFormat&lt;/code&gt;, the &lt;code&gt;ContentType&lt;/code&gt; returned is audio/json.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;/p&gt;
--- @param AudioStream [AudioStream] &lt;p&gt; Stream containing the synthesized speech. &lt;/p&gt;
--- @param RequestCharacters [RequestCharacters] &lt;p&gt;Number of characters synthesized.&lt;/p&gt;
+-- @param ContentType [ContentType] <p> Specifies the type audio stream. This should reflect the <code>OutputFormat</code> parameter in your request. </p> <ul> <li> <p> If you request <code>mp3</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/mpeg. </p> </li> <li> <p> If you request <code>ogg_vorbis</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/ogg. </p> </li> <li> <p> If you request <code>pcm</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/pcm in a signed 16-bit, 1 channel (mono), little-endian format. </p> </li> <li> <p>If you request <code>json</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/json.</p> </li> </ul> <p> </p>
+-- @param AudioStream [AudioStream] <p> Stream containing the synthesized speech. </p>
+-- @param RequestCharacters [RequestCharacters] <p>Number of characters synthesized.</p>
 function M.SynthesizeSpeechOutput(ContentType, AudioStream, RequestCharacters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SynthesizeSpeechOutput")
 	local t = { 
@@ -107,8 +107,8 @@ function M.AssertInvalidSampleRateException(struct)
 end
 
 --- Create a structure of type InvalidSampleRateException
--- &lt;p&gt;The specified sample rate is not valid.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The specified sample rate is not valid.&lt;/p&gt;
+-- <p>The specified sample rate is not valid.</p>
+-- @param message [ErrorMessage] <p>The specified sample rate is not valid.</p>
 function M.InvalidSampleRateException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSampleRateException")
 	local t = { 
@@ -150,8 +150,8 @@ function M.AssertInvalidNextTokenException(struct)
 end
 
 --- Create a structure of type InvalidNextTokenException
--- &lt;p&gt;The NextToken is invalid. Verify that it's spelled correctly, and then try again.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The NextToken is invalid. Verify that it's spelled correctly, and then try again.&lt;/p&gt;
+-- <p>The NextToken is invalid. Verify that it's spelled correctly, and then try again.</p>
+-- @param message [ErrorMessage] <p>The NextToken is invalid. Verify that it's spelled correctly, and then try again.</p>
 function M.InvalidNextTokenException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
 	local t = { 
@@ -173,8 +173,8 @@ function M.AssertLexiconNotFoundException(struct)
 end
 
 --- Create a structure of type LexiconNotFoundException
--- &lt;p&gt;Amazon Polly can't find the specified lexicon. This could be caused by a lexicon that is missing, its name is misspelled or specifying a lexicon that is in a different region.&lt;/p&gt; &lt;p&gt;Verify that the lexicon exists, is in the region (see &lt;a&gt;ListLexicons&lt;/a&gt;) and that you spelled its name is spelled correctly. Then try again.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Amazon Polly can't find the specified lexicon. This could be caused by a lexicon that is missing, its name is misspelled or specifying a lexicon that is in a different region.&lt;/p&gt; &lt;p&gt;Verify that the lexicon exists, is in the region (see &lt;a&gt;ListLexicons&lt;/a&gt;) and that you spelled its name is spelled correctly. Then try again.&lt;/p&gt;
+-- <p>Amazon Polly can't find the specified lexicon. This could be caused by a lexicon that is missing, its name is misspelled or specifying a lexicon that is in a different region.</p> <p>Verify that the lexicon exists, is in the region (see <a>ListLexicons</a>) and that you spelled its name is spelled correctly. Then try again.</p>
+-- @param message [ErrorMessage] <p>Amazon Polly can't find the specified lexicon. This could be caused by a lexicon that is missing, its name is misspelled or specifying a lexicon that is in a different region.</p> <p>Verify that the lexicon exists, is in the region (see <a>ListLexicons</a>) and that you spelled its name is spelled correctly. Then try again.</p>
 function M.LexiconNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LexiconNotFoundException")
 	local t = { 
@@ -196,8 +196,8 @@ function M.AssertUnsupportedPlsAlphabetException(struct)
 end
 
 --- Create a structure of type UnsupportedPlsAlphabetException
--- &lt;p&gt;The alphabet specified by the lexicon is not a supported alphabet. Valid values are &lt;code&gt;x-sampa&lt;/code&gt; and &lt;code&gt;ipa&lt;/code&gt;.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The alphabet specified by the lexicon is not a supported alphabet. Valid values are &lt;code&gt;x-sampa&lt;/code&gt; and &lt;code&gt;ipa&lt;/code&gt;.&lt;/p&gt;
+-- <p>The alphabet specified by the lexicon is not a supported alphabet. Valid values are <code>x-sampa</code> and <code>ipa</code>.</p>
+-- @param message [ErrorMessage] <p>The alphabet specified by the lexicon is not a supported alphabet. Valid values are <code>x-sampa</code> and <code>ipa</code>.</p>
 function M.UnsupportedPlsAlphabetException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedPlsAlphabetException")
 	local t = { 
@@ -219,8 +219,8 @@ function M.AssertServiceFailureException(struct)
 end
 
 --- Create a structure of type ServiceFailureException
--- &lt;p&gt;An unknown condition has caused a service failure.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;An unknown condition has caused a service failure.&lt;/p&gt;
+-- <p>An unknown condition has caused a service failure.</p>
+-- @param message [ErrorMessage] <p>An unknown condition has caused a service failure.</p>
 function M.ServiceFailureException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceFailureException")
 	local t = { 
@@ -244,8 +244,8 @@ end
 
 --- Create a structure of type DescribeVoicesInput
 --  
--- @param LanguageCode [LanguageCode] &lt;p&gt; The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned. &lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;An opaque pagination token returned from the previous &lt;code&gt;DescribeVoices&lt;/code&gt; operation. If present, this indicates where to continue the listing.&lt;/p&gt;
+-- @param LanguageCode [LanguageCode] <p> The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned. </p>
+-- @param NextToken [NextToken] <p>An opaque pagination token returned from the previous <code>DescribeVoices</code> operation. If present, this indicates where to continue the listing.</p>
 function M.DescribeVoicesInput(LanguageCode, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVoicesInput")
 	local t = { 
@@ -268,8 +268,8 @@ function M.AssertMarksNotSupportedForFormatException(struct)
 end
 
 --- Create a structure of type MarksNotSupportedForFormatException
--- &lt;p&gt;Speech marks are not supported for the &lt;code&gt;OutputFormat&lt;/code&gt; selected. Speech marks are only available for content in &lt;code&gt;json&lt;/code&gt; format.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Speech marks are not supported for the &lt;code&gt;OutputFormat&lt;/code&gt; selected. Speech marks are only available for content in &lt;code&gt;json&lt;/code&gt; format.&lt;/p&gt;
+-- <p>Speech marks are not supported for the <code>OutputFormat</code> selected. Speech marks are only available for content in <code>json</code> format.</p>
+-- @param message [ErrorMessage] <p>Speech marks are not supported for the <code>OutputFormat</code> selected. Speech marks are only available for content in <code>json</code> format.</p>
 function M.MarksNotSupportedForFormatException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MarksNotSupportedForFormatException")
 	local t = { 
@@ -291,8 +291,8 @@ function M.AssertInvalidSsmlException(struct)
 end
 
 --- Create a structure of type InvalidSsmlException
--- &lt;p&gt;The SSML you provided is invalid. Verify the SSML syntax, spelling of tags and values, and then try again.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The SSML you provided is invalid. Verify the SSML syntax, spelling of tags and values, and then try again.&lt;/p&gt;
+-- <p>The SSML you provided is invalid. Verify the SSML syntax, spelling of tags and values, and then try again.</p>
+-- @param message [ErrorMessage] <p>The SSML you provided is invalid. Verify the SSML syntax, spelling of tags and values, and then try again.</p>
 function M.InvalidSsmlException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSsmlException")
 	local t = { 
@@ -316,8 +316,8 @@ end
 
 --- Create a structure of type DescribeVoicesOutput
 --  
--- @param NextToken [NextToken] &lt;p&gt;The pagination token to use in the next request to continue the listing of voices. &lt;code&gt;NextToken&lt;/code&gt; is returned only if the response is truncated.&lt;/p&gt;
--- @param Voices [VoiceList] &lt;p&gt;A list of voices with their properties.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The pagination token to use in the next request to continue the listing of voices. <code>NextToken</code> is returned only if the response is truncated.</p>
+-- @param Voices [VoiceList] <p>A list of voices with their properties.</p>
 function M.DescribeVoicesOutput(NextToken, Voices, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVoicesOutput")
 	local t = { 
@@ -345,13 +345,13 @@ function M.AssertLexiconAttributes(struct)
 end
 
 --- Create a structure of type LexiconAttributes
--- &lt;p&gt;Contains metadata describing the lexicon such as the number of lexemes, language code, and so on. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html&quot;&gt;Managing Lexicons&lt;/a&gt;.&lt;/p&gt;
--- @param LanguageCode [LanguageCode] &lt;p&gt;Language code that the lexicon applies to. A lexicon with a language code such as &quot;en&quot; would be applied to all English languages (en-GB, en-US, en-AUS, en-WLS, and so on.&lt;/p&gt;
--- @param LastModified [LastModified] &lt;p&gt;Date lexicon was last modified (a timestamp value).&lt;/p&gt;
--- @param Alphabet [Alphabet] &lt;p&gt;Phonetic alphabet used in the lexicon. Valid values are &lt;code&gt;ipa&lt;/code&gt; and &lt;code&gt;x-sampa&lt;/code&gt;.&lt;/p&gt;
--- @param LexemesCount [LexemesCount] &lt;p&gt;Number of lexemes in the lexicon.&lt;/p&gt;
--- @param LexiconArn [LexiconArn] &lt;p&gt;Amazon Resource Name (ARN) of the lexicon.&lt;/p&gt;
--- @param Size [Size] &lt;p&gt;Total size of the lexicon, in characters.&lt;/p&gt;
+-- <p>Contains metadata describing the lexicon such as the number of lexemes, language code, and so on. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing Lexicons</a>.</p>
+-- @param LanguageCode [LanguageCode] <p>Language code that the lexicon applies to. A lexicon with a language code such as "en" would be applied to all English languages (en-GB, en-US, en-AUS, en-WLS, and so on.</p>
+-- @param LastModified [LastModified] <p>Date lexicon was last modified (a timestamp value).</p>
+-- @param Alphabet [Alphabet] <p>Phonetic alphabet used in the lexicon. Valid values are <code>ipa</code> and <code>x-sampa</code>.</p>
+-- @param LexemesCount [LexemesCount] <p>Number of lexemes in the lexicon.</p>
+-- @param LexiconArn [LexiconArn] <p>Amazon Resource Name (ARN) of the lexicon.</p>
+-- @param Size [Size] <p>Total size of the lexicon, in characters.</p>
 function M.LexiconAttributes(LanguageCode, LastModified, Alphabet, LexemesCount, LexiconArn, Size, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LexiconAttributes")
 	local t = { 
@@ -380,8 +380,8 @@ end
 
 --- Create a structure of type GetLexiconOutput
 --  
--- @param Lexicon [Lexicon] &lt;p&gt;Lexicon object that provides name and the string content of the lexicon. &lt;/p&gt;
--- @param LexiconAttributes [LexiconAttributes] &lt;p&gt;Metadata of the lexicon, including phonetic alphabetic used, language code, lexicon ARN, number of lexemes defined in the lexicon, and size of lexicon in bytes.&lt;/p&gt;
+-- @param Lexicon [Lexicon] <p>Lexicon object that provides name and the string content of the lexicon. </p>
+-- @param LexiconAttributes [LexiconAttributes] <p>Metadata of the lexicon, including phonetic alphabetic used, language code, lexicon ARN, number of lexemes defined in the lexicon, and size of lexicon in bytes.</p>
 function M.GetLexiconOutput(Lexicon, LexiconAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLexiconOutput")
 	local t = { 
@@ -404,8 +404,8 @@ function M.AssertMaxLexiconsNumberExceededException(struct)
 end
 
 --- Create a structure of type MaxLexiconsNumberExceededException
--- &lt;p&gt;The maximum number of lexicons would be exceeded by this operation.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The maximum number of lexicons would be exceeded by this operation.&lt;/p&gt;
+-- <p>The maximum number of lexicons would be exceeded by this operation.</p>
+-- @param message [ErrorMessage] <p>The maximum number of lexicons would be exceeded by this operation.</p>
 function M.MaxLexiconsNumberExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaxLexiconsNumberExceededException")
 	local t = { 
@@ -429,8 +429,8 @@ end
 
 --- Create a structure of type ListLexiconsOutput
 --  
--- @param NextToken [NextToken] &lt;p&gt;The pagination token to use in the next request to continue the listing of lexicons. &lt;code&gt;NextToken&lt;/code&gt; is returned only if the response is truncated.&lt;/p&gt;
--- @param Lexicons [LexiconDescriptionList] &lt;p&gt;A list of lexicon names and attributes.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The pagination token to use in the next request to continue the listing of lexicons. <code>NextToken</code> is returned only if the response is truncated.</p>
+-- @param Lexicons [LexiconDescriptionList] <p>A list of lexicon names and attributes.</p>
 function M.ListLexiconsOutput(NextToken, Lexicons, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLexiconsOutput")
 	local t = { 
@@ -454,7 +454,7 @@ end
 
 --- Create a structure of type ListLexiconsInput
 --  
--- @param NextToken [NextToken] &lt;p&gt;An opaque pagination token returned from previous &lt;code&gt;ListLexicons&lt;/code&gt; operation. If present, indicates where to continue the list of lexicons.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>An opaque pagination token returned from previous <code>ListLexicons</code> operation. If present, indicates where to continue the list of lexicons.</p>
 function M.ListLexiconsInput(NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLexiconsInput")
 	local t = { 
@@ -476,8 +476,8 @@ function M.AssertTextLengthExceededException(struct)
 end
 
 --- Create a structure of type TextLengthExceededException
--- &lt;p&gt;The value of the &quot;Text&quot; parameter is longer than the accepted limits. The limit for input text is a maximum of 3000 characters total, of which no more than 1500 can be billed characters. SSML tags are not counted as billed characters.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The value of the &quot;Text&quot; parameter is longer than the accepted limits. The limit for input text is a maximum of 3000 characters total, of which no more than 1500 can be billed characters. SSML tags are not counted as billed characters.&lt;/p&gt;
+-- <p>The value of the "Text" parameter is longer than the accepted limits. The limit for input text is a maximum of 3000 characters total, of which no more than 1500 can be billed characters. SSML tags are not counted as billed characters.</p>
+-- @param message [ErrorMessage] <p>The value of the "Text" parameter is longer than the accepted limits. The limit for input text is a maximum of 3000 characters total, of which no more than 1500 can be billed characters. SSML tags are not counted as billed characters.</p>
 function M.TextLengthExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TextLengthExceededException")
 	local t = { 
@@ -503,12 +503,12 @@ function M.AssertVoice(struct)
 end
 
 --- Create a structure of type Voice
--- &lt;p&gt;Description of the voice.&lt;/p&gt;
--- @param Gender [Gender] &lt;p&gt;Gender of the voice.&lt;/p&gt;
--- @param Name [VoiceName] &lt;p&gt;Name of the voice (for example, Salli, Kendra, etc.). This provides a human readable voice name that you might display in your application.&lt;/p&gt;
--- @param LanguageName [LanguageName] &lt;p&gt;Human readable name of the language in English.&lt;/p&gt;
--- @param Id [VoiceId] &lt;p&gt;Amazon Polly assigned voice ID. This is the ID that you specify when calling the &lt;code&gt;SynthesizeSpeech&lt;/code&gt; operation.&lt;/p&gt;
--- @param LanguageCode [LanguageCode] &lt;p&gt;Language code of the voice.&lt;/p&gt;
+-- <p>Description of the voice.</p>
+-- @param Gender [Gender] <p>Gender of the voice.</p>
+-- @param Name [VoiceName] <p>Name of the voice (for example, Salli, Kendra, etc.). This provides a human readable voice name that you might display in your application.</p>
+-- @param LanguageName [LanguageName] <p>Human readable name of the language in English.</p>
+-- @param Id [VoiceId] <p>Amazon Polly assigned voice ID. This is the ID that you specify when calling the <code>SynthesizeSpeech</code> operation.</p>
+-- @param LanguageCode [LanguageCode] <p>Language code of the voice.</p>
 function M.Voice(Gender, Name, LanguageName, Id, LanguageCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Voice")
 	local t = { 
@@ -534,8 +534,8 @@ function M.AssertSsmlMarksNotSupportedForTextTypeException(struct)
 end
 
 --- Create a structure of type SsmlMarksNotSupportedForTextTypeException
--- &lt;p&gt;SSML speech marks are not supported for plain text-type input.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;SSML speech marks are not supported for plain text-type input.&lt;/p&gt;
+-- <p>SSML speech marks are not supported for plain text-type input.</p>
+-- @param message [ErrorMessage] <p>SSML speech marks are not supported for plain text-type input.</p>
 function M.SsmlMarksNotSupportedForTextTypeException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SsmlMarksNotSupportedForTextTypeException")
 	local t = { 
@@ -558,9 +558,9 @@ function M.AssertLexicon(struct)
 end
 
 --- Create a structure of type Lexicon
--- &lt;p&gt;Provides lexicon name and lexicon content in string format. For more information, see &lt;a href=&quot;https://www.w3.org/TR/pronunciation-lexicon/&quot;&gt;Pronunciation Lexicon Specification (PLS) Version 1.0&lt;/a&gt;.&lt;/p&gt;
--- @param Content [LexiconContent] &lt;p&gt;Lexicon content in string format. The content of a lexicon must be in PLS format.&lt;/p&gt;
--- @param Name [LexiconName] &lt;p&gt;Name of the lexicon.&lt;/p&gt;
+-- <p>Provides lexicon name and lexicon content in string format. For more information, see <a href="https://www.w3.org/TR/pronunciation-lexicon/">Pronunciation Lexicon Specification (PLS) Version 1.0</a>.</p>
+-- @param Content [LexiconContent] <p>Lexicon content in string format. The content of a lexicon must be in PLS format.</p>
+-- @param Name [LexiconName] <p>Name of the lexicon.</p>
 function M.Lexicon(Content, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Lexicon")
 	local t = { 
@@ -583,8 +583,8 @@ function M.AssertMaxLexemeLengthExceededException(struct)
 end
 
 --- Create a structure of type MaxLexemeLengthExceededException
--- &lt;p&gt;The maximum size of the lexeme would be exceeded by this operation.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The maximum size of the lexeme would be exceeded by this operation.&lt;/p&gt;
+-- <p>The maximum size of the lexeme would be exceeded by this operation.</p>
+-- @param message [ErrorMessage] <p>The maximum size of the lexeme would be exceeded by this operation.</p>
 function M.MaxLexemeLengthExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaxLexemeLengthExceededException")
 	local t = { 
@@ -610,8 +610,8 @@ end
 
 --- Create a structure of type PutLexiconInput
 --  
--- @param Content [LexiconContent] &lt;p&gt;Content of the PLS lexicon as string data.&lt;/p&gt;
--- @param Name [LexiconName] &lt;p&gt;Name of the lexicon. The name must follow the regular express format [0-9A-Za-z]{1,20}. That is, the name is a case-sensitive alphanumeric string up to 20 characters long. &lt;/p&gt;
+-- @param Content [LexiconContent] <p>Content of the PLS lexicon as string data.</p>
+-- @param Name [LexiconName] <p>Name of the lexicon. The name must follow the regular express format [0-9A-Za-z]{1,20}. That is, the name is a case-sensitive alphanumeric string up to 20 characters long. </p>
 -- Required parameter: Name
 -- Required parameter: Content
 function M.PutLexiconInput(Content, Name, ...)
@@ -636,8 +636,8 @@ function M.AssertUnsupportedPlsLanguageException(struct)
 end
 
 --- Create a structure of type UnsupportedPlsLanguageException
--- &lt;p&gt;The language specified in the lexicon is unsupported. For a list of supported languages, see &lt;a href=&quot;http://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html&quot;&gt;Lexicon Attributes&lt;/a&gt;.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The language specified in the lexicon is unsupported. For a list of supported languages, see &lt;a href=&quot;http://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html&quot;&gt;Lexicon Attributes&lt;/a&gt;.&lt;/p&gt;
+-- <p>The language specified in the lexicon is unsupported. For a list of supported languages, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html">Lexicon Attributes</a>.</p>
+-- @param message [ErrorMessage] <p>The language specified in the lexicon is unsupported. For a list of supported languages, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html">Lexicon Attributes</a>.</p>
 function M.UnsupportedPlsLanguageException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedPlsLanguageException")
 	local t = { 
@@ -660,9 +660,9 @@ function M.AssertLexiconDescription(struct)
 end
 
 --- Create a structure of type LexiconDescription
--- &lt;p&gt;Describes the content of the lexicon.&lt;/p&gt;
--- @param Attributes [LexiconAttributes] &lt;p&gt;Provides lexicon metadata.&lt;/p&gt;
--- @param Name [LexiconName] &lt;p&gt;Name of the lexicon.&lt;/p&gt;
+-- <p>Describes the content of the lexicon.</p>
+-- @param Attributes [LexiconAttributes] <p>Provides lexicon metadata.</p>
+-- @param Name [LexiconName] <p>Name of the lexicon.</p>
 function M.LexiconDescription(Attributes, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LexiconDescription")
 	local t = { 
@@ -687,7 +687,7 @@ end
 
 --- Create a structure of type GetLexiconInput
 --  
--- @param Name [LexiconName] &lt;p&gt;Name of the lexicon.&lt;/p&gt;
+-- @param Name [LexiconName] <p>Name of the lexicon.</p>
 -- Required parameter: Name
 function M.GetLexiconInput(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLexiconInput")
@@ -720,13 +720,13 @@ end
 
 --- Create a structure of type SynthesizeSpeechInput
 --  
--- @param OutputFormat [OutputFormat] &lt;p&gt; The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json. &lt;/p&gt;
--- @param SpeechMarkTypes [SpeechMarkTypeList] &lt;p&gt;The type of speech marks returned for the input text.&lt;/p&gt;
--- @param VoiceId [VoiceId] &lt;p&gt; Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the &lt;a href=&quot;http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html&quot;&gt;DescribeVoices&lt;/a&gt; operation. &lt;/p&gt;
--- @param Text [Text] &lt;p&gt; Input text to synthesize. If you specify &lt;code&gt;ssml&lt;/code&gt; as the &lt;code&gt;TextType&lt;/code&gt;, follow the SSML format for the input text. &lt;/p&gt;
--- @param LexiconNames [LexiconNameList] &lt;p&gt;List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see &lt;a href=&quot;http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html&quot;&gt;PutLexicon&lt;/a&gt;.&lt;/p&gt;
--- @param SampleRate [SampleRate] &lt;p&gt; The audio frequency specified in Hz. &lt;/p&gt; &lt;p&gt;The valid values for &lt;code&gt;mp3&lt;/code&gt; and &lt;code&gt;ogg_vorbis&lt;/code&gt; are &quot;8000&quot;, &quot;16000&quot;, and &quot;22050&quot;. The default value is &quot;22050&quot;. &lt;/p&gt; &lt;p&gt; Valid values for &lt;code&gt;pcm&lt;/code&gt; are &quot;8000&quot; and &quot;16000&quot; The default value is &quot;16000&quot;. &lt;/p&gt;
--- @param TextType [TextType] &lt;p&gt; Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/polly/latest/dg/ssml.html&quot;&gt;Using SSML&lt;/a&gt;.&lt;/p&gt;
+-- @param OutputFormat [OutputFormat] <p> The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json. </p>
+-- @param SpeechMarkTypes [SpeechMarkTypeList] <p>The type of speech marks returned for the input text.</p>
+-- @param VoiceId [VoiceId] <p> Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <a href="http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html">DescribeVoices</a> operation. </p>
+-- @param Text [Text] <p> Input text to synthesize. If you specify <code>ssml</code> as the <code>TextType</code>, follow the SSML format for the input text. </p>
+-- @param LexiconNames [LexiconNameList] <p>List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html">PutLexicon</a>.</p>
+-- @param SampleRate [SampleRate] <p> The audio frequency specified in Hz. </p> <p>The valid values for <code>mp3</code> and <code>ogg_vorbis</code> are "8000", "16000", and "22050". The default value is "22050". </p> <p> Valid values for <code>pcm</code> are "8000" and "16000" The default value is "16000". </p>
+-- @param TextType [TextType] <p> Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/ssml.html">Using SSML</a>.</p>
 -- Required parameter: OutputFormat
 -- Required parameter: Text
 -- Required parameter: VoiceId
@@ -757,8 +757,8 @@ function M.AssertInvalidLexiconException(struct)
 end
 
 --- Create a structure of type InvalidLexiconException
--- &lt;p&gt;Amazon Polly can't find the specified lexicon. Verify that the lexicon's name is spelled correctly, and then try again.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Amazon Polly can't find the specified lexicon. Verify that the lexicon's name is spelled correctly, and then try again.&lt;/p&gt;
+-- <p>Amazon Polly can't find the specified lexicon. Verify that the lexicon's name is spelled correctly, and then try again.</p>
+-- @param message [ErrorMessage] <p>Amazon Polly can't find the specified lexicon. Verify that the lexicon's name is spelled correctly, and then try again.</p>
 function M.InvalidLexiconException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLexiconException")
 	local t = { 

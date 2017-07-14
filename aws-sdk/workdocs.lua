@@ -36,14 +36,14 @@ function M.AssertResourceMetadata(struct)
 end
 
 --- Create a structure of type ResourceMetadata
--- &lt;p&gt;Describes the metadata of a resource.&lt;/p&gt;
--- @param Name [ResourceNameType] &lt;p&gt;The name of the resource.&lt;/p&gt;
--- @param Owner [UserMetadata] &lt;p&gt;The owner of the resource.&lt;/p&gt;
--- @param VersionId [DocumentVersionIdType] &lt;p&gt;The version ID of the resource. This is an optional field and is filled for action on document version.&lt;/p&gt;
--- @param ParentId [ResourceIdType] &lt;p&gt;The parent ID of the resource before a rename operation.&lt;/p&gt;
--- @param OriginalName [ResourceNameType] &lt;p&gt;The original name of the resource prior to a rename operation.&lt;/p&gt;
--- @param Type [ResourceType] &lt;p&gt;The type of resource.&lt;/p&gt;
--- @param Id [ResourceIdType] &lt;p&gt;The ID of the resource.&lt;/p&gt;
+-- <p>Describes the metadata of a resource.</p>
+-- @param Name [ResourceNameType] <p>The name of the resource.</p>
+-- @param Owner [UserMetadata] <p>The owner of the resource.</p>
+-- @param VersionId [DocumentVersionIdType] <p>The version ID of the resource. This is an optional field and is filled for action on document version.</p>
+-- @param ParentId [ResourceIdType] <p>The parent ID of the resource before a rename operation.</p>
+-- @param OriginalName [ResourceNameType] <p>The original name of the resource prior to a rename operation.</p>
+-- @param Type [ResourceType] <p>The type of resource.</p>
+-- @param Id [ResourceIdType] <p>The ID of the resource.</p>
 function M.ResourceMetadata(Name, Owner, VersionId, ParentId, OriginalName, Type, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceMetadata")
 	local t = { 
@@ -71,8 +71,8 @@ function M.AssertServiceUnavailableException(struct)
 end
 
 --- Create a structure of type ServiceUnavailableException
--- &lt;p&gt;One or more of the dependencies is unavailable.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;One or more of the dependencies is unavailable.&lt;/p&gt;
+-- <p>One or more of the dependencies is unavailable.</p>
+-- @param Message [ErrorMessageType] <p>One or more of the dependencies is unavailable.</p>
 function M.ServiceUnavailableException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
 	local t = { 
@@ -96,7 +96,7 @@ end
 
 --- Create a structure of type GetCurrentUserRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token.</p>
 -- Required parameter: AuthenticationToken
 function M.GetCurrentUserRequest(AuthenticationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCurrentUserRequest")
@@ -122,8 +122,8 @@ end
 
 --- Create a structure of type RemoveAllResourcePermissionsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param ResourceId [ResourceIdType] &lt;p&gt;The ID of the resource.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
 -- Required parameter: ResourceId
 function M.RemoveAllResourcePermissionsRequest(AuthenticationToken, ResourceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAllResourcePermissionsRequest")
@@ -152,10 +152,10 @@ end
 
 --- Create a structure of type DescribeResourcePermissionsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param ResourceId [ResourceIdType] &lt;p&gt;The ID of the resource.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call)&lt;/p&gt;
--- @param Limit [LimitType] &lt;p&gt;The maximum number of items to return with this call.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call)</p>
+-- @param Limit [LimitType] <p>The maximum number of items to return with this call.</p>
 -- Required parameter: ResourceId
 function M.DescribeResourcePermissionsRequest(AuthenticationToken, ResourceId, Marker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourcePermissionsRequest")
@@ -203,8 +203,8 @@ end
 
 --- Create a structure of type DescribeRootFoldersResponse
 --  
--- @param Folders [FolderMetadataList] &lt;p&gt;The user's special folders.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;The marker for the next set of results.&lt;/p&gt;
+-- @param Folders [FolderMetadataList] <p>The user's special folders.</p>
+-- @param Marker [PageMarkerType] <p>The marker for the next set of results.</p>
 function M.DescribeRootFoldersResponse(Folders, Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRootFoldersResponse")
 	local t = { 
@@ -229,8 +229,8 @@ end
 
 --- Create a structure of type GetDocumentVersionResponse
 --  
--- @param CustomMetadata [CustomMetadataMap] &lt;p&gt;The custom metadata on the document version.&lt;/p&gt;
--- @param Metadata [DocumentVersionMetadata] &lt;p&gt;The version metadata.&lt;/p&gt;
+-- @param CustomMetadata [CustomMetadataMap] <p>The custom metadata on the document version.</p>
+-- @param Metadata [DocumentVersionMetadata] <p>The version metadata.</p>
 function M.GetDocumentVersionResponse(CustomMetadata, Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentVersionResponse")
 	local t = { 
@@ -253,8 +253,8 @@ function M.AssertProhibitedStateException(struct)
 end
 
 --- Create a structure of type ProhibitedStateException
--- &lt;p&gt;The specified document version is not in the INITIALIZED state.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The specified document version is not in the INITIALIZED state.&lt;/p&gt;
+-- <p>The specified document version is not in the INITIALIZED state.</p>
+-- @param Message [ErrorMessageType] <p>The specified document version is not in the INITIALIZED state.</p>
 function M.ProhibitedStateException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProhibitedStateException")
 	local t = { 
@@ -285,14 +285,14 @@ end
 
 --- Create a structure of type InitiateDocumentVersionUploadRequest
 --  
--- @param ContentType [DocumentContentType] &lt;p&gt;The content type of the document.&lt;/p&gt;
--- @param Name [ResourceNameType] &lt;p&gt;The name of the document.&lt;/p&gt;
--- @param ParentFolderId [ResourceIdType] &lt;p&gt;The ID of the parent folder.&lt;/p&gt;
--- @param ContentCreatedTimestamp [TimestampType] &lt;p&gt;The time stamp when the content of the document was originally created.&lt;/p&gt;
--- @param DocumentSizeInBytes [SizeType] &lt;p&gt;The size of the document, in bytes.&lt;/p&gt;
--- @param ContentModifiedTimestamp [TimestampType] &lt;p&gt;The time stamp when the content of the document was modified.&lt;/p&gt;
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param Id [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- @param ContentType [DocumentContentType] <p>The content type of the document.</p>
+-- @param Name [ResourceNameType] <p>The name of the document.</p>
+-- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- @param ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
+-- @param DocumentSizeInBytes [SizeType] <p>The size of the document, in bytes.</p>
+-- @param ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param Id [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: ParentFolderId
 function M.InitiateDocumentVersionUploadRequest(ContentType, Name, ParentFolderId, ContentCreatedTimestamp, DocumentSizeInBytes, ContentModifiedTimestamp, AuthenticationToken, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InitiateDocumentVersionUploadRequest")
@@ -325,9 +325,9 @@ end
 
 --- Create a structure of type DescribeFolderContentsResponse
 --  
--- @param Folders [FolderMetadataList] &lt;p&gt;The subfolders in the specified folder.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
--- @param Documents [DocumentMetadataList] &lt;p&gt;The documents in the specified folder.&lt;/p&gt;
+-- @param Folders [FolderMetadataList] <p>The subfolders in the specified folder.</p>
+-- @param Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param Documents [DocumentMetadataList] <p>The documents in the specified folder.</p>
 function M.DescribeFolderContentsResponse(Folders, Marker, Documents, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFolderContentsResponse")
 	local t = { 
@@ -355,12 +355,12 @@ function M.AssertUserMetadata(struct)
 end
 
 --- Create a structure of type UserMetadata
--- &lt;p&gt;Describes the metadata of the user.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The username of the user.&lt;/p&gt;
--- @param EmailAddress [EmailAddressType] &lt;p&gt;The email address of the user.&lt;/p&gt;
--- @param GivenName [UserAttributeValueType] &lt;p&gt;The given name of the user before a rename operation.&lt;/p&gt;
--- @param Surname [UserAttributeValueType] &lt;p&gt;The surname of the user.&lt;/p&gt;
--- @param Id [IdType] &lt;p&gt;The ID of the user.&lt;/p&gt;
+-- <p>Describes the metadata of the user.</p>
+-- @param Username [UsernameType] <p>The username of the user.</p>
+-- @param EmailAddress [EmailAddressType] <p>The email address of the user.</p>
+-- @param GivenName [UserAttributeValueType] <p>The given name of the user before a rename operation.</p>
+-- @param Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- @param Id [IdType] <p>The ID of the user.</p>
 function M.UserMetadata(Username, EmailAddress, GivenName, Surname, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserMetadata")
 	local t = { 
@@ -389,8 +389,8 @@ end
 
 --- Create a structure of type DeleteFolderContentsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param FolderId [ResourceIdType] &lt;p&gt;The ID of the folder.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- Required parameter: FolderId
 function M.DeleteFolderContentsRequest(AuthenticationToken, FolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFolderContentsRequest")
@@ -415,7 +415,7 @@ end
 
 --- Create a structure of type ActivateUserResponse
 --  
--- @param User [User] &lt;p&gt;The user information.&lt;/p&gt;
+-- @param User [User] <p>The user information.</p>
 function M.ActivateUserResponse(User, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivateUserResponse")
 	local t = { 
@@ -437,8 +437,8 @@ function M.AssertTooManyLabelsException(struct)
 end
 
 --- Create a structure of type TooManyLabelsException
--- &lt;p&gt;The limit has been reached on the number of labels for the specified resource.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The limit has been reached on the number of labels for the specified resource.&lt;/p&gt;
+-- <p>The limit has been reached on the number of labels for the specified resource.</p>
+-- @param Message [ErrorMessageType] <p>The limit has been reached on the number of labels for the specified resource.</p>
 function M.TooManyLabelsException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyLabelsException")
 	local t = { 
@@ -465,10 +465,10 @@ function M.AssertSharePrincipal(struct)
 end
 
 --- Create a structure of type SharePrincipal
--- &lt;p&gt;Describes the recipient type and ID, if available.&lt;/p&gt;
--- @param Role [RoleType] &lt;p&gt;The role of the recipient.&lt;/p&gt;
--- @param Type [PrincipalType] &lt;p&gt;The type of the recipient.&lt;/p&gt;
--- @param Id [IdType] &lt;p&gt;The ID of the recipient.&lt;/p&gt;
+-- <p>Describes the recipient type and ID, if available.</p>
+-- @param Role [RoleType] <p>The role of the recipient.</p>
+-- @param Type [PrincipalType] <p>The type of the recipient.</p>
+-- @param Id [IdType] <p>The ID of the recipient.</p>
 -- Required parameter: Id
 -- Required parameter: Type
 -- Required parameter: Role
@@ -501,11 +501,11 @@ end
 
 --- Create a structure of type DeleteCustomMetadataRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param ResourceId [ResourceIdType] &lt;p&gt;The ID of the resource, either a document or folder.&lt;/p&gt;
--- @param VersionId [DocumentVersionIdType] &lt;p&gt;The ID of the version, if the custom metadata is being deleted from a document version.&lt;/p&gt;
--- @param DeleteAll [BooleanType] &lt;p&gt;Flag to indicate removal of all custom metadata properties from the specified resource.&lt;/p&gt;
--- @param Keys [CustomMetadataKeyList] &lt;p&gt;List of properties to remove.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param ResourceId [ResourceIdType] <p>The ID of the resource, either a document or folder.</p>
+-- @param VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being deleted from a document version.</p>
+-- @param DeleteAll [BooleanType] <p>Flag to indicate removal of all custom metadata properties from the specified resource.</p>
+-- @param Keys [CustomMetadataKeyList] <p>List of properties to remove.</p>
 -- Required parameter: ResourceId
 function M.DeleteCustomMetadataRequest(AuthenticationToken, ResourceId, VersionId, DeleteAll, Keys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCustomMetadataRequest")
@@ -537,9 +537,9 @@ end
 
 --- Create a structure of type CreateLabelsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param ResourceId [ResourceIdType] &lt;p&gt;The ID of the resource.&lt;/p&gt;
--- @param Labels [Labels] &lt;p&gt;List of labels to add to the resource.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param Labels [Labels] <p>List of labels to add to the resource.</p>
 -- Required parameter: ResourceId
 -- Required parameter: Labels
 function M.CreateLabelsRequest(AuthenticationToken, ResourceId, Labels, ...)
@@ -569,8 +569,8 @@ end
 
 --- Create a structure of type DeleteNotificationSubscriptionRequest
 --  
--- @param OrganizationId [IdType] &lt;p&gt;The ID of the organization.&lt;/p&gt;
--- @param SubscriptionId [IdType] &lt;p&gt;The ID of the subscription.&lt;/p&gt;
+-- @param OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param SubscriptionId [IdType] <p>The ID of the subscription.</p>
 -- Required parameter: SubscriptionId
 -- Required parameter: OrganizationId
 function M.DeleteNotificationSubscriptionRequest(OrganizationId, SubscriptionId, ...)
@@ -603,10 +603,10 @@ end
 
 --- Create a structure of type CreateNotificationSubscriptionRequest
 --  
--- @param OrganizationId [IdType] &lt;p&gt;The ID of the organization.&lt;/p&gt;
--- @param SubscriptionType [SubscriptionType] &lt;p&gt;The notification type.&lt;/p&gt;
--- @param Endpoint [SubscriptionEndPointType] &lt;p&gt;The endpoint to receive the notifications. If the protocol is HTTPS, the endpoint is a URL that begins with &quot;https://&quot;.&lt;/p&gt;
--- @param Protocol [SubscriptionProtocolType] &lt;p&gt;The protocol to use. The supported value is https, which delivers JSON-encoded messasges using HTTPS POST.&lt;/p&gt;
+-- @param OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param SubscriptionType [SubscriptionType] <p>The notification type.</p>
+-- @param Endpoint [SubscriptionEndPointType] <p>The endpoint to receive the notifications. If the protocol is HTTPS, the endpoint is a URL that begins with "https://".</p>
+-- @param Protocol [SubscriptionProtocolType] <p>The protocol to use. The supported value is https, which delivers JSON-encoded messasges using HTTPS POST.</p>
 -- Required parameter: OrganizationId
 -- Required parameter: Endpoint
 -- Required parameter: Protocol
@@ -647,20 +647,20 @@ function M.AssertDocumentVersionMetadata(struct)
 end
 
 --- Create a structure of type DocumentVersionMetadata
--- &lt;p&gt;Describes a version of a document.&lt;/p&gt;
--- @param Status [DocumentStatusType] &lt;p&gt;The status of the document.&lt;/p&gt;
--- @param ContentType [DocumentContentType] &lt;p&gt;The content type of the document.&lt;/p&gt;
--- @param Name [ResourceNameType] &lt;p&gt;The name of the version.&lt;/p&gt;
--- @param ModifiedTimestamp [TimestampType] &lt;p&gt;The time stamp when the document was last uploaded.&lt;/p&gt;
--- @param Thumbnail [DocumentThumbnailUrlMap] &lt;p&gt;The thumbnail of the document.&lt;/p&gt;
--- @param CreatedTimestamp [TimestampType] &lt;p&gt;The time stamp when the document was first uploaded.&lt;/p&gt;
--- @param Source [DocumentSourceUrlMap] &lt;p&gt;The source of the document.&lt;/p&gt;
--- @param CreatorId [IdType] &lt;p&gt;The ID of the creator.&lt;/p&gt;
--- @param ContentCreatedTimestamp [TimestampType] &lt;p&gt;The time stamp when the content of the document was originally created.&lt;/p&gt;
--- @param ContentModifiedTimestamp [TimestampType] &lt;p&gt;The time stamp when the content of the document was modified.&lt;/p&gt;
--- @param Signature [HashType] &lt;p&gt;The signature of the document.&lt;/p&gt;
--- @param Id [DocumentVersionIdType] &lt;p&gt;The ID of the version.&lt;/p&gt;
--- @param Size [SizeType] &lt;p&gt;The size of the document, in bytes.&lt;/p&gt;
+-- <p>Describes a version of a document.</p>
+-- @param Status [DocumentStatusType] <p>The status of the document.</p>
+-- @param ContentType [DocumentContentType] <p>The content type of the document.</p>
+-- @param Name [ResourceNameType] <p>The name of the version.</p>
+-- @param ModifiedTimestamp [TimestampType] <p>The time stamp when the document was last uploaded.</p>
+-- @param Thumbnail [DocumentThumbnailUrlMap] <p>The thumbnail of the document.</p>
+-- @param CreatedTimestamp [TimestampType] <p>The time stamp when the document was first uploaded.</p>
+-- @param Source [DocumentSourceUrlMap] <p>The source of the document.</p>
+-- @param CreatorId [IdType] <p>The ID of the creator.</p>
+-- @param ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
+-- @param ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
+-- @param Signature [HashType] <p>The signature of the document.</p>
+-- @param Id [DocumentVersionIdType] <p>The ID of the version.</p>
+-- @param Size [SizeType] <p>The size of the document, in bytes.</p>
 function M.DocumentVersionMetadata(Status, ContentType, Name, ModifiedTimestamp, Thumbnail, CreatedTimestamp, Source, CreatorId, ContentCreatedTimestamp, ContentModifiedTimestamp, Signature, Id, Size, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentVersionMetadata")
 	local t = { 
@@ -696,8 +696,8 @@ end
 
 --- Create a structure of type InitiateDocumentVersionUploadResponse
 --  
--- @param UploadMetadata [UploadMetadata] &lt;p&gt;The upload metadata.&lt;/p&gt;
--- @param Metadata [DocumentMetadata] &lt;p&gt;The document metadata.&lt;/p&gt;
+-- @param UploadMetadata [UploadMetadata] <p>The upload metadata.</p>
+-- @param Metadata [DocumentMetadata] <p>The document metadata.</p>
 function M.InitiateDocumentVersionUploadResponse(UploadMetadata, Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InitiateDocumentVersionUploadResponse")
 	local t = { 
@@ -723,8 +723,8 @@ end
 
 --- Create a structure of type DeleteUserRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param UserId [IdType] &lt;p&gt;The ID of the user.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param UserId [IdType] <p>The ID of the user.</p>
 -- Required parameter: UserId
 function M.DeleteUserRequest(AuthenticationToken, UserId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserRequest")
@@ -753,10 +753,10 @@ end
 
 --- Create a structure of type DeleteLabelsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param ResourceId [ResourceIdType] &lt;p&gt;The ID of the resource.&lt;/p&gt;
--- @param Labels [Labels] &lt;p&gt;List of labels to delete from the resource.&lt;/p&gt;
--- @param DeleteAll [BooleanType] &lt;p&gt;Flag to request removal of all labels from the specified resource.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param Labels [Labels] <p>List of labels to delete from the resource.</p>
+-- @param DeleteAll [BooleanType] <p>Flag to request removal of all labels from the specified resource.</p>
 -- Required parameter: ResourceId
 function M.DeleteLabelsRequest(AuthenticationToken, ResourceId, Labels, DeleteAll, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLabelsRequest")
@@ -783,7 +783,7 @@ end
 
 --- Create a structure of type UpdateUserResponse
 --  
--- @param User [User] &lt;p&gt;The user information.&lt;/p&gt;
+-- @param User [User] <p>The user information.</p>
 function M.UpdateUserResponse(User, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserResponse")
 	local t = { 
@@ -811,11 +811,11 @@ end
 
 --- Create a structure of type GetDocumentPathRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param Fields [FieldNamesType] &lt;p&gt;A comma-separated list of values. Specify &lt;code&gt;NAME&lt;/code&gt; to include the names of the parent folders.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;This value is not supported.&lt;/p&gt;
--- @param Limit [LimitType] &lt;p&gt;The maximum number of levels in the hierarchy to return.&lt;/p&gt;
--- @param DocumentId [IdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param Fields [FieldNamesType] <p>A comma-separated list of values. Specify <code>NAME</code> to include the names of the parent folders.</p>
+-- @param Marker [PageMarkerType] <p>This value is not supported.</p>
+-- @param Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
+-- @param DocumentId [IdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 function M.GetDocumentPathRequest(AuthenticationToken, Fields, Marker, Limit, DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentPathRequest")
@@ -842,8 +842,8 @@ function M.AssertUnauthorizedResourceAccessException(struct)
 end
 
 --- Create a structure of type UnauthorizedResourceAccessException
--- &lt;p&gt;The caller does not have access to perform the action on the resource.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The caller does not have access to perform the action on the resource.&lt;/p&gt;
+-- <p>The caller does not have access to perform the action on the resource.</p>
+-- @param Message [ErrorMessageType] <p>The caller does not have access to perform the action on the resource.</p>
 function M.UnauthorizedResourceAccessException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedResourceAccessException")
 	local t = { 
@@ -865,8 +865,8 @@ function M.AssertConcurrentModificationException(struct)
 end
 
 --- Create a structure of type ConcurrentModificationException
--- &lt;p&gt;The resource hierarchy is changing.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The resource hierarchy is changing.&lt;/p&gt;
+-- <p>The resource hierarchy is changing.</p>
+-- @param Message [ErrorMessageType] <p>The resource hierarchy is changing.</p>
 function M.ConcurrentModificationException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
@@ -891,8 +891,8 @@ end
 
 --- Create a structure of type ActivateUserRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param UserId [IdType] &lt;p&gt;The ID of the user.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param UserId [IdType] <p>The ID of the user.</p>
 -- Required parameter: UserId
 function M.ActivateUserRequest(AuthenticationToken, UserId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivateUserRequest")
@@ -923,13 +923,13 @@ end
 
 --- Create a structure of type DescribeActivitiesRequest
 --  
--- @param OrganizationId [IdType] &lt;p&gt;The ID of the organization. This is a mandatory parameter when using administrative API (SigV4) requests.&lt;/p&gt;
--- @param UserId [IdType] &lt;p&gt;The ID of the user who performed the action. The response includes activities pertaining to this user. This is an optional parameter and is only applicable for administrative API (SigV4) requests.&lt;/p&gt;
--- @param Marker [MarkerType] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param Limit [LimitType] &lt;p&gt;The maximum number of items to return.&lt;/p&gt;
--- @param StartTime [TimestampType] &lt;p&gt;The timestamp that determines the starting time of the activities; the response includes the activities performed after the specified timestamp.&lt;/p&gt;
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param EndTime [TimestampType] &lt;p&gt;The timestamp that determines the end time of the activities; the response includes the activities performed before the specified timestamp.&lt;/p&gt;
+-- @param OrganizationId [IdType] <p>The ID of the organization. This is a mandatory parameter when using administrative API (SigV4) requests.</p>
+-- @param UserId [IdType] <p>The ID of the user who performed the action. The response includes activities pertaining to this user. This is an optional parameter and is only applicable for administrative API (SigV4) requests.</p>
+-- @param Marker [MarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param Limit [LimitType] <p>The maximum number of items to return.</p>
+-- @param StartTime [TimestampType] <p>The timestamp that determines the starting time of the activities; the response includes the activities performed after the specified timestamp.</p>
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param EndTime [TimestampType] <p>The timestamp that determines the end time of the activities; the response includes the activities performed before the specified timestamp.</p>
 function M.DescribeActivitiesRequest(OrganizationId, UserId, Marker, Limit, StartTime, AuthenticationToken, EndTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivitiesRequest")
 	local t = { 
@@ -959,8 +959,8 @@ end
 
 --- Create a structure of type DescribeNotificationSubscriptionsResponse
 --  
--- @param Marker [PageMarkerType] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
--- @param Subscriptions [SubscriptionList] &lt;p&gt;The subscriptions.&lt;/p&gt;
+-- @param Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param Subscriptions [SubscriptionList] <p>The subscriptions.</p>
 function M.DescribeNotificationSubscriptionsResponse(Marker, Subscriptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationSubscriptionsResponse")
 	local t = { 
@@ -994,14 +994,14 @@ end
 
 --- Create a structure of type CreateCommentRequest
 --  
--- @param Text [CommentTextType] &lt;p&gt;The text of the comment.&lt;/p&gt;
--- @param ParentId [CommentIdType] &lt;p&gt;The ID of the parent comment.&lt;/p&gt;
--- @param Visibility [CommentVisibilityType] &lt;p&gt;The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.&lt;/p&gt;
--- @param NotifyCollaborators [BooleanType] &lt;p&gt;Set this parameter to TRUE to send an email out to the document collaborators after the comment is created.&lt;/p&gt;
--- @param VersionId [DocumentVersionIdType] &lt;p&gt;The ID of the document version.&lt;/p&gt;
--- @param ThreadId [CommentIdType] &lt;p&gt;The ID of the root comment in the thread.&lt;/p&gt;
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param DocumentId [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- @param Text [CommentTextType] <p>The text of the comment.</p>
+-- @param ParentId [CommentIdType] <p>The ID of the parent comment.</p>
+-- @param Visibility [CommentVisibilityType] <p>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.</p>
+-- @param NotifyCollaborators [BooleanType] <p>Set this parameter to TRUE to send an email out to the document collaborators after the comment is created.</p>
+-- @param VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
+-- @param ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
 -- Required parameter: Text
@@ -1037,9 +1037,9 @@ end
 
 --- Create a structure of type CreateFolderRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param Name [ResourceNameType] &lt;p&gt;The name of the new folder.&lt;/p&gt;
--- @param ParentFolderId [ResourceIdType] &lt;p&gt;The ID of the parent folder.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param Name [ResourceNameType] <p>The name of the new folder.</p>
+-- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
 -- Required parameter: ParentFolderId
 function M.CreateFolderRequest(AuthenticationToken, Name, ParentFolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFolderRequest")
@@ -1065,7 +1065,7 @@ end
 
 --- Create a structure of type CreateUserResponse
 --  
--- @param User [User] &lt;p&gt;The user information.&lt;/p&gt;
+-- @param User [User] <p>The user information.</p>
 function M.CreateUserResponse(User, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserResponse")
 	local t = { 
@@ -1089,8 +1089,8 @@ end
 
 --- Create a structure of type DescribeCommentsResponse
 --  
--- @param Marker [MarkerType] &lt;p&gt;The marker for the next set of results. This marker was received from a previous call.&lt;/p&gt;
--- @param Comments [CommentList] &lt;p&gt;The list of comments for the specified document version.&lt;/p&gt;
+-- @param Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
+-- @param Comments [CommentList] <p>The list of comments for the specified document version.</p>
 function M.DescribeCommentsResponse(Marker, Comments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommentsResponse")
 	local t = { 
@@ -1114,7 +1114,7 @@ end
 
 --- Create a structure of type GetFolderPathResponse
 --  
--- @param Path [ResourcePath] &lt;p&gt;The path information.&lt;/p&gt;
+-- @param Path [ResourcePath] <p>The path information.</p>
 function M.GetFolderPathResponse(Path, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderPathResponse")
 	local t = { 
@@ -1139,8 +1139,8 @@ end
 
 --- Create a structure of type DeleteFolderRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param FolderId [ResourceIdType] &lt;p&gt;The ID of the folder.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- Required parameter: FolderId
 function M.DeleteFolderRequest(AuthenticationToken, FolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFolderRequest")
@@ -1171,15 +1171,15 @@ function M.AssertDocumentMetadata(struct)
 end
 
 --- Create a structure of type DocumentMetadata
--- &lt;p&gt;Describes the document.&lt;/p&gt;
--- @param ResourceState [ResourceStateType] &lt;p&gt;The resource state.&lt;/p&gt;
--- @param Labels [Labels] &lt;p&gt;List of labels on the document.&lt;/p&gt;
--- @param ModifiedTimestamp [TimestampType] &lt;p&gt;The time when the document was updated.&lt;/p&gt;
--- @param ParentFolderId [ResourceIdType] &lt;p&gt;The ID of the parent folder.&lt;/p&gt;
--- @param CreatedTimestamp [TimestampType] &lt;p&gt;The time when the document was created.&lt;/p&gt;
--- @param LatestVersionMetadata [DocumentVersionMetadata] &lt;p&gt;The latest version of the document.&lt;/p&gt;
--- @param CreatorId [IdType] &lt;p&gt;The ID of the creator.&lt;/p&gt;
--- @param Id [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- <p>Describes the document.</p>
+-- @param ResourceState [ResourceStateType] <p>The resource state.</p>
+-- @param Labels [Labels] <p>List of labels on the document.</p>
+-- @param ModifiedTimestamp [TimestampType] <p>The time when the document was updated.</p>
+-- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- @param CreatedTimestamp [TimestampType] <p>The time when the document was created.</p>
+-- @param LatestVersionMetadata [DocumentVersionMetadata] <p>The latest version of the document.</p>
+-- @param CreatorId [IdType] <p>The ID of the creator.</p>
+-- @param Id [ResourceIdType] <p>The ID of the document.</p>
 function M.DocumentMetadata(ResourceState, Labels, ModifiedTimestamp, ParentFolderId, CreatedTimestamp, LatestVersionMetadata, CreatorId, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentMetadata")
 	local t = { 
@@ -1208,8 +1208,8 @@ function M.AssertDocumentLockedForCommentsException(struct)
 end
 
 --- Create a structure of type DocumentLockedForCommentsException
--- &lt;p&gt;This exception is thrown when the document is locked for comments and user tries to create or delete a comment on that document.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;This exception is thrown when the document is locked for comments and user tries to create or delete a comment on that document.&lt;/p&gt;
+-- <p>This exception is thrown when the document is locked for comments and user tries to create or delete a comment on that document.</p>
+-- @param Message [ErrorMessageType] <p>This exception is thrown when the document is locked for comments and user tries to create or delete a comment on that document.</p>
 function M.DocumentLockedForCommentsException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentLockedForCommentsException")
 	local t = { 
@@ -1237,11 +1237,11 @@ end
 
 --- Create a structure of type UpdateDocumentRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param ResourceState [ResourceStateType] &lt;p&gt;The resource state of the document. Note that only ACTIVE and RECYCLED are supported.&lt;/p&gt;
--- @param Name [ResourceNameType] &lt;p&gt;The name of the document.&lt;/p&gt;
--- @param DocumentId [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
--- @param ParentFolderId [ResourceIdType] &lt;p&gt;The ID of the parent folder.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param ResourceState [ResourceStateType] <p>The resource state of the document. Note that only ACTIVE and RECYCLED are supported.</p>
+-- @param Name [ResourceNameType] <p>The name of the document.</p>
+-- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
 -- Required parameter: DocumentId
 function M.UpdateDocumentRequest(AuthenticationToken, ResourceState, Name, DocumentId, ParentFolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentRequest")
@@ -1270,8 +1270,8 @@ end
 
 --- Create a structure of type DescribeResourcePermissionsResponse
 --  
--- @param Marker [PageMarkerType] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
--- @param Principals [PrincipalList] &lt;p&gt;The principals.&lt;/p&gt;
+-- @param Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param Principals [PrincipalList] <p>The principals.</p>
 function M.DescribeResourcePermissionsResponse(Marker, Principals, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourcePermissionsResponse")
 	local t = { 
@@ -1301,11 +1301,11 @@ end
 
 --- Create a structure of type GetDocumentVersionRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param Fields [FieldNamesType] &lt;p&gt;A comma-separated list of values. Specify &quot;SOURCE&quot; to include a URL for the source document.&lt;/p&gt;
--- @param VersionId [DocumentVersionIdType] &lt;p&gt;The version ID of the document.&lt;/p&gt;
--- @param IncludeCustomMetadata [BooleanType] &lt;p&gt;Set this to TRUE to include custom metadata in the response.&lt;/p&gt;
--- @param DocumentId [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param Fields [FieldNamesType] <p>A comma-separated list of values. Specify "SOURCE" to include a URL for the source document.</p>
+-- @param VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
+-- @param IncludeCustomMetadata [BooleanType] <p>Set this to TRUE to include custom metadata in the response.</p>
+-- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
 function M.GetDocumentVersionRequest(AuthenticationToken, Fields, VersionId, IncludeCustomMetadata, DocumentId, ...)
@@ -1332,7 +1332,7 @@ function M.AssertDeactivatingLastSystemUserException(struct)
 end
 
 --- Create a structure of type DeactivatingLastSystemUserException
--- &lt;p&gt;The last user in the organization is being deactivated.&lt;/p&gt;
+-- <p>The last user in the organization is being deactivated.</p>
 function M.DeactivatingLastSystemUserException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeactivatingLastSystemUserException")
 	local t = { 
@@ -1357,12 +1357,12 @@ function M.AssertShareResult(struct)
 end
 
 --- Create a structure of type ShareResult
--- &lt;p&gt;Describes the share results of a resource.&lt;/p&gt;
--- @param Status [ShareStatusType] &lt;p&gt;The status.&lt;/p&gt;
--- @param StatusMessage [MessageType] &lt;p&gt;The status message.&lt;/p&gt;
--- @param Role [RoleType] &lt;p&gt;The role.&lt;/p&gt;
--- @param ShareId [ResourceIdType] &lt;p&gt;The ID of the resource that was shared.&lt;/p&gt;
--- @param PrincipalId [IdType] &lt;p&gt;The ID of the principal.&lt;/p&gt;
+-- <p>Describes the share results of a resource.</p>
+-- @param Status [ShareStatusType] <p>The status.</p>
+-- @param StatusMessage [MessageType] <p>The status message.</p>
+-- @param Role [RoleType] <p>The role.</p>
+-- @param ShareId [ResourceIdType] <p>The ID of the resource that was shared.</p>
+-- @param PrincipalId [IdType] <p>The ID of the principal.</p>
 function M.ShareResult(Status, StatusMessage, Role, ShareId, PrincipalId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ShareResult")
 	local t = { 
@@ -1390,8 +1390,8 @@ end
 
 --- Create a structure of type GetDocumentResponse
 --  
--- @param CustomMetadata [CustomMetadataMap] &lt;p&gt;The custom metadata on the document.&lt;/p&gt;
--- @param Metadata [DocumentMetadata] &lt;p&gt;The metadata details of the document.&lt;/p&gt;
+-- @param CustomMetadata [CustomMetadataMap] <p>The custom metadata on the document.</p>
+-- @param Metadata [DocumentMetadata] <p>The metadata details of the document.</p>
 function M.GetDocumentResponse(CustomMetadata, Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentResponse")
 	local t = { 
@@ -1420,11 +1420,11 @@ end
 
 --- Create a structure of type GetFolderPathRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param Fields [FieldNamesType] &lt;p&gt;A comma-separated list of values. Specify &quot;NAME&quot; to include the names of the parent folders.&lt;/p&gt;
--- @param FolderId [IdType] &lt;p&gt;The ID of the folder.&lt;/p&gt;
--- @param Limit [LimitType] &lt;p&gt;The maximum number of levels in the hierarchy to return.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;This value is not supported.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param Fields [FieldNamesType] <p>A comma-separated list of values. Specify "NAME" to include the names of the parent folders.</p>
+-- @param FolderId [IdType] <p>The ID of the folder.</p>
+-- @param Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
+-- @param Marker [PageMarkerType] <p>This value is not supported.</p>
 -- Required parameter: FolderId
 function M.GetFolderPathRequest(AuthenticationToken, Fields, FolderId, Limit, Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderPathRequest")
@@ -1452,7 +1452,7 @@ end
 
 --- Create a structure of type AddResourcePermissionsResponse
 --  
--- @param ShareResults [ShareResultsList] &lt;p&gt;The share results.&lt;/p&gt;
+-- @param ShareResults [ShareResultsList] <p>The share results.</p>
 function M.AddResourcePermissionsResponse(ShareResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddResourcePermissionsResponse")
 	local t = { 
@@ -1476,8 +1476,8 @@ end
 
 --- Create a structure of type GetFolderResponse
 --  
--- @param CustomMetadata [CustomMetadataMap] &lt;p&gt;The custom metadata on the folder.&lt;/p&gt;
--- @param Metadata [FolderMetadata] &lt;p&gt;The metadata of the folder.&lt;/p&gt;
+-- @param CustomMetadata [CustomMetadataMap] <p>The custom metadata on the folder.</p>
+-- @param Metadata [FolderMetadata] <p>The metadata of the folder.</p>
 function M.GetFolderResponse(CustomMetadata, Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderResponse")
 	local t = { 
@@ -1502,10 +1502,10 @@ function M.AssertSubscription(struct)
 end
 
 --- Create a structure of type Subscription
--- &lt;p&gt;Describes a subscription.&lt;/p&gt;
--- @param SubscriptionId [IdType] &lt;p&gt;The ID of the subscription.&lt;/p&gt;
--- @param EndPoint [SubscriptionEndPointType] &lt;p&gt;The endpoint of the subscription.&lt;/p&gt;
--- @param Protocol [SubscriptionProtocolType] &lt;p&gt;The protocol of the subscription.&lt;/p&gt;
+-- <p>Describes a subscription.</p>
+-- @param SubscriptionId [IdType] <p>The ID of the subscription.</p>
+-- @param EndPoint [SubscriptionEndPointType] <p>The endpoint of the subscription.</p>
+-- @param Protocol [SubscriptionProtocolType] <p>The protocol of the subscription.</p>
 function M.Subscription(SubscriptionId, EndPoint, Protocol, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
 	local t = { 
@@ -1529,8 +1529,8 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;The maximum of 100,000 folders under the parent folder has been exceeded.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The maximum of 100,000 folders under the parent folder has been exceeded.&lt;/p&gt;
+-- <p>The maximum of 100,000 folders under the parent folder has been exceeded.</p>
+-- @param Message [ErrorMessageType] <p>The maximum of 100,000 folders under the parent folder has been exceeded.</p>
 function M.LimitExceededException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -1553,9 +1553,9 @@ function M.AssertResourcePathComponent(struct)
 end
 
 --- Create a structure of type ResourcePathComponent
--- &lt;p&gt;Describes the resource path.&lt;/p&gt;
--- @param Id [IdType] &lt;p&gt;The ID of the resource path.&lt;/p&gt;
--- @param Name [ResourceNameType] &lt;p&gt;The name of the resource path.&lt;/p&gt;
+-- <p>Describes the resource path.</p>
+-- @param Id [IdType] <p>The ID of the resource path.</p>
+-- @param Name [ResourceNameType] <p>The name of the resource path.</p>
 function M.ResourcePathComponent(Id, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourcePathComponent")
 	local t = { 
@@ -1581,8 +1581,8 @@ end
 
 --- Create a structure of type DeactivateUserRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param UserId [IdType] &lt;p&gt;The ID of the user.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param UserId [IdType] <p>The ID of the user.</p>
 -- Required parameter: UserId
 function M.DeactivateUserRequest(AuthenticationToken, UserId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeactivateUserRequest")
@@ -1607,7 +1607,7 @@ end
 
 --- Create a structure of type CreateFolderResponse
 --  
--- @param Metadata [FolderMetadata] &lt;p&gt;The metadata of the folder.&lt;/p&gt;
+-- @param Metadata [FolderMetadata] <p>The metadata of the folder.</p>
 function M.CreateFolderResponse(Metadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateFolderResponse")
 	local t = { 
@@ -1628,7 +1628,7 @@ function M.AssertUnauthorizedOperationException(struct)
 end
 
 --- Create a structure of type UnauthorizedOperationException
--- &lt;p&gt;The operation is not permitted.&lt;/p&gt;
+-- <p>The operation is not permitted.</p>
 function M.UnauthorizedOperationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedOperationException")
 	local t = { 
@@ -1659,16 +1659,16 @@ end
 
 --- Create a structure of type DescribeUsersRequest
 --  
--- @param Sort [UserSortType] &lt;p&gt;The sorting criteria.&lt;/p&gt;
--- @param OrganizationId [IdType] &lt;p&gt;The ID of the organization.&lt;/p&gt;
--- @param Fields [FieldNamesType] &lt;p&gt;A comma-separated list of values. Specify &quot;STORAGE_METADATA&quot; to include the user storage quota and utilization information.&lt;/p&gt;
--- @param UserIds [UserIdsType] &lt;p&gt;The IDs of the users.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param Limit [LimitType] &lt;p&gt;The maximum number of items to return.&lt;/p&gt;
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param Query [SearchQueryType] &lt;p&gt;A query to filter users by user name.&lt;/p&gt;
--- @param Include [UserFilterType] &lt;p&gt;The state of the users. Specify &quot;ALL&quot; to include inactive users.&lt;/p&gt;
--- @param Order [OrderType] &lt;p&gt;The order for the results.&lt;/p&gt;
+-- @param Sort [UserSortType] <p>The sorting criteria.</p>
+-- @param OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param Fields [FieldNamesType] <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the user storage quota and utilization information.</p>
+-- @param UserIds [UserIdsType] <p>The IDs of the users.</p>
+-- @param Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param Limit [LimitType] <p>The maximum number of items to return.</p>
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param Query [SearchQueryType] <p>A query to filter users by user name.</p>
+-- @param Include [UserFilterType] <p>The state of the users. Specify "ALL" to include inactive users.</p>
+-- @param Order [OrderType] <p>The order for the results.</p>
 function M.DescribeUsersRequest(Sort, OrganizationId, Fields, UserIds, Marker, Limit, AuthenticationToken, Query, Include, Order, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUsersRequest")
 	local t = { 
@@ -1705,10 +1705,10 @@ end
 
 --- Create a structure of type RemoveResourcePermissionRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param ResourceId [ResourceIdType] &lt;p&gt;The ID of the resource.&lt;/p&gt;
--- @param PrincipalType [PrincipalType] &lt;p&gt;The principal type of the resource.&lt;/p&gt;
--- @param PrincipalId [IdType] &lt;p&gt;The principal ID of the resource.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param PrincipalType [PrincipalType] <p>The principal type of the resource.</p>
+-- @param PrincipalId [IdType] <p>The principal ID of the resource.</p>
 -- Required parameter: ResourceId
 -- Required parameter: PrincipalId
 function M.RemoveResourcePermissionRequest(AuthenticationToken, ResourceId, PrincipalType, PrincipalId, ...)
@@ -1735,8 +1735,8 @@ function M.AssertResourcePath(struct)
 end
 
 --- Create a structure of type ResourcePath
--- &lt;p&gt;Describes the path information of a resource.&lt;/p&gt;
--- @param Components [ResourcePathComponentList] &lt;p&gt;The components of the resource path.&lt;/p&gt;
+-- <p>Describes the path information of a resource.</p>
+-- @param Components [ResourcePathComponentList] <p>The components of the resource path.</p>
 function M.ResourcePath(Components, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourcePath")
 	local t = { 
@@ -1758,8 +1758,8 @@ function M.AssertIllegalUserStateException(struct)
 end
 
 --- Create a structure of type IllegalUserStateException
--- &lt;p&gt;The user is undergoing transfer of ownership.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The user is undergoing transfer of ownership.&lt;/p&gt;
+-- <p>The user is undergoing transfer of ownership.</p>
+-- @param Message [ErrorMessageType] <p>The user is undergoing transfer of ownership.</p>
 function M.IllegalUserStateException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IllegalUserStateException")
 	local t = { 
@@ -1790,14 +1790,14 @@ end
 
 --- Create a structure of type DescribeFolderContentsRequest
 --  
--- @param Sort [ResourceSortType] &lt;p&gt;The sorting criteria.&lt;/p&gt;
--- @param Include [FieldNamesType] &lt;p&gt;The contents to include. Specify &quot;INITIALIZED&quot; to include initialized documents.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;The marker for the next set of results. This marker was received from a previous call.&lt;/p&gt;
--- @param Limit [LimitType] &lt;p&gt;The maximum number of items to return with this call.&lt;/p&gt;
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param FolderId [ResourceIdType] &lt;p&gt;The ID of the folder.&lt;/p&gt;
--- @param Type [FolderContentType] &lt;p&gt;The type of items.&lt;/p&gt;
--- @param Order [OrderType] &lt;p&gt;The order for the contents of the folder.&lt;/p&gt;
+-- @param Sort [ResourceSortType] <p>The sorting criteria.</p>
+-- @param Include [FieldNamesType] <p>The contents to include. Specify "INITIALIZED" to include initialized documents.</p>
+-- @param Marker [PageMarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
+-- @param Limit [LimitType] <p>The maximum number of items to return with this call.</p>
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- @param Type [FolderContentType] <p>The type of items.</p>
+-- @param Order [OrderType] <p>The order for the contents of the folder.</p>
 -- Required parameter: FolderId
 function M.DescribeFolderContentsRequest(Sort, Include, Marker, Limit, AuthenticationToken, FolderId, Type, Order, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFolderContentsRequest")
@@ -1827,8 +1827,8 @@ function M.AssertResourceAlreadyCheckedOutException(struct)
 end
 
 --- Create a structure of type ResourceAlreadyCheckedOutException
--- &lt;p&gt;The resource is already checked out.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The resource is already checked out.&lt;/p&gt;
+-- <p>The resource is already checked out.</p>
+-- @param Message [ErrorMessageType] <p>The resource is already checked out.</p>
 function M.ResourceAlreadyCheckedOutException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyCheckedOutException")
 	local t = { 
@@ -1851,7 +1851,7 @@ end
 
 --- Create a structure of type GetDocumentPathResponse
 --  
--- @param Path [ResourcePath] &lt;p&gt;The path information.&lt;/p&gt;
+-- @param Path [ResourcePath] <p>The path information.</p>
 function M.GetDocumentPathResponse(Path, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentPathResponse")
 	local t = { 
@@ -1882,14 +1882,14 @@ end
 
 --- Create a structure of type UpdateUserRequest
 --  
--- @param TimeZoneId [TimeZoneIdType] &lt;p&gt;The time zone ID of the user.&lt;/p&gt;
--- @param Surname [UserAttributeValueType] &lt;p&gt;The surname of the user.&lt;/p&gt;
--- @param Locale [LocaleType] &lt;p&gt;The locale of the user.&lt;/p&gt;
--- @param UserId [IdType] &lt;p&gt;The ID of the user.&lt;/p&gt;
--- @param StorageRule [StorageRuleType] &lt;p&gt;The amount of storage for the user.&lt;/p&gt;
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param GivenName [UserAttributeValueType] &lt;p&gt;The given name of the user.&lt;/p&gt;
--- @param Type [UserType] &lt;p&gt;The type of the user.&lt;/p&gt;
+-- @param TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
+-- @param Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- @param Locale [LocaleType] <p>The locale of the user.</p>
+-- @param UserId [IdType] <p>The ID of the user.</p>
+-- @param StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param GivenName [UserAttributeValueType] <p>The given name of the user.</p>
+-- @param Type [UserType] <p>The type of the user.</p>
 -- Required parameter: UserId
 function M.UpdateUserRequest(TimeZoneId, Surname, Locale, UserId, StorageRule, AuthenticationToken, GivenName, Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserRequest")
@@ -1924,9 +1924,9 @@ end
 
 --- Create a structure of type AddResourcePermissionsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param ResourceId [ResourceIdType] &lt;p&gt;The ID of the resource.&lt;/p&gt;
--- @param Principals [SharePrincipalList] &lt;p&gt;The users, groups, or organization being granted permission.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param Principals [SharePrincipalList] <p>The users, groups, or organization being granted permission.</p>
 -- Required parameter: ResourceId
 -- Required parameter: Principals
 function M.AddResourcePermissionsRequest(AuthenticationToken, ResourceId, Principals, ...)
@@ -1953,9 +1953,9 @@ function M.AssertParticipants(struct)
 end
 
 --- Create a structure of type Participants
--- &lt;p&gt;Describes the users and/or user groups.&lt;/p&gt;
--- @param Users [UserMetadataList] &lt;p&gt;The list of users.&lt;/p&gt;
--- @param Groups [GroupMetadataList] &lt;p&gt;The list of user groups.&lt;/p&gt;
+-- <p>Describes the users and/or user groups.</p>
+-- @param Users [UserMetadataList] <p>The list of users.</p>
+-- @param Groups [GroupMetadataList] <p>The list of user groups.</p>
 function M.Participants(Users, Groups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Participants")
 	local t = { 
@@ -1980,8 +1980,8 @@ end
 
 --- Create a structure of type DescribeActivitiesResponse
 --  
--- @param UserActivities [UserActivities] &lt;p&gt;The list of activities for the specified user and time period.&lt;/p&gt;
--- @param Marker [MarkerType] &lt;p&gt;The marker for the next set of results.&lt;/p&gt;
+-- @param UserActivities [UserActivities] <p>The list of activities for the specified user and time period.</p>
+-- @param Marker [MarkerType] <p>The marker for the next set of results.</p>
 function M.DescribeActivitiesResponse(UserActivities, Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivitiesResponse")
 	local t = { 
@@ -2005,9 +2005,9 @@ function M.AssertUserStorageMetadata(struct)
 end
 
 --- Create a structure of type UserStorageMetadata
--- &lt;p&gt;Describes the storage for a user.&lt;/p&gt;
--- @param StorageRule [StorageRuleType] &lt;p&gt;The storage for a user.&lt;/p&gt;
--- @param StorageUtilizedInBytes [SizeType] &lt;p&gt;The amount of storage utilized, in bytes.&lt;/p&gt;
+-- <p>Describes the storage for a user.</p>
+-- @param StorageRule [StorageRuleType] <p>The storage for a user.</p>
+-- @param StorageUtilizedInBytes [SizeType] <p>The amount of storage utilized, in bytes.</p>
 function M.UserStorageMetadata(StorageRule, StorageUtilizedInBytes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserStorageMetadata")
 	local t = { 
@@ -2040,18 +2040,18 @@ function M.AssertFolderMetadata(struct)
 end
 
 --- Create a structure of type FolderMetadata
--- &lt;p&gt;Describes a folder.&lt;/p&gt;
--- @param Name [ResourceNameType] &lt;p&gt;The name of the folder.&lt;/p&gt;
--- @param LatestVersionSize [SizeType] &lt;p&gt;The size of the latest version of the folder metadata.&lt;/p&gt;
--- @param Labels [Labels] &lt;p&gt;List of labels on the folder.&lt;/p&gt;
--- @param ModifiedTimestamp [TimestampType] &lt;p&gt;The time when the folder was updated.&lt;/p&gt;
--- @param Id [ResourceIdType] &lt;p&gt;The ID of the folder.&lt;/p&gt;
--- @param CreatedTimestamp [TimestampType] &lt;p&gt;The time when the folder was created.&lt;/p&gt;
--- @param ResourceState [ResourceStateType] &lt;p&gt;The resource state of the folder.&lt;/p&gt;
--- @param CreatorId [IdType] &lt;p&gt;The ID of the creator.&lt;/p&gt;
--- @param Signature [HashType] &lt;p&gt;The unique identifier created from the subfolders and documents of the folder.&lt;/p&gt;
--- @param ParentFolderId [ResourceIdType] &lt;p&gt;The ID of the parent folder.&lt;/p&gt;
--- @param Size [SizeType] &lt;p&gt;The size of the folder metadata.&lt;/p&gt;
+-- <p>Describes a folder.</p>
+-- @param Name [ResourceNameType] <p>The name of the folder.</p>
+-- @param LatestVersionSize [SizeType] <p>The size of the latest version of the folder metadata.</p>
+-- @param Labels [Labels] <p>List of labels on the folder.</p>
+-- @param ModifiedTimestamp [TimestampType] <p>The time when the folder was updated.</p>
+-- @param Id [ResourceIdType] <p>The ID of the folder.</p>
+-- @param CreatedTimestamp [TimestampType] <p>The time when the folder was created.</p>
+-- @param ResourceState [ResourceStateType] <p>The resource state of the folder.</p>
+-- @param CreatorId [IdType] <p>The ID of the creator.</p>
+-- @param Signature [HashType] <p>The unique identifier created from the subfolders and documents of the folder.</p>
+-- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- @param Size [SizeType] <p>The size of the folder metadata.</p>
 function M.FolderMetadata(Name, LatestVersionSize, Labels, ModifiedTimestamp, Id, CreatedTimestamp, ResourceState, CreatorId, Signature, ParentFolderId, Size, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FolderMetadata")
 	local t = { 
@@ -2084,9 +2084,9 @@ function M.AssertGroupMetadata(struct)
 end
 
 --- Create a structure of type GroupMetadata
--- &lt;p&gt;Describes the metadata of a user group.&lt;/p&gt;
--- @param Id [IdType] &lt;p&gt;The ID of the user group.&lt;/p&gt;
--- @param Name [GroupNameType] &lt;p&gt;The name of the group.&lt;/p&gt;
+-- <p>Describes the metadata of a user group.</p>
+-- @param Id [IdType] <p>The ID of the user group.</p>
+-- @param Name [GroupNameType] <p>The name of the group.</p>
 function M.GroupMetadata(Id, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GroupMetadata")
 	local t = { 
@@ -2110,9 +2110,9 @@ function M.AssertUploadMetadata(struct)
 end
 
 --- Create a structure of type UploadMetadata
--- &lt;p&gt;Describes the upload.&lt;/p&gt;
--- @param SignedHeaders [SignedHeaderMap] &lt;p&gt;The signed headers.&lt;/p&gt;
--- @param UploadUrl [UrlType] &lt;p&gt;The URL of the upload.&lt;/p&gt;
+-- <p>Describes the upload.</p>
+-- @param SignedHeaders [SignedHeaderMap] <p>The signed headers.</p>
+-- @param UploadUrl [UrlType] <p>The URL of the upload.</p>
 function M.UploadMetadata(SignedHeaders, UploadUrl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UploadMetadata")
 	local t = { 
@@ -2135,8 +2135,8 @@ function M.AssertCustomMetadataLimitExceededException(struct)
 end
 
 --- Create a structure of type CustomMetadataLimitExceededException
--- &lt;p&gt;The limit has been reached on the number of custom properties for the specified resource.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The limit has been reached on the number of custom properties for the specified resource.&lt;/p&gt;
+-- <p>The limit has been reached on the number of custom properties for the specified resource.</p>
+-- @param Message [ErrorMessageType] <p>The limit has been reached on the number of custom properties for the specified resource.</p>
 function M.CustomMetadataLimitExceededException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CustomMetadataLimitExceededException")
 	local t = { 
@@ -2172,22 +2172,22 @@ function M.AssertUser(struct)
 end
 
 --- Create a structure of type User
--- &lt;p&gt;Describes a user.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The login name of the user.&lt;/p&gt;
--- @param Status [UserStatusType] &lt;p&gt;The status of the user.&lt;/p&gt;
--- @param Surname [UserAttributeValueType] &lt;p&gt;The surname of the user.&lt;/p&gt;
--- @param OrganizationId [IdType] &lt;p&gt;The ID of the organization.&lt;/p&gt;
--- @param Storage [UserStorageMetadata] &lt;p&gt;The storage for the user.&lt;/p&gt;
--- @param RecycleBinFolderId [ResourceIdType] &lt;p&gt;The ID of the recycle bin folder.&lt;/p&gt;
--- @param TimeZoneId [TimeZoneIdType] &lt;p&gt;The time zone ID of the user.&lt;/p&gt;
--- @param ModifiedTimestamp [TimestampType] &lt;p&gt;The time when the user was modified.&lt;/p&gt;
--- @param CreatedTimestamp [TimestampType] &lt;p&gt;The time when the user was created.&lt;/p&gt;
--- @param Locale [LocaleType] &lt;p&gt;The locale of the user.&lt;/p&gt;
--- @param EmailAddress [EmailAddressType] &lt;p&gt;The email address of the user.&lt;/p&gt;
--- @param RootFolderId [ResourceIdType] &lt;p&gt;The ID of the root folder.&lt;/p&gt;
--- @param GivenName [UserAttributeValueType] &lt;p&gt;The given name of the user.&lt;/p&gt;
--- @param Type [UserType] &lt;p&gt;The type of user.&lt;/p&gt;
--- @param Id [IdType] &lt;p&gt;The ID of the user.&lt;/p&gt;
+-- <p>Describes a user.</p>
+-- @param Username [UsernameType] <p>The login name of the user.</p>
+-- @param Status [UserStatusType] <p>The status of the user.</p>
+-- @param Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- @param OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param Storage [UserStorageMetadata] <p>The storage for the user.</p>
+-- @param RecycleBinFolderId [ResourceIdType] <p>The ID of the recycle bin folder.</p>
+-- @param TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
+-- @param ModifiedTimestamp [TimestampType] <p>The time when the user was modified.</p>
+-- @param CreatedTimestamp [TimestampType] <p>The time when the user was created.</p>
+-- @param Locale [LocaleType] <p>The locale of the user.</p>
+-- @param EmailAddress [EmailAddressType] <p>The email address of the user.</p>
+-- @param RootFolderId [ResourceIdType] <p>The ID of the root folder.</p>
+-- @param GivenName [UserAttributeValueType] <p>The given name of the user.</p>
+-- @param Type [UserType] <p>The type of user.</p>
+-- @param Id [IdType] <p>The ID of the user.</p>
 function M.User(Username, Status, Surname, OrganizationId, Storage, RecycleBinFolderId, TimeZoneId, ModifiedTimestamp, CreatedTimestamp, Locale, EmailAddress, RootFolderId, GivenName, Type, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating User")
 	local t = { 
@@ -2223,8 +2223,8 @@ function M.AssertInvalidOperationException(struct)
 end
 
 --- Create a structure of type InvalidOperationException
--- &lt;p&gt;The operation is invalid.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The operation is invalid.&lt;/p&gt;
+-- <p>The operation is invalid.</p>
+-- @param Message [ErrorMessageType] <p>The operation is invalid.</p>
 function M.InvalidOperationException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOperationException")
 	local t = { 
@@ -2270,12 +2270,12 @@ function M.AssertCommentMetadata(struct)
 end
 
 --- Create a structure of type CommentMetadata
--- &lt;p&gt;Describes the metadata of a comment.&lt;/p&gt;
--- @param Contributor [User] &lt;p&gt;The user who made the comment.&lt;/p&gt;
--- @param CommentId [CommentIdType] &lt;p&gt;The ID of the comment.&lt;/p&gt;
--- @param CreatedTimestamp [TimestampType] &lt;p&gt;Describes the metadata of a comment.&lt;/p&gt;
--- @param RecipientId [IdType] &lt;p&gt;The ID of the user being replied to.&lt;/p&gt;
--- @param CommentStatus [CommentStatusType] &lt;p&gt;Describes the metadata of a comment.&lt;/p&gt;
+-- <p>Describes the metadata of a comment.</p>
+-- @param Contributor [User] <p>The user who made the comment.</p>
+-- @param CommentId [CommentIdType] <p>The ID of the comment.</p>
+-- @param CreatedTimestamp [TimestampType] <p>Describes the metadata of a comment.</p>
+-- @param RecipientId [IdType] <p>The ID of the user being replied to.</p>
+-- @param CommentStatus [CommentStatusType] <p>Describes the metadata of a comment.</p>
 function M.CommentMetadata(Contributor, CommentId, CreatedTimestamp, RecipientId, CommentStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CommentMetadata")
 	local t = { 
@@ -2328,10 +2328,10 @@ end
 
 --- Create a structure of type DeleteCommentRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param CommentId [CommentIdType] &lt;p&gt;The ID of the comment.&lt;/p&gt;
--- @param VersionId [DocumentVersionIdType] &lt;p&gt;The ID of the document version.&lt;/p&gt;
--- @param DocumentId [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param CommentId [CommentIdType] <p>The ID of the comment.</p>
+-- @param VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
+-- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
 -- Required parameter: CommentId
@@ -2362,8 +2362,8 @@ end
 
 --- Create a structure of type DeleteDocumentRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param DocumentId [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 function M.DeleteDocumentRequest(AuthenticationToken, DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDocumentRequest")
@@ -2394,11 +2394,11 @@ end
 
 --- Create a structure of type DescribeCommentsRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param Marker [MarkerType] &lt;p&gt;The marker for the next set of results. This marker was received from a previous call.&lt;/p&gt;
--- @param VersionId [DocumentVersionIdType] &lt;p&gt;The ID of the document version.&lt;/p&gt;
--- @param Limit [LimitType] &lt;p&gt;The maximum number of items to return.&lt;/p&gt;
--- @param DocumentId [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
+-- @param VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
+-- @param Limit [LimitType] <p>The maximum number of items to return.</p>
+-- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
 function M.DescribeCommentsRequest(AuthenticationToken, Marker, VersionId, Limit, DocumentId, ...)
@@ -2429,9 +2429,9 @@ end
 
 --- Create a structure of type DescribeUsersResponse
 --  
--- @param Marker [PageMarkerType] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
--- @param TotalNumberOfUsers [SizeType] &lt;p&gt;The total number of users included in the results.&lt;/p&gt;
--- @param Users [OrganizationUserList] &lt;p&gt;The users.&lt;/p&gt;
+-- @param Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @param TotalNumberOfUsers [SizeType] <p>The total number of users included in the results.</p>
+-- @param Users [OrganizationUserList] <p>The users.</p>
 function M.DescribeUsersResponse(Marker, TotalNumberOfUsers, Users, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUsersResponse")
 	local t = { 
@@ -2468,15 +2468,15 @@ end
 
 --- Create a structure of type CreateUserRequest
 --  
--- @param Username [UsernameType] &lt;p&gt;The login name of the user.&lt;/p&gt;
--- @param TimeZoneId [TimeZoneIdType] &lt;p&gt;The time zone ID of the user.&lt;/p&gt;
--- @param Password [PasswordType] &lt;p&gt;The password of the user.&lt;/p&gt;
--- @param Surname [UserAttributeValueType] &lt;p&gt;The surname of the user.&lt;/p&gt;
--- @param OrganizationId [IdType] &lt;p&gt;The ID of the organization.&lt;/p&gt;
--- @param EmailAddress [EmailAddressType] &lt;p&gt;The email address of the user.&lt;/p&gt;
--- @param StorageRule [StorageRuleType] &lt;p&gt;The amount of storage for the user.&lt;/p&gt;
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param GivenName [UserAttributeValueType] &lt;p&gt;The given name of the user.&lt;/p&gt;
+-- @param Username [UsernameType] <p>The login name of the user.</p>
+-- @param TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
+-- @param Password [PasswordType] <p>The password of the user.</p>
+-- @param Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- @param OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param EmailAddress [EmailAddressType] <p>The email address of the user.</p>
+-- @param StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param GivenName [UserAttributeValueType] <p>The given name of the user.</p>
 -- Required parameter: Username
 -- Required parameter: GivenName
 -- Required parameter: Surname
@@ -2511,7 +2511,7 @@ end
 
 --- Create a structure of type CreateCommentResponse
 --  
--- @param Comment [Comment] &lt;p&gt;The comment that has been created.&lt;/p&gt;
+-- @param Comment [Comment] <p>The comment that has been created.</p>
 function M.CreateCommentResponse(Comment, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCommentResponse")
 	local t = { 
@@ -2539,10 +2539,10 @@ end
 
 --- Create a structure of type CreateCustomMetadataRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param ResourceId [ResourceIdType] &lt;p&gt;The ID of the resource.&lt;/p&gt;
--- @param VersionId [DocumentVersionIdType] &lt;p&gt;The ID of the version, if the custom metadata is being added to a document version.&lt;/p&gt;
--- @param CustomMetadata [CustomMetadataMap] &lt;p&gt;Custom metadata in the form of name-value pairs.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- @param VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being added to a document version.</p>
+-- @param CustomMetadata [CustomMetadataMap] <p>Custom metadata in the form of name-value pairs.</p>
 -- Required parameter: ResourceId
 -- Required parameter: CustomMetadata
 function M.CreateCustomMetadataRequest(AuthenticationToken, ResourceId, VersionId, CustomMetadata, ...)
@@ -2573,9 +2573,9 @@ end
 
 --- Create a structure of type GetFolderRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param IncludeCustomMetadata [BooleanType] &lt;p&gt;Set to TRUE to include custom metadata in the response.&lt;/p&gt;
--- @param FolderId [ResourceIdType] &lt;p&gt;The ID of the folder.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param IncludeCustomMetadata [BooleanType] <p>Set to TRUE to include custom metadata in the response.</p>
+-- @param FolderId [ResourceIdType] <p>The ID of the folder.</p>
 -- Required parameter: FolderId
 function M.GetFolderRequest(AuthenticationToken, IncludeCustomMetadata, FolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderRequest")
@@ -2601,7 +2601,7 @@ end
 
 --- Create a structure of type CreateNotificationSubscriptionResponse
 --  
--- @param Subscription [Subscription] &lt;p&gt;The subscription.&lt;/p&gt;
+-- @param Subscription [Subscription] <p>The subscription.</p>
 function M.CreateNotificationSubscriptionResponse(Subscription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateNotificationSubscriptionResponse")
 	local t = { 
@@ -2627,9 +2627,9 @@ end
 
 --- Create a structure of type DescribeNotificationSubscriptionsRequest
 --  
--- @param OrganizationId [IdType] &lt;p&gt;The ID of the organization.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param Limit [LimitType] &lt;p&gt;The maximum number of items to return with this call.&lt;/p&gt;
+-- @param OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param Limit [LimitType] <p>The maximum number of items to return with this call.</p>
 -- Required parameter: OrganizationId
 function M.DescribeNotificationSubscriptionsRequest(OrganizationId, Marker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationSubscriptionsRequest")
@@ -2654,8 +2654,8 @@ function M.AssertStorageLimitExceededException(struct)
 end
 
 --- Create a structure of type StorageLimitExceededException
--- &lt;p&gt;The storage limit has been exceeded.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The storage limit has been exceeded.&lt;/p&gt;
+-- <p>The storage limit has been exceeded.</p>
+-- @param Message [ErrorMessageType] <p>The storage limit has been exceeded.</p>
 function M.StorageLimitExceededException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageLimitExceededException")
 	local t = { 
@@ -2677,8 +2677,8 @@ function M.AssertTooManySubscriptionsException(struct)
 end
 
 --- Create a structure of type TooManySubscriptionsException
--- &lt;p&gt;You've reached the limit on the number of subscriptions for the WorkDocs instance.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;You've reached the limit on the number of subscriptions for the WorkDocs instance.&lt;/p&gt;
+-- <p>You've reached the limit on the number of subscriptions for the WorkDocs instance.</p>
+-- @param Message [ErrorMessageType] <p>You've reached the limit on the number of subscriptions for the WorkDocs instance.</p>
 function M.TooManySubscriptionsException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManySubscriptionsException")
 	local t = { 
@@ -2706,10 +2706,10 @@ end
 
 --- Create a structure of type UpdateDocumentVersionRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param VersionId [DocumentVersionIdType] &lt;p&gt;The version ID of the document.&lt;/p&gt;
--- @param DocumentId [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
--- @param VersionStatus [DocumentVersionStatus] &lt;p&gt;The status of the version.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
+-- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- @param VersionStatus [DocumentVersionStatus] <p>The status of the version.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
 function M.UpdateDocumentVersionRequest(AuthenticationToken, VersionId, DocumentId, VersionStatus, ...)
@@ -2737,9 +2737,9 @@ function M.AssertEntityNotExistsException(struct)
 end
 
 --- Create a structure of type EntityNotExistsException
--- &lt;p&gt;The resource does not exist.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The resource does not exist.&lt;/p&gt;
--- @param EntityIds [EntityIdList] &lt;p&gt;The resource does not exist.&lt;/p&gt;
+-- <p>The resource does not exist.</p>
+-- @param Message [ErrorMessageType] <p>The resource does not exist.</p>
+-- @param EntityIds [EntityIdList] <p>The resource does not exist.</p>
 function M.EntityNotExistsException(Message, EntityIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntityNotExistsException")
 	local t = { 
@@ -2767,9 +2767,9 @@ end
 
 --- Create a structure of type AbortDocumentVersionUploadRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param VersionId [DocumentVersionIdType] &lt;p&gt;The ID of the version.&lt;/p&gt;
--- @param DocumentId [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param VersionId [DocumentVersionIdType] <p>The ID of the version.</p>
+-- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 -- Required parameter: VersionId
 function M.AbortDocumentVersionUploadRequest(AuthenticationToken, VersionId, DocumentId, ...)
@@ -2796,9 +2796,9 @@ function M.AssertPermissionInfo(struct)
 end
 
 --- Create a structure of type PermissionInfo
--- &lt;p&gt;Describes the permissions.&lt;/p&gt;
--- @param Type [RolePermissionType] &lt;p&gt;The type of permissions.&lt;/p&gt;
--- @param Role [RoleType] &lt;p&gt;The role of the user.&lt;/p&gt;
+-- <p>Describes the permissions.</p>
+-- @param Type [RolePermissionType] <p>The type of permissions.</p>
+-- @param Role [RoleType] <p>The role of the user.</p>
 function M.PermissionInfo(Type, Role, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PermissionInfo")
 	local t = { 
@@ -2827,11 +2827,11 @@ end
 
 --- Create a structure of type UpdateFolderRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param FolderId [ResourceIdType] &lt;p&gt;The ID of the folder.&lt;/p&gt;
--- @param Name [ResourceNameType] &lt;p&gt;The name of the folder.&lt;/p&gt;
--- @param ResourceState [ResourceStateType] &lt;p&gt;The resource state of the folder. Note that only ACTIVE and RECYCLED are accepted values from the API.&lt;/p&gt;
--- @param ParentFolderId [ResourceIdType] &lt;p&gt;The ID of the parent folder.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- @param Name [ResourceNameType] <p>The name of the folder.</p>
+-- @param ResourceState [ResourceStateType] <p>The resource state of the folder. Note that only ACTIVE and RECYCLED are accepted values from the API.</p>
+-- @param ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
 -- Required parameter: FolderId
 function M.UpdateFolderRequest(AuthenticationToken, FolderId, Name, ResourceState, ParentFolderId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFolderRequest")
@@ -2862,9 +2862,9 @@ end
 
 --- Create a structure of type DescribeRootFoldersRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param Limit [LimitType] &lt;p&gt;The maximum number of items to return.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param Limit [LimitType] <p>The maximum number of items to return.</p>
 -- Required parameter: AuthenticationToken
 function M.DescribeRootFoldersRequest(AuthenticationToken, Marker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRootFoldersRequest")
@@ -2893,9 +2893,9 @@ end
 
 --- Create a structure of type GetDocumentRequest
 --  
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param IncludeCustomMetadata [BooleanType] &lt;p&gt;Set this to &lt;code&gt;TRUE&lt;/code&gt; to include custom metadata in the response.&lt;/p&gt;
--- @param DocumentId [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param IncludeCustomMetadata [BooleanType] <p>Set this to <code>TRUE</code> to include custom metadata in the response.</p>
+-- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 function M.GetDocumentRequest(AuthenticationToken, IncludeCustomMetadata, DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentRequest")
@@ -2920,8 +2920,8 @@ function M.AssertDraftUploadOutOfSyncException(struct)
 end
 
 --- Create a structure of type DraftUploadOutOfSyncException
--- &lt;p&gt;This exception is thrown when a valid checkout ID is not presented on document version upload calls for a document that has been checked out from Web client.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;This exception is thrown when a valid checkout ID is not presented on document version upload calls for a document that has been checked out from Web client.&lt;/p&gt;
+-- <p>This exception is thrown when a valid checkout ID is not presented on document version upload calls for a document that has been checked out from Web client.</p>
+-- @param Message [ErrorMessageType] <p>This exception is thrown when a valid checkout ID is not presented on document version upload calls for a document that has been checked out from Web client.</p>
 function M.DraftUploadOutOfSyncException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DraftUploadOutOfSyncException")
 	local t = { 
@@ -2943,8 +2943,8 @@ function M.AssertStorageLimitWillExceedException(struct)
 end
 
 --- Create a structure of type StorageLimitWillExceedException
--- &lt;p&gt;The storage limit will be exceeded.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The storage limit will be exceeded.&lt;/p&gt;
+-- <p>The storage limit will be exceeded.</p>
+-- @param Message [ErrorMessageType] <p>The storage limit will be exceeded.</p>
 function M.StorageLimitWillExceedException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageLimitWillExceedException")
 	local t = { 
@@ -2968,8 +2968,8 @@ end
 
 --- Create a structure of type DescribeDocumentVersionsResponse
 --  
--- @param DocumentVersions [DocumentVersionMetadataList] &lt;p&gt;The document versions.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;The marker to use when requesting the next set of results. If there are no additional results, the string is empty.&lt;/p&gt;
+-- @param DocumentVersions [DocumentVersionMetadataList] <p>The document versions.</p>
+-- @param Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
 function M.DescribeDocumentVersionsResponse(DocumentVersions, Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentVersionsResponse")
 	local t = { 
@@ -2993,9 +2993,9 @@ function M.AssertStorageRuleType(struct)
 end
 
 --- Create a structure of type StorageRuleType
--- &lt;p&gt;Describes the storage for a user.&lt;/p&gt;
--- @param StorageType [StorageType] &lt;p&gt;The type of storage.&lt;/p&gt;
--- @param StorageAllocatedInBytes [PositiveSizeType] &lt;p&gt;The amount of storage allocated, in bytes.&lt;/p&gt;
+-- <p>Describes the storage for a user.</p>
+-- @param StorageType [StorageType] <p>The type of storage.</p>
+-- @param StorageAllocatedInBytes [PositiveSizeType] <p>The amount of storage allocated, in bytes.</p>
 function M.StorageRuleType(StorageType, StorageAllocatedInBytes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageRuleType")
 	local t = { 
@@ -3025,15 +3025,15 @@ function M.AssertActivity(struct)
 end
 
 --- Create a structure of type Activity
--- &lt;p&gt;Describes the activity information.&lt;/p&gt;
--- @param Initiator [UserMetadata] &lt;p&gt;The user who performed the action.&lt;/p&gt;
--- @param OriginalParent [ResourceMetadata] &lt;p&gt;The original parent of the resource. This is an optional field and is filled for move activities.&lt;/p&gt;
--- @param OrganizationId [IdType] &lt;p&gt;The ID of the organization.&lt;/p&gt;
--- @param TimeStamp [TimestampType] &lt;p&gt;The timestamp when the action was performed.&lt;/p&gt;
--- @param ResourceMetadata [ResourceMetadata] &lt;p&gt;The metadata of the resource involved in the user action.&lt;/p&gt;
--- @param Participants [Participants] &lt;p&gt;The list of users or groups impacted by this action. This is an optional field and is filled for the following sharing activities: DOCUMENT_SHARED, DOCUMENT_SHARED, DOCUMENT_UNSHARED, FOLDER_SHARED, FOLDER_UNSHARED.&lt;/p&gt;
--- @param Type [ActivityType] &lt;p&gt;The activity type.&lt;/p&gt;
--- @param CommentMetadata [CommentMetadata] &lt;p&gt;Metadata of the commenting activity. This is an optional field and is filled for commenting activities.&lt;/p&gt;
+-- <p>Describes the activity information.</p>
+-- @param Initiator [UserMetadata] <p>The user who performed the action.</p>
+-- @param OriginalParent [ResourceMetadata] <p>The original parent of the resource. This is an optional field and is filled for move activities.</p>
+-- @param OrganizationId [IdType] <p>The ID of the organization.</p>
+-- @param TimeStamp [TimestampType] <p>The timestamp when the action was performed.</p>
+-- @param ResourceMetadata [ResourceMetadata] <p>The metadata of the resource involved in the user action.</p>
+-- @param Participants [Participants] <p>The list of users or groups impacted by this action. This is an optional field and is filled for the following sharing activities: DOCUMENT_SHARED, DOCUMENT_SHARED, DOCUMENT_UNSHARED, FOLDER_SHARED, FOLDER_UNSHARED.</p>
+-- @param Type [ActivityType] <p>The activity type.</p>
+-- @param CommentMetadata [CommentMetadata] <p>Metadata of the commenting activity. This is an optional field and is filled for commenting activities.</p>
 function M.Activity(Initiator, OriginalParent, OrganizationId, TimeStamp, ResourceMetadata, Participants, Type, CommentMetadata, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Activity")
 	local t = { 
@@ -3062,8 +3062,8 @@ function M.AssertInvalidArgumentException(struct)
 end
 
 --- Create a structure of type InvalidArgumentException
--- &lt;p&gt;The pagination marker and/or limit fields are not valid.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The pagination marker and/or limit fields are not valid.&lt;/p&gt;
+-- <p>The pagination marker and/or limit fields are not valid.</p>
+-- @param Message [ErrorMessageType] <p>The pagination marker and/or limit fields are not valid.</p>
 function M.InvalidArgumentException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArgumentException")
 	local t = { 
@@ -3112,12 +3112,12 @@ end
 
 --- Create a structure of type DescribeDocumentVersionsRequest
 --  
--- @param Fields [FieldNamesType] &lt;p&gt;Specify &quot;SOURCE&quot; to include initialized versions and a URL for the source document.&lt;/p&gt;
--- @param Marker [PageMarkerType] &lt;p&gt;The marker for the next set of results. (You received this marker from a previous call.)&lt;/p&gt;
--- @param Limit [LimitType] &lt;p&gt;The maximum number of versions to return with this call.&lt;/p&gt;
--- @param AuthenticationToken [AuthenticationHeaderType] &lt;p&gt;Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.&lt;/p&gt;
--- @param Include [FieldNamesType] &lt;p&gt;A comma-separated list of values. Specify &quot;INITIALIZED&quot; to include incomplete versions.&lt;/p&gt;
--- @param DocumentId [ResourceIdType] &lt;p&gt;The ID of the document.&lt;/p&gt;
+-- @param Fields [FieldNamesType] <p>Specify "SOURCE" to include initialized versions and a URL for the source document.</p>
+-- @param Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- @param Limit [LimitType] <p>The maximum number of versions to return with this call.</p>
+-- @param AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- @param Include [FieldNamesType] <p>A comma-separated list of values. Specify "INITIALIZED" to include incomplete versions.</p>
+-- @param DocumentId [ResourceIdType] <p>The ID of the document.</p>
 -- Required parameter: DocumentId
 function M.DescribeDocumentVersionsRequest(Fields, Marker, Limit, AuthenticationToken, Include, DocumentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentVersionsRequest")
@@ -3146,7 +3146,7 @@ end
 
 --- Create a structure of type GetCurrentUserResponse
 --  
--- @param User [User] &lt;p&gt;Metadata of the user.&lt;/p&gt;
+-- @param User [User] <p>Metadata of the user.</p>
 function M.GetCurrentUserResponse(User, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCurrentUserResponse")
 	local t = { 
@@ -3168,8 +3168,8 @@ function M.AssertEntityAlreadyExistsException(struct)
 end
 
 --- Create a structure of type EntityAlreadyExistsException
--- &lt;p&gt;The resource already exists.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The resource already exists.&lt;/p&gt;
+-- <p>The resource already exists.</p>
+-- @param Message [ErrorMessageType] <p>The resource already exists.</p>
 function M.EntityAlreadyExistsException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EntityAlreadyExistsException")
 	local t = { 
@@ -3200,16 +3200,16 @@ function M.AssertComment(struct)
 end
 
 --- Create a structure of type Comment
--- &lt;p&gt;Describes a comment.&lt;/p&gt;
--- @param Status [CommentStatusType] &lt;p&gt;The status of the comment.&lt;/p&gt;
--- @param Text [CommentTextType] &lt;p&gt;The text of the comment.&lt;/p&gt;
--- @param ParentId [CommentIdType] &lt;p&gt;The ID of the parent comment.&lt;/p&gt;
--- @param RecipientId [IdType] &lt;p&gt;If the comment is a reply to another user's comment, this field contains the user ID of the user being replied to.&lt;/p&gt;
--- @param Visibility [CommentVisibilityType] &lt;p&gt;The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.&lt;/p&gt;
--- @param CreatedTimestamp [TimestampType] &lt;p&gt;The time that the comment was created.&lt;/p&gt;
--- @param ThreadId [CommentIdType] &lt;p&gt;The ID of the root comment in the thread.&lt;/p&gt;
--- @param Contributor [User] &lt;p&gt;The details of the user who made the comment.&lt;/p&gt;
--- @param CommentId [CommentIdType] &lt;p&gt;The ID of the comment.&lt;/p&gt;
+-- <p>Describes a comment.</p>
+-- @param Status [CommentStatusType] <p>The status of the comment.</p>
+-- @param Text [CommentTextType] <p>The text of the comment.</p>
+-- @param ParentId [CommentIdType] <p>The ID of the parent comment.</p>
+-- @param RecipientId [IdType] <p>If the comment is a reply to another user's comment, this field contains the user ID of the user being replied to.</p>
+-- @param Visibility [CommentVisibilityType] <p>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.</p>
+-- @param CreatedTimestamp [TimestampType] <p>The time that the comment was created.</p>
+-- @param ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
+-- @param Contributor [User] <p>The details of the user who made the comment.</p>
+-- @param CommentId [CommentIdType] <p>The ID of the comment.</p>
 -- Required parameter: CommentId
 function M.Comment(Status, Text, ParentId, RecipientId, Visibility, CreatedTimestamp, ThreadId, Contributor, CommentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Comment")
@@ -3240,8 +3240,8 @@ function M.AssertFailedDependencyException(struct)
 end
 
 --- Create a structure of type FailedDependencyException
--- &lt;p&gt;The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected active directory.&lt;/p&gt;
--- @param Message [ErrorMessageType] &lt;p&gt;The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected active directory.&lt;/p&gt;
+-- <p>The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected active directory.</p>
+-- @param Message [ErrorMessageType] <p>The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected active directory.</p>
 function M.FailedDependencyException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailedDependencyException")
 	local t = { 
@@ -3265,10 +3265,10 @@ function M.AssertPrincipal(struct)
 end
 
 --- Create a structure of type Principal
--- &lt;p&gt;Describes a resource.&lt;/p&gt;
--- @param Type [PrincipalType] &lt;p&gt;The type of resource.&lt;/p&gt;
--- @param Id [IdType] &lt;p&gt;The ID of the resource.&lt;/p&gt;
--- @param Roles [PermissionInfoList] &lt;p&gt;The permission information for the resource.&lt;/p&gt;
+-- <p>Describes a resource.</p>
+-- @param Type [PrincipalType] <p>The type of resource.</p>
+-- @param Id [IdType] <p>The ID of the resource.</p>
+-- @param Roles [PermissionInfoList] <p>The permission information for the resource.</p>
 function M.Principal(Type, Id, Roles, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Principal")
 	local t = { 
@@ -3681,7 +3681,7 @@ function M.AssertUserIdsType(str)
 	assert(type(str) == "string", "Expected UserIdsType to be of type 'string'")
 	assert(#str <= 2000, "Expected string to be max 2000 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[&amp;%w+-.@, ]+"), "Expected string to match pattern '[&amp;%w+-.@, ]+'")
+	assert(str:match("[&%w+-.@, ]+"), "Expected string to match pattern '[&%w+-.@, ]+'")
 end
 
 --  
@@ -3695,7 +3695,7 @@ function M.AssertIdType(str)
 	assert(type(str) == "string", "Expected IdType to be of type 'string'")
 	assert(#str <= 256, "Expected string to be max 256 characters")
 	assert(#str >= 1, "Expected string to be min 1 characters")
-	assert(str:match("[&amp;%w+-.@]+"), "Expected string to match pattern '[&amp;%w+-.@]+'")
+	assert(str:match("[&%w+-.@]+"), "Expected string to match pattern '[&%w+-.@]+'")
 end
 
 --  
@@ -3912,7 +3912,7 @@ function M.AssertHashType(str)
 	assert(str)
 	assert(type(str) == "string", "Expected HashType to be of type 'string'")
 	assert(#str <= 128, "Expected string to be max 128 characters")
-	assert(str:match("[&amp;%w+-.@]+"), "Expected string to match pattern '[&amp;%w+-.@]+'")
+	assert(str:match("[&%w+-.@]+"), "Expected string to match pattern '[&%w+-.@]+'")
 end
 
 --  

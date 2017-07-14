@@ -1279,7 +1279,7 @@ function M.AssertBudgetName(str)
 	assert(str:match("[^:]+"), "Expected string to match pattern '[^:]+'")
 end
 
--- A string represents the budget name. No &quot;:&quot; character is allowed.
+-- A string represents the budget name. No ":" character is allowed.
 function M.BudgetName(str)
 	M.AssertBudgetName(str)
 	return str

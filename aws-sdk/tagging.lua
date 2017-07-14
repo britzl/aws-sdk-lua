@@ -32,8 +32,8 @@ end
 
 --- Create a structure of type GetTagValuesOutput
 --  
--- @param PaginationToken [PaginationToken] &lt;p&gt;A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the &lt;code&gt;PaginationToken&lt;/code&gt; value in a subsequent request.&lt;/p&gt;
--- @param TagValues [TagValuesOutputList] &lt;p&gt;A list of all tag values for the specified key in the AWS account.&lt;/p&gt;
+-- @param PaginationToken [PaginationToken] <p>A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the <code>PaginationToken</code> value in a subsequent request.</p>
+-- @param TagValues [TagValuesOutputList] <p>A list of all tag values for the specified key in the AWS account.</p>
 function M.GetTagValuesOutput(PaginationToken, TagValues, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTagValuesOutput")
 	local t = { 
@@ -56,8 +56,8 @@ function M.AssertInternalServiceException(struct)
 end
 
 --- Create a structure of type InternalServiceException
--- &lt;p&gt;The request processing failed because of an unknown error, exception, or failure. You can retry the request.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The request processing failed because of an unknown error, exception, or failure. You can retry the request.&lt;/p&gt;
+-- <p>The request processing failed because of an unknown error, exception, or failure. You can retry the request.</p>
+-- @param Message [ExceptionMessage] <p>The request processing failed because of an unknown error, exception, or failure. You can retry the request.</p>
 function M.InternalServiceException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceException")
 	local t = { 
@@ -79,8 +79,8 @@ function M.AssertThrottledException(struct)
 end
 
 --- Create a structure of type ThrottledException
--- &lt;p&gt;The request was denied to limit the frequency of submitted requests.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;The request was denied to limit the frequency of submitted requests.&lt;/p&gt;
+-- <p>The request was denied to limit the frequency of submitted requests.</p>
+-- @param Message [ExceptionMessage] <p>The request was denied to limit the frequency of submitted requests.</p>
 function M.ThrottledException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottledException")
 	local t = { 
@@ -104,8 +104,8 @@ end
 
 --- Create a structure of type GetResourcesOutput
 --  
--- @param PaginationToken [PaginationToken] &lt;p&gt;A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the &lt;code&gt;PaginationToken&lt;/code&gt; value in a subsequent request.&lt;/p&gt;
--- @param ResourceTagMappingList [ResourceTagMappingList] &lt;p&gt;A list of resource ARNs and the tags (keys and values) associated with each.&lt;/p&gt;
+-- @param PaginationToken [PaginationToken] <p>A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the <code>PaginationToken</code> value in a subsequent request.</p>
+-- @param ResourceTagMappingList [ResourceTagMappingList] <p>A list of resource ARNs and the tags (keys and values) associated with each.</p>
 function M.GetResourcesOutput(PaginationToken, ResourceTagMappingList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetResourcesOutput")
 	local t = { 
@@ -130,8 +130,8 @@ end
 
 --- Create a structure of type GetTagKeysOutput
 --  
--- @param PaginationToken [PaginationToken] &lt;p&gt;A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the &lt;code&gt;PaginationToken&lt;/code&gt; value in a subsequent request.&lt;/p&gt;
--- @param TagKeys [TagKeyList] &lt;p&gt;A list of all tag keys in the AWS account.&lt;/p&gt;
+-- @param PaginationToken [PaginationToken] <p>A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the <code>PaginationToken</code> value in a subsequent request.</p>
+-- @param TagKeys [TagKeyList] <p>A list of all tag keys in the AWS account.</p>
 function M.GetTagKeysOutput(PaginationToken, TagKeys, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTagKeysOutput")
 	local t = { 
@@ -154,8 +154,8 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;A parameter is missing or a malformed string or invalid or out-of-range value was supplied for the request parameter.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;A parameter is missing or a malformed string or invalid or out-of-range value was supplied for the request parameter.&lt;/p&gt;
+-- <p>A parameter is missing or a malformed string or invalid or out-of-range value was supplied for the request parameter.</p>
+-- @param Message [ExceptionMessage] <p>A parameter is missing or a malformed string or invalid or out-of-range value was supplied for the request parameter.</p>
 function M.InvalidParameterException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -180,9 +180,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;The metadata that you apply to AWS resources to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-basics&quot;&gt;Tag Basics&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide for Linux Instances&lt;/i&gt;.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.&lt;/p&gt;
+-- <p>The metadata that you apply to AWS resources to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-basics">Tag Basics</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
+-- @param Value [TagValue] <p>The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).</p>
+-- @param Key [TagKey] <p>One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.</p>
 -- Required parameter: Key
 -- Required parameter: Value
 function M.Tag(Value, Key, ...)
@@ -208,9 +208,9 @@ function M.AssertResourceTagMapping(struct)
 end
 
 --- Create a structure of type ResourceTagMapping
--- &lt;p&gt;A list of resource ARNs and the tags (keys and values) that are associated with each.&lt;/p&gt;
--- @param ResourceARN [ResourceARN] &lt;p&gt;An array of resource ARN(s).&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tags that have been applied to one or more AWS resources.&lt;/p&gt;
+-- <p>A list of resource ARNs and the tags (keys and values) that are associated with each.</p>
+-- @param ResourceARN [ResourceARN] <p>An array of resource ARN(s).</p>
+-- @param Tags [TagList] <p>The tags that have been applied to one or more AWS resources.</p>
 function M.ResourceTagMapping(ResourceARN, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceTagMapping")
 	local t = { 
@@ -234,7 +234,7 @@ end
 
 --- Create a structure of type TagResourcesOutput
 --  
--- @param FailedResourcesMap [FailedResourcesMap] &lt;p&gt;Details of resources that could not be tagged. An error code, status code, and error message are returned for each failed item.&lt;/p&gt;
+-- @param FailedResourcesMap [FailedResourcesMap] <p>Details of resources that could not be tagged. An error code, status code, and error message are returned for each failed item.</p>
 function M.TagResourcesOutput(FailedResourcesMap, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagResourcesOutput")
 	local t = { 
@@ -260,8 +260,8 @@ end
 
 --- Create a structure of type UntagResourcesInput
 --  
--- @param TagKeys [TagKeyListForUntag] &lt;p&gt;A list of the tag keys that you want to remove from the specified resources.&lt;/p&gt;
--- @param ResourceARNList [ResourceARNList] &lt;p&gt;A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to untag. An ARN can be set to a maximum of 1600 characters. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt; in the &lt;i&gt;AWS General Reference&lt;/i&gt;.&lt;/p&gt;
+-- @param TagKeys [TagKeyListForUntag] <p>A list of the tag keys that you want to remove from the specified resources.</p>
+-- @param ResourceARNList [ResourceARNList] <p>A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to untag. An ARN can be set to a maximum of 1600 characters. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
 -- Required parameter: ResourceARNList
 -- Required parameter: TagKeys
 function M.UntagResourcesInput(TagKeys, ResourceARNList, ...)
@@ -287,9 +287,9 @@ function M.AssertTagFilter(struct)
 end
 
 --- Create a structure of type TagFilter
--- &lt;p&gt;A list of tags (keys and values) that are used to specify the associated resources.&lt;/p&gt;
--- @param Values [TagValueList] &lt;p&gt;The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.&lt;/p&gt;
+-- <p>A list of tags (keys and values) that are used to specify the associated resources.</p>
+-- @param Values [TagValueList] <p>The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).</p>
+-- @param Key [TagKey] <p>One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.</p>
 function M.TagFilter(Values, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagFilter")
 	local t = { 
@@ -313,7 +313,7 @@ end
 
 --- Create a structure of type UntagResourcesOutput
 --  
--- @param FailedResourcesMap [FailedResourcesMap] &lt;p&gt;Details of resources that could not be untagged. An error code, status code, and error message are returned for each failed item.&lt;/p&gt;
+-- @param FailedResourcesMap [FailedResourcesMap] <p>Details of resources that could not be untagged. An error code, status code, and error message are returned for each failed item.</p>
 function M.UntagResourcesOutput(FailedResourcesMap, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourcesOutput")
 	local t = { 
@@ -340,11 +340,11 @@ end
 
 --- Create a structure of type GetResourcesInput
 --  
--- @param PaginationToken [PaginationToken] &lt;p&gt;A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a &lt;code&gt;PaginationToken&lt;/code&gt;, use that string for this value to request an additional page of data.&lt;/p&gt;
--- @param TagsPerPage [TagsPerPage] &lt;p&gt;A limit that restricts the number of tags (key and value pairs) returned by GetResources in paginated output. A resource with no tags is counted as having one tag (one key and value pair).&lt;/p&gt; &lt;p&gt; &lt;code&gt;GetResources&lt;/code&gt; does not split a resource and its associated tags across pages. If the specified &lt;code&gt;TagsPerPage&lt;/code&gt; would cause such a break, a &lt;code&gt;PaginationToken&lt;/code&gt; is returned in place of the affected resource and its tags. Use that token in another request to get the remaining data. For example, if you specify a &lt;code&gt;TagsPerPage&lt;/code&gt; of &lt;code&gt;100&lt;/code&gt; and the account has 22 resources with 10 tags each (meaning that each resource has 10 key and value pairs), the output will consist of 3 pages, with the first page displaying the first 10 resources, each with its 10 tags, the second page displaying the next 10 resources each with its 10 tags, and the third page displaying the remaining 2 resources, each with its 10 tags.&lt;/p&gt; &lt;p/&gt; &lt;p&gt;You can set &lt;code&gt;TagsPerPage&lt;/code&gt; to a minimum of 100 items and the maximum of 500 items.&lt;/p&gt;
--- @param TagFilters [TagFilterList] &lt;p&gt;A list of tags (keys and values). A request can include up to 50 keys, and each key can include up to 20 values.&lt;/p&gt; &lt;p&gt;If you specify multiple filters connected by an AND operator in a single request, the response returns only those resources that are associated with every specified filter.&lt;/p&gt; &lt;p&gt;If you specify multiple filters connected by an OR operator in a single request, the response returns all resources that are associated with at least one or possibly more of the specified filters.&lt;/p&gt;
--- @param ResourcesPerPage [ResourcesPerPage] &lt;p&gt;A limit that restricts the number of resources returned by GetResources in paginated output. You can set ResourcesPerPage to a minimum of 1 item and the maximum of 50 items. &lt;/p&gt;
--- @param ResourceTypeFilters [ResourceTypeFilterList] &lt;p&gt;The constraints on the resources that you want returned. The format of each resource type is &lt;code&gt;service[:resourceType]&lt;/code&gt;. For example, specifying a resource type of &lt;code&gt;ec2&lt;/code&gt; returns all tagged Amazon EC2 resources (which includes tagged EC2 instances). Specifying a resource type of &lt;code&gt;ec2:instance&lt;/code&gt; returns only EC2 instances. &lt;/p&gt; &lt;p&gt;The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the &lt;i&gt;AWS General Reference&lt;/i&gt; for the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For a list of service name strings, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces&quot;&gt;AWS Service Namespaces&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For resource type strings, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax&quot;&gt;Example ARNs&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For more information about ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param PaginationToken [PaginationToken] <p>A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a <code>PaginationToken</code>, use that string for this value to request an additional page of data.</p>
+-- @param TagsPerPage [TagsPerPage] <p>A limit that restricts the number of tags (key and value pairs) returned by GetResources in paginated output. A resource with no tags is counted as having one tag (one key and value pair).</p> <p> <code>GetResources</code> does not split a resource and its associated tags across pages. If the specified <code>TagsPerPage</code> would cause such a break, a <code>PaginationToken</code> is returned in place of the affected resource and its tags. Use that token in another request to get the remaining data. For example, if you specify a <code>TagsPerPage</code> of <code>100</code> and the account has 22 resources with 10 tags each (meaning that each resource has 10 key and value pairs), the output will consist of 3 pages, with the first page displaying the first 10 resources, each with its 10 tags, the second page displaying the next 10 resources each with its 10 tags, and the third page displaying the remaining 2 resources, each with its 10 tags.</p> <p/> <p>You can set <code>TagsPerPage</code> to a minimum of 100 items and the maximum of 500 items.</p>
+-- @param TagFilters [TagFilterList] <p>A list of tags (keys and values). A request can include up to 50 keys, and each key can include up to 20 values.</p> <p>If you specify multiple filters connected by an AND operator in a single request, the response returns only those resources that are associated with every specified filter.</p> <p>If you specify multiple filters connected by an OR operator in a single request, the response returns all resources that are associated with at least one or possibly more of the specified filters.</p>
+-- @param ResourcesPerPage [ResourcesPerPage] <p>A limit that restricts the number of resources returned by GetResources in paginated output. You can set ResourcesPerPage to a minimum of 1 item and the maximum of 50 items. </p>
+-- @param ResourceTypeFilters [ResourceTypeFilterList] <p>The constraints on the resources that you want returned. The format of each resource type is <code>service[:resourceType]</code>. For example, specifying a resource type of <code>ec2</code> returns all tagged Amazon EC2 resources (which includes tagged EC2 instances). Specifying a resource type of <code>ec2:instance</code> returns only EC2 instances. </p> <p>The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the <i>AWS General Reference</i> for the following:</p> <ul> <li> <p>For a list of service name strings, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS Service Namespaces</a>.</p> </li> <li> <p>For resource type strings, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax">Example ARNs</a>.</p> </li> <li> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p> </li> </ul>
 function M.GetResourcesInput(PaginationToken, TagsPerPage, TagFilters, ResourcesPerPage, ResourceTypeFilters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetResourcesInput")
 	local t = { 
@@ -372,10 +372,10 @@ function M.AssertFailureInfo(struct)
 end
 
 --- Create a structure of type FailureInfo
--- &lt;p&gt;Details of the common errors that all actions return.&lt;/p&gt;
--- @param ErrorCode [ErrorCode] &lt;p&gt;The code of the common error. Valid values include &lt;code&gt;InternalServiceException&lt;/code&gt;, &lt;code&gt;InvalidParameterException&lt;/code&gt;, and any valid error code returned by the AWS service that hosts the resource that you want to tag.&lt;/p&gt;
--- @param ErrorMessage [ErrorMessage] &lt;p&gt;The message of the common error.&lt;/p&gt;
--- @param StatusCode [StatusCode] &lt;p&gt;The HTTP status code of the common error.&lt;/p&gt;
+-- <p>Details of the common errors that all actions return.</p>
+-- @param ErrorCode [ErrorCode] <p>The code of the common error. Valid values include <code>InternalServiceException</code>, <code>InvalidParameterException</code>, and any valid error code returned by the AWS service that hosts the resource that you want to tag.</p>
+-- @param ErrorMessage [ErrorMessage] <p>The message of the common error.</p>
+-- @param StatusCode [StatusCode] <p>The HTTP status code of the common error.</p>
 function M.FailureInfo(ErrorCode, ErrorMessage, StatusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailureInfo")
 	local t = { 
@@ -402,8 +402,8 @@ end
 
 --- Create a structure of type GetTagValuesInput
 --  
--- @param PaginationToken [PaginationToken] &lt;p&gt;A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The key for which you want to list all existing values in the specified region for the AWS account.&lt;/p&gt;
+-- @param PaginationToken [PaginationToken] <p>A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.</p>
+-- @param Key [TagKey] <p>The key for which you want to list all existing values in the specified region for the AWS account.</p>
 -- Required parameter: Key
 function M.GetTagValuesInput(PaginationToken, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTagValuesInput")
@@ -431,8 +431,8 @@ end
 
 --- Create a structure of type TagResourcesInput
 --  
--- @param ResourceARNList [ResourceARNList] &lt;p&gt;A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to tag. An ARN can be set to a maximum of 1600 characters. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt; in the &lt;i&gt;AWS General Reference&lt;/i&gt;.&lt;/p&gt;
--- @param Tags [TagMap] &lt;p&gt;The tags that you want to add to the specified resources. A tag consists of a key and a value that you define.&lt;/p&gt;
+-- @param ResourceARNList [ResourceARNList] <p>A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to tag. An ARN can be set to a maximum of 1600 characters. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- @param Tags [TagMap] <p>The tags that you want to add to the specified resources. A tag consists of a key and a value that you define.</p>
 -- Required parameter: ResourceARNList
 -- Required parameter: Tags
 function M.TagResourcesInput(ResourceARNList, Tags, ...)
@@ -458,7 +458,7 @@ end
 
 --- Create a structure of type GetTagKeysInput
 --  
--- @param PaginationToken [PaginationToken] &lt;p&gt;A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.&lt;/p&gt;
+-- @param PaginationToken [PaginationToken] <p>A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.</p>
 function M.GetTagKeysInput(PaginationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTagKeysInput")
 	local t = { 
@@ -480,8 +480,8 @@ function M.AssertPaginationTokenExpiredException(struct)
 end
 
 --- Create a structure of type PaginationTokenExpiredException
--- &lt;p&gt;A &lt;code&gt;PaginationToken&lt;/code&gt; is valid for a maximum of 15 minutes. Your request was denied because the specified &lt;code&gt;PaginationToken&lt;/code&gt; has expired.&lt;/p&gt;
--- @param Message [ExceptionMessage] &lt;p&gt;A &lt;code&gt;PaginationToken&lt;/code&gt; is valid for a maximum of 15 minutes. Your request was denied because the specified &lt;code&gt;PaginationToken&lt;/code&gt; has expired.&lt;/p&gt;
+-- <p>A <code>PaginationToken</code> is valid for a maximum of 15 minutes. Your request was denied because the specified <code>PaginationToken</code> has expired.</p>
+-- @param Message [ExceptionMessage] <p>A <code>PaginationToken</code> is valid for a maximum of 15 minutes. Your request was denied because the specified <code>PaginationToken</code> has expired.</p>
 function M.PaginationTokenExpiredException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PaginationTokenExpiredException")
 	local t = { 

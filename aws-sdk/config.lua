@@ -29,7 +29,7 @@ function M.AssertNoSuchBucketException(struct)
 end
 
 --- Create a structure of type NoSuchBucketException
--- &lt;p&gt;The specified Amazon S3 bucket does not exist.&lt;/p&gt;
+-- <p>The specified Amazon S3 bucket does not exist.</p>
 function M.NoSuchBucketException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchBucketException")
 	local t = { 
@@ -51,8 +51,8 @@ function M.AssertPutConfigurationRecorderRequest(struct)
 end
 
 --- Create a structure of type PutConfigurationRecorderRequest
--- &lt;p&gt;The input for the &lt;a&gt;PutConfigurationRecorder&lt;/a&gt; action.&lt;/p&gt;
--- @param ConfigurationRecorder [ConfigurationRecorder] &lt;p&gt;The configuration recorder object that records each configuration change made to the resources.&lt;/p&gt;
+-- <p>The input for the <a>PutConfigurationRecorder</a> action.</p>
+-- @param ConfigurationRecorder [ConfigurationRecorder] <p>The configuration recorder object that records each configuration change made to the resources.</p>
 -- Required parameter: ConfigurationRecorder
 function M.PutConfigurationRecorderRequest(ConfigurationRecorder, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutConfigurationRecorderRequest")
@@ -76,8 +76,8 @@ function M.AssertStartConfigurationRecorderRequest(struct)
 end
 
 --- Create a structure of type StartConfigurationRecorderRequest
--- &lt;p&gt;The input for the &lt;a&gt;StartConfigurationRecorder&lt;/a&gt; action.&lt;/p&gt;
--- @param ConfigurationRecorderName [RecorderName] &lt;p&gt;The name of the recorder object that records each configuration change made to the resources.&lt;/p&gt;
+-- <p>The input for the <a>StartConfigurationRecorder</a> action.</p>
+-- @param ConfigurationRecorderName [RecorderName] <p>The name of the recorder object that records each configuration change made to the resources.</p>
 -- Required parameter: ConfigurationRecorderName
 function M.StartConfigurationRecorderRequest(ConfigurationRecorderName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartConfigurationRecorderRequest")
@@ -101,9 +101,9 @@ function M.AssertDescribeComplianceByConfigRuleResponse(struct)
 end
 
 --- Create a structure of type DescribeComplianceByConfigRuleResponse
--- &lt;p/&gt;
--- @param ComplianceByConfigRules [ComplianceByConfigRules] &lt;p&gt;Indicates whether each of the specified AWS Config rules is compliant.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The string that you use in a subsequent request to get the next page of results in a paginated response.&lt;/p&gt;
+-- <p/>
+-- @param ComplianceByConfigRules [ComplianceByConfigRules] <p>Indicates whether each of the specified AWS Config rules is compliant.</p>
+-- @param NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 function M.DescribeComplianceByConfigRuleResponse(ComplianceByConfigRules, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComplianceByConfigRuleResponse")
 	local t = { 
@@ -126,8 +126,8 @@ function M.AssertPutEvaluationsResponse(struct)
 end
 
 --- Create a structure of type PutEvaluationsResponse
--- &lt;p/&gt;
--- @param FailedEvaluations [Evaluations] &lt;p&gt;Requests that failed because of a client or server error.&lt;/p&gt;
+-- <p/>
+-- @param FailedEvaluations [Evaluations] <p>Requests that failed because of a client or server error.</p>
 function M.PutEvaluationsResponse(FailedEvaluations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutEvaluationsResponse")
 	local t = { 
@@ -148,7 +148,7 @@ function M.AssertStartConfigRulesEvaluationResponse(struct)
 end
 
 --- Create a structure of type StartConfigRulesEvaluationResponse
--- &lt;p&gt;The output when you start the evaluation for the specified Config rule.&lt;/p&gt;
+-- <p>The output when you start the evaluation for the specified Config rule.</p>
 function M.StartConfigRulesEvaluationResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartConfigRulesEvaluationResponse")
 	local t = { 
@@ -171,10 +171,10 @@ function M.AssertConfigurationRecorder(struct)
 end
 
 --- Create a structure of type ConfigurationRecorder
--- &lt;p&gt;An object that represents the recording of configuration changes of an AWS resource.&lt;/p&gt;
--- @param recordingGroup [RecordingGroup] &lt;p&gt;Specifies the types of AWS resource for which AWS Config records configuration changes.&lt;/p&gt;
--- @param roleARN [String] &lt;p&gt;Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.&lt;/p&gt;
--- @param name [RecorderName] &lt;p&gt;The name of the recorder. By default, AWS Config automatically assigns the name &quot;default&quot; when creating the configuration recorder. You cannot change the assigned name.&lt;/p&gt;
+-- <p>An object that represents the recording of configuration changes of an AWS resource.</p>
+-- @param recordingGroup [RecordingGroup] <p>Specifies the types of AWS resource for which AWS Config records configuration changes.</p>
+-- @param roleARN [String] <p>Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.</p>
+-- @param name [RecorderName] <p>The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the configuration recorder. You cannot change the assigned name.</p>
 function M.ConfigurationRecorder(recordingGroup, roleARN, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationRecorder")
 	local t = { 
@@ -198,8 +198,8 @@ function M.AssertGetComplianceSummaryByResourceTypeResponse(struct)
 end
 
 --- Create a structure of type GetComplianceSummaryByResourceTypeResponse
--- &lt;p/&gt;
--- @param ComplianceSummariesByResourceType [ComplianceSummariesByResourceType] &lt;p&gt;The number of resources that are compliant and the number that are noncompliant. If one or more resource types were provided with the request, the numbers are returned for each resource type. The maximum number returned is 100.&lt;/p&gt;
+-- <p/>
+-- @param ComplianceSummariesByResourceType [ComplianceSummariesByResourceType] <p>The number of resources that are compliant and the number that are noncompliant. If one or more resource types were provided with the request, the numbers are returned for each resource type. The maximum number returned is 100.</p>
 function M.GetComplianceSummaryByResourceTypeResponse(ComplianceSummariesByResourceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceSummaryByResourceTypeResponse")
 	local t = { 
@@ -222,8 +222,8 @@ function M.AssertDeleteEvaluationResultsRequest(struct)
 end
 
 --- Create a structure of type DeleteEvaluationResultsRequest
--- &lt;p/&gt;
--- @param ConfigRuleName [StringWithCharLimit64] &lt;p&gt;The name of the Config rule for which you want to delete the evaluation results.&lt;/p&gt;
+-- <p/>
+-- @param ConfigRuleName [StringWithCharLimit64] <p>The name of the Config rule for which you want to delete the evaluation results.</p>
 -- Required parameter: ConfigRuleName
 function M.DeleteEvaluationResultsRequest(ConfigRuleName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEvaluationResultsRequest")
@@ -245,7 +245,7 @@ function M.AssertInvalidConfigurationRecorderNameException(struct)
 end
 
 --- Create a structure of type InvalidConfigurationRecorderNameException
--- &lt;p&gt;You have provided a configuration recorder name that is not valid.&lt;/p&gt;
+-- <p>You have provided a configuration recorder name that is not valid.</p>
 function M.InvalidConfigurationRecorderNameException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidConfigurationRecorderNameException")
 	local t = { 
@@ -267,8 +267,8 @@ function M.AssertDeliverConfigSnapshotRequest(struct)
 end
 
 --- Create a structure of type DeliverConfigSnapshotRequest
--- &lt;p&gt;The input for the &lt;a&gt;DeliverConfigSnapshot&lt;/a&gt; action.&lt;/p&gt;
--- @param deliveryChannelName [ChannelName] &lt;p&gt;The name of the delivery channel through which the snapshot is delivered.&lt;/p&gt;
+-- <p>The input for the <a>DeliverConfigSnapshot</a> action.</p>
+-- @param deliveryChannelName [ChannelName] <p>The name of the delivery channel through which the snapshot is delivered.</p>
 -- Required parameter: deliveryChannelName
 function M.DeliverConfigSnapshotRequest(deliveryChannelName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeliverConfigSnapshotRequest")
@@ -291,8 +291,8 @@ function M.AssertDescribeDeliveryChannelStatusResponse(struct)
 end
 
 --- Create a structure of type DescribeDeliveryChannelStatusResponse
--- &lt;p&gt;The output for the &lt;a&gt;DescribeDeliveryChannelStatus&lt;/a&gt; action.&lt;/p&gt;
--- @param DeliveryChannelsStatus [DeliveryChannelStatusList] &lt;p&gt;A list that contains the status of a specified delivery channel.&lt;/p&gt;
+-- <p>The output for the <a>DescribeDeliveryChannelStatus</a> action.</p>
+-- @param DeliveryChannelsStatus [DeliveryChannelStatusList] <p>A list that contains the status of a specified delivery channel.</p>
 function M.DescribeDeliveryChannelStatusResponse(DeliveryChannelsStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeliveryChannelStatusResponse")
 	local t = { 
@@ -315,9 +315,9 @@ function M.AssertCompliance(struct)
 end
 
 --- Create a structure of type Compliance
--- &lt;p&gt;Indicates whether an AWS resource or AWS Config rule is compliant and provides the number of contributors that affect the compliance.&lt;/p&gt;
--- @param ComplianceContributorCount [ComplianceContributorCount] &lt;p&gt;The number of AWS resources or AWS Config rules that cause a result of &lt;code&gt;NON_COMPLIANT&lt;/code&gt;, up to a maximum number.&lt;/p&gt;
--- @param ComplianceType [ComplianceType] &lt;p&gt;Indicates whether an AWS resource or AWS Config rule is compliant.&lt;/p&gt; &lt;p&gt;A resource is compliant if it complies with all of the AWS Config rules that evaluate it, and it is noncompliant if it does not comply with one or more of these rules.&lt;/p&gt; &lt;p&gt;A rule is compliant if all of the resources that the rule evaluates comply with it, and it is noncompliant if any of these resources do not comply.&lt;/p&gt; &lt;p&gt;AWS Config returns the &lt;code&gt;INSUFFICIENT_DATA&lt;/code&gt; value when no evaluation results are available for the AWS resource or Config rule.&lt;/p&gt; &lt;p&gt;For the &lt;code&gt;Compliance&lt;/code&gt; data type, AWS Config supports only &lt;code&gt;COMPLIANT&lt;/code&gt;, &lt;code&gt;NON_COMPLIANT&lt;/code&gt;, and &lt;code&gt;INSUFFICIENT_DATA&lt;/code&gt; values. AWS Config does not support the &lt;code&gt;NOT_APPLICABLE&lt;/code&gt; value for the &lt;code&gt;Compliance&lt;/code&gt; data type.&lt;/p&gt;
+-- <p>Indicates whether an AWS resource or AWS Config rule is compliant and provides the number of contributors that affect the compliance.</p>
+-- @param ComplianceContributorCount [ComplianceContributorCount] <p>The number of AWS resources or AWS Config rules that cause a result of <code>NON_COMPLIANT</code>, up to a maximum number.</p>
+-- @param ComplianceType [ComplianceType] <p>Indicates whether an AWS resource or AWS Config rule is compliant.</p> <p>A resource is compliant if it complies with all of the AWS Config rules that evaluate it, and it is noncompliant if it does not comply with one or more of these rules.</p> <p>A rule is compliant if all of the resources that the rule evaluates comply with it, and it is noncompliant if any of these resources do not comply.</p> <p>AWS Config returns the <code>INSUFFICIENT_DATA</code> value when no evaluation results are available for the AWS resource or Config rule.</p> <p>For the <code>Compliance</code> data type, AWS Config supports only <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code> values. AWS Config does not support the <code>NOT_APPLICABLE</code> value for the <code>Compliance</code> data type.</p>
 function M.Compliance(ComplianceContributorCount, ComplianceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Compliance")
 	local t = { 
@@ -339,7 +339,7 @@ function M.AssertMaxNumberOfConfigRulesExceededException(struct)
 end
 
 --- Create a structure of type MaxNumberOfConfigRulesExceededException
--- &lt;p&gt;Failed to add the AWS Config rule because the account already contains the maximum number of 50 rules. Consider deleting any deactivated rules before adding new rules.&lt;/p&gt;
+-- <p>Failed to add the AWS Config rule because the account already contains the maximum number of 50 rules. Consider deleting any deactivated rules before adding new rules.</p>
 function M.MaxNumberOfConfigRulesExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaxNumberOfConfigRulesExceededException")
 	local t = { 
@@ -359,7 +359,7 @@ function M.AssertNoSuchDeliveryChannelException(struct)
 end
 
 --- Create a structure of type NoSuchDeliveryChannelException
--- &lt;p&gt;You have specified a delivery channel that does not exist.&lt;/p&gt;
+-- <p>You have specified a delivery channel that does not exist.</p>
 function M.NoSuchDeliveryChannelException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchDeliveryChannelException")
 	local t = { 
@@ -381,9 +381,9 @@ function M.AssertGetComplianceDetailsByResourceResponse(struct)
 end
 
 --- Create a structure of type GetComplianceDetailsByResourceResponse
--- &lt;p/&gt;
--- @param EvaluationResults [EvaluationResults] &lt;p&gt;Indicates whether the specified AWS resource complies each AWS Config rule.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The string that you use in a subsequent request to get the next page of results in a paginated response.&lt;/p&gt;
+-- <p/>
+-- @param EvaluationResults [EvaluationResults] <p>Indicates whether the specified AWS resource complies each AWS Config rule.</p>
+-- @param NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 function M.GetComplianceDetailsByResourceResponse(EvaluationResults, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceDetailsByResourceResponse")
 	local t = { 
@@ -407,8 +407,8 @@ function M.AssertDeleteConfigurationRecorderRequest(struct)
 end
 
 --- Create a structure of type DeleteConfigurationRecorderRequest
--- &lt;p&gt;The request object for the &lt;code&gt;DeleteConfigurationRecorder&lt;/code&gt; action.&lt;/p&gt;
--- @param ConfigurationRecorderName [RecorderName] &lt;p&gt;The name of the configuration recorder to be deleted. You can retrieve the name of your configuration recorder by using the &lt;code&gt;DescribeConfigurationRecorders&lt;/code&gt; action.&lt;/p&gt;
+-- <p>The request object for the <code>DeleteConfigurationRecorder</code> action.</p>
+-- @param ConfigurationRecorderName [RecorderName] <p>The name of the configuration recorder to be deleted. You can retrieve the name of your configuration recorder by using the <code>DescribeConfigurationRecorders</code> action.</p>
 -- Required parameter: ConfigurationRecorderName
 function M.DeleteConfigurationRecorderRequest(ConfigurationRecorderName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigurationRecorderRequest")
@@ -431,8 +431,8 @@ function M.AssertDescribeConfigurationRecorderStatusResponse(struct)
 end
 
 --- Create a structure of type DescribeConfigurationRecorderStatusResponse
--- &lt;p&gt;The output for the &lt;a&gt;DescribeConfigurationRecorderStatus&lt;/a&gt; action in JSON format.&lt;/p&gt;
--- @param ConfigurationRecordersStatus [ConfigurationRecorderStatusList] &lt;p&gt;A list that contains status of the specified recorders.&lt;/p&gt;
+-- <p>The output for the <a>DescribeConfigurationRecorderStatus</a> action in JSON format.</p>
+-- @param ConfigurationRecordersStatus [ConfigurationRecorderStatusList] <p>A list that contains status of the specified recorders.</p>
 function M.DescribeConfigurationRecorderStatusResponse(ConfigurationRecordersStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationRecorderStatusResponse")
 	local t = { 
@@ -453,7 +453,7 @@ function M.AssertLastDeliveryChannelDeleteFailedException(struct)
 end
 
 --- Create a structure of type LastDeliveryChannelDeleteFailedException
--- &lt;p&gt;You cannot delete the delivery channel you specified because the configuration recorder is running.&lt;/p&gt;
+-- <p>You cannot delete the delivery channel you specified because the configuration recorder is running.</p>
 function M.LastDeliveryChannelDeleteFailedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LastDeliveryChannelDeleteFailedException")
 	local t = { 
@@ -473,7 +473,7 @@ function M.AssertInvalidResultTokenException(struct)
 end
 
 --- Create a structure of type InvalidResultTokenException
--- &lt;p&gt;The specified &lt;code&gt;ResultToken&lt;/code&gt; is invalid.&lt;/p&gt;
+-- <p>The specified <code>ResultToken</code> is invalid.</p>
 function M.InvalidResultTokenException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResultTokenException")
 	local t = { 
@@ -495,9 +495,9 @@ function M.AssertDescribeComplianceByResourceResponse(struct)
 end
 
 --- Create a structure of type DescribeComplianceByResourceResponse
--- &lt;p/&gt;
--- @param ComplianceByResources [ComplianceByResources] &lt;p&gt;Indicates whether the specified AWS resource complies with all of the AWS Config rules that evaluate it.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The string that you use in a subsequent request to get the next page of results in a paginated response.&lt;/p&gt;
+-- <p/>
+-- @param ComplianceByResources [ComplianceByResources] <p>Indicates whether the specified AWS resource complies with all of the AWS Config rules that evaluate it.</p>
+-- @param NextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 function M.DescribeComplianceByResourceResponse(ComplianceByResources, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComplianceByResourceResponse")
 	local t = { 
@@ -520,8 +520,8 @@ function M.AssertDescribeDeliveryChannelsResponse(struct)
 end
 
 --- Create a structure of type DescribeDeliveryChannelsResponse
--- &lt;p&gt;The output for the &lt;a&gt;DescribeDeliveryChannels&lt;/a&gt; action.&lt;/p&gt;
--- @param DeliveryChannels [DeliveryChannelList] &lt;p&gt;A list that contains the descriptions of the specified delivery channel.&lt;/p&gt;
+-- <p>The output for the <a>DescribeDeliveryChannels</a> action.</p>
+-- @param DeliveryChannels [DeliveryChannelList] <p>A list that contains the descriptions of the specified delivery channel.</p>
 function M.DescribeDeliveryChannelsResponse(DeliveryChannels, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeliveryChannelsResponse")
 	local t = { 
@@ -544,9 +544,9 @@ function M.AssertListDiscoveredResourcesResponse(struct)
 end
 
 --- Create a structure of type ListDiscoveredResourcesResponse
--- &lt;p/&gt;
--- @param nextToken [NextToken] &lt;p&gt;The string that you use in a subsequent request to get the next page of results in a paginated response.&lt;/p&gt;
--- @param resourceIdentifiers [ResourceIdentifierList] &lt;p&gt;The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.&lt;/p&gt;
+-- <p/>
+-- @param nextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
+-- @param resourceIdentifiers [ResourceIdentifierList] <p>The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.</p>
 function M.ListDiscoveredResourcesResponse(nextToken, resourceIdentifiers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDiscoveredResourcesResponse")
 	local t = { 
@@ -569,8 +569,8 @@ function M.AssertDescribeConfigurationRecordersRequest(struct)
 end
 
 --- Create a structure of type DescribeConfigurationRecordersRequest
--- &lt;p&gt;The input for the &lt;a&gt;DescribeConfigurationRecorders&lt;/a&gt; action.&lt;/p&gt;
--- @param ConfigurationRecorderNames [ConfigurationRecorderNameList] &lt;p&gt;A list of configuration recorder names.&lt;/p&gt;
+-- <p>The input for the <a>DescribeConfigurationRecorders</a> action.</p>
+-- @param ConfigurationRecorderNames [ConfigurationRecorderNameList] <p>A list of configuration recorder names.</p>
 function M.DescribeConfigurationRecordersRequest(ConfigurationRecorderNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationRecordersRequest")
 	local t = { 
@@ -592,8 +592,8 @@ function M.AssertDescribeDeliveryChannelStatusRequest(struct)
 end
 
 --- Create a structure of type DescribeDeliveryChannelStatusRequest
--- &lt;p&gt;The input for the &lt;a&gt;DeliveryChannelStatus&lt;/a&gt; action.&lt;/p&gt;
--- @param DeliveryChannelNames [DeliveryChannelNameList] &lt;p&gt;A list of delivery channel names.&lt;/p&gt;
+-- <p>The input for the <a>DeliveryChannelStatus</a> action.</p>
+-- @param DeliveryChannelNames [DeliveryChannelNameList] <p>A list of delivery channel names.</p>
 function M.DescribeDeliveryChannelStatusRequest(DeliveryChannelNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeliveryChannelStatusRequest")
 	local t = { 
@@ -614,7 +614,7 @@ function M.AssertNoAvailableDeliveryChannelException(struct)
 end
 
 --- Create a structure of type NoAvailableDeliveryChannelException
--- &lt;p&gt;There is no delivery channel available to record configurations.&lt;/p&gt;
+-- <p>There is no delivery channel available to record configurations.</p>
 function M.NoAvailableDeliveryChannelException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoAvailableDeliveryChannelException")
 	local t = { 
@@ -634,7 +634,7 @@ function M.AssertMaxNumberOfConfigurationRecordersExceededException(struct)
 end
 
 --- Create a structure of type MaxNumberOfConfigurationRecordersExceededException
--- &lt;p&gt;You have reached the limit on the number of recorders you can create.&lt;/p&gt;
+-- <p>You have reached the limit on the number of recorders you can create.</p>
 function M.MaxNumberOfConfigurationRecordersExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaxNumberOfConfigurationRecordersExceededException")
 	local t = { 
@@ -654,7 +654,7 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;This exception is thrown if an evaluation is in progress or if you call the &lt;a&gt;StartConfigRulesEvaluation&lt;/a&gt; API more than once per minute.&lt;/p&gt;
+-- <p>This exception is thrown if an evaluation is in progress or if you call the <a>StartConfigRulesEvaluation</a> API more than once per minute.</p>
 function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -674,7 +674,7 @@ function M.AssertDeleteEvaluationResultsResponse(struct)
 end
 
 --- Create a structure of type DeleteEvaluationResultsResponse
--- &lt;p&gt;The output when you delete the evaluation results for the specified Config rule.&lt;/p&gt;
+-- <p>The output when you delete the evaluation results for the specified Config rule.</p>
 function M.DeleteEvaluationResultsResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEvaluationResultsResponse")
 	local t = { 
@@ -699,10 +699,10 @@ function M.AssertSource(struct)
 end
 
 --- Create a structure of type Source
--- &lt;p&gt;Provides the AWS Config rule owner (AWS or customer), the rule identifier, and the events that trigger the evaluation of your AWS resources.&lt;/p&gt;
--- @param Owner [Owner] &lt;p&gt;Indicates whether AWS or the customer owns and manages the AWS Config rule.&lt;/p&gt;
--- @param SourceIdentifier [StringWithCharLimit256] &lt;p&gt;For AWS Config managed rules, a predefined identifier from a list. For example, &lt;code&gt;IAM_PASSWORD_POLICY&lt;/code&gt; is a managed rule. To reference a managed rule, see &lt;a href=&quot;http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html&quot;&gt;Using AWS Managed Config Rules&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;For custom rules, the identifier is the Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as &lt;code&gt;arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name&lt;/code&gt;.&lt;/p&gt;
--- @param SourceDetails [SourceDetails] &lt;p&gt;Provides the source and type of the event that causes AWS Config to evaluate your AWS resources.&lt;/p&gt;
+-- <p>Provides the AWS Config rule owner (AWS or customer), the rule identifier, and the events that trigger the evaluation of your AWS resources.</p>
+-- @param Owner [Owner] <p>Indicates whether AWS or the customer owns and manages the AWS Config rule.</p>
+-- @param SourceIdentifier [StringWithCharLimit256] <p>For AWS Config managed rules, a predefined identifier from a list. For example, <code>IAM_PASSWORD_POLICY</code> is a managed rule. To reference a managed rule, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using AWS Managed Config Rules</a>.</p> <p>For custom rules, the identifier is the Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as <code>arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name</code>.</p>
+-- @param SourceDetails [SourceDetails] <p>Provides the source and type of the event that causes AWS Config to evaluate your AWS resources.</p>
 -- Required parameter: Owner
 -- Required parameter: SourceIdentifier
 function M.Source(Owner, SourceIdentifier, SourceDetails, ...)
@@ -729,9 +729,9 @@ function M.AssertComplianceByConfigRule(struct)
 end
 
 --- Create a structure of type ComplianceByConfigRule
--- &lt;p&gt;Indicates whether an AWS Config rule is compliant. A rule is compliant if all of the resources that the rule evaluated comply with it, and it is noncompliant if any of these resources do not comply.&lt;/p&gt;
--- @param Compliance [Compliance] &lt;p&gt;Indicates whether the AWS Config rule is compliant.&lt;/p&gt;
--- @param ConfigRuleName [StringWithCharLimit64] &lt;p&gt;The name of the AWS Config rule.&lt;/p&gt;
+-- <p>Indicates whether an AWS Config rule is compliant. A rule is compliant if all of the resources that the rule evaluated comply with it, and it is noncompliant if any of these resources do not comply.</p>
+-- @param Compliance [Compliance] <p>Indicates whether the AWS Config rule is compliant.</p>
+-- @param ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule.</p>
 function M.ComplianceByConfigRule(Compliance, ConfigRuleName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComplianceByConfigRule")
 	local t = { 
@@ -753,7 +753,7 @@ function M.AssertInvalidDeliveryChannelNameException(struct)
 end
 
 --- Create a structure of type InvalidDeliveryChannelNameException
--- &lt;p&gt;The specified delivery channel name is not valid.&lt;/p&gt;
+-- <p>The specified delivery channel name is not valid.</p>
 function M.InvalidDeliveryChannelNameException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDeliveryChannelNameException")
 	local t = { 
@@ -773,7 +773,7 @@ function M.AssertInvalidNextTokenException(struct)
 end
 
 --- Create a structure of type InvalidNextTokenException
--- &lt;p&gt;The specified next token is invalid. Specify the &lt;code&gt;NextToken&lt;/code&gt; string that was returned in the previous response to get the next page of results.&lt;/p&gt;
+-- <p>The specified next token is invalid. Specify the <code>NextToken</code> string that was returned in the previous response to get the next page of results.</p>
 function M.InvalidNextTokenException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
 	local t = { 
@@ -794,8 +794,8 @@ function M.AssertStartConfigRulesEvaluationRequest(struct)
 end
 
 --- Create a structure of type StartConfigRulesEvaluationRequest
--- &lt;p/&gt;
--- @param ConfigRuleNames [ReevaluateConfigRuleNames] &lt;p&gt;The list of names of Config rules that you want to run evaluations for.&lt;/p&gt;
+-- <p/>
+-- @param ConfigRuleNames [ReevaluateConfigRuleNames] <p>The list of names of Config rules that you want to run evaluations for.</p>
 function M.StartConfigRulesEvaluationRequest(ConfigRuleNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartConfigRulesEvaluationRequest")
 	local t = { 
@@ -827,18 +827,18 @@ function M.AssertConfigRuleEvaluationStatus(struct)
 end
 
 --- Create a structure of type ConfigRuleEvaluationStatus
--- &lt;p&gt;Status information for your AWS managed Config rules. The status includes information such as the last time the rule ran, the last time it failed, and the related error for the last failure.&lt;/p&gt; &lt;p&gt;This action does not return status information about custom Config rules.&lt;/p&gt;
--- @param LastFailedEvaluationTime [Date] &lt;p&gt;The time that AWS Config last failed to evaluate your AWS resources against the rule.&lt;/p&gt;
--- @param LastSuccessfulInvocationTime [Date] &lt;p&gt;The time that AWS Config last successfully invoked the AWS Config rule to evaluate your AWS resources.&lt;/p&gt;
--- @param FirstEvaluationStarted [Boolean] &lt;p&gt;Indicates whether AWS Config has evaluated your resources against the rule at least once.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;true&lt;/code&gt; - AWS Config has evaluated your AWS resources against the rule at least once.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;false&lt;/code&gt; - AWS Config has not once finished evaluating your AWS resources against the rule.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param LastFailedInvocationTime [Date] &lt;p&gt;The time that AWS Config last failed to invoke the AWS Config rule to evaluate your AWS resources.&lt;/p&gt;
--- @param ConfigRuleName [StringWithCharLimit64] &lt;p&gt;The name of the AWS Config rule.&lt;/p&gt;
--- @param ConfigRuleArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the AWS Config rule.&lt;/p&gt;
--- @param FirstActivatedTime [Date] &lt;p&gt;The time that you first activated the AWS Config rule.&lt;/p&gt;
--- @param LastSuccessfulEvaluationTime [Date] &lt;p&gt;The time that AWS Config last successfully evaluated your AWS resources against the rule.&lt;/p&gt;
--- @param LastErrorCode [String] &lt;p&gt;The error code that AWS Config returned when the rule last failed.&lt;/p&gt;
--- @param LastErrorMessage [String] &lt;p&gt;The error message that AWS Config returned when the rule last failed.&lt;/p&gt;
--- @param ConfigRuleId [String] &lt;p&gt;The ID of the AWS Config rule.&lt;/p&gt;
+-- <p>Status information for your AWS managed Config rules. The status includes information such as the last time the rule ran, the last time it failed, and the related error for the last failure.</p> <p>This action does not return status information about custom Config rules.</p>
+-- @param LastFailedEvaluationTime [Date] <p>The time that AWS Config last failed to evaluate your AWS resources against the rule.</p>
+-- @param LastSuccessfulInvocationTime [Date] <p>The time that AWS Config last successfully invoked the AWS Config rule to evaluate your AWS resources.</p>
+-- @param FirstEvaluationStarted [Boolean] <p>Indicates whether AWS Config has evaluated your resources against the rule at least once.</p> <ul> <li> <p> <code>true</code> - AWS Config has evaluated your AWS resources against the rule at least once.</p> </li> <li> <p> <code>false</code> - AWS Config has not once finished evaluating your AWS resources against the rule.</p> </li> </ul>
+-- @param LastFailedInvocationTime [Date] <p>The time that AWS Config last failed to invoke the AWS Config rule to evaluate your AWS resources.</p>
+-- @param ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule.</p>
+-- @param ConfigRuleArn [String] <p>The Amazon Resource Name (ARN) of the AWS Config rule.</p>
+-- @param FirstActivatedTime [Date] <p>The time that you first activated the AWS Config rule.</p>
+-- @param LastSuccessfulEvaluationTime [Date] <p>The time that AWS Config last successfully evaluated your AWS resources against the rule.</p>
+-- @param LastErrorCode [String] <p>The error code that AWS Config returned when the rule last failed.</p>
+-- @param LastErrorMessage [String] <p>The error message that AWS Config returned when the rule last failed.</p>
+-- @param ConfigRuleId [String] <p>The ID of the AWS Config rule.</p>
 function M.ConfigRuleEvaluationStatus(LastFailedEvaluationTime, LastSuccessfulInvocationTime, FirstEvaluationStarted, LastFailedInvocationTime, ConfigRuleName, ConfigRuleArn, FirstActivatedTime, LastSuccessfulEvaluationTime, LastErrorCode, LastErrorMessage, ConfigRuleId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigRuleEvaluationStatus")
 	local t = { 
@@ -869,7 +869,7 @@ function M.AssertNoSuchConfigurationRecorderException(struct)
 end
 
 --- Create a structure of type NoSuchConfigurationRecorderException
--- &lt;p&gt;You have specified a configuration recorder that does not exist.&lt;/p&gt;
+-- <p>You have specified a configuration recorder that does not exist.</p>
 function M.NoSuchConfigurationRecorderException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchConfigurationRecorderException")
 	local t = { 
@@ -889,7 +889,7 @@ function M.AssertNoRunningConfigurationRecorderException(struct)
 end
 
 --- Create a structure of type NoRunningConfigurationRecorderException
--- &lt;p&gt;There is no configuration recorder running.&lt;/p&gt;
+-- <p>There is no configuration recorder running.</p>
 function M.NoRunningConfigurationRecorderException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoRunningConfigurationRecorderException")
 	local t = { 
@@ -909,7 +909,7 @@ function M.AssertInsufficientPermissionsException(struct)
 end
 
 --- Create a structure of type InsufficientPermissionsException
--- &lt;p&gt;Indicates one of the following errors:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The rule cannot be created because the IAM role assigned to AWS Config lacks permissions to perform the config:Put* action.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The AWS Lambda function cannot be invoked. Check the function ARN, and check the function's permissions.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Indicates one of the following errors:</p> <ul> <li> <p>The rule cannot be created because the IAM role assigned to AWS Config lacks permissions to perform the config:Put* action.</p> </li> <li> <p>The AWS Lambda function cannot be invoked. Check the function ARN, and check the function's permissions.</p> </li> </ul>
 function M.InsufficientPermissionsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientPermissionsException")
 	local t = { 
@@ -929,7 +929,7 @@ function M.AssertResourceNotDiscoveredException(struct)
 end
 
 --- Create a structure of type ResourceNotDiscoveredException
--- &lt;p&gt;You have specified a resource that is either unknown or has not been discovered.&lt;/p&gt;
+-- <p>You have specified a resource that is either unknown or has not been discovered.</p>
 function M.ResourceNotDiscoveredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotDiscoveredException")
 	local t = { 
@@ -949,7 +949,7 @@ function M.AssertInvalidS3KeyPrefixException(struct)
 end
 
 --- Create a structure of type InvalidS3KeyPrefixException
--- &lt;p&gt;The specified Amazon S3 key prefix is not valid.&lt;/p&gt;
+-- <p>The specified Amazon S3 key prefix is not valid.</p>
 function M.InvalidS3KeyPrefixException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3KeyPrefixException")
 	local t = { 
@@ -970,8 +970,8 @@ function M.AssertDeliverConfigSnapshotResponse(struct)
 end
 
 --- Create a structure of type DeliverConfigSnapshotResponse
--- &lt;p&gt;The output for the &lt;a&gt;DeliverConfigSnapshot&lt;/a&gt; action in JSON format.&lt;/p&gt;
--- @param configSnapshotId [String] &lt;p&gt;The ID of the snapshot that is being created.&lt;/p&gt;
+-- <p>The output for the <a>DeliverConfigSnapshot</a> action in JSON format.</p>
+-- @param configSnapshotId [String] <p>The ID of the snapshot that is being created.</p>
 function M.DeliverConfigSnapshotResponse(configSnapshotId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeliverConfigSnapshotResponse")
 	local t = { 
@@ -997,12 +997,12 @@ function M.AssertDeliveryChannel(struct)
 end
 
 --- Create a structure of type DeliveryChannel
--- &lt;p&gt;The channel through which AWS Config delivers notifications and updated configuration states.&lt;/p&gt;
--- @param s3KeyPrefix [String] &lt;p&gt;The prefix for the specified Amazon S3 bucket.&lt;/p&gt;
--- @param configSnapshotDeliveryProperties [ConfigSnapshotDeliveryProperties] &lt;p&gt;The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.&lt;/p&gt;
--- @param snsTopicARN [String] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon SNS topic to which AWS Config sends notifications about configuration changes.&lt;/p&gt; &lt;p&gt;If you choose a topic from another account, the topic must have policies that grant access permissions to AWS Config. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html&quot;&gt;Permissions for the Amazon SNS Topic&lt;/a&gt; in the AWS Config Developer Guide.&lt;/p&gt;
--- @param name [ChannelName] &lt;p&gt;The name of the delivery channel. By default, AWS Config assigns the name &quot;default&quot; when creating the delivery channel. To change the delivery channel name, you must use the DeleteDeliveryChannel action to delete your current delivery channel, and then you must use the PutDeliveryChannel command to create a delivery channel that has the desired name.&lt;/p&gt;
--- @param s3BucketName [String] &lt;p&gt;The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files.&lt;/p&gt; &lt;p&gt;If you specify a bucket that belongs to another AWS account, that bucket must have policies that grant access permissions to AWS Config. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html&quot;&gt;Permissions for the Amazon S3 Bucket&lt;/a&gt; in the AWS Config Developer Guide.&lt;/p&gt;
+-- <p>The channel through which AWS Config delivers notifications and updated configuration states.</p>
+-- @param s3KeyPrefix [String] <p>The prefix for the specified Amazon S3 bucket.</p>
+-- @param configSnapshotDeliveryProperties [ConfigSnapshotDeliveryProperties] <p>The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.</p>
+-- @param snsTopicARN [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which AWS Config sends notifications about configuration changes.</p> <p>If you choose a topic from another account, the topic must have policies that grant access permissions to AWS Config. For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html">Permissions for the Amazon SNS Topic</a> in the AWS Config Developer Guide.</p>
+-- @param name [ChannelName] <p>The name of the delivery channel. By default, AWS Config assigns the name "default" when creating the delivery channel. To change the delivery channel name, you must use the DeleteDeliveryChannel action to delete your current delivery channel, and then you must use the PutDeliveryChannel command to create a delivery channel that has the desired name.</p>
+-- @param s3BucketName [String] <p>The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files.</p> <p>If you specify a bucket that belongs to another AWS account, that bucket must have policies that grant access permissions to AWS Config. For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html">Permissions for the Amazon S3 Bucket</a> in the AWS Config Developer Guide.</p>
 function M.DeliveryChannel(s3KeyPrefix, configSnapshotDeliveryProperties, snsTopicARN, name, s3BucketName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeliveryChannel")
 	local t = { 
@@ -1032,12 +1032,12 @@ function M.AssertDescribeComplianceByResourceRequest(struct)
 end
 
 --- Create a structure of type DescribeComplianceByResourceRequest
--- &lt;p/&gt;
--- @param ResourceType [StringWithCharLimit256] &lt;p&gt;The types of AWS resources for which you want compliance information; for example, &lt;code&gt;AWS::EC2::Instance&lt;/code&gt;. For this action, you can specify that the resource type is an AWS account by specifying &lt;code&gt;AWS::::Account&lt;/code&gt;.&lt;/p&gt;
--- @param ResourceId [StringWithCharLimit256] &lt;p&gt;The ID of the AWS resource for which you want compliance information. You can specify only one resource ID. If you specify a resource ID, you must also specify a type for &lt;code&gt;ResourceType&lt;/code&gt;.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; string returned on a previous page that you use to get the next page of results in a paginated response.&lt;/p&gt;
--- @param Limit [Limit] &lt;p&gt;The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.&lt;/p&gt;
--- @param ComplianceTypes [ComplianceTypes] &lt;p&gt;Filters the results by compliance.&lt;/p&gt; &lt;p&gt;The allowed values are &lt;code&gt;COMPLIANT&lt;/code&gt;, &lt;code&gt;NON_COMPLIANT&lt;/code&gt;, and &lt;code&gt;INSUFFICIENT_DATA&lt;/code&gt;.&lt;/p&gt;
+-- <p/>
+-- @param ResourceType [StringWithCharLimit256] <p>The types of AWS resources for which you want compliance information; for example, <code>AWS::EC2::Instance</code>. For this action, you can specify that the resource type is an AWS account by specifying <code>AWS::::Account</code>.</p>
+-- @param ResourceId [StringWithCharLimit256] <p>The ID of the AWS resource for which you want compliance information. You can specify only one resource ID. If you specify a resource ID, you must also specify a type for <code>ResourceType</code>.</p>
+-- @param NextToken [NextToken] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- @param Limit [Limit] <p>The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
+-- @param ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code>.</p>
 function M.DescribeComplianceByResourceRequest(ResourceType, ResourceId, NextToken, Limit, ComplianceTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComplianceByResourceRequest")
 	local t = { 
@@ -1062,7 +1062,7 @@ function M.AssertInvalidTimeRangeException(struct)
 end
 
 --- Create a structure of type InvalidTimeRangeException
--- &lt;p&gt;The specified time range is not valid. The earlier time is not chronologically before the later time.&lt;/p&gt;
+-- <p>The specified time range is not valid. The earlier time is not chronologically before the later time.</p>
 function M.InvalidTimeRangeException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTimeRangeException")
 	local t = { 
@@ -1084,9 +1084,9 @@ function M.AssertComplianceSummaryByResourceType(struct)
 end
 
 --- Create a structure of type ComplianceSummaryByResourceType
--- &lt;p&gt;The number of AWS resources of a specific type that are compliant or noncompliant, up to a maximum of 100 for each compliance.&lt;/p&gt;
--- @param ResourceType [StringWithCharLimit256] &lt;p&gt;The type of AWS resource.&lt;/p&gt;
--- @param ComplianceSummary [ComplianceSummary] &lt;p&gt;The number of AWS resources that are compliant or noncompliant, up to a maximum of 100 for each compliance.&lt;/p&gt;
+-- <p>The number of AWS resources of a specific type that are compliant or noncompliant, up to a maximum of 100 for each compliance.</p>
+-- @param ResourceType [StringWithCharLimit256] <p>The type of AWS resource.</p>
+-- @param ComplianceSummary [ComplianceSummary] <p>The number of AWS resources that are compliant or noncompliant, up to a maximum of 100 for each compliance.</p>
 function M.ComplianceSummaryByResourceType(ResourceType, ComplianceSummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComplianceSummaryByResourceType")
 	local t = { 
@@ -1112,11 +1112,11 @@ function M.AssertResourceIdentifier(struct)
 end
 
 --- Create a structure of type ResourceIdentifier
--- &lt;p&gt;The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.&lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The type of resource.&lt;/p&gt;
--- @param resourceId [ResourceId] &lt;p&gt;The ID of the resource (for example., &lt;code&gt;sg-xxxxxx&lt;/code&gt;).&lt;/p&gt;
--- @param resourceDeletionTime [ResourceDeletionTime] &lt;p&gt;The time that the resource was deleted.&lt;/p&gt;
--- @param resourceName [ResourceName] &lt;p&gt;The custom name of the resource (if available).&lt;/p&gt;
+-- <p>The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.</p>
+-- @param resourceType [ResourceType] <p>The type of resource.</p>
+-- @param resourceId [ResourceId] <p>The ID of the resource (for example., <code>sg-xxxxxx</code>).</p>
+-- @param resourceDeletionTime [ResourceDeletionTime] <p>The time that the resource was deleted.</p>
+-- @param resourceName [ResourceName] <p>The custom name of the resource (if available).</p>
 function M.ResourceIdentifier(resourceType, resourceId, resourceDeletionTime, resourceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceIdentifier")
 	local t = { 
@@ -1142,9 +1142,9 @@ function M.AssertDescribeConfigRulesRequest(struct)
 end
 
 --- Create a structure of type DescribeConfigRulesRequest
--- &lt;p/&gt;
--- @param NextToken [String] &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; string returned on a previous page that you use to get the next page of results in a paginated response.&lt;/p&gt;
--- @param ConfigRuleNames [ConfigRuleNames] &lt;p&gt;The names of the AWS Config rules for which you want details. If you do not specify any names, AWS Config returns details for all your rules.&lt;/p&gt;
+-- <p/>
+-- @param NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- @param ConfigRuleNames [ConfigRuleNames] <p>The names of the AWS Config rules for which you want details. If you do not specify any names, AWS Config returns details for all your rules.</p>
 function M.DescribeConfigRulesRequest(NextToken, ConfigRuleNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigRulesRequest")
 	local t = { 
@@ -1166,7 +1166,7 @@ function M.AssertNoSuchConfigRuleException(struct)
 end
 
 --- Create a structure of type NoSuchConfigRuleException
--- &lt;p&gt;One or more AWS Config rules in the request are invalid. Verify that the rule names are correct and try again.&lt;/p&gt;
+-- <p>One or more AWS Config rules in the request are invalid. Verify that the rule names are correct and try again.</p>
 function M.NoSuchConfigRuleException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchConfigRuleException")
 	local t = { 
@@ -1188,9 +1188,9 @@ function M.AssertComplianceContributorCount(struct)
 end
 
 --- Create a structure of type ComplianceContributorCount
--- &lt;p&gt;The number of AWS resources or AWS Config rules responsible for the current compliance of the item, up to a maximum number.&lt;/p&gt;
--- @param CappedCount [Integer] &lt;p&gt;The number of AWS resources or AWS Config rules responsible for the current compliance of the item.&lt;/p&gt;
--- @param CapExceeded [Boolean] &lt;p&gt;Indicates whether the maximum count is reached.&lt;/p&gt;
+-- <p>The number of AWS resources or AWS Config rules responsible for the current compliance of the item, up to a maximum number.</p>
+-- @param CappedCount [Integer] <p>The number of AWS resources or AWS Config rules responsible for the current compliance of the item.</p>
+-- @param CapExceeded [Boolean] <p>Indicates whether the maximum count is reached.</p>
 function M.ComplianceContributorCount(CappedCount, CapExceeded, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComplianceContributorCount")
 	local t = { 
@@ -1215,7 +1215,7 @@ end
 
 --- Create a structure of type PutConfigRuleRequest
 --  
--- @param ConfigRule [ConfigRule] &lt;p&gt;The rule that you want to add to your account.&lt;/p&gt;
+-- @param ConfigRule [ConfigRule] <p>The rule that you want to add to your account.</p>
 -- Required parameter: ConfigRule
 function M.PutConfigRuleRequest(ConfigRule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutConfigRuleRequest")
@@ -1240,10 +1240,10 @@ function M.AssertSourceDetail(struct)
 end
 
 --- Create a structure of type SourceDetail
--- &lt;p&gt;Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic. You can specify the parameter values for &lt;code&gt;SourceDetail&lt;/code&gt; only for custom rules. &lt;/p&gt;
--- @param EventSource [EventSource] &lt;p&gt;The source of the event, such as an AWS service, that triggers AWS Config to evaluate your AWS resources.&lt;/p&gt;
--- @param MessageType [MessageType] &lt;p&gt;The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ConfigurationItemChangeNotification&lt;/code&gt; - Triggers an evaluation when AWS Config delivers a configuration item as a result of a resource change.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;OversizedConfigurationItemChangeNotification&lt;/code&gt; - Triggers an evaluation when AWS Config delivers an oversized configuration item. AWS Config may generate this notification type when a resource changes and the notification exceeds the maximum size allowed by Amazon SNS.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ScheduledNotification&lt;/code&gt; - Triggers a periodic evaluation at the frequency specified for &lt;code&gt;MaximumExecutionFrequency&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ConfigurationSnapshotDeliveryCompleted&lt;/code&gt; - Triggers a periodic evaluation when AWS Config delivers a configuration snapshot.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you want your custom rule to be triggered by configuration changes, specify both &lt;code&gt;ConfigurationItemChangeNotification&lt;/code&gt; and &lt;code&gt;OversizedConfigurationItemChangeNotification&lt;/code&gt;. &lt;/p&gt;
--- @param MaximumExecutionFrequency [MaximumExecutionFrequency] &lt;p&gt;The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you specify a value for &lt;code&gt;MaximumExecutionFrequency&lt;/code&gt;, then &lt;code&gt;MessageType&lt;/code&gt; must use the &lt;code&gt;ScheduledNotification&lt;/code&gt; value.&lt;/p&gt; &lt;note&gt; &lt;p&gt;By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the &lt;code&gt;MaximumExecutionFrequency&lt;/code&gt; parameter.&lt;/p&gt; &lt;/note&gt;
+-- <p>Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic. You can specify the parameter values for <code>SourceDetail</code> only for custom rules. </p>
+-- @param EventSource [EventSource] <p>The source of the event, such as an AWS service, that triggers AWS Config to evaluate your AWS resources.</p>
+-- @param MessageType [MessageType] <p>The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:</p> <ul> <li> <p> <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a configuration item as a result of a resource change.</p> </li> <li> <p> <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers an oversized configuration item. AWS Config may generate this notification type when a resource changes and the notification exceeds the maximum size allowed by Amazon SNS.</p> </li> <li> <p> <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for <code>MaximumExecutionFrequency</code>.</p> </li> <li> <p> <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config delivers a configuration snapshot.</p> </li> </ul> <p>If you want your custom rule to be triggered by configuration changes, specify both <code>ConfigurationItemChangeNotification</code> and <code>OversizedConfigurationItemChangeNotification</code>. </p>
+-- @param MaximumExecutionFrequency [MaximumExecutionFrequency] <p>The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the <code>ScheduledNotification</code> value.</p> <note> <p>By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the <code>MaximumExecutionFrequency</code> parameter.</p> </note>
 function M.SourceDetail(EventSource, MessageType, MaximumExecutionFrequency, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SourceDetail")
 	local t = { 
@@ -1266,7 +1266,7 @@ function M.AssertNoAvailableConfigurationRecorderException(struct)
 end
 
 --- Create a structure of type NoAvailableConfigurationRecorderException
--- &lt;p&gt;There are no configuration recorders available to provide the role needed to describe your resources. Create a configuration recorder.&lt;/p&gt;
+-- <p>There are no configuration recorders available to provide the role needed to describe your resources. Create a configuration recorder.</p>
 function M.NoAvailableConfigurationRecorderException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NoAvailableConfigurationRecorderException")
 	local t = { 
@@ -1286,7 +1286,7 @@ function M.AssertInvalidLimitException(struct)
 end
 
 --- Create a structure of type InvalidLimitException
--- &lt;p&gt;The specified limit is outside the allowable range.&lt;/p&gt;
+-- <p>The specified limit is outside the allowable range.</p>
 function M.InvalidLimitException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLimitException")
 	local t = { 
@@ -1307,8 +1307,8 @@ function M.AssertConfigSnapshotDeliveryProperties(struct)
 end
 
 --- Create a structure of type ConfigSnapshotDeliveryProperties
--- &lt;p&gt;Provides options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket in your delivery channel.&lt;/p&gt; &lt;note&gt; &lt;p&gt;If you want to create a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot, see the following:&lt;/p&gt; &lt;/note&gt; &lt;p&gt;The frequency for a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot is set by one of two values, depending on which is less frequent:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The value for the &lt;code&gt;deliveryFrequency&lt;/code&gt; parameter within the delivery channel configuration, which sets how often AWS Config delivers configuration snapshots. This value also sets how often AWS Config invokes evaluations for Config rules.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The value for the &lt;code&gt;MaximumExecutionFrequency&lt;/code&gt; parameter, which sets the maximum frequency with which AWS Config invokes evaluations for the rule. For more information, see &lt;a&gt;ConfigRule&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the &lt;code&gt;deliveryFrequency&lt;/code&gt; value is less frequent than the &lt;code&gt;MaximumExecutionFrequency&lt;/code&gt; value for a rule, AWS Config invokes the rule only as often as the &lt;code&gt;deliveryFrequency&lt;/code&gt; value.&lt;/p&gt; &lt;ol&gt; &lt;li&gt; &lt;p&gt;For example, you want your rule to run evaluations when AWS Config delivers the configuration snapshot.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You specify the &lt;code&gt;MaximumExecutionFrequency&lt;/code&gt; value for &lt;code&gt;Six_Hours&lt;/code&gt;. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You then specify the delivery channel &lt;code&gt;deliveryFrequency&lt;/code&gt; value for &lt;code&gt;TwentyFour_Hours&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Because the value for &lt;code&gt;deliveryFrequency&lt;/code&gt; is less frequent than &lt;code&gt;MaximumExecutionFrequency&lt;/code&gt;, AWS Config invokes evaluations for the rule every 24 hours. &lt;/p&gt; &lt;/li&gt; &lt;/ol&gt; &lt;p&gt;You should set the &lt;code&gt;MaximumExecutionFrequency&lt;/code&gt; value to be at least as frequent as the &lt;code&gt;deliveryFrequency&lt;/code&gt; value. You can view the &lt;code&gt;deliveryFrequency&lt;/code&gt; value by using the &lt;code&gt;DescribeDeliveryChannnels&lt;/code&gt; action.&lt;/p&gt; &lt;p&gt;To update the &lt;code&gt;deliveryFrequency&lt;/code&gt; with which AWS Config delivers your configuration snapshots, use the &lt;code&gt;PutDeliveryChannel&lt;/code&gt; action.&lt;/p&gt;
--- @param deliveryFrequency [MaximumExecutionFrequency] &lt;p&gt;The frequency with which AWS Config delivers configuration snapshots.&lt;/p&gt;
+-- <p>Provides options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket in your delivery channel.</p> <note> <p>If you want to create a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot, see the following:</p> </note> <p>The frequency for a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot is set by one of two values, depending on which is less frequent:</p> <ul> <li> <p>The value for the <code>deliveryFrequency</code> parameter within the delivery channel configuration, which sets how often AWS Config delivers configuration snapshots. This value also sets how often AWS Config invokes evaluations for Config rules.</p> </li> <li> <p>The value for the <code>MaximumExecutionFrequency</code> parameter, which sets the maximum frequency with which AWS Config invokes evaluations for the rule. For more information, see <a>ConfigRule</a>.</p> </li> </ul> <p>If the <code>deliveryFrequency</code> value is less frequent than the <code>MaximumExecutionFrequency</code> value for a rule, AWS Config invokes the rule only as often as the <code>deliveryFrequency</code> value.</p> <ol> <li> <p>For example, you want your rule to run evaluations when AWS Config delivers the configuration snapshot.</p> </li> <li> <p>You specify the <code>MaximumExecutionFrequency</code> value for <code>Six_Hours</code>. </p> </li> <li> <p>You then specify the delivery channel <code>deliveryFrequency</code> value for <code>TwentyFour_Hours</code>.</p> </li> <li> <p>Because the value for <code>deliveryFrequency</code> is less frequent than <code>MaximumExecutionFrequency</code>, AWS Config invokes evaluations for the rule every 24 hours. </p> </li> </ol> <p>You should set the <code>MaximumExecutionFrequency</code> value to be at least as frequent as the <code>deliveryFrequency</code> value. You can view the <code>deliveryFrequency</code> value by using the <code>DescribeDeliveryChannnels</code> action.</p> <p>To update the <code>deliveryFrequency</code> with which AWS Config delivers your configuration snapshots, use the <code>PutDeliveryChannel</code> action.</p>
+-- @param deliveryFrequency [MaximumExecutionFrequency] <p>The frequency with which AWS Config delivers configuration snapshots.</p>
 function M.ConfigSnapshotDeliveryProperties(deliveryFrequency, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigSnapshotDeliveryProperties")
 	local t = { 
@@ -1329,7 +1329,7 @@ function M.AssertValidationException(struct)
 end
 
 --- Create a structure of type ValidationException
--- &lt;p&gt;The requested action is not valid.&lt;/p&gt;
+-- <p>The requested action is not valid.</p>
 function M.ValidationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
 	local t = { 
@@ -1352,10 +1352,10 @@ function M.AssertEvaluationResultQualifier(struct)
 end
 
 --- Create a structure of type EvaluationResultQualifier
--- &lt;p&gt;Identifies an AWS Config rule that evaluated an AWS resource, and provides the type and ID of the resource that the rule evaluated.&lt;/p&gt;
--- @param ResourceType [StringWithCharLimit256] &lt;p&gt;The type of AWS resource that was evaluated.&lt;/p&gt;
--- @param ResourceId [StringWithCharLimit256] &lt;p&gt;The ID of the evaluated AWS resource.&lt;/p&gt;
--- @param ConfigRuleName [StringWithCharLimit64] &lt;p&gt;The name of the AWS Config rule that was used in the evaluation.&lt;/p&gt;
+-- <p>Identifies an AWS Config rule that evaluated an AWS resource, and provides the type and ID of the resource that the rule evaluated.</p>
+-- @param ResourceType [StringWithCharLimit256] <p>The type of AWS resource that was evaluated.</p>
+-- @param ResourceId [StringWithCharLimit256] <p>The ID of the evaluated AWS resource.</p>
+-- @param ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule that was used in the evaluation.</p>
 function M.EvaluationResultQualifier(ResourceType, ResourceId, ConfigRuleName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EvaluationResultQualifier")
 	local t = { 
@@ -1381,10 +1381,10 @@ function M.AssertDescribeComplianceByConfigRuleRequest(struct)
 end
 
 --- Create a structure of type DescribeComplianceByConfigRuleRequest
--- &lt;p/&gt;
--- @param ComplianceTypes [ComplianceTypes] &lt;p&gt;Filters the results by compliance.&lt;/p&gt; &lt;p&gt;The allowed values are &lt;code&gt;COMPLIANT&lt;/code&gt;, &lt;code&gt;NON_COMPLIANT&lt;/code&gt;, and &lt;code&gt;INSUFFICIENT_DATA&lt;/code&gt;.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; string returned on a previous page that you use to get the next page of results in a paginated response.&lt;/p&gt;
--- @param ConfigRuleNames [ConfigRuleNames] &lt;p&gt;Specify one or more AWS Config rule names to filter the results by rule.&lt;/p&gt;
+-- <p/>
+-- @param ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code>.</p>
+-- @param NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- @param ConfigRuleNames [ConfigRuleNames] <p>Specify one or more AWS Config rule names to filter the results by rule.</p>
 function M.DescribeComplianceByConfigRuleRequest(ComplianceTypes, NextToken, ConfigRuleNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComplianceByConfigRuleRequest")
 	local t = { 
@@ -1416,12 +1416,12 @@ function M.AssertEvaluation(struct)
 end
 
 --- Create a structure of type Evaluation
--- &lt;p&gt;Identifies an AWS resource and indicates whether it complies with the AWS Config rule that it was evaluated against.&lt;/p&gt;
--- @param OrderingTimestamp [OrderingTimestamp] &lt;p&gt;The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time indicates when AWS Config created the configuration item that triggered the evaluation. For periodic evaluations, the time indicates when AWS Config triggered the evaluation at the frequency that you specified (for example, every 24 hours).&lt;/p&gt;
--- @param ComplianceResourceId [StringWithCharLimit256] &lt;p&gt;The ID of the AWS resource that was evaluated.&lt;/p&gt;
--- @param ComplianceResourceType [StringWithCharLimit256] &lt;p&gt;The type of AWS resource that was evaluated.&lt;/p&gt;
--- @param Annotation [StringWithCharLimit256] &lt;p&gt;Supplementary information about how the evaluation determined the compliance.&lt;/p&gt;
--- @param ComplianceType [ComplianceType] &lt;p&gt;Indicates whether the AWS resource complies with the AWS Config rule that it was evaluated against.&lt;/p&gt; &lt;p&gt;For the &lt;code&gt;Evaluation&lt;/code&gt; data type, AWS Config supports only the &lt;code&gt;COMPLIANT&lt;/code&gt;, &lt;code&gt;NON_COMPLIANT&lt;/code&gt;, and &lt;code&gt;NOT_APPLICABLE&lt;/code&gt; values. AWS Config does not support the &lt;code&gt;INSUFFICIENT_DATA&lt;/code&gt; value for this data type.&lt;/p&gt; &lt;p&gt;Similarly, AWS Config does not accept &lt;code&gt;INSUFFICIENT_DATA&lt;/code&gt; as the value for &lt;code&gt;ComplianceType&lt;/code&gt; from a &lt;code&gt;PutEvaluations&lt;/code&gt; request. For example, an AWS Lambda function for a custom Config rule cannot pass an &lt;code&gt;INSUFFICIENT_DATA&lt;/code&gt; value to AWS Config.&lt;/p&gt;
+-- <p>Identifies an AWS resource and indicates whether it complies with the AWS Config rule that it was evaluated against.</p>
+-- @param OrderingTimestamp [OrderingTimestamp] <p>The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time indicates when AWS Config created the configuration item that triggered the evaluation. For periodic evaluations, the time indicates when AWS Config triggered the evaluation at the frequency that you specified (for example, every 24 hours).</p>
+-- @param ComplianceResourceId [StringWithCharLimit256] <p>The ID of the AWS resource that was evaluated.</p>
+-- @param ComplianceResourceType [StringWithCharLimit256] <p>The type of AWS resource that was evaluated.</p>
+-- @param Annotation [StringWithCharLimit256] <p>Supplementary information about how the evaluation determined the compliance.</p>
+-- @param ComplianceType [ComplianceType] <p>Indicates whether the AWS resource complies with the AWS Config rule that it was evaluated against.</p> <p>For the <code>Evaluation</code> data type, AWS Config supports only the <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code> values. AWS Config does not support the <code>INSUFFICIENT_DATA</code> value for this data type.</p> <p>Similarly, AWS Config does not accept <code>INSUFFICIENT_DATA</code> as the value for <code>ComplianceType</code> from a <code>PutEvaluations</code> request. For example, an AWS Lambda function for a custom Config rule cannot pass an <code>INSUFFICIENT_DATA</code> value to AWS Config.</p>
 -- Required parameter: ComplianceResourceType
 -- Required parameter: ComplianceResourceId
 -- Required parameter: ComplianceType
@@ -1452,8 +1452,8 @@ function M.AssertDeleteDeliveryChannelRequest(struct)
 end
 
 --- Create a structure of type DeleteDeliveryChannelRequest
--- &lt;p&gt;The input for the &lt;a&gt;DeleteDeliveryChannel&lt;/a&gt; action. The action accepts the following data in JSON format. &lt;/p&gt;
--- @param DeliveryChannelName [ChannelName] &lt;p&gt;The name of the delivery channel to delete.&lt;/p&gt;
+-- <p>The input for the <a>DeleteDeliveryChannel</a> action. The action accepts the following data in JSON format. </p>
+-- @param DeliveryChannelName [ChannelName] <p>The name of the delivery channel to delete.</p>
 -- Required parameter: DeliveryChannelName
 function M.DeleteDeliveryChannelRequest(DeliveryChannelName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeliveryChannelRequest")
@@ -1475,7 +1475,7 @@ function M.AssertInsufficientDeliveryPolicyException(struct)
 end
 
 --- Create a structure of type InsufficientDeliveryPolicyException
--- &lt;p&gt;Your Amazon S3 bucket policy does not permit AWS Config to write to it.&lt;/p&gt;
+-- <p>Your Amazon S3 bucket policy does not permit AWS Config to write to it.</p>
 function M.InsufficientDeliveryPolicyException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientDeliveryPolicyException")
 	local t = { 
@@ -1495,7 +1495,7 @@ function M.AssertResourceInUseException(struct)
 end
 
 --- Create a structure of type ResourceInUseException
--- &lt;p&gt;The rule is currently being deleted or the rule is deleting your evaluation results. Try your request again later.&lt;/p&gt;
+-- <p>The rule is currently being deleted or the rule is deleting your evaluation results. Try your request again later.</p>
 function M.ResourceInUseException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
 	local t = { 
@@ -1516,8 +1516,8 @@ function M.AssertDescribeConfigurationRecordersResponse(struct)
 end
 
 --- Create a structure of type DescribeConfigurationRecordersResponse
--- &lt;p&gt;The output for the &lt;a&gt;DescribeConfigurationRecorders&lt;/a&gt; action.&lt;/p&gt;
--- @param ConfigurationRecorders [ConfigurationRecorderList] &lt;p&gt;A list that contains the descriptions of the specified configuration recorders.&lt;/p&gt;
+-- <p>The output for the <a>DescribeConfigurationRecorders</a> action.</p>
+-- @param ConfigurationRecorders [ConfigurationRecorderList] <p>A list that contains the descriptions of the specified configuration recorders.</p>
 function M.DescribeConfigurationRecordersResponse(ConfigurationRecorders, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationRecordersResponse")
 	local t = { 
@@ -1540,9 +1540,9 @@ function M.AssertDescribeConfigRuleEvaluationStatusResponse(struct)
 end
 
 --- Create a structure of type DescribeConfigRuleEvaluationStatusResponse
--- &lt;p/&gt;
--- @param NextToken [String] &lt;p&gt;The string that you use in a subsequent request to get the next page of results in a paginated response.&lt;/p&gt;
--- @param ConfigRulesEvaluationStatus [ConfigRuleEvaluationStatusList] &lt;p&gt;Status information about your AWS managed Config rules.&lt;/p&gt;
+-- <p/>
+-- @param NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
+-- @param ConfigRulesEvaluationStatus [ConfigRuleEvaluationStatusList] <p>Status information about your AWS managed Config rules.</p>
 function M.DescribeConfigRuleEvaluationStatusResponse(NextToken, ConfigRulesEvaluationStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigRuleEvaluationStatusResponse")
 	local t = { 
@@ -1567,10 +1567,10 @@ function M.AssertComplianceSummary(struct)
 end
 
 --- Create a structure of type ComplianceSummary
--- &lt;p&gt;The number of AWS Config rules or AWS resources that are compliant and noncompliant.&lt;/p&gt;
--- @param NonCompliantResourceCount [ComplianceContributorCount] &lt;p&gt;The number of AWS Config rules or AWS resources that are noncompliant, up to a maximum of 25 for rules and 100 for resources.&lt;/p&gt;
--- @param ComplianceSummaryTimestamp [Date] &lt;p&gt;The time that AWS Config created the compliance summary.&lt;/p&gt;
--- @param CompliantResourceCount [ComplianceContributorCount] &lt;p&gt;The number of AWS Config rules or AWS resources that are compliant, up to a maximum of 25 for rules and 100 for resources.&lt;/p&gt;
+-- <p>The number of AWS Config rules or AWS resources that are compliant and noncompliant.</p>
+-- @param NonCompliantResourceCount [ComplianceContributorCount] <p>The number of AWS Config rules or AWS resources that are noncompliant, up to a maximum of 25 for rules and 100 for resources.</p>
+-- @param ComplianceSummaryTimestamp [Date] <p>The time that AWS Config created the compliance summary.</p>
+-- @param CompliantResourceCount [ComplianceContributorCount] <p>The number of AWS Config rules or AWS resources that are compliant, up to a maximum of 25 for rules and 100 for resources.</p>
 function M.ComplianceSummary(NonCompliantResourceCount, ComplianceSummaryTimestamp, CompliantResourceCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComplianceSummary")
 	local t = { 
@@ -1593,7 +1593,7 @@ function M.AssertInvalidRecordingGroupException(struct)
 end
 
 --- Create a structure of type InvalidRecordingGroupException
--- &lt;p&gt;AWS Config throws an exception if the recording group does not contain a valid list of resource types. Invalid values could also be incorrectly formatted.&lt;/p&gt;
+-- <p>AWS Config throws an exception if the recording group does not contain a valid list of resource types. Invalid values could also be incorrectly formatted.</p>
 function M.InvalidRecordingGroupException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRecordingGroupException")
 	local t = { 
@@ -1615,8 +1615,8 @@ function M.AssertDeleteConfigRuleRequest(struct)
 end
 
 --- Create a structure of type DeleteConfigRuleRequest
--- &lt;p/&gt;
--- @param ConfigRuleName [StringWithCharLimit64] &lt;p&gt;The name of the AWS Config rule that you want to delete.&lt;/p&gt;
+-- <p/>
+-- @param ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule that you want to delete.</p>
 -- Required parameter: ConfigRuleName
 function M.DeleteConfigRuleRequest(ConfigRuleName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigRuleRequest")
@@ -1643,11 +1643,11 @@ function M.AssertGetComplianceDetailsByConfigRuleRequest(struct)
 end
 
 --- Create a structure of type GetComplianceDetailsByConfigRuleRequest
--- &lt;p/&gt;
--- @param NextToken [NextToken] &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; string returned on a previous page that you use to get the next page of results in a paginated response.&lt;/p&gt;
--- @param ComplianceTypes [ComplianceTypes] &lt;p&gt;Filters the results by compliance.&lt;/p&gt; &lt;p&gt;The allowed values are &lt;code&gt;COMPLIANT&lt;/code&gt;, &lt;code&gt;NON_COMPLIANT&lt;/code&gt;, and &lt;code&gt;NOT_APPLICABLE&lt;/code&gt;.&lt;/p&gt;
--- @param Limit [Limit] &lt;p&gt;The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.&lt;/p&gt;
--- @param ConfigRuleName [StringWithCharLimit64] &lt;p&gt;The name of the AWS Config rule for which you want compliance information.&lt;/p&gt;
+-- <p/>
+-- @param NextToken [NextToken] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- @param ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code>.</p>
+-- @param Limit [Limit] <p>The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
+-- @param ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule for which you want compliance information.</p>
 -- Required parameter: ConfigRuleName
 function M.GetComplianceDetailsByConfigRuleRequest(NextToken, ComplianceTypes, Limit, ConfigRuleName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceDetailsByConfigRuleRequest")
@@ -1674,8 +1674,8 @@ function M.AssertStopConfigurationRecorderRequest(struct)
 end
 
 --- Create a structure of type StopConfigurationRecorderRequest
--- &lt;p&gt;The input for the &lt;a&gt;StopConfigurationRecorder&lt;/a&gt; action.&lt;/p&gt;
--- @param ConfigurationRecorderName [RecorderName] &lt;p&gt;The name of the recorder object that records each configuration change made to the resources.&lt;/p&gt;
+-- <p>The input for the <a>StopConfigurationRecorder</a> action.</p>
+-- @param ConfigurationRecorderName [RecorderName] <p>The name of the recorder object that records each configuration change made to the resources.</p>
 -- Required parameter: ConfigurationRecorderName
 function M.StopConfigurationRecorderRequest(ConfigurationRecorderName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopConfigurationRecorderRequest")
@@ -1697,7 +1697,7 @@ function M.AssertInvalidParameterValueException(struct)
 end
 
 --- Create a structure of type InvalidParameterValueException
--- &lt;p&gt;One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.&lt;/p&gt;
+-- <p>One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.</p>
 function M.InvalidParameterValueException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
 	local t = { 
@@ -1726,14 +1726,14 @@ function M.AssertGetResourceConfigHistoryRequest(struct)
 end
 
 --- Create a structure of type GetResourceConfigHistoryRequest
--- &lt;p&gt;The input for the &lt;a&gt;GetResourceConfigHistory&lt;/a&gt; action.&lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The resource type.&lt;/p&gt;
--- @param resourceId [ResourceId] &lt;p&gt;The ID of the resource (for example., &lt;code&gt;sg-xxxxxx&lt;/code&gt;).&lt;/p&gt;
--- @param laterTime [LaterTime] &lt;p&gt;The time stamp that indicates a later time. If not specified, current time is taken.&lt;/p&gt;
--- @param chronologicalOrder [ChronologicalOrder] &lt;p&gt;The chronological order for configuration items listed. By default the results are listed in reverse chronological order.&lt;/p&gt;
--- @param limit [Limit] &lt;p&gt;The maximum number of configuration items returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; string returned on a previous page that you use to get the next page of results in a paginated response.&lt;/p&gt;
--- @param earlierTime [EarlierTime] &lt;p&gt;The time stamp that indicates an earlier time. If not specified, the action returns paginated results that contain configuration items that start from when the first configuration item was recorded.&lt;/p&gt;
+-- <p>The input for the <a>GetResourceConfigHistory</a> action.</p>
+-- @param resourceType [ResourceType] <p>The resource type.</p>
+-- @param resourceId [ResourceId] <p>The ID of the resource (for example., <code>sg-xxxxxx</code>).</p>
+-- @param laterTime [LaterTime] <p>The time stamp that indicates a later time. If not specified, current time is taken.</p>
+-- @param chronologicalOrder [ChronologicalOrder] <p>The chronological order for configuration items listed. By default the results are listed in reverse chronological order.</p>
+-- @param limit [Limit] <p>The maximum number of configuration items returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
+-- @param nextToken [NextToken] <p>The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- @param earlierTime [EarlierTime] <p>The time stamp that indicates an earlier time. If not specified, the action returns paginated results that contain configuration items that start from when the first configuration item was recorded.</p>
 -- Required parameter: resourceType
 -- Required parameter: resourceId
 function M.GetResourceConfigHistoryRequest(resourceType, resourceId, laterTime, chronologicalOrder, limit, nextToken, earlierTime, ...)
@@ -1770,15 +1770,15 @@ function M.AssertConfigurationRecorderStatus(struct)
 end
 
 --- Create a structure of type ConfigurationRecorderStatus
--- &lt;p&gt;The current status of the configuration recorder.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the configuration recorder.&lt;/p&gt;
--- @param lastErrorMessage [String] &lt;p&gt;The message indicating that the recording failed due to an error.&lt;/p&gt;
--- @param lastStatus [RecorderStatus] &lt;p&gt;The last (previous) status of the recorder.&lt;/p&gt;
--- @param recording [Boolean] &lt;p&gt;Specifies whether the recorder is currently recording or not.&lt;/p&gt;
--- @param lastStatusChangeTime [Date] &lt;p&gt;The time when the status was last changed.&lt;/p&gt;
--- @param lastStartTime [Date] &lt;p&gt;The time the recorder was last started.&lt;/p&gt;
--- @param lastErrorCode [String] &lt;p&gt;The error code indicating that the recording failed.&lt;/p&gt;
--- @param lastStopTime [Date] &lt;p&gt;The time the recorder was last stopped.&lt;/p&gt;
+-- <p>The current status of the configuration recorder.</p>
+-- @param name [String] <p>The name of the configuration recorder.</p>
+-- @param lastErrorMessage [String] <p>The message indicating that the recording failed due to an error.</p>
+-- @param lastStatus [RecorderStatus] <p>The last (previous) status of the recorder.</p>
+-- @param recording [Boolean] <p>Specifies whether the recorder is currently recording or not.</p>
+-- @param lastStatusChangeTime [Date] <p>The time when the status was last changed.</p>
+-- @param lastStartTime [Date] <p>The time the recorder was last started.</p>
+-- @param lastErrorCode [String] <p>The error code indicating that the recording failed.</p>
+-- @param lastStopTime [Date] <p>The time the recorder was last stopped.</p>
 function M.ConfigurationRecorderStatus(name, lastErrorMessage, lastStatus, recording, lastStatusChangeTime, lastStartTime, lastErrorCode, lastStopTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationRecorderStatus")
 	local t = { 
@@ -1812,13 +1812,13 @@ function M.AssertConfigExportDeliveryInfo(struct)
 end
 
 --- Create a structure of type ConfigExportDeliveryInfo
--- &lt;p&gt;A list that contains the status of the delivery of either the snapshot or the configuration history to the specified Amazon S3 bucket.&lt;/p&gt;
--- @param lastSuccessfulTime [Date] &lt;p&gt;The time of the last successful delivery.&lt;/p&gt;
--- @param lastStatus [DeliveryStatus] &lt;p&gt;Status of the last attempted delivery.&lt;/p&gt;
--- @param lastAttemptTime [Date] &lt;p&gt;The time of the last attempted delivery.&lt;/p&gt;
--- @param nextDeliveryTime [Date] &lt;p&gt;The time that the next delivery occurs.&lt;/p&gt;
--- @param lastErrorCode [String] &lt;p&gt;The error code from the last attempted delivery.&lt;/p&gt;
--- @param lastErrorMessage [String] &lt;p&gt;The error message from the last attempted delivery.&lt;/p&gt;
+-- <p>A list that contains the status of the delivery of either the snapshot or the configuration history to the specified Amazon S3 bucket.</p>
+-- @param lastSuccessfulTime [Date] <p>The time of the last successful delivery.</p>
+-- @param lastStatus [DeliveryStatus] <p>Status of the last attempted delivery.</p>
+-- @param lastAttemptTime [Date] <p>The time of the last attempted delivery.</p>
+-- @param nextDeliveryTime [Date] <p>The time that the next delivery occurs.</p>
+-- @param lastErrorCode [String] <p>The error code from the last attempted delivery.</p>
+-- @param lastErrorMessage [String] <p>The error message from the last attempted delivery.</p>
 function M.ConfigExportDeliveryInfo(lastSuccessfulTime, lastStatus, lastAttemptTime, nextDeliveryTime, lastErrorCode, lastErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigExportDeliveryInfo")
 	local t = { 
@@ -1848,11 +1848,11 @@ function M.AssertScope(struct)
 end
 
 --- Create a structure of type Scope
--- &lt;p&gt;Defines which resources trigger an evaluation for an AWS Config rule. The scope can include one or more resource types, a combination of a tag key and value, or a combination of one resource type and one resource ID. Specify a scope to constrain which resources trigger an evaluation for a rule. Otherwise, evaluations for the rule are triggered when any resource in your recording group changes in configuration.&lt;/p&gt;
--- @param TagKey [StringWithCharLimit128] &lt;p&gt;The tag key that is applied to only those AWS resources that you want you want to trigger an evaluation for the rule.&lt;/p&gt;
--- @param ComplianceResourceId [StringWithCharLimit256] &lt;p&gt;The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for &lt;code&gt;ComplianceResourceTypes&lt;/code&gt;.&lt;/p&gt;
--- @param ComplianceResourceTypes [ComplianceResourceTypes] &lt;p&gt;The resource types of only those AWS resources that you want to trigger an evaluation for the rule. You can only specify one type if you also specify a resource ID for &lt;code&gt;ComplianceResourceId&lt;/code&gt;.&lt;/p&gt;
--- @param TagValue [StringWithCharLimit256] &lt;p&gt;The tag value applied to only those AWS resources that you want to trigger an evaluation for the rule. If you specify a value for &lt;code&gt;TagValue&lt;/code&gt;, you must also specify a value for &lt;code&gt;TagKey&lt;/code&gt;.&lt;/p&gt;
+-- <p>Defines which resources trigger an evaluation for an AWS Config rule. The scope can include one or more resource types, a combination of a tag key and value, or a combination of one resource type and one resource ID. Specify a scope to constrain which resources trigger an evaluation for a rule. Otherwise, evaluations for the rule are triggered when any resource in your recording group changes in configuration.</p>
+-- @param TagKey [StringWithCharLimit128] <p>The tag key that is applied to only those AWS resources that you want you want to trigger an evaluation for the rule.</p>
+-- @param ComplianceResourceId [StringWithCharLimit256] <p>The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for <code>ComplianceResourceTypes</code>.</p>
+-- @param ComplianceResourceTypes [ComplianceResourceTypes] <p>The resource types of only those AWS resources that you want to trigger an evaluation for the rule. You can only specify one type if you also specify a resource ID for <code>ComplianceResourceId</code>.</p>
+-- @param TagValue [StringWithCharLimit256] <p>The tag value applied to only those AWS resources that you want to trigger an evaluation for the rule. If you specify a value for <code>TagValue</code>, you must also specify a value for <code>TagKey</code>.</p>
 function M.Scope(TagKey, ComplianceResourceId, ComplianceResourceTypes, TagValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Scope")
 	local t = { 
@@ -1876,7 +1876,7 @@ function M.AssertInvalidSNSTopicARNException(struct)
 end
 
 --- Create a structure of type InvalidSNSTopicARNException
--- &lt;p&gt;The specified Amazon SNS topic does not exist.&lt;/p&gt;
+-- <p>The specified Amazon SNS topic does not exist.</p>
 function M.InvalidSNSTopicARNException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSNSTopicARNException")
 	local t = { 
@@ -1896,7 +1896,7 @@ function M.AssertMaxNumberOfDeliveryChannelsExceededException(struct)
 end
 
 --- Create a structure of type MaxNumberOfDeliveryChannelsExceededException
--- &lt;p&gt;You have reached the limit on the number of delivery channels you can create.&lt;/p&gt;
+-- <p>You have reached the limit on the number of delivery channels you can create.</p>
 function M.MaxNumberOfDeliveryChannelsExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaxNumberOfDeliveryChannelsExceededException")
 	local t = { 
@@ -1919,10 +1919,10 @@ function M.AssertComplianceByResource(struct)
 end
 
 --- Create a structure of type ComplianceByResource
--- &lt;p&gt;Indicates whether an AWS resource that is evaluated according to one or more AWS Config rules is compliant. A resource is compliant if it complies with all of the rules that evaluate it, and it is noncompliant if it does not comply with one or more of these rules.&lt;/p&gt;
--- @param ResourceType [StringWithCharLimit256] &lt;p&gt;The type of the AWS resource that was evaluated.&lt;/p&gt;
--- @param ResourceId [StringWithCharLimit256] &lt;p&gt;The ID of the AWS resource that was evaluated.&lt;/p&gt;
--- @param Compliance [Compliance] &lt;p&gt;Indicates whether the AWS resource complies with all of the AWS Config rules that evaluated it.&lt;/p&gt;
+-- <p>Indicates whether an AWS resource that is evaluated according to one or more AWS Config rules is compliant. A resource is compliant if it complies with all of the rules that evaluate it, and it is noncompliant if it does not comply with one or more of these rules.</p>
+-- @param ResourceType [StringWithCharLimit256] <p>The type of the AWS resource that was evaluated.</p>
+-- @param ResourceId [StringWithCharLimit256] <p>The ID of the AWS resource that was evaluated.</p>
+-- @param Compliance [Compliance] <p>Indicates whether the AWS resource complies with all of the AWS Config rules that evaluated it.</p>
 function M.ComplianceByResource(ResourceType, ResourceId, Compliance, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComplianceByResource")
 	local t = { 
@@ -1951,13 +1951,13 @@ function M.AssertEvaluationResult(struct)
 end
 
 --- Create a structure of type EvaluationResult
--- &lt;p&gt;The details of an AWS Config evaluation. Provides the AWS resource that was evaluated, the compliance of the resource, related timestamps, and supplementary information.&lt;/p&gt;
--- @param ComplianceType [ComplianceType] &lt;p&gt;Indicates whether the AWS resource complies with the AWS Config rule that evaluated it.&lt;/p&gt; &lt;p&gt;For the &lt;code&gt;EvaluationResult&lt;/code&gt; data type, AWS Config supports only the &lt;code&gt;COMPLIANT&lt;/code&gt;, &lt;code&gt;NON_COMPLIANT&lt;/code&gt;, and &lt;code&gt;NOT_APPLICABLE&lt;/code&gt; values. AWS Config does not support the &lt;code&gt;INSUFFICIENT_DATA&lt;/code&gt; value for the &lt;code&gt;EvaluationResult&lt;/code&gt; data type.&lt;/p&gt;
--- @param EvaluationResultIdentifier [EvaluationResultIdentifier] &lt;p&gt;Uniquely identifies the evaluation result.&lt;/p&gt;
--- @param ConfigRuleInvokedTime [Date] &lt;p&gt;The time when the AWS Config rule evaluated the AWS resource.&lt;/p&gt;
--- @param ResultToken [String] &lt;p&gt;An encrypted token that associates an evaluation with an AWS Config rule. The token identifies the rule, the AWS resource being evaluated, and the event that triggered the evaluation.&lt;/p&gt;
--- @param ResultRecordedTime [Date] &lt;p&gt;The time when AWS Config recorded the evaluation result.&lt;/p&gt;
--- @param Annotation [StringWithCharLimit256] &lt;p&gt;Supplementary information about how the evaluation determined the compliance.&lt;/p&gt;
+-- <p>The details of an AWS Config evaluation. Provides the AWS resource that was evaluated, the compliance of the resource, related timestamps, and supplementary information.</p>
+-- @param ComplianceType [ComplianceType] <p>Indicates whether the AWS resource complies with the AWS Config rule that evaluated it.</p> <p>For the <code>EvaluationResult</code> data type, AWS Config supports only the <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code> values. AWS Config does not support the <code>INSUFFICIENT_DATA</code> value for the <code>EvaluationResult</code> data type.</p>
+-- @param EvaluationResultIdentifier [EvaluationResultIdentifier] <p>Uniquely identifies the evaluation result.</p>
+-- @param ConfigRuleInvokedTime [Date] <p>The time when the AWS Config rule evaluated the AWS resource.</p>
+-- @param ResultToken [String] <p>An encrypted token that associates an evaluation with an AWS Config rule. The token identifies the rule, the AWS resource being evaluated, and the event that triggered the evaluation.</p>
+-- @param ResultRecordedTime [Date] <p>The time when AWS Config recorded the evaluation result.</p>
+-- @param Annotation [StringWithCharLimit256] <p>Supplementary information about how the evaluation determined the compliance.</p>
 function M.EvaluationResult(ComplianceType, EvaluationResultIdentifier, ConfigRuleInvokedTime, ResultToken, ResultRecordedTime, Annotation, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EvaluationResult")
 	local t = { 
@@ -1984,8 +1984,8 @@ function M.AssertGetComplianceSummaryByConfigRuleResponse(struct)
 end
 
 --- Create a structure of type GetComplianceSummaryByConfigRuleResponse
--- &lt;p/&gt;
--- @param ComplianceSummary [ComplianceSummary] &lt;p&gt;The number of AWS Config rules that are compliant and the number that are noncompliant, up to a maximum of 25 for each.&lt;/p&gt;
+-- <p/>
+-- @param ComplianceSummary [ComplianceSummary] <p>The number of AWS Config rules that are compliant and the number that are noncompliant, up to a maximum of 25 for each.</p>
 function M.GetComplianceSummaryByConfigRuleResponse(ComplianceSummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceSummaryByConfigRuleResponse")
 	local t = { 
@@ -2006,7 +2006,7 @@ function M.AssertInvalidRoleException(struct)
 end
 
 --- Create a structure of type InvalidRoleException
--- &lt;p&gt;You have provided a null or empty role ARN.&lt;/p&gt;
+-- <p>You have provided a null or empty role ARN.</p>
 function M.InvalidRoleException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRoleException")
 	local t = { 
@@ -2044,25 +2044,25 @@ function M.AssertConfigurationItem(struct)
 end
 
 --- Create a structure of type ConfigurationItem
--- &lt;p&gt;A list that contains detailed configurations of a specified resource.&lt;/p&gt;
--- @param configurationItemCaptureTime [ConfigurationItemCaptureTime] &lt;p&gt;The time when the configuration recording was initiated.&lt;/p&gt;
--- @param resourceCreationTime [ResourceCreationTime] &lt;p&gt;The time stamp when the resource was created.&lt;/p&gt;
--- @param availabilityZone [AvailabilityZone] &lt;p&gt;The Availability Zone associated with the resource.&lt;/p&gt;
--- @param awsRegion [AwsRegion] &lt;p&gt;The region where the resource resides.&lt;/p&gt;
--- @param tags [Tags] &lt;p&gt;A mapping of key value tags associated with the resource.&lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The type of AWS resource.&lt;/p&gt;
--- @param resourceId [ResourceId] &lt;p&gt;The ID of the resource (for example., &lt;code&gt;sg-xxxxxx&lt;/code&gt;).&lt;/p&gt;
--- @param configurationStateId [ConfigurationStateId] &lt;p&gt;An identifier that indicates the ordering of the configuration items of a resource.&lt;/p&gt;
--- @param relatedEvents [RelatedEventList] &lt;p&gt;A list of CloudTrail event IDs.&lt;/p&gt; &lt;p&gt;A populated field indicates that the current configuration was initiated by the events recorded in the CloudTrail log. For more information about CloudTrail, see &lt;a href=&quot;http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html&quot;&gt;What is AWS CloudTrail?&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;An empty field indicates that the current configuration was not initiated by any event.&lt;/p&gt;
--- @param relationships [RelationshipList] &lt;p&gt;A list of related AWS resources.&lt;/p&gt;
--- @param arn [ARN] &lt;p&gt;The Amazon Resource Name (ARN) of the resource.&lt;/p&gt;
--- @param version [Version] &lt;p&gt;The version number of the resource configuration.&lt;/p&gt;
--- @param configurationItemMD5Hash [ConfigurationItemMD5Hash] &lt;p&gt;Unique MD5 hash that represents the configuration item's state.&lt;/p&gt; &lt;p&gt;You can use MD5 hash to compare the states of two or more configuration items that are associated with the same resource.&lt;/p&gt;
--- @param supplementaryConfiguration [SupplementaryConfiguration] &lt;p&gt;Configuration attributes that AWS Config returns for certain resource types to supplement the information returned for the &lt;code&gt;configuration&lt;/code&gt; parameter.&lt;/p&gt;
--- @param resourceName [ResourceName] &lt;p&gt;The custom name of the resource, if available.&lt;/p&gt;
--- @param configuration [Configuration] &lt;p&gt;The description of the resource configuration.&lt;/p&gt;
--- @param configurationItemStatus [ConfigurationItemStatus] &lt;p&gt;The configuration item status.&lt;/p&gt;
--- @param accountId [AccountId] &lt;p&gt;The 12 digit AWS account ID associated with the resource.&lt;/p&gt;
+-- <p>A list that contains detailed configurations of a specified resource.</p>
+-- @param configurationItemCaptureTime [ConfigurationItemCaptureTime] <p>The time when the configuration recording was initiated.</p>
+-- @param resourceCreationTime [ResourceCreationTime] <p>The time stamp when the resource was created.</p>
+-- @param availabilityZone [AvailabilityZone] <p>The Availability Zone associated with the resource.</p>
+-- @param awsRegion [AwsRegion] <p>The region where the resource resides.</p>
+-- @param tags [Tags] <p>A mapping of key value tags associated with the resource.</p>
+-- @param resourceType [ResourceType] <p>The type of AWS resource.</p>
+-- @param resourceId [ResourceId] <p>The ID of the resource (for example., <code>sg-xxxxxx</code>).</p>
+-- @param configurationStateId [ConfigurationStateId] <p>An identifier that indicates the ordering of the configuration items of a resource.</p>
+-- @param relatedEvents [RelatedEventList] <p>A list of CloudTrail event IDs.</p> <p>A populated field indicates that the current configuration was initiated by the events recorded in the CloudTrail log. For more information about CloudTrail, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html">What is AWS CloudTrail?</a>.</p> <p>An empty field indicates that the current configuration was not initiated by any event.</p>
+-- @param relationships [RelationshipList] <p>A list of related AWS resources.</p>
+-- @param arn [ARN] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- @param version [Version] <p>The version number of the resource configuration.</p>
+-- @param configurationItemMD5Hash [ConfigurationItemMD5Hash] <p>Unique MD5 hash that represents the configuration item's state.</p> <p>You can use MD5 hash to compare the states of two or more configuration items that are associated with the same resource.</p>
+-- @param supplementaryConfiguration [SupplementaryConfiguration] <p>Configuration attributes that AWS Config returns for certain resource types to supplement the information returned for the <code>configuration</code> parameter.</p>
+-- @param resourceName [ResourceName] <p>The custom name of the resource, if available.</p>
+-- @param configuration [Configuration] <p>The description of the resource configuration.</p>
+-- @param configurationItemStatus [ConfigurationItemStatus] <p>The configuration item status.</p>
+-- @param accountId [AccountId] <p>The 12 digit AWS account ID associated with the resource.</p>
 function M.ConfigurationItem(configurationItemCaptureTime, resourceCreationTime, availabilityZone, awsRegion, tags, resourceType, resourceId, configurationStateId, relatedEvents, relationships, arn, version, configurationItemMD5Hash, supplementaryConfiguration, resourceName, configuration, configurationItemStatus, accountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationItem")
 	local t = { 
@@ -2103,10 +2103,10 @@ function M.AssertDescribeConfigRuleEvaluationStatusRequest(struct)
 end
 
 --- Create a structure of type DescribeConfigRuleEvaluationStatusRequest
--- &lt;p/&gt;
--- @param NextToken [String] &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; string returned on a previous page that you use to get the next page of results in a paginated response.&lt;/p&gt;
--- @param Limit [RuleLimit] &lt;p&gt;The number of rule evaluation results that you want returned.&lt;/p&gt; &lt;p&gt;This parameter is required if the rule limit for your account is more than the default of 50 rules.&lt;/p&gt; &lt;p&gt;For more information about requesting a rule limit increase, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config&quot;&gt;AWS Config Limits&lt;/a&gt; in the &lt;i&gt;AWS General Reference Guide&lt;/i&gt;.&lt;/p&gt;
--- @param ConfigRuleNames [ConfigRuleNames] &lt;p&gt;The name of the AWS managed Config rules for which you want status information. If you do not specify any names, AWS Config returns status information for all AWS managed Config rules that you use.&lt;/p&gt;
+-- <p/>
+-- @param NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- @param Limit [RuleLimit] <p>The number of rule evaluation results that you want returned.</p> <p>This parameter is required if the rule limit for your account is more than the default of 50 rules.</p> <p>For more information about requesting a rule limit increase, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">AWS Config Limits</a> in the <i>AWS General Reference Guide</i>.</p>
+-- @param ConfigRuleNames [ConfigRuleNames] <p>The name of the AWS managed Config rules for which you want status information. If you do not specify any names, AWS Config returns status information for all AWS managed Config rules that you use.</p>
 function M.DescribeConfigRuleEvaluationStatusRequest(NextToken, Limit, ConfigRuleNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigRuleEvaluationStatusRequest")
 	local t = { 
@@ -2131,9 +2131,9 @@ function M.AssertGetComplianceDetailsByConfigRuleResponse(struct)
 end
 
 --- Create a structure of type GetComplianceDetailsByConfigRuleResponse
--- &lt;p/&gt;
--- @param EvaluationResults [EvaluationResults] &lt;p&gt;Indicates whether the AWS resource complies with the specified AWS Config rule.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The string that you use in a subsequent request to get the next page of results in a paginated response.&lt;/p&gt;
+-- <p/>
+-- @param EvaluationResults [EvaluationResults] <p>Indicates whether the AWS resource complies with the specified AWS Config rule.</p>
+-- @param NextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 function M.GetComplianceDetailsByConfigRuleResponse(EvaluationResults, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceDetailsByConfigRuleResponse")
 	local t = { 
@@ -2156,8 +2156,8 @@ function M.AssertDescribeDeliveryChannelsRequest(struct)
 end
 
 --- Create a structure of type DescribeDeliveryChannelsRequest
--- &lt;p&gt;The input for the &lt;a&gt;DescribeDeliveryChannels&lt;/a&gt; action.&lt;/p&gt;
--- @param DeliveryChannelNames [DeliveryChannelNameList] &lt;p&gt;A list of delivery channel names.&lt;/p&gt;
+-- <p>The input for the <a>DescribeDeliveryChannels</a> action.</p>
+-- @param DeliveryChannelNames [DeliveryChannelNameList] <p>A list of delivery channel names.</p>
 function M.DescribeDeliveryChannelsRequest(DeliveryChannelNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeliveryChannelsRequest")
 	local t = { 
@@ -2182,11 +2182,11 @@ function M.AssertConfigStreamDeliveryInfo(struct)
 end
 
 --- Create a structure of type ConfigStreamDeliveryInfo
--- &lt;p&gt;A list that contains the status of the delivery of the configuration stream notification to the Amazon SNS topic.&lt;/p&gt;
--- @param lastStatusChangeTime [Date] &lt;p&gt;The time from the last status change.&lt;/p&gt;
--- @param lastErrorCode [String] &lt;p&gt;The error code from the last attempted delivery.&lt;/p&gt;
--- @param lastStatus [DeliveryStatus] &lt;p&gt;Status of the last attempted delivery.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Note&lt;/b&gt; Providing an SNS topic on a &lt;a href=&quot;http://docs.aws.amazon.com/config/latest/APIReference/API_DeliveryChannel.html&quot;&gt;DeliveryChannel&lt;/a&gt; for AWS Config is optional. If the SNS delivery is turned off, the last status will be &lt;b&gt;Not_Applicable&lt;/b&gt;.&lt;/p&gt;
--- @param lastErrorMessage [String] &lt;p&gt;The error message from the last attempted delivery.&lt;/p&gt;
+-- <p>A list that contains the status of the delivery of the configuration stream notification to the Amazon SNS topic.</p>
+-- @param lastStatusChangeTime [Date] <p>The time from the last status change.</p>
+-- @param lastErrorCode [String] <p>The error code from the last attempted delivery.</p>
+-- @param lastStatus [DeliveryStatus] <p>Status of the last attempted delivery.</p> <p> <b>Note</b> Providing an SNS topic on a <a href="http://docs.aws.amazon.com/config/latest/APIReference/API_DeliveryChannel.html">DeliveryChannel</a> for AWS Config is optional. If the SNS delivery is turned off, the last status will be <b>Not_Applicable</b>.</p>
+-- @param lastErrorMessage [String] <p>The error message from the last attempted delivery.</p>
 function M.ConfigStreamDeliveryInfo(lastStatusChangeTime, lastErrorCode, lastStatus, lastErrorMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigStreamDeliveryInfo")
 	local t = { 
@@ -2213,10 +2213,10 @@ function M.AssertRecordingGroup(struct)
 end
 
 --- Create a structure of type RecordingGroup
--- &lt;p&gt;Specifies the types of AWS resource for which AWS Config records configuration changes.&lt;/p&gt; &lt;p&gt;In the recording group, you specify whether all supported types or specific types of resources are recorded.&lt;/p&gt; &lt;p&gt;By default, AWS Config records configuration changes for all supported types of regional resources that AWS Config discovers in the region in which it is running. Regional resources are tied to a region and can be used only in that region. Examples of regional resources are EC2 instances and EBS volumes.&lt;/p&gt; &lt;p&gt;You can also have AWS Config record configuration changes for supported types of global resources (for example, IAM resources). Global resources are not tied to an individual region and can be used in all regions.&lt;/p&gt; &lt;important&gt; &lt;p&gt;The configuration details for any global resource are the same in all regions. If you customize AWS Config in multiple regions to record global resources, it will create multiple configuration items each time a global resource changes: one configuration item for each region. These configuration items will contain identical data. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources, unless you want the configuration items to be available in multiple regions.&lt;/p&gt; &lt;/important&gt; &lt;p&gt;If you don't want AWS Config to record all resources, you can specify which types of resources it will record with the &lt;code&gt;resourceTypes&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;For a list of supported resource types, see &lt;a href=&quot;http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources&quot;&gt;Supported resource types&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/config/latest/developerguide/select-resources.html&quot;&gt;Selecting Which Resources AWS Config Records&lt;/a&gt;.&lt;/p&gt;
--- @param allSupported [AllSupported] &lt;p&gt;Specifies whether AWS Config records configuration changes for every supported type of regional resource.&lt;/p&gt; &lt;p&gt;If you set this option to &lt;code&gt;true&lt;/code&gt;, when AWS Config adds support for a new type of regional resource, it automatically starts recording resources of that type.&lt;/p&gt; &lt;p&gt;If you set this option to &lt;code&gt;true&lt;/code&gt;, you cannot enumerate a list of &lt;code&gt;resourceTypes&lt;/code&gt;.&lt;/p&gt;
--- @param resourceTypes [ResourceTypeList] &lt;p&gt;A comma-separated list that specifies the types of AWS resources for which AWS Config records configuration changes (for example, &lt;code&gt;AWS::EC2::Instance&lt;/code&gt; or &lt;code&gt;AWS::CloudTrail::Trail&lt;/code&gt;).&lt;/p&gt; &lt;p&gt;Before you can set this option to &lt;code&gt;true&lt;/code&gt;, you must set the &lt;code&gt;allSupported&lt;/code&gt; option to &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If you set this option to &lt;code&gt;true&lt;/code&gt;, when AWS Config adds support for a new type of resource, it will not record resources of that type unless you manually add that type to your recording group.&lt;/p&gt; &lt;p&gt;For a list of valid &lt;code&gt;resourceTypes&lt;/code&gt; values, see the &lt;b&gt;resourceType Value&lt;/b&gt; column in &lt;a href=&quot;http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources&quot;&gt;Supported AWS Resource Types&lt;/a&gt;.&lt;/p&gt;
--- @param includeGlobalResourceTypes [IncludeGlobalResourceTypes] &lt;p&gt;Specifies whether AWS Config includes all supported types of global resources (for example, IAM resources) with the resources that it records.&lt;/p&gt; &lt;p&gt;Before you can set this option to &lt;code&gt;true&lt;/code&gt;, you must set the &lt;code&gt;allSupported&lt;/code&gt; option to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If you set this option to &lt;code&gt;true&lt;/code&gt;, when AWS Config adds support for a new type of global resource, it automatically starts recording resources of that type.&lt;/p&gt; &lt;p&gt;The configuration details for any global resource are the same in all regions. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources.&lt;/p&gt;
+-- <p>Specifies the types of AWS resource for which AWS Config records configuration changes.</p> <p>In the recording group, you specify whether all supported types or specific types of resources are recorded.</p> <p>By default, AWS Config records configuration changes for all supported types of regional resources that AWS Config discovers in the region in which it is running. Regional resources are tied to a region and can be used only in that region. Examples of regional resources are EC2 instances and EBS volumes.</p> <p>You can also have AWS Config record configuration changes for supported types of global resources (for example, IAM resources). Global resources are not tied to an individual region and can be used in all regions.</p> <important> <p>The configuration details for any global resource are the same in all regions. If you customize AWS Config in multiple regions to record global resources, it will create multiple configuration items each time a global resource changes: one configuration item for each region. These configuration items will contain identical data. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources, unless you want the configuration items to be available in multiple regions.</p> </important> <p>If you don't want AWS Config to record all resources, you can specify which types of resources it will record with the <code>resourceTypes</code> parameter.</p> <p>For a list of supported resource types, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources">Supported resource types</a>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/select-resources.html">Selecting Which Resources AWS Config Records</a>.</p>
+-- @param allSupported [AllSupported] <p>Specifies whether AWS Config records configuration changes for every supported type of regional resource.</p> <p>If you set this option to <code>true</code>, when AWS Config adds support for a new type of regional resource, it automatically starts recording resources of that type.</p> <p>If you set this option to <code>true</code>, you cannot enumerate a list of <code>resourceTypes</code>.</p>
+-- @param resourceTypes [ResourceTypeList] <p>A comma-separated list that specifies the types of AWS resources for which AWS Config records configuration changes (for example, <code>AWS::EC2::Instance</code> or <code>AWS::CloudTrail::Trail</code>).</p> <p>Before you can set this option to <code>true</code>, you must set the <code>allSupported</code> option to <code>false</code>.</p> <p>If you set this option to <code>true</code>, when AWS Config adds support for a new type of resource, it will not record resources of that type unless you manually add that type to your recording group.</p> <p>For a list of valid <code>resourceTypes</code> values, see the <b>resourceType Value</b> column in <a href="http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources">Supported AWS Resource Types</a>.</p>
+-- @param includeGlobalResourceTypes [IncludeGlobalResourceTypes] <p>Specifies whether AWS Config includes all supported types of global resources (for example, IAM resources) with the resources that it records.</p> <p>Before you can set this option to <code>true</code>, you must set the <code>allSupported</code> option to <code>true</code>.</p> <p>If you set this option to <code>true</code>, when AWS Config adds support for a new type of global resource, it automatically starts recording resources of that type.</p> <p>The configuration details for any global resource are the same in all regions. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources.</p>
 function M.RecordingGroup(allSupported, resourceTypes, includeGlobalResourceTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecordingGroup")
 	local t = { 
@@ -2241,9 +2241,9 @@ function M.AssertEvaluationResultIdentifier(struct)
 end
 
 --- Create a structure of type EvaluationResultIdentifier
--- &lt;p&gt;Uniquely identifies an evaluation result.&lt;/p&gt;
--- @param OrderingTimestamp [Date] &lt;p&gt;The time of the event that triggered the evaluation of your AWS resources. The time can indicate when AWS Config delivered a configuration item change notification, or it can indicate when AWS Config delivered the configuration snapshot, depending on which event triggered the evaluation.&lt;/p&gt;
--- @param EvaluationResultQualifier [EvaluationResultQualifier] &lt;p&gt;Identifies an AWS Config rule used to evaluate an AWS resource, and provides the type and ID of the evaluated resource.&lt;/p&gt;
+-- <p>Uniquely identifies an evaluation result.</p>
+-- @param OrderingTimestamp [Date] <p>The time of the event that triggered the evaluation of your AWS resources. The time can indicate when AWS Config delivered a configuration item change notification, or it can indicate when AWS Config delivered the configuration snapshot, depending on which event triggered the evaluation.</p>
+-- @param EvaluationResultQualifier [EvaluationResultQualifier] <p>Identifies an AWS Config rule used to evaluate an AWS resource, and provides the type and ID of the evaluated resource.</p>
 function M.EvaluationResultIdentifier(OrderingTimestamp, EvaluationResultQualifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EvaluationResultIdentifier")
 	local t = { 
@@ -2267,9 +2267,9 @@ function M.AssertGetResourceConfigHistoryResponse(struct)
 end
 
 --- Create a structure of type GetResourceConfigHistoryResponse
--- &lt;p&gt;The output for the &lt;a&gt;GetResourceConfigHistory&lt;/a&gt; action.&lt;/p&gt;
--- @param configurationItems [ConfigurationItemList] &lt;p&gt;A list that contains the configuration history of one or more resources.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The string that you use in a subsequent request to get the next page of results in a paginated response.&lt;/p&gt;
+-- <p>The output for the <a>GetResourceConfigHistory</a> action.</p>
+-- @param configurationItems [ConfigurationItemList] <p>A list that contains the configuration history of one or more resources.</p>
+-- @param nextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 function M.GetResourceConfigHistoryResponse(configurationItems, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetResourceConfigHistoryResponse")
 	local t = { 
@@ -2298,13 +2298,13 @@ function M.AssertListDiscoveredResourcesRequest(struct)
 end
 
 --- Create a structure of type ListDiscoveredResourcesRequest
--- &lt;p/&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The type of resources that you want AWS Config to list in the response.&lt;/p&gt;
--- @param resourceIds [ResourceIdList] &lt;p&gt;The IDs of only those resources that you want AWS Config to list in the response. If you do not specify this parameter, AWS Config lists all resources of the specified type that it has discovered.&lt;/p&gt;
--- @param limit [Limit] &lt;p&gt;The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.&lt;/p&gt;
--- @param includeDeletedResources [Boolean] &lt;p&gt;Specifies whether AWS Config includes deleted resources in the results. By default, deleted resources are not included.&lt;/p&gt;
--- @param resourceName [ResourceName] &lt;p&gt;The custom name of only those resources that you want AWS Config to list in the response. If you do not specify this parameter, AWS Config lists all resources of the specified type that it has discovered.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The &lt;code&gt;nextToken&lt;/code&gt; string returned on a previous page that you use to get the next page of results in a paginated response.&lt;/p&gt;
+-- <p/>
+-- @param resourceType [ResourceType] <p>The type of resources that you want AWS Config to list in the response.</p>
+-- @param resourceIds [ResourceIdList] <p>The IDs of only those resources that you want AWS Config to list in the response. If you do not specify this parameter, AWS Config lists all resources of the specified type that it has discovered.</p>
+-- @param limit [Limit] <p>The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
+-- @param includeDeletedResources [Boolean] <p>Specifies whether AWS Config includes deleted resources in the results. By default, deleted resources are not included.</p>
+-- @param resourceName [ResourceName] <p>The custom name of only those resources that you want AWS Config to list in the response. If you do not specify this parameter, AWS Config lists all resources of the specified type that it has discovered.</p>
+-- @param nextToken [NextToken] <p>The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
 -- Required parameter: resourceType
 function M.ListDiscoveredResourcesRequest(resourceType, resourceIds, limit, includeDeletedResources, resourceName, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDiscoveredResourcesRequest")
@@ -2333,9 +2333,9 @@ function M.AssertDescribeConfigRulesResponse(struct)
 end
 
 --- Create a structure of type DescribeConfigRulesResponse
--- &lt;p/&gt;
--- @param ConfigRules [ConfigRules] &lt;p&gt;The details about your AWS Config rules.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The string that you use in a subsequent request to get the next page of results in a paginated response.&lt;/p&gt;
+-- <p/>
+-- @param ConfigRules [ConfigRules] <p>The details about your AWS Config rules.</p>
+-- @param NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 function M.DescribeConfigRulesResponse(ConfigRules, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigRulesResponse")
 	local t = { 
@@ -2358,8 +2358,8 @@ function M.AssertGetComplianceSummaryByResourceTypeRequest(struct)
 end
 
 --- Create a structure of type GetComplianceSummaryByResourceTypeRequest
--- &lt;p/&gt;
--- @param ResourceTypes [ResourceTypes] &lt;p&gt;Specify one or more resource types to get the number of resources that are compliant and the number that are noncompliant for each resource type.&lt;/p&gt; &lt;p&gt;For this request, you can specify an AWS resource type such as &lt;code&gt;AWS::EC2::Instance&lt;/code&gt;, and you can specify that the resource type is an AWS account by specifying &lt;code&gt;AWS::::Account&lt;/code&gt;.&lt;/p&gt;
+-- <p/>
+-- @param ResourceTypes [ResourceTypes] <p>Specify one or more resource types to get the number of resources that are compliant and the number that are noncompliant for each resource type.</p> <p>For this request, you can specify an AWS resource type such as <code>AWS::EC2::Instance</code>, and you can specify that the resource type is an AWS account by specifying <code>AWS::::Account</code>.</p>
 function M.GetComplianceSummaryByResourceTypeRequest(ResourceTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceSummaryByResourceTypeRequest")
 	local t = { 
@@ -2386,11 +2386,11 @@ function M.AssertGetComplianceDetailsByResourceRequest(struct)
 end
 
 --- Create a structure of type GetComplianceDetailsByResourceRequest
--- &lt;p/&gt;
--- @param ResourceType [StringWithCharLimit256] &lt;p&gt;The type of the AWS resource for which you want compliance information.&lt;/p&gt;
--- @param ResourceId [StringWithCharLimit256] &lt;p&gt;The ID of the AWS resource for which you want compliance information.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; string returned on a previous page that you use to get the next page of results in a paginated response.&lt;/p&gt;
--- @param ComplianceTypes [ComplianceTypes] &lt;p&gt;Filters the results by compliance.&lt;/p&gt; &lt;p&gt;The allowed values are &lt;code&gt;COMPLIANT&lt;/code&gt;, &lt;code&gt;NON_COMPLIANT&lt;/code&gt;, and &lt;code&gt;NOT_APPLICABLE&lt;/code&gt;.&lt;/p&gt;
+-- <p/>
+-- @param ResourceType [StringWithCharLimit256] <p>The type of the AWS resource for which you want compliance information.</p>
+-- @param ResourceId [StringWithCharLimit256] <p>The ID of the AWS resource for which you want compliance information.</p>
+-- @param NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- @param ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code>.</p>
 -- Required parameter: ResourceType
 -- Required parameter: ResourceId
 function M.GetComplianceDetailsByResourceRequest(ResourceType, ResourceId, NextToken, ComplianceTypes, ...)
@@ -2426,16 +2426,16 @@ function M.AssertConfigRule(struct)
 end
 
 --- Create a structure of type ConfigRule
--- &lt;p&gt;An AWS Config rule represents an AWS Lambda function that you create for a custom rule or a predefined function for an AWS managed rule. The function evaluates configuration items to assess whether your AWS resources comply with your desired configurations. This function can run when AWS Config detects a configuration change to an AWS resource and at a periodic frequency that you choose (for example, every 24 hours).&lt;/p&gt; &lt;note&gt; &lt;p&gt;You can use the AWS CLI and AWS SDKs if you want to create a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot. For more information, see &lt;a&gt;ConfigSnapshotDeliveryProperties&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;For more information about developing and using AWS Config rules, see &lt;a href=&quot;http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html&quot;&gt;Evaluating AWS Resource Configurations with AWS Config&lt;/a&gt; in the &lt;i&gt;AWS Config Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param ConfigRuleState [ConfigRuleState] &lt;p&gt;Indicates whether the AWS Config rule is active or is currently being deleted by AWS Config. It can also indicate the evaluation status for the Config rule.&lt;/p&gt; &lt;p&gt;AWS Config sets the state of the rule to &lt;code&gt;EVALUATING&lt;/code&gt; temporarily after you use the &lt;code&gt;StartConfigRulesEvaluation&lt;/code&gt; request to evaluate your resources against the Config rule.&lt;/p&gt; &lt;p&gt;AWS Config sets the state of the rule to &lt;code&gt;DELETING_RESULTS&lt;/code&gt; temporarily after you use the &lt;code&gt;DeleteEvaluationResults&lt;/code&gt; request to delete the current evaluation results for the Config rule.&lt;/p&gt; &lt;p&gt;AWS Config sets the state of a rule to &lt;code&gt;DELETING&lt;/code&gt; temporarily after you use the &lt;code&gt;DeleteConfigRule&lt;/code&gt; request to delete the rule. After AWS Config deletes the rule, the rule and all of its evaluations are erased and are no longer available.&lt;/p&gt;
--- @param Description [EmptiableStringWithCharLimit256] &lt;p&gt;The description that you provide for the AWS Config rule.&lt;/p&gt;
--- @param ConfigRuleName [StringWithCharLimit64] &lt;p&gt;The name that you assign to the AWS Config rule. The name is required if you are adding a new rule.&lt;/p&gt;
--- @param ConfigRuleArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the AWS Config rule.&lt;/p&gt;
--- @param MaximumExecutionFrequency [MaximumExecutionFrequency] &lt;p&gt;The maximum frequency with which AWS Config runs evaluations for a rule. You can specify a value for &lt;code&gt;MaximumExecutionFrequency&lt;/code&gt; when:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You are using an AWS managed rule that is triggered at a periodic frequency.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Your custom rule is triggered when AWS Config delivers the configuration snapshot. For more information, see &lt;a&gt;ConfigSnapshotDeliveryProperties&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;note&gt; &lt;p&gt;By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the &lt;code&gt;MaximumExecutionFrequency&lt;/code&gt; parameter.&lt;/p&gt; &lt;/note&gt;
--- @param Source [Source] &lt;p&gt;Provides the rule owner (AWS or customer), the rule identifier, and the notifications that cause the function to evaluate your AWS resources.&lt;/p&gt;
--- @param InputParameters [StringWithCharLimit1024] &lt;p&gt;A string in JSON format that is passed to the AWS Config rule Lambda function.&lt;/p&gt;
--- @param Scope [Scope] &lt;p&gt;Defines which resources can trigger an evaluation for the rule. The scope can include one or more resource types, a combination of one resource type and one resource ID, or a combination of a tag key and value. Specify a scope to constrain the resources that can trigger an evaluation for the rule. If you do not specify a scope, evaluations are triggered when any resource in the recording group changes.&lt;/p&gt;
--- @param ConfigRuleId [String] &lt;p&gt;The ID of the AWS Config rule.&lt;/p&gt;
+-- <p>An AWS Config rule represents an AWS Lambda function that you create for a custom rule or a predefined function for an AWS managed rule. The function evaluates configuration items to assess whether your AWS resources comply with your desired configurations. This function can run when AWS Config detects a configuration change to an AWS resource and at a periodic frequency that you choose (for example, every 24 hours).</p> <note> <p>You can use the AWS CLI and AWS SDKs if you want to create a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot. For more information, see <a>ConfigSnapshotDeliveryProperties</a>.</p> </note> <p>For more information about developing and using AWS Config rules, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html">Evaluating AWS Resource Configurations with AWS Config</a> in the <i>AWS Config Developer Guide</i>.</p>
+-- @param ConfigRuleState [ConfigRuleState] <p>Indicates whether the AWS Config rule is active or is currently being deleted by AWS Config. It can also indicate the evaluation status for the Config rule.</p> <p>AWS Config sets the state of the rule to <code>EVALUATING</code> temporarily after you use the <code>StartConfigRulesEvaluation</code> request to evaluate your resources against the Config rule.</p> <p>AWS Config sets the state of the rule to <code>DELETING_RESULTS</code> temporarily after you use the <code>DeleteEvaluationResults</code> request to delete the current evaluation results for the Config rule.</p> <p>AWS Config sets the state of a rule to <code>DELETING</code> temporarily after you use the <code>DeleteConfigRule</code> request to delete the rule. After AWS Config deletes the rule, the rule and all of its evaluations are erased and are no longer available.</p>
+-- @param Description [EmptiableStringWithCharLimit256] <p>The description that you provide for the AWS Config rule.</p>
+-- @param ConfigRuleName [StringWithCharLimit64] <p>The name that you assign to the AWS Config rule. The name is required if you are adding a new rule.</p>
+-- @param ConfigRuleArn [String] <p>The Amazon Resource Name (ARN) of the AWS Config rule.</p>
+-- @param MaximumExecutionFrequency [MaximumExecutionFrequency] <p>The maximum frequency with which AWS Config runs evaluations for a rule. You can specify a value for <code>MaximumExecutionFrequency</code> when:</p> <ul> <li> <p>You are using an AWS managed rule that is triggered at a periodic frequency.</p> </li> <li> <p>Your custom rule is triggered when AWS Config delivers the configuration snapshot. For more information, see <a>ConfigSnapshotDeliveryProperties</a>.</p> </li> </ul> <note> <p>By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the <code>MaximumExecutionFrequency</code> parameter.</p> </note>
+-- @param Source [Source] <p>Provides the rule owner (AWS or customer), the rule identifier, and the notifications that cause the function to evaluate your AWS resources.</p>
+-- @param InputParameters [StringWithCharLimit1024] <p>A string in JSON format that is passed to the AWS Config rule Lambda function.</p>
+-- @param Scope [Scope] <p>Defines which resources can trigger an evaluation for the rule. The scope can include one or more resource types, a combination of one resource type and one resource ID, or a combination of a tag key and value. Specify a scope to constrain the resources that can trigger an evaluation for the rule. If you do not specify a scope, evaluations are triggered when any resource in the recording group changes.</p>
+-- @param ConfigRuleId [String] <p>The ID of the AWS Config rule.</p>
 -- Required parameter: Source
 function M.ConfigRule(ConfigRuleState, Description, ConfigRuleName, ConfigRuleArn, MaximumExecutionFrequency, Source, InputParameters, Scope, ConfigRuleId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigRule")
@@ -2469,11 +2469,11 @@ function M.AssertDeliveryChannelStatus(struct)
 end
 
 --- Create a structure of type DeliveryChannelStatus
--- &lt;p&gt;The status of a specified delivery channel.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;Success&lt;/code&gt; | &lt;code&gt;Failure&lt;/code&gt; &lt;/p&gt;
--- @param configStreamDeliveryInfo [ConfigStreamDeliveryInfo] &lt;p&gt;A list containing the status of the delivery of the configuration stream notification to the specified Amazon SNS topic.&lt;/p&gt;
--- @param configHistoryDeliveryInfo [ConfigExportDeliveryInfo] &lt;p&gt;A list that contains the status of the delivery of the configuration history to the specified Amazon S3 bucket.&lt;/p&gt;
--- @param configSnapshotDeliveryInfo [ConfigExportDeliveryInfo] &lt;p&gt;A list containing the status of the delivery of the snapshot to the specified Amazon S3 bucket.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the delivery channel.&lt;/p&gt;
+-- <p>The status of a specified delivery channel.</p> <p>Valid values: <code>Success</code> | <code>Failure</code> </p>
+-- @param configStreamDeliveryInfo [ConfigStreamDeliveryInfo] <p>A list containing the status of the delivery of the configuration stream notification to the specified Amazon SNS topic.</p>
+-- @param configHistoryDeliveryInfo [ConfigExportDeliveryInfo] <p>A list that contains the status of the delivery of the configuration history to the specified Amazon S3 bucket.</p>
+-- @param configSnapshotDeliveryInfo [ConfigExportDeliveryInfo] <p>A list containing the status of the delivery of the snapshot to the specified Amazon S3 bucket.</p>
+-- @param name [String] <p>The name of the delivery channel.</p>
 function M.DeliveryChannelStatus(configStreamDeliveryInfo, configHistoryDeliveryInfo, configSnapshotDeliveryInfo, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeliveryChannelStatus")
 	local t = { 
@@ -2501,10 +2501,10 @@ function M.AssertPutEvaluationsRequest(struct)
 end
 
 --- Create a structure of type PutEvaluationsRequest
--- &lt;p/&gt;
--- @param ResultToken [String] &lt;p&gt;An encrypted token that associates an evaluation with an AWS Config rule. Identifies the rule and the event that triggered the evaluation&lt;/p&gt;
--- @param Evaluations [Evaluations] &lt;p&gt;The assessments that the AWS Lambda function performs. Each evaluation identifies an AWS resource and indicates whether it complies with the AWS Config rule that invokes the AWS Lambda function.&lt;/p&gt;
--- @param TestMode [Boolean] &lt;p&gt;Use this parameter to specify a test run for &lt;code&gt;PutEvaluations&lt;/code&gt;. You can verify whether your AWS Lambda function will deliver evaluation results to AWS Config. No updates occur to your existing evaluations, and evaluation results are not sent to AWS Config.&lt;/p&gt; &lt;note&gt; &lt;p&gt;When &lt;code&gt;TestMode&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;PutEvaluations&lt;/code&gt; doesn't require a valid value for the &lt;code&gt;ResultToken&lt;/code&gt; parameter, but the value cannot be null.&lt;/p&gt; &lt;/note&gt;
+-- <p/>
+-- @param ResultToken [String] <p>An encrypted token that associates an evaluation with an AWS Config rule. Identifies the rule and the event that triggered the evaluation</p>
+-- @param Evaluations [Evaluations] <p>The assessments that the AWS Lambda function performs. Each evaluation identifies an AWS resource and indicates whether it complies with the AWS Config rule that invokes the AWS Lambda function.</p>
+-- @param TestMode [Boolean] <p>Use this parameter to specify a test run for <code>PutEvaluations</code>. You can verify whether your AWS Lambda function will deliver evaluation results to AWS Config. No updates occur to your existing evaluations, and evaluation results are not sent to AWS Config.</p> <note> <p>When <code>TestMode</code> is <code>true</code>, <code>PutEvaluations</code> doesn't require a valid value for the <code>ResultToken</code> parameter, but the value cannot be null.</p> </note>
 -- Required parameter: ResultToken
 function M.PutEvaluationsRequest(ResultToken, Evaluations, TestMode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutEvaluationsRequest")
@@ -2532,11 +2532,11 @@ function M.AssertRelationship(struct)
 end
 
 --- Create a structure of type Relationship
--- &lt;p&gt;The relationship of the related resource to the main resource.&lt;/p&gt;
--- @param resourceType [ResourceType] &lt;p&gt;The resource type of the related resource.&lt;/p&gt;
--- @param resourceId [ResourceId] &lt;p&gt;The ID of the related resource (for example, &lt;code&gt;sg-xxxxxx&lt;/code&gt;).&lt;/p&gt;
--- @param relationshipName [RelationshipName] &lt;p&gt;The type of relationship with the related resource.&lt;/p&gt;
--- @param resourceName [ResourceName] &lt;p&gt;The custom name of the related resource, if available.&lt;/p&gt;
+-- <p>The relationship of the related resource to the main resource.</p>
+-- @param resourceType [ResourceType] <p>The resource type of the related resource.</p>
+-- @param resourceId [ResourceId] <p>The ID of the related resource (for example, <code>sg-xxxxxx</code>).</p>
+-- @param relationshipName [RelationshipName] <p>The type of relationship with the related resource.</p>
+-- @param resourceName [ResourceName] <p>The custom name of the related resource, if available.</p>
 function M.Relationship(resourceType, resourceId, relationshipName, resourceName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Relationship")
 	local t = { 
@@ -2562,8 +2562,8 @@ function M.AssertPutDeliveryChannelRequest(struct)
 end
 
 --- Create a structure of type PutDeliveryChannelRequest
--- &lt;p&gt;The input for the &lt;a&gt;PutDeliveryChannel&lt;/a&gt; action.&lt;/p&gt;
--- @param DeliveryChannel [DeliveryChannel] &lt;p&gt;The configuration delivery channel object that delivers the configuration information to an Amazon S3 bucket, and to an Amazon SNS topic.&lt;/p&gt;
+-- <p>The input for the <a>PutDeliveryChannel</a> action.</p>
+-- @param DeliveryChannel [DeliveryChannel] <p>The configuration delivery channel object that delivers the configuration information to an Amazon S3 bucket, and to an Amazon SNS topic.</p>
 -- Required parameter: DeliveryChannel
 function M.PutDeliveryChannelRequest(DeliveryChannel, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutDeliveryChannelRequest")
@@ -2586,8 +2586,8 @@ function M.AssertDescribeConfigurationRecorderStatusRequest(struct)
 end
 
 --- Create a structure of type DescribeConfigurationRecorderStatusRequest
--- &lt;p&gt;The input for the &lt;a&gt;DescribeConfigurationRecorderStatus&lt;/a&gt; action.&lt;/p&gt;
--- @param ConfigurationRecorderNames [ConfigurationRecorderNameList] &lt;p&gt;The name(s) of the configuration recorder. If the name is not specified, the action returns the current status of all the configuration recorders associated with the account.&lt;/p&gt;
+-- <p>The input for the <a>DescribeConfigurationRecorderStatus</a> action.</p>
+-- @param ConfigurationRecorderNames [ConfigurationRecorderNameList] <p>The name(s) of the configuration recorder. If the name is not specified, the action returns the current status of all the configuration recorders associated with the account.</p>
 function M.DescribeConfigurationRecorderStatusRequest(ConfigurationRecorderNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationRecorderStatusRequest")
 	local t = { 

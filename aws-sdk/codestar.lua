@@ -37,10 +37,10 @@ end
 
 --- Create a structure of type CreateUserProfileRequest
 --  
--- @param emailAddress [Email] &lt;p&gt;The email address that will be displayed as part of the user's profile in AWS CodeStar.&lt;/p&gt;
--- @param sshPublicKey [SshPublicKey] &lt;p&gt;The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.&lt;/p&gt;
--- @param displayName [UserProfileDisplayName] &lt;p&gt;The name that will be displayed as the friendly name for the user in AWS CodeStar. &lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user in IAM.&lt;/p&gt;
+-- @param emailAddress [Email] <p>The email address that will be displayed as part of the user's profile in AWS CodeStar.</p>
+-- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.</p>
+-- @param displayName [UserProfileDisplayName] <p>The name that will be displayed as the friendly name for the user in AWS CodeStar. </p>
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
 -- Required parameter: userArn
 -- Required parameter: displayName
 -- Required parameter: emailAddress
@@ -67,7 +67,7 @@ function M.AssertUserProfileNotFoundException(struct)
 end
 
 --- Create a structure of type UserProfileNotFoundException
--- &lt;p&gt;The user profile was not found.&lt;/p&gt;
+-- <p>The user profile was not found.</p>
 function M.UserProfileNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserProfileNotFoundException")
 	local t = { 
@@ -92,9 +92,9 @@ end
 
 --- Create a structure of type DeleteProjectRequest
 --  
--- @param deleteStack [DeleteStack] &lt;p&gt;Whether to send a delete request for the primary stack in AWS CloudFormation originally used to generate the project and its resources. This option will delete all AWS resources for the project (except for any buckets in Amazon S3) as well as deleting the project itself. Recommended for most use cases.&lt;/p&gt;
--- @param id [ProjectId] &lt;p&gt;The ID of the project to be deleted in AWS CodeStar.&lt;/p&gt;
--- @param clientRequestToken [ClientRequestToken] &lt;p&gt;A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request. &lt;/p&gt;
+-- @param deleteStack [DeleteStack] <p>Whether to send a delete request for the primary stack in AWS CloudFormation originally used to generate the project and its resources. This option will delete all AWS resources for the project (except for any buckets in Amazon S3) as well as deleting the project itself. Recommended for most use cases.</p>
+-- @param id [ProjectId] <p>The ID of the project to be deleted in AWS CodeStar.</p>
+-- @param clientRequestToken [ClientRequestToken] <p>A user- or system-generated token that identifies the entity that requested project deletion. This token can be used to repeat the request. </p>
 -- Required parameter: id
 function M.DeleteProjectRequest(deleteStack, id, clientRequestToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProjectRequest")
@@ -118,7 +118,7 @@ function M.AssertConcurrentModificationException(struct)
 end
 
 --- Create a structure of type ConcurrentModificationException
--- &lt;p&gt;Another modification is being made. That modification must complete before you can make your change.&lt;/p&gt;
+-- <p>Another modification is being made. That modification must complete before you can make your change.</p>
 function M.ConcurrentModificationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
@@ -138,7 +138,7 @@ function M.AssertValidationException(struct)
 end
 
 --- Create a structure of type ValidationException
--- &lt;p&gt;The specified input is either not valid, or it could not be validated.&lt;/p&gt;
+-- <p>The specified input is either not valid, or it could not be validated.</p>
 function M.ValidationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
 	local t = { 
@@ -158,7 +158,7 @@ function M.AssertProjectNotFoundException(struct)
 end
 
 --- Create a structure of type ProjectNotFoundException
--- &lt;p&gt;The specified AWS CodeStar project was not found.&lt;/p&gt;
+-- <p>The specified AWS CodeStar project was not found.</p>
 function M.ProjectNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectNotFoundException")
 	local t = { 
@@ -185,10 +185,10 @@ end
 
 --- Create a structure of type UpdateTeamMemberRequest
 --  
--- @param projectRole [Role] &lt;p&gt;The role assigned to the user in the project. Project roles have different levels of access. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html&quot;&gt;Working with Teams&lt;/a&gt; in the AWS CodeStar User Guide.&lt;/p&gt;
--- @param projectId [ProjectId] &lt;p&gt;The ID of the project.&lt;/p&gt;
--- @param remoteAccessAllowed [RemoteAccessAllowed] &lt;p&gt;Whether a team member is allowed to remotely access project resources using the SSH public key associated with the user's profile. Even if this is set to True, the user must associate a public key with their profile before the user can access resources.&lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user for whom you want to change team membership attributes.&lt;/p&gt;
+-- @param projectRole [Role] <p>The role assigned to the user in the project. Project roles have different levels of access. For more information, see <a href="http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html">Working with Teams</a> in the AWS CodeStar User Guide.</p>
+-- @param projectId [ProjectId] <p>The ID of the project.</p>
+-- @param remoteAccessAllowed [RemoteAccessAllowed] <p>Whether a team member is allowed to remotely access project resources using the SSH public key associated with the user's profile. Even if this is set to True, the user must associate a public key with their profile before the user can access resources.</p>
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user for whom you want to change team membership attributes.</p>
 -- Required parameter: projectId
 -- Required parameter: userArn
 function M.UpdateTeamMemberRequest(projectRole, projectId, remoteAccessAllowed, userArn, ...)
@@ -214,7 +214,7 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;A resource limit has been exceeded.&lt;/p&gt;
+-- <p>A resource limit has been exceeded.</p>
 function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -239,9 +239,9 @@ end
 
 --- Create a structure of type UpdateProjectRequest
 --  
--- @param description [ProjectDescription] &lt;p&gt;The description of the project, if any.&lt;/p&gt;
--- @param id [ProjectId] &lt;p&gt;The ID of the project you want to update.&lt;/p&gt;
--- @param name [ProjectName] &lt;p&gt;The name of the project you want to update.&lt;/p&gt;
+-- @param description [ProjectDescription] <p>The description of the project, if any.</p>
+-- @param id [ProjectId] <p>The ID of the project you want to update.</p>
+-- @param name [ProjectName] <p>The name of the project you want to update.</p>
 -- Required parameter: id
 function M.UpdateProjectRequest(description, id, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProjectRequest")
@@ -270,9 +270,9 @@ end
 
 --- Create a structure of type ListTeamMembersRequest
 --  
--- @param projectId [ProjectId] &lt;p&gt;The ID of the project for which you want to list team members.&lt;/p&gt;
--- @param nextToken [PaginationToken] &lt;p&gt;The continuation token for the next set of results, if the results cannot be returned in one response.&lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;The maximum number of team members you want returned in a response.&lt;/p&gt;
+-- @param projectId [ProjectId] <p>The ID of the project for which you want to list team members.</p>
+-- @param nextToken [PaginationToken] <p>The continuation token for the next set of results, if the results cannot be returned in one response.</p>
+-- @param maxResults [MaxResults] <p>The maximum number of team members you want returned in a response.</p>
 -- Required parameter: projectId
 function M.ListTeamMembersRequest(projectId, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTeamMembersRequest")
@@ -296,7 +296,7 @@ function M.AssertInvalidNextTokenException(struct)
 end
 
 --- Create a structure of type InvalidNextTokenException
--- &lt;p&gt;The next token is not valid.&lt;/p&gt;
+-- <p>The next token is not valid.</p>
 function M.InvalidNextTokenException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
 	local t = { 
@@ -320,8 +320,8 @@ end
 
 --- Create a structure of type ListTeamMembersResult
 --  
--- @param nextToken [PaginationToken] &lt;p&gt;The continuation token to use when requesting the next set of results, if there are more results to be returned.&lt;/p&gt;
--- @param teamMembers [TeamMemberResult] &lt;p&gt;A list of team member objects for the project.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
+-- @param teamMembers [TeamMemberResult] <p>A list of team member objects for the project.</p>
 -- Required parameter: teamMembers
 function M.ListTeamMembersResult(nextToken, teamMembers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTeamMembersResult")
@@ -348,9 +348,9 @@ end
 
 --- Create a structure of type UpdateTeamMemberResult
 --  
--- @param projectRole [Role] &lt;p&gt;The project role granted to the user.&lt;/p&gt;
--- @param remoteAccessAllowed [RemoteAccessAllowed] &lt;p&gt;Whether a team member is allowed to remotely access project resources using the SSH public key associated with the user's profile.&lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user whose team membership attributes were updated.&lt;/p&gt;
+-- @param projectRole [Role] <p>The project role granted to the user.</p>
+-- @param remoteAccessAllowed [RemoteAccessAllowed] <p>Whether a team member is allowed to remotely access project resources using the SSH public key associated with the user's profile.</p>
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user whose team membership attributes were updated.</p>
 function M.UpdateTeamMemberResult(projectRole, remoteAccessAllowed, userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTeamMemberResult")
 	local t = { 
@@ -373,7 +373,7 @@ function M.AssertProjectConfigurationException(struct)
 end
 
 --- Create a structure of type ProjectConfigurationException
--- &lt;p&gt;Project configuration information is required but not specified.&lt;/p&gt;
+-- <p>Project configuration information is required but not specified.</p>
 function M.ProjectConfigurationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectConfigurationException")
 	local t = { 
@@ -396,7 +396,7 @@ end
 
 --- Create a structure of type DeleteUserProfileRequest
 --  
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.&lt;/p&gt;
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.</p>
 -- Required parameter: userArn
 function M.DeleteUserProfileRequest(userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserProfileRequest")
@@ -423,10 +423,10 @@ function M.AssertTeamMember(struct)
 end
 
 --- Create a structure of type TeamMember
--- &lt;p&gt;Information about a team member in a project.&lt;/p&gt;
--- @param projectRole [Role] &lt;p&gt;The role assigned to the user in the project. Project roles have different levels of access. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html&quot;&gt;Working with Teams&lt;/a&gt; in the AWS CodeStar User Guide. &lt;/p&gt;
--- @param remoteAccessAllowed [RemoteAccessAllowed] &lt;p&gt;Whether the user is allowed to remotely access project resources using an SSH public/private key pair.&lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user in IAM.&lt;/p&gt;
+-- <p>Information about a team member in a project.</p>
+-- @param projectRole [Role] <p>The role assigned to the user in the project. Project roles have different levels of access. For more information, see <a href="http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html">Working with Teams</a> in the AWS CodeStar User Guide. </p>
+-- @param remoteAccessAllowed [RemoteAccessAllowed] <p>Whether the user is allowed to remotely access project resources using an SSH public/private key pair.</p>
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
 -- Required parameter: userArn
 -- Required parameter: projectRole
 function M.TeamMember(projectRole, remoteAccessAllowed, userArn, ...)
@@ -459,12 +459,12 @@ end
 
 --- Create a structure of type CreateUserProfileResult
 --  
--- @param displayName [UserProfileDisplayName] &lt;p&gt;The name that is displayed as the friendly name for the user in AWS CodeStar.&lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user in IAM.&lt;/p&gt;
--- @param sshPublicKey [SshPublicKey] &lt;p&gt;The SSH public key associated with the user in AWS CodeStar. This is the public portion of the public/private keypair the user can use to access project resources if a project owner allows the user remote access to those resources.&lt;/p&gt;
--- @param createdTimestamp [CreatedTimestamp] &lt;p&gt;The date the user profile was created, in timestamp format.&lt;/p&gt;
--- @param emailAddress [Email] &lt;p&gt;The email address that is displayed as part of the user's profile in AWS CodeStar.&lt;/p&gt;
--- @param lastModifiedTimestamp [LastModifiedTimestamp] &lt;p&gt;The date the user profile was last modified, in timestamp format.&lt;/p&gt;
+-- @param displayName [UserProfileDisplayName] <p>The name that is displayed as the friendly name for the user in AWS CodeStar.</p>
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
+-- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. This is the public portion of the public/private keypair the user can use to access project resources if a project owner allows the user remote access to those resources.</p>
+-- @param createdTimestamp [CreatedTimestamp] <p>The date the user profile was created, in timestamp format.</p>
+-- @param emailAddress [Email] <p>The email address that is displayed as part of the user's profile in AWS CodeStar.</p>
+-- @param lastModifiedTimestamp [LastModifiedTimestamp] <p>The date the user profile was last modified, in timestamp format.</p>
 -- Required parameter: userArn
 function M.CreateUserProfileResult(displayName, userArn, sshPublicKey, createdTimestamp, emailAddress, lastModifiedTimestamp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserProfileResult")
@@ -494,8 +494,8 @@ end
 
 --- Create a structure of type ListProjectsRequest
 --  
--- @param nextToken [PaginationToken] &lt;p&gt;The continuation token to be used to return the next set of results, if the results cannot be returned in one response.&lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;The maximum amount of data that can be contained in a single set of results.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p>The continuation token to be used to return the next set of results, if the results cannot be returned in one response.</p>
+-- @param maxResults [MaxResults] <p>The maximum amount of data that can be contained in a single set of results.</p>
 function M.ListProjectsRequest(nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListProjectsRequest")
 	local t = { 
@@ -541,8 +541,8 @@ end
 
 --- Create a structure of type ListProjectsResult
 --  
--- @param nextToken [PaginationToken] &lt;p&gt;The continuation token to use when requesting the next set of results, if there are more results to be returned.&lt;/p&gt;
--- @param projects [ProjectsList] &lt;p&gt;A list of projects.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
+-- @param projects [ProjectsList] <p>A list of projects.</p>
 -- Required parameter: projects
 function M.ListProjectsResult(nextToken, projects, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListProjectsResult")
@@ -568,8 +568,8 @@ end
 
 --- Create a structure of type ListResourcesResult
 --  
--- @param nextToken [PaginationToken] &lt;p&gt;The continuation token to use when requesting the next set of results, if there are more results to be returned.&lt;/p&gt;
--- @param resources [ResourcesResult] &lt;p&gt;An array of resources associated with the project. &lt;/p&gt;
+-- @param nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
+-- @param resources [ResourcesResult] <p>An array of resources associated with the project. </p>
 function M.ListResourcesResult(nextToken, resources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListResourcesResult")
 	local t = { 
@@ -596,9 +596,9 @@ end
 
 --- Create a structure of type ListResourcesRequest
 --  
--- @param projectId [ProjectId] &lt;p&gt;The ID of the project.&lt;/p&gt;
--- @param nextToken [PaginationToken] &lt;p&gt;The continuation token for the next set of results, if the results cannot be returned in one response.&lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;he maximum amount of data that can be contained in a single set of results.&lt;/p&gt;
+-- @param projectId [ProjectId] <p>The ID of the project.</p>
+-- @param nextToken [PaginationToken] <p>The continuation token for the next set of results, if the results cannot be returned in one response.</p>
+-- @param maxResults [MaxResults] <p>he maximum amount of data that can be contained in a single set of results.</p>
 -- Required parameter: projectId
 function M.ListResourcesRequest(projectId, nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListResourcesRequest")
@@ -625,7 +625,7 @@ end
 
 --- Create a structure of type DeleteUserProfileResult
 --  
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user deleted from AWS CodeStar.&lt;/p&gt;
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user deleted from AWS CodeStar.</p>
 -- Required parameter: userArn
 function M.DeleteUserProfileResult(userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserProfileResult")
@@ -649,8 +649,8 @@ function M.AssertResource(struct)
 end
 
 --- Create a structure of type Resource
--- &lt;p&gt;Information about a resource for a project.&lt;/p&gt;
--- @param id [ResourceId] &lt;p&gt;The Amazon Resource Name (ARN) of the resource.&lt;/p&gt;
+-- <p>Information about a resource for a project.</p>
+-- @param id [ResourceId] <p>The Amazon Resource Name (ARN) of the resource.</p>
 -- Required parameter: id
 function M.Resource(id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Resource")
@@ -675,7 +675,7 @@ end
 
 --- Create a structure of type DescribeUserProfileRequest
 --  
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user.&lt;/p&gt;
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user.</p>
 -- Required parameter: userArn
 function M.DescribeUserProfileRequest(userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserProfileRequest")
@@ -700,8 +700,8 @@ end
 
 --- Create a structure of type DeleteProjectResult
 --  
--- @param stackId [StackId] &lt;p&gt;The ID of the primary stack in AWS CloudFormation that will be deleted as part of deleting the project and its resources.&lt;/p&gt;
--- @param projectArn [ProjectArn] &lt;p&gt;The Amazon Resource Name (ARN) of the deleted project.&lt;/p&gt;
+-- @param stackId [StackId] <p>The ID of the primary stack in AWS CloudFormation that will be deleted as part of deleting the project and its resources.</p>
+-- @param projectArn [ProjectArn] <p>The Amazon Resource Name (ARN) of the deleted project.</p>
 function M.DeleteProjectResult(stackId, projectArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProjectResult")
 	local t = { 
@@ -730,10 +730,10 @@ end
 
 --- Create a structure of type CreateProjectResult
 --  
--- @param projectTemplateId [ProjectTemplateId] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param id [ProjectId] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param arn [ProjectArn] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param clientRequestToken [ClientRequestToken] &lt;p&gt;Reserved for future use.&lt;/p&gt;
+-- @param projectTemplateId [ProjectTemplateId] <p>Reserved for future use.</p>
+-- @param id [ProjectId] <p>Reserved for future use.</p>
+-- @param arn [ProjectArn] <p>Reserved for future use.</p>
+-- @param clientRequestToken [ClientRequestToken] <p>Reserved for future use.</p>
 -- Required parameter: id
 -- Required parameter: arn
 function M.CreateProjectResult(projectTemplateId, id, arn, clientRequestToken, ...)
@@ -765,10 +765,10 @@ end
 
 --- Create a structure of type UpdateUserProfileRequest
 --  
--- @param emailAddress [Email] &lt;p&gt;The email address that is displayed as part of the user's profile in AWS CodeStar.&lt;/p&gt;
--- @param sshPublicKey [SshPublicKey] &lt;p&gt;The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.&lt;/p&gt;
--- @param displayName [UserProfileDisplayName] &lt;p&gt;The name that is displayed as the friendly name for the user in AWS CodeStar.&lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The name that will be displayed as the friendly name for the user in AWS CodeStar.&lt;/p&gt;
+-- @param emailAddress [Email] <p>The email address that is displayed as part of the user's profile in AWS CodeStar.</p>
+-- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.</p>
+-- @param displayName [UserProfileDisplayName] <p>The name that is displayed as the friendly name for the user in AWS CodeStar.</p>
+-- @param userArn [UserArn] <p>The name that will be displayed as the friendly name for the user in AWS CodeStar.</p>
 -- Required parameter: userArn
 function M.UpdateUserProfileRequest(emailAddress, sshPublicKey, displayName, userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserProfileRequest")
@@ -793,7 +793,7 @@ function M.AssertProjectAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ProjectAlreadyExistsException
--- &lt;p&gt;An AWS CodeStar project with the same ID already exists in this region for the AWS account. AWS CodeStar project IDs must be unique within a region for the AWS account.&lt;/p&gt;
+-- <p>An AWS CodeStar project with the same ID already exists in this region for the AWS account. AWS CodeStar project IDs must be unique within a region for the AWS account.</p>
 function M.ProjectAlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectAlreadyExistsException")
 	local t = { 
@@ -813,7 +813,7 @@ function M.AssertInvalidServiceRoleException(struct)
 end
 
 --- Create a structure of type InvalidServiceRoleException
--- &lt;p&gt;The service role is not valid.&lt;/p&gt;
+-- <p>The service role is not valid.</p>
 function M.InvalidServiceRoleException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidServiceRoleException")
 	local t = { 
@@ -842,14 +842,14 @@ end
 
 --- Create a structure of type DescribeProjectResult
 --  
--- @param stackId [StackId] &lt;p&gt;The ID of the primary stack in AWS CloudFormation used to generate resources for the project.&lt;/p&gt;
--- @param projectTemplateId [ProjectTemplateId] &lt;p&gt;The ID for the AWS CodeStar project template used to create the project.&lt;/p&gt;
--- @param description [ProjectDescription] &lt;p&gt;The description of the project, if any.&lt;/p&gt;
--- @param createdTimeStamp [CreatedTimestamp] &lt;p&gt;The date and time the project was created, in timestamp format.&lt;/p&gt;
--- @param clientRequestToken [ClientRequestToken] &lt;p&gt;A user- or system-generated token that identifies the entity that requested project creation. &lt;/p&gt;
--- @param id [ProjectId] &lt;p&gt;The ID of the project.&lt;/p&gt;
--- @param arn [ProjectArn] &lt;p&gt;The Amazon Resource Name (ARN) for the project.&lt;/p&gt;
--- @param name [ProjectName] &lt;p&gt;The display name for the project.&lt;/p&gt;
+-- @param stackId [StackId] <p>The ID of the primary stack in AWS CloudFormation used to generate resources for the project.</p>
+-- @param projectTemplateId [ProjectTemplateId] <p>The ID for the AWS CodeStar project template used to create the project.</p>
+-- @param description [ProjectDescription] <p>The description of the project, if any.</p>
+-- @param createdTimeStamp [CreatedTimestamp] <p>The date and time the project was created, in timestamp format.</p>
+-- @param clientRequestToken [ClientRequestToken] <p>A user- or system-generated token that identifies the entity that requested project creation. </p>
+-- @param id [ProjectId] <p>The ID of the project.</p>
+-- @param arn [ProjectArn] <p>The Amazon Resource Name (ARN) for the project.</p>
+-- @param name [ProjectName] <p>The display name for the project.</p>
 function M.DescribeProjectResult(stackId, projectTemplateId, description, createdTimeStamp, clientRequestToken, id, arn, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProjectResult")
 	local t = { 
@@ -880,8 +880,8 @@ end
 
 --- Create a structure of type ListUserProfilesRequest
 --  
--- @param nextToken [PaginationToken] &lt;p&gt;The continuation token for the next set of results, if the results cannot be returned in one response.&lt;/p&gt;
--- @param maxResults [MaxResults] &lt;p&gt;The maximum number of results to return in a response.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p>The continuation token for the next set of results, if the results cannot be returned in one response.</p>
+-- @param maxResults [MaxResults] <p>The maximum number of results to return in a response.</p>
 function M.ListUserProfilesRequest(nextToken, maxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserProfilesRequest")
 	local t = { 
@@ -927,11 +927,11 @@ function M.AssertUserProfileSummary(struct)
 end
 
 --- Create a structure of type UserProfileSummary
--- &lt;p&gt;Information about a user's profile in AWS CodeStar.&lt;/p&gt;
--- @param emailAddress [Email] &lt;p&gt;The email address associated with the user.&lt;/p&gt;
--- @param sshPublicKey [SshPublicKey] &lt;p&gt;The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.&lt;/p&gt;
--- @param displayName [UserProfileDisplayName] &lt;p&gt;The display name of a user in AWS CodeStar. For example, this could be set to both first and last name (&quot;Mary Major&quot;) or a single name (&quot;Mary&quot;). The display name is also used to generate the initial icon associated with the user in AWS CodeStar projects. If spaces are included in the display name, the first character that appears after the space will be used as the second character in the user initial icon. The initial icon displays a maximum of two characters, so a display name with more than one space (for example &quot;Mary Jane Major&quot;) would generate an initial icon using the first character and the first character after the space (&quot;MJ&quot;, not &quot;MM&quot;).&lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user in IAM.&lt;/p&gt;
+-- <p>Information about a user's profile in AWS CodeStar.</p>
+-- @param emailAddress [Email] <p>The email address associated with the user.</p>
+-- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. If a project owner allows the user remote access to project resources, this public key will be used along with the user's private key for SSH access.</p>
+-- @param displayName [UserProfileDisplayName] <p>The display name of a user in AWS CodeStar. For example, this could be set to both first and last name ("Mary Major") or a single name ("Mary"). The display name is also used to generate the initial icon associated with the user in AWS CodeStar projects. If spaces are included in the display name, the first character that appears after the space will be used as the second character in the user initial icon. The initial icon displays a maximum of two characters, so a display name with more than one space (for example "Mary Jane Major") would generate an initial icon using the first character and the first character after the space ("MJ", not "MM").</p>
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
 function M.UserProfileSummary(emailAddress, sshPublicKey, displayName, userArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserProfileSummary")
 	local t = { 
@@ -965,12 +965,12 @@ end
 
 --- Create a structure of type DescribeUserProfileResult
 --  
--- @param displayName [UserProfileDisplayName] &lt;p&gt;The display name shown for the user in AWS CodeStar projects. For example, this could be set to both first and last name (&quot;Mary Major&quot;) or a single name (&quot;Mary&quot;). The display name is also used to generate the initial icon associated with the user in AWS CodeStar projects. If spaces are included in the display name, the first character that appears after the space will be used as the second character in the user initial icon. The initial icon displays a maximum of two characters, so a display name with more than one space (for example &quot;Mary Jane Major&quot;) would generate an initial icon using the first character and the first character after the space (&quot;MJ&quot;, not &quot;MM&quot;).&lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user.&lt;/p&gt;
--- @param sshPublicKey [SshPublicKey] &lt;p&gt;The SSH public key associated with the user. This SSH public key is associated with the user profile, and can be used in conjunction with the associated private key for access to project resources, such as Amazon EC2 instances, if a project owner grants remote access to those resources.&lt;/p&gt;
--- @param createdTimestamp [CreatedTimestamp] &lt;p&gt;The date and time when the user profile was created in AWS CodeStar, in timestamp format.&lt;/p&gt;
--- @param emailAddress [Email] &lt;p&gt;The email address for the user. Optional.&lt;/p&gt;
--- @param lastModifiedTimestamp [LastModifiedTimestamp] &lt;p&gt;The date and time when the user profile was last modified, in timestamp format.&lt;/p&gt;
+-- @param displayName [UserProfileDisplayName] <p>The display name shown for the user in AWS CodeStar projects. For example, this could be set to both first and last name ("Mary Major") or a single name ("Mary"). The display name is also used to generate the initial icon associated with the user in AWS CodeStar projects. If spaces are included in the display name, the first character that appears after the space will be used as the second character in the user initial icon. The initial icon displays a maximum of two characters, so a display name with more than one space (for example "Mary Jane Major") would generate an initial icon using the first character and the first character after the space ("MJ", not "MM").</p>
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user.</p>
+-- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user. This SSH public key is associated with the user profile, and can be used in conjunction with the associated private key for access to project resources, such as Amazon EC2 instances, if a project owner grants remote access to those resources.</p>
+-- @param createdTimestamp [CreatedTimestamp] <p>The date and time when the user profile was created in AWS CodeStar, in timestamp format.</p>
+-- @param emailAddress [Email] <p>The email address for the user. Optional.</p>
+-- @param lastModifiedTimestamp [LastModifiedTimestamp] <p>The date and time when the user profile was last modified, in timestamp format.</p>
 -- Required parameter: userArn
 -- Required parameter: createdTimestamp
 -- Required parameter: lastModifiedTimestamp
@@ -1008,11 +1008,11 @@ end
 
 --- Create a structure of type AssociateTeamMemberRequest
 --  
--- @param projectRole [Role] &lt;p&gt;The AWS CodeStar project role that will apply to this user. This role determines what actions a user can take in an AWS CodeStar project.&lt;/p&gt;
--- @param projectId [ProjectId] &lt;p&gt;The ID of the project to which you will add the IAM user.&lt;/p&gt;
--- @param remoteAccessAllowed [RemoteAccessAllowed] &lt;p&gt;Whether the team member is allowed to use an SSH public/private key pair to remotely access project resources, for example Amazon EC2 instances.&lt;/p&gt;
--- @param clientRequestToken [ClientRequestToken] &lt;p&gt;A user- or system-generated token that identifies the entity that requested the team member association to the project. This token can be used to repeat the request. &lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) for the IAM user you want to add to the DevHub project.&lt;/p&gt;
+-- @param projectRole [Role] <p>The AWS CodeStar project role that will apply to this user. This role determines what actions a user can take in an AWS CodeStar project.</p>
+-- @param projectId [ProjectId] <p>The ID of the project to which you will add the IAM user.</p>
+-- @param remoteAccessAllowed [RemoteAccessAllowed] <p>Whether the team member is allowed to use an SSH public/private key pair to remotely access project resources, for example Amazon EC2 instances.</p>
+-- @param clientRequestToken [ClientRequestToken] <p>A user- or system-generated token that identifies the entity that requested the team member association to the project. This token can be used to repeat the request. </p>
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) for the IAM user you want to add to the DevHub project.</p>
 -- Required parameter: projectId
 -- Required parameter: userArn
 -- Required parameter: projectRole
@@ -1040,7 +1040,7 @@ function M.AssertProjectCreationFailedException(struct)
 end
 
 --- Create a structure of type ProjectCreationFailedException
--- &lt;p&gt;The project creation request was valid, but a nonspecific exception or error occurred during project creation. The project could not be created in AWS CodeStar.&lt;/p&gt;
+-- <p>The project creation request was valid, but a nonspecific exception or error occurred during project creation. The project could not be created in AWS CodeStar.</p>
 function M.ProjectCreationFailedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectCreationFailedException")
 	local t = { 
@@ -1063,7 +1063,7 @@ end
 
 --- Create a structure of type DescribeProjectRequest
 --  
--- @param id [ProjectId] &lt;p&gt;The ID of the project.&lt;/p&gt;
+-- @param id [ProjectId] <p>The ID of the project.</p>
 -- Required parameter: id
 function M.DescribeProjectRequest(id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProjectRequest")
@@ -1085,7 +1085,7 @@ function M.AssertTeamMemberNotFoundException(struct)
 end
 
 --- Create a structure of type TeamMemberNotFoundException
--- &lt;p&gt;The specified team member was not found.&lt;/p&gt;
+-- <p>The specified team member was not found.</p>
 function M.TeamMemberNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TeamMemberNotFoundException")
 	local t = { 
@@ -1109,8 +1109,8 @@ end
 
 --- Create a structure of type ListUserProfilesResult
 --  
--- @param nextToken [PaginationToken] &lt;p&gt;The continuation token to use when requesting the next set of results, if there are more results to be returned.&lt;/p&gt;
--- @param userProfiles [UserProfilesList] &lt;p&gt;All the user profiles configured in AWS CodeStar for an AWS account.&lt;/p&gt;
+-- @param nextToken [PaginationToken] <p>The continuation token to use when requesting the next set of results, if there are more results to be returned.</p>
+-- @param userProfiles [UserProfilesList] <p>All the user profiles configured in AWS CodeStar for an AWS account.</p>
 -- Required parameter: userProfiles
 function M.ListUserProfilesResult(nextToken, userProfiles, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserProfilesResult")
@@ -1138,8 +1138,8 @@ end
 
 --- Create a structure of type DisassociateTeamMemberRequest
 --  
--- @param projectId [ProjectId] &lt;p&gt;The ID of the AWS CodeStar project from which you want to remove a team member.&lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM user or group whom you want to remove from the project.&lt;/p&gt;
+-- @param projectId [ProjectId] <p>The ID of the AWS CodeStar project from which you want to remove a team member.</p>
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the IAM user or group whom you want to remove from the project.</p>
 -- Required parameter: projectId
 -- Required parameter: userArn
 function M.DisassociateTeamMemberRequest(projectId, userArn, ...)
@@ -1163,7 +1163,7 @@ function M.AssertUserProfileAlreadyExistsException(struct)
 end
 
 --- Create a structure of type UserProfileAlreadyExistsException
--- &lt;p&gt;A user profile with that name already exists in this region for the AWS account. AWS CodeStar user profile names must be unique within a region for the AWS account. &lt;/p&gt;
+-- <p>A user profile with that name already exists in this region for the AWS account. AWS CodeStar user profile names must be unique within a region for the AWS account. </p>
 function M.UserProfileAlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserProfileAlreadyExistsException")
 	local t = { 
@@ -1185,9 +1185,9 @@ function M.AssertProjectSummary(struct)
 end
 
 --- Create a structure of type ProjectSummary
--- &lt;p&gt;Information about the metadata for a project.&lt;/p&gt;
--- @param projectId [ProjectId] &lt;p&gt;The ID of the project.&lt;/p&gt;
--- @param projectArn [ProjectArn] &lt;p&gt;The Amazon Resource Name (ARN) of the project.&lt;/p&gt;
+-- <p>Information about the metadata for a project.</p>
+-- @param projectId [ProjectId] <p>The ID of the project.</p>
+-- @param projectArn [ProjectArn] <p>The Amazon Resource Name (ARN) of the project.</p>
 function M.ProjectSummary(projectId, projectArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProjectSummary")
 	local t = { 
@@ -1211,7 +1211,7 @@ end
 
 --- Create a structure of type AssociateTeamMemberResult
 --  
--- @param clientRequestToken [ClientRequestToken] &lt;p&gt;The user- or system-generated token from the initial request that can be used to repeat the request. &lt;/p&gt;
+-- @param clientRequestToken [ClientRequestToken] <p>The user- or system-generated token from the initial request that can be used to repeat the request. </p>
 function M.AssociateTeamMemberResult(clientRequestToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociateTeamMemberResult")
 	local t = { 
@@ -1240,12 +1240,12 @@ end
 
 --- Create a structure of type UpdateUserProfileResult
 --  
--- @param displayName [UserProfileDisplayName] &lt;p&gt;The name that is displayed as the friendly name for the user in AWS CodeStar.&lt;/p&gt;
--- @param userArn [UserArn] &lt;p&gt;The Amazon Resource Name (ARN) of the user in IAM.&lt;/p&gt;
--- @param sshPublicKey [SshPublicKey] &lt;p&gt;The SSH public key associated with the user in AWS CodeStar. This is the public portion of the public/private keypair the user can use to access project resources if a project owner allows the user remote access to those resources.&lt;/p&gt;
--- @param createdTimestamp [CreatedTimestamp] &lt;p&gt;The date the user profile was created, in timestamp format.&lt;/p&gt;
--- @param emailAddress [Email] &lt;p&gt;The email address that is displayed as part of the user's profile in AWS CodeStar.&lt;/p&gt;
--- @param lastModifiedTimestamp [LastModifiedTimestamp] &lt;p&gt;The date the user profile was last modified, in timestamp format.&lt;/p&gt;
+-- @param displayName [UserProfileDisplayName] <p>The name that is displayed as the friendly name for the user in AWS CodeStar.</p>
+-- @param userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
+-- @param sshPublicKey [SshPublicKey] <p>The SSH public key associated with the user in AWS CodeStar. This is the public portion of the public/private keypair the user can use to access project resources if a project owner allows the user remote access to those resources.</p>
+-- @param createdTimestamp [CreatedTimestamp] <p>The date the user profile was created, in timestamp format.</p>
+-- @param emailAddress [Email] <p>The email address that is displayed as part of the user's profile in AWS CodeStar.</p>
+-- @param lastModifiedTimestamp [LastModifiedTimestamp] <p>The date the user profile was last modified, in timestamp format.</p>
 -- Required parameter: userArn
 function M.UpdateUserProfileResult(displayName, userArn, sshPublicKey, createdTimestamp, emailAddress, lastModifiedTimestamp, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserProfileResult")
@@ -1272,7 +1272,7 @@ function M.AssertTeamMemberAlreadyAssociatedException(struct)
 end
 
 --- Create a structure of type TeamMemberAlreadyAssociatedException
--- &lt;p&gt;The team member is already associated with a role in this project.&lt;/p&gt;
+-- <p>The team member is already associated with a role in this project.</p>
 function M.TeamMemberAlreadyAssociatedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TeamMemberAlreadyAssociatedException")
 	local t = { 
@@ -1299,10 +1299,10 @@ end
 
 --- Create a structure of type CreateProjectRequest
 --  
--- @param clientRequestToken [ClientRequestToken] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param description [ProjectDescription] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param name [ProjectName] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param id [ProjectId] &lt;p&gt;Reserved for future use.&lt;/p&gt;
+-- @param clientRequestToken [ClientRequestToken] <p>Reserved for future use.</p>
+-- @param description [ProjectDescription] <p>Reserved for future use.</p>
+-- @param name [ProjectName] <p>Reserved for future use.</p>
+-- @param id [ProjectId] <p>Reserved for future use.</p>
 -- Required parameter: name
 -- Required parameter: id
 function M.CreateProjectRequest(clientRequestToken, description, name, id, ...)

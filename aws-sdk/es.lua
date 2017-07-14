@@ -31,8 +31,8 @@ function M.AssertDescribeElasticsearchDomainsResponse(struct)
 end
 
 --- Create a structure of type DescribeElasticsearchDomainsResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeElasticsearchDomains&lt;/code&gt; request. Contains the status of the specified domains or all domains owned by the account.&lt;/p&gt;
--- @param DomainStatusList [ElasticsearchDomainStatusList] &lt;p&gt;The status of the domains requested in the &lt;code&gt;DescribeElasticsearchDomains&lt;/code&gt; request.&lt;/p&gt;
+-- <p>The result of a <code>DescribeElasticsearchDomains</code> request. Contains the status of the specified domains or all domains owned by the account.</p>
+-- @param DomainStatusList [ElasticsearchDomainStatusList] <p>The status of the domains requested in the <code>DescribeElasticsearchDomains</code> request.</p>
 -- Required parameter: DomainStatusList
 function M.DescribeElasticsearchDomainsResponse(DomainStatusList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainsResponse")
@@ -58,9 +58,9 @@ function M.AssertAdvancedOptionsStatus(struct)
 end
 
 --- Create a structure of type AdvancedOptionsStatus
--- &lt;p&gt; Status of the advanced options for the specified Elasticsearch domain. Currently, the following advanced options are available:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Option to allow references to indices in an HTTP request body. Must be &lt;code&gt;false&lt;/code&gt; when configuring access to individual sub-resources. By default, the value is &lt;code&gt;true&lt;/code&gt;. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options&quot; target=&quot;_blank&quot;&gt;Configuration Advanced Options&lt;/a&gt; for more information.&lt;/li&gt; &lt;li&gt;Option to specify the percentage of heap space that is allocated to field data. By default, this setting is unbounded.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options&quot;&gt;Configuring Advanced Options&lt;/a&gt;.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt; Specifies the status of &lt;code&gt;OptionStatus&lt;/code&gt; for advanced options for the specified Elasticsearch domain.&lt;/p&gt;
--- @param Options [AdvancedOptions] &lt;p&gt; Specifies the status of advanced options for the specified Elasticsearch domain.&lt;/p&gt;
+-- <p> Status of the advanced options for the specified Elasticsearch domain. Currently, the following advanced options are available:</p> <ul> <li>Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</li> <li>Option to specify the percentage of heap space that is allocated to field data. By default, this setting is unbounded.</li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options">Configuring Advanced Options</a>.</p>
+-- @param Status [OptionStatus] <p> Specifies the status of <code>OptionStatus</code> for advanced options for the specified Elasticsearch domain.</p>
+-- @param Options [AdvancedOptions] <p> Specifies the status of advanced options for the specified Elasticsearch domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.AdvancedOptionsStatus(Status, Options, ...)
@@ -86,8 +86,8 @@ function M.AssertListTagsRequest(struct)
 end
 
 --- Create a structure of type ListTagsRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;ListTags&lt;/a&gt;&lt;/code&gt; operation. Specify the &lt;code&gt;ARN&lt;/code&gt; for the Elasticsearch domain to which the tags are attached that you want to view are attached.&lt;/p&gt;
--- @param ARN [ARN] &lt;p&gt; Specify the &lt;code&gt;ARN&lt;/code&gt; for the Elasticsearch domain to which the tags are attached that you want to view.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>ListTags</a></code> operation. Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are attached that you want to view are attached.</p>
+-- @param ARN [ARN] <p> Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are attached that you want to view.</p>
 -- Required parameter: ARN
 function M.ListTagsRequest(ARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsRequest")
@@ -113,9 +113,9 @@ function M.AssertRemoveTagsRequest(struct)
 end
 
 --- Create a structure of type RemoveTagsRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;RemoveTags&lt;/a&gt;&lt;/code&gt; operation. Specify the &lt;code&gt;ARN&lt;/code&gt; for the Elasticsearch domain from which you want to remove the specified &lt;code&gt;TagKey&lt;/code&gt;.&lt;/p&gt;
--- @param TagKeys [StringList] &lt;p&gt;Specifies the &lt;code&gt;TagKey&lt;/code&gt; list which you want to remove from the Elasticsearch domain.&lt;/p&gt;
--- @param ARN [ARN] &lt;p&gt;Specifies the &lt;code&gt;ARN&lt;/code&gt; for the Elasticsearch domain from which you want to delete the specified tags.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>RemoveTags</a></code> operation. Specify the <code>ARN</code> for the Elasticsearch domain from which you want to remove the specified <code>TagKey</code>.</p>
+-- @param TagKeys [StringList] <p>Specifies the <code>TagKey</code> list which you want to remove from the Elasticsearch domain.</p>
+-- @param ARN [ARN] <p>Specifies the <code>ARN</code> for the Elasticsearch domain from which you want to delete the specified tags.</p>
 -- Required parameter: ARN
 -- Required parameter: TagKeys
 function M.RemoveTagsRequest(TagKeys, ARN, ...)
@@ -140,8 +140,8 @@ function M.AssertDeleteElasticsearchDomainResponse(struct)
 end
 
 --- Create a structure of type DeleteElasticsearchDomainResponse
--- &lt;p&gt;The result of a &lt;code&gt;DeleteElasticsearchDomain&lt;/code&gt; request. Contains the status of the pending deletion, or no status if the domain and all of its resources have been deleted.&lt;/p&gt;
--- @param DomainStatus [ElasticsearchDomainStatus] &lt;p&gt;The status of the Elasticsearch domain being deleted.&lt;/p&gt;
+-- <p>The result of a <code>DeleteElasticsearchDomain</code> request. Contains the status of the pending deletion, or no status if the domain and all of its resources have been deleted.</p>
+-- @param DomainStatus [ElasticsearchDomainStatus] <p>The status of the Elasticsearch domain being deleted.</p>
 function M.DeleteElasticsearchDomainResponse(DomainStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteElasticsearchDomainResponse")
 	local t = { 
@@ -164,8 +164,8 @@ function M.AssertDescribeElasticsearchDomainsRequest(struct)
 end
 
 --- Create a structure of type DescribeElasticsearchDomainsRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeElasticsearchDomains&lt;/a&gt;&lt;/code&gt; operation. By default, the API returns the status of all Elasticsearch domains.&lt;/p&gt;
--- @param DomainNames [DomainNameList] &lt;p&gt;The Elasticsearch domains for which you want information.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DescribeElasticsearchDomains</a></code> operation. By default, the API returns the status of all Elasticsearch domains.</p>
+-- @param DomainNames [DomainNameList] <p>The Elasticsearch domains for which you want information.</p>
 -- Required parameter: DomainNames
 function M.DescribeElasticsearchDomainsRequest(DomainNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainsRequest")
@@ -188,8 +188,8 @@ function M.AssertListDomainNamesResponse(struct)
 end
 
 --- Create a structure of type ListDomainNamesResponse
--- &lt;p&gt;The result of a &lt;code&gt;ListDomainNames&lt;/code&gt; operation. Contains the names of all Elasticsearch domains owned by this account.&lt;/p&gt;
--- @param DomainNames [DomainInfoList] &lt;p&gt;List of Elasticsearch domain names.&lt;/p&gt;
+-- <p>The result of a <code>ListDomainNames</code> operation. Contains the names of all Elasticsearch domains owned by this account.</p>
+-- @param DomainNames [DomainInfoList] <p>List of Elasticsearch domain names.</p>
 function M.ListDomainNamesResponse(DomainNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainNamesResponse")
 	local t = { 
@@ -216,13 +216,13 @@ function M.AssertElasticsearchDomainConfig(struct)
 end
 
 --- Create a structure of type ElasticsearchDomainConfig
--- &lt;p&gt;The configuration of an Elasticsearch domain.&lt;/p&gt;
--- @param ElasticsearchClusterConfig [ElasticsearchClusterConfigStatus] &lt;p&gt;Specifies the &lt;code&gt;ElasticsearchClusterConfig&lt;/code&gt; for the Elasticsearch domain.&lt;/p&gt;
--- @param ElasticsearchVersion [ElasticsearchVersionStatus] &lt;p&gt;String of format X.Y to specify version for the Elasticsearch domain.&lt;/p&gt;
--- @param EBSOptions [EBSOptionsStatus] &lt;p&gt;Specifies the &lt;code&gt;EBSOptions&lt;/code&gt; for the Elasticsearch domain.&lt;/p&gt;
--- @param SnapshotOptions [SnapshotOptionsStatus] &lt;p&gt;Specifies the &lt;code&gt;SnapshotOptions&lt;/code&gt; for the Elasticsearch domain.&lt;/p&gt;
--- @param AdvancedOptions [AdvancedOptionsStatus] &lt;p&gt;Specifies the &lt;code&gt;AdvancedOptions&lt;/code&gt; for the domain. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options&quot; target=&quot;_blank&quot;&gt;Configuring Advanced Options&lt;/a&gt; for more information.&lt;/p&gt;
--- @param AccessPolicies [AccessPoliciesStatus] &lt;p&gt;IAM access policy as a JSON-formatted string.&lt;/p&gt;
+-- <p>The configuration of an Elasticsearch domain.</p>
+-- @param ElasticsearchClusterConfig [ElasticsearchClusterConfigStatus] <p>Specifies the <code>ElasticsearchClusterConfig</code> for the Elasticsearch domain.</p>
+-- @param ElasticsearchVersion [ElasticsearchVersionStatus] <p>String of format X.Y to specify version for the Elasticsearch domain.</p>
+-- @param EBSOptions [EBSOptionsStatus] <p>Specifies the <code>EBSOptions</code> for the Elasticsearch domain.</p>
+-- @param SnapshotOptions [SnapshotOptionsStatus] <p>Specifies the <code>SnapshotOptions</code> for the Elasticsearch domain.</p>
+-- @param AdvancedOptions [AdvancedOptionsStatus] <p>Specifies the <code>AdvancedOptions</code> for the domain. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuring Advanced Options</a> for more information.</p>
+-- @param AccessPolicies [AccessPoliciesStatus] <p>IAM access policy as a JSON-formatted string.</p>
 function M.ElasticsearchDomainConfig(ElasticsearchClusterConfig, ElasticsearchVersion, EBSOptions, SnapshotOptions, AdvancedOptions, AccessPolicies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchDomainConfig")
 	local t = { 
@@ -265,20 +265,20 @@ function M.AssertElasticsearchDomainStatus(struct)
 end
 
 --- Create a structure of type ElasticsearchDomainStatus
--- &lt;p&gt;The current status of an Elasticsearch domain.&lt;/p&gt;
--- @param ElasticsearchClusterConfig [ElasticsearchClusterConfig] &lt;p&gt;The type and number of instances in the domain cluster.&lt;/p&gt;
--- @param Endpoint [ServiceUrl] &lt;p&gt;The Elasticsearch domain endpoint that you use to submit index and search requests.&lt;/p&gt;
--- @param Created [Boolean] &lt;p&gt;The domain creation status. &lt;code&gt;True&lt;/code&gt; if the creation of an Elasticsearch domain is complete. &lt;code&gt;False&lt;/code&gt; if domain creation is still in progress.&lt;/p&gt;
--- @param Deleted [Boolean] &lt;p&gt;The domain deletion status. &lt;code&gt;True&lt;/code&gt; if a delete request has been received for the domain but resource cleanup is still in progress. &lt;code&gt;False&lt;/code&gt; if the domain has not been deleted. Once domain deletion is complete, the status of the domain is no longer returned.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).&lt;/p&gt;
--- @param EBSOptions [EBSOptions] &lt;p&gt;The &lt;code&gt;EBSOptions&lt;/code&gt; for the specified domain. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs&quot; target=&quot;_blank&quot;&gt;Configuring EBS-based Storage&lt;/a&gt; for more information.&lt;/p&gt;
--- @param SnapshotOptions [SnapshotOptions] &lt;p&gt;Specifies the status of the &lt;code&gt;SnapshotOptions&lt;/code&gt;&lt;/p&gt;
--- @param DomainId [DomainId] &lt;p&gt;The unique identifier for the specified Elasticsearch domain.&lt;/p&gt;
--- @param AccessPolicies [PolicyDocument] &lt;p&gt; IAM access policy as a JSON-formatted string.&lt;/p&gt;
--- @param Processing [Boolean] &lt;p&gt;The status of the Elasticsearch domain configuration. &lt;code&gt;True&lt;/code&gt; if Amazon Elasticsearch Service is processing configuration changes. &lt;code&gt;False&lt;/code&gt; if the configuration is active.&lt;/p&gt;
--- @param AdvancedOptions [AdvancedOptions] &lt;p&gt;Specifies the status of the &lt;code&gt;AdvancedOptions&lt;/code&gt;&lt;/p&gt;
--- @param ElasticsearchVersion [ElasticsearchVersionString] &lt;p&gt;The current status of an Elasticsearch domain.&lt;/p&gt;
--- @param ARN [ARN] &lt;p&gt;The Amazon resource name (ARN) of an Elasticsearch domain. See &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html&quot; target=&quot;_blank&quot;&gt;Identifiers for IAM Entities&lt;/a&gt; in &lt;i&gt;Using AWS Identity and Access Management&lt;/i&gt; for more information.&lt;/p&gt;
+-- <p>The current status of an Elasticsearch domain.</p>
+-- @param ElasticsearchClusterConfig [ElasticsearchClusterConfig] <p>The type and number of instances in the domain cluster.</p>
+-- @param Endpoint [ServiceUrl] <p>The Elasticsearch domain endpoint that you use to submit index and search requests.</p>
+-- @param Created [Boolean] <p>The domain creation status. <code>True</code> if the creation of an Elasticsearch domain is complete. <code>False</code> if domain creation is still in progress.</p>
+-- @param Deleted [Boolean] <p>The domain deletion status. <code>True</code> if a delete request has been received for the domain but resource cleanup is still in progress. <code>False</code> if the domain has not been deleted. Once domain deletion is complete, the status of the domain is no longer returned.</p>
+-- @param DomainName [DomainName] <p>The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
+-- @param EBSOptions [EBSOptions] <p>The <code>EBSOptions</code> for the specified domain. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank">Configuring EBS-based Storage</a> for more information.</p>
+-- @param SnapshotOptions [SnapshotOptions] <p>Specifies the status of the <code>SnapshotOptions</code></p>
+-- @param DomainId [DomainId] <p>The unique identifier for the specified Elasticsearch domain.</p>
+-- @param AccessPolicies [PolicyDocument] <p> IAM access policy as a JSON-formatted string.</p>
+-- @param Processing [Boolean] <p>The status of the Elasticsearch domain configuration. <code>True</code> if Amazon Elasticsearch Service is processing configuration changes. <code>False</code> if the configuration is active.</p>
+-- @param AdvancedOptions [AdvancedOptions] <p>Specifies the status of the <code>AdvancedOptions</code></p>
+-- @param ElasticsearchVersion [ElasticsearchVersionString] <p>The current status of an Elasticsearch domain.</p>
+-- @param ARN [ARN] <p>The Amazon resource name (ARN) of an Elasticsearch domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.</p>
 -- Required parameter: DomainId
 -- Required parameter: DomainName
 -- Required parameter: ARN
@@ -319,9 +319,9 @@ function M.AssertAccessPoliciesStatus(struct)
 end
 
 --- Create a structure of type AccessPoliciesStatus
--- &lt;p&gt;The configured access rules for the domain's document and search endpoints, and the current status of those rules.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt;The status of the access policy for the Elasticsearch domain. See &lt;code&gt;OptionStatus&lt;/code&gt; for the status information that's included. &lt;/p&gt;
--- @param Options [PolicyDocument] &lt;p&gt;The access policy configured for the Elasticsearch domain. Access policies may be resource-based, IP-based, or IAM-based. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies&quot; target=&quot;_blank&quot;&gt; Configuring Access Policies&lt;/a&gt;for more information.&lt;/p&gt;
+-- <p>The configured access rules for the domain's document and search endpoints, and the current status of those rules.</p>
+-- @param Status [OptionStatus] <p>The status of the access policy for the Elasticsearch domain. See <code>OptionStatus</code> for the status information that's included. </p>
+-- @param Options [PolicyDocument] <p>The access policy configured for the Elasticsearch domain. Access policies may be resource-based, IP-based, or IAM-based. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank"> Configuring Access Policies</a>for more information.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.AccessPoliciesStatus(Status, Options, ...)
@@ -347,9 +347,9 @@ function M.AssertAdditionalLimit(struct)
 end
 
 --- Create a structure of type AdditionalLimit
--- &lt;p&gt; List of limits that are specific to a given InstanceType and for each of it's &lt;code&gt; &lt;a&gt;InstanceRole&lt;/a&gt; &lt;/code&gt; . &lt;/p&gt;
--- @param LimitValues [LimitValueList] &lt;p&gt; Value for given &lt;code&gt; &lt;a&gt;AdditionalLimit$LimitName&lt;/a&gt; &lt;/code&gt; . &lt;/p&gt;
--- @param LimitName [LimitName] &lt;p&gt; Name of Additional Limit is specific to a given InstanceType and for each of it's &lt;code&gt; &lt;a&gt;InstanceRole&lt;/a&gt; &lt;/code&gt; etc. &lt;br/&gt; Attributes and their details: &lt;br/&gt; &lt;ul&gt; &lt;li&gt;MaximumNumberOfDataNodesSupported&lt;/li&gt; This attribute will be present in Master node only to specify how much data nodes upto which given &lt;code&gt; &lt;a&gt;ESPartitionInstanceType&lt;/a&gt; &lt;/code&gt; can support as master node. &lt;li&gt;MaximumNumberOfDataNodesWithoutMasterNode&lt;/li&gt; This attribute will be present in Data node only to specify how much data nodes of given &lt;code&gt; &lt;a&gt;ESPartitionInstanceType&lt;/a&gt; &lt;/code&gt; upto which you don't need any master nodes to govern them. &lt;/ul&gt; &lt;/p&gt;
+-- <p> List of limits that are specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> . </p>
+-- @param LimitValues [LimitValueList] <p> Value for given <code> <a>AdditionalLimit$LimitName</a> </code> . </p>
+-- @param LimitName [LimitName] <p> Name of Additional Limit is specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> etc. <br/> Attributes and their details: <br/> <ul> <li>MaximumNumberOfDataNodesSupported</li> This attribute will be present in Master node only to specify how much data nodes upto which given <code> <a>ESPartitionInstanceType</a> </code> can support as master node. <li>MaximumNumberOfDataNodesWithoutMasterNode</li> This attribute will be present in Data node only to specify how much data nodes of given <code> <a>ESPartitionInstanceType</a> </code> upto which you don't need any master nodes to govern them. </ul> </p>
 function M.AdditionalLimit(LimitValues, LimitName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdditionalLimit")
 	local t = { 
@@ -372,8 +372,8 @@ function M.AssertSnapshotOptions(struct)
 end
 
 --- Create a structure of type SnapshotOptions
--- &lt;p&gt;Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is &lt;code&gt;0&lt;/code&gt; hours.&lt;/p&gt;
--- @param AutomatedSnapshotStartHour [IntegerClass] &lt;p&gt;Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is &lt;code&gt;0&lt;/code&gt; hours.&lt;/p&gt;
+-- <p>Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.</p>
+-- @param AutomatedSnapshotStartHour [IntegerClass] <p>Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.</p>
 function M.SnapshotOptions(AutomatedSnapshotStartHour, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotOptions")
 	local t = { 
@@ -398,9 +398,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Specifies a key value pair for a resource tag.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;Specifies the &lt;code&gt;TagValue&lt;/code&gt;, the value assigned to the corresponding tag key. Tag values can be null and do not have to be unique in a tag set. For example, you can have a key value pair in a tag set of &lt;code&gt;project : Trinity&lt;/code&gt; and &lt;code&gt;cost-center : Trinity&lt;/code&gt;&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;Specifies the &lt;code&gt;TagKey&lt;/code&gt;, the name of the tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.&lt;/p&gt;
+-- <p>Specifies a key value pair for a resource tag.</p>
+-- @param Value [TagValue] <p>Specifies the <code>TagValue</code>, the value assigned to the corresponding tag key. Tag values can be null and do not have to be unique in a tag set. For example, you can have a key value pair in a tag set of <code>project : Trinity</code> and <code>cost-center : Trinity</code></p>
+-- @param Key [TagKey] <p>Specifies the <code>TagKey</code>, the name of the tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.</p>
 -- Required parameter: Key
 -- Required parameter: Value
 function M.Tag(Value, Key, ...)
@@ -428,9 +428,9 @@ function M.AssertEBSOptionsStatus(struct)
 end
 
 --- Create a structure of type EBSOptionsStatus
--- &lt;p&gt; Status of the EBS options for the specified Elasticsearch domain.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt; Specifies the status of the EBS options for the specified Elasticsearch domain.&lt;/p&gt;
--- @param Options [EBSOptions] &lt;p&gt; Specifies the EBS options for the specified Elasticsearch domain.&lt;/p&gt;
+-- <p> Status of the EBS options for the specified Elasticsearch domain.</p>
+-- @param Status [OptionStatus] <p> Specifies the status of the EBS options for the specified Elasticsearch domain.</p>
+-- @param Options [EBSOptions] <p> Specifies the EBS options for the specified Elasticsearch domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.EBSOptionsStatus(Status, Options, ...)
@@ -456,9 +456,9 @@ function M.AssertListElasticsearchVersionsRequest(struct)
 end
 
 --- Create a structure of type ListElasticsearchVersionsRequest
--- &lt;p&gt; Container for the parameters to the &lt;code&gt; &lt;a&gt;ListElasticsearchVersions&lt;/a&gt; &lt;/code&gt; operation. &lt;p&gt; Use &lt;code&gt; &lt;a&gt;MaxResults&lt;/a&gt; &lt;/code&gt; to control the maximum number of results to retrieve in a single call. &lt;/p&gt; &lt;p&gt; Use &lt;code&gt; &lt;a&gt;NextToken&lt;/a&gt; &lt;/code&gt; in response to retrieve more results. If the received response does not contain a NextToken, then there are no more results to retrieve. &lt;/p&gt; &lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt; Container for the parameters to the &lt;code&gt; &lt;a&gt;ListElasticsearchVersions&lt;/a&gt; &lt;/code&gt; operation. &lt;p&gt; Use &lt;code&gt; &lt;a&gt;MaxResults&lt;/a&gt; &lt;/code&gt; to control the maximum number of results to retrieve in a single call. &lt;/p&gt; &lt;p&gt; Use &lt;code&gt; &lt;a&gt;NextToken&lt;/a&gt; &lt;/code&gt; in response to retrieve more results. If the received response does not contain a NextToken, then there are no more results to retrieve. &lt;/p&gt; &lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt; Set this value to limit the number of results returned. Value provided must be greater than 10 else it wont be honored. &lt;/p&gt;
+-- <p> Container for the parameters to the <code> <a>ListElasticsearchVersions</a> </code> operation. <p> Use <code> <a>MaxResults</a> </code> to control the maximum number of results to retrieve in a single call. </p> <p> Use <code> <a>NextToken</a> </code> in response to retrieve more results. If the received response does not contain a NextToken, then there are no more results to retrieve. </p> </p>
+-- @param NextToken [NextToken] <p> Container for the parameters to the <code> <a>ListElasticsearchVersions</a> </code> operation. <p> Use <code> <a>MaxResults</a> </code> to control the maximum number of results to retrieve in a single call. </p> <p> Use <code> <a>NextToken</a> </code> in response to retrieve more results. If the received response does not contain a NextToken, then there are no more results to retrieve. </p> </p>
+-- @param MaxResults [MaxResults] <p> Set this value to limit the number of results returned. Value provided must be greater than 10 else it wont be honored. </p>
 function M.ListElasticsearchVersionsRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListElasticsearchVersionsRequest")
 	local t = { 
@@ -487,13 +487,13 @@ function M.AssertUpdateElasticsearchDomainConfigRequest(struct)
 end
 
 --- Create a structure of type UpdateElasticsearchDomainConfigRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;UpdateElasticsearchDomain&lt;/a&gt;&lt;/code&gt; operation. Specifies the type and number of instances in the domain cluster.&lt;/p&gt;
--- @param ElasticsearchClusterConfig [ElasticsearchClusterConfig] &lt;p&gt;The type and number of instances to instantiate for the domain cluster.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the Elasticsearch domain that you are updating. &lt;/p&gt;
--- @param EBSOptions [EBSOptions] &lt;p&gt;Specify the type and size of the EBS volume that you want to use. &lt;/p&gt;
--- @param SnapshotOptions [SnapshotOptions] &lt;p&gt;Option to set the time, in UTC format, for the daily automated snapshot. Default value is &lt;code&gt;0&lt;/code&gt; hours. &lt;/p&gt;
--- @param AdvancedOptions [AdvancedOptions] &lt;p&gt;Modifies the advanced option to allow references to indices in an HTTP request body. Must be &lt;code&gt;false&lt;/code&gt; when configuring access to individual sub-resources. By default, the value is &lt;code&gt;true&lt;/code&gt;. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options&quot; target=&quot;_blank&quot;&gt;Configuration Advanced Options&lt;/a&gt; for more information.&lt;/p&gt;
--- @param AccessPolicies [PolicyDocument] &lt;p&gt;IAM access policy as a JSON-formatted string.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>UpdateElasticsearchDomain</a></code> operation. Specifies the type and number of instances in the domain cluster.</p>
+-- @param ElasticsearchClusterConfig [ElasticsearchClusterConfig] <p>The type and number of instances to instantiate for the domain cluster.</p>
+-- @param DomainName [DomainName] <p>The name of the Elasticsearch domain that you are updating. </p>
+-- @param EBSOptions [EBSOptions] <p>Specify the type and size of the EBS volume that you want to use. </p>
+-- @param SnapshotOptions [SnapshotOptions] <p>Option to set the time, in UTC format, for the daily automated snapshot. Default value is <code>0</code> hours. </p>
+-- @param AdvancedOptions [AdvancedOptions] <p>Modifies the advanced option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</p>
+-- @param AccessPolicies [PolicyDocument] <p>IAM access policy as a JSON-formatted string.</p>
 -- Required parameter: DomainName
 function M.UpdateElasticsearchDomainConfigRequest(ElasticsearchClusterConfig, DomainName, EBSOptions, SnapshotOptions, AdvancedOptions, AccessPolicies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateElasticsearchDomainConfigRequest")
@@ -522,8 +522,8 @@ function M.AssertDescribeElasticsearchDomainResponse(struct)
 end
 
 --- Create a structure of type DescribeElasticsearchDomainResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeElasticsearchDomain&lt;/code&gt; request. Contains the status of the domain specified in the request.&lt;/p&gt;
--- @param DomainStatus [ElasticsearchDomainStatus] &lt;p&gt;The current status of the Elasticsearch domain.&lt;/p&gt;
+-- <p>The result of a <code>DescribeElasticsearchDomain</code> request. Contains the status of the domain specified in the request.</p>
+-- @param DomainStatus [ElasticsearchDomainStatus] <p>The current status of the Elasticsearch domain.</p>
 -- Required parameter: DomainStatus
 function M.DescribeElasticsearchDomainResponse(DomainStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainResponse")
@@ -547,8 +547,8 @@ function M.AssertDescribeElasticsearchDomainConfigResponse(struct)
 end
 
 --- Create a structure of type DescribeElasticsearchDomainConfigResponse
--- &lt;p&gt;The result of a &lt;code&gt;DescribeElasticsearchDomainConfig&lt;/code&gt; request. Contains the configuration information of the requested domain.&lt;/p&gt;
--- @param DomainConfig [ElasticsearchDomainConfig] &lt;p&gt;The configuration information of the domain requested in the &lt;code&gt;DescribeElasticsearchDomainConfig&lt;/code&gt; request.&lt;/p&gt;
+-- <p>The result of a <code>DescribeElasticsearchDomainConfig</code> request. Contains the configuration information of the requested domain.</p>
+-- @param DomainConfig [ElasticsearchDomainConfig] <p>The configuration information of the domain requested in the <code>DescribeElasticsearchDomainConfig</code> request.</p>
 -- Required parameter: DomainConfig
 function M.DescribeElasticsearchDomainConfigResponse(DomainConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainConfigResponse")
@@ -574,11 +574,11 @@ function M.AssertEBSOptions(struct)
 end
 
 --- Create a structure of type EBSOptions
--- &lt;p&gt;Options to enable, disable, and specify the properties of EBS storage volumes. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs&quot; target=&quot;_blank&quot;&gt; Configuring EBS-based Storage&lt;/a&gt;.&lt;/p&gt;
--- @param Iops [IntegerClass] &lt;p&gt;Specifies the IOPD for a Provisioned IOPS EBS volume (SSD).&lt;/p&gt;
--- @param VolumeSize [IntegerClass] &lt;p&gt; Integer to specify the size of an EBS volume.&lt;/p&gt;
--- @param VolumeType [VolumeType] &lt;p&gt; Specifies the volume type for EBS-based storage.&lt;/p&gt;
--- @param EBSEnabled [Boolean] &lt;p&gt;Specifies whether EBS-based storage is enabled.&lt;/p&gt;
+-- <p>Options to enable, disable, and specify the properties of EBS storage volumes. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank"> Configuring EBS-based Storage</a>.</p>
+-- @param Iops [IntegerClass] <p>Specifies the IOPD for a Provisioned IOPS EBS volume (SSD).</p>
+-- @param VolumeSize [IntegerClass] <p> Integer to specify the size of an EBS volume.</p>
+-- @param VolumeType [VolumeType] <p> Specifies the volume type for EBS-based storage.</p>
+-- @param EBSEnabled [Boolean] <p>Specifies whether EBS-based storage is enabled.</p>
 function M.EBSOptions(Iops, VolumeSize, VolumeType, EBSEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EBSOptions")
 	local t = { 
@@ -606,9 +606,9 @@ function M.AssertElasticsearchVersionStatus(struct)
 end
 
 --- Create a structure of type ElasticsearchVersionStatus
--- &lt;p&gt; Status of the Elasticsearch version options for the specified Elasticsearch domain.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt; Specifies the status of the Elasticsearch version options for the specified Elasticsearch domain.&lt;/p&gt;
--- @param Options [ElasticsearchVersionString] &lt;p&gt; Specifies the Elasticsearch version for the specified Elasticsearch domain.&lt;/p&gt;
+-- <p> Status of the Elasticsearch version options for the specified Elasticsearch domain.</p>
+-- @param Status [OptionStatus] <p> Specifies the status of the Elasticsearch version options for the specified Elasticsearch domain.</p>
+-- @param Options [ElasticsearchVersionString] <p> Specifies the Elasticsearch version for the specified Elasticsearch domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.ElasticsearchVersionStatus(Status, Options, ...)
@@ -632,7 +632,7 @@ function M.AssertResourceAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ResourceAlreadyExistsException
--- &lt;p&gt;An exception for creating a resource that already exists. Gives http status code of 400.&lt;/p&gt;
+-- <p>An exception for creating a resource that already exists. Gives http status code of 400.</p>
 function M.ResourceAlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
 	local t = { 
@@ -654,9 +654,9 @@ function M.AssertStorageTypeLimit(struct)
 end
 
 --- Create a structure of type StorageTypeLimit
--- &lt;p&gt;Limits that are applicable for given storage type. &lt;/p&gt;
--- @param LimitValues [LimitValueList] &lt;p&gt; Values for the &lt;code&gt; &lt;a&gt;StorageTypeLimit$LimitName&lt;/a&gt; &lt;/code&gt; . &lt;/p&gt;
--- @param LimitName [LimitName] &lt;p&gt; Name of storage limits that are applicable for given storage type. If &lt;code&gt; &lt;a&gt;StorageType&lt;/a&gt; &lt;/code&gt; is ebs, following storage options are applicable &lt;ol&gt; &lt;li&gt;MinimumVolumeSize&lt;/li&gt; Minimum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. &lt;li&gt;MaximumVolumeSize&lt;/li&gt; Maximum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. &lt;li&gt;MaximumIops&lt;/li&gt; Maximum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. &lt;li&gt;MinimumIops&lt;/li&gt; Minimum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. &lt;/ol&gt; &lt;/p&gt;
+-- <p>Limits that are applicable for given storage type. </p>
+-- @param LimitValues [LimitValueList] <p> Values for the <code> <a>StorageTypeLimit$LimitName</a> </code> . </p>
+-- @param LimitName [LimitName] <p> Name of storage limits that are applicable for given storage type. If <code> <a>StorageType</a> </code> is ebs, following storage options are applicable <ol> <li>MinimumVolumeSize</li> Minimum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumVolumeSize</li> Maximum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumIops</li> Maximum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. <li>MinimumIops</li> Minimum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. </ol> </p>
 function M.StorageTypeLimit(LimitValues, LimitName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageTypeLimit")
 	local t = { 
@@ -680,9 +680,9 @@ function M.AssertListElasticsearchVersionsResponse(struct)
 end
 
 --- Create a structure of type ListElasticsearchVersionsResponse
--- &lt;p&gt; Container for the parameters for response received from &lt;code&gt; &lt;a&gt;ListElasticsearchVersions&lt;/a&gt; &lt;/code&gt; operation. &lt;/p&gt;
--- @param ElasticsearchVersions [ElasticsearchVersionList] &lt;p&gt; Container for the parameters for response received from &lt;code&gt; &lt;a&gt;ListElasticsearchVersions&lt;/a&gt; &lt;/code&gt; operation. &lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt; Container for the parameters for response received from &lt;code&gt; &lt;a&gt;ListElasticsearchVersions&lt;/a&gt; &lt;/code&gt; operation. &lt;/p&gt;
+-- <p> Container for the parameters for response received from <code> <a>ListElasticsearchVersions</a> </code> operation. </p>
+-- @param ElasticsearchVersions [ElasticsearchVersionList] <p> Container for the parameters for response received from <code> <a>ListElasticsearchVersions</a> </code> operation. </p>
+-- @param NextToken [NextToken] <p> Container for the parameters for response received from <code> <a>ListElasticsearchVersions</a> </code> operation. </p>
 function M.ListElasticsearchVersionsResponse(ElasticsearchVersions, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListElasticsearchVersionsResponse")
 	local t = { 
@@ -708,9 +708,9 @@ function M.AssertElasticsearchClusterConfigStatus(struct)
 end
 
 --- Create a structure of type ElasticsearchClusterConfigStatus
--- &lt;p&gt; Specifies the configuration status for the specified Elasticsearch domain.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt; Specifies the status of the configuration for the specified Elasticsearch domain.&lt;/p&gt;
--- @param Options [ElasticsearchClusterConfig] &lt;p&gt; Specifies the cluster configuration for the specified Elasticsearch domain.&lt;/p&gt;
+-- <p> Specifies the configuration status for the specified Elasticsearch domain.</p>
+-- @param Status [OptionStatus] <p> Specifies the status of the configuration for the specified Elasticsearch domain.</p>
+-- @param Options [ElasticsearchClusterConfig] <p> Specifies the cluster configuration for the specified Elasticsearch domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.ElasticsearchClusterConfigStatus(Status, Options, ...)
@@ -737,10 +737,10 @@ function M.AssertStorageType(struct)
 end
 
 --- Create a structure of type StorageType
--- &lt;p&gt;StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. &lt;/p&gt;
--- @param StorageTypeName [StorageTypeName] &lt;p&gt;StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. &lt;/p&gt;
--- @param StorageTypeLimits [StorageTypeLimitList] &lt;p&gt;List of limits that are applicable for given storage type. &lt;/p&gt;
--- @param StorageSubTypeName [StorageSubTypeName] &lt;p&gt;StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. &lt;/p&gt;
+-- <p>StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. </p>
+-- @param StorageTypeName [StorageTypeName] <p>StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. </p>
+-- @param StorageTypeLimits [StorageTypeLimitList] <p>List of limits that are applicable for given storage type. </p>
+-- @param StorageSubTypeName [StorageSubTypeName] <p>StorageTypes represents the list of storage related types and their attributes that are available for given InstanceType. </p>
 function M.StorageType(StorageTypeName, StorageTypeLimits, StorageSubTypeName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageType")
 	local t = { 
@@ -764,8 +764,8 @@ function M.AssertBaseException(struct)
 end
 
 --- Create a structure of type BaseException
--- &lt;p&gt;An error occurred while processing the request.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;A description of the error.&lt;/p&gt;
+-- <p>An error occurred while processing the request.</p>
+-- @param message [ErrorMessage] <p>A description of the error.</p>
 function M.BaseException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BaseException")
 	local t = { 
@@ -787,8 +787,8 @@ function M.AssertInstanceLimits(struct)
 end
 
 --- Create a structure of type InstanceLimits
--- &lt;p&gt;InstanceLimits represents the list of instance related attributes that are available for given InstanceType. &lt;/p&gt;
--- @param InstanceCountLimits [InstanceCountLimits] &lt;p&gt;InstanceLimits represents the list of instance related attributes that are available for given InstanceType. &lt;/p&gt;
+-- <p>InstanceLimits represents the list of instance related attributes that are available for given InstanceType. </p>
+-- @param InstanceCountLimits [InstanceCountLimits] <p>InstanceLimits represents the list of instance related attributes that are available for given InstanceType. </p>
 function M.InstanceLimits(InstanceCountLimits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceLimits")
 	local t = { 
@@ -809,7 +809,7 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;An exception for trying to create more than allowed resources or sub-resources. Gives http status code of 409.&lt;/p&gt;
+-- <p>An exception for trying to create more than allowed resources or sub-resources. Gives http status code of 409.</p>
 function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -834,10 +834,10 @@ function M.AssertDescribeElasticsearchInstanceTypeLimitsRequest(struct)
 end
 
 --- Create a structure of type DescribeElasticsearchInstanceTypeLimitsRequest
--- &lt;p&gt; Container for the parameters to &lt;code&gt; &lt;a&gt;DescribeElasticsearchInstanceTypeLimits&lt;/a&gt; &lt;/code&gt; operation. &lt;/p&gt;
--- @param ElasticsearchVersion [ElasticsearchVersionString] &lt;p&gt; Version of Elasticsearch for which &lt;code&gt; &lt;a&gt;Limits&lt;/a&gt; &lt;/code&gt; are needed. &lt;/p&gt;
--- @param InstanceType [ESPartitionInstanceType] &lt;p&gt; The instance type for an Elasticsearch cluster for which Elasticsearch &lt;code&gt; &lt;a&gt;Limits&lt;/a&gt; &lt;/code&gt; are needed. &lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt; DomainName represents the name of the Domain that we are trying to modify. This should be present only if we are querying for Elasticsearch &lt;code&gt; &lt;a&gt;Limits&lt;/a&gt; &lt;/code&gt; for existing domain. &lt;/p&gt;
+-- <p> Container for the parameters to <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. </p>
+-- @param ElasticsearchVersion [ElasticsearchVersionString] <p> Version of Elasticsearch for which <code> <a>Limits</a> </code> are needed. </p>
+-- @param InstanceType [ESPartitionInstanceType] <p> The instance type for an Elasticsearch cluster for which Elasticsearch <code> <a>Limits</a> </code> are needed. </p>
+-- @param DomainName [DomainName] <p> DomainName represents the name of the Domain that we are trying to modify. This should be present only if we are querying for Elasticsearch <code> <a>Limits</a> </code> for existing domain. </p>
 -- Required parameter: InstanceType
 -- Required parameter: ElasticsearchVersion
 function M.DescribeElasticsearchInstanceTypeLimitsRequest(ElasticsearchVersion, InstanceType, DomainName, ...)
@@ -862,7 +862,7 @@ function M.AssertValidationException(struct)
 end
 
 --- Create a structure of type ValidationException
--- &lt;p&gt;An exception for missing / invalid input fields. Gives http status code of 400.&lt;/p&gt;
+-- <p>An exception for missing / invalid input fields. Gives http status code of 400.</p>
 function M.ValidationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
 	local t = { 
@@ -884,9 +884,9 @@ function M.AssertListElasticsearchInstanceTypesResponse(struct)
 end
 
 --- Create a structure of type ListElasticsearchInstanceTypesResponse
--- &lt;p&gt; Container for the parameters returned by &lt;code&gt; &lt;a&gt;ListElasticsearchInstanceTypes&lt;/a&gt; &lt;/code&gt; operation. &lt;/p&gt;
--- @param ElasticsearchInstanceTypes [ElasticsearchInstanceTypeList] &lt;p&gt; List of instance types supported by Amazon Elasticsearch service for given &lt;code&gt; &lt;a&gt;ElasticsearchVersion&lt;/a&gt; &lt;/code&gt; &lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;In case if there are more results available NextToken would be present, make further request to the same API with received NextToken to paginate remaining results. &lt;/p&gt;
+-- <p> Container for the parameters returned by <code> <a>ListElasticsearchInstanceTypes</a> </code> operation. </p>
+-- @param ElasticsearchInstanceTypes [ElasticsearchInstanceTypeList] <p> List of instance types supported by Amazon Elasticsearch service for given <code> <a>ElasticsearchVersion</a> </code> </p>
+-- @param NextToken [NextToken] <p>In case if there are more results available NextToken would be present, make further request to the same API with received NextToken to paginate remaining results. </p>
 function M.ListElasticsearchInstanceTypesResponse(ElasticsearchInstanceTypes, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListElasticsearchInstanceTypesResponse")
 	local t = { 
@@ -910,8 +910,8 @@ function M.AssertDescribeElasticsearchDomainRequest(struct)
 end
 
 --- Create a structure of type DescribeElasticsearchDomainRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DescribeElasticsearchDomain&lt;/a&gt;&lt;/code&gt; operation.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the Elasticsearch domain for which you want information.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DescribeElasticsearchDomain</a></code> operation.</p>
+-- @param DomainName [DomainName] <p>The name of the Elasticsearch domain for which you want information.</p>
 -- Required parameter: DomainName
 function M.DescribeElasticsearchDomainRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainRequest")
@@ -936,10 +936,10 @@ function M.AssertLimits(struct)
 end
 
 --- Create a structure of type Limits
--- &lt;p&gt; Limits for given InstanceType and for each of it's role. &lt;br/&gt; Limits contains following &lt;code&gt; &lt;a&gt;StorageTypes,&lt;/a&gt; &lt;/code&gt; &lt;code&gt; &lt;a&gt;InstanceLimits&lt;/a&gt; &lt;/code&gt; and &lt;code&gt; &lt;a&gt;AdditionalLimits&lt;/a&gt; &lt;/code&gt; &lt;/p&gt;
--- @param InstanceLimits [InstanceLimits] &lt;p&gt; Limits for given InstanceType and for each of it's role. &lt;br/&gt; Limits contains following &lt;code&gt; &lt;a&gt;StorageTypes,&lt;/a&gt; &lt;/code&gt; &lt;code&gt; &lt;a&gt;InstanceLimits&lt;/a&gt; &lt;/code&gt; and &lt;code&gt; &lt;a&gt;AdditionalLimits&lt;/a&gt; &lt;/code&gt; &lt;/p&gt;
--- @param StorageTypes [StorageTypeList] &lt;p&gt;StorageType represents the list of storage related types and attributes that are available for given InstanceType. &lt;/p&gt;
--- @param AdditionalLimits [AdditionalLimitList] &lt;p&gt; List of additional limits that are specific to a given InstanceType and for each of it's &lt;code&gt; &lt;a&gt;InstanceRole&lt;/a&gt; &lt;/code&gt; . &lt;/p&gt;
+-- <p> Limits for given InstanceType and for each of it's role. <br/> Limits contains following <code> <a>StorageTypes,</a> </code> <code> <a>InstanceLimits</a> </code> and <code> <a>AdditionalLimits</a> </code> </p>
+-- @param InstanceLimits [InstanceLimits] <p> Limits for given InstanceType and for each of it's role. <br/> Limits contains following <code> <a>StorageTypes,</a> </code> <code> <a>InstanceLimits</a> </code> and <code> <a>AdditionalLimits</a> </code> </p>
+-- @param StorageTypes [StorageTypeList] <p>StorageType represents the list of storage related types and attributes that are available for given InstanceType. </p>
+-- @param AdditionalLimits [AdditionalLimitList] <p> List of additional limits that are specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> . </p>
 function M.Limits(InstanceLimits, StorageTypes, AdditionalLimits, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Limits")
 	local t = { 
@@ -962,7 +962,7 @@ function M.AssertInternalException(struct)
 end
 
 --- Create a structure of type InternalException
--- &lt;p&gt;The request processing has failed because of an unknown error, exception or failure (the failure is internal to the service) . Gives http status code of 500.&lt;/p&gt;
+-- <p>The request processing has failed because of an unknown error, exception or failure (the failure is internal to the service) . Gives http status code of 500.</p>
 function M.InternalException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalException")
 	local t = { 
@@ -988,13 +988,13 @@ function M.AssertElasticsearchClusterConfig(struct)
 end
 
 --- Create a structure of type ElasticsearchClusterConfig
--- &lt;p&gt;Specifies the configuration for the domain cluster, such as the type and number of instances.&lt;/p&gt;
--- @param DedicatedMasterEnabled [Boolean] &lt;p&gt;A boolean value to indicate whether a dedicated master node is enabled. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-dedicatedmasternodes&quot; target=&quot;_blank&quot;&gt;About Dedicated Master Nodes&lt;/a&gt; for more information.&lt;/p&gt;
--- @param InstanceCount [IntegerClass] &lt;p&gt;The number of instances in the specified domain cluster.&lt;/p&gt;
--- @param ZoneAwarenessEnabled [Boolean] &lt;p&gt;A boolean value to indicate whether zone awareness is enabled. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness&quot; target=&quot;_blank&quot;&gt;About Zone Awareness&lt;/a&gt; for more information.&lt;/p&gt;
--- @param DedicatedMasterType [ESPartitionInstanceType] &lt;p&gt;The instance type for a dedicated master node.&lt;/p&gt;
--- @param InstanceType [ESPartitionInstanceType] &lt;p&gt;The instance type for an Elasticsearch cluster.&lt;/p&gt;
--- @param DedicatedMasterCount [IntegerClass] &lt;p&gt;Total number of dedicated master nodes, active and on standby, for the cluster.&lt;/p&gt;
+-- <p>Specifies the configuration for the domain cluster, such as the type and number of instances.</p>
+-- @param DedicatedMasterEnabled [Boolean] <p>A boolean value to indicate whether a dedicated master node is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-dedicatedmasternodes" target="_blank">About Dedicated Master Nodes</a> for more information.</p>
+-- @param InstanceCount [IntegerClass] <p>The number of instances in the specified domain cluster.</p>
+-- @param ZoneAwarenessEnabled [Boolean] <p>A boolean value to indicate whether zone awareness is enabled. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness" target="_blank">About Zone Awareness</a> for more information.</p>
+-- @param DedicatedMasterType [ESPartitionInstanceType] <p>The instance type for a dedicated master node.</p>
+-- @param InstanceType [ESPartitionInstanceType] <p>The instance type for an Elasticsearch cluster.</p>
+-- @param DedicatedMasterCount [IntegerClass] <p>Total number of dedicated master nodes, active and on standby, for the cluster.</p>
 function M.ElasticsearchClusterConfig(DedicatedMasterEnabled, InstanceCount, ZoneAwarenessEnabled, DedicatedMasterType, InstanceType, DedicatedMasterCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchClusterConfig")
 	local t = { 
@@ -1025,11 +1025,11 @@ function M.AssertListElasticsearchInstanceTypesRequest(struct)
 end
 
 --- Create a structure of type ListElasticsearchInstanceTypesRequest
--- &lt;p&gt; Container for the parameters to the &lt;code&gt; &lt;a&gt;ListElasticsearchInstanceTypes&lt;/a&gt; &lt;/code&gt; operation. &lt;/p&gt;
--- @param ElasticsearchVersion [ElasticsearchVersionString] &lt;p&gt;Version of Elasticsearch for which list of supported elasticsearch instance types are needed. &lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;NextToken should be sent in case if earlier API call produced result containing NextToken. It is used for pagination. &lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt; Set this value to limit the number of results returned. Value provided must be greater than 30 else it wont be honored. &lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;DomainName represents the name of the Domain that we are trying to modify. This should be present only if we are querying for list of available Elasticsearch instance types when modifying existing domain. &lt;/p&gt;
+-- <p> Container for the parameters to the <code> <a>ListElasticsearchInstanceTypes</a> </code> operation. </p>
+-- @param ElasticsearchVersion [ElasticsearchVersionString] <p>Version of Elasticsearch for which list of supported elasticsearch instance types are needed. </p>
+-- @param NextToken [NextToken] <p>NextToken should be sent in case if earlier API call produced result containing NextToken. It is used for pagination. </p>
+-- @param MaxResults [MaxResults] <p> Set this value to limit the number of results returned. Value provided must be greater than 30 else it wont be honored. </p>
+-- @param DomainName [DomainName] <p>DomainName represents the name of the Domain that we are trying to modify. This should be present only if we are querying for list of available Elasticsearch instance types when modifying existing domain. </p>
 -- Required parameter: ElasticsearchVersion
 function M.ListElasticsearchInstanceTypesRequest(ElasticsearchVersion, NextToken, MaxResults, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListElasticsearchInstanceTypesRequest")
@@ -1058,9 +1058,9 @@ function M.AssertSnapshotOptionsStatus(struct)
 end
 
 --- Create a structure of type SnapshotOptionsStatus
--- &lt;p&gt;Status of a daily automated snapshot.&lt;/p&gt;
--- @param Status [OptionStatus] &lt;p&gt;Specifies the status of a daily automated snapshot.&lt;/p&gt;
--- @param Options [SnapshotOptions] &lt;p&gt;Specifies the daily snapshot options specified for the Elasticsearch domain.&lt;/p&gt;
+-- <p>Status of a daily automated snapshot.</p>
+-- @param Status [OptionStatus] <p>Specifies the status of a daily automated snapshot.</p>
+-- @param Options [SnapshotOptions] <p>Specifies the daily snapshot options specified for the Elasticsearch domain.</p>
 -- Required parameter: Options
 -- Required parameter: Status
 function M.SnapshotOptionsStatus(Status, Options, ...)
@@ -1084,7 +1084,7 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;An exception for accessing or deleting a resource that does not exist. Gives http status code of 400.&lt;/p&gt;
+-- <p>An exception for accessing or deleting a resource that does not exist. Gives http status code of 400.</p>
 function M.ResourceNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -1104,7 +1104,7 @@ function M.AssertDisabledOperationException(struct)
 end
 
 --- Create a structure of type DisabledOperationException
--- &lt;p&gt;An error occured because the client wanted to access a not supported operation. Gives http status code of 409.&lt;/p&gt;
+-- <p>An error occured because the client wanted to access a not supported operation. Gives http status code of 409.</p>
 function M.DisabledOperationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisabledOperationException")
 	local t = { 
@@ -1125,8 +1125,8 @@ function M.AssertDescribeElasticsearchInstanceTypeLimitsResponse(struct)
 end
 
 --- Create a structure of type DescribeElasticsearchInstanceTypeLimitsResponse
--- &lt;p&gt; Container for the parameters received from &lt;code&gt; &lt;a&gt;DescribeElasticsearchInstanceTypeLimits&lt;/a&gt; &lt;/code&gt; operation. &lt;/p&gt;
--- @param LimitsByRole [LimitsByRole] &lt;p&gt; Container for the parameters received from &lt;code&gt; &lt;a&gt;DescribeElasticsearchInstanceTypeLimits&lt;/a&gt; &lt;/code&gt; operation. &lt;/p&gt;
+-- <p> Container for the parameters received from <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. </p>
+-- @param LimitsByRole [LimitsByRole] <p> Container for the parameters received from <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. </p>
 function M.DescribeElasticsearchInstanceTypeLimitsResponse(LimitsByRole, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchInstanceTypeLimitsResponse")
 	local t = { 
@@ -1147,7 +1147,7 @@ function M.AssertInvalidTypeException(struct)
 end
 
 --- Create a structure of type InvalidTypeException
--- &lt;p&gt;An exception for trying to create or access sub-resource that is either invalid or not supported. Gives http status code of 409.&lt;/p&gt;
+-- <p>An exception for trying to create or access sub-resource that is either invalid or not supported. Gives http status code of 409.</p>
 function M.InvalidTypeException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTypeException")
 	local t = { 
@@ -1175,12 +1175,12 @@ function M.AssertOptionStatus(struct)
 end
 
 --- Create a structure of type OptionStatus
--- &lt;p&gt;Provides the current status of the entity.&lt;/p&gt;
--- @param PendingDeletion [Boolean] &lt;p&gt;Indicates whether the Elasticsearch domain is being deleted.&lt;/p&gt;
--- @param State [OptionState] &lt;p&gt;Provides the &lt;code&gt;OptionState&lt;/code&gt; for the Elasticsearch domain.&lt;/p&gt;
--- @param CreationDate [UpdateTimestamp] &lt;p&gt;Timestamp which tells the creation date for the entity.&lt;/p&gt;
--- @param UpdateVersion [UIntValue] &lt;p&gt;Specifies the latest version for the entity.&lt;/p&gt;
--- @param UpdateDate [UpdateTimestamp] &lt;p&gt;Timestamp which tells the last updated time for the entity.&lt;/p&gt;
+-- <p>Provides the current status of the entity.</p>
+-- @param PendingDeletion [Boolean] <p>Indicates whether the Elasticsearch domain is being deleted.</p>
+-- @param State [OptionState] <p>Provides the <code>OptionState</code> for the Elasticsearch domain.</p>
+-- @param CreationDate [UpdateTimestamp] <p>Timestamp which tells the creation date for the entity.</p>
+-- @param UpdateVersion [UIntValue] <p>Specifies the latest version for the entity.</p>
+-- @param UpdateDate [UpdateTimestamp] <p>Timestamp which tells the last updated time for the entity.</p>
 -- Required parameter: CreationDate
 -- Required parameter: UpdateDate
 -- Required parameter: State
@@ -1217,13 +1217,13 @@ end
 
 --- Create a structure of type CreateElasticsearchDomainRequest
 --  
--- @param ElasticsearchClusterConfig [ElasticsearchClusterConfig] &lt;p&gt;Configuration options for an Elasticsearch domain. Specifies the instance type and number of instances in the domain cluster. &lt;/p&gt;
--- @param ElasticsearchVersion [ElasticsearchVersionString] &lt;p&gt;String of format X.Y to specify version for the Elasticsearch domain eg. &quot;1.5&quot; or &quot;2.3&quot;. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains&quot; target=&quot;_blank&quot;&gt;Creating Elasticsearch Domains&lt;/a&gt; in the &lt;i&gt;Amazon Elasticsearch Service Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by an account within an AWS region. Domain names must start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).&lt;/p&gt;
--- @param EBSOptions [EBSOptions] &lt;p&gt;Options to enable, disable and specify the type and size of EBS storage volumes. &lt;/p&gt;
--- @param SnapshotOptions [SnapshotOptions] &lt;p&gt;Option to set time, in UTC format, of the daily automated snapshot. Default value is 0 hours. &lt;/p&gt;
--- @param AdvancedOptions [AdvancedOptions] &lt;p&gt; Option to allow references to indices in an HTTP request body. Must be &lt;code&gt;false&lt;/code&gt; when configuring access to individual sub-resources. By default, the value is &lt;code&gt;true&lt;/code&gt;. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options&quot; target=&quot;_blank&quot;&gt;Configuration Advanced Options&lt;/a&gt; for more information.&lt;/p&gt;
--- @param AccessPolicies [PolicyDocument] &lt;p&gt; IAM access policy as a JSON-formatted string.&lt;/p&gt;
+-- @param ElasticsearchClusterConfig [ElasticsearchClusterConfig] <p>Configuration options for an Elasticsearch domain. Specifies the instance type and number of instances in the domain cluster. </p>
+-- @param ElasticsearchVersion [ElasticsearchVersionString] <p>String of format X.Y to specify version for the Elasticsearch domain eg. "1.5" or "2.3". For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>.</p>
+-- @param DomainName [DomainName] <p>The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by an account within an AWS region. Domain names must start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
+-- @param EBSOptions [EBSOptions] <p>Options to enable, disable and specify the type and size of EBS storage volumes. </p>
+-- @param SnapshotOptions [SnapshotOptions] <p>Option to set time, in UTC format, of the daily automated snapshot. Default value is 0 hours. </p>
+-- @param AdvancedOptions [AdvancedOptions] <p> Option to allow references to indices in an HTTP request body. Must be <code>false</code> when configuring access to individual sub-resources. By default, the value is <code>true</code>. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">Configuration Advanced Options</a> for more information.</p>
+-- @param AccessPolicies [PolicyDocument] <p> IAM access policy as a JSON-formatted string.</p>
 -- Required parameter: DomainName
 function M.CreateElasticsearchDomainRequest(ElasticsearchClusterConfig, ElasticsearchVersion, DomainName, EBSOptions, SnapshotOptions, AdvancedOptions, AccessPolicies, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateElasticsearchDomainRequest")
@@ -1253,7 +1253,7 @@ end
 
 --- Create a structure of type DomainInfo
 --  
--- @param DomainName [DomainName] &lt;p&gt; Specifies the &lt;code&gt;DomainName&lt;/code&gt;.&lt;/p&gt;
+-- @param DomainName [DomainName] <p> Specifies the <code>DomainName</code>.</p>
 function M.DomainInfo(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainInfo")
 	local t = { 
@@ -1276,8 +1276,8 @@ function M.AssertDeleteElasticsearchDomainRequest(struct)
 end
 
 --- Create a structure of type DeleteElasticsearchDomainRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;DeleteElasticsearchDomain&lt;/a&gt;&lt;/code&gt; operation. Specifies the name of the Elasticsearch domain that you want to delete.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the Elasticsearch domain that you want to permanently delete.&lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>DeleteElasticsearchDomain</a></code> operation. Specifies the name of the Elasticsearch domain that you want to delete.</p>
+-- @param DomainName [DomainName] <p>The name of the Elasticsearch domain that you want to permanently delete.</p>
 -- Required parameter: DomainName
 function M.DeleteElasticsearchDomainRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteElasticsearchDomainRequest")
@@ -1303,9 +1303,9 @@ function M.AssertAddTagsRequest(struct)
 end
 
 --- Create a structure of type AddTagsRequest
--- &lt;p&gt;Container for the parameters to the &lt;code&gt;&lt;a&gt;AddTags&lt;/a&gt;&lt;/code&gt; operation. Specify the tags that you want to attach to the Elasticsearch domain.&lt;/p&gt;
--- @param ARN [ARN] &lt;p&gt; Specify the &lt;code&gt;ARN&lt;/code&gt; for which you want to add the tags.&lt;/p&gt;
--- @param TagList [TagList] &lt;p&gt; List of &lt;code&gt;Tag&lt;/code&gt; that need to be added for the Elasticsearch domain. &lt;/p&gt;
+-- <p>Container for the parameters to the <code><a>AddTags</a></code> operation. Specify the tags that you want to attach to the Elasticsearch domain.</p>
+-- @param ARN [ARN] <p> Specify the <code>ARN</code> for which you want to add the tags.</p>
+-- @param TagList [TagList] <p> List of <code>Tag</code> that need to be added for the Elasticsearch domain. </p>
 -- Required parameter: ARN
 -- Required parameter: TagList
 function M.AddTagsRequest(ARN, TagList, ...)
@@ -1330,8 +1330,8 @@ function M.AssertCreateElasticsearchDomainResponse(struct)
 end
 
 --- Create a structure of type CreateElasticsearchDomainResponse
--- &lt;p&gt;The result of a &lt;code&gt;CreateElasticsearchDomain&lt;/code&gt; operation. Contains the status of the newly created Elasticsearch domain.&lt;/p&gt;
--- @param DomainStatus [ElasticsearchDomainStatus] &lt;p&gt;The status of the newly created Elasticsearch domain. &lt;/p&gt;
+-- <p>The result of a <code>CreateElasticsearchDomain</code> operation. Contains the status of the newly created Elasticsearch domain.</p>
+-- @param DomainStatus [ElasticsearchDomainStatus] <p>The status of the newly created Elasticsearch domain. </p>
 function M.CreateElasticsearchDomainResponse(DomainStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateElasticsearchDomainResponse")
 	local t = { 
@@ -1353,8 +1353,8 @@ function M.AssertListTagsResponse(struct)
 end
 
 --- Create a structure of type ListTagsResponse
--- &lt;p&gt;The result of a &lt;code&gt;ListTags&lt;/code&gt; operation. Contains tags for all requested Elasticsearch domains.&lt;/p&gt;
--- @param TagList [TagList] &lt;p&gt; List of &lt;code&gt;Tag&lt;/code&gt; for the requested Elasticsearch domain.&lt;/p&gt;
+-- <p>The result of a <code>ListTags</code> operation. Contains tags for all requested Elasticsearch domains.</p>
+-- @param TagList [TagList] <p> List of <code>Tag</code> for the requested Elasticsearch domain.</p>
 function M.ListTagsResponse(TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsResponse")
 	local t = { 
@@ -1377,8 +1377,8 @@ function M.AssertDescribeElasticsearchDomainConfigRequest(struct)
 end
 
 --- Create a structure of type DescribeElasticsearchDomainConfigRequest
--- &lt;p&gt; Container for the parameters to the &lt;code&gt;DescribeElasticsearchDomainConfig&lt;/code&gt; operation. Specifies the domain name for which you want configuration information.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The Elasticsearch domain that you want to get information about.&lt;/p&gt;
+-- <p> Container for the parameters to the <code>DescribeElasticsearchDomainConfig</code> operation. Specifies the domain name for which you want configuration information.</p>
+-- @param DomainName [DomainName] <p>The Elasticsearch domain that you want to get information about.</p>
 -- Required parameter: DomainName
 function M.DescribeElasticsearchDomainConfigRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticsearchDomainConfigRequest")
@@ -1402,9 +1402,9 @@ function M.AssertInstanceCountLimits(struct)
 end
 
 --- Create a structure of type InstanceCountLimits
--- &lt;p&gt; InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. &lt;/p&gt;
--- @param MaximumInstanceCount [MaximumInstanceCount] &lt;p&gt; InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. &lt;/p&gt;
--- @param MinimumInstanceCount [MinimumInstanceCount] &lt;p&gt; InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. &lt;/p&gt;
+-- <p> InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. </p>
+-- @param MaximumInstanceCount [MaximumInstanceCount] <p> InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. </p>
+-- @param MinimumInstanceCount [MinimumInstanceCount] <p> InstanceCountLimits represents the limits on number of instances that be created in Amazon Elasticsearch for given InstanceType. </p>
 function M.InstanceCountLimits(MaximumInstanceCount, MinimumInstanceCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceCountLimits")
 	local t = { 
@@ -1428,8 +1428,8 @@ function M.AssertUpdateElasticsearchDomainConfigResponse(struct)
 end
 
 --- Create a structure of type UpdateElasticsearchDomainConfigResponse
--- &lt;p&gt;The result of an &lt;code&gt;UpdateElasticsearchDomain&lt;/code&gt; request. Contains the status of the Elasticsearch domain being updated.&lt;/p&gt;
--- @param DomainConfig [ElasticsearchDomainConfig] &lt;p&gt;The status of the updated Elasticsearch domain. &lt;/p&gt;
+-- <p>The result of an <code>UpdateElasticsearchDomain</code> request. Contains the status of the Elasticsearch domain being updated.</p>
+-- @param DomainConfig [ElasticsearchDomainConfig] <p>The status of the updated Elasticsearch domain. </p>
 -- Required parameter: DomainConfig
 function M.UpdateElasticsearchDomainConfigResponse(DomainConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateElasticsearchDomainConfigResponse")
@@ -1445,7 +1445,7 @@ function M.AssertOptionState(str)
 	assert(type(str) == "string", "Expected OptionState to be of type 'string'")
 end
 
--- &lt;p&gt;The state of a requested change. One of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Processing: The request change is still in-process.&lt;/li&gt; &lt;li&gt;Active: The request change is processed and deployed to the Elasticsearch domain.&lt;/li&gt; &lt;/ul&gt;
+-- <p>The state of a requested change. One of the following:</p> <ul> <li>Processing: The request change is still in-process.</li> <li>Active: The request change is processed and deployed to the Elasticsearch domain.</li> </ul>
 function M.OptionState(str)
 	M.AssertOptionState(str)
 	return str
@@ -1456,7 +1456,7 @@ function M.AssertVolumeType(str)
 	assert(type(str) == "string", "Expected VolumeType to be of type 'string'")
 end
 
--- &lt;p&gt; The type of EBS volume, standard, gp2, or io1. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs&quot; target=&quot;_blank&quot;&gt;Configuring EBS-based Storage&lt;/a&gt;for more information.&lt;/p&gt;
+-- <p> The type of EBS volume, standard, gp2, or io1. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs" target="_blank">Configuring EBS-based Storage</a>for more information.</p>
 function M.VolumeType(str)
 	M.AssertVolumeType(str)
 	return str
@@ -1478,7 +1478,7 @@ function M.AssertPolicyDocument(str)
 	assert(type(str) == "string", "Expected PolicyDocument to be of type 'string'")
 end
 
--- &lt;p&gt;Access policy rules for an Elasticsearch domain service endpoints. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies&quot; target=&quot;_blank&quot;&gt;Configuring Access Policies&lt;/a&gt; in the &lt;i&gt;Amazon Elasticsearch Service Developer Guide&lt;/i&gt;. The maximum size of a policy document is 100 KB.&lt;/p&gt;
+-- <p>Access policy rules for an Elasticsearch domain service endpoints. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-access-policies" target="_blank">Configuring Access Policies</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>. The maximum size of a policy document is 100 KB.</p>
 function M.PolicyDocument(str)
 	M.AssertPolicyDocument(str)
 	return str
@@ -1502,7 +1502,7 @@ function M.AssertDomainId(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;Unique identifier for an Elasticsearch domain.&lt;/p&gt;
+-- <p>Unique identifier for an Elasticsearch domain.</p>
 function M.DomainId(str)
 	M.AssertDomainId(str)
 	return str
@@ -1516,7 +1516,7 @@ function M.AssertDomainName(str)
 	assert(str:match("[a-z][a-z0-9%-]+"), "Expected string to match pattern '[a-z][a-z0-9%-]+'")
 end
 
--- &lt;p&gt;The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).&lt;/p&gt;
+-- <p>The name of an Elasticsearch domain. Domain names are unique across the domains owned by an account within an AWS region. Domain names start with a letter or number and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).</p>
 function M.DomainName(str)
 	M.AssertDomainName(str)
 	return str
@@ -1550,7 +1550,7 @@ function M.AssertTagValue(str)
 	assert(#str <= 256, "Expected string to be max 256 characters")
 end
 
--- &lt;p&gt;A string of length from 0 to 256 characters that specifies the value for a Tag. Tag values can be null and do not have to be unique in a tag set.&lt;/p&gt;
+-- <p>A string of length from 0 to 256 characters that specifies the value for a Tag. Tag values can be null and do not have to be unique in a tag set.</p>
 function M.TagValue(str)
 	M.AssertTagValue(str)
 	return str
@@ -1594,7 +1594,7 @@ function M.AssertServiceUrl(str)
 	assert(type(str) == "string", "Expected ServiceUrl to be of type 'string'")
 end
 
--- &lt;p&gt;The endpoint to which service requests are submitted. For example, &lt;code&gt;search-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com&lt;/code&gt; or &lt;code&gt;doc-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com&lt;/code&gt;.&lt;/p&gt;
+-- <p>The endpoint to which service requests are submitted. For example, <code>search-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code> or <code>doc-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code>.</p>
 function M.ServiceUrl(str)
 	M.AssertServiceUrl(str)
 	return str
@@ -1605,7 +1605,7 @@ function M.AssertStorageSubTypeName(str)
 	assert(type(str) == "string", "Expected StorageSubTypeName to be of type 'string'")
 end
 
--- &lt;p&gt; SubType of the given storage type. List of available sub-storage options: For &quot;instance&quot; storageType we wont have any storageSubType, in case of &quot;ebs&quot; storageType we will have following valid storageSubTypes &lt;ol&gt; &lt;li&gt;standard&lt;/li&gt; &lt;li&gt;gp2&lt;/li&gt; &lt;li&gt;io1&lt;/li&gt; &lt;/ol&gt; Refer &lt;code&gt;&lt;a&gt;VolumeType&lt;/a&gt;&lt;/code&gt; for more information regarding above EBS storage options. &lt;/p&gt;
+-- <p> SubType of the given storage type. List of available sub-storage options: For "instance" storageType we wont have any storageSubType, in case of "ebs" storageType we will have following valid storageSubTypes <ol> <li>standard</li> <li>gp2</li> <li>io1</li> </ol> Refer <code><a>VolumeType</a></code> for more information regarding above EBS storage options. </p>
 function M.StorageSubTypeName(str)
 	M.AssertStorageSubTypeName(str)
 	return str
@@ -1616,7 +1616,7 @@ function M.AssertStorageTypeName(str)
 	assert(type(str) == "string", "Expected StorageTypeName to be of type 'string'")
 end
 
--- &lt;p&gt; Type of the storage. List of available storage options: &lt;ol&gt; &lt;li&gt;instance&lt;/li&gt; Inbuilt storage available for the given Instance &lt;li&gt;ebs&lt;/li&gt; Elastic block storage that would be attached to the given Instance &lt;/ol&gt; &lt;/p&gt;
+-- <p> Type of the storage. List of available storage options: <ol> <li>instance</li> Inbuilt storage available for the given Instance <li>ebs</li> Elastic block storage that would be attached to the given Instance </ol> </p>
 function M.StorageTypeName(str)
 	M.AssertStorageTypeName(str)
 	return str
@@ -1627,7 +1627,7 @@ function M.AssertNextToken(str)
 	assert(type(str) == "string", "Expected NextToken to be of type 'string'")
 end
 
--- &lt;p&gt; Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results. &lt;/p&gt;
+-- <p> Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results. </p>
 function M.NextToken(str)
 	M.AssertNextToken(str)
 	return str
@@ -1640,7 +1640,7 @@ function M.AssertTagKey(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;A string of length from 1 to 128 characters that specifies the key for a Tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.&lt;/p&gt;
+-- <p>A string of length from 1 to 128 characters that specifies the key for a Tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.</p>
 function M.TagKey(str)
 	M.AssertTagKey(str)
 	return str
@@ -1651,7 +1651,7 @@ function M.AssertARN(str)
 	assert(type(str) == "string", "Expected ARN to be of type 'string'")
 end
 
--- &lt;p&gt;The Amazon Resource Name (ARN) of the Elasticsearch domain. See &lt;a href=&quot;http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html&quot; target=&quot;_blank&quot;&gt;Identifiers for IAM Entities&lt;/a&gt; in &lt;i&gt;Using AWS Identity and Access Management&lt;/i&gt; for more information.&lt;/p&gt;
+-- <p>The Amazon Resource Name (ARN) of the Elasticsearch domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.</p>
 function M.ARN(str)
 	M.AssertARN(str)
 	return str
@@ -1769,7 +1769,7 @@ function M.AssertElasticsearchVersionList(list)
 	end
 end
 
--- &lt;p&gt;List of supported elastic search versions. &lt;/p&gt;
+-- <p>List of supported elastic search versions. </p>
 -- List of ElasticsearchVersionString objects
 function M.ElasticsearchVersionList(list)
 	M.AssertElasticsearchVersionList(list)
@@ -1784,7 +1784,7 @@ function M.AssertDomainInfoList(list)
 	end
 end
 
--- &lt;p&gt; Contains the list of Elasticsearch domain information.&lt;/p&gt;
+-- <p> Contains the list of Elasticsearch domain information.</p>
 -- List of DomainInfo objects
 function M.DomainInfoList(list)
 	M.AssertDomainInfoList(list)
@@ -1814,7 +1814,7 @@ function M.AssertElasticsearchDomainStatusList(list)
 	end
 end
 
--- &lt;p&gt;A list that contains the status of each requested Elasticsearch domain.&lt;/p&gt;
+-- <p>A list that contains the status of each requested Elasticsearch domain.</p>
 -- List of ElasticsearchDomainStatus objects
 function M.ElasticsearchDomainStatusList(list)
 	M.AssertElasticsearchDomainStatusList(list)
@@ -1844,7 +1844,7 @@ function M.AssertDomainNameList(list)
 	end
 end
 
--- &lt;p&gt;A list of Elasticsearch domain names.&lt;/p&gt;
+-- <p>A list of Elasticsearch domain names.</p>
 -- List of DomainName objects
 function M.DomainNameList(list)
 	M.AssertDomainNameList(list)
@@ -1874,7 +1874,7 @@ function M.AssertElasticsearchInstanceTypeList(list)
 	end
 end
 
--- &lt;p&gt; List of instance types supported by Amazon Elasticsearch service. &lt;/p&gt;
+-- <p> List of instance types supported by Amazon Elasticsearch service. </p>
 -- List of ESPartitionInstanceType objects
 function M.ElasticsearchInstanceTypeList(list)
 	M.AssertElasticsearchInstanceTypeList(list)
@@ -1919,7 +1919,7 @@ function M.AssertTagList(list)
 	end
 end
 
--- &lt;p&gt;A list of &lt;code&gt;Tag&lt;/code&gt; &lt;/p&gt;
+-- <p>A list of <code>Tag</code> </p>
 -- List of Tag objects
 function M.TagList(list)
 	M.AssertTagList(list)

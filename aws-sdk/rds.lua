@@ -29,7 +29,7 @@ function M.AssertCertificateNotFoundFault(struct)
 end
 
 --- Create a structure of type CertificateNotFoundFault
--- &lt;p&gt; &lt;i&gt;CertificateIdentifier&lt;/i&gt; does not refer to an existing certificate. &lt;/p&gt;
+-- <p> <i>CertificateIdentifier</i> does not refer to an existing certificate. </p>
 function M.CertificateNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CertificateNotFoundFault")
 	local t = { 
@@ -49,7 +49,7 @@ function M.AssertDBSubnetGroupNotFoundFault(struct)
 end
 
 --- Create a structure of type DBSubnetGroupNotFoundFault
--- &lt;p&gt; &lt;i&gt;DBSubnetGroupName&lt;/i&gt; does not refer to an existing DB subnet group. &lt;/p&gt;
+-- <p> <i>DBSubnetGroupName</i> does not refer to an existing DB subnet group. </p>
 function M.DBSubnetGroupNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSubnetGroupNotFoundFault")
 	local t = { 
@@ -77,10 +77,10 @@ end
 
 --- Create a structure of type CopyDBClusterParameterGroupMessage
 --  
--- @param TargetDBClusterParameterGroupIdentifier [String] &lt;p&gt;The identifier for the copied DB cluster parameter group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cannot be null, empty, or blank&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-cluster-param-group1&lt;/code&gt; &lt;/p&gt;
+-- @param TargetDBClusterParameterGroupIdentifier [String] <p>The identifier for the copied DB cluster parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Cannot be null, empty, or blank</p> </li> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-cluster-param-group1</code> </p>
 -- @param Tags [TagList]  
--- @param SourceDBClusterParameterGroupIdentifier [String] &lt;p&gt;The identifier or Amazon Resource Name (ARN) for the source DB cluster parameter group. For information about creating an ARN, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing&quot;&gt; Constructing an RDS Amazon Resource Name (ARN)&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must specify a valid DB cluster parameter group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source DB cluster parameter group is in the same region as the copy, specify a valid DB parameter group identifier, for example &lt;code&gt;my-db-cluster-param-group&lt;/code&gt;, or a valid ARN.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source DB parameter group is in a different region than the copy, specify a valid DB cluster parameter group ARN, for example &lt;code&gt;arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param TargetDBClusterParameterGroupDescription [String] &lt;p&gt;A description for the copied DB cluster parameter group.&lt;/p&gt;
+-- @param SourceDBClusterParameterGroupIdentifier [String] <p>The identifier or Amazon Resource Name (ARN) for the source DB cluster parameter group. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"> Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p> <ul> <li> <p>Must specify a valid DB cluster parameter group.</p> </li> <li> <p>If the source DB cluster parameter group is in the same region as the copy, specify a valid DB parameter group identifier, for example <code>my-db-cluster-param-group</code>, or a valid ARN.</p> </li> <li> <p>If the source DB parameter group is in a different region than the copy, specify a valid DB cluster parameter group ARN, for example <code>arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1</code>.</p> </li> </ul>
+-- @param TargetDBClusterParameterGroupDescription [String] <p>A description for the copied DB cluster parameter group.</p>
 -- Required parameter: SourceDBClusterParameterGroupIdentifier
 -- Required parameter: TargetDBClusterParameterGroupIdentifier
 -- Required parameter: TargetDBClusterParameterGroupDescription
@@ -111,9 +111,9 @@ function M.AssertAddSourceIdentifierToSubscriptionMessage(struct)
 end
 
 --- Create a structure of type AddSourceIdentifierToSubscriptionMessage
--- &lt;p/&gt;
--- @param SourceIdentifier [String] &lt;p&gt;The identifier of the event source to be added. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If the source type is a DB instance, then a &lt;code&gt;DBInstanceIdentifier&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is a DB security group, a &lt;code&gt;DBSecurityGroupName&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is a DB parameter group, a &lt;code&gt;DBParameterGroupName&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is a DB snapshot, a &lt;code&gt;DBSnapshotIdentifier&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the RDS event notification subscription you want to add a source identifier to.&lt;/p&gt;
+-- <p/>
+-- @param SourceIdentifier [String] <p>The identifier of the event source to be added. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.</p> <p>Constraints:</p> <ul> <li> <p>If the source type is a DB instance, then a <code>DBInstanceIdentifier</code> must be supplied.</p> </li> <li> <p>If the source type is a DB security group, a <code>DBSecurityGroupName</code> must be supplied.</p> </li> <li> <p>If the source type is a DB parameter group, a <code>DBParameterGroupName</code> must be supplied.</p> </li> <li> <p>If the source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must be supplied.</p> </li> </ul>
+-- @param SubscriptionName [String] <p>The name of the RDS event notification subscription you want to add a source identifier to.</p>
 -- Required parameter: SubscriptionName
 -- Required parameter: SourceIdentifier
 function M.AddSourceIdentifierToSubscriptionMessage(SourceIdentifier, SubscriptionName, ...)
@@ -137,7 +137,7 @@ function M.AssertSubscriptionAlreadyExistFault(struct)
 end
 
 --- Create a structure of type SubscriptionAlreadyExistFault
--- &lt;p&gt;The supplied subscription name already exists.&lt;/p&gt;
+-- <p>The supplied subscription name already exists.</p>
 function M.SubscriptionAlreadyExistFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionAlreadyExistFault")
 	local t = { 
@@ -157,7 +157,7 @@ function M.AssertDBSubnetGroupQuotaExceededFault(struct)
 end
 
 --- Create a structure of type DBSubnetGroupQuotaExceededFault
--- &lt;p&gt;Request would result in user exceeding the allowed number of DB subnet groups.&lt;/p&gt;
+-- <p>Request would result in user exceeding the allowed number of DB subnet groups.</p>
 function M.DBSubnetGroupQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSubnetGroupQuotaExceededFault")
 	local t = { 
@@ -179,9 +179,9 @@ function M.AssertDBClusterRole(struct)
 end
 
 --- Create a structure of type DBClusterRole
--- &lt;p&gt;Describes an AWS Identity and Access Management (IAM) role that is associated with a DB cluster.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;Describes the state of association between the IAM role and the DB cluster. The Status property returns one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ACTIVE&lt;/code&gt; - the IAM role ARN is associated with the DB cluster and can be used to access other AWS services on your behalf.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PENDING&lt;/code&gt; - the IAM role ARN is being associated with the DB cluster.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;INVALID&lt;/code&gt; - the IAM role ARN is associated with the DB cluster, but the DB cluster is unable to assume the IAM role in order to access other AWS services on your behalf.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param RoleArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role that is associated with the DB cluster.&lt;/p&gt;
+-- <p>Describes an AWS Identity and Access Management (IAM) role that is associated with a DB cluster.</p>
+-- @param Status [String] <p>Describes the state of association between the IAM role and the DB cluster. The Status property returns one of the following values:</p> <ul> <li> <p> <code>ACTIVE</code> - the IAM role ARN is associated with the DB cluster and can be used to access other AWS services on your behalf.</p> </li> <li> <p> <code>PENDING</code> - the IAM role ARN is being associated with the DB cluster.</p> </li> <li> <p> <code>INVALID</code> - the IAM role ARN is associated with the DB cluster, but the DB cluster is unable to assume the IAM role in order to access other AWS services on your behalf.</p> </li> </ul>
+-- @param RoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role that is associated with the DB cluster.</p>
 function M.DBClusterRole(Status, RoleArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterRole")
 	local t = { 
@@ -208,11 +208,11 @@ function M.AssertModifyOptionGroupMessage(struct)
 end
 
 --- Create a structure of type ModifyOptionGroupMessage
--- &lt;p/&gt;
--- @param OptionsToRemove [OptionNamesList] &lt;p&gt;Options in this list are removed from the option group.&lt;/p&gt;
--- @param OptionsToInclude [OptionConfigurationList] &lt;p&gt;Options in this list are added to the option group or, if already present, the specified configuration is used to update the existing configuration.&lt;/p&gt;
--- @param ApplyImmediately [Boolean] &lt;p&gt;Indicates whether the changes should be applied immediately, or during the next maintenance window for each instance associated with the option group.&lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;The name of the option group to be modified.&lt;/p&gt; &lt;p&gt;Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance&lt;/p&gt;
+-- <p/>
+-- @param OptionsToRemove [OptionNamesList] <p>Options in this list are removed from the option group.</p>
+-- @param OptionsToInclude [OptionConfigurationList] <p>Options in this list are added to the option group or, if already present, the specified configuration is used to update the existing configuration.</p>
+-- @param ApplyImmediately [Boolean] <p>Indicates whether the changes should be applied immediately, or during the next maintenance window for each instance associated with the option group.</p>
+-- @param OptionGroupName [String] <p>The name of the option group to be modified.</p> <p>Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance</p>
 -- Required parameter: OptionGroupName
 function M.ModifyOptionGroupMessage(OptionsToRemove, OptionsToInclude, ApplyImmediately, OptionGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyOptionGroupMessage")
@@ -243,12 +243,12 @@ function M.AssertModifyEventSubscriptionMessage(struct)
 end
 
 --- Create a structure of type ModifyEventSubscriptionMessage
--- &lt;p/&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt; A list of event categories for a SourceType that you want to subscribe to. You can see a list of the categories for a given SourceType in the &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html&quot;&gt;Events&lt;/a&gt; topic in the Amazon RDS User Guide or by using the &lt;b&gt;DescribeEventCategories&lt;/b&gt; action. &lt;/p&gt;
--- @param Enabled [BooleanOptional] &lt;p&gt; A Boolean value; set to &lt;b&gt;true&lt;/b&gt; to activate the subscription. &lt;/p&gt;
--- @param SourceType [String] &lt;p&gt;The type of source that will be generating the events. For example, if you want to be notified of events generated by a DB instance, you would set this parameter to db-instance. if this value is not specified, all events are returned.&lt;/p&gt; &lt;p&gt;Valid values: db-instance | db-parameter-group | db-security-group | db-snapshot&lt;/p&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the RDS event notification subscription.&lt;/p&gt;
--- @param SnsTopicArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.&lt;/p&gt;
+-- <p/>
+-- @param EventCategories [EventCategoriesList] <p> A list of event categories for a SourceType that you want to subscribe to. You can see a list of the categories for a given SourceType in the <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the Amazon RDS User Guide or by using the <b>DescribeEventCategories</b> action. </p>
+-- @param Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription. </p>
+-- @param SourceType [String] <p>The type of source that will be generating the events. For example, if you want to be notified of events generated by a DB instance, you would set this parameter to db-instance. if this value is not specified, all events are returned.</p> <p>Valid values: db-instance | db-parameter-group | db-security-group | db-snapshot</p>
+-- @param SubscriptionName [String] <p>The name of the RDS event notification subscription.</p>
+-- @param SnsTopicArn [String] <p>The Amazon Resource Name (ARN) of the SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.</p>
 -- Required parameter: SubscriptionName
 function M.ModifyEventSubscriptionMessage(EventCategories, Enabled, SourceType, SubscriptionName, SnsTopicArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEventSubscriptionMessage")
@@ -281,11 +281,11 @@ function M.AssertCopyOptionGroupMessage(struct)
 end
 
 --- Create a structure of type CopyOptionGroupMessage
--- &lt;p/&gt;
--- @param TargetOptionGroupDescription [String] &lt;p&gt;The description for the copied option group.&lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
--- @param TargetOptionGroupIdentifier [String] &lt;p&gt;The identifier for the copied option group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cannot be null, empty, or blank&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-option-group&lt;/code&gt; &lt;/p&gt;
--- @param SourceOptionGroupIdentifier [String] &lt;p&gt;The identifier or ARN for the source option group. For information about creating an ARN, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing&quot;&gt; Constructing an RDS Amazon Resource Name (ARN)&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must specify a valid option group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source option group is in the same region as the copy, specify a valid option group identifier, for example &lt;code&gt;my-option-group&lt;/code&gt;, or a valid ARN.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source option group is in a different region than the copy, specify a valid option group ARN, for example &lt;code&gt;arn:aws:rds:us-west-2:123456789012:og:special-options&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param TargetOptionGroupDescription [String] <p>The description for the copied option group.</p>
+-- @param Tags [TagList] <p/>
+-- @param TargetOptionGroupIdentifier [String] <p>The identifier for the copied option group.</p> <p>Constraints:</p> <ul> <li> <p>Cannot be null, empty, or blank</p> </li> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-option-group</code> </p>
+-- @param SourceOptionGroupIdentifier [String] <p>The identifier or ARN for the source option group. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"> Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p> <ul> <li> <p>Must specify a valid option group.</p> </li> <li> <p>If the source option group is in the same region as the copy, specify a valid option group identifier, for example <code>my-option-group</code>, or a valid ARN.</p> </li> <li> <p>If the source option group is in a different region than the copy, specify a valid option group ARN, for example <code>arn:aws:rds:us-west-2:123456789012:og:special-options</code>.</p> </li> </ul>
 -- Required parameter: SourceOptionGroupIdentifier
 -- Required parameter: TargetOptionGroupIdentifier
 -- Required parameter: TargetOptionGroupDescription
@@ -314,9 +314,9 @@ function M.AssertDBSecurityGroupMessage(struct)
 end
 
 --- Create a structure of type DBSecurityGroupMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeDBSecurityGroups&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBSecurityGroups [DBSecurityGroups] &lt;p&gt; A list of &lt;a&gt;DBSecurityGroup&lt;/a&gt; instances. &lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeDBSecurityGroups</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBSecurityGroups [DBSecurityGroups] <p> A list of <a>DBSecurityGroup</a> instances. </p>
 function M.DBSecurityGroupMessage(Marker, DBSecurityGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSecurityGroupMessage")
 	local t = { 
@@ -344,13 +344,13 @@ function M.AssertDBSubnetGroup(struct)
 end
 
 --- Create a structure of type DBSubnetGroup
--- &lt;p&gt;Contains the result of a successful invocation of the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateDBSubnetGroup&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ModifyDBSubnetGroup&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeDBSubnetGroups&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteDBSubnetGroup&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This data type is used as a response element in the &lt;a&gt;DescribeDBSubnetGroups&lt;/a&gt; action.&lt;/p&gt;
--- @param Subnets [SubnetList] &lt;p&gt; Contains a list of &lt;a&gt;Subnet&lt;/a&gt; elements. &lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;Provides the VpcId of the DB subnet group.&lt;/p&gt;
--- @param DBSubnetGroupDescription [String] &lt;p&gt;Provides the description of the DB subnet group.&lt;/p&gt;
--- @param SubnetGroupStatus [String] &lt;p&gt;Provides the status of the DB subnet group.&lt;/p&gt;
--- @param DBSubnetGroupArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the DB subnet group.&lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The name of the DB subnet group.&lt;/p&gt;
+-- <p>Contains the result of a successful invocation of the following actions:</p> <ul> <li> <p> <a>CreateDBSubnetGroup</a> </p> </li> <li> <p> <a>ModifyDBSubnetGroup</a> </p> </li> <li> <p> <a>DescribeDBSubnetGroups</a> </p> </li> <li> <p> <a>DeleteDBSubnetGroup</a> </p> </li> </ul> <p>This data type is used as a response element in the <a>DescribeDBSubnetGroups</a> action.</p>
+-- @param Subnets [SubnetList] <p> Contains a list of <a>Subnet</a> elements. </p>
+-- @param VpcId [String] <p>Provides the VpcId of the DB subnet group.</p>
+-- @param DBSubnetGroupDescription [String] <p>Provides the description of the DB subnet group.</p>
+-- @param SubnetGroupStatus [String] <p>Provides the status of the DB subnet group.</p>
+-- @param DBSubnetGroupArn [String] <p>The Amazon Resource Name (ARN) for the DB subnet group.</p>
+-- @param DBSubnetGroupName [String] <p>The name of the DB subnet group.</p>
 function M.DBSubnetGroup(Subnets, VpcId, DBSubnetGroupDescription, SubnetGroupStatus, DBSubnetGroupArn, DBSubnetGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSubnetGroup")
 	local t = { 
@@ -376,7 +376,7 @@ function M.AssertDBSubnetGroupAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type DBSubnetGroupAlreadyExistsFault
--- &lt;p&gt; &lt;i&gt;DBSubnetGroupName&lt;/i&gt; is already used by an existing DB subnet group. &lt;/p&gt;
+-- <p> <i>DBSubnetGroupName</i> is already used by an existing DB subnet group. </p>
 function M.DBSubnetGroupAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSubnetGroupAlreadyExistsFault")
 	local t = { 
@@ -400,10 +400,10 @@ function M.AssertDeleteDBInstanceMessage(struct)
 end
 
 --- Create a structure of type DeleteDBInstanceMessage
--- &lt;p/&gt;
--- @param FinalDBSnapshotIdentifier [String] &lt;p&gt; The DBSnapshotIdentifier of the new DBSnapshot created when SkipFinalSnapshot is set to &lt;code&gt;false&lt;/code&gt;. &lt;/p&gt; &lt;note&gt; &lt;p&gt;Specifying this parameter and also setting the SkipFinalShapshot parameter to true results in an error.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be specified when deleting a Read Replica.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SkipFinalSnapshot [Boolean] &lt;p&gt; Determines whether a final DB snapshot is created before the DB instance is deleted. If &lt;code&gt;true&lt;/code&gt; is specified, no DBSnapshot is created. If &lt;code&gt;false&lt;/code&gt; is specified, a DB snapshot is created before the DB instance is deleted. &lt;/p&gt; &lt;p&gt;Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or 'incompatible-network', it can only be deleted when the SkipFinalSnapshot parameter is set to &quot;true&quot;.&lt;/p&gt; &lt;p&gt;Specify &lt;code&gt;true&lt;/code&gt; when deleting a Read Replica.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The FinalDBSnapshotIdentifier parameter must be specified if SkipFinalSnapshot is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The DB instance identifier for the DB instance to be deleted. This parameter isn't case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param FinalDBSnapshotIdentifier [String] <p> The DBSnapshotIdentifier of the new DBSnapshot created when SkipFinalSnapshot is set to <code>false</code>. </p> <note> <p>Specifying this parameter and also setting the SkipFinalShapshot parameter to true results in an error.</p> </note> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> <li> <p>Cannot be specified when deleting a Read Replica.</p> </li> </ul>
+-- @param SkipFinalSnapshot [Boolean] <p> Determines whether a final DB snapshot is created before the DB instance is deleted. If <code>true</code> is specified, no DBSnapshot is created. If <code>false</code> is specified, a DB snapshot is created before the DB instance is deleted. </p> <p>Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or 'incompatible-network', it can only be deleted when the SkipFinalSnapshot parameter is set to "true".</p> <p>Specify <code>true</code> when deleting a Read Replica.</p> <note> <p>The FinalDBSnapshotIdentifier parameter must be specified if SkipFinalSnapshot is <code>false</code>.</p> </note> <p>Default: <code>false</code> </p>
+-- @param DBInstanceIdentifier [String] <p>The DB instance identifier for the DB instance to be deleted. This parameter isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- Required parameter: DBInstanceIdentifier
 function M.DeleteDBInstanceMessage(FinalDBSnapshotIdentifier, SkipFinalSnapshot, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDBInstanceMessage")
@@ -427,7 +427,7 @@ function M.AssertDBSubnetGroupNotAllowedFault(struct)
 end
 
 --- Create a structure of type DBSubnetGroupNotAllowedFault
--- &lt;p&gt;Indicates that the DBSubnetGroup should not be specified while creating read replicas that lie in the same region as the source instance.&lt;/p&gt;
+-- <p>Indicates that the DBSubnetGroup should not be specified while creating read replicas that lie in the same region as the source instance.</p>
 function M.DBSubnetGroupNotAllowedFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSubnetGroupNotAllowedFault")
 	local t = { 
@@ -451,11 +451,11 @@ function M.AssertDescribeDBClusterParameterGroupsMessage(struct)
 end
 
 --- Create a structure of type DescribeDBClusterParameterGroupsMessage
--- &lt;p/&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt;The name of a specific DB cluster parameter group to return details for.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribeDBClusterParameterGroups&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
+-- <p/>
+-- @param DBClusterParameterGroupName [String] <p>The name of a specific DB cluster parameter group to return details for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribeDBClusterParameterGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
 function M.DescribeDBClusterParameterGroupsMessage(DBClusterParameterGroupName, Marker, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBClusterParameterGroupsMessage")
 	local t = { 
@@ -481,9 +481,9 @@ function M.AssertDBClusterSnapshotAttribute(struct)
 end
 
 --- Create a structure of type DBClusterSnapshotAttribute
--- &lt;p&gt;Contains the name and values of a manual DB cluster snapshot attribute.&lt;/p&gt; &lt;p&gt;Manual DB cluster snapshot attributes are used to authorize other AWS accounts to restore a manual DB cluster snapshot. For more information, see the &lt;a&gt;ModifyDBClusterSnapshotAttribute&lt;/a&gt; API action.&lt;/p&gt;
--- @param AttributeName [String] &lt;p&gt;The name of the manual DB cluster snapshot attribute.&lt;/p&gt; &lt;p&gt;The attribute named &lt;code&gt;restore&lt;/code&gt; refers to the list of AWS accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the &lt;a&gt;ModifyDBClusterSnapshotAttribute&lt;/a&gt; API action.&lt;/p&gt;
--- @param AttributeValues [AttributeValueList] &lt;p&gt;The value(s) for the manual DB cluster snapshot attribute.&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;AttributeName&lt;/code&gt; field is set to &lt;code&gt;restore&lt;/code&gt;, then this element returns a list of IDs of the AWS accounts that are authorized to copy or restore the manual DB cluster snapshot. If a value of &lt;code&gt;all&lt;/code&gt; is in the list, then the manual DB cluster snapshot is public and available for any AWS account to copy or restore.&lt;/p&gt;
+-- <p>Contains the name and values of a manual DB cluster snapshot attribute.</p> <p>Manual DB cluster snapshot attributes are used to authorize other AWS accounts to restore a manual DB cluster snapshot. For more information, see the <a>ModifyDBClusterSnapshotAttribute</a> API action.</p>
+-- @param AttributeName [String] <p>The name of the manual DB cluster snapshot attribute.</p> <p>The attribute named <code>restore</code> refers to the list of AWS accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the <a>ModifyDBClusterSnapshotAttribute</a> API action.</p>
+-- @param AttributeValues [AttributeValueList] <p>The value(s) for the manual DB cluster snapshot attribute.</p> <p>If the <code>AttributeName</code> field is set to <code>restore</code>, then this element returns a list of IDs of the AWS accounts that are authorized to copy or restore the manual DB cluster snapshot. If a value of <code>all</code> is in the list, then the manual DB cluster snapshot is public and available for any AWS account to copy or restore.</p>
 function M.DBClusterSnapshotAttribute(AttributeName, AttributeValues, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterSnapshotAttribute")
 	local t = { 
@@ -505,7 +505,7 @@ function M.AssertStorageTypeNotSupportedFault(struct)
 end
 
 --- Create a structure of type StorageTypeNotSupportedFault
--- &lt;p&gt; &lt;i&gt;StorageType&lt;/i&gt; specified cannot be associated with the DB Instance. &lt;/p&gt;
+-- <p> <i>StorageType</i> specified cannot be associated with the DB Instance. </p>
 function M.StorageTypeNotSupportedFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageTypeNotSupportedFault")
 	local t = { 
@@ -557,14 +557,14 @@ function M.AssertCreateEventSubscriptionMessage(struct)
 end
 
 --- Create a structure of type CreateEventSubscriptionMessage
--- &lt;p/&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt; A list of event categories for a SourceType that you want to subscribe to. You can see a list of the categories for a given SourceType in the &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html&quot;&gt;Events&lt;/a&gt; topic in the Amazon RDS User Guide or by using the &lt;b&gt;DescribeEventCategories&lt;/b&gt; action. &lt;/p&gt;
--- @param SourceType [String] &lt;p&gt;The type of source that will be generating the events. For example, if you want to be notified of events generated by a DB instance, you would set this parameter to db-instance. if this value is not specified, all events are returned.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;db-instance&lt;/code&gt; | &lt;code&gt;db-cluster&lt;/code&gt; | &lt;code&gt;db-parameter-group&lt;/code&gt; | &lt;code&gt;db-security-group&lt;/code&gt; | &lt;code&gt;db-snapshot&lt;/code&gt; | &lt;code&gt;db-cluster-snapshot&lt;/code&gt; &lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
--- @param Enabled [BooleanOptional] &lt;p&gt; A Boolean value; set to &lt;b&gt;true&lt;/b&gt; to activate the subscription, set to &lt;b&gt;false&lt;/b&gt; to create the subscription but not active it. &lt;/p&gt;
--- @param SnsTopicArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.&lt;/p&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the subscription.&lt;/p&gt; &lt;p&gt;Constraints: The name must be less than 255 characters.&lt;/p&gt;
--- @param SourceIds [SourceIdsList] &lt;p&gt;The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If SourceIds are supplied, SourceType must also be provided.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is a DB instance, then a &lt;code&gt;DBInstanceIdentifier&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is a DB security group, a &lt;code&gt;DBSecurityGroupName&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is a DB parameter group, a &lt;code&gt;DBParameterGroupName&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is a DB snapshot, a &lt;code&gt;DBSnapshotIdentifier&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param EventCategories [EventCategoriesList] <p> A list of event categories for a SourceType that you want to subscribe to. You can see a list of the categories for a given SourceType in the <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">Events</a> topic in the Amazon RDS User Guide or by using the <b>DescribeEventCategories</b> action. </p>
+-- @param SourceType [String] <p>The type of source that will be generating the events. For example, if you want to be notified of events generated by a DB instance, you would set this parameter to db-instance. if this value is not specified, all events are returned.</p> <p>Valid values: <code>db-instance</code> | <code>db-cluster</code> | <code>db-parameter-group</code> | <code>db-security-group</code> | <code>db-snapshot</code> | <code>db-cluster-snapshot</code> </p>
+-- @param Tags [TagList] <p/>
+-- @param Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription, set to <b>false</b> to create the subscription but not active it. </p>
+-- @param SnsTopicArn [String] <p>The Amazon Resource Name (ARN) of the SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.</p>
+-- @param SubscriptionName [String] <p>The name of the subscription.</p> <p>Constraints: The name must be less than 255 characters.</p>
+-- @param SourceIds [SourceIdsList] <p>The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens.</p> <p>Constraints:</p> <ul> <li> <p>If SourceIds are supplied, SourceType must also be provided.</p> </li> <li> <p>If the source type is a DB instance, then a <code>DBInstanceIdentifier</code> must be supplied.</p> </li> <li> <p>If the source type is a DB security group, a <code>DBSecurityGroupName</code> must be supplied.</p> </li> <li> <p>If the source type is a DB parameter group, a <code>DBParameterGroupName</code> must be supplied.</p> </li> <li> <p>If the source type is a DB snapshot, a <code>DBSnapshotIdentifier</code> must be supplied.</p> </li> </ul>
 -- Required parameter: SubscriptionName
 -- Required parameter: SnsTopicArn
 function M.CreateEventSubscriptionMessage(EventCategories, SourceType, Tags, Enabled, SnsTopicArn, SubscriptionName, SourceIds, ...)
@@ -598,8 +598,8 @@ end
 
 --- Create a structure of type AddRoleToDBClusterMessage
 --  
--- @param RoleArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role to associate with the Aurora DB cluster, for example &lt;code&gt;arn:aws:iam::123456789012:role/AuroraAccessRole&lt;/code&gt;.&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The name of the DB cluster to associate the IAM role with.&lt;/p&gt;
+-- @param RoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role to associate with the Aurora DB cluster, for example <code>arn:aws:iam::123456789012:role/AuroraAccessRole</code>.</p>
+-- @param DBClusterIdentifier [String] <p>The name of the DB cluster to associate the IAM role with.</p>
 -- Required parameter: DBClusterIdentifier
 -- Required parameter: RoleArn
 function M.AddRoleToDBClusterMessage(RoleArn, DBClusterIdentifier, ...)
@@ -625,9 +625,9 @@ function M.AssertDBSnapshotMessage(struct)
 end
 
 --- Create a structure of type DBSnapshotMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeDBSnapshots&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBSnapshots [DBSnapshotList] &lt;p&gt; A list of &lt;a&gt;DBSnapshot&lt;/a&gt; instances. &lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeDBSnapshots</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBSnapshots [DBSnapshotList] <p> A list of <a>DBSnapshot</a> instances. </p>
 function M.DBSnapshotMessage(Marker, DBSnapshots, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSnapshotMessage")
 	local t = { 
@@ -651,9 +651,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Metadata assigned to an Amazon RDS resource consisting of a key-value pair.&lt;/p&gt;
--- @param Value [String] &lt;p&gt;A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with &quot;aws:&quot; or &quot;rds:&quot;. The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: &quot;^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$&quot;).&lt;/p&gt;
--- @param Key [String] &lt;p&gt;A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with &quot;aws:&quot; or &quot;rds:&quot;. The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: &quot;^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$&quot;).&lt;/p&gt;
+-- <p>Metadata assigned to an Amazon RDS resource consisting of a key-value pair.</p>
+-- @param Value [String] <p>A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with "aws:" or "rds:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
+-- @param Key [String] <p>A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with "aws:" or "rds:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
@@ -685,15 +685,15 @@ function M.AssertCopyDBSnapshotMessage(struct)
 end
 
 --- Create a structure of type CopyDBSnapshotMessage
--- &lt;p/&gt;
--- @param CopyTags [BooleanOptional] &lt;p&gt;True to copy all tags from the source DB snapshot to the target DB snapshot; otherwise false. The default is false.&lt;/p&gt;
--- @param SourceRegion [String] &lt;p&gt;The ID of the region that contains the snapshot to be copied.&lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
--- @param PreSignedUrl [String] &lt;p&gt;The URL that contains a Signature Version 4 signed request for the &lt;code&gt;CopyDBSnapshot&lt;/code&gt; API action in the source AWS region that contains the source DB snapshot to copy. &lt;/p&gt; &lt;p&gt;You must specify this parameter when you copy an encrypted DB snapshot from another AWS region by using the Amazon RDS API. You can specify the source region option instead of this parameter when you copy an encrypted DB snapshot from another AWS region by using the AWS CLI. &lt;/p&gt; &lt;p&gt;The presigned URL must be a valid request for the &lt;code&gt;CopyDBSnapshot&lt;/code&gt; API action that can be executed in the source region that contains the encrypted DB snapshot to be copied. The presigned URL request must contain the following parameter values: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DestinationRegion&lt;/code&gt; - The AWS Region that the encrypted DB snapshot will be copied to. This region is the same one where the &lt;code&gt;CopyDBSnapshot&lt;/code&gt; action is called that contains this presigned URL. &lt;/p&gt; &lt;p&gt;For example, if you copy an encrypted DB snapshot from the us-west-2 region to the us-east-1 region, then you will call the &lt;code&gt;CopyDBSnapshot&lt;/code&gt; action in the us-east-1 region and provide a presigned URL that contains a call to the &lt;code&gt;CopyDBSnapshot&lt;/code&gt; action in the us-west-2 region. For this example, the &lt;code&gt;DestinationRegion&lt;/code&gt; in the presigned URL must be set to the us-east-1 region. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;KmsKeyId&lt;/code&gt; - The KMS key identifier for the key to use to encrypt the copy of the DB snapshot in the destination region. This is the same identifier for both the &lt;code&gt;CopyDBSnapshot&lt;/code&gt; action that is called in the destination region, and the action contained in the presigned URL. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SourceDBSnapshotIdentifier&lt;/code&gt; - The DB snapshot identifier for the encrypted snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you are copying an encrypted DB snapshot from the us-west-2 region, then your &lt;code&gt;SourceDBSnapshotIdentifier&lt;/code&gt; looks like the following example: &lt;code&gt;arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115&lt;/code&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;To learn how to generate a Signature Version 4 signed request, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html&quot;&gt;Authenticating Requests: Using Query Parameters (AWS Signature Version 4)&lt;/a&gt; and &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html&quot;&gt;Signature Version 4 Signing Process&lt;/a&gt;. &lt;/p&gt;&lt;note&gt;&lt;p&gt;If you supply a value for this operation's &lt;code&gt;SourceRegion&lt;/code&gt; parameter, a pre-signed URL will be calculated on your behalf.&lt;/p&gt;&lt;/note&gt;
--- @param TargetDBSnapshotIdentifier [String] &lt;p&gt;The identifier for the copy of the snapshot. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cannot be null, empty, or blank&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-db-snapshot&lt;/code&gt; &lt;/p&gt;
--- @param SourceDBSnapshotIdentifier [String] &lt;p&gt;The identifier for the source DB snapshot.&lt;/p&gt; &lt;p&gt;If the source snapshot is in the same region as the copy, specify a valid DB snapshot identifier. For example, &lt;code&gt;rds:mysql-instance1-snapshot-20130805&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;If the source snapshot is in a different region than the copy, specify a valid DB snapshot ARN. For example, &lt;code&gt;arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;If you are copying from a shared manual DB snapshot, this parameter must be the Amazon Resource Name (ARN) of the shared DB snapshot. &lt;/p&gt; &lt;p&gt;If you are copying an encrypted snapshot this parameter must be in the ARN format for the source region, and must match the &lt;code&gt;SourceDBSnapshotIdentifier&lt;/code&gt; in the &lt;code&gt;PreSignedUrl&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must specify a valid system snapshot in the &quot;available&quot; state.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;rds:mydb-2012-04-02-00-01&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805&lt;/code&gt; &lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The AWS KMS key ID for an encrypted DB snapshot. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key. &lt;/p&gt; &lt;p&gt;If you copy an encrypted DB snapshot from your AWS account, you can specify a value for this parameter to encrypt the copy with a new KMS encryption key. If you don't specify a value for this parameter, then the copy of the DB snapshot is encrypted with the same KMS key as the source DB snapshot. &lt;/p&gt; &lt;p&gt;If you copy an encrypted DB snapshot that is shared from another AWS account, then you must specify a value for this parameter. &lt;/p&gt; &lt;p&gt;If you specify this parameter when you copy an unencrypted snapshot, the copy is encrypted. &lt;/p&gt; &lt;p&gt;If you copy an encrypted snapshot to a different AWS region, then you must specify a KMS key for the destination AWS region. KMS encryption keys are specific to the region that they are created in, and you cannot use encryption keys from one region in another region. &lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;The name of an option group to associate with the copy. &lt;/p&gt; &lt;p&gt;Specify this option if you are copying a snapshot from one AWS region to another, and your DB instance uses a non-default option group. If your source DB instance uses Transparent Data Encryption for Oracle or Microsoft SQL Server, you must specify this option when copying across regions. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options&quot;&gt;Option Group Considerations&lt;/a&gt;. &lt;/p&gt;
+-- <p/>
+-- @param CopyTags [BooleanOptional] <p>True to copy all tags from the source DB snapshot to the target DB snapshot; otherwise false. The default is false.</p>
+-- @param SourceRegion [String] <p>The ID of the region that contains the snapshot to be copied.</p>
+-- @param Tags [TagList] <p/>
+-- @param PreSignedUrl [String] <p>The URL that contains a Signature Version 4 signed request for the <code>CopyDBSnapshot</code> API action in the source AWS region that contains the source DB snapshot to copy. </p> <p>You must specify this parameter when you copy an encrypted DB snapshot from another AWS region by using the Amazon RDS API. You can specify the source region option instead of this parameter when you copy an encrypted DB snapshot from another AWS region by using the AWS CLI. </p> <p>The presigned URL must be a valid request for the <code>CopyDBSnapshot</code> API action that can be executed in the source region that contains the encrypted DB snapshot to be copied. The presigned URL request must contain the following parameter values: </p> <ul> <li> <p> <code>DestinationRegion</code> - The AWS Region that the encrypted DB snapshot will be copied to. This region is the same one where the <code>CopyDBSnapshot</code> action is called that contains this presigned URL. </p> <p>For example, if you copy an encrypted DB snapshot from the us-west-2 region to the us-east-1 region, then you will call the <code>CopyDBSnapshot</code> action in the us-east-1 region and provide a presigned URL that contains a call to the <code>CopyDBSnapshot</code> action in the us-west-2 region. For this example, the <code>DestinationRegion</code> in the presigned URL must be set to the us-east-1 region. </p> </li> <li> <p> <code>KmsKeyId</code> - The KMS key identifier for the key to use to encrypt the copy of the DB snapshot in the destination region. This is the same identifier for both the <code>CopyDBSnapshot</code> action that is called in the destination region, and the action contained in the presigned URL. </p> </li> <li> <p> <code>SourceDBSnapshotIdentifier</code> - The DB snapshot identifier for the encrypted snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you are copying an encrypted DB snapshot from the us-west-2 region, then your <code>SourceDBSnapshotIdentifier</code> looks like the following example: <code>arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115</code>. </p> </li> </ul> <p>To learn how to generate a Signature Version 4 signed request, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html">Authenticating Requests: Using Query Parameters (AWS Signature Version 4)</a> and <a href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing Process</a>. </p><note><p>If you supply a value for this operation's <code>SourceRegion</code> parameter, a pre-signed URL will be calculated on your behalf.</p></note>
+-- @param TargetDBSnapshotIdentifier [String] <p>The identifier for the copy of the snapshot. </p> <p>Constraints:</p> <ul> <li> <p>Cannot be null, empty, or blank</p> </li> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-db-snapshot</code> </p>
+-- @param SourceDBSnapshotIdentifier [String] <p>The identifier for the source DB snapshot.</p> <p>If the source snapshot is in the same region as the copy, specify a valid DB snapshot identifier. For example, <code>rds:mysql-instance1-snapshot-20130805</code>. </p> <p>If the source snapshot is in a different region than the copy, specify a valid DB snapshot ARN. For example, <code>arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805</code>. </p> <p>If you are copying from a shared manual DB snapshot, this parameter must be the Amazon Resource Name (ARN) of the shared DB snapshot. </p> <p>If you are copying an encrypted snapshot this parameter must be in the ARN format for the source region, and must match the <code>SourceDBSnapshotIdentifier</code> in the <code>PreSignedUrl</code> parameter. </p> <p>Constraints:</p> <ul> <li> <p>Must specify a valid system snapshot in the "available" state.</p> </li> </ul> <p>Example: <code>rds:mydb-2012-04-02-00-01</code> </p> <p>Example: <code>arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805</code> </p>
+-- @param KmsKeyId [String] <p>The AWS KMS key ID for an encrypted DB snapshot. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key. </p> <p>If you copy an encrypted DB snapshot from your AWS account, you can specify a value for this parameter to encrypt the copy with a new KMS encryption key. If you don't specify a value for this parameter, then the copy of the DB snapshot is encrypted with the same KMS key as the source DB snapshot. </p> <p>If you copy an encrypted DB snapshot that is shared from another AWS account, then you must specify a value for this parameter. </p> <p>If you specify this parameter when you copy an unencrypted snapshot, the copy is encrypted. </p> <p>If you copy an encrypted snapshot to a different AWS region, then you must specify a KMS key for the destination AWS region. KMS encryption keys are specific to the region that they are created in, and you cannot use encryption keys from one region in another region. </p>
+-- @param OptionGroupName [String] <p>The name of an option group to associate with the copy. </p> <p>Specify this option if you are copying a snapshot from one AWS region to another, and your DB instance uses a non-default option group. If your source DB instance uses Transparent Data Encryption for Oracle or Microsoft SQL Server, you must specify this option when copying across regions. For more information, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options">Option Group Considerations</a>. </p>
 -- Required parameter: SourceDBSnapshotIdentifier
 -- Required parameter: TargetDBSnapshotIdentifier
 function M.CopyDBSnapshotMessage(CopyTags, SourceRegion, Tags, PreSignedUrl, TargetDBSnapshotIdentifier, SourceDBSnapshotIdentifier, KmsKeyId, OptionGroupName, ...)
@@ -736,20 +736,20 @@ function M.AssertOrderableDBInstanceOption(struct)
 end
 
 --- Create a structure of type OrderableDBInstanceOption
--- &lt;p&gt;Contains a list of available options for a DB instance&lt;/p&gt; &lt;p&gt; This data type is used as a response element in the &lt;a&gt;DescribeOrderableDBInstanceOptions&lt;/a&gt; action. &lt;/p&gt;
--- @param Engine [String] &lt;p&gt;The engine type of the orderable DB instance.&lt;/p&gt;
--- @param SupportsIAMDatabaseAuthentication [Boolean] &lt;p&gt;Indicates whether this orderable DB instance supports IAM database authentication.&lt;/p&gt;
--- @param StorageType [String] &lt;p&gt;Indicates the storage type for this orderable DB instance.&lt;/p&gt;
--- @param LicenseModel [String] &lt;p&gt;The license model for the orderable DB instance.&lt;/p&gt;
--- @param SupportsStorageEncryption [Boolean] &lt;p&gt;Indicates whether this orderable DB instance supports encrypted storage.&lt;/p&gt;
--- @param SupportsEnhancedMonitoring [Boolean] &lt;p&gt;Indicates whether the DB instance supports enhanced monitoring at intervals from 1 to 60 seconds.&lt;/p&gt;
--- @param Vpc [Boolean] &lt;p&gt;Indicates whether this is a VPC orderable DB instance.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The engine version of the orderable DB instance.&lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;The DB instance class for the orderable DB instance.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZoneList] &lt;p&gt;A list of Availability Zones for the orderable DB instance.&lt;/p&gt;
--- @param MultiAZCapable [Boolean] &lt;p&gt;Indicates whether this orderable DB instance is multi-AZ capable.&lt;/p&gt;
--- @param ReadReplicaCapable [Boolean] &lt;p&gt;Indicates whether this orderable DB instance can have a Read Replica.&lt;/p&gt;
--- @param SupportsIops [Boolean] &lt;p&gt;Indicates whether this orderable DB instance supports provisioned IOPS.&lt;/p&gt;
+-- <p>Contains a list of available options for a DB instance</p> <p> This data type is used as a response element in the <a>DescribeOrderableDBInstanceOptions</a> action. </p>
+-- @param Engine [String] <p>The engine type of the orderable DB instance.</p>
+-- @param SupportsIAMDatabaseAuthentication [Boolean] <p>Indicates whether this orderable DB instance supports IAM database authentication.</p>
+-- @param StorageType [String] <p>Indicates the storage type for this orderable DB instance.</p>
+-- @param LicenseModel [String] <p>The license model for the orderable DB instance.</p>
+-- @param SupportsStorageEncryption [Boolean] <p>Indicates whether this orderable DB instance supports encrypted storage.</p>
+-- @param SupportsEnhancedMonitoring [Boolean] <p>Indicates whether the DB instance supports enhanced monitoring at intervals from 1 to 60 seconds.</p>
+-- @param Vpc [Boolean] <p>Indicates whether this is a VPC orderable DB instance.</p>
+-- @param EngineVersion [String] <p>The engine version of the orderable DB instance.</p>
+-- @param DBInstanceClass [String] <p>The DB instance class for the orderable DB instance.</p>
+-- @param AvailabilityZones [AvailabilityZoneList] <p>A list of Availability Zones for the orderable DB instance.</p>
+-- @param MultiAZCapable [Boolean] <p>Indicates whether this orderable DB instance is multi-AZ capable.</p>
+-- @param ReadReplicaCapable [Boolean] <p>Indicates whether this orderable DB instance can have a Read Replica.</p>
+-- @param SupportsIops [Boolean] <p>Indicates whether this orderable DB instance supports provisioned IOPS.</p>
 function M.OrderableDBInstanceOption(Engine, SupportsIAMDatabaseAuthentication, StorageType, LicenseModel, SupportsStorageEncryption, SupportsEnhancedMonitoring, Vpc, EngineVersion, DBInstanceClass, AvailabilityZones, MultiAZCapable, ReadReplicaCapable, SupportsIops, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrderableDBInstanceOption")
 	local t = { 
@@ -782,7 +782,7 @@ function M.AssertDBSecurityGroupAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type DBSecurityGroupAlreadyExistsFault
--- &lt;p&gt; A DB security group with the name specified in &lt;i&gt;DBSecurityGroupName&lt;/i&gt; already exists. &lt;/p&gt;
+-- <p> A DB security group with the name specified in <i>DBSecurityGroupName</i> already exists. </p>
 function M.DBSecurityGroupAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSecurityGroupAlreadyExistsFault")
 	local t = { 
@@ -803,8 +803,8 @@ function M.AssertDBClusterParameterGroupNameMessage(struct)
 end
 
 --- Create a structure of type DBClusterParameterGroupNameMessage
--- &lt;p/&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt;The name of the DB cluster parameter group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;note&gt; &lt;p&gt;This value is stored as a lowercase string.&lt;/p&gt; &lt;/note&gt;
+-- <p/>
+-- @param DBClusterParameterGroupName [String] <p>The name of the DB cluster parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <note> <p>This value is stored as a lowercase string.</p> </note>
 function M.DBClusterParameterGroupNameMessage(DBClusterParameterGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterParameterGroupNameMessage")
 	local t = { 
@@ -825,7 +825,7 @@ function M.AssertInvalidOptionGroupStateFault(struct)
 end
 
 --- Create a structure of type InvalidOptionGroupStateFault
--- &lt;p&gt; The option group is not in the &lt;i&gt;available&lt;/i&gt; state. &lt;/p&gt;
+-- <p> The option group is not in the <i>available</i> state. </p>
 function M.InvalidOptionGroupStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOptionGroupStateFault")
 	local t = { 
@@ -849,11 +849,11 @@ function M.AssertDescribeDBSecurityGroupsMessage(struct)
 end
 
 --- Create a structure of type DescribeDBSecurityGroupsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribeDBSecurityGroups&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param DBSecurityGroupName [String] &lt;p&gt;The name of the DB security group to return details for.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribeDBSecurityGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param DBSecurityGroupName [String] <p>The name of the DB security group to return details for.</p>
 function M.DescribeDBSecurityGroupsMessage(Marker, MaxRecords, Filters, DBSecurityGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBSecurityGroupsMessage")
 	local t = { 
@@ -900,7 +900,7 @@ function M.AssertDBInstanceAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type DBInstanceAlreadyExistsFault
--- &lt;p&gt;User already has a DB instance with the given identifier.&lt;/p&gt;
+-- <p>User already has a DB instance with the given identifier.</p>
 function M.DBInstanceAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBInstanceAlreadyExistsFault")
 	local t = { 
@@ -940,27 +940,27 @@ function M.AssertDBClusterSnapshot(struct)
 end
 
 --- Create a structure of type DBClusterSnapshot
--- &lt;p&gt;Contains the result of a successful invocation of the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateDBClusterSnapshot&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteDBClusterSnapshot&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This data type is used as a response element in the &lt;a&gt;DescribeDBClusterSnapshots&lt;/a&gt; action.&lt;/p&gt;
--- @param Engine [String] &lt;p&gt;Specifies the name of the database engine.&lt;/p&gt;
--- @param SnapshotCreateTime [TStamp] &lt;p&gt;Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC).&lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;Provides the VPC ID associated with the DB cluster snapshot.&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;Specifies the DB cluster identifier of the DB cluster that this DB cluster snapshot was created from.&lt;/p&gt;
--- @param DBClusterSnapshotArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the DB cluster snapshot.&lt;/p&gt;
--- @param MasterUsername [String] &lt;p&gt;Provides the master username for the DB cluster snapshot.&lt;/p&gt;
--- @param LicenseModel [String] &lt;p&gt;Provides the license model information for this DB cluster snapshot.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;Specifies the status of this DB cluster snapshot.&lt;/p&gt;
--- @param PercentProgress [Integer] &lt;p&gt;Specifies the percentage of the estimated data that has been transferred.&lt;/p&gt;
--- @param DBClusterSnapshotIdentifier [String] &lt;p&gt;Specifies the identifier for the DB cluster snapshot.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;If &lt;code&gt;StorageEncrypted&lt;/code&gt; is true, the KMS key identifier for the encrypted DB cluster snapshot.&lt;/p&gt;
--- @param ClusterCreateTime [TStamp] &lt;p&gt;Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).&lt;/p&gt;
--- @param StorageEncrypted [Boolean] &lt;p&gt;Specifies whether the DB cluster snapshot is encrypted.&lt;/p&gt;
--- @param AllocatedStorage [Integer] &lt;p&gt;Specifies the allocated storage size in gigabytes (GB).&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;Provides the version of the database engine for this DB cluster snapshot.&lt;/p&gt;
--- @param SnapshotType [String] &lt;p&gt;Provides the type of the DB cluster snapshot.&lt;/p&gt;
--- @param SourceDBClusterSnapshotArn [String] &lt;p&gt;If the DB cluster snapshot was copied from a source DB cluster snapshot, the Amazon Resource Name (ARN) for the source DB cluster snapshot; otherwise, a null value.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;Provides the list of EC2 Availability Zones that instances in the DB cluster snapshot can be restored in.&lt;/p&gt;
--- @param IAMDatabaseAuthenticationEnabled [Boolean] &lt;p&gt;True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise false.&lt;/p&gt;
--- @param Port [Integer] &lt;p&gt;Specifies the port that the DB cluster was listening on at the time of the snapshot.&lt;/p&gt;
+-- <p>Contains the result of a successful invocation of the following actions:</p> <ul> <li> <p> <a>CreateDBClusterSnapshot</a> </p> </li> <li> <p> <a>DeleteDBClusterSnapshot</a> </p> </li> </ul> <p>This data type is used as a response element in the <a>DescribeDBClusterSnapshots</a> action.</p>
+-- @param Engine [String] <p>Specifies the name of the database engine.</p>
+-- @param SnapshotCreateTime [TStamp] <p>Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC).</p>
+-- @param VpcId [String] <p>Provides the VPC ID associated with the DB cluster snapshot.</p>
+-- @param DBClusterIdentifier [String] <p>Specifies the DB cluster identifier of the DB cluster that this DB cluster snapshot was created from.</p>
+-- @param DBClusterSnapshotArn [String] <p>The Amazon Resource Name (ARN) for the DB cluster snapshot.</p>
+-- @param MasterUsername [String] <p>Provides the master username for the DB cluster snapshot.</p>
+-- @param LicenseModel [String] <p>Provides the license model information for this DB cluster snapshot.</p>
+-- @param Status [String] <p>Specifies the status of this DB cluster snapshot.</p>
+-- @param PercentProgress [Integer] <p>Specifies the percentage of the estimated data that has been transferred.</p>
+-- @param DBClusterSnapshotIdentifier [String] <p>Specifies the identifier for the DB cluster snapshot.</p>
+-- @param KmsKeyId [String] <p>If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB cluster snapshot.</p>
+-- @param ClusterCreateTime [TStamp] <p>Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).</p>
+-- @param StorageEncrypted [Boolean] <p>Specifies whether the DB cluster snapshot is encrypted.</p>
+-- @param AllocatedStorage [Integer] <p>Specifies the allocated storage size in gigabytes (GB).</p>
+-- @param EngineVersion [String] <p>Provides the version of the database engine for this DB cluster snapshot.</p>
+-- @param SnapshotType [String] <p>Provides the type of the DB cluster snapshot.</p>
+-- @param SourceDBClusterSnapshotArn [String] <p>If the DB cluster snapshot was copied from a source DB cluster snapshot, the Amazon Resource Name (ARN) for the source DB cluster snapshot; otherwise, a null value.</p>
+-- @param AvailabilityZones [AvailabilityZones] <p>Provides the list of EC2 Availability Zones that instances in the DB cluster snapshot can be restored in.</p>
+-- @param IAMDatabaseAuthenticationEnabled [Boolean] <p>True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise false.</p>
+-- @param Port [Integer] <p>Specifies the port that the DB cluster was listening on at the time of the snapshot.</p>
 function M.DBClusterSnapshot(Engine, SnapshotCreateTime, VpcId, DBClusterIdentifier, DBClusterSnapshotArn, MasterUsername, LicenseModel, Status, PercentProgress, DBClusterSnapshotIdentifier, KmsKeyId, ClusterCreateTime, StorageEncrypted, AllocatedStorage, EngineVersion, SnapshotType, SourceDBClusterSnapshotArn, AvailabilityZones, IAMDatabaseAuthenticationEnabled, Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterSnapshot")
 	local t = { 
@@ -1026,10 +1026,10 @@ function M.AssertSourceRegion(struct)
 end
 
 --- Create a structure of type SourceRegion
--- &lt;p&gt;Contains an AWS Region name as the result of a successful call to the &lt;a&gt;DescribeSourceRegions&lt;/a&gt; action.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the source region.&lt;/p&gt;
--- @param Endpoint [String] &lt;p&gt;The source region endpoint.&lt;/p&gt;
--- @param RegionName [String] &lt;p&gt;The source region name.&lt;/p&gt;
+-- <p>Contains an AWS Region name as the result of a successful call to the <a>DescribeSourceRegions</a> action.</p>
+-- @param Status [String] <p>The status of the source region.</p>
+-- @param Endpoint [String] <p>The source region endpoint.</p>
+-- @param RegionName [String] <p>The source region name.</p>
 function M.SourceRegion(Status, Endpoint, RegionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SourceRegion")
 	local t = { 
@@ -1057,11 +1057,11 @@ function M.AssertPurchaseReservedDBInstancesOfferingMessage(struct)
 end
 
 --- Create a structure of type PurchaseReservedDBInstancesOfferingMessage
--- &lt;p/&gt;
--- @param ReservedDBInstanceId [String] &lt;p&gt;Customer-specified identifier to track this reservation.&lt;/p&gt; &lt;p&gt;Example: myreservationID&lt;/p&gt;
--- @param ReservedDBInstancesOfferingId [String] &lt;p&gt;The ID of the Reserved DB instance offering to purchase.&lt;/p&gt; &lt;p&gt;Example: 438012d3-4052-4cc7-b2e3-8d3372e0e706&lt;/p&gt;
--- @param DBInstanceCount [IntegerOptional] &lt;p&gt;The number of instances to reserve.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;1&lt;/code&gt; &lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
+-- <p/>
+-- @param ReservedDBInstanceId [String] <p>Customer-specified identifier to track this reservation.</p> <p>Example: myreservationID</p>
+-- @param ReservedDBInstancesOfferingId [String] <p>The ID of the Reserved DB instance offering to purchase.</p> <p>Example: 438012d3-4052-4cc7-b2e3-8d3372e0e706</p>
+-- @param DBInstanceCount [IntegerOptional] <p>The number of instances to reserve.</p> <p>Default: <code>1</code> </p>
+-- @param Tags [TagList] <p/>
 -- Required parameter: ReservedDBInstancesOfferingId
 function M.PurchaseReservedDBInstancesOfferingMessage(ReservedDBInstanceId, ReservedDBInstancesOfferingId, DBInstanceCount, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PurchaseReservedDBInstancesOfferingMessage")
@@ -1090,10 +1090,10 @@ function M.AssertResetDBParameterGroupMessage(struct)
 end
 
 --- Create a structure of type ResetDBParameterGroupMessage
--- &lt;p/&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;The name of the DB parameter group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ResetAllParameters [Boolean] &lt;p&gt; Specifies whether (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;) to reset all parameters in the DB parameter group to default values. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param Parameters [ParametersList] &lt;p&gt;To reset the entire DB parameter group, specify the &lt;code&gt;DBParameterGroup&lt;/code&gt; name and &lt;code&gt;ResetAllParameters&lt;/code&gt; parameters. To reset specific parameters, provide a list of the following: &lt;code&gt;ParameterName&lt;/code&gt; and &lt;code&gt;ApplyMethod&lt;/code&gt;. A maximum of 20 parameters can be modified in a single request.&lt;/p&gt; &lt;p&gt; &lt;b&gt;MySQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Valid Values (for Apply method): &lt;code&gt;immediate&lt;/code&gt; | &lt;code&gt;pending-reboot&lt;/code&gt; &lt;/p&gt; &lt;p&gt;You can use the immediate value with dynamic parameters only. You can use the &lt;code&gt;pending-reboot&lt;/code&gt; value for both dynamic and static parameters, and changes are applied when DB instance reboots.&lt;/p&gt; &lt;p&gt; &lt;b&gt;MariaDB&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Valid Values (for Apply method): &lt;code&gt;immediate&lt;/code&gt; | &lt;code&gt;pending-reboot&lt;/code&gt; &lt;/p&gt; &lt;p&gt;You can use the immediate value with dynamic parameters only. You can use the &lt;code&gt;pending-reboot&lt;/code&gt; value for both dynamic and static parameters, and changes are applied when DB instance reboots.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Oracle&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Valid Values (for Apply method): &lt;code&gt;pending-reboot&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param DBParameterGroupName [String] <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param ResetAllParameters [Boolean] <p> Specifies whether (<code>true</code>) or not (<code>false</code>) to reset all parameters in the DB parameter group to default values. </p> <p>Default: <code>true</code> </p>
+-- @param Parameters [ParametersList] <p>To reset the entire DB parameter group, specify the <code>DBParameterGroup</code> name and <code>ResetAllParameters</code> parameters. To reset specific parameters, provide a list of the following: <code>ParameterName</code> and <code>ApplyMethod</code>. A maximum of 20 parameters can be modified in a single request.</p> <p> <b>MySQL</b> </p> <p>Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code> </p> <p>You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value for both dynamic and static parameters, and changes are applied when DB instance reboots.</p> <p> <b>MariaDB</b> </p> <p>Valid Values (for Apply method): <code>immediate</code> | <code>pending-reboot</code> </p> <p>You can use the immediate value with dynamic parameters only. You can use the <code>pending-reboot</code> value for both dynamic and static parameters, and changes are applied when DB instance reboots.</p> <p> <b>Oracle</b> </p> <p>Valid Values (for Apply method): <code>pending-reboot</code> </p>
 -- Required parameter: DBParameterGroupName
 function M.ResetDBParameterGroupMessage(DBParameterGroupName, ResetAllParameters, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResetDBParameterGroupMessage")
@@ -1119,9 +1119,9 @@ function M.AssertDBClusterSnapshotMessage(struct)
 end
 
 --- Create a structure of type DBClusterSnapshotMessage
--- &lt;p&gt; Provides a list of DB cluster snapshots for the user as the result of a call to the &lt;a&gt;DescribeDBClusterSnapshots&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;a&gt;DescribeDBClusterSnapshots&lt;/a&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBClusterSnapshots [DBClusterSnapshotList] &lt;p&gt;Provides a list of DB cluster snapshots for the user.&lt;/p&gt;
+-- <p> Provides a list of DB cluster snapshots for the user as the result of a call to the <a>DescribeDBClusterSnapshots</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <a>DescribeDBClusterSnapshots</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBClusterSnapshots [DBClusterSnapshotList] <p>Provides a list of DB cluster snapshots for the user.</p>
 function M.DBClusterSnapshotMessage(Marker, DBClusterSnapshots, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterSnapshotMessage")
 	local t = { 
@@ -1147,11 +1147,11 @@ function M.AssertDBClusterMember(struct)
 end
 
 --- Create a structure of type DBClusterMember
--- &lt;p&gt;Contains information about an instance that is part of a DB cluster.&lt;/p&gt;
--- @param IsClusterWriter [Boolean] &lt;p&gt;Value that is &lt;code&gt;true&lt;/code&gt; if the cluster member is the primary instance for the DB cluster and &lt;code&gt;false&lt;/code&gt; otherwise.&lt;/p&gt;
--- @param DBClusterParameterGroupStatus [String] &lt;p&gt;Specifies the status of the DB cluster parameter group for this member of the DB cluster.&lt;/p&gt;
--- @param PromotionTier [IntegerOptional] &lt;p&gt;A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance&quot;&gt; Fault Tolerance for an Aurora DB Cluster&lt;/a&gt;. &lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;Specifies the instance identifier for this member of the DB cluster.&lt;/p&gt;
+-- <p>Contains information about an instance that is part of a DB cluster.</p>
+-- @param IsClusterWriter [Boolean] <p>Value that is <code>true</code> if the cluster member is the primary instance for the DB cluster and <code>false</code> otherwise.</p>
+-- @param DBClusterParameterGroupStatus [String] <p>Specifies the status of the DB cluster parameter group for this member of the DB cluster.</p>
+-- @param PromotionTier [IntegerOptional] <p>A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"> Fault Tolerance for an Aurora DB Cluster</a>. </p>
+-- @param DBInstanceIdentifier [String] <p>Specifies the instance identifier for this member of the DB cluster.</p>
 function M.DBClusterMember(IsClusterWriter, DBClusterParameterGroupStatus, PromotionTier, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterMember")
 	local t = { 
@@ -1178,9 +1178,9 @@ function M.AssertRebootDBInstanceMessage(struct)
 end
 
 --- Create a structure of type RebootDBInstanceMessage
--- &lt;p/&gt;
--- @param ForceFailover [BooleanOptional] &lt;p&gt; When &lt;code&gt;true&lt;/code&gt;, the reboot will be conducted through a MultiAZ failover. &lt;/p&gt; &lt;p&gt;Constraint: You cannot specify &lt;code&gt;true&lt;/code&gt; if the instance is not configured for MultiAZ.&lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The DB instance identifier. This parameter is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param ForceFailover [BooleanOptional] <p> When <code>true</code>, the reboot will be conducted through a MultiAZ failover. </p> <p>Constraint: You cannot specify <code>true</code> if the instance is not configured for MultiAZ.</p>
+-- @param DBInstanceIdentifier [String] <p>The DB instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- Required parameter: DBInstanceIdentifier
 function M.RebootDBInstanceMessage(ForceFailover, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebootDBInstanceMessage")
@@ -1204,8 +1204,8 @@ function M.AssertAvailabilityZone(struct)
 end
 
 --- Create a structure of type AvailabilityZone
--- &lt;p&gt;Contains Availability Zone information.&lt;/p&gt; &lt;p&gt; This data type is used as an element in the following data type:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;OrderableDBInstanceOption&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Name [String] &lt;p&gt;The name of the availability zone.&lt;/p&gt;
+-- <p>Contains Availability Zone information.</p> <p> This data type is used as an element in the following data type:</p> <ul> <li> <p> <a>OrderableDBInstanceOption</a> </p> </li> </ul>
+-- @param Name [String] <p>The name of the availability zone.</p>
 function M.AvailabilityZone(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityZone")
 	local t = { 
@@ -1230,9 +1230,9 @@ function M.AssertModifyDBClusterParameterGroupMessage(struct)
 end
 
 --- Create a structure of type ModifyDBClusterParameterGroupMessage
--- &lt;p/&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt;The name of the DB cluster parameter group to modify.&lt;/p&gt;
--- @param Parameters [ParametersList] &lt;p&gt;A list of parameters in the DB cluster parameter group to modify.&lt;/p&gt;
+-- <p/>
+-- @param DBClusterParameterGroupName [String] <p>The name of the DB cluster parameter group to modify.</p>
+-- @param Parameters [ParametersList] <p>A list of parameters in the DB cluster parameter group to modify.</p>
 -- Required parameter: DBClusterParameterGroupName
 -- Required parameter: Parameters
 function M.ModifyDBClusterParameterGroupMessage(DBClusterParameterGroupName, Parameters, ...)
@@ -1262,11 +1262,11 @@ function M.AssertModifyDBSnapshotAttributeMessage(struct)
 end
 
 --- Create a structure of type ModifyDBSnapshotAttributeMessage
--- &lt;p/&gt;
--- @param ValuesToAdd [AttributeValueList] &lt;p&gt;A list of DB snapshot attributes to add to the attribute specified by &lt;code&gt;AttributeName&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To authorize other AWS accounts to copy or restore a manual snapshot, set this list to include one or more AWS account IDs, or &lt;code&gt;all&lt;/code&gt; to make the manual DB snapshot restorable by any AWS account. Do not add the &lt;code&gt;all&lt;/code&gt; value for any manual DB snapshots that contain private information that you don't want available to all AWS accounts.&lt;/p&gt;
--- @param ValuesToRemove [AttributeValueList] &lt;p&gt;A list of DB snapshot attributes to remove from the attribute specified by &lt;code&gt;AttributeName&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To remove authorization for other AWS accounts to copy or restore a manual snapshot, set this list to include one or more AWS account identifiers, or &lt;code&gt;all&lt;/code&gt; to remove authorization for any AWS account to copy or restore the DB snapshot. If you specify &lt;code&gt;all&lt;/code&gt;, an AWS account whose account ID is explicitly added to the &lt;code&gt;restore&lt;/code&gt; attribute can still copy or restore the manual DB snapshot.&lt;/p&gt;
--- @param DBSnapshotIdentifier [String] &lt;p&gt;The identifier for the DB snapshot to modify the attributes for.&lt;/p&gt;
--- @param AttributeName [String] &lt;p&gt;The name of the DB snapshot attribute to modify.&lt;/p&gt; &lt;p&gt;To manage authorization for other AWS accounts to copy or restore a manual DB snapshot, set this value to &lt;code&gt;restore&lt;/code&gt;.&lt;/p&gt;
+-- <p/>
+-- @param ValuesToAdd [AttributeValueList] <p>A list of DB snapshot attributes to add to the attribute specified by <code>AttributeName</code>.</p> <p>To authorize other AWS accounts to copy or restore a manual snapshot, set this list to include one or more AWS account IDs, or <code>all</code> to make the manual DB snapshot restorable by any AWS account. Do not add the <code>all</code> value for any manual DB snapshots that contain private information that you don't want available to all AWS accounts.</p>
+-- @param ValuesToRemove [AttributeValueList] <p>A list of DB snapshot attributes to remove from the attribute specified by <code>AttributeName</code>.</p> <p>To remove authorization for other AWS accounts to copy or restore a manual snapshot, set this list to include one or more AWS account identifiers, or <code>all</code> to remove authorization for any AWS account to copy or restore the DB snapshot. If you specify <code>all</code>, an AWS account whose account ID is explicitly added to the <code>restore</code> attribute can still copy or restore the manual DB snapshot.</p>
+-- @param DBSnapshotIdentifier [String] <p>The identifier for the DB snapshot to modify the attributes for.</p>
+-- @param AttributeName [String] <p>The name of the DB snapshot attribute to modify.</p> <p>To manage authorization for other AWS accounts to copy or restore a manual DB snapshot, set this value to <code>restore</code>.</p>
 -- Required parameter: DBSnapshotIdentifier
 -- Required parameter: AttributeName
 function M.ModifyDBSnapshotAttributeMessage(ValuesToAdd, ValuesToRemove, DBSnapshotIdentifier, AttributeName, ...)
@@ -1292,7 +1292,7 @@ function M.AssertDBClusterAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type DBClusterAlreadyExistsFault
--- &lt;p&gt;User already has a DB cluster with the given identifier.&lt;/p&gt;
+-- <p>User already has a DB cluster with the given identifier.</p>
 function M.DBClusterAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterAlreadyExistsFault")
 	local t = { 
@@ -1317,10 +1317,10 @@ function M.AssertCreateDBSecurityGroupMessage(struct)
 end
 
 --- Create a structure of type CreateDBSecurityGroupMessage
--- &lt;p/&gt;
--- @param Tags [TagList] &lt;p/&gt;
--- @param DBSecurityGroupDescription [String] &lt;p&gt;The description for the DB security group.&lt;/p&gt;
--- @param DBSecurityGroupName [String] &lt;p&gt;The name for the DB security group. This value is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not be &quot;Default&quot;&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;mysecuritygroup&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param Tags [TagList] <p/>
+-- @param DBSecurityGroupDescription [String] <p>The description for the DB security group.</p>
+-- @param DBSecurityGroupName [String] <p>The name for the DB security group. This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> <li> <p>Must not be "Default"</p> </li> </ul> <p>Example: <code>mysecuritygroup</code> </p>
 -- Required parameter: DBSecurityGroupName
 -- Required parameter: DBSecurityGroupDescription
 function M.CreateDBSecurityGroupMessage(Tags, DBSecurityGroupDescription, DBSecurityGroupName, ...)
@@ -1351,13 +1351,13 @@ function M.AssertCertificate(struct)
 end
 
 --- Create a structure of type Certificate
--- &lt;p&gt;A CA certificate for an AWS account.&lt;/p&gt;
--- @param CertificateArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the certificate.&lt;/p&gt;
--- @param ValidTill [TStamp] &lt;p&gt;The final date that the certificate continues to be valid.&lt;/p&gt;
--- @param CertificateIdentifier [String] &lt;p&gt;The unique key that identifies a certificate.&lt;/p&gt;
--- @param Thumbprint [String] &lt;p&gt;The thumbprint of the certificate.&lt;/p&gt;
--- @param CertificateType [String] &lt;p&gt;The type of the certificate.&lt;/p&gt;
--- @param ValidFrom [TStamp] &lt;p&gt;The starting date from which the certificate is valid.&lt;/p&gt;
+-- <p>A CA certificate for an AWS account.</p>
+-- @param CertificateArn [String] <p>The Amazon Resource Name (ARN) for the certificate.</p>
+-- @param ValidTill [TStamp] <p>The final date that the certificate continues to be valid.</p>
+-- @param CertificateIdentifier [String] <p>The unique key that identifies a certificate.</p>
+-- @param Thumbprint [String] <p>The thumbprint of the certificate.</p>
+-- @param CertificateType [String] <p>The type of the certificate.</p>
+-- @param ValidFrom [TStamp] <p>The starting date from which the certificate is valid.</p>
 function M.Certificate(CertificateArn, ValidTill, CertificateIdentifier, Thumbprint, CertificateType, ValidFrom, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Certificate")
 	local t = { 
@@ -1384,8 +1384,8 @@ function M.AssertTagListMessage(struct)
 end
 
 --- Create a structure of type TagListMessage
--- &lt;p/&gt;
--- @param TagList [TagList] &lt;p&gt;List of tags returned by the ListTagsForResource operation.&lt;/p&gt;
+-- <p/>
+-- @param TagList [TagList] <p>List of tags returned by the ListTagsForResource operation.</p>
 function M.TagListMessage(TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagListMessage")
 	local t = { 
@@ -1406,7 +1406,7 @@ function M.AssertReservedDBInstanceNotFoundFault(struct)
 end
 
 --- Create a structure of type ReservedDBInstanceNotFoundFault
--- &lt;p&gt;The specified reserved DB Instance not found.&lt;/p&gt;
+-- <p>The specified reserved DB Instance not found.</p>
 function M.ReservedDBInstanceNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedDBInstanceNotFoundFault")
 	local t = { 
@@ -1426,7 +1426,7 @@ function M.AssertDBSubnetGroupDoesNotCoverEnoughAZs(struct)
 end
 
 --- Create a structure of type DBSubnetGroupDoesNotCoverEnoughAZs
--- &lt;p&gt;Subnets in the DB subnet group should cover at least two Availability Zones unless there is only one Availability Zone.&lt;/p&gt;
+-- <p>Subnets in the DB subnet group should cover at least two Availability Zones unless there is only one Availability Zone.</p>
 function M.DBSubnetGroupDoesNotCoverEnoughAZs(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSubnetGroupDoesNotCoverEnoughAZs")
 	local t = { 
@@ -1472,9 +1472,9 @@ function M.AssertListTagsForResourceMessage(struct)
 end
 
 --- Create a structure of type ListTagsForResourceMessage
--- &lt;p/&gt;
--- @param ResourceName [String] &lt;p&gt;The Amazon RDS resource with tags to be listed. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing&quot;&gt; Constructing an RDS Amazon Resource Name (ARN)&lt;/a&gt;.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
+-- <p/>
+-- @param ResourceName [String] <p>The Amazon RDS resource with tags to be listed. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"> Constructing an RDS Amazon Resource Name (ARN)</a>.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
 -- Required parameter: ResourceName
 function M.ListTagsForResourceMessage(ResourceName, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceMessage")
@@ -1524,10 +1524,10 @@ function M.AssertResetDBClusterParameterGroupMessage(struct)
 end
 
 --- Create a structure of type ResetDBClusterParameterGroupMessage
--- &lt;p/&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt;The name of the DB cluster parameter group to reset.&lt;/p&gt;
--- @param ResetAllParameters [Boolean] &lt;p&gt;A value that is set to &lt;code&gt;true&lt;/code&gt; to reset all parameters in the DB cluster parameter group to their default values, and &lt;code&gt;false&lt;/code&gt; otherwise. You cannot use this parameter if there is a list of parameter names specified for the &lt;code&gt;Parameters&lt;/code&gt; parameter.&lt;/p&gt;
--- @param Parameters [ParametersList] &lt;p&gt;A list of parameter names in the DB cluster parameter group to reset to the default values. You cannot use this parameter if the &lt;code&gt;ResetAllParameters&lt;/code&gt; parameter is set to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
+-- <p/>
+-- @param DBClusterParameterGroupName [String] <p>The name of the DB cluster parameter group to reset.</p>
+-- @param ResetAllParameters [Boolean] <p>A value that is set to <code>true</code> to reset all parameters in the DB cluster parameter group to their default values, and <code>false</code> otherwise. You cannot use this parameter if there is a list of parameter names specified for the <code>Parameters</code> parameter.</p>
+-- @param Parameters [ParametersList] <p>A list of parameter names in the DB cluster parameter group to reset to the default values. You cannot use this parameter if the <code>ResetAllParameters</code> parameter is set to <code>true</code>.</p>
 -- Required parameter: DBClusterParameterGroupName
 function M.ResetDBClusterParameterGroupMessage(DBClusterParameterGroupName, ResetAllParameters, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResetDBClusterParameterGroupMessage")
@@ -1555,10 +1555,10 @@ function M.AssertPromoteReadReplicaMessage(struct)
 end
 
 --- Create a structure of type PromoteReadReplicaMessage
--- &lt;p/&gt;
--- @param PreferredBackupWindow [String] &lt;p&gt; The daily time range during which automated backups are created if automated backups are enabled, using the &lt;code&gt;BackupRetentionPeriod&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt; Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html&quot;&gt; Adjusting the Preferred Maintenance Window&lt;/a&gt; in the &lt;i&gt;Amazon RDS User Guide.&lt;/i&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be in the format &lt;code&gt;hh24:mi-hh24:mi&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Times should be in Universal Coordinated Time (UTC).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not conflict with the preferred maintenance window.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be at least 30 minutes.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param BackupRetentionPeriod [IntegerOptional] &lt;p&gt;The number of days to retain automated backups. Setting this parameter to a positive number enables backups. Setting this parameter to 0 disables automated backups.&lt;/p&gt; &lt;p&gt;Default: 1&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be a value from 0 to 8&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The DB instance identifier. This value is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the identifier for an existing Read Replica DB instance&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;mydbinstance&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param PreferredBackupWindow [String] <p> The daily time range during which automated backups are created if automated backups are enabled, using the <code>BackupRetentionPeriod</code> parameter. </p> <p> Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i> </p> <p>Constraints:</p> <ul> <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Times should be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p> </li> </ul>
+-- @param BackupRetentionPeriod [IntegerOptional] <p>The number of days to retain automated backups. Setting this parameter to a positive number enables backups. Setting this parameter to 0 disables automated backups.</p> <p>Default: 1</p> <p>Constraints:</p> <ul> <li> <p>Must be a value from 0 to 8</p> </li> </ul>
+-- @param DBInstanceIdentifier [String] <p>The DB instance identifier. This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must be the identifier for an existing Read Replica DB instance</p> </li> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>mydbinstance</code> </p>
 -- Required parameter: DBInstanceIdentifier
 function M.PromoteReadReplicaMessage(PreferredBackupWindow, BackupRetentionPeriod, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PromoteReadReplicaMessage")
@@ -1582,7 +1582,7 @@ function M.AssertInvalidVPCNetworkStateFault(struct)
 end
 
 --- Create a structure of type InvalidVPCNetworkStateFault
--- &lt;p&gt;DB subnet group does not cover all Availability Zones after it is created because users' change.&lt;/p&gt;
+-- <p>DB subnet group does not cover all Availability Zones after it is created because users' change.</p>
 function M.InvalidVPCNetworkStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidVPCNetworkStateFault")
 	local t = { 
@@ -1604,9 +1604,9 @@ function M.AssertOptionGroups(struct)
 end
 
 --- Create a structure of type OptionGroups
--- &lt;p&gt;List of option groups.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt;An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param OptionGroupsList [OptionGroupsList] &lt;p&gt;List of option groups.&lt;/p&gt;
+-- <p>List of option groups.</p>
+-- @param Marker [String] <p>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param OptionGroupsList [OptionGroupsList] <p>List of option groups.</p>
 function M.OptionGroups(Marker, OptionGroupsList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionGroups")
 	local t = { 
@@ -1628,7 +1628,7 @@ function M.AssertInvalidDBSnapshotStateFault(struct)
 end
 
 --- Create a structure of type InvalidDBSnapshotStateFault
--- &lt;p&gt;The state of the DB snapshot does not allow deletion.&lt;/p&gt;
+-- <p>The state of the DB snapshot does not allow deletion.</p>
 function M.InvalidDBSnapshotStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDBSnapshotStateFault")
 	local t = { 
@@ -1652,11 +1652,11 @@ function M.AssertDescribeCertificatesMessage(struct)
 end
 
 --- Create a structure of type DescribeCertificatesMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;a&gt;DescribeCertificates&lt;/a&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param CertificateIdentifier [String] &lt;p&gt;The user-supplied certificate identifier. If this parameter is specified, information for only the identified certificate is returned. This parameter isn't case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <a>DescribeCertificates</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param CertificateIdentifier [String] <p>The user-supplied certificate identifier. If this parameter is specified, information for only the identified certificate is returned. This parameter isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
 function M.DescribeCertificatesMessage(Marker, CertificateIdentifier, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificatesMessage")
 	local t = { 
@@ -1682,9 +1682,9 @@ function M.AssertResourcePendingMaintenanceActions(struct)
 end
 
 --- Create a structure of type ResourcePendingMaintenanceActions
--- &lt;p&gt;Describes the pending maintenance actions for a resource.&lt;/p&gt;
--- @param PendingMaintenanceActionDetails [PendingMaintenanceActionDetails] &lt;p&gt;A list that provides details about the pending maintenance actions for the resource.&lt;/p&gt;
--- @param ResourceIdentifier [String] &lt;p&gt;The ARN of the resource that has pending maintenance actions.&lt;/p&gt;
+-- <p>Describes the pending maintenance actions for a resource.</p>
+-- @param PendingMaintenanceActionDetails [PendingMaintenanceActionDetails] <p>A list that provides details about the pending maintenance actions for the resource.</p>
+-- @param ResourceIdentifier [String] <p>The ARN of the resource that has pending maintenance actions.</p>
 function M.ResourcePendingMaintenanceActions(PendingMaintenanceActionDetails, ResourceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourcePendingMaintenanceActions")
 	local t = { 
@@ -1729,7 +1729,7 @@ function M.AssertDBLogFileNotFoundFault(struct)
 end
 
 --- Create a structure of type DBLogFileNotFoundFault
--- &lt;p&gt; &lt;i&gt;LogFileName&lt;/i&gt; does not refer to an existing DB log file.&lt;/p&gt;
+-- <p> <i>LogFileName</i> does not refer to an existing DB log file.</p>
 function M.DBLogFileNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBLogFileNotFoundFault")
 	local t = { 
@@ -1751,9 +1751,9 @@ function M.AssertDBSecurityGroupMembership(struct)
 end
 
 --- Create a structure of type DBSecurityGroupMembership
--- &lt;p&gt;This data type is used as a response element in the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ModifyDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;RebootDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;RestoreDBInstanceFromDBSnapshot&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;RestoreDBInstanceToPointInTime&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Status [String] &lt;p&gt;The status of the DB security group.&lt;/p&gt;
--- @param DBSecurityGroupName [String] &lt;p&gt;The name of the DB security group.&lt;/p&gt;
+-- <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>ModifyDBInstance</a> </p> </li> <li> <p> <a>RebootDBInstance</a> </p> </li> <li> <p> <a>RestoreDBInstanceFromDBSnapshot</a> </p> </li> <li> <p> <a>RestoreDBInstanceToPointInTime</a> </p> </li> </ul>
+-- @param Status [String] <p>The status of the DB security group.</p>
+-- @param DBSecurityGroupName [String] <p>The name of the DB security group.</p>
 function M.DBSecurityGroupMembership(Status, DBSecurityGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSecurityGroupMembership")
 	local t = { 
@@ -1775,7 +1775,7 @@ function M.AssertDBParameterGroupNotFoundFault(struct)
 end
 
 --- Create a structure of type DBParameterGroupNotFoundFault
--- &lt;p&gt; &lt;i&gt;DBParameterGroupName&lt;/i&gt; does not refer to an existing DB parameter group. &lt;/p&gt;
+-- <p> <i>DBParameterGroupName</i> does not refer to an existing DB parameter group. </p>
 function M.DBParameterGroupNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBParameterGroupNotFoundFault")
 	local t = { 
@@ -1799,10 +1799,10 @@ function M.AssertDeleteDBClusterMessage(struct)
 end
 
 --- Create a structure of type DeleteDBClusterMessage
--- &lt;p/&gt;
--- @param FinalDBSnapshotIdentifier [String] &lt;p&gt; The DB cluster snapshot identifier of the new DB cluster snapshot created when &lt;code&gt;SkipFinalSnapshot&lt;/code&gt; is set to &lt;code&gt;false&lt;/code&gt;. &lt;/p&gt; &lt;note&gt; &lt;p&gt; Specifying this parameter and also setting the &lt;code&gt;SkipFinalShapshot&lt;/code&gt; parameter to true results in an error. &lt;/p&gt; &lt;/note&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SkipFinalSnapshot [Boolean] &lt;p&gt; Determines whether a final DB cluster snapshot is created before the DB cluster is deleted. If &lt;code&gt;true&lt;/code&gt; is specified, no DB cluster snapshot is created. If &lt;code&gt;false&lt;/code&gt; is specified, a DB cluster snapshot is created before the DB cluster is deleted. &lt;/p&gt; &lt;note&gt; &lt;p&gt;You must specify a &lt;code&gt;FinalDBSnapshotIdentifier&lt;/code&gt; parameter if &lt;code&gt;SkipFinalSnapshot&lt;/code&gt; is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The DB cluster identifier for the DB cluster to be deleted. This parameter isn't case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param FinalDBSnapshotIdentifier [String] <p> The DB cluster snapshot identifier of the new DB cluster snapshot created when <code>SkipFinalSnapshot</code> is set to <code>false</code>. </p> <note> <p> Specifying this parameter and also setting the <code>SkipFinalShapshot</code> parameter to true results in an error. </p> </note> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param SkipFinalSnapshot [Boolean] <p> Determines whether a final DB cluster snapshot is created before the DB cluster is deleted. If <code>true</code> is specified, no DB cluster snapshot is created. If <code>false</code> is specified, a DB cluster snapshot is created before the DB cluster is deleted. </p> <note> <p>You must specify a <code>FinalDBSnapshotIdentifier</code> parameter if <code>SkipFinalSnapshot</code> is <code>false</code>.</p> </note> <p>Default: <code>false</code> </p>
+-- @param DBClusterIdentifier [String] <p>The DB cluster identifier for the DB cluster to be deleted. This parameter isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- Required parameter: DBClusterIdentifier
 function M.DeleteDBClusterMessage(FinalDBSnapshotIdentifier, SkipFinalSnapshot, DBClusterIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDBClusterMessage")
@@ -1832,11 +1832,11 @@ function M.AssertModifyDBClusterSnapshotAttributeMessage(struct)
 end
 
 --- Create a structure of type ModifyDBClusterSnapshotAttributeMessage
--- &lt;p/&gt;
--- @param ValuesToAdd [AttributeValueList] &lt;p&gt;A list of DB cluster snapshot attributes to add to the attribute specified by &lt;code&gt;AttributeName&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To authorize other AWS accounts to copy or restore a manual DB cluster snapshot, set this list to include one or more AWS account IDs, or &lt;code&gt;all&lt;/code&gt; to make the manual DB cluster snapshot restorable by any AWS account. Do not add the &lt;code&gt;all&lt;/code&gt; value for any manual DB cluster snapshots that contain private information that you don't want available to all AWS accounts.&lt;/p&gt;
--- @param DBClusterSnapshotIdentifier [String] &lt;p&gt;The identifier for the DB cluster snapshot to modify the attributes for.&lt;/p&gt;
--- @param ValuesToRemove [AttributeValueList] &lt;p&gt;A list of DB cluster snapshot attributes to remove from the attribute specified by &lt;code&gt;AttributeName&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To remove authorization for other AWS accounts to copy or restore a manual DB cluster snapshot, set this list to include one or more AWS account identifiers, or &lt;code&gt;all&lt;/code&gt; to remove authorization for any AWS account to copy or restore the DB cluster snapshot. If you specify &lt;code&gt;all&lt;/code&gt;, an AWS account whose account ID is explicitly added to the &lt;code&gt;restore&lt;/code&gt; attribute can still copy or restore a manual DB cluster snapshot.&lt;/p&gt;
--- @param AttributeName [String] &lt;p&gt;The name of the DB cluster snapshot attribute to modify.&lt;/p&gt; &lt;p&gt;To manage authorization for other AWS accounts to copy or restore a manual DB cluster snapshot, set this value to &lt;code&gt;restore&lt;/code&gt;.&lt;/p&gt;
+-- <p/>
+-- @param ValuesToAdd [AttributeValueList] <p>A list of DB cluster snapshot attributes to add to the attribute specified by <code>AttributeName</code>.</p> <p>To authorize other AWS accounts to copy or restore a manual DB cluster snapshot, set this list to include one or more AWS account IDs, or <code>all</code> to make the manual DB cluster snapshot restorable by any AWS account. Do not add the <code>all</code> value for any manual DB cluster snapshots that contain private information that you don't want available to all AWS accounts.</p>
+-- @param DBClusterSnapshotIdentifier [String] <p>The identifier for the DB cluster snapshot to modify the attributes for.</p>
+-- @param ValuesToRemove [AttributeValueList] <p>A list of DB cluster snapshot attributes to remove from the attribute specified by <code>AttributeName</code>.</p> <p>To remove authorization for other AWS accounts to copy or restore a manual DB cluster snapshot, set this list to include one or more AWS account identifiers, or <code>all</code> to remove authorization for any AWS account to copy or restore the DB cluster snapshot. If you specify <code>all</code>, an AWS account whose account ID is explicitly added to the <code>restore</code> attribute can still copy or restore a manual DB cluster snapshot.</p>
+-- @param AttributeName [String] <p>The name of the DB cluster snapshot attribute to modify.</p> <p>To manage authorization for other AWS accounts to copy or restore a manual DB cluster snapshot, set this value to <code>restore</code>.</p>
 -- Required parameter: DBClusterSnapshotIdentifier
 -- Required parameter: AttributeName
 function M.ModifyDBClusterSnapshotAttributeMessage(ValuesToAdd, DBClusterSnapshotIdentifier, ValuesToRemove, AttributeName, ...)
@@ -1871,12 +1871,12 @@ function M.AssertCreateOptionGroupMessage(struct)
 end
 
 --- Create a structure of type CreateOptionGroupMessage
--- &lt;p/&gt;
--- @param OptionGroupDescription [String] &lt;p&gt;The description of the option group.&lt;/p&gt;
--- @param EngineName [String] &lt;p&gt;Specifies the name of the engine that this option group should be associated with.&lt;/p&gt;
--- @param MajorEngineVersion [String] &lt;p&gt;Specifies the major version of the engine that this option group should be associated with.&lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;Specifies the name of the option group to be created.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;myoptiongroup&lt;/code&gt; &lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
+-- <p/>
+-- @param OptionGroupDescription [String] <p>The description of the option group.</p>
+-- @param EngineName [String] <p>Specifies the name of the engine that this option group should be associated with.</p>
+-- @param MajorEngineVersion [String] <p>Specifies the major version of the engine that this option group should be associated with.</p>
+-- @param OptionGroupName [String] <p>Specifies the name of the option group to be created.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>myoptiongroup</code> </p>
+-- @param Tags [TagList] <p/>
 -- Required parameter: OptionGroupName
 -- Required parameter: EngineName
 -- Required parameter: MajorEngineVersion
@@ -1907,8 +1907,8 @@ function M.AssertDeleteEventSubscriptionMessage(struct)
 end
 
 --- Create a structure of type DeleteEventSubscriptionMessage
--- &lt;p/&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the RDS event notification subscription you want to delete.&lt;/p&gt;
+-- <p/>
+-- @param SubscriptionName [String] <p>The name of the RDS event notification subscription you want to delete.</p>
 -- Required parameter: SubscriptionName
 function M.DeleteEventSubscriptionMessage(SubscriptionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEventSubscriptionMessage")
@@ -1953,7 +1953,7 @@ function M.AssertReservedDBInstanceAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type ReservedDBInstanceAlreadyExistsFault
--- &lt;p&gt;User already has a reservation with the given identifier.&lt;/p&gt;
+-- <p>User already has a reservation with the given identifier.</p>
 function M.ReservedDBInstanceAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedDBInstanceAlreadyExistsFault")
 	local t = { 
@@ -1982,15 +1982,15 @@ function M.AssertDescribeOrderableDBInstanceOptionsMessage(struct)
 end
 
 --- Create a structure of type DescribeOrderableDBInstanceOptionsMessage
--- &lt;p/&gt;
--- @param Engine [String] &lt;p&gt;The name of the engine to retrieve DB instance options for.&lt;/p&gt;
--- @param Vpc [BooleanOptional] &lt;p&gt;The VPC filter value. Specify this parameter to show only the available VPC or non-VPC offerings.&lt;/p&gt;
--- @param LicenseModel [String] &lt;p&gt;The license model filter value. Specify this parameter to show only the available offerings matching the specified license model.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The engine version filter value. Specify this parameter to show only the available offerings matching the specified engine version.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt; . &lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;The DB instance class filter value. Specify this parameter to show only the available offerings matching the specified DB instance class.&lt;/p&gt;
+-- <p/>
+-- @param Engine [String] <p>The name of the engine to retrieve DB instance options for.</p>
+-- @param Vpc [BooleanOptional] <p>The VPC filter value. Specify this parameter to show only the available VPC or non-VPC offerings.</p>
+-- @param LicenseModel [String] <p>The license model filter value. Specify this parameter to show only the available offerings matching the specified license model.</p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param EngineVersion [String] <p>The engine version filter value. Specify this parameter to show only the available offerings matching the specified engine version.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
+-- @param DBInstanceClass [String] <p>The DB instance class filter value. Specify this parameter to show only the available offerings matching the specified DB instance class.</p>
 -- Required parameter: Engine
 function M.DescribeOrderableDBInstanceOptionsMessage(Engine, Vpc, LicenseModel, MaxRecords, Filters, EngineVersion, Marker, DBInstanceClass, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrderableDBInstanceOptionsMessage")
@@ -2021,8 +2021,8 @@ function M.AssertDeleteDBClusterParameterGroupMessage(struct)
 end
 
 --- Create a structure of type DeleteDBClusterParameterGroupMessage
--- &lt;p/&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt;The name of the DB cluster parameter group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the name of an existing DB cluster parameter group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You cannot delete a default DB cluster parameter group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be associated with any DB clusters.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param DBClusterParameterGroupName [String] <p>The name of the DB cluster parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must be the name of an existing DB cluster parameter group.</p> </li> <li> <p>You cannot delete a default DB cluster parameter group.</p> </li> <li> <p>Cannot be associated with any DB clusters.</p> </li> </ul>
 -- Required parameter: DBClusterParameterGroupName
 function M.DeleteDBClusterParameterGroupMessage(DBClusterParameterGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDBClusterParameterGroupMessage")
@@ -2048,8 +2048,8 @@ end
 
 --- Create a structure of type StopDBInstanceMessage
 --  
--- @param DBSnapshotIdentifier [String] &lt;p&gt; The user-supplied instance identifier of the DB Snapshot created immediately before the DB instance is stopped. &lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt; The user-supplied instance identifier. &lt;/p&gt;
+-- @param DBSnapshotIdentifier [String] <p> The user-supplied instance identifier of the DB Snapshot created immediately before the DB instance is stopped. </p>
+-- @param DBInstanceIdentifier [String] <p> The user-supplied instance identifier. </p>
 -- Required parameter: DBInstanceIdentifier
 function M.StopDBInstanceMessage(DBSnapshotIdentifier, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopDBInstanceMessage")
@@ -2100,12 +2100,12 @@ function M.AssertUpgradeTarget(struct)
 end
 
 --- Create a structure of type UpgradeTarget
--- &lt;p&gt;The version of the database engine that a DB instance can be upgraded to.&lt;/p&gt;
--- @param Engine [String] &lt;p&gt;The name of the upgrade target database engine.&lt;/p&gt;
--- @param IsMajorVersionUpgrade [Boolean] &lt;p&gt;A value that indicates whether a database engine will be upgraded to a major version.&lt;/p&gt;
--- @param AutoUpgrade [Boolean] &lt;p&gt;A value that indicates whether the target version will be applied to any source DB instances that have AutoMinorVersionUpgrade set to true.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The version of the database engine that a DB instance can be upgraded to.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The version number of the upgrade target database engine.&lt;/p&gt;
+-- <p>The version of the database engine that a DB instance can be upgraded to.</p>
+-- @param Engine [String] <p>The name of the upgrade target database engine.</p>
+-- @param IsMajorVersionUpgrade [Boolean] <p>A value that indicates whether a database engine will be upgraded to a major version.</p>
+-- @param AutoUpgrade [Boolean] <p>A value that indicates whether the target version will be applied to any source DB instances that have AutoMinorVersionUpgrade set to true.</p>
+-- @param Description [String] <p>The version of the database engine that a DB instance can be upgraded to.</p>
+-- @param EngineVersion [String] <p>The version number of the upgrade target database engine.</p>
 function M.UpgradeTarget(Engine, IsMajorVersionUpgrade, AutoUpgrade, Description, EngineVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpgradeTarget")
 	local t = { 
@@ -2158,10 +2158,10 @@ function M.AssertCreateDBSnapshotMessage(struct)
 end
 
 --- Create a structure of type CreateDBSnapshotMessage
--- &lt;p/&gt;
--- @param DBSnapshotIdentifier [String] &lt;p&gt;The identifier for the DB snapshot.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cannot be null, empty, or blank&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-snapshot-id&lt;/code&gt; &lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The DB instance identifier. This is the unique key that identifies a DB instance.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Tags [TagList] &lt;p/&gt;
+-- <p/>
+-- @param DBSnapshotIdentifier [String] <p>The identifier for the DB snapshot.</p> <p>Constraints:</p> <ul> <li> <p>Cannot be null, empty, or blank</p> </li> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-snapshot-id</code> </p>
+-- @param DBInstanceIdentifier [String] <p>The DB instance identifier. This is the unique key that identifies a DB instance.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param Tags [TagList] <p/>
 -- Required parameter: DBSnapshotIdentifier
 -- Required parameter: DBInstanceIdentifier
 function M.CreateDBSnapshotMessage(DBSnapshotIdentifier, DBInstanceIdentifier, Tags, ...)
@@ -2243,31 +2243,31 @@ end
 
 --- Create a structure of type RestoreDBClusterFromS3Message
 --  
--- @param SourceEngine [String] &lt;p&gt;The identifier for the database engine that was backed up to create the files stored in the Amazon S3 bucket. &lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;mysql&lt;/code&gt; &lt;/p&gt;
--- @param MasterUsername [String] &lt;p&gt;The name of the master user for the restored DB cluster.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 16 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a reserved word for the chosen database engine.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt;A list of EC2 VPC security groups to associate with the restored DB cluster.&lt;/p&gt;
--- @param EnableIAMDatabaseAuthentication [BooleanOptional] &lt;p&gt;A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param S3IngestionRoleArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorizes Amazon RDS to access the Amazon S3 bucket on your behalf.&lt;/p&gt;
--- @param Engine [String] &lt;p&gt;The name of the database engine to be used for the restored DB cluster.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;aurora&lt;/code&gt; &lt;/p&gt;
+-- @param SourceEngine [String] <p>The identifier for the database engine that was backed up to create the files stored in the Amazon S3 bucket. </p> <p>Valid values: <code>mysql</code> </p>
+-- @param MasterUsername [String] <p>The name of the master user for the restored DB cluster.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 16 alphanumeric characters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot be a reserved word for the chosen database engine.</p> </li> </ul>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of EC2 VPC security groups to associate with the restored DB cluster.</p>
+-- @param EnableIAMDatabaseAuthentication [BooleanOptional] <p>A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.</p> <p>Default: <code>false</code> </p>
+-- @param S3IngestionRoleArn [String] <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorizes Amazon RDS to access the Amazon S3 bucket on your behalf.</p>
+-- @param Engine [String] <p>The name of the database engine to be used for the restored DB cluster.</p> <p>Valid Values: <code>aurora</code> </p>
 -- @param Tags [TagList]  
--- @param S3Prefix [String] &lt;p&gt;The prefix for all of the file names that contain the data used to create the Amazon Aurora DB cluster. If you do not specify a &lt;b&gt;SourceS3Prefix&lt;/b&gt; value, then the Amazon Aurora DB cluster is created by using all of the files in the Amazon S3 bucket.&lt;/p&gt;
--- @param PreferredBackupWindow [String] &lt;p&gt;The daily time range during which automated backups are created if automated backups are enabled using the &lt;code&gt;BackupRetentionPeriod&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt;Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html&quot;&gt; Adjusting the Preferred Maintenance Window&lt;/a&gt; in the &lt;i&gt;Amazon RDS User Guide.&lt;/i&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be in the format &lt;code&gt;hh24:mi-hh24:mi&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Times should be in Universal Coordinated Time (UTC).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not conflict with the preferred maintenance window.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be at least 30 minutes.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SourceEngineVersion [String] &lt;p&gt;The version of the database that the backup files were created from.&lt;/p&gt; &lt;p&gt;MySQL version 5.5 and 5.6 are supported. &lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;5.6.22&lt;/code&gt; &lt;/p&gt;
--- @param BackupRetentionPeriod [IntegerOptional] &lt;p&gt;The number of days for which automated backups of the restored DB cluster are retained. You must specify a minimum value of 1.&lt;/p&gt; &lt;p&gt;Default: 1&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be a value from 1 to 35&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).&lt;/p&gt; &lt;p&gt; Format: &lt;code&gt;ddd:hh24:mi-ddd:hh24:mi&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html&quot;&gt; Adjusting the Preferred Maintenance Window&lt;/a&gt; in the &lt;i&gt;Amazon RDS User Guide.&lt;/i&gt; &lt;/p&gt; &lt;p&gt;Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun&lt;/p&gt; &lt;p&gt;Constraints: Minimum 30-minute window.&lt;/p&gt;
--- @param S3BucketName [String] &lt;p&gt;The name of the Amazon S3 bucket that contains the data used to create the Amazon Aurora DB cluster.&lt;/p&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt;The name of the DB cluster parameter group to associate with the restored DB cluster. If this argument is omitted, &lt;code&gt;default.aurora5.6&lt;/code&gt; will be used. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param EngineVersion [String] &lt;p&gt;The version number of the database engine to use.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Aurora&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;5.6.10a&lt;/code&gt; &lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;A DB subnet group to associate with the restored DB cluster.&lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;A value that indicates that the restored DB cluster should be associated with the specified option group.&lt;/p&gt; &lt;p&gt;Permanent options cannot be removed from an option group. An option group cannot be removed from a DB cluster once it is associated with a DB cluster.&lt;/p&gt;
--- @param CharacterSetName [String] &lt;p&gt;A value that indicates that the restored DB cluster should be associated with the specified CharacterSet.&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The name of the DB cluster to create from the source data in the S3 bucket. This parameter is isn't case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-cluster1&lt;/code&gt; &lt;/p&gt;
--- @param MasterUserPassword [String] &lt;p&gt;The password for the master database user. This password can contain any printable ASCII character except &quot;/&quot;, &quot;&quot;&quot;, or &quot;@&quot;.&lt;/p&gt; &lt;p&gt;Constraints: Must contain from 8 to 41 characters.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The KMS key identifier for an encrypted DB cluster.&lt;/p&gt; &lt;p&gt;The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KM encryption key.&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;StorageEncrypted&lt;/code&gt; parameter is true, and you do not specify a value for the &lt;code&gt;KmsKeyId&lt;/code&gt; parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.&lt;/p&gt;
--- @param StorageEncrypted [BooleanOptional] &lt;p&gt;Specifies whether the restored DB cluster is encrypted.&lt;/p&gt;
--- @param DatabaseName [String] &lt;p&gt;The database name for the restored DB cluster.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number on which the instances in the restored DB cluster accept connections.&lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;3306&lt;/code&gt; &lt;/p&gt;
+-- @param S3Prefix [String] <p>The prefix for all of the file names that contain the data used to create the Amazon Aurora DB cluster. If you do not specify a <b>SourceS3Prefix</b> value, then the Amazon Aurora DB cluster is created by using all of the files in the Amazon S3 bucket.</p>
+-- @param PreferredBackupWindow [String] <p>The daily time range during which automated backups are created if automated backups are enabled using the <code>BackupRetentionPeriod</code> parameter. </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i> </p> <p>Constraints:</p> <ul> <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Times should be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p> </li> </ul>
+-- @param SourceEngineVersion [String] <p>The version of the database that the backup files were created from.</p> <p>MySQL version 5.5 and 5.6 are supported. </p> <p>Example: <code>5.6.22</code> </p>
+-- @param BackupRetentionPeriod [IntegerOptional] <p>The number of days for which automated backups of the restored DB cluster are retained. You must specify a minimum value of 1.</p> <p>Default: 1</p> <p>Constraints:</p> <ul> <li> <p>Must be a value from 1 to 35</p> </li> </ul>
+-- @param PreferredMaintenanceWindow [String] <p>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i> </p> <p>Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute window.</p>
+-- @param S3BucketName [String] <p>The name of the Amazon S3 bucket that contains the data used to create the Amazon Aurora DB cluster.</p>
+-- @param DBClusterParameterGroupName [String] <p>The name of the DB cluster parameter group to associate with the restored DB cluster. If this argument is omitted, <code>default.aurora5.6</code> will be used. </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param EngineVersion [String] <p>The version number of the database engine to use.</p> <p> <b>Aurora</b> </p> <p>Example: <code>5.6.10a</code> </p>
+-- @param DBSubnetGroupName [String] <p>A DB subnet group to associate with the restored DB cluster.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- @param OptionGroupName [String] <p>A value that indicates that the restored DB cluster should be associated with the specified option group.</p> <p>Permanent options cannot be removed from an option group. An option group cannot be removed from a DB cluster once it is associated with a DB cluster.</p>
+-- @param CharacterSetName [String] <p>A value that indicates that the restored DB cluster should be associated with the specified CharacterSet.</p>
+-- @param DBClusterIdentifier [String] <p>The name of the DB cluster to create from the source data in the S3 bucket. This parameter is isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code> </p>
+-- @param MasterUserPassword [String] <p>The password for the master database user. This password can contain any printable ASCII character except "/", """, or "@".</p> <p>Constraints: Must contain from 8 to 41 characters.</p>
+-- @param KmsKeyId [String] <p>The KMS key identifier for an encrypted DB cluster.</p> <p>The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KM encryption key.</p> <p>If the <code>StorageEncrypted</code> parameter is true, and you do not specify a value for the <code>KmsKeyId</code> parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- @param StorageEncrypted [BooleanOptional] <p>Specifies whether the restored DB cluster is encrypted.</p>
+-- @param DatabaseName [String] <p>The database name for the restored DB cluster.</p>
+-- @param AvailabilityZones [AvailabilityZones] <p>A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.</p>
+-- @param Port [IntegerOptional] <p>The port number on which the instances in the restored DB cluster accept connections.</p> <p> Default: <code>3306</code> </p>
 -- Required parameter: DBClusterIdentifier
 -- Required parameter: Engine
 -- Required parameter: MasterUsername
@@ -2320,7 +2320,7 @@ function M.AssertDBClusterNotFoundFault(struct)
 end
 
 --- Create a structure of type DBClusterNotFoundFault
--- &lt;p&gt; &lt;i&gt;DBClusterIdentifier&lt;/i&gt; does not refer to an existing DB cluster. &lt;/p&gt;
+-- <p> <i>DBClusterIdentifier</i> does not refer to an existing DB cluster. </p>
 function M.DBClusterNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterNotFoundFault")
 	local t = { 
@@ -2340,7 +2340,7 @@ function M.AssertPointInTimeRestoreNotEnabledFault(struct)
 end
 
 --- Create a structure of type PointInTimeRestoreNotEnabledFault
--- &lt;p&gt; &lt;i&gt;SourceDBInstanceIdentifier&lt;/i&gt; refers to a DB instance with &lt;i&gt;BackupRetentionPeriod&lt;/i&gt; equal to 0. &lt;/p&gt;
+-- <p> <i>SourceDBInstanceIdentifier</i> refers to a DB instance with <i>BackupRetentionPeriod</i> equal to 0. </p>
 function M.PointInTimeRestoreNotEnabledFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PointInTimeRestoreNotEnabledFault")
 	local t = { 
@@ -2360,7 +2360,7 @@ function M.AssertDescribeAccountAttributesMessage(struct)
 end
 
 --- Create a structure of type DescribeAccountAttributesMessage
--- &lt;p/&gt;
+-- <p/>
 function M.DescribeAccountAttributesMessage(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountAttributesMessage")
 	local t = { 
@@ -2387,11 +2387,11 @@ end
 
 --- Create a structure of type DescribeDBParametersMessage
 --  
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribeDBParameters&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;The name of a specific DB parameter group to return details for.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param Source [String] &lt;p&gt;The parameter types to return.&lt;/p&gt; &lt;p&gt;Default: All parameter types returned&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;user | system | engine-default&lt;/code&gt; &lt;/p&gt;
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribeDBParameters</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBParameterGroupName [String] <p>The name of a specific DB parameter group to return details for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param Source [String] <p>The parameter types to return.</p> <p>Default: All parameter types returned</p> <p>Valid Values: <code>user | system | engine-default</code> </p>
 -- Required parameter: DBParameterGroupName
 function M.DescribeDBParametersMessage(Marker, DBParameterGroupName, MaxRecords, Filters, Source, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBParametersMessage")
@@ -2417,7 +2417,7 @@ function M.AssertInvalidDBSubnetGroupFault(struct)
 end
 
 --- Create a structure of type InvalidDBSubnetGroupFault
--- &lt;p&gt;Indicates the DBSubnetGroup does not belong to the same VPC as that of an existing cross region read replica of the same source instance.&lt;/p&gt;
+-- <p>Indicates the DBSubnetGroup does not belong to the same VPC as that of an existing cross region read replica of the same source instance.</p>
 function M.InvalidDBSubnetGroupFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDBSubnetGroupFault")
 	local t = { 
@@ -2462,9 +2462,9 @@ function M.AssertDBClusterParameterGroupsMessage(struct)
 end
 
 --- Create a structure of type DBClusterParameterGroupsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribeDBClusterParameterGroups&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBClusterParameterGroups [DBClusterParameterGroupList] &lt;p&gt;A list of DB cluster parameter groups.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribeDBClusterParameterGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBClusterParameterGroups [DBClusterParameterGroupList] <p>A list of DB cluster parameter groups.</p>
 function M.DBClusterParameterGroupsMessage(Marker, DBClusterParameterGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterParameterGroupsMessage")
 	local t = { 
@@ -2511,8 +2511,8 @@ function M.AssertDeleteDBParameterGroupMessage(struct)
 end
 
 --- Create a structure of type DeleteDBParameterGroupMessage
--- &lt;p/&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;The name of the DB parameter group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the name of an existing DB parameter group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You cannot delete a default DB parameter group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be associated with any DB instances&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param DBParameterGroupName [String] <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must be the name of an existing DB parameter group</p> </li> <li> <p>You cannot delete a default DB parameter group</p> </li> <li> <p>Cannot be associated with any DB instances</p> </li> </ul>
 -- Required parameter: DBParameterGroupName
 function M.DeleteDBParameterGroupMessage(DBParameterGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDBParameterGroupMessage")
@@ -2534,7 +2534,7 @@ function M.AssertDBUpgradeDependencyFailureFault(struct)
 end
 
 --- Create a structure of type DBUpgradeDependencyFailureFault
--- &lt;p&gt;The DB upgrade failed because a resource the DB depends on could not be modified.&lt;/p&gt;
+-- <p>The DB upgrade failed because a resource the DB depends on could not be modified.</p>
 function M.DBUpgradeDependencyFailureFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBUpgradeDependencyFailureFault")
 	local t = { 
@@ -2554,7 +2554,7 @@ function M.AssertAuthorizationQuotaExceededFault(struct)
 end
 
 --- Create a structure of type AuthorizationQuotaExceededFault
--- &lt;p&gt;DB security group authorization quota has been reached.&lt;/p&gt;
+-- <p>DB security group authorization quota has been reached.</p>
 function M.AuthorizationQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationQuotaExceededFault")
 	local t = { 
@@ -2574,7 +2574,7 @@ function M.AssertInvalidDBClusterSnapshotStateFault(struct)
 end
 
 --- Create a structure of type InvalidDBClusterSnapshotStateFault
--- &lt;p&gt;The supplied value is not a valid DB cluster snapshot state.&lt;/p&gt;
+-- <p>The supplied value is not a valid DB cluster snapshot state.</p>
 function M.InvalidDBClusterSnapshotStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDBClusterSnapshotStateFault")
 	local t = { 
@@ -2604,17 +2604,17 @@ function M.AssertDescribeReservedDBInstancesMessage(struct)
 end
 
 --- Create a structure of type DescribeReservedDBInstancesMessage
--- &lt;p/&gt;
--- @param MultiAZ [BooleanOptional] &lt;p&gt;The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified Multi-AZ parameter.&lt;/p&gt;
--- @param OfferingType [String] &lt;p&gt;The offering type filter value. Specify this parameter to show only the available offerings matching the specified offering type.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;&quot;Partial Upfront&quot; | &quot;All Upfront&quot; | &quot;No Upfront&quot; &lt;/code&gt; &lt;/p&gt;
--- @param ProductDescription [String] &lt;p&gt;The product description filter value. Specify this parameter to show only those reservations matching the specified product description.&lt;/p&gt;
--- @param ReservedDBInstancesOfferingId [String] &lt;p&gt;The offering identifier filter value. Specify this parameter to show only purchased reservations matching the specified offering identifier.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param Duration [String] &lt;p&gt;The duration filter value, specified in years or seconds. Specify this parameter to show only reservations for this duration.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;1 | 3 | 31536000 | 94608000&lt;/code&gt; &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more than the &lt;code&gt;MaxRecords&lt;/code&gt; value is available, a pagination token called a marker is included in the response so that the following results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param ReservedDBInstanceId [String] &lt;p&gt;The reserved DB instance identifier filter value. Specify this parameter to show only the reservation that matches the specified reservation ID.&lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;The DB instance class filter value. Specify this parameter to show only those reservations matching the specified DB instances class.&lt;/p&gt;
+-- <p/>
+-- @param MultiAZ [BooleanOptional] <p>The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified Multi-AZ parameter.</p>
+-- @param OfferingType [String] <p>The offering type filter value. Specify this parameter to show only the available offerings matching the specified offering type.</p> <p>Valid Values: <code>"Partial Upfront" | "All Upfront" | "No Upfront" </code> </p>
+-- @param ProductDescription [String] <p>The product description filter value. Specify this parameter to show only those reservations matching the specified product description.</p>
+-- @param ReservedDBInstancesOfferingId [String] <p>The offering identifier filter value. Specify this parameter to show only purchased reservations matching the specified offering identifier.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param Duration [String] <p>The duration filter value, specified in years or seconds. Specify this parameter to show only reservations for this duration.</p> <p>Valid Values: <code>1 | 3 | 31536000 | 94608000</code> </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is available, a pagination token called a marker is included in the response so that the following results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param ReservedDBInstanceId [String] <p>The reserved DB instance identifier filter value. Specify this parameter to show only the reservation that matches the specified reservation ID.</p>
+-- @param DBInstanceClass [String] <p>The DB instance class filter value. Specify this parameter to show only those reservations matching the specified DB instances class.</p>
 function M.DescribeReservedDBInstancesMessage(MultiAZ, OfferingType, ProductDescription, ReservedDBInstancesOfferingId, Marker, Duration, MaxRecords, Filters, ReservedDBInstanceId, DBInstanceClass, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReservedDBInstancesMessage")
 	local t = { 
@@ -2676,16 +2676,16 @@ function M.AssertDescribeEventsMessage(struct)
 end
 
 --- Create a structure of type DescribeEventsMessage
--- &lt;p/&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt;A list of event categories that trigger notifications for a event notification subscription.&lt;/p&gt;
--- @param SourceType [SourceType] &lt;p&gt;The event source to retrieve events for. If no value is specified, all events are returned.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous DescribeEvents request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param StartTime [TStamp] &lt;p&gt; The beginning of the time interval to retrieve events for, specified in ISO 8601 format. For more information about ISO 8601, go to the &lt;a href=&quot;http://en.wikipedia.org/wiki/ISO_8601&quot;&gt;ISO8601 Wikipedia page.&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Example: 2009-07-08T18:00Z&lt;/p&gt;
--- @param Duration [IntegerOptional] &lt;p&gt;The number of minutes to retrieve events for.&lt;/p&gt; &lt;p&gt;Default: 60&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param SourceIdentifier [String] &lt;p&gt;The identifier of the event source for which events will be returned. If not specified, then all sources are included in the response.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If SourceIdentifier is supplied, SourceType must also be provided.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is &lt;code&gt;DBInstance&lt;/code&gt;, then a &lt;code&gt;DBInstanceIdentifier&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is &lt;code&gt;DBSecurityGroup&lt;/code&gt;, a &lt;code&gt;DBSecurityGroupName&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is &lt;code&gt;DBParameterGroup&lt;/code&gt;, a &lt;code&gt;DBParameterGroupName&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source type is &lt;code&gt;DBSnapshot&lt;/code&gt;, a &lt;code&gt;DBSnapshotIdentifier&lt;/code&gt; must be supplied.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param EndTime [TStamp] &lt;p&gt; The end of the time interval for which to retrieve events, specified in ISO 8601 format. For more information about ISO 8601, go to the &lt;a href=&quot;http://en.wikipedia.org/wiki/ISO_8601&quot;&gt;ISO8601 Wikipedia page.&lt;/a&gt; &lt;/p&gt; &lt;p&gt;Example: 2009-07-08T18:00Z&lt;/p&gt;
+-- <p/>
+-- @param EventCategories [EventCategoriesList] <p>A list of event categories that trigger notifications for a event notification subscription.</p>
+-- @param SourceType [SourceType] <p>The event source to retrieve events for. If no value is specified, all events are returned.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous DescribeEvents request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param StartTime [TStamp] <p> The beginning of the time interval to retrieve events for, specified in ISO 8601 format. For more information about ISO 8601, go to the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p> <p>Example: 2009-07-08T18:00Z</p>
+-- @param Duration [IntegerOptional] <p>The number of minutes to retrieve events for.</p> <p>Default: 60</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param SourceIdentifier [String] <p>The identifier of the event source for which events will be returned. If not specified, then all sources are included in the response.</p> <p>Constraints:</p> <ul> <li> <p>If SourceIdentifier is supplied, SourceType must also be provided.</p> </li> <li> <p>If the source type is <code>DBInstance</code>, then a <code>DBInstanceIdentifier</code> must be supplied.</p> </li> <li> <p>If the source type is <code>DBSecurityGroup</code>, a <code>DBSecurityGroupName</code> must be supplied.</p> </li> <li> <p>If the source type is <code>DBParameterGroup</code>, a <code>DBParameterGroupName</code> must be supplied.</p> </li> <li> <p>If the source type is <code>DBSnapshot</code>, a <code>DBSnapshotIdentifier</code> must be supplied.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param EndTime [TStamp] <p> The end of the time interval for which to retrieve events, specified in ISO 8601 format. For more information about ISO 8601, go to the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p> <p>Example: 2009-07-08T18:00Z</p>
 function M.DescribeEventsMessage(EventCategories, SourceType, Marker, MaxRecords, StartTime, Duration, Filters, SourceIdentifier, EndTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsMessage")
 	local t = { 
@@ -2714,7 +2714,7 @@ function M.AssertStorageQuotaExceededFault(struct)
 end
 
 --- Create a structure of type StorageQuotaExceededFault
--- &lt;p&gt;Request would result in user exceeding the allowed amount of storage available across all DB instances.&lt;/p&gt;
+-- <p>Request would result in user exceeding the allowed amount of storage available across all DB instances.</p>
 function M.StorageQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageQuotaExceededFault")
 	local t = { 
@@ -2769,42 +2769,42 @@ function M.AssertDBCluster(struct)
 end
 
 --- Create a structure of type DBCluster
--- &lt;p&gt;Contains the result of a successful invocation of the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateDBCluster&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteDBCluster&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;FailoverDBCluster&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ModifyDBCluster&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;RestoreDBClusterFromSnapshot&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;RestoreDBClusterToPointInTime&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This data type is used as a response element in the &lt;a&gt;DescribeDBClusters&lt;/a&gt; action.&lt;/p&gt;
--- @param MasterUsername [String] &lt;p&gt;Contains the master username for the DB cluster.&lt;/p&gt;
--- @param ReaderEndpoint [String] &lt;p&gt;The reader endpoint for the DB cluster. The reader endpoint for a DB cluster load-balances connections across the Aurora Replicas that are available in a DB cluster. As clients request new connections to the reader endpoint, Aurora distributes the connection requests among the Aurora Replicas in the DB cluster. This functionality can help balance your read workload across multiple Aurora Replicas in your DB cluster. &lt;/p&gt; &lt;p&gt;If a failover occurs, and the Aurora Replica that you are connected to is promoted to be the primary instance, your connection will be dropped. To continue sending your read workload to other Aurora Replicas in the cluster, you can then reconnect to the reader endpoint.&lt;/p&gt;
--- @param ReadReplicaIdentifiers [ReadReplicaIdentifierList] &lt;p&gt;Contains one or more identifiers of the Read Replicas associated with this DB cluster.&lt;/p&gt;
--- @param CloneGroupId [String] &lt;p&gt;Identifies the clone group to which the DB cluster is associated.&lt;/p&gt;
--- @param VpcSecurityGroups [VpcSecurityGroupMembershipList] &lt;p&gt;Provides a list of VPC security groups that the DB cluster belongs to.&lt;/p&gt;
--- @param IAMDatabaseAuthenticationEnabled [Boolean] &lt;p&gt;True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise false.&lt;/p&gt;
--- @param HostedZoneId [String] &lt;p&gt;Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;Specifies the current state of this DB cluster.&lt;/p&gt;
--- @param MultiAZ [Boolean] &lt;p&gt;Specifies whether the DB cluster has instances in multiple Availability Zones.&lt;/p&gt;
--- @param LatestRestorableTime [TStamp] &lt;p&gt;Specifies the latest time to which a database can be restored with point-in-time restore.&lt;/p&gt;
--- @param PreferredBackupWindow [String] &lt;p&gt;Specifies the daily time range during which automated backups are created if automated backups are enabled, as determined by the &lt;code&gt;BackupRetentionPeriod&lt;/code&gt;. &lt;/p&gt;
--- @param DBSubnetGroup [String] &lt;p&gt;Specifies information on the subnet group associated with the DB cluster, including the name, description, and subnets in the subnet group.&lt;/p&gt;
--- @param AllocatedStorage [IntegerOptional] &lt;p&gt;For all database engines except Amazon Aurora, &lt;code&gt;AllocatedStorage&lt;/code&gt; specifies the allocated storage size in gigabytes (GB). For Aurora, &lt;code&gt;AllocatedStorage&lt;/code&gt; always returns 1, because Aurora DB cluster storage size is not fixed, but instead automatically adjusts as needed.&lt;/p&gt;
--- @param DBClusterOptionGroupMemberships [DBClusterOptionGroupMemberships] &lt;p&gt;Provides the list of option group memberships for this DB cluster.&lt;/p&gt;
--- @param BackupRetentionPeriod [IntegerOptional] &lt;p&gt;Specifies the number of days for which automatic DB snapshots are retained.&lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).&lt;/p&gt;
--- @param Engine [String] &lt;p&gt;Provides the name of the database engine to be used for this DB cluster.&lt;/p&gt;
--- @param Endpoint [String] &lt;p&gt;Specifies the connection endpoint for the primary instance of the DB cluster.&lt;/p&gt;
--- @param AssociatedRoles [DBClusterRoles] &lt;p&gt;Provides a list of the AWS Identity and Access Management (IAM) roles that are associated with the DB cluster. IAM roles that are associated with a DB cluster grant permission for the DB cluster to access other AWS services on your behalf.&lt;/p&gt;
--- @param EarliestRestorableTime [TStamp] &lt;p&gt;Specifies the earliest time to which a database can be restored with point-in-time restore.&lt;/p&gt;
--- @param PercentProgress [String] &lt;p&gt;Specifies the progress of the operation as a percentage.&lt;/p&gt;
--- @param ReplicationSourceIdentifier [String] &lt;p&gt;Contains the identifier of the source DB cluster if this DB cluster is a Read Replica.&lt;/p&gt;
--- @param ClusterCreateTime [TStamp] &lt;p&gt;Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;Indicates the database engine version.&lt;/p&gt;
--- @param CharacterSetName [String] &lt;p&gt;If present, specifies the name of the character set that this cluster is associated with.&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;Contains a user-supplied DB cluster identifier. This identifier is the unique key that identifies a DB cluster.&lt;/p&gt;
--- @param DbClusterResourceId [String] &lt;p&gt;The region-unique, immutable identifier for the DB cluster. This identifier is found in AWS CloudTrail log entries whenever the KMS key for the DB cluster is accessed.&lt;/p&gt;
--- @param DBClusterMembers [DBClusterMemberList] &lt;p&gt;Provides the list of instances that make up the DB cluster.&lt;/p&gt;
--- @param DBClusterArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the DB cluster.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;If &lt;code&gt;StorageEncrypted&lt;/code&gt; is true, the KMS key identifier for the encrypted DB cluster.&lt;/p&gt;
--- @param StorageEncrypted [Boolean] &lt;p&gt;Specifies whether the DB cluster is encrypted.&lt;/p&gt;
--- @param DatabaseName [String] &lt;p&gt;Contains the name of the initial database of this DB cluster that was provided at create time, if one was specified when the DB cluster was created. This same name is returned for the life of the DB cluster.&lt;/p&gt;
--- @param DBClusterParameterGroup [String] &lt;p&gt;Specifies the name of the DB cluster parameter group for the DB cluster.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;Specifies the port that the database engine is listening on.&lt;/p&gt;
+-- <p>Contains the result of a successful invocation of the following actions:</p> <ul> <li> <p> <a>CreateDBCluster</a> </p> </li> <li> <p> <a>DeleteDBCluster</a> </p> </li> <li> <p> <a>FailoverDBCluster</a> </p> </li> <li> <p> <a>ModifyDBCluster</a> </p> </li> <li> <p> <a>RestoreDBClusterFromSnapshot</a> </p> </li> <li> <p> <a>RestoreDBClusterToPointInTime</a> </p> </li> </ul> <p>This data type is used as a response element in the <a>DescribeDBClusters</a> action.</p>
+-- @param MasterUsername [String] <p>Contains the master username for the DB cluster.</p>
+-- @param ReaderEndpoint [String] <p>The reader endpoint for the DB cluster. The reader endpoint for a DB cluster load-balances connections across the Aurora Replicas that are available in a DB cluster. As clients request new connections to the reader endpoint, Aurora distributes the connection requests among the Aurora Replicas in the DB cluster. This functionality can help balance your read workload across multiple Aurora Replicas in your DB cluster. </p> <p>If a failover occurs, and the Aurora Replica that you are connected to is promoted to be the primary instance, your connection will be dropped. To continue sending your read workload to other Aurora Replicas in the cluster, you can then reconnect to the reader endpoint.</p>
+-- @param ReadReplicaIdentifiers [ReadReplicaIdentifierList] <p>Contains one or more identifiers of the Read Replicas associated with this DB cluster.</p>
+-- @param CloneGroupId [String] <p>Identifies the clone group to which the DB cluster is associated.</p>
+-- @param VpcSecurityGroups [VpcSecurityGroupMembershipList] <p>Provides a list of VPC security groups that the DB cluster belongs to.</p>
+-- @param IAMDatabaseAuthenticationEnabled [Boolean] <p>True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise false.</p>
+-- @param HostedZoneId [String] <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.</p>
+-- @param Status [String] <p>Specifies the current state of this DB cluster.</p>
+-- @param MultiAZ [Boolean] <p>Specifies whether the DB cluster has instances in multiple Availability Zones.</p>
+-- @param LatestRestorableTime [TStamp] <p>Specifies the latest time to which a database can be restored with point-in-time restore.</p>
+-- @param PreferredBackupWindow [String] <p>Specifies the daily time range during which automated backups are created if automated backups are enabled, as determined by the <code>BackupRetentionPeriod</code>. </p>
+-- @param DBSubnetGroup [String] <p>Specifies information on the subnet group associated with the DB cluster, including the name, description, and subnets in the subnet group.</p>
+-- @param AllocatedStorage [IntegerOptional] <p>For all database engines except Amazon Aurora, <code>AllocatedStorage</code> specifies the allocated storage size in gigabytes (GB). For Aurora, <code>AllocatedStorage</code> always returns 1, because Aurora DB cluster storage size is not fixed, but instead automatically adjusts as needed.</p>
+-- @param DBClusterOptionGroupMemberships [DBClusterOptionGroupMemberships] <p>Provides the list of option group memberships for this DB cluster.</p>
+-- @param BackupRetentionPeriod [IntegerOptional] <p>Specifies the number of days for which automatic DB snapshots are retained.</p>
+-- @param PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</p>
+-- @param Engine [String] <p>Provides the name of the database engine to be used for this DB cluster.</p>
+-- @param Endpoint [String] <p>Specifies the connection endpoint for the primary instance of the DB cluster.</p>
+-- @param AssociatedRoles [DBClusterRoles] <p>Provides a list of the AWS Identity and Access Management (IAM) roles that are associated with the DB cluster. IAM roles that are associated with a DB cluster grant permission for the DB cluster to access other AWS services on your behalf.</p>
+-- @param EarliestRestorableTime [TStamp] <p>Specifies the earliest time to which a database can be restored with point-in-time restore.</p>
+-- @param PercentProgress [String] <p>Specifies the progress of the operation as a percentage.</p>
+-- @param ReplicationSourceIdentifier [String] <p>Contains the identifier of the source DB cluster if this DB cluster is a Read Replica.</p>
+-- @param ClusterCreateTime [TStamp] <p>Specifies the time when the DB cluster was created, in Universal Coordinated Time (UTC).</p>
+-- @param EngineVersion [String] <p>Indicates the database engine version.</p>
+-- @param CharacterSetName [String] <p>If present, specifies the name of the character set that this cluster is associated with.</p>
+-- @param DBClusterIdentifier [String] <p>Contains a user-supplied DB cluster identifier. This identifier is the unique key that identifies a DB cluster.</p>
+-- @param DbClusterResourceId [String] <p>The region-unique, immutable identifier for the DB cluster. This identifier is found in AWS CloudTrail log entries whenever the KMS key for the DB cluster is accessed.</p>
+-- @param DBClusterMembers [DBClusterMemberList] <p>Provides the list of instances that make up the DB cluster.</p>
+-- @param DBClusterArn [String] <p>The Amazon Resource Name (ARN) for the DB cluster.</p>
+-- @param KmsKeyId [String] <p>If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB cluster.</p>
+-- @param StorageEncrypted [Boolean] <p>Specifies whether the DB cluster is encrypted.</p>
+-- @param DatabaseName [String] <p>Contains the name of the initial database of this DB cluster that was provided at create time, if one was specified when the DB cluster was created. This same name is returned for the life of the DB cluster.</p>
+-- @param DBClusterParameterGroup [String] <p>Specifies the name of the DB cluster parameter group for the DB cluster.</p>
+-- @param AvailabilityZones [AvailabilityZones] <p>Provides the list of EC2 Availability Zones that instances in the DB cluster can be created in.</p>
+-- @param Port [IntegerOptional] <p>Specifies the port that the database engine is listening on.</p>
 function M.DBCluster(MasterUsername, ReaderEndpoint, ReadReplicaIdentifiers, CloneGroupId, VpcSecurityGroups, IAMDatabaseAuthenticationEnabled, HostedZoneId, Status, MultiAZ, LatestRestorableTime, PreferredBackupWindow, DBSubnetGroup, AllocatedStorage, DBClusterOptionGroupMemberships, BackupRetentionPeriod, PreferredMaintenanceWindow, Engine, Endpoint, AssociatedRoles, EarliestRestorableTime, PercentProgress, ReplicationSourceIdentifier, ClusterCreateTime, EngineVersion, CharacterSetName, DBClusterIdentifier, DbClusterResourceId, DBClusterMembers, DBClusterArn, KmsKeyId, StorageEncrypted, DatabaseName, DBClusterParameterGroup, AvailabilityZones, Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBCluster")
 	local t = { 
@@ -2859,7 +2859,7 @@ function M.AssertDBSnapshotAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type DBSnapshotAlreadyExistsFault
--- &lt;p&gt; &lt;i&gt;DBSnapshotIdentifier&lt;/i&gt; is already used by an existing snapshot. &lt;/p&gt;
+-- <p> <i>DBSnapshotIdentifier</i> is already used by an existing snapshot. </p>
 function M.DBSnapshotAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSnapshotAlreadyExistsFault")
 	local t = { 
@@ -2881,9 +2881,9 @@ function M.AssertDBSnapshotAttribute(struct)
 end
 
 --- Create a structure of type DBSnapshotAttribute
--- &lt;p&gt;Contains the name and values of a manual DB snapshot attribute&lt;/p&gt; &lt;p&gt;Manual DB snapshot attributes are used to authorize other AWS accounts to restore a manual DB snapshot. For more information, see the &lt;a&gt;ModifyDBSnapshotAttribute&lt;/a&gt; API.&lt;/p&gt;
--- @param AttributeName [String] &lt;p&gt;The name of the manual DB snapshot attribute.&lt;/p&gt; &lt;p&gt;The attribute named &lt;code&gt;restore&lt;/code&gt; refers to the list of AWS accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the &lt;a&gt;ModifyDBSnapshotAttribute&lt;/a&gt; API action.&lt;/p&gt;
--- @param AttributeValues [AttributeValueList] &lt;p&gt;The value or values for the manual DB snapshot attribute.&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;AttributeName&lt;/code&gt; field is set to &lt;code&gt;restore&lt;/code&gt;, then this element returns a list of IDs of the AWS accounts that are authorized to copy or restore the manual DB snapshot. If a value of &lt;code&gt;all&lt;/code&gt; is in the list, then the manual DB snapshot is public and available for any AWS account to copy or restore.&lt;/p&gt;
+-- <p>Contains the name and values of a manual DB snapshot attribute</p> <p>Manual DB snapshot attributes are used to authorize other AWS accounts to restore a manual DB snapshot. For more information, see the <a>ModifyDBSnapshotAttribute</a> API.</p>
+-- @param AttributeName [String] <p>The name of the manual DB snapshot attribute.</p> <p>The attribute named <code>restore</code> refers to the list of AWS accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the <a>ModifyDBSnapshotAttribute</a> API action.</p>
+-- @param AttributeValues [AttributeValueList] <p>The value or values for the manual DB snapshot attribute.</p> <p>If the <code>AttributeName</code> field is set to <code>restore</code>, then this element returns a list of IDs of the AWS accounts that are authorized to copy or restore the manual DB snapshot. If a value of <code>all</code> is in the list, then the manual DB snapshot is public and available for any AWS account to copy or restore.</p>
 function M.DBSnapshotAttribute(AttributeName, AttributeValues, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSnapshotAttribute")
 	local t = { 
@@ -2907,8 +2907,8 @@ function M.AssertDescribeDBSnapshotAttributesMessage(struct)
 end
 
 --- Create a structure of type DescribeDBSnapshotAttributesMessage
--- &lt;p/&gt;
--- @param DBSnapshotIdentifier [String] &lt;p&gt;The identifier for the DB snapshot to describe the attributes for.&lt;/p&gt;
+-- <p/>
+-- @param DBSnapshotIdentifier [String] <p>The identifier for the DB snapshot to describe the attributes for.</p>
 -- Required parameter: DBSnapshotIdentifier
 function M.DescribeDBSnapshotAttributesMessage(DBSnapshotIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBSnapshotAttributesMessage")
@@ -2936,13 +2936,13 @@ function M.AssertEvent(struct)
 end
 
 --- Create a structure of type Event
--- &lt;p&gt; This data type is used as a response element in the &lt;a&gt;DescribeEvents&lt;/a&gt; action. &lt;/p&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt;Specifies the category for the event.&lt;/p&gt;
--- @param SourceType [SourceType] &lt;p&gt;Specifies the source type for this event.&lt;/p&gt;
--- @param SourceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the event.&lt;/p&gt;
--- @param Date [TStamp] &lt;p&gt;Specifies the date and time of the event.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;Provides the text of this event.&lt;/p&gt;
--- @param SourceIdentifier [String] &lt;p&gt;Provides the identifier for the source of the event.&lt;/p&gt;
+-- <p> This data type is used as a response element in the <a>DescribeEvents</a> action. </p>
+-- @param EventCategories [EventCategoriesList] <p>Specifies the category for the event.</p>
+-- @param SourceType [SourceType] <p>Specifies the source type for this event.</p>
+-- @param SourceArn [String] <p>The Amazon Resource Name (ARN) for the event.</p>
+-- @param Date [TStamp] <p>Specifies the date and time of the event.</p>
+-- @param Message [String] <p>Provides the text of this event.</p>
+-- @param SourceIdentifier [String] <p>Provides the identifier for the source of the event.</p>
 function M.Event(EventCategories, SourceType, SourceArn, Date, Message, SourceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Event")
 	local t = { 
@@ -2970,8 +2970,8 @@ function M.AssertDeleteDBClusterSnapshotMessage(struct)
 end
 
 --- Create a structure of type DeleteDBClusterSnapshotMessage
--- &lt;p/&gt;
--- @param DBClusterSnapshotIdentifier [String] &lt;p&gt;The identifier of the DB cluster snapshot to delete.&lt;/p&gt; &lt;p&gt;Constraints: Must be the name of an existing DB cluster snapshot in the &lt;code&gt;available&lt;/code&gt; state.&lt;/p&gt;
+-- <p/>
+-- @param DBClusterSnapshotIdentifier [String] <p>The identifier of the DB cluster snapshot to delete.</p> <p>Constraints: Must be the name of an existing DB cluster snapshot in the <code>available</code> state.</p>
 -- Required parameter: DBClusterSnapshotIdentifier
 function M.DeleteDBClusterSnapshotMessage(DBClusterSnapshotIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDBClusterSnapshotMessage")
@@ -3016,7 +3016,7 @@ function M.AssertSourceNotFoundFault(struct)
 end
 
 --- Create a structure of type SourceNotFoundFault
--- &lt;p&gt;The requested source could not be found.&lt;/p&gt;
+-- <p>The requested source could not be found.</p>
 function M.SourceNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SourceNotFoundFault")
 	local t = { 
@@ -3044,15 +3044,15 @@ function M.AssertDescribeDBClusterSnapshotsMessage(struct)
 end
 
 --- Create a structure of type DescribeDBClusterSnapshotsMessage
--- &lt;p/&gt;
--- @param IncludeShared [Boolean] &lt;p&gt;Set this value to &lt;code&gt;true&lt;/code&gt; to include shared manual DB cluster snapshots from other AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to &lt;code&gt;false&lt;/code&gt;. The default is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;You can give an AWS account permission to restore a manual DB cluster snapshot from another AWS account by the &lt;a&gt;ModifyDBClusterSnapshotAttribute&lt;/a&gt; API action.&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The ID of the DB cluster to retrieve the list of DB cluster snapshots for. This parameter cannot be used in conjunction with the &lt;code&gt;DBClusterSnapshotIdentifier&lt;/code&gt; parameter. This parameter is not case-sensitive. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param IncludePublic [Boolean] &lt;p&gt;Set this value to &lt;code&gt;true&lt;/code&gt; to include manual DB cluster snapshots that are public and can be copied or restored by any AWS account, otherwise set this value to &lt;code&gt;false&lt;/code&gt;. The default is &lt;code&gt;false&lt;/code&gt;. The default is false.&lt;/p&gt; &lt;p&gt;You can share a manual DB cluster snapshot as public by using the &lt;a&gt;ModifyDBClusterSnapshotAttribute&lt;/a&gt; API action.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt;An optional pagination token provided by a previous &lt;code&gt;DescribeDBClusterSnapshots&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBClusterSnapshotIdentifier [String] &lt;p&gt;A specific DB cluster snapshot identifier to describe. This parameter cannot be used in conjunction with the &lt;code&gt;DBClusterIdentifier&lt;/code&gt; parameter. This value is stored as a lowercase string. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If this identifier is for an automated snapshot, the &lt;code&gt;SnapshotType&lt;/code&gt; parameter must also be specified.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param SnapshotType [String] &lt;p&gt;The type of DB cluster snapshots to be returned. You can specify one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;automated&lt;/code&gt; - Return all DB cluster snapshots that have been automatically taken by Amazon RDS for my AWS account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;manual&lt;/code&gt; - Return all DB cluster snapshots that have been taken by my AWS account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;shared&lt;/code&gt; - Return all manual DB cluster snapshots that have been shared to my AWS account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;public&lt;/code&gt; - Return all DB cluster snapshots that have been marked as public.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you don't specify a &lt;code&gt;SnapshotType&lt;/code&gt; value, then both automated and manual DB cluster snapshots are returned. You can include shared DB cluster snapshots with these results by setting the &lt;code&gt;IncludeShared&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt;. You can include public DB cluster snapshots with these results by setting the &lt;code&gt;IncludePublic&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;IncludeShared&lt;/code&gt; and &lt;code&gt;IncludePublic&lt;/code&gt; parameters don't apply for &lt;code&gt;SnapshotType&lt;/code&gt; values of &lt;code&gt;manual&lt;/code&gt; or &lt;code&gt;automated&lt;/code&gt;. The &lt;code&gt;IncludePublic&lt;/code&gt; parameter doesn't apply when &lt;code&gt;SnapshotType&lt;/code&gt; is set to &lt;code&gt;shared&lt;/code&gt;. The &lt;code&gt;IncludeShared&lt;/code&gt; parameter doesn't apply when &lt;code&gt;SnapshotType&lt;/code&gt; is set to &lt;code&gt;public&lt;/code&gt;.&lt;/p&gt;
+-- <p/>
+-- @param IncludeShared [Boolean] <p>Set this value to <code>true</code> to include shared manual DB cluster snapshots from other AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to <code>false</code>. The default is <code>false</code>.</p> <p>You can give an AWS account permission to restore a manual DB cluster snapshot from another AWS account by the <a>ModifyDBClusterSnapshotAttribute</a> API action.</p>
+-- @param DBClusterIdentifier [String] <p>The ID of the DB cluster to retrieve the list of DB cluster snapshots for. This parameter cannot be used in conjunction with the <code>DBClusterSnapshotIdentifier</code> parameter. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param IncludePublic [Boolean] <p>Set this value to <code>true</code> to include manual DB cluster snapshots that are public and can be copied or restored by any AWS account, otherwise set this value to <code>false</code>. The default is <code>false</code>. The default is false.</p> <p>You can share a manual DB cluster snapshot as public by using the <a>ModifyDBClusterSnapshotAttribute</a> API action.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Marker [String] <p>An optional pagination token provided by a previous <code>DescribeDBClusterSnapshots</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBClusterSnapshotIdentifier [String] <p>A specific DB cluster snapshot identifier to describe. This parameter cannot be used in conjunction with the <code>DBClusterIdentifier</code> parameter. This value is stored as a lowercase string. </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> <li> <p>If this identifier is for an automated snapshot, the <code>SnapshotType</code> parameter must also be specified.</p> </li> </ul>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param SnapshotType [String] <p>The type of DB cluster snapshots to be returned. You can specify one of the following values:</p> <ul> <li> <p> <code>automated</code> - Return all DB cluster snapshots that have been automatically taken by Amazon RDS for my AWS account.</p> </li> <li> <p> <code>manual</code> - Return all DB cluster snapshots that have been taken by my AWS account.</p> </li> <li> <p> <code>shared</code> - Return all manual DB cluster snapshots that have been shared to my AWS account.</p> </li> <li> <p> <code>public</code> - Return all DB cluster snapshots that have been marked as public.</p> </li> </ul> <p>If you don't specify a <code>SnapshotType</code> value, then both automated and manual DB cluster snapshots are returned. You can include shared DB cluster snapshots with these results by setting the <code>IncludeShared</code> parameter to <code>true</code>. You can include public DB cluster snapshots with these results by setting the <code>IncludePublic</code> parameter to <code>true</code>.</p> <p>The <code>IncludeShared</code> and <code>IncludePublic</code> parameters don't apply for <code>SnapshotType</code> values of <code>manual</code> or <code>automated</code>. The <code>IncludePublic</code> parameter doesn't apply when <code>SnapshotType</code> is set to <code>shared</code>. The <code>IncludeShared</code> parameter doesn't apply when <code>SnapshotType</code> is set to <code>public</code>.</p>
 function M.DescribeDBClusterSnapshotsMessage(IncludeShared, DBClusterIdentifier, IncludePublic, MaxRecords, Marker, DBClusterSnapshotIdentifier, Filters, SnapshotType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBClusterSnapshotsMessage")
 	local t = { 
@@ -3090,17 +3090,17 @@ function M.AssertParameter(struct)
 end
 
 --- Create a structure of type Parameter
--- &lt;p&gt; This data type is used as a request parameter in the &lt;a&gt;ModifyDBParameterGroup&lt;/a&gt; and &lt;a&gt;ResetDBParameterGroup&lt;/a&gt; actions. &lt;/p&gt; &lt;p&gt;This data type is used as a response element in the &lt;a&gt;DescribeEngineDefaultParameters&lt;/a&gt; and &lt;a&gt;DescribeDBParameters&lt;/a&gt; actions.&lt;/p&gt;
--- @param ApplyMethod [ApplyMethod] &lt;p&gt;Indicates when to apply parameter updates.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;Provides a description of the parameter.&lt;/p&gt;
--- @param DataType [String] &lt;p&gt;Specifies the valid data type for the parameter.&lt;/p&gt;
--- @param IsModifiable [Boolean] &lt;p&gt; Indicates whether (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;) the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed. &lt;/p&gt;
--- @param AllowedValues [String] &lt;p&gt;Specifies the valid range of values for the parameter.&lt;/p&gt;
--- @param Source [String] &lt;p&gt;Indicates the source of the parameter value.&lt;/p&gt;
--- @param ParameterValue [String] &lt;p&gt;Specifies the value of the parameter.&lt;/p&gt;
--- @param ParameterName [String] &lt;p&gt;Specifies the name of the parameter.&lt;/p&gt;
--- @param MinimumEngineVersion [String] &lt;p&gt;The earliest engine version to which the parameter can apply.&lt;/p&gt;
--- @param ApplyType [String] &lt;p&gt;Specifies the engine specific parameters type.&lt;/p&gt;
+-- <p> This data type is used as a request parameter in the <a>ModifyDBParameterGroup</a> and <a>ResetDBParameterGroup</a> actions. </p> <p>This data type is used as a response element in the <a>DescribeEngineDefaultParameters</a> and <a>DescribeDBParameters</a> actions.</p>
+-- @param ApplyMethod [ApplyMethod] <p>Indicates when to apply parameter updates.</p>
+-- @param Description [String] <p>Provides a description of the parameter.</p>
+-- @param DataType [String] <p>Specifies the valid data type for the parameter.</p>
+-- @param IsModifiable [Boolean] <p> Indicates whether (<code>true</code>) or not (<code>false</code>) the parameter can be modified. Some parameters have security or operational implications that prevent them from being changed. </p>
+-- @param AllowedValues [String] <p>Specifies the valid range of values for the parameter.</p>
+-- @param Source [String] <p>Indicates the source of the parameter value.</p>
+-- @param ParameterValue [String] <p>Specifies the value of the parameter.</p>
+-- @param ParameterName [String] <p>Specifies the name of the parameter.</p>
+-- @param MinimumEngineVersion [String] <p>The earliest engine version to which the parameter can apply.</p>
+-- @param ApplyType [String] <p>Specifies the engine specific parameters type.</p>
 function M.Parameter(ApplyMethod, Description, DataType, IsModifiable, AllowedValues, Source, ParameterValue, ParameterName, MinimumEngineVersion, ApplyType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Parameter")
 	local t = { 
@@ -3155,9 +3155,9 @@ function M.AssertCharacterSet(struct)
 end
 
 --- Create a structure of type CharacterSet
--- &lt;p&gt; This data type is used as a response element in the action &lt;a&gt;DescribeDBEngineVersions&lt;/a&gt;. &lt;/p&gt;
--- @param CharacterSetName [String] &lt;p&gt;The name of the character set.&lt;/p&gt;
--- @param CharacterSetDescription [String] &lt;p&gt;The description of the character set.&lt;/p&gt;
+-- <p> This data type is used as a response element in the action <a>DescribeDBEngineVersions</a>. </p>
+-- @param CharacterSetName [String] <p>The name of the character set.</p>
+-- @param CharacterSetDescription [String] <p>The description of the character set.</p>
 function M.CharacterSet(CharacterSetName, CharacterSetDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CharacterSet")
 	local t = { 
@@ -3180,8 +3180,8 @@ function M.AssertEventCategoriesMessage(struct)
 end
 
 --- Create a structure of type EventCategoriesMessage
--- &lt;p&gt;Data returned from the &lt;b&gt;DescribeEventCategories&lt;/b&gt; action.&lt;/p&gt;
--- @param EventCategoriesMapList [EventCategoriesMapList] &lt;p&gt;A list of EventCategoriesMap data types.&lt;/p&gt;
+-- <p>Data returned from the <b>DescribeEventCategories</b> action.</p>
+-- @param EventCategoriesMapList [EventCategoriesMapList] <p>A list of EventCategoriesMap data types.</p>
 function M.EventCategoriesMessage(EventCategoriesMapList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventCategoriesMessage")
 	local t = { 
@@ -3225,7 +3225,7 @@ function M.AssertDBInstanceNotFoundFault(struct)
 end
 
 --- Create a structure of type DBInstanceNotFoundFault
--- &lt;p&gt; &lt;i&gt;DBInstanceIdentifier&lt;/i&gt; does not refer to an existing DB instance. &lt;/p&gt;
+-- <p> <i>DBInstanceIdentifier</i> does not refer to an existing DB instance. </p>
 function M.DBInstanceNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBInstanceNotFoundFault")
 	local t = { 
@@ -3247,9 +3247,9 @@ function M.AssertRecurringCharge(struct)
 end
 
 --- Create a structure of type RecurringCharge
--- &lt;p&gt; This data type is used as a response element in the &lt;a&gt;DescribeReservedDBInstances&lt;/a&gt; and &lt;a&gt;DescribeReservedDBInstancesOfferings&lt;/a&gt; actions. &lt;/p&gt;
--- @param RecurringChargeAmount [Double] &lt;p&gt;The amount of the recurring charge.&lt;/p&gt;
--- @param RecurringChargeFrequency [String] &lt;p&gt;The frequency of the recurring charge.&lt;/p&gt;
+-- <p> This data type is used as a response element in the <a>DescribeReservedDBInstances</a> and <a>DescribeReservedDBInstancesOfferings</a> actions. </p>
+-- @param RecurringChargeAmount [Double] <p>The amount of the recurring charge.</p>
+-- @param RecurringChargeFrequency [String] <p>The frequency of the recurring charge.</p>
 function M.RecurringCharge(RecurringChargeAmount, RecurringChargeFrequency, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecurringCharge")
 	local t = { 
@@ -3272,8 +3272,8 @@ function M.AssertAccountAttributesMessage(struct)
 end
 
 --- Create a structure of type AccountAttributesMessage
--- &lt;p&gt;Data returned by the &lt;b&gt;DescribeAccountAttributes&lt;/b&gt; action.&lt;/p&gt;
--- @param AccountQuotas [AccountQuotaList] &lt;p&gt;A list of &lt;a&gt;AccountQuota&lt;/a&gt; objects. Within this list, each quota has a name, a count of usage toward the quota maximum, and a maximum value for the quota.&lt;/p&gt;
+-- <p>Data returned by the <b>DescribeAccountAttributes</b> action.</p>
+-- @param AccountQuotas [AccountQuotaList] <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a name, a count of usage toward the quota maximum, and a maximum value for the quota.</p>
 function M.AccountAttributesMessage(AccountQuotas, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountAttributesMessage")
 	local t = { 
@@ -3318,29 +3318,29 @@ function M.AssertRestoreDBInstanceFromDBSnapshotMessage(struct)
 end
 
 --- Create a structure of type RestoreDBInstanceFromDBSnapshotMessage
--- &lt;p/&gt;
--- @param PubliclyAccessible [BooleanOptional] &lt;p&gt;Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.&lt;/p&gt; &lt;p&gt;Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Default VPC:&lt;/b&gt; true&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;VPC:&lt;/b&gt; false&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.&lt;/p&gt;
--- @param DomainIAMRoleName [String] &lt;p&gt;Specify the name of the IAM role to be used when making API calls to the Directory Service.&lt;/p&gt;
--- @param LicenseModel [String] &lt;p&gt;License model information for the restored DB instance.&lt;/p&gt; &lt;p&gt;Default: Same as source.&lt;/p&gt; &lt;p&gt; Valid values: &lt;code&gt;license-included&lt;/code&gt; | &lt;code&gt;bring-your-own-license&lt;/code&gt; | &lt;code&gt;general-public-license&lt;/code&gt; &lt;/p&gt;
--- @param EnableIAMDatabaseAuthentication [BooleanOptional] &lt;p&gt;True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.&lt;/p&gt; &lt;p&gt;You can enable IAM database authentication for the following database engines&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.6, minor version 5.6.34 or higher&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.7, minor version 5.7.16 or higher&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Aurora 5.6 or higher.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param CopyTagsToSnapshot [BooleanOptional] &lt;p&gt;True to copy all tags from the restored DB instance to snapshots of the DB instance; otherwise false. The default is false.&lt;/p&gt;
--- @param Engine [String] &lt;p&gt;The database engine to use for the new instance.&lt;/p&gt; &lt;p&gt;Default: The same as source&lt;/p&gt; &lt;p&gt;Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance from a MySQL 5.6 snapshot.&lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;MySQL&lt;/code&gt; | &lt;code&gt;mariadb&lt;/code&gt; | &lt;code&gt;oracle-se1&lt;/code&gt; | &lt;code&gt;oracle-se&lt;/code&gt; | &lt;code&gt;oracle-ee&lt;/code&gt; | &lt;code&gt;sqlserver-ee&lt;/code&gt; | &lt;code&gt;sqlserver-se&lt;/code&gt; | &lt;code&gt;sqlserver-ex&lt;/code&gt; | &lt;code&gt;sqlserver-web&lt;/code&gt; | &lt;code&gt;postgres&lt;/code&gt; | &lt;code&gt;aurora&lt;/code&gt; &lt;/p&gt;
--- @param MultiAZ [BooleanOptional] &lt;p&gt;Specifies if the DB instance is a Multi-AZ deployment.&lt;/p&gt; &lt;p&gt;Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
--- @param AutoMinorVersionUpgrade [BooleanOptional] &lt;p&gt;Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance window.&lt;/p&gt;
--- @param DBSnapshotIdentifier [String] &lt;p&gt;The identifier for the DB snapshot to restore from.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you are restoring from a shared manual DB snapshot, the &lt;code&gt;DBSnapshotIdentifier&lt;/code&gt; must be the ARN of the shared DB snapshot.&lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The DB subnet group name to use for the new instance.&lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
--- @param DBName [String] &lt;p&gt;The database name for the restored DB instance.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This parameter doesn't apply to the MySQL, PostgreSQL, or MariaDB engines.&lt;/p&gt; &lt;/note&gt;
--- @param TdeCredentialPassword [String] &lt;p&gt;The password for the given ARN from the Key Store in order to access the device.&lt;/p&gt;
--- @param TdeCredentialArn [String] &lt;p&gt;The ARN from the Key Store with which to associate the instance for TDE encryption.&lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;The name of the option group to be used for the restored DB instance.&lt;/p&gt; &lt;p&gt;Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance&lt;/p&gt;
--- @param Domain [String] &lt;p&gt;Specify the Active Directory Domain to restore the instance in.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The EC2 Availability Zone that the database instance will be created in.&lt;/p&gt; &lt;p&gt;Default: A random, system-chosen Availability Zone.&lt;/p&gt; &lt;p&gt;Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;us-east-1a&lt;/code&gt; &lt;/p&gt;
--- @param StorageType [String] &lt;p&gt;Specifies the storage type to be associated with the DB instance.&lt;/p&gt; &lt;p&gt; Valid values: &lt;code&gt;standard | gp2 | io1&lt;/code&gt; &lt;/p&gt; &lt;p&gt; If you specify &lt;code&gt;io1&lt;/code&gt;, you must also include a value for the &lt;code&gt;Iops&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;io1&lt;/code&gt; if the &lt;code&gt;Iops&lt;/code&gt; parameter is specified; otherwise &lt;code&gt;standard&lt;/code&gt; &lt;/p&gt;
--- @param Iops [IntegerOptional] &lt;p&gt;Specifies the amount of provisioned IOPS for the DB instance, expressed in I/O operations per second. If this parameter is not specified, the IOPS value will be taken from the backup. If this parameter is set to 0, the new instance will be converted to a non-PIOPS instance, which will take additional time, though your DB instance will be available for connections before the conversion starts.&lt;/p&gt; &lt;p&gt;Constraints: Must be an integer greater than 1000.&lt;/p&gt; &lt;p&gt; &lt;b&gt;SQL Server&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Setting the IOPS value for the SQL Server database engine is not supported.&lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;The compute and memory capacity of the Amazon RDS DB instance.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large&lt;/code&gt; &lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number on which the database accepts connections.&lt;/p&gt; &lt;p&gt;Default: The same port as the original DB instance&lt;/p&gt; &lt;p&gt;Constraints: Value must be &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;Name of the DB instance to create from the DB snapshot. This parameter isn't case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15 for SQL Server)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-snapshot-id&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param PubliclyAccessible [BooleanOptional] <p>Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.</p> <p>Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.</p> <ul> <li> <p> <b>Default VPC:</b> true</p> </li> <li> <p> <b>VPC:</b> false</p> </li> </ul> <p>If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.</p>
+-- @param DomainIAMRoleName [String] <p>Specify the name of the IAM role to be used when making API calls to the Directory Service.</p>
+-- @param LicenseModel [String] <p>License model information for the restored DB instance.</p> <p>Default: Same as source.</p> <p> Valid values: <code>license-included</code> | <code>bring-your-own-license</code> | <code>general-public-license</code> </p>
+-- @param EnableIAMDatabaseAuthentication [BooleanOptional] <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.</p> <p>You can enable IAM database authentication for the following database engines</p> <ul> <li> <p>For MySQL 5.6, minor version 5.6.34 or higher</p> </li> <li> <p>For MySQL 5.7, minor version 5.7.16 or higher</p> </li> <li> <p>Aurora 5.6 or higher.</p> </li> </ul> <p>Default: <code>false</code> </p>
+-- @param CopyTagsToSnapshot [BooleanOptional] <p>True to copy all tags from the restored DB instance to snapshots of the DB instance; otherwise false. The default is false.</p>
+-- @param Engine [String] <p>The database engine to use for the new instance.</p> <p>Default: The same as source</p> <p>Constraint: Must be compatible with the engine of the source. You can restore a MariaDB 10.1 DB instance from a MySQL 5.6 snapshot.</p> <p> Valid Values: <code>MySQL</code> | <code>mariadb</code> | <code>oracle-se1</code> | <code>oracle-se</code> | <code>oracle-ee</code> | <code>sqlserver-ee</code> | <code>sqlserver-se</code> | <code>sqlserver-ex</code> | <code>sqlserver-web</code> | <code>postgres</code> | <code>aurora</code> </p>
+-- @param MultiAZ [BooleanOptional] <p>Specifies if the DB instance is a Multi-AZ deployment.</p> <p>Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to <code>true</code>.</p>
+-- @param Tags [TagList] <p/>
+-- @param AutoMinorVersionUpgrade [BooleanOptional] <p>Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance window.</p>
+-- @param DBSnapshotIdentifier [String] <p>The identifier for the DB snapshot to restore from.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>If you are restoring from a shared manual DB snapshot, the <code>DBSnapshotIdentifier</code> must be the ARN of the shared DB snapshot.</p>
+-- @param DBSubnetGroupName [String] <p>The DB subnet group name to use for the new instance.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- @param DBName [String] <p>The database name for the restored DB instance.</p> <note> <p>This parameter doesn't apply to the MySQL, PostgreSQL, or MariaDB engines.</p> </note>
+-- @param TdeCredentialPassword [String] <p>The password for the given ARN from the Key Store in order to access the device.</p>
+-- @param TdeCredentialArn [String] <p>The ARN from the Key Store with which to associate the instance for TDE encryption.</p>
+-- @param OptionGroupName [String] <p>The name of the option group to be used for the restored DB instance.</p> <p>Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance</p>
+-- @param Domain [String] <p>Specify the Active Directory Domain to restore the instance in.</p>
+-- @param AvailabilityZone [String] <p>The EC2 Availability Zone that the database instance will be created in.</p> <p>Default: A random, system-chosen Availability Zone.</p> <p>Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to <code>true</code>.</p> <p>Example: <code>us-east-1a</code> </p>
+-- @param StorageType [String] <p>Specifies the storage type to be associated with the DB instance.</p> <p> Valid values: <code>standard | gp2 | io1</code> </p> <p> If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter. </p> <p> Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code> </p>
+-- @param Iops [IntegerOptional] <p>Specifies the amount of provisioned IOPS for the DB instance, expressed in I/O operations per second. If this parameter is not specified, the IOPS value will be taken from the backup. If this parameter is set to 0, the new instance will be converted to a non-PIOPS instance, which will take additional time, though your DB instance will be available for connections before the conversion starts.</p> <p>Constraints: Must be an integer greater than 1000.</p> <p> <b>SQL Server</b> </p> <p>Setting the IOPS value for the SQL Server database engine is not supported.</p>
+-- @param DBInstanceClass [String] <p>The compute and memory capacity of the Amazon RDS DB instance.</p> <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code> </p>
+-- @param Port [IntegerOptional] <p>The port number on which the database accepts connections.</p> <p>Default: The same port as the original DB instance</p> <p>Constraints: Value must be <code>1150-65535</code> </p>
+-- @param DBInstanceIdentifier [String] <p>Name of the DB instance to create from the DB snapshot. This parameter isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15 for SQL Server)</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-snapshot-id</code> </p>
 -- Required parameter: DBInstanceIdentifier
 -- Required parameter: DBSnapshotIdentifier
 function M.RestoreDBInstanceFromDBSnapshotMessage(PubliclyAccessible, DomainIAMRoleName, LicenseModel, EnableIAMDatabaseAuthentication, CopyTagsToSnapshot, Engine, MultiAZ, Tags, AutoMinorVersionUpgrade, DBSnapshotIdentifier, DBSubnetGroupName, DBName, TdeCredentialPassword, TdeCredentialArn, OptionGroupName, Domain, AvailabilityZone, StorageType, Iops, DBInstanceClass, Port, DBInstanceIdentifier, ...)
@@ -3384,7 +3384,7 @@ function M.AssertInvalidDBClusterStateFault(struct)
 end
 
 --- Create a structure of type InvalidDBClusterStateFault
--- &lt;p&gt;The DB cluster is not in a valid state.&lt;/p&gt;
+-- <p>The DB cluster is not in a valid state.</p>
 function M.InvalidDBClusterStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDBClusterStateFault")
 	local t = { 
@@ -3413,16 +3413,16 @@ function M.AssertDBEngineVersion(struct)
 end
 
 --- Create a structure of type DBEngineVersion
--- &lt;p&gt; This data type is used as a response element in the action &lt;a&gt;DescribeDBEngineVersions&lt;/a&gt;. &lt;/p&gt;
--- @param Engine [String] &lt;p&gt;The name of the database engine.&lt;/p&gt;
--- @param DBParameterGroupFamily [String] &lt;p&gt;The name of the DB parameter group family for the database engine.&lt;/p&gt;
--- @param SupportedCharacterSets [SupportedCharacterSetsList] &lt;p&gt; A list of the character sets supported by this engine for the &lt;code&gt;CharacterSetName&lt;/code&gt; parameter of the &lt;code&gt;CreateDBInstance&lt;/code&gt; action. &lt;/p&gt;
--- @param DefaultCharacterSet [CharacterSet] &lt;p&gt; The default character set for new instances of this engine version, if the &lt;code&gt;CharacterSetName&lt;/code&gt; parameter of the CreateDBInstance API is not specified. &lt;/p&gt;
--- @param SupportedTimezones [SupportedTimezonesList] &lt;p&gt;A list of the time zones supported by this engine for the &lt;code&gt;Timezone&lt;/code&gt; parameter of the &lt;code&gt;CreateDBInstance&lt;/code&gt; action. &lt;/p&gt;
--- @param DBEngineDescription [String] &lt;p&gt;The description of the database engine.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The version number of the database engine.&lt;/p&gt;
--- @param DBEngineVersionDescription [String] &lt;p&gt;The description of the database engine version.&lt;/p&gt;
--- @param ValidUpgradeTarget [ValidUpgradeTargetList] &lt;p&gt;A list of engine versions that this database engine version can be upgraded to.&lt;/p&gt;
+-- <p> This data type is used as a response element in the action <a>DescribeDBEngineVersions</a>. </p>
+-- @param Engine [String] <p>The name of the database engine.</p>
+-- @param DBParameterGroupFamily [String] <p>The name of the DB parameter group family for the database engine.</p>
+-- @param SupportedCharacterSets [SupportedCharacterSetsList] <p> A list of the character sets supported by this engine for the <code>CharacterSetName</code> parameter of the <code>CreateDBInstance</code> action. </p>
+-- @param DefaultCharacterSet [CharacterSet] <p> The default character set for new instances of this engine version, if the <code>CharacterSetName</code> parameter of the CreateDBInstance API is not specified. </p>
+-- @param SupportedTimezones [SupportedTimezonesList] <p>A list of the time zones supported by this engine for the <code>Timezone</code> parameter of the <code>CreateDBInstance</code> action. </p>
+-- @param DBEngineDescription [String] <p>The description of the database engine.</p>
+-- @param EngineVersion [String] <p>The version number of the database engine.</p>
+-- @param DBEngineVersionDescription [String] <p>The description of the database engine version.</p>
+-- @param ValidUpgradeTarget [ValidUpgradeTargetList] <p>A list of engine versions that this database engine version can be upgraded to.</p>
 function M.DBEngineVersion(Engine, DBParameterGroupFamily, SupportedCharacterSets, DefaultCharacterSet, SupportedTimezones, DBEngineDescription, EngineVersion, DBEngineVersionDescription, ValidUpgradeTarget, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBEngineVersion")
 	local t = { 
@@ -3451,7 +3451,7 @@ function M.AssertDBSubnetQuotaExceededFault(struct)
 end
 
 --- Create a structure of type DBSubnetQuotaExceededFault
--- &lt;p&gt;Request would result in user exceeding the allowed number of subnets in a DB subnet groups.&lt;/p&gt;
+-- <p>Request would result in user exceeding the allowed number of subnets in a DB subnet groups.</p>
 function M.DBSubnetQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSubnetQuotaExceededFault")
 	local t = { 
@@ -3475,9 +3475,9 @@ function M.AssertRemoveSourceIdentifierFromSubscriptionMessage(struct)
 end
 
 --- Create a structure of type RemoveSourceIdentifierFromSubscriptionMessage
--- &lt;p/&gt;
--- @param SourceIdentifier [String] &lt;p&gt; The source identifier to be removed from the subscription, such as the &lt;b&gt;DB instance identifier&lt;/b&gt; for a DB instance or the name of a security group. &lt;/p&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the RDS event notification subscription you want to remove a source identifier from.&lt;/p&gt;
+-- <p/>
+-- @param SourceIdentifier [String] <p> The source identifier to be removed from the subscription, such as the <b>DB instance identifier</b> for a DB instance or the name of a security group. </p>
+-- @param SubscriptionName [String] <p>The name of the RDS event notification subscription you want to remove a source identifier from.</p>
 -- Required parameter: SubscriptionName
 -- Required parameter: SourceIdentifier
 function M.RemoveSourceIdentifierFromSubscriptionMessage(SourceIdentifier, SubscriptionName, ...)
@@ -3509,15 +3509,15 @@ function M.AssertDescribeDBSnapshotsMessage(struct)
 end
 
 --- Create a structure of type DescribeDBSnapshotsMessage
--- &lt;p/&gt;
--- @param IncludeShared [Boolean] &lt;p&gt;Set this value to &lt;code&gt;true&lt;/code&gt; to include shared manual DB snapshots from other AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to &lt;code&gt;false&lt;/code&gt;. The default is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;You can give an AWS account permission to restore a manual DB snapshot from another AWS account by using the &lt;a&gt;ModifyDBSnapshotAttribute&lt;/a&gt; API action.&lt;/p&gt;
--- @param IncludePublic [Boolean] &lt;p&gt;Set this value to &lt;code&gt;true&lt;/code&gt; to include manual DB snapshots that are public and can be copied or restored by any AWS account, otherwise set this value to &lt;code&gt;false&lt;/code&gt;. The default is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;You can share a manual DB snapshot as public by using the &lt;a&gt;ModifyDBSnapshotAttribute&lt;/a&gt; API.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribeDBSnapshots&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param DBSnapshotIdentifier [String] &lt;p&gt; A specific DB snapshot identifier to describe. This parameter cannot be used in conjunction with &lt;code&gt;DBInstanceIdentifier&lt;/code&gt;. This value is stored as a lowercase string. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If this identifier is for an automated snapshot, the &lt;code&gt;SnapshotType&lt;/code&gt; parameter must also be specified.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param SnapshotType [String] &lt;p&gt;The type of snapshots to be returned. You can specify one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;automated&lt;/code&gt; - Return all DB snapshots that have been automatically taken by Amazon RDS for my AWS account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;manual&lt;/code&gt; - Return all DB snapshots that have been taken by my AWS account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;shared&lt;/code&gt; - Return all manual DB snapshots that have been shared to my AWS account.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;public&lt;/code&gt; - Return all DB snapshots that have been marked as public.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If you don't specify a &lt;code&gt;SnapshotType&lt;/code&gt; value, then both automated and manual snapshots are returned. Shared and public DB snapshots are not included in the returned results by default. You can include shared snapshots with these results by setting the &lt;code&gt;IncludeShared&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt;. You can include public snapshots with these results by setting the &lt;code&gt;IncludePublic&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;IncludeShared&lt;/code&gt; and &lt;code&gt;IncludePublic&lt;/code&gt; parameters don't apply for &lt;code&gt;SnapshotType&lt;/code&gt; values of &lt;code&gt;manual&lt;/code&gt; or &lt;code&gt;automated&lt;/code&gt;. The &lt;code&gt;IncludePublic&lt;/code&gt; parameter doesn't apply when &lt;code&gt;SnapshotType&lt;/code&gt; is set to &lt;code&gt;shared&lt;/code&gt;. The &lt;code&gt;IncludeShared&lt;/code&gt; parameter doesn't apply when &lt;code&gt;SnapshotType&lt;/code&gt; is set to &lt;code&gt;public&lt;/code&gt;.&lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The ID of the DB instance to retrieve the list of DB snapshots for. This parameter cannot be used in conjunction with &lt;code&gt;DBSnapshotIdentifier&lt;/code&gt;. This parameter is not case-sensitive. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param IncludeShared [Boolean] <p>Set this value to <code>true</code> to include shared manual DB snapshots from other AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to <code>false</code>. The default is <code>false</code>.</p> <p>You can give an AWS account permission to restore a manual DB snapshot from another AWS account by using the <a>ModifyDBSnapshotAttribute</a> API action.</p>
+-- @param IncludePublic [Boolean] <p>Set this value to <code>true</code> to include manual DB snapshots that are public and can be copied or restored by any AWS account, otherwise set this value to <code>false</code>. The default is <code>false</code>.</p> <p>You can share a manual DB snapshot as public by using the <a>ModifyDBSnapshotAttribute</a> API.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribeDBSnapshots</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param DBSnapshotIdentifier [String] <p> A specific DB snapshot identifier to describe. This parameter cannot be used in conjunction with <code>DBInstanceIdentifier</code>. This value is stored as a lowercase string. </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> <li> <p>If this identifier is for an automated snapshot, the <code>SnapshotType</code> parameter must also be specified.</p> </li> </ul>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param SnapshotType [String] <p>The type of snapshots to be returned. You can specify one of the following values:</p> <ul> <li> <p> <code>automated</code> - Return all DB snapshots that have been automatically taken by Amazon RDS for my AWS account.</p> </li> <li> <p> <code>manual</code> - Return all DB snapshots that have been taken by my AWS account.</p> </li> <li> <p> <code>shared</code> - Return all manual DB snapshots that have been shared to my AWS account.</p> </li> <li> <p> <code>public</code> - Return all DB snapshots that have been marked as public.</p> </li> </ul> <p>If you don't specify a <code>SnapshotType</code> value, then both automated and manual snapshots are returned. Shared and public DB snapshots are not included in the returned results by default. You can include shared snapshots with these results by setting the <code>IncludeShared</code> parameter to <code>true</code>. You can include public snapshots with these results by setting the <code>IncludePublic</code> parameter to <code>true</code>.</p> <p>The <code>IncludeShared</code> and <code>IncludePublic</code> parameters don't apply for <code>SnapshotType</code> values of <code>manual</code> or <code>automated</code>. The <code>IncludePublic</code> parameter doesn't apply when <code>SnapshotType</code> is set to <code>shared</code>. The <code>IncludeShared</code> parameter doesn't apply when <code>SnapshotType</code> is set to <code>public</code>.</p>
+-- @param DBInstanceIdentifier [String] <p>The ID of the DB instance to retrieve the list of DB snapshots for. This parameter cannot be used in conjunction with <code>DBSnapshotIdentifier</code>. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 function M.DescribeDBSnapshotsMessage(IncludeShared, IncludePublic, Marker, MaxRecords, DBSnapshotIdentifier, Filters, SnapshotType, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBSnapshotsMessage")
 	local t = { 
@@ -3593,8 +3593,8 @@ function M.AssertDeleteDBSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type DeleteDBSubnetGroupMessage
--- &lt;p/&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The name of the database subnet group to delete.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You cannot delete the default subnet group.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param DBSubnetGroupName [String] <p>The name of the database subnet group to delete.</p> <note> <p>You cannot delete the default subnet group.</p> </note> <p>Constraints:</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
 -- Required parameter: DBSubnetGroupName
 function M.DeleteDBSubnetGroupMessage(DBSubnetGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDBSubnetGroupMessage")
@@ -3620,11 +3620,11 @@ function M.AssertDescribeEventSubscriptionsMessage(struct)
 end
 
 --- Create a structure of type DescribeEventSubscriptionsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt; . &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param SubscriptionName [String] &lt;p&gt;The name of the RDS event notification subscription you want to describe.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param SubscriptionName [String] <p>The name of the RDS event notification subscription you want to describe.</p>
 function M.DescribeEventSubscriptionsMessage(Marker, MaxRecords, Filters, SubscriptionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventSubscriptionsMessage")
 	local t = { 
@@ -3650,9 +3650,9 @@ function M.AssertOptionVersion(struct)
 end
 
 --- Create a structure of type OptionVersion
--- &lt;p&gt;The version for an option. Option group option versions are returned by the &lt;a&gt;DescribeOptionGroupOptions&lt;/a&gt; action.&lt;/p&gt;
--- @param Version [String] &lt;p&gt;The version of the option.&lt;/p&gt;
--- @param IsDefault [Boolean] &lt;p&gt;True if the version is the default version of the option; otherwise, false.&lt;/p&gt;
+-- <p>The version for an option. Option group option versions are returned by the <a>DescribeOptionGroupOptions</a> action.</p>
+-- @param Version [String] <p>The version of the option.</p>
+-- @param IsDefault [Boolean] <p>True if the version is the default version of the option; otherwise, false.</p>
 function M.OptionVersion(Version, IsDefault, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionVersion")
 	local t = { 
@@ -3719,25 +3719,25 @@ end
 
 --- Create a structure of type CreateDBInstanceReadReplicaMessage
 --  
--- @param SourceRegion [String] &lt;p&gt;The ID of the region that contains the source for the read replica.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The Amazon EC2 Availability Zone that the Read Replica will be created in.&lt;/p&gt; &lt;p&gt;Default: A random, system-chosen Availability Zone in the endpoint's region.&lt;/p&gt; &lt;p&gt; Example: &lt;code&gt;us-east-1d&lt;/code&gt; &lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;Specifies a DB subnet group for the DB instance. The new DB instance will be created in the VPC associated with the DB subnet group. If no DB subnet group is specified, then the new DB instance is not created in a VPC.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Can only be specified if the source DB instance identifier specifies a DB instance in another region.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The specified DB subnet group must be in the same region in which the operation is running.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;All Read Replicas in one region that are created from the same source DB instance must either:&amp;gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Specify DB subnet groups from the same VPC. All these Read Replicas will be created in the same VPC.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Not specify a DB subnet group. All these Read Replicas will be created outside of any VPC.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
--- @param MonitoringRoleArn [String] &lt;p&gt;The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example, &lt;code&gt;arn:aws:iam:123456789012:role/emaccess&lt;/code&gt;. For information on creating a monitoring role, go to &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole&quot;&gt;To create an IAM role for Amazon RDS Enhanced Monitoring&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;If &lt;code&gt;MonitoringInterval&lt;/code&gt; is set to a value other than 0, then you must supply a &lt;code&gt;MonitoringRoleArn&lt;/code&gt; value.&lt;/p&gt;
--- @param PubliclyAccessible [BooleanOptional] &lt;p&gt;Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.&lt;/p&gt; &lt;p&gt;Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Default VPC:&lt;/b&gt;true&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;VPC:&lt;/b&gt;false&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.&lt;/p&gt;
+-- @param SourceRegion [String] <p>The ID of the region that contains the source for the read replica.</p>
+-- @param AvailabilityZone [String] <p>The Amazon EC2 Availability Zone that the Read Replica will be created in.</p> <p>Default: A random, system-chosen Availability Zone in the endpoint's region.</p> <p> Example: <code>us-east-1d</code> </p>
+-- @param DBSubnetGroupName [String] <p>Specifies a DB subnet group for the DB instance. The new DB instance will be created in the VPC associated with the DB subnet group. If no DB subnet group is specified, then the new DB instance is not created in a VPC.</p> <p>Constraints:</p> <ul> <li> <p>Can only be specified if the source DB instance identifier specifies a DB instance in another region.</p> </li> <li> <p>The specified DB subnet group must be in the same region in which the operation is running.</p> </li> <li> <p>All Read Replicas in one region that are created from the same source DB instance must either:&gt;</p> <ul> <li> <p>Specify DB subnet groups from the same VPC. All these Read Replicas will be created in the same VPC.</p> </li> <li> <p>Not specify a DB subnet group. All these Read Replicas will be created outside of any VPC.</p> </li> </ul> </li> </ul> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- @param MonitoringRoleArn [String] <p>The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go to <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole">To create an IAM role for Amazon RDS Enhanced Monitoring</a>.</p> <p>If <code>MonitoringInterval</code> is set to a value other than 0, then you must supply a <code>MonitoringRoleArn</code> value.</p>
+-- @param PubliclyAccessible [BooleanOptional] <p>Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.</p> <p>Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.</p> <ul> <li> <p> <b>Default VPC:</b>true</p> </li> <li> <p> <b>VPC:</b>false</p> </li> </ul> <p>If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.</p>
 -- @param Tags [TagList]  
--- @param StorageType [String] &lt;p&gt;Specifies the storage type to be associated with the Read Replica.&lt;/p&gt; &lt;p&gt; Valid values: &lt;code&gt;standard | gp2 | io1&lt;/code&gt; &lt;/p&gt; &lt;p&gt; If you specify &lt;code&gt;io1&lt;/code&gt;, you must also include a value for the &lt;code&gt;Iops&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;io1&lt;/code&gt; if the &lt;code&gt;Iops&lt;/code&gt; parameter is specified; otherwise &lt;code&gt;standard&lt;/code&gt; &lt;/p&gt;
--- @param PreSignedUrl [String] &lt;p&gt;The URL that contains a Signature Version 4 signed request for the &lt;code&gt; CreateDBInstanceReadReplica&lt;/code&gt; API action in the AWS region that contains the source DB instance. The &lt;code&gt;PreSignedUrl&lt;/code&gt; parameter must be used when encrypting a Read Replica from another AWS region.&lt;/p&gt; &lt;p&gt;The presigned URL must be a valid request for the &lt;code&gt;CreateDBInstanceReadReplica&lt;/code&gt; API action that can be executed in the source region that contains the encrypted DB instance. The presigned URL request must contain the following parameter values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DestinationRegion&lt;/code&gt; - The AWS Region that the Read Replica is created in. This region is the same one where the &lt;code&gt;CreateDBInstanceReadReplica&lt;/code&gt; action is called that contains this presigned URL. &lt;/p&gt; &lt;p&gt; For example, if you create an encrypted Read Replica in the us-east-1 region, and the source DB instance is in the west-2 region, then you call the &lt;code&gt;CreateDBInstanceReadReplica&lt;/code&gt; action in the us-east-1 region and provide a presigned URL that contains a call to the &lt;code&gt;CreateDBInstanceReadReplica&lt;/code&gt; action in the us-west-2 region. For this example, the &lt;code&gt;DestinationRegion&lt;/code&gt; in the presigned URL must be set to the us-east-1 region.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;KmsKeyId&lt;/code&gt; - The KMS key identifier for the key to use to encrypt the Read Replica in the destination region. This is the same identifier for both the &lt;code&gt;CreateDBInstanceReadReplica&lt;/code&gt; action that is called in the destination region, and the action contained in the presigned URL.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SourceDBInstanceIdentifier&lt;/code&gt; - The DB instance identifier for the encrypted Read Replica to be created. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you create an encrypted Read Replica from a DB instance in the us-west-2 region, then your &lt;code&gt;SourceDBInstanceIdentifier&lt;/code&gt; would look like this example: &lt;code&gt; arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-instance-20161115&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;To learn how to generate a Signature Version 4 signed request, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html&quot;&gt; Authenticating Requests: Using Query Parameters (AWS Signature Version 4)&lt;/a&gt; and &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html&quot;&gt; Signature Version 4 Signing Process&lt;/a&gt;.&lt;/p&gt;&lt;note&gt;&lt;p&gt;If you supply a value for this operation's &lt;code&gt;SourceRegion&lt;/code&gt; parameter, a pre-signed URL will be calculated on your behalf.&lt;/p&gt;&lt;/note&gt;
--- @param AutoMinorVersionUpgrade [BooleanOptional] &lt;p&gt;Indicates that minor engine upgrades will be applied automatically to the Read Replica during the maintenance window.&lt;/p&gt; &lt;p&gt;Default: Inherits from the source DB instance&lt;/p&gt;
--- @param EnableIAMDatabaseAuthentication [BooleanOptional] &lt;p&gt;True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.&lt;/p&gt; &lt;p&gt;You can enable IAM database authentication for the following database engines&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.6, minor version 5.6.34 or higher&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.7, minor version 5.7.16 or higher&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Aurora 5.6 or higher.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key. &lt;/p&gt; &lt;p&gt;If you create an unencrypted Read Replica and specify a value for the &lt;code&gt;KmsKeyId&lt;/code&gt; parameter, Amazon RDS encrypts the target Read Replica using the specified KMS encryption key. &lt;/p&gt; &lt;p&gt;If you create an encrypted Read Replica from your AWS account, you can specify a value for &lt;code&gt;KmsKeyId&lt;/code&gt; to encrypt the Read Replica with a new KMS encryption key. If you don't specify a value for &lt;code&gt;KmsKeyId&lt;/code&gt;, then the Read Replica is encrypted with the same KMS key as the source DB instance. &lt;/p&gt; &lt;p&gt; If you create an encrypted Read Replica in a different AWS region, then you must specify a KMS key for the destination AWS region. KMS encryption keys are specific to the region that they are created in, and you cannot use encryption keys from one region in another region.&lt;/p&gt;
--- @param Iops [IntegerOptional] &lt;p&gt;The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance.&lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;The option group the DB instance will be associated with. If omitted, the default option group for the engine specified will be used.&lt;/p&gt;
--- @param MonitoringInterval [IntegerOptional] &lt;p&gt;The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read Replica. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.&lt;/p&gt; &lt;p&gt;If &lt;code&gt;MonitoringRoleArn&lt;/code&gt; is specified, then you must also set &lt;code&gt;MonitoringInterval&lt;/code&gt; to a value other than 0.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;0, 1, 5, 10, 15, 30, 60&lt;/code&gt; &lt;/p&gt;
--- @param CopyTagsToSnapshot [BooleanOptional] &lt;p&gt;True to copy all tags from the Read Replica to snapshots of the Read Replica; otherwise false. The default is false.&lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;The compute and memory capacity of the Read Replica. Note that not all instance classes are available in all regions for all DB engines.&lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: Inherits from the source DB instance.&lt;/p&gt;
--- @param SourceDBInstanceIdentifier [String] &lt;p&gt;The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can have up to five Read Replicas.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the identifier of an existing MySQL, MariaDB, or PostgreSQL DB instance.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The specified DB instance must have automatic backups enabled, its backup retention period must be greater than 0.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source DB instance is in the same region as the Read Replica, specify a valid DB instance identifier.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source DB instance is in a different region than the Read Replica, specify a valid DB instance ARN. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing&quot;&gt; Constructing a Amazon RDS Amazon Resource Name (ARN)&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number that the DB instance uses for connections.&lt;/p&gt; &lt;p&gt;Default: Inherits from the source DB instance&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB instance. This parameter is stored as a lowercase string.&lt;/p&gt;
+-- @param StorageType [String] <p>Specifies the storage type to be associated with the Read Replica.</p> <p> Valid values: <code>standard | gp2 | io1</code> </p> <p> If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter. </p> <p> Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code> </p>
+-- @param PreSignedUrl [String] <p>The URL that contains a Signature Version 4 signed request for the <code> CreateDBInstanceReadReplica</code> API action in the AWS region that contains the source DB instance. The <code>PreSignedUrl</code> parameter must be used when encrypting a Read Replica from another AWS region.</p> <p>The presigned URL must be a valid request for the <code>CreateDBInstanceReadReplica</code> API action that can be executed in the source region that contains the encrypted DB instance. The presigned URL request must contain the following parameter values:</p> <ul> <li> <p> <code>DestinationRegion</code> - The AWS Region that the Read Replica is created in. This region is the same one where the <code>CreateDBInstanceReadReplica</code> action is called that contains this presigned URL. </p> <p> For example, if you create an encrypted Read Replica in the us-east-1 region, and the source DB instance is in the west-2 region, then you call the <code>CreateDBInstanceReadReplica</code> action in the us-east-1 region and provide a presigned URL that contains a call to the <code>CreateDBInstanceReadReplica</code> action in the us-west-2 region. For this example, the <code>DestinationRegion</code> in the presigned URL must be set to the us-east-1 region.</p> </li> <li> <p> <code>KmsKeyId</code> - The KMS key identifier for the key to use to encrypt the Read Replica in the destination region. This is the same identifier for both the <code>CreateDBInstanceReadReplica</code> action that is called in the destination region, and the action contained in the presigned URL.</p> </li> <li> <p> <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted Read Replica to be created. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you create an encrypted Read Replica from a DB instance in the us-west-2 region, then your <code>SourceDBInstanceIdentifier</code> would look like this example: <code> arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-instance-20161115</code>.</p> </li> </ul> <p>To learn how to generate a Signature Version 4 signed request, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html"> Authenticating Requests: Using Query Parameters (AWS Signature Version 4)</a> and <a href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html"> Signature Version 4 Signing Process</a>.</p><note><p>If you supply a value for this operation's <code>SourceRegion</code> parameter, a pre-signed URL will be calculated on your behalf.</p></note>
+-- @param AutoMinorVersionUpgrade [BooleanOptional] <p>Indicates that minor engine upgrades will be applied automatically to the Read Replica during the maintenance window.</p> <p>Default: Inherits from the source DB instance</p>
+-- @param EnableIAMDatabaseAuthentication [BooleanOptional] <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.</p> <p>You can enable IAM database authentication for the following database engines</p> <ul> <li> <p>For MySQL 5.6, minor version 5.6.34 or higher</p> </li> <li> <p>For MySQL 5.7, minor version 5.7.16 or higher</p> </li> <li> <p>Aurora 5.6 or higher.</p> </li> </ul> <p>Default: <code>false</code> </p>
+-- @param KmsKeyId [String] <p>The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key. </p> <p>If you create an unencrypted Read Replica and specify a value for the <code>KmsKeyId</code> parameter, Amazon RDS encrypts the target Read Replica using the specified KMS encryption key. </p> <p>If you create an encrypted Read Replica from your AWS account, you can specify a value for <code>KmsKeyId</code> to encrypt the Read Replica with a new KMS encryption key. If you don't specify a value for <code>KmsKeyId</code>, then the Read Replica is encrypted with the same KMS key as the source DB instance. </p> <p> If you create an encrypted Read Replica in a different AWS region, then you must specify a KMS key for the destination AWS region. KMS encryption keys are specific to the region that they are created in, and you cannot use encryption keys from one region in another region.</p>
+-- @param Iops [IntegerOptional] <p>The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance.</p>
+-- @param OptionGroupName [String] <p>The option group the DB instance will be associated with. If omitted, the default option group for the engine specified will be used.</p>
+-- @param MonitoringInterval [IntegerOptional] <p>The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read Replica. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.</p> <p>If <code>MonitoringRoleArn</code> is specified, then you must also set <code>MonitoringInterval</code> to a value other than 0.</p> <p>Valid Values: <code>0, 1, 5, 10, 15, 30, 60</code> </p>
+-- @param CopyTagsToSnapshot [BooleanOptional] <p>True to copy all tags from the Read Replica to snapshots of the Read Replica; otherwise false. The default is false.</p>
+-- @param DBInstanceClass [String] <p>The compute and memory capacity of the Read Replica. Note that not all instance classes are available in all regions for all DB engines.</p> <p> Valid Values: <code>db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code> </p> <p>Default: Inherits from the source DB instance.</p>
+-- @param SourceDBInstanceIdentifier [String] <p>The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can have up to five Read Replicas.</p> <p>Constraints:</p> <ul> <li> <p>Must be the identifier of an existing MySQL, MariaDB, or PostgreSQL DB instance.</p> </li> <li> <p>Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6.</p> </li> <li> <p>Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later.</p> </li> <li> <p>The specified DB instance must have automatic backups enabled, its backup retention period must be greater than 0.</p> </li> <li> <p>If the source DB instance is in the same region as the Read Replica, specify a valid DB instance identifier.</p> </li> <li> <p>If the source DB instance is in a different region than the Read Replica, specify a valid DB instance ARN. For more information, go to <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"> Constructing a Amazon RDS Amazon Resource Name (ARN)</a>.</p> </li> </ul>
+-- @param Port [IntegerOptional] <p>The port number that the DB instance uses for connections.</p> <p>Default: Inherits from the source DB instance</p> <p>Valid Values: <code>1150-65535</code> </p>
+-- @param DBInstanceIdentifier [String] <p>The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB instance. This parameter is stored as a lowercase string.</p>
 -- Required parameter: DBInstanceIdentifier
 -- Required parameter: SourceDBInstanceIdentifier
 function M.CreateDBInstanceReadReplicaMessage(SourceRegion, AvailabilityZone, DBSubnetGroupName, MonitoringRoleArn, PubliclyAccessible, Tags, StorageType, PreSignedUrl, AutoMinorVersionUpgrade, EnableIAMDatabaseAuthentication, KmsKeyId, Iops, OptionGroupName, MonitoringInterval, CopyTagsToSnapshot, DBInstanceClass, SourceDBInstanceIdentifier, Port, DBInstanceIdentifier, ...)
@@ -3782,11 +3782,11 @@ function M.AssertDescribeDBClustersMessage(struct)
 end
 
 --- Create a structure of type DescribeDBClustersMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;a&gt;DescribeDBClusters&lt;/a&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;A filter that specifies one or more DB clusters to describe.&lt;/p&gt; &lt;p&gt;Supported filters:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;db-cluster-id&lt;/code&gt; - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs). The results list will only include information about the DB clusters identified by these ARNs.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The user-supplied DB cluster identifier. If this parameter is specified, information from only the specific DB cluster is returned. This parameter isn't case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <a>DescribeDBClusters</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>A filter that specifies one or more DB clusters to describe.</p> <p>Supported filters:</p> <ul> <li> <p> <code>db-cluster-id</code> - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs). The results list will only include information about the DB clusters identified by these ARNs.</p> </li> </ul>
+-- @param DBClusterIdentifier [String] <p>The user-supplied DB cluster identifier. If this parameter is specified, information from only the specific DB cluster is returned. This parameter isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 function M.DescribeDBClustersMessage(Marker, MaxRecords, Filters, DBClusterIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBClustersMessage")
 	local t = { 
@@ -3810,7 +3810,7 @@ function M.AssertInvalidRestoreFault(struct)
 end
 
 --- Create a structure of type InvalidRestoreFault
--- &lt;p&gt;Cannot restore from vpc backup to non-vpc DB instance.&lt;/p&gt;
+-- <p>Cannot restore from vpc backup to non-vpc DB instance.</p>
 function M.InvalidRestoreFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRestoreFault")
 	local t = { 
@@ -3830,7 +3830,7 @@ function M.AssertSubscriptionCategoryNotFoundFault(struct)
 end
 
 --- Create a structure of type SubscriptionCategoryNotFoundFault
--- &lt;p&gt;The supplied category does not exist.&lt;/p&gt;
+-- <p>The supplied category does not exist.</p>
 function M.SubscriptionCategoryNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionCategoryNotFoundFault")
 	local t = { 
@@ -3899,56 +3899,56 @@ function M.AssertDBInstance(struct)
 end
 
 --- Create a structure of type DBInstance
--- &lt;p&gt;Contains the result of a successful invocation of the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ModifyDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;StopDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;StartDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This data type is used as a response element in the &lt;a&gt;DescribeDBInstances&lt;/a&gt; action.&lt;/p&gt;
--- @param PubliclyAccessible [Boolean] &lt;p&gt;Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.&lt;/p&gt; &lt;p&gt;Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Default VPC:&lt;/b&gt;true&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;VPC:&lt;/b&gt;false&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.&lt;/p&gt;
--- @param MasterUsername [String] &lt;p&gt;Contains the master username for the DB instance.&lt;/p&gt;
--- @param MonitoringInterval [IntegerOptional] &lt;p&gt;The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance.&lt;/p&gt;
--- @param LicenseModel [String] &lt;p&gt;License model information for this DB instance.&lt;/p&gt;
--- @param MonitoringRoleArn [String] &lt;p&gt;The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.&lt;/p&gt;
--- @param VpcSecurityGroups [VpcSecurityGroupMembershipList] &lt;p&gt;Provides a list of VPC security group elements that the DB instance belongs to.&lt;/p&gt;
--- @param InstanceCreateTime [TStamp] &lt;p&gt;Provides the date and time the DB instance was created.&lt;/p&gt;
--- @param CopyTagsToSnapshot [Boolean] &lt;p&gt;Specifies whether tags are copied from the DB instance to snapshots of the DB instance.&lt;/p&gt;
--- @param OptionGroupMemberships [OptionGroupMembershipList] &lt;p&gt;Provides the list of option group memberships for this DB instance.&lt;/p&gt;
--- @param PendingModifiedValues [PendingModifiedValues] &lt;p&gt;Specifies that changes to the DB instance are pending. This element is only included when changes are pending. Specific changes are identified by subelements.&lt;/p&gt;
--- @param Engine [String] &lt;p&gt;Provides the name of the database engine to be used for this DB instance.&lt;/p&gt;
--- @param MultiAZ [Boolean] &lt;p&gt;Specifies if the DB instance is a Multi-AZ deployment.&lt;/p&gt;
--- @param LatestRestorableTime [TStamp] &lt;p&gt;Specifies the latest time to which a database can be restored with point-in-time restore.&lt;/p&gt;
--- @param DBSecurityGroups [DBSecurityGroupMembershipList] &lt;p&gt; Provides List of DB security group elements containing only &lt;code&gt;DBSecurityGroup.Name&lt;/code&gt; and &lt;code&gt;DBSecurityGroup.Status&lt;/code&gt; subelements. &lt;/p&gt;
--- @param DBParameterGroups [DBParameterGroupStatusList] &lt;p&gt;Provides the list of DB parameter groups applied to this DB instance.&lt;/p&gt;
--- @param ReadReplicaSourceDBInstanceIdentifier [String] &lt;p&gt;Contains the identifier of the source DB instance if this DB instance is a Read Replica.&lt;/p&gt;
--- @param AutoMinorVersionUpgrade [Boolean] &lt;p&gt;Indicates that minor version patches are applied automatically.&lt;/p&gt;
--- @param PreferredBackupWindow [String] &lt;p&gt; Specifies the daily time range during which automated backups are created if automated backups are enabled, as determined by the &lt;code&gt;BackupRetentionPeriod&lt;/code&gt;. &lt;/p&gt;
--- @param PromotionTier [IntegerOptional] &lt;p&gt;A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance&quot;&gt; Fault Tolerance for an Aurora DB Cluster&lt;/a&gt;. &lt;/p&gt;
--- @param DBSubnetGroup [DBSubnetGroup] &lt;p&gt;Specifies information on the subnet group associated with the DB instance, including the name, description, and subnets in the subnet group.&lt;/p&gt;
--- @param SecondaryAvailabilityZone [String] &lt;p&gt;If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ support.&lt;/p&gt;
--- @param ReadReplicaDBInstanceIdentifiers [ReadReplicaDBInstanceIdentifierList] &lt;p&gt;Contains one or more identifiers of the Read Replicas associated with this DB instance.&lt;/p&gt;
--- @param AllocatedStorage [Integer] &lt;p&gt;Specifies the allocated storage size specified in gigabytes.&lt;/p&gt;
--- @param DBInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the DB instance.&lt;/p&gt;
--- @param BackupRetentionPeriod [Integer] &lt;p&gt;Specifies the number of days for which automatic DB snapshots are retained.&lt;/p&gt;
--- @param DBName [String] &lt;p&gt;The meaning of this parameter differs according to the database engine you use. For example, this value returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read Replicas are only supported for these engines.&lt;/p&gt; &lt;p&gt; &lt;b&gt;MySQL, MariaDB, SQL Server, PostgreSQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Contains the name of the initial database of this instance that was provided at create time, if one was specified when the DB instance was created. This same name is returned for the life of the DB instance.&lt;/p&gt; &lt;p&gt;Type: String&lt;/p&gt; &lt;p&gt; &lt;b&gt;Oracle&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do not apply to an Oracle DB instance.&lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).&lt;/p&gt;
--- @param Endpoint [Endpoint] &lt;p&gt;Specifies the connection endpoint.&lt;/p&gt;
--- @param DBInstanceStatus [String] &lt;p&gt;Specifies the current state of this database.&lt;/p&gt;
--- @param StatusInfos [DBInstanceStatusInfoList] &lt;p&gt;The status of a Read Replica. If the instance is not a Read Replica, this will be blank.&lt;/p&gt;
--- @param IAMDatabaseAuthenticationEnabled [Boolean] &lt;p&gt;True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise false.&lt;/p&gt; &lt;p&gt;IAM database authentication can be enabled for the following database engines&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.6, minor version 5.6.34 or higher&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.7, minor version 5.7.16 or higher&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param EngineVersion [String] &lt;p&gt;Indicates the database engine version.&lt;/p&gt;
--- @param ReadReplicaDBClusterIdentifiers [ReadReplicaDBClusterIdentifierList] &lt;p&gt;Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.&lt;/p&gt;
--- @param TdeCredentialArn [String] &lt;p&gt;The ARN from the key store with which the instance is associated for TDE encryption.&lt;/p&gt;
--- @param EnhancedMonitoringResourceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced Monitoring metrics data for the DB instance.&lt;/p&gt;
--- @param CharacterSetName [String] &lt;p&gt;If present, specifies the name of the character set that this instance is associated with.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;Specifies the name of the Availability Zone the DB instance is located in.&lt;/p&gt;
--- @param DomainMemberships [DomainMembershipList] &lt;p&gt;The Active Directory Domain membership records associated with the DB instance.&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance is a member of.&lt;/p&gt;
--- @param StorageType [String] &lt;p&gt;Specifies the storage type associated with DB instance.&lt;/p&gt;
--- @param DbiResourceId [String] &lt;p&gt;The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log entries whenever the KMS key for the DB instance is accessed.&lt;/p&gt;
--- @param CACertificateIdentifier [String] &lt;p&gt;The identifier of the CA certificate for this DB instance.&lt;/p&gt;
--- @param Iops [IntegerOptional] &lt;p&gt;Specifies the Provisioned IOPS (I/O operations per second) value.&lt;/p&gt;
--- @param StorageEncrypted [Boolean] &lt;p&gt;Specifies whether the DB instance is encrypted.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt; If &lt;code&gt;StorageEncrypted&lt;/code&gt; is true, the KMS key identifier for the encrypted DB instance. &lt;/p&gt;
--- @param Timezone [String] &lt;p&gt;The time zone of the DB instance. In most cases, the &lt;code&gt;Timezone&lt;/code&gt; element is empty. &lt;code&gt;Timezone&lt;/code&gt; content appears only for Microsoft SQL Server DB instances that were created with a time zone specified. &lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;Contains the name of the compute and memory capacity class of the DB instance.&lt;/p&gt;
--- @param DbInstancePort [Integer] &lt;p&gt;Specifies the port that the DB instance listens on. If the DB instance is part of a DB cluster, this can be a different port than the DB cluster port.&lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB instance.&lt;/p&gt;
+-- <p>Contains the result of a successful invocation of the following actions:</p> <ul> <li> <p> <a>CreateDBInstance</a> </p> </li> <li> <p> <a>DeleteDBInstance</a> </p> </li> <li> <p> <a>ModifyDBInstance</a> </p> </li> <li> <p> <a>StopDBInstance</a> </p> </li> <li> <p> <a>StartDBInstance</a> </p> </li> </ul> <p>This data type is used as a response element in the <a>DescribeDBInstances</a> action.</p>
+-- @param PubliclyAccessible [Boolean] <p>Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.</p> <p>Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.</p> <ul> <li> <p> <b>Default VPC:</b>true</p> </li> <li> <p> <b>VPC:</b>false</p> </li> </ul> <p>If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.</p>
+-- @param MasterUsername [String] <p>Contains the master username for the DB instance.</p>
+-- @param MonitoringInterval [IntegerOptional] <p>The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance.</p>
+-- @param LicenseModel [String] <p>License model information for this DB instance.</p>
+-- @param MonitoringRoleArn [String] <p>The ARN for the IAM role that permits RDS to send Enhanced Monitoring metrics to CloudWatch Logs.</p>
+-- @param VpcSecurityGroups [VpcSecurityGroupMembershipList] <p>Provides a list of VPC security group elements that the DB instance belongs to.</p>
+-- @param InstanceCreateTime [TStamp] <p>Provides the date and time the DB instance was created.</p>
+-- @param CopyTagsToSnapshot [Boolean] <p>Specifies whether tags are copied from the DB instance to snapshots of the DB instance.</p>
+-- @param OptionGroupMemberships [OptionGroupMembershipList] <p>Provides the list of option group memberships for this DB instance.</p>
+-- @param PendingModifiedValues [PendingModifiedValues] <p>Specifies that changes to the DB instance are pending. This element is only included when changes are pending. Specific changes are identified by subelements.</p>
+-- @param Engine [String] <p>Provides the name of the database engine to be used for this DB instance.</p>
+-- @param MultiAZ [Boolean] <p>Specifies if the DB instance is a Multi-AZ deployment.</p>
+-- @param LatestRestorableTime [TStamp] <p>Specifies the latest time to which a database can be restored with point-in-time restore.</p>
+-- @param DBSecurityGroups [DBSecurityGroupMembershipList] <p> Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and <code>DBSecurityGroup.Status</code> subelements. </p>
+-- @param DBParameterGroups [DBParameterGroupStatusList] <p>Provides the list of DB parameter groups applied to this DB instance.</p>
+-- @param ReadReplicaSourceDBInstanceIdentifier [String] <p>Contains the identifier of the source DB instance if this DB instance is a Read Replica.</p>
+-- @param AutoMinorVersionUpgrade [Boolean] <p>Indicates that minor version patches are applied automatically.</p>
+-- @param PreferredBackupWindow [String] <p> Specifies the daily time range during which automated backups are created if automated backups are enabled, as determined by the <code>BackupRetentionPeriod</code>. </p>
+-- @param PromotionTier [IntegerOptional] <p>A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"> Fault Tolerance for an Aurora DB Cluster</a>. </p>
+-- @param DBSubnetGroup [DBSubnetGroup] <p>Specifies information on the subnet group associated with the DB instance, including the name, description, and subnets in the subnet group.</p>
+-- @param SecondaryAvailabilityZone [String] <p>If present, specifies the name of the secondary Availability Zone for a DB instance with multi-AZ support.</p>
+-- @param ReadReplicaDBInstanceIdentifiers [ReadReplicaDBInstanceIdentifierList] <p>Contains one or more identifiers of the Read Replicas associated with this DB instance.</p>
+-- @param AllocatedStorage [Integer] <p>Specifies the allocated storage size specified in gigabytes.</p>
+-- @param DBInstanceArn [String] <p>The Amazon Resource Name (ARN) for the DB instance.</p>
+-- @param BackupRetentionPeriod [Integer] <p>Specifies the number of days for which automatic DB snapshots are retained.</p>
+-- @param DBName [String] <p>The meaning of this parameter differs according to the database engine you use. For example, this value returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read Replicas are only supported for these engines.</p> <p> <b>MySQL, MariaDB, SQL Server, PostgreSQL</b> </p> <p>Contains the name of the initial database of this instance that was provided at create time, if one was specified when the DB instance was created. This same name is returned for the life of the DB instance.</p> <p>Type: String</p> <p> <b>Oracle</b> </p> <p>Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do not apply to an Oracle DB instance.</p>
+-- @param PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</p>
+-- @param Endpoint [Endpoint] <p>Specifies the connection endpoint.</p>
+-- @param DBInstanceStatus [String] <p>Specifies the current state of this database.</p>
+-- @param StatusInfos [DBInstanceStatusInfoList] <p>The status of a Read Replica. If the instance is not a Read Replica, this will be blank.</p>
+-- @param IAMDatabaseAuthenticationEnabled [Boolean] <p>True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise false.</p> <p>IAM database authentication can be enabled for the following database engines</p> <ul> <li> <p>For MySQL 5.6, minor version 5.6.34 or higher</p> </li> <li> <p>For MySQL 5.7, minor version 5.7.16 or higher</p> </li> <li> <p>Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.</p> </li> </ul>
+-- @param EngineVersion [String] <p>Indicates the database engine version.</p>
+-- @param ReadReplicaDBClusterIdentifiers [ReadReplicaDBClusterIdentifierList] <p>Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.</p>
+-- @param TdeCredentialArn [String] <p>The ARN from the key store with which the instance is associated for TDE encryption.</p>
+-- @param EnhancedMonitoringResourceArn [String] <p>The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced Monitoring metrics data for the DB instance.</p>
+-- @param CharacterSetName [String] <p>If present, specifies the name of the character set that this instance is associated with.</p>
+-- @param AvailabilityZone [String] <p>Specifies the name of the Availability Zone the DB instance is located in.</p>
+-- @param DomainMemberships [DomainMembershipList] <p>The Active Directory Domain membership records associated with the DB instance.</p>
+-- @param DBClusterIdentifier [String] <p>If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance is a member of.</p>
+-- @param StorageType [String] <p>Specifies the storage type associated with DB instance.</p>
+-- @param DbiResourceId [String] <p>The region-unique, immutable identifier for the DB instance. This identifier is found in AWS CloudTrail log entries whenever the KMS key for the DB instance is accessed.</p>
+-- @param CACertificateIdentifier [String] <p>The identifier of the CA certificate for this DB instance.</p>
+-- @param Iops [IntegerOptional] <p>Specifies the Provisioned IOPS (I/O operations per second) value.</p>
+-- @param StorageEncrypted [Boolean] <p>Specifies whether the DB instance is encrypted.</p>
+-- @param KmsKeyId [String] <p> If <code>StorageEncrypted</code> is true, the KMS key identifier for the encrypted DB instance. </p>
+-- @param Timezone [String] <p>The time zone of the DB instance. In most cases, the <code>Timezone</code> element is empty. <code>Timezone</code> content appears only for Microsoft SQL Server DB instances that were created with a time zone specified. </p>
+-- @param DBInstanceClass [String] <p>Contains the name of the compute and memory capacity class of the DB instance.</p>
+-- @param DbInstancePort [Integer] <p>Specifies the port that the DB instance listens on. If the DB instance is part of a DB cluster, this can be a different port than the DB cluster port.</p>
+-- @param DBInstanceIdentifier [String] <p>Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB instance.</p>
 function M.DBInstance(PubliclyAccessible, MasterUsername, MonitoringInterval, LicenseModel, MonitoringRoleArn, VpcSecurityGroups, InstanceCreateTime, CopyTagsToSnapshot, OptionGroupMemberships, PendingModifiedValues, Engine, MultiAZ, LatestRestorableTime, DBSecurityGroups, DBParameterGroups, ReadReplicaSourceDBInstanceIdentifier, AutoMinorVersionUpgrade, PreferredBackupWindow, PromotionTier, DBSubnetGroup, SecondaryAvailabilityZone, ReadReplicaDBInstanceIdentifiers, AllocatedStorage, DBInstanceArn, BackupRetentionPeriod, DBName, PreferredMaintenanceWindow, Endpoint, DBInstanceStatus, StatusInfos, IAMDatabaseAuthenticationEnabled, EngineVersion, ReadReplicaDBClusterIdentifiers, TdeCredentialArn, EnhancedMonitoringResourceArn, CharacterSetName, AvailabilityZone, DomainMemberships, DBClusterIdentifier, StorageType, DbiResourceId, CACertificateIdentifier, Iops, StorageEncrypted, KmsKeyId, Timezone, DBInstanceClass, DbInstancePort, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBInstance")
 	local t = { 
@@ -4046,13 +4046,13 @@ function M.AssertPendingMaintenanceAction(struct)
 end
 
 --- Create a structure of type PendingMaintenanceAction
--- &lt;p&gt;Provides information about a pending maintenance action for a resource.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;A description providing more detail about the maintenance action.&lt;/p&gt;
--- @param OptInStatus [String] &lt;p&gt;Indicates the type of opt-in request that has been received for the resource.&lt;/p&gt;
--- @param ForcedApplyDate [TStamp] &lt;p&gt;The date when the maintenance action will be automatically applied. The maintenance action will be applied to the resource on this date regardless of the maintenance window for the resource. If this date is specified, any &lt;code&gt;immediate&lt;/code&gt; opt-in requests are ignored.&lt;/p&gt;
--- @param AutoAppliedAfterDate [TStamp] &lt;p&gt;The date of the maintenance window when the action will be applied. The maintenance action will be applied to the resource during its first maintenance window after this date. If this date is specified, any &lt;code&gt;next-maintenance&lt;/code&gt; opt-in requests are ignored.&lt;/p&gt;
--- @param Action [String] &lt;p&gt;The type of pending maintenance action that is available for the resource.&lt;/p&gt;
--- @param CurrentApplyDate [TStamp] &lt;p&gt;The effective date when the pending maintenance action will be applied to the resource. This date takes into account opt-in requests received from the &lt;a&gt;ApplyPendingMaintenanceAction&lt;/a&gt; API, the &lt;code&gt;AutoAppliedAfterDate&lt;/code&gt;, and the &lt;code&gt;ForcedApplyDate&lt;/code&gt;. This value is blank if an opt-in request has not been received and nothing has been specified as &lt;code&gt;AutoAppliedAfterDate&lt;/code&gt; or &lt;code&gt;ForcedApplyDate&lt;/code&gt;.&lt;/p&gt;
+-- <p>Provides information about a pending maintenance action for a resource.</p>
+-- @param Description [String] <p>A description providing more detail about the maintenance action.</p>
+-- @param OptInStatus [String] <p>Indicates the type of opt-in request that has been received for the resource.</p>
+-- @param ForcedApplyDate [TStamp] <p>The date when the maintenance action will be automatically applied. The maintenance action will be applied to the resource on this date regardless of the maintenance window for the resource. If this date is specified, any <code>immediate</code> opt-in requests are ignored.</p>
+-- @param AutoAppliedAfterDate [TStamp] <p>The date of the maintenance window when the action will be applied. The maintenance action will be applied to the resource during its first maintenance window after this date. If this date is specified, any <code>next-maintenance</code> opt-in requests are ignored.</p>
+-- @param Action [String] <p>The type of pending maintenance action that is available for the resource.</p>
+-- @param CurrentApplyDate [TStamp] <p>The effective date when the pending maintenance action will be applied to the resource. This date takes into account opt-in requests received from the <a>ApplyPendingMaintenanceAction</a> API, the <code>AutoAppliedAfterDate</code>, and the <code>ForcedApplyDate</code>. This value is blank if an opt-in request has not been received and nothing has been specified as <code>AutoAppliedAfterDate</code> or <code>ForcedApplyDate</code>.</p>
 function M.PendingMaintenanceAction(Description, OptInStatus, ForcedApplyDate, AutoAppliedAfterDate, Action, CurrentApplyDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PendingMaintenanceAction")
 	local t = { 
@@ -4116,22 +4116,22 @@ function M.AssertReservedDBInstance(struct)
 end
 
 --- Create a structure of type ReservedDBInstance
--- &lt;p&gt; This data type is used as a response element in the &lt;a&gt;DescribeReservedDBInstances&lt;/a&gt; and &lt;a&gt;PurchaseReservedDBInstancesOffering&lt;/a&gt; actions. &lt;/p&gt;
--- @param MultiAZ [Boolean] &lt;p&gt;Indicates if the reservation applies to Multi-AZ deployments.&lt;/p&gt;
--- @param OfferingType [String] &lt;p&gt;The offering type of this reserved DB instance.&lt;/p&gt;
--- @param FixedPrice [Double] &lt;p&gt;The fixed price charged for this reserved DB instance.&lt;/p&gt;
--- @param CurrencyCode [String] &lt;p&gt;The currency code for the reserved DB instance.&lt;/p&gt;
--- @param ProductDescription [String] &lt;p&gt;The description of the reserved DB instance.&lt;/p&gt;
--- @param ReservedDBInstancesOfferingId [String] &lt;p&gt;The offering identifier.&lt;/p&gt;
--- @param RecurringCharges [RecurringChargeList] &lt;p&gt;The recurring price charged to run this reserved DB instance.&lt;/p&gt;
--- @param ReservedDBInstanceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the reserved DB instance.&lt;/p&gt;
--- @param Duration [Integer] &lt;p&gt;The duration of the reservation in seconds.&lt;/p&gt;
--- @param State [String] &lt;p&gt;The state of the reserved DB instance.&lt;/p&gt;
--- @param DBInstanceCount [Integer] &lt;p&gt;The number of reserved DB instances.&lt;/p&gt;
--- @param StartTime [TStamp] &lt;p&gt;The time the reservation started.&lt;/p&gt;
--- @param ReservedDBInstanceId [String] &lt;p&gt;The unique identifier for the reservation.&lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;The DB instance class for the reserved DB instance.&lt;/p&gt;
--- @param UsagePrice [Double] &lt;p&gt;The hourly price charged for this reserved DB instance.&lt;/p&gt;
+-- <p> This data type is used as a response element in the <a>DescribeReservedDBInstances</a> and <a>PurchaseReservedDBInstancesOffering</a> actions. </p>
+-- @param MultiAZ [Boolean] <p>Indicates if the reservation applies to Multi-AZ deployments.</p>
+-- @param OfferingType [String] <p>The offering type of this reserved DB instance.</p>
+-- @param FixedPrice [Double] <p>The fixed price charged for this reserved DB instance.</p>
+-- @param CurrencyCode [String] <p>The currency code for the reserved DB instance.</p>
+-- @param ProductDescription [String] <p>The description of the reserved DB instance.</p>
+-- @param ReservedDBInstancesOfferingId [String] <p>The offering identifier.</p>
+-- @param RecurringCharges [RecurringChargeList] <p>The recurring price charged to run this reserved DB instance.</p>
+-- @param ReservedDBInstanceArn [String] <p>The Amazon Resource Name (ARN) for the reserved DB instance.</p>
+-- @param Duration [Integer] <p>The duration of the reservation in seconds.</p>
+-- @param State [String] <p>The state of the reserved DB instance.</p>
+-- @param DBInstanceCount [Integer] <p>The number of reserved DB instances.</p>
+-- @param StartTime [TStamp] <p>The time the reservation started.</p>
+-- @param ReservedDBInstanceId [String] <p>The unique identifier for the reservation.</p>
+-- @param DBInstanceClass [String] <p>The DB instance class for the reserved DB instance.</p>
+-- @param UsagePrice [Double] <p>The hourly price charged for this reserved DB instance.</p>
 function M.ReservedDBInstance(MultiAZ, OfferingType, FixedPrice, CurrencyCode, ProductDescription, ReservedDBInstancesOfferingId, RecurringCharges, ReservedDBInstanceArn, Duration, State, DBInstanceCount, StartTime, ReservedDBInstanceId, DBInstanceClass, UsagePrice, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedDBInstance")
 	local t = { 
@@ -4166,7 +4166,7 @@ function M.AssertInvalidDBSubnetStateFault(struct)
 end
 
 --- Create a structure of type InvalidDBSubnetStateFault
--- &lt;p&gt; The DB subnet is not in the &lt;i&gt;available&lt;/i&gt; state. &lt;/p&gt;
+-- <p> The DB subnet is not in the <i>available</i> state. </p>
 function M.InvalidDBSubnetStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDBSubnetStateFault")
 	local t = { 
@@ -4192,12 +4192,12 @@ function M.AssertAuthorizeDBSecurityGroupIngressMessage(struct)
 end
 
 --- Create a structure of type AuthorizeDBSecurityGroupIngressMessage
--- &lt;p/&gt;
--- @param EC2SecurityGroupName [String] &lt;p&gt; Name of the EC2 security group to authorize. For VPC DB security groups, &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. Otherwise, &lt;code&gt;EC2SecurityGroupOwnerId&lt;/code&gt; and either &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; or &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. &lt;/p&gt;
--- @param EC2SecurityGroupOwnerId [String] &lt;p&gt; AWS account number of the owner of the EC2 security group specified in the &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups, &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. Otherwise, &lt;code&gt;EC2SecurityGroupOwnerId&lt;/code&gt; and either &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; or &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. &lt;/p&gt;
--- @param CIDRIP [String] &lt;p&gt;The IP range to authorize.&lt;/p&gt;
--- @param EC2SecurityGroupId [String] &lt;p&gt; Id of the EC2 security group to authorize. For VPC DB security groups, &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. Otherwise, &lt;code&gt;EC2SecurityGroupOwnerId&lt;/code&gt; and either &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; or &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. &lt;/p&gt;
--- @param DBSecurityGroupName [String] &lt;p&gt;The name of the DB security group to add authorization to.&lt;/p&gt;
+-- <p/>
+-- @param EC2SecurityGroupName [String] <p> Name of the EC2 security group to authorize. For VPC DB security groups, <code>EC2SecurityGroupId</code> must be provided. Otherwise, <code>EC2SecurityGroupOwnerId</code> and either <code>EC2SecurityGroupName</code> or <code>EC2SecurityGroupId</code> must be provided. </p>
+-- @param EC2SecurityGroupOwnerId [String] <p> AWS account number of the owner of the EC2 security group specified in the <code>EC2SecurityGroupName</code> parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups, <code>EC2SecurityGroupId</code> must be provided. Otherwise, <code>EC2SecurityGroupOwnerId</code> and either <code>EC2SecurityGroupName</code> or <code>EC2SecurityGroupId</code> must be provided. </p>
+-- @param CIDRIP [String] <p>The IP range to authorize.</p>
+-- @param EC2SecurityGroupId [String] <p> Id of the EC2 security group to authorize. For VPC DB security groups, <code>EC2SecurityGroupId</code> must be provided. Otherwise, <code>EC2SecurityGroupOwnerId</code> and either <code>EC2SecurityGroupName</code> or <code>EC2SecurityGroupId</code> must be provided. </p>
+-- @param DBSecurityGroupName [String] <p>The name of the DB security group to add authorization to.</p>
 -- Required parameter: DBSecurityGroupName
 function M.AuthorizeDBSecurityGroupIngressMessage(EC2SecurityGroupName, EC2SecurityGroupOwnerId, CIDRIP, EC2SecurityGroupId, DBSecurityGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizeDBSecurityGroupIngressMessage")
@@ -4225,9 +4225,9 @@ function M.AssertOptionGroupMembership(struct)
 end
 
 --- Create a structure of type OptionGroupMembership
--- &lt;p&gt;Provides information on the option groups the DB instance is a member of.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the DB instance's option group membership. Valid values are: &lt;code&gt;in-sync&lt;/code&gt;, &lt;code&gt;pending-apply&lt;/code&gt;, &lt;code&gt;pending-removal&lt;/code&gt;, &lt;code&gt;pending-maintenance-apply&lt;/code&gt;, &lt;code&gt;pending-maintenance-removal&lt;/code&gt;, &lt;code&gt;applying&lt;/code&gt;, &lt;code&gt;removing&lt;/code&gt;, and &lt;code&gt;failed&lt;/code&gt;. &lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;The name of the option group that the instance belongs to.&lt;/p&gt;
+-- <p>Provides information on the option groups the DB instance is a member of.</p>
+-- @param Status [String] <p>The status of the DB instance's option group membership. Valid values are: <code>in-sync</code>, <code>pending-apply</code>, <code>pending-removal</code>, <code>pending-maintenance-apply</code>, <code>pending-maintenance-removal</code>, <code>applying</code>, <code>removing</code>, and <code>failed</code>. </p>
+-- @param OptionGroupName [String] <p>The name of the option group that the instance belongs to.</p>
 function M.OptionGroupMembership(Status, OptionGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionGroupMembership")
 	local t = { 
@@ -4272,7 +4272,7 @@ function M.AssertResourceNotFoundFault(struct)
 end
 
 --- Create a structure of type ResourceNotFoundFault
--- &lt;p&gt;The specified resource ID was not found.&lt;/p&gt;
+-- <p>The specified resource ID was not found.</p>
 function M.ResourceNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundFault")
 	local t = { 
@@ -4347,16 +4347,16 @@ function M.AssertOptionSetting(struct)
 end
 
 --- Create a structure of type OptionSetting
--- &lt;p&gt;Option settings are the actual settings being applied or configured for that option. It is used when you modify an option group or describe option groups. For example, the NATIVE_NETWORK_ENCRYPTION option has a setting called SQLNET.ENCRYPTION_SERVER that can have several different values.&lt;/p&gt;
--- @param IsCollection [Boolean] &lt;p&gt;Indicates if the option setting is part of a collection.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the option that has settings that you can set.&lt;/p&gt;
--- @param DataType [String] &lt;p&gt;The data type of the option setting.&lt;/p&gt;
--- @param DefaultValue [String] &lt;p&gt;The default value of the option setting.&lt;/p&gt;
--- @param Value [String] &lt;p&gt;The current value of the option setting.&lt;/p&gt;
--- @param AllowedValues [String] &lt;p&gt;The allowed values of the option setting.&lt;/p&gt;
--- @param IsModifiable [Boolean] &lt;p&gt;A Boolean value that, when true, indicates the option setting can be modified from the default.&lt;/p&gt;
--- @param ApplyType [String] &lt;p&gt;The DB engine specific parameter type.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description of the option setting.&lt;/p&gt;
+-- <p>Option settings are the actual settings being applied or configured for that option. It is used when you modify an option group or describe option groups. For example, the NATIVE_NETWORK_ENCRYPTION option has a setting called SQLNET.ENCRYPTION_SERVER that can have several different values.</p>
+-- @param IsCollection [Boolean] <p>Indicates if the option setting is part of a collection.</p>
+-- @param Name [String] <p>The name of the option that has settings that you can set.</p>
+-- @param DataType [String] <p>The data type of the option setting.</p>
+-- @param DefaultValue [String] <p>The default value of the option setting.</p>
+-- @param Value [String] <p>The current value of the option setting.</p>
+-- @param AllowedValues [String] <p>The allowed values of the option setting.</p>
+-- @param IsModifiable [Boolean] <p>A Boolean value that, when true, indicates the option setting can be modified from the default.</p>
+-- @param ApplyType [String] <p>The DB engine specific parameter type.</p>
+-- @param Description [String] <p>The description of the option setting.</p>
 function M.OptionSetting(IsCollection, Name, DataType, DefaultValue, Value, AllowedValues, IsModifiable, ApplyType, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionSetting")
 	local t = { 
@@ -4410,30 +4410,30 @@ function M.AssertCreateDBClusterMessage(struct)
 end
 
 --- Create a structure of type CreateDBClusterMessage
--- &lt;p/&gt;
--- @param MasterUsername [String] &lt;p&gt;The name of the master user for the DB cluster.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 16 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a reserved word for the chosen database engine.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt;A list of EC2 VPC security groups to associate with this DB cluster.&lt;/p&gt;
--- @param EnableIAMDatabaseAuthentication [BooleanOptional] &lt;p&gt;A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param Engine [String] &lt;p&gt;The name of the database engine to be used for this DB cluster.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;aurora&lt;/code&gt; &lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
--- @param PreferredBackupWindow [String] &lt;p&gt;The daily time range during which automated backups are created if automated backups are enabled using the &lt;code&gt;BackupRetentionPeriod&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt;Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html&quot;&gt; Adjusting the Preferred Maintenance Window&lt;/a&gt; in the &lt;i&gt;Amazon RDS User Guide.&lt;/i&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be in the format &lt;code&gt;hh24:mi-hh24:mi&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Times should be in Universal Coordinated Time (UTC).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not conflict with the preferred maintenance window.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be at least 30 minutes.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SourceRegion [String] &lt;p&gt;The ID of the region that contains the source for the read replica.&lt;/p&gt;
--- @param BackupRetentionPeriod [IntegerOptional] &lt;p&gt;The number of days for which automated backups are retained. You must specify a minimum value of 1.&lt;/p&gt; &lt;p&gt;Default: 1&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be a value from 1 to 35&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).&lt;/p&gt; &lt;p&gt; Format: &lt;code&gt;ddd:hh24:mi-ddd:hh24:mi&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html&quot;&gt; Adjusting the Preferred Maintenance Window&lt;/a&gt; in the &lt;i&gt;Amazon RDS User Guide.&lt;/i&gt; &lt;/p&gt; &lt;p&gt;Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun&lt;/p&gt; &lt;p&gt;Constraints: Minimum 30-minute window.&lt;/p&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt; The name of the DB cluster parameter group to associate with this DB cluster. If this argument is omitted, &lt;code&gt;default.aurora5.6&lt;/code&gt; will be used. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PreSignedUrl [String] &lt;p&gt;A URL that contains a Signature Version 4 signed request for the &lt;code&gt;CreateDBCluster&lt;/code&gt; action to be called in the source region where the DB cluster will be replicated from. You only need to specify &lt;code&gt;PreSignedUrl&lt;/code&gt; when you are performing cross-region replication from an encrypted DB cluster.&lt;/p&gt; &lt;p&gt;The pre-signed URL must be a valid request for the &lt;code&gt;CreateDBCluster&lt;/code&gt; API action that can be executed in the source region that contains the encrypted DB cluster to be copied.&lt;/p&gt; &lt;p&gt;The pre-signed URL request must contain the following parameter values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;KmsKeyId&lt;/code&gt; - The KMS key identifier for the key to use to encrypt the copy of the DB cluster in the destination region. This should refer to the same KMS key for both the &lt;code&gt;CreateDBCluster&lt;/code&gt; action that is called in the destination region, and the action contained in the pre-signed URL.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DestinationRegion&lt;/code&gt; - The name of the region that Aurora Read Replica will be created in.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ReplicationSourceIdentifier&lt;/code&gt; - The DB cluster identifier for the encrypted DB cluster to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you are copying an encrypted DB cluster from the us-west-2 region, then your &lt;code&gt;ReplicationSourceIdentifier&lt;/code&gt; would look like Example: &lt;code&gt;arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;To learn how to generate a Signature Version 4 signed request, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html&quot;&gt; Authenticating Requests: Using Query Parameters (AWS Signature Version 4)&lt;/a&gt; and &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html&quot;&gt; Signature Version 4 Signing Process&lt;/a&gt;.&lt;/p&gt;&lt;note&gt;&lt;p&gt;If you supply a value for this operation's &lt;code&gt;SourceRegion&lt;/code&gt; parameter, a pre-signed URL will be calculated on your behalf.&lt;/p&gt;&lt;/note&gt;
--- @param ReplicationSourceIdentifier [String] &lt;p&gt;The Amazon Resource Name (ARN) of the source DB instance or DB cluster if this DB cluster is created as a Read Replica.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The version number of the database engine to use.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Aurora&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;5.6.10a&lt;/code&gt; &lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;A DB subnet group to associate with this DB cluster.&lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;A value that indicates that the DB cluster should be associated with the specified option group.&lt;/p&gt; &lt;p&gt;Permanent options cannot be removed from an option group. The option group cannot be removed from a DB cluster once it is associated with a DB cluster.&lt;/p&gt;
--- @param CharacterSetName [String] &lt;p&gt;A value that indicates that the DB cluster should be associated with the specified CharacterSet.&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The DB cluster identifier. This parameter is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-cluster1&lt;/code&gt; &lt;/p&gt;
--- @param MasterUserPassword [String] &lt;p&gt;The password for the master database user. This password can contain any printable ASCII character except &quot;/&quot;, &quot;&quot;&quot;, or &quot;@&quot;.&lt;/p&gt; &lt;p&gt;Constraints: Must contain from 8 to 41 characters.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The KMS key identifier for an encrypted DB cluster.&lt;/p&gt; &lt;p&gt;The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;StorageEncrypted&lt;/code&gt; parameter is true, and you do not specify a value for the &lt;code&gt;KmsKeyId&lt;/code&gt; parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.&lt;/p&gt; &lt;p&gt;If you create a Read Replica of an encrypted DB cluster in another region, you must set &lt;code&gt;KmsKeyId&lt;/code&gt; to a KMS key ID that is valid in the destination region. This key is used to encrypt the Read Replica in that region.&lt;/p&gt;
--- @param StorageEncrypted [BooleanOptional] &lt;p&gt;Specifies whether the DB cluster is encrypted.&lt;/p&gt;
--- @param DatabaseName [String] &lt;p&gt;The name for your database of up to 64 alpha-numeric characters. If you do not provide a name, Amazon RDS will not create a database in the DB cluster you are creating.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on regions and Availability Zones, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html&quot;&gt;Regions and Availability Zones&lt;/a&gt;. &lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number on which the instances in the DB cluster accept connections.&lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;3306&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param MasterUsername [String] <p>The name of the master user for the DB cluster.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 16 alphanumeric characters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot be a reserved word for the chosen database engine.</p> </li> </ul>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of EC2 VPC security groups to associate with this DB cluster.</p>
+-- @param EnableIAMDatabaseAuthentication [BooleanOptional] <p>A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.</p> <p>Default: <code>false</code> </p>
+-- @param Engine [String] <p>The name of the database engine to be used for this DB cluster.</p> <p>Valid Values: <code>aurora</code> </p>
+-- @param Tags [TagList] <p/>
+-- @param PreferredBackupWindow [String] <p>The daily time range during which automated backups are created if automated backups are enabled using the <code>BackupRetentionPeriod</code> parameter. </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i> </p> <p>Constraints:</p> <ul> <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Times should be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p> </li> </ul>
+-- @param SourceRegion [String] <p>The ID of the region that contains the source for the read replica.</p>
+-- @param BackupRetentionPeriod [IntegerOptional] <p>The number of days for which automated backups are retained. You must specify a minimum value of 1.</p> <p>Default: 1</p> <p>Constraints:</p> <ul> <li> <p>Must be a value from 1 to 35</p> </li> </ul>
+-- @param PreferredMaintenanceWindow [String] <p>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i> </p> <p>Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute window.</p>
+-- @param DBClusterParameterGroupName [String] <p> The name of the DB cluster parameter group to associate with this DB cluster. If this argument is omitted, <code>default.aurora5.6</code> will be used. </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param PreSignedUrl [String] <p>A URL that contains a Signature Version 4 signed request for the <code>CreateDBCluster</code> action to be called in the source region where the DB cluster will be replicated from. You only need to specify <code>PreSignedUrl</code> when you are performing cross-region replication from an encrypted DB cluster.</p> <p>The pre-signed URL must be a valid request for the <code>CreateDBCluster</code> API action that can be executed in the source region that contains the encrypted DB cluster to be copied.</p> <p>The pre-signed URL request must contain the following parameter values:</p> <ul> <li> <p> <code>KmsKeyId</code> - The KMS key identifier for the key to use to encrypt the copy of the DB cluster in the destination region. This should refer to the same KMS key for both the <code>CreateDBCluster</code> action that is called in the destination region, and the action contained in the pre-signed URL.</p> </li> <li> <p> <code>DestinationRegion</code> - The name of the region that Aurora Read Replica will be created in.</p> </li> <li> <p> <code>ReplicationSourceIdentifier</code> - The DB cluster identifier for the encrypted DB cluster to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you are copying an encrypted DB cluster from the us-west-2 region, then your <code>ReplicationSourceIdentifier</code> would look like Example: <code>arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1</code>.</p> </li> </ul> <p>To learn how to generate a Signature Version 4 signed request, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html"> Authenticating Requests: Using Query Parameters (AWS Signature Version 4)</a> and <a href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html"> Signature Version 4 Signing Process</a>.</p><note><p>If you supply a value for this operation's <code>SourceRegion</code> parameter, a pre-signed URL will be calculated on your behalf.</p></note>
+-- @param ReplicationSourceIdentifier [String] <p>The Amazon Resource Name (ARN) of the source DB instance or DB cluster if this DB cluster is created as a Read Replica.</p>
+-- @param EngineVersion [String] <p>The version number of the database engine to use.</p> <p> <b>Aurora</b> </p> <p>Example: <code>5.6.10a</code> </p>
+-- @param DBSubnetGroupName [String] <p>A DB subnet group to associate with this DB cluster.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- @param OptionGroupName [String] <p>A value that indicates that the DB cluster should be associated with the specified option group.</p> <p>Permanent options cannot be removed from an option group. The option group cannot be removed from a DB cluster once it is associated with a DB cluster.</p>
+-- @param CharacterSetName [String] <p>A value that indicates that the DB cluster should be associated with the specified CharacterSet.</p>
+-- @param DBClusterIdentifier [String] <p>The DB cluster identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code> </p>
+-- @param MasterUserPassword [String] <p>The password for the master database user. This password can contain any printable ASCII character except "/", """, or "@".</p> <p>Constraints: Must contain from 8 to 41 characters.</p>
+-- @param KmsKeyId [String] <p>The KMS key identifier for an encrypted DB cluster.</p> <p>The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.</p> <p>If the <code>StorageEncrypted</code> parameter is true, and you do not specify a value for the <code>KmsKeyId</code> parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p> <p>If you create a Read Replica of an encrypted DB cluster in another region, you must set <code>KmsKeyId</code> to a KMS key ID that is valid in the destination region. This key is used to encrypt the Read Replica in that region.</p>
+-- @param StorageEncrypted [BooleanOptional] <p>Specifies whether the DB cluster is encrypted.</p>
+-- @param DatabaseName [String] <p>The name for your database of up to 64 alpha-numeric characters. If you do not provide a name, Amazon RDS will not create a database in the DB cluster you are creating.</p>
+-- @param AvailabilityZones [AvailabilityZones] <p>A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on regions and Availability Zones, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html">Regions and Availability Zones</a>. </p>
+-- @param Port [IntegerOptional] <p>The port number on which the instances in the DB cluster accept connections.</p> <p> Default: <code>3306</code> </p>
 -- Required parameter: DBClusterIdentifier
 -- Required parameter: Engine
 function M.CreateDBClusterMessage(MasterUsername, VpcSecurityGroupIds, EnableIAMDatabaseAuthentication, Engine, Tags, PreferredBackupWindow, SourceRegion, BackupRetentionPeriod, PreferredMaintenanceWindow, DBClusterParameterGroupName, PreSignedUrl, ReplicationSourceIdentifier, EngineVersion, DBSubnetGroupName, OptionGroupName, CharacterSetName, DBClusterIdentifier, MasterUserPassword, KmsKeyId, StorageEncrypted, DatabaseName, AvailabilityZones, Port, ...)
@@ -4481,10 +4481,10 @@ function M.AssertDownloadDBLogFilePortionDetails(struct)
 end
 
 --- Create a structure of type DownloadDBLogFilePortionDetails
--- &lt;p&gt;This data type is used as a response element to &lt;a&gt;DownloadDBLogFilePortion&lt;/a&gt;.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A pagination token that can be used in a subsequent DownloadDBLogFilePortion request.&lt;/p&gt;
--- @param AdditionalDataPending [Boolean] &lt;p&gt;Boolean value that if true, indicates there is more data to be downloaded.&lt;/p&gt;
--- @param LogFileData [String] &lt;p&gt;Entries from the specified log file.&lt;/p&gt;
+-- <p>This data type is used as a response element to <a>DownloadDBLogFilePortion</a>.</p>
+-- @param Marker [String] <p>A pagination token that can be used in a subsequent DownloadDBLogFilePortion request.</p>
+-- @param AdditionalDataPending [Boolean] <p>Boolean value that if true, indicates there is more data to be downloaded.</p>
+-- @param LogFileData [String] <p>Entries from the specified log file.</p>
 function M.DownloadDBLogFilePortionDetails(Marker, AdditionalDataPending, LogFileData, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DownloadDBLogFilePortionDetails")
 	local t = { 
@@ -4507,7 +4507,7 @@ function M.AssertDBParameterGroupAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type DBParameterGroupAlreadyExistsFault
--- &lt;p&gt;A DB parameter group with the same name exists.&lt;/p&gt;
+-- <p>A DB parameter group with the same name exists.</p>
 function M.DBParameterGroupAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBParameterGroupAlreadyExistsFault")
 	local t = { 
@@ -4529,9 +4529,9 @@ function M.AssertDBEngineVersionMessage(struct)
 end
 
 --- Create a structure of type DBEngineVersionMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeDBEngineVersions&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBEngineVersions [DBEngineVersionList] &lt;p&gt; A list of &lt;code&gt;DBEngineVersion&lt;/code&gt; elements. &lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeDBEngineVersions</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBEngineVersions [DBEngineVersionList] <p> A list of <code>DBEngineVersion</code> elements. </p>
 function M.DBEngineVersionMessage(Marker, DBEngineVersions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBEngineVersionMessage")
 	local t = { 
@@ -4557,11 +4557,11 @@ function M.AssertDescribeDBInstancesMessage(struct)
 end
 
 --- Create a structure of type DescribeDBInstancesMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribeDBInstances&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;A filter that specifies one or more DB instances to describe.&lt;/p&gt; &lt;p&gt;Supported filters:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;db-cluster-id&lt;/code&gt; - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs). The results list will only include information about the DB instances associated with the DB Clusters identified by these ARNs.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;db-instance-id&lt;/code&gt; - Accepts DB instance identifiers and DB instance Amazon Resource Names (ARNs). The results list will only include information about the DB instances identified by these ARNs.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The user-supplied instance identifier. If this parameter is specified, information from only the specific DB instance is returned. This parameter isn't case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribeDBInstances</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>A filter that specifies one or more DB instances to describe.</p> <p>Supported filters:</p> <ul> <li> <p> <code>db-cluster-id</code> - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs). The results list will only include information about the DB instances associated with the DB Clusters identified by these ARNs.</p> </li> <li> <p> <code>db-instance-id</code> - Accepts DB instance identifiers and DB instance Amazon Resource Names (ARNs). The results list will only include information about the DB instances identified by these ARNs.</p> </li> </ul>
+-- @param DBInstanceIdentifier [String] <p>The user-supplied instance identifier. If this parameter is specified, information from only the specific DB instance is returned. This parameter isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 function M.DescribeDBInstancesMessage(Marker, MaxRecords, Filters, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBInstancesMessage")
 	local t = { 
@@ -4585,7 +4585,7 @@ function M.AssertSNSNoAuthorizationFault(struct)
 end
 
 --- Create a structure of type SNSNoAuthorizationFault
--- &lt;p&gt;You do not have permission to publish to the SNS topic ARN.&lt;/p&gt;
+-- <p>You do not have permission to publish to the SNS topic ARN.</p>
 function M.SNSNoAuthorizationFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSNoAuthorizationFault")
 	local t = { 
@@ -4607,9 +4607,9 @@ function M.AssertDBParameterGroupDetails(struct)
 end
 
 --- Create a structure of type DBParameterGroupDetails
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeDBParameters&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param Parameters [ParametersList] &lt;p&gt; A list of &lt;a&gt;Parameter&lt;/a&gt; values. &lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeDBParameters</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param Parameters [ParametersList] <p> A list of <a>Parameter</a> values. </p>
 function M.DBParameterGroupDetails(Marker, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBParameterGroupDetails")
 	local t = { 
@@ -4654,7 +4654,7 @@ function M.AssertInvalidDBInstanceStateFault(struct)
 end
 
 --- Create a structure of type InvalidDBInstanceStateFault
--- &lt;p&gt; The specified DB instance is not in the &lt;i&gt;available&lt;/i&gt; state. &lt;/p&gt;
+-- <p> The specified DB instance is not in the <i>available</i> state. </p>
 function M.InvalidDBInstanceStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDBInstanceStateFault")
 	local t = { 
@@ -4743,7 +4743,7 @@ function M.AssertDBSecurityGroupNotSupportedFault(struct)
 end
 
 --- Create a structure of type DBSecurityGroupNotSupportedFault
--- &lt;p&gt;A DB security group is not allowed for this action.&lt;/p&gt;
+-- <p>A DB security group is not allowed for this action.</p>
 function M.DBSecurityGroupNotSupportedFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSecurityGroupNotSupportedFault")
 	local t = { 
@@ -4763,7 +4763,7 @@ function M.AssertDBSecurityGroupQuotaExceededFault(struct)
 end
 
 --- Create a structure of type DBSecurityGroupQuotaExceededFault
--- &lt;p&gt;Request would result in user exceeding the allowed number of DB security groups.&lt;/p&gt;
+-- <p>Request would result in user exceeding the allowed number of DB security groups.</p>
 function M.DBSecurityGroupQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSecurityGroupQuotaExceededFault")
 	local t = { 
@@ -4796,20 +4796,20 @@ function M.AssertOptionGroupOption(struct)
 end
 
 --- Create a structure of type OptionGroupOption
--- &lt;p&gt;Available option.&lt;/p&gt;
--- @param MinimumRequiredMinorEngineVersion [String] &lt;p&gt;The minimum required engine version for the option to be applied.&lt;/p&gt;
--- @param OptionsDependedOn [OptionsDependedOn] &lt;p&gt;The options that are prerequisites for this option.&lt;/p&gt;
--- @param MajorEngineVersion [String] &lt;p&gt;Indicates the major engine version that the option is available for.&lt;/p&gt;
--- @param OptionGroupOptionVersions [OptionGroupOptionVersionsList] &lt;p&gt;The versions that are available for the option.&lt;/p&gt;
--- @param Persistent [Boolean] &lt;p&gt;Persistent options can't be removed from an option group while DB instances are associated with the option group. If you disassociate all DB instances from the option group, your can remove the persistent option from the option group.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description of the option.&lt;/p&gt;
--- @param DefaultPort [IntegerOptional] &lt;p&gt;If the option requires a port, specifies the default port for the option.&lt;/p&gt;
--- @param Permanent [Boolean] &lt;p&gt;Permanent options can never be removed from an option group. An option group containing a permanent option can't be removed from a DB instance.&lt;/p&gt;
--- @param OptionGroupOptionSettings [OptionGroupOptionSettingsList] &lt;p&gt;The option settings that are available (and the default value) for each option in an option group.&lt;/p&gt;
--- @param OptionsConflictsWith [OptionsConflictsWith] &lt;p&gt;The options that conflict with this option.&lt;/p&gt;
--- @param EngineName [String] &lt;p&gt;The name of the engine that this option can be applied to.&lt;/p&gt;
--- @param PortRequired [Boolean] &lt;p&gt;Specifies whether the option requires a port.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the option.&lt;/p&gt;
+-- <p>Available option.</p>
+-- @param MinimumRequiredMinorEngineVersion [String] <p>The minimum required engine version for the option to be applied.</p>
+-- @param OptionsDependedOn [OptionsDependedOn] <p>The options that are prerequisites for this option.</p>
+-- @param MajorEngineVersion [String] <p>Indicates the major engine version that the option is available for.</p>
+-- @param OptionGroupOptionVersions [OptionGroupOptionVersionsList] <p>The versions that are available for the option.</p>
+-- @param Persistent [Boolean] <p>Persistent options can't be removed from an option group while DB instances are associated with the option group. If you disassociate all DB instances from the option group, your can remove the persistent option from the option group.</p>
+-- @param Description [String] <p>The description of the option.</p>
+-- @param DefaultPort [IntegerOptional] <p>If the option requires a port, specifies the default port for the option.</p>
+-- @param Permanent [Boolean] <p>Permanent options can never be removed from an option group. An option group containing a permanent option can't be removed from a DB instance.</p>
+-- @param OptionGroupOptionSettings [OptionGroupOptionSettingsList] <p>The option settings that are available (and the default value) for each option in an option group.</p>
+-- @param OptionsConflictsWith [OptionsConflictsWith] <p>The options that conflict with this option.</p>
+-- @param EngineName [String] <p>The name of the engine that this option can be applied to.</p>
+-- @param PortRequired [Boolean] <p>Specifies whether the option requires a port.</p>
+-- @param Name [String] <p>The name of the option.</p>
 function M.OptionGroupOption(MinimumRequiredMinorEngineVersion, OptionsDependedOn, MajorEngineVersion, OptionGroupOptionVersions, Persistent, Description, DefaultPort, Permanent, OptionGroupOptionSettings, OptionsConflictsWith, EngineName, PortRequired, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionGroupOption")
 	local t = { 
@@ -4846,11 +4846,11 @@ function M.AssertDBClusterParameterGroup(struct)
 end
 
 --- Create a structure of type DBClusterParameterGroup
--- &lt;p&gt;Contains the result of a successful invocation of the &lt;a&gt;CreateDBClusterParameterGroup&lt;/a&gt; or &lt;a&gt;CopyDBClusterParameterGroup&lt;/a&gt; action. &lt;/p&gt; &lt;p&gt;This data type is used as a request parameter in the &lt;a&gt;DeleteDBClusterParameterGroup&lt;/a&gt; action, and as a response element in the &lt;a&gt;DescribeDBClusterParameterGroups&lt;/a&gt; action. &lt;/p&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt;Provides the name of the DB cluster parameter group.&lt;/p&gt;
--- @param DBParameterGroupFamily [String] &lt;p&gt;Provides the name of the DB parameter group family that this DB cluster parameter group is compatible with.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;Provides the customer-specified description for this DB cluster parameter group.&lt;/p&gt;
--- @param DBClusterParameterGroupArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the DB cluster parameter group.&lt;/p&gt;
+-- <p>Contains the result of a successful invocation of the <a>CreateDBClusterParameterGroup</a> or <a>CopyDBClusterParameterGroup</a> action. </p> <p>This data type is used as a request parameter in the <a>DeleteDBClusterParameterGroup</a> action, and as a response element in the <a>DescribeDBClusterParameterGroups</a> action. </p>
+-- @param DBClusterParameterGroupName [String] <p>Provides the name of the DB cluster parameter group.</p>
+-- @param DBParameterGroupFamily [String] <p>Provides the name of the DB parameter group family that this DB cluster parameter group is compatible with.</p>
+-- @param Description [String] <p>Provides the customer-specified description for this DB cluster parameter group.</p>
+-- @param DBClusterParameterGroupArn [String] <p>The Amazon Resource Name (ARN) for the DB cluster parameter group.</p>
 function M.DBClusterParameterGroup(DBClusterParameterGroupName, DBParameterGroupFamily, Description, DBClusterParameterGroupArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterParameterGroup")
 	local t = { 
@@ -4874,7 +4874,7 @@ function M.AssertDBClusterQuotaExceededFault(struct)
 end
 
 --- Create a structure of type DBClusterQuotaExceededFault
--- &lt;p&gt;User attempted to create a new DB cluster and the user has already reached the maximum allowed DB cluster quota.&lt;/p&gt;
+-- <p>User attempted to create a new DB cluster and the user has already reached the maximum allowed DB cluster quota.</p>
 function M.DBClusterQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterQuotaExceededFault")
 	local t = { 
@@ -4904,15 +4904,15 @@ end
 
 --- Create a structure of type DescribeDBEngineVersionsMessage
 --  
--- @param Engine [String] &lt;p&gt;The database engine to return.&lt;/p&gt;
--- @param DBParameterGroupFamily [String] &lt;p&gt;The name of a specific DB parameter group family to return details for.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ListSupportedCharacterSets [BooleanOptional] &lt;p&gt;If this parameter is specified and the requested engine supports the &lt;code&gt;CharacterSetName&lt;/code&gt; parameter for &lt;code&gt;CreateDBInstance&lt;/code&gt;, the response includes a list of supported character sets for each engine version. &lt;/p&gt;
--- @param DefaultOnly [Boolean] &lt;p&gt;Indicates that only the default version of the specified engine or engine and major version combination is returned.&lt;/p&gt;
--- @param ListSupportedTimezones [BooleanOptional] &lt;p&gt;If this parameter is specified and the requested engine supports the &lt;code&gt;TimeZone&lt;/code&gt; parameter for &lt;code&gt;CreateDBInstance&lt;/code&gt;, the response includes a list of supported time zones for each engine version. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more than the &lt;code&gt;MaxRecords&lt;/code&gt; value is available, a pagination token called a marker is included in the response so that the following results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Not currently supported.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The database engine version to return.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;5.1.49&lt;/code&gt; &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
+-- @param Engine [String] <p>The database engine to return.</p>
+-- @param DBParameterGroupFamily [String] <p>The name of a specific DB parameter group family to return details for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param ListSupportedCharacterSets [BooleanOptional] <p>If this parameter is specified and the requested engine supports the <code>CharacterSetName</code> parameter for <code>CreateDBInstance</code>, the response includes a list of supported character sets for each engine version. </p>
+-- @param DefaultOnly [Boolean] <p>Indicates that only the default version of the specified engine or engine and major version combination is returned.</p>
+-- @param ListSupportedTimezones [BooleanOptional] <p>If this parameter is specified and the requested engine supports the <code>TimeZone</code> parameter for <code>CreateDBInstance</code>, the response includes a list of supported time zones for each engine version. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is available, a pagination token called a marker is included in the response so that the following results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>Not currently supported.</p>
+-- @param EngineVersion [String] <p>The database engine version to return.</p> <p>Example: <code>5.1.49</code> </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
 function M.DescribeDBEngineVersionsMessage(Engine, DBParameterGroupFamily, ListSupportedCharacterSets, DefaultOnly, ListSupportedTimezones, MaxRecords, Filters, EngineVersion, Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBEngineVersionsMessage")
 	local t = { 
@@ -5012,9 +5012,9 @@ function M.AssertOptionGroupOptionsMessage(struct)
 end
 
 --- Create a structure of type OptionGroupOptionsMessage
--- &lt;p/&gt;
--- @param OptionGroupOptions [OptionGroupOptionsList] &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;.&lt;/p&gt;
+-- <p/>
+-- @param OptionGroupOptions [OptionGroupOptionsList] <p/>
+-- @param Marker [String] <p>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
 function M.OptionGroupOptionsMessage(OptionGroupOptions, Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionGroupOptionsMessage")
 	local t = { 
@@ -5038,9 +5038,9 @@ function M.AssertDBClusterOptionGroupStatus(struct)
 end
 
 --- Create a structure of type DBClusterOptionGroupStatus
--- &lt;p&gt;Contains status information for a DB cluster option group.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;Specifies the status of the DB cluster option group.&lt;/p&gt;
--- @param DBClusterOptionGroupName [String] &lt;p&gt;Specifies the name of the DB cluster option group.&lt;/p&gt;
+-- <p>Contains status information for a DB cluster option group.</p>
+-- @param Status [String] <p>Specifies the status of the DB cluster option group.</p>
+-- @param DBClusterOptionGroupName [String] <p>Specifies the name of the DB cluster option group.</p>
 function M.DBClusterOptionGroupStatus(Status, DBClusterOptionGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterOptionGroupStatus")
 	local t = { 
@@ -5066,11 +5066,11 @@ function M.AssertDBParameterGroup(struct)
 end
 
 --- Create a structure of type DBParameterGroup
--- &lt;p&gt;Contains the result of a successful invocation of the &lt;a&gt;CreateDBParameterGroup&lt;/a&gt; action. &lt;/p&gt; &lt;p&gt;This data type is used as a request parameter in the &lt;a&gt;DeleteDBParameterGroup&lt;/a&gt; action, and as a response element in the &lt;a&gt;DescribeDBParameterGroups&lt;/a&gt; action. &lt;/p&gt;
--- @param DBParameterGroupArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the DB parameter group.&lt;/p&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;Provides the name of the DB parameter group.&lt;/p&gt;
--- @param DBParameterGroupFamily [String] &lt;p&gt;Provides the name of the DB parameter group family that this DB parameter group is compatible with.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;Provides the customer-specified description for this DB parameter group.&lt;/p&gt;
+-- <p>Contains the result of a successful invocation of the <a>CreateDBParameterGroup</a> action. </p> <p>This data type is used as a request parameter in the <a>DeleteDBParameterGroup</a> action, and as a response element in the <a>DescribeDBParameterGroups</a> action. </p>
+-- @param DBParameterGroupArn [String] <p>The Amazon Resource Name (ARN) for the DB parameter group.</p>
+-- @param DBParameterGroupName [String] <p>Provides the name of the DB parameter group.</p>
+-- @param DBParameterGroupFamily [String] <p>Provides the name of the DB parameter group family that this DB parameter group is compatible with.</p>
+-- @param Description [String] <p>Provides the customer-specified description for this DB parameter group.</p>
 function M.DBParameterGroup(DBParameterGroupArn, DBParameterGroupName, DBParameterGroupFamily, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBParameterGroup")
 	local t = { 
@@ -5119,9 +5119,9 @@ function M.AssertDescribeEventCategoriesMessage(struct)
 end
 
 --- Create a structure of type DescribeEventCategoriesMessage
--- &lt;p/&gt;
--- @param SourceType [String] &lt;p&gt;The type of source that will be generating the events.&lt;/p&gt; &lt;p&gt;Valid values: db-instance | db-parameter-group | db-security-group | db-snapshot&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
+-- <p/>
+-- @param SourceType [String] <p>The type of source that will be generating the events.</p> <p>Valid values: db-instance | db-parameter-group | db-security-group | db-snapshot</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
 function M.DescribeEventCategoriesMessage(SourceType, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventCategoriesMessage")
 	local t = { 
@@ -5157,19 +5157,19 @@ function M.AssertRestoreDBClusterToPointInTimeMessage(struct)
 end
 
 --- Create a structure of type RestoreDBClusterToPointInTimeMessage
--- &lt;p/&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt;A list of VPC security groups that the new DB cluster belongs to.&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The name of the new DB cluster to be created.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Tags [TagList] &lt;p/&gt;
--- @param UseLatestRestorableTime [Boolean] &lt;p&gt;A value that is set to &lt;code&gt;true&lt;/code&gt; to restore the DB cluster to the latest restorable backup time, and &lt;code&gt;false&lt;/code&gt; otherwise. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: Cannot be specified if &lt;code&gt;RestoreToTime&lt;/code&gt; parameter is provided.&lt;/p&gt;
--- @param RestoreType [String] &lt;p&gt;The type of restore to be performed. You can specify one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;full-copy&lt;/code&gt; - The new DB cluster is restored as a full copy of the source DB cluster.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;copy-on-write&lt;/code&gt; - The new DB cluster is restored as a clone of the source DB cluster.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Constraints: You cannot specify &lt;code&gt;copy-on-write&lt;/code&gt; if the engine version of the source DB cluster is earlier than 1.11.&lt;/p&gt; &lt;p&gt;If you don't specify a &lt;code&gt;RestoreType&lt;/code&gt; value, then the new DB cluster is restored as a full copy of the source DB cluster.&lt;/p&gt;
--- @param EnableIAMDatabaseAuthentication [BooleanOptional] &lt;p&gt;A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The KMS key identifier to use when restoring an encrypted DB cluster from an encrypted DB cluster.&lt;/p&gt; &lt;p&gt;The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.&lt;/p&gt; &lt;p&gt;You can restore to a new DB cluster and encrypt the new DB cluster with a KMS key that is different than the KMS key used to encrypt the source DB cluster. The new DB cluster will be encrypted with the KMS key identified by the &lt;code&gt;KmsKeyId&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;If you do not specify a value for the &lt;code&gt;KmsKeyId&lt;/code&gt; parameter, then the following will occur:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If the DB cluster is encrypted, then the restored DB cluster is encrypted using the KMS key that was used to encrypt the source DB cluster.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the DB cluster is not encrypted, then the restored DB cluster is not encrypted.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If &lt;code&gt;DBClusterIdentifier&lt;/code&gt; refers to a DB cluster that is not encrypted, then the restore request is rejected.&lt;/p&gt;
--- @param SourceDBClusterIdentifier [String] &lt;p&gt;The identifier of the source DB cluster from which to restore.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the identifier of an existing database instance&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The DB subnet group name to use for the new DB cluster.&lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
--- @param RestoreToTime [TStamp] &lt;p&gt;The date and time to restore the DB cluster to.&lt;/p&gt; &lt;p&gt;Valid Values: Value must be a time in Universal Coordinated Time (UTC) format&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be before the latest restorable time for the DB instance&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be specified if &lt;code&gt;UseLatestRestorableTime&lt;/code&gt; parameter is not provided&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be specified if &lt;code&gt;UseLatestRestorableTime&lt;/code&gt; parameter is true&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be specified if &lt;code&gt;RestoreType&lt;/code&gt; parameter is &lt;code&gt;copy-on-write&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;2015-03-07T23:45:00Z&lt;/code&gt; &lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number on which the new DB cluster accepts connections.&lt;/p&gt; &lt;p&gt;Constraints: Value must be &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: The same port as the original DB cluster.&lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;The name of the option group for the new DB cluster.&lt;/p&gt;
+-- <p/>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of VPC security groups that the new DB cluster belongs to.</p>
+-- @param DBClusterIdentifier [String] <p>The name of the new DB cluster to be created.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param Tags [TagList] <p/>
+-- @param UseLatestRestorableTime [Boolean] <p>A value that is set to <code>true</code> to restore the DB cluster to the latest restorable backup time, and <code>false</code> otherwise. </p> <p>Default: <code>false</code> </p> <p>Constraints: Cannot be specified if <code>RestoreToTime</code> parameter is provided.</p>
+-- @param RestoreType [String] <p>The type of restore to be performed. You can specify one of the following values:</p> <ul> <li> <p> <code>full-copy</code> - The new DB cluster is restored as a full copy of the source DB cluster.</p> </li> <li> <p> <code>copy-on-write</code> - The new DB cluster is restored as a clone of the source DB cluster.</p> </li> </ul> <p>Constraints: You cannot specify <code>copy-on-write</code> if the engine version of the source DB cluster is earlier than 1.11.</p> <p>If you don't specify a <code>RestoreType</code> value, then the new DB cluster is restored as a full copy of the source DB cluster.</p>
+-- @param EnableIAMDatabaseAuthentication [BooleanOptional] <p>A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.</p> <p>Default: <code>false</code> </p>
+-- @param KmsKeyId [String] <p>The KMS key identifier to use when restoring an encrypted DB cluster from an encrypted DB cluster.</p> <p>The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.</p> <p>You can restore to a new DB cluster and encrypt the new DB cluster with a KMS key that is different than the KMS key used to encrypt the source DB cluster. The new DB cluster will be encrypted with the KMS key identified by the <code>KmsKeyId</code> parameter.</p> <p>If you do not specify a value for the <code>KmsKeyId</code> parameter, then the following will occur:</p> <ul> <li> <p>If the DB cluster is encrypted, then the restored DB cluster is encrypted using the KMS key that was used to encrypt the source DB cluster.</p> </li> <li> <p>If the DB cluster is not encrypted, then the restored DB cluster is not encrypted.</p> </li> </ul> <p>If <code>DBClusterIdentifier</code> refers to a DB cluster that is not encrypted, then the restore request is rejected.</p>
+-- @param SourceDBClusterIdentifier [String] <p>The identifier of the source DB cluster from which to restore.</p> <p>Constraints:</p> <ul> <li> <p>Must be the identifier of an existing database instance</p> </li> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param DBSubnetGroupName [String] <p>The DB subnet group name to use for the new DB cluster.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- @param RestoreToTime [TStamp] <p>The date and time to restore the DB cluster to.</p> <p>Valid Values: Value must be a time in Universal Coordinated Time (UTC) format</p> <p>Constraints:</p> <ul> <li> <p>Must be before the latest restorable time for the DB instance</p> </li> <li> <p>Must be specified if <code>UseLatestRestorableTime</code> parameter is not provided</p> </li> <li> <p>Cannot be specified if <code>UseLatestRestorableTime</code> parameter is true</p> </li> <li> <p>Cannot be specified if <code>RestoreType</code> parameter is <code>copy-on-write</code> </p> </li> </ul> <p>Example: <code>2015-03-07T23:45:00Z</code> </p>
+-- @param Port [IntegerOptional] <p>The port number on which the new DB cluster accepts connections.</p> <p>Constraints: Value must be <code>1150-65535</code> </p> <p>Default: The same port as the original DB cluster.</p>
+-- @param OptionGroupName [String] <p>The name of the option group for the new DB cluster.</p>
 -- Required parameter: DBClusterIdentifier
 -- Required parameter: SourceDBClusterIdentifier
 function M.RestoreDBClusterToPointInTimeMessage(VpcSecurityGroupIds, DBClusterIdentifier, Tags, UseLatestRestorableTime, RestoreType, EnableIAMDatabaseAuthentication, KmsKeyId, SourceDBClusterIdentifier, DBSubnetGroupName, RestoreToTime, Port, OptionGroupName, ...)
@@ -5208,10 +5208,10 @@ function M.AssertCreateDBClusterSnapshotMessage(struct)
 end
 
 --- Create a structure of type CreateDBClusterSnapshotMessage
--- &lt;p/&gt;
--- @param DBClusterSnapshotIdentifier [String] &lt;p&gt;The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-cluster1-snapshot1&lt;/code&gt; &lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The identifier of the DB cluster to create a snapshot for. This parameter is not case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-cluster1&lt;/code&gt; &lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tags to be assigned to the DB cluster snapshot.&lt;/p&gt;
+-- <p/>
+-- @param DBClusterSnapshotIdentifier [String] <p>The identifier of the DB cluster snapshot. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1-snapshot1</code> </p>
+-- @param DBClusterIdentifier [String] <p>The identifier of the DB cluster to create a snapshot for. This parameter is not case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code> </p>
+-- @param Tags [TagList] <p>The tags to be assigned to the DB cluster snapshot.</p>
 -- Required parameter: DBClusterSnapshotIdentifier
 -- Required parameter: DBClusterIdentifier
 function M.CreateDBClusterSnapshotMessage(DBClusterSnapshotIdentifier, DBClusterIdentifier, Tags, ...)
@@ -5261,8 +5261,8 @@ function M.AssertPromoteReadReplicaDBClusterMessage(struct)
 end
 
 --- Create a structure of type PromoteReadReplicaDBClusterMessage
--- &lt;p/&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The identifier of the DB cluster Read Replica to promote. This parameter is not case-sensitive. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-cluster-replica1&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param DBClusterIdentifier [String] <p>The identifier of the DB cluster Read Replica to promote. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster-replica1</code> </p>
 -- Required parameter: DBClusterIdentifier
 function M.PromoteReadReplicaDBClusterMessage(DBClusterIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PromoteReadReplicaDBClusterMessage")
@@ -5307,7 +5307,7 @@ function M.AssertSNSInvalidTopicFault(struct)
 end
 
 --- Create a structure of type SNSInvalidTopicFault
--- &lt;p&gt;SNS has responded that there is a problem with the SND topic specified.&lt;/p&gt;
+-- <p>SNS has responded that there is a problem with the SND topic specified.</p>
 function M.SNSInvalidTopicFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSInvalidTopicFault")
 	local t = { 
@@ -5382,14 +5382,14 @@ function M.AssertCopyDBClusterSnapshotMessage(struct)
 end
 
 --- Create a structure of type CopyDBClusterSnapshotMessage
--- &lt;p/&gt;
--- @param CopyTags [BooleanOptional] &lt;p&gt;True to copy all tags from the source DB cluster snapshot to the target DB cluster snapshot; otherwise false. The default is false.&lt;/p&gt;
--- @param SourceRegion [String] &lt;p&gt;The ID of the region that contains the snapshot to be copied.&lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
--- @param SourceDBClusterSnapshotIdentifier [String] &lt;p&gt;The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive.&lt;/p&gt; &lt;p&gt;You cannot copy an encrypted, shared DB cluster snapshot from one AWS region to another.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must specify a valid system snapshot in the &quot;available&quot; state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source snapshot is in the same region as the copy, specify a valid DB snapshot identifier.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the source snapshot is in a different region than the copy, specify a valid DB cluster snapshot ARN. For more information, go to &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html&quot;&gt; Copying a DB Snapshot or DB Cluster Snapshot&lt;/a&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-cluster-snapshot1&lt;/code&gt; &lt;/p&gt;
--- @param PreSignedUrl [String] &lt;p&gt;The URL that contains a Signature Version 4 signed request for the &lt;code&gt;CopyDBClusterSnapshot&lt;/code&gt; API action in the AWS region that contains the source DB cluster snapshot to copy. The &lt;code&gt;PreSignedUrl&lt;/code&gt; parameter must be used when copying an encrypted DB cluster snapshot from another AWS region.&lt;/p&gt; &lt;p&gt;The pre-signed URL must be a valid request for the &lt;code&gt;CopyDBSClusterSnapshot&lt;/code&gt; API action that can be executed in the source region that contains the encrypted DB cluster snapshot to be copied. The pre-signed URL request must contain the following parameter values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;KmsKeyId&lt;/code&gt; - The KMS key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination region. This is the same identifier for both the &lt;code&gt;CopyDBClusterSnapshot&lt;/code&gt; action that is called in the destination region, and the action contained in the pre-signed URL.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DestinationRegion&lt;/code&gt; - The name of the region that the DB cluster snapshot will be created in.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SourceDBClusterSnapshotIdentifier&lt;/code&gt; - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 region, then your &lt;code&gt;SourceDBClusterSnapshotIdentifier&lt;/code&gt; looks like the following example: &lt;code&gt;arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;To learn how to generate a Signature Version 4 signed request, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html&quot;&gt; Authenticating Requests: Using Query Parameters (AWS Signature Version 4)&lt;/a&gt; and &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html&quot;&gt; Signature Version 4 Signing Process&lt;/a&gt;.&lt;/p&gt;&lt;note&gt;&lt;p&gt;If you supply a value for this operation's &lt;code&gt;SourceRegion&lt;/code&gt; parameter, a pre-signed URL will be calculated on your behalf.&lt;/p&gt;&lt;/note&gt;
--- @param KmsKeyId [String] &lt;p&gt;The AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key. &lt;/p&gt; &lt;p&gt;If you copy an unencrypted DB cluster snapshot and specify a value for the &lt;code&gt;KmsKeyId&lt;/code&gt; parameter, Amazon RDS encrypts the target DB cluster snapshot using the specified KMS encryption key. &lt;/p&gt; &lt;p&gt;If you copy an encrypted DB cluster snapshot from your AWS account, you can specify a value for &lt;code&gt;KmsKeyId&lt;/code&gt; to encrypt the copy with a new KMS encryption key. If you don't specify a value for &lt;code&gt;KmsKeyId&lt;/code&gt;, then the copy of the DB cluster snapshot is encrypted with the same KMS key as the source DB cluster snapshot. &lt;/p&gt; &lt;p&gt;If you copy an encrypted DB cluster snapshot that is shared from another AWS account, then you must specify a value for &lt;code&gt;KmsKeyId&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;To copy an encrypted DB cluster snapshot to another region, you must set &lt;code&gt;KmsKeyId&lt;/code&gt; to the KMS key ID you want to use to encrypt the copy of the DB cluster snapshot in the destination region. KMS encryption keys are specific to the region that they are created in, and you cannot use encryption keys from one region in another region.&lt;/p&gt;
--- @param TargetDBClusterSnapshotIdentifier [String] &lt;p&gt;The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-cluster-snapshot2&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param CopyTags [BooleanOptional] <p>True to copy all tags from the source DB cluster snapshot to the target DB cluster snapshot; otherwise false. The default is false.</p>
+-- @param SourceRegion [String] <p>The ID of the region that contains the snapshot to be copied.</p>
+-- @param Tags [TagList] <p/>
+-- @param SourceDBClusterSnapshotIdentifier [String] <p>The identifier of the DB cluster snapshot to copy. This parameter is not case-sensitive.</p> <p>You cannot copy an encrypted, shared DB cluster snapshot from one AWS region to another.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> <li> <p>Must specify a valid system snapshot in the "available" state.</p> </li> <li> <p>If the source snapshot is in the same region as the copy, specify a valid DB snapshot identifier.</p> </li> <li> <p>If the source snapshot is in a different region than the copy, specify a valid DB cluster snapshot ARN. For more information, go to <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html"> Copying a DB Snapshot or DB Cluster Snapshot</a>.</p> </li> </ul> <p>Example: <code>my-cluster-snapshot1</code> </p>
+-- @param PreSignedUrl [String] <p>The URL that contains a Signature Version 4 signed request for the <code>CopyDBClusterSnapshot</code> API action in the AWS region that contains the source DB cluster snapshot to copy. The <code>PreSignedUrl</code> parameter must be used when copying an encrypted DB cluster snapshot from another AWS region.</p> <p>The pre-signed URL must be a valid request for the <code>CopyDBSClusterSnapshot</code> API action that can be executed in the source region that contains the encrypted DB cluster snapshot to be copied. The pre-signed URL request must contain the following parameter values:</p> <ul> <li> <p> <code>KmsKeyId</code> - The KMS key identifier for the key to use to encrypt the copy of the DB cluster snapshot in the destination region. This is the same identifier for both the <code>CopyDBClusterSnapshot</code> action that is called in the destination region, and the action contained in the pre-signed URL.</p> </li> <li> <p> <code>DestinationRegion</code> - The name of the region that the DB cluster snapshot will be created in.</p> </li> <li> <p> <code>SourceDBClusterSnapshotIdentifier</code> - The DB cluster snapshot identifier for the encrypted DB cluster snapshot to be copied. This identifier must be in the Amazon Resource Name (ARN) format for the source region. For example, if you are copying an encrypted DB cluster snapshot from the us-west-2 region, then your <code>SourceDBClusterSnapshotIdentifier</code> looks like the following example: <code>arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115</code>.</p> </li> </ul> <p>To learn how to generate a Signature Version 4 signed request, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html"> Authenticating Requests: Using Query Parameters (AWS Signature Version 4)</a> and <a href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html"> Signature Version 4 Signing Process</a>.</p><note><p>If you supply a value for this operation's <code>SourceRegion</code> parameter, a pre-signed URL will be calculated on your behalf.</p></note>
+-- @param KmsKeyId [String] <p>The AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for the KMS encryption key. </p> <p>If you copy an unencrypted DB cluster snapshot and specify a value for the <code>KmsKeyId</code> parameter, Amazon RDS encrypts the target DB cluster snapshot using the specified KMS encryption key. </p> <p>If you copy an encrypted DB cluster snapshot from your AWS account, you can specify a value for <code>KmsKeyId</code> to encrypt the copy with a new KMS encryption key. If you don't specify a value for <code>KmsKeyId</code>, then the copy of the DB cluster snapshot is encrypted with the same KMS key as the source DB cluster snapshot. </p> <p>If you copy an encrypted DB cluster snapshot that is shared from another AWS account, then you must specify a value for <code>KmsKeyId</code>. </p> <p>To copy an encrypted DB cluster snapshot to another region, you must set <code>KmsKeyId</code> to the KMS key ID you want to use to encrypt the copy of the DB cluster snapshot in the destination region. KMS encryption keys are specific to the region that they are created in, and you cannot use encryption keys from one region in another region.</p>
+-- @param TargetDBClusterSnapshotIdentifier [String] <p>The identifier of the new DB cluster snapshot to create from the source DB cluster snapshot. This parameter is not case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster-snapshot2</code> </p>
 -- Required parameter: SourceDBClusterSnapshotIdentifier
 -- Required parameter: TargetDBClusterSnapshotIdentifier
 function M.CopyDBClusterSnapshotMessage(CopyTags, SourceRegion, Tags, SourceDBClusterSnapshotIdentifier, PreSignedUrl, KmsKeyId, TargetDBClusterSnapshotIdentifier, ...)
@@ -5441,7 +5441,7 @@ function M.AssertSubscriptionNotFoundFault(struct)
 end
 
 --- Create a structure of type SubscriptionNotFoundFault
--- &lt;p&gt;The subscription name does not exist.&lt;/p&gt;
+-- <p>The subscription name does not exist.</p>
 function M.SubscriptionNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionNotFoundFault")
 	local t = { 
@@ -5470,16 +5470,16 @@ function M.AssertDescribeReservedDBInstancesOfferingsMessage(struct)
 end
 
 --- Create a structure of type DescribeReservedDBInstancesOfferingsMessage
--- &lt;p/&gt;
--- @param MultiAZ [BooleanOptional] &lt;p&gt;The Multi-AZ filter value. Specify this parameter to show only the available offerings matching the specified Multi-AZ parameter.&lt;/p&gt;
--- @param OfferingType [String] &lt;p&gt;The offering type filter value. Specify this parameter to show only the available offerings matching the specified offering type.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;&quot;Partial Upfront&quot; | &quot;All Upfront&quot; | &quot;No Upfront&quot; &lt;/code&gt; &lt;/p&gt;
--- @param ProductDescription [String] &lt;p&gt;Product description filter value. Specify this parameter to show only the available offerings matching the specified product description.&lt;/p&gt;
--- @param ReservedDBInstancesOfferingId [String] &lt;p&gt;The offering identifier filter value. Specify this parameter to show only the available offering that matches the specified reservation identifier.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;438012d3-4052-4cc7-b2e3-8d3372e0e706&lt;/code&gt; &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more than the &lt;code&gt;MaxRecords&lt;/code&gt; value is available, a pagination token called a marker is included in the response so that the following results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param Duration [String] &lt;p&gt;Duration filter value, specified in years or seconds. Specify this parameter to show only reservations for this duration.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;1 | 3 | 31536000 | 94608000&lt;/code&gt; &lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;The DB instance class filter value. Specify this parameter to show only the available offerings matching the specified DB instance class.&lt;/p&gt;
+-- <p/>
+-- @param MultiAZ [BooleanOptional] <p>The Multi-AZ filter value. Specify this parameter to show only the available offerings matching the specified Multi-AZ parameter.</p>
+-- @param OfferingType [String] <p>The offering type filter value. Specify this parameter to show only the available offerings matching the specified offering type.</p> <p>Valid Values: <code>"Partial Upfront" | "All Upfront" | "No Upfront" </code> </p>
+-- @param ProductDescription [String] <p>Product description filter value. Specify this parameter to show only the available offerings matching the specified product description.</p>
+-- @param ReservedDBInstancesOfferingId [String] <p>The offering identifier filter value. Specify this parameter to show only the available offering that matches the specified reservation identifier.</p> <p>Example: <code>438012d3-4052-4cc7-b2e3-8d3372e0e706</code> </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is available, a pagination token called a marker is included in the response so that the following results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param Duration [String] <p>Duration filter value, specified in years or seconds. Specify this parameter to show only reservations for this duration.</p> <p>Valid Values: <code>1 | 3 | 31536000 | 94608000</code> </p>
+-- @param DBInstanceClass [String] <p>The DB instance class filter value. Specify this parameter to show only the available offerings matching the specified DB instance class.</p>
 function M.DescribeReservedDBInstancesOfferingsMessage(MultiAZ, OfferingType, ProductDescription, ReservedDBInstancesOfferingId, Marker, MaxRecords, Filters, Duration, DBInstanceClass, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReservedDBInstancesOfferingsMessage")
 	local t = { 
@@ -5510,8 +5510,8 @@ function M.AssertDeleteOptionGroupMessage(struct)
 end
 
 --- Create a structure of type DeleteOptionGroupMessage
--- &lt;p/&gt;
--- @param OptionGroupName [String] &lt;p&gt;The name of the option group to be deleted.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You cannot delete default option groups.&lt;/p&gt; &lt;/note&gt;
+-- <p/>
+-- @param OptionGroupName [String] <p>The name of the option group to be deleted.</p> <note> <p>You cannot delete default option groups.</p> </note>
 -- Required parameter: OptionGroupName
 function M.DeleteOptionGroupMessage(OptionGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteOptionGroupMessage")
@@ -5537,11 +5537,11 @@ function M.AssertDescribePendingMaintenanceActionsMessage(struct)
 end
 
 --- Create a structure of type DescribePendingMaintenanceActionsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribePendingMaintenanceActions&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;A filter that specifies one or more resources to return pending maintenance actions for.&lt;/p&gt; &lt;p&gt;Supported filters:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;db-cluster-id&lt;/code&gt; - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs). The results list will only include pending maintenance actions for the DB clusters identified by these ARNs.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;db-instance-id&lt;/code&gt; - Accepts DB instance identifiers and DB instance ARNs. The results list will only include pending maintenance actions for the DB instances identified by these ARNs.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ResourceIdentifier [String] &lt;p&gt;The ARN of a resource to return pending maintenance actions for.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribePendingMaintenanceActions</code> request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by <code>MaxRecords</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>A filter that specifies one or more resources to return pending maintenance actions for.</p> <p>Supported filters:</p> <ul> <li> <p> <code>db-cluster-id</code> - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs). The results list will only include pending maintenance actions for the DB clusters identified by these ARNs.</p> </li> <li> <p> <code>db-instance-id</code> - Accepts DB instance identifiers and DB instance ARNs. The results list will only include pending maintenance actions for the DB instances identified by these ARNs.</p> </li> </ul>
+-- @param ResourceIdentifier [String] <p>The ARN of a resource to return pending maintenance actions for.</p>
 function M.DescribePendingMaintenanceActionsMessage(Marker, MaxRecords, Filters, ResourceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePendingMaintenanceActionsMessage")
 	local t = { 
@@ -5565,7 +5565,7 @@ function M.AssertInvalidDBParameterGroupStateFault(struct)
 end
 
 --- Create a structure of type InvalidDBParameterGroupStateFault
--- &lt;p&gt;The DB parameter group is in use or is in an invalid state. If you are attempting to delete the parameter group, you cannot delete it when the parameter group is in this state.&lt;/p&gt;
+-- <p>The DB parameter group is in use or is in an invalid state. If you are attempting to delete the parameter group, you cannot delete it when the parameter group is in this state.</p>
 function M.InvalidDBParameterGroupStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDBParameterGroupStateFault")
 	local t = { 
@@ -5591,13 +5591,13 @@ function M.AssertDescribeOptionGroupsMessage(struct)
 end
 
 --- Create a structure of type DescribeOptionGroupsMessage
--- &lt;p/&gt;
--- @param MajorEngineVersion [String] &lt;p&gt;Filters the list of option groups to only include groups associated with a specific database engine version. If specified, then EngineName must also be specified.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous DescribeOptionGroups request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param EngineName [String] &lt;p&gt;Filters the list of option groups to only include groups associated with a specific database engine.&lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;The name of the option group to describe. Cannot be supplied together with EngineName or MajorEngineVersion.&lt;/p&gt;
+-- <p/>
+-- @param MajorEngineVersion [String] <p>Filters the list of option groups to only include groups associated with a specific database engine version. If specified, then EngineName must also be specified.</p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous DescribeOptionGroups request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param EngineName [String] <p>Filters the list of option groups to only include groups associated with a specific database engine.</p>
+-- @param OptionGroupName [String] <p>The name of the option group to describe. Cannot be supplied together with EngineName or MajorEngineVersion.</p>
 function M.DescribeOptionGroupsMessage(MajorEngineVersion, MaxRecords, Filters, Marker, EngineName, OptionGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOptionGroupsMessage")
 	local t = { 
@@ -5623,7 +5623,7 @@ function M.AssertDBSnapshotNotFoundFault(struct)
 end
 
 --- Create a structure of type DBSnapshotNotFoundFault
--- &lt;p&gt; &lt;i&gt;DBSnapshotIdentifier&lt;/i&gt; does not refer to an existing DB snapshot. &lt;/p&gt;
+-- <p> <i>DBSnapshotIdentifier</i> does not refer to an existing DB snapshot. </p>
 function M.DBSnapshotNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSnapshotNotFoundFault")
 	local t = { 
@@ -5645,9 +5645,9 @@ function M.AssertDBClusterParameterGroupDetails(struct)
 end
 
 --- Create a structure of type DBClusterParameterGroupDetails
--- &lt;p&gt;Provides details about a DB cluster parameter group including the parameters in the DB cluster parameter group.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous DescribeDBClusterParameters request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt; . &lt;/p&gt;
--- @param Parameters [ParametersList] &lt;p&gt;Provides a list of parameters for the DB cluster parameter group.&lt;/p&gt;
+-- <p>Provides details about a DB cluster parameter group including the parameters in the DB cluster parameter group.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous DescribeDBClusterParameters request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
+-- @param Parameters [ParametersList] <p>Provides a list of parameters for the DB cluster parameter group.</p>
 function M.DBClusterParameterGroupDetails(Marker, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterParameterGroupDetails")
 	local t = { 
@@ -5676,11 +5676,11 @@ function M.AssertCreateDBSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type CreateDBSubnetGroupMessage
--- &lt;p/&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The name for the DB subnet group. This value is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
--- @param DBSubnetGroupDescription [String] &lt;p&gt;The description for the DB subnet group.&lt;/p&gt;
--- @param SubnetIds [SubnetIdentifierList] &lt;p&gt;The EC2 Subnet IDs for the DB subnet group.&lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
+-- <p/>
+-- @param DBSubnetGroupName [String] <p>The name for the DB subnet group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- @param DBSubnetGroupDescription [String] <p>The description for the DB subnet group.</p>
+-- @param SubnetIds [SubnetIdentifierList] <p>The EC2 Subnet IDs for the DB subnet group.</p>
+-- @param Tags [TagList] <p/>
 -- Required parameter: DBSubnetGroupName
 -- Required parameter: DBSubnetGroupDescription
 -- Required parameter: SubnetIds
@@ -5709,9 +5709,9 @@ function M.AssertDBSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type DBSubnetGroupMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeDBSubnetGroups&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBSubnetGroups [DBSubnetGroups] &lt;p&gt; A list of &lt;a&gt;DBSubnetGroup&lt;/a&gt; instances. &lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeDBSubnetGroups</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBSubnetGroups [DBSubnetGroups] <p> A list of <a>DBSubnetGroup</a> instances. </p>
 function M.DBSubnetGroupMessage(Marker, DBSubnetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSubnetGroupMessage")
 	local t = { 
@@ -5735,9 +5735,9 @@ function M.AssertVpcSecurityGroupMembership(struct)
 end
 
 --- Create a structure of type VpcSecurityGroupMembership
--- &lt;p&gt;This data type is used as a response element for queries on VPC security group membership.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the VPC security group.&lt;/p&gt;
--- @param VpcSecurityGroupId [String] &lt;p&gt;The name of the VPC security group.&lt;/p&gt;
+-- <p>This data type is used as a response element for queries on VPC security group membership.</p>
+-- @param Status [String] <p>The status of the VPC security group.</p>
+-- @param VpcSecurityGroupId [String] <p>The name of the VPC security group.</p>
 function M.VpcSecurityGroupMembership(Status, VpcSecurityGroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VpcSecurityGroupMembership")
 	local t = { 
@@ -5775,20 +5775,20 @@ function M.AssertRestoreDBClusterFromSnapshotMessage(struct)
 end
 
 --- Create a structure of type RestoreDBClusterFromSnapshotMessage
--- &lt;p/&gt;
--- @param Engine [String] &lt;p&gt;The database engine to use for the new DB cluster.&lt;/p&gt; &lt;p&gt;Default: The same as source&lt;/p&gt; &lt;p&gt;Constraint: Must be compatible with the engine of the source&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The name of the DB cluster to create from the DB cluster snapshot. This parameter isn't case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-snapshot-id&lt;/code&gt; &lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tags to be assigned to the restored DB cluster.&lt;/p&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt;A list of VPC security groups that the new DB cluster will belong to.&lt;/p&gt;
--- @param EnableIAMDatabaseAuthentication [BooleanOptional] &lt;p&gt;A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The KMS key identifier to use when restoring an encrypted DB cluster from a DB cluster snapshot.&lt;/p&gt; &lt;p&gt;The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.&lt;/p&gt; &lt;p&gt;If you do not specify a value for the &lt;code&gt;KmsKeyId&lt;/code&gt; parameter, then the following will occur:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If the DB cluster snapshot is encrypted, then the restored DB cluster is encrypted using the KMS key that was used to encrypt the DB cluster snapshot.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If the DB cluster snapshot is not encrypted, then the restored DB cluster is encrypted using the specified encryption key.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DatabaseName [String] &lt;p&gt;The database name for the restored DB cluster.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The version of the database engine to use for the new DB cluster.&lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The name of the DB subnet group to use for the new DB cluster.&lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;Provides the list of EC2 Availability Zones that instances in the restored DB cluster can be created in.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number on which the new DB cluster accepts connections.&lt;/p&gt; &lt;p&gt;Constraints: Value must be &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: The same port as the original DB cluster.&lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;The name of the option group to use for the restored DB cluster.&lt;/p&gt;
--- @param SnapshotIdentifier [String] &lt;p&gt;The identifier for the DB cluster snapshot to restore from.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param Engine [String] <p>The database engine to use for the new DB cluster.</p> <p>Default: The same as source</p> <p>Constraint: Must be compatible with the engine of the source</p>
+-- @param DBClusterIdentifier [String] <p>The name of the DB cluster to create from the DB cluster snapshot. This parameter isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-snapshot-id</code> </p>
+-- @param Tags [TagList] <p>The tags to be assigned to the restored DB cluster.</p>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of VPC security groups that the new DB cluster will belong to.</p>
+-- @param EnableIAMDatabaseAuthentication [BooleanOptional] <p>A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.</p> <p>Default: <code>false</code> </p>
+-- @param KmsKeyId [String] <p>The KMS key identifier to use when restoring an encrypted DB cluster from a DB cluster snapshot.</p> <p>The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are restoring a DB cluster with the same AWS account that owns the KMS encryption key used to encrypt the new DB cluster, then you can use the KMS key alias instead of the ARN for the KMS encryption key.</p> <p>If you do not specify a value for the <code>KmsKeyId</code> parameter, then the following will occur:</p> <ul> <li> <p>If the DB cluster snapshot is encrypted, then the restored DB cluster is encrypted using the KMS key that was used to encrypt the DB cluster snapshot.</p> </li> <li> <p>If the DB cluster snapshot is not encrypted, then the restored DB cluster is encrypted using the specified encryption key.</p> </li> </ul>
+-- @param DatabaseName [String] <p>The database name for the restored DB cluster.</p>
+-- @param EngineVersion [String] <p>The version of the database engine to use for the new DB cluster.</p>
+-- @param DBSubnetGroupName [String] <p>The name of the DB subnet group to use for the new DB cluster.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- @param AvailabilityZones [AvailabilityZones] <p>Provides the list of EC2 Availability Zones that instances in the restored DB cluster can be created in.</p>
+-- @param Port [IntegerOptional] <p>The port number on which the new DB cluster accepts connections.</p> <p>Constraints: Value must be <code>1150-65535</code> </p> <p>Default: The same port as the original DB cluster.</p>
+-- @param OptionGroupName [String] <p>The name of the option group to use for the restored DB cluster.</p>
+-- @param SnapshotIdentifier [String] <p>The identifier for the DB cluster snapshot to restore from.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- Required parameter: DBClusterIdentifier
 -- Required parameter: SnapshotIdentifier
 -- Required parameter: Engine
@@ -5830,12 +5830,12 @@ function M.AssertRevokeDBSecurityGroupIngressMessage(struct)
 end
 
 --- Create a structure of type RevokeDBSecurityGroupIngressMessage
--- &lt;p/&gt;
--- @param EC2SecurityGroupName [String] &lt;p&gt; The name of the EC2 security group to revoke access from. For VPC DB security groups, &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. Otherwise, EC2SecurityGroupOwnerId and either &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; or &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. &lt;/p&gt;
--- @param EC2SecurityGroupOwnerId [String] &lt;p&gt; The AWS Account Number of the owner of the EC2 security group specified in the &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups, &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. Otherwise, EC2SecurityGroupOwnerId and either &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; or &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. &lt;/p&gt;
--- @param CIDRIP [String] &lt;p&gt; The IP range to revoke access from. Must be a valid CIDR range. If &lt;code&gt;CIDRIP&lt;/code&gt; is specified, &lt;code&gt;EC2SecurityGroupName&lt;/code&gt;, &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; and &lt;code&gt;EC2SecurityGroupOwnerId&lt;/code&gt; cannot be provided. &lt;/p&gt;
--- @param EC2SecurityGroupId [String] &lt;p&gt; The id of the EC2 security group to revoke access from. For VPC DB security groups, &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. Otherwise, EC2SecurityGroupOwnerId and either &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; or &lt;code&gt;EC2SecurityGroupId&lt;/code&gt; must be provided. &lt;/p&gt;
--- @param DBSecurityGroupName [String] &lt;p&gt;The name of the DB security group to revoke ingress from.&lt;/p&gt;
+-- <p/>
+-- @param EC2SecurityGroupName [String] <p> The name of the EC2 security group to revoke access from. For VPC DB security groups, <code>EC2SecurityGroupId</code> must be provided. Otherwise, EC2SecurityGroupOwnerId and either <code>EC2SecurityGroupName</code> or <code>EC2SecurityGroupId</code> must be provided. </p>
+-- @param EC2SecurityGroupOwnerId [String] <p> The AWS Account Number of the owner of the EC2 security group specified in the <code>EC2SecurityGroupName</code> parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups, <code>EC2SecurityGroupId</code> must be provided. Otherwise, EC2SecurityGroupOwnerId and either <code>EC2SecurityGroupName</code> or <code>EC2SecurityGroupId</code> must be provided. </p>
+-- @param CIDRIP [String] <p> The IP range to revoke access from. Must be a valid CIDR range. If <code>CIDRIP</code> is specified, <code>EC2SecurityGroupName</code>, <code>EC2SecurityGroupId</code> and <code>EC2SecurityGroupOwnerId</code> cannot be provided. </p>
+-- @param EC2SecurityGroupId [String] <p> The id of the EC2 security group to revoke access from. For VPC DB security groups, <code>EC2SecurityGroupId</code> must be provided. Otherwise, EC2SecurityGroupOwnerId and either <code>EC2SecurityGroupName</code> or <code>EC2SecurityGroupId</code> must be provided. </p>
+-- @param DBSecurityGroupName [String] <p>The name of the DB security group to revoke ingress from.</p>
 -- Required parameter: DBSecurityGroupName
 function M.RevokeDBSecurityGroupIngressMessage(EC2SecurityGroupName, EC2SecurityGroupOwnerId, CIDRIP, EC2SecurityGroupId, DBSecurityGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RevokeDBSecurityGroupIngressMessage")
@@ -5861,7 +5861,7 @@ function M.AssertInstanceQuotaExceededFault(struct)
 end
 
 --- Create a structure of type InstanceQuotaExceededFault
--- &lt;p&gt;Request would result in user exceeding the allowed number of DB instances.&lt;/p&gt;
+-- <p>Request would result in user exceeding the allowed number of DB instances.</p>
 function M.InstanceQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceQuotaExceededFault")
 	local t = { 
@@ -5883,9 +5883,9 @@ function M.AssertEventSubscriptionsMessage(struct)
 end
 
 --- Create a structure of type EventSubscriptionsMessage
--- &lt;p&gt;Data returned by the &lt;b&gt;DescribeEventSubscriptions&lt;/b&gt; action.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param EventSubscriptionsList [EventSubscriptionsList] &lt;p&gt;A list of EventSubscriptions data types.&lt;/p&gt;
+-- <p>Data returned by the <b>DescribeEventSubscriptions</b> action.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param EventSubscriptionsList [EventSubscriptionsList] <p>A list of EventSubscriptions data types.</p>
 function M.EventSubscriptionsMessage(Marker, EventSubscriptionsList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscriptionsMessage")
 	local t = { 
@@ -5907,7 +5907,7 @@ function M.AssertReservedDBInstancesOfferingNotFoundFault(struct)
 end
 
 --- Create a structure of type ReservedDBInstancesOfferingNotFoundFault
--- &lt;p&gt;Specified offering does not exist.&lt;/p&gt;
+-- <p>Specified offering does not exist.</p>
 function M.ReservedDBInstancesOfferingNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedDBInstancesOfferingNotFoundFault")
 	local t = { 
@@ -5927,7 +5927,7 @@ function M.AssertKMSKeyNotAccessibleFault(struct)
 end
 
 --- Create a structure of type KMSKeyNotAccessibleFault
--- &lt;p&gt;Error accessing KMS key.&lt;/p&gt;
+-- <p>Error accessing KMS key.</p>
 function M.KMSKeyNotAccessibleFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating KMSKeyNotAccessibleFault")
 	local t = { 
@@ -5947,7 +5947,7 @@ function M.AssertDBSecurityGroupNotFoundFault(struct)
 end
 
 --- Create a structure of type DBSecurityGroupNotFoundFault
--- &lt;p&gt; &lt;i&gt;DBSecurityGroupName&lt;/i&gt; does not refer to an existing DB security group. &lt;/p&gt;
+-- <p> <i>DBSecurityGroupName</i> does not refer to an existing DB security group. </p>
 function M.DBSecurityGroupNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSecurityGroupNotFoundFault")
 	local t = { 
@@ -5980,19 +5980,19 @@ function M.AssertModifyDBClusterMessage(struct)
 end
 
 --- Create a structure of type ModifyDBClusterMessage
--- &lt;p/&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt;The name of the DB cluster parameter group to use for the DB cluster.&lt;/p&gt;
--- @param EnableIAMDatabaseAuthentication [BooleanOptional] &lt;p&gt;A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the identifier for an existing DB cluster.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).&lt;/p&gt; &lt;p&gt; Format: &lt;code&gt;ddd:hh24:mi-ddd:hh24:mi&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html&quot;&gt; Adjusting the Preferred Maintenance Window&lt;/a&gt; in the &lt;i&gt;Amazon RDS User Guide.&lt;/i&gt; &lt;/p&gt; &lt;p&gt;Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun&lt;/p&gt; &lt;p&gt;Constraints: Minimum 30-minute window.&lt;/p&gt;
--- @param NewDBClusterIdentifier [String] &lt;p&gt;The new DB cluster identifier for the DB cluster when renaming a DB cluster. This value is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-cluster2&lt;/code&gt; &lt;/p&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt;A list of VPC security groups that the DB cluster will belong to.&lt;/p&gt;
--- @param ApplyImmediately [Boolean] &lt;p&gt;A value that specifies whether the modifications in this request and any pending modifications are asynchronously applied as soon as possible, regardless of the &lt;code&gt;PreferredMaintenanceWindow&lt;/code&gt; setting for the DB cluster. If this parameter is set to &lt;code&gt;false&lt;/code&gt;, changes to the DB cluster are applied during the next maintenance window.&lt;/p&gt; &lt;p&gt;The &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter only affects the &lt;code&gt;NewDBClusterIdentifier&lt;/code&gt; and &lt;code&gt;MasterUserPassword&lt;/code&gt; values. If you set the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter value to false, then changes to the &lt;code&gt;NewDBClusterIdentifier&lt;/code&gt; and &lt;code&gt;MasterUserPassword&lt;/code&gt; values are applied during the next maintenance window. All other changes are applied immediately, regardless of the value of the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param PreferredBackupWindow [String] &lt;p&gt;The daily time range during which automated backups are created if automated backups are enabled, using the &lt;code&gt;BackupRetentionPeriod&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt;Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html&quot;&gt; Adjusting the Preferred Maintenance Window&lt;/a&gt; in the &lt;i&gt;Amazon RDS User Guide.&lt;/i&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be in the format &lt;code&gt;hh24:mi-hh24:mi&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Times should be in Universal Coordinated Time (UTC).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not conflict with the preferred maintenance window.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be at least 30 minutes.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MasterUserPassword [String] &lt;p&gt;The new password for the master database user. This password can contain any printable ASCII character except &quot;/&quot;, &quot;&quot;&quot;, or &quot;@&quot;.&lt;/p&gt; &lt;p&gt;Constraints: Must contain from 8 to 41 characters.&lt;/p&gt;
--- @param BackupRetentionPeriod [IntegerOptional] &lt;p&gt;The number of days for which automated backups are retained. You must specify a minimum value of 1.&lt;/p&gt; &lt;p&gt;Default: 1&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be a value from 1 to 35&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number on which the DB cluster accepts connections.&lt;/p&gt; &lt;p&gt;Constraints: Value must be &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: The same port as the original DB cluster.&lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;A value that indicates that the DB cluster should be associated with the specified option group. Changing this parameter does not result in an outage except in the following case, and the change is applied during the next maintenance window unless the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter is set to &lt;code&gt;true&lt;/code&gt; for this request. If the parameter change results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new connections are rejected but existing connections are not interrupted. &lt;/p&gt; &lt;p&gt;Permanent options cannot be removed from an option group. The option group cannot be removed from a DB cluster once it is associated with a DB cluster.&lt;/p&gt;
+-- <p/>
+-- @param DBClusterParameterGroupName [String] <p>The name of the DB cluster parameter group to use for the DB cluster.</p>
+-- @param EnableIAMDatabaseAuthentication [BooleanOptional] <p>A Boolean value that is true to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false.</p> <p>Default: <code>false</code> </p>
+-- @param DBClusterIdentifier [String] <p>The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must be the identifier for an existing DB cluster.</p> </li> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- @param PreferredMaintenanceWindow [String] <p>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i> </p> <p>Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute window.</p>
+-- @param NewDBClusterIdentifier [String] <p>The new DB cluster identifier for the DB cluster when renaming a DB cluster. This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-cluster2</code> </p>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of VPC security groups that the DB cluster will belong to.</p>
+-- @param ApplyImmediately [Boolean] <p>A value that specifies whether the modifications in this request and any pending modifications are asynchronously applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB cluster. If this parameter is set to <code>false</code>, changes to the DB cluster are applied during the next maintenance window.</p> <p>The <code>ApplyImmediately</code> parameter only affects the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values. If you set the <code>ApplyImmediately</code> parameter value to false, then changes to the <code>NewDBClusterIdentifier</code> and <code>MasterUserPassword</code> values are applied during the next maintenance window. All other changes are applied immediately, regardless of the value of the <code>ApplyImmediately</code> parameter.</p> <p>Default: <code>false</code> </p>
+-- @param PreferredBackupWindow [String] <p>The daily time range during which automated backups are created if automated backups are enabled, using the <code>BackupRetentionPeriod</code> parameter. </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i> </p> <p>Constraints:</p> <ul> <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Times should be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p> </li> </ul>
+-- @param MasterUserPassword [String] <p>The new password for the master database user. This password can contain any printable ASCII character except "/", """, or "@".</p> <p>Constraints: Must contain from 8 to 41 characters.</p>
+-- @param BackupRetentionPeriod [IntegerOptional] <p>The number of days for which automated backups are retained. You must specify a minimum value of 1.</p> <p>Default: 1</p> <p>Constraints:</p> <ul> <li> <p>Must be a value from 1 to 35</p> </li> </ul>
+-- @param Port [IntegerOptional] <p>The port number on which the DB cluster accepts connections.</p> <p>Constraints: Value must be <code>1150-65535</code> </p> <p>Default: The same port as the original DB cluster.</p>
+-- @param OptionGroupName [String] <p>A value that indicates that the DB cluster should be associated with the specified option group. Changing this parameter does not result in an outage except in the following case, and the change is applied during the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If the parameter change results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new connections are rejected but existing connections are not interrupted. </p> <p>Permanent options cannot be removed from an option group. The option group cannot be removed from a DB cluster once it is associated with a DB cluster.</p>
 -- Required parameter: DBClusterIdentifier
 function M.ModifyDBClusterMessage(DBClusterParameterGroupName, EnableIAMDatabaseAuthentication, DBClusterIdentifier, PreferredMaintenanceWindow, NewDBClusterIdentifier, VpcSecurityGroupIds, ApplyImmediately, PreferredBackupWindow, MasterUserPassword, BackupRetentionPeriod, Port, OptionGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyDBClusterMessage")
@@ -6054,10 +6054,10 @@ function M.AssertApplyPendingMaintenanceActionMessage(struct)
 end
 
 --- Create a structure of type ApplyPendingMaintenanceActionMessage
--- &lt;p/&gt;
--- @param ApplyAction [String] &lt;p&gt;The pending maintenance action to apply to this resource.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;system-update&lt;/code&gt;, &lt;code&gt;db-upgrade&lt;/code&gt; &lt;/p&gt;
--- @param OptInType [String] &lt;p&gt;A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type &lt;code&gt;immediate&lt;/code&gt; cannot be undone.&lt;/p&gt; &lt;p&gt;Valid values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;immediate&lt;/code&gt; - Apply the maintenance action immediately.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;next-maintenance&lt;/code&gt; - Apply the maintenance action during the next maintenance window for the resource.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;undo-opt-in&lt;/code&gt; - Cancel any existing &lt;code&gt;next-maintenance&lt;/code&gt; opt-in requests.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ResourceIdentifier [String] &lt;p&gt;The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For information about creating an ARN, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing&quot;&gt; Constructing an RDS Amazon Resource Name (ARN)&lt;/a&gt;.&lt;/p&gt;
+-- <p/>
+-- @param ApplyAction [String] <p>The pending maintenance action to apply to this resource.</p> <p>Valid values: <code>system-update</code>, <code>db-upgrade</code> </p>
+-- @param OptInType [String] <p>A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type <code>immediate</code> cannot be undone.</p> <p>Valid values:</p> <ul> <li> <p> <code>immediate</code> - Apply the maintenance action immediately.</p> </li> <li> <p> <code>next-maintenance</code> - Apply the maintenance action during the next maintenance window for the resource.</p> </li> <li> <p> <code>undo-opt-in</code> - Cancel any existing <code>next-maintenance</code> opt-in requests.</p> </li> </ul>
+-- @param ResourceIdentifier [String] <p>The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"> Constructing an RDS Amazon Resource Name (ARN)</a>.</p>
 -- Required parameter: ResourceIdentifier
 -- Required parameter: ApplyAction
 -- Required parameter: OptInType
@@ -6083,7 +6083,7 @@ function M.AssertAuthorizationNotFoundFault(struct)
 end
 
 --- Create a structure of type AuthorizationNotFoundFault
--- &lt;p&gt;Specified CIDRIP or EC2 security group is not authorized for the specified DB security group.&lt;/p&gt; &lt;p&gt;RDS may not also be authorized via IAM to perform necessary actions on your behalf.&lt;/p&gt;
+-- <p>Specified CIDRIP or EC2 security group is not authorized for the specified DB security group.</p> <p>RDS may not also be authorized via IAM to perform necessary actions on your behalf.</p>
 function M.AuthorizationNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationNotFoundFault")
 	local t = { 
@@ -6110,11 +6110,11 @@ function M.AssertCreateDBParameterGroupMessage(struct)
 end
 
 --- Create a structure of type CreateDBParameterGroupMessage
--- &lt;p/&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;The name of the DB parameter group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;note&gt; &lt;p&gt;This value is stored as a lowercase string.&lt;/p&gt; &lt;/note&gt;
--- @param DBParameterGroupFamily [String] &lt;p&gt;The DB parameter group family name. A DB parameter group can be associated with one and only one DB parameter group family, and can be applied only to a DB instance running a database engine and engine version compatible with that DB parameter group family.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description for the DB parameter group.&lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
+-- <p/>
+-- @param DBParameterGroupName [String] <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <note> <p>This value is stored as a lowercase string.</p> </note>
+-- @param DBParameterGroupFamily [String] <p>The DB parameter group family name. A DB parameter group can be associated with one and only one DB parameter group family, and can be applied only to a DB instance running a database engine and engine version compatible with that DB parameter group family.</p>
+-- @param Description [String] <p>The description for the DB parameter group.</p>
+-- @param Tags [TagList] <p/>
 -- Required parameter: DBParameterGroupName
 -- Required parameter: DBParameterGroupFamily
 -- Required parameter: Description
@@ -6154,20 +6154,20 @@ function M.AssertPendingModifiedValues(struct)
 end
 
 --- Create a structure of type PendingModifiedValues
--- &lt;p&gt; This data type is used as a response element in the &lt;a&gt;ModifyDBInstance&lt;/a&gt; action. &lt;/p&gt;
--- @param MultiAZ [BooleanOptional] &lt;p&gt;Indicates that the Single-AZ DB instance is to change to a Multi-AZ deployment.&lt;/p&gt;
--- @param StorageType [String] &lt;p&gt;Specifies the storage type to be associated with the DB instance.&lt;/p&gt;
--- @param CACertificateIdentifier [String] &lt;p&gt;Specifies the identifier of the CA certificate for the DB instance.&lt;/p&gt;
--- @param LicenseModel [String] &lt;p&gt;The license model for the DB instance.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;license-included&lt;/code&gt; | &lt;code&gt;bring-your-own-license&lt;/code&gt; | &lt;code&gt;general-public-license&lt;/code&gt; &lt;/p&gt;
--- @param MasterUserPassword [String] &lt;p&gt;Contains the pending or in-progress change of the master credentials for the DB instance.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;Specifies the pending port for the DB instance.&lt;/p&gt;
--- @param Iops [IntegerOptional] &lt;p&gt;Specifies the new Provisioned IOPS value for the DB instance that will be applied or is being applied.&lt;/p&gt;
--- @param AllocatedStorage [IntegerOptional] &lt;p&gt; Contains the new &lt;code&gt;AllocatedStorage&lt;/code&gt; size for the DB instance that will be applied or is in progress. &lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;Indicates the database engine version.&lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt; Contains the new &lt;code&gt;DBInstanceClass&lt;/code&gt; for the DB instance that will be applied or is in progress. &lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The new DB subnet group for the DB instance. &lt;/p&gt;
--- @param BackupRetentionPeriod [IntegerOptional] &lt;p&gt;Specifies the pending number of days for which automated backups are retained.&lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt; Contains the new &lt;code&gt;DBInstanceIdentifier&lt;/code&gt; for the DB instance that will be applied or is in progress. &lt;/p&gt;
+-- <p> This data type is used as a response element in the <a>ModifyDBInstance</a> action. </p>
+-- @param MultiAZ [BooleanOptional] <p>Indicates that the Single-AZ DB instance is to change to a Multi-AZ deployment.</p>
+-- @param StorageType [String] <p>Specifies the storage type to be associated with the DB instance.</p>
+-- @param CACertificateIdentifier [String] <p>Specifies the identifier of the CA certificate for the DB instance.</p>
+-- @param LicenseModel [String] <p>The license model for the DB instance.</p> <p>Valid values: <code>license-included</code> | <code>bring-your-own-license</code> | <code>general-public-license</code> </p>
+-- @param MasterUserPassword [String] <p>Contains the pending or in-progress change of the master credentials for the DB instance.</p>
+-- @param Port [IntegerOptional] <p>Specifies the pending port for the DB instance.</p>
+-- @param Iops [IntegerOptional] <p>Specifies the new Provisioned IOPS value for the DB instance that will be applied or is being applied.</p>
+-- @param AllocatedStorage [IntegerOptional] <p> Contains the new <code>AllocatedStorage</code> size for the DB instance that will be applied or is in progress. </p>
+-- @param EngineVersion [String] <p>Indicates the database engine version.</p>
+-- @param DBInstanceClass [String] <p> Contains the new <code>DBInstanceClass</code> for the DB instance that will be applied or is in progress. </p>
+-- @param DBSubnetGroupName [String] <p>The new DB subnet group for the DB instance. </p>
+-- @param BackupRetentionPeriod [IntegerOptional] <p>Specifies the pending number of days for which automated backups are retained.</p>
+-- @param DBInstanceIdentifier [String] <p> Contains the new <code>DBInstanceIdentifier</code> for the DB instance that will be applied or is in progress. </p>
 function M.PendingModifiedValues(MultiAZ, StorageType, CACertificateIdentifier, LicenseModel, MasterUserPassword, Port, Iops, AllocatedStorage, EngineVersion, DBInstanceClass, DBSubnetGroupName, BackupRetentionPeriod, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PendingModifiedValues")
 	local t = { 
@@ -6204,11 +6204,11 @@ function M.AssertDescribeDBParameterGroupsMessage(struct)
 end
 
 --- Create a structure of type DescribeDBParameterGroupsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribeDBParameterGroups&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;The name of a specific DB parameter group to return details for.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribeDBParameterGroups</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBParameterGroupName [String] <p>The name of a specific DB parameter group to return details for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
 function M.DescribeDBParameterGroupsMessage(Marker, DBParameterGroupName, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBParameterGroupsMessage")
 	local t = { 
@@ -6274,46 +6274,46 @@ function M.AssertCreateDBInstanceMessage(struct)
 end
 
 --- Create a structure of type CreateDBInstanceMessage
--- &lt;p/&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the default DBParameterGroup for the specified engine will be used.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PubliclyAccessible [BooleanOptional] &lt;p&gt;Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.&lt;/p&gt; &lt;p&gt;Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Default VPC:&lt;/b&gt; true&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;VPC:&lt;/b&gt; false&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.&lt;/p&gt;
--- @param DomainIAMRoleName [String] &lt;p&gt;Specify the name of the IAM role to be used when making API calls to the Directory Service.&lt;/p&gt;
--- @param MasterUsername [String] &lt;p&gt;The name for the master database user.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Amazon Aurora&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Not applicable. You specify the name for the master database user when you create your DB cluster. &lt;/p&gt; &lt;p&gt; &lt;b&gt;MariaDB&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 16 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a reserved word for the chosen database engine.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;Microsoft SQL Server&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 128 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a reserved word for the chosen database engine.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;MySQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 16 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a reserved word for the chosen database engine.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;Oracle&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 30 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a reserved word for the chosen database engine.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;PostgreSQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 63 alphanumeric characters.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a reserved word for the chosen database engine.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MonitoringInterval [IntegerOptional] &lt;p&gt;The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.&lt;/p&gt; &lt;p&gt;If &lt;code&gt;MonitoringRoleArn&lt;/code&gt; is specified, then you must also set &lt;code&gt;MonitoringInterval&lt;/code&gt; to a value other than 0.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;0, 1, 5, 10, 15, 30, 60&lt;/code&gt; &lt;/p&gt;
--- @param LicenseModel [String] &lt;p&gt;License model information for this DB instance.&lt;/p&gt; &lt;p&gt; Valid values: &lt;code&gt;license-included&lt;/code&gt; | &lt;code&gt;bring-your-own-license&lt;/code&gt; | &lt;code&gt;general-public-license&lt;/code&gt; &lt;/p&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt;A list of EC2 VPC security groups to associate with this DB instance.&lt;/p&gt; &lt;p&gt;Default: The default EC2 VPC security group for the DB subnet group's VPC.&lt;/p&gt;
--- @param EnableIAMDatabaseAuthentication [BooleanOptional] &lt;p&gt;True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false. &lt;/p&gt; &lt;p&gt; You can enable IAM database authentication for the following database engines:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.6, minor version 5.6.34 or higher&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.7, minor version 5.7.16 or higher&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param CopyTagsToSnapshot [BooleanOptional] &lt;p&gt;True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is false.&lt;/p&gt;
--- @param Engine [String] &lt;p&gt;The name of the database engine to be used for this instance. &lt;/p&gt; &lt;p&gt;Not every database engine is available for every AWS region. &lt;/p&gt; &lt;p&gt;Valid Values: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;aurora&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;mariadb&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;mysql&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;oracle-ee&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;oracle-se2&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;oracle-se1&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;oracle-se&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;postgres&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;sqlserver-ee&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;sqlserver-se&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;sqlserver-ex&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;sqlserver-web&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MultiAZ [BooleanOptional] &lt;p&gt;Specifies if the DB instance is a Multi-AZ deployment. You cannot set the AvailabilityZone parameter if the MultiAZ parameter is set to true.&lt;/p&gt;
--- @param DBSecurityGroups [DBSecurityGroupNameList] &lt;p&gt;A list of DB security groups to associate with this DB instance.&lt;/p&gt; &lt;p&gt;Default: The default DB security group for the database engine.&lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
--- @param AutoMinorVersionUpgrade [BooleanOptional] &lt;p&gt;Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param PreferredBackupWindow [String] &lt;p&gt; The daily time range during which automated backups are created if automated backups are enabled, using the &lt;code&gt;BackupRetentionPeriod&lt;/code&gt; parameter. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.BackingUpAndRestoringAmazonRDSInstances.html&quot;&gt;DB Instance Backups&lt;/a&gt;. &lt;/p&gt; &lt;p&gt; Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow&quot;&gt; Adjusting the Preferred DB Instance Maintenance Window&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be in the format &lt;code&gt;hh24:mi-hh24:mi&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Times should be in Universal Coordinated Time (UTC).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not conflict with the preferred maintenance window.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be at least 30 minutes.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PromotionTier [IntegerOptional] &lt;p&gt;A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance&quot;&gt; Fault Tolerance for an Aurora DB Cluster&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Default: 1&lt;/p&gt; &lt;p&gt;Valid Values: 0 - 15&lt;/p&gt;
--- @param TdeCredentialArn [String] &lt;p&gt;The ARN from the Key Store with which to associate the instance for TDE encryption.&lt;/p&gt;
--- @param AllocatedStorage [IntegerOptional] &lt;p&gt;The amount of storage (in gigabytes) to be initially allocated for the database instance.&lt;/p&gt; &lt;p&gt;Type: Integer&lt;/p&gt; &lt;p&gt; &lt;b&gt;Amazon Aurora&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Not applicable. Aurora cluster volumes automatically grow as the amount of data in your database increases, though you are only charged for the space that you use in an Aurora cluster volume.&lt;/p&gt; &lt;p&gt; &lt;b&gt;MySQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must be an integer from 5 to 6144.&lt;/p&gt; &lt;p&gt; &lt;b&gt;MariaDB&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must be an integer from 5 to 6144.&lt;/p&gt; &lt;p&gt; &lt;b&gt;PostgreSQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must be an integer from 5 to 6144.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Oracle&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must be an integer from 10 to 6144.&lt;/p&gt; &lt;p&gt; &lt;b&gt;SQL Server&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must be an integer from 200 to 4096 (Standard Edition and Enterprise Edition) or from 20 to 4096 (Express Edition and Web Edition)&lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;A DB subnet group to associate with this DB instance.&lt;/p&gt; &lt;p&gt;If there is no DB subnet group, then it is a non-VPC DB instance.&lt;/p&gt;
--- @param DBName [String] &lt;p&gt;The meaning of this parameter differs according to the database engine you use.&lt;/p&gt; &lt;p&gt;Type: String&lt;/p&gt; &lt;p&gt; &lt;b&gt;MySQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The name of the database to create when the DB instance is created. If this parameter is not specified, no database is created in the DB instance.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain 1 to 64 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a word reserved by the specified database engine&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;MariaDB&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The name of the database to create when the DB instance is created. If this parameter is not specified, no database is created in the DB instance.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain 1 to 64 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a word reserved by the specified database engine&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;PostgreSQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The name of the database to create when the DB instance is created. If this parameter is not specified, the default &quot;postgres&quot; database is created in the DB instance.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain 1 to 63 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must begin with a letter or an underscore. Subsequent characters can be letters, underscores, or digits (0-9).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a word reserved by the specified database engine&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;Oracle&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The Oracle System ID (SID) of the created DB instance. If you specify &lt;code&gt;null&lt;/code&gt;, the default value &lt;code&gt;ORCL&lt;/code&gt; is used. You can't specify the string NULL, or any other reserved word, for &lt;code&gt;DBName&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;ORCL&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cannot be longer than 8 characters&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;SQL Server&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Not applicable. Must be null.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Amazon Aurora&lt;/b&gt; &lt;/p&gt; &lt;p&gt;The name of the database to create when the primary instance of the DB cluster is created. If this parameter is not specified, no database is created in the DB instance.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain 1 to 64 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be a word reserved by the specified database engine&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt; The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC). For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBMaintenance.html&quot;&gt;DB Instance Maintenance&lt;/a&gt;. &lt;/p&gt; &lt;p&gt; Format: &lt;code&gt;ddd:hh24:mi-ddd:hh24:mi&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html&quot;&gt; Adjusting the Preferred Maintenance Window&lt;/a&gt; in the &lt;i&gt;Amazon RDS User Guide.&lt;/i&gt; &lt;/p&gt; &lt;p&gt;Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun&lt;/p&gt; &lt;p&gt;Constraints: Minimum 30-minute window.&lt;/p&gt;
--- @param TdeCredentialPassword [String] &lt;p&gt;The password for the given ARN from the Key Store in order to access the device.&lt;/p&gt;
--- @param Domain [String] &lt;p&gt;Specify the Active Directory Domain to create the instance in.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The version number of the database engine to use.&lt;/p&gt; &lt;p&gt;The following are the database engines and major and minor versions that are available with Amazon RDS. Not every database engine is available for every AWS region.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Amazon Aurora&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Version 5.6 (available in these AWS regions: ap-northeast-1, ap-northeast-2, ap-south-1, ap-southeast-2, eu-west-1, us-east-1, us-east-2, us-west-2): &lt;code&gt; 5.6.10a&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;MariaDB&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;10.1.19&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;10.1.14&lt;/code&gt; (supported in all regions except us-east-2)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p/&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;10.0.28&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;10.0.24&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;10.0.17&lt;/code&gt; (supported in all regions except us-east-2, ca-central-1, eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;Microsoft SQL Server 2016&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;13.00.4422.0.v1&lt;/code&gt; (supported for all editions, and all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;13.00.2164.0.v1&lt;/code&gt; (supported for all editions, and all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;Microsoft SQL Server 2014&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.00.5546.0.v1&lt;/code&gt; (supported for all editions, and all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.00.5000.0.v1&lt;/code&gt; (supported for all editions, and all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.00.4422.0.v1&lt;/code&gt; (supported for all editions except Enterprise Edition, and all AWS regions except ca-central-1 and eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;Microsoft SQL Server 2012&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.00.6594.0.v1&lt;/code&gt; (supported for all editions, and all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.00.6020.0.v1&lt;/code&gt; (supported for all editions, and all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.00.5058.0.v1&lt;/code&gt; (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.00.2100.60.v1&lt;/code&gt; (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;Microsoft SQL Server 2008 R2&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;10.50.6529.0.v1&lt;/code&gt; (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;10.50.6000.34.v1&lt;/code&gt; (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;10.50.2789.0.v1&lt;/code&gt; (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;MySQL&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.7.17&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.7.16&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.7.11&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.7.10&lt;/code&gt; (supported in all regions except us-east-2, ca-central-1, eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p/&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.6.35&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.6.34&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.6.29&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.6.27&lt;/code&gt; (supported in all regions except us-east-2, ca-central-1, eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.6.23&lt;/code&gt; (supported in all regions except us-east-2, ap-south-1, ca-central-1, eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.6.22&lt;/code&gt; (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.6.21b&lt;/code&gt; (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.6.21&lt;/code&gt; (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.6.19b&lt;/code&gt; (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.6.19a&lt;/code&gt; (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p/&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.5.54&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.5.53&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;5.5.46&lt;/code&gt; (supported in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;Oracle 12c&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.1.0.2.v8&lt;/code&gt; (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.1.0.2.v7&lt;/code&gt; (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.1.0.2.v6&lt;/code&gt; (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.1.0.2.v5&lt;/code&gt; (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.1.0.2.v4&lt;/code&gt; (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.1.0.2.v3&lt;/code&gt; (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.1.0.2.v2&lt;/code&gt; (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;12.1.0.2.v1&lt;/code&gt; (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;Oracle 11g&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v12&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v11&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v10&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v9&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v8&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v7&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v6&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v5&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v4&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v3&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;11.2.0.4.v1&lt;/code&gt; (supported for EE, SE1, and SE, in all AWS regions)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;b&gt;PostgreSQL&lt;/b&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Version 9.6.x:&lt;/b&gt; &lt;code&gt; 9.6.1 | 9.6.2&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Version 9.5.x:&lt;/b&gt; &lt;code&gt;9.5.6 | 9.5.4 | 9.5.2&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Version 9.4.x:&lt;/b&gt; &lt;code&gt;9.4.11 | 9.4.9 | 9.4.7&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Version 9.3.x:&lt;/b&gt; &lt;code&gt;9.3.16 | 9.3.14 | 9.3.12&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param BackupRetentionPeriod [IntegerOptional] &lt;p&gt;The number of days for which automated backups are retained. Setting this parameter to a positive number enables backups. Setting this parameter to 0 disables automated backups.&lt;/p&gt; &lt;p&gt;Default: 1&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be a value from 0 to 35&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be set to 0 if the DB instance is a source to Read Replicas&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param OptionGroupName [String] &lt;p&gt;Indicates that the DB instance should be associated with the specified option group.&lt;/p&gt; &lt;p&gt;Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance&lt;/p&gt;
--- @param CharacterSetName [String] &lt;p&gt;For supported engines, indicates that the DB instance should be associated with the specified CharacterSet.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt; The EC2 Availability Zone that the database instance will be created in. For information on regions and Availability Zones, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html&quot;&gt;Regions and Availability Zones&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Default: A random, system-chosen Availability Zone in the endpoint's region.&lt;/p&gt; &lt;p&gt; Example: &lt;code&gt;us-east-1d&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Constraint: The AvailabilityZone parameter cannot be specified if the MultiAZ parameter is set to &lt;code&gt;true&lt;/code&gt;. The specified Availability Zone must be in the same region as the current endpoint. &lt;/p&gt;
--- @param MonitoringRoleArn [String] &lt;p&gt;The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example, &lt;code&gt;arn:aws:iam:123456789012:role/emaccess&lt;/code&gt;. For information on creating a monitoring role, go to &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling&quot;&gt;Setting Up and Enabling Enhanced Monitoring&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;If &lt;code&gt;MonitoringInterval&lt;/code&gt; is set to a value other than 0, then you must supply a &lt;code&gt;MonitoringRoleArn&lt;/code&gt; value.&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The identifier of the DB cluster that the instance will belong to.&lt;/p&gt; &lt;p&gt;For information on creating a DB cluster, see &lt;a&gt;CreateDBCluster&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Type: String&lt;/p&gt;
--- @param StorageType [String] &lt;p&gt;Specifies the storage type to be associated with the DB instance.&lt;/p&gt; &lt;p&gt; Valid values: &lt;code&gt;standard | gp2 | io1&lt;/code&gt; &lt;/p&gt; &lt;p&gt; If you specify &lt;code&gt;io1&lt;/code&gt;, you must also include a value for the &lt;code&gt;Iops&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;io1&lt;/code&gt; if the &lt;code&gt;Iops&lt;/code&gt; parameter is specified; otherwise &lt;code&gt;standard&lt;/code&gt; &lt;/p&gt;
--- @param MasterUserPassword [String] &lt;p&gt;The password for the master database user. Can be any printable ASCII character except &quot;/&quot;, &quot;&quot;&quot;, or &quot;@&quot;.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Amazon Aurora&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Not applicable. You specify the password for the master database user when you create your DB cluster. &lt;/p&gt; &lt;p&gt; &lt;b&gt;MariaDB&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must contain from 8 to 41 characters.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Microsoft SQL Server&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must contain from 8 to 128 characters.&lt;/p&gt; &lt;p&gt; &lt;b&gt;MySQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must contain from 8 to 41 characters.&lt;/p&gt; &lt;p&gt; &lt;b&gt;Oracle&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must contain from 8 to 30 characters.&lt;/p&gt; &lt;p&gt; &lt;b&gt;PostgreSQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Constraints: Must contain from 8 to 128 characters.&lt;/p&gt;
--- @param Iops [IntegerOptional] &lt;p&gt;The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance.&lt;/p&gt; &lt;p&gt;Constraints: Must be a multiple between 3 and 10 of the storage amount for the DB instance. Must also be an integer multiple of 1000. For example, if the size of your DB instance is 500 GB, then your &lt;code&gt;Iops&lt;/code&gt; value can be 2000, 3000, 4000, or 5000. &lt;/p&gt;
--- @param StorageEncrypted [BooleanOptional] &lt;p&gt;Specifies whether the DB instance is encrypted.&lt;/p&gt; &lt;p&gt;Default: false&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt;The KMS key identifier for an encrypted DB instance.&lt;/p&gt; &lt;p&gt;The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB instance with the same AWS account that owns the KMS encryption key used to encrypt the new DB instance, then you can use the KMS key alias instead of the ARN for the KM encryption key.&lt;/p&gt; &lt;p&gt;If the &lt;code&gt;StorageEncrypted&lt;/code&gt; parameter is true, and you do not specify a value for the &lt;code&gt;KmsKeyId&lt;/code&gt; parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.&lt;/p&gt;
--- @param Timezone [String] &lt;p&gt;The time zone of the DB instance. The time zone parameter is currently supported only by &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone&quot;&gt;Microsoft SQL Server&lt;/a&gt;. &lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;The compute and memory capacity of the DB instance. Note that not all instance classes are available in all regions for all DB engines.&lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large&lt;/code&gt; &lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number on which the database accepts connections.&lt;/p&gt; &lt;p&gt; &lt;b&gt;MySQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;3306&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Type: Integer&lt;/p&gt; &lt;p&gt; &lt;b&gt;MariaDB&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;3306&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Type: Integer&lt;/p&gt; &lt;p&gt; &lt;b&gt;PostgreSQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;5432&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Type: Integer&lt;/p&gt; &lt;p&gt; &lt;b&gt;Oracle&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;1521&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt; &lt;b&gt;SQL Server&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;1433&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; except for &lt;code&gt;1434&lt;/code&gt;, &lt;code&gt;3389&lt;/code&gt;, &lt;code&gt;47001&lt;/code&gt;, &lt;code&gt;49152&lt;/code&gt;, and &lt;code&gt;49152&lt;/code&gt; through &lt;code&gt;49156&lt;/code&gt;. &lt;/p&gt; &lt;p&gt; &lt;b&gt;Amazon Aurora&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;3306&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Type: Integer&lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The DB instance identifier. This parameter is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15 for SQL Server).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;mydbinstance&lt;/code&gt; &lt;/p&gt;
+-- <p/>
+-- @param DBParameterGroupName [String] <p>The name of the DB parameter group to associate with this DB instance. If this argument is omitted, the default DBParameterGroup for the specified engine will be used.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param PubliclyAccessible [BooleanOptional] <p>Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.</p> <p>Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.</p> <ul> <li> <p> <b>Default VPC:</b> true</p> </li> <li> <p> <b>VPC:</b> false</p> </li> </ul> <p>If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.</p>
+-- @param DomainIAMRoleName [String] <p>Specify the name of the IAM role to be used when making API calls to the Directory Service.</p>
+-- @param MasterUsername [String] <p>The name for the master database user.</p> <p> <b>Amazon Aurora</b> </p> <p>Not applicable. You specify the name for the master database user when you create your DB cluster. </p> <p> <b>MariaDB</b> </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 16 alphanumeric characters.</p> </li> <li> <p>Cannot be a reserved word for the chosen database engine.</p> </li> </ul> <p> <b>Microsoft SQL Server</b> </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 128 alphanumeric characters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot be a reserved word for the chosen database engine.</p> </li> </ul> <p> <b>MySQL</b> </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 16 alphanumeric characters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot be a reserved word for the chosen database engine.</p> </li> </ul> <p> <b>Oracle</b> </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 30 alphanumeric characters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot be a reserved word for the chosen database engine.</p> </li> </ul> <p> <b>PostgreSQL</b> </p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 63 alphanumeric characters.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot be a reserved word for the chosen database engine.</p> </li> </ul>
+-- @param MonitoringInterval [IntegerOptional] <p>The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.</p> <p>If <code>MonitoringRoleArn</code> is specified, then you must also set <code>MonitoringInterval</code> to a value other than 0.</p> <p>Valid Values: <code>0, 1, 5, 10, 15, 30, 60</code> </p>
+-- @param LicenseModel [String] <p>License model information for this DB instance.</p> <p> Valid values: <code>license-included</code> | <code>bring-your-own-license</code> | <code>general-public-license</code> </p>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of EC2 VPC security groups to associate with this DB instance.</p> <p>Default: The default EC2 VPC security group for the DB subnet group's VPC.</p>
+-- @param EnableIAMDatabaseAuthentication [BooleanOptional] <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false. </p> <p> You can enable IAM database authentication for the following database engines:</p> <ul> <li> <p>For MySQL 5.6, minor version 5.6.34 or higher</p> </li> <li> <p>For MySQL 5.7, minor version 5.7.16 or higher</p> </li> </ul> <p>Default: <code>false</code> </p>
+-- @param CopyTagsToSnapshot [BooleanOptional] <p>True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is false.</p>
+-- @param Engine [String] <p>The name of the database engine to be used for this instance. </p> <p>Not every database engine is available for every AWS region. </p> <p>Valid Values: </p> <ul> <li> <p> <code>aurora</code> </p> </li> <li> <p> <code>mariadb</code> </p> </li> <li> <p> <code>mysql</code> </p> </li> <li> <p> <code>oracle-ee</code> </p> </li> <li> <p> <code>oracle-se2</code> </p> </li> <li> <p> <code>oracle-se1</code> </p> </li> <li> <p> <code>oracle-se</code> </p> </li> <li> <p> <code>postgres</code> </p> </li> <li> <p> <code>sqlserver-ee</code> </p> </li> <li> <p> <code>sqlserver-se</code> </p> </li> <li> <p> <code>sqlserver-ex</code> </p> </li> <li> <p> <code>sqlserver-web</code> </p> </li> </ul>
+-- @param MultiAZ [BooleanOptional] <p>Specifies if the DB instance is a Multi-AZ deployment. You cannot set the AvailabilityZone parameter if the MultiAZ parameter is set to true.</p>
+-- @param DBSecurityGroups [DBSecurityGroupNameList] <p>A list of DB security groups to associate with this DB instance.</p> <p>Default: The default DB security group for the database engine.</p>
+-- @param Tags [TagList] <p/>
+-- @param AutoMinorVersionUpgrade [BooleanOptional] <p>Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window.</p> <p>Default: <code>true</code> </p>
+-- @param PreferredBackupWindow [String] <p> The daily time range during which automated backups are created if automated backups are enabled, using the <code>BackupRetentionPeriod</code> parameter. For more information, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.BackingUpAndRestoringAmazonRDSInstances.html">DB Instance Backups</a>. </p> <p> Default: A 30-minute window selected at random from an 8-hour block of time per region. To see the time blocks available, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow"> Adjusting the Preferred DB Instance Maintenance Window</a>. </p> <p>Constraints:</p> <ul> <li> <p>Must be in the format <code>hh24:mi-hh24:mi</code>.</p> </li> <li> <p>Times should be in Universal Coordinated Time (UTC).</p> </li> <li> <p>Must not conflict with the preferred maintenance window.</p> </li> <li> <p>Must be at least 30 minutes.</p> </li> </ul>
+-- @param PromotionTier [IntegerOptional] <p>A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"> Fault Tolerance for an Aurora DB Cluster</a>. </p> <p>Default: 1</p> <p>Valid Values: 0 - 15</p>
+-- @param TdeCredentialArn [String] <p>The ARN from the Key Store with which to associate the instance for TDE encryption.</p>
+-- @param AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be initially allocated for the database instance.</p> <p>Type: Integer</p> <p> <b>Amazon Aurora</b> </p> <p>Not applicable. Aurora cluster volumes automatically grow as the amount of data in your database increases, though you are only charged for the space that you use in an Aurora cluster volume.</p> <p> <b>MySQL</b> </p> <p>Constraints: Must be an integer from 5 to 6144.</p> <p> <b>MariaDB</b> </p> <p>Constraints: Must be an integer from 5 to 6144.</p> <p> <b>PostgreSQL</b> </p> <p>Constraints: Must be an integer from 5 to 6144.</p> <p> <b>Oracle</b> </p> <p>Constraints: Must be an integer from 10 to 6144.</p> <p> <b>SQL Server</b> </p> <p>Constraints: Must be an integer from 200 to 4096 (Standard Edition and Enterprise Edition) or from 20 to 4096 (Express Edition and Web Edition)</p>
+-- @param DBSubnetGroupName [String] <p>A DB subnet group to associate with this DB instance.</p> <p>If there is no DB subnet group, then it is a non-VPC DB instance.</p>
+-- @param DBName [String] <p>The meaning of this parameter differs according to the database engine you use.</p> <p>Type: String</p> <p> <b>MySQL</b> </p> <p>The name of the database to create when the DB instance is created. If this parameter is not specified, no database is created in the DB instance.</p> <p>Constraints:</p> <ul> <li> <p>Must contain 1 to 64 alphanumeric characters</p> </li> <li> <p>Cannot be a word reserved by the specified database engine</p> </li> </ul> <p> <b>MariaDB</b> </p> <p>The name of the database to create when the DB instance is created. If this parameter is not specified, no database is created in the DB instance.</p> <p>Constraints:</p> <ul> <li> <p>Must contain 1 to 64 alphanumeric characters</p> </li> <li> <p>Cannot be a word reserved by the specified database engine</p> </li> </ul> <p> <b>PostgreSQL</b> </p> <p>The name of the database to create when the DB instance is created. If this parameter is not specified, the default "postgres" database is created in the DB instance.</p> <p>Constraints:</p> <ul> <li> <p>Must contain 1 to 63 alphanumeric characters</p> </li> <li> <p>Must begin with a letter or an underscore. Subsequent characters can be letters, underscores, or digits (0-9).</p> </li> <li> <p>Cannot be a word reserved by the specified database engine</p> </li> </ul> <p> <b>Oracle</b> </p> <p>The Oracle System ID (SID) of the created DB instance. If you specify <code>null</code>, the default value <code>ORCL</code> is used. You can't specify the string NULL, or any other reserved word, for <code>DBName</code>. </p> <p>Default: <code>ORCL</code> </p> <p>Constraints:</p> <ul> <li> <p>Cannot be longer than 8 characters</p> </li> </ul> <p> <b>SQL Server</b> </p> <p>Not applicable. Must be null.</p> <p> <b>Amazon Aurora</b> </p> <p>The name of the database to create when the primary instance of the DB cluster is created. If this parameter is not specified, no database is created in the DB instance.</p> <p>Constraints:</p> <ul> <li> <p>Must contain 1 to 64 alphanumeric characters</p> </li> <li> <p>Cannot be a word reserved by the specified database engine</p> </li> </ul>
+-- @param PreferredMaintenanceWindow [String] <p> The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC). For more information, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBMaintenance.html">DB Instance Maintenance</a>. </p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p> Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week. To see the time blocks available, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html"> Adjusting the Preferred Maintenance Window</a> in the <i>Amazon RDS User Guide.</i> </p> <p>Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute window.</p>
+-- @param TdeCredentialPassword [String] <p>The password for the given ARN from the Key Store in order to access the device.</p>
+-- @param Domain [String] <p>Specify the Active Directory Domain to create the instance in.</p>
+-- @param EngineVersion [String] <p>The version number of the database engine to use.</p> <p>The following are the database engines and major and minor versions that are available with Amazon RDS. Not every database engine is available for every AWS region.</p> <p> <b>Amazon Aurora</b> </p> <ul> <li> <p>Version 5.6 (available in these AWS regions: ap-northeast-1, ap-northeast-2, ap-south-1, ap-southeast-2, eu-west-1, us-east-1, us-east-2, us-west-2): <code> 5.6.10a</code> </p> </li> </ul> <p> <b>MariaDB</b> </p> <ul> <li> <p> <code>10.1.19</code> (supported in all AWS regions)</p> </li> <li> <p> <code>10.1.14</code> (supported in all regions except us-east-2)</p> </li> </ul> <p/> <ul> <li> <p> <code>10.0.28</code> (supported in all AWS regions)</p> </li> <li> <p> <code>10.0.24</code> (supported in all AWS regions)</p> </li> <li> <p> <code>10.0.17</code> (supported in all regions except us-east-2, ca-central-1, eu-west-2)</p> </li> </ul> <p> <b>Microsoft SQL Server 2016</b> </p> <ul> <li> <p> <code>13.00.4422.0.v1</code> (supported for all editions, and all AWS regions)</p> </li> <li> <p> <code>13.00.2164.0.v1</code> (supported for all editions, and all AWS regions)</p> </li> </ul> <p> <b>Microsoft SQL Server 2014</b> </p> <ul> <li> <p> <code>12.00.5546.0.v1</code> (supported for all editions, and all AWS regions)</p> </li> <li> <p> <code>12.00.5000.0.v1</code> (supported for all editions, and all AWS regions)</p> </li> <li> <p> <code>12.00.4422.0.v1</code> (supported for all editions except Enterprise Edition, and all AWS regions except ca-central-1 and eu-west-2)</p> </li> </ul> <p> <b>Microsoft SQL Server 2012</b> </p> <ul> <li> <p> <code>11.00.6594.0.v1</code> (supported for all editions, and all AWS regions)</p> </li> <li> <p> <code>11.00.6020.0.v1</code> (supported for all editions, and all AWS regions)</p> </li> <li> <p> <code>11.00.5058.0.v1</code> (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)</p> </li> <li> <p> <code>11.00.2100.60.v1</code> (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)</p> </li> </ul> <p> <b>Microsoft SQL Server 2008 R2</b> </p> <ul> <li> <p> <code>10.50.6529.0.v1</code> (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)</p> </li> <li> <p> <code>10.50.6000.34.v1</code> (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)</p> </li> <li> <p> <code>10.50.2789.0.v1</code> (supported for all editions, and all AWS regions except us-east-2, ca-central-1, and eu-west-2)</p> </li> </ul> <p> <b>MySQL</b> </p> <ul> <li> <p> <code>5.7.17</code> (supported in all AWS regions)</p> </li> <li> <p> <code>5.7.16</code> (supported in all AWS regions)</p> </li> <li> <p> <code>5.7.11</code> (supported in all AWS regions)</p> </li> <li> <p> <code>5.7.10</code> (supported in all regions except us-east-2, ca-central-1, eu-west-2)</p> </li> </ul> <p/> <ul> <li> <p> <code>5.6.35</code> (supported in all AWS regions)</p> </li> <li> <p> <code>5.6.34</code> (supported in all AWS regions)</p> </li> <li> <p> <code>5.6.29</code> (supported in all AWS regions)</p> </li> <li> <p> <code>5.6.27</code> (supported in all regions except us-east-2, ca-central-1, eu-west-2)</p> </li> <li> <p> <code>5.6.23</code> (supported in all regions except us-east-2, ap-south-1, ca-central-1, eu-west-2)</p> </li> <li> <p> <code>5.6.22</code> (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)</p> </li> <li> <p> <code>5.6.21b</code> (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)</p> </li> <li> <p> <code>5.6.21</code> (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)</p> </li> <li> <p> <code>5.6.19b</code> (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)</p> </li> <li> <p> <code>5.6.19a</code> (supported in all regions except us-east-2, ap-south-1, ap-northeast-2, ca-central-1, eu-west-2)</p> </li> </ul> <p/> <ul> <li> <p> <code>5.5.54</code> (supported in all AWS regions)</p> </li> <li> <p> <code>5.5.53</code> (supported in all AWS regions)</p> </li> <li> <p> <code>5.5.46</code> (supported in all AWS regions)</p> </li> </ul> <p> <b>Oracle 12c</b> </p> <ul> <li> <p> <code>12.1.0.2.v8</code> (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)</p> </li> <li> <p> <code>12.1.0.2.v7</code> (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)</p> </li> <li> <p> <code>12.1.0.2.v6</code> (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)</p> </li> <li> <p> <code>12.1.0.2.v5</code> (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)</p> </li> <li> <p> <code>12.1.0.2.v4</code> (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)</p> </li> <li> <p> <code>12.1.0.2.v3</code> (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)</p> </li> <li> <p> <code>12.1.0.2.v2</code> (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)</p> </li> <li> <p> <code>12.1.0.2.v1</code> (supported for EE in all AWS regions, and SE2 in all AWS regions except us-gov-west-1)</p> </li> </ul> <p> <b>Oracle 11g</b> </p> <ul> <li> <p> <code>11.2.0.4.v12</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> <li> <p> <code>11.2.0.4.v11</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> <li> <p> <code>11.2.0.4.v10</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> <li> <p> <code>11.2.0.4.v9</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> <li> <p> <code>11.2.0.4.v8</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> <li> <p> <code>11.2.0.4.v7</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> <li> <p> <code>11.2.0.4.v6</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> <li> <p> <code>11.2.0.4.v5</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> <li> <p> <code>11.2.0.4.v4</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> <li> <p> <code>11.2.0.4.v3</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> <li> <p> <code>11.2.0.4.v1</code> (supported for EE, SE1, and SE, in all AWS regions)</p> </li> </ul> <p> <b>PostgreSQL</b> </p> <ul> <li> <p> <b>Version 9.6.x:</b> <code> 9.6.1 | 9.6.2</code> </p> </li> <li> <p> <b>Version 9.5.x:</b> <code>9.5.6 | 9.5.4 | 9.5.2</code> </p> </li> <li> <p> <b>Version 9.4.x:</b> <code>9.4.11 | 9.4.9 | 9.4.7</code> </p> </li> <li> <p> <b>Version 9.3.x:</b> <code>9.3.16 | 9.3.14 | 9.3.12</code> </p> </li> </ul>
+-- @param BackupRetentionPeriod [IntegerOptional] <p>The number of days for which automated backups are retained. Setting this parameter to a positive number enables backups. Setting this parameter to 0 disables automated backups.</p> <p>Default: 1</p> <p>Constraints:</p> <ul> <li> <p>Must be a value from 0 to 35</p> </li> <li> <p>Cannot be set to 0 if the DB instance is a source to Read Replicas</p> </li> </ul>
+-- @param OptionGroupName [String] <p>Indicates that the DB instance should be associated with the specified option group.</p> <p>Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance</p>
+-- @param CharacterSetName [String] <p>For supported engines, indicates that the DB instance should be associated with the specified CharacterSet.</p>
+-- @param AvailabilityZone [String] <p> The EC2 Availability Zone that the database instance will be created in. For information on regions and Availability Zones, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html">Regions and Availability Zones</a>. </p> <p>Default: A random, system-chosen Availability Zone in the endpoint's region.</p> <p> Example: <code>us-east-1d</code> </p> <p> Constraint: The AvailabilityZone parameter cannot be specified if the MultiAZ parameter is set to <code>true</code>. The specified Availability Zone must be in the same region as the current endpoint. </p>
+-- @param MonitoringRoleArn [String] <p>The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go to <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling">Setting Up and Enabling Enhanced Monitoring</a>.</p> <p>If <code>MonitoringInterval</code> is set to a value other than 0, then you must supply a <code>MonitoringRoleArn</code> value.</p>
+-- @param DBClusterIdentifier [String] <p>The identifier of the DB cluster that the instance will belong to.</p> <p>For information on creating a DB cluster, see <a>CreateDBCluster</a>.</p> <p>Type: String</p>
+-- @param StorageType [String] <p>Specifies the storage type to be associated with the DB instance.</p> <p> Valid values: <code>standard | gp2 | io1</code> </p> <p> If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter. </p> <p> Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code> </p>
+-- @param MasterUserPassword [String] <p>The password for the master database user. Can be any printable ASCII character except "/", """, or "@".</p> <p> <b>Amazon Aurora</b> </p> <p>Not applicable. You specify the password for the master database user when you create your DB cluster. </p> <p> <b>MariaDB</b> </p> <p>Constraints: Must contain from 8 to 41 characters.</p> <p> <b>Microsoft SQL Server</b> </p> <p>Constraints: Must contain from 8 to 128 characters.</p> <p> <b>MySQL</b> </p> <p>Constraints: Must contain from 8 to 41 characters.</p> <p> <b>Oracle</b> </p> <p>Constraints: Must contain from 8 to 30 characters.</p> <p> <b>PostgreSQL</b> </p> <p>Constraints: Must contain from 8 to 128 characters.</p>
+-- @param Iops [IntegerOptional] <p>The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance.</p> <p>Constraints: Must be a multiple between 3 and 10 of the storage amount for the DB instance. Must also be an integer multiple of 1000. For example, if the size of your DB instance is 500 GB, then your <code>Iops</code> value can be 2000, 3000, 4000, or 5000. </p>
+-- @param StorageEncrypted [BooleanOptional] <p>Specifies whether the DB instance is encrypted.</p> <p>Default: false</p>
+-- @param KmsKeyId [String] <p>The KMS key identifier for an encrypted DB instance.</p> <p>The KMS key identifier is the Amazon Resource Name (ARN) for the KMS encryption key. If you are creating a DB instance with the same AWS account that owns the KMS encryption key used to encrypt the new DB instance, then you can use the KMS key alias instead of the ARN for the KM encryption key.</p> <p>If the <code>StorageEncrypted</code> parameter is true, and you do not specify a value for the <code>KmsKeyId</code> parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- @param Timezone [String] <p>The time zone of the DB instance. The time zone parameter is currently supported only by <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone">Microsoft SQL Server</a>. </p>
+-- @param DBInstanceClass [String] <p>The compute and memory capacity of the DB instance. Note that not all instance classes are available in all regions for all DB engines.</p> <p> Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code> </p>
+-- @param Port [IntegerOptional] <p>The port number on which the database accepts connections.</p> <p> <b>MySQL</b> </p> <p> Default: <code>3306</code> </p> <p> Valid Values: <code>1150-65535</code> </p> <p>Type: Integer</p> <p> <b>MariaDB</b> </p> <p> Default: <code>3306</code> </p> <p> Valid Values: <code>1150-65535</code> </p> <p>Type: Integer</p> <p> <b>PostgreSQL</b> </p> <p> Default: <code>5432</code> </p> <p> Valid Values: <code>1150-65535</code> </p> <p>Type: Integer</p> <p> <b>Oracle</b> </p> <p> Default: <code>1521</code> </p> <p> Valid Values: <code>1150-65535</code> </p> <p> <b>SQL Server</b> </p> <p> Default: <code>1433</code> </p> <p> Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>, <code>49152</code>, and <code>49152</code> through <code>49156</code>. </p> <p> <b>Amazon Aurora</b> </p> <p> Default: <code>3306</code> </p> <p> Valid Values: <code>1150-65535</code> </p> <p>Type: Integer</p>
+-- @param DBInstanceIdentifier [String] <p>The DB instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15 for SQL Server).</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>mydbinstance</code> </p>
 -- Required parameter: DBInstanceIdentifier
 -- Required parameter: DBInstanceClass
 -- Required parameter: Engine
@@ -6377,9 +6377,9 @@ function M.AssertCertificateMessage(struct)
 end
 
 --- Create a structure of type CertificateMessage
--- &lt;p&gt;Data returned by the &lt;b&gt;DescribeCertificates&lt;/b&gt; action.&lt;/p&gt;
--- @param Certificates [CertificateList] &lt;p&gt;The list of &lt;a&gt;Certificate&lt;/a&gt; objects for the AWS account.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;a&gt;DescribeCertificates&lt;/a&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt; . &lt;/p&gt;
+-- <p>Data returned by the <b>DescribeCertificates</b> action.</p>
+-- @param Certificates [CertificateList] <p>The list of <a>Certificate</a> objects for the AWS account.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <a>DescribeCertificates</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
 function M.CertificateMessage(Certificates, Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CertificateMessage")
 	local t = { 
@@ -6409,15 +6409,15 @@ function M.AssertOptionGroup(struct)
 end
 
 --- Create a structure of type OptionGroup
--- &lt;p/&gt;
--- @param VpcId [String] &lt;p&gt;If &lt;b&gt;AllowsVpcAndNonVpcInstanceMemberships&lt;/b&gt; is &lt;code&gt;false&lt;/code&gt;, this field is blank. If &lt;b&gt;AllowsVpcAndNonVpcInstanceMemberships&lt;/b&gt; is &lt;code&gt;true&lt;/code&gt; and this field is blank, then this option group can be applied to both VPC and non-VPC instances. If this field contains a value, then this option group can only be applied to instances that are in the VPC indicated by this field. &lt;/p&gt;
--- @param MajorEngineVersion [String] &lt;p&gt;Indicates the major engine version associated with this option group.&lt;/p&gt;
--- @param OptionGroupDescription [String] &lt;p&gt;Provides a description of the option group.&lt;/p&gt;
--- @param Options [OptionsList] &lt;p&gt;Indicates what options are available in the option group.&lt;/p&gt;
--- @param OptionGroupArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the option group.&lt;/p&gt;
--- @param EngineName [String] &lt;p&gt;Indicates the name of the engine that this option group can be applied to.&lt;/p&gt;
--- @param AllowsVpcAndNonVpcInstanceMemberships [Boolean] &lt;p&gt;Indicates whether this option group can be applied to both VPC and non-VPC instances. The value &lt;code&gt;true&lt;/code&gt; indicates the option group can be applied to both VPC and non-VPC instances. &lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;Specifies the name of the option group.&lt;/p&gt;
+-- <p/>
+-- @param VpcId [String] <p>If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>false</code>, this field is blank. If <b>AllowsVpcAndNonVpcInstanceMemberships</b> is <code>true</code> and this field is blank, then this option group can be applied to both VPC and non-VPC instances. If this field contains a value, then this option group can only be applied to instances that are in the VPC indicated by this field. </p>
+-- @param MajorEngineVersion [String] <p>Indicates the major engine version associated with this option group.</p>
+-- @param OptionGroupDescription [String] <p>Provides a description of the option group.</p>
+-- @param Options [OptionsList] <p>Indicates what options are available in the option group.</p>
+-- @param OptionGroupArn [String] <p>The Amazon Resource Name (ARN) for the option group.</p>
+-- @param EngineName [String] <p>Indicates the name of the engine that this option group can be applied to.</p>
+-- @param AllowsVpcAndNonVpcInstanceMemberships [Boolean] <p>Indicates whether this option group can be applied to both VPC and non-VPC instances. The value <code>true</code> indicates the option group can be applied to both VPC and non-VPC instances. </p>
+-- @param OptionGroupName [String] <p>Specifies the name of the option group.</p>
 function M.OptionGroup(VpcId, MajorEngineVersion, OptionGroupDescription, Options, OptionGroupArn, EngineName, AllowsVpcAndNonVpcInstanceMemberships, OptionGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionGroup")
 	local t = { 
@@ -6445,7 +6445,7 @@ function M.AssertInvalidDBSubnetGroupStateFault(struct)
 end
 
 --- Create a structure of type InvalidDBSubnetGroupStateFault
--- &lt;p&gt;The DB subnet group cannot be deleted because it is in use.&lt;/p&gt;
+-- <p>The DB subnet group cannot be deleted because it is in use.</p>
 function M.InvalidDBSubnetGroupStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDBSubnetGroupStateFault")
 	local t = { 
@@ -6488,7 +6488,7 @@ function M.AssertProvisionedIopsNotAvailableInAZFault(struct)
 end
 
 --- Create a structure of type ProvisionedIopsNotAvailableInAZFault
--- &lt;p&gt;Provisioned IOPS not available in the specified Availability Zone.&lt;/p&gt;
+-- <p>Provisioned IOPS not available in the specified Availability Zone.</p>
 function M.ProvisionedIopsNotAvailableInAZFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionedIopsNotAvailableInAZFault")
 	local t = { 
@@ -6513,11 +6513,11 @@ function M.AssertDescribeEngineDefaultParametersMessage(struct)
 end
 
 --- Create a structure of type DescribeEngineDefaultParametersMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribeEngineDefaultParameters&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBParameterGroupFamily [String] &lt;p&gt;The name of the DB parameter group family.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;Not currently supported.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribeEngineDefaultParameters</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBParameterGroupFamily [String] <p>The name of the DB parameter group family.</p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>Not currently supported.</p>
 -- Required parameter: DBParameterGroupFamily
 function M.DescribeEngineDefaultParametersMessage(Marker, DBParameterGroupFamily, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEngineDefaultParametersMessage")
@@ -6542,7 +6542,7 @@ function M.AssertInvalidDBSecurityGroupStateFault(struct)
 end
 
 --- Create a structure of type InvalidDBSecurityGroupStateFault
--- &lt;p&gt;The state of the DB security group does not allow deletion.&lt;/p&gt;
+-- <p>The state of the DB security group does not allow deletion.</p>
 function M.InvalidDBSecurityGroupStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDBSecurityGroupStateFault")
 	local t = { 
@@ -6562,7 +6562,7 @@ function M.AssertOptionGroupAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type OptionGroupAlreadyExistsFault
--- &lt;p&gt;The option group you are trying to create already exists.&lt;/p&gt;
+-- <p>The option group you are trying to create already exists.</p>
 function M.OptionGroupAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionGroupAlreadyExistsFault")
 	local t = { 
@@ -6582,7 +6582,7 @@ function M.AssertInsufficientDBClusterCapacityFault(struct)
 end
 
 --- Create a structure of type InsufficientDBClusterCapacityFault
--- &lt;p&gt;The DB cluster does not have enough capacity for the current operation.&lt;/p&gt;
+-- <p>The DB cluster does not have enough capacity for the current operation.</p>
 function M.InsufficientDBClusterCapacityFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientDBClusterCapacityFault")
 	local t = { 
@@ -6604,9 +6604,9 @@ function M.AssertDescribeDBLogFilesResponse(struct)
 end
 
 --- Create a structure of type DescribeDBLogFilesResponse
--- &lt;p&gt; The response from a call to &lt;a&gt;DescribeDBLogFiles&lt;/a&gt;. &lt;/p&gt;
--- @param DescribeDBLogFiles [DescribeDBLogFilesList] &lt;p&gt;The DB log files returned.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A pagination token that can be used in a subsequent DescribeDBLogFiles request.&lt;/p&gt;
+-- <p> The response from a call to <a>DescribeDBLogFiles</a>. </p>
+-- @param DescribeDBLogFiles [DescribeDBLogFilesList] <p>The DB log files returned.</p>
+-- @param Marker [String] <p>A pagination token that can be used in a subsequent DescribeDBLogFiles request.</p>
 function M.DescribeDBLogFilesResponse(DescribeDBLogFiles, Marker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBLogFilesResponse")
 	local t = { 
@@ -6628,7 +6628,7 @@ function M.AssertSharedSnapshotQuotaExceededFault(struct)
 end
 
 --- Create a structure of type SharedSnapshotQuotaExceededFault
--- &lt;p&gt;You have exceeded the maximum number of accounts that you can share a manual DB snapshot with.&lt;/p&gt;
+-- <p>You have exceeded the maximum number of accounts that you can share a manual DB snapshot with.</p>
 function M.SharedSnapshotQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SharedSnapshotQuotaExceededFault")
 	local t = { 
@@ -6699,8 +6699,8 @@ end
 
 --- Create a structure of type RemoveRoleFromDBClusterMessage
 --  
--- @param RoleArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the IAM role to disassociate from the Aurora DB cluster, for example &lt;code&gt;arn:aws:iam::123456789012:role/AuroraAccessRole&lt;/code&gt;.&lt;/p&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;The name of the DB cluster to disassociate the IAM role from.&lt;/p&gt;
+-- @param RoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role to disassociate from the Aurora DB cluster, for example <code>arn:aws:iam::123456789012:role/AuroraAccessRole</code>.</p>
+-- @param DBClusterIdentifier [String] <p>The name of the DB cluster to disassociate the IAM role from.</p>
 -- Required parameter: DBClusterIdentifier
 -- Required parameter: RoleArn
 function M.RemoveRoleFromDBClusterMessage(RoleArn, DBClusterIdentifier, ...)
@@ -6731,14 +6731,14 @@ function M.AssertDBSecurityGroup(struct)
 end
 
 --- Create a structure of type DBSecurityGroup
--- &lt;p&gt;Contains the result of a successful invocation of the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeDBSecurityGroups&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;AuthorizeDBSecurityGroupIngress&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateDBSecurityGroup&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;RevokeDBSecurityGroupIngress&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This data type is used as a response element in the &lt;a&gt;DescribeDBSecurityGroups&lt;/a&gt; action.&lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;Provides the VpcId of the DB security group.&lt;/p&gt;
--- @param DBSecurityGroupDescription [String] &lt;p&gt;Provides the description of the DB security group.&lt;/p&gt;
--- @param IPRanges [IPRangeList] &lt;p&gt; Contains a list of &lt;a&gt;IPRange&lt;/a&gt; elements. &lt;/p&gt;
--- @param OwnerId [String] &lt;p&gt;Provides the AWS ID of the owner of a specific DB security group.&lt;/p&gt;
--- @param DBSecurityGroupArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the DB security group.&lt;/p&gt;
--- @param EC2SecurityGroups [EC2SecurityGroupList] &lt;p&gt; Contains a list of &lt;a&gt;EC2SecurityGroup&lt;/a&gt; elements. &lt;/p&gt;
--- @param DBSecurityGroupName [String] &lt;p&gt;Specifies the name of the DB security group.&lt;/p&gt;
+-- <p>Contains the result of a successful invocation of the following actions:</p> <ul> <li> <p> <a>DescribeDBSecurityGroups</a> </p> </li> <li> <p> <a>AuthorizeDBSecurityGroupIngress</a> </p> </li> <li> <p> <a>CreateDBSecurityGroup</a> </p> </li> <li> <p> <a>RevokeDBSecurityGroupIngress</a> </p> </li> </ul> <p>This data type is used as a response element in the <a>DescribeDBSecurityGroups</a> action.</p>
+-- @param VpcId [String] <p>Provides the VpcId of the DB security group.</p>
+-- @param DBSecurityGroupDescription [String] <p>Provides the description of the DB security group.</p>
+-- @param IPRanges [IPRangeList] <p> Contains a list of <a>IPRange</a> elements. </p>
+-- @param OwnerId [String] <p>Provides the AWS ID of the owner of a specific DB security group.</p>
+-- @param DBSecurityGroupArn [String] <p>The Amazon Resource Name (ARN) for the DB security group.</p>
+-- @param EC2SecurityGroups [EC2SecurityGroupList] <p> Contains a list of <a>EC2SecurityGroup</a> elements. </p>
+-- @param DBSecurityGroupName [String] <p>Specifies the name of the DB security group.</p>
 function M.DBSecurityGroup(VpcId, DBSecurityGroupDescription, IPRanges, OwnerId, DBSecurityGroupArn, EC2SecurityGroups, DBSecurityGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSecurityGroup")
 	local t = { 
@@ -6769,11 +6769,11 @@ function M.AssertEC2SecurityGroup(struct)
 end
 
 --- Create a structure of type EC2SecurityGroup
--- &lt;p&gt;This data type is used as a response element in the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;AuthorizeDBSecurityGroupIngress&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeDBSecurityGroups&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;RevokeDBSecurityGroupIngress&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Status [String] &lt;p&gt;Provides the status of the EC2 security group. Status can be &quot;authorizing&quot;, &quot;authorized&quot;, &quot;revoking&quot;, and &quot;revoked&quot;.&lt;/p&gt;
--- @param EC2SecurityGroupName [String] &lt;p&gt;Specifies the name of the EC2 security group.&lt;/p&gt;
--- @param EC2SecurityGroupOwnerId [String] &lt;p&gt; Specifies the AWS ID of the owner of the EC2 security group specified in the &lt;code&gt;EC2SecurityGroupName&lt;/code&gt; field. &lt;/p&gt;
--- @param EC2SecurityGroupId [String] &lt;p&gt;Specifies the id of the EC2 security group.&lt;/p&gt;
+-- <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>AuthorizeDBSecurityGroupIngress</a> </p> </li> <li> <p> <a>DescribeDBSecurityGroups</a> </p> </li> <li> <p> <a>RevokeDBSecurityGroupIngress</a> </p> </li> </ul>
+-- @param Status [String] <p>Provides the status of the EC2 security group. Status can be "authorizing", "authorized", "revoking", and "revoked".</p>
+-- @param EC2SecurityGroupName [String] <p>Specifies the name of the EC2 security group.</p>
+-- @param EC2SecurityGroupOwnerId [String] <p> Specifies the AWS ID of the owner of the EC2 security group specified in the <code>EC2SecurityGroupName</code> field. </p>
+-- @param EC2SecurityGroupId [String] <p>Specifies the id of the EC2 security group.</p>
 function M.EC2SecurityGroup(Status, EC2SecurityGroupName, EC2SecurityGroupOwnerId, EC2SecurityGroupId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EC2SecurityGroup")
 	local t = { 
@@ -6803,12 +6803,12 @@ function M.AssertDescribeOptionGroupOptionsMessage(struct)
 end
 
 --- Create a structure of type DescribeOptionGroupOptionsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;.&lt;/p&gt;
--- @param EngineName [String] &lt;p&gt;A required parameter. Options available for the given engine name will be described.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param MajorEngineVersion [String] &lt;p&gt;If specified, filters the results to include only options for the specified major engine version.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
+-- @param EngineName [String] <p>A required parameter. Options available for the given engine name will be described.</p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param MajorEngineVersion [String] <p>If specified, filters the results to include only options for the specified major engine version.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
 -- Required parameter: EngineName
 function M.DescribeOptionGroupOptionsMessage(Marker, EngineName, MaxRecords, MajorEngineVersion, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOptionGroupOptionsMessage")
@@ -6834,7 +6834,7 @@ function M.AssertAuthorizationAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type AuthorizationAlreadyExistsFault
--- &lt;p&gt;The specified CIDRIP or EC2 security group is already authorized for the specified DB security group.&lt;/p&gt;
+-- <p>The specified CIDRIP or EC2 security group is already authorized for the specified DB security group.</p>
 function M.AuthorizationAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationAlreadyExistsFault")
 	local t = { 
@@ -6856,9 +6856,9 @@ function M.AssertDBParameterGroupsMessage(struct)
 end
 
 --- Create a structure of type DBParameterGroupsMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeDBParameterGroups&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBParameterGroups [DBParameterGroupList] &lt;p&gt; A list of &lt;a&gt;DBParameterGroup&lt;/a&gt; instances. &lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeDBParameterGroups</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBParameterGroups [DBParameterGroupList] <p> A list of <a>DBParameterGroup</a> instances. </p>
 function M.DBParameterGroupsMessage(Marker, DBParameterGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBParameterGroupsMessage")
 	local t = { 
@@ -6880,7 +6880,7 @@ function M.AssertOptionGroupNotFoundFault(struct)
 end
 
 --- Create a structure of type OptionGroupNotFoundFault
--- &lt;p&gt;The specified option group could not be found.&lt;/p&gt;
+-- <p>The specified option group could not be found.</p>
 function M.OptionGroupNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionGroupNotFoundFault")
 	local t = { 
@@ -6926,33 +6926,33 @@ function M.AssertDBSnapshot(struct)
 end
 
 --- Create a structure of type DBSnapshot
--- &lt;p&gt;Contains the result of a successful invocation of the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateDBSnapshot&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteDBSnapshot&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;This data type is used as a response element in the &lt;a&gt;DescribeDBSnapshots&lt;/a&gt; action.&lt;/p&gt;
--- @param MasterUsername [String] &lt;p&gt;Provides the master username for the DB snapshot.&lt;/p&gt;
--- @param LicenseModel [String] &lt;p&gt;License model information for the restored DB instance.&lt;/p&gt;
--- @param InstanceCreateTime [TStamp] &lt;p&gt;Specifies the time when the snapshot was taken, in Universal Coordinated Time (UTC).&lt;/p&gt;
--- @param Engine [String] &lt;p&gt;Specifies the name of the database engine.&lt;/p&gt;
--- @param VpcId [String] &lt;p&gt;Provides the VPC ID associated with the DB snapshot.&lt;/p&gt;
--- @param SourceRegion [String] &lt;p&gt;The region that the DB snapshot was created in or copied from.&lt;/p&gt;
--- @param AllocatedStorage [Integer] &lt;p&gt;Specifies the allocated storage size in gigabytes (GB).&lt;/p&gt;
--- @param Status [String] &lt;p&gt;Specifies the status of this DB snapshot.&lt;/p&gt;
--- @param PercentProgress [Integer] &lt;p&gt;The percentage of the estimated data that has been transferred.&lt;/p&gt;
--- @param SourceDBSnapshotIdentifier [String] &lt;p&gt;The DB snapshot Arn that the DB snapshot was copied from. It only has value in case of cross customer or cross region copy.&lt;/p&gt;
--- @param DBSnapshotIdentifier [String] &lt;p&gt;Specifies the identifier for the DB snapshot.&lt;/p&gt;
--- @param DBSnapshotArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the DB snapshot.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;Specifies the version of the database engine.&lt;/p&gt;
--- @param TdeCredentialArn [String] &lt;p&gt;The ARN from the key store with which to associate the instance for TDE encryption.&lt;/p&gt;
--- @param OptionGroupName [String] &lt;p&gt;Provides the option group name for the DB snapshot.&lt;/p&gt;
--- @param SnapshotCreateTime [TStamp] &lt;p&gt;Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC).&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.&lt;/p&gt;
--- @param StorageType [String] &lt;p&gt;Specifies the storage type associated with DB snapshot.&lt;/p&gt;
--- @param Encrypted [Boolean] &lt;p&gt;Specifies whether the DB snapshot is encrypted.&lt;/p&gt;
--- @param IAMDatabaseAuthenticationEnabled [Boolean] &lt;p&gt;True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise false.&lt;/p&gt;
--- @param Iops [IntegerOptional] &lt;p&gt;Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.&lt;/p&gt;
--- @param KmsKeyId [String] &lt;p&gt; If &lt;code&gt;Encrypted&lt;/code&gt; is true, the KMS key identifier for the encrypted DB snapshot. &lt;/p&gt;
--- @param SnapshotType [String] &lt;p&gt;Provides the type of the DB snapshot.&lt;/p&gt;
--- @param Timezone [String] &lt;p&gt;The time zone of the DB snapshot. In most cases, the &lt;code&gt;Timezone&lt;/code&gt; element is empty. &lt;code&gt;Timezone&lt;/code&gt; content appears only for snapshots taken from Microsoft SQL Server DB instances that were created with a time zone specified. &lt;/p&gt;
--- @param Port [Integer] &lt;p&gt;Specifies the port that the database engine was listening on at the time of the snapshot.&lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;Specifies the DB instance identifier of the DB instance this DB snapshot was created from.&lt;/p&gt;
+-- <p>Contains the result of a successful invocation of the following actions:</p> <ul> <li> <p> <a>CreateDBSnapshot</a> </p> </li> <li> <p> <a>DeleteDBSnapshot</a> </p> </li> </ul> <p>This data type is used as a response element in the <a>DescribeDBSnapshots</a> action.</p>
+-- @param MasterUsername [String] <p>Provides the master username for the DB snapshot.</p>
+-- @param LicenseModel [String] <p>License model information for the restored DB instance.</p>
+-- @param InstanceCreateTime [TStamp] <p>Specifies the time when the snapshot was taken, in Universal Coordinated Time (UTC).</p>
+-- @param Engine [String] <p>Specifies the name of the database engine.</p>
+-- @param VpcId [String] <p>Provides the VPC ID associated with the DB snapshot.</p>
+-- @param SourceRegion [String] <p>The region that the DB snapshot was created in or copied from.</p>
+-- @param AllocatedStorage [Integer] <p>Specifies the allocated storage size in gigabytes (GB).</p>
+-- @param Status [String] <p>Specifies the status of this DB snapshot.</p>
+-- @param PercentProgress [Integer] <p>The percentage of the estimated data that has been transferred.</p>
+-- @param SourceDBSnapshotIdentifier [String] <p>The DB snapshot Arn that the DB snapshot was copied from. It only has value in case of cross customer or cross region copy.</p>
+-- @param DBSnapshotIdentifier [String] <p>Specifies the identifier for the DB snapshot.</p>
+-- @param DBSnapshotArn [String] <p>The Amazon Resource Name (ARN) for the DB snapshot.</p>
+-- @param EngineVersion [String] <p>Specifies the version of the database engine.</p>
+-- @param TdeCredentialArn [String] <p>The ARN from the key store with which to associate the instance for TDE encryption.</p>
+-- @param OptionGroupName [String] <p>Provides the option group name for the DB snapshot.</p>
+-- @param SnapshotCreateTime [TStamp] <p>Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC).</p>
+-- @param AvailabilityZone [String] <p>Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.</p>
+-- @param StorageType [String] <p>Specifies the storage type associated with DB snapshot.</p>
+-- @param Encrypted [Boolean] <p>Specifies whether the DB snapshot is encrypted.</p>
+-- @param IAMDatabaseAuthenticationEnabled [Boolean] <p>True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled; otherwise false.</p>
+-- @param Iops [IntegerOptional] <p>Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.</p>
+-- @param KmsKeyId [String] <p> If <code>Encrypted</code> is true, the KMS key identifier for the encrypted DB snapshot. </p>
+-- @param SnapshotType [String] <p>Provides the type of the DB snapshot.</p>
+-- @param Timezone [String] <p>The time zone of the DB snapshot. In most cases, the <code>Timezone</code> element is empty. <code>Timezone</code> content appears only for snapshots taken from Microsoft SQL Server DB instances that were created with a time zone specified. </p>
+-- @param Port [Integer] <p>Specifies the port that the database engine was listening on at the time of the snapshot.</p>
+-- @param DBInstanceIdentifier [String] <p>Specifies the DB instance identifier of the DB instance this DB snapshot was created from.</p>
 function M.DBSnapshot(MasterUsername, LicenseModel, InstanceCreateTime, Engine, VpcId, SourceRegion, AllocatedStorage, Status, PercentProgress, SourceDBSnapshotIdentifier, DBSnapshotIdentifier, DBSnapshotArn, EngineVersion, TdeCredentialArn, OptionGroupName, SnapshotCreateTime, AvailabilityZone, StorageType, Encrypted, IAMDatabaseAuthenticationEnabled, Iops, KmsKeyId, SnapshotType, Timezone, Port, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSnapshot")
 	local t = { 
@@ -6998,7 +6998,7 @@ function M.AssertDBClusterRoleQuotaExceededFault(struct)
 end
 
 --- Create a structure of type DBClusterRoleQuotaExceededFault
--- &lt;p&gt;You have exceeded the maximum number of IAM roles that can be associated with the specified DB cluster.&lt;/p&gt;
+-- <p>You have exceeded the maximum number of IAM roles that can be associated with the specified DB cluster.</p>
 function M.DBClusterRoleQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterRoleQuotaExceededFault")
 	local t = { 
@@ -7018,7 +7018,7 @@ function M.AssertInsufficientStorageClusterCapacityFault(struct)
 end
 
 --- Create a structure of type InsufficientStorageClusterCapacityFault
--- &lt;p&gt;There is insufficient storage available for the current action. You may be able to resolve this error by updating your subnet group to use different Availability Zones that have more storage available.&lt;/p&gt;
+-- <p>There is insufficient storage available for the current action. You may be able to resolve this error by updating your subnet group to use different Availability Zones that have more storage available.</p>
 function M.InsufficientStorageClusterCapacityFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientStorageClusterCapacityFault")
 	local t = { 
@@ -7043,11 +7043,11 @@ function M.AssertDescribeEngineDefaultClusterParametersMessage(struct)
 end
 
 --- Create a structure of type DescribeEngineDefaultClusterParametersMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribeEngineDefaultClusterParameters&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBParameterGroupFamily [String] &lt;p&gt;The name of the DB cluster parameter group family to return engine parameter information for.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribeEngineDefaultClusterParameters</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBParameterGroupFamily [String] <p>The name of the DB cluster parameter group family to return engine parameter information for.</p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
 -- Required parameter: DBParameterGroupFamily
 function M.DescribeEngineDefaultClusterParametersMessage(Marker, DBParameterGroupFamily, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEngineDefaultClusterParametersMessage")
@@ -7076,8 +7076,8 @@ end
 
 --- Create a structure of type ModifyDBSnapshotMessage
 --  
--- @param DBSnapshotIdentifier [String] &lt;p&gt;The identifier of the DB snapshot to modify.&lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt;The engine version to update the DB snapshot to. &lt;/p&gt;
+-- @param DBSnapshotIdentifier [String] <p>The identifier of the DB snapshot to modify.</p>
+-- @param EngineVersion [String] <p>The engine version to update the DB snapshot to. </p>
 -- Required parameter: DBSnapshotIdentifier
 function M.ModifyDBSnapshotMessage(DBSnapshotIdentifier, EngineVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyDBSnapshotMessage")
@@ -7100,7 +7100,7 @@ function M.AssertInsufficientDBInstanceCapacityFault(struct)
 end
 
 --- Create a structure of type InsufficientDBInstanceCapacityFault
--- &lt;p&gt;Specified DB instance class is not available in the specified Availability Zone.&lt;/p&gt;
+-- <p>Specified DB instance class is not available in the specified Availability Zone.</p>
 function M.InsufficientDBInstanceCapacityFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientDBInstanceCapacityFault")
 	local t = { 
@@ -7127,11 +7127,11 @@ function M.AssertCreateDBClusterParameterGroupMessage(struct)
 end
 
 --- Create a structure of type CreateDBClusterParameterGroupMessage
--- &lt;p/&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt;The name of the DB cluster parameter group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;note&gt; &lt;p&gt;This value is stored as a lowercase string.&lt;/p&gt; &lt;/note&gt;
--- @param DBParameterGroupFamily [String] &lt;p&gt;The DB cluster parameter group family name. A DB cluster parameter group can be associated with one and only one DB cluster parameter group family, and can be applied only to a DB cluster running a database engine and engine version compatible with that DB cluster parameter group family.&lt;/p&gt;
--- @param Description [String] &lt;p&gt;The description for the DB cluster parameter group.&lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
+-- <p/>
+-- @param DBClusterParameterGroupName [String] <p>The name of the DB cluster parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <note> <p>This value is stored as a lowercase string.</p> </note>
+-- @param DBParameterGroupFamily [String] <p>The DB cluster parameter group family name. A DB cluster parameter group can be associated with one and only one DB cluster parameter group family, and can be applied only to a DB cluster running a database engine and engine version compatible with that DB cluster parameter group family.</p>
+-- @param Description [String] <p>The description for the DB cluster parameter group.</p>
+-- @param Tags [TagList] <p/>
 -- Required parameter: DBClusterParameterGroupName
 -- Required parameter: DBParameterGroupFamily
 -- Required parameter: Description
@@ -7160,9 +7160,9 @@ function M.AssertDBClusterMessage(struct)
 end
 
 --- Create a structure of type DBClusterMessage
--- &lt;p&gt;Contains the result of a successful invocation of the &lt;a&gt;DescribeDBClusters&lt;/a&gt; action.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt;A pagination token that can be used in a subsequent DescribeDBClusters request.&lt;/p&gt;
--- @param DBClusters [DBClusterList] &lt;p&gt;Contains a list of DB clusters for the user.&lt;/p&gt;
+-- <p>Contains the result of a successful invocation of the <a>DescribeDBClusters</a> action.</p>
+-- @param Marker [String] <p>A pagination token that can be used in a subsequent DescribeDBClusters request.</p>
+-- @param DBClusters [DBClusterList] <p>Contains a list of DB clusters for the user.</p>
 function M.DBClusterMessage(Marker, DBClusters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterMessage")
 	local t = { 
@@ -7186,9 +7186,9 @@ function M.AssertEventCategoriesMap(struct)
 end
 
 --- Create a structure of type EventCategoriesMap
--- &lt;p&gt;Contains the results of a successful invocation of the &lt;a&gt;DescribeEventCategories&lt;/a&gt; action.&lt;/p&gt;
--- @param EventCategories [EventCategoriesList] &lt;p&gt;The event categories for the specified source type&lt;/p&gt;
--- @param SourceType [String] &lt;p&gt;The source type that the returned categories belong to&lt;/p&gt;
+-- <p>Contains the results of a successful invocation of the <a>DescribeEventCategories</a> action.</p>
+-- @param EventCategories [EventCategoriesList] <p>The event categories for the specified source type</p>
+-- @param SourceType [String] <p>The source type that the returned categories belong to</p>
 function M.EventCategoriesMap(EventCategories, SourceType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventCategoriesMap")
 	local t = { 
@@ -7212,9 +7212,9 @@ function M.AssertOrderableDBInstanceOptionsMessage(struct)
 end
 
 --- Create a structure of type OrderableDBInstanceOptionsMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeOrderableDBInstanceOptions&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous OrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt; . &lt;/p&gt;
--- @param OrderableDBInstanceOptions [OrderableDBInstanceOptionsList] &lt;p&gt;An &lt;a&gt;OrderableDBInstanceOption&lt;/a&gt; structure containing information about orderable options for the DB instance.&lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeOrderableDBInstanceOptions</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous OrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
+-- @param OrderableDBInstanceOptions [OrderableDBInstanceOptionsList] <p>An <a>OrderableDBInstanceOption</a> structure containing information about orderable options for the DB instance.</p>
 function M.OrderableDBInstanceOptionsMessage(Marker, OrderableDBInstanceOptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OrderableDBInstanceOptionsMessage")
 	local t = { 
@@ -7262,10 +7262,10 @@ function M.AssertAccountQuota(struct)
 end
 
 --- Create a structure of type AccountQuota
--- &lt;p&gt;Describes a quota for an AWS account, for example, the number of DB instances allowed.&lt;/p&gt;
--- @param Max [Long] &lt;p&gt;The maximum allowed value for the quota.&lt;/p&gt;
--- @param AccountQuotaName [String] &lt;p&gt;The name of the Amazon RDS quota for this AWS account.&lt;/p&gt;
--- @param Used [Long] &lt;p&gt;The amount currently used toward the quota maximum.&lt;/p&gt;
+-- <p>Describes a quota for an AWS account, for example, the number of DB instances allowed.</p>
+-- @param Max [Long] <p>The maximum allowed value for the quota.</p>
+-- @param AccountQuotaName [String] <p>The name of the Amazon RDS quota for this AWS account.</p>
+-- @param Used [Long] <p>The amount currently used toward the quota maximum.</p>
 function M.AccountQuota(Max, AccountQuotaName, Used, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccountQuota")
 	local t = { 
@@ -7294,12 +7294,12 @@ function M.AssertDescribeDBClusterParametersMessage(struct)
 end
 
 --- Create a structure of type DescribeDBClusterParametersMessage
--- &lt;p/&gt;
--- @param DBClusterParameterGroupName [String] &lt;p&gt;The name of a specific DB cluster parameter group to return parameter details for.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Source [String] &lt;p&gt; A value that indicates to return only parameters for a specific source. Parameter sources can be &lt;code&gt;engine&lt;/code&gt;, &lt;code&gt;service&lt;/code&gt;, or &lt;code&gt;customer&lt;/code&gt;. &lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribeDBClusterParameters&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
+-- <p/>
+-- @param DBClusterParameterGroupName [String] <p>The name of a specific DB cluster parameter group to return parameter details for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param Source [String] <p> A value that indicates to return only parameters for a specific source. Parameter sources can be <code>engine</code>, <code>service</code>, or <code>customer</code>. </p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribeDBClusterParameters</code> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
 -- Required parameter: DBClusterParameterGroupName
 function M.DescribeDBClusterParametersMessage(DBClusterParameterGroupName, Source, MaxRecords, Marker, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBClusterParametersMessage")
@@ -7330,10 +7330,10 @@ function M.AssertModifyDBSubnetGroupMessage(struct)
 end
 
 --- Create a structure of type ModifyDBSubnetGroupMessage
--- &lt;p/&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The name for the DB subnet group. This value is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
--- @param DBSubnetGroupDescription [String] &lt;p&gt;The description for the DB subnet group.&lt;/p&gt;
--- @param SubnetIds [SubnetIdentifierList] &lt;p&gt;The EC2 subnet IDs for the DB subnet group.&lt;/p&gt;
+-- <p/>
+-- @param DBSubnetGroupName [String] <p>The name for the DB subnet group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- @param DBSubnetGroupDescription [String] <p>The description for the DB subnet group.</p>
+-- @param SubnetIds [SubnetIdentifierList] <p>The EC2 subnet IDs for the DB subnet group.</p>
 -- Required parameter: DBSubnetGroupName
 -- Required parameter: SubnetIds
 function M.ModifyDBSubnetGroupMessage(DBSubnetGroupName, DBSubnetGroupDescription, SubnetIds, ...)
@@ -7364,11 +7364,11 @@ function M.AssertDownloadDBLogFilePortionMessage(struct)
 end
 
 --- Create a structure of type DownloadDBLogFilePortionMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt;The pagination token provided in the previous request or &quot;0&quot;. If the Marker parameter is specified the response includes only records beyond the marker until the end of the file or up to NumberOfLines.&lt;/p&gt;
--- @param NumberOfLines [Integer] &lt;p&gt;The number of lines to download. If the number of lines specified results in a file over 1 MB in size, the file will be truncated at 1 MB in size.&lt;/p&gt; &lt;p&gt;If the NumberOfLines parameter is specified, then the block of lines returned can be from the beginning or the end of the log file, depending on the value of the Marker parameter.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If neither Marker or NumberOfLines are specified, the entire log file is returned up to a maximum of 10000 lines, starting with the most recent log entries first.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the log file are returned.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If Marker is specified as &quot;0&quot;, then the specified number of lines from the beginning of the log file are returned.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You can download the log file in blocks of lines by specifying the size of the block using the NumberOfLines parameter, and by specifying a value of &quot;0&quot; for the Marker parameter in your first request. Include the Marker value returned in the response as the Marker value for the next request, continuing until the AdditionalDataPending response element returns false.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param LogFileName [String] &lt;p&gt;The name of the log file to be downloaded.&lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The customer-assigned name of the DB instance that contains the log files you want to list.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param Marker [String] <p>The pagination token provided in the previous request or "0". If the Marker parameter is specified the response includes only records beyond the marker until the end of the file or up to NumberOfLines.</p>
+-- @param NumberOfLines [Integer] <p>The number of lines to download. If the number of lines specified results in a file over 1 MB in size, the file will be truncated at 1 MB in size.</p> <p>If the NumberOfLines parameter is specified, then the block of lines returned can be from the beginning or the end of the log file, depending on the value of the Marker parameter.</p> <ul> <li> <p>If neither Marker or NumberOfLines are specified, the entire log file is returned up to a maximum of 10000 lines, starting with the most recent log entries first.</p> </li> <li> <p>If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the log file are returned.</p> </li> <li> <p>If Marker is specified as "0", then the specified number of lines from the beginning of the log file are returned.</p> </li> <li> <p>You can download the log file in blocks of lines by specifying the size of the block using the NumberOfLines parameter, and by specifying a value of "0" for the Marker parameter in your first request. Include the Marker value returned in the response as the Marker value for the next request, continuing until the AdditionalDataPending response element returns false.</p> </li> </ul>
+-- @param LogFileName [String] <p>The name of the log file to be downloaded.</p>
+-- @param DBInstanceIdentifier [String] <p>The customer-assigned name of the DB instance that contains the log files you want to list.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- Required parameter: DBInstanceIdentifier
 -- Required parameter: LogFileName
 function M.DownloadDBLogFilePortionMessage(Marker, NumberOfLines, LogFileName, DBInstanceIdentifier, ...)
@@ -7447,11 +7447,11 @@ function M.AssertCopyDBParameterGroupMessage(struct)
 end
 
 --- Create a structure of type CopyDBParameterGroupMessage
--- &lt;p/&gt;
--- @param SourceDBParameterGroupIdentifier [String] &lt;p&gt; The identifier or ARN for the source DB parameter group. For information about creating an ARN, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing&quot;&gt; Constructing an RDS Amazon Resource Name (ARN)&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must specify a valid DB parameter group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; Must specify a valid DB parameter group identifier, for example &lt;code&gt;my-db-param-group&lt;/code&gt;, or a valid ARN.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param TargetDBParameterGroupDescription [String] &lt;p&gt;A description for the copied DB parameter group.&lt;/p&gt;
--- @param TargetDBParameterGroupIdentifier [String] &lt;p&gt;The identifier for the copied DB parameter group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Cannot be null, empty, or blank&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 255 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;my-db-parameter-group&lt;/code&gt; &lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
+-- <p/>
+-- @param SourceDBParameterGroupIdentifier [String] <p> The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"> Constructing an RDS Amazon Resource Name (ARN)</a>. </p> <p>Constraints:</p> <ul> <li> <p>Must specify a valid DB parameter group.</p> </li> <li> <p> Must specify a valid DB parameter group identifier, for example <code>my-db-param-group</code>, or a valid ARN.</p> </li> </ul>
+-- @param TargetDBParameterGroupDescription [String] <p>A description for the copied DB parameter group.</p>
+-- @param TargetDBParameterGroupIdentifier [String] <p>The identifier for the copied DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Cannot be null, empty, or blank</p> </li> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <p>Example: <code>my-db-parameter-group</code> </p>
+-- @param Tags [TagList] <p/>
 -- Required parameter: SourceDBParameterGroupIdentifier
 -- Required parameter: TargetDBParameterGroupIdentifier
 -- Required parameter: TargetDBParameterGroupDescription
@@ -7480,9 +7480,9 @@ function M.AssertEventsMessage(struct)
 end
 
 --- Create a structure of type EventsMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeEvents&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous Events request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt; . &lt;/p&gt;
--- @param Events [EventList] &lt;p&gt; A list of &lt;a&gt;Event&lt;/a&gt; instances. &lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeEvents</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous Events request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
+-- @param Events [EventList] <p> A list of <a>Event</a> instances. </p>
 function M.EventsMessage(Marker, Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventsMessage")
 	local t = { 
@@ -7506,8 +7506,8 @@ function M.AssertDeleteDBSnapshotMessage(struct)
 end
 
 --- Create a structure of type DeleteDBSnapshotMessage
--- &lt;p/&gt;
--- @param DBSnapshotIdentifier [String] &lt;p&gt;The DBSnapshot identifier.&lt;/p&gt; &lt;p&gt;Constraints: Must be the name of an existing DB snapshot in the &lt;code&gt;available&lt;/code&gt; state.&lt;/p&gt;
+-- <p/>
+-- @param DBSnapshotIdentifier [String] <p>The DBSnapshot identifier.</p> <p>Constraints: Must be the name of an existing DB snapshot in the <code>available</code> state.</p>
 -- Required parameter: DBSnapshotIdentifier
 function M.DeleteDBSnapshotMessage(DBSnapshotIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDBSnapshotMessage")
@@ -7539,17 +7539,17 @@ function M.AssertReservedDBInstancesOffering(struct)
 end
 
 --- Create a structure of type ReservedDBInstancesOffering
--- &lt;p&gt; This data type is used as a response element in the &lt;a&gt;DescribeReservedDBInstancesOfferings&lt;/a&gt; action. &lt;/p&gt;
--- @param MultiAZ [Boolean] &lt;p&gt;Indicates if the offering applies to Multi-AZ deployments.&lt;/p&gt;
--- @param OfferingType [String] &lt;p&gt;The offering type.&lt;/p&gt;
--- @param FixedPrice [Double] &lt;p&gt;The fixed price charged for this offering.&lt;/p&gt;
--- @param UsagePrice [Double] &lt;p&gt;The hourly price charged for this offering.&lt;/p&gt;
--- @param ReservedDBInstancesOfferingId [String] &lt;p&gt;The offering identifier.&lt;/p&gt;
--- @param RecurringCharges [RecurringChargeList] &lt;p&gt;The recurring price charged to run this reserved DB instance.&lt;/p&gt;
--- @param ProductDescription [String] &lt;p&gt;The database engine used by the offering.&lt;/p&gt;
--- @param Duration [Integer] &lt;p&gt;The duration of the offering in seconds.&lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;The DB instance class for the reserved DB instance.&lt;/p&gt;
--- @param CurrencyCode [String] &lt;p&gt;The currency code for the reserved DB instance offering.&lt;/p&gt;
+-- <p> This data type is used as a response element in the <a>DescribeReservedDBInstancesOfferings</a> action. </p>
+-- @param MultiAZ [Boolean] <p>Indicates if the offering applies to Multi-AZ deployments.</p>
+-- @param OfferingType [String] <p>The offering type.</p>
+-- @param FixedPrice [Double] <p>The fixed price charged for this offering.</p>
+-- @param UsagePrice [Double] <p>The hourly price charged for this offering.</p>
+-- @param ReservedDBInstancesOfferingId [String] <p>The offering identifier.</p>
+-- @param RecurringCharges [RecurringChargeList] <p>The recurring price charged to run this reserved DB instance.</p>
+-- @param ProductDescription [String] <p>The database engine used by the offering.</p>
+-- @param Duration [Integer] <p>The duration of the offering in seconds.</p>
+-- @param DBInstanceClass [String] <p>The DB instance class for the reserved DB instance.</p>
+-- @param CurrencyCode [String] <p>The currency code for the reserved DB instance offering.</p>
 function M.ReservedDBInstancesOffering(MultiAZ, OfferingType, FixedPrice, UsagePrice, ReservedDBInstancesOfferingId, RecurringCharges, ProductDescription, Duration, DBInstanceClass, CurrencyCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedDBInstancesOffering")
 	local t = { 
@@ -7579,7 +7579,7 @@ function M.AssertOptionGroupQuotaExceededFault(struct)
 end
 
 --- Create a structure of type OptionGroupQuotaExceededFault
--- &lt;p&gt;The quota of 20 option groups was exceeded for this AWS account.&lt;/p&gt;
+-- <p>The quota of 20 option groups was exceeded for this AWS account.</p>
 function M.OptionGroupQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionGroupQuotaExceededFault")
 	local t = { 
@@ -7603,9 +7603,9 @@ function M.AssertAddTagsToResourceMessage(struct)
 end
 
 --- Create a structure of type AddTagsToResourceMessage
--- &lt;p/&gt;
--- @param ResourceName [String] &lt;p&gt;The Amazon RDS resource the tags will be added to. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing&quot;&gt; Constructing an RDS Amazon Resource Name (ARN)&lt;/a&gt;.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The tags to be assigned to the Amazon RDS resource.&lt;/p&gt;
+-- <p/>
+-- @param ResourceName [String] <p>The Amazon RDS resource the tags will be added to. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"> Constructing an RDS Amazon Resource Name (ARN)</a>.</p>
+-- @param Tags [TagList] <p>The tags to be assigned to the Amazon RDS resource.</p>
 -- Required parameter: ResourceName
 -- Required parameter: Tags
 function M.AddTagsToResourceMessage(ResourceName, Tags, ...)
@@ -7631,9 +7631,9 @@ function M.AssertIPRange(struct)
 end
 
 --- Create a structure of type IPRange
--- &lt;p&gt; This data type is used as a response element in the &lt;a&gt;DescribeDBSecurityGroups&lt;/a&gt; action. &lt;/p&gt;
--- @param Status [String] &lt;p&gt;Specifies the status of the IP range. Status can be &quot;authorizing&quot;, &quot;authorized&quot;, &quot;revoking&quot;, and &quot;revoked&quot;.&lt;/p&gt;
--- @param CIDRIP [String] &lt;p&gt;Specifies the IP range.&lt;/p&gt;
+-- <p> This data type is used as a response element in the <a>DescribeDBSecurityGroups</a> action. </p>
+-- @param Status [String] <p>Specifies the status of the IP range. Status can be "authorizing", "authorized", "revoking", and "revoked".</p>
+-- @param CIDRIP [String] <p>Specifies the IP range.</p>
 function M.IPRange(Status, CIDRIP, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IPRange")
 	local t = { 
@@ -7655,7 +7655,7 @@ function M.AssertReservedDBInstanceQuotaExceededFault(struct)
 end
 
 --- Create a structure of type ReservedDBInstanceQuotaExceededFault
--- &lt;p&gt;Request would exceed the user's DB Instance quota.&lt;/p&gt;
+-- <p>Request would exceed the user's DB Instance quota.</p>
 function M.ReservedDBInstanceQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedDBInstanceQuotaExceededFault")
 	local t = { 
@@ -7675,7 +7675,7 @@ function M.AssertInvalidSubnet(struct)
 end
 
 --- Create a structure of type InvalidSubnet
--- &lt;p&gt;The requested subnet is invalid, or multiple subnets were requested that are not all in a common VPC.&lt;/p&gt;
+-- <p>The requested subnet is invalid, or multiple subnets were requested that are not all in a common VPC.</p>
 function M.InvalidSubnet(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnet")
 	local t = { 
@@ -7695,7 +7695,7 @@ function M.AssertDBClusterParameterGroupNotFoundFault(struct)
 end
 
 --- Create a structure of type DBClusterParameterGroupNotFoundFault
--- &lt;p&gt; &lt;i&gt;DBClusterParameterGroupName&lt;/i&gt; does not refer to an existing DB Cluster parameter group. &lt;/p&gt;
+-- <p> <i>DBClusterParameterGroupName</i> does not refer to an existing DB Cluster parameter group. </p>
 function M.DBClusterParameterGroupNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterParameterGroupNotFoundFault")
 	local t = { 
@@ -7717,9 +7717,9 @@ function M.AssertFailoverDBClusterMessage(struct)
 end
 
 --- Create a structure of type FailoverDBClusterMessage
--- &lt;p/&gt;
--- @param DBClusterIdentifier [String] &lt;p&gt;A DB cluster identifier to force a failover for. This parameter is not case-sensitive.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param TargetDBInstanceIdentifier [String] &lt;p&gt;The name of the instance to promote to the primary instance.&lt;/p&gt; &lt;p&gt;You must specify the instance identifier for an Aurora Replica in the DB cluster. For example, &lt;code&gt;mydbcluster-replica1&lt;/code&gt;.&lt;/p&gt;
+-- <p/>
+-- @param DBClusterIdentifier [String] <p>A DB cluster identifier to force a failover for. This parameter is not case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param TargetDBInstanceIdentifier [String] <p>The name of the instance to promote to the primary instance.</p> <p>You must specify the instance identifier for an Aurora Replica in the DB cluster. For example, <code>mydbcluster-replica1</code>.</p>
 function M.FailoverDBClusterMessage(DBClusterIdentifier, TargetDBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailoverDBClusterMessage")
 	local t = { 
@@ -7765,8 +7765,8 @@ function M.AssertDBParameterGroupNameMessage(struct)
 end
 
 --- Create a structure of type DBParameterGroupNameMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;ModifyDBParameterGroup&lt;/a&gt; or &lt;a&gt;ResetDBParameterGroup&lt;/a&gt; action. &lt;/p&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;Provides the name of the DB parameter group.&lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>ModifyDBParameterGroup</a> or <a>ResetDBParameterGroup</a> action. </p>
+-- @param DBParameterGroupName [String] <p>Provides the name of the DB parameter group.</p>
 function M.DBParameterGroupNameMessage(DBParameterGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBParameterGroupNameMessage")
 	local t = { 
@@ -7787,7 +7787,7 @@ function M.AssertSNSTopicArnNotFoundFault(struct)
 end
 
 --- Create a structure of type SNSTopicArnNotFoundFault
--- &lt;p&gt;The SNS topic ARN does not exist.&lt;/p&gt;
+-- <p>The SNS topic ARN does not exist.</p>
 function M.SNSTopicArnNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SNSTopicArnNotFoundFault")
 	local t = { 
@@ -7816,16 +7816,16 @@ function M.AssertOption(struct)
 end
 
 --- Create a structure of type Option
--- &lt;p&gt;Option details.&lt;/p&gt;
--- @param DBSecurityGroupMemberships [DBSecurityGroupMembershipList] &lt;p&gt;If the option requires access to a port, then this DB security group allows access to the port.&lt;/p&gt;
--- @param OptionName [String] &lt;p&gt;The name of the option.&lt;/p&gt;
--- @param Persistent [Boolean] &lt;p&gt;Indicate if this option is persistent.&lt;/p&gt;
--- @param VpcSecurityGroupMemberships [VpcSecurityGroupMembershipList] &lt;p&gt;If the option requires access to a port, then this VPC security group allows access to the port.&lt;/p&gt;
--- @param OptionSettings [OptionSettingConfigurationList] &lt;p&gt;The option settings for this option.&lt;/p&gt;
--- @param Permanent [Boolean] &lt;p&gt;Indicate if this option is permanent.&lt;/p&gt;
--- @param OptionVersion [String] &lt;p&gt;The version of the option.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;If required, the port configured for this option to use.&lt;/p&gt;
--- @param OptionDescription [String] &lt;p&gt;The description of the option.&lt;/p&gt;
+-- <p>Option details.</p>
+-- @param DBSecurityGroupMemberships [DBSecurityGroupMembershipList] <p>If the option requires access to a port, then this DB security group allows access to the port.</p>
+-- @param OptionName [String] <p>The name of the option.</p>
+-- @param Persistent [Boolean] <p>Indicate if this option is persistent.</p>
+-- @param VpcSecurityGroupMemberships [VpcSecurityGroupMembershipList] <p>If the option requires access to a port, then this VPC security group allows access to the port.</p>
+-- @param OptionSettings [OptionSettingConfigurationList] <p>The option settings for this option.</p>
+-- @param Permanent [Boolean] <p>Indicate if this option is permanent.</p>
+-- @param OptionVersion [String] <p>The version of the option.</p>
+-- @param Port [IntegerOptional] <p>If required, the port configured for this option to use.</p>
+-- @param OptionDescription [String] <p>The description of the option.</p>
 function M.Option(DBSecurityGroupMemberships, OptionName, Persistent, VpcSecurityGroupMemberships, OptionSettings, Permanent, OptionVersion, Port, OptionDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Option")
 	local t = { 
@@ -7857,10 +7857,10 @@ function M.AssertDescribeDBLogFilesDetails(struct)
 end
 
 --- Create a structure of type DescribeDBLogFilesDetails
--- &lt;p&gt;This data type is used as a response element to &lt;a&gt;DescribeDBLogFiles&lt;/a&gt;.&lt;/p&gt;
--- @param LastWritten [Long] &lt;p&gt;A POSIX timestamp when the last log entry was written.&lt;/p&gt;
--- @param LogFileName [String] &lt;p&gt;The name of the log file for the specified DB instance.&lt;/p&gt;
--- @param Size [Long] &lt;p&gt;The size, in bytes, of the log file for the specified DB instance.&lt;/p&gt;
+-- <p>This data type is used as a response element to <a>DescribeDBLogFiles</a>.</p>
+-- @param LastWritten [Long] <p>A POSIX timestamp when the last log entry was written.</p>
+-- @param LogFileName [String] <p>The name of the log file for the specified DB instance.</p>
+-- @param Size [Long] <p>The size, in bytes, of the log file for the specified DB instance.</p>
 function M.DescribeDBLogFilesDetails(LastWritten, LogFileName, Size, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBLogFilesDetails")
 	local t = { 
@@ -7883,7 +7883,7 @@ function M.AssertEventSubscriptionQuotaExceededFault(struct)
 end
 
 --- Create a structure of type EventSubscriptionQuotaExceededFault
--- &lt;p&gt;You have reached the maximum number of event subscriptions.&lt;/p&gt;
+-- <p>You have reached the maximum number of event subscriptions.</p>
 function M.EventSubscriptionQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscriptionQuotaExceededFault")
 	local t = { 
@@ -7910,13 +7910,13 @@ function M.AssertOptionConfiguration(struct)
 end
 
 --- Create a structure of type OptionConfiguration
--- &lt;p&gt;A list of all available options&lt;/p&gt;
--- @param DBSecurityGroupMemberships [DBSecurityGroupNameList] &lt;p&gt;A list of DBSecurityGroupMemebrship name strings used for this option.&lt;/p&gt;
--- @param OptionName [String] &lt;p&gt;The configuration of options to include in a group.&lt;/p&gt;
--- @param VpcSecurityGroupMemberships [VpcSecurityGroupIdList] &lt;p&gt;A list of VpcSecurityGroupMemebrship name strings used for this option.&lt;/p&gt;
--- @param OptionSettings [OptionSettingsList] &lt;p&gt;The option settings to include in an option group.&lt;/p&gt;
--- @param OptionVersion [String] &lt;p&gt;The version for the option.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The optional port for the option.&lt;/p&gt;
+-- <p>A list of all available options</p>
+-- @param DBSecurityGroupMemberships [DBSecurityGroupNameList] <p>A list of DBSecurityGroupMemebrship name strings used for this option.</p>
+-- @param OptionName [String] <p>The configuration of options to include in a group.</p>
+-- @param VpcSecurityGroupMemberships [VpcSecurityGroupIdList] <p>A list of VpcSecurityGroupMemebrship name strings used for this option.</p>
+-- @param OptionSettings [OptionSettingsList] <p>The option settings to include in an option group.</p>
+-- @param OptionVersion [String] <p>The version for the option.</p>
+-- @param Port [IntegerOptional] <p>The optional port for the option.</p>
 -- Required parameter: OptionName
 function M.OptionConfiguration(DBSecurityGroupMemberships, OptionName, VpcSecurityGroupMemberships, OptionSettings, OptionVersion, Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionConfiguration")
@@ -7970,11 +7970,11 @@ function M.AssertDBInstanceStatusInfo(struct)
 end
 
 --- Create a structure of type DBInstanceStatusInfo
--- &lt;p&gt;Provides a list of status information for a DB instance.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;Status of the DB instance. For a StatusType of read replica, the values can be replicating, error, stopped, or terminated.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;Details of the error if there is an error for the instance. If the instance is not in an error state, this value is blank.&lt;/p&gt;
--- @param StatusType [String] &lt;p&gt;This value is currently &quot;read replication.&quot;&lt;/p&gt;
--- @param Normal [Boolean] &lt;p&gt;Boolean value that is true if the instance is operating normally, or false if the instance is in an error state.&lt;/p&gt;
+-- <p>Provides a list of status information for a DB instance.</p>
+-- @param Status [String] <p>Status of the DB instance. For a StatusType of read replica, the values can be replicating, error, stopped, or terminated.</p>
+-- @param Message [String] <p>Details of the error if there is an error for the instance. If the instance is not in an error state, this value is blank.</p>
+-- @param StatusType [String] <p>This value is currently "read replication."</p>
+-- @param Normal [Boolean] <p>Boolean value that is true if the instance is operating normally, or false if the instance is in an error state.</p>
 function M.DBInstanceStatusInfo(Status, Message, StatusType, Normal, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBInstanceStatusInfo")
 	local t = { 
@@ -7998,7 +7998,7 @@ function M.AssertDBClusterSnapshotAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type DBClusterSnapshotAlreadyExistsFault
--- &lt;p&gt;User already has a DB cluster snapshot with the given identifier.&lt;/p&gt;
+-- <p>User already has a DB cluster snapshot with the given identifier.</p>
 function M.DBClusterSnapshotAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterSnapshotAlreadyExistsFault")
 	local t = { 
@@ -8022,9 +8022,9 @@ function M.AssertRemoveTagsFromResourceMessage(struct)
 end
 
 --- Create a structure of type RemoveTagsFromResourceMessage
--- &lt;p/&gt;
--- @param ResourceName [String] &lt;p&gt;The Amazon RDS resource the tags will be removed from. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing&quot;&gt; Constructing an RDS Amazon Resource Name (ARN)&lt;/a&gt;.&lt;/p&gt;
--- @param TagKeys [KeyList] &lt;p&gt;The tag key (name) of the tag to be removed.&lt;/p&gt;
+-- <p/>
+-- @param ResourceName [String] <p>The Amazon RDS resource the tags will be removed from. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"> Constructing an RDS Amazon Resource Name (ARN)</a>.</p>
+-- @param TagKeys [KeyList] <p>The tag key (name) of the tag to be removed.</p>
 -- Required parameter: ResourceName
 -- Required parameter: TagKeys
 function M.RemoveTagsFromResourceMessage(ResourceName, TagKeys, ...)
@@ -8071,7 +8071,7 @@ function M.AssertInvalidEventSubscriptionStateFault(struct)
 end
 
 --- Create a structure of type InvalidEventSubscriptionStateFault
--- &lt;p&gt;This error can occur if someone else is modifying a subscription. You should retry the action.&lt;/p&gt;
+-- <p>This error can occur if someone else is modifying a subscription. You should retry the action.</p>
 function M.InvalidEventSubscriptionStateFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidEventSubscriptionStateFault")
 	local t = { 
@@ -8116,9 +8116,9 @@ function M.AssertSourceRegionMessage(struct)
 end
 
 --- Create a structure of type SourceRegionMessage
--- &lt;p&gt;Contains the result of a successful invocation of the &lt;a&gt;DescribeSourceRegions&lt;/a&gt; action.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param SourceRegions [SourceRegionList] &lt;p&gt;A list of SourceRegion instances that contains each source AWS Region that the current region can get a Read Replica or a DB snapshot from.&lt;/p&gt;
+-- <p>Contains the result of a successful invocation of the <a>DescribeSourceRegions</a> action.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param SourceRegions [SourceRegionList] <p>A list of SourceRegion instances that contains each source AWS Region that the current region can get a Read Replica or a DB snapshot from.</p>
 function M.SourceRegionMessage(Marker, SourceRegions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SourceRegionMessage")
 	local t = { 
@@ -8141,8 +8141,8 @@ function M.AssertTimezone(struct)
 end
 
 --- Create a structure of type Timezone
--- &lt;p&gt;A time zone associated with a &lt;a&gt;DBInstance&lt;/a&gt; or a &lt;a&gt;DBSnapshot&lt;/a&gt;. This data type is an element in the response to the &lt;a&gt;DescribeDBInstances&lt;/a&gt;, the &lt;a&gt;DescribeDBSnapshots&lt;/a&gt;, and the &lt;a&gt;DescribeDBEngineVersions&lt;/a&gt; actions. &lt;/p&gt;
--- @param TimezoneName [String] &lt;p&gt;The name of the time zone.&lt;/p&gt;
+-- <p>A time zone associated with a <a>DBInstance</a> or a <a>DBSnapshot</a>. This data type is an element in the response to the <a>DescribeDBInstances</a>, the <a>DescribeDBSnapshots</a>, and the <a>DescribeDBEngineVersions</a> actions. </p>
+-- @param TimezoneName [String] <p>The name of the time zone.</p>
 function M.Timezone(TimezoneName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Timezone")
 	local t = { 
@@ -8166,10 +8166,10 @@ function M.AssertSubnet(struct)
 end
 
 --- Create a structure of type Subnet
--- &lt;p&gt; This data type is used as a response element in the &lt;a&gt;DescribeDBSubnetGroups&lt;/a&gt; action. &lt;/p&gt;
--- @param SubnetStatus [String] &lt;p&gt;Specifies the status of the subnet.&lt;/p&gt;
--- @param SubnetIdentifier [String] &lt;p&gt;Specifies the identifier of the subnet.&lt;/p&gt;
--- @param SubnetAvailabilityZone [AvailabilityZone] &lt;p&gt; This data type is used as a response element in the &lt;a&gt;DescribeDBSubnetGroups&lt;/a&gt; action. &lt;/p&gt;
+-- <p> This data type is used as a response element in the <a>DescribeDBSubnetGroups</a> action. </p>
+-- @param SubnetStatus [String] <p>Specifies the status of the subnet.</p>
+-- @param SubnetIdentifier [String] <p>Specifies the identifier of the subnet.</p>
+-- @param SubnetAvailabilityZone [AvailabilityZone] <p> This data type is used as a response element in the <a>DescribeDBSubnetGroups</a> action. </p>
 function M.Subnet(SubnetStatus, SubnetIdentifier, SubnetAvailabilityZone, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subnet")
 	local t = { 
@@ -8196,11 +8196,11 @@ function M.AssertDescribeSourceRegionsMessage(struct)
 end
 
 --- Create a structure of type DescribeSourceRegionsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;a&gt;DescribeSourceRegions&lt;/a&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param RegionName [String] &lt;p&gt;The source region name. For example, &lt;code&gt;us-east-1&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must specify a valid AWS Region name.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <a>DescribeSourceRegions</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param RegionName [String] <p>The source region name. For example, <code>us-east-1</code>.</p> <p>Constraints:</p> <ul> <li> <p>Must specify a valid AWS Region name.</p> </li> </ul>
 function M.DescribeSourceRegionsMessage(Marker, MaxRecords, Filters, RegionName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSourceRegionsMessage")
 	local t = { 
@@ -8226,9 +8226,9 @@ function M.AssertReservedDBInstancesOfferingMessage(struct)
 end
 
 --- Create a structure of type ReservedDBInstancesOfferingMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeReservedDBInstancesOfferings&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param ReservedDBInstancesOfferings [ReservedDBInstancesOfferingList] &lt;p&gt;A list of reserved DB instance offerings.&lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeReservedDBInstancesOfferings</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param ReservedDBInstancesOfferings [ReservedDBInstancesOfferingList] <p>A list of reserved DB instance offerings.</p>
 function M.ReservedDBInstancesOfferingMessage(Marker, ReservedDBInstancesOfferings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedDBInstancesOfferingMessage")
 	local t = { 
@@ -8258,14 +8258,14 @@ function M.AssertDescribeDBLogFilesMessage(struct)
 end
 
 --- Create a structure of type DescribeDBLogFilesMessage
--- &lt;p/&gt;
--- @param FileLastWritten [Long] &lt;p&gt;Filters the available log files for files written since the specified date, in POSIX timestamp format with milliseconds.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt;The pagination token provided in the previous request. If this parameter is specified the response includes only records beyond the marker, up to MaxRecords.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt;The maximum number of records to include in the response. If more records exist than the specified MaxRecords value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.&lt;/p&gt;
--- @param FileSize [Long] &lt;p&gt;Filters the available log files for files larger than the specified size.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param FilenameContains [String] &lt;p&gt;Filters the available log files for log file names that contain the specified string.&lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The customer-assigned name of the DB instance that contains the log files you want to list.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param FileLastWritten [Long] <p>Filters the available log files for files written since the specified date, in POSIX timestamp format with milliseconds.</p>
+-- @param Marker [String] <p>The pagination token provided in the previous request. If this parameter is specified the response includes only records beyond the marker, up to MaxRecords.</p>
+-- @param MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified MaxRecords value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.</p>
+-- @param FileSize [Long] <p>Filters the available log files for files larger than the specified size.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
+-- @param FilenameContains [String] <p>Filters the available log files for log file names that contain the specified string.</p>
+-- @param DBInstanceIdentifier [String] <p>The customer-assigned name of the DB instance that contains the log files you want to list.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- Required parameter: DBInstanceIdentifier
 function M.DescribeDBLogFilesMessage(FileLastWritten, Marker, MaxRecords, FileSize, Filters, FilenameContains, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBLogFilesMessage")
@@ -8295,8 +8295,8 @@ function M.AssertDescribeDBClusterSnapshotAttributesMessage(struct)
 end
 
 --- Create a structure of type DescribeDBClusterSnapshotAttributesMessage
--- &lt;p/&gt;
--- @param DBClusterSnapshotIdentifier [String] &lt;p&gt;The identifier for the DB cluster snapshot to describe the attributes for.&lt;/p&gt;
+-- <p/>
+-- @param DBClusterSnapshotIdentifier [String] <p>The identifier for the DB cluster snapshot to describe the attributes for.</p>
 -- Required parameter: DBClusterSnapshotIdentifier
 function M.DescribeDBClusterSnapshotAttributesMessage(DBClusterSnapshotIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBClusterSnapshotAttributesMessage")
@@ -8318,7 +8318,7 @@ function M.AssertSnapshotQuotaExceededFault(struct)
 end
 
 --- Create a structure of type SnapshotQuotaExceededFault
--- &lt;p&gt;Request would result in user exceeding the allowed number of DB snapshots.&lt;/p&gt;
+-- <p>Request would result in user exceeding the allowed number of DB snapshots.</p>
 function M.SnapshotQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotQuotaExceededFault")
 	local t = { 
@@ -8341,7 +8341,7 @@ end
 
 --- Create a structure of type StartDBInstanceMessage
 --  
--- @param DBInstanceIdentifier [String] &lt;p&gt; The user-supplied instance identifier. &lt;/p&gt;
+-- @param DBInstanceIdentifier [String] <p> The user-supplied instance identifier. </p>
 -- Required parameter: DBInstanceIdentifier
 function M.StartDBInstanceMessage(DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartDBInstanceMessage")
@@ -8367,9 +8367,9 @@ function M.AssertModifyDBParameterGroupMessage(struct)
 end
 
 --- Create a structure of type ModifyDBParameterGroupMessage
--- &lt;p/&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;The name of the DB parameter group.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the name of an existing DB parameter group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Parameters [ParametersList] &lt;p&gt;An array of parameter names, values, and the apply method for the parameter update. At least one parameter name, value, and apply method must be supplied; subsequent arguments are optional. A maximum of 20 parameters can be modified in a single request.&lt;/p&gt; &lt;p&gt;Valid Values (for the application method): &lt;code&gt;immediate | pending-reboot&lt;/code&gt; &lt;/p&gt; &lt;note&gt; &lt;p&gt;You can use the immediate value with dynamic parameters only. You can use the pending-reboot value for both dynamic and static parameters, and changes are applied when you reboot the DB instance without failover.&lt;/p&gt; &lt;/note&gt;
+-- <p/>
+-- @param DBParameterGroupName [String] <p>The name of the DB parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must be the name of an existing DB parameter group</p> </li> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param Parameters [ParametersList] <p>An array of parameter names, values, and the apply method for the parameter update. At least one parameter name, value, and apply method must be supplied; subsequent arguments are optional. A maximum of 20 parameters can be modified in a single request.</p> <p>Valid Values (for the application method): <code>immediate | pending-reboot</code> </p> <note> <p>You can use the immediate value with dynamic parameters only. You can use the pending-reboot value for both dynamic and static parameters, and changes are applied when you reboot the DB instance without failover.</p> </note>
 -- Required parameter: DBParameterGroupName
 -- Required parameter: Parameters
 function M.ModifyDBParameterGroupMessage(DBParameterGroupName, Parameters, ...)
@@ -8395,8 +8395,8 @@ function M.AssertDeleteDBSecurityGroupMessage(struct)
 end
 
 --- Create a structure of type DeleteDBSecurityGroupMessage
--- &lt;p/&gt;
--- @param DBSecurityGroupName [String] &lt;p&gt;The name of the DB security group to delete.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You cannot delete the default DB security group.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not be &quot;Default&quot;&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param DBSecurityGroupName [String] <p>The name of the DB security group to delete.</p> <note> <p>You cannot delete the default DB security group.</p> </note> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> <li> <p>Must not be "Default"</p> </li> </ul>
 -- Required parameter: DBSecurityGroupName
 function M.DeleteDBSecurityGroupMessage(DBSecurityGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDBSecurityGroupMessage")
@@ -8422,11 +8422,11 @@ function M.AssertDescribeDBSubnetGroupsMessage(struct)
 end
 
 --- Create a structure of type DescribeDBSubnetGroupsMessage
--- &lt;p/&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous DescribeDBSubnetGroups request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The name of the DB subnet group to return details for.&lt;/p&gt;
--- @param MaxRecords [IntegerOptional] &lt;p&gt; The maximum number of records to include in the response. If more records exist than the specified &lt;code&gt;MaxRecords&lt;/code&gt; value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. &lt;/p&gt; &lt;p&gt;Default: 100&lt;/p&gt; &lt;p&gt;Constraints: Minimum 20, maximum 100.&lt;/p&gt;
--- @param Filters [FilterList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
+-- <p/>
+-- @param Marker [String] <p> An optional pagination token provided by a previous DescribeDBSubnetGroups request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param DBSubnetGroupName [String] <p>The name of the DB subnet group to return details for.</p>
+-- @param MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @param Filters [FilterList] <p>This parameter is not currently supported.</p>
 function M.DescribeDBSubnetGroupsMessage(Marker, DBSubnetGroupName, MaxRecords, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDBSubnetGroupsMessage")
 	local t = { 
@@ -8473,7 +8473,7 @@ function M.AssertDBClusterSnapshotNotFoundFault(struct)
 end
 
 --- Create a structure of type DBClusterSnapshotNotFoundFault
--- &lt;p&gt; &lt;i&gt;DBClusterSnapshotIdentifier&lt;/i&gt; does not refer to an existing DB cluster snapshot. &lt;/p&gt;
+-- <p> <i>DBClusterSnapshotIdentifier</i> does not refer to an existing DB cluster snapshot. </p>
 function M.DBClusterSnapshotNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterSnapshotNotFoundFault")
 	local t = { 
@@ -8518,9 +8518,9 @@ function M.AssertDBInstanceMessage(struct)
 end
 
 --- Create a structure of type DBInstanceMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeDBInstances&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt; . &lt;/p&gt;
--- @param DBInstances [DBInstanceList] &lt;p&gt; A list of &lt;a&gt;DBInstance&lt;/a&gt; instances. &lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeDBInstances</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
+-- @param DBInstances [DBInstanceList] <p> A list of <a>DBInstance</a> instances. </p>
 function M.DBInstanceMessage(Marker, DBInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBInstanceMessage")
 	local t = { 
@@ -8546,9 +8546,9 @@ function M.AssertFilter(struct)
 end
 
 --- Create a structure of type Filter
--- &lt;p&gt;This type is not currently supported.&lt;/p&gt;
--- @param Values [FilterValueList] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;This parameter is not currently supported.&lt;/p&gt;
+-- <p>This type is not currently supported.</p>
+-- @param Values [FilterValueList] <p>This parameter is not currently supported.</p>
+-- @param Name [String] <p>This parameter is not currently supported.</p>
 -- Required parameter: Name
 -- Required parameter: Values
 function M.Filter(Values, Name, ...)
@@ -8598,31 +8598,31 @@ function M.AssertRestoreDBInstanceToPointInTimeMessage(struct)
 end
 
 --- Create a structure of type RestoreDBInstanceToPointInTimeMessage
--- &lt;p/&gt;
--- @param PubliclyAccessible [BooleanOptional] &lt;p&gt;Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.&lt;/p&gt; &lt;p&gt;Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Default VPC:&lt;/b&gt;true&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;VPC:&lt;/b&gt;false&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.&lt;/p&gt;
--- @param DomainIAMRoleName [String] &lt;p&gt;Specify the name of the IAM role to be used when making API calls to the Directory Service.&lt;/p&gt;
--- @param LicenseModel [String] &lt;p&gt;License model information for the restored DB instance.&lt;/p&gt; &lt;p&gt;Default: Same as source.&lt;/p&gt; &lt;p&gt; Valid values: &lt;code&gt;license-included&lt;/code&gt; | &lt;code&gt;bring-your-own-license&lt;/code&gt; | &lt;code&gt;general-public-license&lt;/code&gt; &lt;/p&gt;
--- @param EnableIAMDatabaseAuthentication [BooleanOptional] &lt;p&gt;True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.&lt;/p&gt; &lt;p&gt; You can enable IAM database authentication for the following database engines&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.6, minor version 5.6.34 or higher&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.7, minor version 5.7.16 or higher&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Aurora 5.6 or higher.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param CopyTagsToSnapshot [BooleanOptional] &lt;p&gt;True to copy all tags from the restored DB instance to snapshots of the DB instance; otherwise false. The default is false.&lt;/p&gt;
--- @param Engine [String] &lt;p&gt;The database engine to use for the new instance.&lt;/p&gt; &lt;p&gt;Default: The same as source&lt;/p&gt; &lt;p&gt;Constraint: Must be compatible with the engine of the source&lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;MySQL&lt;/code&gt; | &lt;code&gt;mariadb&lt;/code&gt; | &lt;code&gt;oracle-se1&lt;/code&gt; | &lt;code&gt;oracle-se&lt;/code&gt; | &lt;code&gt;oracle-ee&lt;/code&gt; | &lt;code&gt;sqlserver-ee&lt;/code&gt; | &lt;code&gt;sqlserver-se&lt;/code&gt; | &lt;code&gt;sqlserver-ex&lt;/code&gt; | &lt;code&gt;sqlserver-web&lt;/code&gt; | &lt;code&gt;postgres&lt;/code&gt; | &lt;code&gt;aurora&lt;/code&gt; &lt;/p&gt;
--- @param MultiAZ [BooleanOptional] &lt;p&gt;Specifies if the DB instance is a Multi-AZ deployment.&lt;/p&gt; &lt;p&gt;Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
--- @param Tags [TagList] &lt;p/&gt;
--- @param AutoMinorVersionUpgrade [BooleanOptional] &lt;p&gt;Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance window.&lt;/p&gt;
--- @param TdeCredentialArn [String] &lt;p&gt;The ARN from the Key Store with which to associate the instance for TDE encryption.&lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The DB subnet group name to use for the new instance.&lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetgroup&lt;/code&gt; &lt;/p&gt;
--- @param DBName [String] &lt;p&gt;The database name for the restored DB instance.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This parameter is not used for the MySQL or MariaDB engines.&lt;/p&gt; &lt;/note&gt;
--- @param TdeCredentialPassword [String] &lt;p&gt;The password for the given ARN from the Key Store in order to access the device.&lt;/p&gt;
--- @param UseLatestRestorableTime [Boolean] &lt;p&gt; Specifies whether (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;) the DB instance is restored from the latest backup time. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Constraints: Cannot be specified if RestoreTime parameter is provided.&lt;/p&gt;
--- @param RestoreTime [TStamp] &lt;p&gt;The date and time to restore from.&lt;/p&gt; &lt;p&gt;Valid Values: Value must be a time in Universal Coordinated Time (UTC) format&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be before the latest restorable time for the DB instance&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be specified if UseLatestRestorableTime parameter is true&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Example: &lt;code&gt;2009-09-07T23:45:00Z&lt;/code&gt; &lt;/p&gt;
--- @param SourceDBInstanceIdentifier [String] &lt;p&gt;The identifier of the source DB instance from which to restore.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the identifier of an existing database instance&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param OptionGroupName [String] &lt;p&gt;The name of the option group to be used for the restored DB instance.&lt;/p&gt; &lt;p&gt;Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance&lt;/p&gt;
--- @param Domain [String] &lt;p&gt;Specify the Active Directory Domain to restore the instance in.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The EC2 Availability Zone that the database instance will be created in.&lt;/p&gt; &lt;p&gt;Default: A random, system-chosen Availability Zone.&lt;/p&gt; &lt;p&gt;Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to true.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;us-east-1a&lt;/code&gt; &lt;/p&gt;
--- @param StorageType [String] &lt;p&gt;Specifies the storage type to be associated with the DB instance.&lt;/p&gt; &lt;p&gt; Valid values: &lt;code&gt;standard | gp2 | io1&lt;/code&gt; &lt;/p&gt; &lt;p&gt; If you specify &lt;code&gt;io1&lt;/code&gt;, you must also include a value for the &lt;code&gt;Iops&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;io1&lt;/code&gt; if the &lt;code&gt;Iops&lt;/code&gt; parameter is specified; otherwise &lt;code&gt;standard&lt;/code&gt; &lt;/p&gt;
--- @param Iops [IntegerOptional] &lt;p&gt;The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance.&lt;/p&gt; &lt;p&gt;Constraints: Must be an integer greater than 1000.&lt;/p&gt; &lt;p&gt; &lt;b&gt;SQL Server&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Setting the IOPS value for the SQL Server database engine is not supported.&lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt;The compute and memory capacity of the Amazon RDS DB instance.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: The same DBInstanceClass as the original DB instance.&lt;/p&gt;
--- @param Port [IntegerOptional] &lt;p&gt;The port number on which the database accepts connections.&lt;/p&gt; &lt;p&gt;Constraints: Value must be &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: The same port as the original DB instance.&lt;/p&gt;
--- @param TargetDBInstanceIdentifier [String] &lt;p&gt;The name of the new database instance to be created.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param PubliclyAccessible [BooleanOptional] <p>Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.</p> <p>Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.</p> <ul> <li> <p> <b>Default VPC:</b>true</p> </li> <li> <p> <b>VPC:</b>false</p> </li> </ul> <p>If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance will be private.</p>
+-- @param DomainIAMRoleName [String] <p>Specify the name of the IAM role to be used when making API calls to the Directory Service.</p>
+-- @param LicenseModel [String] <p>License model information for the restored DB instance.</p> <p>Default: Same as source.</p> <p> Valid values: <code>license-included</code> | <code>bring-your-own-license</code> | <code>general-public-license</code> </p>
+-- @param EnableIAMDatabaseAuthentication [BooleanOptional] <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.</p> <p> You can enable IAM database authentication for the following database engines</p> <ul> <li> <p>For MySQL 5.6, minor version 5.6.34 or higher</p> </li> <li> <p>For MySQL 5.7, minor version 5.7.16 or higher</p> </li> <li> <p>Aurora 5.6 or higher.</p> </li> </ul> <p>Default: <code>false</code> </p>
+-- @param CopyTagsToSnapshot [BooleanOptional] <p>True to copy all tags from the restored DB instance to snapshots of the DB instance; otherwise false. The default is false.</p>
+-- @param Engine [String] <p>The database engine to use for the new instance.</p> <p>Default: The same as source</p> <p>Constraint: Must be compatible with the engine of the source</p> <p> Valid Values: <code>MySQL</code> | <code>mariadb</code> | <code>oracle-se1</code> | <code>oracle-se</code> | <code>oracle-ee</code> | <code>sqlserver-ee</code> | <code>sqlserver-se</code> | <code>sqlserver-ex</code> | <code>sqlserver-web</code> | <code>postgres</code> | <code>aurora</code> </p>
+-- @param MultiAZ [BooleanOptional] <p>Specifies if the DB instance is a Multi-AZ deployment.</p> <p>Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to <code>true</code>.</p>
+-- @param Tags [TagList] <p/>
+-- @param AutoMinorVersionUpgrade [BooleanOptional] <p>Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance window.</p>
+-- @param TdeCredentialArn [String] <p>The ARN from the Key Store with which to associate the instance for TDE encryption.</p>
+-- @param DBSubnetGroupName [String] <p>The DB subnet group name to use for the new instance.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens. Must not be default.</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- @param DBName [String] <p>The database name for the restored DB instance.</p> <note> <p>This parameter is not used for the MySQL or MariaDB engines.</p> </note>
+-- @param TdeCredentialPassword [String] <p>The password for the given ARN from the Key Store in order to access the device.</p>
+-- @param UseLatestRestorableTime [Boolean] <p> Specifies whether (<code>true</code>) or not (<code>false</code>) the DB instance is restored from the latest backup time. </p> <p>Default: <code>false</code> </p> <p>Constraints: Cannot be specified if RestoreTime parameter is provided.</p>
+-- @param RestoreTime [TStamp] <p>The date and time to restore from.</p> <p>Valid Values: Value must be a time in Universal Coordinated Time (UTC) format</p> <p>Constraints:</p> <ul> <li> <p>Must be before the latest restorable time for the DB instance</p> </li> <li> <p>Cannot be specified if UseLatestRestorableTime parameter is true</p> </li> </ul> <p>Example: <code>2009-09-07T23:45:00Z</code> </p>
+-- @param SourceDBInstanceIdentifier [String] <p>The identifier of the source DB instance from which to restore.</p> <p>Constraints:</p> <ul> <li> <p>Must be the identifier of an existing database instance</p> </li> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param OptionGroupName [String] <p>The name of the option group to be used for the restored DB instance.</p> <p>Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance</p>
+-- @param Domain [String] <p>Specify the Active Directory Domain to restore the instance in.</p>
+-- @param AvailabilityZone [String] <p>The EC2 Availability Zone that the database instance will be created in.</p> <p>Default: A random, system-chosen Availability Zone.</p> <p>Constraint: You cannot specify the AvailabilityZone parameter if the MultiAZ parameter is set to true.</p> <p>Example: <code>us-east-1a</code> </p>
+-- @param StorageType [String] <p>Specifies the storage type to be associated with the DB instance.</p> <p> Valid values: <code>standard | gp2 | io1</code> </p> <p> If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter. </p> <p> Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code> </p>
+-- @param Iops [IntegerOptional] <p>The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB instance.</p> <p>Constraints: Must be an integer greater than 1000.</p> <p> <b>SQL Server</b> </p> <p>Setting the IOPS value for the SQL Server database engine is not supported.</p>
+-- @param DBInstanceClass [String] <p>The compute and memory capacity of the Amazon RDS DB instance.</p> <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code> </p> <p>Default: The same DBInstanceClass as the original DB instance.</p>
+-- @param Port [IntegerOptional] <p>The port number on which the database accepts connections.</p> <p>Constraints: Value must be <code>1150-65535</code> </p> <p>Default: The same port as the original DB instance.</p>
+-- @param TargetDBInstanceIdentifier [String] <p>The name of the new database instance to be created.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- Required parameter: SourceDBInstanceIdentifier
 -- Required parameter: TargetDBInstanceIdentifier
 function M.RestoreDBInstanceToPointInTimeMessage(PubliclyAccessible, DomainIAMRoleName, LicenseModel, EnableIAMDatabaseAuthentication, CopyTagsToSnapshot, Engine, MultiAZ, Tags, AutoMinorVersionUpgrade, TdeCredentialArn, DBSubnetGroupName, DBName, TdeCredentialPassword, UseLatestRestorableTime, RestoreTime, SourceDBInstanceIdentifier, OptionGroupName, Domain, AvailabilityZone, StorageType, Iops, DBInstanceClass, Port, TargetDBInstanceIdentifier, ...)
@@ -8670,9 +8670,9 @@ function M.AssertPendingMaintenanceActionsMessage(struct)
 end
 
 --- Create a structure of type PendingMaintenanceActionsMessage
--- &lt;p&gt;Data returned from the &lt;b&gt;DescribePendingMaintenanceActions&lt;/b&gt; action.&lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous &lt;code&gt;DescribePendingMaintenanceActions&lt;/code&gt; request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param PendingMaintenanceActions [PendingMaintenanceActions] &lt;p&gt;A list of the pending maintenance actions for the resource.&lt;/p&gt;
+-- <p>Data returned from the <b>DescribePendingMaintenanceActions</b> action.</p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous <code>DescribePendingMaintenanceActions</code> request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by <code>MaxRecords</code>. </p>
+-- @param PendingMaintenanceActions [PendingMaintenanceActions] <p>A list of the pending maintenance actions for the resource.</p>
 function M.PendingMaintenanceActionsMessage(Marker, PendingMaintenanceActions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PendingMaintenanceActionsMessage")
 	local t = { 
@@ -8694,7 +8694,7 @@ function M.AssertDomainNotFoundFault(struct)
 end
 
 --- Create a structure of type DomainNotFoundFault
--- &lt;p&gt; &lt;i&gt;Domain&lt;/i&gt; does not refer to an existing Active Directory Domain. &lt;/p&gt;
+-- <p> <i>Domain</i> does not refer to an existing Active Directory Domain. </p>
 function M.DomainNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainNotFoundFault")
 	local t = { 
@@ -8717,10 +8717,10 @@ function M.AssertEngineDefaults(struct)
 end
 
 --- Create a structure of type EngineDefaults
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeEngineDefaultParameters&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous EngineDefaults request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt; . &lt;/p&gt;
--- @param DBParameterGroupFamily [String] &lt;p&gt;Specifies the name of the DB parameter group family that the engine default parameters apply to.&lt;/p&gt;
--- @param Parameters [ParametersList] &lt;p&gt;Contains a list of engine default parameters.&lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeEngineDefaultParameters</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous EngineDefaults request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
+-- @param DBParameterGroupFamily [String] <p>Specifies the name of the DB parameter group family that the engine default parameters apply to.</p>
+-- @param Parameters [ParametersList] <p>Contains a list of engine default parameters.</p>
 function M.EngineDefaults(Marker, DBParameterGroupFamily, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EngineDefaults")
 	local t = { 
@@ -8743,7 +8743,7 @@ function M.AssertDBParameterGroupQuotaExceededFault(struct)
 end
 
 --- Create a structure of type DBParameterGroupQuotaExceededFault
--- &lt;p&gt;Request would result in user exceeding the allowed number of DB parameter groups.&lt;/p&gt;
+-- <p>Request would result in user exceeding the allowed number of DB parameter groups.</p>
 function M.DBParameterGroupQuotaExceededFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBParameterGroupQuotaExceededFault")
 	local t = { 
@@ -8767,11 +8767,11 @@ function M.AssertDomainMembership(struct)
 end
 
 --- Create a structure of type DomainMembership
--- &lt;p&gt;An Active Directory Domain membership record associated with the DB instance.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the DB instance's Active Directory Domain membership, such as joined, pending-join, failed etc).&lt;/p&gt;
--- @param IAMRoleName [String] &lt;p&gt;The name of the IAM role to be used when making API calls to the Directory Service.&lt;/p&gt;
--- @param Domain [String] &lt;p&gt;The identifier of the Active Directory Domain.&lt;/p&gt;
--- @param FQDN [String] &lt;p&gt;The fully qualified domain name of the Active Directory Domain.&lt;/p&gt;
+-- <p>An Active Directory Domain membership record associated with the DB instance.</p>
+-- @param Status [String] <p>The status of the DB instance's Active Directory Domain membership, such as joined, pending-join, failed etc).</p>
+-- @param IAMRoleName [String] <p>The name of the IAM role to be used when making API calls to the Directory Service.</p>
+-- @param Domain [String] <p>The identifier of the Active Directory Domain.</p>
+-- @param FQDN [String] <p>The fully qualified domain name of the Active Directory Domain.</p>
 function M.DomainMembership(Status, IAMRoleName, Domain, FQDN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainMembership")
 	local t = { 
@@ -8795,7 +8795,7 @@ function M.AssertDBClusterRoleAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type DBClusterRoleAlreadyExistsFault
--- &lt;p&gt;The specified IAM role Amazon Resource Name (ARN) is already associated with the specified DB cluster.&lt;/p&gt;
+-- <p>The specified IAM role Amazon Resource Name (ARN) is already associated with the specified DB cluster.</p>
 function M.DBClusterRoleAlreadyExistsFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterRoleAlreadyExistsFault")
 	local t = { 
@@ -8817,9 +8817,9 @@ function M.AssertReservedDBInstanceMessage(struct)
 end
 
 --- Create a structure of type ReservedDBInstanceMessage
--- &lt;p&gt; Contains the result of a successful invocation of the &lt;a&gt;DescribeReservedDBInstances&lt;/a&gt; action. &lt;/p&gt;
--- @param Marker [String] &lt;p&gt; An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by &lt;code&gt;MaxRecords&lt;/code&gt;. &lt;/p&gt;
--- @param ReservedDBInstances [ReservedDBInstanceList] &lt;p&gt;A list of reserved DB instances.&lt;/p&gt;
+-- <p> Contains the result of a successful invocation of the <a>DescribeReservedDBInstances</a> action. </p>
+-- @param Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- @param ReservedDBInstances [ReservedDBInstanceList] <p>A list of reserved DB instances.</p>
 function M.ReservedDBInstanceMessage(Marker, ReservedDBInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ReservedDBInstanceMessage")
 	local t = { 
@@ -8843,9 +8843,9 @@ function M.AssertDBParameterGroupStatus(struct)
 end
 
 --- Create a structure of type DBParameterGroupStatus
--- &lt;p&gt;The status of the DB parameter group.&lt;/p&gt; &lt;p&gt;This data type is used as a response element in the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateDBInstanceReadReplica&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ModifyDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;RebootDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;RestoreDBInstanceFromDBSnapshot&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;The name of the DP parameter group.&lt;/p&gt;
--- @param ParameterApplyStatus [String] &lt;p&gt;The status of parameter updates.&lt;/p&gt;
+-- <p>The status of the DB parameter group.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateDBInstance</a> </p> </li> <li> <p> <a>CreateDBInstanceReadReplica</a> </p> </li> <li> <p> <a>DeleteDBInstance</a> </p> </li> <li> <p> <a>ModifyDBInstance</a> </p> </li> <li> <p> <a>RebootDBInstance</a> </p> </li> <li> <p> <a>RestoreDBInstanceFromDBSnapshot</a> </p> </li> </ul>
+-- @param DBParameterGroupName [String] <p>The name of the DP parameter group.</p>
+-- @param ParameterApplyStatus [String] <p>The status of parameter updates.</p>
 function M.DBParameterGroupStatus(DBParameterGroupName, ParameterApplyStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBParameterGroupStatus")
 	local t = { 
@@ -8869,9 +8869,9 @@ function M.AssertDBClusterSnapshotAttributesResult(struct)
 end
 
 --- Create a structure of type DBClusterSnapshotAttributesResult
--- &lt;p&gt;Contains the results of a successful call to the &lt;a&gt;DescribeDBClusterSnapshotAttributes&lt;/a&gt; API action.&lt;/p&gt; &lt;p&gt;Manual DB cluster snapshot attributes are used to authorize other AWS accounts to copy or restore a manual DB cluster snapshot. For more information, see the &lt;a&gt;ModifyDBClusterSnapshotAttribute&lt;/a&gt; API action.&lt;/p&gt;
--- @param DBClusterSnapshotAttributes [DBClusterSnapshotAttributeList] &lt;p&gt;The list of attributes and values for the manual DB cluster snapshot.&lt;/p&gt;
--- @param DBClusterSnapshotIdentifier [String] &lt;p&gt;The identifier of the manual DB cluster snapshot that the attributes apply to.&lt;/p&gt;
+-- <p>Contains the results of a successful call to the <a>DescribeDBClusterSnapshotAttributes</a> API action.</p> <p>Manual DB cluster snapshot attributes are used to authorize other AWS accounts to copy or restore a manual DB cluster snapshot. For more information, see the <a>ModifyDBClusterSnapshotAttribute</a> API action.</p>
+-- @param DBClusterSnapshotAttributes [DBClusterSnapshotAttributeList] <p>The list of attributes and values for the manual DB cluster snapshot.</p>
+-- @param DBClusterSnapshotIdentifier [String] <p>The identifier of the manual DB cluster snapshot that the attributes apply to.</p>
 function M.DBClusterSnapshotAttributesResult(DBClusterSnapshotAttributes, DBClusterSnapshotIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterSnapshotAttributesResult")
 	local t = { 
@@ -8896,10 +8896,10 @@ function M.AssertEndpoint(struct)
 end
 
 --- Create a structure of type Endpoint
--- &lt;p&gt;This data type is used as a response element in the following actions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeDBInstances&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteDBInstance&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param HostedZoneId [String] &lt;p&gt;Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.&lt;/p&gt;
--- @param Port [Integer] &lt;p&gt;Specifies the port that the database engine is listening on.&lt;/p&gt;
--- @param Address [String] &lt;p&gt;Specifies the DNS address of the DB instance.&lt;/p&gt;
+-- <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateDBInstance</a> </p> </li> <li> <p> <a>DescribeDBInstances</a> </p> </li> <li> <p> <a>DeleteDBInstance</a> </p> </li> </ul>
+-- @param HostedZoneId [String] <p>Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.</p>
+-- @param Port [Integer] <p>Specifies the port that the database engine is listening on.</p>
+-- @param Address [String] <p>Specifies the DNS address of the DB instance.</p>
 function M.Endpoint(HostedZoneId, Port, Address, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Endpoint")
 	local t = { 
@@ -8922,7 +8922,7 @@ function M.AssertInvalidS3BucketFault(struct)
 end
 
 --- Create a structure of type InvalidS3BucketFault
--- &lt;p&gt;The specified Amazon S3 bucket name could not be found or Amazon RDS is not authorized to access the specified Amazon S3 bucket. Verify the &lt;b&gt;SourceS3BucketName&lt;/b&gt; and &lt;b&gt;S3IngestionRoleArn&lt;/b&gt; values and try again.&lt;/p&gt;
+-- <p>The specified Amazon S3 bucket name could not be found or Amazon RDS is not authorized to access the specified Amazon S3 bucket. Verify the <b>SourceS3BucketName</b> and <b>S3IngestionRoleArn</b> values and try again.</p>
 function M.InvalidS3BucketFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3BucketFault")
 	local t = { 
@@ -8948,13 +8948,13 @@ function M.AssertOptionGroupOptionSetting(struct)
 end
 
 --- Create a structure of type OptionGroupOptionSetting
--- &lt;p&gt;Option group option settings are used to display settings available for each option with their default values and other information. These values are used with the DescribeOptionGroupOptions action.&lt;/p&gt;
--- @param SettingDescription [String] &lt;p&gt;The description of the option group option.&lt;/p&gt;
--- @param DefaultValue [String] &lt;p&gt;The default value for the option group option.&lt;/p&gt;
--- @param AllowedValues [String] &lt;p&gt;Indicates the acceptable values for the option group option.&lt;/p&gt;
--- @param IsModifiable [Boolean] &lt;p&gt;Boolean value where true indicates that this option group option can be changed from the default value.&lt;/p&gt;
--- @param SettingName [String] &lt;p&gt;The name of the option group option.&lt;/p&gt;
--- @param ApplyType [String] &lt;p&gt;The DB engine specific parameter type for the option group option.&lt;/p&gt;
+-- <p>Option group option settings are used to display settings available for each option with their default values and other information. These values are used with the DescribeOptionGroupOptions action.</p>
+-- @param SettingDescription [String] <p>The description of the option group option.</p>
+-- @param DefaultValue [String] <p>The default value for the option group option.</p>
+-- @param AllowedValues [String] <p>Indicates the acceptable values for the option group option.</p>
+-- @param IsModifiable [Boolean] <p>Boolean value where true indicates that this option group option can be changed from the default value.</p>
+-- @param SettingName [String] <p>The name of the option group option.</p>
+-- @param ApplyType [String] <p>The DB engine specific parameter type for the option group option.</p>
 function M.OptionGroupOptionSetting(SettingDescription, DefaultValue, AllowedValues, IsModifiable, SettingName, ApplyType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionGroupOptionSetting")
 	local t = { 
@@ -8980,7 +8980,7 @@ function M.AssertDBClusterRoleNotFoundFault(struct)
 end
 
 --- Create a structure of type DBClusterRoleNotFoundFault
--- &lt;p&gt;The specified IAM role Amazon Resource Name (ARN) is not associated with the specified DB cluster.&lt;/p&gt;
+-- <p>The specified IAM role Amazon Resource Name (ARN) is not associated with the specified DB cluster.</p>
 function M.DBClusterRoleNotFoundFault(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBClusterRoleNotFoundFault")
 	local t = { 
@@ -9002,9 +9002,9 @@ function M.AssertDBSnapshotAttributesResult(struct)
 end
 
 --- Create a structure of type DBSnapshotAttributesResult
--- &lt;p&gt;Contains the results of a successful call to the &lt;a&gt;DescribeDBSnapshotAttributes&lt;/a&gt; API action.&lt;/p&gt; &lt;p&gt;Manual DB snapshot attributes are used to authorize other AWS accounts to copy or restore a manual DB snapshot. For more information, see the &lt;a&gt;ModifyDBSnapshotAttribute&lt;/a&gt; API action.&lt;/p&gt;
--- @param DBSnapshotIdentifier [String] &lt;p&gt;The identifier of the manual DB snapshot that the attributes apply to.&lt;/p&gt;
--- @param DBSnapshotAttributes [DBSnapshotAttributeList] &lt;p&gt;The list of attributes and values for the manual DB snapshot.&lt;/p&gt;
+-- <p>Contains the results of a successful call to the <a>DescribeDBSnapshotAttributes</a> API action.</p> <p>Manual DB snapshot attributes are used to authorize other AWS accounts to copy or restore a manual DB snapshot. For more information, see the <a>ModifyDBSnapshotAttribute</a> API action.</p>
+-- @param DBSnapshotIdentifier [String] <p>The identifier of the manual DB snapshot that the attributes apply to.</p>
+-- @param DBSnapshotAttributes [DBSnapshotAttributeList] <p>The list of attributes and values for the manual DB snapshot.</p>
 function M.DBSnapshotAttributesResult(DBSnapshotIdentifier, DBSnapshotAttributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DBSnapshotAttributesResult")
 	local t = { 
@@ -9036,17 +9036,17 @@ function M.AssertEventSubscription(struct)
 end
 
 --- Create a structure of type EventSubscription
--- &lt;p&gt;Contains the results of a successful invocation of the &lt;a&gt;DescribeEventSubscriptions&lt;/a&gt; action.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the RDS event notification subscription.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;p&gt;Can be one of the following: creating | modifying | deleting | active | no-permission | topic-not-exist&lt;/p&gt; &lt;p&gt;The status &quot;no-permission&quot; indicates that RDS no longer has permission to post to the SNS topic. The status &quot;topic-not-exist&quot; indicates that the topic was deleted after the subscription was created.&lt;/p&gt;
--- @param SubscriptionCreationTime [String] &lt;p&gt;The time the RDS event notification subscription was created.&lt;/p&gt;
--- @param SourceType [String] &lt;p&gt;The source type for the RDS event notification subscription.&lt;/p&gt;
--- @param EventCategoriesList [EventCategoriesList] &lt;p&gt;A list of event categories for the RDS event notification subscription.&lt;/p&gt;
--- @param EventSubscriptionArn [String] &lt;p&gt;The Amazon Resource Name (ARN) for the event subscription.&lt;/p&gt;
--- @param SourceIdsList [SourceIdsList] &lt;p&gt;A list of source IDs for the RDS event notification subscription.&lt;/p&gt;
--- @param CustSubscriptionId [String] &lt;p&gt;The RDS event notification subscription Id.&lt;/p&gt;
--- @param Enabled [Boolean] &lt;p&gt;A Boolean value indicating if the subscription is enabled. True indicates the subscription is enabled.&lt;/p&gt;
--- @param SnsTopicArn [String] &lt;p&gt;The topic ARN of the RDS event notification subscription.&lt;/p&gt;
--- @param CustomerAwsId [String] &lt;p&gt;The AWS customer account associated with the RDS event notification subscription.&lt;/p&gt;
+-- <p>Contains the results of a successful invocation of the <a>DescribeEventSubscriptions</a> action.</p>
+-- @param Status [String] <p>The status of the RDS event notification subscription.</p> <p>Constraints:</p> <p>Can be one of the following: creating | modifying | deleting | active | no-permission | topic-not-exist</p> <p>The status "no-permission" indicates that RDS no longer has permission to post to the SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.</p>
+-- @param SubscriptionCreationTime [String] <p>The time the RDS event notification subscription was created.</p>
+-- @param SourceType [String] <p>The source type for the RDS event notification subscription.</p>
+-- @param EventCategoriesList [EventCategoriesList] <p>A list of event categories for the RDS event notification subscription.</p>
+-- @param EventSubscriptionArn [String] <p>The Amazon Resource Name (ARN) for the event subscription.</p>
+-- @param SourceIdsList [SourceIdsList] <p>A list of source IDs for the RDS event notification subscription.</p>
+-- @param CustSubscriptionId [String] <p>The RDS event notification subscription Id.</p>
+-- @param Enabled [Boolean] <p>A Boolean value indicating if the subscription is enabled. True indicates the subscription is enabled.</p>
+-- @param SnsTopicArn [String] <p>The topic ARN of the RDS event notification subscription.</p>
+-- @param CustomerAwsId [String] <p>The AWS customer account associated with the RDS event notification subscription.</p>
 function M.EventSubscription(Status, SubscriptionCreationTime, SourceType, EventCategoriesList, EventSubscriptionArn, SourceIdsList, CustSubscriptionId, Enabled, SnsTopicArn, CustomerAwsId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscription")
 	local t = { 
@@ -9110,40 +9110,40 @@ function M.AssertModifyDBInstanceMessage(struct)
 end
 
 --- Create a structure of type ModifyDBInstanceMessage
--- &lt;p/&gt;
--- @param DBParameterGroupName [String] &lt;p&gt;The name of the DB parameter group to apply to the DB instance. Changing this setting does not result in an outage. The parameter group name itself is changed immediately, but the actual parameter changes are not applied until you reboot the instance without failover. The db instance will NOT be rebooted automatically and the parameter changes will NOT be applied during the next maintenance window.&lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Constraints: The DB parameter group must be in the same DB parameter group family as this DB instance.&lt;/p&gt;
--- @param AllowMajorVersionUpgrade [Boolean] &lt;p&gt;Indicates that major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.&lt;/p&gt; &lt;p&gt;Constraints: This parameter must be set to true when specifying a value for the EngineVersion parameter that is a different major version than the DB instance's current version.&lt;/p&gt;
--- @param DomainIAMRoleName [String] &lt;p&gt;The name of the IAM role to use when making API calls to the Directory Service.&lt;/p&gt;
--- @param MonitoringInterval [IntegerOptional] &lt;p&gt;The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.&lt;/p&gt; &lt;p&gt;If &lt;code&gt;MonitoringRoleArn&lt;/code&gt; is specified, then you must also set &lt;code&gt;MonitoringInterval&lt;/code&gt; to a value other than 0.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;0, 1, 5, 10, 15, 30, 60&lt;/code&gt; &lt;/p&gt;
--- @param LicenseModel [String] &lt;p&gt;The license model for the DB instance.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;license-included&lt;/code&gt; | &lt;code&gt;bring-your-own-license&lt;/code&gt; | &lt;code&gt;general-public-license&lt;/code&gt; &lt;/p&gt;
--- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] &lt;p&gt;A list of EC2 VPC security groups to authorize on this DB instance. This change is asynchronously applied as soon as possible.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param EnableIAMDatabaseAuthentication [BooleanOptional] &lt;p&gt;True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.&lt;/p&gt; &lt;p&gt; You can enable IAM database authentication for the following database engines&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.6, minor version 5.6.34 or higher&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For MySQL 5.7, minor version 5.7.16 or higher&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param CopyTagsToSnapshot [BooleanOptional] &lt;p&gt;True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is false.&lt;/p&gt;
--- @param NewDBInstanceIdentifier [String] &lt;p&gt; The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB instance identifier, an instance reboot will occur immediately if you set &lt;code&gt;Apply Immediately&lt;/code&gt; to true, or will occur during the next maintenance window if &lt;code&gt;Apply Immediately&lt;/code&gt; to false. This value is stored as a lowercase string. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param MultiAZ [BooleanOptional] &lt;p&gt; Specifies if the DB instance is a Multi-AZ deployment. Changing this parameter does not result in an outage and the change is applied during the next maintenance window unless the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter is set to &lt;code&gt;true&lt;/code&gt; for this request. &lt;/p&gt; &lt;p&gt;Constraints: Cannot be specified if the DB instance is a Read Replica.&lt;/p&gt;
--- @param DBSecurityGroups [DBSecurityGroupNameList] &lt;p&gt;A list of DB security groups to authorize on this DB instance. Changing this setting does not result in an outage and the change is asynchronously applied as soon as possible.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be 1 to 255 alphanumeric characters&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PubliclyAccessible [BooleanOptional] &lt;p&gt;Boolean value that indicates if the DB instance has a publicly resolvable DNS name. Set to &lt;code&gt;True&lt;/code&gt; to make the DB instance Internet-facing with a publicly resolvable DNS name, which resolves to a public IP address. Set to &lt;code&gt;False&lt;/code&gt; to make the DB instance internal with a DNS name that resolves to a private IP address. &lt;/p&gt; &lt;p&gt; &lt;code&gt;PubliclyAccessible&lt;/code&gt; only applies to DB instances in a VPC. The DB instance must be part of a public subnet and &lt;code&gt;PubliclyAccessible&lt;/code&gt; must be true in order for it to be publicly accessible. &lt;/p&gt; &lt;p&gt;Changes to the &lt;code&gt;PubliclyAccessible&lt;/code&gt; parameter are applied immediately regardless of the value of the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;Default: false&lt;/p&gt;
--- @param AutoMinorVersionUpgrade [BooleanOptional] &lt;p&gt; Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to &lt;code&gt;true&lt;/code&gt; during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that engine version. &lt;/p&gt;
--- @param PreferredBackupWindow [String] &lt;p&gt; The daily time range during which automated backups are created if automated backups are enabled, as determined by the &lt;code&gt;BackupRetentionPeriod&lt;/code&gt; parameter. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible. &lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be in the format hh24:mi-hh24:mi&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Times should be in Universal Time Coordinated (UTC)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must not conflict with the preferred maintenance window&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be at least 30 minutes&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PromotionTier [IntegerOptional] &lt;p&gt;A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance&quot;&gt; Fault Tolerance for an Aurora DB Cluster&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Default: 1&lt;/p&gt; &lt;p&gt;Valid Values: 0 - 15&lt;/p&gt;
--- @param TdeCredentialArn [String] &lt;p&gt;The ARN from the Key Store with which to associate the instance for TDE encryption.&lt;/p&gt;
--- @param AllocatedStorage [IntegerOptional] &lt;p&gt; The new storage capacity of the RDS instance. Changing this setting does not result in an outage and the change is applied during the next maintenance window unless &lt;code&gt;ApplyImmediately&lt;/code&gt; is set to &lt;code&gt;true&lt;/code&gt; for this request. &lt;/p&gt; &lt;p&gt; &lt;b&gt;MySQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Valid Values: 5-6144&lt;/p&gt; &lt;p&gt;Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.&lt;/p&gt; &lt;p&gt;Type: Integer&lt;/p&gt; &lt;p&gt; &lt;b&gt;MariaDB&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Valid Values: 5-6144&lt;/p&gt; &lt;p&gt;Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.&lt;/p&gt; &lt;p&gt;Type: Integer&lt;/p&gt; &lt;p&gt; &lt;b&gt;PostgreSQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Valid Values: 5-6144&lt;/p&gt; &lt;p&gt;Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.&lt;/p&gt; &lt;p&gt;Type: Integer&lt;/p&gt; &lt;p&gt; &lt;b&gt;Oracle&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Valid Values: 10-6144&lt;/p&gt; &lt;p&gt;Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.&lt;/p&gt; &lt;p&gt; &lt;b&gt;SQL Server&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Cannot be modified.&lt;/p&gt; &lt;p&gt;If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance will be available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.&lt;/p&gt;
--- @param DBSubnetGroupName [String] &lt;p&gt;The new DB subnet group for the DB instance. You can use this parameter to move your DB instance to a different VPC. If your DB instance is not in a VPC, you can also use this parameter to move your DB instance into a VPC. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC&quot;&gt;Updating the VPC for a DB Instance&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;Changing the subnet group causes an outage during the change. The change is applied during the next maintenance window, unless you specify &lt;code&gt;true&lt;/code&gt; for the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt;Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.&lt;/p&gt; &lt;p&gt;Example: &lt;code&gt;mySubnetGroup&lt;/code&gt; &lt;/p&gt;
--- @param PreferredMaintenanceWindow [String] &lt;p&gt;The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage. Changing this parameter does not result in an outage, except in the following situation, and the change is asynchronously applied as soon as possible. If there are pending actions that cause a reboot, and the maintenance window is changed to include the current time, then changing this parameter will cause a reboot of the DB instance. If moving this window to the current time, there must be at least 30 minutes between the current time and end of the window to ensure pending changes are applied.&lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Format: ddd:hh24:mi-ddd:hh24:mi&lt;/p&gt; &lt;p&gt;Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun&lt;/p&gt; &lt;p&gt;Constraints: Must be at least 30 minutes&lt;/p&gt;
--- @param TdeCredentialPassword [String] &lt;p&gt;The password for the given ARN from the Key Store in order to access the device.&lt;/p&gt;
--- @param DBPortNumber [IntegerOptional] &lt;p&gt;The port number on which the database accepts connections.&lt;/p&gt; &lt;p&gt;The value of the &lt;code&gt;DBPortNumber&lt;/code&gt; parameter must not match any of the port values specified for options in the option group for the DB instance.&lt;/p&gt; &lt;p&gt;Your database will restart when you change the &lt;code&gt;DBPortNumber&lt;/code&gt; value regardless of the value of the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt; &lt;b&gt;MySQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;3306&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt; &lt;b&gt;MariaDB&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;3306&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt; &lt;b&gt;PostgreSQL&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;5432&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Type: Integer&lt;/p&gt; &lt;p&gt; &lt;b&gt;Oracle&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;1521&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt; &lt;p&gt; &lt;b&gt;SQL Server&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;1433&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; except for &lt;code&gt;1434&lt;/code&gt;, &lt;code&gt;3389&lt;/code&gt;, &lt;code&gt;47001&lt;/code&gt;, &lt;code&gt;49152&lt;/code&gt;, and &lt;code&gt;49152&lt;/code&gt; through &lt;code&gt;49156&lt;/code&gt;. &lt;/p&gt; &lt;p&gt; &lt;b&gt;Amazon Aurora&lt;/b&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;3306&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;1150-65535&lt;/code&gt; &lt;/p&gt;
--- @param ApplyImmediately [Boolean] &lt;p&gt;Specifies whether the modifications in this request and any pending modifications are asynchronously applied as soon as possible, regardless of the &lt;code&gt;PreferredMaintenanceWindow&lt;/code&gt; setting for the DB instance. &lt;/p&gt; &lt;p&gt; If this parameter is set to &lt;code&gt;false&lt;/code&gt;, changes to the DB instance are applied during the next maintenance window. Some parameter changes can cause an outage and will be applied on the next call to &lt;a&gt;RebootDBInstance&lt;/a&gt;, or the next failure reboot. Review the table of parameters in &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html&quot;&gt;Modifying a DB Instance and Using the Apply Immediately Parameter&lt;/a&gt; to see the impact that setting &lt;code&gt;ApplyImmediately&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; has for each modified parameter and to determine when the changes will be applied. &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param EngineVersion [String] &lt;p&gt; The version number of the database engine to upgrade to. Changing this parameter results in an outage and the change is applied during the next maintenance window unless the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter is set to &lt;code&gt;true&lt;/code&gt; for this request. &lt;/p&gt; &lt;p&gt;For major version upgrades, if a non-default DB parameter group is currently in use, a new DB parameter group in the DB parameter group family for the new engine version must be specified. The new DB parameter group can be the default for that DB parameter group family.&lt;/p&gt; &lt;p&gt;For a list of valid engine versions, see &lt;a&gt;CreateDBInstance&lt;/a&gt;.&lt;/p&gt;
--- @param BackupRetentionPeriod [IntegerOptional] &lt;p&gt;The number of days to retain automated backups. Setting this parameter to a positive number enables backups. Setting this parameter to 0 disables automated backups.&lt;/p&gt; &lt;p&gt;Changing this parameter can result in an outage if you change from 0 to a non-zero value or from a non-zero value to 0. These changes are applied during the next maintenance window unless the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter is set to &lt;code&gt;true&lt;/code&gt; for this request. If you change the parameter from one non-zero value to another non-zero value, the change is asynchronously applied as soon as possible.&lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be a value from 0 to 35&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot be set to 0 if the DB instance is a source to Read Replicas&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param OptionGroupName [String] &lt;p&gt; Indicates that the DB instance should be associated with the specified option group. Changing this parameter does not result in an outage except in the following case and the change is applied during the next maintenance window unless the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter is set to &lt;code&gt;true&lt;/code&gt; for this request. If the parameter change results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new connections are rejected but existing connections are not interrupted. &lt;/p&gt; &lt;p&gt;Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance&lt;/p&gt;
--- @param Domain [String] &lt;p&gt;The Active Directory Domain to move the instance to. Specify &lt;code&gt;none&lt;/code&gt; to remove the instance from its current domain. The domain must be created prior to this operation. Currently only a Microsoft SQL Server instance can be created in a Active Directory Domain. &lt;/p&gt;
--- @param MonitoringRoleArn [String] &lt;p&gt;The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example, &lt;code&gt;arn:aws:iam:123456789012:role/emaccess&lt;/code&gt;. For information on creating a monitoring role, go to &lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole&quot;&gt;To create an IAM role for Amazon RDS Enhanced Monitoring&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;If &lt;code&gt;MonitoringInterval&lt;/code&gt; is set to a value other than 0, then you must supply a &lt;code&gt;MonitoringRoleArn&lt;/code&gt; value.&lt;/p&gt;
--- @param StorageType [String] &lt;p&gt;Specifies the storage type to be associated with the DB instance.&lt;/p&gt; &lt;p&gt; Valid values: &lt;code&gt;standard | gp2 | io1&lt;/code&gt; &lt;/p&gt; &lt;p&gt; If you specify &lt;code&gt;io1&lt;/code&gt;, you must also include a value for the &lt;code&gt;Iops&lt;/code&gt; parameter. &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;io1&lt;/code&gt; if the &lt;code&gt;Iops&lt;/code&gt; parameter is specified; otherwise &lt;code&gt;standard&lt;/code&gt; &lt;/p&gt;
--- @param CACertificateIdentifier [String] &lt;p&gt;Indicates the certificate that needs to be associated with the instance.&lt;/p&gt;
--- @param MasterUserPassword [String] &lt;p&gt;The new password for the DB instance master user. Can be any printable ASCII character except &quot;/&quot;, &quot;&quot;&quot;, or &quot;@&quot;.&lt;/p&gt; &lt;p&gt; Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible. Between the time of the request and the completion of the request, the &lt;code&gt;MasterUserPassword&lt;/code&gt; element exists in the &lt;code&gt;PendingModifiedValues&lt;/code&gt; element of the operation response. &lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB, and Amazon Aurora), 8 to 30 alphanumeric characters (Oracle), or 8 to 128 alphanumeric characters (SQL Server).&lt;/p&gt; &lt;note&gt; &lt;p&gt;Amazon RDS API actions never return the password, so this action provides a way to regain access to a primary instance user if the password is lost. This includes restoring privileges that might have been accidentally revoked.&lt;/p&gt; &lt;/note&gt;
--- @param Iops [IntegerOptional] &lt;p&gt; The new Provisioned IOPS (I/O operations per second) value for the RDS instance. Changing this setting does not result in an outage and the change is applied during the next maintenance window unless the &lt;code&gt;ApplyImmediately&lt;/code&gt; parameter is set to &lt;code&gt;true&lt;/code&gt; for this request. &lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value. If you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will require a reboot for the change in storage type to take effect.&lt;/p&gt; &lt;p&gt; &lt;b&gt;SQL Server&lt;/b&gt; &lt;/p&gt; &lt;p&gt;Setting the IOPS value for the SQL Server database engine is not supported.&lt;/p&gt; &lt;p&gt;Type: Integer&lt;/p&gt; &lt;p&gt;If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance will be available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.&lt;/p&gt;
--- @param DBInstanceClass [String] &lt;p&gt; The new compute and memory capacity of the DB instance. To determine the instance classes that are available for a particular DB engine, use the &lt;a&gt;DescribeOrderableDBInstanceOptions&lt;/a&gt; action. Note that not all instance classes are available in all regions for all DB engines. &lt;/p&gt; &lt;p&gt; Passing a value for this setting causes an outage during the change and is applied during the next maintenance window, unless &lt;code&gt;ApplyImmediately&lt;/code&gt; is specified as &lt;code&gt;true&lt;/code&gt; for this request. &lt;/p&gt; &lt;p&gt;Default: Uses existing setting&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large&lt;/code&gt; &lt;/p&gt;
--- @param DBInstanceIdentifier [String] &lt;p&gt;The DB instance identifier. This value is stored as a lowercase string.&lt;/p&gt; &lt;p&gt;Constraints:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be the identifier for an existing DB instance&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain from 1 to 63 alphanumeric characters or hyphens&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;First character must be a letter&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cannot end with a hyphen or contain two consecutive hyphens&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p/>
+-- @param DBParameterGroupName [String] <p>The name of the DB parameter group to apply to the DB instance. Changing this setting does not result in an outage. The parameter group name itself is changed immediately, but the actual parameter changes are not applied until you reboot the instance without failover. The db instance will NOT be rebooted automatically and the parameter changes will NOT be applied during the next maintenance window.</p> <p>Default: Uses existing setting</p> <p>Constraints: The DB parameter group must be in the same DB parameter group family as this DB instance.</p>
+-- @param AllowMajorVersionUpgrade [Boolean] <p>Indicates that major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.</p> <p>Constraints: This parameter must be set to true when specifying a value for the EngineVersion parameter that is a different major version than the DB instance's current version.</p>
+-- @param DomainIAMRoleName [String] <p>The name of the IAM role to use when making API calls to the Directory Service.</p>
+-- @param MonitoringInterval [IntegerOptional] <p>The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.</p> <p>If <code>MonitoringRoleArn</code> is specified, then you must also set <code>MonitoringInterval</code> to a value other than 0.</p> <p>Valid Values: <code>0, 1, 5, 10, 15, 30, 60</code> </p>
+-- @param LicenseModel [String] <p>The license model for the DB instance.</p> <p>Valid values: <code>license-included</code> | <code>bring-your-own-license</code> | <code>general-public-license</code> </p>
+-- @param VpcSecurityGroupIds [VpcSecurityGroupIdList] <p>A list of EC2 VPC security groups to authorize on this DB instance. This change is asynchronously applied as soon as possible.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param EnableIAMDatabaseAuthentication [BooleanOptional] <p>True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts; otherwise false.</p> <p> You can enable IAM database authentication for the following database engines</p> <ul> <li> <p>For MySQL 5.6, minor version 5.6.34 or higher</p> </li> <li> <p>For MySQL 5.7, minor version 5.7.16 or higher</p> </li> </ul> <p>Default: <code>false</code> </p>
+-- @param CopyTagsToSnapshot [BooleanOptional] <p>True to copy all tags from the DB instance to snapshots of the DB instance; otherwise false. The default is false.</p>
+-- @param NewDBInstanceIdentifier [String] <p> The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB instance identifier, an instance reboot will occur immediately if you set <code>Apply Immediately</code> to true, or will occur during the next maintenance window if <code>Apply Immediately</code> to false. This value is stored as a lowercase string. </p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param MultiAZ [BooleanOptional] <p> Specifies if the DB instance is a Multi-AZ deployment. Changing this parameter does not result in an outage and the change is applied during the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. </p> <p>Constraints: Cannot be specified if the DB instance is a Read Replica.</p>
+-- @param DBSecurityGroups [DBSecurityGroupNameList] <p>A list of DB security groups to authorize on this DB instance. Changing this setting does not result in an outage and the change is asynchronously applied as soon as possible.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
+-- @param PubliclyAccessible [BooleanOptional] <p>Boolean value that indicates if the DB instance has a publicly resolvable DNS name. Set to <code>True</code> to make the DB instance Internet-facing with a publicly resolvable DNS name, which resolves to a public IP address. Set to <code>False</code> to make the DB instance internal with a DNS name that resolves to a private IP address. </p> <p> <code>PubliclyAccessible</code> only applies to DB instances in a VPC. The DB instance must be part of a public subnet and <code>PubliclyAccessible</code> must be true in order for it to be publicly accessible. </p> <p>Changes to the <code>PubliclyAccessible</code> parameter are applied immediately regardless of the value of the <code>ApplyImmediately</code> parameter.</p> <p>Default: false</p>
+-- @param AutoMinorVersionUpgrade [BooleanOptional] <p> Indicates that minor version upgrades will be applied automatically to the DB instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code> during the maintenance window, and a newer minor version is available, and RDS has enabled auto patching for that engine version. </p>
+-- @param PreferredBackupWindow [String] <p> The daily time range during which automated backups are created if automated backups are enabled, as determined by the <code>BackupRetentionPeriod</code> parameter. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible. </p> <p>Constraints:</p> <ul> <li> <p>Must be in the format hh24:mi-hh24:mi</p> </li> <li> <p>Times should be in Universal Time Coordinated (UTC)</p> </li> <li> <p>Must not conflict with the preferred maintenance window</p> </li> <li> <p>Must be at least 30 minutes</p> </li> </ul>
+-- @param PromotionTier [IntegerOptional] <p>A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance"> Fault Tolerance for an Aurora DB Cluster</a>. </p> <p>Default: 1</p> <p>Valid Values: 0 - 15</p>
+-- @param TdeCredentialArn [String] <p>The ARN from the Key Store with which to associate the instance for TDE encryption.</p>
+-- @param AllocatedStorage [IntegerOptional] <p> The new storage capacity of the RDS instance. Changing this setting does not result in an outage and the change is applied during the next maintenance window unless <code>ApplyImmediately</code> is set to <code>true</code> for this request. </p> <p> <b>MySQL</b> </p> <p>Default: Uses existing setting</p> <p>Valid Values: 5-6144</p> <p>Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.</p> <p>Type: Integer</p> <p> <b>MariaDB</b> </p> <p>Default: Uses existing setting</p> <p>Valid Values: 5-6144</p> <p>Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.</p> <p>Type: Integer</p> <p> <b>PostgreSQL</b> </p> <p>Default: Uses existing setting</p> <p>Valid Values: 5-6144</p> <p>Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.</p> <p>Type: Integer</p> <p> <b>Oracle</b> </p> <p>Default: Uses existing setting</p> <p>Valid Values: 10-6144</p> <p>Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value.</p> <p> <b>SQL Server</b> </p> <p>Cannot be modified.</p> <p>If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance will be available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.</p>
+-- @param DBSubnetGroupName [String] <p>The new DB subnet group for the DB instance. You can use this parameter to move your DB instance to a different VPC. If your DB instance is not in a VPC, you can also use this parameter to move your DB instance into a VPC. For more information, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC">Updating the VPC for a DB Instance</a>. </p> <p>Changing the subnet group causes an outage during the change. The change is applied during the next maintenance window, unless you specify <code>true</code> for the <code>ApplyImmediately</code> parameter. </p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, underscores, spaces, or hyphens.</p> <p>Example: <code>mySubnetGroup</code> </p>
+-- @param PreferredMaintenanceWindow [String] <p>The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage. Changing this parameter does not result in an outage, except in the following situation, and the change is asynchronously applied as soon as possible. If there are pending actions that cause a reboot, and the maintenance window is changed to include the current time, then changing this parameter will cause a reboot of the DB instance. If moving this window to the current time, there must be at least 30 minutes between the current time and end of the window to ensure pending changes are applied.</p> <p>Default: Uses existing setting</p> <p>Format: ddd:hh24:mi-ddd:hh24:mi</p> <p>Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Must be at least 30 minutes</p>
+-- @param TdeCredentialPassword [String] <p>The password for the given ARN from the Key Store in order to access the device.</p>
+-- @param DBPortNumber [IntegerOptional] <p>The port number on which the database accepts connections.</p> <p>The value of the <code>DBPortNumber</code> parameter must not match any of the port values specified for options in the option group for the DB instance.</p> <p>Your database will restart when you change the <code>DBPortNumber</code> value regardless of the value of the <code>ApplyImmediately</code> parameter.</p> <p> <b>MySQL</b> </p> <p> Default: <code>3306</code> </p> <p> Valid Values: <code>1150-65535</code> </p> <p> <b>MariaDB</b> </p> <p> Default: <code>3306</code> </p> <p> Valid Values: <code>1150-65535</code> </p> <p> <b>PostgreSQL</b> </p> <p> Default: <code>5432</code> </p> <p> Valid Values: <code>1150-65535</code> </p> <p>Type: Integer</p> <p> <b>Oracle</b> </p> <p> Default: <code>1521</code> </p> <p> Valid Values: <code>1150-65535</code> </p> <p> <b>SQL Server</b> </p> <p> Default: <code>1433</code> </p> <p> Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>, <code>49152</code>, and <code>49152</code> through <code>49156</code>. </p> <p> <b>Amazon Aurora</b> </p> <p> Default: <code>3306</code> </p> <p> Valid Values: <code>1150-65535</code> </p>
+-- @param ApplyImmediately [Boolean] <p>Specifies whether the modifications in this request and any pending modifications are asynchronously applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB instance. </p> <p> If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next maintenance window. Some parameter changes can cause an outage and will be applied on the next call to <a>RebootDBInstance</a>, or the next failure reboot. Review the table of parameters in <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html">Modifying a DB Instance and Using the Apply Immediately Parameter</a> to see the impact that setting <code>ApplyImmediately</code> to <code>true</code> or <code>false</code> has for each modified parameter and to determine when the changes will be applied. </p> <p>Default: <code>false</code> </p>
+-- @param EngineVersion [String] <p> The version number of the database engine to upgrade to. Changing this parameter results in an outage and the change is applied during the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. </p> <p>For major version upgrades, if a non-default DB parameter group is currently in use, a new DB parameter group in the DB parameter group family for the new engine version must be specified. The new DB parameter group can be the default for that DB parameter group family.</p> <p>For a list of valid engine versions, see <a>CreateDBInstance</a>.</p>
+-- @param BackupRetentionPeriod [IntegerOptional] <p>The number of days to retain automated backups. Setting this parameter to a positive number enables backups. Setting this parameter to 0 disables automated backups.</p> <p>Changing this parameter can result in an outage if you change from 0 to a non-zero value or from a non-zero value to 0. These changes are applied during the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If you change the parameter from one non-zero value to another non-zero value, the change is asynchronously applied as soon as possible.</p> <p>Default: Uses existing setting</p> <p>Constraints:</p> <ul> <li> <p>Must be a value from 0 to 35</p> </li> <li> <p>Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6</p> </li> <li> <p>Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5</p> </li> <li> <p>Cannot be set to 0 if the DB instance is a source to Read Replicas</p> </li> </ul>
+-- @param OptionGroupName [String] <p> Indicates that the DB instance should be associated with the specified option group. Changing this parameter does not result in an outage except in the following case and the change is applied during the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. If the parameter change results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new connections are rejected but existing connections are not interrupted. </p> <p>Permanent options, such as the TDE option for Oracle Advanced Security TDE, cannot be removed from an option group, and that option group cannot be removed from a DB instance once it is associated with a DB instance</p>
+-- @param Domain [String] <p>The Active Directory Domain to move the instance to. Specify <code>none</code> to remove the instance from its current domain. The domain must be created prior to this operation. Currently only a Microsoft SQL Server instance can be created in a Active Directory Domain. </p>
+-- @param MonitoringRoleArn [String] <p>The ARN for the IAM role that permits RDS to send enhanced monitoring metrics to CloudWatch Logs. For example, <code>arn:aws:iam:123456789012:role/emaccess</code>. For information on creating a monitoring role, go to <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole">To create an IAM role for Amazon RDS Enhanced Monitoring</a>.</p> <p>If <code>MonitoringInterval</code> is set to a value other than 0, then you must supply a <code>MonitoringRoleArn</code> value.</p>
+-- @param StorageType [String] <p>Specifies the storage type to be associated with the DB instance.</p> <p> Valid values: <code>standard | gp2 | io1</code> </p> <p> If you specify <code>io1</code>, you must also include a value for the <code>Iops</code> parameter. </p> <p> Default: <code>io1</code> if the <code>Iops</code> parameter is specified; otherwise <code>standard</code> </p>
+-- @param CACertificateIdentifier [String] <p>Indicates the certificate that needs to be associated with the instance.</p>
+-- @param MasterUserPassword [String] <p>The new password for the DB instance master user. Can be any printable ASCII character except "/", """, or "@".</p> <p> Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible. Between the time of the request and the completion of the request, the <code>MasterUserPassword</code> element exists in the <code>PendingModifiedValues</code> element of the operation response. </p> <p>Default: Uses existing setting</p> <p>Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB, and Amazon Aurora), 8 to 30 alphanumeric characters (Oracle), or 8 to 128 alphanumeric characters (SQL Server).</p> <note> <p>Amazon RDS API actions never return the password, so this action provides a way to regain access to a primary instance user if the password is lost. This includes restoring privileges that might have been accidentally revoked.</p> </note>
+-- @param Iops [IntegerOptional] <p> The new Provisioned IOPS (I/O operations per second) value for the RDS instance. Changing this setting does not result in an outage and the change is applied during the next maintenance window unless the <code>ApplyImmediately</code> parameter is set to <code>true</code> for this request. </p> <p>Default: Uses existing setting</p> <p>Constraints: Value supplied must be at least 10% greater than the current value. Values that are not at least 10% greater than the existing value are rounded up so that they are 10% greater than the current value. If you are migrating from Provisioned IOPS to standard storage, set this value to 0. The DB instance will require a reboot for the change in storage type to take effect.</p> <p> <b>SQL Server</b> </p> <p>Setting the IOPS value for the SQL Server database engine is not supported.</p> <p>Type: Integer</p> <p>If you choose to migrate your DB instance from using standard storage to using Provisioned IOPS, or from using Provisioned IOPS to using standard storage, the process can take time. The duration of the migration depends on several factors such as database load, storage size, storage type (standard or Provisioned IOPS), amount of IOPS provisioned (if any), and the number of prior scale storage operations. Typical migration times are under 24 hours, but the process can take up to several days in some cases. During the migration, the DB instance will be available for use, but might experience performance degradation. While the migration takes place, nightly backups for the instance will be suspended. No other Amazon RDS operations can take place for the instance, including modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.</p>
+-- @param DBInstanceClass [String] <p> The new compute and memory capacity of the DB instance. To determine the instance classes that are available for a particular DB engine, use the <a>DescribeOrderableDBInstanceOptions</a> action. Note that not all instance classes are available in all regions for all DB engines. </p> <p> Passing a value for this setting causes an outage during the change and is applied during the next maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request. </p> <p>Default: Uses existing setting</p> <p>Valid Values: <code>db.t1.micro | db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large</code> </p>
+-- @param DBInstanceIdentifier [String] <p>The DB instance identifier. This value is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must be the identifier for an existing DB instance</p> </li> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- Required parameter: DBInstanceIdentifier
 function M.ModifyDBInstanceMessage(DBParameterGroupName, AllowMajorVersionUpgrade, DomainIAMRoleName, MonitoringInterval, LicenseModel, VpcSecurityGroupIds, EnableIAMDatabaseAuthentication, CopyTagsToSnapshot, NewDBInstanceIdentifier, MultiAZ, DBSecurityGroups, PubliclyAccessible, AutoMinorVersionUpgrade, PreferredBackupWindow, PromotionTier, TdeCredentialArn, AllocatedStorage, DBSubnetGroupName, PreferredMaintenanceWindow, TdeCredentialPassword, DBPortNumber, ApplyImmediately, EngineVersion, BackupRetentionPeriod, OptionGroupName, Domain, MonitoringRoleArn, StorageType, CACertificateIdentifier, MasterUserPassword, Iops, DBInstanceClass, DBInstanceIdentifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyDBInstanceMessage")
@@ -9197,7 +9197,7 @@ function M.AssertSubnetAlreadyInUse(struct)
 end
 
 --- Create a structure of type SubnetAlreadyInUse
--- &lt;p&gt;The DB subnet is already in use in the Availability Zone.&lt;/p&gt;
+-- <p>The DB subnet is already in use in the Availability Zone.</p>
 function M.SubnetAlreadyInUse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubnetAlreadyInUse")
 	local t = { 
@@ -9590,7 +9590,7 @@ function M.AssertOptionGroupOptionsList(list)
 	end
 end
 
--- &lt;p&gt;List of available option group options.&lt;/p&gt;
+-- <p>List of available option group options.</p>
 -- List of OptionGroupOption objects
 function M.OptionGroupOptionsList(list)
 	M.AssertOptionGroupOptionsList(list)
@@ -9740,7 +9740,7 @@ function M.AssertTagList(list)
 	end
 end
 
--- &lt;p&gt;A list of tags.&lt;/p&gt;
+-- <p>A list of tags.</p>
 -- List of Tag objects
 function M.TagList(list)
 	M.AssertTagList(list)
@@ -9830,7 +9830,7 @@ function M.AssertDomainMembershipList(list)
 	end
 end
 
--- &lt;p&gt;List of Active Directory Domain membership records associated with a DB instance.&lt;/p&gt;
+-- <p>List of Active Directory Domain membership records associated with a DB instance.</p>
 -- List of DomainMembership objects
 function M.DomainMembershipList(list)
 	M.AssertDomainMembershipList(list)

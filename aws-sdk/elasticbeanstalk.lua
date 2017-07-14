@@ -29,7 +29,7 @@ function M.AssertInvalidRequestException(struct)
 end
 
 --- Create a structure of type InvalidRequestException
--- &lt;p&gt;One or more input parameters is not valid. Please correct the input parameters and try the operation again.&lt;/p&gt;
+-- <p>One or more input parameters is not valid. Please correct the input parameters and try the operation again.</p>
 function M.InvalidRequestException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
@@ -53,10 +53,10 @@ function M.AssertApplyEnvironmentManagedActionRequest(struct)
 end
 
 --- Create a structure of type ApplyEnvironmentManagedActionRequest
--- &lt;p&gt;Request to execute a scheduled managed action immediately.&lt;/p&gt;
--- @param EnvironmentName [String] &lt;p&gt;The name of the target environment.&lt;/p&gt;
--- @param ActionId [String] &lt;p&gt;The action ID of the scheduled managed action to execute.&lt;/p&gt;
--- @param EnvironmentId [String] &lt;p&gt;The environment ID of the target environment.&lt;/p&gt;
+-- <p>Request to execute a scheduled managed action immediately.</p>
+-- @param EnvironmentName [String] <p>The name of the target environment.</p>
+-- @param ActionId [String] <p>The action ID of the scheduled managed action to execute.</p>
+-- @param EnvironmentId [String] <p>The environment ID of the target environment.</p>
 -- Required parameter: ActionId
 function M.ApplyEnvironmentManagedActionRequest(EnvironmentName, ActionId, EnvironmentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplyEnvironmentManagedActionRequest")
@@ -80,7 +80,7 @@ function M.AssertTooManyApplicationVersionsException(struct)
 end
 
 --- Create a structure of type TooManyApplicationVersionsException
--- &lt;p&gt;The specified account has reached its limit of application versions.&lt;/p&gt;
+-- <p>The specified account has reached its limit of application versions.</p>
 function M.TooManyApplicationVersionsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyApplicationVersionsException")
 	local t = { 
@@ -100,7 +100,7 @@ function M.AssertInsufficientPrivilegesException(struct)
 end
 
 --- Create a structure of type InsufficientPrivilegesException
--- &lt;p&gt;The specified account does not have sufficient privileges for one of more AWS services.&lt;/p&gt;
+-- <p>The specified account does not have sufficient privileges for one of more AWS services.</p>
 function M.InsufficientPrivilegesException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientPrivilegesException")
 	local t = { 
@@ -120,7 +120,7 @@ function M.AssertTooManyBucketsException(struct)
 end
 
 --- Create a structure of type TooManyBucketsException
--- &lt;p&gt;The specified account has reached its limit of Amazon S3 buckets.&lt;/p&gt;
+-- <p>The specified account has reached its limit of Amazon S3 buckets.</p>
 function M.TooManyBucketsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyBucketsException")
 	local t = { 
@@ -149,16 +149,16 @@ function M.AssertEventDescription(struct)
 end
 
 --- Create a structure of type EventDescription
--- &lt;p&gt;Describes an event.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The application associated with the event.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment associated with this event.&lt;/p&gt;
--- @param VersionLabel [VersionLabel] &lt;p&gt;The release label for the application version associated with this event.&lt;/p&gt;
--- @param Severity [EventSeverity] &lt;p&gt;The severity level of this event.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;The name of the configuration associated with this event.&lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the custom platform.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;The web service request ID for the activity of this event.&lt;/p&gt;
--- @param Message [EventMessage] &lt;p&gt;The event message.&lt;/p&gt;
--- @param EventDate [EventDate] &lt;p&gt;The date when the event occurred.&lt;/p&gt;
+-- <p>Describes an event.</p>
+-- @param ApplicationName [ApplicationName] <p>The application associated with the event.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment associated with this event.</p>
+-- @param VersionLabel [VersionLabel] <p>The release label for the application version associated with this event.</p>
+-- @param Severity [EventSeverity] <p>The severity level of this event.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p>The name of the configuration associated with this event.</p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- @param RequestId [RequestId] <p>The web service request ID for the activity of this event.</p>
+-- @param Message [EventMessage] <p>The event message.</p>
+-- @param EventDate [EventDate] <p>The date when the event occurred.</p>
 function M.EventDescription(ApplicationName, EnvironmentName, VersionLabel, Severity, TemplateName, PlatformArn, RequestId, Message, EventDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventDescription")
 	local t = { 
@@ -188,8 +188,8 @@ function M.AssertTrigger(struct)
 end
 
 --- Create a structure of type Trigger
--- &lt;p&gt;Describes a trigger.&lt;/p&gt;
--- @param Name [ResourceId] &lt;p&gt;The name of the trigger.&lt;/p&gt;
+-- <p>Describes a trigger.</p>
+-- @param Name [ResourceId] <p>The name of the trigger.</p>
 function M.Trigger(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Trigger")
 	local t = { 
@@ -224,20 +224,20 @@ function M.AssertCreateEnvironmentMessage(struct)
 end
 
 --- Create a structure of type CreateEnvironmentMessage
--- &lt;p/&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application that contains the version to be deployed.&lt;/p&gt; &lt;p&gt; If no application is found with this name, &lt;code&gt;CreateEnvironment&lt;/code&gt; returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;A unique name for the deployment environment. Used in the application URL.&lt;/p&gt; &lt;p&gt;Constraint: Must be from 4 to 40 characters in length. The name can contain only letters, numbers, and hyphens. It cannot start or end with a hyphen. This name must be unique in your account. If the specified name already exists, AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt; &lt;p&gt;Default: If the CNAME parameter is not specified, the environment name becomes part of the CNAME, and therefore part of the visible URL for your application.&lt;/p&gt;
--- @param VersionLabel [VersionLabel] &lt;p&gt;The name of the application version to deploy.&lt;/p&gt; &lt;p&gt; If the specified application has no associated application versions, AWS Elastic Beanstalk &lt;code&gt;UpdateEnvironment&lt;/code&gt; returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt; &lt;p&gt;Default: If not specified, AWS Elastic Beanstalk attempts to launch the sample application in the container.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;Describes this environment.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;This specifies the tags applied to resources in the environment.&lt;/p&gt;
--- @param CNAMEPrefix [DNSCnamePrefix] &lt;p&gt;If specified, the environment attempts to use this value as the prefix for the CNAME. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt; The name of the configuration template to use in deployment. If no configuration template is found with this name, AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param SolutionStackName [SolutionStackName] &lt;p&gt;This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration values to the default values associated with the specified solution stack.&lt;/p&gt;
--- @param GroupName [GroupName] &lt;p&gt;The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name parameter. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html&quot;&gt;Environment Manifest (env.yaml)&lt;/a&gt; for details.&lt;/p&gt;
--- @param OptionSettings [ConfigurationOptionSettingsList] &lt;p&gt;If specified, AWS Elastic Beanstalk sets the specified configuration options to the requested value in the configuration set for the new environment. These override the values obtained from the solution stack or the configuration template.&lt;/p&gt;
--- @param Tier [EnvironmentTier] &lt;p&gt;This specifies the tier to use for creating this environment.&lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the custom platform.&lt;/p&gt;
--- @param OptionsToRemove [OptionsSpecifierList] &lt;p&gt;A list of custom user-defined configuration options to remove from the configuration set for this new environment.&lt;/p&gt;
+-- <p/>
+-- @param ApplicationName [ApplicationName] <p>The name of the application that contains the version to be deployed.</p> <p> If no application is found with this name, <code>CreateEnvironment</code> returns an <code>InvalidParameterValue</code> error. </p>
+-- @param EnvironmentName [EnvironmentName] <p>A unique name for the deployment environment. Used in the application URL.</p> <p>Constraint: Must be from 4 to 40 characters in length. The name can contain only letters, numbers, and hyphens. It cannot start or end with a hyphen. This name must be unique in your account. If the specified name already exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>Default: If the CNAME parameter is not specified, the environment name becomes part of the CNAME, and therefore part of the visible URL for your application.</p>
+-- @param VersionLabel [VersionLabel] <p>The name of the application version to deploy.</p> <p> If the specified application has no associated application versions, AWS Elastic Beanstalk <code>UpdateEnvironment</code> returns an <code>InvalidParameterValue</code> error. </p> <p>Default: If not specified, AWS Elastic Beanstalk attempts to launch the sample application in the container.</p>
+-- @param Description [Description] <p>Describes this environment.</p>
+-- @param Tags [Tags] <p>This specifies the tags applied to resources in the environment.</p>
+-- @param CNAMEPrefix [DNSCnamePrefix] <p>If specified, the environment attempts to use this value as the prefix for the CNAME. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p> The name of the configuration template to use in deployment. If no configuration template is found with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- @param SolutionStackName [SolutionStackName] <p>This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration values to the default values associated with the specified solution stack.</p>
+-- @param GroupName [GroupName] <p>The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name parameter. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
+-- @param OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk sets the specified configuration options to the requested value in the configuration set for the new environment. These override the values obtained from the solution stack or the configuration template.</p>
+-- @param Tier [EnvironmentTier] <p>This specifies the tier to use for creating this environment.</p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- @param OptionsToRemove [OptionsSpecifierList] <p>A list of custom user-defined configuration options to remove from the configuration set for this new environment.</p>
 -- Required parameter: ApplicationName
 function M.CreateEnvironmentMessage(ApplicationName, EnvironmentName, VersionLabel, Description, Tags, CNAMEPrefix, TemplateName, SolutionStackName, GroupName, OptionSettings, Tier, PlatformArn, OptionsToRemove, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateEnvironmentMessage")
@@ -278,14 +278,14 @@ function M.AssertEnvironmentResourceDescription(struct)
 end
 
 --- Create a structure of type EnvironmentResourceDescription
--- &lt;p&gt;Describes the AWS resources in use by this environment. This data is live.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment.&lt;/p&gt;
--- @param AutoScalingGroups [AutoScalingGroupList] &lt;p&gt; The &lt;code&gt;AutoScalingGroups&lt;/code&gt; used by this environment. &lt;/p&gt;
--- @param Triggers [TriggerList] &lt;p&gt;The &lt;code&gt;AutoScaling&lt;/code&gt; triggers in use by this environment. &lt;/p&gt;
--- @param LoadBalancers [LoadBalancerList] &lt;p&gt;The LoadBalancers in use by this environment.&lt;/p&gt;
--- @param Queues [QueueList] &lt;p&gt;The queues used by this environment.&lt;/p&gt;
--- @param Instances [InstanceList] &lt;p&gt;The Amazon EC2 instances used by this environment.&lt;/p&gt;
--- @param LaunchConfigurations [LaunchConfigurationList] &lt;p&gt;The Auto Scaling launch configurations in use by this environment.&lt;/p&gt;
+-- <p>Describes the AWS resources in use by this environment. This data is live.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment.</p>
+-- @param AutoScalingGroups [AutoScalingGroupList] <p> The <code>AutoScalingGroups</code> used by this environment. </p>
+-- @param Triggers [TriggerList] <p>The <code>AutoScaling</code> triggers in use by this environment. </p>
+-- @param LoadBalancers [LoadBalancerList] <p>The LoadBalancers in use by this environment.</p>
+-- @param Queues [QueueList] <p>The queues used by this environment.</p>
+-- @param Instances [InstanceList] <p>The Amazon EC2 instances used by this environment.</p>
+-- @param LaunchConfigurations [LaunchConfigurationList] <p>The Auto Scaling launch configurations in use by this environment.</p>
 function M.EnvironmentResourceDescription(EnvironmentName, AutoScalingGroups, Triggers, LoadBalancers, Queues, Instances, LaunchConfigurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentResourceDescription")
 	local t = { 
@@ -314,9 +314,9 @@ function M.AssertCheckDNSAvailabilityResultMessage(struct)
 end
 
 --- Create a structure of type CheckDNSAvailabilityResultMessage
--- &lt;p&gt;Indicates if the specified CNAME is available.&lt;/p&gt;
--- @param Available [CnameAvailability] &lt;p&gt;Indicates if the specified CNAME is available:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;true&lt;/code&gt; : The CNAME is available.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;false&lt;/code&gt; : The CNAME is not available.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param FullyQualifiedCNAME [DNSCname] &lt;p&gt;The fully qualified CNAME to reserve when &lt;a&gt;CreateEnvironment&lt;/a&gt; is called with the provided prefix.&lt;/p&gt;
+-- <p>Indicates if the specified CNAME is available.</p>
+-- @param Available [CnameAvailability] <p>Indicates if the specified CNAME is available:</p> <ul> <li> <p> <code>true</code> : The CNAME is available.</p> </li> <li> <p> <code>false</code> : The CNAME is not available.</p> </li> </ul>
+-- @param FullyQualifiedCNAME [DNSCname] <p>The fully qualified CNAME to reserve when <a>CreateEnvironment</a> is called with the provided prefix.</p>
 function M.CheckDNSAvailabilityResultMessage(Available, FullyQualifiedCNAME, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CheckDNSAvailabilityResultMessage")
 	local t = { 
@@ -342,11 +342,11 @@ function M.AssertDescribeEnvironmentManagedActionHistoryRequest(struct)
 end
 
 --- Create a structure of type DescribeEnvironmentManagedActionHistoryRequest
--- &lt;p&gt;Request to list completed and failed managed actions.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;The environment ID of the target environment.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;The pagination token returned by a previous request.&lt;/p&gt;
--- @param MaxItems [Integer] &lt;p&gt;The maximum number of items to return for a single request.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the target environment.&lt;/p&gt;
+-- <p>Request to list completed and failed managed actions.</p>
+-- @param EnvironmentId [EnvironmentId] <p>The environment ID of the target environment.</p>
+-- @param NextToken [String] <p>The pagination token returned by a previous request.</p>
+-- @param MaxItems [Integer] <p>The maximum number of items to return for a single request.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the target environment.</p>
 function M.DescribeEnvironmentManagedActionHistoryRequest(EnvironmentId, NextToken, MaxItems, EnvironmentName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentManagedActionHistoryRequest")
 	local t = { 
@@ -372,7 +372,7 @@ end
 
 --- Create a structure of type DescribePlatformVersionResult
 --  
--- @param PlatformDescription [PlatformDescription] &lt;p&gt;Detailed information about the version of the platform.&lt;/p&gt;
+-- @param PlatformDescription [PlatformDescription] <p>Detailed information about the version of the platform.</p>
 function M.DescribePlatformVersionResult(PlatformDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePlatformVersionResult")
 	local t = { 
@@ -400,14 +400,14 @@ function M.AssertCPUUtilization(struct)
 end
 
 --- Create a structure of type CPUUtilization
--- &lt;p&gt;CPU utilization metrics for an instance.&lt;/p&gt;
--- @param SoftIRQ [NullableDouble] &lt;p&gt;Percentage of time that the CPU has spent in the &lt;code&gt;SoftIRQ&lt;/code&gt; state over the last 10 seconds.&lt;/p&gt;
--- @param IOWait [NullableDouble] &lt;p&gt;Percentage of time that the CPU has spent in the &lt;code&gt;I/O Wait&lt;/code&gt; state over the last 10 seconds.&lt;/p&gt;
--- @param System [NullableDouble] &lt;p&gt;Percentage of time that the CPU has spent in the &lt;code&gt;System&lt;/code&gt; state over the last 10 seconds.&lt;/p&gt;
--- @param Idle [NullableDouble] &lt;p&gt;Percentage of time that the CPU has spent in the &lt;code&gt;Idle&lt;/code&gt; state over the last 10 seconds.&lt;/p&gt;
--- @param User [NullableDouble] &lt;p&gt;Percentage of time that the CPU has spent in the &lt;code&gt;User&lt;/code&gt; state over the last 10 seconds.&lt;/p&gt;
--- @param IRQ [NullableDouble] &lt;p&gt;Percentage of time that the CPU has spent in the &lt;code&gt;IRQ&lt;/code&gt; state over the last 10 seconds.&lt;/p&gt;
--- @param Nice [NullableDouble] &lt;p&gt;Percentage of time that the CPU has spent in the &lt;code&gt;Nice&lt;/code&gt; state over the last 10 seconds.&lt;/p&gt;
+-- <p>CPU utilization metrics for an instance.</p>
+-- @param SoftIRQ [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>SoftIRQ</code> state over the last 10 seconds.</p>
+-- @param IOWait [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>I/O Wait</code> state over the last 10 seconds.</p>
+-- @param System [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>System</code> state over the last 10 seconds.</p>
+-- @param Idle [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>Idle</code> state over the last 10 seconds.</p>
+-- @param User [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>User</code> state over the last 10 seconds.</p>
+-- @param IRQ [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>IRQ</code> state over the last 10 seconds.</p>
+-- @param Nice [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>Nice</code> state over the last 10 seconds.</p>
 function M.CPUUtilization(SoftIRQ, IOWait, System, Idle, User, IRQ, Nice, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CPUUtilization")
 	local t = { 
@@ -434,7 +434,7 @@ function M.AssertManagedActionInvalidStateException(struct)
 end
 
 --- Create a structure of type ManagedActionInvalidStateException
--- &lt;p&gt;Cannot modify the managed action in its current state.&lt;/p&gt;
+-- <p>Cannot modify the managed action in its current state.</p>
 function M.ManagedActionInvalidStateException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ManagedActionInvalidStateException")
 	local t = { 
@@ -458,11 +458,11 @@ function M.AssertStatusCodes(struct)
 end
 
 --- Create a structure of type StatusCodes
--- &lt;p&gt;Represents the percentage of requests over the last 10 seconds that resulted in each type of status code response. For more information, see &lt;a href=&quot;http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html&quot;&gt;Status Code Definitions&lt;/a&gt;.&lt;/p&gt;
--- @param Status3xx [NullableInteger] &lt;p&gt;The percentage of requests over the last 10 seconds that resulted in a 3xx (300, 301, etc.) status code.&lt;/p&gt;
--- @param Status2xx [NullableInteger] &lt;p&gt;The percentage of requests over the last 10 seconds that resulted in a 2xx (200, 201, etc.) status code.&lt;/p&gt;
--- @param Status5xx [NullableInteger] &lt;p&gt;The percentage of requests over the last 10 seconds that resulted in a 5xx (500, 501, etc.) status code.&lt;/p&gt;
--- @param Status4xx [NullableInteger] &lt;p&gt;The percentage of requests over the last 10 seconds that resulted in a 4xx (400, 401, etc.) status code.&lt;/p&gt;
+-- <p>Represents the percentage of requests over the last 10 seconds that resulted in each type of status code response. For more information, see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Status Code Definitions</a>.</p>
+-- @param Status3xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 3xx (300, 301, etc.) status code.</p>
+-- @param Status2xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 2xx (200, 201, etc.) status code.</p>
+-- @param Status5xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 5xx (500, 501, etc.) status code.</p>
+-- @param Status4xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 4xx (400, 401, etc.) status code.</p>
 function M.StatusCodes(Status3xx, Status2xx, Status5xx, Status4xx, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StatusCodes")
 	local t = { 
@@ -487,8 +487,8 @@ function M.AssertEnvironmentResourceDescriptionsMessage(struct)
 end
 
 --- Create a structure of type EnvironmentResourceDescriptionsMessage
--- &lt;p&gt;Result message containing a list of environment resource descriptions.&lt;/p&gt;
--- @param EnvironmentResources [EnvironmentResourceDescription] &lt;p&gt; A list of &lt;a&gt;EnvironmentResourceDescription&lt;/a&gt;. &lt;/p&gt;
+-- <p>Result message containing a list of environment resource descriptions.</p>
+-- @param EnvironmentResources [EnvironmentResourceDescription] <p> A list of <a>EnvironmentResourceDescription</a>. </p>
 function M.EnvironmentResourceDescriptionsMessage(EnvironmentResources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentResourceDescriptionsMessage")
 	local t = { 
@@ -512,10 +512,10 @@ function M.AssertEnvironmentTier(struct)
 end
 
 --- Create a structure of type EnvironmentTier
--- &lt;p&gt;Describes the properties of an environment tier&lt;/p&gt;
--- @param Version [String] &lt;p&gt;The version of this environment tier.&lt;/p&gt;
--- @param Type [String] &lt;p&gt;The type of this environment tier.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of this environment tier.&lt;/p&gt;
+-- <p>Describes the properties of an environment tier</p>
+-- @param Version [String] <p>The version of this environment tier.</p>
+-- @param Type [String] <p>The type of this environment tier.</p>
+-- @param Name [String] <p>The name of this environment tier.</p>
 function M.EnvironmentTier(Version, Type, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentTier")
 	local t = { 
@@ -540,9 +540,9 @@ function M.AssertS3Location(struct)
 end
 
 --- Create a structure of type S3Location
--- &lt;p&gt;The bucket and key of an item stored in Amazon S3.&lt;/p&gt;
--- @param S3Bucket [S3Bucket] &lt;p&gt;The Amazon S3 bucket where the data is located.&lt;/p&gt;
--- @param S3Key [S3Key] &lt;p&gt;The Amazon S3 key where the data is located.&lt;/p&gt;
+-- <p>The bucket and key of an item stored in Amazon S3.</p>
+-- @param S3Bucket [S3Bucket] <p>The Amazon S3 bucket where the data is located.</p>
+-- @param S3Key [S3Key] <p>The Amazon S3 key where the data is located.</p>
 function M.S3Location(S3Bucket, S3Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3Location")
 	local t = { 
@@ -566,8 +566,8 @@ function M.AssertCheckDNSAvailabilityMessage(struct)
 end
 
 --- Create a structure of type CheckDNSAvailabilityMessage
--- &lt;p&gt;Results message indicating whether a CNAME is available.&lt;/p&gt;
--- @param CNAMEPrefix [DNSCnamePrefix] &lt;p&gt;The prefix used when this CNAME is reserved.&lt;/p&gt;
+-- <p>Results message indicating whether a CNAME is available.</p>
+-- @param CNAMEPrefix [DNSCnamePrefix] <p>The prefix used when this CNAME is reserved.</p>
 -- Required parameter: CNAMEPrefix
 function M.CheckDNSAvailabilityMessage(CNAMEPrefix, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CheckDNSAvailabilityMessage")
@@ -599,15 +599,15 @@ function M.AssertCreateConfigurationTemplateMessage(struct)
 end
 
 --- Create a structure of type CreateConfigurationTemplateMessage
--- &lt;p&gt;Request to create a configuration template.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application to associate with this configuration template. If no application is found with this name, AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the custome platform.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;Describes this configuration.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;The ID of the environment used with this configuration template.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;The name of the configuration template.&lt;/p&gt; &lt;p&gt;Constraint: This name must be unique per application.&lt;/p&gt; &lt;p&gt;Default: If a configuration template already exists with this name, AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param SolutionStackName [SolutionStackName] &lt;p&gt;The name of the solution stack used by this configuration. The solution stack specifies the operating system, architecture, and application server for a configuration template. It determines the set of configuration options as well as the possible and default values.&lt;/p&gt; &lt;p&gt; Use &lt;a&gt;ListAvailableSolutionStacks&lt;/a&gt; to obtain a list of available solution stacks. &lt;/p&gt; &lt;p&gt; A solution stack name or a source configuration parameter must be specified, otherwise AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt; &lt;p&gt;If a solution stack name is not specified and the source configuration parameter is specified, AWS Elastic Beanstalk uses the same solution stack as the source configuration template.&lt;/p&gt;
--- @param OptionSettings [ConfigurationOptionSettingsList] &lt;p&gt;If specified, AWS Elastic Beanstalk sets the specified configuration option to the requested value. The new value overrides the value obtained from the solution stack or the source configuration template.&lt;/p&gt;
--- @param SourceConfiguration [SourceConfiguration] &lt;p&gt;If specified, AWS Elastic Beanstalk uses the configuration values from the specified configuration template to create a new configuration.&lt;/p&gt; &lt;p&gt; Values specified in the &lt;code&gt;OptionSettings&lt;/code&gt; parameter of this call overrides any values obtained from the &lt;code&gt;SourceConfiguration&lt;/code&gt;. &lt;/p&gt; &lt;p&gt; If no configuration template is found, returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt; &lt;p&gt; Constraint: If both the solution stack name parameter and the source configuration parameters are specified, the solution stack of the source configuration template must match the specified solution stack name or else AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterCombination&lt;/code&gt; error. &lt;/p&gt;
+-- <p>Request to create a configuration template.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application to associate with this configuration template. If no application is found with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the custome platform.</p>
+-- @param Description [Description] <p>Describes this configuration.</p>
+-- @param EnvironmentId [EnvironmentId] <p>The ID of the environment used with this configuration template.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p>The name of the configuration template.</p> <p>Constraint: This name must be unique per application.</p> <p>Default: If a configuration template already exists with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- @param SolutionStackName [SolutionStackName] <p>The name of the solution stack used by this configuration. The solution stack specifies the operating system, architecture, and application server for a configuration template. It determines the set of configuration options as well as the possible and default values.</p> <p> Use <a>ListAvailableSolutionStacks</a> to obtain a list of available solution stacks. </p> <p> A solution stack name or a source configuration parameter must be specified, otherwise AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>If a solution stack name is not specified and the source configuration parameter is specified, AWS Elastic Beanstalk uses the same solution stack as the source configuration template.</p>
+-- @param OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk sets the specified configuration option to the requested value. The new value overrides the value obtained from the solution stack or the source configuration template.</p>
+-- @param SourceConfiguration [SourceConfiguration] <p>If specified, AWS Elastic Beanstalk uses the configuration values from the specified configuration template to create a new configuration.</p> <p> Values specified in the <code>OptionSettings</code> parameter of this call overrides any values obtained from the <code>SourceConfiguration</code>. </p> <p> If no configuration template is found, returns an <code>InvalidParameterValue</code> error. </p> <p> Constraint: If both the solution stack name parameter and the source configuration parameters are specified, the solution stack of the source configuration template must match the specified solution stack name or else AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. </p>
 -- Required parameter: ApplicationName
 -- Required parameter: TemplateName
 function M.CreateConfigurationTemplateMessage(ApplicationName, PlatformArn, Description, EnvironmentId, TemplateName, SolutionStackName, OptionSettings, SourceConfiguration, ...)
@@ -641,10 +641,10 @@ function M.AssertDescribeConfigurationSettingsMessage(struct)
 end
 
 --- Create a structure of type DescribeConfigurationSettingsMessage
--- &lt;p&gt;Result message containing all of the configuration settings for a specified solution stack or configuration template.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The application for the environment or configuration template.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment to describe.&lt;/p&gt; &lt;p&gt; Condition: You must specify either this or a TemplateName, but not both. If you specify both, AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterCombination&lt;/code&gt; error. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;The name of the configuration template to describe.&lt;/p&gt; &lt;p&gt; Conditional: You must specify either this parameter or an EnvironmentName, but not both. If you specify both, AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterCombination&lt;/code&gt; error. If you do not specify either, AWS Elastic Beanstalk returns a &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
+-- <p>Result message containing all of the configuration settings for a specified solution stack or configuration template.</p>
+-- @param ApplicationName [ApplicationName] <p>The application for the environment or configuration template.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment to describe.</p> <p> Condition: You must specify either this or a TemplateName, but not both. If you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @param TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to describe.</p> <p> Conditional: You must specify either this parameter or an EnvironmentName, but not both. If you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error. </p>
 -- Required parameter: ApplicationName
 function M.DescribeConfigurationSettingsMessage(ApplicationName, EnvironmentName, TemplateName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationSettingsMessage")
@@ -668,7 +668,7 @@ function M.AssertS3LocationNotInServiceRegionException(struct)
 end
 
 --- Create a structure of type S3LocationNotInServiceRegionException
--- &lt;p&gt;The specified S3 bucket does not belong to the S3 region in which the service is running. The following regions are supported:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;IAD/us-east-1&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;PDX/us-west-2&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;DUB/eu-west-1&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The specified S3 bucket does not belong to the S3 region in which the service is running. The following regions are supported:</p> <ul> <li> <p>IAD/us-east-1</p> </li> <li> <p>PDX/us-west-2</p> </li> <li> <p>DUB/eu-west-1</p> </li> </ul>
 function M.S3LocationNotInServiceRegionException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3LocationNotInServiceRegionException")
 	local t = { 
@@ -696,15 +696,15 @@ function M.AssertDescribeEnvironmentHealthResult(struct)
 end
 
 --- Create a structure of type DescribeEnvironmentHealthResult
--- &lt;p&gt;Health details for an AWS Elastic Beanstalk environment.&lt;/p&gt;
--- @param Status [EnvironmentHealth] &lt;p&gt;The environment's operational status. &lt;code&gt;Ready&lt;/code&gt;, &lt;code&gt;Launching&lt;/code&gt;, &lt;code&gt;Updating&lt;/code&gt;, &lt;code&gt;Terminating&lt;/code&gt;, or &lt;code&gt;Terminated&lt;/code&gt;.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The environment's name.&lt;/p&gt;
--- @param Color [String] &lt;p&gt;The &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html&quot;&gt;health color&lt;/a&gt; of the environment.&lt;/p&gt;
--- @param ApplicationMetrics [ApplicationMetrics] &lt;p&gt;Application request metrics for the environment.&lt;/p&gt;
--- @param RefreshedAt [RefreshedAt] &lt;p&gt;The date and time that the health information was retrieved.&lt;/p&gt;
--- @param HealthStatus [String] &lt;p&gt;The &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html&quot;&gt;health status&lt;/a&gt; of the environment. For example, &lt;code&gt;Ok&lt;/code&gt;.&lt;/p&gt;
--- @param InstancesHealth [InstanceHealthSummary] &lt;p&gt;Summary health information for the instances in the environment.&lt;/p&gt;
--- @param Causes [Causes] &lt;p&gt;Descriptions of the data that contributed to the environment's current health status.&lt;/p&gt;
+-- <p>Health details for an AWS Elastic Beanstalk environment.</p>
+-- @param Status [EnvironmentHealth] <p>The environment's operational status. <code>Ready</code>, <code>Launching</code>, <code>Updating</code>, <code>Terminating</code>, or <code>Terminated</code>.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The environment's name.</p>
+-- @param Color [String] <p>The <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">health color</a> of the environment.</p>
+-- @param ApplicationMetrics [ApplicationMetrics] <p>Application request metrics for the environment.</p>
+-- @param RefreshedAt [RefreshedAt] <p>The date and time that the health information was retrieved.</p>
+-- @param HealthStatus [String] <p>The <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">health status</a> of the environment. For example, <code>Ok</code>.</p>
+-- @param InstancesHealth [InstanceHealthSummary] <p>Summary health information for the instances in the environment.</p>
+-- @param Causes [Causes] <p>Descriptions of the data that contributed to the environment's current health status.</p>
 function M.DescribeEnvironmentHealthResult(Status, EnvironmentName, Color, ApplicationMetrics, RefreshedAt, HealthStatus, InstancesHealth, Causes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentHealthResult")
 	local t = { 
@@ -733,8 +733,8 @@ function M.AssertConfigurationSettingsDescriptions(struct)
 end
 
 --- Create a structure of type ConfigurationSettingsDescriptions
--- &lt;p&gt;The results from a request to change the configuration settings of an environment.&lt;/p&gt;
--- @param ConfigurationSettings [ConfigurationSettingsDescriptionList] &lt;p&gt; A list of &lt;a&gt;ConfigurationSettingsDescription&lt;/a&gt;. &lt;/p&gt;
+-- <p>The results from a request to change the configuration settings of an environment.</p>
+-- @param ConfigurationSettings [ConfigurationSettingsDescriptionList] <p> A list of <a>ConfigurationSettingsDescription</a>. </p>
 function M.ConfigurationSettingsDescriptions(ConfigurationSettings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSettingsDescriptions")
 	local t = { 
@@ -759,10 +759,10 @@ function M.AssertMaxAgeRule(struct)
 end
 
 --- Create a structure of type MaxAgeRule
--- &lt;p&gt;A lifecycle rule that deletes application versions after the specified number of days.&lt;/p&gt;
--- @param DeleteSourceFromS3 [BoxedBoolean] &lt;p&gt;Set to &lt;code&gt;true&lt;/code&gt; to delete a version's source bundle from Amazon S3 when Elastic Beanstalk deletes the application version.&lt;/p&gt;
--- @param Enabled [BoxedBoolean] &lt;p&gt;Specify &lt;code&gt;true&lt;/code&gt; to apply the rule, or &lt;code&gt;false&lt;/code&gt; to disable it.&lt;/p&gt;
--- @param MaxAgeInDays [BoxedInt] &lt;p&gt;Specify the number of days to retain an application versions.&lt;/p&gt;
+-- <p>A lifecycle rule that deletes application versions after the specified number of days.</p>
+-- @param DeleteSourceFromS3 [BoxedBoolean] <p>Set to <code>true</code> to delete a version's source bundle from Amazon S3 when Elastic Beanstalk deletes the application version.</p>
+-- @param Enabled [BoxedBoolean] <p>Specify <code>true</code> to apply the rule, or <code>false</code> to disable it.</p>
+-- @param MaxAgeInDays [BoxedInt] <p>Specify the number of days to retain an application versions.</p>
 -- Required parameter: Enabled
 function M.MaxAgeRule(DeleteSourceFromS3, Enabled, MaxAgeInDays, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaxAgeRule")
@@ -791,12 +791,12 @@ function M.AssertManagedAction(struct)
 end
 
 --- Create a structure of type ManagedAction
--- &lt;p&gt;The record of an upcoming or in-progress managed action.&lt;/p&gt;
--- @param Status [ActionStatus] &lt;p&gt;The status of the managed action. If the action is &lt;code&gt;Scheduled&lt;/code&gt;, you can apply it immediately with &lt;a&gt;ApplyEnvironmentManagedAction&lt;/a&gt;.&lt;/p&gt;
--- @param WindowStartTime [Timestamp] &lt;p&gt;The start time of the maintenance window in which the managed action will execute.&lt;/p&gt;
--- @param ActionType [ActionType] &lt;p&gt;The type of managed action.&lt;/p&gt;
--- @param ActionId [String] &lt;p&gt;A unique identifier for the managed action.&lt;/p&gt;
--- @param ActionDescription [String] &lt;p&gt;A description of the managed action.&lt;/p&gt;
+-- <p>The record of an upcoming or in-progress managed action.</p>
+-- @param Status [ActionStatus] <p>The status of the managed action. If the action is <code>Scheduled</code>, you can apply it immediately with <a>ApplyEnvironmentManagedAction</a>.</p>
+-- @param WindowStartTime [Timestamp] <p>The start time of the maintenance window in which the managed action will execute.</p>
+-- @param ActionType [ActionType] <p>The type of managed action.</p>
+-- @param ActionId [String] <p>A unique identifier for the managed action.</p>
+-- @param ActionDescription [String] <p>A description of the managed action.</p>
 function M.ManagedAction(Status, WindowStartTime, ActionType, ActionId, ActionDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ManagedAction")
 	local t = { 
@@ -823,9 +823,9 @@ function M.AssertEventDescriptionsMessage(struct)
 end
 
 --- Create a structure of type EventDescriptionsMessage
--- &lt;p&gt;Result message wrapping a list of event descriptions.&lt;/p&gt;
--- @param NextToken [Token] &lt;p&gt; If returned, this indicates that there are more results to obtain. Use this token in the next &lt;a&gt;DescribeEvents&lt;/a&gt; call to get the next batch of events. &lt;/p&gt;
--- @param Events [EventDescriptionList] &lt;p&gt; A list of &lt;a&gt;EventDescription&lt;/a&gt;. &lt;/p&gt;
+-- <p>Result message wrapping a list of event descriptions.</p>
+-- @param NextToken [Token] <p> If returned, this indicates that there are more results to obtain. Use this token in the next <a>DescribeEvents</a> call to get the next batch of events. </p>
+-- @param Events [EventDescriptionList] <p> A list of <a>EventDescription</a>. </p>
 function M.EventDescriptionsMessage(NextToken, Events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EventDescriptionsMessage")
 	local t = { 
@@ -851,11 +851,11 @@ function M.AssertDescribeApplicationVersionsMessage(struct)
 end
 
 --- Create a structure of type DescribeApplicationVersionsMessage
--- &lt;p&gt;Request to describe application versions.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;Specify an application name to show only application versions for that application.&lt;/p&gt;
--- @param MaxRecords [MaxRecords] &lt;p&gt;Specify a maximum number of application versions to paginate in the request.&lt;/p&gt;
--- @param NextToken [Token] &lt;p&gt;Specify a next token to retrieve the next page in a paginated request.&lt;/p&gt;
--- @param VersionLabels [VersionLabelsList] &lt;p&gt;Specify a version label to show a specific application version.&lt;/p&gt;
+-- <p>Request to describe application versions.</p>
+-- @param ApplicationName [ApplicationName] <p>Specify an application name to show only application versions for that application.</p>
+-- @param MaxRecords [MaxRecords] <p>Specify a maximum number of application versions to paginate in the request.</p>
+-- @param NextToken [Token] <p>Specify a next token to retrieve the next page in a paginated request.</p>
+-- @param VersionLabels [VersionLabelsList] <p>Specify a version label to show a specific application version.</p>
 function M.DescribeApplicationVersionsMessage(ApplicationName, MaxRecords, NextToken, VersionLabels, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeApplicationVersionsMessage")
 	local t = { 
@@ -885,13 +885,13 @@ function M.AssertDescribeEnvironmentsMessage(struct)
 end
 
 --- Create a structure of type DescribeEnvironmentsMessage
--- &lt;p&gt;Request to describe one or more environments.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application.&lt;/p&gt;
--- @param IncludedDeletedBackTo [IncludeDeletedBackTo] &lt;p&gt; If specified when &lt;code&gt;IncludeDeleted&lt;/code&gt; is set to &lt;code&gt;true&lt;/code&gt;, then environments deleted after this date are displayed. &lt;/p&gt;
--- @param VersionLabel [VersionLabel] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application version.&lt;/p&gt;
--- @param IncludeDeleted [IncludeDeleted] &lt;p&gt;Indicates whether to include deleted environments:&lt;/p&gt; &lt;p&gt; &lt;code&gt;true&lt;/code&gt;: Environments that have been deleted after &lt;code&gt;IncludedDeletedBackTo&lt;/code&gt; are displayed.&lt;/p&gt; &lt;p&gt; &lt;code&gt;false&lt;/code&gt;: Do not include deleted environments.&lt;/p&gt;
--- @param EnvironmentNames [EnvironmentNamesList] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified names.&lt;/p&gt;
--- @param EnvironmentIds [EnvironmentIdList] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified IDs.&lt;/p&gt;
+-- <p>Request to describe one or more environments.</p>
+-- @param ApplicationName [ApplicationName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application.</p>
+-- @param IncludedDeletedBackTo [IncludeDeletedBackTo] <p> If specified when <code>IncludeDeleted</code> is set to <code>true</code>, then environments deleted after this date are displayed. </p>
+-- @param VersionLabel [VersionLabel] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application version.</p>
+-- @param IncludeDeleted [IncludeDeleted] <p>Indicates whether to include deleted environments:</p> <p> <code>true</code>: Environments that have been deleted after <code>IncludedDeletedBackTo</code> are displayed.</p> <p> <code>false</code>: Do not include deleted environments.</p>
+-- @param EnvironmentNames [EnvironmentNamesList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified names.</p>
+-- @param EnvironmentIds [EnvironmentIdList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified IDs.</p>
 function M.DescribeEnvironmentsMessage(ApplicationName, IncludedDeletedBackTo, VersionLabel, IncludeDeleted, EnvironmentNames, EnvironmentIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentsMessage")
 	local t = { 
@@ -920,10 +920,10 @@ function M.AssertDescribeInstancesHealthResult(struct)
 end
 
 --- Create a structure of type DescribeInstancesHealthResult
--- &lt;p&gt;Detailed health information about the Amazon EC2 instances in an AWS Elastic Beanstalk environment.&lt;/p&gt;
--- @param InstanceHealthList [InstanceHealthList] &lt;p&gt;Detailed health information about each instance.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Pagination token for the next page of results, if available.&lt;/p&gt;
--- @param RefreshedAt [RefreshedAt] &lt;p&gt;The date and time that the health information was retrieved.&lt;/p&gt;
+-- <p>Detailed health information about the Amazon EC2 instances in an AWS Elastic Beanstalk environment.</p>
+-- @param InstanceHealthList [InstanceHealthList] <p>Detailed health information about each instance.</p>
+-- @param NextToken [NextToken] <p>Pagination token for the next page of results, if available.</p>
+-- @param RefreshedAt [RefreshedAt] <p>The date and time that the health information was retrieved.</p>
 function M.DescribeInstancesHealthResult(InstanceHealthList, NextToken, RefreshedAt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesHealthResult")
 	local t = { 
@@ -948,9 +948,9 @@ function M.AssertSourceConfiguration(struct)
 end
 
 --- Create a structure of type SourceConfiguration
--- &lt;p&gt;A specification for an environment configuration&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application associated with the configuration.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;The name of the configuration template.&lt;/p&gt;
+-- <p>A specification for an environment configuration</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application associated with the configuration.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p>The name of the configuration template.</p>
 function M.SourceConfiguration(ApplicationName, TemplateName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SourceConfiguration")
 	local t = { 
@@ -991,26 +991,26 @@ function M.AssertEnvironmentDescription(struct)
 end
 
 --- Create a structure of type EnvironmentDescription
--- &lt;p&gt;Describes the properties of an environment.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application associated with this environment.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of this environment.&lt;/p&gt;
--- @param VersionLabel [VersionLabel] &lt;p&gt;The application version deployed in this environment.&lt;/p&gt;
--- @param Status [EnvironmentStatus] &lt;p&gt;The current operational status of the environment:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Launching&lt;/code&gt;: Environment is in the process of initial deployment.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Updating&lt;/code&gt;: Environment is in the process of updating its configuration settings or application version.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Ready&lt;/code&gt;: Environment is available to have an action performed on it, such as update or terminate.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Terminating&lt;/code&gt;: Environment is in the shut-down process.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Terminated&lt;/code&gt;: Environment is not running.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Description [Description] &lt;p&gt;Describes this environment.&lt;/p&gt;
--- @param EnvironmentLinks [EnvironmentLinks] &lt;p&gt;A list of links to other environments in the same group.&lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the custom platform.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;The name of the configuration template used to originally launch this environment.&lt;/p&gt;
--- @param EndpointURL [EndpointURL] &lt;p&gt;For load-balanced, autoscaling environments, the URL to the LoadBalancer. For single-instance environments, the IP address of the instance.&lt;/p&gt;
--- @param SolutionStackName [SolutionStackName] &lt;p&gt; The name of the &lt;code&gt;SolutionStack&lt;/code&gt; deployed with this environment. &lt;/p&gt;
--- @param HealthStatus [EnvironmentHealthStatus] &lt;p&gt;Returns the health status of the application running in your environment. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html&quot;&gt;Health Colors and Statuses&lt;/a&gt;.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;The ID of this environment.&lt;/p&gt;
--- @param CNAME [DNSCname] &lt;p&gt;The URL to the CNAME for this environment.&lt;/p&gt;
--- @param AbortableOperationInProgress [AbortableOperationInProgress] &lt;p&gt;Indicates if there is an in-progress environment configuration update or application version deployment that you can cancel.&lt;/p&gt; &lt;p&gt; &lt;code&gt;true:&lt;/code&gt; There is an update in progress. &lt;/p&gt; &lt;p&gt; &lt;code&gt;false:&lt;/code&gt; There are no updates currently in progress. &lt;/p&gt;
--- @param Tier [EnvironmentTier] &lt;p&gt;Describes the current tier of this environment.&lt;/p&gt;
--- @param Health [EnvironmentHealth] &lt;p&gt;Describes the health status of the environment. AWS Elastic Beanstalk indicates the failure levels for a running environment:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Red&lt;/code&gt;: Indicates the environment is not responsive. Occurs when three or more consecutive failures occur for an environment.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Yellow&lt;/code&gt;: Indicates that something is wrong. Occurs when two consecutive failures occur for an environment.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Green&lt;/code&gt;: Indicates the environment is healthy and fully functional.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Grey&lt;/code&gt;: Default health for a new environment. The environment is not fully launched and health checks have not started or health checks are suspended during an &lt;code&gt;UpdateEnvironment&lt;/code&gt; or &lt;code&gt;RestartEnvironement&lt;/code&gt; request.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; Default: &lt;code&gt;Grey&lt;/code&gt; &lt;/p&gt;
--- @param DateUpdated [UpdateDate] &lt;p&gt;The last modified date for this environment.&lt;/p&gt;
--- @param DateCreated [CreationDate] &lt;p&gt;The creation date for this environment.&lt;/p&gt;
--- @param Resources [EnvironmentResourcesDescription] &lt;p&gt;The description of the AWS resources used by this environment.&lt;/p&gt;
+-- <p>Describes the properties of an environment.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application associated with this environment.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of this environment.</p>
+-- @param VersionLabel [VersionLabel] <p>The application version deployed in this environment.</p>
+-- @param Status [EnvironmentStatus] <p>The current operational status of the environment:</p> <ul> <li> <p> <code>Launching</code>: Environment is in the process of initial deployment.</p> </li> <li> <p> <code>Updating</code>: Environment is in the process of updating its configuration settings or application version.</p> </li> <li> <p> <code>Ready</code>: Environment is available to have an action performed on it, such as update or terminate.</p> </li> <li> <p> <code>Terminating</code>: Environment is in the shut-down process.</p> </li> <li> <p> <code>Terminated</code>: Environment is not running.</p> </li> </ul>
+-- @param Description [Description] <p>Describes this environment.</p>
+-- @param EnvironmentLinks [EnvironmentLinks] <p>A list of links to other environments in the same group.</p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p>The name of the configuration template used to originally launch this environment.</p>
+-- @param EndpointURL [EndpointURL] <p>For load-balanced, autoscaling environments, the URL to the LoadBalancer. For single-instance environments, the IP address of the instance.</p>
+-- @param SolutionStackName [SolutionStackName] <p> The name of the <code>SolutionStack</code> deployed with this environment. </p>
+-- @param HealthStatus [EnvironmentHealthStatus] <p>Returns the health status of the application running in your environment. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
+-- @param EnvironmentId [EnvironmentId] <p>The ID of this environment.</p>
+-- @param CNAME [DNSCname] <p>The URL to the CNAME for this environment.</p>
+-- @param AbortableOperationInProgress [AbortableOperationInProgress] <p>Indicates if there is an in-progress environment configuration update or application version deployment that you can cancel.</p> <p> <code>true:</code> There is an update in progress. </p> <p> <code>false:</code> There are no updates currently in progress. </p>
+-- @param Tier [EnvironmentTier] <p>Describes the current tier of this environment.</p>
+-- @param Health [EnvironmentHealth] <p>Describes the health status of the environment. AWS Elastic Beanstalk indicates the failure levels for a running environment:</p> <ul> <li> <p> <code>Red</code>: Indicates the environment is not responsive. Occurs when three or more consecutive failures occur for an environment.</p> </li> <li> <p> <code>Yellow</code>: Indicates that something is wrong. Occurs when two consecutive failures occur for an environment.</p> </li> <li> <p> <code>Green</code>: Indicates the environment is healthy and fully functional.</p> </li> <li> <p> <code>Grey</code>: Default health for a new environment. The environment is not fully launched and health checks have not started or health checks are suspended during an <code>UpdateEnvironment</code> or <code>RestartEnvironement</code> request.</p> </li> </ul> <p> Default: <code>Grey</code> </p>
+-- @param DateUpdated [UpdateDate] <p>The last modified date for this environment.</p>
+-- @param DateCreated [CreationDate] <p>The creation date for this environment.</p>
+-- @param Resources [EnvironmentResourcesDescription] <p>The description of the AWS resources used by this environment.</p>
 function M.EnvironmentDescription(ApplicationName, EnvironmentName, VersionLabel, Status, Description, EnvironmentLinks, PlatformArn, TemplateName, EndpointURL, SolutionStackName, HealthStatus, EnvironmentId, CNAME, AbortableOperationInProgress, Tier, Health, DateUpdated, DateCreated, Resources, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentDescription")
 	local t = { 
@@ -1061,19 +1061,19 @@ function M.AssertDescribeEventsMessage(struct)
 end
 
 --- Create a structure of type DescribeEventsMessage
--- &lt;p&gt;Request to retrieve a list of events for an environment.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those associated with this application.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.&lt;/p&gt;
--- @param VersionLabel [VersionLabel] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this application version.&lt;/p&gt;
--- @param NextToken [Token] &lt;p&gt;Pagination token. If specified, the events return the next batch of results.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.&lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the version of the custom platform.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that are associated with this environment configuration.&lt;/p&gt;
--- @param MaxRecords [MaxRecords] &lt;p&gt;Specifies the maximum number of events that can be returned, beginning with the most recent event.&lt;/p&gt;
--- @param RequestId [RequestId] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the described events to include only those associated with this request ID.&lt;/p&gt;
--- @param StartTime [TimeFilterStart] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that occur on or after this time.&lt;/p&gt;
--- @param EndTime [TimeFilterEnd] &lt;p&gt; If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that occur up to, but not including, the &lt;code&gt;EndTime&lt;/code&gt;. &lt;/p&gt;
--- @param Severity [EventSeverity] &lt;p&gt;If specified, limits the events returned from this call to include only those with the specified severity or higher.&lt;/p&gt;
+-- <p>Request to retrieve a list of events for an environment.</p>
+-- @param ApplicationName [ApplicationName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those associated with this application.</p>
+-- @param EnvironmentId [EnvironmentId] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.</p>
+-- @param VersionLabel [VersionLabel] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this application version.</p>
+-- @param NextToken [Token] <p>Pagination token. If specified, the events return the next batch of results.</p>
+-- @param EnvironmentName [EnvironmentName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.</p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the version of the custom platform.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that are associated with this environment configuration.</p>
+-- @param MaxRecords [MaxRecords] <p>Specifies the maximum number of events that can be returned, beginning with the most recent event.</p>
+-- @param RequestId [RequestId] <p>If specified, AWS Elastic Beanstalk restricts the described events to include only those associated with this request ID.</p>
+-- @param StartTime [TimeFilterStart] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that occur on or after this time.</p>
+-- @param EndTime [TimeFilterEnd] <p> If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that occur up to, but not including, the <code>EndTime</code>. </p>
+-- @param Severity [EventSeverity] <p>If specified, limits the events returned from this call to include only those with the specified severity or higher.</p>
 function M.DescribeEventsMessage(ApplicationName, EnvironmentId, VersionLabel, NextToken, EnvironmentName, PlatformArn, TemplateName, MaxRecords, RequestId, StartTime, EndTime, Severity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsMessage")
 	local t = { 
@@ -1111,13 +1111,13 @@ function M.AssertDescribeConfigurationOptionsMessage(struct)
 end
 
 --- Create a structure of type DescribeConfigurationOptionsMessage
--- &lt;p&gt;Result message containing a list of application version descriptions.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application associated with the configuration template or environment. Only needed if you want to describe the configuration options associated with either the configuration template or environment.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment whose configuration options you want to describe.&lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the custom platform.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;The name of the configuration template whose configuration options you want to describe.&lt;/p&gt;
--- @param SolutionStackName [SolutionStackName] &lt;p&gt;The name of the solution stack whose configuration options you want to describe.&lt;/p&gt;
--- @param Options [OptionsSpecifierList] &lt;p&gt;If specified, restricts the descriptions to only the specified options.&lt;/p&gt;
+-- <p>Result message containing a list of application version descriptions.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application associated with the configuration template or environment. Only needed if you want to describe the configuration options associated with either the configuration template or environment.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment whose configuration options you want to describe.</p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p>The name of the configuration template whose configuration options you want to describe.</p>
+-- @param SolutionStackName [SolutionStackName] <p>The name of the solution stack whose configuration options you want to describe.</p>
+-- @param Options [OptionsSpecifierList] <p>If specified, restricts the descriptions to only the specified options.</p>
 function M.DescribeConfigurationOptionsMessage(ApplicationName, EnvironmentName, PlatformArn, TemplateName, SolutionStackName, Options, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationOptionsMessage")
 	local t = { 
@@ -1145,9 +1145,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Describes a tag applied to a resource in an environment.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The value of the tag.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The key of the tag.&lt;/p&gt;
+-- <p>Describes a tag applied to a resource in an environment.</p>
+-- @param Value [TagValue] <p>The value of the tag.</p>
+-- @param Key [TagKey] <p>The key of the tag.</p>
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
@@ -1180,18 +1180,18 @@ function M.AssertConfigurationOptionDescription(struct)
 end
 
 --- Create a structure of type ConfigurationOptionDescription
--- &lt;p&gt;Describes the possible values for a configuration option.&lt;/p&gt;
--- @param Regex [OptionRestrictionRegex] &lt;p&gt;If specified, the configuration option must be a string value that satisfies this regular expression.&lt;/p&gt;
--- @param Name [ConfigurationOptionName] &lt;p&gt;The name of the configuration option.&lt;/p&gt;
--- @param UserDefined [UserDefinedOption] &lt;p&gt;An indication of whether the user defined this configuration option:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;true&lt;/code&gt; : This configuration option was defined by the user. It is a valid choice for specifying if this as an &lt;code&gt;Option to Remove&lt;/code&gt; when updating configuration settings. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;false&lt;/code&gt; : This configuration was not defined by the user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; Constraint: You can remove only &lt;code&gt;UserDefined&lt;/code&gt; options from a configuration. &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;true&lt;/code&gt; | &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param DefaultValue [ConfigurationOptionDefaultValue] &lt;p&gt;The default value for this configuration option.&lt;/p&gt;
--- @param ChangeSeverity [ConfigurationOptionSeverity] &lt;p&gt;An indication of which action is required if the value for this configuration option changes:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NoInterruption&lt;/code&gt; : There is no interruption to the environment or application availability.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;RestartEnvironment&lt;/code&gt; : The environment is entirely restarted, all AWS resources are deleted and recreated, and the environment is unavailable during the process.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;RestartApplicationServer&lt;/code&gt; : The environment is available the entire time. However, a short application outage occurs when the application servers on the running Amazon EC2 instances are restarted.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Namespace [OptionNamespace] &lt;p&gt;A unique namespace identifying the option's associated AWS resource.&lt;/p&gt;
--- @param MaxValue [OptionRestrictionMaxValue] &lt;p&gt;If specified, the configuration option must be a numeric value less than this value.&lt;/p&gt;
--- @param MinValue [OptionRestrictionMinValue] &lt;p&gt;If specified, the configuration option must be a numeric value greater than this value.&lt;/p&gt;
--- @param MaxLength [OptionRestrictionMaxLength] &lt;p&gt;If specified, the configuration option must be a string value no longer than this value.&lt;/p&gt;
--- @param ValueType [ConfigurationOptionValueType] &lt;p&gt;An indication of which type of values this option has and whether it is allowable to select one or more than one of the possible values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Scalar&lt;/code&gt; : Values for this option are a single selection from the possible values, or an unformatted string, or numeric value governed by the &lt;code&gt;MIN/MAX/Regex&lt;/code&gt; constraints.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;List&lt;/code&gt; : Values for this option are multiple selections from the possible values.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Boolean&lt;/code&gt; : Values for this option are either &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; .&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Json&lt;/code&gt; : Values for this option are a JSON representation of a &lt;code&gt;ConfigDocument&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ValueOptions [ConfigurationOptionPossibleValues] &lt;p&gt;If specified, values for the configuration option are selected from this list.&lt;/p&gt;
+-- <p>Describes the possible values for a configuration option.</p>
+-- @param Regex [OptionRestrictionRegex] <p>If specified, the configuration option must be a string value that satisfies this regular expression.</p>
+-- @param Name [ConfigurationOptionName] <p>The name of the configuration option.</p>
+-- @param UserDefined [UserDefinedOption] <p>An indication of whether the user defined this configuration option:</p> <ul> <li> <p> <code>true</code> : This configuration option was defined by the user. It is a valid choice for specifying if this as an <code>Option to Remove</code> when updating configuration settings. </p> </li> <li> <p> <code>false</code> : This configuration was not defined by the user.</p> </li> </ul> <p> Constraint: You can remove only <code>UserDefined</code> options from a configuration. </p> <p> Valid Values: <code>true</code> | <code>false</code> </p>
+-- @param DefaultValue [ConfigurationOptionDefaultValue] <p>The default value for this configuration option.</p>
+-- @param ChangeSeverity [ConfigurationOptionSeverity] <p>An indication of which action is required if the value for this configuration option changes:</p> <ul> <li> <p> <code>NoInterruption</code> : There is no interruption to the environment or application availability.</p> </li> <li> <p> <code>RestartEnvironment</code> : The environment is entirely restarted, all AWS resources are deleted and recreated, and the environment is unavailable during the process.</p> </li> <li> <p> <code>RestartApplicationServer</code> : The environment is available the entire time. However, a short application outage occurs when the application servers on the running Amazon EC2 instances are restarted.</p> </li> </ul>
+-- @param Namespace [OptionNamespace] <p>A unique namespace identifying the option's associated AWS resource.</p>
+-- @param MaxValue [OptionRestrictionMaxValue] <p>If specified, the configuration option must be a numeric value less than this value.</p>
+-- @param MinValue [OptionRestrictionMinValue] <p>If specified, the configuration option must be a numeric value greater than this value.</p>
+-- @param MaxLength [OptionRestrictionMaxLength] <p>If specified, the configuration option must be a string value no longer than this value.</p>
+-- @param ValueType [ConfigurationOptionValueType] <p>An indication of which type of values this option has and whether it is allowable to select one or more than one of the possible values:</p> <ul> <li> <p> <code>Scalar</code> : Values for this option are a single selection from the possible values, or an unformatted string, or numeric value governed by the <code>MIN/MAX/Regex</code> constraints.</p> </li> <li> <p> <code>List</code> : Values for this option are multiple selections from the possible values.</p> </li> <li> <p> <code>Boolean</code> : Values for this option are either <code>true</code> or <code>false</code> .</p> </li> <li> <p> <code>Json</code> : Values for this option are a JSON representation of a <code>ConfigDocument</code>.</p> </li> </ul>
+-- @param ValueOptions [ConfigurationOptionPossibleValues] <p>If specified, values for the configuration option are selected from this list.</p>
 function M.ConfigurationOptionDescription(Regex, Name, UserDefined, DefaultValue, ChangeSeverity, Namespace, MaxValue, MinValue, MaxLength, ValueType, ValueOptions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationOptionDescription")
 	local t = { 
@@ -1223,8 +1223,8 @@ function M.AssertDescribeEnvironmentManagedActionsResult(struct)
 end
 
 --- Create a structure of type DescribeEnvironmentManagedActionsResult
--- &lt;p&gt;The result message containing a list of managed actions.&lt;/p&gt;
--- @param ManagedActions [ManagedActions] &lt;p&gt;A list of upcoming and in-progress managed actions.&lt;/p&gt;
+-- <p>The result message containing a list of managed actions.</p>
+-- @param ManagedActions [ManagedActions] <p>A list of upcoming and in-progress managed actions.</p>
 function M.DescribeEnvironmentManagedActionsResult(ManagedActions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentManagedActionsResult")
 	local t = { 
@@ -1246,8 +1246,8 @@ function M.AssertCreateStorageLocationResultMessage(struct)
 end
 
 --- Create a structure of type CreateStorageLocationResultMessage
--- &lt;p&gt;Results of a &lt;a&gt;CreateStorageLocationResult&lt;/a&gt; call.&lt;/p&gt;
--- @param S3Bucket [S3Bucket] &lt;p&gt;The name of the Amazon S3 bucket created.&lt;/p&gt;
+-- <p>Results of a <a>CreateStorageLocationResult</a> call.</p>
+-- @param S3Bucket [S3Bucket] <p>The name of the Amazon S3 bucket created.</p>
 function M.CreateStorageLocationResultMessage(S3Bucket, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStorageLocationResultMessage")
 	local t = { 
@@ -1271,10 +1271,10 @@ function M.AssertOptionSpecification(struct)
 end
 
 --- Create a structure of type OptionSpecification
--- &lt;p&gt;A specification identifying an individual configuration option.&lt;/p&gt;
--- @param OptionName [ConfigurationOptionName] &lt;p&gt;The name of the configuration option.&lt;/p&gt;
--- @param ResourceName [ResourceName] &lt;p&gt;A unique resource name for a time-based scaling configuration option.&lt;/p&gt;
--- @param Namespace [OptionNamespace] &lt;p&gt;A unique namespace identifying the option's associated AWS resource.&lt;/p&gt;
+-- <p>A specification identifying an individual configuration option.</p>
+-- @param OptionName [ConfigurationOptionName] <p>The name of the configuration option.</p>
+-- @param ResourceName [ResourceName] <p>A unique resource name for a time-based scaling configuration option.</p>
+-- @param Namespace [OptionNamespace] <p>A unique namespace identifying the option's associated AWS resource.</p>
 function M.OptionSpecification(OptionName, ResourceName, Namespace, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionSpecification")
 	local t = { 
@@ -1315,25 +1315,25 @@ function M.AssertPlatformDescription(struct)
 end
 
 --- Create a structure of type PlatformDescription
--- &lt;p&gt;Detailed information about a platform.&lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the platform.&lt;/p&gt;
--- @param Maintainer [Maintainer] &lt;p&gt;Information about the maintainer of the platform.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The description of the platform.&lt;/p&gt;
--- @param PlatformStatus [PlatformStatus] &lt;p&gt;The status of the platform.&lt;/p&gt;
--- @param Frameworks [PlatformFrameworks] &lt;p&gt;The frameworks supported by the platform.&lt;/p&gt;
--- @param ProgrammingLanguages [PlatformProgrammingLanguages] &lt;p&gt;The programming languages supported by the platform.&lt;/p&gt;
--- @param SolutionStackName [SolutionStackName] &lt;p&gt;The name of the solution stack used by the platform.&lt;/p&gt;
--- @param OperatingSystemVersion [OperatingSystemVersion] &lt;p&gt;The version of the operating system used by the platform.&lt;/p&gt;
--- @param SupportedTierList [SupportedTierList] &lt;p&gt;The tiers supported by the platform.&lt;/p&gt;
--- @param OperatingSystemName [OperatingSystemName] &lt;p&gt;The operating system used by the platform.&lt;/p&gt;
--- @param PlatformCategory [PlatformCategory] &lt;p&gt;The category of the platform.&lt;/p&gt;
--- @param PlatformOwner [PlatformOwner] &lt;p&gt;The AWS account ID of the person who created the platform.&lt;/p&gt;
--- @param PlatformVersion [PlatformVersion] &lt;p&gt;The version of the platform.&lt;/p&gt;
--- @param DateUpdated [UpdateDate] &lt;p&gt;The date when the platform was last updated.&lt;/p&gt;
--- @param DateCreated [CreationDate] &lt;p&gt;The date when the platform was created.&lt;/p&gt;
--- @param PlatformName [PlatformName] &lt;p&gt;The name of the platform.&lt;/p&gt;
--- @param SupportedAddonList [SupportedAddonList] &lt;p&gt;The additions supported by the platform.&lt;/p&gt;
--- @param CustomAmiList [CustomAmiList] &lt;p&gt;The custom AMIs supported by the platform.&lt;/p&gt;
+-- <p>Detailed information about a platform.</p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
+-- @param Maintainer [Maintainer] <p>Information about the maintainer of the platform.</p>
+-- @param Description [Description] <p>The description of the platform.</p>
+-- @param PlatformStatus [PlatformStatus] <p>The status of the platform.</p>
+-- @param Frameworks [PlatformFrameworks] <p>The frameworks supported by the platform.</p>
+-- @param ProgrammingLanguages [PlatformProgrammingLanguages] <p>The programming languages supported by the platform.</p>
+-- @param SolutionStackName [SolutionStackName] <p>The name of the solution stack used by the platform.</p>
+-- @param OperatingSystemVersion [OperatingSystemVersion] <p>The version of the operating system used by the platform.</p>
+-- @param SupportedTierList [SupportedTierList] <p>The tiers supported by the platform.</p>
+-- @param OperatingSystemName [OperatingSystemName] <p>The operating system used by the platform.</p>
+-- @param PlatformCategory [PlatformCategory] <p>The category of the platform.</p>
+-- @param PlatformOwner [PlatformOwner] <p>The AWS account ID of the person who created the platform.</p>
+-- @param PlatformVersion [PlatformVersion] <p>The version of the platform.</p>
+-- @param DateUpdated [UpdateDate] <p>The date when the platform was last updated.</p>
+-- @param DateCreated [CreationDate] <p>The date when the platform was created.</p>
+-- @param PlatformName [PlatformName] <p>The name of the platform.</p>
+-- @param SupportedAddonList [SupportedAddonList] <p>The additions supported by the platform.</p>
+-- @param CustomAmiList [CustomAmiList] <p>The custom AMIs supported by the platform.</p>
 function M.PlatformDescription(PlatformArn, Maintainer, Description, PlatformStatus, Frameworks, ProgrammingLanguages, SolutionStackName, OperatingSystemVersion, SupportedTierList, OperatingSystemName, PlatformCategory, PlatformOwner, PlatformVersion, DateUpdated, DateCreated, PlatformName, SupportedAddonList, CustomAmiList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlatformDescription")
 	local t = { 
@@ -1372,8 +1372,8 @@ function M.AssertAutoScalingGroup(struct)
 end
 
 --- Create a structure of type AutoScalingGroup
--- &lt;p&gt;Describes an Auto Scaling launch configuration.&lt;/p&gt;
--- @param Name [ResourceId] &lt;p&gt;The name of the &lt;code&gt;AutoScalingGroup&lt;/code&gt; . &lt;/p&gt;
+-- <p>Describes an Auto Scaling launch configuration.</p>
+-- @param Name [ResourceId] <p>The name of the <code>AutoScalingGroup</code> . </p>
 function M.AutoScalingGroup(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingGroup")
 	local t = { 
@@ -1395,8 +1395,8 @@ function M.AssertApplicationVersionDescriptionMessage(struct)
 end
 
 --- Create a structure of type ApplicationVersionDescriptionMessage
--- &lt;p&gt;Result message wrapping a single description of an application version.&lt;/p&gt;
--- @param ApplicationVersion [ApplicationVersionDescription] &lt;p&gt; The &lt;a&gt;ApplicationVersionDescription&lt;/a&gt; of the application version. &lt;/p&gt;
+-- <p>Result message wrapping a single description of an application version.</p>
+-- @param ApplicationVersion [ApplicationVersionDescription] <p> The <a>ApplicationVersionDescription</a> of the application version. </p>
 function M.ApplicationVersionDescriptionMessage(ApplicationVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationVersionDescriptionMessage")
 	local t = { 
@@ -1419,9 +1419,9 @@ function M.AssertDescribeEnvironmentResourcesMessage(struct)
 end
 
 --- Create a structure of type DescribeEnvironmentResourcesMessage
--- &lt;p&gt;Request to describe the resources in an environment.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;The ID of the environment to retrieve AWS resource usage data.&lt;/p&gt; &lt;p&gt; Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment to retrieve AWS resource usage data.&lt;/p&gt; &lt;p&gt; Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
+-- <p>Request to describe the resources in an environment.</p>
+-- @param EnvironmentId [EnvironmentId] <p>The ID of the environment to retrieve AWS resource usage data.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment to retrieve AWS resource usage data.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
 function M.DescribeEnvironmentResourcesMessage(EnvironmentId, EnvironmentName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentResourcesMessage")
 	local t = { 
@@ -1447,10 +1447,10 @@ function M.AssertRetrieveEnvironmentInfoMessage(struct)
 end
 
 --- Create a structure of type RetrieveEnvironmentInfoMessage
--- &lt;p&gt;Request to download logs retrieved with &lt;a&gt;RequestEnvironmentInfo&lt;/a&gt;.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;The ID of the data's environment.&lt;/p&gt; &lt;p&gt;If no such environment is found, returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error.&lt;/p&gt; &lt;p&gt;Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error.&lt;/p&gt;
--- @param InfoType [EnvironmentInfoType] &lt;p&gt;The type of information to retrieve.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the data's environment.&lt;/p&gt; &lt;p&gt; If no such environment is found, returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt; &lt;p&gt; Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
+-- <p>Request to download logs retrieved with <a>RequestEnvironmentInfo</a>.</p>
+-- @param EnvironmentId [EnvironmentId] <p>The ID of the data's environment.</p> <p>If no such environment is found, returns an <code>InvalidParameterValue</code> error.</p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error.</p>
+-- @param InfoType [EnvironmentInfoType] <p>The type of information to retrieve.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the data's environment.</p> <p> If no such environment is found, returns an <code>InvalidParameterValue</code> error. </p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
 -- Required parameter: InfoType
 function M.RetrieveEnvironmentInfoMessage(EnvironmentId, InfoType, EnvironmentName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveEnvironmentInfoMessage")
@@ -1478,10 +1478,10 @@ function M.AssertCreateApplicationMessage(struct)
 end
 
 --- Create a structure of type CreateApplicationMessage
--- &lt;p&gt;Request to create an application.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application.&lt;/p&gt; &lt;p&gt;Constraint: This name must be unique within your account. If the specified name already exists, the action returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;Describes the application.&lt;/p&gt;
--- @param ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] &lt;p&gt;Specify an application resource lifecycle configuration to prevent your application from accumulating too many versions.&lt;/p&gt;
+-- <p>Request to create an application.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application.</p> <p>Constraint: This name must be unique within your account. If the specified name already exists, the action returns an <code>InvalidParameterValue</code> error.</p>
+-- @param Description [Description] <p>Describes the application.</p>
+-- @param ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>Specify an application resource lifecycle configuration to prevent your application from accumulating too many versions.</p>
 -- Required parameter: ApplicationName
 function M.CreateApplicationMessage(ApplicationName, Description, ResourceLifecycleConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationMessage")
@@ -1513,12 +1513,12 @@ function M.AssertCreatePlatformVersionRequest(struct)
 end
 
 --- Create a structure of type CreatePlatformVersionRequest
--- &lt;p&gt;Request to create a new platform version.&lt;/p&gt;
--- @param PlatformVersion [PlatformVersion] &lt;p&gt;The number, such as 1.0.2, for the new platform version.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the builder environment.&lt;/p&gt;
--- @param PlatformDefinitionBundle [S3Location] &lt;p&gt;The location of the platform definition archive in Amazon S3.&lt;/p&gt;
--- @param PlatformName [PlatformName] &lt;p&gt;The name of your custom platform.&lt;/p&gt;
--- @param OptionSettings [ConfigurationOptionSettingsList] &lt;p&gt;The configuration option settings to apply to the builder environment.&lt;/p&gt;
+-- <p>Request to create a new platform version.</p>
+-- @param PlatformVersion [PlatformVersion] <p>The number, such as 1.0.2, for the new platform version.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the builder environment.</p>
+-- @param PlatformDefinitionBundle [S3Location] <p>The location of the platform definition archive in Amazon S3.</p>
+-- @param PlatformName [PlatformName] <p>The name of your custom platform.</p>
+-- @param OptionSettings [ConfigurationOptionSettingsList] <p>The configuration option settings to apply to the builder environment.</p>
 -- Required parameter: PlatformName
 -- Required parameter: PlatformVersion
 -- Required parameter: PlatformDefinitionBundle
@@ -1548,9 +1548,9 @@ function M.AssertListener(struct)
 end
 
 --- Create a structure of type Listener
--- &lt;p&gt;Describes the properties of a Listener for the LoadBalancer.&lt;/p&gt;
--- @param Protocol [String] &lt;p&gt;The protocol that is used by the Listener.&lt;/p&gt;
--- @param Port [Integer] &lt;p&gt;The port that is used by the Listener.&lt;/p&gt;
+-- <p>Describes the properties of a Listener for the LoadBalancer.</p>
+-- @param Protocol [String] <p>The protocol that is used by the Listener.</p>
+-- @param Port [Integer] <p>The port that is used by the Listener.</p>
 function M.Listener(Protocol, Port, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Listener")
 	local t = { 
@@ -1575,8 +1575,8 @@ end
 
 --- Create a structure of type ApplicationResourceLifecycleDescriptionMessage
 --  
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application.&lt;/p&gt;
--- @param ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] &lt;p&gt;The lifecycle configuration.&lt;/p&gt;
+-- @param ApplicationName [ApplicationName] <p>The name of the application.</p>
+-- @param ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle configuration.</p>
 function M.ApplicationResourceLifecycleDescriptionMessage(ApplicationName, ResourceLifecycleConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationResourceLifecycleDescriptionMessage")
 	local t = { 
@@ -1600,9 +1600,9 @@ function M.AssertSystemStatus(struct)
 end
 
 --- Create a structure of type SystemStatus
--- &lt;p&gt;CPU utilization and load average metrics for an Amazon EC2 instance.&lt;/p&gt;
--- @param LoadAverage [LoadAverage] &lt;p&gt;Load average in the last 1-minute, 5-minute, and 15-minute periods. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-metrics.html#health-enhanced-metrics-os&quot;&gt;Operating System Metrics&lt;/a&gt;.&lt;/p&gt;
--- @param CPUUtilization [CPUUtilization] &lt;p&gt;CPU utilization metrics for the instance.&lt;/p&gt;
+-- <p>CPU utilization and load average metrics for an Amazon EC2 instance.</p>
+-- @param LoadAverage [LoadAverage] <p>Load average in the last 1-minute, 5-minute, and 15-minute periods. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-metrics.html#health-enhanced-metrics-os">Operating System Metrics</a>.</p>
+-- @param CPUUtilization [CPUUtilization] <p>CPU utilization metrics for the instance.</p>
 function M.SystemStatus(LoadAverage, CPUUtilization, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SystemStatus")
 	local t = { 
@@ -1626,7 +1626,7 @@ end
 
 --- Create a structure of type DeletePlatformVersionRequest
 --  
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the version of the custom platform.&lt;/p&gt;
+-- @param PlatformArn [PlatformArn] <p>The ARN of the version of the custom platform.</p>
 function M.DeletePlatformVersionRequest(PlatformArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePlatformVersionRequest")
 	local t = { 
@@ -1647,7 +1647,7 @@ function M.AssertCodeBuildNotInServiceRegionException(struct)
 end
 
 --- Create a structure of type CodeBuildNotInServiceRegionException
--- &lt;p&gt;AWS CodeBuild is not available in the specified region.&lt;/p&gt;
+-- <p>AWS CodeBuild is not available in the specified region.</p>
 function M.CodeBuildNotInServiceRegionException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CodeBuildNotInServiceRegionException")
 	local t = { 
@@ -1677,15 +1677,15 @@ function M.AssertCreateApplicationVersionMessage(struct)
 end
 
 --- Create a structure of type CreateApplicationVersionMessage
--- &lt;p/&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt; The name of the application. If no application is found with this name, and &lt;code&gt;AutoCreateApplication&lt;/code&gt; is &lt;code&gt;false&lt;/code&gt;, returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param VersionLabel [VersionLabel] &lt;p&gt;A label identifying this version.&lt;/p&gt; &lt;p&gt;Constraint: Must be unique per application. If an application version already exists with this label for the specified application, AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param SourceBuildInformation [SourceBuildInformation] &lt;p&gt;Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;Describes this version.&lt;/p&gt;
--- @param AutoCreateApplication [AutoCreateApplication] &lt;p&gt;Set to &lt;code&gt;true&lt;/code&gt; to create an application with the specified name if it doesn't already exist.&lt;/p&gt;
--- @param Process [ApplicationVersionProccess] &lt;p&gt;Preprocesses and validates the environment manifest and configuration files in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.&lt;/p&gt;
--- @param BuildConfiguration [BuildConfiguration] &lt;p&gt;Settings for an AWS CodeBuild build.&lt;/p&gt;
--- @param SourceBundle [S3Location] &lt;p&gt;The Amazon S3 bucket and key that identify the location of the source bundle for this version.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The Amazon S3 bucket must be in the same region as the environment.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Specify a source bundle in S3 or a commit in an AWS CodeCommit repository (with &lt;code&gt;SourceBuildInformation&lt;/code&gt;), but not both. If neither &lt;code&gt;SourceBundle&lt;/code&gt; nor &lt;code&gt;SourceBuildInformation&lt;/code&gt; are provided, Elastic Beanstalk uses a sample application.&lt;/p&gt;
+-- <p/>
+-- @param ApplicationName [ApplicationName] <p> The name of the application. If no application is found with this name, and <code>AutoCreateApplication</code> is <code>false</code>, returns an <code>InvalidParameterValue</code> error. </p>
+-- @param VersionLabel [VersionLabel] <p>A label identifying this version.</p> <p>Constraint: Must be unique per application. If an application version already exists with this label for the specified application, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- @param SourceBuildInformation [SourceBuildInformation] <p>Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version.</p>
+-- @param Description [Description] <p>Describes this version.</p>
+-- @param AutoCreateApplication [AutoCreateApplication] <p>Set to <code>true</code> to create an application with the specified name if it doesn't already exist.</p>
+-- @param Process [ApplicationVersionProccess] <p>Preprocesses and validates the environment manifest and configuration files in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.</p>
+-- @param BuildConfiguration [BuildConfiguration] <p>Settings for an AWS CodeBuild build.</p>
+-- @param SourceBundle [S3Location] <p>The Amazon S3 bucket and key that identify the location of the source bundle for this version.</p> <note> <p>The Amazon S3 bucket must be in the same region as the environment.</p> </note> <p>Specify a source bundle in S3 or a commit in an AWS CodeCommit repository (with <code>SourceBuildInformation</code>), but not both. If neither <code>SourceBundle</code> nor <code>SourceBuildInformation</code> are provided, Elastic Beanstalk uses a sample application.</p>
 -- Required parameter: ApplicationName
 -- Required parameter: VersionLabel
 function M.CreateApplicationVersionMessage(ApplicationName, VersionLabel, SourceBuildInformation, Description, AutoCreateApplication, Process, BuildConfiguration, SourceBundle, ...)
@@ -1717,9 +1717,9 @@ function M.AssertApplicationVersionDescriptionsMessage(struct)
 end
 
 --- Create a structure of type ApplicationVersionDescriptionsMessage
--- &lt;p&gt;Result message wrapping a list of application version descriptions.&lt;/p&gt;
--- @param ApplicationVersions [ApplicationVersionDescriptionList] &lt;p&gt;List of &lt;code&gt;ApplicationVersionDescription&lt;/code&gt; objects sorted in order of creation.&lt;/p&gt;
--- @param NextToken [Token] &lt;p&gt;For a paginated request, the token that you can pass in a subsequent request to get the next page.&lt;/p&gt;
+-- <p>Result message wrapping a list of application version descriptions.</p>
+-- @param ApplicationVersions [ApplicationVersionDescriptionList] <p>List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.</p>
+-- @param NextToken [Token] <p>For a paginated request, the token that you can pass in a subsequent request to get the next page.</p>
 function M.ApplicationVersionDescriptionsMessage(ApplicationVersions, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationVersionDescriptionsMessage")
 	local t = { 
@@ -1742,8 +1742,8 @@ function M.AssertBuilder(struct)
 end
 
 --- Create a structure of type Builder
--- &lt;p&gt;The builder used to build the custom platform.&lt;/p&gt;
--- @param ARN [ARN] &lt;p&gt;The ARN of the builder.&lt;/p&gt;
+-- <p>The builder used to build the custom platform.</p>
+-- @param ARN [ARN] <p>The ARN of the builder.</p>
 function M.Builder(ARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Builder")
 	local t = { 
@@ -1768,11 +1768,11 @@ function M.AssertApplicationMetrics(struct)
 end
 
 --- Create a structure of type ApplicationMetrics
--- &lt;p&gt;Application request metrics for an AWS Elastic Beanstalk environment.&lt;/p&gt;
--- @param Duration [NullableInteger] &lt;p&gt;The amount of time that the metrics cover (usually 10 seconds). For example, you might have 5 requests (&lt;code&gt;request_count&lt;/code&gt;) within the most recent time slice of 10 seconds (&lt;code&gt;duration&lt;/code&gt;).&lt;/p&gt;
--- @param Latency [Latency] &lt;p&gt;Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies are in seconds with one millisecond resolution.&lt;/p&gt;
--- @param RequestCount [RequestCount] &lt;p&gt;Average number of requests handled by the web server per second over the last 10 seconds.&lt;/p&gt;
--- @param StatusCodes [StatusCodes] &lt;p&gt;Represents the percentage of requests over the last 10 seconds that resulted in each type of status code response.&lt;/p&gt;
+-- <p>Application request metrics for an AWS Elastic Beanstalk environment.</p>
+-- @param Duration [NullableInteger] <p>The amount of time that the metrics cover (usually 10 seconds). For example, you might have 5 requests (<code>request_count</code>) within the most recent time slice of 10 seconds (<code>duration</code>).</p>
+-- @param Latency [Latency] <p>Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies are in seconds with one millisecond resolution.</p>
+-- @param RequestCount [RequestCount] <p>Average number of requests handled by the web server per second over the last 10 seconds.</p>
+-- @param StatusCodes [StatusCodes] <p>Represents the percentage of requests over the last 10 seconds that resulted in each type of status code response.</p>
 function M.ApplicationMetrics(Duration, Latency, RequestCount, StatusCodes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationMetrics")
 	local t = { 
@@ -1800,11 +1800,11 @@ function M.AssertTerminateEnvironmentMessage(struct)
 end
 
 --- Create a structure of type TerminateEnvironmentMessage
--- &lt;p&gt;Request to terminate an environment.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;The ID of the environment to terminate.&lt;/p&gt; &lt;p&gt; Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
--- @param TerminateResources [TerminateEnvironmentResources] &lt;p&gt;Indicates whether the associated AWS resources should shut down when the environment is terminated:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;true&lt;/code&gt;: The specified environment as well as the associated AWS resources, such as Auto Scaling group and LoadBalancer, are terminated.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;false&lt;/code&gt;: AWS Elastic Beanstalk resource management is removed from the environment, but the AWS resources continue to operate.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; For more information, see the &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/&quot;&gt; AWS Elastic Beanstalk User Guide. &lt;/a&gt; &lt;/p&gt; &lt;p&gt; Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;true&lt;/code&gt; | &lt;code&gt;false&lt;/code&gt; &lt;/p&gt;
--- @param ForceTerminate [ForceTerminate] &lt;p&gt;Terminates the target environment even if another environment in the same group is dependent on it.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment to terminate.&lt;/p&gt; &lt;p&gt; Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
+-- <p>Request to terminate an environment.</p>
+-- @param EnvironmentId [EnvironmentId] <p>The ID of the environment to terminate.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @param TerminateResources [TerminateEnvironmentResources] <p>Indicates whether the associated AWS resources should shut down when the environment is terminated:</p> <ul> <li> <p> <code>true</code>: The specified environment as well as the associated AWS resources, such as Auto Scaling group and LoadBalancer, are terminated.</p> </li> <li> <p> <code>false</code>: AWS Elastic Beanstalk resource management is removed from the environment, but the AWS resources continue to operate.</p> </li> </ul> <p> For more information, see the <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS Elastic Beanstalk User Guide. </a> </p> <p> Default: <code>true</code> </p> <p> Valid Values: <code>true</code> | <code>false</code> </p>
+-- @param ForceTerminate [ForceTerminate] <p>Terminates the target environment even if another environment in the same group is dependent on it.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment to terminate.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
 function M.TerminateEnvironmentMessage(EnvironmentId, TerminateResources, ForceTerminate, EnvironmentName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TerminateEnvironmentMessage")
 	local t = { 
@@ -1830,9 +1830,9 @@ function M.AssertQueue(struct)
 end
 
 --- Create a structure of type Queue
--- &lt;p&gt;Describes a queue.&lt;/p&gt;
--- @param URL [String] &lt;p&gt;The URL of the queue.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the queue.&lt;/p&gt;
+-- <p>Describes a queue.</p>
+-- @param URL [String] <p>The URL of the queue.</p>
+-- @param Name [String] <p>The name of the queue.</p>
 function M.Queue(URL, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Queue")
 	local t = { 
@@ -1861,12 +1861,12 @@ function M.AssertBuildConfiguration(struct)
 end
 
 --- Create a structure of type BuildConfiguration
--- &lt;p&gt;Settings for an AWS CodeBuild build.&lt;/p&gt;
--- @param ComputeType [ComputeType] &lt;p&gt;Information about the compute resources the build project will use.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BUILD_GENERAL1_SMALL: Use up to 3 GB memory and 2 vCPUs for builds&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BUILD_GENERAL1_MEDIUM: Use up to 7 GB memory and 4 vCPUs for builds&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;BUILD_GENERAL1_LARGE: Use up to 15 GB memory and 8 vCPUs for builds&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Image [NonEmptyString] &lt;p&gt;The ID of the Docker image to use for this build project.&lt;/p&gt;
--- @param TimeoutInMinutes [BoxedInt] &lt;p&gt;How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed. The default is 60 minutes.&lt;/p&gt;
--- @param CodeBuildServiceRole [NonEmptyString] &lt;p&gt;The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.&lt;/p&gt;
--- @param ArtifactName [String] &lt;p&gt;The name of the artifact of the CodeBuild build. If provided, Elastic Beanstalk stores the build artifact in the S3 location &lt;i&gt;S3-bucket&lt;/i&gt;/resources/&lt;i&gt;application-name&lt;/i&gt;/codebuild/codebuild-&lt;i&gt;version-label&lt;/i&gt;-&lt;i&gt;artifact-name&lt;/i&gt;.zip. If not provided, Elastic Beanstalk stores the build artifact in the S3 location &lt;i&gt;S3-bucket&lt;/i&gt;/resources/&lt;i&gt;application-name&lt;/i&gt;/codebuild/codebuild-&lt;i&gt;version-label&lt;/i&gt;.zip. &lt;/p&gt;
+-- <p>Settings for an AWS CodeBuild build.</p>
+-- @param ComputeType [ComputeType] <p>Information about the compute resources the build project will use.</p> <ul> <li> <p> <code>BUILD_GENERAL1_SMALL: Use up to 3 GB memory and 2 vCPUs for builds</code> </p> </li> <li> <p> <code>BUILD_GENERAL1_MEDIUM: Use up to 7 GB memory and 4 vCPUs for builds</code> </p> </li> <li> <p> <code>BUILD_GENERAL1_LARGE: Use up to 15 GB memory and 8 vCPUs for builds</code> </p> </li> </ul>
+-- @param Image [NonEmptyString] <p>The ID of the Docker image to use for this build project.</p>
+-- @param TimeoutInMinutes [BoxedInt] <p>How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed. The default is 60 minutes.</p>
+-- @param CodeBuildServiceRole [NonEmptyString] <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
+-- @param ArtifactName [String] <p>The name of the artifact of the CodeBuild build. If provided, Elastic Beanstalk stores the build artifact in the S3 location <i>S3-bucket</i>/resources/<i>application-name</i>/codebuild/codebuild-<i>version-label</i>-<i>artifact-name</i>.zip. If not provided, Elastic Beanstalk stores the build artifact in the S3 location <i>S3-bucket</i>/resources/<i>application-name</i>/codebuild/codebuild-<i>version-label</i>.zip. </p>
 -- Required parameter: CodeBuildServiceRole
 -- Required parameter: Image
 function M.BuildConfiguration(ComputeType, Image, TimeoutInMinutes, CodeBuildServiceRole, ArtifactName, ...)
@@ -1895,9 +1895,9 @@ function M.AssertListAvailableSolutionStacksResultMessage(struct)
 end
 
 --- Create a structure of type ListAvailableSolutionStacksResultMessage
--- &lt;p&gt;A list of available AWS Elastic Beanstalk solution stacks.&lt;/p&gt;
--- @param SolutionStacks [AvailableSolutionStackNamesList] &lt;p&gt;A list of available solution stacks.&lt;/p&gt;
--- @param SolutionStackDetails [AvailableSolutionStackDetailsList] &lt;p&gt; A list of available solution stacks and their &lt;a&gt;SolutionStackDescription&lt;/a&gt;. &lt;/p&gt;
+-- <p>A list of available AWS Elastic Beanstalk solution stacks.</p>
+-- @param SolutionStacks [AvailableSolutionStackNamesList] <p>A list of available solution stacks.</p>
+-- @param SolutionStackDetails [AvailableSolutionStackDetailsList] <p> A list of available solution stacks and their <a>SolutionStackDescription</a>. </p>
 function M.ListAvailableSolutionStacksResultMessage(SolutionStacks, SolutionStackDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAvailableSolutionStacksResultMessage")
 	local t = { 
@@ -1925,11 +1925,11 @@ function M.AssertValidateConfigurationSettingsMessage(struct)
 end
 
 --- Create a structure of type ValidateConfigurationSettingsMessage
--- &lt;p&gt;A list of validation messages for a specified configuration template.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application that the configuration template or environment belongs to.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment to validate the settings against.&lt;/p&gt; &lt;p&gt;Condition: You cannot specify both this and a configuration template name.&lt;/p&gt;
--- @param OptionSettings [ConfigurationOptionSettingsList] &lt;p&gt;A list of the options and desired values to evaluate.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;The name of the configuration template to validate the settings against.&lt;/p&gt; &lt;p&gt;Condition: You cannot specify both this and an environment name.&lt;/p&gt;
+-- <p>A list of validation messages for a specified configuration template.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application that the configuration template or environment belongs to.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment to validate the settings against.</p> <p>Condition: You cannot specify both this and a configuration template name.</p>
+-- @param OptionSettings [ConfigurationOptionSettingsList] <p>A list of the options and desired values to evaluate.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to validate the settings against.</p> <p>Condition: You cannot specify both this and an environment name.</p>
 -- Required parameter: ApplicationName
 -- Required parameter: OptionSettings
 function M.ValidateConfigurationSettingsMessage(ApplicationName, EnvironmentName, OptionSettings, TemplateName, ...)
@@ -1958,10 +1958,10 @@ function M.AssertDescribeEnvironmentHealthRequest(struct)
 end
 
 --- Create a structure of type DescribeEnvironmentHealthRequest
--- &lt;p&gt;See the example below to learn how to create a request body.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;Specify the environment by name.&lt;/p&gt; &lt;p&gt;You must specify either this or an EnvironmentName, or both.&lt;/p&gt;
--- @param AttributeNames [EnvironmentHealthAttributes] &lt;p&gt;Specify the response elements to return. To retrieve all attributes, set to &lt;code&gt;All&lt;/code&gt;. If no attribute names are specified, returns the name of the environment.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;Specify the environment by ID.&lt;/p&gt; &lt;p&gt;You must specify either this or an EnvironmentName, or both.&lt;/p&gt;
+-- <p>See the example below to learn how to create a request body.</p>
+-- @param EnvironmentName [EnvironmentName] <p>Specify the environment by name.</p> <p>You must specify either this or an EnvironmentName, or both.</p>
+-- @param AttributeNames [EnvironmentHealthAttributes] <p>Specify the response elements to return. To retrieve all attributes, set to <code>All</code>. If no attribute names are specified, returns the name of the environment.</p>
+-- @param EnvironmentId [EnvironmentId] <p>Specify the environment by ID.</p> <p>You must specify either this or an EnvironmentName, or both.</p>
 function M.DescribeEnvironmentHealthRequest(EnvironmentName, AttributeNames, EnvironmentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentHealthRequest")
 	local t = { 
@@ -1985,8 +1985,8 @@ function M.AssertApplicationDescriptionsMessage(struct)
 end
 
 --- Create a structure of type ApplicationDescriptionsMessage
--- &lt;p&gt;Result message containing a list of application descriptions.&lt;/p&gt;
--- @param Applications [ApplicationDescriptionList] &lt;p&gt;This parameter contains a list of &lt;a&gt;ApplicationDescription&lt;/a&gt;.&lt;/p&gt;
+-- <p>Result message containing a list of application descriptions.</p>
+-- @param Applications [ApplicationDescriptionList] <p>This parameter contains a list of <a>ApplicationDescription</a>.</p>
 function M.ApplicationDescriptionsMessage(Applications, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationDescriptionsMessage")
 	local t = { 
@@ -2009,9 +2009,9 @@ function M.AssertApplicationVersionLifecycleConfig(struct)
 end
 
 --- Create a structure of type ApplicationVersionLifecycleConfig
--- &lt;p&gt;The application version lifecycle settings for an application. Defines the rules that Elastic Beanstalk applies to an application's versions in order to avoid hitting the per-region limit for application versions.&lt;/p&gt; &lt;p&gt;When Elastic Beanstalk deletes an application version from its database, you can no longer deploy that version to an environment. The source bundle remains in S3 unless you configure the rule to delete it.&lt;/p&gt;
--- @param MaxCountRule [MaxCountRule] &lt;p&gt;Specify a max count rule to restrict the number of application versions that are retained for an application.&lt;/p&gt;
--- @param MaxAgeRule [MaxAgeRule] &lt;p&gt;Specify a max age rule to restrict the length of time that application versions are retained for an application.&lt;/p&gt;
+-- <p>The application version lifecycle settings for an application. Defines the rules that Elastic Beanstalk applies to an application's versions in order to avoid hitting the per-region limit for application versions.</p> <p>When Elastic Beanstalk deletes an application version from its database, you can no longer deploy that version to an environment. The source bundle remains in S3 unless you configure the rule to delete it.</p>
+-- @param MaxCountRule [MaxCountRule] <p>Specify a max count rule to restrict the number of application versions that are retained for an application.</p>
+-- @param MaxAgeRule [MaxAgeRule] <p>Specify a max age rule to restrict the length of time that application versions are retained for an application.</p>
 function M.ApplicationVersionLifecycleConfig(MaxCountRule, MaxAgeRule, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationVersionLifecycleConfig")
 	local t = { 
@@ -2033,7 +2033,7 @@ function M.AssertOperationInProgressException(struct)
 end
 
 --- Create a structure of type OperationInProgressException
--- &lt;p&gt;Unable to perform the specified operation because another operation that effects an element in this activity is already in progress.&lt;/p&gt;
+-- <p>Unable to perform the specified operation because another operation that effects an element in this activity is already in progress.</p>
 function M.OperationInProgressException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationInProgressException")
 	local t = { 
@@ -2057,9 +2057,9 @@ function M.AssertDeleteEnvironmentConfigurationMessage(struct)
 end
 
 --- Create a structure of type DeleteEnvironmentConfigurationMessage
--- &lt;p&gt;Request to delete a draft environment configuration.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application the environment is associated with.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment to delete the draft configuration from.&lt;/p&gt;
+-- <p>Request to delete a draft environment configuration.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application the environment is associated with.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment to delete the draft configuration from.</p>
 -- Required parameter: ApplicationName
 -- Required parameter: EnvironmentName
 function M.DeleteEnvironmentConfigurationMessage(ApplicationName, EnvironmentName, ...)
@@ -2089,10 +2089,10 @@ function M.AssertSourceBuildInformation(struct)
 end
 
 --- Create a structure of type SourceBuildInformation
--- &lt;p&gt;Location of the source code for an application version.&lt;/p&gt;
--- @param SourceLocation [SourceLocation] &lt;p&gt;The location of the source code, as a formatted string, depending on the value of &lt;code&gt;SourceRepository&lt;/code&gt; &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For &lt;code&gt;CodeCommit&lt;/code&gt;, the format is the repository name and commit ID, separated by a forward slash. For example, &lt;code&gt;my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For &lt;code&gt;S3&lt;/code&gt;, the format is the S3 bucket name and object key, separated by a forward slash. For example, &lt;code&gt;my-s3-bucket/Folders/my-source-file&lt;/code&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SourceType [SourceType] &lt;p&gt;The type of repository.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Git&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Zip&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SourceRepository [SourceRepository] &lt;p&gt;Location where the repository is stored.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CodeCommit&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;S3&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Location of the source code for an application version.</p>
+-- @param SourceLocation [SourceLocation] <p>The location of the source code, as a formatted string, depending on the value of <code>SourceRepository</code> </p> <ul> <li> <p>For <code>CodeCommit</code>, the format is the repository name and commit ID, separated by a forward slash. For example, <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.</p> </li> <li> <p>For <code>S3</code>, the format is the S3 bucket name and object key, separated by a forward slash. For example, <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
+-- @param SourceType [SourceType] <p>The type of repository.</p> <ul> <li> <p> <code>Git</code> </p> </li> <li> <p> <code>Zip</code> </p> </li> </ul>
+-- @param SourceRepository [SourceRepository] <p>Location where the repository is stored.</p> <ul> <li> <p> <code>CodeCommit</code> </p> </li> <li> <p> <code>S3</code> </p> </li> </ul>
 -- Required parameter: SourceType
 -- Required parameter: SourceRepository
 -- Required parameter: SourceLocation
@@ -2118,7 +2118,7 @@ function M.AssertTooManyConfigurationTemplatesException(struct)
 end
 
 --- Create a structure of type TooManyConfigurationTemplatesException
--- &lt;p&gt;The specified account has reached its limit of configuration templates.&lt;/p&gt;
+-- <p>The specified account has reached its limit of configuration templates.</p>
 function M.TooManyConfigurationTemplatesException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyConfigurationTemplatesException")
 	local t = { 
@@ -2148,17 +2148,17 @@ function M.AssertSingleInstanceHealth(struct)
 end
 
 --- Create a structure of type SingleInstanceHealth
--- &lt;p&gt;Detailed health information about an Amazon EC2 instance in your Elastic Beanstalk environment.&lt;/p&gt;
--- @param AvailabilityZone [String] &lt;p&gt;The availability zone in which the instance runs.&lt;/p&gt;
--- @param Deployment [Deployment] &lt;p&gt;Information about the most recent deployment to an instance.&lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the Amazon EC2 instance.&lt;/p&gt;
--- @param ApplicationMetrics [ApplicationMetrics] &lt;p&gt;Request metrics from your application.&lt;/p&gt;
--- @param System [SystemStatus] &lt;p&gt;Operating system metrics from the instance.&lt;/p&gt;
--- @param Color [String] &lt;p&gt;Represents the color indicator that gives you information about the health of the EC2 instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html&quot;&gt;Health Colors and Statuses&lt;/a&gt;.&lt;/p&gt;
--- @param HealthStatus [String] &lt;p&gt;Returns the health status of the specified instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html&quot;&gt;Health Colors and Statuses&lt;/a&gt;.&lt;/p&gt;
--- @param LaunchedAt [LaunchedAt] &lt;p&gt;The time at which the EC2 instance was launched.&lt;/p&gt;
--- @param InstanceType [String] &lt;p&gt;The instance's type.&lt;/p&gt;
--- @param Causes [Causes] &lt;p&gt;Represents the causes, which provide more information about the current health status.&lt;/p&gt;
+-- <p>Detailed health information about an Amazon EC2 instance in your Elastic Beanstalk environment.</p>
+-- @param AvailabilityZone [String] <p>The availability zone in which the instance runs.</p>
+-- @param Deployment [Deployment] <p>Information about the most recent deployment to an instance.</p>
+-- @param InstanceId [InstanceId] <p>The ID of the Amazon EC2 instance.</p>
+-- @param ApplicationMetrics [ApplicationMetrics] <p>Request metrics from your application.</p>
+-- @param System [SystemStatus] <p>Operating system metrics from the instance.</p>
+-- @param Color [String] <p>Represents the color indicator that gives you information about the health of the EC2 instance. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
+-- @param HealthStatus [String] <p>Returns the health status of the specified instance. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
+-- @param LaunchedAt [LaunchedAt] <p>The time at which the EC2 instance was launched.</p>
+-- @param InstanceType [String] <p>The instance's type.</p>
+-- @param Causes [Causes] <p>Represents the causes, which provide more information about the current health status.</p>
 function M.SingleInstanceHealth(AvailabilityZone, Deployment, InstanceId, ApplicationMetrics, System, Color, HealthStatus, LaunchedAt, InstanceType, Causes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SingleInstanceHealth")
 	local t = { 
@@ -2190,9 +2190,9 @@ function M.AssertApplicationResourceLifecycleConfig(struct)
 end
 
 --- Create a structure of type ApplicationResourceLifecycleConfig
--- &lt;p&gt;The resource lifecycle configuration for an application. Defines lifecycle settings for resources that belong to the application, and the service role that Elastic Beanstalk assumes in order to apply lifecycle settings. The version lifecycle configuration defines lifecycle settings for application versions.&lt;/p&gt;
--- @param VersionLifecycleConfig [ApplicationVersionLifecycleConfig] &lt;p&gt;The application version lifecycle configuration.&lt;/p&gt;
--- @param ServiceRole [String] &lt;p&gt;The ARN of an IAM service role that Elastic Beanstalk has permission to assume.&lt;/p&gt;
+-- <p>The resource lifecycle configuration for an application. Defines lifecycle settings for resources that belong to the application, and the service role that Elastic Beanstalk assumes in order to apply lifecycle settings. The version lifecycle configuration defines lifecycle settings for application versions.</p>
+-- @param VersionLifecycleConfig [ApplicationVersionLifecycleConfig] <p>The application version lifecycle configuration.</p>
+-- @param ServiceRole [String] <p>The ARN of an IAM service role that Elastic Beanstalk has permission to assume.</p>
 function M.ApplicationResourceLifecycleConfig(VersionLifecycleConfig, ServiceRole, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationResourceLifecycleConfig")
 	local t = { 
@@ -2215,8 +2215,8 @@ function M.AssertInstance(struct)
 end
 
 --- Create a structure of type Instance
--- &lt;p&gt;The description of an Amazon EC2 instance.&lt;/p&gt;
--- @param Id [ResourceId] &lt;p&gt;The ID of the Amazon EC2 instance.&lt;/p&gt;
+-- <p>The description of an Amazon EC2 instance.</p>
+-- @param Id [ResourceId] <p>The ID of the Amazon EC2 instance.</p>
 function M.Instance(Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
 	local t = { 
@@ -2239,9 +2239,9 @@ function M.AssertAbortEnvironmentUpdateMessage(struct)
 end
 
 --- Create a structure of type AbortEnvironmentUpdateMessage
--- &lt;p/&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;This specifies the ID of the environment with the in-progress update that you want to cancel.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;This specifies the name of the environment with the in-progress update that you want to cancel.&lt;/p&gt;
+-- <p/>
+-- @param EnvironmentId [EnvironmentId] <p>This specifies the ID of the environment with the in-progress update that you want to cancel.</p>
+-- @param EnvironmentName [EnvironmentName] <p>This specifies the name of the environment with the in-progress update that you want to cancel.</p>
 function M.AbortEnvironmentUpdateMessage(EnvironmentId, EnvironmentName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AbortEnvironmentUpdateMessage")
 	local t = { 
@@ -2265,9 +2265,9 @@ function M.AssertRebuildEnvironmentMessage(struct)
 end
 
 --- Create a structure of type RebuildEnvironmentMessage
--- &lt;p/&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;The ID of the environment to rebuild.&lt;/p&gt; &lt;p&gt; Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment to rebuild.&lt;/p&gt; &lt;p&gt; Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
+-- <p/>
+-- @param EnvironmentId [EnvironmentId] <p>The ID of the environment to rebuild.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment to rebuild.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
 function M.RebuildEnvironmentMessage(EnvironmentId, EnvironmentName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RebuildEnvironmentMessage")
 	local t = { 
@@ -2290,8 +2290,8 @@ function M.AssertConfigurationSettingsValidationMessages(struct)
 end
 
 --- Create a structure of type ConfigurationSettingsValidationMessages
--- &lt;p&gt;Provides a list of validation messages.&lt;/p&gt;
--- @param Messages [ValidationMessagesList] &lt;p&gt; A list of &lt;a&gt;ValidationMessage&lt;/a&gt;. &lt;/p&gt;
+-- <p>Provides a list of validation messages.</p>
+-- @param Messages [ValidationMessagesList] <p> A list of <a>ValidationMessage</a>. </p>
 function M.ConfigurationSettingsValidationMessages(Messages, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSettingsValidationMessages")
 	local t = { 
@@ -2314,7 +2314,7 @@ end
 
 --- Create a structure of type DeletePlatformVersionResult
 --  
--- @param PlatformSummary [PlatformSummary] &lt;p&gt;Detailed information about the version of the custom platform.&lt;/p&gt;
+-- @param PlatformSummary [PlatformSummary] <p>Detailed information about the version of the custom platform.</p>
 function M.DeletePlatformVersionResult(PlatformSummary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePlatformVersionResult")
 	local t = { 
@@ -2335,7 +2335,7 @@ function M.AssertS3SubscriptionRequiredException(struct)
 end
 
 --- Create a structure of type S3SubscriptionRequiredException
--- &lt;p&gt;The specified account does not have a subscription to Amazon S3.&lt;/p&gt;
+-- <p>The specified account does not have a subscription to Amazon S3.</p>
 function M.S3SubscriptionRequiredException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3SubscriptionRequiredException")
 	local t = { 
@@ -2360,10 +2360,10 @@ function M.AssertDeleteApplicationVersionMessage(struct)
 end
 
 --- Create a structure of type DeleteApplicationVersionMessage
--- &lt;p&gt;Request to delete an application version.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application to which the version belongs.&lt;/p&gt;
--- @param DeleteSourceBundle [DeleteSourceBundle] &lt;p&gt;Set to &lt;code&gt;true&lt;/code&gt; to delete the source bundle from your storage bucket. Otherwise, the application version is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.&lt;/p&gt;
--- @param VersionLabel [VersionLabel] &lt;p&gt;The label of the version to delete.&lt;/p&gt;
+-- <p>Request to delete an application version.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application to which the version belongs.</p>
+-- @param DeleteSourceBundle [DeleteSourceBundle] <p>Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application version is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.</p>
+-- @param VersionLabel [VersionLabel] <p>The label of the version to delete.</p>
 -- Required parameter: ApplicationName
 -- Required parameter: VersionLabel
 function M.DeleteApplicationVersionMessage(ApplicationName, DeleteSourceBundle, VersionLabel, ...)
@@ -2391,9 +2391,9 @@ function M.AssertUpdateApplicationMessage(struct)
 end
 
 --- Create a structure of type UpdateApplicationMessage
--- &lt;p&gt;Request to update an application.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application to update. If no such application is found, &lt;code&gt;UpdateApplication&lt;/code&gt; returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param Description [Description] &lt;p&gt;A new description for the application.&lt;/p&gt; &lt;p&gt;Default: If not specified, AWS Elastic Beanstalk does not update the description.&lt;/p&gt;
+-- <p>Request to update an application.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application to update. If no such application is found, <code>UpdateApplication</code> returns an <code>InvalidParameterValue</code> error. </p>
+-- @param Description [Description] <p>A new description for the application.</p> <p>Default: If not specified, AWS Elastic Beanstalk does not update the description.</p>
 -- Required parameter: ApplicationName
 function M.UpdateApplicationMessage(ApplicationName, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApplicationMessage")
@@ -2420,11 +2420,11 @@ function M.AssertValidationMessage(struct)
 end
 
 --- Create a structure of type ValidationMessage
--- &lt;p&gt;An error or warning for a desired configuration option value.&lt;/p&gt;
--- @param OptionName [ConfigurationOptionName] &lt;p&gt;The name of the option.&lt;/p&gt;
--- @param Message [ValidationMessageString] &lt;p&gt;A message describing the error or warning.&lt;/p&gt;
--- @param Namespace [OptionNamespace] &lt;p&gt;The namespace to which the option belongs.&lt;/p&gt;
--- @param Severity [ValidationSeverity] &lt;p&gt;An indication of the severity of this message:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;error&lt;/code&gt;: This message indicates that this is not a valid setting for an option.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;warning&lt;/code&gt;: This message is providing information you should take into account.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>An error or warning for a desired configuration option value.</p>
+-- @param OptionName [ConfigurationOptionName] <p>The name of the option.</p>
+-- @param Message [ValidationMessageString] <p>A message describing the error or warning.</p>
+-- @param Namespace [OptionNamespace] <p>The namespace to which the option belongs.</p>
+-- @param Severity [ValidationSeverity] <p>An indication of the severity of this message:</p> <ul> <li> <p> <code>error</code>: This message indicates that this is not a valid setting for an option.</p> </li> <li> <p> <code>warning</code>: This message is providing information you should take into account.</p> </li> </ul>
 function M.ValidationMessage(OptionName, Message, Namespace, Severity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValidationMessage")
 	local t = { 
@@ -2452,11 +2452,11 @@ function M.AssertApplyEnvironmentManagedActionResult(struct)
 end
 
 --- Create a structure of type ApplyEnvironmentManagedActionResult
--- &lt;p&gt;The result message containing information about the managed action.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the managed action.&lt;/p&gt;
--- @param ActionType [ActionType] &lt;p&gt;The type of managed action.&lt;/p&gt;
--- @param ActionId [String] &lt;p&gt;The action ID of the managed action.&lt;/p&gt;
--- @param ActionDescription [String] &lt;p&gt;A description of the managed action.&lt;/p&gt;
+-- <p>The result message containing information about the managed action.</p>
+-- @param Status [String] <p>The status of the managed action.</p>
+-- @param ActionType [ActionType] <p>The type of managed action.</p>
+-- @param ActionId [String] <p>The action ID of the managed action.</p>
+-- @param ActionDescription [String] <p>A description of the managed action.</p>
 function M.ApplyEnvironmentManagedActionResult(Status, ActionType, ActionId, ActionDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplyEnvironmentManagedActionResult")
 	local t = { 
@@ -2487,14 +2487,14 @@ function M.AssertApplicationDescription(struct)
 end
 
 --- Create a structure of type ApplicationDescription
--- &lt;p&gt;Describes the properties of an application.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;User-defined description of the application.&lt;/p&gt;
--- @param Versions [VersionLabelsList] &lt;p&gt;The names of the versions for this application.&lt;/p&gt;
--- @param DateCreated [CreationDate] &lt;p&gt;The date when the application was created.&lt;/p&gt;
--- @param ConfigurationTemplates [ConfigurationTemplateNamesList] &lt;p&gt;The names of the configuration templates associated with this application.&lt;/p&gt;
--- @param DateUpdated [UpdateDate] &lt;p&gt;The date when the application was last modified.&lt;/p&gt;
--- @param ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] &lt;p&gt;The lifecycle settings for the application.&lt;/p&gt;
+-- <p>Describes the properties of an application.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application.</p>
+-- @param Description [Description] <p>User-defined description of the application.</p>
+-- @param Versions [VersionLabelsList] <p>The names of the versions for this application.</p>
+-- @param DateCreated [CreationDate] <p>The date when the application was created.</p>
+-- @param ConfigurationTemplates [ConfigurationTemplateNamesList] <p>The names of the configuration templates associated with this application.</p>
+-- @param DateUpdated [UpdateDate] <p>The date when the application was last modified.</p>
+-- @param ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle settings for the application.</p>
 function M.ApplicationDescription(ApplicationName, Description, Versions, DateCreated, ConfigurationTemplates, DateUpdated, ResourceLifecycleConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationDescription")
 	local t = { 
@@ -2523,9 +2523,9 @@ function M.AssertCustomAmi(struct)
 end
 
 --- Create a structure of type CustomAmi
--- &lt;p&gt;A custom AMI available to platforms.&lt;/p&gt;
--- @param VirtualizationType [VirtualizationType] &lt;p&gt;The type of virtualization used to create the custom AMI.&lt;/p&gt;
--- @param ImageId [ImageId] &lt;p&gt;THe ID of the image used to create the custom AMI.&lt;/p&gt;
+-- <p>A custom AMI available to platforms.</p>
+-- @param VirtualizationType [VirtualizationType] <p>The type of virtualization used to create the custom AMI.</p>
+-- @param ImageId [ImageId] <p>THe ID of the image used to create the custom AMI.</p>
 function M.CustomAmi(VirtualizationType, ImageId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CustomAmi")
 	local t = { 
@@ -2548,8 +2548,8 @@ function M.AssertLaunchConfiguration(struct)
 end
 
 --- Create a structure of type LaunchConfiguration
--- &lt;p&gt;Describes an Auto Scaling launch configuration.&lt;/p&gt;
--- @param Name [ResourceId] &lt;p&gt;The name of the launch configuration.&lt;/p&gt;
+-- <p>Describes an Auto Scaling launch configuration.</p>
+-- @param Name [ResourceId] <p>The name of the launch configuration.</p>
 function M.LaunchConfiguration(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LaunchConfiguration")
 	local t = { 
@@ -2572,9 +2572,9 @@ function M.AssertDescribeEnvironmentManagedActionHistoryResult(struct)
 end
 
 --- Create a structure of type DescribeEnvironmentManagedActionHistoryResult
--- &lt;p&gt;A result message containing a list of completed and failed managed actions.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;A pagination token that you pass to &lt;a&gt;DescribeEnvironmentManagedActionHistory&lt;/a&gt; to get the next page of results.&lt;/p&gt;
--- @param ManagedActionHistoryItems [ManagedActionHistoryItems] &lt;p&gt;A list of completed and failed managed actions.&lt;/p&gt;
+-- <p>A result message containing a list of completed and failed managed actions.</p>
+-- @param NextToken [String] <p>A pagination token that you pass to <a>DescribeEnvironmentManagedActionHistory</a> to get the next page of results.</p>
+-- @param ManagedActionHistoryItems [ManagedActionHistoryItems] <p>A list of completed and failed managed actions.</p>
 function M.DescribeEnvironmentManagedActionHistoryResult(NextToken, ManagedActionHistoryItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentManagedActionHistoryResult")
 	local t = { 
@@ -2597,8 +2597,8 @@ function M.AssertDescribeApplicationsMessage(struct)
 end
 
 --- Create a structure of type DescribeApplicationsMessage
--- &lt;p&gt;Request to describe one or more applications.&lt;/p&gt;
--- @param ApplicationNames [ApplicationNamesList] &lt;p&gt;If specified, AWS Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.&lt;/p&gt;
+-- <p>Request to describe one or more applications.</p>
+-- @param ApplicationNames [ApplicationNamesList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.</p>
 function M.DescribeApplicationsMessage(ApplicationNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeApplicationsMessage")
 	local t = { 
@@ -2622,9 +2622,9 @@ function M.AssertDeleteApplicationMessage(struct)
 end
 
 --- Create a structure of type DeleteApplicationMessage
--- &lt;p&gt;Request to delete an application.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application to delete.&lt;/p&gt;
--- @param TerminateEnvByForce [TerminateEnvForce] &lt;p&gt;When set to true, running environments will be terminated before deleting the application.&lt;/p&gt;
+-- <p>Request to delete an application.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application to delete.</p>
+-- @param TerminateEnvByForce [TerminateEnvForce] <p>When set to true, running environments will be terminated before deleting the application.</p>
 -- Required parameter: ApplicationName
 function M.DeleteApplicationMessage(ApplicationName, TerminateEnvByForce, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApplicationMessage")
@@ -2651,10 +2651,10 @@ function M.AssertMaxCountRule(struct)
 end
 
 --- Create a structure of type MaxCountRule
--- &lt;p&gt;A lifecycle rule that deletes the oldest application version when the maximum count is exceeded.&lt;/p&gt;
--- @param DeleteSourceFromS3 [BoxedBoolean] &lt;p&gt;Set to &lt;code&gt;true&lt;/code&gt; to delete a version's source bundle from Amazon S3 when Elastic Beanstalk deletes the application version.&lt;/p&gt;
--- @param Enabled [BoxedBoolean] &lt;p&gt;Specify &lt;code&gt;true&lt;/code&gt; to apply the rule, or &lt;code&gt;false&lt;/code&gt; to disable it.&lt;/p&gt;
--- @param MaxCount [BoxedInt] &lt;p&gt;Specify the maximum number of application versions to retain.&lt;/p&gt;
+-- <p>A lifecycle rule that deletes the oldest application version when the maximum count is exceeded.</p>
+-- @param DeleteSourceFromS3 [BoxedBoolean] <p>Set to <code>true</code> to delete a version's source bundle from Amazon S3 when Elastic Beanstalk deletes the application version.</p>
+-- @param Enabled [BoxedBoolean] <p>Specify <code>true</code> to apply the rule, or <code>false</code> to disable it.</p>
+-- @param MaxCount [BoxedInt] <p>Specify the maximum number of application versions to retain.</p>
 -- Required parameter: Enabled
 function M.MaxCountRule(DeleteSourceFromS3, Enabled, MaxCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaxCountRule")
@@ -2682,9 +2682,9 @@ end
 
 --- Create a structure of type ListPlatformVersionsRequest
 --  
--- @param MaxRecords [PlatformMaxRecords] &lt;p&gt;The maximum number of platform values returned in one call.&lt;/p&gt;
--- @param NextToken [Token] &lt;p&gt;The starting index into the remaining list of platforms. Use the &lt;code&gt;NextToken&lt;/code&gt; value from a previous &lt;code&gt;ListPlatformVersion&lt;/code&gt; call.&lt;/p&gt;
--- @param Filters [PlatformFilters] &lt;p&gt;List only the platforms where the platform member value relates to one of the supplied values.&lt;/p&gt;
+-- @param MaxRecords [PlatformMaxRecords] <p>The maximum number of platform values returned in one call.</p>
+-- @param NextToken [Token] <p>The starting index into the remaining list of platforms. Use the <code>NextToken</code> value from a previous <code>ListPlatformVersion</code> call.</p>
+-- @param Filters [PlatformFilters] <p>List only the platforms where the platform member value relates to one of the supplied values.</p>
 function M.ListPlatformVersionsRequest(MaxRecords, NextToken, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPlatformVersionsRequest")
 	local t = { 
@@ -2710,10 +2710,10 @@ function M.AssertComposeEnvironmentsMessage(struct)
 end
 
 --- Create a structure of type ComposeEnvironmentsMessage
--- &lt;p&gt;Request to create or update a group of environments.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application to which the specified source bundles belong.&lt;/p&gt;
--- @param GroupName [GroupName] &lt;p&gt;The name of the group to which the target environments belong. Specify a group name only if the environment name defined in each target environment's manifest ends with a + (plus) character. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html&quot;&gt;Environment Manifest (env.yaml)&lt;/a&gt; for details.&lt;/p&gt;
--- @param VersionLabels [VersionLabels] &lt;p&gt;A list of version labels, specifying one or more application source bundles that belong to the target application. Each source bundle must include an environment manifest that specifies the name of the environment and the name of the solution stack to use, and optionally can specify environment links to create.&lt;/p&gt;
+-- <p>Request to create or update a group of environments.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application to which the specified source bundles belong.</p>
+-- @param GroupName [GroupName] <p>The name of the group to which the target environments belong. Specify a group name only if the environment name defined in each target environment's manifest ends with a + (plus) character. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
+-- @param VersionLabels [VersionLabels] <p>A list of version labels, specifying one or more application source bundles that belong to the target application. Each source bundle must include an environment manifest that specifies the name of the environment and the name of the solution stack to use, and optionally can specify environment links to create.</p>
 function M.ComposeEnvironmentsMessage(ApplicationName, GroupName, VersionLabels, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComposeEnvironmentsMessage")
 	local t = { 
@@ -2737,8 +2737,8 @@ function M.AssertElasticBeanstalkServiceException(struct)
 end
 
 --- Create a structure of type ElasticBeanstalkServiceException
--- &lt;p&gt;A generic service exception has occurred.&lt;/p&gt;
--- @param message [ExceptionMessage] &lt;p&gt;The exception error message.&lt;/p&gt;
+-- <p>A generic service exception has occurred.</p>
+-- @param message [ExceptionMessage] <p>The exception error message.</p>
 function M.ElasticBeanstalkServiceException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ElasticBeanstalkServiceException")
 	local t = { 
@@ -2769,17 +2769,17 @@ function M.AssertConfigurationSettingsDescription(struct)
 end
 
 --- Create a structure of type ConfigurationSettingsDescription
--- &lt;p&gt;Describes the settings for a configuration set.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application associated with this configuration set.&lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the custom platform.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;Describes this configuration set.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt; If not &lt;code&gt;null&lt;/code&gt;, the name of the configuration template for this configuration set. &lt;/p&gt;
--- @param DeploymentStatus [ConfigurationDeploymentStatus] &lt;p&gt; If this configuration set is associated with an environment, the &lt;code&gt;DeploymentStatus&lt;/code&gt; parameter indicates the deployment status of this configuration set: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;null&lt;/code&gt;: This configuration is not associated with a running environment.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;pending&lt;/code&gt;: This is a draft configuration that is not deployed to the associated environment but is in the process of deploying.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;deployed&lt;/code&gt;: This is the configuration that is currently deployed to the associated running environment.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;failed&lt;/code&gt;: This is a draft configuration that failed to successfully deploy.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SolutionStackName [SolutionStackName] &lt;p&gt;The name of the solution stack this configuration set uses.&lt;/p&gt;
--- @param OptionSettings [ConfigurationOptionSettingsList] &lt;p&gt;A list of the configuration options and their values in this configuration set.&lt;/p&gt;
--- @param DateUpdated [UpdateDate] &lt;p&gt;The date (in UTC time) when this configuration set was last modified.&lt;/p&gt;
--- @param DateCreated [CreationDate] &lt;p&gt;The date (in UTC time) when this configuration set was created.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt; If not &lt;code&gt;null&lt;/code&gt;, the name of the environment for this configuration set. &lt;/p&gt;
+-- <p>Describes the settings for a configuration set.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application associated with this configuration set.</p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- @param Description [Description] <p>Describes this configuration set.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p> If not <code>null</code>, the name of the configuration template for this configuration set. </p>
+-- @param DeploymentStatus [ConfigurationDeploymentStatus] <p> If this configuration set is associated with an environment, the <code>DeploymentStatus</code> parameter indicates the deployment status of this configuration set: </p> <ul> <li> <p> <code>null</code>: This configuration is not associated with a running environment.</p> </li> <li> <p> <code>pending</code>: This is a draft configuration that is not deployed to the associated environment but is in the process of deploying.</p> </li> <li> <p> <code>deployed</code>: This is the configuration that is currently deployed to the associated running environment.</p> </li> <li> <p> <code>failed</code>: This is a draft configuration that failed to successfully deploy.</p> </li> </ul>
+-- @param SolutionStackName [SolutionStackName] <p>The name of the solution stack this configuration set uses.</p>
+-- @param OptionSettings [ConfigurationOptionSettingsList] <p>A list of the configuration options and their values in this configuration set.</p>
+-- @param DateUpdated [UpdateDate] <p>The date (in UTC time) when this configuration set was last modified.</p>
+-- @param DateCreated [CreationDate] <p>The date (in UTC time) when this configuration set was created.</p>
+-- @param EnvironmentName [EnvironmentName] <p> If not <code>null</code>, the name of the environment for this configuration set. </p>
 function M.ConfigurationSettingsDescription(ApplicationName, PlatformArn, Description, TemplateName, DeploymentStatus, SolutionStackName, OptionSettings, DateUpdated, DateCreated, EnvironmentName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSettingsDescription")
 	local t = { 
@@ -2811,7 +2811,7 @@ end
 
 --- Create a structure of type DescribePlatformVersionRequest
 --  
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the version of the platform.&lt;/p&gt;
+-- @param PlatformArn [PlatformArn] <p>The ARN of the version of the platform.</p>
 function M.DescribePlatformVersionRequest(PlatformArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePlatformVersionRequest")
 	local t = { 
@@ -2832,7 +2832,7 @@ function M.AssertTooManyEnvironmentsException(struct)
 end
 
 --- Create a structure of type TooManyEnvironmentsException
--- &lt;p&gt;The specified account has reached its limit of environments.&lt;/p&gt;
+-- <p>The specified account has reached its limit of environments.</p>
 function M.TooManyEnvironmentsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyEnvironmentsException")
 	local t = { 
@@ -2860,15 +2860,15 @@ function M.AssertManagedActionHistoryItem(struct)
 end
 
 --- Create a structure of type ManagedActionHistoryItem
--- &lt;p&gt;The record of a completed or failed managed action.&lt;/p&gt;
--- @param Status [ActionHistoryStatus] &lt;p&gt;The status of the action.&lt;/p&gt;
--- @param FinishedTime [Timestamp] &lt;p&gt;The date and time that the action finished executing.&lt;/p&gt;
--- @param ExecutedTime [Timestamp] &lt;p&gt;The date and time that the action started executing.&lt;/p&gt;
--- @param ActionDescription [String] &lt;p&gt;A description of the managed action.&lt;/p&gt;
--- @param FailureType [FailureType] &lt;p&gt;If the action failed, the type of failure.&lt;/p&gt;
--- @param FailureDescription [String] &lt;p&gt;If the action failed, a description of the failure.&lt;/p&gt;
--- @param ActionType [ActionType] &lt;p&gt;The type of the managed action.&lt;/p&gt;
--- @param ActionId [String] &lt;p&gt;A unique identifier for the managed action.&lt;/p&gt;
+-- <p>The record of a completed or failed managed action.</p>
+-- @param Status [ActionHistoryStatus] <p>The status of the action.</p>
+-- @param FinishedTime [Timestamp] <p>The date and time that the action finished executing.</p>
+-- @param ExecutedTime [Timestamp] <p>The date and time that the action started executing.</p>
+-- @param ActionDescription [String] <p>A description of the managed action.</p>
+-- @param FailureType [FailureType] <p>If the action failed, the type of failure.</p>
+-- @param FailureDescription [String] <p>If the action failed, a description of the failure.</p>
+-- @param ActionType [ActionType] <p>The type of the managed action.</p>
+-- @param ActionId [String] <p>A unique identifier for the managed action.</p>
 function M.ManagedActionHistoryItem(Status, FinishedTime, ExecutedTime, ActionDescription, FailureType, FailureDescription, ActionType, ActionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ManagedActionHistoryItem")
 	local t = { 
@@ -2896,7 +2896,7 @@ function M.AssertSourceBundleDeletionException(struct)
 end
 
 --- Create a structure of type SourceBundleDeletionException
--- &lt;p&gt;Unable to delete the Amazon S3 source bundle associated with the application version. The application version was deleted successfully.&lt;/p&gt;
+-- <p>Unable to delete the Amazon S3 source bundle associated with the application version. The application version was deleted successfully.</p>
 function M.SourceBundleDeletionException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SourceBundleDeletionException")
 	local t = { 
@@ -2924,15 +2924,15 @@ function M.AssertLatency(struct)
 end
 
 --- Create a structure of type Latency
--- &lt;p&gt;Represents the average latency for the slowest X percent of requests over the last 10 seconds.&lt;/p&gt;
--- @param P99 [NullableDouble] &lt;p&gt;The average latency for the slowest 1 percent of requests over the last 10 seconds.&lt;/p&gt;
--- @param P75 [NullableDouble] &lt;p&gt;The average latency for the slowest 25 percent of requests over the last 10 seconds.&lt;/p&gt;
--- @param P90 [NullableDouble] &lt;p&gt;The average latency for the slowest 10 percent of requests over the last 10 seconds.&lt;/p&gt;
--- @param P95 [NullableDouble] &lt;p&gt;The average latency for the slowest 5 percent of requests over the last 10 seconds.&lt;/p&gt;
--- @param P85 [NullableDouble] &lt;p&gt;The average latency for the slowest 15 percent of requests over the last 10 seconds.&lt;/p&gt;
--- @param P10 [NullableDouble] &lt;p&gt;The average latency for the slowest 90 percent of requests over the last 10 seconds.&lt;/p&gt;
--- @param P999 [NullableDouble] &lt;p&gt;The average latency for the slowest 0.1 percent of requests over the last 10 seconds.&lt;/p&gt;
--- @param P50 [NullableDouble] &lt;p&gt;The average latency for the slowest 50 percent of requests over the last 10 seconds.&lt;/p&gt;
+-- <p>Represents the average latency for the slowest X percent of requests over the last 10 seconds.</p>
+-- @param P99 [NullableDouble] <p>The average latency for the slowest 1 percent of requests over the last 10 seconds.</p>
+-- @param P75 [NullableDouble] <p>The average latency for the slowest 25 percent of requests over the last 10 seconds.</p>
+-- @param P90 [NullableDouble] <p>The average latency for the slowest 10 percent of requests over the last 10 seconds.</p>
+-- @param P95 [NullableDouble] <p>The average latency for the slowest 5 percent of requests over the last 10 seconds.</p>
+-- @param P85 [NullableDouble] <p>The average latency for the slowest 15 percent of requests over the last 10 seconds.</p>
+-- @param P10 [NullableDouble] <p>The average latency for the slowest 90 percent of requests over the last 10 seconds.</p>
+-- @param P999 [NullableDouble] <p>The average latency for the slowest 0.1 percent of requests over the last 10 seconds.</p>
+-- @param P50 [NullableDouble] <p>The average latency for the slowest 50 percent of requests over the last 10 seconds.</p>
 function M.Latency(P99, P75, P90, P95, P85, P10, P999, P50, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Latency")
 	local t = { 
@@ -2969,16 +2969,16 @@ function M.AssertApplicationVersionDescription(struct)
 end
 
 --- Create a structure of type ApplicationVersionDescription
--- &lt;p&gt;Describes the properties of an application version.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application to which the application version belongs.&lt;/p&gt;
--- @param Status [ApplicationVersionStatus] &lt;p&gt;The processing status of the application version.&lt;/p&gt;
--- @param VersionLabel [VersionLabel] &lt;p&gt;A unique identifier for the application version.&lt;/p&gt;
--- @param SourceBuildInformation [SourceBuildInformation] &lt;p&gt;If the version's source code was retrieved from AWS CodeCommit, the location of the source code for the application version.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;The description of the application version.&lt;/p&gt;
--- @param DateCreated [CreationDate] &lt;p&gt;The creation date of the application version.&lt;/p&gt;
--- @param DateUpdated [UpdateDate] &lt;p&gt;The last modified date of the application version.&lt;/p&gt;
--- @param SourceBundle [S3Location] &lt;p&gt;The storage location of the application version's source bundle in Amazon S3.&lt;/p&gt;
--- @param BuildArn [String] &lt;p&gt;Reference to the artifact from the AWS CodeBuild build.&lt;/p&gt;
+-- <p>Describes the properties of an application version.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application to which the application version belongs.</p>
+-- @param Status [ApplicationVersionStatus] <p>The processing status of the application version.</p>
+-- @param VersionLabel [VersionLabel] <p>A unique identifier for the application version.</p>
+-- @param SourceBuildInformation [SourceBuildInformation] <p>If the version's source code was retrieved from AWS CodeCommit, the location of the source code for the application version.</p>
+-- @param Description [Description] <p>The description of the application version.</p>
+-- @param DateCreated [CreationDate] <p>The creation date of the application version.</p>
+-- @param DateUpdated [UpdateDate] <p>The last modified date of the application version.</p>
+-- @param SourceBundle [S3Location] <p>The storage location of the application version's source bundle in Amazon S3.</p>
+-- @param BuildArn [String] <p>Reference to the artifact from the AWS CodeBuild build.</p>
 function M.ApplicationVersionDescription(ApplicationName, Status, VersionLabel, SourceBuildInformation, Description, DateCreated, DateUpdated, SourceBundle, BuildArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationVersionDescription")
 	local t = { 
@@ -3014,12 +3014,12 @@ function M.AssertUpdateConfigurationTemplateMessage(struct)
 end
 
 --- Create a structure of type UpdateConfigurationTemplateMessage
--- &lt;p&gt;The result message containing the options for the specified solution stack.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application associated with the configuration template to update.&lt;/p&gt; &lt;p&gt; If no application is found with this name, &lt;code&gt;UpdateConfigurationTemplate&lt;/code&gt; returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param OptionSettings [ConfigurationOptionSettingsList] &lt;p&gt;A list of configuration option settings to update with the new specified option value.&lt;/p&gt;
--- @param OptionsToRemove [OptionsSpecifierList] &lt;p&gt;A list of configuration options to remove from the configuration set.&lt;/p&gt; &lt;p&gt; Constraint: You can remove only &lt;code&gt;UserDefined&lt;/code&gt; configuration options. &lt;/p&gt;
--- @param Description [Description] &lt;p&gt;A new description for the configuration.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;The name of the configuration template to update.&lt;/p&gt; &lt;p&gt; If no configuration template is found with this name, &lt;code&gt;UpdateConfigurationTemplate&lt;/code&gt; returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
+-- <p>The result message containing the options for the specified solution stack.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application associated with the configuration template to update.</p> <p> If no application is found with this name, <code>UpdateConfigurationTemplate</code> returns an <code>InvalidParameterValue</code> error. </p>
+-- @param OptionSettings [ConfigurationOptionSettingsList] <p>A list of configuration option settings to update with the new specified option value.</p>
+-- @param OptionsToRemove [OptionsSpecifierList] <p>A list of configuration options to remove from the configuration set.</p> <p> Constraint: You can remove only <code>UserDefined</code> configuration options. </p>
+-- @param Description [Description] <p>A new description for the configuration.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to update.</p> <p> If no configuration template is found with this name, <code>UpdateConfigurationTemplate</code> returns an <code>InvalidParameterValue</code> error. </p>
 -- Required parameter: ApplicationName
 -- Required parameter: TemplateName
 function M.UpdateConfigurationTemplateMessage(ApplicationName, OptionSettings, OptionsToRemove, Description, TemplateName, ...)
@@ -3048,9 +3048,9 @@ function M.AssertRestartAppServerMessage(struct)
 end
 
 --- Create a structure of type RestartAppServerMessage
--- &lt;p/&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;The ID of the environment to restart the server for.&lt;/p&gt; &lt;p&gt; Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment to restart the server for.&lt;/p&gt; &lt;p&gt; Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
+-- <p/>
+-- @param EnvironmentId [EnvironmentId] <p>The ID of the environment to restart the server for.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment to restart the server for.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
 function M.RestartAppServerMessage(EnvironmentId, EnvironmentName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RestartAppServerMessage")
 	local t = { 
@@ -3076,11 +3076,11 @@ function M.AssertSwapEnvironmentCNAMEsMessage(struct)
 end
 
 --- Create a structure of type SwapEnvironmentCNAMEsMessage
--- &lt;p&gt;Swaps the CNAMEs of two environments.&lt;/p&gt;
--- @param DestinationEnvironmentName [EnvironmentName] &lt;p&gt;The name of the destination environment.&lt;/p&gt; &lt;p&gt; Condition: You must specify at least the &lt;code&gt;DestinationEnvironmentID&lt;/code&gt; or the &lt;code&gt;DestinationEnvironmentName&lt;/code&gt;. You may also specify both. You must specify the &lt;code&gt;SourceEnvironmentName&lt;/code&gt; with the &lt;code&gt;DestinationEnvironmentName&lt;/code&gt;. &lt;/p&gt;
--- @param DestinationEnvironmentId [EnvironmentId] &lt;p&gt;The ID of the destination environment.&lt;/p&gt; &lt;p&gt; Condition: You must specify at least the &lt;code&gt;DestinationEnvironmentID&lt;/code&gt; or the &lt;code&gt;DestinationEnvironmentName&lt;/code&gt;. You may also specify both. You must specify the &lt;code&gt;SourceEnvironmentId&lt;/code&gt; with the &lt;code&gt;DestinationEnvironmentId&lt;/code&gt;. &lt;/p&gt;
--- @param SourceEnvironmentName [EnvironmentName] &lt;p&gt;The name of the source environment.&lt;/p&gt; &lt;p&gt; Condition: You must specify at least the &lt;code&gt;SourceEnvironmentID&lt;/code&gt; or the &lt;code&gt;SourceEnvironmentName&lt;/code&gt;. You may also specify both. If you specify the &lt;code&gt;SourceEnvironmentName&lt;/code&gt;, you must specify the &lt;code&gt;DestinationEnvironmentName&lt;/code&gt;. &lt;/p&gt;
--- @param SourceEnvironmentId [EnvironmentId] &lt;p&gt;The ID of the source environment.&lt;/p&gt; &lt;p&gt; Condition: You must specify at least the &lt;code&gt;SourceEnvironmentID&lt;/code&gt; or the &lt;code&gt;SourceEnvironmentName&lt;/code&gt;. You may also specify both. If you specify the &lt;code&gt;SourceEnvironmentId&lt;/code&gt;, you must specify the &lt;code&gt;DestinationEnvironmentId&lt;/code&gt;. &lt;/p&gt;
+-- <p>Swaps the CNAMEs of two environments.</p>
+-- @param DestinationEnvironmentName [EnvironmentName] <p>The name of the destination environment.</p> <p> Condition: You must specify at least the <code>DestinationEnvironmentID</code> or the <code>DestinationEnvironmentName</code>. You may also specify both. You must specify the <code>SourceEnvironmentName</code> with the <code>DestinationEnvironmentName</code>. </p>
+-- @param DestinationEnvironmentId [EnvironmentId] <p>The ID of the destination environment.</p> <p> Condition: You must specify at least the <code>DestinationEnvironmentID</code> or the <code>DestinationEnvironmentName</code>. You may also specify both. You must specify the <code>SourceEnvironmentId</code> with the <code>DestinationEnvironmentId</code>. </p>
+-- @param SourceEnvironmentName [EnvironmentName] <p>The name of the source environment.</p> <p> Condition: You must specify at least the <code>SourceEnvironmentID</code> or the <code>SourceEnvironmentName</code>. You may also specify both. If you specify the <code>SourceEnvironmentName</code>, you must specify the <code>DestinationEnvironmentName</code>. </p>
+-- @param SourceEnvironmentId [EnvironmentId] <p>The ID of the source environment.</p> <p> Condition: You must specify at least the <code>SourceEnvironmentID</code> or the <code>SourceEnvironmentName</code>. You may also specify both. If you specify the <code>SourceEnvironmentId</code>, you must specify the <code>DestinationEnvironmentId</code>. </p>
 function M.SwapEnvironmentCNAMEsMessage(DestinationEnvironmentName, DestinationEnvironmentId, SourceEnvironmentName, SourceEnvironmentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SwapEnvironmentCNAMEsMessage")
 	local t = { 
@@ -3108,11 +3108,11 @@ function M.AssertDescribeInstancesHealthRequest(struct)
 end
 
 --- Create a structure of type DescribeInstancesHealthRequest
--- &lt;p&gt;Parameters for a call to &lt;code&gt;DescribeInstancesHealth&lt;/code&gt;.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;Specify the AWS Elastic Beanstalk environment by name.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;Specify the pagination token returned by a previous call.&lt;/p&gt;
--- @param AttributeNames [InstancesHealthAttributes] &lt;p&gt;Specifies the response elements you wish to receive. To retrieve all attributes, set to &lt;code&gt;All&lt;/code&gt;. If no attribute names are specified, returns a list of instances.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;Specify the AWS Elastic Beanstalk environment by ID.&lt;/p&gt;
+-- <p>Parameters for a call to <code>DescribeInstancesHealth</code>.</p>
+-- @param EnvironmentName [EnvironmentName] <p>Specify the AWS Elastic Beanstalk environment by name.</p>
+-- @param NextToken [NextToken] <p>Specify the pagination token returned by a previous call.</p>
+-- @param AttributeNames [InstancesHealthAttributes] <p>Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>. If no attribute names are specified, returns a list of instances.</p>
+-- @param EnvironmentId [EnvironmentId] <p>Specify the AWS Elastic Beanstalk environment by ID.</p>
 function M.DescribeInstancesHealthRequest(EnvironmentName, NextToken, AttributeNames, EnvironmentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesHealthRequest")
 	local t = { 
@@ -3138,9 +3138,9 @@ function M.AssertEnvironmentLink(struct)
 end
 
 --- Create a structure of type EnvironmentLink
--- &lt;p&gt;A link to another environment, defined in the environment's manifest. Links provide connection information in system properties that can be used to connect to another environment in the same group. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html&quot;&gt;Environment Manifest (env.yaml)&lt;/a&gt; for details.&lt;/p&gt;
--- @param LinkName [String] &lt;p&gt;The name of the link.&lt;/p&gt;
--- @param EnvironmentName [String] &lt;p&gt;The name of the linked environment (the dependency).&lt;/p&gt;
+-- <p>A link to another environment, defined in the environment's manifest. Links provide connection information in system properties that can be used to connect to another environment in the same group. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
+-- @param LinkName [String] <p>The name of the link.</p>
+-- @param EnvironmentName [String] <p>The name of the linked environment (the dependency).</p>
 function M.EnvironmentLink(LinkName, EnvironmentName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentLink")
 	local t = { 
@@ -3162,7 +3162,7 @@ function M.AssertPlatformVersionStillReferencedException(struct)
 end
 
 --- Create a structure of type PlatformVersionStillReferencedException
--- &lt;p&gt;You cannot delete the platform version because there are still environments running on it.&lt;/p&gt;
+-- <p>You cannot delete the platform version because there are still environments running on it.</p>
 function M.PlatformVersionStillReferencedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlatformVersionStillReferencedException")
 	local t = { 
@@ -3183,8 +3183,8 @@ function M.AssertRetrieveEnvironmentInfoResultMessage(struct)
 end
 
 --- Create a structure of type RetrieveEnvironmentInfoResultMessage
--- &lt;p&gt;Result message containing a description of the requested environment info.&lt;/p&gt;
--- @param EnvironmentInfo [EnvironmentInfoDescriptionList] &lt;p&gt; The &lt;a&gt;EnvironmentInfoDescription&lt;/a&gt; of the environment. &lt;/p&gt;
+-- <p>Result message containing a description of the requested environment info.</p>
+-- @param EnvironmentInfo [EnvironmentInfoDescriptionList] <p> The <a>EnvironmentInfoDescription</a> of the environment. </p>
 function M.RetrieveEnvironmentInfoResultMessage(EnvironmentInfo, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveEnvironmentInfoResultMessage")
 	local t = { 
@@ -3210,10 +3210,10 @@ function M.AssertUpdateApplicationVersionMessage(struct)
 end
 
 --- Create a structure of type UpdateApplicationVersionMessage
--- &lt;p/&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application associated with this version.&lt;/p&gt; &lt;p&gt; If no application is found with this name, &lt;code&gt;UpdateApplication&lt;/code&gt; returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error.&lt;/p&gt;
--- @param VersionLabel [VersionLabel] &lt;p&gt;The name of the version to update.&lt;/p&gt; &lt;p&gt;If no application version is found with this label, &lt;code&gt;UpdateApplication&lt;/code&gt; returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param Description [Description] &lt;p&gt;A new description for this version.&lt;/p&gt;
+-- <p/>
+-- @param ApplicationName [ApplicationName] <p>The name of the application associated with this version.</p> <p> If no application is found with this name, <code>UpdateApplication</code> returns an <code>InvalidParameterValue</code> error.</p>
+-- @param VersionLabel [VersionLabel] <p>The name of the version to update.</p> <p>If no application version is found with this label, <code>UpdateApplication</code> returns an <code>InvalidParameterValue</code> error. </p>
+-- @param Description [Description] <p>A new description for this version.</p>
 -- Required parameter: ApplicationName
 -- Required parameter: VersionLabel
 function M.UpdateApplicationVersionMessage(ApplicationName, VersionLabel, Description, ...)
@@ -3239,8 +3239,8 @@ function M.AssertEnvironmentResourcesDescription(struct)
 end
 
 --- Create a structure of type EnvironmentResourcesDescription
--- &lt;p&gt;Describes the AWS resources in use by this environment. This data is not live data.&lt;/p&gt;
--- @param LoadBalancer [LoadBalancerDescription] &lt;p&gt;Describes the LoadBalancer.&lt;/p&gt;
+-- <p>Describes the AWS resources in use by this environment. This data is not live data.</p>
+-- @param LoadBalancer [LoadBalancerDescription] <p>Describes the LoadBalancer.</p>
 function M.EnvironmentResourcesDescription(LoadBalancer, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentResourcesDescription")
 	local t = { 
@@ -3263,9 +3263,9 @@ function M.AssertOptionRestrictionRegex(struct)
 end
 
 --- Create a structure of type OptionRestrictionRegex
--- &lt;p&gt;A regular expression representing a restriction on a string configuration option value.&lt;/p&gt;
--- @param Pattern [RegexPattern] &lt;p&gt;The regular expression pattern that a string configuration option value with this restriction must match.&lt;/p&gt;
--- @param Label [RegexLabel] &lt;p&gt;A unique name representing this regular expression.&lt;/p&gt;
+-- <p>A regular expression representing a restriction on a string configuration option value.</p>
+-- @param Pattern [RegexPattern] <p>The regular expression pattern that a string configuration option value with this restriction must match.</p>
+-- @param Label [RegexLabel] <p>A unique name representing this regular expression.</p>
 function M.OptionRestrictionRegex(Pattern, Label, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptionRestrictionRegex")
 	local t = { 
@@ -3289,9 +3289,9 @@ function M.AssertPlatformProgrammingLanguage(struct)
 end
 
 --- Create a structure of type PlatformProgrammingLanguage
--- &lt;p&gt;A programming language supported by the platform.&lt;/p&gt;
--- @param Version [String] &lt;p&gt;The version of the programming language.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the programming language.&lt;/p&gt;
+-- <p>A programming language supported by the platform.</p>
+-- @param Version [String] <p>The version of the programming language.</p>
+-- @param Name [String] <p>The name of the programming language.</p>
 function M.PlatformProgrammingLanguage(Version, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlatformProgrammingLanguage")
 	local t = { 
@@ -3313,7 +3313,7 @@ function M.AssertTooManyPlatformsException(struct)
 end
 
 --- Create a structure of type TooManyPlatformsException
--- &lt;p&gt;You have exceeded the maximum number of allowed platforms associated with the account.&lt;/p&gt;
+-- <p>You have exceeded the maximum number of allowed platforms associated with the account.</p>
 function M.TooManyPlatformsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyPlatformsException")
 	local t = { 
@@ -3334,8 +3334,8 @@ function M.AssertApplicationDescriptionMessage(struct)
 end
 
 --- Create a structure of type ApplicationDescriptionMessage
--- &lt;p&gt;Result message containing a single description of an application.&lt;/p&gt;
--- @param Application [ApplicationDescription] &lt;p&gt; The &lt;a&gt;ApplicationDescription&lt;/a&gt; of the application. &lt;/p&gt;
+-- <p>Result message containing a single description of an application.</p>
+-- @param Application [ApplicationDescription] <p> The <a>ApplicationDescription</a> of the application. </p>
 function M.ApplicationDescriptionMessage(Application, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationDescriptionMessage")
 	local t = { 
@@ -3364,15 +3364,15 @@ function M.AssertPlatformSummary(struct)
 end
 
 --- Create a structure of type PlatformSummary
--- &lt;p&gt;Detailed information about a platform.&lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the platform.&lt;/p&gt;
--- @param PlatformStatus [PlatformStatus] &lt;p&gt;The status of the platform. You can create an environment from the platform once it is ready.&lt;/p&gt;
--- @param SupportedAddonList [SupportedAddonList] &lt;p&gt;The additions associated with the platform.&lt;/p&gt;
--- @param OperatingSystemName [OperatingSystemName] &lt;p&gt;The operating system used by the platform.&lt;/p&gt;
--- @param PlatformCategory [PlatformCategory] &lt;p&gt;The category of platform.&lt;/p&gt;
--- @param PlatformOwner [PlatformOwner] &lt;p&gt;The AWS account ID of the person who created the platform.&lt;/p&gt;
--- @param OperatingSystemVersion [OperatingSystemVersion] &lt;p&gt;The version of the operating system used by the platform.&lt;/p&gt;
--- @param SupportedTierList [SupportedTierList] &lt;p&gt;The tiers in which the platform runs.&lt;/p&gt;
+-- <p>Detailed information about a platform.</p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
+-- @param PlatformStatus [PlatformStatus] <p>The status of the platform. You can create an environment from the platform once it is ready.</p>
+-- @param SupportedAddonList [SupportedAddonList] <p>The additions associated with the platform.</p>
+-- @param OperatingSystemName [OperatingSystemName] <p>The operating system used by the platform.</p>
+-- @param PlatformCategory [PlatformCategory] <p>The category of platform.</p>
+-- @param PlatformOwner [PlatformOwner] <p>The AWS account ID of the person who created the platform.</p>
+-- @param OperatingSystemVersion [OperatingSystemVersion] <p>The version of the operating system used by the platform.</p>
+-- @param SupportedTierList [SupportedTierList] <p>The tiers in which the platform runs.</p>
 function M.PlatformSummary(PlatformArn, PlatformStatus, SupportedAddonList, OperatingSystemName, PlatformCategory, PlatformOwner, OperatingSystemVersion, SupportedTierList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlatformSummary")
 	local t = { 
@@ -3403,8 +3403,8 @@ end
 
 --- Create a structure of type CreatePlatformVersionResult
 --  
--- @param PlatformSummary [PlatformSummary] &lt;p&gt;Detailed information about the new version of the custom platform.&lt;/p&gt;
--- @param Builder [Builder] &lt;p&gt;The builder used to create the custom platform.&lt;/p&gt;
+-- @param PlatformSummary [PlatformSummary] <p>Detailed information about the new version of the custom platform.</p>
+-- @param Builder [Builder] <p>The builder used to create the custom platform.</p>
 function M.CreatePlatformVersionResult(PlatformSummary, Builder, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlatformVersionResult")
 	local t = { 
@@ -3430,11 +3430,11 @@ function M.AssertConfigurationOptionSetting(struct)
 end
 
 --- Create a structure of type ConfigurationOptionSetting
--- &lt;p&gt; A specification identifying an individual configuration option along with its current value. For a list of possible option values, go to &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html&quot;&gt;Option Values&lt;/a&gt; in the &lt;i&gt;AWS Elastic Beanstalk Developer Guide&lt;/i&gt;. &lt;/p&gt;
--- @param OptionName [ConfigurationOptionName] &lt;p&gt;The name of the configuration option.&lt;/p&gt;
--- @param ResourceName [ResourceName] &lt;p&gt;A unique resource name for a time-based scaling configuration option.&lt;/p&gt;
--- @param Namespace [OptionNamespace] &lt;p&gt;A unique namespace identifying the option's associated AWS resource.&lt;/p&gt;
--- @param Value [ConfigurationOptionValue] &lt;p&gt;The current value for the configuration option.&lt;/p&gt;
+-- <p> A specification identifying an individual configuration option along with its current value. For a list of possible option values, go to <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html">Option Values</a> in the <i>AWS Elastic Beanstalk Developer Guide</i>. </p>
+-- @param OptionName [ConfigurationOptionName] <p>The name of the configuration option.</p>
+-- @param ResourceName [ResourceName] <p>A unique resource name for a time-based scaling configuration option.</p>
+-- @param Namespace [OptionNamespace] <p>A unique namespace identifying the option's associated AWS resource.</p>
+-- @param Value [ConfigurationOptionValue] <p>The current value for the configuration option.</p>
 function M.ConfigurationOptionSetting(OptionName, ResourceName, Namespace, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationOptionSetting")
 	local t = { 
@@ -3462,11 +3462,11 @@ function M.AssertDeployment(struct)
 end
 
 --- Create a structure of type Deployment
--- &lt;p&gt;Information about an application version deployment.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the deployment:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;In Progress&lt;/code&gt; : The deployment is in progress.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Deployed&lt;/code&gt; : The deployment succeeded.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Failed&lt;/code&gt; : The deployment failed.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param VersionLabel [String] &lt;p&gt;The version label of the application version in the deployment.&lt;/p&gt;
--- @param DeploymentTime [DeploymentTimestamp] &lt;p&gt;For in-progress deployments, the time that the deloyment started.&lt;/p&gt; &lt;p&gt;For completed deployments, the time that the deployment ended.&lt;/p&gt;
--- @param DeploymentId [NullableLong] &lt;p&gt;The ID of the deployment. This number increases by one each time that you deploy source code or change instance configuration settings.&lt;/p&gt;
+-- <p>Information about an application version deployment.</p>
+-- @param Status [String] <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> : The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment failed.</p> </li> </ul>
+-- @param VersionLabel [String] <p>The version label of the application version in the deployment.</p>
+-- @param DeploymentTime [DeploymentTimestamp] <p>For in-progress deployments, the time that the deloyment started.</p> <p>For completed deployments, the time that the deployment ended.</p>
+-- @param DeploymentId [NullableLong] <p>The ID of the deployment. This number increases by one each time that you deploy source code or change instance configuration settings.</p>
 function M.Deployment(Status, VersionLabel, DeploymentTime, DeploymentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Deployment")
 	local t = { 
@@ -3493,10 +3493,10 @@ function M.AssertPlatformFilter(struct)
 end
 
 --- Create a structure of type PlatformFilter
--- &lt;p&gt;Specify criteria to restrict the results when listing custom platforms.&lt;/p&gt; &lt;p&gt;The filter is evaluated as the expression:&lt;/p&gt; &lt;p&gt; &lt;code&gt;Type&lt;/code&gt; &lt;code&gt;Operator&lt;/code&gt; &lt;code&gt;Values[i]&lt;/code&gt; &lt;/p&gt;
--- @param Operator [PlatformFilterOperator] &lt;p&gt;The operator to apply to the &lt;code&gt;Type&lt;/code&gt; with each of the &lt;code&gt;Values&lt;/code&gt;.&lt;/p&gt; &lt;p&gt; Valid Values: &lt;code&gt;=&lt;/code&gt; (equal to) | &lt;code&gt;!=&lt;/code&gt; (not equal to) | &lt;code&gt;&amp;lt;&lt;/code&gt; (less than) | &lt;code&gt;&amp;lt;=&lt;/code&gt; (less than or equal to) | &lt;code&gt;&amp;gt;&lt;/code&gt; (greater than) | &lt;code&gt;&amp;gt;=&lt;/code&gt; (greater than or equal to) | &lt;code&gt;contains&lt;/code&gt; | &lt;code&gt;begins_with&lt;/code&gt; | &lt;code&gt;ends_with&lt;/code&gt; &lt;/p&gt;
--- @param Values [PlatformFilterValueList] &lt;p&gt;The list of values applied to the custom platform attribute.&lt;/p&gt;
--- @param Type [PlatformFilterType] &lt;p&gt;The custom platform attribute to which the filter values are applied.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;PlatformName&lt;/code&gt; | &lt;code&gt;PlatformVersion&lt;/code&gt; | &lt;code&gt;PlatformStatus&lt;/code&gt; | &lt;code&gt;PlatformOwner&lt;/code&gt; &lt;/p&gt;
+-- <p>Specify criteria to restrict the results when listing custom platforms.</p> <p>The filter is evaluated as the expression:</p> <p> <code>Type</code> <code>Operator</code> <code>Values[i]</code> </p>
+-- @param Operator [PlatformFilterOperator] <p>The operator to apply to the <code>Type</code> with each of the <code>Values</code>.</p> <p> Valid Values: <code>=</code> (equal to) | <code>!=</code> (not equal to) | <code>&lt;</code> (less than) | <code>&lt;=</code> (less than or equal to) | <code>&gt;</code> (greater than) | <code>&gt;=</code> (greater than or equal to) | <code>contains</code> | <code>begins_with</code> | <code>ends_with</code> </p>
+-- @param Values [PlatformFilterValueList] <p>The list of values applied to the custom platform attribute.</p>
+-- @param Type [PlatformFilterType] <p>The custom platform attribute to which the filter values are applied.</p> <p>Valid Values: <code>PlatformName</code> | <code>PlatformVersion</code> | <code>PlatformStatus</code> | <code>PlatformOwner</code> </p>
 function M.PlatformFilter(Operator, Values, Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlatformFilter")
 	local t = { 
@@ -3523,10 +3523,10 @@ function M.AssertRequestEnvironmentInfoMessage(struct)
 end
 
 --- Create a structure of type RequestEnvironmentInfoMessage
--- &lt;p&gt;Request to retrieve logs from an environment and store them in your Elastic Beanstalk storage bucket.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;The ID of the environment of the requested data.&lt;/p&gt; &lt;p&gt;If no such environment is found, &lt;code&gt;RequestEnvironmentInfo&lt;/code&gt; returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt; &lt;p&gt;Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
--- @param InfoType [EnvironmentInfoType] &lt;p&gt;The type of information to request.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment of the requested data.&lt;/p&gt; &lt;p&gt;If no such environment is found, &lt;code&gt;RequestEnvironmentInfo&lt;/code&gt; returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt; &lt;p&gt;Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
+-- <p>Request to retrieve logs from an environment and store them in your Elastic Beanstalk storage bucket.</p>
+-- @param EnvironmentId [EnvironmentId] <p>The ID of the environment of the requested data.</p> <p>If no such environment is found, <code>RequestEnvironmentInfo</code> returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @param InfoType [EnvironmentInfoType] <p>The type of information to request.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment of the requested data.</p> <p>If no such environment is found, <code>RequestEnvironmentInfo</code> returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
 -- Required parameter: InfoType
 function M.RequestEnvironmentInfoMessage(EnvironmentId, InfoType, EnvironmentName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestEnvironmentInfoMessage")
@@ -3552,9 +3552,9 @@ function M.AssertSolutionStackDescription(struct)
 end
 
 --- Create a structure of type SolutionStackDescription
--- &lt;p&gt;Describes the solution stack.&lt;/p&gt;
--- @param PermittedFileTypes [SolutionStackFileTypeList] &lt;p&gt;The permitted file types allowed for a solution stack.&lt;/p&gt;
--- @param SolutionStackName [SolutionStackName] &lt;p&gt;The name of the solution stack.&lt;/p&gt;
+-- <p>Describes the solution stack.</p>
+-- @param PermittedFileTypes [SolutionStackFileTypeList] <p>The permitted file types allowed for a solution stack.</p>
+-- @param SolutionStackName [SolutionStackName] <p>The name of the solution stack.</p>
 function M.SolutionStackDescription(PermittedFileTypes, SolutionStackName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SolutionStackDescription")
 	local t = { 
@@ -3584,15 +3584,15 @@ function M.AssertInstanceHealthSummary(struct)
 end
 
 --- Create a structure of type InstanceHealthSummary
--- &lt;p&gt;Represents summary information about the health of an instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html&quot;&gt;Health Colors and Statuses&lt;/a&gt;.&lt;/p&gt;
--- @param Info [NullableInteger] &lt;p&gt; &lt;b&gt;Green.&lt;/b&gt; An operation is in progress on an instance.&lt;/p&gt;
--- @param Ok [NullableInteger] &lt;p&gt; &lt;b&gt;Green.&lt;/b&gt; An instance is passing health checks and the health agent is not reporting any problems.&lt;/p&gt;
--- @param Unknown [NullableInteger] &lt;p&gt; &lt;b&gt;Grey.&lt;/b&gt; AWS Elastic Beanstalk and the health agent are reporting an insufficient amount of data on an instance.&lt;/p&gt;
--- @param Severe [NullableInteger] &lt;p&gt; &lt;b&gt;Red.&lt;/b&gt; The health agent is reporting a very high number of request failures or other issues for an instance or environment.&lt;/p&gt;
--- @param Warning [NullableInteger] &lt;p&gt; &lt;b&gt;Yellow.&lt;/b&gt; The health agent is reporting a moderate number of request failures or other issues for an instance or environment.&lt;/p&gt;
--- @param Degraded [NullableInteger] &lt;p&gt; &lt;b&gt;Red.&lt;/b&gt; The health agent is reporting a high number of request failures or other issues for an instance or environment.&lt;/p&gt;
--- @param NoData [NullableInteger] &lt;p&gt; &lt;b&gt;Grey.&lt;/b&gt; AWS Elastic Beanstalk and the health agent are reporting no data on an instance.&lt;/p&gt;
--- @param Pending [NullableInteger] &lt;p&gt; &lt;b&gt;Grey.&lt;/b&gt; An operation is in progress on an instance within the command timeout.&lt;/p&gt;
+-- <p>Represents summary information about the health of an instance. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
+-- @param Info [NullableInteger] <p> <b>Green.</b> An operation is in progress on an instance.</p>
+-- @param Ok [NullableInteger] <p> <b>Green.</b> An instance is passing health checks and the health agent is not reporting any problems.</p>
+-- @param Unknown [NullableInteger] <p> <b>Grey.</b> AWS Elastic Beanstalk and the health agent are reporting an insufficient amount of data on an instance.</p>
+-- @param Severe [NullableInteger] <p> <b>Red.</b> The health agent is reporting a very high number of request failures or other issues for an instance or environment.</p>
+-- @param Warning [NullableInteger] <p> <b>Yellow.</b> The health agent is reporting a moderate number of request failures or other issues for an instance or environment.</p>
+-- @param Degraded [NullableInteger] <p> <b>Red.</b> The health agent is reporting a high number of request failures or other issues for an instance or environment.</p>
+-- @param NoData [NullableInteger] <p> <b>Grey.</b> AWS Elastic Beanstalk and the health agent are reporting no data on an instance.</p>
+-- @param Pending [NullableInteger] <p> <b>Grey.</b> An operation is in progress on an instance within the command timeout.</p>
 function M.InstanceHealthSummary(Info, Ok, Unknown, Severe, Warning, Degraded, NoData, Pending, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceHealthSummary")
 	local t = { 
@@ -3621,8 +3621,8 @@ function M.AssertEnvironmentDescriptionsMessage(struct)
 end
 
 --- Create a structure of type EnvironmentDescriptionsMessage
--- &lt;p&gt;Result message containing a list of environment descriptions.&lt;/p&gt;
--- @param Environments [EnvironmentDescriptionsList] &lt;p&gt; Returns an &lt;a&gt;EnvironmentDescription&lt;/a&gt; list. &lt;/p&gt;
+-- <p>Result message containing a list of environment descriptions.</p>
+-- @param Environments [EnvironmentDescriptionsList] <p> Returns an <a>EnvironmentDescription</a> list. </p>
 function M.EnvironmentDescriptionsMessage(Environments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentDescriptionsMessage")
 	local t = { 
@@ -3645,9 +3645,9 @@ function M.AssertPlatformFramework(struct)
 end
 
 --- Create a structure of type PlatformFramework
--- &lt;p&gt;A framework supported by the custom platform.&lt;/p&gt;
--- @param Version [String] &lt;p&gt;The version of the framework.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the framework.&lt;/p&gt;
+-- <p>A framework supported by the custom platform.</p>
+-- @param Version [String] <p>The version of the framework.</p>
+-- @param Name [String] <p>The name of the framework.</p>
 function M.PlatformFramework(Version, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PlatformFramework")
 	local t = { 
@@ -3674,8 +3674,8 @@ end
 
 --- Create a structure of type UpdateApplicationResourceLifecycleMessage
 --  
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application.&lt;/p&gt;
--- @param ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] &lt;p&gt;The lifecycle configuration.&lt;/p&gt;
+-- @param ApplicationName [ApplicationName] <p>The name of the application.</p>
+-- @param ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle configuration.</p>
 -- Required parameter: ApplicationName
 -- Required parameter: ResourceLifecycleConfig
 function M.UpdateApplicationResourceLifecycleMessage(ApplicationName, ResourceLifecycleConfig, ...)
@@ -3702,10 +3702,10 @@ function M.AssertLoadBalancerDescription(struct)
 end
 
 --- Create a structure of type LoadBalancerDescription
--- &lt;p&gt;Describes the details of a LoadBalancer.&lt;/p&gt;
--- @param Domain [String] &lt;p&gt;The domain name of the LoadBalancer.&lt;/p&gt;
--- @param Listeners [LoadBalancerListenersDescription] &lt;p&gt;A list of Listeners used by the LoadBalancer.&lt;/p&gt;
--- @param LoadBalancerName [String] &lt;p&gt;The name of the LoadBalancer.&lt;/p&gt;
+-- <p>Describes the details of a LoadBalancer.</p>
+-- @param Domain [String] <p>The domain name of the LoadBalancer.</p>
+-- @param Listeners [LoadBalancerListenersDescription] <p>A list of Listeners used by the LoadBalancer.</p>
+-- @param LoadBalancerName [String] <p>The name of the LoadBalancer.</p>
 function M.LoadBalancerDescription(Domain, Listeners, LoadBalancerName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerDescription")
 	local t = { 
@@ -3728,7 +3728,7 @@ function M.AssertTooManyApplicationsException(struct)
 end
 
 --- Create a structure of type TooManyApplicationsException
--- &lt;p&gt;The specified account has reached its limit of applications.&lt;/p&gt;
+-- <p>The specified account has reached its limit of applications.</p>
 function M.TooManyApplicationsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyApplicationsException")
 	local t = { 
@@ -3751,8 +3751,8 @@ end
 
 --- Create a structure of type ListPlatformVersionsResult
 --  
--- @param PlatformSummaryList [PlatformSummaryList] &lt;p&gt;Detailed information about the platforms.&lt;/p&gt;
--- @param NextToken [Token] &lt;p&gt;The starting index into the remaining list of platforms. if this value is not &lt;code&gt;null&lt;/code&gt;, you can use it in a subsequent &lt;code&gt;ListPlatformVersion&lt;/code&gt; call. &lt;/p&gt;
+-- @param PlatformSummaryList [PlatformSummaryList] <p>Detailed information about the platforms.</p>
+-- @param NextToken [Token] <p>The starting index into the remaining list of platforms. if this value is not <code>null</code>, you can use it in a subsequent <code>ListPlatformVersion</code> call. </p>
 function M.ListPlatformVersionsResult(PlatformSummaryList, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListPlatformVersionsResult")
 	local t = { 
@@ -3778,11 +3778,11 @@ function M.AssertEnvironmentInfoDescription(struct)
 end
 
 --- Create a structure of type EnvironmentInfoDescription
--- &lt;p&gt;The information retrieved from the Amazon EC2 instances.&lt;/p&gt;
--- @param SampleTimestamp [SampleTimestamp] &lt;p&gt;The time stamp when this information was retrieved.&lt;/p&gt;
--- @param Message [Message] &lt;p&gt;The retrieved information.&lt;/p&gt;
--- @param InfoType [EnvironmentInfoType] &lt;p&gt;The type of information retrieved.&lt;/p&gt;
--- @param Ec2InstanceId [Ec2InstanceId] &lt;p&gt;The Amazon EC2 Instance ID for this information.&lt;/p&gt;
+-- <p>The information retrieved from the Amazon EC2 instances.</p>
+-- @param SampleTimestamp [SampleTimestamp] <p>The time stamp when this information was retrieved.</p>
+-- @param Message [Message] <p>The retrieved information.</p>
+-- @param InfoType [EnvironmentInfoType] <p>The type of information retrieved.</p>
+-- @param Ec2InstanceId [Ec2InstanceId] <p>The Amazon EC2 Instance ID for this information.</p>
 function M.EnvironmentInfoDescription(SampleTimestamp, Message, InfoType, Ec2InstanceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentInfoDescription")
 	local t = { 
@@ -3810,9 +3810,9 @@ function M.AssertDeleteConfigurationTemplateMessage(struct)
 end
 
 --- Create a structure of type DeleteConfigurationTemplateMessage
--- &lt;p&gt;Request to delete a configuration template.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application to delete the configuration template from.&lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;The name of the configuration template to delete.&lt;/p&gt;
+-- <p>Request to delete a configuration template.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application to delete the configuration template from.</p>
+-- @param TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to delete.</p>
 -- Required parameter: ApplicationName
 -- Required parameter: TemplateName
 function M.DeleteConfigurationTemplateMessage(ApplicationName, TemplateName, ...)
@@ -3839,10 +3839,10 @@ function M.AssertConfigurationOptionsDescription(struct)
 end
 
 --- Create a structure of type ConfigurationOptionsDescription
--- &lt;p&gt;Describes the settings for a specified configuration set.&lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the custom platform.&lt;/p&gt;
--- @param Options [ConfigurationOptionDescriptionsList] &lt;p&gt; A list of &lt;a&gt;ConfigurationOptionDescription&lt;/a&gt;. &lt;/p&gt;
--- @param SolutionStackName [SolutionStackName] &lt;p&gt;The name of the solution stack these configuration options belong to.&lt;/p&gt;
+-- <p>Describes the settings for a specified configuration set.</p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- @param Options [ConfigurationOptionDescriptionsList] <p> A list of <a>ConfigurationOptionDescription</a>. </p>
+-- @param SolutionStackName [SolutionStackName] <p>The name of the solution stack these configuration options belong to.</p>
 function M.ConfigurationOptionsDescription(PlatformArn, Options, SolutionStackName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationOptionsDescription")
 	local t = { 
@@ -3866,8 +3866,8 @@ function M.AssertLoadBalancer(struct)
 end
 
 --- Create a structure of type LoadBalancer
--- &lt;p&gt;Describes a LoadBalancer.&lt;/p&gt;
--- @param Name [ResourceId] &lt;p&gt;The name of the LoadBalancer.&lt;/p&gt;
+-- <p>Describes a LoadBalancer.</p>
+-- @param Name [ResourceId] <p>The name of the LoadBalancer.</p>
 function M.LoadBalancer(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancer")
 	local t = { 
@@ -3891,10 +3891,10 @@ function M.AssertDescribeEnvironmentManagedActionsRequest(struct)
 end
 
 --- Create a structure of type DescribeEnvironmentManagedActionsRequest
--- &lt;p&gt;Request to list an environment's upcoming and in-progress managed actions.&lt;/p&gt;
--- @param Status [ActionStatus] &lt;p&gt;To show only actions with a particular status, specify a status.&lt;/p&gt;
--- @param EnvironmentName [String] &lt;p&gt;The name of the target environment.&lt;/p&gt;
--- @param EnvironmentId [String] &lt;p&gt;The environment ID of the target environment.&lt;/p&gt;
+-- <p>Request to list an environment's upcoming and in-progress managed actions.</p>
+-- @param Status [ActionStatus] <p>To show only actions with a particular status, specify a status.</p>
+-- @param EnvironmentName [String] <p>The name of the target environment.</p>
+-- @param EnvironmentId [String] <p>The environment ID of the target environment.</p>
 function M.DescribeEnvironmentManagedActionsRequest(Status, EnvironmentName, EnvironmentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentManagedActionsRequest")
 	local t = { 
@@ -3929,19 +3929,19 @@ function M.AssertUpdateEnvironmentMessage(struct)
 end
 
 --- Create a structure of type UpdateEnvironmentMessage
--- &lt;p&gt;Request to update an environment.&lt;/p&gt;
--- @param ApplicationName [ApplicationName] &lt;p&gt;The name of the application with which the environment is associated.&lt;/p&gt;
--- @param EnvironmentId [EnvironmentId] &lt;p&gt;The ID of the environment to update.&lt;/p&gt; &lt;p&gt;If no environment with this ID exists, AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error.&lt;/p&gt; &lt;p&gt;Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
--- @param VersionLabel [VersionLabel] &lt;p&gt;If this parameter is specified, AWS Elastic Beanstalk deploys the named application version to the environment. If no such application version is found, returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param Description [Description] &lt;p&gt;If this parameter is specified, AWS Elastic Beanstalk updates the description of this environment.&lt;/p&gt;
--- @param EnvironmentName [EnvironmentName] &lt;p&gt;The name of the environment to update. If no environment with this name exists, AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt; &lt;p&gt;Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns &lt;code&gt;MissingRequiredParameter&lt;/code&gt; error. &lt;/p&gt;
--- @param TemplateName [ConfigurationTemplateName] &lt;p&gt;If this parameter is specified, AWS Elastic Beanstalk deploys this configuration template to the environment. If no such configuration template is found, AWS Elastic Beanstalk returns an &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param SolutionStackName [SolutionStackName] &lt;p&gt;This specifies the platform version that the environment will run after the environment is updated.&lt;/p&gt;
--- @param GroupName [GroupName] &lt;p&gt;The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name or environment ID parameters. See &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html&quot;&gt;Environment Manifest (env.yaml)&lt;/a&gt; for details.&lt;/p&gt;
--- @param OptionSettings [ConfigurationOptionSettingsList] &lt;p&gt;If specified, AWS Elastic Beanstalk updates the configuration set associated with the running environment and sets the specified configuration options to the requested value.&lt;/p&gt;
--- @param Tier [EnvironmentTier] &lt;p&gt;This specifies the tier to use to update the environment.&lt;/p&gt; &lt;p&gt;Condition: At this time, if you change the tier version, name, or type, AWS Elastic Beanstalk returns &lt;code&gt;InvalidParameterValue&lt;/code&gt; error. &lt;/p&gt;
--- @param PlatformArn [PlatformArn] &lt;p&gt;The ARN of the platform, if used.&lt;/p&gt;
--- @param OptionsToRemove [OptionsSpecifierList] &lt;p&gt;A list of custom user-defined configuration options to remove from the configuration set for this environment.&lt;/p&gt;
+-- <p>Request to update an environment.</p>
+-- @param ApplicationName [ApplicationName] <p>The name of the application with which the environment is associated.</p>
+-- @param EnvironmentId [EnvironmentId] <p>The ID of the environment to update.</p> <p>If no environment with this ID exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.</p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @param VersionLabel [VersionLabel] <p>If this parameter is specified, AWS Elastic Beanstalk deploys the named application version to the environment. If no such application version is found, returns an <code>InvalidParameterValue</code> error. </p>
+-- @param Description [Description] <p>If this parameter is specified, AWS Elastic Beanstalk updates the description of this environment.</p>
+-- @param EnvironmentName [EnvironmentName] <p>The name of the environment to update. If no environment with this name exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @param TemplateName [ConfigurationTemplateName] <p>If this parameter is specified, AWS Elastic Beanstalk deploys this configuration template to the environment. If no such configuration template is found, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- @param SolutionStackName [SolutionStackName] <p>This specifies the platform version that the environment will run after the environment is updated.</p>
+-- @param GroupName [GroupName] <p>The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name or environment ID parameters. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
+-- @param OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk updates the configuration set associated with the running environment and sets the specified configuration options to the requested value.</p>
+-- @param Tier [EnvironmentTier] <p>This specifies the tier to use to update the environment.</p> <p>Condition: At this time, if you change the tier version, name, or type, AWS Elastic Beanstalk returns <code>InvalidParameterValue</code> error. </p>
+-- @param PlatformArn [PlatformArn] <p>The ARN of the platform, if used.</p>
+-- @param OptionsToRemove [OptionsSpecifierList] <p>A list of custom user-defined configuration options to remove from the configuration set for this environment.</p>
 function M.UpdateEnvironmentMessage(ApplicationName, EnvironmentId, VersionLabel, Description, EnvironmentName, TemplateName, SolutionStackName, GroupName, OptionSettings, Tier, PlatformArn, OptionsToRemove, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateEnvironmentMessage")
 	local t = { 

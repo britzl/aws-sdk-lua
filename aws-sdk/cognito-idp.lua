@@ -33,9 +33,9 @@ function M.AssertAdminUserGlobalSignOutRequest(struct)
 end
 
 --- Create a structure of type AdminUserGlobalSignOutRequest
--- &lt;p&gt;The request to sign out of all devices, as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- <p>The request to sign out of all devices, as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 function M.AdminUserGlobalSignOutRequest(Username, UserPoolId, ...)
@@ -63,9 +63,9 @@ function M.AssertAdminResetUserPasswordRequest(struct)
 end
 
 --- Create a structure of type AdminResetUserPasswordRequest
--- &lt;p&gt;Represents the request to reset a user's password as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user whose password you wish to reset.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to reset the user's password.&lt;/p&gt;
+-- <p>Represents the request to reset a user's password as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name of the user whose password you wish to reset.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to reset the user's password.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 function M.AdminResetUserPasswordRequest(Username, UserPoolId, ...)
@@ -94,10 +94,10 @@ function M.AssertGetUserResponse(struct)
 end
 
 --- Create a structure of type GetUserResponse
--- &lt;p&gt;Represents the response from the server from the request to get information about the user.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user you wish to retrieve from the get user request.&lt;/p&gt;
--- @param MFAOptions [MFAOptionListType] &lt;p&gt;Specifies the options for MFA (e.g., email or phone number).&lt;/p&gt;
--- @param UserAttributes [AttributeListType] &lt;p&gt;An array of name-value pairs representing user attributes.&lt;/p&gt; &lt;p&gt;For custom attributes, you must prepend the &lt;code&gt;custom:&lt;/code&gt; prefix to the attribute name.&lt;/p&gt;
+-- <p>Represents the response from the server from the request to get information about the user.</p>
+-- @param Username [UsernameType] <p>The user name of the user you wish to retrieve from the get user request.</p>
+-- @param MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
+-- @param UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
 -- Required parameter: Username
 -- Required parameter: UserAttributes
 function M.GetUserResponse(Username, MFAOptions, UserAttributes, ...)
@@ -126,8 +126,8 @@ end
 
 --- Create a structure of type ListIdentityProvidersResponse
 --  
--- @param NextToken [PaginationKeyType] &lt;p&gt;A pagination token.&lt;/p&gt;
--- @param Providers [ProvidersListType] &lt;p&gt;A list of identity provider objects.&lt;/p&gt;
+-- @param NextToken [PaginationKeyType] <p>A pagination token.</p>
+-- @param Providers [ProvidersListType] <p>A list of identity provider objects.</p>
 -- Required parameter: Providers
 function M.ListIdentityProvidersResponse(NextToken, Providers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityProvidersResponse")
@@ -156,11 +156,11 @@ function M.AssertInitiateAuthRequest(struct)
 end
 
 --- Create a structure of type InitiateAuthRequest
--- &lt;p&gt;Initiates the authentication request.&lt;/p&gt;
--- @param ClientMetadata [ClientMetadataType] &lt;p&gt;This is a random key-value pair map which can contain any key and will be passed to your PreAuthentication Lambda trigger as-is. It can be used to implement additional validations around authentication.&lt;/p&gt;
--- @param AuthParameters [AuthParametersType] &lt;p&gt;The authentication parameters. These are inputs corresponding to the &lt;code&gt;AuthFlow&lt;/code&gt; that you are invoking. The required values depend on the value of &lt;code&gt;AuthFlow&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For &lt;code&gt;USER_SRP_AUTH&lt;/code&gt;: &lt;code&gt;USERNAME&lt;/code&gt; (required), &lt;code&gt;SRPA&lt;/code&gt; (required), &lt;code&gt;SECRET_HASH&lt;/code&gt; (required if the app client is configured with a client secret), &lt;code&gt;DEVICE_KEY&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For &lt;code&gt;REFRESH_TOKEN_AUTH/REFRESH_TOKEN&lt;/code&gt;: &lt;code&gt;USERNAME&lt;/code&gt; (required), &lt;code&gt;SECRET_HASH&lt;/code&gt; (required if the app client is configured with a client secret), &lt;code&gt;REFRESH_TOKEN&lt;/code&gt; (required), &lt;code&gt;DEVICE_KEY&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For &lt;code&gt;CUSTOM_AUTH&lt;/code&gt;: &lt;code&gt;USERNAME&lt;/code&gt; (required), &lt;code&gt;SECRET_HASH&lt;/code&gt; (if app client is configured with client secret), &lt;code&gt;DEVICE_KEY&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The app client ID.&lt;/p&gt;
--- @param AuthFlow [AuthFlowType] &lt;p&gt;The authentication flow for this call to execute. The API action will depend on this value. For example: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;REFRESH_TOKEN_AUTH&lt;/code&gt; will take in a valid refresh token and return new tokens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;USER_SRP_AUTH&lt;/code&gt; will take in USERNAME and SRPA and return the SRP variables to be used for next challenge execution.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;USER_SRP_AUTH&lt;/code&gt;: Authentication flow for the Secure Remote Password (SRP) protocol.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;REFRESH_TOKEN_AUTH&lt;/code&gt;/&lt;code&gt;REFRESH_TOKEN&lt;/code&gt;: Authentication flow for refreshing the access token and ID token by supplying a valid refresh token.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CUSTOM_AUTH&lt;/code&gt;: Custom authentication flow.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt; &lt;code&gt;ADMIN_NO_SRP_AUTH&lt;/code&gt; is not a valid value.&lt;/p&gt;
+-- <p>Initiates the authentication request.</p>
+-- @param ClientMetadata [ClientMetadataType] <p>This is a random key-value pair map which can contain any key and will be passed to your PreAuthentication Lambda trigger as-is. It can be used to implement additional validations around authentication.</p>
+-- @param AuthParameters [AuthParametersType] <p>The authentication parameters. These are inputs corresponding to the <code>AuthFlow</code> that you are invoking. The required values depend on the value of <code>AuthFlow</code>:</p> <ul> <li> <p>For <code>USER_SRP_AUTH</code>: <code>USERNAME</code> (required), <code>SRPA</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>REFRESH_TOKEN_AUTH/REFRESH_TOKEN</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>REFRESH_TOKEN</code> (required), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>CUSTOM_AUTH</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (if app client is configured with client secret), <code>DEVICE_KEY</code> </p> </li> </ul>
+-- @param ClientId [ClientIdType] <p>The app client ID.</p>
+-- @param AuthFlow [AuthFlowType] <p>The authentication flow for this call to execute. The API action will depend on this value. For example: </p> <ul> <li> <p> <code>REFRESH_TOKEN_AUTH</code> will take in a valid refresh token and return new tokens.</p> </li> <li> <p> <code>USER_SRP_AUTH</code> will take in USERNAME and SRPA and return the SRP variables to be used for next challenge execution.</p> </li> </ul> <p>Valid values include:</p> <ul> <li> <p> <code>USER_SRP_AUTH</code>: Authentication flow for the Secure Remote Password (SRP) protocol.</p> </li> <li> <p> <code>REFRESH_TOKEN_AUTH</code>/<code>REFRESH_TOKEN</code>: Authentication flow for refreshing the access token and ID token by supplying a valid refresh token.</p> </li> <li> <p> <code>CUSTOM_AUTH</code>: Custom authentication flow.</p> </li> </ul> <p> <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.</p>
 -- Required parameter: AuthFlow
 -- Required parameter: ClientId
 function M.InitiateAuthRequest(ClientMetadata, AuthParameters, ClientId, AuthFlow, ...)
@@ -191,8 +191,8 @@ end
 
 --- Create a structure of type DeleteUserPoolDomainRequest
 --  
--- @param Domain [DomainType] &lt;p&gt;The domain string.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- @param Domain [DomainType] <p>The domain string.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: Domain
 -- Required parameter: UserPoolId
 function M.DeleteUserPoolDomainRequest(Domain, UserPoolId, ...)
@@ -221,8 +221,8 @@ end
 
 --- Create a structure of type GetIdentityProviderByIdentifierRequest
 --  
--- @param IdpIdentifier [IdpIdentifierType] &lt;p&gt;The identity provider ID.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- @param IdpIdentifier [IdpIdentifierType] <p>The identity provider ID.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: IdpIdentifier
 function M.GetIdentityProviderByIdentifierRequest(IdpIdentifier, UserPoolId, ...)
@@ -267,8 +267,8 @@ function M.AssertCreateUserImportJobResponse(struct)
 end
 
 --- Create a structure of type CreateUserImportJobResponse
--- &lt;p&gt;Represents the response from the server to the request to create the user import job.&lt;/p&gt;
--- @param UserImportJob [UserImportJobType] &lt;p&gt;The job object that represents the user import job.&lt;/p&gt;
+-- <p>Represents the response from the server to the request to create the user import job.</p>
+-- @param UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
 function M.CreateUserImportJobResponse(UserImportJob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserImportJobResponse")
 	local t = { 
@@ -297,15 +297,15 @@ function M.AssertIdentityProviderType(struct)
 end
 
 --- Create a structure of type IdentityProviderType
--- &lt;p&gt;A container for information about an identity provider.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
--- @param ProviderName [ProviderNameType] &lt;p&gt;The identity provider name.&lt;/p&gt;
--- @param LastModifiedDate [DateType] &lt;p&gt;The date the identity provider was last modified.&lt;/p&gt;
--- @param ProviderType [IdentityProviderTypeType] &lt;p&gt;The identity provider type.&lt;/p&gt;
--- @param ProviderDetails [ProviderDetailsType] &lt;p&gt;The identity provider details, such as &lt;code&gt;MetadataURL&lt;/code&gt; and &lt;code&gt;MetadataFile&lt;/code&gt;.&lt;/p&gt;
--- @param IdpIdentifiers [IdpIdentifiersListType] &lt;p&gt;A list of identity provider identifiers.&lt;/p&gt;
--- @param AttributeMapping [AttributeMappingType] &lt;p&gt;A mapping of identity provider attributes to standard and custom user pool attributes.&lt;/p&gt;
--- @param CreationDate [DateType] &lt;p&gt;The date the identity provider was created.&lt;/p&gt;
+-- <p>A container for information about an identity provider.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param LastModifiedDate [DateType] <p>The date the identity provider was last modified.</p>
+-- @param ProviderType [IdentityProviderTypeType] <p>The identity provider type.</p>
+-- @param ProviderDetails [ProviderDetailsType] <p>The identity provider details, such as <code>MetadataURL</code> and <code>MetadataFile</code>.</p>
+-- @param IdpIdentifiers [IdpIdentifiersListType] <p>A list of identity provider identifiers.</p>
+-- @param AttributeMapping [AttributeMappingType] <p>A mapping of identity provider attributes to standard and custom user pool attributes.</p>
+-- @param CreationDate [DateType] <p>The date the identity provider was created.</p>
 function M.IdentityProviderType(UserPoolId, ProviderName, LastModifiedDate, ProviderType, ProviderDetails, IdpIdentifiers, AttributeMapping, CreationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdentityProviderType")
 	local t = { 
@@ -338,10 +338,10 @@ function M.AssertResendConfirmationCodeRequest(struct)
 end
 
 --- Create a structure of type ResendConfirmationCodeRequest
--- &lt;p&gt;Represents the request to resend the confirmation code.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user to whom you wish to resend a confirmation code.&lt;/p&gt;
--- @param SecretHash [SecretHashType] &lt;p&gt;A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The ID of the client associated with the user pool.&lt;/p&gt;
+-- <p>Represents the request to resend the confirmation code.</p>
+-- @param Username [UsernameType] <p>The user name of the user to whom you wish to resend a confirmation code.</p>
+-- @param SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+-- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
 -- Required parameter: ClientId
 -- Required parameter: Username
 function M.ResendConfirmationCodeRequest(Username, SecretHash, ClientId, ...)
@@ -370,9 +370,9 @@ function M.AssertAdminGetUserRequest(struct)
 end
 
 --- Create a structure of type AdminGetUserRequest
--- &lt;p&gt;Represents the request to get the specified user as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user you wish to retrieve.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to get information about the user.&lt;/p&gt;
+-- <p>Represents the request to get the specified user as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name of the user you wish to retrieve.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to get information about the user.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 function M.AdminGetUserRequest(Username, UserPoolId, ...)
@@ -397,8 +397,8 @@ function M.AssertUpdateUserAttributesResponse(struct)
 end
 
 --- Create a structure of type UpdateUserAttributesResponse
--- &lt;p&gt;Represents the response from the server for the request to update user attributes.&lt;/p&gt;
--- @param CodeDeliveryDetailsList [CodeDeliveryDetailsListType] &lt;p&gt;The code delivery details list from the server for the request to update user attributes.&lt;/p&gt;
+-- <p>Represents the response from the server for the request to update user attributes.</p>
+-- @param CodeDeliveryDetailsList [CodeDeliveryDetailsListType] <p>The code delivery details list from the server for the request to update user attributes.</p>
 function M.UpdateUserAttributesResponse(CodeDeliveryDetailsList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserAttributesResponse")
 	local t = { 
@@ -423,10 +423,10 @@ function M.AssertListUserPoolClientsRequest(struct)
 end
 
 --- Create a structure of type ListUserPoolClientsRequest
--- &lt;p&gt;Represents the request to list the user pool clients.&lt;/p&gt;
--- @param NextToken [PaginationKey] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param MaxResults [QueryLimit] &lt;p&gt;The maximum number of results you want the request to return when listing the user pool clients.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to list user pool clients.&lt;/p&gt;
+-- <p>Represents the request to list the user pool clients.</p>
+-- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param MaxResults [QueryLimit] <p>The maximum number of results you want the request to return when listing the user pool clients.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to list user pool clients.</p>
 -- Required parameter: UserPoolId
 function M.ListUserPoolClientsRequest(NextToken, MaxResults, UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserPoolClientsRequest")
@@ -457,14 +457,14 @@ function M.AssertUserType(struct)
 end
 
 --- Create a structure of type UserType
--- &lt;p&gt;The user type.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user you wish to describe.&lt;/p&gt;
--- @param MFAOptions [MFAOptionListType] &lt;p&gt;The MFA options for the user.&lt;/p&gt;
--- @param Enabled [BooleanType] &lt;p&gt;Specifies whether the user is enabled.&lt;/p&gt;
--- @param UserStatus [UserStatusType] &lt;p&gt;The user status. Can be one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;UNCONFIRMED - User has been created but not confirmed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;CONFIRMED - User has been confirmed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ARCHIVED - User is no longer active.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;COMPROMISED - User is disabled due to a potential security threat.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;UNKNOWN - User status is not known.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param UserCreateDate [DateType] &lt;p&gt;The creation date of the user.&lt;/p&gt;
--- @param UserLastModifiedDate [DateType] &lt;p&gt;The last modified date of the user.&lt;/p&gt;
--- @param Attributes [AttributeListType] &lt;p&gt;A container with information about the user type attributes.&lt;/p&gt;
+-- <p>The user type.</p>
+-- @param Username [UsernameType] <p>The user name of the user you wish to describe.</p>
+-- @param MFAOptions [MFAOptionListType] <p>The MFA options for the user.</p>
+-- @param Enabled [BooleanType] <p>Specifies whether the user is enabled.</p>
+-- @param UserStatus [UserStatusType] <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li> <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p> </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
+-- @param UserCreateDate [DateType] <p>The creation date of the user.</p>
+-- @param UserLastModifiedDate [DateType] <p>The last modified date of the user.</p>
+-- @param Attributes [AttributeListType] <p>A container with information about the user type attributes.</p>
 function M.UserType(Username, MFAOptions, Enabled, UserStatus, UserCreateDate, UserLastModifiedDate, Attributes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserType")
 	local t = { 
@@ -496,10 +496,10 @@ function M.AssertListUserImportJobsRequest(struct)
 end
 
 --- Create a structure of type ListUserImportJobsRequest
--- &lt;p&gt;Represents the request to list the user import jobs.&lt;/p&gt;
--- @param PaginationToken [PaginationKeyType] &lt;p&gt;An identifier that was returned from the previous call to &lt;code&gt;ListUserImportJobs&lt;/code&gt;, which can be used to return the next set of import jobs in the list.&lt;/p&gt;
--- @param MaxResults [PoolQueryLimitType] &lt;p&gt;The maximum number of import jobs you want the request to return.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool that the users are being imported into.&lt;/p&gt;
+-- <p>Represents the request to list the user import jobs.</p>
+-- @param PaginationToken [PaginationKeyType] <p>An identifier that was returned from the previous call to <code>ListUserImportJobs</code>, which can be used to return the next set of import jobs in the list.</p>
+-- @param MaxResults [PoolQueryLimitType] <p>The maximum number of import jobs you want the request to return.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: MaxResults
 function M.ListUserImportJobsRequest(PaginationToken, MaxResults, UserPoolId, ...)
@@ -528,9 +528,9 @@ function M.AssertDeleteUserPoolClientRequest(struct)
 end
 
 --- Create a structure of type DeleteUserPoolClientRequest
--- &lt;p&gt;Represents the request to delete a user pool client.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The ID of the client associated with the user pool.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to delete the client.&lt;/p&gt;
+-- <p>Represents the request to delete a user pool client.</p>
+-- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to delete the client.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientId
 function M.DeleteUserPoolClientRequest(ClientId, UserPoolId, ...)
@@ -558,10 +558,10 @@ function M.AssertListDevicesRequest(struct)
 end
 
 --- Create a structure of type ListDevicesRequest
--- &lt;p&gt;Represents the request to list the devices.&lt;/p&gt;
--- @param PaginationToken [SearchPaginationTokenType] &lt;p&gt;The pagination token for the list request.&lt;/p&gt;
--- @param Limit [QueryLimitType] &lt;p&gt;The limit of the device request.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access tokens for the request to list devices.&lt;/p&gt;
+-- <p>Represents the request to list the devices.</p>
+-- @param PaginationToken [SearchPaginationTokenType] <p>The pagination token for the list request.</p>
+-- @param Limit [QueryLimitType] <p>The limit of the device request.</p>
+-- @param AccessToken [TokenModelType] <p>The access tokens for the request to list devices.</p>
 -- Required parameter: AccessToken
 function M.ListDevicesRequest(PaginationToken, Limit, AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDevicesRequest")
@@ -602,24 +602,24 @@ function M.AssertUserPoolClientType(struct)
 end
 
 --- Create a structure of type UserPoolClientType
--- &lt;p&gt;A user pool of the client type.&lt;/p&gt;
--- @param ClientSecret [ClientSecretType] &lt;p&gt;The client secret from the user pool request of the client type.&lt;/p&gt;
--- @param CallbackURLs [CallbackURLsListType] &lt;p&gt;A list of allowed callback URLs for the identity providers.&lt;/p&gt;
--- @param AllowedOAuthScopes [ScopeListType] &lt;p&gt;A list of allowed &lt;code&gt;OAuth&lt;/code&gt; scopes. Currently supported values are &lt;code&gt;&quot;phone&quot;&lt;/code&gt;, &lt;code&gt;&quot;email&quot;&lt;/code&gt;, &lt;code&gt;&quot;openid&quot;&lt;/code&gt;, and &lt;code&gt;&quot;Cognito&quot;&lt;/code&gt;.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool client.&lt;/p&gt;
--- @param AllowedOAuthFlowsUserPoolClient [BooleanType] &lt;p&gt;Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.&lt;/p&gt;
--- @param LastModifiedDate [DateType] &lt;p&gt;The date the user pool client was last modified.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The ID of the client associated with the user pool.&lt;/p&gt;
--- @param DefaultRedirectURI [RedirectUrlType] &lt;p&gt;The default redirect URI. Must be in the &lt;code&gt;CallbackURLs&lt;/code&gt; list.&lt;/p&gt;
--- @param AllowedOAuthFlows [OAuthFlowsType] &lt;p&gt;Set to &lt;code&gt;code&lt;/code&gt; to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.&lt;/p&gt; &lt;p&gt;Set to &lt;code&gt;token&lt;/code&gt; to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.&lt;/p&gt;
--- @param ExplicitAuthFlows [ExplicitAuthFlowsListType] &lt;p&gt;The explicit authentication flows.&lt;/p&gt;
--- @param LogoutURLs [LogoutURLsListType] &lt;p&gt;A list ofallowed logout URLs for the identity providers.&lt;/p&gt;
--- @param WriteAttributes [ClientPermissionListType] &lt;p&gt;The writeable attributes.&lt;/p&gt;
--- @param SupportedIdentityProviders [SupportedIdentityProvidersListType] &lt;p&gt;A list of provider names for the identity providers that are supported on this client.&lt;/p&gt;
--- @param ReadAttributes [ClientPermissionListType] &lt;p&gt;The Read-only attributes.&lt;/p&gt;
--- @param RefreshTokenValidity [RefreshTokenValidityType] &lt;p&gt;The time limit, in days, after which the refresh token is no longer valid and cannot be used.&lt;/p&gt;
--- @param CreationDate [DateType] &lt;p&gt;The date the user pool client was created.&lt;/p&gt;
--- @param ClientName [ClientNameType] &lt;p&gt;The client name from the user pool request of the client type.&lt;/p&gt;
+-- <p>A user pool of the client type.</p>
+-- @param ClientSecret [ClientSecretType] <p>The client secret from the user pool request of the client type.</p>
+-- @param CallbackURLs [CallbackURLsListType] <p>A list of allowed callback URLs for the identity providers.</p>
+-- @param AllowedOAuthScopes [ScopeListType] <p>A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>, <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool client.</p>
+-- @param AllowedOAuthFlowsUserPoolClient [BooleanType] <p>Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.</p>
+-- @param LastModifiedDate [DateType] <p>The date the user pool client was last modified.</p>
+-- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param DefaultRedirectURI [RedirectUrlType] <p>The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+-- @param AllowedOAuthFlows [OAuthFlowsType] <p>Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.</p> <p>Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.</p>
+-- @param ExplicitAuthFlows [ExplicitAuthFlowsListType] <p>The explicit authentication flows.</p>
+-- @param LogoutURLs [LogoutURLsListType] <p>A list ofallowed logout URLs for the identity providers.</p>
+-- @param WriteAttributes [ClientPermissionListType] <p>The writeable attributes.</p>
+-- @param SupportedIdentityProviders [SupportedIdentityProvidersListType] <p>A list of provider names for the identity providers that are supported on this client.</p>
+-- @param ReadAttributes [ClientPermissionListType] <p>The Read-only attributes.</p>
+-- @param RefreshTokenValidity [RefreshTokenValidityType] <p>The time limit, in days, after which the refresh token is no longer valid and cannot be used.</p>
+-- @param CreationDate [DateType] <p>The date the user pool client was created.</p>
+-- @param ClientName [ClientNameType] <p>The client name from the user pool request of the client type.</p>
 function M.UserPoolClientType(ClientSecret, CallbackURLs, AllowedOAuthScopes, UserPoolId, AllowedOAuthFlowsUserPoolClient, LastModifiedDate, ClientId, DefaultRedirectURI, AllowedOAuthFlows, ExplicitAuthFlows, LogoutURLs, WriteAttributes, SupportedIdentityProviders, ReadAttributes, RefreshTokenValidity, CreationDate, ClientName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolClientType")
 	local t = { 
@@ -662,10 +662,10 @@ function M.AssertAdminDeleteUserAttributesRequest(struct)
 end
 
 --- Create a structure of type AdminDeleteUserAttributesRequest
--- &lt;p&gt;Represents the request to delete user attributes as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user from which you would like to delete attributes.&lt;/p&gt;
--- @param UserAttributeNames [AttributeNameListType] &lt;p&gt;An array of strings representing the user attribute names you wish to delete.&lt;/p&gt; &lt;p&gt;For custom attributes, you must prepend the &lt;code&gt;custom:&lt;/code&gt; prefix to the attribute name.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to delete user attributes.&lt;/p&gt;
+-- <p>Represents the request to delete user attributes as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name of the user from which you would like to delete attributes.</p>
+-- @param UserAttributeNames [AttributeNameListType] <p>An array of strings representing the user attribute names you wish to delete.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to delete user attributes.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: UserAttributeNames
@@ -692,8 +692,8 @@ function M.AssertTooManyFailedAttemptsException(struct)
 end
 
 --- Create a structure of type TooManyFailedAttemptsException
--- &lt;p&gt;This exception is thrown when the user has made too many failed attempts for a given action (e.g., sign in).&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the Amazon Cognito service returns a too many failed attempts exception.&lt;/p&gt;
+-- <p>This exception is thrown when the user has made too many failed attempts for a given action (e.g., sign in).</p>
+-- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns a too many failed attempts exception.</p>
 function M.TooManyFailedAttemptsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyFailedAttemptsException")
 	local t = { 
@@ -724,15 +724,15 @@ function M.AssertAdminCreateUserRequest(struct)
 end
 
 --- Create a structure of type AdminCreateUserRequest
--- &lt;p&gt;Represents the request to create a user in the specified user pool.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The username for the user. Must be unique within the user pool. Must be a UTF-8 string between 1 and 128 characters. After the user is created, the username cannot be changed.&lt;/p&gt;
--- @param MessageAction [MessageActionType] &lt;p&gt;Set to &lt;code&gt;&quot;RESEND&quot;&lt;/code&gt; to resend the invitation message to a user that already exists and reset the expiration limit on the user's account. Set to &lt;code&gt;&quot;SUPPRESS&quot;&lt;/code&gt; to suppress sending the message. Only one value can be specified.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where the user will be created.&lt;/p&gt;
--- @param ValidationData [AttributeListType] &lt;p&gt;The user's validation data. This is an array of name-value pairs that contain user attributes and attribute values that you can use for custom validation, such as restricting the types of user accounts that can be registered. For example, you might choose to allow or disallow user sign-up based on the user's domain.&lt;/p&gt; &lt;p&gt;To configure custom validation, you must create a Pre Sign-up Lambda trigger for the user pool as described in the Amazon Cognito Developer Guide. The Lambda trigger receives the validation data and uses it in the validation process.&lt;/p&gt; &lt;p&gt;The user's validation data is not persisted.&lt;/p&gt;
--- @param UserAttributes [AttributeListType] &lt;p&gt;An array of name-value pairs that contain user attributes and attribute values to be set for the user to be created. You can create a user without specifying any attributes other than &lt;code&gt;Username&lt;/code&gt;. However, any attributes that you specify as required (in &lt;a href=&quot;API_CreateUserPool.html&quot;&gt;CreateUserPool&lt;/a&gt; or in the &lt;b&gt;Attributes&lt;/b&gt; tab of the console) must be supplied either by you (in your call to &lt;code&gt;AdminCreateUser&lt;/code&gt;) or by the user (when he or she signs up in response to your welcome message).&lt;/p&gt; &lt;p&gt;For custom attributes, you must prepend the &lt;code&gt;custom:&lt;/code&gt; prefix to the attribute name.&lt;/p&gt; &lt;p&gt;To send a message inviting the user to sign up, you must specify the user's email address or phone number. This can be done in your call to AdminCreateUser or in the &lt;b&gt;Users&lt;/b&gt; tab of the Amazon Cognito console for managing your user pools.&lt;/p&gt; &lt;p&gt;In your call to &lt;code&gt;AdminCreateUser&lt;/code&gt;, you can set the &lt;code&gt;email_verified&lt;/code&gt; attribute to &lt;code&gt;True&lt;/code&gt;, and you can set the &lt;code&gt;phone_number_verified&lt;/code&gt; attribute to &lt;code&gt;True&lt;/code&gt;. (You can also do this by calling &lt;a href=&quot;API_AdminUpdateUserAttributes.html&quot;&gt;AdminUpdateUserAttributes&lt;/a&gt;.)&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;email&lt;/b&gt;: The email address of the user to whom the message that contains the code and username will be sent. Required if the &lt;code&gt;email_verified&lt;/code&gt; attribute is set to &lt;code&gt;True&lt;/code&gt;, or if &lt;code&gt;&quot;EMAIL&quot;&lt;/code&gt; is specified in the &lt;code&gt;DesiredDeliveryMediums&lt;/code&gt; parameter.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;phone_number&lt;/b&gt;: The phone number of the user to whom the message that contains the code and username will be sent. Required if the &lt;code&gt;phone_number_verified&lt;/code&gt; attribute is set to &lt;code&gt;True&lt;/code&gt;, or if &lt;code&gt;&quot;SMS&quot;&lt;/code&gt; is specified in the &lt;code&gt;DesiredDeliveryMediums&lt;/code&gt; parameter.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ForceAliasCreation [ForceAliasCreation] &lt;p&gt;This parameter is only used if the &lt;code&gt;phone_number_verified&lt;/code&gt; or &lt;code&gt;email_verified&lt;/code&gt; attribute is set to &lt;code&gt;True&lt;/code&gt;. Otherwise, it is ignored.&lt;/p&gt; &lt;p&gt;If this parameter is set to &lt;code&gt;True&lt;/code&gt; and the phone number or email address specified in the UserAttributes parameter already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user. The previous user will no longer be able to log in using that alias.&lt;/p&gt; &lt;p&gt;If this parameter is set to &lt;code&gt;False&lt;/code&gt;, the API throws an &lt;code&gt;AliasExistsException&lt;/code&gt; error if the alias already exists. The default value is &lt;code&gt;False&lt;/code&gt;.&lt;/p&gt;
--- @param TemporaryPassword [PasswordType] &lt;p&gt;The user's temporary password. This password must conform to the password policy that you specified when you created the user pool.&lt;/p&gt; &lt;p&gt;The temporary password is valid only once. To complete the Admin Create User flow, the user must enter the temporary password in the sign-in page along with a new password to be used in all future sign-ins.&lt;/p&gt; &lt;p&gt;This parameter is not required. If you do not specify a value, Amazon Cognito generates one for you.&lt;/p&gt; &lt;p&gt;The temporary password can only be used until the user account expiration limit that you specified when you created the user pool. To reset the account after that time limit, you must call &lt;code&gt;AdminCreateUser&lt;/code&gt; again, specifying &lt;code&gt;&quot;RESEND&quot;&lt;/code&gt; for the &lt;code&gt;MessageAction&lt;/code&gt; parameter.&lt;/p&gt;
--- @param DesiredDeliveryMediums [DeliveryMediumListType] &lt;p&gt;Specify &lt;code&gt;&quot;EMAIL&quot;&lt;/code&gt; if email will be used to send the welcome message. Specify &lt;code&gt;&quot;SMS&quot;&lt;/code&gt; if the phone number will be used. The default value is &lt;code&gt;&quot;SMS&quot;&lt;/code&gt;. More than one value can be specified.&lt;/p&gt;
+-- <p>Represents the request to create a user in the specified user pool.</p>
+-- @param Username [UsernameType] <p>The username for the user. Must be unique within the user pool. Must be a UTF-8 string between 1 and 128 characters. After the user is created, the username cannot be changed.</p>
+-- @param MessageAction [MessageActionType] <p>Set to <code>"RESEND"</code> to resend the invitation message to a user that already exists and reset the expiration limit on the user's account. Set to <code>"SUPPRESS"</code> to suppress sending the message. Only one value can be specified.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where the user will be created.</p>
+-- @param ValidationData [AttributeListType] <p>The user's validation data. This is an array of name-value pairs that contain user attributes and attribute values that you can use for custom validation, such as restricting the types of user accounts that can be registered. For example, you might choose to allow or disallow user sign-up based on the user's domain.</p> <p>To configure custom validation, you must create a Pre Sign-up Lambda trigger for the user pool as described in the Amazon Cognito Developer Guide. The Lambda trigger receives the validation data and uses it in the validation process.</p> <p>The user's validation data is not persisted.</p>
+-- @param UserAttributes [AttributeListType] <p>An array of name-value pairs that contain user attributes and attribute values to be set for the user to be created. You can create a user without specifying any attributes other than <code>Username</code>. However, any attributes that you specify as required (in <a href="API_CreateUserPool.html">CreateUserPool</a> or in the <b>Attributes</b> tab of the console) must be supplied either by you (in your call to <code>AdminCreateUser</code>) or by the user (when he or she signs up in response to your welcome message).</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p> <p>To send a message inviting the user to sign up, you must specify the user's email address or phone number. This can be done in your call to AdminCreateUser or in the <b>Users</b> tab of the Amazon Cognito console for managing your user pools.</p> <p>In your call to <code>AdminCreateUser</code>, you can set the <code>email_verified</code> attribute to <code>True</code>, and you can set the <code>phone_number_verified</code> attribute to <code>True</code>. (You can also do this by calling <a href="API_AdminUpdateUserAttributes.html">AdminUpdateUserAttributes</a>.)</p> <ul> <li> <p> <b>email</b>: The email address of the user to whom the message that contains the code and username will be sent. Required if the <code>email_verified</code> attribute is set to <code>True</code>, or if <code>"EMAIL"</code> is specified in the <code>DesiredDeliveryMediums</code> parameter.</p> </li> <li> <p> <b>phone_number</b>: The phone number of the user to whom the message that contains the code and username will be sent. Required if the <code>phone_number_verified</code> attribute is set to <code>True</code>, or if <code>"SMS"</code> is specified in the <code>DesiredDeliveryMediums</code> parameter.</p> </li> </ul>
+-- @param ForceAliasCreation [ForceAliasCreation] <p>This parameter is only used if the <code>phone_number_verified</code> or <code>email_verified</code> attribute is set to <code>True</code>. Otherwise, it is ignored.</p> <p>If this parameter is set to <code>True</code> and the phone number or email address specified in the UserAttributes parameter already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user. The previous user will no longer be able to log in using that alias.</p> <p>If this parameter is set to <code>False</code>, the API throws an <code>AliasExistsException</code> error if the alias already exists. The default value is <code>False</code>.</p>
+-- @param TemporaryPassword [PasswordType] <p>The user's temporary password. This password must conform to the password policy that you specified when you created the user pool.</p> <p>The temporary password is valid only once. To complete the Admin Create User flow, the user must enter the temporary password in the sign-in page along with a new password to be used in all future sign-ins.</p> <p>This parameter is not required. If you do not specify a value, Amazon Cognito generates one for you.</p> <p>The temporary password can only be used until the user account expiration limit that you specified when you created the user pool. To reset the account after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the <code>MessageAction</code> parameter.</p>
+-- @param DesiredDeliveryMediums [DeliveryMediumListType] <p>Specify <code>"EMAIL"</code> if email will be used to send the welcome message. Specify <code>"SMS"</code> if the phone number will be used. The default value is <code>"SMS"</code>. More than one value can be specified.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 function M.AdminCreateUserRequest(Username, MessageAction, UserPoolId, ValidationData, UserAttributes, ForceAliasCreation, TemporaryPassword, DesiredDeliveryMediums, ...)
@@ -763,8 +763,8 @@ function M.AssertInvalidPasswordException(struct)
 end
 
 --- Create a structure of type InvalidPasswordException
--- &lt;p&gt;This exception is thrown when the Amazon Cognito service encounters an invalid password.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the Amazon Cognito service throws an invalid user password exception.&lt;/p&gt;
+-- <p>This exception is thrown when the Amazon Cognito service encounters an invalid password.</p>
+-- @param message [MessageType] <p>The message returned when the Amazon Cognito service throws an invalid user password exception.</p>
 function M.InvalidPasswordException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPasswordException")
 	local t = { 
@@ -807,7 +807,7 @@ end
 
 --- Create a structure of type UpdateGroupResponse
 --  
--- @param Group [GroupType] &lt;p&gt;The group object for the group.&lt;/p&gt;
+-- @param Group [GroupType] <p>The group object for the group.</p>
 function M.UpdateGroupResponse(Group, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupResponse")
 	local t = { 
@@ -836,11 +836,11 @@ end
 
 --- Create a structure of type CreateGroupRequest
 --  
--- @param GroupName [GroupNameType] &lt;p&gt;The name of the group. Must be unique.&lt;/p&gt;
--- @param RoleArn [ArnType] &lt;p&gt;The role ARN for the group.&lt;/p&gt;
--- @param Precedence [PrecedenceType] &lt;p&gt;A nonnegative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. Zero is the highest precedence value. Groups with lower &lt;code&gt;Precedence&lt;/code&gt; values take precedence over groups with higher or null &lt;code&gt;Precedence&lt;/code&gt; values. If a user belongs to two or more groups, it is the group with the lowest precedence value whose role ARN will be used in the &lt;code&gt;cognito:roles&lt;/code&gt; and &lt;code&gt;cognito:preferred_role&lt;/code&gt; claims in the user's tokens.&lt;/p&gt; &lt;p&gt;Two groups can have the same &lt;code&gt;Precedence&lt;/code&gt; value. If this happens, neither group takes precedence over the other. If two groups with the same &lt;code&gt;Precedence&lt;/code&gt; have the same role ARN, that role is used in the &lt;code&gt;cognito:preferred_role&lt;/code&gt; claim in tokens for users in each group. If the two groups have different role ARNs, the &lt;code&gt;cognito:preferred_role&lt;/code&gt; claim is not set in users' tokens.&lt;/p&gt; &lt;p&gt;The default &lt;code&gt;Precedence&lt;/code&gt; value is null.&lt;/p&gt;
--- @param Description [DescriptionType] &lt;p&gt;A string containing the description of the group.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool.&lt;/p&gt;
+-- @param GroupName [GroupNameType] <p>The name of the group. Must be unique.</p>
+-- @param RoleArn [ArnType] <p>The role ARN for the group.</p>
+-- @param Precedence [PrecedenceType] <p>A nonnegative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. Zero is the highest precedence value. Groups with lower <code>Precedence</code> values take precedence over groups with higher or null <code>Precedence</code> values. If a user belongs to two or more groups, it is the group with the lowest precedence value whose role ARN will be used in the <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims in the user's tokens.</p> <p>Two groups can have the same <code>Precedence</code> value. If this happens, neither group takes precedence over the other. If two groups with the same <code>Precedence</code> have the same role ARN, that role is used in the <code>cognito:preferred_role</code> claim in tokens for users in each group. If the two groups have different role ARNs, the <code>cognito:preferred_role</code> claim is not set in users' tokens.</p> <p>The default <code>Precedence</code> value is null.</p>
+-- @param Description [DescriptionType] <p>A string containing the description of the group.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: GroupName
 -- Required parameter: UserPoolId
 function M.CreateGroupRequest(GroupName, RoleArn, Precedence, Description, UserPoolId, ...)
@@ -872,8 +872,8 @@ end
 
 --- Create a structure of type GetGroupRequest
 --  
--- @param GroupName [GroupNameType] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool.&lt;/p&gt;
+-- @param GroupName [GroupNameType] <p>The name of the group.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: GroupName
 -- Required parameter: UserPoolId
 function M.GetGroupRequest(GroupName, UserPoolId, ...)
@@ -899,9 +899,9 @@ function M.AssertListUsersResponse(struct)
 end
 
 --- Create a structure of type ListUsersResponse
--- &lt;p&gt;The response from the request to list users.&lt;/p&gt;
--- @param PaginationToken [SearchPaginationTokenType] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param Users [UsersListType] &lt;p&gt;The users returned in the request to list users.&lt;/p&gt;
+-- <p>The response from the request to list users.</p>
+-- @param PaginationToken [SearchPaginationTokenType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param Users [UsersListType] <p>The users returned in the request to list users.</p>
 function M.ListUsersResponse(PaginationToken, Users, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUsersResponse")
 	local t = { 
@@ -924,8 +924,8 @@ function M.AssertNotAuthorizedException(struct)
 end
 
 --- Create a structure of type NotAuthorizedException
--- &lt;p&gt;This exception is thrown when a user is not authorized.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the Amazon Cognito service returns a not authorized exception.&lt;/p&gt;
+-- <p>This exception is thrown when a user is not authorized.</p>
+-- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns a not authorized exception.</p>
 function M.NotAuthorizedException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotAuthorizedException")
 	local t = { 
@@ -949,10 +949,10 @@ function M.AssertUserPoolClientDescription(struct)
 end
 
 --- Create a structure of type UserPoolClientDescription
--- &lt;p&gt;The description of the user pool client.&lt;/p&gt;
--- @param ClientName [ClientNameType] &lt;p&gt;The client name from the user pool client description.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to describe the user pool client.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The ID of the client associated with the user pool.&lt;/p&gt;
+-- <p>The description of the user pool client.</p>
+-- @param ClientName [ClientNameType] <p>The client name from the user pool client description.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to describe the user pool client.</p>
+-- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
 function M.UserPoolClientDescription(ClientName, UserPoolId, ClientId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolClientDescription")
 	local t = { 
@@ -979,9 +979,9 @@ function M.AssertStartUserImportJobRequest(struct)
 end
 
 --- Create a structure of type StartUserImportJobRequest
--- &lt;p&gt;Represents the request to start the user import job.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool that the users are being imported into.&lt;/p&gt;
--- @param JobId [UserImportJobIdType] &lt;p&gt;The job ID for the user import job.&lt;/p&gt;
+-- <p>Represents the request to start the user import job.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: JobId
 function M.StartUserImportJobRequest(UserPoolId, JobId, ...)
@@ -1007,9 +1007,9 @@ function M.AssertStringAttributeConstraintsType(struct)
 end
 
 --- Create a structure of type StringAttributeConstraintsType
--- &lt;p&gt;The type of constraints associated with an attribute of the string type.&lt;/p&gt;
--- @param MinLength [StringType] &lt;p&gt;The minimum length of an attribute value of the string type.&lt;/p&gt;
--- @param MaxLength [StringType] &lt;p&gt;The maximum length of an attribute value of the string type.&lt;/p&gt;
+-- <p>The type of constraints associated with an attribute of the string type.</p>
+-- @param MinLength [StringType] <p>The minimum length of an attribute value of the string type.</p>
+-- @param MaxLength [StringType] <p>The maximum length of an attribute value of the string type.</p>
 function M.StringAttributeConstraintsType(MinLength, MaxLength, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StringAttributeConstraintsType")
 	local t = { 
@@ -1032,8 +1032,8 @@ function M.AssertUnexpectedLambdaException(struct)
 end
 
 --- Create a structure of type UnexpectedLambdaException
--- &lt;p&gt;This exception is thrown when the Amazon Cognito service encounters an unexpected exception with the AWS Lambda service.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the Amazon Cognito service returns an unexpected AWS Lambda exception.&lt;/p&gt;
+-- <p>This exception is thrown when the Amazon Cognito service encounters an unexpected exception with the AWS Lambda service.</p>
+-- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns an unexpected AWS Lambda exception.</p>
 function M.UnexpectedLambdaException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnexpectedLambdaException")
 	local t = { 
@@ -1057,8 +1057,8 @@ end
 
 --- Create a structure of type AdminListGroupsForUserResponse
 --  
--- @param NextToken [PaginationKey] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param Groups [GroupListType] &lt;p&gt;The groups that the user belongs to.&lt;/p&gt;
+-- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param Groups [GroupListType] <p>The groups that the user belongs to.</p>
 function M.AdminListGroupsForUserResponse(NextToken, Groups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminListGroupsForUserResponse")
 	local t = { 
@@ -1084,9 +1084,9 @@ function M.AssertUpdateUserAttributesRequest(struct)
 end
 
 --- Create a structure of type UpdateUserAttributesRequest
--- &lt;p&gt;Represents the request to update user attributes.&lt;/p&gt;
--- @param UserAttributes [AttributeListType] &lt;p&gt;An array of name-value pairs representing user attributes.&lt;/p&gt; &lt;p&gt;For custom attributes, you must prepend the &lt;code&gt;custom:&lt;/code&gt; prefix to the attribute name.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token for the request to update user attributes.&lt;/p&gt;
+-- <p>Represents the request to update user attributes.</p>
+-- @param UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param AccessToken [TokenModelType] <p>The access token for the request to update user attributes.</p>
 -- Required parameter: UserAttributes
 -- Required parameter: AccessToken
 function M.UpdateUserAttributesRequest(UserAttributes, AccessToken, ...)
@@ -1111,8 +1111,8 @@ function M.AssertUpdateUserPoolClientResponse(struct)
 end
 
 --- Create a structure of type UpdateUserPoolClientResponse
--- &lt;p&gt;Represents the response from the server to the request to update the user pool client.&lt;/p&gt;
--- @param UserPoolClient [UserPoolClientType] &lt;p&gt;The user pool client value from the response from the server when an update user pool client request is made.&lt;/p&gt;
+-- <p>Represents the response from the server to the request to update the user pool client.</p>
+-- @param UserPoolClient [UserPoolClientType] <p>The user pool client value from the response from the server when an update user pool client request is made.</p>
 function M.UpdateUserPoolClientResponse(UserPoolClient, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserPoolClientResponse")
 	local t = { 
@@ -1138,10 +1138,10 @@ function M.AssertSignUpResponse(struct)
 end
 
 --- Create a structure of type SignUpResponse
--- &lt;p&gt;The response from the server for a registration request.&lt;/p&gt;
--- @param UserConfirmed [BooleanType] &lt;p&gt;A response from the server indicating that a user registration has been confirmed.&lt;/p&gt;
--- @param UserSub [StringType] &lt;p&gt;The UUID of the authenticated user. This is not the same as &lt;code&gt;username&lt;/code&gt;.&lt;/p&gt;
--- @param CodeDeliveryDetails [CodeDeliveryDetailsType] &lt;p&gt;The code delivery details returned by the server response to the user registration request.&lt;/p&gt;
+-- <p>The response from the server for a registration request.</p>
+-- @param UserConfirmed [BooleanType] <p>A response from the server indicating that a user registration has been confirmed.</p>
+-- @param UserSub [StringType] <p>The UUID of the authenticated user. This is not the same as <code>username</code>.</p>
+-- @param CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server response to the user registration request.</p>
 -- Required parameter: UserConfirmed
 -- Required parameter: UserSub
 function M.SignUpResponse(UserConfirmed, UserSub, CodeDeliveryDetails, ...)
@@ -1171,10 +1171,10 @@ function M.AssertUpdateDeviceStatusRequest(struct)
 end
 
 --- Create a structure of type UpdateDeviceStatusRequest
--- &lt;p&gt;Represents the request to update the device status.&lt;/p&gt;
--- @param DeviceKey [DeviceKeyType] &lt;p&gt;The device key.&lt;/p&gt;
--- @param DeviceRememberedStatus [DeviceRememberedStatusType] &lt;p&gt;The status of whether a device is remembered.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token.&lt;/p&gt;
+-- <p>Represents the request to update the device status.</p>
+-- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param DeviceRememberedStatus [DeviceRememberedStatusType] <p>The status of whether a device is remembered.</p>
+-- @param AccessToken [TokenModelType] <p>The access token.</p>
 -- Required parameter: AccessToken
 -- Required parameter: DeviceKey
 function M.UpdateDeviceStatusRequest(DeviceKey, DeviceRememberedStatus, AccessToken, ...)
@@ -1200,8 +1200,8 @@ function M.AssertAliasExistsException(struct)
 end
 
 --- Create a structure of type AliasExistsException
--- &lt;p&gt;This exception is thrown when a user tries to confirm the account with an email or phone number that has already been supplied as an alias from a different account. This exception tells user that an account with this email or phone already exists.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message sent to the user when an alias exists.&lt;/p&gt;
+-- <p>This exception is thrown when a user tries to confirm the account with an email or phone number that has already been supplied as an alias from a different account. This exception tells user that an account with this email or phone already exists.</p>
+-- @param message [MessageType] <p>The message sent to the user when an alias exists.</p>
 function M.AliasExistsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AliasExistsException")
 	local t = { 
@@ -1224,9 +1224,9 @@ function M.AssertAdminListDevicesResponse(struct)
 end
 
 --- Create a structure of type AdminListDevicesResponse
--- &lt;p&gt;Lists the device's response, as an administrator.&lt;/p&gt;
--- @param PaginationToken [SearchPaginationTokenType] &lt;p&gt;The pagination token.&lt;/p&gt;
--- @param Devices [DeviceListType] &lt;p&gt;The devices in the list of devices response.&lt;/p&gt;
+-- <p>Lists the device's response, as an administrator.</p>
+-- @param PaginationToken [SearchPaginationTokenType] <p>The pagination token.</p>
+-- @param Devices [DeviceListType] <p>The devices in the list of devices response.</p>
 function M.AdminListDevicesResponse(PaginationToken, Devices, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminListDevicesResponse")
 	local t = { 
@@ -1255,14 +1255,14 @@ function M.AssertGroupType(struct)
 end
 
 --- Create a structure of type GroupType
--- &lt;p&gt;The group type.&lt;/p&gt;
--- @param Description [DescriptionType] &lt;p&gt;A string containing the description of the group.&lt;/p&gt;
--- @param Precedence [PrecedenceType] &lt;p&gt;A nonnegative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. If a user belongs to two or more groups, it is the group with the highest precedence whose role ARN will be used in the &lt;code&gt;cognito:roles&lt;/code&gt; and &lt;code&gt;cognito:preferred_role&lt;/code&gt; claims in the user's tokens. Groups with higher &lt;code&gt;Precedence&lt;/code&gt; values take precedence over groups with lower &lt;code&gt;Precedence&lt;/code&gt; values or with null &lt;code&gt;Precedence&lt;/code&gt; values.&lt;/p&gt; &lt;p&gt;Two groups can have the same &lt;code&gt;Precedence&lt;/code&gt; value. If this happens, neither group takes precedence over the other. If two groups with the same &lt;code&gt;Precedence&lt;/code&gt; have the same role ARN, that role is used in the &lt;code&gt;cognito:preferred_role&lt;/code&gt; claim in tokens for users in each group. If the two groups have different role ARNs, the &lt;code&gt;cognito:preferred_role&lt;/code&gt; claim is not set in users' tokens.&lt;/p&gt; &lt;p&gt;The default &lt;code&gt;Precedence&lt;/code&gt; value is null.&lt;/p&gt;
--- @param LastModifiedDate [DateType] &lt;p&gt;The date the group was last modified.&lt;/p&gt;
--- @param RoleArn [ArnType] &lt;p&gt;The role ARN for the group.&lt;/p&gt;
--- @param GroupName [GroupNameType] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool.&lt;/p&gt;
--- @param CreationDate [DateType] &lt;p&gt;The date the group was created.&lt;/p&gt;
+-- <p>The group type.</p>
+-- @param Description [DescriptionType] <p>A string containing the description of the group.</p>
+-- @param Precedence [PrecedenceType] <p>A nonnegative integer value that specifies the precedence of this group relative to the other groups that a user can belong to in the user pool. If a user belongs to two or more groups, it is the group with the highest precedence whose role ARN will be used in the <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims in the user's tokens. Groups with higher <code>Precedence</code> values take precedence over groups with lower <code>Precedence</code> values or with null <code>Precedence</code> values.</p> <p>Two groups can have the same <code>Precedence</code> value. If this happens, neither group takes precedence over the other. If two groups with the same <code>Precedence</code> have the same role ARN, that role is used in the <code>cognito:preferred_role</code> claim in tokens for users in each group. If the two groups have different role ARNs, the <code>cognito:preferred_role</code> claim is not set in users' tokens.</p> <p>The default <code>Precedence</code> value is null.</p>
+-- @param LastModifiedDate [DateType] <p>The date the group was last modified.</p>
+-- @param RoleArn [ArnType] <p>The role ARN for the group.</p>
+-- @param GroupName [GroupNameType] <p>The name of the group.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
+-- @param CreationDate [DateType] <p>The date the group was created.</p>
 function M.GroupType(Description, Precedence, LastModifiedDate, RoleArn, GroupName, UserPoolId, CreationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GroupType")
 	local t = { 
@@ -1294,8 +1294,8 @@ end
 
 --- Create a structure of type DeleteIdentityProviderRequest
 --  
--- @param ProviderName [ProviderNameType] &lt;p&gt;The identity provider name.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ProviderName
 function M.DeleteIdentityProviderRequest(ProviderName, UserPoolId, ...)
@@ -1321,7 +1321,7 @@ end
 
 --- Create a structure of type GetGroupResponse
 --  
--- @param Group [GroupType] &lt;p&gt;The group object for the group.&lt;/p&gt;
+-- @param Group [GroupType] <p>The group object for the group.</p>
 function M.GetGroupResponse(Group, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupResponse")
 	local t = { 
@@ -1343,8 +1343,8 @@ function M.AssertUserPoolPolicyType(struct)
 end
 
 --- Create a structure of type UserPoolPolicyType
--- &lt;p&gt;The type of policy in a user pool.&lt;/p&gt;
--- @param PasswordPolicy [PasswordPolicyType] &lt;p&gt;A container for information about the user pool password policy.&lt;/p&gt;
+-- <p>The type of policy in a user pool.</p>
+-- @param PasswordPolicy [PasswordPolicyType] <p>A container for information about the user pool password policy.</p>
 function M.UserPoolPolicyType(PasswordPolicy, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolPolicyType")
 	local t = { 
@@ -1367,8 +1367,8 @@ function M.AssertDeleteUserRequest(struct)
 end
 
 --- Create a structure of type DeleteUserRequest
--- &lt;p&gt;Represents the request to delete a user.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token from a request to delete a user.&lt;/p&gt;
+-- <p>Represents the request to delete a user.</p>
+-- @param AccessToken [TokenModelType] <p>The access token from a request to delete a user.</p>
 -- Required parameter: AccessToken
 function M.DeleteUserRequest(AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserRequest")
@@ -1392,9 +1392,9 @@ function M.AssertListUserPoolClientsResponse(struct)
 end
 
 --- Create a structure of type ListUserPoolClientsResponse
--- &lt;p&gt;Represents the response from the server that lists user pool clients.&lt;/p&gt;
--- @param NextToken [PaginationKey] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param UserPoolClients [UserPoolClientListType] &lt;p&gt;The user pool clients in the response that lists user pool clients.&lt;/p&gt;
+-- <p>Represents the response from the server that lists user pool clients.</p>
+-- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param UserPoolClients [UserPoolClientListType] <p>The user pool clients in the response that lists user pool clients.</p>
 function M.ListUserPoolClientsResponse(NextToken, UserPoolClients, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserPoolClientsResponse")
 	local t = { 
@@ -1417,8 +1417,8 @@ function M.AssertGroupExistsException(struct)
 end
 
 --- Create a structure of type GroupExistsException
--- &lt;p&gt;This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.&lt;/p&gt;
+-- <p>This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.</p>
+-- @param message [MessageType] <p>This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.</p>
 function M.GroupExistsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GroupExistsException")
 	local t = { 
@@ -1440,8 +1440,8 @@ function M.AssertUserImportInProgressException(struct)
 end
 
 --- Create a structure of type UserImportInProgressException
--- &lt;p&gt;This exception is thrown when you are trying to modify a user pool while a user import job is in progress for that pool.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the user pool has an import job running.&lt;/p&gt;
+-- <p>This exception is thrown when you are trying to modify a user pool while a user import job is in progress for that pool.</p>
+-- @param message [MessageType] <p>The message returned when the user pool has an import job running.</p>
 function M.UserImportInProgressException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserImportInProgressException")
 	local t = { 
@@ -1463,8 +1463,8 @@ function M.AssertUsernameExistsException(struct)
 end
 
 --- Create a structure of type UsernameExistsException
--- &lt;p&gt;This exception is thrown when Amazon Cognito encounters a user name that already exists in the user pool.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when Amazon Cognito throws a user name exists exception.&lt;/p&gt;
+-- <p>This exception is thrown when Amazon Cognito encounters a user name that already exists in the user pool.</p>
+-- @param message [MessageType] <p>The message returned when Amazon Cognito throws a user name exists exception.</p>
 function M.UsernameExistsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsernameExistsException")
 	local t = { 
@@ -1486,8 +1486,8 @@ function M.AssertUnsupportedIdentityProviderException(struct)
 end
 
 --- Create a structure of type UnsupportedIdentityProviderException
--- &lt;p&gt;This exception is thrown when the specified identifier is not supported.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;This exception is thrown when the specified identifier is not supported.&lt;/p&gt;
+-- <p>This exception is thrown when the specified identifier is not supported.</p>
+-- @param message [MessageType] <p>This exception is thrown when the specified identifier is not supported.</p>
 function M.UnsupportedIdentityProviderException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedIdentityProviderException")
 	local t = { 
@@ -1509,8 +1509,8 @@ function M.AssertInternalErrorException(struct)
 end
 
 --- Create a structure of type InternalErrorException
--- &lt;p&gt;This exception is thrown when Amazon Cognito encounters an internal error.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when Amazon Cognito throws an internal error exception.&lt;/p&gt;
+-- <p>This exception is thrown when Amazon Cognito encounters an internal error.</p>
+-- @param message [MessageType] <p>The message returned when Amazon Cognito throws an internal error exception.</p>
 function M.InternalErrorException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
 	local t = { 
@@ -1537,10 +1537,10 @@ function M.AssertAdminUpdateUserAttributesRequest(struct)
 end
 
 --- Create a structure of type AdminUpdateUserAttributesRequest
--- &lt;p&gt;Represents the request to update the user's attributes as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user for whom you want to update user attributes.&lt;/p&gt;
--- @param UserAttributes [AttributeListType] &lt;p&gt;An array of name-value pairs representing user attributes.&lt;/p&gt; &lt;p&gt;For custom attributes, you must prepend the &lt;code&gt;custom:&lt;/code&gt; prefix to the attribute name.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to update user attributes.&lt;/p&gt;
+-- <p>Represents the request to update the user's attributes as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name of the user for whom you want to update user attributes.</p>
+-- @param UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to update user attributes.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: UserAttributes
@@ -1570,9 +1570,9 @@ function M.AssertAdminDeleteUserRequest(struct)
 end
 
 --- Create a structure of type AdminDeleteUserRequest
--- &lt;p&gt;Represents the request to delete a user as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user you wish to delete.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to delete the user.&lt;/p&gt;
+-- <p>Represents the request to delete a user as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name of the user you wish to delete.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to delete the user.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 function M.AdminDeleteUserRequest(Username, UserPoolId, ...)
@@ -1597,8 +1597,8 @@ function M.AssertScopeDoesNotExistException(struct)
 end
 
 --- Create a structure of type ScopeDoesNotExistException
--- &lt;p&gt;This exception is thrown when the specified scope does not exist.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;This exception is thrown when the specified scope does not exist.&lt;/p&gt;
+-- <p>This exception is thrown when the specified scope does not exist.</p>
+-- @param message [MessageType] <p>This exception is thrown when the specified scope does not exist.</p>
 function M.ScopeDoesNotExistException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScopeDoesNotExistException")
 	local t = { 
@@ -1620,8 +1620,8 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;This exception is thrown when a user exceeds the limit for a requested AWS resource.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when Amazon Cognito throws a limit exceeded exception.&lt;/p&gt;
+-- <p>This exception is thrown when a user exceeds the limit for a requested AWS resource.</p>
+-- @param message [MessageType] <p>The message returned when Amazon Cognito throws a limit exceeded exception.</p>
 function M.LimitExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -1643,8 +1643,8 @@ function M.AssertCreateUserPoolClientResponse(struct)
 end
 
 --- Create a structure of type CreateUserPoolClientResponse
--- &lt;p&gt;Represents the response from the server to create a user pool client.&lt;/p&gt;
--- @param UserPoolClient [UserPoolClientType] &lt;p&gt;The user pool client that was just created.&lt;/p&gt;
+-- <p>Represents the response from the server to create a user pool client.</p>
+-- @param UserPoolClient [UserPoolClientType] <p>The user pool client that was just created.</p>
 function M.CreateUserPoolClientResponse(UserPoolClient, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserPoolClientResponse")
 	local t = { 
@@ -1668,7 +1668,7 @@ end
 
 --- Create a structure of type CreateIdentityProviderResponse
 --  
--- @param IdentityProvider [IdentityProviderType] &lt;p&gt;The newly created identity provider object.&lt;/p&gt;
+-- @param IdentityProvider [IdentityProviderType] <p>The newly created identity provider object.</p>
 -- Required parameter: IdentityProvider
 function M.CreateIdentityProviderResponse(IdentityProvider, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateIdentityProviderResponse")
@@ -1697,14 +1697,14 @@ function M.AssertDomainDescriptionType(struct)
 end
 
 --- Create a structure of type DomainDescriptionType
--- &lt;p&gt;A container for information about a domain.&lt;/p&gt;
--- @param Status [DomainStatusType] &lt;p&gt;The domain status.&lt;/p&gt;
--- @param Domain [DomainType] &lt;p&gt;The domain string.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
--- @param CloudFrontDistribution [ArnType] &lt;p&gt;The ARN of the CloudFront distribution.&lt;/p&gt;
--- @param S3Bucket [S3BucketType] &lt;p&gt;The S3 bucket where the static files for this domain are stored.&lt;/p&gt;
--- @param Version [DomainVersionType] &lt;p&gt;The app version.&lt;/p&gt;
--- @param AWSAccountId [AWSAccountIdType] &lt;p&gt;The AWS account ID for the user pool owner.&lt;/p&gt;
+-- <p>A container for information about a domain.</p>
+-- @param Status [DomainStatusType] <p>The domain status.</p>
+-- @param Domain [DomainType] <p>The domain string.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param CloudFrontDistribution [ArnType] <p>The ARN of the CloudFront distribution.</p>
+-- @param S3Bucket [S3BucketType] <p>The S3 bucket where the static files for this domain are stored.</p>
+-- @param Version [DomainVersionType] <p>The app version.</p>
+-- @param AWSAccountId [AWSAccountIdType] <p>The AWS account ID for the user pool owner.</p>
 function M.DomainDescriptionType(Status, Domain, UserPoolId, CloudFrontDistribution, S3Bucket, Version, AWSAccountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainDescriptionType")
 	local t = { 
@@ -1732,8 +1732,8 @@ function M.AssertConcurrentModificationException(struct)
 end
 
 --- Create a structure of type ConcurrentModificationException
--- &lt;p&gt;This exception is thrown if two or more modifications are happening concurrently.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message provided when the concurrent exception is thrown.&lt;/p&gt;
+-- <p>This exception is thrown if two or more modifications are happening concurrently.</p>
+-- @param message [MessageType] <p>The message provided when the concurrent exception is thrown.</p>
 function M.ConcurrentModificationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
 	local t = { 
@@ -1762,12 +1762,12 @@ function M.AssertConfirmSignUpRequest(struct)
 end
 
 --- Create a structure of type ConfirmSignUpRequest
--- &lt;p&gt;Represents the request to confirm registration of a user.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user whose registration you wish to confirm.&lt;/p&gt;
--- @param ForceAliasCreation [ForceAliasCreation] &lt;p&gt;Boolean to be specified to force user confirmation irrespective of existing alias. By default set to &lt;code&gt;False&lt;/code&gt;. If this parameter is set to &lt;code&gt;True&lt;/code&gt; and the phone number/email used for sign up confirmation already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user being confirmed. If set to &lt;code&gt;False&lt;/code&gt;, the API will throw an &lt;b&gt;AliasExistsException&lt;/b&gt; error.&lt;/p&gt;
--- @param ConfirmationCode [ConfirmationCodeType] &lt;p&gt;The confirmation code sent by a user's request to confirm registration.&lt;/p&gt;
--- @param SecretHash [SecretHashType] &lt;p&gt;A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The ID of the client associated with the user pool.&lt;/p&gt;
+-- <p>Represents the request to confirm registration of a user.</p>
+-- @param Username [UsernameType] <p>The user name of the user whose registration you wish to confirm.</p>
+-- @param ForceAliasCreation [ForceAliasCreation] <p>Boolean to be specified to force user confirmation irrespective of existing alias. By default set to <code>False</code>. If this parameter is set to <code>True</code> and the phone number/email used for sign up confirmation already exists as an alias with a different user, the API call will migrate the alias from the previous user to the newly created user being confirmed. If set to <code>False</code>, the API will throw an <b>AliasExistsException</b> error.</p>
+-- @param ConfirmationCode [ConfirmationCodeType] <p>The confirmation code sent by a user's request to confirm registration.</p>
+-- @param SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+-- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
 -- Required parameter: ClientId
 -- Required parameter: Username
 -- Required parameter: ConfirmationCode
@@ -1796,8 +1796,8 @@ function M.AssertUserNotConfirmedException(struct)
 end
 
 --- Create a structure of type UserNotConfirmedException
--- &lt;p&gt;This exception is thrown when a user is not confirmed successfully.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when a user is not confirmed successfully.&lt;/p&gt;
+-- <p>This exception is thrown when a user is not confirmed successfully.</p>
+-- @param message [MessageType] <p>The message returned when a user is not confirmed successfully.</p>
 function M.UserNotConfirmedException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserNotConfirmedException")
 	local t = { 
@@ -1819,8 +1819,8 @@ function M.AssertStartUserImportJobResponse(struct)
 end
 
 --- Create a structure of type StartUserImportJobResponse
--- &lt;p&gt;Represents the response from the server to the request to start the user import job.&lt;/p&gt;
--- @param UserImportJob [UserImportJobType] &lt;p&gt;The job object that represents the user import job.&lt;/p&gt;
+-- <p>Represents the response from the server to the request to start the user import job.</p>
+-- @param UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
 function M.StartUserImportJobResponse(UserImportJob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartUserImportJobResponse")
 	local t = { 
@@ -1846,12 +1846,12 @@ function M.AssertPasswordPolicyType(struct)
 end
 
 --- Create a structure of type PasswordPolicyType
--- &lt;p&gt;The password policy type.&lt;/p&gt;
--- @param RequireLowercase [BooleanType] &lt;p&gt;In the password policy that you have set, refers to whether you have required users to use at least one lowercase letter in their password.&lt;/p&gt;
--- @param RequireSymbols [BooleanType] &lt;p&gt;In the password policy that you have set, refers to whether you have required users to use at least one symbol in their password.&lt;/p&gt;
--- @param RequireNumbers [BooleanType] &lt;p&gt;In the password policy that you have set, refers to whether you have required users to use at least one number in their password.&lt;/p&gt;
--- @param MinimumLength [PasswordPolicyMinLengthType] &lt;p&gt;The minimum length of the password policy that you have set. Cannot be less than 6.&lt;/p&gt;
--- @param RequireUppercase [BooleanType] &lt;p&gt;In the password policy that you have set, refers to whether you have required users to use at least one uppercase letter in their password.&lt;/p&gt;
+-- <p>The password policy type.</p>
+-- @param RequireLowercase [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one lowercase letter in their password.</p>
+-- @param RequireSymbols [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one symbol in their password.</p>
+-- @param RequireNumbers [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one number in their password.</p>
+-- @param MinimumLength [PasswordPolicyMinLengthType] <p>The minimum length of the password policy that you have set. Cannot be less than 6.</p>
+-- @param RequireUppercase [BooleanType] <p>In the password policy that you have set, refers to whether you have required users to use at least one uppercase letter in their password.</p>
 function M.PasswordPolicyType(RequireLowercase, RequireSymbols, RequireNumbers, MinimumLength, RequireUppercase, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PasswordPolicyType")
 	local t = { 
@@ -1882,10 +1882,10 @@ function M.AssertCreateUserImportJobRequest(struct)
 end
 
 --- Create a structure of type CreateUserImportJobRequest
--- &lt;p&gt;Represents the request to create the user import job.&lt;/p&gt;
--- @param CloudWatchLogsRoleArn [ArnType] &lt;p&gt;The role ARN for the Amazon CloudWatch Logging role for the user import job.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool that the users are being imported into.&lt;/p&gt;
--- @param JobName [UserImportJobNameType] &lt;p&gt;The job name for the user import job.&lt;/p&gt;
+-- <p>Represents the request to create the user import job.</p>
+-- @param CloudWatchLogsRoleArn [ArnType] <p>The role ARN for the Amazon CloudWatch Logging role for the user import job.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param JobName [UserImportJobNameType] <p>The job name for the user import job.</p>
 -- Required parameter: JobName
 -- Required parameter: UserPoolId
 -- Required parameter: CloudWatchLogsRoleArn
@@ -1916,8 +1916,8 @@ end
 
 --- Create a structure of type CreateUserPoolDomainRequest
 --  
--- @param Domain [DomainType] &lt;p&gt;The domain string.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- @param Domain [DomainType] <p>The domain string.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: Domain
 -- Required parameter: UserPoolId
 function M.CreateUserPoolDomainRequest(Domain, UserPoolId, ...)
@@ -1942,8 +1942,8 @@ function M.AssertInvalidEmailRoleAccessPolicyException(struct)
 end
 
 --- Create a structure of type InvalidEmailRoleAccessPolicyException
--- &lt;p&gt;This exception is thrown when Amazon Cognito is not allowed to use your email identity. HTTP status code: 400.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when you have an unverified email address or the identity policy is not set on an email address that Amazon Cognito can access.&lt;/p&gt;
+-- <p>This exception is thrown when Amazon Cognito is not allowed to use your email identity. HTTP status code: 400.</p>
+-- @param message [MessageType] <p>The message returned when you have an unverified email address or the identity policy is not set on an email address that Amazon Cognito can access.</p>
 function M.InvalidEmailRoleAccessPolicyException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidEmailRoleAccessPolicyException")
 	local t = { 
@@ -1980,21 +1980,21 @@ function M.AssertUpdateUserPoolClientRequest(struct)
 end
 
 --- Create a structure of type UpdateUserPoolClientRequest
--- &lt;p&gt;Represents the request to update the user pool client.&lt;/p&gt;
--- @param CallbackURLs [CallbackURLsListType] &lt;p&gt;A list of allowed callback URLs for the identity providers.&lt;/p&gt;
--- @param AllowedOAuthScopes [ScopeListType] &lt;p&gt;A list of allowed &lt;code&gt;OAuth&lt;/code&gt; scopes. Currently supported values are &lt;code&gt;&quot;phone&quot;&lt;/code&gt;, &lt;code&gt;&quot;email&quot;&lt;/code&gt;, &lt;code&gt;&quot;openid&quot;&lt;/code&gt;, and &lt;code&gt;&quot;Cognito&quot;&lt;/code&gt;.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to update the user pool client.&lt;/p&gt;
--- @param AllowedOAuthFlowsUserPoolClient [BooleanType] &lt;p&gt;Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The ID of the client associated with the user pool.&lt;/p&gt;
--- @param DefaultRedirectURI [RedirectUrlType] &lt;p&gt;The default redirect URI. Must be in the &lt;code&gt;CallbackURLs&lt;/code&gt; list.&lt;/p&gt;
--- @param AllowedOAuthFlows [OAuthFlowsType] &lt;p&gt;Set to &lt;code&gt;code&lt;/code&gt; to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.&lt;/p&gt; &lt;p&gt;Set to &lt;code&gt;token&lt;/code&gt; to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.&lt;/p&gt;
--- @param ExplicitAuthFlows [ExplicitAuthFlowsListType] &lt;p&gt;Explicit authentication flows.&lt;/p&gt;
--- @param LogoutURLs [LogoutURLsListType] &lt;p&gt;A list ofallowed logout URLs for the identity providers.&lt;/p&gt;
--- @param WriteAttributes [ClientPermissionListType] &lt;p&gt;The writeable attributes of the user pool.&lt;/p&gt;
--- @param SupportedIdentityProviders [SupportedIdentityProvidersListType] &lt;p&gt;A list of provider names for the identity providers that are supported on this client.&lt;/p&gt;
--- @param ReadAttributes [ClientPermissionListType] &lt;p&gt;The read-only attributes of the user pool.&lt;/p&gt;
--- @param RefreshTokenValidity [RefreshTokenValidityType] &lt;p&gt;The time limit, in days, after which the refresh token is no longer valid and cannot be used.&lt;/p&gt;
--- @param ClientName [ClientNameType] &lt;p&gt;The client name from the update user pool client request.&lt;/p&gt;
+-- <p>Represents the request to update the user pool client.</p>
+-- @param CallbackURLs [CallbackURLsListType] <p>A list of allowed callback URLs for the identity providers.</p>
+-- @param AllowedOAuthScopes [ScopeListType] <p>A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>, <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to update the user pool client.</p>
+-- @param AllowedOAuthFlowsUserPoolClient [BooleanType] <p>Set to TRUE if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.</p>
+-- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param DefaultRedirectURI [RedirectUrlType] <p>The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+-- @param AllowedOAuthFlows [OAuthFlowsType] <p>Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.</p> <p>Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.</p>
+-- @param ExplicitAuthFlows [ExplicitAuthFlowsListType] <p>Explicit authentication flows.</p>
+-- @param LogoutURLs [LogoutURLsListType] <p>A list ofallowed logout URLs for the identity providers.</p>
+-- @param WriteAttributes [ClientPermissionListType] <p>The writeable attributes of the user pool.</p>
+-- @param SupportedIdentityProviders [SupportedIdentityProvidersListType] <p>A list of provider names for the identity providers that are supported on this client.</p>
+-- @param ReadAttributes [ClientPermissionListType] <p>The read-only attributes of the user pool.</p>
+-- @param RefreshTokenValidity [RefreshTokenValidityType] <p>The time limit, in days, after which the refresh token is no longer valid and cannot be used.</p>
+-- @param ClientName [ClientNameType] <p>The client name from the update user pool client request.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientId
 function M.UpdateUserPoolClientRequest(CallbackURLs, AllowedOAuthScopes, UserPoolId, AllowedOAuthFlowsUserPoolClient, ClientId, DefaultRedirectURI, AllowedOAuthFlows, ExplicitAuthFlows, LogoutURLs, WriteAttributes, SupportedIdentityProviders, ReadAttributes, RefreshTokenValidity, ClientName, ...)
@@ -2036,10 +2036,10 @@ function M.AssertChangePasswordRequest(struct)
 end
 
 --- Create a structure of type ChangePasswordRequest
--- &lt;p&gt;Represents the request to change a user password.&lt;/p&gt;
--- @param PreviousPassword [PasswordType] &lt;p&gt;The old password in the change password request.&lt;/p&gt;
--- @param ProposedPassword [PasswordType] &lt;p&gt;The new password in the change password request.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token in the change password request.&lt;/p&gt;
+-- <p>Represents the request to change a user password.</p>
+-- @param PreviousPassword [PasswordType] <p>The old password in the change password request.</p>
+-- @param ProposedPassword [PasswordType] <p>The new password in the change password request.</p>
+-- @param AccessToken [TokenModelType] <p>The access token in the change password request.</p>
 -- Required parameter: PreviousPassword
 -- Required parameter: ProposedPassword
 -- Required parameter: AccessToken
@@ -2066,8 +2066,8 @@ function M.AssertCodeDeliveryFailureException(struct)
 end
 
 --- Create a structure of type CodeDeliveryFailureException
--- &lt;p&gt;This exception is thrown when a verification code fails to deliver successfully.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message sent when a verification code fails to deliver successfully.&lt;/p&gt;
+-- <p>This exception is thrown when a verification code fails to deliver successfully.</p>
+-- @param message [MessageType] <p>The message sent when a verification code fails to deliver successfully.</p>
 function M.CodeDeliveryFailureException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CodeDeliveryFailureException")
 	local t = { 
@@ -2090,9 +2090,9 @@ function M.AssertMFAOptionType(struct)
 end
 
 --- Create a structure of type MFAOptionType
--- &lt;p&gt;Specifies the different settings for multi-factor authentication (MFA).&lt;/p&gt;
--- @param DeliveryMedium [DeliveryMediumType] &lt;p&gt;The delivery medium (email message or SMS message) to send the MFA code.&lt;/p&gt;
--- @param AttributeName [AttributeNameType] &lt;p&gt;The attribute name of the MFA option type.&lt;/p&gt;
+-- <p>Specifies the different settings for multi-factor authentication (MFA).</p>
+-- @param DeliveryMedium [DeliveryMediumType] <p>The delivery medium (email message or SMS message) to send the MFA code.</p>
+-- @param AttributeName [AttributeNameType] <p>The attribute name of the MFA option type.</p>
 function M.MFAOptionType(DeliveryMedium, AttributeName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MFAOptionType")
 	local t = { 
@@ -2117,8 +2117,8 @@ end
 
 --- Create a structure of type ListGroupsResponse
 --  
--- @param NextToken [PaginationKey] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param Groups [GroupListType] &lt;p&gt;The group objects for the groups.&lt;/p&gt;
+-- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param Groups [GroupListType] <p>The group objects for the groups.</p>
 function M.ListGroupsResponse(NextToken, Groups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsResponse")
 	local t = { 
@@ -2148,11 +2148,11 @@ end
 
 --- Create a structure of type UpdateGroupRequest
 --  
--- @param GroupName [GroupNameType] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param RoleArn [ArnType] &lt;p&gt;The new role ARN for the group. This is used for setting the &lt;code&gt;cognito:roles&lt;/code&gt; and &lt;code&gt;cognito:preferred_role&lt;/code&gt; claims in the token.&lt;/p&gt;
--- @param Precedence [PrecedenceType] &lt;p&gt;The new precedence value for the group. For more information about this parameter, see &lt;a href=&quot;API_CreateGroup.html&quot;&gt;CreateGroup&lt;/a&gt;.&lt;/p&gt;
--- @param Description [DescriptionType] &lt;p&gt;A string containing the new description of the group.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool.&lt;/p&gt;
+-- @param GroupName [GroupNameType] <p>The name of the group.</p>
+-- @param RoleArn [ArnType] <p>The new role ARN for the group. This is used for setting the <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims in the token.</p>
+-- @param Precedence [PrecedenceType] <p>The new precedence value for the group. For more information about this parameter, see <a href="API_CreateGroup.html">CreateGroup</a>.</p>
+-- @param Description [DescriptionType] <p>A string containing the new description of the group.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: GroupName
 -- Required parameter: UserPoolId
 function M.UpdateGroupRequest(GroupName, RoleArn, Precedence, Description, UserPoolId, ...)
@@ -2179,7 +2179,7 @@ function M.AssertAdminUserGlobalSignOutResponse(struct)
 end
 
 --- Create a structure of type AdminUserGlobalSignOutResponse
--- &lt;p&gt;The global sign-out response, as an administrator.&lt;/p&gt;
+-- <p>The global sign-out response, as an administrator.</p>
 function M.AdminUserGlobalSignOutResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminUserGlobalSignOutResponse")
 	local t = { 
@@ -2199,7 +2199,7 @@ function M.AssertDeleteUserAttributesResponse(struct)
 end
 
 --- Create a structure of type DeleteUserAttributesResponse
--- &lt;p&gt;Represents the response from the server to delete user attributes.&lt;/p&gt;
+-- <p>Represents the response from the server to delete user attributes.</p>
 function M.DeleteUserAttributesResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserAttributesResponse")
 	local t = { 
@@ -2220,8 +2220,8 @@ function M.AssertCodeMismatchException(struct)
 end
 
 --- Create a structure of type CodeMismatchException
--- &lt;p&gt;This exception is thrown if the provided code does not match what the server was expecting.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message provided when the code mismatch exception is thrown.&lt;/p&gt;
+-- <p>This exception is thrown if the provided code does not match what the server was expecting.</p>
+-- @param message [MessageType] <p>The message provided when the code mismatch exception is thrown.</p>
 function M.CodeMismatchException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CodeMismatchException")
 	local t = { 
@@ -2245,9 +2245,9 @@ function M.AssertForgetDeviceRequest(struct)
 end
 
 --- Create a structure of type ForgetDeviceRequest
--- &lt;p&gt;Represents the request to forget the device.&lt;/p&gt;
--- @param DeviceKey [DeviceKeyType] &lt;p&gt;The device key.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token for the forgotten device request.&lt;/p&gt;
+-- <p>Represents the request to forget the device.</p>
+-- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param AccessToken [TokenModelType] <p>The access token for the forgotten device request.</p>
 -- Required parameter: DeviceKey
 function M.ForgetDeviceRequest(DeviceKey, AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ForgetDeviceRequest")
@@ -2274,11 +2274,11 @@ function M.AssertRespondToAuthChallengeResponse(struct)
 end
 
 --- Create a structure of type RespondToAuthChallengeResponse
--- &lt;p&gt;The response to respond to the authentication challenge.&lt;/p&gt;
--- @param AuthenticationResult [AuthenticationResultType] &lt;p&gt;The result returned by the server in response to the request to respond to the authentication challenge.&lt;/p&gt;
--- @param ChallengeName [ChallengeNameType] &lt;p&gt;The challenge name. For more information, see &lt;a href=&quot;API_InitiateAuth.html&quot;&gt;InitiateAuth&lt;/a&gt;.&lt;/p&gt;
--- @param ChallengeParameters [ChallengeParametersType] &lt;p&gt;The challenge parameters. For more information, see &lt;a href=&quot;API_InitiateAuth.html&quot;&gt;InitiateAuth&lt;/a&gt;.&lt;/p&gt;
--- @param Session [SessionType] &lt;p&gt;The session which should be passed both ways in challenge-response calls to the service. If the &lt;a href=&quot;API_InitiateAuth.html&quot;&gt;InitiateAuth&lt;/a&gt; or &lt;a href=&quot;API_RespondToAuthChallenge.html&quot;&gt;RespondToAuthChallenge&lt;/a&gt; API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next &lt;code&gt;RespondToAuthChallenge&lt;/code&gt; API call.&lt;/p&gt;
+-- <p>The response to respond to the authentication challenge.</p>
+-- @param AuthenticationResult [AuthenticationResultType] <p>The result returned by the server in response to the request to respond to the authentication challenge.</p>
+-- @param ChallengeName [ChallengeNameType] <p>The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
+-- @param ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p>
+-- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If the <a href="API_InitiateAuth.html">InitiateAuth</a> or <a href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
 function M.RespondToAuthChallengeResponse(AuthenticationResult, ChallengeName, ChallengeParameters, Session, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RespondToAuthChallengeResponse")
 	local t = { 
@@ -2305,7 +2305,7 @@ end
 
 --- Create a structure of type UpdateIdentityProviderResponse
 --  
--- @param IdentityProvider [IdentityProviderType] &lt;p&gt;The identity provider object.&lt;/p&gt;
+-- @param IdentityProvider [IdentityProviderType] <p>The identity provider object.</p>
 -- Required parameter: IdentityProvider
 function M.UpdateIdentityProviderResponse(IdentityProvider, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateIdentityProviderResponse")
@@ -2332,10 +2332,10 @@ function M.AssertForgotPasswordRequest(struct)
 end
 
 --- Create a structure of type ForgotPasswordRequest
--- &lt;p&gt;Represents the request to reset a user's password.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user for whom you want to enter a code to reset a forgotten password.&lt;/p&gt;
--- @param SecretHash [SecretHashType] &lt;p&gt;A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The ID of the client associated with the user pool.&lt;/p&gt;
+-- <p>Represents the request to reset a user's password.</p>
+-- @param Username [UsernameType] <p>The user name of the user for whom you want to enter a code to reset a forgotten password.</p>
+-- @param SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+-- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
 -- Required parameter: ClientId
 -- Required parameter: Username
 function M.ForgotPasswordRequest(Username, SecretHash, ClientId, ...)
@@ -2363,7 +2363,7 @@ end
 
 --- Create a structure of type DescribeIdentityProviderResponse
 --  
--- @param IdentityProvider [IdentityProviderType] &lt;p&gt;The identity provider that was deleted.&lt;/p&gt;
+-- @param IdentityProvider [IdentityProviderType] <p>The identity provider that was deleted.</p>
 -- Required parameter: IdentityProvider
 function M.DescribeIdentityProviderResponse(IdentityProvider, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityProviderResponse")
@@ -2389,9 +2389,9 @@ function M.AssertSetUserSettingsRequest(struct)
 end
 
 --- Create a structure of type SetUserSettingsRequest
--- &lt;p&gt;Represents the request to set user settings.&lt;/p&gt;
--- @param MFAOptions [MFAOptionListType] &lt;p&gt;Specifies the options for MFA (e.g., email or phone number).&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token for the set user settings request.&lt;/p&gt;
+-- <p>Represents the request to set user settings.</p>
+-- @param MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
+-- @param AccessToken [TokenModelType] <p>The access token for the set user settings request.</p>
 -- Required parameter: AccessToken
 -- Required parameter: MFAOptions
 function M.SetUserSettingsRequest(MFAOptions, AccessToken, ...)
@@ -2419,9 +2419,9 @@ function M.AssertAdminConfirmSignUpRequest(struct)
 end
 
 --- Create a structure of type AdminConfirmSignUpRequest
--- &lt;p&gt;Represents the request to confirm user registration.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name for which you want to confirm user registration.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for which you want to confirm user registration.&lt;/p&gt;
+-- <p>Represents the request to confirm user registration.</p>
+-- @param Username [UsernameType] <p>The user name for which you want to confirm user registration.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for which you want to confirm user registration.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 function M.AdminConfirmSignUpRequest(Username, UserPoolId, ...)
@@ -2447,9 +2447,9 @@ function M.AssertEmailConfigurationType(struct)
 end
 
 --- Create a structure of type EmailConfigurationType
--- &lt;p&gt;The email configuration type.&lt;/p&gt;
--- @param ReplyToEmailAddress [EmailAddressType] &lt;p&gt;The REPLY-TO email address.&lt;/p&gt;
--- @param SourceArn [ArnType] &lt;p&gt;The Amazon Resource Name (ARN) of the email source.&lt;/p&gt;
+-- <p>The email configuration type.</p>
+-- @param ReplyToEmailAddress [EmailAddressType] <p>The REPLY-TO email address.</p>
+-- @param SourceArn [ArnType] <p>The Amazon Resource Name (ARN) of the email source.</p>
 function M.EmailConfigurationType(ReplyToEmailAddress, SourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EmailConfigurationType")
 	local t = { 
@@ -2479,12 +2479,12 @@ function M.AssertAdminRespondToAuthChallengeRequest(struct)
 end
 
 --- Create a structure of type AdminRespondToAuthChallengeRequest
--- &lt;p&gt;The request to respond to the authentication challenge, as an administrator.&lt;/p&gt;
--- @param ChallengeResponses [ChallengeResponsesType] &lt;p&gt;The challenge responses. These are inputs corresponding to the value of &lt;code&gt;ChallengeName&lt;/code&gt;, for example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SMS_MFA&lt;/code&gt;: &lt;code&gt;SMS_MFA_CODE&lt;/code&gt;, &lt;code&gt;USERNAME&lt;/code&gt;, &lt;code&gt;SECRET_HASH&lt;/code&gt; (if app client is configured with client secret).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PASSWORD_VERIFIER&lt;/code&gt;: &lt;code&gt;PASSWORD_CLAIM_SIGNATURE&lt;/code&gt;, &lt;code&gt;PASSWORD_CLAIM_SECRET_BLOCK&lt;/code&gt;, &lt;code&gt;TIMESTAMP&lt;/code&gt;, &lt;code&gt;USERNAME&lt;/code&gt;, &lt;code&gt;SECRET_HASH&lt;/code&gt; (if app client is configured with client secret).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ADMIN_NO_SRP_AUTH&lt;/code&gt;: &lt;code&gt;PASSWORD&lt;/code&gt;, &lt;code&gt;USERNAME&lt;/code&gt;, &lt;code&gt;SECRET_HASH&lt;/code&gt; (if app client is configured with client secret). &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NEW_PASSWORD_REQUIRED&lt;/code&gt;: &lt;code&gt;NEW_PASSWORD&lt;/code&gt;, any other required attributes, &lt;code&gt;USERNAME&lt;/code&gt;, &lt;code&gt;SECRET_HASH&lt;/code&gt; (if app client is configured with client secret). &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;The value of the &lt;code&gt;USERNAME&lt;/code&gt; attribute must be the user's actual username, not an alias (such as email address or phone number). To make this easier, the &lt;code&gt;AdminInitiateAuth&lt;/code&gt; response includes the actual username value in the &lt;code&gt;USERNAMEUSER_ID_FOR_SRP&lt;/code&gt; attribute, even if you specified an alias in your call to &lt;code&gt;AdminInitiateAuth&lt;/code&gt;.&lt;/p&gt;
--- @param ChallengeName [ChallengeNameType] &lt;p&gt;The challenge name. For more information, see &lt;a href=&quot;API_AdminInitiateAuth.html&quot;&gt;AdminInitiateAuth&lt;/a&gt;.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The app client ID.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The ID of the Amazon Cognito user pool.&lt;/p&gt;
--- @param Session [SessionType] &lt;p&gt;The session which should be passed both ways in challenge-response calls to the service. If &lt;code&gt;InitiateAuth&lt;/code&gt; or &lt;code&gt;RespondToAuthChallenge&lt;/code&gt; API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next &lt;code&gt;RespondToAuthChallenge&lt;/code&gt; API call.&lt;/p&gt;
+-- <p>The request to respond to the authentication challenge, as an administrator.</p>
+-- @param ChallengeResponses [ChallengeResponsesType] <p>The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for example:</p> <ul> <li> <p> <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, <code>TIMESTAMP</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>ADMIN_NO_SRP_AUTH</code>: <code>PASSWORD</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret). </p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret). </p> </li> </ul> <p>The value of the <code>USERNAME</code> attribute must be the user's actual username, not an alias (such as email address or phone number). To make this easier, the <code>AdminInitiateAuth</code> response includes the actual username value in the <code>USERNAMEUSER_ID_FOR_SRP</code> attribute, even if you specified an alias in your call to <code>AdminInitiateAuth</code>.</p>
+-- @param ChallengeName [ChallengeNameType] <p>The challenge name. For more information, see <a href="API_AdminInitiateAuth.html">AdminInitiateAuth</a>.</p>
+-- @param ClientId [ClientIdType] <p>The app client ID.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The ID of the Amazon Cognito user pool.</p>
+-- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientId
 -- Required parameter: ChallengeName
@@ -2520,11 +2520,11 @@ end
 
 --- Create a structure of type UpdateIdentityProviderRequest
 --  
--- @param ProviderDetails [ProviderDetailsType] &lt;p&gt;The identity provider details to be updated, such as &lt;code&gt;MetadataURL&lt;/code&gt; and &lt;code&gt;MetadataFile&lt;/code&gt;.&lt;/p&gt;
--- @param IdpIdentifiers [IdpIdentifiersListType] &lt;p&gt;A list of identity provider identifiers.&lt;/p&gt;
--- @param AttributeMapping [AttributeMappingType] &lt;p&gt;The identity provider attribute mapping to be changed.&lt;/p&gt;
--- @param ProviderName [ProviderNameType] &lt;p&gt;The identity provider name.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- @param ProviderDetails [ProviderDetailsType] <p>The identity provider details to be updated, such as <code>MetadataURL</code> and <code>MetadataFile</code>.</p>
+-- @param IdpIdentifiers [IdpIdentifiersListType] <p>A list of identity provider identifiers.</p>
+-- @param AttributeMapping [AttributeMappingType] <p>The identity provider attribute mapping to be changed.</p>
+-- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ProviderName
 function M.UpdateIdentityProviderRequest(ProviderDetails, IdpIdentifiers, AttributeMapping, ProviderName, UserPoolId, ...)
@@ -2559,14 +2559,14 @@ function M.AssertAdminGetUserResponse(struct)
 end
 
 --- Create a structure of type AdminGetUserResponse
--- &lt;p&gt;Represents the response from the server from the request to get the specified user as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user about whom you are receiving information.&lt;/p&gt;
--- @param MFAOptions [MFAOptionListType] &lt;p&gt;Specifies the options for MFA (e.g., email or phone number).&lt;/p&gt;
--- @param Enabled [BooleanType] &lt;p&gt;Indicates that the status is enabled.&lt;/p&gt;
--- @param UserStatus [UserStatusType] &lt;p&gt;The user status. Can be one of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;UNCONFIRMED - User has been created but not confirmed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;CONFIRMED - User has been confirmed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;ARCHIVED - User is no longer active.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;COMPROMISED - User is disabled due to a potential security threat.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;UNKNOWN - User status is not known.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param UserCreateDate [DateType] &lt;p&gt;The date the user was created.&lt;/p&gt;
--- @param UserAttributes [AttributeListType] &lt;p&gt;An array of name-value pairs representing user attributes.&lt;/p&gt;
--- @param UserLastModifiedDate [DateType] &lt;p&gt;The date the user was last modified.&lt;/p&gt;
+-- <p>Represents the response from the server from the request to get the specified user as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name of the user about whom you are receiving information.</p>
+-- @param MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
+-- @param Enabled [BooleanType] <p>Indicates that the status is enabled.</p>
+-- @param UserStatus [UserStatusType] <p>The user status. Can be one of the following:</p> <ul> <li> <p>UNCONFIRMED - User has been created but not confirmed.</p> </li> <li> <p>CONFIRMED - User has been confirmed.</p> </li> <li> <p>ARCHIVED - User is no longer active.</p> </li> <li> <p>COMPROMISED - User is disabled due to a potential security threat.</p> </li> <li> <p>UNKNOWN - User status is not known.</p> </li> </ul>
+-- @param UserCreateDate [DateType] <p>The date the user was created.</p>
+-- @param UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p>
+-- @param UserLastModifiedDate [DateType] <p>The date the user was last modified.</p>
 -- Required parameter: Username
 function M.AdminGetUserResponse(Username, MFAOptions, Enabled, UserStatus, UserCreateDate, UserAttributes, UserLastModifiedDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminGetUserResponse")
@@ -2595,8 +2595,8 @@ function M.AssertDescribeUserPoolResponse(struct)
 end
 
 --- Create a structure of type DescribeUserPoolResponse
--- &lt;p&gt;Represents the response to describe the user pool.&lt;/p&gt;
--- @param UserPool [UserPoolType] &lt;p&gt;The container of metadata returned by the server to describe the pool.&lt;/p&gt;
+-- <p>Represents the response to describe the user pool.</p>
+-- @param UserPool [UserPoolType] <p>The container of metadata returned by the server to describe the pool.</p>
 function M.DescribeUserPoolResponse(UserPool, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolResponse")
 	local t = { 
@@ -2618,8 +2618,8 @@ function M.AssertInvalidLambdaResponseException(struct)
 end
 
 --- Create a structure of type InvalidLambdaResponseException
--- &lt;p&gt;This exception is thrown when the Amazon Cognito service encounters an invalid AWS Lambda response.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the Amazon Cognito service throws an invalid AWS Lambda response exception.&lt;/p&gt;
+-- <p>This exception is thrown when the Amazon Cognito service encounters an invalid AWS Lambda response.</p>
+-- @param message [MessageType] <p>The message returned when the Amazon Cognito service throws an invalid AWS Lambda response exception.</p>
 function M.InvalidLambdaResponseException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLambdaResponseException")
 	local t = { 
@@ -2647,11 +2647,11 @@ function M.AssertAdminUpdateDeviceStatusRequest(struct)
 end
 
 --- Create a structure of type AdminUpdateDeviceStatusRequest
--- &lt;p&gt;The request to update the device status, as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name.&lt;/p&gt;
--- @param DeviceKey [DeviceKeyType] &lt;p&gt;The device key.&lt;/p&gt;
--- @param DeviceRememberedStatus [DeviceRememberedStatusType] &lt;p&gt;The status indicating whether a device has been remembered or not.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- <p>The request to update the device status, as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name.</p>
+-- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param DeviceRememberedStatus [DeviceRememberedStatusType] <p>The status indicating whether a device has been remembered or not.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: DeviceKey
@@ -2684,10 +2684,10 @@ function M.AssertAdminGetDeviceRequest(struct)
 end
 
 --- Create a structure of type AdminGetDeviceRequest
--- &lt;p&gt;Represents the request to get the device, as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name.&lt;/p&gt;
--- @param DeviceKey [DeviceKeyType] &lt;p&gt;The device key.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- <p>Represents the request to get the device, as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name.</p>
+-- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: DeviceKey
 -- Required parameter: UserPoolId
 -- Required parameter: Username
@@ -2716,9 +2716,9 @@ function M.AssertGetDeviceRequest(struct)
 end
 
 --- Create a structure of type GetDeviceRequest
--- &lt;p&gt;Represents the request to get the device.&lt;/p&gt;
--- @param DeviceKey [DeviceKeyType] &lt;p&gt;The device key.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token.&lt;/p&gt;
+-- <p>Represents the request to get the device.</p>
+-- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param AccessToken [TokenModelType] <p>The access token.</p>
 -- Required parameter: DeviceKey
 function M.GetDeviceRequest(DeviceKey, AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceRequest")
@@ -2741,7 +2741,7 @@ function M.AssertSetUserSettingsResponse(struct)
 end
 
 --- Create a structure of type SetUserSettingsResponse
--- &lt;p&gt;The response from the server for a set user settings request.&lt;/p&gt;
+-- <p>The response from the server for a set user settings request.</p>
 function M.SetUserSettingsResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SetUserSettingsResponse")
 	local t = { 
@@ -2763,8 +2763,8 @@ function M.AssertGetUserRequest(struct)
 end
 
 --- Create a structure of type GetUserRequest
--- &lt;p&gt;Represents the request to get information about the user.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token returned by the server response to get information about the user.&lt;/p&gt;
+-- <p>Represents the request to get information about the user.</p>
+-- @param AccessToken [TokenModelType] <p>The access token returned by the server response to get information about the user.</p>
 -- Required parameter: AccessToken
 function M.GetUserRequest(AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUserRequest")
@@ -2786,7 +2786,7 @@ function M.AssertGlobalSignOutResponse(struct)
 end
 
 --- Create a structure of type GlobalSignOutResponse
--- &lt;p&gt;The response to the request to sign out all devices.&lt;/p&gt;
+-- <p>The response to the request to sign out all devices.</p>
 function M.GlobalSignOutResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GlobalSignOutResponse")
 	local t = { 
@@ -2806,7 +2806,7 @@ function M.AssertConfirmForgotPasswordResponse(struct)
 end
 
 --- Create a structure of type ConfirmForgotPasswordResponse
--- &lt;p&gt;The response from the server that results from a user's request to retrieve a forgotten password.&lt;/p&gt;
+-- <p>The response from the server that results from a user's request to retrieve a forgotten password.</p>
 function M.ConfirmForgotPasswordResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmForgotPasswordResponse")
 	local t = { 
@@ -2828,8 +2828,8 @@ function M.AssertGetCSVHeaderRequest(struct)
 end
 
 --- Create a structure of type GetCSVHeaderRequest
--- &lt;p&gt;Represents the request to get the header information for the .csv file for the user import job.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool that the users are to be imported into.&lt;/p&gt;
+-- <p>Represents the request to get the header information for the .csv file for the user import job.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are to be imported into.</p>
 -- Required parameter: UserPoolId
 function M.GetCSVHeaderRequest(UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCSVHeaderRequest")
@@ -2854,7 +2854,7 @@ end
 
 --- Create a structure of type DescribeUserPoolDomainRequest
 --  
--- @param Domain [DomainType] &lt;p&gt;The domain string.&lt;/p&gt;
+-- @param Domain [DomainType] <p>The domain string.</p>
 -- Required parameter: Domain
 function M.DescribeUserPoolDomainRequest(Domain, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolDomainRequest")
@@ -2879,10 +2879,10 @@ function M.AssertCodeDeliveryDetailsType(struct)
 end
 
 --- Create a structure of type CodeDeliveryDetailsType
--- &lt;p&gt;The type of code delivery details being returned from the server.&lt;/p&gt;
--- @param AttributeName [AttributeNameType] &lt;p&gt;The name of the attribute in the code delivery details type.&lt;/p&gt;
--- @param Destination [StringType] &lt;p&gt;The destination for the code delivery details.&lt;/p&gt;
--- @param DeliveryMedium [DeliveryMediumType] &lt;p&gt;The delivery medium (email message or phone number).&lt;/p&gt;
+-- <p>The type of code delivery details being returned from the server.</p>
+-- @param AttributeName [AttributeNameType] <p>The name of the attribute in the code delivery details type.</p>
+-- @param Destination [StringType] <p>The destination for the code delivery details.</p>
+-- @param DeliveryMedium [DeliveryMediumType] <p>The delivery medium (email message or phone number).</p>
 function M.CodeDeliveryDetailsType(AttributeName, Destination, DeliveryMedium, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CodeDeliveryDetailsType")
 	local t = { 
@@ -2906,8 +2906,8 @@ function M.AssertUserNotFoundException(struct)
 end
 
 --- Create a structure of type UserNotFoundException
--- &lt;p&gt;This exception is thrown when a user is not found.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when a user is not found.&lt;/p&gt;
+-- <p>This exception is thrown when a user is not found.</p>
+-- @param message [MessageType] <p>The message returned when a user is not found.</p>
 function M.UserNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserNotFoundException")
 	local t = { 
@@ -2930,9 +2930,9 @@ function M.AssertListDevicesResponse(struct)
 end
 
 --- Create a structure of type ListDevicesResponse
--- &lt;p&gt;Represents the response to list devices.&lt;/p&gt;
--- @param PaginationToken [SearchPaginationTokenType] &lt;p&gt;The pagination token for the list device response.&lt;/p&gt;
--- @param Devices [DeviceListType] &lt;p&gt;The devices returned in the list devices response.&lt;/p&gt;
+-- <p>Represents the response to list devices.</p>
+-- @param PaginationToken [SearchPaginationTokenType] <p>The pagination token for the list device response.</p>
+-- @param Devices [DeviceListType] <p>The devices returned in the list devices response.</p>
 function M.ListDevicesResponse(PaginationToken, Devices, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDevicesResponse")
 	local t = { 
@@ -2957,7 +2957,7 @@ end
 
 --- Create a structure of type GetIdentityProviderByIdentifierResponse
 --  
--- @param IdentityProvider [IdentityProviderType] &lt;p&gt;The identity provider object.&lt;/p&gt;
+-- @param IdentityProvider [IdentityProviderType] <p>The identity provider object.</p>
 -- Required parameter: IdentityProvider
 function M.GetIdentityProviderByIdentifierResponse(IdentityProvider, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityProviderByIdentifierResponse")
@@ -2983,11 +2983,11 @@ function M.AssertAdminRespondToAuthChallengeResponse(struct)
 end
 
 --- Create a structure of type AdminRespondToAuthChallengeResponse
--- &lt;p&gt;Responds to the authentication challenge, as an administrator.&lt;/p&gt;
--- @param AuthenticationResult [AuthenticationResultType] &lt;p&gt;The result returned by the server in response to the authentication request.&lt;/p&gt;
--- @param ChallengeName [ChallengeNameType] &lt;p&gt;The name of the challenge. For more information, see &lt;a href=&quot;API_AdminInitiateAuth.html&quot;&gt;AdminInitiateAuth&lt;/a&gt;.&lt;/p&gt;
--- @param ChallengeParameters [ChallengeParametersType] &lt;p&gt;The challenge parameters. For more information, see &lt;a href=&quot;API_AdminInitiateAuth.html&quot;&gt;AdminInitiateAuth&lt;/a&gt;.&lt;/p&gt;
--- @param Session [SessionType] &lt;p&gt;The session which should be passed both ways in challenge-response calls to the service. If the &lt;a href=&quot;API_InitiateAuth.html&quot;&gt;InitiateAuth&lt;/a&gt; or &lt;a href=&quot;API_RespondToAuthChallenge.html&quot;&gt;RespondToAuthChallenge&lt;/a&gt; API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next &lt;code&gt;RespondToAuthChallenge&lt;/code&gt; API call.&lt;/p&gt;
+-- <p>Responds to the authentication challenge, as an administrator.</p>
+-- @param AuthenticationResult [AuthenticationResultType] <p>The result returned by the server in response to the authentication request.</p>
+-- @param ChallengeName [ChallengeNameType] <p>The name of the challenge. For more information, see <a href="API_AdminInitiateAuth.html">AdminInitiateAuth</a>.</p>
+-- @param ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. For more information, see <a href="API_AdminInitiateAuth.html">AdminInitiateAuth</a>.</p>
+-- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If the <a href="API_InitiateAuth.html">InitiateAuth</a> or <a href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
 function M.AdminRespondToAuthChallengeResponse(AuthenticationResult, ChallengeName, ChallengeParameters, Session, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminRespondToAuthChallengeResponse")
 	local t = { 
@@ -3011,7 +3011,7 @@ function M.AssertUpdateUserPoolResponse(struct)
 end
 
 --- Create a structure of type UpdateUserPoolResponse
--- &lt;p&gt;Represents the response from the server when you make a request to update the user pool.&lt;/p&gt;
+-- <p>Represents the response from the server when you make a request to update the user pool.</p>
 function M.UpdateUserPoolResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserPoolResponse")
 	local t = { 
@@ -3033,9 +3033,9 @@ function M.AssertListUserImportJobsResponse(struct)
 end
 
 --- Create a structure of type ListUserImportJobsResponse
--- &lt;p&gt;Represents the response from the server to the request to list the user import jobs.&lt;/p&gt;
--- @param UserImportJobs [UserImportJobsListType] &lt;p&gt;The user import jobs.&lt;/p&gt;
--- @param PaginationToken [PaginationKeyType] &lt;p&gt;An identifier that can be used to return the next set of user import jobs in the list.&lt;/p&gt;
+-- <p>Represents the response from the server to the request to list the user import jobs.</p>
+-- @param UserImportJobs [UserImportJobsListType] <p>The user import jobs.</p>
+-- @param PaginationToken [PaginationKeyType] <p>An identifier that can be used to return the next set of user import jobs in the list.</p>
 function M.ListUserImportJobsResponse(UserImportJobs, PaginationToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserImportJobsResponse")
 	local t = { 
@@ -3059,9 +3059,9 @@ function M.AssertListUserPoolsResponse(struct)
 end
 
 --- Create a structure of type ListUserPoolsResponse
--- &lt;p&gt;Represents the response to list user pools.&lt;/p&gt;
--- @param UserPools [UserPoolListType] &lt;p&gt;The user pools from the response to list users.&lt;/p&gt;
--- @param NextToken [PaginationKeyType] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
+-- <p>Represents the response to list user pools.</p>
+-- @param UserPools [UserPoolListType] <p>The user pools from the response to list users.</p>
+-- @param NextToken [PaginationKeyType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
 function M.ListUserPoolsResponse(UserPools, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserPoolsResponse")
 	local t = { 
@@ -3106,30 +3106,30 @@ function M.AssertUserPoolType(struct)
 end
 
 --- Create a structure of type UserPoolType
--- &lt;p&gt;A container for information about the user pool type.&lt;/p&gt;
--- @param AliasAttributes [AliasAttributesListType] &lt;p&gt;Specifies the attributes that are aliased in a user pool.&lt;/p&gt;
--- @param SchemaAttributes [SchemaAttributesListType] &lt;p&gt;A container with the schema attributes of a user pool.&lt;/p&gt;
--- @param EmailVerificationSubject [EmailVerificationSubjectType] &lt;p&gt;The subject of the email verification message.&lt;/p&gt;
--- @param MfaConfiguration [UserPoolMfaType] &lt;p&gt;Can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;OFF&lt;/code&gt; - MFA tokens are not required and cannot be specified during user registration.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ON&lt;/code&gt; - MFA tokens are required for all user registrations. You can only specify required when you are initially creating a user pool.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;OPTIONAL&lt;/code&gt; - Users have the option when registering to create an MFA token.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SmsAuthenticationMessage [SmsVerificationMessageType] &lt;p&gt;The contents of the SMS authentication message.&lt;/p&gt;
--- @param SmsConfiguration [SmsConfigurationType] &lt;p&gt;The SMS configuration.&lt;/p&gt;
--- @param AutoVerifiedAttributes [VerifiedAttributesListType] &lt;p&gt;Specifies the attributes that are auto-verified in a user pool.&lt;/p&gt;
--- @param LambdaConfig [LambdaConfigType] &lt;p&gt;A container for the AWS Lambda triggers associated with a user pool.&lt;/p&gt;
--- @param Status [StatusType] &lt;p&gt;The status of a user pool.&lt;/p&gt;
--- @param LastModifiedDate [DateType] &lt;p&gt;The date the user pool was last modified.&lt;/p&gt;
--- @param AdminCreateUserConfig [AdminCreateUserConfigType] &lt;p&gt;The configuration for &lt;code&gt;AdminCreateUser&lt;/code&gt; requests.&lt;/p&gt;
--- @param EmailConfiguration [EmailConfigurationType] &lt;p&gt;The email configuration.&lt;/p&gt;
--- @param SmsConfigurationFailure [StringType] &lt;p&gt;The reason why the SMS configuration cannot send the messages to your users.&lt;/p&gt;
--- @param Name [UserPoolNameType] &lt;p&gt;The name of the user pool.&lt;/p&gt;
--- @param EmailConfigurationFailure [StringType] &lt;p&gt;The reason why the email configuration cannot send the messages to your users.&lt;/p&gt;
--- @param Policies [UserPoolPolicyType] &lt;p&gt;A container for the policies associated with a user pool.&lt;/p&gt;
--- @param UserPoolTags [UserPoolTagsType] &lt;p&gt;The cost allocation tags for the user pool. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html&quot;&gt;Adding Cost Allocation Tags to Your User Pool&lt;/a&gt; &lt;/p&gt;
--- @param DeviceConfiguration [DeviceConfigurationType] &lt;p&gt;The device configuration.&lt;/p&gt;
--- @param SmsVerificationMessage [SmsVerificationMessageType] &lt;p&gt;The contents of the SMS verification message.&lt;/p&gt;
--- @param EmailVerificationMessage [EmailVerificationMessageType] &lt;p&gt;The contents of the email verification message.&lt;/p&gt;
--- @param CreationDate [DateType] &lt;p&gt;The date the user pool was created.&lt;/p&gt;
--- @param EstimatedNumberOfUsers [IntegerType] &lt;p&gt;A number estimating the size of the user pool.&lt;/p&gt;
--- @param Id [UserPoolIdType] &lt;p&gt;The ID of the user pool.&lt;/p&gt;
+-- <p>A container for information about the user pool type.</p>
+-- @param AliasAttributes [AliasAttributesListType] <p>Specifies the attributes that are aliased in a user pool.</p>
+-- @param SchemaAttributes [SchemaAttributesListType] <p>A container with the schema attributes of a user pool.</p>
+-- @param EmailVerificationSubject [EmailVerificationSubjectType] <p>The subject of the email verification message.</p>
+-- @param MfaConfiguration [UserPoolMfaType] <p>Can be one of the following values:</p> <ul> <li> <p> <code>OFF</code> - MFA tokens are not required and cannot be specified during user registration.</p> </li> <li> <p> <code>ON</code> - MFA tokens are required for all user registrations. You can only specify required when you are initially creating a user pool.</p> </li> <li> <p> <code>OPTIONAL</code> - Users have the option when registering to create an MFA token.</p> </li> </ul>
+-- @param SmsAuthenticationMessage [SmsVerificationMessageType] <p>The contents of the SMS authentication message.</p>
+-- @param SmsConfiguration [SmsConfigurationType] <p>The SMS configuration.</p>
+-- @param AutoVerifiedAttributes [VerifiedAttributesListType] <p>Specifies the attributes that are auto-verified in a user pool.</p>
+-- @param LambdaConfig [LambdaConfigType] <p>A container for the AWS Lambda triggers associated with a user pool.</p>
+-- @param Status [StatusType] <p>The status of a user pool.</p>
+-- @param LastModifiedDate [DateType] <p>The date the user pool was last modified.</p>
+-- @param AdminCreateUserConfig [AdminCreateUserConfigType] <p>The configuration for <code>AdminCreateUser</code> requests.</p>
+-- @param EmailConfiguration [EmailConfigurationType] <p>The email configuration.</p>
+-- @param SmsConfigurationFailure [StringType] <p>The reason why the SMS configuration cannot send the messages to your users.</p>
+-- @param Name [UserPoolNameType] <p>The name of the user pool.</p>
+-- @param EmailConfigurationFailure [StringType] <p>The reason why the email configuration cannot send the messages to your users.</p>
+-- @param Policies [UserPoolPolicyType] <p>A container for the policies associated with a user pool.</p>
+-- @param UserPoolTags [UserPoolTagsType] <p>The cost allocation tags for the user pool. For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html">Adding Cost Allocation Tags to Your User Pool</a> </p>
+-- @param DeviceConfiguration [DeviceConfigurationType] <p>The device configuration.</p>
+-- @param SmsVerificationMessage [SmsVerificationMessageType] <p>The contents of the SMS verification message.</p>
+-- @param EmailVerificationMessage [EmailVerificationMessageType] <p>The contents of the email verification message.</p>
+-- @param CreationDate [DateType] <p>The date the user pool was created.</p>
+-- @param EstimatedNumberOfUsers [IntegerType] <p>A number estimating the size of the user pool.</p>
+-- @param Id [UserPoolIdType] <p>The ID of the user pool.</p>
 function M.UserPoolType(AliasAttributes, SchemaAttributes, EmailVerificationSubject, MfaConfiguration, SmsAuthenticationMessage, SmsConfiguration, AutoVerifiedAttributes, LambdaConfig, Status, LastModifiedDate, AdminCreateUserConfig, EmailConfiguration, SmsConfigurationFailure, Name, EmailConfigurationFailure, Policies, UserPoolTags, DeviceConfiguration, SmsVerificationMessage, EmailVerificationMessage, CreationDate, EstimatedNumberOfUsers, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolType")
 	local t = { 
@@ -3178,10 +3178,10 @@ function M.AssertAdminForgetDeviceRequest(struct)
 end
 
 --- Create a structure of type AdminForgetDeviceRequest
--- &lt;p&gt;Sends the forgot device request, as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name.&lt;/p&gt;
--- @param DeviceKey [DeviceKeyType] &lt;p&gt;The device key.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- <p>Sends the forgot device request, as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name.</p>
+-- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: DeviceKey
@@ -3212,8 +3212,8 @@ end
 
 --- Create a structure of type DescribeIdentityProviderRequest
 --  
--- @param ProviderName [ProviderNameType] &lt;p&gt;The identity provider name.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ProviderName
 function M.DescribeIdentityProviderRequest(ProviderName, UserPoolId, ...)
@@ -3244,14 +3244,14 @@ function M.AssertSchemaAttributeType(struct)
 end
 
 --- Create a structure of type SchemaAttributeType
--- &lt;p&gt;Contains information about the schema attribute.&lt;/p&gt;
--- @param Name [CustomAttributeNameType] &lt;p&gt;A schema attribute of the name type.&lt;/p&gt;
--- @param NumberAttributeConstraints [NumberAttributeConstraintsType] &lt;p&gt;Specifies the constraints for an attribute of the number type.&lt;/p&gt;
--- @param StringAttributeConstraints [StringAttributeConstraintsType] &lt;p&gt;Specifies the constraints for an attribute of the string type.&lt;/p&gt;
--- @param DeveloperOnlyAttribute [BooleanType] &lt;p&gt;Specifies whether the attribute type is developer only.&lt;/p&gt;
--- @param Required [BooleanType] &lt;p&gt;Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.&lt;/p&gt;
--- @param AttributeDataType [AttributeDataType] &lt;p&gt;The attribute data type.&lt;/p&gt;
--- @param Mutable [BooleanType] &lt;p&gt;Specifies whether the attribute can be changed once it has been created.&lt;/p&gt;
+-- <p>Contains information about the schema attribute.</p>
+-- @param Name [CustomAttributeNameType] <p>A schema attribute of the name type.</p>
+-- @param NumberAttributeConstraints [NumberAttributeConstraintsType] <p>Specifies the constraints for an attribute of the number type.</p>
+-- @param StringAttributeConstraints [StringAttributeConstraintsType] <p>Specifies the constraints for an attribute of the string type.</p>
+-- @param DeveloperOnlyAttribute [BooleanType] <p>Specifies whether the attribute type is developer only.</p>
+-- @param Required [BooleanType] <p>Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.</p>
+-- @param AttributeDataType [AttributeDataType] <p>The attribute data type.</p>
+-- @param Mutable [BooleanType] <p>Specifies whether the attribute can be changed once it has been created.</p>
 function M.SchemaAttributeType(Name, NumberAttributeConstraints, StringAttributeConstraints, DeveloperOnlyAttribute, Required, AttributeDataType, Mutable, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SchemaAttributeType")
 	local t = { 
@@ -3284,10 +3284,10 @@ function M.AssertAdminSetUserSettingsRequest(struct)
 end
 
 --- Create a structure of type AdminSetUserSettingsRequest
--- &lt;p&gt;Represents the request to set user settings as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user for whom you wish to set user settings.&lt;/p&gt;
--- @param MFAOptions [MFAOptionListType] &lt;p&gt;Specifies the options for MFA (e.g., email or phone number).&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to set the user's settings, such as MFA options.&lt;/p&gt;
+-- <p>Represents the request to set user settings as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name of the user for whom you wish to set user settings.</p>
+-- @param MFAOptions [MFAOptionListType] <p>Specifies the options for MFA (e.g., email or phone number).</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to set the user's settings, such as MFA options.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: MFAOptions
@@ -3314,8 +3314,8 @@ function M.AssertAdminCreateUserResponse(struct)
 end
 
 --- Create a structure of type AdminCreateUserResponse
--- &lt;p&gt;Represents the response from the server to the request to create the user.&lt;/p&gt;
--- @param User [UserType] &lt;p&gt;The user returned in the request to create a new user.&lt;/p&gt;
+-- <p>Represents the response from the server to the request to create the user.</p>
+-- @param User [UserType] <p>The user returned in the request to create a new user.</p>
 function M.AdminCreateUserResponse(User, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminCreateUserResponse")
 	local t = { 
@@ -3336,7 +3336,7 @@ function M.AssertAddCustomAttributesResponse(struct)
 end
 
 --- Create a structure of type AddCustomAttributesResponse
--- &lt;p&gt;Represents the response from the server for the request to add custom attributes.&lt;/p&gt;
+-- <p>Represents the response from the server for the request to add custom attributes.</p>
 function M.AddCustomAttributesResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddCustomAttributesResponse")
 	local t = { 
@@ -3357,8 +3357,8 @@ function M.AssertCreateUserPoolResponse(struct)
 end
 
 --- Create a structure of type CreateUserPoolResponse
--- &lt;p&gt;Represents the response from the server for the request to create a user pool.&lt;/p&gt;
--- @param UserPool [UserPoolType] &lt;p&gt;A container for the user pool details.&lt;/p&gt;
+-- <p>Represents the response from the server for the request to create a user pool.</p>
+-- @param UserPool [UserPoolType] <p>A container for the user pool details.</p>
 function M.CreateUserPoolResponse(UserPool, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserPoolResponse")
 	local t = { 
@@ -3380,8 +3380,8 @@ function M.AssertInvalidUserPoolConfigurationException(struct)
 end
 
 --- Create a structure of type InvalidUserPoolConfigurationException
--- &lt;p&gt;This exception is thrown when the user pool configuration is invalid.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the user pool configuration is invalid.&lt;/p&gt;
+-- <p>This exception is thrown when the user pool configuration is invalid.</p>
+-- @param message [MessageType] <p>The message returned when the user pool configuration is invalid.</p>
 function M.InvalidUserPoolConfigurationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidUserPoolConfigurationException")
 	local t = { 
@@ -3404,8 +3404,8 @@ function M.AssertDeleteUserPoolRequest(struct)
 end
 
 --- Create a structure of type DeleteUserPoolRequest
--- &lt;p&gt;Represents the request to delete a user pool.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool you want to delete.&lt;/p&gt;
+-- <p>Represents the request to delete a user pool.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to delete.</p>
 -- Required parameter: UserPoolId
 function M.DeleteUserPoolRequest(UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserPoolRequest")
@@ -3429,9 +3429,9 @@ function M.AssertNewDeviceMetadataType(struct)
 end
 
 --- Create a structure of type NewDeviceMetadataType
--- &lt;p&gt;The new device metadata type.&lt;/p&gt;
--- @param DeviceKey [DeviceKeyType] &lt;p&gt;The device key.&lt;/p&gt;
--- @param DeviceGroupKey [StringType] &lt;p&gt;The device group key.&lt;/p&gt;
+-- <p>The new device metadata type.</p>
+-- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param DeviceGroupKey [StringType] <p>The device group key.</p>
 function M.NewDeviceMetadataType(DeviceKey, DeviceGroupKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NewDeviceMetadataType")
 	local t = { 
@@ -3456,9 +3456,9 @@ function M.AssertListUserPoolsRequest(struct)
 end
 
 --- Create a structure of type ListUserPoolsRequest
--- &lt;p&gt;Represents the request to list user pools.&lt;/p&gt;
--- @param NextToken [PaginationKeyType] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param MaxResults [PoolQueryLimitType] &lt;p&gt;The maximum number of results you want the request to return when listing the user pools.&lt;/p&gt;
+-- <p>Represents the request to list user pools.</p>
+-- @param NextToken [PaginationKeyType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param MaxResults [PoolQueryLimitType] <p>The maximum number of results you want the request to return when listing the user pools.</p>
 -- Required parameter: MaxResults
 function M.ListUserPoolsRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUserPoolsRequest")
@@ -3485,9 +3485,9 @@ function M.AssertAdminEnableUserRequest(struct)
 end
 
 --- Create a structure of type AdminEnableUserRequest
--- &lt;p&gt;Represents the request that enables the user as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user you wish to enable.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to enable the user.&lt;/p&gt;
+-- <p>Represents the request that enables the user as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name of the user you wish to enable.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to enable the user.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 function M.AdminEnableUserRequest(Username, UserPoolId, ...)
@@ -3512,8 +3512,8 @@ function M.AssertGetUserAttributeVerificationCodeResponse(struct)
 end
 
 --- Create a structure of type GetUserAttributeVerificationCodeResponse
--- &lt;p&gt;The verification code response returned by the server response to get the user attribute verification code.&lt;/p&gt;
--- @param CodeDeliveryDetails [CodeDeliveryDetailsType] &lt;p&gt;The code delivery details returned by the server in response to the request to get the user attribute verification code.&lt;/p&gt;
+-- <p>The verification code response returned by the server response to get the user attribute verification code.</p>
+-- @param CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server in response to the request to get the user attribute verification code.</p>
 function M.GetUserAttributeVerificationCodeResponse(CodeDeliveryDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUserAttributeVerificationCodeResponse")
 	local t = { 
@@ -3536,7 +3536,7 @@ end
 
 --- Create a structure of type DescribeUserPoolDomainResponse
 --  
--- @param DomainDescription [DomainDescriptionType] &lt;p&gt;A domain description object containing information about the domain.&lt;/p&gt;
+-- @param DomainDescription [DomainDescriptionType] <p>A domain description object containing information about the domain.</p>
 function M.DescribeUserPoolDomainResponse(DomainDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolDomainResponse")
 	local t = { 
@@ -3559,9 +3559,9 @@ function M.AssertDeviceSecretVerifierConfigType(struct)
 end
 
 --- Create a structure of type DeviceSecretVerifierConfigType
--- &lt;p&gt;The device verifier against which it will be authenticated.&lt;/p&gt;
--- @param Salt [StringType] &lt;p&gt;The salt.&lt;/p&gt;
--- @param PasswordVerifier [StringType] &lt;p&gt;The password verifier.&lt;/p&gt;
+-- <p>The device verifier against which it will be authenticated.</p>
+-- @param Salt [StringType] <p>The salt.</p>
+-- @param PasswordVerifier [StringType] <p>The password verifier.</p>
 function M.DeviceSecretVerifierConfigType(Salt, PasswordVerifier, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeviceSecretVerifierConfigType")
 	local t = { 
@@ -3586,9 +3586,9 @@ function M.AssertAttributeType(struct)
 end
 
 --- Create a structure of type AttributeType
--- &lt;p&gt;Specifies whether the attribute is standard or custom.&lt;/p&gt;
--- @param Name [AttributeNameType] &lt;p&gt;The name of the attribute.&lt;/p&gt;
--- @param Value [AttributeValueType] &lt;p&gt;The value of the attribute.&lt;/p&gt;
+-- <p>Specifies whether the attribute is standard or custom.</p>
+-- @param Name [AttributeNameType] <p>The name of the attribute.</p>
+-- @param Value [AttributeValueType] <p>The value of the attribute.</p>
 -- Required parameter: Name
 function M.AttributeType(Name, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttributeType")
@@ -3617,11 +3617,11 @@ function M.AssertConfirmDeviceRequest(struct)
 end
 
 --- Create a structure of type ConfirmDeviceRequest
--- &lt;p&gt;Confirms the device request.&lt;/p&gt;
--- @param DeviceSecretVerifierConfig [DeviceSecretVerifierConfigType] &lt;p&gt;The configuration of the device secret verifier.&lt;/p&gt;
--- @param DeviceName [DeviceNameType] &lt;p&gt;The device name.&lt;/p&gt;
--- @param DeviceKey [DeviceKeyType] &lt;p&gt;The device key.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token.&lt;/p&gt;
+-- <p>Confirms the device request.</p>
+-- @param DeviceSecretVerifierConfig [DeviceSecretVerifierConfigType] <p>The configuration of the device secret verifier.</p>
+-- @param DeviceName [DeviceNameType] <p>The device name.</p>
+-- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param AccessToken [TokenModelType] <p>The access token.</p>
 -- Required parameter: AccessToken
 -- Required parameter: DeviceKey
 function M.ConfirmDeviceRequest(DeviceSecretVerifierConfig, DeviceName, DeviceKey, AccessToken, ...)
@@ -3648,8 +3648,8 @@ function M.AssertDuplicateProviderException(struct)
 end
 
 --- Create a structure of type DuplicateProviderException
--- &lt;p&gt;This exception is thrown when the provider is already supported by the user pool.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;This exception is thrown when the provider is already supported by the user pool.&lt;/p&gt;
+-- <p>This exception is thrown when the provider is already supported by the user pool.</p>
+-- @param message [MessageType] <p>This exception is thrown when the provider is already supported by the user pool.</p>
 function M.DuplicateProviderException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateProviderException")
 	local t = { 
@@ -3675,9 +3675,9 @@ end
 
 --- Create a structure of type ListIdentityProvidersRequest
 --  
--- @param NextToken [PaginationKeyType] &lt;p&gt;A pagination token.&lt;/p&gt;
--- @param MaxResults [ListProvidersLimitType] &lt;p&gt;The maximum number of identity providers to return.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- @param NextToken [PaginationKeyType] <p>A pagination token.</p>
+-- @param MaxResults [ListProvidersLimitType] <p>The maximum number of identity providers to return.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 function M.ListIdentityProvidersRequest(NextToken, MaxResults, UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityProvidersRequest")
@@ -3703,8 +3703,8 @@ function M.AssertGlobalSignOutRequest(struct)
 end
 
 --- Create a structure of type GlobalSignOutRequest
--- &lt;p&gt;Represents the request to sign out all devices.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token.&lt;/p&gt;
+-- <p>Represents the request to sign out all devices.</p>
+-- @param AccessToken [TokenModelType] <p>The access token.</p>
 -- Required parameter: AccessToken
 function M.GlobalSignOutRequest(AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GlobalSignOutRequest")
@@ -3739,20 +3739,20 @@ function M.AssertUserImportJobType(struct)
 end
 
 --- Create a structure of type UserImportJobType
--- &lt;p&gt;The user import job type.&lt;/p&gt;
--- @param CompletionDate [DateType] &lt;p&gt;The date when the user import job was completed.&lt;/p&gt;
--- @param StartDate [DateType] &lt;p&gt;The date when the user import job was started.&lt;/p&gt;
--- @param Status [UserImportJobStatusType] &lt;p&gt;The status of the user import job. One of the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Created&lt;/code&gt; - The job was created but not started.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Pending&lt;/code&gt; - A transition state. You have started the job, but it has not begun importing users yet.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;InProgress&lt;/code&gt; - The job has started, and users are being imported.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Stopping&lt;/code&gt; - You have stopped the job, but the job has not stopped importing users yet.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Stopped&lt;/code&gt; - You have stopped the job, and the job has stopped importing users.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Succeeded&lt;/code&gt; - The job has completed successfully.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Failed&lt;/code&gt; - The job has stopped due to an error.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Expired&lt;/code&gt; - You created a job, but did not start the job within 24-48 hours. All data associated with the job was deleted, and the job cannot be started.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool that the users are being imported into.&lt;/p&gt;
--- @param ImportedUsers [LongType] &lt;p&gt;The number of users that were successfully imported.&lt;/p&gt;
--- @param SkippedUsers [LongType] &lt;p&gt;The number of users that were skipped.&lt;/p&gt;
--- @param JobName [UserImportJobNameType] &lt;p&gt;The job name for the user import job.&lt;/p&gt;
--- @param CompletionMessage [CompletionMessageType] &lt;p&gt;The message returned when the user import job is completed.&lt;/p&gt;
--- @param JobId [UserImportJobIdType] &lt;p&gt;The job ID for the user import job.&lt;/p&gt;
--- @param PreSignedUrl [PreSignedUrlType] &lt;p&gt;The pre-signed URL to be used to upload the &lt;code&gt;.csv&lt;/code&gt; file.&lt;/p&gt;
--- @param CloudWatchLogsRoleArn [ArnType] &lt;p&gt;The role ARN for the Amazon CloudWatch Logging role for the user import job. For more information, see &quot;Creating the CloudWatch Logs IAM Role&quot; in the Amazon Cognito Developer Guide.&lt;/p&gt;
--- @param FailedUsers [LongType] &lt;p&gt;The number of users that could not be imported.&lt;/p&gt;
--- @param CreationDate [DateType] &lt;p&gt;The date the user import job was created.&lt;/p&gt;
+-- <p>The user import job type.</p>
+-- @param CompletionDate [DateType] <p>The date when the user import job was completed.</p>
+-- @param StartDate [DateType] <p>The date when the user import job was started.</p>
+-- @param Status [UserImportJobStatusType] <p>The status of the user import job. One of the following:</p> <ul> <li> <p> <code>Created</code> - The job was created but not started.</p> </li> <li> <p> <code>Pending</code> - A transition state. You have started the job, but it has not begun importing users yet.</p> </li> <li> <p> <code>InProgress</code> - The job has started, and users are being imported.</p> </li> <li> <p> <code>Stopping</code> - You have stopped the job, but the job has not stopped importing users yet.</p> </li> <li> <p> <code>Stopped</code> - You have stopped the job, and the job has stopped importing users.</p> </li> <li> <p> <code>Succeeded</code> - The job has completed successfully.</p> </li> <li> <p> <code>Failed</code> - The job has stopped due to an error.</p> </li> <li> <p> <code>Expired</code> - You created a job, but did not start the job within 24-48 hours. All data associated with the job was deleted, and the job cannot be started.</p> </li> </ul>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param ImportedUsers [LongType] <p>The number of users that were successfully imported.</p>
+-- @param SkippedUsers [LongType] <p>The number of users that were skipped.</p>
+-- @param JobName [UserImportJobNameType] <p>The job name for the user import job.</p>
+-- @param CompletionMessage [CompletionMessageType] <p>The message returned when the user import job is completed.</p>
+-- @param JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
+-- @param PreSignedUrl [PreSignedUrlType] <p>The pre-signed URL to be used to upload the <code>.csv</code> file.</p>
+-- @param CloudWatchLogsRoleArn [ArnType] <p>The role ARN for the Amazon CloudWatch Logging role for the user import job. For more information, see "Creating the CloudWatch Logs IAM Role" in the Amazon Cognito Developer Guide.</p>
+-- @param FailedUsers [LongType] <p>The number of users that could not be imported.</p>
+-- @param CreationDate [DateType] <p>The date the user import job was created.</p>
 function M.UserImportJobType(CompletionDate, StartDate, Status, UserPoolId, ImportedUsers, SkippedUsers, JobName, CompletionMessage, JobId, PreSignedUrl, CloudWatchLogsRoleArn, FailedUsers, CreationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserImportJobType")
 	local t = { 
@@ -3786,8 +3786,8 @@ function M.AssertUnsupportedUserStateException(struct)
 end
 
 --- Create a structure of type UnsupportedUserStateException
--- &lt;p&gt;The request failed because the user is in an unsupported state.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the user is in an unsupported state.&lt;/p&gt;
+-- <p>The request failed because the user is in an unsupported state.</p>
+-- @param message [MessageType] <p>The message returned when the user is in an unsupported state.</p>
 function M.UnsupportedUserStateException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedUserStateException")
 	local t = { 
@@ -3812,9 +3812,9 @@ function M.AssertAddCustomAttributesRequest(struct)
 end
 
 --- Create a structure of type AddCustomAttributesRequest
--- &lt;p&gt;Represents the request to add custom attributes.&lt;/p&gt;
--- @param CustomAttributes [CustomAttributesListType] &lt;p&gt;An array of custom attributes, such as Mutable and Name.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to add custom attributes.&lt;/p&gt;
+-- <p>Represents the request to add custom attributes.</p>
+-- @param CustomAttributes [CustomAttributesListType] <p>An array of custom attributes, such as Mutable and Name.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to add custom attributes.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: CustomAttributes
 function M.AddCustomAttributesRequest(CustomAttributes, UserPoolId, ...)
@@ -3840,8 +3840,8 @@ function M.AssertAdminGetDeviceResponse(struct)
 end
 
 --- Create a structure of type AdminGetDeviceResponse
--- &lt;p&gt;Gets the device response, as an administrator.&lt;/p&gt;
--- @param Device [DeviceType] &lt;p&gt;The device.&lt;/p&gt;
+-- <p>Gets the device response, as an administrator.</p>
+-- @param Device [DeviceType] <p>The device.</p>
 -- Required parameter: Device
 function M.AdminGetDeviceResponse(Device, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminGetDeviceResponse")
@@ -3880,23 +3880,23 @@ function M.AssertCreateUserPoolRequest(struct)
 end
 
 --- Create a structure of type CreateUserPoolRequest
--- &lt;p&gt;Represents the request to create a user pool.&lt;/p&gt;
--- @param AliasAttributes [AliasAttributesListType] &lt;p&gt;Attributes supported as an alias for this user pool. Possible values: &lt;b&gt;phone_number&lt;/b&gt;, &lt;b&gt;email&lt;/b&gt;, or &lt;b&gt;preferred_username&lt;/b&gt;.&lt;/p&gt;
--- @param SmsVerificationMessage [SmsVerificationMessageType] &lt;p&gt;A string representing the SMS verification message.&lt;/p&gt;
--- @param EmailVerificationSubject [EmailVerificationSubjectType] &lt;p&gt;A string representing the email verification subject.&lt;/p&gt;
--- @param MfaConfiguration [UserPoolMfaType] &lt;p&gt;Specifies MFA configuration details.&lt;/p&gt;
--- @param Schema [SchemaAttributesListType] &lt;p&gt;An array of schema attributes for the new user pool. These attributes can be standard or custom attributes.&lt;/p&gt;
--- @param EmailVerificationMessage [EmailVerificationMessageType] &lt;p&gt;A string representing the email verification message.&lt;/p&gt;
--- @param PoolName [UserPoolNameType] &lt;p&gt;A string used to name the user pool.&lt;/p&gt;
--- @param SmsAuthenticationMessage [SmsVerificationMessageType] &lt;p&gt;A string representing the SMS authentication message.&lt;/p&gt;
--- @param SmsConfiguration [SmsConfigurationType] &lt;p&gt;The SMS configuration.&lt;/p&gt;
--- @param EmailConfiguration [EmailConfigurationType] &lt;p&gt;The email configuration.&lt;/p&gt;
--- @param AutoVerifiedAttributes [VerifiedAttributesListType] &lt;p&gt;The attributes to be auto-verified. Possible values: &lt;b&gt;email&lt;/b&gt;, &lt;b&gt;phone_number&lt;/b&gt;.&lt;/p&gt;
--- @param Policies [UserPoolPolicyType] &lt;p&gt;The policies associated with the new user pool.&lt;/p&gt;
--- @param UserPoolTags [UserPoolTagsType] &lt;p&gt;The cost allocation tags for the user pool. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html&quot;&gt;Adding Cost Allocation Tags to Your User Pool&lt;/a&gt; &lt;/p&gt;
--- @param AdminCreateUserConfig [AdminCreateUserConfigType] &lt;p&gt;The configuration for &lt;code&gt;AdminCreateUser&lt;/code&gt; requests.&lt;/p&gt;
--- @param DeviceConfiguration [DeviceConfigurationType] &lt;p&gt;The device configuration.&lt;/p&gt;
--- @param LambdaConfig [LambdaConfigType] &lt;p&gt;The Lambda trigger configuration information for the new user pool.&lt;/p&gt;
+-- <p>Represents the request to create a user pool.</p>
+-- @param AliasAttributes [AliasAttributesListType] <p>Attributes supported as an alias for this user pool. Possible values: <b>phone_number</b>, <b>email</b>, or <b>preferred_username</b>.</p>
+-- @param SmsVerificationMessage [SmsVerificationMessageType] <p>A string representing the SMS verification message.</p>
+-- @param EmailVerificationSubject [EmailVerificationSubjectType] <p>A string representing the email verification subject.</p>
+-- @param MfaConfiguration [UserPoolMfaType] <p>Specifies MFA configuration details.</p>
+-- @param Schema [SchemaAttributesListType] <p>An array of schema attributes for the new user pool. These attributes can be standard or custom attributes.</p>
+-- @param EmailVerificationMessage [EmailVerificationMessageType] <p>A string representing the email verification message.</p>
+-- @param PoolName [UserPoolNameType] <p>A string used to name the user pool.</p>
+-- @param SmsAuthenticationMessage [SmsVerificationMessageType] <p>A string representing the SMS authentication message.</p>
+-- @param SmsConfiguration [SmsConfigurationType] <p>The SMS configuration.</p>
+-- @param EmailConfiguration [EmailConfigurationType] <p>The email configuration.</p>
+-- @param AutoVerifiedAttributes [VerifiedAttributesListType] <p>The attributes to be auto-verified. Possible values: <b>email</b>, <b>phone_number</b>.</p>
+-- @param Policies [UserPoolPolicyType] <p>The policies associated with the new user pool.</p>
+-- @param UserPoolTags [UserPoolTagsType] <p>The cost allocation tags for the user pool. For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html">Adding Cost Allocation Tags to Your User Pool</a> </p>
+-- @param AdminCreateUserConfig [AdminCreateUserConfigType] <p>The configuration for <code>AdminCreateUser</code> requests.</p>
+-- @param DeviceConfiguration [DeviceConfigurationType] <p>The device configuration.</p>
+-- @param LambdaConfig [LambdaConfigType] <p>The Lambda trigger configuration information for the new user pool.</p>
 -- Required parameter: PoolName
 function M.CreateUserPoolRequest(AliasAttributes, SmsVerificationMessage, EmailVerificationSubject, MfaConfiguration, Schema, EmailVerificationMessage, PoolName, SmsAuthenticationMessage, SmsConfiguration, EmailConfiguration, AutoVerifiedAttributes, Policies, UserPoolTags, AdminCreateUserConfig, DeviceConfiguration, LambdaConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserPoolRequest")
@@ -3936,10 +3936,10 @@ function M.AssertAdminCreateUserConfigType(struct)
 end
 
 --- Create a structure of type AdminCreateUserConfigType
--- &lt;p&gt;The type of configuration for creating a new user profile.&lt;/p&gt;
--- @param InviteMessageTemplate [MessageTemplateType] &lt;p&gt;The message template to be used for the welcome message to new users.&lt;/p&gt;
--- @param UnusedAccountValidityDays [AdminCreateUserUnusedAccountValidityDaysType] &lt;p&gt;The user account expiration limit, in days, after which the account is no longer usable. To reset the account after that time limit, you must call &lt;code&gt;AdminCreateUser&lt;/code&gt; again, specifying &lt;code&gt;&quot;RESEND&quot;&lt;/code&gt; for the &lt;code&gt;MessageAction&lt;/code&gt; parameter. The default value for this parameter is 7.&lt;/p&gt;
--- @param AllowAdminCreateUserOnly [BooleanType] &lt;p&gt;Set to &lt;code&gt;True&lt;/code&gt; if only the administrator is allowed to create user profiles. Set to &lt;code&gt;False&lt;/code&gt; if users can sign themselves up via an app.&lt;/p&gt;
+-- <p>The type of configuration for creating a new user profile.</p>
+-- @param InviteMessageTemplate [MessageTemplateType] <p>The message template to be used for the welcome message to new users.</p>
+-- @param UnusedAccountValidityDays [AdminCreateUserUnusedAccountValidityDaysType] <p>The user account expiration limit, in days, after which the account is no longer usable. To reset the account after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the <code>MessageAction</code> parameter. The default value for this parameter is 7.</p>
+-- @param AllowAdminCreateUserOnly [BooleanType] <p>Set to <code>True</code> if only the administrator is allowed to create user profiles. Set to <code>False</code> if users can sign themselves up via an app.</p>
 function M.AdminCreateUserConfigType(InviteMessageTemplate, UnusedAccountValidityDays, AllowAdminCreateUserOnly, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminCreateUserConfigType")
 	local t = { 
@@ -3962,7 +3962,7 @@ function M.AssertVerifyUserAttributeResponse(struct)
 end
 
 --- Create a structure of type VerifyUserAttributeResponse
--- &lt;p&gt;A container representing the response from the server from the request to verify user attributes.&lt;/p&gt;
+-- <p>A container representing the response from the server from the request to verify user attributes.</p>
 function M.VerifyUserAttributeResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VerifyUserAttributeResponse")
 	local t = { 
@@ -3991,12 +3991,12 @@ function M.AssertConfirmForgotPasswordRequest(struct)
 end
 
 --- Create a structure of type ConfirmForgotPasswordRequest
--- &lt;p&gt;The request representing the confirmation for a password reset.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user for whom you want to enter a code to retrieve a forgotten password.&lt;/p&gt;
--- @param Password [PasswordType] &lt;p&gt;The password sent by a user's request to retrieve a forgotten password.&lt;/p&gt;
--- @param ConfirmationCode [ConfirmationCodeType] &lt;p&gt;The confirmation code sent by a user's request to retrieve a forgotten password. For more information, see &lt;a href=&quot;API_ForgotPassword.html&quot;&gt;ForgotPassword&lt;/a&gt; &lt;/p&gt;
--- @param SecretHash [SecretHashType] &lt;p&gt;A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The ID of the client associated with the user pool.&lt;/p&gt;
+-- <p>The request representing the confirmation for a password reset.</p>
+-- @param Username [UsernameType] <p>The user name of the user for whom you want to enter a code to retrieve a forgotten password.</p>
+-- @param Password [PasswordType] <p>The password sent by a user's request to retrieve a forgotten password.</p>
+-- @param ConfirmationCode [ConfirmationCodeType] <p>The confirmation code sent by a user's request to retrieve a forgotten password. For more information, see <a href="API_ForgotPassword.html">ForgotPassword</a> </p>
+-- @param SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+-- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
 -- Required parameter: ClientId
 -- Required parameter: Username
 -- Required parameter: ConfirmationCode
@@ -4031,12 +4031,12 @@ function M.AssertListUsersRequest(struct)
 end
 
 --- Create a structure of type ListUsersRequest
--- &lt;p&gt;Represents the request to list users.&lt;/p&gt;
--- @param PaginationToken [SearchPaginationTokenType] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param Filter [UserFilterType] &lt;p&gt;A filter string of the form &quot;&lt;i&gt;AttributeName&lt;/i&gt; &lt;i&gt;Filter-Type&lt;/i&gt; &quot;&lt;i&gt;AttributeValue&lt;/i&gt;&quot;&quot;. Quotation marks within the filter string must be escaped using the backslash (\) character. For example, &quot;&lt;code&gt;family_name&lt;/code&gt; = \&quot;Reddy\&quot;&quot;.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;AttributeName&lt;/i&gt;: The name of the attribute to search for. You can only search for one attribute at a time.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;Filter-Type&lt;/i&gt;: For an exact match, use =, for example, &quot;&lt;code&gt;given_name&lt;/code&gt; = \&quot;Jon\&quot;&quot;. For a prefix (&quot;starts with&quot;) match, use ^=, for example, &quot;&lt;code&gt;given_name&lt;/code&gt; ^= \&quot;Jon\&quot;&quot;. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;i&gt;AttributeValue&lt;/i&gt;: The attribute value that must be matched for each user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the filter string is empty, &lt;code&gt;ListUsers&lt;/code&gt; returns all users in the user pool.&lt;/p&gt; &lt;p&gt;You can only search for the following standard attributes:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;username&lt;/code&gt; (case-sensitive)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;email&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;phone_number&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;name&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;given_name&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;family_name&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;preferred_username&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;cognito:user_status&lt;/code&gt; (called &lt;b&gt;Enabled&lt;/b&gt; in the Console) (case-sensitive)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;status&lt;/code&gt; (case-insensitive)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Custom attributes are not searchable.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api&quot;&gt;Searching for Users Using the ListUsers API&lt;/a&gt; and &lt;a href=&quot;http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples&quot;&gt;Examples of Using the ListUsers API&lt;/a&gt; in the &lt;i&gt;Amazon Cognito Developer Guide&lt;/i&gt;.&lt;/p&gt;
--- @param AttributesToGet [SearchedAttributeNamesListType] &lt;p&gt;An array of strings, where each string is the name of a user attribute to be returned for each user in the search results. If the array is empty, all attributes are returned.&lt;/p&gt;
--- @param Limit [QueryLimitType] &lt;p&gt;Maximum number of users to be returned.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool on which the search should be performed.&lt;/p&gt;
+-- <p>Represents the request to list users.</p>
+-- @param PaginationToken [SearchPaginationTokenType] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param Filter [UserFilterType] <p>A filter string of the form "<i>AttributeName</i> <i>Filter-Type</i> "<i>AttributeValue</i>"". Quotation marks within the filter string must be escaped using the backslash (\) character. For example, "<code>family_name</code> = \"Reddy\"".</p> <ul> <li> <p> <i>AttributeName</i>: The name of the attribute to search for. You can only search for one attribute at a time.</p> </li> <li> <p> <i>Filter-Type</i>: For an exact match, use =, for example, "<code>given_name</code> = \"Jon\"". For a prefix ("starts with") match, use ^=, for example, "<code>given_name</code> ^= \"Jon\"". </p> </li> <li> <p> <i>AttributeValue</i>: The attribute value that must be matched for each user.</p> </li> </ul> <p>If the filter string is empty, <code>ListUsers</code> returns all users in the user pool.</p> <p>You can only search for the following standard attributes:</p> <ul> <li> <p> <code>username</code> (case-sensitive)</p> </li> <li> <p> <code>email</code> </p> </li> <li> <p> <code>phone_number</code> </p> </li> <li> <p> <code>name</code> </p> </li> <li> <p> <code>given_name</code> </p> </li> <li> <p> <code>family_name</code> </p> </li> <li> <p> <code>preferred_username</code> </p> </li> <li> <p> <code>cognito:user_status</code> (called <b>Enabled</b> in the Console) (case-sensitive)</p> </li> <li> <p> <code>status</code> (case-insensitive)</p> </li> </ul> <p>Custom attributes are not searchable.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api">Searching for Users Using the ListUsers API</a> and <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples">Examples of Using the ListUsers API</a> in the <i>Amazon Cognito Developer Guide</i>.</p>
+-- @param AttributesToGet [SearchedAttributeNamesListType] <p>An array of strings, where each string is the name of a user attribute to be returned for each user in the search results. If the array is empty, all attributes are returned.</p>
+-- @param Limit [QueryLimitType] <p>Maximum number of users to be returned.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool on which the search should be performed.</p>
 -- Required parameter: UserPoolId
 function M.ListUsersRequest(PaginationToken, Filter, AttributesToGet, Limit, UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUsersRequest")
@@ -4062,7 +4062,7 @@ function M.AssertConfirmSignUpResponse(struct)
 end
 
 --- Create a structure of type ConfirmSignUpResponse
--- &lt;p&gt;Represents the response from the server for the registration confirmation.&lt;/p&gt;
+-- <p>Represents the response from the server for the registration confirmation.</p>
 function M.ConfirmSignUpResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmSignUpResponse")
 	local t = { 
@@ -4083,8 +4083,8 @@ function M.AssertDescribeUserPoolClientResponse(struct)
 end
 
 --- Create a structure of type DescribeUserPoolClientResponse
--- &lt;p&gt;Represents the response from the server from a request to describe the user pool client.&lt;/p&gt;
--- @param UserPoolClient [UserPoolClientType] &lt;p&gt;The user pool client from a server response to describe the user pool client.&lt;/p&gt;
+-- <p>Represents the response from the server from a request to describe the user pool client.</p>
+-- @param UserPoolClient [UserPoolClientType] <p>The user pool client from a server response to describe the user pool client.</p>
 function M.DescribeUserPoolClientResponse(UserPoolClient, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolClientResponse")
 	local t = { 
@@ -4105,7 +4105,7 @@ function M.AssertAdminConfirmSignUpResponse(struct)
 end
 
 --- Create a structure of type AdminConfirmSignUpResponse
--- &lt;p&gt;Represents the response from the server for the request to confirm registration.&lt;/p&gt;
+-- <p>Represents the response from the server for the request to confirm registration.</p>
 function M.AdminConfirmSignUpResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminConfirmSignUpResponse")
 	local t = { 
@@ -4129,9 +4129,9 @@ function M.AssertGetUserAttributeVerificationCodeRequest(struct)
 end
 
 --- Create a structure of type GetUserAttributeVerificationCodeRequest
--- &lt;p&gt;Represents the request to get user attribute verification.&lt;/p&gt;
--- @param AttributeName [AttributeNameType] &lt;p&gt;The attribute name returned by the server response to get the user attribute verification code.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token returned by the server response to get the user attribute verification code.&lt;/p&gt;
+-- <p>Represents the request to get user attribute verification.</p>
+-- @param AttributeName [AttributeNameType] <p>The attribute name returned by the server response to get the user attribute verification code.</p>
+-- @param AccessToken [TokenModelType] <p>The access token returned by the server response to get the user attribute verification code.</p>
 -- Required parameter: AccessToken
 -- Required parameter: AttributeName
 function M.GetUserAttributeVerificationCodeRequest(AttributeName, AccessToken, ...)
@@ -4158,10 +4158,10 @@ function M.AssertMessageTemplateType(struct)
 end
 
 --- Create a structure of type MessageTemplateType
--- &lt;p&gt;The message template structure.&lt;/p&gt;
--- @param EmailMessage [EmailVerificationMessageType] &lt;p&gt;The message template for email messages.&lt;/p&gt;
--- @param EmailSubject [EmailVerificationSubjectType] &lt;p&gt;The subject line for email messages.&lt;/p&gt;
--- @param SMSMessage [SmsVerificationMessageType] &lt;p&gt;The message template for SMS messages.&lt;/p&gt;
+-- <p>The message template structure.</p>
+-- @param EmailMessage [EmailVerificationMessageType] <p>The message template for email messages.</p>
+-- @param EmailSubject [EmailVerificationSubjectType] <p>The subject line for email messages.</p>
+-- @param SMSMessage [SmsVerificationMessageType] <p>The message template for SMS messages.</p>
 function M.MessageTemplateType(EmailMessage, EmailSubject, SMSMessage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MessageTemplateType")
 	local t = { 
@@ -4185,8 +4185,8 @@ function M.AssertConfirmDeviceResponse(struct)
 end
 
 --- Create a structure of type ConfirmDeviceResponse
--- &lt;p&gt;Confirms the device response.&lt;/p&gt;
--- @param UserConfirmationNecessary [BooleanType] &lt;p&gt;Indicates whether the user confirmation is necessary to confirm the device response.&lt;/p&gt;
+-- <p>Confirms the device response.</p>
+-- @param UserConfirmationNecessary [BooleanType] <p>Indicates whether the user confirmation is necessary to confirm the device response.</p>
 function M.ConfirmDeviceResponse(UserConfirmationNecessary, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmDeviceResponse")
 	local t = { 
@@ -4215,12 +4215,12 @@ function M.AssertAdminInitiateAuthRequest(struct)
 end
 
 --- Create a structure of type AdminInitiateAuthRequest
--- &lt;p&gt;Initiates the authorization request, as an administrator.&lt;/p&gt;
--- @param ClientMetadata [ClientMetadataType] &lt;p&gt;This is a random key-value pair map which can contain any key and will be passed to your PreAuthentication Lambda trigger as-is. It can be used to implement additional validations around authentication.&lt;/p&gt;
--- @param AuthParameters [AuthParametersType] &lt;p&gt;The authentication parameters. These are inputs corresponding to the &lt;code&gt;AuthFlow&lt;/code&gt; that you are invoking. The required values depend on the value of &lt;code&gt;AuthFlow&lt;/code&gt;:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;For &lt;code&gt;USER_SRP_AUTH&lt;/code&gt;: &lt;code&gt;USERNAME&lt;/code&gt; (required), &lt;code&gt;SRPA&lt;/code&gt; (required), &lt;code&gt;SECRET_HASH&lt;/code&gt; (required if the app client is configured with a client secret), &lt;code&gt;DEVICE_KEY&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For &lt;code&gt;REFRESH_TOKEN_AUTH/REFRESH_TOKEN&lt;/code&gt;: &lt;code&gt;USERNAME&lt;/code&gt; (required), &lt;code&gt;SECRET_HASH&lt;/code&gt; (required if the app client is configured with a client secret), &lt;code&gt;REFRESH_TOKEN&lt;/code&gt; (required), &lt;code&gt;DEVICE_KEY&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For &lt;code&gt;ADMIN_NO_SRP_AUTH&lt;/code&gt;: &lt;code&gt;USERNAME&lt;/code&gt; (required), &lt;code&gt;SECRET_HASH&lt;/code&gt; (if app client is configured with client secret), &lt;code&gt;PASSWORD&lt;/code&gt; (required), &lt;code&gt;DEVICE_KEY&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;For &lt;code&gt;CUSTOM_AUTH&lt;/code&gt;: &lt;code&gt;USERNAME&lt;/code&gt; (required), &lt;code&gt;SECRET_HASH&lt;/code&gt; (if app client is configured with client secret), &lt;code&gt;DEVICE_KEY&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param AuthFlow [AuthFlowType] &lt;p&gt;The authentication flow for this call to execute. The API action will depend on this value. For example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;REFRESH_TOKEN_AUTH&lt;/code&gt; will take in a valid refresh token and return new tokens.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;USER_SRP_AUTH&lt;/code&gt; will take in &lt;code&gt;USERNAME&lt;/code&gt; and &lt;code&gt;SRPA&lt;/code&gt; and return the SRP variables to be used for next challenge execution.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;USER_SRP_AUTH&lt;/code&gt;: Authentication flow for the Secure Remote Password (SRP) protocol.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;REFRESH_TOKEN_AUTH&lt;/code&gt;/&lt;code&gt;REFRESH_TOKEN&lt;/code&gt;: Authentication flow for refreshing the access token and ID token by supplying a valid refresh token.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CUSTOM_AUTH&lt;/code&gt;: Custom authentication flow.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ADMIN_NO_SRP_AUTH&lt;/code&gt;: Non-SRP authentication flow; you can pass in the USERNAME and PASSWORD directly if the flow is enabled for calling the app client.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The app client ID.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The ID of the Amazon Cognito user pool.&lt;/p&gt;
+-- <p>Initiates the authorization request, as an administrator.</p>
+-- @param ClientMetadata [ClientMetadataType] <p>This is a random key-value pair map which can contain any key and will be passed to your PreAuthentication Lambda trigger as-is. It can be used to implement additional validations around authentication.</p>
+-- @param AuthParameters [AuthParametersType] <p>The authentication parameters. These are inputs corresponding to the <code>AuthFlow</code> that you are invoking. The required values depend on the value of <code>AuthFlow</code>:</p> <ul> <li> <p>For <code>USER_SRP_AUTH</code>: <code>USERNAME</code> (required), <code>SRPA</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>REFRESH_TOKEN_AUTH/REFRESH_TOKEN</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (required if the app client is configured with a client secret), <code>REFRESH_TOKEN</code> (required), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>ADMIN_NO_SRP_AUTH</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (if app client is configured with client secret), <code>PASSWORD</code> (required), <code>DEVICE_KEY</code> </p> </li> <li> <p>For <code>CUSTOM_AUTH</code>: <code>USERNAME</code> (required), <code>SECRET_HASH</code> (if app client is configured with client secret), <code>DEVICE_KEY</code> </p> </li> </ul>
+-- @param AuthFlow [AuthFlowType] <p>The authentication flow for this call to execute. The API action will depend on this value. For example:</p> <ul> <li> <p> <code>REFRESH_TOKEN_AUTH</code> will take in a valid refresh token and return new tokens.</p> </li> <li> <p> <code>USER_SRP_AUTH</code> will take in <code>USERNAME</code> and <code>SRPA</code> and return the SRP variables to be used for next challenge execution.</p> </li> </ul> <p>Valid values include:</p> <ul> <li> <p> <code>USER_SRP_AUTH</code>: Authentication flow for the Secure Remote Password (SRP) protocol.</p> </li> <li> <p> <code>REFRESH_TOKEN_AUTH</code>/<code>REFRESH_TOKEN</code>: Authentication flow for refreshing the access token and ID token by supplying a valid refresh token.</p> </li> <li> <p> <code>CUSTOM_AUTH</code>: Custom authentication flow.</p> </li> <li> <p> <code>ADMIN_NO_SRP_AUTH</code>: Non-SRP authentication flow; you can pass in the USERNAME and PASSWORD directly if the flow is enabled for calling the app client.</p> </li> </ul>
+-- @param ClientId [ClientIdType] <p>The app client ID.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The ID of the Amazon Cognito user pool.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientId
 -- Required parameter: AuthFlow
@@ -4254,11 +4254,11 @@ function M.AssertRespondToAuthChallengeRequest(struct)
 end
 
 --- Create a structure of type RespondToAuthChallengeRequest
--- &lt;p&gt;The request to respond to an authentication challenge.&lt;/p&gt;
--- @param ChallengeResponses [ChallengeResponsesType] &lt;p&gt;The challenge responses. These are inputs corresponding to the value of &lt;code&gt;ChallengeName&lt;/code&gt;, for example:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SMS_MFA&lt;/code&gt;: &lt;code&gt;SMS_MFA_CODE&lt;/code&gt;, &lt;code&gt;USERNAME&lt;/code&gt;, &lt;code&gt;SECRET_HASH&lt;/code&gt; (if app client is configured with client secret).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PASSWORD_VERIFIER&lt;/code&gt;: &lt;code&gt;PASSWORD_CLAIM_SIGNATURE&lt;/code&gt;, &lt;code&gt;PASSWORD_CLAIM_SECRET_BLOCK&lt;/code&gt;, &lt;code&gt;TIMESTAMP&lt;/code&gt;, &lt;code&gt;USERNAME&lt;/code&gt;, &lt;code&gt;SECRET_HASH&lt;/code&gt; (if app client is configured with client secret).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NEW_PASSWORD_REQUIRED&lt;/code&gt;: &lt;code&gt;NEW_PASSWORD&lt;/code&gt;, any other required attributes, &lt;code&gt;USERNAME&lt;/code&gt;, &lt;code&gt;SECRET_HASH&lt;/code&gt; (if app client is configured with client secret). &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ChallengeName [ChallengeNameType] &lt;p&gt;The challenge name. For more information, see &lt;a href=&quot;API_InitiateAuth.html&quot;&gt;InitiateAuth&lt;/a&gt;.&lt;/p&gt; &lt;p&gt; &lt;code&gt;ADMIN_NO_SRP_AUTH&lt;/code&gt; is not a valid value.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The app client ID.&lt;/p&gt;
--- @param Session [SessionType] &lt;p&gt;The session which should be passed both ways in challenge-response calls to the service. If &lt;code&gt;InitiateAuth&lt;/code&gt; or &lt;code&gt;RespondToAuthChallenge&lt;/code&gt; API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next &lt;code&gt;RespondToAuthChallenge&lt;/code&gt; API call.&lt;/p&gt;
+-- <p>The request to respond to an authentication challenge.</p>
+-- @param ChallengeResponses [ChallengeResponsesType] <p>The challenge responses. These are inputs corresponding to the value of <code>ChallengeName</code>, for example:</p> <ul> <li> <p> <code>SMS_MFA</code>: <code>SMS_MFA_CODE</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, <code>TIMESTAMP</code>, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret).</p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: <code>NEW_PASSWORD</code>, any other required attributes, <code>USERNAME</code>, <code>SECRET_HASH</code> (if app client is configured with client secret). </p> </li> </ul>
+-- @param ChallengeName [ChallengeNameType] <p>The challenge name. For more information, see <a href="API_InitiateAuth.html">InitiateAuth</a>.</p> <p> <code>ADMIN_NO_SRP_AUTH</code> is not a valid value.</p>
+-- @param ClientId [ClientIdType] <p>The app client ID.</p>
+-- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If <code>InitiateAuth</code> or <code>RespondToAuthChallenge</code> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
 -- Required parameter: ClientId
 -- Required parameter: ChallengeName
 function M.RespondToAuthChallengeRequest(ChallengeResponses, ChallengeName, ClientId, Session, ...)
@@ -4286,9 +4286,9 @@ function M.AssertGetCSVHeaderResponse(struct)
 end
 
 --- Create a structure of type GetCSVHeaderResponse
--- &lt;p&gt;Represents the response from the server to the request to get the header information for the .csv file for the user import job.&lt;/p&gt;
--- @param CSVHeader [ListOfStringTypes] &lt;p&gt;The header information for the .csv file for the user import job.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool that the users are to be imported into.&lt;/p&gt;
+-- <p>Represents the response from the server to the request to get the header information for the .csv file for the user import job.</p>
+-- @param CSVHeader [ListOfStringTypes] <p>The header information for the .csv file for the user import job.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are to be imported into.</p>
 function M.GetCSVHeaderResponse(CSVHeader, UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCSVHeaderResponse")
 	local t = { 
@@ -4319,13 +4319,13 @@ function M.AssertSignUpRequest(struct)
 end
 
 --- Create a structure of type SignUpRequest
--- &lt;p&gt;Represents the request to register a user.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user you wish to register.&lt;/p&gt;
--- @param ValidationData [AttributeListType] &lt;p&gt;The validation data in the request to register a user.&lt;/p&gt;
--- @param SecretHash [SecretHashType] &lt;p&gt;A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.&lt;/p&gt;
--- @param UserAttributes [AttributeListType] &lt;p&gt;An array of name-value pairs representing user attributes.&lt;/p&gt; &lt;p&gt;For custom attributes, you must prepend the &lt;code&gt;custom:&lt;/code&gt; prefix to the attribute name.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The ID of the client associated with the user pool.&lt;/p&gt;
--- @param Password [PasswordType] &lt;p&gt;The password of the user you wish to register.&lt;/p&gt;
+-- <p>Represents the request to register a user.</p>
+-- @param Username [UsernameType] <p>The user name of the user you wish to register.</p>
+-- @param ValidationData [AttributeListType] <p>The validation data in the request to register a user.</p>
+-- @param SecretHash [SecretHashType] <p>A keyed-hash message authentication code (HMAC) calculated using the secret key of a user pool client and username plus the client ID in the message.</p>
+-- @param UserAttributes [AttributeListType] <p>An array of name-value pairs representing user attributes.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param Password [PasswordType] <p>The password of the user you wish to register.</p>
 -- Required parameter: ClientId
 -- Required parameter: Username
 -- Required parameter: Password
@@ -4355,8 +4355,8 @@ function M.AssertInvalidSmsRoleAccessPolicyException(struct)
 end
 
 --- Create a structure of type InvalidSmsRoleAccessPolicyException
--- &lt;p&gt;This exception is returned when the role provided for SMS configuration does not have permission to publish using Amazon SNS.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message retuned when the invalid SMS role access policy exception is thrown.&lt;/p&gt;
+-- <p>This exception is returned when the role provided for SMS configuration does not have permission to publish using Amazon SNS.</p>
+-- @param message [MessageType] <p>The message retuned when the invalid SMS role access policy exception is thrown.</p>
 function M.InvalidSmsRoleAccessPolicyException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSmsRoleAccessPolicyException")
 	local t = { 
@@ -4378,8 +4378,8 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;This exception is thrown when the Amazon Cognito service cannot find the requested resource.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the Amazon Cognito service returns a resource not found exception.&lt;/p&gt;
+-- <p>This exception is thrown when the Amazon Cognito service cannot find the requested resource.</p>
+-- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns a resource not found exception.</p>
 function M.ResourceNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -4407,9 +4407,9 @@ end
 
 --- Create a structure of type AdminRemoveUserFromGroupRequest
 --  
--- @param Username [UsernameType] &lt;p&gt;The username for the user.&lt;/p&gt;
--- @param GroupName [GroupNameType] &lt;p&gt;The group name.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool.&lt;/p&gt;
+-- @param Username [UsernameType] <p>The username for the user.</p>
+-- @param GroupName [GroupNameType] <p>The group name.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: GroupName
@@ -4441,10 +4441,10 @@ function M.AssertVerifyUserAttributeRequest(struct)
 end
 
 --- Create a structure of type VerifyUserAttributeRequest
--- &lt;p&gt;Represents the request to verify user attributes.&lt;/p&gt;
--- @param Code [ConfirmationCodeType] &lt;p&gt;The verification code in the request to verify user attributes.&lt;/p&gt;
--- @param AttributeName [AttributeNameType] &lt;p&gt;The attribute name in the request to verify user attributes.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;Represents the access token of the request to verify user attributes.&lt;/p&gt;
+-- <p>Represents the request to verify user attributes.</p>
+-- @param Code [ConfirmationCodeType] <p>The verification code in the request to verify user attributes.</p>
+-- @param AttributeName [AttributeNameType] <p>The attribute name in the request to verify user attributes.</p>
+-- @param AccessToken [TokenModelType] <p>Represents the access token of the request to verify user attributes.</p>
 -- Required parameter: AccessToken
 -- Required parameter: AttributeName
 -- Required parameter: Code
@@ -4470,7 +4470,7 @@ function M.AssertAdminEnableUserResponse(struct)
 end
 
 --- Create a structure of type AdminEnableUserResponse
--- &lt;p&gt;Represents the response from the server for the request to enable a user as an administrator.&lt;/p&gt;
+-- <p>Represents the response from the server for the request to enable a user as an administrator.</p>
 function M.AdminEnableUserResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminEnableUserResponse")
 	local t = { 
@@ -4494,9 +4494,9 @@ function M.AssertDeleteUserAttributesRequest(struct)
 end
 
 --- Create a structure of type DeleteUserAttributesRequest
--- &lt;p&gt;Represents the request to delete user attributes.&lt;/p&gt;
--- @param UserAttributeNames [AttributeNameListType] &lt;p&gt;An array of strings representing the user attribute names you wish to delete.&lt;/p&gt; &lt;p&gt;For custom attributes, you must prepend the &lt;code&gt;custom:&lt;/code&gt; prefix to the attribute name.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token used in the request to delete user attributes.&lt;/p&gt;
+-- <p>Represents the request to delete user attributes.</p>
+-- @param UserAttributeNames [AttributeNameListType] <p>An array of strings representing the user attribute names you wish to delete.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p>
+-- @param AccessToken [TokenModelType] <p>The access token used in the request to delete user attributes.</p>
 -- Required parameter: UserAttributeNames
 -- Required parameter: AccessToken
 function M.DeleteUserAttributesRequest(UserAttributeNames, AccessToken, ...)
@@ -4521,8 +4521,8 @@ function M.AssertDescribeUserImportJobResponse(struct)
 end
 
 --- Create a structure of type DescribeUserImportJobResponse
--- &lt;p&gt;Represents the response from the server to the request to describe the user import job.&lt;/p&gt;
--- @param UserImportJob [UserImportJobType] &lt;p&gt;The job object that represents the user import job.&lt;/p&gt;
+-- <p>Represents the response from the server to the request to describe the user import job.</p>
+-- @param UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
 function M.DescribeUserImportJobResponse(UserImportJob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserImportJobResponse")
 	local t = { 
@@ -4547,11 +4547,11 @@ function M.AssertInitiateAuthResponse(struct)
 end
 
 --- Create a structure of type InitiateAuthResponse
--- &lt;p&gt;Initiates the authentication response.&lt;/p&gt;
--- @param AuthenticationResult [AuthenticationResultType] &lt;p&gt;The result of the authentication response. This is only returned if the caller does not need to pass another challenge. If the caller does need to pass another challenge before it gets tokens, &lt;code&gt;ChallengeName&lt;/code&gt;, &lt;code&gt;ChallengeParameters&lt;/code&gt;, and &lt;code&gt;Session&lt;/code&gt; are returned.&lt;/p&gt;
--- @param ChallengeName [ChallengeNameType] &lt;p&gt;The name of the challenge which you are responding to with this call. This is returned to you in the &lt;code&gt;AdminInitiateAuth&lt;/code&gt; response if you need to pass another challenge.&lt;/p&gt; &lt;p&gt;Valid values include the following. Note that all of these challenges require &lt;code&gt;USERNAME&lt;/code&gt; and &lt;code&gt;SECRET_HASH&lt;/code&gt; (if applicable) in the parameters.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SMS_MFA&lt;/code&gt;: Next challenge is to supply an &lt;code&gt;SMS_MFA_CODE&lt;/code&gt;, delivered via SMS.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PASSWORD_VERIFIER&lt;/code&gt;: Next challenge is to supply &lt;code&gt;PASSWORD_CLAIM_SIGNATURE&lt;/code&gt;, &lt;code&gt;PASSWORD_CLAIM_SECRET_BLOCK&lt;/code&gt;, and &lt;code&gt;TIMESTAMP&lt;/code&gt; after the client-side SRP calculations.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CUSTOM_CHALLENGE&lt;/code&gt;: This is returned if your custom authentication flow determines that the user should pass another challenge before tokens are issued.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DEVICE_SRP_AUTH&lt;/code&gt;: If device tracking was enabled on your user pool and the previous challenges were passed, this challenge is returned so that Amazon Cognito can start tracking this device.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DEVICE_PASSWORD_VERIFIER&lt;/code&gt;: Similar to &lt;code&gt;PASSWORD_VERIFIER&lt;/code&gt;, but for devices only.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NEW_PASSWORD_REQUIRED&lt;/code&gt;: For users which are required to change their passwords after successful first login. This challenge should be passed with &lt;code&gt;NEW_PASSWORD&lt;/code&gt; and any other required attributes.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ChallengeParameters [ChallengeParametersType] &lt;p&gt;The challenge parameters. These are returned to you in the &lt;code&gt;InitiateAuth&lt;/code&gt; response if you need to pass another challenge. The responses in this parameter should be used to compute inputs to the next call (&lt;code&gt;RespondToAuthChallenge&lt;/code&gt;). &lt;/p&gt; &lt;p&gt;All challenges require &lt;code&gt;USERNAME&lt;/code&gt; and &lt;code&gt;SECRET_HASH&lt;/code&gt; (if applicable).&lt;/p&gt;
--- @param Session [SessionType] &lt;p&gt;The session which should be passed both ways in challenge-response calls to the service. If the &lt;a href=&quot;API_InitiateAuth.html&quot;&gt;InitiateAuth&lt;/a&gt; or &lt;a href=&quot;API_RespondToAuthChallenge.html&quot;&gt;RespondToAuthChallenge&lt;/a&gt; API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next &lt;code&gt;RespondToAuthChallenge&lt;/code&gt; API call.&lt;/p&gt;
+-- <p>Initiates the authentication response.</p>
+-- @param AuthenticationResult [AuthenticationResultType] <p>The result of the authentication response. This is only returned if the caller does not need to pass another challenge. If the caller does need to pass another challenge before it gets tokens, <code>ChallengeName</code>, <code>ChallengeParameters</code>, and <code>Session</code> are returned.</p>
+-- @param ChallengeName [ChallengeNameType] <p>The name of the challenge which you are responding to with this call. This is returned to you in the <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p> <p>Valid values include the following. Note that all of these challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable) in the parameters.</p> <ul> <li> <p> <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.</p> </li> <li> <p> <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user should pass another challenge before tokens are issued.</p> </li> <li> <p> <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were passed, this challenge is returned so that Amazon Cognito can start tracking this device.</p> </li> <li> <p> <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.</p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.</p> </li> </ul>
+-- @param ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. These are returned to you in the <code>InitiateAuth</code> response if you need to pass another challenge. The responses in this parameter should be used to compute inputs to the next call (<code>RespondToAuthChallenge</code>). </p> <p>All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).</p>
+-- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If the <a href="API_InitiateAuth.html">InitiateAuth</a> or <a href="API_RespondToAuthChallenge.html">RespondToAuthChallenge</a> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>RespondToAuthChallenge</code> API call.</p>
 function M.InitiateAuthResponse(AuthenticationResult, ChallengeName, ChallengeParameters, Session, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InitiateAuthResponse")
 	local t = { 
@@ -4575,7 +4575,7 @@ function M.AssertAdminUpdateDeviceStatusResponse(struct)
 end
 
 --- Create a structure of type AdminUpdateDeviceStatusResponse
--- &lt;p&gt;The status response from the request to update the device, as an administrator.&lt;/p&gt;
+-- <p>The status response from the request to update the device, as an administrator.</p>
 function M.AdminUpdateDeviceStatusResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminUpdateDeviceStatusResponse")
 	local t = { 
@@ -4597,8 +4597,8 @@ function M.AssertDescribeUserPoolRequest(struct)
 end
 
 --- Create a structure of type DescribeUserPoolRequest
--- &lt;p&gt;Represents the request to describe the user pool.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool you want to describe.&lt;/p&gt;
+-- <p>Represents the request to describe the user pool.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to describe.</p>
 -- Required parameter: UserPoolId
 function M.DescribeUserPoolRequest(UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserPoolRequest")
@@ -4627,10 +4627,10 @@ end
 
 --- Create a structure of type ListUsersInGroupRequest
 --  
--- @param GroupName [GroupNameType] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param NextToken [PaginationKey] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param Limit [QueryLimitType] &lt;p&gt;The limit of the request to list users.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool.&lt;/p&gt;
+-- @param GroupName [GroupNameType] <p>The name of the group.</p>
+-- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param Limit [QueryLimitType] <p>The limit of the request to list users.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: GroupName
 function M.ListUsersInGroupRequest(GroupName, NextToken, Limit, UserPoolId, ...)
@@ -4657,8 +4657,8 @@ function M.AssertInvalidOAuthFlowException(struct)
 end
 
 --- Create a structure of type InvalidOAuthFlowException
--- &lt;p&gt;This exception is thrown when the specified OAuth flow is invalid.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;This exception is thrown when the specified OAuth flow is invalid.&lt;/p&gt;
+-- <p>This exception is thrown when the specified OAuth flow is invalid.</p>
+-- @param message [MessageType] <p>This exception is thrown when the specified OAuth flow is invalid.</p>
 function M.InvalidOAuthFlowException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOAuthFlowException")
 	local t = { 
@@ -4680,8 +4680,8 @@ function M.AssertPasswordResetRequiredException(struct)
 end
 
 --- Create a structure of type PasswordResetRequiredException
--- &lt;p&gt;This exception is thrown when a password reset is required.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when a password reset is required.&lt;/p&gt;
+-- <p>This exception is thrown when a password reset is required.</p>
+-- @param message [MessageType] <p>The message returned when a password reset is required.</p>
 function M.PasswordResetRequiredException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PasswordResetRequiredException")
 	local t = { 
@@ -4707,9 +4707,9 @@ end
 
 --- Create a structure of type ListGroupsRequest
 --  
--- @param NextToken [PaginationKey] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param Limit [QueryLimitType] &lt;p&gt;The limit of the request to list groups.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool.&lt;/p&gt;
+-- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param Limit [QueryLimitType] <p>The limit of the request to list groups.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: UserPoolId
 function M.ListGroupsRequest(NextToken, Limit, UserPoolId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsRequest")
@@ -4734,8 +4734,8 @@ function M.AssertTooManyRequestsException(struct)
 end
 
 --- Create a structure of type TooManyRequestsException
--- &lt;p&gt;This exception is thrown when the user has made too many requests for a given operation.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the Amazon Cognito service returns a too many requests exception.&lt;/p&gt;
+-- <p>This exception is thrown when the user has made too many requests for a given operation.</p>
+-- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns a too many requests exception.</p>
 function M.TooManyRequestsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
 	local t = { 
@@ -4757,8 +4757,8 @@ function M.AssertExpiredCodeException(struct)
 end
 
 --- Create a structure of type ExpiredCodeException
--- &lt;p&gt;This exception is thrown if a code has expired.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the expired code exception is thrown.&lt;/p&gt;
+-- <p>This exception is thrown if a code has expired.</p>
+-- @param message [MessageType] <p>The message returned when the expired code exception is thrown.</p>
 function M.ExpiredCodeException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredCodeException")
 	local t = { 
@@ -4783,9 +4783,9 @@ function M.AssertAdminDisableUserRequest(struct)
 end
 
 --- Create a structure of type AdminDisableUserRequest
--- &lt;p&gt;Represents the request to disable any user as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name of the user you wish to disable.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to disable the user.&lt;/p&gt;
+-- <p>Represents the request to disable any user as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name of the user you wish to disable.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to disable the user.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 function M.AdminDisableUserRequest(Username, UserPoolId, ...)
@@ -4820,12 +4820,12 @@ end
 
 --- Create a structure of type CreateIdentityProviderRequest
 --  
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
--- @param ProviderName [ProviderNameType] &lt;p&gt;The identity provider name.&lt;/p&gt;
--- @param ProviderType [IdentityProviderTypeType] &lt;p&gt;The identity provider type.&lt;/p&gt;
--- @param ProviderDetails [ProviderDetailsType] &lt;p&gt;The identity provider details, such as &lt;code&gt;MetadataURL&lt;/code&gt; and &lt;code&gt;MetadataFile&lt;/code&gt;.&lt;/p&gt;
--- @param IdpIdentifiers [IdpIdentifiersListType] &lt;p&gt;A list of identity provider identifiers.&lt;/p&gt;
--- @param AttributeMapping [AttributeMappingType] &lt;p&gt;A mapping of identity provider attributes to standard and custom user pool attributes.&lt;/p&gt;
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
+-- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param ProviderType [IdentityProviderTypeType] <p>The identity provider type.</p>
+-- @param ProviderDetails [ProviderDetailsType] <p>The identity provider details, such as <code>MetadataURL</code> and <code>MetadataFile</code>.</p>
+-- @param IdpIdentifiers [IdpIdentifiersListType] <p>A list of identity provider identifiers.</p>
+-- @param AttributeMapping [AttributeMappingType] <p>A mapping of identity provider attributes to standard and custom user pool attributes.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ProviderName
 -- Required parameter: ProviderType
@@ -4862,9 +4862,9 @@ end
 
 --- Create a structure of type AdminAddUserToGroupRequest
 --  
--- @param Username [UsernameType] &lt;p&gt;The username for the user.&lt;/p&gt;
--- @param GroupName [GroupNameType] &lt;p&gt;The group name.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool.&lt;/p&gt;
+-- @param Username [UsernameType] <p>The username for the user.</p>
+-- @param GroupName [GroupNameType] <p>The group name.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 -- Required parameter: GroupName
@@ -4890,7 +4890,7 @@ function M.AssertAdminUpdateUserAttributesResponse(struct)
 end
 
 --- Create a structure of type AdminUpdateUserAttributesResponse
--- &lt;p&gt;Represents the response from the server for the request to update user attributes as an administrator.&lt;/p&gt;
+-- <p>Represents the response from the server for the request to update user attributes as an administrator.</p>
 function M.AdminUpdateUserAttributesResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminUpdateUserAttributesResponse")
 	local t = { 
@@ -4925,21 +4925,21 @@ function M.AssertUpdateUserPoolRequest(struct)
 end
 
 --- Create a structure of type UpdateUserPoolRequest
--- &lt;p&gt;Represents the request to update the user pool.&lt;/p&gt;
--- @param SmsVerificationMessage [SmsVerificationMessageType] &lt;p&gt;A container with information about the SMS verification message.&lt;/p&gt;
--- @param EmailVerificationSubject [EmailVerificationSubjectType] &lt;p&gt;The subject of the email verification message.&lt;/p&gt;
--- @param MfaConfiguration [UserPoolMfaType] &lt;p&gt;Can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;OFF&lt;/code&gt; - MFA tokens are not required and cannot be specified during user registration.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ON&lt;/code&gt; - MFA tokens are required for all user registrations. You can only specify required when you are initially creating a user pool.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;OPTIONAL&lt;/code&gt; - Users have the option when registering to create an MFA token.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool you want to update.&lt;/p&gt;
--- @param EmailVerificationMessage [EmailVerificationMessageType] &lt;p&gt;The contents of the email verification message.&lt;/p&gt;
--- @param SmsAuthenticationMessage [SmsVerificationMessageType] &lt;p&gt;The contents of the SMS authentication message.&lt;/p&gt;
--- @param SmsConfiguration [SmsConfigurationType] &lt;p&gt;SMS configuration.&lt;/p&gt;
--- @param EmailConfiguration [EmailConfigurationType] &lt;p&gt;Email configuration.&lt;/p&gt;
--- @param AutoVerifiedAttributes [VerifiedAttributesListType] &lt;p&gt;The attributes that are automatically verified when the Amazon Cognito service makes a request to update user pools.&lt;/p&gt;
--- @param Policies [UserPoolPolicyType] &lt;p&gt;A container with the policies you wish to update in a user pool.&lt;/p&gt;
--- @param UserPoolTags [UserPoolTagsType] &lt;p&gt;The cost allocation tags for the user pool. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html&quot;&gt;Adding Cost Allocation Tags to Your User Pool&lt;/a&gt; &lt;/p&gt;
--- @param AdminCreateUserConfig [AdminCreateUserConfigType] &lt;p&gt;The configuration for &lt;code&gt;AdminCreateUser&lt;/code&gt; requests.&lt;/p&gt;
--- @param DeviceConfiguration [DeviceConfigurationType] &lt;p&gt;Device configuration.&lt;/p&gt;
--- @param LambdaConfig [LambdaConfigType] &lt;p&gt;The AWS Lambda configuration information from the request to update the user pool.&lt;/p&gt;
+-- <p>Represents the request to update the user pool.</p>
+-- @param SmsVerificationMessage [SmsVerificationMessageType] <p>A container with information about the SMS verification message.</p>
+-- @param EmailVerificationSubject [EmailVerificationSubjectType] <p>The subject of the email verification message.</p>
+-- @param MfaConfiguration [UserPoolMfaType] <p>Can be one of the following values:</p> <ul> <li> <p> <code>OFF</code> - MFA tokens are not required and cannot be specified during user registration.</p> </li> <li> <p> <code>ON</code> - MFA tokens are required for all user registrations. You can only specify required when you are initially creating a user pool.</p> </li> <li> <p> <code>OPTIONAL</code> - Users have the option when registering to create an MFA token.</p> </li> </ul>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to update.</p>
+-- @param EmailVerificationMessage [EmailVerificationMessageType] <p>The contents of the email verification message.</p>
+-- @param SmsAuthenticationMessage [SmsVerificationMessageType] <p>The contents of the SMS authentication message.</p>
+-- @param SmsConfiguration [SmsConfigurationType] <p>SMS configuration.</p>
+-- @param EmailConfiguration [EmailConfigurationType] <p>Email configuration.</p>
+-- @param AutoVerifiedAttributes [VerifiedAttributesListType] <p>The attributes that are automatically verified when the Amazon Cognito service makes a request to update user pools.</p>
+-- @param Policies [UserPoolPolicyType] <p>A container with the policies you wish to update in a user pool.</p>
+-- @param UserPoolTags [UserPoolTagsType] <p>The cost allocation tags for the user pool. For more information, see <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-cost-allocation-tagging.html">Adding Cost Allocation Tags to Your User Pool</a> </p>
+-- @param AdminCreateUserConfig [AdminCreateUserConfigType] <p>The configuration for <code>AdminCreateUser</code> requests.</p>
+-- @param DeviceConfiguration [DeviceConfigurationType] <p>Device configuration.</p>
+-- @param LambdaConfig [LambdaConfigType] <p>The AWS Lambda configuration information from the request to update the user pool.</p>
 -- Required parameter: UserPoolId
 function M.UpdateUserPoolRequest(SmsVerificationMessage, EmailVerificationSubject, MfaConfiguration, UserPoolId, EmailVerificationMessage, SmsAuthenticationMessage, SmsConfiguration, EmailConfiguration, AutoVerifiedAttributes, Policies, UserPoolTags, AdminCreateUserConfig, DeviceConfiguration, LambdaConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserPoolRequest")
@@ -4977,9 +4977,9 @@ function M.AssertSmsConfigurationType(struct)
 end
 
 --- Create a structure of type SmsConfigurationType
--- &lt;p&gt;The SMS configuration type.&lt;/p&gt;
--- @param ExternalId [StringType] &lt;p&gt;The external ID.&lt;/p&gt;
--- @param SnsCallerArn [ArnType] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) caller.&lt;/p&gt;
+-- <p>The SMS configuration type.</p>
+-- @param ExternalId [StringType] <p>The external ID.</p>
+-- @param SnsCallerArn [ArnType] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) caller.</p>
 -- Required parameter: SnsCallerArn
 function M.SmsConfigurationType(ExternalId, SnsCallerArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SmsConfigurationType")
@@ -5003,8 +5003,8 @@ function M.AssertUserLambdaValidationException(struct)
 end
 
 --- Create a structure of type UserLambdaValidationException
--- &lt;p&gt;This exception is thrown when the Amazon Cognito service encounters a user validation exception with the AWS Lambda service.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the Amazon Cognito service returns a user validation exception with the AWS Lambda service.&lt;/p&gt;
+-- <p>This exception is thrown when the Amazon Cognito service encounters a user validation exception with the AWS Lambda service.</p>
+-- @param message [MessageType] <p>The message returned when the Amazon Cognito service returns a user validation exception with the AWS Lambda service.</p>
 function M.UserLambdaValidationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserLambdaValidationException")
 	local t = { 
@@ -5026,8 +5026,8 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;This exception is thrown when the Amazon Cognito service encounters an invalid parameter.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the Amazon Cognito service throws an invalid parameter exception.&lt;/p&gt;
+-- <p>This exception is thrown when the Amazon Cognito service encounters an invalid parameter.</p>
+-- @param message [MessageType] <p>The message returned when the Amazon Cognito service throws an invalid parameter exception.</p>
 function M.InvalidParameterException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -5056,15 +5056,15 @@ function M.AssertLambdaConfigType(struct)
 end
 
 --- Create a structure of type LambdaConfigType
--- &lt;p&gt;Specifies the type of configuration for AWS Lambda triggers.&lt;/p&gt;
--- @param PostConfirmation [ArnType] &lt;p&gt;A post-confirmation AWS Lambda trigger.&lt;/p&gt;
--- @param CreateAuthChallenge [ArnType] &lt;p&gt;Creates an authentication challenge.&lt;/p&gt;
--- @param VerifyAuthChallengeResponse [ArnType] &lt;p&gt;Verifies the authentication challenge response.&lt;/p&gt;
--- @param PreAuthentication [ArnType] &lt;p&gt;A pre-authentication AWS Lambda trigger.&lt;/p&gt;
--- @param PostAuthentication [ArnType] &lt;p&gt;A post-authentication AWS Lambda trigger.&lt;/p&gt;
--- @param CustomMessage [ArnType] &lt;p&gt;A custom Message AWS Lambda trigger.&lt;/p&gt;
--- @param PreSignUp [ArnType] &lt;p&gt;A pre-registration AWS Lambda trigger.&lt;/p&gt;
--- @param DefineAuthChallenge [ArnType] &lt;p&gt;Defines the authentication challenge.&lt;/p&gt;
+-- <p>Specifies the type of configuration for AWS Lambda triggers.</p>
+-- @param PostConfirmation [ArnType] <p>A post-confirmation AWS Lambda trigger.</p>
+-- @param CreateAuthChallenge [ArnType] <p>Creates an authentication challenge.</p>
+-- @param VerifyAuthChallengeResponse [ArnType] <p>Verifies the authentication challenge response.</p>
+-- @param PreAuthentication [ArnType] <p>A pre-authentication AWS Lambda trigger.</p>
+-- @param PostAuthentication [ArnType] <p>A post-authentication AWS Lambda trigger.</p>
+-- @param CustomMessage [ArnType] <p>A custom Message AWS Lambda trigger.</p>
+-- @param PreSignUp [ArnType] <p>A pre-registration AWS Lambda trigger.</p>
+-- @param DefineAuthChallenge [ArnType] <p>Defines the authentication challenge.</p>
 function M.LambdaConfigType(PostConfirmation, CreateAuthChallenge, VerifyAuthChallengeResponse, PreAuthentication, PostAuthentication, CustomMessage, PreSignUp, DefineAuthChallenge, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LambdaConfigType")
 	local t = { 
@@ -5093,8 +5093,8 @@ function M.AssertStopUserImportJobResponse(struct)
 end
 
 --- Create a structure of type StopUserImportJobResponse
--- &lt;p&gt;Represents the response from the server to the request to stop the user import job.&lt;/p&gt;
--- @param UserImportJob [UserImportJobType] &lt;p&gt;The job object that represents the user import job.&lt;/p&gt;
+-- <p>Represents the response from the server to the request to stop the user import job.</p>
+-- @param UserImportJob [UserImportJobType] <p>The job object that represents the user import job.</p>
 function M.StopUserImportJobResponse(UserImportJob, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopUserImportJobResponse")
 	local t = { 
@@ -5119,9 +5119,9 @@ function M.AssertDescribeUserImportJobRequest(struct)
 end
 
 --- Create a structure of type DescribeUserImportJobRequest
--- &lt;p&gt;Represents the request to describe the user import job.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool that the users are being imported into.&lt;/p&gt;
--- @param JobId [UserImportJobIdType] &lt;p&gt;The job ID for the user import job.&lt;/p&gt;
+-- <p>Represents the request to describe the user import job.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: JobId
 function M.DescribeUserImportJobRequest(UserPoolId, JobId, ...)
@@ -5149,11 +5149,11 @@ function M.AssertProviderDescription(struct)
 end
 
 --- Create a structure of type ProviderDescription
--- &lt;p&gt;A container for identity provider details.&lt;/p&gt;
--- @param LastModifiedDate [DateType] &lt;p&gt;The date the provider was last modified.&lt;/p&gt;
--- @param ProviderType [IdentityProviderTypeType] &lt;p&gt;The identity provider type.&lt;/p&gt;
--- @param ProviderName [ProviderNameType] &lt;p&gt;The identity provider name.&lt;/p&gt;
--- @param CreationDate [DateType] &lt;p&gt;The date the provider was added to the user pool.&lt;/p&gt;
+-- <p>A container for identity provider details.</p>
+-- @param LastModifiedDate [DateType] <p>The date the provider was last modified.</p>
+-- @param ProviderType [IdentityProviderTypeType] <p>The identity provider type.</p>
+-- @param ProviderName [ProviderNameType] <p>The identity provider name.</p>
+-- @param CreationDate [DateType] <p>The date the provider was added to the user pool.</p>
 function M.ProviderDescription(LastModifiedDate, ProviderType, ProviderName, CreationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProviderDescription")
 	local t = { 
@@ -5179,9 +5179,9 @@ function M.AssertNumberAttributeConstraintsType(struct)
 end
 
 --- Create a structure of type NumberAttributeConstraintsType
--- &lt;p&gt;The minimum and maximum value of an attribute that is of the number data type.&lt;/p&gt;
--- @param MaxValue [StringType] &lt;p&gt;The maximum value of an attribute that is of the number data type.&lt;/p&gt;
--- @param MinValue [StringType] &lt;p&gt;The minimum value of an attribute that is of the number data type.&lt;/p&gt;
+-- <p>The minimum and maximum value of an attribute that is of the number data type.</p>
+-- @param MaxValue [StringType] <p>The maximum value of an attribute that is of the number data type.</p>
+-- @param MinValue [StringType] <p>The minimum value of an attribute that is of the number data type.</p>
 function M.NumberAttributeConstraintsType(MaxValue, MinValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NumberAttributeConstraintsType")
 	local t = { 
@@ -5204,8 +5204,8 @@ function M.AssertUserPoolTaggingException(struct)
 end
 
 --- Create a structure of type UserPoolTaggingException
--- &lt;p&gt;This exception is thrown when a user pool tag cannot be set or updated.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;This exception is thrown when a user pool tag cannot be set or updated.&lt;/p&gt;
+-- <p>This exception is thrown when a user pool tag cannot be set or updated.</p>
+-- @param message [MessageType] <p>This exception is thrown when a user pool tag cannot be set or updated.</p>
 function M.UserPoolTaggingException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolTaggingException")
 	local t = { 
@@ -5242,21 +5242,21 @@ function M.AssertCreateUserPoolClientRequest(struct)
 end
 
 --- Create a structure of type CreateUserPoolClientRequest
--- &lt;p&gt;Represents the request to create a user pool client.&lt;/p&gt;
--- @param GenerateSecret [GenerateSecret] &lt;p&gt;Boolean to specify whether you want to generate a secret for the user pool client being created.&lt;/p&gt;
--- @param AllowedOAuthScopes [ScopeListType] &lt;p&gt;A list of allowed &lt;code&gt;OAuth&lt;/code&gt; scopes. Currently supported values are &lt;code&gt;&quot;phone&quot;&lt;/code&gt;, &lt;code&gt;&quot;email&quot;&lt;/code&gt;, &lt;code&gt;&quot;openid&quot;&lt;/code&gt;, and &lt;code&gt;&quot;Cognito&quot;&lt;/code&gt;.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool where you want to create a user pool client.&lt;/p&gt;
--- @param AllowedOAuthFlowsUserPoolClient [BooleanType] &lt;p&gt;Set to &lt;code&gt;True&lt;/code&gt; if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.&lt;/p&gt;
--- @param LogoutURLs [LogoutURLsListType] &lt;p&gt;A list of allowed logout URLs for the identity providers.&lt;/p&gt;
--- @param DefaultRedirectURI [RedirectUrlType] &lt;p&gt;The default redirect URI. Must be in the &lt;code&gt;CallbackURLs&lt;/code&gt; list.&lt;/p&gt;
--- @param AllowedOAuthFlows [OAuthFlowsType] &lt;p&gt;Set to &lt;code&gt;code&lt;/code&gt; to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.&lt;/p&gt; &lt;p&gt;Set to &lt;code&gt;token&lt;/code&gt; to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.&lt;/p&gt;
--- @param CallbackURLs [CallbackURLsListType] &lt;p&gt;A list of allowed callback URLs for the identity providers.&lt;/p&gt;
--- @param ExplicitAuthFlows [ExplicitAuthFlowsListType] &lt;p&gt;The explicit authentication flows.&lt;/p&gt;
--- @param WriteAttributes [ClientPermissionListType] &lt;p&gt;The write attributes.&lt;/p&gt;
--- @param SupportedIdentityProviders [SupportedIdentityProvidersListType] &lt;p&gt;A list of provider names for the identity providers that are supported on this client.&lt;/p&gt;
--- @param ReadAttributes [ClientPermissionListType] &lt;p&gt;The read attributes.&lt;/p&gt;
--- @param RefreshTokenValidity [RefreshTokenValidityType] &lt;p&gt;The time limit, in days, after which the refresh token is no longer valid and cannot be used.&lt;/p&gt;
--- @param ClientName [ClientNameType] &lt;p&gt;The client name for the user pool client you would like to create.&lt;/p&gt;
+-- <p>Represents the request to create a user pool client.</p>
+-- @param GenerateSecret [GenerateSecret] <p>Boolean to specify whether you want to generate a secret for the user pool client being created.</p>
+-- @param AllowedOAuthScopes [ScopeListType] <p>A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>, <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool where you want to create a user pool client.</p>
+-- @param AllowedOAuthFlowsUserPoolClient [BooleanType] <p>Set to <code>True</code> if the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.</p>
+-- @param LogoutURLs [LogoutURLsListType] <p>A list of allowed logout URLs for the identity providers.</p>
+-- @param DefaultRedirectURI [RedirectUrlType] <p>The default redirect URI. Must be in the <code>CallbackURLs</code> list.</p>
+-- @param AllowedOAuthFlows [OAuthFlowsType] <p>Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response. This code can be exchanged for access tokens with the token endpoint.</p> <p>Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token, based on scopes) directly.</p>
+-- @param CallbackURLs [CallbackURLsListType] <p>A list of allowed callback URLs for the identity providers.</p>
+-- @param ExplicitAuthFlows [ExplicitAuthFlowsListType] <p>The explicit authentication flows.</p>
+-- @param WriteAttributes [ClientPermissionListType] <p>The write attributes.</p>
+-- @param SupportedIdentityProviders [SupportedIdentityProvidersListType] <p>A list of provider names for the identity providers that are supported on this client.</p>
+-- @param ReadAttributes [ClientPermissionListType] <p>The read attributes.</p>
+-- @param RefreshTokenValidity [RefreshTokenValidityType] <p>The time limit, in days, after which the refresh token is no longer valid and cannot be used.</p>
+-- @param ClientName [ClientNameType] <p>The client name for the user pool client you would like to create.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientName
 function M.CreateUserPoolClientRequest(GenerateSecret, AllowedOAuthScopes, UserPoolId, AllowedOAuthFlowsUserPoolClient, LogoutURLs, DefaultRedirectURI, AllowedOAuthFlows, CallbackURLs, ExplicitAuthFlows, WriteAttributes, SupportedIdentityProviders, ReadAttributes, RefreshTokenValidity, ClientName, ...)
@@ -5293,8 +5293,8 @@ function M.AssertPreconditionNotMetException(struct)
 end
 
 --- Create a structure of type PreconditionNotMetException
--- &lt;p&gt;This exception is thrown when a precondition is not met.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when a precondition is not met.&lt;/p&gt;
+-- <p>This exception is thrown when a precondition is not met.</p>
+-- @param message [MessageType] <p>The message returned when a precondition is not met.</p>
 function M.PreconditionNotMetException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PreconditionNotMetException")
 	local t = { 
@@ -5316,8 +5316,8 @@ function M.AssertResendConfirmationCodeResponse(struct)
 end
 
 --- Create a structure of type ResendConfirmationCodeResponse
--- &lt;p&gt;The response from the server when the Amazon Cognito Your User Pools service makes the request to resend a confirmation code.&lt;/p&gt;
--- @param CodeDeliveryDetails [CodeDeliveryDetailsType] &lt;p&gt;The code delivery details returned by the server in response to the request to resend the confirmation code.&lt;/p&gt;
+-- <p>The response from the server when the Amazon Cognito Your User Pools service makes the request to resend a confirmation code.</p>
+-- @param CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server in response to the request to resend the confirmation code.</p>
 function M.ResendConfirmationCodeResponse(CodeDeliveryDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResendConfirmationCodeResponse")
 	local t = { 
@@ -5340,9 +5340,9 @@ function M.AssertDeviceConfigurationType(struct)
 end
 
 --- Create a structure of type DeviceConfigurationType
--- &lt;p&gt;The type of configuration for the user pool's device tracking.&lt;/p&gt;
--- @param ChallengeRequiredOnNewDevice [BooleanType] &lt;p&gt;Indicates whether a challenge is required on a new device. Only applicable to a new device.&lt;/p&gt;
--- @param DeviceOnlyRememberedOnUserPrompt [BooleanType] &lt;p&gt;If true, a device is only remembered on user prompt.&lt;/p&gt;
+-- <p>The type of configuration for the user pool's device tracking.</p>
+-- @param ChallengeRequiredOnNewDevice [BooleanType] <p>Indicates whether a challenge is required on a new device. Only applicable to a new device.</p>
+-- @param DeviceOnlyRememberedOnUserPrompt [BooleanType] <p>If true, a device is only remembered on user prompt.</p>
 function M.DeviceConfigurationType(ChallengeRequiredOnNewDevice, DeviceOnlyRememberedOnUserPrompt, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeviceConfigurationType")
 	local t = { 
@@ -5364,7 +5364,7 @@ function M.AssertAdminDisableUserResponse(struct)
 end
 
 --- Create a structure of type AdminDisableUserResponse
--- &lt;p&gt;Represents the response received from the server to disable the user as an administrator.&lt;/p&gt;
+-- <p>Represents the response received from the server to disable the user as an administrator.</p>
 function M.AdminDisableUserResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminDisableUserResponse")
 	local t = { 
@@ -5386,8 +5386,8 @@ function M.AssertGetDeviceResponse(struct)
 end
 
 --- Create a structure of type GetDeviceResponse
--- &lt;p&gt;Gets the device response.&lt;/p&gt;
--- @param Device [DeviceType] &lt;p&gt;The device.&lt;/p&gt;
+-- <p>Gets the device response.</p>
+-- @param Device [DeviceType] <p>The device.</p>
 -- Required parameter: Device
 function M.GetDeviceResponse(Device, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceResponse")
@@ -5415,13 +5415,13 @@ function M.AssertAuthenticationResultType(struct)
 end
 
 --- Create a structure of type AuthenticationResultType
--- &lt;p&gt;The result type of the authentication result.&lt;/p&gt;
--- @param ExpiresIn [IntegerType] &lt;p&gt;The expiration period of the authentication result.&lt;/p&gt;
--- @param RefreshToken [TokenModelType] &lt;p&gt;The refresh token of the authentication result.&lt;/p&gt;
--- @param TokenType [StringType] &lt;p&gt;The token type of the authentication result.&lt;/p&gt;
--- @param NewDeviceMetadata [NewDeviceMetadataType] &lt;p&gt;The new device metadata from an authentication result.&lt;/p&gt;
--- @param IdToken [TokenModelType] &lt;p&gt;The ID token of the authentication result.&lt;/p&gt;
--- @param AccessToken [TokenModelType] &lt;p&gt;The access token of the authentication result.&lt;/p&gt;
+-- <p>The result type of the authentication result.</p>
+-- @param ExpiresIn [IntegerType] <p>The expiration period of the authentication result.</p>
+-- @param RefreshToken [TokenModelType] <p>The refresh token of the authentication result.</p>
+-- @param TokenType [StringType] <p>The token type of the authentication result.</p>
+-- @param NewDeviceMetadata [NewDeviceMetadataType] <p>The new device metadata from an authentication result.</p>
+-- @param IdToken [TokenModelType] <p>The ID token of the authentication result.</p>
+-- @param AccessToken [TokenModelType] <p>The access token of the authentication result.</p>
 function M.AuthenticationResultType(ExpiresIn, RefreshToken, TokenType, NewDeviceMetadata, IdToken, AccessToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AuthenticationResultType")
 	local t = { 
@@ -5447,7 +5447,7 @@ function M.AssertAdminSetUserSettingsResponse(struct)
 end
 
 --- Create a structure of type AdminSetUserSettingsResponse
--- &lt;p&gt;Represents the response from the server to set user settings as an administrator.&lt;/p&gt;
+-- <p>Represents the response from the server to set user settings as an administrator.</p>
 function M.AdminSetUserSettingsResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminSetUserSettingsResponse")
 	local t = { 
@@ -5471,9 +5471,9 @@ function M.AssertStopUserImportJobRequest(struct)
 end
 
 --- Create a structure of type StopUserImportJobRequest
--- &lt;p&gt;Represents the request to stop the user import job.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool that the users are being imported into.&lt;/p&gt;
--- @param JobId [UserImportJobIdType] &lt;p&gt;The job ID for the user import job.&lt;/p&gt;
+-- <p>Represents the request to stop the user import job.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool that the users are being imported into.</p>
+-- @param JobId [UserImportJobIdType] <p>The job ID for the user import job.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: JobId
 function M.StopUserImportJobRequest(UserPoolId, JobId, ...)
@@ -5498,8 +5498,8 @@ function M.AssertInvalidSmsRoleTrustRelationshipException(struct)
 end
 
 --- Create a structure of type InvalidSmsRoleTrustRelationshipException
--- &lt;p&gt;This exception is thrown when the trust relationship is invalid for the role provided for SMS configuration. This can happen if you do not trust &lt;b&gt;cognito-idp.amazonaws.com&lt;/b&gt; or the external ID provided in the role does not match what is provided in the SMS configuration for the user pool.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when the role trust relationship for the SMS message is invalid.&lt;/p&gt;
+-- <p>This exception is thrown when the trust relationship is invalid for the role provided for SMS configuration. This can happen if you do not trust <b>cognito-idp.amazonaws.com</b> or the external ID provided in the role does not match what is provided in the SMS configuration for the user pool.</p>
+-- @param message [MessageType] <p>The message returned when the role trust relationship for the SMS message is invalid.</p>
 function M.InvalidSmsRoleTrustRelationshipException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSmsRoleTrustRelationshipException")
 	local t = { 
@@ -5524,11 +5524,11 @@ function M.AssertAdminInitiateAuthResponse(struct)
 end
 
 --- Create a structure of type AdminInitiateAuthResponse
--- &lt;p&gt;Initiates the authentication response, as an administrator.&lt;/p&gt;
--- @param AuthenticationResult [AuthenticationResultType] &lt;p&gt;The result of the authentication response. This is only returned if the caller does not need to pass another challenge. If the caller does need to pass another challenge before it gets tokens, &lt;code&gt;ChallengeName&lt;/code&gt;, &lt;code&gt;ChallengeParameters&lt;/code&gt;, and &lt;code&gt;Session&lt;/code&gt; are returned.&lt;/p&gt;
--- @param ChallengeName [ChallengeNameType] &lt;p&gt;The name of the challenge which you are responding to with this call. This is returned to you in the &lt;code&gt;AdminInitiateAuth&lt;/code&gt; response if you need to pass another challenge.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SMS_MFA&lt;/code&gt;: Next challenge is to supply an &lt;code&gt;SMS_MFA_CODE&lt;/code&gt;, delivered via SMS.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PASSWORD_VERIFIER&lt;/code&gt;: Next challenge is to supply &lt;code&gt;PASSWORD_CLAIM_SIGNATURE&lt;/code&gt;, &lt;code&gt;PASSWORD_CLAIM_SECRET_BLOCK&lt;/code&gt;, and &lt;code&gt;TIMESTAMP&lt;/code&gt; after the client-side SRP calculations.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;CUSTOM_CHALLENGE&lt;/code&gt;: This is returned if your custom authentication flow determines that the user should pass another challenge before tokens are issued.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DEVICE_SRP_AUTH&lt;/code&gt;: If device tracking was enabled on your user pool and the previous challenges were passed, this challenge is returned so that Amazon Cognito can start tracking this device.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DEVICE_PASSWORD_VERIFIER&lt;/code&gt;: Similar to &lt;code&gt;PASSWORD_VERIFIER&lt;/code&gt;, but for devices only.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ADMIN_NO_SRP_AUTH&lt;/code&gt;: This is returned if you need to authenticate with &lt;code&gt;USERNAME&lt;/code&gt; and &lt;code&gt;PASSWORD&lt;/code&gt; directly. An app client must be enabled to use this flow.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NEW_PASSWORD_REQUIRED&lt;/code&gt;: For users which are required to change their passwords after successful first login. This challenge should be passed with &lt;code&gt;NEW_PASSWORD&lt;/code&gt; and any other required attributes.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ChallengeParameters [ChallengeParametersType] &lt;p&gt;The challenge parameters. These are returned to you in the &lt;code&gt;AdminInitiateAuth&lt;/code&gt; response if you need to pass another challenge. The responses in this parameter should be used to compute inputs to the next call (&lt;code&gt;AdminRespondToAuthChallenge&lt;/code&gt;).&lt;/p&gt; &lt;p&gt;All challenges require &lt;code&gt;USERNAME&lt;/code&gt; and &lt;code&gt;SECRET_HASH&lt;/code&gt; (if applicable).&lt;/p&gt; &lt;p&gt;The value of the &lt;code&gt;USER_IF_FOR_SRP&lt;/code&gt; attribute will be the user's actual username, not an alias (such as email address or phone number), even if you specified an alias in your call to &lt;code&gt;AdminInitiateAuth&lt;/code&gt;. This is because, in the &lt;code&gt;AdminRespondToAuthChallenge&lt;/code&gt; API &lt;code&gt;ChallengeResponses&lt;/code&gt;, the &lt;code&gt;USERNAME&lt;/code&gt; attribute cannot be an alias.&lt;/p&gt;
--- @param Session [SessionType] &lt;p&gt;The session which should be passed both ways in challenge-response calls to the service. If &lt;code&gt;AdminInitiateAuth&lt;/code&gt; or &lt;code&gt;AdminRespondToAuthChallenge&lt;/code&gt; API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next &lt;code&gt;AdminRespondToAuthChallenge&lt;/code&gt; API call.&lt;/p&gt;
+-- <p>Initiates the authentication response, as an administrator.</p>
+-- @param AuthenticationResult [AuthenticationResultType] <p>The result of the authentication response. This is only returned if the caller does not need to pass another challenge. If the caller does need to pass another challenge before it gets tokens, <code>ChallengeName</code>, <code>ChallengeParameters</code>, and <code>Session</code> are returned.</p>
+-- @param ChallengeName [ChallengeNameType] <p>The name of the challenge which you are responding to with this call. This is returned to you in the <code>AdminInitiateAuth</code> response if you need to pass another challenge.</p> <ul> <li> <p> <code>SMS_MFA</code>: Next challenge is to supply an <code>SMS_MFA_CODE</code>, delivered via SMS.</p> </li> <li> <p> <code>PASSWORD_VERIFIER</code>: Next challenge is to supply <code>PASSWORD_CLAIM_SIGNATURE</code>, <code>PASSWORD_CLAIM_SECRET_BLOCK</code>, and <code>TIMESTAMP</code> after the client-side SRP calculations.</p> </li> <li> <p> <code>CUSTOM_CHALLENGE</code>: This is returned if your custom authentication flow determines that the user should pass another challenge before tokens are issued.</p> </li> <li> <p> <code>DEVICE_SRP_AUTH</code>: If device tracking was enabled on your user pool and the previous challenges were passed, this challenge is returned so that Amazon Cognito can start tracking this device.</p> </li> <li> <p> <code>DEVICE_PASSWORD_VERIFIER</code>: Similar to <code>PASSWORD_VERIFIER</code>, but for devices only.</p> </li> <li> <p> <code>ADMIN_NO_SRP_AUTH</code>: This is returned if you need to authenticate with <code>USERNAME</code> and <code>PASSWORD</code> directly. An app client must be enabled to use this flow.</p> </li> <li> <p> <code>NEW_PASSWORD_REQUIRED</code>: For users which are required to change their passwords after successful first login. This challenge should be passed with <code>NEW_PASSWORD</code> and any other required attributes.</p> </li> </ul>
+-- @param ChallengeParameters [ChallengeParametersType] <p>The challenge parameters. These are returned to you in the <code>AdminInitiateAuth</code> response if you need to pass another challenge. The responses in this parameter should be used to compute inputs to the next call (<code>AdminRespondToAuthChallenge</code>).</p> <p>All challenges require <code>USERNAME</code> and <code>SECRET_HASH</code> (if applicable).</p> <p>The value of the <code>USER_IF_FOR_SRP</code> attribute will be the user's actual username, not an alias (such as email address or phone number), even if you specified an alias in your call to <code>AdminInitiateAuth</code>. This is because, in the <code>AdminRespondToAuthChallenge</code> API <code>ChallengeResponses</code>, the <code>USERNAME</code> attribute cannot be an alias.</p>
+-- @param Session [SessionType] <p>The session which should be passed both ways in challenge-response calls to the service. If <code>AdminInitiateAuth</code> or <code>AdminRespondToAuthChallenge</code> API call determines that the caller needs to go through another challenge, they return a session with other challenge parameters. This session should be passed as it is to the next <code>AdminRespondToAuthChallenge</code> API call.</p>
 function M.AdminInitiateAuthResponse(AuthenticationResult, ChallengeName, ChallengeParameters, Session, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminInitiateAuthResponse")
 	local t = { 
@@ -5552,7 +5552,7 @@ function M.AssertAdminResetUserPasswordResponse(struct)
 end
 
 --- Create a structure of type AdminResetUserPasswordResponse
--- &lt;p&gt;Represents the response from the server to reset a user password as an administrator.&lt;/p&gt;
+-- <p>Represents the response from the server to reset a user password as an administrator.</p>
 function M.AdminResetUserPasswordResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminResetUserPasswordResponse")
 	local t = { 
@@ -5572,7 +5572,7 @@ function M.AssertChangePasswordResponse(struct)
 end
 
 --- Create a structure of type ChangePasswordResponse
--- &lt;p&gt;The response from the server to the change password request.&lt;/p&gt;
+-- <p>The response from the server to the change password request.</p>
 function M.ChangePasswordResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ChangePasswordResponse")
 	local t = { 
@@ -5593,8 +5593,8 @@ function M.AssertForgotPasswordResponse(struct)
 end
 
 --- Create a structure of type ForgotPasswordResponse
--- &lt;p&gt;Respresents the response from the server regarding the request to reset a password.&lt;/p&gt;
--- @param CodeDeliveryDetails [CodeDeliveryDetailsType] &lt;p&gt;The code delivery details returned by the server in response to the request to reset a password.&lt;/p&gt;
+-- <p>Respresents the response from the server regarding the request to reset a password.</p>
+-- @param CodeDeliveryDetails [CodeDeliveryDetailsType] <p>The code delivery details returned by the server in response to the request to reset a password.</p>
 function M.ForgotPasswordResponse(CodeDeliveryDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ForgotPasswordResponse")
 	local t = { 
@@ -5620,8 +5620,8 @@ end
 
 --- Create a structure of type DeleteGroupRequest
 --  
--- @param GroupName [GroupNameType] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool.&lt;/p&gt;
+-- @param GroupName [GroupNameType] <p>The name of the group.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: GroupName
 -- Required parameter: UserPoolId
 function M.DeleteGroupRequest(GroupName, UserPoolId, ...)
@@ -5645,7 +5645,7 @@ function M.AssertUpdateDeviceStatusResponse(struct)
 end
 
 --- Create a structure of type UpdateDeviceStatusResponse
--- &lt;p&gt;The response to the request to update the device status.&lt;/p&gt;
+-- <p>The response to the request to update the device status.</p>
 function M.UpdateDeviceStatusResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDeviceStatusResponse")
 	local t = { 
@@ -5669,9 +5669,9 @@ function M.AssertDescribeUserPoolClientRequest(struct)
 end
 
 --- Create a structure of type DescribeUserPoolClientRequest
--- &lt;p&gt;Represents the request to describe a user pool client.&lt;/p&gt;
--- @param ClientId [ClientIdType] &lt;p&gt;The ID of the client associated with the user pool.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool you want to describe.&lt;/p&gt;
+-- <p>Represents the request to describe a user pool client.</p>
+-- @param ClientId [ClientIdType] <p>The ID of the client associated with the user pool.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool you want to describe.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: ClientId
 function M.DescribeUserPoolClientRequest(ClientId, UserPoolId, ...)
@@ -5701,11 +5701,11 @@ function M.AssertAdminListDevicesRequest(struct)
 end
 
 --- Create a structure of type AdminListDevicesRequest
--- &lt;p&gt;Represents the request to list devices, as an administrator.&lt;/p&gt;
--- @param Username [UsernameType] &lt;p&gt;The user name.&lt;/p&gt;
--- @param PaginationToken [SearchPaginationTokenType] &lt;p&gt;The pagination token.&lt;/p&gt;
--- @param Limit [QueryLimitType] &lt;p&gt;The limit of the devices request.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID.&lt;/p&gt;
+-- <p>Represents the request to list devices, as an administrator.</p>
+-- @param Username [UsernameType] <p>The user name.</p>
+-- @param PaginationToken [SearchPaginationTokenType] <p>The pagination token.</p>
+-- @param Limit [QueryLimitType] <p>The limit of the devices request.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID.</p>
 -- Required parameter: UserPoolId
 -- Required parameter: Username
 function M.AdminListDevicesRequest(Username, PaginationToken, Limit, UserPoolId, ...)
@@ -5734,8 +5734,8 @@ end
 
 --- Create a structure of type ListUsersInGroupResponse
 --  
--- @param NextToken [PaginationKey] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param Users [UsersListType] &lt;p&gt;The users returned in the request to list users.&lt;/p&gt;
+-- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param Users [UsersListType] <p>The users returned in the request to list users.</p>
 function M.ListUsersInGroupResponse(NextToken, Users, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListUsersInGroupResponse")
 	local t = { 
@@ -5763,13 +5763,13 @@ function M.AssertUserPoolDescriptionType(struct)
 end
 
 --- Create a structure of type UserPoolDescriptionType
--- &lt;p&gt;A user pool description.&lt;/p&gt;
--- @param Status [StatusType] &lt;p&gt;The user pool status in a user pool description.&lt;/p&gt;
--- @param Name [UserPoolNameType] &lt;p&gt;The name in a user pool description.&lt;/p&gt;
--- @param LastModifiedDate [DateType] &lt;p&gt;The date the user pool description was last modified.&lt;/p&gt;
--- @param CreationDate [DateType] &lt;p&gt;The date the user pool description was created.&lt;/p&gt;
--- @param Id [UserPoolIdType] &lt;p&gt;The ID in a user pool description.&lt;/p&gt;
--- @param LambdaConfig [LambdaConfigType] &lt;p&gt;The AWS Lambda configuration information in a user pool description.&lt;/p&gt;
+-- <p>A user pool description.</p>
+-- @param Status [StatusType] <p>The user pool status in a user pool description.</p>
+-- @param Name [UserPoolNameType] <p>The name in a user pool description.</p>
+-- @param LastModifiedDate [DateType] <p>The date the user pool description was last modified.</p>
+-- @param CreationDate [DateType] <p>The date the user pool description was created.</p>
+-- @param Id [UserPoolIdType] <p>The ID in a user pool description.</p>
+-- @param LambdaConfig [LambdaConfigType] <p>The AWS Lambda configuration information in a user pool description.</p>
 function M.UserPoolDescriptionType(Status, Name, LastModifiedDate, CreationDate, Id, LambdaConfig, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UserPoolDescriptionType")
 	local t = { 
@@ -5800,12 +5800,12 @@ function M.AssertDeviceType(struct)
 end
 
 --- Create a structure of type DeviceType
--- &lt;p&gt;The device type.&lt;/p&gt;
--- @param DeviceLastAuthenticatedDate [DateType] &lt;p&gt;The date in which the device was last authenticated.&lt;/p&gt;
--- @param DeviceKey [DeviceKeyType] &lt;p&gt;The device key.&lt;/p&gt;
--- @param DeviceAttributes [AttributeListType] &lt;p&gt;The device attributes.&lt;/p&gt;
--- @param DeviceCreateDate [DateType] &lt;p&gt;The creation date of the device.&lt;/p&gt;
--- @param DeviceLastModifiedDate [DateType] &lt;p&gt;The last modified date of the device.&lt;/p&gt;
+-- <p>The device type.</p>
+-- @param DeviceLastAuthenticatedDate [DateType] <p>The date in which the device was last authenticated.</p>
+-- @param DeviceKey [DeviceKeyType] <p>The device key.</p>
+-- @param DeviceAttributes [AttributeListType] <p>The device attributes.</p>
+-- @param DeviceCreateDate [DateType] <p>The creation date of the device.</p>
+-- @param DeviceLastModifiedDate [DateType] <p>The last modified date of the device.</p>
 function M.DeviceType(DeviceLastAuthenticatedDate, DeviceKey, DeviceAttributes, DeviceCreateDate, DeviceLastModifiedDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeviceType")
 	local t = { 
@@ -5837,10 +5837,10 @@ end
 
 --- Create a structure of type AdminListGroupsForUserRequest
 --  
--- @param Username [UsernameType] &lt;p&gt;The username for the user.&lt;/p&gt;
--- @param NextToken [PaginationKey] &lt;p&gt;An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.&lt;/p&gt;
--- @param Limit [QueryLimitType] &lt;p&gt;The limit of the request to list groups.&lt;/p&gt;
--- @param UserPoolId [UserPoolIdType] &lt;p&gt;The user pool ID for the user pool.&lt;/p&gt;
+-- @param Username [UsernameType] <p>The username for the user.</p>
+-- @param NextToken [PaginationKey] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- @param Limit [QueryLimitType] <p>The limit of the request to list groups.</p>
+-- @param UserPoolId [UserPoolIdType] <p>The user pool ID for the user pool.</p>
 -- Required parameter: Username
 -- Required parameter: UserPoolId
 function M.AdminListGroupsForUserRequest(Username, NextToken, Limit, UserPoolId, ...)
@@ -5867,8 +5867,8 @@ function M.AssertMFAMethodNotFoundException(struct)
 end
 
 --- Create a structure of type MFAMethodNotFoundException
--- &lt;p&gt;This exception is thrown when Amazon Cognito cannot find a multi-factor authentication (MFA) method.&lt;/p&gt;
--- @param message [MessageType] &lt;p&gt;The message returned when Amazon Cognito throws an MFA method not found exception.&lt;/p&gt;
+-- <p>This exception is thrown when Amazon Cognito cannot find a multi-factor authentication (MFA) method.</p>
+-- @param message [MessageType] <p>The message returned when Amazon Cognito throws an MFA method not found exception.</p>
 function M.MFAMethodNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MFAMethodNotFoundException")
 	local t = { 
@@ -5889,7 +5889,7 @@ function M.AssertAdminDeleteUserAttributesResponse(struct)
 end
 
 --- Create a structure of type AdminDeleteUserAttributesResponse
--- &lt;p&gt;Represents the response received from the server for a request to delete user attributes.&lt;/p&gt;
+-- <p>Represents the response received from the server for a request to delete user attributes.</p>
 function M.AdminDeleteUserAttributesResponse(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdminDeleteUserAttributesResponse")
 	local t = { 
@@ -5911,7 +5911,7 @@ end
 
 --- Create a structure of type CreateGroupResponse
 --  
--- @param Group [GroupType] &lt;p&gt;The group object for the group.&lt;/p&gt;
+-- @param Group [GroupType] <p>The group object for the group.</p>
 function M.CreateGroupResponse(Group, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupResponse")
 	local t = { 
@@ -6319,7 +6319,7 @@ function M.AssertS3BucketType(str)
 	assert(type(str) == "string", "Expected S3BucketType to be of type 'string'")
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
 	assert(#str >= 3, "Expected string to be min 3 characters")
-	assert(str:match("^[0-9A-Za-z%.%-_]*(?&lt;!%.)$"), "Expected string to match pattern '^[0-9A-Za-z%.%-_]*(?&lt;!%.)$'")
+	assert(str:match("^[0-9A-Za-z%.%-_]*(?<!%.)$"), "Expected string to match pattern '^[0-9A-Za-z%.%-_]*(?<!%.)$'")
 end
 
 --  

@@ -32,9 +32,9 @@ function M.AssertUpdateTagsForDomainRequest(struct)
 end
 
 --- Create a structure of type UpdateTagsForDomainRequest
--- &lt;p&gt;The UpdateTagsForDomainRequest includes the following elements.&lt;/p&gt;
--- @param TagsToUpdate [TagList] &lt;p&gt;A list of the tag keys and values that you want to add or update. If you specify a key that already exists, the corresponding value will be replaced.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The domain for which you want to add or update tags.&lt;/p&gt;
+-- <p>The UpdateTagsForDomainRequest includes the following elements.</p>
+-- @param TagsToUpdate [TagList] <p>A list of the tag keys and values that you want to add or update. If you specify a key that already exists, the corresponding value will be replaced.</p>
+-- @param DomainName [DomainName] <p>The domain for which you want to add or update tags.</p>
 -- Required parameter: DomainName
 function M.UpdateTagsForDomainRequest(TagsToUpdate, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTagsForDomainRequest")
@@ -60,7 +60,7 @@ end
 
 --- Create a structure of type DisableDomainAutoRenewRequest
 --  
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to disable automatic renewal for.&lt;/p&gt;
+-- @param DomainName [DomainName] <p>The name of the domain that you want to disable automatic renewal for.</p>
 -- Required parameter: DomainName
 function M.DisableDomainAutoRenewRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableDomainAutoRenewRequest")
@@ -87,12 +87,12 @@ function M.AssertBillingRecord(struct)
 end
 
 --- Create a structure of type BillingRecord
--- &lt;p&gt;Information for one billing record.&lt;/p&gt;
--- @param Operation [OperationType] &lt;p&gt;The operation that you were charged for.&lt;/p&gt;
--- @param InvoiceId [InvoiceId] &lt;p&gt;The ID of the invoice that is associated with the billing record.&lt;/p&gt;
--- @param Price [Price] &lt;p&gt;The price that you were charged for the operation, in US dollars.&lt;/p&gt; &lt;p&gt;Example value: 12.0&lt;/p&gt;
--- @param BillDate [Timestamp] &lt;p&gt;The date that the operation was billed, in Unix format.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that the billing record applies to. If the domain name contains characters other than a-z, 0-9, and - (hyphen), such as an internationalized domain name, then this value is in Punycode. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html&quot;&gt;DNS Domain Name Format&lt;/a&gt; in the &lt;i&gt;Amazon Route 53 Developer Guidezzz&lt;/i&gt;.&lt;/p&gt;
+-- <p>Information for one billing record.</p>
+-- @param Operation [OperationType] <p>The operation that you were charged for.</p>
+-- @param InvoiceId [InvoiceId] <p>The ID of the invoice that is associated with the billing record.</p>
+-- @param Price [Price] <p>The price that you were charged for the operation, in US dollars.</p> <p>Example value: 12.0</p>
+-- @param BillDate [Timestamp] <p>The date that the operation was billed, in Unix format.</p>
+-- @param DomainName [DomainName] <p>The name of the domain that the billing record applies to. If the domain name contains characters other than a-z, 0-9, and - (hyphen), such as an internationalized domain name, then this value is in Punycode. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html">DNS Domain Name Format</a> in the <i>Amazon Route 53 Developer Guidezzz</i>.</p>
 function M.BillingRecord(Operation, InvoiceId, Price, BillDate, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BillingRecord")
 	local t = { 
@@ -122,11 +122,11 @@ function M.AssertDomainSummary(struct)
 end
 
 --- Create a structure of type DomainSummary
--- &lt;p&gt;Summary information about one domain.&lt;/p&gt;
--- @param TransferLock [Boolean] &lt;p&gt;Indicates whether a domain is locked from unauthorized transfer to another party.&lt;/p&gt;
--- @param AutoRenew [Boolean] &lt;p&gt;Indicates whether the domain is automatically renewed upon expiration.&lt;/p&gt;
--- @param Expiry [Timestamp] &lt;p&gt;Expiration date of the domain in Coordinated Universal Time (UTC).&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that the summary information applies to.&lt;/p&gt;
+-- <p>Summary information about one domain.</p>
+-- @param TransferLock [Boolean] <p>Indicates whether a domain is locked from unauthorized transfer to another party.</p>
+-- @param AutoRenew [Boolean] <p>Indicates whether the domain is automatically renewed upon expiration.</p>
+-- @param Expiry [Timestamp] <p>Expiration date of the domain in Coordinated Universal Time (UTC).</p>
+-- @param DomainName [DomainName] <p>The name of the domain that the summary information applies to.</p>
 -- Required parameter: DomainName
 function M.DomainSummary(TransferLock, AutoRenew, Expiry, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainSummary")
@@ -153,9 +153,9 @@ function M.AssertListOperationsRequest(struct)
 end
 
 --- Create a structure of type ListOperationsRequest
--- &lt;p&gt;The ListOperations request includes the following elements.&lt;/p&gt;
--- @param Marker [PageMarker] &lt;p&gt;For an initial request for a list of operations, omit this element. If the number of operations that are not yet complete is greater than the value that you specified for &lt;code&gt;MaxItems&lt;/code&gt;, you can use &lt;code&gt;Marker&lt;/code&gt; to return additional operations. Get the value of &lt;code&gt;NextPageMarker&lt;/code&gt; from the previous response, and submit another request that includes the value of &lt;code&gt;NextPageMarker&lt;/code&gt; in the &lt;code&gt;Marker&lt;/code&gt; element.&lt;/p&gt;
--- @param MaxItems [PageMaxItems] &lt;p&gt;Number of domains to be returned.&lt;/p&gt; &lt;p&gt;Default: 20&lt;/p&gt;
+-- <p>The ListOperations request includes the following elements.</p>
+-- @param Marker [PageMarker] <p>For an initial request for a list of operations, omit this element. If the number of operations that are not yet complete is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional operations. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element.</p>
+-- @param MaxItems [PageMaxItems] <p>Number of domains to be returned.</p> <p>Default: 20</p>
 function M.ListOperationsRequest(Marker, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListOperationsRequest")
 	local t = { 
@@ -178,8 +178,8 @@ function M.AssertUnsupportedTLD(struct)
 end
 
 --- Create a structure of type UnsupportedTLD
--- &lt;p&gt;Amazon Route 53 does not support this top-level domain.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;Amazon Route 53 does not support this top-level domain.&lt;/p&gt;
+-- <p>Amazon Route 53 does not support this top-level domain.</p>
+-- @param message [ErrorMessage] <p>Amazon Route 53 does not support this top-level domain.</p>
 function M.UnsupportedTLD(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedTLD")
 	local t = { 
@@ -202,8 +202,8 @@ function M.AssertListTagsForDomainResponse(struct)
 end
 
 --- Create a structure of type ListTagsForDomainResponse
--- &lt;p&gt;The ListTagsForDomain response includes the following elements.&lt;/p&gt;
--- @param TagList [TagList] &lt;p&gt;A list of the tags that are associated with the specified domain.&lt;/p&gt;
+-- <p>The ListTagsForDomain response includes the following elements.</p>
+-- @param TagList [TagList] <p>A list of the tags that are associated with the specified domain.</p>
 -- Required parameter: TagList
 function M.ListTagsForDomainResponse(TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForDomainResponse")
@@ -228,7 +228,7 @@ end
 
 --- Create a structure of type RenewDomainResponse
 --  
--- @param OperationId [OperationId] &lt;p&gt;The identifier for tracking the progress of the request. To use this ID to query the operation status, use &lt;a&gt;GetOperationDetail&lt;/a&gt;.&lt;/p&gt;
+-- @param OperationId [OperationId] <p>The identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
 -- Required parameter: OperationId
 function M.RenewDomainResponse(OperationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RenewDomainResponse")
@@ -254,9 +254,9 @@ function M.AssertExtraParam(struct)
 end
 
 --- Create a structure of type ExtraParam
--- &lt;p&gt;ExtraParam includes the following elements.&lt;/p&gt;
--- @param Name [ExtraParamName] &lt;p&gt;Name of the additional parameter required by the top-level domain.&lt;/p&gt;
--- @param Value [ExtraParamValue] &lt;p&gt;Values corresponding to the additional parameter names required by some top-level domains.&lt;/p&gt;
+-- <p>ExtraParam includes the following elements.</p>
+-- @param Name [ExtraParamName] <p>Name of the additional parameter required by the top-level domain.</p>
+-- @param Value [ExtraParamValue] <p>Values corresponding to the additional parameter names required by some top-level domains.</p>
 -- Required parameter: Name
 -- Required parameter: Value
 function M.ExtraParam(Name, Value, ...)
@@ -286,13 +286,13 @@ function M.AssertGetOperationDetailResponse(struct)
 end
 
 --- Create a structure of type GetOperationDetailResponse
--- &lt;p&gt;The GetOperationDetail response includes the following elements.&lt;/p&gt;
--- @param Status [OperationStatus] &lt;p&gt;The current status of the requested operation in the system.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of a domain.&lt;/p&gt;
--- @param SubmittedDate [Timestamp] &lt;p&gt;The date when the request was submitted.&lt;/p&gt;
--- @param Message [ErrorMessage] &lt;p&gt;Detailed information on the status including possible errors.&lt;/p&gt;
--- @param Type [OperationType] &lt;p&gt;The type of operation that was requested.&lt;/p&gt;
--- @param OperationId [OperationId] &lt;p&gt;The identifier for the operation.&lt;/p&gt;
+-- <p>The GetOperationDetail response includes the following elements.</p>
+-- @param Status [OperationStatus] <p>The current status of the requested operation in the system.</p>
+-- @param DomainName [DomainName] <p>The name of a domain.</p>
+-- @param SubmittedDate [Timestamp] <p>The date when the request was submitted.</p>
+-- @param Message [ErrorMessage] <p>Detailed information on the status including possible errors.</p>
+-- @param Type [OperationType] <p>The type of operation that was requested.</p>
+-- @param OperationId [OperationId] <p>The identifier for the operation.</p>
 function M.GetOperationDetailResponse(Status, DomainName, SubmittedDate, Message, Type, OperationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationDetailResponse")
 	local t = { 
@@ -320,8 +320,8 @@ function M.AssertGetOperationDetailRequest(struct)
 end
 
 --- Create a structure of type GetOperationDetailRequest
--- &lt;p&gt;The &lt;a&gt;GetOperationDetail&lt;/a&gt; request includes the following element.&lt;/p&gt;
--- @param OperationId [OperationId] &lt;p&gt;The identifier for the operation for which you want to get the status. Amazon Route 53 returned the identifier in the response to the original request.&lt;/p&gt;
+-- <p>The <a>GetOperationDetail</a> request includes the following element.</p>
+-- @param OperationId [OperationId] <p>The identifier for the operation for which you want to get the status. Amazon Route 53 returned the identifier in the response to the original request.</p>
 -- Required parameter: OperationId
 function M.GetOperationDetailRequest(OperationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationDetailRequest")
@@ -345,8 +345,8 @@ function M.AssertDisableDomainTransferLockRequest(struct)
 end
 
 --- Create a structure of type DisableDomainTransferLockRequest
--- &lt;p&gt;The DisableDomainTransferLock request includes the following element.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to remove the transfer lock for.&lt;/p&gt;
+-- <p>The DisableDomainTransferLock request includes the following element.</p>
+-- @param DomainName [DomainName] <p>The name of the domain that you want to remove the transfer lock for.</p>
 -- Required parameter: DomainName
 function M.DisableDomainTransferLockRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableDomainTransferLockRequest")
@@ -370,9 +370,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Each tag includes the following elements.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The value of a tag.&lt;/p&gt; &lt;p&gt;Valid values: A-Z, a-z, 0-9, space, &quot;.:/=+\-@&quot;&lt;/p&gt; &lt;p&gt;Constraints: Each value can be 0-256 characters long.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The key (name) of a tag.&lt;/p&gt; &lt;p&gt;Valid values: A-Z, a-z, 0-9, space, &quot;.:/=+\-@&quot;&lt;/p&gt; &lt;p&gt;Constraints: Each key can be 1-128 characters long.&lt;/p&gt;
+-- <p>Each tag includes the following elements.</p>
+-- @param Value [TagValue] <p>The value of a tag.</p> <p>Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"</p> <p>Constraints: Each value can be 0-256 characters long.</p>
+-- @param Key [TagKey] <p>The key (name) of a tag.</p> <p>Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"</p> <p>Constraints: Each key can be 1-128 characters long.</p>
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
 	local t = { 
@@ -399,10 +399,10 @@ function M.AssertRenewDomainRequest(struct)
 end
 
 --- Create a structure of type RenewDomainRequest
--- &lt;p&gt;A &lt;code&gt;RenewDomain&lt;/code&gt; request includes the number of years that you want to renew for and the current expiration year.&lt;/p&gt;
--- @param CurrentExpiryYear [CurrentExpiryYear] &lt;p&gt;The year when the registration for the domain is set to expire. This value must match the current expiration date for the domain.&lt;/p&gt;
--- @param DurationInYears [DurationInYears] &lt;p&gt;The number of years that you want to renew the domain for. The maximum number of years depends on the top-level domain. For the range of valid values for your domain, see &lt;a href=&quot;http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html&quot;&gt;Domains that You Can Register with Amazon Route 53&lt;/a&gt; in the &lt;i&gt;Amazon Route 53 Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;Default: 1&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to renew.&lt;/p&gt;
+-- <p>A <code>RenewDomain</code> request includes the number of years that you want to renew for and the current expiration year.</p>
+-- @param CurrentExpiryYear [CurrentExpiryYear] <p>The year when the registration for the domain is set to expire. This value must match the current expiration date for the domain.</p>
+-- @param DurationInYears [DurationInYears] <p>The number of years that you want to renew the domain for. The maximum number of years depends on the top-level domain. For the range of valid values for your domain, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html">Domains that You Can Register with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>Default: 1</p>
+-- @param DomainName [DomainName] <p>The name of the domain that you want to renew.</p>
 -- Required parameter: DomainName
 -- Required parameter: CurrentExpiryYear
 function M.RenewDomainRequest(CurrentExpiryYear, DurationInYears, DomainName, ...)
@@ -450,8 +450,8 @@ end
 
 --- Create a structure of type GetContactReachabilityStatusResponse
 --  
--- @param status [ReachabilityStatus] &lt;p&gt;Whether the registrant contact has responded. Values include the following:&lt;/p&gt; &lt;dl&gt; &lt;dt&gt;PENDING&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;We sent the confirmation email and haven't received a response yet.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;DONE&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;We sent the email and got confirmation from the registrant contact.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;EXPIRED&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The time limit expired before the registrant contact responded.&lt;/p&gt; &lt;/dd&gt; &lt;/dl&gt;
--- @param domainName [DomainName] &lt;p&gt;The domain name for which you requested the reachability status.&lt;/p&gt;
+-- @param status [ReachabilityStatus] <p>Whether the registrant contact has responded. Values include the following:</p> <dl> <dt>PENDING</dt> <dd> <p>We sent the confirmation email and haven't received a response yet.</p> </dd> <dt>DONE</dt> <dd> <p>We sent the email and got confirmation from the registrant contact.</p> </dd> <dt>EXPIRED</dt> <dd> <p>The time limit expired before the registrant contact responded.</p> </dd> </dl>
+-- @param domainName [DomainName] <p>The domain name for which you requested the reachability status.</p>
 function M.GetContactReachabilityStatusResponse(status, domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetContactReachabilityStatusResponse")
 	local t = { 
@@ -477,9 +477,9 @@ function M.AssertDeleteTagsForDomainRequest(struct)
 end
 
 --- Create a structure of type DeleteTagsForDomainRequest
--- &lt;p&gt;The DeleteTagsForDomainRequest includes the following elements.&lt;/p&gt;
--- @param TagsToDelete [TagKeyList] &lt;p&gt;A list of tag keys to delete.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The domain for which you want to delete one or more tags.&lt;/p&gt;
+-- <p>The DeleteTagsForDomainRequest includes the following elements.</p>
+-- @param TagsToDelete [TagKeyList] <p>A list of tag keys to delete.</p>
+-- @param DomainName [DomainName] <p>The domain for which you want to delete one or more tags.</p>
 -- Required parameter: DomainName
 -- Required parameter: TagsToDelete
 function M.DeleteTagsForDomainRequest(TagsToDelete, DomainName, ...)
@@ -510,9 +510,9 @@ end
 
 --- Create a structure of type GetDomainSuggestionsRequest
 --  
--- @param OnlyAvailable [Boolean] &lt;p&gt;If &lt;code&gt;OnlyAvailable&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;, Amazon Route 53 returns only domain names that are available. If &lt;code&gt;OnlyAvailable&lt;/code&gt; is &lt;code&gt;false&lt;/code&gt;, Amazon Route 53 returns domain names without checking whether they're available to be registered. To determine whether the domain is available, you can call &lt;code&gt;checkDomainAvailability&lt;/code&gt; for each suggestion.&lt;/p&gt;
--- @param SuggestionCount [Integer] &lt;p&gt;The number of suggested domain names that you want Amazon Route 53 to return.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;A domain name that you want to use as the basis for a list of possible domain names. The domain name must contain a top-level domain (TLD), such as .com, that Amazon Route 53 supports. For a list of TLDs, see &lt;a href=&quot;http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html&quot;&gt;Domains that You Can Register with Amazon Route 53&lt;/a&gt; in the &lt;i&gt;Amazon Route 53 Developer Guide&lt;/i&gt;.&lt;/p&gt;
+-- @param OnlyAvailable [Boolean] <p>If <code>OnlyAvailable</code> is <code>true</code>, Amazon Route 53 returns only domain names that are available. If <code>OnlyAvailable</code> is <code>false</code>, Amazon Route 53 returns domain names without checking whether they're available to be registered. To determine whether the domain is available, you can call <code>checkDomainAvailability</code> for each suggestion.</p>
+-- @param SuggestionCount [Integer] <p>The number of suggested domain names that you want Amazon Route 53 to return.</p>
+-- @param DomainName [DomainName] <p>A domain name that you want to use as the basis for a list of possible domain names. The domain name must contain a top-level domain (TLD), such as .com, that Amazon Route 53 supports. For a list of TLDs, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html">Domains that You Can Register with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.</p>
 -- Required parameter: DomainName
 -- Required parameter: SuggestionCount
 -- Required parameter: OnlyAvailable
@@ -540,8 +540,8 @@ function M.AssertRetrieveDomainAuthCodeRequest(struct)
 end
 
 --- Create a structure of type RetrieveDomainAuthCodeRequest
--- &lt;p&gt;A request for the authorization code for the specified domain. To transfer a domain to another registrar, you provide this value to the new registrar.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to get an authorization code for.&lt;/p&gt;
+-- <p>A request for the authorization code for the specified domain. To transfer a domain to another registrar, you provide this value to the new registrar.</p>
+-- @param DomainName [DomainName] <p>The name of the domain that you want to get an authorization code for.</p>
 -- Required parameter: DomainName
 function M.RetrieveDomainAuthCodeRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveDomainAuthCodeRequest")
@@ -564,8 +564,8 @@ function M.AssertOperationLimitExceeded(struct)
 end
 
 --- Create a structure of type OperationLimitExceeded
--- &lt;p&gt;The number of operations or jobs running exceeded the allowed threshold for the account.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The number of operations or jobs running exceeded the allowed threshold for the account.&lt;/p&gt;
+-- <p>The number of operations or jobs running exceeded the allowed threshold for the account.</p>
+-- @param message [ErrorMessage] <p>The number of operations or jobs running exceeded the allowed threshold for the account.</p>
 function M.OperationLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationLimitExceeded")
 	local t = { 
@@ -591,11 +591,11 @@ function M.AssertUpdateDomainContactRequest(struct)
 end
 
 --- Create a structure of type UpdateDomainContactRequest
--- &lt;p&gt;The UpdateDomainContact request includes the following elements.&lt;/p&gt;
--- @param RegistrantContact [ContactDetail] &lt;p&gt;Provides detailed contact information.&lt;/p&gt;
--- @param AdminContact [ContactDetail] &lt;p&gt;Provides detailed contact information.&lt;/p&gt;
--- @param TechContact [ContactDetail] &lt;p&gt;Provides detailed contact information.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to update contact information for.&lt;/p&gt;
+-- <p>The UpdateDomainContact request includes the following elements.</p>
+-- @param RegistrantContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- @param AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- @param TechContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- @param DomainName [DomainName] <p>The name of the domain that you want to update contact information for.</p>
 -- Required parameter: DomainName
 function M.UpdateDomainContactRequest(RegistrantContact, AdminContact, TechContact, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainContactRequest")
@@ -622,9 +622,9 @@ function M.AssertDomainSuggestion(struct)
 end
 
 --- Create a structure of type DomainSuggestion
--- &lt;p&gt;Information about one suggested domain name.&lt;/p&gt;
--- @param Availability [String] &lt;p&gt;Whether the domain name is available for registering.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You can register only the domains that are designated as &lt;code&gt;AVAILABLE&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Valid values:&lt;/p&gt; &lt;dl&gt; &lt;dt&gt;AVAILABLE&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is available.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;AVAILABLE_RESERVED&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is reserved under specific conditions.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;AVAILABLE_PREORDER&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is available and can be preordered.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;DONT_KNOW&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try again later.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;PENDING&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it usually takes just a few extra seconds. You can resubmit the request immediately.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;RESERVED&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name has been reserved for another person or organization.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;UNAVAILABLE&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is not available.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;UNAVAILABLE_PREMIUM&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is not available.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;UNAVAILABLE_RESTRICTED&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is forbidden.&lt;/p&gt; &lt;/dd&gt; &lt;/dl&gt;
--- @param DomainName [DomainName] &lt;p&gt;A suggested domain name.&lt;/p&gt;
+-- <p>Information about one suggested domain name.</p>
+-- @param Availability [String] <p>Whether the domain name is available for registering.</p> <note> <p>You can register only the domains that are designated as <code>AVAILABLE</code>.</p> </note> <p>Valid values:</p> <dl> <dt>AVAILABLE</dt> <dd> <p>The domain name is available.</p> </dd> <dt>AVAILABLE_RESERVED</dt> <dd> <p>The domain name is reserved under specific conditions.</p> </dd> <dt>AVAILABLE_PREORDER</dt> <dd> <p>The domain name is available and can be preordered.</p> </dd> <dt>DONT_KNOW</dt> <dd> <p>The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try again later.</p> </dd> <dt>PENDING</dt> <dd> <p>The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it usually takes just a few extra seconds. You can resubmit the request immediately.</p> </dd> <dt>RESERVED</dt> <dd> <p>The domain name has been reserved for another person or organization.</p> </dd> <dt>UNAVAILABLE</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_PREMIUM</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_RESTRICTED</dt> <dd> <p>The domain name is forbidden.</p> </dd> </dl>
+-- @param DomainName [DomainName] <p>A suggested domain name.</p>
 function M.DomainSuggestion(Availability, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainSuggestion")
 	local t = { 
@@ -650,11 +650,11 @@ function M.AssertViewBillingRequest(struct)
 end
 
 --- Create a structure of type ViewBillingRequest
--- &lt;p&gt;The ViewBilling request includes the following elements.&lt;/p&gt;
--- @param Marker [PageMarker] &lt;p&gt;For an initial request for a list of billing records, omit this element. If the number of billing records that are associated with the current AWS account during the specified period is greater than the value that you specified for &lt;code&gt;MaxItems&lt;/code&gt;, you can use &lt;code&gt;Marker&lt;/code&gt; to return additional billing records. Get the value of &lt;code&gt;NextPageMarker&lt;/code&gt; from the previous response, and submit another request that includes the value of &lt;code&gt;NextPageMarker&lt;/code&gt; in the &lt;code&gt;Marker&lt;/code&gt; element. &lt;/p&gt; &lt;p&gt;Constraints: The marker must match the value of &lt;code&gt;NextPageMarker&lt;/code&gt; that was returned in the previous response.&lt;/p&gt;
--- @param Start [Timestamp] &lt;p&gt;The beginning date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.&lt;/p&gt;
--- @param End [Timestamp] &lt;p&gt;The end date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.&lt;/p&gt;
--- @param MaxItems [PageMaxItems] &lt;p&gt;The number of billing records to be returned.&lt;/p&gt; &lt;p&gt;Default: 20&lt;/p&gt;
+-- <p>The ViewBilling request includes the following elements.</p>
+-- @param Marker [PageMarker] <p>For an initial request for a list of billing records, omit this element. If the number of billing records that are associated with the current AWS account during the specified period is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional billing records. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Constraints: The marker must match the value of <code>NextPageMarker</code> that was returned in the previous response.</p>
+-- @param Start [Timestamp] <p>The beginning date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.</p>
+-- @param End [Timestamp] <p>The end date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.</p>
+-- @param MaxItems [PageMaxItems] <p>The number of billing records to be returned.</p> <p>Default: 20</p>
 function M.ViewBillingRequest(Marker, Start, End, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ViewBillingRequest")
 	local t = { 
@@ -680,8 +680,8 @@ function M.AssertTransferDomainResponse(struct)
 end
 
 --- Create a structure of type TransferDomainResponse
--- &lt;p&gt;The TranserDomain response includes the following element.&lt;/p&gt;
--- @param OperationId [OperationId] &lt;p&gt;Identifier for tracking the progress of the request. To use this ID to query the operation status, use &lt;a&gt;GetOperationDetail&lt;/a&gt;.&lt;/p&gt;
+-- <p>The TranserDomain response includes the following element.</p>
+-- @param OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
 -- Required parameter: OperationId
 function M.TransferDomainResponse(OperationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TransferDomainResponse")
@@ -704,8 +704,8 @@ function M.AssertTLDRulesViolation(struct)
 end
 
 --- Create a structure of type TLDRulesViolation
--- &lt;p&gt;The top-level domain does not support this operation.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The top-level domain does not support this operation.&lt;/p&gt;
+-- <p>The top-level domain does not support this operation.</p>
+-- @param message [ErrorMessage] <p>The top-level domain does not support this operation.</p>
 function M.TLDRulesViolation(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TLDRulesViolation")
 	local t = { 
@@ -728,7 +728,7 @@ end
 
 --- Create a structure of type ResendContactReachabilityEmailRequest
 --  
--- @param domainName [DomainName] &lt;p&gt;The name of the domain for which you want Amazon Route 53 to resend a confirmation email to the registrant contact.&lt;/p&gt;
+-- @param domainName [DomainName] <p>The name of the domain for which you want Amazon Route 53 to resend a confirmation email to the registrant contact.</p>
 function M.ResendContactReachabilityEmailRequest(domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResendContactReachabilityEmailRequest")
 	local t = { 
@@ -764,17 +764,17 @@ function M.AssertRegisterDomainRequest(struct)
 end
 
 --- Create a structure of type RegisterDomainRequest
--- &lt;p&gt;The RegisterDomain request includes the following elements.&lt;/p&gt;
--- @param RegistrantContact [ContactDetail] &lt;p&gt;Provides detailed contact information.&lt;/p&gt;
--- @param IdnLangCode [LangCode] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The domain name that you want to register.&lt;/p&gt; &lt;p&gt;Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.&lt;/p&gt;
--- @param PrivacyProtectRegistrantContact [Boolean] &lt;p&gt;Whether you want to conceal contact information from WHOIS queries. If you specify &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param PrivacyProtectTechContact [Boolean] &lt;p&gt;Whether you want to conceal contact information from WHOIS queries. If you specify &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param TechContact [ContactDetail] &lt;p&gt;Provides detailed contact information.&lt;/p&gt;
--- @param PrivacyProtectAdminContact [Boolean] &lt;p&gt;Whether you want to conceal contact information from WHOIS queries. If you specify &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param AutoRenew [Boolean] &lt;p&gt;Indicates whether the domain will be automatically renewed (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;). Autorenewal only takes effect after the account is charged.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param DurationInYears [DurationInYears] &lt;p&gt;The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain. For the range of valid values for your domain, see &lt;a href=&quot;http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html&quot;&gt;Domains that You Can Register with Amazon Route 53&lt;/a&gt; in the &lt;i&gt;Amazon Route 53 Developer Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;Default: 1&lt;/p&gt;
--- @param AdminContact [ContactDetail] &lt;p&gt;Provides detailed contact information.&lt;/p&gt;
+-- <p>The RegisterDomain request includes the following elements.</p>
+-- @param RegistrantContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- @param IdnLangCode [LangCode] <p>Reserved for future use.</p>
+-- @param DomainName [DomainName] <p>The domain name that you want to register.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
+-- @param PrivacyProtectRegistrantContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- @param PrivacyProtectTechContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- @param TechContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- @param PrivacyProtectAdminContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- @param AutoRenew [Boolean] <p>Indicates whether the domain will be automatically renewed (<code>true</code>) or not (<code>false</code>). Autorenewal only takes effect after the account is charged.</p> <p>Default: <code>true</code> </p>
+-- @param DurationInYears [DurationInYears] <p>The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain. For the range of valid values for your domain, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html">Domains that You Can Register with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>Default: 1</p>
+-- @param AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
 -- Required parameter: DomainName
 -- Required parameter: DurationInYears
 -- Required parameter: AdminContact
@@ -817,11 +817,11 @@ function M.AssertOperationSummary(struct)
 end
 
 --- Create a structure of type OperationSummary
--- &lt;p&gt;OperationSummary includes the following elements.&lt;/p&gt;
--- @param Status [OperationStatus] &lt;p&gt;The current status of the requested operation in the system.&lt;/p&gt;
--- @param Type [OperationType] &lt;p&gt;Type of the action requested.&lt;/p&gt;
--- @param SubmittedDate [Timestamp] &lt;p&gt;The date when the request was submitted.&lt;/p&gt;
--- @param OperationId [OperationId] &lt;p&gt;Identifier returned to track the requested action.&lt;/p&gt;
+-- <p>OperationSummary includes the following elements.</p>
+-- @param Status [OperationStatus] <p>The current status of the requested operation in the system.</p>
+-- @param Type [OperationType] <p>Type of the action requested.</p>
+-- @param SubmittedDate [Timestamp] <p>The date when the request was submitted.</p>
+-- @param OperationId [OperationId] <p>Identifier returned to track the requested action.</p>
 -- Required parameter: OperationId
 -- Required parameter: Status
 -- Required parameter: Type
@@ -851,8 +851,8 @@ function M.AssertUpdateDomainNameserversResponse(struct)
 end
 
 --- Create a structure of type UpdateDomainNameserversResponse
--- &lt;p&gt;The UpdateDomainNameservers response includes the following element.&lt;/p&gt;
--- @param OperationId [OperationId] &lt;p&gt;Identifier for tracking the progress of the request. To use this ID to query the operation status, use &lt;a&gt;GetOperationDetail&lt;/a&gt;.&lt;/p&gt;
+-- <p>The UpdateDomainNameservers response includes the following element.</p>
+-- @param OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
 -- Required parameter: OperationId
 function M.UpdateDomainNameserversResponse(OperationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainNameserversResponse")
@@ -891,19 +891,19 @@ function M.AssertTransferDomainRequest(struct)
 end
 
 --- Create a structure of type TransferDomainRequest
--- &lt;p&gt;The TransferDomain request includes the following elements.&lt;/p&gt;
--- @param RegistrantContact [ContactDetail] &lt;p&gt;Provides detailed contact information.&lt;/p&gt;
--- @param IdnLangCode [LangCode] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to transfer to Amazon Route 53.&lt;/p&gt; &lt;p&gt;Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.&lt;/p&gt;
--- @param Nameservers [NameserverList] &lt;p&gt;Contains details for the host and glue IP addresses.&lt;/p&gt;
--- @param AuthCode [DomainAuthCode] &lt;p&gt;The authorization code for the domain. You get this value from the current registrar.&lt;/p&gt;
--- @param PrivacyProtectRegistrantContact [Boolean] &lt;p&gt;Whether you want to conceal contact information from WHOIS queries. If you specify &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param TechContact [ContactDetail] &lt;p&gt;Provides detailed contact information.&lt;/p&gt;
--- @param PrivacyProtectAdminContact [Boolean] &lt;p&gt;Whether you want to conceal contact information from WHOIS queries. If you specify &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param AutoRenew [Boolean] &lt;p&gt;Indicates whether the domain will be automatically renewed (true) or not (false). Autorenewal only takes effect after the account is charged.&lt;/p&gt; &lt;p&gt;Default: true&lt;/p&gt;
--- @param DurationInYears [DurationInYears] &lt;p&gt;The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain.&lt;/p&gt; &lt;p&gt;Default: 1&lt;/p&gt;
--- @param AdminContact [ContactDetail] &lt;p&gt;Provides detailed contact information.&lt;/p&gt;
--- @param PrivacyProtectTechContact [Boolean] &lt;p&gt;Whether you want to conceal contact information from WHOIS queries. If you specify &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
+-- <p>The TransferDomain request includes the following elements.</p>
+-- @param RegistrantContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- @param IdnLangCode [LangCode] <p>Reserved for future use.</p>
+-- @param DomainName [DomainName] <p>The name of the domain that you want to transfer to Amazon Route 53.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
+-- @param Nameservers [NameserverList] <p>Contains details for the host and glue IP addresses.</p>
+-- @param AuthCode [DomainAuthCode] <p>The authorization code for the domain. You get this value from the current registrar.</p>
+-- @param PrivacyProtectRegistrantContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- @param TechContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- @param PrivacyProtectAdminContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- @param AutoRenew [Boolean] <p>Indicates whether the domain will be automatically renewed (true) or not (false). Autorenewal only takes effect after the account is charged.</p> <p>Default: true</p>
+-- @param DurationInYears [DurationInYears] <p>The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain.</p> <p>Default: 1</p>
+-- @param AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- @param PrivacyProtectTechContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
 -- Required parameter: DomainName
 -- Required parameter: DurationInYears
 -- Required parameter: AdminContact
@@ -954,21 +954,21 @@ function M.AssertContactDetail(struct)
 end
 
 --- Create a structure of type ContactDetail
--- &lt;p&gt;ContactDetail includes the following elements.&lt;/p&gt;
--- @param City [City] &lt;p&gt;The city of the contact's address.&lt;/p&gt;
--- @param Fax [ContactNumber] &lt;p&gt;Fax number of the contact.&lt;/p&gt; &lt;p&gt;Constraints: Phone number must be specified in the format &quot;+[country dialing code].[number including any area code]&quot;. For example, a US phone number might appear as &lt;code&gt;&quot;+1.1234567890&quot;&lt;/code&gt;.&lt;/p&gt;
--- @param OrganizationName [ContactName] &lt;p&gt;Name of the organization for contact types other than &lt;code&gt;PERSON&lt;/code&gt;.&lt;/p&gt;
--- @param CountryCode [CountryCode] &lt;p&gt;Code for the country of the contact's address.&lt;/p&gt;
--- @param FirstName [ContactName] &lt;p&gt;First name of contact.&lt;/p&gt;
--- @param LastName [ContactName] &lt;p&gt;Last name of contact.&lt;/p&gt;
--- @param ContactType [ContactType] &lt;p&gt;Indicates whether the contact is a person, company, association, or public organization. If you choose an option other than &lt;code&gt;PERSON&lt;/code&gt;, you must enter an organization name, and you can't enable privacy protection for the contact.&lt;/p&gt;
--- @param ZipCode [ZipCode] &lt;p&gt;The zip or postal code of the contact's address.&lt;/p&gt;
--- @param ExtraParams [ExtraParamList] &lt;p&gt;A list of name-value pairs for parameters required by certain top-level domains.&lt;/p&gt;
--- @param State [State] &lt;p&gt;The state or province of the contact's city.&lt;/p&gt;
--- @param AddressLine2 [AddressLine] &lt;p&gt;Second line of contact's address, if any.&lt;/p&gt;
--- @param AddressLine1 [AddressLine] &lt;p&gt;First line of the contact's address.&lt;/p&gt;
--- @param PhoneNumber [ContactNumber] &lt;p&gt;The phone number of the contact.&lt;/p&gt; &lt;p&gt;Constraints: Phone number must be specified in the format &quot;+[country dialing code].[number including any area code&amp;gt;]&quot;. For example, a US phone number might appear as &lt;code&gt;&quot;+1.1234567890&quot;&lt;/code&gt;.&lt;/p&gt;
--- @param Email [Email] &lt;p&gt;Email address of the contact.&lt;/p&gt;
+-- <p>ContactDetail includes the following elements.</p>
+-- @param City [City] <p>The city of the contact's address.</p>
+-- @param Fax [ContactNumber] <p>Fax number of the contact.</p> <p>Constraints: Phone number must be specified in the format "+[country dialing code].[number including any area code]". For example, a US phone number might appear as <code>"+1.1234567890"</code>.</p>
+-- @param OrganizationName [ContactName] <p>Name of the organization for contact types other than <code>PERSON</code>.</p>
+-- @param CountryCode [CountryCode] <p>Code for the country of the contact's address.</p>
+-- @param FirstName [ContactName] <p>First name of contact.</p>
+-- @param LastName [ContactName] <p>Last name of contact.</p>
+-- @param ContactType [ContactType] <p>Indicates whether the contact is a person, company, association, or public organization. If you choose an option other than <code>PERSON</code>, you must enter an organization name, and you can't enable privacy protection for the contact.</p>
+-- @param ZipCode [ZipCode] <p>The zip or postal code of the contact's address.</p>
+-- @param ExtraParams [ExtraParamList] <p>A list of name-value pairs for parameters required by certain top-level domains.</p>
+-- @param State [State] <p>The state or province of the contact's city.</p>
+-- @param AddressLine2 [AddressLine] <p>Second line of contact's address, if any.</p>
+-- @param AddressLine1 [AddressLine] <p>First line of the contact's address.</p>
+-- @param PhoneNumber [ContactNumber] <p>The phone number of the contact.</p> <p>Constraints: Phone number must be specified in the format "+[country dialing code].[number including any area code&gt;]". For example, a US phone number might appear as <code>"+1.1234567890"</code>.</p>
+-- @param Email [Email] <p>Email address of the contact.</p>
 function M.ContactDetail(City, Fax, OrganizationName, CountryCode, FirstName, LastName, ContactType, ZipCode, ExtraParams, State, AddressLine2, AddressLine1, PhoneNumber, Email, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ContactDetail")
 	local t = { 
@@ -1004,8 +1004,8 @@ function M.AssertDisableDomainTransferLockResponse(struct)
 end
 
 --- Create a structure of type DisableDomainTransferLockResponse
--- &lt;p&gt;The DisableDomainTransferLock response includes the following element.&lt;/p&gt;
--- @param OperationId [OperationId] &lt;p&gt;Identifier for tracking the progress of the request. To use this ID to query the operation status, use &lt;a&gt;GetOperationDetail&lt;/a&gt;.&lt;/p&gt;
+-- <p>The DisableDomainTransferLock response includes the following element.</p>
+-- @param OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
 -- Required parameter: OperationId
 function M.DisableDomainTransferLockResponse(OperationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableDomainTransferLockResponse")
@@ -1029,8 +1029,8 @@ function M.AssertUpdateDomainContactResponse(struct)
 end
 
 --- Create a structure of type UpdateDomainContactResponse
--- &lt;p&gt;The UpdateDomainContact response includes the following element.&lt;/p&gt;
--- @param OperationId [OperationId] &lt;p&gt;Identifier for tracking the progress of the request. To use this ID to query the operation status, use &lt;a&gt;GetOperationDetail&lt;/a&gt;.&lt;/p&gt;
+-- <p>The UpdateDomainContact response includes the following element.</p>
+-- @param OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
 -- Required parameter: OperationId
 function M.UpdateDomainContactResponse(OperationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainContactResponse")
@@ -1054,8 +1054,8 @@ function M.AssertRegisterDomainResponse(struct)
 end
 
 --- Create a structure of type RegisterDomainResponse
--- &lt;p&gt;The RegisterDomain response includes the following element.&lt;/p&gt;
--- @param OperationId [OperationId] &lt;p&gt;Identifier for tracking the progress of the request. To use this ID to query the operation status, use &lt;a&gt;GetOperationDetail&lt;/a&gt;.&lt;/p&gt;
+-- <p>The RegisterDomain response includes the following element.</p>
+-- @param OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
 -- Required parameter: OperationId
 function M.RegisterDomainResponse(OperationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDomainResponse")
@@ -1103,28 +1103,28 @@ function M.AssertGetDomainDetailResponse(struct)
 end
 
 --- Create a structure of type GetDomainDetailResponse
--- &lt;p&gt;The GetDomainDetail response includes the following elements.&lt;/p&gt;
--- @param RegistrantContact [ContactDetail] &lt;p&gt;Provides details about the domain registrant.&lt;/p&gt;
--- @param StatusList [DomainStatusList] &lt;p&gt;An array of domain name status codes, also known as Extensible Provisioning Protocol (EPP) status codes.&lt;/p&gt; &lt;p&gt;ICANN, the organization that maintains a central database of domain names, has developed a set of domain name status codes that tell you the status of a variety of operations on a domain name, for example, registering a domain name, transferring a domain name to another registrar, renewing the registration for a domain name, and so on. All registrars use this same set of status codes.&lt;/p&gt; &lt;p&gt;For a current list of domain name status codes and an explanation of what each code means, go to the &lt;a href=&quot;https://www.icann.org/&quot;&gt;ICANN website&lt;/a&gt; and search for &lt;code&gt;epp status codes&lt;/code&gt;. (Search on the ICANN website; web searches sometimes return an old version of the document.)&lt;/p&gt;
--- @param WhoIsServer [RegistrarWhoIsServer] &lt;p&gt;The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.&lt;/p&gt;
--- @param AbuseContactEmail [Email] &lt;p&gt;Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.&lt;/p&gt;
--- @param Reseller [Reseller] &lt;p&gt;Reseller of the domain. Domains registered or transferred using Amazon Route 53 domains will have &lt;code&gt;&quot;Amazon&quot;&lt;/code&gt; as the reseller. &lt;/p&gt;
--- @param RegistrarName [RegistrarName] &lt;p&gt;Name of the registrar of the domain as identified in the registry. Amazon Route 53 domains are registered by registrar Gandi. The value is &lt;code&gt;&quot;GANDI SAS&quot;&lt;/code&gt;. &lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of a domain.&lt;/p&gt;
--- @param Nameservers [NameserverList] &lt;p&gt;The name of the domain.&lt;/p&gt;
--- @param RegistrarUrl [RegistrarUrl] &lt;p&gt;Web address of the registrar.&lt;/p&gt;
--- @param AdminPrivacy [Boolean] &lt;p&gt;Specifies whether contact information for the admin contact is concealed from WHOIS queries. If the value is &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt;
--- @param RegistryDomainId [RegistryDomainId] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param TechContact [ContactDetail] &lt;p&gt;Provides details about the domain technical contact.&lt;/p&gt;
--- @param CreationDate [Timestamp] &lt;p&gt;The date when the domain was created as found in the response to a WHOIS query. The date format is Unix time.&lt;/p&gt;
--- @param AutoRenew [Boolean] &lt;p&gt;Specifies whether the domain registration is set to renew automatically.&lt;/p&gt;
--- @param UpdatedDate [Timestamp] &lt;p&gt;The last updated date of the domain as found in the response to a WHOIS query. The date format is Unix time.&lt;/p&gt;
--- @param ExpirationDate [Timestamp] &lt;p&gt;The date when the registration for the domain is set to expire. The date format is Unix time.&lt;/p&gt;
--- @param DnsSec [DNSSec] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param AdminContact [ContactDetail] &lt;p&gt;Provides details about the domain administrative contact.&lt;/p&gt;
--- @param TechPrivacy [Boolean] &lt;p&gt;Specifies whether contact information for the tech contact is concealed from WHOIS queries. If the value is &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt;
--- @param RegistrantPrivacy [Boolean] &lt;p&gt;Specifies whether contact information for the registrant contact is concealed from WHOIS queries. If the value is &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt;
--- @param AbuseContactPhone [ContactNumber] &lt;p&gt;Phone number for reporting abuse.&lt;/p&gt;
+-- <p>The GetDomainDetail response includes the following elements.</p>
+-- @param RegistrantContact [ContactDetail] <p>Provides details about the domain registrant.</p>
+-- @param StatusList [DomainStatusList] <p>An array of domain name status codes, also known as Extensible Provisioning Protocol (EPP) status codes.</p> <p>ICANN, the organization that maintains a central database of domain names, has developed a set of domain name status codes that tell you the status of a variety of operations on a domain name, for example, registering a domain name, transferring a domain name to another registrar, renewing the registration for a domain name, and so on. All registrars use this same set of status codes.</p> <p>For a current list of domain name status codes and an explanation of what each code means, go to the <a href="https://www.icann.org/">ICANN website</a> and search for <code>epp status codes</code>. (Search on the ICANN website; web searches sometimes return an old version of the document.)</p>
+-- @param WhoIsServer [RegistrarWhoIsServer] <p>The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.</p>
+-- @param AbuseContactEmail [Email] <p>Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.</p>
+-- @param Reseller [Reseller] <p>Reseller of the domain. Domains registered or transferred using Amazon Route 53 domains will have <code>"Amazon"</code> as the reseller. </p>
+-- @param RegistrarName [RegistrarName] <p>Name of the registrar of the domain as identified in the registry. Amazon Route 53 domains are registered by registrar Gandi. The value is <code>"GANDI SAS"</code>. </p>
+-- @param DomainName [DomainName] <p>The name of a domain.</p>
+-- @param Nameservers [NameserverList] <p>The name of the domain.</p>
+-- @param RegistrarUrl [RegistrarUrl] <p>Web address of the registrar.</p>
+-- @param AdminPrivacy [Boolean] <p>Specifies whether contact information for the admin contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- @param RegistryDomainId [RegistryDomainId] <p>Reserved for future use.</p>
+-- @param TechContact [ContactDetail] <p>Provides details about the domain technical contact.</p>
+-- @param CreationDate [Timestamp] <p>The date when the domain was created as found in the response to a WHOIS query. The date format is Unix time.</p>
+-- @param AutoRenew [Boolean] <p>Specifies whether the domain registration is set to renew automatically.</p>
+-- @param UpdatedDate [Timestamp] <p>The last updated date of the domain as found in the response to a WHOIS query. The date format is Unix time.</p>
+-- @param ExpirationDate [Timestamp] <p>The date when the registration for the domain is set to expire. The date format is Unix time.</p>
+-- @param DnsSec [DNSSec] <p>Reserved for future use.</p>
+-- @param AdminContact [ContactDetail] <p>Provides details about the domain administrative contact.</p>
+-- @param TechPrivacy [Boolean] <p>Specifies whether contact information for the tech contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- @param RegistrantPrivacy [Boolean] <p>Specifies whether contact information for the registrant contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- @param AbuseContactPhone [ContactNumber] <p>Phone number for reporting abuse.</p>
 -- Required parameter: DomainName
 -- Required parameter: Nameservers
 -- Required parameter: AdminContact
@@ -1173,7 +1173,7 @@ end
 
 --- Create a structure of type EnableDomainAutoRenewRequest
 --  
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to enable automatic renewal for.&lt;/p&gt;
+-- @param DomainName [DomainName] <p>The name of the domain that you want to enable automatic renewal for.</p>
 -- Required parameter: DomainName
 function M.EnableDomainAutoRenewRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableDomainAutoRenewRequest")
@@ -1197,8 +1197,8 @@ function M.AssertCheckDomainAvailabilityResponse(struct)
 end
 
 --- Create a structure of type CheckDomainAvailabilityResponse
--- &lt;p&gt;The CheckDomainAvailability response includes the following elements.&lt;/p&gt;
--- @param Availability [DomainAvailability] &lt;p&gt;Whether the domain name is available for registering.&lt;/p&gt; &lt;note&gt; &lt;p&gt;You can only register domains designated as &lt;code&gt;AVAILABLE&lt;/code&gt;.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;Valid values:&lt;/p&gt; &lt;dl&gt; &lt;dt&gt;AVAILABLE&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is available.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;AVAILABLE_RESERVED&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is reserved under specific conditions.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;AVAILABLE_PREORDER&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is available and can be preordered.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;DONT_KNOW&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try again later.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;PENDING&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it usually takes just a few extra seconds. You can resubmit the request immediately.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;RESERVED&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name has been reserved for another person or organization.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;UNAVAILABLE&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is not available.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;UNAVAILABLE_PREMIUM&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is not available.&lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;UNAVAILABLE_RESTRICTED&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;The domain name is forbidden.&lt;/p&gt; &lt;/dd&gt; &lt;/dl&gt;
+-- <p>The CheckDomainAvailability response includes the following elements.</p>
+-- @param Availability [DomainAvailability] <p>Whether the domain name is available for registering.</p> <note> <p>You can only register domains designated as <code>AVAILABLE</code>.</p> </note> <p>Valid values:</p> <dl> <dt>AVAILABLE</dt> <dd> <p>The domain name is available.</p> </dd> <dt>AVAILABLE_RESERVED</dt> <dd> <p>The domain name is reserved under specific conditions.</p> </dd> <dt>AVAILABLE_PREORDER</dt> <dd> <p>The domain name is available and can be preordered.</p> </dd> <dt>DONT_KNOW</dt> <dd> <p>The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try again later.</p> </dd> <dt>PENDING</dt> <dd> <p>The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it usually takes just a few extra seconds. You can resubmit the request immediately.</p> </dd> <dt>RESERVED</dt> <dd> <p>The domain name has been reserved for another person or organization.</p> </dd> <dt>UNAVAILABLE</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_PREMIUM</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_RESTRICTED</dt> <dd> <p>The domain name is forbidden.</p> </dd> </dl>
 -- Required parameter: Availability
 function M.CheckDomainAvailabilityResponse(Availability, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CheckDomainAvailabilityResponse")
@@ -1222,8 +1222,8 @@ function M.AssertEnableDomainTransferLockResponse(struct)
 end
 
 --- Create a structure of type EnableDomainTransferLockResponse
--- &lt;p&gt;The EnableDomainTransferLock response includes the following elements.&lt;/p&gt;
--- @param OperationId [OperationId] &lt;p&gt;Identifier for tracking the progress of the request. To use this ID to query the operation status, use GetOperationDetail.&lt;/p&gt;
+-- <p>The EnableDomainTransferLock response includes the following elements.</p>
+-- @param OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use GetOperationDetail.</p>
 -- Required parameter: OperationId
 function M.EnableDomainTransferLockResponse(OperationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableDomainTransferLockResponse")
@@ -1266,8 +1266,8 @@ function M.AssertDomainLimitExceeded(struct)
 end
 
 --- Create a structure of type DomainLimitExceeded
--- &lt;p&gt;The number of domains has exceeded the allowed threshold for the account.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The number of domains has exceeded the allowed threshold for the account.&lt;/p&gt;
+-- <p>The number of domains has exceeded the allowed threshold for the account.</p>
+-- @param message [ErrorMessage] <p>The number of domains has exceeded the allowed threshold for the account.</p>
 function M.DomainLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainLimitExceeded")
 	local t = { 
@@ -1290,8 +1290,8 @@ function M.AssertUpdateDomainContactPrivacyResponse(struct)
 end
 
 --- Create a structure of type UpdateDomainContactPrivacyResponse
--- &lt;p&gt;The UpdateDomainContactPrivacy response includes the following element.&lt;/p&gt;
--- @param OperationId [OperationId] &lt;p&gt;Identifier for tracking the progress of the request. To use this ID to query the operation status, use GetOperationDetail.&lt;/p&gt;
+-- <p>The UpdateDomainContactPrivacy response includes the following element.</p>
+-- @param OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use GetOperationDetail.</p>
 -- Required parameter: OperationId
 function M.UpdateDomainContactPrivacyResponse(OperationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainContactPrivacyResponse")
@@ -1318,11 +1318,11 @@ function M.AssertUpdateDomainContactPrivacyRequest(struct)
 end
 
 --- Create a structure of type UpdateDomainContactPrivacyRequest
--- &lt;p&gt;The UpdateDomainContactPrivacy request includes the following elements.&lt;/p&gt;
--- @param TechPrivacy [Boolean] &lt;p&gt;Whether you want to conceal contact information from WHOIS queries. If you specify &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt;
--- @param AdminPrivacy [Boolean] &lt;p&gt;Whether you want to conceal contact information from WHOIS queries. If you specify &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt;
--- @param RegistrantPrivacy [Boolean] &lt;p&gt;Whether you want to conceal contact information from WHOIS queries. If you specify &lt;code&gt;true&lt;/code&gt;, WHOIS (&quot;who is&quot;) queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to update the privacy setting for.&lt;/p&gt;
+-- <p>The UpdateDomainContactPrivacy request includes the following elements.</p>
+-- @param TechPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- @param AdminPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- @param RegistrantPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- @param DomainName [DomainName] <p>The name of the domain that you want to update the privacy setting for.</p>
 -- Required parameter: DomainName
 function M.UpdateDomainContactPrivacyRequest(TechPrivacy, AdminPrivacy, RegistrantPrivacy, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainContactPrivacyRequest")
@@ -1370,9 +1370,9 @@ function M.AssertNameserver(struct)
 end
 
 --- Create a structure of type Nameserver
--- &lt;p&gt;Nameserver includes the following elements.&lt;/p&gt;
--- @param GlueIps [GlueIpList] &lt;p&gt;Glue IP address of a name server entry. Glue IP addresses are required only when the name of the name server is a subdomain of the domain. For example, if your domain is example.com and the name server for the domain is ns.example.com, you need to specify the IP address for ns.example.com.&lt;/p&gt; &lt;p&gt;Constraints: The list can contain only one IPv4 and one IPv6 address.&lt;/p&gt;
--- @param Name [HostName] &lt;p&gt;The fully qualified host name of the name server.&lt;/p&gt; &lt;p&gt;Constraint: Maximum 255 characters&lt;/p&gt;
+-- <p>Nameserver includes the following elements.</p>
+-- @param GlueIps [GlueIpList] <p>Glue IP address of a name server entry. Glue IP addresses are required only when the name of the name server is a subdomain of the domain. For example, if your domain is example.com and the name server for the domain is ns.example.com, you need to specify the IP address for ns.example.com.</p> <p>Constraints: The list can contain only one IPv4 and one IPv6 address.</p>
+-- @param Name [HostName] <p>The fully qualified host name of the name server.</p> <p>Constraint: Maximum 255 characters</p>
 -- Required parameter: Name
 function M.Nameserver(GlueIps, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Nameserver")
@@ -1399,9 +1399,9 @@ end
 
 --- Create a structure of type ResendContactReachabilityEmailResponse
 --  
--- @param isAlreadyVerified [Boolean] &lt;p&gt; &lt;code&gt;True&lt;/code&gt; if the email address for the registrant contact has already been verified, and &lt;code&gt;false&lt;/code&gt; otherwise. If the email address has already been verified, we don't send another confirmation email.&lt;/p&gt;
--- @param emailAddress [Email] &lt;p&gt;The email address for the registrant contact at the time that we sent the verification email.&lt;/p&gt;
--- @param domainName [DomainName] &lt;p&gt;The domain name for which you requested a confirmation email.&lt;/p&gt;
+-- @param isAlreadyVerified [Boolean] <p> <code>True</code> if the email address for the registrant contact has already been verified, and <code>false</code> otherwise. If the email address has already been verified, we don't send another confirmation email.</p>
+-- @param emailAddress [Email] <p>The email address for the registrant contact at the time that we sent the verification email.</p>
+-- @param domainName [DomainName] <p>The domain name for which you requested a confirmation email.</p>
 function M.ResendContactReachabilityEmailResponse(isAlreadyVerified, emailAddress, domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResendContactReachabilityEmailResponse")
 	local t = { 
@@ -1446,8 +1446,8 @@ function M.AssertListTagsForDomainRequest(struct)
 end
 
 --- Create a structure of type ListTagsForDomainRequest
--- &lt;p&gt;The ListTagsForDomainRequest includes the following elements.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The domain for which you want to get a list of tags.&lt;/p&gt;
+-- <p>The ListTagsForDomainRequest includes the following elements.</p>
+-- @param DomainName [DomainName] <p>The domain for which you want to get a list of tags.</p>
 -- Required parameter: DomainName
 function M.ListTagsForDomainRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForDomainRequest")
@@ -1471,9 +1471,9 @@ function M.AssertViewBillingResponse(struct)
 end
 
 --- Create a structure of type ViewBillingResponse
--- &lt;p&gt;The ViewBilling response includes the following elements.&lt;/p&gt;
--- @param NextPageMarker [PageMarker] &lt;p&gt;If there are more billing records than you specified for &lt;code&gt;MaxItems&lt;/code&gt; in the request, submit another request and include the value of &lt;code&gt;NextPageMarker&lt;/code&gt; in the value of &lt;code&gt;Marker&lt;/code&gt;.&lt;/p&gt;
--- @param BillingRecords [BillingRecords] &lt;p&gt;A summary of billing records.&lt;/p&gt;
+-- <p>The ViewBilling response includes the following elements.</p>
+-- @param NextPageMarker [PageMarker] <p>If there are more billing records than you specified for <code>MaxItems</code> in the request, submit another request and include the value of <code>NextPageMarker</code> in the value of <code>Marker</code>.</p>
+-- @param BillingRecords [BillingRecords] <p>A summary of billing records.</p>
 function M.ViewBillingResponse(NextPageMarker, BillingRecords, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ViewBillingResponse")
 	local t = { 
@@ -1497,7 +1497,7 @@ end
 
 --- Create a structure of type GetContactReachabilityStatusRequest
 --  
--- @param domainName [DomainName] &lt;p&gt;The name of the domain for which you want to know whether the registrant contact has confirmed that the email address is valid.&lt;/p&gt;
+-- @param domainName [DomainName] <p>The name of the domain for which you want to know whether the registrant contact has confirmed that the email address is valid.</p>
 function M.GetContactReachabilityStatusRequest(domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetContactReachabilityStatusRequest")
 	local t = { 
@@ -1519,8 +1519,8 @@ function M.AssertDuplicateRequest(struct)
 end
 
 --- Create a structure of type DuplicateRequest
--- &lt;p&gt;The request is already in progress for the domain.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The request is already in progress for the domain.&lt;/p&gt;
+-- <p>The request is already in progress for the domain.</p>
+-- @param message [ErrorMessage] <p>The request is already in progress for the domain.</p>
 function M.DuplicateRequest(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateRequest")
 	local t = { 
@@ -1544,9 +1544,9 @@ function M.AssertCheckDomainAvailabilityRequest(struct)
 end
 
 --- Create a structure of type CheckDomainAvailabilityRequest
--- &lt;p&gt;The CheckDomainAvailability request contains the following elements.&lt;/p&gt;
--- @param IdnLangCode [LangCode] &lt;p&gt;Reserved for future use.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to get availability for.&lt;/p&gt; &lt;p&gt;Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.&lt;/p&gt;
+-- <p>The CheckDomainAvailability request contains the following elements.</p>
+-- @param IdnLangCode [LangCode] <p>Reserved for future use.</p>
+-- @param DomainName [DomainName] <p>The name of the domain that you want to get availability for.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
 -- Required parameter: DomainName
 function M.CheckDomainAvailabilityRequest(IdnLangCode, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CheckDomainAvailabilityRequest")
@@ -1571,8 +1571,8 @@ function M.AssertEnableDomainTransferLockRequest(struct)
 end
 
 --- Create a structure of type EnableDomainTransferLockRequest
--- &lt;p&gt;A request to set the transfer lock for the specified domain.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to set the transfer lock for.&lt;/p&gt;
+-- <p>A request to set the transfer lock for the specified domain.</p>
+-- @param DomainName [DomainName] <p>The name of the domain that you want to set the transfer lock for.</p>
 -- Required parameter: DomainName
 function M.EnableDomainTransferLockRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnableDomainTransferLockRequest")
@@ -1596,7 +1596,7 @@ end
 
 --- Create a structure of type GetDomainSuggestionsResponse
 --  
--- @param SuggestionsList [DomainSuggestionsList] &lt;p&gt;A list of possible domain names. If you specified &lt;code&gt;true&lt;/code&gt; for &lt;code&gt;OnlyAvailable&lt;/code&gt; in the request, the list contains only domains that are available for registration.&lt;/p&gt;
+-- @param SuggestionsList [DomainSuggestionsList] <p>A list of possible domain names. If you specified <code>true</code> for <code>OnlyAvailable</code> in the request, the list contains only domains that are available for registration.</p>
 function M.GetDomainSuggestionsResponse(SuggestionsList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainSuggestionsResponse")
 	local t = { 
@@ -1622,10 +1622,10 @@ function M.AssertUpdateDomainNameserversRequest(struct)
 end
 
 --- Create a structure of type UpdateDomainNameserversRequest
--- &lt;p&gt;Replaces the current set of name servers for the domain with the specified set of name servers. If you use Amazon Route 53 as your DNS service, specify the four name servers in the delegation set for the hosted zone for the domain.&lt;/p&gt; &lt;p&gt;If successful, this operation returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email. &lt;/p&gt;
--- @param Nameservers [NameserverList] &lt;p&gt;A list of new name servers for the domain.&lt;/p&gt;
--- @param FIAuthKey [FIAuthKey] &lt;p&gt;The authorization key for .fi domains&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to change name servers for.&lt;/p&gt;
+-- <p>Replaces the current set of name servers for the domain with the specified set of name servers. If you use Amazon Route 53 as your DNS service, specify the four name servers in the delegation set for the hosted zone for the domain.</p> <p>If successful, this operation returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email. </p>
+-- @param Nameservers [NameserverList] <p>A list of new name servers for the domain.</p>
+-- @param FIAuthKey [FIAuthKey] <p>The authorization key for .fi domains</p>
+-- @param DomainName [DomainName] <p>The name of the domain that you want to change name servers for.</p>
 -- Required parameter: DomainName
 -- Required parameter: Nameservers
 function M.UpdateDomainNameserversRequest(Nameservers, FIAuthKey, DomainName, ...)
@@ -1652,8 +1652,8 @@ function M.AssertGetDomainDetailRequest(struct)
 end
 
 --- Create a structure of type GetDomainDetailRequest
--- &lt;p&gt;The GetDomainDetail request includes the following element.&lt;/p&gt;
--- @param DomainName [DomainName] &lt;p&gt;The name of the domain that you want to get detailed information about.&lt;/p&gt;
+-- <p>The GetDomainDetail request includes the following element.</p>
+-- @param DomainName [DomainName] <p>The name of the domain that you want to get detailed information about.</p>
 -- Required parameter: DomainName
 function M.GetDomainDetailRequest(DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainDetailRequest")
@@ -1678,9 +1678,9 @@ function M.AssertListDomainsResponse(struct)
 end
 
 --- Create a structure of type ListDomainsResponse
--- &lt;p&gt;The ListDomains response includes the following elements.&lt;/p&gt;
--- @param Domains [DomainSummaryList] &lt;p&gt;A summary of domains.&lt;/p&gt;
--- @param NextPageMarker [PageMarker] &lt;p&gt;If there are more domains than you specified for &lt;code&gt;MaxItems&lt;/code&gt; in the request, submit another request and include the value of &lt;code&gt;NextPageMarker&lt;/code&gt; in the value of &lt;code&gt;Marker&lt;/code&gt;.&lt;/p&gt;
+-- <p>The ListDomains response includes the following elements.</p>
+-- @param Domains [DomainSummaryList] <p>A summary of domains.</p>
+-- @param NextPageMarker [PageMarker] <p>If there are more domains than you specified for <code>MaxItems</code> in the request, submit another request and include the value of <code>NextPageMarker</code> in the value of <code>Marker</code>.</p>
 -- Required parameter: Domains
 function M.ListDomainsResponse(Domains, NextPageMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainsResponse")
@@ -1705,9 +1705,9 @@ function M.AssertListDomainsRequest(struct)
 end
 
 --- Create a structure of type ListDomainsRequest
--- &lt;p&gt;The ListDomains request includes the following elements.&lt;/p&gt;
--- @param Marker [PageMarker] &lt;p&gt;For an initial request for a list of domains, omit this element. If the number of domains that are associated with the current AWS account is greater than the value that you specified for &lt;code&gt;MaxItems&lt;/code&gt;, you can use &lt;code&gt;Marker&lt;/code&gt; to return additional domains. Get the value of &lt;code&gt;NextPageMarker&lt;/code&gt; from the previous response, and submit another request that includes the value of &lt;code&gt;NextPageMarker&lt;/code&gt; in the &lt;code&gt;Marker&lt;/code&gt; element.&lt;/p&gt; &lt;p&gt;Constraints: The marker must match the value specified in the previous request.&lt;/p&gt;
--- @param MaxItems [PageMaxItems] &lt;p&gt;Number of domains to be returned.&lt;/p&gt; &lt;p&gt;Default: 20&lt;/p&gt;
+-- <p>The ListDomains request includes the following elements.</p>
+-- @param Marker [PageMarker] <p>For an initial request for a list of domains, omit this element. If the number of domains that are associated with the current AWS account is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional domains. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element.</p> <p>Constraints: The marker must match the value specified in the previous request.</p>
+-- @param MaxItems [PageMaxItems] <p>Number of domains to be returned.</p> <p>Default: 20</p>
 function M.ListDomainsRequest(Marker, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainsRequest")
 	local t = { 
@@ -1732,9 +1732,9 @@ function M.AssertListOperationsResponse(struct)
 end
 
 --- Create a structure of type ListOperationsResponse
--- &lt;p&gt;The ListOperations response includes the following elements.&lt;/p&gt;
--- @param Operations [OperationSummaryList] &lt;p&gt;Lists summaries of the operations.&lt;/p&gt;
--- @param NextPageMarker [PageMarker] &lt;p&gt;If there are more operations than you specified for &lt;code&gt;MaxItems&lt;/code&gt; in the request, submit another request and include the value of &lt;code&gt;NextPageMarker&lt;/code&gt; in the value of &lt;code&gt;Marker&lt;/code&gt;.&lt;/p&gt;
+-- <p>The ListOperations response includes the following elements.</p>
+-- @param Operations [OperationSummaryList] <p>Lists summaries of the operations.</p>
+-- @param NextPageMarker [PageMarker] <p>If there are more operations than you specified for <code>MaxItems</code> in the request, submit another request and include the value of <code>NextPageMarker</code> in the value of <code>Marker</code>.</p>
 -- Required parameter: Operations
 function M.ListOperationsResponse(Operations, NextPageMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListOperationsResponse")
@@ -1758,8 +1758,8 @@ function M.AssertInvalidInput(struct)
 end
 
 --- Create a structure of type InvalidInput
--- &lt;p&gt;The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.&lt;/p&gt;
--- @param message [ErrorMessage] &lt;p&gt;The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.&lt;/p&gt;
+-- <p>The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.</p>
+-- @param message [ErrorMessage] <p>The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.</p>
 function M.InvalidInput(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInput")
 	local t = { 
@@ -1782,8 +1782,8 @@ function M.AssertRetrieveDomainAuthCodeResponse(struct)
 end
 
 --- Create a structure of type RetrieveDomainAuthCodeResponse
--- &lt;p&gt;The RetrieveDomainAuthCode response includes the following element.&lt;/p&gt;
--- @param AuthCode [DomainAuthCode] &lt;p&gt;The authorization code for the domain.&lt;/p&gt;
+-- <p>The RetrieveDomainAuthCode response includes the following element.</p>
+-- @param AuthCode [DomainAuthCode] <p>The authorization code for the domain.</p>
 -- Required parameter: AuthCode
 function M.RetrieveDomainAuthCodeResponse(AuthCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveDomainAuthCodeResponse")

@@ -29,7 +29,7 @@ function M.AssertInvocationDoesNotExist(struct)
 end
 
 --- Create a structure of type InvocationDoesNotExist
--- &lt;p&gt;The command ID and instance ID you specified did not match any invocations. Verify the command ID adn the instance ID and try again. &lt;/p&gt;
+-- <p>The command ID and instance ID you specified did not match any invocations. Verify the command ID adn the instance ID and try again. </p>
 function M.InvocationDoesNotExist(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvocationDoesNotExist")
 	local t = { 
@@ -54,8 +54,8 @@ end
 
 --- Create a structure of type UpdateManagedInstanceRoleRequest
 --  
--- @param InstanceId [ManagedInstanceId] &lt;p&gt;The ID of the managed instance where you want to update the role.&lt;/p&gt;
--- @param IamRole [IamRole] &lt;p&gt;The IAM role you want to assign or change.&lt;/p&gt;
+-- @param InstanceId [ManagedInstanceId] <p>The ID of the managed instance where you want to update the role.</p>
+-- @param IamRole [IamRole] <p>The IAM role you want to assign or change.</p>
 -- Required parameter: InstanceId
 -- Required parameter: IamRole
 function M.UpdateManagedInstanceRoleRequest(InstanceId, IamRole, ...)
@@ -81,7 +81,7 @@ end
 
 --- Create a structure of type ListTagsForResourceResult
 --  
--- @param TagList [TagList] &lt;p&gt;A list of tags.&lt;/p&gt;
+-- @param TagList [TagList] <p>A list of tags.</p>
 function M.ListTagsForResourceResult(TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResult")
 	local t = { 
@@ -104,7 +104,7 @@ end
 
 --- Create a structure of type CreateDocumentResult
 --  
--- @param DocumentDescription [DocumentDescription] &lt;p&gt;Information about the Systems Manager document.&lt;/p&gt;
+-- @param DocumentDescription [DocumentDescription] <p>Information about the Systems Manager document.</p>
 function M.CreateDocumentResult(DocumentDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDocumentResult")
 	local t = { 
@@ -127,9 +127,9 @@ function M.AssertMaintenanceWindowFilter(struct)
 end
 
 --- Create a structure of type MaintenanceWindowFilter
--- &lt;p&gt;Filter used in the request.&lt;/p&gt;
--- @param Values [MaintenanceWindowFilterValues] &lt;p&gt;The filter values.&lt;/p&gt;
--- @param Key [MaintenanceWindowFilterKey] &lt;p&gt;The name of the filter.&lt;/p&gt;
+-- <p>Filter used in the request.</p>
+-- @param Values [MaintenanceWindowFilterValues] <p>The filter values.</p>
+-- @param Key [MaintenanceWindowFilterKey] <p>The name of the filter.</p>
 function M.MaintenanceWindowFilter(Values, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowFilter")
 	local t = { 
@@ -154,7 +154,7 @@ end
 
 --- Create a structure of type StopAutomationExecutionRequest
 --  
--- @param AutomationExecutionId [AutomationExecutionId] &lt;p&gt;The execution ID of the Automation to stop.&lt;/p&gt;
+-- @param AutomationExecutionId [AutomationExecutionId] <p>The execution ID of the Automation to stop.</p>
 -- Required parameter: AutomationExecutionId
 function M.StopAutomationExecutionRequest(AutomationExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StopAutomationExecutionRequest")
@@ -177,8 +177,8 @@ function M.AssertInvalidNotificationConfig(struct)
 end
 
 --- Create a structure of type InvalidNotificationConfig
--- &lt;p&gt;One or more configuration items is not valid. Verify that a valid Amazon Resource Name (ARN) was provided for an Amazon SNS topic.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;One or more configuration items is not valid. Verify that a valid Amazon Resource Name (ARN) was provided for an Amazon SNS topic.&lt;/p&gt;
+-- <p>One or more configuration items is not valid. Verify that a valid Amazon Resource Name (ARN) was provided for an Amazon SNS topic.</p>
+-- @param Message [String] <p>One or more configuration items is not valid. Verify that a valid Amazon Resource Name (ARN) was provided for an Amazon SNS topic.</p>
 function M.InvalidNotificationConfig(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNotificationConfig")
 	local t = { 
@@ -205,13 +205,13 @@ function M.AssertDocumentIdentifier(struct)
 end
 
 --- Create a structure of type DocumentIdentifier
--- &lt;p&gt;Describes the name of an SSM document.&lt;/p&gt;
--- @param Name [DocumentARN] &lt;p&gt;The name of the SSM document.&lt;/p&gt;
--- @param PlatformTypes [PlatformTypeList] &lt;p&gt;The operating system platform. &lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version.&lt;/p&gt;
--- @param DocumentType [DocumentType] &lt;p&gt;The document type.&lt;/p&gt;
--- @param Owner [DocumentOwner] &lt;p&gt;The AWS user account of the person who created the document.&lt;/p&gt;
--- @param SchemaVersion [DocumentSchemaVersion] &lt;p&gt;The schema version.&lt;/p&gt;
+-- <p>Describes the name of an SSM document.</p>
+-- @param Name [DocumentARN] <p>The name of the SSM document.</p>
+-- @param PlatformTypes [PlatformTypeList] <p>The operating system platform. </p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- @param DocumentType [DocumentType] <p>The document type.</p>
+-- @param Owner [DocumentOwner] <p>The AWS user account of the person who created the document.</p>
+-- @param SchemaVersion [DocumentSchemaVersion] <p>The schema version.</p>
 function M.DocumentIdentifier(Name, PlatformTypes, DocumentVersion, DocumentType, Owner, SchemaVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentIdentifier")
 	local t = { 
@@ -239,7 +239,7 @@ end
 
 --- Create a structure of type RegisterDefaultPatchBaselineResult
 --  
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the default patch baseline.&lt;/p&gt;
+-- @param BaselineId [BaselineId] <p>The ID of the default patch baseline.</p>
 function M.RegisterDefaultPatchBaselineResult(BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDefaultPatchBaselineResult")
 	local t = { 
@@ -273,20 +273,20 @@ function M.AssertPatch(struct)
 end
 
 --- Create a structure of type Patch
--- &lt;p&gt;Represents metadata about a patch.&lt;/p&gt;
--- @param ContentUrl [PatchContentUrl] &lt;p&gt;The URL where more information can be obtained about the patch.&lt;/p&gt;
--- @param ProductFamily [PatchProductFamily] &lt;p&gt;The product family the patch is applicable for (for example, Windows).&lt;/p&gt;
--- @param Product [PatchProduct] &lt;p&gt;The specific product the patch is applicable for (for example, WindowsServer2016).&lt;/p&gt;
--- @param Vendor [PatchVendor] &lt;p&gt;The name of the vendor providing the patch.&lt;/p&gt;
--- @param Description [PatchDescription] &lt;p&gt;The description of the patch.&lt;/p&gt;
--- @param Classification [PatchClassification] &lt;p&gt;The classification of the patch (for example, SecurityUpdates, Updates, CriticalUpdates).&lt;/p&gt;
--- @param Title [PatchTitle] &lt;p&gt;The title of the patch.&lt;/p&gt;
--- @param ReleaseDate [DateTime] &lt;p&gt;The date the patch was released.&lt;/p&gt;
--- @param Language [PatchLanguage] &lt;p&gt;The language of the patch if it's language-specific.&lt;/p&gt;
--- @param MsrcSeverity [PatchMsrcSeverity] &lt;p&gt;The severity of the patch (for example Critical, Important, Moderate).&lt;/p&gt;
--- @param KbNumber [PatchKbNumber] &lt;p&gt;The Microsoft Knowledge Base ID of the patch.&lt;/p&gt;
--- @param MsrcNumber [PatchMsrcNumber] &lt;p&gt;The ID of the MSRC bulletin the patch is related to.&lt;/p&gt;
--- @param Id [PatchId] &lt;p&gt;The ID of the patch (this is different than the Microsoft Knowledge Base ID).&lt;/p&gt;
+-- <p>Represents metadata about a patch.</p>
+-- @param ContentUrl [PatchContentUrl] <p>The URL where more information can be obtained about the patch.</p>
+-- @param ProductFamily [PatchProductFamily] <p>The product family the patch is applicable for (for example, Windows).</p>
+-- @param Product [PatchProduct] <p>The specific product the patch is applicable for (for example, WindowsServer2016).</p>
+-- @param Vendor [PatchVendor] <p>The name of the vendor providing the patch.</p>
+-- @param Description [PatchDescription] <p>The description of the patch.</p>
+-- @param Classification [PatchClassification] <p>The classification of the patch (for example, SecurityUpdates, Updates, CriticalUpdates).</p>
+-- @param Title [PatchTitle] <p>The title of the patch.</p>
+-- @param ReleaseDate [DateTime] <p>The date the patch was released.</p>
+-- @param Language [PatchLanguage] <p>The language of the patch if it's language-specific.</p>
+-- @param MsrcSeverity [PatchMsrcSeverity] <p>The severity of the patch (for example Critical, Important, Moderate).</p>
+-- @param KbNumber [PatchKbNumber] <p>The Microsoft Knowledge Base ID of the patch.</p>
+-- @param MsrcNumber [PatchMsrcNumber] <p>The ID of the MSRC bulletin the patch is related to.</p>
+-- @param Id [PatchId] <p>The ID of the patch (this is different than the Microsoft Knowledge Base ID).</p>
 function M.Patch(ContentUrl, ProductFamily, Product, Vendor, Description, Classification, Title, ReleaseDate, Language, MsrcSeverity, KbNumber, MsrcNumber, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Patch")
 	local t = { 
@@ -322,8 +322,8 @@ end
 
 --- Create a structure of type DeregisterTaskFromMaintenanceWindowResult
 --  
--- @param WindowTaskId [MaintenanceWindowTaskId] &lt;p&gt;The ID of the task removed from the Maintenance Window.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window the task was removed from.&lt;/p&gt;
+-- @param WindowTaskId [MaintenanceWindowTaskId] <p>The ID of the task removed from the Maintenance Window.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the task was removed from.</p>
 function M.DeregisterTaskFromMaintenanceWindowResult(WindowTaskId, WindowId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTaskFromMaintenanceWindowResult")
 	local t = { 
@@ -352,14 +352,14 @@ function M.AssertParameterMetadata(struct)
 end
 
 --- Create a structure of type ParameterMetadata
--- &lt;p&gt;Metada includes information like the ARN of the last user and the date/time the parameter was last used.&lt;/p&gt;
--- @param KeyId [ParameterKeyId] &lt;p&gt;The ID of the query key used for this parameter.&lt;/p&gt;
--- @param Name [PSParameterName] &lt;p&gt;The parameter name.&lt;/p&gt;
--- @param LastModifiedDate [DateTime] &lt;p&gt;Date the parameter was last changed or updated.&lt;/p&gt;
--- @param AllowedPattern [AllowedPattern] &lt;p&gt;A parameter name can include only the following letters and symbols.&lt;/p&gt; &lt;p&gt;a-zA-Z0-9_.-&lt;/p&gt;
--- @param LastModifiedUser [String] &lt;p&gt;Amazon Resource Name (ARN) of the AWS user who last changed the parameter.&lt;/p&gt;
--- @param Type [ParameterType] &lt;p&gt;The type of parameter. Valid parameter types include the following: String, String list, Secure string.&lt;/p&gt;
--- @param Description [ParameterDescription] &lt;p&gt;Description of the parameter actions.&lt;/p&gt;
+-- <p>Metada includes information like the ARN of the last user and the date/time the parameter was last used.</p>
+-- @param KeyId [ParameterKeyId] <p>The ID of the query key used for this parameter.</p>
+-- @param Name [PSParameterName] <p>The parameter name.</p>
+-- @param LastModifiedDate [DateTime] <p>Date the parameter was last changed or updated.</p>
+-- @param AllowedPattern [AllowedPattern] <p>A parameter name can include only the following letters and symbols.</p> <p>a-zA-Z0-9_.-</p>
+-- @param LastModifiedUser [String] <p>Amazon Resource Name (ARN) of the AWS user who last changed the parameter.</p>
+-- @param Type [ParameterType] <p>The type of parameter. Valid parameter types include the following: String, String list, Secure string.</p>
+-- @param Description [ParameterDescription] <p>Description of the parameter actions.</p>
 function M.ParameterMetadata(KeyId, Name, LastModifiedDate, AllowedPattern, LastModifiedUser, Type, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterMetadata")
 	local t = { 
@@ -390,8 +390,8 @@ end
 
 --- Create a structure of type GetParametersRequest
 --  
--- @param Names [ParameterNameList] &lt;p&gt;Names of the parameters for which you want to query information.&lt;/p&gt;
--- @param WithDecryption [Boolean] &lt;p&gt;Return decrypted secure string value. Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.&lt;/p&gt;
+-- @param Names [ParameterNameList] <p>Names of the parameters for which you want to query information.</p>
+-- @param WithDecryption [Boolean] <p>Return decrypted secure string value. Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.</p>
 -- Required parameter: Names
 function M.GetParametersRequest(Names, WithDecryption, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetParametersRequest")
@@ -417,8 +417,8 @@ end
 
 --- Create a structure of type GetParametersResult
 --  
--- @param InvalidParameters [ParameterNameList] &lt;p&gt;A list of parameters that are not formatted correctly or do not run when executed.&lt;/p&gt;
--- @param Parameters [ParameterList] &lt;p&gt;A list of details for a parameter.&lt;/p&gt;
+-- @param InvalidParameters [ParameterNameList] <p>A list of parameters that are not formatted correctly or do not run when executed.</p>
+-- @param Parameters [ParameterList] <p>A list of details for a parameter.</p>
 function M.GetParametersResult(InvalidParameters, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetParametersResult")
 	local t = { 
@@ -444,9 +444,9 @@ function M.AssertPatchFilter(struct)
 end
 
 --- Create a structure of type PatchFilter
--- &lt;p&gt;Defines a patch filter.&lt;/p&gt;
--- @param Values [PatchFilterValueList] &lt;p&gt;The value for the filter key.&lt;/p&gt;
--- @param Key [PatchFilterKey] &lt;p&gt;The key for the filter (PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID)&lt;/p&gt;
+-- <p>Defines a patch filter.</p>
+-- @param Values [PatchFilterValueList] <p>The value for the filter key.</p>
+-- @param Key [PatchFilterKey] <p>The key for the filter (PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID)</p>
 -- Required parameter: Key
 -- Required parameter: Values
 function M.PatchFilter(Values, Key, ...)
@@ -472,9 +472,9 @@ function M.AssertItemSizeLimitExceededException(struct)
 end
 
 --- Create a structure of type ItemSizeLimitExceededException
--- &lt;p&gt;The inventory item size has exceeded the size limit.&lt;/p&gt;
--- @param TypeName [InventoryItemTypeName] &lt;p&gt;The inventory item size has exceeded the size limit.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The inventory item size has exceeded the size limit.&lt;/p&gt;
+-- <p>The inventory item size has exceeded the size limit.</p>
+-- @param TypeName [InventoryItemTypeName] <p>The inventory item size has exceeded the size limit.</p>
+-- @param Message [String] <p>The inventory item size has exceeded the size limit.</p>
 function M.ItemSizeLimitExceededException(TypeName, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ItemSizeLimitExceededException")
 	local t = { 
@@ -499,8 +499,8 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionTaskInvocationsResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param WindowExecutionTaskInvocationIdentities [MaintenanceWindowExecutionTaskInvocationIdentityList] &lt;p&gt;Information about the task invocation results per invocation.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param WindowExecutionTaskInvocationIdentities [MaintenanceWindowExecutionTaskInvocationIdentityList] <p>Information about the task invocation results per invocation.</p>
 function M.DescribeMaintenanceWindowExecutionTaskInvocationsResult(NextToken, WindowExecutionTaskInvocationIdentities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionTaskInvocationsResult")
 	local t = { 
@@ -523,8 +523,8 @@ function M.AssertResourceLimitExceededException(struct)
 end
 
 --- Create a structure of type ResourceLimitExceededException
--- &lt;p&gt;Error returned when the caller has exceeded the default resource limits (e.g. too many Maintenance Windows have been created).&lt;/p&gt;
--- @param Message [String] &lt;p&gt;Error returned when the caller has exceeded the default resource limits (e.g. too many Maintenance Windows have been created).&lt;/p&gt;
+-- <p>Error returned when the caller has exceeded the default resource limits (e.g. too many Maintenance Windows have been created).</p>
+-- @param Message [String] <p>Error returned when the caller has exceeded the default resource limits (e.g. too many Maintenance Windows have been created).</p>
 function M.ResourceLimitExceededException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceLimitExceededException")
 	local t = { 
@@ -552,9 +552,9 @@ end
 
 --- Create a structure of type AddTagsToResourceRequest
 --  
--- @param ResourceType [ResourceTypeForTagging] &lt;p&gt;Specifies the type of resource you are tagging.&lt;/p&gt;
--- @param ResourceId [ResourceId] &lt;p&gt;The resource ID you want to tag.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt; One or more tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string. &lt;/p&gt;
+-- @param ResourceType [ResourceTypeForTagging] <p>Specifies the type of resource you are tagging.</p>
+-- @param ResourceId [ResourceId] <p>The resource ID you want to tag.</p>
+-- @param Tags [TagList] <p> One or more tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string. </p>
 -- Required parameter: ResourceType
 -- Required parameter: ResourceId
 -- Required parameter: Tags
@@ -584,11 +584,11 @@ function M.AssertDocumentVersionInfo(struct)
 end
 
 --- Create a structure of type DocumentVersionInfo
--- &lt;p&gt;Version information about the document.&lt;/p&gt;
--- @param IsDefaultVersion [Boolean] &lt;p&gt;An identifier for the default version of the document.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The document name.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version.&lt;/p&gt;
--- @param CreatedDate [DateTime] &lt;p&gt;The date the document was created.&lt;/p&gt;
+-- <p>Version information about the document.</p>
+-- @param IsDefaultVersion [Boolean] <p>An identifier for the default version of the document.</p>
+-- @param Name [DocumentName] <p>The document name.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- @param CreatedDate [DateTime] <p>The date the document was created.</p>
 function M.DocumentVersionInfo(IsDefaultVersion, Name, DocumentVersion, CreatedDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentVersionInfo")
 	local t = { 
@@ -617,9 +617,9 @@ end
 
 --- Create a structure of type DescribeInstancePatchStatesRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [PatchComplianceMaxResults] &lt;p&gt;The maximum number of instances to return (per page).&lt;/p&gt;
--- @param InstanceIds [InstanceIdList] &lt;p&gt;The ID of the instance whose patch state information should be retrieved.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [PatchComplianceMaxResults] <p>The maximum number of instances to return (per page).</p>
+-- @param InstanceIds [InstanceIdList] <p>The ID of the instance whose patch state information should be retrieved.</p>
 -- Required parameter: InstanceIds
 function M.DescribeInstancePatchStatesRequest(NextToken, MaxResults, InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchStatesRequest")
@@ -648,10 +648,10 @@ end
 
 --- Create a structure of type GetDocumentResult
 --  
--- @param Content [DocumentContent] &lt;p&gt;The contents of the SSM document.&lt;/p&gt;
--- @param Name [DocumentARN] &lt;p&gt;The name of the SSM document.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version.&lt;/p&gt;
--- @param DocumentType [DocumentType] &lt;p&gt;The document type.&lt;/p&gt;
+-- @param Content [DocumentContent] <p>The contents of the SSM document.</p>
+-- @param Name [DocumentARN] <p>The name of the SSM document.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- @param DocumentType [DocumentType] <p>The document type.</p>
 function M.GetDocumentResult(Content, Name, DocumentVersion, DocumentType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentResult")
 	local t = { 
@@ -677,7 +677,7 @@ end
 
 --- Create a structure of type GetAutomationExecutionResult
 --  
--- @param AutomationExecution [AutomationExecution] &lt;p&gt;Detailed information about the current state of an automation execution.&lt;/p&gt;
+-- @param AutomationExecution [AutomationExecution] <p>Detailed information about the current state of an automation execution.</p>
 function M.GetAutomationExecutionResult(AutomationExecution, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAutomationExecutionResult")
 	local t = { 
@@ -698,7 +698,7 @@ function M.AssertInvalidFilterKey(struct)
 end
 
 --- Create a structure of type InvalidFilterKey
--- &lt;p&gt;The specified key is not valid.&lt;/p&gt;
+-- <p>The specified key is not valid.</p>
 function M.InvalidFilterKey(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFilterKey")
 	local t = { 
@@ -726,12 +726,12 @@ function M.AssertInventoryItem(struct)
 end
 
 --- Create a structure of type InventoryItem
--- &lt;p&gt;Information collected from managed instances based on your inventory policy document&lt;/p&gt;
--- @param ContentHash [InventoryItemContentHash] &lt;p&gt;MD5 hash of the inventory item type contents. The content hash is used to determine whether to update inventory information. The PutInventory API does not update the inventory item type contents if the MD5 hash has not changed since last update. &lt;/p&gt;
--- @param TypeName [InventoryItemTypeName] &lt;p&gt;The name of the inventory type. Default inventory item type names start with AWS. Custom inventory type names will start with Custom. Default inventory item types include the following: AWS:AWSComponent, AWS:Application, AWS:InstanceInformation, AWS:Network, and AWS:WindowsUpdate.&lt;/p&gt;
--- @param SchemaVersion [InventoryItemSchemaVersion] &lt;p&gt;The schema version for the inventory item.&lt;/p&gt;
--- @param CaptureTime [InventoryItemCaptureTime] &lt;p&gt;The time the inventory information was collected.&lt;/p&gt;
--- @param Content [InventoryItemEntryList] &lt;p&gt;The inventory data of the inventory type.&lt;/p&gt;
+-- <p>Information collected from managed instances based on your inventory policy document</p>
+-- @param ContentHash [InventoryItemContentHash] <p>MD5 hash of the inventory item type contents. The content hash is used to determine whether to update inventory information. The PutInventory API does not update the inventory item type contents if the MD5 hash has not changed since last update. </p>
+-- @param TypeName [InventoryItemTypeName] <p>The name of the inventory type. Default inventory item type names start with AWS. Custom inventory type names will start with Custom. Default inventory item types include the following: AWS:AWSComponent, AWS:Application, AWS:InstanceInformation, AWS:Network, and AWS:WindowsUpdate.</p>
+-- @param SchemaVersion [InventoryItemSchemaVersion] <p>The schema version for the inventory item.</p>
+-- @param CaptureTime [InventoryItemCaptureTime] <p>The time the inventory information was collected.</p>
+-- @param Content [InventoryItemEntryList] <p>The inventory data of the inventory type.</p>
 -- Required parameter: TypeName
 -- Required parameter: SchemaVersion
 -- Required parameter: CaptureTime
@@ -760,8 +760,8 @@ function M.AssertMaintenanceWindowTaskParameterValueExpression(struct)
 end
 
 --- Create a structure of type MaintenanceWindowTaskParameterValueExpression
--- &lt;p&gt;Defines the values for a task parameter.&lt;/p&gt;
--- @param Values [MaintenanceWindowTaskParameterValueList] &lt;p&gt;This field contains an array of 0 or more strings, each 1 to 255 characters in length.&lt;/p&gt;
+-- <p>Defines the values for a task parameter.</p>
+-- @param Values [MaintenanceWindowTaskParameterValueList] <p>This field contains an array of 0 or more strings, each 1 to 255 characters in length.</p>
 function M.MaintenanceWindowTaskParameterValueExpression(Values, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowTaskParameterValueExpression")
 	local t = { 
@@ -787,12 +787,12 @@ function M.AssertMaintenanceWindowIdentity(struct)
 end
 
 --- Create a structure of type MaintenanceWindowIdentity
--- &lt;p&gt;Information about the Maintenance Window.&lt;/p&gt;
--- @param Duration [MaintenanceWindowDurationHours] &lt;p&gt;The duration of the Maintenance Window in hours.&lt;/p&gt;
--- @param Cutoff [MaintenanceWindowCutoff] &lt;p&gt;The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window.&lt;/p&gt;
--- @param Enabled [MaintenanceWindowEnabled] &lt;p&gt;Whether the Maintenance Window is enabled.&lt;/p&gt;
--- @param Name [MaintenanceWindowName] &lt;p&gt;The name of the Maintenance Window.&lt;/p&gt;
+-- <p>Information about the Maintenance Window.</p>
+-- @param Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
+-- @param Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window.</p>
+-- @param Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Window is enabled.</p>
+-- @param Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
 function M.MaintenanceWindowIdentity(Duration, Cutoff, WindowId, Enabled, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowIdentity")
 	local t = { 
@@ -819,9 +819,9 @@ function M.AssertPatchStatus(struct)
 end
 
 --- Create a structure of type PatchStatus
--- &lt;p&gt;Information about the approval status of a patch.&lt;/p&gt;
--- @param ApprovalDate [DateTime] &lt;p&gt;The date the patch was approved (or will be approved if the status is PENDING_APPROVAL).&lt;/p&gt;
--- @param DeploymentStatus [PatchDeploymentStatus] &lt;p&gt;The approval status of a patch (APPROVED, PENDING_APPROVAL, EXPLICIT_APPROVED, EXPLICIT_REJECTED).&lt;/p&gt;
+-- <p>Information about the approval status of a patch.</p>
+-- @param ApprovalDate [DateTime] <p>The date the patch was approved (or will be approved if the status is PENDING_APPROVAL).</p>
+-- @param DeploymentStatus [PatchDeploymentStatus] <p>The approval status of a patch (APPROVED, PENDING_APPROVAL, EXPLICIT_APPROVED, EXPLICIT_REJECTED).</p>
 function M.PatchStatus(ApprovalDate, DeploymentStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PatchStatus")
 	local t = { 
@@ -846,8 +846,8 @@ end
 
 --- Create a structure of type ListDocumentsResult
 --  
--- @param DocumentIdentifiers [DocumentIdentifierList] &lt;p&gt;The names of the SSM documents.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param DocumentIdentifiers [DocumentIdentifierList] <p>The names of the SSM documents.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.ListDocumentsResult(DocumentIdentifiers, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDocumentsResult")
 	local t = { 
@@ -870,8 +870,8 @@ function M.AssertInvalidAutomationExecutionParametersException(struct)
 end
 
 --- Create a structure of type InvalidAutomationExecutionParametersException
--- &lt;p&gt;The supplied parameters for invoking the specified Automation document are incorrect. For example, they may not match the set of parameters permitted for the specified Automation document.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The supplied parameters for invoking the specified Automation document are incorrect. For example, they may not match the set of parameters permitted for the specified Automation document.&lt;/p&gt;
+-- <p>The supplied parameters for invoking the specified Automation document are incorrect. For example, they may not match the set of parameters permitted for the specified Automation document.</p>
+-- @param Message [String] <p>The supplied parameters for invoking the specified Automation document are incorrect. For example, they may not match the set of parameters permitted for the specified Automation document.</p>
 function M.InvalidAutomationExecutionParametersException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAutomationExecutionParametersException")
 	local t = { 
@@ -893,8 +893,8 @@ function M.AssertParameterAlreadyExists(struct)
 end
 
 --- Create a structure of type ParameterAlreadyExists
--- &lt;p&gt;The parameter already exists. You can't create duplicate parameters.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The parameter already exists. You can't create duplicate parameters.&lt;/p&gt;
+-- <p>The parameter already exists. You can't create duplicate parameters.</p>
+-- @param message [String] <p>The parameter already exists. You can't create duplicate parameters.</p>
 function M.ParameterAlreadyExists(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterAlreadyExists")
 	local t = { 
@@ -918,9 +918,9 @@ function M.AssertCancelCommandRequest(struct)
 end
 
 --- Create a structure of type CancelCommandRequest
--- &lt;p/&gt;
--- @param CommandId [CommandId] &lt;p&gt;The ID of the command you want to cancel.&lt;/p&gt;
--- @param InstanceIds [InstanceIdList] &lt;p&gt;(Optional) A list of instance IDs on which you want to cancel the command. If not provided, the command is canceled on every instance on which it was requested.&lt;/p&gt;
+-- <p/>
+-- @param CommandId [CommandId] <p>The ID of the command you want to cancel.</p>
+-- @param InstanceIds [InstanceIdList] <p>(Optional) A list of instance IDs on which you want to cancel the command. If not provided, the command is canceled on every instance on which it was requested.</p>
 -- Required parameter: CommandId
 function M.CancelCommandRequest(CommandId, InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelCommandRequest")
@@ -946,7 +946,7 @@ end
 
 --- Create a structure of type DeregisterManagedInstanceRequest
 --  
--- @param InstanceId [ManagedInstanceId] &lt;p&gt;The ID assigned to the managed instance when you registered it using the activation process. &lt;/p&gt;
+-- @param InstanceId [ManagedInstanceId] <p>The ID assigned to the managed instance when you registered it using the activation process. </p>
 -- Required parameter: InstanceId
 function M.DeregisterManagedInstanceRequest(InstanceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterManagedInstanceRequest")
@@ -988,27 +988,27 @@ function M.AssertCommand(struct)
 end
 
 --- Create a structure of type Command
--- &lt;p&gt;Describes a command request.&lt;/p&gt;
--- @param Comment [Comment] &lt;p&gt;User-specified information about the command, such as a brief description of what the command should do.&lt;/p&gt;
--- @param Status [CommandStatus] &lt;p&gt;The status of the command.&lt;/p&gt;
--- @param MaxErrors [MaxErrors] &lt;p&gt;The maximum number of errors allowed before the system stops sending the command to additional targets. You can specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 50. For more information about how to use MaxErrors, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html&quot;&gt;Executing a Command Using Systems Manager Run Command&lt;/a&gt;.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;The parameter values to be inserted in the document when executing the command.&lt;/p&gt;
--- @param ExpiresAfter [DateTime] &lt;p&gt;If this time is reached and the command has not already started executing, it will not execute. Calculated based on the ExpiresAfter user input provided as part of the SendCommand API.&lt;/p&gt;
--- @param ServiceRole [ServiceRole] &lt;p&gt;The IAM service role that Run Command uses to act on your behalf when sending notifications about command status changes. &lt;/p&gt;
--- @param DocumentName [DocumentName] &lt;p&gt;The name of the document requested for execution.&lt;/p&gt;
--- @param TargetCount [TargetCount] &lt;p&gt;The number of targets for the command.&lt;/p&gt;
--- @param OutputS3BucketName [S3BucketName] &lt;p&gt;The S3 bucket where the responses to the command executions should be stored. This was requested when issuing the command.&lt;/p&gt;
--- @param NotificationConfig [NotificationConfig] &lt;p&gt;Configurations for sending notifications about command status changes. &lt;/p&gt;
--- @param CompletedCount [CompletedCount] &lt;p&gt;The number of targets for which the command invocation reached a terminal state. Terminal states include the following: Success, Failed, Execution Timed Out, Delivery Timed Out, Canceled, Terminated, or Undeliverable.&lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call.&lt;/p&gt;
--- @param StatusDetails [StatusDetails] &lt;p&gt;A detailed status of the command execution. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html&quot;&gt;Run Command Status&lt;/a&gt;. StatusDetails can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Pending: The command has not been sent to any instances.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In Progress: The command has been sent to at least one instance but has not reached a final state on all instances.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Success: The command successfully executed on all invocations. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Delivery Timed Out: The value of MaxErrors or more command invocations shows a status of Delivery Timed Out. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Execution Timed Out: The value of MaxErrors or more command invocations shows a status of Execution Timed Out. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Failed: The value of MaxErrors or more command invocations shows a status of Failed. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Incomplete: The command was attempted on all instances and one or more invocations does not have a value of Success but not enough invocations failed for the status to be Failed. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Canceled: The command was terminated before it was completed. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Rate Exceeded: The number of instances targeted by the command exceeded the account limit for pending invocations. The system has canceled the command before executing it on any instance. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ErrorCount [ErrorCount] &lt;p&gt;The number of targets for which the status is Failed or Execution Timed Out.&lt;/p&gt;
--- @param OutputS3KeyPrefix [S3KeyPrefix] &lt;p&gt;The S3 directory path inside the bucket where the responses to the command executions should be stored. This was requested when issuing the command.&lt;/p&gt;
--- @param RequestedDateTime [DateTime] &lt;p&gt;The date and time the command was requested.&lt;/p&gt;
--- @param OutputS3Region [S3Region] &lt;p&gt;(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.&lt;/p&gt;
--- @param CommandId [CommandId] &lt;p&gt;A unique identifier for this command.&lt;/p&gt;
--- @param InstanceIds [InstanceIdList] &lt;p&gt;The instance IDs against which this command was requested.&lt;/p&gt;
--- @param MaxConcurrency [MaxConcurrency] &lt;p&gt;The maximum number of instances that are allowed to execute the command at the same time. You can specify a number of instances, such as 10, or a percentage of instances, such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html&quot;&gt;Executing a Command Using Systems Manager Run Command&lt;/a&gt;.&lt;/p&gt;
+-- <p>Describes a command request.</p>
+-- @param Comment [Comment] <p>User-specified information about the command, such as a brief description of what the command should do.</p>
+-- @param Status [CommandStatus] <p>The status of the command.</p>
+-- @param MaxErrors [MaxErrors] <p>The maximum number of errors allowed before the system stops sending the command to additional targets. You can specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 50. For more information about how to use MaxErrors, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using Systems Manager Run Command</a>.</p>
+-- @param Parameters [Parameters] <p>The parameter values to be inserted in the document when executing the command.</p>
+-- @param ExpiresAfter [DateTime] <p>If this time is reached and the command has not already started executing, it will not execute. Calculated based on the ExpiresAfter user input provided as part of the SendCommand API.</p>
+-- @param ServiceRole [ServiceRole] <p>The IAM service role that Run Command uses to act on your behalf when sending notifications about command status changes. </p>
+-- @param DocumentName [DocumentName] <p>The name of the document requested for execution.</p>
+-- @param TargetCount [TargetCount] <p>The number of targets for the command.</p>
+-- @param OutputS3BucketName [S3BucketName] <p>The S3 bucket where the responses to the command executions should be stored. This was requested when issuing the command.</p>
+-- @param NotificationConfig [NotificationConfig] <p>Configurations for sending notifications about command status changes. </p>
+-- @param CompletedCount [CompletedCount] <p>The number of targets for which the command invocation reached a terminal state. Terminal states include the following: Success, Failed, Execution Timed Out, Delivery Timed Out, Canceled, Terminated, or Undeliverable.</p>
+-- @param Targets [Targets] <p>An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call.</p>
+-- @param StatusDetails [StatusDetails] <p>A detailed status of the command execution. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to any instances.</p> </li> <li> <p>In Progress: The command has been sent to at least one instance but has not reached a final state on all instances.</p> </li> <li> <p>Success: The command successfully executed on all invocations. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The value of MaxErrors or more command invocations shows a status of Delivery Timed Out. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: The value of MaxErrors or more command invocations shows a status of Execution Timed Out. This is a terminal state.</p> </li> <li> <p>Failed: The value of MaxErrors or more command invocations shows a status of Failed. This is a terminal state.</p> </li> <li> <p>Incomplete: The command was attempted on all instances and one or more invocations does not have a value of Success but not enough invocations failed for the status to be Failed. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Rate Exceeded: The number of instances targeted by the command exceeded the account limit for pending invocations. The system has canceled the command before executing it on any instance. This is a terminal state.</p> </li> </ul>
+-- @param ErrorCount [ErrorCount] <p>The number of targets for which the status is Failed or Execution Timed Out.</p>
+-- @param OutputS3KeyPrefix [S3KeyPrefix] <p>The S3 directory path inside the bucket where the responses to the command executions should be stored. This was requested when issuing the command.</p>
+-- @param RequestedDateTime [DateTime] <p>The date and time the command was requested.</p>
+-- @param OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
+-- @param CommandId [CommandId] <p>A unique identifier for this command.</p>
+-- @param InstanceIds [InstanceIdList] <p>The instance IDs against which this command was requested.</p>
+-- @param MaxConcurrency [MaxConcurrency] <p>The maximum number of instances that are allowed to execute the command at the same time. You can specify a number of instances, such as 10, or a percentage of instances, such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using Systems Manager Run Command</a>.</p>
 function M.Command(Comment, Status, MaxErrors, Parameters, ExpiresAfter, ServiceRole, DocumentName, TargetCount, OutputS3BucketName, NotificationConfig, CompletedCount, Targets, StatusDetails, ErrorCount, OutputS3KeyPrefix, RequestedDateTime, OutputS3Region, CommandId, InstanceIds, MaxConcurrency, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Command")
 	local t = { 
@@ -1059,13 +1059,13 @@ end
 
 --- Create a structure of type PutParameterRequest
 --  
--- @param KeyId [ParameterKeyId] &lt;p&gt;The KMS Key ID that you want to use to encrypt a parameter when you choose the SecureString data type. If you don't specify a key ID, the system uses the default key associated with your AWS account.&lt;/p&gt;
--- @param Name [PSParameterName] &lt;p&gt;The name of the parameter that you want to add to the system.&lt;/p&gt;
--- @param Value [PSParameterValue] &lt;p&gt;The parameter value that you want to add to the system.&lt;/p&gt;
--- @param AllowedPattern [AllowedPattern] &lt;p&gt;A regular expression used to validate the parameter value. For example, for String types with values restricted to numbers, you can specify the following: AllowedPattern=^\d+$ &lt;/p&gt;
--- @param Type [ParameterType] &lt;p&gt;The type of parameter that you want to add to the system.&lt;/p&gt;
--- @param Overwrite [Boolean] &lt;p&gt;Overwrite an existing parameter. If not specified, will default to &quot;false&quot;.&lt;/p&gt;
--- @param Description [ParameterDescription] &lt;p&gt;Information about the parameter that you want to add to the system&lt;/p&gt;
+-- @param KeyId [ParameterKeyId] <p>The KMS Key ID that you want to use to encrypt a parameter when you choose the SecureString data type. If you don't specify a key ID, the system uses the default key associated with your AWS account.</p>
+-- @param Name [PSParameterName] <p>The name of the parameter that you want to add to the system.</p>
+-- @param Value [PSParameterValue] <p>The parameter value that you want to add to the system.</p>
+-- @param AllowedPattern [AllowedPattern] <p>A regular expression used to validate the parameter value. For example, for String types with values restricted to numbers, you can specify the following: AllowedPattern=^\d+$ </p>
+-- @param Type [ParameterType] <p>The type of parameter that you want to add to the system.</p>
+-- @param Overwrite [Boolean] <p>Overwrite an existing parameter. If not specified, will default to "false".</p>
+-- @param Description [ParameterDescription] <p>Information about the parameter that you want to add to the system</p>
 -- Required parameter: Name
 -- Required parameter: Value
 -- Required parameter: Type
@@ -1102,9 +1102,9 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceRequest
 --  
--- @param ResourceType [ResourceTypeForTagging] &lt;p&gt;The type of resource of which you want to remove a tag.&lt;/p&gt;
--- @param ResourceId [ResourceId] &lt;p&gt;The resource ID for which you want to remove tags.&lt;/p&gt;
--- @param TagKeys [KeyList] &lt;p&gt;Tag keys that you want to remove from the specified resource.&lt;/p&gt;
+-- @param ResourceType [ResourceTypeForTagging] <p>The type of resource of which you want to remove a tag.</p>
+-- @param ResourceId [ResourceId] <p>The resource ID for which you want to remove tags.</p>
+-- @param TagKeys [KeyList] <p>Tag keys that you want to remove from the specified resource.</p>
 -- Required parameter: ResourceType
 -- Required parameter: ResourceId
 -- Required parameter: TagKeys
@@ -1134,9 +1134,9 @@ function M.AssertDocumentFilter(struct)
 end
 
 --- Create a structure of type DocumentFilter
--- &lt;p&gt;Describes a filter.&lt;/p&gt;
--- @param value [DocumentFilterValue] &lt;p&gt;The value of the filter.&lt;/p&gt;
--- @param key [DocumentFilterKey] &lt;p&gt;The name of the filter.&lt;/p&gt;
+-- <p>Describes a filter.</p>
+-- @param value [DocumentFilterValue] <p>The value of the filter.</p>
+-- @param key [DocumentFilterKey] <p>The name of the filter.</p>
 -- Required parameter: key
 -- Required parameter: value
 function M.DocumentFilter(value, key, ...)
@@ -1165,8 +1165,8 @@ end
 
 --- Create a structure of type GetDeployablePatchSnapshotForInstanceRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the instance for which the appropriate patch snapshot should be retrieved.&lt;/p&gt;
--- @param SnapshotId [SnapshotId] &lt;p&gt;The user-defined snapshot ID.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>The ID of the instance for which the appropriate patch snapshot should be retrieved.</p>
+-- @param SnapshotId [SnapshotId] <p>The user-defined snapshot ID.</p>
 -- Required parameter: InstanceId
 -- Required parameter: SnapshotId
 function M.GetDeployablePatchSnapshotForInstanceRequest(InstanceId, SnapshotId, ...)
@@ -1197,12 +1197,12 @@ end
 
 --- Create a structure of type GetMaintenanceWindowExecutionResult
 --  
--- @param Status [MaintenanceWindowExecutionStatus] &lt;p&gt;The status of the Maintenance Window execution.&lt;/p&gt;
--- @param TaskIds [MaintenanceWindowExecutionTaskIdList] &lt;p&gt;The ID of the task executions from the Maintenance Window execution.&lt;/p&gt;
--- @param StartTime [DateTime] &lt;p&gt;The time the Maintenance Window started executing.&lt;/p&gt;
--- @param EndTime [DateTime] &lt;p&gt;The time the Maintenance Window finished executing.&lt;/p&gt;
--- @param WindowExecutionId [MaintenanceWindowExecutionId] &lt;p&gt;The ID of the Maintenance Window execution.&lt;/p&gt;
--- @param StatusDetails [MaintenanceWindowExecutionStatusDetails] &lt;p&gt;The details explaining the Status. Only available for certain status values.&lt;/p&gt;
+-- @param Status [MaintenanceWindowExecutionStatus] <p>The status of the Maintenance Window execution.</p>
+-- @param TaskIds [MaintenanceWindowExecutionTaskIdList] <p>The ID of the task executions from the Maintenance Window execution.</p>
+-- @param StartTime [DateTime] <p>The time the Maintenance Window started executing.</p>
+-- @param EndTime [DateTime] <p>The time the Maintenance Window finished executing.</p>
+-- @param WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution.</p>
+-- @param StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
 function M.GetMaintenanceWindowExecutionResult(Status, TaskIds, StartTime, EndTime, WindowExecutionId, StatusDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowExecutionResult")
 	local t = { 
@@ -1234,11 +1234,11 @@ end
 
 --- Create a structure of type ListCommandsRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;(Optional) Lists commands issued against this instance ID.&lt;/p&gt;
--- @param Filters [CommandFilterList] &lt;p&gt;(Optional) One or more filters. Use a filter to return a more specific list of results. &lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;(Optional) The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param CommandId [CommandId] &lt;p&gt;(Optional) If provided, lists only the specified command.&lt;/p&gt;
--- @param MaxResults [CommandMaxResults] &lt;p&gt;(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>(Optional) Lists commands issued against this instance ID.</p>
+-- @param Filters [CommandFilterList] <p>(Optional) One or more filters. Use a filter to return a more specific list of results. </p>
+-- @param NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param CommandId [CommandId] <p>(Optional) If provided, lists only the specified command.</p>
+-- @param MaxResults [CommandMaxResults] <p>(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 function M.ListCommandsRequest(InstanceId, Filters, NextToken, CommandId, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCommandsRequest")
 	local t = { 
@@ -1267,9 +1267,9 @@ end
 
 --- Create a structure of type GetDeployablePatchSnapshotForInstanceResult
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param SnapshotId [SnapshotId] &lt;p&gt;The user-defined snapshot ID.&lt;/p&gt;
--- @param SnapshotDownloadUrl [SnapshotDownloadUrl] &lt;p&gt;A pre-signed Amazon S3 URL that can be used to download the patch snapshot.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- @param SnapshotId [SnapshotId] <p>The user-defined snapshot ID.</p>
+-- @param SnapshotDownloadUrl [SnapshotDownloadUrl] <p>A pre-signed Amazon S3 URL that can be used to download the patch snapshot.</p>
 function M.GetDeployablePatchSnapshotForInstanceResult(InstanceId, SnapshotId, SnapshotDownloadUrl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeployablePatchSnapshotForInstanceResult")
 	local t = { 
@@ -1300,11 +1300,11 @@ end
 
 --- Create a structure of type ListInventoryEntriesRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;The instance ID for which you want inventory information.&lt;/p&gt;
--- @param TypeName [InventoryItemTypeName] &lt;p&gt;The type of inventory item for which you want information.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Filters [InventoryFilterList] &lt;p&gt;One or more filters. Use a filter to return a more specific list of results.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>The instance ID for which you want inventory information.</p>
+-- @param TypeName [InventoryItemTypeName] <p>The type of inventory item for which you want information.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Filters [InventoryFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
 -- Required parameter: InstanceId
 -- Required parameter: TypeName
 function M.ListInventoryEntriesRequest(InstanceId, TypeName, NextToken, MaxResults, Filters, ...)
@@ -1332,8 +1332,8 @@ function M.AssertDocumentVersionLimitExceeded(struct)
 end
 
 --- Create a structure of type DocumentVersionLimitExceeded
--- &lt;p&gt;The document has too many versions. Delete one or more document versions and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The document has too many versions. Delete one or more document versions and try again.&lt;/p&gt;
+-- <p>The document has too many versions. Delete one or more document versions and try again.</p>
+-- @param Message [String] <p>The document has too many versions. Delete one or more document versions and try again.</p>
 function M.DocumentVersionLimitExceeded(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentVersionLimitExceeded")
 	local t = { 
@@ -1356,7 +1356,7 @@ end
 
 --- Create a structure of type DeletePatchBaselineResult
 --  
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the deleted patch baseline.&lt;/p&gt;
+-- @param BaselineId [BaselineId] <p>The ID of the deleted patch baseline.</p>
 function M.DeletePatchBaselineResult(BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePatchBaselineResult")
 	local t = { 
@@ -1379,7 +1379,7 @@ end
 
 --- Create a structure of type DescribeDocumentPermissionResponse
 --  
--- @param AccountIds [AccountIdList] &lt;p&gt;The account IDs that have permission to use this document. The ID can be either an AWS account or &lt;i&gt;All&lt;/i&gt;.&lt;/p&gt;
+-- @param AccountIds [AccountIdList] <p>The account IDs that have permission to use this document. The ID can be either an AWS account or <i>All</i>.</p>
 function M.DescribeDocumentPermissionResponse(AccountIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentPermissionResponse")
 	local t = { 
@@ -1419,17 +1419,17 @@ end
 
 --- Create a structure of type RegisterTaskWithMaintenanceWindowRequest
 --  
--- @param ServiceRoleArn [ServiceRole] &lt;p&gt;The role that should be assumed when executing the task.&lt;/p&gt;
--- @param LoggingInfo [LoggingInfo] &lt;p&gt;A structure containing information about an Amazon S3 bucket to write instance-level logs to. &lt;/p&gt;
--- @param MaxErrors [MaxErrors] &lt;p&gt;The maximum number of errors allowed before this task stops being scheduled.&lt;/p&gt;
--- @param TaskArn [MaintenanceWindowTaskArn] &lt;p&gt;The ARN of the task to execute &lt;/p&gt;
--- @param MaxConcurrency [MaxConcurrency] &lt;p&gt;The maximum number of targets this task can be run for in parallel.&lt;/p&gt;
--- @param ClientToken [ClientToken] &lt;p&gt;User-provided idempotency token.&lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&amp;lt;instanceid1&amp;gt;,&amp;lt;instanceid2&amp;gt;. Tags are specified using Key=&amp;lt;tag name&amp;gt;,Values=&amp;lt;tag value&amp;gt;.&lt;/p&gt;
--- @param Priority [MaintenanceWindowTaskPriority] &lt;p&gt;The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The id of the Maintenance Window the task should be added to.&lt;/p&gt;
--- @param TaskType [MaintenanceWindowTaskType] &lt;p&gt;The type of task being registered.&lt;/p&gt;
--- @param TaskParameters [MaintenanceWindowTaskParameters] &lt;p&gt;The parameters that should be passed to the task when it is executed.&lt;/p&gt;
+-- @param ServiceRoleArn [ServiceRole] <p>The role that should be assumed when executing the task.</p>
+-- @param LoggingInfo [LoggingInfo] <p>A structure containing information about an Amazon S3 bucket to write instance-level logs to. </p>
+-- @param MaxErrors [MaxErrors] <p>The maximum number of errors allowed before this task stops being scheduled.</p>
+-- @param TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the task to execute </p>
+-- @param MaxConcurrency [MaxConcurrency] <p>The maximum number of targets this task can be run for in parallel.</p>
+-- @param ClientToken [ClientToken] <p>User-provided idempotency token.</p>
+-- @param Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
+-- @param Priority [MaintenanceWindowTaskPriority] <p>The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The id of the Maintenance Window the task should be added to.</p>
+-- @param TaskType [MaintenanceWindowTaskType] <p>The type of task being registered.</p>
+-- @param TaskParameters [MaintenanceWindowTaskParameters] <p>The parameters that should be passed to the task when it is executed.</p>
 -- Required parameter: WindowId
 -- Required parameter: Targets
 -- Required parameter: TaskArn
@@ -1476,13 +1476,13 @@ end
 
 --- Create a structure of type CreateAssociationRequest
 --  
--- @param ScheduleExpression [ScheduleExpression] &lt;p&gt;A cron expression when the association will be applied to the target(s).&lt;/p&gt;
--- @param OutputLocation [InstanceAssociationOutputLocation] &lt;p&gt;An Amazon S3 bucket where you want to store the output details of the request.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the Systems Manager document.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;The parameters for the documents runtime configuration. &lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version you want to associate with the target(s). Can be a specific version or the default version.&lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;The targets (either instances or tags) for the association.&lt;/p&gt;
+-- @param ScheduleExpression [ScheduleExpression] <p>A cron expression when the association will be applied to the target(s).</p>
+-- @param OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the output details of the request.</p>
+-- @param Name [DocumentName] <p>The name of the Systems Manager document.</p>
+-- @param Parameters [Parameters] <p>The parameters for the documents runtime configuration. </p>
+-- @param InstanceId [InstanceId] <p>The instance ID.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version you want to associate with the target(s). Can be a specific version or the default version.</p>
+-- @param Targets [Targets] <p>The targets (either instances or tags) for the association.</p>
 -- Required parameter: Name
 function M.CreateAssociationRequest(ScheduleExpression, OutputLocation, Name, Parameters, InstanceId, DocumentVersion, Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssociationRequest")
@@ -1513,8 +1513,8 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowTargetsResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param Targets [MaintenanceWindowTargetList] &lt;p&gt;Information about the targets in the Maintenance Window.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param Targets [MaintenanceWindowTargetList] <p>Information about the targets in the Maintenance Window.</p>
 function M.DescribeMaintenanceWindowTargetsResult(NextToken, Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowTargetsResult")
 	local t = { 
@@ -1543,12 +1543,12 @@ end
 
 --- Create a structure of type DescribePatchGroupStateResult
 --  
--- @param InstancesWithNotApplicablePatches [Integer] &lt;p&gt;The number of instances with patches that aren't applicable.&lt;/p&gt;
--- @param InstancesWithMissingPatches [Integer] &lt;p&gt;The number of instances with missing patches from the patch baseline.&lt;/p&gt;
--- @param InstancesWithFailedPatches [Integer] &lt;p&gt;The number of instances with patches from the patch baseline that failed to install.&lt;/p&gt;
--- @param InstancesWithInstalledOtherPatches [Integer] &lt;p&gt;The number of instances with patches installed that aren't defined in the patch baseline.&lt;/p&gt;
--- @param Instances [Integer] &lt;p&gt;The number of instances in the patch group.&lt;/p&gt;
--- @param InstancesWithInstalledPatches [Integer] &lt;p&gt;The number of instances with installed patches.&lt;/p&gt;
+-- @param InstancesWithNotApplicablePatches [Integer] <p>The number of instances with patches that aren't applicable.</p>
+-- @param InstancesWithMissingPatches [Integer] <p>The number of instances with missing patches from the patch baseline.</p>
+-- @param InstancesWithFailedPatches [Integer] <p>The number of instances with patches from the patch baseline that failed to install.</p>
+-- @param InstancesWithInstalledOtherPatches [Integer] <p>The number of instances with patches installed that aren't defined in the patch baseline.</p>
+-- @param Instances [Integer] <p>The number of instances in the patch group.</p>
+-- @param InstancesWithInstalledPatches [Integer] <p>The number of instances with installed patches.</p>
 function M.DescribePatchGroupStateResult(InstancesWithNotApplicablePatches, InstancesWithMissingPatches, InstancesWithFailedPatches, InstancesWithInstalledOtherPatches, Instances, InstancesWithInstalledPatches, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchGroupStateResult")
 	local t = { 
@@ -1576,9 +1576,9 @@ function M.AssertItemContentMismatchException(struct)
 end
 
 --- Create a structure of type ItemContentMismatchException
--- &lt;p&gt;The inventory item has invalid content. &lt;/p&gt;
--- @param TypeName [InventoryItemTypeName] &lt;p&gt;The inventory item has invalid content. &lt;/p&gt;
--- @param Message [String] &lt;p&gt;The inventory item has invalid content. &lt;/p&gt;
+-- <p>The inventory item has invalid content. </p>
+-- @param TypeName [InventoryItemTypeName] <p>The inventory item has invalid content. </p>
+-- @param Message [String] <p>The inventory item has invalid content. </p>
 function M.ItemContentMismatchException(TypeName, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ItemContentMismatchException")
 	local t = { 
@@ -1603,7 +1603,7 @@ end
 
 --- Create a structure of type DeleteParameterRequest
 --  
--- @param Name [PSParameterName] &lt;p&gt;The name of the parameter to delete.&lt;/p&gt;
+-- @param Name [PSParameterName] <p>The name of the parameter to delete.</p>
 -- Required parameter: Name
 function M.DeleteParameterRequest(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParameterRequest")
@@ -1626,8 +1626,8 @@ function M.AssertInvalidTarget(struct)
 end
 
 --- Create a structure of type InvalidTarget
--- &lt;p&gt;The target is not valid or does not exist. It might not be configured for EC2 Systems Manager or you might not have permission to perform the operation.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The target is not valid or does not exist. It might not be configured for EC2 Systems Manager or you might not have permission to perform the operation.&lt;/p&gt;
+-- <p>The target is not valid or does not exist. It might not be configured for EC2 Systems Manager or you might not have permission to perform the operation.</p>
+-- @param Message [String] <p>The target is not valid or does not exist. It might not be configured for EC2 Systems Manager or you might not have permission to perform the operation.</p>
 function M.InvalidTarget(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTarget")
 	local t = { 
@@ -1651,10 +1651,10 @@ function M.AssertInstanceAssociation(struct)
 end
 
 --- Create a structure of type InstanceAssociation
--- &lt;p&gt;One or more association documents on the instance. &lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param Content [DocumentContent] &lt;p&gt;The content of the association document for the instance(s).&lt;/p&gt;
--- @param AssociationId [AssociationId] &lt;p&gt;The association ID.&lt;/p&gt;
+-- <p>One or more association documents on the instance. </p>
+-- @param InstanceId [InstanceId] <p>The instance ID.</p>
+-- @param Content [DocumentContent] <p>The content of the association document for the instance(s).</p>
+-- @param AssociationId [AssociationId] <p>The association ID.</p>
 function M.InstanceAssociation(InstanceId, Content, AssociationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAssociation")
 	local t = { 
@@ -1680,8 +1680,8 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionTasksResult
 --  
--- @param WindowExecutionTaskIdentities [MaintenanceWindowExecutionTaskIdentityList] &lt;p&gt;Information about the task executions.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param WindowExecutionTaskIdentities [MaintenanceWindowExecutionTaskIdentityList] <p>Information about the task executions.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.DescribeMaintenanceWindowExecutionTasksResult(WindowExecutionTaskIdentities, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionTasksResult")
 	local t = { 
@@ -1706,8 +1706,8 @@ end
 
 --- Create a structure of type DescribeAvailablePatchesResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param Patches [PatchList] &lt;p&gt;An array of patches. Each entry in the array is a patch structure.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param Patches [PatchList] <p>An array of patches. Each entry in the array is a patch structure.</p>
 function M.DescribeAvailablePatchesResult(NextToken, Patches, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAvailablePatchesResult")
 	local t = { 
@@ -1734,8 +1734,8 @@ end
 
 --- Create a structure of type RegisterPatchBaselineForPatchGroupRequest
 --  
--- @param PatchGroup [PatchGroup] &lt;p&gt;The name of the patch group that should be registered with the patch baseline.&lt;/p&gt;
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline to register the patch group with.&lt;/p&gt;
+-- @param PatchGroup [PatchGroup] <p>The name of the patch group that should be registered with the patch baseline.</p>
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline to register the patch group with.</p>
 -- Required parameter: BaselineId
 -- Required parameter: PatchGroup
 function M.RegisterPatchBaselineForPatchGroupRequest(PatchGroup, BaselineId, ...)
@@ -1770,18 +1770,18 @@ function M.AssertStepExecution(struct)
 end
 
 --- Create a structure of type StepExecution
--- &lt;p&gt;Detailed information about an the execution state of an Automation step.&lt;/p&gt;
--- @param Inputs [NormalStringMap] &lt;p&gt;Fully-resolved values passed into the step before execution.&lt;/p&gt;
--- @param Outputs [AutomationParameterMap] &lt;p&gt;Returned values from the execution of the step.&lt;/p&gt;
--- @param StepName [String] &lt;p&gt;The name of this execution step.&lt;/p&gt;
--- @param FailureMessage [String] &lt;p&gt;If a step failed, this message explains why the execution failed.&lt;/p&gt;
--- @param ExecutionEndTime [DateTime] &lt;p&gt;If a step has finished execution, this contains the time the execution ended. If the step has not yet concluded, this field is not populated.&lt;/p&gt;
--- @param FailureDetails [FailureDetails] &lt;p&gt;Information about the Automation failure.&lt;/p&gt;
--- @param ResponseCode [String] &lt;p&gt;The response code returned by the execution of the step.&lt;/p&gt;
--- @param ExecutionStartTime [DateTime] &lt;p&gt;If a step has begun execution, this contains the time the step started. If the step is in Pending status, this field is not populated.&lt;/p&gt;
--- @param Action [AutomationActionName] &lt;p&gt;The action this step performs. The action determines the behavior of the step.&lt;/p&gt;
--- @param Response [String] &lt;p&gt;A message associated with the response code for an execution.&lt;/p&gt;
--- @param StepStatus [AutomationExecutionStatus] &lt;p&gt;The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and TimedOut.&lt;/p&gt;
+-- <p>Detailed information about an the execution state of an Automation step.</p>
+-- @param Inputs [NormalStringMap] <p>Fully-resolved values passed into the step before execution.</p>
+-- @param Outputs [AutomationParameterMap] <p>Returned values from the execution of the step.</p>
+-- @param StepName [String] <p>The name of this execution step.</p>
+-- @param FailureMessage [String] <p>If a step failed, this message explains why the execution failed.</p>
+-- @param ExecutionEndTime [DateTime] <p>If a step has finished execution, this contains the time the execution ended. If the step has not yet concluded, this field is not populated.</p>
+-- @param FailureDetails [FailureDetails] <p>Information about the Automation failure.</p>
+-- @param ResponseCode [String] <p>The response code returned by the execution of the step.</p>
+-- @param ExecutionStartTime [DateTime] <p>If a step has begun execution, this contains the time the step started. If the step is in Pending status, this field is not populated.</p>
+-- @param Action [AutomationActionName] <p>The action this step performs. The action determines the behavior of the step.</p>
+-- @param Response [String] <p>A message associated with the response code for an execution.</p>
+-- @param StepStatus [AutomationExecutionStatus] <p>The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and TimedOut.</p>
 function M.StepExecution(Inputs, Outputs, StepName, FailureMessage, ExecutionEndTime, FailureDetails, ResponseCode, ExecutionStartTime, Action, Response, StepStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StepExecution")
 	local t = { 
@@ -1818,10 +1818,10 @@ function M.AssertInstancePatchStateFilter(struct)
 end
 
 --- Create a structure of type InstancePatchStateFilter
--- &lt;p&gt;Defines a filter used in DescribeInstancePatchStatesForPatchGroup used to scope down the information returned by the API.&lt;/p&gt;
--- @param Type [InstancePatchStateOperatorType] &lt;p&gt;The type of comparison that should be performed for the value: Equal, NotEqual, LessThan or GreaterThan.&lt;/p&gt;
--- @param Values [InstancePatchStateFilterValues] &lt;p&gt;The value for the filter, must be an integer greater than or equal to 0.&lt;/p&gt;
--- @param Key [InstancePatchStateFilterKey] &lt;p&gt;The key for the filter. Supported values are FailedCount, InstalledCount, InstalledOtherCount, MissingCount and NotApplicableCount.&lt;/p&gt;
+-- <p>Defines a filter used in DescribeInstancePatchStatesForPatchGroup used to scope down the information returned by the API.</p>
+-- @param Type [InstancePatchStateOperatorType] <p>The type of comparison that should be performed for the value: Equal, NotEqual, LessThan or GreaterThan.</p>
+-- @param Values [InstancePatchStateFilterValues] <p>The value for the filter, must be an integer greater than or equal to 0.</p>
+-- @param Key [InstancePatchStateFilterKey] <p>The key for the filter. Supported values are FailedCount, InstalledCount, InstalledOtherCount, MissingCount and NotApplicableCount.</p>
 -- Required parameter: Key
 -- Required parameter: Values
 -- Required parameter: Type
@@ -1851,9 +1851,9 @@ end
 
 --- Create a structure of type DescribePatchBaselinesRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [PatchBaselineMaxResults] &lt;p&gt;The maximum number of patch baselines to return (per page).&lt;/p&gt;
--- @param Filters [PatchOrchestratorFilterList] &lt;p&gt;Each element in the array is a structure containing: &lt;/p&gt; &lt;p&gt;Key: (string, &quot;NAME_PREFIX&quot; or &quot;OWNER&quot;)&lt;/p&gt; &lt;p&gt;Value: (array of strings, exactly 1 entry, between 1 and 255 characters)&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [PatchBaselineMaxResults] <p>The maximum number of patch baselines to return (per page).</p>
+-- @param Filters [PatchOrchestratorFilterList] <p>Each element in the array is a structure containing: </p> <p>Key: (string, "NAME_PREFIX" or "OWNER")</p> <p>Value: (array of strings, exactly 1 entry, between 1 and 255 characters)</p>
 function M.DescribePatchBaselinesRequest(NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchBaselinesRequest")
 	local t = { 
@@ -1877,8 +1877,8 @@ function M.AssertAutomationDefinitionVersionNotFoundException(struct)
 end
 
 --- Create a structure of type AutomationDefinitionVersionNotFoundException
--- &lt;p&gt;An Automation document with the specified name and version could not be found.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;An Automation document with the specified name and version could not be found.&lt;/p&gt;
+-- <p>An Automation document with the specified name and version could not be found.</p>
+-- @param Message [String] <p>An Automation document with the specified name and version could not be found.</p>
 function M.AutomationDefinitionVersionNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutomationDefinitionVersionNotFoundException")
 	local t = { 
@@ -1902,8 +1902,8 @@ end
 
 --- Create a structure of type DescribeActivationsResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. Use this token to get the next set of results. &lt;/p&gt;
--- @param ActivationList [ActivationList] &lt;p&gt;A list of activations for your AWS account.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. Use this token to get the next set of results. </p>
+-- @param ActivationList [ActivationList] <p>A list of activations for your AWS account.</p>
 function M.DescribeActivationsResult(NextToken, ActivationList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivationsResult")
 	local t = { 
@@ -1927,7 +1927,7 @@ end
 
 --- Create a structure of type StartAutomationExecutionResult
 --  
--- @param AutomationExecutionId [AutomationExecutionId] &lt;p&gt;The unique ID of a newly scheduled automation execution.&lt;/p&gt;
+-- @param AutomationExecutionId [AutomationExecutionId] <p>The unique ID of a newly scheduled automation execution.</p>
 function M.StartAutomationExecutionResult(AutomationExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartAutomationExecutionResult")
 	local t = { 
@@ -1951,8 +1951,8 @@ end
 
 --- Create a structure of type ListDocumentVersionsResult
 --  
--- @param DocumentVersions [DocumentVersionList] &lt;p&gt;The document versions.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param DocumentVersions [DocumentVersionList] <p>The document versions.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.ListDocumentVersionsResult(DocumentVersions, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDocumentVersionsResult")
 	local t = { 
@@ -1979,9 +1979,9 @@ end
 
 --- Create a structure of type DescribeEffectivePatchesForPatchBaselineRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline to retrieve the effective patches for.&lt;/p&gt;
--- @param MaxResults [PatchBaselineMaxResults] &lt;p&gt;The maximum number of patches to return (per page).&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline to retrieve the effective patches for.</p>
+-- @param MaxResults [PatchBaselineMaxResults] <p>The maximum number of patches to return (per page).</p>
 -- Required parameter: BaselineId
 function M.DescribeEffectivePatchesForPatchBaselineRequest(NextToken, BaselineId, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEffectivePatchesForPatchBaselineRequest")
@@ -2014,16 +2014,16 @@ function M.AssertActivation(struct)
 end
 
 --- Create a structure of type Activation
--- &lt;p&gt;An activation registers one or more on-premises servers or virtual machines (VMs) with AWS so that you can configure those servers or VMs using Run Command. A server or VM that has been registered with AWS is called a managed instance.&lt;/p&gt;
--- @param IamRole [IamRole] &lt;p&gt;The Amazon Identity and Access Management (IAM) role to assign to the managed instance.&lt;/p&gt;
--- @param RegistrationLimit [RegistrationLimit] &lt;p&gt;The maximum number of managed instances that can be registered using this activation.&lt;/p&gt;
--- @param Description [ActivationDescription] &lt;p&gt;A user defined description of the activation.&lt;/p&gt;
--- @param ActivationId [ActivationId] &lt;p&gt;The ID created by Systems Manager when you submitted the activation.&lt;/p&gt;
--- @param RegistrationsCount [RegistrationsCount] &lt;p&gt;The number of managed instances already registered with this activation.&lt;/p&gt;
--- @param CreatedDate [CreatedDate] &lt;p&gt;The date the activation was created.&lt;/p&gt;
--- @param DefaultInstanceName [DefaultInstanceName] &lt;p&gt;A name for the managed instance when it is created.&lt;/p&gt;
--- @param Expired [Boolean] &lt;p&gt;Whether or not the activation is expired.&lt;/p&gt;
--- @param ExpirationDate [ExpirationDate] &lt;p&gt;The date when this activation can no longer be used to register managed instances.&lt;/p&gt;
+-- <p>An activation registers one or more on-premises servers or virtual machines (VMs) with AWS so that you can configure those servers or VMs using Run Command. A server or VM that has been registered with AWS is called a managed instance.</p>
+-- @param IamRole [IamRole] <p>The Amazon Identity and Access Management (IAM) role to assign to the managed instance.</p>
+-- @param RegistrationLimit [RegistrationLimit] <p>The maximum number of managed instances that can be registered using this activation.</p>
+-- @param Description [ActivationDescription] <p>A user defined description of the activation.</p>
+-- @param ActivationId [ActivationId] <p>The ID created by Systems Manager when you submitted the activation.</p>
+-- @param RegistrationsCount [RegistrationsCount] <p>The number of managed instances already registered with this activation.</p>
+-- @param CreatedDate [CreatedDate] <p>The date the activation was created.</p>
+-- @param DefaultInstanceName [DefaultInstanceName] <p>A name for the managed instance when it is created.</p>
+-- @param Expired [Boolean] <p>Whether or not the activation is expired.</p>
+-- @param ExpirationDate [ExpirationDate] <p>The date when this activation can no longer be used to register managed instances.</p>
 function M.Activation(IamRole, RegistrationLimit, Description, ActivationId, RegistrationsCount, CreatedDate, DefaultInstanceName, Expired, ExpirationDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Activation")
 	local t = { 
@@ -2054,7 +2054,7 @@ end
 
 --- Create a structure of type SendCommandResult
 --  
--- @param Command [Command] &lt;p&gt;The request as it was received by Systems Manager. Also provides the command ID which can be used future references to this request.&lt;/p&gt;
+-- @param Command [Command] <p>The request as it was received by Systems Manager. Also provides the command ID which can be used future references to this request.</p>
 function M.SendCommandResult(Command, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SendCommandResult")
 	local t = { 
@@ -2080,10 +2080,10 @@ end
 
 --- Create a structure of type GetInventoryRequest
 --  
--- @param ResultAttributes [ResultAttributeList] &lt;p&gt;The list of inventory item types to return.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Filters [InventoryFilterList] &lt;p&gt;One or more filters. Use a filter to return a more specific list of results.&lt;/p&gt;
+-- @param ResultAttributes [ResultAttributeList] <p>The list of inventory item types to return.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Filters [InventoryFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
 function M.GetInventoryRequest(ResultAttributes, NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInventoryRequest")
 	local t = { 
@@ -2109,7 +2109,7 @@ end
 
 --- Create a structure of type CreateAssociationResult
 --  
--- @param AssociationDescription [AssociationDescription] &lt;p&gt;Information about the association.&lt;/p&gt;
+-- @param AssociationDescription [AssociationDescription] <p>Information about the association.</p>
 function M.CreateAssociationResult(AssociationDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssociationResult")
 	local t = { 
@@ -2131,8 +2131,8 @@ function M.AssertInvalidDocument(struct)
 end
 
 --- Create a structure of type InvalidDocument
--- &lt;p&gt;The specified document does not exist.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The document does not exist or the document is not available to the user. This exception can be issued by CreateAssociation, CreateAssociationBatch, DeleteAssociation, DeleteDocument, DescribeAssociation, DescribeDocument, GetDocument, SendCommand, or UpdateAssociationStatus. &lt;/p&gt;
+-- <p>The specified document does not exist.</p>
+-- @param Message [String] <p>The document does not exist or the document is not available to the user. This exception can be issued by CreateAssociation, CreateAssociationBatch, DeleteAssociation, DeleteDocument, DescribeAssociation, DescribeDocument, GetDocument, SendCommand, or UpdateAssociationStatus. </p>
 function M.InvalidDocument(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDocument")
 	local t = { 
@@ -2174,8 +2174,8 @@ function M.AssertMaxDocumentSizeExceeded(struct)
 end
 
 --- Create a structure of type MaxDocumentSizeExceeded
--- &lt;p&gt;The size limit of a document is 64 KB.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The size limit of a document is 64 KB.&lt;/p&gt;
+-- <p>The size limit of a document is 64 KB.</p>
+-- @param Message [String] <p>The size limit of a document is 64 KB.</p>
 function M.MaxDocumentSizeExceeded(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaxDocumentSizeExceeded")
 	local t = { 
@@ -2199,8 +2199,8 @@ end
 
 --- Create a structure of type DescribePatchBaselinesResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param BaselineIdentities [PatchBaselineIdentityList] &lt;p&gt;An array of PatchBaselineIdentity elements.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param BaselineIdentities [PatchBaselineIdentityList] <p>An array of PatchBaselineIdentity elements.</p>
 function M.DescribePatchBaselinesResult(NextToken, BaselineIdentities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchBaselinesResult")
 	local t = { 
@@ -2225,8 +2225,8 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionsResult
 --  
--- @param WindowExecutions [MaintenanceWindowExecutionList] &lt;p&gt;Information about the Maintenance Windows execution.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param WindowExecutions [MaintenanceWindowExecutionList] <p>Information about the Maintenance Windows execution.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.DescribeMaintenanceWindowExecutionsResult(WindowExecutions, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionsResult")
 	local t = { 
@@ -2250,7 +2250,7 @@ end
 
 --- Create a structure of type CreatePatchBaselineResult
 --  
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the created patch baseline.&lt;/p&gt;
+-- @param BaselineId [BaselineId] <p>The ID of the created patch baseline.</p>
 function M.CreatePatchBaselineResult(BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePatchBaselineResult")
 	local t = { 
@@ -2273,9 +2273,9 @@ function M.AssertPatchGroupPatchBaselineMapping(struct)
 end
 
 --- Create a structure of type PatchGroupPatchBaselineMapping
--- &lt;p&gt;The mapping between a patch group and the patch baseline the patch group is registered with.&lt;/p&gt;
--- @param PatchGroup [PatchGroup] &lt;p&gt;The name of the patch group registered with the patch baseline.&lt;/p&gt;
--- @param BaselineIdentity [PatchBaselineIdentity] &lt;p&gt;The patch baseline the patch group is registered with.&lt;/p&gt;
+-- <p>The mapping between a patch group and the patch baseline the patch group is registered with.</p>
+-- @param PatchGroup [PatchGroup] <p>The name of the patch group registered with the patch baseline.</p>
+-- @param BaselineIdentity [PatchBaselineIdentity] <p>The patch baseline the patch group is registered with.</p>
 function M.PatchGroupPatchBaselineMapping(PatchGroup, BaselineIdentity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PatchGroupPatchBaselineMapping")
 	local t = { 
@@ -2298,8 +2298,8 @@ function M.AssertInvalidInstanceInformationFilterValue(struct)
 end
 
 --- Create a structure of type InvalidInstanceInformationFilterValue
--- &lt;p&gt;The specified filter value is not valid.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The specified filter value is not valid.&lt;/p&gt;
+-- <p>The specified filter value is not valid.</p>
+-- @param message [String] <p>The specified filter value is not valid.</p>
 function M.InvalidInstanceInformationFilterValue(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInstanceInformationFilterValue")
 	local t = { 
@@ -2343,8 +2343,8 @@ end
 
 --- Create a structure of type GetPatchBaselineForPatchGroupResult
 --  
--- @param PatchGroup [PatchGroup] &lt;p&gt;The name of the patch group.&lt;/p&gt;
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline that should be used for the patch group.&lt;/p&gt;
+-- @param PatchGroup [PatchGroup] <p>The name of the patch group.</p>
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline that should be used for the patch group.</p>
 function M.GetPatchBaselineForPatchGroupResult(PatchGroup, BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPatchBaselineForPatchGroupResult")
 	local t = { 
@@ -2374,15 +2374,15 @@ function M.AssertParameterHistory(struct)
 end
 
 --- Create a structure of type ParameterHistory
--- &lt;p&gt;Information about parameter usage.&lt;/p&gt;
--- @param KeyId [ParameterKeyId] &lt;p&gt;The ID of the query key used for this parameter.&lt;/p&gt;
--- @param Name [PSParameterName] &lt;p&gt;The name of the parameter.&lt;/p&gt;
--- @param LastModifiedDate [DateTime] &lt;p&gt;Date the parameter was last changed or updated.&lt;/p&gt;
--- @param Value [PSParameterValue] &lt;p&gt;The parameter value.&lt;/p&gt;
--- @param AllowedPattern [AllowedPattern] &lt;p&gt;Parameter names can include the following letters and symbols.&lt;/p&gt; &lt;p&gt;a-zA-Z0-9_.-&lt;/p&gt;
--- @param LastModifiedUser [String] &lt;p&gt;Amazon Resource Name (ARN) of the AWS user who last changed the parameter.&lt;/p&gt;
--- @param Type [ParameterType] &lt;p&gt;The type of parameter used.&lt;/p&gt;
--- @param Description [ParameterDescription] &lt;p&gt;Information about the parameter.&lt;/p&gt;
+-- <p>Information about parameter usage.</p>
+-- @param KeyId [ParameterKeyId] <p>The ID of the query key used for this parameter.</p>
+-- @param Name [PSParameterName] <p>The name of the parameter.</p>
+-- @param LastModifiedDate [DateTime] <p>Date the parameter was last changed or updated.</p>
+-- @param Value [PSParameterValue] <p>The parameter value.</p>
+-- @param AllowedPattern [AllowedPattern] <p>Parameter names can include the following letters and symbols.</p> <p>a-zA-Z0-9_.-</p>
+-- @param LastModifiedUser [String] <p>Amazon Resource Name (ARN) of the AWS user who last changed the parameter.</p>
+-- @param Type [ParameterType] <p>The type of parameter used.</p>
+-- @param Description [ParameterDescription] <p>Information about the parameter.</p>
 function M.ParameterHistory(KeyId, Name, LastModifiedDate, Value, AllowedPattern, LastModifiedUser, Type, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterHistory")
 	local t = { 
@@ -2411,8 +2411,8 @@ function M.AssertAutomationDefinitionNotFoundException(struct)
 end
 
 --- Create a structure of type AutomationDefinitionNotFoundException
--- &lt;p&gt;An Automation document with the specified name could not be found.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;An Automation document with the specified name could not be found.&lt;/p&gt;
+-- <p>An Automation document with the specified name could not be found.</p>
+-- @param Message [String] <p>An Automation document with the specified name could not be found.</p>
 function M.AutomationDefinitionNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutomationDefinitionNotFoundException")
 	local t = { 
@@ -2445,19 +2445,19 @@ function M.AssertCommandPlugin(struct)
 end
 
 --- Create a structure of type CommandPlugin
--- &lt;p&gt;Describes plugin details.&lt;/p&gt;
--- @param Status [CommandPluginStatus] &lt;p&gt;The status of this plugin. You can execute a document with multiple plugins.&lt;/p&gt;
--- @param ResponseStartDateTime [DateTime] &lt;p&gt;The time the plugin started executing. &lt;/p&gt;
--- @param StandardErrorUrl [Url] &lt;p&gt;The URL for the complete text written by the plugin to stderr. If execution is not yet complete, then this string is empty.&lt;/p&gt;
--- @param OutputS3BucketName [S3BucketName] &lt;p&gt;The S3 bucket where the responses to the command executions should be stored. This was requested when issuing the command. For example, in the following response:&lt;/p&gt; &lt;p&gt; test_folder/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-1234567876543/awsrunShellScript &lt;/p&gt; &lt;p&gt;test_folder is the name of the Amazon S3 bucket;&lt;/p&gt; &lt;p&gt; ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix is the name of the S3 prefix;&lt;/p&gt; &lt;p&gt;i-1234567876543 is the instance ID;&lt;/p&gt; &lt;p&gt;awsrunShellScript is the name of the plugin.&lt;/p&gt;
--- @param OutputS3Region [S3Region] &lt;p&gt;(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.&lt;/p&gt;
--- @param OutputS3KeyPrefix [S3KeyPrefix] &lt;p&gt;The S3 directory path inside the bucket where the responses to the command executions should be stored. This was requested when issuing the command. For example, in the following response:&lt;/p&gt; &lt;p&gt; test_folder/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-1234567876543/awsrunShellScript &lt;/p&gt; &lt;p&gt;test_folder is the name of the Amazon S3 bucket;&lt;/p&gt; &lt;p&gt; ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix is the name of the S3 prefix;&lt;/p&gt; &lt;p&gt;i-1234567876543 is the instance ID;&lt;/p&gt; &lt;p&gt;awsrunShellScript is the name of the plugin.&lt;/p&gt;
--- @param ResponseCode [ResponseCode] &lt;p&gt;A numeric response code generated after executing the plugin. &lt;/p&gt;
--- @param Output [CommandPluginOutput] &lt;p&gt;Output of the plugin execution.&lt;/p&gt;
--- @param ResponseFinishDateTime [DateTime] &lt;p&gt;The time the plugin stopped executing. Could stop prematurely if, for example, a cancel command was sent. &lt;/p&gt;
--- @param StatusDetails [StatusDetails] &lt;p&gt;A detailed status of the plugin execution. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html&quot;&gt;Run Command Status&lt;/a&gt;. StatusDetails can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Pending: The command has not been sent to the instance.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In Progress: The command has been sent to the instance but has not reached a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Success: The execution of the command or plugin was successfully completed. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Execution Timed Out: Command execution started on the instance, but the execution was not complete before the execution timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Failed: The command was not successful on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Canceled: The command was terminated before it was completed. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Undeliverable: The command can't be delivered to the instance. The instance might not exist, or it might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit, and they don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param StandardOutputUrl [Url] &lt;p&gt;The URL for the complete text written by the plugin to stdout in Amazon S3. If the Amazon S3 bucket for the command was not specified, then this string is empty.&lt;/p&gt;
--- @param Name [CommandPluginName] &lt;p&gt;The name of the plugin. Must be one of the following: aws:updateAgent, aws:domainjoin, aws:applications, aws:runPowerShellScript, aws:psmodule, aws:cloudWatch, aws:runShellScript, or aws:updateSSMAgent. &lt;/p&gt;
+-- <p>Describes plugin details.</p>
+-- @param Status [CommandPluginStatus] <p>The status of this plugin. You can execute a document with multiple plugins.</p>
+-- @param ResponseStartDateTime [DateTime] <p>The time the plugin started executing. </p>
+-- @param StandardErrorUrl [Url] <p>The URL for the complete text written by the plugin to stderr. If execution is not yet complete, then this string is empty.</p>
+-- @param OutputS3BucketName [S3BucketName] <p>The S3 bucket where the responses to the command executions should be stored. This was requested when issuing the command. For example, in the following response:</p> <p> test_folder/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-1234567876543/awsrunShellScript </p> <p>test_folder is the name of the Amazon S3 bucket;</p> <p> ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix is the name of the S3 prefix;</p> <p>i-1234567876543 is the instance ID;</p> <p>awsrunShellScript is the name of the plugin.</p>
+-- @param OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
+-- @param OutputS3KeyPrefix [S3KeyPrefix] <p>The S3 directory path inside the bucket where the responses to the command executions should be stored. This was requested when issuing the command. For example, in the following response:</p> <p> test_folder/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-1234567876543/awsrunShellScript </p> <p>test_folder is the name of the Amazon S3 bucket;</p> <p> ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix is the name of the S3 prefix;</p> <p>i-1234567876543 is the instance ID;</p> <p>awsrunShellScript is the name of the plugin.</p>
+-- @param ResponseCode [ResponseCode] <p>A numeric response code generated after executing the plugin. </p>
+-- @param Output [CommandPluginOutput] <p>Output of the plugin execution.</p>
+-- @param ResponseFinishDateTime [DateTime] <p>The time the plugin stopped executing. Could stop prematurely if, for example, a cancel command was sent. </p>
+-- @param StatusDetails [StatusDetails] <p>A detailed status of the plugin execution. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to the instance.</p> </li> <li> <p>In Progress: The command has been sent to the instance but has not reached a terminal state.</p> </li> <li> <p>Success: The execution of the command or plugin was successfully completed. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: Command execution started on the instance, but the execution was not complete before the execution timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Failed: The command was not successful on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Undeliverable: The command can't be delivered to the instance. The instance might not exist, or it might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit, and they don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.</p> </li> </ul>
+-- @param StandardOutputUrl [Url] <p>The URL for the complete text written by the plugin to stdout in Amazon S3. If the Amazon S3 bucket for the command was not specified, then this string is empty.</p>
+-- @param Name [CommandPluginName] <p>The name of the plugin. Must be one of the following: aws:updateAgent, aws:domainjoin, aws:applications, aws:runPowerShellScript, aws:psmodule, aws:cloudWatch, aws:runShellScript, or aws:updateSSMAgent. </p>
 function M.CommandPlugin(Status, ResponseStartDateTime, StandardErrorUrl, OutputS3BucketName, OutputS3Region, OutputS3KeyPrefix, ResponseCode, Output, ResponseFinishDateTime, StatusDetails, StandardOutputUrl, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CommandPlugin")
 	local t = { 
@@ -2490,8 +2490,8 @@ function M.AssertDocumentLimitExceeded(struct)
 end
 
 --- Create a structure of type DocumentLimitExceeded
--- &lt;p&gt;You can have at most 200 active SSM documents.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;You can have at most 200 active SSM documents.&lt;/p&gt;
+-- <p>You can have at most 200 active SSM documents.</p>
+-- @param Message [String] <p>You can have at most 200 active SSM documents.</p>
 function M.DocumentLimitExceeded(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentLimitExceeded")
 	local t = { 
@@ -2515,8 +2515,8 @@ end
 
 --- Create a structure of type DescribeEffectiveInstanceAssociationsResult
 --  
--- @param Associations [InstanceAssociationList] &lt;p&gt;The associations for the requested instance.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param Associations [InstanceAssociationList] <p>The associations for the requested instance.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.DescribeEffectiveInstanceAssociationsResult(Associations, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEffectiveInstanceAssociationsResult")
 	local t = { 
@@ -2549,18 +2549,18 @@ function M.AssertMaintenanceWindowExecutionTaskInvocationIdentity(struct)
 end
 
 --- Create a structure of type MaintenanceWindowExecutionTaskInvocationIdentity
--- &lt;p&gt;Describes the information about a task invocation for a particular target as part of a task execution performed as part of a Maintenance Window execution.&lt;/p&gt;
--- @param Status [MaintenanceWindowExecutionStatus] &lt;p&gt;The status of the task invocation.&lt;/p&gt;
--- @param Parameters [MaintenanceWindowExecutionTaskInvocationParameters] &lt;p&gt;The parameters that were provided for the invocation when it was executed.&lt;/p&gt;
--- @param OwnerInformation [OwnerInformation] &lt;p&gt;User-provided value that was specified when the target was registered with the Maintenance Window. This was also included in any CloudWatch events raised during the task invocation.&lt;/p&gt;
--- @param WindowTargetId [MaintenanceWindowTaskTargetId] &lt;p&gt;The ID of the target definition in this Maintenance Window the invocation was performed for.&lt;/p&gt;
--- @param ExecutionId [MaintenanceWindowExecutionTaskExecutionId] &lt;p&gt;The ID of the action performed in the service that actually handled the task invocation. If the task type is RUN_COMMAND, this value is the command ID.&lt;/p&gt;
--- @param InvocationId [MaintenanceWindowExecutionTaskInvocationId] &lt;p&gt;The ID of the task invocation.&lt;/p&gt;
--- @param StartTime [DateTime] &lt;p&gt;The time the invocation started.&lt;/p&gt;
--- @param EndTime [DateTime] &lt;p&gt;The time the invocation finished.&lt;/p&gt;
--- @param WindowExecutionId [MaintenanceWindowExecutionId] &lt;p&gt;The ID of the Maintenance Window execution that ran the task.&lt;/p&gt;
--- @param StatusDetails [MaintenanceWindowExecutionStatusDetails] &lt;p&gt;The details explaining the status of the task invocation. Only available for certain Status values. &lt;/p&gt;
--- @param TaskExecutionId [MaintenanceWindowExecutionTaskId] &lt;p&gt;The ID of the specific task execution in the Maintenance Window execution.&lt;/p&gt;
+-- <p>Describes the information about a task invocation for a particular target as part of a task execution performed as part of a Maintenance Window execution.</p>
+-- @param Status [MaintenanceWindowExecutionStatus] <p>The status of the task invocation.</p>
+-- @param Parameters [MaintenanceWindowExecutionTaskInvocationParameters] <p>The parameters that were provided for the invocation when it was executed.</p>
+-- @param OwnerInformation [OwnerInformation] <p>User-provided value that was specified when the target was registered with the Maintenance Window. This was also included in any CloudWatch events raised during the task invocation.</p>
+-- @param WindowTargetId [MaintenanceWindowTaskTargetId] <p>The ID of the target definition in this Maintenance Window the invocation was performed for.</p>
+-- @param ExecutionId [MaintenanceWindowExecutionTaskExecutionId] <p>The ID of the action performed in the service that actually handled the task invocation. If the task type is RUN_COMMAND, this value is the command ID.</p>
+-- @param InvocationId [MaintenanceWindowExecutionTaskInvocationId] <p>The ID of the task invocation.</p>
+-- @param StartTime [DateTime] <p>The time the invocation started.</p>
+-- @param EndTime [DateTime] <p>The time the invocation finished.</p>
+-- @param WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that ran the task.</p>
+-- @param StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the status of the task invocation. Only available for certain Status values. </p>
+-- @param TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window execution.</p>
 function M.MaintenanceWindowExecutionTaskInvocationIdentity(Status, Parameters, OwnerInformation, WindowTargetId, ExecutionId, InvocationId, StartTime, EndTime, WindowExecutionId, StatusDetails, TaskExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowExecutionTaskInvocationIdentity")
 	local t = { 
@@ -2598,9 +2598,9 @@ end
 
 --- Create a structure of type UpdateAssociationStatusRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param AssociationStatus [AssociationStatus] &lt;p&gt;The association status.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the SSM document.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- @param AssociationStatus [AssociationStatus] <p>The association status.</p>
+-- @param Name [DocumentName] <p>The name of the SSM document.</p>
 -- Required parameter: Name
 -- Required parameter: InstanceId
 -- Required parameter: AssociationStatus
@@ -2636,15 +2636,15 @@ end
 
 --- Create a structure of type UpdatePatchBaselineResult
 --  
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the deleted patch baseline.&lt;/p&gt;
--- @param Name [BaselineName] &lt;p&gt;The name of the patch baseline.&lt;/p&gt;
--- @param RejectedPatches [PatchIdList] &lt;p&gt;A list of explicitly rejected patches for the baseline.&lt;/p&gt;
--- @param GlobalFilters [PatchFilterGroup] &lt;p&gt;A set of global filters used to exclude patches from the baseline.&lt;/p&gt;
--- @param ApprovalRules [PatchRuleGroup] &lt;p&gt;A set of rules used to include patches in the baseline.&lt;/p&gt;
--- @param ModifiedDate [DateTime] &lt;p&gt;The date when the patch baseline was last modified.&lt;/p&gt;
--- @param CreatedDate [DateTime] &lt;p&gt;The date when the patch baseline was created.&lt;/p&gt;
--- @param ApprovedPatches [PatchIdList] &lt;p&gt;A list of explicitly approved patches for the baseline.&lt;/p&gt;
--- @param Description [BaselineDescription] &lt;p&gt;A description of the Patch Baseline.&lt;/p&gt;
+-- @param BaselineId [BaselineId] <p>The ID of the deleted patch baseline.</p>
+-- @param Name [BaselineName] <p>The name of the patch baseline.</p>
+-- @param RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
+-- @param GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
+-- @param ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
+-- @param ModifiedDate [DateTime] <p>The date when the patch baseline was last modified.</p>
+-- @param CreatedDate [DateTime] <p>The date when the patch baseline was created.</p>
+-- @param ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
+-- @param Description [BaselineDescription] <p>A description of the Patch Baseline.</p>
 function M.UpdatePatchBaselineResult(BaselineId, Name, RejectedPatches, GlobalFilters, ApprovalRules, ModifiedDate, CreatedDate, ApprovedPatches, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePatchBaselineResult")
 	local t = { 
@@ -2676,8 +2676,8 @@ end
 
 --- Create a structure of type DescribeEffectivePatchesForPatchBaselineResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param EffectivePatches [EffectivePatchList] &lt;p&gt;An array of patches and patch status.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param EffectivePatches [EffectivePatchList] <p>An array of patches and patch status.</p>
 function M.DescribeEffectivePatchesForPatchBaselineResult(NextToken, EffectivePatches, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEffectivePatchesForPatchBaselineResult")
 	local t = { 
@@ -2700,8 +2700,8 @@ function M.AssertDocumentAlreadyExists(struct)
 end
 
 --- Create a structure of type DocumentAlreadyExists
--- &lt;p&gt;The specified document already exists.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The specified document already exists.&lt;/p&gt;
+-- <p>The specified document already exists.</p>
+-- @param Message [String] <p>The specified document already exists.</p>
 function M.DocumentAlreadyExists(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentAlreadyExists")
 	local t = { 
@@ -2725,7 +2725,7 @@ end
 
 --- Create a structure of type DeleteMaintenanceWindowRequest
 --  
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window to delete.&lt;/p&gt;
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window to delete.</p>
 -- Required parameter: WindowId
 function M.DeleteMaintenanceWindowRequest(WindowId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMaintenanceWindowRequest")
@@ -2751,9 +2751,9 @@ end
 
 --- Create a structure of type ListAssociationsRequest
 --  
--- @param AssociationFilterList [AssociationFilterList] &lt;p&gt;One or more filters. Use a filter to return a more specific list of results.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
+-- @param AssociationFilterList [AssociationFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 function M.ListAssociationsRequest(AssociationFilterList, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociationsRequest")
 	local t = { 
@@ -2781,10 +2781,10 @@ end
 
 --- Create a structure of type DescribeParametersRequest
 --  
--- @param ParameterFilters [ParameterStringFilterList] &lt;p&gt;Filters to limit the request results.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Filters [ParametersFilterList] &lt;p&gt;One or more filters. Use a filter to return a more specific list of results.&lt;/p&gt;
+-- @param ParameterFilters [ParameterStringFilterList] <p>Filters to limit the request results.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Filters [ParametersFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
 function M.DescribeParametersRequest(ParameterFilters, NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParametersRequest")
 	local t = { 
@@ -2811,8 +2811,8 @@ end
 
 --- Create a structure of type DeleteParametersResult
 --  
--- @param InvalidParameters [ParameterNameList] &lt;p&gt;The names of parameters that weren't deleted because the parameters are not valid.&lt;/p&gt;
--- @param DeletedParameters [ParameterNameList] &lt;p&gt;The names of the deleted parameters.&lt;/p&gt;
+-- @param InvalidParameters [ParameterNameList] <p>The names of parameters that weren't deleted because the parameters are not valid.</p>
+-- @param DeletedParameters [ParameterNameList] <p>The names of the deleted parameters.</p>
 function M.DeleteParametersResult(InvalidParameters, DeletedParameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParametersResult")
 	local t = { 
@@ -2841,11 +2841,11 @@ function M.AssertAssociationStatus(struct)
 end
 
 --- Create a structure of type AssociationStatus
--- &lt;p&gt;Describes an association status.&lt;/p&gt;
--- @param Date [DateTime] &lt;p&gt;The date when the status changed.&lt;/p&gt;
--- @param AdditionalInfo [StatusAdditionalInfo] &lt;p&gt;A user-defined string.&lt;/p&gt;
--- @param Message [StatusMessage] &lt;p&gt;The reason for the status.&lt;/p&gt;
--- @param Name [AssociationStatusName] &lt;p&gt;The status.&lt;/p&gt;
+-- <p>Describes an association status.</p>
+-- @param Date [DateTime] <p>The date when the status changed.</p>
+-- @param AdditionalInfo [StatusAdditionalInfo] <p>A user-defined string.</p>
+-- @param Message [StatusMessage] <p>The reason for the status.</p>
+-- @param Name [AssociationStatusName] <p>The status.</p>
 -- Required parameter: Date
 -- Required parameter: Name
 -- Required parameter: Message
@@ -2876,9 +2876,9 @@ function M.AssertInstanceInformationFilter(struct)
 end
 
 --- Create a structure of type InstanceInformationFilter
--- &lt;p&gt;Describes a filter for a specific list of instances. &lt;/p&gt;
--- @param valueSet [InstanceInformationFilterValueSet] &lt;p&gt;The filter values.&lt;/p&gt;
--- @param key [InstanceInformationFilterKey] &lt;p&gt;The name of the filter. &lt;/p&gt;
+-- <p>Describes a filter for a specific list of instances. </p>
+-- @param valueSet [InstanceInformationFilterValueSet] <p>The filter values.</p>
+-- @param key [InstanceInformationFilterKey] <p>The name of the filter. </p>
 -- Required parameter: key
 -- Required parameter: valueSet
 function M.InstanceInformationFilter(valueSet, key, ...)
@@ -2908,10 +2908,10 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowTargetsRequest
 --  
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window whose targets should be retrieved.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaintenanceWindowMaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Filters [MaintenanceWindowFilterList] &lt;p&gt;Optional filters that can be used to narrow down the scope of the returned window targets. The supported filter keys are Type, WindowTargetId and OwnerInformation.&lt;/p&gt;
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window whose targets should be retrieved.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Filters [MaintenanceWindowFilterList] <p>Optional filters that can be used to narrow down the scope of the returned window targets. The supported filter keys are Type, WindowTargetId and OwnerInformation.</p>
 -- Required parameter: WindowId
 function M.DescribeMaintenanceWindowTargetsRequest(WindowId, NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowTargetsRequest")
@@ -2944,14 +2944,14 @@ function M.AssertCreateAssociationBatchRequestEntry(struct)
 end
 
 --- Create a structure of type CreateAssociationBatchRequestEntry
--- &lt;p&gt;Describes the association of a Systems Manager document and an instance.&lt;/p&gt;
--- @param ScheduleExpression [ScheduleExpression] &lt;p&gt;A cron expression that specifies a schedule when the association runs.&lt;/p&gt;
--- @param OutputLocation [InstanceAssociationOutputLocation] &lt;p&gt;An Amazon S3 bucket where you want to store the results of this request.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the configuration document. &lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;A description of the parameters for a document. &lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the instance. &lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version.&lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;The instances targeted by the request.&lt;/p&gt;
+-- <p>Describes the association of a Systems Manager document and an instance.</p>
+-- @param ScheduleExpression [ScheduleExpression] <p>A cron expression that specifies a schedule when the association runs.</p>
+-- @param OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the results of this request.</p>
+-- @param Name [DocumentName] <p>The name of the configuration document. </p>
+-- @param Parameters [Parameters] <p>A description of the parameters for a document. </p>
+-- @param InstanceId [InstanceId] <p>The ID of the instance. </p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- @param Targets [Targets] <p>The instances targeted by the request.</p>
 -- Required parameter: Name
 function M.CreateAssociationBatchRequestEntry(ScheduleExpression, OutputLocation, Name, Parameters, InstanceId, DocumentVersion, Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssociationBatchRequestEntry")
@@ -2984,8 +2984,8 @@ end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param ResourceType [ResourceTypeForTagging] &lt;p&gt;Returns a list of tags for a specific resource type.&lt;/p&gt;
--- @param ResourceId [ResourceId] &lt;p&gt;The resource ID for which you want to see a list of tags.&lt;/p&gt;
+-- @param ResourceType [ResourceTypeForTagging] <p>Returns a list of tags for a specific resource type.</p>
+-- @param ResourceId [ResourceId] <p>The resource ID for which you want to see a list of tags.</p>
 -- Required parameter: ResourceType
 -- Required parameter: ResourceId
 function M.ListTagsForResourceRequest(ResourceType, ResourceId, ...)
@@ -3012,10 +3012,10 @@ function M.AssertParameter(struct)
 end
 
 --- Create a structure of type Parameter
--- &lt;p&gt;An Amazon EC2 Systems Manager parameter in Parameter Store.&lt;/p&gt;
--- @param Type [ParameterType] &lt;p&gt;The type of parameter. Valid values include the following: String, String list, Secure string.&lt;/p&gt;
--- @param Name [PSParameterName] &lt;p&gt;The name of the parameter.&lt;/p&gt;
--- @param Value [PSParameterValue] &lt;p&gt;The parameter value.&lt;/p&gt;
+-- <p>An Amazon EC2 Systems Manager parameter in Parameter Store.</p>
+-- @param Type [ParameterType] <p>The type of parameter. Valid values include the following: String, String list, Secure string.</p>
+-- @param Name [PSParameterName] <p>The name of the parameter.</p>
+-- @param Value [PSParameterValue] <p>The parameter value.</p>
 function M.Parameter(Type, Name, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Parameter")
 	local t = { 
@@ -3038,7 +3038,7 @@ function M.AssertInvalidPluginName(struct)
 end
 
 --- Create a structure of type InvalidPluginName
--- &lt;p&gt;The plugin name is not valid.&lt;/p&gt;
+-- <p>The plugin name is not valid.</p>
 function M.InvalidPluginName(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPluginName")
 	local t = { 
@@ -3061,8 +3061,8 @@ end
 
 --- Create a structure of type GetParametersByPathResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. Use this token to get the next set of results.&lt;/p&gt;
--- @param Parameters [ParameterList] &lt;p&gt;A list of parameters found in the specified hierarchy.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. Use this token to get the next set of results.</p>
+-- @param Parameters [ParameterList] <p>A list of parameters found in the specified hierarchy.</p>
 function M.GetParametersByPathResult(NextToken, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetParametersByPathResult")
 	local t = { 
@@ -3086,7 +3086,7 @@ end
 
 --- Create a structure of type UpdateDocumentDefaultVersionResult
 --  
--- @param Description [DocumentDefaultVersionDescription] &lt;p&gt;The description of a custom document that you want to set as the default version.&lt;/p&gt;
+-- @param Description [DocumentDefaultVersionDescription] <p>The description of a custom document that you want to set as the default version.</p>
 function M.UpdateDocumentDefaultVersionResult(Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentDefaultVersionResult")
 	local t = { 
@@ -3115,12 +3115,12 @@ end
 
 --- Create a structure of type GetParametersByPathRequest
 --  
--- @param Recursive [Boolean] &lt;p&gt;Retrieve all parameters within a hierarchy.&lt;/p&gt;
--- @param ParameterFilters [ParameterStringFilterList] &lt;p&gt;Filters to limit the request results.&lt;/p&gt;
--- @param WithDecryption [Boolean] &lt;p&gt;Retrieve all parameters in a hierarchy with their value decrypted.&lt;/p&gt;
--- @param MaxResults [GetParametersByPathMaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Path [PSParameterName] &lt;p&gt;The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A hierarchy can have a maximum of five levels. Examples: /Environment/Test/DBString003&lt;/p&gt; &lt;p&gt;/Finance/Prod/IAD/OS/WinServ2016/license15&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;A token to start the list. Use this token to get the next set of results. &lt;/p&gt;
+-- @param Recursive [Boolean] <p>Retrieve all parameters within a hierarchy.</p>
+-- @param ParameterFilters [ParameterStringFilterList] <p>Filters to limit the request results.</p>
+-- @param WithDecryption [Boolean] <p>Retrieve all parameters in a hierarchy with their value decrypted.</p>
+-- @param MaxResults [GetParametersByPathMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Path [PSParameterName] <p>The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A hierarchy can have a maximum of five levels. Examples: /Environment/Test/DBString003</p> <p>/Finance/Prod/IAD/OS/WinServ2016/license15</p>
+-- @param NextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results. </p>
 -- Required parameter: Path
 function M.GetParametersByPathRequest(Recursive, ParameterFilters, WithDecryption, MaxResults, Path, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetParametersByPathRequest")
@@ -3156,13 +3156,13 @@ end
 
 --- Create a structure of type UpdatePatchBaselineRequest
 --  
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline to update.&lt;/p&gt;
--- @param Name [BaselineName] &lt;p&gt;The name of the patch baseline.&lt;/p&gt;
--- @param RejectedPatches [PatchIdList] &lt;p&gt;A list of explicitly rejected patches for the baseline.&lt;/p&gt;
--- @param GlobalFilters [PatchFilterGroup] &lt;p&gt;A set of global filters used to exclude patches from the baseline.&lt;/p&gt;
--- @param ApprovalRules [PatchRuleGroup] &lt;p&gt;A set of rules used to include patches in the baseline.&lt;/p&gt;
--- @param ApprovedPatches [PatchIdList] &lt;p&gt;A list of explicitly approved patches for the baseline.&lt;/p&gt;
--- @param Description [BaselineDescription] &lt;p&gt;A description of the patch baseline.&lt;/p&gt;
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline to update.</p>
+-- @param Name [BaselineName] <p>The name of the patch baseline.</p>
+-- @param RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
+-- @param GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
+-- @param ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
+-- @param ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
+-- @param Description [BaselineDescription] <p>A description of the patch baseline.</p>
 -- Required parameter: BaselineId
 function M.UpdatePatchBaselineRequest(BaselineId, Name, RejectedPatches, GlobalFilters, ApprovalRules, ApprovedPatches, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePatchBaselineRequest")
@@ -3194,9 +3194,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Metadata that you assign to your managed instances. Tags enable you to categorize your managed instances in different ways, for example, by purpose, owner, or environment.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The value of the tag.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The name of the tag.&lt;/p&gt;
+-- <p>Metadata that you assign to your managed instances. Tags enable you to categorize your managed instances in different ways, for example, by purpose, owner, or environment.</p>
+-- @param Value [TagValue] <p>The value of the tag.</p>
+-- @param Key [TagKey] <p>The name of the tag.</p>
 -- Required parameter: Key
 -- Required parameter: Value
 function M.Tag(Value, Key, ...)
@@ -3222,8 +3222,8 @@ function M.AssertPatchRuleGroup(struct)
 end
 
 --- Create a structure of type PatchRuleGroup
--- &lt;p&gt;A set of rules defining the approval rules for a patch baseline.&lt;/p&gt;
--- @param PatchRules [PatchRuleList] &lt;p&gt;The rules that make up the rule group.&lt;/p&gt;
+-- <p>A set of rules defining the approval rules for a patch baseline.</p>
+-- @param PatchRules [PatchRuleList] <p>The rules that make up the rule group.</p>
 -- Required parameter: PatchRules
 function M.PatchRuleGroup(PatchRules, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PatchRuleGroup")
@@ -3248,10 +3248,10 @@ function M.AssertFailureDetails(struct)
 end
 
 --- Create a structure of type FailureDetails
--- &lt;p&gt;Information about an Automation failure.&lt;/p&gt;
--- @param FailureStage [String] &lt;p&gt;The stage of the Automation execution when the failure occurred. The stages include the following: InputValidation, PreVerification, Invocation, PostVerification.&lt;/p&gt;
--- @param FailureType [String] &lt;p&gt;The type of Automation failure. Failure types include the following: Action, Permission, Throttling, Verification, Internal.&lt;/p&gt;
--- @param Details [AutomationParameterMap] &lt;p&gt;Detailed information about the Automation step failure.&lt;/p&gt;
+-- <p>Information about an Automation failure.</p>
+-- @param FailureStage [String] <p>The stage of the Automation execution when the failure occurred. The stages include the following: InputValidation, PreVerification, Invocation, PostVerification.</p>
+-- @param FailureType [String] <p>The type of Automation failure. Failure types include the following: Action, Permission, Throttling, Verification, Internal.</p>
+-- @param Details [AutomationParameterMap] <p>Detailed information about the Automation step failure.</p>
 function M.FailureDetails(FailureStage, FailureType, Details, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailureDetails")
 	local t = { 
@@ -3275,8 +3275,8 @@ function M.AssertUnsupportedParameterType(struct)
 end
 
 --- Create a structure of type UnsupportedParameterType
--- &lt;p&gt;The parameter type is not supported.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The parameter type is not supported.&lt;/p&gt;
+-- <p>The parameter type is not supported.</p>
+-- @param message [String] <p>The parameter type is not supported.</p>
 function M.UnsupportedParameterType(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedParameterType")
 	local t = { 
@@ -3300,8 +3300,8 @@ end
 
 --- Create a structure of type ListCommandInvocationsResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;(Optional) The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param CommandInvocations [CommandInvocationList] &lt;p&gt;(Optional) A list of all invocations. &lt;/p&gt;
+-- @param NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param CommandInvocations [CommandInvocationList] <p>(Optional) A list of all invocations. </p>
 function M.ListCommandInvocationsResult(NextToken, CommandInvocations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCommandInvocationsResult")
 	local t = { 
@@ -3326,8 +3326,8 @@ end
 
 --- Create a structure of type DescribeInstancePatchesResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param Patches [PatchComplianceDataList] &lt;p&gt;Each entry in the array is a structure containing:&lt;/p&gt; &lt;p&gt;Title (string)&lt;/p&gt; &lt;p&gt;KBId (string)&lt;/p&gt; &lt;p&gt;Classification (string)&lt;/p&gt; &lt;p&gt;Severity (string)&lt;/p&gt; &lt;p&gt;State (string: &quot;INSTALLED&quot;, &quot;INSTALLED OTHER&quot;, &quot;MISSING&quot;, &quot;NOT APPLICABLE&quot;, &quot;FAILED&quot;)&lt;/p&gt; &lt;p&gt;InstalledTime (DateTime)&lt;/p&gt; &lt;p&gt;InstalledBy (string)&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param Patches [PatchComplianceDataList] <p>Each entry in the array is a structure containing:</p> <p>Title (string)</p> <p>KBId (string)</p> <p>Classification (string)</p> <p>Severity (string)</p> <p>State (string: "INSTALLED", "INSTALLED OTHER", "MISSING", "NOT APPLICABLE", "FAILED")</p> <p>InstalledTime (DateTime)</p> <p>InstalledBy (string)</p>
 function M.DescribeInstancePatchesResult(NextToken, Patches, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchesResult")
 	local t = { 
@@ -3352,7 +3352,7 @@ end
 
 --- Create a structure of type GetPatchBaselineForPatchGroupRequest
 --  
--- @param PatchGroup [PatchGroup] &lt;p&gt;The name of the patch group whose patch baseline should be retrieved.&lt;/p&gt;
+-- @param PatchGroup [PatchGroup] <p>The name of the patch group whose patch baseline should be retrieved.</p>
 -- Required parameter: PatchGroup
 function M.GetPatchBaselineForPatchGroupRequest(PatchGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPatchBaselineForPatchGroupRequest")
@@ -3375,8 +3375,8 @@ function M.AssertResourceInUseException(struct)
 end
 
 --- Create a structure of type ResourceInUseException
--- &lt;p&gt;Error returned if an attempt is made to delete a patch baseline that is registered for a patch group.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;Error returned if an attempt is made to delete a patch baseline that is registered for a patch group.&lt;/p&gt;
+-- <p>Error returned if an attempt is made to delete a patch baseline that is registered for a patch group.</p>
+-- @param Message [String] <p>Error returned if an attempt is made to delete a patch baseline that is registered for a patch group.</p>
 function M.ResourceInUseException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
 	local t = { 
@@ -3400,8 +3400,8 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowsResult
 --  
--- @param WindowIdentities [MaintenanceWindowIdentityList] &lt;p&gt;Information about the Maintenance Windows.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param WindowIdentities [MaintenanceWindowIdentityList] <p>Information about the Maintenance Windows.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.DescribeMaintenanceWindowsResult(WindowIdentities, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowsResult")
 	local t = { 
@@ -3426,7 +3426,7 @@ end
 
 --- Create a structure of type DeletePatchBaselineRequest
 --  
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline to delete.&lt;/p&gt;
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline to delete.</p>
 -- Required parameter: BaselineId
 function M.DeletePatchBaselineRequest(BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePatchBaselineRequest")
@@ -3451,7 +3451,7 @@ end
 
 --- Create a structure of type CreateAssociationBatchRequest
 --  
--- @param Entries [CreateAssociationBatchRequestEntries] &lt;p&gt;One or more associations.&lt;/p&gt;
+-- @param Entries [CreateAssociationBatchRequestEntries] <p>One or more associations.</p>
 -- Required parameter: Entries
 function M.CreateAssociationBatchRequest(Entries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssociationBatchRequest")
@@ -3479,10 +3479,10 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionTasksRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param WindowExecutionId [MaintenanceWindowExecutionId] &lt;p&gt;The ID of the Maintenance Window execution whose task executions should be retrieved.&lt;/p&gt;
--- @param MaxResults [MaintenanceWindowMaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Filters [MaintenanceWindowFilterList] &lt;p&gt;Optional filters used to scope down the returned tasks. The supported filter key is STATUS with the corresponding values PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED. &lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution whose task executions should be retrieved.</p>
+-- @param MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Filters [MaintenanceWindowFilterList] <p>Optional filters used to scope down the returned tasks. The supported filter key is STATUS with the corresponding values PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED. </p>
 -- Required parameter: WindowExecutionId
 function M.DescribeMaintenanceWindowExecutionTasksRequest(NextToken, WindowExecutionId, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionTasksRequest")
@@ -3517,17 +3517,17 @@ function M.AssertAutomationExecution(struct)
 end
 
 --- Create a structure of type AutomationExecution
--- &lt;p&gt;Detailed information about the current state of an individual Automation execution.&lt;/p&gt;
--- @param AutomationExecutionStatus [AutomationExecutionStatus] &lt;p&gt;The execution status of the Automation.&lt;/p&gt;
--- @param Parameters [AutomationParameterMap] &lt;p&gt;The key-value map of execution parameters, which were supplied when calling StartAutomationExecution.&lt;/p&gt;
--- @param Outputs [AutomationParameterMap] &lt;p&gt;The list of execution outputs as defined in the automation document.&lt;/p&gt;
--- @param DocumentName [DocumentName] &lt;p&gt;The name of the Automation document used during the execution.&lt;/p&gt;
--- @param AutomationExecutionId [AutomationExecutionId] &lt;p&gt;The execution ID.&lt;/p&gt;
--- @param FailureMessage [String] &lt;p&gt;A message describing why an execution has failed, if the status is set to Failed.&lt;/p&gt;
--- @param ExecutionEndTime [DateTime] &lt;p&gt;The time the execution finished.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The version of the document to use during execution.&lt;/p&gt;
--- @param ExecutionStartTime [DateTime] &lt;p&gt;The time the execution started.&lt;/p&gt;
--- @param StepExecutions [StepExecutionList] &lt;p&gt;A list of details about the current state of all steps that comprise an execution. An Automation document contains a list of steps that are executed in order.&lt;/p&gt;
+-- <p>Detailed information about the current state of an individual Automation execution.</p>
+-- @param AutomationExecutionStatus [AutomationExecutionStatus] <p>The execution status of the Automation.</p>
+-- @param Parameters [AutomationParameterMap] <p>The key-value map of execution parameters, which were supplied when calling StartAutomationExecution.</p>
+-- @param Outputs [AutomationParameterMap] <p>The list of execution outputs as defined in the automation document.</p>
+-- @param DocumentName [DocumentName] <p>The name of the Automation document used during the execution.</p>
+-- @param AutomationExecutionId [AutomationExecutionId] <p>The execution ID.</p>
+-- @param FailureMessage [String] <p>A message describing why an execution has failed, if the status is set to Failed.</p>
+-- @param ExecutionEndTime [DateTime] <p>The time the execution finished.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The version of the document to use during execution.</p>
+-- @param ExecutionStartTime [DateTime] <p>The time the execution started.</p>
+-- @param StepExecutions [StepExecutionList] <p>A list of details about the current state of all steps that comprise an execution. An Automation document contains a list of steps that are executed in order.</p>
 function M.AutomationExecution(AutomationExecutionStatus, Parameters, Outputs, DocumentName, AutomationExecutionId, FailureMessage, ExecutionEndTime, DocumentVersion, ExecutionStartTime, StepExecutions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutomationExecution")
 	local t = { 
@@ -3560,8 +3560,8 @@ end
 
 --- Create a structure of type DescribePatchGroupsRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [PatchBaselineMaxResults] &lt;p&gt;The maximum number of patch groups to return (per page).&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [PatchBaselineMaxResults] <p>The maximum number of patch groups to return (per page).</p>
 function M.DescribePatchGroupsRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchGroupsRequest")
 	local t = { 
@@ -3584,8 +3584,8 @@ function M.AssertHierarchyLevelLimitExceededException(struct)
 end
 
 --- Create a structure of type HierarchyLevelLimitExceededException
--- &lt;p&gt;A hierarchy can have a maximum of five levels. For example:&lt;/p&gt; &lt;p&gt;/Finance/Prod/IAD/OS/WinServ2016/license15&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working-path.html&quot;&gt;Develop a Parameter Hierarchy&lt;/a&gt;. &lt;/p&gt;
--- @param message [String] &lt;p&gt;A hierarchy can have a maximum of five levels. For example:&lt;/p&gt; &lt;p&gt;/Finance/Prod/IAD/OS/WinServ2016/license15&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working-path.html&quot;&gt;Develop a Parameter Hierarchy&lt;/a&gt;. &lt;/p&gt;
+-- <p>A hierarchy can have a maximum of five levels. For example:</p> <p>/Finance/Prod/IAD/OS/WinServ2016/license15</p> <p>For more information, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working-path.html">Develop a Parameter Hierarchy</a>. </p>
+-- @param message [String] <p>A hierarchy can have a maximum of five levels. For example:</p> <p>/Finance/Prod/IAD/OS/WinServ2016/license15</p> <p>For more information, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working-path.html">Develop a Parameter Hierarchy</a>. </p>
 function M.HierarchyLevelLimitExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HierarchyLevelLimitExceededException")
 	local t = { 
@@ -3607,8 +3607,8 @@ function M.AssertAlreadyExistsException(struct)
 end
 
 --- Create a structure of type AlreadyExistsException
--- &lt;p&gt;Error returned if an attempt is made to register a patch group with a patch baseline that is already registered with a different patch baseline.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;Error returned if an attempt is made to register a patch group with a patch baseline that is already registered with a different patch baseline.&lt;/p&gt;
+-- <p>Error returned if an attempt is made to register a patch group with a patch baseline that is already registered with a different patch baseline.</p>
+-- @param Message [String] <p>Error returned if an attempt is made to register a patch group with a patch baseline that is already registered with a different patch baseline.</p>
 function M.AlreadyExistsException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyExistsException")
 	local t = { 
@@ -3630,8 +3630,8 @@ function M.AssertInvalidSchedule(struct)
 end
 
 --- Create a structure of type InvalidSchedule
--- &lt;p&gt;The schedule is invalid. Verify your cron or rate expression and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The schedule is invalid. Verify your cron or rate expression and try again.&lt;/p&gt;
+-- <p>The schedule is invalid. Verify your cron or rate expression and try again.</p>
+-- @param Message [String] <p>The schedule is invalid. Verify your cron or rate expression and try again.</p>
 function M.InvalidSchedule(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSchedule")
 	local t = { 
@@ -3653,8 +3653,8 @@ function M.AssertInvalidActivation(struct)
 end
 
 --- Create a structure of type InvalidActivation
--- &lt;p&gt;The activation is not valid. The activation might have been deleted, or the ActivationId and the ActivationCode do not match.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The activation is not valid. The activation might have been deleted, or the ActivationId and the ActivationCode do not match.&lt;/p&gt;
+-- <p>The activation is not valid. The activation might have been deleted, or the ActivationId and the ActivationCode do not match.</p>
+-- @param Message [String] <p>The activation is not valid. The activation might have been deleted, or the ActivationId and the ActivationCode do not match.</p>
 function M.InvalidActivation(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidActivation")
 	local t = { 
@@ -3681,10 +3681,10 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionsRequest
 --  
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window whose executions should be retrieved.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaintenanceWindowMaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Filters [MaintenanceWindowFilterList] &lt;p&gt;Each entry in the array is a structure containing:&lt;/p&gt; &lt;p&gt;Key (string, between 1 and 128 characters)&lt;/p&gt; &lt;p&gt;Values (array of strings, each string is between 1 and 256 characters)&lt;/p&gt; &lt;p&gt;The supported Keys are ExecutedBefore and ExecutedAfter with the value being a date/time string such as 2016-11-04T05:00:00Z.&lt;/p&gt;
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window whose executions should be retrieved.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Filters [MaintenanceWindowFilterList] <p>Each entry in the array is a structure containing:</p> <p>Key (string, between 1 and 128 characters)</p> <p>Values (array of strings, each string is between 1 and 256 characters)</p> <p>The supported Keys are ExecutedBefore and ExecutedAfter with the value being a date/time string such as 2016-11-04T05:00:00Z.</p>
 -- Required parameter: WindowId
 function M.DescribeMaintenanceWindowExecutionsRequest(WindowId, NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionsRequest")
@@ -3718,16 +3718,16 @@ function M.AssertAutomationExecutionMetadata(struct)
 end
 
 --- Create a structure of type AutomationExecutionMetadata
--- &lt;p&gt;Details about a specific Automation execution.&lt;/p&gt;
--- @param AutomationExecutionStatus [AutomationExecutionStatus] &lt;p&gt;The status of the execution. Valid values include: Running, Succeeded, Failed, Timed out, or Cancelled.&lt;/p&gt;
--- @param Outputs [AutomationParameterMap] &lt;p&gt;The list of execution outputs as defined in the Automation document.&lt;/p&gt;
--- @param DocumentName [DocumentName] &lt;p&gt;The name of the Automation document used during execution.&lt;/p&gt;
--- @param AutomationExecutionId [AutomationExecutionId] &lt;p&gt;The execution ID.&lt;/p&gt;
--- @param ExecutionEndTime [DateTime] &lt;p&gt;The time the execution finished. This is not populated if the execution is still in progress.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version used during the execution.&lt;/p&gt;
--- @param ExecutionStartTime [DateTime] &lt;p&gt;The time the execution started.&amp;gt;&lt;/p&gt;
--- @param ExecutedBy [String] &lt;p&gt;The IAM role ARN of the user who executed the Automation.&lt;/p&gt;
--- @param LogFile [String] &lt;p&gt;An Amazon S3 bucket where execution information is stored.&lt;/p&gt;
+-- <p>Details about a specific Automation execution.</p>
+-- @param AutomationExecutionStatus [AutomationExecutionStatus] <p>The status of the execution. Valid values include: Running, Succeeded, Failed, Timed out, or Cancelled.</p>
+-- @param Outputs [AutomationParameterMap] <p>The list of execution outputs as defined in the Automation document.</p>
+-- @param DocumentName [DocumentName] <p>The name of the Automation document used during execution.</p>
+-- @param AutomationExecutionId [AutomationExecutionId] <p>The execution ID.</p>
+-- @param ExecutionEndTime [DateTime] <p>The time the execution finished. This is not populated if the execution is still in progress.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version used during the execution.</p>
+-- @param ExecutionStartTime [DateTime] <p>The time the execution started.&gt;</p>
+-- @param ExecutedBy [String] <p>The IAM role ARN of the user who executed the Automation.</p>
+-- @param LogFile [String] <p>An Amazon S3 bucket where execution information is stored.</p>
 function M.AutomationExecutionMetadata(AutomationExecutionStatus, Outputs, DocumentName, AutomationExecutionId, ExecutionEndTime, DocumentVersion, ExecutionStartTime, ExecutedBy, LogFile, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutomationExecutionMetadata")
 	local t = { 
@@ -3775,26 +3775,26 @@ function M.AssertInstanceInformation(struct)
 end
 
 --- Create a structure of type InstanceInformation
--- &lt;p&gt;Describes a filter for a specific list of instances. &lt;/p&gt;
--- @param IsLatestVersion [Boolean] &lt;p&gt;Indicates whether latest version of the SSM Agent is running on your instance. &lt;/p&gt;
--- @param IamRole [IamRole] &lt;p&gt;The Amazon Identity and Access Management (IAM) role assigned to EC2 instances or managed instances. &lt;/p&gt;
--- @param ComputerName [ComputerName] &lt;p&gt;The fully qualified host name of the managed instance.&lt;/p&gt;
--- @param AssociationOverview [InstanceAggregatedAssociationOverview] &lt;p&gt;Information about the association.&lt;/p&gt;
--- @param PingStatus [PingStatus] &lt;p&gt;Connection status of the SSM Agent. &lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the managed instance.&lt;/p&gt;
--- @param LastSuccessfulAssociationExecutionDate [DateTime] &lt;p&gt;The last date the association was successfully run.&lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The instance ID. &lt;/p&gt;
--- @param IPAddress [IPAddress] &lt;p&gt;The IP address of the managed instance.&lt;/p&gt;
--- @param AssociationStatus [StatusName] &lt;p&gt;The status of the association.&lt;/p&gt;
--- @param LastAssociationExecutionDate [DateTime] &lt;p&gt;The date the association was last executed.&lt;/p&gt;
--- @param ResourceType [ResourceType] &lt;p&gt;The type of instance. Instances are either EC2 instances or managed instances. &lt;/p&gt;
--- @param ActivationId [ActivationId] &lt;p&gt;The activation ID created by Systems Manager when the server or VM was registered.&lt;/p&gt;
--- @param AgentVersion [Version] &lt;p&gt;The version of the SSM Agent running on your Linux instance. &lt;/p&gt;
--- @param PlatformVersion [String] &lt;p&gt;The version of the OS platform running on your instance. &lt;/p&gt;
--- @param RegistrationDate [DateTime] &lt;p&gt;The date the server or VM was registered with AWS as a managed instance.&lt;/p&gt;
--- @param PlatformName [String] &lt;p&gt;The name of the operating system platform running on your instance. &lt;/p&gt;
--- @param PlatformType [PlatformType] &lt;p&gt;The operating system platform type. &lt;/p&gt;
--- @param LastPingDateTime [DateTime] &lt;p&gt;The date and time when agent last pinged Systems Manager service. &lt;/p&gt;
+-- <p>Describes a filter for a specific list of instances. </p>
+-- @param IsLatestVersion [Boolean] <p>Indicates whether latest version of the SSM Agent is running on your instance. </p>
+-- @param IamRole [IamRole] <p>The Amazon Identity and Access Management (IAM) role assigned to EC2 instances or managed instances. </p>
+-- @param ComputerName [ComputerName] <p>The fully qualified host name of the managed instance.</p>
+-- @param AssociationOverview [InstanceAggregatedAssociationOverview] <p>Information about the association.</p>
+-- @param PingStatus [PingStatus] <p>Connection status of the SSM Agent. </p>
+-- @param Name [String] <p>The name of the managed instance.</p>
+-- @param LastSuccessfulAssociationExecutionDate [DateTime] <p>The last date the association was successfully run.</p>
+-- @param InstanceId [InstanceId] <p>The instance ID. </p>
+-- @param IPAddress [IPAddress] <p>The IP address of the managed instance.</p>
+-- @param AssociationStatus [StatusName] <p>The status of the association.</p>
+-- @param LastAssociationExecutionDate [DateTime] <p>The date the association was last executed.</p>
+-- @param ResourceType [ResourceType] <p>The type of instance. Instances are either EC2 instances or managed instances. </p>
+-- @param ActivationId [ActivationId] <p>The activation ID created by Systems Manager when the server or VM was registered.</p>
+-- @param AgentVersion [Version] <p>The version of the SSM Agent running on your Linux instance. </p>
+-- @param PlatformVersion [String] <p>The version of the OS platform running on your instance. </p>
+-- @param RegistrationDate [DateTime] <p>The date the server or VM was registered with AWS as a managed instance.</p>
+-- @param PlatformName [String] <p>The name of the operating system platform running on your instance. </p>
+-- @param PlatformType [PlatformType] <p>The operating system platform type. </p>
+-- @param LastPingDateTime [DateTime] <p>The date and time when agent last pinged Systems Manager service. </p>
 function M.InstanceInformation(IsLatestVersion, IamRole, ComputerName, AssociationOverview, PingStatus, Name, LastSuccessfulAssociationExecutionDate, InstanceId, IPAddress, AssociationStatus, LastAssociationExecutionDate, ResourceType, ActivationId, AgentVersion, PlatformVersion, RegistrationDate, PlatformName, PlatformType, LastPingDateTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceInformation")
 	local t = { 
@@ -3834,8 +3834,8 @@ function M.AssertInvalidRole(struct)
 end
 
 --- Create a structure of type InvalidRole
--- &lt;p&gt;The role name can't contain invalid characters. Also verify that you specified an IAM role for notifications that includes the required trust policy. For information about configuring the IAM role for Run Command notifications, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/rc-sns-notifications.html&quot;&gt;Configuring Amazon SNS Notifications for Run Command&lt;/a&gt; in the &lt;i&gt;Amazon EC2 Systems Manager User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The role name can't contain invalid characters. Also verify that you specified an IAM role for notifications that includes the required trust policy. For information about configuring the IAM role for Run Command notifications, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/rc-sns-notifications.html&quot;&gt;Configuring Amazon SNS Notifications for Run Command&lt;/a&gt; in the &lt;i&gt;Amazon EC2 Systems Manager User Guide&lt;/i&gt;.&lt;/p&gt;
+-- <p>The role name can't contain invalid characters. Also verify that you specified an IAM role for notifications that includes the required trust policy. For information about configuring the IAM role for Run Command notifications, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/rc-sns-notifications.html">Configuring Amazon SNS Notifications for Run Command</a> in the <i>Amazon EC2 Systems Manager User Guide</i>.</p>
+-- @param Message [String] <p>The role name can't contain invalid characters. Also verify that you specified an IAM role for notifications that includes the required trust policy. For information about configuring the IAM role for Run Command notifications, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/rc-sns-notifications.html">Configuring Amazon SNS Notifications for Run Command</a> in the <i>Amazon EC2 Systems Manager User Guide</i>.</p>
 function M.InvalidRole(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRole")
 	local t = { 
@@ -3859,7 +3859,7 @@ end
 
 --- Create a structure of type DeleteActivationRequest
 --  
--- @param ActivationId [ActivationId] &lt;p&gt;The ID of the activation that you want to delete.&lt;/p&gt;
+-- @param ActivationId [ActivationId] <p>The ID of the activation that you want to delete.</p>
 -- Required parameter: ActivationId
 function M.DeleteActivationRequest(ActivationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteActivationRequest")
@@ -3882,8 +3882,8 @@ function M.AssertInvalidInstanceId(struct)
 end
 
 --- Create a structure of type InvalidInstanceId
--- &lt;p&gt;The following problems can cause this exception:&lt;/p&gt; &lt;p&gt;You do not have permission to access the instance.&lt;/p&gt; &lt;p&gt;The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is running. On EC2 Windows instances, verify that the EC2Config service is running.&lt;/p&gt; &lt;p&gt;The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent or EC2Config service.&lt;/p&gt; &lt;p&gt;The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states are: Shutting-down and Terminated.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The following problems can cause this exception:&lt;/p&gt; &lt;p&gt;You do not have permission to access the instance.&lt;/p&gt; &lt;p&gt;The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is running. On EC2 Windows instances, verify that the EC2Config service is running.&lt;/p&gt; &lt;p&gt;The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent or EC2Config service.&lt;/p&gt; &lt;p&gt;The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states are: Shutting-down and Terminated.&lt;/p&gt;
+-- <p>The following problems can cause this exception:</p> <p>You do not have permission to access the instance.</p> <p>The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is running. On EC2 Windows instances, verify that the EC2Config service is running.</p> <p>The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent or EC2Config service.</p> <p>The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states are: Shutting-down and Terminated.</p>
+-- @param Message [String] <p>The following problems can cause this exception:</p> <p>You do not have permission to access the instance.</p> <p>The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is running. On EC2 Windows instances, verify that the EC2Config service is running.</p> <p>The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent or EC2Config service.</p> <p>The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states are: Shutting-down and Terminated.</p>
 function M.InvalidInstanceId(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInstanceId")
 	local t = { 
@@ -3909,10 +3909,10 @@ function M.AssertInventoryItemSchema(struct)
 end
 
 --- Create a structure of type InventoryItemSchema
--- &lt;p&gt;The inventory item schema definition. Users can use this to compose inventory query filters.&lt;/p&gt;
--- @param TypeName [InventoryItemTypeName] &lt;p&gt;The name of the inventory type. Default inventory item type names start with AWS. Custom inventory type names will start with Custom. Default inventory item types include the following: AWS:AWSComponent, AWS:Application, AWS:InstanceInformation, AWS:Network, and AWS:WindowsUpdate.&lt;/p&gt;
--- @param Version [InventoryItemSchemaVersion] &lt;p&gt;The schema version for the inventory item.&lt;/p&gt;
--- @param Attributes [InventoryItemAttributeList] &lt;p&gt;The schema attributes for inventory. This contains data type and attribute name.&lt;/p&gt;
+-- <p>The inventory item schema definition. Users can use this to compose inventory query filters.</p>
+-- @param TypeName [InventoryItemTypeName] <p>The name of the inventory type. Default inventory item type names start with AWS. Custom inventory type names will start with Custom. Default inventory item types include the following: AWS:AWSComponent, AWS:Application, AWS:InstanceInformation, AWS:Network, and AWS:WindowsUpdate.</p>
+-- @param Version [InventoryItemSchemaVersion] <p>The schema version for the inventory item.</p>
+-- @param Attributes [InventoryItemAttributeList] <p>The schema attributes for inventory. This contains data type and attribute name.</p>
 -- Required parameter: TypeName
 -- Required parameter: Attributes
 function M.InventoryItemSchema(TypeName, Version, Attributes, ...)
@@ -3939,7 +3939,7 @@ end
 
 --- Create a structure of type DeleteMaintenanceWindowResult
 --  
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the deleted Maintenance Window.&lt;/p&gt;
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the deleted Maintenance Window.</p>
 function M.DeleteMaintenanceWindowResult(WindowId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMaintenanceWindowResult")
 	local t = { 
@@ -3963,8 +3963,8 @@ end
 
 --- Create a structure of type DescribeInstancePatchStatesResult
 --  
--- @param InstancePatchStates [InstancePatchStateList] &lt;p&gt;The high-level patch state for the requested instances.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param InstancePatchStates [InstancePatchStateList] <p>The high-level patch state for the requested instances.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.DescribeInstancePatchStatesResult(InstancePatchStates, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchStatesResult")
 	local t = { 
@@ -3994,15 +3994,15 @@ function M.AssertAssociation(struct)
 end
 
 --- Create a structure of type Association
--- &lt;p&gt;Describes an association of a Systems Manager document and an instance.&lt;/p&gt;
--- @param ScheduleExpression [ScheduleExpression] &lt;p&gt;A cron expression that specifies a schedule when the association runs.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the SSM document.&lt;/p&gt;
--- @param LastExecutionDate [DateTime] &lt;p&gt;The date on which the association was last run.&lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param Overview [AssociationOverview] &lt;p&gt;Information about the association.&lt;/p&gt;
--- @param AssociationId [AssociationId] &lt;p&gt;The ID created by the system when you create an association. An association is a binding between a document and a set of targets with a schedule.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The version of the document used in the association.&lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;The instances targeted by the request to create an association. &lt;/p&gt;
+-- <p>Describes an association of a Systems Manager document and an instance.</p>
+-- @param ScheduleExpression [ScheduleExpression] <p>A cron expression that specifies a schedule when the association runs.</p>
+-- @param Name [DocumentName] <p>The name of the SSM document.</p>
+-- @param LastExecutionDate [DateTime] <p>The date on which the association was last run.</p>
+-- @param InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- @param Overview [AssociationOverview] <p>Information about the association.</p>
+-- @param AssociationId [AssociationId] <p>The ID created by the system when you create an association. An association is a binding between a document and a set of targets with a schedule.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The version of the document used in the association.</p>
+-- @param Targets [Targets] <p>The instances targeted by the request to create an association. </p>
 function M.Association(ScheduleExpression, Name, LastExecutionDate, InstanceId, Overview, AssociationId, DocumentVersion, Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Association")
 	local t = { 
@@ -4035,9 +4035,9 @@ end
 
 --- Create a structure of type DescribeEffectiveInstanceAssociationsRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;The instance ID for which you want to view all associations.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [EffectiveInstanceAssociationMaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>The instance ID for which you want to view all associations.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [EffectiveInstanceAssociationMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 -- Required parameter: InstanceId
 function M.DescribeEffectiveInstanceAssociationsRequest(InstanceId, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEffectiveInstanceAssociationsRequest")
@@ -4064,8 +4064,8 @@ end
 
 --- Create a structure of type GetParameterHistoryResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param Parameters [ParameterHistoryList] &lt;p&gt;A list of parameters returned by the request.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param Parameters [ParameterHistoryList] <p>A list of parameters returned by the request.</p>
 function M.GetParameterHistoryResult(NextToken, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetParameterHistoryResult")
 	local t = { 
@@ -4092,10 +4092,10 @@ function M.AssertLoggingInfo(struct)
 end
 
 --- Create a structure of type LoggingInfo
--- &lt;p&gt;Information about an Amazon S3 bucket to write instance-level logs to.&lt;/p&gt;
--- @param S3KeyPrefix [S3KeyPrefix] &lt;p&gt;(Optional) The Amazon S3 bucket subfolder. &lt;/p&gt;
--- @param S3BucketName [S3BucketName] &lt;p&gt;The name of an Amazon S3 bucket where execution logs are stored .&lt;/p&gt;
--- @param S3Region [S3Region] &lt;p&gt;The region where the Amazon S3 bucket is located.&lt;/p&gt;
+-- <p>Information about an Amazon S3 bucket to write instance-level logs to.</p>
+-- @param S3KeyPrefix [S3KeyPrefix] <p>(Optional) The Amazon S3 bucket subfolder. </p>
+-- @param S3BucketName [S3BucketName] <p>The name of an Amazon S3 bucket where execution logs are stored .</p>
+-- @param S3Region [S3Region] <p>The region where the Amazon S3 bucket is located.</p>
 -- Required parameter: S3BucketName
 -- Required parameter: S3Region
 function M.LoggingInfo(S3KeyPrefix, S3BucketName, S3Region, ...)
@@ -4127,12 +4127,12 @@ end
 
 --- Create a structure of type ListInventoryEntriesResult
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;The instance ID targeted by the request to query inventory information.&lt;/p&gt;
--- @param TypeName [InventoryItemTypeName] &lt;p&gt;The type of inventory item returned by the request.&lt;/p&gt;
--- @param Entries [InventoryItemEntryList] &lt;p&gt;A list of inventory items on the instance(s).&lt;/p&gt;
--- @param SchemaVersion [InventoryItemSchemaVersion] &lt;p&gt;The inventory schema version used by the instance(s).&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param CaptureTime [InventoryItemCaptureTime] &lt;p&gt;The time that inventory information was collected for the instance(s).&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>The instance ID targeted by the request to query inventory information.</p>
+-- @param TypeName [InventoryItemTypeName] <p>The type of inventory item returned by the request.</p>
+-- @param Entries [InventoryItemEntryList] <p>A list of inventory items on the instance(s).</p>
+-- @param SchemaVersion [InventoryItemSchemaVersion] <p>The inventory schema version used by the instance(s).</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param CaptureTime [InventoryItemCaptureTime] <p>The time that inventory information was collected for the instance(s).</p>
 function M.ListInventoryEntriesResult(InstanceId, TypeName, Entries, SchemaVersion, NextToken, CaptureTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListInventoryEntriesResult")
 	local t = { 
@@ -4181,8 +4181,8 @@ end
 
 --- Create a structure of type DescribeAutomationExecutionsResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param AutomationExecutionMetadataList [AutomationExecutionMetadataList] &lt;p&gt;The list of details about each automation execution which has occurred which matches the filter specification, if any.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param AutomationExecutionMetadataList [AutomationExecutionMetadataList] <p>The list of details about each automation execution which has occurred which matches the filter specification, if any.</p>
 function M.DescribeAutomationExecutionsResult(NextToken, AutomationExecutionMetadataList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAutomationExecutionsResult")
 	local t = { 
@@ -4209,8 +4209,8 @@ end
 
 --- Create a structure of type DeregisterTaskFromMaintenanceWindowRequest
 --  
--- @param WindowTaskId [MaintenanceWindowTaskId] &lt;p&gt;The ID of the task to remove from the Maintenance Window.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window the task should be removed from.&lt;/p&gt;
+-- @param WindowTaskId [MaintenanceWindowTaskId] <p>The ID of the task to remove from the Maintenance Window.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the task should be removed from.</p>
 -- Required parameter: WindowId
 -- Required parameter: WindowTaskId
 function M.DeregisterTaskFromMaintenanceWindowRequest(WindowTaskId, WindowId, ...)
@@ -4235,8 +4235,8 @@ function M.AssertInvalidPermissionType(struct)
 end
 
 --- Create a structure of type InvalidPermissionType
--- &lt;p&gt;The permission type is not supported. &lt;i&gt;Share&lt;/i&gt; is the only supported permission type.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The permission type is not supported. &lt;i&gt;Share&lt;/i&gt; is the only supported permission type.&lt;/p&gt;
+-- <p>The permission type is not supported. <i>Share</i> is the only supported permission type.</p>
+-- @param Message [String] <p>The permission type is not supported. <i>Share</i> is the only supported permission type.</p>
 function M.InvalidPermissionType(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPermissionType")
 	local t = { 
@@ -4257,7 +4257,7 @@ function M.AssertCancelCommandResult(struct)
 end
 
 --- Create a structure of type CancelCommandResult
--- &lt;p&gt;Whether or not the command was successfully canceled. There is no guarantee that a request can be canceled.&lt;/p&gt;
+-- <p>Whether or not the command was successfully canceled. There is no guarantee that a request can be canceled.</p>
 function M.CancelCommandResult(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelCommandResult")
 	local t = { 
@@ -4280,7 +4280,7 @@ end
 
 --- Create a structure of type GetAutomationExecutionRequest
 --  
--- @param AutomationExecutionId [AutomationExecutionId] &lt;p&gt;The unique identifier for an existing automation execution to examine. The execution ID is returned by StartAutomationExecution when the execution of an Automation document is initiated.&lt;/p&gt;
+-- @param AutomationExecutionId [AutomationExecutionId] <p>The unique identifier for an existing automation execution to examine. The execution ID is returned by StartAutomationExecution when the execution of an Automation document is initiated.</p>
 -- Required parameter: AutomationExecutionId
 function M.GetAutomationExecutionRequest(AutomationExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAutomationExecutionRequest")
@@ -4304,7 +4304,7 @@ end
 
 --- Create a structure of type RegisterTaskWithMaintenanceWindowResult
 --  
--- @param WindowTaskId [MaintenanceWindowTaskId] &lt;p&gt;The id of the task in the Maintenance Window.&lt;/p&gt;
+-- @param WindowTaskId [MaintenanceWindowTaskId] <p>The id of the task in the Maintenance Window.</p>
 function M.RegisterTaskWithMaintenanceWindowResult(WindowTaskId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTaskWithMaintenanceWindowResult")
 	local t = { 
@@ -4325,7 +4325,7 @@ function M.AssertAssociatedInstances(struct)
 end
 
 --- Create a structure of type AssociatedInstances
--- &lt;p&gt;You must disassociate a document from all instances before you can delete it.&lt;/p&gt;
+-- <p>You must disassociate a document from all instances before you can delete it.</p>
 function M.AssociatedInstances(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociatedInstances")
 	local t = { 
@@ -4348,7 +4348,7 @@ end
 
 --- Create a structure of type GetMaintenanceWindowExecutionRequest
 --  
--- @param WindowExecutionId [MaintenanceWindowExecutionId] &lt;p&gt;The ID of the Maintenance Window execution that includes the task.&lt;/p&gt;
+-- @param WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that includes the task.</p>
 -- Required parameter: WindowExecutionId
 function M.GetMaintenanceWindowExecutionRequest(WindowExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowExecutionRequest")
@@ -4378,11 +4378,11 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionTaskInvocationsRequest
 --  
--- @param MaxResults [MaintenanceWindowMaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param WindowExecutionId [MaintenanceWindowExecutionId] &lt;p&gt;The ID of the Maintenance Window execution the task is part of.&lt;/p&gt;
--- @param Filters [MaintenanceWindowFilterList] &lt;p&gt;Optional filters used to scope down the returned task invocations. The supported filter key is STATUS with the corresponding values PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.&lt;/p&gt;
--- @param TaskId [MaintenanceWindowExecutionTaskId] &lt;p&gt;The ID of the specific task in the Maintenance Window task that should be retrieved.&lt;/p&gt;
+-- @param MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution the task is part of.</p>
+-- @param Filters [MaintenanceWindowFilterList] <p>Optional filters used to scope down the returned task invocations. The supported filter key is STATUS with the corresponding values PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.</p>
+-- @param TaskId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task in the Maintenance Window task that should be retrieved.</p>
 -- Required parameter: WindowExecutionId
 -- Required parameter: TaskId
 function M.DescribeMaintenanceWindowExecutionTaskInvocationsRequest(MaxResults, NextToken, WindowExecutionId, Filters, TaskId, ...)
@@ -4413,9 +4413,9 @@ end
 
 --- Create a structure of type GetInventorySchemaRequest
 --  
--- @param TypeName [InventoryItemTypeNameFilter] &lt;p&gt;The type of inventory item to return.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [GetInventorySchemaMaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
+-- @param TypeName [InventoryItemTypeNameFilter] <p>The type of inventory item to return.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [GetInventorySchemaMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 function M.GetInventorySchemaRequest(TypeName, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInventorySchemaRequest")
 	local t = { 
@@ -4438,7 +4438,7 @@ function M.AssertDuplicateInstanceId(struct)
 end
 
 --- Create a structure of type DuplicateInstanceId
--- &lt;p&gt;You cannot specify an instance ID in more than one association.&lt;/p&gt;
+-- <p>You cannot specify an instance ID in more than one association.</p>
 function M.DuplicateInstanceId(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateInstanceId")
 	local t = { 
@@ -4482,10 +4482,10 @@ function M.AssertParameterStringFilter(struct)
 end
 
 --- Create a structure of type ParameterStringFilter
--- &lt;p&gt;One or more filters. Use a filter to return a more specific list of results.&lt;/p&gt;
--- @param Values [ParameterStringFilterValueList] &lt;p&gt;The value you want to search for.&lt;/p&gt;
--- @param Option [ParameterStringQueryOption] &lt;p&gt;Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.&lt;/p&gt;
--- @param Key [ParameterStringFilterKey] &lt;p&gt;The name of the filter.&lt;/p&gt;
+-- <p>One or more filters. Use a filter to return a more specific list of results.</p>
+-- @param Values [ParameterStringFilterValueList] <p>The value you want to search for.</p>
+-- @param Option [ParameterStringQueryOption] <p>Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.</p>
+-- @param Key [ParameterStringFilterKey] <p>The name of the filter.</p>
 -- Required parameter: Key
 function M.ParameterStringFilter(Values, Option, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterStringFilter")
@@ -4513,9 +4513,9 @@ end
 
 --- Create a structure of type DescribeAutomationExecutionsRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Filters [AutomationExecutionFilterList] &lt;p&gt;Filters used to limit the scope of executions that are requested.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Filters [AutomationExecutionFilterList] <p>Filters used to limit the scope of executions that are requested.</p>
 function M.DescribeAutomationExecutionsRequest(NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAutomationExecutionsRequest")
 	local t = { 
@@ -4541,8 +4541,8 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowTasksResult
 --  
--- @param Tasks [MaintenanceWindowTaskList] &lt;p&gt;Information about the tasks in the Maintenance Window.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param Tasks [MaintenanceWindowTaskList] <p>Information about the tasks in the Maintenance Window.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.DescribeMaintenanceWindowTasksResult(Tasks, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowTasksResult")
 	local t = { 
@@ -4568,9 +4568,9 @@ end
 
 --- Create a structure of type DeleteAssociationRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param AssociationId [AssociationId] &lt;p&gt;The association ID that you want to delete.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the Systems Manager document.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- @param AssociationId [AssociationId] <p>The association ID that you want to delete.</p>
+-- @param Name [DocumentName] <p>The name of the Systems Manager document.</p>
 function M.DeleteAssociationRequest(InstanceId, AssociationId, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssociationRequest")
 	local t = { 
@@ -4595,9 +4595,9 @@ function M.AssertDescribeActivationsFilter(struct)
 end
 
 --- Create a structure of type DescribeActivationsFilter
--- &lt;p&gt;Filter for the DescribeActivation API.&lt;/p&gt;
--- @param FilterKey [DescribeActivationsFilterKeys] &lt;p&gt;The name of the filter.&lt;/p&gt;
--- @param FilterValues [StringList] &lt;p&gt;The filter values.&lt;/p&gt;
+-- <p>Filter for the DescribeActivation API.</p>
+-- @param FilterKey [DescribeActivationsFilterKeys] <p>The name of the filter.</p>
+-- @param FilterValues [StringList] <p>The filter values.</p>
 function M.DescribeActivationsFilter(FilterKey, FilterValues, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivationsFilter")
 	local t = { 
@@ -4624,8 +4624,8 @@ end
 
 --- Create a structure of type DeregisterPatchBaselineForPatchGroupRequest
 --  
--- @param PatchGroup [PatchGroup] &lt;p&gt;The name of the patch group that should be deregistered from the patch baseline.&lt;/p&gt;
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline to deregister the patch group from.&lt;/p&gt;
+-- @param PatchGroup [PatchGroup] <p>The name of the patch group that should be deregistered from the patch baseline.</p>
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline to deregister the patch group from.</p>
 -- Required parameter: BaselineId
 -- Required parameter: PatchGroup
 function M.DeregisterPatchBaselineForPatchGroupRequest(PatchGroup, BaselineId, ...)
@@ -4650,8 +4650,8 @@ function M.AssertInternalServerError(struct)
 end
 
 --- Create a structure of type InternalServerError
--- &lt;p&gt;An error occurred on the server side.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;An error occurred on the server side.&lt;/p&gt;
+-- <p>An error occurred on the server side.</p>
+-- @param Message [String] <p>An error occurred on the server side.</p>
 function M.InternalServerError(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
 	local t = { 
@@ -4673,8 +4673,8 @@ function M.AssertDuplicateDocumentContent(struct)
 end
 
 --- Create a structure of type DuplicateDocumentContent
--- &lt;p&gt;The content of the association document matches another document. Change the content of the document and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The content of the association document matches another document. Change the content of the document and try again.&lt;/p&gt;
+-- <p>The content of the association document matches another document. Change the content of the document and try again.</p>
+-- @param Message [String] <p>The content of the association document matches another document. Change the content of the document and try again.</p>
 function M.DuplicateDocumentContent(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateDocumentContent")
 	local t = { 
@@ -4697,8 +4697,8 @@ function M.AssertPatchFilterGroup(struct)
 end
 
 --- Create a structure of type PatchFilterGroup
--- &lt;p&gt;A set of patch filters, typically used for approval rules.&lt;/p&gt;
--- @param PatchFilters [PatchFilterList] &lt;p&gt;The set of patch filters that make up the group.&lt;/p&gt;
+-- <p>A set of patch filters, typically used for approval rules.</p>
+-- @param PatchFilters [PatchFilterList] <p>The set of patch filters that make up the group.</p>
 -- Required parameter: PatchFilters
 function M.PatchFilterGroup(PatchFilters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PatchFilterGroup")
@@ -4720,7 +4720,7 @@ function M.AssertStatusUnchanged(struct)
 end
 
 --- Create a structure of type StatusUnchanged
--- &lt;p&gt;The updated status is the same as the current status.&lt;/p&gt;
+-- <p>The updated status is the same as the current status.</p>
 function M.StatusUnchanged(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StatusUnchanged")
 	local t = { 
@@ -4741,8 +4741,8 @@ function M.AssertS3OutputUrl(struct)
 end
 
 --- Create a structure of type S3OutputUrl
--- &lt;p&gt;A URL for the Amazon S3 bucket where you want to store the results of this request.&lt;/p&gt;
--- @param OutputUrl [Url] &lt;p&gt;A URL for an Amazon S3 bucket where you want to store the results of this request.&lt;/p&gt;
+-- <p>A URL for the Amazon S3 bucket where you want to store the results of this request.</p>
+-- @param OutputUrl [Url] <p>A URL for an Amazon S3 bucket where you want to store the results of this request.</p>
 function M.S3OutputUrl(OutputUrl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3OutputUrl")
 	local t = { 
@@ -4789,10 +4789,10 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowTasksRequest
 --  
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window whose tasks should be retrieved.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaintenanceWindowMaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Filters [MaintenanceWindowFilterList] &lt;p&gt;Optional filters used to narrow down the scope of the returned tasks. The supported filter keys are WindowTaskId, TaskArn, Priority, and TaskType.&lt;/p&gt;
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window whose tasks should be retrieved.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Filters [MaintenanceWindowFilterList] <p>Optional filters used to narrow down the scope of the returned tasks. The supported filter keys are WindowTaskId, TaskArn, Priority, and TaskType.</p>
 -- Required parameter: WindowId
 function M.DescribeMaintenanceWindowTasksRequest(WindowId, NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowTasksRequest")
@@ -4831,21 +4831,21 @@ function M.AssertCommandInvocation(struct)
 end
 
 --- Create a structure of type CommandInvocation
--- &lt;p&gt;An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A command invocation applies to one instance. For example, if a user executes SendCommand against three instances, then a command invocation is created for each requested instance ID. A command invocation returns status and detail information about a command you executed. &lt;/p&gt;
--- @param Comment [Comment] &lt;p&gt;User-specified information about the command, such as a brief description of what the command should do.&lt;/p&gt;
--- @param Status [CommandInvocationStatus] &lt;p&gt;Whether or not the invocation succeeded, failed, or is pending.&lt;/p&gt;
--- @param CommandPlugins [CommandPluginList] &lt;p&gt;An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A command invocation applies to one instance. For example, if a user executes SendCommand against three instances, then a command invocation is created for each requested instance ID. A command invocation returns status and detail information about a command you executed. &lt;/p&gt;
--- @param ServiceRole [ServiceRole] &lt;p&gt;The IAM service role that Run Command uses to act on your behalf when sending notifications about command status changes on a per instance basis.&lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The instance ID in which this invocation was requested.&lt;/p&gt;
--- @param DocumentName [DocumentName] &lt;p&gt;The document name that was requested for execution.&lt;/p&gt;
--- @param NotificationConfig [NotificationConfig] &lt;p&gt;Configurations for sending notifications about command status changes on a per instance basis.&lt;/p&gt;
--- @param StatusDetails [StatusDetails] &lt;p&gt;A detailed status of the command execution for each invocation (each instance targeted by the command). StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html&quot;&gt;Run Command Status&lt;/a&gt;. StatusDetails can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Pending: The command has not been sent to the instance.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In Progress: The command has been sent to the instance but has not reached a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Success: The execution of the command or plugin was successfully completed. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Execution Timed Out: Command execution started on the instance, but the execution was not complete before the execution timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Failed: The command was not successful on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Canceled: The command was terminated before it was completed. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Undeliverable: The command can't be delivered to the instance. The instance might not exist or might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit and don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param StandardOutputUrl [Url] &lt;p&gt;The URL to the plugin's StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For an invocation, StandardOutputUrl is populated if there is just one plugin defined for the command, and the Amazon S3 bucket was defined for the command.&lt;/p&gt;
--- @param StandardErrorUrl [Url] &lt;p&gt;The URL to the plugin's StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For an invocation, StandardErrorUrl is populated if there is just one plugin defined for the command, and the Amazon S3 bucket was defined for the command.&lt;/p&gt;
--- @param TraceOutput [InvocationTraceOutput] &lt;p&gt; Gets the trace output sent by the agent. &lt;/p&gt;
--- @param InstanceName [InstanceTagName] &lt;p&gt;The name of the invocation target. For Amazon EC2 instances this is the value for the aws:Name tag. For on-premises instances, this is the name of the instance.&lt;/p&gt;
--- @param CommandId [CommandId] &lt;p&gt;The command against which this invocation was requested.&lt;/p&gt;
--- @param RequestedDateTime [DateTime] &lt;p&gt;The time and date the request was sent to this instance.&lt;/p&gt;
+-- <p>An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A command invocation applies to one instance. For example, if a user executes SendCommand against three instances, then a command invocation is created for each requested instance ID. A command invocation returns status and detail information about a command you executed. </p>
+-- @param Comment [Comment] <p>User-specified information about the command, such as a brief description of what the command should do.</p>
+-- @param Status [CommandInvocationStatus] <p>Whether or not the invocation succeeded, failed, or is pending.</p>
+-- @param CommandPlugins [CommandPluginList] <p>An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A command invocation applies to one instance. For example, if a user executes SendCommand against three instances, then a command invocation is created for each requested instance ID. A command invocation returns status and detail information about a command you executed. </p>
+-- @param ServiceRole [ServiceRole] <p>The IAM service role that Run Command uses to act on your behalf when sending notifications about command status changes on a per instance basis.</p>
+-- @param InstanceId [InstanceId] <p>The instance ID in which this invocation was requested.</p>
+-- @param DocumentName [DocumentName] <p>The document name that was requested for execution.</p>
+-- @param NotificationConfig [NotificationConfig] <p>Configurations for sending notifications about command status changes on a per instance basis.</p>
+-- @param StatusDetails [StatusDetails] <p>A detailed status of the command execution for each invocation (each instance targeted by the command). StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to the instance.</p> </li> <li> <p>In Progress: The command has been sent to the instance but has not reached a terminal state.</p> </li> <li> <p>Success: The execution of the command or plugin was successfully completed. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: Command execution started on the instance, but the execution was not complete before the execution timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Failed: The command was not successful on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Undeliverable: The command can't be delivered to the instance. The instance might not exist or might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit and don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.</p> </li> </ul>
+-- @param StandardOutputUrl [Url] <p>The URL to the plugin's StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For an invocation, StandardOutputUrl is populated if there is just one plugin defined for the command, and the Amazon S3 bucket was defined for the command.</p>
+-- @param StandardErrorUrl [Url] <p>The URL to the plugin's StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For an invocation, StandardErrorUrl is populated if there is just one plugin defined for the command, and the Amazon S3 bucket was defined for the command.</p>
+-- @param TraceOutput [InvocationTraceOutput] <p> Gets the trace output sent by the agent. </p>
+-- @param InstanceName [InstanceTagName] <p>The name of the invocation target. For Amazon EC2 instances this is the value for the aws:Name tag. For on-premises instances, this is the name of the instance.</p>
+-- @param CommandId [CommandId] <p>The command against which this invocation was requested.</p>
+-- @param RequestedDateTime [DateTime] <p>The time and date the request was sent to this instance.</p>
 function M.CommandInvocation(Comment, Status, CommandPlugins, ServiceRole, InstanceId, DocumentName, NotificationConfig, StatusDetails, StandardOutputUrl, StandardErrorUrl, TraceOutput, InstanceName, CommandId, RequestedDateTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CommandInvocation")
 	local t = { 
@@ -4884,10 +4884,10 @@ function M.AssertInventoryFilter(struct)
 end
 
 --- Create a structure of type InventoryFilter
--- &lt;p&gt;One or more filters. Use a filter to return a more specific list of results.&lt;/p&gt;
--- @param Type [InventoryQueryOperatorType] &lt;p&gt;The type of filter. Valid values include the following: &quot;Equal&quot;|&quot;NotEqual&quot;|&quot;BeginWith&quot;|&quot;LessThan&quot;|&quot;GreaterThan&quot;&lt;/p&gt;
--- @param Values [InventoryFilterValueList] &lt;p&gt;Inventory filter values. Example: inventory filter where instance IDs are specified as values Key=AWS:InstanceInformation.InstanceId,Values= i-a12b3c4d5e6g, i-1a2b3c4d5e6,Type=Equal &lt;/p&gt;
--- @param Key [InventoryFilterKey] &lt;p&gt;The name of the filter key.&lt;/p&gt;
+-- <p>One or more filters. Use a filter to return a more specific list of results.</p>
+-- @param Type [InventoryQueryOperatorType] <p>The type of filter. Valid values include the following: "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"</p>
+-- @param Values [InventoryFilterValueList] <p>Inventory filter values. Example: inventory filter where instance IDs are specified as values Key=AWS:InstanceInformation.InstanceId,Values= i-a12b3c4d5e6g, i-1a2b3c4d5e6,Type=Equal </p>
+-- @param Key [InventoryFilterKey] <p>The name of the filter key.</p>
 -- Required parameter: Key
 -- Required parameter: Values
 function M.InventoryFilter(Type, Values, Key, ...)
@@ -4914,8 +4914,8 @@ function M.AssertResultAttribute(struct)
 end
 
 --- Create a structure of type ResultAttribute
--- &lt;p&gt;The inventory item result attribute.&lt;/p&gt;
--- @param TypeName [InventoryItemTypeName] &lt;p&gt;Name of the inventory item type. Valid value: AWS:InstanceInformation. Default Value: AWS:InstanceInformation.&lt;/p&gt;
+-- <p>The inventory item result attribute.</p>
+-- @param TypeName [InventoryItemTypeName] <p>Name of the inventory item type. Valid value: AWS:InstanceInformation. Default Value: AWS:InstanceInformation.</p>
 -- Required parameter: TypeName
 function M.ResultAttribute(TypeName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResultAttribute")
@@ -4940,8 +4940,8 @@ end
 
 --- Create a structure of type DescribeInstanceAssociationsStatusResult
 --  
--- @param InstanceAssociationStatusInfos [InstanceAssociationStatusInfos] &lt;p&gt;Status information about the association.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param InstanceAssociationStatusInfos [InstanceAssociationStatusInfos] <p>Status information about the association.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.DescribeInstanceAssociationsStatusResult(InstanceAssociationStatusInfos, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstanceAssociationsStatusResult")
 	local t = { 
@@ -4968,8 +4968,8 @@ end
 
 --- Create a structure of type GetMaintenanceWindowExecutionTaskRequest
 --  
--- @param WindowExecutionId [MaintenanceWindowExecutionId] &lt;p&gt;The ID of the Maintenance Window execution that includes the task.&lt;/p&gt;
--- @param TaskId [MaintenanceWindowExecutionTaskId] &lt;p&gt;The ID of the specific task execution in the Maintenance Window task that should be retrieved.&lt;/p&gt;
+-- @param WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that includes the task.</p>
+-- @param TaskId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window task that should be retrieved.</p>
 -- Required parameter: WindowExecutionId
 -- Required parameter: TaskId
 function M.GetMaintenanceWindowExecutionTaskRequest(WindowExecutionId, TaskId, ...)
@@ -4995,7 +4995,7 @@ end
 
 --- Create a structure of type UpdateDocumentResult
 --  
--- @param DocumentDescription [DocumentDescription] &lt;p&gt;A description of the document that was updated.&lt;/p&gt;
+-- @param DocumentDescription [DocumentDescription] <p>A description of the document that was updated.</p>
 function M.UpdateDocumentResult(DocumentDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentResult")
 	local t = { 
@@ -5018,7 +5018,7 @@ end
 
 --- Create a structure of type CreateMaintenanceWindowResult
 --  
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the created Maintenance Window.&lt;/p&gt;
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the created Maintenance Window.</p>
 function M.CreateMaintenanceWindowResult(WindowId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateMaintenanceWindowResult")
 	local t = { 
@@ -5041,9 +5041,9 @@ function M.AssertEffectivePatch(struct)
 end
 
 --- Create a structure of type EffectivePatch
--- &lt;p&gt;The EffectivePatch structure defines metadata about a patch along with the approval state of the patch in a particular patch baseline. The approval state includes information about whether the patch is currently approved, due to be approved by a rule, explicitly approved, or explicitly rejected and the date the patch was or will be approved.&lt;/p&gt;
--- @param PatchStatus [PatchStatus] &lt;p&gt;The status of the patch in a patch baseline. This includes information about whether the patch is currently approved, due to be approved by a rule, explicitly approved, or explicitly rejected and the date the patch was or will be approved.&lt;/p&gt;
--- @param Patch [Patch] &lt;p&gt;Provides metadata for a patch, including information such as the KB ID, severity, classification and a URL for where more information can be obtained about the patch.&lt;/p&gt;
+-- <p>The EffectivePatch structure defines metadata about a patch along with the approval state of the patch in a particular patch baseline. The approval state includes information about whether the patch is currently approved, due to be approved by a rule, explicitly approved, or explicitly rejected and the date the patch was or will be approved.</p>
+-- @param PatchStatus [PatchStatus] <p>The status of the patch in a patch baseline. This includes information about whether the patch is currently approved, due to be approved by a rule, explicitly approved, or explicitly rejected and the date the patch was or will be approved.</p>
+-- @param Patch [Patch] <p>Provides metadata for a patch, including information such as the KB ID, severity, classification and a URL for where more information can be obtained about the patch.</p>
 function M.EffectivePatch(PatchStatus, Patch, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EffectivePatch")
 	local t = { 
@@ -5087,9 +5087,9 @@ function M.AssertTarget(struct)
 end
 
 --- Create a structure of type Target
--- &lt;p&gt;An array of search criteria that targets instances using a Key,Value combination that you specify. &lt;code&gt;Targets&lt;/code&gt; is required if you don't provide one or more instance IDs in the call.&lt;/p&gt; &lt;p/&gt;
--- @param Values [TargetValues] &lt;p&gt;User-defined criteria that maps to Key. For example, if you specified tag:ServerRole, you could specify value:WebServer to execute a command on instances that include Amazon EC2 tags of ServerRole,WebServer. For more information about how to send commands that target instances using Key,Value parameters, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html&quot;&gt;Executing a Command Using Systems Manager Run Command&lt;/a&gt;.&lt;/p&gt;
--- @param Key [TargetKey] &lt;p&gt;User-defined criteria for sending commands that target instances that meet the criteria. Key can be tag:&amp;lt;Amazon EC2 tag&amp;gt; or InstanceIds. For more information about how to send commands that target instances using Key,Value parameters, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html&quot;&gt;Executing a Command Using Systems Manager Run Command&lt;/a&gt;.&lt;/p&gt;
+-- <p>An array of search criteria that targets instances using a Key,Value combination that you specify. <code>Targets</code> is required if you don't provide one or more instance IDs in the call.</p> <p/>
+-- @param Values [TargetValues] <p>User-defined criteria that maps to Key. For example, if you specified tag:ServerRole, you could specify value:WebServer to execute a command on instances that include Amazon EC2 tags of ServerRole,WebServer. For more information about how to send commands that target instances using Key,Value parameters, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Executing a Command Using Systems Manager Run Command</a>.</p>
+-- @param Key [TargetKey] <p>User-defined criteria for sending commands that target instances that meet the criteria. Key can be tag:&lt;Amazon EC2 tag&gt; or InstanceIds. For more information about how to send commands that target instances using Key,Value parameters, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Executing a Command Using Systems Manager Run Command</a>.</p>
 function M.Target(Values, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Target")
 	local t = { 
@@ -5116,8 +5116,8 @@ end
 
 --- Create a structure of type PutInventoryRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;One or more instance IDs where you want to add or update inventory items.&lt;/p&gt;
--- @param Items [InventoryItemList] &lt;p&gt;The inventory items that you want to add or update on instances.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>One or more instance IDs where you want to add or update inventory items.</p>
+-- @param Items [InventoryItemList] <p>The inventory items that you want to add or update on instances.</p>
 -- Required parameter: InstanceId
 -- Required parameter: Items
 function M.PutInventoryRequest(InstanceId, Items, ...)
@@ -5147,13 +5147,13 @@ function M.AssertMaintenanceWindowExecution(struct)
 end
 
 --- Create a structure of type MaintenanceWindowExecution
--- &lt;p&gt;Describes the information about an execution of a Maintenance Window. &lt;/p&gt;
--- @param Status [MaintenanceWindowExecutionStatus] &lt;p&gt;The status of the execution.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window.&lt;/p&gt;
--- @param StartTime [DateTime] &lt;p&gt;The time the execution started.&lt;/p&gt;
--- @param EndTime [DateTime] &lt;p&gt;The time the execution finished.&lt;/p&gt;
--- @param WindowExecutionId [MaintenanceWindowExecutionId] &lt;p&gt;The ID of the Maintenance Window execution.&lt;/p&gt;
--- @param StatusDetails [MaintenanceWindowExecutionStatusDetails] &lt;p&gt;The details explaining the Status. Only available for certain status values.&lt;/p&gt;
+-- <p>Describes the information about an execution of a Maintenance Window. </p>
+-- @param Status [MaintenanceWindowExecutionStatus] <p>The status of the execution.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window.</p>
+-- @param StartTime [DateTime] <p>The time the execution started.</p>
+-- @param EndTime [DateTime] <p>The time the execution finished.</p>
+-- @param WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution.</p>
+-- @param StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
 function M.MaintenanceWindowExecution(Status, WindowId, StartTime, EndTime, WindowExecutionId, StatusDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowExecution")
 	local t = { 
@@ -5182,8 +5182,8 @@ end
 
 --- Create a structure of type DeregisterPatchBaselineForPatchGroupResult
 --  
--- @param PatchGroup [PatchGroup] &lt;p&gt;The name of the patch group deregistered from the patch baseline.&lt;/p&gt;
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline the patch group was deregistered from.&lt;/p&gt;
+-- @param PatchGroup [PatchGroup] <p>The name of the patch group deregistered from the patch baseline.</p>
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline the patch group was deregistered from.</p>
 function M.DeregisterPatchBaselineForPatchGroupResult(PatchGroup, BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterPatchBaselineForPatchGroupResult")
 	local t = { 
@@ -5213,12 +5213,12 @@ function M.AssertInventoryResultItem(struct)
 end
 
 --- Create a structure of type InventoryResultItem
--- &lt;p&gt;The inventory result item.&lt;/p&gt;
--- @param ContentHash [InventoryItemContentHash] &lt;p&gt;MD5 hash of the inventory item type contents. The content hash is used to determine whether to update inventory information. The PutInventory API does not update the inventory item type contents if the MD5 hash has not changed since last update. &lt;/p&gt;
--- @param TypeName [InventoryItemTypeName] &lt;p&gt;The name of the inventory result item type.&lt;/p&gt;
--- @param SchemaVersion [InventoryItemSchemaVersion] &lt;p&gt;The schema version for the inventory result item/&lt;/p&gt;
--- @param CaptureTime [InventoryItemCaptureTime] &lt;p&gt;The time inventory item data was captured.&lt;/p&gt;
--- @param Content [InventoryItemEntryList] &lt;p&gt;Contains all the inventory data of the item type. Results include attribute names and values. &lt;/p&gt;
+-- <p>The inventory result item.</p>
+-- @param ContentHash [InventoryItemContentHash] <p>MD5 hash of the inventory item type contents. The content hash is used to determine whether to update inventory information. The PutInventory API does not update the inventory item type contents if the MD5 hash has not changed since last update. </p>
+-- @param TypeName [InventoryItemTypeName] <p>The name of the inventory result item type.</p>
+-- @param SchemaVersion [InventoryItemSchemaVersion] <p>The schema version for the inventory result item/</p>
+-- @param CaptureTime [InventoryItemCaptureTime] <p>The time inventory item data was captured.</p>
+-- @param Content [InventoryItemEntryList] <p>Contains all the inventory data of the item type. Results include attribute names and values. </p>
 -- Required parameter: TypeName
 -- Required parameter: SchemaVersion
 -- Required parameter: Content
@@ -5257,18 +5257,18 @@ function M.AssertMaintenanceWindowTask(struct)
 end
 
 --- Create a structure of type MaintenanceWindowTask
--- &lt;p&gt;Information about a task defined for a Maintenance Window.&lt;/p&gt;
--- @param LoggingInfo [LoggingInfo] &lt;p&gt;Information about an Amazon S3 bucket to write task-level logs to.&lt;/p&gt;
--- @param ServiceRoleArn [ServiceRole] &lt;p&gt;The role that should be assumed when executing the task&lt;/p&gt;
--- @param MaxErrors [MaxErrors] &lt;p&gt;The maximum number of errors allowed before this task stops being scheduled.&lt;/p&gt;
--- @param TaskArn [MaintenanceWindowTaskArn] &lt;p&gt;The ARN of the task to execute.&lt;/p&gt;
--- @param MaxConcurrency [MaxConcurrency] &lt;p&gt;The maximum number of targets this task can be run for in parallel.&lt;/p&gt;
--- @param WindowTaskId [MaintenanceWindowTaskId] &lt;p&gt;The task ID.&lt;/p&gt;
--- @param TaskParameters [MaintenanceWindowTaskParameters] &lt;p&gt;The parameters that should be passed to the task when it is executed.&lt;/p&gt;
--- @param Priority [MaintenanceWindowTaskPriority] &lt;p&gt;The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The Maintenance Window ID where the task is registered.&lt;/p&gt;
--- @param Type [MaintenanceWindowTaskType] &lt;p&gt;The type of task.&lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&amp;lt;instanceid1&amp;gt;,&amp;lt;instanceid2&amp;gt;. Tags are specified using Key=&amp;lt;tag name&amp;gt;,Values=&amp;lt;tag value&amp;gt;.&lt;/p&gt;
+-- <p>Information about a task defined for a Maintenance Window.</p>
+-- @param LoggingInfo [LoggingInfo] <p>Information about an Amazon S3 bucket to write task-level logs to.</p>
+-- @param ServiceRoleArn [ServiceRole] <p>The role that should be assumed when executing the task</p>
+-- @param MaxErrors [MaxErrors] <p>The maximum number of errors allowed before this task stops being scheduled.</p>
+-- @param TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the task to execute.</p>
+-- @param MaxConcurrency [MaxConcurrency] <p>The maximum number of targets this task can be run for in parallel.</p>
+-- @param WindowTaskId [MaintenanceWindowTaskId] <p>The task ID.</p>
+-- @param TaskParameters [MaintenanceWindowTaskParameters] <p>The parameters that should be passed to the task when it is executed.</p>
+-- @param Priority [MaintenanceWindowTaskPriority] <p>The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The Maintenance Window ID where the task is registered.</p>
+-- @param Type [MaintenanceWindowTaskType] <p>The type of task.</p>
+-- @param Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
 function M.MaintenanceWindowTask(LoggingInfo, ServiceRoleArn, MaxErrors, TaskArn, MaxConcurrency, WindowTaskId, TaskParameters, Priority, WindowId, Type, Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowTask")
 	local t = { 
@@ -5301,9 +5301,9 @@ function M.AssertInvalidItemContentException(struct)
 end
 
 --- Create a structure of type InvalidItemContentException
--- &lt;p&gt;One or more content items is not valid.&lt;/p&gt;
--- @param TypeName [InventoryItemTypeName] &lt;p&gt;One or more content items is not valid.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;One or more content items is not valid.&lt;/p&gt;
+-- <p>One or more content items is not valid.</p>
+-- @param TypeName [InventoryItemTypeName] <p>One or more content items is not valid.</p>
+-- @param Message [String] <p>One or more content items is not valid.</p>
 function M.InvalidItemContentException(TypeName, Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidItemContentException")
 	local t = { 
@@ -5328,8 +5328,8 @@ end
 
 --- Create a structure of type GetInventorySchemaResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param Schemas [InventoryItemSchemaResultList] &lt;p&gt;Inventory schemas returned by the request.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param Schemas [InventoryItemSchemaResultList] <p>Inventory schemas returned by the request.</p>
 function M.GetInventorySchemaResult(NextToken, Schemas, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInventorySchemaResult")
 	local t = { 
@@ -5356,9 +5356,9 @@ end
 
 --- Create a structure of type ListDocumentVersionsRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the document about which you want version information.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param Name [DocumentName] <p>The name of the document about which you want version information.</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 -- Required parameter: Name
 function M.ListDocumentVersionsRequest(NextToken, Name, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDocumentVersionsRequest")
@@ -5384,7 +5384,7 @@ end
 
 --- Create a structure of type GetParameterResult
 --  
--- @param Parameter [Parameter] &lt;p&gt;Information about a parameter.&lt;/p&gt;
+-- @param Parameter [Parameter] <p>Information about a parameter.</p>
 function M.GetParameterResult(Parameter, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetParameterResult")
 	local t = { 
@@ -5406,8 +5406,8 @@ function M.AssertInvalidFilter(struct)
 end
 
 --- Create a structure of type InvalidFilter
--- &lt;p&gt;The filter name is not valid. Verify the you entered the correct name and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The filter name is not valid. Verify the you entered the correct name and try again.&lt;/p&gt;
+-- <p>The filter name is not valid. Verify the you entered the correct name and try again.</p>
+-- @param Message [String] <p>The filter name is not valid. Verify the you entered the correct name and try again.</p>
 function M.InvalidFilter(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFilter")
 	local t = { 
@@ -5429,8 +5429,8 @@ function M.AssertInstanceAssociationOutputLocation(struct)
 end
 
 --- Create a structure of type InstanceAssociationOutputLocation
--- &lt;p&gt;An Amazon S3 bucket where you want to store the results of this request.&lt;/p&gt;
--- @param S3Location [S3OutputLocation] &lt;p&gt;An Amazon S3 bucket where you want to store the results of this request.&lt;/p&gt;
+-- <p>An Amazon S3 bucket where you want to store the results of this request.</p>
+-- @param S3Location [S3OutputLocation] <p>An Amazon S3 bucket where you want to store the results of this request.</p>
 function M.InstanceAssociationOutputLocation(S3Location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAssociationOutputLocation")
 	local t = { 
@@ -5455,9 +5455,9 @@ end
 
 --- Create a structure of type ListDocumentsRequest
 --  
--- @param DocumentFilterList [DocumentFilterList] &lt;p&gt;One or more filters. Use a filter to return a more specific list of results.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
+-- @param DocumentFilterList [DocumentFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 function M.ListDocumentsRequest(DocumentFilterList, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListDocumentsRequest")
 	local t = { 
@@ -5483,8 +5483,8 @@ end
 
 --- Create a structure of type CreateAssociationBatchResult
 --  
--- @param Successful [AssociationDescriptionList] &lt;p&gt;Information about the associations that succeeded.&lt;/p&gt;
--- @param Failed [FailedCreateAssociationList] &lt;p&gt;Information about the associations that failed.&lt;/p&gt;
+-- @param Successful [AssociationDescriptionList] <p>Information about the associations that succeeded.</p>
+-- @param Failed [FailedCreateAssociationList] <p>Information about the associations that failed.</p>
 function M.CreateAssociationBatchResult(Successful, Failed, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssociationBatchResult")
 	local t = { 
@@ -5510,9 +5510,9 @@ end
 
 --- Create a structure of type DescribeAvailablePatchesRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [PatchBaselineMaxResults] &lt;p&gt;The maximum number of patches to return (per page).&lt;/p&gt;
--- @param Filters [PatchOrchestratorFilterList] &lt;p&gt;Filters used to scope down the returned patches.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [PatchBaselineMaxResults] <p>The maximum number of patches to return (per page).</p>
+-- @param Filters [PatchOrchestratorFilterList] <p>Filters used to scope down the returned patches.</p>
 function M.DescribeAvailablePatchesRequest(NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAvailablePatchesRequest")
 	local t = { 
@@ -5539,8 +5539,8 @@ end
 
 --- Create a structure of type DescribeDocumentRequest
 --  
--- @param Name [DocumentARN] &lt;p&gt;The name of the SSM document.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version for which you want information. Can be a specific version or the default version.&lt;/p&gt;
+-- @param Name [DocumentARN] <p>The name of the SSM document.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version for which you want information. Can be a specific version or the default version.</p>
 -- Required parameter: Name
 function M.DescribeDocumentRequest(Name, DocumentVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentRequest")
@@ -5564,8 +5564,8 @@ function M.AssertInvalidDocumentVersion(struct)
 end
 
 --- Create a structure of type InvalidDocumentVersion
--- &lt;p&gt;The document version is not valid or does not exist.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The document version is not valid or does not exist.&lt;/p&gt;
+-- <p>The document version is not valid or does not exist.</p>
+-- @param Message [String] <p>The document version is not valid or does not exist.</p>
 function M.InvalidDocumentVersion(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDocumentVersion")
 	local t = { 
@@ -5587,8 +5587,8 @@ function M.AssertAutomationExecutionNotFoundException(struct)
 end
 
 --- Create a structure of type AutomationExecutionNotFoundException
--- &lt;p&gt;There is no automation execution information for the requested automation execution ID.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;There is no automation execution information for the requested automation execution ID.&lt;/p&gt;
+-- <p>There is no automation execution information for the requested automation execution ID.</p>
+-- @param Message [String] <p>There is no automation execution information for the requested automation execution ID.</p>
 function M.AutomationExecutionNotFoundException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutomationExecutionNotFoundException")
 	local t = { 
@@ -5610,8 +5610,8 @@ function M.AssertAssociationDoesNotExist(struct)
 end
 
 --- Create a structure of type AssociationDoesNotExist
--- &lt;p&gt;The specified association does not exist.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The specified association does not exist.&lt;/p&gt;
+-- <p>The specified association does not exist.</p>
+-- @param Message [String] <p>The specified association does not exist.</p>
 function M.AssociationDoesNotExist(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociationDoesNotExist")
 	local t = { 
@@ -5646,21 +5646,21 @@ function M.AssertAssociationDescription(struct)
 end
 
 --- Create a structure of type AssociationDescription
--- &lt;p&gt;Describes the parameters for a document.&lt;/p&gt;
--- @param Status [AssociationStatus] &lt;p&gt;The association status.&lt;/p&gt;
--- @param ScheduleExpression [ScheduleExpression] &lt;p&gt;A cron expression that specifies a schedule when the association runs.&lt;/p&gt;
--- @param OutputLocation [InstanceAssociationOutputLocation] &lt;p&gt;An Amazon S3 bucket where you want to store the output details of the request.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the SSM document.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;A description of the parameters for a document. &lt;/p&gt;
--- @param LastExecutionDate [DateTime] &lt;p&gt;The date on which the association was last run.&lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param Overview [AssociationOverview] &lt;p&gt;Information about the association.&lt;/p&gt;
--- @param AssociationId [AssociationId] &lt;p&gt;The association ID.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version.&lt;/p&gt;
--- @param LastSuccessfulExecutionDate [DateTime] &lt;p&gt;The last date on which the association was successfully run.&lt;/p&gt;
--- @param LastUpdateAssociationDate [DateTime] &lt;p&gt;The date when the association was last updated.&lt;/p&gt;
--- @param Date [DateTime] &lt;p&gt;The date when the association was made.&lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;The instances targeted by the request. &lt;/p&gt;
+-- <p>Describes the parameters for a document.</p>
+-- @param Status [AssociationStatus] <p>The association status.</p>
+-- @param ScheduleExpression [ScheduleExpression] <p>A cron expression that specifies a schedule when the association runs.</p>
+-- @param OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the output details of the request.</p>
+-- @param Name [DocumentName] <p>The name of the SSM document.</p>
+-- @param Parameters [Parameters] <p>A description of the parameters for a document. </p>
+-- @param LastExecutionDate [DateTime] <p>The date on which the association was last run.</p>
+-- @param InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- @param Overview [AssociationOverview] <p>Information about the association.</p>
+-- @param AssociationId [AssociationId] <p>The association ID.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- @param LastSuccessfulExecutionDate [DateTime] <p>The last date on which the association was successfully run.</p>
+-- @param LastUpdateAssociationDate [DateTime] <p>The date when the association was last updated.</p>
+-- @param Date [DateTime] <p>The date when the association was made.</p>
+-- @param Targets [Targets] <p>The instances targeted by the request. </p>
 function M.AssociationDescription(Status, ScheduleExpression, OutputLocation, Name, Parameters, LastExecutionDate, InstanceId, Overview, AssociationId, DocumentVersion, LastSuccessfulExecutionDate, LastUpdateAssociationDate, Date, Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociationDescription")
 	local t = { 
@@ -5702,15 +5702,15 @@ function M.AssertMaintenanceWindowExecutionTaskIdentity(struct)
 end
 
 --- Create a structure of type MaintenanceWindowExecutionTaskIdentity
--- &lt;p&gt;Information about a task execution performed as part of a Maintenance Window execution.&lt;/p&gt;
--- @param Status [MaintenanceWindowExecutionStatus] &lt;p&gt;The status of the task execution.&lt;/p&gt;
--- @param TaskArn [MaintenanceWindowTaskArn] &lt;p&gt;The ARN of the executed task.&lt;/p&gt;
--- @param StartTime [DateTime] &lt;p&gt;The time the task execution started.&lt;/p&gt;
--- @param TaskType [MaintenanceWindowTaskType] &lt;p&gt;The type of executed task.&lt;/p&gt;
--- @param EndTime [DateTime] &lt;p&gt;The time the task execution finished.&lt;/p&gt;
--- @param WindowExecutionId [MaintenanceWindowExecutionId] &lt;p&gt;The ID of the Maintenance Window execution that ran the task.&lt;/p&gt;
--- @param StatusDetails [MaintenanceWindowExecutionStatusDetails] &lt;p&gt;The details explaining the status of the task execution. Only available for certain status values.&lt;/p&gt;
--- @param TaskExecutionId [MaintenanceWindowExecutionTaskId] &lt;p&gt;The ID of the specific task execution in the Maintenance Window execution.&lt;/p&gt;
+-- <p>Information about a task execution performed as part of a Maintenance Window execution.</p>
+-- @param Status [MaintenanceWindowExecutionStatus] <p>The status of the task execution.</p>
+-- @param TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the executed task.</p>
+-- @param StartTime [DateTime] <p>The time the task execution started.</p>
+-- @param TaskType [MaintenanceWindowTaskType] <p>The type of executed task.</p>
+-- @param EndTime [DateTime] <p>The time the task execution finished.</p>
+-- @param WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that ran the task.</p>
+-- @param StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the status of the task execution. Only available for certain status values.</p>
+-- @param TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window execution.</p>
 function M.MaintenanceWindowExecutionTaskIdentity(Status, TaskArn, StartTime, TaskType, EndTime, WindowExecutionId, StatusDetails, TaskExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowExecutionTaskIdentity")
 	local t = { 
@@ -5739,8 +5739,8 @@ function M.AssertAutomationExecutionLimitExceededException(struct)
 end
 
 --- Create a structure of type AutomationExecutionLimitExceededException
--- &lt;p&gt;The number of simultaneously running Automation executions exceeded the allowable limit.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The number of simultaneously running Automation executions exceeded the allowable limit.&lt;/p&gt;
+-- <p>The number of simultaneously running Automation executions exceeded the allowable limit.</p>
+-- @param Message [String] <p>The number of simultaneously running Automation executions exceeded the allowable limit.</p>
 function M.AutomationExecutionLimitExceededException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutomationExecutionLimitExceededException")
 	local t = { 
@@ -5778,21 +5778,21 @@ end
 
 --- Create a structure of type SendCommandRequest
 --  
--- @param Comment [Comment] &lt;p&gt;User-specified information about the command, such as a brief description of what the command should do.&lt;/p&gt;
--- @param ServiceRoleArn [ServiceRole] &lt;p&gt;The IAM role that Systems Manager uses to send notifications. &lt;/p&gt;
--- @param MaxErrors [MaxErrors] &lt;p&gt;The maximum number of errors allowed without the command failing. When the command fails one more time beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10 or a percentage like 10%. The default value is 50. For more information about how to use MaxErrors, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html&quot;&gt;Using Error Controls&lt;/a&gt;.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;The required and optional parameters specified in the document being executed.&lt;/p&gt;
--- @param TimeoutSeconds [TimeoutSeconds] &lt;p&gt;If this time is reached and the command has not already started executing, it will not execute.&lt;/p&gt;
--- @param DocumentName [DocumentARN] &lt;p&gt;Required. The name of the Systems Manager document to execute. This can be a public document or a custom document.&lt;/p&gt;
--- @param DocumentHash [DocumentHash] &lt;p&gt;The Sha256 or Sha1 hash created by the system when the document was created. &lt;/p&gt; &lt;note&gt; &lt;p&gt;Sha1 hashes have been deprecated.&lt;/p&gt; &lt;/note&gt;
--- @param OutputS3BucketName [S3BucketName] &lt;p&gt;The name of the S3 bucket where command execution responses should be stored.&lt;/p&gt;
--- @param NotificationConfig [NotificationConfig] &lt;p&gt;Configurations for sending notifications.&lt;/p&gt;
--- @param DocumentHashType [DocumentHashType] &lt;p&gt;Sha256 or Sha1.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Sha1 hashes have been deprecated.&lt;/p&gt; &lt;/note&gt;
--- @param OutputS3KeyPrefix [S3KeyPrefix] &lt;p&gt;The directory structure within the S3 bucket where the responses should be stored.&lt;/p&gt;
--- @param OutputS3Region [S3Region] &lt;p&gt;(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.&lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;(Optional) An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call. For more information about how to use Targets, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html&quot;&gt;Sending Commands to a Fleet&lt;/a&gt;.&lt;/p&gt;
--- @param InstanceIds [InstanceIdList] &lt;p&gt;The instance IDs where the command should execute. You can specify a maximum of 50 IDs. If you prefer not to list individual instance IDs, you can instead send commands to a fleet of instances using the Targets parameter, which accepts EC2 tags. For more information about how to use Targets, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html&quot;&gt;Sending Commands to a Fleet&lt;/a&gt;.&lt;/p&gt;
--- @param MaxConcurrency [MaxConcurrency] &lt;p&gt;(Optional) The maximum number of instances that are allowed to execute the command at the same time. You can specify a number such as 10 or a percentage such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-velocity.html&quot;&gt;Using Concurrency Controls&lt;/a&gt;.&lt;/p&gt;
+-- @param Comment [Comment] <p>User-specified information about the command, such as a brief description of what the command should do.</p>
+-- @param ServiceRoleArn [ServiceRole] <p>The IAM role that Systems Manager uses to send notifications. </p>
+-- @param MaxErrors [MaxErrors] <p>The maximum number of errors allowed without the command failing. When the command fails one more time beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10 or a percentage like 10%. The default value is 50. For more information about how to use MaxErrors, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html">Using Error Controls</a>.</p>
+-- @param Parameters [Parameters] <p>The required and optional parameters specified in the document being executed.</p>
+-- @param TimeoutSeconds [TimeoutSeconds] <p>If this time is reached and the command has not already started executing, it will not execute.</p>
+-- @param DocumentName [DocumentARN] <p>Required. The name of the Systems Manager document to execute. This can be a public document or a custom document.</p>
+-- @param DocumentHash [DocumentHash] <p>The Sha256 or Sha1 hash created by the system when the document was created. </p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
+-- @param OutputS3BucketName [S3BucketName] <p>The name of the S3 bucket where command execution responses should be stored.</p>
+-- @param NotificationConfig [NotificationConfig] <p>Configurations for sending notifications.</p>
+-- @param DocumentHashType [DocumentHashType] <p>Sha256 or Sha1.</p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
+-- @param OutputS3KeyPrefix [S3KeyPrefix] <p>The directory structure within the S3 bucket where the responses should be stored.</p>
+-- @param OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
+-- @param Targets [Targets] <p>(Optional) An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call. For more information about how to use Targets, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Sending Commands to a Fleet</a>.</p>
+-- @param InstanceIds [InstanceIdList] <p>The instance IDs where the command should execute. You can specify a maximum of 50 IDs. If you prefer not to list individual instance IDs, you can instead send commands to a fleet of instances using the Targets parameter, which accepts EC2 tags. For more information about how to use Targets, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Sending Commands to a Fleet</a>.</p>
+-- @param MaxConcurrency [MaxConcurrency] <p>(Optional) The maximum number of instances that are allowed to execute the command at the same time. You can specify a number such as 10 or a percentage such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-velocity.html">Using Concurrency Controls</a>.</p>
 -- Required parameter: DocumentName
 function M.SendCommandRequest(Comment, ServiceRoleArn, MaxErrors, Parameters, TimeoutSeconds, DocumentName, DocumentHash, OutputS3BucketName, NotificationConfig, DocumentHashType, OutputS3KeyPrefix, OutputS3Region, Targets, InstanceIds, MaxConcurrency, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SendCommandRequest")
@@ -5833,8 +5833,8 @@ end
 
 --- Create a structure of type UpdateDocumentDefaultVersionRequest
 --  
--- @param Name [DocumentName] &lt;p&gt;The name of a custom document that you want to set as the default version.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersionNumber] &lt;p&gt;The version of a custom document that you want to set as the default version.&lt;/p&gt;
+-- @param Name [DocumentName] <p>The name of a custom document that you want to set as the default version.</p>
+-- @param DocumentVersion [DocumentVersionNumber] <p>The version of a custom document that you want to set as the default version.</p>
 -- Required parameter: Name
 -- Required parameter: DocumentVersion
 function M.UpdateDocumentDefaultVersionRequest(Name, DocumentVersion, ...)
@@ -5869,16 +5869,16 @@ end
 
 --- Create a structure of type GetPatchBaselineResult
 --  
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the retrieved patch baseline.&lt;/p&gt;
--- @param Name [BaselineName] &lt;p&gt;The name of the patch baseline.&lt;/p&gt;
--- @param PatchGroups [PatchGroupList] &lt;p&gt;Patch groups included in the patch baseline.&lt;/p&gt;
--- @param RejectedPatches [PatchIdList] &lt;p&gt;A list of explicitly rejected patches for the baseline.&lt;/p&gt;
--- @param GlobalFilters [PatchFilterGroup] &lt;p&gt;A set of global filters used to exclude patches from the baseline.&lt;/p&gt;
--- @param ApprovalRules [PatchRuleGroup] &lt;p&gt;A set of rules used to include patches in the baseline.&lt;/p&gt;
--- @param ModifiedDate [DateTime] &lt;p&gt;The date the patch baseline was last modified.&lt;/p&gt;
--- @param CreatedDate [DateTime] &lt;p&gt;The date the patch baseline was created.&lt;/p&gt;
--- @param ApprovedPatches [PatchIdList] &lt;p&gt;A list of explicitly approved patches for the baseline.&lt;/p&gt;
--- @param Description [BaselineDescription] &lt;p&gt;A description of the patch baseline.&lt;/p&gt;
+-- @param BaselineId [BaselineId] <p>The ID of the retrieved patch baseline.</p>
+-- @param Name [BaselineName] <p>The name of the patch baseline.</p>
+-- @param PatchGroups [PatchGroupList] <p>Patch groups included in the patch baseline.</p>
+-- @param RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
+-- @param GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
+-- @param ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
+-- @param ModifiedDate [DateTime] <p>The date the patch baseline was last modified.</p>
+-- @param CreatedDate [DateTime] <p>The date the patch baseline was created.</p>
+-- @param ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
+-- @param Description [BaselineDescription] <p>A description of the patch baseline.</p>
 function M.GetPatchBaselineResult(BaselineId, Name, PatchGroups, RejectedPatches, GlobalFilters, ApprovalRules, ModifiedDate, CreatedDate, ApprovedPatches, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPatchBaselineResult")
 	local t = { 
@@ -5911,10 +5911,10 @@ function M.AssertNotificationConfig(struct)
 end
 
 --- Create a structure of type NotificationConfig
--- &lt;p&gt;Configurations for sending notifications.&lt;/p&gt;
--- @param NotificationArn [NotificationArn] &lt;p&gt;An Amazon Resource Name (ARN) for a Simple Notification Service (SNS) topic. Run Command pushes notifications about command status changes to this topic.&lt;/p&gt;
--- @param NotificationEvents [NotificationEventList] &lt;p&gt;The different events for which you can receive notifications. These events include the following: All (events), InProgress, Success, TimedOut, Cancelled, Failed. To learn more about these events, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html&quot;&gt;Setting Up Events and Notifications&lt;/a&gt; in the &lt;i&gt;Amazon EC2 Systems Manager User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param NotificationType [NotificationType] &lt;p&gt;Command: Receive notification when the status of a command changes. Invocation: For commands sent to multiple instances, receive notification on a per-instance basis when the status of a command changes. &lt;/p&gt;
+-- <p>Configurations for sending notifications.</p>
+-- @param NotificationArn [NotificationArn] <p>An Amazon Resource Name (ARN) for a Simple Notification Service (SNS) topic. Run Command pushes notifications about command status changes to this topic.</p>
+-- @param NotificationEvents [NotificationEventList] <p>The different events for which you can receive notifications. These events include the following: All (events), InProgress, Success, TimedOut, Cancelled, Failed. To learn more about these events, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html">Setting Up Events and Notifications</a> in the <i>Amazon EC2 Systems Manager User Guide</i>.</p>
+-- @param NotificationType [NotificationType] <p>Command: Receive notification when the status of a command changes. Invocation: For commands sent to multiple instances, receive notification on a per-instance basis when the status of a command changes. </p>
 function M.NotificationConfig(NotificationArn, NotificationEvents, NotificationType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotificationConfig")
 	local t = { 
@@ -5944,10 +5944,10 @@ end
 
 --- Create a structure of type ModifyDocumentPermissionRequest
 --  
--- @param AccountIdsToAdd [AccountIdList] &lt;p&gt;The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or &lt;i&gt;All&lt;/i&gt;.&lt;/p&gt;
--- @param PermissionType [DocumentPermissionType] &lt;p&gt;The permission type for the document. The permission type can be &lt;i&gt;Share&lt;/i&gt;.&lt;/p&gt;
--- @param AccountIdsToRemove [AccountIdList] &lt;p&gt;The AWS user accounts that should no longer have access to the document. The AWS user account can either be a group of account IDs or &lt;i&gt;All&lt;/i&gt;. This action has a higher priority than &lt;i&gt;AccountIdsToAdd&lt;/i&gt;. If you specify an account ID to add and the same ID to remove, the system removes access to the document.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the document that you want to share.&lt;/p&gt;
+-- @param AccountIdsToAdd [AccountIdList] <p>The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or <i>All</i>.</p>
+-- @param PermissionType [DocumentPermissionType] <p>The permission type for the document. The permission type can be <i>Share</i>.</p>
+-- @param AccountIdsToRemove [AccountIdList] <p>The AWS user accounts that should no longer have access to the document. The AWS user account can either be a group of account IDs or <i>All</i>. This action has a higher priority than <i>AccountIdsToAdd</i>. If you specify an account ID to add and the same ID to remove, the system removes access to the document.</p>
+-- @param Name [DocumentName] <p>The name of the document that you want to share.</p>
 -- Required parameter: Name
 -- Required parameter: PermissionType
 function M.ModifyDocumentPermissionRequest(AccountIdsToAdd, PermissionType, AccountIdsToRemove, Name, ...)
@@ -5982,11 +5982,11 @@ end
 
 --- Create a structure of type RegisterTargetWithMaintenanceWindowRequest
 --  
--- @param ResourceType [MaintenanceWindowResourceType] &lt;p&gt;The type of target being registered with the Maintenance Window.&lt;/p&gt;
--- @param OwnerInformation [OwnerInformation] &lt;p&gt;User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window the target should be registered with.&lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&amp;lt;instanceid1&amp;gt;,&amp;lt;instanceid2&amp;gt;. Tags are specified using Key=&amp;lt;tag name&amp;gt;,Values=&amp;lt;tag value&amp;gt;.&lt;/p&gt;
--- @param ClientToken [ClientToken] &lt;p&gt;User-provided idempotency token.&lt;/p&gt;
+-- @param ResourceType [MaintenanceWindowResourceType] <p>The type of target being registered with the Maintenance Window.</p>
+-- @param OwnerInformation [OwnerInformation] <p>User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the target should be registered with.</p>
+-- @param Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
+-- @param ClientToken [ClientToken] <p>User-provided idempotency token.</p>
 -- Required parameter: WindowId
 -- Required parameter: ResourceType
 -- Required parameter: Targets
@@ -6015,8 +6015,8 @@ function M.AssertTotalSizeLimitExceededException(struct)
 end
 
 --- Create a structure of type TotalSizeLimitExceededException
--- &lt;p&gt;The size of inventory data has exceeded the total size limit for the resource.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The size of inventory data has exceeded the total size limit for the resource.&lt;/p&gt;
+-- <p>The size of inventory data has exceeded the total size limit for the resource.</p>
+-- @param Message [String] <p>The size of inventory data has exceeded the total size limit for the resource.</p>
 function M.TotalSizeLimitExceededException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TotalSizeLimitExceededException")
 	local t = { 
@@ -6037,7 +6037,7 @@ function M.AssertInvalidResourceType(struct)
 end
 
 --- Create a structure of type InvalidResourceType
--- &lt;p&gt;The resource type is not valid. If you are attempting to tag an instance, the instance must be a registered, managed instance.&lt;/p&gt;
+-- <p>The resource type is not valid. If you are attempting to tag an instance, the instance must be a registered, managed instance.</p>
 function M.InvalidResourceType(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceType")
 	local t = { 
@@ -6067,15 +6067,15 @@ end
 
 --- Create a structure of type GetMaintenanceWindowResult
 --  
--- @param Cutoff [MaintenanceWindowCutoff] &lt;p&gt;The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.&lt;/p&gt;
--- @param Name [MaintenanceWindowName] &lt;p&gt;The name of the Maintenance Window.&lt;/p&gt;
--- @param Schedule [MaintenanceWindowSchedule] &lt;p&gt;The schedule of the Maintenance Window in the form of a cron or rate expression.&lt;/p&gt;
--- @param Enabled [MaintenanceWindowEnabled] &lt;p&gt;Whether the Maintenance Windows is enabled.&lt;/p&gt;
--- @param AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] &lt;p&gt;Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the created Maintenance Window.&lt;/p&gt;
--- @param ModifiedDate [DateTime] &lt;p&gt;The date the Maintenance Window was last modified.&lt;/p&gt;
--- @param CreatedDate [DateTime] &lt;p&gt;The date the Maintenance Window was created.&lt;/p&gt;
--- @param Duration [MaintenanceWindowDurationHours] &lt;p&gt;The duration of the Maintenance Window in hours.&lt;/p&gt;
+-- @param Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
+-- @param Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
+-- @param Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
+-- @param Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Windows is enabled.</p>
+-- @param AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the created Maintenance Window.</p>
+-- @param ModifiedDate [DateTime] <p>The date the Maintenance Window was last modified.</p>
+-- @param CreatedDate [DateTime] <p>The date the Maintenance Window was created.</p>
+-- @param Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
 function M.GetMaintenanceWindowResult(Cutoff, Name, Schedule, Enabled, AllowUnassociatedTargets, WindowId, ModifiedDate, CreatedDate, Duration, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowResult")
 	local t = { 
@@ -6113,13 +6113,13 @@ end
 
 --- Create a structure of type UpdateAssociationRequest
 --  
--- @param ScheduleExpression [ScheduleExpression] &lt;p&gt;The cron expression used to schedule the association that you want to update.&lt;/p&gt;
--- @param OutputLocation [InstanceAssociationOutputLocation] &lt;p&gt;An Amazon S3 bucket where you want to store the results of this request.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the association document.&lt;/p&gt;
--- @param Parameters [Parameters] &lt;p&gt;The parameters you want to update for the association. If you create a parameter using Parameter Store, you can reference the parameter using {{ssm:parameter-name}}&lt;/p&gt;
--- @param AssociationId [AssociationId] &lt;p&gt;The ID of the association you want to update. &lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version you want update for the association. &lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;The targets of the association.&lt;/p&gt;
+-- @param ScheduleExpression [ScheduleExpression] <p>The cron expression used to schedule the association that you want to update.</p>
+-- @param OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the results of this request.</p>
+-- @param Name [DocumentName] <p>The name of the association document.</p>
+-- @param Parameters [Parameters] <p>The parameters you want to update for the association. If you create a parameter using Parameter Store, you can reference the parameter using {{ssm:parameter-name}}</p>
+-- @param AssociationId [AssociationId] <p>The ID of the association you want to update. </p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version you want update for the association. </p>
+-- @param Targets [Targets] <p>The targets of the association.</p>
 -- Required parameter: AssociationId
 function M.UpdateAssociationRequest(ScheduleExpression, OutputLocation, Name, Parameters, AssociationId, DocumentVersion, Targets, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAssociationRequest")
@@ -6149,7 +6149,7 @@ end
 
 --- Create a structure of type UpdateAssociationStatusResult
 --  
--- @param AssociationDescription [AssociationDescription] &lt;p&gt;Information about the association.&lt;/p&gt;
+-- @param AssociationDescription [AssociationDescription] <p>Information about the association.</p>
 function M.UpdateAssociationStatusResult(AssociationDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAssociationStatusResult")
 	local t = { 
@@ -6171,8 +6171,8 @@ function M.AssertInvalidNextToken(struct)
 end
 
 --- Create a structure of type InvalidNextToken
--- &lt;p&gt;The specified token is not valid.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The specified token is not valid.&lt;/p&gt;
+-- <p>The specified token is not valid.</p>
+-- @param Message [String] <p>The specified token is not valid.</p>
 function M.InvalidNextToken(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextToken")
 	local t = { 
@@ -6195,9 +6195,9 @@ function M.AssertInstanceAggregatedAssociationOverview(struct)
 end
 
 --- Create a structure of type InstanceAggregatedAssociationOverview
--- &lt;p&gt;Status information about the aggregated associations.&lt;/p&gt;
--- @param DetailedStatus [StatusName] &lt;p&gt;Detailed status information about the aggregated associations.&lt;/p&gt;
--- @param InstanceAssociationStatusAggregatedCount [InstanceAssociationStatusAggregatedCount] &lt;p&gt;The number of associations for the instance(s).&lt;/p&gt;
+-- <p>Status information about the aggregated associations.</p>
+-- @param DetailedStatus [StatusName] <p>Detailed status information about the aggregated associations.</p>
+-- @param InstanceAssociationStatusAggregatedCount [InstanceAssociationStatusAggregatedCount] <p>The number of associations for the instance(s).</p>
 function M.InstanceAggregatedAssociationOverview(DetailedStatus, InstanceAssociationStatusAggregatedCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAggregatedAssociationOverview")
 	local t = { 
@@ -6225,10 +6225,10 @@ end
 
 --- Create a structure of type DescribeInstancePatchesRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the instance whose patch state information should be retrieved.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [PatchComplianceMaxResults] &lt;p&gt;The maximum number of patches to return (per page).&lt;/p&gt;
--- @param Filters [PatchOrchestratorFilterList] &lt;p&gt;Each entry in the array is a structure containing:&lt;/p&gt; &lt;p&gt;Key (string, between 1 and 128 characters)&lt;/p&gt; &lt;p&gt;Values (array of strings, each string between 1 and 256 characters)&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>The ID of the instance whose patch state information should be retrieved.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [PatchComplianceMaxResults] <p>The maximum number of patches to return (per page).</p>
+-- @param Filters [PatchOrchestratorFilterList] <p>Each entry in the array is a structure containing:</p> <p>Key (string, between 1 and 128 characters)</p> <p>Values (array of strings, each string between 1 and 256 characters)</p>
 -- Required parameter: InstanceId
 function M.DescribeInstancePatchesRequest(InstanceId, NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchesRequest")
@@ -6257,9 +6257,9 @@ function M.AssertInstanceInformationStringFilter(struct)
 end
 
 --- Create a structure of type InstanceInformationStringFilter
--- &lt;p&gt;The filters to describe or get information about your managed instances.&lt;/p&gt;
--- @param Values [InstanceInformationFilterValueSet] &lt;p&gt;The filter values.&lt;/p&gt;
--- @param Key [InstanceInformationStringFilterKey] &lt;p&gt;The filter key name to describe your instances. For example:&lt;/p&gt; &lt;p&gt;&quot;InstanceIds&quot;|&quot;AgentVersion&quot;|&quot;PingStatus&quot;|&quot;PlatformTypes&quot;|&quot;ActivationIds&quot;|&quot;IamRole&quot;|&quot;ResourceType&quot;|&quot;AssociationStatus&quot;|&quot;Tag Key&quot;&lt;/p&gt;
+-- <p>The filters to describe or get information about your managed instances.</p>
+-- @param Values [InstanceInformationFilterValueSet] <p>The filter values.</p>
+-- @param Key [InstanceInformationStringFilterKey] <p>The filter key name to describe your instances. For example:</p> <p>"InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus"|"Tag Key"</p>
 -- Required parameter: Key
 -- Required parameter: Values
 function M.InstanceInformationStringFilter(Values, Key, ...)
@@ -6286,7 +6286,7 @@ end
 
 --- Create a structure of type GetMaintenanceWindowRequest
 --  
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the desired Maintenance Window.&lt;/p&gt;
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the desired Maintenance Window.</p>
 -- Required parameter: WindowId
 function M.GetMaintenanceWindowRequest(WindowId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowRequest")
@@ -6311,8 +6311,8 @@ end
 
 --- Create a structure of type DeregisterTargetFromMaintenanceWindowResult
 --  
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window the target was removed from.&lt;/p&gt;
--- @param WindowTargetId [MaintenanceWindowTargetId] &lt;p&gt;The ID of the removed target definition.&lt;/p&gt;
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the target was removed from.</p>
+-- @param WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the removed target definition.</p>
 function M.DeregisterTargetFromMaintenanceWindowResult(WindowId, WindowTargetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTargetFromMaintenanceWindowResult")
 	local t = { 
@@ -6355,8 +6355,8 @@ function M.AssertHierarchyTypeMismatchException(struct)
 end
 
 --- Create a structure of type HierarchyTypeMismatchException
--- &lt;p&gt;Parameter Store does not support changing a parameter type in a hierarchy. For example, you can't change a parameter from a String type to a SecureString type. You must create a new, unique parameter.&lt;/p&gt;
--- @param message [String] &lt;p&gt;Parameter Store does not support changing a parameter type in a hierarchy. For example, you can't change a parameter from a String type to a SecureString type. You must create a new, unique parameter.&lt;/p&gt;
+-- <p>Parameter Store does not support changing a parameter type in a hierarchy. For example, you can't change a parameter from a String type to a SecureString type. You must create a new, unique parameter.</p>
+-- @param message [String] <p>Parameter Store does not support changing a parameter type in a hierarchy. For example, you can't change a parameter from a String type to a SecureString type. You must create a new, unique parameter.</p>
 function M.HierarchyTypeMismatchException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HierarchyTypeMismatchException")
 	local t = { 
@@ -6397,7 +6397,7 @@ function M.AssertInvalidOutputFolder(struct)
 end
 
 --- Create a structure of type InvalidOutputFolder
--- &lt;p&gt;The S3 bucket does not exist.&lt;/p&gt;
+-- <p>The S3 bucket does not exist.</p>
 function M.InvalidOutputFolder(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOutputFolder")
 	local t = { 
@@ -6421,9 +6421,9 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowsRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaintenanceWindowMaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Filters [MaintenanceWindowFilterList] &lt;p&gt;Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are Name and Enabled.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Filters [MaintenanceWindowFilterList] <p>Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are Name and Enabled.</p>
 function M.DescribeMaintenanceWindowsRequest(NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowsRequest")
 	local t = { 
@@ -6449,8 +6449,8 @@ end
 
 --- Create a structure of type CreateActivationResult
 --  
--- @param ActivationCode [ActivationCode] &lt;p&gt;The code the system generates when it processes the activation. The activation code functions like a password to validate the activation ID. &lt;/p&gt;
--- @param ActivationId [ActivationId] &lt;p&gt;The ID number generated by the system when it processed the activation. The activation ID functions like a user name.&lt;/p&gt;
+-- @param ActivationCode [ActivationCode] <p>The code the system generates when it processes the activation. The activation code functions like a password to validate the activation ID. </p>
+-- @param ActivationId [ActivationId] <p>The ID number generated by the system when it processed the activation. The activation ID functions like a user name.</p>
 function M.CreateActivationResult(ActivationCode, ActivationId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateActivationResult")
 	local t = { 
@@ -6473,8 +6473,8 @@ function M.AssertInvalidActivationId(struct)
 end
 
 --- Create a structure of type InvalidActivationId
--- &lt;p&gt;The activation ID is not valid. Verify the you entered the correct ActivationId or ActivationCode and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The activation ID is not valid. Verify the you entered the correct ActivationId or ActivationCode and try again.&lt;/p&gt;
+-- <p>The activation ID is not valid. Verify the you entered the correct ActivationId or ActivationCode and try again.</p>
+-- @param Message [String] <p>The activation ID is not valid. Verify the you entered the correct ActivationId or ActivationCode and try again.</p>
 function M.InvalidActivationId(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidActivationId")
 	local t = { 
@@ -6495,7 +6495,7 @@ function M.AssertAssociationLimitExceeded(struct)
 end
 
 --- Create a structure of type AssociationLimitExceeded
--- &lt;p&gt;You can have at most 2,000 active associations.&lt;/p&gt;
+-- <p>You can have at most 2,000 active associations.</p>
 function M.AssociationLimitExceeded(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociationLimitExceeded")
 	local t = { 
@@ -6519,9 +6519,9 @@ function M.AssertCommandFilter(struct)
 end
 
 --- Create a structure of type CommandFilter
--- &lt;p&gt;Describes a command filter.&lt;/p&gt;
--- @param value [CommandFilterValue] &lt;p&gt;The filter value. &lt;/p&gt;
--- @param key [CommandFilterKey] &lt;p&gt;The name of the filter.&lt;/p&gt;
+-- <p>Describes a command filter.</p>
+-- @param value [CommandFilterValue] <p>The filter value. </p>
+-- @param key [CommandFilterKey] <p>The name of the filter.</p>
 -- Required parameter: key
 -- Required parameter: value
 function M.CommandFilter(value, key, ...)
@@ -6550,9 +6550,9 @@ end
 
 --- Create a structure of type StartAutomationExecutionRequest
 --  
--- @param DocumentName [DocumentARN] &lt;p&gt;The name of the Automation document to use for this execution.&lt;/p&gt;
--- @param Parameters [AutomationParameterMap] &lt;p&gt;A key-value map of execution parameters, which match the declared parameters in the Automation document.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The version of the Automation document to use for this execution.&lt;/p&gt;
+-- @param DocumentName [DocumentARN] <p>The name of the Automation document to use for this execution.</p>
+-- @param Parameters [AutomationParameterMap] <p>A key-value map of execution parameters, which match the declared parameters in the Automation document.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The version of the Automation document to use for this execution.</p>
 -- Required parameter: DocumentName
 function M.StartAutomationExecutionRequest(DocumentName, Parameters, DocumentVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartAutomationExecutionRequest")
@@ -6577,8 +6577,8 @@ function M.AssertInvalidResultAttributeException(struct)
 end
 
 --- Create a structure of type InvalidResultAttributeException
--- &lt;p&gt;The specified inventory item result attribute is not valid.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The specified inventory item result attribute is not valid.&lt;/p&gt;
+-- <p>The specified inventory item result attribute is not valid.</p>
+-- @param Message [String] <p>The specified inventory item result attribute is not valid.</p>
 function M.InvalidResultAttributeException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResultAttributeException")
 	local t = { 
@@ -6604,9 +6604,9 @@ end
 
 --- Create a structure of type DescribeInstanceAssociationsStatusRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;The instance IDs for which you want association status information.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>The instance IDs for which you want association status information.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 -- Required parameter: InstanceId
 function M.DescribeInstanceAssociationsStatusRequest(InstanceId, NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstanceAssociationsStatusRequest")
@@ -6631,8 +6631,8 @@ function M.AssertParameterPatternMismatchException(struct)
 end
 
 --- Create a structure of type ParameterPatternMismatchException
--- &lt;p&gt;The parameter name is not valid.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The parameter name is not valid.&lt;/p&gt;
+-- <p>The parameter name is not valid.</p>
+-- @param message [String] <p>The parameter name is not valid.</p>
 function M.ParameterPatternMismatchException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterPatternMismatchException")
 	local t = { 
@@ -6669,21 +6669,21 @@ end
 
 --- Create a structure of type GetCommandInvocationResult
 --  
--- @param Comment [Comment] &lt;p&gt;The comment text for the command.&lt;/p&gt;
--- @param ExecutionElapsedTime [StringDateTime] &lt;p&gt;Duration since ExecutionStartDateTime.&lt;/p&gt;
--- @param ExecutionEndDateTime [StringDateTime] &lt;p&gt;The date and time the plugin was finished executing. Date and time are written in ISO 8601 format. For example, June 7, 2017 is represented as 2017-06-7. The following sample AWS CLI command uses the &lt;code&gt;InvokedAfter&lt;/code&gt; filter.&lt;/p&gt; &lt;p&gt; &lt;code&gt;aws ssm list-commands --filters key=InvokedAfter,value=2017-06-07T00:00:00Z&lt;/code&gt; &lt;/p&gt; &lt;p&gt;If the plugin has not started to execute, the string is empty.&lt;/p&gt;
--- @param StandardErrorContent [StandardErrorContent] &lt;p&gt;The first 8,000 characters written by the plugin to stderr. If the command has not finished executing, then this string is empty.&lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the managed instance targeted by the command. A managed instance can be an Amazon EC2 instance or an instance in your hybrid environment that is configured for Systems Manager.&lt;/p&gt;
--- @param StandardErrorUrl [Url] &lt;p&gt;The URL for the complete text written by the plugin to stderr. If the command has not finished executing, then this string is empty.&lt;/p&gt;
--- @param DocumentName [DocumentName] &lt;p&gt;The name of the document that was executed. For example, AWS-RunShellScript.&lt;/p&gt;
--- @param StandardOutputContent [StandardOutputContent] &lt;p&gt;The first 24,000 characters written by the plugin to stdout. If the command has not finished executing, if ExecutionStatus is neither Succeeded nor Failed, then this string is empty.&lt;/p&gt;
--- @param Status [CommandInvocationStatus] &lt;p&gt;The status of the parent command for this invocation. This status can be different than StatusDetails.&lt;/p&gt;
--- @param StatusDetails [StatusDetails] &lt;p&gt;A detailed status of the command execution for an invocation. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see &lt;a href=&quot;http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html&quot;&gt;Run Command Status&lt;/a&gt;. StatusDetails can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Pending: The command has not been sent to the instance.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;In Progress: The command has been sent to the instance but has not reached a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Delayed: The system attempted to send the command to the target, but the target was not available. The instance might not be available because of network issues, the instance was stopped, etc. The system will try to deliver the command again.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Success: The command or plugin was executed successfully. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Execution Timed Out: The command started to execute on the instance, but the execution was not complete before the timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Failed: The command wasn't executed successfully on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Canceled: The command was terminated before it was completed. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Undeliverable: The command can't be delivered to the instance. The instance might not exist or might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit and don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PluginName [CommandPluginName] &lt;p&gt;The name of the plugin for which you want detailed results. For example, aws:RunShellScript is a plugin.&lt;/p&gt;
--- @param ResponseCode [ResponseCode] &lt;p&gt;The error level response code for the plugin script. If the response code is -1, then the command has not started executing on the instance, or it was not received by the instance.&lt;/p&gt;
--- @param ExecutionStartDateTime [StringDateTime] &lt;p&gt;The date and time the plugin started executing. Date and time are written in ISO 8601 format. For example, June 7, 2017 is represented as 2017-06-7. The following sample AWS CLI command uses the &lt;code&gt;InvokedBefore&lt;/code&gt; filter.&lt;/p&gt; &lt;p&gt; &lt;code&gt;aws ssm list-commands --filters key=InvokedBefore,value=2017-06-07T00:00:00Z&lt;/code&gt; &lt;/p&gt; &lt;p&gt;If the plugin has not started to execute, the string is empty.&lt;/p&gt;
--- @param CommandId [CommandId] &lt;p&gt;The parent command ID of the invocation plugin.&lt;/p&gt;
--- @param StandardOutputUrl [Url] &lt;p&gt;The URL for the complete text written by the plugin to stdout in Amazon S3. If an Amazon S3 bucket was not specified, then this string is empty.&lt;/p&gt;
+-- @param Comment [Comment] <p>The comment text for the command.</p>
+-- @param ExecutionElapsedTime [StringDateTime] <p>Duration since ExecutionStartDateTime.</p>
+-- @param ExecutionEndDateTime [StringDateTime] <p>The date and time the plugin was finished executing. Date and time are written in ISO 8601 format. For example, June 7, 2017 is represented as 2017-06-7. The following sample AWS CLI command uses the <code>InvokedAfter</code> filter.</p> <p> <code>aws ssm list-commands --filters key=InvokedAfter,value=2017-06-07T00:00:00Z</code> </p> <p>If the plugin has not started to execute, the string is empty.</p>
+-- @param StandardErrorContent [StandardErrorContent] <p>The first 8,000 characters written by the plugin to stderr. If the command has not finished executing, then this string is empty.</p>
+-- @param InstanceId [InstanceId] <p>The ID of the managed instance targeted by the command. A managed instance can be an Amazon EC2 instance or an instance in your hybrid environment that is configured for Systems Manager.</p>
+-- @param StandardErrorUrl [Url] <p>The URL for the complete text written by the plugin to stderr. If the command has not finished executing, then this string is empty.</p>
+-- @param DocumentName [DocumentName] <p>The name of the document that was executed. For example, AWS-RunShellScript.</p>
+-- @param StandardOutputContent [StandardOutputContent] <p>The first 24,000 characters written by the plugin to stdout. If the command has not finished executing, if ExecutionStatus is neither Succeeded nor Failed, then this string is empty.</p>
+-- @param Status [CommandInvocationStatus] <p>The status of the parent command for this invocation. This status can be different than StatusDetails.</p>
+-- @param StatusDetails [StatusDetails] <p>A detailed status of the command execution for an invocation. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to the instance.</p> </li> <li> <p>In Progress: The command has been sent to the instance but has not reached a terminal state.</p> </li> <li> <p>Delayed: The system attempted to send the command to the target, but the target was not available. The instance might not be available because of network issues, the instance was stopped, etc. The system will try to deliver the command again.</p> </li> <li> <p>Success: The command or plugin was executed successfully. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: The command started to execute on the instance, but the execution was not complete before the timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Failed: The command wasn't executed successfully on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Undeliverable: The command can't be delivered to the instance. The instance might not exist or might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit and don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.</p> </li> </ul>
+-- @param PluginName [CommandPluginName] <p>The name of the plugin for which you want detailed results. For example, aws:RunShellScript is a plugin.</p>
+-- @param ResponseCode [ResponseCode] <p>The error level response code for the plugin script. If the response code is -1, then the command has not started executing on the instance, or it was not received by the instance.</p>
+-- @param ExecutionStartDateTime [StringDateTime] <p>The date and time the plugin started executing. Date and time are written in ISO 8601 format. For example, June 7, 2017 is represented as 2017-06-7. The following sample AWS CLI command uses the <code>InvokedBefore</code> filter.</p> <p> <code>aws ssm list-commands --filters key=InvokedBefore,value=2017-06-07T00:00:00Z</code> </p> <p>If the plugin has not started to execute, the string is empty.</p>
+-- @param CommandId [CommandId] <p>The parent command ID of the invocation plugin.</p>
+-- @param StandardOutputUrl [Url] <p>The URL for the complete text written by the plugin to stdout in Amazon S3. If an Amazon S3 bucket was not specified, then this string is empty.</p>
 function M.GetCommandInvocationResult(Comment, ExecutionElapsedTime, ExecutionEndDateTime, StandardErrorContent, InstanceId, StandardErrorUrl, DocumentName, StandardOutputContent, Status, StatusDetails, PluginName, ResponseCode, ExecutionStartDateTime, CommandId, StandardOutputUrl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCommandInvocationResult")
 	local t = { 
@@ -6721,10 +6721,10 @@ function M.AssertFailedCreateAssociation(struct)
 end
 
 --- Create a structure of type FailedCreateAssociation
--- &lt;p&gt;Describes a failed association.&lt;/p&gt;
--- @param Entry [CreateAssociationBatchRequestEntry] &lt;p&gt;The association.&lt;/p&gt;
--- @param Message [BatchErrorMessage] &lt;p&gt;A description of the failure.&lt;/p&gt;
--- @param Fault [Fault] &lt;p&gt;The source of the failure.&lt;/p&gt;
+-- <p>Describes a failed association.</p>
+-- @param Entry [CreateAssociationBatchRequestEntry] <p>The association.</p>
+-- @param Message [BatchErrorMessage] <p>A description of the failure.</p>
+-- @param Fault [Fault] <p>The source of the failure.</p>
 function M.FailedCreateAssociation(Entry, Message, Fault, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FailedCreateAssociation")
 	local t = { 
@@ -6762,22 +6762,22 @@ function M.AssertDocumentDescription(struct)
 end
 
 --- Create a structure of type DocumentDescription
--- &lt;p&gt;Describes an SSM document. &lt;/p&gt;
--- @param Status [DocumentStatus] &lt;p&gt;The status of the SSM document.&lt;/p&gt;
--- @param Sha1 [DocumentSha1] &lt;p&gt;The SHA1 hash of the document, which you can use for verification purposes.&lt;/p&gt;
--- @param Hash [DocumentHash] &lt;p&gt;The Sha256 or Sha1 hash created by the system when the document was created. &lt;/p&gt; &lt;note&gt; &lt;p&gt;Sha1 hashes have been deprecated.&lt;/p&gt; &lt;/note&gt;
--- @param Name [DocumentARN] &lt;p&gt;The name of the SSM document.&lt;/p&gt;
--- @param Parameters [DocumentParameterList] &lt;p&gt;A description of the parameters for a document.&lt;/p&gt;
--- @param DocumentType [DocumentType] &lt;p&gt;The type of document. &lt;/p&gt;
--- @param PlatformTypes [PlatformTypeList] &lt;p&gt;The list of OS platforms compatible with this SSM document. &lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version.&lt;/p&gt;
--- @param HashType [DocumentHashType] &lt;p&gt;Sha256 or Sha1.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Sha1 hashes have been deprecated.&lt;/p&gt; &lt;/note&gt;
--- @param CreatedDate [DateTime] &lt;p&gt;The date when the document was created.&lt;/p&gt;
--- @param Owner [DocumentOwner] &lt;p&gt;The AWS user account of the person who created the document.&lt;/p&gt;
--- @param SchemaVersion [DocumentSchemaVersion] &lt;p&gt;The schema version.&lt;/p&gt;
--- @param DefaultVersion [DocumentVersion] &lt;p&gt;The default version.&lt;/p&gt;
--- @param LatestVersion [DocumentVersion] &lt;p&gt;The latest version of the document.&lt;/p&gt;
--- @param Description [DescriptionInDocument] &lt;p&gt;A description of the document. &lt;/p&gt;
+-- <p>Describes an SSM document. </p>
+-- @param Status [DocumentStatus] <p>The status of the SSM document.</p>
+-- @param Sha1 [DocumentSha1] <p>The SHA1 hash of the document, which you can use for verification purposes.</p>
+-- @param Hash [DocumentHash] <p>The Sha256 or Sha1 hash created by the system when the document was created. </p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
+-- @param Name [DocumentARN] <p>The name of the SSM document.</p>
+-- @param Parameters [DocumentParameterList] <p>A description of the parameters for a document.</p>
+-- @param DocumentType [DocumentType] <p>The type of document. </p>
+-- @param PlatformTypes [PlatformTypeList] <p>The list of OS platforms compatible with this SSM document. </p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- @param HashType [DocumentHashType] <p>Sha256 or Sha1.</p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
+-- @param CreatedDate [DateTime] <p>The date when the document was created.</p>
+-- @param Owner [DocumentOwner] <p>The AWS user account of the person who created the document.</p>
+-- @param SchemaVersion [DocumentSchemaVersion] <p>The schema version.</p>
+-- @param DefaultVersion [DocumentVersion] <p>The default version.</p>
+-- @param LatestVersion [DocumentVersion] <p>The latest version of the document.</p>
+-- @param Description [DescriptionInDocument] <p>A description of the document. </p>
 function M.DocumentDescription(Status, Sha1, Hash, Name, Parameters, DocumentType, PlatformTypes, DocumentVersion, HashType, CreatedDate, Owner, SchemaVersion, DefaultVersion, LatestVersion, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentDescription")
 	local t = { 
@@ -6814,7 +6814,7 @@ end
 
 --- Create a structure of type UpdateAssociationResult
 --  
--- @param AssociationDescription [AssociationDescription] &lt;p&gt;The description of the association that was updated.&lt;/p&gt;
+-- @param AssociationDescription [AssociationDescription] <p>The description of the association that was updated.</p>
 function M.UpdateAssociationResult(AssociationDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAssociationResult")
 	local t = { 
@@ -6840,12 +6840,12 @@ function M.AssertMaintenanceWindowTarget(struct)
 end
 
 --- Create a structure of type MaintenanceWindowTarget
--- &lt;p&gt;The target registered with the Maintenance Window.&lt;/p&gt;
--- @param ResourceType [MaintenanceWindowResourceType] &lt;p&gt;The type of target.&lt;/p&gt;
--- @param OwnerInformation [OwnerInformation] &lt;p&gt;User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The Maintenance Window ID where the target is registered.&lt;/p&gt;
--- @param Targets [Targets] &lt;p&gt;The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&amp;lt;instanceid1&amp;gt;,&amp;lt;instanceid2&amp;gt;. Tags are specified using Key=&amp;lt;tag name&amp;gt;,Values=&amp;lt;tag value&amp;gt;.&lt;/p&gt;
--- @param WindowTargetId [MaintenanceWindowTargetId] &lt;p&gt;The ID of the target.&lt;/p&gt;
+-- <p>The target registered with the Maintenance Window.</p>
+-- @param ResourceType [MaintenanceWindowResourceType] <p>The type of target.</p>
+-- @param OwnerInformation [OwnerInformation] <p>User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The Maintenance Window ID where the target is registered.</p>
+-- @param Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
+-- @param WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target.</p>
 function M.MaintenanceWindowTarget(ResourceType, OwnerInformation, WindowId, Targets, WindowTargetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowTarget")
 	local t = { 
@@ -6884,19 +6884,19 @@ end
 
 --- Create a structure of type GetMaintenanceWindowExecutionTaskResult
 --  
--- @param Status [MaintenanceWindowExecutionStatus] &lt;p&gt;The status of the task.&lt;/p&gt;
--- @param MaxErrors [MaxErrors] &lt;p&gt;The defined maximum number of task execution errors allowed before scheduling of the task execution would have been stopped.&lt;/p&gt;
--- @param TaskArn [MaintenanceWindowTaskArn] &lt;p&gt;The ARN of the executed task.&lt;/p&gt;
--- @param MaxConcurrency [MaxConcurrency] &lt;p&gt;The defined maximum number of task executions that could be run in parallel.&lt;/p&gt;
--- @param ServiceRole [ServiceRole] &lt;p&gt;The role that was assumed when executing the task.&lt;/p&gt;
--- @param WindowExecutionId [MaintenanceWindowExecutionId] &lt;p&gt;The ID of the Maintenance Window execution that includes the task.&lt;/p&gt;
--- @param StatusDetails [MaintenanceWindowExecutionStatusDetails] &lt;p&gt;The details explaining the Status. Only available for certain status values.&lt;/p&gt;
--- @param Priority [MaintenanceWindowTaskPriority] &lt;p&gt;The priority of the task.&lt;/p&gt;
--- @param StartTime [DateTime] &lt;p&gt;The time the task execution started.&lt;/p&gt;
--- @param EndTime [DateTime] &lt;p&gt;The time the task execution completed.&lt;/p&gt;
--- @param Type [MaintenanceWindowTaskType] &lt;p&gt;The type of task executed.&lt;/p&gt;
--- @param TaskParameters [MaintenanceWindowTaskParametersList] &lt;p&gt;The parameters passed to the task when it was executed. The map has the following format:&lt;/p&gt; &lt;p&gt;Key: string, between 1 and 255 characters&lt;/p&gt; &lt;p&gt;Value: an array of strings, each string is between 1 and 255 characters&lt;/p&gt;
--- @param TaskExecutionId [MaintenanceWindowExecutionTaskId] &lt;p&gt;The ID of the specific task execution in the Maintenance Window task that was retrieved.&lt;/p&gt;
+-- @param Status [MaintenanceWindowExecutionStatus] <p>The status of the task.</p>
+-- @param MaxErrors [MaxErrors] <p>The defined maximum number of task execution errors allowed before scheduling of the task execution would have been stopped.</p>
+-- @param TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the executed task.</p>
+-- @param MaxConcurrency [MaxConcurrency] <p>The defined maximum number of task executions that could be run in parallel.</p>
+-- @param ServiceRole [ServiceRole] <p>The role that was assumed when executing the task.</p>
+-- @param WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that includes the task.</p>
+-- @param StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
+-- @param Priority [MaintenanceWindowTaskPriority] <p>The priority of the task.</p>
+-- @param StartTime [DateTime] <p>The time the task execution started.</p>
+-- @param EndTime [DateTime] <p>The time the task execution completed.</p>
+-- @param Type [MaintenanceWindowTaskType] <p>The type of task executed.</p>
+-- @param TaskParameters [MaintenanceWindowTaskParametersList] <p>The parameters passed to the task when it was executed. The map has the following format:</p> <p>Key: string, between 1 and 255 characters</p> <p>Value: an array of strings, each string is between 1 and 255 characters</p>
+-- @param TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window task that was retrieved.</p>
 function M.GetMaintenanceWindowExecutionTaskResult(Status, MaxErrors, TaskArn, MaxConcurrency, ServiceRole, WindowExecutionId, StatusDetails, Priority, StartTime, EndTime, Type, TaskParameters, TaskExecutionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowExecutionTaskResult")
 	local t = { 
@@ -6932,8 +6932,8 @@ end
 
 --- Create a structure of type GetInventoryResult
 --  
--- @param Entities [InventoryResultEntityList] &lt;p&gt;Collection of inventory entities such as a collection of instance inventory. &lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param Entities [InventoryResultEntityList] <p>Collection of inventory entities such as a collection of instance inventory. </p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.GetInventoryResult(Entities, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetInventoryResult")
 	local t = { 
@@ -6958,7 +6958,7 @@ end
 
 --- Create a structure of type GetPatchBaselineRequest
 --  
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline to retrieve.&lt;/p&gt;
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline to retrieve.</p>
 -- Required parameter: BaselineId
 function M.GetPatchBaselineRequest(BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetPatchBaselineRequest")
@@ -6983,8 +6983,8 @@ end
 
 --- Create a structure of type RegisterPatchBaselineForPatchGroupResult
 --  
--- @param PatchGroup [PatchGroup] &lt;p&gt;The name of the patch group registered with the patch baseline.&lt;/p&gt;
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline the patch group was registered with.&lt;/p&gt;
+-- @param PatchGroup [PatchGroup] <p>The name of the patch group registered with the patch baseline.</p>
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline the patch group was registered with.</p>
 function M.RegisterPatchBaselineForPatchGroupResult(PatchGroup, BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterPatchBaselineForPatchGroupResult")
 	local t = { 
@@ -7007,8 +7007,8 @@ function M.AssertTooManyUpdates(struct)
 end
 
 --- Create a structure of type TooManyUpdates
--- &lt;p&gt;There are concurrent updates for a resource that supports one update at a time.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;There are concurrent updates for a resource that supports one update at a time.&lt;/p&gt;
+-- <p>There are concurrent updates for a resource that supports one update at a time.</p>
+-- @param Message [String] <p>There are concurrent updates for a resource that supports one update at a time.</p>
 function M.TooManyUpdates(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyUpdates")
 	local t = { 
@@ -7031,9 +7031,9 @@ function M.AssertPatchOrchestratorFilter(struct)
 end
 
 --- Create a structure of type PatchOrchestratorFilter
--- &lt;p&gt;Defines a filter used in Patch Manager APIs.&lt;/p&gt;
--- @param Values [PatchOrchestratorFilterValues] &lt;p&gt;The value for the filter.&lt;/p&gt;
--- @param Key [PatchOrchestratorFilterKey] &lt;p&gt;The key for the filter.&lt;/p&gt;
+-- <p>Defines a filter used in Patch Manager APIs.</p>
+-- @param Values [PatchOrchestratorFilterValues] <p>The value for the filter.</p>
+-- @param Key [PatchOrchestratorFilterKey] <p>The key for the filter.</p>
 function M.PatchOrchestratorFilter(Values, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PatchOrchestratorFilter")
 	local t = { 
@@ -7060,8 +7060,8 @@ end
 
 --- Create a structure of type DeregisterTargetFromMaintenanceWindowRequest
 --  
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window the target should be removed from.&lt;/p&gt;
--- @param WindowTargetId [MaintenanceWindowTargetId] &lt;p&gt;The ID of the target definition to remove.&lt;/p&gt;
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the target should be removed from.</p>
+-- @param WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target definition to remove.</p>
 -- Required parameter: WindowId
 -- Required parameter: WindowTargetId
 function M.DeregisterTargetFromMaintenanceWindowRequest(WindowId, WindowTargetId, ...)
@@ -7089,9 +7089,9 @@ function M.AssertPatchRule(struct)
 end
 
 --- Create a structure of type PatchRule
--- &lt;p&gt;Defines an approval rule for a patch baseline.&lt;/p&gt;
--- @param PatchFilterGroup [PatchFilterGroup] &lt;p&gt;The patch filter group that defines the criteria for the rule.&lt;/p&gt;
--- @param ApproveAfterDays [ApproveAfterDays] &lt;p&gt;The number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline.&lt;/p&gt;
+-- <p>Defines an approval rule for a patch baseline.</p>
+-- @param PatchFilterGroup [PatchFilterGroup] <p>The patch filter group that defines the criteria for the rule.</p>
+-- @param ApproveAfterDays [ApproveAfterDays] <p>The number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline.</p>
 -- Required parameter: PatchFilterGroup
 -- Required parameter: ApproveAfterDays
 function M.PatchRule(PatchFilterGroup, ApproveAfterDays, ...)
@@ -7136,8 +7136,8 @@ function M.AssertCustomSchemaCountLimitExceededException(struct)
 end
 
 --- Create a structure of type CustomSchemaCountLimitExceededException
--- &lt;p&gt;You have exceeded the limit for custom schemas. Delete one or more custom schemas and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;You have exceeded the limit for custom schemas. Delete one or more custom schemas and try again.&lt;/p&gt;
+-- <p>You have exceeded the limit for custom schemas. Delete one or more custom schemas and try again.</p>
+-- @param Message [String] <p>You have exceeded the limit for custom schemas. Delete one or more custom schemas and try again.</p>
 function M.CustomSchemaCountLimitExceededException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CustomSchemaCountLimitExceededException")
 	local t = { 
@@ -7179,8 +7179,8 @@ function M.AssertInvalidFilterOption(struct)
 end
 
 --- Create a structure of type InvalidFilterOption
--- &lt;p&gt;The specified filter option is not valid. Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The specified filter option is not valid. Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.&lt;/p&gt;
+-- <p>The specified filter option is not valid. Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.</p>
+-- @param message [String] <p>The specified filter option is not valid. Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.</p>
 function M.InvalidFilterOption(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFilterOption")
 	local t = { 
@@ -7204,10 +7204,10 @@ function M.AssertS3OutputLocation(struct)
 end
 
 --- Create a structure of type S3OutputLocation
--- &lt;p&gt;An Amazon S3 bucket where you want to store the results of this request.&lt;/p&gt;
--- @param OutputS3KeyPrefix [S3KeyPrefix] &lt;p&gt;The Amazon S3 bucket subfolder.&lt;/p&gt;
--- @param OutputS3BucketName [S3BucketName] &lt;p&gt;The name of the Amazon S3 bucket.&lt;/p&gt;
--- @param OutputS3Region [S3Region] &lt;p&gt;(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.&lt;/p&gt;
+-- <p>An Amazon S3 bucket where you want to store the results of this request.</p>
+-- @param OutputS3KeyPrefix [S3KeyPrefix] <p>The Amazon S3 bucket subfolder.</p>
+-- @param OutputS3BucketName [S3BucketName] <p>The name of the Amazon S3 bucket.</p>
+-- @param OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
 function M.S3OutputLocation(OutputS3KeyPrefix, OutputS3BucketName, OutputS3Region, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3OutputLocation")
 	local t = { 
@@ -7233,10 +7233,10 @@ function M.AssertAssociationOverview(struct)
 end
 
 --- Create a structure of type AssociationOverview
--- &lt;p&gt;Information about the association.&lt;/p&gt;
--- @param Status [StatusName] &lt;p&gt;The status of the association. Status can be: Pending, Success, or Failed.&lt;/p&gt;
--- @param DetailedStatus [StatusName] &lt;p&gt;A detailed status of the association.&lt;/p&gt;
--- @param AssociationStatusAggregatedCount [AssociationStatusAggregatedCount] &lt;p&gt;Returns the number of targets for the association status. For example, if you created an association with two instances, and one of them was successful, this would return the count of instances by status.&lt;/p&gt;
+-- <p>Information about the association.</p>
+-- @param Status [StatusName] <p>The status of the association. Status can be: Pending, Success, or Failed.</p>
+-- @param DetailedStatus [StatusName] <p>A detailed status of the association.</p>
+-- @param AssociationStatusAggregatedCount [AssociationStatusAggregatedCount] <p>Returns the number of targets for the association status. For example, if you created an association with two instances, and one of them was successful, this would return the count of instances by status.</p>
 function M.AssociationOverview(Status, DetailedStatus, AssociationStatusAggregatedCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociationOverview")
 	local t = { 
@@ -7261,9 +7261,9 @@ function M.AssertDocumentDefaultVersionDescription(struct)
 end
 
 --- Create a structure of type DocumentDefaultVersionDescription
--- &lt;p&gt;A default version of a document.&lt;/p&gt;
--- @param DefaultVersion [DocumentVersion] &lt;p&gt;The default version of the document.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the document.&lt;/p&gt;
+-- <p>A default version of a document.</p>
+-- @param DefaultVersion [DocumentVersion] <p>The default version of the document.</p>
+-- @param Name [DocumentName] <p>The name of the document.</p>
 function M.DocumentDefaultVersionDescription(DefaultVersion, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentDefaultVersionDescription")
 	local t = { 
@@ -7286,8 +7286,8 @@ function M.AssertInvalidTypeNameException(struct)
 end
 
 --- Create a structure of type InvalidTypeNameException
--- &lt;p&gt;The parameter type name is not valid.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The parameter type name is not valid.&lt;/p&gt;
+-- <p>The parameter type name is not valid.</p>
+-- @param Message [String] <p>The parameter type name is not valid.</p>
 function M.InvalidTypeNameException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTypeNameException")
 	local t = { 
@@ -7309,8 +7309,8 @@ function M.AssertParameterNotFound(struct)
 end
 
 --- Create a structure of type ParameterNotFound
--- &lt;p&gt;The parameter could not be found. Verify the name and try again.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The parameter could not be found. Verify the name and try again.&lt;/p&gt;
+-- <p>The parameter could not be found. Verify the name and try again.</p>
+-- @param message [String] <p>The parameter could not be found. Verify the name and try again.</p>
 function M.ParameterNotFound(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterNotFound")
 	local t = { 
@@ -7350,20 +7350,20 @@ function M.AssertInstancePatchState(struct)
 end
 
 --- Create a structure of type InstancePatchState
--- &lt;p&gt;Defines the high-level patch compliance state for a managed instance, providing information about the number of installed, missing, not applicable, and failed patches along with metadata about the operation when this information was gathered for the instance.&lt;/p&gt;
--- @param OperationStartTime [PatchOperationStartTime] &lt;p&gt;The time the most recent patching operation was started on the instance.&lt;/p&gt;
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline used to patch the instance.&lt;/p&gt;
--- @param FailedCount [PatchFailedCount] &lt;p&gt;The number of patches from the patch baseline that were attempted to be installed during the last patching operation, but failed to install.&lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The ID of the managed instance the high-level patch compliance information was collected for.&lt;/p&gt;
--- @param OwnerInformation [OwnerInformation] &lt;p&gt;Placeholder information, this field will always be empty in the current release of the service.&lt;/p&gt;
--- @param NotApplicableCount [PatchNotApplicableCount] &lt;p&gt;The number of patches from the patch baseline that aren't applicable for the instance and hence aren't installed on the instance.&lt;/p&gt;
--- @param OperationEndTime [PatchOperationEndTime] &lt;p&gt;The time the most recent patching operation completed on the instance.&lt;/p&gt;
--- @param PatchGroup [PatchGroup] &lt;p&gt;The name of the patch group the managed instance belongs to.&lt;/p&gt;
--- @param InstalledOtherCount [PatchInstalledOtherCount] &lt;p&gt;The number of patches not specified in the patch baseline that are installed on the instance.&lt;/p&gt;
--- @param MissingCount [PatchMissingCount] &lt;p&gt;The number of patches from the patch baseline that are applicable for the instance but aren't currently installed.&lt;/p&gt;
--- @param SnapshotId [SnapshotId] &lt;p&gt;The ID of the patch baseline snapshot used during the patching operation when this compliance data was collected.&lt;/p&gt;
--- @param Operation [PatchOperationType] &lt;p&gt;The type of patching operation that was performed: SCAN (assess patch compliance state) or INSTALL (install missing patches).&lt;/p&gt;
--- @param InstalledCount [PatchInstalledCount] &lt;p&gt;The number of patches from the patch baseline that are installed on the instance.&lt;/p&gt;
+-- <p>Defines the high-level patch compliance state for a managed instance, providing information about the number of installed, missing, not applicable, and failed patches along with metadata about the operation when this information was gathered for the instance.</p>
+-- @param OperationStartTime [PatchOperationStartTime] <p>The time the most recent patching operation was started on the instance.</p>
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline used to patch the instance.</p>
+-- @param FailedCount [PatchFailedCount] <p>The number of patches from the patch baseline that were attempted to be installed during the last patching operation, but failed to install.</p>
+-- @param InstanceId [InstanceId] <p>The ID of the managed instance the high-level patch compliance information was collected for.</p>
+-- @param OwnerInformation [OwnerInformation] <p>Placeholder information, this field will always be empty in the current release of the service.</p>
+-- @param NotApplicableCount [PatchNotApplicableCount] <p>The number of patches from the patch baseline that aren't applicable for the instance and hence aren't installed on the instance.</p>
+-- @param OperationEndTime [PatchOperationEndTime] <p>The time the most recent patching operation completed on the instance.</p>
+-- @param PatchGroup [PatchGroup] <p>The name of the patch group the managed instance belongs to.</p>
+-- @param InstalledOtherCount [PatchInstalledOtherCount] <p>The number of patches not specified in the patch baseline that are installed on the instance.</p>
+-- @param MissingCount [PatchMissingCount] <p>The number of patches from the patch baseline that are applicable for the instance but aren't currently installed.</p>
+-- @param SnapshotId [SnapshotId] <p>The ID of the patch baseline snapshot used during the patching operation when this compliance data was collected.</p>
+-- @param Operation [PatchOperationType] <p>The type of patching operation that was performed: SCAN (assess patch compliance state) or INSTALL (install missing patches).</p>
+-- @param InstalledCount [PatchInstalledCount] <p>The number of patches from the patch baseline that are installed on the instance.</p>
 -- Required parameter: InstanceId
 -- Required parameter: PatchGroup
 -- Required parameter: BaselineId
@@ -7403,8 +7403,8 @@ function M.AssertInvalidDocumentOperation(struct)
 end
 
 --- Create a structure of type InvalidDocumentOperation
--- &lt;p&gt;You attempted to delete a document while it is still shared. You must stop sharing the document before you can delete it.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;You attempted to delete a document while it is still shared. You must stop sharing the document before you can delete it.&lt;/p&gt;
+-- <p>You attempted to delete a document while it is still shared. You must stop sharing the document before you can delete it.</p>
+-- @param Message [String] <p>You attempted to delete a document while it is still shared. You must stop sharing the document before you can delete it.</p>
 function M.InvalidDocumentOperation(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDocumentOperation")
 	local t = { 
@@ -7432,12 +7432,12 @@ end
 
 --- Create a structure of type ListCommandInvocationsRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;(Optional) The command execution details for a specific instance ID.&lt;/p&gt;
--- @param MaxResults [CommandMaxResults] &lt;p&gt;(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Details [Boolean] &lt;p&gt;(Optional) If set this returns the response of the command executions and any command output. By default this is set to False. &lt;/p&gt;
--- @param Filters [CommandFilterList] &lt;p&gt;(Optional) One or more filters. Use a filter to return a more specific list of results.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;(Optional) The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param CommandId [CommandId] &lt;p&gt;(Optional) The invocations for a specific command ID.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>(Optional) The command execution details for a specific instance ID.</p>
+-- @param MaxResults [CommandMaxResults] <p>(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Details [Boolean] <p>(Optional) If set this returns the response of the command executions and any command output. By default this is set to False. </p>
+-- @param Filters [CommandFilterList] <p>(Optional) One or more filters. Use a filter to return a more specific list of results.</p>
+-- @param NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param CommandId [CommandId] <p>(Optional) The invocations for a specific command ID.</p>
 function M.ListCommandInvocationsRequest(InstanceId, MaxResults, Details, Filters, NextToken, CommandId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCommandInvocationsRequest")
 	local t = { 
@@ -7464,8 +7464,8 @@ function M.AssertUnsupportedInventorySchemaVersionException(struct)
 end
 
 --- Create a structure of type UnsupportedInventorySchemaVersionException
--- &lt;p&gt;Inventory item type schema version has to match supported versions in the service. Check output of GetInventorySchema to see the available schema version for each type.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;Inventory item type schema version has to match supported versions in the service. Check output of GetInventorySchema to see the available schema version for each type.&lt;/p&gt;
+-- <p>Inventory item type schema version has to match supported versions in the service. Check output of GetInventorySchema to see the available schema version for each type.</p>
+-- @param Message [String] <p>Inventory item type schema version has to match supported versions in the service. Check output of GetInventorySchema to see the available schema version for each type.</p>
 function M.UnsupportedInventorySchemaVersionException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedInventorySchemaVersionException")
 	local t = { 
@@ -7490,9 +7490,9 @@ function M.AssertAssociationFilter(struct)
 end
 
 --- Create a structure of type AssociationFilter
--- &lt;p&gt;Describes a filter.&lt;/p&gt;
--- @param value [AssociationFilterValue] &lt;p&gt;The filter value.&lt;/p&gt;
--- @param key [AssociationFilterKey] &lt;p&gt;The name of the filter.&lt;/p&gt;
+-- <p>Describes a filter.</p>
+-- @param value [AssociationFilterValue] <p>The filter value.</p>
+-- @param key [AssociationFilterKey] <p>The name of the filter.</p>
 -- Required parameter: key
 -- Required parameter: value
 function M.AssociationFilter(value, key, ...)
@@ -7522,10 +7522,10 @@ end
 
 --- Create a structure of type GetParameterHistoryRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param Name [PSParameterName] &lt;p&gt;The name of a parameter you want to query.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param WithDecryption [Boolean] &lt;p&gt;Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param Name [PSParameterName] <p>The name of a parameter you want to query.</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param WithDecryption [Boolean] <p>Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.</p>
 -- Required parameter: Name
 function M.GetParameterHistoryRequest(NextToken, Name, MaxResults, WithDecryption, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetParameterHistoryRequest")
@@ -7553,7 +7553,7 @@ end
 
 --- Create a structure of type RegisterDefaultPatchBaselineRequest
 --  
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline that should be the default patch baseline.&lt;/p&gt;
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline that should be the default patch baseline.</p>
 -- Required parameter: BaselineId
 function M.RegisterDefaultPatchBaselineRequest(BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDefaultPatchBaselineRequest")
@@ -7575,7 +7575,7 @@ function M.AssertInvalidResourceId(struct)
 end
 
 --- Create a structure of type InvalidResourceId
--- &lt;p&gt;The resource ID is not valid. Verify that you entered the correct ID and try again.&lt;/p&gt;
+-- <p>The resource ID is not valid. Verify that you entered the correct ID and try again.</p>
 function M.InvalidResourceId(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceId")
 	local t = { 
@@ -7595,7 +7595,7 @@ function M.AssertAssociationAlreadyExists(struct)
 end
 
 --- Create a structure of type AssociationAlreadyExists
--- &lt;p&gt;The specified association already exists.&lt;/p&gt;
+-- <p>The specified association already exists.</p>
 function M.AssociationAlreadyExists(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AssociationAlreadyExists")
 	local t = { 
@@ -7618,8 +7618,8 @@ end
 
 --- Create a structure of type DescribePatchGroupsResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param Mappings [PatchGroupPatchBaselineMappingList] &lt;p&gt;Each entry in the array contains:&lt;/p&gt; &lt;p&gt;PatchGroup: string (between 1 and 256 characters, Regex: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$)&lt;/p&gt; &lt;p&gt;PatchBaselineIdentity: A PatchBaselineIdentity element. &lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param Mappings [PatchGroupPatchBaselineMappingList] <p>Each entry in the array contains:</p> <p>PatchGroup: string (between 1 and 256 characters, Regex: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$)</p> <p>PatchBaselineIdentity: A PatchBaselineIdentity element. </p>
 function M.DescribePatchGroupsResult(NextToken, Mappings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchGroupsResult")
 	local t = { 
@@ -7644,8 +7644,8 @@ end
 
 --- Create a structure of type DescribeInstanceInformationResult
 --  
--- @param InstanceInformationList [InstanceInformationList] &lt;p&gt;The instance information list.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty. &lt;/p&gt;
+-- @param InstanceInformationList [InstanceInformationList] <p>The instance information list.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty. </p>
 function M.DescribeInstanceInformationResult(InstanceInformationList, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstanceInformationResult")
 	local t = { 
@@ -7671,9 +7671,9 @@ function M.AssertAutomationExecutionFilter(struct)
 end
 
 --- Create a structure of type AutomationExecutionFilter
--- &lt;p&gt;A filter used to match specific automation executions. This is used to limit the scope of Automation execution information returned.&lt;/p&gt;
--- @param Values [AutomationExecutionFilterValueList] &lt;p&gt;The values used to limit the execution information associated with the filter's key.&lt;/p&gt;
--- @param Key [AutomationExecutionFilterKey] &lt;p&gt;The aspect of the Automation execution information that should be limited.&lt;/p&gt;
+-- <p>A filter used to match specific automation executions. This is used to limit the scope of Automation execution information returned.</p>
+-- @param Values [AutomationExecutionFilterValueList] <p>The values used to limit the execution information associated with the filter's key.</p>
+-- @param Key [AutomationExecutionFilterKey] <p>The aspect of the Automation execution information that should be limited.</p>
 -- Required parameter: Key
 -- Required parameter: Values
 function M.AutomationExecutionFilter(Values, Key, ...)
@@ -7701,8 +7701,8 @@ end
 
 --- Create a structure of type GetParameterRequest
 --  
--- @param Name [PSParameterName] &lt;p&gt;The name of the parameter you want to query.&lt;/p&gt;
--- @param WithDecryption [Boolean] &lt;p&gt;Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.&lt;/p&gt;
+-- @param Name [PSParameterName] <p>The name of the parameter you want to query.</p>
+-- @param WithDecryption [Boolean] <p>Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.</p>
 -- Required parameter: Name
 function M.GetParameterRequest(Name, WithDecryption, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetParameterRequest")
@@ -7737,13 +7737,13 @@ function M.AssertPatchComplianceData(struct)
 end
 
 --- Create a structure of type PatchComplianceData
--- &lt;p&gt;Information about the state of a patch on a particular instance as it relates to the patch baseline used to patch the instance.&lt;/p&gt;
--- @param KBId [PatchKbNumber] &lt;p&gt;The Microsoft Knowledge Base ID of the patch.&lt;/p&gt;
--- @param Severity [PatchSeverity] &lt;p&gt;The severity of the patch (for example, Critical, Important, Moderate).&lt;/p&gt;
--- @param Classification [PatchClassification] &lt;p&gt;The classification of the patch (for example, SecurityUpdates, Updates, CriticalUpdates).&lt;/p&gt;
--- @param Title [PatchTitle] &lt;p&gt;The title of the patch.&lt;/p&gt;
--- @param State [PatchComplianceDataState] &lt;p&gt;The state of the patch on the instance (INSTALLED, INSTALLED_OTHER, MISSING, NOT_APPLICABLE or FAILED).&lt;/p&gt;
--- @param InstalledTime [PatchInstalledTime] &lt;p&gt;The date/time the patch was installed on the instance.&lt;/p&gt;
+-- <p>Information about the state of a patch on a particular instance as it relates to the patch baseline used to patch the instance.</p>
+-- @param KBId [PatchKbNumber] <p>The Microsoft Knowledge Base ID of the patch.</p>
+-- @param Severity [PatchSeverity] <p>The severity of the patch (for example, Critical, Important, Moderate).</p>
+-- @param Classification [PatchClassification] <p>The classification of the patch (for example, SecurityUpdates, Updates, CriticalUpdates).</p>
+-- @param Title [PatchTitle] <p>The title of the patch.</p>
+-- @param State [PatchComplianceDataState] <p>The state of the patch on the instance (INSTALLED, INSTALLED_OTHER, MISSING, NOT_APPLICABLE or FAILED).</p>
+-- @param InstalledTime [PatchInstalledTime] <p>The date/time the patch was installed on the instance.</p>
 -- Required parameter: Title
 -- Required parameter: KBId
 -- Required parameter: Classification
@@ -7781,9 +7781,9 @@ end
 
 --- Create a structure of type UpdateDocumentRequest
 --  
--- @param Content [DocumentContent] &lt;p&gt;The content in a document that you want to update.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the document that you want to update.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The version of the document that you want to update.&lt;/p&gt;
+-- @param Content [DocumentContent] <p>The content in a document that you want to update.</p>
+-- @param Name [DocumentName] <p>The name of the document that you want to update.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The version of the document that you want to update.</p>
 -- Required parameter: Content
 -- Required parameter: Name
 function M.UpdateDocumentRequest(Content, Name, DocumentVersion, ...)
@@ -7831,8 +7831,8 @@ end
 
 --- Create a structure of type ListAssociationsResult
 --  
--- @param Associations [AssociationList] &lt;p&gt;The associations.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param Associations [AssociationList] <p>The associations.</p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.ListAssociationsResult(Associations, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociationsResult")
 	local t = { 
@@ -7854,7 +7854,7 @@ function M.AssertInvalidOutputLocation(struct)
 end
 
 --- Create a structure of type InvalidOutputLocation
--- &lt;p&gt;The output location is not valid or does not exist.&lt;/p&gt;
+-- <p>The output location is not valid or does not exist.</p>
 function M.InvalidOutputLocation(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOutputLocation")
 	local t = { 
@@ -7875,8 +7875,8 @@ function M.AssertInvalidParameters(struct)
 end
 
 --- Create a structure of type InvalidParameters
--- &lt;p&gt;You must specify values for all required parameters in the SSM document. You can only supply values to parameters defined in the SSM document.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;You must specify values for all required parameters in the SSM document. You can only supply values to parameters defined in the SSM document.&lt;/p&gt;
+-- <p>You must specify values for all required parameters in the SSM document. You can only supply values to parameters defined in the SSM document.</p>
+-- @param Message [String] <p>You must specify values for all required parameters in the SSM document. You can only supply values to parameters defined in the SSM document.</p>
 function M.InvalidParameters(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameters")
 	local t = { 
@@ -7929,12 +7929,12 @@ end
 
 --- Create a structure of type CreateMaintenanceWindowRequest
 --  
--- @param Cutoff [MaintenanceWindowCutoff] &lt;p&gt;The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.&lt;/p&gt;
--- @param Name [MaintenanceWindowName] &lt;p&gt;The name of the Maintenance Window.&lt;/p&gt;
--- @param Schedule [MaintenanceWindowSchedule] &lt;p&gt;The schedule of the Maintenance Window in the form of a cron or rate expression.&lt;/p&gt;
--- @param AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] &lt;p&gt;Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.&lt;/p&gt;
--- @param ClientToken [ClientToken] &lt;p&gt;User-provided idempotency token.&lt;/p&gt;
--- @param Duration [MaintenanceWindowDurationHours] &lt;p&gt;The duration of the Maintenance Window in hours.&lt;/p&gt;
+-- @param Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
+-- @param Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
+-- @param Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
+-- @param AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
+-- @param ClientToken [ClientToken] <p>User-provided idempotency token.</p>
+-- @param Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
 -- Required parameter: Name
 -- Required parameter: Schedule
 -- Required parameter: Duration
@@ -7971,10 +7971,10 @@ end
 
 --- Create a structure of type DescribeInstancePatchStatesForPatchGroupRequest
 --  
--- @param PatchGroup [PatchGroup] &lt;p&gt;The name of the patch group for which the patch state information should be retrieved.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [PatchComplianceMaxResults] &lt;p&gt;The maximum number of patches to return (per page).&lt;/p&gt;
--- @param Filters [InstancePatchStateFilterList] &lt;p&gt;Each entry in the array is a structure containing:&lt;/p&gt; &lt;p&gt;Key (string between 1 and 200 characters)&lt;/p&gt; &lt;p&gt; Values (array containing a single string)&lt;/p&gt; &lt;p&gt; Type (string &quot;Equal&quot;, &quot;NotEqual&quot;, &quot;LessThan&quot;, &quot;GreaterThan&quot;)&lt;/p&gt;
+-- @param PatchGroup [PatchGroup] <p>The name of the patch group for which the patch state information should be retrieved.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [PatchComplianceMaxResults] <p>The maximum number of patches to return (per page).</p>
+-- @param Filters [InstancePatchStateFilterList] <p>Each entry in the array is a structure containing:</p> <p>Key (string between 1 and 200 characters)</p> <p> Values (array containing a single string)</p> <p> Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")</p>
 -- Required parameter: PatchGroup
 function M.DescribeInstancePatchStatesForPatchGroupRequest(PatchGroup, NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchStatesForPatchGroupRequest")
@@ -8001,7 +8001,7 @@ end
 
 --- Create a structure of type GetDefaultPatchBaselineResult
 --  
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the default patch baseline.&lt;/p&gt;
+-- @param BaselineId [BaselineId] <p>The ID of the default patch baseline.</p>
 function M.GetDefaultPatchBaselineResult(BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDefaultPatchBaselineResult")
 	local t = { 
@@ -8046,9 +8046,9 @@ end
 
 --- Create a structure of type DescribeAssociationRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;The instance ID.&lt;/p&gt;
--- @param AssociationId [AssociationId] &lt;p&gt;The association ID for which you want information.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the SSM document.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>The instance ID.</p>
+-- @param AssociationId [AssociationId] <p>The association ID for which you want information.</p>
+-- @param Name [DocumentName] <p>The name of the SSM document.</p>
 function M.DescribeAssociationRequest(InstanceId, AssociationId, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssociationRequest")
 	local t = { 
@@ -8076,10 +8076,10 @@ end
 
 --- Create a structure of type DescribeInstanceInformationRequest
 --  
--- @param InstanceInformationFilterList [InstanceInformationFilterList] &lt;p&gt;One or more filters. Use a filter to return a more specific list of instances.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param MaxResults [MaxResultsEC2Compatible] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results. &lt;/p&gt;
--- @param Filters [InstanceInformationStringFilterList] &lt;p&gt;One or more filters. Use a filter to return a more specific list of instances.&lt;/p&gt;
+-- @param InstanceInformationFilterList [InstanceInformationFilterList] <p>One or more filters. Use a filter to return a more specific list of instances.</p>
+-- @param NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param MaxResults [MaxResultsEC2Compatible] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results. </p>
+-- @param Filters [InstanceInformationStringFilterList] <p>One or more filters. Use a filter to return a more specific list of instances.</p>
 function M.DescribeInstanceInformationRequest(InstanceInformationFilterList, NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstanceInformationRequest")
 	local t = { 
@@ -8106,8 +8106,8 @@ end
 
 --- Create a structure of type ListCommandsResult
 --  
--- @param Commands [CommandList] &lt;p&gt;(Optional) The list of commands requested by the user. &lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;(Optional) The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
+-- @param Commands [CommandList] <p>(Optional) The list of commands requested by the user. </p>
+-- @param NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
 function M.ListCommandsResult(Commands, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCommandsResult")
 	local t = { 
@@ -8130,8 +8130,8 @@ function M.AssertInvalidFilterValue(struct)
 end
 
 --- Create a structure of type InvalidFilterValue
--- &lt;p&gt;The filter value is not valid. Verify the value and try again.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The filter value is not valid. Verify the value and try again.&lt;/p&gt;
+-- <p>The filter value is not valid. Verify the value and try again.</p>
+-- @param Message [String] <p>The filter value is not valid. Verify the value and try again.</p>
 function M.InvalidFilterValue(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFilterValue")
 	local t = { 
@@ -8158,9 +8158,9 @@ end
 
 --- Create a structure of type GetCommandInvocationRequest
 --  
--- @param InstanceId [InstanceId] &lt;p&gt;(Required) The ID of the managed instance targeted by the command. A managed instance can be an Amazon EC2 instance or an instance in your hybrid environment that is configured for Systems Manager.&lt;/p&gt;
--- @param PluginName [CommandPluginName] &lt;p&gt;(Optional) The name of the plugin for which you want detailed results. If the document contains only one plugin, the name can be omitted and the details will be returned.&lt;/p&gt;
--- @param CommandId [CommandId] &lt;p&gt;(Required) The parent command ID of the invocation plugin.&lt;/p&gt;
+-- @param InstanceId [InstanceId] <p>(Required) The ID of the managed instance targeted by the command. A managed instance can be an Amazon EC2 instance or an instance in your hybrid environment that is configured for Systems Manager.</p>
+-- @param PluginName [CommandPluginName] <p>(Optional) The name of the plugin for which you want detailed results. If the document contains only one plugin, the name can be omitted and the details will be returned.</p>
+-- @param CommandId [CommandId] <p>(Required) The parent command ID of the invocation plugin.</p>
 -- Required parameter: CommandId
 -- Required parameter: InstanceId
 function M.GetCommandInvocationRequest(InstanceId, PluginName, CommandId, ...)
@@ -8191,9 +8191,9 @@ end
 
 --- Create a structure of type CreateDocumentRequest
 --  
--- @param Content [DocumentContent] &lt;p&gt;A valid JSON string.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;A name for the Systems Manager document.&lt;/p&gt;
--- @param DocumentType [DocumentType] &lt;p&gt;The type of document to create. Valid document types include: Policy, Automation, and Command.&lt;/p&gt;
+-- @param Content [DocumentContent] <p>A valid JSON string.</p>
+-- @param Name [DocumentName] <p>A name for the Systems Manager document.</p>
+-- @param DocumentType [DocumentType] <p>The type of document to create. Valid document types include: Policy, Automation, and Command.</p>
 -- Required parameter: Content
 -- Required parameter: Name
 function M.CreateDocumentRequest(Content, Name, DocumentType, ...)
@@ -8228,17 +8228,17 @@ function M.AssertInstanceAssociationStatusInfo(struct)
 end
 
 --- Create a structure of type InstanceAssociationStatusInfo
--- &lt;p&gt;Status information about the instance association.&lt;/p&gt;
--- @param Status [StatusName] &lt;p&gt;Status information about the instance association.&lt;/p&gt;
--- @param DetailedStatus [StatusName] &lt;p&gt;Detailed status information about the instance association.&lt;/p&gt;
--- @param OutputUrl [InstanceAssociationOutputUrl] &lt;p&gt;A URL for an Amazon S3 bucket where you want to store the results of this request.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the association.&lt;/p&gt;
--- @param InstanceId [InstanceId] &lt;p&gt;The instance ID where the association was created.&lt;/p&gt;
--- @param AssociationId [AssociationId] &lt;p&gt;The association ID.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The association document verions.&lt;/p&gt;
--- @param ErrorCode [AgentErrorCode] &lt;p&gt;An error code returned by the request to create the association.&lt;/p&gt;
--- @param ExecutionSummary [InstanceAssociationExecutionSummary] &lt;p&gt;Summary information about association execution.&lt;/p&gt;
--- @param ExecutionDate [DateTime] &lt;p&gt;The date the instance association executed. &lt;/p&gt;
+-- <p>Status information about the instance association.</p>
+-- @param Status [StatusName] <p>Status information about the instance association.</p>
+-- @param DetailedStatus [StatusName] <p>Detailed status information about the instance association.</p>
+-- @param OutputUrl [InstanceAssociationOutputUrl] <p>A URL for an Amazon S3 bucket where you want to store the results of this request.</p>
+-- @param Name [DocumentName] <p>The name of the association.</p>
+-- @param InstanceId [InstanceId] <p>The instance ID where the association was created.</p>
+-- @param AssociationId [AssociationId] <p>The association ID.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The association document verions.</p>
+-- @param ErrorCode [AgentErrorCode] <p>An error code returned by the request to create the association.</p>
+-- @param ExecutionSummary [InstanceAssociationExecutionSummary] <p>Summary information about association execution.</p>
+-- @param ExecutionDate [DateTime] <p>The date the instance association executed. </p>
 function M.InstanceAssociationStatusInfo(Status, DetailedStatus, OutputUrl, Name, InstanceId, AssociationId, DocumentVersion, ErrorCode, ExecutionSummary, ExecutionDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAssociationStatusInfo")
 	local t = { 
@@ -8272,9 +8272,9 @@ function M.AssertParametersFilter(struct)
 end
 
 --- Create a structure of type ParametersFilter
--- &lt;p&gt;One or more filters. Use a filter to return a more specific list of results.&lt;/p&gt;
--- @param Values [ParametersFilterValueList] &lt;p&gt;The filter values.&lt;/p&gt;
--- @param Key [ParametersFilterKey] &lt;p&gt;The name of the filter.&lt;/p&gt;
+-- <p>One or more filters. Use a filter to return a more specific list of results.</p>
+-- @param Values [ParametersFilterValueList] <p>The filter values.</p>
+-- @param Key [ParametersFilterKey] <p>The name of the filter.</p>
 -- Required parameter: Key
 -- Required parameter: Values
 function M.ParametersFilter(Values, Key, ...)
@@ -8298,7 +8298,7 @@ function M.AssertTooManyTagsError(struct)
 end
 
 --- Create a structure of type TooManyTagsError
--- &lt;p&gt;The Targets parameter includes too many tags. Remove one or more tags and try the command again.&lt;/p&gt;
+-- <p>The Targets parameter includes too many tags. Remove one or more tags and try the command again.</p>
 function M.TooManyTagsError(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTagsError")
 	local t = { 
@@ -8323,8 +8323,8 @@ end
 
 --- Create a structure of type DescribeDocumentPermissionRequest
 --  
--- @param PermissionType [DocumentPermissionType] &lt;p&gt;The permission type for the document. The permission type can be &lt;i&gt;Share&lt;/i&gt;.&lt;/p&gt;
--- @param Name [DocumentName] &lt;p&gt;The name of the document for which you are the owner.&lt;/p&gt;
+-- @param PermissionType [DocumentPermissionType] <p>The permission type for the document. The permission type can be <i>Share</i>.</p>
+-- @param Name [DocumentName] <p>The name of the document for which you are the owner.</p>
 -- Required parameter: Name
 -- Required parameter: PermissionType
 function M.DescribeDocumentPermissionRequest(PermissionType, Name, ...)
@@ -8349,8 +8349,8 @@ function M.AssertDocumentPermissionLimit(struct)
 end
 
 --- Create a structure of type DocumentPermissionLimit
--- &lt;p&gt;The document cannot be shared with more AWS user accounts. You can share a document with a maximum of 20 accounts. You can publicly share up to five documents. If you need to increase this limit, contact AWS Support.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The document cannot be shared with more AWS user accounts. You can share a document with a maximum of 20 accounts. You can publicly share up to five documents. If you need to increase this limit, contact AWS Support.&lt;/p&gt;
+-- <p>The document cannot be shared with more AWS user accounts. You can share a document with a maximum of 20 accounts. You can publicly share up to five documents. If you need to increase this limit, contact AWS Support.</p>
+-- @param Message [String] <p>The document cannot be shared with more AWS user accounts. You can share a document with a maximum of 20 accounts. You can publicly share up to five documents. If you need to increase this limit, contact AWS Support.</p>
 function M.DocumentPermissionLimit(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentPermissionLimit")
 	local t = { 
@@ -8374,7 +8374,7 @@ end
 
 --- Create a structure of type DeleteDocumentRequest
 --  
--- @param Name [DocumentName] &lt;p&gt;The name of the document.&lt;/p&gt;
+-- @param Name [DocumentName] <p>The name of the document.</p>
 -- Required parameter: Name
 function M.DeleteDocumentRequest(Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDocumentRequest")
@@ -8399,8 +8399,8 @@ end
 
 --- Create a structure of type DescribeInstancePatchStatesForPatchGroupResult
 --  
--- @param InstancePatchStates [InstancePatchStatesList] &lt;p&gt;The high-level patch state for the requested instances. &lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param InstancePatchStates [InstancePatchStatesList] <p>The high-level patch state for the requested instances. </p>
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.DescribeInstancePatchStatesForPatchGroupResult(InstancePatchStates, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchStatesForPatchGroupResult")
 	local t = { 
@@ -8423,8 +8423,8 @@ function M.AssertInvalidUpdate(struct)
 end
 
 --- Create a structure of type InvalidUpdate
--- &lt;p&gt;The update is not valid.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The update is not valid.&lt;/p&gt;
+-- <p>The update is not valid.</p>
+-- @param Message [String] <p>The update is not valid.</p>
 function M.InvalidUpdate(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidUpdate")
 	local t = { 
@@ -8446,8 +8446,8 @@ function M.AssertInvalidAllowedPatternException(struct)
 end
 
 --- Create a structure of type InvalidAllowedPatternException
--- &lt;p&gt;The request does not meet the regular expression requirement.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The request does not meet the regular expression requirement.&lt;/p&gt;
+-- <p>The request does not meet the regular expression requirement.</p>
+-- @param message [String] <p>The request does not meet the regular expression requirement.</p>
 function M.InvalidAllowedPatternException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAllowedPatternException")
 	local t = { 
@@ -8472,9 +8472,9 @@ function M.AssertInventoryItemAttribute(struct)
 end
 
 --- Create a structure of type InventoryItemAttribute
--- &lt;p&gt;Attributes are the entries within the inventory item content. It contains name and value.&lt;/p&gt;
--- @param DataType [InventoryAttributeDataType] &lt;p&gt;The data type of the inventory item attribute. &lt;/p&gt;
--- @param Name [InventoryItemAttributeName] &lt;p&gt;Name of the inventory item attribute.&lt;/p&gt;
+-- <p>Attributes are the entries within the inventory item content. It contains name and value.</p>
+-- @param DataType [InventoryAttributeDataType] <p>The data type of the inventory item attribute. </p>
+-- @param Name [InventoryItemAttributeName] <p>Name of the inventory item attribute.</p>
 -- Required parameter: Name
 -- Required parameter: DataType
 function M.InventoryItemAttribute(DataType, Name, ...)
@@ -8506,13 +8506,13 @@ end
 
 --- Create a structure of type UpdateMaintenanceWindowResult
 --  
--- @param Cutoff [MaintenanceWindowCutoff] &lt;p&gt;The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.&lt;/p&gt;
--- @param Name [MaintenanceWindowName] &lt;p&gt;The name of the Maintenance Window.&lt;/p&gt;
--- @param Schedule [MaintenanceWindowSchedule] &lt;p&gt;The schedule of the Maintenance Window in the form of a cron or rate expression.&lt;/p&gt;
--- @param Enabled [MaintenanceWindowEnabled] &lt;p&gt;Whether the Maintenance Window is enabled.&lt;/p&gt;
--- @param AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] &lt;p&gt;Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the created Maintenance Window.&lt;/p&gt;
--- @param Duration [MaintenanceWindowDurationHours] &lt;p&gt;The duration of the Maintenance Window in hours.&lt;/p&gt;
+-- @param Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
+-- @param Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
+-- @param Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
+-- @param Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Window is enabled.</p>
+-- @param AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the created Maintenance Window.</p>
+-- @param Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
 function M.UpdateMaintenanceWindowResult(Cutoff, Name, Schedule, Enabled, AllowUnassociatedTargets, WindowId, Duration, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMaintenanceWindowResult")
 	local t = { 
@@ -8546,11 +8546,11 @@ end
 
 --- Create a structure of type CreateActivationRequest
 --  
--- @param DefaultInstanceName [DefaultInstanceName] &lt;p&gt;The name of the registered, managed instance as it will appear in the Amazon EC2 console or when you use the AWS command line tools to list EC2 resources.&lt;/p&gt;
--- @param IamRole [IamRole] &lt;p&gt;The Amazon Identity and Access Management (IAM) role that you want to assign to the managed instance. &lt;/p&gt;
--- @param ExpirationDate [ExpirationDate] &lt;p&gt;The date by which this activation request should expire. The default value is 24 hours.&lt;/p&gt;
--- @param Description [ActivationDescription] &lt;p&gt;A userdefined description of the resource that you want to register with Amazon EC2. &lt;/p&gt;
--- @param RegistrationLimit [RegistrationLimit] &lt;p&gt;Specify the maximum number of managed instances you want to register. The default value is 1 instance.&lt;/p&gt;
+-- @param DefaultInstanceName [DefaultInstanceName] <p>The name of the registered, managed instance as it will appear in the Amazon EC2 console or when you use the AWS command line tools to list EC2 resources.</p>
+-- @param IamRole [IamRole] <p>The Amazon Identity and Access Management (IAM) role that you want to assign to the managed instance. </p>
+-- @param ExpirationDate [ExpirationDate] <p>The date by which this activation request should expire. The default value is 24 hours.</p>
+-- @param Description [ActivationDescription] <p>A userdefined description of the resource that you want to register with Amazon EC2. </p>
+-- @param RegistrationLimit [RegistrationLimit] <p>Specify the maximum number of managed instances you want to register. The default value is 1 instance.</p>
 -- Required parameter: IamRole
 function M.CreateActivationRequest(DefaultInstanceName, IamRole, ExpirationDate, Description, RegistrationLimit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateActivationRequest")
@@ -8578,7 +8578,7 @@ end
 
 --- Create a structure of type DescribeAssociationResult
 --  
--- @param AssociationDescription [AssociationDescription] &lt;p&gt;Information about the association.&lt;/p&gt;
+-- @param AssociationDescription [AssociationDescription] <p>Information about the association.</p>
 function M.DescribeAssociationResult(AssociationDescription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssociationResult")
 	local t = { 
@@ -8601,9 +8601,9 @@ function M.AssertInventoryResultEntity(struct)
 end
 
 --- Create a structure of type InventoryResultEntity
--- &lt;p&gt;Inventory query results.&lt;/p&gt;
--- @param Data [InventoryResultItemMap] &lt;p&gt;The data section in the inventory result entity json.&lt;/p&gt;
--- @param Id [InventoryResultEntityId] &lt;p&gt;ID of the inventory result entity. For example, for managed instance inventory the result will be the managed instance ID. For EC2 instance inventory, the result will be the instance ID. &lt;/p&gt;
+-- <p>Inventory query results.</p>
+-- @param Data [InventoryResultItemMap] <p>The data section in the inventory result entity json.</p>
+-- @param Id [InventoryResultEntityId] <p>ID of the inventory result entity. For example, for managed instance inventory the result will be the managed instance ID. For EC2 instance inventory, the result will be the instance ID. </p>
 function M.InventoryResultEntity(Data, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InventoryResultEntity")
 	local t = { 
@@ -8628,8 +8628,8 @@ end
 
 --- Create a structure of type DescribeParametersResult
 --  
--- @param NextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param Parameters [ParameterMetadataList] &lt;p&gt;Parameters returned by the request.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param Parameters [ParameterMetadataList] <p>Parameters returned by the request.</p>
 function M.DescribeParametersResult(NextToken, Parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParametersResult")
 	local t = { 
@@ -8652,8 +8652,8 @@ function M.AssertUnsupportedPlatformType(struct)
 end
 
 --- Create a structure of type UnsupportedPlatformType
--- &lt;p&gt;The document does not support the platform type of the given instance ID(s). For example, you sent an document for a Windows instance to a Linux instance.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The document does not support the platform type of the given instance ID(s). For example, you sent an document for a Windows instance to a Linux instance.&lt;/p&gt;
+-- <p>The document does not support the platform type of the given instance ID(s). For example, you sent an document for a Windows instance to a Linux instance.</p>
+-- @param Message [String] <p>The document does not support the platform type of the given instance ID(s). For example, you sent an document for a Windows instance to a Linux instance.</p>
 function M.UnsupportedPlatformType(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedPlatformType")
 	local t = { 
@@ -8676,7 +8676,7 @@ end
 
 --- Create a structure of type DescribeDocumentResult
 --  
--- @param Document [DocumentDescription] &lt;p&gt;Information about the SSM document.&lt;/p&gt;
+-- @param Document [DocumentDescription] <p>Information about the SSM document.</p>
 function M.DescribeDocumentResult(Document, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentResult")
 	local t = { 
@@ -8698,8 +8698,8 @@ function M.AssertDoesNotExistException(struct)
 end
 
 --- Create a structure of type DoesNotExistException
--- &lt;p&gt;Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.&lt;/p&gt;
+-- <p>Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.</p>
+-- @param Message [String] <p>Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.</p>
 function M.DoesNotExistException(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DoesNotExistException")
 	local t = { 
@@ -8721,8 +8721,8 @@ function M.AssertParameterLimitExceeded(struct)
 end
 
 --- Create a structure of type ParameterLimitExceeded
--- &lt;p&gt;You have exceeded the number of parameters for this AWS account. Delete one or more parameters and try again.&lt;/p&gt;
--- @param message [String] &lt;p&gt;You have exceeded the number of parameters for this AWS account. Delete one or more parameters and try again.&lt;/p&gt;
+-- <p>You have exceeded the number of parameters for this AWS account. Delete one or more parameters and try again.</p>
+-- @param message [String] <p>You have exceeded the number of parameters for this AWS account. Delete one or more parameters and try again.</p>
 function M.ParameterLimitExceeded(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ParameterLimitExceeded")
 	local t = { 
@@ -8744,8 +8744,8 @@ function M.AssertInstanceAssociationOutputUrl(struct)
 end
 
 --- Create a structure of type InstanceAssociationOutputUrl
--- &lt;p&gt;The URL of Amazon S3 bucket where you want to store the results of this request.&lt;/p&gt;
--- @param S3OutputUrl [S3OutputUrl] &lt;p&gt;The URL of Amazon S3 bucket where you want to store the results of this request.&lt;/p&gt;
+-- <p>The URL of Amazon S3 bucket where you want to store the results of this request.</p>
+-- @param S3OutputUrl [S3OutputUrl] <p>The URL of Amazon S3 bucket where you want to store the results of this request.</p>
 function M.InstanceAssociationOutputUrl(S3OutputUrl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAssociationOutputUrl")
 	local t = { 
@@ -8769,7 +8769,7 @@ end
 
 --- Create a structure of type DeleteParametersRequest
 --  
--- @param Names [ParameterNameList] &lt;p&gt;The names of the parameters to delete.&lt;/p&gt;
+-- @param Names [ParameterNameList] <p>The names of the parameters to delete.</p>
 -- Required parameter: Names
 function M.DeleteParametersRequest(Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParametersRequest")
@@ -8800,13 +8800,13 @@ end
 
 --- Create a structure of type CreatePatchBaselineRequest
 --  
--- @param Description [BaselineDescription] &lt;p&gt;A description of the patch baseline.&lt;/p&gt;
--- @param RejectedPatches [PatchIdList] &lt;p&gt;A list of explicitly rejected patches for the baseline.&lt;/p&gt;
--- @param GlobalFilters [PatchFilterGroup] &lt;p&gt;A set of global filters used to exclude patches from the baseline.&lt;/p&gt;
--- @param ApprovalRules [PatchRuleGroup] &lt;p&gt;A set of rules used to include patches in the baseline.&lt;/p&gt;
--- @param ClientToken [ClientToken] &lt;p&gt;User-provided idempotency token.&lt;/p&gt;
--- @param ApprovedPatches [PatchIdList] &lt;p&gt;A list of explicitly approved patches for the baseline.&lt;/p&gt;
--- @param Name [BaselineName] &lt;p&gt;The name of the patch baseline.&lt;/p&gt;
+-- @param Description [BaselineDescription] <p>A description of the patch baseline.</p>
+-- @param RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
+-- @param GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
+-- @param ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
+-- @param ClientToken [ClientToken] <p>User-provided idempotency token.</p>
+-- @param ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
+-- @param Name [BaselineName] <p>The name of the patch baseline.</p>
 -- Required parameter: Name
 function M.CreatePatchBaselineRequest(Description, RejectedPatches, GlobalFilters, ApprovalRules, ClientToken, ApprovedPatches, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreatePatchBaselineRequest")
@@ -8838,8 +8838,8 @@ end
 
 --- Create a structure of type GetDocumentRequest
 --  
--- @param Name [DocumentARN] &lt;p&gt;The name of the SSM document.&lt;/p&gt;
--- @param DocumentVersion [DocumentVersion] &lt;p&gt;The document version for which you want information.&lt;/p&gt;
+-- @param Name [DocumentARN] <p>The name of the SSM document.</p>
+-- @param DocumentVersion [DocumentVersion] <p>The document version for which you want information.</p>
 -- Required parameter: Name
 function M.GetDocumentRequest(Name, DocumentVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentRequest")
@@ -8863,8 +8863,8 @@ function M.AssertIdempotentParameterMismatch(struct)
 end
 
 --- Create a structure of type IdempotentParameterMismatch
--- &lt;p&gt;Error returned when an idempotent operation is retried and the parameters don't match the original call to the API with the same idempotency token. &lt;/p&gt;
--- @param Message [String] &lt;p&gt;Error returned when an idempotent operation is retried and the parameters don't match the original call to the API with the same idempotency token. &lt;/p&gt;
+-- <p>Error returned when an idempotent operation is retried and the parameters don't match the original call to the API with the same idempotency token. </p>
+-- @param Message [String] <p>Error returned when an idempotent operation is retried and the parameters don't match the original call to the API with the same idempotency token. </p>
 function M.IdempotentParameterMismatch(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IdempotentParameterMismatch")
 	local t = { 
@@ -8888,7 +8888,7 @@ end
 
 --- Create a structure of type DescribePatchGroupStateRequest
 --  
--- @param PatchGroup [PatchGroup] &lt;p&gt;The name of the patch group whose patch snapshot should be retrieved.&lt;/p&gt;
+-- @param PatchGroup [PatchGroup] <p>The name of the patch group whose patch snapshot should be retrieved.</p>
 -- Required parameter: PatchGroup
 function M.DescribePatchGroupStateRequest(PatchGroup, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchGroupStateRequest")
@@ -8914,11 +8914,11 @@ function M.AssertPatchBaselineIdentity(struct)
 end
 
 --- Create a structure of type PatchBaselineIdentity
--- &lt;p&gt;Defines the basic information about a patch baseline.&lt;/p&gt;
--- @param BaselineName [BaselineName] &lt;p&gt;The name of the patch baseline.&lt;/p&gt;
--- @param DefaultBaseline [DefaultBaseline] &lt;p&gt;Whether this is the default baseline.&lt;/p&gt;
--- @param BaselineDescription [BaselineDescription] &lt;p&gt;The description of the patch baseline.&lt;/p&gt;
--- @param BaselineId [BaselineId] &lt;p&gt;The ID of the patch baseline.&lt;/p&gt;
+-- <p>Defines the basic information about a patch baseline.</p>
+-- @param BaselineName [BaselineName] <p>The name of the patch baseline.</p>
+-- @param DefaultBaseline [DefaultBaseline] <p>Whether this is the default baseline.</p>
+-- @param BaselineDescription [BaselineDescription] <p>The description of the patch baseline.</p>
+-- @param BaselineId [BaselineId] <p>The ID of the patch baseline.</p>
 function M.PatchBaselineIdentity(BaselineName, DefaultBaseline, BaselineDescription, BaselineId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PatchBaselineIdentity")
 	local t = { 
@@ -8946,9 +8946,9 @@ end
 
 --- Create a structure of type DescribeActivationsRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;A token to start the list. Use this token to get the next set of results. &lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.&lt;/p&gt;
--- @param Filters [DescribeActivationsFilterList] &lt;p&gt;A filter to view information about your activations.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results. </p>
+-- @param MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @param Filters [DescribeActivationsFilterList] <p>A filter to view information about your activations.</p>
 function M.DescribeActivationsRequest(NextToken, MaxResults, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivationsRequest")
 	local t = { 
@@ -8973,7 +8973,7 @@ end
 
 --- Create a structure of type RegisterTargetWithMaintenanceWindowResult
 --  
--- @param WindowTargetId [MaintenanceWindowTargetId] &lt;p&gt;The ID of the target definition in this Maintenance Window.&lt;/p&gt;
+-- @param WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target definition in this Maintenance Window.</p>
 function M.RegisterTargetWithMaintenanceWindowResult(WindowTargetId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTargetWithMaintenanceWindowResult")
 	local t = { 
@@ -8998,11 +8998,11 @@ function M.AssertDocumentParameter(struct)
 end
 
 --- Create a structure of type DocumentParameter
--- &lt;p&gt;Parameters specified in a System Manager document that execute on the server when the command is run. &lt;/p&gt;
--- @param DefaultValue [DocumentParameterDefaultValue] &lt;p&gt;If specified, the default values for the parameters. Parameters without a default value are required. Parameters with a default value are optional.&lt;/p&gt;
--- @param Type [DocumentParameterType] &lt;p&gt;The type of parameter. The type can be either String or StringList.&lt;/p&gt;
--- @param Name [DocumentParameterName] &lt;p&gt;The name of the parameter.&lt;/p&gt;
--- @param Description [DocumentParameterDescrption] &lt;p&gt;A description of what the parameter does, how to use it, the default value, and whether or not the parameter is optional.&lt;/p&gt;
+-- <p>Parameters specified in a System Manager document that execute on the server when the command is run. </p>
+-- @param DefaultValue [DocumentParameterDefaultValue] <p>If specified, the default values for the parameters. Parameters without a default value are required. Parameters with a default value are optional.</p>
+-- @param Type [DocumentParameterType] <p>The type of parameter. The type can be either String or StringList.</p>
+-- @param Name [DocumentParameterName] <p>The name of the parameter.</p>
+-- @param Description [DocumentParameterDescrption] <p>A description of what the parameter does, how to use it, the default value, and whether or not the parameter is optional.</p>
 function M.DocumentParameter(DefaultValue, Type, Name, Description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentParameter")
 	local t = { 
@@ -9027,8 +9027,8 @@ function M.AssertInvalidDocumentSchemaVersion(struct)
 end
 
 --- Create a structure of type InvalidDocumentSchemaVersion
--- &lt;p&gt;The version of the document schema is not supported.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The version of the document schema is not supported.&lt;/p&gt;
+-- <p>The version of the document schema is not supported.</p>
+-- @param Message [String] <p>The version of the document schema is not supported.</p>
 function M.InvalidDocumentSchemaVersion(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDocumentSchemaVersion")
 	local t = { 
@@ -9050,8 +9050,8 @@ function M.AssertInvalidDocumentContent(struct)
 end
 
 --- Create a structure of type InvalidDocumentContent
--- &lt;p&gt;The content for the document is not valid.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;A description of the validation error.&lt;/p&gt;
+-- <p>The content for the document is not valid.</p>
+-- @param Message [String] <p>A description of the validation error.</p>
 function M.InvalidDocumentContent(Message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDocumentContent")
 	local t = { 
@@ -9073,8 +9073,8 @@ function M.AssertInvalidKeyId(struct)
 end
 
 --- Create a structure of type InvalidKeyId
--- &lt;p&gt;The query key ID is not valid.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The query key ID is not valid.&lt;/p&gt;
+-- <p>The query key ID is not valid.</p>
+-- @param message [String] <p>The query key ID is not valid.</p>
 function M.InvalidKeyId(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidKeyId")
 	local t = { 
@@ -9124,13 +9124,13 @@ end
 
 --- Create a structure of type UpdateMaintenanceWindowRequest
 --  
--- @param Cutoff [MaintenanceWindowCutoff] &lt;p&gt;The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.&lt;/p&gt;
--- @param Name [MaintenanceWindowName] &lt;p&gt;The name of the Maintenance Window.&lt;/p&gt;
--- @param Schedule [MaintenanceWindowSchedule] &lt;p&gt;The schedule of the Maintenance Window in the form of a cron or rate expression.&lt;/p&gt;
--- @param Enabled [MaintenanceWindowEnabled] &lt;p&gt;Whether the Maintenance Window is enabled.&lt;/p&gt;
--- @param AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] &lt;p&gt;Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.&lt;/p&gt;
--- @param WindowId [MaintenanceWindowId] &lt;p&gt;The ID of the Maintenance Window to update.&lt;/p&gt;
--- @param Duration [MaintenanceWindowDurationHours] &lt;p&gt;The duration of the Maintenance Window in hours.&lt;/p&gt;
+-- @param Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
+-- @param Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
+-- @param Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
+-- @param Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Window is enabled.</p>
+-- @param AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
+-- @param WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window to update.</p>
+-- @param Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
 -- Required parameter: WindowId
 function M.UpdateMaintenanceWindowRequest(Cutoff, Name, Schedule, Enabled, AllowUnassociatedTargets, WindowId, Duration, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMaintenanceWindowRequest")

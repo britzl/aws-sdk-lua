@@ -36,11 +36,11 @@ function M.AssertUpdateIntegrationRequest(struct)
 end
 
 --- Create a structure of type UpdateIntegrationRequest
--- &lt;p&gt;Represents an update integration request.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;Represents an update integration request's resource identifier.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;Represents an update integration request's API identifier.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Represents an update integration request's HTTP method.&lt;/p&gt;
+-- <p>Represents an update integration request.</p>
+-- @param resourceId [String] <p>Represents an update integration request's resource identifier.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param restApiId [String] <p>Represents an update integration request's API identifier.</p>
+-- @param httpMethod [String] <p>Represents an update integration request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -73,10 +73,10 @@ function M.AssertCreateResourceRequest(struct)
 end
 
 --- Create a structure of type CreateResourceRequest
--- &lt;p&gt;Requests Amazon API Gateway to create a &lt;a&gt;Resource&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; for the resource. &lt;/p&gt;
--- @param pathPart [String] &lt;p&gt;The last path segment for this resource.&lt;/p&gt;
--- @param parentId [String] &lt;p&gt;The parent resource's identifier.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to create a <a>Resource</a> resource.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> for the resource. </p>
+-- @param pathPart [String] <p>The last path segment for this resource.</p>
+-- @param parentId [String] <p>The parent resource's identifier.</p>
 -- Required parameter: restApiId
 -- Required parameter: parentId
 -- Required parameter: pathPart
@@ -107,10 +107,10 @@ function M.AssertUpdateStageRequest(struct)
 end
 
 --- Create a structure of type UpdateStageRequest
--- &lt;p&gt;Requests Amazon API Gateway to change information about a &lt;a&gt;Stage&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; resource for the &lt;a&gt;Stage&lt;/a&gt; resource to change information about.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The name of the &lt;a&gt;Stage&lt;/a&gt; resource to change information about.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to change information about a <a>Stage</a> resource.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to change information about.</p>
+-- @param stageName [String] <p>The name of the <a>Stage</a> resource to change information about.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 function M.UpdateStageRequest(restApiId, stageName, patchOperations, ...)
@@ -186,9 +186,9 @@ function M.AssertClientCertificates(struct)
 end
 
 --- Create a structure of type ClientCertificates
--- &lt;p&gt;Represents a collection of &lt;a&gt;ClientCertificate&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html&quot;&gt;Use Client-Side Certificate&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Represents a collection of &lt;a&gt;ClientCertificate&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html&quot;&gt;Use Client-Side Certificate&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfClientCertificate] &lt;p&gt;The current page of any &lt;a&gt;ClientCertificate&lt;/a&gt; resources in the collection of &lt;a&gt;ClientCertificate&lt;/a&gt; resources.&lt;/p&gt;
+-- <p>Represents a collection of <a>ClientCertificate</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
+-- @param position [String] <p>Represents a collection of <a>ClientCertificate</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
+-- @param items [ListOfClientCertificate] <p>The current page of any <a>ClientCertificate</a> resources in the collection of <a>ClientCertificate</a> resources.</p>
 function M.ClientCertificates(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClientCertificates")
 	local t = { 
@@ -236,9 +236,9 @@ function M.AssertGetApiKeyRequest(struct)
 end
 
 --- Create a structure of type GetApiKeyRequest
--- &lt;p&gt;A request to get information about the current &lt;a&gt;ApiKey&lt;/a&gt; resource.&lt;/p&gt;
--- @param apiKey [String] &lt;p&gt;The identifier of the &lt;a&gt;ApiKey&lt;/a&gt; resource.&lt;/p&gt;
--- @param includeValue [NullableBoolean] &lt;p&gt;A boolean flag to specify whether (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;) the result contains the key value.&lt;/p&gt;
+-- <p>A request to get information about the current <a>ApiKey</a> resource.</p>
+-- @param apiKey [String] <p>The identifier of the <a>ApiKey</a> resource.</p>
+-- @param includeValue [NullableBoolean] <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains the key value.</p>
 -- Required parameter: apiKey
 function M.GetApiKeyRequest(apiKey, includeValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetApiKeyRequest")
@@ -262,8 +262,8 @@ function M.AssertTemplate(struct)
 end
 
 --- Create a structure of type Template
--- &lt;p&gt;Represents a mapping template used to transform a payload.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-mappings&quot;&gt;Mapping Templates&lt;/a&gt; &lt;/div&gt;
--- @param value [String] &lt;p&gt;The Apache &lt;a href=&quot;http://velocity.apache.org/engine/devel/vtl-reference-guide.html&quot; target=&quot;_blank&quot;&gt;Velocity Template Language (VTL)&lt;/a&gt; template content used for the template resource.&lt;/p&gt;
+-- <p>Represents a mapping template used to transform a payload.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-mappings">Mapping Templates</a> </div>
+-- @param value [String] <p>The Apache <a href="http://velocity.apache.org/engine/devel/vtl-reference-guide.html" target="_blank">Velocity Template Language (VTL)</a> template content used for the template resource.</p>
 function M.Template(value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Template")
 	local t = { 
@@ -285,8 +285,8 @@ function M.AssertGenerateClientCertificateRequest(struct)
 end
 
 --- Create a structure of type GenerateClientCertificateRequest
--- &lt;p&gt;A request to generate a &lt;a&gt;ClientCertificate&lt;/a&gt; resource.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of the &lt;a&gt;ClientCertificate&lt;/a&gt;.&lt;/p&gt;
+-- <p>A request to generate a <a>ClientCertificate</a> resource.</p>
+-- @param description [String] <p>The description of the <a>ClientCertificate</a>.</p>
 function M.GenerateClientCertificateRequest(description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GenerateClientCertificateRequest")
 	local t = { 
@@ -309,9 +309,9 @@ function M.AssertResources(struct)
 end
 
 --- Create a structure of type Resources
--- &lt;p&gt;Represents a collection of &lt;a&gt;Resource&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html&quot;&gt;Create an API&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Represents a collection of &lt;a&gt;Resource&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html&quot;&gt;Create an API&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfResource] &lt;p&gt;Gets the current &lt;a&gt;Resource&lt;/a&gt; resource in the collection.&lt;/p&gt;
+-- <p>Represents a collection of <a>Resource</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
+-- @param position [String] <p>Represents a collection of <a>Resource</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
+-- @param items [ListOfResource] <p>Gets the current <a>Resource</a> resource in the collection.</p>
 function M.Resources(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Resources")
 	local t = { 
@@ -335,8 +335,8 @@ function M.AssertGetDomainNameRequest(struct)
 end
 
 --- Create a structure of type GetDomainNameRequest
--- &lt;p&gt;Request to get the name of a &lt;a&gt;DomainName&lt;/a&gt; resource.&lt;/p&gt;
--- @param domainName [String] &lt;p&gt;The name of the &lt;a&gt;DomainName&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>Request to get the name of a <a>DomainName</a> resource.</p>
+-- @param domainName [String] <p>The name of the <a>DomainName</a> resource.</p>
 -- Required parameter: domainName
 function M.GetDomainNameRequest(domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainNameRequest")
@@ -372,17 +372,17 @@ function M.AssertPutMethodRequest(struct)
 end
 
 --- Create a structure of type PutMethodRequest
--- &lt;p&gt;Request to add a method to an existing &lt;a&gt;Resource&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the new &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param requestParameters [MapOfStringToBoolean] &lt;p&gt;A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key defines a method request parameter name matching the pattern of &lt;code&gt;method.request.{location}.{name}&lt;/code&gt;, where &lt;code&gt;location&lt;/code&gt; is &lt;code&gt;querystring&lt;/code&gt;, &lt;code&gt;path&lt;/code&gt;, or &lt;code&gt;header&lt;/code&gt; and &lt;code&gt;name&lt;/code&gt; is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (&lt;code&gt;true&lt;/code&gt;) or optional (&lt;code&gt;false&lt;/code&gt;). The method request parameter names defined here are available in &lt;a&gt;Integration&lt;/a&gt; to be mapped to integration request parameters or body-mapping templates.&lt;/p&gt;
--- @param requestModels [MapOfStringToString] &lt;p&gt;Specifies the &lt;a&gt;Model&lt;/a&gt; resources used for the request's content type. Request models are represented as a key/value map, with a content type as the key and a &lt;a&gt;Model&lt;/a&gt; name as the value.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The &lt;a&gt;Resource&lt;/a&gt; identifier for the new &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param authorizationType [String] &lt;p&gt;The method's authorization type. Valid values are &lt;code&gt;NONE&lt;/code&gt; for open access, &lt;code&gt;AWS_IAM&lt;/code&gt; for using AWS IAM permissions, &lt;code&gt;CUSTOM&lt;/code&gt; for using a custom authorizer, or &lt;code&gt;COGNITO_USER_POOLS&lt;/code&gt; for using a Cognito user pool.&lt;/p&gt;
--- @param operationName [String] &lt;p&gt;A human-friendly operation identifier for the method. For example, you can assign the &lt;code&gt;operationName&lt;/code&gt; of &lt;code&gt;ListPets&lt;/code&gt; for the &lt;code&gt;GET /pets&lt;/code&gt; method in &lt;a href=&quot;http://petstore-demo-endpoint.execute-api.com/petstore/pets&quot;&gt;PetStore&lt;/a&gt; example.&lt;/p&gt;
--- @param apiKeyRequired [Boolean] &lt;p&gt;Specifies whether the method required a valid &lt;a&gt;ApiKey&lt;/a&gt;.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies the method request's HTTP method type.&lt;/p&gt;
--- @param requestValidatorId [String] &lt;p&gt;The identifier of a &lt;a&gt;RequestValidator&lt;/a&gt; for validating the method request.&lt;/p&gt;
--- @param authorizerId [String] &lt;p&gt;Specifies the identifier of an &lt;a&gt;Authorizer&lt;/a&gt; to use on this Method, if the type is CUSTOM.&lt;/p&gt;
+-- <p>Request to add a method to an existing <a>Resource</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the new <a>Method</a> resource.</p>
+-- @param requestParameters [MapOfStringToBoolean] <p>A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key defines a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or body-mapping templates.</p>
+-- @param requestModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the request's content type. Request models are represented as a key/value map, with a content type as the key and a <a>Model</a> name as the value.</p>
+-- @param resourceId [String] <p>The <a>Resource</a> identifier for the new <a>Method</a> resource.</p>
+-- @param authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
+-- @param operationName [String] <p>A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.</p>
+-- @param apiKeyRequired [Boolean] <p>Specifies whether the method required a valid <a>ApiKey</a>.</p>
+-- @param httpMethod [String] <p>Specifies the method request's HTTP method type.</p>
+-- @param requestValidatorId [String] <p>The identifier of a <a>RequestValidator</a> for validating the method request.</p>
+-- @param authorizerId [String] <p>Specifies the identifier of an <a>Authorizer</a> to use on this Method, if the type is CUSTOM.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -419,10 +419,10 @@ function M.AssertDocumentationPart(struct)
 end
 
 --- Create a structure of type DocumentationPart
--- &lt;p&gt;A documentation part for a targeted API entity.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p&gt;A documentation part consists of a content map (&lt;code&gt;properties&lt;/code&gt;) and a target (&lt;code&gt;location&lt;/code&gt;). The target specifies an API entity to which the documentation content applies. The supported API entity types are &lt;code&gt;API&lt;/code&gt;, &lt;code&gt;AUTHORIZER&lt;/code&gt;, &lt;code&gt;MODEL&lt;/code&gt;, &lt;code&gt;RESOURCE&lt;/code&gt;, &lt;code&gt;METHOD&lt;/code&gt;, &lt;code&gt;PATH_PARAMETER&lt;/code&gt;, &lt;code&gt;QUERY_PARAMETER&lt;/code&gt;, &lt;code&gt;REQUEST_HEADER&lt;/code&gt;, &lt;code&gt;REQUEST_BODY&lt;/code&gt;, &lt;code&gt;RESPONSE&lt;/code&gt;, &lt;code&gt;RESPONSE_HEADER&lt;/code&gt;, and &lt;code&gt;RESPONSE_BODY&lt;/code&gt;. Valid &lt;code&gt;location&lt;/code&gt; fields depend on the API entity type. All valid fields are not required.&lt;/p&gt; &lt;p&gt;The content map is a JSON string of API-specific key-value pairs. Although an API can use any shape for the content map, only the Swagger-compliant documentation fields will be injected into the associated API entity definition in the exported Swagger definition file.&lt;/p&gt;&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html&quot;&gt;Documenting an API&lt;/a&gt;, &lt;a&gt;DocumentationParts&lt;/a&gt; &lt;/div&gt;
--- @param properties [String] &lt;p&gt;A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., &lt;code&gt;&quot;{ \&quot;description\&quot;: \&quot;The API does ...\&quot; }&quot;&lt;/code&gt;. Only Swagger-compliant documentation-related fields from the &lt;literal&gt;properties&lt;/literal&gt; map are exported and, hence, published as part of the API entity definitions, while the original documentation parts are exported in a Swagger extension of &lt;code&gt;x-amazon-apigateway-documentation&lt;/code&gt;.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The &lt;a&gt;DocumentationPart&lt;/a&gt; identifier, generated by Amazon API Gateway when the &lt;code&gt;DocumentationPart&lt;/code&gt; is created.&lt;/p&gt;
--- @param location [DocumentationPartLocation] &lt;p&gt;The location of the API entity to which the documentation applies. Valid fields depend on the targeted API entity type. All the valid location fields are not required. If not explicitly specified, a valid location field is treated as a wildcard and associated documentation content may be inherited by matching entities, unless overridden.&lt;/p&gt;
+-- <p>A documentation part for a targeted API entity.</p> <div class="remarks"> <p>A documentation part consists of a content map (<code>properties</code>) and a target (<code>location</code>). The target specifies an API entity to which the documentation content applies. The supported API entity types are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Valid <code>location</code> fields depend on the API entity type. All valid fields are not required.</p> <p>The content map is a JSON string of API-specific key-value pairs. Although an API can use any shape for the content map, only the Swagger-compliant documentation fields will be injected into the associated API entity definition in the exported Swagger definition file.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationParts</a> </div>
+-- @param properties [String] <p>A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., <code>"{ \"description\": \"The API does ...\" }"</code>. Only Swagger-compliant documentation-related fields from the <literal>properties</literal> map are exported and, hence, published as part of the API entity definitions, while the original documentation parts are exported in a Swagger extension of <code>x-amazon-apigateway-documentation</code>.</p>
+-- @param id [String] <p>The <a>DocumentationPart</a> identifier, generated by Amazon API Gateway when the <code>DocumentationPart</code> is created.</p>
+-- @param location [DocumentationPartLocation] <p>The location of the API entity to which the documentation applies. Valid fields depend on the targeted API entity type. All the valid location fields are not required. If not explicitly specified, a valid location field is treated as a wildcard and associated documentation content may be inherited by matching entities, unless overridden.</p>
 function M.DocumentationPart(properties, id, location, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationPart")
 	local t = { 
@@ -452,14 +452,14 @@ function M.AssertTestInvokeAuthorizerResponse(struct)
 end
 
 --- Create a structure of type TestInvokeAuthorizerResponse
--- &lt;p&gt;Represents the response of the test invoke request for a custom &lt;a&gt;Authorizer&lt;/a&gt;&lt;/p&gt;
--- @param latency [Long] &lt;p&gt;The execution latency of the test authorizer request.&lt;/p&gt;
--- @param log [String] &lt;p&gt;The Amazon API Gateway execution log for the test authorizer request.&lt;/p&gt;
--- @param principalId [String] &lt;p&gt;The principal identity returned by the &lt;a&gt;Authorizer&lt;/a&gt;&lt;/p&gt;
--- @param policy [String] &lt;p&gt;The JSON policy document returned by the &lt;a&gt;Authorizer&lt;/a&gt;&lt;/p&gt;
--- @param claims [MapOfStringToString] &lt;p&gt;The &lt;a href=&quot;http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims&quot;&gt;open identity claims&lt;/a&gt;, with any supported custom attributes, returned from the Cognito Your User Pool configured for the API.&lt;/p&gt;
--- @param authorization [MapOfStringToList] &lt;p&gt;Represents the response of the test invoke request for a custom &lt;a&gt;Authorizer&lt;/a&gt;&lt;/p&gt;
--- @param clientStatus [Integer] &lt;p&gt;The HTTP status code that the client would have received. Value is 0 if the authorizer succeeded.&lt;/p&gt;
+-- <p>Represents the response of the test invoke request for a custom <a>Authorizer</a></p>
+-- @param latency [Long] <p>The execution latency of the test authorizer request.</p>
+-- @param log [String] <p>The Amazon API Gateway execution log for the test authorizer request.</p>
+-- @param principalId [String] <p>The principal identity returned by the <a>Authorizer</a></p>
+-- @param policy [String] <p>The JSON policy document returned by the <a>Authorizer</a></p>
+-- @param claims [MapOfStringToString] <p>The <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">open identity claims</a>, with any supported custom attributes, returned from the Cognito Your User Pool configured for the API.</p>
+-- @param authorization [MapOfStringToList] <p>Represents the response of the test invoke request for a custom <a>Authorizer</a></p>
+-- @param clientStatus [Integer] <p>The HTTP status code that the client would have received. Value is 0 if the authorizer succeeded.</p>
 function M.TestInvokeAuthorizerResponse(latency, log, principalId, policy, claims, authorization, clientStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestInvokeAuthorizerResponse")
 	local t = { 
@@ -488,8 +488,8 @@ function M.AssertGetClientCertificateRequest(struct)
 end
 
 --- Create a structure of type GetClientCertificateRequest
--- &lt;p&gt;A request to get information about the current &lt;a&gt;ClientCertificate&lt;/a&gt; resource.&lt;/p&gt;
--- @param clientCertificateId [String] &lt;p&gt;The identifier of the &lt;a&gt;ClientCertificate&lt;/a&gt; resource to be described.&lt;/p&gt;
+-- <p>A request to get information about the current <a>ClientCertificate</a> resource.</p>
+-- @param clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be described.</p>
 -- Required parameter: clientCertificateId
 function M.GetClientCertificateRequest(clientCertificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetClientCertificateRequest")
@@ -517,10 +517,10 @@ function M.AssertGetIntegrationRequest(struct)
 end
 
 --- Create a structure of type GetIntegrationRequest
--- &lt;p&gt;Represents a get integration request.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;Specifies a get integration request's resource identifier&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;Specifies a get integration request's API identifier.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies a get integration request's HTTP method.&lt;/p&gt;
+-- <p>Represents a get integration request.</p>
+-- @param resourceId [String] <p>Specifies a get integration request's resource identifier</p>
+-- @param restApiId [String] <p>Specifies a get integration request's API identifier.</p>
+-- @param httpMethod [String] <p>Specifies a get integration request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -549,10 +549,10 @@ function M.AssertSdkResponse(struct)
 end
 
 --- Create a structure of type SdkResponse
--- &lt;p&gt;The binary blob response to &lt;a&gt;GetSdk&lt;/a&gt;, which contains the generated SDK.&lt;/p&gt;
--- @param body [Blob] &lt;p&gt;The binary blob response to &lt;a&gt;GetSdk&lt;/a&gt;, which contains the generated SDK.&lt;/p&gt;
--- @param contentType [String] &lt;p&gt;The content-type header value in the HTTP response.&lt;/p&gt;
--- @param contentDisposition [String] &lt;p&gt;The content-disposition header value in the HTTP response.&lt;/p&gt;
+-- <p>The binary blob response to <a>GetSdk</a>, which contains the generated SDK.</p>
+-- @param body [Blob] <p>The binary blob response to <a>GetSdk</a>, which contains the generated SDK.</p>
+-- @param contentType [String] <p>The content-type header value in the HTTP response.</p>
+-- @param contentDisposition [String] <p>The content-disposition header value in the HTTP response.</p>
 function M.SdkResponse(body, contentType, contentDisposition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SdkResponse")
 	local t = { 
@@ -579,11 +579,11 @@ function M.AssertAccount(struct)
 end
 
 --- Create a structure of type Account
--- &lt;p&gt;Represents an AWS account that is associated with Amazon API Gateway.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p&gt;To view the account info, call &lt;code&gt;GET&lt;/code&gt; on this resource.&lt;/p&gt; &lt;h4&gt;Error Codes&lt;/h4&gt; &lt;p&gt;The following exception may be thrown when the request fails.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;UnauthorizedException&lt;/li&gt; &lt;li&gt;NotFoundException&lt;/li&gt; &lt;li&gt;TooManyRequestsException&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For detailed error code information, including the corresponding HTTP Status Codes, see &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/api-reference/handling-errors/#api-error-codes&quot;&gt;API Gateway Error Codes&lt;/a&gt;&lt;/p&gt; &lt;h4&gt;Example: Get the information about an account.&lt;/h4&gt; &lt;h5&gt;Request&lt;/h5&gt; &lt;pre&gt;&lt;code&gt;GET /account HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160531T184618Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} &lt;/code&gt;&lt;/pre&gt; &lt;h5&gt;Response&lt;/h5&gt; &lt;p&gt;The successful response returns a &lt;code&gt;200 OK&lt;/code&gt; status code and a payload similar to the following:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{ &quot;_links&quot;: { &quot;curies&quot;: { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/account-apigateway-{rel}.html&quot;, &quot;name&quot;: &quot;account&quot;, &quot;templated&quot;: true }, &quot;self&quot;: { &quot;href&quot;: &quot;/account&quot; }, &quot;account:update&quot;: { &quot;href&quot;: &quot;/account&quot; } }, &quot;cloudwatchRoleArn&quot;: &quot;arn:aws:iam::123456789012:role/apigAwsProxyRole&quot;, &quot;throttleSettings&quot;: { &quot;rateLimit&quot;: 500, &quot;burstLimit&quot;: 1000 } } &lt;/code&gt;&lt;/pre&gt; &lt;p&gt;In addition to making the REST API call directly, you can use the AWS CLI and an AWS SDK to access this resource.&lt;/p&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-limits.html&quot;&gt;API Gateway Limits&lt;/a&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html&quot;&gt;Developer Guide&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html&quot;&gt;AWS CLI&lt;/a&gt; &lt;/div&gt;
--- @param cloudwatchRoleArn [String] &lt;p&gt;The ARN of an Amazon CloudWatch role for the current &lt;a&gt;Account&lt;/a&gt;. &lt;/p&gt;
--- @param throttleSettings [ThrottleSettings] &lt;p&gt;Specifies the API request limits configured for the current &lt;a&gt;Account&lt;/a&gt;.&lt;/p&gt;
--- @param features [ListOfString] &lt;p&gt;A list of features supported for the account. When usage plans are enabled, the features list will include an entry of &lt;code&gt;&quot;UsagePlans&quot;&lt;/code&gt;.&lt;/p&gt;
--- @param apiKeyVersion [String] &lt;p&gt;The version of the API keys used for the account.&lt;/p&gt;
+-- <p>Represents an AWS account that is associated with Amazon API Gateway.</p> <div class="remarks"> <p>To view the account info, call <code>GET</code> on this resource.</p> <h4>Error Codes</h4> <p>The following exception may be thrown when the request fails.</p> <ul> <li>UnauthorizedException</li> <li>NotFoundException</li> <li>TooManyRequestsException</li> </ul> <p>For detailed error code information, including the corresponding HTTP Status Codes, see <a href="http://docs.aws.amazon.com/apigateway/api-reference/handling-errors/#api-error-codes">API Gateway Error Codes</a></p> <h4>Example: Get the information about an account.</h4> <h5>Request</h5> <pre><code>GET /account HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160531T184618Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} </code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/account-apigateway-{rel}.html", "name": "account", "templated": true }, "self": { "href": "/account" }, "account:update": { "href": "/account" } }, "cloudwatchRoleArn": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "throttleSettings": { "rateLimit": 500, "burstLimit": 1000 } } </code></pre> <p>In addition to making the REST API call directly, you can use the AWS CLI and an AWS SDK to access this resource.</p> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-limits.html">API Gateway Limits</a> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html">Developer Guide</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html">AWS CLI</a> </div>
+-- @param cloudwatchRoleArn [String] <p>The ARN of an Amazon CloudWatch role for the current <a>Account</a>. </p>
+-- @param throttleSettings [ThrottleSettings] <p>Specifies the API request limits configured for the current <a>Account</a>.</p>
+-- @param features [ListOfString] <p>A list of features supported for the account. When usage plans are enabled, the features list will include an entry of <code>"UsagePlans"</code>.</p>
+-- @param apiKeyVersion [String] <p>The version of the API keys used for the account.</p>
 function M.Account(cloudwatchRoleArn, throttleSettings, features, apiKeyVersion, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Account")
 	local t = { 
@@ -612,10 +612,10 @@ function M.AssertUpdateBasePathMappingRequest(struct)
 end
 
 --- Create a structure of type UpdateBasePathMappingRequest
--- &lt;p&gt;A request to change information about the &lt;a&gt;BasePathMapping&lt;/a&gt; resource.&lt;/p&gt;
--- @param basePath [String] &lt;p&gt;The base path of the &lt;a&gt;BasePathMapping&lt;/a&gt; resource to change.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
--- @param domainName [String] &lt;p&gt;The domain name of the &lt;a&gt;BasePathMapping&lt;/a&gt; resource to change.&lt;/p&gt;
+-- <p>A request to change information about the <a>BasePathMapping</a> resource.</p>
+-- @param basePath [String] <p>The base path of the <a>BasePathMapping</a> resource to change.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to change.</p>
 -- Required parameter: domainName
 -- Required parameter: basePath
 function M.UpdateBasePathMappingRequest(basePath, patchOperations, domainName, ...)
@@ -643,9 +643,9 @@ function M.AssertGetStagesRequest(struct)
 end
 
 --- Create a structure of type GetStagesRequest
--- &lt;p&gt;Requests Amazon API Gateway to get information about one or more &lt;a&gt;Stage&lt;/a&gt; resources.&lt;/p&gt;
--- @param deploymentId [String] &lt;p&gt;The stages' deployment identifiers.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The stages' API identifiers.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to get information about one or more <a>Stage</a> resources.</p>
+-- @param deploymentId [String] <p>The stages' deployment identifiers.</p>
+-- @param restApiId [String] <p>The stages' API identifiers.</p>
 -- Required parameter: restApiId
 function M.GetStagesRequest(deploymentId, restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetStagesRequest")
@@ -670,9 +670,9 @@ function M.AssertGetRestApisRequest(struct)
 end
 
 --- Create a structure of type GetRestApisRequest
--- &lt;p&gt;The GET request to list existing &lt;a&gt;RestApis&lt;/a&gt; defined for your collection.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.&lt;/p&gt;
+-- <p>The GET request to list existing <a>RestApis</a> defined for your collection.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 function M.GetRestApisRequest(position, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRestApisRequest")
 	local t = { 
@@ -698,9 +698,9 @@ function M.AssertDeleteDocumentationPartRequest(struct)
 end
 
 --- Create a structure of type DeleteDocumentationPartRequest
--- &lt;p&gt;Deletes an existing documentation part of an API.&lt;/p&gt;
--- @param documentationPartId [String] &lt;p&gt;[Required] The identifier of the to-be-deleted documentation part.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] Specifies the identifier of an API of the to-be-deleted documentation part.&lt;/p&gt;
+-- <p>Deletes an existing documentation part of an API.</p>
+-- @param documentationPartId [String] <p>[Required] The identifier of the to-be-deleted documentation part.</p>
+-- @param restApiId [String] <p>[Required] Specifies the identifier of an API of the to-be-deleted documentation part.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationPartId
 function M.DeleteDocumentationPartRequest(documentationPartId, restApiId, ...)
@@ -728,9 +728,9 @@ function M.AssertGetStageRequest(struct)
 end
 
 --- Create a structure of type GetStageRequest
--- &lt;p&gt;Requests Amazon API Gateway to get information about a &lt;a&gt;Stage&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; resource for the &lt;a&gt;Stage&lt;/a&gt; resource to get information about.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The name of the &lt;a&gt;Stage&lt;/a&gt; resource to get information about.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to get information about a <a>Stage</a> resource.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to get information about.</p>
+-- @param stageName [String] <p>The name of the <a>Stage</a> resource to get information about.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 function M.GetStageRequest(restApiId, stageName, ...)
@@ -756,8 +756,8 @@ function M.AssertDeleteUsagePlanRequest(struct)
 end
 
 --- Create a structure of type DeleteUsagePlanRequest
--- &lt;p&gt;The DELETE request to delete a uasge plan of a given plan Id.&lt;/p&gt;
--- @param usagePlanId [String] &lt;p&gt;The Id of the to-be-deleted usage plan.&lt;/p&gt;
+-- <p>The DELETE request to delete a uasge plan of a given plan Id.</p>
+-- @param usagePlanId [String] <p>The Id of the to-be-deleted usage plan.</p>
 -- Required parameter: usagePlanId
 function M.DeleteUsagePlanRequest(usagePlanId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUsagePlanRequest")
@@ -781,9 +781,9 @@ function M.AssertDeployments(struct)
 end
 
 --- Create a structure of type Deployments
--- &lt;p&gt;Represents a collection resource that contains zero or more references to your existing deployments, and links that guide you on how to interact with your collection. The collection offers a paginated view of the contained deployments.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt;To create a new deployment of a &lt;a&gt;RestApi&lt;/a&gt;, make a &lt;code&gt;POST&lt;/code&gt; request against this resource. To view, update, or delete an existing deployment, make a &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;PATCH&lt;/code&gt;, or &lt;code&gt;DELETE&lt;/code&gt; request, respectively, on a specified &lt;a&gt;Deployment&lt;/a&gt; resource.&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html&quot;&gt;Deploying an API&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html&quot;&gt;AWS CLI&lt;/a&gt;, &lt;a href=&quot;https://aws.amazon.com/tools/&quot;&gt;AWS SDKs&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Represents a collection resource that contains zero or more references to your existing deployments, and links that guide you on how to interact with your collection. The collection offers a paginated view of the contained deployments.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt;To create a new deployment of a &lt;a&gt;RestApi&lt;/a&gt;, make a &lt;code&gt;POST&lt;/code&gt; request against this resource. To view, update, or delete an existing deployment, make a &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;PATCH&lt;/code&gt;, or &lt;code&gt;DELETE&lt;/code&gt; request, respectively, on a specified &lt;a&gt;Deployment&lt;/a&gt; resource.&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html&quot;&gt;Deploying an API&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html&quot;&gt;AWS CLI&lt;/a&gt;, &lt;a href=&quot;https://aws.amazon.com/tools/&quot;&gt;AWS SDKs&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfDeployment] &lt;p&gt;The current page of any &lt;a&gt;Deployment&lt;/a&gt; resources in the collection of deployment resources.&lt;/p&gt;
+-- <p>Represents a collection resource that contains zero or more references to your existing deployments, and links that guide you on how to interact with your collection. The collection offers a paginated view of the contained deployments.</p> <div class="remarks">To create a new deployment of a <a>RestApi</a>, make a <code>POST</code> request against this resource. To view, update, or delete an existing deployment, make a <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> request, respectively, on a specified <a>Deployment</a> resource.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploying an API</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
+-- @param position [String] <p>Represents a collection resource that contains zero or more references to your existing deployments, and links that guide you on how to interact with your collection. The collection offers a paginated view of the contained deployments.</p> <div class="remarks">To create a new deployment of a <a>RestApi</a>, make a <code>POST</code> request against this resource. To view, update, or delete an existing deployment, make a <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> request, respectively, on a specified <a>Deployment</a> resource.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploying an API</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
+-- @param items [ListOfDeployment] <p>The current page of any <a>Deployment</a> resources in the collection of deployment resources.</p>
 function M.Deployments(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Deployments")
 	local t = { 
@@ -808,10 +808,10 @@ function M.AssertApiKeys(struct)
 end
 
 --- Create a structure of type ApiKeys
--- &lt;p&gt;Represents a collection of API keys as represented by an &lt;a&gt;ApiKeys&lt;/a&gt; resource.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html&quot;&gt;Use API Keys&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Represents a collection of API keys as represented by an &lt;a&gt;ApiKeys&lt;/a&gt; resource.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html&quot;&gt;Use API Keys&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfApiKey] &lt;p&gt;The current page of any &lt;a&gt;ApiKey&lt;/a&gt; resources in the collection of &lt;a&gt;ApiKey&lt;/a&gt; resources.&lt;/p&gt;
--- @param warnings [ListOfString] &lt;p&gt;A list of warning messages logged during the import of API keys when the &lt;code&gt;failOnWarnings&lt;/code&gt; option is set to true.&lt;/p&gt;
+-- <p>Represents a collection of API keys as represented by an <a>ApiKeys</a> resource.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
+-- @param position [String] <p>Represents a collection of API keys as represented by an <a>ApiKeys</a> resource.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
+-- @param items [ListOfApiKey] <p>The current page of any <a>ApiKey</a> resources in the collection of <a>ApiKey</a> resources.</p>
+-- @param warnings [ListOfString] <p>A list of warning messages logged during the import of API keys when the <code>failOnWarnings</code> option is set to true.</p>
 function M.ApiKeys(position, items, warnings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApiKeys")
 	local t = { 
@@ -838,10 +838,10 @@ function M.AssertImportRestApiRequest(struct)
 end
 
 --- Create a structure of type ImportRestApiRequest
--- &lt;p&gt;A POST request to import an API to Amazon API Gateway using an input of an API definition file.&lt;/p&gt;
--- @param body [Blob] &lt;p&gt;The POST request body containing external API definitions. Currently, only Swagger definition JSON files are supported.&lt;/p&gt;
--- @param failOnWarnings [Boolean] &lt;p&gt;A query parameter to indicate whether to rollback the API creation (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;) when a warning is encountered. The default value is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param parameters [MapOfStringToString] &lt;p&gt;Custom header parameters as part of the request.&lt;/p&gt;
+-- <p>A POST request to import an API to Amazon API Gateway using an input of an API definition file.</p>
+-- @param body [Blob] <p>The POST request body containing external API definitions. Currently, only Swagger definition JSON files are supported.</p>
+-- @param failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback the API creation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
+-- @param parameters [MapOfStringToString] <p>Custom header parameters as part of the request.</p>
 -- Required parameter: body
 function M.ImportRestApiRequest(body, failOnWarnings, parameters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportRestApiRequest")
@@ -868,9 +868,9 @@ function M.AssertUpdateDomainNameRequest(struct)
 end
 
 --- Create a structure of type UpdateDomainNameRequest
--- &lt;p&gt;A request to change information about the &lt;a&gt;DomainName&lt;/a&gt; resource.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
--- @param domainName [String] &lt;p&gt;The name of the &lt;a&gt;DomainName&lt;/a&gt; resource to be changed.&lt;/p&gt;
+-- <p>A request to change information about the <a>DomainName</a> resource.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param domainName [String] <p>The name of the <a>DomainName</a> resource to be changed.</p>
 -- Required parameter: domainName
 function M.UpdateDomainNameRequest(patchOperations, domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainNameRequest")
@@ -898,11 +898,11 @@ function M.AssertCreateRequestValidatorRequest(struct)
 end
 
 --- Create a structure of type CreateRequestValidatorRequest
--- &lt;p&gt;Creates a &lt;a&gt;RequestValidator&lt;/a&gt; of a given &lt;a&gt;RestApi&lt;/a&gt;.&lt;/p&gt;
--- @param validateRequestParameters [Boolean] &lt;p&gt;A Boolean flag to indicate whether to validate request parameters, &lt;code&gt;true&lt;/code&gt;, or not &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param validateRequestBody [Boolean] &lt;p&gt;A Boolean flag to indicate whether to validate request body according to the configured model schema for the method (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;).&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of the &lt;a&gt;RestApi&lt;/a&gt; for which the &lt;a&gt;RequestValidator&lt;/a&gt; is created.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the to-be-created &lt;a&gt;RequestValidator&lt;/a&gt;.&lt;/p&gt;
+-- <p>Creates a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
+-- @param validateRequestParameters [Boolean] <p>A Boolean flag to indicate whether to validate request parameters, <code>true</code>, or not <code>false</code>.</p>
+-- @param validateRequestBody [Boolean] <p>A Boolean flag to indicate whether to validate request body according to the configured model schema for the method (<code>true</code>) or not (<code>false</code>).</p>
+-- @param restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> for which the <a>RequestValidator</a> is created.</p>
+-- @param name [String] <p>The name of the to-be-created <a>RequestValidator</a>.</p>
 -- Required parameter: restApiId
 function M.CreateRequestValidatorRequest(validateRequestParameters, validateRequestBody, restApiId, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRequestValidatorRequest")
@@ -931,9 +931,9 @@ function M.AssertDeleteDeploymentRequest(struct)
 end
 
 --- Create a structure of type DeleteDeploymentRequest
--- &lt;p&gt;Requests Amazon API Gateway to delete a &lt;a&gt;Deployment&lt;/a&gt; resource.&lt;/p&gt;
--- @param deploymentId [String] &lt;p&gt;The identifier of the &lt;a&gt;Deployment&lt;/a&gt; resource to delete.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; resource for the &lt;a&gt;Deployment&lt;/a&gt; resource to delete.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to delete a <a>Deployment</a> resource.</p>
+-- @param deploymentId [String] <p>The identifier of the <a>Deployment</a> resource to delete.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to delete.</p>
 -- Required parameter: restApiId
 -- Required parameter: deploymentId
 function M.DeleteDeploymentRequest(deploymentId, restApiId, ...)
@@ -961,11 +961,11 @@ function M.AssertUsagePlanKey(struct)
 end
 
 --- Create a structure of type UsagePlanKey
--- &lt;p&gt;Represents a usage plan key to identify a plan customer.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p&gt;To associate an API stage with a selected API key in a usage plan, you must create a UsagePlanKey resource to represent the selected &lt;a&gt;ApiKey&lt;/a&gt;.&lt;/p&gt; &lt;/div&gt;&quot; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html&quot;&gt;Create and Use Usage Plans&lt;/a&gt; &lt;/div&gt;
--- @param type [String] &lt;p&gt;The type of a usage plan key. Currently, the valid key type is &lt;code&gt;API_KEY&lt;/code&gt;.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The Id of a usage plan key.&lt;/p&gt;
--- @param value [String] &lt;p&gt;The value of a usage plan key.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of a usage plan key.&lt;/p&gt;
+-- <p>Represents a usage plan key to identify a plan customer.</p> <div class="remarks"> <p>To associate an API stage with a selected API key in a usage plan, you must create a UsagePlanKey resource to represent the selected <a>ApiKey</a>.</p> </div>" <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
+-- @param type [String] <p>The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>.</p>
+-- @param id [String] <p>The Id of a usage plan key.</p>
+-- @param value [String] <p>The value of a usage plan key.</p>
+-- @param name [String] <p>The name of a usage plan key.</p>
 function M.UsagePlanKey(type, id, value, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsagePlanKey")
 	local t = { 
@@ -993,9 +993,9 @@ function M.AssertDeleteStageRequest(struct)
 end
 
 --- Create a structure of type DeleteStageRequest
--- &lt;p&gt;Requests Amazon API Gateway to delete a &lt;a&gt;Stage&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; resource for the &lt;a&gt;Stage&lt;/a&gt; resource to delete.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The name of the &lt;a&gt;Stage&lt;/a&gt; resource to delete.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to delete a <a>Stage</a> resource.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to delete.</p>
+-- @param stageName [String] <p>The name of the <a>Stage</a> resource to delete.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 function M.DeleteStageRequest(restApiId, stageName, ...)
@@ -1027,12 +1027,12 @@ function M.AssertGetExportRequest(struct)
 end
 
 --- Create a structure of type GetExportRequest
--- &lt;p&gt;Request a new export of a &lt;a&gt;RestApi&lt;/a&gt; for a particular &lt;a&gt;Stage&lt;/a&gt;.&lt;/p&gt;
--- @param exportType [String] &lt;p&gt;The type of export. Currently only 'swagger' is supported.&lt;/p&gt;
--- @param accepts [String] &lt;p&gt;The content-type of the export, for example &lt;code&gt;application/json&lt;/code&gt;. Currently &lt;code&gt;application/json&lt;/code&gt; and &lt;code&gt;application/yaml&lt;/code&gt; are supported for &lt;code&gt;exportType&lt;/code&gt; of &lt;code&gt;swagger&lt;/code&gt;. This should be specified in the &lt;code&gt;Accept&lt;/code&gt; header for direct API requests.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; to be exported.&lt;/p&gt;
--- @param parameters [MapOfStringToString] &lt;p&gt;A key-value map of query string parameters that specify properties of the export, depending on the requested &lt;code&gt;exportType&lt;/code&gt;. For &lt;code&gt;exportType&lt;/code&gt; &lt;code&gt;swagger&lt;/code&gt;, any combination of the following parameters are supported: &lt;code&gt;integrations&lt;/code&gt; will export the API with x-amazon-apigateway-integration extensions. &lt;code&gt;authorizers&lt;/code&gt; will export the API with x-amazon-apigateway-authorizer extensions. &lt;code&gt;postman&lt;/code&gt; will export the API with Postman extensions, allowing for import to the Postman tool&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The name of the &lt;a&gt;Stage&lt;/a&gt; that will be exported.&lt;/p&gt;
+-- <p>Request a new export of a <a>RestApi</a> for a particular <a>Stage</a>.</p>
+-- @param exportType [String] <p>The type of export. Currently only 'swagger' is supported.</p>
+-- @param accepts [String] <p>The content-type of the export, for example <code>application/json</code>. Currently <code>application/json</code> and <code>application/yaml</code> are supported for <code>exportType</code> of <code>swagger</code>. This should be specified in the <code>Accept</code> header for direct API requests.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> to be exported.</p>
+-- @param parameters [MapOfStringToString] <p>A key-value map of query string parameters that specify properties of the export, depending on the requested <code>exportType</code>. For <code>exportType</code> <code>swagger</code>, any combination of the following parameters are supported: <code>integrations</code> will export the API with x-amazon-apigateway-integration extensions. <code>authorizers</code> will export the API with x-amazon-apigateway-authorizer extensions. <code>postman</code> will export the API with Postman extensions, allowing for import to the Postman tool</p>
+-- @param stageName [String] <p>The name of the <a>Stage</a> that will be exported.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 -- Required parameter: exportType
@@ -1062,9 +1062,9 @@ function M.AssertGetDomainNamesRequest(struct)
 end
 
 --- Create a structure of type GetDomainNamesRequest
--- &lt;p&gt;Request to describe a collection of &lt;a&gt;DomainName&lt;/a&gt; resources.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.&lt;/p&gt;
+-- <p>Request to describe a collection of <a>DomainName</a> resources.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 function M.GetDomainNamesRequest(position, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainNamesRequest")
 	local t = { 
@@ -1097,15 +1097,15 @@ function M.AssertCreateStageRequest(struct)
 end
 
 --- Create a structure of type CreateStageRequest
--- &lt;p&gt;Requests Amazon API Gateway to create a &lt;a&gt;Stage&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; resource for the &lt;a&gt;Stage&lt;/a&gt; resource to create.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of the &lt;a&gt;Stage&lt;/a&gt; resource.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The name for the &lt;a&gt;Stage&lt;/a&gt; resource.&lt;/p&gt;
--- @param cacheClusterSize [CacheClusterSize] &lt;p&gt;The stage's cache cluster size.&lt;/p&gt;
--- @param variables [MapOfStringToString] &lt;p&gt;A map that defines the stage variables for the new &lt;a&gt;Stage&lt;/a&gt; resource. Variable names can have alphanumeric and underscore characters, and the values must match &lt;code&gt;[A-Za-z0-9-._~:/?#&amp;amp;=,]+&lt;/code&gt;.&lt;/p&gt;
--- @param cacheClusterEnabled [Boolean] &lt;p&gt;Whether cache clustering is enabled for the stage.&lt;/p&gt;
--- @param documentationVersion [String] &lt;p&gt;The version of the associated API documentation.&lt;/p&gt;
--- @param deploymentId [String] &lt;p&gt;The identifier of the &lt;a&gt;Deployment&lt;/a&gt; resource for the &lt;a&gt;Stage&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to create a <a>Stage</a> resource.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Stage</a> resource to create.</p>
+-- @param description [String] <p>The description of the <a>Stage</a> resource.</p>
+-- @param stageName [String] <p>The name for the <a>Stage</a> resource.</p>
+-- @param cacheClusterSize [CacheClusterSize] <p>The stage's cache cluster size.</p>
+-- @param variables [MapOfStringToString] <p>A map that defines the stage variables for the new <a>Stage</a> resource. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
+-- @param cacheClusterEnabled [Boolean] <p>Whether cache clustering is enabled for the stage.</p>
+-- @param documentationVersion [String] <p>The version of the associated API documentation.</p>
+-- @param deploymentId [String] <p>The identifier of the <a>Deployment</a> resource for the <a>Stage</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 -- Required parameter: deploymentId
@@ -1138,9 +1138,9 @@ function M.AssertApiKeyIds(struct)
 end
 
 --- Create a structure of type ApiKeyIds
--- &lt;p&gt;The identifier of an &lt;a&gt;ApiKey&lt;/a&gt; used in a &lt;a&gt;UsagePlan&lt;/a&gt;.&lt;/p&gt;
--- @param ids [ListOfString] &lt;p&gt;A list of all the &lt;a&gt;ApiKey&lt;/a&gt; identifiers.&lt;/p&gt;
--- @param warnings [ListOfString] &lt;p&gt;A list of warning messages.&lt;/p&gt;
+-- <p>The identifier of an <a>ApiKey</a> used in a <a>UsagePlan</a>.</p>
+-- @param ids [ListOfString] <p>A list of all the <a>ApiKey</a> identifiers.</p>
+-- @param warnings [ListOfString] <p>A list of warning messages.</p>
 function M.ApiKeyIds(ids, warnings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApiKeyIds")
 	local t = { 
@@ -1170,11 +1170,11 @@ function M.AssertGetMethodResponseRequest(struct)
 end
 
 --- Create a structure of type GetMethodResponseRequest
--- &lt;p&gt;Request to describe a &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The &lt;a&gt;Resource&lt;/a&gt; identifier for the &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param statusCode [StatusCode] &lt;p&gt;The status code for the &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;The HTTP verb of the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>Request to describe a <a>MethodResponse</a> resource.</p>
+-- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param statusCode [StatusCode] <p>The status code for the <a>MethodResponse</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -1205,9 +1205,9 @@ function M.AssertUpdateClientCertificateRequest(struct)
 end
 
 --- Create a structure of type UpdateClientCertificateRequest
--- &lt;p&gt;A request to change information about an &lt;a&gt;ClientCertificate&lt;/a&gt; resource.&lt;/p&gt;
--- @param clientCertificateId [String] &lt;p&gt;The identifier of the &lt;a&gt;ClientCertificate&lt;/a&gt; resource to be updated.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>A request to change information about an <a>ClientCertificate</a> resource.</p>
+-- @param clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be updated.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: clientCertificateId
 function M.UpdateClientCertificateRequest(clientCertificateId, patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateClientCertificateRequest")
@@ -1232,8 +1232,8 @@ function M.AssertDeleteDomainNameRequest(struct)
 end
 
 --- Create a structure of type DeleteDomainNameRequest
--- &lt;p&gt;A request to delete the &lt;a&gt;DomainName&lt;/a&gt; resource.&lt;/p&gt;
--- @param domainName [String] &lt;p&gt;The name of the &lt;a&gt;DomainName&lt;/a&gt; resource to be deleted.&lt;/p&gt;
+-- <p>A request to delete the <a>DomainName</a> resource.</p>
+-- @param domainName [String] <p>The name of the <a>DomainName</a> resource to be deleted.</p>
 -- Required parameter: domainName
 function M.DeleteDomainNameRequest(domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainNameRequest")
@@ -1259,9 +1259,9 @@ function M.AssertDeleteModelRequest(struct)
 end
 
 --- Create a structure of type DeleteModelRequest
--- &lt;p&gt;Request to delete an existing model in an existing &lt;a&gt;RestApi&lt;/a&gt; resource.&lt;/p&gt;
--- @param modelName [String] &lt;p&gt;The name of the model to delete.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; under which the model will be deleted.&lt;/p&gt;
+-- <p>Request to delete an existing model in an existing <a>RestApi</a> resource.</p>
+-- @param modelName [String] <p>The name of the model to delete.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> under which the model will be deleted.</p>
 -- Required parameter: restApiId
 -- Required parameter: modelName
 function M.DeleteModelRequest(modelName, restApiId, ...)
@@ -1295,17 +1295,17 @@ function M.AssertAuthorizer(struct)
 end
 
 --- Create a structure of type Authorizer
--- &lt;p&gt;Represents an authorization layer for methods. If enabled on a method, API Gateway will activate the authorizer when a client calls the method.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html&quot;&gt;Enable custom authorization&lt;/a&gt; &lt;/div&gt;
--- @param authType [String] &lt;p&gt;Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.&lt;/p&gt;
--- @param name [String] &lt;p&gt;[Required] The name of the authorizer.&lt;/p&gt;
--- @param providerARNs [ListOfARNs] &lt;p&gt;A list of the provider ARNs of the authorizer. For an &lt;code&gt;TOKEN&lt;/code&gt; authorizer, this is not defined. For authorizers of the &lt;code&gt;COGNITO_USER_POOLS&lt;/code&gt; type, each element corresponds to a user pool ARN of this format: &lt;code&gt;arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}&lt;/code&gt;. &lt;/p&gt;
--- @param authorizerUri [String] &lt;p&gt;[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For &lt;code&gt;TOKEN&lt;/code&gt; authorizers, this must be a well-formed Lambda function URI, for example, &lt;code&gt;arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations&lt;/code&gt;. In general, the URI has this form &lt;code&gt;arn:aws:apigateway:{region}:lambda:path/{service_api}&lt;/code&gt;, where &lt;code&gt;{region}&lt;/code&gt; is the same as the region hosting the Lambda function, &lt;code&gt;path&lt;/code&gt; indicates that the remaining substring in the URI should be treated as the path to the resource, including the initial &lt;code&gt;/&lt;/code&gt;. For Lambda functions, this is usually of the form /2015-03-31/functions/[FunctionARN]/invocations.&lt;/p&gt;
--- @param identityValidationExpression [String] &lt;p&gt;A validation expression for the incoming identity. For &lt;code&gt;TOKEN&lt;/code&gt; authorizers, this value should be a regular expression. The incoming token from the client is matched against this expression, and will proceed if the token matches. If the token doesn't match, the client receives a 401 Unauthorized response.&lt;/p&gt;
--- @param authorizerResultTtlInSeconds [NullableInteger] &lt;p&gt;The TTL in seconds of cached authorizer results. If greater than 0, API Gateway will cache authorizer responses. If this field is not set, the default value is 300. The maximum value is 3600, or 1 hour.&lt;/p&gt;
--- @param authorizerCredentials [String] &lt;p&gt;Specifies the credentials required for the authorizer, if any. Two options are available. To specify an IAM role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null.&lt;/p&gt;
--- @param identitySource [String] &lt;p&gt;[Required] The source of the identity in an incoming request. For a &lt;code&gt;TOKEN&lt;/code&gt; authorizer, this value is a mapping expression with the same syntax as integration parameter mappings. The only valid source for tokens is 'header', so the expression should match 'method.request.header.[headerName]'. The value of the header '[headerName]' will be interpreted as the incoming token. For &lt;code&gt;COGNITO_USER_POOLS&lt;/code&gt; authorizers, this property is used.&lt;/p&gt;
--- @param type [AuthorizerType] &lt;p&gt;[Required] The type of the authorizer. Currently, the valid type is &lt;code&gt;TOKEN&lt;/code&gt; for a Lambda function or &lt;code&gt;COGNITO_USER_POOLS&lt;/code&gt; for an Amazon Cognito user pool.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The identifier for the authorizer resource.&lt;/p&gt;
+-- <p>Represents an authorization layer for methods. If enabled on a method, API Gateway will activate the authorizer when a client calls the method.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
+-- @param authType [String] <p>Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.</p>
+-- @param name [String] <p>[Required] The name of the authorizer.</p>
+-- @param providerARNs [ListOfARNs] <p>A list of the provider ARNs of the authorizer. For an <code>TOKEN</code> authorizer, this is not defined. For authorizers of the <code>COGNITO_USER_POOLS</code> type, each element corresponds to a user pool ARN of this format: <code>arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}</code>. </p>
+-- @param authorizerUri [String] <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI). For <code>TOKEN</code> authorizers, this must be a well-formed Lambda function URI, for example, <code>arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:{account_id}:function:{lambda_function_name}/invocations</code>. In general, the URI has this form <code>arn:aws:apigateway:{region}:lambda:path/{service_api}</code>, where <code>{region}</code> is the same as the region hosting the Lambda function, <code>path</code> indicates that the remaining substring in the URI should be treated as the path to the resource, including the initial <code>/</code>. For Lambda functions, this is usually of the form /2015-03-31/functions/[FunctionARN]/invocations.</p>
+-- @param identityValidationExpression [String] <p>A validation expression for the incoming identity. For <code>TOKEN</code> authorizers, this value should be a regular expression. The incoming token from the client is matched against this expression, and will proceed if the token matches. If the token doesn't match, the client receives a 401 Unauthorized response.</p>
+-- @param authorizerResultTtlInSeconds [NullableInteger] <p>The TTL in seconds of cached authorizer results. If greater than 0, API Gateway will cache authorizer responses. If this field is not set, the default value is 300. The maximum value is 3600, or 1 hour.</p>
+-- @param authorizerCredentials [String] <p>Specifies the credentials required for the authorizer, if any. Two options are available. To specify an IAM role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To use resource-based permissions on the Lambda function, specify null.</p>
+-- @param identitySource [String] <p>[Required] The source of the identity in an incoming request. For a <code>TOKEN</code> authorizer, this value is a mapping expression with the same syntax as integration parameter mappings. The only valid source for tokens is 'header', so the expression should match 'method.request.header.[headerName]'. The value of the header '[headerName]' will be interpreted as the incoming token. For <code>COGNITO_USER_POOLS</code> authorizers, this property is used.</p>
+-- @param type [AuthorizerType] <p>[Required] The type of the authorizer. Currently, the valid type is <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for an Amazon Cognito user pool.</p>
+-- @param id [String] <p>The identifier for the authorizer resource.</p>
 function M.Authorizer(authType, name, providerARNs, authorizerUri, identityValidationExpression, authorizerResultTtlInSeconds, authorizerCredentials, identitySource, type, id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Authorizer")
 	local t = { 
@@ -1341,11 +1341,11 @@ function M.AssertImportDocumentationPartsRequest(struct)
 end
 
 --- Create a structure of type ImportDocumentationPartsRequest
--- &lt;p&gt;Import documentation parts from an external (e.g., Swagger) definition file. &lt;/p&gt;
--- @param body [Blob] &lt;p&gt;[Required] Raw byte array representing the to-be-imported documentation parts. To import from a Swagger file, this is a JSON object.&lt;/p&gt;
--- @param failOnWarnings [Boolean] &lt;p&gt;A query parameter to specify whether to rollback the documentation importation (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;) when a warning is encountered. The default value is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of an API of the to-be-imported documentation parts.&lt;/p&gt;
--- @param mode [PutMode] &lt;p&gt;A query parameter to indicate whether to overwrite (&lt;code&gt;OVERWRITE&lt;/code&gt;) any existing &lt;a&gt;DocumentationParts&lt;/a&gt; definition or to merge (&lt;code&gt;MERGE&lt;/code&gt;) the new definition into the existing one. The default value is &lt;code&gt;MERGE&lt;/code&gt;.&lt;/p&gt;
+-- <p>Import documentation parts from an external (e.g., Swagger) definition file. </p>
+-- @param body [Blob] <p>[Required] Raw byte array representing the to-be-imported documentation parts. To import from a Swagger file, this is a JSON object.</p>
+-- @param failOnWarnings [Boolean] <p>A query parameter to specify whether to rollback the documentation importation (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
+-- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-imported documentation parts.</p>
+-- @param mode [PutMode] <p>A query parameter to indicate whether to overwrite (<code>OVERWRITE</code>) any existing <a>DocumentationParts</a> definition or to merge (<code>MERGE</code>) the new definition into the existing one. The default value is <code>MERGE</code>.</p>
 -- Required parameter: restApiId
 -- Required parameter: body
 function M.ImportDocumentationPartsRequest(body, failOnWarnings, restApiId, mode, ...)
@@ -1376,12 +1376,12 @@ function M.AssertDomainName(struct)
 end
 
 --- Create a structure of type DomainName
--- &lt;p&gt;Represents a domain name that is contained in a simpler, more intuitive URL that can be called.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html&quot;&gt;Use Client-Side Certificate&lt;/a&gt; &lt;/div&gt;
--- @param certificateArn [String] &lt;p&gt;The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.&lt;/p&gt;
--- @param distributionDomainName [String] &lt;p&gt;The domain name of the Amazon CloudFront distribution. For more information, see the &lt;a href=&quot;http://aws.amazon.com/documentation/cloudfront/&quot; target=&quot;_blank&quot;&gt;Amazon CloudFront documentation&lt;/a&gt;.&lt;/p&gt;
--- @param certificateUploadDate [Timestamp] &lt;p&gt;The timestamp when the certificate was uploaded.&lt;/p&gt;
--- @param certificateName [String] &lt;p&gt;The name of the certificate.&lt;/p&gt;
--- @param domainName [String] &lt;p&gt;The name of the &lt;a&gt;DomainName&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>Represents a domain name that is contained in a simpler, more intuitive URL that can be called.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a> </div>
+-- @param certificateArn [String] <p>The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.</p>
+-- @param distributionDomainName [String] <p>The domain name of the Amazon CloudFront distribution. For more information, see the <a href="http://aws.amazon.com/documentation/cloudfront/" target="_blank">Amazon CloudFront documentation</a>.</p>
+-- @param certificateUploadDate [Timestamp] <p>The timestamp when the certificate was uploaded.</p>
+-- @param certificateName [String] <p>The name of the certificate.</p>
+-- @param domainName [String] <p>The name of the <a>DomainName</a> resource.</p>
 function M.DomainName(certificateArn, distributionDomainName, certificateUploadDate, certificateName, domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainName")
 	local t = { 
@@ -1414,14 +1414,14 @@ function M.AssertCreateDeploymentRequest(struct)
 end
 
 --- Create a structure of type CreateDeploymentRequest
--- &lt;p&gt;Requests Amazon API Gateway to create a &lt;a&gt;Deployment&lt;/a&gt; resource.&lt;/p&gt;
--- @param stageDescription [String] &lt;p&gt;The description of the &lt;a&gt;Stage&lt;/a&gt; resource for the &lt;a&gt;Deployment&lt;/a&gt; resource to create.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; resource identifier for the &lt;a&gt;Deployment&lt;/a&gt; resource to create.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description for the &lt;a&gt;Deployment&lt;/a&gt; resource to create.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The name of the &lt;a&gt;Stage&lt;/a&gt; resource for the &lt;a&gt;Deployment&lt;/a&gt; resource to create.&lt;/p&gt;
--- @param cacheClusterSize [CacheClusterSize] &lt;p&gt;Specifies the cache cluster size for the &lt;a&gt;Stage&lt;/a&gt; resource specified in the input, if a cache cluster is enabled.&lt;/p&gt;
--- @param variables [MapOfStringToString] &lt;p&gt;A map that defines the stage variables for the &lt;a&gt;Stage&lt;/a&gt; resource that is associated with the new deployment. Variable names can have alphanumeric and underscore characters, and the values must match &lt;code&gt;[A-Za-z0-9-._~:/?#&amp;amp;=,]+&lt;/code&gt;.&lt;/p&gt;
--- @param cacheClusterEnabled [NullableBoolean] &lt;p&gt;Enables a cache cluster for the &lt;a&gt;Stage&lt;/a&gt; resource specified in the input.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to create a <a>Deployment</a> resource.</p>
+-- @param stageDescription [String] <p>The description of the <a>Stage</a> resource for the <a>Deployment</a> resource to create.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> resource identifier for the <a>Deployment</a> resource to create.</p>
+-- @param description [String] <p>The description for the <a>Deployment</a> resource to create.</p>
+-- @param stageName [String] <p>The name of the <a>Stage</a> resource for the <a>Deployment</a> resource to create.</p>
+-- @param cacheClusterSize [CacheClusterSize] <p>Specifies the cache cluster size for the <a>Stage</a> resource specified in the input, if a cache cluster is enabled.</p>
+-- @param variables [MapOfStringToString] <p>A map that defines the stage variables for the <a>Stage</a> resource that is associated with the new deployment. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
+-- @param cacheClusterEnabled [NullableBoolean] <p>Enables a cache cluster for the <a>Stage</a> resource specified in the input.</p>
 -- Required parameter: restApiId
 function M.CreateDeploymentRequest(stageDescription, restApiId, description, stageName, cacheClusterSize, variables, cacheClusterEnabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentRequest")
@@ -1453,9 +1453,9 @@ function M.AssertDeleteBasePathMappingRequest(struct)
 end
 
 --- Create a structure of type DeleteBasePathMappingRequest
--- &lt;p&gt;A request to delete the &lt;a&gt;BasePathMapping&lt;/a&gt; resource.&lt;/p&gt;
--- @param basePath [String] &lt;p&gt;The base path name of the &lt;a&gt;BasePathMapping&lt;/a&gt; resource to delete.&lt;/p&gt;
--- @param domainName [String] &lt;p&gt;The domain name of the &lt;a&gt;BasePathMapping&lt;/a&gt; resource to delete.&lt;/p&gt;
+-- <p>A request to delete the <a>BasePathMapping</a> resource.</p>
+-- @param basePath [String] <p>The base path name of the <a>BasePathMapping</a> resource to delete.</p>
+-- @param domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to delete.</p>
 -- Required parameter: domainName
 -- Required parameter: basePath
 function M.DeleteBasePathMappingRequest(basePath, domainName, ...)
@@ -1484,12 +1484,12 @@ function M.AssertUsage(struct)
 end
 
 --- Create a structure of type Usage
--- &lt;p&gt;Represents the usage data of a usage plan.&lt;/p&gt; &lt;div class=&quot;remarks&quot;/&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html&quot;&gt;Create and Use Usage Plans&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage&quot;&gt;Manage Usage in a Usage Plan&lt;/a&gt; &lt;/div&gt;
--- @param startDate [String] &lt;p&gt;The starting date of the usage data.&lt;/p&gt;
--- @param items [MapOfKeyUsages] &lt;p&gt;The usage data, as daily logs of used and remaining quotas, over the specified time interval indexed over the API keys in a usage plan. For example, &lt;code&gt;{..., &quot;values&quot; : { &quot;{api_key}&quot; : [ [0, 100], [10, 90], [100, 10]]}&lt;/code&gt;, where &lt;code&gt;{api_key}&lt;/code&gt; stands for an API key value and the daily log entry is of the format &lt;code&gt;[used quota, remaining quota]&lt;/code&gt;.&lt;/p&gt;
--- @param usagePlanId [String] &lt;p&gt;The plan Id associated with this usage data.&lt;/p&gt;
--- @param endDate [String] &lt;p&gt;The ending date of the usage data.&lt;/p&gt;
--- @param position [String] &lt;p&gt;Represents the usage data of a usage plan.&lt;/p&gt; &lt;div class=&quot;remarks&quot;/&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html&quot;&gt;Create and Use Usage Plans&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage&quot;&gt;Manage Usage in a Usage Plan&lt;/a&gt; &lt;/div&gt;
+-- <p>Represents the usage data of a usage plan.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage">Manage Usage in a Usage Plan</a> </div>
+-- @param startDate [String] <p>The starting date of the usage data.</p>
+-- @param items [MapOfKeyUsages] <p>The usage data, as daily logs of used and remaining quotas, over the specified time interval indexed over the API keys in a usage plan. For example, <code>{..., "values" : { "{api_key}" : [ [0, 100], [10, 90], [100, 10]]}</code>, where <code>{api_key}</code> stands for an API key value and the daily log entry is of the format <code>[used quota, remaining quota]</code>.</p>
+-- @param usagePlanId [String] <p>The plan Id associated with this usage data.</p>
+-- @param endDate [String] <p>The ending date of the usage data.</p>
+-- @param position [String] <p>Represents the usage data of a usage plan.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage">Manage Usage in a Usage Plan</a> </div>
 function M.Usage(startDate, items, usagePlanId, endDate, position, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Usage")
 	local t = { 
@@ -1518,11 +1518,11 @@ function M.AssertSdkType(struct)
 end
 
 --- Create a structure of type SdkType
--- &lt;p&gt;A type of SDK that API Gateway can generate.&lt;/p&gt;
--- @param friendlyName [String] &lt;p&gt;The user-friendly name of an &lt;a&gt;SdkType&lt;/a&gt; instance.&lt;/p&gt;
--- @param configurationProperties [ListOfSdkConfigurationProperty] &lt;p&gt;A list of configuration properties of an &lt;a&gt;SdkType&lt;/a&gt;.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The identifier of an &lt;a&gt;SdkType&lt;/a&gt; instance.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of an &lt;a&gt;SdkType&lt;/a&gt;.&lt;/p&gt;
+-- <p>A type of SDK that API Gateway can generate.</p>
+-- @param friendlyName [String] <p>The user-friendly name of an <a>SdkType</a> instance.</p>
+-- @param configurationProperties [ListOfSdkConfigurationProperty] <p>A list of configuration properties of an <a>SdkType</a>.</p>
+-- @param id [String] <p>The identifier of an <a>SdkType</a> instance.</p>
+-- @param description [String] <p>The description of an <a>SdkType</a>.</p>
 function M.SdkType(friendlyName, configurationProperties, id, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SdkType")
 	local t = { 
@@ -1548,9 +1548,9 @@ function M.AssertMethodSnapshot(struct)
 end
 
 --- Create a structure of type MethodSnapshot
--- &lt;p&gt;Represents a summary of a &lt;a&gt;Method&lt;/a&gt; resource, given a particular date and time.&lt;/p&gt;
--- @param apiKeyRequired [Boolean] &lt;p&gt;Specifies whether the method requires a valid &lt;a&gt;ApiKey&lt;/a&gt;.&lt;/p&gt;
--- @param authorizationType [String] &lt;p&gt;The method's authorization type. Valid values are &lt;code&gt;NONE&lt;/code&gt; for open access, &lt;code&gt;AWS_IAM&lt;/code&gt; for using AWS IAM permissions, &lt;code&gt;CUSTOM&lt;/code&gt; for using a custom authorizer, or &lt;code&gt;COGNITO_USER_POOLS&lt;/code&gt; for using a Cognito user pool.&lt;/p&gt;
+-- <p>Represents a summary of a <a>Method</a> resource, given a particular date and time.</p>
+-- @param apiKeyRequired [Boolean] <p>Specifies whether the method requires a valid <a>ApiKey</a>.</p>
+-- @param authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
 function M.MethodSnapshot(apiKeyRequired, authorizationType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MethodSnapshot")
 	local t = { 
@@ -1577,12 +1577,12 @@ function M.AssertResource(struct)
 end
 
 --- Create a structure of type Resource
--- &lt;p&gt;Represents an API resource.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html&quot;&gt;Create an API&lt;/a&gt; &lt;/div&gt;
--- @param path [String] &lt;p&gt;The full path for this resource.&lt;/p&gt;
--- @param resourceMethods [MapOfMethod] &lt;p&gt;Gets an API resource's method of a given HTTP verb.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p&gt;The resource methods are a map of methods indexed by methods' HTTP verbs enabled on the resource. This method map is included in the &lt;code&gt;200 OK&lt;/code&gt; response of the &lt;code&gt;GET /restapis/{restapi_id}/resources/{resource_id}&lt;/code&gt; or &lt;code&gt;GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods&lt;/code&gt; request.&lt;/p&gt; &lt;h4&gt;Example: Get the GET method of an API resource&lt;/h4&gt; &lt;h5&gt;Request&lt;/h5&gt; &lt;pre&gt;&lt;code&gt;GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}&lt;/code&gt;&lt;/pre&gt; &lt;h5&gt;Response&lt;/h5&gt; &lt;pre&gt;&lt;code&gt;{ &quot;_links&quot;: { &quot;curies&quot;: [ { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html&quot;, &quot;name&quot;: &quot;integration&quot;, &quot;templated&quot;: true }, { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html&quot;, &quot;name&quot;: &quot;integrationresponse&quot;, &quot;templated&quot;: true }, { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html&quot;, &quot;name&quot;: &quot;method&quot;, &quot;templated&quot;: true }, { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html&quot;, &quot;name&quot;: &quot;methodresponse&quot;, &quot;templated&quot;: true } ], &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET&quot;, &quot;name&quot;: &quot;GET&quot;, &quot;title&quot;: &quot;GET&quot; }, &quot;integration:put&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration&quot; }, &quot;method:delete&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET&quot; }, &quot;method:integration&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration&quot; }, &quot;method:responses&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot;, &quot;name&quot;: &quot;200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;method:update&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET&quot; }, &quot;methodresponse:put&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}&quot;, &quot;templated&quot;: true } }, &quot;apiKeyRequired&quot;: false, &quot;authorizationType&quot;: &quot;NONE&quot;, &quot;httpMethod&quot;: &quot;GET&quot;, &quot;_embedded&quot;: { &quot;method:integration&quot;: { &quot;_links&quot;: { &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration&quot; }, &quot;integration:delete&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration&quot; }, &quot;integration:responses&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot;, &quot;name&quot;: &quot;200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;integration:update&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration&quot; }, &quot;integrationresponse:put&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}&quot;, &quot;templated&quot;: true } }, &quot;cacheKeyParameters&quot;: [], &quot;cacheNamespace&quot;: &quot;3kzxbg5sa2&quot;, &quot;credentials&quot;: &quot;arn:aws:iam::123456789012:role/apigAwsProxyRole&quot;, &quot;httpMethod&quot;: &quot;POST&quot;, &quot;passthroughBehavior&quot;: &quot;WHEN_NO_MATCH&quot;, &quot;requestParameters&quot;: { &quot;integration.request.header.Content-Type&quot;: &quot;'application/x-amz-json-1.1'&quot; }, &quot;requestTemplates&quot;: { &quot;application/json&quot;: &quot;{\n}&quot; }, &quot;type&quot;: &quot;AWS&quot;, &quot;uri&quot;: &quot;arn:aws:apigateway:us-east-1:kinesis:action/ListStreams&quot;, &quot;_embedded&quot;: { &quot;integration:responses&quot;: { &quot;_links&quot;: { &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot;, &quot;name&quot;: &quot;200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;integrationresponse:delete&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot; }, &quot;integrationresponse:update&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot; } }, &quot;responseParameters&quot;: { &quot;method.response.header.Content-Type&quot;: &quot;'application/xml'&quot; }, &quot;responseTemplates&quot;: { &quot;application/json&quot;: &quot;$util.urlDecode(\&quot;%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\&quot;)\n&quot; }, &quot;statusCode&quot;: &quot;200&quot; } } }, &quot;method:responses&quot;: { &quot;_links&quot;: { &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot;, &quot;name&quot;: &quot;200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;methodresponse:delete&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot; }, &quot;methodresponse:update&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot; } }, &quot;responseModels&quot;: { &quot;application/json&quot;: &quot;Empty&quot; }, &quot;responseParameters&quot;: { &quot;method.response.header.Content-Type&quot;: false }, &quot;statusCode&quot;: &quot;200&quot; } } }&lt;/code&gt;&lt;/pre&gt; &lt;p&gt;If the &lt;code&gt;OPTIONS&lt;/code&gt; is enabled on the resource, you can follow the example here to get that method. Just replace the &lt;code&gt;GET&lt;/code&gt; of the last path segment in the request URL with &lt;code&gt;OPTIONS&lt;/code&gt;.&lt;/p&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;/div&gt;
--- @param id [String] &lt;p&gt;The resource's identifier.&lt;/p&gt;
--- @param pathPart [String] &lt;p&gt;The last path segment for this resource.&lt;/p&gt;
--- @param parentId [String] &lt;p&gt;The parent resource's identifier.&lt;/p&gt;
+-- <p>Represents an API resource.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
+-- @param path [String] <p>The full path for this resource.</p>
+-- @param resourceMethods [MapOfMethod] <p>Gets an API resource's method of a given HTTP verb.</p> <div class="remarks"> <p>The resource methods are a map of methods indexed by methods' HTTP verbs enabled on the resource. This method map is included in the <code>200 OK</code> response of the <code>GET /restapis/{restapi_id}/resources/{resource_id}</code> or <code>GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code> request.</p> <h4>Example: Get the GET method of an API resource</h4> <h5>Request</h5> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20170223T031827Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20170223/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": false, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }</code></pre> <p>If the <code>OPTIONS</code> is enabled on the resource, you can follow the example here to get that method. Just replace the <code>GET</code> of the last path segment in the request URL with <code>OPTIONS</code>.</p> </div> <div class="seeAlso"> </div>
+-- @param id [String] <p>The resource's identifier.</p>
+-- @param pathPart [String] <p>The last path segment for this resource.</p>
+-- @param parentId [String] <p>The parent resource's identifier.</p>
 function M.Resource(path, resourceMethods, id, pathPart, parentId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Resource")
 	local t = { 
@@ -1611,9 +1611,9 @@ function M.AssertDeleteUsagePlanKeyRequest(struct)
 end
 
 --- Create a structure of type DeleteUsagePlanKeyRequest
--- &lt;p&gt;The DELETE request to delete a usage plan key and remove the underlying API key from the associated usage plan.&lt;/p&gt;
--- @param keyId [String] &lt;p&gt;The Id of the &lt;a&gt;UsagePlanKey&lt;/a&gt; resource to be deleted.&lt;/p&gt;
--- @param usagePlanId [String] &lt;p&gt;The Id of the &lt;a&gt;UsagePlan&lt;/a&gt; resource representing the usage plan containing the to-be-deleted &lt;a&gt;UsagePlanKey&lt;/a&gt; resource representing a plan customer.&lt;/p&gt;
+-- <p>The DELETE request to delete a usage plan key and remove the underlying API key from the associated usage plan.</p>
+-- @param keyId [String] <p>The Id of the <a>UsagePlanKey</a> resource to be deleted.</p>
+-- @param usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-deleted <a>UsagePlanKey</a> resource representing a plan customer.</p>
 -- Required parameter: usagePlanId
 -- Required parameter: keyId
 function M.DeleteUsagePlanKeyRequest(keyId, usagePlanId, ...)
@@ -1639,9 +1639,9 @@ function M.AssertDomainNames(struct)
 end
 
 --- Create a structure of type DomainNames
--- &lt;p&gt;Represents a collection of &lt;a&gt;DomainName&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html&quot;&gt;Use Client-Side Certificate&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Represents a collection of &lt;a&gt;DomainName&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html&quot;&gt;Use Client-Side Certificate&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfDomainName] &lt;p&gt;The current page of any &lt;a&gt;DomainName&lt;/a&gt; resources in the collection of &lt;a&gt;DomainName&lt;/a&gt; resources.&lt;/p&gt;
+-- <p>Represents a collection of <a>DomainName</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a> </div>
+-- @param position [String] <p>Represents a collection of <a>DomainName</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a> </div>
+-- @param items [ListOfDomainName] <p>The current page of any <a>DomainName</a> resources in the collection of <a>DomainName</a> resources.</p>
 function M.DomainNames(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainNames")
 	local t = { 
@@ -1667,9 +1667,9 @@ function M.AssertFlushStageAuthorizersCacheRequest(struct)
 end
 
 --- Create a structure of type FlushStageAuthorizersCacheRequest
--- &lt;p&gt;Request to flush authorizer cache entries on a specified stage.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The API identifier of the stage to flush.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The name of the stage to flush.&lt;/p&gt;
+-- <p>Request to flush authorizer cache entries on a specified stage.</p>
+-- @param restApiId [String] <p>The API identifier of the stage to flush.</p>
+-- @param stageName [String] <p>The name of the stage to flush.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 function M.FlushStageAuthorizersCacheRequest(restApiId, stageName, ...)
@@ -1695,8 +1695,8 @@ function M.AssertDeleteClientCertificateRequest(struct)
 end
 
 --- Create a structure of type DeleteClientCertificateRequest
--- &lt;p&gt;A request to delete the &lt;a&gt;ClientCertificate&lt;/a&gt; resource.&lt;/p&gt;
--- @param clientCertificateId [String] &lt;p&gt;The identifier of the &lt;a&gt;ClientCertificate&lt;/a&gt; resource to be deleted.&lt;/p&gt;
+-- <p>A request to delete the <a>ClientCertificate</a> resource.</p>
+-- @param clientCertificateId [String] <p>The identifier of the <a>ClientCertificate</a> resource to be deleted.</p>
 -- Required parameter: clientCertificateId
 function M.DeleteClientCertificateRequest(clientCertificateId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClientCertificateRequest")
@@ -1721,10 +1721,10 @@ function M.AssertDocumentationVersion(struct)
 end
 
 --- Create a structure of type DocumentationVersion
--- &lt;p&gt;A snapshot of the documentation of an API.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt;&lt;p&gt;Publishing API documentation involves creating a documentation version associated with an API stage and exporting the versioned documentation to an external (e.g., Swagger) file.&lt;/p&gt;&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html&quot;&gt;Documenting an API&lt;/a&gt;, &lt;a&gt;DocumentationPart&lt;/a&gt;, &lt;a&gt;DocumentationVersions&lt;/a&gt; &lt;/div&gt;
--- @param version [String] &lt;p&gt;The version identifier of the API documentation snapshot.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of the API documentation snapshot.&lt;/p&gt;
--- @param createdDate [Timestamp] &lt;p&gt;The date when the API documentation snapshot is created.&lt;/p&gt;
+-- <p>A snapshot of the documentation of an API.</p> <div class="remarks"><p>Publishing API documentation involves creating a documentation version associated with an API stage and exporting the versioned documentation to an external (e.g., Swagger) file.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersions</a> </div>
+-- @param version [String] <p>The version identifier of the API documentation snapshot.</p>
+-- @param description [String] <p>The description of the API documentation snapshot.</p>
+-- @param createdDate [Timestamp] <p>The date when the API documentation snapshot is created.</p>
 function M.DocumentationVersion(version, description, createdDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationVersion")
 	local t = { 
@@ -1751,10 +1751,10 @@ function M.AssertGetModelsRequest(struct)
 end
 
 --- Create a structure of type GetModelsRequest
--- &lt;p&gt;Request to list existing &lt;a&gt;Models&lt;/a&gt; defined for a &lt;a&gt;RestApi&lt;/a&gt; resource.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.&lt;/p&gt;
+-- <p>Request to list existing <a>Models</a> defined for a <a>RestApi</a> resource.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 -- Required parameter: restApiId
 function M.GetModelsRequest(position, restApiId, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetModelsRequest")
@@ -1780,9 +1780,9 @@ function M.AssertThrottleSettings(struct)
 end
 
 --- Create a structure of type ThrottleSettings
--- &lt;p&gt; The API request rate limits.&lt;/p&gt;
--- @param rateLimit [Double] &lt;p&gt;The API request steady-state rate limit.&lt;/p&gt;
--- @param burstLimit [Integer] &lt;p&gt;The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.&lt;/p&gt;
+-- <p> The API request rate limits.</p>
+-- @param rateLimit [Double] <p>The API request steady-state rate limit.</p>
+-- @param burstLimit [Integer] <p>The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.</p>
 function M.ThrottleSettings(rateLimit, burstLimit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottleSettings")
 	local t = { 
@@ -1811,14 +1811,14 @@ function M.AssertUsagePlan(struct)
 end
 
 --- Create a structure of type UsagePlan
--- &lt;p&gt;Represents a usage plan than can specify who can assess associated API stages with specified request limits and quotas.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p&gt;In a usage plan, you associate an API by specifying the API's Id and a stage name of the specified API. You add plan customers by adding API keys to the plan. &lt;/p&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html&quot;&gt;Create and Use Usage Plans&lt;/a&gt; &lt;/div&gt;
--- @param productCode [String] &lt;p&gt;The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.&lt;/p&gt;
--- @param throttle [ThrottleSettings] &lt;p&gt;The request throttle limits of a usage plan.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of a usage plan.&lt;/p&gt;
--- @param quota [QuotaSettings] &lt;p&gt;The maximum number of permitted requests per a given unit time interval.&lt;/p&gt;
--- @param apiStages [ListOfApiStage] &lt;p&gt;The associated API stages of a usage plan.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The identifier of a &lt;a&gt;UsagePlan&lt;/a&gt; resource.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of a usage plan.&lt;/p&gt;
+-- <p>Represents a usage plan than can specify who can assess associated API stages with specified request limits and quotas.</p> <div class="remarks"> <p>In a usage plan, you associate an API by specifying the API's Id and a stage name of the specified API. You add plan customers by adding API keys to the plan. </p> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
+-- @param productCode [String] <p>The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.</p>
+-- @param throttle [ThrottleSettings] <p>The request throttle limits of a usage plan.</p>
+-- @param description [String] <p>The description of a usage plan.</p>
+-- @param quota [QuotaSettings] <p>The maximum number of permitted requests per a given unit time interval.</p>
+-- @param apiStages [ListOfApiStage] <p>The associated API stages of a usage plan.</p>
+-- @param id [String] <p>The identifier of a <a>UsagePlan</a> resource.</p>
+-- @param name [String] <p>The name of a usage plan.</p>
 function M.UsagePlan(productCode, throttle, description, quota, apiStages, id, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsagePlan")
 	local t = { 
@@ -1851,12 +1851,12 @@ function M.AssertCreateRestApiRequest(struct)
 end
 
 --- Create a structure of type CreateRestApiRequest
--- &lt;p&gt;The POST Request to add a new &lt;a&gt;RestApi&lt;/a&gt; resource to your collection.&lt;/p&gt;
--- @param binaryMediaTypes [ListOfString] &lt;p&gt;The list of binary media types supported by the &lt;a&gt;RestApi&lt;/a&gt;. By default, the &lt;a&gt;RestApi&lt;/a&gt; supports only UTF-8-encoded text payloads.&lt;/p&gt;
--- @param version [String] &lt;p&gt;A version identifier for the API.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the &lt;a&gt;RestApi&lt;/a&gt;.&lt;/p&gt;
--- @param cloneFrom [String] &lt;p&gt;The ID of the &lt;a&gt;RestApi&lt;/a&gt; that you want to clone from.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of the &lt;a&gt;RestApi&lt;/a&gt;.&lt;/p&gt;
+-- <p>The POST Request to add a new <a>RestApi</a> resource to your collection.</p>
+-- @param binaryMediaTypes [ListOfString] <p>The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+-- @param version [String] <p>A version identifier for the API.</p>
+-- @param name [String] <p>The name of the <a>RestApi</a>.</p>
+-- @param cloneFrom [String] <p>The ID of the <a>RestApi</a> that you want to clone from.</p>
+-- @param description [String] <p>The description of the <a>RestApi</a>.</p>
 -- Required parameter: name
 function M.CreateRestApiRequest(binaryMediaTypes, version, name, cloneFrom, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateRestApiRequest")
@@ -1894,19 +1894,19 @@ function M.AssertStage(struct)
 end
 
 --- Create a structure of type Stage
--- &lt;p&gt;Represents a unique identifier for a version of a deployed &lt;a&gt;RestApi&lt;/a&gt; that is callable by users.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html&quot;&gt;Deploy an API&lt;/a&gt; &lt;/div&gt;
--- @param clientCertificateId [String] &lt;p&gt;The identifier of a client certificate for an API stage.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The stage's description.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to Amazon API Gateway.&lt;/p&gt;
--- @param cacheClusterSize [CacheClusterSize] &lt;p&gt;The size of the cache cluster for the stage, if enabled.&lt;/p&gt;
--- @param variables [MapOfStringToString] &lt;p&gt;A map that defines the stage variables for a &lt;a&gt;Stage&lt;/a&gt; resource. Variable names can have alphanumeric and underscore characters, and the values must match &lt;code&gt;[A-Za-z0-9-._~:/?#&amp;amp;=,]+&lt;/code&gt;.&lt;/p&gt;
--- @param cacheClusterEnabled [Boolean] &lt;p&gt;Specifies whether a cache cluster is enabled for the stage.&lt;/p&gt;
--- @param documentationVersion [String] &lt;p&gt;The version of the associated API documentation.&lt;/p&gt;
--- @param cacheClusterStatus [CacheClusterStatus] &lt;p&gt;The status of the cache cluster for the stage, if enabled.&lt;/p&gt;
--- @param deploymentId [String] &lt;p&gt;The identifier of the &lt;a&gt;Deployment&lt;/a&gt; that the stage points to.&lt;/p&gt;
--- @param lastUpdatedDate [Timestamp] &lt;p&gt;The timestamp when the stage last updated.&lt;/p&gt;
--- @param createdDate [Timestamp] &lt;p&gt;The timestamp when the stage was created.&lt;/p&gt;
--- @param methodSettings [MapOfMethodSettings] &lt;p&gt;A map that defines the method settings for a &lt;a&gt;Stage&lt;/a&gt; resource. Keys (designated as &lt;code&gt;/{method_setting_key&lt;/code&gt; below) are method paths defined as &lt;code&gt;{resource_path}/{http_method}&lt;/code&gt; for an individual method override, or &lt;code&gt;/\*/\*&lt;/code&gt; for overriding all methods in the stage. &lt;/p&gt;
+-- <p>Represents a unique identifier for a version of a deployed <a>RestApi</a> that is callable by users.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploy an API</a> </div>
+-- @param clientCertificateId [String] <p>The identifier of a client certificate for an API stage.</p>
+-- @param description [String] <p>The stage's description.</p>
+-- @param stageName [String] <p>The name of the stage is the first path segment in the Uniform Resource Identifier (URI) of a call to Amazon API Gateway.</p>
+-- @param cacheClusterSize [CacheClusterSize] <p>The size of the cache cluster for the stage, if enabled.</p>
+-- @param variables [MapOfStringToString] <p>A map that defines the stage variables for a <a>Stage</a> resource. Variable names can have alphanumeric and underscore characters, and the values must match <code>[A-Za-z0-9-._~:/?#&amp;=,]+</code>.</p>
+-- @param cacheClusterEnabled [Boolean] <p>Specifies whether a cache cluster is enabled for the stage.</p>
+-- @param documentationVersion [String] <p>The version of the associated API documentation.</p>
+-- @param cacheClusterStatus [CacheClusterStatus] <p>The status of the cache cluster for the stage, if enabled.</p>
+-- @param deploymentId [String] <p>The identifier of the <a>Deployment</a> that the stage points to.</p>
+-- @param lastUpdatedDate [Timestamp] <p>The timestamp when the stage last updated.</p>
+-- @param createdDate [Timestamp] <p>The timestamp when the stage was created.</p>
+-- @param methodSettings [MapOfMethodSettings] <p>A map that defines the method settings for a <a>Stage</a> resource. Keys (designated as <code>/{method_setting_key</code> below) are method paths defined as <code>{resource_path}/{http_method}</code> for an individual method override, or <code>/\*/\*</code> for overriding all methods in the stage. </p>
 function M.Stage(clientCertificateId, description, stageName, cacheClusterSize, variables, cacheClusterEnabled, documentationVersion, cacheClusterStatus, deploymentId, lastUpdatedDate, createdDate, methodSettings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Stage")
 	local t = { 
@@ -1940,9 +1940,9 @@ function M.AssertDocumentationParts(struct)
 end
 
 --- Create a structure of type DocumentationParts
--- &lt;p&gt;The collection of documentation parts of an API.&lt;/p&gt; &lt;div class=&quot;remarks&quot;/&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html&quot;&gt;Documenting an API&lt;/a&gt;, &lt;a&gt;DocumentationPart&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;The collection of documentation parts of an API.&lt;/p&gt; &lt;div class=&quot;remarks&quot;/&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html&quot;&gt;Documenting an API&lt;/a&gt;, &lt;a&gt;DocumentationPart&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfDocumentationPart] &lt;p&gt;The current page of &lt;a&gt;DocumentationPart&lt;/a&gt; resources in the &lt;a&gt;DocumentationParts&lt;/a&gt; collection.&lt;/p&gt;
+-- <p>The collection of documentation parts of an API.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a> </div>
+-- @param position [String] <p>The collection of documentation parts of an API.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a> </div>
+-- @param items [ListOfDocumentationPart] <p>The current page of <a>DocumentationPart</a> resources in the <a>DocumentationParts</a> collection.</p>
 function M.DocumentationParts(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationParts")
 	local t = { 
@@ -1970,10 +1970,10 @@ function M.AssertGetMethodRequest(struct)
 end
 
 --- Create a structure of type GetMethodRequest
--- &lt;p&gt;Request to describe an existing &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The &lt;a&gt;Resource&lt;/a&gt; identifier for the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies the method request's HTTP method type.&lt;/p&gt;
+-- <p>Request to describe an existing <a>Method</a> resource.</p>
+-- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
+-- @param httpMethod [String] <p>Specifies the method request's HTTP method type.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -2001,9 +2001,9 @@ function M.AssertSdkTypes(struct)
 end
 
 --- Create a structure of type SdkTypes
--- &lt;p&gt;The collection of &lt;a&gt;SdkType&lt;/a&gt; instances.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The collection of &lt;a&gt;SdkType&lt;/a&gt; instances.&lt;/p&gt;
--- @param items [ListOfSdkType] &lt;p&gt;The set of &lt;a&gt;SdkType&lt;/a&gt; items that comprise this view of the &lt;a&gt;SdkTypes&lt;/a&gt; collection.&lt;/p&gt;
+-- <p>The collection of <a>SdkType</a> instances.</p>
+-- @param position [String] <p>The collection of <a>SdkType</a> instances.</p>
+-- @param items [ListOfSdkType] <p>The set of <a>SdkType</a> items that comprise this view of the <a>SdkTypes</a> collection.</p>
 function M.SdkTypes(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SdkTypes")
 	local t = { 
@@ -2027,9 +2027,9 @@ function M.AssertDocumentationVersions(struct)
 end
 
 --- Create a structure of type DocumentationVersions
--- &lt;p&gt;The collection of documentation snapshots of an API. &lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt;&lt;p&gt;Use the &lt;a&gt;DocumentationVersions&lt;/a&gt; to manage documentation snapshots associated with various API stages.&lt;/p&gt;&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html&quot;&gt;Documenting an API&lt;/a&gt;, &lt;a&gt;DocumentationPart&lt;/a&gt;, &lt;a&gt;DocumentationVersion&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;The collection of documentation snapshots of an API. &lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt;&lt;p&gt;Use the &lt;a&gt;DocumentationVersions&lt;/a&gt; to manage documentation snapshots associated with various API stages.&lt;/p&gt;&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html&quot;&gt;Documenting an API&lt;/a&gt;, &lt;a&gt;DocumentationPart&lt;/a&gt;, &lt;a&gt;DocumentationVersion&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfDocumentationVersion] &lt;p&gt;The current page of &lt;a&gt;DocumentationVersion&lt;/a&gt; items from the &lt;a&gt;DocumentationVersions&lt;/a&gt; collection of an API.&lt;/p&gt;
+-- <p>The collection of documentation snapshots of an API. </p> <div class="remarks"><p>Use the <a>DocumentationVersions</a> to manage documentation snapshots associated with various API stages.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersion</a> </div>
+-- @param position [String] <p>The collection of documentation snapshots of an API. </p> <div class="remarks"><p>Use the <a>DocumentationVersions</a> to manage documentation snapshots associated with various API stages.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersion</a> </div>
+-- @param items [ListOfDocumentationVersion] <p>The current page of <a>DocumentationVersion</a> items from the <a>DocumentationVersions</a> collection of an API.</p>
 function M.DocumentationVersions(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationVersions")
 	local t = { 
@@ -2058,14 +2058,14 @@ function M.AssertRestApi(struct)
 end
 
 --- Create a structure of type RestApi
--- &lt;p&gt;Represents a REST API.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html&quot;&gt;Create an API&lt;/a&gt; &lt;/div&gt;
--- @param description [String] &lt;p&gt;The API's description.&lt;/p&gt;
--- @param warnings [ListOfString] &lt;p&gt;The warning messages reported when &lt;code&gt;failonwarnings&lt;/code&gt; is turned on during API import.&lt;/p&gt;
--- @param version [String] &lt;p&gt;A version identifier for the API.&lt;/p&gt;
--- @param createdDate [Timestamp] &lt;p&gt;The timestamp when the API was created.&lt;/p&gt;
--- @param binaryMediaTypes [ListOfString] &lt;p&gt;The list of binary media types supported by the &lt;a&gt;RestApi&lt;/a&gt;. By default, the &lt;a&gt;RestApi&lt;/a&gt; supports only UTF-8-encoded text payloads.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The API's name.&lt;/p&gt;
+-- <p>Represents a REST API.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
+-- @param description [String] <p>The API's description.</p>
+-- @param warnings [ListOfString] <p>The warning messages reported when <code>failonwarnings</code> is turned on during API import.</p>
+-- @param version [String] <p>A version identifier for the API.</p>
+-- @param createdDate [Timestamp] <p>The timestamp when the API was created.</p>
+-- @param binaryMediaTypes [ListOfString] <p>The list of binary media types supported by the <a>RestApi</a>. By default, the <a>RestApi</a> supports only UTF-8-encoded text payloads.</p>
+-- @param id [String] <p>The API's identifier. This identifier is unique across all of your APIs in Amazon API Gateway.</p>
+-- @param name [String] <p>The API's name.</p>
 function M.RestApi(description, warnings, version, createdDate, binaryMediaTypes, id, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RestApi")
 	local t = { 
@@ -2095,10 +2095,10 @@ function M.AssertBasePathMapping(struct)
 end
 
 --- Create a structure of type BasePathMapping
--- &lt;p&gt;Represents the base path that callers of the API must provide as part of the URL after the domain name.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt;A custom domain name plus a &lt;code&gt;BasePathMapping&lt;/code&gt; specification identifies a deployed &lt;a&gt;RestApi&lt;/a&gt; in a given stage of the owner &lt;a&gt;Account&lt;/a&gt;.&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html&quot;&gt;Use Custom Domain Names&lt;/a&gt; &lt;/div&gt;
--- @param basePath [String] &lt;p&gt;The base path name that callers of the API must provide as part of the URL after the domain name.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The name of the API.&lt;/p&gt;
--- @param stage [String] &lt;p&gt;The name of the API's stage.&lt;/p&gt;
+-- <p>Represents the base path that callers of the API must provide as part of the URL after the domain name.</p> <div class="remarks">A custom domain name plus a <code>BasePathMapping</code> specification identifies a deployed <a>RestApi</a> in a given stage of the owner <a>Account</a>.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
+-- @param basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name.</p>
+-- @param restApiId [String] <p>The name of the API.</p>
+-- @param stage [String] <p>The name of the API's stage.</p>
 function M.BasePathMapping(basePath, restApiId, stage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BasePathMapping")
 	local t = { 
@@ -2154,13 +2154,13 @@ function M.AssertGetDocumentationPartsRequest(struct)
 end
 
 --- Create a structure of type GetDocumentationPartsRequest
--- &lt;p&gt;Gets the documentation parts of an API. The result may be filtered by the type, name, or path of API entities (targets).&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of the API of the to-be-retrieved documentation parts.&lt;/p&gt;
--- @param nameQuery [String] &lt;p&gt;The name of API entities of the to-be-retrieved documentation parts.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page.&lt;/p&gt;
--- @param path [String] &lt;p&gt;The path of API entities of the to-be-retrieved documentation parts.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param type [DocumentationPartType] &lt;p&gt;The type of API entities of the to-be-retrieved documentation parts. &lt;/p&gt;
+-- <p>Gets the documentation parts of an API. The result may be filtered by the type, name, or path of API entities (targets).</p>
+-- @param restApiId [String] <p>[Required] The identifier of the API of the to-be-retrieved documentation parts.</p>
+-- @param nameQuery [String] <p>The name of API entities of the to-be-retrieved documentation parts.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- @param path [String] <p>The path of API entities of the to-be-retrieved documentation parts.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param type [DocumentationPartType] <p>The type of API entities of the to-be-retrieved documentation parts. </p>
 -- Required parameter: restApiId
 function M.GetDocumentationPartsRequest(restApiId, nameQuery, limit, path, position, type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentationPartsRequest")
@@ -2193,12 +2193,12 @@ function M.AssertCreateUsagePlanRequest(struct)
 end
 
 --- Create a structure of type CreateUsagePlanRequest
--- &lt;p&gt;The POST request to create a usage plan with the name, description, throttle limits and quota limits, as well as the associated API stages, specified in the payload.&lt;/p&gt;
--- @param throttle [ThrottleSettings] &lt;p&gt;The throttling limits of the usage plan.&lt;/p&gt;
--- @param quota [QuotaSettings] &lt;p&gt;The quota of the usage plan.&lt;/p&gt;
--- @param apiStages [ListOfApiStage] &lt;p&gt;The associated API stages of the usage plan.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the usage plan.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of the usage plan.&lt;/p&gt;
+-- <p>The POST request to create a usage plan with the name, description, throttle limits and quota limits, as well as the associated API stages, specified in the payload.</p>
+-- @param throttle [ThrottleSettings] <p>The throttling limits of the usage plan.</p>
+-- @param quota [QuotaSettings] <p>The quota of the usage plan.</p>
+-- @param apiStages [ListOfApiStage] <p>The associated API stages of the usage plan.</p>
+-- @param name [String] <p>The name of the usage plan.</p>
+-- @param description [String] <p>The description of the usage plan.</p>
 -- Required parameter: name
 function M.CreateUsagePlanRequest(throttle, quota, apiStages, name, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateUsagePlanRequest")
@@ -2227,10 +2227,10 @@ function M.AssertQuotaSettings(struct)
 end
 
 --- Create a structure of type QuotaSettings
--- &lt;p&gt;Quotas configured for a usage plan.&lt;/p&gt;
--- @param limit [Integer] &lt;p&gt;The maximum number of requests that can be made in a given time period.&lt;/p&gt;
--- @param period [QuotaPeriodType] &lt;p&gt;The time period in which the limit applies. Valid values are &quot;DAY&quot;, &quot;WEEK&quot; or &quot;MONTH&quot;.&lt;/p&gt;
--- @param offset [Integer] &lt;p&gt;The number of requests subtracted from the given limit in the initial time period.&lt;/p&gt;
+-- <p>Quotas configured for a usage plan.</p>
+-- @param limit [Integer] <p>The maximum number of requests that can be made in a given time period.</p>
+-- @param period [QuotaPeriodType] <p>The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".</p>
+-- @param offset [Integer] <p>The number of requests subtracted from the given limit in the initial time period.</p>
 function M.QuotaSettings(limit, period, offset, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating QuotaSettings")
 	local t = { 
@@ -2254,8 +2254,8 @@ function M.AssertStages(struct)
 end
 
 --- Create a structure of type Stages
--- &lt;p&gt;A list of &lt;a&gt;Stage&lt;/a&gt; resources that are associated with the &lt;a&gt;ApiKey&lt;/a&gt; resource.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt;&lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html&quot;&gt;Deploying API in Stages&lt;/a&gt;&lt;/div&gt;
--- @param item [ListOfStage] &lt;p&gt;An individual &lt;a&gt;Stage&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html">Deploying API in Stages</a></div>
+-- @param item [ListOfStage] <p>An individual <a>Stage</a> resource.</p>
 function M.Stages(item, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Stages")
 	local t = { 
@@ -2281,10 +2281,10 @@ function M.AssertGetDeploymentRequest(struct)
 end
 
 --- Create a structure of type GetDeploymentRequest
--- &lt;p&gt;Requests Amazon API Gateway to get information about a &lt;a&gt;Deployment&lt;/a&gt; resource.&lt;/p&gt;
--- @param deploymentId [String] &lt;p&gt;The identifier of the &lt;a&gt;Deployment&lt;/a&gt; resource to get information about.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; resource for the &lt;a&gt;Deployment&lt;/a&gt; resource to get information about.&lt;/p&gt;
--- @param embed [ListOfString] &lt;p&gt;A query parameter to retrieve the specified embedded resources of the returned &lt;a&gt;Deployment&lt;/a&gt; resource in the response. In a REST API call, this &lt;code&gt;embed&lt;/code&gt; parameter value is a list of comma-separated strings, as in &lt;code&gt;GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=var1,var2&lt;/code&gt;. The SDK and other platform-dependent libraries might use a different format for the list. Currently, this request supports only retrieval of the embedded API summary this way. Hence, the parameter value must be a single-valued list containing only the &lt;code&gt;&quot;apisummary&quot;&lt;/code&gt; string. For example, &lt;code&gt;GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=apisummary&lt;/code&gt;.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to get information about a <a>Deployment</a> resource.</p>
+-- @param deploymentId [String] <p>The identifier of the <a>Deployment</a> resource to get information about.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to get information about.</p>
+-- @param embed [ListOfString] <p>A query parameter to retrieve the specified embedded resources of the returned <a>Deployment</a> resource in the response. In a REST API call, this <code>embed</code> parameter value is a list of comma-separated strings, as in <code>GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=var1,var2</code>. The SDK and other platform-dependent libraries might use a different format for the list. Currently, this request supports only retrieval of the embedded API summary this way. Hence, the parameter value must be a single-valued list containing only the <code>"apisummary"</code> string. For example, <code>GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=apisummary</code>.</p>
 -- Required parameter: restApiId
 -- Required parameter: deploymentId
 function M.GetDeploymentRequest(deploymentId, restApiId, embed, ...)
@@ -2316,13 +2316,13 @@ function M.AssertCreateDomainNameRequest(struct)
 end
 
 --- Create a structure of type CreateDomainNameRequest
--- &lt;p&gt;A request to create a new domain name.&lt;/p&gt;
--- @param certificateArn [String] &lt;p&gt;The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.&lt;/p&gt;
--- @param certificateName [String] &lt;p&gt;The user-friendly name of the certificate.&lt;/p&gt;
--- @param domainName [String] &lt;p&gt;(Required) The name of the &lt;a&gt;DomainName&lt;/a&gt; resource.&lt;/p&gt;
--- @param certificateChain [String] &lt;p&gt;[Deprecated] The intermediate certificates and optionally the root certificate, one after the other without any blank lines. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate. Use the intermediate certificates that were provided by your certificate authority. Do not include any intermediaries that are not in the chain of trust path.&lt;/p&gt;
--- @param certificatePrivateKey [String] &lt;p&gt;[Deprecated] Your certificate's private key.&lt;/p&gt;
--- @param certificateBody [String] &lt;p&gt;[Deprecated] The body of the server certificate provided by your certificate authority.&lt;/p&gt;
+-- <p>A request to create a new domain name.</p>
+-- @param certificateArn [String] <p>The reference to an AWS-managed certificate. AWS Certificate Manager is the only supported source.</p>
+-- @param certificateName [String] <p>The user-friendly name of the certificate.</p>
+-- @param domainName [String] <p>(Required) The name of the <a>DomainName</a> resource.</p>
+-- @param certificateChain [String] <p>[Deprecated] The intermediate certificates and optionally the root certificate, one after the other without any blank lines. If you include the root certificate, your certificate chain must start with intermediate certificates and end with the root certificate. Use the intermediate certificates that were provided by your certificate authority. Do not include any intermediaries that are not in the chain of trust path.</p>
+-- @param certificatePrivateKey [String] <p>[Deprecated] Your certificate's private key.</p>
+-- @param certificateBody [String] <p>[Deprecated] The body of the server certificate provided by your certificate authority.</p>
 -- Required parameter: domainName
 function M.CreateDomainNameRequest(certificateArn, certificateName, domainName, certificateChain, certificatePrivateKey, certificateBody, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainNameRequest")
@@ -2351,8 +2351,8 @@ function M.AssertDeleteApiKeyRequest(struct)
 end
 
 --- Create a structure of type DeleteApiKeyRequest
--- &lt;p&gt;A request to delete the &lt;a&gt;ApiKey&lt;/a&gt; resource.&lt;/p&gt;
--- @param apiKey [String] &lt;p&gt;The identifier of the &lt;a&gt;ApiKey&lt;/a&gt; resource to be deleted.&lt;/p&gt;
+-- <p>A request to delete the <a>ApiKey</a> resource.</p>
+-- @param apiKey [String] <p>The identifier of the <a>ApiKey</a> resource to be deleted.</p>
 -- Required parameter: apiKey
 function M.DeleteApiKeyRequest(apiKey, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApiKeyRequest")
@@ -2376,9 +2376,9 @@ function M.AssertDocumentationPartIds(struct)
 end
 
 --- Create a structure of type DocumentationPartIds
--- &lt;p&gt;A collection of the imported &lt;a&gt;DocumentationPart&lt;/a&gt; identifiers.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt;This is used to return the result when documentation parts in an external (e.g., Swagger) file are imported into Amazon API Gateway&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html&quot;&gt;Documenting an API&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/&quot;&gt;documentationpart:import&lt;/a&gt;, &lt;a&gt;DocumentationPart&lt;/a&gt; &lt;/div&gt;
--- @param ids [ListOfString] &lt;p&gt;A list of the returned documentation part identifiers.&lt;/p&gt;
--- @param warnings [ListOfString] &lt;p&gt;A list of warning messages reported during import of documentation parts.&lt;/p&gt;
+-- <p>A collection of the imported <a>DocumentationPart</a> identifiers.</p> <div class="remarks">This is used to return the result when documentation parts in an external (e.g., Swagger) file are imported into Amazon API Gateway</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a href="http://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/">documentationpart:import</a>, <a>DocumentationPart</a> </div>
+-- @param ids [ListOfString] <p>A list of the returned documentation part identifiers.</p>
+-- @param warnings [ListOfString] <p>A list of warning messages reported during import of documentation parts.</p>
 function M.DocumentationPartIds(ids, warnings, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationPartIds")
 	local t = { 
@@ -2405,12 +2405,12 @@ function M.AssertGetApiKeysRequest(struct)
 end
 
 --- Create a structure of type GetApiKeysRequest
--- &lt;p&gt;A request to get information about the current &lt;a&gt;ApiKeys&lt;/a&gt; resource.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param nameQuery [String] &lt;p&gt;The name of queried API keys.&lt;/p&gt;
--- @param includeValues [NullableBoolean] &lt;p&gt;A boolean flag to specify whether (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;) the result contains key values.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of &lt;a&gt;ApiKeys&lt;/a&gt; to get information about.&lt;/p&gt;
--- @param customerId [String] &lt;p&gt;The identifier of a customer in AWS Marketplace or an external system, such as a developer portal.&lt;/p&gt;
+-- <p>A request to get information about the current <a>ApiKeys</a> resource.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param nameQuery [String] <p>The name of queried API keys.</p>
+-- @param includeValues [NullableBoolean] <p>A boolean flag to specify whether (<code>true</code>) or not (<code>false</code>) the result contains key values.</p>
+-- @param limit [NullableInteger] <p>The maximum number of <a>ApiKeys</a> to get information about.</p>
+-- @param customerId [String] <p>The identifier of a customer in AWS Marketplace or an external system, such as a developer portal.</p>
 function M.GetApiKeysRequest(position, nameQuery, includeValues, limit, customerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetApiKeysRequest")
 	local t = { 
@@ -2441,10 +2441,10 @@ function M.AssertDeleteMethodRequest(struct)
 end
 
 --- Create a structure of type DeleteMethodRequest
--- &lt;p&gt;Request to delete an existing &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The &lt;a&gt;Resource&lt;/a&gt; identifier for the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;The HTTP verb of the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>Request to delete an existing <a>Method</a> resource.</p>
+-- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
+-- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -2474,9 +2474,9 @@ function M.AssertDeleteDocumentationVersionRequest(struct)
 end
 
 --- Create a structure of type DeleteDocumentationVersionRequest
--- &lt;p&gt;Deletes an existing documentation version of an API.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of an API of a to-be-deleted documentation snapshot.&lt;/p&gt;
--- @param documentationVersion [String] &lt;p&gt;[Required] The version identifier of a to-be-deleted documentation snapshot.&lt;/p&gt;
+-- <p>Deletes an existing documentation version of an API.</p>
+-- @param restApiId [String] <p>[Required] The identifier of an API of a to-be-deleted documentation snapshot.</p>
+-- @param documentationVersion [String] <p>[Required] The version identifier of a to-be-deleted documentation snapshot.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationVersion
 function M.DeleteDocumentationVersionRequest(restApiId, documentationVersion, ...)
@@ -2502,8 +2502,8 @@ function M.AssertGetUsagePlanRequest(struct)
 end
 
 --- Create a structure of type GetUsagePlanRequest
--- &lt;p&gt;The GET request to get a usage plan of a given plan identifier.&lt;/p&gt;
--- @param usagePlanId [String] &lt;p&gt;The identifier of the &lt;a&gt;UsagePlan&lt;/a&gt; resource to be retrieved.&lt;/p&gt;
+-- <p>The GET request to get a usage plan of a given plan identifier.</p>
+-- @param usagePlanId [String] <p>The identifier of the <a>UsagePlan</a> resource to be retrieved.</p>
 -- Required parameter: usagePlanId
 function M.GetUsagePlanRequest(usagePlanId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUsagePlanRequest")
@@ -2527,9 +2527,9 @@ function M.AssertUsagePlans(struct)
 end
 
 --- Create a structure of type UsagePlans
--- &lt;p&gt;Represents a collection of usage plans for an AWS account.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html&quot;&gt;Create and Use Usage Plans&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Represents a collection of usage plans for an AWS account.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html&quot;&gt;Create and Use Usage Plans&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfUsagePlan] &lt;p&gt;Gets the current item when enumerating the collection of &lt;a&gt;UsagePlan&lt;/a&gt;.&lt;/p&gt;
+-- <p>Represents a collection of usage plans for an AWS account.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
+-- @param position [String] <p>Represents a collection of usage plans for an AWS account.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
+-- @param items [ListOfUsagePlan] <p>Gets the current item when enumerating the collection of <a>UsagePlan</a>.</p>
 function M.UsagePlans(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsagePlans")
 	local t = { 
@@ -2554,9 +2554,9 @@ function M.AssertUpdateUsagePlanRequest(struct)
 end
 
 --- Create a structure of type UpdateUsagePlanRequest
--- &lt;p&gt;The PATCH request to update a usage plan of a given plan Id.&lt;/p&gt;
--- @param usagePlanId [String] &lt;p&gt;The Id of the to-be-updated usage plan.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>The PATCH request to update a usage plan of a given plan Id.</p>
+-- @param usagePlanId [String] <p>The Id of the to-be-updated usage plan.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: usagePlanId
 function M.UpdateUsagePlanRequest(usagePlanId, patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUsagePlanRequest")
@@ -2583,9 +2583,9 @@ function M.AssertGetDocumentationPartRequest(struct)
 end
 
 --- Create a structure of type GetDocumentationPartRequest
--- &lt;p&gt;Gets a specified documentation part of a given API.&lt;/p&gt;
--- @param documentationPartId [String] &lt;p&gt;[Required] The identifier of the to-be-retrieved documentation part.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of an API of the to-be-retrieved documentation part.&lt;/p&gt;
+-- <p>Gets a specified documentation part of a given API.</p>
+-- @param documentationPartId [String] <p>[Required] The identifier of the to-be-retrieved documentation part.</p>
+-- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-retrieved documentation part.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationPartId
 function M.GetDocumentationPartRequest(documentationPartId, restApiId, ...)
@@ -2610,8 +2610,8 @@ function M.AssertUpdateAccountRequest(struct)
 end
 
 --- Create a structure of type UpdateAccountRequest
--- &lt;p&gt;Requests Amazon API Gateway to change information about the current &lt;a&gt;Account&lt;/a&gt; resource.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to change information about the current <a>Account</a> resource.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 function M.UpdateAccountRequest(patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAccountRequest")
 	local t = { 
@@ -2634,8 +2634,8 @@ function M.AssertGetRestApiRequest(struct)
 end
 
 --- Create a structure of type GetRestApiRequest
--- &lt;p&gt;The GET request to list an existing &lt;a&gt;RestApi&lt;/a&gt; defined for your collection. &lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>The GET request to list an existing <a>RestApi</a> defined for your collection. </p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource.</p>
 -- Required parameter: restApiId
 function M.GetRestApiRequest(restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRestApiRequest")
@@ -2659,9 +2659,9 @@ function M.AssertGetSdkTypesRequest(struct)
 end
 
 --- Create a structure of type GetSdkTypesRequest
--- &lt;p&gt;Get the &lt;a&gt;SdkTypes&lt;/a&gt; collection.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page.&lt;/p&gt;
+-- <p>Get the <a>SdkTypes</a> collection.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 function M.GetSdkTypesRequest(position, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSdkTypesRequest")
 	local t = { 
@@ -2683,7 +2683,7 @@ function M.AssertGetAccountRequest(struct)
 end
 
 --- Create a structure of type GetAccountRequest
--- &lt;p&gt;Requests Amazon API Gateway to get information about the current &lt;a&gt;Account&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to get information about the current <a>Account</a> resource.</p>
 function M.GetAccountRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAccountRequest")
 	local t = { 
@@ -2707,9 +2707,9 @@ function M.AssertGetUsagePlanKeyRequest(struct)
 end
 
 --- Create a structure of type GetUsagePlanKeyRequest
--- &lt;p&gt;The GET request to get a usage plan key of a given key identifier.&lt;/p&gt;
--- @param keyId [String] &lt;p&gt;The key Id of the to-be-retrieved &lt;a&gt;UsagePlanKey&lt;/a&gt; resource representing a plan customer.&lt;/p&gt;
--- @param usagePlanId [String] &lt;p&gt;The Id of the &lt;a&gt;UsagePlan&lt;/a&gt; resource representing the usage plan containing the to-be-retrieved &lt;a&gt;UsagePlanKey&lt;/a&gt; resource representing a plan customer.&lt;/p&gt;
+-- <p>The GET request to get a usage plan key of a given key identifier.</p>
+-- @param keyId [String] <p>The key Id of the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- @param usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
 -- Required parameter: usagePlanId
 -- Required parameter: keyId
 function M.GetUsagePlanKeyRequest(keyId, usagePlanId, ...)
@@ -2737,9 +2737,9 @@ function M.AssertDeleteRequestValidatorRequest(struct)
 end
 
 --- Create a structure of type DeleteRequestValidatorRequest
--- &lt;p&gt;Deletes a specified &lt;a&gt;RequestValidator&lt;/a&gt; of a given &lt;a&gt;RestApi&lt;/a&gt;.&lt;/p&gt;
--- @param requestValidatorId [String] &lt;p&gt;[Required] The identifier of the &lt;a&gt;RequestValidator&lt;/a&gt; to be deleted.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of the &lt;a&gt;RestApi&lt;/a&gt; from which the given &lt;a&gt;RequestValidator&lt;/a&gt; is deleted.&lt;/p&gt;
+-- <p>Deletes a specified <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
+-- @param requestValidatorId [String] <p>[Required] The identifier of the <a>RequestValidator</a> to be deleted.</p>
+-- @param restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> from which the given <a>RequestValidator</a> is deleted.</p>
 -- Required parameter: restApiId
 -- Required parameter: requestValidatorId
 function M.DeleteRequestValidatorRequest(requestValidatorId, restApiId, ...)
@@ -2765,9 +2765,9 @@ function M.AssertBasePathMappings(struct)
 end
 
 --- Create a structure of type BasePathMappings
--- &lt;p&gt;Represents a collection of &lt;a&gt;BasePathMapping&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html&quot;&gt;Use Custom Domain Names&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Represents a collection of &lt;a&gt;BasePathMapping&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html&quot;&gt;Use Custom Domain Names&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfBasePathMapping] &lt;p&gt;The current page of any &lt;a&gt;BasePathMapping&lt;/a&gt; resources in the collection of base path mapping resources.&lt;/p&gt;
+-- <p>Represents a collection of <a>BasePathMapping</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
+-- @param position [String] <p>Represents a collection of <a>BasePathMapping</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
+-- @param items [ListOfBasePathMapping] <p>The current page of any <a>BasePathMapping</a> resources in the collection of base path mapping resources.</p>
 function M.BasePathMappings(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BasePathMappings")
 	local t = { 
@@ -2793,11 +2793,11 @@ function M.AssertRequestValidator(struct)
 end
 
 --- Create a structure of type RequestValidator
--- &lt;p&gt;A set of validation rules for incoming &lt;a&gt;Method&lt;/a&gt; requests.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p&gt;In Swagger, a &lt;a&gt;RequestValidator&lt;/a&gt; of an API is defined by the &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.requestValidator.html&quot;&gt;x-amazon-apigateway-request-validators.requestValidator&lt;/a&gt; object. It the referenced using the &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validator&quot;&gt;x-amazon-apigateway-request-validator&lt;/a&gt; property.&lt;/p&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt;&lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html&quot;&gt;Enable Basic Request Validation in API Gateway&lt;/a&gt;&lt;/div&gt;
--- @param validateRequestParameters [Boolean] &lt;p&gt;A Boolean flag to indicate whether to validate request parameters (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;).&lt;/p&gt;
--- @param validateRequestBody [Boolean] &lt;p&gt;A Boolean flag to indicate whether to validate a request body according to the configured &lt;a&gt;Model&lt;/a&gt; schema.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The identifier of this &lt;a&gt;RequestValidator&lt;/a&gt;.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of this &lt;a&gt;RequestValidator&lt;/a&gt;&lt;/p&gt;
+-- <p>A set of validation rules for incoming <a>Method</a> requests.</p> <div class="remarks"> <p>In Swagger, a <a>RequestValidator</a> of an API is defined by the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.requestValidator.html">x-amazon-apigateway-request-validators.requestValidator</a> object. It the referenced using the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validator">x-amazon-apigateway-request-validator</a> property.</p> </div> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
+-- @param validateRequestParameters [Boolean] <p>A Boolean flag to indicate whether to validate request parameters (<code>true</code>) or not (<code>false</code>).</p>
+-- @param validateRequestBody [Boolean] <p>A Boolean flag to indicate whether to validate a request body according to the configured <a>Model</a> schema.</p>
+-- @param id [String] <p>The identifier of this <a>RequestValidator</a>.</p>
+-- @param name [String] <p>The name of this <a>RequestValidator</a></p>
 function M.RequestValidator(validateRequestParameters, validateRequestBody, id, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestValidator")
 	local t = { 
@@ -2824,10 +2824,10 @@ function M.AssertMethodResponse(struct)
 end
 
 --- Create a structure of type MethodResponse
--- &lt;p&gt;Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template. &lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p/&gt; &lt;h4&gt;Example: A &lt;b&gt;MethodResponse&lt;/b&gt; instance of an API&lt;/h4&gt; &lt;h5&gt;Request&lt;/h5&gt; &lt;p&gt;The example request retrieves a &lt;b&gt;MethodResponse&lt;/b&gt; of the 200 status code.&lt;/p&gt; &lt;pre&gt;&lt;code&gt;GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T222952Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}&lt;/code&gt;&lt;/pre&gt; &lt;h5&gt;Response&lt;/h5&gt; &lt;p&gt;The successful response returns &lt;code&gt;200 OK&lt;/code&gt; status and a payload as follows:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{ &quot;_links&quot;: { &quot;curies&quot;: { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html&quot;, &quot;name&quot;: &quot;methodresponse&quot;, &quot;templated&quot;: true }, &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;methodresponse:delete&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot; }, &quot;methodresponse:update&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot; } }, &quot;responseModels&quot;: { &quot;application/json&quot;: &quot;Empty&quot; }, &quot;responseParameters&quot;: { &quot;method.response.header.Content-Type&quot;: false }, &quot;statusCode&quot;: &quot;200&quot; }&lt;/code&gt;&lt;/pre&gt; &lt;p/&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a&gt;Method&lt;/a&gt;, &lt;a&gt;IntegrationResponse&lt;/a&gt;, &lt;a&gt;Integration&lt;/a&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html&quot;&gt;Creating an API&lt;/a&gt; &lt;/div&gt;
--- @param responseModels [MapOfStringToString] &lt;p&gt;Specifies the &lt;a&gt;Model&lt;/a&gt; resources used for the response's content-type. Response models are represented as a key/value map, with a content-type as the key and a &lt;a&gt;Model&lt;/a&gt; name as the value.&lt;/p&gt;
--- @param responseParameters [MapOfStringToBoolean] &lt;p&gt;A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header and the value specifies whether the associated method response header is required or not. The expression of the key must match the pattern &lt;code&gt;method.response.header.{name}&lt;/code&gt;, where &lt;code&gt;name&lt;/code&gt; is a valid and unique header name. Amazon API Gateway passes certain integration response data to the method response headers specified here according to the mapping you prescribe in the API's &lt;a&gt;IntegrationResponse&lt;/a&gt;. The integration response data that can be mapped include an integration response header expressed in &lt;code&gt;integration.response.header.{name}&lt;/code&gt;, a static value enclosed within a pair of single quotes (e.g., &lt;code&gt;'application/json'&lt;/code&gt;), or a JSON expression from the back-end response payload in the form of &lt;code&gt;integration.response.body.{JSON-expression}&lt;/code&gt;, where &lt;code&gt;JSON-expression&lt;/code&gt; is a valid JSON expression without the &lt;code&gt;$&lt;/code&gt; prefix.)&lt;/p&gt;
--- @param statusCode [StatusCode] &lt;p&gt;The method response's status code.&lt;/p&gt;
+-- <p>Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template. </p> <div class="remarks"> <p/> <h4>Example: A <b>MethodResponse</b> instance of an API</h4> <h5>Request</h5> <p>The example request retrieves a <b>MethodResponse</b> of the 200 status code.</p> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T222952Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns <code>200 OK</code> status and a payload as follows:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a>Method</a>, <a>IntegrationResponse</a>, <a>Integration</a> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
+-- @param responseModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the response's content-type. Response models are represented as a key/value map, with a content-type as the key and a <a>Model</a> name as the value.</p>
+-- @param responseParameters [MapOfStringToBoolean] <p>A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header and the value specifies whether the associated method response header is required or not. The expression of the key must match the pattern <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. Amazon API Gateway passes certain integration response data to the method response headers specified here according to the mapping you prescribe in the API's <a>IntegrationResponse</a>. The integration response data that can be mapped include an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
+-- @param statusCode [StatusCode] <p>The method response's status code.</p>
 function M.MethodResponse(responseModels, responseParameters, statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MethodResponse")
 	local t = { 
@@ -2885,14 +2885,14 @@ function M.AssertTestInvokeAuthorizerRequest(struct)
 end
 
 --- Create a structure of type TestInvokeAuthorizerRequest
--- &lt;p&gt;Make a request to simulate the execution of an &lt;a&gt;Authorizer&lt;/a&gt;.&lt;/p&gt;
--- @param body [String] &lt;p&gt;[Optional] The simulated request body of an incoming invocation request.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;Specifies a test invoke authorizer request's &lt;a&gt;RestApi&lt;/a&gt; identifier.&lt;/p&gt;
--- @param pathWithQueryString [String] &lt;p&gt;[Optional] The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.&lt;/p&gt;
--- @param additionalContext [MapOfStringToString] &lt;p&gt;[Optional] A key-value map of additional context variables.&lt;/p&gt;
--- @param headers [MapOfHeaderValues] &lt;p&gt;[Required] A key-value map of headers to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, should be specified.&lt;/p&gt;
--- @param stageVariables [MapOfStringToString] &lt;p&gt;A key-value map of stage variables to simulate an invocation on a deployed &lt;a&gt;Stage&lt;/a&gt;.&lt;/p&gt;
--- @param authorizerId [String] &lt;p&gt;Specifies a test invoke authorizer request's &lt;a&gt;Authorizer&lt;/a&gt; ID.&lt;/p&gt;
+-- <p>Make a request to simulate the execution of an <a>Authorizer</a>.</p>
+-- @param body [String] <p>[Optional] The simulated request body of an incoming invocation request.</p>
+-- @param restApiId [String] <p>Specifies a test invoke authorizer request's <a>RestApi</a> identifier.</p>
+-- @param pathWithQueryString [String] <p>[Optional] The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.</p>
+-- @param additionalContext [MapOfStringToString] <p>[Optional] A key-value map of additional context variables.</p>
+-- @param headers [MapOfHeaderValues] <p>[Required] A key-value map of headers to simulate an incoming invocation request. This is where the incoming authorization token, or identity source, should be specified.</p>
+-- @param stageVariables [MapOfStringToString] <p>A key-value map of stage variables to simulate an invocation on a deployed <a>Stage</a>.</p>
+-- @param authorizerId [String] <p>Specifies a test invoke authorizer request's <a>Authorizer</a> ID.</p>
 -- Required parameter: restApiId
 -- Required parameter: authorizerId
 function M.TestInvokeAuthorizerRequest(body, restApiId, pathWithQueryString, additionalContext, headers, stageVariables, authorizerId, ...)
@@ -2925,9 +2925,9 @@ function M.AssertFlushStageCacheRequest(struct)
 end
 
 --- Create a structure of type FlushStageCacheRequest
--- &lt;p&gt;Requests Amazon API Gateway to flush a stage's cache.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The API identifier of the stage to flush its cache.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The name of the stage to flush its cache.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to flush a stage's cache.</p>
+-- @param restApiId [String] <p>The API identifier of the stage to flush its cache.</p>
+-- @param stageName [String] <p>The name of the stage to flush its cache.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 function M.FlushStageCacheRequest(restApiId, stageName, ...)
@@ -2955,9 +2955,9 @@ function M.AssertGetAuthorizerRequest(struct)
 end
 
 --- Create a structure of type GetAuthorizerRequest
--- &lt;p&gt;Request to describe an existing &lt;a&gt;Authorizer&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;Authorizer&lt;/a&gt; resource.&lt;/p&gt;
--- @param authorizerId [String] &lt;p&gt;The identifier of the &lt;a&gt;Authorizer&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>Request to describe an existing <a>Authorizer</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
+-- @param authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: authorizerId
 function M.GetAuthorizerRequest(restApiId, authorizerId, ...)
@@ -2991,17 +2991,17 @@ function M.AssertMethod(struct)
 end
 
 --- Create a structure of type Method
--- &lt;p&gt; Represents a client-facing interface by which the client calls the API to access back-end resources. A &lt;b&gt;Method&lt;/b&gt; resource is integrated with an &lt;a&gt;Integration&lt;/a&gt; resource. Both consist of a request and one or more responses. The method request takes the client input that is passed to the back end through the integration request. A method response returns the output from the back end to the client through an integration response. A method request is embodied in a &lt;b&gt;Method&lt;/b&gt; resource, whereas an integration request is embodied in an &lt;a&gt;Integration&lt;/a&gt; resource. On the other hand, a method response is represented by a &lt;a&gt;MethodResponse&lt;/a&gt; resource, whereas an integration response is represented by an &lt;a&gt;IntegrationResponse&lt;/a&gt; resource. &lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p/&gt; &lt;h4&gt;Example: Retrive the GET method on a specified resource&lt;/h4&gt; &lt;h5&gt;Request&lt;/h5&gt; &lt;p&gt;The following example request retrieves the information about the GET method on an API resource (&lt;code&gt;3kzxbg5sa2&lt;/code&gt;) of an API (&lt;code&gt;fugvjdxtri&lt;/code&gt;). &lt;/p&gt; &lt;pre&gt;&lt;code&gt;GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T210259Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}&lt;/code&gt;&lt;/pre&gt; &lt;h5&gt;Response&lt;/h5&gt; &lt;p&gt;The successful response returns a &lt;code&gt;200 OK&lt;/code&gt; status code and a payload similar to the following:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{ &quot;_links&quot;: { &quot;curies&quot;: [ { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html&quot;, &quot;name&quot;: &quot;integration&quot;, &quot;templated&quot;: true }, { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html&quot;, &quot;name&quot;: &quot;integrationresponse&quot;, &quot;templated&quot;: true }, { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html&quot;, &quot;name&quot;: &quot;method&quot;, &quot;templated&quot;: true }, { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html&quot;, &quot;name&quot;: &quot;methodresponse&quot;, &quot;templated&quot;: true } ], &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET&quot;, &quot;name&quot;: &quot;GET&quot;, &quot;title&quot;: &quot;GET&quot; }, &quot;integration:put&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration&quot; }, &quot;method:delete&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET&quot; }, &quot;method:integration&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration&quot; }, &quot;method:responses&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot;, &quot;name&quot;: &quot;200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;method:update&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET&quot; }, &quot;methodresponse:put&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}&quot;, &quot;templated&quot;: true } }, &quot;apiKeyRequired&quot;: true, &quot;authorizationType&quot;: &quot;NONE&quot;, &quot;httpMethod&quot;: &quot;GET&quot;, &quot;_embedded&quot;: { &quot;method:integration&quot;: { &quot;_links&quot;: { &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration&quot; }, &quot;integration:delete&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration&quot; }, &quot;integration:responses&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot;, &quot;name&quot;: &quot;200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;integration:update&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration&quot; }, &quot;integrationresponse:put&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}&quot;, &quot;templated&quot;: true } }, &quot;cacheKeyParameters&quot;: [], &quot;cacheNamespace&quot;: &quot;3kzxbg5sa2&quot;, &quot;credentials&quot;: &quot;arn:aws:iam::123456789012:role/apigAwsProxyRole&quot;, &quot;httpMethod&quot;: &quot;POST&quot;, &quot;passthroughBehavior&quot;: &quot;WHEN_NO_MATCH&quot;, &quot;requestParameters&quot;: { &quot;integration.request.header.Content-Type&quot;: &quot;'application/x-amz-json-1.1'&quot; }, &quot;requestTemplates&quot;: { &quot;application/json&quot;: &quot;{\n}&quot; }, &quot;type&quot;: &quot;AWS&quot;, &quot;uri&quot;: &quot;arn:aws:apigateway:us-east-1:kinesis:action/ListStreams&quot;, &quot;_embedded&quot;: { &quot;integration:responses&quot;: { &quot;_links&quot;: { &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot;, &quot;name&quot;: &quot;200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;integrationresponse:delete&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot; }, &quot;integrationresponse:update&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot; } }, &quot;responseParameters&quot;: { &quot;method.response.header.Content-Type&quot;: &quot;'application/xml'&quot; }, &quot;responseTemplates&quot;: { &quot;application/json&quot;: &quot;$util.urlDecode(\&quot;%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E\&quot;)&quot; }, &quot;statusCode&quot;: &quot;200&quot; } } }, &quot;method:responses&quot;: { &quot;_links&quot;: { &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot;, &quot;name&quot;: &quot;200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;methodresponse:delete&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot; }, &quot;methodresponse:update&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200&quot; } }, &quot;responseModels&quot;: { &quot;application/json&quot;: &quot;Empty&quot; }, &quot;responseParameters&quot;: { &quot;method.response.header.Content-Type&quot;: false }, &quot;statusCode&quot;: &quot;200&quot; } } }&lt;/code&gt;&lt;/pre&gt; &lt;p&gt;In the example above, the response template for the &lt;code&gt;200 OK&lt;/code&gt; response maps the JSON output from the &lt;code&gt;ListStreams&lt;/code&gt; action in the back end to an XML output. The mapping template is URL-encoded as &lt;code&gt;%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E&lt;/code&gt; and the output is decoded using the &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#util-templat-reference&quot;&gt;$util.urlDecode()&lt;/a&gt; helper function.&lt;/p&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a&gt;MethodResponse&lt;/a&gt;, &lt;a&gt;Integration&lt;/a&gt;, &lt;a&gt;IntegrationResponse&lt;/a&gt;, &lt;a&gt;Resource&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html&quot;&gt;Set up an API's method&lt;/a&gt; &lt;/div&gt;
--- @param methodResponses [MapOfMethodResponse] &lt;p&gt;Gets a method response associated with a given HTTP status code. &lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p&gt;The collection of method responses are encapsulated in a key-value map, where the key is a response's HTTP status code and the value is a &lt;a&gt;MethodResponse&lt;/a&gt; resource that specifies the response returned to the caller from the back end through the integration response.&lt;/p&gt; &lt;h4&gt;Example: Get a 200 OK response of a GET method&lt;/h4&gt; &lt;h5&gt;Request&lt;/h5&gt; &lt;p/&gt; &lt;pre&gt;&lt;code&gt;GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T215008Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}&lt;/code&gt;&lt;/pre&gt; &lt;h5&gt;Response&lt;/h5&gt; &lt;p&gt;The successful response returns a &lt;code&gt;200 OK&lt;/code&gt; status code and a payload similar to the following:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{ &quot;_links&quot;: { &quot;curies&quot;: { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html&quot;, &quot;name&quot;: &quot;methodresponse&quot;, &quot;templated&quot;: true }, &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;methodresponse:delete&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200&quot; }, &quot;methodresponse:update&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200&quot; } }, &quot;responseModels&quot;: { &quot;application/json&quot;: &quot;Empty&quot; }, &quot;responseParameters&quot;: { &quot;method.response.header.operator&quot;: false, &quot;method.response.header.operand_2&quot;: false, &quot;method.response.header.operand_1&quot;: false }, &quot;statusCode&quot;: &quot;200&quot; }&lt;/code&gt;&lt;/pre&gt; &lt;p/&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-method-response.html&quot;&gt;AWS CLI&lt;/a&gt; &lt;/div&gt;
--- @param requestParameters [MapOfStringToBoolean] &lt;p&gt;A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key is a method request parameter name matching the pattern of &lt;code&gt;method.request.{location}.{name}&lt;/code&gt;, where &lt;code&gt;location&lt;/code&gt; is &lt;code&gt;querystring&lt;/code&gt;, &lt;code&gt;path&lt;/code&gt;, or &lt;code&gt;header&lt;/code&gt; and &lt;code&gt;name&lt;/code&gt; is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (&lt;code&gt;true&lt;/code&gt;) or optional (&lt;code&gt;false&lt;/code&gt;). The method request parameter names defined here are available in &lt;a&gt;Integration&lt;/a&gt; to be mapped to integration request parameters or templates.&lt;/p&gt;
--- @param requestModels [MapOfStringToString] &lt;p&gt;A key-value map specifying data schemas, represented by &lt;a&gt;Model&lt;/a&gt; resources, (as the mapped value) of the request payloads of given content types (as the mapping key).&lt;/p&gt;
--- @param authorizationType [String] &lt;p&gt;The method's authorization type. Valid values are &lt;code&gt;NONE&lt;/code&gt; for open access, &lt;code&gt;AWS_IAM&lt;/code&gt; for using AWS IAM permissions, &lt;code&gt;CUSTOM&lt;/code&gt; for using a custom authorizer, or &lt;code&gt;COGNITO_USER_POOLS&lt;/code&gt; for using a Cognito user pool.&lt;/p&gt;
--- @param operationName [String] &lt;p&gt;A human-friendly operation identifier for the method. For example, you can assign the &lt;code&gt;operationName&lt;/code&gt; of &lt;code&gt;ListPets&lt;/code&gt; for the &lt;code&gt;GET /pets&lt;/code&gt; method in &lt;a href=&quot;http://petstore-demo-endpoint.execute-api.com/petstore/pets&quot;&gt;PetStore&lt;/a&gt; example.&lt;/p&gt;
--- @param apiKeyRequired [NullableBoolean] &lt;p&gt;A boolean flag specifying whether a valid &lt;a&gt;ApiKey&lt;/a&gt; is required to invoke this method.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;The method's HTTP verb.&lt;/p&gt;
--- @param methodIntegration [Integration] &lt;p&gt;Gets the method's integration responsible for passing the client-submitted request to the back end and performing necessary transformations to make the request compliant with the back end.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p/&gt; &lt;h4&gt;Example: &lt;/h4&gt; &lt;h5&gt;Request&lt;/h5&gt; &lt;p/&gt; &lt;pre&gt;&lt;code&gt;GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T213210Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}&lt;/code&gt;&lt;/pre&gt; &lt;h5&gt;Response&lt;/h5&gt; &lt;p&gt;The successful response returns a &lt;code&gt;200 OK&lt;/code&gt; status code and a payload similar to the following:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{ &quot;_links&quot;: { &quot;curies&quot;: [ { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html&quot;, &quot;name&quot;: &quot;integration&quot;, &quot;templated&quot;: true }, { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html&quot;, &quot;name&quot;: &quot;integrationresponse&quot;, &quot;templated&quot;: true } ], &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration&quot; }, &quot;integration:delete&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration&quot; }, &quot;integration:responses&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200&quot;, &quot;name&quot;: &quot;200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;integration:update&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration&quot; }, &quot;integrationresponse:put&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}&quot;, &quot;templated&quot;: true } }, &quot;cacheKeyParameters&quot;: [], &quot;cacheNamespace&quot;: &quot;0cjtch&quot;, &quot;credentials&quot;: &quot;arn:aws:iam::123456789012:role/apigAwsProxyRole&quot;, &quot;httpMethod&quot;: &quot;POST&quot;, &quot;passthroughBehavior&quot;: &quot;WHEN_NO_MATCH&quot;, &quot;requestTemplates&quot;: { &quot;application/json&quot;: &quot;{\n \&quot;a\&quot;: \&quot;$input.params('operand1')\&quot;,\n \&quot;b\&quot;: \&quot;$input.params('operand2')\&quot;, \n \&quot;op\&quot;: \&quot;$input.params('operator')\&quot; \n}&quot; }, &quot;type&quot;: &quot;AWS&quot;, &quot;uri&quot;: &quot;arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations&quot;, &quot;_embedded&quot;: { &quot;integration:responses&quot;: { &quot;_links&quot;: { &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200&quot;, &quot;name&quot;: &quot;200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;integrationresponse:delete&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200&quot; }, &quot;integrationresponse:update&quot;: { &quot;href&quot;: &quot;/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200&quot; } }, &quot;responseParameters&quot;: { &quot;method.response.header.operator&quot;: &quot;integration.response.body.op&quot;, &quot;method.response.header.operand_2&quot;: &quot;integration.response.body.b&quot;, &quot;method.response.header.operand_1&quot;: &quot;integration.response.body.a&quot; }, &quot;responseTemplates&quot;: { &quot;application/json&quot;: &quot;#set($res = $input.path('$'))\n{\n \&quot;result\&quot;: \&quot;$res.a, $res.b, $res.op =&gt; $res.c\&quot;,\n \&quot;a\&quot; : \&quot;$res.a\&quot;,\n \&quot;b\&quot; : \&quot;$res.b\&quot;,\n \&quot;op\&quot; : \&quot;$res.op\&quot;,\n \&quot;c\&quot; : \&quot;$res.c\&quot;\n}&quot; }, &quot;selectionPattern&quot;: &quot;&quot;, &quot;statusCode&quot;: &quot;200&quot; } } }&lt;/code&gt;&lt;/pre&gt; &lt;p/&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html&quot;&gt;AWS CLI&lt;/a&gt; &lt;/div&gt;
--- @param requestValidatorId [String] &lt;p&gt;The identifier of a &lt;a&gt;RequestValidator&lt;/a&gt; for request validation.&lt;/p&gt;
--- @param authorizerId [String] &lt;p&gt;The identifier of an &lt;a&gt;Authorizer&lt;/a&gt; to use on this method. The &lt;code&gt;authorizationType&lt;/code&gt; must be &lt;code&gt;CUSTOM&lt;/code&gt;.&lt;/p&gt;
+-- <p> Represents a client-facing interface by which the client calls the API to access back-end resources. A <b>Method</b> resource is integrated with an <a>Integration</a> resource. Both consist of a request and one or more responses. The method request takes the client input that is passed to the back end through the integration request. A method response returns the output from the back end to the client through an integration response. A method request is embodied in a <b>Method</b> resource, whereas an integration request is embodied in an <a>Integration</a> resource. On the other hand, a method response is represented by a <a>MethodResponse</a> resource, whereas an integration response is represented by an <a>IntegrationResponse</a> resource. </p> <div class="remarks"> <p/> <h4>Example: Retrive the GET method on a specified resource</h4> <h5>Request</h5> <p>The following example request retrieves the information about the GET method on an API resource (<code>3kzxbg5sa2</code>) of an API (<code>fugvjdxtri</code>). </p> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T210259Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": true, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E\")" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }</code></pre> <p>In the example above, the response template for the <code>200 OK</code> response maps the JSON output from the <code>ListStreams</code> action in the back end to an XML output. The mapping template is URL-encoded as <code>%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E</code> and the output is decoded using the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#util-templat-reference">$util.urlDecode()</a> helper function.</p> </div> <div class="seeAlso"> <a>MethodResponse</a>, <a>Integration</a>, <a>IntegrationResponse</a>, <a>Resource</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html">Set up an API's method</a> </div>
+-- @param methodResponses [MapOfMethodResponse] <p>Gets a method response associated with a given HTTP status code. </p> <div class="remarks"> <p>The collection of method responses are encapsulated in a key-value map, where the key is a response's HTTP status code and the value is a <a>MethodResponse</a> resource that specifies the response returned to the caller from the back end through the integration response.</p> <h4>Example: Get a 200 OK response of a GET method</h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T215008Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.operator": false, "method.response.header.operand_2": false, "method.response.header.operand_1": false }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-method-response.html">AWS CLI</a> </div>
+-- @param requestParameters [MapOfStringToBoolean] <p>A key-value map defining required or optional method request parameters that can be accepted by Amazon API Gateway. A key is a method request parameter name matching the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (<code>true</code>) or optional (<code>false</code>). The method request parameter names defined here are available in <a>Integration</a> to be mapped to integration request parameters or templates.</p>
+-- @param requestModels [MapOfStringToString] <p>A key-value map specifying data schemas, represented by <a>Model</a> resources, (as the mapped value) of the request payloads of given content types (as the mapping key).</p>
+-- @param authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
+-- @param operationName [String] <p>A human-friendly operation identifier for the method. For example, you can assign the <code>operationName</code> of <code>ListPets</code> for the <code>GET /pets</code> method in <a href="http://petstore-demo-endpoint.execute-api.com/petstore/pets">PetStore</a> example.</p>
+-- @param apiKeyRequired [NullableBoolean] <p>A boolean flag specifying whether a valid <a>ApiKey</a> is required to invoke this method.</p>
+-- @param httpMethod [String] <p>The method's HTTP verb.</p>
+-- @param methodIntegration [Integration] <p>Gets the method's integration responsible for passing the client-submitted request to the back end and performing necessary transformations to make the request compliant with the back end.</p> <div class="remarks"> <p/> <h4>Example: </h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com Content-Length: 117 X-Amz-Date: 20160613T213210Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160613/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true } ], "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integration:responses": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": { "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\": \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.operator": "integration.response.body.op", "method.response.header.operand_2": "integration.response.body.b", "method.response.header.operand_1": "integration.response.body.a" }, "responseTemplates": { "application/json": "#set($res = $input.path('$'))\n{\n \"result\": \"$res.a, $res.b, $res.op => $res.c\",\n \"a\" : \"$res.a\",\n \"b\" : \"$res.b\",\n \"op\" : \"$res.op\",\n \"c\" : \"$res.c\"\n}" }, "selectionPattern": "", "statusCode": "200" } } }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html">AWS CLI</a> </div>
+-- @param requestValidatorId [String] <p>The identifier of a <a>RequestValidator</a> for request validation.</p>
+-- @param authorizerId [String] <p>The identifier of an <a>Authorizer</a> to use on this method. The <code>authorizationType</code> must be <code>CUSTOM</code>.</p>
 function M.Method(methodResponses, requestParameters, requestModels, authorizationType, operationName, apiKeyRequired, httpMethod, methodIntegration, requestValidatorId, authorizerId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Method")
 	local t = { 
@@ -3033,9 +3033,9 @@ function M.AssertModels(struct)
 end
 
 --- Create a structure of type Models
--- &lt;p&gt;Represents a collection of &lt;a&gt;Model&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a&gt;Method&lt;/a&gt;, &lt;a&gt;MethodResponse&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html&quot;&gt;Models and Mappings&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Represents a collection of &lt;a&gt;Model&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a&gt;Method&lt;/a&gt;, &lt;a&gt;MethodResponse&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html&quot;&gt;Models and Mappings&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfModel] &lt;p&gt;Gets the current &lt;a&gt;Model&lt;/a&gt; resource in the collection.&lt;/p&gt;
+-- <p>Represents a collection of <a>Model</a> resources.</p> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
+-- @param position [String] <p>Represents a collection of <a>Model</a> resources.</p> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
+-- @param items [ListOfModel] <p>Gets the current <a>Model</a> resource in the collection.</p>
 function M.Models(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Models")
 	local t = { 
@@ -3066,12 +3066,12 @@ function M.AssertUpdateMethodResponseRequest(struct)
 end
 
 --- Create a structure of type UpdateMethodResponseRequest
--- &lt;p&gt;A request to update an existing &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The &lt;a&gt;Resource&lt;/a&gt; identifier for the &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param statusCode [StatusCode] &lt;p&gt;The status code for the &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;The HTTP verb of the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>A request to update an existing <a>MethodResponse</a> resource.</p>
+-- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param statusCode [StatusCode] <p>The status code for the <a>MethodResponse</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -3104,9 +3104,9 @@ function M.AssertDeleteAuthorizerRequest(struct)
 end
 
 --- Create a structure of type DeleteAuthorizerRequest
--- &lt;p&gt;Request to delete an existing &lt;a&gt;Authorizer&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;Authorizer&lt;/a&gt; resource.&lt;/p&gt;
--- @param authorizerId [String] &lt;p&gt;The identifier of the &lt;a&gt;Authorizer&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>Request to delete an existing <a>Authorizer</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
+-- @param authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: authorizerId
 function M.DeleteAuthorizerRequest(restApiId, authorizerId, ...)
@@ -3144,17 +3144,17 @@ function M.AssertCreateAuthorizerRequest(struct)
 end
 
 --- Create a structure of type CreateAuthorizerRequest
--- &lt;p&gt;Request to add a new &lt;a&gt;Authorizer&lt;/a&gt; to an existing &lt;a&gt;RestApi&lt;/a&gt; resource.&lt;/p&gt;
--- @param authType [String] &lt;p&gt;Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier under which the &lt;a&gt;Authorizer&lt;/a&gt; will be created.&lt;/p&gt;
--- @param name [String] &lt;p&gt;[Required] The name of the authorizer.&lt;/p&gt;
--- @param providerARNs [ListOfARNs] &lt;p&gt;A list of the Cognito Your User Pool authorizer's provider ARNs.&lt;/p&gt;
--- @param authorizerUri [String] &lt;p&gt;[Required] Specifies the authorizer's Uniform Resource Identifier (URI).&lt;/p&gt;
--- @param identityValidationExpression [String] &lt;p&gt;A validation expression for the incoming identity.&lt;/p&gt;
--- @param authorizerResultTtlInSeconds [NullableInteger] &lt;p&gt;The TTL of cached authorizer results.&lt;/p&gt;
--- @param authorizerCredentials [String] &lt;p&gt;Specifies the credentials required for the authorizer, if any.&lt;/p&gt;
--- @param identitySource [String] &lt;p&gt;[Required] The source of the identity in an incoming request.&lt;/p&gt;
--- @param type [AuthorizerType] &lt;p&gt;[Required] The type of the authorizer.&lt;/p&gt;
+-- <p>Request to add a new <a>Authorizer</a> to an existing <a>RestApi</a> resource.</p>
+-- @param authType [String] <p>Optional customer-defined field, used in Swagger imports/exports. Has no functional impact.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Authorizer</a> will be created.</p>
+-- @param name [String] <p>[Required] The name of the authorizer.</p>
+-- @param providerARNs [ListOfARNs] <p>A list of the Cognito Your User Pool authorizer's provider ARNs.</p>
+-- @param authorizerUri [String] <p>[Required] Specifies the authorizer's Uniform Resource Identifier (URI).</p>
+-- @param identityValidationExpression [String] <p>A validation expression for the incoming identity.</p>
+-- @param authorizerResultTtlInSeconds [NullableInteger] <p>The TTL of cached authorizer results.</p>
+-- @param authorizerCredentials [String] <p>Specifies the credentials required for the authorizer, if any.</p>
+-- @param identitySource [String] <p>[Required] The source of the identity in an incoming request.</p>
+-- @param type [AuthorizerType] <p>[Required] The type of the authorizer.</p>
 -- Required parameter: restApiId
 -- Required parameter: name
 -- Required parameter: type
@@ -3198,17 +3198,17 @@ function M.AssertMethodSetting(struct)
 end
 
 --- Create a structure of type MethodSetting
--- &lt;p&gt;Specifies the method setting properties.&lt;/p&gt;
--- @param cacheTtlInSeconds [Integer] &lt;p&gt;Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached. The PATCH path for this setting is &lt;code&gt;/{method_setting_key}/caching/ttlInSeconds&lt;/code&gt;, and the value is an integer.&lt;/p&gt;
--- @param loggingLevel [String] &lt;p&gt;Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is &lt;code&gt;/{method_setting_key}/logging/loglevel&lt;/code&gt;, and the available levels are &lt;code&gt;OFF&lt;/code&gt;, &lt;code&gt;ERROR&lt;/code&gt;, and &lt;code&gt;INFO&lt;/code&gt;.&lt;/p&gt;
--- @param dataTraceEnabled [Boolean] &lt;p&gt;Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is &lt;code&gt;/{method_setting_key}/logging/dataTrace&lt;/code&gt;, and the value is a Boolean.&lt;/p&gt;
--- @param metricsEnabled [Boolean] &lt;p&gt;Specifies whether Amazon CloudWatch metrics are enabled for this method. The PATCH path for this setting is &lt;code&gt;/{method_setting_key}/metrics/enabled&lt;/code&gt;, and the value is a Boolean.&lt;/p&gt;
--- @param unauthorizedCacheControlHeaderStrategy [UnauthorizedCacheControlHeaderStrategy] &lt;p&gt;Specifies how to handle unauthorized requests for cache invalidation. The PATCH path for this setting is &lt;code&gt;/{method_setting_key}/caching/unauthorizedCacheControlHeaderStrategy&lt;/code&gt;, and the available values are &lt;code&gt;FAIL_WITH_403&lt;/code&gt;, &lt;code&gt;SUCCEED_WITH_RESPONSE_HEADER&lt;/code&gt;, &lt;code&gt;SUCCEED_WITHOUT_RESPONSE_HEADER&lt;/code&gt;.&lt;/p&gt;
--- @param throttlingRateLimit [Double] &lt;p&gt;Specifies the throttling rate limit. The PATCH path for this setting is &lt;code&gt;/{method_setting_key}/throttling/rateLimit&lt;/code&gt;, and the value is a double.&lt;/p&gt;
--- @param cacheDataEncrypted [Boolean] &lt;p&gt;Specifies whether the cached responses are encrypted. The PATCH path for this setting is &lt;code&gt;/{method_setting_key}/caching/dataEncrypted&lt;/code&gt;, and the value is a Boolean.&lt;/p&gt;
--- @param cachingEnabled [Boolean] &lt;p&gt;Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached. The PATCH path for this setting is &lt;code&gt;/{method_setting_key}/caching/enabled&lt;/code&gt;, and the value is a Boolean.&lt;/p&gt;
--- @param throttlingBurstLimit [Integer] &lt;p&gt;Specifies the throttling burst limit. The PATCH path for this setting is &lt;code&gt;/{method_setting_key}/throttling/burstLimit&lt;/code&gt;, and the value is an integer.&lt;/p&gt;
--- @param requireAuthorizationForCacheControl [Boolean] &lt;p&gt;Specifies whether authorization is required for a cache invalidation request. The PATCH path for this setting is &lt;code&gt;/{method_setting_key}/caching/requireAuthorizationForCacheControl&lt;/code&gt;, and the value is a Boolean.&lt;/p&gt;
+-- <p>Specifies the method setting properties.</p>
+-- @param cacheTtlInSeconds [Integer] <p>Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached. The PATCH path for this setting is <code>/{method_setting_key}/caching/ttlInSeconds</code>, and the value is an integer.</p>
+-- @param loggingLevel [String] <p>Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is <code>/{method_setting_key}/logging/loglevel</code>, and the available levels are <code>OFF</code>, <code>ERROR</code>, and <code>INFO</code>.</p>
+-- @param dataTraceEnabled [Boolean] <p>Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The PATCH path for this setting is <code>/{method_setting_key}/logging/dataTrace</code>, and the value is a Boolean.</p>
+-- @param metricsEnabled [Boolean] <p>Specifies whether Amazon CloudWatch metrics are enabled for this method. The PATCH path for this setting is <code>/{method_setting_key}/metrics/enabled</code>, and the value is a Boolean.</p>
+-- @param unauthorizedCacheControlHeaderStrategy [UnauthorizedCacheControlHeaderStrategy] <p>Specifies how to handle unauthorized requests for cache invalidation. The PATCH path for this setting is <code>/{method_setting_key}/caching/unauthorizedCacheControlHeaderStrategy</code>, and the available values are <code>FAIL_WITH_403</code>, <code>SUCCEED_WITH_RESPONSE_HEADER</code>, <code>SUCCEED_WITHOUT_RESPONSE_HEADER</code>.</p>
+-- @param throttlingRateLimit [Double] <p>Specifies the throttling rate limit. The PATCH path for this setting is <code>/{method_setting_key}/throttling/rateLimit</code>, and the value is a double.</p>
+-- @param cacheDataEncrypted [Boolean] <p>Specifies whether the cached responses are encrypted. The PATCH path for this setting is <code>/{method_setting_key}/caching/dataEncrypted</code>, and the value is a Boolean.</p>
+-- @param cachingEnabled [Boolean] <p>Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached. The PATCH path for this setting is <code>/{method_setting_key}/caching/enabled</code>, and the value is a Boolean.</p>
+-- @param throttlingBurstLimit [Integer] <p>Specifies the throttling burst limit. The PATCH path for this setting is <code>/{method_setting_key}/throttling/burstLimit</code>, and the value is an integer.</p>
+-- @param requireAuthorizationForCacheControl [Boolean] <p>Specifies whether authorization is required for a cache invalidation request. The PATCH path for this setting is <code>/{method_setting_key}/caching/requireAuthorizationForCacheControl</code>, and the value is a Boolean.</p>
 function M.MethodSetting(cacheTtlInSeconds, loggingLevel, dataTraceEnabled, metricsEnabled, unauthorizedCacheControlHeaderStrategy, throttlingRateLimit, cacheDataEncrypted, cachingEnabled, throttlingBurstLimit, requireAuthorizationForCacheControl, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MethodSetting")
 	local t = { 
@@ -3242,10 +3242,10 @@ function M.AssertGetDocumentationVersionsRequest(struct)
 end
 
 --- Create a structure of type GetDocumentationVersionsRequest
--- &lt;p&gt;Gets the documentation versions of an API.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of an API of the to-be-retrieved documentation versions.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page.&lt;/p&gt;
+-- <p>Gets the documentation versions of an API.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-retrieved documentation versions.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 -- Required parameter: restApiId
 function M.GetDocumentationVersionsRequest(position, restApiId, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentationVersionsRequest")
@@ -3277,11 +3277,11 @@ function M.AssertDeleteMethodResponseRequest(struct)
 end
 
 --- Create a structure of type DeleteMethodResponseRequest
--- &lt;p&gt;A request to delete an existing &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The &lt;a&gt;Resource&lt;/a&gt; identifier for the &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param statusCode [StatusCode] &lt;p&gt;The status code identifier for the &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;MethodResponse&lt;/a&gt; resource.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;The HTTP verb of the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>A request to delete an existing <a>MethodResponse</a> resource.</p>
+-- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param statusCode [StatusCode] <p>The status code identifier for the <a>MethodResponse</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>MethodResponse</a> resource.</p>
+-- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -3318,13 +3318,13 @@ function M.AssertGetUsageRequest(struct)
 end
 
 --- Create a structure of type GetUsageRequest
--- &lt;p&gt;The GET request to get the usage data of a usage plan in a specified time interval.&lt;/p&gt;
--- @param startDate [String] &lt;p&gt;The starting date (e.g., 2016-01-01) of the usage data.&lt;/p&gt;
--- @param keyId [String] &lt;p&gt;The Id of the API key associated with the resultant usage data.&lt;/p&gt;
--- @param usagePlanId [String] &lt;p&gt;The Id of the usage plan associated with the usage data.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param endDate [String] &lt;p&gt;The ending date (e.g., 2016-12-31) of the usage data.&lt;/p&gt;
+-- <p>The GET request to get the usage data of a usage plan in a specified time interval.</p>
+-- @param startDate [String] <p>The starting date (e.g., 2016-01-01) of the usage data.</p>
+-- @param keyId [String] <p>The Id of the API key associated with the resultant usage data.</p>
+-- @param usagePlanId [String] <p>The Id of the usage plan associated with the usage data.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param endDate [String] <p>The ending date (e.g., 2016-12-31) of the usage data.</p>
 -- Required parameter: usagePlanId
 -- Required parameter: startDate
 -- Required parameter: endDate
@@ -3358,10 +3358,10 @@ function M.AssertUpdateRequestValidatorRequest(struct)
 end
 
 --- Create a structure of type UpdateRequestValidatorRequest
--- &lt;p&gt;Updates a &lt;a&gt;RequestValidator&lt;/a&gt; of a given &lt;a&gt;RestApi&lt;/a&gt;.&lt;/p&gt;
--- @param requestValidatorId [String] &lt;p&gt;[Required] The identifier of &lt;a&gt;RequestValidator&lt;/a&gt; to be updated.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of the &lt;a&gt;RestApi&lt;/a&gt; for which the given &lt;a&gt;RequestValidator&lt;/a&gt; is updated.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
+-- @param requestValidatorId [String] <p>[Required] The identifier of <a>RequestValidator</a> to be updated.</p>
+-- @param restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> for which the given <a>RequestValidator</a> is updated.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: requestValidatorId
 function M.UpdateRequestValidatorRequest(requestValidatorId, restApiId, patchOperations, ...)
@@ -3392,10 +3392,10 @@ function M.AssertDeleteIntegrationRequest(struct)
 end
 
 --- Create a structure of type DeleteIntegrationRequest
--- &lt;p&gt;Represents a delete integration request.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;Specifies a delete integration request's resource identifier.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;Specifies a delete integration request's API identifier.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies a delete integration request's HTTP method.&lt;/p&gt;
+-- <p>Represents a delete integration request.</p>
+-- @param resourceId [String] <p>Specifies a delete integration request's resource identifier.</p>
+-- @param restApiId [String] <p>Specifies a delete integration request's API identifier.</p>
+-- @param httpMethod [String] <p>Specifies a delete integration request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -3424,9 +3424,9 @@ function M.AssertUpdateApiKeyRequest(struct)
 end
 
 --- Create a structure of type UpdateApiKeyRequest
--- &lt;p&gt;A request to change information about an &lt;a&gt;ApiKey&lt;/a&gt; resource.&lt;/p&gt;
--- @param apiKey [String] &lt;p&gt;The identifier of the &lt;a&gt;ApiKey&lt;/a&gt; resource to be updated.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>A request to change information about an <a>ApiKey</a> resource.</p>
+-- @param apiKey [String] <p>The identifier of the <a>ApiKey</a> resource to be updated.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: apiKey
 function M.UpdateApiKeyRequest(apiKey, patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApiKeyRequest")
@@ -3460,15 +3460,15 @@ function M.AssertTestInvokeMethodRequest(struct)
 end
 
 --- Create a structure of type TestInvokeMethodRequest
--- &lt;p&gt;Make a request to simulate the execution of a &lt;a&gt;Method&lt;/a&gt;.&lt;/p&gt;
--- @param body [String] &lt;p&gt;The simulated request body of an incoming invocation request.&lt;/p&gt;
--- @param clientCertificateId [String] &lt;p&gt;A &lt;a&gt;ClientCertificate&lt;/a&gt; identifier to use in the test invocation. API Gateway will use the certificate when making the HTTPS request to the defined back-end endpoint.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;Specifies a test invoke method request's API identifier.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies a test invoke method request's HTTP method.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;Specifies a test invoke method request's resource ID.&lt;/p&gt;
--- @param pathWithQueryString [String] &lt;p&gt;The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.&lt;/p&gt;
--- @param headers [MapOfHeaderValues] &lt;p&gt;A key-value map of headers to simulate an incoming invocation request.&lt;/p&gt;
--- @param stageVariables [MapOfStringToString] &lt;p&gt;A key-value map of stage variables to simulate an invocation on a deployed &lt;a&gt;Stage&lt;/a&gt;.&lt;/p&gt;
+-- <p>Make a request to simulate the execution of a <a>Method</a>.</p>
+-- @param body [String] <p>The simulated request body of an incoming invocation request.</p>
+-- @param clientCertificateId [String] <p>A <a>ClientCertificate</a> identifier to use in the test invocation. API Gateway will use the certificate when making the HTTPS request to the defined back-end endpoint.</p>
+-- @param restApiId [String] <p>Specifies a test invoke method request's API identifier.</p>
+-- @param httpMethod [String] <p>Specifies a test invoke method request's HTTP method.</p>
+-- @param resourceId [String] <p>Specifies a test invoke method request's resource ID.</p>
+-- @param pathWithQueryString [String] <p>The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.</p>
+-- @param headers [MapOfHeaderValues] <p>A key-value map of headers to simulate an incoming invocation request.</p>
+-- @param stageVariables [MapOfStringToString] <p>A key-value map of stage variables to simulate an invocation on a deployed <a>Stage</a>.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -3527,10 +3527,10 @@ function M.AssertUpdateModelRequest(struct)
 end
 
 --- Create a structure of type UpdateModelRequest
--- &lt;p&gt;Request to update an existing model in an existing &lt;a&gt;RestApi&lt;/a&gt; resource.&lt;/p&gt;
--- @param modelName [String] &lt;p&gt;The name of the model to update.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier under which the model exists.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>Request to update an existing model in an existing <a>RestApi</a> resource.</p>
+-- @param modelName [String] <p>The name of the model to update.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier under which the model exists.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: modelName
 function M.UpdateModelRequest(modelName, restApiId, patchOperations, ...)
@@ -3560,10 +3560,10 @@ function M.AssertUpdateDeploymentRequest(struct)
 end
 
 --- Create a structure of type UpdateDeploymentRequest
--- &lt;p&gt;Requests Amazon API Gateway to change information about a &lt;a&gt;Deployment&lt;/a&gt; resource.&lt;/p&gt;
--- @param deploymentId [String] &lt;p&gt;The replacement identifier for the &lt;a&gt;Deployment&lt;/a&gt; resource to change information about.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The replacement identifier of the &lt;a&gt;RestApi&lt;/a&gt; resource for the &lt;a&gt;Deployment&lt;/a&gt; resource to change information about.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to change information about a <a>Deployment</a> resource.</p>
+-- @param deploymentId [String] <p>The replacement identifier for the <a>Deployment</a> resource to change information about.</p>
+-- @param restApiId [String] <p>The replacement identifier of the <a>RestApi</a> resource for the <a>Deployment</a> resource to change information about.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: deploymentId
 function M.UpdateDeploymentRequest(deploymentId, restApiId, patchOperations, ...)
@@ -3595,12 +3595,12 @@ function M.AssertPutRestApiRequest(struct)
 end
 
 --- Create a structure of type PutRestApiRequest
--- &lt;p&gt;A PUT request to update an existing API, with external API definitions specified as the request body.&lt;/p&gt;
--- @param body [Blob] &lt;p&gt;The PUT request body containing external API definitions. Currently, only Swagger definition JSON files are supported.&lt;/p&gt;
--- @param failOnWarnings [Boolean] &lt;p&gt;A query parameter to indicate whether to rollback the API update (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;) when a warning is encountered. The default value is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; to be updated. &lt;/p&gt;
--- @param mode [PutMode] &lt;p&gt;The &lt;code&gt;mode&lt;/code&gt; query parameter to specify the update mode. Valid values are &quot;merge&quot; and &quot;overwrite&quot;. By default, the update mode is &quot;merge&quot;.&lt;/p&gt;
--- @param parameters [MapOfStringToString] &lt;p&gt;Custom headers supplied as part of the request. &lt;/p&gt;
+-- <p>A PUT request to update an existing API, with external API definitions specified as the request body.</p>
+-- @param body [Blob] <p>The PUT request body containing external API definitions. Currently, only Swagger definition JSON files are supported.</p>
+-- @param failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback the API update (<code>true</code>) or not (<code>false</code>) when a warning is encountered. The default value is <code>false</code>.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> to be updated. </p>
+-- @param mode [PutMode] <p>The <code>mode</code> query parameter to specify the update mode. Valid values are "merge" and "overwrite". By default, the update mode is "merge".</p>
+-- @param parameters [MapOfStringToString] <p>Custom headers supplied as part of the request. </p>
 -- Required parameter: restApiId
 -- Required parameter: body
 function M.PutRestApiRequest(body, failOnWarnings, restApiId, mode, parameters, ...)
@@ -3634,11 +3634,11 @@ function M.AssertGetSdkRequest(struct)
 end
 
 --- Create a structure of type GetSdkRequest
--- &lt;p&gt;Request a new generated client SDK for a &lt;a&gt;RestApi&lt;/a&gt; and &lt;a&gt;Stage&lt;/a&gt;.&lt;/p&gt;
--- @param sdkType [String] &lt;p&gt;The language for the generated SDK. Currently &lt;code&gt;javascript&lt;/code&gt;, &lt;code&gt;android&lt;/code&gt;, and &lt;code&gt;objectivec&lt;/code&gt; (for iOS) are supported.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; that the SDK will use.&lt;/p&gt;
--- @param parameters [MapOfStringToString] &lt;p&gt;A key-value map of query string parameters that specify properties of the SDK, depending on the requested &lt;code&gt;sdkType&lt;/code&gt;. For &lt;code&gt;sdkType&lt;/code&gt; of &lt;code&gt;objectivec&lt;/code&gt;, a parameter named &lt;code&gt;classPrefix&lt;/code&gt; is required. For &lt;code&gt;sdkType&lt;/code&gt; of &lt;code&gt;android&lt;/code&gt;, parameters named &lt;code&gt;groupId&lt;/code&gt;, &lt;code&gt;artifactId&lt;/code&gt;, &lt;code&gt;artifactVersion&lt;/code&gt;, and &lt;code&gt;invokerPackage&lt;/code&gt; are required.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The name of the &lt;a&gt;Stage&lt;/a&gt; that the SDK will use.&lt;/p&gt;
+-- <p>Request a new generated client SDK for a <a>RestApi</a> and <a>Stage</a>.</p>
+-- @param sdkType [String] <p>The language for the generated SDK. Currently <code>javascript</code>, <code>android</code>, and <code>objectivec</code> (for iOS) are supported.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> that the SDK will use.</p>
+-- @param parameters [MapOfStringToString] <p>A key-value map of query string parameters that specify properties of the SDK, depending on the requested <code>sdkType</code>. For <code>sdkType</code> of <code>objectivec</code>, a parameter named <code>classPrefix</code> is required. For <code>sdkType</code> of <code>android</code>, parameters named <code>groupId</code>, <code>artifactId</code>, <code>artifactVersion</code>, and <code>invokerPackage</code> are required.</p>
+-- @param stageName [String] <p>The name of the <a>Stage</a> that the SDK will use.</p>
 -- Required parameter: restApiId
 -- Required parameter: stageName
 -- Required parameter: sdkType
@@ -3670,10 +3670,10 @@ function M.AssertUpdateUsageRequest(struct)
 end
 
 --- Create a structure of type UpdateUsageRequest
--- &lt;p&gt;The PATCH request to grant a temporary extension to the reamining quota of a usage plan associated with a specified API key.&lt;/p&gt;
--- @param keyId [String] &lt;p&gt;The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.&lt;/p&gt;
--- @param usagePlanId [String] &lt;p&gt;The Id of the usage plan associated with the usage data.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>The PATCH request to grant a temporary extension to the reamining quota of a usage plan associated with a specified API key.</p>
+-- @param keyId [String] <p>The identifier of the API key associated with the usage plan in which a temporary extension is granted to the remaining quota.</p>
+-- @param usagePlanId [String] <p>The Id of the usage plan associated with the usage data.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: usagePlanId
 -- Required parameter: keyId
 function M.UpdateUsageRequest(keyId, usagePlanId, patchOperations, ...)
@@ -3700,9 +3700,9 @@ function M.AssertStageKey(struct)
 end
 
 --- Create a structure of type StageKey
--- &lt;p&gt;A reference to a unique stage identified in the format &lt;code&gt;{restApiId}/{stage}&lt;/code&gt;.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;A list of &lt;a&gt;Stage&lt;/a&gt; resources that are associated with the &lt;a&gt;ApiKey&lt;/a&gt; resource.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The stage name in the &lt;a&gt;RestApi&lt;/a&gt; that the stage key references.&lt;/p&gt;
+-- <p>A reference to a unique stage identified in the format <code>{restApiId}/{stage}</code>.</p>
+-- @param restApiId [String] <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p>
+-- @param stageName [String] <p>The stage name in the <a>RestApi</a> that the stage key references.</p>
 function M.StageKey(restApiId, stageName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StageKey")
 	local t = { 
@@ -3732,12 +3732,12 @@ function M.AssertCreateModelRequest(struct)
 end
 
 --- Create a structure of type CreateModelRequest
--- &lt;p&gt;Request to add a new &lt;a&gt;Model&lt;/a&gt; to an existing &lt;a&gt;RestApi&lt;/a&gt; resource.&lt;/p&gt;
--- @param contentType [String] &lt;p&gt;The content-type for the model.&lt;/p&gt;
--- @param schema [String] &lt;p&gt;The schema for the model. For &lt;code&gt;application/json&lt;/code&gt; models, this should be &lt;a href=&quot;http://json-schema.org/documentation.html&quot; target=&quot;_blank&quot;&gt;JSON-schema draft v4&lt;/a&gt; model.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier under which the &lt;a&gt;Model&lt;/a&gt; will be created.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the model.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of the model.&lt;/p&gt;
+-- <p>Request to add a new <a>Model</a> to an existing <a>RestApi</a> resource.</p>
+-- @param contentType [String] <p>The content-type for the model.</p>
+-- @param schema [String] <p>The schema for the model. For <code>application/json</code> models, this should be <a href="http://json-schema.org/documentation.html" target="_blank">JSON-schema draft v4</a> model.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Model</a> will be created.</p>
+-- @param name [String] <p>The name of the model.</p>
+-- @param description [String] <p>The description of the model.</p>
 -- Required parameter: restApiId
 -- Required parameter: name
 -- Required parameter: contentType
@@ -3767,9 +3767,9 @@ function M.AssertRequestValidators(struct)
 end
 
 --- Create a structure of type RequestValidators
--- &lt;p&gt;A collection of &lt;a&gt;RequestValidator&lt;/a&gt; resources of a given &lt;a&gt;RestApi&lt;/a&gt;.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p&gt;In Swagger, the &lt;a&gt;RequestValidators&lt;/a&gt; of an API is defined by the &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.html&quot;&gt;x-amazon-apigateway-request-validators&lt;/a&gt; extension.&lt;/p&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt;&lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html&quot;&gt;Enable Basic Request Validation in API Gateway&lt;/a&gt;&lt;/div&gt;
--- @param position [String] &lt;p&gt;A collection of &lt;a&gt;RequestValidator&lt;/a&gt; resources of a given &lt;a&gt;RestApi&lt;/a&gt;.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p&gt;In Swagger, the &lt;a&gt;RequestValidators&lt;/a&gt; of an API is defined by the &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.html&quot;&gt;x-amazon-apigateway-request-validators&lt;/a&gt; extension.&lt;/p&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt;&lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html&quot;&gt;Enable Basic Request Validation in API Gateway&lt;/a&gt;&lt;/div&gt;
--- @param items [ListOfRequestValidator] &lt;p&gt;The current page of &lt;a&gt;RequestValidator&lt;/a&gt; resources in the &lt;a&gt;RequestValidators&lt;/a&gt; collection.&lt;/p&gt;
+-- <p>A collection of <a>RequestValidator</a> resources of a given <a>RestApi</a>.</p> <div class="remarks"> <p>In Swagger, the <a>RequestValidators</a> of an API is defined by the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.html">x-amazon-apigateway-request-validators</a> extension.</p> </div> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
+-- @param position [String] <p>A collection of <a>RequestValidator</a> resources of a given <a>RestApi</a>.</p> <div class="remarks"> <p>In Swagger, the <a>RequestValidators</a> of an API is defined by the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.html">x-amazon-apigateway-request-validators</a> extension.</p> </div> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
+-- @param items [ListOfRequestValidator] <p>The current page of <a>RequestValidator</a> resources in the <a>RequestValidators</a> collection.</p>
 function M.RequestValidators(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestValidators")
 	local t = { 
@@ -3801,13 +3801,13 @@ function M.AssertPutMethodResponseRequest(struct)
 end
 
 --- Create a structure of type PutMethodResponseRequest
--- &lt;p&gt;Request to add a &lt;a&gt;MethodResponse&lt;/a&gt; to an existing &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param responseModels [MapOfStringToString] &lt;p&gt;Specifies the &lt;a&gt;Model&lt;/a&gt; resources used for the response's content type. Response models are represented as a key/value map, with a content type as the key and a &lt;a&gt;Model&lt;/a&gt; name as the value.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The &lt;a&gt;Resource&lt;/a&gt; identifier for the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;The HTTP verb of the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param responseParameters [MapOfStringToBoolean] &lt;p&gt;A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header name and the associated value is a Boolean flag indicating whether the method response parameter is required or not. The method response header names must match the pattern of &lt;code&gt;method.response.header.{name}&lt;/code&gt;, where &lt;code&gt;name&lt;/code&gt; is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in &lt;code&gt;integration.response.header.{name}&lt;/code&gt;, a static value enclosed within a pair of single quotes (e.g., &lt;code&gt;'application/json'&lt;/code&gt;), or a JSON expression from the back-end response payload in the form of &lt;code&gt;integration.response.body.{JSON-expression}&lt;/code&gt;, where &lt;code&gt;JSON-expression&lt;/code&gt; is a valid JSON expression without the &lt;code&gt;$&lt;/code&gt; prefix.)&lt;/p&gt;
--- @param statusCode [StatusCode] &lt;p&gt;The method response's status code.&lt;/p&gt;
+-- <p>Request to add a <a>MethodResponse</a> to an existing <a>Method</a> resource.</p>
+-- @param responseModels [MapOfStringToString] <p>Specifies the <a>Model</a> resources used for the response's content type. Response models are represented as a key/value map, with a content type as the key and a <a>Model</a> name as the value.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
+-- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
+-- @param responseParameters [MapOfStringToBoolean] <p>A key-value map specifying required or optional response parameters that Amazon API Gateway can send back to the caller. A key defines a method response header name and the associated value is a Boolean flag indicating whether the method response parameter is required or not. The method response header names must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The response parameter names defined here are available in the integration response to be mapped from an integration response header expressed in <code>integration.response.header.{name}</code>, a static value enclosed within a pair of single quotes (e.g., <code>'application/json'</code>), or a JSON expression from the back-end response payload in the form of <code>integration.response.body.{JSON-expression}</code>, where <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.)</p>
+-- @param statusCode [StatusCode] <p>The method response's status code.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -3841,10 +3841,10 @@ function M.AssertGetDeploymentsRequest(struct)
 end
 
 --- Create a structure of type GetDeploymentsRequest
--- &lt;p&gt;Requests Amazon API Gateway to get information about a &lt;a&gt;Deployments&lt;/a&gt; collection.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The identifier of the &lt;a&gt;RestApi&lt;/a&gt; resource for the collection of &lt;a&gt;Deployment&lt;/a&gt; resources to get information about.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to get information about a <a>Deployments</a> collection.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param restApiId [String] <p>The identifier of the <a>RestApi</a> resource for the collection of <a>Deployment</a> resources to get information about.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 -- Required parameter: restApiId
 function M.GetDeploymentsRequest(position, restApiId, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentsRequest")
@@ -3885,20 +3885,20 @@ function M.AssertPutIntegrationRequest(struct)
 end
 
 --- Create a structure of type PutIntegrationRequest
--- &lt;p&gt;Represents a put integration request.&lt;/p&gt;
--- @param passthroughBehavior [String] &lt;p&gt;Specifies the pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the &lt;code&gt;requestTemplates&lt;/code&gt; property on the Integration resource. There are three valid values: &lt;code&gt;WHEN_NO_MATCH&lt;/code&gt;, &lt;code&gt;WHEN_NO_TEMPLATES&lt;/code&gt;, and &lt;code&gt;NEVER&lt;/code&gt;. &lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;WHEN_NO_MATCH&lt;/code&gt; passes the request body for unmapped content types through to the integration back end without transformation.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;NEVER&lt;/code&gt; rejects unmapped content types with an HTTP 415 'Unsupported Media Type' response.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;WHEN_NO_TEMPLATES&lt;/code&gt; allows pass-through when the integration has NO content types mapped to templates. However if there is at least one content type defined, unmapped content types will be rejected with the same 415 response.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt;
--- @param restApiId [String] &lt;p&gt;Specifies a put integration request's API identifier.&lt;/p&gt;
--- @param cacheKeyParameters [ListOfString] &lt;p&gt;Specifies a put integration input's cache key parameters.&lt;/p&gt;
--- @param requestParameters [MapOfStringToString] &lt;p&gt;A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of &lt;code&gt;method.request.{location}.{name}&lt;/code&gt;, where &lt;code&gt;location&lt;/code&gt; is &lt;code&gt;querystring&lt;/code&gt;, &lt;code&gt;path&lt;/code&gt;, or &lt;code&gt;header&lt;/code&gt; and &lt;code&gt;name&lt;/code&gt; must be a valid and unique method request parameter name.&lt;/p&gt;
--- @param integrationHttpMethod [String] &lt;p&gt;Specifies a put integration HTTP method. When the integration type is HTTP or AWS, this field is required.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;Specifies a put integration request's resource ID.&lt;/p&gt;
--- @param uri [String] &lt;p&gt;Specifies a put integration input's Uniform Resource Identifier (URI). When the integration type is HTTP or AWS, this field is required. For integration with Lambda as an AWS service proxy, this value is of the 'arn:aws:apigateway:&amp;lt;region&amp;gt;:lambda:path/2015-03-31/functions/&amp;lt;functionArn&amp;gt;/invocations' format.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies a put integration request's HTTP method.&lt;/p&gt;
--- @param contentHandling [ContentHandlingStrategy] &lt;p&gt;Specifies how to handle request payload content type conversions. Supported values are &lt;code&gt;CONVERT_TO_BINARY&lt;/code&gt; and &lt;code&gt;CONVERT_TO_TEXT&lt;/code&gt;, with the following behaviors:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;CONVERT_TO_BINARY&lt;/code&gt;: Converts a request payload from a Base64-encoded string to the corresponding binary blob.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;CONVERT_TO_TEXT&lt;/code&gt;: Converts a request payload from a binary blob to a Base64-encoded string.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the &lt;code&gt;passthroughBehaviors&lt;/code&gt; is configured to support payload pass-through.&lt;/p&gt;
--- @param requestTemplates [MapOfStringToString] &lt;p&gt;Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.&lt;/p&gt;
--- @param cacheNamespace [String] &lt;p&gt;Specifies a put integration input's cache namespace.&lt;/p&gt;
--- @param credentials [String] &lt;p&gt;Specifies whether credentials are required for a put integration.&lt;/p&gt;
--- @param type [IntegrationType] &lt;p&gt;Specifies a put integration input's type.&lt;/p&gt;
+-- <p>Represents a put integration request.</p>
+-- @param passthroughBehavior [String] <p>Specifies the pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the <code>requestTemplates</code> property on the Integration resource. There are three valid values: <code>WHEN_NO_MATCH</code>, <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul> <li><p><code>WHEN_NO_MATCH</code> passes the request body for unmapped content types through to the integration back end without transformation.</p></li> <li><p><code>NEVER</code> rejects unmapped content types with an HTTP 415 'Unsupported Media Type' response.</p></li> <li><p><code>WHEN_NO_TEMPLATES</code> allows pass-through when the integration has NO content types mapped to templates. However if there is at least one content type defined, unmapped content types will be rejected with the same 415 response.</p></li> </ul>
+-- @param restApiId [String] <p>Specifies a put integration request's API identifier.</p>
+-- @param cacheKeyParameters [ListOfString] <p>Specifies a put integration input's cache key parameters.</p>
+-- @param requestParameters [MapOfStringToString] <p>A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> must be a valid and unique method request parameter name.</p>
+-- @param integrationHttpMethod [String] <p>Specifies a put integration HTTP method. When the integration type is HTTP or AWS, this field is required.</p>
+-- @param resourceId [String] <p>Specifies a put integration request's resource ID.</p>
+-- @param uri [String] <p>Specifies a put integration input's Uniform Resource Identifier (URI). When the integration type is HTTP or AWS, this field is required. For integration with Lambda as an AWS service proxy, this value is of the 'arn:aws:apigateway:&lt;region&gt;:lambda:path/2015-03-31/functions/&lt;functionArn&gt;/invocations' format.</p>
+-- @param httpMethod [String] <p>Specifies a put integration request's HTTP method.</p>
+-- @param contentHandling [ContentHandlingStrategy] <p>Specifies how to handle request payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to support payload pass-through.</p>
+-- @param requestTemplates [MapOfStringToString] <p>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.</p>
+-- @param cacheNamespace [String] <p>Specifies a put integration input's cache namespace.</p>
+-- @param credentials [String] <p>Specifies whether credentials are required for a put integration.</p>
+-- @param type [IntegrationType] <p>Specifies a put integration input's type.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -3940,10 +3940,10 @@ function M.AssertUpdateAuthorizerRequest(struct)
 end
 
 --- Create a structure of type UpdateAuthorizerRequest
--- &lt;p&gt;Request to update an existing &lt;a&gt;Authorizer&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;Authorizer&lt;/a&gt; resource.&lt;/p&gt;
--- @param authorizerId [String] &lt;p&gt;The identifier of the &lt;a&gt;Authorizer&lt;/a&gt; resource.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>Request to update an existing <a>Authorizer</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizer</a> resource.</p>
+-- @param authorizerId [String] <p>The identifier of the <a>Authorizer</a> resource.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: authorizerId
 function M.UpdateAuthorizerRequest(restApiId, authorizerId, patchOperations, ...)
@@ -3972,9 +3972,9 @@ function M.AssertGetDocumentationVersionRequest(struct)
 end
 
 --- Create a structure of type GetDocumentationVersionRequest
--- &lt;p&gt;Gets a documentation snapshot of an API.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of the API of the to-be-retrieved documentation snapshot.&lt;/p&gt;
--- @param documentationVersion [String] &lt;p&gt;[Required] The version identifier of the to-be-retrieved documentation snapshot.&lt;/p&gt;
+-- <p>Gets a documentation snapshot of an API.</p>
+-- @param restApiId [String] <p>[Required] The identifier of the API of the to-be-retrieved documentation snapshot.</p>
+-- @param documentationVersion [String] <p>[Required] The version identifier of the to-be-retrieved documentation snapshot.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationVersion
 function M.GetDocumentationVersionRequest(restApiId, documentationVersion, ...)
@@ -4004,11 +4004,11 @@ function M.AssertCreateDocumentationVersionRequest(struct)
 end
 
 --- Create a structure of type CreateDocumentationVersionRequest
--- &lt;p&gt;Creates a new documentation version of a given API.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] Specifies the API identifier of the to-be-created documentation version.&lt;/p&gt;
--- @param stageName [String] &lt;p&gt;The stage name to be associated with the new documentation snapshot.&lt;/p&gt;
--- @param documentationVersion [String] &lt;p&gt;[Required] The version identifier of the new snapshot.&lt;/p&gt;
--- @param description [String] &lt;p&gt;A description about the new documentation snapshot.&lt;/p&gt;
+-- <p>Creates a new documentation version of a given API.</p>
+-- @param restApiId [String] <p>[Required] Specifies the API identifier of the to-be-created documentation version.</p>
+-- @param stageName [String] <p>The stage name to be associated with the new documentation snapshot.</p>
+-- @param documentationVersion [String] <p>[Required] The version identifier of the new snapshot.</p>
+-- @param description [String] <p>A description about the new documentation snapshot.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationVersion
 function M.CreateDocumentationVersionRequest(restApiId, stageName, documentationVersion, description, ...)
@@ -4037,9 +4037,9 @@ function M.AssertUpdateRestApiRequest(struct)
 end
 
 --- Create a structure of type UpdateRestApiRequest
--- &lt;p&gt;Request to update an existing &lt;a&gt;RestApi&lt;/a&gt; resource in your collection.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The ID of the &lt;a&gt;RestApi&lt;/a&gt; you want to update.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>Request to update an existing <a>RestApi</a> resource in your collection.</p>
+-- @param restApiId [String] <p>The ID of the <a>RestApi</a> you want to update.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 function M.UpdateRestApiRequest(restApiId, patchOperations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRestApiRequest")
@@ -4067,10 +4067,10 @@ function M.AssertUpdateResourceRequest(struct)
 end
 
 --- Create a structure of type UpdateResourceRequest
--- &lt;p&gt;Request to change information about a &lt;a&gt;Resource&lt;/a&gt; resource.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The identifier of the &lt;a&gt;Resource&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;Resource&lt;/a&gt; resource.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>Request to change information about a <a>Resource</a> resource.</p>
+-- @param resourceId [String] <p>The identifier of the <a>Resource</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Resource</a> resource.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 function M.UpdateResourceRequest(resourceId, restApiId, patchOperations, ...)
@@ -4107,15 +4107,15 @@ function M.AssertPutIntegrationResponseRequest(struct)
 end
 
 --- Create a structure of type PutIntegrationResponseRequest
--- &lt;p&gt;Represents a put integration response request.&lt;/p&gt;
--- @param contentHandling [ContentHandlingStrategy] &lt;p&gt;Specifies how to handle response payload content type conversions. Supported values are &lt;code&gt;CONVERT_TO_BINARY&lt;/code&gt; and &lt;code&gt;CONVERT_TO_TEXT&lt;/code&gt;, with the following behaviors:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;CONVERT_TO_BINARY&lt;/code&gt;: Converts a response payload from a Base64-encoded string to the corresponding binary blob.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;CONVERT_TO_TEXT&lt;/code&gt;: Converts a response payload from a binary blob to a Base64-encoded string.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;Specifies a put integration response request's API identifier.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;Specifies a put integration response request's resource identifier.&lt;/p&gt;
--- @param responseTemplates [MapOfStringToString] &lt;p&gt;Specifies a put integration response's templates.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies a put integration response request's HTTP method.&lt;/p&gt;
--- @param selectionPattern [String] &lt;p&gt;Specifies the selection pattern of a put integration response.&lt;/p&gt;
--- @param statusCode [StatusCode] &lt;p&gt;Specifies the status code that is used to map the integration response to an existing &lt;a&gt;MethodResponse&lt;/a&gt;.&lt;/p&gt;
--- @param responseParameters [MapOfStringToString] &lt;p&gt;A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of &lt;code&gt;method.response.header.{name}&lt;/code&gt;, where &lt;code&gt;name&lt;/code&gt; is a valid and unique header name. The mapped non-static value must match the pattern of &lt;code&gt;integration.response.header.{name}&lt;/code&gt; or &lt;code&gt;integration.response.body.{JSON-expression}&lt;/code&gt;, where &lt;code&gt;name&lt;/code&gt; must be a valid and unique response header name and &lt;code&gt;JSON-expression&lt;/code&gt; a valid JSON expression without the &lt;code&gt;$&lt;/code&gt; prefix.&lt;/p&gt;
+-- <p>Represents a put integration response request.</p>
+-- @param contentHandling [ContentHandlingStrategy] <p>Specifies how to handle response payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a response payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a response payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.</p>
+-- @param restApiId [String] <p>Specifies a put integration response request's API identifier.</p>
+-- @param resourceId [String] <p>Specifies a put integration response request's resource identifier.</p>
+-- @param responseTemplates [MapOfStringToString] <p>Specifies a put integration response's templates.</p>
+-- @param httpMethod [String] <p>Specifies a put integration response request's HTTP method.</p>
+-- @param selectionPattern [String] <p>Specifies the selection pattern of a put integration response.</p>
+-- @param statusCode [StatusCode] <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
+-- @param responseParameters [MapOfStringToString] <p>A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The mapped non-static value must match the pattern of <code>integration.response.header.{name}</code> or <code>integration.response.body.{JSON-expression}</code>, where <code>name</code> must be a valid and unique response header name and <code>JSON-expression</code> a valid JSON expression without the <code>$</code> prefix.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -4152,11 +4152,11 @@ function M.AssertGetResourcesRequest(struct)
 end
 
 --- Create a structure of type GetResourcesRequest
--- &lt;p&gt;Request to list information about a collection of resources.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param embed [ListOfString] &lt;p&gt;A query parameter used to retrieve the specified resources embedded in the returned &lt;a&gt;Resources&lt;/a&gt; resource in the response. This &lt;code&gt;embed&lt;/code&gt; parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded &lt;a&gt;Method&lt;/a&gt; resources this way. The query parameter value must be a single-valued list and contain the &lt;code&gt;&quot;methods&quot;&lt;/code&gt; string. For example, &lt;code&gt;GET /restapis/{restapi_id}/resources?embed=methods&lt;/code&gt;.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the Resource.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.&lt;/p&gt;
+-- <p>Request to list information about a collection of resources.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param embed [ListOfString] <p>A query parameter used to retrieve the specified resources embedded in the returned <a>Resources</a> resource in the response. This <code>embed</code> parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded <a>Method</a> resources this way. The query parameter value must be a single-valued list and contain the <code>"methods"</code> string. For example, <code>GET /restapis/{restapi_id}/resources?embed=methods</code>.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the Resource.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 -- Required parameter: restApiId
 function M.GetResourcesRequest(position, embed, restApiId, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetResourcesRequest")
@@ -4185,10 +4185,10 @@ function M.AssertGetBasePathMappingsRequest(struct)
 end
 
 --- Create a structure of type GetBasePathMappingsRequest
--- &lt;p&gt;A request to get information about a collection of &lt;a&gt;BasePathMapping&lt;/a&gt; resources.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.&lt;/p&gt;
--- @param domainName [String] &lt;p&gt;The domain name of a &lt;a&gt;BasePathMapping&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>A request to get information about a collection of <a>BasePathMapping</a> resources.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
+-- @param domainName [String] <p>The domain name of a <a>BasePathMapping</a> resource.</p>
 -- Required parameter: domainName
 function M.GetBasePathMappingsRequest(position, limit, domainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetBasePathMappingsRequest")
@@ -4223,18 +4223,18 @@ function M.AssertIntegration(struct)
 end
 
 --- Create a structure of type Integration
--- &lt;p&gt;Represents an HTTP, HTTP_PROXY, AWS, AWS_PROXY, or Mock integration.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt;In the API Gateway console, the built-in Lambda integration is an AWS integration.&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html&quot;&gt;Creating an API&lt;/a&gt; &lt;/div&gt;
--- @param integrationResponses [MapOfIntegrationResponse] &lt;p&gt;Specifies the integration's responses.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p/&gt; &lt;h4&gt;Example: Get integration responses of a method&lt;/h4&gt; &lt;h5&gt;Request&lt;/h5&gt; &lt;p/&gt; &lt;pre&gt;&lt;code&gt;GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} &lt;/code&gt;&lt;/pre&gt; &lt;h5&gt;Response&lt;/h5&gt; &lt;p&gt;The successful response returns &lt;code&gt;200 OK&lt;/code&gt; status and a payload as follows:&lt;/p&gt; &lt;pre&gt;&lt;code&gt;{ &quot;_links&quot;: { &quot;curies&quot;: { &quot;href&quot;: &quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html&quot;, &quot;name&quot;: &quot;integrationresponse&quot;, &quot;templated&quot;: true }, &quot;self&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot;, &quot;title&quot;: &quot;200&quot; }, &quot;integrationresponse:delete&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot; }, &quot;integrationresponse:update&quot;: { &quot;href&quot;: &quot;/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200&quot; } }, &quot;responseParameters&quot;: { &quot;method.response.header.Content-Type&quot;: &quot;'application/xml'&quot; }, &quot;responseTemplates&quot;: { &quot;application/json&quot;: &quot;$util.urlDecode(\&quot;%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\&quot;)\n&quot; }, &quot;statusCode&quot;: &quot;200&quot; }&lt;/code&gt;&lt;/pre&gt; &lt;p/&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html&quot;&gt;Creating an API&lt;/a&gt; &lt;/div&gt;
--- @param passthroughBehavior [String] &lt;div&gt; &lt;p&gt; Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in &lt;code&gt;requestTemplates&lt;/code&gt;. There are three valid values: &lt;code&gt;WHEN_NO_MATCH&lt;/code&gt;, &lt;code&gt;WHEN_NO_TEMPLATES&lt;/code&gt;, and &lt;code&gt;NEVER&lt;/code&gt;. &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;code&gt;WHEN_NO_MATCH&lt;/code&gt; passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request. &lt;/li&gt; &lt;li&gt; &lt;code&gt;WHEN_NO_TEMPLATES&lt;/code&gt; passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP &lt;code&gt;415 Unsupported Media Type&lt;/code&gt; response. &lt;/li&gt; &lt;li&gt; &lt;code&gt;NEVER&lt;/code&gt; rejects the method request with an HTTP &lt;code&gt;415 Unsupported Media Type&lt;/code&gt; response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request. &lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;
--- @param cacheKeyParameters [ListOfString] &lt;p&gt;Specifies the integration's cache key parameters.&lt;/p&gt;
--- @param requestParameters [MapOfStringToString] &lt;p&gt;A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of &lt;code&gt;method.request.{location}.{name}&lt;/code&gt;, where &lt;code&gt;location&lt;/code&gt; is &lt;code&gt;querystring&lt;/code&gt;, &lt;code&gt;path&lt;/code&gt;, or &lt;code&gt;header&lt;/code&gt; and &lt;code&gt;name&lt;/code&gt; must be a valid and unique method request parameter name.&lt;/p&gt;
--- @param uri [String] &lt;p&gt;Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Uniform_Resource_Identifier&quot; target=&quot;_blank&quot;&gt;RFC-3986 specification&lt;/a&gt;. For AWS integrations, the URI should be of the form &lt;code&gt;arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}&lt;/code&gt;. &lt;code&gt;Region&lt;/code&gt;, &lt;code&gt;subdomain&lt;/code&gt; and &lt;code&gt;service&lt;/code&gt; are used to determine the right endpoint. For AWS services that use the &lt;code&gt;Action=&lt;/code&gt; query string parameter, &lt;code&gt;service_api&lt;/code&gt; should be a valid action for the desired service. For RESTful AWS service APIs, &lt;code&gt;path&lt;/code&gt; is used to indicate that the remaining substring in the URI should be treated as the path to the resource, including the initial &lt;code&gt;/&lt;/code&gt;.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies the integration's HTTP method type.&lt;/p&gt;
--- @param contentHandling [ContentHandlingStrategy] &lt;p&gt;Specifies how to handle request payload content type conversions. Supported values are &lt;code&gt;CONVERT_TO_BINARY&lt;/code&gt; and &lt;code&gt;CONVERT_TO_TEXT&lt;/code&gt;, with the following behaviors:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;CONVERT_TO_BINARY&lt;/code&gt;: Converts a request payload from a Base64-encoded string to the corresponding binary blob.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;CONVERT_TO_TEXT&lt;/code&gt;: Converts a request payload from a binary blob to a Base64-encoded string.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the &lt;code&gt;passthroughBehaviors&lt;/code&gt; is configured to support payload pass-through.&lt;/p&gt;
--- @param requestTemplates [MapOfStringToString] &lt;p&gt;Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.&lt;/p&gt;
--- @param cacheNamespace [String] &lt;p&gt;Specifies the integration's cache namespace.&lt;/p&gt;
--- @param credentials [String] &lt;p&gt;Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string &lt;code&gt;arn:aws:iam::\*:user/\*&lt;/code&gt;. To use resource-based permissions on supported AWS services, specify null.&lt;/p&gt;
--- @param type [IntegrationType] &lt;p&gt;Specifies the integration's type. The valid value is &lt;code&gt;HTTP&lt;/code&gt; for integrating with an HTTP back end, &lt;code&gt;AWS&lt;/code&gt; for any AWS service endpoints, &lt;code&gt;MOCK&lt;/code&gt; for testing without actually invoking the back end, &lt;code&gt;HTTP_PROXY&lt;/code&gt; for integrating with the HTTP proxy integration, or &lt;code&gt;AWS_PROXY&lt;/code&gt; for integrating with the Lambda proxy integration type.&lt;/p&gt;
+-- <p>Represents an HTTP, HTTP_PROXY, AWS, AWS_PROXY, or Mock integration.</p> <div class="remarks">In the API Gateway console, the built-in Lambda integration is an AWS integration.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
+-- @param integrationResponses [MapOfIntegrationResponse] <p>Specifies the integration's responses.</p> <div class="remarks"> <p/> <h4>Example: Get integration responses of a method</h4> <h5>Request</h5> <p/> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160607T191449Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160607/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} </code></pre> <h5>Response</h5> <p>The successful response returns <code>200 OK</code> status and a payload as follows:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n" }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
+-- @param passthroughBehavior [String] <div> <p> Specifies how the method request body of an unmapped content type will be passed through the integration request to the back end without transformation. A content type is unmapped if no mapping template is defined in the integration or the content type does not match any of the mapped content types, as specified in <code>requestTemplates</code>. There are three valid values: <code>WHEN_NO_MATCH</code>, <code>WHEN_NO_TEMPLATES</code>, and <code>NEVER</code>. </p> <ul> <li> <code>WHEN_NO_MATCH</code> passes the method request body through the integration request to the back end without transformation when the method request content type does not match any content type associated with the mapping templates defined in the integration request. </li> <li> <code>WHEN_NO_TEMPLATES</code> passes the method request body through the integration request to the back end without transformation when no mapping template is defined in the integration request. If a template is defined when this option is selected, the method request of an unmapped content-type will be rejected with an HTTP <code>415 Unsupported Media Type</code> response. </li> <li> <code>NEVER</code> rejects the method request with an HTTP <code>415 Unsupported Media Type</code> response when either the method request content type does not match any content type associated with the mapping templates defined in the integration request or no mapping template is defined in the integration request. </li> </ul> </div>
+-- @param cacheKeyParameters [ListOfString] <p>Specifies the integration's cache key parameters.</p>
+-- @param requestParameters [MapOfStringToString] <p>A key-value map specifying request parameters that are passed from the method request to the back end. The key is an integration request parameter name and the associated value is a method request parameter value or static value that must be enclosed within single quotes and pre-encoded as required by the back end. The method request parameter value must match the pattern of <code>method.request.{location}.{name}</code>, where <code>location</code> is <code>querystring</code>, <code>path</code>, or <code>header</code> and <code>name</code> must be a valid and unique method request parameter name.</p>
+-- @param uri [String] <p>Specifies the integration's Uniform Resource Identifier (URI). For HTTP integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_blank">RFC-3986 specification</a>. For AWS integrations, the URI should be of the form <code>arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}</code>. <code>Region</code>, <code>subdomain</code> and <code>service</code> are used to determine the right endpoint. For AWS services that use the <code>Action=</code> query string parameter, <code>service_api</code> should be a valid action for the desired service. For RESTful AWS service APIs, <code>path</code> is used to indicate that the remaining substring in the URI should be treated as the path to the resource, including the initial <code>/</code>.</p>
+-- @param httpMethod [String] <p>Specifies the integration's HTTP method type.</p>
+-- @param contentHandling [ContentHandlingStrategy] <p>Specifies how to handle request payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a request payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a request payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the request payload will be passed through from the method request to integration request without modification, provided that the <code>passthroughBehaviors</code> is configured to support payload pass-through.</p>
+-- @param requestTemplates [MapOfStringToString] <p>Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.</p>
+-- @param cacheNamespace [String] <p>Specifies the integration's cache namespace.</p>
+-- @param credentials [String] <p>Specifies the credentials required for the integration, if any. For AWS integrations, three options are available. To specify an IAM Role for Amazon API Gateway to assume, use the role's Amazon Resource Name (ARN). To require that the caller's identity be passed through from the request, specify the string <code>arn:aws:iam::\*:user/\*</code>. To use resource-based permissions on supported AWS services, specify null.</p>
+-- @param type [IntegrationType] <p>Specifies the integration's type. The valid value is <code>HTTP</code> for integrating with an HTTP back end, <code>AWS</code> for any AWS service endpoints, <code>MOCK</code> for testing without actually invoking the back end, <code>HTTP_PROXY</code> for integrating with the HTTP proxy integration, or <code>AWS_PROXY</code> for integrating with the Lambda proxy integration type.</p>
 function M.Integration(integrationResponses, passthroughBehavior, cacheKeyParameters, requestParameters, uri, httpMethod, contentHandling, requestTemplates, cacheNamespace, credentials, type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Integration")
 	local t = { 
@@ -4267,9 +4267,9 @@ function M.AssertRestApis(struct)
 end
 
 --- Create a structure of type RestApis
--- &lt;p&gt;Contains references to your APIs and links that guide you in how to interact with your collection. A collection offers a paginated view of your APIs.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html&quot;&gt;Create an API&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Contains references to your APIs and links that guide you in how to interact with your collection. A collection offers a paginated view of your APIs.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html&quot;&gt;Create an API&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfRestApi] &lt;p&gt;An array of links to the current page of &lt;a&gt;RestApi&lt;/a&gt; resources.&lt;/p&gt;
+-- <p>Contains references to your APIs and links that guide you in how to interact with your collection. A collection offers a paginated view of your APIs.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
+-- @param position [String] <p>Contains references to your APIs and links that guide you in how to interact with your collection. A collection offers a paginated view of your APIs.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
+-- @param items [ListOfRestApi] <p>An array of links to the current page of <a>RestApi</a> resources.</p>
 function M.RestApis(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RestApis")
 	local t = { 
@@ -4297,10 +4297,10 @@ function M.AssertCreateDocumentationPartRequest(struct)
 end
 
 --- Create a structure of type CreateDocumentationPartRequest
--- &lt;p&gt;Creates a new documentation part of a given API.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of an API of the to-be-created documentation part.&lt;/p&gt;
--- @param location [DocumentationPartLocation] &lt;p&gt;[Required] The location of the targeted API entity of the to-be-created documentation part.&lt;/p&gt;
--- @param properties [String] &lt;p&gt;[Required] The new documentation content map of the targeted API entity. Enclosed key-value pairs are API-specific, but only Swagger-compliant key-value pairs can be exported and, hence, published.&lt;/p&gt;
+-- <p>Creates a new documentation part of a given API.</p>
+-- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-created documentation part.</p>
+-- @param location [DocumentationPartLocation] <p>[Required] The location of the targeted API entity of the to-be-created documentation part.</p>
+-- @param properties [String] <p>[Required] The new documentation content map of the targeted API entity. Enclosed key-value pairs are API-specific, but only Swagger-compliant key-value pairs can be exported and, hence, published.</p>
 -- Required parameter: restApiId
 -- Required parameter: location
 -- Required parameter: properties
@@ -4332,11 +4332,11 @@ function M.AssertCreateBasePathMappingRequest(struct)
 end
 
 --- Create a structure of type CreateBasePathMappingRequest
--- &lt;p&gt;Requests Amazon API Gateway to create a new &lt;a&gt;BasePathMapping&lt;/a&gt; resource.&lt;/p&gt;
--- @param basePath [String] &lt;p&gt;The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a base path name after the domain name.&lt;/p&gt;
--- @param stage [String] &lt;p&gt;The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to explicitly specify the stage name after any base path name.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The name of the API that you want to apply this mapping to.&lt;/p&gt;
--- @param domainName [String] &lt;p&gt;The domain name of the &lt;a&gt;BasePathMapping&lt;/a&gt; resource to create.&lt;/p&gt;
+-- <p>Requests Amazon API Gateway to create a new <a>BasePathMapping</a> resource.</p>
+-- @param basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify a base path name after the domain name.</p>
+-- @param stage [String] <p>The name of the API's stage that you want to use for this mapping. Leave this blank if you do not want callers to explicitly specify the stage name after any base path name.</p>
+-- @param restApiId [String] <p>The name of the API that you want to apply this mapping to.</p>
+-- @param domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to create.</p>
 -- Required parameter: domainName
 -- Required parameter: restApiId
 function M.CreateBasePathMappingRequest(basePath, stage, restApiId, domainName, ...)
@@ -4365,10 +4365,10 @@ function M.AssertGetUsagePlansRequest(struct)
 end
 
 --- Create a structure of type GetUsagePlansRequest
--- &lt;p&gt;The GET request to get all the usage plans of the caller's account.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param keyId [String] &lt;p&gt;The identifier of the API key associated with the usage plans.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page.&lt;/p&gt;
+-- <p>The GET request to get all the usage plans of the caller's account.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param keyId [String] <p>The identifier of the API key associated with the usage plans.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 function M.GetUsagePlansRequest(position, keyId, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUsagePlansRequest")
 	local t = { 
@@ -4393,8 +4393,8 @@ function M.AssertGetSdkTypeRequest(struct)
 end
 
 --- Create a structure of type GetSdkTypeRequest
--- &lt;p&gt;Get an &lt;a&gt;SdkType&lt;/a&gt; instance.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The identifier of the queried &lt;a&gt;SdkType&lt;/a&gt; instance.&lt;/p&gt;
+-- <p>Get an <a>SdkType</a> instance.</p>
+-- @param id [String] <p>The identifier of the queried <a>SdkType</a> instance.</p>
 -- Required parameter: id
 function M.GetSdkTypeRequest(id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetSdkTypeRequest")
@@ -4421,12 +4421,12 @@ function M.AssertSdkConfigurationProperty(struct)
 end
 
 --- Create a structure of type SdkConfigurationProperty
--- &lt;p&gt;A configuration property of an SDK type.&lt;/p&gt;
--- @param friendlyName [String] &lt;p&gt;The user-friendly name of an &lt;a&gt;SdkType&lt;/a&gt; configuration property.&lt;/p&gt;
--- @param defaultValue [String] &lt;p&gt;The default value of an &lt;a&gt;SdkType&lt;/a&gt; configuration property.&lt;/p&gt;
--- @param required [Boolean] &lt;p&gt;A boolean flag of an &lt;a&gt;SdkType&lt;/a&gt; configuration property to indicate if the associated SDK configuration property is required (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;).&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of a an &lt;a&gt;SdkType&lt;/a&gt; configuration property.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of an &lt;a&gt;SdkType&lt;/a&gt; configuration property.&lt;/p&gt;
+-- <p>A configuration property of an SDK type.</p>
+-- @param friendlyName [String] <p>The user-friendly name of an <a>SdkType</a> configuration property.</p>
+-- @param defaultValue [String] <p>The default value of an <a>SdkType</a> configuration property.</p>
+-- @param required [Boolean] <p>A boolean flag of an <a>SdkType</a> configuration property to indicate if the associated SDK configuration property is required (<code>true</code>) or not (<code>false</code>).</p>
+-- @param name [String] <p>The name of a an <a>SdkType</a> configuration property.</p>
+-- @param description [String] <p>The description of an <a>SdkType</a> configuration property.</p>
 function M.SdkConfigurationProperty(friendlyName, defaultValue, required, name, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SdkConfigurationProperty")
 	local t = { 
@@ -4460,16 +4460,16 @@ function M.AssertApiKey(struct)
 end
 
 --- Create a structure of type ApiKey
--- &lt;p&gt;A resource that can be distributed to callers for executing &lt;a&gt;Method&lt;/a&gt; resources that require an API key. API keys can be mapped to any &lt;a&gt;Stage&lt;/a&gt; on any &lt;a&gt;RestApi&lt;/a&gt;, which indicates that the callers with the API key can make requests to that stage.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html&quot;&gt;Use API Keys&lt;/a&gt; &lt;/div&gt;
--- @param description [String] &lt;p&gt;The description of the API Key.&lt;/p&gt;
--- @param enabled [Boolean] &lt;p&gt;Specifies whether the API Key can be used by callers.&lt;/p&gt;
--- @param value [String] &lt;p&gt;The value of the API Key.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The identifier of the API Key.&lt;/p&gt;
--- @param lastUpdatedDate [Timestamp] &lt;p&gt;The timestamp when the API Key was last updated.&lt;/p&gt;
--- @param createdDate [Timestamp] &lt;p&gt;The timestamp when the API Key was created.&lt;/p&gt;
--- @param stageKeys [ListOfString] &lt;p&gt;A list of &lt;a&gt;Stage&lt;/a&gt; resources that are associated with the &lt;a&gt;ApiKey&lt;/a&gt; resource.&lt;/p&gt;
--- @param customerId [String] &lt;p&gt;An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the API Key.&lt;/p&gt;
+-- <p>A resource that can be distributed to callers for executing <a>Method</a> resources that require an API key. API keys can be mapped to any <a>Stage</a> on any <a>RestApi</a>, which indicates that the callers with the API key can make requests to that stage.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
+-- @param description [String] <p>The description of the API Key.</p>
+-- @param enabled [Boolean] <p>Specifies whether the API Key can be used by callers.</p>
+-- @param value [String] <p>The value of the API Key.</p>
+-- @param id [String] <p>The identifier of the API Key.</p>
+-- @param lastUpdatedDate [Timestamp] <p>The timestamp when the API Key was last updated.</p>
+-- @param createdDate [Timestamp] <p>The timestamp when the API Key was created.</p>
+-- @param stageKeys [ListOfString] <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p>
+-- @param customerId [String] <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.</p>
+-- @param name [String] <p>The name of the API Key.</p>
 function M.ApiKey(description, enabled, value, id, lastUpdatedDate, createdDate, stageKeys, customerId, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApiKey")
 	local t = { 
@@ -4507,12 +4507,12 @@ function M.AssertUpdateIntegrationResponseRequest(struct)
 end
 
 --- Create a structure of type UpdateIntegrationResponseRequest
--- &lt;p&gt;Represents an update integration response request.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;Specifies an update integration response request's resource identifier.&lt;/p&gt;
--- @param statusCode [StatusCode] &lt;p&gt;Specifies an update integration response request's status code.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;Specifies an update integration response request's API identifier.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies an update integration response request's HTTP method.&lt;/p&gt;
+-- <p>Represents an update integration response request.</p>
+-- @param resourceId [String] <p>Specifies an update integration response request's resource identifier.</p>
+-- @param statusCode [StatusCode] <p>Specifies an update integration response request's status code.</p>
+-- @param restApiId [String] <p>Specifies an update integration response request's API identifier.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param httpMethod [String] <p>Specifies an update integration response request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -4543,9 +4543,9 @@ function M.AssertGetClientCertificatesRequest(struct)
 end
 
 --- Create a structure of type GetClientCertificatesRequest
--- &lt;p&gt;A request to get information about a collection of &lt;a&gt;ClientCertificate&lt;/a&gt; resources.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.&lt;/p&gt;
+-- <p>A request to get information about a collection of <a>ClientCertificate</a> resources.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 function M.GetClientCertificatesRequest(position, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetClientCertificatesRequest")
 	local t = { 
@@ -4571,10 +4571,10 @@ function M.AssertGetAuthorizersRequest(struct)
 end
 
 --- Create a structure of type GetAuthorizersRequest
--- &lt;p&gt;Request to describe an existing &lt;a&gt;Authorizers&lt;/a&gt; resource.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;Authorizers&lt;/a&gt; resource.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page.&lt;/p&gt;
+-- <p>Request to describe an existing <a>Authorizers</a> resource.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Authorizers</a> resource.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 -- Required parameter: restApiId
 function M.GetAuthorizersRequest(position, restApiId, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetAuthorizersRequest")
@@ -4600,8 +4600,8 @@ function M.AssertDeleteRestApiRequest(struct)
 end
 
 --- Create a structure of type DeleteRestApiRequest
--- &lt;p&gt;Request to delete the specified API from your collection.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The ID of the &lt;a&gt;RestApi&lt;/a&gt; you want to delete.&lt;/p&gt;
+-- <p>Request to delete the specified API from your collection.</p>
+-- @param restApiId [String] <p>The ID of the <a>RestApi</a> you want to delete.</p>
 -- Required parameter: restApiId
 function M.DeleteRestApiRequest(restApiId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRestApiRequest")
@@ -4627,11 +4627,11 @@ function M.AssertDeployment(struct)
 end
 
 --- Create a structure of type Deployment
--- &lt;p&gt;An immutable representation of a &lt;a&gt;RestApi&lt;/a&gt; resource that can be called by users using &lt;a&gt;Stages&lt;/a&gt;. A deployment must be associated with a &lt;a&gt;Stage&lt;/a&gt; for it to be callable over the Internet.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt;To create a deployment, call &lt;code&gt;POST&lt;/code&gt; on the &lt;a&gt;Deployments&lt;/a&gt; resource of a &lt;a&gt;RestApi&lt;/a&gt;. To view, update, or delete a deployment, call &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;PATCH&lt;/code&gt;, or &lt;code&gt;DELETE&lt;/code&gt; on the specified deployment resource (&lt;code&gt;/restapis/{restapi_id}/deployments/{deployment_id}&lt;/code&gt;).&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt;&lt;a&gt;RestApi&lt;/a&gt;, &lt;a&gt;Deployments&lt;/a&gt;, &lt;a&gt;Stage&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html&quot;&gt;AWS CLI&lt;/a&gt;, &lt;a href=&quot;https://aws.amazon.com/tools/&quot;&gt;AWS SDKs&lt;/a&gt; &lt;/div&gt;
--- @param apiSummary [PathToMapOfMethodSnapshot] &lt;p&gt;A summary of the &lt;a&gt;RestApi&lt;/a&gt; at the date and time that the deployment resource was created.&lt;/p&gt;
--- @param createdDate [Timestamp] &lt;p&gt;The date and time that the deployment resource was created.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The identifier for the deployment resource.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description for the deployment resource.&lt;/p&gt;
+-- <p>An immutable representation of a <a>RestApi</a> resource that can be called by users using <a>Stages</a>. A deployment must be associated with a <a>Stage</a> for it to be callable over the Internet.</p> <div class="remarks">To create a deployment, call <code>POST</code> on the <a>Deployments</a> resource of a <a>RestApi</a>. To view, update, or delete a deployment, call <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> on the specified deployment resource (<code>/restapis/{restapi_id}/deployments/{deployment_id}</code>).</div> <div class="seeAlso"><a>RestApi</a>, <a>Deployments</a>, <a>Stage</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
+-- @param apiSummary [PathToMapOfMethodSnapshot] <p>A summary of the <a>RestApi</a> at the date and time that the deployment resource was created.</p>
+-- @param createdDate [Timestamp] <p>The date and time that the deployment resource was created.</p>
+-- @param id [String] <p>The identifier for the deployment resource.</p>
+-- @param description [String] <p>The description for the deployment resource.</p>
 function M.Deployment(apiSummary, createdDate, id, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Deployment")
 	local t = { 
@@ -4660,10 +4660,10 @@ function M.AssertGetResourceRequest(struct)
 end
 
 --- Create a structure of type GetResourceRequest
--- &lt;p&gt;Request to list information about a resource.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The identifier for the &lt;a&gt;Resource&lt;/a&gt; resource.&lt;/p&gt;
--- @param embed [ListOfString] &lt;p&gt;A query parameter to retrieve the specified resources embedded in the returned &lt;a&gt;Resource&lt;/a&gt; representation in the response. This &lt;code&gt;embed&lt;/code&gt; parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded &lt;a&gt;Method&lt;/a&gt; resources this way. The query parameter value must be a single-valued list and contain the &lt;code&gt;&quot;methods&quot;&lt;/code&gt; string. For example, &lt;code&gt;GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods&lt;/code&gt;.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the resource.&lt;/p&gt;
+-- <p>Request to list information about a resource.</p>
+-- @param resourceId [String] <p>The identifier for the <a>Resource</a> resource.</p>
+-- @param embed [ListOfString] <p>A query parameter to retrieve the specified resources embedded in the returned <a>Resource</a> representation in the response. This <code>embed</code> parameter value is a list of comma-separated strings. Currently, the request supports only retrieval of the embedded <a>Method</a> resources this way. The query parameter value must be a single-valued list and contain the <code>"methods"</code> string. For example, <code>GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods</code>.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 function M.GetResourceRequest(resourceId, embed, restApiId, ...)
@@ -4692,9 +4692,9 @@ function M.AssertDeleteResourceRequest(struct)
 end
 
 --- Create a structure of type DeleteResourceRequest
--- &lt;p&gt;Request to delete a &lt;a&gt;Resource&lt;/a&gt;.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The identifier of the &lt;a&gt;Resource&lt;/a&gt; resource.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;Resource&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>Request to delete a <a>Resource</a>.</p>
+-- @param resourceId [String] <p>The identifier of the <a>Resource</a> resource.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Resource</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 function M.DeleteResourceRequest(resourceId, restApiId, ...)
@@ -4723,10 +4723,10 @@ end
 
 --- Create a structure of type PatchOperation
 -- A single patch operation to apply to the specified resource. Please refer to http://tools.ietf.org/html/rfc6902#section-4 for an explanation of how each operation is used.
--- @param path [String] &lt;p&gt;The &lt;code&gt;op&lt;/code&gt; operation's target, as identified by a &lt;a href=&quot;https://tools.ietf.org/html/draft-ietf-appsawg-json-pointer-08&quot;&gt;JSON Pointer&lt;/a&gt; value that references a location within the targeted resource. For example, if the target resource has an updateable property of &lt;code&gt;{&quot;name&quot;:&quot;value&quot;}&lt;/code&gt;, the path for this property is &lt;code&gt;/name&lt;/code&gt;. If the &lt;code&gt;name&lt;/code&gt; property value is a JSON object (e.g., &lt;code&gt;{&quot;name&quot;: {&quot;child/name&quot;: &quot;child-value&quot;}}&lt;/code&gt;), the path for the &lt;code&gt;child/name&lt;/code&gt; property will be &lt;code&gt;/name/child~1name&lt;/code&gt;. Any slash (&quot;/&quot;) character appearing in path names must be escaped with &quot;~1&quot;, as shown in the example above. Each &lt;code&gt;op&lt;/code&gt; operation can have only one &lt;code&gt;path&lt;/code&gt; associated with it.&lt;/p&gt;
--- @param from [String] &lt;p&gt; Not supported.&lt;/p&gt;
--- @param value [String] &lt;p&gt;The new target value of the update operation. When using AWS CLI to update a property of a JSON value, enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{&quot;a&quot;: ...}'. In a Windows shell, see &lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json&quot;&gt;Using JSON for Parameters&lt;/a&gt;.&lt;/p&gt;
--- @param op [Op] &lt;p&gt;An update operation to be performed with this PATCH request. The valid value can be &quot;add&quot;, &quot;remove&quot;, or &quot;replace&quot;. Not all valid operations are supported for a given resource. Support of the operations depends on specific operational contexts. Attempts to apply an unsupported operation on a resource will return an error message.&lt;/p&gt;
+-- @param path [String] <p>The <code>op</code> operation's target, as identified by a <a href="https://tools.ietf.org/html/draft-ietf-appsawg-json-pointer-08">JSON Pointer</a> value that references a location within the targeted resource. For example, if the target resource has an updateable property of <code>{"name":"value"}</code>, the path for this property is <code>/name</code>. If the <code>name</code> property value is a JSON object (e.g., <code>{"name": {"child/name": "child-value"}}</code>), the path for the <code>child/name</code> property will be <code>/name/child~1name</code>. Any slash ("/") character appearing in path names must be escaped with "~1", as shown in the example above. Each <code>op</code> operation can have only one <code>path</code> associated with it.</p>
+-- @param from [String] <p> Not supported.</p>
+-- @param value [String] <p>The new target value of the update operation. When using AWS CLI to update a property of a JSON value, enclose the JSON object with a pair of single quotes in a Linux shell, e.g., '{"a": ...}'. In a Windows shell, see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using JSON for Parameters</a>.</p>
+-- @param op [Op] <p>An update operation to be performed with this PATCH request. The valid value can be "add", "remove", or "replace". Not all valid operations are supported for a given resource. Support of the operations depends on specific operational contexts. Attempts to apply an unsupported operation on a resource will return an error message.</p>
 function M.PatchOperation(path, from, value, op, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PatchOperation")
 	local t = { 
@@ -4752,9 +4752,9 @@ function M.AssertApiStage(struct)
 end
 
 --- Create a structure of type ApiStage
--- &lt;p&gt;API stage name of the associated API stage in a usage plan.&lt;/p&gt;
--- @param apiId [String] &lt;p&gt;API Id of the associated API stage in a usage plan.&lt;/p&gt;
--- @param stage [String] &lt;p&gt;API stage name of the associated API stage in a usage plan.&lt;/p&gt;
+-- <p>API stage name of the associated API stage in a usage plan.</p>
+-- @param apiId [String] <p>API Id of the associated API stage in a usage plan.</p>
+-- @param stage [String] <p>API stage name of the associated API stage in a usage plan.</p>
 function M.ApiStage(apiId, stage, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ApiStage")
 	local t = { 
@@ -4781,10 +4781,10 @@ function M.AssertImportApiKeysRequest(struct)
 end
 
 --- Create a structure of type ImportApiKeysRequest
--- &lt;p&gt;The POST request to import API keys from an external source, such as a CSV-formatted file.&lt;/p&gt;
--- @param body [Blob] &lt;p&gt;The payload of the POST request to import API keys. For the payload format, see &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html&quot;&gt;API Key File Format&lt;/a&gt;.&lt;/p&gt;
--- @param failOnWarnings [Boolean] &lt;p&gt;A query parameter to indicate whether to rollback &lt;a&gt;ApiKey&lt;/a&gt; importation (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;) when error is encountered.&lt;/p&gt;
--- @param format [ApiKeysFormat] &lt;p&gt;A query parameter to specify the input format to imported API keys. Currently, only the &lt;code&gt;csv&lt;/code&gt; format is supported.&lt;/p&gt;
+-- <p>The POST request to import API keys from an external source, such as a CSV-formatted file.</p>
+-- @param body [Blob] <p>The payload of the POST request to import API keys. For the payload format, see <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-key-file-format.html">API Key File Format</a>.</p>
+-- @param failOnWarnings [Boolean] <p>A query parameter to indicate whether to rollback <a>ApiKey</a> importation (<code>true</code>) or not (<code>false</code>) when error is encountered.</p>
+-- @param format [ApiKeysFormat] <p>A query parameter to specify the input format to imported API keys. Currently, only the <code>csv</code> format is supported.</p>
 -- Required parameter: body
 -- Required parameter: format
 function M.ImportApiKeysRequest(body, failOnWarnings, format, ...)
@@ -4814,10 +4814,10 @@ function M.AssertGetModelRequest(struct)
 end
 
 --- Create a structure of type GetModelRequest
--- &lt;p&gt;Request to list information about a model in an existing &lt;a&gt;RestApi&lt;/a&gt; resource.&lt;/p&gt;
--- @param modelName [String] &lt;p&gt;The name of the model as an identifier.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier under which the &lt;a&gt;Model&lt;/a&gt; exists.&lt;/p&gt;
--- @param flatten [Boolean] &lt;p&gt;A query parameter of a Boolean value to resolve (&lt;code&gt;true&lt;/code&gt;) all external model references and returns a flattened model schema or not (&lt;code&gt;false&lt;/code&gt;) The default is &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
+-- <p>Request to list information about a model in an existing <a>RestApi</a> resource.</p>
+-- @param modelName [String] <p>The name of the model as an identifier.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier under which the <a>Model</a> exists.</p>
+-- @param flatten [Boolean] <p>A query parameter of a Boolean value to resolve (<code>true</code>) all external model references and returns a flattened model schema or not (<code>false</code>) The default is <code>false</code>.</p>
 -- Required parameter: restApiId
 -- Required parameter: modelName
 function M.GetModelRequest(modelName, restApiId, flatten, ...)
@@ -4846,9 +4846,9 @@ function M.AssertGetModelTemplateRequest(struct)
 end
 
 --- Create a structure of type GetModelTemplateRequest
--- &lt;p&gt;Request to generate a sample mapping template used to transform the payload.&lt;/p&gt;
--- @param modelName [String] &lt;p&gt;The name of the model for which to generate a template.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The ID of the &lt;a&gt;RestApi&lt;/a&gt; under which the model exists.&lt;/p&gt;
+-- <p>Request to generate a sample mapping template used to transform the payload.</p>
+-- @param modelName [String] <p>The name of the model for which to generate a template.</p>
+-- @param restApiId [String] <p>The ID of the <a>RestApi</a> under which the model exists.</p>
 -- Required parameter: restApiId
 -- Required parameter: modelName
 function M.GetModelTemplateRequest(modelName, restApiId, ...)
@@ -4877,12 +4877,12 @@ function M.AssertTestInvokeMethodResponse(struct)
 end
 
 --- Create a structure of type TestInvokeMethodResponse
--- &lt;p&gt;Represents the response of the test invoke request in the HTTP method.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console&quot;&gt;Test API using the API Gateway console&lt;/a&gt; &lt;/div&gt;
--- @param status [Integer] &lt;p&gt;The HTTP status code.&lt;/p&gt;
--- @param body [String] &lt;p&gt;The body of the HTTP response.&lt;/p&gt;
--- @param log [String] &lt;p&gt;The Amazon API Gateway execution log for the test invoke request.&lt;/p&gt;
--- @param latency [Long] &lt;p&gt;The execution latency of the test invoke request.&lt;/p&gt;
--- @param headers [MapOfHeaderValues] &lt;p&gt;The headers of the HTTP response.&lt;/p&gt;
+-- <p>Represents the response of the test invoke request in the HTTP method.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console">Test API using the API Gateway console</a> </div>
+-- @param status [Integer] <p>The HTTP status code.</p>
+-- @param body [String] <p>The body of the HTTP response.</p>
+-- @param log [String] <p>The Amazon API Gateway execution log for the test invoke request.</p>
+-- @param latency [Long] <p>The execution latency of the test invoke request.</p>
+-- @param headers [MapOfHeaderValues] <p>The headers of the HTTP response.</p>
 function M.TestInvokeMethodResponse(status, body, log, latency, headers, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestInvokeMethodResponse")
 	local t = { 
@@ -4909,9 +4909,9 @@ function M.AssertAuthorizers(struct)
 end
 
 --- Create a structure of type Authorizers
--- &lt;p&gt;Represents a collection of &lt;a&gt;Authorizer&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html&quot;&gt;Enable custom authorization&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Represents a collection of &lt;a&gt;Authorizer&lt;/a&gt; resources.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html&quot;&gt;Enable custom authorization&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfAuthorizer] &lt;p&gt;Gets the current list of &lt;a&gt;Authorizer&lt;/a&gt; resources in the collection.&lt;/p&gt;
+-- <p>Represents a collection of <a>Authorizer</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
+-- @param position [String] <p>Represents a collection of <a>Authorizer</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
+-- @param items [ListOfAuthorizer] <p>Gets the current list of <a>Authorizer</a> resources in the collection.</p>
 function M.Authorizers(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Authorizers")
 	local t = { 
@@ -4935,9 +4935,9 @@ function M.AssertUsagePlanKeys(struct)
 end
 
 --- Create a structure of type UsagePlanKeys
--- &lt;p&gt;Represents the collection of usage plan keys added to usage plans for the associated API keys and, possibly, other types of keys.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html&quot;&gt;Create and Use Usage Plans&lt;/a&gt; &lt;/div&gt;
--- @param position [String] &lt;p&gt;Represents the collection of usage plan keys added to usage plans for the associated API keys and, possibly, other types of keys.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html&quot;&gt;Create and Use Usage Plans&lt;/a&gt; &lt;/div&gt;
--- @param items [ListOfUsagePlanKey] &lt;p&gt;Gets the current item of the usage plan keys collection.&lt;/p&gt;
+-- <p>Represents the collection of usage plan keys added to usage plans for the associated API keys and, possibly, other types of keys.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
+-- @param position [String] <p>Represents the collection of usage plan keys added to usage plans for the associated API keys and, possibly, other types of keys.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
+-- @param items [ListOfUsagePlanKey] <p>Gets the current item of the usage plan keys collection.</p>
 function M.UsagePlanKeys(position, items, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UsagePlanKeys")
 	local t = { 
@@ -4964,12 +4964,12 @@ function M.AssertModel(struct)
 end
 
 --- Create a structure of type Model
--- &lt;p&gt;Represents the data structure of a method's request or response payload.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt; &lt;p&gt;A request model defines the data structure of the client-supplied request payload. A response model defines the data structure of the response payload returned by the back end. Although not required, models are useful for mapping payloads between the front end and back end.&lt;/p&gt; &lt;p&gt;A model is used for generating an API's SDK, validating the input request body, and creating a skeletal mapping template.&lt;/p&gt; &lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a&gt;Method&lt;/a&gt;, &lt;a&gt;MethodResponse&lt;/a&gt;, &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html&quot;&gt;Models and Mappings&lt;/a&gt; &lt;/div&gt;
--- @param description [String] &lt;p&gt;The description of the model.&lt;/p&gt;
--- @param schema [String] &lt;p&gt;The schema for the model. For &lt;code&gt;application/json&lt;/code&gt; models, this should be &lt;a href=&quot;http://json-schema.org/documentation.html&quot; target=&quot;_blank&quot;&gt;JSON-schema draft v4&lt;/a&gt; model. Do not include &quot;\*/&quot; characters in the description of any properties because such &quot;\*/&quot; characters may be interpreted as the closing marker for comments in some languages, such as Java or JavaScript, causing the installation of your API's SDK generated by API Gateway to fail.&lt;/p&gt;
--- @param contentType [String] &lt;p&gt;The content-type for the model.&lt;/p&gt;
--- @param id [String] &lt;p&gt;The identifier for the model resource.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the model.&lt;/p&gt;
+-- <p>Represents the data structure of a method's request or response payload.</p> <div class="remarks"> <p>A request model defines the data structure of the client-supplied request payload. A response model defines the data structure of the response payload returned by the back end. Although not required, models are useful for mapping payloads between the front end and back end.</p> <p>A model is used for generating an API's SDK, validating the input request body, and creating a skeletal mapping template.</p> </div> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
+-- @param description [String] <p>The description of the model.</p>
+-- @param schema [String] <p>The schema for the model. For <code>application/json</code> models, this should be <a href="http://json-schema.org/documentation.html" target="_blank">JSON-schema draft v4</a> model. Do not include "\*/" characters in the description of any properties because such "\*/" characters may be interpreted as the closing marker for comments in some languages, such as Java or JavaScript, causing the installation of your API's SDK generated by API Gateway to fail.</p>
+-- @param contentType [String] <p>The content-type for the model.</p>
+-- @param id [String] <p>The identifier for the model resource.</p>
+-- @param name [String] <p>The name of the model.</p>
 function M.Model(description, schema, contentType, id, name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Model")
 	local t = { 
@@ -5001,11 +5001,11 @@ function M.AssertUpdateMethodRequest(struct)
 end
 
 --- Create a structure of type UpdateMethodRequest
--- &lt;p&gt;Request to update an existing &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;The &lt;a&gt;Resource&lt;/a&gt; identifier for the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;The &lt;a&gt;RestApi&lt;/a&gt; identifier for the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;The HTTP verb of the &lt;a&gt;Method&lt;/a&gt; resource.&lt;/p&gt;
+-- <p>Request to update an existing <a>Method</a> resource.</p>
+-- @param resourceId [String] <p>The <a>Resource</a> identifier for the <a>Method</a> resource.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
+-- @param restApiId [String] <p>The <a>RestApi</a> identifier for the <a>Method</a> resource.</p>
+-- @param httpMethod [String] <p>The HTTP verb of the <a>Method</a> resource.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -5059,10 +5059,10 @@ function M.AssertGetRequestValidatorsRequest(struct)
 end
 
 --- Create a structure of type GetRequestValidatorsRequest
--- &lt;p&gt;Gets the &lt;a&gt;RequestValidators&lt;/a&gt; collection of a given &lt;a&gt;RestApi&lt;/a&gt;.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of a &lt;a&gt;RestApi&lt;/a&gt; to which the &lt;a&gt;RequestValidators&lt;/a&gt; collection belongs.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page.&lt;/p&gt;
+-- <p>Gets the <a>RequestValidators</a> collection of a given <a>RestApi</a>.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param restApiId [String] <p>[Required] The identifier of a <a>RestApi</a> to which the <a>RequestValidators</a> collection belongs.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 -- Required parameter: restApiId
 function M.GetRequestValidatorsRequest(position, restApiId, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetRequestValidatorsRequest")
@@ -5094,11 +5094,11 @@ function M.AssertDeleteIntegrationResponseRequest(struct)
 end
 
 --- Create a structure of type DeleteIntegrationResponseRequest
--- &lt;p&gt;Represents a delete integration response request.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;Specifies a delete integration response request's resource identifier.&lt;/p&gt;
--- @param statusCode [StatusCode] &lt;p&gt;Specifies a delete integration response request's status code.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;Specifies a delete integration response request's API identifier.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies a delete integration response request's HTTP method.&lt;/p&gt;
+-- <p>Represents a delete integration response request.</p>
+-- @param resourceId [String] <p>Specifies a delete integration response request's resource identifier.</p>
+-- @param statusCode [StatusCode] <p>Specifies a delete integration response request's status code.</p>
+-- @param restApiId [String] <p>Specifies a delete integration response request's API identifier.</p>
+-- @param httpMethod [String] <p>Specifies a delete integration response request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -5131,12 +5131,12 @@ function M.AssertIntegrationResponse(struct)
 end
 
 --- Create a structure of type IntegrationResponse
--- &lt;p&gt;Represents an integration response. The status code must map to an existing &lt;a&gt;MethodResponse&lt;/a&gt;, and parameters and templates can be used to transform the back-end response.&lt;/p&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html&quot;&gt;Creating an API&lt;/a&gt; &lt;/div&gt;
--- @param contentHandling [ContentHandlingStrategy] &lt;p&gt;Specifies how to handle response payload content type conversions. Supported values are &lt;code&gt;CONVERT_TO_BINARY&lt;/code&gt; and &lt;code&gt;CONVERT_TO_TEXT&lt;/code&gt;, with the following behaviors:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;CONVERT_TO_BINARY&lt;/code&gt;: Converts a response payload from a Base64-encoded string to the corresponding binary blob.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;&lt;code&gt;CONVERT_TO_TEXT&lt;/code&gt;: Converts a response payload from a binary blob to a Base64-encoded string.&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.&lt;/p&gt;
--- @param responseParameters [MapOfStringToString] &lt;p&gt;A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of &lt;code&gt;method.response.header.{name}&lt;/code&gt;, where &lt;code&gt;name&lt;/code&gt; is a valid and unique header name. The mapped non-static value must match the pattern of &lt;code&gt;integration.response.header.{name}&lt;/code&gt; or &lt;code&gt;integration.response.body.{JSON-expression}&lt;/code&gt;, where &lt;code&gt;name&lt;/code&gt; is a valid and unique response header name and &lt;code&gt;JSON-expression&lt;/code&gt; is a valid JSON expression without the &lt;code&gt;$&lt;/code&gt; prefix.&lt;/p&gt;
--- @param selectionPattern [String] &lt;p&gt;Specifies the regular expression (regex) pattern used to choose an integration response based on the response from the back end. For example, if the success response returns nothing and the error response returns some string, you could use the &lt;code&gt;.+&lt;/code&gt; regex to match error response. However, make sure that the error response does not contain any newline (&lt;code&gt;\n&lt;/code&gt;) character in such cases. If the back end is an AWS Lambda function, the AWS Lambda function error header is matched. For all other HTTP and AWS back ends, the HTTP status code is matched.&lt;/p&gt;
--- @param responseTemplates [MapOfStringToString] &lt;p&gt;Specifies the templates used to transform the integration response body. Response templates are represented as a key/value map, with a content-type as the key and a template as the value.&lt;/p&gt;
--- @param statusCode [StatusCode] &lt;p&gt;Specifies the status code that is used to map the integration response to an existing &lt;a&gt;MethodResponse&lt;/a&gt;.&lt;/p&gt;
+-- <p>Represents an integration response. The status code must map to an existing <a>MethodResponse</a>, and parameters and templates can be used to transform the back-end response.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
+-- @param contentHandling [ContentHandlingStrategy] <p>Specifies how to handle response payload content type conversions. Supported values are <code>CONVERT_TO_BINARY</code> and <code>CONVERT_TO_TEXT</code>, with the following behaviors:</p> <ul> <li><p><code>CONVERT_TO_BINARY</code>: Converts a response payload from a Base64-encoded string to the corresponding binary blob.</p></li> <li><p><code>CONVERT_TO_TEXT</code>: Converts a response payload from a binary blob to a Base64-encoded string.</p></li> </ul> <p>If this property is not defined, the response payload will be passed through from the integration response to the method response without modification.</p>
+-- @param responseParameters [MapOfStringToString] <p>A key-value map specifying response parameters that are passed to the method response from the back end. The key is a method response header parameter name and the mapped value is an integration response header value, a static value enclosed within a pair of single quotes, or a JSON expression from the integration response body. The mapping key must match the pattern of <code>method.response.header.{name}</code>, where <code>name</code> is a valid and unique header name. The mapped non-static value must match the pattern of <code>integration.response.header.{name}</code> or <code>integration.response.body.{JSON-expression}</code>, where <code>name</code> is a valid and unique response header name and <code>JSON-expression</code> is a valid JSON expression without the <code>$</code> prefix.</p>
+-- @param selectionPattern [String] <p>Specifies the regular expression (regex) pattern used to choose an integration response based on the response from the back end. For example, if the success response returns nothing and the error response returns some string, you could use the <code>.+</code> regex to match error response. However, make sure that the error response does not contain any newline (<code>\n</code>) character in such cases. If the back end is an AWS Lambda function, the AWS Lambda function error header is matched. For all other HTTP and AWS back ends, the HTTP status code is matched.</p>
+-- @param responseTemplates [MapOfStringToString] <p>Specifies the templates used to transform the integration response body. Response templates are represented as a key/value map, with a content-type as the key and a template as the value.</p>
+-- @param statusCode [StatusCode] <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
 function M.IntegrationResponse(contentHandling, responseParameters, selectionPattern, responseTemplates, statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IntegrationResponse")
 	local t = { 
@@ -5165,9 +5165,9 @@ function M.AssertGetBasePathMappingRequest(struct)
 end
 
 --- Create a structure of type GetBasePathMappingRequest
--- &lt;p&gt;Request to describe a &lt;a&gt;BasePathMapping&lt;/a&gt; resource.&lt;/p&gt;
--- @param basePath [String] &lt;p&gt;The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.&lt;/p&gt;
--- @param domainName [String] &lt;p&gt;The domain name of the &lt;a&gt;BasePathMapping&lt;/a&gt; resource to be described.&lt;/p&gt;
+-- <p>Request to describe a <a>BasePathMapping</a> resource.</p>
+-- @param basePath [String] <p>The base path name that callers of the API must provide as part of the URL after the domain name. This value must be unique for all of the mappings across a single API. Leave this blank if you do not want callers to specify any base path name after the domain name.</p>
+-- @param domainName [String] <p>The domain name of the <a>BasePathMapping</a> resource to be described.</p>
 -- Required parameter: domainName
 -- Required parameter: basePath
 function M.GetBasePathMappingRequest(basePath, domainName, ...)
@@ -5195,9 +5195,9 @@ function M.AssertGetRequestValidatorRequest(struct)
 end
 
 --- Create a structure of type GetRequestValidatorRequest
--- &lt;p&gt;Gets a &lt;a&gt;RequestValidator&lt;/a&gt; of a given &lt;a&gt;RestApi&lt;/a&gt;.&lt;/p&gt;
--- @param requestValidatorId [String] &lt;p&gt;[Required] The identifier of the &lt;a&gt;RequestValidator&lt;/a&gt; to be retrieved.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of the &lt;a&gt;RestApi&lt;/a&gt; to which the specified &lt;a&gt;RequestValidator&lt;/a&gt; belongs.&lt;/p&gt;
+-- <p>Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
+-- @param requestValidatorId [String] <p>[Required] The identifier of the <a>RequestValidator</a> to be retrieved.</p>
+-- @param restApiId [String] <p>[Required] The identifier of the <a>RestApi</a> to which the specified <a>RequestValidator</a> belongs.</p>
 -- Required parameter: restApiId
 -- Required parameter: requestValidatorId
 function M.GetRequestValidatorRequest(requestValidatorId, restApiId, ...)
@@ -5226,12 +5226,12 @@ function M.AssertClientCertificate(struct)
 end
 
 --- Create a structure of type ClientCertificate
--- &lt;p&gt;Represents a client certificate used to configure client-side SSL authentication while sending requests to the integration endpoint.&lt;/p&gt; &lt;div class=&quot;remarks&quot;&gt;Client certificates are used authenticate an API by the back-end server. To authenticate an API client (or user), use a custom &lt;a&gt;Authorizer&lt;/a&gt;.&lt;/div&gt; &lt;div class=&quot;seeAlso&quot;&gt; &lt;a href=&quot;http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html&quot;&gt;Use Client-Side Certificate&lt;/a&gt; &lt;/div&gt;
--- @param pemEncodedCertificate [String] &lt;p&gt;The PEM-encoded public key of the client certificate, which can be used to configure certificate authentication in the integration endpoint .&lt;/p&gt;
--- @param clientCertificateId [String] &lt;p&gt;The identifier of the client certificate.&lt;/p&gt;
--- @param expirationDate [Timestamp] &lt;p&gt;The timestamp when the client certificate will expire.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of the client certificate.&lt;/p&gt;
--- @param createdDate [Timestamp] &lt;p&gt;The timestamp when the client certificate was created.&lt;/p&gt;
+-- <p>Represents a client certificate used to configure client-side SSL authentication while sending requests to the integration endpoint.</p> <div class="remarks">Client certificates are used authenticate an API by the back-end server. To authenticate an API client (or user), use a custom <a>Authorizer</a>.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
+-- @param pemEncodedCertificate [String] <p>The PEM-encoded public key of the client certificate, which can be used to configure certificate authentication in the integration endpoint .</p>
+-- @param clientCertificateId [String] <p>The identifier of the client certificate.</p>
+-- @param expirationDate [Timestamp] <p>The timestamp when the client certificate will expire.</p>
+-- @param description [String] <p>The description of the client certificate.</p>
+-- @param createdDate [Timestamp] <p>The timestamp when the client certificate was created.</p>
 function M.ClientCertificate(pemEncodedCertificate, clientCertificateId, expirationDate, description, createdDate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ClientCertificate")
 	local t = { 
@@ -5262,10 +5262,10 @@ function M.AssertCreateUsagePlanKeyRequest(struct)
 end
 
 --- Create a structure of type CreateUsagePlanKeyRequest
--- &lt;p&gt;The POST request to create a usage plan key for adding an existing API key to a usage plan.&lt;/p&gt;
--- @param keyType [String] &lt;p&gt;The type of a &lt;a&gt;UsagePlanKey&lt;/a&gt; resource for a plan customer.&lt;/p&gt;
--- @param keyId [String] &lt;p&gt;The identifier of a &lt;a&gt;UsagePlanKey&lt;/a&gt; resource for a plan customer.&lt;/p&gt;
--- @param usagePlanId [String] &lt;p&gt;The Id of the &lt;a&gt;UsagePlan&lt;/a&gt; resource representing the usage plan containing the to-be-created &lt;a&gt;UsagePlanKey&lt;/a&gt; resource representing a plan customer.&lt;/p&gt;
+-- <p>The POST request to create a usage plan key for adding an existing API key to a usage plan.</p>
+-- @param keyType [String] <p>The type of a <a>UsagePlanKey</a> resource for a plan customer.</p>
+-- @param keyId [String] <p>The identifier of a <a>UsagePlanKey</a> resource for a plan customer.</p>
+-- @param usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-created <a>UsagePlanKey</a> resource representing a plan customer.</p>
 -- Required parameter: usagePlanId
 -- Required parameter: keyId
 -- Required parameter: keyType
@@ -5299,11 +5299,11 @@ function M.AssertGetIntegrationResponseRequest(struct)
 end
 
 --- Create a structure of type GetIntegrationResponseRequest
--- &lt;p&gt;Represents a get integration response request.&lt;/p&gt;
--- @param resourceId [String] &lt;p&gt;Specifies a get integration response request's resource identifier.&lt;/p&gt;
--- @param statusCode [StatusCode] &lt;p&gt;Specifies a get integration response request's status code.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;Specifies a get integration response request's API identifier.&lt;/p&gt;
--- @param httpMethod [String] &lt;p&gt;Specifies a get integration response request's HTTP method.&lt;/p&gt;
+-- <p>Represents a get integration response request.</p>
+-- @param resourceId [String] <p>Specifies a get integration response request's resource identifier.</p>
+-- @param statusCode [StatusCode] <p>Specifies a get integration response request's status code.</p>
+-- @param restApiId [String] <p>Specifies a get integration response request's API identifier.</p>
+-- @param httpMethod [String] <p>Specifies a get integration response request's HTTP method.</p>
 -- Required parameter: restApiId
 -- Required parameter: resourceId
 -- Required parameter: httpMethod
@@ -5336,10 +5336,10 @@ function M.AssertUpdateDocumentationPartRequest(struct)
 end
 
 --- Create a structure of type UpdateDocumentationPartRequest
--- &lt;p&gt;Updates an existing documentation part of a given API.&lt;/p&gt;
--- @param documentationPartId [String] &lt;p&gt;[Required] The identifier of the to-be-updated documentation part.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of an API of the to-be-updated documentation part.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>Updates an existing documentation part of a given API.</p>
+-- @param documentationPartId [String] <p>[Required] The identifier of the to-be-updated documentation part.</p>
+-- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-updated documentation part.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationPartId
 function M.UpdateDocumentationPartRequest(documentationPartId, restApiId, patchOperations, ...)
@@ -5369,11 +5369,11 @@ function M.AssertGetUsagePlanKeysRequest(struct)
 end
 
 --- Create a structure of type GetUsagePlanKeysRequest
--- &lt;p&gt;The GET request to get all the usage plan keys representing the API keys added to a specified usage plan.&lt;/p&gt;
--- @param position [String] &lt;p&gt;The current pagination position in the paged result set.&lt;/p&gt;
--- @param nameQuery [String] &lt;p&gt;A query parameter specifying the name of the to-be-returned usage plan keys.&lt;/p&gt;
--- @param usagePlanId [String] &lt;p&gt;The Id of the &lt;a&gt;UsagePlan&lt;/a&gt; resource representing the usage plan containing the to-be-retrieved &lt;a&gt;UsagePlanKey&lt;/a&gt; resource representing a plan customer.&lt;/p&gt;
--- @param limit [NullableInteger] &lt;p&gt;The maximum number of returned results per page.&lt;/p&gt;
+-- <p>The GET request to get all the usage plan keys representing the API keys added to a specified usage plan.</p>
+-- @param position [String] <p>The current pagination position in the paged result set.</p>
+-- @param nameQuery [String] <p>A query parameter specifying the name of the to-be-returned usage plan keys.</p>
+-- @param usagePlanId [String] <p>The Id of the <a>UsagePlan</a> resource representing the usage plan containing the to-be-retrieved <a>UsagePlanKey</a> resource representing a plan customer.</p>
+-- @param limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 -- Required parameter: usagePlanId
 function M.GetUsagePlanKeysRequest(position, nameQuery, usagePlanId, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetUsagePlanKeysRequest")
@@ -5404,12 +5404,12 @@ function M.AssertDocumentationPartLocation(struct)
 end
 
 --- Create a structure of type DocumentationPartLocation
--- &lt;p&gt;Specifies the target API entity to which the documentation applies.&lt;/p&gt;
--- @param path [String] &lt;p&gt;The URL path of the target. It is a valid field for the API entity types of &lt;code&gt;RESOURCE&lt;/code&gt;, &lt;code&gt;METHOD&lt;/code&gt;, &lt;code&gt;PATH_PARAMETER&lt;/code&gt;, &lt;code&gt;QUERY_PARAMETER&lt;/code&gt;, &lt;code&gt;REQUEST_HEADER&lt;/code&gt;, &lt;code&gt;REQUEST_BODY&lt;/code&gt;, &lt;code&gt;RESPONSE&lt;/code&gt;, &lt;code&gt;RESPONSE_HEADER&lt;/code&gt;, and &lt;code&gt;RESPONSE_BODY&lt;/code&gt;. The default value is &lt;code&gt;/&lt;/code&gt; for the root resource. When an applicable child entity inherits the content of another entity of the same type with more general specifications of the other &lt;code&gt;location&lt;/code&gt; attributes, the child entity's &lt;code&gt;path&lt;/code&gt; attribute must match that of the parent entity as a prefix.&lt;/p&gt;
--- @param type [DocumentationPartType] &lt;p&gt;The type of API entity to which the documentation content applies. It is a valid and required field for API entity types of &lt;code&gt;API&lt;/code&gt;, &lt;code&gt;AUTHORIZER&lt;/code&gt;, &lt;code&gt;MODEL&lt;/code&gt;, &lt;code&gt;RESOURCE&lt;/code&gt;, &lt;code&gt;METHOD&lt;/code&gt;, &lt;code&gt;PATH_PARAMETER&lt;/code&gt;, &lt;code&gt;QUERY_PARAMETER&lt;/code&gt;, &lt;code&gt;REQUEST_HEADER&lt;/code&gt;, &lt;code&gt;REQUEST_BODY&lt;/code&gt;, &lt;code&gt;RESPONSE&lt;/code&gt;, &lt;code&gt;RESPONSE_HEADER&lt;/code&gt;, and &lt;code&gt;RESPONSE_BODY&lt;/code&gt;. Content inheritance does not apply to any entity of the &lt;code&gt;API&lt;/code&gt;, &lt;code&gt;AUTHROZER&lt;/code&gt;, &lt;code&gt;METHOD&lt;/code&gt;, &lt;code&gt;MODEL&lt;/code&gt;, &lt;code&gt;REQUEST_BODY&lt;/code&gt;, or &lt;code&gt;RESOURCE&lt;/code&gt; type.&lt;/p&gt;
--- @param method [String] &lt;p&gt;The HTTP verb of a method. It is a valid field for the API entity types of &lt;code&gt;METHOD&lt;/code&gt;, &lt;code&gt;PATH_PARAMETER&lt;/code&gt;, &lt;code&gt;QUERY_PARAMETER&lt;/code&gt;, &lt;code&gt;REQUEST_HEADER&lt;/code&gt;, &lt;code&gt;REQUEST_BODY&lt;/code&gt;, &lt;code&gt;RESPONSE&lt;/code&gt;, &lt;code&gt;RESPONSE_HEADER&lt;/code&gt;, and &lt;code&gt;RESPONSE_BODY&lt;/code&gt;. The default value is &lt;code&gt;*&lt;/code&gt; for any method. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other &lt;code&gt;location&lt;/code&gt; attributes, the child entity's &lt;code&gt;method&lt;/code&gt; attribute must match that of the parent entity exactly.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the targeted API entity. It is a valid and required field for the API entity types of &lt;code&gt;AUTHORIZER&lt;/code&gt;, &lt;code&gt;MODEL&lt;/code&gt;, &lt;code&gt;PATH_PARAMETER&lt;/code&gt;, &lt;code&gt;QUERY_PARAMETER&lt;/code&gt;, &lt;code&gt;REQUEST_HEADER&lt;/code&gt;, &lt;code&gt;REQUEST_BODY&lt;/code&gt; and &lt;code&gt;RESPONSE_HEADER&lt;/code&gt;. It is an invalid field for any other entity type.&lt;/p&gt;
--- @param statusCode [DocumentationPartLocationStatusCode] &lt;p&gt;The HTTP status code of a response. It is a valid field for the API entity types of &lt;code&gt;RESPONSE&lt;/code&gt;, &lt;code&gt;RESPONSE_HEADER&lt;/code&gt;, and &lt;code&gt;RESPONSE_BODY&lt;/code&gt;. The default value is &lt;code&gt;*&lt;/code&gt; for any status code. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other &lt;code&gt;location&lt;/code&gt; attributes, the child entity's &lt;code&gt;statusCode&lt;/code&gt; attribute must match that of the parent entity exactly.&lt;/p&gt;
+-- <p>Specifies the target API entity to which the documentation applies.</p>
+-- @param path [String] <p>The URL path of the target. It is a valid field for the API entity types of <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>/</code> for the root resource. When an applicable child entity inherits the content of another entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>path</code> attribute must match that of the parent entity as a prefix.</p>
+-- @param type [DocumentationPartType] <p>The type of API entity to which the documentation content applies. It is a valid and required field for API entity types of <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Content inheritance does not apply to any entity of the <code>API</code>, <code>AUTHROZER</code>, <code>METHOD</code>, <code>MODEL</code>, <code>REQUEST_BODY</code>, or <code>RESOURCE</code> type.</p>
+-- @param method [String] <p>The HTTP verb of a method. It is a valid field for the API entity types of <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any method. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>method</code> attribute must match that of the parent entity exactly.</p>
+-- @param name [String] <p>The name of the targeted API entity. It is a valid and required field for the API entity types of <code>AUTHORIZER</code>, <code>MODEL</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code> and <code>RESPONSE_HEADER</code>. It is an invalid field for any other entity type.</p>
+-- @param statusCode [DocumentationPartLocationStatusCode] <p>The HTTP status code of a response. It is a valid field for the API entity types of <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. The default value is <code>*</code> for any status code. When an applicable child entity inherits the content of an entity of the same type with more general specifications of the other <code>location</code> attributes, the child entity's <code>statusCode</code> attribute must match that of the parent entity exactly.</p>
 -- Required parameter: type
 function M.DocumentationPartLocation(path, type, method, name, statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DocumentationPartLocation")
@@ -5440,10 +5440,10 @@ function M.AssertUpdateDocumentationVersionRequest(struct)
 end
 
 --- Create a structure of type UpdateDocumentationVersionRequest
--- &lt;p&gt;Updates an existing documentation version of an API.&lt;/p&gt;
--- @param restApiId [String] &lt;p&gt;[Required] The identifier of an API of the to-be-updated documentation version.&lt;/p&gt;
--- @param documentationVersion [String] &lt;p&gt;[Required] The version identifier of the to-be-updated documentation version.&lt;/p&gt;
--- @param patchOperations [ListOfPatchOperation] &lt;p&gt;A list of update operations to be applied to the specified resource and in the order specified in this list.&lt;/p&gt;
+-- <p>Updates an existing documentation version of an API.</p>
+-- @param restApiId [String] <p>[Required] The identifier of an API of the to-be-updated documentation version.</p>
+-- @param documentationVersion [String] <p>[Required] The version identifier of the to-be-updated documentation version.</p>
+-- @param patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- Required parameter: restApiId
 -- Required parameter: documentationVersion
 function M.UpdateDocumentationVersionRequest(restApiId, documentationVersion, patchOperations, ...)
@@ -5471,10 +5471,10 @@ function M.AssertExportResponse(struct)
 end
 
 --- Create a structure of type ExportResponse
--- &lt;p&gt;The binary blob response to &lt;a&gt;GetExport&lt;/a&gt;, which contains the generated SDK.&lt;/p&gt;
--- @param body [Blob] &lt;p&gt;The binary blob response to &lt;a&gt;GetExport&lt;/a&gt;, which contains the export.&lt;/p&gt;
--- @param contentType [String] &lt;p&gt;The content-type header value in the HTTP response. This will correspond to a valid 'accept' type in the request.&lt;/p&gt;
--- @param contentDisposition [String] &lt;p&gt;The content-disposition header value in the HTTP response.&lt;/p&gt;
+-- <p>The binary blob response to <a>GetExport</a>, which contains the generated SDK.</p>
+-- @param body [Blob] <p>The binary blob response to <a>GetExport</a>, which contains the export.</p>
+-- @param contentType [String] <p>The content-type header value in the HTTP response. This will correspond to a valid 'accept' type in the request.</p>
+-- @param contentDisposition [String] <p>The content-disposition header value in the HTTP response.</p>
 function M.ExportResponse(body, contentType, contentDisposition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExportResponse")
 	local t = { 
@@ -5504,14 +5504,14 @@ function M.AssertCreateApiKeyRequest(struct)
 end
 
 --- Create a structure of type CreateApiKeyRequest
--- &lt;p&gt;Request to create an &lt;a&gt;ApiKey&lt;/a&gt; resource.&lt;/p&gt;
--- @param name [String] &lt;p&gt;The name of the &lt;a&gt;ApiKey&lt;/a&gt;.&lt;/p&gt;
--- @param enabled [Boolean] &lt;p&gt;Specifies whether the &lt;a&gt;ApiKey&lt;/a&gt; can be used by callers.&lt;/p&gt;
--- @param value [String] &lt;p&gt;Specifies a value of the API key.&lt;/p&gt;
--- @param stageKeys [ListOfStageKeys] &lt;p&gt;DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.&lt;/p&gt;
--- @param generateDistinctId [Boolean] &lt;p&gt;Specifies whether (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;) the key identifier is distinct from the created API key value.&lt;/p&gt;
--- @param customerId [String] &lt;p&gt;An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.&lt;/p&gt;
--- @param description [String] &lt;p&gt;The description of the &lt;a&gt;ApiKey&lt;/a&gt;.&lt;/p&gt;
+-- <p>Request to create an <a>ApiKey</a> resource.</p>
+-- @param name [String] <p>The name of the <a>ApiKey</a>.</p>
+-- @param enabled [Boolean] <p>Specifies whether the <a>ApiKey</a> can be used by callers.</p>
+-- @param value [String] <p>Specifies a value of the API key.</p>
+-- @param stageKeys [ListOfStageKeys] <p>DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API key.</p>
+-- @param generateDistinctId [Boolean] <p>Specifies whether (<code>true</code>) or not (<code>false</code>) the key identifier is distinct from the created API key value.</p>
+-- @param customerId [String] <p>An AWS Marketplace customer identifier , when integrating with the AWS SaaS Marketplace.</p>
+-- @param description [String] <p>The description of the <a>ApiKey</a>.</p>
 function M.CreateApiKeyRequest(name, enabled, value, stageKeys, generateDistinctId, customerId, description, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateApiKeyRequest")
 	local t = { 
@@ -5544,7 +5544,7 @@ function M.AssertIntegrationType(str)
 	assert(type(str) == "string", "Expected IntegrationType to be of type 'string'")
 end
 
--- &lt;p&gt;The integration type. The valid value is &lt;code&gt;HTTP&lt;/code&gt; for integrating with an HTTP back end, &lt;code&gt;AWS&lt;/code&gt; for any AWS service endpoints, &lt;code&gt;MOCK&lt;/code&gt; for testing without actually invoking the back end, &lt;code&gt;HTTP_PROXY&lt;/code&gt; for integrating with the HTTP proxy integration, or &lt;code&gt;AWS_PROXY&lt;/code&gt; for integrating with the Lambda proxy integration type.&lt;/p&gt;
+-- <p>The integration type. The valid value is <code>HTTP</code> for integrating with an HTTP back end, <code>AWS</code> for any AWS service endpoints, <code>MOCK</code> for testing without actually invoking the back end, <code>HTTP_PROXY</code> for integrating with the HTTP proxy integration, or <code>AWS_PROXY</code> for integrating with the Lambda proxy integration type.</p>
 function M.IntegrationType(str)
 	M.AssertIntegrationType(str)
 	return str
@@ -5588,7 +5588,7 @@ function M.AssertAuthorizerType(str)
 	assert(type(str) == "string", "Expected AuthorizerType to be of type 'string'")
 end
 
--- &lt;p&gt;The authorizer type. the current value is &lt;code&gt;TOKEN&lt;/code&gt; for a Lambda function or &lt;code&gt;COGNITO_USER_POOLS&lt;/code&gt; for an Amazon Cognito Your User Pool.&lt;/p&gt;
+-- <p>The authorizer type. the current value is <code>TOKEN</code> for a Lambda function or <code>COGNITO_USER_POOLS</code> for an Amazon Cognito Your User Pool.</p>
 function M.AuthorizerType(str)
 	M.AssertAuthorizerType(str)
 	return str
@@ -5599,7 +5599,7 @@ function M.AssertCacheClusterStatus(str)
 	assert(type(str) == "string", "Expected CacheClusterStatus to be of type 'string'")
 end
 
--- &lt;p&gt;Returns the status of the &lt;b&gt;CacheCluster&lt;/b&gt;.&lt;/p&gt;
+-- <p>Returns the status of the <b>CacheCluster</b>.</p>
 function M.CacheClusterStatus(str)
 	M.AssertCacheClusterStatus(str)
 	return str
@@ -5644,7 +5644,7 @@ function M.AssertStatusCode(str)
 	assert(str:match("[1-5]%d%d"), "Expected string to match pattern '[1-5]%d%d'")
 end
 
--- &lt;p&gt;The status code.&lt;/p&gt;
+-- <p>The status code.</p>
 function M.StatusCode(str)
 	M.AssertStatusCode(str)
 	return str
@@ -5677,7 +5677,7 @@ function M.AssertCacheClusterSize(str)
 	assert(type(str) == "string", "Expected CacheClusterSize to be of type 'string'")
 end
 
--- &lt;p&gt;Returns the size of the &lt;b&gt;CacheCluster&lt;/b&gt;.&lt;/p&gt;
+-- <p>Returns the size of the <b>CacheCluster</b>.</p>
 function M.CacheClusterSize(str)
 	M.AssertCacheClusterSize(str)
 	return str

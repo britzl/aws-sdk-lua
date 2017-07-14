@@ -31,9 +31,9 @@ function M.AssertStorageGatewayError(struct)
 end
 
 --- Create a structure of type StorageGatewayError
--- &lt;p&gt;Provides additional information about an error that was returned by the service as an or. See the &lt;code&gt;errorCode&lt;/code&gt; and &lt;code&gt;errorDetails&lt;/code&gt; members for more information about the error.&lt;/p&gt;
--- @param errorCode [ErrorCode] &lt;p&gt;Additional information about the error.&lt;/p&gt;
--- @param errorDetails [errorDetails] &lt;p&gt;Human-readable text that provides detail about the error that occurred.&lt;/p&gt;
+-- <p>Provides additional information about an error that was returned by the service as an or. See the <code>errorCode</code> and <code>errorDetails</code> members for more information about the error.</p>
+-- @param errorCode [ErrorCode] <p>Additional information about the error.</p>
+-- @param errorDetails [errorDetails] <p>Human-readable text that provides detail about the error that occurred.</p>
 function M.StorageGatewayError(errorCode, errorDetails, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorageGatewayError")
 	local t = { 
@@ -81,8 +81,8 @@ function M.AssertShutdownGatewayOutput(struct)
 end
 
 --- Create a structure of type ShutdownGatewayOutput
--- &lt;p&gt;A JSON object containing the of the gateway that was shut down.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway that was shut down.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway that was shut down.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway that was shut down.</p>
 function M.ShutdownGatewayOutput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ShutdownGatewayOutput")
 	local t = { 
@@ -114,18 +114,18 @@ function M.AssertStorediSCSIVolume(struct)
 end
 
 --- Create a structure of type StorediSCSIVolume
--- &lt;p&gt;Describes an iSCSI stored volume.&lt;/p&gt;
--- @param VolumeSizeInBytes [long] &lt;p&gt;The size of the volume in bytes.&lt;/p&gt;
--- @param VolumeProgress [DoubleObject] &lt;p&gt;Represents the percentage complete if the volume is restoring or bootstrapping that represents the percent of data transferred. This field does not appear in the response if the stored volume is not restoring or bootstrapping.&lt;/p&gt;
--- @param VolumeDiskId [DiskId] &lt;p&gt;The ID of the local disk that was specified in the &lt;a&gt;CreateStorediSCSIVolume&lt;/a&gt; operation.&lt;/p&gt;
--- @param PreservedExistingData [boolean] &lt;p&gt;Indicates if when the stored volume was created, existing data on the underlying local disk was preserved.&lt;/p&gt; &lt;p&gt; Valid Values: true, false&lt;/p&gt;
--- @param VolumeiSCSIAttributes [VolumeiSCSIAttributes] &lt;p&gt;An &lt;a&gt;VolumeiSCSIAttributes&lt;/a&gt; object that represents a collection of iSCSI attributes for one stored volume.&lt;/p&gt;
--- @param VolumeType [VolumeType] &lt;p&gt;One of the VolumeType enumeration values describing the type of the volume.&lt;/p&gt;
--- @param VolumeId [VolumeId] &lt;p&gt;The unique identifier of the volume, e.g. vol-AE4B946D.&lt;/p&gt;
--- @param SourceSnapshotId [SnapshotId] &lt;p&gt;If the stored volume was created from a snapshot, this field contains the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not included.&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the storage volume.&lt;/p&gt;
--- @param CreatedDate [CreatedDate] &lt;p&gt;The date the volume was created. Volumes created prior to March 28, 2017 don’t have this time stamp.&lt;/p&gt;
--- @param VolumeStatus [VolumeStatus] &lt;p&gt;One of the VolumeStatus values that indicates the state of the storage volume.&lt;/p&gt;
+-- <p>Describes an iSCSI stored volume.</p>
+-- @param VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
+-- @param VolumeProgress [DoubleObject] <p>Represents the percentage complete if the volume is restoring or bootstrapping that represents the percent of data transferred. This field does not appear in the response if the stored volume is not restoring or bootstrapping.</p>
+-- @param VolumeDiskId [DiskId] <p>The ID of the local disk that was specified in the <a>CreateStorediSCSIVolume</a> operation.</p>
+-- @param PreservedExistingData [boolean] <p>Indicates if when the stored volume was created, existing data on the underlying local disk was preserved.</p> <p> Valid Values: true, false</p>
+-- @param VolumeiSCSIAttributes [VolumeiSCSIAttributes] <p>An <a>VolumeiSCSIAttributes</a> object that represents a collection of iSCSI attributes for one stored volume.</p>
+-- @param VolumeType [VolumeType] <p>One of the VolumeType enumeration values describing the type of the volume.</p>
+-- @param VolumeId [VolumeId] <p>The unique identifier of the volume, e.g. vol-AE4B946D.</p>
+-- @param SourceSnapshotId [SnapshotId] <p>If the stored volume was created from a snapshot, this field contains the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not included.</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume.</p>
+-- @param CreatedDate [CreatedDate] <p>The date the volume was created. Volumes created prior to March 28, 2017 don’t have this time stamp.</p>
+-- @param VolumeStatus [VolumeStatus] <p>One of the VolumeStatus values that indicates the state of the storage volume.</p>
 function M.StorediSCSIVolume(VolumeSizeInBytes, VolumeProgress, VolumeDiskId, PreservedExistingData, VolumeiSCSIAttributes, VolumeType, VolumeId, SourceSnapshotId, VolumeARN, CreatedDate, VolumeStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StorediSCSIVolume")
 	local t = { 
@@ -157,8 +157,8 @@ function M.AssertCancelRetrievalOutput(struct)
 end
 
 --- Create a structure of type CancelRetrievalOutput
--- &lt;p&gt;CancelRetrievalOutput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape for which retrieval was canceled.&lt;/p&gt;
+-- <p>CancelRetrievalOutput</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which retrieval was canceled.</p>
 function M.CancelRetrievalOutput(TapeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelRetrievalOutput")
 	local t = { 
@@ -183,9 +183,9 @@ function M.AssertDeleteTapeInput(struct)
 end
 
 --- Create a structure of type DeleteTapeInput
--- &lt;p&gt;DeleteTapeInput&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the &lt;a&gt;ListGateways&lt;/a&gt; operation to return a list of gateways for your account and region.&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape to delete.&lt;/p&gt;
+-- <p>DeleteTapeInput</p>
+-- @param GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape to delete.</p>
 -- Required parameter: GatewayARN
 -- Required parameter: TapeARN
 function M.DeleteTapeInput(GatewayARN, TapeARN, ...)
@@ -213,10 +213,10 @@ function M.AssertDescribeTapeRecoveryPointsInput(struct)
 end
 
 --- Create a structure of type DescribeTapeRecoveryPointsInput
--- &lt;p&gt;DescribeTapeRecoveryPointsInput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;An opaque string that indicates the position at which to begin describing the virtual tape recovery points.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;DescribeTapeRecoveryPointsInput&lt;/p&gt;
--- @param Limit [PositiveIntObject] &lt;p&gt;Specifies that the number of virtual tape recovery points that are described be limited to the specified number.&lt;/p&gt;
+-- <p>DescribeTapeRecoveryPointsInput</p>
+-- @param Marker [Marker] <p>An opaque string that indicates the position at which to begin describing the virtual tape recovery points.</p>
+-- @param GatewayARN [GatewayARN] <p>DescribeTapeRecoveryPointsInput</p>
+-- @param Limit [PositiveIntObject] <p>Specifies that the number of virtual tape recovery points that are described be limited to the specified number.</p>
 -- Required parameter: GatewayARN
 function M.DescribeTapeRecoveryPointsInput(Marker, GatewayARN, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapeRecoveryPointsInput")
@@ -249,16 +249,16 @@ function M.AssertCachediSCSIVolume(struct)
 end
 
 --- Create a structure of type CachediSCSIVolume
--- &lt;p&gt;Describes an iSCSI cached volume.&lt;/p&gt;
--- @param VolumeSizeInBytes [long] &lt;p&gt;The size of the volume in bytes.&lt;/p&gt;
--- @param VolumeProgress [DoubleObject] &lt;p&gt;Represents the percentage complete if the volume is restoring or bootstrapping that represents the percent of data transferred. This field does not appear in the response if the cached volume is not restoring or bootstrapping.&lt;/p&gt;
--- @param VolumeiSCSIAttributes [VolumeiSCSIAttributes] &lt;p&gt;An &lt;a&gt;VolumeiSCSIAttributes&lt;/a&gt; object that represents a collection of iSCSI attributes for one stored volume.&lt;/p&gt;
--- @param VolumeType [VolumeType] &lt;p&gt;One of the VolumeType enumeration values that describes the type of the volume.&lt;/p&gt;
--- @param VolumeId [VolumeId] &lt;p&gt;The unique identifier of the volume, e.g. vol-AE4B946D.&lt;/p&gt;
--- @param SourceSnapshotId [SnapshotId] &lt;p&gt;If the cached volume was created from a snapshot, this field contains the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not included.&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the storage volume.&lt;/p&gt;
--- @param CreatedDate [CreatedDate] &lt;p&gt;The date the volume was created. Volumes created prior to March 28, 2017 don’t have this time stamp.&lt;/p&gt;
--- @param VolumeStatus [VolumeStatus] &lt;p&gt;One of the VolumeStatus values that indicates the state of the storage volume.&lt;/p&gt;
+-- <p>Describes an iSCSI cached volume.</p>
+-- @param VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
+-- @param VolumeProgress [DoubleObject] <p>Represents the percentage complete if the volume is restoring or bootstrapping that represents the percent of data transferred. This field does not appear in the response if the cached volume is not restoring or bootstrapping.</p>
+-- @param VolumeiSCSIAttributes [VolumeiSCSIAttributes] <p>An <a>VolumeiSCSIAttributes</a> object that represents a collection of iSCSI attributes for one stored volume.</p>
+-- @param VolumeType [VolumeType] <p>One of the VolumeType enumeration values that describes the type of the volume.</p>
+-- @param VolumeId [VolumeId] <p>The unique identifier of the volume, e.g. vol-AE4B946D.</p>
+-- @param SourceSnapshotId [SnapshotId] <p>If the cached volume was created from a snapshot, this field contains the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not included.</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume.</p>
+-- @param CreatedDate [CreatedDate] <p>The date the volume was created. Volumes created prior to March 28, 2017 don’t have this time stamp.</p>
+-- @param VolumeStatus [VolumeStatus] <p>One of the VolumeStatus values that indicates the state of the storage volume.</p>
 function M.CachediSCSIVolume(VolumeSizeInBytes, VolumeProgress, VolumeiSCSIAttributes, VolumeType, VolumeId, SourceSnapshotId, VolumeARN, CreatedDate, VolumeStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CachediSCSIVolume")
 	local t = { 
@@ -291,9 +291,9 @@ function M.AssertDeleteBandwidthRateLimitInput(struct)
 end
 
 --- Create a structure of type DeleteBandwidthRateLimitInput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteBandwidthRateLimitInput$BandwidthType&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteBandwidthRateLimitInput$BandwidthType&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param BandwidthType [BandwidthType] &lt;p&gt;One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.&lt;/p&gt; &lt;p&gt;Valid Values: &lt;code&gt;Upload&lt;/code&gt;, &lt;code&gt;Download&lt;/code&gt;, &lt;code&gt;All&lt;/code&gt;.&lt;/p&gt;
+-- <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DeleteBandwidthRateLimitInput$BandwidthType</a> </p> </li> </ul>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DeleteBandwidthRateLimitInput$BandwidthType</a> </p> </li> </ul>
+-- @param BandwidthType [BandwidthType] <p>One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.</p> <p>Valid Values: <code>Upload</code>, <code>Download</code>, <code>All</code>.</p>
 -- Required parameter: GatewayARN
 -- Required parameter: BandwidthType
 function M.DeleteBandwidthRateLimitInput(GatewayARN, BandwidthType, ...)
@@ -327,12 +327,12 @@ function M.AssertCreateTapesInput(struct)
 end
 
 --- Create a structure of type CreateTapesInput
--- &lt;p&gt;CreateTapesInput&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the &lt;a&gt;ListGateways&lt;/a&gt; operation to return a list of gateways for your account and region.&lt;/p&gt;
--- @param TapeBarcodePrefix [TapeBarcodePrefix] &lt;p&gt;A prefix that you append to the barcode of the virtual tape you are creating. This prefix makes the barcode unique.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The prefix must be 1 to 4 characters in length and must be one of the uppercase letters from A to Z.&lt;/p&gt; &lt;/note&gt;
--- @param TapeSizeInBytes [TapeSize] &lt;p&gt;The size, in bytes, of the virtual tapes that you want to create.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The size must be aligned by gigabyte (1024*1024*1024 byte).&lt;/p&gt; &lt;/note&gt;
--- @param NumTapesToCreate [NumTapesToCreate] &lt;p&gt;The number of virtual tapes that you want to create.&lt;/p&gt;
--- @param ClientToken [ClientToken] &lt;p&gt;A unique identifier that you use to retry a request. If you retry a request, use the same &lt;code&gt;ClientToken&lt;/code&gt; you specified in the initial request.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Using the same &lt;code&gt;ClientToken&lt;/code&gt; prevents creating the tape multiple times.&lt;/p&gt; &lt;/note&gt;
+-- <p>CreateTapesInput</p>
+-- @param GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- @param TapeBarcodePrefix [TapeBarcodePrefix] <p>A prefix that you append to the barcode of the virtual tape you are creating. This prefix makes the barcode unique.</p> <note> <p>The prefix must be 1 to 4 characters in length and must be one of the uppercase letters from A to Z.</p> </note>
+-- @param TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tapes that you want to create.</p> <note> <p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
+-- @param NumTapesToCreate [NumTapesToCreate] <p>The number of virtual tapes that you want to create.</p>
+-- @param ClientToken [ClientToken] <p>A unique identifier that you use to retry a request. If you retry a request, use the same <code>ClientToken</code> you specified in the initial request.</p> <note> <p>Using the same <code>ClientToken</code> prevents creating the tape multiple times.</p> </note>
 -- Required parameter: GatewayARN
 -- Required parameter: TapeSizeInBytes
 -- Required parameter: ClientToken
@@ -366,9 +366,9 @@ function M.AssertRemoveTagsFromResourceInput(struct)
 end
 
 --- Create a structure of type RemoveTagsFromResourceInput
--- &lt;p&gt;RemoveTagsFromResourceInput&lt;/p&gt;
--- @param ResourceARN [ResourceARN] &lt;p&gt;The Amazon Resource Name (ARN) of the resource you want to remove the tags from.&lt;/p&gt;
--- @param TagKeys [TagKeys] &lt;p&gt;The keys of the tags you want to remove from the specified resource. A tag is composed of a key/value pair.&lt;/p&gt;
+-- <p>RemoveTagsFromResourceInput</p>
+-- @param ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource you want to remove the tags from.</p>
+-- @param TagKeys [TagKeys] <p>The keys of the tags you want to remove from the specified resource. A tag is composed of a key/value pair.</p>
 -- Required parameter: ResourceARN
 -- Required parameter: TagKeys
 function M.RemoveTagsFromResourceInput(ResourceARN, TagKeys, ...)
@@ -394,8 +394,8 @@ function M.AssertDeleteFileShareInput(struct)
 end
 
 --- Create a structure of type DeleteFileShareInput
--- &lt;p&gt;DeleteFileShareInput&lt;/p&gt;
--- @param FileShareARN [FileShareARN] &lt;p&gt;The Amazon Resource Name (ARN) of the file share to be deleted. &lt;/p&gt;
+-- <p>DeleteFileShareInput</p>
+-- @param FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the file share to be deleted. </p>
 -- Required parameter: FileShareARN
 function M.DeleteFileShareInput(FileShareARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFileShareInput")
@@ -421,9 +421,9 @@ function M.AssertAddWorkingStorageInput(struct)
 end
 
 --- Create a structure of type AddWorkingStorageInput
--- &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;AddWorkingStorageInput$DiskIds&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;AddWorkingStorageInput$DiskIds&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DiskIds [DiskIds] &lt;p&gt;An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the &lt;a&gt;ListLocalDisks&lt;/a&gt; API.&lt;/p&gt;
+-- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>AddWorkingStorageInput$DiskIds</a> </p> </li> </ul>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>AddWorkingStorageInput$DiskIds</a> </p> </li> </ul>
+-- @param DiskIds [DiskIds] <p>An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the <a>ListLocalDisks</a> API.</p>
 -- Required parameter: GatewayARN
 -- Required parameter: DiskIds
 function M.AddWorkingStorageInput(GatewayARN, DiskIds, ...)
@@ -450,10 +450,10 @@ function M.AssertListFileSharesOutput(struct)
 end
 
 --- Create a structure of type ListFileSharesOutput
--- &lt;p&gt;ListFileShareOutput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;If the request includes &lt;code&gt;Marker&lt;/code&gt;, the response returns that value in this field. &lt;/p&gt;
--- @param FileShareInfoList [FileShareInfoList] &lt;p&gt;An array of information about the file gateway's file shares. &lt;/p&gt;
--- @param NextMarker [Marker] &lt;p&gt;If a value is present, there are more file shares to return. In a subsequent request, use &lt;code&gt;NextMarker&lt;/code&gt; as the value for &lt;code&gt;Marker&lt;/code&gt; to retrieve the next set of file shares. &lt;/p&gt;
+-- <p>ListFileShareOutput</p>
+-- @param Marker [Marker] <p>If the request includes <code>Marker</code>, the response returns that value in this field. </p>
+-- @param FileShareInfoList [FileShareInfoList] <p>An array of information about the file gateway's file shares. </p>
+-- @param NextMarker [Marker] <p>If a value is present, there are more file shares to return. In a subsequent request, use <code>NextMarker</code> as the value for <code>Marker</code> to retrieve the next set of file shares. </p>
 function M.ListFileSharesOutput(Marker, FileShareInfoList, NextMarker, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFileSharesOutput")
 	local t = { 
@@ -480,11 +480,11 @@ function M.AssertChapInfo(struct)
 end
 
 --- Create a structure of type ChapInfo
--- &lt;p&gt;Describes Challenge-Handshake Authentication Protocol (CHAP) information that supports authentication between your gateway and iSCSI initiators.&lt;/p&gt;
--- @param TargetARN [TargetARN] &lt;p&gt;The Amazon Resource Name (ARN) of the volume.&lt;/p&gt; &lt;p&gt; Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).&lt;/p&gt;
--- @param SecretToAuthenticateInitiator [ChapSecret] &lt;p&gt;The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.&lt;/p&gt;
--- @param InitiatorName [IqnName] &lt;p&gt;The iSCSI initiator that connects to the target.&lt;/p&gt;
--- @param SecretToAuthenticateTarget [ChapSecret] &lt;p&gt;The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).&lt;/p&gt;
+-- <p>Describes Challenge-Handshake Authentication Protocol (CHAP) information that supports authentication between your gateway and iSCSI initiators.</p>
+-- @param TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the volume.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- @param SecretToAuthenticateInitiator [ChapSecret] <p>The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p>
+-- @param InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
+-- @param SecretToAuthenticateTarget [ChapSecret] <p>The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p>
 function M.ChapInfo(TargetARN, SecretToAuthenticateInitiator, InitiatorName, SecretToAuthenticateTarget, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ChapInfo")
 	local t = { 
@@ -561,11 +561,11 @@ function M.AssertDescribeTapesInput(struct)
 end
 
 --- Create a structure of type DescribeTapesInput
--- &lt;p&gt;DescribeTapesInput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;A marker value, obtained in a previous call to &lt;code&gt;DescribeTapes&lt;/code&gt;. This marker indicates which page of results to retrieve. &lt;/p&gt; &lt;p&gt;If not specified, the first page of results is retrieved.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;DescribeTapesInput&lt;/p&gt;
--- @param TapeARNs [TapeARNs] &lt;p&gt;Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe. If this parameter is not specified, Tape gateway returns a description of all virtual tapes associated with the specified gateway.&lt;/p&gt;
--- @param Limit [PositiveIntObject] &lt;p&gt;Specifies that the number of virtual tapes described be limited to the specified number.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Amazon Web Services may impose its own limit, if this field is not set.&lt;/p&gt; &lt;/note&gt;
+-- <p>DescribeTapesInput</p>
+-- @param Marker [Marker] <p>A marker value, obtained in a previous call to <code>DescribeTapes</code>. This marker indicates which page of results to retrieve. </p> <p>If not specified, the first page of results is retrieved.</p>
+-- @param GatewayARN [GatewayARN] <p>DescribeTapesInput</p>
+-- @param TapeARNs [TapeARNs] <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe. If this parameter is not specified, Tape gateway returns a description of all virtual tapes associated with the specified gateway.</p>
+-- @param Limit [PositiveIntObject] <p>Specifies that the number of virtual tapes described be limited to the specified number.</p> <note> <p>Amazon Web Services may impose its own limit, if this field is not set.</p> </note>
 -- Required parameter: GatewayARN
 function M.DescribeTapesInput(Marker, GatewayARN, TapeARNs, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapesInput")
@@ -594,10 +594,10 @@ function M.AssertUpdateBandwidthRateLimitInput(struct)
 end
 
 --- Create a structure of type UpdateBandwidthRateLimitInput
--- &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param AverageUploadRateLimitInBitsPerSec [BandwidthUploadRateLimit] &lt;p&gt;The average upload bandwidth rate limit in bits per second.&lt;/p&gt;
--- @param AverageDownloadRateLimitInBitsPerSec [BandwidthDownloadRateLimit] &lt;p&gt;The average download bandwidth rate limit in bits per second.&lt;/p&gt;
+-- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec</a> </p> </li> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec</a> </p> </li> </ul>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec</a> </p> </li> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec</a> </p> </li> </ul>
+-- @param AverageUploadRateLimitInBitsPerSec [BandwidthUploadRateLimit] <p>The average upload bandwidth rate limit in bits per second.</p>
+-- @param AverageDownloadRateLimitInBitsPerSec [BandwidthDownloadRateLimit] <p>The average download bandwidth rate limit in bits per second.</p>
 -- Required parameter: GatewayARN
 function M.UpdateBandwidthRateLimitInput(GatewayARN, AverageUploadRateLimitInBitsPerSec, AverageDownloadRateLimitInBitsPerSec, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBandwidthRateLimitInput")
@@ -625,11 +625,11 @@ function M.AssertTapeRecoveryPointInfo(struct)
 end
 
 --- Create a structure of type TapeRecoveryPointInfo
--- &lt;p&gt;Describes a recovery point.&lt;/p&gt;
--- @param TapeStatus [TapeRecoveryPointStatus] &lt;p&gt;Describes a recovery point.&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape.&lt;/p&gt;
--- @param TapeSizeInBytes [TapeSize] &lt;p&gt;The size, in bytes, of the virtual tapes to recover.&lt;/p&gt;
--- @param TapeRecoveryPointTime [Time] &lt;p&gt;The time when the point-in-time view of the virtual tape was replicated for later recovery.&lt;/p&gt; &lt;p&gt;The string format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.&lt;/p&gt;
+-- <p>Describes a recovery point.</p>
+-- @param TapeStatus [TapeRecoveryPointStatus] <p>Describes a recovery point.</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
+-- @param TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tapes to recover.</p>
+-- @param TapeRecoveryPointTime [Time] <p>The time when the point-in-time view of the virtual tape was replicated for later recovery.</p> <p>The string format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
 function M.TapeRecoveryPointInfo(TapeStatus, TapeARN, TapeSizeInBytes, TapeRecoveryPointTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TapeRecoveryPointInfo")
 	local t = { 
@@ -655,8 +655,8 @@ function M.AssertListLocalDisksInput(struct)
 end
 
 --- Create a structure of type ListLocalDisksInput
--- &lt;p&gt;A JSON object containing the of the gateway.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway.</p>
 -- Required parameter: GatewayARN
 function M.ListLocalDisksInput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLocalDisksInput")
@@ -679,8 +679,8 @@ function M.AssertDescribeCachediSCSIVolumesOutput(struct)
 end
 
 --- Create a structure of type DescribeCachediSCSIVolumesOutput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
--- @param CachediSCSIVolumes [CachediSCSIVolumes] &lt;p&gt;An array of objects where each object contains metadata about one cached volume.&lt;/p&gt;
+-- <p>A JSON object containing the following fields:</p>
+-- @param CachediSCSIVolumes [CachediSCSIVolumes] <p>An array of objects where each object contains metadata about one cached volume.</p>
 function M.DescribeCachediSCSIVolumesOutput(CachediSCSIVolumes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCachediSCSIVolumesOutput")
 	local t = { 
@@ -703,9 +703,9 @@ function M.AssertInternalServerError(struct)
 end
 
 --- Create a structure of type InternalServerError
--- &lt;p&gt;An internal server error has occurred during the request. For more information, see the error and message fields.&lt;/p&gt;
--- @param message [string] &lt;p&gt;A human-readable message describing the error that occurred.&lt;/p&gt;
--- @param error [StorageGatewayError] &lt;p&gt;A &lt;a&gt;StorageGatewayError&lt;/a&gt; that provides more information about the cause of the error.&lt;/p&gt;
+-- <p>An internal server error has occurred during the request. For more information, see the error and message fields.</p>
+-- @param message [string] <p>A human-readable message describing the error that occurred.</p>
+-- @param error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more information about the cause of the error.</p>
 function M.InternalServerError(message, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
 	local t = { 
@@ -731,9 +731,9 @@ function M.AssertRetrieveTapeRecoveryPointInput(struct)
 end
 
 --- Create a structure of type RetrieveTapeRecoveryPointInput
--- &lt;p&gt;RetrieveTapeRecoveryPointInput&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;RetrieveTapeRecoveryPointInput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape for which you want to retrieve the recovery point.&lt;/p&gt;
+-- <p>RetrieveTapeRecoveryPointInput</p>
+-- @param GatewayARN [GatewayARN] <p>RetrieveTapeRecoveryPointInput</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which you want to retrieve the recovery point.</p>
 -- Required parameter: TapeARN
 -- Required parameter: GatewayARN
 function M.RetrieveTapeRecoveryPointInput(GatewayARN, TapeARN, ...)
@@ -760,10 +760,10 @@ function M.AssertDescribeTapeRecoveryPointsOutput(struct)
 end
 
 --- Create a structure of type DescribeTapeRecoveryPointsOutput
--- &lt;p&gt;DescribeTapeRecoveryPointsOutput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;An opaque string that indicates the position at which the virtual tape recovery points that were listed for description ended.&lt;/p&gt; &lt;p&gt;Use this marker in your next request to list the next set of virtual tape recovery points in the list. If there are no more recovery points to describe, this field does not appear in the response.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;DescribeTapeRecoveryPointsOutput&lt;/p&gt;
--- @param TapeRecoveryPointInfos [TapeRecoveryPointInfos] &lt;p&gt;An array of TapeRecoveryPointInfos that are available for the specified gateway.&lt;/p&gt;
+-- <p>DescribeTapeRecoveryPointsOutput</p>
+-- @param Marker [Marker] <p>An opaque string that indicates the position at which the virtual tape recovery points that were listed for description ended.</p> <p>Use this marker in your next request to list the next set of virtual tape recovery points in the list. If there are no more recovery points to describe, this field does not appear in the response.</p>
+-- @param GatewayARN [GatewayARN] <p>DescribeTapeRecoveryPointsOutput</p>
+-- @param TapeRecoveryPointInfos [TapeRecoveryPointInfos] <p>An array of TapeRecoveryPointInfos that are available for the specified gateway.</p>
 function M.DescribeTapeRecoveryPointsOutput(Marker, GatewayARN, TapeRecoveryPointInfos, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapeRecoveryPointsOutput")
 	local t = { 
@@ -819,8 +819,8 @@ function M.AssertUpdateGatewaySoftwareNowInput(struct)
 end
 
 --- Create a structure of type UpdateGatewaySoftwareNowInput
--- &lt;p&gt;A JSON object containing the of the gateway to update.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway to update.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway to update.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway to update.</p>
 -- Required parameter: GatewayARN
 function M.UpdateGatewaySoftwareNowInput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGatewaySoftwareNowInput")
@@ -844,8 +844,8 @@ function M.AssertListVolumeInitiatorsInput(struct)
 end
 
 --- Create a structure of type ListVolumeInitiatorsInput
--- &lt;p&gt;ListVolumeInitiatorsInput&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the volume. Use the &lt;a&gt;ListVolumes&lt;/a&gt; operation to return a list of gateway volumes for the gateway.&lt;/p&gt;
+-- <p>ListVolumeInitiatorsInput</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes for the gateway.</p>
 -- Required parameter: VolumeARN
 function M.ListVolumeInitiatorsInput(VolumeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListVolumeInitiatorsInput")
@@ -882,18 +882,18 @@ function M.AssertCreateNFSFileShareInput(struct)
 end
 
 --- Create a structure of type CreateNFSFileShareInput
--- &lt;p&gt;CreateNFSFileShareInput&lt;/p&gt;
--- @param DefaultStorageClass [StorageClass] &lt;p&gt;The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.&lt;/p&gt;
--- @param ClientList [FileShareClientList] &lt;p&gt;The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. &lt;/p&gt;
--- @param Squash [Squash] &lt;p&gt;Maps a user to anonymous user. Valid options are the following: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;&quot;RootSquash&quot; - Only root is mapped to anonymous user.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&quot;NoSquash&quot; - No one is mapped to anonymous user.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&quot;AllSquash&quot; - Everyone is mapped to anonymous user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param NFSFileShareDefaults [NFSFileShareDefaults] &lt;p&gt;File share default values. Optional.&lt;/p&gt;
--- @param KMSKey [KMSKey] &lt;p&gt;The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional.&lt;/p&gt;
--- @param Role [Role] &lt;p&gt;The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage. &lt;/p&gt;
--- @param LocationARN [LocationARN] &lt;p&gt;The ARN of the backed storage used for storing file data. &lt;/p&gt;
--- @param ClientToken [ClientToken] &lt;p&gt;A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;The Amazon Resource Name (ARN) of the file gateway on which you want to create a file share.&lt;/p&gt;
--- @param ReadOnly [Boolean] &lt;p&gt;Sets the write status of a file share: &quot;true&quot; if the write status is read-only, and otherwise &quot;false&quot;.&lt;/p&gt;
--- @param KMSEncrypted [Boolean] &lt;p&gt;True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.&lt;/p&gt;
+-- <p>CreateNFSFileShareInput</p>
+-- @param DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
+-- @param ClientList [FileShareClientList] <p>The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. </p>
+-- @param Squash [Squash] <p>Maps a user to anonymous user. Valid options are the following: </p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user.</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
+-- @param NFSFileShareDefaults [NFSFileShareDefaults] <p>File share default values. Optional.</p>
+-- @param KMSKey [KMSKey] <p>The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional.</p>
+-- @param Role [Role] <p>The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage. </p>
+-- @param LocationARN [LocationARN] <p>The ARN of the backed storage used for storing file data. </p>
+-- @param ClientToken [ClientToken] <p>A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.</p>
+-- @param GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the file gateway on which you want to create a file share.</p>
+-- @param ReadOnly [Boolean] <p>Sets the write status of a file share: "true" if the write status is read-only, and otherwise "false".</p>
+-- @param KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.</p>
 -- Required parameter: ClientToken
 -- Required parameter: GatewayARN
 -- Required parameter: Role
@@ -929,8 +929,8 @@ function M.AssertDisableGatewayOutput(struct)
 end
 
 --- Create a structure of type DisableGatewayOutput
--- &lt;p&gt;DisableGatewayOutput&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;The unique Amazon Resource Name of the disabled gateway.&lt;/p&gt;
+-- <p>DisableGatewayOutput</p>
+-- @param GatewayARN [GatewayARN] <p>The unique Amazon Resource Name of the disabled gateway.</p>
 function M.DisableGatewayOutput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableGatewayOutput")
 	local t = { 
@@ -953,8 +953,8 @@ function M.AssertDescribeChapCredentialsInput(struct)
 end
 
 --- Create a structure of type DescribeChapCredentialsInput
--- &lt;p&gt;A JSON object containing the Amazon Resource Name (ARN) of the iSCSI volume target.&lt;/p&gt;
--- @param TargetARN [TargetARN] &lt;p&gt;The Amazon Resource Name (ARN) of the iSCSI volume target. Use the &lt;a&gt;DescribeStorediSCSIVolumes&lt;/a&gt; operation to return to retrieve the TargetARN for specified VolumeARN.&lt;/p&gt;
+-- <p>A JSON object containing the Amazon Resource Name (ARN) of the iSCSI volume target.</p>
+-- @param TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN for specified VolumeARN.</p>
 -- Required parameter: TargetARN
 function M.DescribeChapCredentialsInput(TargetARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeChapCredentialsInput")
@@ -1033,9 +1033,9 @@ function M.AssertUpdateChapCredentialsOutput(struct)
 end
 
 --- Create a structure of type UpdateChapCredentialsOutput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
--- @param TargetARN [TargetARN] &lt;p&gt;The Amazon Resource Name (ARN) of the target. This is the same target specified in the request.&lt;/p&gt;
--- @param InitiatorName [IqnName] &lt;p&gt;The iSCSI initiator that connects to the target. This is the same initiator name specified in the request.&lt;/p&gt;
+-- <p>A JSON object containing the following fields:</p>
+-- @param TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the target. This is the same target specified in the request.</p>
+-- @param InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target. This is the same initiator name specified in the request.</p>
 function M.UpdateChapCredentialsOutput(TargetARN, InitiatorName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateChapCredentialsOutput")
 	local t = { 
@@ -1061,9 +1061,9 @@ function M.AssertSetLocalConsolePasswordInput(struct)
 end
 
 --- Create a structure of type SetLocalConsolePasswordInput
--- &lt;p&gt;SetLocalConsolePasswordInput&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;SetLocalConsolePasswordInput&lt;/p&gt;
--- @param LocalConsolePassword [LocalConsolePassword] &lt;p&gt;The password you want to set for your VM local console.&lt;/p&gt;
+-- <p>SetLocalConsolePasswordInput</p>
+-- @param GatewayARN [GatewayARN] <p>SetLocalConsolePasswordInput</p>
+-- @param LocalConsolePassword [LocalConsolePassword] <p>The password you want to set for your VM local console.</p>
 -- Required parameter: GatewayARN
 -- Required parameter: LocalConsolePassword
 function M.SetLocalConsolePasswordInput(GatewayARN, LocalConsolePassword, ...)
@@ -1137,16 +1137,16 @@ function M.AssertDescribeGatewayInformationOutput(struct)
 end
 
 --- Create a structure of type DescribeGatewayInformationOutput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
--- @param GatewayName [string] &lt;p&gt;The name you configured for your gateway.&lt;/p&gt;
--- @param GatewayType [GatewayType] &lt;p&gt;The type of the gateway.&lt;/p&gt;
--- @param GatewayState [GatewayState] &lt;p&gt;A value that indicates the operating state of the gateway.&lt;/p&gt;
--- @param LastSoftwareUpdate [LastSoftwareUpdate] &lt;p&gt;The date on which the last software update was applied to the gateway. If the gateway has never been updated, this field does not return a value in the response.&lt;/p&gt;
--- @param GatewayTimezone [GatewayTimezone] &lt;p&gt;A value that indicates the time zone configured for the gateway.&lt;/p&gt;
--- @param GatewayNetworkInterfaces [GatewayNetworkInterfaces] &lt;p&gt;A &lt;a&gt;NetworkInterface&lt;/a&gt; array that contains descriptions of the gateway network interfaces.&lt;/p&gt;
--- @param NextUpdateAvailabilityDate [NextUpdateAvailabilityDate] &lt;p&gt;The date on which an update to the gateway is available. This date is in the time zone of the gateway. If the gateway is not available for an update this field is not returned in the response.&lt;/p&gt;
--- @param GatewayId [GatewayId] &lt;p&gt;The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
+-- <p>A JSON object containing the following fields:</p>
+-- @param GatewayName [string] <p>The name you configured for your gateway.</p>
+-- @param GatewayType [GatewayType] <p>The type of the gateway.</p>
+-- @param GatewayState [GatewayState] <p>A value that indicates the operating state of the gateway.</p>
+-- @param LastSoftwareUpdate [LastSoftwareUpdate] <p>The date on which the last software update was applied to the gateway. If the gateway has never been updated, this field does not return a value in the response.</p>
+-- @param GatewayTimezone [GatewayTimezone] <p>A value that indicates the time zone configured for the gateway.</p>
+-- @param GatewayNetworkInterfaces [GatewayNetworkInterfaces] <p>A <a>NetworkInterface</a> array that contains descriptions of the gateway network interfaces.</p>
+-- @param NextUpdateAvailabilityDate [NextUpdateAvailabilityDate] <p>The date on which an update to the gateway is available. This date is in the time zone of the gateway. If the gateway is not available for an update this field is not returned in the response.</p>
+-- @param GatewayId [GatewayId] <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the following fields:</p>
 function M.DescribeGatewayInformationOutput(GatewayName, GatewayType, GatewayState, LastSoftwareUpdate, GatewayTimezone, GatewayNetworkInterfaces, NextUpdateAvailabilityDate, GatewayId, GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGatewayInformationOutput")
 	local t = { 
@@ -1177,8 +1177,8 @@ function M.AssertDisableGatewayInput(struct)
 end
 
 --- Create a structure of type DisableGatewayInput
--- &lt;p&gt;DisableGatewayInput&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;DisableGatewayInput&lt;/p&gt;
+-- <p>DisableGatewayInput</p>
+-- @param GatewayARN [GatewayARN] <p>DisableGatewayInput</p>
 -- Required parameter: GatewayARN
 function M.DisableGatewayInput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableGatewayInput")
@@ -1201,8 +1201,8 @@ function M.AssertDeleteFileShareOutput(struct)
 end
 
 --- Create a structure of type DeleteFileShareOutput
--- &lt;p&gt;DeleteFileShareOutput&lt;/p&gt;
--- @param FileShareARN [FileShareARN] &lt;p&gt;The Amazon Resource Name (ARN) of the deleted file share. &lt;/p&gt;
+-- <p>DeleteFileShareOutput</p>
+-- @param FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the deleted file share. </p>
 function M.DeleteFileShareOutput(FileShareARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFileShareOutput")
 	local t = { 
@@ -1256,8 +1256,8 @@ function M.AssertAddWorkingStorageOutput(struct)
 end
 
 --- Create a structure of type AddWorkingStorageOutput
--- &lt;p&gt;A JSON object containing the of the gateway for which working storage was configured.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway for which working storage was configured.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway for which working storage was configured.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway for which working storage was configured.</p>
 function M.AddWorkingStorageOutput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddWorkingStorageOutput")
 	local t = { 
@@ -1304,10 +1304,10 @@ function M.AssertListTapesInput(struct)
 end
 
 --- Create a structure of type ListTapesInput
--- &lt;p&gt;A JSON object that contains one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListTapesInput$Limit&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListTapesInput$Marker&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListTapesInput$TapeARNs&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Marker [Marker] &lt;p&gt;A string that indicates the position at which to begin the returned list of tapes.&lt;/p&gt;
--- @param Limit [PositiveIntObject] &lt;p&gt;An optional number limit for the tapes in the list returned by this call.&lt;/p&gt;
--- @param TapeARNs [TapeARNs] &lt;p&gt;A JSON object that contains one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListTapesInput$Limit&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListTapesInput$Marker&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListTapesInput$TapeARNs&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListTapesInput$Limit</a> </p> </li> <li> <p> <a>ListTapesInput$Marker</a> </p> </li> <li> <p> <a>ListTapesInput$TapeARNs</a> </p> </li> </ul>
+-- @param Marker [Marker] <p>A string that indicates the position at which to begin the returned list of tapes.</p>
+-- @param Limit [PositiveIntObject] <p>An optional number limit for the tapes in the list returned by this call.</p>
+-- @param TapeARNs [TapeARNs] <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListTapesInput$Limit</a> </p> </li> <li> <p> <a>ListTapesInput$Marker</a> </p> </li> <li> <p> <a>ListTapesInput$TapeARNs</a> </p> </li> </ul>
 function M.ListTapesInput(Marker, Limit, TapeARNs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTapesInput")
 	local t = { 
@@ -1338,15 +1338,15 @@ function M.AssertTape(struct)
 end
 
 --- Create a structure of type Tape
--- &lt;p&gt;Describes a virtual tape object.&lt;/p&gt;
--- @param TapeCreatedDate [Time] &lt;p&gt;The date the virtual tape was created.&lt;/p&gt;
--- @param TapeUsedInBytes [TapeUsage] &lt;p&gt;The size, in bytes, of data written to the virtual tape.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This value is not available for tapes created prior to May,13 2015.&lt;/p&gt; &lt;/note&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape.&lt;/p&gt;
--- @param VTLDevice [VTLDeviceARN] &lt;p&gt;The virtual tape library (VTL) device that the virtual tape is associated with.&lt;/p&gt;
--- @param TapeSizeInBytes [TapeSize] &lt;p&gt;The size, in bytes, of the virtual tape capacity.&lt;/p&gt;
--- @param TapeBarcode [TapeBarcode] &lt;p&gt;The barcode that identifies a specific virtual tape.&lt;/p&gt;
--- @param Progress [DoubleObject] &lt;p&gt;For archiving virtual tapes, indicates how much data remains to be uploaded before archiving is complete.&lt;/p&gt; &lt;p&gt;Range: 0 (not started) to 100 (complete).&lt;/p&gt;
--- @param TapeStatus [TapeStatus] &lt;p&gt;The current state of the virtual tape.&lt;/p&gt;
+-- <p>Describes a virtual tape object.</p>
+-- @param TapeCreatedDate [Time] <p>The date the virtual tape was created.</p>
+-- @param TapeUsedInBytes [TapeUsage] <p>The size, in bytes, of data written to the virtual tape.</p> <note> <p>This value is not available for tapes created prior to May,13 2015.</p> </note>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
+-- @param VTLDevice [VTLDeviceARN] <p>The virtual tape library (VTL) device that the virtual tape is associated with.</p>
+-- @param TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tape capacity.</p>
+-- @param TapeBarcode [TapeBarcode] <p>The barcode that identifies a specific virtual tape.</p>
+-- @param Progress [DoubleObject] <p>For archiving virtual tapes, indicates how much data remains to be uploaded before archiving is complete.</p> <p>Range: 0 (not started) to 100 (complete).</p>
+-- @param TapeStatus [TapeStatus] <p>The current state of the virtual tape.</p>
 function M.Tape(TapeCreatedDate, TapeUsedInBytes, TapeARN, VTLDevice, TapeSizeInBytes, TapeBarcode, Progress, TapeStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tape")
 	local t = { 
@@ -1376,8 +1376,8 @@ function M.AssertDescribeGatewayInformationInput(struct)
 end
 
 --- Create a structure of type DescribeGatewayInformationInput
--- &lt;p&gt;A JSON object containing the id of the gateway.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the id of the gateway.&lt;/p&gt;
+-- <p>A JSON object containing the id of the gateway.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the id of the gateway.</p>
 -- Required parameter: GatewayARN
 function M.DescribeGatewayInformationInput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGatewayInformationInput")
@@ -1402,10 +1402,10 @@ function M.AssertDescribeVTLDevicesOutput(struct)
 end
 
 --- Create a structure of type DescribeVTLDevicesOutput
--- &lt;p&gt;DescribeVTLDevicesOutput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;An opaque string that indicates the position at which the VTL devices that were fetched for description ended. Use the marker in your next request to fetch the next set of VTL devices in the list. If there are no more VTL devices to describe, this field does not appear in the response.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;DescribeVTLDevicesOutput&lt;/p&gt;
--- @param VTLDevices [VTLDevices] &lt;p&gt;An array of VTL device objects composed of the Amazon Resource Name(ARN) of the VTL devices.&lt;/p&gt;
+-- <p>DescribeVTLDevicesOutput</p>
+-- @param Marker [Marker] <p>An opaque string that indicates the position at which the VTL devices that were fetched for description ended. Use the marker in your next request to fetch the next set of VTL devices in the list. If there are no more VTL devices to describe, this field does not appear in the response.</p>
+-- @param GatewayARN [GatewayARN] <p>DescribeVTLDevicesOutput</p>
+-- @param VTLDevices [VTLDevices] <p>An array of VTL device objects composed of the Amazon Resource Name(ARN) of the VTL devices.</p>
 function M.DescribeVTLDevicesOutput(Marker, GatewayARN, VTLDevices, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVTLDevicesOutput")
 	local t = { 
@@ -1430,8 +1430,8 @@ function M.AssertDescribeSnapshotScheduleInput(struct)
 end
 
 --- Create a structure of type DescribeSnapshotScheduleInput
--- &lt;p&gt;A JSON object containing the &lt;a&gt;DescribeSnapshotScheduleInput$VolumeARN&lt;/a&gt; of the volume.&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the volume. Use the &lt;a&gt;ListVolumes&lt;/a&gt; operation to return a list of gateway volumes.&lt;/p&gt;
+-- <p>A JSON object containing the <a>DescribeSnapshotScheduleInput$VolumeARN</a> of the volume.</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
 -- Required parameter: VolumeARN
 function M.DescribeSnapshotScheduleInput(VolumeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSnapshotScheduleInput")
@@ -1456,10 +1456,10 @@ function M.AssertDescribeBandwidthRateLimitOutput(struct)
 end
 
 --- Create a structure of type DescribeBandwidthRateLimitOutput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
--- @param AverageUploadRateLimitInBitsPerSec [BandwidthUploadRateLimit] &lt;p&gt;The average upload bandwidth rate limit in bits per second. This field does not appear in the response if the upload rate limit is not set.&lt;/p&gt;
--- @param AverageDownloadRateLimitInBitsPerSec [BandwidthDownloadRateLimit] &lt;p&gt;The average download bandwidth rate limit in bits per second. This field does not appear in the response if the download rate limit is not set.&lt;/p&gt;
+-- <p>A JSON object containing the following fields:</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the following fields:</p>
+-- @param AverageUploadRateLimitInBitsPerSec [BandwidthUploadRateLimit] <p>The average upload bandwidth rate limit in bits per second. This field does not appear in the response if the upload rate limit is not set.</p>
+-- @param AverageDownloadRateLimitInBitsPerSec [BandwidthDownloadRateLimit] <p>The average download bandwidth rate limit in bits per second. This field does not appear in the response if the download rate limit is not set.</p>
 function M.DescribeBandwidthRateLimitOutput(GatewayARN, AverageUploadRateLimitInBitsPerSec, AverageDownloadRateLimitInBitsPerSec, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBandwidthRateLimitOutput")
 	local t = { 
@@ -1485,10 +1485,10 @@ function M.AssertListVolumesInput(struct)
 end
 
 --- Create a structure of type ListVolumesInput
--- &lt;p&gt;A JSON object that contains one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListVolumesInput$Limit&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListVolumesInput$Marker&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Marker [Marker] &lt;p&gt;A string that indicates the position at which to begin the returned list of volumes. Obtain the marker from the response of a previous List iSCSI Volumes request.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object that contains one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListVolumesInput$Limit&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListVolumesInput$Marker&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Limit [PositiveIntObject] &lt;p&gt;Specifies that the list of volumes returned be limited to the specified number of items.&lt;/p&gt;
+-- <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListVolumesInput$Limit</a> </p> </li> <li> <p> <a>ListVolumesInput$Marker</a> </p> </li> </ul>
+-- @param Marker [Marker] <p>A string that indicates the position at which to begin the returned list of volumes. Obtain the marker from the response of a previous List iSCSI Volumes request.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListVolumesInput$Limit</a> </p> </li> <li> <p> <a>ListVolumesInput$Marker</a> </p> </li> </ul>
+-- @param Limit [PositiveIntObject] <p>Specifies that the list of volumes returned be limited to the specified number of items.</p>
 function M.ListVolumesInput(Marker, GatewayARN, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListVolumesInput")
 	local t = { 
@@ -1512,8 +1512,8 @@ function M.AssertListVolumeInitiatorsOutput(struct)
 end
 
 --- Create a structure of type ListVolumeInitiatorsOutput
--- &lt;p&gt;ListVolumeInitiatorsOutput&lt;/p&gt;
--- @param Initiators [Initiators] &lt;p&gt;The host names and port numbers of all iSCSI initiators that are connected to the gateway.&lt;/p&gt;
+-- <p>ListVolumeInitiatorsOutput</p>
+-- @param Initiators [Initiators] <p>The host names and port numbers of all iSCSI initiators that are connected to the gateway.</p>
 function M.ListVolumeInitiatorsOutput(Initiators, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListVolumeInitiatorsOutput")
 	local t = { 
@@ -1537,10 +1537,10 @@ function M.AssertDescribeTapeArchivesInput(struct)
 end
 
 --- Create a structure of type DescribeTapeArchivesInput
--- &lt;p&gt;DescribeTapeArchivesInput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;An opaque string that indicates the position at which to begin describing virtual tapes.&lt;/p&gt;
--- @param Limit [PositiveIntObject] &lt;p&gt;Specifies that the number of virtual tapes descried be limited to the specified number.&lt;/p&gt;
--- @param TapeARNs [TapeARNs] &lt;p&gt;Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe.&lt;/p&gt;
+-- <p>DescribeTapeArchivesInput</p>
+-- @param Marker [Marker] <p>An opaque string that indicates the position at which to begin describing virtual tapes.</p>
+-- @param Limit [PositiveIntObject] <p>Specifies that the number of virtual tapes descried be limited to the specified number.</p>
+-- @param TapeARNs [TapeARNs] <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe.</p>
 function M.DescribeTapeArchivesInput(Marker, Limit, TapeARNs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapeArchivesInput")
 	local t = { 
@@ -1566,10 +1566,10 @@ function M.AssertListTagsForResourceOutput(struct)
 end
 
 --- Create a structure of type ListTagsForResourceOutput
--- &lt;p&gt;ListTagsForResourceOutput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;An opaque string that indicates the position at which to stop returning the list of tags.&lt;/p&gt;
--- @param ResourceARN [ResourceARN] &lt;p&gt;he Amazon Resource Name (ARN) of the resource for which you want to list tags.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;An array that contains the tags for the specified resource.&lt;/p&gt;
+-- <p>ListTagsForResourceOutput</p>
+-- @param Marker [Marker] <p>An opaque string that indicates the position at which to stop returning the list of tags.</p>
+-- @param ResourceARN [ResourceARN] <p>he Amazon Resource Name (ARN) of the resource for which you want to list tags.</p>
+-- @param Tags [Tags] <p>An array that contains the tags for the specified resource.</p>
 function M.ListTagsForResourceOutput(Marker, ResourceARN, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceOutput")
 	local t = { 
@@ -1594,9 +1594,9 @@ function M.AssertListTapesOutput(struct)
 end
 
 --- Create a structure of type ListTapesOutput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListTapesOutput$Marker&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListTapesOutput$VolumeInfos&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Marker [Marker] &lt;p&gt;A string that indicates the position at which to begin returning the next list of tapes. Use the marker in your next request to continue pagination of tapes. If there are no more tapes to list, this element does not appear in the response body.&lt;/p&gt;
--- @param TapeInfos [TapeInfos] &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListTapesOutput$Marker&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListTapesOutput$VolumeInfos&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>ListTapesOutput$Marker</a> </p> </li> <li> <p> <a>ListTapesOutput$VolumeInfos</a> </p> </li> </ul>
+-- @param Marker [Marker] <p>A string that indicates the position at which to begin returning the next list of tapes. Use the marker in your next request to continue pagination of tapes. If there are no more tapes to list, this element does not appear in the response body.</p>
+-- @param TapeInfos [TapeInfos] <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>ListTapesOutput$Marker</a> </p> </li> <li> <p> <a>ListTapesOutput$VolumeInfos</a> </p> </li> </ul>
 function M.ListTapesOutput(Marker, TapeInfos, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTapesOutput")
 	local t = { 
@@ -1623,12 +1623,12 @@ function M.AssertVolumeiSCSIAttributes(struct)
 end
 
 --- Create a structure of type VolumeiSCSIAttributes
--- &lt;p&gt;Lists iSCSI information about a volume.&lt;/p&gt;
--- @param TargetARN [TargetARN] &lt;p&gt;The Amazon Resource Name (ARN) of the volume target.&lt;/p&gt;
--- @param NetworkInterfaceId [NetworkInterfaceId] &lt;p&gt;The network interface identifier.&lt;/p&gt;
--- @param LunNumber [PositiveIntObject] &lt;p&gt;The logical disk number.&lt;/p&gt;
--- @param ChapEnabled [boolean] &lt;p&gt;Indicates whether mutual CHAP is enabled for the iSCSI target.&lt;/p&gt;
--- @param NetworkInterfacePort [integer] &lt;p&gt;The port used to communicate with iSCSI targets.&lt;/p&gt;
+-- <p>Lists iSCSI information about a volume.</p>
+-- @param TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the volume target.</p>
+-- @param NetworkInterfaceId [NetworkInterfaceId] <p>The network interface identifier.</p>
+-- @param LunNumber [PositiveIntObject] <p>The logical disk number.</p>
+-- @param ChapEnabled [boolean] <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
+-- @param NetworkInterfacePort [integer] <p>The port used to communicate with iSCSI targets.</p>
 function M.VolumeiSCSIAttributes(TargetARN, NetworkInterfaceId, LunNumber, ChapEnabled, NetworkInterfacePort, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VolumeiSCSIAttributes")
 	local t = { 
@@ -1654,8 +1654,8 @@ function M.AssertUpdateSnapshotScheduleOutput(struct)
 end
 
 --- Create a structure of type UpdateSnapshotScheduleOutput
--- &lt;p&gt;A JSON object containing the of the updated storage volume.&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p/&gt;
+-- <p>A JSON object containing the of the updated storage volume.</p>
+-- @param VolumeARN [VolumeARN] <p/>
 function M.UpdateSnapshotScheduleOutput(VolumeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSnapshotScheduleOutput")
 	local t = { 
@@ -1677,8 +1677,8 @@ function M.AssertUpdateBandwidthRateLimitOutput(struct)
 end
 
 --- Create a structure of type UpdateBandwidthRateLimitOutput
--- &lt;p&gt;A JSON object containing the of the gateway whose throttle information was updated.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway whose throttle information was updated.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway whose throttle information was updated.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway whose throttle information was updated.</p>
 function M.UpdateBandwidthRateLimitOutput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBandwidthRateLimitOutput")
 	local t = { 
@@ -1713,21 +1713,21 @@ function M.AssertNFSFileShareInfo(struct)
 end
 
 --- Create a structure of type NFSFileShareInfo
--- &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param FileShareARN [FileShareARN] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param FileShareStatus [FileShareStatus] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param FileShareId [FileShareId] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param DefaultStorageClass [StorageClass] &lt;p&gt;The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.&lt;/p&gt;
--- @param ClientList [FileShareClientList] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param Squash [Squash] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param NFSFileShareDefaults [NFSFileShareDefaults] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param KMSKey [KMSKey] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param Role [Role] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param LocationARN [LocationARN] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param Path [Path] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param ReadOnly [Boolean] &lt;p&gt;The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.&lt;/p&gt;
--- @param KMSEncrypted [boolean] &lt;p&gt;True to use Amazon S3 server side encryption with your own KMS key, or false to use a key managed by Amazon S3. Optional. &lt;/p&gt;
+-- <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param FileShareARN [FileShareARN] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param FileShareStatus [FileShareStatus] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param FileShareId [FileShareId] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
+-- @param ClientList [FileShareClientList] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param Squash [Squash] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param NFSFileShareDefaults [NFSFileShareDefaults] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param KMSKey [KMSKey] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param Role [Role] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param LocationARN [LocationARN] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param Path [Path] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param GatewayARN [GatewayARN] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param ReadOnly [Boolean] <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
+-- @param KMSEncrypted [boolean] <p>True to use Amazon S3 server side encryption with your own KMS key, or false to use a key managed by Amazon S3. Optional. </p>
 function M.NFSFileShareInfo(FileShareARN, FileShareStatus, FileShareId, DefaultStorageClass, ClientList, Squash, NFSFileShareDefaults, KMSKey, Role, LocationARN, Path, GatewayARN, ReadOnly, KMSEncrypted, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NFSFileShareInfo")
 	local t = { 
@@ -1792,12 +1792,12 @@ function M.AssertDescribeMaintenanceStartTimeOutput(struct)
 end
 
 --- Create a structure of type DescribeMaintenanceStartTimeOutput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$DayOfWeek&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$HourOfDay&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$MinuteOfHour&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$Timezone&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param HourOfDay [HourOfDay] &lt;p&gt;The hour component of the maintenance start time represented as &lt;i&gt;hh&lt;/i&gt;, where &lt;i&gt;hh&lt;/i&gt; is the hour (0 to 23). The hour of the day is in the time zone of the gateway.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$DayOfWeek&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$HourOfDay&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$MinuteOfHour&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$Timezone&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DayOfWeek [DayOfWeek] &lt;p&gt;An ordinal number between 0 and 6 that represents the day of the week, where 0 represents Sunday and 6 represents Saturday. The day of week is in the time zone of the gateway.&lt;/p&gt;
--- @param MinuteOfHour [MinuteOfHour] &lt;p&gt;The minute component of the maintenance start time represented as &lt;i&gt;mm&lt;/i&gt;, where &lt;i&gt;mm&lt;/i&gt; is the minute (0 to 59). The minute of the hour is in the time zone of the gateway.&lt;/p&gt;
--- @param Timezone [GatewayTimezone] &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$DayOfWeek&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$HourOfDay&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$MinuteOfHour&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DescribeMaintenanceStartTimeOutput$Timezone&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DescribeMaintenanceStartTimeOutput$DayOfWeek</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$HourOfDay</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$MinuteOfHour</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$Timezone</a> </p> </li> </ul>
+-- @param HourOfDay [HourOfDay] <p>The hour component of the maintenance start time represented as <i>hh</i>, where <i>hh</i> is the hour (0 to 23). The hour of the day is in the time zone of the gateway.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DescribeMaintenanceStartTimeOutput$DayOfWeek</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$HourOfDay</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$MinuteOfHour</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$Timezone</a> </p> </li> </ul>
+-- @param DayOfWeek [DayOfWeek] <p>An ordinal number between 0 and 6 that represents the day of the week, where 0 represents Sunday and 6 represents Saturday. The day of week is in the time zone of the gateway.</p>
+-- @param MinuteOfHour [MinuteOfHour] <p>The minute component of the maintenance start time represented as <i>mm</i>, where <i>mm</i> is the minute (0 to 59). The minute of the hour is in the time zone of the gateway.</p>
+-- @param Timezone [GatewayTimezone] <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DescribeMaintenanceStartTimeOutput$DayOfWeek</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$HourOfDay</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$MinuteOfHour</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$Timezone</a> </p> </li> </ul>
 function M.DescribeMaintenanceStartTimeOutput(HourOfDay, GatewayARN, DayOfWeek, MinuteOfHour, Timezone, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceStartTimeOutput")
 	local t = { 
@@ -1826,9 +1826,9 @@ function M.AssertDeleteChapCredentialsInput(struct)
 end
 
 --- Create a structure of type DeleteChapCredentialsInput
--- &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteChapCredentialsInput$InitiatorName&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;DeleteChapCredentialsInput$TargetARN&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param TargetARN [TargetARN] &lt;p&gt;The Amazon Resource Name (ARN) of the iSCSI volume target. Use the &lt;a&gt;DescribeStorediSCSIVolumes&lt;/a&gt; operation to return to retrieve the TargetARN for specified VolumeARN.&lt;/p&gt;
--- @param InitiatorName [IqnName] &lt;p&gt;The iSCSI initiator that connects to the target.&lt;/p&gt;
+-- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>DeleteChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p> <a>DeleteChapCredentialsInput$TargetARN</a> </p> </li> </ul>
+-- @param TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN for specified VolumeARN.</p>
+-- @param InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
 -- Required parameter: TargetARN
 -- Required parameter: InitiatorName
 function M.DeleteChapCredentialsInput(TargetARN, InitiatorName, ...)
@@ -1856,10 +1856,10 @@ function M.AssertListTagsForResourceInput(struct)
 end
 
 --- Create a structure of type ListTagsForResourceInput
--- &lt;p&gt;ListTagsForResourceInput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;An opaque string that indicates the position at which to begin returning the list of tags.&lt;/p&gt;
--- @param ResourceARN [ResourceARN] &lt;p&gt;The Amazon Resource Name (ARN) of the resource for which you want to list tags.&lt;/p&gt;
--- @param Limit [PositiveIntObject] &lt;p&gt;Specifies that the list of tags returned be limited to the specified number of items.&lt;/p&gt;
+-- <p>ListTagsForResourceInput</p>
+-- @param Marker [Marker] <p>An opaque string that indicates the position at which to begin returning the list of tags.</p>
+-- @param ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource for which you want to list tags.</p>
+-- @param Limit [PositiveIntObject] <p>Specifies that the list of tags returned be limited to the specified number of items.</p>
 -- Required parameter: ResourceARN
 function M.ListTagsForResourceInput(Marker, ResourceARN, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceInput")
@@ -1884,8 +1884,8 @@ function M.AssertCreateTapesOutput(struct)
 end
 
 --- Create a structure of type CreateTapesOutput
--- &lt;p&gt;CreateTapeOutput&lt;/p&gt;
--- @param TapeARNs [TapeARNs] &lt;p&gt;A list of unique Amazon Resource Names (ARNs) that represents the virtual tapes that were created.&lt;/p&gt;
+-- <p>CreateTapeOutput</p>
+-- @param TapeARNs [TapeARNs] <p>A list of unique Amazon Resource Names (ARNs) that represents the virtual tapes that were created.</p>
 function M.CreateTapesOutput(TapeARNs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTapesOutput")
 	local t = { 
@@ -1933,9 +1933,9 @@ function M.AssertAddTagsToResourceInput(struct)
 end
 
 --- Create a structure of type AddTagsToResourceInput
--- &lt;p&gt;AddTagsToResourceInput&lt;/p&gt;
--- @param ResourceARN [ResourceARN] &lt;p&gt;The Amazon Resource Name (ARN) of the resource you want to add tags to.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;The key-value pair that represents the tag you want to add to the resource. The value can be an empty string.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Valid characters for key and value are letters, spaces, and numbers representable in UTF-8 format, and the following special characters: + - = . _ : / @.&lt;/p&gt; &lt;/note&gt;
+-- <p>AddTagsToResourceInput</p>
+-- @param ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource you want to add tags to.</p>
+-- @param Tags [Tags] <p>The key-value pair that represents the tag you want to add to the resource. The value can be an empty string.</p> <note> <p>Valid characters for key and value are letters, spaces, and numbers representable in UTF-8 format, and the following special characters: + - = . _ : / @.</p> </note>
 -- Required parameter: ResourceARN
 -- Required parameter: Tags
 function M.AddTagsToResourceInput(ResourceARN, Tags, ...)
@@ -2006,8 +2006,8 @@ function M.AssertUpdateVTLDeviceTypeOutput(struct)
 end
 
 --- Create a structure of type UpdateVTLDeviceTypeOutput
--- &lt;p&gt;UpdateVTLDeviceTypeOutput&lt;/p&gt;
--- @param VTLDeviceARN [VTLDeviceARN] &lt;p&gt;The Amazon Resource Name (ARN) of the medium changer you have selected.&lt;/p&gt;
+-- <p>UpdateVTLDeviceTypeOutput</p>
+-- @param VTLDeviceARN [VTLDeviceARN] <p>The Amazon Resource Name (ARN) of the medium changer you have selected.</p>
 function M.UpdateVTLDeviceTypeOutput(VTLDeviceARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateVTLDeviceTypeOutput")
 	local t = { 
@@ -2092,9 +2092,9 @@ function M.AssertListGatewaysInput(struct)
 end
 
 --- Create a structure of type ListGatewaysInput
--- &lt;p&gt;A JSON object containing zero or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListGatewaysInput$Limit&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ListGatewaysInput$Marker&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Marker [Marker] &lt;p&gt;An opaque string that indicates the position at which to begin the returned list of gateways.&lt;/p&gt;
--- @param Limit [PositiveIntObject] &lt;p&gt;Specifies that the list of gateways returned be limited to the specified number of items.&lt;/p&gt;
+-- <p>A JSON object containing zero or more of the following fields:</p> <ul> <li> <p> <a>ListGatewaysInput$Limit</a> </p> </li> <li> <p> <a>ListGatewaysInput$Marker</a> </p> </li> </ul>
+-- @param Marker [Marker] <p>An opaque string that indicates the position at which to begin the returned list of gateways.</p>
+-- @param Limit [PositiveIntObject] <p>Specifies that the list of gateways returned be limited to the specified number of items.</p>
 function M.ListGatewaysInput(Marker, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListGatewaysInput")
 	local t = { 
@@ -2122,13 +2122,13 @@ function M.AssertVolumeInfo(struct)
 end
 
 --- Create a structure of type VolumeInfo
--- &lt;p&gt;Describes a storage volume object.&lt;/p&gt;
--- @param VolumeSizeInBytes [long] &lt;p&gt;The size of the volume in bytes.&lt;/p&gt; &lt;p&gt;Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).&lt;/p&gt;
--- @param VolumeType [VolumeType] &lt;p&gt;Describes a storage volume object.&lt;/p&gt;
--- @param VolumeId [VolumeId] &lt;p&gt;The unique identifier assigned to the volume. This ID becomes part of the volume Amazon Resource Name (ARN), which you use as input for other operations.&lt;/p&gt; &lt;p&gt; Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) for the storage volume. For example, the following is a valid ARN:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB&lt;/code&gt; &lt;/p&gt; &lt;p&gt; Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).&lt;/p&gt;
--- @param GatewayId [GatewayId] &lt;p&gt;The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.&lt;/p&gt; &lt;p&gt; Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;Describes a storage volume object.&lt;/p&gt;
+-- <p>Describes a storage volume object.</p>
+-- @param VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p> <p>Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- @param VolumeType [VolumeType] <p>Describes a storage volume object.</p>
+-- @param VolumeId [VolumeId] <p>The unique identifier assigned to the volume. This ID becomes part of the volume Amazon Resource Name (ARN), which you use as input for other operations.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) for the storage volume. For example, the following is a valid ARN:</p> <p> <code>arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB</code> </p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- @param GatewayId [GatewayId] <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- @param GatewayARN [GatewayARN] <p>Describes a storage volume object.</p>
 function M.VolumeInfo(VolumeSizeInBytes, VolumeType, VolumeId, VolumeARN, GatewayId, GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VolumeInfo")
 	local t = { 
@@ -2156,8 +2156,8 @@ function M.AssertDescribeNFSFileSharesInput(struct)
 end
 
 --- Create a structure of type DescribeNFSFileSharesInput
--- &lt;p&gt;DescribeNFSFileSharesInput&lt;/p&gt;
--- @param FileShareARNList [FileShareARNList] &lt;p&gt;An array containing the Amazon Resource Name (ARN) of each file share to be described. &lt;/p&gt;
+-- <p>DescribeNFSFileSharesInput</p>
+-- @param FileShareARNList [FileShareARNList] <p>An array containing the Amazon Resource Name (ARN) of each file share to be described. </p>
 -- Required parameter: FileShareARNList
 function M.DescribeNFSFileSharesInput(FileShareARNList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNFSFileSharesInput")
@@ -2207,8 +2207,8 @@ function M.AssertDeleteTapeArchiveInput(struct)
 end
 
 --- Create a structure of type DeleteTapeArchiveInput
--- &lt;p&gt;DeleteTapeArchiveInput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape to delete from the virtual tape shelf (VTS).&lt;/p&gt;
+-- <p>DeleteTapeArchiveInput</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape to delete from the virtual tape shelf (VTS).</p>
 -- Required parameter: TapeARN
 function M.DeleteTapeArchiveInput(TapeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTapeArchiveInput")
@@ -2231,8 +2231,8 @@ function M.AssertActivateGatewayOutput(struct)
 end
 
 --- Create a structure of type ActivateGatewayOutput
--- &lt;p&gt;AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated gateway. It is a string made of information such as your account, gateway name, and region. This ARN is used to reference the gateway in other API operations as well as resource-based authorization.&lt;/p&gt; &lt;note&gt; &lt;p&gt;For gateways activated prior to September 02, 2015 the gateway ARN contains the gateway name rather than the gateway id. Changing the name of the gateway has no effect on the gateway ARN.&lt;/p&gt; &lt;/note&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated gateway. It is a string made of information such as your account, gateway name, and region. This ARN is used to reference the gateway in other API operations as well as resource-based authorization.&lt;/p&gt; &lt;note&gt; &lt;p&gt;For gateways activated prior to September 02, 2015 the gateway ARN contains the gateway name rather than the gateway id. Changing the name of the gateway has no effect on the gateway ARN.&lt;/p&gt; &lt;/note&gt;
+-- <p>AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated gateway. It is a string made of information such as your account, gateway name, and region. This ARN is used to reference the gateway in other API operations as well as resource-based authorization.</p> <note> <p>For gateways activated prior to September 02, 2015 the gateway ARN contains the gateway name rather than the gateway id. Changing the name of the gateway has no effect on the gateway ARN.</p> </note>
+-- @param GatewayARN [GatewayARN] <p>AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated gateway. It is a string made of information such as your account, gateway name, and region. This ARN is used to reference the gateway in other API operations as well as resource-based authorization.</p> <note> <p>For gateways activated prior to September 02, 2015 the gateway ARN contains the gateway name rather than the gateway id. Changing the name of the gateway has no effect on the gateway ARN.</p> </note>
 function M.ActivateGatewayOutput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivateGatewayOutput")
 	local t = { 
@@ -2284,8 +2284,8 @@ function M.AssertDeleteVolumeInput(struct)
 end
 
 --- Create a structure of type DeleteVolumeInput
--- &lt;p&gt;A JSON object containing the &lt;a&gt;DeleteVolumeInput$VolumeARN&lt;/a&gt; to delete.&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the volume. Use the &lt;a&gt;ListVolumes&lt;/a&gt; operation to return a list of gateway volumes.&lt;/p&gt;
+-- <p>A JSON object containing the <a>DeleteVolumeInput$VolumeARN</a> to delete.</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
 -- Required parameter: VolumeARN
 function M.DeleteVolumeInput(VolumeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVolumeInput")
@@ -2309,8 +2309,8 @@ function M.AssertShutdownGatewayInput(struct)
 end
 
 --- Create a structure of type ShutdownGatewayInput
--- &lt;p&gt;A JSON object containing the of the gateway to shut down.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway to shut down.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway to shut down.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway to shut down.</p>
 -- Required parameter: GatewayARN
 function M.ShutdownGatewayInput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ShutdownGatewayInput")
@@ -2334,8 +2334,8 @@ function M.AssertDeleteGatewayInput(struct)
 end
 
 --- Create a structure of type DeleteGatewayInput
--- &lt;p&gt;A JSON object containing the id of the gateway to delete.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the id of the gateway to delete.&lt;/p&gt;
+-- <p>A JSON object containing the id of the gateway to delete.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the id of the gateway to delete.</p>
 -- Required parameter: GatewayARN
 function M.DeleteGatewayInput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGatewayInput")
@@ -2364,11 +2364,11 @@ function M.AssertUpdateChapCredentialsInput(struct)
 end
 
 --- Create a structure of type UpdateChapCredentialsInput
--- &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateChapCredentialsInput$InitiatorName&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateChapCredentialsInput$SecretToAuthenticateInitiator&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateChapCredentialsInput$SecretToAuthenticateTarget&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateChapCredentialsInput$TargetARN&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param TargetARN [TargetARN] &lt;p&gt;The Amazon Resource Name (ARN) of the iSCSI volume target. Use the &lt;a&gt;DescribeStorediSCSIVolumes&lt;/a&gt; operation to return the TargetARN for specified VolumeARN.&lt;/p&gt;
--- @param SecretToAuthenticateInitiator [ChapSecret] &lt;p&gt;The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The secret key must be between 12 and 16 bytes when encoded in UTF-8.&lt;/p&gt; &lt;/note&gt;
--- @param InitiatorName [IqnName] &lt;p&gt;The iSCSI initiator that connects to the target.&lt;/p&gt;
--- @param SecretToAuthenticateTarget [ChapSecret] &lt;p&gt;The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).&lt;/p&gt; &lt;p&gt;Byte constraints: Minimum bytes of 12. Maximum bytes of 16.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The secret key must be between 12 and 16 bytes when encoded in UTF-8.&lt;/p&gt; &lt;/note&gt;
+-- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$SecretToAuthenticateInitiator</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$SecretToAuthenticateTarget</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$TargetARN</a> </p> </li> </ul>
+-- @param TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return the TargetARN for specified VolumeARN.</p>
+-- @param SecretToAuthenticateInitiator [ChapSecret] <p>The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p> <note> <p>The secret key must be between 12 and 16 bytes when encoded in UTF-8.</p> </note>
+-- @param InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
+-- @param SecretToAuthenticateTarget [ChapSecret] <p>The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p> <p>Byte constraints: Minimum bytes of 12. Maximum bytes of 16.</p> <note> <p>The secret key must be between 12 and 16 bytes when encoded in UTF-8.</p> </note>
 -- Required parameter: TargetARN
 -- Required parameter: SecretToAuthenticateInitiator
 -- Required parameter: InitiatorName
@@ -2451,12 +2451,12 @@ function M.AssertGatewayInfo(struct)
 end
 
 --- Create a structure of type GatewayInfo
--- &lt;p&gt;Describes a gateway object.&lt;/p&gt;
--- @param GatewayId [GatewayId] &lt;p&gt;The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;The Amazon Resource Name (ARN) of the gateway. Use the &lt;a&gt;ListGateways&lt;/a&gt; operation to return a list of gateways for your account and region.&lt;/p&gt;
--- @param GatewayName [string] &lt;p&gt;The name of the gateway.&lt;/p&gt;
--- @param GatewayOperationalState [GatewayOperationalState] &lt;p&gt;The state of the gateway.&lt;/p&gt; &lt;p&gt;Valid Values: DISABLED or ACTIVE&lt;/p&gt;
--- @param GatewayType [GatewayType] &lt;p&gt;The type of the gateway.&lt;/p&gt;
+-- <p>Describes a gateway object.</p>
+-- @param GatewayId [GatewayId] <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p>
+-- @param GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- @param GatewayName [string] <p>The name of the gateway.</p>
+-- @param GatewayOperationalState [GatewayOperationalState] <p>The state of the gateway.</p> <p>Valid Values: DISABLED or ACTIVE</p>
+-- @param GatewayType [GatewayType] <p>The type of the gateway.</p>
 function M.GatewayInfo(GatewayId, GatewayARN, GatewayName, GatewayOperationalState, GatewayType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GatewayInfo")
 	local t = { 
@@ -2485,11 +2485,11 @@ function M.AssertFileShareInfo(struct)
 end
 
 --- Create a structure of type FileShareInfo
--- &lt;p&gt;Describes a file share.&lt;/p&gt;
--- @param FileShareARN [FileShareARN] &lt;p&gt;Describes a file share.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;Describes a file share.&lt;/p&gt;
--- @param FileShareStatus [FileShareStatus] &lt;p&gt;Describes a file share.&lt;/p&gt;
--- @param FileShareId [FileShareId] &lt;p&gt;Describes a file share.&lt;/p&gt;
+-- <p>Describes a file share.</p>
+-- @param FileShareARN [FileShareARN] <p>Describes a file share.</p>
+-- @param GatewayARN [GatewayARN] <p>Describes a file share.</p>
+-- @param FileShareStatus [FileShareStatus] <p>Describes a file share.</p>
+-- @param FileShareId [FileShareId] <p>Describes a file share.</p>
 function M.FileShareInfo(FileShareARN, GatewayARN, FileShareStatus, FileShareId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FileShareInfo")
 	local t = { 
@@ -2514,8 +2514,8 @@ function M.AssertAddTagsToResourceOutput(struct)
 end
 
 --- Create a structure of type AddTagsToResourceOutput
--- &lt;p&gt;AddTagsToResourceOutput&lt;/p&gt;
--- @param ResourceARN [ResourceARN] &lt;p&gt;The Amazon Resource Name (ARN) of the resource you want to add tags to.&lt;/p&gt;
+-- <p>AddTagsToResourceOutput</p>
+-- @param ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource you want to add tags to.</p>
 function M.AddTagsToResourceOutput(ResourceARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceOutput")
 	local t = { 
@@ -2564,12 +2564,12 @@ function M.AssertTapeInfo(struct)
 end
 
 --- Create a structure of type TapeInfo
--- &lt;p&gt;Describes a virtual tape.&lt;/p&gt;
--- @param TapeStatus [TapeStatus] &lt;p&gt;The status of the tape.&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of a virtual tape.&lt;/p&gt;
--- @param TapeSizeInBytes [TapeSize] &lt;p&gt;The size, in bytes, of a virtual tape.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;The Amazon Resource Name (ARN) of the gateway. Use the &lt;a&gt;ListGateways&lt;/a&gt; operation to return a list of gateways for your account and region.&lt;/p&gt;
--- @param TapeBarcode [TapeBarcode] &lt;p&gt;The barcode that identifies a specific virtual tape.&lt;/p&gt;
+-- <p>Describes a virtual tape.</p>
+-- @param TapeStatus [TapeStatus] <p>The status of the tape.</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of a virtual tape.</p>
+-- @param TapeSizeInBytes [TapeSize] <p>The size, in bytes, of a virtual tape.</p>
+-- @param GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- @param TapeBarcode [TapeBarcode] <p>The barcode that identifies a specific virtual tape.</p>
 function M.TapeInfo(TapeStatus, TapeARN, TapeSizeInBytes, GatewayARN, TapeBarcode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TapeInfo")
 	local t = { 
@@ -2595,8 +2595,8 @@ function M.AssertDeleteTapeArchiveOutput(struct)
 end
 
 --- Create a structure of type DeleteTapeArchiveOutput
--- &lt;p&gt;DeleteTapeArchiveOutput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape that was deleted from the virtual tape shelf (VTS).&lt;/p&gt;
+-- <p>DeleteTapeArchiveOutput</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape that was deleted from the virtual tape shelf (VTS).</p>
 function M.DeleteTapeArchiveOutput(TapeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTapeArchiveOutput")
 	local t = { 
@@ -2619,9 +2619,9 @@ function M.AssertDeleteChapCredentialsOutput(struct)
 end
 
 --- Create a structure of type DeleteChapCredentialsOutput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
--- @param TargetARN [TargetARN] &lt;p&gt;The Amazon Resource Name (ARN) of the target.&lt;/p&gt;
--- @param InitiatorName [IqnName] &lt;p&gt;The iSCSI initiator that connects to the target.&lt;/p&gt;
+-- <p>A JSON object containing the following fields:</p>
+-- @param TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the target.</p>
+-- @param InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
 function M.DeleteChapCredentialsOutput(TargetARN, InitiatorName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteChapCredentialsOutput")
 	local t = { 
@@ -2679,14 +2679,14 @@ function M.AssertActivateGatewayInput(struct)
 end
 
 --- Create a structure of type ActivateGatewayInput
--- &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ActivateGatewayInput$ActivationKey&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ActivateGatewayInput$GatewayName&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ActivateGatewayInput$GatewayRegion&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ActivateGatewayInput$GatewayTimezone&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ActivateGatewayInput$GatewayType&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ActivateGatewayInput$TapeDriveType&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;ActivateGatewayInput$MediumChangerType&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param GatewayName [GatewayName] &lt;p&gt;The name you configured for your gateway.&lt;/p&gt;
--- @param GatewayType [GatewayType] &lt;p&gt;A value that defines the type of gateway to activate. The type specified is critical to all later functions of the gateway and cannot be changed after activation. The default value is &lt;code&gt;STORED&lt;/code&gt;. &lt;/p&gt; &lt;p&gt; Valid Values: &quot;STORED&quot;, &quot;CACHED&quot;, &quot;VTL&quot;, &quot;FILE_S3&quot;&lt;/p&gt;
--- @param TapeDriveType [TapeDriveType] &lt;p&gt;The value that indicates the type of tape drive to use for tape gateway. This field is optional.&lt;/p&gt; &lt;p&gt; Valid Values: &quot;IBM-ULT3580-TD5&quot; &lt;/p&gt;
--- @param MediumChangerType [MediumChangerType] &lt;p&gt;The value that indicates the type of medium changer to use for tape gateway. This field is optional.&lt;/p&gt; &lt;p&gt; Valid Values: &quot;STK-L700&quot;, &quot;AWS-Gateway-VTL&quot;&lt;/p&gt;
--- @param GatewayTimezone [GatewayTimezone] &lt;p&gt;A value that indicates the time zone you want to set for the gateway. The time zone is of the format &quot;GMT-hr:mm&quot; or &quot;GMT+hr:mm&quot;. For example, GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates the time is 2 hours ahead of GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.&lt;/p&gt;
--- @param GatewayRegion [RegionId] &lt;p&gt;A value that indicates the region where you want to store your data. The gateway region specified must be the same region as the region in your &lt;code&gt;Host&lt;/code&gt; header in the request. For more information about available regions and endpoints for AWS Storage Gateway, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region&quot;&gt;Regions and Endpoints&lt;/a&gt; in the &lt;i&gt;Amazon Web Services Glossary&lt;/i&gt;.&lt;/p&gt; &lt;p&gt; Valid Values: &quot;us-east-1&quot;, &quot;us-east-2&quot;, &quot;us-west-1&quot;, &quot;us-west-2&quot;, &quot;ca-central-1&quot;, &quot;eu-west-1&quot;, &quot;eu-central-1&quot;, &quot;eu-west-2&quot;, &quot;ap-northeast-1&quot;, &quot;ap-northeast-2&quot;, &quot;ap-southeast-1&quot;, &quot;ap-southeast-2&quot;, &quot;ap-south-1&quot;, &quot;sa-east-1&quot;&lt;/p&gt;
--- @param ActivationKey [ActivationKey] &lt;p&gt;Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter &lt;code&gt;activationKey&lt;/code&gt;. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the &lt;code&gt;ActivateGateway&lt;/code&gt; API call determine the actual configuration of your gateway.&lt;/p&gt;
+-- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>ActivateGatewayInput$ActivationKey</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayName</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayRegion</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayTimezone</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayType</a> </p> </li> <li> <p> <a>ActivateGatewayInput$TapeDriveType</a> </p> </li> <li> <p> <a>ActivateGatewayInput$MediumChangerType</a> </p> </li> </ul>
+-- @param GatewayName [GatewayName] <p>The name you configured for your gateway.</p>
+-- @param GatewayType [GatewayType] <p>A value that defines the type of gateway to activate. The type specified is critical to all later functions of the gateway and cannot be changed after activation. The default value is <code>STORED</code>. </p> <p> Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"</p>
+-- @param TapeDriveType [TapeDriveType] <p>The value that indicates the type of tape drive to use for tape gateway. This field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
+-- @param MediumChangerType [MediumChangerType] <p>The value that indicates the type of medium changer to use for tape gateway. This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
+-- @param GatewayTimezone [GatewayTimezone] <p>A value that indicates the time zone you want to set for the gateway. The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example, GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates the time is 2 hours ahead of GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.</p>
+-- @param GatewayRegion [RegionId] <p>A value that indicates the region where you want to store your data. The gateway region specified must be the same region as the region in your <code>Host</code> header in the request. For more information about available regions and endpoints for AWS Storage Gateway, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "sa-east-1"</p>
+-- @param ActivationKey [ActivationKey] <p>Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter <code>activationKey</code>. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the <code>ActivateGateway</code> API call determine the actual configuration of your gateway.</p>
 -- Required parameter: ActivationKey
 -- Required parameter: GatewayName
 -- Required parameter: GatewayTimezone
@@ -2744,9 +2744,9 @@ function M.AssertInvalidGatewayRequestException(struct)
 end
 
 --- Create a structure of type InvalidGatewayRequestException
--- &lt;p&gt;An exception occurred because an invalid gateway request was issued to the service. For more information, see the error and message fields.&lt;/p&gt;
--- @param message [string] &lt;p&gt;A human-readable message describing the error that occurred.&lt;/p&gt;
--- @param error [StorageGatewayError] &lt;p&gt;A &lt;a&gt;StorageGatewayError&lt;/a&gt; that provides more detail about the cause of the error.&lt;/p&gt;
+-- <p>An exception occurred because an invalid gateway request was issued to the service. For more information, see the error and message fields.</p>
+-- @param message [string] <p>A human-readable message describing the error that occurred.</p>
+-- @param error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more detail about the cause of the error.</p>
 function M.InvalidGatewayRequestException(message, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidGatewayRequestException")
 	local t = { 
@@ -2769,8 +2769,8 @@ function M.AssertDeleteVolumeOutput(struct)
 end
 
 --- Create a structure of type DeleteVolumeOutput
--- &lt;p&gt;A JSON object containing the of the storage volume that was deleted&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the storage volume that was deleted. It is the same ARN you provided in the request.&lt;/p&gt;
+-- <p>A JSON object containing the of the storage volume that was deleted</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume that was deleted. It is the same ARN you provided in the request.</p>
 function M.DeleteVolumeOutput(VolumeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVolumeOutput")
 	local t = { 
@@ -2795,9 +2795,9 @@ function M.AssertRetrieveTapeArchiveInput(struct)
 end
 
 --- Create a structure of type RetrieveTapeArchiveInput
--- &lt;p&gt;RetrieveTapeArchiveInput&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;The Amazon Resource Name (ARN) of the gateway you want to retrieve the virtual tape to. Use the &lt;a&gt;ListGateways&lt;/a&gt; operation to return a list of gateways for your account and region.&lt;/p&gt; &lt;p&gt;You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from the virtual tape shelf (VTS).&lt;/p&gt;
+-- <p>RetrieveTapeArchiveInput</p>
+-- @param GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the gateway you want to retrieve the virtual tape to. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p> <p>You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from the virtual tape shelf (VTS).</p>
 -- Required parameter: TapeARN
 -- Required parameter: GatewayARN
 function M.RetrieveTapeArchiveInput(GatewayARN, TapeARN, ...)
@@ -2848,9 +2848,9 @@ function M.AssertUpdateGatewayInformationOutput(struct)
 end
 
 --- Create a structure of type UpdateGatewayInformationOutput
--- &lt;p&gt;A JSON object containing the ARN of the gateway that was updated.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the ARN of the gateway that was updated.&lt;/p&gt;
--- @param GatewayName [string] &lt;p&gt;A JSON object containing the ARN of the gateway that was updated.&lt;/p&gt;
+-- <p>A JSON object containing the ARN of the gateway that was updated.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the ARN of the gateway that was updated.</p>
+-- @param GatewayName [string] <p>A JSON object containing the ARN of the gateway that was updated.</p>
 function M.UpdateGatewayInformationOutput(GatewayARN, GatewayName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGatewayInformationOutput")
 	local t = { 
@@ -2875,10 +2875,10 @@ function M.AssertListFileSharesInput(struct)
 end
 
 --- Create a structure of type ListFileSharesInput
--- &lt;p&gt;ListFileShareInput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;Opaque pagination token returned from a previous ListFileShares operation. If present, &lt;code&gt;Marker&lt;/code&gt; specifies where to continue the list from after a previous call to ListFileShares. Optional.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;The Amazon resource Name (ARN) of the gateway whose file shares you want to list. If this field is not present, all file shares under your account are listed.&lt;/p&gt;
--- @param Limit [PositiveIntObject] &lt;p&gt;The maximum number of file shares to return in the response. The value must be an integer with a value greater than zero. Optional.&lt;/p&gt;
+-- <p>ListFileShareInput</p>
+-- @param Marker [Marker] <p>Opaque pagination token returned from a previous ListFileShares operation. If present, <code>Marker</code> specifies where to continue the list from after a previous call to ListFileShares. Optional.</p>
+-- @param GatewayARN [GatewayARN] <p>The Amazon resource Name (ARN) of the gateway whose file shares you want to list. If this field is not present, all file shares under your account are listed.</p>
+-- @param Limit [PositiveIntObject] <p>The maximum number of file shares to return in the response. The value must be an integer with a value greater than zero. Optional.</p>
 function M.ListFileSharesInput(Marker, GatewayARN, Limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFileSharesInput")
 	local t = { 
@@ -2902,8 +2902,8 @@ function M.AssertUpdateGatewaySoftwareNowOutput(struct)
 end
 
 --- Create a structure of type UpdateGatewaySoftwareNowOutput
--- &lt;p&gt;A JSON object containing the of the gateway that was updated.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway that was updated.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway that was updated.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway that was updated.</p>
 function M.UpdateGatewaySoftwareNowOutput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGatewaySoftwareNowOutput")
 	local t = { 
@@ -2925,8 +2925,8 @@ function M.AssertRemoveTagsFromResourceOutput(struct)
 end
 
 --- Create a structure of type RemoveTagsFromResourceOutput
--- &lt;p&gt;RemoveTagsFromResourceOutput&lt;/p&gt;
--- @param ResourceARN [ResourceARN] &lt;p&gt;The Amazon Resource Name (ARN) of the resource that the tags were removed from.&lt;/p&gt;
+-- <p>RemoveTagsFromResourceOutput</p>
+-- @param ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource that the tags were removed from.</p>
 function M.RemoveTagsFromResourceOutput(ResourceARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceOutput")
 	local t = { 
@@ -2948,8 +2948,8 @@ function M.AssertDeleteBandwidthRateLimitOutput(struct)
 end
 
 --- Create a structure of type DeleteBandwidthRateLimitOutput
--- &lt;p&gt;A JSON object containing the of the gateway whose bandwidth rate information was deleted.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway whose bandwidth rate information was deleted.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway whose bandwidth rate information was deleted.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway whose bandwidth rate information was deleted.</p>
 function M.DeleteBandwidthRateLimitOutput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBandwidthRateLimitOutput")
 	local t = { 
@@ -2971,8 +2971,8 @@ function M.AssertUpdateMaintenanceStartTimeOutput(struct)
 end
 
 --- Create a structure of type UpdateMaintenanceStartTimeOutput
--- &lt;p&gt;A JSON object containing the of the gateway whose maintenance start time is updated.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway whose maintenance start time is updated.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway whose maintenance start time is updated.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway whose maintenance start time is updated.</p>
 function M.UpdateMaintenanceStartTimeOutput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMaintenanceStartTimeOutput")
 	local t = { 
@@ -3031,15 +3031,15 @@ function M.AssertTapeArchive(struct)
 end
 
 --- Create a structure of type TapeArchive
--- &lt;p&gt;Represents a virtual tape that is archived in the virtual tape shelf (VTS).&lt;/p&gt;
--- @param TapeCreatedDate [Time] &lt;p&gt;Represents a virtual tape that is archived in the virtual tape shelf (VTS).&lt;/p&gt;
--- @param TapeUsedInBytes [TapeUsage] &lt;p&gt;The size, in bytes, of data written to the virtual tape.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This value is not available for tapes created prior to May,13 2015.&lt;/p&gt; &lt;/note&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of an archived virtual tape.&lt;/p&gt;
--- @param CompletionTime [Time] &lt;p&gt;The time that the archiving of the virtual tape was completed.&lt;/p&gt; &lt;p&gt;The string format of the completion time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.&lt;/p&gt;
--- @param TapeSizeInBytes [TapeSize] &lt;p&gt;The size, in bytes, of the archived virtual tape.&lt;/p&gt;
--- @param TapeBarcode [TapeBarcode] &lt;p&gt;The barcode that identifies the archived virtual tape.&lt;/p&gt;
--- @param RetrievedTo [GatewayARN] &lt;p&gt;The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.&lt;/p&gt; &lt;p&gt;The virtual tape is retrieved from the virtual tape shelf (VTS).&lt;/p&gt;
--- @param TapeStatus [TapeArchiveStatus] &lt;p&gt;The current state of the archived virtual tape.&lt;/p&gt;
+-- <p>Represents a virtual tape that is archived in the virtual tape shelf (VTS).</p>
+-- @param TapeCreatedDate [Time] <p>Represents a virtual tape that is archived in the virtual tape shelf (VTS).</p>
+-- @param TapeUsedInBytes [TapeUsage] <p>The size, in bytes, of data written to the virtual tape.</p> <note> <p>This value is not available for tapes created prior to May,13 2015.</p> </note>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of an archived virtual tape.</p>
+-- @param CompletionTime [Time] <p>The time that the archiving of the virtual tape was completed.</p> <p>The string format of the completion time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
+-- @param TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the archived virtual tape.</p>
+-- @param TapeBarcode [TapeBarcode] <p>The barcode that identifies the archived virtual tape.</p>
+-- @param RetrievedTo [GatewayARN] <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape shelf (VTS).</p>
+-- @param TapeStatus [TapeArchiveStatus] <p>The current state of the archived virtual tape.</p>
 function M.TapeArchive(TapeCreatedDate, TapeUsedInBytes, TapeARN, CompletionTime, TapeSizeInBytes, TapeBarcode, RetrievedTo, TapeStatus, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TapeArchive")
 	local t = { 
@@ -3069,8 +3069,8 @@ function M.AssertStartGatewayInput(struct)
 end
 
 --- Create a structure of type StartGatewayInput
--- &lt;p&gt;A JSON object containing the of the gateway to start.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway to start.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway to start.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway to start.</p>
 -- Required parameter: GatewayARN
 function M.StartGatewayInput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartGatewayInput")
@@ -3093,8 +3093,8 @@ function M.AssertDescribeNFSFileSharesOutput(struct)
 end
 
 --- Create a structure of type DescribeNFSFileSharesOutput
--- &lt;p&gt;DescribeNFSFileSharesOutput&lt;/p&gt;
--- @param NFSFileShareInfoList [NFSFileShareInfoList] &lt;p&gt;An array containing a description for each requested file share. &lt;/p&gt;
+-- <p>DescribeNFSFileSharesOutput</p>
+-- @param NFSFileShareInfoList [NFSFileShareInfoList] <p>An array containing a description for each requested file share. </p>
 function M.DescribeNFSFileSharesOutput(NFSFileShareInfoList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNFSFileSharesOutput")
 	local t = { 
@@ -3116,8 +3116,8 @@ function M.AssertCreateNFSFileShareOutput(struct)
 end
 
 --- Create a structure of type CreateNFSFileShareOutput
--- &lt;p&gt;CreateNFSFileShareOutput&lt;/p&gt;
--- @param FileShareARN [FileShareARN] &lt;p&gt;The Amazon Resource Name (ARN) of the newly created file share. &lt;/p&gt;
+-- <p>CreateNFSFileShareOutput</p>
+-- @param FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the newly created file share. </p>
 function M.CreateNFSFileShareOutput(FileShareARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateNFSFileShareOutput")
 	local t = { 
@@ -3143,12 +3143,12 @@ function M.AssertVTLDevice(struct)
 end
 
 --- Create a structure of type VTLDevice
--- &lt;p&gt;Represents a device object associated with a tape gateway.&lt;/p&gt;
--- @param VTLDeviceType [VTLDeviceType] &lt;p&gt;Represents a device object associated with a tape gateway.&lt;/p&gt;
--- @param VTLDeviceProductIdentifier [VTLDeviceProductIdentifier] &lt;p&gt;Represents a device object associated with a tape gateway.&lt;/p&gt;
--- @param DeviceiSCSIAttributes [DeviceiSCSIAttributes] &lt;p&gt;A list of iSCSI information about a VTL device.&lt;/p&gt;
--- @param VTLDeviceARN [VTLDeviceARN] &lt;p&gt;Specifies the unique Amazon Resource Name (ARN) of the device (tape drive or media changer).&lt;/p&gt;
--- @param VTLDeviceVendor [VTLDeviceVendor] &lt;p&gt;Represents a device object associated with a tape gateway.&lt;/p&gt;
+-- <p>Represents a device object associated with a tape gateway.</p>
+-- @param VTLDeviceType [VTLDeviceType] <p>Represents a device object associated with a tape gateway.</p>
+-- @param VTLDeviceProductIdentifier [VTLDeviceProductIdentifier] <p>Represents a device object associated with a tape gateway.</p>
+-- @param DeviceiSCSIAttributes [DeviceiSCSIAttributes] <p>A list of iSCSI information about a VTL device.</p>
+-- @param VTLDeviceARN [VTLDeviceARN] <p>Specifies the unique Amazon Resource Name (ARN) of the device (tape drive or media changer).</p>
+-- @param VTLDeviceVendor [VTLDeviceVendor] <p>Represents a device object associated with a tape gateway.</p>
 function M.VTLDevice(VTLDeviceType, VTLDeviceProductIdentifier, DeviceiSCSIAttributes, VTLDeviceARN, VTLDeviceVendor, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating VTLDevice")
 	local t = { 
@@ -3207,9 +3207,9 @@ function M.AssertCancelRetrievalInput(struct)
 end
 
 --- Create a structure of type CancelRetrievalInput
--- &lt;p&gt;CancelRetrievalInput&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;CancelRetrievalInput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape you want to cancel retrieval for.&lt;/p&gt;
+-- <p>CancelRetrievalInput</p>
+-- @param GatewayARN [GatewayARN] <p>CancelRetrievalInput</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel retrieval for.</p>
 -- Required parameter: GatewayARN
 -- Required parameter: TapeARN
 function M.CancelRetrievalInput(GatewayARN, TapeARN, ...)
@@ -3265,10 +3265,10 @@ function M.AssertCreateTapeWithBarcodeInput(struct)
 end
 
 --- Create a structure of type CreateTapeWithBarcodeInput
--- &lt;p&gt;CreateTapeWithBarcodeInput&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tape with. Use the &lt;a&gt;ListGateways&lt;/a&gt; operation to return a list of gateways for your account and region.&lt;/p&gt;
--- @param TapeSizeInBytes [TapeSize] &lt;p&gt;The size, in bytes, of the virtual tape that you want to create.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The size must be aligned by gigabyte (1024*1024*1024 byte).&lt;/p&gt; &lt;/note&gt;
--- @param TapeBarcode [TapeBarcode] &lt;p&gt;The barcode that you want to assign to the tape.&lt;/p&gt;
+-- <p>CreateTapeWithBarcodeInput</p>
+-- @param GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tape with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- @param TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tape that you want to create.</p> <note> <p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
+-- @param TapeBarcode [TapeBarcode] <p>The barcode that you want to assign to the tape.</p>
 -- Required parameter: GatewayARN
 -- Required parameter: TapeSizeInBytes
 -- Required parameter: TapeBarcode
@@ -3296,8 +3296,8 @@ function M.AssertDescribeWorkingStorageInput(struct)
 end
 
 --- Create a structure of type DescribeWorkingStorageInput
--- &lt;p&gt;A JSON object containing the of the gateway.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway.</p>
 -- Required parameter: GatewayARN
 function M.DescribeWorkingStorageInput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkingStorageInput")
@@ -3326,11 +3326,11 @@ function M.AssertUpdateSnapshotScheduleInput(struct)
 end
 
 --- Create a structure of type UpdateSnapshotScheduleInput
--- &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateSnapshotScheduleInput$Description&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateSnapshotScheduleInput$RecurrenceInHours&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateSnapshotScheduleInput$StartAt&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateSnapshotScheduleInput$VolumeARN&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param RecurrenceInHours [RecurrenceInHours] &lt;p&gt;Frequency of snapshots. Specify the number of hours between snapshots.&lt;/p&gt;
--- @param StartAt [HourOfDay] &lt;p&gt;The hour of the day at which the snapshot schedule begins represented as &lt;i&gt;hh&lt;/i&gt;, where &lt;i&gt;hh&lt;/i&gt; is the hour (0 to 23). The hour of the day is in the time zone of the gateway.&lt;/p&gt;
--- @param Description [Description] &lt;p&gt;Optional description of the snapshot that overwrites the existing description.&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the volume. Use the &lt;a&gt;ListVolumes&lt;/a&gt; operation to return a list of gateway volumes.&lt;/p&gt;
+-- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateSnapshotScheduleInput$Description</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$RecurrenceInHours</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$StartAt</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$VolumeARN</a> </p> </li> </ul>
+-- @param RecurrenceInHours [RecurrenceInHours] <p>Frequency of snapshots. Specify the number of hours between snapshots.</p>
+-- @param StartAt [HourOfDay] <p>The hour of the day at which the snapshot schedule begins represented as <i>hh</i>, where <i>hh</i> is the hour (0 to 23). The hour of the day is in the time zone of the gateway.</p>
+-- @param Description [Description] <p>Optional description of the snapshot that overwrites the existing description.</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
 -- Required parameter: VolumeARN
 -- Required parameter: StartAt
 -- Required parameter: RecurrenceInHours
@@ -3361,11 +3361,11 @@ function M.AssertDeviceiSCSIAttributes(struct)
 end
 
 --- Create a structure of type DeviceiSCSIAttributes
--- &lt;p&gt;Lists iSCSI information about a VTL device.&lt;/p&gt;
--- @param TargetARN [TargetARN] &lt;p&gt;Specifies the unique Amazon Resource Name(ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.&lt;/p&gt;
--- @param NetworkInterfaceId [NetworkInterfaceId] &lt;p&gt;The network interface identifier of the VTL device.&lt;/p&gt;
--- @param ChapEnabled [boolean] &lt;p&gt;Indicates whether mutual CHAP is enabled for the iSCSI target.&lt;/p&gt;
--- @param NetworkInterfacePort [integer] &lt;p&gt;The port used to communicate with iSCSI VTL device targets.&lt;/p&gt;
+-- <p>Lists iSCSI information about a VTL device.</p>
+-- @param TargetARN [TargetARN] <p>Specifies the unique Amazon Resource Name(ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.</p>
+-- @param NetworkInterfaceId [NetworkInterfaceId] <p>The network interface identifier of the VTL device.</p>
+-- @param ChapEnabled [boolean] <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
+-- @param NetworkInterfacePort [integer] <p>The port used to communicate with iSCSI VTL device targets.</p>
 function M.DeviceiSCSIAttributes(TargetARN, NetworkInterfaceId, ChapEnabled, NetworkInterfacePort, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeviceiSCSIAttributes")
 	local t = { 
@@ -3390,8 +3390,8 @@ function M.AssertDescribeChapCredentialsOutput(struct)
 end
 
 --- Create a structure of type DescribeChapCredentialsOutput
--- &lt;p&gt;A JSON object containing a .&lt;/p&gt;
--- @param ChapCredentials [ChapCredentials] &lt;p&gt;An array of &lt;a&gt;ChapInfo&lt;/a&gt; objects that represent CHAP credentials. Each object in the array contains CHAP credential information for one target-initiator pair. If no CHAP credentials are set, an empty array is returned. CHAP credential information is provided in a JSON object with the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;InitiatorName&lt;/b&gt;: The iSCSI initiator that connects to the target.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;SecretToAuthenticateInitiator&lt;/b&gt;: The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;SecretToAuthenticateTarget&lt;/b&gt;: The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;TargetARN&lt;/b&gt;: The Amazon Resource Name (ARN) of the storage volume.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>A JSON object containing a .</p>
+-- @param ChapCredentials [ChapCredentials] <p>An array of <a>ChapInfo</a> objects that represent CHAP credentials. Each object in the array contains CHAP credential information for one target-initiator pair. If no CHAP credentials are set, an empty array is returned. CHAP credential information is provided in a JSON object with the following fields:</p> <ul> <li> <p> <b>InitiatorName</b>: The iSCSI initiator that connects to the target.</p> </li> <li> <p> <b>SecretToAuthenticateInitiator</b>: The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p> </li> <li> <p> <b>SecretToAuthenticateTarget</b>: The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p> </li> <li> <p> <b>TargetARN</b>: The Amazon Resource Name (ARN) of the storage volume.</p> </li> </ul>
 function M.DescribeChapCredentialsOutput(ChapCredentials, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeChapCredentialsOutput")
 	local t = { 
@@ -3414,9 +3414,9 @@ function M.AssertServiceUnavailableError(struct)
 end
 
 --- Create a structure of type ServiceUnavailableError
--- &lt;p&gt;An internal server error has occurred because the service is unavailable. For more information, see the error and message fields.&lt;/p&gt;
--- @param message [string] &lt;p&gt;A human-readable message describing the error that occurred.&lt;/p&gt;
--- @param error [StorageGatewayError] &lt;p&gt;A &lt;a&gt;StorageGatewayError&lt;/a&gt; that provides more information about the cause of the error.&lt;/p&gt;
+-- <p>An internal server error has occurred because the service is unavailable. For more information, see the error and message fields.</p>
+-- @param message [string] <p>A human-readable message describing the error that occurred.</p>
+-- @param error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more information about the cause of the error.</p>
 function M.ServiceUnavailableError(message, error, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableError")
 	local t = { 
@@ -3439,8 +3439,8 @@ function M.AssertUpdateNFSFileShareOutput(struct)
 end
 
 --- Create a structure of type UpdateNFSFileShareOutput
--- &lt;p&gt;UpdateNFSFileShareOutput&lt;/p&gt;
--- @param FileShareARN [FileShareARN] &lt;p&gt;The Amazon Resource Name (ARN) of the updated file share. &lt;/p&gt;
+-- <p>UpdateNFSFileShareOutput</p>
+-- @param FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the updated file share. </p>
 function M.UpdateNFSFileShareOutput(FileShareARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateNFSFileShareOutput")
 	local t = { 
@@ -3465,11 +3465,11 @@ function M.AssertNFSFileShareDefaults(struct)
 end
 
 --- Create a structure of type NFSFileShareDefaults
--- &lt;p&gt;Describes file share default values. Files and folders stored as Amazon S3 objects in S3 buckets don't, by default, have Unix file permissions assigned to them. Upon discovery in an S3 bucket by Storage Gateway, the S3 objects that represent files and folders are assigned these default Unix permissions. This operation is only supported in the file gateway architecture.&lt;/p&gt;
--- @param OwnerId [PermissionId] &lt;p&gt;The default owner ID for files in the file share (unless the files have another owner ID specified). The default value is nfsnobody. &lt;/p&gt;
--- @param DirectoryMode [PermissionMode] &lt;p&gt;The Unix directory mode in the form &quot;nnnn&quot;. For example, &quot;0666&quot; represents the default access mode for all directories inside the file share. The default value is 0777.&lt;/p&gt;
--- @param GroupId [PermissionId] &lt;p&gt;The default group ID for the file share (unless the files have another group ID specified). The default value is nfsnobody. &lt;/p&gt;
--- @param FileMode [PermissionMode] &lt;p&gt;The Unix file mode in the form &quot;nnnn&quot;. For example, &quot;0666&quot; represents the default file mode inside the file share. The default value is 0666. &lt;/p&gt;
+-- <p>Describes file share default values. Files and folders stored as Amazon S3 objects in S3 buckets don't, by default, have Unix file permissions assigned to them. Upon discovery in an S3 bucket by Storage Gateway, the S3 objects that represent files and folders are assigned these default Unix permissions. This operation is only supported in the file gateway architecture.</p>
+-- @param OwnerId [PermissionId] <p>The default owner ID for files in the file share (unless the files have another owner ID specified). The default value is nfsnobody. </p>
+-- @param DirectoryMode [PermissionMode] <p>The Unix directory mode in the form "nnnn". For example, "0666" represents the default access mode for all directories inside the file share. The default value is 0777.</p>
+-- @param GroupId [PermissionId] <p>The default group ID for the file share (unless the files have another group ID specified). The default value is nfsnobody. </p>
+-- @param FileMode [PermissionMode] <p>The Unix file mode in the form "nnnn". For example, "0666" represents the default file mode inside the file share. The default value is 0666. </p>
 function M.NFSFileShareDefaults(OwnerId, DirectoryMode, GroupId, FileMode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NFSFileShareDefaults")
 	local t = { 
@@ -3497,9 +3497,9 @@ function M.AssertCancelArchivalInput(struct)
 end
 
 --- Create a structure of type CancelArchivalInput
--- &lt;p&gt;CancelArchivalInput&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;CancelArchivalInput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape you want to cancel archiving for.&lt;/p&gt;
+-- <p>CancelArchivalInput</p>
+-- @param GatewayARN [GatewayARN] <p>CancelArchivalInput</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel archiving for.</p>
 -- Required parameter: GatewayARN
 -- Required parameter: TapeARN
 function M.CancelArchivalInput(GatewayARN, TapeARN, ...)
@@ -3548,8 +3548,8 @@ function M.AssertDescribeStorediSCSIVolumesInput(struct)
 end
 
 --- Create a structure of type DescribeStorediSCSIVolumesInput
--- &lt;p&gt;A JSON object containing a list of &lt;a&gt;DescribeStorediSCSIVolumesInput$VolumeARNs&lt;/a&gt;.&lt;/p&gt;
--- @param VolumeARNs [VolumeARNs] &lt;p&gt;An array of strings where each string represents the Amazon Resource Name (ARN) of a stored volume. All of the specified stored volumes must from the same gateway. Use &lt;a&gt;ListVolumes&lt;/a&gt; to get volume ARNs for a gateway.&lt;/p&gt;
+-- <p>A JSON object containing a list of <a>DescribeStorediSCSIVolumesInput$VolumeARNs</a>.</p>
+-- @param VolumeARNs [VolumeARNs] <p>An array of strings where each string represents the Amazon Resource Name (ARN) of a stored volume. All of the specified stored volumes must from the same gateway. Use <a>ListVolumes</a> to get volume ARNs for a gateway.</p>
 -- Required parameter: VolumeARNs
 function M.DescribeStorediSCSIVolumesInput(VolumeARNs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStorediSCSIVolumesInput")
@@ -3613,8 +3613,8 @@ function M.AssertCreateTapeWithBarcodeOutput(struct)
 end
 
 --- Create a structure of type CreateTapeWithBarcodeOutput
--- &lt;p&gt;CreateTapeOutput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;A unique Amazon Resource Name (ARN) that represents the virtual tape that was created.&lt;/p&gt;
+-- <p>CreateTapeOutput</p>
+-- @param TapeARN [TapeARN] <p>A unique Amazon Resource Name (ARN) that represents the virtual tape that was created.</p>
 function M.CreateTapeWithBarcodeOutput(TapeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateTapeWithBarcodeOutput")
 	local t = { 
@@ -3637,9 +3637,9 @@ function M.AssertDescribeTapesOutput(struct)
 end
 
 --- Create a structure of type DescribeTapesOutput
--- &lt;p&gt;DescribeTapesOutput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;An opaque string which can be used as part of a subsequent DescribeTapes call to retrieve the next page of results.&lt;/p&gt; &lt;p&gt;If a response does not contain a marker, then there are no more results to be retrieved.&lt;/p&gt;
--- @param Tapes [Tapes] &lt;p&gt;An array of virtual tape descriptions.&lt;/p&gt;
+-- <p>DescribeTapesOutput</p>
+-- @param Marker [Marker] <p>An opaque string which can be used as part of a subsequent DescribeTapes call to retrieve the next page of results.</p> <p>If a response does not contain a marker, then there are no more results to be retrieved.</p>
+-- @param Tapes [Tapes] <p>An array of virtual tape descriptions.</p>
 function M.DescribeTapesOutput(Marker, Tapes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapesOutput")
 	local t = { 
@@ -3669,11 +3669,11 @@ function M.AssertUpdateMaintenanceStartTimeInput(struct)
 end
 
 --- Create a structure of type UpdateMaintenanceStartTimeInput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateMaintenanceStartTimeInput$DayOfWeek&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateMaintenanceStartTimeInput$HourOfDay&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateMaintenanceStartTimeInput$MinuteOfHour&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param HourOfDay [HourOfDay] &lt;p&gt;The hour component of the maintenance start time represented as &lt;i&gt;hh&lt;/i&gt;, where &lt;i&gt;hh&lt;/i&gt; is the hour (00 to 23). The hour of the day is in the time zone of the gateway.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateMaintenanceStartTimeInput$DayOfWeek&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateMaintenanceStartTimeInput$HourOfDay&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;UpdateMaintenanceStartTimeInput$MinuteOfHour&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DayOfWeek [DayOfWeek] &lt;p&gt;The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents Sunday and 6 Saturday.&lt;/p&gt;
--- @param MinuteOfHour [MinuteOfHour] &lt;p&gt;The minute component of the maintenance start time represented as &lt;i&gt;mm&lt;/i&gt;, where &lt;i&gt;mm&lt;/i&gt; is the minute (00 to 59). The minute of the hour is in the time zone of the gateway.&lt;/p&gt;
+-- <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>UpdateMaintenanceStartTimeInput$DayOfWeek</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$HourOfDay</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$MinuteOfHour</a> </p> </li> </ul>
+-- @param HourOfDay [HourOfDay] <p>The hour component of the maintenance start time represented as <i>hh</i>, where <i>hh</i> is the hour (00 to 23). The hour of the day is in the time zone of the gateway.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>UpdateMaintenanceStartTimeInput$DayOfWeek</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$HourOfDay</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$MinuteOfHour</a> </p> </li> </ul>
+-- @param DayOfWeek [DayOfWeek] <p>The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents Sunday and 6 Saturday.</p>
+-- @param MinuteOfHour [MinuteOfHour] <p>The minute component of the maintenance start time represented as <i>mm</i>, where <i>mm</i> is the minute (00 to 59). The minute of the hour is in the time zone of the gateway.</p>
 -- Required parameter: GatewayARN
 -- Required parameter: HourOfDay
 -- Required parameter: MinuteOfHour
@@ -3703,9 +3703,9 @@ function M.AssertDescribeTapeArchivesOutput(struct)
 end
 
 --- Create a structure of type DescribeTapeArchivesOutput
--- &lt;p&gt;DescribeTapeArchivesOutput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;An opaque string that indicates the position at which the virtual tapes that were fetched for description ended. Use this marker in your next request to fetch the next set of virtual tapes in the virtual tape shelf (VTS). If there are no more virtual tapes to describe, this field does not appear in the response.&lt;/p&gt;
--- @param TapeArchives [TapeArchives] &lt;p&gt;An array of virtual tape objects in the virtual tape shelf (VTS). The description includes of the Amazon Resource Name(ARN) of the virtual tapes. The information returned includes the Amazon Resource Names (ARNs) of the tapes, size of the tapes, status of the tapes, progress of the description and tape barcode.&lt;/p&gt;
+-- <p>DescribeTapeArchivesOutput</p>
+-- @param Marker [Marker] <p>An opaque string that indicates the position at which the virtual tapes that were fetched for description ended. Use this marker in your next request to fetch the next set of virtual tapes in the virtual tape shelf (VTS). If there are no more virtual tapes to describe, this field does not appear in the response.</p>
+-- @param TapeArchives [TapeArchives] <p>An array of virtual tape objects in the virtual tape shelf (VTS). The description includes of the Amazon Resource Name(ARN) of the virtual tapes. The information returned includes the Amazon Resource Names (ARNs) of the tapes, size of the tapes, status of the tapes, progress of the description and tape barcode.</p>
 function M.DescribeTapeArchivesOutput(Marker, TapeArchives, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapeArchivesOutput")
 	local t = { 
@@ -3728,8 +3728,8 @@ function M.AssertDeleteTapeOutput(struct)
 end
 
 --- Create a structure of type DeleteTapeOutput
--- &lt;p&gt;DeleteTapeOutput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the deleted virtual tape.&lt;/p&gt;
+-- <p>DeleteTapeOutput</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the deleted virtual tape.</p>
 function M.DeleteTapeOutput(TapeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTapeOutput")
 	local t = { 
@@ -3751,8 +3751,8 @@ function M.AssertStartGatewayOutput(struct)
 end
 
 --- Create a structure of type StartGatewayOutput
--- &lt;p&gt;A JSON object containing the of the gateway that was restarted.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway that was restarted.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway that was restarted.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway that was restarted.</p>
 function M.StartGatewayOutput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StartGatewayOutput")
 	local t = { 
@@ -3775,8 +3775,8 @@ function M.AssertDescribeBandwidthRateLimitInput(struct)
 end
 
 --- Create a structure of type DescribeBandwidthRateLimitInput
--- &lt;p&gt;A JSON object containing the of the gateway.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway.</p>
 -- Required parameter: GatewayARN
 function M.DescribeBandwidthRateLimitInput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBandwidthRateLimitInput")
@@ -3830,10 +3830,10 @@ function M.AssertNetworkInterface(struct)
 end
 
 --- Create a structure of type NetworkInterface
--- &lt;p&gt;Describes a gateway's network interface.&lt;/p&gt;
--- @param Ipv4Address [string] &lt;p&gt;The Internet Protocol version 4 (IPv4) address of the interface.&lt;/p&gt;
--- @param MacAddress [string] &lt;p&gt;The Media Access Control (MAC) address of the interface.&lt;/p&gt; &lt;note&gt; &lt;p&gt;This is currently unsupported and will not be returned in output.&lt;/p&gt; &lt;/note&gt;
--- @param Ipv6Address [string] &lt;p&gt;The Internet Protocol version 6 (IPv6) address of the interface. &lt;i&gt;Currently not supported&lt;/i&gt;.&lt;/p&gt;
+-- <p>Describes a gateway's network interface.</p>
+-- @param Ipv4Address [string] <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
+-- @param MacAddress [string] <p>The Media Access Control (MAC) address of the interface.</p> <note> <p>This is currently unsupported and will not be returned in output.</p> </note>
+-- @param Ipv6Address [string] <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently not supported</i>.</p>
 function M.NetworkInterface(Ipv4Address, MacAddress, Ipv6Address, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NetworkInterface")
 	local t = { 
@@ -3857,8 +3857,8 @@ function M.AssertDeleteGatewayOutput(struct)
 end
 
 --- Create a structure of type DeleteGatewayOutput
--- &lt;p&gt;A JSON object containing the id of the deleted gateway.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the id of the deleted gateway.&lt;/p&gt;
+-- <p>A JSON object containing the id of the deleted gateway.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the id of the deleted gateway.</p>
 function M.DeleteGatewayOutput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGatewayOutput")
 	local t = { 
@@ -3884,8 +3884,8 @@ end
 
 --- Create a structure of type UpdateVTLDeviceTypeInput
 --  
--- @param DeviceType [DeviceType] &lt;p&gt;The type of medium changer you want to select.&lt;/p&gt; &lt;p&gt; Valid Values: &quot;STK-L700&quot;, &quot;AWS-Gateway-VTL&quot;&lt;/p&gt;
--- @param VTLDeviceARN [VTLDeviceARN] &lt;p&gt;The Amazon Resource Name (ARN) of the medium changer you want to select.&lt;/p&gt;
+-- @param DeviceType [DeviceType] <p>The type of medium changer you want to select.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
+-- @param VTLDeviceARN [VTLDeviceARN] <p>The Amazon Resource Name (ARN) of the medium changer you want to select.</p>
 -- Required parameter: VTLDeviceARN
 -- Required parameter: DeviceType
 function M.UpdateVTLDeviceTypeInput(DeviceType, VTLDeviceARN, ...)
@@ -3913,11 +3913,11 @@ function M.AssertDescribeWorkingStorageOutput(struct)
 end
 
 --- Create a structure of type DescribeWorkingStorageOutput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
--- @param DiskIds [DiskIds] &lt;p&gt;An array of the gateway's local disk IDs that are configured as working storage. Each local disk ID is specified as a string (minimum length of 1 and maximum length of 300). If no local disks are configured as working storage, then the DiskIds array is empty.&lt;/p&gt;
--- @param WorkingStorageAllocatedInBytes [long] &lt;p&gt;The total working storage in bytes allocated for the gateway. If no working storage is configured for the gateway, this field returns 0.&lt;/p&gt;
--- @param WorkingStorageUsedInBytes [long] &lt;p&gt;The total working storage in bytes in use by the gateway. If no working storage is configured for the gateway, this field returns 0.&lt;/p&gt;
+-- <p>A JSON object containing the following fields:</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the following fields:</p>
+-- @param DiskIds [DiskIds] <p>An array of the gateway's local disk IDs that are configured as working storage. Each local disk ID is specified as a string (minimum length of 1 and maximum length of 300). If no local disks are configured as working storage, then the DiskIds array is empty.</p>
+-- @param WorkingStorageAllocatedInBytes [long] <p>The total working storage in bytes allocated for the gateway. If no working storage is configured for the gateway, this field returns 0.</p>
+-- @param WorkingStorageUsedInBytes [long] <p>The total working storage in bytes in use by the gateway. If no working storage is configured for the gateway, this field returns 0.</p>
 function M.DescribeWorkingStorageOutput(GatewayARN, DiskIds, WorkingStorageAllocatedInBytes, WorkingStorageUsedInBytes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkingStorageOutput")
 	local t = { 
@@ -3980,9 +3980,9 @@ function M.AssertCreateSnapshotInput(struct)
 end
 
 --- Create a structure of type CreateSnapshotInput
--- &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateSnapshotInput$SnapshotDescription&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateSnapshotInput$VolumeARN&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param SnapshotDescription [SnapshotDescription] &lt;p&gt;Textual description of the snapshot that appears in the Amazon EC2 console, Elastic Block Store snapshots panel in the &lt;b&gt;Description&lt;/b&gt; field, and in the AWS Storage Gateway snapshot &lt;b&gt;Details&lt;/b&gt; pane, &lt;b&gt;Description&lt;/b&gt; field&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the volume. Use the &lt;a&gt;ListVolumes&lt;/a&gt; operation to return a list of gateway volumes.&lt;/p&gt;
+-- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateSnapshotInput$SnapshotDescription</a> </p> </li> <li> <p> <a>CreateSnapshotInput$VolumeARN</a> </p> </li> </ul>
+-- @param SnapshotDescription [SnapshotDescription] <p>Textual description of the snapshot that appears in the Amazon EC2 console, Elastic Block Store snapshots panel in the <b>Description</b> field, and in the AWS Storage Gateway snapshot <b>Details</b> pane, <b>Description</b> field</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
 -- Required parameter: VolumeARN
 -- Required parameter: SnapshotDescription
 function M.CreateSnapshotInput(SnapshotDescription, VolumeARN, ...)
@@ -4009,10 +4009,10 @@ function M.AssertCreateStorediSCSIVolumeOutput(struct)
 end
 
 --- Create a structure of type CreateStorediSCSIVolumeOutput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
--- @param VolumeSizeInBytes [long] &lt;p&gt;The size of the volume in bytes.&lt;/p&gt;
--- @param TargetARN [TargetARN] &lt;p&gt;he Amazon Resource Name (ARN) of the volume target that includes the iSCSI name that initiators can use to connect to the target.&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the configured volume.&lt;/p&gt;
+-- <p>A JSON object containing the following fields:</p>
+-- @param VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
+-- @param TargetARN [TargetARN] <p>he Amazon Resource Name (ARN) of the volume target that includes the iSCSI name that initiators can use to connect to the target.</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the configured volume.</p>
 function M.CreateStorediSCSIVolumeOutput(VolumeSizeInBytes, TargetARN, VolumeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateStorediSCSIVolumeOutput")
 	local t = { 
@@ -4036,8 +4036,8 @@ function M.AssertRetrieveTapeArchiveOutput(struct)
 end
 
 --- Create a structure of type RetrieveTapeArchiveOutput
--- &lt;p&gt;RetrieveTapeArchiveOutput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the retrieved virtual tape.&lt;/p&gt;
+-- <p>RetrieveTapeArchiveOutput</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the retrieved virtual tape.</p>
 function M.RetrieveTapeArchiveOutput(TapeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveTapeArchiveOutput")
 	local t = { 
@@ -4060,9 +4060,9 @@ function M.AssertCreateSnapshotOutput(struct)
 end
 
 --- Create a structure of type CreateSnapshotOutput
--- &lt;p&gt;A JSON object containing the following fields:&lt;/p&gt;
--- @param SnapshotId [SnapshotId] &lt;p&gt;The snapshot ID that is used to refer to the snapshot in future operations such as describing snapshots (Amazon Elastic Compute Cloud API &lt;code&gt;DescribeSnapshots&lt;/code&gt;) or creating a volume from a snapshot (&lt;a&gt;CreateStorediSCSIVolume&lt;/a&gt;).&lt;/p&gt;
--- @param VolumeARN [VolumeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the volume of which the snapshot was taken.&lt;/p&gt;
+-- <p>A JSON object containing the following fields:</p>
+-- @param SnapshotId [SnapshotId] <p>The snapshot ID that is used to refer to the snapshot in future operations such as describing snapshots (Amazon Elastic Compute Cloud API <code>DescribeSnapshots</code>) or creating a volume from a snapshot (<a>CreateStorediSCSIVolume</a>).</p>
+-- @param VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume of which the snapshot was taken.</p>
 function M.CreateSnapshotOutput(SnapshotId, VolumeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateSnapshotOutput")
 	local t = { 
@@ -4085,8 +4085,8 @@ function M.AssertRetrieveTapeRecoveryPointOutput(struct)
 end
 
 --- Create a structure of type RetrieveTapeRecoveryPointOutput
--- &lt;p&gt;RetrieveTapeRecoveryPointOutput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape for which the recovery point was retrieved.&lt;/p&gt;
+-- <p>RetrieveTapeRecoveryPointOutput</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which the recovery point was retrieved.</p>
 function M.RetrieveTapeRecoveryPointOutput(TapeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveTapeRecoveryPointOutput")
 	local t = { 
@@ -4116,15 +4116,15 @@ function M.AssertUpdateNFSFileShareInput(struct)
 end
 
 --- Create a structure of type UpdateNFSFileShareInput
--- &lt;p&gt;UpdateNFSFileShareInput&lt;/p&gt;
--- @param FileShareARN [FileShareARN] &lt;p&gt;The Amazon Resource Name (ARN) of the file share to be updated. &lt;/p&gt;
--- @param DefaultStorageClass [StorageClass] &lt;p&gt;The default storage class for objects put into an Amazon S3 bucket by a file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.&lt;/p&gt;
--- @param Squash [Squash] &lt;p&gt;The user mapped to anonymous user. Valid options are the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;&quot;RootSquash&quot; - Only root is mapped to anonymous user.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&quot;NoSquash&quot; - No one is mapped to anonymous user&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&quot;AllSquash&quot; - Everyone is mapped to anonymous user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param NFSFileShareDefaults [NFSFileShareDefaults] &lt;p&gt;The default values for the file share. Optional.&lt;/p&gt;
--- @param KMSKey [KMSKey] &lt;p&gt;The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional. &lt;/p&gt;
--- @param ReadOnly [Boolean] &lt;p&gt;Sets the write status of a file share: &quot;true&quot; if the write status is read-only, and otherwise &quot;false&quot;.&lt;/p&gt;
--- @param ClientList [FileShareClientList] &lt;p&gt;The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks.&lt;/p&gt;
--- @param KMSEncrypted [Boolean] &lt;p&gt;True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional. &lt;/p&gt;
+-- <p>UpdateNFSFileShareInput</p>
+-- @param FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the file share to be updated. </p>
+-- @param DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by a file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
+-- @param Squash [Squash] <p>The user mapped to anonymous user. Valid options are the following:</p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
+-- @param NFSFileShareDefaults [NFSFileShareDefaults] <p>The default values for the file share. Optional.</p>
+-- @param KMSKey [KMSKey] <p>The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional. </p>
+-- @param ReadOnly [Boolean] <p>Sets the write status of a file share: "true" if the write status is read-only, and otherwise "false".</p>
+-- @param ClientList [FileShareClientList] <p>The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks.</p>
+-- @param KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional. </p>
 -- Required parameter: FileShareARN
 function M.UpdateNFSFileShareInput(FileShareARN, DefaultStorageClass, Squash, NFSFileShareDefaults, KMSKey, ReadOnly, ClientList, KMSEncrypted, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateNFSFileShareInput")
@@ -4164,13 +4164,13 @@ function M.AssertCreateStorediSCSIVolumeInput(struct)
 end
 
 --- Create a structure of type CreateStorediSCSIVolumeInput
--- &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateStorediSCSIVolumeInput$DiskId&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateStorediSCSIVolumeInput$NetworkInterfaceId&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateStorediSCSIVolumeInput$PreserveExistingData&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateStorediSCSIVolumeInput$SnapshotId&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateStorediSCSIVolumeInput$TargetName&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param NetworkInterfaceId [NetworkInterfaceId] &lt;p&gt;The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use &lt;a&gt;DescribeGatewayInformation&lt;/a&gt; to get a list of the network interfaces available on a gateway.&lt;/p&gt; &lt;p&gt; Valid Values: A valid IP address.&lt;/p&gt;
--- @param SnapshotId [SnapshotId] &lt;p&gt;The snapshot ID (e.g. &quot;snap-1122aabb&quot;) of the snapshot to restore as the new stored volume. Specify this field if you want to create the iSCSI storage volume from a snapshot otherwise do not include this field. To list snapshots for your account use &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html&quot;&gt;DescribeSnapshots&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud API Reference&lt;/i&gt;.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing one or more of the following fields:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateStorediSCSIVolumeInput$DiskId&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateStorediSCSIVolumeInput$NetworkInterfaceId&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateStorediSCSIVolumeInput$PreserveExistingData&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateStorediSCSIVolumeInput$SnapshotId&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;a&gt;CreateStorediSCSIVolumeInput$TargetName&lt;/a&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param PreserveExistingData [boolean] &lt;p&gt;Specify this field as true if you want to preserve the data on the local disk. Otherwise, specifying this field as false creates an empty volume.&lt;/p&gt; &lt;p&gt; Valid Values: true, false&lt;/p&gt;
--- @param TargetName [TargetName] &lt;p&gt;The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying &lt;code&gt;TargetName&lt;/code&gt; as &lt;i&gt;myvolume&lt;/i&gt; results in the target ARN of arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.&lt;/p&gt;
--- @param DiskId [DiskId] &lt;p&gt;The unique identifier for the gateway local disk that is configured as a stored volume. Use &lt;a href=&quot;http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html&quot;&gt;ListLocalDisks&lt;/a&gt; to list disk IDs for a gateway.&lt;/p&gt;
+-- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateStorediSCSIVolumeInput$DiskId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$NetworkInterfaceId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$PreserveExistingData</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$SnapshotId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$TargetName</a> </p> </li> </ul>
+-- @param NetworkInterfaceId [NetworkInterfaceId] <p>The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use <a>DescribeGatewayInformation</a> to get a list of the network interfaces available on a gateway.</p> <p> Valid Values: A valid IP address.</p>
+-- @param SnapshotId [SnapshotId] <p>The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the new stored volume. Specify this field if you want to create the iSCSI storage volume from a snapshot otherwise do not include this field. To list snapshots for your account use <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a> in the <i>Amazon Elastic Compute Cloud API Reference</i>.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateStorediSCSIVolumeInput$DiskId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$NetworkInterfaceId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$PreserveExistingData</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$SnapshotId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$TargetName</a> </p> </li> </ul>
+-- @param PreserveExistingData [boolean] <p>Specify this field as true if you want to preserve the data on the local disk. Otherwise, specifying this field as false creates an empty volume.</p> <p> Valid Values: true, false</p>
+-- @param TargetName [TargetName] <p>The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying <code>TargetName</code> as <i>myvolume</i> results in the target ARN of arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.</p>
+-- @param DiskId [DiskId] <p>The unique identifier for the gateway local disk that is configured as a stored volume. Use <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a> to list disk IDs for a gateway.</p>
 -- Required parameter: GatewayARN
 -- Required parameter: DiskId
 -- Required parameter: PreserveExistingData
@@ -4202,8 +4202,8 @@ function M.AssertCancelArchivalOutput(struct)
 end
 
 --- Create a structure of type CancelArchivalOutput
--- &lt;p&gt;CancelArchivalOutput&lt;/p&gt;
--- @param TapeARN [TapeARN] &lt;p&gt;The Amazon Resource Name (ARN) of the virtual tape for which archiving was canceled.&lt;/p&gt;
+-- <p>CancelArchivalOutput</p>
+-- @param TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which archiving was canceled.</p>
 function M.CancelArchivalOutput(TapeARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelArchivalOutput")
 	local t = { 
@@ -4241,7 +4241,7 @@ end
 -- @param NetworkInterfaceId [NetworkInterfaceId]  
 -- @param ClientToken [ClientToken]  
 -- @param SnapshotId [SnapshotId]  
--- @param SourceVolumeARN [VolumeARN] &lt;p&gt;The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The &lt;code&gt;VolumeSizeInBytes&lt;/code&gt; value for this new volume must be equal to or larger than the size of the existing volume, in bytes.&lt;/p&gt;
+-- @param SourceVolumeARN [VolumeARN] <p>The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new volume must be equal to or larger than the size of the existing volume, in bytes.</p>
 -- @param GatewayARN [GatewayARN]  
 -- @param TargetName [TargetName]  
 -- Required parameter: GatewayARN
@@ -4280,11 +4280,11 @@ function M.AssertDescribeVTLDevicesInput(struct)
 end
 
 --- Create a structure of type DescribeVTLDevicesInput
--- &lt;p&gt;DescribeVTLDevicesInput&lt;/p&gt;
--- @param Marker [Marker] &lt;p&gt;An opaque string that indicates the position at which to begin describing the VTL devices.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;DescribeVTLDevicesInput&lt;/p&gt;
--- @param Limit [PositiveIntObject] &lt;p&gt;Specifies that the number of VTL devices described be limited to the specified number.&lt;/p&gt;
--- @param VTLDeviceARNs [VTLDeviceARNs] &lt;p&gt;An array of strings, where each string represents the Amazon Resource Name (ARN) of a VTL device.&lt;/p&gt; &lt;note&gt; &lt;p&gt;All of the specified VTL devices must be from the same gateway. If no VTL devices are specified, the result will contain all devices on the specified gateway.&lt;/p&gt; &lt;/note&gt;
+-- <p>DescribeVTLDevicesInput</p>
+-- @param Marker [Marker] <p>An opaque string that indicates the position at which to begin describing the VTL devices.</p>
+-- @param GatewayARN [GatewayARN] <p>DescribeVTLDevicesInput</p>
+-- @param Limit [PositiveIntObject] <p>Specifies that the number of VTL devices described be limited to the specified number.</p>
+-- @param VTLDeviceARNs [VTLDeviceARNs] <p>An array of strings, where each string represents the Amazon Resource Name (ARN) of a VTL device.</p> <note> <p>All of the specified VTL devices must be from the same gateway. If no VTL devices are specified, the result will contain all devices on the specified gateway.</p> </note>
 -- Required parameter: GatewayARN
 function M.DescribeVTLDevicesInput(Marker, GatewayARN, Limit, VTLDeviceARNs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVTLDevicesInput")
@@ -4311,8 +4311,8 @@ function M.AssertDescribeMaintenanceStartTimeInput(struct)
 end
 
 --- Create a structure of type DescribeMaintenanceStartTimeInput
--- &lt;p&gt;A JSON object containing the of the gateway.&lt;/p&gt;
--- @param GatewayARN [GatewayARN] &lt;p&gt;A JSON object containing the of the gateway.&lt;/p&gt;
+-- <p>A JSON object containing the of the gateway.</p>
+-- @param GatewayARN [GatewayARN] <p>A JSON object containing the of the gateway.</p>
 -- Required parameter: GatewayARN
 function M.DescribeMaintenanceStartTimeInput(GatewayARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceStartTimeInput")
@@ -4330,7 +4330,7 @@ function M.AssertRole(str)
 	assert(#str >= 20, "Expected string to be min 20 characters")
 end
 
--- &lt;p&gt;The ARN of the IAM role that file gateway assumes when it accesses the underlying storage. &lt;/p&gt;
+-- <p>The ARN of the IAM role that file gateway assumes when it accesses the underlying storage. </p>
 function M.Role(str)
 	M.AssertRole(str)
 	return str
@@ -4343,7 +4343,7 @@ function M.AssertGatewayARN(str)
 	assert(#str >= 50, "Expected string to be min 50 characters")
 end
 
--- &lt;p&gt;The Amazon Resource Name (ARN) of the gateway. Use the &lt;a&gt;ListGateways&lt;/a&gt; operation to return a list of gateways for your account and region.&lt;/p&gt;
+-- <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
 function M.GatewayARN(str)
 	M.AssertGatewayARN(str)
 	return str
@@ -4356,7 +4356,7 @@ function M.AssertFileShareStatus(str)
 	assert(#str >= 3, "Expected string to be min 3 characters")
 end
 
--- &lt;p&gt;The status of the file share. Possible values are CREATING, UPDATING, AVAILABLE and DELETING. &lt;/p&gt;
+-- <p>The status of the file share. Possible values are CREATING, UPDATING, AVAILABLE and DELETING. </p>
 function M.FileShareStatus(str)
 	M.AssertFileShareStatus(str)
 	return str
@@ -4434,7 +4434,7 @@ function M.AssertPath(str)
 	assert(type(str) == "string", "Expected Path to be of type 'string'")
 end
 
--- &lt;p&gt;The file share path used by the NFS client to identify the mount point. &lt;/p&gt;
+-- <p>The file share path used by the NFS client to identify the mount point. </p>
 function M.Path(str)
 	M.AssertPath(str)
 	return str
@@ -4548,7 +4548,7 @@ function M.AssertGatewayName(str)
 	assert(str:match("^[ -%.0-%[%]-~]*[!-%.0-%[%]-~][ -%.0-%[%]-~]*$"), "Expected string to match pattern '^[ -%.0-%[%]-~]*[!-%.0-%[%]-~][ -%.0-%[%]-~]*$'")
 end
 
--- &lt;p&gt;The name you configured for your gateway.&lt;/p&gt;
+-- <p>The name you configured for your gateway.</p>
 function M.GatewayName(str)
 	M.AssertGatewayName(str)
 	return str
@@ -4598,7 +4598,7 @@ function M.AssertKMSKey(str)
 	assert(#str >= 20, "Expected string to be min 20 characters")
 end
 
--- &lt;p&gt;The ARN of the KMS key used for Amazon S3 server side encryption. &lt;/p&gt;
+-- <p>The ARN of the KMS key used for Amazon S3 server side encryption. </p>
 function M.KMSKey(str)
 	M.AssertKMSKey(str)
 	return str
@@ -4661,7 +4661,7 @@ function M.AssertSquash(str)
 	assert(#str >= 5, "Expected string to be min 5 characters")
 end
 
--- &lt;p&gt;The user mapped to anonymous user. Valid options are the following: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;&quot;RootSquash&quot; - Only root is mapped to anonymous user.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&quot;NoSquash&quot; - No one is mapped to anonymous user&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;&quot;AllSquash&quot; - Everyone is mapped to anonymous user.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>The user mapped to anonymous user. Valid options are the following: </p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
 function M.Squash(str)
 	M.AssertSquash(str)
 	return str
@@ -4700,7 +4700,7 @@ function M.AssertFileShareId(str)
 	assert(#str >= 12, "Expected string to be min 12 characters")
 end
 
--- &lt;p&gt;The ID of the file share. &lt;/p&gt;
+-- <p>The ID of the file share. </p>
 function M.FileShareId(str)
 	M.AssertFileShareId(str)
 	return str
@@ -4774,7 +4774,7 @@ function M.AssertFileShareARN(str)
 	assert(#str >= 50, "Expected string to be min 50 characters")
 end
 
--- &lt;p&gt;The Amazon Resource Name (ARN) of the file share. &lt;/p&gt;
+-- <p>The Amazon Resource Name (ARN) of the file share. </p>
 function M.FileShareARN(str)
 	M.AssertFileShareARN(str)
 	return str
@@ -4787,7 +4787,7 @@ function M.AssertStorageClass(str)
 	assert(#str >= 5, "Expected string to be min 5 characters")
 end
 
--- &lt;p/&gt;
+-- <p/>
 function M.StorageClass(str)
 	M.AssertStorageClass(str)
 	return str
@@ -4824,7 +4824,7 @@ function M.AssertLocationARN(str)
 	assert(#str >= 16, "Expected string to be min 16 characters")
 end
 
--- &lt;p&gt;The ARN of the backend storage used for storing file data. &lt;/p&gt;
+-- <p>The ARN of the backend storage used for storing file data. </p>
 function M.LocationARN(str)
 	M.AssertLocationARN(str)
 	return str
@@ -5385,7 +5385,7 @@ function M.AssertTapeInfos(list)
 	end
 end
 
--- &lt;p&gt;An array of &lt;a&gt;TapeInfo&lt;/a&gt; objects, where each object describes an a single tape. If there not tapes in the tape library or VTS, then the &lt;code&gt;TapeInfos&lt;/code&gt; is an empty array.&lt;/p&gt;
+-- <p>An array of <a>TapeInfo</a> objects, where each object describes an a single tape. If there not tapes in the tape library or VTS, then the <code>TapeInfos</code> is an empty array.</p>
 -- List of TapeInfo objects
 function M.TapeInfos(list)
 	M.AssertTapeInfos(list)
@@ -5539,7 +5539,7 @@ function M.AssertFileShareClientList(list)
 	end
 end
 
--- &lt;p&gt;The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. &lt;/p&gt;
+-- <p>The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. </p>
 -- List of IPV4AddressCIDR objects
 function M.FileShareClientList(list)
 	M.AssertFileShareClientList(list)
@@ -5584,7 +5584,7 @@ function M.AssertTapeARNs(list)
 	end
 end
 
--- &lt;p&gt;The Amazon Resource Name (ARN) of each of the tapes you want to list. If you don't specify a tape ARN, the response lists all tapes in both your VTL and VTS.&lt;/p&gt;
+-- <p>The Amazon Resource Name (ARN) of each of the tapes you want to list. If you don't specify a tape ARN, the response lists all tapes in both your VTL and VTS.</p>
 -- List of TapeARN objects
 function M.TapeARNs(list)
 	M.AssertTapeARNs(list)

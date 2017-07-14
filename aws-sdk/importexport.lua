@@ -1022,7 +1022,7 @@ function M.AssertTrackingNumber(str)
 	assert(type(str) == "string", "Expected TrackingNumber to be of type 'string'")
 end
 
--- The shipping tracking number assigned by AWS Import/Export to the storage device when it's returned to you. We return this value when the LocationCode is &quot;Returned&quot;.
+-- The shipping tracking number assigned by AWS Import/Export to the storage device when it's returned to you. We return this value when the LocationCode is "Returned".
 function M.TrackingNumber(str)
 	M.AssertTrackingNumber(str)
 	return str
@@ -1044,7 +1044,7 @@ function M.AssertProgressCode(str)
 	assert(type(str) == "string", "Expected ProgressCode to be of type 'string'")
 end
 
--- A token representing the state of the job, such as &quot;Started&quot;.
+-- A token representing the state of the job, such as "Started".
 function M.ProgressCode(str)
 	M.AssertProgressCode(str)
 	return str
@@ -1242,7 +1242,7 @@ function M.AssertSignature(str)
 	assert(type(str) == "string", "Expected Signature to be of type 'string'")
 end
 
--- An encrypted code used to authenticate the request and response, for example, &quot;DV+TpDfx1/TdSE9ktyK9k/bDTVI=&quot;. Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.
+-- An encrypted code used to authenticate the request and response, for example, "DV+TpDfx1/TdSE9ktyK9k/bDTVI=". Only use this value is you want to create the signature file yourself. Generally you should use the SignatureFileContents value.
 function M.Signature(str)
 	M.AssertSignature(str)
 	return str
@@ -1297,7 +1297,7 @@ function M.AssertCarrier(str)
 	assert(type(str) == "string", "Expected Carrier to be of type 'string'")
 end
 
--- Name of the shipping company. This value is included when the LocationCode is &quot;Returned&quot;.
+-- Name of the shipping company. This value is included when the LocationCode is "Returned".
 function M.Carrier(str)
 	M.AssertCarrier(str)
 	return str
@@ -1319,7 +1319,7 @@ function M.AssertLocationCode(str)
 	assert(type(str) == "string", "Expected LocationCode to be of type 'string'")
 end
 
--- A token representing the location of the storage device, such as &quot;AtAWS&quot;.
+-- A token representing the location of the storage device, such as "AtAWS".
 function M.LocationCode(str)
 	M.AssertLocationCode(str)
 	return str

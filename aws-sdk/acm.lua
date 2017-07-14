@@ -30,8 +30,8 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;An ACM limit has been exceeded. For example, you may have input more domains than are allowed or you've requested too many certificates for your account. See the exception message returned by ACM to determine which limit you have violated. For more information about ACM limits, see the &lt;a href=&quot;http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html&quot;&gt;Limits&lt;/a&gt; topic.&lt;/p&gt;
--- @param message [String] &lt;p&gt;An ACM limit has been exceeded. For example, you may have input more domains than are allowed or you've requested too many certificates for your account. See the exception message returned by ACM to determine which limit you have violated. For more information about ACM limits, see the &lt;a href=&quot;http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html&quot;&gt;Limits&lt;/a&gt; topic.&lt;/p&gt;
+-- <p>An ACM limit has been exceeded. For example, you may have input more domains than are allowed or you've requested too many certificates for your account. See the exception message returned by ACM to determine which limit you have violated. For more information about ACM limits, see the <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html">Limits</a> topic.</p>
+-- @param message [String] <p>An ACM limit has been exceeded. For example, you may have input more domains than are allowed or you've requested too many certificates for your account. See the exception message returned by ACM to determine which limit you have violated. For more information about ACM limits, see the <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html">Limits</a> topic.</p>
 function M.LimitExceededException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -55,7 +55,7 @@ end
 
 --- Create a structure of type DeleteCertificateRequest
 --  
--- @param CertificateArn [Arn] &lt;p&gt;String that contains the ARN of the ACM Certificate to be deleted. This must be of the form:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information about ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt;.&lt;/p&gt;
+-- @param CertificateArn [Arn] <p>String that contains the ARN of the ACM Certificate to be deleted. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 -- Required parameter: CertificateArn
 function M.DeleteCertificateRequest(CertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCertificateRequest")
@@ -80,8 +80,8 @@ end
 
 --- Create a structure of type GetCertificateResponse
 --  
--- @param CertificateChain [CertificateChain] &lt;p&gt;The certificate chain that contains the root certificate issued by the certificate authority (CA).&lt;/p&gt;
--- @param Certificate [CertificateBody] &lt;p&gt;String that contains the ACM Certificate represented by the ARN specified at input.&lt;/p&gt;
+-- @param CertificateChain [CertificateChain] <p>The certificate chain that contains the root certificate issued by the certificate authority (CA).</p>
+-- @param Certificate [CertificateBody] <p>String that contains the ACM Certificate represented by the ARN specified at input.</p>
 function M.GetCertificateResponse(CertificateChain, Certificate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCertificateResponse")
 	local t = { 
@@ -105,9 +105,9 @@ function M.AssertCertificateSummary(struct)
 end
 
 --- Create a structure of type CertificateSummary
--- &lt;p&gt;This structure is returned in the response object of &lt;a&gt;ListCertificates&lt;/a&gt; action.&lt;/p&gt;
--- @param CertificateArn [Arn] &lt;p&gt;Amazon Resource Name (ARN) of the certificate. This is of the form:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information about ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt;.&lt;/p&gt;
--- @param DomainName [DomainNameString] &lt;p&gt;Fully qualified domain name (FQDN), such as www.example.com or example.com, for the certificate.&lt;/p&gt;
+-- <p>This structure is returned in the response object of <a>ListCertificates</a> action.</p>
+-- @param CertificateArn [Arn] <p>Amazon Resource Name (ARN) of the certificate. This is of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+-- @param DomainName [DomainNameString] <p>Fully qualified domain name (FQDN), such as www.example.com or example.com, for the certificate.</p>
 function M.CertificateSummary(CertificateArn, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CertificateSummary")
 	local t = { 
@@ -130,8 +130,8 @@ function M.AssertTooManyTagsException(struct)
 end
 
 --- Create a structure of type TooManyTagsException
--- &lt;p&gt;The request contains too many tags. Try the request again with fewer tags.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The request contains too many tags. Try the request again with fewer tags.&lt;/p&gt;
+-- <p>The request contains too many tags. Try the request again with fewer tags.</p>
+-- @param message [String] <p>The request contains too many tags. Try the request again with fewer tags.</p>
 function M.TooManyTagsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTagsException")
 	local t = { 
@@ -156,9 +156,9 @@ end
 
 --- Create a structure of type ListCertificatesRequest
 --  
--- @param NextToken [NextToken] &lt;p&gt;Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of &lt;code&gt;NextToken&lt;/code&gt; from the response you just received.&lt;/p&gt;
--- @param CertificateStatuses [CertificateStatuses] &lt;p&gt;The status or statuses on which to filter the list of ACM Certificates.&lt;/p&gt;
--- @param MaxItems [MaxItems] &lt;p&gt;Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the &lt;code&gt;NextToken&lt;/code&gt; element is sent in the response. Use this &lt;code&gt;NextToken&lt;/code&gt; value in a subsequent request to retrieve additional items.&lt;/p&gt;
+-- @param NextToken [NextToken] <p>Use this parameter only when paginating results and only in a subsequent request after you receive a response with truncated results. Set it to the value of <code>NextToken</code> from the response you just received.</p>
+-- @param CertificateStatuses [CertificateStatuses] <p>The status or statuses on which to filter the list of ACM Certificates.</p>
+-- @param MaxItems [MaxItems] <p>Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the <code>NextToken</code> element is sent in the response. Use this <code>NextToken</code> value in a subsequent request to retrieve additional items.</p>
 function M.ListCertificatesRequest(NextToken, CertificateStatuses, MaxItems, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCertificatesRequest")
 	local t = { 
@@ -186,8 +186,8 @@ end
 
 --- Create a structure of type RemoveTagsFromCertificateRequest
 --  
--- @param CertificateArn [Arn] &lt;p&gt;String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information about ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt;.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The key-value pair that defines the tag to remove.&lt;/p&gt;
+-- @param CertificateArn [Arn] <p>String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+-- @param Tags [TagList] <p>The key-value pair that defines the tag to remove.</p>
 -- Required parameter: CertificateArn
 -- Required parameter: Tags
 function M.RemoveTagsFromCertificateRequest(CertificateArn, Tags, ...)
@@ -213,7 +213,7 @@ end
 
 --- Create a structure of type DescribeCertificateResponse
 --  
--- @param Certificate [CertificateDetail] &lt;p&gt;Metadata about an ACM certificate.&lt;/p&gt;
+-- @param Certificate [CertificateDetail] <p>Metadata about an ACM certificate.</p>
 function M.DescribeCertificateResponse(Certificate, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificateResponse")
 	local t = { 
@@ -240,10 +240,10 @@ end
 
 --- Create a structure of type RequestCertificateRequest
 --  
--- @param IdempotencyToken [IdempotencyToken] &lt;p&gt;Customer chosen string that can be used to distinguish between calls to &lt;code&gt;RequestCertificate&lt;/code&gt;. Idempotency tokens time out after one hour. Therefore, if you call &lt;code&gt;RequestCertificate&lt;/code&gt; multiple times with the same idempotency token within one hour, ACM recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, ACM recognizes that you are requesting multiple certificates.&lt;/p&gt;
--- @param SubjectAlternativeNames [DomainList] &lt;p&gt;Additional FQDNs to be included in the Subject Alternative Name extension of the ACM Certificate. For example, add the name www.example.net to a certificate for which the &lt;code&gt;DomainName&lt;/code&gt; field is www.example.com if users can reach your site by using either name. The maximum number of domain names that you can add to an ACM Certificate is 100. However, the initial limit is 10 domain names. If you need more than 10 names, you must request a limit increase. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html&quot;&gt;Limits&lt;/a&gt;.&lt;/p&gt;
--- @param DomainValidationOptions [DomainValidationOptionList] &lt;p&gt;The domain name that you want ACM to use to send you emails to validate your ownership of the domain.&lt;/p&gt;
--- @param DomainName [DomainNameString] &lt;p&gt; Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an ACM Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com. &lt;/p&gt; &lt;p&gt; The maximum length of a DNS name is 253 octets. The name is made up of multiple labels separated by periods. No label can be longer than 63 octets. Consider the following examples: &lt;/p&gt; &lt;p&gt; &lt;code&gt;(63 octets).(63 octets).(63 octets).(61 octets)&lt;/code&gt; is legal because the total length is 253 octets (63+1+63+1+63+1+61) and no label exceeds 63 octets. &lt;/p&gt; &lt;p&gt; &lt;code&gt;(64 octets).(63 octets).(63 octets).(61 octets)&lt;/code&gt; is not legal because the total length exceeds 253 octets (64+1+63+1+63+1+61) and the first label exceeds 63 octets. &lt;/p&gt; &lt;p&gt; &lt;code&gt;(63 octets).(63 octets).(63 octets).(62 octets)&lt;/code&gt; is not legal because the total length of the DNS name (63+1+63+1+63+1+62) exceeds 253 octets. &lt;/p&gt;
+-- @param IdempotencyToken [IdempotencyToken] <p>Customer chosen string that can be used to distinguish between calls to <code>RequestCertificate</code>. Idempotency tokens time out after one hour. Therefore, if you call <code>RequestCertificate</code> multiple times with the same idempotency token within one hour, ACM recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, ACM recognizes that you are requesting multiple certificates.</p>
+-- @param SubjectAlternativeNames [DomainList] <p>Additional FQDNs to be included in the Subject Alternative Name extension of the ACM Certificate. For example, add the name www.example.net to a certificate for which the <code>DomainName</code> field is www.example.com if users can reach your site by using either name. The maximum number of domain names that you can add to an ACM Certificate is 100. However, the initial limit is 10 domain names. If you need more than 10 names, you must request a limit increase. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html">Limits</a>.</p>
+-- @param DomainValidationOptions [DomainValidationOptionList] <p>The domain name that you want ACM to use to send you emails to validate your ownership of the domain.</p>
+-- @param DomainName [DomainNameString] <p> Fully qualified domain name (FQDN), such as www.example.com, of the site that you want to secure with an ACM Certificate. Use an asterisk (*) to create a wildcard certificate that protects several sites in the same domain. For example, *.example.com protects www.example.com, site.example.com, and images.example.com. </p> <p> The maximum length of a DNS name is 253 octets. The name is made up of multiple labels separated by periods. No label can be longer than 63 octets. Consider the following examples: </p> <p> <code>(63 octets).(63 octets).(63 octets).(61 octets)</code> is legal because the total length is 253 octets (63+1+63+1+63+1+61) and no label exceeds 63 octets. </p> <p> <code>(64 octets).(63 octets).(63 octets).(61 octets)</code> is not legal because the total length exceeds 253 octets (64+1+63+1+63+1+61) and the first label exceeds 63 octets. </p> <p> <code>(63 octets).(63 octets).(63 octets).(62 octets)</code> is not legal because the total length of the DNS name (63+1+63+1+63+1+62) exceeds 253 octets. </p>
 -- Required parameter: DomainName
 function M.RequestCertificateRequest(IdempotencyToken, SubjectAlternativeNames, DomainValidationOptions, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestCertificateRequest")
@@ -273,11 +273,11 @@ function M.AssertDomainValidation(struct)
 end
 
 --- Create a structure of type DomainValidation
--- &lt;p&gt;Contains information about the validation of each domain name in the certificate.&lt;/p&gt;
--- @param ValidationEmails [ValidationEmailList] &lt;p&gt;A list of email addresses that ACM used to send domain validation emails.&lt;/p&gt;
--- @param ValidationStatus [DomainStatus] &lt;p&gt;The validation status of the domain name.&lt;/p&gt;
--- @param ValidationDomain [DomainNameString] &lt;p&gt;The domain name that ACM used to send domain validation emails.&lt;/p&gt;
--- @param DomainName [DomainNameString] &lt;p&gt;A fully qualified domain name (FQDN) in the certificate. For example, &lt;code&gt;www.example.com&lt;/code&gt; or &lt;code&gt;example.com&lt;/code&gt;.&lt;/p&gt;
+-- <p>Contains information about the validation of each domain name in the certificate.</p>
+-- @param ValidationEmails [ValidationEmailList] <p>A list of email addresses that ACM used to send domain validation emails.</p>
+-- @param ValidationStatus [DomainStatus] <p>The validation status of the domain name.</p>
+-- @param ValidationDomain [DomainNameString] <p>The domain name that ACM used to send domain validation emails.</p>
+-- @param DomainName [DomainNameString] <p>A fully qualified domain name (FQDN) in the certificate. For example, <code>www.example.com</code> or <code>example.com</code>.</p>
 -- Required parameter: DomainName
 function M.DomainValidation(ValidationEmails, ValidationStatus, ValidationDomain, DomainName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DomainValidation")
@@ -304,7 +304,7 @@ end
 
 --- Create a structure of type ListTagsForCertificateResponse
 --  
--- @param Tags [TagList] &lt;p&gt;The key-value pairs that define the applied tags.&lt;/p&gt;
+-- @param Tags [TagList] <p>The key-value pairs that define the applied tags.</p>
 function M.ListTagsForCertificateResponse(Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForCertificateResponse")
 	local t = { 
@@ -326,8 +326,8 @@ function M.AssertResourceInUseException(struct)
 end
 
 --- Create a structure of type ResourceInUseException
--- &lt;p&gt;The certificate is in use by another AWS service in the caller's account. Remove the association and try again.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The certificate is in use by another AWS service in the caller's account. Remove the association and try again.&lt;/p&gt;
+-- <p>The certificate is in use by another AWS service in the caller's account. Remove the association and try again.</p>
+-- @param message [String] <p>The certificate is in use by another AWS service in the caller's account. Remove the association and try again.</p>
 function M.ResourceInUseException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
 	local t = { 
@@ -351,8 +351,8 @@ end
 
 --- Create a structure of type ListCertificatesResponse
 --  
--- @param CertificateSummaryList [CertificateSummaryList] &lt;p&gt;A list of ACM Certificates.&lt;/p&gt;
--- @param NextToken [NextToken] &lt;p&gt;When the list is truncated, this value is present and contains the value to use for the &lt;code&gt;NextToken&lt;/code&gt; parameter in a subsequent pagination request.&lt;/p&gt;
+-- @param CertificateSummaryList [CertificateSummaryList] <p>A list of ACM Certificates.</p>
+-- @param NextToken [NextToken] <p>When the list is truncated, this value is present and contains the value to use for the <code>NextToken</code> parameter in a subsequent pagination request.</p>
 function M.ListCertificatesResponse(CertificateSummaryList, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCertificatesResponse")
 	local t = { 
@@ -375,8 +375,8 @@ function M.AssertInvalidTagException(struct)
 end
 
 --- Create a structure of type InvalidTagException
--- &lt;p&gt;One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a tag value that begins with &lt;code&gt;aws:&lt;/code&gt;.&lt;/p&gt;
--- @param message [String] &lt;p&gt;One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a tag value that begins with &lt;code&gt;aws:&lt;/code&gt;.&lt;/p&gt;
+-- <p>One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a tag value that begins with <code>aws:</code>.</p>
+-- @param message [String] <p>One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a tag value that begins with <code>aws:</code>.</p>
 function M.InvalidTagException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTagException")
 	local t = { 
@@ -400,9 +400,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;A key-value pair that identifies or specifies metadata about an ACM resource.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The value of the tag.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The key of the tag.&lt;/p&gt;
+-- <p>A key-value pair that identifies or specifies metadata about an ACM resource.</p>
+-- @param Value [TagValue] <p>The value of the tag.</p>
+-- @param Key [TagKey] <p>The key of the tag.</p>
 -- Required parameter: Key
 function M.Tag(Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
@@ -432,10 +432,10 @@ end
 
 --- Create a structure of type ImportCertificateRequest
 --  
--- @param CertificateArn [Arn] &lt;p&gt;The &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Name (ARN)&lt;/a&gt; of an imported certificate to replace. To import a new certificate, omit this field.&lt;/p&gt;
--- @param CertificateChain [CertificateChainBlob] &lt;p&gt;The certificate chain. It must be PEM-encoded.&lt;/p&gt;
--- @param PrivateKey [PrivateKeyBlob] &lt;p&gt;The private key that matches the public key in the certificate. It must meet the following requirements:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be PEM-encoded.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be unencrypted. You cannot import a private key that is protected by a password or passphrase.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Certificate [CertificateBodyBlob] &lt;p&gt;The certificate to import. It must meet the following requirements:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Must be PEM-encoded.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must contain a 1024-bit or 2048-bit RSA public key.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Must be valid at the time of import. You cannot import a certificate before its validity period begins (the certificate's &lt;code&gt;NotBefore&lt;/code&gt; date) or after it expires (the certificate's &lt;code&gt;NotAfter&lt;/code&gt; date).&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param CertificateArn [Arn] <p>The <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an imported certificate to replace. To import a new certificate, omit this field.</p>
+-- @param CertificateChain [CertificateChainBlob] <p>The certificate chain. It must be PEM-encoded.</p>
+-- @param PrivateKey [PrivateKeyBlob] <p>The private key that matches the public key in the certificate. It must meet the following requirements:</p> <ul> <li> <p>Must be PEM-encoded.</p> </li> <li> <p>Must be unencrypted. You cannot import a private key that is protected by a password or passphrase.</p> </li> </ul>
+-- @param Certificate [CertificateBodyBlob] <p>The certificate to import. It must meet the following requirements:</p> <ul> <li> <p>Must be PEM-encoded.</p> </li> <li> <p>Must contain a 1024-bit or 2048-bit RSA public key.</p> </li> <li> <p>Must be valid at the time of import. You cannot import a certificate before its validity period begins (the certificate's <code>NotBefore</code> date) or after it expires (the certificate's <code>NotAfter</code> date).</p> </li> </ul>
 -- Required parameter: Certificate
 -- Required parameter: PrivateKey
 function M.ImportCertificateRequest(CertificateArn, CertificateChain, PrivateKey, Certificate, ...)
@@ -462,8 +462,8 @@ function M.AssertRequestInProgressException(struct)
 end
 
 --- Create a structure of type RequestInProgressException
--- &lt;p&gt;The certificate request is in process and the certificate in your account has not yet been issued.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The certificate request is in process and the certificate in your account has not yet been issued.&lt;/p&gt;
+-- <p>The certificate request is in process and the certificate in your account has not yet been issued.</p>
+-- @param message [String] <p>The certificate request is in process and the certificate in your account has not yet been issued.</p>
 function M.RequestInProgressException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestInProgressException")
 	local t = { 
@@ -486,7 +486,7 @@ end
 
 --- Create a structure of type ImportCertificateResponse
 --  
--- @param CertificateArn [Arn] &lt;p&gt;The &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Name (ARN)&lt;/a&gt; of the imported certificate.&lt;/p&gt;
+-- @param CertificateArn [Arn] <p>The <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of the imported certificate.</p>
 function M.ImportCertificateResponse(CertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImportCertificateResponse")
 	local t = { 
@@ -510,7 +510,7 @@ end
 
 --- Create a structure of type DescribeCertificateRequest
 --  
--- @param CertificateArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the ACM Certificate. The ARN must have the following form:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information about ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt;.&lt;/p&gt;
+-- @param CertificateArn [Arn] <p>The Amazon Resource Name (ARN) of the ACM Certificate. The ARN must have the following form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 -- Required parameter: CertificateArn
 function M.DescribeCertificateRequest(CertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificateRequest")
@@ -536,9 +536,9 @@ function M.AssertDomainValidationOption(struct)
 end
 
 --- Create a structure of type DomainValidationOption
--- &lt;p&gt;Contains information about the domain names that you want ACM to use to send you emails to validate your ownership of the domain.&lt;/p&gt;
--- @param ValidationDomain [DomainNameString] &lt;p&gt;The domain name that you want ACM to use to send you validation emails. This domain name is the suffix of the email addresses that you want ACM to use. This must be the same as the &lt;code&gt;DomainName&lt;/code&gt; value or a superdomain of the &lt;code&gt;DomainName&lt;/code&gt; value. For example, if you request a certificate for &lt;code&gt;testing.example.com&lt;/code&gt;, you can specify &lt;code&gt;example.com&lt;/code&gt; for this value. In that case, ACM sends domain validation emails to the following five addresses:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;admin@example.com&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;administrator@example.com&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;hostmaster@example.com&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;postmaster@example.com&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;webmaster@example.com&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param DomainName [DomainNameString] &lt;p&gt;A fully qualified domain name (FQDN) in the certificate request.&lt;/p&gt;
+-- <p>Contains information about the domain names that you want ACM to use to send you emails to validate your ownership of the domain.</p>
+-- @param ValidationDomain [DomainNameString] <p>The domain name that you want ACM to use to send you validation emails. This domain name is the suffix of the email addresses that you want ACM to use. This must be the same as the <code>DomainName</code> value or a superdomain of the <code>DomainName</code> value. For example, if you request a certificate for <code>testing.example.com</code>, you can specify <code>example.com</code> for this value. In that case, ACM sends domain validation emails to the following five addresses:</p> <ul> <li> <p>admin@example.com</p> </li> <li> <p>administrator@example.com</p> </li> <li> <p>hostmaster@example.com</p> </li> <li> <p>postmaster@example.com</p> </li> <li> <p>webmaster@example.com</p> </li> </ul>
+-- @param DomainName [DomainNameString] <p>A fully qualified domain name (FQDN) in the certificate request.</p>
 -- Required parameter: DomainName
 -- Required parameter: ValidationDomain
 function M.DomainValidationOption(ValidationDomain, DomainName, ...)
@@ -569,9 +569,9 @@ end
 
 --- Create a structure of type ResendValidationEmailRequest
 --  
--- @param CertificateArn [Arn] &lt;p&gt;String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the &lt;a&gt;RequestCertificate&lt;/a&gt; action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request.&lt;/p&gt; &lt;p&gt;The ARN must be of the form:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt;
--- @param Domain [DomainNameString] &lt;p&gt;The fully qualified domain name (FQDN) of the certificate that needs to be validated.&lt;/p&gt;
--- @param ValidationDomain [DomainNameString] &lt;p&gt;The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the &lt;code&gt;Domain&lt;/code&gt; value or a superdomain of the &lt;code&gt;Domain&lt;/code&gt; value. For example, if you requested a certificate for &lt;code&gt;site.subdomain.example.com&lt;/code&gt; and specify a &lt;b&gt;ValidationDomain&lt;/b&gt; of &lt;code&gt;subdomain.example.com&lt;/code&gt;, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;admin@subdomain.example.com&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;administrator@subdomain.example.com&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;hostmaster@subdomain.example.com&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;postmaster@subdomain.example.com&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;webmaster@subdomain.example.com&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param CertificateArn [Arn] <p>String that contains the ARN of the requested certificate. The certificate ARN is generated and returned by the <a>RequestCertificate</a> action as soon as the request is made. By default, using this parameter causes email to be sent to all top-level domains you specified in the certificate request.</p> <p>The ARN must be of the form:</p> <p> <code>arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p>
+-- @param Domain [DomainNameString] <p>The fully qualified domain name (FQDN) of the certificate that needs to be validated.</p>
+-- @param ValidationDomain [DomainNameString] <p>The base validation domain that will act as the suffix of the email addresses that are used to send the emails. This must be the same as the <code>Domain</code> value or a superdomain of the <code>Domain</code> value. For example, if you requested a certificate for <code>site.subdomain.example.com</code> and specify a <b>ValidationDomain</b> of <code>subdomain.example.com</code>, ACM sends email to the domain registrant, technical contact, and administrative contact in WHOIS and the following five addresses:</p> <ul> <li> <p>admin@subdomain.example.com</p> </li> <li> <p>administrator@subdomain.example.com</p> </li> <li> <p>hostmaster@subdomain.example.com</p> </li> <li> <p>postmaster@subdomain.example.com</p> </li> <li> <p>webmaster@subdomain.example.com</p> </li> </ul>
 -- Required parameter: CertificateArn
 -- Required parameter: Domain
 -- Required parameter: ValidationDomain
@@ -598,8 +598,8 @@ function M.AssertInvalidArnException(struct)
 end
 
 --- Create a structure of type InvalidArnException
--- &lt;p&gt;The requested Amazon Resource Name (ARN) does not refer to an existing resource.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The requested Amazon Resource Name (ARN) does not refer to an existing resource.&lt;/p&gt;
+-- <p>The requested Amazon Resource Name (ARN) does not refer to an existing resource.</p>
+-- @param message [String] <p>The requested Amazon Resource Name (ARN) does not refer to an existing resource.</p>
 function M.InvalidArnException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArnException")
 	local t = { 
@@ -624,9 +624,9 @@ function M.AssertRenewalSummary(struct)
 end
 
 --- Create a structure of type RenewalSummary
--- &lt;p&gt;Contains information about the status of ACM's &lt;a href=&quot;http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html&quot;&gt;managed renewal&lt;/a&gt; for the certificate. This structure exists only when the certificate type is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;.&lt;/p&gt;
--- @param RenewalStatus [RenewalStatus] &lt;p&gt;The status of ACM's &lt;a href=&quot;http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html&quot;&gt;managed renewal&lt;/a&gt; of the certificate.&lt;/p&gt;
--- @param DomainValidationOptions [DomainValidationList] &lt;p&gt;Contains information about the validation of each domain name in the certificate, as it pertains to ACM's &lt;a href=&quot;http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html&quot;&gt;managed renewal&lt;/a&gt;. This is different from the initial validation that occurs as a result of the &lt;a&gt;RequestCertificate&lt;/a&gt; request. This field exists only when the certificate type is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;.&lt;/p&gt;
+-- <p>Contains information about the status of ACM's <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the certificate. This structure exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
+-- @param RenewalStatus [RenewalStatus] <p>The status of ACM's <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> of the certificate.</p>
+-- @param DomainValidationOptions [DomainValidationList] <p>Contains information about the validation of each domain name in the certificate, as it pertains to ACM's <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a>. This is different from the initial validation that occurs as a result of the <a>RequestCertificate</a> request. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
 -- Required parameter: RenewalStatus
 -- Required parameter: DomainValidationOptions
 function M.RenewalSummary(RenewalStatus, DomainValidationOptions, ...)
@@ -653,7 +653,7 @@ end
 
 --- Create a structure of type ListTagsForCertificateRequest
 --  
--- @param CertificateArn [Arn] &lt;p&gt;String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the following form:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information about ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt;.&lt;/p&gt;
+-- @param CertificateArn [Arn] <p>String that contains the ARN of the ACM Certificate for which you want to list the tags. This has the following form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 -- Required parameter: CertificateArn
 function M.ListTagsForCertificateRequest(CertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForCertificateRequest")
@@ -677,7 +677,7 @@ end
 
 --- Create a structure of type RequestCertificateResponse
 --  
--- @param CertificateArn [Arn] &lt;p&gt;String that contains the ARN of the issued certificate. This must be of the form:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt;
+-- @param CertificateArn [Arn] <p>String that contains the ARN of the issued certificate. This must be of the form:</p> <p> <code>arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p>
 function M.RequestCertificateResponse(CertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RequestCertificateResponse")
 	local t = { 
@@ -703,8 +703,8 @@ end
 
 --- Create a structure of type AddTagsToCertificateRequest
 --  
--- @param CertificateArn [Arn] &lt;p&gt;String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the form:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information about ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt;.&lt;/p&gt;
--- @param Tags [TagList] &lt;p&gt;The key-value pair that defines the tag. The tag value is optional.&lt;/p&gt;
+-- @param CertificateArn [Arn] <p>String that contains the ARN of the ACM Certificate to which the tag is to be applied. This must be of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+-- @param Tags [TagList] <p>The key-value pair that defines the tag. The tag value is optional.</p>
 -- Required parameter: CertificateArn
 -- Required parameter: Tags
 function M.AddTagsToCertificateRequest(CertificateArn, Tags, ...)
@@ -729,8 +729,8 @@ function M.AssertInvalidDomainValidationOptionsException(struct)
 end
 
 --- Create a structure of type InvalidDomainValidationOptionsException
--- &lt;p&gt;One or more values in the &lt;a&gt;DomainValidationOption&lt;/a&gt; structure is incorrect.&lt;/p&gt;
--- @param message [String] &lt;p&gt;One or more values in the &lt;a&gt;DomainValidationOption&lt;/a&gt; structure is incorrect.&lt;/p&gt;
+-- <p>One or more values in the <a>DomainValidationOption</a> structure is incorrect.</p>
+-- @param message [String] <p>One or more values in the <a>DomainValidationOption</a> structure is incorrect.</p>
 function M.InvalidDomainValidationOptionsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDomainValidationOptionsException")
 	local t = { 
@@ -754,7 +754,7 @@ end
 
 --- Create a structure of type GetCertificateRequest
 --  
--- @param CertificateArn [Arn] &lt;p&gt;String that contains a certificate ARN in the following format:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information about ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt;.&lt;/p&gt;
+-- @param CertificateArn [Arn] <p>String that contains a certificate ARN in the following format:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
 -- Required parameter: CertificateArn
 function M.GetCertificateRequest(CertificateArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCertificateRequest")
@@ -797,28 +797,28 @@ function M.AssertCertificateDetail(struct)
 end
 
 --- Create a structure of type CertificateDetail
--- &lt;p&gt;Contains metadata about an ACM certificate. This structure is returned in the response to a &lt;a&gt;DescribeCertificate&lt;/a&gt; request.&lt;/p&gt;
--- @param CertificateArn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see &lt;a href=&quot;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&quot;&gt;Amazon Resource Names (ARNs) and AWS Service Namespaces&lt;/a&gt; in the &lt;i&gt;AWS General Reference&lt;/i&gt;.&lt;/p&gt;
--- @param Status [CertificateStatus] &lt;p&gt;The status of the certificate.&lt;/p&gt;
--- @param SubjectAlternativeNames [DomainList] &lt;p&gt;One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website.&lt;/p&gt;
--- @param RenewalSummary [RenewalSummary] &lt;p&gt;Contains information about the status of ACM's &lt;a href=&quot;http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html&quot;&gt;managed renewal&lt;/a&gt; for the certificate. This field exists only when the certificate type is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;.&lt;/p&gt;
--- @param DomainName [DomainNameString] &lt;p&gt;The fully qualified domain name for the certificate, such as www.example.com or example.com.&lt;/p&gt;
--- @param RevokedAt [TStamp] &lt;p&gt;The time at which the certificate was revoked. This value exists only when the certificate status is &lt;code&gt;REVOKED&lt;/code&gt;.&lt;/p&gt;
--- @param Type [CertificateType] &lt;p&gt;The source of the certificate. For certificates provided by ACM, this value is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;. For certificates that you imported with &lt;a&gt;ImportCertificate&lt;/a&gt;, this value is &lt;code&gt;IMPORTED&lt;/code&gt;. ACM does not provide &lt;a href=&quot;http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html&quot;&gt;managed renewal&lt;/a&gt; for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see &lt;a href=&quot;http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html&quot;&gt;Importing Certificates&lt;/a&gt; in the &lt;i&gt;AWS Certificate Manager User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param NotBefore [TStamp] &lt;p&gt;The time before which the certificate is not valid.&lt;/p&gt;
--- @param KeyAlgorithm [KeyAlgorithm] &lt;p&gt;The algorithm that was used to generate the key pair (the public and private key).&lt;/p&gt;
--- @param NotAfter [TStamp] &lt;p&gt;The time after which the certificate is not valid.&lt;/p&gt;
--- @param ImportedAt [TStamp] &lt;p&gt;The date and time at which the certificate was imported. This value exists only when the certificate type is &lt;code&gt;IMPORTED&lt;/code&gt;.&lt;/p&gt;
--- @param InUseBy [InUseList] &lt;p&gt;A list of ARNs for the AWS resources that are using the certificate. A certificate can be used by multiple AWS resources.&lt;/p&gt;
--- @param SignatureAlgorithm [String] &lt;p&gt;The algorithm that was used to sign the certificate.&lt;/p&gt;
--- @param CreatedAt [TStamp] &lt;p&gt;The time at which the certificate was requested. This value exists only when the certificate type is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;.&lt;/p&gt;
--- @param IssuedAt [TStamp] &lt;p&gt;The time at which the certificate was issued. This value exists only when the certificate type is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;.&lt;/p&gt;
--- @param Serial [String] &lt;p&gt;The serial number of the certificate.&lt;/p&gt;
--- @param Issuer [String] &lt;p&gt;The name of the certificate authority that issued and signed the certificate.&lt;/p&gt;
--- @param RevocationReason [RevocationReason] &lt;p&gt;The reason the certificate was revoked. This value exists only when the certificate status is &lt;code&gt;REVOKED&lt;/code&gt;.&lt;/p&gt;
--- @param FailureReason [FailureReason] &lt;p&gt;The reason the certificate request failed. This value exists only when the certificate status is &lt;code&gt;FAILED&lt;/code&gt;. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed&quot;&gt;Certificate Request Failed&lt;/a&gt; in the &lt;i&gt;AWS Certificate Manager User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param DomainValidationOptions [DomainValidationList] &lt;p&gt;Contains information about the initial validation of each domain name that occurs as a result of the &lt;a&gt;RequestCertificate&lt;/a&gt; request. This field exists only when the certificate type is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;.&lt;/p&gt;
--- @param Subject [String] &lt;p&gt;The name of the entity that is associated with the public key contained in the certificate.&lt;/p&gt;
+-- <p>Contains metadata about an ACM certificate. This structure is returned in the response to a <a>DescribeCertificate</a> request.</p>
+-- @param CertificateArn [Arn] <p>The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- @param Status [CertificateStatus] <p>The status of the certificate.</p>
+-- @param SubjectAlternativeNames [DomainList] <p>One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website.</p>
+-- @param RenewalSummary [RenewalSummary] <p>Contains information about the status of ACM's <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the certificate. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
+-- @param DomainName [DomainNameString] <p>The fully qualified domain name for the certificate, such as www.example.com or example.com.</p>
+-- @param RevokedAt [TStamp] <p>The time at which the certificate was revoked. This value exists only when the certificate status is <code>REVOKED</code>.</p>
+-- @param Type [CertificateType] <p>The source of the certificate. For certificates provided by ACM, this value is <code>AMAZON_ISSUED</code>. For certificates that you imported with <a>ImportCertificate</a>, this value is <code>IMPORTED</code>. ACM does not provide <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html">Importing Certificates</a> in the <i>AWS Certificate Manager User Guide</i>.</p>
+-- @param NotBefore [TStamp] <p>The time before which the certificate is not valid.</p>
+-- @param KeyAlgorithm [KeyAlgorithm] <p>The algorithm that was used to generate the key pair (the public and private key).</p>
+-- @param NotAfter [TStamp] <p>The time after which the certificate is not valid.</p>
+-- @param ImportedAt [TStamp] <p>The date and time at which the certificate was imported. This value exists only when the certificate type is <code>IMPORTED</code>.</p>
+-- @param InUseBy [InUseList] <p>A list of ARNs for the AWS resources that are using the certificate. A certificate can be used by multiple AWS resources.</p>
+-- @param SignatureAlgorithm [String] <p>The algorithm that was used to sign the certificate.</p>
+-- @param CreatedAt [TStamp] <p>The time at which the certificate was requested. This value exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
+-- @param IssuedAt [TStamp] <p>The time at which the certificate was issued. This value exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
+-- @param Serial [String] <p>The serial number of the certificate.</p>
+-- @param Issuer [String] <p>The name of the certificate authority that issued and signed the certificate.</p>
+-- @param RevocationReason [RevocationReason] <p>The reason the certificate was revoked. This value exists only when the certificate status is <code>REVOKED</code>.</p>
+-- @param FailureReason [FailureReason] <p>The reason the certificate request failed. This value exists only when the certificate status is <code>FAILED</code>. For more information, see <a href="http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed">Certificate Request Failed</a> in the <i>AWS Certificate Manager User Guide</i>.</p>
+-- @param DomainValidationOptions [DomainValidationList] <p>Contains information about the initial validation of each domain name that occurs as a result of the <a>RequestCertificate</a> request. This field exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
+-- @param Subject [String] <p>The name of the entity that is associated with the public key contained in the certificate.</p>
 function M.CertificateDetail(CertificateArn, Status, SubjectAlternativeNames, RenewalSummary, DomainName, RevokedAt, Type, NotBefore, KeyAlgorithm, NotAfter, ImportedAt, InUseBy, SignatureAlgorithm, CreatedAt, IssuedAt, Serial, Issuer, RevocationReason, FailureReason, DomainValidationOptions, Subject, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CertificateDetail")
 	local t = { 
@@ -860,8 +860,8 @@ function M.AssertInvalidStateException(struct)
 end
 
 --- Create a structure of type InvalidStateException
--- &lt;p&gt;Processing has reached an invalid state. For example, this exception can occur if the specified domain is not using email validation, or the current certificate status does not permit the requested operation. See the exception message returned by ACM to determine which state is not valid.&lt;/p&gt;
--- @param message [String] &lt;p&gt;Processing has reached an invalid state. For example, this exception can occur if the specified domain is not using email validation, or the current certificate status does not permit the requested operation. See the exception message returned by ACM to determine which state is not valid.&lt;/p&gt;
+-- <p>Processing has reached an invalid state. For example, this exception can occur if the specified domain is not using email validation, or the current certificate status does not permit the requested operation. See the exception message returned by ACM to determine which state is not valid.</p>
+-- @param message [String] <p>Processing has reached an invalid state. For example, this exception can occur if the specified domain is not using email validation, or the current certificate status does not permit the requested operation. See the exception message returned by ACM to determine which state is not valid.</p>
 function M.InvalidStateException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidStateException")
 	local t = { 
@@ -883,8 +883,8 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The specified certificate cannot be found in the caller's account, or the caller's account cannot be found.&lt;/p&gt;
--- @param message [String] &lt;p&gt;The specified certificate cannot be found in the caller's account, or the caller's account cannot be found.&lt;/p&gt;
+-- <p>The specified certificate cannot be found in the caller's account, or the caller's account cannot be found.</p>
+-- @param message [String] <p>The specified certificate cannot be found in the caller's account, or the caller's account cannot be found.</p>
 function M.ResourceNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 

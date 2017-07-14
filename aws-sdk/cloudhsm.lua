@@ -29,7 +29,7 @@ function M.AssertInvalidRequestException(struct)
 end
 
 --- Create a structure of type InvalidRequestException
--- &lt;p&gt;Indicates that one or more of the request parameters are not valid.&lt;/p&gt;
+-- <p>Indicates that one or more of the request parameters are not valid.</p>
 function M.InvalidRequestException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
@@ -54,8 +54,8 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceRequest
 --  
--- @param ResourceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the AWS CloudHSM resource.&lt;/p&gt;
--- @param TagKeyList [TagKeyList] &lt;p&gt;The tag key or keys to remove.&lt;/p&gt; &lt;p&gt;Specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use &lt;a&gt;AddTagsToResource&lt;/a&gt;.&lt;/p&gt;
+-- @param ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource.</p>
+-- @param TagKeyList [TagKeyList] <p>The tag key or keys to remove.</p> <p>Specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use <a>AddTagsToResource</a>.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: TagKeyList
 function M.RemoveTagsFromResourceRequest(ResourceArn, TagKeyList, ...)
@@ -81,9 +81,9 @@ function M.AssertListHsmsResponse(struct)
 end
 
 --- Create a structure of type ListHsmsResponse
--- &lt;p&gt;Contains the output of the &lt;a&gt;ListHsms&lt;/a&gt; operation.&lt;/p&gt;
--- @param HsmList [HsmList] &lt;p&gt;The list of ARNs that identify the HSMs.&lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;If not null, more results are available. Pass this value to &lt;a&gt;ListHsms&lt;/a&gt; to retrieve the next set of items.&lt;/p&gt;
+-- <p>Contains the output of the <a>ListHsms</a> operation.</p>
+-- @param HsmList [HsmList] <p>The list of ARNs that identify the HSMs.</p>
+-- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHsms</a> to retrieve the next set of items.</p>
 function M.ListHsmsResponse(HsmList, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHsmsResponse")
 	local t = { 
@@ -105,7 +105,7 @@ function M.AssertListAvailableZonesRequest(struct)
 end
 
 --- Create a structure of type ListAvailableZonesRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;ListAvailableZones&lt;/a&gt; action.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>ListAvailableZones</a> action.</p>
 function M.ListAvailableZonesRequest(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAvailableZonesRequest")
 	local t = { 
@@ -126,8 +126,8 @@ function M.AssertCreateLunaClientResponse(struct)
 end
 
 --- Create a structure of type CreateLunaClientResponse
--- &lt;p&gt;Contains the output of the &lt;a&gt;CreateLunaClient&lt;/a&gt; action.&lt;/p&gt;
--- @param ClientArn [ClientArn] &lt;p&gt;The ARN of the client.&lt;/p&gt;
+-- <p>Contains the output of the <a>CreateLunaClient</a> action.</p>
+-- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
 function M.CreateLunaClientResponse(ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLunaClientResponse")
 	local t = { 
@@ -149,8 +149,8 @@ function M.AssertCreateHsmResponse(struct)
 end
 
 --- Create a structure of type CreateHsmResponse
--- &lt;p&gt;Contains the output of the &lt;a&gt;CreateHsm&lt;/a&gt; operation.&lt;/p&gt;
--- @param HsmArn [HsmArn] &lt;p&gt;The ARN of the HSM.&lt;/p&gt;
+-- <p>Contains the output of the <a>CreateHsm</a> operation.</p>
+-- @param HsmArn [HsmArn] <p>The ARN of the HSM.</p>
 function M.CreateHsmResponse(HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHsmResponse")
 	local t = { 
@@ -176,8 +176,8 @@ end
 
 --- Create a structure of type AddTagsToResourceRequest
 --  
--- @param ResourceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.&lt;/p&gt;
--- @param TagList [TagList] &lt;p&gt;One or more tags.&lt;/p&gt;
+-- @param ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.</p>
+-- @param TagList [TagList] <p>One or more tags.</p>
 -- Required parameter: ResourceArn
 -- Required parameter: TagList
 function M.AddTagsToResourceRequest(ResourceArn, TagList, ...)
@@ -203,7 +203,7 @@ end
 
 --- Create a structure of type ListLunaClientsRequest
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;The &lt;i&gt;NextToken&lt;/i&gt; value from a previous call to &lt;a&gt;ListLunaClients&lt;/a&gt;. Pass null if this is the first call.&lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>. Pass null if this is the first call.</p>
 function M.ListLunaClientsRequest(NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLunaClientsRequest")
 	local t = { 
@@ -227,7 +227,7 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceResponse
 --  
--- @param Status [String] &lt;p&gt;The status of the operation.&lt;/p&gt;
+-- @param Status [String] <p>The status of the operation.</p>
 -- Required parameter: Status
 function M.RemoveTagsFromResourceResponse(Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceResponse")
@@ -252,7 +252,7 @@ end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param ResourceArn [String] &lt;p&gt;The Amazon Resource Name (ARN) of the AWS CloudHSM resource.&lt;/p&gt;
+-- @param ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource.</p>
 -- Required parameter: ResourceArn
 function M.ListTagsForResourceRequest(ResourceArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
@@ -276,8 +276,8 @@ function M.AssertDeleteHsmRequest(struct)
 end
 
 --- Create a structure of type DeleteHsmRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DeleteHsm&lt;/a&gt; operation.&lt;/p&gt;
--- @param HsmArn [HsmArn] &lt;p&gt;The ARN of the HSM to delete.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DeleteHsm</a> operation.</p>
+-- @param HsmArn [HsmArn] <p>The ARN of the HSM to delete.</p>
 -- Required parameter: HsmArn
 function M.DeleteHsmRequest(HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHsmRequest")
@@ -300,8 +300,8 @@ function M.AssertModifyHsmResponse(struct)
 end
 
 --- Create a structure of type ModifyHsmResponse
--- &lt;p&gt;Contains the output of the &lt;a&gt;ModifyHsm&lt;/a&gt; operation.&lt;/p&gt;
--- @param HsmArn [HsmArn] &lt;p&gt;The ARN of the HSM.&lt;/p&gt;
+-- <p>Contains the output of the <a>ModifyHsm</a> operation.</p>
+-- @param HsmArn [HsmArn] <p>The ARN of the HSM.</p>
 function M.ModifyHsmResponse(HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHsmResponse")
 	local t = { 
@@ -331,16 +331,16 @@ function M.AssertDescribeHapgResponse(struct)
 end
 
 --- Create a structure of type DescribeHapgResponse
--- &lt;p&gt;Contains the output of the &lt;a&gt;DescribeHapg&lt;/a&gt; action.&lt;/p&gt;
--- @param PartitionSerialList [PartitionSerialList] &lt;p&gt;The list of partition serial numbers that belong to the high-availability partition group.&lt;/p&gt;
--- @param HsmsPendingRegistration [HsmList] &lt;p&gt;Contains the output of the &lt;a&gt;DescribeHapg&lt;/a&gt; action.&lt;/p&gt;
--- @param HsmsLastActionFailed [HsmList] &lt;p&gt;Contains the output of the &lt;a&gt;DescribeHapg&lt;/a&gt; action.&lt;/p&gt;
--- @param HsmsPendingDeletion [HsmList] &lt;p&gt;Contains the output of the &lt;a&gt;DescribeHapg&lt;/a&gt; action.&lt;/p&gt;
--- @param LastModifiedTimestamp [Timestamp] &lt;p&gt;The date and time the high-availability partition group was last modified.&lt;/p&gt;
--- @param Label [Label] &lt;p&gt;The label for the high-availability partition group.&lt;/p&gt;
--- @param HapgSerial [String] &lt;p&gt;The serial number of the high-availability partition group.&lt;/p&gt;
--- @param State [CloudHsmObjectState] &lt;p&gt;The state of the high-availability partition group.&lt;/p&gt;
--- @param HapgArn [HapgArn] &lt;p&gt;The ARN of the high-availability partition group.&lt;/p&gt;
+-- <p>Contains the output of the <a>DescribeHapg</a> action.</p>
+-- @param PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers that belong to the high-availability partition group.</p>
+-- @param HsmsPendingRegistration [HsmList] <p>Contains the output of the <a>DescribeHapg</a> action.</p>
+-- @param HsmsLastActionFailed [HsmList] <p>Contains the output of the <a>DescribeHapg</a> action.</p>
+-- @param HsmsPendingDeletion [HsmList] <p>Contains the output of the <a>DescribeHapg</a> action.</p>
+-- @param LastModifiedTimestamp [Timestamp] <p>The date and time the high-availability partition group was last modified.</p>
+-- @param Label [Label] <p>The label for the high-availability partition group.</p>
+-- @param HapgSerial [String] <p>The serial number of the high-availability partition group.</p>
+-- @param State [CloudHsmObjectState] <p>The state of the high-availability partition group.</p>
+-- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
 function M.DescribeHapgResponse(PartitionSerialList, HsmsPendingRegistration, HsmsLastActionFailed, HsmsPendingDeletion, LastModifiedTimestamp, Label, HapgSerial, State, HapgArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHapgResponse")
 	local t = { 
@@ -372,7 +372,7 @@ end
 
 --- Create a structure of type ListTagsForResourceResponse
 --  
--- @param TagList [TagList] &lt;p&gt;One or more tags.&lt;/p&gt;
+-- @param TagList [TagList] <p>One or more tags.</p>
 -- Required parameter: TagList
 function M.ListTagsForResourceResponse(TagList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
@@ -396,7 +396,7 @@ end
 
 --- Create a structure of type ListHapgsRequest
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;The &lt;i&gt;NextToken&lt;/i&gt; value from a previous call to &lt;a&gt;ListHapgs&lt;/a&gt;. Pass null if this is the first call.&lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHapgs</a>. Pass null if this is the first call.</p>
 function M.ListHapgsRequest(NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHapgsRequest")
 	local t = { 
@@ -424,9 +424,9 @@ end
 
 --- Create a structure of type GetConfigRequest
 --  
--- @param HapgList [HapgList] &lt;p&gt;A list of ARNs that identify the high-availability partition groups that are associated with the client.&lt;/p&gt;
--- @param ClientVersion [ClientVersion] &lt;p&gt;The client version.&lt;/p&gt;
--- @param ClientArn [ClientArn] &lt;p&gt;The ARN of the client.&lt;/p&gt;
+-- @param HapgList [HapgList] <p>A list of ARNs that identify the high-availability partition groups that are associated with the client.</p>
+-- @param ClientVersion [ClientVersion] <p>The client version.</p>
+-- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
 -- Required parameter: ClientArn
 -- Required parameter: ClientVersion
 -- Required parameter: HapgList
@@ -454,8 +454,8 @@ function M.AssertCreateHapgRequest(struct)
 end
 
 --- Create a structure of type CreateHapgRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;CreateHapgRequest&lt;/a&gt; action.&lt;/p&gt;
--- @param Label [Label] &lt;p&gt;The label of the new high-availability partition group.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>CreateHapgRequest</a> action.</p>
+-- @param Label [Label] <p>The label of the new high-availability partition group.</p>
 -- Required parameter: Label
 function M.CreateHapgRequest(Label, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHapgRequest")
@@ -479,8 +479,8 @@ function M.AssertDescribeHapgRequest(struct)
 end
 
 --- Create a structure of type DescribeHapgRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DescribeHapg&lt;/a&gt; action.&lt;/p&gt;
--- @param HapgArn [HapgArn] &lt;p&gt;The ARN of the high-availability partition group to describe.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DescribeHapg</a> action.</p>
+-- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group to describe.</p>
 -- Required parameter: HapgArn
 function M.DescribeHapgRequest(HapgArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHapgRequest")
@@ -506,8 +506,8 @@ end
 
 --- Create a structure of type ListHapgsResponse
 --  
--- @param HapgList [HapgList] &lt;p&gt;The list of high-availability partition groups.&lt;/p&gt;
--- @param NextToken [PaginationToken] &lt;p&gt;If not null, more results are available. Pass this value to &lt;a&gt;ListHapgs&lt;/a&gt; to retrieve the next set of items.&lt;/p&gt;
+-- @param HapgList [HapgList] <p>The list of high-availability partition groups.</p>
+-- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHapgs</a> to retrieve the next set of items.</p>
 -- Required parameter: HapgList
 function M.ListHapgsResponse(HapgList, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHapgsResponse")
@@ -532,9 +532,9 @@ function M.AssertDescribeHsmRequest(struct)
 end
 
 --- Create a structure of type DescribeHsmRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DescribeHsm&lt;/a&gt; operation. &lt;/p&gt;
--- @param HsmSerialNumber [HsmSerialNumber] &lt;p&gt;The serial number of the HSM. Either the &lt;i&gt;HsmArn&lt;/i&gt; or the &lt;i&gt;HsmSerialNumber&lt;/i&gt; parameter must be specified.&lt;/p&gt;
--- @param HsmArn [HsmArn] &lt;p&gt;The ARN of the HSM. Either the &lt;i&gt;HsmArn&lt;/i&gt; or the &lt;i&gt;SerialNumber&lt;/i&gt; parameter must be specified.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DescribeHsm</a> operation. </p>
+-- @param HsmSerialNumber [HsmSerialNumber] <p>The serial number of the HSM. Either the <i>HsmArn</i> or the <i>HsmSerialNumber</i> parameter must be specified.</p>
+-- @param HsmArn [HsmArn] <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i> parameter must be specified.</p>
 function M.DescribeHsmRequest(HsmSerialNumber, HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHsmRequest")
 	local t = { 
@@ -562,11 +562,11 @@ end
 
 --- Create a structure of type DescribeLunaClientResponse
 --  
--- @param LastModifiedTimestamp [Timestamp] &lt;p&gt;The date and time the client was last modified.&lt;/p&gt;
--- @param Label [Label] &lt;p&gt;The label of the client.&lt;/p&gt;
--- @param CertificateFingerprint [CertificateFingerprint] &lt;p&gt;The certificate fingerprint.&lt;/p&gt;
--- @param Certificate [Certificate] &lt;p&gt;The certificate installed on the HSMs used by this client.&lt;/p&gt;
--- @param ClientArn [ClientArn] &lt;p&gt;The ARN of the client.&lt;/p&gt;
+-- @param LastModifiedTimestamp [Timestamp] <p>The date and time the client was last modified.</p>
+-- @param Label [Label] <p>The label of the client.</p>
+-- @param CertificateFingerprint [CertificateFingerprint] <p>The certificate fingerprint.</p>
+-- @param Certificate [Certificate] <p>The certificate installed on the HSMs used by this client.</p>
+-- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
 function M.DescribeLunaClientResponse(LastModifiedTimestamp, Label, CertificateFingerprint, Certificate, ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLunaClientResponse")
 	local t = { 
@@ -594,7 +594,7 @@ end
 
 --- Create a structure of type DeleteLunaClientRequest
 --  
--- @param ClientArn [ClientArn] &lt;p&gt;The ARN of the client to delete.&lt;/p&gt;
+-- @param ClientArn [ClientArn] <p>The ARN of the client to delete.</p>
 -- Required parameter: ClientArn
 function M.DeleteLunaClientRequest(ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLunaClientRequest")
@@ -618,9 +618,9 @@ function M.AssertCloudHsmServiceException(struct)
 end
 
 --- Create a structure of type CloudHsmServiceException
--- &lt;p&gt;Indicates that an exception occurred in the AWS CloudHSM service.&lt;/p&gt;
--- @param message [String] &lt;p&gt;Additional information about the error.&lt;/p&gt;
--- @param retryable [Boolean] &lt;p&gt;Indicates if the action can be retried.&lt;/p&gt;
+-- <p>Indicates that an exception occurred in the AWS CloudHSM service.</p>
+-- @param message [String] <p>Additional information about the error.</p>
+-- @param retryable [Boolean] <p>Indicates if the action can be retried.</p>
 function M.CloudHsmServiceException(message, retryable, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloudHsmServiceException")
 	local t = { 
@@ -644,7 +644,7 @@ end
 
 --- Create a structure of type ModifyHapgResponse
 --  
--- @param HapgArn [HapgArn] &lt;p&gt;The ARN of the high-availability partition group.&lt;/p&gt;
+-- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
 function M.ModifyHapgResponse(HapgArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHapgResponse")
 	local t = { 
@@ -668,7 +668,7 @@ end
 
 --- Create a structure of type DeleteLunaClientResponse
 --  
--- @param Status [String] &lt;p&gt;The status of the action.&lt;/p&gt;
+-- @param Status [String] <p>The status of the action.</p>
 -- Required parameter: Status
 function M.DeleteLunaClientResponse(Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLunaClientResponse")
@@ -694,8 +694,8 @@ end
 
 --- Create a structure of type ListLunaClientsResponse
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;If not null, more results are available. Pass this to &lt;a&gt;ListLunaClients&lt;/a&gt; to retrieve the next set of items.&lt;/p&gt;
--- @param ClientList [ClientList] &lt;p&gt;The list of clients.&lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>If not null, more results are available. Pass this to <a>ListLunaClients</a> to retrieve the next set of items.</p>
+-- @param ClientList [ClientList] <p>The list of clients.</p>
 -- Required parameter: ClientList
 function M.ListLunaClientsResponse(NextToken, ClientList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListLunaClientsResponse")
@@ -723,9 +723,9 @@ end
 
 --- Create a structure of type ModifyHapgRequest
 --  
--- @param HapgArn [HapgArn] &lt;p&gt;The ARN of the high-availability partition group to modify.&lt;/p&gt;
--- @param PartitionSerialList [PartitionSerialList] &lt;p&gt;The list of partition serial numbers to make members of the high-availability partition group.&lt;/p&gt;
--- @param Label [Label] &lt;p&gt;The new label for the high-availability partition group.&lt;/p&gt;
+-- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group to modify.</p>
+-- @param PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers to make members of the high-availability partition group.</p>
+-- @param Label [Label] <p>The new label for the high-availability partition group.</p>
 -- Required parameter: HapgArn
 function M.ModifyHapgRequest(HapgArn, PartitionSerialList, Label, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHapgRequest")
@@ -751,7 +751,7 @@ end
 
 --- Create a structure of type ModifyLunaClientResponse
 --  
--- @param ClientArn [ClientArn] &lt;p&gt;The ARN of the client.&lt;/p&gt;
+-- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
 function M.ModifyLunaClientResponse(ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyLunaClientResponse")
 	local t = { 
@@ -775,7 +775,7 @@ end
 
 --- Create a structure of type AddTagsToResourceResponse
 --  
--- @param Status [String] &lt;p&gt;The status of the operation.&lt;/p&gt;
+-- @param Status [String] <p>The status of the operation.</p>
 -- Required parameter: Status
 function M.AddTagsToResourceResponse(Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceResponse")
@@ -801,9 +801,9 @@ end
 
 --- Create a structure of type GetConfigResponse
 --  
--- @param ConfigType [String] &lt;p&gt;The type of credentials.&lt;/p&gt;
--- @param ConfigCred [String] &lt;p&gt;The certificate file containing the server.pem files of the HSMs.&lt;/p&gt;
--- @param ConfigFile [String] &lt;p&gt;The chrystoki.conf configuration file.&lt;/p&gt;
+-- @param ConfigType [String] <p>The type of credentials.</p>
+-- @param ConfigCred [String] <p>The certificate file containing the server.pem files of the HSMs.</p>
+-- @param ConfigFile [String] <p>The chrystoki.conf configuration file.</p>
 function M.GetConfigResponse(ConfigType, ConfigCred, ConfigFile, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetConfigResponse")
 	local t = { 
@@ -828,8 +828,8 @@ function M.AssertDeleteHapgRequest(struct)
 end
 
 --- Create a structure of type DeleteHapgRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;DeleteHapg&lt;/a&gt; action.&lt;/p&gt;
--- @param HapgArn [HapgArn] &lt;p&gt;The ARN of the high-availability partition group to delete.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>DeleteHapg</a> action.</p>
+-- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group to delete.</p>
 -- Required parameter: HapgArn
 function M.DeleteHapgRequest(HapgArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHapgRequest")
@@ -853,8 +853,8 @@ function M.AssertDeleteHapgResponse(struct)
 end
 
 --- Create a structure of type DeleteHapgResponse
--- &lt;p&gt;Contains the output of the &lt;a&gt;DeleteHapg&lt;/a&gt; action.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the action.&lt;/p&gt;
+-- <p>Contains the output of the <a>DeleteHapg</a> action.</p>
+-- @param Status [String] <p>The status of the action.</p>
 -- Required parameter: Status
 function M.DeleteHapgResponse(Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHapgResponse")
@@ -878,7 +878,7 @@ end
 
 --- Create a structure of type ListHsmsRequest
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;The &lt;i&gt;NextToken&lt;/i&gt; value from a previous call to &lt;a&gt;ListHsms&lt;/a&gt;. Pass null if this is the first call.&lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHsms</a>. Pass null if this is the first call.</p>
 function M.ListHsmsRequest(NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListHsmsRequest")
 	local t = { 
@@ -904,8 +904,8 @@ end
 
 --- Create a structure of type ModifyLunaClientRequest
 --  
--- @param Certificate [Certificate] &lt;p&gt;The new certificate for the client.&lt;/p&gt;
--- @param ClientArn [ClientArn] &lt;p&gt;The ARN of the client.&lt;/p&gt;
+-- @param Certificate [Certificate] <p>The new certificate for the client.</p>
+-- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
 -- Required parameter: ClientArn
 -- Required parameter: Certificate
 function M.ModifyLunaClientRequest(Certificate, ClientArn, ...)
@@ -932,8 +932,8 @@ end
 
 --- Create a structure of type DescribeLunaClientRequest
 --  
--- @param CertificateFingerprint [CertificateFingerprint] &lt;p&gt;The certificate fingerprint.&lt;/p&gt;
--- @param ClientArn [ClientArn] &lt;p&gt;The ARN of the client.&lt;/p&gt;
+-- @param CertificateFingerprint [CertificateFingerprint] <p>The certificate fingerprint.</p>
+-- @param ClientArn [ClientArn] <p>The ARN of the client.</p>
 function M.DescribeLunaClientRequest(CertificateFingerprint, ClientArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLunaClientRequest")
 	local t = { 
@@ -956,8 +956,8 @@ function M.AssertCreateHapgResponse(struct)
 end
 
 --- Create a structure of type CreateHapgResponse
--- &lt;p&gt;Contains the output of the &lt;a&gt;CreateHAPartitionGroup&lt;/a&gt; action.&lt;/p&gt;
--- @param HapgArn [HapgArn] &lt;p&gt;The ARN of the high-availability partition group.&lt;/p&gt;
+-- <p>Contains the output of the <a>CreateHAPartitionGroup</a> action.</p>
+-- @param HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
 function M.CreateHapgResponse(HapgArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateHapgResponse")
 	local t = { 
@@ -985,13 +985,13 @@ function M.AssertModifyHsmRequest(struct)
 end
 
 --- Create a structure of type ModifyHsmRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;ModifyHsm&lt;/a&gt; operation.&lt;/p&gt;
--- @param IamRoleArn [IamRoleArn] &lt;p&gt;The new IAM role ARN.&lt;/p&gt;
--- @param EniIp [IpAddress] &lt;p&gt;The new IP address for the elastic network interface (ENI) attached to the HSM.&lt;/p&gt; &lt;p&gt;If the HSM is moved to a different subnet, and an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the new subnet.&lt;/p&gt;
--- @param ExternalId [ExternalId] &lt;p&gt;The new external ID.&lt;/p&gt;
--- @param SubnetId [SubnetId] &lt;p&gt;The new identifier of the subnet that the HSM is in. The new subnet must be in the same Availability Zone as the current subnet.&lt;/p&gt;
--- @param SyslogIp [IpAddress] &lt;p&gt;The new IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.&lt;/p&gt;
--- @param HsmArn [HsmArn] &lt;p&gt;The ARN of the HSM to modify.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>ModifyHsm</a> operation.</p>
+-- @param IamRoleArn [IamRoleArn] <p>The new IAM role ARN.</p>
+-- @param EniIp [IpAddress] <p>The new IP address for the elastic network interface (ENI) attached to the HSM.</p> <p>If the HSM is moved to a different subnet, and an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the new subnet.</p>
+-- @param ExternalId [ExternalId] <p>The new external ID.</p>
+-- @param SubnetId [SubnetId] <p>The new identifier of the subnet that the HSM is in. The new subnet must be in the same Availability Zone as the current subnet.</p>
+-- @param SyslogIp [IpAddress] <p>The new IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
+-- @param HsmArn [HsmArn] <p>The ARN of the HSM to modify.</p>
 -- Required parameter: HsmArn
 function M.ModifyHsmRequest(IamRoleArn, EniIp, ExternalId, SubnetId, SyslogIp, HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHsmRequest")
@@ -1020,7 +1020,7 @@ end
 
 --- Create a structure of type ListAvailableZonesResponse
 --  
--- @param AZList [AZList] &lt;p&gt;The list of Availability Zones that have available AWS CloudHSM capacity.&lt;/p&gt;
+-- @param AZList [AZList] <p>The list of Availability Zones that have available AWS CloudHSM capacity.</p>
 function M.ListAvailableZonesResponse(AZList, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAvailableZonesResponse")
 	local t = { 
@@ -1053,15 +1053,15 @@ function M.AssertCreateHsmRequest(struct)
 end
 
 --- Create a structure of type CreateHsmRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;CreateHsm&lt;/a&gt; operation.&lt;/p&gt;
--- @param SshKey [SshKey] &lt;p&gt;The SSH public key to install on the HSM.&lt;/p&gt;
--- @param SubscriptionType [SubscriptionType] &lt;p&gt;Contains the inputs for the &lt;a&gt;CreateHsm&lt;/a&gt; operation.&lt;/p&gt;
--- @param IamRoleArn [IamRoleArn] &lt;p&gt;The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.&lt;/p&gt;
--- @param EniIp [IpAddress] &lt;p&gt;The IP address to assign to the HSM's ENI.&lt;/p&gt; &lt;p&gt;If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.&lt;/p&gt;
--- @param ExternalId [ExternalId] &lt;p&gt;The external ID from &lt;b&gt;IamRoleArn&lt;/b&gt;, if present.&lt;/p&gt;
--- @param ClientToken [ClientToken] &lt;p&gt;A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be ignored.&lt;/p&gt;
--- @param SubnetId [SubnetId] &lt;p&gt;The identifier of the subnet in your VPC in which to place the HSM.&lt;/p&gt;
--- @param SyslogIp [IpAddress] &lt;p&gt;The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>CreateHsm</a> operation.</p>
+-- @param SshKey [SshKey] <p>The SSH public key to install on the HSM.</p>
+-- @param SubscriptionType [SubscriptionType] <p>Contains the inputs for the <a>CreateHsm</a> operation.</p>
+-- @param IamRoleArn [IamRoleArn] <p>The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.</p>
+-- @param EniIp [IpAddress] <p>The IP address to assign to the HSM's ENI.</p> <p>If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.</p>
+-- @param ExternalId [ExternalId] <p>The external ID from <b>IamRoleArn</b>, if present.</p>
+-- @param ClientToken [ClientToken] <p>A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be ignored.</p>
+-- @param SubnetId [SubnetId] <p>The identifier of the subnet in your VPC in which to place the HSM.</p>
+-- @param SyslogIp [IpAddress] <p>The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
 -- Required parameter: SubnetId
 -- Required parameter: SshKey
 -- Required parameter: IamRoleArn
@@ -1095,8 +1095,8 @@ function M.AssertDeleteHsmResponse(struct)
 end
 
 --- Create a structure of type DeleteHsmResponse
--- &lt;p&gt;Contains the output of the &lt;a&gt;DeleteHsm&lt;/a&gt; operation.&lt;/p&gt;
--- @param Status [String] &lt;p&gt;The status of the operation.&lt;/p&gt;
+-- <p>Contains the output of the <a>DeleteHsm</a> operation.</p>
+-- @param Status [String] <p>The status of the operation.</p>
 -- Required parameter: Status
 function M.DeleteHsmResponse(Status, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHsmResponse")
@@ -1121,9 +1121,9 @@ function M.AssertCreateLunaClientRequest(struct)
 end
 
 --- Create a structure of type CreateLunaClientRequest
--- &lt;p&gt;Contains the inputs for the &lt;a&gt;CreateLunaClient&lt;/a&gt; action.&lt;/p&gt;
--- @param Certificate [Certificate] &lt;p&gt;The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.&lt;/p&gt;
--- @param Label [ClientLabel] &lt;p&gt;The label for the client.&lt;/p&gt;
+-- <p>Contains the inputs for the <a>CreateLunaClient</a> action.</p>
+-- @param Certificate [Certificate] <p>The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.</p>
+-- @param Label [ClientLabel] <p>The label for the client.</p>
 -- Required parameter: Certificate
 function M.CreateLunaClientRequest(Certificate, Label, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLunaClientRequest")
@@ -1167,28 +1167,28 @@ function M.AssertDescribeHsmResponse(struct)
 end
 
 --- Create a structure of type DescribeHsmResponse
--- &lt;p&gt;Contains the output of the &lt;a&gt;DescribeHsm&lt;/a&gt; operation.&lt;/p&gt;
--- @param Status [HsmStatus] &lt;p&gt;The status of the HSM.&lt;/p&gt;
--- @param SubscriptionStartDate [Timestamp] &lt;p&gt;The subscription start date.&lt;/p&gt;
--- @param AvailabilityZone [AZ] &lt;p&gt;The Availability Zone that the HSM is in.&lt;/p&gt;
--- @param EniId [EniId] &lt;p&gt;The identifier of the elastic network interface (ENI) attached to the HSM.&lt;/p&gt;
--- @param HsmType [String] &lt;p&gt;The HSM model type.&lt;/p&gt;
--- @param SshPublicKey [SshKey] &lt;p&gt;The public SSH key.&lt;/p&gt;
--- @param SubscriptionType [SubscriptionType] &lt;p&gt;Contains the output of the &lt;a&gt;DescribeHsm&lt;/a&gt; operation.&lt;/p&gt;
--- @param SerialNumber [HsmSerialNumber] &lt;p&gt;The serial number of the HSM.&lt;/p&gt;
--- @param IamRoleArn [IamRoleArn] &lt;p&gt;The ARN of the IAM role assigned to the HSM.&lt;/p&gt;
--- @param SubscriptionEndDate [Timestamp] &lt;p&gt;The subscription end date.&lt;/p&gt;
--- @param EniIp [IpAddress] &lt;p&gt;The IP address assigned to the HSM's ENI.&lt;/p&gt;
--- @param SoftwareVersion [String] &lt;p&gt;The HSM software version.&lt;/p&gt;
--- @param VpcId [VpcId] &lt;p&gt;The identifier of the VPC that the HSM is in.&lt;/p&gt;
--- @param ServerCertUri [String] &lt;p&gt;The URI of the certificate server.&lt;/p&gt;
--- @param SubnetId [SubnetId] &lt;p&gt;The identifier of the subnet that the HSM is in.&lt;/p&gt;
--- @param SshKeyLastUpdated [Timestamp] &lt;p&gt;The date and time that the SSH key was last updated.&lt;/p&gt;
--- @param Partitions [PartitionList] &lt;p&gt;The list of partitions on the HSM.&lt;/p&gt;
--- @param ServerCertLastUpdated [Timestamp] &lt;p&gt;The date and time that the server certificate was last updated.&lt;/p&gt;
--- @param StatusDetails [String] &lt;p&gt;Contains additional information about the status of the HSM.&lt;/p&gt;
--- @param VendorName [String] &lt;p&gt;The name of the HSM vendor.&lt;/p&gt;
--- @param HsmArn [HsmArn] &lt;p&gt;The ARN of the HSM.&lt;/p&gt;
+-- <p>Contains the output of the <a>DescribeHsm</a> operation.</p>
+-- @param Status [HsmStatus] <p>The status of the HSM.</p>
+-- @param SubscriptionStartDate [Timestamp] <p>The subscription start date.</p>
+-- @param AvailabilityZone [AZ] <p>The Availability Zone that the HSM is in.</p>
+-- @param EniId [EniId] <p>The identifier of the elastic network interface (ENI) attached to the HSM.</p>
+-- @param HsmType [String] <p>The HSM model type.</p>
+-- @param SshPublicKey [SshKey] <p>The public SSH key.</p>
+-- @param SubscriptionType [SubscriptionType] <p>Contains the output of the <a>DescribeHsm</a> operation.</p>
+-- @param SerialNumber [HsmSerialNumber] <p>The serial number of the HSM.</p>
+-- @param IamRoleArn [IamRoleArn] <p>The ARN of the IAM role assigned to the HSM.</p>
+-- @param SubscriptionEndDate [Timestamp] <p>The subscription end date.</p>
+-- @param EniIp [IpAddress] <p>The IP address assigned to the HSM's ENI.</p>
+-- @param SoftwareVersion [String] <p>The HSM software version.</p>
+-- @param VpcId [VpcId] <p>The identifier of the VPC that the HSM is in.</p>
+-- @param ServerCertUri [String] <p>The URI of the certificate server.</p>
+-- @param SubnetId [SubnetId] <p>The identifier of the subnet that the HSM is in.</p>
+-- @param SshKeyLastUpdated [Timestamp] <p>The date and time that the SSH key was last updated.</p>
+-- @param Partitions [PartitionList] <p>The list of partitions on the HSM.</p>
+-- @param ServerCertLastUpdated [Timestamp] <p>The date and time that the server certificate was last updated.</p>
+-- @param StatusDetails [String] <p>Contains additional information about the status of the HSM.</p>
+-- @param VendorName [String] <p>The name of the HSM vendor.</p>
+-- @param HsmArn [HsmArn] <p>The ARN of the HSM.</p>
 function M.DescribeHsmResponse(Status, SubscriptionStartDate, AvailabilityZone, EniId, HsmType, SshPublicKey, SubscriptionType, SerialNumber, IamRoleArn, SubscriptionEndDate, EniIp, SoftwareVersion, VpcId, ServerCertUri, SubnetId, SshKeyLastUpdated, Partitions, ServerCertLastUpdated, StatusDetails, VendorName, HsmArn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHsmResponse")
 	local t = { 
@@ -1229,7 +1229,7 @@ function M.AssertCloudHsmInternalException(struct)
 end
 
 --- Create a structure of type CloudHsmInternalException
--- &lt;p&gt;Indicates that an internal error occurred.&lt;/p&gt;
+-- <p>Indicates that an internal error occurred.</p>
 function M.CloudHsmInternalException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CloudHsmInternalException")
 	local t = { 
@@ -1253,9 +1253,9 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;A key-value pair that identifies or specifies metadata about an AWS CloudHSM resource.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The value of the tag.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The key of the tag.&lt;/p&gt;
+-- <p>A key-value pair that identifies or specifies metadata about an AWS CloudHSM resource.</p>
+-- @param Value [TagValue] <p>The value of the tag.</p>
+-- @param Key [TagKey] <p>The key of the tag.</p>
 -- Required parameter: Key
 -- Required parameter: Value
 function M.Tag(Value, Key, ...)
@@ -1336,7 +1336,7 @@ function M.AssertHsmArn(str)
 	assert(str:match("arn:aws(-iso)?:cloudhsm:[a-zA-Z0-9%-]*:[0-9]{12}:hsm-[0-9a-f]{8}"), "Expected string to match pattern 'arn:aws(-iso)?:cloudhsm:[a-zA-Z0-9%-]*:[0-9]{12}:hsm-[0-9a-f]{8}'")
 end
 
--- &lt;p&gt;An ARN that identifies an HSM.&lt;/p&gt;
+-- <p>An ARN that identifies an HSM.</p>
 function M.HsmArn(str)
 	M.AssertHsmArn(str)
 	return str
@@ -1573,7 +1573,7 @@ function M.AssertSubscriptionType(str)
 	assert(type(str) == "string", "Expected SubscriptionType to be of type 'string'")
 end
 
--- &lt;p&gt;Specifies the type of subscription for the HSM.&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;b&gt;PRODUCTION&lt;/b&gt; - The HSM is being used in a production environment.&lt;/li&gt; &lt;li&gt;&lt;b&gt;TRIAL&lt;/b&gt; - The HSM is being used in a product trial.&lt;/li&gt; &lt;/ul&gt;
+-- <p>Specifies the type of subscription for the HSM.</p> <ul> <li><b>PRODUCTION</b> - The HSM is being used in a production environment.</li> <li><b>TRIAL</b> - The HSM is being used in a product trial.</li> </ul>
 function M.SubscriptionType(str)
 	M.AssertSubscriptionType(str)
 	return str
@@ -1621,7 +1621,7 @@ function M.AssertHsmList(list)
 	end
 end
 
--- &lt;p&gt;Contains a list of ARNs that identify the HSMs.&lt;/p&gt;
+-- <p>Contains a list of ARNs that identify the HSMs.</p>
 -- List of HsmArn objects
 function M.HsmList(list)
 	M.AssertHsmList(list)

@@ -31,7 +31,7 @@ end
 
 --- Create a structure of type DeleteCollectionResponse
 --  
--- @param StatusCode [UInteger] &lt;p&gt;HTTP status code that indicates the result of the operation.&lt;/p&gt;
+-- @param StatusCode [UInteger] <p>HTTP status code that indicates the result of the operation.</p>
 function M.DeleteCollectionResponse(StatusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCollectionResponse")
 	local t = { 
@@ -54,7 +54,7 @@ end
 
 --- Create a structure of type DeleteFacesResponse
 --  
--- @param DeletedFaces [FaceIdList] &lt;p&gt;An array of strings (face IDs) of the faces that were deleted.&lt;/p&gt;
+-- @param DeletedFaces [FaceIdList] <p>An array of strings (face IDs) of the faces that were deleted.</p>
 function M.DeleteFacesResponse(DeletedFaces, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFacesResponse")
 	local t = { 
@@ -77,9 +77,9 @@ function M.AssertSmile(struct)
 end
 
 --- Create a structure of type Smile
--- &lt;p&gt;Indicates whether or not the face is smiling, and the confidence level in the determination.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence in the determination.&lt;/p&gt;
--- @param Value [Boolean] &lt;p&gt;Boolean value that indicates whether the face is smiling or not.&lt;/p&gt;
+-- <p>Indicates whether or not the face is smiling, and the confidence level in the determination.</p>
+-- @param Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- @param Value [Boolean] <p>Boolean value that indicates whether the face is smiling or not.</p>
 function M.Smile(Confidence, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Smile")
 	local t = { 
@@ -103,9 +103,9 @@ function M.AssertComparedSourceImageFace(struct)
 end
 
 --- Create a structure of type ComparedSourceImageFace
--- &lt;p&gt;Type that describes the face Amazon Rekognition chose to compare with the faces in the target. This contains a bounding box for the selected face and confidence level that the bounding box contains a face. Note that Amazon Rekognition selects the largest face in the source image for this comparison. &lt;/p&gt;
--- @param BoundingBox [BoundingBox] &lt;p&gt;Bounding box of the face.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Confidence level that the selected bounding box contains a face.&lt;/p&gt;
+-- <p>Type that describes the face Amazon Rekognition chose to compare with the faces in the target. This contains a bounding box for the selected face and confidence level that the bounding box contains a face. Note that Amazon Rekognition selects the largest face in the source image for this comparison. </p>
+-- @param BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
+-- @param Confidence [Percent] <p>Confidence level that the selected bounding box contains a face.</p>
 function M.ComparedSourceImageFace(BoundingBox, Confidence, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComparedSourceImageFace")
 	local t = { 
@@ -127,7 +127,7 @@ function M.AssertInvalidS3ObjectException(struct)
 end
 
 --- Create a structure of type InvalidS3ObjectException
--- &lt;p&gt;Amazon Rekognition is unable to access the S3 object specified in the request.&lt;/p&gt;
+-- <p>Amazon Rekognition is unable to access the S3 object specified in the request.</p>
 function M.InvalidS3ObjectException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3ObjectException")
 	local t = { 
@@ -152,8 +152,8 @@ end
 
 --- Create a structure of type DeleteFacesRequest
 --  
--- @param FaceIds [FaceIdList] &lt;p&gt;An array of face IDs to delete.&lt;/p&gt;
--- @param CollectionId [CollectionId] &lt;p&gt;Collection from which to remove the specific faces.&lt;/p&gt;
+-- @param FaceIds [FaceIdList] <p>An array of face IDs to delete.</p>
+-- @param CollectionId [CollectionId] <p>Collection from which to remove the specific faces.</p>
 -- Required parameter: CollectionId
 -- Required parameter: FaceIds
 function M.DeleteFacesRequest(FaceIds, CollectionId, ...)
@@ -180,8 +180,8 @@ end
 
 --- Create a structure of type GetCelebrityInfoResponse
 --  
--- @param Name [String] &lt;p&gt;The name of the celebrity.&lt;/p&gt;
--- @param Urls [Urls] &lt;p&gt;An array of URLs pointing to additional celebrity information. &lt;/p&gt;
+-- @param Name [String] <p>The name of the celebrity.</p>
+-- @param Urls [Urls] <p>An array of URLs pointing to additional celebrity information. </p>
 function M.GetCelebrityInfoResponse(Name, Urls, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCelebrityInfoResponse")
 	local t = { 
@@ -203,7 +203,7 @@ function M.AssertInternalServerError(struct)
 end
 
 --- Create a structure of type InternalServerError
--- &lt;p&gt;Amazon Rekognition experienced a service issue. Try your call again.&lt;/p&gt;
+-- <p>Amazon Rekognition experienced a service issue. Try your call again.</p>
 function M.InternalServerError(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
 	local t = { 
@@ -223,7 +223,7 @@ function M.AssertImageTooLargeException(struct)
 end
 
 --- Create a structure of type ImageTooLargeException
--- &lt;p&gt;The input image size exceeds the allowed limit. For more information, see &lt;a&gt;limits&lt;/a&gt;. &lt;/p&gt;
+-- <p>The input image size exceeds the allowed limit. For more information, see <a>limits</a>. </p>
 function M.ImageTooLargeException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImageTooLargeException")
 	local t = { 
@@ -246,10 +246,10 @@ function M.AssertLandmark(struct)
 end
 
 --- Create a structure of type Landmark
--- &lt;p&gt;Indicates the location of the landmark on the face.&lt;/p&gt;
--- @param Y [Float] &lt;p&gt;y-coordinate from the top left of the landmark expressed as the ration of the height of the image. For example, if the images is 700x200 and the y-coordinate of the landmark is at 100 pixels, this value is 0.5.&lt;/p&gt;
--- @param X [Float] &lt;p&gt;x-coordinate from the top left of the landmark expressed as the ration of the width of the image. For example, if the images is 700x200 and the x-coordinate of the landmark is at 350 pixels, this value is 0.5. &lt;/p&gt;
--- @param Type [LandmarkType] &lt;p&gt;Type of the landmark.&lt;/p&gt;
+-- <p>Indicates the location of the landmark on the face.</p>
+-- @param Y [Float] <p>y-coordinate from the top left of the landmark expressed as the ration of the height of the image. For example, if the images is 700x200 and the y-coordinate of the landmark is at 100 pixels, this value is 0.5.</p>
+-- @param X [Float] <p>x-coordinate from the top left of the landmark expressed as the ration of the width of the image. For example, if the images is 700x200 and the x-coordinate of the landmark is at 350 pixels, this value is 0.5. </p>
+-- @param Type [LandmarkType] <p>Type of the landmark.</p>
 function M.Landmark(Y, X, Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Landmark")
 	local t = { 
@@ -274,9 +274,9 @@ function M.AssertEyeglasses(struct)
 end
 
 --- Create a structure of type Eyeglasses
--- &lt;p&gt;Indicates whether or not the face is wearing eye glasses, and the confidence level in the determination.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence in the determination.&lt;/p&gt;
--- @param Value [Boolean] &lt;p&gt;Boolean value that indicates whether the face is wearing eye glasses or not.&lt;/p&gt;
+-- <p>Indicates whether or not the face is wearing eye glasses, and the confidence level in the determination.</p>
+-- @param Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- @param Value [Boolean] <p>Boolean value that indicates whether the face is wearing eye glasses or not.</p>
 function M.Eyeglasses(Confidence, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Eyeglasses")
 	local t = { 
@@ -301,8 +301,8 @@ end
 
 --- Create a structure of type SearchFacesResponse
 --  
--- @param SearchedFaceId [FaceId] &lt;p&gt;ID of the face that was searched for matches in a collection.&lt;/p&gt;
--- @param FaceMatches [FaceMatchList] &lt;p&gt;An array of faces that matched the input face, along with the confidence in the match.&lt;/p&gt;
+-- @param SearchedFaceId [FaceId] <p>ID of the face that was searched for matches in a collection.</p>
+-- @param FaceMatches [FaceMatchList] <p>An array of faces that matched the input face, along with the confidence in the match.</p>
 function M.SearchFacesResponse(SearchedFaceId, FaceMatches, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SearchFacesResponse")
 	local t = { 
@@ -327,8 +327,8 @@ end
 
 --- Create a structure of type ListCollectionsResponse
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;If the result is truncated, the response provides a &lt;code&gt;NextToken&lt;/code&gt; that you can use in the subsequent request to fetch the next set of collection IDs.&lt;/p&gt;
--- @param CollectionIds [CollectionIdList] &lt;p&gt;An array of collection IDs.&lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>If the result is truncated, the response provides a <code>NextToken</code> that you can use in the subsequent request to fetch the next set of collection IDs.</p>
+-- @param CollectionIds [CollectionIdList] <p>An array of collection IDs.</p>
 function M.ListCollectionsResponse(NextToken, CollectionIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCollectionsResponse")
 	local t = { 
@@ -357,10 +357,10 @@ end
 
 --- Create a structure of type SearchFacesByImageRequest
 --  
--- @param Image [Image] &lt;p&gt;The input image as bytes or an S3 object.&lt;/p&gt;
--- @param MaxFaces [MaxFaces] &lt;p&gt;Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.&lt;/p&gt;
--- @param FaceMatchThreshold [Percent] &lt;p&gt;(Optional) Specifies the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.&lt;/p&gt;
--- @param CollectionId [CollectionId] &lt;p&gt;ID of the collection to search.&lt;/p&gt;
+-- @param Image [Image] <p>The input image as bytes or an S3 object.</p>
+-- @param MaxFaces [MaxFaces] <p>Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.</p>
+-- @param FaceMatchThreshold [Percent] <p>(Optional) Specifies the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.</p>
+-- @param CollectionId [CollectionId] <p>ID of the collection to search.</p>
 -- Required parameter: CollectionId
 -- Required parameter: Image
 function M.SearchFacesByImageRequest(Image, MaxFaces, FaceMatchThreshold, CollectionId, ...)
@@ -393,10 +393,10 @@ end
 
 --- Create a structure of type IndexFacesRequest
 --  
--- @param DetectionAttributes [Attributes] &lt;p&gt;An array of facial attributes that you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for &lt;code&gt;Attributes&lt;/code&gt; or if you specify &lt;code&gt;[&quot;DEFAULT&quot;]&lt;/code&gt;, the API returns the following subset of facial attributes: &lt;code&gt;BoundingBox&lt;/code&gt;, &lt;code&gt;Confidence&lt;/code&gt;, &lt;code&gt;Pose&lt;/code&gt;, &lt;code&gt;Quality&lt;/code&gt; and &lt;code&gt;Landmarks&lt;/code&gt;. If you provide &lt;code&gt;[&quot;ALL&quot;]&lt;/code&gt;, all facial attributes are returned but the operation will take longer to complete.&lt;/p&gt; &lt;p&gt;If you provide both, &lt;code&gt;[&quot;ALL&quot;, &quot;DEFAULT&quot;]&lt;/code&gt;, the service uses a logical AND operator to determine which attributes to return (in this case, all attributes). &lt;/p&gt;
--- @param Image [Image] &lt;p&gt;The input image as bytes or an S3 object.&lt;/p&gt;
--- @param ExternalImageId [ExternalImageId] &lt;p&gt;ID you want to assign to all the faces detected in the image.&lt;/p&gt;
--- @param CollectionId [CollectionId] &lt;p&gt;The ID of an existing collection to which you want to add the faces that are detected in the input images.&lt;/p&gt;
+-- @param DetectionAttributes [Attributes] <p>An array of facial attributes that you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for <code>Attributes</code> or if you specify <code>["DEFAULT"]</code>, the API returns the following subset of facial attributes: <code>BoundingBox</code>, <code>Confidence</code>, <code>Pose</code>, <code>Quality</code> and <code>Landmarks</code>. If you provide <code>["ALL"]</code>, all facial attributes are returned but the operation will take longer to complete.</p> <p>If you provide both, <code>["ALL", "DEFAULT"]</code>, the service uses a logical AND operator to determine which attributes to return (in this case, all attributes). </p>
+-- @param Image [Image] <p>The input image as bytes or an S3 object.</p>
+-- @param ExternalImageId [ExternalImageId] <p>ID you want to assign to all the faces detected in the image.</p>
+-- @param CollectionId [CollectionId] <p>The ID of an existing collection to which you want to add the faces that are detected in the input images.</p>
 -- Required parameter: CollectionId
 -- Required parameter: Image
 function M.IndexFacesRequest(DetectionAttributes, Image, ExternalImageId, CollectionId, ...)
@@ -425,7 +425,7 @@ end
 
 --- Create a structure of type DeleteCollectionRequest
 --  
--- @param CollectionId [CollectionId] &lt;p&gt;ID of the collection to delete.&lt;/p&gt;
+-- @param CollectionId [CollectionId] <p>ID of the collection to delete.</p>
 -- Required parameter: CollectionId
 function M.DeleteCollectionRequest(CollectionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCollectionRequest")
@@ -450,10 +450,10 @@ function M.AssertS3Object(struct)
 end
 
 --- Create a structure of type S3Object
--- &lt;p&gt;Provides the S3 bucket name and object name.&lt;/p&gt; &lt;p&gt;The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.&lt;/p&gt; &lt;p&gt;For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see &lt;a&gt;manage-access-resource-policies&lt;/a&gt;. &lt;/p&gt;
--- @param Version [S3ObjectVersion] &lt;p&gt;If the bucket is versioning enabled, you can specify the object version. &lt;/p&gt;
--- @param Bucket [S3Bucket] &lt;p&gt;Name of the S3 bucket.&lt;/p&gt;
--- @param Name [S3ObjectName] &lt;p&gt;S3 object key name.&lt;/p&gt;
+-- <p>Provides the S3 bucket name and object name.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
+-- @param Version [S3ObjectVersion] <p>If the bucket is versioning enabled, you can specify the object version. </p>
+-- @param Bucket [S3Bucket] <p>Name of the S3 bucket.</p>
+-- @param Name [S3ObjectName] <p>S3 object key name.</p>
 function M.S3Object(Version, Bucket, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating S3Object")
 	local t = { 
@@ -478,9 +478,9 @@ function M.AssertLabel(struct)
 end
 
 --- Create a structure of type Label
--- &lt;p&gt;Structure containing details about the detected label, including name, and level of confidence.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name (label) of the object.&lt;/p&gt;
+-- <p>Structure containing details about the detected label, including name, and level of confidence.</p>
+-- @param Confidence [Percent] <p>Level of confidence.</p>
+-- @param Name [String] <p>The name (label) of the object.</p>
 function M.Label(Confidence, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Label")
 	local t = { 
@@ -504,9 +504,9 @@ function M.AssertImageQuality(struct)
 end
 
 --- Create a structure of type ImageQuality
--- &lt;p&gt;Identifies face image brightness and sharpness. &lt;/p&gt;
--- @param Sharpness [Float] &lt;p&gt;Value representing sharpness of the face. The service returns a value between 0 and 100 (inclusive). A higher value indicates a sharper face image.&lt;/p&gt;
--- @param Brightness [Float] &lt;p&gt;Value representing brightness of the face. The service returns a value between 0 and 100 (inclusive). A higher value indicates a brighter face image.&lt;/p&gt;
+-- <p>Identifies face image brightness and sharpness. </p>
+-- @param Sharpness [Float] <p>Value representing sharpness of the face. The service returns a value between 0 and 100 (inclusive). A higher value indicates a sharper face image.</p>
+-- @param Brightness [Float] <p>Value representing brightness of the face. The service returns a value between 0 and 100 (inclusive). A higher value indicates a brighter face image.</p>
 function M.ImageQuality(Sharpness, Brightness, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ImageQuality")
 	local t = { 
@@ -530,7 +530,7 @@ end
 
 --- Create a structure of type DetectModerationLabelsResponse
 --  
--- @param ModerationLabels [ModerationLabels] &lt;p&gt;An array of labels for explicit or suggestive adult content found in the image. The list includes the top-level label and each child label detected in the image. This is useful for filtering specific categories of content. &lt;/p&gt;
+-- @param ModerationLabels [ModerationLabels] <p>An array of labels for explicit or suggestive adult content found in the image. The list includes the top-level label and each child label detected in the image. This is useful for filtering specific categories of content. </p>
 function M.DetectModerationLabelsResponse(ModerationLabels, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetectModerationLabelsResponse")
 	local t = { 
@@ -554,8 +554,8 @@ end
 
 --- Create a structure of type IndexFacesResponse
 --  
--- @param FaceRecords [FaceRecordList] &lt;p&gt;An array of faces detected and added to the collection. For more information, see &lt;a&gt;howitworks-index-faces&lt;/a&gt;. &lt;/p&gt;
--- @param OrientationCorrection [OrientationCorrection] &lt;p&gt;The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in &lt;code&gt;FaceRecords&lt;/code&gt; represent face locations before the image orientation is corrected. &lt;/p&gt; &lt;note&gt; &lt;p&gt;If the input image is in jpeg format, it might contain exchangeable image (Exif) metadata. If so, and the Exif metadata populates the orientation field, the value of &lt;code&gt;OrientationCorrection&lt;/code&gt; is null and the bounding box coordinates in &lt;code&gt;FaceRecords&lt;/code&gt; represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata.&lt;/p&gt; &lt;/note&gt;
+-- @param FaceRecords [FaceRecordList] <p>An array of faces detected and added to the collection. For more information, see <a>howitworks-index-faces</a>. </p>
+-- @param OrientationCorrection [OrientationCorrection] <p>The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>FaceRecords</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in jpeg format, it might contain exchangeable image (Exif) metadata. If so, and the Exif metadata populates the orientation field, the value of <code>OrientationCorrection</code> is null and the bounding box coordinates in <code>FaceRecords</code> represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata.</p> </note>
 function M.IndexFacesResponse(FaceRecords, OrientationCorrection, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating IndexFacesResponse")
 	local t = { 
@@ -580,7 +580,7 @@ end
 
 --- Create a structure of type CreateCollectionRequest
 --  
--- @param CollectionId [CollectionId] &lt;p&gt;ID for the collection that you are creating.&lt;/p&gt;
+-- @param CollectionId [CollectionId] <p>ID for the collection that you are creating.</p>
 -- Required parameter: CollectionId
 function M.CreateCollectionRequest(CollectionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCollectionRequest")
@@ -604,9 +604,9 @@ function M.AssertGender(struct)
 end
 
 --- Create a structure of type Gender
--- &lt;p&gt;Gender of the face and the confidence level in the determination.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence in the determination.&lt;/p&gt;
--- @param Value [GenderType] &lt;p&gt;Gender of the face.&lt;/p&gt;
+-- <p>Gender of the face and the confidence level in the determination.</p>
+-- @param Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- @param Value [GenderType] <p>Gender of the face.</p>
 function M.Gender(Confidence, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Gender")
 	local t = { 
@@ -631,7 +631,7 @@ end
 
 --- Create a structure of type GetCelebrityInfoRequest
 --  
--- @param Id [RekognitionUniqueId] &lt;p&gt;The ID for the celebrity. You get the celebrity ID from a call to the operation, which recognizes celebrities in an image. &lt;/p&gt;
+-- @param Id [RekognitionUniqueId] <p>The ID for the celebrity. You get the celebrity ID from a call to the operation, which recognizes celebrities in an image. </p>
 -- Required parameter: Id
 function M.GetCelebrityInfoRequest(Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetCelebrityInfoRequest")
@@ -656,7 +656,7 @@ end
 
 --- Create a structure of type RecognizeCelebritiesRequest
 --  
--- @param Image [Image] &lt;p&gt;The input image to use for celebrity recognition.&lt;/p&gt;
+-- @param Image [Image] <p>The input image to use for celebrity recognition.</p>
 -- Required parameter: Image
 function M.RecognizeCelebritiesRequest(Image, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecognizeCelebritiesRequest")
@@ -683,9 +683,9 @@ end
 
 --- Create a structure of type DetectLabelsRequest
 --  
--- @param MinConfidence [Percent] &lt;p&gt;Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with confidence lower than this specified value.&lt;/p&gt; &lt;p&gt;If &lt;code&gt;MinConfidence&lt;/code&gt; is not specified, the operation returns labels with a confidence values greater than or equal to 50 percent.&lt;/p&gt;
--- @param Image [Image] &lt;p&gt;The input image. You can provide a blob of image bytes or an S3 object.&lt;/p&gt;
--- @param MaxLabels [UInteger] &lt;p&gt;Maximum number of labels you want the service to return in the response. The service returns the specified number of highest confidence labels. &lt;/p&gt;
+-- @param MinConfidence [Percent] <p>Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with confidence lower than this specified value.</p> <p>If <code>MinConfidence</code> is not specified, the operation returns labels with a confidence values greater than or equal to 50 percent.</p>
+-- @param Image [Image] <p>The input image. You can provide a blob of image bytes or an S3 object.</p>
+-- @param MaxLabels [UInteger] <p>Maximum number of labels you want the service to return in the response. The service returns the specified number of highest confidence labels. </p>
 -- Required parameter: Image
 function M.DetectLabelsRequest(MinConfidence, Image, MaxLabels, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetectLabelsRequest")
@@ -712,8 +712,8 @@ end
 
 --- Create a structure of type CreateCollectionResponse
 --  
--- @param CollectionArn [String] &lt;p&gt;Amazon Resource Name (ARN) of the collection. You can use this to manage permissions on your resources. &lt;/p&gt;
--- @param StatusCode [UInteger] &lt;p&gt;HTTP status code indicating the result of the operation.&lt;/p&gt;
+-- @param CollectionArn [String] <p>Amazon Resource Name (ARN) of the collection. You can use this to manage permissions on your resources. </p>
+-- @param StatusCode [UInteger] <p>HTTP status code indicating the result of the operation.</p>
 function M.CreateCollectionResponse(CollectionArn, StatusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateCollectionResponse")
 	local t = { 
@@ -735,7 +735,7 @@ function M.AssertInvalidPaginationTokenException(struct)
 end
 
 --- Create a structure of type InvalidPaginationTokenException
--- &lt;p&gt;Pagination token in the request is not valid.&lt;/p&gt;
+-- <p>Pagination token in the request is not valid.</p>
 function M.InvalidPaginationTokenException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPaginationTokenException")
 	local t = { 
@@ -755,7 +755,7 @@ function M.AssertInvalidImageFormatException(struct)
 end
 
 --- Create a structure of type InvalidImageFormatException
--- &lt;p&gt;The provided image format is not supported. &lt;/p&gt;
+-- <p>The provided image format is not supported. </p>
 function M.InvalidImageFormatException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidImageFormatException")
 	local t = { 
@@ -775,7 +775,7 @@ function M.AssertResourceAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ResourceAlreadyExistsException
--- &lt;p&gt;A collection with the specified ID already exists.&lt;/p&gt;
+-- <p>A collection with the specified ID already exists.</p>
 function M.ResourceAlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
 	local t = { 
@@ -797,9 +797,9 @@ function M.AssertEmotion(struct)
 end
 
 --- Create a structure of type Emotion
--- &lt;p&gt;The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence in the determination.&lt;/p&gt;
--- @param Type [EmotionName] &lt;p&gt;Type of emotion detected.&lt;/p&gt;
+-- <p>The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY.</p>
+-- @param Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- @param Type [EmotionName] <p>Type of emotion detected.</p>
 function M.Emotion(Confidence, Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Emotion")
 	local t = { 
@@ -823,9 +823,9 @@ function M.AssertImage(struct)
 end
 
 --- Create a structure of type Image
--- &lt;p&gt;Provides the input image either as bytes or an S3 object.&lt;/p&gt; &lt;p&gt;You pass image bytes to a Rekognition API operation by using the &lt;code&gt;Bytes&lt;/code&gt; property. For example, you would use the &lt;code&gt;Bytes&lt;/code&gt; property to pass an image loaded from a local file system. Image bytes passed by using the &lt;code&gt;Bytes&lt;/code&gt; property must be base64-encoded. Your code may not need to encode image bytes if you are using an AWS SDK to call Rekognition API operations. For more information, see &lt;a&gt;example4&lt;/a&gt;.&lt;/p&gt; &lt;p&gt; You pass images stored in an S3 bucket to a Rekognition API operation by using the &lt;code&gt;S3Object&lt;/code&gt; property. Images stored in an S3 bucket do not need to be base64-encoded.&lt;/p&gt; &lt;p&gt;The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.&lt;/p&gt; &lt;p&gt;If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.&lt;/p&gt; &lt;p&gt;For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see &lt;a&gt;manage-access-resource-policies&lt;/a&gt;. &lt;/p&gt;
--- @param Bytes [ImageBlob] &lt;p&gt;Blob of image bytes up to 5 MBs.&lt;/p&gt;
--- @param S3Object [S3Object] &lt;p&gt;Identifies an S3 object as the image source.&lt;/p&gt;
+-- <p>Provides the input image either as bytes or an S3 object.</p> <p>You pass image bytes to a Rekognition API operation by using the <code>Bytes</code> property. For example, you would use the <code>Bytes</code> property to pass an image loaded from a local file system. Image bytes passed by using the <code>Bytes</code> property must be base64-encoded. Your code may not need to encode image bytes if you are using an AWS SDK to call Rekognition API operations. For more information, see <a>example4</a>.</p> <p> You pass images stored in an S3 bucket to a Rekognition API operation by using the <code>S3Object</code> property. Images stored in an S3 bucket do not need to be base64-encoded.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
+-- @param Bytes [ImageBlob] <p>Blob of image bytes up to 5 MBs.</p>
+-- @param S3Object [S3Object] <p>Identifies an S3 object as the image source.</p>
 function M.Image(Bytes, S3Object, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Image")
 	local t = { 
@@ -853,11 +853,11 @@ end
 
 --- Create a structure of type CompareFacesResponse
 --  
--- @param TargetImageOrientationCorrection [OrientationCorrection] &lt;p&gt; The orientation of the target image (in counterclockwise direction). If your application displays the target image, you can use this value to correct the orientation of the image. The bounding box coordinates returned in &lt;code&gt;FaceMatches&lt;/code&gt; and &lt;code&gt;UnmatchedFaces&lt;/code&gt; represent face locations before the image orientation is corrected. &lt;/p&gt; &lt;note&gt; &lt;p&gt;If the target image is in .jpg format, it might contain Exif metadata that includes the orientation of the image. If the Exif metadata for the target image populates the orientation field, the value of &lt;code&gt;OrientationCorrection&lt;/code&gt; is null and the bounding box coordinates in &lt;code&gt;FaceMatches&lt;/code&gt; and &lt;code&gt;UnmatchedFaces&lt;/code&gt; represent the location of the face after Exif metadata is used to correct the orientation. Images in .png format don't contain Exif metadata.&lt;/p&gt; &lt;/note&gt;
--- @param UnmatchedFaces [CompareFacesUnmatchList] &lt;p&gt;An array of faces in the target image that did not match the source image face.&lt;/p&gt;
--- @param SourceImageOrientationCorrection [OrientationCorrection] &lt;p&gt; The orientation of the source image (counterclockwise direction). If your application displays the source image, you can use this value to correct image orientation. The bounding box coordinates returned in &lt;code&gt;SourceImageFace&lt;/code&gt; represent the location of the face before the image orientation is corrected. &lt;/p&gt; &lt;note&gt; &lt;p&gt;If the source image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If the Exif metadata for the source image populates the orientation field, the value of &lt;code&gt;OrientationCorrection&lt;/code&gt; is null and the &lt;code&gt;SourceImageFace&lt;/code&gt; bounding box coordinates represent the location of the face after Exif metadata is used to correct the orientation. Images in .png format don't contain Exif metadata.&lt;/p&gt; &lt;/note&gt;
--- @param FaceMatches [CompareFacesMatchList] &lt;p&gt;An array of faces in the target image that match the source image face. Each &lt;code&gt;CompareFacesMatch&lt;/code&gt; object provides the bounding box, the confidence level that the bounding box contains a face, and the similarity score for the face in the bounding box and the face in the source image.&lt;/p&gt;
--- @param SourceImageFace [ComparedSourceImageFace] &lt;p&gt;The face in the source image that was used for comparison.&lt;/p&gt;
+-- @param TargetImageOrientationCorrection [OrientationCorrection] <p> The orientation of the target image (in counterclockwise direction). If your application displays the target image, you can use this value to correct the orientation of the image. The bounding box coordinates returned in <code>FaceMatches</code> and <code>UnmatchedFaces</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the target image is in .jpg format, it might contain Exif metadata that includes the orientation of the image. If the Exif metadata for the target image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the bounding box coordinates in <code>FaceMatches</code> and <code>UnmatchedFaces</code> represent the location of the face after Exif metadata is used to correct the orientation. Images in .png format don't contain Exif metadata.</p> </note>
+-- @param UnmatchedFaces [CompareFacesUnmatchList] <p>An array of faces in the target image that did not match the source image face.</p>
+-- @param SourceImageOrientationCorrection [OrientationCorrection] <p> The orientation of the source image (counterclockwise direction). If your application displays the source image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>SourceImageFace</code> represent the location of the face before the image orientation is corrected. </p> <note> <p>If the source image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If the Exif metadata for the source image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>SourceImageFace</code> bounding box coordinates represent the location of the face after Exif metadata is used to correct the orientation. Images in .png format don't contain Exif metadata.</p> </note>
+-- @param FaceMatches [CompareFacesMatchList] <p>An array of faces in the target image that match the source image face. Each <code>CompareFacesMatch</code> object provides the bounding box, the confidence level that the bounding box contains a face, and the similarity score for the face in the bounding box and the face in the source image.</p>
+-- @param SourceImageFace [ComparedSourceImageFace] <p>The face in the source image that was used for comparison.</p>
 function M.CompareFacesResponse(TargetImageOrientationCorrection, UnmatchedFaces, SourceImageOrientationCorrection, FaceMatches, SourceImageFace, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CompareFacesResponse")
 	local t = { 
@@ -884,9 +884,9 @@ function M.AssertBeard(struct)
 end
 
 --- Create a structure of type Beard
--- &lt;p&gt;Indicates whether or not the face has a beard, and the confidence level in the determination.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence in the determination.&lt;/p&gt;
--- @param Value [Boolean] &lt;p&gt;Boolean value that indicates whether the face has beard or not.&lt;/p&gt;
+-- <p>Indicates whether or not the face has a beard, and the confidence level in the determination.</p>
+-- @param Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- @param Value [Boolean] <p>Boolean value that indicates whether the face has beard or not.</p>
 function M.Beard(Confidence, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Beard")
 	local t = { 
@@ -911,10 +911,10 @@ function M.AssertPose(struct)
 end
 
 --- Create a structure of type Pose
--- &lt;p&gt;Indicates the pose of the face as determined by its pitch, roll, and yaw.&lt;/p&gt;
--- @param Yaw [Degree] &lt;p&gt;Value representing the face rotation on the yaw axis.&lt;/p&gt;
--- @param Roll [Degree] &lt;p&gt;Value representing the face rotation on the roll axis.&lt;/p&gt;
--- @param Pitch [Degree] &lt;p&gt;Value representing the face rotation on the pitch axis.&lt;/p&gt;
+-- <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
+-- @param Yaw [Degree] <p>Value representing the face rotation on the yaw axis.</p>
+-- @param Roll [Degree] <p>Value representing the face rotation on the roll axis.</p>
+-- @param Pitch [Degree] <p>Value representing the face rotation on the pitch axis.</p>
 function M.Pose(Yaw, Roll, Pitch, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Pose")
 	local t = { 
@@ -939,9 +939,9 @@ function M.AssertMouthOpen(struct)
 end
 
 --- Create a structure of type MouthOpen
--- &lt;p&gt;Indicates whether or not the mouth on the face is open, and the confidence level in the determination.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence in the determination.&lt;/p&gt;
--- @param Value [Boolean] &lt;p&gt;Boolean value that indicates whether the mouth on the face is open or not.&lt;/p&gt;
+-- <p>Indicates whether or not the mouth on the face is open, and the confidence level in the determination.</p>
+-- @param Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- @param Value [Boolean] <p>Boolean value that indicates whether the mouth on the face is open or not.</p>
 function M.MouthOpen(Confidence, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MouthOpen")
 	local t = { 
@@ -966,8 +966,8 @@ end
 
 --- Create a structure of type ListCollectionsRequest
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;Pagination token from the previous response.&lt;/p&gt;
--- @param MaxResults [PageSize] &lt;p&gt;Maximum number of collection IDs to return.&lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>Pagination token from the previous response.</p>
+-- @param MaxResults [PageSize] <p>Maximum number of collection IDs to return.</p>
 function M.ListCollectionsRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListCollectionsRequest")
 	local t = { 
@@ -994,12 +994,12 @@ function M.AssertFace(struct)
 end
 
 --- Create a structure of type Face
--- &lt;p&gt;Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. &lt;/p&gt;
--- @param BoundingBox [BoundingBox] &lt;p&gt;Bounding box of the face.&lt;/p&gt;
--- @param FaceId [FaceId] &lt;p&gt;Unique identifier that Amazon Rekognition assigns to the face.&lt;/p&gt;
--- @param ExternalImageId [ExternalImageId] &lt;p&gt;Identifier that you assign to all the faces in the input image.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Confidence level that the bounding box contains a face (and not a different object such as a tree).&lt;/p&gt;
--- @param ImageId [ImageId] &lt;p&gt;Unique identifier that Amazon Rekognition assigns to the input image.&lt;/p&gt;
+-- <p>Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. </p>
+-- @param BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
+-- @param FaceId [FaceId] <p>Unique identifier that Amazon Rekognition assigns to the face.</p>
+-- @param ExternalImageId [ExternalImageId] <p>Identifier that you assign to all the faces in the input image.</p>
+-- @param Confidence [Percent] <p>Confidence level that the bounding box contains a face (and not a different object such as a tree).</p>
+-- @param ImageId [ImageId] <p>Unique identifier that Amazon Rekognition assigns to the input image.</p>
 function M.Face(BoundingBox, FaceId, ExternalImageId, Confidence, ImageId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Face")
 	local t = { 
@@ -1028,8 +1028,8 @@ end
 
 --- Create a structure of type DetectModerationLabelsRequest
 --  
--- @param MinConfidence [Percent] &lt;p&gt;Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with a confidence level lower than this specified value.&lt;/p&gt; &lt;p&gt;If you don't specify &lt;code&gt;MinConfidence&lt;/code&gt;, the operation returns labels with confidence values greater than or equal to 50 percent.&lt;/p&gt;
--- @param Image [Image] &lt;p&gt;The input image as bytes or an S3 object.&lt;/p&gt;
+-- @param MinConfidence [Percent] <p>Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with a confidence level lower than this specified value.</p> <p>If you don't specify <code>MinConfidence</code>, the operation returns labels with confidence values greater than or equal to 50 percent.</p>
+-- @param Image [Image] <p>The input image as bytes or an S3 object.</p>
 -- Required parameter: Image
 function M.DetectModerationLabelsRequest(MinConfidence, Image, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetectModerationLabelsRequest")
@@ -1055,8 +1055,8 @@ end
 
 --- Create a structure of type DetectLabelsResponse
 --  
--- @param Labels [Labels] &lt;p&gt;An array of labels for the real-world objects detected. &lt;/p&gt;
--- @param OrientationCorrection [OrientationCorrection] &lt;p&gt; The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct the orientation. If Amazon Rekognition detects that the input image was rotated (for example, by 90 degrees), it first corrects the orientation before detecting the labels. &lt;/p&gt; &lt;note&gt; &lt;p&gt;If the input image Exif metadata populates the orientation field, Amazon Rekognition does not perform orientation correction and the value of OrientationCorrection will be null.&lt;/p&gt; &lt;/note&gt;
+-- @param Labels [Labels] <p>An array of labels for the real-world objects detected. </p>
+-- @param OrientationCorrection [OrientationCorrection] <p> The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct the orientation. If Amazon Rekognition detects that the input image was rotated (for example, by 90 degrees), it first corrects the orientation before detecting the labels. </p> <note> <p>If the input image Exif metadata populates the orientation field, Amazon Rekognition does not perform orientation correction and the value of OrientationCorrection will be null.</p> </note>
 function M.DetectLabelsResponse(Labels, OrientationCorrection, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetectLabelsResponse")
 	local t = { 
@@ -1080,9 +1080,9 @@ function M.AssertMustache(struct)
 end
 
 --- Create a structure of type Mustache
--- &lt;p&gt;Indicates whether or not the face has a mustache, and the confidence level in the determination.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence in the determination.&lt;/p&gt;
--- @param Value [Boolean] &lt;p&gt;Boolean value that indicates whether the face has mustache or not.&lt;/p&gt;
+-- <p>Indicates whether or not the face has a mustache, and the confidence level in the determination.</p>
+-- @param Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- @param Value [Boolean] <p>Boolean value that indicates whether the face has mustache or not.</p>
 function M.Mustache(Confidence, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Mustache")
 	local t = { 
@@ -1104,7 +1104,7 @@ function M.AssertProvisionedThroughputExceededException(struct)
 end
 
 --- Create a structure of type ProvisionedThroughputExceededException
--- &lt;p&gt;The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon Rekognition.&lt;/p&gt;
+-- <p>The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon Rekognition.</p>
 function M.ProvisionedThroughputExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionedThroughputExceededException")
 	local t = { 
@@ -1124,7 +1124,7 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;Collection specified in the request is not found.&lt;/p&gt;
+-- <p>Collection specified in the request is not found.</p>
 function M.ResourceNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -1144,7 +1144,7 @@ function M.AssertThrottlingException(struct)
 end
 
 --- Create a structure of type ThrottlingException
--- &lt;p&gt;Amazon Rekognition is temporarily unable to process the request. Try your call again.&lt;/p&gt;
+-- <p>Amazon Rekognition is temporarily unable to process the request. Try your call again.</p>
 function M.ThrottlingException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
 	local t = { 
@@ -1169,12 +1169,12 @@ function M.AssertComparedFace(struct)
 end
 
 --- Create a structure of type ComparedFace
--- &lt;p&gt;Provides face metadata for target image faces that are analysed by &lt;code&gt;CompareFaces&lt;/code&gt; and &lt;code&gt;RecognizeCelebrities&lt;/code&gt;.&lt;/p&gt;
--- @param BoundingBox [BoundingBox] &lt;p&gt;Bounding box of the face.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence that what the bounding box contains is a face.&lt;/p&gt;
--- @param Pose [Pose] &lt;p&gt;Indicates the pose of the face as determined by its pitch, roll, and yaw.&lt;/p&gt;
--- @param Quality [ImageQuality] &lt;p&gt;Identifies face image brightness and sharpness. &lt;/p&gt;
--- @param Landmarks [Landmarks] &lt;p&gt;An array of facial landmarks.&lt;/p&gt;
+-- <p>Provides face metadata for target image faces that are analysed by <code>CompareFaces</code> and <code>RecognizeCelebrities</code>.</p>
+-- @param BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
+-- @param Confidence [Percent] <p>Level of confidence that what the bounding box contains is a face.</p>
+-- @param Pose [Pose] <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
+-- @param Quality [ImageQuality] <p>Identifies face image brightness and sharpness. </p>
+-- @param Landmarks [Landmarks] <p>An array of facial landmarks.</p>
 function M.ComparedFace(BoundingBox, Confidence, Pose, Quality, Landmarks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ComparedFace")
 	local t = { 
@@ -1206,10 +1206,10 @@ end
 
 --- Create a structure of type SearchFacesRequest
 --  
--- @param FaceId [FaceId] &lt;p&gt;ID of a face to find matches for in the collection.&lt;/p&gt;
--- @param MaxFaces [MaxFaces] &lt;p&gt;Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.&lt;/p&gt;
--- @param FaceMatchThreshold [Percent] &lt;p&gt;Optional value specifying the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.&lt;/p&gt;
--- @param CollectionId [CollectionId] &lt;p&gt;ID of the collection the face belongs to.&lt;/p&gt;
+-- @param FaceId [FaceId] <p>ID of a face to find matches for in the collection.</p>
+-- @param MaxFaces [MaxFaces] <p>Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.</p>
+-- @param FaceMatchThreshold [Percent] <p>Optional value specifying the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.</p>
+-- @param CollectionId [CollectionId] <p>ID of the collection the face belongs to.</p>
 -- Required parameter: CollectionId
 -- Required parameter: FaceId
 function M.SearchFacesRequest(FaceId, MaxFaces, FaceMatchThreshold, CollectionId, ...)
@@ -1239,9 +1239,9 @@ end
 
 --- Create a structure of type SearchFacesByImageResponse
 --  
--- @param SearchedFaceBoundingBox [BoundingBox] &lt;p&gt;The bounding box around the face in the input image that Amazon Rekognition used for the search.&lt;/p&gt;
--- @param SearchedFaceConfidence [Percent] &lt;p&gt;The level of confidence that the &lt;code&gt;searchedFaceBoundingBox&lt;/code&gt;, contains a face.&lt;/p&gt;
--- @param FaceMatches [FaceMatchList] &lt;p&gt;An array of faces that match the input face, along with the confidence in the match.&lt;/p&gt;
+-- @param SearchedFaceBoundingBox [BoundingBox] <p>The bounding box around the face in the input image that Amazon Rekognition used for the search.</p>
+-- @param SearchedFaceConfidence [Percent] <p>The level of confidence that the <code>searchedFaceBoundingBox</code>, contains a face.</p>
+-- @param FaceMatches [FaceMatchList] <p>An array of faces that match the input face, along with the confidence in the match.</p>
 function M.SearchFacesByImageResponse(SearchedFaceBoundingBox, SearchedFaceConfidence, FaceMatches, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SearchFacesByImageResponse")
 	local t = { 
@@ -1266,9 +1266,9 @@ function M.AssertFaceRecord(struct)
 end
 
 --- Create a structure of type FaceRecord
--- &lt;p&gt;Object containing both the face metadata (stored in the back-end database) and facial attributes that are detected but aren't stored in the database.&lt;/p&gt;
--- @param FaceDetail [FaceDetail] &lt;p&gt;Structure containing attributes of the face that the algorithm detected.&lt;/p&gt;
--- @param Face [Face] &lt;p&gt;Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. &lt;/p&gt;
+-- <p>Object containing both the face metadata (stored in the back-end database) and facial attributes that are detected but aren't stored in the database.</p>
+-- @param FaceDetail [FaceDetail] <p>Structure containing attributes of the face that the algorithm detected.</p>
+-- @param Face [Face] <p>Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. </p>
 function M.FaceRecord(FaceDetail, Face, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FaceRecord")
 	local t = { 
@@ -1292,9 +1292,9 @@ function M.AssertAgeRange(struct)
 end
 
 --- Create a structure of type AgeRange
--- &lt;p&gt;Structure containing the estimated age range, in years, for a face.&lt;/p&gt; &lt;p&gt;Rekognition estimates an age-range for faces detected in the input image. Estimated age ranges can overlap; a face of a 5 year old may have an estimated range of 4-6 whilst the face of a 6 year old may have an estimated range of 4-8.&lt;/p&gt;
--- @param High [UInteger] &lt;p&gt;The highest estimated age.&lt;/p&gt;
--- @param Low [UInteger] &lt;p&gt;The lowest estimated age.&lt;/p&gt;
+-- <p>Structure containing the estimated age range, in years, for a face.</p> <p>Rekognition estimates an age-range for faces detected in the input image. Estimated age ranges can overlap; a face of a 5 year old may have an estimated range of 4-6 whilst the face of a 6 year old may have an estimated range of 4-8.</p>
+-- @param High [UInteger] <p>The highest estimated age.</p>
+-- @param Low [UInteger] <p>The lowest estimated age.</p>
 function M.AgeRange(High, Low, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AgeRange")
 	local t = { 
@@ -1322,9 +1322,9 @@ end
 
 --- Create a structure of type CompareFacesRequest
 --  
--- @param TargetImage [Image] &lt;p&gt;The target image, either as bytes or as an S3 object.&lt;/p&gt;
--- @param SourceImage [Image] &lt;p&gt;The source image, either as bytes or as an S3 object.&lt;/p&gt;
--- @param SimilarityThreshold [Percent] &lt;p&gt;The minimum level of confidence in the face matches that a match must meet to be included in the &lt;code&gt;FaceMatches&lt;/code&gt; array.&lt;/p&gt;
+-- @param TargetImage [Image] <p>The target image, either as bytes or as an S3 object.</p>
+-- @param SourceImage [Image] <p>The source image, either as bytes or as an S3 object.</p>
+-- @param SimilarityThreshold [Percent] <p>The minimum level of confidence in the face matches that a match must meet to be included in the <code>FaceMatches</code> array.</p>
 -- Required parameter: SourceImage
 -- Required parameter: TargetImage
 function M.CompareFacesRequest(TargetImage, SourceImage, SimilarityThreshold, ...)
@@ -1351,9 +1351,9 @@ function M.AssertSunglasses(struct)
 end
 
 --- Create a structure of type Sunglasses
--- &lt;p&gt;Indicates whether or not the face is wearing sunglasses, and the confidence level in the determination.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence in the determination.&lt;/p&gt;
--- @param Value [Boolean] &lt;p&gt;Boolean value that indicates whether the face is wearing sunglasses or not.&lt;/p&gt;
+-- <p>Indicates whether or not the face is wearing sunglasses, and the confidence level in the determination.</p>
+-- @param Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- @param Value [Boolean] <p>Boolean value that indicates whether the face is wearing sunglasses or not.</p>
 function M.Sunglasses(Confidence, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Sunglasses")
 	local t = { 
@@ -1379,9 +1379,9 @@ end
 
 --- Create a structure of type RecognizeCelebritiesResponse
 --  
--- @param UnrecognizedFaces [ComparedFaceList] &lt;p&gt;Details about each unrecognized face in the image.&lt;/p&gt;
--- @param CelebrityFaces [CelebrityList] &lt;p&gt;Details about each celebrity found in the image. Amazon Rekognition can detect a maximum of 15 celebrities in an image.&lt;/p&gt;
--- @param OrientationCorrection [OrientationCorrection] &lt;p&gt;The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct the orientation. The bounding box coordinates returned in &lt;code&gt;CelebrityFaces&lt;/code&gt; and &lt;code&gt;UnrecognizedFaces&lt;/code&gt; represent face locations before the image orientation is corrected. &lt;/p&gt; &lt;note&gt; &lt;p&gt;If the input image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If so, and the Exif metadata for the input image populates the orientation field, the value of &lt;code&gt;OrientationCorrection&lt;/code&gt; is null and the &lt;code&gt;CelebrityFaces&lt;/code&gt; and &lt;code&gt;UnrecognizedFaces&lt;/code&gt; bounding box coordinates represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata. &lt;/p&gt; &lt;/note&gt;
+-- @param UnrecognizedFaces [ComparedFaceList] <p>Details about each unrecognized face in the image.</p>
+-- @param CelebrityFaces [CelebrityList] <p>Details about each celebrity found in the image. Amazon Rekognition can detect a maximum of 15 celebrities in an image.</p>
+-- @param OrientationCorrection [OrientationCorrection] <p>The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct the orientation. The bounding box coordinates returned in <code>CelebrityFaces</code> and <code>UnrecognizedFaces</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If so, and the Exif metadata for the input image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>CelebrityFaces</code> and <code>UnrecognizedFaces</code> bounding box coordinates represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata. </p> </note>
 function M.RecognizeCelebritiesResponse(UnrecognizedFaces, CelebrityFaces, OrientationCorrection, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RecognizeCelebritiesResponse")
 	local t = { 
@@ -1404,7 +1404,7 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;Input parameter violated a constraint. Validate your parameter before calling the API operation again.&lt;/p&gt;
+-- <p>Input parameter violated a constraint. Validate your parameter before calling the API operation again.</p>
 function M.InvalidParameterException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -1426,9 +1426,9 @@ function M.AssertEyeOpen(struct)
 end
 
 --- Create a structure of type EyeOpen
--- &lt;p&gt;Indicates whether or not the eyes on the face are open, and the confidence level in the determination.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Level of confidence in the determination.&lt;/p&gt;
--- @param Value [Boolean] &lt;p&gt;Boolean value that indicates whether the eyes on the face are open.&lt;/p&gt;
+-- <p>Indicates whether or not the eyes on the face are open, and the confidence level in the determination.</p>
+-- @param Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- @param Value [Boolean] <p>Boolean value that indicates whether the eyes on the face are open.</p>
 function M.EyeOpen(Confidence, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EyeOpen")
 	local t = { 
@@ -1453,8 +1453,8 @@ end
 
 --- Create a structure of type DetectFacesResponse
 --  
--- @param FaceDetails [FaceDetailList] &lt;p&gt;Details of each face found in the image. &lt;/p&gt;
--- @param OrientationCorrection [OrientationCorrection] &lt;p&gt; The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in &lt;code&gt;FaceDetails&lt;/code&gt; represent face locations before the image orientation is corrected. &lt;/p&gt; &lt;note&gt; &lt;p&gt;If the input image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If so, and the Exif metadata for the input image populates the orientation field, the value of &lt;code&gt;OrientationCorrection&lt;/code&gt; is null and the &lt;code&gt;FaceDetails&lt;/code&gt; bounding box coordinates represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata.&lt;/p&gt; &lt;/note&gt;
+-- @param FaceDetails [FaceDetailList] <p>Details of each face found in the image. </p>
+-- @param OrientationCorrection [OrientationCorrection] <p> The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>FaceDetails</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If so, and the Exif metadata for the input image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>FaceDetails</code> bounding box coordinates represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata.</p> </note>
 function M.DetectFacesResponse(FaceDetails, OrientationCorrection, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetectFacesResponse")
 	local t = { 
@@ -1481,12 +1481,12 @@ function M.AssertCelebrity(struct)
 end
 
 --- Create a structure of type Celebrity
--- &lt;p&gt;Provides information about a celebrity recognized by the operation.&lt;/p&gt;
--- @param MatchConfidence [Percent] &lt;p&gt;The confidence, in percentage, that Rekognition has that the recognized face is the celebrity.&lt;/p&gt;
--- @param Face [ComparedFace] &lt;p&gt;Provides information about the celebrity's face, such as its location on the image.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The name of the celebrity.&lt;/p&gt;
--- @param Urls [Urls] &lt;p&gt;An array of URLs pointing to additional information about the celebrity. If there is no additional information about the celebrity, this list is empty.&lt;/p&gt;
--- @param Id [RekognitionUniqueId] &lt;p&gt;A unique identifier for the celebrity. &lt;/p&gt;
+-- <p>Provides information about a celebrity recognized by the operation.</p>
+-- @param MatchConfidence [Percent] <p>The confidence, in percentage, that Rekognition has that the recognized face is the celebrity.</p>
+-- @param Face [ComparedFace] <p>Provides information about the celebrity's face, such as its location on the image.</p>
+-- @param Name [String] <p>The name of the celebrity.</p>
+-- @param Urls [Urls] <p>An array of URLs pointing to additional information about the celebrity. If there is no additional information about the celebrity, this list is empty.</p>
+-- @param Id [RekognitionUniqueId] <p>A unique identifier for the celebrity. </p>
 function M.Celebrity(MatchConfidence, Face, Name, Urls, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Celebrity")
 	local t = { 
@@ -1515,8 +1515,8 @@ end
 
 --- Create a structure of type DetectFacesRequest
 --  
--- @param Attributes [Attributes] &lt;p&gt;An array of facial attributes you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for &lt;code&gt;Attributes&lt;/code&gt; or if you specify &lt;code&gt;[&quot;DEFAULT&quot;]&lt;/code&gt;, the API returns the following subset of facial attributes: &lt;code&gt;BoundingBox&lt;/code&gt;, &lt;code&gt;Confidence&lt;/code&gt;, &lt;code&gt;Pose&lt;/code&gt;, &lt;code&gt;Quality&lt;/code&gt; and &lt;code&gt;Landmarks&lt;/code&gt;. If you provide &lt;code&gt;[&quot;ALL&quot;]&lt;/code&gt;, all facial attributes are returned but the operation will take longer to complete.&lt;/p&gt; &lt;p&gt;If you provide both, &lt;code&gt;[&quot;ALL&quot;, &quot;DEFAULT&quot;]&lt;/code&gt;, the service uses a logical AND operator to determine which attributes to return (in this case, all attributes). &lt;/p&gt;
--- @param Image [Image] &lt;p&gt;The image in which you want to detect faces. You can specify a blob or an S3 object. &lt;/p&gt;
+-- @param Attributes [Attributes] <p>An array of facial attributes you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for <code>Attributes</code> or if you specify <code>["DEFAULT"]</code>, the API returns the following subset of facial attributes: <code>BoundingBox</code>, <code>Confidence</code>, <code>Pose</code>, <code>Quality</code> and <code>Landmarks</code>. If you provide <code>["ALL"]</code>, all facial attributes are returned but the operation will take longer to complete.</p> <p>If you provide both, <code>["ALL", "DEFAULT"]</code>, the service uses a logical AND operator to determine which attributes to return (in this case, all attributes). </p>
+-- @param Image [Image] <p>The image in which you want to detect faces. You can specify a blob or an S3 object. </p>
 -- Required parameter: Image
 function M.DetectFacesRequest(Attributes, Image, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetectFacesRequest")
@@ -1541,9 +1541,9 @@ function M.AssertCompareFacesMatch(struct)
 end
 
 --- Create a structure of type CompareFacesMatch
--- &lt;p&gt;Provides information about a face in a target image that matches the source image face analysed by &lt;code&gt;CompareFaces&lt;/code&gt;. The &lt;code&gt;Face&lt;/code&gt; property contains the bounding box of the face in the target image. The &lt;code&gt;Similarity&lt;/code&gt; property is the confidence that the source image face matches the face in the bounding box.&lt;/p&gt;
--- @param Face [ComparedFace] &lt;p&gt;Provides face metadata (bounding box and confidence that the bounding box actually contains a face).&lt;/p&gt;
--- @param Similarity [Percent] &lt;p&gt;Level of confidence that the faces match.&lt;/p&gt;
+-- <p>Provides information about a face in a target image that matches the source image face analysed by <code>CompareFaces</code>. The <code>Face</code> property contains the bounding box of the face in the target image. The <code>Similarity</code> property is the confidence that the source image face matches the face in the bounding box.</p>
+-- @param Face [ComparedFace] <p>Provides face metadata (bounding box and confidence that the bounding box actually contains a face).</p>
+-- @param Similarity [Percent] <p>Level of confidence that the faces match.</p>
 function M.CompareFacesMatch(Face, Similarity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CompareFacesMatch")
 	local t = { 
@@ -1565,7 +1565,7 @@ function M.AssertAccessDeniedException(struct)
 end
 
 --- Create a structure of type AccessDeniedException
--- &lt;p&gt;You are not authorized to perform the action.&lt;/p&gt;
+-- <p>You are not authorized to perform the action.</p>
 function M.AccessDeniedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
 	local t = { 
@@ -1588,8 +1588,8 @@ end
 
 --- Create a structure of type ListFacesResponse
 --  
--- @param NextToken [String] &lt;p&gt;If the response is truncated, Amazon Rekognition returns this token that you can use in the subsequent request to retrieve the next set of faces.&lt;/p&gt;
--- @param Faces [FaceList] &lt;p&gt;An array of &lt;code&gt;Face&lt;/code&gt; objects. &lt;/p&gt;
+-- @param NextToken [String] <p>If the response is truncated, Amazon Rekognition returns this token that you can use in the subsequent request to retrieve the next set of faces.</p>
+-- @param Faces [FaceList] <p>An array of <code>Face</code> objects. </p>
 function M.ListFacesResponse(NextToken, Faces, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFacesResponse")
 	local t = { 
@@ -1614,10 +1614,10 @@ function M.AssertModerationLabel(struct)
 end
 
 --- Create a structure of type ModerationLabel
--- &lt;p&gt;Provides information about a single type of moderated content found in an image. Each type of moderated content has a label within a hierarchical taxonomy. For more information, see &lt;a&gt;image-moderation&lt;/a&gt;.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Specifies the confidence that Amazon Rekognition has that the label has been correctly identified.&lt;/p&gt; &lt;p&gt;If you don't specify the &lt;code&gt;MinConfidence&lt;/code&gt; parameter in the call to &lt;code&gt;DetectModerationLabels&lt;/code&gt;, the operation returns labels with a confidence value greater than or equal to 50 percent.&lt;/p&gt;
--- @param ParentName [String] &lt;p&gt;The name for the parent label. Labels at the top-level of the hierarchy have the parent label &lt;code&gt;&quot;&quot;&lt;/code&gt;.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The label name for the type of content detected in the image.&lt;/p&gt;
+-- <p>Provides information about a single type of moderated content found in an image. Each type of moderated content has a label within a hierarchical taxonomy. For more information, see <a>image-moderation</a>.</p>
+-- @param Confidence [Percent] <p>Specifies the confidence that Amazon Rekognition has that the label has been correctly identified.</p> <p>If you don't specify the <code>MinConfidence</code> parameter in the call to <code>DetectModerationLabels</code>, the operation returns labels with a confidence value greater than or equal to 50 percent.</p>
+-- @param ParentName [String] <p>The name for the parent label. Labels at the top-level of the hierarchy have the parent label <code>""</code>.</p>
+-- @param Name [String] <p>The label name for the type of content detected in the image.</p>
 function M.ModerationLabel(Confidence, ParentName, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ModerationLabel")
 	local t = { 
@@ -1645,9 +1645,9 @@ end
 
 --- Create a structure of type ListFacesRequest
 --  
--- @param NextToken [PaginationToken] &lt;p&gt;If the previous response was incomplete (because there is more data to retrieve), Amazon Rekognition returns a pagination token in the response. You can use this pagination token to retrieve the next set of faces.&lt;/p&gt;
--- @param MaxResults [PageSize] &lt;p&gt;Maximum number of faces to return.&lt;/p&gt;
--- @param CollectionId [CollectionId] &lt;p&gt;ID of the collection from which to list the faces.&lt;/p&gt;
+-- @param NextToken [PaginationToken] <p>If the previous response was incomplete (because there is more data to retrieve), Amazon Rekognition returns a pagination token in the response. You can use this pagination token to retrieve the next set of faces.</p>
+-- @param MaxResults [PageSize] <p>Maximum number of faces to return.</p>
+-- @param CollectionId [CollectionId] <p>ID of the collection from which to list the faces.</p>
 -- Required parameter: CollectionId
 function M.ListFacesRequest(NextToken, MaxResults, CollectionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListFacesRequest")
@@ -1673,9 +1673,9 @@ function M.AssertFaceMatch(struct)
 end
 
 --- Create a structure of type FaceMatch
--- &lt;p&gt;Provides face metadata. In addition, it also provides the confidence in the match of this face with the input face.&lt;/p&gt;
--- @param Face [Face] &lt;p&gt;Describes the face properties such as the bounding box, face ID, image ID of the source image, and external image ID that you assigned.&lt;/p&gt;
--- @param Similarity [Percent] &lt;p&gt;Confidence in the match of this face with the input face.&lt;/p&gt;
+-- <p>Provides face metadata. In addition, it also provides the confidence in the match of this face with the input face.</p>
+-- @param Face [Face] <p>Describes the face properties such as the bounding box, face ID, image ID of the source image, and external image ID that you assigned.</p>
+-- @param Similarity [Percent] <p>Confidence in the match of this face with the input face.</p>
 function M.FaceMatch(Face, Similarity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FaceMatch")
 	local t = { 
@@ -1701,11 +1701,11 @@ function M.AssertBoundingBox(struct)
 end
 
 --- Create a structure of type BoundingBox
--- &lt;p&gt;Identifies the bounding box around the object or face. The &lt;code&gt;left&lt;/code&gt; (x-coordinate) and &lt;code&gt;top&lt;/code&gt; (y-coordinate) are coordinates representing the top and left sides of the bounding box. Note that the upper-left corner of the image is the origin (0,0). &lt;/p&gt; &lt;p&gt;The &lt;code&gt;top&lt;/code&gt; and &lt;code&gt;left&lt;/code&gt; values returned are ratios of the overall image size. For example, if the input image is 700x200 pixels, and the top-left coordinate of the bounding box is 350x50 pixels, the API returns a &lt;code&gt;left&lt;/code&gt; value of 0.5 (350/700) and a &lt;code&gt;top&lt;/code&gt; value of 0.25 (50/200).&lt;/p&gt; &lt;p&gt; The &lt;code&gt;width&lt;/code&gt; and &lt;code&gt;height&lt;/code&gt; values represent the dimensions of the bounding box as a ratio of the overall image dimension. For example, if the input image is 700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. &lt;/p&gt; &lt;note&gt; &lt;p&gt; The bounding box coordinates can have negative values. For example, if Amazon Rekognition is able to detect a face that is at the image edge and is only partially visible, the service can return coordinates that are outside the image bounds and, depending on the image edge, you might get negative values or values greater than 1 for the &lt;code&gt;left&lt;/code&gt; or &lt;code&gt;top&lt;/code&gt; values. &lt;/p&gt; &lt;/note&gt;
--- @param Width [Float] &lt;p&gt;Width of the bounding box as a ratio of the overall image width.&lt;/p&gt;
--- @param Top [Float] &lt;p&gt;Top coordinate of the bounding box as a ratio of overall image height.&lt;/p&gt;
--- @param Left [Float] &lt;p&gt;Left coordinate of the bounding box as a ratio of overall image width.&lt;/p&gt;
--- @param Height [Float] &lt;p&gt;Height of the bounding box as a ratio of the overall image height.&lt;/p&gt;
+-- <p>Identifies the bounding box around the object or face. The <code>left</code> (x-coordinate) and <code>top</code> (y-coordinate) are coordinates representing the top and left sides of the bounding box. Note that the upper-left corner of the image is the origin (0,0). </p> <p>The <code>top</code> and <code>left</code> values returned are ratios of the overall image size. For example, if the input image is 700x200 pixels, and the top-left coordinate of the bounding box is 350x50 pixels, the API returns a <code>left</code> value of 0.5 (350/700) and a <code>top</code> value of 0.25 (50/200).</p> <p> The <code>width</code> and <code>height</code> values represent the dimensions of the bounding box as a ratio of the overall image dimension. For example, if the input image is 700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. </p> <note> <p> The bounding box coordinates can have negative values. For example, if Amazon Rekognition is able to detect a face that is at the image edge and is only partially visible, the service can return coordinates that are outside the image bounds and, depending on the image edge, you might get negative values or values greater than 1 for the <code>left</code> or <code>top</code> values. </p> </note>
+-- @param Width [Float] <p>Width of the bounding box as a ratio of the overall image width.</p>
+-- @param Top [Float] <p>Top coordinate of the bounding box as a ratio of overall image height.</p>
+-- @param Left [Float] <p>Left coordinate of the bounding box as a ratio of overall image width.</p>
+-- @param Height [Float] <p>Height of the bounding box as a ratio of the overall image height.</p>
 function M.BoundingBox(Width, Top, Left, Height, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BoundingBox")
 	local t = { 
@@ -1744,22 +1744,22 @@ function M.AssertFaceDetail(struct)
 end
 
 --- Create a structure of type FaceDetail
--- &lt;p&gt;Structure containing attributes of the face that the algorithm detected.&lt;/p&gt;
--- @param Confidence [Percent] &lt;p&gt;Confidence level that the bounding box contains a face (and not a different object such as a tree).&lt;/p&gt;
--- @param Eyeglasses [Eyeglasses] &lt;p&gt;Indicates whether or not the face is wearing eye glasses, and the confidence level in the determination.&lt;/p&gt;
--- @param Sunglasses [Sunglasses] &lt;p&gt;Indicates whether or not the face is wearing sunglasses, and the confidence level in the determination.&lt;/p&gt;
--- @param Gender [Gender] &lt;p&gt;Gender of the face and the confidence level in the determination.&lt;/p&gt;
--- @param Landmarks [Landmarks] &lt;p&gt;Indicates the location of landmarks on the face.&lt;/p&gt;
--- @param Pose [Pose] &lt;p&gt;Indicates the pose of the face as determined by its pitch, roll, and yaw.&lt;/p&gt;
--- @param Emotions [Emotions] &lt;p&gt;The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY. &lt;/p&gt;
--- @param AgeRange [AgeRange] &lt;p&gt;The estimated age range, in years, for the face. Low represents the lowest estimated age and High represents the highest estimated age.&lt;/p&gt;
--- @param EyesOpen [EyeOpen] &lt;p&gt;Indicates whether or not the eyes on the face are open, and the confidence level in the determination.&lt;/p&gt;
--- @param BoundingBox [BoundingBox] &lt;p&gt;Bounding box of the face.&lt;/p&gt;
--- @param Smile [Smile] &lt;p&gt;Indicates whether or not the face is smiling, and the confidence level in the determination.&lt;/p&gt;
--- @param MouthOpen [MouthOpen] &lt;p&gt;Indicates whether or not the mouth on the face is open, and the confidence level in the determination.&lt;/p&gt;
--- @param Quality [ImageQuality] &lt;p&gt;Identifies image brightness and sharpness.&lt;/p&gt;
--- @param Mustache [Mustache] &lt;p&gt;Indicates whether or not the face has a mustache, and the confidence level in the determination.&lt;/p&gt;
--- @param Beard [Beard] &lt;p&gt;Indicates whether or not the face has a beard, and the confidence level in the determination.&lt;/p&gt;
+-- <p>Structure containing attributes of the face that the algorithm detected.</p>
+-- @param Confidence [Percent] <p>Confidence level that the bounding box contains a face (and not a different object such as a tree).</p>
+-- @param Eyeglasses [Eyeglasses] <p>Indicates whether or not the face is wearing eye glasses, and the confidence level in the determination.</p>
+-- @param Sunglasses [Sunglasses] <p>Indicates whether or not the face is wearing sunglasses, and the confidence level in the determination.</p>
+-- @param Gender [Gender] <p>Gender of the face and the confidence level in the determination.</p>
+-- @param Landmarks [Landmarks] <p>Indicates the location of landmarks on the face.</p>
+-- @param Pose [Pose] <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
+-- @param Emotions [Emotions] <p>The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY. </p>
+-- @param AgeRange [AgeRange] <p>The estimated age range, in years, for the face. Low represents the lowest estimated age and High represents the highest estimated age.</p>
+-- @param EyesOpen [EyeOpen] <p>Indicates whether or not the eyes on the face are open, and the confidence level in the determination.</p>
+-- @param BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
+-- @param Smile [Smile] <p>Indicates whether or not the face is smiling, and the confidence level in the determination.</p>
+-- @param MouthOpen [MouthOpen] <p>Indicates whether or not the mouth on the face is open, and the confidence level in the determination.</p>
+-- @param Quality [ImageQuality] <p>Identifies image brightness and sharpness.</p>
+-- @param Mustache [Mustache] <p>Indicates whether or not the face has a mustache, and the confidence level in the determination.</p>
+-- @param Beard [Beard] <p>Indicates whether or not the face has a beard, and the confidence level in the determination.</p>
 function M.FaceDetail(Confidence, Eyeglasses, Sunglasses, Gender, Landmarks, Pose, Emotions, AgeRange, EyesOpen, BoundingBox, Smile, MouthOpen, Quality, Mustache, Beard, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FaceDetail")
 	local t = { 

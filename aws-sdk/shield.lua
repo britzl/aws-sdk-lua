@@ -32,7 +32,7 @@ end
 
 --- Create a structure of type DeleteProtectionRequest
 --  
--- @param ProtectionId [ProtectionId] &lt;p&gt;The unique identifier (ID) for the &lt;a&gt;Protection&lt;/a&gt; object to be deleted.&lt;/p&gt;
+-- @param ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object to be deleted.</p>
 -- Required parameter: ProtectionId
 function M.DeleteProtectionRequest(ProtectionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProtectionRequest")
@@ -57,8 +57,8 @@ end
 
 --- Create a structure of type ListProtectionsResponse
 --  
--- @param Protections [Protections] &lt;p&gt;The array of enabled &lt;a&gt;Protection&lt;/a&gt; objects.&lt;/p&gt;
--- @param NextToken [Token] &lt;p&gt;If you specify a value for &lt;code&gt;MaxResults&lt;/code&gt; and you have more Protections than the value of MaxResults, AWS Shield Advanced returns a NextToken value in the response that allows you to list another group of Protections. For the second and subsequent ListProtections requests, specify the value of NextToken from the previous response to get information about another batch of Protections.&lt;/p&gt;
+-- @param Protections [Protections] <p>The array of enabled <a>Protection</a> objects.</p>
+-- @param NextToken [Token] <p>If you specify a value for <code>MaxResults</code> and you have more Protections than the value of MaxResults, AWS Shield Advanced returns a NextToken value in the response that allows you to list another group of Protections. For the second and subsequent ListProtections requests, specify the value of NextToken from the previous response to get information about another batch of Protections.</p>
 function M.ListProtectionsResponse(Protections, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListProtectionsResponse")
 	local t = { 
@@ -83,7 +83,7 @@ end
 
 --- Create a structure of type DescribeAttackRequest
 --  
--- @param AttackId [AttackId] &lt;p&gt;The unique identifier (ID) for the attack that to be described.&lt;/p&gt;
+-- @param AttackId [AttackId] <p>The unique identifier (ID) for the attack that to be described.</p>
 -- Required parameter: AttackId
 function M.DescribeAttackRequest(AttackId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttackRequest")
@@ -107,9 +107,9 @@ function M.AssertTimeRange(struct)
 end
 
 --- Create a structure of type TimeRange
--- &lt;p&gt;The time range.&lt;/p&gt;
--- @param FromInclusive [AttackTimestamp] &lt;p&gt;The start time, in the format 2016-12-16T13:50Z.&lt;/p&gt;
--- @param ToExclusive [AttackTimestamp] &lt;p&gt;The end time, in the format 2016-12-16T15:50Z.&lt;/p&gt;
+-- <p>The time range.</p>
+-- @param FromInclusive [AttackTimestamp] <p>The start time, in the format 2016-12-16T13:50Z.</p>
+-- @param ToExclusive [AttackTimestamp] <p>The end time, in the format 2016-12-16T15:50Z.</p>
 function M.TimeRange(FromInclusive, ToExclusive, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TimeRange")
 	local t = { 
@@ -133,7 +133,7 @@ end
 
 --- Create a structure of type DescribeSubscriptionResponse
 --  
--- @param Subscription [Subscription] &lt;p&gt;The AWS Shield Advanced subscription details for an account.&lt;/p&gt;
+-- @param Subscription [Subscription] <p>The AWS Shield Advanced subscription details for an account.</p>
 function M.DescribeSubscriptionResponse(Subscription, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubscriptionResponse")
 	local t = { 
@@ -155,8 +155,8 @@ function M.AssertMitigation(struct)
 end
 
 --- Create a structure of type Mitigation
--- &lt;p&gt;The mitigation applied to a DDoS attack.&lt;/p&gt;
--- @param MitigationName [String] &lt;p&gt;The name of the mitigation taken for this attack.&lt;/p&gt;
+-- <p>The mitigation applied to a DDoS attack.</p>
+-- @param MitigationName [String] <p>The name of the mitigation taken for this attack.</p>
 function M.Mitigation(MitigationName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Mitigation")
 	local t = { 
@@ -178,8 +178,8 @@ function M.AssertInternalErrorException(struct)
 end
 
 --- Create a structure of type InternalErrorException
--- &lt;p&gt;Exception that indicates that a problem occurred with the service infrastructure. You can retry the request.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Exception that indicates that a problem occurred with the service infrastructure. You can retry the request.&lt;/p&gt;
+-- <p>Exception that indicates that a problem occurred with the service infrastructure. You can retry the request.</p>
+-- @param message [errorMessage] <p>Exception that indicates that a problem occurred with the service infrastructure. You can retry the request.</p>
 function M.InternalErrorException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
 	local t = { 
@@ -203,8 +203,8 @@ end
 
 --- Create a structure of type ListAttacksResponse
 --  
--- @param NextToken [Token] &lt;p&gt;The token returned by a previous call to indicate that there is more data available. If not null, more results are available. Pass this value for the &lt;code&gt;NextMarker&lt;/code&gt; parameter in a subsequent call to &lt;code&gt;ListAttacks&lt;/code&gt; to retrieve the next set of items.&lt;/p&gt;
--- @param AttackSummaries [AttackSummaries] &lt;p&gt;The attack information for the specified time range.&lt;/p&gt;
+-- @param NextToken [Token] <p>The token returned by a previous call to indicate that there is more data available. If not null, more results are available. Pass this value for the <code>NextMarker</code> parameter in a subsequent call to <code>ListAttacks</code> to retrieve the next set of items.</p>
+-- @param AttackSummaries [AttackSummaries] <p>The attack information for the specified time range.</p>
 function M.ListAttacksResponse(NextToken, AttackSummaries, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAttacksResponse")
 	local t = { 
@@ -232,11 +232,11 @@ end
 
 --- Create a structure of type ListAttacksRequest
 --  
--- @param NextToken [Token] &lt;p&gt;The &lt;code&gt;ListAttacksRequest.NextMarker&lt;/code&gt; value from a previous call to &lt;code&gt;ListAttacksRequest&lt;/code&gt;. Pass null if this is the first call.&lt;/p&gt;
--- @param EndTime [TimeRange] &lt;p&gt;The end of the time period for the attacks.&lt;/p&gt;
--- @param ResourceArns [ResourceArnFilterList] &lt;p&gt;The ARN (Amazon Resource Name) of the resource that was attacked. If this is left blank, all applicable resources for this account will be included.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of &lt;a&gt;AttackSummary&lt;/a&gt; objects to be returned. If this is left blank, the first 20 results will be returned.&lt;/p&gt;
--- @param StartTime [TimeRange] &lt;p&gt;The time period for the attacks.&lt;/p&gt;
+-- @param NextToken [Token] <p>The <code>ListAttacksRequest.NextMarker</code> value from a previous call to <code>ListAttacksRequest</code>. Pass null if this is the first call.</p>
+-- @param EndTime [TimeRange] <p>The end of the time period for the attacks.</p>
+-- @param ResourceArns [ResourceArnFilterList] <p>The ARN (Amazon Resource Name) of the resource that was attacked. If this is left blank, all applicable resources for this account will be included.</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of <a>AttackSummary</a> objects to be returned. If this is left blank, the first 20 results will be returned.</p>
+-- @param StartTime [TimeRange] <p>The time period for the attacks.</p>
 function M.ListAttacksRequest(NextToken, EndTime, ResourceArns, MaxResults, StartTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListAttacksRequest")
 	local t = { 
@@ -262,8 +262,8 @@ function M.AssertLockedSubscriptionException(struct)
 end
 
 --- Create a structure of type LockedSubscriptionException
--- &lt;p&gt;Exception that indicates that the subscription has been modified by another client. You can retry the request.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Exception that indicates that the subscription has been modified by another client. You can retry the request.&lt;/p&gt;
+-- <p>Exception that indicates that the subscription has been modified by another client. You can retry the request.</p>
+-- @param message [errorMessage] <p>Exception that indicates that the subscription has been modified by another client. You can retry the request.</p>
 function M.LockedSubscriptionException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LockedSubscriptionException")
 	local t = { 
@@ -306,7 +306,7 @@ end
 
 --- Create a structure of type CreateProtectionResponse
 --  
--- @param ProtectionId [ProtectionId] &lt;p&gt;The unique identifier (ID) for the &lt;a&gt;Protection&lt;/a&gt; object that is created.&lt;/p&gt;
+-- @param ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object that is created.</p>
 function M.CreateProtectionResponse(ProtectionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateProtectionResponse")
 	local t = { 
@@ -330,8 +330,8 @@ end
 
 --- Create a structure of type ListProtectionsRequest
 --  
--- @param NextToken [Token] &lt;p&gt;The &lt;code&gt;ListProtectionsRequest.NextToken&lt;/code&gt; value from a previous call to &lt;code&gt;ListProtections&lt;/code&gt;. Pass null if this is the first call.&lt;/p&gt;
--- @param MaxResults [MaxResults] &lt;p&gt;The maximum number of &lt;a&gt;Protection&lt;/a&gt; objects to be returned. If this is left blank the first 20 results will be returned.&lt;/p&gt;
+-- @param NextToken [Token] <p>The <code>ListProtectionsRequest.NextToken</code> value from a previous call to <code>ListProtections</code>. Pass null if this is the first call.</p>
+-- @param MaxResults [MaxResults] <p>The maximum number of <a>Protection</a> objects to be returned. If this is left blank the first 20 results will be returned.</p>
 function M.ListProtectionsRequest(NextToken, MaxResults, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListProtectionsRequest")
 	local t = { 
@@ -356,10 +356,10 @@ function M.AssertLimitsExceededException(struct)
 end
 
 --- Create a structure of type LimitsExceededException
--- &lt;p&gt;Exception that indicates that the operation would exceed a limit.&lt;/p&gt;
--- @param Limit [LimitNumber] &lt;p&gt;Exception that indicates that the operation would exceed a limit.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Exception that indicates that the operation would exceed a limit.&lt;/p&gt;
--- @param Type [LimitType] &lt;p&gt;Exception that indicates that the operation would exceed a limit.&lt;/p&gt;
+-- <p>Exception that indicates that the operation would exceed a limit.</p>
+-- @param Limit [LimitNumber] <p>Exception that indicates that the operation would exceed a limit.</p>
+-- @param message [errorMessage] <p>Exception that indicates that the operation would exceed a limit.</p>
+-- @param Type [LimitType] <p>Exception that indicates that the operation would exceed a limit.</p>
 function M.LimitsExceededException(Limit, message, Type, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitsExceededException")
 	local t = { 
@@ -383,8 +383,8 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;Exception that indicates that the parameters passed to the API are invalid. &lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Exception that indicates that the parameters passed to the API are invalid. &lt;/p&gt;
+-- <p>Exception that indicates that the parameters passed to the API are invalid. </p>
+-- @param message [errorMessage] <p>Exception that indicates that the parameters passed to the API are invalid. </p>
 function M.InvalidParameterException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -428,10 +428,10 @@ function M.AssertProtection(struct)
 end
 
 --- Create a structure of type Protection
--- &lt;p&gt;An object that represents a resource that is under DDoS protection.&lt;/p&gt;
--- @param ResourceArn [ResourceArn] &lt;p&gt;The ARN (Amazon Resource Name) of the AWS resource that is protected.&lt;/p&gt;
--- @param Id [ProtectionId] &lt;p&gt;The unique identifier (ID) of the protection.&lt;/p&gt;
--- @param Name [ProtectionName] &lt;p&gt;The friendly name of the protection. For example, &lt;code&gt;My CloudFront distributions&lt;/code&gt;.&lt;/p&gt;
+-- <p>An object that represents a resource that is under DDoS protection.</p>
+-- @param ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the AWS resource that is protected.</p>
+-- @param Id [ProtectionId] <p>The unique identifier (ID) of the protection.</p>
+-- @param Name [ProtectionName] <p>The friendly name of the protection. For example, <code>My CloudFront distributions</code>.</p>
 function M.Protection(ResourceArn, Id, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Protection")
 	local t = { 
@@ -479,8 +479,8 @@ end
 
 --- Create a structure of type CreateProtectionRequest
 --  
--- @param ResourceArn [ResourceArn] &lt;p&gt;The ARN (Amazon Resource Name) of the resource to be protected.&lt;/p&gt;
--- @param Name [ProtectionName] &lt;p&gt;Friendly name for the &lt;code&gt;Protection&lt;/code&gt; you are creating.&lt;/p&gt;
+-- @param ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource to be protected.</p>
+-- @param Name [ProtectionName] <p>Friendly name for the <code>Protection</code> you are creating.</p>
 -- Required parameter: Name
 -- Required parameter: ResourceArn
 function M.CreateProtectionRequest(ResourceArn, Name, ...)
@@ -505,8 +505,8 @@ function M.AssertInvalidOperationException(struct)
 end
 
 --- Create a structure of type InvalidOperationException
--- &lt;p&gt;Exception that indicates that the operation would not cause any change to occur.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Exception that indicates that the operation would not cause any change to occur.&lt;/p&gt;
+-- <p>Exception that indicates that the operation would not cause any change to occur.</p>
+-- @param message [errorMessage] <p>Exception that indicates that the operation would not cause any change to occur.</p>
 function M.InvalidOperationException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOperationException")
 	local t = { 
@@ -528,8 +528,8 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;Exception indicating the specified resource does not exist.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Exception indicating the specified resource does not exist.&lt;/p&gt;
+-- <p>Exception indicating the specified resource does not exist.</p>
+-- @param message [errorMessage] <p>Exception indicating the specified resource does not exist.</p>
 function M.ResourceNotFoundException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -552,9 +552,9 @@ function M.AssertSubscription(struct)
 end
 
 --- Create a structure of type Subscription
--- &lt;p&gt;Information about the AWS Shield Advanced subscription for an account.&lt;/p&gt;
--- @param StartTime [Timestamp] &lt;p&gt;The start time of the subscription, in the format &quot;2016-12-16T13:50Z&quot;.&lt;/p&gt;
--- @param TimeCommitmentInSeconds [DurationInSeconds] &lt;p&gt;The length, in seconds, of the AWS Shield Advanced subscription for the account.&lt;/p&gt;
+-- <p>Information about the AWS Shield Advanced subscription for an account.</p>
+-- @param StartTime [Timestamp] <p>The start time of the subscription, in the format "2016-12-16T13:50Z".</p>
+-- @param TimeCommitmentInSeconds [DurationInSeconds] <p>The length, in seconds, of the AWS Shield Advanced subscription for the account.</p>
 function M.Subscription(StartTime, TimeCommitmentInSeconds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
 	local t = { 
@@ -580,11 +580,11 @@ function M.AssertSubResourceSummary(struct)
 end
 
 --- Create a structure of type SubResourceSummary
--- &lt;p&gt;The attack information for the specified SubResource.&lt;/p&gt;
--- @param Counters [SummarizedCounterList] &lt;p&gt;The counters that describe the details of the attack.&lt;/p&gt;
--- @param Type [SubResourceType] &lt;p&gt;The &lt;code&gt;SubResource&lt;/code&gt; type.&lt;/p&gt;
--- @param Id [String] &lt;p&gt;The unique identifier (ID) of the &lt;code&gt;SubResource&lt;/code&gt;.&lt;/p&gt;
--- @param AttackVectors [SummarizedAttackVectorList] &lt;p&gt;The list of attack types and associated counters.&lt;/p&gt;
+-- <p>The attack information for the specified SubResource.</p>
+-- @param Counters [SummarizedCounterList] <p>The counters that describe the details of the attack.</p>
+-- @param Type [SubResourceType] <p>The <code>SubResource</code> type.</p>
+-- @param Id [String] <p>The unique identifier (ID) of the <code>SubResource</code>.</p>
+-- @param AttackVectors [SummarizedAttackVectorList] <p>The list of attack types and associated counters.</p>
 function M.SubResourceSummary(Counters, Type, Id, AttackVectors, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubResourceSummary")
 	local t = { 
@@ -613,12 +613,12 @@ function M.AssertAttackSummary(struct)
 end
 
 --- Create a structure of type AttackSummary
--- &lt;p&gt;Summarizes all DDoS attacks for a specified time period.&lt;/p&gt;
--- @param EndTime [AttackTimestamp] &lt;p&gt;The end time of the attack, in the format 2016-12-16T13:50Z.&lt;/p&gt;
--- @param ResourceArn [String] &lt;p&gt;The ARN (Amazon Resource Name) of the resource that was attacked.&lt;/p&gt;
--- @param AttackId [String] &lt;p&gt;The unique identifier (ID) of the attack.&lt;/p&gt;
--- @param AttackVectors [AttackVectorDescriptionList] &lt;p&gt;The list of attacks for a specified time period.&lt;/p&gt;
--- @param StartTime [AttackTimestamp] &lt;p&gt;The start time of the attack, in the format 2016-12-16T13:50Z.&lt;/p&gt;
+-- <p>Summarizes all DDoS attacks for a specified time period.</p>
+-- @param EndTime [AttackTimestamp] <p>The end time of the attack, in the format 2016-12-16T13:50Z.</p>
+-- @param ResourceArn [String] <p>The ARN (Amazon Resource Name) of the resource that was attacked.</p>
+-- @param AttackId [String] <p>The unique identifier (ID) of the attack.</p>
+-- @param AttackVectors [AttackVectorDescriptionList] <p>The list of attacks for a specified time period.</p>
+-- @param StartTime [AttackTimestamp] <p>The start time of the attack, in the format 2016-12-16T13:50Z.</p>
 function M.AttackSummary(EndTime, ResourceArn, AttackId, AttackVectors, StartTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttackSummary")
 	local t = { 
@@ -650,14 +650,14 @@ function M.AssertAttackDetail(struct)
 end
 
 --- Create a structure of type AttackDetail
--- &lt;p&gt;The details of a DDoS attack.&lt;/p&gt;
--- @param Mitigations [MitigationList] &lt;p&gt;List of mitigation actions taken for the attack.&lt;/p&gt;
--- @param ResourceArn [ResourceArn] &lt;p&gt;The ARN (Amazon Resource Name) of the resource that was attacked.&lt;/p&gt;
--- @param AttackId [AttackId] &lt;p&gt;The unique identifier (ID) of the attack.&lt;/p&gt;
--- @param SubResources [SubResourceSummaryList] &lt;p&gt;If applicable, additional detail about the resource being attacked, for example, IP address or URL.&lt;/p&gt;
--- @param StartTime [AttackTimestamp] &lt;p&gt;The time the attack started, in the format 2016-12-16T13:50Z.&lt;/p&gt;
--- @param EndTime [AttackTimestamp] &lt;p&gt;The time the attack ended, in the format 2016-12-16T13:50Z.&lt;/p&gt;
--- @param AttackCounters [SummarizedCounterList] &lt;p&gt;List of counters that describe the attack for the specified time period.&lt;/p&gt;
+-- <p>The details of a DDoS attack.</p>
+-- @param Mitigations [MitigationList] <p>List of mitigation actions taken for the attack.</p>
+-- @param ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource that was attacked.</p>
+-- @param AttackId [AttackId] <p>The unique identifier (ID) of the attack.</p>
+-- @param SubResources [SubResourceSummaryList] <p>If applicable, additional detail about the resource being attacked, for example, IP address or URL.</p>
+-- @param StartTime [AttackTimestamp] <p>The time the attack started, in the format 2016-12-16T13:50Z.</p>
+-- @param EndTime [AttackTimestamp] <p>The time the attack ended, in the format 2016-12-16T13:50Z.</p>
+-- @param AttackCounters [SummarizedCounterList] <p>List of counters that describe the attack for the specified time period.</p>
 function M.AttackDetail(Mitigations, ResourceArn, AttackId, SubResources, StartTime, EndTime, AttackCounters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttackDetail")
 	local t = { 
@@ -685,8 +685,8 @@ function M.AssertOptimisticLockException(struct)
 end
 
 --- Create a structure of type OptimisticLockException
--- &lt;p&gt;Exception that indicates that the protection state has been modified by another client. You can retry the request.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Exception that indicates that the protection state has been modified by another client. You can retry the request.&lt;/p&gt;
+-- <p>Exception that indicates that the protection state has been modified by another client. You can retry the request.</p>
+-- @param message [errorMessage] <p>Exception that indicates that the protection state has been modified by another client. You can retry the request.</p>
 function M.OptimisticLockException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OptimisticLockException")
 	local t = { 
@@ -709,7 +709,7 @@ end
 
 --- Create a structure of type DescribeAttackResponse
 --  
--- @param Attack [AttackDetail] &lt;p&gt;The attack that is described.&lt;/p&gt;
+-- @param Attack [AttackDetail] <p>The attack that is described.</p>
 function M.DescribeAttackResponse(Attack, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttackResponse")
 	local t = { 
@@ -733,9 +733,9 @@ function M.AssertSummarizedAttackVector(struct)
 end
 
 --- Create a structure of type SummarizedAttackVector
--- &lt;p&gt;A summary of information about the attack.&lt;/p&gt;
--- @param VectorCounters [SummarizedCounterList] &lt;p&gt;The list of counters that describe the details of the attack.&lt;/p&gt;
--- @param VectorType [String] &lt;p&gt;The attack type, for example, SNMP reflection or SYN flood.&lt;/p&gt;
+-- <p>A summary of information about the attack.</p>
+-- @param VectorCounters [SummarizedCounterList] <p>The list of counters that describe the details of the attack.</p>
+-- @param VectorType [String] <p>The attack type, for example, SNMP reflection or SYN flood.</p>
 -- Required parameter: VectorType
 function M.SummarizedAttackVector(VectorCounters, VectorType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SummarizedAttackVector")
@@ -760,7 +760,7 @@ end
 
 --- Create a structure of type DescribeProtectionResponse
 --  
--- @param Protection [Protection] &lt;p&gt;The &lt;a&gt;Protection&lt;/a&gt; object that is described.&lt;/p&gt;
+-- @param Protection [Protection] <p>The <a>Protection</a> object that is described.</p>
 function M.DescribeProtectionResponse(Protection, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProtectionResponse")
 	local t = { 
@@ -787,13 +787,13 @@ function M.AssertSummarizedCounter(struct)
 end
 
 --- Create a structure of type SummarizedCounter
--- &lt;p&gt;The counter that describes a DDoS attack.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The counter name.&lt;/p&gt;
--- @param Max [Double] &lt;p&gt;The maximum value of the counter for a specified time period.&lt;/p&gt;
--- @param Average [Double] &lt;p&gt;The average value of the counter for a specified time period.&lt;/p&gt;
--- @param N [Integer] &lt;p&gt;The number of counters for a specified time period.&lt;/p&gt;
--- @param Sum [Double] &lt;p&gt;The total of counter values for a specified time period.&lt;/p&gt;
--- @param Unit [String] &lt;p&gt;The unit of the counters.&lt;/p&gt;
+-- <p>The counter that describes a DDoS attack.</p>
+-- @param Name [String] <p>The counter name.</p>
+-- @param Max [Double] <p>The maximum value of the counter for a specified time period.</p>
+-- @param Average [Double] <p>The average value of the counter for a specified time period.</p>
+-- @param N [Integer] <p>The number of counters for a specified time period.</p>
+-- @param Sum [Double] <p>The total of counter values for a specified time period.</p>
+-- @param Unit [String] <p>The unit of the counters.</p>
 function M.SummarizedCounter(Name, Max, Average, N, Sum, Unit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SummarizedCounter")
 	local t = { 
@@ -840,8 +840,8 @@ function M.AssertInvalidResourceException(struct)
 end
 
 --- Create a structure of type InvalidResourceException
--- &lt;p&gt;Exception that indicates that the resource is invalid. You might not have access to the resource, or the resource might not exist.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Exception that indicates that the resource is invalid. You might not have access to the resource, or the resource might not exist.&lt;/p&gt;
+-- <p>Exception that indicates that the resource is invalid. You might not have access to the resource, or the resource might not exist.</p>
+-- @param message [errorMessage] <p>Exception that indicates that the resource is invalid. You might not have access to the resource, or the resource might not exist.</p>
 function M.InvalidResourceException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceException")
 	local t = { 
@@ -905,7 +905,7 @@ end
 
 --- Create a structure of type DescribeProtectionRequest
 --  
--- @param ProtectionId [ProtectionId] &lt;p&gt;The unique identifier (ID) for the &lt;a&gt;Protection&lt;/a&gt; object that is described.&lt;/p&gt;
+-- @param ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object that is described.</p>
 -- Required parameter: ProtectionId
 function M.DescribeProtectionRequest(ProtectionId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProtectionRequest")
@@ -929,8 +929,8 @@ function M.AssertAttackVectorDescription(struct)
 end
 
 --- Create a structure of type AttackVectorDescription
--- &lt;p&gt;Describes the attack.&lt;/p&gt;
--- @param VectorType [String] &lt;p&gt;The attack type, for example, SNMP reflection or SYN flood.&lt;/p&gt;
+-- <p>Describes the attack.</p>
+-- @param VectorType [String] <p>The attack type, for example, SNMP reflection or SYN flood.</p>
 -- Required parameter: VectorType
 function M.AttackVectorDescription(VectorType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttackVectorDescription")
@@ -953,8 +953,8 @@ function M.AssertResourceAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ResourceAlreadyExistsException
--- &lt;p&gt;Exception indicating the specified resource already exists.&lt;/p&gt;
--- @param message [errorMessage] &lt;p&gt;Exception indicating the specified resource already exists.&lt;/p&gt;
+-- <p>Exception indicating the specified resource already exists.</p>
+-- @param message [errorMessage] <p>Exception indicating the specified resource already exists.</p>
 function M.ResourceAlreadyExistsException(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
 	local t = { 

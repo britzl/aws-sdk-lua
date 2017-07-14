@@ -29,7 +29,7 @@ function M.AssertInvalidRequestException(struct)
 end
 
 --- Create a structure of type InvalidRequestException
--- &lt;p&gt;The request is missing required parameters or has invalid parameters.&lt;/p&gt;
+-- <p>The request is missing required parameters or has invalid parameters.</p>
 function M.InvalidRequestException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
 	local t = { 
@@ -52,10 +52,10 @@ function M.AssertAnnotationValue(struct)
 end
 
 --- Create a structure of type AnnotationValue
--- &lt;p&gt;Value of a segment annotation. Has one of three value types: Number, Boolean or String.&lt;/p&gt;
--- @param NumberValue [NullableDouble] &lt;p&gt;Value for a Number annotation.&lt;/p&gt;
--- @param BooleanValue [NullableBoolean] &lt;p&gt;Value for a Boolean annotation.&lt;/p&gt;
--- @param StringValue [String] &lt;p&gt;Value for a String annotation.&lt;/p&gt;
+-- <p>Value of a segment annotation. Has one of three value types: Number, Boolean or String.</p>
+-- @param NumberValue [NullableDouble] <p>Value for a Number annotation.</p>
+-- @param BooleanValue [NullableBoolean] <p>Value for a Boolean annotation.</p>
+-- @param StringValue [String] <p>Value for a String annotation.</p>
 function M.AnnotationValue(NumberValue, BooleanValue, StringValue, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AnnotationValue")
 	local t = { 
@@ -80,9 +80,9 @@ function M.AssertFaultStatistics(struct)
 end
 
 --- Create a structure of type FaultStatistics
--- &lt;p&gt;Information about requests that failed with a 5xx Server Error status code.&lt;/p&gt;
--- @param OtherCount [NullableLong] &lt;p&gt;The number of requests that failed with untracked 5xx Server Error status codes.&lt;/p&gt;
--- @param TotalCount [NullableLong] &lt;p&gt;The total number of requests that failed with a 5xx Server Error status code.&lt;/p&gt;
+-- <p>Information about requests that failed with a 5xx Server Error status code.</p>
+-- @param OtherCount [NullableLong] <p>The number of requests that failed with untracked 5xx Server Error status codes.</p>
+-- @param TotalCount [NullableLong] <p>The total number of requests that failed with a 5xx Server Error status code.</p>
 function M.FaultStatistics(OtherCount, TotalCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FaultStatistics")
 	local t = { 
@@ -106,9 +106,9 @@ function M.AssertTraceUser(struct)
 end
 
 --- Create a structure of type TraceUser
--- &lt;p&gt;Information about a user recorded in segment documents.&lt;/p&gt;
--- @param UserName [String] &lt;p&gt;The user's name.&lt;/p&gt;
--- @param ServiceIds [ServiceIds] &lt;p&gt;Services that the user's request hit.&lt;/p&gt;
+-- <p>Information about a user recorded in segment documents.</p>
+-- @param UserName [String] <p>The user's name.</p>
+-- @param ServiceIds [ServiceIds] <p>Services that the user's request hit.</p>
 function M.TraceUser(UserName, ServiceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TraceUser")
 	local t = { 
@@ -138,11 +138,11 @@ end
 
 --- Create a structure of type GetTraceSummariesRequest
 --  
--- @param FilterExpression [FilterExpression] &lt;p&gt;Specify a filter expression to retrieve trace summaries for services or requests that meet certain requirements.&lt;/p&gt;
--- @param EndTime [Timestamp] &lt;p&gt;The end of the time frame for which to retrieve traces.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;Specify the pagination token returned by a previous request to retrieve the next page of results.&lt;/p&gt;
--- @param StartTime [Timestamp] &lt;p&gt;The start of the time frame for which to retrieve traces.&lt;/p&gt;
--- @param Sampling [NullableBoolean] &lt;p&gt;Set to &lt;code&gt;true&lt;/code&gt; to get summaries for only a subset of available traces.&lt;/p&gt;
+-- @param FilterExpression [FilterExpression] <p>Specify a filter expression to retrieve trace summaries for services or requests that meet certain requirements.</p>
+-- @param EndTime [Timestamp] <p>The end of the time frame for which to retrieve traces.</p>
+-- @param NextToken [String] <p>Specify the pagination token returned by a previous request to retrieve the next page of results.</p>
+-- @param StartTime [Timestamp] <p>The start of the time frame for which to retrieve traces.</p>
+-- @param Sampling [NullableBoolean] <p>Set to <code>true</code> to get summaries for only a subset of available traces.</p>
 -- Required parameter: StartTime
 -- Required parameter: EndTime
 function M.GetTraceSummariesRequest(FilterExpression, EndTime, NextToken, StartTime, Sampling, ...)
@@ -182,20 +182,20 @@ function M.AssertService(struct)
 end
 
 --- Create a structure of type Service
--- &lt;p&gt;Information about an application that processed requests, users that made requests, or downstream services, resources and applications that an application used.&lt;/p&gt;
--- @param SummaryStatistics [ServiceStatistics] &lt;p&gt;Aggregated statistics for the service.&lt;/p&gt;
--- @param ReferenceId [NullableInteger] &lt;p&gt;Identifier for the service. Unique within the service map.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The canonical name of the service.&lt;/p&gt;
--- @param DurationHistogram [Histogram] &lt;p&gt;A histogram that maps the spread of service durations.&lt;/p&gt;
--- @param Root [NullableBoolean] &lt;p&gt;Indicates that the service was the first service to process a request.&lt;/p&gt;
--- @param ResponseTimeHistogram [Histogram] &lt;p&gt;A histogram that maps the spread of service response times.&lt;/p&gt;
--- @param State [String] &lt;p&gt;The service's state.&lt;/p&gt;
--- @param Edges [EdgeList] &lt;p&gt;Connections to downstream services.&lt;/p&gt;
--- @param Names [ServiceNames] &lt;p&gt;A list of names for the service, including the canonical name.&lt;/p&gt;
--- @param StartTime [Timestamp] &lt;p&gt;The start time of the first segment that the service generated.&lt;/p&gt;
--- @param EndTime [Timestamp] &lt;p&gt;The end time of the last segment that the service generated.&lt;/p&gt;
--- @param Type [String] &lt;p&gt;The type of service.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;AWS Resource - The type of an AWS resource. For example, &lt;code&gt;AWS::EC2::Instance&lt;/code&gt; for a application running on Amazon EC2 or &lt;code&gt;AWS::DynamoDB::Table&lt;/code&gt; for an Amazon DynamoDB table that the application used.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;AWS Service - The type of an AWS service. For example, &lt;code&gt;AWS::DynamoDB&lt;/code&gt; for downstream calls to Amazon DynamoDB that didn't target a specific table.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;client&lt;/code&gt; - Represents the clients that sent requests to a root service.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;remote&lt;/code&gt; - A downstream service of indeterminate type.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param AccountId [String] &lt;p&gt;Identifier of the AWS account in which the service runs.&lt;/p&gt;
+-- <p>Information about an application that processed requests, users that made requests, or downstream services, resources and applications that an application used.</p>
+-- @param SummaryStatistics [ServiceStatistics] <p>Aggregated statistics for the service.</p>
+-- @param ReferenceId [NullableInteger] <p>Identifier for the service. Unique within the service map.</p>
+-- @param Name [String] <p>The canonical name of the service.</p>
+-- @param DurationHistogram [Histogram] <p>A histogram that maps the spread of service durations.</p>
+-- @param Root [NullableBoolean] <p>Indicates that the service was the first service to process a request.</p>
+-- @param ResponseTimeHistogram [Histogram] <p>A histogram that maps the spread of service response times.</p>
+-- @param State [String] <p>The service's state.</p>
+-- @param Edges [EdgeList] <p>Connections to downstream services.</p>
+-- @param Names [ServiceNames] <p>A list of names for the service, including the canonical name.</p>
+-- @param StartTime [Timestamp] <p>The start time of the first segment that the service generated.</p>
+-- @param EndTime [Timestamp] <p>The end time of the last segment that the service generated.</p>
+-- @param Type [String] <p>The type of service.</p> <ul> <li> <p>AWS Resource - The type of an AWS resource. For example, <code>AWS::EC2::Instance</code> for a application running on Amazon EC2 or <code>AWS::DynamoDB::Table</code> for an Amazon DynamoDB table that the application used.</p> </li> <li> <p>AWS Service - The type of an AWS service. For example, <code>AWS::DynamoDB</code> for downstream calls to Amazon DynamoDB that didn't target a specific table.</p> </li> <li> <p> <code>client</code> - Represents the clients that sent requests to a root service.</p> </li> <li> <p> <code>remote</code> - A downstream service of indeterminate type.</p> </li> </ul>
+-- @param AccountId [String] <p>Identifier of the AWS account in which the service runs.</p>
 function M.Service(SummaryStatistics, ReferenceId, Name, DurationHistogram, Root, ResponseTimeHistogram, State, Edges, Names, StartTime, EndTime, Type, AccountId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Service")
 	local t = { 
@@ -233,10 +233,10 @@ end
 
 --- Create a structure of type GetServiceGraphResult
 --  
--- @param Services [ServiceList] &lt;p&gt;The services that have processed a traced request during the specified time frame.&lt;/p&gt;
--- @param EndTime [Timestamp] &lt;p&gt;The end of the time frame for which the graph was generated.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;Pagination token. Not used.&lt;/p&gt;
--- @param StartTime [Timestamp] &lt;p&gt;The start of the time frame for which the graph was generated.&lt;/p&gt;
+-- @param Services [ServiceList] <p>The services that have processed a traced request during the specified time frame.</p>
+-- @param EndTime [Timestamp] <p>The end of the time frame for which the graph was generated.</p>
+-- @param NextToken [String] <p>Pagination token. Not used.</p>
+-- @param StartTime [Timestamp] <p>The start of the time frame for which the graph was generated.</p>
 function M.GetServiceGraphResult(Services, EndTime, NextToken, StartTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetServiceGraphResult")
 	local t = { 
@@ -266,9 +266,9 @@ end
 
 --- Create a structure of type GetServiceGraphRequest
 --  
--- @param EndTime [Timestamp] &lt;p&gt;The end of the time frame for which to generate a graph.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;Pagination token. Not used.&lt;/p&gt;
--- @param StartTime [Timestamp] &lt;p&gt;The start of the time frame for which to generate a graph.&lt;/p&gt;
+-- @param EndTime [Timestamp] <p>The end of the time frame for which to generate a graph.</p>
+-- @param NextToken [String] <p>Pagination token. Not used.</p>
+-- @param StartTime [Timestamp] <p>The start of the time frame for which to generate a graph.</p>
 -- Required parameter: StartTime
 -- Required parameter: EndTime
 function M.GetServiceGraphRequest(EndTime, NextToken, StartTime, ...)
@@ -293,7 +293,7 @@ function M.AssertThrottledException(struct)
 end
 
 --- Create a structure of type ThrottledException
--- &lt;p&gt;The request exceeds the maximum number of requests per second.&lt;/p&gt;
+-- <p>The request exceeds the maximum number of requests per second.</p>
 function M.ThrottledException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ThrottledException")
 	local t = { 
@@ -315,9 +315,9 @@ function M.AssertHistogramEntry(struct)
 end
 
 --- Create a structure of type HistogramEntry
--- &lt;p&gt;An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.&lt;/p&gt;
--- @param Count [Integer] &lt;p&gt;The prevalence of the entry.&lt;/p&gt;
--- @param Value [Double] &lt;p&gt;The value of the entry.&lt;/p&gt;
+-- <p>An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.</p>
+-- @param Count [Integer] <p>The prevalence of the entry.</p>
+-- @param Value [Double] <p>The value of the entry.</p>
 function M.HistogramEntry(Count, Value, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating HistogramEntry")
 	local t = { 
@@ -344,10 +344,10 @@ end
 
 --- Create a structure of type GetTraceSummariesResult
 --  
--- @param TraceSummaries [TraceSummaryList] &lt;p&gt;Trace IDs and metadata for traces that were found in the specified time frame.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;If the requested time frame contained more than one page of results, you can use this token to retrieve the next page. The first page contains the most most recent results, closest to the end of the time frame.&lt;/p&gt;
--- @param ApproximateTime [Timestamp] &lt;p&gt;The start time of this page of results.&lt;/p&gt;
--- @param TracesProcessedCount [NullableLong] &lt;p&gt;The number of traces that were processed to get this set of summaries.&lt;/p&gt;
+-- @param TraceSummaries [TraceSummaryList] <p>Trace IDs and metadata for traces that were found in the specified time frame.</p>
+-- @param NextToken [String] <p>If the requested time frame contained more than one page of results, you can use this token to retrieve the next page. The first page contains the most most recent results, closest to the end of the time frame.</p>
+-- @param ApproximateTime [Timestamp] <p>The start time of this page of results.</p>
+-- @param TracesProcessedCount [NullableLong] <p>The number of traces that were processed to get this set of summaries.</p>
 function M.GetTraceSummariesResult(TraceSummaries, NextToken, ApproximateTime, TracesProcessedCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTraceSummariesResult")
 	local t = { 
@@ -376,12 +376,12 @@ function M.AssertHttp(struct)
 end
 
 --- Create a structure of type Http
--- &lt;p&gt;Information about an HTTP request.&lt;/p&gt;
--- @param HttpStatus [NullableInteger] &lt;p&gt;The response status.&lt;/p&gt;
--- @param ClientIp [String] &lt;p&gt;The IP address of the requestor.&lt;/p&gt;
--- @param HttpURL [String] &lt;p&gt;The request URL.&lt;/p&gt;
--- @param UserAgent [String] &lt;p&gt;The request's user agent string.&lt;/p&gt;
--- @param HttpMethod [String] &lt;p&gt;The request method.&lt;/p&gt;
+-- <p>Information about an HTTP request.</p>
+-- @param HttpStatus [NullableInteger] <p>The response status.</p>
+-- @param ClientIp [String] <p>The IP address of the requestor.</p>
+-- @param HttpURL [String] <p>The request URL.</p>
+-- @param UserAgent [String] <p>The request's user agent string.</p>
+-- @param HttpMethod [String] <p>The request method.</p>
 function M.Http(HttpStatus, ClientIp, HttpURL, UserAgent, HttpMethod, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Http")
 	local t = { 
@@ -409,10 +409,10 @@ function M.AssertTrace(struct)
 end
 
 --- Create a structure of type Trace
--- &lt;p&gt;A collection of segment documents with matching trace IDs.&lt;/p&gt;
--- @param Duration [NullableDouble] &lt;p&gt;The length of time in seconds between the start time of the root segment and the end time of the last segment that completed.&lt;/p&gt;
--- @param Segments [SegmentList] &lt;p&gt;Segment documents for the segments and subsegments that comprise the trace.&lt;/p&gt;
--- @param Id [TraceId] &lt;p&gt;The unique identifier for the request that generated the trace's segments and subsegments.&lt;/p&gt;
+-- <p>A collection of segment documents with matching trace IDs.</p>
+-- @param Duration [NullableDouble] <p>The length of time in seconds between the start time of the root segment and the end time of the last segment that completed.</p>
+-- @param Segments [SegmentList] <p>Segment documents for the segments and subsegments that comprise the trace.</p>
+-- @param Id [TraceId] <p>The unique identifier for the request that generated the trace's segments and subsegments.</p>
 function M.Trace(Duration, Segments, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Trace")
 	local t = { 
@@ -441,10 +441,10 @@ end
 
 --- Create a structure of type PutTelemetryRecordsRequest
 --  
--- @param ResourceARN [String] &lt;p/&gt;
--- @param Hostname [String] &lt;p/&gt;
--- @param TelemetryRecords [TelemetryRecordList] &lt;p/&gt;
--- @param EC2InstanceId [String] &lt;p/&gt;
+-- @param ResourceARN [String] <p/>
+-- @param Hostname [String] <p/>
+-- @param TelemetryRecords [TelemetryRecordList] <p/>
+-- @param EC2InstanceId [String] <p/>
 -- Required parameter: TelemetryRecords
 function M.PutTelemetryRecordsRequest(ResourceARN, Hostname, TelemetryRecords, EC2InstanceId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutTelemetryRecordsRequest")
@@ -473,8 +473,8 @@ end
 
 --- Create a structure of type BatchGetTracesRequest
 --  
--- @param NextToken [String] &lt;p&gt;Pagination token. Not used.&lt;/p&gt;
--- @param TraceIds [TraceIdList] &lt;p&gt;Specify the trace IDs of requests for which to retrieve segments.&lt;/p&gt;
+-- @param NextToken [String] <p>Pagination token. Not used.</p>
+-- @param TraceIds [TraceIdList] <p>Specify the trace IDs of requests for which to retrieve segments.</p>
 -- Required parameter: TraceIds
 function M.BatchGetTracesRequest(NextToken, TraceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetTracesRequest")
@@ -500,10 +500,10 @@ function M.AssertErrorStatistics(struct)
 end
 
 --- Create a structure of type ErrorStatistics
--- &lt;p&gt;Information about requests that failed with a 4xx Client Error status code.&lt;/p&gt;
--- @param OtherCount [NullableLong] &lt;p&gt;The number of requests that failed with untracked 4xx Client Error status codes.&lt;/p&gt;
--- @param ThrottleCount [NullableLong] &lt;p&gt;The number of requests that failed with a 419 throttling status code.&lt;/p&gt;
--- @param TotalCount [NullableLong] &lt;p&gt;The total number of requests that failed with a 4xx Client Error status code.&lt;/p&gt;
+-- <p>Information about requests that failed with a 4xx Client Error status code.</p>
+-- @param OtherCount [NullableLong] <p>The number of requests that failed with untracked 4xx Client Error status codes.</p>
+-- @param ThrottleCount [NullableLong] <p>The number of requests that failed with a 419 throttling status code.</p>
+-- @param TotalCount [NullableLong] <p>The total number of requests that failed with a 4xx Client Error status code.</p>
 function M.ErrorStatistics(OtherCount, ThrottleCount, TotalCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ErrorStatistics")
 	local t = { 
@@ -528,9 +528,9 @@ function M.AssertValueWithServiceIds(struct)
 end
 
 --- Create a structure of type ValueWithServiceIds
--- &lt;p&gt;Information about a segment annotation.&lt;/p&gt;
--- @param AnnotationValue [AnnotationValue] &lt;p&gt;Values of the annotation.&lt;/p&gt;
--- @param ServiceIds [ServiceIds] &lt;p&gt;Services to which the annotation applies.&lt;/p&gt;
+-- <p>Information about a segment annotation.</p>
+-- @param AnnotationValue [AnnotationValue] <p>Values of the annotation.</p>
+-- @param ServiceIds [ServiceIds] <p>Services to which the annotation applies.</p>
 function M.ValueWithServiceIds(AnnotationValue, ServiceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ValueWithServiceIds")
 	local t = { 
@@ -554,9 +554,9 @@ function M.AssertSegment(struct)
 end
 
 --- Create a structure of type Segment
--- &lt;p&gt;A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with &lt;a&gt;PutTraceSegments&lt;/a&gt;, or an &lt;code&gt;inferred&lt;/code&gt; segment for a downstream service, generated from a subsegment sent by the service that called it.&lt;/p&gt;
--- @param Document [SegmentDocument] &lt;p&gt;The segment document&lt;/p&gt;
--- @param Id [SegmentId] &lt;p&gt;The segment's ID.&lt;/p&gt;
+-- <p>A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with <a>PutTraceSegments</a>, or an <code>inferred</code> segment for a downstream service, generated from a subsegment sent by the service that called it.</p>
+-- @param Document [SegmentDocument] <p>The segment document</p>
+-- @param Id [SegmentId] <p>The segment's ID.</p>
 function M.Segment(Document, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Segment")
 	local t = { 
@@ -582,9 +582,9 @@ end
 
 --- Create a structure of type BatchGetTracesResult
 --  
--- @param NextToken [String] &lt;p&gt;Pagination token. Not used.&lt;/p&gt;
--- @param Traces [TraceList] &lt;p&gt;Full traces for the specified requests.&lt;/p&gt;
--- @param UnprocessedTraceIds [UnprocessedTraceIdList] &lt;p&gt;Trace IDs of requests that haven't been processed.&lt;/p&gt;
+-- @param NextToken [String] <p>Pagination token. Not used.</p>
+-- @param Traces [TraceList] <p>Full traces for the specified requests.</p>
+-- @param UnprocessedTraceIds [UnprocessedTraceIdList] <p>Trace IDs of requests that haven't been processed.</p>
 function M.BatchGetTracesResult(NextToken, Traces, UnprocessedTraceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetTracesResult")
 	local t = { 
@@ -618,18 +618,18 @@ function M.AssertTraceSummary(struct)
 end
 
 --- Create a structure of type TraceSummary
--- &lt;p&gt;Metadata generated from the segment documents in a trace.&lt;/p&gt;
--- @param HasError [NullableBoolean] &lt;p&gt;One or more of the segment documents has a 400 series error.&lt;/p&gt;
--- @param Http [Http] &lt;p&gt;Information about the HTTP request served by the trace.&lt;/p&gt;
--- @param Users [TraceUsers] &lt;p&gt;Users from the trace's segment documents.&lt;/p&gt;
--- @param HasFault [NullableBoolean] &lt;p&gt;One or more of the segment documents has a 500 series error.&lt;/p&gt;
--- @param Annotations [Annotations] &lt;p&gt;Annotations from the trace's segment documents.&lt;/p&gt;
--- @param IsPartial [NullableBoolean] &lt;p&gt;One or more of the segment documents is in progress.&lt;/p&gt;
--- @param ResponseTime [NullableDouble] &lt;p&gt;The length of time in seconds between the start and end times of the root segment. If the service performs work asynchronously, the response time measures the time before the response is sent to the user, while the duration measures the amount of time before the last traced activity completes.&lt;/p&gt;
--- @param ServiceIds [ServiceIds] &lt;p&gt;Service IDs from the trace's segment documents.&lt;/p&gt;
--- @param Duration [NullableDouble] &lt;p&gt;The length of time in seconds between the start time of the root segment and the end time of the last segment that completed.&lt;/p&gt;
--- @param Id [TraceId] &lt;p&gt;The unique identifier for the request that generated the trace's segments and subsegments.&lt;/p&gt;
--- @param HasThrottle [NullableBoolean] &lt;p&gt;One or more of the segment documents has a 429 throttling error.&lt;/p&gt;
+-- <p>Metadata generated from the segment documents in a trace.</p>
+-- @param HasError [NullableBoolean] <p>One or more of the segment documents has a 400 series error.</p>
+-- @param Http [Http] <p>Information about the HTTP request served by the trace.</p>
+-- @param Users [TraceUsers] <p>Users from the trace's segment documents.</p>
+-- @param HasFault [NullableBoolean] <p>One or more of the segment documents has a 500 series error.</p>
+-- @param Annotations [Annotations] <p>Annotations from the trace's segment documents.</p>
+-- @param IsPartial [NullableBoolean] <p>One or more of the segment documents is in progress.</p>
+-- @param ResponseTime [NullableDouble] <p>The length of time in seconds between the start and end times of the root segment. If the service performs work asynchronously, the response time measures the time before the response is sent to the user, while the duration measures the amount of time before the last traced activity completes.</p>
+-- @param ServiceIds [ServiceIds] <p>Service IDs from the trace's segment documents.</p>
+-- @param Duration [NullableDouble] <p>The length of time in seconds between the start time of the root segment and the end time of the last segment that completed.</p>
+-- @param Id [TraceId] <p>The unique identifier for the request that generated the trace's segments and subsegments.</p>
+-- @param HasThrottle [NullableBoolean] <p>One or more of the segment documents has a 429 throttling error.</p>
 function M.TraceSummary(HasError, Http, Users, HasFault, Annotations, IsPartial, ResponseTime, ServiceIds, Duration, Id, HasThrottle, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TraceSummary")
 	local t = { 
@@ -666,13 +666,13 @@ function M.AssertBackendConnectionErrors(struct)
 end
 
 --- Create a structure of type BackendConnectionErrors
--- &lt;p/&gt;
--- @param ConnectionRefusedCount [NullableInteger] &lt;p/&gt;
--- @param HTTPCode5XXCount [NullableInteger] &lt;p/&gt;
--- @param OtherCount [NullableInteger] &lt;p/&gt;
--- @param HTTPCode4XXCount [NullableInteger] &lt;p/&gt;
--- @param UnknownHostCount [NullableInteger] &lt;p/&gt;
--- @param TimeoutCount [NullableInteger] &lt;p/&gt;
+-- <p/>
+-- @param ConnectionRefusedCount [NullableInteger] <p/>
+-- @param HTTPCode5XXCount [NullableInteger] <p/>
+-- @param OtherCount [NullableInteger] <p/>
+-- @param HTTPCode4XXCount [NullableInteger] <p/>
+-- @param UnknownHostCount [NullableInteger] <p/>
+-- @param TimeoutCount [NullableInteger] <p/>
 function M.BackendConnectionErrors(ConnectionRefusedCount, HTTPCode5XXCount, OtherCount, HTTPCode4XXCount, UnknownHostCount, TimeoutCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BackendConnectionErrors")
 	local t = { 
@@ -702,8 +702,8 @@ end
 
 --- Create a structure of type GetTraceGraphRequest
 --  
--- @param NextToken [String] &lt;p&gt;Pagination token. Not used.&lt;/p&gt;
--- @param TraceIds [TraceIdList] &lt;p&gt;Trace IDs of requests for which to generate a service graph.&lt;/p&gt;
+-- @param NextToken [String] <p>Pagination token. Not used.</p>
+-- @param TraceIds [TraceIdList] <p>Trace IDs of requests for which to generate a service graph.</p>
 -- Required parameter: TraceIds
 function M.GetTraceGraphRequest(NextToken, TraceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTraceGraphRequest")
@@ -732,13 +732,13 @@ function M.AssertTelemetryRecord(struct)
 end
 
 --- Create a structure of type TelemetryRecord
--- &lt;p/&gt;
--- @param SegmentsSpilloverCount [NullableInteger] &lt;p/&gt;
--- @param BackendConnectionErrors [BackendConnectionErrors] &lt;p/&gt;
--- @param Timestamp [Timestamp] &lt;p/&gt;
--- @param SegmentsSentCount [NullableInteger] &lt;p/&gt;
--- @param SegmentsRejectedCount [NullableInteger] &lt;p/&gt;
--- @param SegmentsReceivedCount [NullableInteger] &lt;p/&gt;
+-- <p/>
+-- @param SegmentsSpilloverCount [NullableInteger] <p/>
+-- @param BackendConnectionErrors [BackendConnectionErrors] <p/>
+-- @param Timestamp [Timestamp] <p/>
+-- @param SegmentsSentCount [NullableInteger] <p/>
+-- @param SegmentsRejectedCount [NullableInteger] <p/>
+-- @param SegmentsReceivedCount [NullableInteger] <p/>
 function M.TelemetryRecord(SegmentsSpilloverCount, BackendConnectionErrors, Timestamp, SegmentsSentCount, SegmentsRejectedCount, SegmentsReceivedCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TelemetryRecord")
 	local t = { 
@@ -767,10 +767,10 @@ function M.AssertAlias(struct)
 end
 
 --- Create a structure of type Alias
--- &lt;p&gt;An alias for an edge.&lt;/p&gt;
--- @param Type [String] &lt;p&gt;The type of the alias.&lt;/p&gt;
--- @param Name [String] &lt;p&gt;The canonical name of the alias.&lt;/p&gt;
--- @param Names [AliasNames] &lt;p&gt;A list of names for the alias, including the canonical name.&lt;/p&gt;
+-- <p>An alias for an edge.</p>
+-- @param Type [String] <p>The type of the alias.</p>
+-- @param Name [String] <p>The canonical name of the alias.</p>
+-- @param Names [AliasNames] <p>A list of names for the alias, including the canonical name.</p>
 function M.Alias(Type, Name, Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Alias")
 	local t = { 
@@ -799,13 +799,13 @@ function M.AssertEdge(struct)
 end
 
 --- Create a structure of type Edge
--- &lt;p&gt;Information about a connection between two services.&lt;/p&gt;
--- @param SummaryStatistics [EdgeStatistics] &lt;p&gt;Response statistics for segments on the edge.&lt;/p&gt;
--- @param ReferenceId [NullableInteger] &lt;p&gt;Identifier of the edge. Unique within a service map.&lt;/p&gt;
--- @param ResponseTimeHistogram [Histogram] &lt;p&gt;A histogram that maps the spread of client response times on an edge.&lt;/p&gt;
--- @param StartTime [Timestamp] &lt;p&gt;The start time of the first segment on the edge.&lt;/p&gt;
--- @param EndTime [Timestamp] &lt;p&gt;The end time of the last segment on the edge.&lt;/p&gt;
--- @param Aliases [AliasList] &lt;p&gt;Aliases for the edge.&lt;/p&gt;
+-- <p>Information about a connection between two services.</p>
+-- @param SummaryStatistics [EdgeStatistics] <p>Response statistics for segments on the edge.</p>
+-- @param ReferenceId [NullableInteger] <p>Identifier of the edge. Unique within a service map.</p>
+-- @param ResponseTimeHistogram [Histogram] <p>A histogram that maps the spread of client response times on an edge.</p>
+-- @param StartTime [Timestamp] <p>The start time of the first segment on the edge.</p>
+-- @param EndTime [Timestamp] <p>The end time of the last segment on the edge.</p>
+-- @param Aliases [AliasList] <p>Aliases for the edge.</p>
 function M.Edge(SummaryStatistics, ReferenceId, ResponseTimeHistogram, StartTime, EndTime, Aliases, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Edge")
 	local t = { 
@@ -854,7 +854,7 @@ end
 
 --- Create a structure of type PutTraceSegmentsRequest
 --  
--- @param TraceSegmentDocuments [TraceSegmentDocumentList] &lt;p&gt;A string containing a JSON document defining one or more segments or subsegments.&lt;/p&gt;
+-- @param TraceSegmentDocuments [TraceSegmentDocumentList] <p>A string containing a JSON document defining one or more segments or subsegments.</p>
 -- Required parameter: TraceSegmentDocuments
 function M.PutTraceSegmentsRequest(TraceSegmentDocuments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutTraceSegmentsRequest")
@@ -878,7 +878,7 @@ end
 
 --- Create a structure of type PutTraceSegmentsResult
 --  
--- @param UnprocessedTraceSegments [UnprocessedTraceSegmentList] &lt;p&gt;Segments that failed processing.&lt;/p&gt;
+-- @param UnprocessedTraceSegments [UnprocessedTraceSegmentList] <p>Segments that failed processing.</p>
 function M.PutTraceSegmentsResult(UnprocessedTraceSegments, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutTraceSegmentsResult")
 	local t = { 
@@ -902,8 +902,8 @@ end
 
 --- Create a structure of type GetTraceGraphResult
 --  
--- @param Services [ServiceList] &lt;p&gt;The services that have processed one of the specified requests.&lt;/p&gt;
--- @param NextToken [String] &lt;p&gt;Pagination token. Not used.&lt;/p&gt;
+-- @param Services [ServiceList] <p>The services that have processed one of the specified requests.</p>
+-- @param NextToken [String] <p>Pagination token. Not used.</p>
 function M.GetTraceGraphResult(Services, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetTraceGraphResult")
 	local t = { 
@@ -930,12 +930,12 @@ function M.AssertServiceStatistics(struct)
 end
 
 --- Create a structure of type ServiceStatistics
--- &lt;p&gt;Response statistics for a service.&lt;/p&gt;
--- @param ErrorStatistics [ErrorStatistics] &lt;p&gt;Information about requests that failed with a 4xx Client Error status code.&lt;/p&gt;
--- @param FaultStatistics [FaultStatistics] &lt;p&gt;Information about requests that failed with a 5xx Server Error status code.&lt;/p&gt;
--- @param OkCount [NullableLong] &lt;p&gt;The number of requests that completed with a 2xx Success status code.&lt;/p&gt;
--- @param TotalResponseTime [NullableDouble] &lt;p&gt;The aggregate response time of completed requests.&lt;/p&gt;
--- @param TotalCount [NullableLong] &lt;p&gt;The total number of completed requests.&lt;/p&gt;
+-- <p>Response statistics for a service.</p>
+-- @param ErrorStatistics [ErrorStatistics] <p>Information about requests that failed with a 4xx Client Error status code.</p>
+-- @param FaultStatistics [FaultStatistics] <p>Information about requests that failed with a 5xx Server Error status code.</p>
+-- @param OkCount [NullableLong] <p>The number of requests that completed with a 2xx Success status code.</p>
+-- @param TotalResponseTime [NullableDouble] <p>The aggregate response time of completed requests.</p>
+-- @param TotalCount [NullableLong] <p>The total number of completed requests.</p>
 function M.ServiceStatistics(ErrorStatistics, FaultStatistics, OkCount, TotalResponseTime, TotalCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceStatistics")
 	local t = { 
@@ -963,10 +963,10 @@ function M.AssertUnprocessedTraceSegment(struct)
 end
 
 --- Create a structure of type UnprocessedTraceSegment
--- &lt;p&gt;Information about a segment that failed processing.&lt;/p&gt;
--- @param ErrorCode [String] &lt;p&gt;The error that caused processing to fail.&lt;/p&gt;
--- @param Message [String] &lt;p&gt;The error message.&lt;/p&gt;
--- @param Id [String] &lt;p&gt;The segment's ID.&lt;/p&gt;
+-- <p>Information about a segment that failed processing.</p>
+-- @param ErrorCode [String] <p>The error that caused processing to fail.</p>
+-- @param Message [String] <p>The error message.</p>
+-- @param Id [String] <p>The segment's ID.</p>
 function M.UnprocessedTraceSegment(ErrorCode, Message, Id, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UnprocessedTraceSegment")
 	local t = { 
@@ -994,12 +994,12 @@ function M.AssertEdgeStatistics(struct)
 end
 
 --- Create a structure of type EdgeStatistics
--- &lt;p&gt;Response statistics for an edge.&lt;/p&gt;
--- @param ErrorStatistics [ErrorStatistics] &lt;p&gt;Information about requests that failed with a 4xx Client Error status code.&lt;/p&gt;
--- @param FaultStatistics [FaultStatistics] &lt;p&gt;Information about requests that failed with a 5xx Server Error status code.&lt;/p&gt;
--- @param OkCount [NullableLong] &lt;p&gt;The number of requests that completed with a 2xx Success status code.&lt;/p&gt;
--- @param TotalResponseTime [NullableDouble] &lt;p&gt;The aggregate response time of completed requests.&lt;/p&gt;
--- @param TotalCount [NullableLong] &lt;p&gt;The total number of completed requests.&lt;/p&gt;
+-- <p>Response statistics for an edge.</p>
+-- @param ErrorStatistics [ErrorStatistics] <p>Information about requests that failed with a 4xx Client Error status code.</p>
+-- @param FaultStatistics [FaultStatistics] <p>Information about requests that failed with a 5xx Server Error status code.</p>
+-- @param OkCount [NullableLong] <p>The number of requests that completed with a 2xx Success status code.</p>
+-- @param TotalResponseTime [NullableDouble] <p>The aggregate response time of completed requests.</p>
+-- @param TotalCount [NullableLong] <p>The total number of completed requests.</p>
 function M.EdgeStatistics(ErrorStatistics, FaultStatistics, OkCount, TotalResponseTime, TotalCount, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EdgeStatistics")
 	local t = { 
@@ -1028,11 +1028,11 @@ function M.AssertServiceId(struct)
 end
 
 --- Create a structure of type ServiceId
--- &lt;p/&gt;
--- @param AccountId [String] &lt;p/&gt;
--- @param Type [String] &lt;p/&gt;
--- @param Name [String] &lt;p/&gt;
--- @param Names [ServiceNames] &lt;p/&gt;
+-- <p/>
+-- @param AccountId [String] <p/>
+-- @param Type [String] <p/>
+-- @param Name [String] <p/>
+-- @param Names [ServiceNames] <p/>
 function M.ServiceId(AccountId, Type, Name, Names, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceId")
 	local t = { 

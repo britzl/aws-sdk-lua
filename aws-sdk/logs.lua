@@ -33,7 +33,7 @@ end
 --- Create a structure of type DescribeLogGroupsResponse
 --  
 -- @param nextToken [NextToken]  
--- @param logGroups [LogGroups] &lt;p&gt;The log groups.&lt;/p&gt;
+-- @param logGroups [LogGroups] <p>The log groups.</p>
 function M.DescribeLogGroupsResponse(nextToken, logGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLogGroupsResponse")
 	local t = { 
@@ -59,7 +59,7 @@ end
 --- Create a structure of type DescribeDestinationsResponse
 --  
 -- @param nextToken [NextToken]  
--- @param destinations [Destinations] &lt;p&gt;The destinations.&lt;/p&gt;
+-- @param destinations [Destinations] <p>The destinations.</p>
 function M.DescribeDestinationsResponse(nextToken, destinations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDestinationsResponse")
 	local t = { 
@@ -87,13 +87,13 @@ function M.AssertDestination(struct)
 end
 
 --- Create a structure of type Destination
--- &lt;p&gt;Represents a cross-account destination that receives subscription log events.&lt;/p&gt;
--- @param roleArn [RoleArn] &lt;p&gt;A role for impersonation, used when delivering log events to the target.&lt;/p&gt;
--- @param creationTime [Timestamp] &lt;p&gt;The creation time of the destination, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param destinationName [DestinationName] &lt;p&gt;The name of the destination.&lt;/p&gt;
--- @param accessPolicy [AccessPolicy] &lt;p&gt;An IAM policy document that governs which AWS accounts can create subscription filters against this destination.&lt;/p&gt;
--- @param targetArn [TargetArn] &lt;p&gt;The Amazon Resource Name (ARN) of the physical target where the log events will be delivered (for example, a Kinesis stream).&lt;/p&gt;
--- @param arn [Arn] &lt;p&gt;The ARN of this destination.&lt;/p&gt;
+-- <p>Represents a cross-account destination that receives subscription log events.</p>
+-- @param roleArn [RoleArn] <p>A role for impersonation, used when delivering log events to the target.</p>
+-- @param creationTime [Timestamp] <p>The creation time of the destination, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param destinationName [DestinationName] <p>The name of the destination.</p>
+-- @param accessPolicy [AccessPolicy] <p>An IAM policy document that governs which AWS accounts can create subscription filters against this destination.</p>
+-- @param targetArn [TargetArn] <p>The Amazon Resource Name (ARN) of the physical target where the log events will be delivered (for example, a Kinesis stream).</p>
+-- @param arn [Arn] <p>The ARN of this destination.</p>
 function M.Destination(roleArn, creationTime, destinationName, accessPolicy, targetArn, arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Destination")
 	local t = { 
@@ -129,14 +129,14 @@ end
 
 --- Create a structure of type FilterLogEventsRequest
 --  
--- @param endTime [Timestamp] &lt;p&gt;The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not returned.&lt;/p&gt;
--- @param filterPattern [FilterPattern] &lt;p&gt;The filter pattern to use. If not provided, all the events are matched.&lt;/p&gt;
--- @param logStreamNames [InputLogStreamNames] &lt;p&gt;Optional list of log stream names.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param limit [EventsLimit] &lt;p&gt;The maximum number of events to return. The default is 10,000 events.&lt;/p&gt;
--- @param startTime [Timestamp] &lt;p&gt;The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not returned.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of events to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param interleaved [Interleaved] &lt;p&gt;If the value is true, the operation makes a best effort to provide responses that contain events from multiple log streams within the log group interleaved in a single response. If the value is false all the matched log events in the first log stream are searched first, then those in the next log stream, and so on. The default is false.&lt;/p&gt;
+-- @param endTime [Timestamp] <p>The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not returned.</p>
+-- @param filterPattern [FilterPattern] <p>The filter pattern to use. If not provided, all the events are matched.</p>
+-- @param logStreamNames [InputLogStreamNames] <p>Optional list of log stream names.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param limit [EventsLimit] <p>The maximum number of events to return. The default is 10,000 events.</p>
+-- @param startTime [Timestamp] <p>The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not returned.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of events to return. (You received this token from a previous call.)</p>
+-- @param interleaved [Interleaved] <p>If the value is true, the operation makes a best effort to provide responses that contain events from multiple log streams within the log group interleaved in a single response. If the value is false all the matched log events in the first log stream are searched first, then those in the next log stream, and so on. The default is false.</p>
 -- Required parameter: logGroupName
 function M.FilterLogEventsRequest(endTime, filterPattern, logStreamNames, logGroupName, limit, startTime, nextToken, interleaved, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FilterLogEventsRequest")
@@ -173,15 +173,15 @@ function M.AssertLogStream(struct)
 end
 
 --- Create a structure of type LogStream
--- &lt;p&gt;Represents a log stream, which is a sequence of log events from a single emitter of logs.&lt;/p&gt;
--- @param firstEventTimestamp [Timestamp] &lt;p&gt;The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param lastEventTimestamp [Timestamp] &lt;p&gt; the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTime updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.&lt;/p&gt;
--- @param creationTime [Timestamp] &lt;p&gt;The creation time of the stream, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param uploadSequenceToken [SequenceToken] &lt;p&gt;The sequence token.&lt;/p&gt;
--- @param logStreamName [LogStreamName] &lt;p&gt;The name of the log stream.&lt;/p&gt;
--- @param lastIngestionTime [Timestamp] &lt;p&gt;The ingestion time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param arn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the log stream.&lt;/p&gt;
--- @param storedBytes [StoredBytes] &lt;p&gt;The number of bytes stored.&lt;/p&gt;
+-- <p>Represents a log stream, which is a sequence of log events from a single emitter of logs.</p>
+-- @param firstEventTimestamp [Timestamp] <p>The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param lastEventTimestamp [Timestamp] <p> the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTime updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.</p>
+-- @param creationTime [Timestamp] <p>The creation time of the stream, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param uploadSequenceToken [SequenceToken] <p>The sequence token.</p>
+-- @param logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- @param lastIngestionTime [Timestamp] <p>The ingestion time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param arn [Arn] <p>The Amazon Resource Name (ARN) of the log stream.</p>
+-- @param storedBytes [StoredBytes] <p>The number of bytes stored.</p>
 function M.LogStream(firstEventTimestamp, lastEventTimestamp, creationTime, uploadSequenceToken, logStreamName, lastIngestionTime, arn, storedBytes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LogStream")
 	local t = { 
@@ -213,9 +213,9 @@ end
 
 --- Create a structure of type DescribeDestinationsRequest
 --  
--- @param DestinationNamePrefix [DestinationName] &lt;p&gt;The prefix to match. If you don't specify a value, no prefix filter is applied.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param limit [DescribeLimit] &lt;p&gt;The maximum number of items returned. If you don't specify a value, the default is up to 50 items.&lt;/p&gt;
+-- @param DestinationNamePrefix [DestinationName] <p>The prefix to match. If you don't specify a value, no prefix filter is applied.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
 function M.DescribeDestinationsRequest(DestinationNamePrefix, nextToken, limit, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDestinationsRequest")
 	local t = { 
@@ -244,7 +244,7 @@ end
 --- Create a structure of type TestMetricFilterRequest
 --  
 -- @param filterPattern [FilterPattern]  
--- @param logEventMessages [TestEventMessages] &lt;p&gt;The log event messages to test.&lt;/p&gt;
+-- @param logEventMessages [TestEventMessages] <p>The log event messages to test.</p>
 -- Required parameter: filterPattern
 -- Required parameter: logEventMessages
 function M.TestMetricFilterRequest(filterPattern, logEventMessages, ...)
@@ -268,7 +268,7 @@ function M.AssertServiceUnavailableException(struct)
 end
 
 --- Create a structure of type ServiceUnavailableException
--- &lt;p&gt;The service cannot complete the request.&lt;/p&gt;
+-- <p>The service cannot complete the request.</p>
 function M.ServiceUnavailableException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
 	local t = { 
@@ -293,8 +293,8 @@ end
 
 --- Create a structure of type DeleteSubscriptionFilterRequest
 --  
--- @param filterName [FilterName] &lt;p&gt;The name of the subscription filter.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- @param filterName [FilterName] <p>The name of the subscription filter.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required parameter: logGroupName
 -- Required parameter: filterName
 function M.DeleteSubscriptionFilterRequest(filterName, logGroupName, ...)
@@ -321,10 +321,10 @@ function M.AssertOutputLogEvent(struct)
 end
 
 --- Create a structure of type OutputLogEvent
--- &lt;p&gt;Represents a log event.&lt;/p&gt;
--- @param ingestionTime [Timestamp] &lt;p&gt;The time the event was ingested, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param timestamp [Timestamp] &lt;p&gt;The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param message [EventMessage] &lt;p&gt;The data contained in the log event.&lt;/p&gt;
+-- <p>Represents a log event.</p>
+-- @param ingestionTime [Timestamp] <p>The time the event was ingested, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param message [EventMessage] <p>The data contained in the log event.</p>
 function M.OutputLogEvent(ingestionTime, timestamp, message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OutputLogEvent")
 	local t = { 
@@ -348,8 +348,8 @@ function M.AssertInvalidSequenceTokenException(struct)
 end
 
 --- Create a structure of type InvalidSequenceTokenException
--- &lt;p&gt;The sequence token is not valid.&lt;/p&gt;
--- @param expectedSequenceToken [SequenceToken] &lt;p&gt;The sequence token is not valid.&lt;/p&gt;
+-- <p>The sequence token is not valid.</p>
+-- @param expectedSequenceToken [SequenceToken] <p>The sequence token is not valid.</p>
 function M.InvalidSequenceTokenException(expectedSequenceToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSequenceTokenException")
 	local t = { 
@@ -375,12 +375,12 @@ function M.AssertMetricFilter(struct)
 end
 
 --- Create a structure of type MetricFilter
--- &lt;p&gt;Metric filters express how CloudWatch Logs would extract metric observations from ingested log events and transform them into metric data in a CloudWatch metric.&lt;/p&gt;
--- @param filterName [FilterName] &lt;p&gt;The name of the metric filter.&lt;/p&gt;
--- @param metricTransformations [MetricTransformations] &lt;p&gt;The metric transformations.&lt;/p&gt;
--- @param creationTime [Timestamp] &lt;p&gt;The creation time of the metric filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param filterPattern [FilterPattern] &lt;p&gt;Metric filters express how CloudWatch Logs would extract metric observations from ingested log events and transform them into metric data in a CloudWatch metric.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- <p>Metric filters express how CloudWatch Logs would extract metric observations from ingested log events and transform them into metric data in a CloudWatch metric.</p>
+-- @param filterName [FilterName] <p>The name of the metric filter.</p>
+-- @param metricTransformations [MetricTransformations] <p>The metric transformations.</p>
+-- @param creationTime [Timestamp] <p>The creation time of the metric filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param filterPattern [FilterPattern] <p>Metric filters express how CloudWatch Logs would extract metric observations from ingested log events and transform them into metric data in a CloudWatch metric.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 function M.MetricFilter(filterName, metricTransformations, creationTime, filterPattern, logGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MetricFilter")
 	local t = { 
@@ -409,7 +409,7 @@ end
 --- Create a structure of type DescribeLogStreamsResponse
 --  
 -- @param nextToken [NextToken]  
--- @param logStreams [LogStreams] &lt;p&gt;The log streams.&lt;/p&gt;
+-- @param logStreams [LogStreams] <p>The log streams.</p>
 function M.DescribeLogStreamsResponse(nextToken, logStreams, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLogStreamsResponse")
 	local t = { 
@@ -433,7 +433,7 @@ end
 
 --- Create a structure of type PutDestinationResponse
 --  
--- @param destination [Destination] &lt;p&gt;The destination.&lt;/p&gt;
+-- @param destination [Destination] <p>The destination.</p>
 function M.PutDestinationResponse(destination, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutDestinationResponse")
 	local t = { 
@@ -457,7 +457,7 @@ end
 
 --- Create a structure of type ListTagsLogGroupRequest
 --  
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required parameter: logGroupName
 function M.ListTagsLogGroupRequest(logGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsLogGroupRequest")
@@ -481,9 +481,9 @@ function M.AssertExportTaskStatus(struct)
 end
 
 --- Create a structure of type ExportTaskStatus
--- &lt;p&gt;Represents the status of an export task.&lt;/p&gt;
--- @param message [ExportTaskStatusMessage] &lt;p&gt;The status message related to the status code.&lt;/p&gt;
--- @param code [ExportTaskStatusCode] &lt;p&gt;The status code of the export task.&lt;/p&gt;
+-- <p>Represents the status of an export task.</p>
+-- @param message [ExportTaskStatusMessage] <p>The status message related to the status code.</p>
+-- @param code [ExportTaskStatusCode] <p>The status code of the export task.</p>
 function M.ExportTaskStatus(message, code, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExportTaskStatus")
 	local t = { 
@@ -505,7 +505,7 @@ function M.AssertLimitExceededException(struct)
 end
 
 --- Create a structure of type LimitExceededException
--- &lt;p&gt;You have reached the maximum number of resources that can be created.&lt;/p&gt;
+-- <p>You have reached the maximum number of resources that can be created.</p>
 function M.LimitExceededException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
 	local t = { 
@@ -530,8 +530,8 @@ end
 
 --- Create a structure of type PutDestinationPolicyRequest
 --  
--- @param accessPolicy [AccessPolicy] &lt;p&gt;An IAM policy document that authorizes cross-account users to deliver their log events to the associated destination.&lt;/p&gt;
--- @param destinationName [DestinationName] &lt;p&gt;A name for an existing destination.&lt;/p&gt;
+-- @param accessPolicy [AccessPolicy] <p>An IAM policy document that authorizes cross-account users to deliver their log events to the associated destination.</p>
+-- @param destinationName [DestinationName] <p>A name for an existing destination.</p>
 -- Required parameter: destinationName
 -- Required parameter: accessPolicy
 function M.PutDestinationPolicyRequest(accessPolicy, destinationName, ...)
@@ -558,7 +558,7 @@ end
 
 --- Create a structure of type CancelExportTaskRequest
 --  
--- @param taskId [ExportTaskId] &lt;p&gt;The ID of the export task.&lt;/p&gt;
+-- @param taskId [ExportTaskId] <p>The ID of the export task.</p>
 -- Required parameter: taskId
 function M.CancelExportTaskRequest(taskId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CancelExportTaskRequest")
@@ -584,8 +584,8 @@ end
 
 --- Create a structure of type CreateLogGroupRequest
 --  
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param tags [Tags] &lt;p&gt;The key-value pairs to use for the tags.&lt;/p&gt;
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param tags [Tags] <p>The key-value pairs to use for the tags.</p>
 -- Required parameter: logGroupName
 function M.CreateLogGroupRequest(logGroupName, tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLogGroupRequest")
@@ -613,8 +613,8 @@ end
 
 --- Create a structure of type DeleteMetricFilterRequest
 --  
--- @param filterName [FilterName] &lt;p&gt;The name of the metric filter.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- @param filterName [FilterName] <p>The name of the metric filter.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required parameter: logGroupName
 -- Required parameter: filterName
 function M.DeleteMetricFilterRequest(filterName, logGroupName, ...)
@@ -641,10 +641,10 @@ function M.AssertRejectedLogEventsInfo(struct)
 end
 
 --- Create a structure of type RejectedLogEventsInfo
--- &lt;p&gt;Represents the rejected events.&lt;/p&gt;
--- @param tooNewLogEventStartIndex [LogEventIndex] &lt;p&gt;The log events that are too new.&lt;/p&gt;
--- @param tooOldLogEventEndIndex [LogEventIndex] &lt;p&gt;The log events that are too old.&lt;/p&gt;
--- @param expiredLogEventEndIndex [LogEventIndex] &lt;p&gt;The expired log events.&lt;/p&gt;
+-- <p>Represents the rejected events.</p>
+-- @param tooNewLogEventStartIndex [LogEventIndex] <p>The log events that are too new.</p>
+-- @param tooOldLogEventEndIndex [LogEventIndex] <p>The log events that are too old.</p>
+-- @param expiredLogEventEndIndex [LogEventIndex] <p>The expired log events.</p>
 function M.RejectedLogEventsInfo(tooNewLogEventStartIndex, tooOldLogEventEndIndex, expiredLogEventEndIndex, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating RejectedLogEventsInfo")
 	local t = { 
@@ -673,7 +673,7 @@ end
 --- Create a structure of type PutRetentionPolicyRequest
 --  
 -- @param retentionInDays [Days]  
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required parameter: logGroupName
 -- Required parameter: retentionInDays
 function M.PutRetentionPolicyRequest(retentionInDays, logGroupName, ...)
@@ -704,11 +704,11 @@ function M.AssertMetricTransformation(struct)
 end
 
 --- Create a structure of type MetricTransformation
--- &lt;p&gt;Indicates how to transform ingested log events into metric data in a CloudWatch metric.&lt;/p&gt;
--- @param defaultValue [DefaultValue] &lt;p&gt;(Optional) The value to emit when a filter pattern does not match a log event. This value can be null.&lt;/p&gt;
--- @param metricValue [MetricValue] &lt;p&gt;The value to publish to the CloudWatch metric when a filter pattern matches a log event.&lt;/p&gt;
--- @param metricNamespace [MetricNamespace] &lt;p&gt;The namespace of the CloudWatch metric.&lt;/p&gt;
--- @param metricName [MetricName] &lt;p&gt;The name of the CloudWatch metric.&lt;/p&gt;
+-- <p>Indicates how to transform ingested log events into metric data in a CloudWatch metric.</p>
+-- @param defaultValue [DefaultValue] <p>(Optional) The value to emit when a filter pattern does not match a log event. This value can be null.</p>
+-- @param metricValue [MetricValue] <p>The value to publish to the CloudWatch metric when a filter pattern matches a log event.</p>
+-- @param metricNamespace [MetricNamespace] <p>The namespace of the CloudWatch metric.</p>
+-- @param metricName [MetricName] <p>The name of the CloudWatch metric.</p>
 -- Required parameter: metricName
 -- Required parameter: metricNamespace
 -- Required parameter: metricValue
@@ -740,8 +740,8 @@ end
 
 --- Create a structure of type DeleteLogStreamRequest
 --  
--- @param logStreamName [LogStreamName] &lt;p&gt;The name of the log stream.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- @param logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required parameter: logGroupName
 -- Required parameter: logStreamName
 function M.DeleteLogStreamRequest(logStreamName, logGroupName, ...)
@@ -774,10 +774,10 @@ end
 
 --- Create a structure of type PutMetricFilterRequest
 --  
--- @param filterName [FilterName] &lt;p&gt;A name for the metric filter.&lt;/p&gt;
--- @param metricTransformations [MetricTransformations] &lt;p&gt;A collection of information needed to define how metric data gets emitted.&lt;/p&gt;
--- @param filterPattern [FilterPattern] &lt;p&gt;A filter pattern for extracting metric data out of ingested log events.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- @param filterName [FilterName] <p>A name for the metric filter.</p>
+-- @param metricTransformations [MetricTransformations] <p>A collection of information needed to define how metric data gets emitted.</p>
+-- @param filterPattern [FilterPattern] <p>A filter pattern for extracting metric data out of ingested log events.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required parameter: logGroupName
 -- Required parameter: filterName
 -- Required parameter: filterPattern
@@ -810,8 +810,8 @@ end
 
 --- Create a structure of type TagLogGroupRequest
 --  
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param tags [Tags] &lt;p&gt;The key-value pairs to use for the tags.&lt;/p&gt;
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param tags [Tags] <p>The key-value pairs to use for the tags.</p>
 -- Required parameter: logGroupName
 -- Required parameter: tags
 function M.TagLogGroupRequest(logGroupName, tags, ...)
@@ -838,10 +838,10 @@ function M.AssertMetricFilterMatchRecord(struct)
 end
 
 --- Create a structure of type MetricFilterMatchRecord
--- &lt;p&gt;Represents a matched event.&lt;/p&gt;
--- @param eventNumber [EventNumber] &lt;p&gt;The event number.&lt;/p&gt;
--- @param eventMessage [EventMessage] &lt;p&gt;The raw event data.&lt;/p&gt;
--- @param extractedValues [ExtractedValues] &lt;p&gt;The values extracted from the event data by the filter.&lt;/p&gt;
+-- <p>Represents a matched event.</p>
+-- @param eventNumber [EventNumber] <p>The event number.</p>
+-- @param eventMessage [EventMessage] <p>The raw event data.</p>
+-- @param extractedValues [ExtractedValues] <p>The values extracted from the event data by the filter.</p>
 function M.MetricFilterMatchRecord(eventNumber, eventMessage, extractedValues, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MetricFilterMatchRecord")
 	local t = { 
@@ -868,9 +868,9 @@ end
 
 --- Create a structure of type GetLogEventsResponse
 --  
--- @param nextForwardToken [NextToken] &lt;p&gt;The token for the next set of items in the forward direction. The token expires after 24 hours.&lt;/p&gt;
--- @param events [OutputLogEvents] &lt;p&gt;The events.&lt;/p&gt;
--- @param nextBackwardToken [NextToken] &lt;p&gt;The token for the next set of items in the backward direction. The token expires after 24 hours.&lt;/p&gt;
+-- @param nextForwardToken [NextToken] <p>The token for the next set of items in the forward direction. The token expires after 24 hours.</p>
+-- @param events [OutputLogEvents] <p>The events.</p>
+-- @param nextBackwardToken [NextToken] <p>The token for the next set of items in the backward direction. The token expires after 24 hours.</p>
 function M.GetLogEventsResponse(nextForwardToken, events, nextBackwardToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating GetLogEventsResponse")
 	local t = { 
@@ -894,8 +894,8 @@ function M.AssertDataAlreadyAcceptedException(struct)
 end
 
 --- Create a structure of type DataAlreadyAcceptedException
--- &lt;p&gt;The event was already logged.&lt;/p&gt;
--- @param expectedSequenceToken [SequenceToken] &lt;p&gt;The event was already logged.&lt;/p&gt;
+-- <p>The event was already logged.</p>
+-- @param expectedSequenceToken [SequenceToken] <p>The event was already logged.</p>
 function M.DataAlreadyAcceptedException(expectedSequenceToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DataAlreadyAcceptedException")
 	local t = { 
@@ -921,12 +921,12 @@ function M.AssertFilteredLogEvent(struct)
 end
 
 --- Create a structure of type FilteredLogEvent
--- &lt;p&gt;Represents a matched event.&lt;/p&gt;
--- @param ingestionTime [Timestamp] &lt;p&gt;The time the event was ingested, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param timestamp [Timestamp] &lt;p&gt;The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param message [EventMessage] &lt;p&gt;The data contained in the log event.&lt;/p&gt;
--- @param eventId [EventId] &lt;p&gt;The ID of the event.&lt;/p&gt;
--- @param logStreamName [LogStreamName] &lt;p&gt;The name of the log stream this event belongs to.&lt;/p&gt;
+-- <p>Represents a matched event.</p>
+-- @param ingestionTime [Timestamp] <p>The time the event was ingested, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param message [EventMessage] <p>The data contained in the log event.</p>
+-- @param eventId [EventId] <p>The ID of the event.</p>
+-- @param logStreamName [LogStreamName] <p>The name of the log stream this event belongs to.</p>
 function M.FilteredLogEvent(ingestionTime, timestamp, message, eventId, logStreamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FilteredLogEvent")
 	local t = { 
@@ -951,7 +951,7 @@ function M.AssertResourceAlreadyExistsException(struct)
 end
 
 --- Create a structure of type ResourceAlreadyExistsException
--- &lt;p&gt;The specified resource already exists.&lt;/p&gt;
+-- <p>The specified resource already exists.</p>
 function M.ResourceAlreadyExistsException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
 	local t = { 
@@ -974,7 +974,7 @@ end
 
 --- Create a structure of type DescribeMetricFiltersResponse
 --  
--- @param metricFilters [MetricFilters] &lt;p&gt;The metric filters.&lt;/p&gt;
+-- @param metricFilters [MetricFilters] <p>The metric filters.</p>
 -- @param nextToken [NextToken]  
 function M.DescribeMetricFiltersResponse(metricFilters, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMetricFiltersResponse")
@@ -1002,8 +1002,8 @@ end
 
 --- Create a structure of type CreateLogStreamRequest
 --  
--- @param logStreamName [LogStreamName] &lt;p&gt;The name of the log stream.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- @param logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required parameter: logGroupName
 -- Required parameter: logStreamName
 function M.CreateLogStreamRequest(logStreamName, logGroupName, ...)
@@ -1027,7 +1027,7 @@ function M.AssertOperationAbortedException(struct)
 end
 
 --- Create a structure of type OperationAbortedException
--- &lt;p&gt;Multiple requests to update the same resource were in conflict.&lt;/p&gt;
+-- <p>Multiple requests to update the same resource were in conflict.</p>
 function M.OperationAbortedException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating OperationAbortedException")
 	local t = { 
@@ -1054,14 +1054,14 @@ function M.AssertSubscriptionFilter(struct)
 end
 
 --- Create a structure of type SubscriptionFilter
--- &lt;p&gt;Represents a subscription filter.&lt;/p&gt;
--- @param filterPattern [FilterPattern] &lt;p&gt;Represents a subscription filter.&lt;/p&gt;
--- @param filterName [FilterName] &lt;p&gt;The name of the subscription filter.&lt;/p&gt;
--- @param roleArn [RoleArn] &lt;p/&gt;
--- @param creationTime [Timestamp] &lt;p&gt;The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param destinationArn [DestinationArn] &lt;p&gt;The Amazon Resource Name (ARN) of the destination.&lt;/p&gt;
--- @param distribution [Distribution] &lt;p&gt;The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.&lt;/p&gt;
+-- <p>Represents a subscription filter.</p>
+-- @param filterPattern [FilterPattern] <p>Represents a subscription filter.</p>
+-- @param filterName [FilterName] <p>The name of the subscription filter.</p>
+-- @param roleArn [RoleArn] <p/>
+-- @param creationTime [Timestamp] <p>The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param destinationArn [DestinationArn] <p>The Amazon Resource Name (ARN) of the destination.</p>
+-- @param distribution [Distribution] <p>The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.</p>
 function M.SubscriptionFilter(filterPattern, filterName, roleArn, creationTime, logGroupName, destinationArn, distribution, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionFilter")
 	local t = { 
@@ -1090,7 +1090,7 @@ end
 
 --- Create a structure of type CreateExportTaskResponse
 --  
--- @param taskId [ExportTaskId] &lt;p&gt;The ID of the export task.&lt;/p&gt;
+-- @param taskId [ExportTaskId] <p>The ID of the export task.</p>
 function M.CreateExportTaskResponse(taskId, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateExportTaskResponse")
 	local t = { 
@@ -1114,8 +1114,8 @@ end
 
 --- Create a structure of type PutLogEventsResponse
 --  
--- @param nextSequenceToken [SequenceToken] &lt;p&gt;The next sequence token.&lt;/p&gt;
--- @param rejectedLogEventsInfo [RejectedLogEventsInfo] &lt;p&gt;The rejected events.&lt;/p&gt;
+-- @param nextSequenceToken [SequenceToken] <p>The next sequence token.</p>
+-- @param rejectedLogEventsInfo [RejectedLogEventsInfo] <p>The rejected events.</p>
 function M.PutLogEventsResponse(nextSequenceToken, rejectedLogEventsInfo, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PutLogEventsResponse")
 	local t = { 
@@ -1149,13 +1149,13 @@ end
 
 --- Create a structure of type CreateExportTaskRequest
 --  
--- @param from [Timestamp] &lt;p&gt;The start time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not exported.&lt;/p&gt;
--- @param destinationPrefix [ExportDestinationPrefix] &lt;p&gt;The prefix used as the start of the key for every object exported. If you don't specify a value, the default is &lt;code&gt;exportedlogs&lt;/code&gt;.&lt;/p&gt;
--- @param destination [ExportDestinationBucket] &lt;p&gt;The name of S3 bucket for the exported log data. The bucket must be in the same AWS region.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param to [Timestamp] &lt;p&gt;The end time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.&lt;/p&gt;
--- @param logStreamNamePrefix [LogStreamName] &lt;p&gt;Export only log streams that match the provided prefix. If you don't specify a value, no prefix filter is applied.&lt;/p&gt;
--- @param taskName [ExportTaskName] &lt;p&gt;The name of the export task.&lt;/p&gt;
+-- @param from [Timestamp] <p>The start time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not exported.</p>
+-- @param destinationPrefix [ExportDestinationPrefix] <p>The prefix used as the start of the key for every object exported. If you don't specify a value, the default is <code>exportedlogs</code>.</p>
+-- @param destination [ExportDestinationBucket] <p>The name of S3 bucket for the exported log data. The bucket must be in the same AWS region.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param to [Timestamp] <p>The end time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.</p>
+-- @param logStreamNamePrefix [LogStreamName] <p>Export only log streams that match the provided prefix. If you don't specify a value, no prefix filter is applied.</p>
+-- @param taskName [ExportTaskName] <p>The name of the export task.</p>
 -- Required parameter: logGroupName
 -- Required parameter: from
 -- Required parameter: to
@@ -1193,12 +1193,12 @@ end
 
 --- Create a structure of type DescribeMetricFiltersRequest
 --  
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param filterNamePrefix [FilterName] &lt;p&gt;The prefix to match.&lt;/p&gt;
--- @param limit [DescribeLimit] &lt;p&gt;The maximum number of items returned. If you don't specify a value, the default is up to 50 items.&lt;/p&gt;
--- @param metricNamespace [MetricNamespace] &lt;p&gt;The namespace of the CloudWatch metric.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param metricName [MetricName] &lt;p&gt;The name of the CloudWatch metric.&lt;/p&gt;
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param filterNamePrefix [FilterName] <p>The prefix to match.</p>
+-- @param limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- @param metricNamespace [MetricNamespace] <p>The namespace of the CloudWatch metric.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param metricName [MetricName] <p>The name of the CloudWatch metric.</p>
 function M.DescribeMetricFiltersRequest(logGroupName, filterNamePrefix, limit, metricNamespace, nextToken, metricName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMetricFiltersRequest")
 	local t = { 
@@ -1231,9 +1231,9 @@ end
 
 --- Create a structure of type PutDestinationRequest
 --  
--- @param targetArn [TargetArn] &lt;p&gt;The ARN of an Amazon Kinesis stream to deliver matching log events to.&lt;/p&gt;
--- @param roleArn [RoleArn] &lt;p&gt;The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the destination stream.&lt;/p&gt;
--- @param destinationName [DestinationName] &lt;p&gt;A name for the destination.&lt;/p&gt;
+-- @param targetArn [TargetArn] <p>The ARN of an Amazon Kinesis stream to deliver matching log events to.</p>
+-- @param roleArn [RoleArn] <p>The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the destination stream.</p>
+-- @param destinationName [DestinationName] <p>A name for the destination.</p>
 -- Required parameter: destinationName
 -- Required parameter: targetArn
 -- Required parameter: roleArn
@@ -1264,8 +1264,8 @@ end
 
 --- Create a structure of type UntagLogGroupRequest
 --  
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param tags [TagList] &lt;p&gt;The tag keys. The corresponding tags are removed from the log group.&lt;/p&gt;
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param tags [TagList] <p>The tag keys. The corresponding tags are removed from the log group.</p>
 -- Required parameter: logGroupName
 -- Required parameter: tags
 function M.UntagLogGroupRequest(logGroupName, tags, ...)
@@ -1293,7 +1293,7 @@ end
 --- Create a structure of type DescribeExportTasksResponse
 --  
 -- @param nextToken [NextToken]  
--- @param exportTasks [ExportTasks] &lt;p&gt;The export tasks.&lt;/p&gt;
+-- @param exportTasks [ExportTasks] <p>The export tasks.</p>
 function M.DescribeExportTasksResponse(nextToken, exportTasks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportTasksResponse")
 	local t = { 
@@ -1326,12 +1326,12 @@ end
 
 --- Create a structure of type PutSubscriptionFilterRequest
 --  
--- @param filterPattern [FilterPattern] &lt;p&gt;A filter pattern for subscribing to a filtered stream of log events.&lt;/p&gt;
--- @param filterName [FilterName] &lt;p&gt;A name for the subscription filter. If you are updating an existing filter, you must specify the correct name in &lt;code&gt;filterName&lt;/code&gt;. Otherwise, the call will fail because you cannot associate a second filter with a log group. To find the name of the filter currently associated with a log group, use &lt;a&gt;DescribeSubscriptionFilters&lt;/a&gt;.&lt;/p&gt;
--- @param roleArn [RoleArn] &lt;p&gt;The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param destinationArn [DestinationArn] &lt;p&gt;The ARN of the destination to deliver matching log events to. Currently, the supported destinations are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;An Amazon Kinesis stream belonging to the same account as the subscription filter, for same-account delivery.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An Amazon Kinesis Firehose stream belonging to the same account as the subscription filter, for same-account delivery.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;An AWS Lambda function belonging to the same account as the subscription filter, for same-account delivery.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param distribution [Distribution] &lt;p&gt;The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.&lt;/p&gt;
+-- @param filterPattern [FilterPattern] <p>A filter pattern for subscribing to a filtered stream of log events.</p>
+-- @param filterName [FilterName] <p>A name for the subscription filter. If you are updating an existing filter, you must specify the correct name in <code>filterName</code>. Otherwise, the call will fail because you cannot associate a second filter with a log group. To find the name of the filter currently associated with a log group, use <a>DescribeSubscriptionFilters</a>.</p>
+-- @param roleArn [RoleArn] <p>The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param destinationArn [DestinationArn] <p>The ARN of the destination to deliver matching log events to. Currently, the supported destinations are:</p> <ul> <li> <p>An Amazon Kinesis stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.</p> </li> <li> <p>An Amazon Kinesis Firehose stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>An AWS Lambda function belonging to the same account as the subscription filter, for same-account delivery.</p> </li> </ul>
+-- @param distribution [Distribution] <p>The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.</p>
 -- Required parameter: logGroupName
 -- Required parameter: filterName
 -- Required parameter: filterPattern
@@ -1361,7 +1361,7 @@ function M.AssertInvalidOperationException(struct)
 end
 
 --- Create a structure of type InvalidOperationException
--- &lt;p&gt;The operation is not valid on the specified resource.&lt;/p&gt;
+-- <p>The operation is not valid on the specified resource.</p>
 function M.InvalidOperationException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOperationException")
 	local t = { 
@@ -1387,10 +1387,10 @@ end
 
 --- Create a structure of type DescribeSubscriptionFiltersRequest
 --  
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param limit [DescribeLimit] &lt;p&gt;The maximum number of items returned. If you don't specify a value, the default is up to 50 items.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param filterNamePrefix [FilterName] &lt;p&gt;The prefix to match. If you don't specify a value, no prefix filter is applied.&lt;/p&gt;
+-- @param nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param filterNamePrefix [FilterName] <p>The prefix to match. If you don't specify a value, no prefix filter is applied.</p>
 -- Required parameter: logGroupName
 function M.DescribeSubscriptionFiltersRequest(nextToken, limit, logGroupName, filterNamePrefix, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubscriptionFiltersRequest")
@@ -1417,9 +1417,9 @@ function M.AssertExportTaskExecutionInfo(struct)
 end
 
 --- Create a structure of type ExportTaskExecutionInfo
--- &lt;p&gt;Represents the status of an export task.&lt;/p&gt;
--- @param completionTime [Timestamp] &lt;p&gt;The completion time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param creationTime [Timestamp] &lt;p&gt;The creation time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
+-- <p>Represents the status of an export task.</p>
+-- @param completionTime [Timestamp] <p>The completion time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param creationTime [Timestamp] <p>The creation time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
 function M.ExportTaskExecutionInfo(completionTime, creationTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExportTaskExecutionInfo")
 	local t = { 
@@ -1441,7 +1441,7 @@ function M.AssertResourceNotFoundException(struct)
 end
 
 --- Create a structure of type ResourceNotFoundException
--- &lt;p&gt;The specified resource does not exist.&lt;/p&gt;
+-- <p>The specified resource does not exist.</p>
 function M.ResourceNotFoundException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
 	local t = { 
@@ -1469,10 +1469,10 @@ end
 
 --- Create a structure of type PutLogEventsRequest
 --  
--- @param sequenceToken [SequenceToken] &lt;p&gt;The sequence token.&lt;/p&gt;
--- @param logEvents [InputLogEvents] &lt;p&gt;The log events.&lt;/p&gt;
--- @param logStreamName [LogStreamName] &lt;p&gt;The name of the log stream.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- @param sequenceToken [SequenceToken] <p>The sequence token.</p>
+-- @param logEvents [InputLogEvents] <p>The log events.</p>
+-- @param logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required parameter: logGroupName
 -- Required parameter: logStreamName
 -- Required parameter: logEvents
@@ -1503,9 +1503,9 @@ end
 
 --- Create a structure of type DescribeLogGroupsRequest
 --  
--- @param limit [DescribeLimit] &lt;p&gt;The maximum number of items returned. If you don't specify a value, the default is up to 50 items.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param logGroupNamePrefix [LogGroupName] &lt;p&gt;The prefix to match.&lt;/p&gt;
+-- @param limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param logGroupNamePrefix [LogGroupName] <p>The prefix to match.</p>
 function M.DescribeLogGroupsRequest(limit, nextToken, logGroupNamePrefix, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLogGroupsRequest")
 	local t = { 
@@ -1530,9 +1530,9 @@ function M.AssertSearchedLogStream(struct)
 end
 
 --- Create a structure of type SearchedLogStream
--- &lt;p&gt;Represents the search status of a log stream.&lt;/p&gt;
--- @param searchedCompletely [LogStreamSearchedCompletely] &lt;p&gt;Indicates whether all the events in this log stream were searched.&lt;/p&gt;
--- @param logStreamName [LogStreamName] &lt;p&gt;The name of the log stream.&lt;/p&gt;
+-- <p>Represents the search status of a log stream.</p>
+-- @param searchedCompletely [LogStreamSearchedCompletely] <p>Indicates whether all the events in this log stream were searched.</p>
+-- @param logStreamName [LogStreamName] <p>The name of the log stream.</p>
 function M.SearchedLogStream(searchedCompletely, logStreamName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SearchedLogStream")
 	local t = { 
@@ -1559,10 +1559,10 @@ end
 
 --- Create a structure of type DescribeExportTasksRequest
 --  
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param limit [DescribeLimit] &lt;p&gt;The maximum number of items returned. If you don't specify a value, the default is up to 50 items.&lt;/p&gt;
--- @param taskId [ExportTaskId] &lt;p&gt;The ID of the export task. Specifying a task ID filters the results to zero or one export tasks.&lt;/p&gt;
--- @param statusCode [ExportTaskStatusCode] &lt;p&gt;The status code of the export task. Specifying a status code filters the results to zero or more export tasks.&lt;/p&gt;
+-- @param nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- @param taskId [ExportTaskId] <p>The ID of the export task. Specifying a task ID filters the results to zero or one export tasks.</p>
+-- @param statusCode [ExportTaskStatusCode] <p>The status code of the export task. Specifying a status code filters the results to zero or more export tasks.</p>
 function M.DescribeExportTasksRequest(nextToken, limit, taskId, statusCode, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportTasksRequest")
 	local t = { 
@@ -1586,7 +1586,7 @@ function M.AssertInvalidParameterException(struct)
 end
 
 --- Create a structure of type InvalidParameterException
--- &lt;p&gt;A parameter is specified incorrectly.&lt;/p&gt;
+-- <p>A parameter is specified incorrectly.</p>
 function M.InvalidParameterException(...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
 	local t = { 
@@ -1610,9 +1610,9 @@ function M.AssertInputLogEvent(struct)
 end
 
 --- Create a structure of type InputLogEvent
--- &lt;p&gt;Represents a log event, which is a record of activity that was recorded by the application or resource being monitored.&lt;/p&gt;
--- @param timestamp [Timestamp] &lt;p&gt;The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param message [EventMessage] &lt;p&gt;The raw event message.&lt;/p&gt;
+-- <p>Represents a log event, which is a record of activity that was recorded by the application or resource being monitored.</p>
+-- @param timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param message [EventMessage] <p>The raw event message.</p>
 -- Required parameter: timestamp
 -- Required parameter: message
 function M.InputLogEvent(timestamp, message, ...)
@@ -1642,13 +1642,13 @@ function M.AssertLogGroup(struct)
 end
 
 --- Create a structure of type LogGroup
--- &lt;p&gt;Represents a log group.&lt;/p&gt;
--- @param storedBytes [StoredBytes] &lt;p&gt;The number of bytes stored.&lt;/p&gt;
--- @param metricFilterCount [FilterCount] &lt;p&gt;The number of metric filters.&lt;/p&gt;
--- @param creationTime [Timestamp] &lt;p&gt;The creation time of the log group, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param retentionInDays [Days] &lt;p&gt;Represents a log group.&lt;/p&gt;
--- @param arn [Arn] &lt;p&gt;The Amazon Resource Name (ARN) of the log group.&lt;/p&gt;
+-- <p>Represents a log group.</p>
+-- @param storedBytes [StoredBytes] <p>The number of bytes stored.</p>
+-- @param metricFilterCount [FilterCount] <p>The number of metric filters.</p>
+-- @param creationTime [Timestamp] <p>The creation time of the log group, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param retentionInDays [Days] <p>Represents a log group.</p>
+-- @param arn [Arn] <p>The Amazon Resource Name (ARN) of the log group.</p>
 function M.LogGroup(storedBytes, metricFilterCount, creationTime, logGroupName, retentionInDays, arn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LogGroup")
 	local t = { 
@@ -1676,7 +1676,7 @@ end
 
 --- Create a structure of type ListTagsLogGroupResponse
 --  
--- @param tags [Tags] &lt;p&gt;The tags.&lt;/p&gt;
+-- @param tags [Tags] <p>The tags.</p>
 function M.ListTagsLogGroupResponse(tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsLogGroupResponse")
 	local t = { 
@@ -1700,7 +1700,7 @@ end
 
 --- Create a structure of type DeleteDestinationRequest
 --  
--- @param destinationName [DestinationName] &lt;p&gt;The name of the destination.&lt;/p&gt;
+-- @param destinationName [DestinationName] <p>The name of the destination.</p>
 -- Required parameter: destinationName
 function M.DeleteDestinationRequest(destinationName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDestinationRequest")
@@ -1730,12 +1730,12 @@ end
 
 --- Create a structure of type DescribeLogStreamsRequest
 --  
--- @param orderBy [OrderBy] &lt;p&gt;If the value is &lt;code&gt;LogStreamName&lt;/code&gt;, the results are ordered by log stream name. If the value is &lt;code&gt;LastEventTime&lt;/code&gt;, the results are ordered by the event time. The default value is &lt;code&gt;LogStreamName&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If you order the results by event time, you cannot specify the &lt;code&gt;logStreamNamePrefix&lt;/code&gt; parameter.&lt;/p&gt; &lt;p&gt;lastEventTimestamp represents the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTimeStamp updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.&lt;/p&gt;
--- @param logStreamNamePrefix [LogStreamName] &lt;p&gt;The prefix to match.&lt;/p&gt; &lt;p&gt;You cannot specify this parameter if &lt;code&gt;orderBy&lt;/code&gt; is &lt;code&gt;LastEventTime&lt;/code&gt;.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param descending [Descending] &lt;p&gt;If the value is true, results are returned in descending order. If the value is to false, results are returned in ascending order. The default value is false.&lt;/p&gt;
--- @param limit [DescribeLimit] &lt;p&gt;The maximum number of items returned. If you don't specify a value, the default is up to 50 items.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
+-- @param orderBy [OrderBy] <p>If the value is <code>LogStreamName</code>, the results are ordered by log stream name. If the value is <code>LastEventTime</code>, the results are ordered by the event time. The default value is <code>LogStreamName</code>.</p> <p>If you order the results by event time, you cannot specify the <code>logStreamNamePrefix</code> parameter.</p> <p>lastEventTimestamp represents the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTimeStamp updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.</p>
+-- @param logStreamNamePrefix [LogStreamName] <p>The prefix to match.</p> <p>You cannot specify this parameter if <code>orderBy</code> is <code>LastEventTime</code>.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param descending [Descending] <p>If the value is true, results are returned in descending order. If the value is to false, results are returned in ascending order. The default value is false.</p>
+-- @param limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
 -- Required parameter: logGroupName
 function M.DescribeLogStreamsRequest(orderBy, logStreamNamePrefix, logGroupName, descending, limit, nextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLogStreamsRequest")
@@ -1765,7 +1765,7 @@ end
 
 --- Create a structure of type DeleteRetentionPolicyRequest
 --  
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required parameter: logGroupName
 function M.DeleteRetentionPolicyRequest(logGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRetentionPolicyRequest")
@@ -1797,13 +1797,13 @@ end
 
 --- Create a structure of type GetLogEventsRequest
 --  
--- @param endTime [Timestamp] &lt;p&gt;The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not included.&lt;/p&gt;
--- @param logStreamName [LogStreamName] &lt;p&gt;The name of the log stream.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
--- @param limit [EventsLimit] &lt;p&gt;The maximum number of log events returned. If you don't specify a value, the maximum is as many log events as can fit in a response size of 1MB, up to 10,000 log events.&lt;/p&gt;
--- @param startTime [Timestamp] &lt;p&gt;The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not included.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param startFromHead [StartFromHead] &lt;p&gt;If the value is true, the earliest log events are returned first. If the value is false, the latest log events are returned first. The default value is false.&lt;/p&gt;
+-- @param endTime [Timestamp] <p>The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not included.</p>
+-- @param logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @param limit [EventsLimit] <p>The maximum number of log events returned. If you don't specify a value, the maximum is as many log events as can fit in a response size of 1MB, up to 10,000 log events.</p>
+-- @param startTime [Timestamp] <p>The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not included.</p>
+-- @param nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param startFromHead [StartFromHead] <p>If the value is true, the earliest log events are returned first. If the value is false, the latest log events are returned first. The default value is false.</p>
 -- Required parameter: logGroupName
 -- Required parameter: logStreamName
 function M.GetLogEventsRequest(endTime, logStreamName, logGroupName, limit, startTime, nextToken, startFromHead, ...)
@@ -1836,9 +1836,9 @@ end
 
 --- Create a structure of type FilterLogEventsResponse
 --  
--- @param searchedLogStreams [SearchedLogStreams] &lt;p&gt;Indicates which log streams have been searched and whether each has been searched completely.&lt;/p&gt;
--- @param nextToken [NextToken] &lt;p&gt;The token to use when requesting the next set of items. The token expires after 24 hours.&lt;/p&gt;
--- @param events [FilteredLogEvents] &lt;p&gt;The matched events.&lt;/p&gt;
+-- @param searchedLogStreams [SearchedLogStreams] <p>Indicates which log streams have been searched and whether each has been searched completely.</p>
+-- @param nextToken [NextToken] <p>The token to use when requesting the next set of items. The token expires after 24 hours.</p>
+-- @param events [FilteredLogEvents] <p>The matched events.</p>
 function M.FilterLogEventsResponse(searchedLogStreams, nextToken, events, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating FilterLogEventsResponse")
 	local t = { 
@@ -1865,7 +1865,7 @@ end
 --- Create a structure of type DescribeSubscriptionFiltersResponse
 --  
 -- @param nextToken [NextToken]  
--- @param subscriptionFilters [SubscriptionFilters] &lt;p&gt;The subscription filters.&lt;/p&gt;
+-- @param subscriptionFilters [SubscriptionFilters] <p>The subscription filters.</p>
 function M.DescribeSubscriptionFiltersResponse(nextToken, subscriptionFilters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubscriptionFiltersResponse")
 	local t = { 
@@ -1889,7 +1889,7 @@ end
 
 --- Create a structure of type TestMetricFilterResponse
 --  
--- @param matches [MetricFilterMatches] &lt;p&gt;The matched events.&lt;/p&gt;
+-- @param matches [MetricFilterMatches] <p>The matched events.</p>
 function M.TestMetricFilterResponse(matches, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TestMetricFilterResponse")
 	local t = { 
@@ -1913,7 +1913,7 @@ end
 
 --- Create a structure of type DeleteLogGroupRequest
 --  
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group.&lt;/p&gt;
+-- @param logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- Required parameter: logGroupName
 function M.DeleteLogGroupRequest(logGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLogGroupRequest")
@@ -1944,16 +1944,16 @@ function M.AssertExportTask(struct)
 end
 
 --- Create a structure of type ExportTask
--- &lt;p&gt;Represents an export task.&lt;/p&gt;
--- @param status [ExportTaskStatus] &lt;p&gt;The status of the export task.&lt;/p&gt;
--- @param from [Timestamp] &lt;p&gt;The start time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not exported.&lt;/p&gt;
--- @param destinationPrefix [ExportDestinationPrefix] &lt;p&gt;The prefix that was used as the start of Amazon S3 key for every object exported.&lt;/p&gt;
--- @param destination [ExportDestinationBucket] &lt;p&gt;The name of Amazon S3 bucket to which the log data was exported.&lt;/p&gt;
--- @param logGroupName [LogGroupName] &lt;p&gt;The name of the log group from which logs data was exported.&lt;/p&gt;
--- @param to [Timestamp] &lt;p&gt;The end time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.&lt;/p&gt;
--- @param taskId [ExportTaskId] &lt;p&gt;The ID of the export task.&lt;/p&gt;
--- @param taskName [ExportTaskName] &lt;p&gt;The name of the export task.&lt;/p&gt;
--- @param executionInfo [ExportTaskExecutionInfo] &lt;p&gt;Execution info about the export task.&lt;/p&gt;
+-- <p>Represents an export task.</p>
+-- @param status [ExportTaskStatus] <p>The status of the export task.</p>
+-- @param from [Timestamp] <p>The start time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not exported.</p>
+-- @param destinationPrefix [ExportDestinationPrefix] <p>The prefix that was used as the start of Amazon S3 key for every object exported.</p>
+-- @param destination [ExportDestinationBucket] <p>The name of Amazon S3 bucket to which the log data was exported.</p>
+-- @param logGroupName [LogGroupName] <p>The name of the log group from which logs data was exported.</p>
+-- @param to [Timestamp] <p>The end time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.</p>
+-- @param taskId [ExportTaskId] <p>The ID of the export task.</p>
+-- @param taskName [ExportTaskName] <p>The name of the export task.</p>
+-- @param executionInfo [ExportTaskExecutionInfo] <p>Execution info about the export task.</p>
 function M.ExportTask(status, from, destinationPrefix, destination, logGroupName, to, taskId, taskName, executionInfo, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExportTask")
 	local t = { 
@@ -2061,7 +2061,7 @@ function M.AssertFilterPattern(str)
 	assert(#str <= 1024, "Expected string to be max 1024 characters")
 end
 
--- &lt;p&gt;A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event may contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.&lt;/p&gt;
+-- <p>A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event may contain timestamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.</p>
 function M.FilterPattern(str)
 	M.AssertFilterPattern(str)
 	return str
@@ -2136,7 +2136,7 @@ function M.AssertMetricValue(str)
 	assert(#str <= 100, "Expected string to be max 100 characters")
 end
 
--- &lt;p&gt;The value to publish to the CloudWatch metric. For example, if you're counting the occurrences of a term like &quot;Error&quot;, the value is &quot;1&quot; for each occurrence. If you're counting the bytes transferred, the value is the value in the log event.&lt;/p&gt;
+-- <p>The value to publish to the CloudWatch metric. For example, if you're counting the occurrences of a term like "Error", the value is "1" for each occurrence. If you're counting the bytes transferred, the value is the value in the log event.</p>
 function M.MetricValue(str)
 	M.AssertMetricValue(str)
 	return str
@@ -2195,7 +2195,7 @@ function M.AssertMetricName(str)
 	assert(str:match("[^:*$]*"), "Expected string to match pattern '[^:*$]*'")
 end
 
--- &lt;p&gt;The name of the CloudWatch metric to which the monitored log information should be published. For example, you may publish to a metric called ErrorCount.&lt;/p&gt;
+-- <p>The name of the CloudWatch metric to which the monitored log information should be published. For example, you may publish to a metric called ErrorCount.</p>
 function M.MetricName(str)
 	M.AssertMetricName(str)
 	return str
@@ -2271,7 +2271,7 @@ function M.AssertNextToken(str)
 	assert(#str >= 1, "Expected string to be min 1 characters")
 end
 
--- &lt;p&gt;The token for the next set of items to return. The token expires after 24 hours.&lt;/p&gt;
+-- <p>The token for the next set of items to return. The token expires after 24 hours.</p>
 function M.NextToken(str)
 	M.AssertNextToken(str)
 	return str

@@ -36,11 +36,11 @@ end
 
 --- Create a structure of type ExecutePolicyType
 --  
--- @param MetricValue [MetricScale] &lt;p&gt;The metric value to compare to &lt;code&gt;BreachThreshold&lt;/code&gt;. This enables you to execute a policy of type &lt;code&gt;StepScaling&lt;/code&gt; and determine which step adjustment to use. For example, if the breach threshold is 50 and you want to use a step adjustment with a lower bound of 0 and an upper bound of 10, you can set the metric value to 59.&lt;/p&gt; &lt;p&gt;If you specify a metric value that doesn't correspond to a step adjustment for the policy, the call returns an error.&lt;/p&gt; &lt;p&gt;This parameter is required if the policy type is &lt;code&gt;StepScaling&lt;/code&gt; and not supported otherwise.&lt;/p&gt;
--- @param PolicyName [ResourceName] &lt;p&gt;The name or ARN of the policy.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name or Amazon Resource Name (ARN) of the Auto Scaling group.&lt;/p&gt;
--- @param HonorCooldown [HonorCooldown] &lt;p&gt;If this parameter is true, Auto Scaling waits for the cooldown period to complete before executing the policy. Otherwise, Auto Scaling executes the policy without waiting for the cooldown period to complete.&lt;/p&gt; &lt;p&gt;This parameter is not supported if the policy type is &lt;code&gt;StepScaling&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html&quot;&gt;Auto Scaling Cooldowns&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param BreachThreshold [MetricScale] &lt;p&gt;The breach threshold for the alarm.&lt;/p&gt; &lt;p&gt;This parameter is required if the policy type is &lt;code&gt;StepScaling&lt;/code&gt; and not supported otherwise.&lt;/p&gt;
+-- @param MetricValue [MetricScale] <p>The metric value to compare to <code>BreachThreshold</code>. This enables you to execute a policy of type <code>StepScaling</code> and determine which step adjustment to use. For example, if the breach threshold is 50 and you want to use a step adjustment with a lower bound of 0 and an upper bound of 10, you can set the metric value to 59.</p> <p>If you specify a metric value that doesn't correspond to a step adjustment for the policy, the call returns an error.</p> <p>This parameter is required if the policy type is <code>StepScaling</code> and not supported otherwise.</p>
+-- @param PolicyName [ResourceName] <p>The name or ARN of the policy.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
+-- @param HonorCooldown [HonorCooldown] <p>If this parameter is true, Auto Scaling waits for the cooldown period to complete before executing the policy. Otherwise, Auto Scaling executes the policy without waiting for the cooldown period to complete.</p> <p>This parameter is not supported if the policy type is <code>StepScaling</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param BreachThreshold [MetricScale] <p>The breach threshold for the alarm.</p> <p>This parameter is required if the policy type is <code>StepScaling</code> and not supported otherwise.</p>
 -- Required parameter: PolicyName
 function M.ExecutePolicyType(MetricValue, PolicyName, AutoScalingGroupName, HonorCooldown, BreachThreshold, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExecutePolicyType")
@@ -72,9 +72,9 @@ end
 
 --- Create a structure of type DetachInstancesQuery
 --  
--- @param ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] &lt;p&gt;If &lt;code&gt;True&lt;/code&gt;, the Auto Scaling group decrements the desired capacity value by the number of instances detached.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param InstanceIds [InstanceIds] &lt;p&gt;One or more instance IDs.&lt;/p&gt;
+-- @param ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] <p>If <code>True</code>, the Auto Scaling group decrements the desired capacity value by the number of instances detached.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param InstanceIds [InstanceIds] <p>One or more instance IDs.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: ShouldDecrementDesiredCapacity
 function M.DetachInstancesQuery(ShouldDecrementDesiredCapacity, AutoScalingGroupName, InstanceIds, ...)
@@ -124,8 +124,8 @@ end
 
 --- Create a structure of type TerminateInstanceInAutoScalingGroupType
 --  
--- @param InstanceId [XmlStringMaxLen19] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, terminating the instance also decrements the size of the Auto Scaling group.&lt;/p&gt;
+-- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] <p>If <code>true</code>, terminating the instance also decrements the size of the Auto Scaling group.</p>
 -- Required parameter: InstanceId
 -- Required parameter: ShouldDecrementDesiredCapacity
 function M.TerminateInstanceInAutoScalingGroupType(InstanceId, ShouldDecrementDesiredCapacity, ...)
@@ -150,8 +150,8 @@ function M.AssertScalingActivityInProgressFault(struct)
 end
 
 --- Create a structure of type ScalingActivityInProgressFault
--- &lt;p&gt;The operation can't be performed because there are scaling activities in progress.&lt;/p&gt;
--- @param message [XmlStringMaxLen255] &lt;p/&gt;
+-- <p>The operation can't be performed because there are scaling activities in progress.</p>
+-- @param message [XmlStringMaxLen255] <p/>
 function M.ScalingActivityInProgressFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingActivityInProgressFault")
 	local t = { 
@@ -176,8 +176,8 @@ end
 
 --- Create a structure of type AttachInstancesQuery
 --  
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param InstanceIds [InstanceIds] &lt;p&gt;One or more instance IDs.&lt;/p&gt;
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param InstanceIds [InstanceIds] <p>One or more instance IDs.</p>
 -- Required parameter: AutoScalingGroupName
 function M.AttachInstancesQuery(AutoScalingGroupName, InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AttachInstancesQuery")
@@ -202,7 +202,7 @@ end
 
 --- Create a structure of type ActivityType
 --  
--- @param Activity [Activity] &lt;p&gt;A scaling activity.&lt;/p&gt;
+-- @param Activity [Activity] <p>A scaling activity.</p>
 function M.ActivityType(Activity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivityType")
 	local t = { 
@@ -228,10 +228,10 @@ end
 
 --- Create a structure of type DescribeScalingActivitiesType
 --  
--- @param ActivityIds [ActivityIds] &lt;p&gt;The activity IDs of the desired scaling activities. If you omit this parameter, all activities for the past six weeks are described. If you specify an Auto Scaling group, the results are limited to that group. The list of requested activities cannot contain more than 50 items. If unknown activities are requested, they are ignored with no error.&lt;/p&gt;
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of items to return with this call. The default value is 100.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group.&lt;/p&gt;
+-- @param ActivityIds [ActivityIds] <p>The activity IDs of the desired scaling activities. If you omit this parameter, all activities for the past six weeks are described. If you specify an Auto Scaling group, the results are limited to that group. The list of requested activities cannot contain more than 50 items. If unknown activities are requested, they are ignored with no error.</p>
+-- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 100.</p>
+-- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
 function M.DescribeScalingActivitiesType(ActivityIds, MaxRecords, NextToken, AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScalingActivitiesType")
 	local t = { 
@@ -258,8 +258,8 @@ end
 
 --- Create a structure of type PoliciesType
 --  
--- @param ScalingPolicies [ScalingPolicies] &lt;p&gt;The scaling policies.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param ScalingPolicies [ScalingPolicies] <p>The scaling policies.</p>
+-- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.PoliciesType(ScalingPolicies, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PoliciesType")
 	local t = { 
@@ -304,8 +304,8 @@ end
 
 --- Create a structure of type ScheduledActionsType
 --  
--- @param NextToken [XmlString] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param ScheduledUpdateGroupActions [ScheduledUpdateGroupActions] &lt;p&gt;The scheduled actions.&lt;/p&gt;
+-- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param ScheduledUpdateGroupActions [ScheduledUpdateGroupActions] <p>The scheduled actions.</p>
 function M.ScheduledActionsType(NextToken, ScheduledUpdateGroupActions, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScheduledActionsType")
 	local t = { 
@@ -328,8 +328,8 @@ function M.AssertResourceInUseFault(struct)
 end
 
 --- Create a structure of type ResourceInUseFault
--- &lt;p&gt;The operation can't be performed because the resource is in use.&lt;/p&gt;
--- @param message [XmlStringMaxLen255] &lt;p/&gt;
+-- <p>The operation can't be performed because the resource is in use.</p>
+-- @param message [XmlStringMaxLen255] <p/>
 function M.ResourceInUseFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseFault")
 	local t = { 
@@ -353,7 +353,7 @@ end
 
 --- Create a structure of type LaunchConfigurationNameType
 --  
--- @param LaunchConfigurationName [ResourceName] &lt;p&gt;The name of the launch configuration.&lt;/p&gt;
+-- @param LaunchConfigurationName [ResourceName] <p>The name of the launch configuration.</p>
 -- Required parameter: LaunchConfigurationName
 function M.LaunchConfigurationNameType(LaunchConfigurationName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LaunchConfigurationNameType")
@@ -379,10 +379,10 @@ function M.AssertStepAdjustment(struct)
 end
 
 --- Create a structure of type StepAdjustment
--- &lt;p&gt;Describes an adjustment based on the difference between the value of the aggregated CloudWatch metric and the breach threshold that you've defined for the alarm.&lt;/p&gt; &lt;p&gt;For the following examples, suppose that you have an alarm with a breach threshold of 50:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;If you want the adjustment to be triggered when the metric is greater than or equal to 50 and less than 60, specify a lower bound of 0 and an upper bound of 10.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;If you want the adjustment to be triggered when the metric is greater than 40 and less than or equal to 50, specify a lower bound of -10 and an upper bound of 0.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;There are a few rules for the step adjustments for your step policy:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;The ranges of your step adjustments can't overlap or have a gap.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;At most one step adjustment can have a null lower bound. If one step adjustment has a negative lower bound, then there must be a step adjustment with a null lower bound.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;At most one step adjustment can have a null upper bound. If one step adjustment has a positive upper bound, then there must be a step adjustment with a null upper bound.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The upper and lower bound can't be null in the same step adjustment.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param ScalingAdjustment [PolicyIncrement] &lt;p&gt;The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.&lt;/p&gt;
--- @param MetricIntervalLowerBound [MetricScale] &lt;p&gt;The lower bound for the difference between the alarm threshold and the CloudWatch metric. If the metric value is above the breach threshold, the lower bound is inclusive (the metric must be greater than or equal to the threshold plus the lower bound). Otherwise, it is exclusive (the metric must be greater than the threshold plus the lower bound). A null value indicates negative infinity.&lt;/p&gt;
--- @param MetricIntervalUpperBound [MetricScale] &lt;p&gt;The upper bound for the difference between the alarm threshold and the CloudWatch metric. If the metric value is above the breach threshold, the upper bound is exclusive (the metric must be less than the threshold plus the upper bound). Otherwise, it is inclusive (the metric must be less than or equal to the threshold plus the upper bound). A null value indicates positive infinity.&lt;/p&gt; &lt;p&gt;The upper bound must be greater than the lower bound.&lt;/p&gt;
+-- <p>Describes an adjustment based on the difference between the value of the aggregated CloudWatch metric and the breach threshold that you've defined for the alarm.</p> <p>For the following examples, suppose that you have an alarm with a breach threshold of 50:</p> <ul> <li> <p>If you want the adjustment to be triggered when the metric is greater than or equal to 50 and less than 60, specify a lower bound of 0 and an upper bound of 10.</p> </li> <li> <p>If you want the adjustment to be triggered when the metric is greater than 40 and less than or equal to 50, specify a lower bound of -10 and an upper bound of 0.</p> </li> </ul> <p>There are a few rules for the step adjustments for your step policy:</p> <ul> <li> <p>The ranges of your step adjustments can't overlap or have a gap.</p> </li> <li> <p>At most one step adjustment can have a null lower bound. If one step adjustment has a negative lower bound, then there must be a step adjustment with a null lower bound.</p> </li> <li> <p>At most one step adjustment can have a null upper bound. If one step adjustment has a positive upper bound, then there must be a step adjustment with a null upper bound.</p> </li> <li> <p>The upper and lower bound can't be null in the same step adjustment.</p> </li> </ul>
+-- @param ScalingAdjustment [PolicyIncrement] <p>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</p>
+-- @param MetricIntervalLowerBound [MetricScale] <p>The lower bound for the difference between the alarm threshold and the CloudWatch metric. If the metric value is above the breach threshold, the lower bound is inclusive (the metric must be greater than or equal to the threshold plus the lower bound). Otherwise, it is exclusive (the metric must be greater than the threshold plus the lower bound). A null value indicates negative infinity.</p>
+-- @param MetricIntervalUpperBound [MetricScale] <p>The upper bound for the difference between the alarm threshold and the CloudWatch metric. If the metric value is above the breach threshold, the upper bound is exclusive (the metric must be less than the threshold plus the upper bound). Otherwise, it is inclusive (the metric must be less than or equal to the threshold plus the upper bound). A null value indicates positive infinity.</p> <p>The upper bound must be greater than the lower bound.</p>
 -- Required parameter: ScalingAdjustment
 function M.StepAdjustment(ScalingAdjustment, MetricIntervalLowerBound, MetricIntervalUpperBound, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating StepAdjustment")
@@ -449,26 +449,26 @@ function M.AssertLaunchConfiguration(struct)
 end
 
 --- Create a structure of type LaunchConfiguration
--- &lt;p&gt;Describes a launch configuration.&lt;/p&gt;
--- @param UserData [XmlStringUserData] &lt;p&gt;The user data available to the instances.&lt;/p&gt;
--- @param IamInstanceProfile [XmlStringMaxLen1600] &lt;p&gt;The name or Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance.&lt;/p&gt;
--- @param ClassicLinkVPCId [XmlStringMaxLen255] &lt;p&gt;The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to. This parameter can only be used if you are launching EC2-Classic instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html&quot;&gt;ClassicLink&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param EbsOptimized [EbsOptimized] &lt;p&gt;Controls whether the instance is optimized for EBS I/O (&lt;code&gt;true&lt;/code&gt;) or not (&lt;code&gt;false&lt;/code&gt;).&lt;/p&gt;
--- @param PlacementTenancy [XmlStringMaxLen64] &lt;p&gt;The tenancy of the instance, either &lt;code&gt;default&lt;/code&gt; or &lt;code&gt;dedicated&lt;/code&gt;. An instance with &lt;code&gt;dedicated&lt;/code&gt; tenancy runs in an isolated, single-tenant hardware and can only be launched into a VPC.&lt;/p&gt;
--- @param LaunchConfigurationARN [ResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the launch configuration.&lt;/p&gt;
--- @param InstanceMonitoring [InstanceMonitoring] &lt;p&gt;Controls whether instances in this group are launched with detailed (&lt;code&gt;true&lt;/code&gt;) or basic (&lt;code&gt;false&lt;/code&gt;) monitoring.&lt;/p&gt;
--- @param ImageId [XmlStringMaxLen255] &lt;p&gt;The ID of the Amazon Machine Image (AMI).&lt;/p&gt;
--- @param CreatedTime [TimestampType] &lt;p&gt;The creation date and time for the launch configuration.&lt;/p&gt;
--- @param BlockDeviceMappings [BlockDeviceMappings] &lt;p&gt;A block device mapping, which specifies the block devices for the instance.&lt;/p&gt;
--- @param KeyName [XmlStringMaxLen255] &lt;p&gt;The name of the key pair.&lt;/p&gt;
--- @param SecurityGroups [SecurityGroups] &lt;p&gt;The security groups to associate with the instances.&lt;/p&gt;
--- @param AssociatePublicIpAddress [AssociatePublicIpAddress] &lt;p&gt;[EC2-VPC] Indicates whether to assign a public IP address to each instance.&lt;/p&gt;
--- @param LaunchConfigurationName [XmlStringMaxLen255] &lt;p&gt;The name of the launch configuration.&lt;/p&gt;
--- @param KernelId [XmlStringMaxLen255] &lt;p&gt;The ID of the kernel associated with the AMI.&lt;/p&gt;
--- @param RamdiskId [XmlStringMaxLen255] &lt;p&gt;The ID of the RAM disk associated with the AMI.&lt;/p&gt;
--- @param ClassicLinkVPCSecurityGroups [ClassicLinkVPCSecurityGroups] &lt;p&gt;The IDs of one or more security groups for the VPC specified in &lt;code&gt;ClassicLinkVPCId&lt;/code&gt;. This parameter is required if you specify a ClassicLink-enabled VPC, and cannot be used otherwise. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html&quot;&gt;ClassicLink&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param InstanceType [XmlStringMaxLen255] &lt;p&gt;The instance type for the instances.&lt;/p&gt;
--- @param SpotPrice [SpotPrice] &lt;p&gt;The price to bid when launching Spot Instances.&lt;/p&gt;
+-- <p>Describes a launch configuration.</p>
+-- @param UserData [XmlStringUserData] <p>The user data available to the instances.</p>
+-- @param IamInstanceProfile [XmlStringMaxLen1600] <p>The name or Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance.</p>
+-- @param ClassicLinkVPCId [XmlStringMaxLen255] <p>The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to. This parameter can only be used if you are launching EC2-Classic instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param EbsOptimized [EbsOptimized] <p>Controls whether the instance is optimized for EBS I/O (<code>true</code>) or not (<code>false</code>).</p>
+-- @param PlacementTenancy [XmlStringMaxLen64] <p>The tenancy of the instance, either <code>default</code> or <code>dedicated</code>. An instance with <code>dedicated</code> tenancy runs in an isolated, single-tenant hardware and can only be launched into a VPC.</p>
+-- @param LaunchConfigurationARN [ResourceName] <p>The Amazon Resource Name (ARN) of the launch configuration.</p>
+-- @param InstanceMonitoring [InstanceMonitoring] <p>Controls whether instances in this group are launched with detailed (<code>true</code>) or basic (<code>false</code>) monitoring.</p>
+-- @param ImageId [XmlStringMaxLen255] <p>The ID of the Amazon Machine Image (AMI).</p>
+-- @param CreatedTime [TimestampType] <p>The creation date and time for the launch configuration.</p>
+-- @param BlockDeviceMappings [BlockDeviceMappings] <p>A block device mapping, which specifies the block devices for the instance.</p>
+-- @param KeyName [XmlStringMaxLen255] <p>The name of the key pair.</p>
+-- @param SecurityGroups [SecurityGroups] <p>The security groups to associate with the instances.</p>
+-- @param AssociatePublicIpAddress [AssociatePublicIpAddress] <p>[EC2-VPC] Indicates whether to assign a public IP address to each instance.</p>
+-- @param LaunchConfigurationName [XmlStringMaxLen255] <p>The name of the launch configuration.</p>
+-- @param KernelId [XmlStringMaxLen255] <p>The ID of the kernel associated with the AMI.</p>
+-- @param RamdiskId [XmlStringMaxLen255] <p>The ID of the RAM disk associated with the AMI.</p>
+-- @param ClassicLinkVPCSecurityGroups [ClassicLinkVPCSecurityGroups] <p>The IDs of one or more security groups for the VPC specified in <code>ClassicLinkVPCId</code>. This parameter is required if you specify a ClassicLink-enabled VPC, and cannot be used otherwise. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param InstanceType [XmlStringMaxLen255] <p>The instance type for the instances.</p>
+-- @param SpotPrice [SpotPrice] <p>The price to bid when launching Spot Instances.</p>
 -- Required parameter: LaunchConfigurationName
 -- Required parameter: ImageId
 -- Required parameter: InstanceType
@@ -515,8 +515,8 @@ end
 
 --- Create a structure of type ScalingProcessQuery
 --  
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name or Amazon Resource Name (ARN) of the Auto Scaling group.&lt;/p&gt;
--- @param ScalingProcesses [ProcessNames] &lt;p&gt;One or more of the following processes. If you omit this parameter, all processes are specified.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Launch&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Terminate&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;HealthCheck&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ReplaceUnhealthy&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;AZRebalance&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;AlarmNotification&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ScheduledActions&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;AddToLoadBalancer&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- @param AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
+-- @param ScalingProcesses [ProcessNames] <p>One or more of the following processes. If you omit this parameter, all processes are specified.</p> <ul> <li> <p> <code>Launch</code> </p> </li> <li> <p> <code>Terminate</code> </p> </li> <li> <p> <code>HealthCheck</code> </p> </li> <li> <p> <code>ReplaceUnhealthy</code> </p> </li> <li> <p> <code>AZRebalance</code> </p> </li> <li> <p> <code>AlarmNotification</code> </p> </li> <li> <p> <code>ScheduledActions</code> </p> </li> <li> <p> <code>AddToLoadBalancer</code> </p> </li> </ul>
 -- Required parameter: AutoScalingGroupName
 function M.ScalingProcessQuery(AutoScalingGroupName, ScalingProcesses, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingProcessQuery")
@@ -544,10 +544,10 @@ end
 
 --- Create a structure of type DescribeAccountLimitsAnswer
 --  
--- @param NumberOfLaunchConfigurations [NumberOfLaunchConfigurations] &lt;p&gt;The current number of launch configurations for your AWS account.&lt;/p&gt;
--- @param MaxNumberOfLaunchConfigurations [MaxNumberOfLaunchConfigurations] &lt;p&gt;The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per region.&lt;/p&gt;
--- @param NumberOfAutoScalingGroups [NumberOfAutoScalingGroups] &lt;p&gt;The current number of groups for your AWS account.&lt;/p&gt;
--- @param MaxNumberOfAutoScalingGroups [MaxNumberOfAutoScalingGroups] &lt;p&gt;The maximum number of groups allowed for your AWS account. The default limit is 20 per region.&lt;/p&gt;
+-- @param NumberOfLaunchConfigurations [NumberOfLaunchConfigurations] <p>The current number of launch configurations for your AWS account.</p>
+-- @param MaxNumberOfLaunchConfigurations [MaxNumberOfLaunchConfigurations] <p>The maximum number of launch configurations allowed for your AWS account. The default limit is 100 per region.</p>
+-- @param NumberOfAutoScalingGroups [NumberOfAutoScalingGroups] <p>The current number of groups for your AWS account.</p>
+-- @param MaxNumberOfAutoScalingGroups [MaxNumberOfAutoScalingGroups] <p>The maximum number of groups allowed for your AWS account. The default limit is 20 per region.</p>
 function M.DescribeAccountLimitsAnswer(NumberOfLaunchConfigurations, MaxNumberOfLaunchConfigurations, NumberOfAutoScalingGroups, MaxNumberOfAutoScalingGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountLimitsAnswer")
 	local t = { 
@@ -576,12 +576,12 @@ function M.AssertTagDescription(struct)
 end
 
 --- Create a structure of type TagDescription
--- &lt;p&gt;Describes a tag for an Auto Scaling group.&lt;/p&gt;
--- @param ResourceType [XmlString] &lt;p&gt;The type of resource. The only supported value is &lt;code&gt;auto-scaling-group&lt;/code&gt;.&lt;/p&gt;
--- @param ResourceId [XmlString] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param PropagateAtLaunch [PropagateAtLaunch] &lt;p&gt;Determines whether the tag is added to new instances as they are launched in the group.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The tag value.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The tag key.&lt;/p&gt;
+-- <p>Describes a tag for an Auto Scaling group.</p>
+-- @param ResourceType [XmlString] <p>The type of resource. The only supported value is <code>auto-scaling-group</code>.</p>
+-- @param ResourceId [XmlString] <p>The name of the group.</p>
+-- @param PropagateAtLaunch [PropagateAtLaunch] <p>Determines whether the tag is added to new instances as they are launched in the group.</p>
+-- @param Value [TagValue] <p>The tag value.</p>
+-- @param Key [TagKey] <p>The tag key.</p>
 function M.TagDescription(ResourceType, ResourceId, PropagateAtLaunch, Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagDescription")
 	local t = { 
@@ -612,12 +612,12 @@ function M.AssertTag(struct)
 end
 
 --- Create a structure of type Tag
--- &lt;p&gt;Describes a tag for an Auto Scaling group.&lt;/p&gt;
--- @param ResourceType [XmlString] &lt;p&gt;The type of resource. The only supported value is &lt;code&gt;auto-scaling-group&lt;/code&gt;.&lt;/p&gt;
--- @param ResourceId [XmlString] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param PropagateAtLaunch [PropagateAtLaunch] &lt;p&gt;Determines whether the tag is added to new instances as they are launched in the group.&lt;/p&gt;
--- @param Value [TagValue] &lt;p&gt;The tag value.&lt;/p&gt;
--- @param Key [TagKey] &lt;p&gt;The tag key.&lt;/p&gt;
+-- <p>Describes a tag for an Auto Scaling group.</p>
+-- @param ResourceType [XmlString] <p>The type of resource. The only supported value is <code>auto-scaling-group</code>.</p>
+-- @param ResourceId [XmlString] <p>The name of the group.</p>
+-- @param PropagateAtLaunch [PropagateAtLaunch] <p>Determines whether the tag is added to new instances as they are launched in the group.</p>
+-- @param Value [TagValue] <p>The tag value.</p>
+-- @param Key [TagKey] <p>The tag key.</p>
 -- Required parameter: Key
 function M.Tag(ResourceType, ResourceId, PropagateAtLaunch, Value, Key, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
@@ -646,7 +646,7 @@ end
 
 --- Create a structure of type CreateOrUpdateTagsType
 --  
--- @param Tags [Tags] &lt;p&gt;One or more tags.&lt;/p&gt;
+-- @param Tags [Tags] <p>One or more tags.</p>
 -- Required parameter: Tags
 function M.CreateOrUpdateTagsType(Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateOrUpdateTagsType")
@@ -674,13 +674,13 @@ function M.AssertEbs(struct)
 end
 
 --- Create a structure of type Ebs
--- &lt;p&gt;Describes an Amazon EBS volume.&lt;/p&gt;
--- @param VolumeSize [BlockDeviceEbsVolumeSize] &lt;p&gt;The volume size, in GiB. For &lt;code&gt;standard&lt;/code&gt; volumes, specify a value from 1 to 1,024. For &lt;code&gt;io1&lt;/code&gt; volumes, specify a value from 4 to 16,384. For &lt;code&gt;gp2&lt;/code&gt; volumes, specify a value from 1 to 16,384. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.&lt;/p&gt; &lt;p&gt;Default: If you create a volume from a snapshot and you don't specify a volume size, the default is the snapshot size.&lt;/p&gt;
--- @param Encrypted [BlockDeviceEbsEncrypted] &lt;p&gt;Indicates whether the volume should be encrypted. Encrypted EBS volumes must be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are automatically encrypted. There is no way to create an encrypted volume from an unencrypted snapshot or an unencrypted volume from an encrypted snapshot. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html&quot;&gt;Amazon EBS Encryption&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param VolumeType [BlockDeviceEbsVolumeType] &lt;p&gt;The volume type. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html&quot;&gt;Amazon EBS Volume Types&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;standard&lt;/code&gt; | &lt;code&gt;io1&lt;/code&gt; | &lt;code&gt;gp2&lt;/code&gt; &lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;standard&lt;/code&gt; &lt;/p&gt;
--- @param DeleteOnTermination [BlockDeviceEbsDeleteOnTermination] &lt;p&gt;Indicates whether the volume is deleted on instance termination.&lt;/p&gt; &lt;p&gt;Default: &lt;code&gt;true&lt;/code&gt; &lt;/p&gt;
--- @param SnapshotId [XmlStringMaxLen255] &lt;p&gt;The ID of the snapshot.&lt;/p&gt;
--- @param Iops [BlockDeviceEbsIops] &lt;p&gt;The number of I/O operations per second (IOPS) to provision for the volume.&lt;/p&gt; &lt;p&gt;Constraint: Required when the volume type is &lt;code&gt;io1&lt;/code&gt;.&lt;/p&gt;
+-- <p>Describes an Amazon EBS volume.</p>
+-- @param VolumeSize [BlockDeviceEbsVolumeSize] <p>The volume size, in GiB. For <code>standard</code> volumes, specify a value from 1 to 1,024. For <code>io1</code> volumes, specify a value from 4 to 16,384. For <code>gp2</code> volumes, specify a value from 1 to 16,384. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.</p> <p>Default: If you create a volume from a snapshot and you don't specify a volume size, the default is the snapshot size.</p>
+-- @param Encrypted [BlockDeviceEbsEncrypted] <p>Indicates whether the volume should be encrypted. Encrypted EBS volumes must be attached to instances that support Amazon EBS encryption. Volumes that are created from encrypted snapshots are automatically encrypted. There is no way to create an encrypted volume from an unencrypted snapshot or an unencrypted volume from an encrypted snapshot. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param VolumeType [BlockDeviceEbsVolumeType] <p>The volume type. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon EBS Volume Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>Valid values: <code>standard</code> | <code>io1</code> | <code>gp2</code> </p> <p>Default: <code>standard</code> </p>
+-- @param DeleteOnTermination [BlockDeviceEbsDeleteOnTermination] <p>Indicates whether the volume is deleted on instance termination.</p> <p>Default: <code>true</code> </p>
+-- @param SnapshotId [XmlStringMaxLen255] <p>The ID of the snapshot.</p>
+-- @param Iops [BlockDeviceEbsIops] <p>The number of I/O operations per second (IOPS) to provision for the volume.</p> <p>Constraint: Required when the volume type is <code>io1</code>.</p>
 function M.Ebs(VolumeSize, Encrypted, VolumeType, DeleteOnTermination, SnapshotId, Iops, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Ebs")
 	local t = { 
@@ -710,8 +710,8 @@ end
 
 --- Create a structure of type ExitStandbyQuery
 --  
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
--- @param InstanceIds [InstanceIds] &lt;p&gt;One or more instance IDs. You must specify at least one instance ID.&lt;/p&gt;
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param InstanceIds [InstanceIds] <p>One or more instance IDs. You must specify at least one instance ID.</p>
 -- Required parameter: AutoScalingGroupName
 function M.ExitStandbyQuery(AutoScalingGroupName, InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExitStandbyQuery")
@@ -737,8 +737,8 @@ end
 
 --- Create a structure of type DescribeMetricCollectionTypesAnswer
 --  
--- @param Metrics [MetricCollectionTypes] &lt;p&gt;One or more metrics.&lt;/p&gt;
--- @param Granularities [MetricGranularityTypes] &lt;p&gt;The granularities for the metrics.&lt;/p&gt;
+-- @param Metrics [MetricCollectionTypes] <p>One or more metrics.</p>
+-- @param Granularities [MetricGranularityTypes] <p>The granularities for the metrics.</p>
 function M.DescribeMetricCollectionTypesAnswer(Metrics, Granularities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMetricCollectionTypesAnswer")
 	local t = { 
@@ -763,7 +763,7 @@ end
 
 --- Create a structure of type DeleteTagsType
 --  
--- @param Tags [Tags] &lt;p&gt;One or more tags.&lt;/p&gt;
+-- @param Tags [Tags] <p>One or more tags.</p>
 -- Required parameter: Tags
 function M.DeleteTagsType(Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsType")
@@ -786,8 +786,8 @@ function M.AssertAlreadyExistsFault(struct)
 end
 
 --- Create a structure of type AlreadyExistsFault
--- &lt;p&gt;You already have an Auto Scaling group or launch configuration with this name.&lt;/p&gt;
--- @param message [XmlStringMaxLen255] &lt;p/&gt;
+-- <p>You already have an Auto Scaling group or launch configuration with this name.</p>
+-- @param message [XmlStringMaxLen255] <p/>
 function M.AlreadyExistsFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyExistsFault")
 	local t = { 
@@ -838,29 +838,29 @@ function M.AssertAutoScalingGroup(struct)
 end
 
 --- Create a structure of type AutoScalingGroup
--- &lt;p&gt;Describes an Auto Scaling group.&lt;/p&gt;
--- @param PlacementGroup [XmlStringMaxLen255] &lt;p&gt;The name of the placement group into which you'll launch your instances, if any. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html&quot;&gt;Placement Groups&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param VPCZoneIdentifier [XmlStringMaxLen2047] &lt;p&gt;One or more subnet IDs, if applicable, separated by commas.&lt;/p&gt; &lt;p&gt;If you specify &lt;code&gt;VPCZoneIdentifier&lt;/code&gt; and &lt;code&gt;AvailabilityZones&lt;/code&gt;, ensure that the Availability Zones of the subnets match the values for &lt;code&gt;AvailabilityZones&lt;/code&gt;.&lt;/p&gt;
--- @param LoadBalancerNames [LoadBalancerNames] &lt;p&gt;One or more load balancers associated with the group.&lt;/p&gt;
--- @param CreatedTime [TimestampType] &lt;p&gt;The date and time the group was created.&lt;/p&gt;
--- @param Status [XmlStringMaxLen255] &lt;p&gt;The current state of the group when &lt;a&gt;DeleteAutoScalingGroup&lt;/a&gt; is in progress.&lt;/p&gt;
--- @param AutoScalingGroupARN [ResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the group.&lt;/p&gt;
--- @param SuspendedProcesses [SuspendedProcesses] &lt;p&gt;The suspended processes associated with the group.&lt;/p&gt;
--- @param Tags [TagDescriptionList] &lt;p&gt;The tags for the group.&lt;/p&gt;
--- @param MaxSize [AutoScalingGroupMaxSize] &lt;p&gt;The maximum size of the group.&lt;/p&gt;
--- @param TerminationPolicies [TerminationPolicies] &lt;p&gt;The termination policies for the group.&lt;/p&gt;
--- @param TargetGroupARNs [TargetGroupARNs] &lt;p&gt;The Amazon Resource Names (ARN) of the target groups for your load balancer.&lt;/p&gt;
--- @param HealthCheckType [XmlStringMaxLen32] &lt;p&gt;The service to use for the health checks. The valid values are &lt;code&gt;EC2&lt;/code&gt; and &lt;code&gt;ELB&lt;/code&gt;.&lt;/p&gt;
--- @param AutoScalingGroupName [XmlStringMaxLen255] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param MinSize [AutoScalingGroupMinSize] &lt;p&gt;The minimum size of the group.&lt;/p&gt;
--- @param LaunchConfigurationName [XmlStringMaxLen255] &lt;p&gt;The name of the associated launch configuration.&lt;/p&gt;
--- @param HealthCheckGracePeriod [HealthCheckGracePeriod] &lt;p&gt;The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service.&lt;/p&gt;
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] &lt;p&gt;The desired size of the group.&lt;/p&gt;
--- @param EnabledMetrics [EnabledMetrics] &lt;p&gt;The metrics enabled for the group.&lt;/p&gt;
--- @param DefaultCooldown [Cooldown] &lt;p&gt;The amount of time, in seconds, after a scaling activity completes before another scaling activity can start.&lt;/p&gt;
--- @param Instances [Instances] &lt;p&gt;The EC2 instances associated with the group.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;One or more Availability Zones for the group.&lt;/p&gt;
--- @param NewInstancesProtectedFromScaleIn [InstanceProtected] &lt;p&gt;Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.&lt;/p&gt;
+-- <p>Describes an Auto Scaling group.</p>
+-- @param PlacementGroup [XmlStringMaxLen255] <p>The name of the placement group into which you'll launch your instances, if any. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param VPCZoneIdentifier [XmlStringMaxLen2047] <p>One or more subnet IDs, if applicable, separated by commas.</p> <p>If you specify <code>VPCZoneIdentifier</code> and <code>AvailabilityZones</code>, ensure that the Availability Zones of the subnets match the values for <code>AvailabilityZones</code>.</p>
+-- @param LoadBalancerNames [LoadBalancerNames] <p>One or more load balancers associated with the group.</p>
+-- @param CreatedTime [TimestampType] <p>The date and time the group was created.</p>
+-- @param Status [XmlStringMaxLen255] <p>The current state of the group when <a>DeleteAutoScalingGroup</a> is in progress.</p>
+-- @param AutoScalingGroupARN [ResourceName] <p>The Amazon Resource Name (ARN) of the group.</p>
+-- @param SuspendedProcesses [SuspendedProcesses] <p>The suspended processes associated with the group.</p>
+-- @param Tags [TagDescriptionList] <p>The tags for the group.</p>
+-- @param MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the group.</p>
+-- @param TerminationPolicies [TerminationPolicies] <p>The termination policies for the group.</p>
+-- @param TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups for your load balancer.</p>
+-- @param HealthCheckType [XmlStringMaxLen32] <p>The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.</p>
+-- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the group.</p>
+-- @param MinSize [AutoScalingGroupMinSize] <p>The minimum size of the group.</p>
+-- @param LaunchConfigurationName [XmlStringMaxLen255] <p>The name of the associated launch configuration.</p>
+-- @param HealthCheckGracePeriod [HealthCheckGracePeriod] <p>The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service.</p>
+-- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The desired size of the group.</p>
+-- @param EnabledMetrics [EnabledMetrics] <p>The metrics enabled for the group.</p>
+-- @param DefaultCooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before another scaling activity can start.</p>
+-- @param Instances [Instances] <p>The EC2 instances associated with the group.</p>
+-- @param AvailabilityZones [AvailabilityZones] <p>One or more Availability Zones for the group.</p>
+-- @param NewInstancesProtectedFromScaleIn [InstanceProtected] <p>Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: MinSize
 -- Required parameter: MaxSize
@@ -912,7 +912,7 @@ end
 
 --- Create a structure of type DetachInstancesAnswer
 --  
--- @param Activities [Activities] &lt;p&gt;The activities related to detaching the instances from the Auto Scaling group.&lt;/p&gt;
+-- @param Activities [Activities] <p>The activities related to detaching the instances from the Auto Scaling group.</p>
 function M.DetachInstancesAnswer(Activities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DetachInstancesAnswer")
 	local t = { 
@@ -946,20 +946,20 @@ function M.AssertScalingPolicy(struct)
 end
 
 --- Create a structure of type ScalingPolicy
--- &lt;p&gt;Describes a scaling policy.&lt;/p&gt;
--- @param PolicyName [XmlStringMaxLen255] &lt;p&gt;The name of the scaling policy.&lt;/p&gt;
--- @param EstimatedInstanceWarmup [EstimatedInstanceWarmup] &lt;p&gt;The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics.&lt;/p&gt;
--- @param MinAdjustmentStep [MinAdjustmentStep] &lt;p&gt;Available for backward compatibility. Use &lt;code&gt;MinAdjustmentMagnitude&lt;/code&gt; instead.&lt;/p&gt;
--- @param MinAdjustmentMagnitude [MinAdjustmentMagnitude] &lt;p&gt;The minimum number of instances to scale. If the value of &lt;code&gt;AdjustmentType&lt;/code&gt; is &lt;code&gt;PercentChangeInCapacity&lt;/code&gt;, the scaling policy changes the &lt;code&gt;DesiredCapacity&lt;/code&gt; of the Auto Scaling group by at least this many instances. Otherwise, the error is &lt;code&gt;ValidationError&lt;/code&gt;.&lt;/p&gt;
--- @param MetricAggregationType [XmlStringMaxLen32] &lt;p&gt;The aggregation type for the CloudWatch metrics. Valid values are &lt;code&gt;Minimum&lt;/code&gt;, &lt;code&gt;Maximum&lt;/code&gt;, and &lt;code&gt;Average&lt;/code&gt;.&lt;/p&gt;
--- @param AutoScalingGroupName [XmlStringMaxLen255] &lt;p&gt;The name of the Auto Scaling group associated with this scaling policy.&lt;/p&gt;
--- @param PolicyARN [ResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the policy.&lt;/p&gt;
--- @param Cooldown [Cooldown] &lt;p&gt;The amount of time, in seconds, after a scaling activity completes before any further dynamic scaling activities can start.&lt;/p&gt;
--- @param PolicyType [XmlStringMaxLen64] &lt;p&gt;The policy type. Valid values are &lt;code&gt;SimpleScaling&lt;/code&gt; and &lt;code&gt;StepScaling&lt;/code&gt;.&lt;/p&gt;
--- @param StepAdjustments [StepAdjustments] &lt;p&gt;A set of adjustments that enable you to scale based on the size of the alarm breach.&lt;/p&gt;
--- @param AdjustmentType [XmlStringMaxLen255] &lt;p&gt;The adjustment type, which specifies how &lt;code&gt;ScalingAdjustment&lt;/code&gt; is interpreted. Valid values are &lt;code&gt;ChangeInCapacity&lt;/code&gt;, &lt;code&gt;ExactCapacity&lt;/code&gt;, and &lt;code&gt;PercentChangeInCapacity&lt;/code&gt;.&lt;/p&gt;
--- @param Alarms [Alarms] &lt;p&gt;The CloudWatch alarms related to the policy.&lt;/p&gt;
--- @param ScalingAdjustment [PolicyIncrement] &lt;p&gt;The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.&lt;/p&gt;
+-- <p>Describes a scaling policy.</p>
+-- @param PolicyName [XmlStringMaxLen255] <p>The name of the scaling policy.</p>
+-- @param EstimatedInstanceWarmup [EstimatedInstanceWarmup] <p>The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics.</p>
+-- @param MinAdjustmentStep [MinAdjustmentStep] <p>Available for backward compatibility. Use <code>MinAdjustmentMagnitude</code> instead.</p>
+-- @param MinAdjustmentMagnitude [MinAdjustmentMagnitude] <p>The minimum number of instances to scale. If the value of <code>AdjustmentType</code> is <code>PercentChangeInCapacity</code>, the scaling policy changes the <code>DesiredCapacity</code> of the Auto Scaling group by at least this many instances. Otherwise, the error is <code>ValidationError</code>.</p>
+-- @param MetricAggregationType [XmlStringMaxLen32] <p>The aggregation type for the CloudWatch metrics. Valid values are <code>Minimum</code>, <code>Maximum</code>, and <code>Average</code>.</p>
+-- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the Auto Scaling group associated with this scaling policy.</p>
+-- @param PolicyARN [ResourceName] <p>The Amazon Resource Name (ARN) of the policy.</p>
+-- @param Cooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before any further dynamic scaling activities can start.</p>
+-- @param PolicyType [XmlStringMaxLen64] <p>The policy type. Valid values are <code>SimpleScaling</code> and <code>StepScaling</code>.</p>
+-- @param StepAdjustments [StepAdjustments] <p>A set of adjustments that enable you to scale based on the size of the alarm breach.</p>
+-- @param AdjustmentType [XmlStringMaxLen255] <p>The adjustment type, which specifies how <code>ScalingAdjustment</code> is interpreted. Valid values are <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p>
+-- @param Alarms [Alarms] <p>The CloudWatch alarms related to the policy.</p>
+-- @param ScalingAdjustment [PolicyIncrement] <p>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</p>
 function M.ScalingPolicy(PolicyName, EstimatedInstanceWarmup, MinAdjustmentStep, MinAdjustmentMagnitude, MetricAggregationType, AutoScalingGroupName, PolicyARN, Cooldown, PolicyType, StepAdjustments, AdjustmentType, Alarms, ScalingAdjustment, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScalingPolicy")
 	local t = { 
@@ -1017,8 +1017,8 @@ end
 
 --- Create a structure of type DeleteScheduledActionType
 --  
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
--- @param ScheduledActionName [ResourceName] &lt;p&gt;The name of the action to delete.&lt;/p&gt;
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param ScheduledActionName [ResourceName] <p>The name of the action to delete.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: ScheduledActionName
 function M.DeleteScheduledActionType(AutoScalingGroupName, ScheduledActionName, ...)
@@ -1046,9 +1046,9 @@ end
 
 --- Create a structure of type DescribeNotificationConfigurationsType
 --  
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param AutoScalingGroupNames [AutoScalingGroupNames] &lt;p&gt;The name of the group.&lt;/p&gt;
+-- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param AutoScalingGroupNames [AutoScalingGroupNames] <p>The name of the group.</p>
 function M.DescribeNotificationConfigurationsType(MaxRecords, NextToken, AutoScalingGroupNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationConfigurationsType")
 	local t = { 
@@ -1072,8 +1072,8 @@ function M.AssertMetricGranularityType(struct)
 end
 
 --- Create a structure of type MetricGranularityType
--- &lt;p&gt;Describes a granularity of a metric.&lt;/p&gt;
--- @param Granularity [XmlStringMaxLen255] &lt;p&gt;The granularity. The only valid value is &lt;code&gt;1Minute&lt;/code&gt;.&lt;/p&gt;
+-- <p>Describes a granularity of a metric.</p>
+-- @param Granularity [XmlStringMaxLen255] <p>The granularity. The only valid value is <code>1Minute</code>.</p>
 function M.MetricGranularityType(Granularity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MetricGranularityType")
 	local t = { 
@@ -1101,12 +1101,12 @@ end
 
 --- Create a structure of type DescribeScheduledActionsType
 --  
--- @param EndTime [TimestampType] &lt;p&gt;The latest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.&lt;/p&gt;
--- @param ScheduledActionNames [ScheduledActionNames] &lt;p&gt;Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described. If you specify an unknown scheduled action, it is ignored with no error.&lt;/p&gt; &lt;p&gt;You can describe up to a maximum of 50 instances with a single call. If there are more items to return, the call returns a token. To get the next set of items, repeat the call with the returned token.&lt;/p&gt;
--- @param StartTime [TimestampType] &lt;p&gt;The earliest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
+-- @param EndTime [TimestampType] <p>The latest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param ScheduledActionNames [ScheduledActionNames] <p>Describes one or more scheduled actions. If you omit this parameter, all scheduled actions are described. If you specify an unknown scheduled action, it is ignored with no error.</p> <p>You can describe up to a maximum of 50 instances with a single call. If there are more items to return, the call returns a token. To get the next set of items, repeat the call with the returned token.</p>
+-- @param StartTime [TimestampType] <p>The earliest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.</p>
+-- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
 function M.DescribeScheduledActionsType(EndTime, AutoScalingGroupName, MaxRecords, ScheduledActionNames, StartTime, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScheduledActionsType")
 	local t = { 
@@ -1133,8 +1133,8 @@ function M.AssertResourceContentionFault(struct)
 end
 
 --- Create a structure of type ResourceContentionFault
--- &lt;p&gt;You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load balancer).&lt;/p&gt;
--- @param message [XmlStringMaxLen255] &lt;p/&gt;
+-- <p>You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load balancer).</p>
+-- @param message [XmlStringMaxLen255] <p/>
 function M.ResourceContentionFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ResourceContentionFault")
 	local t = { 
@@ -1165,17 +1165,17 @@ function M.AssertScheduledUpdateGroupAction(struct)
 end
 
 --- Create a structure of type ScheduledUpdateGroupAction
--- &lt;p&gt;Describes a scheduled update to an Auto Scaling group.&lt;/p&gt;
--- @param MinSize [AutoScalingGroupMinSize] &lt;p&gt;The minimum size of the group.&lt;/p&gt;
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] &lt;p&gt;The number of instances you prefer to maintain in the group.&lt;/p&gt;
--- @param AutoScalingGroupName [XmlStringMaxLen255] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param MaxSize [AutoScalingGroupMaxSize] &lt;p&gt;The maximum size of the group.&lt;/p&gt;
--- @param Recurrence [XmlStringMaxLen255] &lt;p&gt;The recurring schedule for the action.&lt;/p&gt;
--- @param ScheduledActionARN [ResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the scheduled action.&lt;/p&gt;
--- @param ScheduledActionName [XmlStringMaxLen255] &lt;p&gt;The name of the scheduled action.&lt;/p&gt;
--- @param StartTime [TimestampType] &lt;p&gt;The date and time that the action is scheduled to begin. This date and time can be up to one month in the future.&lt;/p&gt; &lt;p&gt;When &lt;code&gt;StartTime&lt;/code&gt; and &lt;code&gt;EndTime&lt;/code&gt; are specified with &lt;code&gt;Recurrence&lt;/code&gt;, they form the boundaries of when the recurring action will start and stop.&lt;/p&gt;
--- @param Time [TimestampType] &lt;p&gt;This parameter is deprecated.&lt;/p&gt;
--- @param EndTime [TimestampType] &lt;p&gt;The date and time that the action is scheduled to end. This date and time can be up to one month in the future.&lt;/p&gt;
+-- <p>Describes a scheduled update to an Auto Scaling group.</p>
+-- @param MinSize [AutoScalingGroupMinSize] <p>The minimum size of the group.</p>
+-- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of instances you prefer to maintain in the group.</p>
+-- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the group.</p>
+-- @param MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the group.</p>
+-- @param Recurrence [XmlStringMaxLen255] <p>The recurring schedule for the action.</p>
+-- @param ScheduledActionARN [ResourceName] <p>The Amazon Resource Name (ARN) of the scheduled action.</p>
+-- @param ScheduledActionName [XmlStringMaxLen255] <p>The name of the scheduled action.</p>
+-- @param StartTime [TimestampType] <p>The date and time that the action is scheduled to begin. This date and time can be up to one month in the future.</p> <p>When <code>StartTime</code> and <code>EndTime</code> are specified with <code>Recurrence</code>, they form the boundaries of when the recurring action will start and stop.</p>
+-- @param Time [TimestampType] <p>This parameter is deprecated.</p>
+-- @param EndTime [TimestampType] <p>The date and time that the action is scheduled to end. This date and time can be up to one month in the future.</p>
 function M.ScheduledUpdateGroupAction(MinSize, DesiredCapacity, AutoScalingGroupName, MaxSize, Recurrence, ScheduledActionARN, ScheduledActionName, StartTime, Time, EndTime, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ScheduledUpdateGroupAction")
 	local t = { 
@@ -1207,9 +1207,9 @@ function M.AssertEnabledMetric(struct)
 end
 
 --- Create a structure of type EnabledMetric
--- &lt;p&gt;Describes an enabled metric.&lt;/p&gt;
--- @param Metric [XmlStringMaxLen255] &lt;p&gt;One of the following metrics:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupMinSize&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupMaxSize&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupDesiredCapacity&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupInServiceInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupPendingInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupStandbyInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupTerminatingInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupTotalInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param Granularity [XmlStringMaxLen255] &lt;p&gt;The granularity of the metric. The only valid value is &lt;code&gt;1Minute&lt;/code&gt;.&lt;/p&gt;
+-- <p>Describes an enabled metric.</p>
+-- @param Metric [XmlStringMaxLen255] <p>One of the following metrics:</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
+-- @param Granularity [XmlStringMaxLen255] <p>The granularity of the metric. The only valid value is <code>1Minute</code>.</p>
 function M.EnabledMetric(Metric, Granularity, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnabledMetric")
 	local t = { 
@@ -1235,8 +1235,8 @@ end
 
 --- Create a structure of type DeletePolicyType
 --  
--- @param PolicyName [ResourceName] &lt;p&gt;The name or Amazon Resource Name (ARN) of the policy.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
+-- @param PolicyName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the policy.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
 -- Required parameter: PolicyName
 function M.DeletePolicyType(PolicyName, AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeletePolicyType")
@@ -1264,8 +1264,8 @@ end
 
 --- Create a structure of type DeleteLifecycleHookType
 --  
--- @param LifecycleHookName [AsciiStringMaxLen255] &lt;p&gt;The name of the lifecycle hook.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group for the lifecycle hook.&lt;/p&gt;
+-- @param LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group for the lifecycle hook.</p>
 -- Required parameter: LifecycleHookName
 -- Required parameter: AutoScalingGroupName
 function M.DeleteLifecycleHookType(LifecycleHookName, AutoScalingGroupName, ...)
@@ -1291,8 +1291,8 @@ function M.AssertProcessType(struct)
 end
 
 --- Create a structure of type ProcessType
--- &lt;p&gt;Describes a process type.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html#process-types&quot;&gt;Auto Scaling Processes&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param ProcessName [XmlStringMaxLen255] &lt;p&gt;One of the following processes:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Launch&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Terminate&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;AddToLoadBalancer&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;AlarmNotification&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;AZRebalance&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;HealthCheck&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ReplaceUnhealthy&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ScheduledActions&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Describes a process type.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html#process-types">Auto Scaling Processes</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param ProcessName [XmlStringMaxLen255] <p>One of the following processes:</p> <ul> <li> <p> <code>Launch</code> </p> </li> <li> <p> <code>Terminate</code> </p> </li> <li> <p> <code>AddToLoadBalancer</code> </p> </li> <li> <p> <code>AlarmNotification</code> </p> </li> <li> <p> <code>AZRebalance</code> </p> </li> <li> <p> <code>HealthCheck</code> </p> </li> <li> <p> <code>ReplaceUnhealthy</code> </p> </li> <li> <p> <code>ScheduledActions</code> </p> </li> </ul>
 -- Required parameter: ProcessName
 function M.ProcessType(ProcessName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProcessType")
@@ -1316,7 +1316,7 @@ end
 
 --- Create a structure of type ProcessesType
 --  
--- @param Processes [Processes] &lt;p&gt;The names of the process types.&lt;/p&gt;
+-- @param Processes [Processes] <p>The names of the process types.</p>
 function M.ProcessesType(Processes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ProcessesType")
 	local t = { 
@@ -1344,9 +1344,9 @@ end
 
 --- Create a structure of type PutNotificationConfigurationType
 --  
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
--- @param NotificationTypes [AutoScalingNotificationTypes] &lt;p&gt;The type of event that will cause the notification to be sent. For details about notification types supported by Auto Scaling, see &lt;a&gt;DescribeAutoScalingNotificationTypes&lt;/a&gt;.&lt;/p&gt;
--- @param TopicARN [ResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.&lt;/p&gt;
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param NotificationTypes [AutoScalingNotificationTypes] <p>The type of event that will cause the notification to be sent. For details about notification types supported by Auto Scaling, see <a>DescribeAutoScalingNotificationTypes</a>.</p>
+-- @param TopicARN [ResourceName] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: TopicARN
 -- Required parameter: NotificationTypes
@@ -1374,7 +1374,7 @@ end
 
 --- Create a structure of type EnterStandbyAnswer
 --  
--- @param Activities [Activities] &lt;p&gt;The activities related to moving instances into &lt;code&gt;Standby&lt;/code&gt; mode.&lt;/p&gt;
+-- @param Activities [Activities] <p>The activities related to moving instances into <code>Standby</code> mode.</p>
 function M.EnterStandbyAnswer(Activities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating EnterStandbyAnswer")
 	local t = { 
@@ -1397,7 +1397,7 @@ end
 
 --- Create a structure of type ExitStandbyAnswer
 --  
--- @param Activities [Activities] &lt;p&gt;The activities related to moving instances out of &lt;code&gt;Standby&lt;/code&gt; mode.&lt;/p&gt;
+-- @param Activities [Activities] <p>The activities related to moving instances out of <code>Standby</code> mode.</p>
 function M.ExitStandbyAnswer(Activities, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ExitStandbyAnswer")
 	local t = { 
@@ -1420,7 +1420,7 @@ end
 
 --- Create a structure of type DescribeAdjustmentTypesAnswer
 --  
--- @param AdjustmentTypes [AdjustmentTypes] &lt;p&gt;The policy adjustment types.&lt;/p&gt;
+-- @param AdjustmentTypes [AdjustmentTypes] <p>The policy adjustment types.</p>
 function M.DescribeAdjustmentTypesAnswer(AdjustmentTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAdjustmentTypesAnswer")
 	local t = { 
@@ -1442,8 +1442,8 @@ function M.AssertAdjustmentType(struct)
 end
 
 --- Create a structure of type AdjustmentType
--- &lt;p&gt;Describes a policy adjustment type.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html&quot;&gt;Dynamic Scaling&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param AdjustmentType [XmlStringMaxLen255] &lt;p&gt;The policy adjustment type. The valid values are &lt;code&gt;ChangeInCapacity&lt;/code&gt;, &lt;code&gt;ExactCapacity&lt;/code&gt;, and &lt;code&gt;PercentChangeInCapacity&lt;/code&gt;.&lt;/p&gt;
+-- <p>Describes a policy adjustment type.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html">Dynamic Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param AdjustmentType [XmlStringMaxLen255] <p>The policy adjustment type. The valid values are <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p>
 function M.AdjustmentType(AdjustmentType, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AdjustmentType")
 	local t = { 
@@ -1468,8 +1468,8 @@ end
 
 --- Create a structure of type DisableMetricsCollectionQuery
 --  
--- @param Metrics [Metrics] &lt;p&gt;One or more of the following metrics. If you omit this parameter, all metrics are disabled.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupMinSize&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupMaxSize&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupDesiredCapacity&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupInServiceInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupPendingInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupStandbyInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupTerminatingInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupTotalInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name or Amazon Resource Name (ARN) of the group.&lt;/p&gt;
+-- @param Metrics [Metrics] <p>One or more of the following metrics. If you omit this parameter, all metrics are disabled.</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
+-- @param AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the group.</p>
 -- Required parameter: AutoScalingGroupName
 function M.DisableMetricsCollectionQuery(Metrics, AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DisableMetricsCollectionQuery")
@@ -1495,10 +1495,10 @@ function M.AssertNotificationConfiguration(struct)
 end
 
 --- Create a structure of type NotificationConfiguration
--- &lt;p&gt;Describes a notification.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param NotificationType [XmlStringMaxLen255] &lt;p&gt;One of the following event notification types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;autoscaling:EC2_INSTANCE_LAUNCH&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;autoscaling:EC2_INSTANCE_LAUNCH_ERROR&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;autoscaling:EC2_INSTANCE_TERMINATE&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;autoscaling:EC2_INSTANCE_TERMINATE_ERROR&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;autoscaling:TEST_NOTIFICATION&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param TopicARN [ResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.&lt;/p&gt;
+-- <p>Describes a notification.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param NotificationType [XmlStringMaxLen255] <p>One of the following event notification types:</p> <ul> <li> <p> <code>autoscaling:EC2_INSTANCE_LAUNCH</code> </p> </li> <li> <p> <code>autoscaling:EC2_INSTANCE_LAUNCH_ERROR</code> </p> </li> <li> <p> <code>autoscaling:EC2_INSTANCE_TERMINATE</code> </p> </li> <li> <p> <code>autoscaling:EC2_INSTANCE_TERMINATE_ERROR</code> </p> </li> <li> <p> <code>autoscaling:TEST_NOTIFICATION</code> </p> </li> </ul>
+-- @param TopicARN [ResourceName] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.</p>
 function M.NotificationConfiguration(AutoScalingGroupName, NotificationType, TopicARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating NotificationConfiguration")
 	local t = { 
@@ -1525,9 +1525,9 @@ end
 
 --- Create a structure of type LaunchConfigurationNamesType
 --  
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.&lt;/p&gt;
--- @param LaunchConfigurationNames [LaunchConfigurationNames] &lt;p&gt;The launch configuration names. If you omit this parameter, all launch configurations are described.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
+-- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param LaunchConfigurationNames [LaunchConfigurationNames] <p>The launch configuration names. If you omit this parameter, all launch configurations are described.</p>
+-- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
 function M.LaunchConfigurationNamesType(MaxRecords, LaunchConfigurationNames, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LaunchConfigurationNamesType")
 	local t = { 
@@ -1565,17 +1565,17 @@ end
 
 --- Create a structure of type PutScalingPolicyType
 --  
--- @param PolicyName [XmlStringMaxLen255] &lt;p&gt;The name of the policy.&lt;/p&gt;
--- @param EstimatedInstanceWarmup [EstimatedInstanceWarmup] &lt;p&gt;The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics. The default is to use the value specified for the default cooldown period for the group.&lt;/p&gt; &lt;p&gt;This parameter is not supported if the policy type is &lt;code&gt;SimpleScaling&lt;/code&gt;.&lt;/p&gt;
--- @param MinAdjustmentStep [MinAdjustmentStep] &lt;p&gt;Available for backward compatibility. Use &lt;code&gt;MinAdjustmentMagnitude&lt;/code&gt; instead.&lt;/p&gt;
--- @param MinAdjustmentMagnitude [MinAdjustmentMagnitude] &lt;p&gt;The minimum number of instances to scale. If the value of &lt;code&gt;AdjustmentType&lt;/code&gt; is &lt;code&gt;PercentChangeInCapacity&lt;/code&gt;, the scaling policy changes the &lt;code&gt;DesiredCapacity&lt;/code&gt; of the Auto Scaling group by at least this many instances. Otherwise, the error is &lt;code&gt;ValidationError&lt;/code&gt;.&lt;/p&gt;
--- @param MetricAggregationType [XmlStringMaxLen32] &lt;p&gt;The aggregation type for the CloudWatch metrics. Valid values are &lt;code&gt;Minimum&lt;/code&gt;, &lt;code&gt;Maximum&lt;/code&gt;, and &lt;code&gt;Average&lt;/code&gt;. If the aggregation type is null, the value is treated as &lt;code&gt;Average&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;This parameter is not supported if the policy type is &lt;code&gt;SimpleScaling&lt;/code&gt;.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name or ARN of the group.&lt;/p&gt;
--- @param Cooldown [Cooldown] &lt;p&gt;The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.&lt;/p&gt; &lt;p&gt;This parameter is not supported unless the policy type is &lt;code&gt;SimpleScaling&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html&quot;&gt;Auto Scaling Cooldowns&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param PolicyType [XmlStringMaxLen64] &lt;p&gt;The policy type. Valid values are &lt;code&gt;SimpleScaling&lt;/code&gt; and &lt;code&gt;StepScaling&lt;/code&gt;. If the policy type is null, the value is treated as &lt;code&gt;SimpleScaling&lt;/code&gt;.&lt;/p&gt;
--- @param StepAdjustments [StepAdjustments] &lt;p&gt;A set of adjustments that enable you to scale based on the size of the alarm breach.&lt;/p&gt; &lt;p&gt;This parameter is required if the policy type is &lt;code&gt;StepScaling&lt;/code&gt; and not supported otherwise.&lt;/p&gt;
--- @param AdjustmentType [XmlStringMaxLen255] &lt;p&gt;The adjustment type. Valid values are &lt;code&gt;ChangeInCapacity&lt;/code&gt;, &lt;code&gt;ExactCapacity&lt;/code&gt;, and &lt;code&gt;PercentChangeInCapacity&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html&quot;&gt;Dynamic Scaling&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param ScalingAdjustment [PolicyIncrement] &lt;p&gt;The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.&lt;/p&gt; &lt;p&gt;This parameter is required if the policy type is &lt;code&gt;SimpleScaling&lt;/code&gt; and not supported otherwise.&lt;/p&gt;
+-- @param PolicyName [XmlStringMaxLen255] <p>The name of the policy.</p>
+-- @param EstimatedInstanceWarmup [EstimatedInstanceWarmup] <p>The estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics. The default is to use the value specified for the default cooldown period for the group.</p> <p>This parameter is not supported if the policy type is <code>SimpleScaling</code>.</p>
+-- @param MinAdjustmentStep [MinAdjustmentStep] <p>Available for backward compatibility. Use <code>MinAdjustmentMagnitude</code> instead.</p>
+-- @param MinAdjustmentMagnitude [MinAdjustmentMagnitude] <p>The minimum number of instances to scale. If the value of <code>AdjustmentType</code> is <code>PercentChangeInCapacity</code>, the scaling policy changes the <code>DesiredCapacity</code> of the Auto Scaling group by at least this many instances. Otherwise, the error is <code>ValidationError</code>.</p>
+-- @param MetricAggregationType [XmlStringMaxLen32] <p>The aggregation type for the CloudWatch metrics. Valid values are <code>Minimum</code>, <code>Maximum</code>, and <code>Average</code>. If the aggregation type is null, the value is treated as <code>Average</code>.</p> <p>This parameter is not supported if the policy type is <code>SimpleScaling</code>.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name or ARN of the group.</p>
+-- @param Cooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.</p> <p>This parameter is not supported unless the policy type is <code>SimpleScaling</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param PolicyType [XmlStringMaxLen64] <p>The policy type. Valid values are <code>SimpleScaling</code> and <code>StepScaling</code>. If the policy type is null, the value is treated as <code>SimpleScaling</code>.</p>
+-- @param StepAdjustments [StepAdjustments] <p>A set of adjustments that enable you to scale based on the size of the alarm breach.</p> <p>This parameter is required if the policy type is <code>StepScaling</code> and not supported otherwise.</p>
+-- @param AdjustmentType [XmlStringMaxLen255] <p>The adjustment type. Valid values are <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-scale-based-on-demand.html">Dynamic Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param ScalingAdjustment [PolicyIncrement] <p>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</p> <p>This parameter is required if the policy type is <code>SimpleScaling</code> and not supported otherwise.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: PolicyName
 -- Required parameter: AdjustmentType
@@ -1610,8 +1610,8 @@ function M.AssertInstanceMonitoring(struct)
 end
 
 --- Create a structure of type InstanceMonitoring
--- &lt;p&gt;Describes whether detailed monitoring is enabled for the Auto Scaling instances.&lt;/p&gt;
--- @param Enabled [MonitoringEnabled] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, detailed monitoring is enabled. Otherwise, basic monitoring is enabled.&lt;/p&gt;
+-- <p>Describes whether detailed monitoring is enabled for the Auto Scaling instances.</p>
+-- @param Enabled [MonitoringEnabled] <p>If <code>true</code>, detailed monitoring is enabled. Otherwise, basic monitoring is enabled.</p>
 function M.InstanceMonitoring(Enabled, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InstanceMonitoring")
 	local t = { 
@@ -1644,13 +1644,13 @@ function M.AssertInstance(struct)
 end
 
 --- Create a structure of type Instance
--- &lt;p&gt;Describes an EC2 instance.&lt;/p&gt;
--- @param ProtectedFromScaleIn [InstanceProtected] &lt;p&gt;Indicates whether the instance is protected from termination by Auto Scaling when scaling in.&lt;/p&gt;
--- @param AvailabilityZone [XmlStringMaxLen255] &lt;p&gt;The Availability Zone in which the instance is running.&lt;/p&gt;
--- @param InstanceId [XmlStringMaxLen19] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param HealthStatus [XmlStringMaxLen32] &lt;p&gt;The last reported health status of the instance. &quot;Healthy&quot; means that the instance is healthy and should remain in service. &quot;Unhealthy&quot; means that the instance is unhealthy and Auto Scaling should terminate and replace it.&lt;/p&gt;
--- @param LifecycleState [LifecycleState] &lt;p&gt;A description of the current lifecycle state. Note that the &lt;code&gt;Quarantined&lt;/code&gt; state is not used.&lt;/p&gt;
--- @param LaunchConfigurationName [XmlStringMaxLen255] &lt;p&gt;The launch configuration associated with the instance.&lt;/p&gt;
+-- <p>Describes an EC2 instance.</p>
+-- @param ProtectedFromScaleIn [InstanceProtected] <p>Indicates whether the instance is protected from termination by Auto Scaling when scaling in.</p>
+-- @param AvailabilityZone [XmlStringMaxLen255] <p>The Availability Zone in which the instance is running.</p>
+-- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param HealthStatus [XmlStringMaxLen32] <p>The last reported health status of the instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Auto Scaling should terminate and replace it.</p>
+-- @param LifecycleState [LifecycleState] <p>A description of the current lifecycle state. Note that the <code>Quarantined</code> state is not used.</p>
+-- @param LaunchConfigurationName [XmlStringMaxLen255] <p>The launch configuration associated with the instance.</p>
 -- Required parameter: InstanceId
 -- Required parameter: AvailabilityZone
 -- Required parameter: LifecycleState
@@ -1687,8 +1687,8 @@ end
 
 --- Create a structure of type DetachLoadBalancersType
 --  
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
--- @param LoadBalancerNames [LoadBalancerNames] &lt;p&gt;One or more load balancer names.&lt;/p&gt;
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param LoadBalancerNames [LoadBalancerNames] <p>One or more load balancer names.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: LoadBalancerNames
 function M.DetachLoadBalancersType(AutoScalingGroupName, LoadBalancerNames, ...)
@@ -1719,9 +1719,9 @@ end
 
 --- Create a structure of type SetInstanceProtectionQuery
 --  
--- @param ProtectedFromScaleIn [ProtectedFromScaleIn] &lt;p&gt;Indicates whether the instance is protected from termination by Auto Scaling when scaling in.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param InstanceIds [InstanceIds] &lt;p&gt;One or more instance IDs.&lt;/p&gt;
+-- @param ProtectedFromScaleIn [ProtectedFromScaleIn] <p>Indicates whether the instance is protected from termination by Auto Scaling when scaling in.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param InstanceIds [InstanceIds] <p>One or more instance IDs.</p>
 -- Required parameter: InstanceIds
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: ProtectedFromScaleIn
@@ -1750,8 +1750,8 @@ end
 
 --- Create a structure of type TagsType
 --  
--- @param NextToken [XmlString] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param Tags [TagDescriptionList] &lt;p&gt;One or more tags.&lt;/p&gt;
+-- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param Tags [TagDescriptionList] <p>One or more tags.</p>
 function M.TagsType(NextToken, Tags, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating TagsType")
 	local t = { 
@@ -1777,8 +1777,8 @@ end
 
 --- Create a structure of type LaunchConfigurationsType
 --  
--- @param NextToken [XmlString] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param LaunchConfigurations [LaunchConfigurations] &lt;p&gt;The launch configurations.&lt;/p&gt;
+-- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param LaunchConfigurations [LaunchConfigurations] <p>The launch configurations.</p>
 -- Required parameter: LaunchConfigurations
 function M.LaunchConfigurationsType(NextToken, LaunchConfigurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LaunchConfigurationsType")
@@ -1802,8 +1802,8 @@ function M.AssertLimitExceededFault(struct)
 end
 
 --- Create a structure of type LimitExceededFault
--- &lt;p&gt;You have already reached a limit for your Auto Scaling resources (for example, groups, launch configurations, or lifecycle hooks). For more information, see &lt;a&gt;DescribeAccountLimits&lt;/a&gt;.&lt;/p&gt;
--- @param message [XmlStringMaxLen255] &lt;p/&gt;
+-- <p>You have already reached a limit for your Auto Scaling resources (for example, groups, launch configurations, or lifecycle hooks). For more information, see <a>DescribeAccountLimits</a>.</p>
+-- @param message [XmlStringMaxLen255] <p/>
 function M.LimitExceededFault(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededFault")
 	local t = { 
@@ -1844,24 +1844,24 @@ end
 
 --- Create a structure of type CreateLaunchConfigurationType
 --  
--- @param UserData [XmlStringUserData] &lt;p&gt;The user data to make available to the launched EC2 instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html&quot;&gt;Instance Metadata and User Data&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param IamInstanceProfile [XmlStringMaxLen1600] &lt;p&gt;The name or the Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance.&lt;/p&gt; &lt;p&gt;EC2 instances launched with an IAM role will automatically have AWS security credentials available. You can use IAM roles with Auto Scaling to automatically enable applications running on your EC2 instances to securely access other AWS resources. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html&quot;&gt;Launch Auto Scaling Instances with an IAM Role&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param ClassicLinkVPCId [XmlStringMaxLen255] &lt;p&gt;The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to. This parameter is supported only if you are launching EC2-Classic instances. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html&quot;&gt;ClassicLink&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param InstanceId [XmlStringMaxLen19] &lt;p&gt;The ID of the instance to use to create the launch configuration. The new launch configuration derives attributes from the instance, with the exception of the block device mapping.&lt;/p&gt; &lt;p&gt;If you do not specify &lt;code&gt;InstanceId&lt;/code&gt;, you must specify both &lt;code&gt;ImageId&lt;/code&gt; and &lt;code&gt;InstanceType&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;To create a launch configuration with a block device mapping or override any other instance attributes, specify them as part of the same request.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html&quot;&gt;Create a Launch Configuration Using an EC2 Instance&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param PlacementTenancy [XmlStringMaxLen64] &lt;p&gt;The tenancy of the instance. An instance with a tenancy of &lt;code&gt;dedicated&lt;/code&gt; runs on single-tenant hardware and can only be launched into a VPC.&lt;/p&gt; &lt;p&gt;You must set the value of this parameter to &lt;code&gt;dedicated&lt;/code&gt; if want to launch Dedicated Instances into a shared tenancy VPC (VPC with instance placement tenancy attribute set to &lt;code&gt;default&lt;/code&gt;).&lt;/p&gt; &lt;p&gt;If you specify this parameter, be sure to specify at least one subnet when you create your group.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html&quot;&gt;Launching Auto Scaling Instances in a VPC&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;Valid values: &lt;code&gt;default&lt;/code&gt; | &lt;code&gt;dedicated&lt;/code&gt; &lt;/p&gt;
--- @param AssociatePublicIpAddress [AssociatePublicIpAddress] &lt;p&gt;Used for groups that launch instances into a virtual private cloud (VPC). Specifies whether to assign a public IP address to each instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html&quot;&gt;Launching Auto Scaling Instances in a VPC&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;If you specify this parameter, be sure to specify at least one subnet when you create your group.&lt;/p&gt; &lt;p&gt;Default: If the instance is launched into a default subnet, the default is &lt;code&gt;true&lt;/code&gt;. If the instance is launched into a nondefault subnet, the default is &lt;code&gt;false&lt;/code&gt;. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html&quot;&gt;Supported Platforms&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param InstanceMonitoring [InstanceMonitoring] &lt;p&gt;Enables detailed monitoring (&lt;code&gt;true&lt;/code&gt;) or basic monitoring (&lt;code&gt;false&lt;/code&gt;) for the Auto Scaling instances. The default is &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
--- @param ClassicLinkVPCSecurityGroups [ClassicLinkVPCSecurityGroups] &lt;p&gt;The IDs of one or more security groups for the specified ClassicLink-enabled VPC. This parameter is required if you specify a ClassicLink-enabled VPC, and is not supported otherwise. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html&quot;&gt;ClassicLink&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param BlockDeviceMappings [BlockDeviceMappings] &lt;p&gt;One or more mappings that specify how block devices are exposed to the instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html&quot;&gt;Block Device Mapping&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param KeyName [XmlStringMaxLen255] &lt;p&gt;The name of the key pair. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html&quot;&gt;Amazon EC2 Key Pairs&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param SecurityGroups [SecurityGroups] &lt;p&gt;One or more security groups with which to associate the instances.&lt;/p&gt; &lt;p&gt;If your instances are launched in EC2-Classic, you can either specify security group names or the security group IDs. For more information about security groups for EC2-Classic, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html&quot;&gt;Amazon EC2 Security Groups&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt; &lt;p&gt;If your instances are launched into a VPC, specify security group IDs. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html&quot;&gt;Security Groups for Your VPC&lt;/a&gt; in the &lt;i&gt;Amazon Virtual Private Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param EbsOptimized [EbsOptimized] &lt;p&gt;Indicates whether the instance is optimized for Amazon EBS I/O. By default, the instance is not optimized for EBS I/O. The optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization is not available with all instance types. Additional usage charges apply. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html&quot;&gt;Amazon EBS-Optimized Instances&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param LaunchConfigurationName [XmlStringMaxLen255] &lt;p&gt;The name of the launch configuration. This name must be unique within the scope of your AWS account.&lt;/p&gt;
--- @param KernelId [XmlStringMaxLen255] &lt;p&gt;The ID of the kernel associated with the AMI.&lt;/p&gt;
--- @param RamdiskId [XmlStringMaxLen255] &lt;p&gt;The ID of the RAM disk associated with the AMI.&lt;/p&gt;
--- @param ImageId [XmlStringMaxLen255] &lt;p&gt;The ID of the Amazon Machine Image (AMI) to use to launch your EC2 instances.&lt;/p&gt; &lt;p&gt;If you do not specify &lt;code&gt;InstanceId&lt;/code&gt;, you must specify &lt;code&gt;ImageId&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html&quot;&gt;Finding an AMI&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param InstanceType [XmlStringMaxLen255] &lt;p&gt;The instance type of the EC2 instance.&lt;/p&gt; &lt;p&gt;If you do not specify &lt;code&gt;InstanceId&lt;/code&gt;, you must specify &lt;code&gt;InstanceType&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For information about available instance types, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes&quot;&gt;Available Instance Types&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide.&lt;/i&gt; &lt;/p&gt;
--- @param SpotPrice [SpotPrice] &lt;p&gt;The maximum hourly price to be paid for any Spot Instance launched to fulfill the request. Spot Instances are launched when the price you specify exceeds the current Spot market price. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html&quot;&gt;Launching Spot Instances in Your Auto Scaling Group&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
+-- @param UserData [XmlStringUserData] <p>The user data to make available to the launched EC2 instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata and User Data</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param IamInstanceProfile [XmlStringMaxLen1600] <p>The name or the Amazon Resource Name (ARN) of the instance profile associated with the IAM role for the instance.</p> <p>EC2 instances launched with an IAM role will automatically have AWS security credentials available. You can use IAM roles with Auto Scaling to automatically enable applications running on your EC2 instances to securely access other AWS resources. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/us-iam-role.html">Launch Auto Scaling Instances with an IAM Role</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param ClassicLinkVPCId [XmlStringMaxLen255] <p>The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances to. This parameter is supported only if you are launching EC2-Classic instances. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance to use to create the launch configuration. The new launch configuration derives attributes from the instance, with the exception of the block device mapping.</p> <p>If you do not specify <code>InstanceId</code>, you must specify both <code>ImageId</code> and <code>InstanceType</code>.</p> <p>To create a launch configuration with a block device mapping or override any other instance attributes, specify them as part of the same request.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-lc-with-instanceID.html">Create a Launch Configuration Using an EC2 Instance</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param PlacementTenancy [XmlStringMaxLen64] <p>The tenancy of the instance. An instance with a tenancy of <code>dedicated</code> runs on single-tenant hardware and can only be launched into a VPC.</p> <p>You must set the value of this parameter to <code>dedicated</code> if want to launch Dedicated Instances into a shared tenancy VPC (VPC with instance placement tenancy attribute set to <code>default</code>).</p> <p>If you specify this parameter, be sure to specify at least one subnet when you create your group.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p> <p>Valid values: <code>default</code> | <code>dedicated</code> </p>
+-- @param AssociatePublicIpAddress [AssociatePublicIpAddress] <p>Used for groups that launch instances into a virtual private cloud (VPC). Specifies whether to assign a public IP address to each instance. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p> <p>If you specify this parameter, be sure to specify at least one subnet when you create your group.</p> <p>Default: If the instance is launched into a default subnet, the default is <code>true</code>. If the instance is launched into a nondefault subnet, the default is <code>false</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param InstanceMonitoring [InstanceMonitoring] <p>Enables detailed monitoring (<code>true</code>) or basic monitoring (<code>false</code>) for the Auto Scaling instances. The default is <code>true</code>.</p>
+-- @param ClassicLinkVPCSecurityGroups [ClassicLinkVPCSecurityGroups] <p>The IDs of one or more security groups for the specified ClassicLink-enabled VPC. This parameter is required if you specify a ClassicLink-enabled VPC, and is not supported otherwise. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param BlockDeviceMappings [BlockDeviceMappings] <p>One or more mappings that specify how block devices are exposed to the instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block Device Mapping</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param KeyName [XmlStringMaxLen255] <p>The name of the key pair. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon EC2 Key Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param SecurityGroups [SecurityGroups] <p>One or more security groups with which to associate the instances.</p> <p>If your instances are launched in EC2-Classic, you can either specify security group names or the security group IDs. For more information about security groups for EC2-Classic, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Amazon EC2 Security Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>If your instances are launched into a VPC, specify security group IDs. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+-- @param EbsOptimized [EbsOptimized] <p>Indicates whether the instance is optimized for Amazon EBS I/O. By default, the instance is not optimized for EBS I/O. The optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization is not available with all instance types. Additional usage charges apply. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html">Amazon EBS-Optimized Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param LaunchConfigurationName [XmlStringMaxLen255] <p>The name of the launch configuration. This name must be unique within the scope of your AWS account.</p>
+-- @param KernelId [XmlStringMaxLen255] <p>The ID of the kernel associated with the AMI.</p>
+-- @param RamdiskId [XmlStringMaxLen255] <p>The ID of the RAM disk associated with the AMI.</p>
+-- @param ImageId [XmlStringMaxLen255] <p>The ID of the Amazon Machine Image (AMI) to use to launch your EC2 instances.</p> <p>If you do not specify <code>InstanceId</code>, you must specify <code>ImageId</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding an AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param InstanceType [XmlStringMaxLen255] <p>The instance type of the EC2 instance.</p> <p>If you do not specify <code>InstanceId</code>, you must specify <code>InstanceType</code>.</p> <p>For information about available instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes">Available Instance Types</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> </p>
+-- @param SpotPrice [SpotPrice] <p>The maximum hourly price to be paid for any Spot Instance launched to fulfill the request. Spot Instances are launched when the price you specify exceeds the current Spot market price. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/US-SpotInstances.html">Launching Spot Instances in Your Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.</p>
 -- Required parameter: LaunchConfigurationName
 function M.CreateLaunchConfigurationType(UserData, IamInstanceProfile, ClassicLinkVPCId, InstanceId, PlacementTenancy, AssociatePublicIpAddress, InstanceMonitoring, ClassicLinkVPCSecurityGroups, BlockDeviceMappings, KeyName, SecurityGroups, EbsOptimized, LaunchConfigurationName, KernelId, RamdiskId, ImageId, InstanceType, SpotPrice, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating CreateLaunchConfigurationType")
@@ -1902,7 +1902,7 @@ end
 
 --- Create a structure of type PolicyARNType
 --  
--- @param PolicyARN [ResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the policy.&lt;/p&gt;
+-- @param PolicyARN [ResourceName] <p>The Amazon Resource Name (ARN) of the policy.</p>
 function M.PolicyARNType(PolicyARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating PolicyARNType")
 	local t = { 
@@ -1926,8 +1926,8 @@ end
 
 --- Create a structure of type AutoScalingInstancesType
 --  
--- @param NextToken [XmlString] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param AutoScalingInstances [AutoScalingInstances] &lt;p&gt;The instances.&lt;/p&gt;
+-- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param AutoScalingInstances [AutoScalingInstances] <p>The instances.</p>
 function M.AutoScalingInstancesType(NextToken, AutoScalingInstances, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingInstancesType")
 	local t = { 
@@ -1955,9 +1955,9 @@ end
 
 --- Create a structure of type SetDesiredCapacityType
 --  
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] &lt;p&gt;The number of EC2 instances that should be running in the Auto Scaling group.&lt;/p&gt;
--- @param HonorCooldown [HonorCooldown] &lt;p&gt;By default, &lt;code&gt;SetDesiredCapacity&lt;/code&gt; overrides any cooldown period associated with the Auto Scaling group. Specify &lt;code&gt;True&lt;/code&gt; to make Auto Scaling to wait for the cool-down period associated with the Auto Scaling group to complete before initiating a scaling activity to set your Auto Scaling group to its new capacity.&lt;/p&gt;
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the Auto Scaling group.</p>
+-- @param HonorCooldown [HonorCooldown] <p>By default, <code>SetDesiredCapacity</code> overrides any cooldown period associated with the Auto Scaling group. Specify <code>True</code> to make Auto Scaling to wait for the cool-down period associated with the Auto Scaling group to complete before initiating a scaling activity to set your Auto Scaling group to its new capacity.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: DesiredCapacity
 function M.SetDesiredCapacityType(AutoScalingGroupName, DesiredCapacity, HonorCooldown, ...)
@@ -1986,8 +1986,8 @@ end
 
 --- Create a structure of type AutoScalingGroupsType
 --  
--- @param AutoScalingGroups [AutoScalingGroups] &lt;p&gt;The groups.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param AutoScalingGroups [AutoScalingGroups] <p>The groups.</p>
+-- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- Required parameter: AutoScalingGroups
 function M.AutoScalingGroupsType(AutoScalingGroups, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingGroupsType")
@@ -2015,11 +2015,11 @@ function M.AssertBlockDeviceMapping(struct)
 end
 
 --- Create a structure of type BlockDeviceMapping
--- &lt;p&gt;Describes a block device mapping.&lt;/p&gt;
--- @param DeviceName [XmlStringMaxLen255] &lt;p&gt;The device name exposed to the EC2 instance (for example, &lt;code&gt;/dev/sdh&lt;/code&gt; or &lt;code&gt;xvdh&lt;/code&gt;).&lt;/p&gt;
--- @param VirtualName [XmlStringMaxLen255] &lt;p&gt;The name of the virtual device (for example, &lt;code&gt;ephemeral0&lt;/code&gt;).&lt;/p&gt;
--- @param NoDevice [NoDevice] &lt;p&gt;Suppresses a device mapping.&lt;/p&gt; &lt;p&gt;If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling launches a replacement instance if the instance fails the health check.&lt;/p&gt;
--- @param Ebs [Ebs] &lt;p&gt;The information about the Amazon EBS volume.&lt;/p&gt;
+-- <p>Describes a block device mapping.</p>
+-- @param DeviceName [XmlStringMaxLen255] <p>The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or <code>xvdh</code>).</p>
+-- @param VirtualName [XmlStringMaxLen255] <p>The name of the virtual device (for example, <code>ephemeral0</code>).</p>
+-- @param NoDevice [NoDevice] <p>Suppresses a device mapping.</p> <p>If this parameter is true for the root device, the instance might fail the EC2 health check. Auto Scaling launches a replacement instance if the instance fails the health check.</p>
+-- @param Ebs [Ebs] <p>The information about the Amazon EBS volume.</p>
 -- Required parameter: DeviceName
 function M.BlockDeviceMapping(DeviceName, VirtualName, NoDevice, Ebs, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating BlockDeviceMapping")
@@ -2046,9 +2046,9 @@ function M.AssertFilter(struct)
 end
 
 --- Create a structure of type Filter
--- &lt;p&gt;Describes a filter.&lt;/p&gt;
--- @param Values [Values] &lt;p&gt;The value of the filter.&lt;/p&gt;
--- @param Name [XmlString] &lt;p&gt;The name of the filter. The valid values are: &lt;code&gt;&quot;auto-scaling-group&quot;&lt;/code&gt;, &lt;code&gt;&quot;key&quot;&lt;/code&gt;, &lt;code&gt;&quot;value&quot;&lt;/code&gt;, and &lt;code&gt;&quot;propagate-at-launch&quot;&lt;/code&gt;.&lt;/p&gt;
+-- <p>Describes a filter.</p>
+-- @param Values [Values] <p>The value of the filter.</p>
+-- @param Name [XmlString] <p>The name of the filter. The valid values are: <code>"auto-scaling-group"</code>, <code>"key"</code>, <code>"value"</code>, and <code>"propagate-at-launch"</code>.</p>
 function M.Filter(Values, Name, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Filter")
 	local t = { 
@@ -2082,15 +2082,15 @@ end
 
 --- Create a structure of type PutScheduledUpdateGroupActionType
 --  
--- @param MinSize [AutoScalingGroupMinSize] &lt;p&gt;The minimum size for the Auto Scaling group.&lt;/p&gt;
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] &lt;p&gt;The number of EC2 instances that should be running in the group.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name or Amazon Resource Name (ARN) of the Auto Scaling group.&lt;/p&gt;
--- @param Recurrence [XmlStringMaxLen255] &lt;p&gt;The recurring schedule for this action, in Unix cron syntax format. For more information, see &lt;a href=&quot;http://en.wikipedia.org/wiki/Cron&quot;&gt;Cron&lt;/a&gt; in Wikipedia.&lt;/p&gt;
--- @param MaxSize [AutoScalingGroupMaxSize] &lt;p&gt;The maximum size for the Auto Scaling group.&lt;/p&gt;
--- @param ScheduledActionName [XmlStringMaxLen255] &lt;p&gt;The name of this scaling action.&lt;/p&gt;
--- @param StartTime [TimestampType] &lt;p&gt;The time for this action to start, in &quot;YYYY-MM-DDThh:mm:ssZ&quot; format in UTC/GMT only (for example, &lt;code&gt;2014-06-01T00:00:00Z&lt;/code&gt;).&lt;/p&gt; &lt;p&gt;If you specify &lt;code&gt;Recurrence&lt;/code&gt; and &lt;code&gt;StartTime&lt;/code&gt;, Auto Scaling performs the action at this time, and then performs the action based on the specified recurrence.&lt;/p&gt; &lt;p&gt;If you try to schedule your action in the past, Auto Scaling returns an error message.&lt;/p&gt;
--- @param Time [TimestampType] &lt;p&gt;This parameter is deprecated.&lt;/p&gt;
--- @param EndTime [TimestampType] &lt;p&gt;The time for the recurring schedule to end. Auto Scaling does not perform the action after this time.&lt;/p&gt;
+-- @param MinSize [AutoScalingGroupMinSize] <p>The minimum size for the Auto Scaling group.</p>
+-- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the group.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name or Amazon Resource Name (ARN) of the Auto Scaling group.</p>
+-- @param Recurrence [XmlStringMaxLen255] <p>The recurring schedule for this action, in Unix cron syntax format. For more information, see <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> in Wikipedia.</p>
+-- @param MaxSize [AutoScalingGroupMaxSize] <p>The maximum size for the Auto Scaling group.</p>
+-- @param ScheduledActionName [XmlStringMaxLen255] <p>The name of this scaling action.</p>
+-- @param StartTime [TimestampType] <p>The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in UTC/GMT only (for example, <code>2014-06-01T00:00:00Z</code>).</p> <p>If you specify <code>Recurrence</code> and <code>StartTime</code>, Auto Scaling performs the action at this time, and then performs the action based on the specified recurrence.</p> <p>If you try to schedule your action in the past, Auto Scaling returns an error message.</p>
+-- @param Time [TimestampType] <p>This parameter is deprecated.</p>
+-- @param EndTime [TimestampType] <p>The time for the recurring schedule to end. Auto Scaling does not perform the action after this time.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: ScheduledActionName
 function M.PutScheduledUpdateGroupActionType(MinSize, DesiredCapacity, AutoScalingGroupName, Recurrence, MaxSize, ScheduledActionName, StartTime, Time, EndTime, ...)
@@ -2125,9 +2125,9 @@ end
 
 --- Create a structure of type DescribeTagsType
 --  
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param Filters [Filters] &lt;p&gt;A filter used to scope the tags to return.&lt;/p&gt;
+-- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param Filters [Filters] <p>A filter used to scope the tags to return.</p>
 function M.DescribeTagsType(MaxRecords, NextToken, Filters, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsType")
 	local t = { 
@@ -2156,9 +2156,9 @@ end
 
 --- Create a structure of type EnterStandbyQuery
 --  
--- @param ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] &lt;p&gt;Specifies whether the instances moved to &lt;code&gt;Standby&lt;/code&gt; mode count as part of the Auto Scaling group's desired capacity. If set, the desired capacity for the Auto Scaling group decrements by the number of instances moved to &lt;code&gt;Standby&lt;/code&gt; mode.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
--- @param InstanceIds [InstanceIds] &lt;p&gt;One or more instances to move into &lt;code&gt;Standby&lt;/code&gt; mode. You must specify at least one instance ID.&lt;/p&gt;
+-- @param ShouldDecrementDesiredCapacity [ShouldDecrementDesiredCapacity] <p>Specifies whether the instances moved to <code>Standby</code> mode count as part of the Auto Scaling group's desired capacity. If set, the desired capacity for the Auto Scaling group decrements by the number of instances moved to <code>Standby</code> mode.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param InstanceIds [InstanceIds] <p>One or more instances to move into <code>Standby</code> mode. You must specify at least one instance ID.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: ShouldDecrementDesiredCapacity
 function M.EnterStandbyQuery(ShouldDecrementDesiredCapacity, AutoScalingGroupName, InstanceIds, ...)
@@ -2184,8 +2184,8 @@ function M.AssertInvalidNextToken(struct)
 end
 
 --- Create a structure of type InvalidNextToken
--- &lt;p&gt;The &lt;code&gt;NextToken&lt;/code&gt; value is not valid.&lt;/p&gt;
--- @param message [XmlStringMaxLen255] &lt;p/&gt;
+-- <p>The <code>NextToken</code> value is not valid.</p>
+-- @param message [XmlStringMaxLen255] <p/>
 function M.InvalidNextToken(message, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextToken")
 	local t = { 
@@ -2211,9 +2211,9 @@ end
 
 --- Create a structure of type DescribeLoadBalancersRequest
 --  
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group.&lt;/p&gt;
+-- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
 -- Required parameter: AutoScalingGroupName
 function M.DescribeLoadBalancersRequest(MaxRecords, NextToken, AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancersRequest")
@@ -2244,10 +2244,10 @@ end
 
 --- Create a structure of type RecordLifecycleActionHeartbeatType
 --  
--- @param InstanceId [XmlStringMaxLen19] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param LifecycleHookName [AsciiStringMaxLen255] &lt;p&gt;The name of the lifecycle hook.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group for the hook.&lt;/p&gt;
--- @param LifecycleActionToken [LifecycleActionToken] &lt;p&gt;A token that uniquely identifies a specific lifecycle action associated with an instance. Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.&lt;/p&gt;
+-- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group for the hook.</p>
+-- @param LifecycleActionToken [LifecycleActionToken] <p>A token that uniquely identifies a specific lifecycle action associated with an instance. Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.</p>
 -- Required parameter: LifecycleHookName
 -- Required parameter: AutoScalingGroupName
 function M.RecordLifecycleActionHeartbeatType(InstanceId, LifecycleHookName, AutoScalingGroupName, LifecycleActionToken, ...)
@@ -2278,8 +2278,8 @@ end
 
 --- Create a structure of type DetachLoadBalancerTargetGroupsType
 --  
--- @param TargetGroupARNs [TargetGroupARNs] &lt;p&gt;The Amazon Resource Names (ARN) of the target groups.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
+-- @param TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: TargetGroupARNs
 function M.DetachLoadBalancerTargetGroupsType(TargetGroupARNs, AutoScalingGroupName, ...)
@@ -2306,8 +2306,8 @@ end
 
 --- Create a structure of type DescribeLoadBalancerTargetGroupsResponse
 --  
--- @param NextToken [XmlString] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param LoadBalancerTargetGroups [LoadBalancerTargetGroupStates] &lt;p&gt;Information about the target groups.&lt;/p&gt;
+-- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param LoadBalancerTargetGroups [LoadBalancerTargetGroupStates] <p>Information about the target groups.</p>
 function M.DescribeLoadBalancerTargetGroupsResponse(NextToken, LoadBalancerTargetGroups, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancerTargetGroupsResponse")
 	local t = { 
@@ -2333,8 +2333,8 @@ end
 
 --- Create a structure of type DescribeNotificationConfigurationsAnswer
 --  
--- @param NextToken [XmlString] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
--- @param NotificationConfigurations [NotificationConfigurations] &lt;p&gt;The notification configurations.&lt;/p&gt;
+-- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @param NotificationConfigurations [NotificationConfigurations] <p>The notification configurations.</p>
 -- Required parameter: NotificationConfigurations
 function M.DescribeNotificationConfigurationsAnswer(NextToken, NotificationConfigurations, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationConfigurationsAnswer")
@@ -2378,23 +2378,23 @@ end
 
 --- Create a structure of type CreateAutoScalingGroupType
 --  
--- @param HealthCheckGracePeriod [HealthCheckGracePeriod] &lt;p&gt;The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service. During this time, any health check failures for the instance are ignored. The default is 0.&lt;/p&gt; &lt;p&gt;This parameter is required if you are adding an &lt;code&gt;ELB&lt;/code&gt; health check.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html&quot;&gt;Health Checks&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param TargetGroupARNs [TargetGroupARNs] &lt;p&gt;The Amazon Resource Names (ARN) of the target groups.&lt;/p&gt;
--- @param PlacementGroup [XmlStringMaxLen255] &lt;p&gt;The name of the placement group into which you'll launch your instances, if any. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html&quot;&gt;Placement Groups&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] &lt;p&gt;The number of EC2 instances that should be running in the group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group. If you do not specify a desired capacity, the default is the minimum size of the group.&lt;/p&gt;
--- @param Tags [Tags] &lt;p&gt;One or more tags.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html&quot;&gt;Tagging Auto Scaling Groups and Instances&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param InstanceId [XmlStringMaxLen19] &lt;p&gt;The ID of the instance used to create a launch configuration for the group. Alternatively, specify a launch configuration instead of an EC2 instance.&lt;/p&gt; &lt;p&gt;When you specify an ID of an instance, Auto Scaling creates a new launch configuration and associates it with the group. This launch configuration derives its attributes from the specified instance, with the exception of the block device mapping.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html&quot;&gt;Create an Auto Scaling Group Using an EC2 Instance&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param LoadBalancerNames [LoadBalancerNames] &lt;p&gt;One or more Classic Load Balancers. To specify an Application Load Balancer, use &lt;code&gt;TargetGroupARNs&lt;/code&gt; instead.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html&quot;&gt;Using a Load Balancer With an Auto Scaling Group&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param AutoScalingGroupName [XmlStringMaxLen255] &lt;p&gt;The name of the group. This name must be unique within the scope of your AWS account.&lt;/p&gt;
--- @param DefaultCooldown [Cooldown] &lt;p&gt;The amount of time, in seconds, after a scaling activity completes before another scaling activity can start. The default is 300.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html&quot;&gt;Auto Scaling Cooldowns&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param MinSize [AutoScalingGroupMinSize] &lt;p&gt;The minimum size of the group.&lt;/p&gt;
--- @param MaxSize [AutoScalingGroupMaxSize] &lt;p&gt;The maximum size of the group.&lt;/p&gt;
--- @param VPCZoneIdentifier [XmlStringMaxLen2047] &lt;p&gt;A comma-separated list of subnet identifiers for your virtual private cloud (VPC).&lt;/p&gt; &lt;p&gt;If you specify subnets and Availability Zones with this call, ensure that the subnets' Availability Zones match the Availability Zones specified.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html&quot;&gt;Launching Auto Scaling Instances in a VPC&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param TerminationPolicies [TerminationPolicies] &lt;p&gt;One or more termination policies used to select the instance to terminate. These policies are executed in the order that they are listed.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html&quot;&gt;Controlling Which Instances Auto Scaling Terminates During Scale In&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param LaunchConfigurationName [ResourceName] &lt;p&gt;The name of the launch configuration. Alternatively, specify an EC2 instance instead of a launch configuration.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;One or more Availability Zones for the group. This parameter is optional if you specify one or more subnets.&lt;/p&gt;
--- @param HealthCheckType [XmlStringMaxLen32] &lt;p&gt;The service to use for the health checks. The valid values are &lt;code&gt;EC2&lt;/code&gt; and &lt;code&gt;ELB&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;By default, health checks use Amazon EC2 instance status checks to determine the health of an instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html&quot;&gt;Health Checks&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param NewInstancesProtectedFromScaleIn [InstanceProtected] &lt;p&gt;Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.&lt;/p&gt;
+-- @param HealthCheckGracePeriod [HealthCheckGracePeriod] <p>The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service. During this time, any health check failures for the instance are ignored. The default is 0.</p> <p>This parameter is required if you are adding an <code>ELB</code> health check.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups.</p>
+-- @param PlacementGroup [XmlStringMaxLen255] <p>The name of the placement group into which you'll launch your instances, if any. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group. If you do not specify a desired capacity, the default is the minimum size of the group.</p>
+-- @param Tags [Tags] <p>One or more tags.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/autoscaling-tagging.html">Tagging Auto Scaling Groups and Instances</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance used to create a launch configuration for the group. Alternatively, specify a launch configuration instead of an EC2 instance.</p> <p>When you specify an ID of an instance, Auto Scaling creates a new launch configuration and associates it with the group. This launch configuration derives its attributes from the specified instance, with the exception of the block device mapping.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html">Create an Auto Scaling Group Using an EC2 Instance</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param LoadBalancerNames [LoadBalancerNames] <p>One or more Classic Load Balancers. To specify an Application Load Balancer, use <code>TargetGroupARNs</code> instead.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/create-asg-from-instance.html">Using a Load Balancer With an Auto Scaling Group</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the group. This name must be unique within the scope of your AWS account.</p>
+-- @param DefaultCooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before another scaling activity can start. The default is 300.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param MinSize [AutoScalingGroupMinSize] <p>The minimum size of the group.</p>
+-- @param MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the group.</p>
+-- @param VPCZoneIdentifier [XmlStringMaxLen2047] <p>A comma-separated list of subnet identifiers for your virtual private cloud (VPC).</p> <p>If you specify subnets and Availability Zones with this call, ensure that the subnets' Availability Zones match the Availability Zones specified.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param TerminationPolicies [TerminationPolicies] <p>One or more termination policies used to select the instance to terminate. These policies are executed in the order that they are listed.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html">Controlling Which Instances Auto Scaling Terminates During Scale In</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param LaunchConfigurationName [ResourceName] <p>The name of the launch configuration. Alternatively, specify an EC2 instance instead of a launch configuration.</p>
+-- @param AvailabilityZones [AvailabilityZones] <p>One or more Availability Zones for the group. This parameter is optional if you specify one or more subnets.</p>
+-- @param HealthCheckType [XmlStringMaxLen32] <p>The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.</p> <p>By default, health checks use Amazon EC2 instance status checks to determine the health of an instance. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param NewInstancesProtectedFromScaleIn [InstanceProtected] <p>Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: MinSize
 -- Required parameter: MaxSize
@@ -2443,11 +2443,11 @@ end
 
 --- Create a structure of type CompleteLifecycleActionType
 --  
--- @param LifecycleActionResult [LifecycleActionResult] &lt;p&gt;The action for the group to take. This parameter can be either &lt;code&gt;CONTINUE&lt;/code&gt; or &lt;code&gt;ABANDON&lt;/code&gt;.&lt;/p&gt;
--- @param LifecycleHookName [AsciiStringMaxLen255] &lt;p&gt;The name of the lifecycle hook.&lt;/p&gt;
--- @param InstanceId [XmlStringMaxLen19] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group for the lifecycle hook.&lt;/p&gt;
--- @param LifecycleActionToken [LifecycleActionToken] &lt;p&gt;A universally unique identifier (UUID) that identifies a specific lifecycle action associated with an instance. Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.&lt;/p&gt;
+-- @param LifecycleActionResult [LifecycleActionResult] <p>The action for the group to take. This parameter can be either <code>CONTINUE</code> or <code>ABANDON</code>.</p>
+-- @param LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
+-- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group for the lifecycle hook.</p>
+-- @param LifecycleActionToken [LifecycleActionToken] <p>A universally unique identifier (UUID) that identifies a specific lifecycle action associated with an instance. Auto Scaling sends this token to the notification target you specified when you created the lifecycle hook.</p>
 -- Required parameter: LifecycleHookName
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: LifecycleActionResult
@@ -2481,11 +2481,11 @@ end
 
 --- Create a structure of type DescribePoliciesType
 --  
--- @param PolicyNames [PolicyNames] &lt;p&gt;One or more policy names or policy ARNs to be described. If you omit this parameter, all policy names are described. If an group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.&lt;/p&gt;
--- @param PolicyTypes [PolicyTypes] &lt;p&gt;One or more policy types. Valid values are &lt;code&gt;SimpleScaling&lt;/code&gt; and &lt;code&gt;StepScaling&lt;/code&gt;.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of items to be returned with each call. The default value is 50 and the maximum value is 100.&lt;/p&gt;
+-- @param PolicyNames [PolicyNames] <p>One or more policy names or policy ARNs to be described. If you omit this parameter, all policy names are described. If an group name is provided, the results are limited to that group. This list is limited to 50 items. If you specify an unknown policy name, it is ignored with no error.</p>
+-- @param PolicyTypes [PolicyTypes] <p>One or more policy types. Valid values are <code>SimpleScaling</code> and <code>StepScaling</code>.</p>
+-- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param MaxRecords [MaxRecords] <p>The maximum number of items to be returned with each call. The default value is 50 and the maximum value is 100.</p>
 function M.DescribePoliciesType(PolicyNames, PolicyTypes, NextToken, AutoScalingGroupName, MaxRecords, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribePoliciesType")
 	local t = { 
@@ -2512,7 +2512,7 @@ end
 
 --- Create a structure of type DescribeLifecycleHooksAnswer
 --  
--- @param LifecycleHooks [LifecycleHooks] &lt;p&gt;The lifecycle hooks for the specified group.&lt;/p&gt;
+-- @param LifecycleHooks [LifecycleHooks] <p>The lifecycle hooks for the specified group.</p>
 function M.DescribeLifecycleHooksAnswer(LifecycleHooks, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLifecycleHooksAnswer")
 	local t = { 
@@ -2587,14 +2587,14 @@ function M.AssertAutoScalingInstanceDetails(struct)
 end
 
 --- Create a structure of type AutoScalingInstanceDetails
--- &lt;p&gt;Describes an EC2 instance associated with an Auto Scaling group.&lt;/p&gt;
--- @param ProtectedFromScaleIn [InstanceProtected] &lt;p&gt;Indicates whether the instance is protected from termination by Auto Scaling when scaling in.&lt;/p&gt;
--- @param AvailabilityZone [XmlStringMaxLen255] &lt;p&gt;The Availability Zone for the instance.&lt;/p&gt;
--- @param InstanceId [XmlStringMaxLen19] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param AutoScalingGroupName [XmlStringMaxLen255] &lt;p&gt;The name of the Auto Scaling group associated with the instance.&lt;/p&gt;
--- @param HealthStatus [XmlStringMaxLen32] &lt;p&gt;The last reported health status of this instance. &quot;Healthy&quot; means that the instance is healthy and should remain in service. &quot;Unhealthy&quot; means that the instance is unhealthy and Auto Scaling should terminate and replace it.&lt;/p&gt;
--- @param LifecycleState [XmlStringMaxLen32] &lt;p&gt;The lifecycle state for the instance. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html&quot;&gt;Auto Scaling Lifecycle&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param LaunchConfigurationName [XmlStringMaxLen255] &lt;p&gt;The launch configuration used to launch the instance. This value is not available if you attached the instance to the Auto Scaling group.&lt;/p&gt;
+-- <p>Describes an EC2 instance associated with an Auto Scaling group.</p>
+-- @param ProtectedFromScaleIn [InstanceProtected] <p>Indicates whether the instance is protected from termination by Auto Scaling when scaling in.</p>
+-- @param AvailabilityZone [XmlStringMaxLen255] <p>The Availability Zone for the instance.</p>
+-- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the Auto Scaling group associated with the instance.</p>
+-- @param HealthStatus [XmlStringMaxLen32] <p>The last reported health status of this instance. "Healthy" means that the instance is healthy and should remain in service. "Unhealthy" means that the instance is unhealthy and Auto Scaling should terminate and replace it.</p>
+-- @param LifecycleState [XmlStringMaxLen32] <p>The lifecycle state for the instance. For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param LaunchConfigurationName [XmlStringMaxLen255] <p>The launch configuration used to launch the instance. This value is not available if you attached the instance to the Auto Scaling group.</p>
 -- Required parameter: InstanceId
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: AvailabilityZone
@@ -2632,8 +2632,8 @@ end
 
 --- Create a structure of type DeleteAutoScalingGroupType
 --  
--- @param ForceDelete [ForceDelete] &lt;p&gt;Specifies that the group will be deleted along with all instances associated with the group, without waiting for all instances to be terminated. This parameter also deletes any lifecycle actions associated with the group.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group to delete.&lt;/p&gt;
+-- @param ForceDelete [ForceDelete] <p>Specifies that the group will be deleted along with all instances associated with the group, without waiting for all instances to be terminated. This parameter also deletes any lifecycle actions associated with the group.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group to delete.</p>
 -- Required parameter: AutoScalingGroupName
 function M.DeleteAutoScalingGroupType(ForceDelete, AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAutoScalingGroupType")
@@ -2660,8 +2660,8 @@ end
 
 --- Create a structure of type DescribeLifecycleHooksType
 --  
--- @param LifecycleHookNames [LifecycleHookNames] &lt;p&gt;The names of one or more lifecycle hooks. If you omit this parameter, all lifecycle hooks are described.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group.&lt;/p&gt;
+-- @param LifecycleHookNames [LifecycleHookNames] <p>The names of one or more lifecycle hooks. If you omit this parameter, all lifecycle hooks are described.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
 -- Required parameter: AutoScalingGroupName
 function M.DescribeLifecycleHooksType(LifecycleHookNames, AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLifecycleHooksType")
@@ -2686,7 +2686,7 @@ end
 
 --- Create a structure of type DescribeAutoScalingNotificationTypesAnswer
 --  
--- @param AutoScalingNotificationTypes [AutoScalingNotificationTypes] &lt;p&gt;The notification types.&lt;/p&gt;
+-- @param AutoScalingNotificationTypes [AutoScalingNotificationTypes] <p>The notification types.</p>
 function M.DescribeAutoScalingNotificationTypesAnswer(AutoScalingNotificationTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAutoScalingNotificationTypesAnswer")
 	local t = { 
@@ -2756,16 +2756,16 @@ function M.AssertLifecycleHook(struct)
 end
 
 --- Create a structure of type LifecycleHook
--- &lt;p&gt;Describes a lifecycle hook, which tells Auto Scaling that you want to perform an action when an instance launches or terminates. When you have a lifecycle hook in place, the Auto Scaling group will either:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Pause the instance after it launches, but before it is put into service&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Pause the instance as it terminates, but before it is fully terminated&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html&quot;&gt;Auto Scaling Lifecycle&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param GlobalTimeout [GlobalTimeout] &lt;p&gt;The maximum time, in seconds, that an instance can remain in a &lt;code&gt;Pending:Wait&lt;/code&gt; or &lt;code&gt;Terminating:Wait&lt;/code&gt; state. The maximum is 172800 seconds (48 hours) or 100 times &lt;code&gt;HeartbeatTimeout&lt;/code&gt;, whichever is smaller.&lt;/p&gt;
--- @param HeartbeatTimeout [HeartbeatTimeout] &lt;p&gt;The maximum time, in seconds, that can elapse before the lifecycle hook times out. The default is 3600 seconds (1 hour). When the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling &lt;a&gt;RecordLifecycleActionHeartbeat&lt;/a&gt;.&lt;/p&gt;
--- @param RoleARN [ResourceName] &lt;p&gt;The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group for the lifecycle hook.&lt;/p&gt;
--- @param LifecycleHookName [AsciiStringMaxLen255] &lt;p&gt;The name of the lifecycle hook.&lt;/p&gt;
--- @param NotificationMetadata [XmlStringMaxLen1023] &lt;p&gt;Additional information that you want to include any time Auto Scaling sends a message to the notification target.&lt;/p&gt;
--- @param DefaultResult [LifecycleActionResult] &lt;p&gt;Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The valid values are &lt;code&gt;CONTINUE&lt;/code&gt; and &lt;code&gt;ABANDON&lt;/code&gt;. The default value is &lt;code&gt;CONTINUE&lt;/code&gt;.&lt;/p&gt;
--- @param NotificationTargetARN [ResourceName] &lt;p&gt;The ARN of the notification target that Auto Scaling uses to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue or an SNS topic. The notification message sent to the target includes the following:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Lifecycle action token&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;User account ID&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Name of the Auto Scaling group&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Lifecycle hook name&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;EC2 instance ID&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Lifecycle transition&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Notification metadata&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param LifecycleTransition [LifecycleTransition] &lt;p&gt;The state of the EC2 instance to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see &lt;a&gt;DescribeLifecycleHookTypes&lt;/a&gt;.&lt;/p&gt;
+-- <p>Describes a lifecycle hook, which tells Auto Scaling that you want to perform an action when an instance launches or terminates. When you have a lifecycle hook in place, the Auto Scaling group will either:</p> <ul> <li> <p>Pause the instance after it launches, but before it is put into service</p> </li> <li> <p>Pause the instance as it terminates, but before it is fully terminated</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/AutoScalingGroupLifecycle.html">Auto Scaling Lifecycle</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param GlobalTimeout [GlobalTimeout] <p>The maximum time, in seconds, that an instance can remain in a <code>Pending:Wait</code> or <code>Terminating:Wait</code> state. The maximum is 172800 seconds (48 hours) or 100 times <code>HeartbeatTimeout</code>, whichever is smaller.</p>
+-- @param HeartbeatTimeout [HeartbeatTimeout] <p>The maximum time, in seconds, that can elapse before the lifecycle hook times out. The default is 3600 seconds (1 hour). When the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling <a>RecordLifecycleActionHeartbeat</a>.</p>
+-- @param RoleARN [ResourceName] <p>The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group for the lifecycle hook.</p>
+-- @param LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
+-- @param NotificationMetadata [XmlStringMaxLen1023] <p>Additional information that you want to include any time Auto Scaling sends a message to the notification target.</p>
+-- @param DefaultResult [LifecycleActionResult] <p>Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The valid values are <code>CONTINUE</code> and <code>ABANDON</code>. The default value is <code>CONTINUE</code>.</p>
+-- @param NotificationTargetARN [ResourceName] <p>The ARN of the notification target that Auto Scaling uses to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue or an SNS topic. The notification message sent to the target includes the following:</p> <ul> <li> <p>Lifecycle action token</p> </li> <li> <p>User account ID</p> </li> <li> <p>Name of the Auto Scaling group</p> </li> <li> <p>Lifecycle hook name</p> </li> <li> <p>EC2 instance ID</p> </li> <li> <p>Lifecycle transition</p> </li> <li> <p>Notification metadata</p> </li> </ul>
+-- @param LifecycleTransition [LifecycleTransition] <p>The state of the EC2 instance to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see <a>DescribeLifecycleHookTypes</a>.</p>
 function M.LifecycleHook(GlobalTimeout, HeartbeatTimeout, RoleARN, AutoScalingGroupName, LifecycleHookName, NotificationMetadata, DefaultResult, NotificationTargetARN, LifecycleTransition, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleHook")
 	local t = { 
@@ -2796,7 +2796,7 @@ end
 
 --- Create a structure of type DescribeLifecycleHookTypesAnswer
 --  
--- @param LifecycleHookTypes [AutoScalingNotificationTypes] &lt;p&gt;The lifecycle hook types.&lt;/p&gt;
+-- @param LifecycleHookTypes [AutoScalingNotificationTypes] <p>The lifecycle hook types.</p>
 function M.DescribeLifecycleHookTypesAnswer(LifecycleHookTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLifecycleHookTypesAnswer")
 	local t = { 
@@ -2819,7 +2819,7 @@ end
 
 --- Create a structure of type DescribeTerminationPolicyTypesAnswer
 --  
--- @param TerminationPolicyTypes [TerminationPolicies] &lt;p&gt;The termination policies supported by Auto Scaling (&lt;code&gt;OldestInstance&lt;/code&gt;, &lt;code&gt;OldestLaunchConfiguration&lt;/code&gt;, &lt;code&gt;NewestInstance&lt;/code&gt;, &lt;code&gt;ClosestToNextInstanceHour&lt;/code&gt;, and &lt;code&gt;Default&lt;/code&gt;).&lt;/p&gt;
+-- @param TerminationPolicyTypes [TerminationPolicies] <p>The termination policies supported by Auto Scaling (<code>OldestInstance</code>, <code>OldestLaunchConfiguration</code>, <code>NewestInstance</code>, <code>ClosestToNextInstanceHour</code>, and <code>Default</code>).</p>
 function M.DescribeTerminationPolicyTypesAnswer(TerminationPolicyTypes, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTerminationPolicyTypesAnswer")
 	local t = { 
@@ -2845,8 +2845,8 @@ end
 
 --- Create a structure of type DeleteNotificationConfigurationType
 --  
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
--- @param TopicARN [ResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.&lt;/p&gt;
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param TopicARN [ResourceName] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: TopicARN
 function M.DeleteNotificationConfigurationType(AutoScalingGroupName, TopicARN, ...)
@@ -2872,9 +2872,9 @@ function M.AssertLoadBalancerTargetGroupState(struct)
 end
 
 --- Create a structure of type LoadBalancerTargetGroupState
--- &lt;p&gt;Describes the state of a target group.&lt;/p&gt; &lt;p&gt;If you attach a target group to an existing Auto Scaling group, the initial state is &lt;code&gt;Adding&lt;/code&gt;. The state transitions to &lt;code&gt;Added&lt;/code&gt; after all Auto Scaling instances are registered with the target group. If ELB health checks are enabled, the state transitions to &lt;code&gt;InService&lt;/code&gt; after at least one Auto Scaling instance passes the health check. If EC2 health checks are enabled instead, the target group remains in the &lt;code&gt;Added&lt;/code&gt; state.&lt;/p&gt;
--- @param LoadBalancerTargetGroupARN [XmlStringMaxLen511] &lt;p&gt;The Amazon Resource Name (ARN) of the target group.&lt;/p&gt;
--- @param State [XmlStringMaxLen255] &lt;p&gt;The state of the target group.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Adding&lt;/code&gt; - The Auto Scaling instances are being registered with the target group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Added&lt;/code&gt; - All Auto Scaling instances are registered with the target group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;InService&lt;/code&gt; - At least one Auto Scaling instance passed an ELB health check.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Removing&lt;/code&gt; - The Auto Scaling instances are being deregistered from the target group. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Removed&lt;/code&gt; - All Auto Scaling instances are deregistered from the target group.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Describes the state of a target group.</p> <p>If you attach a target group to an existing Auto Scaling group, the initial state is <code>Adding</code>. The state transitions to <code>Added</code> after all Auto Scaling instances are registered with the target group. If ELB health checks are enabled, the state transitions to <code>InService</code> after at least one Auto Scaling instance passes the health check. If EC2 health checks are enabled instead, the target group remains in the <code>Added</code> state.</p>
+-- @param LoadBalancerTargetGroupARN [XmlStringMaxLen511] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- @param State [XmlStringMaxLen255] <p>The state of the target group.</p> <ul> <li> <p> <code>Adding</code> - The Auto Scaling instances are being registered with the target group.</p> </li> <li> <p> <code>Added</code> - All Auto Scaling instances are registered with the target group.</p> </li> <li> <p> <code>InService</code> - At least one Auto Scaling instance passed an ELB health check.</p> </li> <li> <p> <code>Removing</code> - The Auto Scaling instances are being deregistered from the target group. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances.</p> </li> <li> <p> <code>Removed</code> - All Auto Scaling instances are deregistered from the target group.</p> </li> </ul>
 function M.LoadBalancerTargetGroupState(LoadBalancerTargetGroupARN, State, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerTargetGroupState")
 	local t = { 
@@ -2902,9 +2902,9 @@ end
 
 --- Create a structure of type EnableMetricsCollectionQuery
 --  
--- @param Metrics [Metrics] &lt;p&gt;One or more of the following metrics. If you omit this parameter, all metrics are enabled.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupMinSize&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupMaxSize&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupDesiredCapacity&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupInServiceInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupPendingInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupStandbyInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupTerminatingInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupTotalInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name or ARN of the Auto Scaling group.&lt;/p&gt;
--- @param Granularity [XmlStringMaxLen255] &lt;p&gt;The granularity to associate with the metrics to collect. The only valid value is &lt;code&gt;1Minute&lt;/code&gt;.&lt;/p&gt;
+-- @param Metrics [Metrics] <p>One or more of the following metrics. If you omit this parameter, all metrics are enabled.</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
+-- @param AutoScalingGroupName [ResourceName] <p>The name or ARN of the Auto Scaling group.</p>
+-- @param Granularity [XmlStringMaxLen255] <p>The granularity to associate with the metrics to collect. The only valid value is <code>1Minute</code>.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: Granularity
 function M.EnableMetricsCollectionQuery(Metrics, AutoScalingGroupName, Granularity, ...)
@@ -2931,9 +2931,9 @@ function M.AssertLoadBalancerState(struct)
 end
 
 --- Create a structure of type LoadBalancerState
--- &lt;p&gt;Describes the state of a Classic Load Balancer.&lt;/p&gt; &lt;p&gt;If you specify a load balancer when creating the Auto Scaling group, the state of the load balancer is &lt;code&gt;InService&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If you attach a load balancer to an existing Auto Scaling group, the initial state is &lt;code&gt;Adding&lt;/code&gt;. The state transitions to &lt;code&gt;Added&lt;/code&gt; after all instances in the group are registered with the load balancer. If ELB health checks are enabled for the load balancer, the state transitions to &lt;code&gt;InService&lt;/code&gt; after at least one instance in the group passes the health check. If EC2 health checks are enabled instead, the load balancer remains in the &lt;code&gt;Added&lt;/code&gt; state.&lt;/p&gt;
--- @param State [XmlStringMaxLen255] &lt;p&gt;One of the following load balancer states:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Adding&lt;/code&gt; - The instances in the group are being registered with the load balancer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Added&lt;/code&gt; - All instances in the group are registered with the load balancer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;InService&lt;/code&gt; - At least one instance in the group passed an ELB health check.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Removing&lt;/code&gt; - The instances in the group are being deregistered from the load balancer. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Removed&lt;/code&gt; - All instances in the group are deregistered from the load balancer.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
--- @param LoadBalancerName [XmlStringMaxLen255] &lt;p&gt;The name of the load balancer.&lt;/p&gt;
+-- <p>Describes the state of a Classic Load Balancer.</p> <p>If you specify a load balancer when creating the Auto Scaling group, the state of the load balancer is <code>InService</code>.</p> <p>If you attach a load balancer to an existing Auto Scaling group, the initial state is <code>Adding</code>. The state transitions to <code>Added</code> after all instances in the group are registered with the load balancer. If ELB health checks are enabled for the load balancer, the state transitions to <code>InService</code> after at least one instance in the group passes the health check. If EC2 health checks are enabled instead, the load balancer remains in the <code>Added</code> state.</p>
+-- @param State [XmlStringMaxLen255] <p>One of the following load balancer states:</p> <ul> <li> <p> <code>Adding</code> - The instances in the group are being registered with the load balancer.</p> </li> <li> <p> <code>Added</code> - All instances in the group are registered with the load balancer.</p> </li> <li> <p> <code>InService</code> - At least one instance in the group passed an ELB health check.</p> </li> <li> <p> <code>Removing</code> - The instances in the group are being deregistered from the load balancer. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances.</p> </li> <li> <p> <code>Removed</code> - All instances in the group are deregistered from the load balancer.</p> </li> </ul>
+-- @param LoadBalancerName [XmlStringMaxLen255] <p>The name of the load balancer.</p>
 function M.LoadBalancerState(State, LoadBalancerName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerState")
 	local t = { 
@@ -2957,9 +2957,9 @@ function M.AssertSuspendedProcess(struct)
 end
 
 --- Create a structure of type SuspendedProcess
--- &lt;p&gt;Describes an Auto Scaling process that has been suspended. For more information, see &lt;a&gt;ProcessType&lt;/a&gt;.&lt;/p&gt;
--- @param ProcessName [XmlStringMaxLen255] &lt;p&gt;The name of the suspended process.&lt;/p&gt;
--- @param SuspensionReason [XmlStringMaxLen255] &lt;p&gt;The reason that the process was suspended.&lt;/p&gt;
+-- <p>Describes an Auto Scaling process that has been suspended. For more information, see <a>ProcessType</a>.</p>
+-- @param ProcessName [XmlStringMaxLen255] <p>The name of the suspended process.</p>
+-- @param SuspensionReason [XmlStringMaxLen255] <p>The reason that the process was suspended.</p>
 function M.SuspendedProcess(ProcessName, SuspensionReason, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating SuspendedProcess")
 	local t = { 
@@ -2983,9 +2983,9 @@ function M.AssertAlarm(struct)
 end
 
 --- Create a structure of type Alarm
--- &lt;p&gt;Describes an alarm.&lt;/p&gt;
--- @param AlarmName [XmlStringMaxLen255] &lt;p&gt;The name of the alarm.&lt;/p&gt;
--- @param AlarmARN [ResourceName] &lt;p&gt;The Amazon Resource Name (ARN) of the alarm.&lt;/p&gt;
+-- <p>Describes an alarm.</p>
+-- @param AlarmName [XmlStringMaxLen255] <p>The name of the alarm.</p>
+-- @param AlarmARN [ResourceName] <p>The Amazon Resource Name (ARN) of the alarm.</p>
 function M.Alarm(AlarmName, AlarmARN, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating Alarm")
 	local t = { 
@@ -3012,8 +3012,8 @@ end
 
 --- Create a structure of type AttachLoadBalancersType
 --  
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the group.&lt;/p&gt;
--- @param LoadBalancerNames [LoadBalancerNames] &lt;p&gt;One or more load balancer names.&lt;/p&gt;
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
+-- @param LoadBalancerNames [LoadBalancerNames] <p>One or more load balancer names.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: LoadBalancerNames
 function M.AttachLoadBalancersType(AutoScalingGroupName, LoadBalancerNames, ...)
@@ -3042,8 +3042,8 @@ end
 
 --- Create a structure of type AttachLoadBalancerTargetGroupsType
 --  
--- @param TargetGroupARNs [TargetGroupARNs] &lt;p&gt;The Amazon Resource Names (ARN) of the target groups.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
+-- @param TargetGroupARNs [TargetGroupARNs] <p>The Amazon Resource Names (ARN) of the target groups.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: TargetGroupARNs
 function M.AttachLoadBalancerTargetGroupsType(TargetGroupARNs, AutoScalingGroupName, ...)
@@ -3071,8 +3071,8 @@ end
 
 --- Create a structure of type ActivitiesType
 --  
--- @param Activities [Activities] &lt;p&gt;The scaling activities. Activities are sorted by start time. Activities still in progress are described first.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param Activities [Activities] <p>The scaling activities. Activities are sorted by start time. Activities still in progress are described first.</p>
+-- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- Required parameter: Activities
 function M.ActivitiesType(Activities, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating ActivitiesType")
@@ -3106,14 +3106,14 @@ end
 
 --- Create a structure of type PutLifecycleHookType
 --  
--- @param HeartbeatTimeout [HeartbeatTimeout] &lt;p&gt;The amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling &lt;a&gt;RecordLifecycleActionHeartbeat&lt;/a&gt;. The default is 3600 seconds (1 hour).&lt;/p&gt;
--- @param RoleARN [ResourceName] &lt;p&gt;The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.&lt;/p&gt; &lt;p&gt;This parameter is required for new lifecycle hooks, but optional when updating existing hooks.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group to which you want to assign the lifecycle hook.&lt;/p&gt;
--- @param LifecycleHookName [AsciiStringMaxLen255] &lt;p&gt;The name of the lifecycle hook.&lt;/p&gt;
--- @param NotificationMetadata [XmlStringMaxLen1023] &lt;p&gt;Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.&lt;/p&gt;
--- @param DefaultResult [LifecycleActionResult] &lt;p&gt;Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. This parameter can be either &lt;code&gt;CONTINUE&lt;/code&gt; or &lt;code&gt;ABANDON&lt;/code&gt;. The default value is &lt;code&gt;ABANDON&lt;/code&gt;.&lt;/p&gt;
--- @param NotificationTargetARN [NotificationTargetResourceName] &lt;p&gt;The ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This target can be either an SQS queue or an SNS topic. If you specify an empty string, this overrides the current ARN.&lt;/p&gt; &lt;p&gt;This operation uses the JSON format when sending notifications to an Amazon SQS queue, and an email key/value pair format when sending notifications to an Amazon SNS topic.&lt;/p&gt; &lt;p&gt;When you specify a notification target, Auto Scaling sends it a test message. Test messages contains the following additional key/value pair: &lt;code&gt;&quot;Event&quot;: &quot;autoscaling:TEST_NOTIFICATION&quot;&lt;/code&gt;.&lt;/p&gt;
--- @param LifecycleTransition [LifecycleTransition] &lt;p&gt;The instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see &lt;a&gt;DescribeLifecycleHookTypes&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;This parameter is required for new lifecycle hooks, but optional when updating existing hooks.&lt;/p&gt;
+-- @param HeartbeatTimeout [HeartbeatTimeout] <p>The amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the default action. You can prevent the lifecycle hook from timing out by calling <a>RecordLifecycleActionHeartbeat</a>. The default is 3600 seconds (1 hour).</p>
+-- @param RoleARN [ResourceName] <p>The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.</p> <p>This parameter is required for new lifecycle hooks, but optional when updating existing hooks.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group to which you want to assign the lifecycle hook.</p>
+-- @param LifecycleHookName [AsciiStringMaxLen255] <p>The name of the lifecycle hook.</p>
+-- @param NotificationMetadata [XmlStringMaxLen1023] <p>Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.</p>
+-- @param DefaultResult [LifecycleActionResult] <p>Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. This parameter can be either <code>CONTINUE</code> or <code>ABANDON</code>. The default value is <code>ABANDON</code>.</p>
+-- @param NotificationTargetARN [NotificationTargetResourceName] <p>The ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This target can be either an SQS queue or an SNS topic. If you specify an empty string, this overrides the current ARN.</p> <p>This operation uses the JSON format when sending notifications to an Amazon SQS queue, and an email key/value pair format when sending notifications to an Amazon SNS topic.</p> <p>When you specify a notification target, Auto Scaling sends it a test message. Test messages contains the following additional key/value pair: <code>"Event": "autoscaling:TEST_NOTIFICATION"</code>.</p>
+-- @param LifecycleTransition [LifecycleTransition] <p>The instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see <a>DescribeLifecycleHookTypes</a>.</p> <p>This parameter is required for new lifecycle hooks, but optional when updating existing hooks.</p>
 -- Required parameter: LifecycleHookName
 -- Required parameter: AutoScalingGroupName
 function M.PutLifecycleHookType(HeartbeatTimeout, RoleARN, AutoScalingGroupName, LifecycleHookName, NotificationMetadata, DefaultResult, NotificationTargetARN, LifecycleTransition, ...)
@@ -3178,17 +3178,17 @@ function M.AssertActivity(struct)
 end
 
 --- Create a structure of type Activity
--- &lt;p&gt;Describes scaling activity, which is a long-running process that represents a change to your Auto Scaling group, such as changing its size or replacing an instance.&lt;/p&gt;
--- @param Description [XmlString] &lt;p&gt;A friendly, more verbose description of the activity.&lt;/p&gt;
--- @param AutoScalingGroupName [XmlStringMaxLen255] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
--- @param ActivityId [XmlString] &lt;p&gt;The ID of the activity.&lt;/p&gt;
--- @param Details [XmlString] &lt;p&gt;The details about the activity.&lt;/p&gt;
--- @param StartTime [TimestampType] &lt;p&gt;The start time of the activity.&lt;/p&gt;
--- @param Progress [Progress] &lt;p&gt;A value between 0 and 100 that indicates the progress of the activity.&lt;/p&gt;
--- @param EndTime [TimestampType] &lt;p&gt;The end time of the activity.&lt;/p&gt;
--- @param Cause [XmlStringMaxLen1023] &lt;p&gt;The reason the activity began.&lt;/p&gt;
--- @param StatusMessage [XmlStringMaxLen255] &lt;p&gt;A friendly, more verbose description of the activity status.&lt;/p&gt;
--- @param StatusCode [ScalingActivityStatusCode] &lt;p&gt;The current status of the activity.&lt;/p&gt;
+-- <p>Describes scaling activity, which is a long-running process that represents a change to your Auto Scaling group, such as changing its size or replacing an instance.</p>
+-- @param Description [XmlString] <p>A friendly, more verbose description of the activity.</p>
+-- @param AutoScalingGroupName [XmlStringMaxLen255] <p>The name of the Auto Scaling group.</p>
+-- @param ActivityId [XmlString] <p>The ID of the activity.</p>
+-- @param Details [XmlString] <p>The details about the activity.</p>
+-- @param StartTime [TimestampType] <p>The start time of the activity.</p>
+-- @param Progress [Progress] <p>A value between 0 and 100 that indicates the progress of the activity.</p>
+-- @param EndTime [TimestampType] <p>The end time of the activity.</p>
+-- @param Cause [XmlStringMaxLen1023] <p>The reason the activity began.</p>
+-- @param StatusMessage [XmlStringMaxLen255] <p>A friendly, more verbose description of the activity status.</p>
+-- @param StatusCode [ScalingActivityStatusCode] <p>The current status of the activity.</p>
 -- Required parameter: ActivityId
 -- Required parameter: AutoScalingGroupName
 -- Required parameter: Cause
@@ -3224,8 +3224,8 @@ function M.AssertMetricCollectionType(struct)
 end
 
 --- Create a structure of type MetricCollectionType
--- &lt;p&gt;Describes a metric.&lt;/p&gt;
--- @param Metric [XmlStringMaxLen255] &lt;p&gt;One of the following metrics:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupMinSize&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupMaxSize&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupDesiredCapacity&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupInServiceInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupPendingInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupStandbyInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupTerminatingInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;GroupTotalInstances&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+-- <p>Describes a metric.</p>
+-- @param Metric [XmlStringMaxLen255] <p>One of the following metrics:</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
 function M.MetricCollectionType(Metric, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating MetricCollectionType")
 	local t = { 
@@ -3250,9 +3250,9 @@ end
 
 --- Create a structure of type DescribeAutoScalingInstancesType
 --  
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param InstanceIds [InstanceIds] &lt;p&gt;The instances to describe; up to 50 instance IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.&lt;/p&gt;
+-- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param InstanceIds [InstanceIds] <p>The instances to describe; up to 50 instance IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.</p>
 function M.DescribeAutoScalingInstancesType(MaxRecords, NextToken, InstanceIds, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAutoScalingInstancesType")
 	local t = { 
@@ -3280,9 +3280,9 @@ end
 
 --- Create a structure of type DescribeLoadBalancerTargetGroupsRequest
 --  
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
+-- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
 -- Required parameter: AutoScalingGroupName
 function M.DescribeLoadBalancerTargetGroupsRequest(MaxRecords, NextToken, AutoScalingGroupName, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancerTargetGroupsRequest")
@@ -3312,9 +3312,9 @@ end
 
 --- Create a structure of type SetInstanceHealthQuery
 --  
--- @param InstanceId [XmlStringMaxLen19] &lt;p&gt;The ID of the instance.&lt;/p&gt;
--- @param ShouldRespectGracePeriod [ShouldRespectGracePeriod] &lt;p&gt;If the Auto Scaling group of the specified instance has a &lt;code&gt;HealthCheckGracePeriod&lt;/code&gt; specified for the group, by default, this call will respect the grace period. Set this to &lt;code&gt;False&lt;/code&gt;, if you do not want the call to respect the grace period associated with the group.&lt;/p&gt; &lt;p&gt;For more information, see the description of the health check grace period for &lt;a&gt;CreateAutoScalingGroup&lt;/a&gt;.&lt;/p&gt;
--- @param HealthStatus [XmlStringMaxLen32] &lt;p&gt;The health status of the instance. Set to &lt;code&gt;Healthy&lt;/code&gt; if you want the instance to remain in service. Set to &lt;code&gt;Unhealthy&lt;/code&gt; if you want the instance to be out of service. Auto Scaling will terminate and replace the unhealthy instance.&lt;/p&gt;
+-- @param InstanceId [XmlStringMaxLen19] <p>The ID of the instance.</p>
+-- @param ShouldRespectGracePeriod [ShouldRespectGracePeriod] <p>If the Auto Scaling group of the specified instance has a <code>HealthCheckGracePeriod</code> specified for the group, by default, this call will respect the grace period. Set this to <code>False</code>, if you do not want the call to respect the grace period associated with the group.</p> <p>For more information, see the description of the health check grace period for <a>CreateAutoScalingGroup</a>.</p>
+-- @param HealthStatus [XmlStringMaxLen32] <p>The health status of the instance. Set to <code>Healthy</code> if you want the instance to remain in service. Set to <code>Unhealthy</code> if you want the instance to be out of service. Auto Scaling will terminate and replace the unhealthy instance.</p>
 -- Required parameter: InstanceId
 -- Required parameter: HealthStatus
 function M.SetInstanceHealthQuery(InstanceId, ShouldRespectGracePeriod, HealthStatus, ...)
@@ -3342,8 +3342,8 @@ end
 
 --- Create a structure of type DescribeLoadBalancersResponse
 --  
--- @param LoadBalancers [LoadBalancerStates] &lt;p&gt;The load balancers.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.&lt;/p&gt;
+-- @param LoadBalancers [LoadBalancerStates] <p>The load balancers.</p>
+-- @param NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 function M.DescribeLoadBalancersResponse(LoadBalancers, NextToken, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancersResponse")
 	local t = { 
@@ -3380,19 +3380,19 @@ end
 
 --- Create a structure of type UpdateAutoScalingGroupType
 --  
--- @param HealthCheckGracePeriod [HealthCheckGracePeriod] &lt;p&gt;The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service. The default is 0.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html&quot;&gt;Health Checks&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param PlacementGroup [XmlStringMaxLen255] &lt;p&gt;The name of the placement group into which you'll launch your instances, if any. For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html&quot;&gt;Placement Groups&lt;/a&gt; in the &lt;i&gt;Amazon Elastic Compute Cloud User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] &lt;p&gt;The number of EC2 instances that should be running in the Auto Scaling group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group.&lt;/p&gt;
--- @param TerminationPolicies [TerminationPolicies] &lt;p&gt;A standalone termination policy or a list of termination policies used to select the instance to terminate. The policies are executed in the order that they are listed.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html&quot;&gt;Controlling Which Instances Auto Scaling Terminates During Scale In&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param AutoScalingGroupName [ResourceName] &lt;p&gt;The name of the Auto Scaling group.&lt;/p&gt;
--- @param DefaultCooldown [Cooldown] &lt;p&gt;The amount of time, in seconds, after a scaling activity completes before another scaling activity can start. The default is 300.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html&quot;&gt;Auto Scaling Cooldowns&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param MinSize [AutoScalingGroupMinSize] &lt;p&gt;The minimum size of the Auto Scaling group.&lt;/p&gt;
--- @param MaxSize [AutoScalingGroupMaxSize] &lt;p&gt;The maximum size of the Auto Scaling group.&lt;/p&gt;
--- @param VPCZoneIdentifier [XmlStringMaxLen2047] &lt;p&gt;The ID of the subnet, if you are launching into a VPC. You can specify several subnets in a comma-separated list.&lt;/p&gt; &lt;p&gt;When you specify &lt;code&gt;VPCZoneIdentifier&lt;/code&gt; with &lt;code&gt;AvailabilityZones&lt;/code&gt;, ensure that the subnets' Availability Zones match the values you specify for &lt;code&gt;AvailabilityZones&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href=&quot;http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html&quot;&gt;Launching Auto Scaling Instances in a VPC&lt;/a&gt; in the &lt;i&gt;Auto Scaling User Guide&lt;/i&gt;.&lt;/p&gt;
--- @param LaunchConfigurationName [ResourceName] &lt;p&gt;The name of the launch configuration.&lt;/p&gt;
--- @param AvailabilityZones [AvailabilityZones] &lt;p&gt;One or more Availability Zones for the group.&lt;/p&gt;
--- @param HealthCheckType [XmlStringMaxLen32] &lt;p&gt;The service to use for the health checks. The valid values are &lt;code&gt;EC2&lt;/code&gt; and &lt;code&gt;ELB&lt;/code&gt;.&lt;/p&gt;
--- @param NewInstancesProtectedFromScaleIn [InstanceProtected] &lt;p&gt;Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.&lt;/p&gt;
+-- @param HealthCheckGracePeriod [HealthCheckGracePeriod] <p>The amount of time, in seconds, that Auto Scaling waits before checking the health status of an EC2 instance that has come into service. The default is 0.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">Health Checks</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param PlacementGroup [XmlStringMaxLen255] <p>The name of the placement group into which you'll launch your instances, if any. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html">Placement Groups</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+-- @param DesiredCapacity [AutoScalingGroupDesiredCapacity] <p>The number of EC2 instances that should be running in the Auto Scaling group. This number must be greater than or equal to the minimum size of the group and less than or equal to the maximum size of the group.</p>
+-- @param TerminationPolicies [TerminationPolicies] <p>A standalone termination policy or a list of termination policies used to select the instance to terminate. The policies are executed in the order that they are listed.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-termination.html">Controlling Which Instances Auto Scaling Terminates During Scale In</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param AutoScalingGroupName [ResourceName] <p>The name of the Auto Scaling group.</p>
+-- @param DefaultCooldown [Cooldown] <p>The amount of time, in seconds, after a scaling activity completes before another scaling activity can start. The default is 300.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/Cooldown.html">Auto Scaling Cooldowns</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param MinSize [AutoScalingGroupMinSize] <p>The minimum size of the Auto Scaling group.</p>
+-- @param MaxSize [AutoScalingGroupMaxSize] <p>The maximum size of the Auto Scaling group.</p>
+-- @param VPCZoneIdentifier [XmlStringMaxLen2047] <p>The ID of the subnet, if you are launching into a VPC. You can specify several subnets in a comma-separated list.</p> <p>When you specify <code>VPCZoneIdentifier</code> with <code>AvailabilityZones</code>, ensure that the subnets' Availability Zones match the values you specify for <code>AvailabilityZones</code>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/asg-in-vpc.html">Launching Auto Scaling Instances in a VPC</a> in the <i>Auto Scaling User Guide</i>.</p>
+-- @param LaunchConfigurationName [ResourceName] <p>The name of the launch configuration.</p>
+-- @param AvailabilityZones [AvailabilityZones] <p>One or more Availability Zones for the group.</p>
+-- @param HealthCheckType [XmlStringMaxLen32] <p>The service to use for the health checks. The valid values are <code>EC2</code> and <code>ELB</code>.</p>
+-- @param NewInstancesProtectedFromScaleIn [InstanceProtected] <p>Indicates whether newly launched instances are protected from termination by Auto Scaling when scaling in.</p>
 -- Required parameter: AutoScalingGroupName
 function M.UpdateAutoScalingGroupType(HealthCheckGracePeriod, PlacementGroup, DesiredCapacity, TerminationPolicies, AutoScalingGroupName, DefaultCooldown, MinSize, MaxSize, VPCZoneIdentifier, LaunchConfigurationName, AvailabilityZones, HealthCheckType, NewInstancesProtectedFromScaleIn, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAutoScalingGroupType")
@@ -3430,9 +3430,9 @@ end
 
 --- Create a structure of type AutoScalingGroupNamesType
 --  
--- @param MaxRecords [MaxRecords] &lt;p&gt;The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.&lt;/p&gt;
--- @param NextToken [XmlString] &lt;p&gt;The token for the next set of items to return. (You received this token from a previous call.)&lt;/p&gt;
--- @param AutoScalingGroupNames [AutoScalingGroupNames] &lt;p&gt;The group names. If you omit this parameter, all Auto Scaling groups are described.&lt;/p&gt;
+-- @param MaxRecords [MaxRecords] <p>The maximum number of items to return with this call. The default value is 50 and the maximum value is 100.</p>
+-- @param NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @param AutoScalingGroupNames [AutoScalingGroupNames] <p>The group names. If you omit this parameter, all Auto Scaling groups are described.</p>
 function M.AutoScalingGroupNamesType(MaxRecords, NextToken, AutoScalingGroupNames, ...)
 	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingGroupNamesType")
 	local t = { 
